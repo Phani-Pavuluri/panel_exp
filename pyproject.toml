@@ -1,0 +1,43 @@
+[tool.poetry]
+name = "panel_exp"
+version = "0.2.1"
+description = "Panel Modeling"
+authors = [Phani Pavuluri]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+matplotlib = "^3.8.4"
+matplotlib-inline = "^0.1.6"
+numpy = "^1.26.4"
+pandas = "^2.2.2"
+scipy = "^1.13.0"
+seaborn = "^0.13.2"
+statsmodels = "^0.14.2"
+pmdarima = "^2.0.4"
+dtaidistance = "2.3.11"
+networkx = "^3.2.1"
+scikit-learn = "^1.4.0"
+xarray = "^2024.3.0"
+numpyro = "^0.14.0"
+jax = "^0.4.26"
+arviz = "^0.20.0"
+funsor = "^0.4.5"
+pulp = "^2.7.0"
+tqdm = "^4.66.0"
+
+[tool.poetry.group.docs.dependencies]
+sphinx = "^7.4.7"
+nbsphinx = "^0.9.5"
+sphinx-rtd-theme = "^3.0.1"
+numpydoc = "^1.8.0"
+myst-parser = "^2.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[[tool.poetry.source]]
+name = "pypi"
+priority = "default"
+

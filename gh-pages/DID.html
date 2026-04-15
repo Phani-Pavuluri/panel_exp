@@ -1,0 +1,1557 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diff-In-Diff &mdash; Panel Exp 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Panel Exp
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#package-architecture">Package Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#design-module">1. Design Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#methods-module">2. Methods Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#inference-module">3. Inference Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#end-to-end-workflow">End-to-End Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#best-practices">Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#package-dependencies">Package Dependencies</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basic_data.html">PanelDataset Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scm_usage.html">SCM Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tbr_usage.html">TBR Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="power_example.html">Power Module Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Deeper Dives</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="experimental_design.html">Experimental Design Deep Dive (#1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scm_deep_dive.html">Synthetic Control Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tbr_deep_dive.html">Time-Based Regression (TBR)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tbr_deep_dive.html#Regression-while-not-aggregating-the-control-units">Regression while not aggregating the control units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API: Auto-generated Documentation.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#base-classes">Base Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#design">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#models">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#inference">Inference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Panel Exp</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Diff-In-Diff</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/DID.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Diff-In-Diff">
+<h1>Diff-In-Diff<a class="headerlink" href="#Diff-In-Diff" title="Link to this heading"></a></h1>
+<p>Difference in Difference is a quasi-experimental design that makes use of longitudinal data from treatment and control groups to obtain an appropriate counterfactual to estimate a causal effect.</p>
+<section id="Assumptions">
+<h2>Assumptions<a class="headerlink" href="#Assumptions" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Treatment/intervention and control groups have <strong>Parallel Trends</strong> in outcome during pre-treatment period. This is often confirmed via visual inspection.</p></li>
+<li><p>Intervention unrelated to outcome at baseline (allocation of intervention was not determined by outcome)</p></li>
+<li><p>Composition of intervention and comparison groups is stable for repeated cross-sectional design (part of SUTVA)</p></li>
+<li><p>No spillover effects (part of SUTVA)</p>
+<ul>
+<li><p>SUTVA = Staple Unit Treatment Values. Simply put this means that units receiving treatment are only responding to its treatment, not the random assignment of others.</p></li>
+<li><p>In GeoX, this is assumed, but say if we target Geo’s at the zip code level, you could argue that folks are traveling between zip codes and would violate this assumption.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="Notes-on-implementation">
+<h2>Notes on implementation<a class="headerlink" href="#Notes-on-implementation" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Our implementation requires a simultaneous adoptions i.e. treatment start at same time for all treated units.</p></li>
+</ul>
+<section id="Resources">
+<h3>Resources<a class="headerlink" href="#Resources" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.publichealth.columbia.edu/research/population-health-methods/difference-difference-estimation">https://www.publichealth.columbia.edu/research/population-health-methods/difference-difference-estimation</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Difference_in_differences">https://en.wikipedia.org/wiki/Difference_in_differences</a></p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;../../&#39;</span><span class="p">)</span>
+<br/><br/><br/></pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">panel_exp</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+  <span class="n">ABC</span><span class="p">,</span>
+  <span class="n">abstractmethod</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods.tbr</span><span class="w"> </span><span class="kn">import</span> <span class="n">TBR</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods.scm</span><span class="w"> </span><span class="kn">import</span> <span class="n">SyntheticControl</span><span class="p">,</span> <span class="n">AugSynth</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.inference.unit_jackknife</span><span class="w"> </span><span class="kn">import</span> <span class="n">unit_jk</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.formula.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">smf</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.panel_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">long_df_to_paneldataset</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods.DID</span><span class="w"> </span><span class="kn">import</span> <span class="n">DID</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="California-Smoking-Dataset">
+<h1>California Smoking Dataset<a class="headerlink" href="#California-Smoking-Dataset" title="Link to this heading"></a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">long_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/smoking.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">long_df</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>state</th>
+      <th>year</th>
+      <th>cigsale</th>
+      <th>lnincome</th>
+      <th>beer</th>
+      <th>age15to24</th>
+      <th>retprice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Rhode Island</td>
+      <td>1970</td>
+      <td>123.900002</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.183158</td>
+      <td>39.299999</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Tennessee</td>
+      <td>1970</td>
+      <td>99.800003</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.178044</td>
+      <td>39.900002</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Indiana</td>
+      <td>1970</td>
+      <td>134.600006</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.176516</td>
+      <td>30.600000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Nevada</td>
+      <td>1970</td>
+      <td>189.500000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.161554</td>
+      <td>38.900002</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Louisiana</td>
+      <td>1970</td>
+      <td>115.900002</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.185185</td>
+      <td>34.299999</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1204</th>
+      <td>1205</td>
+      <td>New Mexico</td>
+      <td>2000</td>
+      <td>53.799999</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>279.799988</td>
+    </tr>
+    <tr>
+      <th>1205</th>
+      <td>1206</td>
+      <td>Connecticut</td>
+      <td>2000</td>
+      <td>71.400002</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>312.299988</td>
+    </tr>
+    <tr>
+      <th>1206</th>
+      <td>1207</td>
+      <td>Vermont</td>
+      <td>2000</td>
+      <td>88.900002</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>301.100006</td>
+    </tr>
+    <tr>
+      <th>1207</th>
+      <td>1208</td>
+      <td>Ohio</td>
+      <td>2000</td>
+      <td>99.900002</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>265.399994</td>
+    </tr>
+    <tr>
+      <th>1208</th>
+      <td>1209</td>
+      <td>Rhode Island</td>
+      <td>2000</td>
+      <td>83.099998</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>322.899994</td>
+    </tr>
+  </tbody>
+</table>
+<p>1209 rows × 8 columns</p>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">long_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;unnamed&#39;</span><span class="p">,</span> <span class="s1">&#39;unit&#39;</span><span class="p">,</span> <span class="s1">&#39;time_unit&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span>  <span class="s1">&#39;lnincome&#39;</span><span class="p">,</span><span class="s1">&#39;beer&#39;</span><span class="p">,</span><span class="s1">&#39;age15to24&#39;</span><span class="p">,</span><span class="s1">&#39;retprice&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">panel_data</span> <span class="o">=</span> <span class="n">long_df_to_paneldataset</span><span class="p">(</span><span class="n">long_df</span><span class="p">,</span> <span class="s2">&quot;time_unit&quot;</span><span class="p">,</span> <span class="s2">&quot;unit&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;California&quot;</span><span class="p">],</span> <span class="mi">1989</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">panel_data</span><span class="o">.</span><span class="n">long_data</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>unit</th>
+      <th>time_unit</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alabama</td>
+      <td>1970</td>
+      <td>89.800003</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Arkansas</td>
+      <td>1970</td>
+      <td>100.300003</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>California</td>
+      <td>1970</td>
+      <td>123.000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Colorado</td>
+      <td>1970</td>
+      <td>124.800003</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Connecticut</td>
+      <td>1970</td>
+      <td>120.000000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1204</th>
+      <td>Vermont</td>
+      <td>2000</td>
+      <td>88.900002</td>
+    </tr>
+    <tr>
+      <th>1205</th>
+      <td>Virginia</td>
+      <td>2000</td>
+      <td>96.699997</td>
+    </tr>
+    <tr>
+      <th>1206</th>
+      <td>West Virginia</td>
+      <td>2000</td>
+      <td>107.900002</td>
+    </tr>
+    <tr>
+      <th>1207</th>
+      <td>Wisconsin</td>
+      <td>2000</td>
+      <td>80.099998</td>
+    </tr>
+    <tr>
+      <th>1208</th>
+      <td>Wyoming</td>
+      <td>2000</td>
+      <td>90.500000</td>
+    </tr>
+  </tbody>
+</table>
+<p>1209 rows × 3 columns</p>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">panel_data</span><span class="o">.</span><span class="n">summarize</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+        Panel Dataset Summary
+        ---------------------
+        Number of time points: 31
+        Number of units: 39
+        Number of treated units: 1
+        Treated units: [&#39;California&#39;]
+        Treated periods: [TimePeriod(start=1989, end=None)]
+
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">did</span> <span class="o">=</span> <span class="n">DID</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">did</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">panel_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">did</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/DID_14_0.png" src="_images/DID_14_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">did</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Average</th>
+      <th>Cumulative</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Actual</th>
+      <td>60.35</td>
+      <td>724.200001</td>
+    </tr>
+    <tr>
+      <th>Predicted</th>
+      <td>87.699111</td>
+      <td>1052.389334</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Absolute Effect</th>
+      <td>-27.349111</td>
+      <td>-328.189333</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Relative Effect</th>
+      <td>-31.185163</td>
+      <td>-31.185163</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">did</span><span class="o">.</span><span class="n">plot_2</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/DID_16_0.png" src="_images/DID_16_0.png" />
+</div>
+</div>
+<section id="Access-P-Value">
+<h2>Access P-Value<a class="headerlink" href="#Access-P-Value" title="Link to this heading"></a></h2>
+<p>To get a p-value for DID, you can access the model summary, such as below, the post_treated_cross gives you both the ATT and the associated p-value along with other model summary information.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">did</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>          <td>value</td>      <th>  R-squared:         </th> <td>   0.207</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.205</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   105.1</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Fri, 10 Nov 2023</td> <th>  Prob (F-statistic):</th> <td>1.99e-60</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>09:48:53</td>     <th>  Log-Likelihood:    </th> <td> -5793.3</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>  1209</td>      <th>  AIC:               </th> <td>1.159e+04</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>  1205</td>      <th>  BIC:               </th> <td>1.161e+04</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     3</td>      <th>                     </th>     <td> </td>
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+           <td></td>             <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>
+</tr>
+<tr>
+  <th>Intercept</th>          <td>  130.5695</td> <td>    1.087</td> <td>  120.112</td> <td> 0.000</td> <td>  128.437</td> <td>  132.702</td>
+</tr>
+<tr>
+  <th>treated</th>            <td>  -14.3590</td> <td>    6.789</td> <td>   -2.115</td> <td> 0.035</td> <td>  -27.678</td> <td>   -1.040</td>
+</tr>
+<tr>
+  <th>post_treated</th>       <td>  -28.5114</td> <td>    1.747</td> <td>  -16.318</td> <td> 0.000</td> <td>  -31.939</td> <td>  -25.084</td>
+</tr>
+<tr>
+  <th>post_treated_cross</th> <td>  -27.3491</td> <td>   10.911</td> <td>   -2.506</td> <td> 0.012</td> <td>  -48.756</td> <td>   -5.942</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td>470.050</td> <th>  Durbin-Watson:     </th> <td>   2.094</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.000</td>  <th>  Jarque-Bera (JB):  </th> <td>2334.004</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td> 1.760</td>  <th>  Prob(JB):          </th> <td>    0.00</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 8.826</td>  <th>  Cond. No.          </th> <td>    15.4</td>
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div>
+</div>
+</section>
+</section>
+<section id="Kansas-Datasest">
+<h1>Kansas Datasest<a class="headerlink" href="#Kansas-Datasest" title="Link to this heading"></a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">long_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/kansas_parsed.csv&#39;</span><span class="p">)</span>
+<span class="n">long_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>lngdp</th>
+      <th>treated</th>
+      <th>fips</th>
+      <th>year_qtr</th>
+      <th>state</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>11.178990</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1990.00</td>
+      <td>Alabama</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>11.194348</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1990.25</td>
+      <td>Alabama</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>11.209473</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1990.50</td>
+      <td>Alabama</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>11.224373</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1990.75</td>
+      <td>Alabama</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>11.239054</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1991.00</td>
+      <td>Alabama</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">long_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;un&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="s1">&#39;treated&#39;</span><span class="p">,</span> <span class="s1">&#39;fips&#39;</span><span class="p">,</span> <span class="s1">&#39;time_unit&#39;</span><span class="p">,</span> <span class="s1">&#39;unit&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">panel_data</span> <span class="o">=</span> <span class="n">long_df_to_paneldataset</span><span class="p">(</span><span class="n">long_df</span><span class="p">,</span> <span class="s2">&quot;time_unit&quot;</span><span class="p">,</span> <span class="s2">&quot;unit&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Kansas&quot;</span><span class="p">],</span> <span class="mi">2012</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">panel_data</span><span class="o">.</span><span class="n">num_timepoints</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+105
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">panel_data</span><span class="o">.</span><span class="n">summarize</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+        Panel Dataset Summary
+        ---------------------
+        Number of time points: 105
+        Number of units: 50
+        Number of treated units: 1
+        Treated units: [&#39;Kansas&#39;]
+        Treated periods: [TimePeriod(start=2012, end=None)]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">did</span> <span class="o">=</span> <span class="n">DID</span><span class="p">()</span>
+<span class="n">did</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">panel_data</span><span class="p">)</span>
+<span class="n">did</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/DID_25_0.png" src="_images/DID_25_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">did</span><span class="o">.</span><span class="n">plot_2</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/DID_26_0.png" src="_images/DID_26_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">did</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Average</th>
+      <th>Cumulative</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Actual</th>
+      <td>11.892406</td>
+      <td>202.170901</td>
+    </tr>
+    <tr>
+      <th>Predicted</th>
+      <td>11.908524</td>
+      <td>202.444911</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Absolute Effect</th>
+      <td>-0.016118</td>
+      <td>-0.274011</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Relative Effect</th>
+      <td>-0.135351</td>
+      <td>-0.135351</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="Adobe-Dataset">
+<h1>Adobe Dataset<a class="headerlink" href="#Adobe-Dataset" title="Link to this heading"></a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp</span><span class="w"> </span><span class="kn">import</span> <span class="n">panel_data</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/ps_up.csv&#39;</span><span class="p">)[</span><span class="mi">95</span><span class="p">:</span><span class="o">-</span><span class="mi">8</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make wide. Pre-Aggregate.</span>
+<span class="n">data</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;date_date&#39;</span><span class="p">]</span>
+<span class="k">del</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;date_date&#39;</span><span class="p">]</span>
+<span class="n">wide</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><br/><br/><span></span><span class="n">treated_times</span> <span class="o">=</span> <span class="n">wide</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="o">-</span><span class="mi">52</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">treated_times</span> <span class="o">=</span> <span class="n">panel_data</span><span class="o">.</span><span class="n">TimePeriod</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">treated_times</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">end</span><span class="o">=</span><span class="n">treated_times</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">treated_units</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">]</span>
+<span class="n">panel_d</span> <span class="o">=</span> <span class="n">panel_data</span><span class="o">.</span><span class="n">PanelDataset</span><span class="p">(</span><span class="n">wide</span><span class="p">,</span> <span class="n">treated_times</span><span class="p">,</span> <span class="n">treated_units</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">panel_d</span><span class="o">.</span><span class="n">long_data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;unit&#39;</span><span class="p">,</span> <span class="s1">&#39;time_unit&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">panel_d</span><span class="o">.</span><span class="n">long_data</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Index([&#39;unit&#39;, &#39;time_unit&#39;, &#39;value&#39;], dtype=&#39;object&#39;)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">panel_d</span><span class="o">.</span><span class="n">summarize</span><span class="p">())</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+        Panel Dataset Summary
+        ---------------------
+        Number of time points: 165
+        Number of units: 2
+        Number of treated units: 1
+        Treated units: [&#39;test&#39;]
+        Treated periods: [TimePeriod(start=&#39;2023-04-27&#39;, end=&#39;2023-06-16&#39;)]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">did</span> <span class="o">=</span> <span class="n">DID</span><span class="p">()</span>
+<span class="n">did</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">panel_d</span><span class="p">)</span>
+<span class="n">did</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/DID_35_0.png" src="_images/DID_35_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">did</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Average</th>
+      <th>Cumulative</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Actual</th>
+      <td>1489380.062725</td>
+      <td>77447763.2617</td>
+    </tr>
+    <tr>
+      <th>Predicted</th>
+      <td>1467917.81038</td>
+      <td>76331726.139771</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Absolute Effect</th>
+      <td>21462.252345</td>
+      <td>1116037.121929</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Relative Effect</th>
+      <td>1.462088</td>
+      <td>1.462088</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">did</span><span class="o">.</span><span class="n">plot_2</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/DID_37_0.png" src="_images/DID_37_0.png" />
+</div>
+</div>
+</section>
+<section id="Adobe-Dataset-2">
+<h1>Adobe Dataset 2<a class="headerlink" href="#Adobe-Dataset-2" title="Link to this heading"></a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/ps_hu_exp.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># drop unused</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">trt_unit</span><span class="o">!=-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># make wide. Pre-Aggregate.</span>
+<span class="n">data</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;date_date&#39;</span><span class="p">]</span>
+<span class="k">del</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;date_date&#39;</span><span class="p">]</span>
+
+<span class="n">wide</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;date_date&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;trt_unit&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;sales&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="nb">sum</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">wide</span><span class="o">=</span><span class="n">wide</span><span class="p">[</span><span class="n">wide</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+
+<span class="n">wide</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>date_date</th>
+      <th>2023-01-01</th>
+      <th>2023-01-02</th>
+      <th>2023-01-03</th>
+      <th>2023-01-04</th>
+      <th>2023-01-05</th>
+      <th>2023-01-06</th>
+      <th>2023-01-07</th>
+      <th>2023-01-08</th>
+      <th>2023-01-09</th>
+      <th>2023-01-10</th>
+      <th>...</th>
+      <th>2023-06-15</th>
+      <th>2023-06-16</th>
+      <th>2023-06-17</th>
+      <th>2023-06-18</th>
+      <th>2023-06-19</th>
+      <th>2023-06-20</th>
+      <th>2023-06-21</th>
+      <th>2023-06-22</th>
+      <th>2023-06-23</th>
+      <th>2023-06-24</th>
+    </tr>
+    <tr>
+      <th>trt_unit</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>688700.6639</td>
+      <td>1.058459e+06</td>
+      <td>1.501193e+06</td>
+      <td>1.645304e+06</td>
+      <td>1.693825e+06</td>
+      <td>1.644977e+06</td>
+      <td>1.190596e+06</td>
+      <td>1.037025e+06</td>
+      <td>1.516395e+06</td>
+      <td>1.762020e+06</td>
+      <td>...</td>
+      <td>1.791547e+06</td>
+      <td>1.600702e+06</td>
+      <td>1.202196e+06</td>
+      <td>925243.34590</td>
+      <td>1.370515e+06</td>
+      <td>1.721346e+06</td>
+      <td>1.736914e+06</td>
+      <td>1.717797e+06</td>
+      <td>1.653807e+06</td>
+      <td>987202.27730</td>
+    </tr>
+    <tr>
+      <th>500</th>
+      <td>3849.0700</td>
+      <td>6.236520e+03</td>
+      <td>7.088760e+03</td>
+      <td>8.623270e+03</td>
+      <td>9.218040e+03</td>
+      <td>9.287670e+03</td>
+      <td>7.898040e+03</td>
+      <td>8.513910e+03</td>
+      <td>1.214023e+04</td>
+      <td>1.168506e+04</td>
+      <td>...</td>
+      <td>1.067967e+04</td>
+      <td>1.147771e+04</td>
+      <td>5.703110e+03</td>
+      <td>6371.23000</td>
+      <td>6.208890e+03</td>
+      <td>8.875560e+03</td>
+      <td>1.286271e+04</td>
+      <td>7.724400e+03</td>
+      <td>1.051731e+04</td>
+      <td>4503.96000</td>
+    </tr>
+    <tr>
+      <th>501</th>
+      <td>109996.0066</td>
+      <td>1.828160e+05</td>
+      <td>2.410301e+05</td>
+      <td>2.749902e+05</td>
+      <td>2.889643e+05</td>
+      <td>3.168295e+05</td>
+      <td>1.842204e+05</td>
+      <td>1.521014e+05</td>
+      <td>2.465144e+05</td>
+      <td>2.860200e+05</td>
+      <td>...</td>
+      <td>2.985433e+05</td>
+      <td>2.865574e+05</td>
+      <td>2.165892e+05</td>
+      <td>159011.31210</td>
+      <td>2.194017e+05</td>
+      <td>3.009233e+05</td>
+      <td>3.032306e+05</td>
+      <td>3.036898e+05</td>
+      <td>2.843343e+05</td>
+      <td>167571.88340</td>
+    </tr>
+    <tr>
+      <th>505</th>
+      <td>19862.0400</td>
+      <td>2.583488e+04</td>
+      <td>4.672311e+04</td>
+      <td>4.252209e+04</td>
+      <td>3.995638e+04</td>
+      <td>4.285677e+04</td>
+      <td>3.009847e+04</td>
+      <td>2.989465e+04</td>
+      <td>4.327186e+04</td>
+      <td>5.457588e+04</td>
+      <td>...</td>
+      <td>3.819375e+04</td>
+      <td>4.000970e+04</td>
+      <td>3.021208e+04</td>
+      <td>15788.15018</td>
+      <td>3.792892e+04</td>
+      <td>4.679647e+04</td>
+      <td>5.494358e+04</td>
+      <td>3.855805e+04</td>
+      <td>4.471367e+04</td>
+      <td>30681.27000</td>
+    </tr>
+    <tr>
+      <th>506</th>
+      <td>32179.1100</td>
+      <td>4.626169e+04</td>
+      <td>7.605868e+04</td>
+      <td>7.829410e+04</td>
+      <td>8.618459e+04</td>
+      <td>7.983541e+04</td>
+      <td>6.101569e+04</td>
+      <td>5.037411e+04</td>
+      <td>7.110840e+04</td>
+      <td>8.403398e+04</td>
+      <td>...</td>
+      <td>9.606729e+04</td>
+      <td>8.687347e+04</td>
+      <td>6.177899e+04</td>
+      <td>38276.77843</td>
+      <td>5.733149e+04</td>
+      <td>7.760033e+04</td>
+      <td>8.125188e+04</td>
+      <td>8.652704e+04</td>
+      <td>7.941183e+04</td>
+      <td>50530.50578</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 175 columns</p>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">treated_times</span> <span class="o">=</span> <span class="n">wide</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="o">-</span><span class="mi">45</span><span class="p">:</span><span class="o">-</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">treated_times</span> <span class="o">=</span> <span class="n">panel_data</span><span class="o">.</span><span class="n">TimePeriod</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">treated_times</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">end</span><span class="o">=</span><span class="n">treated_times</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">treated_units</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">pand</span> <span class="o">=</span> <span class="n">panel_data</span><span class="o">.</span><span class="n">PanelDataset</span><span class="p">(</span><span class="n">wide</span><span class="p">,</span> <span class="n">treated_times</span><span class="p">,</span> <span class="n">treated_units</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pand</span><span class="o">.</span><span class="n">summarize</span><span class="p">())</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+        Panel Dataset Summary
+        ---------------------
+        Number of time points: 175
+        Number of units: 39
+        Number of treated units: 1
+        Treated units: [1]
+        Treated periods: [TimePeriod(start=&#39;2023-05-11&#39;, end=&#39;2023-06-17&#39;)]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">did</span> <span class="o">=</span> <span class="n">DID</span><span class="p">()</span>
+<span class="n">did</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">pand</span><span class="p">)</span>
+<span class="n">did</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/DID_43_0.png" src="_images/DID_43_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">did</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Average</th>
+      <th>Cumulative</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Actual</th>
+      <td>1472837.576264</td>
+      <td>66277690.931893</td>
+    </tr>
+    <tr>
+      <th>Predicted</th>
+      <td>1670303.882979</td>
+      <td>75163674.734037</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Absolute Effect</th>
+      <td>-197466.306714</td>
+      <td>-8885983.802145</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Relative Effect</th>
+      <td>-11.822179</td>
+      <td>-11.822179</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">did</span><span class="o">.</span><span class="n">plot_2</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/DID_45_0.png" src="_images/DID_45_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#* This returns bad results because the treated units have been summed and control has been left de-aggregated.</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Adobe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

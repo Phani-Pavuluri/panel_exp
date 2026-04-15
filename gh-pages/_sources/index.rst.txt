@@ -1,0 +1,43 @@
+.. Panel Exp documentation master file.
+   The index page shows README content first, then navigation to all sections.
+
+.. include:: ../README.rst
+
+.. _doc-nav:
+
+.. toctree::
+   :maxdepth: 2
+   :caption: User Guide
+
+   user_guide
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Examples
+
+   basic_data
+   scm_usage
+   tbr_usage
+   power_example
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Deeper Dives
+   :glob:
+
+   experimental_design
+   scm_deep_dive
+   tbr_deep_dive
+
+.. toctree::
+   :maxdepth: 2
+   :caption: API
+
+   api
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

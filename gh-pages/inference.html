@@ -1,0 +1,990 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inference &mdash; Panel Exp 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Panel Exp
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#package-architecture">Package Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#design-module">1. Design Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#methods-module">2. Methods Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#inference-module">3. Inference Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#end-to-end-workflow">End-to-End Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#best-practices">Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#package-dependencies">Package Dependencies</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basic_data.html">PanelDataset Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scm_usage.html">SCM Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tbr_usage.html">TBR Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="power_example.html">Power Module Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Deeper Dives</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="experimental_design.html">Experimental Design Deep Dive (#1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scm_deep_dive.html">Synthetic Control Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tbr_deep_dive.html">Time-Based Regression (TBR)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tbr_deep_dive.html#Regression-while-not-aggregating-the-control-units">Regression while not aggregating the control units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API: Auto-generated Documentation.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#base-classes">Base Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#design">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#models">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#inference">Inference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Panel Exp</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Inference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/inference.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Inference">
+<h1>Inference<a class="headerlink" href="#Inference" title="Link to this heading"></a></h1>
+<p>Several methods are available</p>
+<ul class="simple">
+<li><p>Placebo Method. Abadie et al. (2010)</p>
+<ul>
+<li><p>Permutation Tests</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>References</strong></p>
+<p>Abadie, Alberto, Alexis Diamond, and Jens Hainmueller, “Synthetic Control Methods for Comparative Case Studies: Estimating the Effect of California’s Tobacco Control Program,” Journal of the American Statiscal Association, 2010, 105 (490), 493–505.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install &quot;panel_exp==0.2.0&quot; --extra-index-url &quot;https://&lt;USER&gt;:&lt;TOKEN&gt;@&lt;REGISTRY&gt;/simple&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#pip uninstall panel_exp -y</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#pip install cvxpy</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;../../&#39;</span><span class="p">))</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pprint</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.panel_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">long_df_to_paneldataset</span><span class="p">,</span> <span class="n">TimePeriod</span><span class="p">,</span> <span class="n">PanelDataset</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods.scm</span><span class="w"> </span><span class="kn">import</span> <span class="n">SyntheticControl</span><span class="p">,</span> <span class="n">SyntheticControlCVXPY</span><span class="p">,</span> <span class="n">AugSynth</span><span class="p">,</span> <span class="n">AugSynthCVXPY</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods.tbr</span><span class="w"> </span><span class="kn">import</span> <span class="n">TBR</span><span class="p">,</span> <span class="n">TBRRidge</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/christopherb/opt/anaconda3/envs/py310/lib/python3.10/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;smoking.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>state</th>
+      <th>year</th>
+      <th>cigsale</th>
+      <th>lnincome</th>
+      <th>beer</th>
+      <th>age15to24</th>
+      <th>retprice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Rhode Island</td>
+      <td>1970</td>
+      <td>123.900002</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.183158</td>
+      <td>39.299999</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Tennessee</td>
+      <td>1970</td>
+      <td>99.800003</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.178044</td>
+      <td>39.900002</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Indiana</td>
+      <td>1970</td>
+      <td>134.600006</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.176516</td>
+      <td>30.600000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Nevada</td>
+      <td>1970</td>
+      <td>189.500000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.161554</td>
+      <td>38.900002</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Louisiana</td>
+      <td>1970</td>
+      <td>115.900002</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.185185</td>
+      <td>34.299999</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wide_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;state&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;cigsale&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="nb">sum</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/var/folders/cd/dfrqgp4s4ll55cwb7rtgccbw0000gq/T/ipykernel_93698/1112411838.py:1: FutureWarning: The provided callable &lt;built-in function sum&gt; is currently using DataFrameGroupBy.sum. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string &#34;sum&#34; instead.
+  wide_df = pd.pivot_table(data, index=&#39;state&#39;, columns=&#39;year&#39;, values=&#39;cigsale&#39;, aggfunc=sum, fill_value=0)
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># wide_df</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.inference.placebo</span><span class="w"> </span><span class="kn">import</span> <span class="n">placebo</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pds</span> <span class="o">=</span> <span class="n">long_df_to_paneldataset</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">,</span> <span class="s2">&quot;cigsale&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;California&quot;</span> <span class="p">],</span> <span class="p">[</span><span class="mi">1988</span> <span class="p">])</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pds</span><span class="o">.</span><span class="n">plot_line</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/inference_12_0.png" src="_images/inference_12_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pds</span><span class="o">.</span><span class="n">plot_scatter</span><span class="p">(</span><span class="n">agg_func</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/inference_13_0.png" src="_images/inference_13_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scm</span> <span class="o">=</span> <span class="n">SyntheticControl</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scm</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">pds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scm</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/inference_16_0.png" src="_images/inference_16_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scm</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Average</th>
+      <th>Cumulative</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Actual</th>
+      <td>64.391667</td>
+      <td>772.700001</td>
+    </tr>
+    <tr>
+      <th>Predicted</th>
+      <td>82.131102</td>
+      <td>985.57323</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Absolute Effect</th>
+      <td>-17.739436</td>
+      <td>-212.873229</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Relative Effect</th>
+      <td>-21.598926</td>
+      <td>-21.598926</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="Placebo-Method">
+<h1>Placebo Method<a class="headerlink" href="#Placebo-Method" title="Link to this heading"></a></h1>
+<p>The first method is called the Placebo method and is related to the permutation framework of inference.</p>
+<p>The basic idea is that we start a loop around all of the control units. These are units where no intervention happened. In each iteration of the loop, we treat a control unit as if it were the treated unit i.e. create a synthetic control and predict a counterfactual.</p>
+<p>In the graph below, we can see this method in action. The gray lines are “plaebo units” i.e. units that had no intervention, but we treated as if they were. We can then see the estimated effect for each of these units. We can compare this against the actual treated unit/s. If the difference in post-treatment effects between the placebo and treated units are large, we interpret this as evidence that the intervention did have an effect.</p>
+<p>Not only that, this procedure assumes a random assignment of the intervention, which is hard to believe for this kind of policy intervention (see Abadie, 2021)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_value</span><span class="p">,</span> <span class="n">rj</span><span class="p">,</span> <span class="n">dfr</span> <span class="o">=</span> <span class="n">placebo</span><span class="p">(</span><span class="n">pds</span><span class="p">,</span> <span class="n">SyntheticControl</span><span class="p">,</span> <span class="n">plot_1</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">plot_2</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;l2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/inference_19_0.png" src="_images/inference_19_0.png" />
+</div>
+</div>
+<p>In this method, you may notice that some of the placebo units have poor pre-treated fit. There are a couple ways to handle this. First, we can heuristically trim the placebos units to only include matches that have a similar pre-treatment fit as the treated unit.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Implement that here</span>
+</pre></div>
+</div>
+</div>
+<p>Another approach is to take the ratio of pre-treatment MSE and post-treatment MSE to create an index illustrating how much of an effect the treatment had on the treated and placebo units. For example, if a unit had a good pre and post treatment fit the ratio will be close to one, inversely if a unit had a poor pre and post treatement fit the ratio will also be close to one. When the ratio grows larger it means an and effect is being observed. We can then compare the ratios of placebo units and
+treated units and calculate a p-value.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_value</span><span class="p">,</span> <span class="n">rj</span><span class="p">,</span> <span class="n">dfr</span> <span class="o">=</span> <span class="n">placebo</span><span class="p">(</span><span class="n">pds</span><span class="p">,</span> <span class="n">SyntheticControl</span><span class="p">,</span> <span class="n">plot_1</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">plot_2</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;l2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/inference_23_0.png" src="_images/inference_23_0.png" />
+</div>
+</div>
+</section>
+<section id="Conformal-Inference">
+<h1>Conformal Inference<a class="headerlink" href="#Conformal-Inference" title="Link to this heading"></a></h1>
+<p>Loop through the treated units. For each unit: Loop through the treated time periods. For each time period loop through a set of null hypothesis.</p>
+<p>While Conformal Inference is proven to be robust in many scenarios, it is not guaranteed to work everytime. Most commonly, Conformal Inference can fail when</p>
+<p>there is not enough days in the Pre-Treatment Period the true impact (called in the paper as Shock Sequence Ut) is not stationary or not weakly dependent the data is not stationary and not weakly dependent when our model is misspecified or inconsistent</p>
+<p>Not exactly the same as <strong>reference</strong> this is because of the optimizer – just an example of the sensitivity of some of the methods.</p>
+<p>Below, we run with the optimizer from the example.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><br/><br/><span></span><span class="n">scm_conformal</span> <span class="o">=</span> <span class="n">SyntheticControlCVXPY</span><span class="p">(</span><span class="n">inference</span><span class="o">=</span><span class="s2">&quot;Conformal&quot;</span><span class="p">)</span>
+<span class="n">scm_conformal</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">pds</span><span class="p">)</span>
+<span class="n">scm_conformal</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/inference_26_0.png" src="_images/inference_26_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="K-Fold">
+<h1>K-Fold<a class="headerlink" href="#K-Fold" title="Link to this heading"></a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scm_fold</span> <span class="o">=</span> <span class="n">SyntheticControlCVXPY</span><span class="p">(</span><span class="n">inference</span><span class="o">=</span><span class="s2">&quot;Kfold&quot;</span><span class="p">)</span>
+<span class="n">scm_fold</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">pds</span><span class="p">)</span>
+<span class="n">scm_fold</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/inference_29_0.png" src="_images/inference_29_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ascm_conformal</span> <span class="o">=</span> <span class="n">AugSynth</span><span class="p">(</span><span class="n">inference</span><span class="o">=</span><span class="s2">&quot;Conformal&quot;</span><span class="p">)</span>
+<span class="n">ascm_conformal</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">pds</span><span class="p">)</span>
+<span class="n">ascm_conformal</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/inference_30_0.png" src="_images/inference_30_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><br/><span></span><span class="n">ascm_fold</span>  <span class="o">=</span> <span class="n">AugSynth</span><span class="p">(</span><span class="n">inference</span><span class="o">=</span><span class="s2">&quot;Kfold&quot;</span><span class="p">)</span>
+<span class="n">ascm_fold</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">pds</span><span class="p">)</span>
+<span class="n">ascm_fold</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/inference_31_0.png" src="_images/inference_31_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TBR</span>
+
+<span class="n">tbr_conformal</span> <span class="o">=</span> <span class="n">TBRRidge</span><span class="p">(</span><span class="n">inference</span><span class="o">=</span><span class="s2">&quot;Conformal&quot;</span><span class="p">)</span>
+<span class="n">tbr_conformal</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">pds</span><span class="p">)</span>
+<span class="n">tbr_conformal</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/inference_32_0.png" src="_images/inference_32_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbr_kfold</span> <span class="o">=</span> <span class="n">TBRRidge</span><span class="p">(</span><span class="n">inference</span><span class="o">=</span><span class="s2">&quot;Kfold&quot;</span><span class="p">)</span>
+<span class="n">tbr_kfold</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">pds</span><span class="p">)</span>
+<span class="n">tbr_kfold</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/inference_33_0.png" src="_images/inference_33_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[92]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_many_dist</span><span class="p">(</span><span class="n">dists</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>  <span class="c1"># Create a figure and axes object</span>
+    <span class="k">for</span> <span class="n">dist</span> <span class="ow">in</span> <span class="n">dists</span><span class="p">:</span>
+        <span class="n">lower_90</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">upper_90</span> <span class="o">=</span> <span class="n">dist</span>
+        <span class="n">std_dev</span> <span class="o">=</span> <span class="p">(</span><span class="n">upper_90</span> <span class="o">-</span> <span class="n">lower_90</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mf">1.645</span><span class="p">)</span>  <span class="c1"># 1.645 is the z-score for 90% confidence interval</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">lower_90</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">std_dev</span><span class="p">,</span> <span class="n">upper_90</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">std_dev</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">std_dev</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">std_dev</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">get_variable_name</span><span class="p">(</span><span class="n">dist</span><span class="p">))</span>  <span class="c1"># Use the axes object to plot on the same figure</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribution Plot with 90% Prediction Interval&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>  <span class="c1"># Add a legend to differentiate the distributions</span>
+
+    <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[93]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbr_kfold_dist</span> <span class="o">=</span> <span class="p">[</span><span class="n">tbr_kfold</span><span class="o">.</span><span class="n">low_cumulative_diff</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">tbr_kfold</span><span class="o">.</span><span class="n">cumulative_diff</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">tbr_kfold</span><span class="o">.</span><span class="n">high_cumulative_diff</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">scm_fold_dist</span> <span class="o">=</span> <span class="p">[</span><span class="n">scm_fold</span><span class="o">.</span><span class="n">low_cumulative_diff</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">scm_fold</span><span class="o">.</span><span class="n">cumulative_diff</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">scm_fold</span><span class="o">.</span><span class="n">high_cumulative_diff</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">scm_conformal_dist</span> <span class="o">=</span> <span class="p">[</span><span class="n">scm_conformal</span><span class="o">.</span><span class="n">low_cumulative_diff</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">scm_conformal</span><span class="o">.</span><span class="n">cumulative_diff</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">scm_conformal</span><span class="o">.</span><span class="n">high_cumulative_diff</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">ascm_fold_dist</span> <span class="o">=</span> <span class="p">[</span><span class="n">ascm_fold</span><span class="o">.</span><span class="n">low_cumulative_diff</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ascm_fold</span><span class="o">.</span><span class="n">cumulative_diff</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ascm_fold</span><span class="o">.</span><span class="n">high_cumulative_diff</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">ascm_conformal_dist</span> <span class="o">=</span> <span class="p">[</span><span class="n">ascm_conformal</span><span class="o">.</span><span class="n">low_cumulative_diff</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ascm_conformal</span><span class="o">.</span><span class="n">cumulative_diff</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">ascm_conformal</span><span class="o">.</span><span class="n">high_cumulative_diff</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[94]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_many_dist</span><span class="p">([</span><span class="n">tbr_kfold_dist</span><span class="p">,</span> <span class="n">scm_fold_dist</span><span class="p">,</span> <span class="n">scm_conformal_dist</span><span class="p">,</span> <span class="n">ascm_fold_dist</span><span class="p">,</span> <span class="n">ascm_conformal_dist</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">/Users/christopherb/Documents/p4/p3/panel_exp/docs/source/inference.ipynb Cell 38</span> line <span class="ansi-cyan-fg">1
+</span><span class="ansi-green-fg">----&gt; &lt;a href=&#39;vscode-notebook-cell:/Users/christopherb/Documents/p4/p3/panel_exp/docs/source/inference.ipynb#Y256sZmlsZQ%3D%3D?line=0&#39;&gt;1&lt;/a&gt;</span> plot_many_dist([tbr_kfold_dist, scm_fold_dist, scm_conformal_dist, ascm_fold_dist, ascm_conformal_dist])
+
+<span class="ansi-green-intense-fg ansi-bold">/Users/christopherb/Documents/p4/p3/panel_exp/docs/source/inference.ipynb Cell 38</span> line <span class="ansi-cyan-fg">1
+</span><span class="ansi-green-intense-fg ansi-bold">      &lt;a href=&#39;vscode-notebook-cell:/Users/christopherb/Documents/p4/p3/panel_exp/docs/source/inference.ipynb#Y256sZmlsZQ%3D%3D?line=7&#39;&gt;8&lt;/a&gt;</span>     x = np.linspace(lower_90 - 3*std_dev, upper_90 + 3*std_dev, 1000)
+<span class="ansi-green-intense-fg ansi-bold">      &lt;a href=&#39;vscode-notebook-cell:/Users/christopherb/Documents/p4/p3/panel_exp/docs/source/inference.ipynb#Y256sZmlsZQ%3D%3D?line=8&#39;&gt;9&lt;/a&gt;</span>     y = (1/(std_dev * np.sqrt(2 * np.pi))) * np.exp(-0.5 * ((x - mean) / std_dev)**2)
+<span class="ansi-green-fg">---&gt; &lt;a href=&#39;vscode-notebook-cell:/Users/christopherb/Documents/p4/p3/panel_exp/docs/source/inference.ipynb#Y256sZmlsZQ%3D%3D?line=9&#39;&gt;10&lt;/a&gt;</span>     ax.plot(x, y, label=get_variable_name(dist))  # Use the axes object to plot on the same figure
+<span class="ansi-green-intense-fg ansi-bold">     &lt;a href=&#39;vscode-notebook-cell:/Users/christopherb/Documents/p4/p3/panel_exp/docs/source/inference.ipynb#Y256sZmlsZQ%3D%3D?line=11&#39;&gt;12&lt;/a&gt;</span> ax.set_xlabel(&#39;Value&#39;)
+<span class="ansi-green-intense-fg ansi-bold">     &lt;a href=&#39;vscode-notebook-cell:/Users/christopherb/Documents/p4/p3/panel_exp/docs/source/inference.ipynb#Y256sZmlsZQ%3D%3D?line=12&#39;&gt;13&lt;/a&gt;</span> ax.set_ylabel(&#39;Probability Density&#39;)
+
+<span class="ansi-red-fg">TypeError</span>: get_variable_name() missing 1 required positional argument: &#39;local_vars&#39;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/inference_37_1.png" src="_images/inference_37_1.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[66]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_variable_name</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">currentframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_back</span>
+    <span class="n">variables</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">f_locals</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">variables</span> <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="n">var</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_variable_name</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">currentframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_back</span>
+    <span class="n">variables</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">f_locals</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">variables</span> <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="n">var</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[70]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_variable_name</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">local_vars</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">local_vars</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="n">var</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_many_dist</span><span class="p">(</span><span class="n">dists</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>  <span class="c1"># Create a figure and axes object</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">currentframe</span><span class="p">()</span><span class="o">.</span><span class="n">f_back</span>
+    <span class="n">local_vars</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">f_locals</span>
+
+    <span class="k">for</span> <span class="n">dist</span> <span class="ow">in</span> <span class="n">dists</span><span class="p">:</span>
+        <span class="n">lower_90</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">upper_90</span> <span class="o">=</span> <span class="n">dist</span>
+        <span class="n">std_dev</span> <span class="o">=</span> <span class="p">(</span><span class="n">upper_90</span> <span class="o">-</span> <span class="n">lower_90</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mf">1.645</span><span class="p">)</span>  <span class="c1"># 1.645 is the z-score for 90% confidence interval</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">lower_90</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">std_dev</span><span class="p">,</span> <span class="n">upper_90</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">std_dev</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">std_dev</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">std_dev</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">variable_name</span> <span class="o">=</span> <span class="n">get_variable_name</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">local_vars</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">variable_name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">variable_name</span> <span class="k">else</span> <span class="s1">&#39;Unknown&#39;</span><span class="p">)</span>  <span class="c1"># Use the axes object to plot on the same figure</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribution Plot with 90% Prediction Interval&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>  <span class="c1"># Add a legend to differentiate the distributions</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbr_kfold</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;y_lower&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([123.        , 121.        , 123.5       , 124.40000153,
+       126.69999695, 127.09999847, 128.        , 126.40000153,
+       126.09999847, 121.90000153, 120.19999695, 118.59999847,
+       115.40000153, 110.80000305, 104.80000305, 102.80000305,
+        99.69999695,  97.5       ,  96.27745943,  91.9451492 ,
+        90.49214637,  82.28969746,  81.81409592,  78.8252443 ,
+        74.9493371 ,  73.93404275,  73.08285427,  73.35515144,
+        72.6378176 ,  68.51110051,  63.81235092])
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<section id="How-does-aggregating-control-units-affect-inference-methods?">
+<h2>How does aggregating control units affect inference methods?<a class="headerlink" href="#How-does-aggregating-control-units-affect-inference-methods?" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods.bayesian_regression</span><span class="w"> </span><span class="kn">import</span> <span class="n">BayesianTBR</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods.tbr</span><span class="w"> </span><span class="kn">import</span> <span class="n">TBR</span><span class="p">,</span> <span class="n">TBRRidge</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[75]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pds</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[75]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+        Panel Dataset Summary
+        ---------------------
+        Number of time points: 31
+        Number of units: 39
+        Number of treated units: 1
+        Treated units: [&#39;California&#39;]
+        Treated periods: [TimePeriod(start=1988, end=None)]
+
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">pds</span><span class="o">.</span><span class="n">treated_series</span><span class="p">()</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">pds</span><span class="o">.</span><span class="n">control_series</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<br/><br/></pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">pds</span><span class="o">.</span><span class="n">treated_series</span><span class="p">(),</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pds</span><span class="o">.</span><span class="n">control_series</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">T</span><span class="p">])</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;California&#39;</span><span class="p">:</span><span class="s1">&#39;Treated&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;Control&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pds</span> <span class="o">=</span> <span class="n">PanelDataset</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="p">[</span><span class="n">TimePeriod</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">1988</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">2000</span><span class="p">)],</span> <span class="p">[</span><span class="s1">&#39;Treated&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[69]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">btbr</span> <span class="o">=</span> <span class="n">BayesianTBR</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[70]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">btbr</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">pds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+sample: 100%|██████████| 4000/4000 [00:29&lt;00:00, 136.81it/s, 1023 steps of size 4.85e-03. acc. prob=0.94]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[71]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">btbr</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/inference_53_0.png" src="_images/inference_53_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Adobe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

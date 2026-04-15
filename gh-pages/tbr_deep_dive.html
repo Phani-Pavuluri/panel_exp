@@ -1,0 +1,1266 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Time-Based Regression (TBR) &mdash; Panel Exp 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API: Auto-generated Documentation." href="api.html" />
+    <link rel="prev" title="Synthetic Control Methods" href="scm_deep_dive.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Panel Exp
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#package-architecture">Package Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#design-module">1. Design Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#methods-module">2. Methods Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#inference-module">3. Inference Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#end-to-end-workflow">End-to-End Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#best-practices">Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#package-dependencies">Package Dependencies</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basic_data.html">PanelDataset Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scm_usage.html">SCM Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tbr_usage.html">TBR Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="power_example.html">Power Module Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Deeper Dives</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="experimental_design.html">Experimental Design Deep Dive (#1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scm_deep_dive.html">Synthetic Control Methods</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Time-Based Regression (TBR)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Regression-while-not-aggregating-the-control-units">Regression while not aggregating the control units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API: Auto-generated Documentation.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#base-classes">Base Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#design">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#models">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#inference">Inference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Panel Exp</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Time-Based Regression (TBR)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tbr_deep_dive.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Time-Based-Regression-(TBR)">
+<h1>Time-Based Regression (TBR)<a class="headerlink" href="#Time-Based-Regression-(TBR)" title="Link to this heading"></a></h1>
+<p>Google’s Time-Based Regression (TBR) is a methodology designed to analyze geo experiments, particularly in the context of online advertising. Here’s a brief overview:</p>
+<p><strong>Background</strong></p>
+<ul class="simple">
+<li><p><strong>Geo Experiments</strong>: These are experiments conducted across different geographical regions to measure the impact of advertising campaigns. Traditional randomized controlled trials (RCTs) are often challenging to implement in this context due to practical constraints like budget and the need for specific regions to be included in the experiment1.</p></li>
+<li><p><strong>Challenges with RCTs</strong>: Randomization can be difficult when regions (geos) are significantly different from each other or when only a few regions are available for experimentation1.</p></li>
+</ul>
+<p><strong>Concepts</strong></p>
+<ul class="simple">
+<li><p><strong>Time-Based Regression Model</strong>: The TBR model predicts the time series of the counterfactual market response, allowing for direct estimation of the cumulative causal effect at the end of the experiment. This approach helps in providing straightforward causal estimates even when randomization is not feasible.</p></li>
+</ul>
+<p><strong>References</strong></p>
+<ul class="simple">
+<li><p>Google Research Blog. “Time-Based Regression for Geo Experiments.” Retrieved from Google Research Blog.</p></li>
+<li><p>Google AI Blog. “Improving Geo Experiments with Time-Based Regression.” Retrieved from Google AI Blog.</p></li>
+<li><p>Google Research. “Time-Based Regression: A New Method for Geo Experiments.” Retrieved from Google Research.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Counterfactual Prediction</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\hat{Y}_{it} = \beta_0 + \beta_1 X_{it} + \epsilon_{it}\]</div>
+<ul class="simple">
+<li><p>Causal Effect Estimation</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\Delta = \sum_{t=1}^{T} (Y_{it} - \hat{Y}_{it})\]</div>
+<ul class="simple">
+<li><p>Model Parameters</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\beta = (\beta_0, \beta_1)\]</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;../../&#39;</span><span class="p">))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.panel_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">long_df_to_paneldataset</span><span class="p">,</span> <span class="n">PanelDataset</span><span class="p">,</span> <span class="n">TimePeriod</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods.tbr</span><span class="w"> </span><span class="kn">import</span> <span class="n">TBR</span><span class="p">,</span> <span class="n">TBRRidge</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods.bayesian_regression</span><span class="w"> </span><span class="kn">import</span> <span class="n">BayesianTBR</span><span class="p">,</span> <span class="n">BayesianTBRHorseShoe</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">long_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;google_sales.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/christopherb/opt/anaconda3/envs/py310/lib/python3.10/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">long_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>geo</th>
+      <th>sales</th>
+      <th>cost</th>
+      <th>group</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015-01-05</td>
+      <td>1</td>
+      <td>7227.32</td>
+      <td>0.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2015-01-05</td>
+      <td>10</td>
+      <td>1827.21</td>
+      <td>0.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2015-01-05</td>
+      <td>100</td>
+      <td>23.98</td>
+      <td>0.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2015-01-05</td>
+      <td>11</td>
+      <td>1501.10</td>
+      <td>0.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2015-01-05</td>
+      <td>12</td>
+      <td>1371.61</td>
+      <td>0.0</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre_test_start</span> <span class="o">=</span> <span class="s1">&#39;2015-01-05&#39;</span>
+<span class="n">pre_test_end</span>   <span class="o">=</span> <span class="s1">&#39;2015-02-15&#39;</span>
+
+<span class="n">test_start</span> <span class="o">=</span> <span class="s1">&#39;2015-02-16&#39;</span>
+<span class="n">test_end</span>   <span class="o">=</span> <span class="s1">&#39;2015-03-15&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">treated_units</span> <span class="o">=</span> <span class="n">long_df</span><span class="p">[</span><span class="n">long_df</span><span class="o">.</span><span class="n">group</span><span class="o">==</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">control_units</span> <span class="o">=</span> <span class="n">long_df</span><span class="p">[</span><span class="n">long_df</span><span class="o">.</span><span class="n">group</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wide_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">long_df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;geo&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;sales&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="nb">sum</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/var/folders/cd/dfrqgp4s4ll55cwb7rtgccbw0000gq/T/ipykernel_94278/1368796011.py:1: FutureWarning: The provided callable &lt;built-in function sum&gt; is currently using DataFrameGroupBy.sum. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string &#34;sum&#34; instead.
+  wide_df = pd.pivot_table(long_df, index=&#39;geo&#39;, columns=&#39;date&#39;, values=&#39;sales&#39;, aggfunc=sum, fill_value=0)
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Aggregate both treated and control</span>
+
+<span class="n">treated_df</span> <span class="o">=</span> <span class="n">wide_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">treated_units</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">treated_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;treated&#39;</span><span class="p">]</span>
+
+<span class="n">control_df</span> <span class="o">=</span> <span class="n">wide_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">control_units</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">control_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;control&#39;</span><span class="p">]</span>
+
+<span class="n">wide_agg_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">treated_df</span><span class="p">,</span> <span class="n">control_df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">wide_agg_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;treated&#39;</span><span class="p">,</span> <span class="s1">&#39;control&#39;</span><span class="p">]</span>
+
+<span class="n">wide_agg_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">wide_agg_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="n">pds</span> <span class="o">=</span> <span class="n">PanelDataset</span><span class="p">(</span><span class="n">wide_agg_df</span><span class="o">.</span><span class="n">T</span>
+                <span class="p">,</span> <span class="n">treated_periods</span><span class="o">=</span><span class="p">[</span><span class="n">TimePeriod</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">test_start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">test_end</span><span class="p">)]</span>
+                <span class="p">,</span> <span class="n">treated_units</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;treated&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">TBR</span><span class="p">()</span>
+<span class="n">est</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">pds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/tbr_deep_dive_9_0.png" src="_images/tbr_deep_dive_9_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Average</th>
+      <th>Cumulative</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Actual</th>
+      <td>36045.661852</td>
+      <td>973232.87</td>
+    </tr>
+    <tr>
+      <th>Predicted</th>
+      <td>30743.431248</td>
+      <td>830072.643708</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Absolute Effect</th>
+      <td>5302.230603</td>
+      <td>143160.226292</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Relative Effect</th>
+      <td>17.246711</td>
+      <td>17.246711</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">TBR</span><span class="p">(</span><span class="n">inference</span><span class="o">=</span><span class="s2">&quot;Conformal&quot;</span><span class="p">)</span>
+<span class="n">est</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">pds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Graph needs to be fixed when passing inference and a end date that goes past the end date of experiment</span>
+<span class="n">est</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/tbr_deep_dive_12_0.png" src="_images/tbr_deep_dive_12_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Average</th>
+      <th>Cumulative</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Actual</th>
+      <td>36045.661852</td>
+      <td>973232.87</td>
+    </tr>
+    <tr>
+      <th>Predicted</th>
+      <td>30743.431248</td>
+      <td>830072.643708</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Absolute Effect</th>
+      <td>5302.230603</td>
+      <td>143160.226292</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Relative Effect</th>
+      <td>17.246711</td>
+      <td>17.246711</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">BayesianTBR</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">pds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+sample: 100%|██████████| 4000/4000 [00:01&lt;00:00, 2676.27it/s, 7 steps of size 5.48e-01. acc. prob=0.94]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/tbr_deep_dive_16_0.png" src="_images/tbr_deep_dive_16_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Average</th>
+      <th>Cumulative</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Actual</th>
+      <td>36045.661852</td>
+      <td>973232.87</td>
+    </tr>
+    <tr>
+      <th>Predicted</th>
+      <td>30739.916</td>
+      <td>829977.75</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Absolute Effect</th>
+      <td>5305.7456</td>
+      <td>143255.12</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Relative Effect</th>
+      <td>17.260118</td>
+      <td>17.260117</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="Regression-while-not-aggregating-the-control-units">
+<h1>Regression while not aggregating the control units<a class="headerlink" href="#Regression-while-not-aggregating-the-control-units" title="Link to this heading"></a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">treated_df</span> <span class="o">=</span> <span class="n">wide_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">treated_units</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">treated_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;treated&#39;</span><span class="p">]</span>
+
+<span class="n">control_df</span> <span class="o">=</span> <span class="n">wide_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">control_units</span><span class="p">]</span>
+
+<span class="n">wide_agg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">treated_df</span><span class="p">,</span> <span class="n">control_df</span><span class="o">.</span><span class="n">T</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">wide_agg</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;treated&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">control_units</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+
+<span class="n">pds</span> <span class="o">=</span> <span class="n">PanelDataset</span><span class="p">(</span><span class="n">wide_agg</span><span class="o">.</span><span class="n">T</span>
+                <span class="p">,</span> <span class="n">treated_periods</span><span class="o">=</span><span class="p">[</span><span class="n">TimePeriod</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">test_start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">test_end</span><span class="p">)]</span>
+                <span class="p">,</span> <span class="n">treated_units</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;treated&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pds</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+        Panel Dataset Summary
+        ---------------------
+        Number of time points: 93
+        Number of units: 51
+        Number of treated units: 1
+        Treated units: [&#39;treated&#39;]
+        Treated periods: [TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;)]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pds</span><span class="o">.</span><span class="n">plot_line</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/tbr_deep_dive_21_0.png" src="_images/tbr_deep_dive_21_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">BayesianTBRHorseShoe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">pds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+X_pre shape: (42, 50)
+y_pre shape: (42,)
+X shape: (42, 50)
+coeffs shape: (50,)
+mu shape: (42,)
+sigma shape: ()
+y shape: (42,)
+X shape: (42, 50)
+coeffs shape: (50,)
+mu shape: (42,)
+sigma shape: ()
+y shape: (42,)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+  0%|          | 0/3000 [00:00&lt;?, ?it/s]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+X shape: (42, 50)
+coeffs shape: (50,)
+mu shape: (42,)
+sigma shape: ()
+y shape: (42,)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+sample: 100%|██████████| 3000/3000 [00:12&lt;00:00, 245.55it/s, 13 steps of size 1.03e-02. acc. prob=0.83]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+X shape: (42, 50)
+coeffs shape: (50,)
+mu shape: (42,)
+sigma shape: ()
+y shape: (42,)
+ Trace Shapes:
+  Param Sites:
+ Sample Sites:
+      tau dist    |
+         value    |
+      lam dist 50 |
+         value 50 |
+   coeffs dist 50 |
+         value 50 |
+intercept dist    |
+         value    |
+    sigma dist    |
+         value    |
+    data plate 42 |
+      obs dist 42 |
+         value 42 |
+X shape: (93, 50)
+coeffs shape: (50,)
+mu shape: (93,)
+sigma shape: ()
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/tbr_deep_dive_24_0.png" src="_images/tbr_deep_dive_24_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Average</th>
+      <th>Cumulative</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Actual</th>
+      <td>36045.661852</td>
+      <td>973232.87</td>
+    </tr>
+    <tr>
+      <th>Predicted</th>
+      <td>30618.895</td>
+      <td>826710.1</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Absolute Effect</th>
+      <td>5426.7656</td>
+      <td>146522.67</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Relative Effect</th>
+      <td>17.723583</td>
+      <td>17.723585</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><br/><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">TBRRidge</span><span class="p">(</span><span class="n">inference</span><span class="o">=</span><span class="s2">&quot;Conformal&quot;</span><span class="p">)</span>
+<span class="n">est</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">pds</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><br/><span></span><span class="n">est</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/tbr_deep_dive_27_0.png" src="_images/tbr_deep_dive_27_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;y_lower&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([ 30141.78      ,  31671.03      ,  31503.97      ,  29425.68      ,
+        26968.16      ,  13670.65      ,  10037.5       ,  26511.06      ,
+        25596.64      ,  26967.59      ,  26648.55      ,  23294.42      ,
+        11651.55      ,  11808.7       ,  29721.85      ,  27551.07      ,
+        29103.6       ,  29201.92      ,  25541.33      ,  13417.43      ,
+        12919.54      ,  32405.78      ,  29134.77      ,  26635.18      ,
+        22570.35      ,   8546.17      ,  10247.85      ,  12530.36      ,
+        31207.04      ,  28911.28      ,  30372.24      ,  30238.38      ,
+        24338.81      ,  13498.53      ,  13388.08      ,  34210.71      ,
+        31424.84      ,  32967.42      ,  30544.01      ,  26219.41      ,
+        13443.64      ,  13649.92      ,  40669.51      ,  38774.97      ,
+        39327.17      ,  37618.32      ,  31849.4       ,  16642.67      ,
+        17055.43      ,  41582.86      ,  45045.76      ,  42989.25      ,
+        42899.77      ,  37035.24      ,  19161.73      ,  19140.67      ,
+        48705.11      ,  45288.54      ,  46458.09      ,  45428.61      ,
+        37356.42      ,  20466.48      ,  18840.83      ,  46981.29      ,
+        47177.81      , 137959.13414525,  45090.30186005,  33899.23069973,
+        37109.22534101,  23867.76558016, 136772.34414525,  44291.87186005,
+        41649.41813995, 132477.64414525, 126399.38414525, 110325.07414525,
+        25279.83302037,  48183.96558016,  35399.72441984,  44304.27813995,
+       133484.71414525, 127853.98414525, 108340.19414525, 105794.65414525,
+        24630.40813995,  45762.55813995, 143119.42414525, 166685.96414525,
+        53728.24558016,  29839.93302037,  26392.87186005,  56213.62186005,
+        44578.02813995])
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">est</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Observed&quot;</span><span class="p">)</span>
+
+<span class="c1"># model</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">est</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;y_hat&quot;</span><span class="p">],</span> <span class="s2">&quot;r--&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Inferred&quot;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+                <span class="nb">range</span><span class="p">(</span><span class="n">est</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">num_timepoints</span><span class="p">),</span>
+                <span class="n">est</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;y_lower&quot;</span><span class="p">],</span>
+                <span class="n">est</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;y_upper&quot;</span><span class="p">],</span>
+                <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span>
+                <span class="n">interpolate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>
+            <span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">pointwise = est.results[&quot;y&quot;] - est.results[&quot;y_hat&quot;]</span>
+<span class="sd"># pointwise = self.results[&quot;y&quot;] - self.y_hat</span>
+
+<span class="sd">axs[1].plot(pointwise, &quot;r--&quot;, linewidth=2, label=&quot;Pointwise Difference&quot;)</span>
+<span class="sd">axs[1].axvline(</span>
+<span class="sd">    est.panel_data.treated_start_idxs[0] , color=&quot;black&quot;, linestyle=&quot;--&quot;</span>
+<span class="sd">)</span>
+<span class="sd">axs[1].axvline(</span>
+<span class="sd">    est.panel_data.treated_end_idxs[0] , color=&quot;black&quot;, linestyle=&quot;--&quot;</span>
+<span class="sd">)</span>
+
+<span class="sd">axs[1].axhline(0, color=&quot;black&quot;, linewidth=2)</span>
+
+<span class="sd">if est.inference is not None:</span>
+<span class="sd">    if len(est.panel_data.treated_units) == 1:</span>
+<span class="sd">        axs[1].fill_between(</span>
+<span class="sd">        range(est.panel_data.num_timepoints),</span>
+<span class="sd">        est.results[&quot;y&quot;].flatten() - est.results[&quot;y_lower&quot;],</span>
+<span class="sd">        est.results[&quot;y&quot;].flatten() - est.results[&quot;y_upper&quot;],</span>
+<span class="sd">        facecolor=&quot;gray&quot;,</span>
+<span class="sd">        interpolate=True,</span>
+<span class="sd">        alpha=0.25,</span>
+<span class="sd">    )</span>
+
+
+<span class="sd">if len(est.results[&quot;y&quot;].shape) == 1:</span>
+<span class="sd">    est.cumulative_diff_post = (est.results[&quot;y&quot;] - est.results[&quot;y_hat&quot;])[</span>
+<span class="sd">        est.panel_data.treated_start_idxs[0] : #self.panel_data.treated_end_idxs[0] #1/22</span>
+<span class="sd">    ].cumsum()</span>
+
+
+
+<span class="sd">elif len(est.results[&quot;y&quot;].shape) == 2:</span>
+<span class="sd">    est.cumulative_diff_post = (est.results[&quot;y&quot;] - est.results[&quot;y_hat&quot;])[</span>
+<span class="sd">        est.panel_data.treated_start_idxs[0] : #self.panel_data.treated_end_idxs[0] #1/22</span>
+<span class="sd">    ].cumsum(axis=0)</span>
+
+
+<span class="sd">if len(est.results[&quot;y&quot;].shape) == 2:</span>
+<span class="sd">    est.cumulative_diff_pre = np.zeros((est.panel_data.treated_start_idxs[0] - 1, len(est.panel_data.treated_units)))</span>
+
+<span class="sd">else:</span>
+<span class="sd">    est.cumulative_diff_pre = np.zeros(est.panel_data.treated_start_idxs[0] - 1 )</span>
+
+
+<span class="sd">est.cumulative_diff = np.concatenate([est.cumulative_diff_pre, est.cumulative_diff_post])</span>
+<span class="sd">axs[2].plot(est.cumulative_diff, &quot;r--&quot;, linewidth=2, label=&quot;Cumulative Difference&quot;)</span>
+
+<span class="sd">if est.inference is not None:</span>
+<span class="sd">    if len(est.results[&quot;y&quot;].shape) == 1:</span>
+<span class="sd">        est.low_cumulative_diff_post = (est.results[&quot;y&quot;] - est.results[&quot;y_lower&quot;])[</span>
+<span class="sd">        est.panel_data.treated_start_idxs[0] : #self.panel_data.treated_end_idxs[0] #1/22</span>
+<span class="sd">        ].cumsum()</span>
+
+<span class="sd">        est.high_cumulative_diff_post = (est.results[&quot;y&quot;] - est.results[&quot;y_upper&quot;])[</span>
+<span class="sd">        est.panel_data.treated_start_idxs[0] : #self.panel_data.treated_end_idxs[0] #1/22</span>
+<span class="sd">        ].cumsum()</span>
+
+<span class="sd">    elif len(est.results[&quot;y&quot;].shape) == 2:</span>
+<span class="sd">        est.low_cumulative_diff_post = (est.results[&quot;y&quot;] - est.results[&quot;y_lower&quot;])[</span>
+<span class="sd">        est.panel_data.treated_start_idxs[0] : #self.panel_data.treated_end_idxs[0] #1/22</span>
+<span class="sd">        ].cumsum(axis=0)</span>
+
+<span class="sd">        est.high_cumulative_diff_post = (est.results[&quot;y&quot;] - est.results[&quot;y_upper&quot;])[</span>
+<span class="sd">        est.panel_data.treated_start_idxs[0] : #self.panel_data.treated_end_idxs[0] #1/22</span>
+<span class="sd">        ].cumsum(axis=0)</span>
+
+<span class="sd">    if len(est.results[&quot;y&quot;].shape) == 2:</span>
+<span class="sd">        est.low_cumulative_diff_pre = np.zeros((est.panel_data.treated_start_idxs[0]-1,  len(est.panel_data.treated_units)))</span>
+<span class="sd">        est.high_cumulative_diff_pre = np.zeros((est.panel_data.treated_start_idxs[0]-1, len(est.panel_data.treated_units)))</span>
+
+<span class="sd">    else:</span>
+<span class="sd">        est.low_cumulative_diff_pre = np.zeros(est.panel_data.treated_start_idxs[0]-1)</span>
+<span class="sd">        est.high_cumulative_diff_pre = np.zeros(est.panel_data.treated_start_idxs[0]-1)</span>
+
+
+<span class="sd">est.low_cumulative_diff = np.concatenate(</span>
+<span class="sd">    [est.cumulative_diff_pre, est.low_cumulative_diff_post]</span>
+<span class="sd">)</span>
+
+<span class="sd">est.high_cumulative_diff = np.concatenate(</span>
+<span class="sd">    [est.cumulative_diff_pre, est.high_cumulative_diff_post]</span>
+<span class="sd">)</span>
+<span class="sd">if len(est.results[&quot;y&quot;].shape) == 1:</span>
+<span class="sd">    axs[2].fill_between(</span>
+<span class="sd">    range(est.panel_data.num_timepoints-1),</span>
+<span class="sd">    est.low_cumulative_diff,</span>
+<span class="sd">    est.high_cumulative_diff,</span>
+<span class="sd">    facecolor=&quot;gray&quot;,</span>
+<span class="sd">    interpolate=True,</span>
+<span class="sd">    alpha=0.25,</span>
+<span class="sd">    )</span>
+
+<span class="sd">elif len(est.results[&quot;y&quot;].shape) &gt; 1:</span>
+<span class="sd">    if len(est.panel_data.treated_units) &gt; 1:</span>
+<span class="sd">        for _ in range(est.results[&#39;y_lower&#39;].shape[1]):</span>
+<span class="sd">            axs[2].fill_between(</span>
+<span class="sd">            range(est.panel_data.num_timepoints-1),</span>
+<span class="sd">            est.low_cumulative_diff[:,_],</span>
+<span class="sd">            est.high_cumulative_diff[:,_],</span>
+<span class="sd">            facecolor=&quot;gray&quot;,</span>
+<span class="sd">            interpolate=True,</span>
+<span class="sd">            alpha=0.25,</span>
+<span class="sd">            )</span>
+
+
+<span class="sd">axs[2].axvline(</span>
+<span class="sd">    est.panel_data.treated_start_idxs[0] , color=&quot;black&quot;, linestyle=&quot;--&quot;</span>
+<span class="sd">)</span>
+
+<span class="sd">axs[2].axvline(</span>
+<span class="sd">    est.panel_data.treated_end_idxs[0] , color=&quot;black&quot;, linestyle=&quot;--&quot;</span>
+<span class="sd">)</span>
+
+<span class="sd">axs[2].axhline(0, color=&quot;black&quot;, linewidth=2)</span>
+<span class="sd">axs[2].set_title(&quot;Cumulative Difference&quot;)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;\npointwise = est.results[&#34;y&#34;] - est.results[&#34;y_hat&#34;]\n# pointwise = self.results[&#34;y&#34;] - self.y_hat\n\naxs[1].plot(pointwise, &#34;r--&#34;, linewidth=2, label=&#34;Pointwise Difference&#34;)\naxs[1].axvline(\n    est.panel_data.treated_start_idxs[0] , color=&#34;black&#34;, linestyle=&#34;--&#34;\n)\naxs[1].axvline(\n    est.panel_data.treated_end_idxs[0] , color=&#34;black&#34;, linestyle=&#34;--&#34;\n)\n\naxs[1].axhline(0, color=&#34;black&#34;, linewidth=2)\n\nif est.inference is not None:\n    if len(est.panel_data.treated_units) == 1:\n        axs[1].fill_between(\n        range(est.panel_data.num_timepoints),\n        est.results[&#34;y&#34;].flatten() - est.results[&#34;y_lower&#34;],\n        est.results[&#34;y&#34;].flatten() - est.results[&#34;y_upper&#34;],\n        facecolor=&#34;gray&#34;,\n        interpolate=True,\n        alpha=0.25,\n    )\n        \n        \nif len(est.results[&#34;y&#34;].shape) == 1:\n    est.cumulative_diff_post = (est.results[&#34;y&#34;] - est.results[&#34;y_hat&#34;])[\n        est.panel_data.treated_start_idxs[0] : #self.panel_data.treated_end_idxs[0] #1/22\n    ].cumsum()\n\n\n\nelif len(est.results[&#34;y&#34;].shape) == 2:\n    est.cumulative_diff_post = (est.results[&#34;y&#34;] - est.results[&#34;y_hat&#34;])[\n        est.panel_data.treated_start_idxs[0] : #self.panel_data.treated_end_idxs[0] #1/22\n    ].cumsum(axis=0)\n\n\nif len(est.results[&#34;y&#34;].shape) == 2:\n    est.cumulative_diff_pre = np.zeros((est.panel_data.treated_start_idxs[0] - 1, len(est.panel_data.treated_units)))\n\nelse:\n    est.cumulative_diff_pre = np.zeros(est.panel_data.treated_start_idxs[0] - 1 )\n\n\nest.cumulative_diff = np.concatenate([est.cumulative_diff_pre, est.cumulative_diff_post])\naxs[2].plot(est.cumulative_diff, &#34;r--&#34;, linewidth=2, label=&#34;Cumulative Difference&#34;)\n\nif est.inference is not None:\n    if len(est.results[&#34;y&#34;].shape) == 1:\n        est.low_cumulative_diff_post = (est.results[&#34;y&#34;] - est.results[&#34;y_lower&#34;])[\n        est.panel_data.treated_start_idxs[0] : #self.panel_data.treated_end_idxs[0] #1/22\n        ].cumsum()\n\n        est.high_cumulative_diff_post = (est.results[&#34;y&#34;] - est.results[&#34;y_upper&#34;])[\n        est.panel_data.treated_start_idxs[0] : #self.panel_data.treated_end_idxs[0] #1/22\n        ].cumsum()\n\n    elif len(est.results[&#34;y&#34;].shape) == 2:\n        est.low_cumulative_diff_post = (est.results[&#34;y&#34;] - est.results[&#34;y_lower&#34;])[\n        est.panel_data.treated_start_idxs[0] : #self.panel_data.treated_end_idxs[0] #1/22\n        ].cumsum(axis=0)\n\n        est.high_cumulative_diff_post = (est.results[&#34;y&#34;] - est.results[&#34;y_upper&#34;])[\n        est.panel_data.treated_start_idxs[0] : #self.panel_data.treated_end_idxs[0] #1/22\n        ].cumsum(axis=0)\n\n    if len(est.results[&#34;y&#34;].shape) == 2:\n        est.low_cumulative_diff_pre = np.zeros((est.panel_data.treated_start_idxs[0]-1,  len(est.panel_data.treated_units)))\n        est.high_cumulative_diff_pre = np.zeros((est.panel_data.treated_start_idxs[0]-1, len(est.panel_data.treated_units)))\n\n    else:\n        est.low_cumulative_diff_pre = np.zeros(est.panel_data.treated_start_idxs[0]-1)\n        est.high_cumulative_diff_pre = np.zeros(est.panel_data.treated_start_idxs[0]-1)\n\n\nest.low_cumulative_diff = np.concatenate(\n    [est.cumulative_diff_pre, est.low_cumulative_diff_post]\n)\n\nest.high_cumulative_diff = np.concatenate(\n    [est.cumulative_diff_pre, est.high_cumulative_diff_post]\n)\nif len(est.results[&#34;y&#34;].shape) == 1:\n    axs[2].fill_between(\n    range(est.panel_data.num_timepoints-1),\n    est.low_cumulative_diff,\n    est.high_cumulative_diff,\n    facecolor=&#34;gray&#34;,\n    interpolate=True,\n    alpha=0.25,\n    )\n\nelif len(est.results[&#34;y&#34;].shape) &gt; 1:\n    if len(est.panel_data.treated_units) &gt; 1:\n        for _ in range(est.results[\&#39;y_lower\&#39;].shape[1]):\n            axs[2].fill_between(\n            range(est.panel_data.num_timepoints-1),\n            est.low_cumulative_diff[:,_],\n            est.high_cumulative_diff[:,_],\n            facecolor=&#34;gray&#34;,\n            interpolate=True,\n            alpha=0.25,\n            )\n\n\naxs[2].axvline(\n    est.panel_data.treated_start_idxs[0] , color=&#34;black&#34;, linestyle=&#34;--&#34;\n)\n\naxs[2].axvline(\n    est.panel_data.treated_end_idxs[0] , color=&#34;black&#34;, linestyle=&#34;--&#34;\n)\n\naxs[2].axhline(0, color=&#34;black&#34;, linewidth=2)\naxs[2].set_title(&#34;Cumulative Difference&#34;)\n&#39;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/tbr_deep_dive_29_1.png" src="_images/tbr_deep_dive_29_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;y_lower&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([30141.78      , 31671.03      , 31503.97      , 29425.68      ,
+       26968.16      , 13670.65      , 10037.5       , 26511.06      ,
+       25596.64      , 26967.59      , 26648.55      , 23294.42      ,
+       11651.55      , 11808.7       , 29721.85      , 27551.07      ,
+       29103.6       , 29201.92      , 25541.33      , 13417.43      ,
+       12919.54      , 32405.78      , 29134.77      , 26635.18      ,
+       22570.35      ,  8546.17      , 10247.85      , 12530.36      ,
+       31207.04      , 28911.28      , 30372.24      , 30238.38      ,
+       24338.81      , 13498.53      , 13388.08      , 34210.71      ,
+       31424.84      , 32967.42      , 30544.01      , 26219.41      ,
+       13443.64      , 13649.92      , 43519.81437466, 33871.63126829,
+       34886.03624309, 32740.38283853, 27410.66215631, 12948.97659667,
+       13678.04325986, 38404.3914837 , 41748.14874474, 39480.50528582,
+       39235.92268038, 33392.49212549, 15497.31653954, 15421.94530515,
+       44780.868058  , 41213.61032741, 42182.89955116, 41020.28989078,
+       32880.43019742, 16067.07537917, 14496.85248507, 42655.25030076,
+       42891.9612068 , 40446.54710774, 39723.65210734, 34171.61771691,
+       14840.40024979, 16655.93278655, 43572.57      , 43350.46      ,
+       42590.83      , 39277.87      , 33199.61      , 17125.3       ,
+       18689.95      , 45359.73      , 38223.96      , 45245.69      ,
+       40284.94      , 34654.21      , 15140.42      , 12594.88      ,
+       25571.82      , 46703.97      , 49919.65      , 73486.19      ,
+       50904.01      , 23250.05      , 25451.46      , 55272.21      ,
+       45519.44      ])
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">TBRRidge</span><span class="p">(</span><span class="n">inference</span><span class="o">=</span><span class="s2">&quot;Kfold&quot;</span><span class="p">)</span>
+<span class="n">est</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">pds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/tbr_deep_dive_32_0.png" src="_images/tbr_deep_dive_32_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Average</th>
+      <th>Cumulative</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Actual</th>
+      <td>36045.661852</td>
+      <td>973232.87</td>
+    </tr>
+    <tr>
+      <th>Predicted</th>
+      <td>30814.784956</td>
+      <td>831999.193799</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Absolute Effect</th>
+      <td>5230.876896</td>
+      <td>141233.676201</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Relative Effect</th>
+      <td>16.975218</td>
+      <td>16.975218</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="scm_deep_dive.html" class="btn btn-neutral float-left" title="Synthetic Control Methods" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api.html" class="btn btn-neutral float-right" title="API: Auto-generated Documentation." accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Adobe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

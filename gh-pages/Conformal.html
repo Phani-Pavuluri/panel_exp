@@ -1,0 +1,2890 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conformal Inference &mdash; Panel Exp 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Panel Exp
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#package-architecture">Package Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#design-module">1. Design Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#methods-module">2. Methods Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#inference-module">3. Inference Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#end-to-end-workflow">End-to-End Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#best-practices">Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#package-dependencies">Package Dependencies</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basic_data.html">PanelDataset Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scm_usage.html">SCM Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tbr_usage.html">TBR Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="power_example.html">Power Module Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Deeper Dives</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="experimental_design.html">Experimental Design Deep Dive (#1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scm_deep_dive.html">Synthetic Control Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tbr_deep_dive.html">Time-Based Regression (TBR)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tbr_deep_dive.html#Regression-while-not-aggregating-the-control-units">Regression while not aggregating the control units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API: Auto-generated Documentation.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#base-classes">Base Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#design">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#models">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#inference">Inference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Panel Exp</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Conformal Inference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Conformal.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Conformal-Inference">
+<h1>Conformal Inference<a class="headerlink" href="#Conformal-Inference" title="Link to this heading"></a></h1>
+<p><a class="reference external" href="https://matheusfacure.github.io/python-causality-handbook/Conformal-Inference-for-Synthetic-Control.html">https://matheusfacure.github.io/python-causality-handbook/Conformal-Inference-for-Synthetic-Control.html</a></p>
+<p><a class="reference external" href="https://arxiv.org/pdf/1712.09089.pdf">https://arxiv.org/pdf/1712.09089.pdf</a></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.panel_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">long_df_to_paneldataset</span><span class="p">,</span> <span class="n">PanelDataset</span><span class="p">,</span> <span class="n">TimePeriod</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.design</span><span class="w"> </span><span class="kn">import</span> <span class="n">CompleteRandomization</span><span class="p">,</span> <span class="n">ThinningDesign</span><span class="p">,</span> <span class="n">Rerandomization</span><span class="p">,</span> <span class="n">QuickBlock</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.design.design_metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">imbalance</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">RidgeCV</span><span class="p">,</span> <span class="n">Ridge</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods.scm</span><span class="w"> </span><span class="kn">import</span> <span class="n">SyntheticControl</span><span class="p">,</span> <span class="n">AugSynth</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.inference</span><span class="w"> </span><span class="kn">import</span> <span class="n">conformal</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods.tbr</span><span class="w"> </span><span class="kn">import</span> <span class="n">TBR</span><span class="p">,</span> <span class="n">TBRRidge</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.inference.unit_jackknife</span><span class="w"> </span><span class="kn">import</span> <span class="n">unit_jk</span><span class="p">,</span> <span class="n">unit_jackknife</span><span class="p">,</span> <span class="n">time_jackknife_plus</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">long_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;smoking.csv&#39;</span><span class="p">)</span>
+<span class="n">long_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;unnamed&#39;</span><span class="p">,</span> <span class="s1">&#39;unit&#39;</span><span class="p">,</span> <span class="s1">&#39;time_unit&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span>  <span class="s1">&#39;lnincome&#39;</span><span class="p">,</span><span class="s1">&#39;beer&#39;</span><span class="p">,</span><span class="s1">&#39;age15to24&#39;</span><span class="p">,</span><span class="s1">&#39;retprice&#39;</span><span class="p">]</span>
+<span class="n">panel</span> <span class="o">=</span> <span class="n">long_df_to_paneldataset</span><span class="p">(</span><span class="n">long_df</span><span class="p">,</span> <span class="s2">&quot;time_unit&quot;</span><span class="p">,</span> <span class="s2">&quot;unit&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;California&quot;</span> <span class="p">],</span> <span class="p">[</span><span class="mi">1988</span> <span class="p">])</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre_t_time</span> <span class="o">=</span> <span class="n">panel</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span>
+<span class="n">n_treated_units</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">panel</span><span class="o">.</span><span class="n">treated_units</span><span class="p">)</span>
+<span class="n">n_treated_time_periods</span> <span class="o">=</span> <span class="p">(</span><span class="n">panel</span><span class="o">.</span><span class="n">treated_end_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">panel</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">((</span><span class="n">panel</span><span class="o">.</span><span class="n">treated_end_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">,</span> <span class="n">panel</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(30, 18)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">((</span><span class="n">panel</span><span class="o">.</span><span class="n">treated_end_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">panel</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">panel</span><span class="o">.</span><span class="n">times</span><span class="p">[</span><span class="n">panel</span><span class="o">.</span><span class="n">treated_end_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="p">,</span> <span class="n">panel</span><span class="o">.</span><span class="n">times</span><span class="p">[</span><span class="n">panel</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+12
+2000 1988
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">panel</span><span class="o">.</span><span class="n">treated_end_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+30
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">panel</span><span class="o">.</span><span class="n">wide_data</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(39, 31)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">panel</span><span class="o">.</span><span class="n">wide_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="mi">1988</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>time_unit</th>
+      <th>1988</th>
+      <th>1989</th>
+      <th>1990</th>
+      <th>1991</th>
+      <th>1992</th>
+      <th>1993</th>
+      <th>1994</th>
+      <th>1995</th>
+      <th>1996</th>
+      <th>1997</th>
+      <th>1998</th>
+      <th>1999</th>
+      <th>2000</th>
+    </tr>
+    <tr>
+      <th>unit</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alabama</th>
+      <td>112.099998</td>
+      <td>105.599998</td>
+      <td>108.599998</td>
+      <td>107.900002</td>
+      <td>109.099998</td>
+      <td>108.500000</td>
+      <td>107.099998</td>
+      <td>102.599998</td>
+      <td>101.400002</td>
+      <td>104.900002</td>
+      <td>106.199997</td>
+      <td>100.699997</td>
+      <td>96.199997</td>
+    </tr>
+    <tr>
+      <th>Arkansas</th>
+      <td>121.500000</td>
+      <td>118.300003</td>
+      <td>113.099998</td>
+      <td>116.800003</td>
+      <td>126.000000</td>
+      <td>113.800003</td>
+      <td>108.800003</td>
+      <td>113.000000</td>
+      <td>110.699997</td>
+      <td>108.699997</td>
+      <td>109.500000</td>
+      <td>104.800003</td>
+      <td>99.400002</td>
+    </tr>
+    <tr>
+      <th>California</th>
+      <td>90.099998</td>
+      <td>82.400002</td>
+      <td>77.800003</td>
+      <td>68.699997</td>
+      <td>67.500000</td>
+      <td>63.400002</td>
+      <td>58.599998</td>
+      <td>56.400002</td>
+      <td>54.500000</td>
+      <td>53.799999</td>
+      <td>52.299999</td>
+      <td>47.200001</td>
+      <td>41.599998</td>
+    </tr>
+    <tr>
+      <th>Colorado</th>
+      <td>94.599998</td>
+      <td>88.800003</td>
+      <td>87.400002</td>
+      <td>90.199997</td>
+      <td>88.300003</td>
+      <td>88.599998</td>
+      <td>89.099998</td>
+      <td>85.400002</td>
+      <td>83.099998</td>
+      <td>81.300003</td>
+      <td>81.199997</td>
+      <td>79.599998</td>
+      <td>73.000000</td>
+    </tr>
+    <tr>
+      <th>Connecticut</th>
+      <td>104.800003</td>
+      <td>100.599998</td>
+      <td>91.500000</td>
+      <td>86.699997</td>
+      <td>83.500000</td>
+      <td>79.099998</td>
+      <td>76.599998</td>
+      <td>79.300003</td>
+      <td>76.000000</td>
+      <td>75.900002</td>
+      <td>75.500000</td>
+      <td>73.400002</td>
+      <td>71.400002</td>
+    </tr>
+    <tr>
+      <th>Delaware</th>
+      <td>137.100006</td>
+      <td>131.699997</td>
+      <td>127.199997</td>
+      <td>118.800003</td>
+      <td>120.000000</td>
+      <td>123.800003</td>
+      <td>126.099998</td>
+      <td>127.199997</td>
+      <td>128.300003</td>
+      <td>124.099998</td>
+      <td>132.800003</td>
+      <td>139.500000</td>
+      <td>140.699997</td>
+    </tr>
+    <tr>
+      <th>Georgia</th>
+      <td>124.099998</td>
+      <td>117.099998</td>
+      <td>113.800003</td>
+      <td>109.599998</td>
+      <td>109.199997</td>
+      <td>109.199997</td>
+      <td>107.800003</td>
+      <td>100.300003</td>
+      <td>102.699997</td>
+      <td>100.599998</td>
+      <td>100.500000</td>
+      <td>97.099998</td>
+      <td>88.400002</td>
+    </tr>
+    <tr>
+      <th>Idaho</th>
+      <td>84.500000</td>
+      <td>78.400002</td>
+      <td>90.099998</td>
+      <td>85.400002</td>
+      <td>85.099998</td>
+      <td>86.699997</td>
+      <td>93.000000</td>
+      <td>78.199997</td>
+      <td>73.599998</td>
+      <td>75.000000</td>
+      <td>78.900002</td>
+      <td>75.099998</td>
+      <td>66.900002</td>
+    </tr>
+    <tr>
+      <th>Illinois</th>
+      <td>107.599998</td>
+      <td>104.599998</td>
+      <td>94.099998</td>
+      <td>96.099998</td>
+      <td>94.800003</td>
+      <td>94.599998</td>
+      <td>85.699997</td>
+      <td>84.300003</td>
+      <td>81.800003</td>
+      <td>79.599998</td>
+      <td>80.300003</td>
+      <td>72.199997</td>
+      <td>70.000000</td>
+    </tr>
+    <tr>
+      <th>Indiana</th>
+      <td>134.000000</td>
+      <td>132.500000</td>
+      <td>128.300003</td>
+      <td>127.199997</td>
+      <td>128.199997</td>
+      <td>126.800003</td>
+      <td>128.199997</td>
+      <td>135.399994</td>
+      <td>135.100006</td>
+      <td>135.300003</td>
+      <td>135.899994</td>
+      <td>133.300003</td>
+      <td>125.500000</td>
+    </tr>
+    <tr>
+      <th>Iowa</th>
+      <td>100.199997</td>
+      <td>94.400002</td>
+      <td>95.400002</td>
+      <td>97.099998</td>
+      <td>95.199997</td>
+      <td>92.500000</td>
+      <td>93.400002</td>
+      <td>93.000000</td>
+      <td>94.000000</td>
+      <td>93.900002</td>
+      <td>94.000000</td>
+      <td>91.699997</td>
+      <td>88.900002</td>
+    </tr>
+    <tr>
+      <th>Kansas</th>
+      <td>103.199997</td>
+      <td>96.500000</td>
+      <td>94.300003</td>
+      <td>91.800003</td>
+      <td>90.000000</td>
+      <td>89.900002</td>
+      <td>89.099998</td>
+      <td>90.099998</td>
+      <td>88.699997</td>
+      <td>89.199997</td>
+      <td>87.599998</td>
+      <td>83.300003</td>
+      <td>79.800003</td>
+    </tr>
+    <tr>
+      <th>Kentucky</th>
+      <td>173.199997</td>
+      <td>171.600006</td>
+      <td>182.500000</td>
+      <td>170.399994</td>
+      <td>167.600006</td>
+      <td>167.600006</td>
+      <td>170.100006</td>
+      <td>175.300003</td>
+      <td>179.000000</td>
+      <td>186.800003</td>
+      <td>171.300003</td>
+      <td>165.300003</td>
+      <td>156.199997</td>
+    </tr>
+    <tr>
+      <th>Louisiana</th>
+      <td>110.900002</td>
+      <td>103.599998</td>
+      <td>101.500000</td>
+      <td>107.199997</td>
+      <td>108.500000</td>
+      <td>106.199997</td>
+      <td>105.300003</td>
+      <td>105.699997</td>
+      <td>106.800003</td>
+      <td>105.300003</td>
+      <td>103.199997</td>
+      <td>101.000000</td>
+      <td>104.300003</td>
+    </tr>
+    <tr>
+      <th>Maine</th>
+      <td>125.000000</td>
+      <td>122.400002</td>
+      <td>117.500000</td>
+      <td>116.099998</td>
+      <td>114.500000</td>
+      <td>108.500000</td>
+      <td>101.599998</td>
+      <td>102.300003</td>
+      <td>100.000000</td>
+      <td>101.099998</td>
+      <td>94.500000</td>
+      <td>85.500000</td>
+      <td>82.900002</td>
+    </tr>
+    <tr>
+      <th>Minnesota</th>
+      <td>94.099998</td>
+      <td>92.300003</td>
+      <td>90.699997</td>
+      <td>86.199997</td>
+      <td>83.800003</td>
+      <td>81.599998</td>
+      <td>83.400002</td>
+      <td>84.099998</td>
+      <td>81.699997</td>
+      <td>84.099998</td>
+      <td>83.199997</td>
+      <td>80.699997</td>
+      <td>76.000000</td>
+    </tr>
+    <tr>
+      <th>Mississippi</th>
+      <td>109.000000</td>
+      <td>108.300003</td>
+      <td>101.800003</td>
+      <td>105.599998</td>
+      <td>103.900002</td>
+      <td>105.400002</td>
+      <td>106.000000</td>
+      <td>107.500000</td>
+      <td>106.900002</td>
+      <td>106.300003</td>
+      <td>107.000000</td>
+      <td>103.900002</td>
+      <td>97.199997</td>
+    </tr>
+    <tr>
+      <th>Missouri</th>
+      <td>127.400002</td>
+      <td>122.800003</td>
+      <td>119.099998</td>
+      <td>119.900002</td>
+      <td>122.300003</td>
+      <td>121.599998</td>
+      <td>119.400002</td>
+      <td>124.000000</td>
+      <td>124.099998</td>
+      <td>120.599998</td>
+      <td>120.099998</td>
+      <td>118.000000</td>
+      <td>113.800003</td>
+    </tr>
+    <tr>
+      <th>Montana</th>
+      <td>87.099998</td>
+      <td>86.199997</td>
+      <td>84.699997</td>
+      <td>82.900002</td>
+      <td>86.599998</td>
+      <td>86.000000</td>
+      <td>88.199997</td>
+      <td>90.500000</td>
+      <td>87.300003</td>
+      <td>88.900002</td>
+      <td>89.099998</td>
+      <td>82.599998</td>
+      <td>75.500000</td>
+    </tr>
+    <tr>
+      <th>Nebraska</th>
+      <td>92.900002</td>
+      <td>93.800003</td>
+      <td>89.900002</td>
+      <td>92.400002</td>
+      <td>90.599998</td>
+      <td>91.099998</td>
+      <td>85.900002</td>
+      <td>88.500000</td>
+      <td>86.199997</td>
+      <td>85.500000</td>
+      <td>83.099998</td>
+      <td>86.599998</td>
+      <td>77.599998</td>
+    </tr>
+    <tr>
+      <th>Nevada</th>
+      <td>141.899994</td>
+      <td>137.899994</td>
+      <td>137.300003</td>
+      <td>115.500000</td>
+      <td>110.000000</td>
+      <td>108.099998</td>
+      <td>105.199997</td>
+      <td>100.900002</td>
+      <td>99.000000</td>
+      <td>95.599998</td>
+      <td>102.400002</td>
+      <td>103.900002</td>
+      <td>93.199997</td>
+    </tr>
+    <tr>
+      <th>New Hampshire</th>
+      <td>180.399994</td>
+      <td>172.899994</td>
+      <td>152.399994</td>
+      <td>144.800003</td>
+      <td>143.699997</td>
+      <td>148.899994</td>
+      <td>153.800003</td>
+      <td>158.500000</td>
+      <td>158.000000</td>
+      <td>174.399994</td>
+      <td>173.800003</td>
+      <td>171.699997</td>
+      <td>147.300003</td>
+    </tr>
+    <tr>
+      <th>New Mexico</th>
+      <td>77.699997</td>
+      <td>74.400002</td>
+      <td>70.800003</td>
+      <td>69.900002</td>
+      <td>71.400002</td>
+      <td>69.000000</td>
+      <td>68.199997</td>
+      <td>67.000000</td>
+      <td>65.699997</td>
+      <td>61.799999</td>
+      <td>62.599998</td>
+      <td>59.700001</td>
+      <td>53.799999</td>
+    </tr>
+    <tr>
+      <th>North Carolina</th>
+      <td>146.000000</td>
+      <td>139.300003</td>
+      <td>133.699997</td>
+      <td>132.699997</td>
+      <td>128.899994</td>
+      <td>129.699997</td>
+      <td>112.699997</td>
+      <td>124.900002</td>
+      <td>129.699997</td>
+      <td>125.599998</td>
+      <td>126.000000</td>
+      <td>113.099998</td>
+      <td>109.000000</td>
+    </tr>
+    <tr>
+      <th>North Dakota</th>
+      <td>87.099998</td>
+      <td>84.099998</td>
+      <td>77.099998</td>
+      <td>85.199997</td>
+      <td>74.300003</td>
+      <td>83.000000</td>
+      <td>81.000000</td>
+      <td>80.599998</td>
+      <td>80.800003</td>
+      <td>77.500000</td>
+      <td>79.099998</td>
+      <td>74.699997</td>
+      <td>72.500000</td>
+    </tr>
+    <tr>
+      <th>Ohio</th>
+      <td>122.400002</td>
+      <td>118.599998</td>
+      <td>115.500000</td>
+      <td>113.199997</td>
+      <td>112.300003</td>
+      <td>108.900002</td>
+      <td>108.599998</td>
+      <td>111.699997</td>
+      <td>107.599998</td>
+      <td>108.599998</td>
+      <td>106.400002</td>
+      <td>104.000000</td>
+      <td>99.900002</td>
+    </tr>
+    <tr>
+      <th>Oklahoma</th>
+      <td>103.599998</td>
+      <td>97.500000</td>
+      <td>88.400002</td>
+      <td>87.800003</td>
+      <td>86.300003</td>
+      <td>86.199997</td>
+      <td>104.800003</td>
+      <td>109.500000</td>
+      <td>110.800003</td>
+      <td>111.800003</td>
+      <td>112.199997</td>
+      <td>111.400002</td>
+      <td>108.900002</td>
+    </tr>
+    <tr>
+      <th>Pennsylvania</th>
+      <td>107.599998</td>
+      <td>107.099998</td>
+      <td>101.300003</td>
+      <td>102.500000</td>
+      <td>96.199997</td>
+      <td>94.699997</td>
+      <td>95.400002</td>
+      <td>95.400002</td>
+      <td>93.300003</td>
+      <td>92.900002</td>
+      <td>92.099998</td>
+      <td>91.099998</td>
+      <td>87.900002</td>
+    </tr>
+    <tr>
+      <th>Rhode Island</th>
+      <td>138.000000</td>
+      <td>120.800003</td>
+      <td>101.400002</td>
+      <td>103.599998</td>
+      <td>100.099998</td>
+      <td>94.099998</td>
+      <td>91.900002</td>
+      <td>90.800003</td>
+      <td>87.500000</td>
+      <td>90.000000</td>
+      <td>88.699997</td>
+      <td>86.900002</td>
+      <td>83.099998</td>
+    </tr>
+    <tr>
+      <th>South Carolina</th>
+      <td>124.400002</td>
+      <td>122.400002</td>
+      <td>118.599998</td>
+      <td>121.500000</td>
+      <td>112.800003</td>
+      <td>115.199997</td>
+      <td>112.199997</td>
+      <td>109.199997</td>
+      <td>102.900002</td>
+      <td>124.500000</td>
+      <td>126.900002</td>
+      <td>109.400002</td>
+      <td>103.900002</td>
+    </tr>
+    <tr>
+      <th>South Dakota</th>
+      <td>91.900002</td>
+      <td>87.400002</td>
+      <td>88.300003</td>
+      <td>91.800003</td>
+      <td>93.000000</td>
+      <td>91.599998</td>
+      <td>94.800003</td>
+      <td>98.599998</td>
+      <td>92.300003</td>
+      <td>88.800003</td>
+      <td>88.300003</td>
+      <td>83.500000</td>
+      <td>75.099998</td>
+    </tr>
+    <tr>
+      <th>Tennessee</th>
+      <td>125.300003</td>
+      <td>124.699997</td>
+      <td>121.800003</td>
+      <td>120.599998</td>
+      <td>121.000000</td>
+      <td>120.800003</td>
+      <td>118.800003</td>
+      <td>125.400002</td>
+      <td>119.199997</td>
+      <td>118.900002</td>
+      <td>119.699997</td>
+      <td>115.599998</td>
+      <td>108.699997</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>96.500000</td>
+      <td>94.500000</td>
+      <td>85.599998</td>
+      <td>79.400002</td>
+      <td>77.199997</td>
+      <td>81.300003</td>
+      <td>78.800003</td>
+      <td>75.199997</td>
+      <td>74.599998</td>
+      <td>72.599998</td>
+      <td>73.199997</td>
+      <td>67.599998</td>
+      <td>69.300003</td>
+    </tr>
+    <tr>
+      <th>Utah</th>
+      <td>55.000000</td>
+      <td>57.000000</td>
+      <td>53.400002</td>
+      <td>53.500000</td>
+      <td>55.000000</td>
+      <td>56.200001</td>
+      <td>55.799999</td>
+      <td>52.000000</td>
+      <td>54.000000</td>
+      <td>57.000000</td>
+      <td>42.299999</td>
+      <td>43.900002</td>
+      <td>40.700001</td>
+    </tr>
+    <tr>
+      <th>Vermont</th>
+      <td>128.699997</td>
+      <td>120.900002</td>
+      <td>124.300003</td>
+      <td>120.900002</td>
+      <td>126.500000</td>
+      <td>117.199997</td>
+      <td>120.300003</td>
+      <td>123.199997</td>
+      <td>102.500000</td>
+      <td>97.699997</td>
+      <td>97.000000</td>
+      <td>94.099998</td>
+      <td>88.900002</td>
+    </tr>
+    <tr>
+      <th>Virginia</th>
+      <td>129.500000</td>
+      <td>122.500000</td>
+      <td>118.900002</td>
+      <td>109.099998</td>
+      <td>108.199997</td>
+      <td>105.400002</td>
+      <td>106.199997</td>
+      <td>106.699997</td>
+      <td>104.599998</td>
+      <td>108.000000</td>
+      <td>105.599998</td>
+      <td>102.099998</td>
+      <td>96.699997</td>
+    </tr>
+    <tr>
+      <th>West Virginia</th>
+      <td>109.099998</td>
+      <td>104.000000</td>
+      <td>104.099998</td>
+      <td>100.099998</td>
+      <td>97.900002</td>
+      <td>111.000000</td>
+      <td>104.199997</td>
+      <td>115.199997</td>
+      <td>112.699997</td>
+      <td>114.500000</td>
+      <td>114.599998</td>
+      <td>112.400002</td>
+      <td>107.900002</td>
+    </tr>
+    <tr>
+      <th>Wisconsin</th>
+      <td>102.599998</td>
+      <td>100.300003</td>
+      <td>94.000000</td>
+      <td>95.500000</td>
+      <td>96.199997</td>
+      <td>91.199997</td>
+      <td>91.800003</td>
+      <td>93.500000</td>
+      <td>92.099998</td>
+      <td>91.900002</td>
+      <td>88.699997</td>
+      <td>84.400002</td>
+      <td>80.099998</td>
+    </tr>
+    <tr>
+      <th>Wyoming</th>
+      <td>114.300003</td>
+      <td>111.400002</td>
+      <td>96.900002</td>
+      <td>109.099998</td>
+      <td>110.800003</td>
+      <td>108.400002</td>
+      <td>111.199997</td>
+      <td>115.000000</td>
+      <td>110.300003</td>
+      <td>108.800003</td>
+      <td>102.900002</td>
+      <td>104.800003</td>
+      <td>90.500000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><br/><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#scm_1 = SyntheticControl(inference=&#39;JKP&#39; )</span>
+<span class="c1">#scm_1.run_analysis(panel)</span>
+<span class="c1">#scm_1.plot()</span>
+<br/><br/><br/></pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><br/><span></span><span class="n">scm_1</span> <span class="o">=</span> <span class="n">SyntheticControl</span><span class="p">(</span><span class="n">inference</span><span class="o">=</span><span class="s1">&#39;Conformal&#39;</span> <span class="p">)</span>
+<span class="n">scm_1</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">panel</span><span class="p">)</span>
+<span class="n">scm_1</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/Conformal_11_0.png" src="_images/Conformal_11_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods.tbr</span><span class="w"> </span><span class="kn">import</span> <span class="n">TBR</span><span class="p">,</span> <span class="n">TBRRidge</span>
+
+<span class="n">est</span> <span class="o">=</span> <span class="n">TBRRidge</span><span class="p">(</span><span class="n">inference</span><span class="o">=</span><span class="s1">&#39;Conformal&#39;</span> <span class="p">)</span>
+<span class="n">est</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">panel</span><span class="p">)</span>
+<span class="n">est</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/Conformal_13_0.png" src="_images/Conformal_13_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">long_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;kansas_parsed.csv&#39;</span><span class="p">)</span>
+<span class="n">panel_data</span> <span class="o">=</span> <span class="n">long_df_to_paneldataset</span><span class="p">(</span><span class="n">long_df</span><span class="p">,</span> <span class="s2">&quot;year_qtr&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">,</span> <span class="s2">&quot;lngdp&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Kansas&quot;</span> <span class="p">],</span> <span class="p">[</span><span class="mi">2012</span><span class="p">])</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">TBRRidge</span><span class="p">(</span><span class="n">inference</span><span class="o">=</span><span class="s1">&#39;Conformal&#39;</span> <span class="p">)</span>
+<span class="n">est</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">panel_data</span><span class="p">)</span>
+<span class="n">est</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/Conformal_15_0.png" src="_images/Conformal_15_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Issue-One">
+<h1>Issue One<a class="headerlink" href="#Issue-One" title="Link to this heading"></a></h1>
+<p>I auto generate potential null hypothesis to test against (line 126 of impact ABC). The 1-alpha CI might get cut off if this is not a good estimate, so we’ll need to update to pass a custom list.</p>
+<p>Choosing them is not easy</p>
+<section id="AugSynth-Below">
+<h2>AugSynth Below<a class="headerlink" href="#AugSynth-Below" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">long_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;kansas_parsed.csv&#39;</span><span class="p">)</span>
+<span class="n">panel_data</span> <span class="o">=</span> <span class="n">long_df_to_paneldataset</span><span class="p">(</span><span class="n">long_df</span><span class="p">,</span> <span class="s2">&quot;year_qtr&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">,</span> <span class="s2">&quot;lngdp&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Kansas&quot;</span> <span class="p">],</span> <span class="p">[</span><span class="mi">2012</span><span class="p">])</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asynth</span> <span class="o">=</span> <span class="n">AugSynth</span><span class="p">(</span><span class="n">inference</span><span class="o">=</span><span class="s1">&#39;Conformal&#39;</span><span class="p">,</span> <span class="n">outcome_model</span><span class="o">=</span><span class="n">RidgeCV</span><span class="p">,</span> <span class="n">alphas</span><span class="o">=</span><span class="p">[</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="mf">1e-1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asynth</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">pds</span><span class="p">,</span> <span class="n">outcome_model</span><span class="o">=</span><span class="n">RidgeCV</span><span class="p">,</span> <span class="n">alphas</span><span class="o">=</span><span class="p">[</span><span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="mf">1e-1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="n">asynth</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/Conformal_24_0.png" src="_images/Conformal_24_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods.tbr</span><span class="w"> </span><span class="kn">import</span> <span class="n">TBR</span><span class="p">,</span> <span class="n">TBRRidge</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">long_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;kansas_parsed.csv&#39;</span><span class="p">)</span>
+<span class="n">long_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="n">long_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;un&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="s1">&#39;treated&#39;</span><span class="p">,</span> <span class="s1">&#39;fips&#39;</span><span class="p">,</span> <span class="s1">&#39;time_unit&#39;</span><span class="p">,</span> <span class="s1">&#39;unit&#39;</span><span class="p">]</span>
+
+<span class="n">panel_data</span> <span class="o">=</span> <span class="n">long_df_to_paneldataset</span><span class="p">(</span><span class="n">long_df</span><span class="p">,</span> <span class="s2">&quot;time_unit&quot;</span><span class="p">,</span> <span class="s2">&quot;unit&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Kansas&quot;</span><span class="p">],</span> <span class="mi">2012</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">panel_data</span><span class="o">.</span><span class="n">summarize</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+        Panel Dataset Summary
+        ---------------------
+        Number of time points: 105
+        Number of units: 50
+        Number of treated units: 1
+        Treated units: [&#39;Kansas&#39;]
+        Treated periods: [TimePeriod(start=2012, end=None)]
+
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wide</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">long_df</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;time_unit&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;unit&#39;</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="nb">sum</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">treated</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Kansas&#39;</span><span class="p">]</span>
+<span class="n">control_units</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">wide</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">wide</span><span class="o">.</span><span class="n">index</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">treated</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;controls&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">treated_units</span> <span class="o">=</span> <span class="n">wide</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">treated</span><span class="p">]</span>
+
+<span class="n">wide_agg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">treated_units</span><span class="p">,</span> <span class="n">control_units</span><span class="p">])</span>
+<span class="n">panel_data</span> <span class="o">=</span> <span class="n">PanelDataset</span><span class="p">(</span><span class="n">wide_agg</span><span class="p">,</span> <span class="n">treated_units</span> <span class="o">=</span> <span class="n">treated</span><span class="p">,</span> <span class="n">treated_periods</span><span class="o">=</span><span class="p">[</span><span class="n">TimePeriod</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">2012</span><span class="p">)])</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbr</span> <span class="o">=</span> <span class="n">TBR</span><span class="p">(</span><span class="n">inference</span><span class="o">=</span><span class="s1">&#39;Conformal&#39;</span><span class="p">)</span>
+<span class="n">tbr</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">panel_data</span><span class="p">)</span>
+<span class="n">tbr</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">AssertionError</span>                            Traceback (most recent call last)
+Input <span class="ansi-green-fg">In [19]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 2&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> tbr <span style="color: rgb(98,98,98)">=</span> TBR(inference<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">Conformal</span><span style="color: rgb(175,0,0)">&#39;</span>)
+<span class="ansi-green-fg">----&gt; 2</span> <span class="ansi-yellow-bg">tbr</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">run_analysis</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">pds</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> tbr<span style="color: rgb(98,98,98)">.</span>plot()
+
+File <span class="ansi-green-fg">~/Documents/panel_exp/examples/../panel_exp/impact.py:131</span>, in <span class="ansi-cyan-fg">ImpactAnalyzer.run_analysis</span><span class="ansi-blue-fg">(self, panel_data, **inference_kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    128</span>     <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>results[<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">y_lower</span><span style="color: rgb(175,0,0)">&#34;</span>] <span style="color: rgb(98,98,98)">=</span> y_lower
+<span class="ansi-green-intense-fg ansi-bold">    130</span> <span class="ansi-bold" style="color: rgb(0,135,0)">elif</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>inference <span style="color: rgb(98,98,98)">==</span> <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">Conformal</span><span style="color: rgb(175,0,0)">&#34;</span>:
+<span class="ansi-green-fg">--&gt; 131</span>     <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">fit_data</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">panel_data</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    132</span>     <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>model <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>fit_model()
+<span class="ansi-green-intense-fg ansi-bold">    133</span>     <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>y_hat <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>model<span style="color: rgb(98,98,98)">.</span>predict(<span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>panel_data<span style="color: rgb(98,98,98)">.</span>control_series(<span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>panel_data<span style="color: rgb(98,98,98)">.</span>treated_units)<span style="color: rgb(98,98,98)">.</span>values<span style="color: rgb(98,98,98)">.</span>T)
+
+File <span class="ansi-green-fg">~/Documents/panel_exp/examples/../panel_exp/methods/tbr.py:63</span>, in <span class="ansi-cyan-fg">TBR.fit_data</span><span class="ansi-blue-fg">(self, panel)</span>
+<span class="ansi-green-intense-fg ansi-bold">     58</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>panel_data <span style="color: rgb(98,98,98)">=</span> panel
+<span class="ansi-green-intense-fg ansi-bold">     60</span> <span class="ansi-bold" style="color: rgb(0,135,0)">assert</span> (
+<span class="ansi-green-intense-fg ansi-bold">     61</span>     <span style="color: rgb(0,135,0)">len</span>(<span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>panel_data<span style="color: rgb(98,98,98)">.</span>treated_units) <span style="color: rgb(98,98,98)">==</span> <span style="color: rgb(98,98,98)">1</span>
+<span class="ansi-green-intense-fg ansi-bold">     62</span> ), <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">TBR requires treated units to be pre-aggregated. Try TBRRidge or aggregate treated units</span><span style="color: rgb(175,0,0)">&#34;</span>
+<span class="ansi-green-fg">---&gt; 63</span> <span class="ansi-bold" style="color: rgb(0,135,0)">assert</span> (
+<span class="ansi-green-intense-fg ansi-bold">     64</span>     <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>panel_data<span style="color: rgb(98,98,98)">.</span>num_control_units <span style="color: rgb(98,98,98)">==</span> <span style="color: rgb(98,98,98)">1</span>
+<span class="ansi-green-intense-fg ansi-bold">     65</span> ), <span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">TBR requires control units to be pre-aggregated. Try TBRRidge or aggregate control units</span><span style="color: rgb(175,0,0)">&#34;</span>
+<span class="ansi-green-intense-fg ansi-bold">     67</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>full_model:
+<span class="ansi-green-intense-fg ansi-bold">     68</span>     y <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>panel_data<span style="color: rgb(98,98,98)">.</span>treated_series(treated_units <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>panel_data<span style="color: rgb(98,98,98)">.</span>treated_units , period<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">full</span><span style="color: rgb(175,0,0)">&#39;</span>)<span style="color: rgb(98,98,98)">.</span>values<span style="color: rgb(98,98,98)">.</span>T<span style="color: rgb(98,98,98)">.</span>flatten()
+
+<span class="ansi-red-fg">AssertionError</span>: TBR requires control units to be pre-aggregated. Try TBRRidge or aggregate control units
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">long_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;kansas_parsed.csv&#39;</span><span class="p">)</span>
+<span class="n">long_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="n">long_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;un&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="s1">&#39;treated&#39;</span><span class="p">,</span> <span class="s1">&#39;fips&#39;</span><span class="p">,</span> <span class="s1">&#39;time_unit&#39;</span><span class="p">,</span> <span class="s1">&#39;unit&#39;</span><span class="p">]</span>
+
+<span class="n">panel_data</span> <span class="o">=</span> <span class="n">long_df_to_paneldataset</span><span class="p">(</span><span class="n">long_df</span><span class="p">,</span> <span class="s2">&quot;time_unit&quot;</span><span class="p">,</span> <span class="s2">&quot;unit&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Kansas&quot;</span><span class="p">],</span> <span class="mi">2012</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">panel_data</span><span class="o">.</span><span class="n">summarize</span><span class="p">())</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+        Panel Dataset Summary
+        ---------------------
+        Number of time points: 105
+        Number of units: 50
+        Number of treated units: 1
+        Treated units: [&#39;Kansas&#39;]
+        Treated periods: [TimePeriod(start=2012, end=None)]
+
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbr</span> <span class="o">=</span> <span class="n">TBRRidge</span><span class="p">(</span><span class="n">inference</span><span class="o">=</span><span class="s1">&#39;Conformal&#39;</span><span class="p">)</span>
+<span class="n">tbr</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">panel_data</span><span class="p">)</span>
+<span class="n">tbr</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/Conformal_32_0.png" src="_images/Conformal_32_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">panel_data</span><span class="o">.</span><span class="n">wide_data</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:xlabel=&#39;time_unit&#39;&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/Conformal_33_1.png" src="_images/Conformal_33_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pds</span><span class="o">.</span><span class="n">wide_data</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:xlabel=&#39;time_unit&#39;&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/Conformal_34_1.png" src="_images/Conformal_34_1.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">While Conformal Inference is proven to be robust in many scenarios, it is not guaranteed to work everytime. Most commonly, Conformal Inference can fail when</span>
+
+<span class="sd">there is not enough days in the Pre-Treatment Period</span>
+<span class="sd">the true impact (called in the paper as Shock Sequence Ut) is not stationary or not weakly dependent</span>
+<span class="sd">the data is not stationary and not weakly dependent</span>
+<span class="sd">when our model is misspecified or inconsistent</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scm_1</span> <span class="o">=</span> <span class="n">SyntheticControl</span><span class="p">(</span><span class="n">inference</span><span class="o">=</span><span class="s1">&#39;Conformal&#39;</span> <span class="p">)</span>
+<span class="n">scm_1</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">pds</span><span class="p">)</span>
+<span class="n">scm_1</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/Conformal_38_0.png" src="_images/Conformal_38_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbr</span> <span class="o">=</span> <span class="n">TBRRidge</span><span class="p">(</span><span class="n">inference</span><span class="o">=</span><span class="s1">&#39;Conformal&#39;</span><span class="p">)</span>
+<span class="n">tbr</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">pds</span><span class="p">)</span>
+<span class="n">tbr</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/Conformal_39_0.png" src="_images/Conformal_39_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DID</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods.DID</span><span class="w"> </span><span class="kn">import</span> <span class="n">DID</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">long_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;smoking.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">long_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;unnamed&#39;</span><span class="p">,</span> <span class="s1">&#39;unit&#39;</span><span class="p">,</span> <span class="s1">&#39;time_unit&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span>  <span class="s1">&#39;lnincome&#39;</span><span class="p">,</span><span class="s1">&#39;beer&#39;</span><span class="p">,</span><span class="s1">&#39;age15to24&#39;</span><span class="p">,</span><span class="s1">&#39;retprice&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">panel_data</span> <span class="o">=</span> <span class="n">long_df_to_paneldataset</span><span class="p">(</span><span class="n">long_df</span><span class="p">,</span> <span class="s2">&quot;time_unit&quot;</span><span class="p">,</span> <span class="s2">&quot;unit&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;California&quot;</span><span class="p">],</span> <span class="mi">1989</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">did</span> <span class="o">=</span> <span class="n">DID</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">did</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">panel_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">did</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/Conformal_49_0.png" src="_images/Conformal_49_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#JK+</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../meta_geo.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wide_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;location&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+
+<span class="n">pds</span> <span class="o">=</span> <span class="n">PanelDataset</span><span class="p">(</span><span class="n">wide_df</span><span class="p">,</span> <span class="p">[</span><span class="n">TimePeriod</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span><span class="mi">91</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">105</span><span class="p">),</span> <span class="n">TimePeriod</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span><span class="mi">91</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">105</span><span class="p">)],</span> <span class="p">[</span><span class="s2">&quot;chicago&quot;</span><span class="p">,</span> <span class="s2">&quot;portland&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pds</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+        Panel Dataset Summary
+        ---------------------
+        Number of time points: 105
+        Number of units: 40
+        Number of treated units: 2
+        Treated units: [&#39;chicago&#39;, &#39;portland&#39;]
+        Treated periods: [TimePeriod(start=91, end=105), TimePeriod(start=91, end=105)]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scm_1</span> <span class="o">=</span> <span class="n">TBRRidge</span><span class="p">(</span><span class="n">inference</span><span class="o">=</span><span class="s1">&#39;JKP&#39;</span> <span class="p">)</span>
+<span class="n">scm_1</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">pds</span><span class="p">)</span>
+<span class="n">scm_1</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+Input <span class="ansi-green-fg">In [5]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 2&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> scm_1 <span style="color: rgb(98,98,98)">=</span> TBRRidge(inference<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">JKP</span><span style="color: rgb(175,0,0)">&#39;</span> )
+<span class="ansi-green-fg">----&gt; 2</span> <span class="ansi-yellow-bg">scm_1</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">run_analysis</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">pds</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> scm_1<span style="color: rgb(98,98,98)">.</span>plot()
+
+File <span class="ansi-green-fg">~/Documents/panel_exp/examples/../panel_exp/impact.py:114</span>, in <span class="ansi-cyan-fg">ImpactAnalyzer.run_analysis</span><span class="ansi-blue-fg">(self, panel_data, **inference_kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    111</span> pre_t_time <span style="color: rgb(98,98,98)">=</span> panel_data<span style="color: rgb(98,98,98)">.</span>treated_start_idxs[<span style="color: rgb(98,98,98)">0</span>]<span style="color: rgb(98,98,98)">-</span><span style="color: rgb(98,98,98)">1</span>
+<span class="ansi-green-intense-fg ansi-bold">    112</span> n_treated_units <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">len</span>(panel_data<span style="color: rgb(98,98,98)">.</span>treated_units)
+<span class="ansi-green-fg">--&gt; 114</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>lower, <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>upper <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">jkp</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-intense-fg ansi-bold">    115</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">panel_data</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg" style="color: rgb(0,0,135)">__class__</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">alpha</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">alpha</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg">inference_kwargs</span>
+<span class="ansi-green-intense-fg ansi-bold">    116</span> <span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    118</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>results[<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">y_lower</span><span style="color: rgb(175,0,0)">&#34;</span>] <span style="color: rgb(98,98,98)">=</span> np<span style="color: rgb(98,98,98)">.</span>zeros_like(<span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>results[<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">y</span><span style="color: rgb(175,0,0)">&#39;</span>])
+<span class="ansi-green-intense-fg ansi-bold">    119</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>results[<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">y_upper</span><span style="color: rgb(175,0,0)">&#34;</span>] <span style="color: rgb(98,98,98)">=</span> np<span style="color: rgb(98,98,98)">.</span>zeros_like(<span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>results[<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">y</span><span style="color: rgb(175,0,0)">&#39;</span>])
+
+File <span class="ansi-green-fg">~/Documents/panel_exp/examples/../panel_exp/inference/unit_jackknife.py:103</span>, in <span class="ansi-cyan-fg">jkp</span><span class="ansi-blue-fg">(panel, estimator, alpha, **estimator_kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    100</span> residuals <span style="color: rgb(98,98,98)">=</span> model<span style="color: rgb(98,98,98)">.</span>results[<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">y</span><span style="color: rgb(175,0,0)">&#39;</span>][new_pds<span style="color: rgb(98,98,98)">.</span>treated_start_idxs[<span style="color: rgb(98,98,98)">0</span>]:] <span style="color: rgb(98,98,98)">-</span> model<span style="color: rgb(98,98,98)">.</span>results[<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">y_hat</span><span style="color: rgb(175,0,0)">&#39;</span>][new_pds<span style="color: rgb(98,98,98)">.</span>treated_start_idxs[<span style="color: rgb(98,98,98)">0</span>]:]
+<span class="ansi-green-intense-fg ansi-bold">    101</span> error <span style="color: rgb(98,98,98)">=</span> np<span style="color: rgb(98,98,98)">.</span>abs(residuals[<span style="color: rgb(98,98,98)">-</span><span style="color: rgb(98,98,98)">1</span>])
+<span class="ansi-green-fg">--&gt; 103</span> upper <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">residuals</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">:</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">-</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">1</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">+</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">error</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">reshape</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">n_treated_time_periods</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg">n_treated_units</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    104</span> lower <span style="color: rgb(98,98,98)">=</span> (residuals[:<span style="color: rgb(98,98,98)">-</span><span style="color: rgb(98,98,98)">1</span>] <span style="color: rgb(98,98,98)">-</span> error)<span style="color: rgb(98,98,98)">.</span>reshape(n_treated_time_periods,n_treated_units)
+<span class="ansi-green-intense-fg ansi-bold">    106</span> lower_df[t_unit] <span style="color: rgb(98,98,98)">+</span><span style="color: rgb(98,98,98)">=</span> lower
+
+<span class="ansi-red-fg">ValueError</span>: cannot reshape array of size 30 into shape (13,2)
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[167]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Dict</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">resolve_end_period</span><span class="p">(</span><span class="n">time_period</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">time_period</span><span class="o">.</span><span class="n">end</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">time_period</span><span class="o">.</span><span class="n">end</span><span class="o">+</span><span class="mi">1</span>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">jkp</span><span class="p">(</span><span class="n">panel</span><span class="p">:</span> <span class="n">PanelDataset</span><span class="p">,</span> <span class="n">estimator</span><span class="p">:</span> <span class="n">Callable</span> <span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">.1</span> <span class="p">,</span> <span class="o">**</span><span class="n">estimator_kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">:</span>
+
+    <span class="n">pre_t_time</span> <span class="o">=</span> <span class="n">panel</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span>
+    <span class="n">n_treated_units</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">panel</span><span class="o">.</span><span class="n">treated_units</span><span class="p">)</span>
+    <span class="n">n_treated_time_periods</span> <span class="o">=</span> <span class="p">(</span><span class="n">panel</span><span class="o">.</span><span class="n">treated_end_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">panel</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">+</span><span class="mi">1</span>
+
+    <span class="n">lower_df</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">pre_t_time</span>
+              <span class="p">,</span> <span class="n">n_treated_time_periods</span>
+              <span class="p">,</span> <span class="n">n_treated_units</span><span class="p">))</span>
+
+    <span class="n">upper_df</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">pre_t_time</span>
+              <span class="p">,</span> <span class="n">n_treated_time_periods</span>
+              <span class="p">,</span> <span class="n">n_treated_units</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">t_unit</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">pre_t_time</span><span class="p">):</span>
+
+        <span class="c1"># drop t unit from pre-treatment periods</span>
+        <span class="n">new_wide_df</span> <span class="o">=</span> <span class="n">panel</span><span class="o">.</span><span class="n">wide_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">panel</span><span class="o">.</span><span class="n">times</span><span class="p">[</span><span class="n">t_unit</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># append to end</span>
+        <span class="n">new_wide_df</span> <span class="o">=</span> <span class="n">new_wide_df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">new_column</span> <span class="o">=</span> <span class="n">panel</span><span class="o">.</span><span class="n">wide_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">panel</span><span class="o">.</span><span class="n">times</span><span class="p">[</span><span class="n">t_unit</span><span class="p">]])</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;new_column&quot;</span><span class="p">:</span> <span class="n">panel</span><span class="o">.</span><span class="n">times</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">})</span>
+
+        <span class="c1"># new PDS</span>
+        <span class="n">new_pds</span> <span class="o">=</span> <span class="n">PanelDataset</span><span class="p">(</span><span class="n">new_wide_df</span>
+                               <span class="p">,</span> <span class="p">[</span><span class="n">TimePeriod</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">tp</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">resolve_end_period</span><span class="p">(</span><span class="n">tp</span><span class="p">))</span> <span class="k">for</span> <span class="n">tp</span> <span class="ow">in</span> <span class="n">panel</span><span class="o">.</span><span class="n">treated_periods</span><span class="p">]</span>
+                               <span class="p">,</span> <span class="n">panel</span><span class="o">.</span><span class="n">treated_units</span><span class="p">)</span>
+        <span class="c1"># fit new model</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">estimator</span><span class="p">(</span><span class="o">**</span><span class="n">estimator_kwargs</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">new_pds</span><span class="p">)</span>
+
+        <span class="n">residuals</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">][</span><span class="n">new_pds</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]:]</span> <span class="o">-</span> <span class="n">model</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;y_hat&#39;</span><span class="p">][</span><span class="n">new_pds</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]:]</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">residuals</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="n">upper</span> <span class="o">=</span> <span class="n">residuals</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">error</span>
+        <span class="n">lower</span> <span class="o">=</span> <span class="n">residuals</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">error</span>
+
+        <span class="n">lower_df</span><span class="p">[</span><span class="n">t_unit</span><span class="p">]</span> <span class="o">+=</span> <span class="n">lower</span>
+        <span class="n">upper_df</span><span class="p">[</span><span class="n">t_unit</span><span class="p">]</span> <span class="o">+=</span> <span class="n">upper</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">lower_df</span><span class="p">,</span> <span class="n">alpha</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">upper_df</span><span class="p">,</span> <span class="n">alpha</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[169]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">upper</span><span class="p">,</span> <span class="n">lower</span> <span class="o">=</span> <span class="n">jkp</span><span class="p">(</span><span class="n">pds</span><span class="p">,</span><span class="n">TBRRidge</span> <span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">.1</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[104]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">residuals</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">][</span><span class="n">new_pds</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]:]</span> <span class="o">-</span> <span class="n">model</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;y_hat&#39;</span><span class="p">][</span><span class="n">new_pds</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]:]</span>
+
+<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">residuals</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">upper</span> <span class="o">=</span> <span class="n">residuals</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">error</span>
+<span class="n">lower</span> <span class="o">=</span> <span class="n">residuals</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">error</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[151]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">lower_df</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[151]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([  26.67197577, -145.99702647,  -59.01326107, -137.5385917 ,
+         77.45688827,  161.15620701,  365.83684266,  432.34571191,
+        148.27407313,  348.35518953,   27.77714308,   31.44751405,
+         78.44489367,  157.44469118,   23.00917491])
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[161]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">lower_df</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[161]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([[ -245.29132497,   -81.64178769],
+       [ -389.68769713,  -273.54434137],
+       [ -355.61973184,  -159.30314536],
+       [ -379.31490151,  -288.53288332],
+       [ -259.97186247,    52.29574751],
+       [ -295.36283832,   229.58799744],
+       [ -289.068138  ,   628.13741019],
+       [ -257.28873236,   778.90302821],
+       [ -640.65376712,   587.6600975 ],
+       [ -345.13209464,   683.34380803],
+       [-1258.60311232,   872.0330179 ],
+       [-1290.01825979,   887.22515952],
+       [ -400.70261044,   227.47539762],
+       [ -308.24286582,   254.81305654],
+       [ -436.32923177,   112.15619806]])
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[162]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">upper_df</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[162]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([[  78.02296486,  318.05036833],
+       [ -59.22074608,  108.23512353],
+       [ -16.04973146,  240.35389126],
+       [ -38.29194866,  104.74625001],
+       [  65.1853381 ,  432.06293016],
+       [  49.22205675,  618.70712685],
+       [  56.37897976, 1017.45632974],
+       [  49.26895942, 1162.46403775],
+       [-320.82614846,  963.87675825],
+       [ -24.13588413, 1067.45385883],
+       [-909.53036418, 1271.79451597],
+       [-929.89225604, 1305.02735736],
+       [ -98.61692922,  599.89445312],
+       [  32.64084971,  627.7193562 ],
+       [-104.3190664 ,  496.18413908]])
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[64]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><br/><br/><span></span><span class="n">resolve_end_period</span><span class="p">(</span><span class="n">pds</span><span class="o">.</span><span class="n">treated_periods</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_wide</span> <span class="o">=</span> <span class="n">pds</span><span class="o">.</span><span class="n">wide_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">1970</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pds</span><span class="o">.</span><span class="n">times</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2001
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_wide</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">new_column</span> <span class="o">=</span> <span class="n">pds</span><span class="o">.</span><span class="n">wide_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="mi">1970</span><span class="p">])</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;new_column&quot;</span><span class="p">:</span> <span class="n">pds</span><span class="o">.</span><span class="n">times</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>time_unit</th>
+      <th>1971</th>
+      <th>1972</th>
+      <th>1973</th>
+      <th>1974</th>
+      <th>1975</th>
+      <th>1976</th>
+      <th>1977</th>
+      <th>1978</th>
+      <th>1979</th>
+      <th>1980</th>
+      <th>...</th>
+      <th>1992</th>
+      <th>1993</th>
+      <th>1994</th>
+      <th>1995</th>
+      <th>1996</th>
+      <th>1997</th>
+      <th>1998</th>
+      <th>1999</th>
+      <th>2000</th>
+      <th>2001</th>
+    </tr>
+    <tr>
+      <th>unit</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alabama</th>
+      <td>95.400002</td>
+      <td>101.099998</td>
+      <td>102.900002</td>
+      <td>108.199997</td>
+      <td>111.699997</td>
+      <td>116.199997</td>
+      <td>117.099998</td>
+      <td>123.000000</td>
+      <td>121.400002</td>
+      <td>123.199997</td>
+      <td>...</td>
+      <td>109.099998</td>
+      <td>108.500000</td>
+      <td>107.099998</td>
+      <td>102.599998</td>
+      <td>101.400002</td>
+      <td>104.900002</td>
+      <td>106.199997</td>
+      <td>100.699997</td>
+      <td>96.199997</td>
+      <td>89.800003</td>
+    </tr>
+    <tr>
+      <th>Arkansas</th>
+      <td>104.099998</td>
+      <td>103.900002</td>
+      <td>108.000000</td>
+      <td>109.699997</td>
+      <td>114.800003</td>
+      <td>119.099998</td>
+      <td>122.599998</td>
+      <td>127.300003</td>
+      <td>126.500000</td>
+      <td>131.800003</td>
+      <td>...</td>
+      <td>126.000000</td>
+      <td>113.800003</td>
+      <td>108.800003</td>
+      <td>113.000000</td>
+      <td>110.699997</td>
+      <td>108.699997</td>
+      <td>109.500000</td>
+      <td>104.800003</td>
+      <td>99.400002</td>
+      <td>100.300003</td>
+    </tr>
+    <tr>
+      <th>California</th>
+      <td>121.000000</td>
+      <td>123.500000</td>
+      <td>124.400002</td>
+      <td>126.699997</td>
+      <td>127.099998</td>
+      <td>128.000000</td>
+      <td>126.400002</td>
+      <td>126.099998</td>
+      <td>121.900002</td>
+      <td>120.199997</td>
+      <td>...</td>
+      <td>67.500000</td>
+      <td>63.400002</td>
+      <td>58.599998</td>
+      <td>56.400002</td>
+      <td>54.500000</td>
+      <td>53.799999</td>
+      <td>52.299999</td>
+      <td>47.200001</td>
+      <td>41.599998</td>
+      <td>123.000000</td>
+    </tr>
+    <tr>
+      <th>Colorado</th>
+      <td>125.500000</td>
+      <td>134.300003</td>
+      <td>137.899994</td>
+      <td>132.800003</td>
+      <td>131.000000</td>
+      <td>134.199997</td>
+      <td>132.000000</td>
+      <td>129.199997</td>
+      <td>131.500000</td>
+      <td>131.000000</td>
+      <td>...</td>
+      <td>88.300003</td>
+      <td>88.599998</td>
+      <td>89.099998</td>
+      <td>85.400002</td>
+      <td>83.099998</td>
+      <td>81.300003</td>
+      <td>81.199997</td>
+      <td>79.599998</td>
+      <td>73.000000</td>
+      <td>124.800003</td>
+    </tr>
+    <tr>
+      <th>Connecticut</th>
+      <td>117.599998</td>
+      <td>110.800003</td>
+      <td>109.300003</td>
+      <td>112.400002</td>
+      <td>110.199997</td>
+      <td>113.400002</td>
+      <td>117.300003</td>
+      <td>117.500000</td>
+      <td>117.400002</td>
+      <td>118.000000</td>
+      <td>...</td>
+      <td>83.500000</td>
+      <td>79.099998</td>
+      <td>76.599998</td>
+      <td>79.300003</td>
+      <td>76.000000</td>
+      <td>75.900002</td>
+      <td>75.500000</td>
+      <td>73.400002</td>
+      <td>71.400002</td>
+      <td>120.000000</td>
+    </tr>
+    <tr>
+      <th>Delaware</th>
+      <td>161.100006</td>
+      <td>156.300003</td>
+      <td>154.699997</td>
+      <td>151.300003</td>
+      <td>147.600006</td>
+      <td>153.000000</td>
+      <td>153.300003</td>
+      <td>155.500000</td>
+      <td>150.199997</td>
+      <td>150.500000</td>
+      <td>...</td>
+      <td>120.000000</td>
+      <td>123.800003</td>
+      <td>126.099998</td>
+      <td>127.199997</td>
+      <td>128.300003</td>
+      <td>124.099998</td>
+      <td>132.800003</td>
+      <td>139.500000</td>
+      <td>140.699997</td>
+      <td>155.000000</td>
+    </tr>
+    <tr>
+      <th>Georgia</th>
+      <td>115.699997</td>
+      <td>117.000000</td>
+      <td>119.800003</td>
+      <td>123.699997</td>
+      <td>122.900002</td>
+      <td>125.900002</td>
+      <td>127.900002</td>
+      <td>130.600006</td>
+      <td>131.000000</td>
+      <td>134.000000</td>
+      <td>...</td>
+      <td>109.199997</td>
+      <td>109.199997</td>
+      <td>107.800003</td>
+      <td>100.300003</td>
+      <td>102.699997</td>
+      <td>100.599998</td>
+      <td>100.500000</td>
+      <td>97.099998</td>
+      <td>88.400002</td>
+      <td>109.900002</td>
+    </tr>
+    <tr>
+      <th>Idaho</th>
+      <td>108.500000</td>
+      <td>126.099998</td>
+      <td>121.800003</td>
+      <td>125.599998</td>
+      <td>123.300003</td>
+      <td>125.099998</td>
+      <td>125.000000</td>
+      <td>122.800003</td>
+      <td>117.500000</td>
+      <td>115.199997</td>
+      <td>...</td>
+      <td>85.099998</td>
+      <td>86.699997</td>
+      <td>93.000000</td>
+      <td>78.199997</td>
+      <td>73.599998</td>
+      <td>75.000000</td>
+      <td>78.900002</td>
+      <td>75.099998</td>
+      <td>66.900002</td>
+      <td>102.400002</td>
+    </tr>
+    <tr>
+      <th>Illinois</th>
+      <td>125.599998</td>
+      <td>126.599998</td>
+      <td>124.400002</td>
+      <td>131.899994</td>
+      <td>131.800003</td>
+      <td>134.399994</td>
+      <td>134.000000</td>
+      <td>136.699997</td>
+      <td>135.300003</td>
+      <td>135.199997</td>
+      <td>...</td>
+      <td>94.800003</td>
+      <td>94.599998</td>
+      <td>85.699997</td>
+      <td>84.300003</td>
+      <td>81.800003</td>
+      <td>79.599998</td>
+      <td>80.300003</td>
+      <td>72.199997</td>
+      <td>70.000000</td>
+      <td>124.800003</td>
+    </tr>
+    <tr>
+      <th>Indiana</th>
+      <td>139.300003</td>
+      <td>149.199997</td>
+      <td>156.000000</td>
+      <td>159.600006</td>
+      <td>162.399994</td>
+      <td>166.600006</td>
+      <td>173.000000</td>
+      <td>150.899994</td>
+      <td>148.899994</td>
+      <td>146.899994</td>
+      <td>...</td>
+      <td>128.199997</td>
+      <td>126.800003</td>
+      <td>128.199997</td>
+      <td>135.399994</td>
+      <td>135.100006</td>
+      <td>135.300003</td>
+      <td>135.899994</td>
+      <td>133.300003</td>
+      <td>125.500000</td>
+      <td>134.600006</td>
+    </tr>
+    <tr>
+      <th>Iowa</th>
+      <td>108.400002</td>
+      <td>109.400002</td>
+      <td>110.599998</td>
+      <td>116.099998</td>
+      <td>120.500000</td>
+      <td>124.400002</td>
+      <td>125.500000</td>
+      <td>127.099998</td>
+      <td>124.199997</td>
+      <td>124.599998</td>
+      <td>...</td>
+      <td>95.199997</td>
+      <td>92.500000</td>
+      <td>93.400002</td>
+      <td>93.000000</td>
+      <td>94.000000</td>
+      <td>93.900002</td>
+      <td>94.000000</td>
+      <td>91.699997</td>
+      <td>88.900002</td>
+      <td>108.500000</td>
+    </tr>
+    <tr>
+      <th>Kansas</th>
+      <td>102.800003</td>
+      <td>111.000000</td>
+      <td>115.199997</td>
+      <td>118.599998</td>
+      <td>123.400002</td>
+      <td>127.699997</td>
+      <td>127.900002</td>
+      <td>127.099998</td>
+      <td>126.400002</td>
+      <td>127.099998</td>
+      <td>...</td>
+      <td>90.000000</td>
+      <td>89.900002</td>
+      <td>89.099998</td>
+      <td>90.099998</td>
+      <td>88.699997</td>
+      <td>89.199997</td>
+      <td>87.599998</td>
+      <td>83.300003</td>
+      <td>79.800003</td>
+      <td>114.000000</td>
+    </tr>
+    <tr>
+      <th>Kentucky</th>
+      <td>163.500000</td>
+      <td>179.399994</td>
+      <td>201.899994</td>
+      <td>212.399994</td>
+      <td>223.000000</td>
+      <td>230.899994</td>
+      <td>229.399994</td>
+      <td>224.699997</td>
+      <td>214.899994</td>
+      <td>215.300003</td>
+      <td>...</td>
+      <td>167.600006</td>
+      <td>167.600006</td>
+      <td>170.100006</td>
+      <td>175.300003</td>
+      <td>179.000000</td>
+      <td>186.800003</td>
+      <td>171.300003</td>
+      <td>165.300003</td>
+      <td>156.199997</td>
+      <td>155.800003</td>
+    </tr>
+    <tr>
+      <th>Louisiana</th>
+      <td>119.800003</td>
+      <td>125.300003</td>
+      <td>126.699997</td>
+      <td>129.899994</td>
+      <td>133.600006</td>
+      <td>139.600006</td>
+      <td>140.000000</td>
+      <td>142.699997</td>
+      <td>140.100006</td>
+      <td>143.800003</td>
+      <td>...</td>
+      <td>108.500000</td>
+      <td>106.199997</td>
+      <td>105.300003</td>
+      <td>105.699997</td>
+      <td>106.800003</td>
+      <td>105.300003</td>
+      <td>103.199997</td>
+      <td>101.000000</td>
+      <td>104.300003</td>
+      <td>115.900002</td>
+    </tr>
+    <tr>
+      <th>Maine</th>
+      <td>133.199997</td>
+      <td>136.500000</td>
+      <td>138.000000</td>
+      <td>142.100006</td>
+      <td>140.699997</td>
+      <td>144.899994</td>
+      <td>145.600006</td>
+      <td>143.899994</td>
+      <td>138.500000</td>
+      <td>141.199997</td>
+      <td>...</td>
+      <td>114.500000</td>
+      <td>108.500000</td>
+      <td>101.599998</td>
+      <td>102.300003</td>
+      <td>100.000000</td>
+      <td>101.099998</td>
+      <td>94.500000</td>
+      <td>85.500000</td>
+      <td>82.900002</td>
+      <td>128.500000</td>
+    </tr>
+    <tr>
+      <th>Minnesota</th>
+      <td>116.400002</td>
+      <td>96.800003</td>
+      <td>106.800003</td>
+      <td>110.599998</td>
+      <td>111.500000</td>
+      <td>116.699997</td>
+      <td>117.199997</td>
+      <td>118.900002</td>
+      <td>118.300003</td>
+      <td>117.699997</td>
+      <td>...</td>
+      <td>83.800003</td>
+      <td>81.599998</td>
+      <td>83.400002</td>
+      <td>84.099998</td>
+      <td>81.699997</td>
+      <td>84.099998</td>
+      <td>83.199997</td>
+      <td>80.699997</td>
+      <td>76.000000</td>
+      <td>104.300003</td>
+    </tr>
+    <tr>
+      <th>Mississippi</th>
+      <td>105.400002</td>
+      <td>112.099998</td>
+      <td>115.000000</td>
+      <td>117.099998</td>
+      <td>116.800003</td>
+      <td>120.900002</td>
+      <td>122.099998</td>
+      <td>124.900002</td>
+      <td>123.900002</td>
+      <td>127.000000</td>
+      <td>...</td>
+      <td>103.900002</td>
+      <td>105.400002</td>
+      <td>106.000000</td>
+      <td>107.500000</td>
+      <td>106.900002</td>
+      <td>106.300003</td>
+      <td>107.000000</td>
+      <td>103.900002</td>
+      <td>97.199997</td>
+      <td>93.400002</td>
+    </tr>
+    <tr>
+      <th>Missouri</th>
+      <td>127.599998</td>
+      <td>130.000000</td>
+      <td>132.100006</td>
+      <td>135.399994</td>
+      <td>135.600006</td>
+      <td>139.500000</td>
+      <td>140.800003</td>
+      <td>141.800003</td>
+      <td>140.199997</td>
+      <td>142.100006</td>
+      <td>...</td>
+      <td>122.300003</td>
+      <td>121.599998</td>
+      <td>119.400002</td>
+      <td>124.000000</td>
+      <td>124.099998</td>
+      <td>120.599998</td>
+      <td>120.099998</td>
+      <td>118.000000</td>
+      <td>113.800003</td>
+      <td>121.300003</td>
+    </tr>
+    <tr>
+      <th>Montana</th>
+      <td>115.599998</td>
+      <td>122.199997</td>
+      <td>119.900002</td>
+      <td>121.900002</td>
+      <td>123.699997</td>
+      <td>124.900002</td>
+      <td>127.000000</td>
+      <td>127.199997</td>
+      <td>120.300003</td>
+      <td>122.000000</td>
+      <td>...</td>
+      <td>86.599998</td>
+      <td>86.000000</td>
+      <td>88.199997</td>
+      <td>90.500000</td>
+      <td>87.300003</td>
+      <td>88.900002</td>
+      <td>89.099998</td>
+      <td>82.599998</td>
+      <td>75.500000</td>
+      <td>111.199997</td>
+    </tr>
+    <tr>
+      <th>Nebraska</th>
+      <td>108.599998</td>
+      <td>104.900002</td>
+      <td>106.599998</td>
+      <td>110.500000</td>
+      <td>114.099998</td>
+      <td>118.099998</td>
+      <td>117.699997</td>
+      <td>117.400002</td>
+      <td>116.099998</td>
+      <td>116.300003</td>
+      <td>...</td>
+      <td>90.599998</td>
+      <td>91.099998</td>
+      <td>85.900002</td>
+      <td>88.500000</td>
+      <td>86.199997</td>
+      <td>85.500000</td>
+      <td>83.099998</td>
+      <td>86.599998</td>
+      <td>77.599998</td>
+      <td>108.099998</td>
+    </tr>
+    <tr>
+      <th>Nevada</th>
+      <td>190.500000</td>
+      <td>198.600006</td>
+      <td>201.500000</td>
+      <td>204.699997</td>
+      <td>205.199997</td>
+      <td>201.399994</td>
+      <td>190.800003</td>
+      <td>187.000000</td>
+      <td>183.300003</td>
+      <td>177.699997</td>
+      <td>...</td>
+      <td>110.000000</td>
+      <td>108.099998</td>
+      <td>105.199997</td>
+      <td>100.900002</td>
+      <td>99.000000</td>
+      <td>95.599998</td>
+      <td>102.400002</td>
+      <td>103.900002</td>
+      <td>93.199997</td>
+      <td>189.500000</td>
+    </tr>
+    <tr>
+      <th>New Hampshire</th>
+      <td>278.000000</td>
+      <td>296.200012</td>
+      <td>279.000000</td>
+      <td>269.799988</td>
+      <td>269.100006</td>
+      <td>290.500000</td>
+      <td>278.799988</td>
+      <td>269.600006</td>
+      <td>254.600006</td>
+      <td>247.800003</td>
+      <td>...</td>
+      <td>143.699997</td>
+      <td>148.899994</td>
+      <td>153.800003</td>
+      <td>158.500000</td>
+      <td>158.000000</td>
+      <td>174.399994</td>
+      <td>173.800003</td>
+      <td>171.699997</td>
+      <td>147.300003</td>
+      <td>265.700012</td>
+    </tr>
+    <tr>
+      <th>New Mexico</th>
+      <td>92.599998</td>
+      <td>99.300003</td>
+      <td>98.900002</td>
+      <td>100.300003</td>
+      <td>103.099998</td>
+      <td>102.400002</td>
+      <td>102.400002</td>
+      <td>103.099998</td>
+      <td>101.000000</td>
+      <td>102.699997</td>
+      <td>...</td>
+      <td>71.400002</td>
+      <td>69.000000</td>
+      <td>68.199997</td>
+      <td>67.000000</td>
+      <td>65.699997</td>
+      <td>61.799999</td>
+      <td>62.599998</td>
+      <td>59.700001</td>
+      <td>53.799999</td>
+      <td>90.000000</td>
+    </tr>
+    <tr>
+      <th>North Carolina</th>
+      <td>187.600006</td>
+      <td>214.100006</td>
+      <td>226.500000</td>
+      <td>227.300003</td>
+      <td>226.000000</td>
+      <td>230.199997</td>
+      <td>217.000000</td>
+      <td>205.500000</td>
+      <td>197.300003</td>
+      <td>187.800003</td>
+      <td>...</td>
+      <td>128.899994</td>
+      <td>129.699997</td>
+      <td>112.699997</td>
+      <td>124.900002</td>
+      <td>129.699997</td>
+      <td>125.599998</td>
+      <td>126.000000</td>
+      <td>113.099998</td>
+      <td>109.000000</td>
+      <td>172.399994</td>
+    </tr>
+    <tr>
+      <th>North Dakota</th>
+      <td>98.500000</td>
+      <td>103.800003</td>
+      <td>108.699997</td>
+      <td>110.500000</td>
+      <td>117.900002</td>
+      <td>125.400002</td>
+      <td>122.199997</td>
+      <td>121.900002</td>
+      <td>121.300003</td>
+      <td>123.699997</td>
+      <td>...</td>
+      <td>74.300003</td>
+      <td>83.000000</td>
+      <td>81.000000</td>
+      <td>80.599998</td>
+      <td>80.800003</td>
+      <td>77.500000</td>
+      <td>79.099998</td>
+      <td>74.699997</td>
+      <td>72.500000</td>
+      <td>93.800003</td>
+    </tr>
+    <tr>
+      <th>Ohio</th>
+      <td>124.599998</td>
+      <td>124.400002</td>
+      <td>120.500000</td>
+      <td>122.099998</td>
+      <td>122.500000</td>
+      <td>124.599998</td>
+      <td>127.300003</td>
+      <td>131.300003</td>
+      <td>130.899994</td>
+      <td>133.500000</td>
+      <td>...</td>
+      <td>112.300003</td>
+      <td>108.900002</td>
+      <td>108.599998</td>
+      <td>111.699997</td>
+      <td>107.599998</td>
+      <td>108.599998</td>
+      <td>106.400002</td>
+      <td>104.000000</td>
+      <td>99.900002</td>
+      <td>121.599998</td>
+    </tr>
+    <tr>
+      <th>Oklahoma</th>
+      <td>115.400002</td>
+      <td>121.699997</td>
+      <td>124.099998</td>
+      <td>130.500000</td>
+      <td>132.899994</td>
+      <td>138.600006</td>
+      <td>140.399994</td>
+      <td>143.600006</td>
+      <td>141.600006</td>
+      <td>141.600006</td>
+      <td>...</td>
+      <td>86.300003</td>
+      <td>86.199997</td>
+      <td>104.800003</td>
+      <td>109.500000</td>
+      <td>110.800003</td>
+      <td>111.800003</td>
+      <td>112.199997</td>
+      <td>111.400002</td>
+      <td>108.900002</td>
+      <td>108.400002</td>
+    </tr>
+    <tr>
+      <th>Pennsylvania</th>
+      <td>106.300003</td>
+      <td>109.000000</td>
+      <td>110.699997</td>
+      <td>114.199997</td>
+      <td>114.599998</td>
+      <td>118.800003</td>
+      <td>120.099998</td>
+      <td>122.300003</td>
+      <td>122.599998</td>
+      <td>124.000000</td>
+      <td>...</td>
+      <td>96.199997</td>
+      <td>94.699997</td>
+      <td>95.400002</td>
+      <td>95.400002</td>
+      <td>93.300003</td>
+      <td>92.900002</td>
+      <td>92.099998</td>
+      <td>91.099998</td>
+      <td>87.900002</td>
+      <td>107.300003</td>
+    </tr>
+    <tr>
+      <th>Rhode Island</th>
+      <td>123.199997</td>
+      <td>134.399994</td>
+      <td>142.000000</td>
+      <td>146.100006</td>
+      <td>154.699997</td>
+      <td>150.199997</td>
+      <td>148.800003</td>
+      <td>146.800003</td>
+      <td>145.800003</td>
+      <td>149.300003</td>
+      <td>...</td>
+      <td>100.099998</td>
+      <td>94.099998</td>
+      <td>91.900002</td>
+      <td>90.800003</td>
+      <td>87.500000</td>
+      <td>90.000000</td>
+      <td>88.699997</td>
+      <td>86.900002</td>
+      <td>83.099998</td>
+      <td>123.900002</td>
+    </tr>
+    <tr>
+      <th>South Carolina</th>
+      <td>115.000000</td>
+      <td>118.699997</td>
+      <td>125.500000</td>
+      <td>129.699997</td>
+      <td>130.500000</td>
+      <td>136.800003</td>
+      <td>137.199997</td>
+      <td>140.399994</td>
+      <td>135.699997</td>
+      <td>138.300003</td>
+      <td>...</td>
+      <td>112.800003</td>
+      <td>115.199997</td>
+      <td>112.199997</td>
+      <td>109.199997</td>
+      <td>102.900002</td>
+      <td>124.500000</td>
+      <td>126.900002</td>
+      <td>109.400002</td>
+      <td>103.900002</td>
+      <td>103.599998</td>
+    </tr>
+    <tr>
+      <th>South Dakota</th>
+      <td>96.699997</td>
+      <td>103.000000</td>
+      <td>103.500000</td>
+      <td>108.400002</td>
+      <td>113.500000</td>
+      <td>116.699997</td>
+      <td>115.599998</td>
+      <td>116.900002</td>
+      <td>117.400002</td>
+      <td>114.699997</td>
+      <td>...</td>
+      <td>93.000000</td>
+      <td>91.599998</td>
+      <td>94.800003</td>
+      <td>98.599998</td>
+      <td>92.300003</td>
+      <td>88.800003</td>
+      <td>88.300003</td>
+      <td>83.500000</td>
+      <td>75.099998</td>
+      <td>92.699997</td>
+    </tr>
+    <tr>
+      <th>Tennessee</th>
+      <td>106.300003</td>
+      <td>111.500000</td>
+      <td>109.699997</td>
+      <td>114.800003</td>
+      <td>117.400002</td>
+      <td>121.699997</td>
+      <td>124.599998</td>
+      <td>127.300003</td>
+      <td>127.199997</td>
+      <td>130.399994</td>
+      <td>...</td>
+      <td>121.000000</td>
+      <td>120.800003</td>
+      <td>118.800003</td>
+      <td>125.400002</td>
+      <td>119.199997</td>
+      <td>118.900002</td>
+      <td>119.699997</td>
+      <td>115.599998</td>
+      <td>108.699997</td>
+      <td>99.800003</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>108.900002</td>
+      <td>108.599998</td>
+      <td>110.400002</td>
+      <td>114.699997</td>
+      <td>116.000000</td>
+      <td>121.400002</td>
+      <td>124.199997</td>
+      <td>126.599998</td>
+      <td>126.400002</td>
+      <td>129.699997</td>
+      <td>...</td>
+      <td>77.199997</td>
+      <td>81.300003</td>
+      <td>78.800003</td>
+      <td>75.199997</td>
+      <td>74.599998</td>
+      <td>72.599998</td>
+      <td>73.199997</td>
+      <td>67.599998</td>
+      <td>69.300003</td>
+      <td>106.400002</td>
+    </tr>
+    <tr>
+      <th>Utah</th>
+      <td>67.699997</td>
+      <td>71.300003</td>
+      <td>72.699997</td>
+      <td>75.599998</td>
+      <td>75.800003</td>
+      <td>77.900002</td>
+      <td>78.000000</td>
+      <td>79.599998</td>
+      <td>79.099998</td>
+      <td>74.800003</td>
+      <td>...</td>
+      <td>55.000000</td>
+      <td>56.200001</td>
+      <td>55.799999</td>
+      <td>52.000000</td>
+      <td>54.000000</td>
+      <td>57.000000</td>
+      <td>42.299999</td>
+      <td>43.900002</td>
+      <td>40.700001</td>
+      <td>65.500000</td>
+    </tr>
+    <tr>
+      <th>Vermont</th>
+      <td>124.400002</td>
+      <td>138.000000</td>
+      <td>146.800003</td>
+      <td>151.800003</td>
+      <td>155.500000</td>
+      <td>171.100006</td>
+      <td>169.399994</td>
+      <td>162.399994</td>
+      <td>160.899994</td>
+      <td>161.600006</td>
+      <td>...</td>
+      <td>126.500000</td>
+      <td>117.199997</td>
+      <td>120.300003</td>
+      <td>123.199997</td>
+      <td>102.500000</td>
+      <td>97.699997</td>
+      <td>97.000000</td>
+      <td>94.099998</td>
+      <td>88.900002</td>
+      <td>122.599998</td>
+    </tr>
+    <tr>
+      <th>Virginia</th>
+      <td>128.399994</td>
+      <td>137.000000</td>
+      <td>143.100006</td>
+      <td>149.600006</td>
+      <td>152.699997</td>
+      <td>158.100006</td>
+      <td>157.699997</td>
+      <td>155.899994</td>
+      <td>151.800003</td>
+      <td>148.899994</td>
+      <td>...</td>
+      <td>108.199997</td>
+      <td>105.400002</td>
+      <td>106.199997</td>
+      <td>106.699997</td>
+      <td>104.599998</td>
+      <td>108.000000</td>
+      <td>105.599998</td>
+      <td>102.099998</td>
+      <td>96.699997</td>
+      <td>124.300003</td>
+    </tr>
+    <tr>
+      <th>West Virginia</th>
+      <td>111.500000</td>
+      <td>117.500000</td>
+      <td>116.599998</td>
+      <td>119.900002</td>
+      <td>123.199997</td>
+      <td>129.699997</td>
+      <td>133.899994</td>
+      <td>131.600006</td>
+      <td>122.099998</td>
+      <td>122.300003</td>
+      <td>...</td>
+      <td>97.900002</td>
+      <td>111.000000</td>
+      <td>104.199997</td>
+      <td>115.199997</td>
+      <td>112.699997</td>
+      <td>114.500000</td>
+      <td>114.599998</td>
+      <td>112.400002</td>
+      <td>107.900002</td>
+      <td>114.500000</td>
+    </tr>
+    <tr>
+      <th>Wisconsin</th>
+      <td>105.400002</td>
+      <td>108.800003</td>
+      <td>109.500000</td>
+      <td>111.800003</td>
+      <td>113.500000</td>
+      <td>115.400002</td>
+      <td>117.199997</td>
+      <td>116.699997</td>
+      <td>117.099998</td>
+      <td>117.599998</td>
+      <td>...</td>
+      <td>96.199997</td>
+      <td>91.199997</td>
+      <td>91.800003</td>
+      <td>93.500000</td>
+      <td>92.099998</td>
+      <td>91.900002</td>
+      <td>88.699997</td>
+      <td>84.400002</td>
+      <td>80.099998</td>
+      <td>106.400002</td>
+    </tr>
+    <tr>
+      <th>Wyoming</th>
+      <td>131.699997</td>
+      <td>140.000000</td>
+      <td>141.199997</td>
+      <td>145.800003</td>
+      <td>160.699997</td>
+      <td>161.500000</td>
+      <td>160.399994</td>
+      <td>160.300003</td>
+      <td>168.600006</td>
+      <td>158.100006</td>
+      <td>...</td>
+      <td>110.800003</td>
+      <td>108.400002</td>
+      <td>111.199997</td>
+      <td>115.000000</td>
+      <td>110.300003</td>
+      <td>108.800003</td>
+      <td>102.900002</td>
+      <td>104.800003</td>
+      <td>90.500000</td>
+      <td>132.199997</td>
+    </tr>
+  </tbody>
+</table>
+<p>39 rows × 31 columns</p>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pds</span><span class="o">.</span><span class="n">wide_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="mi">1970</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+unit
+Alabama            89.800003
+Arkansas          100.300003
+California        123.000000
+Colorado          124.800003
+Connecticut       120.000000
+Delaware          155.000000
+Georgia           109.900002
+Idaho             102.400002
+Illinois          124.800003
+Indiana           134.600006
+Iowa              108.500000
+Kansas            114.000000
+Kentucky          155.800003
+Louisiana         115.900002
+Maine             128.500000
+Minnesota         104.300003
+Mississippi        93.400002
+Missouri          121.300003
+Montana           111.199997
+Nebraska          108.099998
+Nevada            189.500000
+New Hampshire     265.700012
+New Mexico         90.000000
+North Carolina    172.399994
+North Dakota       93.800003
+Ohio              121.599998
+Oklahoma          108.400002
+Pennsylvania      107.300003
+Rhode Island      123.900002
+South Carolina    103.599998
+South Dakota       92.699997
+Tennessee          99.800003
+Texas             106.400002
+Utah               65.500000
+Vermont           122.599998
+Virginia          124.300003
+West Virginia     114.500000
+Wisconsin         106.400002
+Wyoming           132.199997
+Name: 1970, dtype: float64
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Adobe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

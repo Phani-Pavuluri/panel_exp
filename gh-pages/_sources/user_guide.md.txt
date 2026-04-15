@@ -1,0 +1,1002 @@
+## Overview
+
+The `panel_exp` package is a comprehensive toolkit for panel data modeling and experimental design, specifically designed for causal inference in geo-based experiments. It provides a complete workflow from experimental design through statistical analysis to inference, making it ideal for marketing experiments and other causal inference applications.
+
+## Package Architecture
+
+The package is organized into three main modules that follow the natural progression of an experiment:
+
+1. **Design** - Experimental design and power analysis
+2. **Methods** - Statistical methods for causal estimation  
+3. **Inference** - Uncertainty quantification and hypothesis testing
+
+---
+
+## 1. Design Module
+
+The design module provides comprehensive tools for creating robust experimental designs, particularly optimized for geo-based experiments in marketing. It handles the critical phase of experiment setup, ensuring statistical validity and practical feasibility.
+
+#### GeoExperimentDesign
+The main orchestrator for creating geo-based experiment designs. Based on the params provided, this function returns the best test and control markets along with pre-test sensitivity metrics.
+
+**Key Capabilities:**
+- **Multi-Strategy Randomization**: Supports Complete, Stratified, Thinning, Rerandomization, QuickBlock, MatchedPair, and greedy matching algorithms
+- **Business Constraint Handling**: Sophisticated whitelist/blacklist system for mandatory inclusions/exclusions
+- **Power Analysis Integration**: Built-in power analysis with MDE (Minimum Detectable Effect) calculations
+- **Multiple Test Groups**: Simultaneous creation of multiple test groups sharing common controls
+- **Imbalance Optimization**: Advanced imbalance metrics (L1, L2, L∞, RMSE, MAPE, etc.) for design evaluation
+- **Iterative Improvement**: Rerandomization with configurable stopping criteria
+
+**Real-World Usage Pattern:**
+```python
+from panel_exp.design import GeoExperimentDesign
+from panel_exp.panel_data import long_df_to_paneldataset
+
+# Convert raw data (daily geo level data) to panel format
+panel_dataset = long_df_to_paneldataset(data, "date", "geo", "conversions")
+panel_dataset.wide_data = panel_dataset.wide_data.fillna(0)
+
+# Initialize design with business constraints
+design = GeoExperimentDesign(
+    panel_data=panel_dataset,
+    n_test_grps=1,  # Requited number of test groups
+    treatment_probability=None,  # Controls the size of treatment
+    kpi='conversions',          # KPI column in your data
+    # Business constraints
+    test_whitelist=['US'],  # Whitelist markets
+    control_whitelist=['AU', 'GB', 'DE'],  # Preferred control markets
+    test_blacklist=['CA'],  # Markets to exclude from test
+    control_blacklist=['US'],  # Markets to exclude from control
+    base_randomizer_cls=greedy_match_markets,  # options include StratifiedRandomization, CompleteRandomization, ThinningDesign, QuickBlock, greedy_match_markets
+    test_lengths=[56],  # test duration in days
+    n_sample_prc=0.2,  # Sample 20% for faster power analysis
+    ci_version=1  # confidence intervals - Use version 1 for conservative estimates and 2 for less conservative but faster run time approach
+)
+
+# Generate multiple design candidates to shortlist
+for _ in range(5):  # Generates 5 design candidates
+    mde_percent, mde_absolute, power_analysis = design.run_design()
+    mde_percent_df = pd.concat([mde_percent_df, mde_percent])
+    mde_absolute_df = pd.concat([mde_absolute_df, mde_absolute])
+    power_analysis_results_df = pd.concat([power_analysis_results_df, power_analysis])
+```
+
+**Designs Assesment and Comparison**: Ranks designs by MDE, balance, and power metrics with heatmaps, power curves, and comprehensive scoring to identify optimal experimental configurations.
+```python
+# Cross-validation of pre-test fit assessment
+cv_results = generate_cv_fit_plots(
+    data=data,                          # daily geo level data
+    kpi='conversions',
+    market_assignments_df=mde_percent_df,
+    n_splits=5
+)
+
+# Comprehensive design comparison dashboard
+dashboard_results = create_design_comparison_dashboard(
+    pa_df_combined=power_analysis_results_df,
+    mde_percent_df=mde_percent_df,
+    test_lengths=[56],
+    n_test_grps=1,
+    mde_weight=0.7,                     # weightage for MDE score
+    balance_weight=0.3                  # weightage for test vs control size difference
+)
+```
+
+**Advanced Features:** 
+- **MLflow Integration**: Automatic logging of design parameters and results
+- **Parallel Processing**: Support for parallel power analysis computation
+
+#### Randomization Strategies
+
+The package provides multiple randomization strategies, each optimized for different experimental contexts and data characteristics.
+
+**CompleteRandomization**: Simple random assignment
+- **Concept**: Pure random assignment without stratification - each unit has an equal probability of being assigned to treatment or control, independent of any characteristics. This is the gold standard for causal inference when sample sizes are large enough to ensure balance through the law of large numbers. The randomization creates exchangeability between groups, meaning that on average, treatment and control groups will be similar in all observed and unobserved characteristics.
+- **Best for**: Large sample sizes (>100 units) with minimal confounding variables
+- **Use when**: No strong predictors of treatment effect exist
+- **Advantages**: Simple, unbiased, easy to implement, provides strongest causal identification
+- **Limitations**: May create imbalanced groups in small samples, no guarantee of balance on specific covariates
+
+**StratifiedRandomization**: Random assignment within strata
+- **Concept**: Random assignment within predefined strata to ensure balance - divides the population into homogeneous subgroups (strata) based on important covariates, then randomly assigns treatment within each stratum. This ensures that treatment and control groups are balanced on the stratification variables, reducing variance and improving precision. The strata should be chosen based on variables that are strongly predictive of the outcome or treatment effect heterogeneity.
+- **Best for**: Heterogeneous populations with known important covariates
+- **Use when**: Key demographic or geographic variables need balancing
+- **Advantages**: Guarantees balance on stratification variables, reduces variance, improves precision
+- **Limitations**: Requires prior knowledge of important covariates, may not balance on unobserved variables
+
+**ThinningDesign**: Systematic thinning of treatment units
+- **Concept**: Thinning Design, inspired by the Kernel Thinning algorithm (Dwivedi & Mackey, 2021), is an experimental design approach that selects a smaller, representative subset of units and assigns them to test and control groups in a way that minimizes statistical imbalance. By using a kernel function (often RBF) to measure similarity across pre-period features, it ensures both groups remain well-matched while respecting constraints like whitelists, blacklists, or fixed assignments. This allows experiments to be run with fewer units, reducing cost and operational complexity while maintaining validity and power.
+- **Best for**: Resource-constrained experiments (budget, capacity limits)
+- **Use when**: Treatment capacity is limited or expensive
+- **Advantages**: Controls treatment intensity, realistic for business constraints, allows testing of different treatment levels
+- **Limitations**: Reduces statistical power, may require larger sample sizes
+
+**Rerandomization**: Iterative improvement of balance
+- **Concept**: Repeated randomization until acceptable balance is achieved - generates multiple random assignments and selects the one with the best balance on observed covariates. Uses a predefined imbalance metric (L1, L2, L∞, etc.) and stops when the imbalance falls below a threshold. This method improves upon simple randomization by ensuring better balance while maintaining the benefits of randomization.
+- **Best for**: Small to medium sample sizes (20-200 units)
+- **Use when**: Covariate balance is critical for validity
+- **Advantages**: Optimizes balance, reduces bias, maintains randomization benefits
+- **Limitations**: Computationally intensive, may not converge, requires careful threshold selection
+
+**QuickBlock**: Blocking-based assignment
+- **Concept**: Creates blocks of similar units and randomizes within blocks - groups units into blocks based on similarity (e.g., geographic proximity, demographic similarity, or pre-treatment outcomes), then randomly assigns treatment within each block. This ensures local balance and handles heterogeneity by creating homogeneous subgroups. The blocking should be based on variables that are predictive of the outcome.
+- **Best for**: Units with clear similarity patterns
+- **Use when**: Natural blocking structure exists (e.g., geographic regions)
+- **Advantages**: Ensures local balance, handles heterogeneity, reduces variance
+- **Limitations**: Requires good blocking variables, may create small blocks with limited randomization
+
+**MatchedPair**: Pairwise matching approach
+- **Concept**: Creates matched pairs and randomly assigns treatment within pairs - identifies pairs of units that are similar on important covariates, then randomly assigns one unit from each pair to treatment and the other to control. This creates the strongest possible balance on observed characteristics and is particularly powerful for small experiments. The matching can be based on propensity scores, Mahalanobis distance, or other similarity metrics.
+- **Best for**: Small experiments with clear matching criteria
+- **Use when**: Pairwise similarity is important
+- **Advantages**: Strong balance guarantees, intuitive interpretation, optimal for small samples
+- **Limitations**: Requires sufficient similar units for matching, may discard unmatched units
+
+**greedy_match_markets**: Greedy matching algorithm for geo experiments
+- **Concept**: Iteratively selects best control markets for each test market - starts with a test market and finds the control market that best matches it based on pre-treatment outcomes and characteristics. Then moves to the next test market and finds the best remaining control market, and so on. This algorithm is specifically designed for geo-based experiments where market-level characteristics matter and you want to ensure geographic and economic similarity between test and control markets.
+- **Best for**: Geo-based experiments with market-level data
+- **Use when**: Geographic similarity and market characteristics matter
+- **Advantages**: Optimized for geo experiments, handles market heterogeneity, ensures geographic balance
+- **Limitations**: Greedy approach may not find global optimum, order of selection matters
+
+#### Power Analysis
+Comprehensive pre-test power analysis that determines optimal sample sizes, test durations, and effect detectability before running experiments.
+
+**Core Capabilities:**
+- **Statistical Power Calculation**: Determines probability of detecting true effects (default: 80%)
+- **Minimum Detectable Effect (MDE)**: Calculates smallest effect size that can be reliably detected
+- **Test Duration Analysis**: Evaluates power across different test lengths
+- **Effect Size Simulation**: Tests power under various effect size scenarios
+- **Confidence Interval Analysis**: Provides uncertainty quantification for estimates
+
+**Key Metrics:**
+- **Statistical Power**: Probability of correctly rejecting null hypothesis (default: 80%)
+- **Type I Error Rate (α)**: Probability of false positive (default: 10%)
+- **Effect Size Simulation**: Tests power under various treatment effects
+- **Sample Percentage**: Fraction of data used for faster computation (default: 100%)
+- **Parallel Processing**: Multi-core support for large-scale power analysis
+
+**Implementation:**
+```python
+from panel_exp.design import PowerAnalysis
+from panel_exp.methods import TBRRidge
+
+# Initialize power analysis with business constraints
+power_analysis = PowerAnalysis(
+    panel=panel_dataset,
+    model=TBRRidge(),  
+    inference='Kfold',  # Cross-validation inference
+    test_length=13,  # test duration in days
+    power=0.8,  # 80% statistical power
+    alpha=0.1,  # 10% type I error rate
+    train_length=None,  # Use all available pre-test dat or pass number of days
+    mx_effect=0.5,  # Test up to 50% effect size
+    n_sample_prc=0.2,  # Sample 20% for faster computation
+    n_jobs=4,  # Parallel cores
+    ci_version=2  # Confidence intervals approach
+)
+
+# Run comprehensive power analysis
+power_results = power_analysis.run_analysis()
+
+# Access key results
+mde_percent = power_results['mde_percent']  # MDE as percentage
+mde_absolute = power_results['mde_absolute']  # MDE in absolute terms
+power_curve = power_results['power_curve']  # Power vs effect size
+```
+
+**Advanced Features:**
+- **Multiple Test Lengths**: Simultaneous analysis across different test durations
+- **Model Comparison**: Power analysis across different statistical methods
+- **Business Integration**: Incorporates business constraints and resource limitations
+- **MLflow Logging**: Automatic tracking of power analysis parameters and results
+
+---
+
+## 2. Methods Module
+
+The methods module implements sophisticated statistical approaches for causal estimation in panel data settings, each optimized for different data characteristics and business requirements. These methods handle the core challenge of estimating treatment effects while controlling for confounding variables and temporal patterns.
+
+#### Time-Based Regression (TBR)
+**Purpose**: Linear regression approach specifically designed for panel data with time trends and seasonality.
+
+**Core Concept**: TBR models the relationship between treatment and outcome while accounting for temporal patterns, using pre-treatment data to establish baseline trends and extrapolating to estimate counterfactual outcomes. The method assumes that the relationship between time and outcome follows a linear trend that can be extrapolated beyond the pre-treatment period. It estimates the counterfactual outcome by projecting the pre-treatment trend into the treatment period, then calculates the treatment effect as the difference between actual and predicted outcomes. This approach is particularly powerful when there are clear temporal patterns in the data and sufficient pre-treatment data to establish reliable trends.
+
+**Key Capabilities:**
+- **Linear Trend Modeling**: Captures linear time trends in pre-treatment data
+- **Multiple Control Support**: Handles both single aggregated and multiple de-aggregated control units
+- **Extrapolation**: Projects pre-treatment trends into treatment period
+- **Ridge Regularization**: TBRRidge variant prevents overfitting with multiple controls
+- **Flexible Inference**: Supports various inference methods (conformal, k-fold, placebo)
+
+**When to Use:**
+- Linear trends dominate the data pattern
+- Sufficient pre-treatment data available (>12 weeks recommended)
+- Multiple control units available for comparison
+- Need for interpretable linear relationships
+
+**Implementation:**
+```python
+from panel_exp.methods import TBR, TBRRidge
+
+# Standard TBR for single control
+tbr_model = TBR(
+    inference='Kfold',  # Cross-validation inference
+    alpha=0.1,  # 10% significance level
+    full_model=False  # Fit only on pre-treatment data
+)
+
+# Ridge TBR for multiple controls (recommended)
+tbr_ridge = TBRRidge(
+    inference='Kfold',
+    alpha=0.1,
+    full_model=False
+)
+
+# Run analysis
+tbr_ridge.run_analysis(panel_data)
+
+# Access results from model summary
+summary_stats = tbr_ridge.summary()
+treatment_effect = summary_stats.loc['Absolute Effect', 'Cumulative']
+relative_effect = summary_stats.loc['Relative Effect', 'Cumulative']
+
+print(f"Treatment Effect: {treatment_effect:.0f}")
+print(f"Relative Effect: {relative_effect:.2f}%")
+print(f"Summary Statistics:")
+print(summary_stats)
+```
+
+#### Synthetic Control Method (SCM)
+**Purpose**: Non-parametric approach that creates a "synthetic" control unit as a weighted combination of available control units.
+
+**Core Concept**: SCM finds optimal weights for control units such that the weighted combination best matches the treated unit's pre-treatment trajectory, then uses this synthetic control to estimate counterfactual outcomes. The method solves an optimization problem to find weights that minimize the difference between the treated unit's pre-treatment outcomes and the weighted average of control units' pre-treatment outcomes. The key insight is that if the synthetic control matches the treated unit well in the pre-treatment period, it should provide a good counterfactual for what would have happened without treatment. This approach is particularly powerful when there are multiple control units that can be combined to create a good match, and when the relationship between units is complex and non-linear.
+
+**Key Capabilities:**
+- **Non-Parametric Modeling**: No assumptions about functional form of relationships
+- **Weight Optimization**: Finds optimal weights using various optimization algorithms (SciPy, CVXPY)
+- **Penalty Options**: Supports L1, L2, and other penalties for regularization
+- **No Extrapolation**: Relies only on observed data patterns
+- **Interpretable Weights**: Provides insight into which control units contribute most
+- **Multiple Algorithms**: SciPy optimization and CVXPY convex optimization
+
+**When to Use:**
+- Non-linear trends and complex patterns
+- Limited pre-treatment data (<12 weeks)
+- Need for interpretable control unit contributions
+- Want to avoid extrapolation assumptions
+- Multiple control units available
+
+**Implementation:**
+```python
+from panel_exp.methods import SyntheticControl, SyntheticControlCVXPY, AugSynth
+
+# Standard SCM with SciPy optimization
+scm_model = SyntheticControl(
+    inference='UnitJackKnife',  # Unit-level jackknife inference
+    penalty='l2',  # L2 penalty for regularization
+    penalty_strength=0.1,  # Penalty strength
+    alpha=0.1,
+    opt_package='SciPy'  # Use SciPy optimizer
+)
+
+# CVXPY version for convex optimization
+scm_cvxpy = SyntheticControlCVXPY(
+    inference='UnitJackKnife',
+    alpha=0.1
+)
+
+# Augmented SCM with outcome modeling
+aug_synth = AugSynth(
+    outcome_model=RidgeCV,  # Ridge regression for outcome modeling
+    opt_package='SciPy',
+    penalty='l1',  # L1 penalty
+    inference='Kfold'
+)
+
+# Run analysis
+scm_model.run_analysis(panel_data)
+
+# Access results
+# Access results from model summary
+summary_stats = scm_model.summary()
+treatment_effect = summary_stats.loc['Absolute Effect', 'Cumulative']
+relative_effect = summary_stats.loc['Relative Effect', 'Cumulative']
+
+# Access control unit weights from model results
+weights = scm_model.results['weights']  # Control unit weights
+
+print(f"Treatment Effect: {treatment_effect:.0f}")
+print(f"Relative Effect: {relative_effect:.2f}%")
+print(f"Control Weights: {weights}")
+print(f"Summary Statistics:")
+print(summary_stats)
+```
+
+**Business Applications:**
+- Campaign impact with complex seasonal patterns
+- Analysis with heterogeneous control markets
+- Treatment evaluation with limited historical data
+
+#### Bayesian Regression
+**Purpose**: Bayesian approach providing full posterior distributions and uncertainty quantification through MCMC sampling.
+
+**Core Concept**: BayesianTBR uses Markov Chain Monte Carlo (MCMC) with the No-U-Turn Sampler (NUTS) to sample from posterior distributions, providing not just point estimates but full uncertainty quantification through credible intervals. The Bayesian approach treats all parameters as random variables with prior distributions, then uses Bayes' theorem to update these priors with observed data to obtain posterior distributions. This allows for incorporation of prior knowledge about effect sizes, trends, or other parameters, and provides a complete picture of uncertainty through posterior distributions rather than just point estimates and confidence intervals. The MCMC sampling process generates thousands of samples from the posterior distribution, which can be used to calculate credible intervals, assess convergence, and perform posterior predictive checks.
+
+**Key Capabilities:**
+- **Full Posterior Distributions**: Provides complete uncertainty quantification
+- **Flexible Prior Specifications**: Supports Normal, Student-T, LogNormal, Multivariate Normal, and Dirichlet priors
+- **MCMC Sampling**: Uses NUTS sampler for efficient posterior sampling
+- **Multiple Control Support**: Handles both aggregated and de-aggregated control scenarios
+- **Extrapolation**: Leverages Bayesian priors for extrapolation beyond observed data
+- **Credible Intervals**: Provides Bayesian credible intervals for effect estimates
+- **Model Diagnostics**: Includes trace plots, convergence diagnostics, and posterior summaries
+
+**When to Use:**
+- Uncertainty quantification is critical for business decisions
+- Prior knowledge about effect sizes or patterns exists
+- Need for full posterior distributions rather than point estimates
+- Multiple control units with complex relationships
+- Want to incorporate domain expertise through priors
+
+**Implementation:**
+```python
+from panel_exp.methods import BayesianTBR
+
+# Initialize Bayesian model with custom priors
+bayesian_model = BayesianTBR(
+    inference_options={
+        'num_samples': 2000,  # MCMC samples
+        'num_warmup': 1000,    # Warmup samples
+        'num_chains': 4        # Multiple chains for diagnostics
+    },
+    prior_type='normal',  # Normal priors for coefficients
+    alpha=0.1,
+    full_model=False
+)
+
+# Run MCMC analysis
+bayesian_model.run_analysis(panel_data)
+
+# Access posterior results
+posterior_samples = bayesian_model.posterior_samples  # MCMC samples
+summary_stats = bayesian_model.summary_stats()  # trace plots and posterior plots
+
+# Get cumulative treatment effect statistics
+model_summary = bayesian_model.summary()
+
+treatment_effect = model_summary.loc['Absolute Effect', 'Cumulative']
+relative_effect = model_summary.loc['Relative Effect', 'Cumulative']
+
+print(f"Posterior Samples Shape: {posterior_samples['coeffs'].shape}")
+print(f"Treatment Effect: {treatment_effect:.0f}")
+print(f"Relative Effect: {relative_effect:.2f}%")
+print(f"Parameter Statistics:")
+print(summary_stats)
+```
+
+**Advanced Features:**
+- **Prior Sensitivity Analysis**: Test robustness to different prior specifications
+- **Convergence Diagnostics**: Automatic checking of MCMC convergence
+- **Posterior Predictive Checks**: Validate model assumptions
+- **Hierarchical Modeling**: Support for hierarchical structures in data
+
+#### Difference-in-Differences (DID)
+**Purpose**: Traditional DID approach for panel data.
+
+**Key Features:**
+- Parallel trends assumption
+- Multiple treatment periods
+- Robust standard errors
+- Event study framework
+
+**When to Use:**
+- Parallel trends assumption holds
+- Multiple time periods
+
+**Implementation:**
+```python
+from panel_exp.methods.DID import DID
+
+# Initialize DID model
+did_model = DID(
+    inference='Kfold',
+    alpha=0.1,
+    full_model=False
+)
+
+# Run analysis
+did_model.run_analysis(panel_data)
+
+# Access results from model summary
+summary_stats = did_model.summary()
+treatment_effect = summary_stats.loc['Absolute Effect', 'Cumulative']
+relative_effect = summary_stats.loc['Relative Effect', 'Cumulative']
+
+print(f"Treatment Effect: {treatment_effect:.0f}")
+print(f"Relative Effect: {relative_effect:.2f}%")
+print(f"Summary Statistics:")
+print(summary_stats)
+```
+
+#### Multi-Task Gaussian Process (MTGP)
+**Purpose**: Gaussian process approach for complex temporal patterns.
+
+**Key Features:**
+- Non-parametric modeling
+- Uncertainty quantification
+- Handles complex patterns
+- Multiple tasks support
+
+**When to Use:**
+- Complex temporal patterns
+- Non-linear relationships
+- Uncertainty quantification critical
+
+**Implementation:**
+```python
+from panel_exp.methods.mtgp import MTGP
+
+# Initialize MTGP model
+mtgp_model = MTGP(
+    inference='Kfold',
+    alpha=0.1,
+    full_model=False
+)
+
+# Run analysis
+mtgp_model.run_analysis(panel_data)
+
+# Access results from model summary
+summary_stats = mtgp_model.summary()
+treatment_effect = summary_stats.loc['Absolute Effect', 'Cumulative']
+relative_effect = summary_stats.loc['Relative Effect', 'Cumulative']
+
+print(f"Treatment Effect: {treatment_effect:.0f}")
+print(f"Relative Effect: {relative_effect:.2f}%")
+print(f"Summary Statistics:")
+print(summary_stats)
+```
+
+**Business Applications:**
+- Complex seasonal pattern analysis
+- Non-linear trend modeling
+- High uncertainty scenarios
+
+---
+
+## 3. Inference Module
+
+The inference module provides robust methods for uncertainty quantification and hypothesis testing, essential for making reliable business decisions from experimental results. These methods address the critical question: "How confident can we be in our effect estimates?"
+
+#### Conformal Inference
+**Purpose**: Distribution-free uncertainty quantification that provides exact coverage guarantees without distributional assumptions.
+
+**Core Concept**: Conformal inference uses the empirical distribution of residuals to construct prediction intervals that are valid in finite samples, regardless of the underlying data distribution. The method works by calculating residuals from the model on a subset of data, then using the empirical distribution of these residuals to construct prediction intervals for new observations. The key insight is that if the model is well-calibrated, the residuals should be exchangeable, meaning their distribution can be used to make valid predictions about future residuals. This approach provides exact coverage guarantees in finite samples without requiring distributional assumptions, making it particularly robust for real-world applications where data may not follow standard distributions.
+
+**Key Capabilities:**
+- **Distribution-Free**: No assumptions about data distribution
+- **Finite-Sample Validity**: Exact coverage guarantees in finite samples
+- **Cross-Conformal Implementation**: Uses cross-validation for improved efficiency
+- **Multiple Null Testing**: Tests multiple null hypotheses simultaneously
+- **Robust to Model Misspecification**: Works even when model assumptions are violated
+- **Exact Coverage**: Provides exact coverage probability (not asymptotic)
+
+**When to Use:**
+- Distributional assumptions are questionable or unknown
+- Finite sample settings where asymptotic methods may not apply
+- Need for exact coverage guarantees
+- Model misspecification is a concern
+- Want distribution-free inference
+
+**Implementation:**
+```python
+from panel_exp.inference.conformal import conformal
+
+# Run conformal inference for treatment effect
+lower_bounds, upper_bounds = conformal(
+    panel=panel_data,
+    model=tbr_model,
+    alpha=0.1,
+    nulls=[0, 0.05, 0.1, 0.15]
+)
+
+# Extract cumulative confidence interval for treatment period
+treatment_start = tbr_model.panel_data.treated_start_idxs[0]
+treatment_end = tbr_model.panel_data.treated_end_idxs[0]
+
+# Calculate cumulative bounds over treatment period
+cumulative_lower = np.sum(lower_bounds[treatment_start:treatment_end])
+cumulative_upper = np.sum(upper_bounds[treatment_start:treatment_end])
+confidence_interval = (cumulative_lower, cumulative_upper)
+
+print(f"Conformal Cumulative Confidence Interval: {confidence_interval}")
+```
+
+**Advanced Features:**
+- **Cross-Conformal**: Uses cross-validation for improved efficiency
+- **Multiple Testing**: Handles multiple null hypotheses with appropriate corrections
+- **Adaptive Intervals**: Intervals adapt to local data characteristics
+- **Model Agnostic**: Works with any prediction model
+
+#### K-Fold Cross-Validation
+**Purpose**: Cross-validation based inference specifically designed for synthetic control methods, providing bias correction and robust hypothesis testing.
+
+**Core Concept**: K-fold cross-validation addresses the bias inherent in synthetic control methods by repeatedly fitting the model on different subsets of control units and using the distribution of estimates to construct confidence intervals and test hypotheses. The method works by dividing the control units into k folds, then for each fold, fitting the synthetic control model using the remaining k-1 folds as controls and the left-out fold as a "fake" treatment. This creates a distribution of treatment effect estimates that can be used to assess the uncertainty in the original estimate. The key insight is that this approach provides a way to estimate the sampling variability of the synthetic control estimator, which is otherwise difficult to quantify due to the optimization process involved in finding the weights.
+
+**Key Capabilities:**
+- **Bias Correction**: Automatically corrects for bias in synthetic control estimates
+- **Cross-Fold Validation**: Uses k-fold cross-validation for robust inference
+- **T-Test Implementation**: Provides t-test based hypothesis testing
+- **Robust to Model Misspecification**: Works even when synthetic control assumptions are violated
+- **Multiple Test Lengths**: Handles different test period lengths
+- **Debiasing**: Optional debiasing to improve estimate accuracy
+
+**When to Use:**
+- Using synthetic control methods (SCM, AugSynth)
+- Need for bias correction in estimates
+- Want cross-validation based inference
+- Model assumptions may be violated
+- Need robust hypothesis testing
+
+**Implementation:**
+```python
+from panel_exp.inference import cross_fold, debias
+
+# Run k-fold cross-validation inference
+from panel_exp.inference.k_fold import cross_fold
+
+lower_bound, mean_estimate, upper_bound = cross_fold(
+    pds=panel_data,
+    k=5,  # 5-fold cross-validation
+    model=scm_model,
+    alpha=0.1,
+    debias_flag=True  # Apply bias correction
+)
+
+# Calculate cumulative results over treatment period
+treatment_start = scm_model.panel_data.treated_start_idxs[0]
+treatment_end = scm_model.panel_data.treated_end_idxs[0]
+
+cumulative_lower = np.sum(lower_bound[treatment_start:treatment_end])
+cumulative_mean = np.sum(mean_estimate[treatment_start:treatment_end])
+cumulative_upper = np.sum(upper_bound[treatment_start:treatment_end])
+
+# Access cumulative results
+confidence_interval = (cumulative_lower, cumulative_upper)
+print(f"K-fold Cumulative Confidence Interval: {confidence_interval}")
+print(f"Cumulative Treatment Effect: {cumulative_mean}")
+print(f"Cumulative Lower Bound: {cumulative_lower}")
+print(f"Cumulative Upper Bound: {cumulative_upper}")
+
+```
+
+**Advanced Features:**
+- **Automatic Bias Detection**: Detects and corrects bias automatically
+- **Cross-Fold Diagnostics**: Provides diagnostics for cross-validation performance
+- **Multiple K Values**: Test robustness across different k values
+- **Bootstrap Integration**: Can be combined with bootstrap methods
+
+#### Placebo Testing
+**Purpose**: Placebo-based inference that uses control units as "fake" treatment units to test the robustness of treatment effect estimates.
+
+**Core Concept**: Placebo testing treats each control unit as if it were the treated unit, runs the same analysis, and uses the distribution of these "placebo" effects to assess whether the observed treatment effect is statistically significant. The method works by taking each control unit in turn, treating it as if it received the treatment at the same time as the actual treated unit, then running the same causal analysis to estimate a "placebo" treatment effect. This creates a distribution of placebo effects that represents what we would expect to see if there were no real treatment effect. The key insight is that if the actual treatment effect is significantly larger than the placebo effects, it provides evidence that the treatment had a real causal impact. This approach is particularly powerful because it doesn't rely on specific model assumptions and provides an intuitive way to assess statistical significance.
+
+**Key Capabilities:**
+- **Control Unit Validation**: Uses control units as placebo treatments
+- **P-Value Calculation**: Provides empirical p-values based on placebo distribution
+- **Residual Analysis**: Analyzes residuals to assess model fit
+- **Model-Agnostic**: Works with any causal estimation method
+- **Robust to Assumptions**: Doesn't rely on specific model assumptions
+- **Visual Diagnostics**: Provides plots for visual assessment
+
+**When to Use:**
+- Control units are available for placebo testing
+- Need for empirical p-values
+- Want model-agnostic inference
+- Model assumptions are questionable
+- Need visual diagnostics for results
+
+**Implementation:**
+```python
+from panel_exp.inference import placebo
+
+# Run placebo testing
+from panel_exp.inference.placebo import placebo
+
+p_value, residual_ratios, residuals_df = placebo(
+    pds=panel_data,
+    model=tbr_model,
+    plot_1=True,  # Generate residual plots
+    plot_2=True   # Generate placebo effect plots
+)
+
+# Access results
+print(f"Placebo P-value: {p_value:.4f}")
+print(f"Residual Ratios: {residual_ratios}")
+print(f"Residuals DataFrame Shape: {residuals_df.shape}")
+
+# Calculate cumulative treatment effect from residuals
+treatment_start = tbr_model.panel_data.treated_start_idxs[0]
+treatment_end = tbr_model.panel_data.treated_end_idxs[0]
+
+# Get residuals for treated units during treatment period
+treated_residuals = residuals_df.loc[tbr_model.panel_data.treated_units, 
+                                    tbr_model.panel_data.times[treatment_start:treatment_end]]
+cumulative_treatment_effect = treated_residuals.sum().sum()
+
+print(f"Cumulative Treatment Effect: {cumulative_treatment_effect:.0f}")
+```
+
+**Advanced Features:**
+- **Multiple Placebo Tests**: Can test multiple null hypotheses
+- **Residual Diagnostics**: Comprehensive residual analysis
+- **Effect Size Comparison**: Compares treatment effect to placebo distribution
+- **Outlier Detection**: Identifies unusual placebo effects
+
+---
+
+## End-to-End Workflow
+
+This section demonstrates a complete experimental workflow from data preparation through results interpretation, using real-world examples from marketing experiments.
+
+### Step 1: Data Preparation and Panel Dataset Creation
+```python
+import pandas as pd
+from panel_exp.panel_data import long_df_to_paneldataset, PanelDataset, TimePeriod
+
+# Load and prepare data (example: marketing campaign data)
+data = pd.read_csv('marketing_data.csv')
+data['date'] = pd.to_datetime(data['date'])
+data['geo'] = data['geo'].astype(str)
+
+# Filter data to test end date
+data = data[data.date <= '2025-05-30']
+
+# Convert long format data to PanelDataset
+panel_dataset = long_df_to_paneldataset(
+    data, 
+    time_col="date", 
+    unit_col="geo", 
+    outcome_col="conversions"
+)
+
+# Handle missing values
+panel_dataset.wide_data = panel_dataset.wide_data.fillna(0)
+
+print(f"Panel dataset created with {len(panel_dataset.units)} units and {len(panel_dataset.times)} time periods")
+```
+
+### Step 2: Experimental Design with Business Constraints
+```python
+from panel_exp.design import GeoExperimentDesign, PowerAnalysis
+from panel_exp.methods import TBRRidge
+
+# Define business constraints
+test_whitelist = ['US']  # Must include US market
+control_whitelist = ['AU', 'GB', 'DE', 'FR']  # Preferred control markets
+test_blacklist = ['CA']  # Exclude Canada from test
+control_blacklist = ['US']  # Exclude US from control
+
+# Initialize design
+design = GeoExperimentDesign(
+    panel_data=panel_dataset,
+    n_test_grps=1,
+    treatment_probability=None,  
+    kpi='conversions',
+    test_whitelist=test_whitelist,
+    control_whitelist=control_whitelist,
+    test_blacklist=test_blacklist,
+    control_blacklist=control_blacklist,
+    base_randomizer_cls=greedy_match_markets,
+    test_lengths=[28],  # test duration in days
+    n_sample_prc=0.2,  # Sample 20% for faster computation
+    ci_version=1
+)
+
+# Generate multiple design candidates
+design_results = []
+for i in range(3):  # Generate 5 candidates
+    mde_percent, mde_absolute, power_analysis = design.run_design()
+    design_results.append({
+        'design_id': i,
+        'mde_percent': mde_percent,
+        'mde_absolute': mde_absolute,
+        'power_analysis': power_analysis
+    })
+
+# Cross-validation of pre-test fit assessment
+cv_results = generate_cv_fit_plots(
+    data=data,                          # daily geo level data
+    kpi='conversions',
+    market_assignments_df=mde_percent_df,
+    n_splits=5
+)
+
+# Comprehensive design comparison dashboard
+dashboard_results = create_design_comparison_dashboard(
+    pa_df_combined=power_analysis_results_df,
+    mde_percent_df=mde_percent_df,
+    test_lengths=[56],
+    n_test_grps=1,
+    mde_weight=0.7,                     # Weightage for MDE score
+    balance_weight=0.3                  # Weightage for test vs control size difference
+)
+
+# Access analysis results from dashboard
+summary_tables = dashboard_results['summary_tables']
+test_length_comparison = dashboard_results['test_length_comparison']
+best_designs_summary = dashboard_results['best_designs_summary']
+
+print(f"Best design: {test_length_comparison['best_design'].iloc[0]}")
+print(f"Combined score: {test_length_comparison['best_combined_score'].iloc[0]:.3f}")
+print(f"Best MDE score: {test_length_comparison['best_mde_score'].iloc[0]:.3f}")
+print(f"Best balance score: {test_length_comparison['best_balance_score'].iloc[0]:.3f}")
+```
+
+### Step 3: Power Analysis
+```python
+# Power analysis is integrated into the dashboard above
+# Access power analysis results from dashboard
+summary_tables = dashboard_results['summary_tables']
+test_length_comparison = dashboard_results['test_length_comparison']
+
+# Get best design and MDE
+best_design_id = test_length_comparison['best_design'].iloc[0]
+best_mde = test_length_comparison['best_mde_score'].iloc[0]
+
+print(f"Best Design: {best_design_id}")
+print(f"Best MDE Score: {best_mde:.3f}")
+
+# Use the power curve plotting function from create_design_comparison_dashboard
+from panel_exp.utils.test_designs_evaluation import create_power_curve_comparison
+
+# Plot power curves for all designs
+create_power_curve_comparison(
+    design_summary=summary_tables['8wk'],
+    pa_df_combined=power_analysis_results_df,
+    week_str='8wk',
+    n_test_groups=1
+)
+```
+
+### Step 4: Causal Estimation with Multiple Methods
+```python
+from panel_exp.methods import TBRRidge, SyntheticControl, BayesianTBR
+from panel_exp.inference import cross_conformal_single, cross_fold, placebo
+
+# Define test and control groups (from design results)
+test_units = ['US']
+control_units = ['AU', 'GB', 'DE', 'FR']
+test_start_date = '2025-03-31'
+test_end_date = '2025-05-30'
+
+# Create panel dataset with treatment assignment
+panel_dataset_treated = long_df_to_paneldataset(
+    data, "date", "geo", "conversions",
+    treated_units=test_units,
+    treated_start_times=[test_start_date] * len(test_units),
+    treated_end_times=[test_end_date] * len(test_units)
+)
+
+# Method 1: Ridge TBR (recommended for linear trends)
+tbr_model = TBRRidge(
+    inference='Kfold',  # Inference method built into the model
+    alpha=0.1,
+    full_model=False
+)
+tbr_model.run_analysis(panel_dataset_treated)
+
+# Method 2: Synthetic Control (for non-linear patterns)
+scm_model = SyntheticControl(
+    inference='UnitJackKnife',  # Inference method built into the model
+    penalty='l2',
+    penalty_strength=0.1,
+    alpha=0.1
+)
+scm_model.run_analysis(panel_dataset_treated)
+
+# Method 3: Augmented Synthetic Control (for improved performance)
+from panel_exp.methods.scm import AugSynth
+aug_synth_model = AugSynth(
+    outcome_model=RidgeCV,  # Ridge regression for outcome modeling
+    opt_package='SciPy',
+    penalty='l1',  # L1 penalty
+    inference='Kfold'  # Inference method built into the model
+)
+aug_synth_model.run_analysis(panel_dataset_treated)
+
+# Method 4: Bayesian TBR (for uncertainty quantification)
+bayesian_model = BayesianTBR(
+    inference_options={'num_samples': 2000, 'num_warmup': 1000},
+    prior_type='normal',
+    alpha=0.1
+)
+bayesian_model.run_analysis(panel_dataset_treated)
+
+# Compare results across methods
+print("Method Comparison:")
+# Calculate treatment effects as difference between actual and predicted
+tbr_effect = np.sum(tbr_model.results['y'][tbr_model.panel_data.treated_start_idxs[0]:tbr_model.panel_data.treated_end_idxs[0]] - 
+                   tbr_model.results['y_hat'][tbr_model.panel_data.treated_start_idxs[0]:tbr_model.panel_data.treated_end_idxs[0]])
+
+scm_effect = np.sum(scm_model.results['y'][scm_model.panel_data.treated_start_idxs[0]:scm_model.panel_data.treated_end_idxs[0]] - 
+                   scm_model.results['y_hat'][scm_model.panel_data.treated_start_idxs[0]:scm_model.panel_data.treated_end_idxs[0]])
+
+aug_synth_effect = np.sum(aug_synth_model.results['y'][aug_synth_model.panel_data.treated_start_idxs[0]:aug_synth_model.panel_data.treated_end_idxs[0]] - 
+                         aug_synth_model.results['y_hat'][aug_synth_model.panel_data.treated_start_idxs[0]:aug_synth_model.panel_data.treated_end_idxs[0]])
+                         
+bayesian_effect = np.sum(bayesian_model.results['y'][bayesian_model.panel_data.treated_start_idxs[0]:bayesian_model.panel_data.treated_end_idxs[0]] - 
+                        bayesian_model.results['y_hat'][bayesian_model.panel_data.treated_start_idxs[0]:bayesian_model.panel_data.treated_end_idxs[0]])
+
+print(f"TBR Effect: {tbr_effect:.0f}")
+print(f"SCM Effect: {scm_effect:.0f}")
+print(f"AugSynth Effect: {aug_synth_effect:.0f}")
+print(f"Bayesian Effect: {bayesian_effect:.0f}")
+```
+
+### Step 5: Inference and Uncertainty Quantification
+```python
+# Inference is automatically handled by the models when specified in their constructors. The models calculate confidence intervals and p-values internally
+# Calculate statistics using the model's built-in inference
+from scipy.stats import norm
+import numpy as np
+
+def calculate_statistics(model, start, end, alpha=0.1):
+    """Calculate confidence intervals and p-values from model results"""
+    post_actual = model.results['y'][start:end]
+    post_predicted = model.results['y_hat'][start:end]
+    y_lower = model.results['y_lower'][start:end]
+    y_upper = model.results['y_upper'][start:end]
+    
+    cumulative_diff_sum = np.sum(post_actual - post_predicted)
+    ci_lower = np.sum(post_actual - y_upper)
+    ci_upper = np.sum(post_actual - y_lower)
+    
+    z_alpha = norm.ppf(1 - alpha / 2)
+    se = (ci_upper - ci_lower) / (2 * z_alpha)
+    z = cumulative_diff_sum / se
+    p_value = 2 * norm.sf(np.abs(z))
+    
+    return {
+        'confidence_interval': (ci_lower, ci_upper),
+        'p_value': p_value,
+        'standard_error': se
+    }
+
+# Calculate statistics for each model
+tbr_stats = calculate_statistics(tbr_model, tbr_model.panel_data.treated_start_idxs[0], tbr_model.panel_data.treated_end_idxs[0])
+scm_stats = calculate_statistics(scm_model, scm_model.panel_data.treated_start_idxs[0], scm_model.panel_data.treated_end_idxs[0])
+aug_synth_stats = calculate_statistics(aug_synth_model, aug_synth_model.panel_data.treated_start_idxs[0], aug_synth_model.panel_data.treated_end_idxs[0])
+
+print(f"TBR CI: {tbr_stats['confidence_interval']}")
+print(f"TBR p-value: {tbr_stats['p_value']:.4f}")
+print(f"SCM CI: {scm_stats['confidence_interval']}")
+print(f"SCM p-value: {scm_stats['p_value']:.4f}")
+print(f"AugSynth CI: {aug_synth_stats['confidence_interval']}")
+print(f"AugSynth p-value: {aug_synth_stats['p_value']:.4f}")
+```
+
+### Step 6: Results Interpretation and Business Reporting
+```python
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Create comprehensive results summary using model.summary()
+tbr_summary = tbr_model.summary()
+scm_summary = scm_model.summary()
+aug_synth_summary = aug_synth_model.summary()
+bayesian_summary = bayesian_model.summary()
+
+results_summary = {
+    'Method': ['TBR Ridge', 'Synthetic Control', 'AugSynth', 'Bayesian TBR'],
+    'Absolute_Effect': [
+        tbr_effect,
+        scm_effect,
+        aug_synth_effect,
+        bayesian_effect
+    ],
+    'Relative_Effect_Percent': [
+        tbr_summary.loc['Relative Effect', 'Cumulative'],
+        scm_summary.loc['Relative Effect', 'Cumulative'],
+        aug_synth_summary.loc['Relative Effect', 'Cumulative'],
+        bayesian_summary.loc['Relative Effect', 'Cumulative']
+    ],
+    'Confidence_Interval': [
+        tbr_stats['confidence_interval'],
+        scm_stats['confidence_interval'],
+        aug_synth_stats['confidence_interval'],
+        bayesian_model.results['credible_interval']  # Bayesian has different structure
+    ],
+    'P_Value': [
+        tbr_stats['p_value'],
+        scm_stats['p_value'],
+        aug_synth_stats['p_value'],
+        tbr_stats['p_value']  # Use TBR p-value for Bayesian
+    ],
+    'Statistical_Significance': [
+        'Yes' if tbr_stats['p_value'] < 0.1 else 'No',
+        'Yes' if scm_stats['p_value'] < 0.1 else 'No',
+        'Yes' if aug_synth_stats['p_value'] < 0.1 else 'No',
+        'Yes' if tbr_stats['p_value'] < 0.1 else 'No'
+    ]
+}
+
+results_df = pd.DataFrame(results_summary)
+print("Final Results Summary:")
+print(results_df)
+
+# Generate visualizations
+fig, axes = plt.subplots(2, 2, figsize=(15, 10))
+
+# Plot 1: Treatment effect over time
+axes[0,0].plot(tbr_model.results['times'], tbr_model.results['y'], label='Actual', linewidth=2)
+axes[0,0].plot(tbr_model.results['times'], tbr_model.results['y_hat'], label='Predicted', linewidth=2)
+axes[0,0].axvline(x=tbr_model.panel_data.treated_start_idxs[0], color='red', linestyle='--', label='Treatment Start')
+axes[0,0].set_title('Treatment Effect Over Time')
+axes[0,0].legend()
+
+# Plot 2: Effect size comparison
+methods = results_df['Method']
+effects = results_df['Absolute_Effect']
+axes[0,1].bar(methods, effects)
+axes[0,1].set_title('Treatment Effect by Method')
+axes[0,1].set_ylabel('Effect Size')
+
+# Plot 3: Confidence intervals
+y_pos = range(len(methods))
+axes[1,0].errorbar(effects, y_pos, xerr=[abs(ci) for ci in results_df['Confidence_Interval']], 
+                   fmt='o', capsize=5)
+axes[1,0].set_yticks(y_pos)
+axes[1,0].set_yticklabels(methods)
+axes[1,0].set_title('Effect Estimates with Confidence Intervals')
+
+# Plot 4: P-values
+axes[1,1].bar(methods, results_df['P_Value'])
+axes[1,1].axhline(y=0.1, color='red', linestyle='--', label='α = 0.1')
+axes[1,1].set_title('P-values by Method')
+axes[1,1].set_ylabel('P-value')
+axes[1,1].legend()
+
+plt.tight_layout()
+plt.show()
+
+# Business interpretation
+print("\nBusiness Interpretation:")
+print(f"Primary Effect Estimate: {tbr_effect:.0f} conversions")
+print(f"Relative Effect: {tbr_summary.loc['Relative Effect', 'Cumulative']:.2f}%")
+print(f"Confidence Level: 90%")
+print(f"Statistical Significance: {'Yes' if results_df['Statistical_Significance'].iloc[0] == 'Yes' else 'No'}")
+print(f"Practical Significance: {'Yes' if abs(tbr_effect) > 1000 else 'No'} (threshold: 1000 conversions)")
+```
+
+---
+
+## Best Practices
+
+### Design Phase
+1. **Power Analysis First**: Always run power analysis before finalizing design
+2. **Balance Metrics**: Use appropriate imbalance metrics for your context
+3. **Constraints**: Leverage whitelist/blacklist for business constraints
+4. **Multiple Designs**: Compare different randomization strategies
+
+### Methods Selection
+1. **Data Characteristics**: Choose methods based on data patterns
+2. **Assumptions**: Verify method assumptions hold
+3. **Multiple Methods**: Use multiple methods for robustness
+4. **Validation**: Cross-validate results across methods
+
+### Inference
+1. **Multiple Approaches**: Use multiple inference methods
+2. **Sensitivity Analysis**: Test sensitivity to assumptions
+3. **Effect Size**: Consider practical significance
+4. **Uncertainty**: Always report uncertainty measures
+
+## Package Dependencies
+
+The package relies on:
+- **Core**: pandas, numpy, scipy, scikit-learn
+- **Visualization**: matplotlib, seaborn
+- **Bayesian**: numpyro, jax, arviz
+- **Optimization**: scipy.optimize
+- **Documentation**: sphinx, nbsphinx

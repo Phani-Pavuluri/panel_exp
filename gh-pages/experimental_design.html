@@ -1,0 +1,886 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experimental Design Deep Dive (#1) &mdash; Panel Exp 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Synthetic Control Methods" href="scm_deep_dive.html" />
+    <link rel="prev" title="Power Module Usage" href="power_example.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Panel Exp
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#package-architecture">Package Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#design-module">1. Design Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#methods-module">2. Methods Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#inference-module">3. Inference Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#end-to-end-workflow">End-to-End Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#best-practices">Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#package-dependencies">Package Dependencies</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basic_data.html">PanelDataset Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scm_usage.html">SCM Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tbr_usage.html">TBR Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="power_example.html">Power Module Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Deeper Dives</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Experimental Design Deep Dive (#1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scm_deep_dive.html">Synthetic Control Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tbr_deep_dive.html">Time-Based Regression (TBR)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tbr_deep_dive.html#Regression-while-not-aggregating-the-control-units">Regression while not aggregating the control units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API: Auto-generated Documentation.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#base-classes">Base Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#design">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#models">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#inference">Inference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Panel Exp</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Experimental Design Deep Dive (#1)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/experimental_design.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Experimental-Design-Deep-Dive-(#1)">
+<h1>Experimental Design Deep Dive (#1)<a class="headerlink" href="#Experimental-Design-Deep-Dive-(#1)" title="Link to this heading"></a></h1>
+<p>In this notebook, we will elucidate various methodologies for designing and analyzing experiments, specifically A/B tests, using panel data, employing an illustrative example.</p>
+<p>Panel data typically comprises a collection of time series data pertaining to a particular metric (e.g., yearly revenue) across various units (e.g., states). Moreover, this data often undergoes modifications, commonly referred to as treatments (e.g., a promotional campaign for a subscription service). Our primary objective is to draw useful conclusions from the data.</p>
+<p>Our overarching aim is to exemplify two core tasks:</p>
+<ol class="arabic simple">
+<li><p><strong>Experimental Design</strong>: In this context, we seek to allocate available units into treatment and control groups. The treated group of units receives a specific treatment, while the control group remains untreated.</p></li>
+<li><p><strong>Inference on Observational Data</strong>: Here, treatment assignments are already provided, and our goal is to draw conclusions, such as the effectiveness or ineffectiveness of the treatment, from the available data, often referred to as observational data.</p></li>
+</ol>
+<p>To begin, we will initiate by loading the “paneldata” package.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="c1">#sys.path.insert(0, &#39;../../&#39;)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.panel_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">long_df_to_paneldataset</span><span class="p">,</span> <span class="n">PanelDataset</span><span class="p">,</span> <span class="n">TimePeriod</span>
+</pre></div>
+</div>
+</div>
+<p>We are importing historical quarterly GDP data for various states in the United States into a pandas dataframe.</p>
+<p>The dataframe consists of rows, each with the following columns:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lngdp</span></code>: This column contains the natural logarithm of the state’s GDP revenue for a specific quarter.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">year_qtr</span></code>: This column represents the year and corresponding quarter in a numerical format. For example, “1990.25” corresponds to the second quarter of the year 1990.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">state</span></code>: This column specifies the U.S. state associated with the data entry.</p></li>
+</ul>
+<p><em>References</em></p>
+<ul class="simple">
+<li><p>AugSynth: Ben-Michael, E., Feller, A., Rothstein, J. (2021). The augmented synthetic control method. Journal of the American Statistical Association.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">long_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;kansas_parsed.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">long_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">long_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">long_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>lngdp</th>
+      <th>treated</th>
+      <th>fips</th>
+      <th>year_qtr</th>
+      <th>state</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>71610.00</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1990.00</td>
+      <td>Alabama</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>72718.25</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1990.25</td>
+      <td>Alabama</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>73826.50</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1990.50</td>
+      <td>Alabama</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>74934.75</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1990.75</td>
+      <td>Alabama</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>76043.00</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1991.00</td>
+      <td>Alabama</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove the treated unit</span>
+<span class="c1"># In our working example, we treat the state of &quot;Kansas&quot; as the treated unit, while the other states are treated as control units.</span>
+<span class="c1"># long_df = long_df[long_df.state != &quot;Kansas&quot;]</span>
+</pre></div>
+</div>
+</div>
+<p>We are presently transforming the pandas dataframe into a paneldata object. A paneldata object encompasses the following components:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wide_data</span></code>: This is a pandas dataframe structured as <code class="docutils literal notranslate"><span class="pre">n_units</span></code> (number of units) by <code class="docutils literal notranslate"><span class="pre">n_time</span></code> (number of time periods). Each row corresponds to a specific unit (e.g., a state), and each column represents a particular time period. This dataframe contains the actual data observations.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">treated_periods</span></code>: This is a list that contains all of the time periods during which a treatment or intervention was applied. For instance, if the dataframe includes data for the year 2000, “2000.00” from the provided paneldata, it would be included in this list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">treated_units</span></code>: This is a list that contains all of the units (e.g., states) that have undergone a treatment or intervention. For example, if the state of Kansas received treatment, it would be listed in this component.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creating panel dataset by setting Kansas as treated unit</span>
+<span class="n">panel_data</span> <span class="o">=</span> <span class="n">long_df_to_paneldataset</span><span class="p">(</span><span class="n">long_df</span><span class="p">,</span> <span class="s2">&quot;year_qtr&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">,</span> <span class="s2">&quot;lngdp&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Kansas&quot;</span><span class="p">],</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">panel_data</span><span class="o">.</span><span class="n">summarize</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+        Panel Dataset Summary
+        ---------------------
+        Number of time points: 105
+        Number of units: 50
+        Number of treated units: 1
+        Treated units: [&#39;Kansas&#39;]
+        Treated periods: [TimePeriod(start=2000, end=None)]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">panel_data</span><span class="o">.</span><span class="n">wide_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>year_qtr</th>
+      <th>1990.00</th>
+      <th>1990.25</th>
+      <th>1990.50</th>
+      <th>1990.75</th>
+      <th>1991.00</th>
+      <th>1991.25</th>
+      <th>1991.50</th>
+      <th>1991.75</th>
+      <th>1992.00</th>
+      <th>1992.25</th>
+      <th>...</th>
+      <th>2013.75</th>
+      <th>2014.00</th>
+      <th>2014.25</th>
+      <th>2014.50</th>
+      <th>2014.75</th>
+      <th>2015.00</th>
+      <th>2015.25</th>
+      <th>2015.50</th>
+      <th>2015.75</th>
+      <th>2016.00</th>
+    </tr>
+    <tr>
+      <th>state</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alabama</th>
+      <td>71610.0</td>
+      <td>72718.25</td>
+      <td>73826.5</td>
+      <td>74934.75</td>
+      <td>76043.0</td>
+      <td>77347.25</td>
+      <td>78651.5</td>
+      <td>79955.75</td>
+      <td>81260.0</td>
+      <td>82085.75</td>
+      <td>...</td>
+      <td>191678.0</td>
+      <td>189865.0</td>
+      <td>193005.0</td>
+      <td>196565.0</td>
+      <td>196544.0</td>
+      <td>197643.0</td>
+      <td>200163.0</td>
+      <td>201941.0</td>
+      <td>201938.0</td>
+      <td>202875.0</td>
+    </tr>
+    <tr>
+      <th>Alaska</th>
+      <td>25040.0</td>
+      <td>24350.75</td>
+      <td>23661.5</td>
+      <td>22972.25</td>
+      <td>22283.0</td>
+      <td>22400.50</td>
+      <td>22518.0</td>
+      <td>22635.50</td>
+      <td>22753.0</td>
+      <td>22885.75</td>
+      <td>...</td>
+      <td>58946.0</td>
+      <td>58663.0</td>
+      <td>58771.0</td>
+      <td>58389.0</td>
+      <td>56960.0</td>
+      <td>53786.0</td>
+      <td>54577.0</td>
+      <td>53199.0</td>
+      <td>51682.0</td>
+      <td>50041.0</td>
+    </tr>
+    <tr>
+      <th>Arizona</th>
+      <td>70632.0</td>
+      <td>71313.50</td>
+      <td>71995.0</td>
+      <td>72676.50</td>
+      <td>73358.0</td>
+      <td>75689.00</td>
+      <td>78020.0</td>
+      <td>80351.00</td>
+      <td>82682.0</td>
+      <td>84336.50</td>
+      <td>...</td>
+      <td>275228.0</td>
+      <td>276650.0</td>
+      <td>278849.0</td>
+      <td>283864.0</td>
+      <td>284760.0</td>
+      <td>289220.0</td>
+      <td>291838.0</td>
+      <td>293090.0</td>
+      <td>297738.0</td>
+      <td>298951.0</td>
+    </tr>
+    <tr>
+      <th>Arkansas</th>
+      <td>38680.0</td>
+      <td>39403.00</td>
+      <td>40126.0</td>
+      <td>40849.00</td>
+      <td>41572.0</td>
+      <td>42433.50</td>
+      <td>43295.0</td>
+      <td>44156.50</td>
+      <td>45018.0</td>
+      <td>45655.00</td>
+      <td>...</td>
+      <td>115249.0</td>
+      <td>116197.0</td>
+      <td>117788.0</td>
+      <td>118715.0</td>
+      <td>119571.0</td>
+      <td>117742.0</td>
+      <td>119260.0</td>
+      <td>120195.0</td>
+      <td>120084.0</td>
+      <td>120006.0</td>
+    </tr>
+    <tr>
+      <th>California</th>
+      <td>773460.0</td>
+      <td>777606.50</td>
+      <td>781753.0</td>
+      <td>785899.50</td>
+      <td>790046.0</td>
+      <td>794374.00</td>
+      <td>798702.0</td>
+      <td>803030.00</td>
+      <td>807358.0</td>
+      <td>812130.25</td>
+      <td>...</td>
+      <td>2289413.0</td>
+      <td>2299047.0</td>
+      <td>2341010.0</td>
+      <td>2390167.0</td>
+      <td>2405021.0</td>
+      <td>2459789.0</td>
+      <td>2502706.0</td>
+      <td>2519740.0</td>
+      <td>2541178.0</td>
+      <td>2568986.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 105 columns</p>
+</div></div>
+</div>
+<p><strong>Experimental Design</strong></p>
+<p>In this section, we delve into the discussion of several randomization strategies. Within each of these strategies, we employ random assignment to allocate units from the panel data into either “Treatment” or “Control” groups. Such randomization strategies build robustness into our models to handle uncertainity in the potential outcomes and reduces the risk of confounding.</p>
+<p>By employing a variety of randomization strategies, we distribute different states (considered as pre-treatment units) into two distinct groups. For instance, in one randomization, Massachusetts may be assigned to the “Treatment” group, while Alabama may be assigned to the “Control” group.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install dtaidistance</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.design</span><span class="w"> </span><span class="kn">import</span> <span class="n">CompleteRandomization</span><span class="p">,</span> <span class="n">ThinningDesign</span><span class="p">,</span> <span class="n">Rerandomization</span><span class="p">,</span> <span class="n">QuickBlock</span><span class="p">,</span> <span class="n">greedy_match_markets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.design.design_metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">imbalance</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Complete Randomization</strong>: In this approach, we implement a fully random allocation strategy. A fixed proportion of the units, such as 50% (e.g., denoted as 0.5), is chosen entirely at random and assigned to the “Treatment” group, while the remaining half is assigned to the “Control” group.</p>
+<p>The outcome of this assignment process is a paneldata object. After this assignment, we can conveniently access the units designated as treated units using the “treated_units” field, as shown below:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># creating panel dataset without setting any geo as treated unit&#39;</span>
+<span class="n">panel_data</span> <span class="o">=</span> <span class="n">long_df_to_paneldataset</span><span class="p">(</span><span class="n">long_df</span><span class="p">,</span> <span class="s2">&quot;year_qtr&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">,</span> <span class="s2">&quot;lngdp&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#creating test group using Complete Randomization design method</span>
+<span class="n">cr</span> <span class="o">=</span> <span class="n">CompleteRandomization</span><span class="p">(</span><span class="n">treatment_probability</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">paneldata_post_assignment</span> <span class="o">=</span> <span class="n">cr</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">panel_data</span><span class="p">)</span>
+<span class="n">paneldata_post_assignment</span><span class="o">.</span><span class="n">treated_units</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;Alabama&#39;,
+ &#39;Alaska&#39;,
+ &#39;Arizona&#39;,
+ &#39;Arkansas&#39;,
+ &#39;Georgia&#39;,
+ &#39;Indiana&#39;,
+ &#39;Iowa&#39;,
+ &#39;Kansas&#39;,
+ &#39;Maryland&#39;,
+ &#39;Minnesota&#39;,
+ &#39;Mississippi&#39;,
+ &#39;Missouri&#39;,
+ &#39;Montana&#39;,
+ &#39;Nevada&#39;,
+ &#39;New Hampshire&#39;,
+ &#39;New Jersey&#39;,
+ &#39;New Mexico&#39;,
+ &#39;North Dakota&#39;,
+ &#39;Oklahoma&#39;,
+ &#39;Pennsylvania&#39;,
+ &#39;Texas&#39;,
+ &#39;Utah&#39;,
+ &#39;West Virginia&#39;,
+ &#39;Wisconsin&#39;,
+ &#39;Wyoming&#39;]
+</pre></div></div>
+</div>
+<p>We measure the performance of randomization strategy using the imbalance between the treatment and control groups – higher imbalance correlates with worse generalization performance, i.e., low level of robustness. This helps to make the groups more comparable and reduces the risk of confounding, which can lead to incorrect causal inferences.</p>
+<p>Let <span class="math notranslate nohighlight">\(x_i \in \mathbb{R}^d\)</span> denote the covariates of unit <span class="math notranslate nohighlight">\(i \in \{1, 2, \cdots, n\}\)</span>. Given a treatment assignment <span class="math notranslate nohighlight">\(z \in \{0, 1\}^n\)</span> indicating the assignment of <span class="math notranslate nohighlight">\(n\)</span> units to treatment or control groups, imbalance is measured using the following function:</p>
+<div class="math notranslate nohighlight">
+\[\text{imbalance}(z) = \frac{1}{d} \left\lVert \sum_{i=1}^n \frac{x_i \mathbb{1} \{ i \text{ is assigned treatment} \}}{\sum_{j = 1}^n \mathbb{1} \{ j \text{ is assigned treatment} \}} - \sum_{i=1}^n \frac{x_i \mathbb{1} \{ i\text{ is assigned control} \}}{\sum_{j = 1}^n \mathbb{1} \{ j\text{ is assigned control} \} } \right\rVert^2\]</div>
+<p>It can also be written as:</p>
+<div class="math notranslate nohighlight">
+\[\text{imbalance}(z) = \frac{1}{d} \left\lVert \frac{\sum_{i=1}^n x_i z_i}{\sum_{j=1}^n z_j} -  \frac{\sum_{i=1}^n x_i (1-z_i)}{\sum_{j=1}^n (1-z_j)} \right\rVert^2\]</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imbalance</span><span class="p">(</span><span class="n">paneldata_post_assignment</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+11312733691.163923
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # We should have 49 units here after dropping Kansas</span>
+<span class="c1"># # no treated units and no treated periods</span>
+<span class="c1"># x = TimePeriod()</span>
+<span class="c1"># x.end  = 2015.25</span>
+<span class="c1"># ppd = panel_data.drop_period(x)</span>
+<span class="c1"># ppd.wide_data</span>
+<span class="c1"># panel_data.summarize</span>
+</pre></div>
+</div>
+</div>
+<p><strong>ThinningDesign</strong>: In this design, the main idea is to partition the units into two groups such that the imbalance function with <span class="math notranslate nohighlight">\(l_{\infty}\)</span> error is minimized, instead of the <span class="math notranslate nohighlight">\(l_2\)</span> error as defined in the works of Thinning, OnlineDesign.</p>
+<div class="math notranslate nohighlight">
+\[\text{imbalance}(z) =  \max \left( \frac{\sum_{i=1}^n x_i z_i}{\sum_{j=1}^n z_j} -  \frac{\sum_{i=1}^n x_i (1-z_i)}{\sum_{j=1}^n (1-z_j)} \right)\]</div>
+<p><strong>References</strong></p>
+<ul class="simple">
+<li><p>Thinning: Dwivedi, R., &amp; Mackey, L. (2021). Kernel Thinning. In Conference on Learning Theory (pp. 1753-1753). PMLR.</p></li>
+<li><p>[OnlineDesign] (#arbour2022) :Arbour, D., Dimmery, D., Mai, T., &amp; Rao, A. (2022). Online Balanced Experimental Design. In International Conference on Machine Learning (pp. 844-864). PMLR.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#creating test group with Thinning design</span>
+<span class="n">dm</span> <span class="o">=</span> <span class="n">ThinningDesign</span><span class="p">(</span><span class="n">treatment_probability</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">imbalance</span><span class="p">(</span><span class="n">cr</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">panel_data</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+5337226394.646367
+</pre></div></div>
+</div>
+<p><strong>Rerandomization</strong>: We repeat the process of randomization (e.g., using CompleteRandomization or ThinningDesign) a fixed number of times and pick the randomized assignment with lowest imbalance.</p>
+<p>We generate the treatment vector <span class="math notranslate nohighlight">\(z_t \in \{ 0, 1 \}^n\)</span> for the <span class="math notranslate nohighlight">\(n\)</span> units repeatedly over <span class="math notranslate nohighlight">\(T\)</span> times, i.e., <span class="math notranslate nohighlight">\(t \in \{1, 2, \cdots, T\}\)</span>. The treatment vectors <span class="math notranslate nohighlight">\(z_t\)</span> can be generated through any of the previously discussed randomized strategies as shown below using the argument <code class="docutils literal notranslate"><span class="pre">base_randomizer</span></code>. Finally, we pick the vector <span class="math notranslate nohighlight">\(z_t\)</span> that obtains the minimum imbalance:</p>
+<div class="math notranslate nohighlight">
+\[z^* = \arg \min_{t \in \{1, 2, \cdots, T\}} \text{imbalance}(z_t)\]</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># #creating test group with Rerandomization design</span>
+<span class="c1"># rerand_dm = Rerandomization(</span>
+<span class="c1">#     treatment_probability=0.5,</span>
+<span class="c1">#     target_imbalance=1e-4,</span>
+<span class="c1">#     max_iter=10_000,</span>
+<span class="c1">#     base_randomizer_cls=CompleteRandomization</span>
+<span class="c1"># )</span>
+<span class="c1"># imbalance(rerand_dm.assign(panel_data))</span>
+
+<span class="c1"># rerand_dm = Rerandomization(</span>
+<span class="c1">#     treatment_probability=0.5,</span>
+<span class="c1">#     target_imbalance=1e-4,</span>
+<span class="c1">#     max_iter=10_000,</span>
+<span class="c1">#     base_randomizer_cls=ThinningDesign</span>
+<span class="c1"># )</span>
+<span class="c1"># imbalance(rerand_dm.assign(panel_data))</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Quickblock</strong>: It involves creating subgroups within a given dataset based on available units to ensure that treatment and control groups have similar distributions of these units Quickblock.</p>
+<p><strong>References</strong></p>
+<ul class="simple">
+<li><p>Quickblock: Higgins, M. J., Sävje, F., &amp; Sekhon, J. S. (2016). Improving massive experiments with threshold blocking. Proceedings of the National Academy of Sciences, 113(27), 7369-7376.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#creating test group with Quickblock design</span>
+<span class="n">qb</span> <span class="o">=</span> <span class="n">QuickBlock</span><span class="p">(</span><span class="n">treatment_probability</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">imbalance</span><span class="p">(</span><span class="n">qb</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">panel_data</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+4064691455.75693
+</pre></div></div>
+</div>
+<p><strong>GreedyMatch</strong>: In this approach, we create test and control groups by improving either correlation score or imbalance score or dtw (dynamic time warping) distance between the groups. Algorithm initiates with randomly choosen geo’s for test and control groups, then augments one of the groups in each iteration with a new geo that improvizes the selected score. This process continues until all the availble geos are exhausted.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#creating test group with greedy match design</span>
+<span class="n">gm</span> <span class="o">=</span> <span class="n">greedy_match_markets</span><span class="p">(</span><span class="n">func_to_optimize</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;corr&#39;</span><span class="p">,</span><span class="s1">&#39;imbalance&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">imbalance</span><span class="p">(</span><span class="n">gm</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">panel_data</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+7.258943054334463e-06
+</pre></div></div>
+</div>
+<p><strong>Inference on Observational Data:</strong></p>
+<p>In this section, we show the performance of the synthetic control method called AugSynth. AugSynth expresses panel data associated with a fixed treated unit (e.g., Kansas) with respect to the remaining units (e.g., other states) using a linear model.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+  <span class="n">ABC</span><span class="p">,</span>
+  <span class="n">abstractmethod</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.panel_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">long_df_to_paneldataset</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods.tbr</span><span class="w"> </span><span class="kn">import</span> <span class="n">TBR</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods.scm</span><span class="w"> </span><span class="kn">import</span> <span class="n">SyntheticControl</span><span class="p">,</span> <span class="n">AugSynth</span>
+<br/><br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/christopherb/opt/anaconda3/envs/py310/lib/python3.10/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
+</pre></div></div>
+</div>
+<p>Here are additional details:</p>
+<p><strong>Data</strong>:</p>
+<ul class="simple">
+<li><p>The dataset contains time-series data for multiple states.</p></li>
+<li><p>Recall that the main metric of interest is denoted by “lngdp”, GDP of the particular state in a given quarter.</p></li>
+<li><p>The dataset spans multiple years, covering a defined observation period.</p></li>
+</ul>
+<p><strong>Treatment</strong>:</p>
+<ul class="simple">
+<li><p>In the year 2000, a treatment or intervention was implemented.</p></li>
+<li><p>This treatment was specifically applied to the state of “Kansas.”</p></li>
+</ul>
+<p><strong>Plot</strong>:</p>
+<ul class="simple">
+<li><p>The analysis involves the creation of two curves: the “Observed” curve and the “Inferred” curve.</p></li>
+<li><p>Both curves are plotted on the same graph.</p></li>
+<li><p>The y-axis of the graph represents the variable “lngdp.”</p></li>
+<li><p>The x-axis is normalized, meaning it is scaled in a way that allows for a uniform comparison across time.</p></li>
+<li><p>The treatment year, 2000, is indicated on the x-axis.</p></li>
+<li><p>The statement “the treatment at ‘2000’ roughly corresponds to ‘40%’ of total duration” suggests that the treatment duration, starting in 2000, constitutes approximately 40% of the entire observation period.</p></li>
+</ul>
+<p>This analysis appears to involve evaluating the impact of the treatment on the economic output of Kansas compared to other states, with both observed and inferred curves illustrating the trends in “lngdp” over time.</p>
+<p>The first plot shows both the cuves on the same figure. The second plot shows the difference between the curves vs time, while the third plot shows the <strong>cumulative</strong> difference vs time.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Choosing a design and obtaining control markets for the whitelisted treated unit</span>
+<span class="n">panel_data</span> <span class="o">=</span> <span class="n">long_df_to_paneldataset</span><span class="p">(</span><span class="n">long_df</span><span class="p">,</span> <span class="s2">&quot;year_qtr&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">,</span> <span class="s2">&quot;lngdp&quot;</span><span class="p">)</span>
+
+<span class="n">cr</span> <span class="o">=</span> <span class="n">CompleteRandomization</span><span class="p">(</span><span class="n">treatment_probability</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">td</span> <span class="o">=</span> <span class="n">ThinningDesign</span><span class="p">(</span><span class="n">treatment_probability</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="c1"># gm = greedy_match_markets(func_to_optimize=[&#39;corr&#39;,&#39;imbalance&#39;,&#39;dtw&#39;][0])</span>
+
+<span class="n">design</span> <span class="o">=</span> <span class="n">cr</span> <span class="c1">#[cr,td,gm][2]</span>
+
+<span class="n">test_whitelist</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1">#[&#39;Kansas&#39;]</span>
+
+<span class="c1">#to make test whitelist strictly inclusive, you must pass test_blacklist in the below manner (i.e. include all dmas not part of test_whitelist)</span>
+<span class="n">test_blacklist</span> <span class="o">=</span> <span class="p">[]</span><span class="c1">#[geo for geo in panel_data.units.tolist() if geo not in test_whitelist]</span>
+
+<span class="n">paneldata_post_assignment</span> <span class="o">=</span> <span class="n">design</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">panel_data</span><span class="o">=</span><span class="n">panel_data</span><span class="p">,</span><span class="n">test_whitelist</span><span class="o">=</span><span class="n">test_whitelist</span><span class="p">,</span><span class="n">test_blacklist</span><span class="o">=</span><span class="n">test_blacklist</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test group: </span><span class="si">%s</span><span class="s1"> </span><span class="se">\n\n</span><span class="s1">Control group: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">paneldata_post_assignment</span><span class="o">.</span><span class="n">treated_units</span><span class="p">,</span> <span class="p">[</span><span class="n">unit</span> <span class="k">for</span> <span class="n">unit</span> <span class="ow">in</span> <span class="n">paneldata_post_assignment</span><span class="o">.</span><span class="n">units</span> <span class="k">if</span> <span class="n">unit</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">paneldata_post_assignment</span><span class="o">.</span><span class="n">treated_units</span><span class="p">]))</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Test group: [&#39;Alaska&#39;, &#39;Colorado&#39;, &#39;Connecticut&#39;, &#39;Florida&#39;, &#39;Georgia&#39;, &#39;Hawaii&#39;, &#39;Idaho&#39;, &#39;Michigan&#39;, &#39;Mississippi&#39;, &#39;Missouri&#39;, &#39;Nebraska&#39;, &#39;Nevada&#39;, &#39;New Jersey&#39;, &#39;New Mexico&#39;, &#39;North Carolina&#39;, &#39;Oklahoma&#39;, &#39;Oregon&#39;, &#39;Rhode Island&#39;, &#39;South Carolina&#39;, &#39;South Dakota&#39;, &#39;Tennessee&#39;, &#39;Utah&#39;, &#39;Vermont&#39;, &#39;Virginia&#39;, &#39;Wisconsin&#39;]
+
+Control group: [&#39;Alabama&#39;, &#39;Arizona&#39;, &#39;Arkansas&#39;, &#39;California&#39;, &#39;Delaware&#39;, &#39;Illinois&#39;, &#39;Indiana&#39;, &#39;Iowa&#39;, &#39;Kansas&#39;, &#39;Kentucky&#39;, &#39;Louisiana&#39;, &#39;Maine&#39;, &#39;Maryland&#39;, &#39;Massachusetts&#39;, &#39;Minnesota&#39;, &#39;Montana&#39;, &#39;New Hampshire&#39;, &#39;New York&#39;, &#39;North Dakota&#39;, &#39;Ohio&#39;, &#39;Pennsylvania&#39;, &#39;Texas&#39;, &#39;Washington&#39;, &#39;West Virginia&#39;, &#39;Wyoming&#39;]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pdata</span> <span class="o">=</span> <span class="n">long_df_to_paneldataset</span><span class="p">(</span><span class="n">long_df</span><span class="p">,</span> <span class="s2">&quot;year_qtr&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">,</span> <span class="s2">&quot;lngdp&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Kansas&quot;</span><span class="p">],</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">asynth</span> <span class="o">=</span> <span class="n">AugSynth</span><span class="p">()</span>
+<span class="n">asynth</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">pdata</span><span class="p">)</span>
+<span class="n">asynth</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/experimental_design_32_0.png" src="_images/experimental_design_32_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#setting test and control units</span>
+<span class="c1">#test = paneldata_post_assignment.treated_units</span>
+<span class="c1">#control = [unit for unit in paneldata_post_assignment.units if unit not in paneldata_post_assignment.treated_units]</span>
+
+<span class="c1">#preparing panel data</span>
+<span class="c1">#trimmed_long_df = long_df[long_df.state.isin(test+control)]</span>
+<span class="c1">#trimmed_panel_data = long_df_to_paneldataset(trimmed_long_df, &quot;year_qtr&quot;, &quot;state&quot;, &quot;lngdp&quot;, test,  [2000])</span>
+
+<span class="c1">#Applying aug_synth method to draw inferences for the intervention period</span>
+<span class="c1">#asynth = AugSynth()</span>
+<span class="c1">#synth = SyntheticControl()</span>
+
+<span class="c1">#asynth.run_analysis(panel_data=trimmed_panel_data)</span>
+<span class="c1">#asynth.plot()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#trimmed_panel_data.wide_data.head()</span>
+</pre></div>
+</div>
+</div>
+<p>Matching Design Expose ACS (Lupinov) Uncertainity Estimation Conformal Inference</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#trimmed_long_df</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="power_example.html" class="btn btn-neutral float-left" title="Power Module Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="scm_deep_dive.html" class="btn btn-neutral float-right" title="Synthetic Control Methods" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Adobe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

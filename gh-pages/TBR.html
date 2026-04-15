@@ -1,0 +1,2243 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example of TBR &mdash; Panel Exp 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Panel Exp
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#package-architecture">Package Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#design-module">1. Design Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#methods-module">2. Methods Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#inference-module">3. Inference Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#end-to-end-workflow">End-to-End Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#best-practices">Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#package-dependencies">Package Dependencies</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basic_data.html">PanelDataset Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scm_usage.html">SCM Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tbr_usage.html">TBR Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="power_example.html">Power Module Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Deeper Dives</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="experimental_design.html">Experimental Design Deep Dive (#1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scm_deep_dive.html">Synthetic Control Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tbr_deep_dive.html">Time-Based Regression (TBR)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tbr_deep_dive.html#Regression-while-not-aggregating-the-control-units">Regression while not aggregating the control units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API: Auto-generated Documentation.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#base-classes">Base Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#design">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#models">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#inference">Inference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Panel Exp</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Example of TBR</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/TBR.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Example-of-TBR">
+<h1>Example of TBR<a class="headerlink" href="#Example-of-TBR" title="Link to this heading"></a></h1>
+<p>Paper: <a class="reference external" href="https://storage.googleapis.com/pub-tools-public-publication-data/pdf/45950.pdf">https://storage.googleapis.com/pub-tools-public-publication-data/pdf/45950.pdf</a></p>
+<p>Notes</p>
+<ul class="simple">
+<li><p>Assumes there is only one treated series that has been pre-aggregated.</p></li>
+<li><p>It can handle multiple controls, if you use TBRRidge</p></li>
+<li><p>This method does extrapolate</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.panel_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">PanelDataset</span><span class="p">,</span> <span class="n">TimePeriod</span><span class="p">,</span> <span class="n">long_df_to_paneldataset</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods.tbr</span><span class="w"> </span><span class="kn">import</span> <span class="n">TBR</span><span class="p">,</span> <span class="n">TBRRidge</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load Google Sales Dataset</span>
+<span class="n">long_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;google_sales.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">long_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>geo</th>
+      <th>sales</th>
+      <th>cost</th>
+      <th>group</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2015-01-05</td>
+      <td>1</td>
+      <td>7227.32</td>
+      <td>0.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2015-01-05</td>
+      <td>10</td>
+      <td>1827.21</td>
+      <td>0.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2015-01-05</td>
+      <td>100</td>
+      <td>23.98</td>
+      <td>0.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2015-01-05</td>
+      <td>11</td>
+      <td>1501.10</td>
+      <td>0.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2015-01-05</td>
+      <td>12</td>
+      <td>1371.61</td>
+      <td>0.0</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre_test_start</span> <span class="o">=</span> <span class="s1">&#39;2015-01-05&#39;</span>
+<span class="n">pre_test_end</span>   <span class="o">=</span> <span class="s1">&#39;2015-02-15&#39;</span>
+
+<span class="n">test_start</span> <span class="o">=</span> <span class="s1">&#39;2015-02-16&#39;</span>
+<span class="n">test_end</span>   <span class="o">=</span> <span class="s1">&#39;2015-03-15&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">treated_units</span> <span class="o">=</span> <span class="n">long_df</span><span class="p">[</span><span class="n">long_df</span><span class="o">.</span><span class="n">group</span><span class="o">==</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">treated_units</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+50
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">([</span> <span class="n">test_start</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">treated_units</span><span class="p">))])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+50
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wide_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">long_df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;geo&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;sales&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="nb">sum</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/var/folders/cd/dfrqgp4s4ll55cwb7rtgccbw0000gq/T/ipykernel_30817/1368796011.py:1: FutureWarning: The provided callable &lt;built-in function sum&gt; is currently using DataFrameGroupBy.sum. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string &#34;sum&#34; instead.
+  wide_df = pd.pivot_table(long_df, index=&#39;geo&#39;, columns=&#39;date&#39;, values=&#39;sales&#39;, aggfunc=sum, fill_value=0)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wide_df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>date</th>
+      <th>2015-01-05</th>
+      <th>2015-01-06</th>
+      <th>2015-01-07</th>
+      <th>2015-01-08</th>
+      <th>2015-01-09</th>
+      <th>2015-01-10</th>
+      <th>2015-01-11</th>
+      <th>2015-01-12</th>
+      <th>2015-01-13</th>
+      <th>2015-01-14</th>
+      <th>...</th>
+      <th>2015-03-29</th>
+      <th>2015-03-30</th>
+      <th>2015-03-31</th>
+      <th>2015-04-01</th>
+      <th>2015-04-02</th>
+      <th>2015-04-03</th>
+      <th>2015-04-04</th>
+      <th>2015-04-05</th>
+      <th>2015-04-06</th>
+      <th>2015-04-07</th>
+    </tr>
+    <tr>
+      <th>geo</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>7227.32</td>
+      <td>6815.22</td>
+      <td>6776.46</td>
+      <td>6576.36</td>
+      <td>6452.21</td>
+      <td>3131.31</td>
+      <td>2395.76</td>
+      <td>5673.50</td>
+      <td>5616.11</td>
+      <td>5938.80</td>
+      <td>...</td>
+      <td>2802.66</td>
+      <td>5529.79</td>
+      <td>10394.61</td>
+      <td>11034.58</td>
+      <td>14555.46</td>
+      <td>10089.66</td>
+      <td>4670.80</td>
+      <td>5486.67</td>
+      <td>11618.26</td>
+      <td>10236.80</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5342.56</td>
+      <td>5952.46</td>
+      <td>6040.20</td>
+      <td>5539.52</td>
+      <td>5865.20</td>
+      <td>2413.62</td>
+      <td>2114.20</td>
+      <td>5807.51</td>
+      <td>4818.08</td>
+      <td>5342.42</td>
+      <td>...</td>
+      <td>2022.26</td>
+      <td>4978.16</td>
+      <td>9096.13</td>
+      <td>9292.64</td>
+      <td>12965.73</td>
+      <td>9827.24</td>
+      <td>4289.66</td>
+      <td>4805.18</td>
+      <td>10773.93</td>
+      <td>8906.44</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4958.89</td>
+      <td>5263.24</td>
+      <td>5231.30</td>
+      <td>4634.11</td>
+      <td>4358.55</td>
+      <td>2443.12</td>
+      <td>1788.17</td>
+      <td>4219.14</td>
+      <td>4344.26</td>
+      <td>4415.26</td>
+      <td>...</td>
+      <td>2191.91</td>
+      <td>4120.10</td>
+      <td>8002.69</td>
+      <td>8455.96</td>
+      <td>12057.30</td>
+      <td>8556.54</td>
+      <td>4248.07</td>
+      <td>3796.85</td>
+      <td>8924.78</td>
+      <td>7260.99</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4081.25</td>
+      <td>4130.58</td>
+      <td>3938.00</td>
+      <td>4069.46</td>
+      <td>3526.95</td>
+      <td>1558.29</td>
+      <td>1091.68</td>
+      <td>3290.93</td>
+      <td>3750.73</td>
+      <td>3843.93</td>
+      <td>...</td>
+      <td>1716.89</td>
+      <td>3343.74</td>
+      <td>6130.15</td>
+      <td>7132.35</td>
+      <td>9627.95</td>
+      <td>6726.44</td>
+      <td>3056.12</td>
+      <td>3164.04</td>
+      <td>7899.02</td>
+      <td>6098.67</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2776.79</td>
+      <td>3084.68</td>
+      <td>2877.21</td>
+      <td>2667.54</td>
+      <td>2533.92</td>
+      <td>1420.65</td>
+      <td>1017.58</td>
+      <td>2705.21</td>
+      <td>2668.40</td>
+      <td>2410.60</td>
+      <td>...</td>
+      <td>1038.27</td>
+      <td>2247.32</td>
+      <td>4695.00</td>
+      <td>5013.22</td>
+      <td>7639.04</td>
+      <td>5255.47</td>
+      <td>2300.76</td>
+      <td>2239.18</td>
+      <td>4570.55</td>
+      <td>4110.12</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>9.59</td>
+      <td>19.28</td>
+      <td>24.22</td>
+      <td>24.34</td>
+      <td>44.02</td>
+      <td>4.92</td>
+      <td>9.88</td>
+      <td>14.89</td>
+      <td>29.92</td>
+      <td>10.02</td>
+      <td>...</td>
+      <td>0.00</td>
+      <td>27.24</td>
+      <td>34.17</td>
+      <td>61.72</td>
+      <td>34.41</td>
+      <td>34.53</td>
+      <td>20.79</td>
+      <td>20.87</td>
+      <td>76.75</td>
+      <td>49.01</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>0.00</td>
+      <td>14.46</td>
+      <td>24.22</td>
+      <td>24.34</td>
+      <td>9.78</td>
+      <td>24.58</td>
+      <td>9.88</td>
+      <td>9.93</td>
+      <td>14.97</td>
+      <td>35.08</td>
+      <td>...</td>
+      <td>6.79</td>
+      <td>20.43</td>
+      <td>27.33</td>
+      <td>54.87</td>
+      <td>61.93</td>
+      <td>27.62</td>
+      <td>48.51</td>
+      <td>20.87</td>
+      <td>41.86</td>
+      <td>35.01</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>4.80</td>
+      <td>24.10</td>
+      <td>43.59</td>
+      <td>38.95</td>
+      <td>4.90</td>
+      <td>9.83</td>
+      <td>9.88</td>
+      <td>9.93</td>
+      <td>19.95</td>
+      <td>20.04</td>
+      <td>...</td>
+      <td>6.79</td>
+      <td>34.05</td>
+      <td>41.00</td>
+      <td>27.43</td>
+      <td>68.82</td>
+      <td>75.96</td>
+      <td>27.72</td>
+      <td>13.91</td>
+      <td>48.84</td>
+      <td>49.01</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>14.39</td>
+      <td>28.91</td>
+      <td>43.59</td>
+      <td>14.61</td>
+      <td>4.90</td>
+      <td>14.75</td>
+      <td>0.00</td>
+      <td>9.93</td>
+      <td>9.97</td>
+      <td>20.04</td>
+      <td>...</td>
+      <td>6.79</td>
+      <td>27.24</td>
+      <td>20.51</td>
+      <td>13.71</td>
+      <td>48.17</td>
+      <td>69.06</td>
+      <td>6.94</td>
+      <td>13.91</td>
+      <td>41.86</td>
+      <td>35.01</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>23.98</td>
+      <td>14.46</td>
+      <td>38.75</td>
+      <td>24.34</td>
+      <td>4.90</td>
+      <td>0.00</td>
+      <td>14.82</td>
+      <td>9.93</td>
+      <td>0.00</td>
+      <td>10.02</td>
+      <td>...</td>
+      <td>0.00</td>
+      <td>20.43</td>
+      <td>41.00</td>
+      <td>41.14</td>
+      <td>48.17</td>
+      <td>20.72</td>
+      <td>41.57</td>
+      <td>6.96</td>
+      <td>41.86</td>
+      <td>21.01</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 93 columns</p>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[58]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">treated_units</span> <span class="o">=</span> <span class="n">long_df</span><span class="p">[</span><span class="n">long_df</span><span class="o">.</span><span class="n">group</span><span class="o">==</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">geo</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pds</span> <span class="o">=</span> <span class="n">PanelDataset</span><span class="p">(</span><span class="n">wide_df</span>
+                <span class="p">,</span> <span class="n">treated_periods</span><span class="o">=</span><span class="p">[</span><span class="n">TimePeriod</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">test_start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">test_end</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">treated_units</span><span class="p">))]</span>
+                <span class="p">,</span> <span class="n">treated_units</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">treated_units</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pds</span><span class="o">.</span><span class="n">summarize</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+        Panel Dataset Summary
+        ---------------------
+        Number of time points: 93
+        Number of units: 100
+        Number of treated units: 50
+        Treated units: [1, 12, 14, 15, 18, 20, 22, 24, 25, 27, 30, 31, 33, 35, 38, 4, 40, 42, 43, 46, 48, 49, 51, 53, 55, 57, 59, 6, 61, 64, 65, 67, 7, 70, 71, 73, 75, 77, 79, 81, 83, 85, 88, 9, 90, 92, 93, 96, 98, 99]
+        Treated periods: [TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;), TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;)]
+
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbr</span> <span class="o">=</span> <span class="n">TBRRidge</span><span class="p">()</span>
+<span class="n">tbr</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">pds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbr</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/TBR_15_0.png" src="_images/TBR_15_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbr</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Average</th>
+      <th>Cumulative</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Actual</th>
+      <td>720.913237</td>
+      <td>973232.87</td>
+    </tr>
+    <tr>
+      <th>Predicted</th>
+      <td>621.288067</td>
+      <td>838738.891088</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Absolute Effect</th>
+      <td>99.62517</td>
+      <td>134493.978912</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Relative Effect</th>
+      <td>16.035262</td>
+      <td>16.035262</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[84]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#control_units = pd.DataFrame(wide_df.loc[[unit for unit in pds.units if unit not in treated_units]] ).T</span>
+<span class="c1">#treated_units = pd.DataFrame(wide_df.loc[treated_units].sum(axis=0), columns=[&#39;treated&#39;])</span>
+<span class="c1">#wide_agg = pd.concat([treated_units, control_units], axis=1)</span>
+<span class="c1">#wide_agg.columns = treated_units.index</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[78]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wide_agg</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[78]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>date</th>
+      <th>2015-01-05</th>
+      <th>2015-01-06</th>
+      <th>2015-01-07</th>
+      <th>2015-01-08</th>
+      <th>2015-01-09</th>
+      <th>2015-01-10</th>
+      <th>2015-01-11</th>
+      <th>2015-01-12</th>
+      <th>2015-01-13</th>
+      <th>2015-01-14</th>
+      <th>...</th>
+      <th>2015-03-29</th>
+      <th>2015-03-30</th>
+      <th>2015-03-31</th>
+      <th>2015-04-01</th>
+      <th>2015-04-02</th>
+      <th>2015-04-03</th>
+      <th>2015-04-04</th>
+      <th>2015-04-05</th>
+      <th>2015-04-06</th>
+      <th>2015-04-07</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>treated</th>
+      <td>30141.78</td>
+      <td>31671.03</td>
+      <td>31503.97</td>
+      <td>29425.68</td>
+      <td>26968.16</td>
+      <td>13670.65</td>
+      <td>10037.50</td>
+      <td>26511.06</td>
+      <td>25596.64</td>
+      <td>26967.59</td>
+      <td>...</td>
+      <td>12594.88</td>
+      <td>25571.82</td>
+      <td>46703.97</td>
+      <td>49919.65</td>
+      <td>73486.19</td>
+      <td>50904.01</td>
+      <td>23250.05</td>
+      <td>25451.46</td>
+      <td>55272.21</td>
+      <td>45519.44</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5342.56</td>
+      <td>5952.46</td>
+      <td>6040.20</td>
+      <td>5539.52</td>
+      <td>5865.20</td>
+      <td>2413.62</td>
+      <td>2114.20</td>
+      <td>5807.51</td>
+      <td>4818.08</td>
+      <td>5342.42</td>
+      <td>...</td>
+      <td>2022.26</td>
+      <td>4978.16</td>
+      <td>9096.13</td>
+      <td>9292.64</td>
+      <td>12965.73</td>
+      <td>9827.24</td>
+      <td>4289.66</td>
+      <td>4805.18</td>
+      <td>10773.93</td>
+      <td>8906.44</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4958.89</td>
+      <td>5263.24</td>
+      <td>5231.30</td>
+      <td>4634.11</td>
+      <td>4358.55</td>
+      <td>2443.12</td>
+      <td>1788.17</td>
+      <td>4219.14</td>
+      <td>4344.26</td>
+      <td>4415.26</td>
+      <td>...</td>
+      <td>2191.91</td>
+      <td>4120.10</td>
+      <td>8002.69</td>
+      <td>8455.96</td>
+      <td>12057.30</td>
+      <td>8556.54</td>
+      <td>4248.07</td>
+      <td>3796.85</td>
+      <td>8924.78</td>
+      <td>7260.99</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2776.79</td>
+      <td>3084.68</td>
+      <td>2877.21</td>
+      <td>2667.54</td>
+      <td>2533.92</td>
+      <td>1420.65</td>
+      <td>1017.58</td>
+      <td>2705.21</td>
+      <td>2668.40</td>
+      <td>2410.60</td>
+      <td>...</td>
+      <td>1038.27</td>
+      <td>2247.32</td>
+      <td>4695.00</td>
+      <td>5013.22</td>
+      <td>7639.04</td>
+      <td>5255.47</td>
+      <td>2300.76</td>
+      <td>2239.18</td>
+      <td>4570.55</td>
+      <td>4110.12</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1793.64</td>
+      <td>2149.63</td>
+      <td>2111.89</td>
+      <td>1771.87</td>
+      <td>1624.06</td>
+      <td>1081.46</td>
+      <td>706.37</td>
+      <td>1960.65</td>
+      <td>1611.01</td>
+      <td>1889.39</td>
+      <td>...</td>
+      <td>841.47</td>
+      <td>1511.83</td>
+      <td>2801.96</td>
+      <td>3387.87</td>
+      <td>5595.08</td>
+      <td>3722.33</td>
+      <td>1815.66</td>
+      <td>1773.26</td>
+      <td>3356.38</td>
+      <td>3129.86</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1827.21</td>
+      <td>1484.51</td>
+      <td>1922.99</td>
+      <td>1582.03</td>
+      <td>1506.66</td>
+      <td>707.87</td>
+      <td>419.88</td>
+      <td>1588.38</td>
+      <td>1386.57</td>
+      <td>1433.33</td>
+      <td>...</td>
+      <td>502.17</td>
+      <td>1300.72</td>
+      <td>2631.12</td>
+      <td>2894.09</td>
+      <td>5760.25</td>
+      <td>3204.39</td>
+      <td>1469.16</td>
+      <td>1237.81</td>
+      <td>3258.69</td>
+      <td>2282.62</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1501.10</td>
+      <td>1523.06</td>
+      <td>1414.38</td>
+      <td>1431.12</td>
+      <td>1325.66</td>
+      <td>629.22</td>
+      <td>587.82</td>
+      <td>1360.05</td>
+      <td>1281.83</td>
+      <td>1513.52</td>
+      <td>...</td>
+      <td>583.60</td>
+      <td>1287.10</td>
+      <td>2214.24</td>
+      <td>2393.46</td>
+      <td>3585.53</td>
+      <td>2251.35</td>
+      <td>1365.21</td>
+      <td>1307.35</td>
+      <td>2937.72</td>
+      <td>2135.59</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1366.81</td>
+      <td>1465.22</td>
+      <td>1162.51</td>
+      <td>1426.26</td>
+      <td>1076.18</td>
+      <td>565.31</td>
+      <td>568.07</td>
+      <td>1141.65</td>
+      <td>1396.54</td>
+      <td>1212.82</td>
+      <td>...</td>
+      <td>508.96</td>
+      <td>919.36</td>
+      <td>2200.57</td>
+      <td>2139.71</td>
+      <td>3881.46</td>
+      <td>2644.99</td>
+      <td>1469.16</td>
+      <td>931.83</td>
+      <td>2749.31</td>
+      <td>2275.63</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>1016.72</td>
+      <td>1118.19</td>
+      <td>1114.07</td>
+      <td>1270.49</td>
+      <td>880.51</td>
+      <td>565.31</td>
+      <td>409.99</td>
+      <td>948.06</td>
+      <td>1157.14</td>
+      <td>957.22</td>
+      <td>...</td>
+      <td>637.90</td>
+      <td>1055.56</td>
+      <td>1927.20</td>
+      <td>1892.82</td>
+      <td>3110.68</td>
+      <td>1906.06</td>
+      <td>866.25</td>
+      <td>1126.53</td>
+      <td>2212.01</td>
+      <td>1673.45</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>963.96</td>
+      <td>1190.49</td>
+      <td>1152.82</td>
+      <td>846.99</td>
+      <td>860.95</td>
+      <td>344.10</td>
+      <td>306.26</td>
+      <td>1146.61</td>
+      <td>1087.31</td>
+      <td>917.13</td>
+      <td>...</td>
+      <td>359.66</td>
+      <td>844.45</td>
+      <td>1544.50</td>
+      <td>1947.69</td>
+      <td>2546.35</td>
+      <td>1878.44</td>
+      <td>790.01</td>
+      <td>792.74</td>
+      <td>1932.89</td>
+      <td>1785.49</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>834.47</td>
+      <td>935.04</td>
+      <td>905.79</td>
+      <td>910.27</td>
+      <td>626.15</td>
+      <td>466.99</td>
+      <td>370.48</td>
+      <td>903.39</td>
+      <td>783.07</td>
+      <td>867.02</td>
+      <td>...</td>
+      <td>380.03</td>
+      <td>783.16</td>
+      <td>1359.98</td>
+      <td>1447.05</td>
+      <td>1761.79</td>
+      <td>1422.63</td>
+      <td>692.99</td>
+      <td>702.35</td>
+      <td>1521.19</td>
+      <td>1288.35</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>618.66</td>
+      <td>920.58</td>
+      <td>634.53</td>
+      <td>666.89</td>
+      <td>616.36</td>
+      <td>319.52</td>
+      <td>296.38</td>
+      <td>635.36</td>
+      <td>633.43</td>
+      <td>801.86</td>
+      <td>...</td>
+      <td>298.59</td>
+      <td>674.20</td>
+      <td>1154.96</td>
+      <td>966.98</td>
+      <td>1748.03</td>
+      <td>1194.74</td>
+      <td>547.47</td>
+      <td>632.81</td>
+      <td>1437.45</td>
+      <td>1162.32</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>642.64</td>
+      <td>621.75</td>
+      <td>484.38</td>
+      <td>647.42</td>
+      <td>518.53</td>
+      <td>270.36</td>
+      <td>192.65</td>
+      <td>491.41</td>
+      <td>603.51</td>
+      <td>932.16</td>
+      <td>...</td>
+      <td>217.16</td>
+      <td>483.51</td>
+      <td>970.44</td>
+      <td>836.68</td>
+      <td>1390.17</td>
+      <td>1063.53</td>
+      <td>526.67</td>
+      <td>514.59</td>
+      <td>907.13</td>
+      <td>987.27</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>422.03</td>
+      <td>462.70</td>
+      <td>557.04</td>
+      <td>506.25</td>
+      <td>391.34</td>
+      <td>270.36</td>
+      <td>227.23</td>
+      <td>421.92</td>
+      <td>329.18</td>
+      <td>436.02</td>
+      <td>...</td>
+      <td>169.66</td>
+      <td>415.42</td>
+      <td>717.57</td>
+      <td>829.83</td>
+      <td>1046.07</td>
+      <td>821.81</td>
+      <td>388.08</td>
+      <td>424.20</td>
+      <td>962.95</td>
+      <td>770.21</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>541.93</td>
+      <td>433.78</td>
+      <td>319.69</td>
+      <td>374.82</td>
+      <td>435.37</td>
+      <td>191.72</td>
+      <td>103.73</td>
+      <td>392.13</td>
+      <td>314.23</td>
+      <td>420.98</td>
+      <td>...</td>
+      <td>196.80</td>
+      <td>326.88</td>
+      <td>526.22</td>
+      <td>733.80</td>
+      <td>1465.87</td>
+      <td>897.78</td>
+      <td>304.92</td>
+      <td>361.60</td>
+      <td>774.55</td>
+      <td>770.21</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>465.20</td>
+      <td>428.96</td>
+      <td>411.73</td>
+      <td>428.36</td>
+      <td>361.99</td>
+      <td>231.03</td>
+      <td>153.13</td>
+      <td>263.08</td>
+      <td>384.05</td>
+      <td>330.76</td>
+      <td>...</td>
+      <td>135.73</td>
+      <td>388.17</td>
+      <td>615.06</td>
+      <td>603.50</td>
+      <td>1052.95</td>
+      <td>642.25</td>
+      <td>360.35</td>
+      <td>264.25</td>
+      <td>641.98</td>
+      <td>448.12</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>302.14</td>
+      <td>424.14</td>
+      <td>300.31</td>
+      <td>345.61</td>
+      <td>278.83</td>
+      <td>191.72</td>
+      <td>202.53</td>
+      <td>312.71</td>
+      <td>329.18</td>
+      <td>305.71</td>
+      <td>...</td>
+      <td>210.37</td>
+      <td>279.21</td>
+      <td>635.56</td>
+      <td>541.78</td>
+      <td>798.32</td>
+      <td>517.95</td>
+      <td>325.70</td>
+      <td>257.30</td>
+      <td>537.30</td>
+      <td>434.12</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>345.30</td>
+      <td>313.29</td>
+      <td>372.97</td>
+      <td>316.41</td>
+      <td>259.26</td>
+      <td>122.90</td>
+      <td>59.28</td>
+      <td>208.47</td>
+      <td>319.21</td>
+      <td>275.64</td>
+      <td>...</td>
+      <td>196.80</td>
+      <td>292.83</td>
+      <td>369.03</td>
+      <td>589.79</td>
+      <td>1046.07</td>
+      <td>600.83</td>
+      <td>242.54</td>
+      <td>132.12</td>
+      <td>669.88</td>
+      <td>567.15</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>311.73</td>
+      <td>236.17</td>
+      <td>382.66</td>
+      <td>287.19</td>
+      <td>239.70</td>
+      <td>93.40</td>
+      <td>108.68</td>
+      <td>287.90</td>
+      <td>229.43</td>
+      <td>190.44</td>
+      <td>...</td>
+      <td>149.30</td>
+      <td>279.21</td>
+      <td>451.04</td>
+      <td>630.94</td>
+      <td>757.02</td>
+      <td>580.10</td>
+      <td>242.54</td>
+      <td>201.67</td>
+      <td>488.46</td>
+      <td>427.12</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>263.77</td>
+      <td>294.01</td>
+      <td>290.63</td>
+      <td>306.67</td>
+      <td>195.67</td>
+      <td>117.98</td>
+      <td>133.37</td>
+      <td>292.85</td>
+      <td>309.23</td>
+      <td>235.54</td>
+      <td>...</td>
+      <td>128.93</td>
+      <td>231.55</td>
+      <td>375.87</td>
+      <td>548.65</td>
+      <td>977.25</td>
+      <td>545.57</td>
+      <td>297.99</td>
+      <td>229.48</td>
+      <td>474.50</td>
+      <td>329.08</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>235.00</td>
+      <td>240.99</td>
+      <td>372.97</td>
+      <td>180.11</td>
+      <td>259.26</td>
+      <td>201.55</td>
+      <td>108.68</td>
+      <td>183.66</td>
+      <td>144.64</td>
+      <td>275.64</td>
+      <td>...</td>
+      <td>95.00</td>
+      <td>217.93</td>
+      <td>451.04</td>
+      <td>288.03</td>
+      <td>1018.53</td>
+      <td>690.60</td>
+      <td>194.03</td>
+      <td>389.43</td>
+      <td>418.68</td>
+      <td>406.11</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>402.85</td>
+      <td>395.23</td>
+      <td>237.35</td>
+      <td>214.19</td>
+      <td>234.80</td>
+      <td>172.05</td>
+      <td>88.91</td>
+      <td>223.36</td>
+      <td>254.37</td>
+      <td>300.70</td>
+      <td>...</td>
+      <td>108.57</td>
+      <td>211.11</td>
+      <td>375.87</td>
+      <td>534.92</td>
+      <td>605.61</td>
+      <td>414.36</td>
+      <td>194.03</td>
+      <td>285.11</td>
+      <td>418.68</td>
+      <td>343.10</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>225.40</td>
+      <td>192.79</td>
+      <td>339.07</td>
+      <td>228.78</td>
+      <td>171.21</td>
+      <td>73.74</td>
+      <td>128.43</td>
+      <td>248.18</td>
+      <td>149.62</td>
+      <td>250.58</td>
+      <td>...</td>
+      <td>149.30</td>
+      <td>231.55</td>
+      <td>355.37</td>
+      <td>384.06</td>
+      <td>626.26</td>
+      <td>393.64</td>
+      <td>180.18</td>
+      <td>166.89</td>
+      <td>376.80</td>
+      <td>322.09</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>273.36</td>
+      <td>250.63</td>
+      <td>242.19</td>
+      <td>223.92</td>
+      <td>185.88</td>
+      <td>54.07</td>
+      <td>59.28</td>
+      <td>193.59</td>
+      <td>194.52</td>
+      <td>220.52</td>
+      <td>...</td>
+      <td>74.64</td>
+      <td>183.88</td>
+      <td>389.54</td>
+      <td>315.47</td>
+      <td>529.92</td>
+      <td>386.74</td>
+      <td>124.73</td>
+      <td>305.98</td>
+      <td>348.89</td>
+      <td>196.05</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>201.42</td>
+      <td>231.35</td>
+      <td>193.75</td>
+      <td>180.11</td>
+      <td>171.21</td>
+      <td>78.65</td>
+      <td>54.33</td>
+      <td>188.62</td>
+      <td>164.59</td>
+      <td>150.34</td>
+      <td>...</td>
+      <td>74.64</td>
+      <td>238.35</td>
+      <td>321.19</td>
+      <td>349.76</td>
+      <td>633.15</td>
+      <td>303.87</td>
+      <td>138.60</td>
+      <td>173.85</td>
+      <td>300.05</td>
+      <td>385.10</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>177.45</td>
+      <td>173.51</td>
+      <td>96.88</td>
+      <td>97.36</td>
+      <td>146.75</td>
+      <td>122.90</td>
+      <td>64.22</td>
+      <td>158.84</td>
+      <td>194.52</td>
+      <td>150.34</td>
+      <td>...</td>
+      <td>40.71</td>
+      <td>102.15</td>
+      <td>328.03</td>
+      <td>294.89</td>
+      <td>640.02</td>
+      <td>269.34</td>
+      <td>145.53</td>
+      <td>159.94</td>
+      <td>327.96</td>
+      <td>273.08</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>143.87</td>
+      <td>236.17</td>
+      <td>164.69</td>
+      <td>141.17</td>
+      <td>146.75</td>
+      <td>83.57</td>
+      <td>39.52</td>
+      <td>173.72</td>
+      <td>149.62</td>
+      <td>195.46</td>
+      <td>...</td>
+      <td>74.64</td>
+      <td>163.44</td>
+      <td>218.69</td>
+      <td>260.60</td>
+      <td>481.74</td>
+      <td>366.02</td>
+      <td>110.87</td>
+      <td>118.22</td>
+      <td>244.22</td>
+      <td>217.06</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>71.94</td>
+      <td>120.50</td>
+      <td>140.47</td>
+      <td>175.24</td>
+      <td>102.72</td>
+      <td>73.74</td>
+      <td>98.80</td>
+      <td>153.87</td>
+      <td>134.67</td>
+      <td>140.32</td>
+      <td>...</td>
+      <td>47.50</td>
+      <td>74.91</td>
+      <td>232.36</td>
+      <td>240.03</td>
+      <td>516.16</td>
+      <td>186.47</td>
+      <td>124.73</td>
+      <td>271.21</td>
+      <td>216.31</td>
+      <td>105.03</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>95.92</td>
+      <td>168.69</td>
+      <td>193.75</td>
+      <td>194.71</td>
+      <td>92.94</td>
+      <td>44.24</td>
+      <td>69.15</td>
+      <td>114.16</td>
+      <td>139.65</td>
+      <td>160.38</td>
+      <td>...</td>
+      <td>74.64</td>
+      <td>177.06</td>
+      <td>191.35</td>
+      <td>260.60</td>
+      <td>323.45</td>
+      <td>221.00</td>
+      <td>124.73</td>
+      <td>208.61</td>
+      <td>279.11</td>
+      <td>273.08</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>119.90</td>
+      <td>139.78</td>
+      <td>135.62</td>
+      <td>136.29</td>
+      <td>102.72</td>
+      <td>34.41</td>
+      <td>24.70</td>
+      <td>104.23</td>
+      <td>129.68</td>
+      <td>100.24</td>
+      <td>...</td>
+      <td>0.00</td>
+      <td>177.06</td>
+      <td>205.01</td>
+      <td>171.46</td>
+      <td>474.86</td>
+      <td>234.81</td>
+      <td>90.10</td>
+      <td>139.08</td>
+      <td>320.99</td>
+      <td>315.08</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>76.73</td>
+      <td>154.24</td>
+      <td>184.06</td>
+      <td>126.56</td>
+      <td>107.62</td>
+      <td>39.33</td>
+      <td>64.22</td>
+      <td>59.56</td>
+      <td>94.76</td>
+      <td>100.24</td>
+      <td>...</td>
+      <td>54.29</td>
+      <td>183.88</td>
+      <td>177.68</td>
+      <td>137.17</td>
+      <td>247.75</td>
+      <td>158.83</td>
+      <td>83.16</td>
+      <td>48.68</td>
+      <td>300.05</td>
+      <td>210.05</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>134.28</td>
+      <td>173.51</td>
+      <td>164.69</td>
+      <td>170.37</td>
+      <td>132.08</td>
+      <td>58.99</td>
+      <td>24.70</td>
+      <td>79.42</td>
+      <td>74.82</td>
+      <td>105.24</td>
+      <td>...</td>
+      <td>40.71</td>
+      <td>149.82</td>
+      <td>150.35</td>
+      <td>130.30</td>
+      <td>330.34</td>
+      <td>262.43</td>
+      <td>138.60</td>
+      <td>90.41</td>
+      <td>237.25</td>
+      <td>182.05</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>124.69</td>
+      <td>134.95</td>
+      <td>116.25</td>
+      <td>121.70</td>
+      <td>141.86</td>
+      <td>34.41</td>
+      <td>59.28</td>
+      <td>109.20</td>
+      <td>69.83</td>
+      <td>75.18</td>
+      <td>...</td>
+      <td>81.43</td>
+      <td>143.01</td>
+      <td>157.18</td>
+      <td>178.31</td>
+      <td>426.68</td>
+      <td>138.12</td>
+      <td>138.60</td>
+      <td>48.68</td>
+      <td>244.22</td>
+      <td>161.04</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>119.90</td>
+      <td>110.85</td>
+      <td>155.00</td>
+      <td>53.54</td>
+      <td>107.62</td>
+      <td>58.99</td>
+      <td>29.63</td>
+      <td>94.31</td>
+      <td>64.84</td>
+      <td>75.18</td>
+      <td>...</td>
+      <td>74.64</td>
+      <td>68.10</td>
+      <td>157.18</td>
+      <td>185.17</td>
+      <td>385.40</td>
+      <td>234.81</td>
+      <td>76.22</td>
+      <td>48.68</td>
+      <td>167.47</td>
+      <td>140.04</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>139.08</td>
+      <td>159.05</td>
+      <td>145.31</td>
+      <td>87.61</td>
+      <td>73.38</td>
+      <td>24.58</td>
+      <td>49.40</td>
+      <td>64.53</td>
+      <td>69.83</td>
+      <td>75.18</td>
+      <td>...</td>
+      <td>61.07</td>
+      <td>108.96</td>
+      <td>211.85</td>
+      <td>274.32</td>
+      <td>295.93</td>
+      <td>193.36</td>
+      <td>131.67</td>
+      <td>152.99</td>
+      <td>202.36</td>
+      <td>203.06</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>119.90</td>
+      <td>154.24</td>
+      <td>77.50</td>
+      <td>87.61</td>
+      <td>132.08</td>
+      <td>54.07</td>
+      <td>9.88</td>
+      <td>54.60</td>
+      <td>59.85</td>
+      <td>80.18</td>
+      <td>...</td>
+      <td>33.93</td>
+      <td>95.34</td>
+      <td>191.35</td>
+      <td>281.18</td>
+      <td>309.69</td>
+      <td>324.58</td>
+      <td>69.30</td>
+      <td>222.53</td>
+      <td>160.49</td>
+      <td>189.06</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>91.12</td>
+      <td>96.40</td>
+      <td>82.35</td>
+      <td>97.36</td>
+      <td>58.70</td>
+      <td>68.82</td>
+      <td>19.76</td>
+      <td>59.56</td>
+      <td>44.89</td>
+      <td>65.16</td>
+      <td>...</td>
+      <td>33.93</td>
+      <td>122.57</td>
+      <td>170.86</td>
+      <td>178.31</td>
+      <td>337.23</td>
+      <td>165.74</td>
+      <td>55.44</td>
+      <td>173.85</td>
+      <td>139.56</td>
+      <td>175.05</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>86.32</td>
+      <td>91.58</td>
+      <td>67.81</td>
+      <td>73.02</td>
+      <td>88.05</td>
+      <td>63.91</td>
+      <td>88.91</td>
+      <td>74.46</td>
+      <td>59.85</td>
+      <td>80.18</td>
+      <td>...</td>
+      <td>27.14</td>
+      <td>40.85</td>
+      <td>170.86</td>
+      <td>178.31</td>
+      <td>261.51</td>
+      <td>55.25</td>
+      <td>76.22</td>
+      <td>83.45</td>
+      <td>132.58</td>
+      <td>105.03</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>62.35</td>
+      <td>96.40</td>
+      <td>82.35</td>
+      <td>48.68</td>
+      <td>44.02</td>
+      <td>49.16</td>
+      <td>19.76</td>
+      <td>64.53</td>
+      <td>39.90</td>
+      <td>60.14</td>
+      <td>...</td>
+      <td>54.29</td>
+      <td>61.29</td>
+      <td>82.01</td>
+      <td>54.87</td>
+      <td>172.06</td>
+      <td>151.93</td>
+      <td>69.30</td>
+      <td>34.77</td>
+      <td>167.47</td>
+      <td>91.03</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>14.39</td>
+      <td>91.58</td>
+      <td>43.59</td>
+      <td>87.61</td>
+      <td>97.84</td>
+      <td>4.92</td>
+      <td>19.76</td>
+      <td>49.64</td>
+      <td>49.88</td>
+      <td>65.16</td>
+      <td>...</td>
+      <td>20.36</td>
+      <td>20.43</td>
+      <td>95.67</td>
+      <td>123.44</td>
+      <td>199.58</td>
+      <td>96.68</td>
+      <td>27.72</td>
+      <td>104.31</td>
+      <td>132.58</td>
+      <td>133.04</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>52.75</td>
+      <td>57.84</td>
+      <td>92.03</td>
+      <td>68.15</td>
+      <td>53.80</td>
+      <td>19.66</td>
+      <td>24.70</td>
+      <td>39.71</td>
+      <td>44.89</td>
+      <td>95.22</td>
+      <td>...</td>
+      <td>27.14</td>
+      <td>40.85</td>
+      <td>34.17</td>
+      <td>144.02</td>
+      <td>199.58</td>
+      <td>69.06</td>
+      <td>55.44</td>
+      <td>62.58</td>
+      <td>146.53</td>
+      <td>63.01</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>91.12</td>
+      <td>62.66</td>
+      <td>111.40</td>
+      <td>107.09</td>
+      <td>48.92</td>
+      <td>39.33</td>
+      <td>14.82</td>
+      <td>49.64</td>
+      <td>44.89</td>
+      <td>45.10</td>
+      <td>...</td>
+      <td>47.50</td>
+      <td>40.85</td>
+      <td>143.51</td>
+      <td>68.58</td>
+      <td>172.06</td>
+      <td>41.43</td>
+      <td>55.44</td>
+      <td>41.72</td>
+      <td>62.80</td>
+      <td>91.03</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>52.75</td>
+      <td>53.01</td>
+      <td>116.25</td>
+      <td>53.54</td>
+      <td>14.68</td>
+      <td>34.41</td>
+      <td>44.45</td>
+      <td>84.38</td>
+      <td>59.85</td>
+      <td>75.18</td>
+      <td>...</td>
+      <td>6.79</td>
+      <td>6.82</td>
+      <td>68.34</td>
+      <td>96.01</td>
+      <td>192.69</td>
+      <td>69.06</td>
+      <td>41.57</td>
+      <td>76.49</td>
+      <td>111.64</td>
+      <td>49.01</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>38.37</td>
+      <td>62.66</td>
+      <td>77.50</td>
+      <td>68.15</td>
+      <td>29.35</td>
+      <td>9.83</td>
+      <td>24.70</td>
+      <td>34.74</td>
+      <td>69.83</td>
+      <td>65.16</td>
+      <td>...</td>
+      <td>40.71</td>
+      <td>27.24</td>
+      <td>68.34</td>
+      <td>82.30</td>
+      <td>96.35</td>
+      <td>41.43</td>
+      <td>20.79</td>
+      <td>83.45</td>
+      <td>69.78</td>
+      <td>119.03</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>38.37</td>
+      <td>48.20</td>
+      <td>43.59</td>
+      <td>34.07</td>
+      <td>29.35</td>
+      <td>34.41</td>
+      <td>19.76</td>
+      <td>39.71</td>
+      <td>34.91</td>
+      <td>60.14</td>
+      <td>...</td>
+      <td>27.14</td>
+      <td>74.91</td>
+      <td>75.17</td>
+      <td>61.72</td>
+      <td>123.87</td>
+      <td>96.68</td>
+      <td>41.57</td>
+      <td>48.68</td>
+      <td>69.78</td>
+      <td>77.02</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>38.37</td>
+      <td>57.84</td>
+      <td>48.44</td>
+      <td>34.07</td>
+      <td>24.46</td>
+      <td>14.75</td>
+      <td>9.88</td>
+      <td>44.67</td>
+      <td>39.90</td>
+      <td>40.10</td>
+      <td>...</td>
+      <td>47.50</td>
+      <td>20.43</td>
+      <td>54.68</td>
+      <td>123.44</td>
+      <td>151.41</td>
+      <td>48.34</td>
+      <td>41.57</td>
+      <td>41.72</td>
+      <td>83.74</td>
+      <td>168.05</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>62.35</td>
+      <td>19.28</td>
+      <td>43.59</td>
+      <td>43.81</td>
+      <td>19.56</td>
+      <td>29.49</td>
+      <td>9.88</td>
+      <td>39.71</td>
+      <td>44.89</td>
+      <td>25.06</td>
+      <td>...</td>
+      <td>20.36</td>
+      <td>40.85</td>
+      <td>68.34</td>
+      <td>41.14</td>
+      <td>110.11</td>
+      <td>55.25</td>
+      <td>76.22</td>
+      <td>55.64</td>
+      <td>20.94</td>
+      <td>84.02</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>28.77</td>
+      <td>53.01</td>
+      <td>9.69</td>
+      <td>19.47</td>
+      <td>34.24</td>
+      <td>34.41</td>
+      <td>19.76</td>
+      <td>14.89</td>
+      <td>24.94</td>
+      <td>25.06</td>
+      <td>...</td>
+      <td>20.36</td>
+      <td>13.62</td>
+      <td>95.67</td>
+      <td>61.72</td>
+      <td>61.93</td>
+      <td>20.72</td>
+      <td>41.57</td>
+      <td>20.87</td>
+      <td>125.60</td>
+      <td>49.01</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>47.96</td>
+      <td>48.20</td>
+      <td>9.69</td>
+      <td>19.47</td>
+      <td>53.80</td>
+      <td>24.58</td>
+      <td>9.88</td>
+      <td>34.74</td>
+      <td>24.94</td>
+      <td>10.02</td>
+      <td>...</td>
+      <td>47.50</td>
+      <td>27.24</td>
+      <td>34.17</td>
+      <td>20.58</td>
+      <td>55.06</td>
+      <td>20.72</td>
+      <td>6.94</td>
+      <td>13.91</td>
+      <td>41.86</td>
+      <td>49.01</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>0.00</td>
+      <td>14.46</td>
+      <td>24.22</td>
+      <td>24.34</td>
+      <td>9.78</td>
+      <td>24.58</td>
+      <td>9.88</td>
+      <td>9.93</td>
+      <td>14.97</td>
+      <td>35.08</td>
+      <td>...</td>
+      <td>6.79</td>
+      <td>20.43</td>
+      <td>27.33</td>
+      <td>54.87</td>
+      <td>61.93</td>
+      <td>27.62</td>
+      <td>48.51</td>
+      <td>20.87</td>
+      <td>41.86</td>
+      <td>35.01</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>23.98</td>
+      <td>14.46</td>
+      <td>38.75</td>
+      <td>24.34</td>
+      <td>4.90</td>
+      <td>0.00</td>
+      <td>14.82</td>
+      <td>9.93</td>
+      <td>0.00</td>
+      <td>10.02</td>
+      <td>...</td>
+      <td>0.00</td>
+      <td>20.43</td>
+      <td>41.00</td>
+      <td>41.14</td>
+      <td>48.17</td>
+      <td>20.72</td>
+      <td>41.57</td>
+      <td>6.96</td>
+      <td>41.86</td>
+      <td>21.01</td>
+    </tr>
+  </tbody>
+</table>
+<p>51 rows × 93 columns</p>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[79]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pds</span> <span class="o">=</span> <span class="n">PanelDataset</span><span class="p">(</span><span class="n">wide_agg</span><span class="o">.</span><span class="n">T</span>
+                <span class="p">,</span> <span class="n">treated_periods</span><span class="o">=</span><span class="p">[</span><span class="n">TimePeriod</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">test_start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">test_end</span><span class="p">)</span> <span class="p">]</span>
+                <span class="p">,</span> <span class="n">treated_units</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;treated&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[80]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pds</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[80]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+        Panel Dataset Summary
+        ---------------------
+        Number of time points: 93
+        Number of units: 51
+        Number of treated units: 1
+        Treated units: [&#39;treated&#39;]
+        Treated periods: [TimePeriod(start=&#39;2015-02-16&#39;, end=&#39;2015-03-15&#39;)]
+
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[81]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span> <span class="o">=</span> <span class="n">TBRRidge</span><span class="p">()</span>
+<span class="n">est</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">pds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[82]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/TBR_22_0.png" src="_images/TBR_22_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[83]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">est</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[83]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Average</th>
+      <th>Cumulative</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Actual</th>
+      <td>36045.661852</td>
+      <td>973232.87</td>
+    </tr>
+    <tr>
+      <th>Predicted</th>
+      <td>31064.403374</td>
+      <td>838738.891088</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Absolute Effect</th>
+      <td>4981.258478</td>
+      <td>134493.978912</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Relative Effect</th>
+      <td>16.035262</td>
+      <td>16.035262</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Adobe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

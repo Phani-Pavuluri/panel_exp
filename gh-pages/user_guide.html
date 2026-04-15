@@ -1,0 +1,1210 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overview &mdash; Panel Exp 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="PanelDataset Usage" href="basic_data.html" />
+    <link rel="prev" title="Panel Exp: Panel Modeling and Experimentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Panel Exp
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#package-architecture">Package Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#design-module">1. Design Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#geoexperimentdesign">GeoExperimentDesign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#randomization-strategies">Randomization Strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#power-analysis">Power Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#methods-module">2. Methods Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#time-based-regression-tbr">Time-Based Regression (TBR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#synthetic-control-method-scm">Synthetic Control Method (SCM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bayesian-regression">Bayesian Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#difference-in-differences-did">Difference-in-Differences (DID)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multi-task-gaussian-process-mtgp">Multi-Task Gaussian Process (MTGP)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#inference-module">3. Inference Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#conformal-inference">Conformal Inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k-fold-cross-validation">K-Fold Cross-Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#placebo-testing">Placebo Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#end-to-end-workflow">End-to-End Workflow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#step-1-data-preparation-and-panel-dataset-creation">Step 1: Data Preparation and Panel Dataset Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-2-experimental-design-with-business-constraints">Step 2: Experimental Design with Business Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-3-power-analysis">Step 3: Power Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-4-causal-estimation-with-multiple-methods">Step 4: Causal Estimation with Multiple Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-5-inference-and-uncertainty-quantification">Step 5: Inference and Uncertainty Quantification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-6-results-interpretation-and-business-reporting">Step 6: Results Interpretation and Business Reporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#best-practices">Best Practices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#design-phase">Design Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#methods-selection">Methods Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inference">Inference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#package-dependencies">Package Dependencies</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basic_data.html">PanelDataset Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scm_usage.html">SCM Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tbr_usage.html">TBR Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="power_example.html">Power Module Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Deeper Dives</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="experimental_design.html">Experimental Design Deep Dive (#1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scm_deep_dive.html">Synthetic Control Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tbr_deep_dive.html">Time-Based Regression (TBR)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tbr_deep_dive.html#Regression-while-not-aggregating-the-control-units">Regression while not aggregating the control units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API: Auto-generated Documentation.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#base-classes">Base Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#design">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#models">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#inference">Inference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Panel Exp</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Overview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/user_guide.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">panel_exp</span></code> package is a comprehensive toolkit for panel data modeling and experimental design, specifically designed for causal inference in geo-based experiments. It provides a complete workflow from experimental design through statistical analysis to inference, making it ideal for marketing experiments and other causal inference applications.</p>
+</section>
+<section id="package-architecture">
+<h1>Package Architecture<a class="headerlink" href="#package-architecture" title="Link to this heading"></a></h1>
+<p>The package is organized into three main modules that follow the natural progression of an experiment:</p>
+<ol class="arabic simple">
+<li><p><strong>Design</strong> - Experimental design and power analysis</p></li>
+<li><p><strong>Methods</strong> - Statistical methods for causal estimation</p></li>
+<li><p><strong>Inference</strong> - Uncertainty quantification and hypothesis testing</p></li>
+</ol>
+<hr class="docutils" />
+</section>
+<section id="design-module">
+<h1>1. Design Module<a class="headerlink" href="#design-module" title="Link to this heading"></a></h1>
+<p>The design module provides comprehensive tools for creating robust experimental designs, particularly optimized for geo-based experiments in marketing. It handles the critical phase of experiment setup, ensuring statistical validity and practical feasibility.</p>
+<section id="geoexperimentdesign">
+<h2>GeoExperimentDesign<a class="headerlink" href="#geoexperimentdesign" title="Link to this heading"></a></h2>
+<p>The main orchestrator for creating geo-based experiment designs. Based on the params provided, this function returns the best test and control markets along with pre-test sensitivity metrics.</p>
+<p><strong>Key Capabilities:</strong></p>
+<ul class="simple">
+<li><p><strong>Multi-Strategy Randomization</strong>: Supports Complete, Stratified, Thinning, Rerandomization, QuickBlock, MatchedPair, and greedy matching algorithms</p></li>
+<li><p><strong>Business Constraint Handling</strong>: Sophisticated whitelist/blacklist system for mandatory inclusions/exclusions</p></li>
+<li><p><strong>Power Analysis Integration</strong>: Built-in power analysis with MDE (Minimum Detectable Effect) calculations</p></li>
+<li><p><strong>Multiple Test Groups</strong>: Simultaneous creation of multiple test groups sharing common controls</p></li>
+<li><p><strong>Imbalance Optimization</strong>: Advanced imbalance metrics (L1, L2, L∞, RMSE, MAPE, etc.) for design evaluation</p></li>
+<li><p><strong>Iterative Improvement</strong>: Rerandomization with configurable stopping criteria</p></li>
+</ul>
+<p><strong>Real-World Usage Pattern:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.design</span><span class="w"> </span><span class="kn">import</span> <span class="n">GeoExperimentDesign</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.panel_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">long_df_to_paneldataset</span>
+
+<span class="c1"># Convert raw data (daily geo level data) to panel format</span>
+<span class="n">panel_dataset</span> <span class="o">=</span> <span class="n">long_df_to_paneldataset</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="s2">&quot;geo&quot;</span><span class="p">,</span> <span class="s2">&quot;conversions&quot;</span><span class="p">)</span>
+<span class="n">panel_dataset</span><span class="o">.</span><span class="n">wide_data</span> <span class="o">=</span> <span class="n">panel_dataset</span><span class="o">.</span><span class="n">wide_data</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Initialize design with business constraints</span>
+<span class="n">design</span> <span class="o">=</span> <span class="n">GeoExperimentDesign</span><span class="p">(</span>
+    <span class="n">panel_data</span><span class="o">=</span><span class="n">panel_dataset</span><span class="p">,</span>
+    <span class="n">n_test_grps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># Requited number of test groups</span>
+    <span class="n">treatment_probability</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># Controls the size of treatment</span>
+    <span class="n">kpi</span><span class="o">=</span><span class="s1">&#39;conversions&#39;</span><span class="p">,</span>          <span class="c1"># KPI column in your data</span>
+    <span class="c1"># Business constraints</span>
+    <span class="n">test_whitelist</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;US&#39;</span><span class="p">],</span>  <span class="c1"># Whitelist markets</span>
+    <span class="n">control_whitelist</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;AU&#39;</span><span class="p">,</span> <span class="s1">&#39;GB&#39;</span><span class="p">,</span> <span class="s1">&#39;DE&#39;</span><span class="p">],</span>  <span class="c1"># Preferred control markets</span>
+    <span class="n">test_blacklist</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CA&#39;</span><span class="p">],</span>  <span class="c1"># Markets to exclude from test</span>
+    <span class="n">control_blacklist</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;US&#39;</span><span class="p">],</span>  <span class="c1"># Markets to exclude from control</span>
+    <span class="n">base_randomizer_cls</span><span class="o">=</span><span class="n">greedy_match_markets</span><span class="p">,</span>  <span class="c1"># options include StratifiedRandomization, CompleteRandomization, ThinningDesign, QuickBlock, greedy_match_markets</span>
+    <span class="n">test_lengths</span><span class="o">=</span><span class="p">[</span><span class="mi">56</span><span class="p">],</span>  <span class="c1"># test duration in days</span>
+    <span class="n">n_sample_prc</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>  <span class="c1"># Sample 20% for faster power analysis</span>
+    <span class="n">ci_version</span><span class="o">=</span><span class="mi">1</span>  <span class="c1"># confidence intervals - Use version 1 for conservative estimates and 2 for less conservative but faster run time approach</span>
+<span class="p">)</span>
+
+<span class="c1"># Generate multiple design candidates to shortlist</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>  <span class="c1"># Generates 5 design candidates</span>
+    <span class="n">mde_percent</span><span class="p">,</span> <span class="n">mde_absolute</span><span class="p">,</span> <span class="n">power_analysis</span> <span class="o">=</span> <span class="n">design</span><span class="o">.</span><span class="n">run_design</span><span class="p">()</span>
+    <span class="n">mde_percent_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">mde_percent_df</span><span class="p">,</span> <span class="n">mde_percent</span><span class="p">])</span>
+    <span class="n">mde_absolute_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">mde_absolute_df</span><span class="p">,</span> <span class="n">mde_absolute</span><span class="p">])</span>
+    <span class="n">power_analysis_results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">power_analysis_results_df</span><span class="p">,</span> <span class="n">power_analysis</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><strong>Designs Assesment and Comparison</strong>: Ranks designs by MDE, balance, and power metrics with heatmaps, power curves, and comprehensive scoring to identify optimal experimental configurations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cross-validation of pre-test fit assessment</span>
+<span class="n">cv_results</span> <span class="o">=</span> <span class="n">generate_cv_fit_plots</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>                          <span class="c1"># daily geo level data</span>
+    <span class="n">kpi</span><span class="o">=</span><span class="s1">&#39;conversions&#39;</span><span class="p">,</span>
+    <span class="n">market_assignments_df</span><span class="o">=</span><span class="n">mde_percent_df</span><span class="p">,</span>
+    <span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span>
+<span class="p">)</span>
+
+<span class="c1"># Comprehensive design comparison dashboard</span>
+<span class="n">dashboard_results</span> <span class="o">=</span> <span class="n">create_design_comparison_dashboard</span><span class="p">(</span>
+    <span class="n">pa_df_combined</span><span class="o">=</span><span class="n">power_analysis_results_df</span><span class="p">,</span>
+    <span class="n">mde_percent_df</span><span class="o">=</span><span class="n">mde_percent_df</span><span class="p">,</span>
+    <span class="n">test_lengths</span><span class="o">=</span><span class="p">[</span><span class="mi">56</span><span class="p">],</span>
+    <span class="n">n_test_grps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">mde_weight</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>                     <span class="c1"># weightage for MDE score</span>
+    <span class="n">balance_weight</span><span class="o">=</span><span class="mf">0.3</span>                  <span class="c1"># weightage for test vs control size difference</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Advanced Features:</strong></p>
+<ul class="simple">
+<li><p><strong>MLflow Integration</strong>: Automatic logging of design parameters and results</p></li>
+<li><p><strong>Parallel Processing</strong>: Support for parallel power analysis computation</p></li>
+</ul>
+</section>
+<section id="randomization-strategies">
+<h2>Randomization Strategies<a class="headerlink" href="#randomization-strategies" title="Link to this heading"></a></h2>
+<p>The package provides multiple randomization strategies, each optimized for different experimental contexts and data characteristics.</p>
+<p><strong>CompleteRandomization</strong>: Simple random assignment</p>
+<ul class="simple">
+<li><p><strong>Concept</strong>: Pure random assignment without stratification - each unit has an equal probability of being assigned to treatment or control, independent of any characteristics. This is the gold standard for causal inference when sample sizes are large enough to ensure balance through the law of large numbers. The randomization creates exchangeability between groups, meaning that on average, treatment and control groups will be similar in all observed and unobserved characteristics.</p></li>
+<li><p><strong>Best for</strong>: Large sample sizes (&gt;100 units) with minimal confounding variables</p></li>
+<li><p><strong>Use when</strong>: No strong predictors of treatment effect exist</p></li>
+<li><p><strong>Advantages</strong>: Simple, unbiased, easy to implement, provides strongest causal identification</p></li>
+<li><p><strong>Limitations</strong>: May create imbalanced groups in small samples, no guarantee of balance on specific covariates</p></li>
+</ul>
+<p><strong>StratifiedRandomization</strong>: Random assignment within strata</p>
+<ul class="simple">
+<li><p><strong>Concept</strong>: Random assignment within predefined strata to ensure balance - divides the population into homogeneous subgroups (strata) based on important covariates, then randomly assigns treatment within each stratum. This ensures that treatment and control groups are balanced on the stratification variables, reducing variance and improving precision. The strata should be chosen based on variables that are strongly predictive of the outcome or treatment effect heterogeneity.</p></li>
+<li><p><strong>Best for</strong>: Heterogeneous populations with known important covariates</p></li>
+<li><p><strong>Use when</strong>: Key demographic or geographic variables need balancing</p></li>
+<li><p><strong>Advantages</strong>: Guarantees balance on stratification variables, reduces variance, improves precision</p></li>
+<li><p><strong>Limitations</strong>: Requires prior knowledge of important covariates, may not balance on unobserved variables</p></li>
+</ul>
+<p><strong>ThinningDesign</strong>: Systematic thinning of treatment units</p>
+<ul class="simple">
+<li><p><strong>Concept</strong>: Thinning Design, inspired by the Kernel Thinning algorithm (Dwivedi &amp; Mackey, 2021), is an experimental design approach that selects a smaller, representative subset of units and assigns them to test and control groups in a way that minimizes statistical imbalance. By using a kernel function (often RBF) to measure similarity across pre-period features, it ensures both groups remain well-matched while respecting constraints like whitelists, blacklists, or fixed assignments. This allows experiments to be run with fewer units, reducing cost and operational complexity while maintaining validity and power.</p></li>
+<li><p><strong>Best for</strong>: Resource-constrained experiments (budget, capacity limits)</p></li>
+<li><p><strong>Use when</strong>: Treatment capacity is limited or expensive</p></li>
+<li><p><strong>Advantages</strong>: Controls treatment intensity, realistic for business constraints, allows testing of different treatment levels</p></li>
+<li><p><strong>Limitations</strong>: Reduces statistical power, may require larger sample sizes</p></li>
+</ul>
+<p><strong>Rerandomization</strong>: Iterative improvement of balance</p>
+<ul class="simple">
+<li><p><strong>Concept</strong>: Repeated randomization until acceptable balance is achieved - generates multiple random assignments and selects the one with the best balance on observed covariates. Uses a predefined imbalance metric (L1, L2, L∞, etc.) and stops when the imbalance falls below a threshold. This method improves upon simple randomization by ensuring better balance while maintaining the benefits of randomization.</p></li>
+<li><p><strong>Best for</strong>: Small to medium sample sizes (20-200 units)</p></li>
+<li><p><strong>Use when</strong>: Covariate balance is critical for validity</p></li>
+<li><p><strong>Advantages</strong>: Optimizes balance, reduces bias, maintains randomization benefits</p></li>
+<li><p><strong>Limitations</strong>: Computationally intensive, may not converge, requires careful threshold selection</p></li>
+</ul>
+<p><strong>QuickBlock</strong>: Blocking-based assignment</p>
+<ul class="simple">
+<li><p><strong>Concept</strong>: Creates blocks of similar units and randomizes within blocks - groups units into blocks based on similarity (e.g., geographic proximity, demographic similarity, or pre-treatment outcomes), then randomly assigns treatment within each block. This ensures local balance and handles heterogeneity by creating homogeneous subgroups. The blocking should be based on variables that are predictive of the outcome.</p></li>
+<li><p><strong>Best for</strong>: Units with clear similarity patterns</p></li>
+<li><p><strong>Use when</strong>: Natural blocking structure exists (e.g., geographic regions)</p></li>
+<li><p><strong>Advantages</strong>: Ensures local balance, handles heterogeneity, reduces variance</p></li>
+<li><p><strong>Limitations</strong>: Requires good blocking variables, may create small blocks with limited randomization</p></li>
+</ul>
+<p><strong>MatchedPair</strong>: Pairwise matching approach</p>
+<ul class="simple">
+<li><p><strong>Concept</strong>: Creates matched pairs and randomly assigns treatment within pairs - identifies pairs of units that are similar on important covariates, then randomly assigns one unit from each pair to treatment and the other to control. This creates the strongest possible balance on observed characteristics and is particularly powerful for small experiments. The matching can be based on propensity scores, Mahalanobis distance, or other similarity metrics.</p></li>
+<li><p><strong>Best for</strong>: Small experiments with clear matching criteria</p></li>
+<li><p><strong>Use when</strong>: Pairwise similarity is important</p></li>
+<li><p><strong>Advantages</strong>: Strong balance guarantees, intuitive interpretation, optimal for small samples</p></li>
+<li><p><strong>Limitations</strong>: Requires sufficient similar units for matching, may discard unmatched units</p></li>
+</ul>
+<p><strong>greedy_match_markets</strong>: Greedy matching algorithm for geo experiments</p>
+<ul class="simple">
+<li><p><strong>Concept</strong>: Iteratively selects best control markets for each test market - starts with a test market and finds the control market that best matches it based on pre-treatment outcomes and characteristics. Then moves to the next test market and finds the best remaining control market, and so on. This algorithm is specifically designed for geo-based experiments where market-level characteristics matter and you want to ensure geographic and economic similarity between test and control markets.</p></li>
+<li><p><strong>Best for</strong>: Geo-based experiments with market-level data</p></li>
+<li><p><strong>Use when</strong>: Geographic similarity and market characteristics matter</p></li>
+<li><p><strong>Advantages</strong>: Optimized for geo experiments, handles market heterogeneity, ensures geographic balance</p></li>
+<li><p><strong>Limitations</strong>: Greedy approach may not find global optimum, order of selection matters</p></li>
+</ul>
+</section>
+<section id="power-analysis">
+<h2>Power Analysis<a class="headerlink" href="#power-analysis" title="Link to this heading"></a></h2>
+<p>Comprehensive pre-test power analysis that determines optimal sample sizes, test durations, and effect detectability before running experiments.</p>
+<p><strong>Core Capabilities:</strong></p>
+<ul class="simple">
+<li><p><strong>Statistical Power Calculation</strong>: Determines probability of detecting true effects (default: 80%)</p></li>
+<li><p><strong>Minimum Detectable Effect (MDE)</strong>: Calculates smallest effect size that can be reliably detected</p></li>
+<li><p><strong>Test Duration Analysis</strong>: Evaluates power across different test lengths</p></li>
+<li><p><strong>Effect Size Simulation</strong>: Tests power under various effect size scenarios</p></li>
+<li><p><strong>Confidence Interval Analysis</strong>: Provides uncertainty quantification for estimates</p></li>
+</ul>
+<p><strong>Key Metrics:</strong></p>
+<ul class="simple">
+<li><p><strong>Statistical Power</strong>: Probability of correctly rejecting null hypothesis (default: 80%)</p></li>
+<li><p><strong>Type I Error Rate (α)</strong>: Probability of false positive (default: 10%)</p></li>
+<li><p><strong>Effect Size Simulation</strong>: Tests power under various treatment effects</p></li>
+<li><p><strong>Sample Percentage</strong>: Fraction of data used for faster computation (default: 100%)</p></li>
+<li><p><strong>Parallel Processing</strong>: Multi-core support for large-scale power analysis</p></li>
+</ul>
+<p><strong>Implementation:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.design</span><span class="w"> </span><span class="kn">import</span> <span class="n">PowerAnalysis</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods</span><span class="w"> </span><span class="kn">import</span> <span class="n">TBRRidge</span>
+
+<span class="c1"># Initialize power analysis with business constraints</span>
+<span class="n">power_analysis</span> <span class="o">=</span> <span class="n">PowerAnalysis</span><span class="p">(</span>
+    <span class="n">panel</span><span class="o">=</span><span class="n">panel_dataset</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">TBRRidge</span><span class="p">(),</span>  
+    <span class="n">inference</span><span class="o">=</span><span class="s1">&#39;Kfold&#39;</span><span class="p">,</span>  <span class="c1"># Cross-validation inference</span>
+    <span class="n">test_length</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span>  <span class="c1"># test duration in days</span>
+    <span class="n">power</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>  <span class="c1"># 80% statistical power</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>  <span class="c1"># 10% type I error rate</span>
+    <span class="n">train_length</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># Use all available pre-test dat or pass number of days</span>
+    <span class="n">mx_effect</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>  <span class="c1"># Test up to 50% effect size</span>
+    <span class="n">n_sample_prc</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>  <span class="c1"># Sample 20% for faster computation</span>
+    <span class="n">n_jobs</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>  <span class="c1"># Parallel cores</span>
+    <span class="n">ci_version</span><span class="o">=</span><span class="mi">2</span>  <span class="c1"># Confidence intervals approach</span>
+<span class="p">)</span>
+
+<span class="c1"># Run comprehensive power analysis</span>
+<span class="n">power_results</span> <span class="o">=</span> <span class="n">power_analysis</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">()</span>
+
+<span class="c1"># Access key results</span>
+<span class="n">mde_percent</span> <span class="o">=</span> <span class="n">power_results</span><span class="p">[</span><span class="s1">&#39;mde_percent&#39;</span><span class="p">]</span>  <span class="c1"># MDE as percentage</span>
+<span class="n">mde_absolute</span> <span class="o">=</span> <span class="n">power_results</span><span class="p">[</span><span class="s1">&#39;mde_absolute&#39;</span><span class="p">]</span>  <span class="c1"># MDE in absolute terms</span>
+<span class="n">power_curve</span> <span class="o">=</span> <span class="n">power_results</span><span class="p">[</span><span class="s1">&#39;power_curve&#39;</span><span class="p">]</span>  <span class="c1"># Power vs effect size</span>
+</pre></div>
+</div>
+<p><strong>Advanced Features:</strong></p>
+<ul class="simple">
+<li><p><strong>Multiple Test Lengths</strong>: Simultaneous analysis across different test durations</p></li>
+<li><p><strong>Model Comparison</strong>: Power analysis across different statistical methods</p></li>
+<li><p><strong>Business Integration</strong>: Incorporates business constraints and resource limitations</p></li>
+<li><p><strong>MLflow Logging</strong>: Automatic tracking of power analysis parameters and results</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+</section>
+<section id="methods-module">
+<h1>2. Methods Module<a class="headerlink" href="#methods-module" title="Link to this heading"></a></h1>
+<p>The methods module implements sophisticated statistical approaches for causal estimation in panel data settings, each optimized for different data characteristics and business requirements. These methods handle the core challenge of estimating treatment effects while controlling for confounding variables and temporal patterns.</p>
+<section id="time-based-regression-tbr">
+<h2>Time-Based Regression (TBR)<a class="headerlink" href="#time-based-regression-tbr" title="Link to this heading"></a></h2>
+<p><strong>Purpose</strong>: Linear regression approach specifically designed for panel data with time trends and seasonality.</p>
+<p><strong>Core Concept</strong>: TBR models the relationship between treatment and outcome while accounting for temporal patterns, using pre-treatment data to establish baseline trends and extrapolating to estimate counterfactual outcomes. The method assumes that the relationship between time and outcome follows a linear trend that can be extrapolated beyond the pre-treatment period. It estimates the counterfactual outcome by projecting the pre-treatment trend into the treatment period, then calculates the treatment effect as the difference between actual and predicted outcomes. This approach is particularly powerful when there are clear temporal patterns in the data and sufficient pre-treatment data to establish reliable trends.</p>
+<p><strong>Key Capabilities:</strong></p>
+<ul class="simple">
+<li><p><strong>Linear Trend Modeling</strong>: Captures linear time trends in pre-treatment data</p></li>
+<li><p><strong>Multiple Control Support</strong>: Handles both single aggregated and multiple de-aggregated control units</p></li>
+<li><p><strong>Extrapolation</strong>: Projects pre-treatment trends into treatment period</p></li>
+<li><p><strong>Ridge Regularization</strong>: TBRRidge variant prevents overfitting with multiple controls</p></li>
+<li><p><strong>Flexible Inference</strong>: Supports various inference methods (conformal, k-fold, placebo)</p></li>
+</ul>
+<p><strong>When to Use:</strong></p>
+<ul class="simple">
+<li><p>Linear trends dominate the data pattern</p></li>
+<li><p>Sufficient pre-treatment data available (&gt;12 weeks recommended)</p></li>
+<li><p>Multiple control units available for comparison</p></li>
+<li><p>Need for interpretable linear relationships</p></li>
+</ul>
+<p><strong>Implementation:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods</span><span class="w"> </span><span class="kn">import</span> <span class="n">TBR</span><span class="p">,</span> <span class="n">TBRRidge</span>
+
+<span class="c1"># Standard TBR for single control</span>
+<span class="n">tbr_model</span> <span class="o">=</span> <span class="n">TBR</span><span class="p">(</span>
+    <span class="n">inference</span><span class="o">=</span><span class="s1">&#39;Kfold&#39;</span><span class="p">,</span>  <span class="c1"># Cross-validation inference</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>  <span class="c1"># 10% significance level</span>
+    <span class="n">full_model</span><span class="o">=</span><span class="kc">False</span>  <span class="c1"># Fit only on pre-treatment data</span>
+<span class="p">)</span>
+
+<span class="c1"># Ridge TBR for multiple controls (recommended)</span>
+<span class="n">tbr_ridge</span> <span class="o">=</span> <span class="n">TBRRidge</span><span class="p">(</span>
+    <span class="n">inference</span><span class="o">=</span><span class="s1">&#39;Kfold&#39;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">full_model</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="c1"># Run analysis</span>
+<span class="n">tbr_ridge</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">panel_data</span><span class="p">)</span>
+
+<span class="c1"># Access results from model summary</span>
+<span class="n">summary_stats</span> <span class="o">=</span> <span class="n">tbr_ridge</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<span class="n">treatment_effect</span> <span class="o">=</span> <span class="n">summary_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Absolute Effect&#39;</span><span class="p">,</span> <span class="s1">&#39;Cumulative&#39;</span><span class="p">]</span>
+<span class="n">relative_effect</span> <span class="o">=</span> <span class="n">summary_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Relative Effect&#39;</span><span class="p">,</span> <span class="s1">&#39;Cumulative&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Treatment Effect: </span><span class="si">{</span><span class="n">treatment_effect</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Relative Effect: </span><span class="si">{</span><span class="n">relative_effect</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Summary Statistics:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">summary_stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="synthetic-control-method-scm">
+<h2>Synthetic Control Method (SCM)<a class="headerlink" href="#synthetic-control-method-scm" title="Link to this heading"></a></h2>
+<p><strong>Purpose</strong>: Non-parametric approach that creates a “synthetic” control unit as a weighted combination of available control units.</p>
+<p><strong>Core Concept</strong>: SCM finds optimal weights for control units such that the weighted combination best matches the treated unit’s pre-treatment trajectory, then uses this synthetic control to estimate counterfactual outcomes. The method solves an optimization problem to find weights that minimize the difference between the treated unit’s pre-treatment outcomes and the weighted average of control units’ pre-treatment outcomes. The key insight is that if the synthetic control matches the treated unit well in the pre-treatment period, it should provide a good counterfactual for what would have happened without treatment. This approach is particularly powerful when there are multiple control units that can be combined to create a good match, and when the relationship between units is complex and non-linear.</p>
+<p><strong>Key Capabilities:</strong></p>
+<ul class="simple">
+<li><p><strong>Non-Parametric Modeling</strong>: No assumptions about functional form of relationships</p></li>
+<li><p><strong>Weight Optimization</strong>: Finds optimal weights using various optimization algorithms (SciPy, CVXPY)</p></li>
+<li><p><strong>Penalty Options</strong>: Supports L1, L2, and other penalties for regularization</p></li>
+<li><p><strong>No Extrapolation</strong>: Relies only on observed data patterns</p></li>
+<li><p><strong>Interpretable Weights</strong>: Provides insight into which control units contribute most</p></li>
+<li><p><strong>Multiple Algorithms</strong>: SciPy optimization and CVXPY convex optimization</p></li>
+</ul>
+<p><strong>When to Use:</strong></p>
+<ul class="simple">
+<li><p>Non-linear trends and complex patterns</p></li>
+<li><p>Limited pre-treatment data (&lt;12 weeks)</p></li>
+<li><p>Need for interpretable control unit contributions</p></li>
+<li><p>Want to avoid extrapolation assumptions</p></li>
+<li><p>Multiple control units available</p></li>
+</ul>
+<p><strong>Implementation:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods</span><span class="w"> </span><span class="kn">import</span> <span class="n">SyntheticControl</span><span class="p">,</span> <span class="n">SyntheticControlCVXPY</span><span class="p">,</span> <span class="n">AugSynth</span>
+
+<span class="c1"># Standard SCM with SciPy optimization</span>
+<span class="n">scm_model</span> <span class="o">=</span> <span class="n">SyntheticControl</span><span class="p">(</span>
+    <span class="n">inference</span><span class="o">=</span><span class="s1">&#39;UnitJackKnife&#39;</span><span class="p">,</span>  <span class="c1"># Unit-level jackknife inference</span>
+    <span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;l2&#39;</span><span class="p">,</span>  <span class="c1"># L2 penalty for regularization</span>
+    <span class="n">penalty_strength</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>  <span class="c1"># Penalty strength</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">opt_package</span><span class="o">=</span><span class="s1">&#39;SciPy&#39;</span>  <span class="c1"># Use SciPy optimizer</span>
+<span class="p">)</span>
+
+<span class="c1"># CVXPY version for convex optimization</span>
+<span class="n">scm_cvxpy</span> <span class="o">=</span> <span class="n">SyntheticControlCVXPY</span><span class="p">(</span>
+    <span class="n">inference</span><span class="o">=</span><span class="s1">&#39;UnitJackKnife&#39;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span>
+<span class="p">)</span>
+
+<span class="c1"># Augmented SCM with outcome modeling</span>
+<span class="n">aug_synth</span> <span class="o">=</span> <span class="n">AugSynth</span><span class="p">(</span>
+    <span class="n">outcome_model</span><span class="o">=</span><span class="n">RidgeCV</span><span class="p">,</span>  <span class="c1"># Ridge regression for outcome modeling</span>
+    <span class="n">opt_package</span><span class="o">=</span><span class="s1">&#39;SciPy&#39;</span><span class="p">,</span>
+    <span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;l1&#39;</span><span class="p">,</span>  <span class="c1"># L1 penalty</span>
+    <span class="n">inference</span><span class="o">=</span><span class="s1">&#39;Kfold&#39;</span>
+<span class="p">)</span>
+
+<span class="c1"># Run analysis</span>
+<span class="n">scm_model</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">panel_data</span><span class="p">)</span>
+
+<span class="c1"># Access results</span>
+<span class="c1"># Access results from model summary</span>
+<span class="n">summary_stats</span> <span class="o">=</span> <span class="n">scm_model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<span class="n">treatment_effect</span> <span class="o">=</span> <span class="n">summary_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Absolute Effect&#39;</span><span class="p">,</span> <span class="s1">&#39;Cumulative&#39;</span><span class="p">]</span>
+<span class="n">relative_effect</span> <span class="o">=</span> <span class="n">summary_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Relative Effect&#39;</span><span class="p">,</span> <span class="s1">&#39;Cumulative&#39;</span><span class="p">]</span>
+
+<span class="c1"># Access control unit weights from model results</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="n">scm_model</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;weights&#39;</span><span class="p">]</span>  <span class="c1"># Control unit weights</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Treatment Effect: </span><span class="si">{</span><span class="n">treatment_effect</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Relative Effect: </span><span class="si">{</span><span class="n">relative_effect</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Control Weights: </span><span class="si">{</span><span class="n">weights</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Summary Statistics:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">summary_stats</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Business Applications:</strong></p>
+<ul class="simple">
+<li><p>Campaign impact with complex seasonal patterns</p></li>
+<li><p>Analysis with heterogeneous control markets</p></li>
+<li><p>Treatment evaluation with limited historical data</p></li>
+</ul>
+</section>
+<section id="bayesian-regression">
+<h2>Bayesian Regression<a class="headerlink" href="#bayesian-regression" title="Link to this heading"></a></h2>
+<p><strong>Purpose</strong>: Bayesian approach providing full posterior distributions and uncertainty quantification through MCMC sampling.</p>
+<p><strong>Core Concept</strong>: BayesianTBR uses Markov Chain Monte Carlo (MCMC) with the No-U-Turn Sampler (NUTS) to sample from posterior distributions, providing not just point estimates but full uncertainty quantification through credible intervals. The Bayesian approach treats all parameters as random variables with prior distributions, then uses Bayes’ theorem to update these priors with observed data to obtain posterior distributions. This allows for incorporation of prior knowledge about effect sizes, trends, or other parameters, and provides a complete picture of uncertainty through posterior distributions rather than just point estimates and confidence intervals. The MCMC sampling process generates thousands of samples from the posterior distribution, which can be used to calculate credible intervals, assess convergence, and perform posterior predictive checks.</p>
+<p><strong>Key Capabilities:</strong></p>
+<ul class="simple">
+<li><p><strong>Full Posterior Distributions</strong>: Provides complete uncertainty quantification</p></li>
+<li><p><strong>Flexible Prior Specifications</strong>: Supports Normal, Student-T, LogNormal, Multivariate Normal, and Dirichlet priors</p></li>
+<li><p><strong>MCMC Sampling</strong>: Uses NUTS sampler for efficient posterior sampling</p></li>
+<li><p><strong>Multiple Control Support</strong>: Handles both aggregated and de-aggregated control scenarios</p></li>
+<li><p><strong>Extrapolation</strong>: Leverages Bayesian priors for extrapolation beyond observed data</p></li>
+<li><p><strong>Credible Intervals</strong>: Provides Bayesian credible intervals for effect estimates</p></li>
+<li><p><strong>Model Diagnostics</strong>: Includes trace plots, convergence diagnostics, and posterior summaries</p></li>
+</ul>
+<p><strong>When to Use:</strong></p>
+<ul class="simple">
+<li><p>Uncertainty quantification is critical for business decisions</p></li>
+<li><p>Prior knowledge about effect sizes or patterns exists</p></li>
+<li><p>Need for full posterior distributions rather than point estimates</p></li>
+<li><p>Multiple control units with complex relationships</p></li>
+<li><p>Want to incorporate domain expertise through priors</p></li>
+</ul>
+<p><strong>Implementation:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods</span><span class="w"> </span><span class="kn">import</span> <span class="n">BayesianTBR</span>
+
+<span class="c1"># Initialize Bayesian model with custom priors</span>
+<span class="n">bayesian_model</span> <span class="o">=</span> <span class="n">BayesianTBR</span><span class="p">(</span>
+    <span class="n">inference_options</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;num_samples&#39;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>  <span class="c1"># MCMC samples</span>
+        <span class="s1">&#39;num_warmup&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>    <span class="c1"># Warmup samples</span>
+        <span class="s1">&#39;num_chains&#39;</span><span class="p">:</span> <span class="mi">4</span>        <span class="c1"># Multiple chains for diagnostics</span>
+    <span class="p">},</span>
+    <span class="n">prior_type</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>  <span class="c1"># Normal priors for coefficients</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">full_model</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="c1"># Run MCMC analysis</span>
+<span class="n">bayesian_model</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">panel_data</span><span class="p">)</span>
+
+<span class="c1"># Access posterior results</span>
+<span class="n">posterior_samples</span> <span class="o">=</span> <span class="n">bayesian_model</span><span class="o">.</span><span class="n">posterior_samples</span>  <span class="c1"># MCMC samples</span>
+<span class="n">summary_stats</span> <span class="o">=</span> <span class="n">bayesian_model</span><span class="o">.</span><span class="n">summary_stats</span><span class="p">()</span>  <span class="c1"># trace plots and posterior plots</span>
+
+<span class="c1"># Get cumulative treatment effect statistics</span>
+<span class="n">model_summary</span> <span class="o">=</span> <span class="n">bayesian_model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+
+<span class="n">treatment_effect</span> <span class="o">=</span> <span class="n">model_summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Absolute Effect&#39;</span><span class="p">,</span> <span class="s1">&#39;Cumulative&#39;</span><span class="p">]</span>
+<span class="n">relative_effect</span> <span class="o">=</span> <span class="n">model_summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Relative Effect&#39;</span><span class="p">,</span> <span class="s1">&#39;Cumulative&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Posterior Samples Shape: </span><span class="si">{</span><span class="n">posterior_samples</span><span class="p">[</span><span class="s1">&#39;coeffs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Treatment Effect: </span><span class="si">{</span><span class="n">treatment_effect</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Relative Effect: </span><span class="si">{</span><span class="n">relative_effect</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parameter Statistics:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">summary_stats</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Advanced Features:</strong></p>
+<ul class="simple">
+<li><p><strong>Prior Sensitivity Analysis</strong>: Test robustness to different prior specifications</p></li>
+<li><p><strong>Convergence Diagnostics</strong>: Automatic checking of MCMC convergence</p></li>
+<li><p><strong>Posterior Predictive Checks</strong>: Validate model assumptions</p></li>
+<li><p><strong>Hierarchical Modeling</strong>: Support for hierarchical structures in data</p></li>
+</ul>
+</section>
+<section id="difference-in-differences-did">
+<h2>Difference-in-Differences (DID)<a class="headerlink" href="#difference-in-differences-did" title="Link to this heading"></a></h2>
+<p><strong>Purpose</strong>: Traditional DID approach for panel data.</p>
+<p><strong>Key Features:</strong></p>
+<ul class="simple">
+<li><p>Parallel trends assumption</p></li>
+<li><p>Multiple treatment periods</p></li>
+<li><p>Robust standard errors</p></li>
+<li><p>Event study framework</p></li>
+</ul>
+<p><strong>When to Use:</strong></p>
+<ul class="simple">
+<li><p>Parallel trends assumption holds</p></li>
+<li><p>Multiple time periods</p></li>
+</ul>
+<p><strong>Implementation:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods.DID</span><span class="w"> </span><span class="kn">import</span> <span class="n">DID</span>
+
+<span class="c1"># Initialize DID model</span>
+<span class="n">did_model</span> <span class="o">=</span> <span class="n">DID</span><span class="p">(</span>
+    <span class="n">inference</span><span class="o">=</span><span class="s1">&#39;Kfold&#39;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">full_model</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="c1"># Run analysis</span>
+<span class="n">did_model</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">panel_data</span><span class="p">)</span>
+
+<span class="c1"># Access results from model summary</span>
+<span class="n">summary_stats</span> <span class="o">=</span> <span class="n">did_model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<span class="n">treatment_effect</span> <span class="o">=</span> <span class="n">summary_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Absolute Effect&#39;</span><span class="p">,</span> <span class="s1">&#39;Cumulative&#39;</span><span class="p">]</span>
+<span class="n">relative_effect</span> <span class="o">=</span> <span class="n">summary_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Relative Effect&#39;</span><span class="p">,</span> <span class="s1">&#39;Cumulative&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Treatment Effect: </span><span class="si">{</span><span class="n">treatment_effect</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Relative Effect: </span><span class="si">{</span><span class="n">relative_effect</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Summary Statistics:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">summary_stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="multi-task-gaussian-process-mtgp">
+<h2>Multi-Task Gaussian Process (MTGP)<a class="headerlink" href="#multi-task-gaussian-process-mtgp" title="Link to this heading"></a></h2>
+<p><strong>Purpose</strong>: Gaussian process approach for complex temporal patterns.</p>
+<p><strong>Key Features:</strong></p>
+<ul class="simple">
+<li><p>Non-parametric modeling</p></li>
+<li><p>Uncertainty quantification</p></li>
+<li><p>Handles complex patterns</p></li>
+<li><p>Multiple tasks support</p></li>
+</ul>
+<p><strong>When to Use:</strong></p>
+<ul class="simple">
+<li><p>Complex temporal patterns</p></li>
+<li><p>Non-linear relationships</p></li>
+<li><p>Uncertainty quantification critical</p></li>
+</ul>
+<p><strong>Implementation:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods.mtgp</span><span class="w"> </span><span class="kn">import</span> <span class="n">MTGP</span>
+
+<span class="c1"># Initialize MTGP model</span>
+<span class="n">mtgp_model</span> <span class="o">=</span> <span class="n">MTGP</span><span class="p">(</span>
+    <span class="n">inference</span><span class="o">=</span><span class="s1">&#39;Kfold&#39;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">full_model</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="c1"># Run analysis</span>
+<span class="n">mtgp_model</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">panel_data</span><span class="p">)</span>
+
+<span class="c1"># Access results from model summary</span>
+<span class="n">summary_stats</span> <span class="o">=</span> <span class="n">mtgp_model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<span class="n">treatment_effect</span> <span class="o">=</span> <span class="n">summary_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Absolute Effect&#39;</span><span class="p">,</span> <span class="s1">&#39;Cumulative&#39;</span><span class="p">]</span>
+<span class="n">relative_effect</span> <span class="o">=</span> <span class="n">summary_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Relative Effect&#39;</span><span class="p">,</span> <span class="s1">&#39;Cumulative&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Treatment Effect: </span><span class="si">{</span><span class="n">treatment_effect</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Relative Effect: </span><span class="si">{</span><span class="n">relative_effect</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Summary Statistics:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">summary_stats</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Business Applications:</strong></p>
+<ul class="simple">
+<li><p>Complex seasonal pattern analysis</p></li>
+<li><p>Non-linear trend modeling</p></li>
+<li><p>High uncertainty scenarios</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+</section>
+<section id="inference-module">
+<h1>3. Inference Module<a class="headerlink" href="#inference-module" title="Link to this heading"></a></h1>
+<p>The inference module provides robust methods for uncertainty quantification and hypothesis testing, essential for making reliable business decisions from experimental results. These methods address the critical question: “How confident can we be in our effect estimates?”</p>
+<section id="conformal-inference">
+<h2>Conformal Inference<a class="headerlink" href="#conformal-inference" title="Link to this heading"></a></h2>
+<p><strong>Purpose</strong>: Distribution-free uncertainty quantification that provides exact coverage guarantees without distributional assumptions.</p>
+<p><strong>Core Concept</strong>: Conformal inference uses the empirical distribution of residuals to construct prediction intervals that are valid in finite samples, regardless of the underlying data distribution. The method works by calculating residuals from the model on a subset of data, then using the empirical distribution of these residuals to construct prediction intervals for new observations. The key insight is that if the model is well-calibrated, the residuals should be exchangeable, meaning their distribution can be used to make valid predictions about future residuals. This approach provides exact coverage guarantees in finite samples without requiring distributional assumptions, making it particularly robust for real-world applications where data may not follow standard distributions.</p>
+<p><strong>Key Capabilities:</strong></p>
+<ul class="simple">
+<li><p><strong>Distribution-Free</strong>: No assumptions about data distribution</p></li>
+<li><p><strong>Finite-Sample Validity</strong>: Exact coverage guarantees in finite samples</p></li>
+<li><p><strong>Cross-Conformal Implementation</strong>: Uses cross-validation for improved efficiency</p></li>
+<li><p><strong>Multiple Null Testing</strong>: Tests multiple null hypotheses simultaneously</p></li>
+<li><p><strong>Robust to Model Misspecification</strong>: Works even when model assumptions are violated</p></li>
+<li><p><strong>Exact Coverage</strong>: Provides exact coverage probability (not asymptotic)</p></li>
+</ul>
+<p><strong>When to Use:</strong></p>
+<ul class="simple">
+<li><p>Distributional assumptions are questionable or unknown</p></li>
+<li><p>Finite sample settings where asymptotic methods may not apply</p></li>
+<li><p>Need for exact coverage guarantees</p></li>
+<li><p>Model misspecification is a concern</p></li>
+<li><p>Want distribution-free inference</p></li>
+</ul>
+<p><strong>Implementation:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.inference.conformal</span><span class="w"> </span><span class="kn">import</span> <span class="n">conformal</span>
+
+<span class="c1"># Run conformal inference for treatment effect</span>
+<span class="n">lower_bounds</span><span class="p">,</span> <span class="n">upper_bounds</span> <span class="o">=</span> <span class="n">conformal</span><span class="p">(</span>
+    <span class="n">panel</span><span class="o">=</span><span class="n">panel_data</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">tbr_model</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">nulls</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Extract cumulative confidence interval for treatment period</span>
+<span class="n">treatment_start</span> <span class="o">=</span> <span class="n">tbr_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">treatment_end</span> <span class="o">=</span> <span class="n">tbr_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_end_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Calculate cumulative bounds over treatment period</span>
+<span class="n">cumulative_lower</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">lower_bounds</span><span class="p">[</span><span class="n">treatment_start</span><span class="p">:</span><span class="n">treatment_end</span><span class="p">])</span>
+<span class="n">cumulative_upper</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">upper_bounds</span><span class="p">[</span><span class="n">treatment_start</span><span class="p">:</span><span class="n">treatment_end</span><span class="p">])</span>
+<span class="n">confidence_interval</span> <span class="o">=</span> <span class="p">(</span><span class="n">cumulative_lower</span><span class="p">,</span> <span class="n">cumulative_upper</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Conformal Cumulative Confidence Interval: </span><span class="si">{</span><span class="n">confidence_interval</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Advanced Features:</strong></p>
+<ul class="simple">
+<li><p><strong>Cross-Conformal</strong>: Uses cross-validation for improved efficiency</p></li>
+<li><p><strong>Multiple Testing</strong>: Handles multiple null hypotheses with appropriate corrections</p></li>
+<li><p><strong>Adaptive Intervals</strong>: Intervals adapt to local data characteristics</p></li>
+<li><p><strong>Model Agnostic</strong>: Works with any prediction model</p></li>
+</ul>
+</section>
+<section id="k-fold-cross-validation">
+<h2>K-Fold Cross-Validation<a class="headerlink" href="#k-fold-cross-validation" title="Link to this heading"></a></h2>
+<p><strong>Purpose</strong>: Cross-validation based inference specifically designed for synthetic control methods, providing bias correction and robust hypothesis testing.</p>
+<p><strong>Core Concept</strong>: K-fold cross-validation addresses the bias inherent in synthetic control methods by repeatedly fitting the model on different subsets of control units and using the distribution of estimates to construct confidence intervals and test hypotheses. The method works by dividing the control units into k folds, then for each fold, fitting the synthetic control model using the remaining k-1 folds as controls and the left-out fold as a “fake” treatment. This creates a distribution of treatment effect estimates that can be used to assess the uncertainty in the original estimate. The key insight is that this approach provides a way to estimate the sampling variability of the synthetic control estimator, which is otherwise difficult to quantify due to the optimization process involved in finding the weights.</p>
+<p><strong>Key Capabilities:</strong></p>
+<ul class="simple">
+<li><p><strong>Bias Correction</strong>: Automatically corrects for bias in synthetic control estimates</p></li>
+<li><p><strong>Cross-Fold Validation</strong>: Uses k-fold cross-validation for robust inference</p></li>
+<li><p><strong>T-Test Implementation</strong>: Provides t-test based hypothesis testing</p></li>
+<li><p><strong>Robust to Model Misspecification</strong>: Works even when synthetic control assumptions are violated</p></li>
+<li><p><strong>Multiple Test Lengths</strong>: Handles different test period lengths</p></li>
+<li><p><strong>Debiasing</strong>: Optional debiasing to improve estimate accuracy</p></li>
+</ul>
+<p><strong>When to Use:</strong></p>
+<ul class="simple">
+<li><p>Using synthetic control methods (SCM, AugSynth)</p></li>
+<li><p>Need for bias correction in estimates</p></li>
+<li><p>Want cross-validation based inference</p></li>
+<li><p>Model assumptions may be violated</p></li>
+<li><p>Need robust hypothesis testing</p></li>
+</ul>
+<p><strong>Implementation:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.inference</span><span class="w"> </span><span class="kn">import</span> <span class="n">cross_fold</span><span class="p">,</span> <span class="n">debias</span>
+
+<span class="c1"># Run k-fold cross-validation inference</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.inference.k_fold</span><span class="w"> </span><span class="kn">import</span> <span class="n">cross_fold</span>
+
+<span class="n">lower_bound</span><span class="p">,</span> <span class="n">mean_estimate</span><span class="p">,</span> <span class="n">upper_bound</span> <span class="o">=</span> <span class="n">cross_fold</span><span class="p">(</span>
+    <span class="n">pds</span><span class="o">=</span><span class="n">panel_data</span><span class="p">,</span>
+    <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>  <span class="c1"># 5-fold cross-validation</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">scm_model</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">debias_flag</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># Apply bias correction</span>
+<span class="p">)</span>
+
+<span class="c1"># Calculate cumulative results over treatment period</span>
+<span class="n">treatment_start</span> <span class="o">=</span> <span class="n">scm_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">treatment_end</span> <span class="o">=</span> <span class="n">scm_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_end_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">cumulative_lower</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">lower_bound</span><span class="p">[</span><span class="n">treatment_start</span><span class="p">:</span><span class="n">treatment_end</span><span class="p">])</span>
+<span class="n">cumulative_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mean_estimate</span><span class="p">[</span><span class="n">treatment_start</span><span class="p">:</span><span class="n">treatment_end</span><span class="p">])</span>
+<span class="n">cumulative_upper</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">upper_bound</span><span class="p">[</span><span class="n">treatment_start</span><span class="p">:</span><span class="n">treatment_end</span><span class="p">])</span>
+
+<span class="c1"># Access cumulative results</span>
+<span class="n">confidence_interval</span> <span class="o">=</span> <span class="p">(</span><span class="n">cumulative_lower</span><span class="p">,</span> <span class="n">cumulative_upper</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;K-fold Cumulative Confidence Interval: </span><span class="si">{</span><span class="n">confidence_interval</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cumulative Treatment Effect: </span><span class="si">{</span><span class="n">cumulative_mean</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cumulative Lower Bound: </span><span class="si">{</span><span class="n">cumulative_lower</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cumulative Upper Bound: </span><span class="si">{</span><span class="n">cumulative_upper</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p><strong>Advanced Features:</strong></p>
+<ul class="simple">
+<li><p><strong>Automatic Bias Detection</strong>: Detects and corrects bias automatically</p></li>
+<li><p><strong>Cross-Fold Diagnostics</strong>: Provides diagnostics for cross-validation performance</p></li>
+<li><p><strong>Multiple K Values</strong>: Test robustness across different k values</p></li>
+<li><p><strong>Bootstrap Integration</strong>: Can be combined with bootstrap methods</p></li>
+</ul>
+</section>
+<section id="placebo-testing">
+<h2>Placebo Testing<a class="headerlink" href="#placebo-testing" title="Link to this heading"></a></h2>
+<p><strong>Purpose</strong>: Placebo-based inference that uses control units as “fake” treatment units to test the robustness of treatment effect estimates.</p>
+<p><strong>Core Concept</strong>: Placebo testing treats each control unit as if it were the treated unit, runs the same analysis, and uses the distribution of these “placebo” effects to assess whether the observed treatment effect is statistically significant. The method works by taking each control unit in turn, treating it as if it received the treatment at the same time as the actual treated unit, then running the same causal analysis to estimate a “placebo” treatment effect. This creates a distribution of placebo effects that represents what we would expect to see if there were no real treatment effect. The key insight is that if the actual treatment effect is significantly larger than the placebo effects, it provides evidence that the treatment had a real causal impact. This approach is particularly powerful because it doesn’t rely on specific model assumptions and provides an intuitive way to assess statistical significance.</p>
+<p><strong>Key Capabilities:</strong></p>
+<ul class="simple">
+<li><p><strong>Control Unit Validation</strong>: Uses control units as placebo treatments</p></li>
+<li><p><strong>P-Value Calculation</strong>: Provides empirical p-values based on placebo distribution</p></li>
+<li><p><strong>Residual Analysis</strong>: Analyzes residuals to assess model fit</p></li>
+<li><p><strong>Model-Agnostic</strong>: Works with any causal estimation method</p></li>
+<li><p><strong>Robust to Assumptions</strong>: Doesn’t rely on specific model assumptions</p></li>
+<li><p><strong>Visual Diagnostics</strong>: Provides plots for visual assessment</p></li>
+</ul>
+<p><strong>When to Use:</strong></p>
+<ul class="simple">
+<li><p>Control units are available for placebo testing</p></li>
+<li><p>Need for empirical p-values</p></li>
+<li><p>Want model-agnostic inference</p></li>
+<li><p>Model assumptions are questionable</p></li>
+<li><p>Need visual diagnostics for results</p></li>
+</ul>
+<p><strong>Implementation:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.inference</span><span class="w"> </span><span class="kn">import</span> <span class="n">placebo</span>
+
+<span class="c1"># Run placebo testing</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.inference.placebo</span><span class="w"> </span><span class="kn">import</span> <span class="n">placebo</span>
+
+<span class="n">p_value</span><span class="p">,</span> <span class="n">residual_ratios</span><span class="p">,</span> <span class="n">residuals_df</span> <span class="o">=</span> <span class="n">placebo</span><span class="p">(</span>
+    <span class="n">pds</span><span class="o">=</span><span class="n">panel_data</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">tbr_model</span><span class="p">,</span>
+    <span class="n">plot_1</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Generate residual plots</span>
+    <span class="n">plot_2</span><span class="o">=</span><span class="kc">True</span>   <span class="c1"># Generate placebo effect plots</span>
+<span class="p">)</span>
+
+<span class="c1"># Access results</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Placebo P-value: </span><span class="si">{</span><span class="n">p_value</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Residual Ratios: </span><span class="si">{</span><span class="n">residual_ratios</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Residuals DataFrame Shape: </span><span class="si">{</span><span class="n">residuals_df</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Calculate cumulative treatment effect from residuals</span>
+<span class="n">treatment_start</span> <span class="o">=</span> <span class="n">tbr_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">treatment_end</span> <span class="o">=</span> <span class="n">tbr_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_end_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Get residuals for treated units during treatment period</span>
+<span class="n">treated_residuals</span> <span class="o">=</span> <span class="n">residuals_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">tbr_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_units</span><span class="p">,</span> 
+                                    <span class="n">tbr_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">times</span><span class="p">[</span><span class="n">treatment_start</span><span class="p">:</span><span class="n">treatment_end</span><span class="p">]]</span>
+<span class="n">cumulative_treatment_effect</span> <span class="o">=</span> <span class="n">treated_residuals</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cumulative Treatment Effect: </span><span class="si">{</span><span class="n">cumulative_treatment_effect</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Advanced Features:</strong></p>
+<ul class="simple">
+<li><p><strong>Multiple Placebo Tests</strong>: Can test multiple null hypotheses</p></li>
+<li><p><strong>Residual Diagnostics</strong>: Comprehensive residual analysis</p></li>
+<li><p><strong>Effect Size Comparison</strong>: Compares treatment effect to placebo distribution</p></li>
+<li><p><strong>Outlier Detection</strong>: Identifies unusual placebo effects</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+</section>
+<section id="end-to-end-workflow">
+<h1>End-to-End Workflow<a class="headerlink" href="#end-to-end-workflow" title="Link to this heading"></a></h1>
+<p>This section demonstrates a complete experimental workflow from data preparation through results interpretation, using real-world examples from marketing experiments.</p>
+<section id="step-1-data-preparation-and-panel-dataset-creation">
+<h2>Step 1: Data Preparation and Panel Dataset Creation<a class="headerlink" href="#step-1-data-preparation-and-panel-dataset-creation" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.panel_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">long_df_to_paneldataset</span><span class="p">,</span> <span class="n">PanelDataset</span><span class="p">,</span> <span class="n">TimePeriod</span>
+
+<span class="c1"># Load and prepare data (example: marketing campaign data)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;marketing_data.csv&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;geo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;geo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+<span class="c1"># Filter data to test end date</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">date</span> <span class="o">&lt;=</span> <span class="s1">&#39;2025-05-30&#39;</span><span class="p">]</span>
+
+<span class="c1"># Convert long format data to PanelDataset</span>
+<span class="n">panel_dataset</span> <span class="o">=</span> <span class="n">long_df_to_paneldataset</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">,</span> 
+    <span class="n">time_col</span><span class="o">=</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> 
+    <span class="n">unit_col</span><span class="o">=</span><span class="s2">&quot;geo&quot;</span><span class="p">,</span> 
+    <span class="n">outcome_col</span><span class="o">=</span><span class="s2">&quot;conversions&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Handle missing values</span>
+<span class="n">panel_dataset</span><span class="o">.</span><span class="n">wide_data</span> <span class="o">=</span> <span class="n">panel_dataset</span><span class="o">.</span><span class="n">wide_data</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Panel dataset created with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">panel_dataset</span><span class="o">.</span><span class="n">units</span><span class="p">)</span><span class="si">}</span><span class="s2"> units and </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">panel_dataset</span><span class="o">.</span><span class="n">times</span><span class="p">)</span><span class="si">}</span><span class="s2"> time periods&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-2-experimental-design-with-business-constraints">
+<h2>Step 2: Experimental Design with Business Constraints<a class="headerlink" href="#step-2-experimental-design-with-business-constraints" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.design</span><span class="w"> </span><span class="kn">import</span> <span class="n">GeoExperimentDesign</span><span class="p">,</span> <span class="n">PowerAnalysis</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods</span><span class="w"> </span><span class="kn">import</span> <span class="n">TBRRidge</span>
+
+<span class="c1"># Define business constraints</span>
+<span class="n">test_whitelist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;US&#39;</span><span class="p">]</span>  <span class="c1"># Must include US market</span>
+<span class="n">control_whitelist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;AU&#39;</span><span class="p">,</span> <span class="s1">&#39;GB&#39;</span><span class="p">,</span> <span class="s1">&#39;DE&#39;</span><span class="p">,</span> <span class="s1">&#39;FR&#39;</span><span class="p">]</span>  <span class="c1"># Preferred control markets</span>
+<span class="n">test_blacklist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CA&#39;</span><span class="p">]</span>  <span class="c1"># Exclude Canada from test</span>
+<span class="n">control_blacklist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;US&#39;</span><span class="p">]</span>  <span class="c1"># Exclude US from control</span>
+
+<span class="c1"># Initialize design</span>
+<span class="n">design</span> <span class="o">=</span> <span class="n">GeoExperimentDesign</span><span class="p">(</span>
+    <span class="n">panel_data</span><span class="o">=</span><span class="n">panel_dataset</span><span class="p">,</span>
+    <span class="n">n_test_grps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">treatment_probability</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  
+    <span class="n">kpi</span><span class="o">=</span><span class="s1">&#39;conversions&#39;</span><span class="p">,</span>
+    <span class="n">test_whitelist</span><span class="o">=</span><span class="n">test_whitelist</span><span class="p">,</span>
+    <span class="n">control_whitelist</span><span class="o">=</span><span class="n">control_whitelist</span><span class="p">,</span>
+    <span class="n">test_blacklist</span><span class="o">=</span><span class="n">test_blacklist</span><span class="p">,</span>
+    <span class="n">control_blacklist</span><span class="o">=</span><span class="n">control_blacklist</span><span class="p">,</span>
+    <span class="n">base_randomizer_cls</span><span class="o">=</span><span class="n">greedy_match_markets</span><span class="p">,</span>
+    <span class="n">test_lengths</span><span class="o">=</span><span class="p">[</span><span class="mi">28</span><span class="p">],</span>  <span class="c1"># test duration in days</span>
+    <span class="n">n_sample_prc</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>  <span class="c1"># Sample 20% for faster computation</span>
+    <span class="n">ci_version</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="c1"># Generate multiple design candidates</span>
+<span class="n">design_results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>  <span class="c1"># Generate 5 candidates</span>
+    <span class="n">mde_percent</span><span class="p">,</span> <span class="n">mde_absolute</span><span class="p">,</span> <span class="n">power_analysis</span> <span class="o">=</span> <span class="n">design</span><span class="o">.</span><span class="n">run_design</span><span class="p">()</span>
+    <span class="n">design_results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="s1">&#39;design_id&#39;</span><span class="p">:</span> <span class="n">i</span><span class="p">,</span>
+        <span class="s1">&#39;mde_percent&#39;</span><span class="p">:</span> <span class="n">mde_percent</span><span class="p">,</span>
+        <span class="s1">&#39;mde_absolute&#39;</span><span class="p">:</span> <span class="n">mde_absolute</span><span class="p">,</span>
+        <span class="s1">&#39;power_analysis&#39;</span><span class="p">:</span> <span class="n">power_analysis</span>
+    <span class="p">})</span>
+
+<span class="c1"># Cross-validation of pre-test fit assessment</span>
+<span class="n">cv_results</span> <span class="o">=</span> <span class="n">generate_cv_fit_plots</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>                          <span class="c1"># daily geo level data</span>
+    <span class="n">kpi</span><span class="o">=</span><span class="s1">&#39;conversions&#39;</span><span class="p">,</span>
+    <span class="n">market_assignments_df</span><span class="o">=</span><span class="n">mde_percent_df</span><span class="p">,</span>
+    <span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span>
+<span class="p">)</span>
+
+<span class="c1"># Comprehensive design comparison dashboard</span>
+<span class="n">dashboard_results</span> <span class="o">=</span> <span class="n">create_design_comparison_dashboard</span><span class="p">(</span>
+    <span class="n">pa_df_combined</span><span class="o">=</span><span class="n">power_analysis_results_df</span><span class="p">,</span>
+    <span class="n">mde_percent_df</span><span class="o">=</span><span class="n">mde_percent_df</span><span class="p">,</span>
+    <span class="n">test_lengths</span><span class="o">=</span><span class="p">[</span><span class="mi">56</span><span class="p">],</span>
+    <span class="n">n_test_grps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">mde_weight</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>                     <span class="c1"># Weightage for MDE score</span>
+    <span class="n">balance_weight</span><span class="o">=</span><span class="mf">0.3</span>                  <span class="c1"># Weightage for test vs control size difference</span>
+<span class="p">)</span>
+
+<span class="c1"># Access analysis results from dashboard</span>
+<span class="n">summary_tables</span> <span class="o">=</span> <span class="n">dashboard_results</span><span class="p">[</span><span class="s1">&#39;summary_tables&#39;</span><span class="p">]</span>
+<span class="n">test_length_comparison</span> <span class="o">=</span> <span class="n">dashboard_results</span><span class="p">[</span><span class="s1">&#39;test_length_comparison&#39;</span><span class="p">]</span>
+<span class="n">best_designs_summary</span> <span class="o">=</span> <span class="n">dashboard_results</span><span class="p">[</span><span class="s1">&#39;best_designs_summary&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best design: </span><span class="si">{</span><span class="n">test_length_comparison</span><span class="p">[</span><span class="s1">&#39;best_design&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Combined score: </span><span class="si">{</span><span class="n">test_length_comparison</span><span class="p">[</span><span class="s1">&#39;best_combined_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best MDE score: </span><span class="si">{</span><span class="n">test_length_comparison</span><span class="p">[</span><span class="s1">&#39;best_mde_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best balance score: </span><span class="si">{</span><span class="n">test_length_comparison</span><span class="p">[</span><span class="s1">&#39;best_balance_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-power-analysis">
+<h2>Step 3: Power Analysis<a class="headerlink" href="#step-3-power-analysis" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Power analysis is integrated into the dashboard above</span>
+<span class="c1"># Access power analysis results from dashboard</span>
+<span class="n">summary_tables</span> <span class="o">=</span> <span class="n">dashboard_results</span><span class="p">[</span><span class="s1">&#39;summary_tables&#39;</span><span class="p">]</span>
+<span class="n">test_length_comparison</span> <span class="o">=</span> <span class="n">dashboard_results</span><span class="p">[</span><span class="s1">&#39;test_length_comparison&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get best design and MDE</span>
+<span class="n">best_design_id</span> <span class="o">=</span> <span class="n">test_length_comparison</span><span class="p">[</span><span class="s1">&#39;best_design&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">best_mde</span> <span class="o">=</span> <span class="n">test_length_comparison</span><span class="p">[</span><span class="s1">&#39;best_mde_score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best Design: </span><span class="si">{</span><span class="n">best_design_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best MDE Score: </span><span class="si">{</span><span class="n">best_mde</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Use the power curve plotting function from create_design_comparison_dashboard</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.utils.test_designs_evaluation</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_power_curve_comparison</span>
+
+<span class="c1"># Plot power curves for all designs</span>
+<span class="n">create_power_curve_comparison</span><span class="p">(</span>
+    <span class="n">design_summary</span><span class="o">=</span><span class="n">summary_tables</span><span class="p">[</span><span class="s1">&#39;8wk&#39;</span><span class="p">],</span>
+    <span class="n">pa_df_combined</span><span class="o">=</span><span class="n">power_analysis_results_df</span><span class="p">,</span>
+    <span class="n">week_str</span><span class="o">=</span><span class="s1">&#39;8wk&#39;</span><span class="p">,</span>
+    <span class="n">n_test_groups</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-4-causal-estimation-with-multiple-methods">
+<h2>Step 4: Causal Estimation with Multiple Methods<a class="headerlink" href="#step-4-causal-estimation-with-multiple-methods" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods</span><span class="w"> </span><span class="kn">import</span> <span class="n">TBRRidge</span><span class="p">,</span> <span class="n">SyntheticControl</span><span class="p">,</span> <span class="n">BayesianTBR</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.inference</span><span class="w"> </span><span class="kn">import</span> <span class="n">cross_conformal_single</span><span class="p">,</span> <span class="n">cross_fold</span><span class="p">,</span> <span class="n">placebo</span>
+
+<span class="c1"># Define test and control groups (from design results)</span>
+<span class="n">test_units</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;US&#39;</span><span class="p">]</span>
+<span class="n">control_units</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;AU&#39;</span><span class="p">,</span> <span class="s1">&#39;GB&#39;</span><span class="p">,</span> <span class="s1">&#39;DE&#39;</span><span class="p">,</span> <span class="s1">&#39;FR&#39;</span><span class="p">]</span>
+<span class="n">test_start_date</span> <span class="o">=</span> <span class="s1">&#39;2025-03-31&#39;</span>
+<span class="n">test_end_date</span> <span class="o">=</span> <span class="s1">&#39;2025-05-30&#39;</span>
+
+<span class="c1"># Create panel dataset with treatment assignment</span>
+<span class="n">panel_dataset_treated</span> <span class="o">=</span> <span class="n">long_df_to_paneldataset</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">,</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="s2">&quot;geo&quot;</span><span class="p">,</span> <span class="s2">&quot;conversions&quot;</span><span class="p">,</span>
+    <span class="n">treated_units</span><span class="o">=</span><span class="n">test_units</span><span class="p">,</span>
+    <span class="n">treated_start_times</span><span class="o">=</span><span class="p">[</span><span class="n">test_start_date</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_units</span><span class="p">),</span>
+    <span class="n">treated_end_times</span><span class="o">=</span><span class="p">[</span><span class="n">test_end_date</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_units</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Method 1: Ridge TBR (recommended for linear trends)</span>
+<span class="n">tbr_model</span> <span class="o">=</span> <span class="n">TBRRidge</span><span class="p">(</span>
+    <span class="n">inference</span><span class="o">=</span><span class="s1">&#39;Kfold&#39;</span><span class="p">,</span>  <span class="c1"># Inference method built into the model</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">full_model</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">tbr_model</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">panel_dataset_treated</span><span class="p">)</span>
+
+<span class="c1"># Method 2: Synthetic Control (for non-linear patterns)</span>
+<span class="n">scm_model</span> <span class="o">=</span> <span class="n">SyntheticControl</span><span class="p">(</span>
+    <span class="n">inference</span><span class="o">=</span><span class="s1">&#39;UnitJackKnife&#39;</span><span class="p">,</span>  <span class="c1"># Inference method built into the model</span>
+    <span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;l2&#39;</span><span class="p">,</span>
+    <span class="n">penalty_strength</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span>
+<span class="p">)</span>
+<span class="n">scm_model</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">panel_dataset_treated</span><span class="p">)</span>
+
+<span class="c1"># Method 3: Augmented Synthetic Control (for improved performance)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.methods.scm</span><span class="w"> </span><span class="kn">import</span> <span class="n">AugSynth</span>
+<span class="n">aug_synth_model</span> <span class="o">=</span> <span class="n">AugSynth</span><span class="p">(</span>
+    <span class="n">outcome_model</span><span class="o">=</span><span class="n">RidgeCV</span><span class="p">,</span>  <span class="c1"># Ridge regression for outcome modeling</span>
+    <span class="n">opt_package</span><span class="o">=</span><span class="s1">&#39;SciPy&#39;</span><span class="p">,</span>
+    <span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;l1&#39;</span><span class="p">,</span>  <span class="c1"># L1 penalty</span>
+    <span class="n">inference</span><span class="o">=</span><span class="s1">&#39;Kfold&#39;</span>  <span class="c1"># Inference method built into the model</span>
+<span class="p">)</span>
+<span class="n">aug_synth_model</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">panel_dataset_treated</span><span class="p">)</span>
+
+<span class="c1"># Method 4: Bayesian TBR (for uncertainty quantification)</span>
+<span class="n">bayesian_model</span> <span class="o">=</span> <span class="n">BayesianTBR</span><span class="p">(</span>
+    <span class="n">inference_options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;num_samples&#39;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span> <span class="s1">&#39;num_warmup&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">},</span>
+    <span class="n">prior_type</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span>
+<span class="p">)</span>
+<span class="n">bayesian_model</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span><span class="n">panel_dataset_treated</span><span class="p">)</span>
+
+<span class="c1"># Compare results across methods</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Method Comparison:&quot;</span><span class="p">)</span>
+<span class="c1"># Calculate treatment effects as difference between actual and predicted</span>
+<span class="n">tbr_effect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">tbr_model</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">][</span><span class="n">tbr_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">tbr_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_end_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">-</span> 
+                   <span class="n">tbr_model</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;y_hat&#39;</span><span class="p">][</span><span class="n">tbr_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">tbr_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_end_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+
+<span class="n">scm_effect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">scm_model</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">][</span><span class="n">scm_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">scm_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_end_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">-</span> 
+                   <span class="n">scm_model</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;y_hat&#39;</span><span class="p">][</span><span class="n">scm_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">scm_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_end_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+
+<span class="n">aug_synth_effect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">aug_synth_model</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">][</span><span class="n">aug_synth_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">aug_synth_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_end_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">-</span> 
+                         <span class="n">aug_synth_model</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;y_hat&#39;</span><span class="p">][</span><span class="n">aug_synth_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">aug_synth_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_end_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+                         
+<span class="n">bayesian_effect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">bayesian_model</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">][</span><span class="n">bayesian_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">bayesian_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_end_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">-</span> 
+                        <span class="n">bayesian_model</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;y_hat&#39;</span><span class="p">][</span><span class="n">bayesian_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">bayesian_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_end_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TBR Effect: </span><span class="si">{</span><span class="n">tbr_effect</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SCM Effect: </span><span class="si">{</span><span class="n">scm_effect</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AugSynth Effect: </span><span class="si">{</span><span class="n">aug_synth_effect</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bayesian Effect: </span><span class="si">{</span><span class="n">bayesian_effect</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-5-inference-and-uncertainty-quantification">
+<h2>Step 5: Inference and Uncertainty Quantification<a class="headerlink" href="#step-5-inference-and-uncertainty-quantification" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inference is automatically handled by the models when specified in their constructors. The models calculate confidence intervals and p-values internally</span>
+<span class="c1"># Calculate statistics using the model&#39;s built-in inference</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_statistics</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate confidence intervals and p-values from model results&quot;&quot;&quot;</span>
+    <span class="n">post_actual</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">][</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+    <span class="n">post_predicted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;y_hat&#39;</span><span class="p">][</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+    <span class="n">y_lower</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;y_lower&#39;</span><span class="p">][</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+    <span class="n">y_upper</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;y_upper&#39;</span><span class="p">][</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+    
+    <span class="n">cumulative_diff_sum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">post_actual</span> <span class="o">-</span> <span class="n">post_predicted</span><span class="p">)</span>
+    <span class="n">ci_lower</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">post_actual</span> <span class="o">-</span> <span class="n">y_upper</span><span class="p">)</span>
+    <span class="n">ci_upper</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">post_actual</span> <span class="o">-</span> <span class="n">y_lower</span><span class="p">)</span>
+    
+    <span class="n">z_alpha</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">se</span> <span class="o">=</span> <span class="p">(</span><span class="n">ci_upper</span> <span class="o">-</span> <span class="n">ci_lower</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">z_alpha</span><span class="p">)</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">cumulative_diff_sum</span> <span class="o">/</span> <span class="n">se</span>
+    <span class="n">p_value</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
+    
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;confidence_interval&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">ci_lower</span><span class="p">,</span> <span class="n">ci_upper</span><span class="p">),</span>
+        <span class="s1">&#39;p_value&#39;</span><span class="p">:</span> <span class="n">p_value</span><span class="p">,</span>
+        <span class="s1">&#39;standard_error&#39;</span><span class="p">:</span> <span class="n">se</span>
+    <span class="p">}</span>
+
+<span class="c1"># Calculate statistics for each model</span>
+<span class="n">tbr_stats</span> <span class="o">=</span> <span class="n">calculate_statistics</span><span class="p">(</span><span class="n">tbr_model</span><span class="p">,</span> <span class="n">tbr_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tbr_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_end_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">scm_stats</span> <span class="o">=</span> <span class="n">calculate_statistics</span><span class="p">(</span><span class="n">scm_model</span><span class="p">,</span> <span class="n">scm_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">scm_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_end_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">aug_synth_stats</span> <span class="o">=</span> <span class="n">calculate_statistics</span><span class="p">(</span><span class="n">aug_synth_model</span><span class="p">,</span> <span class="n">aug_synth_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">aug_synth_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_end_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TBR CI: </span><span class="si">{</span><span class="n">tbr_stats</span><span class="p">[</span><span class="s1">&#39;confidence_interval&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TBR p-value: </span><span class="si">{</span><span class="n">tbr_stats</span><span class="p">[</span><span class="s1">&#39;p_value&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SCM CI: </span><span class="si">{</span><span class="n">scm_stats</span><span class="p">[</span><span class="s1">&#39;confidence_interval&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SCM p-value: </span><span class="si">{</span><span class="n">scm_stats</span><span class="p">[</span><span class="s1">&#39;p_value&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AugSynth CI: </span><span class="si">{</span><span class="n">aug_synth_stats</span><span class="p">[</span><span class="s1">&#39;confidence_interval&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AugSynth p-value: </span><span class="si">{</span><span class="n">aug_synth_stats</span><span class="p">[</span><span class="s1">&#39;p_value&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-6-results-interpretation-and-business-reporting">
+<h2>Step 6: Results Interpretation and Business Reporting<a class="headerlink" href="#step-6-results-interpretation-and-business-reporting" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="c1"># Create comprehensive results summary using model.summary()</span>
+<span class="n">tbr_summary</span> <span class="o">=</span> <span class="n">tbr_model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<span class="n">scm_summary</span> <span class="o">=</span> <span class="n">scm_model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<span class="n">aug_synth_summary</span> <span class="o">=</span> <span class="n">aug_synth_model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<span class="n">bayesian_summary</span> <span class="o">=</span> <span class="n">bayesian_model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+
+<span class="n">results_summary</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Method&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;TBR Ridge&#39;</span><span class="p">,</span> <span class="s1">&#39;Synthetic Control&#39;</span><span class="p">,</span> <span class="s1">&#39;AugSynth&#39;</span><span class="p">,</span> <span class="s1">&#39;Bayesian TBR&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Absolute_Effect&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="n">tbr_effect</span><span class="p">,</span>
+        <span class="n">scm_effect</span><span class="p">,</span>
+        <span class="n">aug_synth_effect</span><span class="p">,</span>
+        <span class="n">bayesian_effect</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;Relative_Effect_Percent&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="n">tbr_summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Relative Effect&#39;</span><span class="p">,</span> <span class="s1">&#39;Cumulative&#39;</span><span class="p">],</span>
+        <span class="n">scm_summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Relative Effect&#39;</span><span class="p">,</span> <span class="s1">&#39;Cumulative&#39;</span><span class="p">],</span>
+        <span class="n">aug_synth_summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Relative Effect&#39;</span><span class="p">,</span> <span class="s1">&#39;Cumulative&#39;</span><span class="p">],</span>
+        <span class="n">bayesian_summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Relative Effect&#39;</span><span class="p">,</span> <span class="s1">&#39;Cumulative&#39;</span><span class="p">]</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;Confidence_Interval&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="n">tbr_stats</span><span class="p">[</span><span class="s1">&#39;confidence_interval&#39;</span><span class="p">],</span>
+        <span class="n">scm_stats</span><span class="p">[</span><span class="s1">&#39;confidence_interval&#39;</span><span class="p">],</span>
+        <span class="n">aug_synth_stats</span><span class="p">[</span><span class="s1">&#39;confidence_interval&#39;</span><span class="p">],</span>
+        <span class="n">bayesian_model</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;credible_interval&#39;</span><span class="p">]</span>  <span class="c1"># Bayesian has different structure</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;P_Value&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="n">tbr_stats</span><span class="p">[</span><span class="s1">&#39;p_value&#39;</span><span class="p">],</span>
+        <span class="n">scm_stats</span><span class="p">[</span><span class="s1">&#39;p_value&#39;</span><span class="p">],</span>
+        <span class="n">aug_synth_stats</span><span class="p">[</span><span class="s1">&#39;p_value&#39;</span><span class="p">],</span>
+        <span class="n">tbr_stats</span><span class="p">[</span><span class="s1">&#39;p_value&#39;</span><span class="p">]</span>  <span class="c1"># Use TBR p-value for Bayesian</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;Statistical_Significance&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;Yes&#39;</span> <span class="k">if</span> <span class="n">tbr_stats</span><span class="p">[</span><span class="s1">&#39;p_value&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.1</span> <span class="k">else</span> <span class="s1">&#39;No&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Yes&#39;</span> <span class="k">if</span> <span class="n">scm_stats</span><span class="p">[</span><span class="s1">&#39;p_value&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.1</span> <span class="k">else</span> <span class="s1">&#39;No&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Yes&#39;</span> <span class="k">if</span> <span class="n">aug_synth_stats</span><span class="p">[</span><span class="s1">&#39;p_value&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.1</span> <span class="k">else</span> <span class="s1">&#39;No&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Yes&#39;</span> <span class="k">if</span> <span class="n">tbr_stats</span><span class="p">[</span><span class="s1">&#39;p_value&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.1</span> <span class="k">else</span> <span class="s1">&#39;No&#39;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results_summary</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final Results Summary:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">results_df</span><span class="p">)</span>
+
+<span class="c1"># Generate visualizations</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># Plot 1: Treatment effect over time</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tbr_model</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;times&#39;</span><span class="p">],</span> <span class="n">tbr_model</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Actual&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tbr_model</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;times&#39;</span><span class="p">],</span> <span class="n">tbr_model</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;y_hat&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Predicted&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">tbr_model</span><span class="o">.</span><span class="n">panel_data</span><span class="o">.</span><span class="n">treated_start_idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Treatment Start&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Treatment Effect Over Time&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Plot 2: Effect size comparison</span>
+<span class="n">methods</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;Method&#39;</span><span class="p">]</span>
+<span class="n">effects</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;Absolute_Effect&#39;</span><span class="p">]</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">methods</span><span class="p">,</span> <span class="n">effects</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Treatment Effect by Method&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Effect Size&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot 3: Confidence intervals</span>
+<span class="n">y_pos</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">methods</span><span class="p">))</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">effects</span><span class="p">,</span> <span class="n">y_pos</span><span class="p">,</span> <span class="n">xerr</span><span class="o">=</span><span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">ci</span><span class="p">)</span> <span class="k">for</span> <span class="n">ci</span> <span class="ow">in</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;Confidence_Interval&#39;</span><span class="p">]],</span> 
+                   <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">y_pos</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">methods</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Effect Estimates with Confidence Intervals&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot 4: P-values</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">methods</span><span class="p">,</span> <span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;P_Value&#39;</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;α = 0.1&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;P-values by Method&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;P-value&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Business interpretation</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Business Interpretation:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Primary Effect Estimate: </span><span class="si">{</span><span class="n">tbr_effect</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> conversions&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Relative Effect: </span><span class="si">{</span><span class="n">tbr_summary</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Relative Effect&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Cumulative&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Confidence Level: 90%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Statistical Significance: </span><span class="si">{</span><span class="s1">&#39;Yes&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">results_df</span><span class="p">[</span><span class="s1">&#39;Statistical_Significance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;Yes&#39;</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;No&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Practical Significance: </span><span class="si">{</span><span class="s1">&#39;Yes&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">tbr_effect</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;No&#39;</span><span class="si">}</span><span class="s2"> (threshold: 1000 conversions)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</section>
+</section>
+<section id="best-practices">
+<h1>Best Practices<a class="headerlink" href="#best-practices" title="Link to this heading"></a></h1>
+<section id="design-phase">
+<h2>Design Phase<a class="headerlink" href="#design-phase" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Power Analysis First</strong>: Always run power analysis before finalizing design</p></li>
+<li><p><strong>Balance Metrics</strong>: Use appropriate imbalance metrics for your context</p></li>
+<li><p><strong>Constraints</strong>: Leverage whitelist/blacklist for business constraints</p></li>
+<li><p><strong>Multiple Designs</strong>: Compare different randomization strategies</p></li>
+</ol>
+</section>
+<section id="methods-selection">
+<h2>Methods Selection<a class="headerlink" href="#methods-selection" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Data Characteristics</strong>: Choose methods based on data patterns</p></li>
+<li><p><strong>Assumptions</strong>: Verify method assumptions hold</p></li>
+<li><p><strong>Multiple Methods</strong>: Use multiple methods for robustness</p></li>
+<li><p><strong>Validation</strong>: Cross-validate results across methods</p></li>
+</ol>
+</section>
+<section id="inference">
+<h2>Inference<a class="headerlink" href="#inference" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Multiple Approaches</strong>: Use multiple inference methods</p></li>
+<li><p><strong>Sensitivity Analysis</strong>: Test sensitivity to assumptions</p></li>
+<li><p><strong>Effect Size</strong>: Consider practical significance</p></li>
+<li><p><strong>Uncertainty</strong>: Always report uncertainty measures</p></li>
+</ol>
+</section>
+</section>
+<section id="package-dependencies">
+<h1>Package Dependencies<a class="headerlink" href="#package-dependencies" title="Link to this heading"></a></h1>
+<p>The package relies on:</p>
+<ul class="simple">
+<li><p><strong>Core</strong>: pandas, numpy, scipy, scikit-learn</p></li>
+<li><p><strong>Visualization</strong>: matplotlib, seaborn</p></li>
+<li><p><strong>Bayesian</strong>: numpyro, jax, arviz</p></li>
+<li><p><strong>Optimization</strong>: scipy.optimize</p></li>
+<li><p><strong>Documentation</strong>: sphinx, nbsphinx</p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Panel Exp: Panel Modeling and Experimentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="basic_data.html" class="btn btn-neutral float-right" title="PanelDataset Usage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Adobe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

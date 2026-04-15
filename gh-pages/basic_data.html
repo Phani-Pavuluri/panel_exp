@@ -1,0 +1,484 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PanelDataset Usage &mdash; Panel Exp 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="SCM Usage" href="scm_usage.html" />
+    <link rel="prev" title="Overview" href="user_guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Panel Exp
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#package-architecture">Package Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#design-module">1. Design Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#methods-module">2. Methods Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#inference-module">3. Inference Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#end-to-end-workflow">End-to-End Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#best-practices">Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html#package-dependencies">Package Dependencies</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PanelDataset Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scm_usage.html">SCM Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tbr_usage.html">TBR Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="power_example.html">Power Module Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Deeper Dives</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="experimental_design.html">Experimental Design Deep Dive (#1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scm_deep_dive.html">Synthetic Control Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tbr_deep_dive.html">Time-Based Regression (TBR)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tbr_deep_dive.html#Regression-while-not-aggregating-the-control-units">Regression while not aggregating the control units</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API: Auto-generated Documentation.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#base-classes">Base Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#design">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#models">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#inference">Inference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Panel Exp</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">PanelDataset Usage</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/basic_data.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="PanelDataset-Usage">
+<h1>PanelDataset Usage<a class="headerlink" href="#PanelDataset-Usage" title="Link to this heading"></a></h1>
+<p>In this example, we look at the basic functionality of PanelDataset. This is a dataclass that is used by modules in the package</p>
+<ul class="simple">
+<li><p>Example 1</p>
+<ul>
+<li><p>In this example, we use the Meta sales dataset. First we import the csv file, then filter the data to only include pre-test data. Transform it to a wide data frame where the index (rows) are locations and the columnes are time. We then pass the dataframe to the PanelDataset. At this point, we can then perform operations on it using the other methods, classes and function in the Panel Exp package.</p></li>
+</ul>
+</li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">panel_exp.panel_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">PanelDataset</span><span class="p">,</span> <span class="n">TimePeriod</span>
+
+<span class="n">long_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;meta_geo.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># trim data to only include pre-test data</span>
+<span class="n">long_df</span> <span class="o">=</span> <span class="n">long_df</span><span class="p">[</span><span class="n">long_df</span><span class="o">.</span><span class="n">time</span> <span class="o">&lt;</span> <span class="mi">91</span><span class="p">]</span>
+<span class="n">wide_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">long_df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;location&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+
+<span class="n">wide_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>time</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>...</th>
+      <th>81</th>
+      <th>82</th>
+      <th>83</th>
+      <th>84</th>
+      <th>85</th>
+      <th>86</th>
+      <th>87</th>
+      <th>88</th>
+      <th>89</th>
+      <th>90</th>
+    </tr>
+    <tr>
+      <th>location</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>atlanta</th>
+      <td>3384.0</td>
+      <td>3904.0</td>
+      <td>5734.0</td>
+      <td>4311.0</td>
+      <td>3686.0</td>
+      <td>3374.0</td>
+      <td>3175.0</td>
+      <td>3594.0</td>
+      <td>4574.0</td>
+      <td>6866.0</td>
+      <td>...</td>
+      <td>5128.0</td>
+      <td>3564.0</td>
+      <td>3219.0</td>
+      <td>3348.0</td>
+      <td>4295.0</td>
+      <td>4960.0</td>
+      <td>7653.0</td>
+      <td>5182.0</td>
+      <td>4139.0</td>
+      <td>3504.0</td>
+    </tr>
+    <tr>
+      <th>austin</th>
+      <td>2124.0</td>
+      <td>2258.0</td>
+      <td>2994.0</td>
+      <td>2964.0</td>
+      <td>2134.0</td>
+      <td>2025.0</td>
+      <td>1954.0</td>
+      <td>2187.0</td>
+      <td>2523.0</td>
+      <td>3503.0</td>
+      <td>...</td>
+      <td>3046.0</td>
+      <td>2163.0</td>
+      <td>2250.0</td>
+      <td>2164.0</td>
+      <td>2495.0</td>
+      <td>2994.0</td>
+      <td>3424.0</td>
+      <td>3580.0</td>
+      <td>2462.0</td>
+      <td>2558.0</td>
+    </tr>
+    <tr>
+      <th>baltimore</th>
+      <td>3856.0</td>
+      <td>3821.0</td>
+      <td>5348.0</td>
+      <td>3915.0</td>
+      <td>2342.0</td>
+      <td>3585.0</td>
+      <td>3615.0</td>
+      <td>4015.0</td>
+      <td>4333.0</td>
+      <td>5951.0</td>
+      <td>...</td>
+      <td>4127.0</td>
+      <td>3583.0</td>
+      <td>3159.0</td>
+      <td>3569.0</td>
+      <td>4516.0</td>
+      <td>4808.0</td>
+      <td>6120.0</td>
+      <td>4615.0</td>
+      <td>3828.0</td>
+      <td>3779.0</td>
+    </tr>
+    <tr>
+      <th>baton rouge</th>
+      <td>2617.0</td>
+      <td>2609.0</td>
+      <td>3132.0</td>
+      <td>2554.0</td>
+      <td>2279.0</td>
+      <td>2157.0</td>
+      <td>2421.0</td>
+      <td>2841.0</td>
+      <td>3016.0</td>
+      <td>3816.0</td>
+      <td>...</td>
+      <td>2516.0</td>
+      <td>2238.0</td>
+      <td>2279.0</td>
+      <td>2472.0</td>
+      <td>3272.0</td>
+      <td>3567.0</td>
+      <td>4095.0</td>
+      <td>3032.0</td>
+      <td>2836.0</td>
+      <td>2690.0</td>
+    </tr>
+    <tr>
+      <th>boston</th>
+      <td>3122.0</td>
+      <td>3266.0</td>
+      <td>4393.0</td>
+      <td>5050.0</td>
+      <td>2727.0</td>
+      <td>2985.0</td>
+      <td>2616.0</td>
+      <td>3612.0</td>
+      <td>3774.0</td>
+      <td>4789.0</td>
+      <td>...</td>
+      <td>6007.0</td>
+      <td>2931.0</td>
+      <td>2882.0</td>
+      <td>3454.0</td>
+      <td>4055.0</td>
+      <td>4098.0</td>
+      <td>5587.0</td>
+      <td>6333.0</td>
+      <td>3403.0</td>
+      <td>3350.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 90 columns</p>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pds</span> <span class="o">=</span> <span class="n">PanelDataset</span><span class="p">(</span><span class="n">wide_df</span>  <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pds</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+        Panel Dataset Summary
+        ---------------------
+        Number of time points: 90
+        Number of units: 40
+        Number of treated units: 0
+        Treated units: None
+        Treated periods: None
+
+</pre></div></div>
+</div>
+<ul class="simple">
+<li><p>Example 2</p>
+<ul>
+<li><p>In the first example, we only passed a dataframe to the PanelDataset. However, most of the time, we will want to pass several more pieces of information such as treated units and test periods.</p></li>
+</ul>
+</li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># aggregate treated units for TBR</span>
+
+<span class="n">control_units</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">wide_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">unit</span> <span class="k">for</span> <span class="n">unit</span> <span class="ow">in</span> <span class="n">pds</span><span class="o">.</span><span class="n">units</span> <span class="k">if</span> <span class="n">unit</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;chicago&#39;</span><span class="p">,</span> <span class="s1">&#39;cincinnati&#39;</span><span class="p">,</span> <span class="s1">&#39;houston&#39;</span><span class="p">,</span> <span class="s1">&#39;portland&#39;</span><span class="p">,</span> <span class="s1">&#39;honolulu&#39;</span><span class="p">]]]</span> <span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">treated_units</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">wide_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s1">&#39;chicago&#39;</span><span class="p">,</span> <span class="s1">&#39;cincinnati&#39;</span><span class="p">,</span> <span class="s1">&#39;houston&#39;</span><span class="p">,</span> <span class="s1">&#39;portland&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;treated&#39;</span><span class="p">])</span>
+<span class="n">wide_agg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">treated_units</span><span class="p">,</span> <span class="n">control_units</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Define time variables</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">wide_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">L</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">wide_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">test_length</span> <span class="o">=</span> <span class="mi">14</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pds</span> <span class="o">=</span> <span class="n">PanelDataset</span><span class="p">(</span><span class="n">wide_agg</span><span class="o">.</span><span class="n">T</span> <span class="c1"># DataFrame Units X Time.</span>
+                   <span class="p">,</span> <span class="n">treated_units</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;treated&#39;</span><span class="p">]</span> <span class="c1"># List of treated units</span>
+                   <span class="p">,</span> <span class="n">treated_periods</span><span class="o">=</span><span class="p">[</span><span class="n">TimePeriod</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">L</span><span class="o">-</span><span class="n">test_length</span><span class="p">)]</span> <span class="c1"># List of TimePeriod objects (one for each treated unit with start and end attributes. Or just a start attribute)</span>
+                   <span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pds</span><span class="o">.</span><span class="n">summarize</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+        Panel Dataset Summary
+        ---------------------
+        Number of time points: 90
+        Number of units: 36
+        Number of treated units: 1
+        Treated units: [&#39;treated&#39;]
+        Treated periods: [TimePeriod(start=76, end=None)]
+
+</pre></div></div>
+</div>
+<p>As we can see, we passed a list of TimePeriods and a list of treated units. There needs to be a TimePeriod instance passed for each treated unit. You can pass and end date with the instance as well, but in this case the treated has no end period.</p>
+<ul class="simple">
+<li><p>Plotting functions.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pds</span><span class="o">.</span><span class="n">plot_line</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/basic_data_8_0.png" src="_images/basic_data_8_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pds</span><span class="o">.</span><span class="n">plot_scatter</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/basic_data_9_0.png" src="_images/basic_data_9_0.png" />
+</div>
+</div>
+<p>At this point we can use the PanelDataset, pds, with other modules in the package.</p>
+<p>For complete documentation, please see the API reference.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="user_guide.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="scm_usage.html" class="btn btn-neutral float-right" title="SCM Usage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Adobe.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

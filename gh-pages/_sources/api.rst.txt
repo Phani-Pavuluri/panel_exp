@@ -1,0 +1,73 @@
+API: Auto-generated Documentation.
+=========================================
+
+.. contents:: Table of Contents
+
+
+Base Classes
+============
+.. automodule:: panel_exp.panel_data
+   :members: 
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: panel_exp.impact
+   :members: 
+   :undoc-members:
+   :show-inheritance:
+
+Design
+============
+.. automodule:: panel_exp.design.assign
+   :members: 
+   :undoc-members:
+   :show-inheritance:   
+
+.. automodule:: panel_exp.design.geo_experiment_design
+   :members: 
+   :undoc-members:
+   :show-inheritance:   
+
+.. automodule:: panel_exp.design.supergeos
+   :members: 
+   :undoc-members:
+   :show-inheritance:  
+
+.. automodule:: panel_exp.design.trimmed_match
+   :members: 
+   :undoc-members:
+   :show-inheritance:   
+
+Models 
+============
+.. automodule:: panel_exp.methods.tbr
+   :members: 
+   :undoc-members:
+   :show-inheritance:   
+
+.. automodule:: panel_exp.methods.scm
+   :members: 
+   :undoc-members:
+   :show-inheritance:   
+
+.. automodule:: panel_exp.methods.DID
+   :members: 
+   :undoc-members:
+   :show-inheritance:   
+
+.. automodule:: panel_exp.methods.bayesian_regression
+   :members: 
+   :undoc-members:
+   :show-inheritance:   
+
+.. automodule:: panel_exp.methods.mtgp
+   :members: 
+   :undoc-members:
+   :show-inheritance:   
+
+Inference
+============
+.. automodule:: panel_exp.inference  
+   :members: conformal, cross_conformal_single, kfold, placebo
+   :undoc-members:
+   :show-inheritance:
