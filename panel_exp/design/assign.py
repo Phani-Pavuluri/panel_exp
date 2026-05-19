@@ -1,3 +1,6 @@
+import copy
+import warnings
+
 import numpy as np
 import pandas as pd
 import random
@@ -8,6 +11,24 @@ from itertools import chain
 from dtaidistance import dtw
 from ..panel_data import PanelDataset, TimePeriod, long_df_to_paneldataset
 from .design_metrics import imbalance
+from .constraints import (
+    prepare_constraint_context,
+    validate_assignment_dict,
+    balanced_volume_assign,
+    bernoulli_complete_assign,
+    freeze_assignment,
+    freeze_constraint_lists,
+)
+from .rng import make_generator
+
+# Base randomizers supported for imbalance computation in Rerandomization
+RERANDOMIZATION_IMBALANCE_BASES = frozenset({
+    "greedy_match_markets",
+    "thinningdesign",
+    "balancedrandomization",
+    "completerandomization",
+    "stratifiedrandomization",
+})
 
 # Custom Type for Units
 Unit = NewType("Unit", Union[str, int])
@@ -41,7 +62,8 @@ class Design(ABC):
         test_blacklist: Optional[List[Unit]] = None,
         control_test_blacklist: Optional[List[Unit]] = None,
         control_whitelist: Optional[List[Unit]] = None,
-        test_whitelist: Optional[List[Unit]] = None
+        test_whitelist: Optional[List[Unit]] = None,
+        random_state: Optional[int] = 42,
     ):
         self.treatment_probability = treatment_probability
         self.control_blacklist = control_blacklist or []
@@ -49,6 +71,8 @@ class Design(ABC):
         self.control_test_blacklist = control_test_blacklist or []
         self.control_whitelist = control_whitelist or []
         self.test_whitelist = test_whitelist or []
+        self.random_state = random_state
+        self._rng = make_generator(random_state)
 
     def assign(
         self,
@@ -101,11 +125,13 @@ class Design(ABC):
         self.test_whitelist = test_whitelist or self.test_whitelist
         self.n_test_grps = n_test_grps
 
-        # Subset data if pre-treatment period is specified
+        panel_data = copy.deepcopy(panel_data)
+
+        # Subset data if pre-treatment period is specified (on copy only)
         if pre_treatment_period:
             start_idx = panel_data.wide_data.columns.get_loc(pre_treatment_period.start) if pre_treatment_period.start else None
             end_idx = panel_data.wide_data.columns.get_loc(pre_treatment_period.end) if pre_treatment_period.end else None
-            panel_data.wide_data = panel_data.wide_data.iloc[:, start_idx:end_idx]
+            panel_data.wide_data = panel_data.wide_data.iloc[:, start_idx:end_idx].copy()
 
         # Assignments with or without blacklists and whitelists
         if not (self.control_blacklist or self.test_blacklist or self.control_test_blacklist):
@@ -212,11 +238,8 @@ class StratifiedRandomization(Design):
         n_test_grps: Optional[int] = 1,
         n_percentiles: Optional[int] = 10) -> Dict[str, List[str]]:
         """
-        Assigns units to control and multiple test groups using percentile-based stratification.
-
-        **Note:** Whitelist and blacklist constraints are **not respected** in Stratified Randomization.
-        If certain units **must** or **must not** be assigned to specific groups, they should be
-        manually removed from the dataset **before running this function**.
+        Assigns units to control and multiple test groups using percentile-based stratification
+        with volume balancing within strata. Whitelist/blacklist constraints are enforced.
 
         Parameters
         ----------
@@ -247,162 +270,145 @@ class StratifiedRandomization(Design):
             A dictionary with keys "control" and "test_0", "test_1", ..., for each test group.
         """
 
-        # Compute the mean KPI for each DMA over time
-        covariate_values = panel_data.wide_data.mean(axis=1)
-
-        # Create percentile bins
-        percentiles = np.linspace(0, 100, n_percentiles + 1)
-        stratum_labels = np.percentile(covariate_values, percentiles)
-        strata = np.digitize(covariate_values, bins=stratum_labels, right=True)
-
-        # Create a DataFrame with DMA assignments
-        stratified_df = pd.DataFrame({"DMA": panel_data.wide_data.index, "Stratum": strata})
-
-        # Shuffle within each stratum for randomness
-        stratified_df = stratified_df.sample(frac=1, random_state=42).reset_index(drop=True)
-
-        # Initialize groups and their shares
-        control_group = []
-        test_groups = {f"test_{i}": [] for i in range(n_test_grps)}
-        total_volume = panel_data.wide_data.sum().sum()
-        group_shares = {"control": 0, **{f"test_{i}": 0 for i in range(n_test_grps)}}
-
-        # Define target shares
+        wide = panel_data.wide_data
+        ctx = prepare_constraint_context(
+            wide,
+            self.treatment_probability,
+            n_test_grps,
+            control_whitelist,
+            test_whitelist,
+            control_blacklist,
+            test_blacklist,
+            control_test_blacklist,
+        )
+        rng = self._rng
+        control_group = list(ctx.pinned_control)
+        test_groups = {f"test_{i}": list(ctx.pinned_test[f"test_{i}"]) for i in range(n_test_grps)}
+        total_volume = float(wide.sum().sum())
+        if total_volume <= 0:
+            raise ValueError("Total KPI volume must be positive for stratified assignment.")
+        group_shares = {"control": sum(float(wide.loc[u].sum()) / total_volume for u in control_group)}
+        for i in range(n_test_grps):
+            key = f"test_{i}"
+            group_shares[key] = sum(float(wide.loc[u].sum()) / total_volume for u in test_groups[key])
         target_shares = {
             "control": 1 - self.treatment_probability,
             **{f"test_{i}": self.treatment_probability / n_test_grps for i in range(n_test_grps)},
         }
-
-        # Assign units within each stratum
-        for stratum in range(1, n_percentiles + 1):
-            stratum_units = stratified_df[stratified_df["Stratum"] == stratum]["DMA"].tolist()
-            np.random.shuffle(stratum_units)
-
-            for unit in stratum_units:
-                unit_share = panel_data.wide_data.loc[unit].sum() / total_volume
-
-                # Calculate share gaps
-                share_gaps = {
-                    group: target_shares[group] - group_shares[group]
-                    for group in target_shares
-                }
-
-                # Select the group with the largest gap
-                best_group = max(share_gaps, key=share_gaps.get)
-
-                # Assign the unit to the selected group
-                if best_group == "control":
-                    control_group.append(unit)
-                    group_shares["control"] += unit_share
-                else:
-                    test_groups[best_group].append(unit)
+        free_units = list(ctx.free_units)
+        if free_units:
+            covariate_values = wide.loc[free_units].mean(axis=1)
+            percentiles = np.linspace(0, 100, n_percentiles + 1)
+            stratum_labels = np.percentile(covariate_values.values, percentiles)
+            strata = np.digitize(covariate_values.values, bins=stratum_labels, right=True)
+            stratified_df = pd.DataFrame({"DMA": covariate_values.index, "Stratum": strata})
+            for stratum in range(1, n_percentiles + 1):
+                stratum_units = stratified_df[stratified_df["Stratum"] == stratum]["DMA"].tolist()
+                rng.shuffle(stratum_units)
+                for unit in stratum_units:
+                    unit_share = float(wide.loc[unit].sum()) / total_volume
+                    share_gaps = {g: target_shares[g] - group_shares[g] for g in target_shares}
+                    best_group = max(share_gaps, key=share_gaps.get)
+                    if best_group == "control":
+                        control_group.append(unit)
+                    else:
+                        test_groups[best_group].append(unit)
                     group_shares[best_group] += unit_share
+        assignment = {"control": control_group, **test_groups}
+        validate_assignment_dict(
+            assignment,
+            ctx,
+            control_whitelist,
+            test_whitelist,
+            control_blacklist,
+            test_blacklist,
+            control_test_blacklist,
+        )
+        return freeze_assignment(assignment)
 
-        # Return the assignments
-        return {"control": control_group, **test_groups}
 
-
-class CompleteRandomization(Design):
-    """
-    Complete Randomization Experimental Design class, which randomly assigns units to control and treatment groups while dynamically prioritizing groups with the largest deficit in terms of required size, 
-    ensuring proportional, randomized, and balanced group assignments.
-
-    Parameters
-    ----------
-    treatment_probability : float
-        Probability of assigning treatment to a unit in the dataset.
-
-    Methods
-    -------
-    assign(wide_data, num_units, num_timepoints, always_control, always_test, control_blacklist, test_blacklist):
-        Assigns units to control and treatment groups based on complete randomization.
-    """
+class BalancedRandomization(Design):
+    """Volume-balanced assignment to KPI share targets (not Bernoulli randomization)."""
 
     def assign_all(self, wide_data: pd.DataFrame, num_units: int, num_timepoints: int) -> np.array:
-        """
-        Method to assign all units in the dataset. Currently not implemented.
+        raise NotImplementedError("Use assign() returning a group dictionary.")
 
-        Raises
-        ------
-        Exception
-            Always raises an exception as it is not implemented.
-        """
-        raise Exception()
-
-    def assign(self,
+    def assign(
+        self,
         panel_data: PanelDataset,
         treatment_period: Optional[TimePeriod] = None,
         pre_treatment_period: Optional[TimePeriod] = None,
-        control_whitelist: Optional[List[Unit]] = [],
-        test_whitelist: Optional[List[Unit]] = [],
-        control_blacklist: Optional[List[Unit]] = [],
-        test_blacklist: Optional[List[Unit]] = [],
-        control_test_blacklist: Optional[List[Unit]] = [],
-        n_test_grps: Optional[int] = 1) -> np.ndarray:
-        """
-        Simultaneously assigns units to control and multiple test groups based on share targets.
+        control_whitelist: Optional[List[Unit]] = None,
+        test_whitelist: Optional[List[Unit]] = None,
+        control_blacklist: Optional[List[Unit]] = None,
+        test_blacklist: Optional[List[Unit]] = None,
+        control_test_blacklist: Optional[List[Unit]] = None,
+        n_test_grps: Optional[int] = 1,
+    ) -> Dict[str, List]:
+        wide = panel_data.wide_data
+        ctx = prepare_constraint_context(
+            wide,
+            self.treatment_probability,
+            n_test_grps,
+            control_whitelist,
+            test_whitelist,
+            control_blacklist,
+            test_blacklist,
+            control_test_blacklist,
+        )
+        assignment = balanced_volume_assign(wide, ctx, self._rng)
+        validate_assignment_dict(
+            assignment,
+            ctx,
+            control_whitelist,
+            test_whitelist,
+            control_blacklist,
+            test_blacklist,
+            control_test_blacklist,
+        )
+        return freeze_assignment(assignment)
 
-        **Note:** Whitelist and blacklist constraints are **not respected** in Complete Randomization.
-        If certain units **must** or **must not** be assigned to specific groups, they should be
-        manually removed from the dataset **before running this function**.
 
-        Parameters
-        ----------
-        wide_data : pd.DataFrame
-            The panel dataset in wide format with units as rows and time periods as columns.
-        num_units : int
-            Total number of units in the dataset.
-        num_timepoints : int
-            Total number of time points in the dataset.
-        n_test_grps : int
-            Number of test groups to create.
+class CompleteRandomization(Design):
+    """Bernoulli complete randomization with whitelist/blacklist enforcement."""
 
-        Returns
-        -------
-        dict
-            A dictionary with keys "control" and "test_0", "test_1", ..., for each test group.
-        """
+    def assign_all(self, wide_data: pd.DataFrame, num_units: int, num_timepoints: int) -> np.array:
+        raise NotImplementedError("Use assign() returning a group dictionary.")
 
-        # Shuffle available units
-        available_units = list(panel_data.wide_data.index)
-        np.random.shuffle(available_units)
-
-        # Initialize groups and their shares
-        control_group = []
-        test_groups = {f"test_{i}": [] for i in range(n_test_grps)}
-        total_volume = panel_data.wide_data.sum().sum()  # Total volume across all units
-        group_shares = {"control": 0, **{f"test_{i}": 0 for i in range(n_test_grps)}}
-
-        # Define target shares
-        target_shares = {
-            "control": 1 - self.treatment_probability,
-            **{f"test_{i}": self.treatment_probability / n_test_grps for i in range(n_test_grps)},
-        }
-
-        # Assign units to groups
-        for unit in available_units:
-            unit_share = panel_data.wide_data.loc[unit].sum() / total_volume  # Volume share of the current unit
-
-            # Calculate the gaps between current and target shares
-            share_gaps = {
-                group: target_shares[group] - group_shares[group]
-                for group in target_shares
-            }
-
-            # Select the group with the largest gap
-            best_group = max(share_gaps, key=share_gaps.get)
-
-            # Assign the unit to the selected group
-            if best_group == "control":
-                control_group.append(unit)
-                group_shares["control"] += unit_share
-            else:
-                test_groups[best_group].append(unit)
-                group_shares[best_group] += unit_share
-
-        # Return the assignments
-        # print({"control": control_group, **test_groups})
-        return {"control": control_group, **test_groups}
+    def assign(
+        self,
+        panel_data: PanelDataset,
+        treatment_period: Optional[TimePeriod] = None,
+        pre_treatment_period: Optional[TimePeriod] = None,
+        control_whitelist: Optional[List[Unit]] = None,
+        test_whitelist: Optional[List[Unit]] = None,
+        control_blacklist: Optional[List[Unit]] = None,
+        test_blacklist: Optional[List[Unit]] = None,
+        control_test_blacklist: Optional[List[Unit]] = None,
+        n_test_grps: Optional[int] = 1,
+    ) -> Dict[str, List]:
+        wide = panel_data.wide_data
+        ctx = prepare_constraint_context(
+            wide,
+            self.treatment_probability,
+            n_test_grps,
+            control_whitelist,
+            test_whitelist,
+            control_blacklist,
+            test_blacklist,
+            control_test_blacklist,
+        )
+        assignment = bernoulli_complete_assign(wide, ctx, self._rng)
+        validate_assignment_dict(
+            assignment,
+            ctx,
+            control_whitelist,
+            test_whitelist,
+            control_blacklist,
+            test_blacklist,
+            control_test_blacklist,
+        )
+        return freeze_assignment(assignment)
 
 
     # def assign_all(
@@ -513,8 +519,13 @@ class ThinningDesign(Design):
         Assigns units to control and treatment groups based on the Thinning Design algorithm.
     """
 
-    def __init__(self, treatment_probability: float, delta: float = 0.5):
-        super().__init__(treatment_probability)
+    def __init__(
+        self,
+        treatment_probability: float,
+        delta: float = 0.5,
+        random_state: Optional[int] = 42,
+    ):
+        super().__init__(treatment_probability, random_state=random_state)
         self.delta = delta
 
     def assign_all(self, wide_data: pd.DataFrame, num_units: int, num_timepoints: int) -> np.array:
@@ -528,17 +539,18 @@ class ThinningDesign(Design):
         """
         raise Exception()
 
-    def assign(self,
+    def assign(
+        self,
         panel_data: PanelDataset,
         treatment_period: Optional[TimePeriod] = None,
         pre_treatment_period: Optional[TimePeriod] = None,
-        control_whitelist: Optional[List[Unit]] = [],
-        test_whitelist: Optional[List[Unit]] = [],
-        control_blacklist: Optional[List[Unit]] = [],
-        test_blacklist: Optional[List[Unit]] = [],
-        control_test_blacklist: Optional[List[Unit]] = [],
-        n_test_grps: Optional[int] = 1) -> np.ndarray:
-
+        control_whitelist: Optional[List[Unit]] = None,
+        test_whitelist: Optional[List[Unit]] = None,
+        control_blacklist: Optional[List[Unit]] = None,
+        test_blacklist: Optional[List[Unit]] = None,
+        control_test_blacklist: Optional[List[Unit]] = None,
+        n_test_grps: Optional[int] = 1,
+    ) -> Dict[str, List]:
         """
         Assigns units to one control group and multiple test groups using the Thinning Design algorithm.
 
@@ -572,78 +584,93 @@ class ThinningDesign(Design):
             If treatment probability is not within [0, 1].
         """
 
-        # Ensure treatment probability is valid
         if not (0 <= self.treatment_probability <= 1):
             raise ValueError("Treatment probability must be between 0 and 1.")
 
-        # Calculate treatment probability per test group
-        treatment_probability_per_group = self.treatment_probability / n_test_grps
-        num_units = len(panel_data.wide_data.index)
-        num_timepoints = len(panel_data.wide_data.columns)
+        wide = panel_data.wide_data
+        ctx = prepare_constraint_context(
+            wide,
+            self.treatment_probability,
+            n_test_grps,
+            control_whitelist,
+            test_whitelist,
+            control_blacklist,
+            test_blacklist,
+            control_test_blacklist,
+        )
 
-        # Initialize variables for the thinning algorithm
-        w_i = np.zeros(num_timepoints)  # Initialize weight vector
-        alpha = 0.5 * np.log(4.0 * num_units / self.delta)
+        treatment_probability_per_group = self.treatment_probability / n_test_grps
+        num_timepoints = len(wide.columns)
+        w_i = np.zeros(num_timepoints)
+        alpha = 0.5 * np.log(4.0 * max(len(ctx.all_units), 1) / self.delta)
         value_plus = 2.0 * (1 - self.treatment_probability)
         value_minus = -2.0 * self.treatment_probability
 
-        # Initialize assignment groups
-        control_group = []
-        test_groups = {f"test_{i}": [] for i in range(n_test_grps)}
+        control_group = list(ctx.pinned_control)
+        test_groups = {f"test_{i}": list(ctx.pinned_test[f"test_{i}"]) for i in range(n_test_grps)}
 
-        # Normalize rows of the dataset
-        max_row_norm = np.max(np.linalg.norm(panel_data.wide_data.values, axis=1))
+        max_row_norm = np.max(np.linalg.norm(wide.values, axis=1))
+        if max_row_norm <= 0:
+            max_row_norm = 1.0
+        total_volume = float(wide.sum().sum())
+        if total_volume <= 0:
+            raise ValueError("Total KPI volume must be positive for thinning assignment.")
 
-        # Initialize shares
-        total_volume = panel_data.wide_data.sum().sum()
-        control_share = 0
-        test_shares = {f"test_{i}": 0 for i in range(n_test_grps)}
+        control_share = sum(float(wide.loc[u].sum()) / total_volume for u in control_group)
+        test_shares = {
+            f"test_{i}": sum(float(wide.loc[u].sum()) / total_volume for u in test_groups[f"test_{i}"])
+            for i in range(n_test_grps)
+        }
 
-        for unit, x in panel_data.wide_data.iterrows():
-            # Normalize the feature vector
-            x = x.values / max_row_norm
-            dot_product = x @ w_i
+        free_order = list(ctx.free_units)
+        self._rng.shuffle(free_order)
 
-            # Get the volume contribution of the current unit
-            unit_share = panel_data.wide_data.loc[unit].sum() / total_volume
+        for unit in free_order:
+            x = wide.loc[unit].values / max_row_norm
+            dot_product = float(x @ w_i)
+            unit_share = float(wide.loc[unit].sum()) / total_volume
 
-            # Assign units based on dot product and alpha threshold
             if dot_product > alpha:
                 if control_share + unit_share <= (1 - self.treatment_probability):
                     control_group.append(unit)
                     control_share += unit_share
                     w_i += value_minus * x * abs(dot_product / alpha)
             elif dot_product < -alpha:
-                # Assign to a test group based on size constraint (randomized)
-                randomized_groups = list(test_groups.keys())
-                random.shuffle(randomized_groups)  # Randomize the order of test groups
-                for group_key in randomized_groups:
+                group_keys = list(test_groups.keys())
+                self._rng.shuffle(group_keys)
+                for group_key in group_keys:
                     if test_shares[group_key] + unit_share <= treatment_probability_per_group:
                         test_groups[group_key].append(unit)
                         test_shares[group_key] += unit_share
                         w_i += value_plus * x * abs(dot_product / alpha)
                         break
             else:
-                # Assign based on probability p_i to one of the test groups (randomized)
                 p_i = treatment_probability_per_group * (1 - dot_product / alpha)
-                if np.random.rand() < p_i:
-                    randomized_groups = list(test_groups.keys())
-                    random.shuffle(randomized_groups)  # Randomize the order of test groups
-                    for group_key in randomized_groups:
+                if self._rng.random() < p_i:
+                    group_keys = list(test_groups.keys())
+                    self._rng.shuffle(group_keys)
+                    for group_key in group_keys:
                         if test_shares[group_key] + unit_share <= treatment_probability_per_group:
                             test_groups[group_key].append(unit)
                             test_shares[group_key] += unit_share
                             w_i += value_plus * x
                             break
-                else:
-                    if control_share + unit_share <= (1 - self.treatment_probability):
-                        control_group.append(unit)
-                        control_share += unit_share
-                        w_i += value_minus * x
+                elif control_share + unit_share <= (1 - self.treatment_probability):
+                    control_group.append(unit)
+                    control_share += unit_share
+                    w_i += value_minus * x
 
-        # Return the assignments
-        # print({"control": control_group, **test_groups})
-        return {"control": control_group, **test_groups}
+        assignment = freeze_assignment({"control": control_group, **test_groups})
+        validate_assignment_dict(
+            assignment,
+            ctx,
+            control_whitelist,
+            test_whitelist,
+            control_blacklist,
+            test_blacklist,
+            control_test_blacklist,
+        )
+        return assignment
 
     
 
@@ -784,14 +811,18 @@ class Rerandomization(Design):
     ):
         super().__init__(treatment_probability=treatment_probability)
         
-        # Initialize base randomizer (default is CompleteRandomization)
+        # Initialize base randomizer (default is BalancedRandomization)
         if base_randomizer_cls is None:
-            self.base_randomizer = CompleteRandomization(
-                treatment_probability=treatment_probability
+            self.base_randomizer = BalancedRandomization(
+                treatment_probability=treatment_probability,
+                random_state=base_randomizer_kwargs.get("random_state"),
             )
         else:
+            kwargs = dict(base_randomizer_kwargs)
+            if "random_state" not in kwargs:
+                kwargs["random_state"] = None
             self.base_randomizer = base_randomizer_cls(
-                treatment_probability=treatment_probability, **base_randomizer_kwargs
+                treatment_probability=treatment_probability, **kwargs
             )
 
         self.metric = imbalance_metric
@@ -867,13 +898,20 @@ class Rerandomization(Design):
         test_blacklist = test_blacklist or []
         control_test_blacklist = control_test_blacklist or []
 
+        base_name = type(self.base_randomizer).__name__.lower()
+        if not any(k in base_name for k in RERANDOMIZATION_IMBALANCE_BASES):
+            supported = ", ".join(sorted(RERANDOMIZATION_IMBALANCE_BASES))
+            raise ValueError(
+                f"Rerandomization base {type(self.base_randomizer).__name__!r} does not support "
+                f"imbalance evaluation. Supported bases: {supported}."
+            )
+
         imbalance_val = np.inf
         cur_iter = 0
         best_assignment = None
+        eval_period = treatment_period
 
-        # Iteratively assign units until imbalance is below the target or max iterations reached
         while (imbalance_val > self.target_imbalance) and (cur_iter < self.max_iter):
-            # Use the base randomizer to assign units
             panel = self.base_randomizer.assign(
                 panel_data=panel_data,
                 treatment_period=treatment_period,
@@ -883,60 +921,64 @@ class Rerandomization(Design):
                 control_blacklist=control_blacklist,
                 test_blacklist=test_blacklist,
                 control_test_blacklist=control_test_blacklist,
-                n_test_grps=n_test_grps
+                n_test_grps=n_test_grps,
             )
-            
-            # Calculate imbalance
-            if any(keyword in type(self.base_randomizer).__name__.lower() for keyword in ['greedy_match_markets','thinningdesign','completerandomization','stratifiedrandomization']):
-                cur_imbalance = 0.0
-                for test_group in [f'test_{i}' for i in range(n_test_grps)]:
-                    
-                    data = panel_data.wide_data.reset_index().melt(id_vars=panel_data.wide_data.index.name)
-                    
-                    # Trim the panel dataset with the test and control geos identified from the desing
-                    trmd_data = data[data[data.columns[0]].isin(panel[test_group] + panel['control'])]
-                    
-                    # Set treatment period to entire timeline if None
-                    if treatment_period is None:
-                        treatment_period = TimePeriod(panel_data.wide_data.columns.min(), panel_data.wide_data.columns.max())
-
-                    # Create panel data with just the test and control geos for calculating imbalance
-                    imbalance_panel_data = long_df_to_paneldataset(
-                        trmd_data, 
-                        trmd_data.columns[1], 
-                        trmd_data.columns[0], 
-                        trmd_data.columns[2], 
-                        panel[test_group],
-                        [treatment_period.start] * len(panel[test_group]),
-                        [treatment_period.end] * len(panel[test_group])
-                    )
-
-                    # Fill any missing data with 0
-                    imbalance_panel_data.wide_data = imbalance_panel_data.wide_data / np.max(np.linalg.norm(imbalance_panel_data.wide_data.values, axis=1))
-                    imbalance_panel_data.wide_data = imbalance_panel_data.wide_data.fillna(0)
-
-                    cur_imbalance += imbalance(imbalance_panel_data, metric=self.metric)
-                    
-
-            # Update if current assignment has lower imbalance
-            print(cur_imbalance, imbalance_val)
+            cur_imbalance = _compute_assignment_imbalance(
+                panel_data,
+                panel,
+                n_test_grps,
+                eval_period,
+                self.metric,
+            )
             if cur_imbalance < imbalance_val:
                 best_assignment = panel
                 imbalance_val = cur_imbalance
-
             cur_iter += 1
-
-            # Break early if target imbalance is reached
             if imbalance_val <= self.target_imbalance:
-                print(f"Target imbalance reached in {cur_iter} iterations with imbalance {imbalance_val}")
                 break
 
-        # Log if maximum iterations are reached without reaching the target
-        if cur_iter >= self.max_iter:
-            print(f"Maximum iterations reached with imbalance {imbalance_val}")
-
-        # Return the best assignment found
+        if best_assignment is None:
+            raise RuntimeError(
+                f"Rerandomization failed after {self.max_iter} iterations; "
+                f"no valid assignment produced (final imbalance {imbalance_val})."
+            )
         return best_assignment
+
+
+def _compute_assignment_imbalance(
+    panel_data: PanelDataset,
+    assignment: Dict[str, List],
+    n_test_grps: int,
+    treatment_period: Optional[TimePeriod],
+    metric: str,
+) -> float:
+    """Sum imbalance across test arms vs shared control."""
+    if treatment_period is None:
+        treatment_period = TimePeriod(
+            panel_data.wide_data.columns.min(), panel_data.wide_data.columns.max()
+        )
+    wide_reset = panel_data.wide_data.reset_index()
+    unit_col = wide_reset.columns[0]
+    data = wide_reset.melt(id_vars=unit_col, var_name="time", value_name="value")
+    total = 0.0
+    for test_group in [f"test_{i}" for i in range(n_test_grps)]:
+        units = assignment[test_group] + assignment["control"]
+        trmd_data = data[data[unit_col].isin(units)]
+        imbalance_panel_data = long_df_to_paneldataset(
+            trmd_data,
+            "time",
+            unit_col,
+            "value",
+            assignment[test_group],
+            [treatment_period.start] * len(assignment[test_group]),
+            [treatment_period.end] * len(assignment[test_group]),
+        )
+        norm = np.max(np.linalg.norm(imbalance_panel_data.wide_data.values, axis=1))
+        if norm > 0:
+            imbalance_panel_data.wide_data = imbalance_panel_data.wide_data / norm
+        imbalance_panel_data.wide_data = imbalance_panel_data.wide_data.fillna(0)
+        total += imbalance(imbalance_panel_data, metric=metric)
+    return total
 
     
 
@@ -973,11 +1015,14 @@ class greedy_match_markets(Design):
 
     """
 
-    def __init__(self, func_to_optimize: Optional[str] = 'corr', treatment_probability: Optional[float] = 0.5, split_type: Optional[str] = 'kpi_share'):
-        """
-
-        """
-        super().__init__(treatment_probability)
+    def __init__(
+        self,
+        func_to_optimize: Optional[str] = "corr",
+        treatment_probability: Optional[float] = 0.5,
+        split_type: Optional[str] = "kpi_share",
+        random_state: Optional[int] = 42,
+    ):
+        super().__init__(treatment_probability, random_state=random_state)
         self.func_to_optimize = func_to_optimize
         self.treatment_probability = treatment_probability
         self.split_type = split_type
@@ -994,16 +1039,18 @@ class greedy_match_markets(Design):
         """
         raise Exception()
 
-    def assign(self,
+    def assign(
+        self,
         panel_data: PanelDataset,
         treatment_period: Optional[TimePeriod] = None,
         pre_treatment_period: Optional[TimePeriod] = None,
-        control_whitelist: Optional[List[Unit]] = [],
-        test_whitelist: Optional[List[Unit]] = [],
-        control_blacklist: Optional[List[Unit]] = [],
-        test_blacklist: Optional[List[Unit]] = [],
-        control_test_blacklist: Optional[List[Unit]] = [],
-        n_test_grps: Optional[int] = 1) -> np.ndarray:
+        control_whitelist: Optional[List[Unit]] = None,
+        test_whitelist: Optional[List[Unit]] = None,
+        control_blacklist: Optional[List[Unit]] = None,
+        test_blacklist: Optional[List[Unit]] = None,
+        control_test_blacklist: Optional[List[Unit]] = None,
+        n_test_grps: Optional[int] = 1,
+    ) -> Dict[str, List]:
     
         """
         Assigns DMAs to test and control groups based on predefined rules and optimizations.
@@ -1035,12 +1082,24 @@ class greedy_match_markets(Design):
             Updated panel dataset with the assigned test and control groups.
         """
 
-        self.control_blacklist = control_blacklist
-        self.control_whitelist = control_whitelist
-        self.test_blacklist = test_blacklist
-        self.test_whitelist = test_whitelist
-        self.control_test_blacklist = control_test_blacklist
-        self.n_test_grps = n_test_grps
+        cw, tw, cb, tb, ctb = freeze_constraint_lists(
+            control_whitelist,
+            test_whitelist,
+            control_blacklist,
+            test_blacklist,
+            control_test_blacklist,
+        )
+        wide = panel_data.wide_data
+        ctx = prepare_constraint_context(
+            wide,
+            self.treatment_probability,
+            n_test_grps,
+            cw,
+            tw,
+            cb,
+            tb,
+            ctb,
+        )
 
         # Function to compute the correlation between control and test groups.
         def corr_func(df, x, y):
@@ -1050,55 +1109,52 @@ class greedy_match_markets(Design):
         def dtw_distance(df, x, y):
             return round(dtw.distance(df[x].sum(axis=1).values, df[y].sum(axis=1).values))
 
-        normalized_data = panel_data.wide_data.copy()
-        normalized_data = normalized_data / np.max(np.linalg.norm(normalized_data.values, axis=1))
+        normalized_data = wide.copy()
+        row_norm = np.max(np.linalg.norm(normalized_data.values, axis=1))
+        if row_norm > 0:
+            normalized_data = normalized_data / row_norm
         data = normalized_data.reset_index().melt(id_vars=normalized_data.index.name)
-        
-        if treatment_period is None:
-            treatment_period = TimePeriod(normalized_data.columns.min(), normalized_data.columns.max())
-        
-        sales_df = panel_data.wide_data.T.copy()
-        dma_list = sales_df.columns.tolist()
-        # matched_market_pairs = []
-        
-        control_test_blacklist += [dma for dma in test_blacklist if dma in control_blacklist]
-        dma_list = list(set(dma_list) - set(control_test_blacklist))
-        np.random.shuffle(dma_list)
 
-        # Initialize groups and shares
+        if treatment_period is None:
+            treatment_period = TimePeriod(
+                normalized_data.columns.min(), normalized_data.columns.max()
+            )
+
+        sales_df = wide.T.copy()
+
         r = {
-            "control": [],
-            "control_share": [0],  # Initialize with 0 share
+            "control": list(ctx.pinned_control),
+            "control_share": [0],
             "test_share": 0,
-            "test_grps_share": [0] * n_test_grps,  # Initialize with 0 for each test group
+            "test_grps_share": [0] * n_test_grps,
         }
         for i in range(n_test_grps):
-            r[f"test_{i}"] = []  # Initialize test groups
+            r[f"test_{i}"] = list(ctx.pinned_test[f"test_{i}"])
 
-        always_control = control_whitelist if len(control_whitelist + control_blacklist) == panel_data.num_units else []
-        always_test = test_whitelist if len(test_whitelist + test_blacklist) == panel_data.num_units else []
-        
-        
-        control_list = list(set(dma_list) - set(control_blacklist + always_test))
-        np.random.shuffle(control_list)
-        r['control'] = [control_list[0]] if not control_whitelist else [control_whitelist[0]]
-        
-        test_list = list(set(dma_list) - set(test_blacklist + always_control))
-        np.random.shuffle(test_list)
-        
+        free_pool = list(ctx.free_units)
+        self._rng.shuffle(free_pool)
+        pool_i = 0
+        if not r["control"]:
+            if pool_i >= len(free_pool):
+                raise ValueError("No units available to seed control group.")
+            r["control"] = [free_pool[pool_i]]
+            pool_i += 1
         for i in range(n_test_grps):
-            r[f'test_{i}'] = [test_whitelist[i]] if i < len(test_whitelist) else [test_list[i]]
+            if not r[f"test_{i}"]:
+                if pool_i >= len(free_pool):
+                    raise ValueError(f"No units available to seed test_{i}.")
+                r[f"test_{i}"] = [free_pool[pool_i]]
+                pool_i += 1
 
+        assigned = set(r["control"]) | {
+            u for i in range(n_test_grps) for u in r[f"test_{i}"]
+        }
+        dma_list = [
+            u for u in ctx.all_units if u not in ctx.excluded and u not in assigned
+        ]
+        self._rng.shuffle(dma_list)
 
-        # Initialize best score    
-        # ref_aa_score = -np.inf
-        np.random.shuffle(dma_list)
-        
         for c in dma_list:
-            # Skip DMAs that are explicitly blacklisted for both control and test groups
-            if c in control_test_blacklist:
-                continue
-
             # Skip DMAs already assigned
             if c in r["control"] or any(c in r[f"test_{i}"] for i in range(n_test_grps)):
                 continue
@@ -1120,7 +1176,7 @@ class greedy_match_markets(Design):
             ])
 
             # Handle Control Whitelist with Size Constraint
-            if c in control_whitelist:
+            if c in cw:
                 control_share = r["control_share"][0] + sales_df[c].sum(axis=0) / sales_df.sum(axis=1).sum()
                 if control_share <= 1 - self.treatment_probability:  # Ensure size constraint is respected
                     temp_control = r["control"] + [c]
@@ -1145,7 +1201,7 @@ class greedy_match_markets(Design):
 
             # Handle Test Whitelist with Size Constraint
             for i in range(n_test_grps):
-                if c in test_whitelist:
+                if c in tw:
                     test_share = r["test_grps_share"][i] + sales_df[c].sum(axis=0) / sales_df.sum(axis=1).sum()
                     if test_share <= self.treatment_probability/n_test_grps:  # Ensure size constraint is respected
                         temp_control = r["control"]
@@ -1170,7 +1226,7 @@ class greedy_match_markets(Design):
                             temp_r = temp_test_groups[i]
 
             # Handle Non-Whitelisted DMAs (Regular Optimization)
-            if c not in control_whitelist and c not in test_whitelist:
+            if c not in cw and c not in tw:
                 # Try assigning to control group
                 control_share = r["control_share"][0] + sales_df[c].sum(axis=0) / sales_df.sum(axis=1).sum()
                 if control_share <= 1 - self.treatment_probability:
@@ -1236,10 +1292,12 @@ class greedy_match_markets(Design):
             ]
             r["test_share"] = sum(r["test_grps_share"])
 
-        # Construct and return the result
-        result = {"control": r["control"], **{f"test_{i}": r[f"test_{i}"] for i in range(n_test_grps)}}
-        print(r)
-        return result
+        result = {
+            "control": r["control"],
+            **{f"test_{i}": r[f"test_{i}"] for i in range(n_test_grps)},
+        }
+        validate_assignment_dict(result, ctx, cw, tw, cb, tb, ctb)
+        return freeze_assignment(result)
 
 
 

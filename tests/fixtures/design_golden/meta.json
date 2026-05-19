@@ -1,0 +1,11 @@
+{
+  "seed": 42,
+  "n_units": 12,
+  "n_times": 50,
+  "max_iter": 8,
+  "group_labels": [
+    "control",
+    "test_0"
+  ],
+  "note": "Assignment goldens include group_labels + assignments maps."
+}

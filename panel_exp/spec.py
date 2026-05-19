@@ -1,0 +1,210 @@
+"""
+Experiment and design specification contracts.
+
+Typed boundaries for geo-panel experiments. Production-facing entry points
+should accept these specs rather than inferring critical fields silently.
+"""
+
+from __future__ import annotations
+
+import hashlib
+import json
+from dataclasses import asdict, dataclass, field
+from enum import Enum
+from typing import Any, Dict, List, Optional, Union
+
+from panel_exp.panel_data import TimePeriod
+
+
+class InterferenceAssumption(str, Enum):
+    NO_INTERFERENCE = "no_interference"
+    PARTIAL_INTERFERENCE = "partial_interference"
+    UNKNOWN = "unknown"
+
+
+class DesignMethod(str, Enum):
+    BALANCED_RANDOMIZATION = "balanced_randomization"
+    COMPLETE_RANDOMIZATION = "complete_randomization"
+    STRATIFIED_RANDOMIZATION = "stratified_randomization"
+    THINNING = "thinning"
+    RERANDOMIZATION = "rerandomization"
+    GREEDY_MATCH = "greedy_match"
+    QUICKBLOCK = "quickblock"
+    MATCHED_PAIR = "matched_pair"
+
+
+@dataclass(frozen=True)
+class DesignSpec:
+    """Design-time specification (randomization, constraints, periods)."""
+
+    experiment_id: str
+    outcome_column: str
+    unit_column: str
+    time_column: str
+    pre_period: TimePeriod
+    experiment_period: TimePeriod
+    design_method: DesignMethod
+    treatment_probability: float = 0.5
+    n_test_groups: int = 1
+    test_whitelist: tuple = ()
+    control_whitelist: tuple = ()
+    test_blacklist: tuple = ()
+    control_blacklist: tuple = ()
+    control_test_blacklist: tuple = ()
+    random_state: int = 42
+    alpha: float = 0.05
+    assumptions: Dict[str, Any] = field(default_factory=dict)
+    interference: InterferenceAssumption = InterferenceAssumption.UNKNOWN
+
+    def __post_init__(self) -> None:
+        if not self.experiment_id or not str(self.experiment_id).strip():
+            raise ValueError("experiment_id is required and must be non-empty.")
+        for col in (self.outcome_column, self.unit_column, self.time_column):
+            if not col or not str(col).strip():
+                raise ValueError(f"Column name is required; got {col!r}.")
+        if self.pre_period is None or self.experiment_period is None:
+            raise ValueError("pre_period and experiment_period are required.")
+        if not (0.0 < self.treatment_probability < 1.0):
+            raise ValueError(
+                f"treatment_probability must be in (0, 1); got {self.treatment_probability}."
+            )
+        if self.n_test_groups < 1:
+            raise ValueError(f"n_test_groups must be >= 1; got {self.n_test_groups}.")
+        if not (0.0 < self.alpha < 1.0):
+            raise ValueError(f"alpha must be in (0, 1); got {self.alpha}.")
+        overlap = set(self.test_whitelist) & set(self.control_whitelist)
+        if overlap:
+            raise ValueError(
+                f"Units cannot be on both test and control whitelist: {sorted(overlap)}"
+            )
+        bl_overlap = set(self.test_blacklist) & set(self.control_blacklist)
+        if bl_overlap:
+            raise ValueError(
+                f"Units cannot be on both test and control blacklist: {sorted(bl_overlap)}"
+            )
+
+    @property
+    def confidence_level(self) -> float:
+        return 1.0 - self.alpha
+
+    def content_hash(self) -> str:
+        payload = asdict(self)
+        payload["pre_period"] = {
+            "start": _serialize_time(self.pre_period.start),
+            "end": _serialize_time(self.pre_period.end),
+        }
+        payload["experiment_period"] = {
+            "start": _serialize_time(self.experiment_period.start),
+            "end": _serialize_time(self.experiment_period.end),
+        }
+        payload["design_method"] = self.design_method.value
+        payload["interference"] = self.interference.value
+        blob = json.dumps(payload, sort_keys=True, default=str)
+        return hashlib.sha256(blob.encode("utf-8")).hexdigest()[:16]
+
+
+@dataclass(frozen=True)
+class ExperimentSpec(DesignSpec):
+    """
+    Full experiment specification including analysis assumptions.
+
+    Extends DesignSpec with analysis-facing fields. Design and analysis code
+    should require explicit periods, alpha, and interference where decisions
+    depend on them.
+    """
+
+    inference_method: Optional[str] = None
+    estimator: Optional[str] = None
+
+    def __post_init__(self) -> None:
+        super().__post_init__()
+        if self.interference == InterferenceAssumption.UNKNOWN:
+            # Record warning in assumptions; callers may block on policy.
+            object.__setattr__(
+                self,
+                "assumptions",
+                {
+                    **dict(self.assumptions),
+                    "interference_warning": (
+                        "interference is unknown; geo media experiments may violate "
+                        "no-interference unless explicitly validated."
+                    ),
+                },
+            )
+
+
+def _serialize_time(t: Any) -> Any:
+    if t is None:
+        return None
+    if hasattr(t, "isoformat"):
+        return t.isoformat()
+    return t
+
+
+def class_name_to_design_method(class_name: str) -> DesignMethod:
+    """Map design class name (lowercase) to DesignMethod enum."""
+    key = class_name.lower().replace(" ", "")
+    mapping = {
+        "balancedrandomization": DesignMethod.BALANCED_RANDOMIZATION,
+        "completerandomization": DesignMethod.COMPLETE_RANDOMIZATION,
+        "stratifiedrandomization": DesignMethod.STRATIFIED_RANDOMIZATION,
+        "thinningdesign": DesignMethod.THINNING,
+        "rerandomization": DesignMethod.RERANDOMIZATION,
+        "greedy_match_markets": DesignMethod.GREEDY_MATCH,
+        "greedymatchmarkets": DesignMethod.GREEDY_MATCH,
+        "quickblock": DesignMethod.QUICKBLOCK,
+        "matchedpair": DesignMethod.MATCHED_PAIR,
+    }
+    for fragment, method in mapping.items():
+        if fragment in key:
+            return method
+    raise ValueError(
+        f"Cannot map design class {class_name!r} to DesignMethod; "
+        f"known patterns: {list(mapping.keys())}"
+    )
+
+
+def spec_from_geo_design(
+    experiment_id: str,
+    outcome_column: str,
+    unit_column: str,
+    time_column: str,
+    pre_period: TimePeriod,
+    experiment_period: TimePeriod,
+    design_method: Union[DesignMethod, str],
+    *,
+    random_state: int = 42,
+    alpha: float = 0.05,
+    treatment_probability: float = 0.5,
+    n_test_groups: int = 1,
+    test_whitelist: Optional[List] = None,
+    control_whitelist: Optional[List] = None,
+    test_blacklist: Optional[List] = None,
+    control_blacklist: Optional[List] = None,
+    control_test_blacklist: Optional[List] = None,
+    interference: InterferenceAssumption = InterferenceAssumption.UNKNOWN,
+    **assumptions: Any,
+) -> DesignSpec:
+    """Build a DesignSpec from geo experiment parameters."""
+    if isinstance(design_method, str):
+        design_method = class_name_to_design_method(design_method)
+    return DesignSpec(
+        experiment_id=experiment_id,
+        outcome_column=outcome_column,
+        unit_column=unit_column,
+        time_column=time_column,
+        pre_period=pre_period,
+        experiment_period=experiment_period,
+        design_method=design_method,
+        treatment_probability=treatment_probability,
+        n_test_groups=n_test_groups,
+        test_whitelist=tuple(test_whitelist or ()),
+        control_whitelist=tuple(control_whitelist or ()),
+        test_blacklist=tuple(test_blacklist or ()),
+        control_blacklist=tuple(control_blacklist or ()),
+        control_test_blacklist=tuple(control_test_blacklist or ()),
+        random_state=random_state,
+        alpha=alpha,
+        assumptions=dict(assumptions),
+        interference=interference,
+    )

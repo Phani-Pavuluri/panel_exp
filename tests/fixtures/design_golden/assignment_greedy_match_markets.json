@@ -1,0 +1,19 @@
+{
+  "assignments": {
+    "control": [
+      "u1",
+      "u10",
+      "u2",
+      "u3",
+      "u6"
+    ],
+    "test_0": [
+      "u7",
+      "u8"
+    ]
+  },
+  "group_labels": [
+    "control",
+    "test_0"
+  ]
+}
