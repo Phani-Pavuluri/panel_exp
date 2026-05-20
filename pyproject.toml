@@ -28,6 +28,7 @@ tqdm = "^4.66.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0"
+ruff = "^0.8"
 
 [tool.poetry.group.docs.dependencies]
 sphinx = "^7.4.7"
