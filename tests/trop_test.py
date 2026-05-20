@@ -6,6 +6,34 @@ import pandas as pd
 from panel_exp.panel_data import PanelDataset, TimePeriod
 from panel_exp.methods.triply_robust_est import TROP
 
+# Global stability_first tuning rejects configs when post-period treated counterfactuals
+# vary by ~1e-5 on this compact panel (default flat_cf_rel_tol=1e-5). Tests pin lambdas
+# via disable_internal_tuning; tuning-path tests use a slightly tighter test tolerance.
+_TEST_FLAT_CF_REL_TOL = 1e-10
+
+
+def _kwargs_pinned_lambdas(lu=0.1, lt=0.1, ln=0.05, **extra):
+    """Fixed lambdas for global-mode smoke/recovery tests (skip internal grid search)."""
+    return dict(
+        lambda_unit_grid=[lu],
+        lambda_time_grid=[lt],
+        lambda_nuclear_grid=[ln],
+        disable_internal_tuning=True,
+        cv_max_cycles=1,
+        max_cv_placebos=2,
+        **extra,
+    )
+
+
+def _kwargs_global_stability_first(**extra):
+    """Global mode with stability_first tuning on the compact test panel."""
+    return dict(
+        cv_max_cycles=1,
+        max_cv_placebos=2,
+        flat_cf_rel_tol=_TEST_FLAT_CF_REL_TOL,
+        **extra,
+    )
+
 
 def _make_small_panel(
     n_t=25,
@@ -62,14 +90,7 @@ def _make_small_panel(
 def test_trop_global_mode_smoke():
     """Global mode runs and produces expected outputs."""
     pds = _make_small_panel()
-    trop = TROP(
-        method="global",
-        lambda_unit_grid=[0.1],
-        lambda_time_grid=[0.1],
-        lambda_nuclear_grid=[0.05],
-        cv_max_cycles=1,
-        max_cv_placebos=2,
-    )
+    trop = TROP(method="global", **_kwargs_pinned_lambdas())
     trop.fit_data(pds)
     wrapper = trop.fit_model()
 
@@ -138,14 +159,7 @@ def test_trop_local_mode_smoke():
 def test_trop_global_positive_effect_recovery():
     """Global mode recovers direction of a known positive effect."""
     pds = _make_small_panel(effect=8.0, noise_scale=1.0)
-    trop = TROP(
-        method="global",
-        lambda_unit_grid=[0.1],
-        lambda_time_grid=[0.1],
-        lambda_nuclear_grid=[0.05],
-        cv_max_cycles=1,
-        max_cv_placebos=2,
-    )
+    trop = TROP(method="global", **_kwargs_pinned_lambdas())
     trop.fit_data(pds)
     trop.fit_model()
     summary = trop.summarize_effects()
@@ -178,14 +192,7 @@ def test_trop_period_effects_sanity():
     """Period effects behave sensibly around treatment boundary."""
     treat_start = 12
     pds = _make_small_panel(n_t=25, treat_start=treat_start, effect=6.0, noise_scale=1.0)
-    trop = TROP(
-        method="global",
-        lambda_unit_grid=[0.1],
-        lambda_time_grid=[0.1],
-        lambda_nuclear_grid=[0.05],
-        cv_max_cycles=1,
-        max_cv_placebos=2,
-    )
+    trop = TROP(method="global", **_kwargs_pinned_lambdas())
     trop.fit_data(pds)
     trop.fit_model()
     period_df = trop.period_effects()
@@ -200,7 +207,6 @@ def test_trop_period_effects_sanity():
         period_vals = list(periods)
 
     post_mask = np.array([p >= treat_start for p in period_vals]) if period_vals else np.array([])
-    pre_mask = ~post_mask if len(post_mask) > 0 else np.array([])
 
     if post_mask.any():
         post_incremental = period_df.iloc[post_mask]["incremental"]
@@ -255,16 +261,13 @@ def test_trop_global_missing_data():
     wide = pds.wide_data.copy()
     wide.iloc[2, 3] = np.nan
     wide.iloc[3, 7] = np.nan
-    pds = PanelDataset(wide, [pds.treated_periods[0]], list(pds.treated_units))
-
-    trop = TROP(
-        method="global",
-        lambda_unit_grid=[0.1],
-        lambda_time_grid=[0.1],
-        lambda_nuclear_grid=[0.05],
-        cv_max_cycles=1,
-        max_cv_placebos=2,
+    pds = PanelDataset(
+        wide,
+        treated_periods=list(pds.treated_periods),
+        treated_units=list(pds.treated_units),
     )
+
+    trop = TROP(method="global", **_kwargs_pinned_lambdas())
     trop.fit_data(pds)
     trop.fit_model()
 
@@ -306,7 +309,7 @@ def test_trop_local_missing_data():
 def test_trop_inference_override_global_placebo():
     """global + inference_mode=placebo reports placebo."""
     pds = _make_small_panel()
-    trop = TROP(method="global", inference_mode="placebo", cv_max_cycles=1, max_cv_placebos=2)
+    trop = TROP(method="global", inference_mode="placebo", **_kwargs_global_stability_first())
     trop.fit_data(pds)
     trop.fit_model()
     inf = trop.inference_summary()
@@ -323,8 +326,7 @@ def test_trop_inference_override_global_bootstrap():
         method="global",
         inference_mode="bootstrap",
         n_bootstrap=10,
-        cv_max_cycles=1,
-        max_cv_placebos=2,
+        **_kwargs_global_stability_first(),
     )
     trop.fit_data(pds)
     trop.fit_model()
@@ -386,8 +388,7 @@ def test_trop_bootstrap_fallback_honesty():
         method="global",
         inference_mode="bootstrap",
         n_bootstrap=10,
-        cv_max_cycles=1,
-        max_cv_placebos=2,
+        **_kwargs_global_stability_first(),
     )
     trop.fit_data(pds)
     trop.fit_model()
@@ -422,7 +423,7 @@ def test_trop_cv_mode_override():
 def test_trop_cv_mode_global_obs_routes_through_global_scorer():
     """method=global default cv_mode=global_obs uses _cv_score_global_obs during tuning."""
     pds = _make_small_panel()
-    trop = TROP(method="global", cv_max_cycles=1, max_cv_placebos=2)
+    trop = TROP(method="global", **_kwargs_global_stability_first())
     trop.fit_data(pds)
     trop._validate_panel()
     trop._build_assignment_masks()
@@ -503,7 +504,7 @@ def test_trop_cv_mode_explicit_global_obs_on_local_estimator():
 def test_trop_cv_mode_explicit_local_obs_on_global_estimator():
     """Global estimator with cv_mode=local_obs uses local scorer."""
     pds = _make_small_panel()
-    trop = TROP(method="global", cv_mode="local_obs", cv_max_cycles=1, max_cv_placebos=2)
+    trop = TROP(method="global", cv_mode="local_obs", **_kwargs_global_stability_first())
     trop.fit_data(pds)
     trop._validate_panel()
     trop._build_assignment_masks()
