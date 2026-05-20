@@ -8,6 +8,7 @@ import numpy as np
 
 from panel_exp.inference.registry import InferenceModeSpec
 from panel_exp.inference_result import InferenceResult, IntervalType
+from panel_exp.method_metadata import merge_maturity_into_results
 
 
 def treatment_window_point_effect(analyzer: Any) -> Optional[float]:
@@ -42,6 +43,7 @@ def sync_inference_metadata(analyzer: Any, spec: InferenceModeSpec) -> None:
         if existing.path_interval_type is None and spec.path_interval_type is not None:
             existing.path_interval_type = spec.path_interval_type
         existing.attach_to_results(analyzer.results)
+        merge_maturity_into_results(analyzer.results, analyzer, spec.name)
         return
 
     path_type = spec.path_interval_type
@@ -56,6 +58,8 @@ def sync_inference_metadata(analyzer: Any, spec: InferenceModeSpec) -> None:
             analyzer.inference_result = InferenceResult.unavailable(
                 method=spec.name, alpha=alpha, reason=reason
             )
+            analyzer.inference_result.attach_to_results(analyzer.results)
+            merge_maturity_into_results(analyzer.results, analyzer, spec.name)
             return
         if analyzer.results.get("placebo_unsupported"):
             reason = str(analyzer.results["placebo_unsupported"])
@@ -78,3 +82,4 @@ def sync_inference_metadata(analyzer: Any, spec: InferenceModeSpec) -> None:
 
     analyzer.inference_result = ir
     ir.attach_to_results(analyzer.results)
+    merge_maturity_into_results(analyzer.results, analyzer, spec.name)
