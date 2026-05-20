@@ -51,8 +51,6 @@ class MatchedPair(Design):
         """
         self.X = X
         s = pinv(np.cov(X, rowvar=0))
-        n = len(X)
-        n2 = n / 2
         D = squareform(pdist(X, "mahalanobis", VI=s))
         self.blocks = [
             [a, b] for a, b in nx.matching.max_weight_matching(nx.Graph(-D), True)
@@ -160,7 +158,6 @@ class MatchedPair(Design):
         # access the wide data frame from panel_data
         df = panel_data.wide_df
         nunits = df.shape[0]
-        ntime = df.shape[1]
 
         covariate_matrix = panel_data.wide_data.values
 

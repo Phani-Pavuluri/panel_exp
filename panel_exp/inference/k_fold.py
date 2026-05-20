@@ -127,7 +127,6 @@ def kfold(pds
         k = pds.num_timepoints-pds.num_treated_time_periods[0]
 
     start = pds.treated_start_idxs[0]
-    end = pds.treated_end_idxs[0]
 
     ests = np.zeros((len(pds.treated_units), pds.num_treated_time_periods[0], 3 )) 
 
@@ -153,7 +152,6 @@ def kfold(pds
 
 
 from typing import Any, List, Tuple, Optional, Union
-import numpy as np
 import pandas as pd
 from scipy.stats import t
 import multiprocessing as mp
@@ -225,8 +223,7 @@ def panel_timeseries_kfold(
         k = pre_t
 
     start = pds.treated_start_idxs[0]
-    end = pds.treated_end_idxs[0]
-    
+
     # Calculate holdout size for time series
     holdout = int(np.floor(np.min([pre_t / k, pds.num_treated_time_periods[0]])))
     if holdout <= 0:

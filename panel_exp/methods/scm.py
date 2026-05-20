@@ -128,8 +128,7 @@ class SyntheticControl(ImpactAnalyzer):
                         method=self.method,
                         bounds=simplex_bounds,
                         constraints={'type':'eq', 'fun': lambda x: np.sum(x.reshape(control.shape[1], test.shape[0]), axis=0) - 1} )
-            status = res.status
-
+            _status = res.status
 
         self.weights = res.x
 

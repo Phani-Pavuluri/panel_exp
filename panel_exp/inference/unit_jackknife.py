@@ -1,11 +1,11 @@
-from typing import Callable, Dict
+from typing import Callable, Dict, Optional
 
 # from ...panel_data import PanelDataset
 from panel_exp.panel_data import PanelDataset, TimePeriod
+import copy
+
 import numpy as np
 import scipy.stats
-from typing import Callable, Optional
-import copy
 
 
 def unit_jk(
@@ -64,9 +64,6 @@ def unit_jk(
     if variation == 2:
         residuals = np.array(residuals)
         return np.percentile(residuals, 1 - alpha, axis=0)
-
-
-from typing import Callable, Optional, Callable, Dict
 
 
 def resolve_end_period(time_period):

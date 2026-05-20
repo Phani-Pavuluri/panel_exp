@@ -200,7 +200,6 @@ def test_trop_period_effects_sanity():
         period_vals = list(periods)
 
     post_mask = np.array([p >= treat_start for p in period_vals]) if period_vals else np.array([])
-    pre_mask = ~post_mask if len(post_mask) > 0 else np.array([])
 
     if post_mask.any():
         post_incremental = period_df.iloc[post_mask]["incremental"]

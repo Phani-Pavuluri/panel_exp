@@ -661,9 +661,7 @@ class PanelDataset:
         -------
         None
         """
-        import matplotlib.pyplot as plt
         import matplotlib.patches as mpatches
-        
 
         fig, axs = plt.subplots(1,1,figsize=figsize)
         self.wide_data.T[self.treated_units].plot( ax=axs, color='red', label='Test Unit/s', legend=legend )
@@ -695,9 +693,7 @@ class PanelDataset:
         None
         """
         assert agg_func in ['sum', 'mean'], "agg_func must be either 'sum' or 'mean'"
-        
-        import matplotlib.pyplot as plt
-        
+
         if agg_func == 'sum':
             pre_test_control = self.wide_data.T[self.control_units][:self.treated_start_idxs[0]].sum(axis=1)
             pre_test_treated = self.wide_data.T[self.treated_units][:self.treated_start_idxs[0]].sum(axis=1)

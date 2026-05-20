@@ -31,8 +31,6 @@ def test_standardize_one():
 def test_standardize_two():
     # test if properly standarizes pandas df columnwise
 
-    import pandas as pd
-
     data_c1 = np.random.normal(100, 10, 1000)
     data_c2 = np.random.normal(150, 10, 1000)
 

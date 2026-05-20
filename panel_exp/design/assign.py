@@ -1161,7 +1161,7 @@ class greedy_match_markets(Design):
 
             best_score = -np.inf
             best_assignment = None
-            temp_r = None  # Placeholder for the best temporary group assignment
+            _temp_r = None  # Placeholder for the best temporary group assignment
 
             # Calculate the current overall score for the entire setup
             current_score = np.mean([
@@ -1197,7 +1197,7 @@ class greedy_match_markets(Design):
                     if new_score > current_score and new_score > best_score:
                         best_score = new_score
                         best_assignment = "control"
-                        temp_r = temp_control
+                        _temp_r = temp_control
 
             # Handle Test Whitelist with Size Constraint
             for i in range(n_test_grps):
@@ -1223,7 +1223,7 @@ class greedy_match_markets(Design):
                         if new_score > current_score and new_score > best_score:
                             best_score = new_score
                             best_assignment = f"test_{i}"
-                            temp_r = temp_test_groups[i]
+                            _temp_r = temp_test_groups[i]
 
             # Handle Non-Whitelisted DMAs (Regular Optimization)
             if c not in cw and c not in tw:
@@ -1248,7 +1248,6 @@ class greedy_match_markets(Design):
                     if new_score > current_score and new_score > best_score:
                         best_score = new_score
                         best_assignment = "control"
-                        temp_r = temp_control
 
                 # Try assigning to test groups
                 for i in range(n_test_grps):
@@ -1273,7 +1272,6 @@ class greedy_match_markets(Design):
                         if new_score > current_score and new_score > best_score:
                             best_score = new_score
                             best_assignment = f"test_{i}"
-                            temp_r = temp_test_groups[i]
 
             # Apply the best assignment
             if best_assignment == "control":

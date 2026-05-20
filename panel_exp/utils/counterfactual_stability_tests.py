@@ -592,7 +592,7 @@ def run_control_heterogeneity_diagnostics(
         raise ValueError(f"{ctx}: shock_end must be after shock_start (shock_start_idx={shock_start_idx}, shock_end_idx={shock_end_idx})")
     pre_cols = wide.columns[:shock_start_idx]
     shock_cols = wide.columns[shock_start_idx:shock_end_idx]
-    post_cols = wide.columns[shock_end_idx:]
+    _post_cols = wide.columns[shock_end_idx:]
     if len(pre_cols) < 4:
         raise ValueError(f"{ctx}: need at least 4 pre-shock periods; got {len(pre_cols)}")
     if len(shock_cols) < 2:

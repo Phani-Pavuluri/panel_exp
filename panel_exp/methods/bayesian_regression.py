@@ -28,22 +28,19 @@ import numpy as np
 from jax import random 
 import numpyro
 import pandas as pd
-import numpy as np
 
 import jax.random as jrandom
 from scipy.stats import norm
 from numpyro import sample, plate
-import numpyro
 import numpyro.distributions as dist
-from numpyro.infer import MCMC, NUTS
 
 from functools import partial
 from typing import Callable, Optional 
 from panel_exp.panel_data import PanelDataset
 from panel_exp.impact import ImpactAnalyzer
-from scipy import stats 
-from numpyro.infer import MCMC, NUTS, Predictive
+from scipy import stats
 from numpyro.handlers import substitute, trace
+from numpyro.infer import MCMC, NUTS, Predictive
 
 
 class standardize:

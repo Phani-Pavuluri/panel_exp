@@ -542,7 +542,7 @@ class DID(ImpactAnalyzer):
         unique_bins = sorted(set(bin_mapping.values()), key=lambda b: (
             -999 if b.startswith("bin_") else int(b.split("=")[-1])
         ))
-        ref_bin = "t=-1"
+        _ref_bin = "t=-1"
         n_pre_bins = len(unique_bins)
 
         if os.environ.get("DEBUG_DID"):

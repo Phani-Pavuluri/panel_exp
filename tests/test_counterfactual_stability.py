@@ -376,7 +376,7 @@ def test_explicit_break_start_with_auto_detect_prints_warning(capsys):
         break_detection_threshold=2.0,
         control_units=control,
     )
-    captured = capsys.readouterr()
+    capsys.readouterr()
     # Either a WARNING was printed (mismatch case) or auto-detection agreed with explicit
     # In either case the function must complete without error
     assert summary is not None
@@ -584,7 +584,7 @@ def test_tbrridge_normalisation_stores_constants():
     pds = _make_scale_mismatch_panel(treat_start=30)
     model_obj = TBRRidge()
     model_obj.fit_data(pds)
-    fitted = model_obj.fit_model()
+    model_obj.fit_model()
 
     assert model_obj._normalisation_applied is True
     assert model_obj._normalisation_y_mean > 0, (
