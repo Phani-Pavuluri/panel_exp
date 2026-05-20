@@ -40,6 +40,9 @@ class GeoExperimentDesign:
       and is forwarded to simulation-based power / MDE analysis.
     - MDE from ``PowerAnalysis`` is simulation/coverage-based (not classical analytic power);
       see ``PowerAnalysis.mde_semantics``.
+    - Set ``interference`` explicitly (default ``unknown``). The package does not
+      estimate spillovers; optional ``spillover_notes`` / ``exposure_column`` are
+      metadata only.
     - When ``validate_after_assign`` and ``block_on_validation_fail`` are enabled (default),
       blocking validation failures prevent evidence and MDE generation.
     """
@@ -66,6 +69,8 @@ class GeoExperimentDesign:
         random_state: int = 42,
         alpha: float = 0.05,
         interference: InterferenceAssumption = InterferenceAssumption.UNKNOWN,
+        spillover_notes: Optional[str] = None,
+        exposure_column: Optional[str] = None,
         experiment_id: str = "geo_experiment",
         outcome_column: str = "outcome",
         unit_column: str = "unit",
@@ -102,6 +107,8 @@ class GeoExperimentDesign:
         self.last_power_mde_semantics: dict | None = None
         self.alpha = alpha
         self.interference = interference
+        self.spillover_notes = spillover_notes
+        self.exposure_column = exposure_column
         self.validate_after_assign = validate_after_assign
         self.block_on_validation_fail = block_on_validation_fail
         self.experiment_id = experiment_id

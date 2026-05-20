@@ -25,7 +25,7 @@ from panel_exp.evidence_hash import (
     input_structure_hash_from_wide,
 )
 from panel_exp.inference_result import InferenceResult
-from panel_exp.spec import DesignSpec
+from panel_exp.spec import DesignSpec, interference_evidence_metadata
 
 # Evidence schema version.
 # Version policy:
@@ -187,6 +187,15 @@ class DesignEvidence:
         for w in spec.assumptions.get("warnings", []):
             if w not in merged_warnings:
                 merged_warnings.append(str(w))
+        infer_meta = dict(inference_metadata or {})
+        infer_meta.update(
+            interference_evidence_metadata(
+                spec,
+                validation_warnings=[
+                    w for w in merged_warnings if "interference" in w.lower()
+                ],
+            )
+        )
         return cls(
             evidence_version=EVIDENCE_VERSION,
             experiment_id=spec.experiment_id,
@@ -199,7 +208,7 @@ class DesignEvidence:
             design_name=spec.design_method.value,
             assignment=MappingProxyType(dict(canonical)),
             validation_summary=_freeze_payload(validation_summary),
-            inference_metadata=_freeze_payload(inference_metadata),
+            inference_metadata=_freeze_payload(infer_meta),
             warnings=tuple(merged_warnings),
             errors=tuple(errors or []),
             artifacts=_freeze_payload(artifacts),

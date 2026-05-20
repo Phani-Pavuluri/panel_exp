@@ -5,7 +5,31 @@ from __future__ import annotations
 from panel_exp.design.context import DesignRunContext
 from panel_exp.evidence import ExperimentEvidence, input_data_hash_from_wide
 from panel_exp.panel_data import TimePeriod
-from panel_exp.spec import spec_from_geo_design
+from panel_exp.spec import spillover_metadata_available, spec_from_geo_design
+
+
+def _build_geo_spec(geo, design_method: str, treatment_probability: float):
+    return spec_from_geo_design(
+        geo.experiment_id,
+        geo.outcome_column,
+        geo.unit_column,
+        geo.time_column,
+        pre_period=TimePeriod(start=0, end=geo.train_length),
+        experiment_period=TimePeriod(start=geo.train_length, end=None),
+        design_method=design_method,
+        random_state=geo.random_state,
+        alpha=geo.alpha,
+        treatment_probability=treatment_probability,
+        n_test_groups=geo.n_test_grps,
+        test_whitelist=geo.test_whitelist,
+        control_whitelist=geo.control_whitelist,
+        test_blacklist=geo.test_blacklist,
+        control_blacklist=geo.control_blacklist,
+        control_test_blacklist=geo.control_test_blacklist,
+        interference=geo.interference,
+        spillover_notes=geo.spillover_notes,
+        exposure_column=geo.exposure_column,
+    )
 
 
 def run_geo_experiment_design(ctx: DesignRunContext) -> tuple:
@@ -30,6 +54,10 @@ def run_geo_experiment_design(ctx: DesignRunContext) -> tuple:
     geo.last_validation = None
     geo.last_evidence = None
 
+    from panel_exp.design.registry import design_class_name
+
+    design_method = design_class_name(geo.base_randomizer_cls)
+
     # 1. Assignment
     design = geo.create_design()
     rs_dp_grps = design.assign(
@@ -44,6 +72,8 @@ def run_geo_experiment_design(ctx: DesignRunContext) -> tuple:
         n_test_grps=geo.n_test_grps,
     )
 
+    spec = _build_geo_spec(geo, design_method, tp)
+
     # 2. Post-assignment validation gate
     if geo.validate_after_assign:
         geo.last_validation = validate_design(
@@ -57,31 +87,10 @@ def run_geo_experiment_design(ctx: DesignRunContext) -> tuple:
             test_blacklist=geo.test_blacklist,
             control_test_blacklist=geo.control_test_blacklist,
             interference=geo.interference,
+            spillover_metadata_available=spillover_metadata_available(spec),
             block_on_fail=geo.block_on_validation_fail,
         )
 
-    from panel_exp.design.registry import design_class_name
-
-    # 3. Evidence artifacts
-    spec = spec_from_geo_design(
-        geo.experiment_id,
-        geo.outcome_column,
-        geo.unit_column,
-        geo.time_column,
-        pre_period=TimePeriod(start=0, end=geo.train_length),
-        experiment_period=TimePeriod(start=geo.train_length, end=None),
-        design_method=design_class_name(geo.base_randomizer_cls),
-        random_state=geo.random_state,
-        alpha=geo.alpha,
-        treatment_probability=tp,
-        n_test_groups=geo.n_test_grps,
-        test_whitelist=geo.test_whitelist,
-        control_whitelist=geo.control_whitelist,
-        test_blacklist=geo.test_blacklist,
-        control_blacklist=geo.control_blacklist,
-        control_test_blacklist=geo.control_test_blacklist,
-        interference=geo.interference,
-    )
     validation_summary = (
         geo.last_validation.to_dict() if geo.last_validation else {}
     )
