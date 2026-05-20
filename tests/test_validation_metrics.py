@@ -1,83 +1,99 @@
 """Tests for validation metric aggregation."""
 
-import json
+import math
 
-import numpy as np
 import pytest
 
-from panel_exp.validation.metrics import (
-    ReplicationRecord,
-    ValidationResult,
-    aggregate_replications,
-)
-from panel_exp.validation.report import EstimatorValidationReport
+from panel_exp.validation.metrics import ReplicationOutcome, aggregate_outcomes
 
 
 def test_bias_and_rmse():
-    records = [
-        ReplicationRecord(estimate=0.11, truth=0.10),
-        ReplicationRecord(estimate=0.09, truth=0.10),
+    outcomes = [
+        ReplicationOutcome(estimate=0.11, truth=0.10),
+        ReplicationOutcome(estimate=0.09, truth=0.10),
     ]
-    result = aggregate_replications(
+    m = aggregate_outcomes(
         estimator_name="SCM",
-        scenario_name="constant_positive_10pct",
-        records=records,
+        scenario_name="positive_relative_lift",
+        outcomes=outcomes,
     )
-    assert abs(result.bias - 0.0) < 1e-12
-    assert result.rmse < 0.02
+    assert abs(m.bias) < 1e-12
+    assert m.rmse < 0.02
 
 
 def test_coverage_computation():
-    records = [
-        ReplicationRecord(
-            estimate=0.10, truth=0.10, ci_lower=0.05, ci_upper=0.15
+    outcomes = [
+        ReplicationOutcome(
+            estimate=0.10,
+            truth=0.10,
+            ci_lower=0.05,
+            ci_upper=0.15,
+            significant=False,
         ),
-        ReplicationRecord(
-            estimate=0.10, truth=0.10, ci_lower=0.11, ci_upper=0.20
+        ReplicationOutcome(
+            estimate=0.10,
+            truth=0.10,
+            ci_lower=0.11,
+            ci_upper=0.20,
+            significant=True,
         ),
     ]
-    result = aggregate_replications(
+    m = aggregate_outcomes(
         estimator_name="DID",
-        scenario_name="aa_zero_effect",
-        records=records,
+        scenario_name="aa_null",
+        outcomes=outcomes,
     )
-    assert result.coverage == 0.5
-    assert result.interval_width == pytest.approx(0.095, rel=0.01)
+    assert m.coverage == 0.5
+    assert m.mean_interval_width == pytest.approx(0.095, rel=0.01)
 
 
-def test_false_positive_rate_aa():
-    records = [
-        ReplicationRecord(estimate=0.0, truth=0.0, significant=True),
-        ReplicationRecord(estimate=0.0, truth=0.0, significant=False),
+def test_fpr_power_only_with_intervals():
+    with_intervals = [
+        ReplicationOutcome(
+            estimate=0.0,
+            truth=0.0,
+            ci_lower=-0.1,
+            ci_upper=0.1,
+            significant=True,
+        ),
+        ReplicationOutcome(
+            estimate=0.0,
+            truth=0.0,
+            ci_lower=-0.1,
+            ci_upper=0.1,
+            significant=False,
+        ),
     ]
-    result = aggregate_replications(
+    m = aggregate_outcomes(
         estimator_name="DID",
-        scenario_name="aa_zero_effect",
-        records=records,
+        scenario_name="aa_null",
+        outcomes=with_intervals,
     )
-    assert result.false_positive_rate == 0.5
+    assert m.false_positive_rate == 0.5
 
-
-def test_report_serializes():
-    result = ValidationResult(
+    without_intervals = [
+        ReplicationOutcome(estimate=0.0, truth=0.0, significant=True),
+        ReplicationOutcome(estimate=0.0, truth=0.0, significant=False),
+    ]
+    m2 = aggregate_outcomes(
         estimator_name="SCM",
-        scenario_name="aa_zero_effect",
-        bias=0.0,
-        rmse=0.0,
-        coverage=0.9,
-        false_positive_rate=0.05,
-        false_negative_rate=0.1,
-        power=0.9,
-        interval_width=0.2,
-        n_replications=10,
-        truth=0.0,
+        scenario_name="aa_null",
+        outcomes=without_intervals,
     )
-    report = EstimatorValidationReport.build(
-        scenario_names=["aa_zero_effect"],
-        results=[result],
+    assert m2.false_positive_rate is None
+    assert m2.power is None
+    assert m2.coverage is None
+
+
+def test_failure_rate():
+    outcomes = [
+        ReplicationOutcome(estimate=0.1, truth=0.1, failed=False),
+        ReplicationOutcome(estimate=float("nan"), truth=0.1, failed=True),
+    ]
+    m = aggregate_outcomes(
+        estimator_name="SCM",
+        scenario_name="aa_null",
+        outcomes=outcomes,
     )
-    payload = report.to_dict()
-    round_trip = json.loads(json.dumps(payload))
-    assert round_trip["evidence_version"]
-    assert round_trip["results"][0]["estimator_name"] == "SCM"
-    assert "recovery_statement" in round_trip
+    assert m.failure_rate == 0.5
+    assert not math.isnan(m.bias)
