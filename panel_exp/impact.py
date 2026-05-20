@@ -15,11 +15,10 @@ import numpy as np
 import pandas as pd
 
 from panel_exp.inference.registry import get_inference_registry
-from panel_exp.inference_result import InferenceResult, IntervalType
 from panel_exp.panel_data import PanelDataset
 
 from matplotlib import pyplot as plt
-from typing import Dict, Optional
+from typing import Dict
 from abc import ABC, abstractmethod
 
 class ImpactAnalyzer(ABC):

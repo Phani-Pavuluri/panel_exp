@@ -1,4 +1,3 @@
-from ..panel_data import PanelDataset
 import numpy as np
 
 def imbalance(panel, metric="l2", period="full") -> float:

@@ -8,25 +8,15 @@ Implementations of Synthetic Control and Augmented Synthetic Control.
 """
 from __future__ import annotations
 import numpy as np
-import pandas as pd
-import scipy.stats as st
-from dataclasses import dataclass
 
-from matplotlib import pyplot as plt
-from typing import Dict, Optional
-from abc import (
-    ABC,
-    abstractmethod,
-    )
+from typing import Callable, Optional
 
 from ..impact import ImpactAnalyzer
-from ..inference.unit_jackknife import unit_jk
 
 from scipy.optimize import minimize
-from sklearn.linear_model import RidgeCV, Ridge
+from sklearn.linear_model import Ridge
 import warnings
  
-import itertools
 
 class SyntheticControl(ImpactAnalyzer):
     """
@@ -128,8 +118,7 @@ class SyntheticControl(ImpactAnalyzer):
                         method=self.method,
                         bounds=simplex_bounds,
                         constraints={'type':'eq', 'fun': lambda x: np.sum(x.reshape(control.shape[1], test.shape[0]), axis=0) - 1} )
-            status = res.status
-
+            _status = res.status
 
         self.weights = res.x
 

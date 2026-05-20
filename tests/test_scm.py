@@ -11,7 +11,6 @@ import warnings
 
 import numpy as np
 import pandas as pd
-import pytest
 
 import sys
 from pathlib import Path
@@ -21,8 +20,9 @@ _REPO = Path(__file__).parent.parent
 if str(_REPO) not in sys.path:
     sys.path.insert(0, str(_REPO))
 
-from panel_exp.panel_data import PanelDataset, TimePeriod
-from panel_exp.methods.scm import SyntheticControlCVXPY, AugSynthCVXPY
+# Imports after sys.path so tests run without an editable install.
+from panel_exp.panel_data import PanelDataset, TimePeriod  # noqa: E402
+from panel_exp.methods.scm import SyntheticControlCVXPY, AugSynthCVXPY  # noqa: E402
 
 
 # ---------------------------------------------------------------------------

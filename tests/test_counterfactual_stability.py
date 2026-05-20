@@ -7,6 +7,8 @@ import os
 # Add the panel_exp package to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
+from panel_exp.methods.tbr import TBRRidge
+from panel_exp.panel_data import PanelDataset, TimePeriod
 from panel_exp.utils.counterfactual_stability_tests import (
     detect_break_candidates,
     run_residual_drift_test,
@@ -376,7 +378,7 @@ def test_explicit_break_start_with_auto_detect_prints_warning(capsys):
         break_detection_threshold=2.0,
         control_units=control,
     )
-    captured = capsys.readouterr()
+    capsys.readouterr()
     # Either a WARNING was printed (mismatch case) or auto-detection agreed with explicit
     # In either case the function must complete without error
     assert summary is not None
@@ -498,9 +500,6 @@ def test_compare_estimator_stability_disagreement():
 # TBRRidge normalisation tests
 # ---------------------------------------------------------------------------
 
-from panel_exp.methods.tbr import TBRRidge
-from panel_exp.panel_data import PanelDataset, TimePeriod
-
 
 def _make_scale_mismatch_panel(treat_start=30, seed=7):
     """Panel where treated aggregate is ~100x larger than individual controls."""
@@ -584,7 +583,7 @@ def test_tbrridge_normalisation_stores_constants():
     pds = _make_scale_mismatch_panel(treat_start=30)
     model_obj = TBRRidge()
     model_obj.fit_data(pds)
-    fitted = model_obj.fit_model()
+    model_obj.fit_model()
 
     assert model_obj._normalisation_applied is True
     assert model_obj._normalisation_y_mean > 0, (

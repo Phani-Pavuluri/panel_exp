@@ -65,8 +65,8 @@ def _fit_omega(
     Fit omega on pre-period centered (demeaned) data with given lambda.
     Demeaning ensures omega matches trends, not baseline levels.
     """
-    N0 = Y_control_pre.shape[0]
-    T0 = Y_control_pre.shape[1]
+    _N0 = Y_control_pre.shape[0]
+    _T0 = Y_control_pre.shape[1]
     y_pre = Y_treat_pre.ravel()
 
     y_mean = np.mean(y_pre)
@@ -97,7 +97,7 @@ def _fit_lambda(
     Fit time weights lambda from control matrices.
     Construct time weights from inverse residual magnitude with simplex projection.
     """
-    T0 = Y_control_pre.shape[1]
+    _T0 = Y_control_pre.shape[1]
     y_pre = Y_treat_pre.ravel()
     y_mean = np.mean(y_pre)
     y_c = y_pre - y_mean
@@ -264,7 +264,7 @@ class SyntheticDID(ImpactAnalyzer):
 
         control_idx = [i for i in range(n_units) if panel.wide_data.index[i] not in panel.treated_units]
         treat_idx = [i for i in range(n_units) if panel.wide_data.index[i] in panel.treated_units]
-        N0 = len(control_idx)
+        _N0 = len(control_idx)
         N_tr = len(treat_idx)
 
         Y_control = wide[control_idx, :]

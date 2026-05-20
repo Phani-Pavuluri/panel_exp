@@ -36,7 +36,7 @@ References
 
 from typing import Any, Optional
 
-from panel_exp.panel_data import long_df_to_paneldataset, PanelDataset, TimePeriod
+from panel_exp.panel_data import PanelDataset, TimePeriod
 
 try:
     from tqdm.auto import tqdm
@@ -45,7 +45,6 @@ except ImportError:
         from tqdm import tqdm
     except ImportError:
         tqdm = None
-import pandas as pd
 import numpy as np
 from scipy import stats
 

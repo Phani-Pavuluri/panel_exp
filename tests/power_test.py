@@ -1,15 +1,13 @@
-import pytest
 
 
 import numpy as np
 import pandas as pd
 import sys 
-import os
 sys.path.insert(0, '..')
 
 #from panel_exp.inference import conformal
-from panel_exp.panel_data import long_df_to_paneldataset, PanelDataset, TimePeriod
-from panel_exp.methods.tbr import TBR, TBRRidge
+from panel_exp.panel_data import PanelDataset, TimePeriod
+from panel_exp.methods.tbr import TBRRidge
 from panel_exp.design import power
 
 
@@ -23,7 +21,6 @@ def test_power_train_test():
 	treated_units = pd.DataFrame(wide_df.loc[['chicago', 'cincinnati', 'houston', 'portland']].mean(axis=0), columns=['treated'])
 	wide_agg = pd.concat([treated_units, control_units], axis=1)
 
-	end = wide_df.columns[-1]
 	L = len(wide_df.columns)
 	test_length = 7
 
@@ -46,8 +43,8 @@ def test_power_train_test():
 
 	indices = pa.train_test_indices_f()
 	matrix = []
-	for l in indices:
-	    matrix.append(list(l[0]) + list(l[1]))
+	for window in indices:
+	    matrix.append(list(window[0]) + list(window[1]))
 
 	m = np.array(matrix)
 
@@ -59,7 +56,6 @@ def test_power_train_test():
 	test = indices[0][1]
 	mod_df = pd.concat([pa.panel.wide_data.T.iloc[train], pa.panel.wide_data.T.iloc[test]]).reset_index(drop=True)
 	mod_pds = PanelDataset(mod_df.T, [TimePeriod(start=pa.train_length ) for _ in range(len(pa.panel.treated_units))], pa.panel.treated_units)
-	percent_effect = np.concatenate( [ np.linspace(-pa.mx_effect, 0 , 25), np.linspace(0, pa.mx_effect , 25)[1:]])
 	pa.mean_value = pa.panel.wide_data.loc[pa.panel.treated_units].mean().mean()
 	test_df = pa.fake_effect(mod_pds, .3*pa.mean_value)
 	assert np.isclose((test_df.wide_data - mod_pds.wide_data).sum().sum() , .3*pa.mean_value * pa.test_length), "Fake Effect Failed Unit Test"
@@ -75,8 +71,8 @@ def test_power_train_test():
 
 	indices = pa.train_test_indices_f()
 	matrix = []
-	for l in indices:
-	    matrix.append(list(l[0]) + list(l[1]))
+	for window in indices:
+	    matrix.append(list(window[0]) + list(window[1]))
 
 	m = np.array(matrix)
 
@@ -88,7 +84,6 @@ def test_power_train_test():
 	test = indices[0][1]
 	mod_df = pd.concat([pa.panel.wide_data.T.iloc[train], pa.panel.wide_data.T.iloc[test]]).reset_index(drop=True)
 	mod_pds = PanelDataset(mod_df.T, [TimePeriod(start=pa.train_length ) for _ in range(len(pa.panel.treated_units))], pa.panel.treated_units)
-	percent_effect = np.concatenate( [ np.linspace(-pa.mx_effect, 0 , 25), np.linspace(0, pa.mx_effect , 25)[1:]])
 	pa.mean_value = pa.panel.wide_data.loc[pa.panel.treated_units].mean().mean()
 	test_df = pa.fake_effect(mod_pds, .3*pa.mean_value)
 	assert np.isclose((test_df.wide_data - mod_pds.wide_data).sum().sum() , .3*pa.mean_value * pa.test_length), "Fake Effect Failed Unit Test"

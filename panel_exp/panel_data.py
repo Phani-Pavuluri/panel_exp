@@ -9,19 +9,12 @@ A module for storing panel data in a wide format and providing methods for acces
 
 
 from __future__ import annotations
-from functools import reduce
-import operator
 import numpy as np
 import pandas as pd
-import scipy.stats as st
 from dataclasses import dataclass
 
 from matplotlib import pyplot as plt
-from typing import Dict, List, NewType, Optional, Tuple, Union
-from abc import (
-    ABC,
-    abstractmethod,
-)
+from typing import Callable, List, NewType, Optional, Tuple, Union
 
 import seaborn as sns
 sns.set_style('darkgrid')
@@ -661,9 +654,7 @@ class PanelDataset:
         -------
         None
         """
-        import matplotlib.pyplot as plt
         import matplotlib.patches as mpatches
-        
 
         fig, axs = plt.subplots(1,1,figsize=figsize)
         self.wide_data.T[self.treated_units].plot( ax=axs, color='red', label='Test Unit/s', legend=legend )
@@ -695,9 +686,7 @@ class PanelDataset:
         None
         """
         assert agg_func in ['sum', 'mean'], "agg_func must be either 'sum' or 'mean'"
-        
-        import matplotlib.pyplot as plt
-        
+
         if agg_func == 'sum':
             pre_test_control = self.wide_data.T[self.control_units][:self.treated_start_idxs[0]].sum(axis=1)
             pre_test_treated = self.wide_data.T[self.treated_units][:self.treated_start_idxs[0]].sum(axis=1)
@@ -798,19 +787,17 @@ def long_df_to_paneldataset(
     if treated_end_times is not None:
         if isinstance(treated_end_times, timestamp_types):
             treated_end_times = [treated_end_times]
-        assert (
-            (len(treated_units) == len(treated_start_times) == len(treated_end_times)),
-            "The number of treated units, start times, and end times must be equal",
-        )
+        assert len(treated_units) == len(treated_start_times) == len(
+            treated_end_times
+        ), "The number of treated units, start times, and end times must be equal"
         treated_periods = [
             TimePeriod(start, end)
             for start, end in zip(treated_start_times, treated_end_times)
         ]
     elif treated_start_times is not None:
-        assert (
-            (len(treated_units) == len(treated_start_times)),
-            "The number of treated units and start times must be equal",
-        )
+        assert len(treated_units) == len(
+            treated_start_times
+        ), "The number of treated units and start times must be equal"
         treated_periods = [TimePeriod(start) for start in treated_start_times]
     else:
         treated_periods = None

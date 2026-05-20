@@ -126,7 +126,7 @@ class PowerAnalysis:
         y_actuals = est.results['y'][-self.test_length:].sum()
 
         if true_test:
-            test_est = est.model.predict()
+            est.model.predict()
 
         return [iteration, round(percent_effect,2) , bias, value_effect.mean(), (value_effect * self.test_length).sum() , cum_effect_low, cum_effect, cum_effect_high, mean_effect_low, mean_effect, mean_effect_high, mean_ss, cum_ss, y_actuals]
 
@@ -178,8 +178,8 @@ class PowerAnalysis:
                     
         if self.ci_version == 1: 
             
-            self.mde_kpi_cumulative = cum_effect.index[min(loc for loc, val in enumerate(cum_effect.values) if val == False)-1]
-            self.mde_percent = prc.index[min(loc for loc, val in enumerate(prc.values) if val == False)-1] 
+            self.mde_kpi_cumulative = cum_effect.index[min(loc for loc, val in enumerate(cum_effect.values) if not val)-1]
+            self.mde_percent = prc.index[min(loc for loc, val in enumerate(prc.values) if not val)-1] 
 
             # Calculate Standard Error and CI for MDE in CI Version 1
             se_cum_effect = self.output_df[self.output_df.prc_effect == self.mde_percent].cum_effect.std() / np.sqrt(len(self.output_df[self.output_df.prc_effect == self.mde_percent]))
@@ -222,11 +222,11 @@ class PowerAnalysis:
 
         es = (1-pd.pivot_table(self.output_df, index=x, columns='iteration', values='mean_ss').mean(axis=1))>=self.power
 
-        if max(loc for loc, val in enumerate(es.values) if val == False)+1 == es.values.shape[0]:
+        if max(loc for loc, val in enumerate(es.values) if not val)+1 == es.values.shape[0]:
             raise ValueError("No MDE Found. Try Larger Effects and/or Longer Training Period")
 
-        low = es.index[max(loc for loc, val in enumerate(es.values) if val == False)+1]
-        high = es.index[min(loc for loc, val in enumerate(es.values) if val == False)-1]
+        _low = es.index[max(loc for loc, val in enumerate(es.values) if not val)+1]
+        high = es.index[min(loc for loc, val in enumerate(es.values) if not val)-1]
 
         plt.plot(1-pd.pivot_table(self.output_df, index=x, columns='iteration', values='mean_ss').mean(axis=1))
         plt.axhline(self.power)

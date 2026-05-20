@@ -16,10 +16,7 @@ from panel_exp.evidence import (
 from panel_exp.evidence_hash import (
     EvidenceSerializationError,
     assignment_hash,
-    canonical_assignment,
-    canonical_json,
     canonicalize,
-    stable_hash,
 )
 from panel_exp.panel_data import TimePeriod
 from panel_exp.spec import spec_from_geo_design
