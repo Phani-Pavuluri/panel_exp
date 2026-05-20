@@ -23,7 +23,9 @@ class EstimatorMaturity(str, Enum):
 
 MATURITY_DOC = (
     "Maturity reflects validation and operational readiness, not statistical "
-    "superiority. Ratings are conservative and evidence-based."
+    "superiority. Ratings are conservative and evidence-based. "
+    "PRODUCTION_SAFE requires broad coverage/FPR/power validation—not smoke tests "
+    "alone. Point-estimate-only inference is never production-safe for decisions."
 )
 
 
@@ -173,12 +175,13 @@ _ESTIMATOR_CATALOG: Tuple[EstimatorMetadata, ...] = (
     ),
     _est(
         "TBRRidge",
-        EstimatorMaturity.PRODUCTION_SAFE,
+        EstimatorMaturity.EXPERT_REVIEW,
         "TBRRidge",
         "panel_exp.methods.tbr",
         rationale=(
-            "test_estimator_recovery_smoke and default EstimatorValidationRunner config.",
-            "Deterministic ridge point estimates; registry inference equivalence tests.",
+            "TBRRidge has useful recovery and regression coverage, but production-safe "
+            "status requires broader coverage/FPR/power validation. Use with expert review.",
+            "Recovery smoke and registry equivalence tests are insufficient alone.",
         ),
         assumptions=(
             "Ridge on normalized pre-period trends.",
@@ -284,8 +287,13 @@ _ESTIMATOR_CATALOG: Tuple[EstimatorMetadata, ...] = (
 _INFERENCE_MODE_CATALOG: Tuple[InferenceModeMaturityMetadata, ...] = (
     InferenceModeMaturityMetadata(
         "point_estimate",
-        EstimatorMaturity.PRODUCTION_SAFE,
-        rationale=("Point estimate only; deterministic given fitted model.",),
+        EstimatorMaturity.EXPERT_REVIEW,
+        rationale=(
+            "Point estimate mode is computationally simple but provides no interval "
+            "uncertainty; decision use requires expert review or external uncertainty evidence.",
+        ),
+        assumptions=("Point path is deterministic given a fitted model.",),
+        known_limitations=("No path-level uncertainty intervals.",),
     ),
     InferenceModeMaturityMetadata(
         "UnitJackKnife",

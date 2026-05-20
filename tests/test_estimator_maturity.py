@@ -56,9 +56,9 @@ def test_unknown_inference_mode_fails_loudly():
         get_method_registry().inference_metadata("NotARealInference")
 
 
-def test_tbrridge_production_safe_scm_expert_review():
+def test_tbrridge_expert_review_scm_expert_review():
     reg = get_method_registry()
-    assert reg.metadata("TBRRidge").maturity == EstimatorMaturity.PRODUCTION_SAFE
+    assert reg.metadata("TBRRidge").maturity == EstimatorMaturity.EXPERT_REVIEW
     assert reg.metadata("TBRRidge").synthetic_validation is True
     assert reg.metadata("SCM").maturity == EstimatorMaturity.EXPERT_REVIEW
     assert reg.metadata("BayesianTBR").maturity == EstimatorMaturity.RESEARCH_ONLY
@@ -68,7 +68,7 @@ def test_estimator_metadata_property_on_analyzer():
     est = TBRRidge(inference=None)
     meta = est.estimator_metadata
     assert meta.name == "TBRRidge"
-    assert meta.maturity == EstimatorMaturity.PRODUCTION_SAFE
+    assert meta.maturity == EstimatorMaturity.EXPERT_REVIEW
 
 
 def test_evidence_includes_maturity_fields():
@@ -91,8 +91,8 @@ def test_run_analysis_attaches_estimator_maturity_metadata():
     est = TBRRidge(inference=None, alpha=0.05)
     est.run_analysis(pds)
     meta = est.results.get("inference_metadata") or {}
-    assert meta.get("estimator_maturity") == "production_safe"
-    assert meta.get("inference_mode_maturity") == "production_safe"
+    assert meta.get("estimator_maturity") == "expert_review"
+    assert meta.get("inference_mode_maturity") == "expert_review"
     assert meta.get("estimator_rationale")
 
 
@@ -127,5 +127,36 @@ def test_metadata_survives_evidence_json_roundtrip():
         inference_metadata=dict(est.results.get("inference_metadata", {})),
     )
     payload = json.loads(ev.to_json())
-    assert payload["inference_metadata"]["estimator_maturity"] == "production_safe"
+    assert payload["inference_metadata"]["estimator_maturity"] == "expert_review"
     assert payload["inference_metadata"]["inference_mode_maturity"] == "expert_review"
+
+
+def test_point_estimate_inference_expert_review():
+    meta = get_method_registry().inference_metadata("point_estimate")
+    assert meta.maturity == EstimatorMaturity.EXPERT_REVIEW
+    rationale = " ".join(meta.rationale).lower()
+    assert "uncertainty" in rationale or "no interval" in rationale
+
+
+def test_production_safe_not_from_smoke_tests_alone():
+    """Smoke/recovery coverage alone must not earn PRODUCTION_SAFE."""
+    reg = get_method_registry()
+    tbrridge = reg.metadata("TBRRidge")
+    assert tbrridge.synthetic_validation is True
+    assert tbrridge.maturity == EstimatorMaturity.EXPERT_REVIEW
+    rationale = " ".join(tbrridge.rationale).lower()
+    assert "production-safe" in rationale or "expert review" in rationale
+
+    production_estimators = [
+        name
+        for name in reg.list_estimator_names()
+        if reg.metadata(name).maturity == EstimatorMaturity.PRODUCTION_SAFE
+    ]
+    assert production_estimators == []
+
+    production_modes = [
+        mode
+        for mode in reg.list_inference_mode_names()
+        if reg.inference_metadata(mode).maturity == EstimatorMaturity.PRODUCTION_SAFE
+    ]
+    assert production_modes == []

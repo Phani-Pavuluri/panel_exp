@@ -21,8 +21,10 @@ class MethodRegistry:
     """
     Read-only registry of estimator maturity metadata.
 
-    Maturity reflects validation and operational readiness, not statistical
-    superiority. Ratings do not block execution.
+    Adds conservative estimator and inference-mode maturity metadata. Ratings are
+    non-blocking and reflect validation/operational readiness, not statistical
+    superiority. Point-estimate-only inference and TBRRidge are expert-review
+    pending broader coverage/FPR/power validation.
     """
 
     def list_estimator_names(self) -> List[str]:
