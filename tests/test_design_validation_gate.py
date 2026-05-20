@@ -81,7 +81,7 @@ def test_blocking_validation_stops_geo_pipeline(monkeypatch):
 
     monkeypatch.setattr(BalancedRandomization, "assign", _assign)
     monkeypatch.setattr(geo_runner, "validate_design", _validate)
-    monkeypatch.setattr(geo_runner.DesignEvidence, "from_assignment", _evidence)
+    monkeypatch.setattr(geo_runner.ExperimentEvidence, "build", _evidence)
     monkeypatch.setattr(GeoExperimentDesign, "_calculate_sensitivity_metrics", _mde)
 
     with pytest.raises(ValueError, match="blocking"):

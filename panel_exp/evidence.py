@@ -17,14 +17,21 @@ from panel_exp import __version__
 from panel_exp.evidence_hash import (
     assignment_hash,
     assignment_to_json_dict,
+    canonical_assignment,
     canonical_json,
     canonicalize,
+    deep_freeze,
     input_data_hash_from_wide,
-    stable_hash,
+    input_structure_hash_from_wide,
 )
 from panel_exp.inference_result import InferenceResult
 from panel_exp.spec import DesignSpec, spec_canonical_payload
 
+# Evidence schema version.
+# Version policy:
+# - Patch: bugfix / serialization-only, backward compatible.
+# - Minor: additive fields only, backward compatible.
+# - Major: breaking schema change. Bump only when incompatible.
 EVIDENCE_VERSION = "1.0"
 
 # Top-level key order for deterministic JSON exports.
@@ -37,6 +44,7 @@ _EXPERIMENT_EVIDENCE_KEY_ORDER = (
     "spec_hash",
     "assignment_hash",
     "input_data_hash",
+    "input_structure_hash",
     "design_name",
     "assignment",
     "validation_summary",
@@ -65,8 +73,12 @@ def _code_version() -> Optional[str]:
     return None
 
 
-def _freeze_mapping(data: Optional[Dict[str, Any]]) -> Mapping[str, Any]:
-    return MappingProxyType(dict(canonicalize(data or {})))
+def _freeze_payload(data: Optional[Dict[str, Any]]) -> Mapping[str, Any]:
+    """Canonicalize then recursively freeze nested dict/list structures."""
+    frozen = deep_freeze(canonicalize(data or {}))
+    if isinstance(frozen, Mapping):
+        return frozen
+    return MappingProxyType({})
 
 
 def _ordered_dict(payload: Dict[str, Any], key_order: Tuple[str, ...]) -> Dict[str, Any]:
@@ -113,6 +125,16 @@ class DesignEvidence:
         """Legacy alias for ``created_at``."""
         return self.created_at
 
+    @property
+    def input_structure_hash(self) -> Optional[str]:
+        """
+        Structural panel fingerprint (index, columns, shape).
+
+        Same value as ``input_data_hash``; the latter name is retained for
+        backward compatibility but does not hash full data values.
+        """
+        return self.input_data_hash
+
     def to_dict(self) -> Dict[str, Any]:
         assignment_json = assignment_to_json_dict(self.assignment)
         payload = {
@@ -125,6 +147,7 @@ class DesignEvidence:
             "spec_hash": self.spec_hash,
             "assignment_hash": self.assignment_hash,
             "input_data_hash": self.input_data_hash,
+            "input_structure_hash": self.input_structure_hash,
             "design_name": self.design_name,
             "design_method": self.design_name,
             "assignment": assignment_json,
@@ -159,8 +182,6 @@ class DesignEvidence:
         input_data_hash: Optional[str] = None,
         created_at: Optional[str] = None,
     ) -> "DesignEvidence":
-        from panel_exp.evidence_hash import canonical_assignment
-
         canonical = canonical_assignment(assignment)
         merged_warnings = list(warnings or [])
         for w in spec.assumptions.get("warnings", []):
@@ -177,13 +198,46 @@ class DesignEvidence:
             input_data_hash=input_data_hash,
             design_name=spec.design_method.value,
             assignment=MappingProxyType(dict(canonical)),
-            validation_summary=_freeze_mapping(validation_summary),
-            inference_metadata=_freeze_mapping(inference_metadata),
+            validation_summary=_freeze_payload(validation_summary),
+            inference_metadata=_freeze_payload(inference_metadata),
             warnings=tuple(merged_warnings),
             errors=tuple(errors or []),
-            artifacts=_freeze_mapping(artifacts),
-            diagnostics=_freeze_mapping(diagnostics),
+            artifacts=_freeze_payload(artifacts),
+            diagnostics=_freeze_payload(diagnostics),
         )
+
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> "DesignEvidence":
+        """Reconstruct from ``to_dict()`` / JSON without recomputing hashes or timestamps."""
+        assignment_raw = data["assignment"]
+        canonical = canonical_assignment(
+            {k: list(v) for k, v in assignment_raw.items()}
+        )
+        input_hash = data.get("input_data_hash")
+        if input_hash is None:
+            input_hash = data.get("input_structure_hash")
+        return cls(
+            evidence_version=data["evidence_version"],
+            experiment_id=data["experiment_id"],
+            created_at=data["created_at"],
+            package_version=data["package_version"],
+            code_version=data.get("code_version"),
+            spec_hash=data["spec_hash"],
+            assignment_hash=data["assignment_hash"],
+            input_data_hash=input_hash,
+            design_name=data.get("design_name") or data.get("design_method"),
+            assignment=MappingProxyType(dict(canonical)),
+            validation_summary=_freeze_payload(data.get("validation_summary")),
+            inference_metadata=_freeze_payload(data.get("inference_metadata")),
+            warnings=tuple(data.get("warnings") or ()),
+            errors=tuple(data.get("errors") or ()),
+            artifacts=_freeze_payload(data.get("artifacts")),
+            diagnostics=_freeze_payload(data.get("diagnostics")),
+        )
+
+    @classmethod
+    def from_json(cls, payload: str) -> "DesignEvidence":
+        return cls.from_dict(json.loads(payload))
 
 
 @dataclass(frozen=True)
@@ -210,6 +264,10 @@ class InferenceEvidence:
     artifacts: Mapping[str, Any] = field(default_factory=dict)
     diagnostics: Mapping[str, Any] = field(default_factory=dict)
 
+    @property
+    def input_structure_hash(self) -> Optional[str]:
+        return self.input_data_hash
+
     def to_dict(self) -> Dict[str, Any]:
         payload = {
             "evidence_version": self.evidence_version,
@@ -221,6 +279,7 @@ class InferenceEvidence:
             "spec_hash": self.spec_hash,
             "assignment_hash": self.assignment_hash,
             "input_data_hash": self.input_data_hash,
+            "input_structure_hash": self.input_structure_hash,
             "design_name": self.design_name,
             "design_method": self.design_name,
             "method": self.method,
@@ -242,6 +301,39 @@ class InferenceEvidence:
         if indent is not None:
             return json.dumps(self.to_dict(), indent=indent, **kwargs)
         return canonical_json(self.to_dict())
+
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> "InferenceEvidence":
+        assignment_raw = data.get("assignment") or {}
+        canonical = canonical_assignment(
+            {k: list(v) for k, v in assignment_raw.items()}
+        ) if assignment_raw else {}
+        input_hash = data.get("input_data_hash")
+        if input_hash is None:
+            input_hash = data.get("input_structure_hash")
+        return cls(
+            evidence_version=data["evidence_version"],
+            experiment_id=data["experiment_id"],
+            created_at=data["created_at"],
+            package_version=data["package_version"],
+            code_version=data.get("code_version"),
+            spec_hash=data["spec_hash"],
+            assignment_hash=data["assignment_hash"],
+            input_data_hash=input_hash,
+            design_name=data.get("design_name") or data.get("design_method"),
+            method=data["method"],
+            inference_metadata=_freeze_payload(data.get("inference_metadata")),
+            validation_summary=_freeze_payload(data.get("validation_summary")),
+            assignment=MappingProxyType(dict(canonical)),
+            warnings=tuple(data.get("warnings") or ()),
+            errors=tuple(data.get("errors") or ()),
+            artifacts=_freeze_payload(data.get("artifacts")),
+            diagnostics=_freeze_payload(data.get("diagnostics")),
+        )
+
+    @classmethod
+    def from_json(cls, payload: str) -> "InferenceEvidence":
+        return cls.from_dict(json.loads(payload))
 
 
 @dataclass(frozen=True)
@@ -266,6 +358,10 @@ class ExperimentEvidence:
     design: DesignEvidence
     inference: Optional[InferenceEvidence] = None
 
+    @property
+    def input_structure_hash(self) -> Optional[str]:
+        return self.input_data_hash
+
     def to_dict(self) -> Dict[str, Any]:
         payload = {
             "evidence_version": self.evidence_version,
@@ -277,6 +373,7 @@ class ExperimentEvidence:
             "spec_hash": self.spec_hash,
             "assignment_hash": self.assignment_hash,
             "input_data_hash": self.input_data_hash,
+            "input_structure_hash": self.input_structure_hash,
             "design_name": self.design_name,
             "design_method": self.design_name,
             "assignment": assignment_to_json_dict(self.assignment),
@@ -344,7 +441,7 @@ class ExperimentEvidence:
                 input_data_hash=input_data_hash,
                 design_name=spec.design_method.value,
                 method=inference_method or inference_result.method or "unknown",
-                inference_metadata=_freeze_mapping(inference_meta),
+                inference_metadata=_freeze_payload(inference_meta),
                 assignment=design_ev.assignment,
                 warnings=tuple(inference_result.warnings),
             )
@@ -369,6 +466,39 @@ class ExperimentEvidence:
             inference=inf_ev,
         )
 
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> "ExperimentEvidence":
+        design = DesignEvidence.from_dict(data["design"])
+        inference = None
+        if data.get("inference") is not None:
+            inference = InferenceEvidence.from_dict(data["inference"])
+        input_hash = data.get("input_data_hash")
+        if input_hash is None:
+            input_hash = data.get("input_structure_hash")
+        return cls(
+            evidence_version=data["evidence_version"],
+            experiment_id=data["experiment_id"],
+            created_at=data["created_at"],
+            package_version=data["package_version"],
+            code_version=data.get("code_version"),
+            spec_hash=data["spec_hash"],
+            assignment_hash=data["assignment_hash"],
+            input_data_hash=input_hash,
+            design_name=data.get("design_name") or data.get("design_method"),
+            assignment=design.assignment,
+            validation_summary=design.validation_summary,
+            inference_metadata=design.inference_metadata,
+            warnings=design.warnings,
+            errors=design.errors,
+            artifacts=design.artifacts,
+            design=design,
+            inference=inference,
+        )
+
+    @classmethod
+    def from_json(cls, payload: str) -> "ExperimentEvidence":
+        return cls.from_dict(json.loads(payload))
+
 
 __all__ = [
     "EVIDENCE_VERSION",
@@ -376,5 +506,5 @@ __all__ = [
     "InferenceEvidence",
     "ExperimentEvidence",
     "input_data_hash_from_wide",
-    "stable_hash",
+    "input_structure_hash_from_wide",
 ]

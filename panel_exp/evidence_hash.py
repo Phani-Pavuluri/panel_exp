@@ -9,7 +9,8 @@ import json
 from dataclasses import asdict, is_dataclass
 from datetime import date, datetime
 from enum import Enum
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from types import MappingProxyType
+from typing import Any, Dict, List, Mapping, Optional, Tuple
 
 import numpy as np
 
@@ -102,7 +103,14 @@ def canonical_assignment(
 
 
 def assignment_hash(assignment: Dict[str, List]) -> str:
-    """Stable hash of assignment independent of list ordering within arms."""
+    """
+    Stable hash of a design assignment.
+
+    Arm-label sensitive and unit-order insensitive within each arm:
+    reordering units inside ``control`` does not change the hash; moving a unit
+  from ``control`` to ``test_0`` does; swapping units across ``test_0`` vs
+    ``test_1`` does.
+    """
     canonical = canonical_assignment(assignment)
     payload = {k: list(v) for k, v in canonical.items()}
     return stable_hash(payload)
@@ -113,15 +121,20 @@ def assignment_to_json_dict(assignment: Mapping[str, Tuple[str, ...]]) -> Dict[s
     return {k: list(assignment[k]) for k in sorted(assignment.keys())}
 
 
-def input_data_hash_from_wide(
+def input_structure_hash_from_wide(
     wide_data: Any,
     *,
     value_sample_size: int = 0,
 ) -> Optional[str]:
     """
-  Optional panel fingerprint: unit ids, time columns, shape.
+    Structural panel fingerprint (unit index, time columns, shape).
 
-    Does not hash full data matrix unless ``value_sample_size > 0`` (diagnostic only).
+    This is **not** a full data-content hash and does not prove value-level
+    provenance. ``input_data_hash`` is a backward-compatible alias for this
+    function.
+
+    When ``value_sample_size > 0``, a short leading slice of flattened values is
+    included for diagnostics only (still not a full-matrix hash).
     """
     if wide_data is None:
         return None
@@ -141,3 +154,36 @@ def input_data_hash_from_wide(
         return stable_hash(payload)
     except Exception:
         return None
+
+
+def input_data_hash_from_wide(
+    wide_data: Any,
+    *,
+    value_sample_size: int = 0,
+) -> Optional[str]:
+    """Backward-compatible alias for :func:`input_structure_hash_from_wide`."""
+    return input_structure_hash_from_wide(
+        wide_data, value_sample_size=value_sample_size
+    )
+
+
+def deep_freeze(obj: Any) -> Any:
+    """
+    Recursively freeze mappings and sequences for immutable evidence payloads.
+
+    - dict-like -> ``MappingProxyType`` with frozen values
+    - list/tuple -> ``tuple`` with frozen elements
+    - scalars unchanged
+    """
+    if obj is None or isinstance(obj, (str, int, float, bool)):
+        return obj
+    if isinstance(obj, Mapping):
+        frozen = {str(k): deep_freeze(v) for k, v in obj.items()}
+        return MappingProxyType(frozen)
+    if isinstance(obj, (list, tuple)):
+        return tuple(deep_freeze(v) for v in obj)
+    if isinstance(obj, Enum):
+        return obj.value
+    raise EvidenceSerializationError(
+        f"Cannot deep-freeze type {type(obj).__name__!r} for evidence storage."
+    )

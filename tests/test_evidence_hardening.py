@@ -139,19 +139,23 @@ def test_to_dict_key_order_stable():
     assert keys.index("experiment_id") < keys.index("spec_hash")
 
 
-def test_input_data_hash_from_wide():
-    from panel_exp.evidence_hash import input_data_hash_from_wide
+def test_input_structure_hash_index_order_invariant():
+    from panel_exp.evidence_hash import input_structure_hash_from_wide
 
     wide = pd.DataFrame(
         [[1.0, 2.0], [3.0, 4.0]],
         index=["u1", "u0"],
         columns=[0, 1],
     )
-    h1 = input_data_hash_from_wide(wide)
+    h1 = input_structure_hash_from_wide(wide)
     wide2 = pd.DataFrame(
         [[1.0, 2.0], [3.0, 4.0]],
         index=["u0", "u1"],
         columns=[0, 1],
     )
-    h2 = input_data_hash_from_wide(wide2)
+    h2 = input_structure_hash_from_wide(wide2)
     assert h1 == h2
+
+
+def test_evidence_version_constant():
+    assert EVIDENCE_VERSION == "1.0"
