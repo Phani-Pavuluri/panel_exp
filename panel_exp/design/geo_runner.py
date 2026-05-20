@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from panel_exp.design.context import DesignRunContext
-from panel_exp.evidence import DesignEvidence, ExperimentEvidence
+from panel_exp.evidence import ExperimentEvidence, input_data_hash_from_wide
 from panel_exp.panel_data import TimePeriod
 from panel_exp.spec import spec_from_geo_design
 
@@ -82,12 +82,25 @@ def run_geo_experiment_design(ctx: DesignRunContext) -> tuple:
         control_test_blacklist=geo.control_test_blacklist,
         interference=geo.interference,
     )
-    design_ev = DesignEvidence.from_assignment(
+    validation_summary = (
+        geo.last_validation.to_dict() if geo.last_validation else {}
+    )
+    warnings: list[str] = []
+    errors: list[str] = []
+    if geo.last_validation is not None:
+        errors = list(geo.last_validation.blocking_failures)
+        for check in geo.last_validation.checks:
+            if check.status.value == "WARN":
+                warnings.append(check.message)
+
+    geo.last_evidence = ExperimentEvidence.build(
         spec,
         rs_dp_grps,
-        validation_summary=geo.last_validation.to_dict() if geo.last_validation else {},
+        validation_summary=validation_summary,
+        warnings=warnings,
+        errors=errors,
+        input_data_hash=input_data_hash_from_wide(geo.panel_data.wide_data),
     )
-    geo.last_evidence = ExperimentEvidence(design=design_ev)
 
     # 4. Power / MDE sensitivity
     return geo._calculate_sensitivity_metrics(rs_dp_grps, "control")

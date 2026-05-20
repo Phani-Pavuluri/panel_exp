@@ -7,12 +7,11 @@ should accept these specs rather than inferring critical fields silently.
 
 from __future__ import annotations
 
-import hashlib
-import json
 from dataclasses import asdict, dataclass, field
 from enum import Enum
 from typing import Any, Dict, List, Optional, Union
 
+from panel_exp.evidence_hash import stable_hash
 from panel_exp.panel_data import TimePeriod
 
 
@@ -88,19 +87,7 @@ class DesignSpec:
         return 1.0 - self.alpha
 
     def content_hash(self) -> str:
-        payload = asdict(self)
-        payload["pre_period"] = {
-            "start": _serialize_time(self.pre_period.start),
-            "end": _serialize_time(self.pre_period.end),
-        }
-        payload["experiment_period"] = {
-            "start": _serialize_time(self.experiment_period.start),
-            "end": _serialize_time(self.experiment_period.end),
-        }
-        payload["design_method"] = self.design_method.value
-        payload["interference"] = self.interference.value
-        blob = json.dumps(payload, sort_keys=True, default=str)
-        return hashlib.sha256(blob.encode("utf-8")).hexdigest()[:16]
+        return stable_hash(spec_canonical_payload(self))
 
 
 @dataclass(frozen=True)
@@ -131,6 +118,27 @@ class ExperimentSpec(DesignSpec):
                     ),
                 },
             )
+
+
+def spec_canonical_payload(spec: DesignSpec) -> Dict[str, Any]:
+    """Canonical spec dict for stable ``spec_hash`` / ``content_hash``."""
+    payload = asdict(spec)
+    payload["pre_period"] = {
+        "start": _serialize_time(spec.pre_period.start),
+        "end": _serialize_time(spec.pre_period.end),
+    }
+    payload["experiment_period"] = {
+        "start": _serialize_time(spec.experiment_period.start),
+        "end": _serialize_time(spec.experiment_period.end),
+    }
+    payload["design_method"] = spec.design_method.value
+    payload["interference"] = spec.interference.value
+    payload["test_whitelist"] = sorted(str(u) for u in spec.test_whitelist)
+    payload["control_whitelist"] = sorted(str(u) for u in spec.control_whitelist)
+    payload["test_blacklist"] = sorted(str(u) for u in spec.test_blacklist)
+    payload["control_blacklist"] = sorted(str(u) for u in spec.control_blacklist)
+    payload["control_test_blacklist"] = sorted(str(u) for u in spec.control_test_blacklist)
+    return payload
 
 
 def _serialize_time(t: Any) -> Any:

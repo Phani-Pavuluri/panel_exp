@@ -376,7 +376,7 @@ def test_run_design_pipeline_order(monkeypatch):
         mock.to_dict.return_value = {}
         return mock
 
-    def _from_assignment(*args, **kwargs):
+    def _build_evidence(*args, **kwargs):
         order.append("evidence")
         return MagicMock()
 
@@ -388,7 +388,7 @@ def test_run_design_pipeline_order(monkeypatch):
 
     monkeypatch.setattr(Rerandomization, "assign", _assign)
     monkeypatch.setattr(geo_runner, "validate_design", _validate)
-    monkeypatch.setattr(geo_runner.DesignEvidence, "from_assignment", _from_assignment)
+    monkeypatch.setattr(geo_runner.ExperimentEvidence, "build", _build_evidence)
     monkeypatch.setattr(GeoExperimentDesign, "_calculate_sensitivity_metrics", _mde)
 
     geo.run_design()
