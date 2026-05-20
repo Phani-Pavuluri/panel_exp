@@ -1,13 +1,9 @@
 import copy
-import warnings
 
 import numpy as np
 import pandas as pd
-import random
-from typing import Dict, List, NewType, Optional, Tuple, Union, Callable
+from typing import Dict, List, NewType, Optional, Union, Callable
 from abc import ABC, abstractmethod
-from math import floor
-from itertools import chain
 from dtaidistance import dtw
 from ..panel_data import PanelDataset, TimePeriod, long_df_to_paneldataset
 from .design_metrics import imbalance

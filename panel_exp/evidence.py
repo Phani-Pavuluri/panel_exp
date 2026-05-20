@@ -25,7 +25,7 @@ from panel_exp.evidence_hash import (
     input_structure_hash_from_wide,
 )
 from panel_exp.inference_result import InferenceResult
-from panel_exp.spec import DesignSpec, spec_canonical_payload
+from panel_exp.spec import DesignSpec
 
 # Evidence schema version.
 # Version policy:

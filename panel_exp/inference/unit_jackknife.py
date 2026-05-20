@@ -2,7 +2,6 @@ from typing import Callable, Dict, Optional
 
 # from ...panel_data import PanelDataset
 from panel_exp.panel_data import PanelDataset, TimePeriod
-import copy
 
 import numpy as np
 import scipy.stats

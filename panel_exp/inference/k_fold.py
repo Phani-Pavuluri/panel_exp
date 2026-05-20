@@ -8,10 +8,9 @@ A T-Test for Synthetic Control
 Implementation of: https://arxiv.org/pdf/1812.10820.pdf
 """
 
-from panel_exp.panel_data import long_df_to_paneldataset, PanelDataset, TimePeriod
+from panel_exp.panel_data import PanelDataset, TimePeriod
 import pandas as pd
 import numpy as np
-from scipy import stats
 
 
 def debias(model
@@ -135,10 +134,10 @@ def kfold(pds
                         ,[TimePeriod(start = pds.times[start] , end=None) for unit in pds.treated_units]
                         ,pds.treated_units)
         
-        l, m, up = cross_fold(og_pds, k, model, debias_flag)
-        ests[:, :, 0][:,i] = l
-        ests[:, :, 1][:,i] = m
-        ests[:, :, 2][:,i] = up
+        lower, mean_est, upper = cross_fold(og_pds, k, model, debias_flag)
+        ests[:, :, 0][:,i] = lower
+        ests[:, :, 1][:,i] = mean_est
+        ests[:, :, 2][:,i] = upper
 
     #pre = pd.DataFrame(np.zeros((pds.treated_start_idxs[0], 3)), columns = ['lower', 'mean', 'upper'])
     #post= pd.DataFrame(ests , columns = ['lower', 'mean', 'upper'])
@@ -154,8 +153,6 @@ def kfold(pds
 from typing import Any, List, Tuple, Optional, Union
 import pandas as pd
 from scipy.stats import t
-import multiprocessing as mp
-from functools import partial
 import hashlib
 from pathlib import Path
 
@@ -272,12 +269,12 @@ def panel_timeseries_kfold(
                         , pds.treated_units)
         
         # Run time series k-fold for this time period
-        l, m, up = _cross_fold(og_pds, k, model, debias_flag, blocks, holdout, alpha, cache, n_jobs, i, show_progress)
+        lower, mean_est, upper = _cross_fold(og_pds, k, model, debias_flag, blocks, holdout, alpha, cache, n_jobs, i, show_progress)
         
         # Store results for this time period
-        ests[:, i, 0] = l  # lower bounds
-        ests[:, i, 1] = m  # mean estimates
-        ests[:, i, 2] = up  # upper bounds
+        ests[:, i, 0] = lower  # lower bounds
+        ests[:, i, 1] = mean_est  # mean estimates
+        ests[:, i, 2] = upper  # upper bounds
 
     # Return in same format as original kfold, using np.nan for non-treatment periods
     return np.concatenate([np.full((len(pds.treated_units), pds.num_timepoints-pds.num_treated_time_periods[0]-pds.post_treated_periods, 3), np.nan)  # pre-test nans
@@ -349,7 +346,7 @@ def panel_timeseries_kfold_cumulative(
             pds.treated_units,
         )
 
-        l, m, up = _cross_fold_cumulative(
+        lower, mean_est, upper = _cross_fold_cumulative(
             og_pds,
             k,
             model,
@@ -363,9 +360,9 @@ def panel_timeseries_kfold_cumulative(
             show_progress,
         )
 
-        ests[:, i, 0] = l
-        ests[:, i, 1] = m
-        ests[:, i, 2] = up
+        ests[:, i, 0] = lower
+        ests[:, i, 1] = mean_est
+        ests[:, i, 2] = upper
 
     return np.concatenate([
         np.full((len(pds.treated_units), pds.num_timepoints - pds.num_treated_time_periods[0] - pds.post_treated_periods, 3), np.nan),

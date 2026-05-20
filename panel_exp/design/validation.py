@@ -14,7 +14,7 @@ from typing import Any, Dict, List, Optional
 import numpy as np
 import pandas as pd
 
-from panel_exp.design.constraints import validate_assignment_dict, ConstraintContext, prepare_constraint_context
+from panel_exp.design.constraints import validate_assignment_dict, prepare_constraint_context
 from panel_exp.spec import InterferenceAssumption
 
 

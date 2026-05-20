@@ -14,7 +14,6 @@ Semantics
 
 from __future__ import annotations
 
-import copy
 from dataclasses import dataclass
 from math import floor
 from typing import Dict, List, Optional, Set, Tuple
@@ -22,7 +21,6 @@ from typing import Dict, List, Optional, Set, Tuple
 import numpy as np
 import pandas as pd
 
-from panel_exp.design.rng import make_generator
 
 Unit = str
 

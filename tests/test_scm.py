@@ -11,7 +11,6 @@ import warnings
 
 import numpy as np
 import pandas as pd
-import pytest
 
 import sys
 from pathlib import Path

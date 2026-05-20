@@ -1,15 +1,13 @@
-import pytest
 
 
 import numpy as np
 import pandas as pd
 import sys 
-import os
 sys.path.insert(0, '..')
 
 #from panel_exp.inference import conformal
-from panel_exp.panel_data import long_df_to_paneldataset, PanelDataset, TimePeriod
-from panel_exp.methods.tbr import TBR, TBRRidge
+from panel_exp.panel_data import PanelDataset, TimePeriod
+from panel_exp.methods.tbr import TBRRidge
 from panel_exp.design import power
 
 
@@ -45,8 +43,8 @@ def test_power_train_test():
 
 	indices = pa.train_test_indices_f()
 	matrix = []
-	for l in indices:
-	    matrix.append(list(l[0]) + list(l[1]))
+	for window in indices:
+	    matrix.append(list(window[0]) + list(window[1]))
 
 	m = np.array(matrix)
 
@@ -73,8 +71,8 @@ def test_power_train_test():
 
 	indices = pa.train_test_indices_f()
 	matrix = []
-	for l in indices:
-	    matrix.append(list(l[0]) + list(l[1]))
+	for window in indices:
+	    matrix.append(list(window[0]) + list(window[1]))
 
 	m = np.array(matrix)
 

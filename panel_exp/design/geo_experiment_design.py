@@ -1,5 +1,5 @@
 import copy
-from typing import List, Optional, Tuple
+from typing import List, Optional
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -8,9 +8,9 @@ import pandas as pd
 from panel_exp.design import Rerandomization, greedy_match_markets
 from panel_exp.design.power import PowerAnalysis
 from panel_exp.design.registry import geo_run_design_supported, get_design_registry
-from panel_exp.evidence import DesignEvidence, ExperimentEvidence
-from panel_exp.panel_data import PanelDataset, TimePeriod
-from panel_exp.spec import InterferenceAssumption, spec_from_geo_design
+from panel_exp.evidence import ExperimentEvidence
+from panel_exp.panel_data import PanelDataset
+from panel_exp.spec import InterferenceAssumption
 
 # Legacy export: normalized names for geo-supported designs (tests, docs).
 GEO_RUN_DESIGN_SUPPORTED = geo_run_design_supported()

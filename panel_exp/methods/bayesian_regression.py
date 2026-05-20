@@ -27,15 +27,9 @@ import jax.numpy as jnp
 import numpy as np
 from jax import random 
 import numpyro
-import pandas as pd
 
-import jax.random as jrandom
-from scipy.stats import norm
-from numpyro import sample, plate
 import numpyro.distributions as dist
 
-from functools import partial
-from typing import Callable, Optional 
 from panel_exp.panel_data import PanelDataset
 from panel_exp.impact import ImpactAnalyzer
 from scipy import stats

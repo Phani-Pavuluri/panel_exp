@@ -9,19 +9,12 @@ A module for storing panel data in a wide format and providing methods for acces
 
 
 from __future__ import annotations
-from functools import reduce
-import operator
 import numpy as np
 import pandas as pd
-import scipy.stats as st
 from dataclasses import dataclass
 
 from matplotlib import pyplot as plt
-from typing import Callable, Dict, List, NewType, Optional, Tuple, Union
-from abc import (
-    ABC,
-    abstractmethod,
-)
+from typing import Callable, List, NewType, Optional, Tuple, Union
 
 import seaborn as sns
 sns.set_style('darkgrid')
