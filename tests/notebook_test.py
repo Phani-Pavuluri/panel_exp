@@ -9,7 +9,7 @@ from pathlib import Path
 import pytest
 
 # tests/ -> repository root (contains pyproject.toml and examples/)
-REPO_ROOT = Path(__file__).resolve().parent.parent
+REPO_ROOT = Path(__file__).resolve().parents[1]
 
 NOTEBOOK_DIRS = (
     REPO_ROOT / "examples" / "test_notebooks",

@@ -1,4 +1,4 @@
-"""Lightweight optional dependency probes (no heavy imports at package load)."""
+"""Lightweight optional dependency checks without heavy imports at package load."""
 
 from __future__ import annotations
 
