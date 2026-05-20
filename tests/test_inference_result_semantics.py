@@ -6,11 +6,18 @@ import numpy as np
 import pandas as pd
 import pytest
 
+from panel_exp.inference.modes import register_builtin_inference_modes
+from panel_exp.inference.registry import InferenceRegistry
 from panel_exp.inference_result import InferenceResult, IntervalType
+from panel_exp.methods.bayesian_regression import BayesianTBR
 from panel_exp.methods.scm import SyntheticControl
 from panel_exp.methods.tbr import TBRRidge
 from panel_exp.panel_data import PanelDataset, TimePeriod
 from tests.inference_registry_helpers import make_scm_panel, make_tbr_panel
+from tests.jax_test_helpers import require_compatible_jax
+from panel_exp.utils.optional_deps import jax_stack_skip_reason
+
+_JAX_SKIP_REASON = jax_stack_skip_reason()
 
 
 def test_interval_type_enum_values():
@@ -32,6 +39,14 @@ def test_unavailable_has_no_intervals():
     assert results["inference_metadata"]["confidence_level"] == pytest.approx(0.95)
 
 
+def test_bayesian_mode_spec_labels_credible_interval():
+    reg = InferenceRegistry()
+    register_builtin_inference_modes(reg)
+    spec = reg.resolve("Bayesian")
+    assert spec is not None
+    assert spec.path_interval_type == IntervalType.CREDIBLE_INTERVAL
+
+
 @pytest.mark.parametrize(
     "inference,expected_path",
     [
@@ -40,8 +55,8 @@ def test_unavailable_has_no_intervals():
             "Bayesian",
             IntervalType.CREDIBLE_INTERVAL,
             marks=pytest.mark.skipif(
-                __import__("importlib").util.find_spec("jax") is None,
-                reason="jax not installed",
+                _JAX_SKIP_REASON is not None,
+                reason=_JAX_SKIP_REASON or "jax unavailable",
             ),
         ),
         ("Conformal", IntervalType.CONFORMAL_INTERVAL),
@@ -49,10 +64,14 @@ def test_unavailable_has_no_intervals():
 )
 def test_path_interval_type_per_mode(inference: str, expected_path: IntervalType):
     if inference == "Bayesian":
-        pytest.importorskip("jax")
-    pds = make_scm_panel(n_ctrl=6)
-    est = SyntheticControl(inference=inference, alpha=0.05)
-    est.run_analysis(pds)
+        require_compatible_jax()
+        pds = make_tbr_panel(seed=99)
+        est = BayesianTBR(num_samples=20, full_model=False)
+        est.run_analysis(pds)
+    else:
+        pds = make_scm_panel(n_ctrl=6)
+        est = SyntheticControl(inference=inference, alpha=0.05)
+        est.run_analysis(pds)
     assert est.results["interval_type"] == expected_path.value
     assert est.results["intervals_available"] is True
     assert est.inference_result.effective_path_interval_type() == expected_path
