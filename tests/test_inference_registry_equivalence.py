@@ -15,9 +15,11 @@ import pytest
 
 from panel_exp.inference.modes import register_builtin_inference_modes
 from panel_exp.inference.registry import InferenceRegistry, get_inference_registry
+from panel_exp.methods.bayesian_regression import BayesianTBR
 from panel_exp.methods.scm import SyntheticControl
 from panel_exp.methods.tbr import TBRRidge, TBR
 from panel_exp.panel_data import PanelDataset, TimePeriod
+from tests.jax_test_helpers import require_compatible_jax
 
 from tests.inference_registry_helpers import (
     GOLDEN_DIR,
@@ -97,6 +99,9 @@ def _run_mode(mode: str, panel: PanelDataset | None = None, **extra_kwargs):
     if mode == "Placebo":
         est = SyntheticControl(inference="Placebo", alpha=0.05)
         pds = panel or GOLDEN_PANEL_BUILDERS[mode]()
+    elif mode == "Bayesian":
+        est = BayesianTBR(num_samples=20, full_model=False)
+        pds = panel or GOLDEN_PANEL_BUILDERS[mode]()
     else:
         est = TBRRidge(inference=inference, alpha=0.05)
         pds = panel or GOLDEN_PANEL_BUILDERS[mode]()
@@ -112,7 +117,7 @@ def _run_mode(mode: str, panel: PanelDataset | None = None, **extra_kwargs):
 @pytest.mark.parametrize("mode", [m for m in EXPECTED_MODE_KEYS if m is not None])
 def test_legacy_results_keys_match_contract(mode: str):
     if mode == "Bayesian":
-        pytest.importorskip("jax")
+        require_compatible_jax()
     est = _run_mode(mode)
     expected = LEGACY_RESULTS_KEYS[mode]
     actual_keys = set(est.results.keys())
@@ -250,7 +255,7 @@ def test_builtin_registry_keys_and_names_order():
 @pytest.mark.parametrize("mode", list(GOLDEN_NUMERIC_KEYS))
 def test_repeat_run_produces_identical_outputs(mode: str):
     if mode == "Bayesian":
-        pytest.importorskip("jax")
+        require_compatible_jax()
     if mode == "Placebo":
         est1 = _run_mode(mode)
         est2 = _run_mode(mode)
@@ -326,7 +331,7 @@ def test_numeric_outputs_match_golden_fixture(mode: str):
     if not (GOLDEN_DIR / f"{mode}.npz").exists():
         pytest.skip(f"golden fixture missing for {mode}")
     if mode == "Bayesian":
-        pytest.importorskip("jax")
+        require_compatible_jax()
     golden = load_golden(mode)
     est = _run_mode(mode)
     for key, expected in golden.items():

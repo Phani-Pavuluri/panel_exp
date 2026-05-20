@@ -7,5 +7,5 @@
   "workspaceFolder": "/workspace/panel_exp",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace/panel_exp,type=bind",
   "remoteUser": "vscode",
-  "postCreateCommand": "python -m pip install -U pip poetry && poetry config virtualenvs.create false && poetry install --with dev --no-interaction"
+  "postCreateCommand": "python -m pip install -U pip 'poetry==1.8.5' && poetry config virtualenvs.create false && poetry install --with dev --no-interaction"
 }
