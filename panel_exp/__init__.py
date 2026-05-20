@@ -7,6 +7,8 @@ __version__ = "0.2.1"
 from panel_exp.evidence import DesignEvidence, ExperimentEvidence, InferenceEvidence
 from panel_exp.inference_result import InferenceResult, IntervalType
 from panel_exp.panel_data import PanelDataset, TimePeriod, long_df_to_paneldataset
+from panel_exp.method_metadata import EstimatorMaturity
+from panel_exp.method_registry import get_method_registry
 from panel_exp.spec import (
     DesignMethod,
     DesignSpec,
@@ -38,6 +40,8 @@ __all__ = [
     "ExperimentSpec",
     "DesignMethod",
     "InterferenceAssumption",
+    "EstimatorMaturity",
+    "get_method_registry",
     "class_name_to_design_method",
     "spec_from_geo_design",
     "InferenceResult",

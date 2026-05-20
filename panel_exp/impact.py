@@ -26,8 +26,11 @@ class ImpactAnalyzer(ABC):
     """
     Abstract Base Class for running various methods SCM, ASynth, TBR with various inference methods i.e. JK, JK+
     This class will assume there is only one treatment time period.
-    
-    
+
+    Estimator maturity (validation readiness, not statistical superiority) is
+    available via ``estimator_metadata`` after ``run_analysis`` and in
+    ``results['inference_metadata']`` when inference runs.
+
     methods
     -------
     fit_data(panel_data):
@@ -92,6 +95,13 @@ class ImpactAnalyzer(ABC):
             inference_kwargs,
         )
         return self.results
+
+    @property
+    def estimator_metadata(self):
+        """Read-only maturity metadata for this estimator class (does not block runs)."""
+        from panel_exp.method_registry import get_method_registry
+
+        return get_method_registry().metadata_for_class(self.__class__.__name__)
 
     def summary(self):
         """
