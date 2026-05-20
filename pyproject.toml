@@ -26,6 +26,9 @@ funsor = "^0.4.5"
 pulp = "^2.7.0"
 tqdm = "^4.66.0"
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0"
+
 [tool.poetry.group.docs.dependencies]
 sphinx = "^7.4.7"
 nbsphinx = "^0.9.5"
