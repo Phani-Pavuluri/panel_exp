@@ -13,7 +13,7 @@ import scipy.stats as st
 from dataclasses import dataclass
 
 from matplotlib import pyplot as plt
-from typing import Dict, Optional
+from typing import Callable, Dict, Optional
 from abc import (
     ABC,
     abstractmethod,

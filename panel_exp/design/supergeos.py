@@ -10,7 +10,7 @@ from scipy.spatial.distance import cosine
 from joblib import Parallel, delayed
 from sklearn.cluster import KMeans
 from tqdm import tqdm  # Import tqdm for progress bar
-from pulp import LpProblem, LpVariable, lpSum, LpBinary, value
+from pulp import LpBinary, LpMinimize, LpProblem, LpVariable, lpSum, value
 
 
 """

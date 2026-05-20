@@ -17,7 +17,7 @@ import scipy.stats as st
 from dataclasses import dataclass
 
 from matplotlib import pyplot as plt
-from typing import Dict, List, NewType, Optional, Tuple, Union
+from typing import Callable, Dict, List, NewType, Optional, Tuple, Union
 from abc import (
     ABC,
     abstractmethod,
@@ -798,19 +798,17 @@ def long_df_to_paneldataset(
     if treated_end_times is not None:
         if isinstance(treated_end_times, timestamp_types):
             treated_end_times = [treated_end_times]
-        assert (
-            (len(treated_units) == len(treated_start_times) == len(treated_end_times)),
-            "The number of treated units, start times, and end times must be equal",
-        )
+        assert len(treated_units) == len(treated_start_times) == len(
+            treated_end_times
+        ), "The number of treated units, start times, and end times must be equal"
         treated_periods = [
             TimePeriod(start, end)
             for start, end in zip(treated_start_times, treated_end_times)
         ]
     elif treated_start_times is not None:
-        assert (
-            (len(treated_units) == len(treated_start_times)),
-            "The number of treated units and start times must be equal",
-        )
+        assert len(treated_units) == len(
+            treated_start_times
+        ), "The number of treated units and start times must be equal"
         treated_periods = [TimePeriod(start) for start in treated_start_times]
     else:
         treated_periods = None

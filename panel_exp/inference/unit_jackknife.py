@@ -39,7 +39,7 @@ def unit_jk(
     if variation == 1:
         squared_diffs = 1.0*np.zeros_like(mu)
     if variation == 2:
-        assert alpha != None, "Must pass alpha with variation 2"
+        assert alpha is not None, "Must pass alpha with variation 2"
         residuals = []
 
     # loop over units, dropping each one and estimating mu to construct uncertainty
@@ -231,13 +231,11 @@ def time_jackknife_plus(
             populations=panel.populations,
         )
         estimate = estimator(cur_panel, **estimator_kwargs)
-        mu_estimates.append(estimate["Y_0"][:-1])
         # subset to the post-treatment period
-        mu_estimates[time_idx, :] = estimate["Y_0"][num_pre:-1]
-        # We've appended this point to the
+        post_mu_estimates[time_idx, :] = estimate["Y_0"][num_pre:-1]
         R_estimates[time_idx] = estimate["Y_1"][-1] - estimate["Y_0"][-1]
 
-    vals = mu_estimates - R_estimates[:, None]
+    vals = post_mu_estimates - R_estimates[:, None]
     normal_means = vals.mean(1)
     normal_scale = vals.std(1)
     high = scipy.stats.norm.ppf(1 - alpha)
