@@ -1,4 +1,5 @@
 import copy
+from typing import Any, Optional
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -7,19 +8,113 @@ import seaborn as sns
 from joblib import Parallel, delayed
 from tqdm import tqdm
 
-from panel_exp.design.rng import make_generator
 from panel_exp.panel_data import PanelDataset, TimePeriod
 
 sns.set_style("darkgrid")
+
+# Documented semantics for simulation-based MDE (not classical analytic power).
+MDE_SEMANTICS: dict[str, Any] = {
+    "mde_method": "simulation_coverage",
+    "mde_definition": (
+        "Smallest tested effect level on the simulation grid where the "
+        "configured interval-coverage criterion falls below the power threshold"
+    ),
+    "classical_power": False,
+    "planning_use": "ranking_and_sensitivity_only",
+    "depends_on": [
+        "estimator",
+        "inference_method",
+        "panel_data",
+        "alpha",
+        "power_threshold",
+        "effect_grid",
+        "train/test_window_sampling",
+    ],
+}
+
+
+def evaluate_aa_calibration(
+    simulation_output: pd.DataFrame,
+    *,
+    alpha: float = 0.05,
+    null_effect_column: str = "prc_effect",
+    coverage_column: str = "mean_ss",
+    min_replications: int = 30,
+) -> dict[str, Any]:
+    """
+    Lightweight A/A calibration report from null-effect simulation rows.
+
+    Computes false-positive rate (share of null runs where the path interval
+    excludes zero) and mean coverage when ``mean_ss`` indicates the interval
+    covers zero. Intended for diagnostics only; not wired to production gates.
+
+    :param simulation_output: Power simulation table (e.g. ``PowerAnalysis.output_df``).
+    :param alpha: Nominal significance level (reported for context; assumes intervals match ``alpha``).
+    :param null_effect_column: Column identifying simulated percent effect (0 = null).
+    :param coverage_column: Boolean column where True means the interval covers zero.
+    :param min_replications: Minimum rows at null effect before suppressing low-n warnings.
+    """
+    if simulation_output is None or simulation_output.empty:
+        return {
+            "false_positive_rate": None,
+            "coverage": None,
+            "n_replications": 0,
+            "warnings": ["no simulation rows provided"],
+            "calibration_complete": False,
+        }
+
+    null_df = simulation_output.loc[
+        np.isclose(simulation_output[null_effect_column].astype(float), 0.0)
+    ]
+    n_replications = int(len(null_df))
+    warnings: list[str] = []
+    if n_replications < min_replications:
+        warnings.append(
+            f"only {n_replications} null replications (recommended >={min_replications})"
+        )
+
+    if n_replications == 0:
+        return {
+            "false_positive_rate": None,
+            "coverage": None,
+            "n_replications": 0,
+            "warnings": warnings + ["no null-effect rows found"],
+            "calibration_complete": False,
+            "alpha": alpha,
+        }
+
+    covers_zero = null_df[coverage_column].astype(bool)
+    coverage = float(covers_zero.mean())
+    false_positive_rate = float(1.0 - coverage)
+    return {
+        "false_positive_rate": false_positive_rate,
+        "coverage": coverage,
+        "n_replications": n_replications,
+        "warnings": warnings,
+        "calibration_complete": len(warnings) == 0,
+        "alpha": alpha,
+    }
 
 
 class PowerAnalysis:
     """
     Simulation-based pre-test power analysis.
 
-    **MDE definition:** minimum simulated percent effect such that the
-    inference method's interval covers zero on at least ``power`` (default 0.8)
-    of sliding train/test windows. This is **not** a closed-form analytic MDE.
+    **MDE definition (simulation / coverage-based, not classical):** For each
+    effect level on a percent grid, the method estimates the fraction of
+    sliding train/test windows where the inference interval covers zero
+    (``mean_ss``). The reported MDE is the first grid point where that
+    coverage-based "power" drops below ``power`` (default 0.8). This is
+    **not** a closed-form t-test or analytic minimum detectable effect.
+
+    **Reproducibility:** When ``random_state`` is an integer, window
+    subsampling and per-window inference seeds are deterministic
+    (``random_state + iteration`` passed to inference). When
+    ``random_state=None``, behavior is stochastic (legacy-compatible).
+
+    **Limitations:** Results depend on estimator choice, inference method,
+    panel history, effect grid, and simulation design. Use for planning and
+    ranking scenarios, not as sole proof of feasibility.
 
     :param panel: Required. A PanelDataset
     :param model: Required. The model to use to construct a synthetic control.
@@ -29,7 +124,7 @@ class PowerAnalysis:
     :param mx_effect: Default = 0.5. Maximum absolute percent effect to simulate.
     :param n_sample_prc: Default = 1. Fraction of train/test windows to sample.
     :param n_jobs: Default = 1. Parallel jobs.
-    :param random_state: Seed for reproducible window subsampling and effects.
+    :param random_state: Integer seed for reproducible runs; ``None`` for stochastic draws.
     :param alpha: Significance level for intervals (default 0.05 → 95% intervals).
     """
 
@@ -49,6 +144,8 @@ class PowerAnalysis:
         random_state=42,
         **kw_args,
     ):
+        if "njobs" in kw_args:
+            n_jobs = kw_args.pop("njobs")
         self.panel = panel
         self.model = model
         self.inference = inference
@@ -62,10 +159,28 @@ class PowerAnalysis:
         self.alpha = alpha
         self.ci_version = ci_version
         self.random_state = random_state
-        self._rng = make_generator(random_state)
+        self._rng = self._make_rng(random_state)
         self.kw_args = kw_args
+        self.mde_semantics: dict[str, Any] = dict(MDE_SEMANTICS)
+        self.aa_calibration: dict[str, Any] | None = None
 
+    @staticmethod
+    def _make_rng(random_state: Optional[int]) -> np.random.Generator:
+        if random_state is None:
+            return np.random.default_rng()
+        return np.random.default_rng(random_state)
 
+    def _inference_seed(self, iteration: int) -> Optional[int]:
+        if self.random_state is None:
+            return None
+        return int(self.random_state) + int(iteration)
+
+    def _inference_kwargs(self, iteration: int) -> dict[str, Any]:
+        infer_kw = dict(self.kw_args)
+        seed = self._inference_seed(iteration)
+        if seed is not None:
+            infer_kw.setdefault("random_state", seed)
+        return infer_kw
 
     def train_test_indices_f(self):
         """
@@ -109,7 +224,7 @@ class PowerAnalysis:
         mod_fe_pds = self.fake_effect(mod_pds, value_effect)
         est = self.model(self.inference)
 
-        est.run_analysis(mod_fe_pds )
+        est.run_analysis(mod_fe_pds, **self._inference_kwargs(iteration))
         
         cum_effect = (est.results['y'] - est.results['y_hat'])[-self.test_length:].sum()
         mean_effect = (est.results['y'] - est.results['y_hat'])[-self.test_length:].mean()
@@ -131,12 +246,30 @@ class PowerAnalysis:
         return [iteration, round(percent_effect,2) , bias, value_effect.mean(), (value_effect * self.test_length).sum() , cum_effect_low, cum_effect, cum_effect_high, mean_effect_low, mean_effect, mean_effect_high, mean_ss, cum_ss, y_actuals]
 
 
+    def _attach_mde_semantics(self, percent_effect: np.ndarray) -> None:
+        self.mde_semantics = {
+            **MDE_SEMANTICS,
+            "power_threshold": float(self.power),
+            "alpha": float(self.alpha),
+            "ci_version": int(self.ci_version),
+            "random_state": self.random_state,
+            "n_sample_prc": float(self.n_sample_prc),
+            "effect_grid_size": int(len(percent_effect)),
+            "mde_percent": getattr(self, "mde_percent", None),
+            "mde_kpi_cumulative": getattr(self, "mde_kpi_cumulative", None),
+        }
+        self.aa_calibration = evaluate_aa_calibration(
+            self.output_df,
+            alpha=self.alpha,
+        )
+
     def analysis(self):
         """
-        Method that executes all steps in analysis. 
-        :param: ci_version. Default = 1. Version of confidence interval to use.
-        """
+        Execute simulation steps and derive coverage-based MDE metrics.
 
+        See class docstring for MDE semantics. Does not use classical
+        closed-form power formulas.
+        """
 
         self.tt = self.train_test_indices_f()
         output = []
@@ -199,11 +332,15 @@ class PowerAnalysis:
             ci_upper_v2 = self.mde_kpi_cumulative + 1.96 * se_cum_effect_v2
             self.error_rate = (ci_upper_v2 - ci_lower_v2) / 2
 
+        self._attach_mde_semantics(percent_effect)
 
 
     def run_analysis(self):
         """
-        Method to run complete power analysis. 
+        Run the full simulation-based power analysis.
+
+        Populates ``output_df``, coverage-based ``mde_percent`` / ``mde_kpi_cumulative``,
+        ``mde_semantics``, and ``aa_calibration`` (null-effect diagnostic).
         """
         self.analysis()
 
