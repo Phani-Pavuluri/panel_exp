@@ -23,6 +23,9 @@ if str(_REPO) not in sys.path:
 
 from panel_exp.panel_data import PanelDataset, TimePeriod
 from panel_exp.methods.scm import SyntheticControlCVXPY, AugSynthCVXPY
+from tests.cvxpy_test_helpers import skip_without_cvxpy_osqp
+
+pytestmark = skip_without_cvxpy_osqp
 
 
 # ---------------------------------------------------------------------------
