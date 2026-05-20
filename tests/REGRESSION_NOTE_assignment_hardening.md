@@ -1,24 +1,27 @@
 # Regression note: assignment constraint hardening
 
-**Targeted suite** (`test_assignment_*`, `test_design_validation_gate`, `test_audit_fixes`, `test_design_registry*`): **90 passed**, 4 skipped (2026-05-19).
+**Targeted suite** (`test_assignment_*`, `test_design_validation_gate`, `test_audit_fixes`, `test_design_registry*`): **90 passed**, 4 skipped.
 
-**Full** `pytest tests/ --ignore=tests/util_test.py`: **173 passed**, **27 failed**, 9 skipped.
+**Full** `pytest tests/ --ignore=tests/util_test.py`: **174 passed**, **26 failed**, 9 skipped.
 
 **Ruff**: not run — `ruff` is not installed in `.venv` (`python -m ruff` → `No module named ruff`).
 
-## Pre-existing / out-of-scope full-suite failures (27)
+## Constraint-contract fix (resolved)
 
-| Test file | First error class | Notes |
-|-----------|-------------------|--------|
-| `tests/greedymatch_test.py` | `ValueError` | `control_whitelist unit not in control` — legacy greedy-match fixture vs stricter post-assign validation |
-| `tests/notebook_test.py` | `FileNotFoundError` | `pytest` executable not on PATH in notebook runner |
-| `tests/synthetic_did_test.py` (9 tests) | `ValueError` / `AssertionError` | `treated_periods` length vs `treated_units` in `panel_data.py` |
-| `tests/test_counterfactual_stability.py` (2 tests) | `ModuleNotFoundError` | missing `osqp` (cvxpy SCM path) |
-| `tests/test_scm.py` (5 tests) | `ModuleNotFoundError` | missing `osqp` |
-| `tests/trop_test.py` (9 tests) | `RuntimeError` | TROP `stability_first` grid finds no feasible configuration |
+`tests/greedymatch_test.py` previously used an incompatible fixture (`control_whitelist="2"` with `test_blacklist="2"`, and `test_whitelist="1"` with `control_blacklist="1"`). Under the stricter contract, whitelisted units must be assignable to their declared arm. The test now uses non-conflicting lists (`control_whitelist="3"`, `test_whitelist="5"`) and asserts dict assignment output.
 
-**Collection error** (excluded from 27): `tests/util_test.py` — `ModuleNotFoundError: panel_exp.util`.
+## Pre-existing / out-of-scope full-suite failures (26)
+
+| Test file | # | First error class | Notes |
+|-----------|---|-------------------|--------|
+| `tests/trop_test.py` | 9 | `RuntimeError` | TROP `stability_first` — no feasible grid configuration |
+| `tests/synthetic_did_test.py` | 9 | `ValueError` / `AssertionError` | `treated_periods` length vs `treated_units` in `panel_data.py` |
+| `tests/test_scm.py` | 5 | `ModuleNotFoundError` | missing `osqp` (cvxpy SCM path) |
+| `tests/test_counterfactual_stability.py` | 2 | `ModuleNotFoundError` | missing `osqp` |
+| `tests/notebook_test.py` | 1 | `FileNotFoundError` | `pytest` executable not on PATH in notebook runner |
+
+**Collection error** (excluded from 26): `tests/util_test.py` — `ModuleNotFoundError: panel_exp.util`.
 
 ## Scope confirmation
 
-This change set does **not** modify `panel_exp/methods/triply_robust_est.py`, TROP tests logic, SDID estimators, or SCM optimizer code paths. Uncommitted workspace edits to `impact.py`, `inference/`, `methods/scm.py`, and `methods/tbr.py` are **excluded** from the assignment-hardening commit.
+Assignment-hardening commits do **not** modify TROP, SDID, SCM/cvxpy, notebooks, inference registry, `ImpactAnalyzer`, or power/MDE logic.
