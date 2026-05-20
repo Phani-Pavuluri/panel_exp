@@ -25,6 +25,7 @@ arviz = "^0.20.0"
 funsor = "^0.4.5"
 pulp = "^2.7.0"
 tqdm = "^4.66.0"
+jaxlib = "0.4.29"
 
 [tool.poetry.group.docs.dependencies]
 sphinx = "^7.4.7"
@@ -33,11 +34,18 @@ sphinx-rtd-theme = "^3.0.1"
 numpydoc = "^1.8.0"
 myst-parser = "^2.0.0"
 
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.0.3"
+nbmake = "^1.5.5"
+osqp = "^1.1.1"
+cvxpy = ">=1.4.0,<1.5.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [[tool.poetry.source]]
 name = "pypi"
-priority = "default"
+priority = "primary"
 
