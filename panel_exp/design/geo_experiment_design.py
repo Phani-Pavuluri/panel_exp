@@ -36,7 +36,13 @@ class GeoExperimentDesign:
     - ``control_whitelist`` / ``test_whitelist``: units pinned to the declared arm.
     - Blacklists: units excluded from assignment (``control_test_blacklist`` excludes both arms).
     - Conflicting or impossible constraints raise ``ValueError`` during assignment.
-    - ``random_state`` on the design / geo orchestrator yields reproducible assignments.
+    - ``random_state`` on the design / geo orchestrator yields reproducible assignments
+      and is forwarded to simulation-based power / MDE analysis.
+    - MDE from ``PowerAnalysis`` is simulation/coverage-based (not classical analytic power);
+      see ``PowerAnalysis.mde_semantics``.
+    - Set ``interference`` explicitly (default ``unknown``). The package does not
+      estimate spillovers; optional ``spillover_notes`` / ``exposure_column`` are
+      metadata only.
     - When ``validate_after_assign`` and ``block_on_validation_fail`` are enabled (default),
       blocking validation failures prevent evidence and MDE generation.
     """
@@ -63,6 +69,8 @@ class GeoExperimentDesign:
         random_state: int = 42,
         alpha: float = 0.05,
         interference: InterferenceAssumption = InterferenceAssumption.UNKNOWN,
+        spillover_notes: Optional[str] = None,
+        exposure_column: Optional[str] = None,
         experiment_id: str = "geo_experiment",
         outcome_column: str = "outcome",
         unit_column: str = "unit",
@@ -96,8 +104,11 @@ class GeoExperimentDesign:
             self,
         )
         self.random_state = random_state
+        self.last_power_mde_semantics: dict | None = None
         self.alpha = alpha
         self.interference = interference
+        self.spillover_notes = spillover_notes
+        self.exposure_column = exposure_column
         self.validate_after_assign = validate_after_assign
         self.block_on_validation_fail = block_on_validation_fail
         self.experiment_id = experiment_id
@@ -299,13 +310,14 @@ class GeoExperimentDesign:
                 inference=self.inference,
                 test_length=test_length,
                 train_length=self.train_length,
-                njobs=self.njobs,
+                n_jobs=self.njobs,
                 n_sample_prc=self.n_sample_prc,
                 ci_version=self.ci_version,
                 alpha=self.alpha,
                 random_state=self.random_state,
             )
             pa.run_analysis()
+            self.last_power_mde_semantics = dict(pa.mde_semantics)
 
             power_curve_df = (
                 1

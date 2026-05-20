@@ -16,6 +16,14 @@ from panel_exp.panel_data import TimePeriod
 
 
 class InterferenceAssumption(str, Enum):
+    """
+    User-declared interference / spillover assumption for geo experiments.
+
+    Geo media experiments often violate SUTVA (no-interference). The package does
+    not estimate spillovers; declare the assumption explicitly. ``UNKNOWN``
+    weakens causal interpretation and triggers validation warnings.
+    """
+
     NO_INTERFERENCE = "no_interference"
     PARTIAL_INTERFERENCE = "partial_interference"
     UNKNOWN = "unknown"
@@ -32,9 +40,59 @@ class DesignMethod(str, Enum):
     MATCHED_PAIR = "matched_pair"
 
 
+def spillover_metadata_available(spec: "DesignSpec") -> bool:
+    """True when optional spillover-related metadata was provided (not estimated)."""
+    if spec.spillover_notes and str(spec.spillover_notes).strip():
+        return True
+    if spec.exposure_column and str(spec.exposure_column).strip():
+        return True
+    if spec.assumptions.get("adjacency_matrix") is not None:
+        return True
+    return False
+
+
+def interference_evidence_metadata(
+    spec: "DesignSpec",
+    *,
+    validation_warnings: Optional[List[str]] = None,
+) -> Dict[str, Any]:
+    """
+    Additive inference/evidence metadata for interference guardrails.
+
+    Does not rename existing evidence keys; merge into ``inference_metadata``.
+    """
+    meta: Dict[str, Any] = {
+        "interference_assumption": spec.interference.value,
+        "spillover_metadata_available": spillover_metadata_available(spec),
+        "interference_user_declared": spec.interference != InterferenceAssumption.UNKNOWN,
+        "spillover_estimation_available": False,
+    }
+    if spec.interference == InterferenceAssumption.NO_INTERFERENCE:
+        meta["interference_note"] = (
+            "User declared no_interference; not empirically verified by this package."
+        )
+    elif spec.interference == InterferenceAssumption.UNKNOWN:
+        meta["interference_note"] = (
+            "Interference unknown; causal estimates assume limited spillover unless validated."
+        )
+    if validation_warnings:
+        meta["interference_validation_warnings"] = list(validation_warnings)
+    if spec.spillover_notes:
+        meta["spillover_notes"] = str(spec.spillover_notes)
+    if spec.exposure_column:
+        meta["exposure_column"] = str(spec.exposure_column)
+    return meta
+
+
 @dataclass(frozen=True)
 class DesignSpec:
-    """Design-time specification (randomization, constraints, periods)."""
+    """
+    Design-time specification (randomization, constraints, periods).
+
+    Geo experiments often violate strict no-interference (SUTVA). Set
+    ``interference`` explicitly; default ``unknown`` records weak causal claims.
+    Optional spillover fields are metadata only (no spillover estimation).
+    """
 
     experiment_id: str
     outcome_column: str
@@ -54,6 +112,8 @@ class DesignSpec:
     alpha: float = 0.05
     assumptions: Dict[str, Any] = field(default_factory=dict)
     interference: InterferenceAssumption = InterferenceAssumption.UNKNOWN
+    spillover_notes: Optional[str] = None
+    exposure_column: Optional[str] = None
 
     def __post_init__(self) -> None:
         if not self.experiment_id or not str(self.experiment_id).strip():
@@ -133,6 +193,11 @@ def spec_canonical_payload(spec: DesignSpec) -> Dict[str, Any]:
     }
     payload["design_method"] = spec.design_method.value
     payload["interference"] = spec.interference.value
+    payload["spillover_metadata_available"] = spillover_metadata_available(spec)
+    if spec.spillover_notes:
+        payload["spillover_notes"] = str(spec.spillover_notes)
+    if spec.exposure_column:
+        payload["exposure_column"] = str(spec.exposure_column)
     payload["test_whitelist"] = sorted(str(u) for u in spec.test_whitelist)
     payload["control_whitelist"] = sorted(str(u) for u in spec.control_whitelist)
     payload["test_blacklist"] = sorted(str(u) for u in spec.test_blacklist)
@@ -191,6 +256,8 @@ def spec_from_geo_design(
     control_blacklist: Optional[List] = None,
     control_test_blacklist: Optional[List] = None,
     interference: InterferenceAssumption = InterferenceAssumption.UNKNOWN,
+    spillover_notes: Optional[str] = None,
+    exposure_column: Optional[str] = None,
     **assumptions: Any,
 ) -> DesignSpec:
     """Build a DesignSpec from geo experiment parameters."""
@@ -215,4 +282,6 @@ def spec_from_geo_design(
         alpha=alpha,
         assumptions=dict(assumptions),
         interference=interference,
+        spillover_notes=spillover_notes,
+        exposure_column=exposure_column,
     )

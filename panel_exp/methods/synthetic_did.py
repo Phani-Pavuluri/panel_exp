@@ -79,7 +79,7 @@ def _fit_omega(
 
     X = X_c.T  # (T0, N0)
     W = np.diag(lam)
-    A = X.T @ W @ X + zeta_omega * np.eye(N0)
+    A = X.T @ W @ X + zeta_omega * np.eye(_N0)
     b = X.T @ W @ y_c
     omega_unconstrained = np.linalg.solve(A, b)
     return _project_to_simplex(omega_unconstrained)
