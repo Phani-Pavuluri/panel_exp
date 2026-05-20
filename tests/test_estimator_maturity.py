@@ -71,7 +71,7 @@ def test_estimator_metadata_property_on_analyzer():
     assert meta.maturity == EstimatorMaturity.EXPERT_REVIEW
 
 
-def test_evidence_includes_maturity_fields():
+def test_evidence_accepts_maturity_inference_metadata():
     spec = spec_from_geo_design(
         "e1",
         "y",
@@ -82,8 +82,15 @@ def test_evidence_includes_maturity_fields():
         "balancedrandomization",
         estimator="TBRRidge",
     )
-    ev = DesignEvidence.from_assignment(spec, {"control": ["a"], "test_0": ["b"]})
-    assert "interference_assumption" in ev.inference_metadata
+    ev = DesignEvidence.from_assignment(
+        spec,
+        {"control": ["a"], "test_0": ["b"]},
+        inference_metadata={
+            "estimator_maturity": "expert_review",
+            "inference_mode_maturity": "expert_review",
+        },
+    )
+    assert ev.inference_metadata["estimator_maturity"] == "expert_review"
 
 
 def test_run_analysis_attaches_estimator_maturity_metadata():
