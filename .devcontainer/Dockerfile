@@ -4,4 +4,7 @@ RUN rm -f /etc/apt/sources.list.d/yarn.list /etc/apt/sources.list.d/yarn.list.sa
     && apt-get update \
     && export DEBIAN_FRONTEND=noninteractive \
     && apt-get install -y --no-install-recommends git build-essential \
-    &&
+    && apt-get clean -y \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace/panel_exp
