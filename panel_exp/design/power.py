@@ -1,55 +1,69 @@
-import pandas as pd 
-import numpy as np
-from panel_exp.panel_data import long_df_to_paneldataset, PanelDataset, TimePeriod
 import copy
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import seaborn as sns
 from joblib import Parallel, delayed
 from tqdm import tqdm
-import random
-import matplotlib.pyplot as plt
-import seaborn as sns
-sns.set_style('darkgrid')
+
+from panel_exp.design.rng import make_generator
+from panel_exp.panel_data import PanelDataset, TimePeriod
+
+sns.set_style("darkgrid")
+
 
 class PowerAnalysis:
     """
-    A class for performing a pre-test power analysis. 
+    Simulation-based pre-test power analysis.
+
+    **MDE definition:** minimum simulated percent effect such that the
+    inference method's interval covers zero on at least ``power`` (default 0.8)
+    of sliding train/test windows. This is **not** a closed-form analytic MDE.
 
     :param panel: Required. A PanelDataset
     :param model: Required. The model to use to construct a synthetic control.
     :param inference: Required. Method used to create confidence intervals.
-    :param test_length: Required. The length of the test period. 
-    :param train_length: Default=None. The length of pre-test data to use. Defaults to all available data. 
-    :param mx_effect: Default = 1. This represents the maximum effect to simulate. 
-    :param n_sample_prc: Default = 1. The percent of the dataset to sample. 
-    :param n_jobs: Default = 1. The number of jobs to run in parallel.
+    :param test_length: Required. The length of the test period.
+    :param train_length: Default=None. The length of pre-test data to use.
+    :param mx_effect: Default = 0.5. Maximum absolute percent effect to simulate.
+    :param n_sample_prc: Default = 1. Fraction of train/test windows to sample.
+    :param n_jobs: Default = 1. Parallel jobs.
+    :param random_state: Seed for reproducible window subsampling and effects.
+    :param alpha: Significance level for intervals (default 0.05 → 95% intervals).
     """
 
-    def __init__(self 
-                ,panel
-                ,model
-                ,inference
-                ,test_length
-                ,power=.8
-                ,train_length=None 
-                ,alpha = .1
-                ,mx_effect=.5
-                ,n_sample_prc = 1
-                ,n_jobs=1
-                ,ci_version=1
-                ,**kw_args):
-
-            self.panel = panel
-            self.model = model 
-            self.inference = inference
-            self.L = len(panel.times)
-            self.test_length = test_length
-            self.power = power
-            self.train_length = train_length
-            self.mx_effect = mx_effect
-            self.n_jobs = n_jobs
-            self.n_sample_prc = n_sample_prc
-            self.alpha = alpha 
-            self.ci_version = ci_version 
-            self.kw_args = kw_args
+    def __init__(
+        self,
+        panel,
+        model,
+        inference,
+        test_length,
+        power=0.8,
+        train_length=None,
+        alpha=0.05,
+        mx_effect=0.5,
+        n_sample_prc=1,
+        n_jobs=1,
+        ci_version=1,
+        random_state=42,
+        **kw_args,
+    ):
+        self.panel = panel
+        self.model = model
+        self.inference = inference
+        self.L = len(panel.times)
+        self.test_length = test_length
+        self.power = power
+        self.train_length = train_length
+        self.mx_effect = mx_effect
+        self.n_jobs = n_jobs
+        self.n_sample_prc = n_sample_prc
+        self.alpha = alpha
+        self.ci_version = ci_version
+        self.random_state = random_state
+        self._rng = make_generator(random_state)
+        self.kw_args = kw_args
 
 
 
@@ -64,18 +78,12 @@ class PowerAnalysis:
         assert self.train_length + self.test_length <= self.L, "Train + Test Length must be less or equal to available data points "
         train_test_indices = []
 
-        indices = range(self.L)
         for i in range(self.L):
-            start = i
-            end = start+self.train_length
-
-            # if start+self.train_length+self.test_length == self.L+1:
-            #     print('breaking')
-                # break
-
-            train = np.take(indices, [range(i,end)], mode='wrape')
-            test = np.take(indices, [range(end,end+self.test_length)], mode='wrape')
-            train_test_indices.append(list(train) + list(test))
+            train = [(i + j) % self.L for j in range(self.train_length)]
+            test = [
+                (i + self.train_length + j) % self.L for j in range(self.test_length)
+            ]
+            train_test_indices.append([train, test])
     
         return train_test_indices
 
@@ -147,7 +155,9 @@ class PowerAnalysis:
         
         self.output_df = pd.DataFrame([], columns=['iteration', 'prc_effect', 'bias', 't_effect', 't_cum_effect',  'cum_effect_low', 'cum_effect', 'cum_effect_high', 'mean_effect_low', 'mean_effect', 'mean_effect_high', 'mean_ss', 'cum_ss'])
         
-        self.tt = random.sample(self.tt, int(len(self.tt)*self.n_sample_prc))
+        n_keep = max(1, int(len(self.tt) * self.n_sample_prc))
+        idx = self._rng.choice(len(self.tt), size=n_keep, replace=False)
+        self.tt = [self.tt[i] for i in sorted(idx)]
 
         for k in tqdm(self.tt):
             train = k[0]

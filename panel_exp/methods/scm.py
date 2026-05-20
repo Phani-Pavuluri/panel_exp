@@ -60,7 +60,7 @@ class SyntheticControl(ImpactAnalyzer):
         inference: Optional[Callable] = None,
         penalty: str = "l1",
         penalty_strength: float = 0.05,
-        alpha: float = 0.1,
+        alpha: float = 0.05,
         full_model = False ,
         method = 'SLSQP'): 
 
@@ -179,7 +179,7 @@ class AugSynth(ImpactAnalyzer):
         inference: Optional[Callable] = None,
         penalty: str = "entropy", 
         penalty_strength: float = 0.01,
-        alpha: float = 0.1,
+        alpha: float = 0.05,
         outcome_model:Callable = Ridge,
         full_model = False 
         , model_args = {}
@@ -279,7 +279,7 @@ class SyntheticControlCVXPY(ImpactAnalyzer):
         inference: Optional[Callable] = None,
         penalty: str = "entropy",
         penalty_strength: float = 0.01,
-        alpha: float = 0.1,
+        alpha: float = 0.05,
         full_model: bool = False,
         donor_correlation_threshold: float = 0.0,
         min_donors: int = 5,
@@ -463,7 +463,7 @@ class AugSynthCVXPY(ImpactAnalyzer):
         inference: Optional[Callable] = None,
         penalty: str = "entropy",
         penalty_strength: float = 0.01,
-        alpha: float = 0.1,
+        alpha: float = 0.05,
         outcome_model: Callable = Ridge,
         full_model: bool = False,
         model_args: dict = {},

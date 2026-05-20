@@ -6,50 +6,34 @@ The package is organized around three areas:
 
 | Area | What it covers |
 |------|----------------|
-| **Design** | Geo experiment design, randomization (complete, stratified, thinning, rerandomization, QuickBlock, matched pairs, greedy matching), power / MDE, assignment helpers |
-| **Methods** | Synthetic control / SCM, TBR, Bayesian regression, multi-task GP, diff-in-diff, synthetic DID, triply robust estimators, and related panel estimators |
-| **Inference** | K-fold and residual-based procedures, placebos, conformal methods, unit jackknife, and other uncertainty tools |
+| **Design** | Geo experiment design, randomization (`BalancedRandomization`, `CompleteRandomization`, stratified, thinning, rerandomization, greedy matching), power / MDE, validation gates |
+| **Methods** | Synthetic control / SCM, TBR, Bayesian regression, multi-task GP, diff-in-diff, synthetic DID, triply robust estimators |
+| **Inference** | K-fold and residual-based procedures, placebos, conformal methods, unit jackknife |
 
 **Python:** 3.10+ (see `pyproject.toml` for pinned dependencies).
+
+**Default uncertainty:** Estimators use `alpha=0.05` (95% intervals) unless you set `alpha` explicitly.
 
 ---
 
 ## Documentation
 
-- **Hosted docs:** If your fork enables GitLab Pages (or similar), publish from the default branch using `.gitlab-ci.yml` and use the resulting site URL.
+- **Hosted docs:** Pre-built HTML under `gh-pages/` (open `gh-pages/index.html` locally).
+- **User guide source:** `gh-pages/_sources/user_guide.md.txt`
+- **Uncertainty notes:** `panel_exp/inference/uncertainty.md`
 
-- **Local build:** from the repo root, with docs extras installed:
-
-  ```bash
-  poetry install --with docs
-  poetry run make -C docs clean html
-  ```
-
-  Open `docs/build/html/index.html` in a browser.
-
-- **Long-form guide:** `docs/source/user_guide.md` (architecture, APIs, and workflows).
-
-Sphinx also pulls a short intro from `docs/README.rst`; keep that file aligned with major version or install changes if you maintain both.
+There is no separate `docs/` Sphinx tree in this repository; use `gh-pages/` or build docs from the published site artifacts.
 
 ---
 
 ## Install locally (development)
 
-This project uses [Poetry](https://python-poetry.org/) (see CircleCI for a pinned version, e.g. 1.7.1).
-
 ```bash
 git clone <repository-url>
 cd panel_exp
 poetry install
+poetry run pytest
 ```
-
-For documentation tooling as well:
-
-```bash
-poetry install --with docs
-```
-
-Activate the virtualenv (`poetry shell`) or prefix commands with `poetry run`.
 
 ---
 
@@ -57,46 +41,93 @@ Activate the virtualenv (`poetry shell`) or prefix commands with `poetry run`.
 
 ```python
 import pandas as pd
-from panel_exp.panel_data import long_df_to_paneldataset
-from panel_exp.methods.scm import SyntheticControl
+from panel_exp import (
+    PanelDataset,
+    long_df_to_paneldataset,
+    BalancedRandomization,
+    SyntheticControl,
+    DesignSpec,
+    DesignMethod,
+    TimePeriod,
+)
 
 long_df = pd.read_csv("kansas_parsed.csv")
 panel_data = long_df_to_paneldataset(
     long_df, "year_qtr", "state", "lngdp", ["Kansas"], 2012
 )
 
-scm = SyntheticControl()
+# Volume-balanced geo assignment (not Bernoulli randomization)
+design = BalancedRandomization(treatment_probability=0.3, random_state=42)
+assignment = design.assign(panel_data=panel_data, n_test_grps=1)
+
+scm = SyntheticControl(inference="Kfold", alpha=0.05)
 scm.run_analysis(panel_data)
 scm.plot()
 ```
 
-For geo design workflows, see `docs/source/user_guide.md` (e.g. `GeoExperimentDesign` and `long_df_to_paneldataset`).
+### Experiment specification
+
+Use `DesignSpec` / `ExperimentSpec` for explicit contracts (periods, alpha, interference assumption, constraints):
+
+```python
+from panel_exp import DesignSpec, DesignMethod, InterferenceAssumption, TimePeriod
+
+spec = DesignSpec(
+    experiment_id="fy26_us_geo",
+    outcome_column="conversions",
+    unit_column="geo",
+    time_column="date",
+    pre_period=TimePeriod(0, 90),
+    experiment_period=TimePeriod(90, 120),
+    design_method=DesignMethod.BALANCED_RANDOMIZATION,
+    random_state=42,
+    alpha=0.05,
+    interference=InterferenceAssumption.UNKNOWN,
+)
+```
+
+### Geo experiment orchestration
+
+`GeoExperimentDesign` supports: `greedy_match_markets`, `ThinningDesign`, `BalancedRandomization`, `CompleteRandomization`, `StratifiedRandomization` (via rerandomization). **QuickBlock** and **MatchedPair** must be called directly — not through `run_design`.
+
+---
+
+## Randomization naming
+
+| Class | Behavior |
+|-------|----------|
+| `BalancedRandomization` | KPI volume–balanced heuristic (shuffled units, greedy share targets) |
+| `CompleteRandomization` | Bernoulli assignment of free units with whitelist/blacklist enforcement |
+| `StratifiedRandomization` | Strata by pre-period mean KPI, balanced within strata |
+
+---
+
+## Power / MDE
+
+`PowerAnalysis` uses **simulation**: sliding train/test windows, injected effects, and CI coverage vs a power threshold. Reported MDE is **not** a closed-form analytic MDE. Pass `random_state` for reproducibility.
 
 ---
 
 ## Tests
 
-Tests use [pytest](https://docs.pytest.org/en/stable/getting-started.html).
-
 ```bash
-poetry install
 poetry run pytest
 ```
 
-**Before opening a pull request:** run the full test suite locally and ensure it passes. (This repo uses Poetry; there is no `setup.py`. Prefer `poetry run pytest` rather than `python setup.py pytest`.)
-
 ---
 
-## Project layout (high level)
+## Project layout
 
-- `panel_exp/` — library code (`design`, `methods`, `inference`, `panel_data`, `utils`, …)
-- `tests/` — pytest tests
-- `docs/` — Sphinx sources and Makefile
-- `scripts/` — analysis and diagnostic scripts (not part of the wheel API)
-- `examples/` — notebooks and examples
+- `panel_exp/` — library (`design`, `methods`, `inference`, `spec`, `evidence`, …)
+- `tests/` — pytest (`tests/fixtures/` for synthetic data)
+- `gh-pages/` — published documentation HTML
+- `scripts/` — diagnostic scripts (not part of the wheel API)
+- `examples/` — notebooks (some reference dev-only modules)
 
 ---
 
 ## Status
 
-Under active development. Version in `pyproject.toml` is the source of truth for the current release line.
+Under active development. Version in `pyproject.toml` and `panel_exp.__version__` is the source of truth.
+
+**Not installable from notebooks:** `panel_exp.pretest_analysis` is referenced in some example notebooks but is not shipped in the wheel; use `PowerAnalysis` and `GeoExperimentDesign` instead.

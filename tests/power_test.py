@@ -14,7 +14,7 @@ from panel_exp.design import power
 
 
 def test_power_train_test():
-	long_df = pd.read_csv('examples/data/meta_geo.csv')
+	long_df = pd.read_csv('tests/fixtures/power_geo.csv')
 	long_df = long_df[long_df.time < 91]
 	wide_df = pd.pivot_table(long_df, index='location', columns='time', values='Y')
 	pds = PanelDataset(wide_df  )
@@ -25,9 +25,9 @@ def test_power_train_test():
 
 	end = wide_df.columns[-1]
 	L = len(wide_df.columns)
-	test_length = 14
+	test_length = 7
 
-	panel_data = PanelDataset(wide_agg.T, treated_units = ['treated'], treated_periods=[TimePeriod(start=L-test_length)])
+	panel_data = PanelDataset(wide_agg.T, treated_units=['treated'], treated_periods=[TimePeriod(start=L - test_length)])
 
 
 
@@ -40,7 +40,7 @@ def test_power_train_test():
                          , TBRRidge
                          , 'Kfold'
                          , test_length
-                         , train_length=40
+                         , train_length=5
                          , mx_effect=.25 
                          , n_jobs=10)
 

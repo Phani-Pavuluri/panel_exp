@@ -2,7 +2,7 @@
 name = "panel_exp"
 version = "0.2.1"
 description = "Panel Modeling"
-authors = [Phani Pavuluri]
+authors = ["Phani Pavuluri"]
 readme = "README.md"
 
 [tool.poetry.dependencies]

@@ -94,7 +94,7 @@ class TBR(ImpactAnalyzer):
     """
     def __init__(self
             , inference: Optional[Callable] = None
-            , alpha: float = 0.1
+            , alpha: float = 0.05
             , full_model = False ):
 
         self.inference = inference
@@ -172,7 +172,7 @@ class TBRRidge(ImpactAnalyzer):
     fit_model():
         Internal method to fit the model.
     """
-    def __init__(self, inference: Optional[Callable] = None, alpha: float = 0.1, full_model=False):
+    def __init__(self, inference: Optional[Callable] = None, alpha: float = 0.05, full_model=False):
         self.inference = inference
         self.alpha = alpha
         self.ppf = stats.norm.ppf(self.alpha / 2 + (1 - self.alpha))  # two-sided
