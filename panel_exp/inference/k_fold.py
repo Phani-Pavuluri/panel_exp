@@ -8,9 +8,15 @@ A T-Test for Synthetic Control
 Implementation of: https://arxiv.org/pdf/1812.10820.pdf
 """
 
-from panel_exp.panel_data import PanelDataset, TimePeriod
-import pandas as pd
+from pathlib import Path
+from typing import Any, List, Optional, Tuple, Union
+
+import hashlib
 import numpy as np
+import pandas as pd
+from scipy.stats import t
+
+from panel_exp.panel_data import PanelDataset, TimePeriod
 
 
 def debias(model
@@ -60,8 +66,6 @@ def cross_fold(pds
         Model to be used for estimation
     :param alpha:
     """
-    
-    from scipy.stats import t
     
     pre_t = (len(pds.times)-pds.num_treated_time_periods) #.min() # add min
     holdout = int(np.floor(np.min([pre_t / k, pds.num_treated_time_periods])))
@@ -148,13 +152,6 @@ def kfold(pds
                            , np.zeros((len(pds.treated_units), pds.post_treated_periods, 3 ))]  #post-test estimates. default to zero]
                            , axis=1)
 
-
-
-from typing import Any, List, Tuple, Optional, Union
-import pandas as pd
-from scipy.stats import t
-import hashlib
-from pathlib import Path
 
 def panel_timeseries_kfold(
     pds: 'PanelDataset',

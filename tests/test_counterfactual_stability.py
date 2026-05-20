@@ -7,6 +7,8 @@ import os
 # Add the panel_exp package to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
+from panel_exp.methods.tbr import TBRRidge
+from panel_exp.panel_data import PanelDataset, TimePeriod
 from panel_exp.utils.counterfactual_stability_tests import (
     detect_break_candidates,
     run_residual_drift_test,
@@ -497,9 +499,6 @@ def test_compare_estimator_stability_disagreement():
 # ---------------------------------------------------------------------------
 # TBRRidge normalisation tests
 # ---------------------------------------------------------------------------
-
-from panel_exp.methods.tbr import TBRRidge
-from panel_exp.panel_data import PanelDataset, TimePeriod
 
 
 def _make_scale_mismatch_panel(treat_start=30, seed=7):
