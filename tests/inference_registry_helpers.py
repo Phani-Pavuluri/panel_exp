@@ -13,7 +13,9 @@ GOLDEN_DIR = Path(__file__).parent / "fixtures" / "inference_golden"
 
 # Legacy ``self.results`` key contract per inference mode (post-run, success path).
 LEGACY_RESULTS_KEYS: dict[str | None, frozenset[str]] = {
-    None: frozenset({"times", "y", "y_hat"}),
+    None: frozenset(
+        {"times", "y", "y_hat", "interval_type", "intervals_available", "inference_metadata"}
+    ),
     "UnitJackKnife": frozenset({"times", "y", "y_hat", "y_lower", "y_upper"}),
     "JKP": frozenset({"times", "y", "y_hat", "y_lower", "y_upper"}),
     "Bayesian": frozenset({"times", "y", "y_hat", "y_lower", "y_upper"}),
