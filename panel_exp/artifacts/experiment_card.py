@@ -131,6 +131,30 @@ def _maturity_evidence_markdown(
     return "\n".join(lines)
 
 
+def _readiness_assessment_markdown(
+    readiness_assessment: Mapping[str, Any],
+) -> str:
+    """Render optional decision-readiness block (advisory, non-blocking)."""
+    if not readiness_assessment:
+        return ""
+    from panel_exp.policy.readiness import ReadinessAssessment, ReadinessStatus
+
+    try:
+        status = ReadinessStatus(str(readiness_assessment.get("status", "")))
+    except ValueError:
+        status = ReadinessStatus.READY_WITH_REVIEW
+    assessment = ReadinessAssessment(
+        status=status,
+        reasons=tuple(readiness_assessment.get("reasons") or ()),
+        warnings=tuple(readiness_assessment.get("warnings") or ()),
+        recommended_actions=tuple(
+            readiness_assessment.get("recommended_actions") or ()
+        ),
+        inputs_used=tuple(readiness_assessment.get("inputs_used") or ()),
+    )
+    return assessment.to_markdown()
+
+
 def _validation_metadata_summary(
     inference_metadata: Mapping[str, Any],
     artifacts: Mapping[str, Any],
@@ -172,6 +196,7 @@ class ExperimentCard:
     validation_metadata_summary: Dict[str, Any] = field(default_factory=dict)
     calibration_summary: str = ""
     maturity_evidence_summary: str = ""
+    readiness_assessment_summary: str = ""
     spec_hash: str = _UNKNOWN
     assignment_hash: str = _UNKNOWN
     input_structure_hash: str = _UNKNOWN
@@ -200,6 +225,7 @@ class ExperimentCard:
             ),
             "calibration_summary": self.calibration_summary,
             "maturity_evidence_summary": self.maturity_evidence_summary,
+            "readiness_assessment_summary": self.readiness_assessment_summary,
             "spec_hash": self.spec_hash,
             "assignment_hash": self.assignment_hash,
             "input_structure_hash": self.input_structure_hash,
@@ -297,6 +323,8 @@ class ExperimentCard:
             lines.append(self.calibration_summary.strip())
         if self.maturity_evidence_summary:
             lines.extend(["", self.maturity_evidence_summary.strip()])
+        if self.readiness_assessment_summary:
+            lines.extend(["", self.readiness_assessment_summary.strip()])
         lines.extend(
             [
                 "",
@@ -383,6 +411,13 @@ def _card_from_common(
             inference_metadata["maturity_evidence"]
         )
 
+    readiness_raw = artifacts.get("readiness_assessment")
+    if not isinstance(readiness_raw, Mapping):
+        readiness_raw = inference_metadata.get("readiness_assessment")
+    readiness_md = ""
+    if isinstance(readiness_raw, Mapping):
+        readiness_md = _readiness_assessment_markdown(readiness_raw)
+
     return ExperimentCard(
         experiment_id=_as_str(experiment_id),
         created_at=_as_str(created_at),
@@ -408,6 +443,7 @@ def _card_from_common(
             artifacts.get("calibration_report")
         ),
         maturity_evidence_summary=maturity_md,
+        readiness_assessment_summary=readiness_md,
         spec_hash=_as_str(spec_hash),
         assignment_hash=_as_str(assignment_hash),
         input_structure_hash=_as_str(input_structure_hash or _UNKNOWN),
