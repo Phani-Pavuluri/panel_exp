@@ -6,6 +6,13 @@ scenarios. This package does not implement estimators or change inference math.
 """
 
 from panel_exp.validation.metrics import ValidationResult
+from panel_exp.validation.calibration_report import (
+    CalibrationReport,
+    attach_calibration_report,
+    build_calibration_report,
+    calibration_markdown_from_mapping,
+    compute_calibration_warnings,
+)
 from panel_exp.validation.recovery_metrics import RecoveryResult, SimulationRecord
 from panel_exp.validation.recovery_runner import (
     RecoveryRunner,
@@ -28,6 +35,11 @@ from panel_exp.validation.synthetic_scenarios import (
 from panel_exp.validation.synthetic_world import SyntheticScenario, SyntheticWorld
 
 __all__ = [
+    "CalibrationReport",
+    "attach_calibration_report",
+    "build_calibration_report",
+    "calibration_markdown_from_mapping",
+    "compute_calibration_warnings",
     "ESTIMATOR_RECOVERY_SCENARIOS",
     "EstimatorValidationReport",
     "RECOVERY_SCENARIO_REGISTRY",

@@ -11,6 +11,7 @@ from dataclasses import dataclass, field
 from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 
 from panel_exp.evidence import DesignEvidence, ExperimentEvidence
+from panel_exp.validation.calibration_report import calibration_markdown_from_mapping
 
 CARD_VERSION = "1.0"
 
@@ -121,6 +122,7 @@ class ExperimentCard:
     interval_type: str = _UNKNOWN
     intervals_available: Optional[bool] = None
     validation_metadata_summary: Dict[str, Any] = field(default_factory=dict)
+    calibration_summary: str = ""
     spec_hash: str = _UNKNOWN
     assignment_hash: str = _UNKNOWN
     input_structure_hash: str = _UNKNOWN
@@ -147,6 +149,7 @@ class ExperimentCard:
             "validation_metadata_summary": _plain_value(
                 self.validation_metadata_summary
             ),
+            "calibration_summary": self.calibration_summary,
             "spec_hash": self.spec_hash,
             "assignment_hash": self.assignment_hash,
             "input_structure_hash": self.input_structure_hash,
@@ -239,6 +242,9 @@ class ExperimentCard:
             lines.append(
                 "- *No synthetic recovery validation metadata attached to this run.*"
             )
+        if self.calibration_summary:
+            lines.append("")
+            lines.append(self.calibration_summary.strip())
         lines.extend(
             [
                 "",
@@ -332,6 +338,9 @@ def _card_from_common(
         intervals_available=intervals_available,
         validation_metadata_summary=_plain_value(
             _validation_metadata_summary(meta, artifacts)
+        ),
+        calibration_summary=calibration_markdown_from_mapping(
+            artifacts.get("calibration_report")
         ),
         spec_hash=_as_str(spec_hash),
         assignment_hash=_as_str(assignment_hash),
