@@ -6,7 +6,9 @@ from panel_exp.design.assign import (
     Rerandomization,
     greedy_match_markets,
 )
-from panel_exp.design.geo_experiment_design import GeoExperimentDesign, GEO_RUN_DESIGN_SUPPORTED
+from panel_exp.design.geo_experiment_design import GEO_RUN_DESIGN_SUPPORTED, GeoExperimentDesign
+from panel_exp.design.matched_pair import MatchedPair
+from panel_exp.design.quickblock import QuickBlock
 from panel_exp.design.registry import DesignSpec as RegistryDesignSpec, get_design_registry
 from panel_exp.design.power import PowerAnalysis
 from panel_exp.design.validation import DesignValidationResult, ValidationStatus, validate_design

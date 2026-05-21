@@ -1,7 +1,5 @@
-
-
 # UTIL Tests
-from panel_exp.util import standardize
+from panel_exp.methods.bayesian_regression import standardize
 import numpy as np
 import pandas as pd
 

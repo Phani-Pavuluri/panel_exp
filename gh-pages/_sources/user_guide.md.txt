@@ -2,6 +2,24 @@
 
 The `panel_exp` package is a comprehensive toolkit for panel data modeling and experimental design, specifically designed for causal inference in geo-based experiments. It provides a complete workflow from experimental design through statistical analysis to inference, making it ideal for marketing experiments and other causal inference applications.
 
+## Current package status (code truth)
+
+This section reflects the installed package behavior. Older examples below may reference modules that are not shipped (for example `panel_exp.pretest_analysis` or `panel_exp.util`).
+
+**GeoExperimentDesign.run_design** supports only: `greedy_match_markets`, `ThinningDesign`, `BalancedRandomization`, `CompleteRandomization`, `StratifiedRandomization` (each wrapped in `Rerandomization`). **QuickBlock**, **MatchedPair**, **TrimmedMatchDesign**, and **SupergeoModel** are registered but **not** geo-run supported — use their design classes directly; selecting them as `base_randomizer_cls` raises `ValueError`.
+
+**Evidence:** `DesignEvidence`, `ExperimentEvidence`, and optional `InferenceEvidence` record hashes (`spec_hash`, `assignment_hash`, `input_structure_hash`), warnings, errors, and validation summaries. **Experiment card:** `build_experiment_card(evidence)` produces a markdown readout; optional `attach_experiment_card_markdown` adds `artifacts["experiment_card_markdown"]`.
+
+**Maturity:** `EstimatorMaturity` ratings are conservative operational labels (not statistical superiority). The catalog currently assigns no `production_safe` rating.
+
+**Inference labels:** Interval outputs use explicit semantics — `confidence_interval`, `credible_interval`, `conformal_interval`, `placebo_band`, or `unavailable`. Placebo inference exports **placebo bands**, not generic confidence intervals.
+
+**Power / MDE:** `PowerAnalysis` is simulation-based (coverage under injected effects), not a classical closed-form analytic MDE. Use `random_state` for reproducibility.
+
+**Interference:** Declare `InterferenceAssumption` (`unknown`, `no_interference`, `partial_interference`). The package does not estimate spillovers.
+
+**Recovery validation:** `panel_exp.validation.RecoveryRunner` and `validation_metadata` are diagnostic synthetic-recovery summaries; they do not auto-promote maturity.
+
 ## Package Architecture
 
 The package is organized into three main modules that follow the natural progression of an experiment:
@@ -20,7 +38,8 @@ The design module provides comprehensive tools for creating robust experimental 
 The main orchestrator for creating geo-based experiment designs. Based on the params provided, this function returns the best test and control markets along with pre-test sensitivity metrics.
 
 **Key Capabilities:**
-- **Multi-Strategy Randomization**: Supports Complete, Stratified, Thinning, Rerandomization, QuickBlock, MatchedPair, and greedy matching algorithms
+- **Geo-run randomization** (via `run_design`): Complete, Stratified, Thinning, Balanced, greedy matching — each through `Rerandomization`
+- **Registered lower-level designs** (not via `run_design`): QuickBlock, MatchedPair, TrimmedMatch, SupergeoModel — call `.assign()` on the class directly
 - **Business Constraint Handling**: Sophisticated whitelist/blacklist system for mandatory inclusions/exclusions
 - **Power Analysis Integration**: Built-in power analysis with MDE (Minimum Detectable Effect) calculations
 - **Multiple Test Groups**: Simultaneous creation of multiple test groups sharing common controls
@@ -47,7 +66,7 @@ design = GeoExperimentDesign(
     control_whitelist=['AU', 'GB', 'DE'],  # Preferred control markets
     test_blacklist=['CA'],  # Markets to exclude from test
     control_blacklist=['US'],  # Markets to exclude from control
-    base_randomizer_cls=greedy_match_markets,  # options include StratifiedRandomization, CompleteRandomization, ThinningDesign, QuickBlock, greedy_match_markets
+    base_randomizer_cls=greedy_match_markets,  # geo-supported: StratifiedRandomization, CompleteRandomization, ThinningDesign, BalancedRandomization, greedy_match_markets
     test_lengths=[56],  # test duration in days
     n_sample_prc=0.2,  # Sample 20% for faster power analysis
     ci_version=1  # confidence intervals - Use version 1 for conservative estimates and 2 for less conservative but faster run time approach
@@ -579,6 +598,8 @@ print(f"Cumulative Upper Bound: {cumulative_upper}")
 
 #### Placebo Testing
 **Purpose**: Placebo-based inference that uses control units as "fake" treatment units to test the robustness of treatment effect estimates.
+
+**Interval semantics (current package):** SCM/registry Placebo runs attach `interval_type=placebo_band` on counterfactual paths. These are explicit placebo null bands — not labeled as generic confidence intervals. When placebo inference is unavailable, results report `unavailable` rather than synthetic confidence bands.
 
 **Core Concept**: Placebo testing treats each control unit as if it were the treated unit, runs the same analysis, and uses the distribution of these "placebo" effects to assess whether the observed treatment effect is statistically significant. The method works by taking each control unit in turn, treating it as if it received the treatment at the same time as the actual treated unit, then running the same causal analysis to estimate a "placebo" treatment effect. This creates a distribution of placebo effects that represents what we would expect to see if there were no real treatment effect. The key insight is that if the actual treatment effect is significantly larger than the placebo effects, it provides evidence that the treatment had a real causal impact. This approach is particularly powerful because it doesn't rely on specific model assumptions and provides an intuitive way to assess statistical significance.
 

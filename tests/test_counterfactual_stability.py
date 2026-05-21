@@ -7,6 +7,7 @@ import os
 # Add the panel_exp package to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
+from tests.cvxpy_test_helpers import skip_without_cvxpy_osqp
 from panel_exp.methods.tbr import TBRRidge
 from panel_exp.panel_data import PanelDataset, TimePeriod
 from panel_exp.utils.counterfactual_stability_tests import (
@@ -176,6 +177,7 @@ def test_rmse_ratio_computed():
     assert r.rmse_ratio > 0, f"rmse_ratio should be positive, got {r.rmse_ratio}"
 
 
+@skip_without_cvxpy_osqp
 def test_augsynth_cvxpy_aggregates_treated():
     """AugSynthCVXPY stability test with multiple treated units should complete quickly.
 
@@ -391,6 +393,7 @@ def test_explicit_break_start_with_auto_detect_prints_warning(capsys):
     # (it may not always mismatch, so just verify no crash)
 
 
+@skip_without_cvxpy_osqp
 def test_augsynth_cvxpy_weight_health_healthy():
     """check_AugSynthCVXPY_weight_health returns a valid dict with required keys."""
     wide = _make_panel(n_units=15, n_periods=30, break_at=None, seed=10)

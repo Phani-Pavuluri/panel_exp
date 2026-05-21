@@ -13,7 +13,12 @@ from datetime import datetime, timezone
 from types import MappingProxyType
 from typing import Any, Dict, List, Mapping, Optional, Tuple
 
-from panel_exp import __version__
+try:
+    from importlib.metadata import PackageNotFoundError, version
+
+    __version__ = version("panel_exp")
+except PackageNotFoundError:
+    __version__ = "0.2.1"
 from panel_exp.evidence_hash import (
     assignment_hash,
     assignment_to_json_dict,

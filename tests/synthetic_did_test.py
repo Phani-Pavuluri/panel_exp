@@ -30,7 +30,10 @@ def _make_simple_panel(n_control=5, n_treat=2, T_pre=10, T_post=5, seed=42):
     times = pd.date_range("2020-01-01", periods=n_times, freq="W")
     df = pd.DataFrame(wide, index=units, columns=times)
     treated_units = [f"t{i}" for i in range(n_treat)]
-    treated_periods = [TimePeriod(times[T_pre], times[n_times - 1])]
+    # PanelDataset pairs one TimePeriod per treated unit (equal lengths). SDID tests use
+    # a common post window; repeat the same period for each treated geo (no stagger).
+    post_period = TimePeriod(times[T_pre], times[n_times - 1])
+    treated_periods = [post_period] * n_treat
     return PanelDataset(df, treated_periods=treated_periods, treated_units=treated_units)
 
 

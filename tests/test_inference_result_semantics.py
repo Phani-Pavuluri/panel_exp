@@ -101,7 +101,14 @@ def test_point_estimate_unavailable():
     pds = make_tbr_panel()
     est = TBRRidge(inference=None, alpha=0.05)
     est.run_analysis(pds)
-    assert set(est.results.keys()) == {"times", "y", "y_hat"}
+    assert set(est.results.keys()) == {
+        "times",
+        "y",
+        "y_hat",
+        "interval_type",
+        "intervals_available",
+        "inference_metadata",
+    }
     assert est.inference_result.effective_path_interval_type() == IntervalType.UNAVAILABLE
     assert est.inference_result.intervals_available is False
     assert "y_lower" not in est.results

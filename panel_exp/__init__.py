@@ -4,6 +4,11 @@ panel_exp — geo-panel experimentation (design, methods, inference).
 
 __version__ = "0.2.1"
 
+from panel_exp.artifacts.experiment_card import (
+    attach_experiment_card_markdown,
+    build_experiment_card,
+)
+from panel_exp.design import GEO_RUN_DESIGN_SUPPORTED, get_design_registry
 from panel_exp.evidence import DesignEvidence, ExperimentEvidence, InferenceEvidence
 from panel_exp.inference_result import InferenceResult, IntervalType
 from panel_exp.panel_data import PanelDataset, TimePeriod, long_df_to_paneldataset
@@ -49,6 +54,10 @@ __all__ = [
     "DesignEvidence",
     "InferenceEvidence",
     "ExperimentEvidence",
+    "build_experiment_card",
+    "attach_experiment_card_markdown",
+    "get_design_registry",
+    "GEO_RUN_DESIGN_SUPPORTED",
     "BalancedRandomization",
     "CompleteRandomization",
     "StratifiedRandomization",

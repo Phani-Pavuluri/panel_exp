@@ -20,9 +20,11 @@ _REPO = Path(__file__).parent.parent
 if str(_REPO) not in sys.path:
     sys.path.insert(0, str(_REPO))
 
-# Imports after sys.path so tests run without an editable install.
 from panel_exp.panel_data import PanelDataset, TimePeriod  # noqa: E402
 from panel_exp.methods.scm import SyntheticControlCVXPY, AugSynthCVXPY  # noqa: E402
+from tests.cvxpy_test_helpers import skip_without_cvxpy_osqp  # noqa: E402
+
+pytestmark = skip_without_cvxpy_osqp
 
 
 # ---------------------------------------------------------------------------
