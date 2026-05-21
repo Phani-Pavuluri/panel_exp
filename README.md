@@ -16,6 +16,55 @@ The package is organized around three areas:
 
 ---
 
+## Current package status (code truth)
+
+### Geo design orchestration
+
+| Via `GeoExperimentDesign.run_design` | Lower-level only (registered, not geo-run supported) |
+|--------------------------------------|------------------------------------------------------|
+| `greedy_match_markets` | `QuickBlock` |
+| `ThinningDesign` | `MatchedPair` |
+| `BalancedRandomization` | `TrimmedMatchDesign` |
+| `CompleteRandomization` | `SupergeoModel` (`supergeos`) |
+| `StratifiedRandomization` | |
+
+Unsupported designs raise `ValueError` at `GeoExperimentDesign` construction if selected as `base_randomizer_cls`. Use the design class `.assign(...)` API directly for lower-level tools.
+
+Registry helpers: `get_design_registry()`, `GEO_RUN_DESIGN_SUPPORTED`.
+
+### Evidence and readouts
+
+- **`DesignEvidence` / `ExperimentEvidence` / `InferenceEvidence`** — immutable-friendly artifacts with `spec_hash`, `assignment_hash`, `input_structure_hash`, warnings, errors, `validation_summary`.
+- **Experiment card** — `build_experiment_card(evidence)` and `attach_experiment_card_markdown(artifacts, evidence)` for human-readable markdown (does not change estimates).
+
+### Estimator maturity (conservative)
+
+- **`EstimatorMaturity`** and **`get_method_registry()`** — operational readiness labels, not statistical superiority.
+- No estimator or inference mode is rated **`production_safe`** in the current catalog; smoke/recovery tests alone do not promote maturity.
+
+### Inference interval semantics
+
+Path bands in `results` are labeled explicitly: `confidence_interval`, `credible_interval`, `conformal_interval`, `placebo_band`, or `unavailable`. Placebo outputs are **placebo bands**, not generic confidence intervals. Point-estimate-only runs report `unavailable`.
+
+### Power / MDE
+
+`PowerAnalysis` is **simulation-based** (coverage vs injected effects), not a closed-form analytic MDE. Pass `random_state` for reproducibility; parallel `n_jobs` behavior depends on the backing estimator.
+
+### Interference
+
+`InterferenceAssumption`: `unknown`, `no_interference`, `partial_interference`. Design validation warns when interference is unknown. The package does **not** estimate spillovers automatically.
+
+### Recovery validation (diagnostic)
+
+`panel_exp.validation.RecoveryRunner` and `validation_metadata` on analysis results summarize synthetic recovery metrics (bias, coverage, FPR, power). These are **diagnostic** and do not auto-upgrade maturity ratings.
+
+### Not shipped
+
+- `panel_exp.pretest_analysis` — referenced in some dev notebooks only.
+- `panel_exp.util` — removed; import `standardize` from `panel_exp.methods.bayesian_regression`.
+
+---
+
 ## Documentation
 
 - **Hosted docs:** Pre-built HTML under `gh-pages/` (open `gh-pages/index.html` locally).
@@ -88,7 +137,7 @@ spec = DesignSpec(
 
 ### Geo experiment orchestration
 
-`GeoExperimentDesign` supports: `greedy_match_markets`, `ThinningDesign`, `BalancedRandomization`, `CompleteRandomization`, `StratifiedRandomization` (via rerandomization). **QuickBlock** and **MatchedPair** must be called directly — not through `run_design`.
+See **Current package status** above for the geo-supported allowlist vs registered-only designs.
 
 ---
 
