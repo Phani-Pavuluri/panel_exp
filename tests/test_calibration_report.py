@@ -234,20 +234,20 @@ def test_experiment_card_without_calibration_unchanged():
 
 
 def test_validation_outputs_merge():
-    from panel_exp.validation.metrics import ValidationResult
+    from panel_exp.validation.metrics import ValidationMetrics
 
-    null_v = ValidationResult(
+    null_v = ValidationMetrics(
         estimator_name="SCM",
-        scenario_name="aa_zero_effect",
+        scenario_name="aa_null",
+        n_replications=30,
         bias=0.0,
         rmse=0.01,
         coverage=0.93,
         false_positive_rate=0.06,
-        false_negative_rate=float("nan"),
-        power=float("nan"),
-        interval_width=0.2,
-        n_replications=30,
-        truth=0.0,
+        false_negative_rate=None,
+        power=None,
+        mean_interval_width=0.2,
+        failure_rate=0.0,
     )
     report = build_calibration_report(validation_outputs=[null_v])
     assert report.null_replications == 30

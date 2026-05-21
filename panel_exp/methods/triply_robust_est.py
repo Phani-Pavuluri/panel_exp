@@ -4,7 +4,7 @@ import itertools
 import math
 import warnings
 from dataclasses import dataclass
-from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple
+from typing import Any, Callable, Dict, List, Optional, Sequence
 
 import numpy as np
 import pandas as pd
@@ -532,7 +532,6 @@ class TROP(ImpactAnalyzer):
         self.units_ = wide.index
 
         treated_units = list(panel.treated_units)
-        control_units = list(panel.control_units)
 
         treated_series = panel.treated_series(treated_units=treated_units, period="full").values.T
         if treated_series.ndim > 1:
@@ -617,7 +616,7 @@ class TROP(ImpactAnalyzer):
         **inference_kwargs,
     ) -> Dict:
         """Run analysis and aggregate y to 1D when multiple treated units (y_hat is already aggregated)."""
-        result = super().run_analysis(panel_data, **inference_kwargs)
+        super().run_analysis(panel_data, **inference_kwargs)
         y = self.results["y"]
         y_hat = self.results["y_hat"]
         if y.ndim == 2 and y_hat.ndim == 1:
@@ -1709,7 +1708,7 @@ class TROP(ImpactAnalyzer):
         # In global mode W[treated_row, :] is identically zero because W_u[treated]=0 by design
         # (treated units do not enter the weighted loss on their own row); legacy n_support on
         # treated rows was misleading.
-        tr_list = sbd.get("treated_rows", [])
+        _tr_list = sbd.get("treated_rows", [])
         weak_donor = (n_ctrl_pos < self.min_donor_support) or (donor_mass <= EPS * max(n_u, 1))
         self.fit_diagnostics_["unstable_zero_support"] = bool(weak_donor)
         if weak_donor:

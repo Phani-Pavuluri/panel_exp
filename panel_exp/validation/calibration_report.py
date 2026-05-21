@@ -20,6 +20,7 @@ MIN_RECOVERY_SUCCESS_RATE = 0.90
 
 _NULL_SCENARIO_MARKERS = (
     "aa_zero",
+    "aa_null",
     "zero_effect",
     "null_effect",
     "recovery_null",

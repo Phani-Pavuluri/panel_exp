@@ -4,10 +4,9 @@ from __future__ import annotations
 
 import json
 
-import pytest
 
 from panel_exp.evidence import EVIDENCE_VERSION, DesignEvidence, ExperimentEvidence
-from panel_exp.evidence_hash import assignment_hash, canonical_json
+from panel_exp.evidence_hash import assignment_hash
 from panel_exp.panel_data import TimePeriod
 from panel_exp.spec import spec_from_geo_design
 

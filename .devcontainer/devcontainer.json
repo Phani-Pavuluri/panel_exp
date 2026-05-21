@@ -9,7 +9,7 @@
   "remoteUser": "vscode",
   "postCreateCommand": "python -m pip install -U pip 'poetry==1.8.5' && poetry config virtualenvs.create false && poetry install --with dev --no-interaction",
   "mounts": [
-    "source=${env:SSH_AUTH_SOCK},target=/ssh-agent,type=bind"
+    "source=/run/host-services/ssh-auth.sock,target=/ssh-agent,type=bind"
   ],
   "remoteEnv": {
     "SSH_AUTH_SOCK": "/ssh-agent"

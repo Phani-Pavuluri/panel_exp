@@ -1,4 +1,3 @@
-import pytest
 
 from panel_exp.panel_data import long_df_to_paneldataset
 import numpy as np

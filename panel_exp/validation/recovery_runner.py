@@ -13,11 +13,11 @@ from panel_exp.validation.recovery_metrics import (
     aggregate_recovery_metrics,
 )
 from panel_exp.validation.runner import (
-    EstimatorSpec,
-    _build_estimator_specs,
+    EstimatorConfig,
     _is_significant,
     _path_relative_att,
     _relative_ci,
+    default_estimator_configs,
 )
 from panel_exp.validation.synthetic_scenarios import (
     get_recovery_scenario,
@@ -28,21 +28,30 @@ from panel_exp.validation.synthetic_world import SyntheticScenario, SyntheticWor
 EstimatorInput = Union[str, Type[Any]]
 
 
-def _extended_estimator_specs() -> Dict[str, EstimatorSpec]:
-    """Built-in specs plus TBRRidge alias and TROP (validation-only wiring)."""
-    specs = dict(_build_estimator_specs())
+def _extended_estimator_configs() -> Dict[str, EstimatorConfig]:
+    """Built-in configs plus TBRRidge alias and TROP (validation-only wiring)."""
+    specs = {c.estimator_name: c for c in default_estimator_configs()}
     from panel_exp.methods.tbr import TBRRidge
     from panel_exp.methods.triply_robust_est import TROP
 
-    specs["TBRRidge"] = EstimatorSpec(
-        name="TBRRidge",
+    specs["TBRRidge"] = EstimatorConfig(
+        estimator_name="TBRRidge",
         factory=lambda: TBRRidge(inference=None, alpha=0.05),
+        inference=None,
         run_kwargs={},
         supports_significance=False,
     )
-    specs["TROP"] = EstimatorSpec(
-        name="TROP",
+    specs["TBR"] = EstimatorConfig(
+        estimator_name="TBR",
+        factory=lambda: TBRRidge(inference=None, alpha=0.05),
+        inference=None,
+        run_kwargs={},
+        supports_significance=False,
+    )
+    specs["TROP"] = EstimatorConfig(
+        estimator_name="TROP",
         factory=lambda: TROP(alpha=0.05),
+        inference=None,
         run_kwargs={
             "lambda_unit_grid": [0.1],
             "lambda_time_grid": [0.1],
@@ -54,11 +63,6 @@ def _extended_estimator_specs() -> Dict[str, EstimatorSpec]:
         },
         supports_significance=False,
     )
-    # Alias TBR to TBRRidge for recovery batteries
-    if "TBR" in specs:
-        specs["TBR"] = replace(specs["TBRRidge"], name="TBR")
-    if "SDID" in specs:
-        specs["SyntheticDID"] = replace(specs["SDID"], name="SyntheticDID")
     return specs
 
 
@@ -71,30 +75,32 @@ def _resolve_estimator_name(estimator: EstimatorInput) -> str:
 
 
 def _run_simulation(
-    spec: EstimatorSpec,
+    config: EstimatorConfig,
     world: SyntheticWorld,
     *,
     alpha: float = 0.05,
 ) -> SimulationRecord:
-    estimator = spec.factory()
+    truth = float(world.truth["true_effect"])
     try:
-        estimator.run_analysis(world.panel, **spec.run_kwargs)
+        estimator = config.factory()
+        panel = world.to_panel_dataset()
+        estimator.run_analysis(panel, **config.run_kwargs)
     except Exception:
         return SimulationRecord(
             predicted_effect=float("nan"),
-            true_effect=world.truth_mean_relative_att,
+            true_effect=truth,
         )
 
-    predicted = _path_relative_att(estimator, world.panel)
-    ci_lower, ci_upper = _relative_ci(estimator, world.panel, predicted)
+    predicted = _path_relative_att(estimator, panel)
+    ci_lower, ci_upper = _relative_ci(estimator, panel)
     significant = (
         _is_significant(estimator, alpha=alpha)
-        if spec.supports_significance
+        if config.supports_significance
         else None
     )
     return SimulationRecord(
         predicted_effect=predicted,
-        true_effect=world.truth_mean_relative_att,
+        true_effect=truth,
         ci_lower=ci_lower,
         ci_upper=ci_upper,
         significant=significant,
@@ -132,7 +138,7 @@ class RecoveryRunner:
             self.scenario_name = scenario
             self._scenario_template = get_recovery_scenario(scenario)
         else:
-            self.scenario_name = scenario.scenario_name
+            self.scenario_name = scenario.name
             self._scenario_template = scenario
         self.n_simulations = int(n_simulations)
         self.random_state = int(random_state)
@@ -140,13 +146,13 @@ class RecoveryRunner:
         self.replication_seed_step = replication_seed_step
 
     def run(self) -> Dict[str, Any]:
-        specs = _extended_estimator_specs()
+        specs = _extended_estimator_configs()
         if self.estimator_name not in specs:
             raise KeyError(
                 f"Estimator {self.estimator_name!r} not wired for recovery runs. "
                 f"Known: {sorted(specs)}"
             )
-        spec = specs[self.estimator_name]
+        config = specs[self.estimator_name]
 
         t0 = time.perf_counter()
         records: List[SimulationRecord] = []
@@ -154,7 +160,7 @@ class RecoveryRunner:
             seed = self.random_state + i * self.replication_seed_step
             sc = replace(self._scenario_template, random_state=seed)
             world = SyntheticWorld.generate(sc)
-            records.append(_run_simulation(spec, world, alpha=self.alpha))
+            records.append(_run_simulation(config, world, alpha=self.alpha))
 
         result = aggregate_recovery_metrics(
             estimator=self.estimator_name,
@@ -194,11 +200,7 @@ def merge_validation_metadata(
     results: Dict[str, Any],
     recovery_payloads: Sequence[Mapping[str, Any]],
 ) -> None:
-    """
-    Attach additive validation evidence to ``results['validation_metadata']``.
-
-    Does not modify inference outputs or remove existing evidence fields.
-    """
+    """Attach additive validation evidence to ``results['validation_metadata']``."""
     scenarios_run: List[str] = []
     bias: Dict[str, float] = {}
     coverage: Dict[str, float] = {}
@@ -209,7 +211,6 @@ def merge_validation_metadata(
         sc = str(payload.get("scenario", ""))
         if sc:
             scenarios_run.append(sc)
-        if sc:
             bias[sc] = float(payload.get("bias", float("nan")))
             coverage[sc] = float(payload.get("coverage", float("nan")))
             fpr[sc] = float(payload.get("false_positive_rate", float("nan")))

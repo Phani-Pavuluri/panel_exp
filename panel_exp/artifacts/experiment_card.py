@@ -11,7 +11,6 @@ from dataclasses import dataclass, field
 from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 
 from panel_exp.evidence import DesignEvidence, ExperimentEvidence
-from panel_exp.validation.calibration_report import calibration_markdown_from_mapping
 
 CARD_VERSION = "1.0"
 
@@ -317,6 +316,10 @@ def _card_from_common(
         if key in meta and meta[key]:
             estimator_name = _as_str(meta[key])
             break
+
+    from panel_exp.validation.calibration_report import (
+        calibration_markdown_from_mapping,
+    )
 
     return ExperimentCard(
         experiment_id=_as_str(experiment_id),

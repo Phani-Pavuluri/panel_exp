@@ -269,7 +269,7 @@ def create_sensitivity_heatmap(design_summary, week_str):
     rankings = pd.DataFrame({
         'MDE Rank': design_summary.groupby('design_id')[f'mde_rank_{week_str}'].first(),
         'Balance Rank': design_summary.groupby('design_id')[f'balance_rank_{week_str}'].first(),
-        f'Combined Rank': design_summary.groupby('design_id')[f'combined_rank_{week_str}'].first()
+        'Combined Rank': design_summary.groupby('design_id')[f'combined_rank_{week_str}'].first()
     })
     
     if not rankings.empty:
@@ -611,8 +611,8 @@ def create_design_summary(design_summary, week_str, mde_weight=0.7, balance_weig
     # Group by design_id and calculate statistics
     summary = design_summary.groupby('design_id').agg({
         f'mde_percent_{week_str}': ['mean', 'std', 'min', 'max'],
-        f'test_group_percentage': ['mean', 'std'],
-        f'control_group_percentage': ['mean', 'std']
+        'test_group_percentage': ['mean', 'std'],
+        'control_group_percentage': ['mean', 'std']
     }).reset_index()
 
     # Flatten column names
@@ -1168,7 +1168,7 @@ def generate_test_length_report(design_summary, summary_table, week_str, n_desig
 
     # Design Rankings Section
     report += (
-        f"\n## Design Rankings\n"
+        "\n## Design Rankings\n"
     )
     
     if best_combined_design_ids:
@@ -1189,11 +1189,11 @@ def generate_test_length_report(design_summary, summary_table, week_str, n_desig
     # Create Best Designs Summary using the dedicated function
     try:
         best_designs_summary = create_best_designs_summary(summary_table, week_str, score_weights)
-        report += f"\n## Best Designs Summary\n"
-        report += f"This table provides a comprehensive comparison of the top-performing designs across all metrics:\n"
+        report += "\n## Best Designs Summary\n"
+        report += "This table provides a comprehensive comparison of the top-performing designs across all metrics:\n"
         report += f"{best_designs_summary.to_markdown()}\n\n"
     except Exception as e:
-        report += f"\n## Best Designs Summary\n"
+        report += "\n## Best Designs Summary\n"
         report += f"Unable to generate best designs summary: {str(e)}\n\n"
     
     # Add score weights section
@@ -1258,7 +1258,7 @@ def generate_overall_report(test_length_comparison, score_weights):
             test_length_comparison['best_combined_score'].max()
         ]
         
-        overall_report += f"## Key Recommendations\n"
+        overall_report += "## Key Recommendations\n"
         if len(best_test_lengths) > 1:
             overall_report += (
                 f"1. Best Overall Test Length{'s' if len(best_test_lengths) > 1 else ''}: "
@@ -1325,12 +1325,12 @@ def generate_overall_report(test_length_comparison, score_weights):
 
     # Add a section about handling ties
     overall_report += (
-        f"\n## Note on Tied Scores\n"
-        f"When multiple designs achieve the same score for any metric (MDE, Balance, or Combined):\n"
-        f"- All tied designs are considered equally good for that metric\n"
-        f"- The report shows all tied designs to help in decision making\n"
-        f"- Consider other factors (like implementation complexity) when choosing between tied designs\n"
-        f"- Ties may occur at different test lengths, indicating consistent performance\n"
+        "\n## Note on Tied Scores\n"
+        "When multiple designs achieve the same score for any metric (MDE, Balance, or Combined):\n"
+        "- All tied designs are considered equally good for that metric\n"
+        "- The report shows all tied designs to help in decision making\n"
+        "- Consider other factors (like implementation complexity) when choosing between tied designs\n"
+        "- Ties may occur at different test lengths, indicating consistent performance\n"
     )
     
     return overall_report
@@ -1742,13 +1742,13 @@ def log_cv_fit_results(results: Dict[str, Dict[str, Any]], run_name: str = "cv_f
 """
         for design, metrics in design_avg_metrics.items():
             report += f"\n### {design}\n"
-            report += f"- Average Metrics:\n"
+            report += "- Average Metrics:\n"
             for metric, value in metrics.items():
                 report += f"  - {metric}: {value:.3f}\n"
             
             # Add test group details
             test_groups = [k for k in results.keys() if k.startswith(design) and k != 'summary_table']
-            report += f"\nTest Groups:\n"
+            report += "\nTest Groups:\n"
             for test_group in test_groups:
                 group_results = results[test_group]
                 report += f"- {test_group}:\n"

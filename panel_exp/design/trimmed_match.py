@@ -1,7 +1,5 @@
 import numpy as np
-import pandas as pd
 from scipy.optimize import linear_sum_assignment
-from sklearn.model_selection import train_test_split
 from scipy import stats
 import random
 import matplotlib.pyplot as plt
@@ -95,7 +93,6 @@ class TrimmedMatchDesign:
 
         # Step 2: Calculate responses for training and evaluation periods
         training_responses = self.Tp_data.sum(axis=1)  # Total response for each geo in the training period
-        evaluation_responses = self.Te_data.sum(axis=1)  # Total response for each geo in the evaluation period
 
         if self.spend_data is not None:
             self.Tp_spend = self.spend_data.iloc[:, :int(n * (1 - self.test_size))]
@@ -104,8 +101,7 @@ class TrimmedMatchDesign:
             self.Tp_spend = None
             self.Te_spend = None
 
-        # Prepare geos and results
-        geos = self.panel_data.index.tolist()
+        # Prepare results
         power_results = []  # List to collect results from each iteration
 
         # Step 3: Generate optimal pairs and evaluate each configuration

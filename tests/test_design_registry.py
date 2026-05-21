@@ -2,7 +2,7 @@
 
 import pytest
 
-from panel_exp.design.assign import BalancedRandomization, greedy_match_markets
+from panel_exp.design.assign import BalancedRandomization
 from panel_exp.design.modes import register_builtin_designs
 from panel_exp.design.registry import DesignRegistry, get_design_registry
 

@@ -26,5 +26,7 @@ MPLCONFIGDIR=/tmp/mpl .venv/bin/python scripts/regenerate_design_golden.py
 - `random_state=42`
 - `n_test_grps=1` → group labels `control`, `test_0`
 
-Power/MDE numeric goldens are not committed (slow / environment-sensitive);
+Power/MDE numeric goldens are not committed (slow / environment-sensitive).
+Generate power baselines in the Linux devcontainer; optimizer-heavy placebo/SCM
+paths may not be bitwise portable across platforms.
 pipeline structure and ordering are tested in `test_design_registry_equivalence.py`.

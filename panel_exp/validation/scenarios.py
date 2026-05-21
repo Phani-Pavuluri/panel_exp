@@ -1,5 +1,5 @@
 """
-Fixed library of synthetic validation scenarios.
+Fixed catalog of synthetic validation scenarios.
 """
 
 from __future__ import annotations
@@ -14,11 +14,12 @@ def _base(**overrides) -> SyntheticScenario:
         n_geos=20,
         n_periods=50,
         treatment_start=35,
-        n_treated=4,
+        treated_units=(),
         true_effect=0.0,
         effect_type="relative",
-        seasonality=0.0,
+        baseline_level=100.0,
         trend=0.02,
+        seasonality_amplitude=0.0,
         noise_scale=0.8,
         autocorrelation=0.3,
         cross_geo_correlation=0.4,
@@ -33,39 +34,41 @@ def _base(**overrides) -> SyntheticScenario:
 
 
 SCENARIO_REGISTRY: Dict[str, SyntheticScenario] = {
-    "aa_zero_effect": _base(
-        scenario_name="aa_zero_effect",
-        true_effect=0.0,
-    ),
-    "constant_positive_10pct": _base(
-        scenario_name="constant_positive_10pct",
+    "aa_null": _base(name="aa_null", true_effect=0.0),
+    "positive_relative_lift": _base(
+        name="positive_relative_lift",
         true_effect=0.10,
+        effect_type="relative",
     ),
-    "constant_negative_10pct": _base(
-        scenario_name="constant_negative_10pct",
+    "negative_relative_lift": _base(
+        name="negative_relative_lift",
         true_effect=-0.10,
+        effect_type="relative",
     ),
-    "seasonality": _base(
-        scenario_name="seasonality",
+    "seasonal_positive_lift": _base(
+        name="seasonal_positive_lift",
         true_effect=0.10,
-        seasonality=4.0,
+        effect_type="relative",
+        seasonality_amplitude=4.0,
     ),
-    "outlier_world": _base(
-        scenario_name="outlier_world",
+    "outlier_positive_lift": _base(
+        name="outlier_positive_lift",
         true_effect=0.10,
+        effect_type="relative",
         outlier_probability=0.02,
     ),
-    "small_geo": _base(
-        scenario_name="small_geo",
+    "small_geo_positive_lift": _base(
+        name="small_geo_positive_lift",
         n_geos=8,
-        n_treated=2,
         n_periods=40,
         treatment_start=28,
         true_effect=0.10,
+        effect_type="relative",
     ),
-    "heterogeneous_effects": _base(
-        scenario_name="heterogeneous_effects",
+    "heterogeneous_positive_lift": _base(
+        name="heterogeneous_positive_lift",
         true_effect=0.10,
+        effect_type="relative",
         heterogeneous_effects=True,
     ),
 }

@@ -34,7 +34,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from panel_exp.panel_data import PanelDataset, TimePeriod
+from panel_exp.panel_data import TimePeriod
 
 
 

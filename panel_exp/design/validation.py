@@ -14,7 +14,7 @@ from typing import Any, Dict, List, Optional
 import numpy as np
 import pandas as pd
 
-from panel_exp.design.constraints import validate_assignment_dict, ConstraintContext, prepare_constraint_context
+from panel_exp.design.constraints import validate_assignment_dict, prepare_constraint_context
 from panel_exp.spec import InterferenceAssumption
 
 
@@ -109,10 +109,15 @@ def validate_design(
     smd_warn_threshold: float = 0.25,
     smd_fail_threshold: float = 0.50,
     interference: InterferenceAssumption = InterferenceAssumption.UNKNOWN,
+    spillover_metadata_available: Optional[bool] = None,
     block_on_fail: bool = True,
 ) -> DesignValidationResult:
     """
     Run design validation checks after assignment.
+
+    Interference guardrails (non-blocking by default): ``unknown`` warns that
+    causal interpretation assumes limited spillover; ``partial_interference``
+    warns when spillover metadata is absent. Spillover is not estimated here.
 
     Parameters
     ----------
@@ -383,20 +388,44 @@ def validate_design(
                 threshold=None,
                 value=None,
                 message=(
-                    "Interference assumption is unknown. Geo media experiments may "
-                    "violate no-interference; spillover detection is not automated."
+                    "Interference assumption is unknown. Causal interpretation "
+                    "assumes no or limited interference unless you validate otherwise; "
+                    "this package does not estimate spillovers."
+                ),
+                blocking=False,
+            )
+        )
+    elif interference == InterferenceAssumption.NO_INTERFERENCE:
+        checks.append(
+            ValidationCheck(
+                metric="interference_assumption",
+                status=ValidationStatus.PASS,
+                threshold=None,
+                value=None,
+                message=(
+                    "User declared no_interference (not empirically verified; "
+                    "geo experiments often violate SUTVA)."
                 ),
                 blocking=False,
             )
         )
     elif interference == InterferenceAssumption.PARTIAL_INTERFERENCE:
+        has_meta = spillover_metadata_available is True
         checks.append(
             ValidationCheck(
                 metric="interference_assumption",
-                status=ValidationStatus.WARN,
+                status=ValidationStatus.PASS if has_meta else ValidationStatus.WARN,
                 threshold=None,
                 value=None,
-                message="Partial interference declared; analyze with caution.",
+                message=(
+                    "Partial interference declared with spillover metadata provided."
+                    if has_meta
+                    else (
+                        "Partial interference declared but no spillover metadata "
+                        "(adjacency_matrix, exposure_column, spillover_notes); "
+                        "interpret estimates cautiously."
+                    )
+                ),
                 blocking=False,
             )
         )

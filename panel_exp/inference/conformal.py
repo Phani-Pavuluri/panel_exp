@@ -214,8 +214,6 @@ def conformal(panel, model, alpha, nulls, **inference_kwargs):
     for treated in range(len(panel.treated_units)):
 
 
-        pds_temp = PanelDataset(panel.wide_data.copy(), panel.treated_periods[treated], panel.treated_units[treated])
-        
         if panel.treated_periods[treated].end is None:
             start = panel.treated_periods[treated].start
             end = panel.times[-1]

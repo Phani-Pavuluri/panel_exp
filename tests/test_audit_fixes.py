@@ -1,6 +1,5 @@
 """Tests for adversarial-audit remediation (v0.2.1)."""
 
-import copy
 
 import numpy as np
 import pandas as pd
@@ -10,21 +9,16 @@ from panel_exp import (
     BalancedRandomization,
     CompleteRandomization,
     DesignSpec,
-    ExperimentSpec,
     GeoExperimentDesign,
     InterferenceAssumption,
     PanelDataset,
     PowerAnalysis,
     StratifiedRandomization,
     TimePeriod,
-    greedy_match_markets,
     validate_design,
 )
 from panel_exp.design.geo_experiment_design import GEO_RUN_DESIGN_SUPPORTED
-from panel_exp.design.validation import ValidationStatus
-from panel_exp.inference_result import IntervalType
 from panel_exp.methods.tbr import TBRRidge
-from panel_exp.panel_data import long_df_to_paneldataset
 from panel_exp.spec import DesignMethod, class_name_to_design_method
 
 
