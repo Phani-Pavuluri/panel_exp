@@ -7,7 +7,7 @@ superiority. Implemented != validated != production-safe.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 from enum import Enum
 from typing import Any, Dict, Tuple
 
@@ -45,6 +45,7 @@ class EstimatorMetadata:
     known_limitations: Tuple[str, ...] = ()
 
     def to_evidence_dict(self) -> Dict[str, Any]:
+        """Additive inference-metadata fields (does not include measured validation evidence)."""
         return {
             "estimator_maturity": self.maturity.value,
             "estimator_assumptions": list(self.assumptions),
@@ -367,6 +368,32 @@ def get_inference_mode_metadata(mode_name: str) -> InferenceModeMaturityMetadata
         ) from exc
 
 
+@dataclass(frozen=True)
+class EstimatorMaturityEvidence:
+    """
+    Measured validation evidence explaining a catalog maturity rating.
+
+    Additive metadata only; does not change ``EstimatorMetadata.maturity``.
+    """
+
+    estimator_name: str
+    maturity: EstimatorMaturity
+    synthetic_validation_available: bool = False
+    scenarios_run: Tuple[str, ...] = ()
+    calibration_available: bool = False
+    false_positive_rate: float = float("nan")
+    coverage_under_null: float = float("nan")
+    power: float = float("nan")
+    recovery_success_rate: float = float("nan")
+    warnings: Tuple[str, ...] = ()
+    evidence_summary: str = ""
+
+    def to_dict(self) -> Dict[str, Any]:
+        payload = asdict(self)
+        payload["maturity"] = self.maturity.value
+        return payload
+
+
 def merge_maturity_into_results(
     results: Dict[str, Any],
     analyzer: Any,
@@ -395,6 +422,7 @@ def merge_maturity_into_results(
 
 __all__ = [
     "EstimatorMaturity",
+    "EstimatorMaturityEvidence",
     "EstimatorMetadata",
     "InferenceModeMaturityMetadata",
     "MATURITY_DOC",
