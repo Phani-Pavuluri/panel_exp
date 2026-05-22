@@ -86,7 +86,8 @@ def test_design_evidence_required_fields():
     assert d["validation_summary"] == {}
     assert d["warnings"] == []
     assert d["errors"] == []
-    assert d["artifacts"] == {}
+    assert "interference_review" in d["artifacts"]
+    assert d["artifacts"]["interference_review"]["assumption"] == "unknown"
 
 
 def test_design_evidence_json_deterministic():

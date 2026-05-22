@@ -19,6 +19,14 @@
   "inference_mode_maturity": "expert_review",
   "input_structure_hash": "unknown",
   "interference_assumption": "unknown",
+  "interference_review_assumption": "no_interference",
+  "interference_review_buffer_geos": "",
+  "interference_review_contamination_risk": "unknown",
+  "interference_review_shared_market_risk": "unknown",
+  "interference_review_spillover_direction": "unknown",
+  "interference_review_warnings": [
+    "Interference assumption declared but no buffer geos documented"
+  ],
   "interval_type": "confidence_interval",
   "intervals_available": true,
   "spec_hash": "a36ce9f635cdd8c40f4f285182fc2b53",

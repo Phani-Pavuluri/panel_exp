@@ -20,7 +20,22 @@
   },
   "errors": [],
   "evidence": {
-    "artifacts": {},
+    "artifacts": {
+      "interference_review": {
+        "ad_saturation_risk": "unknown",
+        "adjacent_geos": [],
+        "assumption": "no_interference",
+        "buffer_geos": [],
+        "contamination_risk": "unknown",
+        "expected_spillover_direction": "unknown",
+        "exposure_channel_overlap": "",
+        "review_warnings": [
+          "Interference assumption declared but no buffer geos documented"
+        ],
+        "shared_market_risk": "unknown",
+        "spillover_notes": ""
+      }
+    },
     "assignment": {
       "control": [
         "u0",
@@ -91,6 +106,14 @@
     "inference_mode_maturity": "expert_review",
     "input_structure_hash": "unknown",
     "interference_assumption": "unknown",
+    "interference_review_assumption": "no_interference",
+    "interference_review_buffer_geos": "",
+    "interference_review_contamination_risk": "unknown",
+    "interference_review_shared_market_risk": "unknown",
+    "interference_review_spillover_direction": "unknown",
+    "interference_review_warnings": [
+      "Interference assumption declared but no buffer geos documented"
+    ],
     "interval_type": "confidence_interval",
     "intervals_available": true,
     "spec_hash": "a36ce9f635cdd8c40f4f285182fc2b53",
@@ -107,6 +130,20 @@
     ]
   },
   "experiment_id": "schema-fixture-exp",
+  "interference_review": {
+    "ad_saturation_risk": "unknown",
+    "adjacent_geos": [],
+    "assumption": "no_interference",
+    "buffer_geos": [],
+    "contamination_risk": "unknown",
+    "expected_spillover_direction": "unknown",
+    "exposure_channel_overlap": "",
+    "review_warnings": [
+      "Interference assumption declared but no buffer geos documented"
+    ],
+    "shared_market_risk": "unknown",
+    "spillover_notes": ""
+  },
   "lineage": {
     "assignment_hash": "cfe3327b5f8577b4df09c29d033f4dee",
     "evidence_version": "1.0",

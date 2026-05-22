@@ -162,6 +162,24 @@ def _readiness_assessment_markdown(
     return assessment.to_markdown()
 
 
+def _interference_review_from_containers(
+    inference_metadata: Mapping[str, Any],
+    artifacts: Mapping[str, Any],
+) -> Dict[str, Any]:
+    for container in (artifacts, inference_metadata):
+        if not isinstance(container, Mapping):
+            continue
+        raw = container.get("interference_review")
+        if isinstance(raw, Mapping):
+            return dict(raw)
+    return {}
+
+
+def _format_geo_list(geos: Any) -> str:
+    items = _as_list(geos)
+    return ", ".join(items) if items else ""
+
+
 def _analysis_contract_from_metadata(
     inference_metadata: Mapping[str, Any],
     artifacts: Mapping[str, Any],
@@ -207,6 +225,12 @@ class ExperimentCard:
     errors: Tuple[str, ...] = _EMPTY_LIST
     interference_assumption: str = _UNKNOWN
     spillover_metadata_available: bool = False
+    interference_review_assumption: str = _UNKNOWN
+    interference_review_buffer_geos: str = ""
+    interference_review_shared_market_risk: str = _UNKNOWN
+    interference_review_contamination_risk: str = _UNKNOWN
+    interference_review_spillover_direction: str = _UNKNOWN
+    interference_review_warnings: Tuple[str, ...] = _EMPTY_LIST
     estimator_name: str = _UNKNOWN
     estimator_maturity: str = _UNKNOWN
     inference_mode: str = _UNKNOWN
@@ -237,6 +261,12 @@ class ExperimentCard:
             "errors": list(self.errors),
             "interference_assumption": self.interference_assumption,
             "spillover_metadata_available": self.spillover_metadata_available,
+            "interference_review_assumption": self.interference_review_assumption,
+            "interference_review_buffer_geos": self.interference_review_buffer_geos,
+            "interference_review_shared_market_risk": self.interference_review_shared_market_risk,
+            "interference_review_contamination_risk": self.interference_review_contamination_risk,
+            "interference_review_spillover_direction": self.interference_review_spillover_direction,
+            "interference_review_warnings": list(self.interference_review_warnings),
             "estimator_name": self.estimator_name,
             "estimator_maturity": self.estimator_maturity,
             "inference_mode": self.inference_mode,
@@ -309,6 +339,28 @@ class ExperimentCard:
             lines.append("Warning:")
             for w in self.analysis_contract_warnings:
                 lines.append(w)
+        lines.extend(["", "## Interference Review", ""])
+        lines.append(f"- **Assumption:** {self.interference_review_assumption}")
+        buffers = self.interference_review_buffer_geos or "*none documented*"
+        lines.append(f"- **Buffer geos:** {buffers}")
+        lines.append(
+            f"- **Shared market risk:** {self.interference_review_shared_market_risk}"
+        )
+        lines.append(
+            f"- **Contamination risk:** {self.interference_review_contamination_risk}"
+        )
+        lines.append(
+            f"- **Expected spillover direction:** {self.interference_review_spillover_direction}"
+        )
+        if self.interference_review_warnings:
+            lines.append("- **Warnings:**")
+            for w in self.interference_review_warnings:
+                lines.append(f"  - {w}")
+        lines.append("")
+        lines.append(
+            "_This package records interference assumptions but does not estimate "
+            "spillover effects._"
+        )
         lines.extend(["", "## Interference Assumptions", ""])
         lines.append(f"- **Declared / checked assumption:** {self.interference_assumption}")
         spill = "yes" if self.spillover_metadata_available else "no"
@@ -473,6 +525,26 @@ def _card_from_common(
     )
     contract_warnings = tuple(_as_list(contract.get("notes")))
 
+    review = _interference_review_from_containers(meta, artifacts)
+    if review:
+        ir_assumption = _as_str(review.get("assumption"))
+        ir_buffers = _format_geo_list(review.get("buffer_geos"))
+        ir_shared = _as_str(review.get("shared_market_risk"))
+        ir_contam = _as_str(review.get("contamination_risk"))
+        ir_direction = _as_str(review.get("expected_spillover_direction"))
+        ir_warnings = tuple(_as_list(review.get("review_warnings")))
+    else:
+        ir_assumption = _as_str(meta.get("interference_assumption"))
+        ir_buffers = ""
+        ir_shared = _UNKNOWN
+        ir_contam = _UNKNOWN
+        ir_direction = _UNKNOWN
+        ir_warnings = _EMPTY_LIST
+        if ir_assumption in (_UNKNOWN, "unknown"):
+            ir_warnings = (
+                "Unknown interference assumption limits causal interpretation",
+            )
+
     return ExperimentCard(
         experiment_id=_as_str(experiment_id),
         created_at=_as_str(created_at),
@@ -502,6 +574,12 @@ def _card_from_common(
         target_estimand_label=target_label,
         uncertainty_contract_label=uncertainty_label,
         analysis_contract_warnings=contract_warnings,
+        interference_review_assumption=ir_assumption,
+        interference_review_buffer_geos=ir_buffers,
+        interference_review_shared_market_risk=ir_shared,
+        interference_review_contamination_risk=ir_contam,
+        interference_review_spillover_direction=ir_direction,
+        interference_review_warnings=ir_warnings,
         spec_hash=_as_str(spec_hash),
         assignment_hash=_as_str(assignment_hash),
         input_structure_hash=_as_str(input_structure_hash or _UNKNOWN),

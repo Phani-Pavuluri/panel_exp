@@ -34,6 +34,7 @@ from panel_exp.spec import (
     DesignSpec,
     TargetEstimand,
     UncertaintyContract,
+    build_interference_review,
     interference_evidence_metadata,
     target_estimand_label,
     uncertainty_contract_label,
@@ -273,6 +274,35 @@ def build_analysis_contract(
     }
 
 
+def attach_interference_review(
+    results_or_artifacts: Dict[str, Any],
+    review: Mapping[str, Any],
+) -> Dict[str, Any]:
+    """
+    Attach an interference review packet to a mutable results or artifacts dict.
+
+    Additive only; does not block execution or alter estimates.
+    """
+    payload = dict(review)
+    results_or_artifacts["interference_review"] = payload
+    return payload
+
+
+def _merge_interference_review_artifact(
+    artifacts: Optional[Dict[str, Any]],
+    *,
+    spec: DesignSpec,
+    inference_metadata: Optional[Mapping[str, Any]] = None,
+) -> Dict[str, Any]:
+    merged = dict(artifacts or {})
+    review = build_interference_review(
+        spec,
+        existing_metadata=inference_metadata,
+    )
+    attach_interference_review(merged, review)
+    return merged
+
+
 def _merge_analysis_contract(
     inference_metadata: Dict[str, Any],
     *,
@@ -365,7 +395,7 @@ class DesignEvidence:
             "inference_metadata": canonicalize(self.inference_metadata),
             "warnings": list(self.warnings),
             "errors": list(self.errors),
-            "artifacts": dict(self.artifacts),
+            "artifacts": canonicalize(self.artifacts),
             "diagnostics": dict(self.diagnostics),
         }
         return _ordered_dict(payload, _EXPERIMENT_EVIDENCE_KEY_ORDER)
@@ -407,6 +437,11 @@ class DesignEvidence:
             )
         )
         infer_meta = _merge_analysis_contract(infer_meta, spec=spec)
+        frozen_artifacts = _merge_interference_review_artifact(
+            dict(artifacts) if artifacts else {},
+            spec=spec,
+            inference_metadata=infer_meta,
+        )
         return cls(
             evidence_version=EVIDENCE_VERSION,
             experiment_id=spec.experiment_id,
@@ -422,7 +457,7 @@ class DesignEvidence:
             inference_metadata=_freeze_payload(infer_meta),
             warnings=tuple(merged_warnings),
             errors=tuple(errors or []),
-            artifacts=_freeze_payload(artifacts),
+            artifacts=_freeze_payload(frozen_artifacts),
             diagnostics=_freeze_payload(diagnostics),
         )
 
@@ -510,7 +545,7 @@ class InferenceEvidence:
             else {},
             "warnings": list(self.warnings),
             "errors": list(self.errors),
-            "artifacts": dict(self.artifacts),
+            "artifacts": canonicalize(self.artifacts),
             "diagnostics": dict(self.diagnostics),
         }
         return _ordered_dict(payload, _EXPERIMENT_EVIDENCE_KEY_ORDER)
@@ -601,7 +636,7 @@ class ExperimentEvidence:
             "inference_metadata": canonicalize(self.inference_metadata),
             "warnings": list(self.warnings),
             "errors": list(self.errors),
-            "artifacts": dict(self.artifacts),
+            "artifacts": canonicalize(self.artifacts),
             "design": self.design.to_dict(),
             "inference": self.inference.to_dict() if self.inference is not None else None,
         }
@@ -642,6 +677,11 @@ class ExperimentEvidence:
             estimator_name=inference_method,
         )
 
+        merged_artifacts = _merge_interference_review_artifact(
+            dict(artifacts) if artifacts else {},
+            spec=spec,
+            inference_metadata=inference_meta,
+        )
         design_ev = DesignEvidence.from_assignment(
             spec,
             assignment,
@@ -649,7 +689,7 @@ class ExperimentEvidence:
             inference_metadata=inference_meta,
             warnings=warnings,
             errors=errors,
-            artifacts=artifacts,
+            artifacts=merged_artifacts,
             input_data_hash=input_data_hash,
             created_at=created,
         )
@@ -732,6 +772,7 @@ __all__ = [
     "DesignEvidence",
     "InferenceEvidence",
     "ExperimentEvidence",
+    "attach_interference_review",
     "build_analysis_contract",
     "input_data_hash_from_wide",
     "input_structure_hash_from_wide",

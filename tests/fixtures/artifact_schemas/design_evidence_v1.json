@@ -1,5 +1,20 @@
 {
-  "artifacts": {},
+  "artifacts": {
+    "interference_review": {
+      "ad_saturation_risk": "unknown",
+      "adjacent_geos": [],
+      "assumption": "no_interference",
+      "buffer_geos": [],
+      "contamination_risk": "unknown",
+      "expected_spillover_direction": "unknown",
+      "exposure_channel_overlap": "",
+      "review_warnings": [
+        "Interference assumption declared but no buffer geos documented"
+      ],
+      "shared_market_risk": "unknown",
+      "spillover_notes": ""
+    }
+  },
   "assignment": {
     "control": [
       "u0",
