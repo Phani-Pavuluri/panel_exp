@@ -14,7 +14,7 @@ This section reflects the installed package behavior. Older examples below may r
 
 **Inference labels:** Interval outputs use explicit semantics — `confidence_interval`, `credible_interval`, `conformal_interval`, `placebo_band`, or `unavailable`. Placebo inference exports **placebo bands**, not generic confidence intervals.
 
-**Power / MDE:** `PowerAnalysis` is simulation-based (coverage under injected effects), not a classical closed-form analytic MDE. Use `random_state` for reproducibility.
+**Power / MDE:** `PowerAnalysis` is simulation-based (coverage under injected percent effects), not classical analytic power. `power_contract` states `classical_power: false` and recommended uses (rank/compare designs). Not for guaranteed detectability claims. Use `random_state` for reproducibility; review `aa_calibration` before decisions.
 
 **Interference:** Declare `InterferenceAssumption` (`unknown`, `no_interference`, `partial_interference`). The package does not estimate spillovers.
 
@@ -217,7 +217,7 @@ Comprehensive pre-test power analysis that determines optimal sample sizes, test
 
 **Core Capabilities:**
 - **Statistical Power Calculation**: Determines probability of detecting true effects (default: 80%)
-- **Minimum Detectable Effect (MDE)**: Calculates smallest effect size that can be reliably detected
+- **Minimum Detectable Effect (MDE)**: Simulation-grid coverage threshold (not classical analytic MDE or guaranteed detectability)
 - **Test Duration Analysis**: Evaluates power across different test lengths
 - **Effect Size Simulation**: Tests power under various effect size scenarios
 - **Confidence Interval Analysis**: Provides uncertainty quantification for estimates

@@ -116,6 +116,17 @@
     ],
     "interval_type": "confidence_interval",
     "intervals_available": true,
+    "power_contract_warnings": [
+      "MDE is simulation-based and estimator-dependent",
+      "Power estimates may vary with effect grid and simulation count",
+      "Null calibration should be reviewed before decision use"
+    ],
+    "power_mde_type": "simulation_coverage",
+    "power_recommended_use": [
+      "compare design alternatives",
+      "rank sensitivity"
+    ],
+    "power_simulation_based": true,
     "spec_hash": "a36ce9f635cdd8c40f4f285182fc2b53",
     "spillover_metadata_available": true,
     "target_estimand_label": "Unknown (not declared)",

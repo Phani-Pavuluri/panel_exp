@@ -1,5 +1,6 @@
 import copy
-from typing import Any, Optional
+from dataclasses import dataclass, field
+from typing import Any, Dict, List, Mapping, Optional, Sequence, Tuple
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -31,6 +32,124 @@ MDE_SEMANTICS: dict[str, Any] = {
         "train/test_window_sampling",
     ],
 }
+
+_DEFAULT_RECOMMENDED_USE: List[str] = [
+    "compare design alternatives",
+    "rank sensitivity",
+]
+
+_DEFAULT_NOT_RECOMMENDED_FOR: List[str] = [
+    "guaranteed detectability claims",
+    "financial commitment thresholds",
+]
+
+_DEFAULT_POWER_WARNINGS: List[str] = [
+    "MDE is simulation-based and estimator-dependent",
+    "Power estimates may vary with effect grid and simulation count",
+    "Null calibration should be reviewed before decision use",
+]
+
+
+@dataclass(frozen=True)
+class PowerContract:
+    """
+    Explicit planning contract for simulation-based MDE / power outputs.
+
+    Metadata only; does not alter power calculations or MDE selection.
+    """
+
+    mde_type: str = "simulation_coverage"
+    classical_power: bool = False
+    simulation_based: bool = True
+    effect_units: str = "percent"
+    requires_null_calibration: bool = True
+    recommended_use: Tuple[str, ...] = field(default_factory=lambda: tuple(_DEFAULT_RECOMMENDED_USE))
+    not_recommended_for: Tuple[str, ...] = field(
+        default_factory=lambda: tuple(_DEFAULT_NOT_RECOMMENDED_FOR)
+    )
+    warnings: Tuple[str, ...] = field(default_factory=lambda: tuple(_DEFAULT_POWER_WARNINGS))
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "mde_type": self.mde_type,
+            "classical_power": self.classical_power,
+            "simulation_based": self.simulation_based,
+            "effect_units": self.effect_units,
+            "requires_null_calibration": self.requires_null_calibration,
+            "recommended_use": list(self.recommended_use),
+            "not_recommended_for": list(self.not_recommended_for),
+            "warnings": list(self.warnings),
+        }
+
+
+def _recommended_use_from_semantics(semantics: Mapping[str, Any]) -> List[str]:
+    planning = str(semantics.get("planning_use", "")).strip().lower()
+    if planning in ("ranking_and_sensitivity_only", "ranking", "sensitivity"):
+        return list(_DEFAULT_RECOMMENDED_USE)
+    if planning:
+        return [planning.replace("_", " ")]
+    return list(_DEFAULT_RECOMMENDED_USE)
+
+
+def build_power_contract(
+    mde_semantics: Optional[Mapping[str, Any]] = None,
+    *,
+    aa_calibration: Optional[Mapping[str, Any]] = None,
+    extra_warnings: Optional[Sequence[str]] = None,
+) -> Dict[str, Any]:
+    """
+    Build a power/MDE user contract from documented semantics (no logic changes).
+
+    Populates defaults from :data:`MDE_SEMANTICS` and optional calibration readout.
+    """
+    semantics = dict(mde_semantics or MDE_SEMANTICS)
+    classical = bool(semantics.get("classical_power", False))
+    mde_type = str(semantics.get("mde_method", "simulation_coverage"))
+
+    warnings: List[str] = []
+    for w in _DEFAULT_POWER_WARNINGS:
+        if w not in warnings:
+            warnings.append(w)
+
+    if extra_warnings:
+        for w in extra_warnings:
+            text = str(w).strip()
+            if text and text not in warnings:
+                warnings.append(text)
+
+    if aa_calibration is not None:
+        if not aa_calibration.get("calibration_complete", True):
+            msg = "A/A null calibration incomplete or under-powered for decision use"
+            if msg not in warnings:
+                warnings.append(msg)
+        cal_warns = aa_calibration.get("warnings") or []
+        if isinstance(cal_warns, (list, tuple)):
+            for w in cal_warns:
+                text = str(w).strip()
+                if text and text not in warnings:
+                    warnings.append(text)
+
+    contract = PowerContract(
+        mde_type=mde_type,
+        classical_power=classical,
+        simulation_based=not classical,
+        effect_units="percent",
+        requires_null_calibration=True,
+        recommended_use=tuple(_recommended_use_from_semantics(semantics)),
+        not_recommended_for=tuple(_DEFAULT_NOT_RECOMMENDED_FOR),
+        warnings=tuple(warnings),
+    )
+    return contract.to_dict()
+
+
+def attach_power_contract(
+    results_or_artifacts: Dict[str, Any],
+    contract: Mapping[str, Any],
+) -> Dict[str, Any]:
+    """Attach power contract metadata to a mutable results or artifacts dict (additive)."""
+    payload = dict(contract)
+    results_or_artifacts["power_contract"] = payload
+    return payload
 
 
 def evaluate_aa_calibration(
@@ -163,6 +282,7 @@ class PowerAnalysis:
         self.kw_args = kw_args
         self.mde_semantics: dict[str, Any] = dict(MDE_SEMANTICS)
         self.aa_calibration: dict[str, Any] | None = None
+        self.power_contract: dict[str, Any] = build_power_contract(MDE_SEMANTICS)
 
     @staticmethod
     def _make_rng(random_state: Optional[int]) -> np.random.Generator:
@@ -261,6 +381,10 @@ class PowerAnalysis:
         self.aa_calibration = evaluate_aa_calibration(
             self.output_df,
             alpha=self.alpha,
+        )
+        self.power_contract = build_power_contract(
+            self.mde_semantics,
+            aa_calibration=self.aa_calibration,
         )
 
     def analysis(self):

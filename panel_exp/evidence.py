@@ -274,6 +274,34 @@ def build_analysis_contract(
     }
 
 
+def attach_power_contract_to_artifacts(
+    artifacts: Dict[str, Any],
+    contract: Optional[Mapping[str, Any]] = None,
+    *,
+    power_analysis: Optional[Any] = None,
+    mde_semantics: Optional[Mapping[str, Any]] = None,
+    aa_calibration: Optional[Mapping[str, Any]] = None,
+) -> Dict[str, Any]:
+    """
+    Attach :data:`power_contract` to evidence artifacts (lazy import; additive only).
+    """
+    from panel_exp.design.power import attach_power_contract, build_power_contract
+
+    if contract is not None:
+        payload = dict(contract)
+    elif power_analysis is not None:
+        payload = dict(
+            getattr(power_analysis, "power_contract", None)
+            or build_power_contract(
+                getattr(power_analysis, "mde_semantics", None),
+                aa_calibration=getattr(power_analysis, "aa_calibration", None),
+            )
+        )
+    else:
+        payload = build_power_contract(mde_semantics, aa_calibration=aa_calibration)
+    return attach_power_contract(artifacts, payload)
+
+
 def attach_interference_review(
     results_or_artifacts: Dict[str, Any],
     review: Mapping[str, Any],
@@ -773,6 +801,7 @@ __all__ = [
     "InferenceEvidence",
     "ExperimentEvidence",
     "attach_interference_review",
+    "attach_power_contract_to_artifacts",
     "build_analysis_contract",
     "input_data_hash_from_wide",
     "input_structure_hash_from_wide",

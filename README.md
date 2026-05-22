@@ -50,6 +50,8 @@ Path bands in `results` are labeled explicitly: `confidence_interval`, `credible
 
 `PowerAnalysis` is **simulation-based** (coverage vs injected effects), not a closed-form analytic MDE. Pass `random_state` for reproducibility; parallel `n_jobs` behavior depends on the backing estimator.
 
+After `run_analysis()`, `power_contract` records planning semantics (`mde_type: simulation_coverage`, `classical_power: false`). Use for **ranking design alternatives and sensitivity only** — not guaranteed detectability or financial go/no-go thresholds. Review `aa_calibration` on null-effect rows before decision use.
+
 ### Interference
 
 `InterferenceAssumption`: `unknown`, `no_interference`, `partial_interference`. Design validation warns when interference is unknown. The package does **not** estimate spillovers automatically.
@@ -239,7 +241,7 @@ See **Current package status** above for the geo-supported allowlist vs register
 
 ## Power / MDE
 
-`PowerAnalysis` uses **simulation**: sliding train/test windows, injected effects, and CI coverage vs a power threshold. Reported MDE is **not** a closed-form analytic MDE. Pass `random_state` for reproducibility.
+`PowerAnalysis` uses **simulation**: sliding train/test windows, injected percent-effect grids, and interval coverage vs a threshold. Reported MDE is **not** classical analytic power or a guaranteed minimum detectable effect. `power_contract` and `mde_semantics` document this; pass `random_state` for reproducibility. Power outputs are **planning diagnostics**, not promised detection probabilities.
 
 ---
 

@@ -180,6 +180,30 @@ def _format_geo_list(geos: Any) -> str:
     return ", ".join(items) if items else ""
 
 
+def _power_contract_from_containers(
+    inference_metadata: Mapping[str, Any],
+    artifacts: Mapping[str, Any],
+) -> Dict[str, Any]:
+    for container in (artifacts, inference_metadata):
+        if not isinstance(container, Mapping):
+            continue
+        raw = container.get("power_contract")
+        if isinstance(raw, Mapping):
+            return dict(raw)
+    semantics = inference_metadata.get("mde_semantics") if isinstance(
+        inference_metadata, Mapping
+    ) else None
+    if isinstance(semantics, Mapping):
+        from panel_exp.design.power import build_power_contract
+
+        cal = inference_metadata.get("aa_calibration")
+        return build_power_contract(
+            semantics,
+            aa_calibration=cal if isinstance(cal, Mapping) else None,
+        )
+    return {}
+
+
 def _analysis_contract_from_metadata(
     inference_metadata: Mapping[str, Any],
     artifacts: Mapping[str, Any],
@@ -244,6 +268,10 @@ class ExperimentCard:
     target_estimand_label: str = _UNKNOWN
     uncertainty_contract_label: str = _UNKNOWN
     analysis_contract_warnings: Tuple[str, ...] = _EMPTY_LIST
+    power_mde_type: str = _UNKNOWN
+    power_simulation_based: Optional[bool] = None
+    power_recommended_use: Tuple[str, ...] = _EMPTY_LIST
+    power_contract_warnings: Tuple[str, ...] = _EMPTY_LIST
     spec_hash: str = _UNKNOWN
     assignment_hash: str = _UNKNOWN
     input_structure_hash: str = _UNKNOWN
@@ -282,6 +310,10 @@ class ExperimentCard:
             "target_estimand_label": self.target_estimand_label,
             "uncertainty_contract_label": self.uncertainty_contract_label,
             "analysis_contract_warnings": list(self.analysis_contract_warnings),
+            "power_mde_type": self.power_mde_type,
+            "power_simulation_based": self.power_simulation_based,
+            "power_recommended_use": list(self.power_recommended_use),
+            "power_contract_warnings": list(self.power_contract_warnings),
             "spec_hash": self.spec_hash,
             "assignment_hash": self.assignment_hash,
             "input_structure_hash": self.input_structure_hash,
@@ -374,6 +406,29 @@ class ExperimentCard:
             lines.append(
                 f"- **Intervals available:** {'yes' if self.intervals_available else 'no'}"
             )
+        lines.extend(["", "## Power and MDE Contract", ""])
+        lines.append(f"- **MDE type:** {self.power_mde_type}")
+        if self.power_simulation_based is None:
+            lines.append("- **Simulation-based:** unknown")
+        else:
+            lines.append(
+                f"- **Simulation-based:** {'yes' if self.power_simulation_based else 'no'}"
+            )
+        if self.power_recommended_use:
+            lines.append("- **Recommended uses:**")
+            for use in self.power_recommended_use:
+                lines.append(f"  - {use}")
+        else:
+            lines.append("- **Recommended uses:** *not specified*")
+        if self.power_contract_warnings:
+            lines.append("- **Warnings:**")
+            for w in self.power_contract_warnings:
+                lines.append(f"  - {w}")
+        lines.append("")
+        lines.append(
+            "_Power outputs are planning diagnostics and not guaranteed "
+            "detection probabilities._"
+        )
         lines.extend(
             [
                 "",
@@ -545,6 +600,21 @@ def _card_from_common(
                 "Unknown interference assumption limits causal interpretation",
             )
 
+    power = _power_contract_from_containers(meta, artifacts)
+    if not power:
+        from panel_exp.design.power import build_power_contract
+
+        power = build_power_contract()
+    pc_mde_type = _as_str(power.get("mde_type"))
+    pc_sim = power.get("simulation_based")
+    power_simulation_based: Optional[bool]
+    if pc_sim is None:
+        power_simulation_based = None
+    else:
+        power_simulation_based = bool(pc_sim)
+    pc_recommended = tuple(_as_list(power.get("recommended_use")))
+    pc_warnings = tuple(_as_list(power.get("warnings")))
+
     return ExperimentCard(
         experiment_id=_as_str(experiment_id),
         created_at=_as_str(created_at),
@@ -580,6 +650,10 @@ def _card_from_common(
         interference_review_contamination_risk=ir_contam,
         interference_review_spillover_direction=ir_direction,
         interference_review_warnings=ir_warnings,
+        power_mde_type=pc_mde_type,
+        power_simulation_based=power_simulation_based,
+        power_recommended_use=pc_recommended,
+        power_contract_warnings=pc_warnings,
         spec_hash=_as_str(spec_hash),
         assignment_hash=_as_str(assignment_hash),
         input_structure_hash=_as_str(input_structure_hash or _UNKNOWN),
