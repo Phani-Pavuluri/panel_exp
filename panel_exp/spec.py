@@ -29,6 +29,71 @@ class InterferenceAssumption(str, Enum):
     UNKNOWN = "unknown"
 
 
+class TargetEstimand(str, Enum):
+    """
+    Declared causal quantity for analysis reporting.
+
+    ``UNKNOWN`` is the default; callers must set an explicit estimand for
+    decision-grade readouts. Values describe intent, not estimator outputs.
+    """
+
+    RELATIVE_ATT_POST = "relative_att_post"
+    ABSOLUTE_ATT_POST = "absolute_att_post"
+    CUMULATIVE_ATT = "cumulative_att"
+    UNIT_LEVEL_ATT = "unit_level_att"
+    POOLED_ATT = "pooled_att"
+    UNKNOWN = "unknown"
+
+
+class UncertaintyContract(str, Enum):
+    """
+    Declared interpretation of interval-like outputs (``y_lower`` / ``y_upper``).
+
+    Distinct from :class:`~panel_exp.inference_result.IntervalType` on a run;
+    prespecify the contract before analysis when possible.
+    """
+
+    CONFIDENCE_INTERVAL = "confidence_interval"
+    CREDIBLE_INTERVAL = "credible_interval"
+    CONFORMAL_INTERVAL = "conformal_interval"
+    PLACEBO_BAND = "placebo_band"
+    NONE = "none"
+    UNKNOWN = "unknown"
+
+
+_TARGET_ESTIMAND_LABELS: Dict[str, str] = {
+    TargetEstimand.RELATIVE_ATT_POST.value: "Relative post-period ATT",
+    TargetEstimand.ABSOLUTE_ATT_POST.value: "Absolute post-period ATT",
+    TargetEstimand.CUMULATIVE_ATT.value: "Cumulative ATT",
+    TargetEstimand.UNIT_LEVEL_ATT.value: "Unit-level ATT",
+    TargetEstimand.POOLED_ATT.value: "Pooled ATT",
+    TargetEstimand.UNKNOWN.value: "Unknown (not declared)",
+}
+
+_UNCERTAINTY_CONTRACT_LABELS: Dict[str, str] = {
+    UncertaintyContract.CONFIDENCE_INTERVAL.value: "Confidence interval",
+    UncertaintyContract.CREDIBLE_INTERVAL.value: "Credible interval",
+    UncertaintyContract.CONFORMAL_INTERVAL.value: "Conformal interval",
+    UncertaintyContract.PLACEBO_BAND.value: "Placebo band",
+    UncertaintyContract.NONE.value: "None (point estimate only)",
+    UncertaintyContract.UNKNOWN.value: "Unknown (not declared)",
+}
+
+
+def target_estimand_label(estimand: Union[TargetEstimand, str]) -> str:
+    """Human-readable label for a :class:`TargetEstimand` value."""
+    key = estimand.value if isinstance(estimand, TargetEstimand) else str(estimand)
+    return _TARGET_ESTIMAND_LABELS.get(key, _TARGET_ESTIMAND_LABELS[TargetEstimand.UNKNOWN.value])
+
+
+def uncertainty_contract_label(contract: Union[UncertaintyContract, str]) -> str:
+    """Human-readable label for an :class:`UncertaintyContract` value."""
+    key = contract.value if isinstance(contract, UncertaintyContract) else str(contract)
+    return _UNCERTAINTY_CONTRACT_LABELS.get(
+        key, _UNCERTAINTY_CONTRACT_LABELS[UncertaintyContract.UNKNOWN.value]
+    )
+
+
 class DesignMethod(str, Enum):
     BALANCED_RANDOMIZATION = "balanced_randomization"
     COMPLETE_RANDOMIZATION = "complete_randomization"
@@ -114,6 +179,8 @@ class DesignSpec:
     interference: InterferenceAssumption = InterferenceAssumption.UNKNOWN
     spillover_notes: Optional[str] = None
     exposure_column: Optional[str] = None
+    target_estimand: TargetEstimand = TargetEstimand.UNKNOWN
+    uncertainty_contract: UncertaintyContract = UncertaintyContract.UNKNOWN
 
     def __post_init__(self) -> None:
         if not self.experiment_id or not str(self.experiment_id).strip():
@@ -193,6 +260,8 @@ def spec_canonical_payload(spec: DesignSpec) -> Dict[str, Any]:
     }
     payload["design_method"] = spec.design_method.value
     payload["interference"] = spec.interference.value
+    payload["target_estimand"] = spec.target_estimand.value
+    payload["uncertainty_contract"] = spec.uncertainty_contract.value
     payload["spillover_metadata_available"] = spillover_metadata_available(spec)
     if spec.spillover_notes:
         payload["spillover_notes"] = str(spec.spillover_notes)
@@ -258,6 +327,8 @@ def spec_from_geo_design(
     interference: InterferenceAssumption = InterferenceAssumption.UNKNOWN,
     spillover_notes: Optional[str] = None,
     exposure_column: Optional[str] = None,
+    target_estimand: TargetEstimand = TargetEstimand.UNKNOWN,
+    uncertainty_contract: UncertaintyContract = UncertaintyContract.UNKNOWN,
     **assumptions: Any,
 ) -> DesignSpec:
     """Build a DesignSpec from geo experiment parameters."""
@@ -284,4 +355,6 @@ def spec_from_geo_design(
         interference=interference,
         spillover_notes=spillover_notes,
         exposure_column=exposure_column,
+        target_estimand=target_estimand,
+        uncertainty_contract=uncertainty_contract,
     )

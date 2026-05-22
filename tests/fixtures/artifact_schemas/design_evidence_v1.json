@@ -1,0 +1,51 @@
+{
+  "artifacts": {},
+  "assignment": {
+    "control": [
+      "u0",
+      "u1"
+    ],
+    "test_0": [
+      "u2"
+    ]
+  },
+  "assignment_hash": "cfe3327b5f8577b4df09c29d033f4dee",
+  "design_method": "balanced_randomization",
+  "design_name": "balanced_randomization",
+  "diagnostics": {},
+  "errors": [],
+  "evidence_version": "1.0",
+  "experiment_id": "schema-fixture-exp",
+  "inference_metadata": {
+    "analysis_contract": {
+      "notes": [
+        "Effect interpretation not explicitly declared.",
+        "Uncertainty contract inferred from inference metadata; set DesignSpec.uncertainty_contract to prespecify."
+      ],
+      "target_estimand": "unknown",
+      "target_estimand_label": "Unknown (not declared)",
+      "uncertainty_contract": "confidence_interval",
+      "uncertainty_contract_label": "Confidence interval"
+    },
+    "estimator_maturity": "expert_review",
+    "estimator_name": "TBRRidge",
+    "inference_mode_maturity": "expert_review",
+    "interference_assumption": "no_interference",
+    "interference_note": "User declared no_interference; not empirically verified by this package.",
+    "interference_user_declared": true,
+    "intervals_available": true,
+    "path_interval_type": "confidence_interval",
+    "spillover_estimation_available": false,
+    "spillover_metadata_available": false
+  },
+  "input_data_hash": null,
+  "input_structure_hash": null,
+  "spec_hash": "a36ce9f635cdd8c40f4f285182fc2b53",
+  "validation_summary": {
+    "blocking_failures": [],
+    "status": "PASS"
+  },
+  "warnings": [
+    "fixture-warning"
+  ]
+}

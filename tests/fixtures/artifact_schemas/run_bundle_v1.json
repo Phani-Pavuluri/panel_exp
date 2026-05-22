@@ -38,6 +38,16 @@
     "evidence_version": "1.0",
     "experiment_id": "schema-fixture-exp",
     "inference_metadata": {
+      "analysis_contract": {
+        "notes": [
+          "Effect interpretation not explicitly declared.",
+          "Uncertainty contract inferred from inference metadata; set DesignSpec.uncertainty_contract to prespecify."
+        ],
+        "target_estimand": "unknown",
+        "target_estimand_label": "Unknown (not declared)",
+        "uncertainty_contract": "confidence_interval",
+        "uncertainty_contract_label": "Confidence interval"
+      },
       "estimator_maturity": "expert_review",
       "estimator_name": "TBRRidge",
       "inference_mode_maturity": "expert_review",
@@ -51,7 +61,7 @@
     },
     "input_data_hash": null,
     "input_structure_hash": null,
-    "spec_hash": "f29f7f212a6c89c0875d68d509e0158f",
+    "spec_hash": "a36ce9f635cdd8c40f4f285182fc2b53",
     "validation_summary": {
       "blocking_failures": [],
       "status": "PASS"
@@ -61,6 +71,10 @@
     ]
   },
   "experiment_card": {
+    "analysis_contract_warnings": [
+      "Effect interpretation not explicitly declared.",
+      "Uncertainty contract inferred from inference metadata; set DesignSpec.uncertainty_contract to prespecify."
+    ],
     "assignment_hash": "cfe3327b5f8577b4df09c29d033f4dee",
     "assignment_summary": {
       "control": 2,
@@ -79,8 +93,10 @@
     "interference_assumption": "unknown",
     "interval_type": "confidence_interval",
     "intervals_available": true,
-    "spec_hash": "f29f7f212a6c89c0875d68d509e0158f",
+    "spec_hash": "a36ce9f635cdd8c40f4f285182fc2b53",
     "spillover_metadata_available": true,
+    "target_estimand_label": "Unknown (not declared)",
+    "uncertainty_contract_label": "Confidence interval",
     "validation_metadata_summary": {},
     "validation_summary": {
       "blocking_failures": [],
@@ -95,7 +111,7 @@
     "assignment_hash": "cfe3327b5f8577b4df09c29d033f4dee",
     "evidence_version": "1.0",
     "input_structure_hash": null,
-    "spec_hash": "f29f7f212a6c89c0875d68d509e0158f"
+    "spec_hash": "a36ce9f635cdd8c40f4f285182fc2b53"
   },
   "maturity_evidence": {
     "calibration_available": true,

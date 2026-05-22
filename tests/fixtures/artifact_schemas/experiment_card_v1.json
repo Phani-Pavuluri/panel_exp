@@ -1,4 +1,8 @@
 {
+  "analysis_contract_warnings": [
+    "Effect interpretation not explicitly declared.",
+    "Uncertainty contract inferred from inference metadata; set DesignSpec.uncertainty_contract to prespecify."
+  ],
   "assignment_hash": "cfe3327b5f8577b4df09c29d033f4dee",
   "assignment_summary": {
     "control": 2,
@@ -17,8 +21,10 @@
   "interference_assumption": "unknown",
   "interval_type": "confidence_interval",
   "intervals_available": true,
-  "spec_hash": "f29f7f212a6c89c0875d68d509e0158f",
+  "spec_hash": "a36ce9f635cdd8c40f4f285182fc2b53",
   "spillover_metadata_available": true,
+  "target_estimand_label": "Unknown (not declared)",
+  "uncertainty_contract_label": "Confidence interval",
   "validation_metadata_summary": {},
   "validation_summary": {
     "blocking_failures": [],

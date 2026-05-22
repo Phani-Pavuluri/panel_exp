@@ -162,6 +162,19 @@ def _readiness_assessment_markdown(
     return assessment.to_markdown()
 
 
+def _analysis_contract_from_metadata(
+    inference_metadata: Mapping[str, Any],
+    artifacts: Mapping[str, Any],
+) -> Dict[str, Any]:
+    for container in (inference_metadata, artifacts):
+        if not isinstance(container, Mapping):
+            continue
+        raw = container.get("analysis_contract")
+        if isinstance(raw, Mapping):
+            return dict(raw)
+    return {}
+
+
 def _validation_metadata_summary(
     inference_metadata: Mapping[str, Any],
     artifacts: Mapping[str, Any],
@@ -204,6 +217,9 @@ class ExperimentCard:
     calibration_summary: str = ""
     maturity_evidence_summary: str = ""
     readiness_assessment_summary: str = ""
+    target_estimand_label: str = _UNKNOWN
+    uncertainty_contract_label: str = _UNKNOWN
+    analysis_contract_warnings: Tuple[str, ...] = _EMPTY_LIST
     spec_hash: str = _UNKNOWN
     assignment_hash: str = _UNKNOWN
     input_structure_hash: str = _UNKNOWN
@@ -233,6 +249,9 @@ class ExperimentCard:
             "calibration_summary": self.calibration_summary,
             "maturity_evidence_summary": self.maturity_evidence_summary,
             "readiness_assessment_summary": self.readiness_assessment_summary,
+            "target_estimand_label": self.target_estimand_label,
+            "uncertainty_contract_label": self.uncertainty_contract_label,
+            "analysis_contract_warnings": list(self.analysis_contract_warnings),
             "spec_hash": self.spec_hash,
             "assignment_hash": self.assignment_hash,
             "input_structure_hash": self.input_structure_hash,
@@ -278,6 +297,18 @@ class ExperimentCard:
                     lines.append(f"  - {item}")
         else:
             lines.append("- *No validation summary recorded.*")
+        lines.extend(["", "## Estimand and Uncertainty Contract", ""])
+        lines.append("")
+        lines.append("Target estimand:")
+        lines.append(self.target_estimand_label)
+        lines.append("")
+        lines.append("Uncertainty:")
+        lines.append(self.uncertainty_contract_label)
+        if self.analysis_contract_warnings:
+            lines.append("")
+            lines.append("Warning:")
+            for w in self.analysis_contract_warnings:
+                lines.append(w)
         lines.extend(["", "## Interference Assumptions", ""])
         lines.append(f"- **Declared / checked assumption:** {self.interference_assumption}")
         spill = "yes" if self.spillover_metadata_available else "no"
@@ -425,6 +456,23 @@ def _card_from_common(
     if isinstance(readiness_raw, Mapping):
         readiness_md = _readiness_assessment_markdown(readiness_raw)
 
+    contract = _analysis_contract_from_metadata(meta, artifacts)
+    if not contract:
+        from panel_exp.evidence import build_analysis_contract
+
+        contract = build_analysis_contract(
+            inference_metadata=meta,
+            estimator_name=estimator_name if estimator_name != _UNKNOWN else None,
+        )
+    target_label = _as_str(
+        contract.get("target_estimand_label") or contract.get("target_estimand")
+    )
+    uncertainty_label = _as_str(
+        contract.get("uncertainty_contract_label")
+        or contract.get("uncertainty_contract")
+    )
+    contract_warnings = tuple(_as_list(contract.get("notes")))
+
     return ExperimentCard(
         experiment_id=_as_str(experiment_id),
         created_at=_as_str(created_at),
@@ -451,6 +499,9 @@ def _card_from_common(
         ),
         maturity_evidence_summary=maturity_md,
         readiness_assessment_summary=readiness_md,
+        target_estimand_label=target_label,
+        uncertainty_contract_label=uncertainty_label,
+        analysis_contract_warnings=contract_warnings,
         spec_hash=_as_str(spec_hash),
         assignment_hash=_as_str(assignment_hash),
         input_structure_hash=_as_str(input_structure_hash or _UNKNOWN),
