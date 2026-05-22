@@ -219,6 +219,7 @@ class SyntheticWorld:
             n_periods,
             scenario.effect_type,
             scenario.true_effect,
+            unit_names=all_units,
         )
 
         truth: Dict[str, object] = {
@@ -230,9 +231,136 @@ class SyntheticWorld:
             "treated_units": tuple(treated_units),
             "control_units": tuple(control_units),
             "effect_by_unit": dict(effect_by_unit),
+            "unit_names": tuple(all_units),
+            "observed": observed,
+            "counterfactual": counterfactual,
         }
 
         return cls(scenario=scenario, panel_data=panel_data, truth=truth)
+
+
+def _unit_index(
+    unit_names: Sequence[str],
+    n_rows: int,
+) -> Dict[str, int]:
+    if unit_names:
+        return {u: i for i, u in enumerate(unit_names)}
+    return {f"geo_{i}": i for i in range(n_rows)}
+
+
+def canonical_relative_att_post(
+    observed: np.ndarray,
+    counterfactual: np.ndarray,
+    treated_units: Sequence[str],
+    treatment_start: int,
+    n_periods: int,
+    *,
+    unit_names: Optional[Sequence[str]] = None,
+) -> float:
+    """
+    Mean relative post-period lift on treated units: E[(Y - Y(0)) / Y(0)] over
+    treated geos and post times (validation / test canonical).
+    """
+    unit_to_idx = _unit_index(unit_names or (), observed.shape[0])
+    post = slice(treatment_start, n_periods)
+    lifts: List[float] = []
+    for unit in treated_units:
+        gi = unit_to_idx[unit]
+        y = observed[gi, post]
+        y_cf = counterfactual[gi, post]
+        mask = np.isfinite(y) & np.isfinite(y_cf)
+        if not np.any(mask):
+            continue
+        denom = y_cf[mask]
+        denom = denom[denom != 0]
+        if denom.size == 0:
+            continue
+        lifts.extend(((y[mask] - y_cf[mask]) / y_cf[mask])[y_cf[mask] != 0])
+    if lifts:
+        return float(np.mean(lifts))
+    return float("nan")
+
+
+def canonical_absolute_att_post(
+    observed: np.ndarray,
+    counterfactual: np.ndarray,
+    treated_units: Sequence[str],
+    treatment_start: int,
+    n_periods: int,
+    *,
+    unit_names: Optional[Sequence[str]] = None,
+) -> float:
+    """Mean absolute post-period lift on treated units."""
+    unit_to_idx = _unit_index(unit_names or (), observed.shape[0])
+    post = slice(treatment_start, n_periods)
+    lifts: List[float] = []
+    for unit in treated_units:
+        gi = unit_to_idx[unit]
+        y = observed[gi, post]
+        y_cf = counterfactual[gi, post]
+        mask = np.isfinite(y) & np.isfinite(y_cf)
+        if not np.any(mask):
+            continue
+        lifts.extend((y[mask] - y_cf[mask]).tolist())
+    if lifts:
+        return float(np.mean(lifts))
+    return float("nan")
+
+
+def canonical_cumulative_att(
+    observed: np.ndarray,
+    counterfactual: np.ndarray,
+    treated_units: Sequence[str],
+    treatment_start: int,
+    n_periods: int,
+    *,
+    unit_names: Optional[Sequence[str]] = None,
+) -> float:
+    """Sum of absolute post-period increments (Y - Y(0)) on treated units."""
+    unit_to_idx = _unit_index(unit_names or (), observed.shape[0])
+    post = slice(treatment_start, n_periods)
+    total = 0.0
+    n = 0
+    for unit in treated_units:
+        gi = unit_to_idx[unit]
+        y = observed[gi, post]
+        y_cf = counterfactual[gi, post]
+        mask = np.isfinite(y) & np.isfinite(y_cf)
+        if not np.any(mask):
+            continue
+        total += float(np.nansum(y[mask] - y_cf[mask]))
+        n += int(np.sum(mask))
+    if n == 0:
+        return float("nan")
+    return total
+
+
+def canonical_pooled_relative_att_post(
+    observed: np.ndarray,
+    counterfactual: np.ndarray,
+    treated_units: Sequence[str],
+    treatment_start: int,
+    n_periods: int,
+    *,
+    unit_names: Optional[Sequence[str]] = None,
+) -> float:
+    """
+    Pooled treated time-series: sum outcomes across treated geos each period,
+    then mean relative post lift (matches DID aggregate reporting scale).
+    """
+    unit_to_idx = _unit_index(unit_names or (), observed.shape[0])
+    post = slice(treatment_start, n_periods)
+    n_post = n_periods - treatment_start
+    y_sum = np.zeros(n_post, dtype=float)
+    y0_sum = np.zeros(n_post, dtype=float)
+    for unit in treated_units:
+        gi = unit_to_idx[unit]
+        y_sum += observed[gi, post]
+        y0_sum += counterfactual[gi, post]
+    mask = np.isfinite(y_sum) & np.isfinite(y0_sum) & (y0_sum != 0)
+    if not np.any(mask):
+        return float("nan")
+    return float(np.mean((y_sum[mask] - y0_sum[mask]) / y0_sum[mask]))
 
 
 def _scalar_truth_effect(
@@ -243,30 +371,31 @@ def _scalar_truth_effect(
     n_periods: int,
     effect_type: str,
     configured_effect: float,
+    *,
+    unit_names: Optional[Sequence[str]] = None,
 ) -> float:
     """
     Scalar truth on the validation scale: mean relative post lift for relative
     scenarios, mean absolute post lift otherwise.
     """
-    all_units = [f"geo_{i}" for i in range(observed.shape[0])]
-    unit_to_idx = {u: i for i, u in enumerate(all_units)}
-    post = slice(treatment_start, n_periods)
-    lifts: List[float] = []
-    for unit in treated_units:
-        gi = unit_to_idx[unit]
-        y = observed[gi, post]
-        y_cf = counterfactual[gi, post]
-        mask = np.isfinite(y) & np.isfinite(y_cf)
-        if not np.any(mask):
-            continue
-        if effect_type == "relative":
-            denom = y_cf[mask]
-            denom = denom[denom != 0]
-            if denom.size == 0:
-                continue
-            lifts.extend(((y[mask] - y_cf[mask]) / y_cf[mask])[y_cf[mask] != 0])
-        else:
-            lifts.extend((y[mask] - y_cf[mask]).tolist())
-    if lifts:
-        return float(np.mean(lifts))
+    if effect_type == "relative":
+        value = canonical_relative_att_post(
+            observed,
+            counterfactual,
+            treated_units,
+            treatment_start,
+            n_periods,
+            unit_names=unit_names,
+        )
+    else:
+        value = canonical_absolute_att_post(
+            observed,
+            counterfactual,
+            treated_units,
+            treatment_start,
+            n_periods,
+            unit_names=unit_names,
+        )
+    if np.isfinite(value):
+        return value
     return float(configured_effect)

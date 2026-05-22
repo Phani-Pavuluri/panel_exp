@@ -23,9 +23,14 @@ from panel_exp.validation.synthetic_scenarios import (
     get_recovery_scenario,
     scenarios_for_estimator,
 )
+from panel_exp.spec import TargetEstimand
 from panel_exp.validation.synthetic_world import SyntheticScenario, SyntheticWorld
 
 EstimatorInput = Union[str, Type[Any]]
+
+# Recovery scores predicted vs scalar truth on this estimand (see runner._path_relative_att).
+SCORED_TARGET_ESTIMAND = TargetEstimand.RELATIVE_ATT_POST.value
+PREDICTED_EFFECT_SCORING = "_path_relative_att"
 
 
 def _extended_estimator_configs() -> Dict[str, EstimatorConfig]:
@@ -170,6 +175,8 @@ class RecoveryRunner:
         elapsed = time.perf_counter() - t0
         payload = result.to_dict()
         payload["runtime_seconds"] = float(elapsed)
+        payload["scored_target_estimand"] = SCORED_TARGET_ESTIMAND
+        payload["predicted_effect_scoring"] = PREDICTED_EFFECT_SCORING
         return payload
 
 
