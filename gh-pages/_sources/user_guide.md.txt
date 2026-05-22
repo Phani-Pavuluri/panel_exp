@@ -56,7 +56,21 @@ Experiment Card
 
 **Experiment card** — `build_experiment_card(evidence)` renders markdown sections for design, inference maturity, validation evidence, calibration, maturity evidence, and readiness when attached under `evidence.artifacts`.
 
-Example script: `examples/decision_workflow_example.py`.
+Example scripts: `examples/decision_workflow_example.py`, `examples/readiness_profile_comparison.py`.
+
+## Readiness Policy Profiles
+
+`panel_exp.policy.build_readiness_assessment` accepts `profile=ReadinessProfile.STANDARD` (default). Profiles change **advisory** thresholds only; they do not block runs, alter estimates, or change global calibration constants.
+
+**All profiles are non-blocking.** No profile proves causal validity; readiness summarizes attached evidence quality for expert review.
+
+- **exploratory** — For research and debugging. Allows missing intervals, research-only / unvalidated estimator maturity, and unknown interference. Not appropriate for budget or production go/no-go decisions.
+
+- **standard** — Default for normal reviewed readouts. Requires path-level intervals, rejects research-only and unvalidated methods, and requires a declared interference assumption.
+
+- **strict** — Conservative thresholds (lower FPR, higher coverage / power / recovery success). Suitable when stakes are high; still advisory, not an automatic approval gate.
+
+Compare the same mocked evidence under all three profiles: `poetry run python examples/readiness_profile_comparison.py`.
 
 ## Package Architecture
 
