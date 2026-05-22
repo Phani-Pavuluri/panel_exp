@@ -74,31 +74,33 @@ Advisory readout chain (non-blocking; does not change estimates):
 ```
 Design
 ↓
-Assignment
-↓
-Estimator
-↓
 Inference
 ↓
-Recovery Validation
+Recovery
 ↓
-Calibration Report
+Calibration
 ↓
 Maturity Evidence
 ↓
-Readiness Assessment
+Readiness
 ↓
 Experiment Card
+↓
+Run Bundle
 ```
 
 | Stage | Summary |
 |-------|---------|
-| **Design** | Experiment setup, spec, and assignment |
-| **Recovery validation** | Synthetic scenarios; diagnostic bias, coverage, FPR, power |
-| **Calibration** | A/A aggregates (FPR, coverage, power) and warnings |
-| **Maturity evidence** | Evidence supporting catalog maturity; not automatic promotion |
-| **Readiness** | Advisory status only (`panel_exp.policy`); non-blocking |
-| **Experiment card** | Human-readable markdown artifact |
+| **Design** | `DesignSpec`, assignment, `DesignEvidence` |
+| **Inference** | Estimators + labeled interval semantics |
+| **Recovery** | `RecoveryRunner` diagnostics — see `docs/VALIDATION_COVERAGE.md` |
+| **Calibration** | `build_calibration_report` (FPR, coverage, power) |
+| **Maturity evidence** | Measured evidence; does not auto-promote catalog labels |
+| **Readiness** | `build_readiness_assessment` — advisory only |
+| **Experiment card** | `build_experiment_card` (contracts + optional power results) |
+| **Run bundle** | `build_run_artifact_bundle` portable export |
+
+Further reading: `docs/ROADMAP_REASSESSMENT.md`, `docs/DOC_DRIFT_AUDIT.md`.
 
 Runnable examples:
 
@@ -156,10 +158,12 @@ write_run_artifact_bundle_json(bundle, "artifacts/run_bundle.json")
 ## Documentation
 
 - **Hosted docs:** Pre-built HTML under `gh-pages/` (open `gh-pages/index.html` locally).
-- **User guide source:** `gh-pages/_sources/user_guide.md.txt`
+- **User guide source:** `gh-pages/_sources/user_guide.md.txt` (starts with **Current Package Status** / code truth).
 - **Uncertainty notes:** `panel_exp/inference/uncertainty.md`
-
-There is no separate `docs/` Sphinx tree in this repository; use `gh-pages/` or build docs from the published site artifacts.
+- **Validation matrix:** `docs/VALIDATION_COVERAGE.md`
+- **Roadmap / gaps:** `docs/ROADMAP_REASSESSMENT.md`
+- **Doc drift audit:** `docs/DOC_DRIFT_AUDIT.md`
+- **Examples index:** `examples/README.md` (legacy notebooks flagged)
 
 ---
 
