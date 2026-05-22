@@ -72,6 +72,8 @@ Example scripts: `examples/decision_workflow_example.py`, `examples/readiness_pr
 
 Compare the same mocked evidence under all three profiles: `poetry run python examples/readiness_profile_comparison.py`.
 
+**Run artifact bundle** — `build_run_artifact_bundle` exports a single portable JSON document (`bundle_version` 1.0) with evidence, experiment card markdown, calibration, maturity evidence, readiness assessment, lineage hashes, and warnings/errors. Use `write_run_artifact_bundle_json(bundle, path)` to persist; export is opt-in and does not alter estimator outputs.
+
 ## Package Architecture
 
 The package is organized into three main modules that follow the natural progression of an experiment:

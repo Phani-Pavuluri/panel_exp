@@ -132,6 +132,23 @@ print(card.to_markdown())
 
 Profile comparison (mocked inputs, no estimator fit): `examples/readiness_profile_comparison.py`.
 
+### Run artifact bundle export
+
+Portable JSON/markdown snapshot of evidence, experiment card, calibration, maturity, and readiness (opt-in; does not auto-attach to estimator results):
+
+```python
+from panel_exp.artifacts import build_run_artifact_bundle, write_run_artifact_bundle_json
+
+bundle = build_run_artifact_bundle(
+    evidence=evidence,
+    experiment_card=card,
+    calibration_report=report,
+    maturity_evidence=maturity,
+    readiness_assessment=readiness,
+)
+write_run_artifact_bundle_json(bundle, "artifacts/run_bundle.json")
+```
+
 ---
 
 ## Documentation
