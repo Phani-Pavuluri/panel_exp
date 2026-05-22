@@ -14,11 +14,8 @@ from panel_exp.policy.readiness import (
     build_readiness_assessment,
 )
 from panel_exp.spec import InterferenceAssumption, spec_from_geo_design
-from panel_exp.validation.calibration_report import (
-    MAX_FALSE_POSITIVE_RATE,
-    MIN_COVERAGE_UNDER_NULL,
-    CalibrationReport,
-)
+from panel_exp.validation.calibration_report import CalibrationReport
+from panel_exp.policy.readiness import STANDARD_POLICY
 
 
 def _ready_meta(**overrides) -> dict:
@@ -62,7 +59,7 @@ def test_research_only_maturity_status():
 
 def test_high_fpr_status():
     report = CalibrationReport(
-        false_positive_rate=MAX_FALSE_POSITIVE_RATE + 0.05,
+        false_positive_rate=STANDARD_POLICY.max_false_positive_rate + 0.05,
         coverage_under_null=0.95,
     )
     assessment = build_readiness_assessment(
@@ -76,7 +73,7 @@ def test_high_fpr_status():
 def test_low_coverage_status():
     report = CalibrationReport(
         false_positive_rate=0.05,
-        coverage_under_null=MIN_COVERAGE_UNDER_NULL - 0.05,
+        coverage_under_null=STANDARD_POLICY.min_coverage_under_null - 0.05,
     )
     assessment = build_readiness_assessment(
         inference_metadata=_ready_meta(),
@@ -190,7 +187,16 @@ def test_to_dict_roundtrip():
         warnings=("w",),
         recommended_actions=("review",),
         inputs_used=("calibration_report",),
+        profile_name="standard",
+        thresholds_used=(("max_false_positive_rate", 0.10),),
     )
     payload = assessment.to_dict()
     assert payload["status"] == "not_ready_high_fpr"
     assert payload["status_label"]
+    assert payload["profile_name"] == "standard"
+    assert payload["thresholds_used"]["max_false_positive_rate"] == 0.10
+
+
+def test_default_profile_is_standard():
+    assessment = build_readiness_assessment(inference_metadata=_ready_meta())
+    assert assessment.profile_name == "standard"

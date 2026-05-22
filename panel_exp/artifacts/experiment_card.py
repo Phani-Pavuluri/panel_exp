@@ -143,6 +143,11 @@ def _readiness_assessment_markdown(
         status = ReadinessStatus(str(readiness_assessment.get("status", "")))
     except ValueError:
         status = ReadinessStatus.READY_WITH_REVIEW
+    thresholds_raw = readiness_assessment.get("thresholds_used") or {}
+    if isinstance(thresholds_raw, Mapping):
+        thresholds_used = tuple(thresholds_raw.items())
+    else:
+        thresholds_used = ()
     assessment = ReadinessAssessment(
         status=status,
         reasons=tuple(readiness_assessment.get("reasons") or ()),
@@ -151,6 +156,8 @@ def _readiness_assessment_markdown(
             readiness_assessment.get("recommended_actions") or ()
         ),
         inputs_used=tuple(readiness_assessment.get("inputs_used") or ()),
+        profile_name=str(readiness_assessment.get("profile_name") or "standard"),
+        thresholds_used=thresholds_used,
     )
     return assessment.to_markdown()
 
