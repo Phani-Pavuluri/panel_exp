@@ -65,6 +65,55 @@ Path bands in `results` are labeled explicitly: `confidence_interval`, `credible
 
 ---
 
+## Decision Workflow
+
+Advisory readout chain (non-blocking; does not change estimates):
+
+```
+Design
+↓
+Assignment
+↓
+Estimator
+↓
+Inference
+↓
+Recovery Validation
+↓
+Calibration Report
+↓
+Maturity Evidence
+↓
+Readiness Assessment
+↓
+Experiment Card
+```
+
+| Stage | Summary |
+|-------|---------|
+| **Design** | Experiment setup, spec, and assignment |
+| **Recovery validation** | Synthetic scenarios; diagnostic bias, coverage, FPR, power |
+| **Calibration** | A/A aggregates (FPR, coverage, power) and warnings |
+| **Maturity evidence** | Evidence supporting catalog maturity; not automatic promotion |
+| **Readiness** | Advisory status only (`panel_exp.policy`); non-blocking |
+| **Experiment card** | Human-readable markdown artifact |
+
+Runnable example: `poetry run python examples/decision_workflow_example.py`
+
+```python
+from panel_exp.validation import build_calibration_report, build_maturity_evidence
+from panel_exp.policy import build_readiness_assessment
+from panel_exp.artifacts import build_experiment_card
+
+report = build_calibration_report(recovery_outputs=recovery_payloads, estimator="DID")
+maturity = build_maturity_evidence("TBRRidge", meta, calibration_report=report, recovery_outputs=recovery_payloads)
+readiness = build_readiness_assessment(inference_metadata=results["inference_metadata"], calibration_report=report, maturity_evidence=maturity)
+card = build_experiment_card(evidence)
+print(card.to_markdown())
+```
+
+---
+
 ## Documentation
 
 - **Hosted docs:** Pre-built HTML under `gh-pages/` (open `gh-pages/index.html` locally).
@@ -171,7 +220,7 @@ poetry run pytest
 - `tests/` — pytest (`tests/fixtures/` for synthetic data)
 - `gh-pages/` — published documentation HTML
 - `scripts/` — diagnostic scripts (not part of the wheel API)
-- `examples/` — notebooks (some reference dev-only modules)
+- `examples/` — notebooks and `decision_workflow_example.py` (end-to-end advisory workflow)
 
 ---
 
