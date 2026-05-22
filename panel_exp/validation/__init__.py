@@ -12,6 +12,10 @@ from panel_exp.validation.calibration_report import (
     calibration_markdown_from_mapping,
     compute_calibration_warnings,
 )
+from panel_exp.validation.maturity_evidence import (
+    attach_maturity_evidence,
+    build_maturity_evidence,
+)
 from panel_exp.validation.metrics import (
     ReplicationOutcome,
     ValidationMetrics,
@@ -69,7 +73,9 @@ __all__ = [
     "SyntheticWorld",
     "ValidationMetrics",
     "aggregate_outcomes",
+    "attach_maturity_evidence",
     "attach_calibration_report",
+    "build_maturity_evidence",
     "build_calibration_report",
     "calibration_markdown_from_mapping",
     "compute_calibration_warnings",

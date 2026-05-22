@@ -65,6 +65,92 @@ Path bands in `results` are labeled explicitly: `confidence_interval`, `credible
 
 ---
 
+## Decision Workflow
+
+Advisory readout chain (non-blocking; does not change estimates):
+
+```
+Design
+↓
+Assignment
+↓
+Estimator
+↓
+Inference
+↓
+Recovery Validation
+↓
+Calibration Report
+↓
+Maturity Evidence
+↓
+Readiness Assessment
+↓
+Experiment Card
+```
+
+| Stage | Summary |
+|-------|---------|
+| **Design** | Experiment setup, spec, and assignment |
+| **Recovery validation** | Synthetic scenarios; diagnostic bias, coverage, FPR, power |
+| **Calibration** | A/A aggregates (FPR, coverage, power) and warnings |
+| **Maturity evidence** | Evidence supporting catalog maturity; not automatic promotion |
+| **Readiness** | Advisory status only (`panel_exp.policy`); non-blocking |
+| **Experiment card** | Human-readable markdown artifact |
+
+Runnable examples:
+
+- `poetry run python examples/decision_workflow_example.py` — full workflow
+- `poetry run python examples/readiness_profile_comparison.py` — same evidence under all profiles
+
+```python
+from panel_exp.validation import build_calibration_report, build_maturity_evidence
+from panel_exp.policy import build_readiness_assessment, ReadinessProfile
+from panel_exp.artifacts import build_experiment_card
+
+report = build_calibration_report(recovery_outputs=recovery_payloads, estimator="DID")
+maturity = build_maturity_evidence("TBRRidge", meta, calibration_report=report, recovery_outputs=recovery_payloads)
+readiness = build_readiness_assessment(
+    inference_metadata=results["inference_metadata"],
+    calibration_report=report,
+    maturity_evidence=maturity,
+    profile=ReadinessProfile.STANDARD,  # default if omitted
+)
+card = build_experiment_card(evidence)
+print(card.to_markdown())
+```
+
+## Readiness Policy Profiles
+
+`build_readiness_assessment(..., profile=ReadinessProfile.STANDARD)` evaluates the same evidence under configurable advisory thresholds. **All profiles are non-blocking** — none prove causal truth; readiness summarizes evidence quality for human review.
+
+| Profile | When to use |
+|---------|-------------|
+| **exploratory** | Research and debugging. Allows missing intervals, `research_only` / unvalidated maturity, and unknown interference. **Not** for budget or go/no-go decisions. |
+| **standard** | **Default.** Requires path-level intervals, rejects research-only / unvalidated methods, requires a declared interference assumption. Suitable for normal reviewed readouts. |
+| **strict** | Conservative review before high-stakes decisions. Tighter FPR, coverage, power, and recovery-success thresholds. Still advisory — not automatic approval. |
+
+Profile comparison (mocked inputs, no estimator fit): `examples/readiness_profile_comparison.py`.
+
+### Run artifact bundle export
+
+Portable JSON/markdown snapshot of evidence, experiment card, calibration, maturity, and readiness (opt-in; does not auto-attach to estimator results):
+
+```python
+from panel_exp.artifacts import build_run_artifact_bundle, write_run_artifact_bundle_json
+
+bundle = build_run_artifact_bundle(
+    evidence=evidence,
+    experiment_card=card,
+    calibration_report=report,
+    maturity_evidence=maturity,
+    readiness_assessment=readiness,
+)
+write_run_artifact_bundle_json(bundle, "artifacts/run_bundle.json")
+```
+
+---
+
 ## Documentation
 
 - **Hosted docs:** Pre-built HTML under `gh-pages/` (open `gh-pages/index.html` locally).
@@ -171,7 +257,7 @@ poetry run pytest
 - `tests/` — pytest (`tests/fixtures/` for synthetic data)
 - `gh-pages/` — published documentation HTML
 - `scripts/` — diagnostic scripts (not part of the wheel API)
-- `examples/` — notebooks (some reference dev-only modules)
+- `examples/` — notebooks, `decision_workflow_example.py`, `readiness_profile_comparison.py`
 
 ---
 

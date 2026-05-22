@@ -1,0 +1,147 @@
+{
+  "bundle_version": "1.0",
+  "calibration_report": {
+    "bias_under_lift": null,
+    "bias_under_null": null,
+    "coverage_under_lift": null,
+    "coverage_under_null": 0.92,
+    "false_negative_rate": null,
+    "false_positive_rate": 0.05,
+    "mean_interval_width": null,
+    "median_interval_width": null,
+    "n_replications": 10,
+    "null_replications": 5,
+    "positive_replications": 5,
+    "power": 0.81,
+    "recovery_success_rate": 0.9,
+    "warnings": [
+      "cal-warn"
+    ]
+  },
+  "errors": [],
+  "evidence": {
+    "artifacts": {},
+    "assignment": {
+      "control": [
+        "u0",
+        "u1"
+      ],
+      "test_0": [
+        "u2"
+      ]
+    },
+    "assignment_hash": "cfe3327b5f8577b4df09c29d033f4dee",
+    "design_method": "balanced_randomization",
+    "design_name": "balanced_randomization",
+    "diagnostics": {},
+    "errors": [],
+    "evidence_version": "1.0",
+    "experiment_id": "schema-fixture-exp",
+    "inference_metadata": {
+      "estimator_maturity": "expert_review",
+      "estimator_name": "TBRRidge",
+      "inference_mode_maturity": "expert_review",
+      "interference_assumption": "no_interference",
+      "interference_note": "User declared no_interference; not empirically verified by this package.",
+      "interference_user_declared": true,
+      "intervals_available": true,
+      "path_interval_type": "confidence_interval",
+      "spillover_estimation_available": false,
+      "spillover_metadata_available": false
+    },
+    "input_data_hash": null,
+    "input_structure_hash": null,
+    "spec_hash": "f29f7f212a6c89c0875d68d509e0158f",
+    "validation_summary": {
+      "blocking_failures": [],
+      "status": "PASS"
+    },
+    "warnings": [
+      "fixture-warning"
+    ]
+  },
+  "experiment_card": {
+    "assignment_hash": "cfe3327b5f8577b4df09c29d033f4dee",
+    "assignment_summary": {
+      "control": 2,
+      "test_0": 1
+    },
+    "card_version": "1.0",
+    "design_name": "balanced_randomization",
+    "errors": [],
+    "estimator_maturity": "expert_review",
+    "estimator_name": "TBRRidge",
+    "evidence_version": "1.0",
+    "experiment_id": "schema-fixture-exp",
+    "inference_mode": "unknown",
+    "inference_mode_maturity": "expert_review",
+    "input_structure_hash": "unknown",
+    "interference_assumption": "unknown",
+    "interval_type": "confidence_interval",
+    "intervals_available": true,
+    "spec_hash": "f29f7f212a6c89c0875d68d509e0158f",
+    "spillover_metadata_available": true,
+    "validation_metadata_summary": {},
+    "validation_summary": {
+      "blocking_failures": [],
+      "status": "PASS"
+    },
+    "warnings": [
+      "fixture-warning"
+    ]
+  },
+  "experiment_id": "schema-fixture-exp",
+  "lineage": {
+    "assignment_hash": "cfe3327b5f8577b4df09c29d033f4dee",
+    "evidence_version": "1.0",
+    "input_structure_hash": null,
+    "spec_hash": "f29f7f212a6c89c0875d68d509e0158f"
+  },
+  "maturity_evidence": {
+    "calibration_available": true,
+    "coverage_under_null": 0.92,
+    "estimator_name": "TBRRidge",
+    "false_positive_rate": 0.05,
+    "maturity": "expert_review",
+    "power": 0.81,
+    "recovery_success_rate": 0.9,
+    "scenarios_run": [
+      "recovery_null_effect"
+    ],
+    "synthetic_validation_available": true,
+    "warnings": []
+  },
+  "readiness_assessment": {
+    "inputs_used": [
+      "inference_metadata",
+      "calibration_report",
+      "maturity_evidence",
+      "interference_assumption",
+      "profile:standard"
+    ],
+    "profile_name": "standard",
+    "reasons": [
+      "No advisory blockers detected from attached evidence under profile 'standard'; expert review is still required before operational decisions."
+    ],
+    "recommended_actions": [
+      "Proceed only after expert review of design, interference, and inference assumptions.",
+      "Confirm calibration and recovery evidence match this dataset and estimator."
+    ],
+    "status": "ready_with_review",
+    "status_label": "Ready with expert review",
+    "thresholds_used": {
+      "allow_research_only": false,
+      "allow_unknown_interference": false,
+      "max_false_positive_rate": 0.1,
+      "min_coverage_under_null": 0.9,
+      "min_power": 0.8,
+      "require_intervals": true
+    },
+    "warnings": [
+      "cal-warn"
+    ]
+  },
+  "warnings": [
+    "fixture-warning"
+  ]
+}

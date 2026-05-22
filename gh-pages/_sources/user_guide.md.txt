@@ -20,6 +20,60 @@ This section reflects the installed package behavior. Older examples below may r
 
 **Recovery validation:** `panel_exp.validation.RecoveryRunner` and `validation_metadata` are diagnostic synthetic-recovery summaries; they do not auto-promote maturity.
 
+## Decision Workflow
+
+Advisory readout chain (does not block runs or change estimator outputs):
+
+```
+Design
+↓
+Assignment
+↓
+Estimator
+↓
+Inference
+↓
+Recovery Validation
+↓
+Calibration Report
+↓
+Maturity Evidence
+↓
+Readiness Assessment
+↓
+Experiment Card
+```
+
+**Design** — `DesignSpec` / `GeoExperimentDesign` define periods, interference assumption, and assignment. `DesignEvidence` records hashes, validation summary, warnings, and errors.
+
+**Recovery validation** — `RecoveryRunner` runs synthetic scenarios (known truth). Reports bias, coverage, false positive rate, and power. Diagnostic only; optional `validation_metadata` on analysis results.
+
+**Calibration** — `build_calibration_report` aggregates null/lift replication outputs (FPR, coverage under null, power, interval width). Emits readiness warnings; does not change thresholds or maturity labels.
+
+**Maturity evidence** — `build_maturity_evidence` links catalog `EstimatorMaturity` to measured validation. Does not automatically upgrade or downgrade ratings.
+
+**Readiness** — `build_readiness_assessment` (`panel_exp.policy`) returns an advisory status (for example `ready_with_review`, `not_ready_high_fpr`). Non-blocking; no production gate.
+
+**Experiment card** — `build_experiment_card(evidence)` renders markdown sections for design, inference maturity, validation evidence, calibration, maturity evidence, and readiness when attached under `evidence.artifacts`.
+
+Example scripts: `examples/decision_workflow_example.py`, `examples/readiness_profile_comparison.py`.
+
+## Readiness Policy Profiles
+
+`panel_exp.policy.build_readiness_assessment` accepts `profile=ReadinessProfile.STANDARD` (default). Profiles change **advisory** thresholds only; they do not block runs, alter estimates, or change global calibration constants.
+
+**All profiles are non-blocking.** No profile proves causal validity; readiness summarizes attached evidence quality for expert review.
+
+- **exploratory** — For research and debugging. Allows missing intervals, research-only / unvalidated estimator maturity, and unknown interference. Not appropriate for budget or production go/no-go decisions.
+
+- **standard** — Default for normal reviewed readouts. Requires path-level intervals, rejects research-only and unvalidated methods, and requires a declared interference assumption.
+
+- **strict** — Conservative thresholds (lower FPR, higher coverage / power / recovery success). Suitable when stakes are high; still advisory, not an automatic approval gate.
+
+Compare the same mocked evidence under all three profiles: `poetry run python examples/readiness_profile_comparison.py`.
+
+**Run artifact bundle** — `build_run_artifact_bundle` exports a single portable JSON document (`bundle_version` 1.0) with evidence, experiment card markdown, calibration, maturity evidence, readiness assessment, lineage hashes, and warnings/errors. Use `write_run_artifact_bundle_json(bundle, path)` to persist; export is opt-in and does not alter estimator outputs.
+
 ## Package Architecture
 
 The package is organized into three main modules that follow the natural progression of an experiment:

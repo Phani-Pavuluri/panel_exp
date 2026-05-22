@@ -82,6 +82,86 @@ def _spillover_available(
     return False
 
 
+def _maturity_evidence_markdown(
+    maturity_evidence: Mapping[str, Any],
+) -> str:
+    """Render optional maturity evidence block for the experiment card."""
+    if not maturity_evidence:
+        return ""
+    lines: List[str] = [
+        "## Maturity Evidence",
+        "",
+        f"- **Estimator:** {_as_str(maturity_evidence.get('estimator_name'))}",
+        f"- **Catalog maturity (unchanged):** {_as_str(maturity_evidence.get('maturity'))}",
+        f"- **Synthetic validation available:** "
+        f"{'yes' if maturity_evidence.get('synthetic_validation_available') else 'no'}",
+        f"- **Calibration report attached:** "
+        f"{'yes' if maturity_evidence.get('calibration_available') else 'no'}",
+    ]
+    scenarios = maturity_evidence.get("scenarios_run") or ()
+    if scenarios:
+        lines.append("- **Recovery scenarios run:**")
+        for sc in _as_list(scenarios):
+            lines.append(f"  - {sc}")
+    else:
+        lines.append("- **Recovery scenarios run:** *none attached*")
+    for label, key in (
+        ("False positive rate", "false_positive_rate"),
+        ("Coverage under null", "coverage_under_null"),
+        ("Power", "power"),
+        ("Recovery success rate", "recovery_success_rate"),
+    ):
+        val = maturity_evidence.get(key)
+        if val is None:
+            text = "n/a"
+        elif isinstance(val, (int, float)) and val == val:
+            text = f"{float(val):.3f}"
+        else:
+            text = _as_str(val, "n/a")
+        lines.append(f"- **{label}:** {text}")
+    summary = maturity_evidence.get("evidence_summary")
+    if summary:
+        lines.extend(["", f"> {summary}"])
+    me_warnings = maturity_evidence.get("warnings") or ()
+    if me_warnings:
+        lines.append("")
+        lines.append("**Maturity evidence warnings:**")
+        for w in _as_list(me_warnings):
+            lines.append(f"- {w}")
+    return "\n".join(lines)
+
+
+def _readiness_assessment_markdown(
+    readiness_assessment: Mapping[str, Any],
+) -> str:
+    """Render optional decision-readiness block (advisory, non-blocking)."""
+    if not readiness_assessment:
+        return ""
+    from panel_exp.policy.readiness import ReadinessAssessment, ReadinessStatus
+
+    try:
+        status = ReadinessStatus(str(readiness_assessment.get("status", "")))
+    except ValueError:
+        status = ReadinessStatus.READY_WITH_REVIEW
+    thresholds_raw = readiness_assessment.get("thresholds_used") or {}
+    if isinstance(thresholds_raw, Mapping):
+        thresholds_used = tuple(thresholds_raw.items())
+    else:
+        thresholds_used = ()
+    assessment = ReadinessAssessment(
+        status=status,
+        reasons=tuple(readiness_assessment.get("reasons") or ()),
+        warnings=tuple(readiness_assessment.get("warnings") or ()),
+        recommended_actions=tuple(
+            readiness_assessment.get("recommended_actions") or ()
+        ),
+        inputs_used=tuple(readiness_assessment.get("inputs_used") or ()),
+        profile_name=str(readiness_assessment.get("profile_name") or "standard"),
+        thresholds_used=thresholds_used,
+    )
+    return assessment.to_markdown()
+
+
 def _validation_metadata_summary(
     inference_metadata: Mapping[str, Any],
     artifacts: Mapping[str, Any],
@@ -122,6 +202,8 @@ class ExperimentCard:
     intervals_available: Optional[bool] = None
     validation_metadata_summary: Dict[str, Any] = field(default_factory=dict)
     calibration_summary: str = ""
+    maturity_evidence_summary: str = ""
+    readiness_assessment_summary: str = ""
     spec_hash: str = _UNKNOWN
     assignment_hash: str = _UNKNOWN
     input_structure_hash: str = _UNKNOWN
@@ -149,6 +231,8 @@ class ExperimentCard:
                 self.validation_metadata_summary
             ),
             "calibration_summary": self.calibration_summary,
+            "maturity_evidence_summary": self.maturity_evidence_summary,
+            "readiness_assessment_summary": self.readiness_assessment_summary,
             "spec_hash": self.spec_hash,
             "assignment_hash": self.assignment_hash,
             "input_structure_hash": self.input_structure_hash,
@@ -244,6 +328,10 @@ class ExperimentCard:
         if self.calibration_summary:
             lines.append("")
             lines.append(self.calibration_summary.strip())
+        if self.maturity_evidence_summary:
+            lines.extend(["", self.maturity_evidence_summary.strip()])
+        if self.readiness_assessment_summary:
+            lines.extend(["", self.readiness_assessment_summary.strip()])
         lines.extend(
             [
                 "",
@@ -321,6 +409,22 @@ def _card_from_common(
         calibration_markdown_from_mapping,
     )
 
+    maturity_evidence = artifacts.get("maturity_evidence")
+    maturity_md = ""
+    if isinstance(maturity_evidence, Mapping):
+        maturity_md = _maturity_evidence_markdown(maturity_evidence)
+    elif isinstance(inference_metadata.get("maturity_evidence"), Mapping):
+        maturity_md = _maturity_evidence_markdown(
+            inference_metadata["maturity_evidence"]
+        )
+
+    readiness_raw = artifacts.get("readiness_assessment")
+    if not isinstance(readiness_raw, Mapping):
+        readiness_raw = inference_metadata.get("readiness_assessment")
+    readiness_md = ""
+    if isinstance(readiness_raw, Mapping):
+        readiness_md = _readiness_assessment_markdown(readiness_raw)
+
     return ExperimentCard(
         experiment_id=_as_str(experiment_id),
         created_at=_as_str(created_at),
@@ -345,6 +449,8 @@ def _card_from_common(
         calibration_summary=calibration_markdown_from_mapping(
             artifacts.get("calibration_report")
         ),
+        maturity_evidence_summary=maturity_md,
+        readiness_assessment_summary=readiness_md,
         spec_hash=_as_str(spec_hash),
         assignment_hash=_as_str(assignment_hash),
         input_structure_hash=_as_str(input_structure_hash or _UNKNOWN),

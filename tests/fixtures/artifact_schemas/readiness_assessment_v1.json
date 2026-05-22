@@ -1,0 +1,30 @@
+{
+  "inputs_used": [
+    "inference_metadata",
+    "calibration_report",
+    "maturity_evidence",
+    "interference_assumption",
+    "profile:standard"
+  ],
+  "profile_name": "standard",
+  "reasons": [
+    "No advisory blockers detected from attached evidence under profile 'standard'; expert review is still required before operational decisions."
+  ],
+  "recommended_actions": [
+    "Proceed only after expert review of design, interference, and inference assumptions.",
+    "Confirm calibration and recovery evidence match this dataset and estimator."
+  ],
+  "status": "ready_with_review",
+  "status_label": "Ready with expert review",
+  "thresholds_used": {
+    "allow_research_only": false,
+    "allow_unknown_interference": false,
+    "max_false_positive_rate": 0.1,
+    "min_coverage_under_null": 0.9,
+    "min_power": 0.8,
+    "require_intervals": true
+  },
+  "warnings": [
+    "cal-warn"
+  ]
+}

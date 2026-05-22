@@ -1,0 +1,14 @@
+{
+  "calibration_available": true,
+  "coverage_under_null": 0.92,
+  "estimator_name": "TBRRidge",
+  "false_positive_rate": 0.05,
+  "maturity": "expert_review",
+  "power": 0.81,
+  "recovery_success_rate": 0.9,
+  "scenarios_run": [
+    "recovery_null_effect"
+  ],
+  "synthetic_validation_available": true,
+  "warnings": []
+}

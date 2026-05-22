@@ -1,0 +1,30 @@
+{
+  "assignment_hash": "cfe3327b5f8577b4df09c29d033f4dee",
+  "assignment_summary": {
+    "control": 2,
+    "test_0": 1
+  },
+  "card_version": "1.0",
+  "design_name": "balanced_randomization",
+  "errors": [],
+  "estimator_maturity": "expert_review",
+  "estimator_name": "TBRRidge",
+  "evidence_version": "1.0",
+  "experiment_id": "schema-fixture-exp",
+  "inference_mode": "unknown",
+  "inference_mode_maturity": "expert_review",
+  "input_structure_hash": "unknown",
+  "interference_assumption": "unknown",
+  "interval_type": "confidence_interval",
+  "intervals_available": true,
+  "spec_hash": "f29f7f212a6c89c0875d68d509e0158f",
+  "spillover_metadata_available": true,
+  "validation_metadata_summary": {},
+  "validation_summary": {
+    "blocking_failures": [],
+    "status": "PASS"
+  },
+  "warnings": [
+    "fixture-warning"
+  ]
+}
