@@ -1,0 +1,18 @@
+{
+  "bias_under_lift": null,
+  "bias_under_null": null,
+  "coverage_under_lift": null,
+  "coverage_under_null": 0.92,
+  "false_negative_rate": null,
+  "false_positive_rate": 0.05,
+  "mean_interval_width": null,
+  "median_interval_width": null,
+  "n_replications": 10,
+  "null_replications": 5,
+  "positive_replications": 5,
+  "power": 0.81,
+  "recovery_success_rate": 0.9,
+  "warnings": [
+    "cal-warn"
+  ]
+}
