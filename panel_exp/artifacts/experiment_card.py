@@ -180,28 +180,49 @@ def _format_geo_list(geos: Any) -> str:
     return ", ".join(items) if items else ""
 
 
-def _power_contract_from_containers(
+def _power_run_payload_from_containers(
     inference_metadata: Mapping[str, Any],
     artifacts: Mapping[str, Any],
-) -> Dict[str, Any]:
+) -> tuple[bool, Dict[str, Any], Optional[Dict[str, Any]]]:
+    """
+    Detect whether simulation power results were attached (not just interpretation rules).
+
+    Returns ``(results_available, mde_semantics, aa_calibration)``.
+    """
+    from panel_exp.design.power import power_analysis_was_run
+
     for container in (artifacts, inference_metadata):
         if not isinstance(container, Mapping):
             continue
-        raw = container.get("power_contract")
-        if isinstance(raw, Mapping):
-            return dict(raw)
-    semantics = inference_metadata.get("mde_semantics") if isinstance(
-        inference_metadata, Mapping
-    ) else None
-    if isinstance(semantics, Mapping):
-        from panel_exp.design.power import build_power_contract
+        semantics = container.get("mde_semantics")
+        if isinstance(semantics, Mapping) and power_analysis_was_run(semantics):
+            cal = container.get("aa_calibration")
+            return (
+                True,
+                dict(semantics),
+                dict(cal) if isinstance(cal, Mapping) else None,
+            )
+        contract = container.get("power_contract")
+        if isinstance(contract, Mapping) and contract.get("power_analysis_run"):
+            sem = (
+                dict(semantics)
+                if isinstance(semantics, Mapping)
+                else dict(contract)
+            )
+            cal = container.get("aa_calibration")
+            return (
+                True,
+                sem,
+                dict(cal) if isinstance(cal, Mapping) else None,
+            )
+    return False, {}, None
 
-        cal = inference_metadata.get("aa_calibration")
-        return build_power_contract(
-            semantics,
-            aa_calibration=cal if isinstance(cal, Mapping) else None,
-        )
-    return {}
+
+def _generic_power_interpretation_contract() -> Dict[str, Any]:
+    """Package-default interpretation rules; does not imply a power study was run."""
+    from panel_exp.design.power import MDE_SEMANTICS, build_power_contract
+
+    return build_power_contract(MDE_SEMANTICS, power_analysis_run=False)
 
 
 def _analysis_contract_from_metadata(
@@ -268,10 +289,16 @@ class ExperimentCard:
     target_estimand_label: str = _UNKNOWN
     uncertainty_contract_label: str = _UNKNOWN
     analysis_contract_warnings: Tuple[str, ...] = _EMPTY_LIST
+    power_results_available: bool = False
     power_mde_type: str = _UNKNOWN
     power_simulation_based: Optional[bool] = None
     power_recommended_use: Tuple[str, ...] = _EMPTY_LIST
-    power_contract_warnings: Tuple[str, ...] = _EMPTY_LIST
+    power_not_recommended_for: Tuple[str, ...] = _EMPTY_LIST
+    power_interpretation_warnings: Tuple[str, ...] = _EMPTY_LIST
+    power_results_mde_percent: Optional[str] = None
+    power_results_mde_kpi: Optional[str] = None
+    power_results_aa_fpr: Optional[str] = None
+    power_run_warnings: Tuple[str, ...] = _EMPTY_LIST
     spec_hash: str = _UNKNOWN
     assignment_hash: str = _UNKNOWN
     input_structure_hash: str = _UNKNOWN
@@ -310,10 +337,16 @@ class ExperimentCard:
             "target_estimand_label": self.target_estimand_label,
             "uncertainty_contract_label": self.uncertainty_contract_label,
             "analysis_contract_warnings": list(self.analysis_contract_warnings),
+            "power_results_available": self.power_results_available,
             "power_mde_type": self.power_mde_type,
             "power_simulation_based": self.power_simulation_based,
             "power_recommended_use": list(self.power_recommended_use),
-            "power_contract_warnings": list(self.power_contract_warnings),
+            "power_not_recommended_for": list(self.power_not_recommended_for),
+            "power_interpretation_warnings": list(self.power_interpretation_warnings),
+            "power_results_mde_percent": self.power_results_mde_percent,
+            "power_results_mde_kpi": self.power_results_mde_kpi,
+            "power_results_aa_fpr": self.power_results_aa_fpr,
+            "power_run_warnings": list(self.power_run_warnings),
             "spec_hash": self.spec_hash,
             "assignment_hash": self.assignment_hash,
             "input_structure_hash": self.input_structure_hash,
@@ -407,27 +440,69 @@ class ExperimentCard:
                 f"- **Intervals available:** {'yes' if self.intervals_available else 'no'}"
             )
         lines.extend(["", "## Power and MDE Contract", ""])
-        lines.append(f"- **MDE type:** {self.power_mde_type}")
+        lines.append("")
+        lines.append(
+            "> Interpretation rules below apply when using ``PowerAnalysis``; "
+            "they do **not** mean a power study was run for this evidence record."
+        )
+        lines.extend(["", "### Interpretation rules", ""])
+        lines.append(f"- **MDE type (if used):** {self.power_mde_type}")
         if self.power_simulation_based is None:
-            lines.append("- **Simulation-based:** unknown")
+            lines.append("- **Simulation-based planning:** unknown")
         else:
             lines.append(
-                f"- **Simulation-based:** {'yes' if self.power_simulation_based else 'no'}"
+                "- **Simulation-based planning:** "
+                f"{'yes' if self.power_simulation_based else 'no'}"
+            )
+        if self.power_simulation_based is None:
+            lines.append("- **Classical analytic power:** unknown")
+        else:
+            lines.append(
+                f"- **Classical analytic power:** "
+                f"{'no' if self.power_simulation_based else 'yes'}"
             )
         if self.power_recommended_use:
             lines.append("- **Recommended uses:**")
             for use in self.power_recommended_use:
                 lines.append(f"  - {use}")
-        else:
-            lines.append("- **Recommended uses:** *not specified*")
-        if self.power_contract_warnings:
-            lines.append("- **Warnings:**")
-            for w in self.power_contract_warnings:
+        if self.power_not_recommended_for:
+            lines.append("- **Not recommended for:**")
+            for item in self.power_not_recommended_for:
+                lines.append(f"  - {item}")
+        if self.power_interpretation_warnings:
+            lines.append("- **Interpretation warnings:**")
+            for w in self.power_interpretation_warnings:
                 lines.append(f"  - {w}")
+        lines.extend(["", "### Power analysis status", ""])
+        if self.power_results_available:
+            lines.append("- **Power results attached:** yes")
+            lines.extend(["", "### Power results (this run)", ""])
+            if self.power_results_mde_percent is not None:
+                lines.append(
+                    f"- **MDE percent (simulation):** {self.power_results_mde_percent}"
+                )
+            if self.power_results_mde_kpi is not None:
+                lines.append(
+                    f"- **MDE KPI cumulative (simulation):** {self.power_results_mde_kpi}"
+                )
+            if self.power_results_aa_fpr is not None:
+                lines.append(
+                    f"- **Null-effect FPR (A/A calibration):** {self.power_results_aa_fpr}"
+                )
+            if self.power_run_warnings:
+                lines.append("- **Run-specific warnings:**")
+                for w in self.power_run_warnings:
+                    lines.append(f"  - {w}")
+        else:
+            lines.append("- **Power results attached:** no")
+            lines.append(
+                "- *No simulation-based power analysis results are attached to "
+                "this evidence record.*"
+            )
         lines.append("")
         lines.append(
-            "_Power outputs are planning diagnostics and not guaranteed "
-            "detection probabilities._"
+            "_When results are attached, they are planning diagnostics only—not "
+            "guaranteed detection probabilities._"
         )
         lines.extend(
             [
@@ -600,20 +675,44 @@ def _card_from_common(
                 "Unknown interference assumption limits causal interpretation",
             )
 
-    power = _power_contract_from_containers(meta, artifacts)
-    if not power:
-        from panel_exp.design.power import build_power_contract
-
-        power = build_power_contract()
-    pc_mde_type = _as_str(power.get("mde_type"))
-    pc_sim = power.get("simulation_based")
+    interpretation = _generic_power_interpretation_contract()
+    power_results_available, run_semantics, aa_cal = _power_run_payload_from_containers(
+        meta, artifacts
+    )
+    pc_mde_type = _as_str(interpretation.get("mde_type"))
+    pc_sim = interpretation.get("simulation_based")
     power_simulation_based: Optional[bool]
     if pc_sim is None:
         power_simulation_based = None
     else:
         power_simulation_based = bool(pc_sim)
-    pc_recommended = tuple(_as_list(power.get("recommended_use")))
-    pc_warnings = tuple(_as_list(power.get("warnings")))
+    pc_recommended = tuple(_as_list(interpretation.get("recommended_use")))
+    pc_not_recommended = tuple(_as_list(interpretation.get("not_recommended_for")))
+    pc_interp_warnings = tuple(_as_list(interpretation.get("warnings")))
+
+    power_results_mde_percent: Optional[str] = None
+    power_results_mde_kpi: Optional[str] = None
+    power_results_aa_fpr: Optional[str] = None
+    power_run_warnings: Tuple[str, ...] = _EMPTY_LIST
+    if power_results_available:
+        if run_semantics.get("mde_percent") is not None:
+            power_results_mde_percent = str(run_semantics.get("mde_percent"))
+        if run_semantics.get("mde_kpi_cumulative") is not None:
+            power_results_mde_kpi = str(run_semantics.get("mde_kpi_cumulative"))
+        if aa_cal and aa_cal.get("false_positive_rate") is not None:
+            power_results_aa_fpr = f"{float(aa_cal['false_positive_rate']):.4f}"
+        run_warns: List[str] = []
+        if aa_cal:
+            run_warns.extend(_as_list(aa_cal.get("warnings")))
+        attached_pc = artifacts.get("power_contract")
+        if not isinstance(attached_pc, Mapping):
+            attached_pc = meta.get("power_contract")
+        if isinstance(attached_pc, Mapping) and attached_pc.get("power_analysis_run"):
+            generic_set = set(pc_interp_warnings)
+            for w in _as_list(attached_pc.get("warnings")):
+                if w not in generic_set and w not in run_warns:
+                    run_warns.append(w)
+        power_run_warnings = tuple(run_warns)
 
     return ExperimentCard(
         experiment_id=_as_str(experiment_id),
@@ -650,10 +749,16 @@ def _card_from_common(
         interference_review_contamination_risk=ir_contam,
         interference_review_spillover_direction=ir_direction,
         interference_review_warnings=ir_warnings,
+        power_results_available=power_results_available,
         power_mde_type=pc_mde_type,
         power_simulation_based=power_simulation_based,
         power_recommended_use=pc_recommended,
-        power_contract_warnings=pc_warnings,
+        power_not_recommended_for=pc_not_recommended,
+        power_interpretation_warnings=pc_interp_warnings,
+        power_results_mde_percent=power_results_mde_percent,
+        power_results_mde_kpi=power_results_mde_kpi,
+        power_results_aa_fpr=power_results_aa_fpr,
+        power_run_warnings=power_run_warnings,
         spec_hash=_as_str(spec_hash),
         assignment_hash=_as_str(assignment_hash),
         input_structure_hash=_as_str(input_structure_hash or _UNKNOWN),

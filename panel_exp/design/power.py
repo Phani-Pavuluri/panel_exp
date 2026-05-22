@@ -68,6 +68,7 @@ class PowerContract:
         default_factory=lambda: tuple(_DEFAULT_NOT_RECOMMENDED_FOR)
     )
     warnings: Tuple[str, ...] = field(default_factory=lambda: tuple(_DEFAULT_POWER_WARNINGS))
+    power_analysis_run: bool = False
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -79,6 +80,7 @@ class PowerContract:
             "recommended_use": list(self.recommended_use),
             "not_recommended_for": list(self.not_recommended_for),
             "warnings": list(self.warnings),
+            "power_analysis_run": self.power_analysis_run,
         }
 
 
@@ -91,11 +93,22 @@ def _recommended_use_from_semantics(semantics: Mapping[str, Any]) -> List[str]:
     return list(_DEFAULT_RECOMMENDED_USE)
 
 
+def power_analysis_was_run(mde_semantics: Optional[Mapping[str, Any]]) -> bool:
+    """True when semantics include post-run fields from ``PowerAnalysis.analysis()``."""
+    if not mde_semantics:
+        return False
+    return (
+        mde_semantics.get("mde_percent") is not None
+        or mde_semantics.get("effect_grid_size") is not None
+    )
+
+
 def build_power_contract(
     mde_semantics: Optional[Mapping[str, Any]] = None,
     *,
     aa_calibration: Optional[Mapping[str, Any]] = None,
     extra_warnings: Optional[Sequence[str]] = None,
+    power_analysis_run: Optional[bool] = None,
 ) -> Dict[str, Any]:
     """
     Build a power/MDE user contract from documented semantics (no logic changes).
@@ -105,6 +118,8 @@ def build_power_contract(
     semantics = dict(mde_semantics or MDE_SEMANTICS)
     classical = bool(semantics.get("classical_power", False))
     mde_type = str(semantics.get("mde_method", "simulation_coverage"))
+    if power_analysis_run is None:
+        power_analysis_run = power_analysis_was_run(semantics)
 
     warnings: List[str] = []
     for w in _DEFAULT_POWER_WARNINGS:
@@ -138,6 +153,7 @@ def build_power_contract(
         recommended_use=tuple(_recommended_use_from_semantics(semantics)),
         not_recommended_for=tuple(_DEFAULT_NOT_RECOMMENDED_FOR),
         warnings=tuple(warnings),
+        power_analysis_run=bool(power_analysis_run),
     )
     return contract.to_dict()
 
@@ -385,6 +401,7 @@ class PowerAnalysis:
         self.power_contract = build_power_contract(
             self.mde_semantics,
             aa_calibration=self.aa_calibration,
+            power_analysis_run=True,
         )
 
     def analysis(self):

@@ -50,6 +50,23 @@ def test_aa_calibration_incomplete_adds_warning():
     assert any("null calibration incomplete" in w.lower() for w in contract["warnings"])
 
 
+def test_build_power_contract_marks_run_when_semantics_post_analysis():
+    contract = build_power_contract(
+        {
+            **MDE_SEMANTICS,
+            "mde_percent": 0.05,
+            "effect_grid_size": 49,
+        },
+        aa_calibration={"n_replications": 10, "calibration_complete": True},
+    )
+    assert contract["power_analysis_run"] is True
+
+
+def test_generic_contract_not_marked_as_run():
+    contract = build_power_contract()
+    assert contract["power_analysis_run"] is False
+
+
 def test_power_analysis_attaches_contract_after_run():
     panel = make_synthetic_power_panel(seed=4, n_time=20, treat_start=14)
     pa = PowerAnalysis(
@@ -67,6 +84,7 @@ def test_power_analysis_attaches_contract_after_run():
     pa.run_analysis()
     assert pa.power_contract["classical_power"] is False
     assert pa.power_contract["mde_type"] == "simulation_coverage"
+    assert pa.power_contract["power_analysis_run"] is True
     assert pa.mde_semantics["classical_power"] is False
 
 
@@ -86,7 +104,7 @@ def test_evidence_attach_power_contract_lazy():
     assert artifacts["power_contract"]["classical_power"] is False
 
 
-def test_experiment_card_renders_power_section():
+def test_experiment_card_generic_contract_without_implying_power_run():
     artifacts = {"power_contract": build_power_contract()}
     from panel_exp.evidence import DesignEvidence
     from panel_exp.panel_data import TimePeriod
@@ -107,11 +125,61 @@ def test_experiment_card_renders_power_section():
         artifacts=artifacts,
         created_at="2026-05-20T12:00:00+00:00",
     )
-    md = build_experiment_card(ev).to_markdown()
+    card = build_experiment_card(ev)
+    assert card.power_results_available is False
+    md = card.to_markdown()
     assert "## Power and MDE Contract" in md
-    assert "simulation_coverage" in md
-    assert "planning diagnostics" in md
-    assert "not guaranteed detection probabilities" in md
+    assert "### Interpretation rules" in md
+    assert "do **not** mean a power study was run" in md
+    assert "**Power results attached:** no" in md
+    assert "No simulation-based power analysis results are attached" in md
+    assert "### Power results (this run)" not in md
+
+
+def test_experiment_card_shows_power_results_when_run_attached():
+    panel = make_synthetic_power_panel(seed=7, n_time=20, treat_start=14)
+    pa = PowerAnalysis(
+        panel,
+        TBRRidge,
+        "Kfold",
+        test_length=4,
+        train_length=8,
+        n_sample_prc=0.2,
+        n_jobs=1,
+        ci_version=2,
+        random_state=4,
+    )
+    pa.run_analysis()
+    artifacts = {
+        "power_contract": pa.power_contract,
+        "mde_semantics": pa.mde_semantics,
+        "aa_calibration": pa.aa_calibration,
+    }
+    from panel_exp.evidence import DesignEvidence
+    from panel_exp.panel_data import TimePeriod
+    from panel_exp.spec import spec_from_geo_design
+
+    spec = spec_from_geo_design(
+        "pwr-run",
+        "y",
+        "u",
+        "t",
+        TimePeriod(0, 5),
+        TimePeriod(5, 10),
+        "balancedrandomization",
+    )
+    ev = DesignEvidence.from_assignment(
+        spec,
+        {"control": ["u0"], "test_0": ["u1"]},
+        artifacts=artifacts,
+        created_at="2026-05-20T12:00:00+00:00",
+    )
+    card = build_experiment_card(ev)
+    assert card.power_results_available is True
+    md = card.to_markdown()
+    assert "**Power results attached:** yes" in md
+    assert "### Power results (this run)" in md
+    assert card.power_results_mde_percent is not None
 
 
 def test_backward_compatible_summary_keys():

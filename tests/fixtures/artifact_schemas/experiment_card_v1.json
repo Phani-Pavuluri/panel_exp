@@ -29,16 +29,25 @@
   ],
   "interval_type": "confidence_interval",
   "intervals_available": true,
-  "power_contract_warnings": [
+  "power_interpretation_warnings": [
     "MDE is simulation-based and estimator-dependent",
     "Power estimates may vary with effect grid and simulation count",
     "Null calibration should be reviewed before decision use"
   ],
   "power_mde_type": "simulation_coverage",
+  "power_not_recommended_for": [
+    "guaranteed detectability claims",
+    "financial commitment thresholds"
+  ],
   "power_recommended_use": [
     "compare design alternatives",
     "rank sensitivity"
   ],
+  "power_results_aa_fpr": null,
+  "power_results_available": false,
+  "power_results_mde_kpi": null,
+  "power_results_mde_percent": null,
+  "power_run_warnings": [],
   "power_simulation_based": true,
   "spec_hash": "a36ce9f635cdd8c40f4f285182fc2b53",
   "spillover_metadata_available": true,
