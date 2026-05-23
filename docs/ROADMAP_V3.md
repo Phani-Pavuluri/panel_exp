@@ -96,6 +96,8 @@ Prioritized for **algorithm/statistical validity** only.
 
 **Phase 5 status:** `run_production_nominal_calibration()` in `panel_exp/validation/production_nominal_calibration.py` — production defaults n=100, seeds (0,1,2); CI uses small n via tests only.
 
+**Phase 6 status:** Resolved by explicit unsupported contract — `did_interval_policy` on DID results; `DID_Bootstrap` ineligible for relative-ATT nominal calibration (`did_relative_att_interval_unsupported`). True relative-ATT intervals deferred unless a future design proves estimand equivalence (no cumulative-CI scaling).
+
 **Scope lock:** no new estimators, inference modes, or artifacts in Phases 5–8.
 
 ---

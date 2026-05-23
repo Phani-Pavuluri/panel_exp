@@ -16,6 +16,10 @@ from panel_exp.validation.calibration_report import (
     CalibrationReport,
     compute_calibration_warnings,
 )
+from panel_exp.validation.did_interval_policy import (
+    DID_RELATIVE_ATT_INTERVAL_UNSUPPORTED,
+    nominal_calibration_ineligible_reason,
+)
 from panel_exp.validation.recovery_intervals import INTERVAL_ESTIMAND_RELATIVE_ATT_POST
 from panel_exp.validation.synthetic_scenarios import SyntheticScenario
 
@@ -70,22 +74,8 @@ def ineligible_reason_for_calibration(
     payload: Mapping[str, Any],
 ) -> str:
     """Human-readable skip reason when ``payload_eligible_for_nominal_calibration`` is False."""
-    interval_est = str(payload.get("interval_estimand", "unknown"))
-    if interval_est not in (
-        "unknown",
-        "unavailable",
-        INTERVAL_ESTIMAND_RELATIVE_ATT_POST,
-    ):
-        return "interval_estimand_mismatch"
-    if not is_nominal_calibration_eligible_config(estimator_config):
-        return "not_in_nominal_calibration_registry"
-    if not payload.get("intervals_expected"):
-        return "intervals_not_expected"
-    if not _interval_aligned_from_payload(payload):
-        reason = payload.get("coverage_unavailable_reason") or ""
-        if "interval_estimand_mismatch" in reason:
-            return "interval_estimand_mismatch"
-        return "interval_not_aligned"
+    if not payload_eligible_for_nominal_calibration(estimator_config, payload):
+        return nominal_calibration_ineligible_reason(estimator_config, payload)
     return "eligible"
 
 
@@ -115,7 +105,8 @@ def _build_warnings(
         elif interval_est != INTERVAL_ESTIMAND_RELATIVE_ATT_POST:
             warnings.append(
                 f"Interval estimand {interval_est!r} is not aligned with scored "
-                f"{INTERVAL_ESTIMAND_RELATIVE_ATT_POST!r}; nominal calibration skipped."
+                f"{INTERVAL_ESTIMAND_RELATIVE_ATT_POST!r}; nominal calibration skipped "
+                f"({DID_RELATIVE_ATT_INTERVAL_UNSUPPORTED} for DID)."
             )
         else:
             reason = payload.get("coverage_unavailable_reason") or "unknown"
@@ -238,4 +229,5 @@ __all__ = [
     "is_nominal_calibration_eligible_config",
     "payload_eligible_for_nominal_calibration",
     "run_nominal_calibration_check",
+    "DID_RELATIVE_ATT_INTERVAL_UNSUPPORTED",
 ]

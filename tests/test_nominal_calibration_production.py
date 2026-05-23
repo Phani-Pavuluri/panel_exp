@@ -6,6 +6,9 @@ import pytest
 
 from panel_exp.validation.calibration_report import MIN_REPLICATIONS_FOR_STABLE_CALIBRATION
 from panel_exp.validation.nominal_calibration import NOMINAL_CALIBRATION_ELIGIBLE_CONFIGS
+from panel_exp.validation.did_interval_policy import (
+    DID_RELATIVE_ATT_INTERVAL_UNSUPPORTED,
+)
 from panel_exp.validation.production_nominal_calibration import (
     BELOW_PRODUCTION_REPLICATION_WARNING,
     evaluate_coverage_aggregate_status,
@@ -140,7 +143,7 @@ def test_did_bootstrap_ineligible_interval_mismatch():
     assert len(out["skipped"]) >= 1
     did = out["skipped"][0]
     assert did["eligible_for_nominal_calibration"] is False
-    assert did["ineligible_reason"] == "interval_estimand_mismatch"
+    assert did["ineligible_reason"] == DID_RELATIVE_ATT_INTERVAL_UNSUPPORTED
     agg = out["aggregates"][0]
     assert agg["eligible_for_nominal_calibration"] is False
 

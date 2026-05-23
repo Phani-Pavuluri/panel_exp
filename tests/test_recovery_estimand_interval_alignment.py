@@ -8,6 +8,9 @@ import pytest
 from panel_exp.methods.DID import DID
 from panel_exp.methods.scm import SyntheticControl
 from panel_exp.panel_data import PanelDataset, TimePeriod
+from panel_exp.validation.did_interval_policy import (
+    DID_RELATIVE_ATT_INTERVAL_UNSUPPORTED,
+)
 from panel_exp.validation.recovery_intervals import (
     INTERVAL_ESTIMAND_CUMULATIVE_ATT,
     INTERVAL_ESTIMAND_RELATIVE_ATT_POST,
@@ -90,7 +93,7 @@ def test_did_bootstrap_interval_marked_mismatch():
     assert ext.point_estimand == POINT_ESTIMAND
     assert ext.interval_estimand == INTERVAL_ESTIMAND_CUMULATIVE_ATT
     assert ext.interval_aligned is False
-    assert ext.unavailable_reason == "interval_estimand_mismatch"
+    assert ext.unavailable_reason == DID_RELATIVE_ATT_INTERVAL_UNSUPPORTED
     assert ext.ci_lower is None and ext.ci_upper is None
     assert ext.significance_aligned is False
 
@@ -164,7 +167,9 @@ def test_did_inference_recovery_coverage_unavailable_not_fake_relative():
     assert payload["point_estimand"] == POINT_ESTIMAND
     assert payload["interval_estimand"] == INTERVAL_ESTIMAND_CUMULATIVE_ATT
     assert payload["coverage_status"] == "unavailable"
-    assert "interval_estimand_mismatch" in (payload["coverage_unavailable_reason"] or "")
+    assert DID_RELATIVE_ATT_INTERVAL_UNSUPPORTED in (
+        payload["coverage_unavailable_reason"] or ""
+    )
 
 
 def test_point_estimate_recovery_unchanged():
