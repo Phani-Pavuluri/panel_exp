@@ -72,6 +72,13 @@ def test_output_schema_keys():
         "power",
         "runtime_seconds",
         "recovery_success_rate",
+        "failure_rate",
+        "failure_types",
+        "scored_target_estimand",
+        "point_estimand",
+        "interval_estimand",
+        "interval_scale",
+        "recovery_config",
     ):
         assert key in payload
 

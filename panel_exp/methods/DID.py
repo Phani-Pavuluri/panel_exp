@@ -234,7 +234,13 @@ class DID(ImpactAnalyzer):
         pvalue = float(min(1.0, 2 * min(prop_below, prop_above)))
         return se, ci_lower, ci_upper, pvalue
 
-    def run_analysis(self, panel_data, multiple_treated="pooled"):
+    def run_analysis(
+        self,
+        panel_data,
+        multiple_treated="pooled",
+        allow_pretrend_violation: bool = False,
+        **kwargs,
+    ):
         self.panel_data = panel_data
         self.fit_data(panel_data)
         self.fit_model()
@@ -366,6 +372,105 @@ class DID(ImpactAnalyzer):
 
         self.regression_model = self.model
         self.model = _CounterfactualLookupWrapper(self, self.regression_model)
+
+        self._allow_pretrend_violation = bool(allow_pretrend_violation)
+        contract = self._build_did_pretrend_contract(allow_pretrend_violation)
+        self._did_pretrend_contract = contract
+        self.results["did_pretrend_contract"] = contract
+        warning = contract.get("warning")
+        if warning:
+            warnings.warn(str(warning), UserWarning, stacklevel=2)
+
+        return self.results
+
+    def _build_did_pretrend_contract(
+        self, allow_pretrend_violation: bool
+    ) -> Dict[str, Any]:
+        """
+        Summarize parallel-trends diagnostics for evidence / cards (additive only).
+        """
+        event_study = self._run_event_study_pretrend_test()
+        linear_test = self._run_linear_pretrend_test()
+        n_pre = int(event_study.get("n_pre_periods_original") or 0)
+        fallback_reason = event_study.get("fallback_reason")
+
+        joint_pv = event_study.get("parallel_trends_joint_pvalue")
+        linear_pv = linear_test.get("interaction_pvalue")
+
+        pretrend_checked = fallback_reason is None
+        if not pretrend_checked and n_pre >= _MIN_PRE_PERIODS_EVENT_STUDY:
+            if linear_pv is not None and np.isfinite(linear_pv):
+                pretrend_checked = True
+
+        if pretrend_checked:
+            if joint_pv is None or not np.isfinite(joint_pv):
+                joint_pv = linear_pv
+        else:
+            joint_pv = None
+
+        joint_pv_out: Optional[float]
+        if joint_pv is not None and np.isfinite(joint_pv):
+            joint_pv_out = float(joint_pv)
+        else:
+            joint_pv_out = None
+
+        linear_pv_out: Optional[float]
+        if linear_pv is not None and np.isfinite(linear_pv):
+            linear_pv_out = float(linear_pv)
+        else:
+            linear_pv_out = None
+
+        violated = event_study.get("parallel_trends_violated")
+        if violated is None:
+            violated = linear_test.get("parallel_trends_violated")
+        if pretrend_checked and joint_pv_out is not None:
+            violated = bool(joint_pv_out < self.alpha)
+        elif not pretrend_checked:
+            violated = None
+
+        if not pretrend_checked:
+            status = "unavailable"
+            warning = (
+                "Parallel trends could not be assessed (insufficient pre-period data "
+                "or pretrend test fallback). DID causal interpretation requires expert "
+                "review."
+            )
+        elif violated:
+            if allow_pretrend_violation:
+                status = "warn"
+                warning = (
+                    "Pre-trend diagnostics suggest parallel trends may not hold; "
+                    "allow_pretrend_violation=True was set—interpret the DID estimate "
+                    "with caution."
+                )
+            else:
+                status = "fail"
+                warning = (
+                    "Pre-trend diagnostics suggest parallel trends may not hold; "
+                    "the DID estimate should not be interpreted as credible without a "
+                    "documented waiver."
+                )
+        else:
+            status = "pass"
+            warning = ""
+
+        requires_waiver = status in ("fail", "unavailable") or (
+            bool(violated) and not allow_pretrend_violation
+        )
+        waiver_provided = bool(allow_pretrend_violation)
+
+        return {
+            "pretrend_checked": bool(pretrend_checked),
+            "joint_pretrend_p_value": joint_pv_out,
+            "linear_pretrend_p_value": linear_pv_out,
+            "pretrend_status": status,
+            "requires_waiver": bool(requires_waiver),
+            "waiver_provided": waiver_provided,
+            "warning": warning,
+            "parallel_trends_test_type": event_study.get("parallel_trends_test_type"),
+            "fallback_reason": fallback_reason,
+            "n_pre_periods": n_pre,
+        }
 
     def summary_2(self):
         mean_att = getattr(self, "mean_post_period_att", np.nan)
@@ -705,6 +810,12 @@ class DID(ImpactAnalyzer):
                 float(np.percentile(self.bootstrap_mean_effects_, (1 - self.alpha / 2) * 100)),
             )
 
+        contract = getattr(self, "_did_pretrend_contract", None)
+        if contract is None:
+            contract = self._build_did_pretrend_contract(
+                bool(getattr(self, "_allow_pretrend_violation", False))
+            )
+
         out = {
             "primary_effect_definition": "path_based_sum_of_post_period_effects",
             "mean_post_period_att": mean_att,
@@ -747,5 +858,6 @@ class DID(ImpactAnalyzer):
             "secondary_inference_method": "clustered_robust" if clustered_se_used else "HC1",
             "n_unit_clusters": int(n_clusters) if np.isfinite(n_clusters) else None,
             "clustered_se_used": clustered_se_used,
+            "did_pretrend_contract": contract,
         }
         return out

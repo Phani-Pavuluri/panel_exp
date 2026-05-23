@@ -31,6 +31,7 @@ _BUNDLE_KEY_ORDER: Tuple[str, ...] = (
     "calibration_report",
     "maturity_evidence",
     "readiness_assessment",
+    "interference_review",
 )
 
 
@@ -150,6 +151,7 @@ class RunArtifactBundle:
     calibration_report: Optional[Dict[str, Any]] = None
     maturity_evidence: Optional[Dict[str, Any]] = None
     readiness_assessment: Optional[Dict[str, Any]] = None
+    interference_review: Optional[Dict[str, Any]] = None
     warnings: Tuple[str, ...] = ()
     errors: Tuple[str, ...] = ()
     lineage: Mapping[str, Any] = field(default_factory=dict)
@@ -168,6 +170,7 @@ class RunArtifactBundle:
             "calibration_report": self.calibration_report,
             "maturity_evidence": self.maturity_evidence,
             "readiness_assessment": self.readiness_assessment,
+            "interference_review": self.interference_review,
         }
         return _ordered_dict(payload)
 
@@ -204,6 +207,36 @@ class RunArtifactBundle:
             sections.append("")
         else:
             sections.extend(["## Experiment Card", "", "*No experiment card markdown attached.*", ""])
+        if self.interference_review:
+            sections.extend(["## Interference Review", ""])
+            ir = self.interference_review
+            sections.append(f"- **Assumption:** {ir.get('assumption', 'unknown')}")
+            buffers = ir.get("buffer_geos") or []
+            if buffers:
+                sections.append(f"- **Buffer geos:** {', '.join(map(str, buffers))}")
+            else:
+                sections.append("- **Buffer geos:** *none documented*")
+            sections.append(
+                f"- **Shared market risk:** {ir.get('shared_market_risk', 'unknown')}"
+            )
+            sections.append(
+                f"- **Contamination risk:** {ir.get('contamination_risk', 'unknown')}"
+            )
+            sections.append(
+                "- **Expected spillover direction:** "
+                f"{ir.get('expected_spillover_direction', 'unknown')}"
+            )
+            ir_warnings = ir.get("review_warnings") or []
+            if ir_warnings:
+                sections.append("- **Warnings:**")
+                for w in ir_warnings:
+                    sections.append(f"  - {w}")
+            sections.append("")
+            sections.append(
+                "_This package records interference assumptions but does not "
+                "estimate spillover effects._"
+            )
+            sections.append("")
         for title, block in (
             ("Calibration Report", self.calibration_report),
             ("Maturity Evidence", self.maturity_evidence),
@@ -271,6 +304,35 @@ class RunArtifactBundle:
         return "\n".join(sections).rstrip() + "\n"
 
 
+def _interference_review_from_evidence(
+    evidence: Optional[Any],
+) -> Optional[Dict[str, Any]]:
+    if evidence is None:
+        return None
+    if isinstance(evidence, (DesignEvidence, ExperimentEvidence)):
+        artifacts = dict(evidence.artifacts)
+        raw = artifacts.get("interference_review")
+        if isinstance(raw, Mapping):
+            return _plain_copy(dict(raw))
+        meta = dict(evidence.inference_metadata)
+        raw = meta.get("interference_review")
+        if isinstance(raw, Mapping):
+            return _plain_copy(dict(raw))
+        return None
+    if isinstance(evidence, Mapping):
+        artifacts = evidence.get("artifacts") or {}
+        if isinstance(artifacts, Mapping):
+            raw = artifacts.get("interference_review")
+            if isinstance(raw, Mapping):
+                return _plain_copy(dict(raw))
+        meta = evidence.get("inference_metadata") or {}
+        if isinstance(meta, Mapping):
+            raw = meta.get("interference_review")
+            if isinstance(raw, Mapping):
+                return _plain_copy(dict(raw))
+    return None
+
+
 def build_run_artifact_bundle(
     *,
     evidence: Optional[
@@ -280,6 +342,7 @@ def build_run_artifact_bundle(
     calibration_report: Optional[Any] = None,
     maturity_evidence: Optional[Any] = None,
     readiness_assessment: Optional[Any] = None,
+    interference_review: Optional[Union[Mapping[str, Any], Any]] = None,
     warnings: Optional[Sequence[str]] = None,
     errors: Optional[Sequence[str]] = None,
     created_at: Optional[str] = None,
@@ -323,6 +386,10 @@ def build_run_artifact_bundle(
     if not timestamp:
         timestamp = _utc_now_iso()
 
+    ir_dict = _serialize_component(interference_review)
+    if ir_dict is None:
+        ir_dict = _interference_review_from_evidence(evidence)
+
     return RunArtifactBundle(
         bundle_version=BUNDLE_VERSION,
         created_at=timestamp,
@@ -333,6 +400,7 @@ def build_run_artifact_bundle(
         calibration_report=_serialize_component(calibration_report),
         maturity_evidence=_serialize_component(maturity_evidence),
         readiness_assessment=_serialize_component(readiness_assessment),
+        interference_review=ir_dict,
         warnings=merged_warnings,
         errors=merged_errors,
         lineage=lineage,

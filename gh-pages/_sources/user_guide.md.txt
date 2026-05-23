@@ -2,23 +2,53 @@
 
 The `panel_exp` package is a comprehensive toolkit for panel data modeling and experimental design, specifically designed for causal inference in geo-based experiments. It provides a complete workflow from experimental design through statistical analysis to inference, making it ideal for marketing experiments and other causal inference applications.
 
-## Current package status (code truth)
+## Current Package Status
 
-This section reflects the installed package behavior. Older examples below may reference modules that are not shipped (for example `panel_exp.pretest_analysis` or `panel_exp.util`).
+Authoritative behavior for the installed wheel (`panel_exp.__version__`). Sections below this header marked **Legacy** are retained for history but are not the current package contract.
 
-**GeoExperimentDesign.run_design** supports only: `greedy_match_markets`, `ThinningDesign`, `BalancedRandomization`, `CompleteRandomization`, `StratifiedRandomization` (each wrapped in `Rerandomization`). **QuickBlock**, **MatchedPair**, **TrimmedMatchDesign**, and **SupergeoModel** are registered but **not** geo-run supported — use their design classes directly; selecting them as `base_randomizer_cls` raises `ValueError`.
+See also: [Documentation drift audit](../../docs/DOC_DRIFT_AUDIT.md), [Validation coverage](../../docs/VALIDATION_COVERAGE.md), [Roadmap reassessment](../../docs/ROADMAP_REASSESSMENT.md).
 
-**Evidence:** `DesignEvidence`, `ExperimentEvidence`, and optional `InferenceEvidence` record hashes (`spec_hash`, `assignment_hash`, `input_structure_hash`), warnings, errors, and validation summaries. **Experiment card:** `build_experiment_card(evidence)` produces a markdown readout; optional `attach_experiment_card_markdown` adds `artifacts["experiment_card_markdown"]`.
+### Supported (shipped workflows)
 
-**Maturity:** `EstimatorMaturity` ratings are conservative operational labels (not statistical superiority). The catalog currently assigns no `production_safe` rating.
+- **Design orchestration** — `GeoExperimentDesign`, `DesignSpec`, geo-run randomizers (`GEO_RUN_DESIGN_SUPPORTED`), `validate_design`, simulation `PowerAnalysis`
+- **SCM / TBR / DID workflows** — `SyntheticControl`, `TBRRidge` / `TBR`, `DID` (expert-review maturity; see validation matrix)
+- **Experiment cards** — `build_experiment_card`, `attach_experiment_card_markdown`
+- **Evidence artifacts** — `DesignEvidence`, `ExperimentEvidence`, `InferenceEvidence` (hashes, warnings, validation summary)
+- **Readiness assessment** — `build_readiness_assessment` (advisory, non-blocking)
+- **Calibration reporting** — `build_calibration_report` from recovery outputs
+- **Run bundle export** — `build_run_artifact_bundle`, `write_run_artifact_bundle_json` / `markdown`
 
-**Inference labels:** Interval outputs use explicit semantics — `confidence_interval`, `credible_interval`, `conformal_interval`, `placebo_band`, or `unavailable`. Placebo inference exports **placebo bands**, not generic confidence intervals.
+**Geo-run designs only:** `greedy_match_markets`, `ThinningDesign`, `BalancedRandomization`, `CompleteRandomization`, `StratifiedRandomization` (via `Rerandomization`). **QuickBlock**, **MatchedPair**, **TrimmedMatchDesign**, **SupergeoModel** are registered for direct `.assign()` use, not `GeoExperimentDesign.run_design`.
 
-**Power / MDE:** `PowerAnalysis` is simulation-based (coverage under injected effects), not a classical closed-form analytic MDE. Use `random_state` for reproducibility.
+**Inference semantics:** `confidence_interval`, `credible_interval`, `conformal_interval`, `placebo_band`, or `unavailable` on path outputs. Placebo bands are not generic confidence intervals.
 
-**Interference:** Declare `InterferenceAssumption` (`unknown`, `no_interference`, `partial_interference`). The package does not estimate spillovers.
+**Power / MDE:** Simulation coverage grid (`MDE_SEMANTICS`, `power_contract`); not classical analytic power. Experiment card separates **interpretation rules** from **power results attached**.
 
-**Recovery validation:** `panel_exp.validation.RecoveryRunner` and `validation_metadata` are diagnostic synthetic-recovery summaries; they do not auto-promote maturity.
+**Interference:** User-declared `InterferenceAssumption` only; optional spillover metadata fields — no spillover estimation.
+
+### Research-only (catalog)
+
+- **BayesianTBR**, **BayesianTBRHorseShoe** (JAX / MCMC)
+- **SyntheticDID**
+- **TROP**
+- **MTGP**
+
+Also **AugSynth** is **unvalidated** in the maturity catalog. Details: `docs/VALIDATION_COVERAGE.md`.
+
+### Not implemented
+
+- Spillover / interference **estimation**
+- **`production_safe`** estimators or inference modes (catalog has none)
+- Automated decision **approval** gates (readiness does not block runs)
+- Time-varying coefficients API
+- Causal drift detection product surface
+- Shipped module **`panel_exp.pretest_analysis`** (notebook references only)
+- Removed top-level **`panel_exp.util`** (use `panel_exp.utils.*` or `panel_exp.methods.bayesian_regression`)
+
+### Not shipped / legacy references
+
+- `panel_exp.pretest_analysis` — dev notebooks only; use `PowerAnalysis` + design validation
+- `panel_exp.util` — removed
 
 ## Decision Workflow
 
@@ -27,36 +57,33 @@ Advisory readout chain (does not block runs or change estimator outputs):
 ```
 Design
 ↓
-Assignment
-↓
-Estimator
-↓
 Inference
 ↓
-Recovery Validation
+Recovery
 ↓
-Calibration Report
+Calibration
 ↓
 Maturity Evidence
 ↓
-Readiness Assessment
+Readiness
 ↓
 Experiment Card
+↓
+Run Bundle
 ```
 
-**Design** — `DesignSpec` / `GeoExperimentDesign` define periods, interference assumption, and assignment. `DesignEvidence` records hashes, validation summary, warnings, and errors.
+| Stage | Module / doc |
+|-------|----------------|
+| **Design** | `DesignSpec`, `GeoExperimentDesign`, `DesignEvidence` |
+| **Inference** | Estimators + `InferenceResult` interval semantics |
+| **Recovery** | `panel_exp.validation.RecoveryRunner` — [Validation coverage](../../docs/VALIDATION_COVERAGE.md) |
+| **Calibration** | `build_calibration_report` |
+| **Maturity evidence** | `build_maturity_evidence` (does not auto-promote catalog labels) |
+| **Readiness** | `build_readiness_assessment` — [Roadmap reassessment](../../docs/ROADMAP_REASSESSMENT.md) |
+| **Experiment card** | `build_experiment_card` |
+| **Run bundle** | `build_run_artifact_bundle` |
 
-**Recovery validation** — `RecoveryRunner` runs synthetic scenarios (known truth). Reports bias, coverage, false positive rate, and power. Diagnostic only; optional `validation_metadata` on analysis results.
-
-**Calibration** — `build_calibration_report` aggregates null/lift replication outputs (FPR, coverage under null, power, interval width). Emits readiness warnings; does not change thresholds or maturity labels.
-
-**Maturity evidence** — `build_maturity_evidence` links catalog `EstimatorMaturity` to measured validation. Does not automatically upgrade or downgrade ratings.
-
-**Readiness** — `build_readiness_assessment` (`panel_exp.policy`) returns an advisory status (for example `ready_with_review`, `not_ready_high_fpr`). Non-blocking; no production gate.
-
-**Experiment card** — `build_experiment_card(evidence)` renders markdown sections for design, inference maturity, validation evidence, calibration, maturity evidence, and readiness when attached under `evidence.artifacts`.
-
-Example scripts: `examples/decision_workflow_example.py`, `examples/readiness_profile_comparison.py`.
+**Runnable examples:** `examples/decision_workflow_example.py`, `examples/readiness_profile_comparison.py`.
 
 ## Readiness Policy Profiles
 
@@ -75,6 +102,8 @@ Compare the same mocked evidence under all three profiles: `poetry run python ex
 **Run artifact bundle** — `build_run_artifact_bundle` exports a single portable JSON document (`bundle_version` 1.0) with evidence, experiment card markdown, calibration, maturity evidence, readiness assessment, lineage hashes, and warnings/errors. Use `write_run_artifact_bundle_json(bundle, path)` to persist; export is opt-in and does not alter estimator outputs.
 
 ## Package Architecture
+
+> ⚠ **Legacy reference — not current package contract.** The subsections below retain historical marketing-style descriptions and notebook workflows. For shipped behavior, use **Current Package Status** and **Decision Workflow** above.
 
 The package is organized into three main modules that follow the natural progression of an experiment:
 
@@ -135,6 +164,9 @@ for _ in range(5):  # Generates 5 design candidates
 ```
 
 **Designs Assesment and Comparison**: Ranks designs by MDE, balance, and power metrics with heatmaps, power curves, and comprehensive scoring to identify optimal experimental configurations.
+
+> ⚠ **Legacy example — not current package contract.** `generate_cv_fit_plots` and `create_design_comparison_dashboard` live in `panel_exp.utils.test_designs_evaluation` (internal evaluation tooling), not the core wheel quickstart. Prefer `GeoExperimentDesign.run_design`, `PowerAnalysis`, and evidence/readout helpers.
+
 ```python
 # Cross-validation of pre-test fit assessment
 cv_results = generate_cv_fit_plots(
@@ -213,11 +245,14 @@ The package provides multiple randomization strategies, each optimized for diffe
 - **Limitations**: Greedy approach may not find global optimum, order of selection matters
 
 #### Power Analysis
-Comprehensive pre-test power analysis that determines optimal sample sizes, test durations, and effect detectability before running experiments.
+
+> ⚠ **Legacy example — not current package contract.** Wording below mixes classical-power language with older return-value patterns. Current behavior: simulation-based coverage MDE (`MDE_SEMANTICS`, `power_contract`); `run_analysis()` sets attributes on the `PowerAnalysis` instance (not a results dict). See **Current Package Status**.
+
+Comprehensive **simulation-based** planning analysis (coverage vs injected percent effects on a grid).
 
 **Core Capabilities:**
-- **Statistical Power Calculation**: Determines probability of detecting true effects (default: 80%)
-- **Minimum Detectable Effect (MDE)**: Calculates smallest effect size that can be reliably detected
+- **Coverage threshold**: Share of windows where intervals cover zero falls below `power` (default: 0.8) — not classical analytic power
+- **Minimum Detectable Effect (MDE)**: Simulation-grid coverage threshold (not classical analytic MDE or guaranteed detectability)
 - **Test Duration Analysis**: Evaluates power across different test lengths
 - **Effect Size Simulation**: Tests power under various effect size scenarios
 - **Confidence Interval Analysis**: Provides uncertainty quantification for estimates
@@ -249,13 +284,14 @@ power_analysis = PowerAnalysis(
     ci_version=2  # Confidence intervals approach
 )
 
-# Run comprehensive power analysis
-power_results = power_analysis.run_analysis()
+# Run simulation-based power analysis (sets attributes on pa)
+power_analysis.run_analysis()
 
-# Access key results
-mde_percent = power_results['mde_percent']  # MDE as percentage
-mde_absolute = power_results['mde_absolute']  # MDE in absolute terms
-power_curve = power_results['power_curve']  # Power vs effect size
+# Access key results on the PowerAnalysis object
+mde_percent = power_analysis.mde_percent
+mde_kpi_cumulative = power_analysis.mde_kpi_cumulative
+power_analysis.plot_power_curve()  # optional diagnostic plot
+# power_contract, mde_semantics, aa_calibration — planning metadata
 ```
 
 **Advanced Features:**
@@ -712,6 +748,8 @@ print(f"Cumulative Treatment Effect: {cumulative_treatment_effect:.0f}")
 ---
 
 ## End-to-End Workflow
+
+> ⚠ **Legacy example — not current package contract.** This walkthrough uses dashboard helpers, dict-style power returns, and patterns superseded by evidence artifacts, experiment cards, and run bundles. Prefer `examples/decision_workflow_example.py`.
 
 This section demonstrates a complete experimental workflow from data preparation through results interpretation, using real-world examples from marketing experiments.
 

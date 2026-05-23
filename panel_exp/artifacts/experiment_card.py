@@ -162,6 +162,129 @@ def _readiness_assessment_markdown(
     return assessment.to_markdown()
 
 
+def _did_pretrend_contract_from_containers(
+    inference_metadata: Mapping[str, Any],
+    artifacts: Mapping[str, Any],
+) -> Dict[str, Any]:
+    for container in (artifacts, inference_metadata):
+        if not isinstance(container, Mapping):
+            continue
+        raw = container.get("did_pretrend_contract")
+        if isinstance(raw, Mapping):
+            return dict(raw)
+    return {}
+
+
+def _did_pretrend_contract_markdown(contract: Mapping[str, Any]) -> str:
+    if not contract:
+        return ""
+    lines = [
+        "## DID Pretrend Contract",
+        "",
+        "> DID causal interpretation depends on parallel trends in the pre-period. "
+        "This section records diagnostic status only; it does not replace design review.",
+        "",
+        f"- **Status:** {_as_str(contract.get('pretrend_status'))}",
+        f"- **Pretrend checked:** {contract.get('pretrend_checked')}",
+    ]
+    joint = contract.get("joint_pretrend_p_value")
+    linear = contract.get("linear_pretrend_p_value")
+    if joint is None:
+        lines.append("- **Joint pretrend p-value:** n/a")
+    else:
+        lines.append(f"- **Joint pretrend p-value:** {float(joint):.4f}")
+    if linear is None:
+        lines.append("- **Linear pretrend p-value:** n/a")
+    else:
+        lines.append(f"- **Linear pretrend p-value:** {float(linear):.4f}")
+    lines.append(
+        f"- **Requires waiver:** {'yes' if contract.get('requires_waiver') else 'no'}"
+    )
+    lines.append(
+        f"- **Waiver provided:** {'yes' if contract.get('waiver_provided') else 'no'}"
+    )
+    warning = contract.get("warning")
+    if warning:
+        lines.extend(["", "**Warning:**", str(warning)])
+    return "\n".join(lines)
+
+
+def _interference_review_from_containers(
+    inference_metadata: Mapping[str, Any],
+    artifacts: Mapping[str, Any],
+) -> Dict[str, Any]:
+    for container in (artifacts, inference_metadata):
+        if not isinstance(container, Mapping):
+            continue
+        raw = container.get("interference_review")
+        if isinstance(raw, Mapping):
+            return dict(raw)
+    return {}
+
+
+def _format_geo_list(geos: Any) -> str:
+    items = _as_list(geos)
+    return ", ".join(items) if items else ""
+
+
+def _power_run_payload_from_containers(
+    inference_metadata: Mapping[str, Any],
+    artifacts: Mapping[str, Any],
+) -> tuple[bool, Dict[str, Any], Optional[Dict[str, Any]]]:
+    """
+    Detect whether simulation power results were attached (not just interpretation rules).
+
+    Returns ``(results_available, mde_semantics, aa_calibration)``.
+    """
+    from panel_exp.design.power import power_analysis_was_run
+
+    for container in (artifacts, inference_metadata):
+        if not isinstance(container, Mapping):
+            continue
+        semantics = container.get("mde_semantics")
+        if isinstance(semantics, Mapping) and power_analysis_was_run(semantics):
+            cal = container.get("aa_calibration")
+            return (
+                True,
+                dict(semantics),
+                dict(cal) if isinstance(cal, Mapping) else None,
+            )
+        contract = container.get("power_contract")
+        if isinstance(contract, Mapping) and contract.get("power_analysis_run"):
+            sem = (
+                dict(semantics)
+                if isinstance(semantics, Mapping)
+                else dict(contract)
+            )
+            cal = container.get("aa_calibration")
+            return (
+                True,
+                sem,
+                dict(cal) if isinstance(cal, Mapping) else None,
+            )
+    return False, {}, None
+
+
+def _generic_power_interpretation_contract() -> Dict[str, Any]:
+    """Package-default interpretation rules; does not imply a power study was run."""
+    from panel_exp.design.power import MDE_SEMANTICS, build_power_contract
+
+    return build_power_contract(MDE_SEMANTICS, power_analysis_run=False)
+
+
+def _analysis_contract_from_metadata(
+    inference_metadata: Mapping[str, Any],
+    artifacts: Mapping[str, Any],
+) -> Dict[str, Any]:
+    for container in (inference_metadata, artifacts):
+        if not isinstance(container, Mapping):
+            continue
+        raw = container.get("analysis_contract")
+        if isinstance(raw, Mapping):
+            return dict(raw)
+    return {}
+
+
 def _validation_metadata_summary(
     inference_metadata: Mapping[str, Any],
     artifacts: Mapping[str, Any],
@@ -194,6 +317,12 @@ class ExperimentCard:
     errors: Tuple[str, ...] = _EMPTY_LIST
     interference_assumption: str = _UNKNOWN
     spillover_metadata_available: bool = False
+    interference_review_assumption: str = _UNKNOWN
+    interference_review_buffer_geos: str = ""
+    interference_review_shared_market_risk: str = _UNKNOWN
+    interference_review_contamination_risk: str = _UNKNOWN
+    interference_review_spillover_direction: str = _UNKNOWN
+    interference_review_warnings: Tuple[str, ...] = _EMPTY_LIST
     estimator_name: str = _UNKNOWN
     estimator_maturity: str = _UNKNOWN
     inference_mode: str = _UNKNOWN
@@ -204,6 +333,20 @@ class ExperimentCard:
     calibration_summary: str = ""
     maturity_evidence_summary: str = ""
     readiness_assessment_summary: str = ""
+    target_estimand_label: str = _UNKNOWN
+    uncertainty_contract_label: str = _UNKNOWN
+    analysis_contract_warnings: Tuple[str, ...] = _EMPTY_LIST
+    power_results_available: bool = False
+    power_mde_type: str = _UNKNOWN
+    power_simulation_based: Optional[bool] = None
+    power_recommended_use: Tuple[str, ...] = _EMPTY_LIST
+    power_not_recommended_for: Tuple[str, ...] = _EMPTY_LIST
+    power_interpretation_warnings: Tuple[str, ...] = _EMPTY_LIST
+    power_results_mde_percent: Optional[str] = None
+    power_results_mde_kpi: Optional[str] = None
+    power_results_aa_fpr: Optional[str] = None
+    power_run_warnings: Tuple[str, ...] = _EMPTY_LIST
+    did_pretrend_markdown: str = ""
     spec_hash: str = _UNKNOWN
     assignment_hash: str = _UNKNOWN
     input_structure_hash: str = _UNKNOWN
@@ -221,6 +364,12 @@ class ExperimentCard:
             "errors": list(self.errors),
             "interference_assumption": self.interference_assumption,
             "spillover_metadata_available": self.spillover_metadata_available,
+            "interference_review_assumption": self.interference_review_assumption,
+            "interference_review_buffer_geos": self.interference_review_buffer_geos,
+            "interference_review_shared_market_risk": self.interference_review_shared_market_risk,
+            "interference_review_contamination_risk": self.interference_review_contamination_risk,
+            "interference_review_spillover_direction": self.interference_review_spillover_direction,
+            "interference_review_warnings": list(self.interference_review_warnings),
             "estimator_name": self.estimator_name,
             "estimator_maturity": self.estimator_maturity,
             "inference_mode": self.inference_mode,
@@ -233,6 +382,20 @@ class ExperimentCard:
             "calibration_summary": self.calibration_summary,
             "maturity_evidence_summary": self.maturity_evidence_summary,
             "readiness_assessment_summary": self.readiness_assessment_summary,
+            "target_estimand_label": self.target_estimand_label,
+            "uncertainty_contract_label": self.uncertainty_contract_label,
+            "analysis_contract_warnings": list(self.analysis_contract_warnings),
+            "power_results_available": self.power_results_available,
+            "power_mde_type": self.power_mde_type,
+            "power_simulation_based": self.power_simulation_based,
+            "power_recommended_use": list(self.power_recommended_use),
+            "power_not_recommended_for": list(self.power_not_recommended_for),
+            "power_interpretation_warnings": list(self.power_interpretation_warnings),
+            "power_results_mde_percent": self.power_results_mde_percent,
+            "power_results_mde_kpi": self.power_results_mde_kpi,
+            "power_results_aa_fpr": self.power_results_aa_fpr,
+            "power_run_warnings": list(self.power_run_warnings),
+            "did_pretrend_markdown": self.did_pretrend_markdown,
             "spec_hash": self.spec_hash,
             "assignment_hash": self.assignment_hash,
             "input_structure_hash": self.input_structure_hash,
@@ -278,6 +441,40 @@ class ExperimentCard:
                     lines.append(f"  - {item}")
         else:
             lines.append("- *No validation summary recorded.*")
+        lines.extend(["", "## Estimand and Uncertainty Contract", ""])
+        lines.append("")
+        lines.append("Target estimand:")
+        lines.append(self.target_estimand_label)
+        lines.append("")
+        lines.append("Uncertainty:")
+        lines.append(self.uncertainty_contract_label)
+        if self.analysis_contract_warnings:
+            lines.append("")
+            lines.append("Warning:")
+            for w in self.analysis_contract_warnings:
+                lines.append(w)
+        lines.extend(["", "## Interference Review", ""])
+        lines.append(f"- **Assumption:** {self.interference_review_assumption}")
+        buffers = self.interference_review_buffer_geos or "*none documented*"
+        lines.append(f"- **Buffer geos:** {buffers}")
+        lines.append(
+            f"- **Shared market risk:** {self.interference_review_shared_market_risk}"
+        )
+        lines.append(
+            f"- **Contamination risk:** {self.interference_review_contamination_risk}"
+        )
+        lines.append(
+            f"- **Expected spillover direction:** {self.interference_review_spillover_direction}"
+        )
+        if self.interference_review_warnings:
+            lines.append("- **Warnings:**")
+            for w in self.interference_review_warnings:
+                lines.append(f"  - {w}")
+        lines.append("")
+        lines.append(
+            "_This package records interference assumptions but does not estimate "
+            "spillover effects._"
+        )
         lines.extend(["", "## Interference Assumptions", ""])
         lines.append(f"- **Declared / checked assumption:** {self.interference_assumption}")
         spill = "yes" if self.spillover_metadata_available else "no"
@@ -291,6 +488,73 @@ class ExperimentCard:
             lines.append(
                 f"- **Intervals available:** {'yes' if self.intervals_available else 'no'}"
             )
+        if self.did_pretrend_markdown:
+            lines.extend(["", self.did_pretrend_markdown, ""])
+        lines.extend(["", "## Power and MDE Contract", ""])
+        lines.append("")
+        lines.append(
+            "> Interpretation rules below apply when using ``PowerAnalysis``; "
+            "they do **not** mean a power study was run for this evidence record."
+        )
+        lines.extend(["", "### Interpretation rules", ""])
+        lines.append(f"- **MDE type (if used):** {self.power_mde_type}")
+        if self.power_simulation_based is None:
+            lines.append("- **Simulation-based planning:** unknown")
+        else:
+            lines.append(
+                "- **Simulation-based planning:** "
+                f"{'yes' if self.power_simulation_based else 'no'}"
+            )
+        if self.power_simulation_based is None:
+            lines.append("- **Classical analytic power:** unknown")
+        else:
+            lines.append(
+                f"- **Classical analytic power:** "
+                f"{'no' if self.power_simulation_based else 'yes'}"
+            )
+        if self.power_recommended_use:
+            lines.append("- **Recommended uses:**")
+            for use in self.power_recommended_use:
+                lines.append(f"  - {use}")
+        if self.power_not_recommended_for:
+            lines.append("- **Not recommended for:**")
+            for item in self.power_not_recommended_for:
+                lines.append(f"  - {item}")
+        if self.power_interpretation_warnings:
+            lines.append("- **Interpretation warnings:**")
+            for w in self.power_interpretation_warnings:
+                lines.append(f"  - {w}")
+        lines.extend(["", "### Power analysis status", ""])
+        if self.power_results_available:
+            lines.append("- **Power results attached:** yes")
+            lines.extend(["", "### Power results (this run)", ""])
+            if self.power_results_mde_percent is not None:
+                lines.append(
+                    f"- **MDE percent (simulation):** {self.power_results_mde_percent}"
+                )
+            if self.power_results_mde_kpi is not None:
+                lines.append(
+                    f"- **MDE KPI cumulative (simulation):** {self.power_results_mde_kpi}"
+                )
+            if self.power_results_aa_fpr is not None:
+                lines.append(
+                    f"- **Null-effect FPR (A/A calibration):** {self.power_results_aa_fpr}"
+                )
+            if self.power_run_warnings:
+                lines.append("- **Run-specific warnings:**")
+                for w in self.power_run_warnings:
+                    lines.append(f"  - {w}")
+        else:
+            lines.append("- **Power results attached:** no")
+            lines.append(
+                "- *No simulation-based power analysis results are attached to "
+                "this evidence record.*"
+            )
+        lines.append("")
+        lines.append(
+            "_When results are attached, they are planning diagnostics only—not "
+            "guaranteed detection probabilities._"
+        )
         lines.extend(
             [
                 "",
@@ -425,6 +689,85 @@ def _card_from_common(
     if isinstance(readiness_raw, Mapping):
         readiness_md = _readiness_assessment_markdown(readiness_raw)
 
+    contract = _analysis_contract_from_metadata(meta, artifacts)
+    if not contract:
+        from panel_exp.evidence import build_analysis_contract
+
+        contract = build_analysis_contract(
+            inference_metadata=meta,
+            estimator_name=estimator_name if estimator_name != _UNKNOWN else None,
+        )
+    target_label = _as_str(
+        contract.get("target_estimand_label") or contract.get("target_estimand")
+    )
+    uncertainty_label = _as_str(
+        contract.get("uncertainty_contract_label")
+        or contract.get("uncertainty_contract")
+    )
+    contract_warnings = tuple(_as_list(contract.get("notes")))
+
+    review = _interference_review_from_containers(meta, artifacts)
+    if review:
+        ir_assumption = _as_str(review.get("assumption"))
+        ir_buffers = _format_geo_list(review.get("buffer_geos"))
+        ir_shared = _as_str(review.get("shared_market_risk"))
+        ir_contam = _as_str(review.get("contamination_risk"))
+        ir_direction = _as_str(review.get("expected_spillover_direction"))
+        ir_warnings = tuple(_as_list(review.get("review_warnings")))
+    else:
+        ir_assumption = _as_str(meta.get("interference_assumption"))
+        ir_buffers = ""
+        ir_shared = _UNKNOWN
+        ir_contam = _UNKNOWN
+        ir_direction = _UNKNOWN
+        ir_warnings = _EMPTY_LIST
+        if ir_assumption in (_UNKNOWN, "unknown"):
+            ir_warnings = (
+                "Unknown interference assumption limits causal interpretation",
+            )
+
+    interpretation = _generic_power_interpretation_contract()
+    power_results_available, run_semantics, aa_cal = _power_run_payload_from_containers(
+        meta, artifacts
+    )
+    pc_mde_type = _as_str(interpretation.get("mde_type"))
+    pc_sim = interpretation.get("simulation_based")
+    power_simulation_based: Optional[bool]
+    if pc_sim is None:
+        power_simulation_based = None
+    else:
+        power_simulation_based = bool(pc_sim)
+    pc_recommended = tuple(_as_list(interpretation.get("recommended_use")))
+    pc_not_recommended = tuple(_as_list(interpretation.get("not_recommended_for")))
+    pc_interp_warnings = tuple(_as_list(interpretation.get("warnings")))
+
+    power_results_mde_percent: Optional[str] = None
+    power_results_mde_kpi: Optional[str] = None
+    power_results_aa_fpr: Optional[str] = None
+    power_run_warnings: Tuple[str, ...] = _EMPTY_LIST
+    if power_results_available:
+        if run_semantics.get("mde_percent") is not None:
+            power_results_mde_percent = str(run_semantics.get("mde_percent"))
+        if run_semantics.get("mde_kpi_cumulative") is not None:
+            power_results_mde_kpi = str(run_semantics.get("mde_kpi_cumulative"))
+        if aa_cal and aa_cal.get("false_positive_rate") is not None:
+            power_results_aa_fpr = f"{float(aa_cal['false_positive_rate']):.4f}"
+        run_warns: List[str] = []
+        if aa_cal:
+            run_warns.extend(_as_list(aa_cal.get("warnings")))
+        attached_pc = artifacts.get("power_contract")
+        if not isinstance(attached_pc, Mapping):
+            attached_pc = meta.get("power_contract")
+        if isinstance(attached_pc, Mapping) and attached_pc.get("power_analysis_run"):
+            generic_set = set(pc_interp_warnings)
+            for w in _as_list(attached_pc.get("warnings")):
+                if w not in generic_set and w not in run_warns:
+                    run_warns.append(w)
+        power_run_warnings = tuple(run_warns)
+
+    did_contract = _did_pretrend_contract_from_containers(meta, artifacts)
+    did_pretrend_md = _did_pretrend_contract_markdown(did_contract)
+
     return ExperimentCard(
         experiment_id=_as_str(experiment_id),
         created_at=_as_str(created_at),
@@ -451,6 +794,26 @@ def _card_from_common(
         ),
         maturity_evidence_summary=maturity_md,
         readiness_assessment_summary=readiness_md,
+        target_estimand_label=target_label,
+        uncertainty_contract_label=uncertainty_label,
+        analysis_contract_warnings=contract_warnings,
+        interference_review_assumption=ir_assumption,
+        interference_review_buffer_geos=ir_buffers,
+        interference_review_shared_market_risk=ir_shared,
+        interference_review_contamination_risk=ir_contam,
+        interference_review_spillover_direction=ir_direction,
+        interference_review_warnings=ir_warnings,
+        power_results_available=power_results_available,
+        power_mde_type=pc_mde_type,
+        power_simulation_based=power_simulation_based,
+        power_recommended_use=pc_recommended,
+        power_not_recommended_for=pc_not_recommended,
+        power_interpretation_warnings=pc_interp_warnings,
+        power_results_mde_percent=power_results_mde_percent,
+        power_results_mde_kpi=power_results_mde_kpi,
+        power_results_aa_fpr=power_results_aa_fpr,
+        power_run_warnings=power_run_warnings,
+        did_pretrend_markdown=did_pretrend_md,
         spec_hash=_as_str(spec_hash),
         assignment_hash=_as_str(assignment_hash),
         input_structure_hash=_as_str(input_structure_hash or _UNKNOWN),

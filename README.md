@@ -50,6 +50,8 @@ Path bands in `results` are labeled explicitly: `confidence_interval`, `credible
 
 `PowerAnalysis` is **simulation-based** (coverage vs injected effects), not a closed-form analytic MDE. Pass `random_state` for reproducibility; parallel `n_jobs` behavior depends on the backing estimator.
 
+After `run_analysis()`, `power_contract` records planning semantics (`mde_type: simulation_coverage`, `classical_power: false`). Use for **ranking design alternatives and sensitivity only** — not guaranteed detectability or financial go/no-go thresholds. Review `aa_calibration` on null-effect rows before decision use.
+
 ### Interference
 
 `InterferenceAssumption`: `unknown`, `no_interference`, `partial_interference`. Design validation warns when interference is unknown. The package does **not** estimate spillovers automatically.
@@ -72,31 +74,33 @@ Advisory readout chain (non-blocking; does not change estimates):
 ```
 Design
 ↓
-Assignment
-↓
-Estimator
-↓
 Inference
 ↓
-Recovery Validation
+Recovery
 ↓
-Calibration Report
+Calibration
 ↓
 Maturity Evidence
 ↓
-Readiness Assessment
+Readiness
 ↓
 Experiment Card
+↓
+Run Bundle
 ```
 
 | Stage | Summary |
 |-------|---------|
-| **Design** | Experiment setup, spec, and assignment |
-| **Recovery validation** | Synthetic scenarios; diagnostic bias, coverage, FPR, power |
-| **Calibration** | A/A aggregates (FPR, coverage, power) and warnings |
-| **Maturity evidence** | Evidence supporting catalog maturity; not automatic promotion |
-| **Readiness** | Advisory status only (`panel_exp.policy`); non-blocking |
-| **Experiment card** | Human-readable markdown artifact |
+| **Design** | `DesignSpec`, assignment, `DesignEvidence` |
+| **Inference** | Estimators + labeled interval semantics |
+| **Recovery** | `RecoveryRunner` diagnostics — see `docs/VALIDATION_COVERAGE.md` |
+| **Calibration** | `build_calibration_report` (FPR, coverage, power) |
+| **Maturity evidence** | Measured evidence; does not auto-promote catalog labels |
+| **Readiness** | `build_readiness_assessment` — advisory only |
+| **Experiment card** | `build_experiment_card` (contracts + optional power results) |
+| **Run bundle** | `build_run_artifact_bundle` portable export |
+
+Further reading: `docs/ROADMAP_REASSESSMENT.md`, `docs/DOC_DRIFT_AUDIT.md`.
 
 Runnable examples:
 
@@ -154,10 +158,12 @@ write_run_artifact_bundle_json(bundle, "artifacts/run_bundle.json")
 ## Documentation
 
 - **Hosted docs:** Pre-built HTML under `gh-pages/` (open `gh-pages/index.html` locally).
-- **User guide source:** `gh-pages/_sources/user_guide.md.txt`
+- **User guide source:** `gh-pages/_sources/user_guide.md.txt` (starts with **Current Package Status** / code truth).
 - **Uncertainty notes:** `panel_exp/inference/uncertainty.md`
-
-There is no separate `docs/` Sphinx tree in this repository; use `gh-pages/` or build docs from the published site artifacts.
+- **Validation matrix:** `docs/VALIDATION_COVERAGE.md`
+- **Roadmap / gaps:** `docs/ROADMAP_REASSESSMENT.md`
+- **Doc drift audit:** `docs/DOC_DRIFT_AUDIT.md`
+- **Examples index:** `examples/README.md` (legacy notebooks flagged)
 
 ---
 
@@ -239,7 +245,7 @@ See **Current package status** above for the geo-supported allowlist vs register
 
 ## Power / MDE
 
-`PowerAnalysis` uses **simulation**: sliding train/test windows, injected effects, and CI coverage vs a power threshold. Reported MDE is **not** a closed-form analytic MDE. Pass `random_state` for reproducibility.
+`PowerAnalysis` uses **simulation**: sliding train/test windows, injected percent-effect grids, and interval coverage vs a threshold. Reported MDE is **not** classical analytic power or a guaranteed minimum detectable effect. `power_contract` and `mde_semantics` document this; pass `random_state` for reproducibility. Power outputs are **planning diagnostics**, not promised detection probabilities.
 
 ---
 

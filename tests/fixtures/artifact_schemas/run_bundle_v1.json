@@ -20,7 +20,22 @@
   },
   "errors": [],
   "evidence": {
-    "artifacts": {},
+    "artifacts": {
+      "interference_review": {
+        "ad_saturation_risk": "unknown",
+        "adjacent_geos": [],
+        "assumption": "no_interference",
+        "buffer_geos": [],
+        "contamination_risk": "unknown",
+        "expected_spillover_direction": "unknown",
+        "exposure_channel_overlap": "",
+        "review_warnings": [
+          "Interference assumption declared but no buffer geos documented"
+        ],
+        "shared_market_risk": "unknown",
+        "spillover_notes": ""
+      }
+    },
     "assignment": {
       "control": [
         "u0",
@@ -38,6 +53,16 @@
     "evidence_version": "1.0",
     "experiment_id": "schema-fixture-exp",
     "inference_metadata": {
+      "analysis_contract": {
+        "notes": [
+          "Effect interpretation not explicitly declared.",
+          "Uncertainty contract inferred from inference metadata; set DesignSpec.uncertainty_contract to prespecify."
+        ],
+        "target_estimand": "unknown",
+        "target_estimand_label": "Unknown (not declared)",
+        "uncertainty_contract": "confidence_interval",
+        "uncertainty_contract_label": "Confidence interval"
+      },
       "estimator_maturity": "expert_review",
       "estimator_name": "TBRRidge",
       "inference_mode_maturity": "expert_review",
@@ -51,7 +76,7 @@
     },
     "input_data_hash": null,
     "input_structure_hash": null,
-    "spec_hash": "f29f7f212a6c89c0875d68d509e0158f",
+    "spec_hash": "a36ce9f635cdd8c40f4f285182fc2b53",
     "validation_summary": {
       "blocking_failures": [],
       "status": "PASS"
@@ -61,6 +86,10 @@
     ]
   },
   "experiment_card": {
+    "analysis_contract_warnings": [
+      "Effect interpretation not explicitly declared.",
+      "Uncertainty contract inferred from inference metadata; set DesignSpec.uncertainty_contract to prespecify."
+    ],
     "assignment_hash": "cfe3327b5f8577b4df09c29d033f4dee",
     "assignment_summary": {
       "control": 2,
@@ -68,6 +97,7 @@
     },
     "card_version": "1.0",
     "design_name": "balanced_randomization",
+    "did_pretrend_markdown": "",
     "errors": [],
     "estimator_maturity": "expert_review",
     "estimator_name": "TBRRidge",
@@ -77,10 +107,40 @@
     "inference_mode_maturity": "expert_review",
     "input_structure_hash": "unknown",
     "interference_assumption": "unknown",
+    "interference_review_assumption": "no_interference",
+    "interference_review_buffer_geos": "",
+    "interference_review_contamination_risk": "unknown",
+    "interference_review_shared_market_risk": "unknown",
+    "interference_review_spillover_direction": "unknown",
+    "interference_review_warnings": [
+      "Interference assumption declared but no buffer geos documented"
+    ],
     "interval_type": "confidence_interval",
     "intervals_available": true,
-    "spec_hash": "f29f7f212a6c89c0875d68d509e0158f",
+    "power_interpretation_warnings": [
+      "MDE is simulation-based and estimator-dependent",
+      "Power estimates may vary with effect grid and simulation count",
+      "Null calibration should be reviewed before decision use"
+    ],
+    "power_mde_type": "simulation_coverage",
+    "power_not_recommended_for": [
+      "guaranteed detectability claims",
+      "financial commitment thresholds"
+    ],
+    "power_recommended_use": [
+      "compare design alternatives",
+      "rank sensitivity"
+    ],
+    "power_results_aa_fpr": null,
+    "power_results_available": false,
+    "power_results_mde_kpi": null,
+    "power_results_mde_percent": null,
+    "power_run_warnings": [],
+    "power_simulation_based": true,
+    "spec_hash": "a36ce9f635cdd8c40f4f285182fc2b53",
     "spillover_metadata_available": true,
+    "target_estimand_label": "Unknown (not declared)",
+    "uncertainty_contract_label": "Confidence interval",
     "validation_metadata_summary": {},
     "validation_summary": {
       "blocking_failures": [],
@@ -91,11 +151,25 @@
     ]
   },
   "experiment_id": "schema-fixture-exp",
+  "interference_review": {
+    "ad_saturation_risk": "unknown",
+    "adjacent_geos": [],
+    "assumption": "no_interference",
+    "buffer_geos": [],
+    "contamination_risk": "unknown",
+    "expected_spillover_direction": "unknown",
+    "exposure_channel_overlap": "",
+    "review_warnings": [
+      "Interference assumption declared but no buffer geos documented"
+    ],
+    "shared_market_risk": "unknown",
+    "spillover_notes": ""
+  },
   "lineage": {
     "assignment_hash": "cfe3327b5f8577b4df09c29d033f4dee",
     "evidence_version": "1.0",
     "input_structure_hash": null,
-    "spec_hash": "f29f7f212a6c89c0875d68d509e0158f"
+    "spec_hash": "a36ce9f635cdd8c40f4f285182fc2b53"
   },
   "maturity_evidence": {
     "calibration_available": true,
