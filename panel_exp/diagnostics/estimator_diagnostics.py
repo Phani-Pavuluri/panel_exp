@@ -2,8 +2,8 @@
 Estimator diagnostic classification and post-fit routing.
 
 Each profile records which diagnostic inputs exist for an estimator family and which
-diagnostic type is primary. ``attach_estimator_diagnostics`` only populates sections
-when inputs are valid (no blocking; additive metadata on ``results``).
+diagnostic type is primary. Use ``collect_estimator_diagnostics`` / ``build_estimator_review``
+after ``run_analysis``; core ``results`` keys are unchanged unless explicitly attached.
 
 Classification (y_hat / pre residuals / donor weights / rolling pre-fit / primary type)
 ---------------------------------------------------------------------------------------
@@ -402,16 +402,27 @@ def _posterior_convergence(analyzer: Any) -> Dict[str, Any]:
     return out
 
 
-def collect_estimator_diagnostics(analyzer: Any) -> Dict[str, Any]:
+def collect_estimator_diagnostics(
+    analyzer: Any,
+    results: Optional[Mapping[str, Any]] = None,
+) -> Dict[str, Any]:
     """
     Build a diagnostic payload for ``analyzer`` after ``run_analysis`` (or DID's custom run).
+
+    Parameters
+    ----------
+    analyzer :
+        Fitted estimator instance.
+    results :
+        Optional results mapping; defaults to ``analyzer.results``.
 
     Sections are omitted when inputs are invalid; ``primary_diagnostic`` always reflects
     the estimator profile.
     """
     name = analyzer.__class__.__name__
     profile = classify_estimator(name)
-    results = getattr(analyzer, "results", None) or {}
+    if results is None:
+        results = getattr(analyzer, "results", None) or {}
     payload: Dict[str, Any] = {
         "estimator": name,
         "classification": profile.to_dict(),
@@ -482,10 +493,29 @@ def collect_estimator_diagnostics(analyzer: Any) -> Dict[str, Any]:
     return payload
 
 
-def attach_estimator_diagnostics(analyzer: Any) -> Dict[str, Any]:
-    """Attach ``estimator_diagnostics`` to ``analyzer.results`` (creates results if needed)."""
-    payload = collect_estimator_diagnostics(analyzer)
-    if getattr(analyzer, "results", None) is None:
-        analyzer.results = {}
-    analyzer.results["estimator_diagnostics"] = payload
-    return payload
+def attach_estimator_diagnostics(
+    target: Any,
+    diagnostics: Optional[Dict[str, Any]] = None,
+) -> Dict[str, Any]:
+    """
+    Attach ``estimator_diagnostics`` to a results mapping or analyzer.results.
+
+    Preferred::
+
+        diagnostics = collect_estimator_diagnostics(estimator, results)
+        attach_estimator_diagnostics(results, diagnostics)
+
+    Convenience (collect + attach on ``analyzer.results``)::
+
+        attach_estimator_diagnostics(estimator)
+    """
+    if diagnostics is None:
+        analyzer = target
+        payload = collect_estimator_diagnostics(analyzer)
+        if getattr(analyzer, "results", None) is None:
+            analyzer.results = {}
+        analyzer.results["estimator_diagnostics"] = payload
+        return payload
+    results = target
+    results["estimator_diagnostics"] = diagnostics
+    return diagnostics

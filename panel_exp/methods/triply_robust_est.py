@@ -613,15 +613,10 @@ class TROP(ImpactAnalyzer):
     def run_analysis(
         self,
         panel_data: PanelDataset,
-        run_estimator_diagnostics: bool = False,
         **inference_kwargs,
     ) -> Dict:
         """Run analysis and aggregate y to 1D when multiple treated units (y_hat is already aggregated)."""
-        super().run_analysis(
-            panel_data,
-            run_estimator_diagnostics=run_estimator_diagnostics,
-            **inference_kwargs,
-        )
+        super().run_analysis(panel_data, **inference_kwargs)
         y = self.results["y"]
         y_hat = self.results["y_hat"]
         if y.ndim == 2 and y_hat.ndim == 1:
