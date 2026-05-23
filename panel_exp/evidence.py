@@ -302,6 +302,23 @@ def attach_power_contract_to_artifacts(
     return attach_power_contract(artifacts, payload)
 
 
+def attach_did_pretrend_contract(
+    results_or_artifacts: Dict[str, Any],
+    contract: Mapping[str, Any],
+) -> Dict[str, Any]:
+    """
+    Attach DID parallel-trends contract metadata (additive; does not block runs).
+    """
+    payload = dict(contract)
+    results_or_artifacts["did_pretrend_contract"] = payload
+    meta = results_or_artifacts.get("inference_metadata")
+    if isinstance(meta, dict):
+        meta["did_pretrend_contract"] = payload
+    else:
+        results_or_artifacts["inference_metadata"] = {"did_pretrend_contract": payload}
+    return results_or_artifacts
+
+
 def attach_interference_review(
     results_or_artifacts: Dict[str, Any],
     review: Mapping[str, Any],
@@ -800,6 +817,7 @@ __all__ = [
     "DesignEvidence",
     "InferenceEvidence",
     "ExperimentEvidence",
+    "attach_did_pretrend_contract",
     "attach_interference_review",
     "attach_power_contract_to_artifacts",
     "build_analysis_contract",

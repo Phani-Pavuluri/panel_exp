@@ -162,6 +162,53 @@ def _readiness_assessment_markdown(
     return assessment.to_markdown()
 
 
+def _did_pretrend_contract_from_containers(
+    inference_metadata: Mapping[str, Any],
+    artifacts: Mapping[str, Any],
+) -> Dict[str, Any]:
+    for container in (artifacts, inference_metadata):
+        if not isinstance(container, Mapping):
+            continue
+        raw = container.get("did_pretrend_contract")
+        if isinstance(raw, Mapping):
+            return dict(raw)
+    return {}
+
+
+def _did_pretrend_contract_markdown(contract: Mapping[str, Any]) -> str:
+    if not contract:
+        return ""
+    lines = [
+        "## DID Pretrend Contract",
+        "",
+        "> DID causal interpretation depends on parallel trends in the pre-period. "
+        "This section records diagnostic status only; it does not replace design review.",
+        "",
+        f"- **Status:** {_as_str(contract.get('pretrend_status'))}",
+        f"- **Pretrend checked:** {contract.get('pretrend_checked')}",
+    ]
+    joint = contract.get("joint_pretrend_p_value")
+    linear = contract.get("linear_pretrend_p_value")
+    if joint is None:
+        lines.append("- **Joint pretrend p-value:** n/a")
+    else:
+        lines.append(f"- **Joint pretrend p-value:** {float(joint):.4f}")
+    if linear is None:
+        lines.append("- **Linear pretrend p-value:** n/a")
+    else:
+        lines.append(f"- **Linear pretrend p-value:** {float(linear):.4f}")
+    lines.append(
+        f"- **Requires waiver:** {'yes' if contract.get('requires_waiver') else 'no'}"
+    )
+    lines.append(
+        f"- **Waiver provided:** {'yes' if contract.get('waiver_provided') else 'no'}"
+    )
+    warning = contract.get("warning")
+    if warning:
+        lines.extend(["", "**Warning:**", str(warning)])
+    return "\n".join(lines)
+
+
 def _interference_review_from_containers(
     inference_metadata: Mapping[str, Any],
     artifacts: Mapping[str, Any],
@@ -299,6 +346,7 @@ class ExperimentCard:
     power_results_mde_kpi: Optional[str] = None
     power_results_aa_fpr: Optional[str] = None
     power_run_warnings: Tuple[str, ...] = _EMPTY_LIST
+    did_pretrend_markdown: str = ""
     spec_hash: str = _UNKNOWN
     assignment_hash: str = _UNKNOWN
     input_structure_hash: str = _UNKNOWN
@@ -347,6 +395,7 @@ class ExperimentCard:
             "power_results_mde_kpi": self.power_results_mde_kpi,
             "power_results_aa_fpr": self.power_results_aa_fpr,
             "power_run_warnings": list(self.power_run_warnings),
+            "did_pretrend_markdown": self.did_pretrend_markdown,
             "spec_hash": self.spec_hash,
             "assignment_hash": self.assignment_hash,
             "input_structure_hash": self.input_structure_hash,
@@ -439,6 +488,8 @@ class ExperimentCard:
             lines.append(
                 f"- **Intervals available:** {'yes' if self.intervals_available else 'no'}"
             )
+        if self.did_pretrend_markdown:
+            lines.extend(["", self.did_pretrend_markdown, ""])
         lines.extend(["", "## Power and MDE Contract", ""])
         lines.append("")
         lines.append(
@@ -714,6 +765,9 @@ def _card_from_common(
                     run_warns.append(w)
         power_run_warnings = tuple(run_warns)
 
+    did_contract = _did_pretrend_contract_from_containers(meta, artifacts)
+    did_pretrend_md = _did_pretrend_contract_markdown(did_contract)
+
     return ExperimentCard(
         experiment_id=_as_str(experiment_id),
         created_at=_as_str(created_at),
@@ -759,6 +813,7 @@ def _card_from_common(
         power_results_mde_kpi=power_results_mde_kpi,
         power_results_aa_fpr=power_results_aa_fpr,
         power_run_warnings=power_run_warnings,
+        did_pretrend_markdown=did_pretrend_md,
         spec_hash=_as_str(spec_hash),
         assignment_hash=_as_str(assignment_hash),
         input_structure_hash=_as_str(input_structure_hash or _UNKNOWN),

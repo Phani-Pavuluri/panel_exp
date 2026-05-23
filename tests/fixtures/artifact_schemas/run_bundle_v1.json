@@ -97,6 +97,7 @@
     },
     "card_version": "1.0",
     "design_name": "balanced_randomization",
+    "did_pretrend_markdown": "",
     "errors": [],
     "estimator_maturity": "expert_review",
     "estimator_name": "TBRRidge",
