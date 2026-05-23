@@ -113,6 +113,10 @@ def test_failed_simulation_records_failure_metadata():
             significant=False,
             failed=False,
             intervals_available=True,
+            interval_aligned=True,
+            interval_estimand="relative_att_post",
+            interval_scale="path_period_relative_mean",
+            significance_aligned=True,
         ),
     ]
     result = aggregate_recovery_metrics(

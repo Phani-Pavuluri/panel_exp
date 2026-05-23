@@ -75,6 +75,9 @@ def test_output_schema_keys():
         "failure_rate",
         "failure_types",
         "scored_target_estimand",
+        "point_estimand",
+        "interval_estimand",
+        "interval_scale",
         "recovery_config",
     ):
         assert key in payload

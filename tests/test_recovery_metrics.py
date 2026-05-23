@@ -19,6 +19,8 @@ def test_same_records_identical_metrics():
             ci_lower=0.05,
             ci_upper=0.15,
             significant=True,
+            interval_aligned=True,
+            significance_aligned=True,
         ),
         SimulationRecord(
             predicted_effect=0.09,
@@ -26,6 +28,8 @@ def test_same_records_identical_metrics():
             ci_lower=0.04,
             ci_upper=0.14,
             significant=False,
+            interval_aligned=True,
+            significance_aligned=True,
         ),
     ]
     r1 = aggregate_recovery_metrics(
@@ -46,6 +50,7 @@ def test_null_scenario_fpr_bounded():
             predicted_effect=0.01 * i,
             true_effect=0.0,
             significant=(i % 2 == 0),
+            significance_aligned=True,
         )
         for i in range(20)
     ]
@@ -61,11 +66,14 @@ def test_bounded_rates_from_aggregation():
             ci_lower=0.0,
             ci_upper=0.20,
             significant=True,
+            interval_aligned=True,
+            significance_aligned=True,
         ),
         SimulationRecord(
             predicted_effect=0.12,
             true_effect=0.0,
             significant=False,
+            significance_aligned=True,
         ),
     ]
     r = aggregate_recovery_metrics(estimator="SCM", scenario="x", records=records)

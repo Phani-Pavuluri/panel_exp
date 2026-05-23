@@ -27,6 +27,12 @@ class SimulationRecord:
     failure_message: Optional[str] = None
     intervals_available: Optional[bool] = None
     intervals_unavailable_reason: Optional[str] = None
+    point_estimand: str = "relative_att_post"
+    interval_estimand: str = "unavailable"
+    interval_scale: str = "unavailable"
+    interval_aligned: bool = False
+    significance_estimand: Optional[str] = None
+    significance_aligned: bool = False
 
 
 @dataclass(frozen=True)
@@ -51,6 +57,10 @@ class RecoveryResult:
     false_positive_rate_unavailable_reason: Optional[str] = None
     power_status: str = "not_requested"
     power_unavailable_reason: Optional[str] = None
+    point_estimand: str = "relative_att_post"
+    interval_estimand: str = "unavailable"
+    interval_scale: str = "unavailable"
+    significance_estimand: Optional[str] = None
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -109,6 +119,10 @@ def aggregate_recovery_metrics(
             ),
             power_status="unavailable" if intervals_expected else "not_requested",
             power_unavailable_reason="no_records" if intervals_expected else None,
+            point_estimand="relative_att_post",
+            interval_estimand="unavailable",
+            interval_scale="unavailable",
+            significance_estimand=None,
         )
 
     predicted = np.array([r.predicted_effect for r in records], dtype=float)
@@ -136,6 +150,11 @@ def aggregate_recovery_metrics(
     for rec in records:
         if rec.failed:
             continue
+        if not rec.interval_aligned:
+            interval_missing_reasons.append(
+                rec.intervals_unavailable_reason or "interval_estimand_mismatch"
+            )
+            continue
         if rec.ci_lower is None or rec.ci_upper is None:
             if rec.intervals_unavailable_reason:
                 interval_missing_reasons.append(rec.intervals_unavailable_reason)
@@ -160,10 +179,15 @@ def aggregate_recovery_metrics(
     fpr_vals: List[float] = []
     power_vals: List[float] = []
     sig_missing = 0
+    mixed_estimand = 0
     for rec in records:
-        if rec.failed or rec.significant is None:
-            if rec.significant is None and not rec.failed:
-                sig_missing += 1
+        if rec.failed:
+            continue
+        if rec.significant is None:
+            sig_missing += 1
+            continue
+        if not rec.significance_aligned:
+            mixed_estimand += 1
             continue
         is_null = abs(rec.true_effect) <= null_threshold
         is_alt = abs(rec.true_effect) >= alt_threshold
@@ -173,9 +197,13 @@ def aggregate_recovery_metrics(
             power_vals.append(1.0 if rec.significant else 0.0)
 
     fpr_reason = (
-        "no_significance_flags"
-        if sig_missing and not fpr_vals
-        else "no_null_replications"
+        "mixed_estimand_significance"
+        if mixed_estimand and not fpr_vals
+        else (
+            "no_significance_flags"
+            if sig_missing and not fpr_vals
+            else "no_null_replications"
+        )
     )
     false_positive_rate, fpr_status, fpr_unavailable_reason = _metric_status(
         fpr_vals,
@@ -185,8 +213,26 @@ def aggregate_recovery_metrics(
     power, power_status, power_unavailable_reason = _metric_status(
         power_vals,
         expected=intervals_expected,
-        reason_if_empty="no_positive_effect_replications",
+        reason_if_empty=(
+            "mixed_estimand_significance"
+            if mixed_estimand and not power_vals
+            else "no_positive_effect_replications"
+        ),
     )
+
+    point_estimand = records[0].point_estimand if records else "relative_att_post"
+    aligned_intervals = [r.interval_estimand for r in records if r.interval_aligned]
+    if aligned_intervals:
+        interval_estimand = aligned_intervals[0]
+        interval_scale = records[
+            next(i for i, r in enumerate(records) if r.interval_aligned)
+        ].interval_scale
+    else:
+        interval_estimand = records[0].interval_estimand if records else "unavailable"
+        interval_scale = records[0].interval_scale if records else "unavailable"
+
+    sig_estims = [r.significance_estimand for r in records if r.significance_estimand]
+    significance_estimand = sig_estims[0] if sig_estims else None
 
     return RecoveryResult(
         estimator=estimator,
@@ -207,4 +253,8 @@ def aggregate_recovery_metrics(
         false_positive_rate_unavailable_reason=fpr_unavailable_reason,
         power_status=power_status,
         power_unavailable_reason=power_unavailable_reason,
+        point_estimand=point_estimand,
+        interval_estimand=interval_estimand,
+        interval_scale=interval_scale,
+        significance_estimand=significance_estimand,
     )

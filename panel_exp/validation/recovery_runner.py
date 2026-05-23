@@ -6,20 +6,21 @@ from __future__ import annotations
 
 import time
 from dataclasses import dataclass, field, replace
-from typing import Any, Callable, Dict, List, Mapping, Optional, Sequence, Tuple, Type, Union
+from typing import Any, Callable, Dict, List, Mapping, Optional, Sequence, Type, Union
 
 import numpy as np
 
-from panel_exp.panel_data import PanelDataset
 from panel_exp.spec import TargetEstimand
 from panel_exp.validation.recovery_metrics import (
     SimulationRecord,
     aggregate_recovery_metrics,
 )
+from panel_exp.validation.recovery_intervals import (
+    POINT_ESTIMAND,
+    extract_recovery_interval,
+)
 from panel_exp.validation.runner import (
-    _is_significant,
     _path_relative_att,
-    _relative_ci,
     default_estimator_configs,
 )
 from panel_exp.validation.synthetic_scenarios import (
@@ -185,102 +186,6 @@ def _extended_estimator_configs() -> Dict[str, RecoveryEstimatorConfig]:
     return all_recovery_configs()
 
 
-def _align_post_series(
-    y: np.ndarray,
-    y_hat: np.ndarray,
-    y_lower: np.ndarray,
-    y_upper: np.ndarray,
-    panel: PanelDataset,
-) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
-    """Align y / bounds to post-period 1d series (pooled over treated units when 2d)."""
-    if y.ndim == 2:
-        y = np.nanmean(y, axis=1)
-        y_hat = np.nanmean(y_hat, axis=1)
-        y_lower = np.nanmean(y_lower, axis=1)
-        y_upper = np.nanmean(y_upper, axis=1)
-    y = y.ravel()
-    y_hat = y_hat.ravel()
-    y_lower = y_lower.ravel()
-    y_upper = y_upper.ravel()
-
-    start = panel.treated_start_idxs[0]
-    n_times = panel.num_timepoints
-    n_post = n_times - start
-
-    if len(y) == n_times and len(y_hat) == n_times:
-        return y[start:], y_hat[start:], y_lower[start:], y_upper[start:]
-    if len(y_hat) == n_post:
-        y_post = y[start:] if len(y) == n_times else y[-n_post:]
-        return y_post, y_hat, y_lower, y_upper
-    n_align = min(len(y), len(y_hat), len(y_lower), len(y_upper), n_post)
-    return y[-n_align:], y_hat[-n_align:], y_lower[-n_align:], y_upper[-n_align:]
-
-
-def _recovery_relative_ci(
-    estimator,
-    panel: PanelDataset,
-) -> Tuple[Optional[float], Optional[float], Optional[str]]:
-    """
-    Relative post-period CI for recovery scoring.
-
-    Uses treatment_ci when present (DID bootstrap), else path intervals from results.
-    """
-    lo, hi = _relative_ci(estimator, panel)
-    if lo is not None and hi is not None:
-        return lo, hi, None
-
-    results = getattr(estimator, "results", None) or {}
-    y = np.asarray(results.get("y", []), dtype=float)
-    y_hat = np.asarray(results.get("y_hat", []), dtype=float)
-    y_lo = np.asarray(results.get("y_lower", []), dtype=float)
-    y_hi = np.asarray(results.get("y_upper", []), dtype=float)
-    if y.size == 0 or y_hat.size == 0 or y_lo.size == 0 or y_hi.size == 0:
-        return None, None, "no_path_intervals_in_results"
-
-    try:
-        y_post, yh_post, yl_post, yu_post = _align_post_series(
-            y, y_hat, y_lo, y_hi, panel
-        )
-    except Exception:
-        return None, None, "path_interval_alignment_failed"
-
-    mask = (
-        np.isfinite(y_post)
-        & np.isfinite(yh_post)
-        & np.isfinite(yl_post)
-        & np.isfinite(yu_post)
-        & (yh_post != 0)
-    )
-    if not np.any(mask):
-        return None, None, "no_finite_post_periods"
-
-    rel_lo = (y_post[mask] - yu_post[mask]) / yh_post[mask]
-    rel_hi = (y_post[mask] - yl_post[mask]) / yh_post[mask]
-    if not (np.any(np.isfinite(rel_lo)) and np.any(np.isfinite(rel_hi))):
-        return None, None, "non_finite_relative_interval"
-    return float(np.nanmean(rel_lo)), float(np.nanmean(rel_hi)), None
-
-
-def _recovery_significance(
-    estimator,
-    panel: PanelDataset,
-    *,
-    alpha: float,
-    config: RecoveryEstimatorConfig,
-    ci_lower: Optional[float],
-    ci_upper: Optional[float],
-) -> Optional[bool]:
-    if not config.supports_significance:
-        return None
-    pvalue_sig = _is_significant(estimator, alpha)
-    if pvalue_sig is not None:
-        return pvalue_sig
-    if config.significance_from_ci and ci_lower is not None and ci_upper is not None:
-        if np.isfinite(ci_lower) and np.isfinite(ci_upper):
-            return bool(ci_lower > 0.0 or ci_upper < 0.0)
-    return None
-
-
 def _resolve_estimator_name(estimator: EstimatorInput) -> str:
     if isinstance(estimator, str):
         return estimator
@@ -316,30 +221,36 @@ def _run_simulation(
             failure_message=str(exc),
             intervals_available=False,
             intervals_unavailable_reason=f"run_failed:{exc_type}",
+            point_estimand=POINT_ESTIMAND,
         )
 
     predicted = _path_relative_att(estimator, panel)
-    ci_lower, ci_upper, interval_reason = _recovery_relative_ci(estimator, panel)
-    intervals_available = (
-        ci_lower is not None
-        and ci_upper is not None
-        and np.isfinite(ci_lower)
-        and np.isfinite(ci_upper)
-    )
-    significant = _recovery_significance(
+    interval = extract_recovery_interval(
         estimator,
         panel,
         alpha=alpha,
-        config=config,
-        ci_lower=ci_lower,
-        ci_upper=ci_upper,
+        significance_from_ci=config.significance_from_ci,
+        supports_significance=config.supports_significance,
     )
+    intervals_available = (
+        interval.interval_aligned
+        and interval.ci_lower is not None
+        and interval.ci_upper is not None
+        and np.isfinite(interval.ci_lower)
+        and np.isfinite(interval.ci_upper)
+    )
+    significant = interval.significant if interval.significance_aligned else None
+
     failed = not np.isfinite(predicted)
+    interval_reason = interval.unavailable_reason
+    if config.intervals_expected and not intervals_available and interval_reason is None:
+        interval_reason = "interval_estimand_mismatch"
+
     return SimulationRecord(
         predicted_effect=predicted,
         true_effect=truth,
-        ci_lower=ci_lower,
-        ci_upper=ci_upper,
+        ci_lower=interval.ci_lower if interval.interval_aligned else None,
+        ci_upper=interval.ci_upper if interval.interval_aligned else None,
         significant=significant,
         failed=failed,
         failure_type="non_finite_estimate" if failed else None,
@@ -348,6 +259,12 @@ def _run_simulation(
         intervals_unavailable_reason=interval_reason
         if config.intervals_expected and not intervals_available
         else None,
+        point_estimand=interval.point_estimand,
+        interval_estimand=interval.interval_estimand,
+        interval_scale=interval.interval_scale,
+        interval_aligned=interval.interval_aligned,
+        significance_estimand=interval.significance_estimand,
+        significance_aligned=interval.significance_aligned,
     )
 
 
@@ -420,6 +337,7 @@ class RecoveryRunner:
         payload = result.to_dict()
         payload["runtime_seconds"] = float(elapsed)
         payload["scored_target_estimand"] = SCORED_TARGET_ESTIMAND
+        payload["point_estimand"] = payload.get("point_estimand", POINT_ESTIMAND)
         payload["predicted_effect_scoring"] = PREDICTED_EFFECT_SCORING
         payload["recovery_config"] = config.config_name
         payload["inference_mode"] = config.inference
