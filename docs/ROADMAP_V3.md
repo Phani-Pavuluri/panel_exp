@@ -94,6 +94,8 @@ Prioritized for **algorithm/statistical validity** only.
 
 **Sequence:** Phase 5 (production calibration) → Phase 6 (DID interval policy) → Phase 7 (review flags) → Phase 8 (focused re-audit).
 
+**Phase 5 status:** `run_production_nominal_calibration()` in `panel_exp/validation/production_nominal_calibration.py` — production defaults n=100, seeds (0,1,2); CI uses small n via tests only.
+
 **Scope lock:** no new estimators, inference modes, or artifacts in Phases 5–8.
 
 ---

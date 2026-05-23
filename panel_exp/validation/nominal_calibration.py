@@ -48,15 +48,52 @@ def _interval_aligned_from_payload(payload: Mapping[str, Any]) -> bool:
     return bool(payload.get("intervals_expected"))
 
 
-def _eligible_for_nominal_calibration(
+def interval_aligned_from_payload(payload: Mapping[str, Any]) -> bool:
+    """True when recovery reported relative_att_post intervals (not DID cumulative)."""
+    return _interval_aligned_from_payload(payload)
+
+
+def payload_eligible_for_nominal_calibration(
     estimator_config: str,
     payload: Mapping[str, Any],
 ) -> bool:
+    """True when config and payload support nominal relative-ATT calibration."""
     if not is_nominal_calibration_eligible_config(estimator_config):
         return False
     if not payload.get("intervals_expected"):
         return False
     return _interval_aligned_from_payload(payload)
+
+
+def ineligible_reason_for_calibration(
+    estimator_config: str,
+    payload: Mapping[str, Any],
+) -> str:
+    """Human-readable skip reason when ``payload_eligible_for_nominal_calibration`` is False."""
+    interval_est = str(payload.get("interval_estimand", "unknown"))
+    if interval_est not in (
+        "unknown",
+        "unavailable",
+        INTERVAL_ESTIMAND_RELATIVE_ATT_POST,
+    ):
+        return "interval_estimand_mismatch"
+    if not is_nominal_calibration_eligible_config(estimator_config):
+        return "not_in_nominal_calibration_registry"
+    if not payload.get("intervals_expected"):
+        return "intervals_not_expected"
+    if not _interval_aligned_from_payload(payload):
+        reason = payload.get("coverage_unavailable_reason") or ""
+        if "interval_estimand_mismatch" in reason:
+            return "interval_estimand_mismatch"
+        return "interval_not_aligned"
+    return "eligible"
+
+
+def _eligible_for_nominal_calibration(
+    estimator_config: str,
+    payload: Mapping[str, Any],
+) -> bool:
+    return payload_eligible_for_nominal_calibration(estimator_config, payload)
 
 
 def _build_warnings(
@@ -196,6 +233,9 @@ def run_nominal_calibration_check(
 
 __all__ = [
     "NOMINAL_CALIBRATION_ELIGIBLE_CONFIGS",
+    "ineligible_reason_for_calibration",
+    "interval_aligned_from_payload",
     "is_nominal_calibration_eligible_config",
+    "payload_eligible_for_nominal_calibration",
     "run_nominal_calibration_check",
 ]
