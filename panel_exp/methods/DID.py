@@ -239,6 +239,7 @@ class DID(ImpactAnalyzer):
         panel_data,
         multiple_treated="pooled",
         allow_pretrend_violation: bool = False,
+        run_estimator_diagnostics: bool = False,
         **kwargs,
     ):
         self.panel_data = panel_data
@@ -381,6 +382,10 @@ class DID(ImpactAnalyzer):
         if warning:
             warnings.warn(str(warning), UserWarning, stacklevel=2)
 
+        if run_estimator_diagnostics:
+            from panel_exp.diagnostics.estimator_diagnostics import attach_estimator_diagnostics
+
+            attach_estimator_diagnostics(self)
         return self.results
 
     def _build_did_pretrend_contract(

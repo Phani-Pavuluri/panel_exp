@@ -70,6 +70,7 @@ class ImpactAnalyzer(ABC):
     def run_analysis(
         self,
         panel_data: PanelDataset,
+        run_estimator_diagnostics: bool = False,
         **inference_kwargs,
     ) -> Dict:
         """
@@ -79,6 +80,9 @@ class ImpactAnalyzer(ABC):
 
         :param panel_data: PanelDataset
             The panel data to be analyzed.
+        :param run_estimator_diagnostics: bool
+            When True, attach ``results["estimator_diagnostics"]`` after inference.
+            Default False preserves legacy exact ``results`` key sets.
         :param inference_kwargs: dict
             Additional arguments for inference.
         
@@ -93,6 +97,10 @@ class ImpactAnalyzer(ABC):
             panel_data,
             inference_kwargs,
         )
+        if run_estimator_diagnostics:
+            from panel_exp.diagnostics.estimator_diagnostics import attach_estimator_diagnostics
+
+            attach_estimator_diagnostics(self)
         return self.results
 
     @property

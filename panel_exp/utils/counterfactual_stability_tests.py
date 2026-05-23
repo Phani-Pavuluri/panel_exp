@@ -18,7 +18,7 @@ import pandas as pd
 from scipy import stats
 
 from panel_exp.panel_data import PanelDataset, TimePeriod
-from panel_exp.methods.scm import AugSynthCVXPY, SyntheticControlCVXPY
+from panel_exp.methods.scm import AugSynthCVXPY, SyntheticControl, SyntheticControlCVXPY
 from panel_exp.methods.tbr import TBR, TBRRidge
 
 
@@ -336,6 +336,7 @@ def _default_fit_predict(estimator: EstimatorName, pds: PanelDataset) -> Mapping
     """
     estimator_map = {
         "AugSynthCVXPY": AugSynthCVXPY,
+        "SyntheticControl": SyntheticControl,
         "SyntheticControlCVXPY": SyntheticControlCVXPY,
         "TBR": TBR,
         "TBRRidge": TBRRidge,
