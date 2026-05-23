@@ -42,8 +42,8 @@ ESTIMATOR_RECOVERY_SCENARIOS: Dict[str, Tuple[str, ...]] = {
         "recovery_missing_outcomes",
     ),
     "SyntheticDID": (
-        "sdid_staggered_timing",
-        "sdid_varying_timing",
+        "sdid_staggered_adoption",
+        "sdid_seasonal_heterogeneity",
     ),
     "TROP": (
         "trop_sparse_donors",
@@ -69,6 +69,7 @@ def _base(name: str, **overrides) -> SyntheticScenario:
         cross_geo_correlation=0.4,
         outlier_probability=0.0,
         missing_probability=0.0,
+        missingness_policy="none",
         spillover_strength=0.0,
         heterogeneous_effects=False,
         random_state=0,
@@ -113,6 +114,7 @@ RECOVERY_SCENARIO_REGISTRY: Dict[str, SyntheticScenario] = {
         "scm_missing_outcomes",
         true_effect=0.10,
         missing_probability=0.06,
+        missingness_policy="fill_zero",
         noise_scale=0.6,
     ),
     "scm_multi_treated": _base(
@@ -127,6 +129,7 @@ RECOVERY_SCENARIO_REGISTRY: Dict[str, SyntheticScenario] = {
         "recovery_missing_outcomes",
         true_effect=0.10,
         missing_probability=0.05,
+        missingness_policy="fill_zero",
         noise_scale=0.6,
     ),
     "tbr_multi_treated": _base(
@@ -190,22 +193,25 @@ RECOVERY_SCENARIO_REGISTRY: Dict[str, SyntheticScenario] = {
         true_effect=0.10,
         heterogeneous_effects=True,
     ),
-    "sdid_staggered_timing": _base(
-        "sdid_staggered_timing",
+    "sdid_staggered_adoption": _base(
+        "sdid_staggered_adoption",
         n_geos=14,
         n_periods=45,
         treatment_start=30,
         true_effect=0.10,
         heterogeneous_effects=True,
-        treatment_timing="staggered_declared",
+        treated_units=("geo_0", "geo_1", "geo_2"),
+        treatment_timing="staggered",
+        staggered_starts=(30, 33, 36),
     ),
-    "sdid_varying_timing": _base(
-        "sdid_varying_timing",
+    "sdid_seasonal_heterogeneity": _base(
+        "sdid_seasonal_heterogeneity",
         n_geos=12,
         n_periods=42,
         treatment_start=28,
         true_effect=0.08,
         seasonality_amplitude=2.0,
+        treatment_timing="simultaneous",
     ),
     "trop_sparse_donors": _base(
         "trop_sparse_donors",
@@ -225,28 +231,30 @@ RECOVERY_SCENARIO_REGISTRY: Dict[str, SyntheticScenario] = {
         outlier_probability=0.02,
         cross_geo_correlation=0.1,
     ),
-    "recovery_null_effect": _base("recovery_null_effect", true_effect=0.0),
+    "recovery_null_effect": _base(
+        "recovery_null_effect",
+        true_effect=0.0,
+        missingness_policy="none",
+    ),
     "recovery_positive_effect": _base(
-        "recovery_positive_effect", true_effect=0.10
+        "recovery_positive_effect",
+        true_effect=0.10,
+        missingness_policy="none",
     ),
 }
 
 # Recovery-runner support notes (DGP may exist but PanelDataset / estimators may not).
 SCENARIO_RECOVERY_SUPPORT: Dict[str, Dict[str, Any]] = {
-    "sdid_staggered_timing": {
+    "sdid_staggered_adoption": {
         "recovery_supported": False,
         "skip_reason": (
-            "SyntheticWorld.generate uses a single treatment_start for all treated "
-            "geos; staggered adoption requires per-geo TimePeriods not produced by "
-            "the current DGP. SyntheticDID recovery is not wired in RecoveryRunner."
+            "Staggered DGP is supported (per-unit treatment_start_by_unit), but "
+            "SyntheticDID recovery configs are not registered in RecoveryRunner."
         ),
     },
-    "sdid_varying_timing": {
+    "sdid_seasonal_heterogeneity": {
         "recovery_supported": False,
-        "skip_reason": (
-            "Same as sdid_staggered_timing: simultaneous panel conversion only; "
-            "SDID recovery configs are not registered."
-        ),
+        "skip_reason": "SyntheticDID recovery configs are not registered in RecoveryRunner.",
     },
 }
 

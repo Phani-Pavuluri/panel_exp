@@ -81,13 +81,15 @@ def test_multi_treated_scenario_metadata():
 
 
 def test_staggered_scenario_explicitly_unsupported_for_recovery():
-    support = get_scenario_recovery_support("sdid_staggered_timing")
+    support = get_scenario_recovery_support("sdid_staggered_adoption")
     assert support["recovery_supported"] is False
     assert support["skip_reason"]
-    assert "staggered" in support["skip_reason"].lower()
-    scenario = get_recovery_scenario("sdid_staggered_timing")
-    assert scenario.treatment_timing == "staggered_declared"
-    assert "sdid_staggered_timing" not in ESTIMATOR_RECOVERY_SCENARIOS.get(
+    scenario = get_recovery_scenario("sdid_staggered_adoption")
+    assert scenario.treatment_timing == "staggered"
+    world = SyntheticWorld.generate(scenario)
+    starts = world.truth["treatment_start_by_unit"]
+    assert len({starts[u] for u in world.truth["treated_units"]}) > 1
+    assert "sdid_staggered_adoption" not in ESTIMATOR_RECOVERY_SCENARIOS.get(
         "SCM", ()
     )
 
