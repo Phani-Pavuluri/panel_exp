@@ -1,6 +1,6 @@
 # panel_exp roadmap v3 (post interval/DGP cleanup)
 
-**Status:** living document  
+**Status:** frozen (execution order in `docs/ROADMAP_V3_EXECUTION_ORDER.md`)  
 **Last reviewed:** 2026-05-20  
 **Supersedes:** `docs/ROADMAP_V2.md` (priority ordering and open gates)  
 **Inputs:**
@@ -88,11 +88,21 @@ Prioritized for **algorithm/statistical validity** only.
 
 ---
 
-## 4. Top 3 next PRs only
+## 4. Approved execution order (Phases 5–8)
+
+**Frozen:** see [`docs/ROADMAP_V3_EXECUTION_ORDER.md`](ROADMAP_V3_EXECUTION_ORDER.md) for objectives, acceptance criteria, dependencies, CI impact, blockers, and deferred work. **Do not implement** until that sequence is explicitly picked up in a phase-scoped PR.
+
+**Sequence:** Phase 5 (production calibration) → Phase 6 (DID interval policy) → Phase 7 (review flags) → Phase 8 (focused re-audit).
+
+**Scope lock:** no new estimators, inference modes, or artifacts in Phases 5–8.
+
+---
+
+## 4a. Top 3 next PRs (maps to Phases 5–7)
 
 Ordered by **validity per engineering week**. Specs only — no code here.
 
-### PR 1 — Production-scale nominal calibration job (aligned configs only)
+### PR 1 — Production-scale nominal calibration job (aligned configs only) → **Phase 5**
 
 | Dimension | Detail |
 |-----------|--------|
@@ -101,7 +111,7 @@ Ordered by **validity per engineering week**. Specs only — no code here.
 | **Out of scope** | `DID_Bootstrap` until relative-ATT intervals exist |
 | **Validation** | Nightly or manual job artifact; assert FPR ≤ 0.10, coverage ≥ 0.90 on null **or** explicit “insufficient n / failed” — not NaN silence |
 
-### PR 2 — Relative-ATT interval path for DID (or exclude DID from interval calibration claims)
+### PR 2 — Relative-ATT interval path for DID (or exclude DID from interval calibration claims) → **Phase 6**
 
 | Dimension | Detail |
 |-----------|--------|
@@ -109,7 +119,7 @@ Ordered by **validity per engineering week**. Specs only — no code here.
 | **Risk reduced** | Interval estimand mismatch (now gated but blocks DID calibration entirely) |
 | **Validation** | `DID_Bootstrap` becomes eligible for nominal check **only if** (a); else card/calibration docs state cumulative scale |
 
-### PR 3 — Default optional counterfactual stability summary (SCM/TBRRidge, point inference only)
+### PR 3 — Default optional counterfactual stability summary (SCM/TBRRidge, point inference only) → **Phase 7**
 
 | Dimension | Detail |
 |-----------|--------|
@@ -181,9 +191,9 @@ Stop scheduling these as near-term statistical-validity work.
 - Spillover-adjusted ATT in core estimators  
 - Unattended “certified causal effect” language in user-facing docs  
 
-### 6.4 Audit questions for v4
+### 6.4 Audit questions for v4 → **Phase 8**
 
-When re-running assessment, answer:
+When re-running assessment (focused mini-audit only; see execution order doc), answer:
 
 1. Did n≥100 calibration runs happen and get archived?  
 2. Is DID either calibratable on relative ATT or explicitly excluded from interval claims?  
@@ -207,4 +217,4 @@ When re-running assessment, answer:
 
 ---
 
-*Read-only roadmap. Supersedes v2 priority ordering for statistical work; does not modify estimator code or maturity labels.*
+*Roadmap frozen for Phases 5–8 execution order. Supersedes v2 priority ordering for statistical work; does not modify estimator code or maturity labels. Implementation: `docs/ROADMAP_V3_EXECUTION_ORDER.md`.*
