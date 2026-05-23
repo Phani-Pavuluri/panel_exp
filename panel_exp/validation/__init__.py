@@ -22,6 +22,11 @@ from panel_exp.validation.metrics import (
     aggregate_outcomes,
 )
 from panel_exp.validation.recovery_metrics import RecoveryResult, SimulationRecord
+from panel_exp.validation.nominal_calibration import (
+    NOMINAL_CALIBRATION_ELIGIBLE_CONFIGS,
+    is_nominal_calibration_eligible_config,
+    run_nominal_calibration_check,
+)
 from panel_exp.validation.recovery_runner import (
     RecoveryRunner,
     merge_validation_metadata,
@@ -83,6 +88,9 @@ __all__ = [
     "get_recovery_scenario",
     "get_scenario",
     "merge_validation_metadata",
+    "NOMINAL_CALIBRATION_ELIGIBLE_CONFIGS",
+    "is_nominal_calibration_eligible_config",
+    "run_nominal_calibration_check",
     "run_estimator_validation",
     "run_recovery_battery",
     "run_scenario_validation",
