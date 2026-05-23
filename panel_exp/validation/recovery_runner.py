@@ -5,15 +5,18 @@ Recovery validation runner: Monte Carlo synthetic truth experiments per estimato
 from __future__ import annotations
 
 import time
-from dataclasses import replace
-from typing import Any, Dict, List, Mapping, Optional, Sequence, Type, Union
+from dataclasses import dataclass, field, replace
+from typing import Any, Callable, Dict, List, Mapping, Optional, Sequence, Tuple, Type, Union
 
+import numpy as np
+
+from panel_exp.panel_data import PanelDataset
+from panel_exp.spec import TargetEstimand
 from panel_exp.validation.recovery_metrics import (
     SimulationRecord,
     aggregate_recovery_metrics,
 )
 from panel_exp.validation.runner import (
-    EstimatorConfig,
     _is_significant,
     _path_relative_att,
     _relative_ci,
@@ -23,7 +26,6 @@ from panel_exp.validation.synthetic_scenarios import (
     get_recovery_scenario,
     scenarios_for_estimator,
 )
-from panel_exp.spec import TargetEstimand
 from panel_exp.validation.synthetic_world import SyntheticScenario, SyntheticWorld
 
 EstimatorInput = Union[str, Type[Any]]
@@ -33,27 +35,130 @@ SCORED_TARGET_ESTIMAND = TargetEstimand.RELATIVE_ATT_POST.value
 PREDICTED_EFFECT_SCORING = "_path_relative_att"
 
 
-def _extended_estimator_configs() -> Dict[str, EstimatorConfig]:
-    """Built-in configs plus TBRRidge alias and TROP (validation-only wiring)."""
-    specs = {c.estimator_name: c for c in default_estimator_configs()}
+@dataclass(frozen=True)
+class RecoveryEstimatorConfig:
+    """Recovery battery config (point estimate or inference-enabled)."""
+
+    config_name: str
+    estimator_name: str
+    factory: Callable[[], Any]
+    inference: Optional[str] = None
+    run_kwargs: Dict[str, Any] = field(default_factory=dict)
+    supports_significance: bool = False
+    intervals_expected: bool = False
+    significance_from_ci: bool = False
+
+
+def _point_estimate_configs() -> Dict[str, RecoveryEstimatorConfig]:
+    """Existing fast defaults (inference=None)."""
+    out: Dict[str, RecoveryEstimatorConfig] = {}
+    for cfg in default_estimator_configs():
+        out[cfg.estimator_name] = RecoveryEstimatorConfig(
+            config_name=cfg.estimator_name,
+            estimator_name=cfg.estimator_name,
+            factory=cfg.factory,
+            inference=cfg.inference,
+            run_kwargs=dict(cfg.run_kwargs),
+            supports_significance=cfg.supports_significance,
+            intervals_expected=False,
+            significance_from_ci=False,
+        )
+    return out
+
+
+def _inference_recovery_configs() -> Dict[str, RecoveryEstimatorConfig]:
+    """Separate inference-enabled configs for calibration (small n for CI speed)."""
+    from panel_exp.methods.DID import DID
+    from panel_exp.methods.scm import SyntheticControl
+    from panel_exp.methods.tbr import TBRRidge
+
+    def _did_bootstrap_factory() -> DID:
+        did = DID()
+        did.n_bootstrap = 30
+        did.bootstrap_block_size = 6
+        return did
+
+    return {
+        "SCM_UnitJackKnife": RecoveryEstimatorConfig(
+            config_name="SCM_UnitJackKnife",
+            estimator_name="SCM",
+            factory=lambda: SyntheticControl(inference="UnitJackKnife", alpha=0.05),
+            inference="UnitJackKnife",
+            run_kwargs={},
+            supports_significance=True,
+            intervals_expected=True,
+            significance_from_ci=True,
+        ),
+        "TBRRidge_Kfold": RecoveryEstimatorConfig(
+            config_name="TBRRidge_Kfold",
+            estimator_name="TBRRidge",
+            factory=lambda: TBRRidge(inference="Kfold", alpha=0.05),
+            inference="Kfold",
+            run_kwargs={},
+            supports_significance=True,
+            intervals_expected=True,
+            significance_from_ci=True,
+        ),
+        "TBRRidge_BlockResidualBootstrap": RecoveryEstimatorConfig(
+            config_name="TBRRidge_BlockResidualBootstrap",
+            estimator_name="TBRRidge",
+            factory=lambda: TBRRidge(
+                inference="BlockResidualBootstrap", alpha=0.05
+            ),
+            inference="BlockResidualBootstrap",
+            run_kwargs={
+                "n_bootstrap": 25,
+                "block_length": 6,
+                "min_train_periods": 8,
+                "show_progress": False,
+                "random_state": 0,
+            },
+            supports_significance=True,
+            intervals_expected=True,
+            significance_from_ci=True,
+        ),
+        "DID_Bootstrap": RecoveryEstimatorConfig(
+            config_name="DID_Bootstrap",
+            estimator_name="DID",
+            factory=_did_bootstrap_factory,
+            inference="bootstrap",
+            run_kwargs={"multiple_treated": "pooled"},
+            supports_significance=True,
+            intervals_expected=True,
+            significance_from_ci=False,
+        ),
+    }
+
+
+def all_recovery_configs() -> Dict[str, RecoveryEstimatorConfig]:
+    """Point-estimate and inference-enabled recovery configs keyed by config name."""
+    specs = _point_estimate_configs()
     from panel_exp.methods.tbr import TBRRidge
     from panel_exp.methods.triply_robust_est import TROP
 
-    specs["TBRRidge"] = EstimatorConfig(
+    specs["TBRRidge"] = RecoveryEstimatorConfig(
+        config_name="TBRRidge",
         estimator_name="TBRRidge",
         factory=lambda: TBRRidge(inference=None, alpha=0.05),
         inference=None,
         run_kwargs={},
         supports_significance=False,
+        intervals_expected=False,
+        significance_from_ci=False,
     )
-    specs["TBR"] = EstimatorConfig(
-        estimator_name="TBR",
-        factory=lambda: TBRRidge(inference=None, alpha=0.05),
-        inference=None,
-        run_kwargs={},
-        supports_significance=False,
-    )
-    specs["TROP"] = EstimatorConfig(
+    if "TBR" not in specs:
+        specs["TBR"] = RecoveryEstimatorConfig(
+            config_name="TBR",
+            estimator_name="TBR",
+            factory=lambda: TBRRidge(inference=None, alpha=0.05),
+            inference=None,
+            run_kwargs={},
+            supports_significance=False,
+            intervals_expected=False,
+            significance_from_ci=False,
+        )
+    specs["TROP"] = RecoveryEstimatorConfig(
+        config_name="TROP",
         estimator_name="TROP",
         factory=lambda: TROP(alpha=0.05),
         inference=None,
@@ -67,8 +172,112 @@ def _extended_estimator_configs() -> Dict[str, EstimatorConfig]:
             "show_progress": False,
         },
         supports_significance=False,
+        intervals_expected=False,
+        significance_from_ci=False,
     )
+    specs.update(_inference_recovery_configs())
     return specs
+
+
+def _extended_estimator_configs() -> Dict[str, RecoveryEstimatorConfig]:
+    """Backward-compatible alias for tests and callers expecting extended specs."""
+    return all_recovery_configs()
+
+
+def _align_post_series(
+    y: np.ndarray,
+    y_hat: np.ndarray,
+    y_lower: np.ndarray,
+    y_upper: np.ndarray,
+    panel: PanelDataset,
+) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """Align y / bounds to post-period 1d series (pooled over treated units when 2d)."""
+    if y.ndim == 2:
+        y = np.nanmean(y, axis=1)
+        y_hat = np.nanmean(y_hat, axis=1)
+        y_lower = np.nanmean(y_lower, axis=1)
+        y_upper = np.nanmean(y_upper, axis=1)
+    y = y.ravel()
+    y_hat = y_hat.ravel()
+    y_lower = y_lower.ravel()
+    y_upper = y_upper.ravel()
+
+    start = panel.treated_start_idxs[0]
+    n_times = panel.num_timepoints
+    n_post = n_times - start
+
+    if len(y) == n_times and len(y_hat) == n_times:
+        return y[start:], y_hat[start:], y_lower[start:], y_upper[start:]
+    if len(y_hat) == n_post:
+        y_post = y[start:] if len(y) == n_times else y[-n_post:]
+        return y_post, y_hat, y_lower, y_upper
+    n_align = min(len(y), len(y_hat), len(y_lower), len(y_upper), n_post)
+    return y[-n_align:], y_hat[-n_align:], y_lower[-n_align:], y_upper[-n_align:]
+
+
+def _recovery_relative_ci(
+    estimator,
+    panel: PanelDataset,
+) -> Tuple[Optional[float], Optional[float], Optional[str]]:
+    """
+    Relative post-period CI for recovery scoring.
+
+    Uses treatment_ci when present (DID bootstrap), else path intervals from results.
+    """
+    lo, hi = _relative_ci(estimator, panel)
+    if lo is not None and hi is not None:
+        return lo, hi, None
+
+    results = getattr(estimator, "results", None) or {}
+    y = np.asarray(results.get("y", []), dtype=float)
+    y_hat = np.asarray(results.get("y_hat", []), dtype=float)
+    y_lo = np.asarray(results.get("y_lower", []), dtype=float)
+    y_hi = np.asarray(results.get("y_upper", []), dtype=float)
+    if y.size == 0 or y_hat.size == 0 or y_lo.size == 0 or y_hi.size == 0:
+        return None, None, "no_path_intervals_in_results"
+
+    try:
+        y_post, yh_post, yl_post, yu_post = _align_post_series(
+            y, y_hat, y_lo, y_hi, panel
+        )
+    except Exception:
+        return None, None, "path_interval_alignment_failed"
+
+    mask = (
+        np.isfinite(y_post)
+        & np.isfinite(yh_post)
+        & np.isfinite(yl_post)
+        & np.isfinite(yu_post)
+        & (yh_post != 0)
+    )
+    if not np.any(mask):
+        return None, None, "no_finite_post_periods"
+
+    rel_lo = (y_post[mask] - yu_post[mask]) / yh_post[mask]
+    rel_hi = (y_post[mask] - yl_post[mask]) / yh_post[mask]
+    if not (np.any(np.isfinite(rel_lo)) and np.any(np.isfinite(rel_hi))):
+        return None, None, "non_finite_relative_interval"
+    return float(np.nanmean(rel_lo)), float(np.nanmean(rel_hi)), None
+
+
+def _recovery_significance(
+    estimator,
+    panel: PanelDataset,
+    *,
+    alpha: float,
+    config: RecoveryEstimatorConfig,
+    ci_lower: Optional[float],
+    ci_upper: Optional[float],
+) -> Optional[bool]:
+    if not config.supports_significance:
+        return None
+    pvalue_sig = _is_significant(estimator, alpha)
+    if pvalue_sig is not None:
+        return pvalue_sig
+    if config.significance_from_ci and ci_lower is not None and ci_upper is not None:
+        if np.isfinite(ci_lower) and np.isfinite(ci_upper):
+            return bool(ci_lower > 0.0 or ci_upper < 0.0)
+    return None
 
 
 def _resolve_estimator_name(estimator: EstimatorInput) -> str:
@@ -79,8 +288,14 @@ def _resolve_estimator_name(estimator: EstimatorInput) -> str:
     return get_method_registry().metadata_for_class(estimator.__name__).name
 
 
+def _resolve_config_key(estimator: EstimatorInput) -> str:
+    if isinstance(estimator, str) and estimator in all_recovery_configs():
+        return estimator
+    return _resolve_estimator_name(estimator)
+
+
 def _run_simulation(
-    config: EstimatorConfig,
+    config: RecoveryEstimatorConfig,
     world: SyntheticWorld,
     *,
     alpha: float = 0.05,
@@ -90,25 +305,48 @@ def _run_simulation(
         estimator = config.factory()
         panel = world.to_panel_dataset()
         estimator.run_analysis(panel, **config.run_kwargs)
-    except Exception:
+    except Exception as exc:
+        exc_type = type(exc).__name__
         return SimulationRecord(
             predicted_effect=float("nan"),
             true_effect=truth,
+            failed=True,
+            failure_type=exc_type,
+            failure_message=str(exc),
+            intervals_available=False,
+            intervals_unavailable_reason=f"run_failed:{exc_type}",
         )
 
     predicted = _path_relative_att(estimator, panel)
-    ci_lower, ci_upper = _relative_ci(estimator, panel)
-    significant = (
-        _is_significant(estimator, alpha=alpha)
-        if config.supports_significance
-        else None
+    ci_lower, ci_upper, interval_reason = _recovery_relative_ci(estimator, panel)
+    intervals_available = (
+        ci_lower is not None
+        and ci_upper is not None
+        and np.isfinite(ci_lower)
+        and np.isfinite(ci_upper)
     )
+    significant = _recovery_significance(
+        estimator,
+        panel,
+        alpha=alpha,
+        config=config,
+        ci_lower=ci_lower,
+        ci_upper=ci_upper,
+    )
+    failed = not np.isfinite(predicted)
     return SimulationRecord(
         predicted_effect=predicted,
         true_effect=truth,
         ci_lower=ci_lower,
         ci_upper=ci_upper,
         significant=significant,
+        failed=failed,
+        failure_type="non_finite_estimate" if failed else None,
+        failure_message="non-finite predicted_effect" if failed else None,
+        intervals_available=intervals_available if config.intervals_expected else None,
+        intervals_unavailable_reason=interval_reason
+        if config.intervals_expected and not intervals_available
+        else None,
     )
 
 
@@ -119,7 +357,8 @@ class RecoveryRunner:
     Parameters
     ----------
     estimator : str or estimator class
-        Registry name (e.g. ``SCM``, ``TBRRidge``) or ImpactAnalyzer subclass.
+        Registry name (e.g. ``SCM``, ``TBRRidge``) or config name
+        (e.g. ``SCM_UnitJackKnife``).
     scenario : str or SyntheticScenario
         Recovery scenario name or explicit scenario spec.
     n_simulations : int
@@ -138,6 +377,7 @@ class RecoveryRunner:
         alpha: float = 0.05,
         replication_seed_step: int = 1,
     ) -> None:
+        self.config_key = _resolve_config_key(estimator)
         self.estimator_name = _resolve_estimator_name(estimator)
         if isinstance(scenario, str):
             self.scenario_name = scenario
@@ -151,13 +391,13 @@ class RecoveryRunner:
         self.replication_seed_step = replication_seed_step
 
     def run(self) -> Dict[str, Any]:
-        specs = _extended_estimator_configs()
-        if self.estimator_name not in specs:
+        specs = all_recovery_configs()
+        if self.config_key not in specs:
             raise KeyError(
-                f"Estimator {self.estimator_name!r} not wired for recovery runs. "
+                f"Recovery config {self.config_key!r} not wired. "
                 f"Known: {sorted(specs)}"
             )
-        config = specs[self.estimator_name]
+        config = specs[self.config_key]
 
         t0 = time.perf_counter()
         records: List[SimulationRecord] = []
@@ -168,15 +408,19 @@ class RecoveryRunner:
             records.append(_run_simulation(config, world, alpha=self.alpha))
 
         result = aggregate_recovery_metrics(
-            estimator=self.estimator_name,
+            estimator=config.config_name,
             scenario=self.scenario_name,
             records=records,
+            intervals_expected=config.intervals_expected,
         )
         elapsed = time.perf_counter() - t0
         payload = result.to_dict()
         payload["runtime_seconds"] = float(elapsed)
         payload["scored_target_estimand"] = SCORED_TARGET_ESTIMAND
         payload["predicted_effect_scoring"] = PREDICTED_EFFECT_SCORING
+        payload["recovery_config"] = config.config_name
+        payload["inference_mode"] = config.inference
+        payload["intervals_expected"] = config.intervals_expected
         return payload
 
 
@@ -238,6 +482,10 @@ def merge_validation_metadata(
 
 __all__ = [
     "RecoveryRunner",
+    "RecoveryEstimatorConfig",
+    "all_recovery_configs",
     "merge_validation_metadata",
     "run_recovery_battery",
+    "SCORED_TARGET_ESTIMAND",
+    "PREDICTED_EFFECT_SCORING",
 ]
