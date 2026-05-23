@@ -24,6 +24,7 @@ from panel_exp.validation.runner import (
 )
 from panel_exp.validation.synthetic_scenarios import (
     get_recovery_scenario,
+    get_scenario_recovery_support,
     scenarios_for_estimator,
 )
 from panel_exp.validation.synthetic_world import SyntheticScenario, SyntheticWorld
@@ -401,10 +402,12 @@ class RecoveryRunner:
 
         t0 = time.perf_counter()
         records: List[SimulationRecord] = []
+        last_world: Optional[SyntheticWorld] = None
         for i in range(self.n_simulations):
             seed = self.random_state + i * self.replication_seed_step
             sc = replace(self._scenario_template, random_state=seed)
             world = SyntheticWorld.generate(sc)
+            last_world = world
             records.append(_run_simulation(config, world, alpha=self.alpha))
 
         result = aggregate_recovery_metrics(
@@ -421,6 +424,18 @@ class RecoveryRunner:
         payload["recovery_config"] = config.config_name
         payload["inference_mode"] = config.inference
         payload["intervals_expected"] = config.intervals_expected
+        payload["scenario_recovery_support"] = get_scenario_recovery_support(
+            self.scenario_name
+        )
+        if last_world is not None:
+            dgp_meta = last_world.panel_conversion_metadata()
+            donor = last_world.truth.get("donor_correlation_summary") or {}
+            if isinstance(donor, dict):
+                dgp_meta = {**dgp_meta, **donor}
+            param = last_world.truth.get("cross_geo_correlation_param")
+            if param is not None:
+                dgp_meta["cross_geo_correlation_param"] = param
+            payload["scenario_dgp_metadata"] = dgp_meta
         return payload
 
 

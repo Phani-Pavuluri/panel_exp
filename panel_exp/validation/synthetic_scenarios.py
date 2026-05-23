@@ -9,7 +9,7 @@ estimator implementations.
 from __future__ import annotations
 
 from dataclasses import replace
-from typing import Dict, List, Mapping, Sequence, Tuple
+from typing import Any, Dict, List, Mapping, Sequence, Tuple
 
 from panel_exp.validation.synthetic_world import SyntheticScenario
 
@@ -18,6 +18,10 @@ ESTIMATOR_RECOVERY_SCENARIOS: Dict[str, Tuple[str, ...]] = {
         "scm_low_signal",
         "scm_trend_mismatch",
         "scm_donor_contamination",
+        "scm_high_collinearity",
+        "scm_structural_break",
+        "scm_missing_outcomes",
+        "scm_multi_treated",
     ),
     "DID": (
         "did_parallel_trends_holds",
@@ -27,11 +31,15 @@ ESTIMATOR_RECOVERY_SCENARIOS: Dict[str, Tuple[str, ...]] = {
         "tbr_seasonality",
         "tbr_outliers",
         "tbr_varying_lift",
+        "tbr_multi_treated",
+        "recovery_missing_outcomes",
     ),
     "TBRRidge": (
         "tbrridge_seasonality",
         "tbrridge_outliers",
         "tbrridge_varying_lift",
+        "tbrridge_multi_treated",
+        "recovery_missing_outcomes",
     ),
     "SyntheticDID": (
         "sdid_staggered_timing",
@@ -87,10 +95,57 @@ RECOVERY_SCENARIO_REGISTRY: Dict[str, SyntheticScenario] = {
         true_effect=0.10,
         spillover_strength=0.35,
     ),
+    "scm_high_collinearity": _base(
+        "scm_high_collinearity",
+        n_geos=24,
+        true_effect=0.10,
+        cross_geo_correlation=0.98,
+        noise_scale=0.25,
+        autocorrelation=0.5,
+    ),
     "scm_structural_break": _base(
         "scm_structural_break",
         true_effect=0.10,
-        outlier_probability=0.03,
+        structural_break_shift=18.0,
+        outlier_probability=0.01,
+    ),
+    "scm_missing_outcomes": _base(
+        "scm_missing_outcomes",
+        true_effect=0.10,
+        missing_probability=0.06,
+        noise_scale=0.6,
+    ),
+    "scm_multi_treated": _base(
+        "scm_multi_treated",
+        n_geos=20,
+        true_effect=0.10,
+        treated_units=("geo_0", "geo_1", "geo_2", "geo_3"),
+        treatment_timing="simultaneous",
+        cross_geo_correlation=0.35,
+    ),
+    "recovery_missing_outcomes": _base(
+        "recovery_missing_outcomes",
+        true_effect=0.10,
+        missing_probability=0.05,
+        noise_scale=0.6,
+    ),
+    "tbr_multi_treated": _base(
+        "tbr_multi_treated",
+        n_geos=16,
+        n_periods=45,
+        treatment_start=32,
+        true_effect=0.10,
+        treated_units=("geo_0", "geo_1", "geo_2"),
+        treatment_timing="simultaneous",
+    ),
+    "tbrridge_multi_treated": _base(
+        "tbrridge_multi_treated",
+        n_geos=16,
+        n_periods=45,
+        treatment_start=32,
+        true_effect=0.10,
+        treated_units=("geo_0", "geo_1", "geo_2"),
+        treatment_timing="simultaneous",
     ),
     "did_parallel_trends_holds": _base(
         "did_parallel_trends_holds",
@@ -142,6 +197,7 @@ RECOVERY_SCENARIO_REGISTRY: Dict[str, SyntheticScenario] = {
         treatment_start=30,
         true_effect=0.10,
         heterogeneous_effects=True,
+        treatment_timing="staggered_declared",
     ),
     "sdid_varying_timing": _base(
         "sdid_varying_timing",
@@ -174,6 +230,38 @@ RECOVERY_SCENARIO_REGISTRY: Dict[str, SyntheticScenario] = {
         "recovery_positive_effect", true_effect=0.10
     ),
 }
+
+# Recovery-runner support notes (DGP may exist but PanelDataset / estimators may not).
+SCENARIO_RECOVERY_SUPPORT: Dict[str, Dict[str, Any]] = {
+    "sdid_staggered_timing": {
+        "recovery_supported": False,
+        "skip_reason": (
+            "SyntheticWorld.generate uses a single treatment_start for all treated "
+            "geos; staggered adoption requires per-geo TimePeriods not produced by "
+            "the current DGP. SyntheticDID recovery is not wired in RecoveryRunner."
+        ),
+    },
+    "sdid_varying_timing": {
+        "recovery_supported": False,
+        "skip_reason": (
+            "Same as sdid_staggered_timing: simultaneous panel conversion only; "
+            "SDID recovery configs are not registered."
+        ),
+    },
+}
+
+
+def get_scenario_recovery_support(scenario_name: str) -> Dict[str, Any]:
+    """Whether a scenario can be run end-to-end by RecoveryRunner today."""
+    return dict(
+        SCENARIO_RECOVERY_SUPPORT.get(
+            scenario_name,
+            {
+                "recovery_supported": True,
+                "skip_reason": None,
+            },
+        )
+    )
 
 
 def get_recovery_scenario(name: str) -> SyntheticScenario:
@@ -209,3 +297,16 @@ def list_recovery_scenario_names() -> List[str]:
 
 def estimator_scenario_map() -> Mapping[str, Sequence[str]]:
     return ESTIMATOR_RECOVERY_SCENARIOS
+
+
+__all__ = [
+    "ESTIMATOR_RECOVERY_SCENARIOS",
+    "RECOVERY_SCENARIO_REGISTRY",
+    "SCENARIO_RECOVERY_SUPPORT",
+    "estimator_scenario_map",
+    "get_recovery_scenario",
+    "get_scenario_recovery_support",
+    "list_recovery_scenario_names",
+    "materialize_scenario",
+    "scenarios_for_estimator",
+]
