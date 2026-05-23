@@ -98,6 +98,8 @@ Prioritized for **algorithm/statistical validity** only.
 
 **Phase 6 status:** Resolved by explicit unsupported contract — `did_interval_policy` on DID results; `DID_Bootstrap` ineligible for relative-ATT nominal calibration (`did_relative_att_interval_unsupported`). True relative-ATT intervals deferred unless a future design proves estimand equivalence (no cumulative-CI scaling).
 
+**Phase 7 status:** `collect_review_flags` / `classify_review_flag_support` in `panel_exp/diagnostics/review_flags.py` — per-family supported flags + explicit unsupported reasons; opt-in via `build_estimator_review(..., attach_review_flags=True)` only.
+
 **Scope lock:** no new estimators, inference modes, or artifacts in Phases 5–8.
 
 ---
