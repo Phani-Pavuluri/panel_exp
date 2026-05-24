@@ -26,7 +26,7 @@
 | Method / config | Maturity | Point estimand | Interval available | Interval estimand | Cal. eligibility (pre-Run-001) | Run 001 | Path | Next validation | Recommendation |
 |-----------------|----------|----------------|--------------------|-------------------|----------------------------------|---------|------|-----------------|----------------|
 | **SCM** | expert_review | relative_att_post | Optional (many modes) | varies | B only (default recovery) | — | **B** | Family recovery scenarios (`scm_*`); point bias/ATT direction | Default recovery without inference |
-| **SCM_UnitJackKnife** | expert_review + UnitJackKnife | relative_att_post | Yes | relative_att_post | A | Null pass; power 0 | **A*** | Null nominal calibration on default DGP; separate power study with documented CI width | **Keep A** with caveat: null-only credibility; see failure analysis |
+| **SCM_UnitJackKnife** | expert_review + UnitJackKnife | relative_att_post | Yes | relative_att_post | **A** (only registry member) | Null pass; power 0 | **A*** | Null nominal calibration on default DGP; separate power study with documented CI width | **Keep A** — null monitoring only; Run 001 advisory notes in harness |
 | **SyntheticControlCVXPY** | expert_review | relative_att_post | Optional | relative_att_post (if wired) | E (no recovery runner) | — | **E** → **B** after wiring | Add `RecoveryRunner` config + smoke | Wire recovery before any calibration |
 | **AugSynth** | unvalidated | relative_att_post | Optional | unknown | E | — | **E** | Basic recovery wiring + unit tests | Skip calibration until validated |
 | **AugSynthCVXPY** | expert_review | relative_att_post | Optional | relative_att_post (if wired) | E | — | **E** → **B** | Same as CVXPY SCM | Skip calibration until runner exists |
@@ -39,8 +39,8 @@
 |-----------------|----------|----------------|--------------------|-------------------|----------------------------------|---------|------|-----------------|----------------|
 | **TBR** | expert_review | relative_att_post | Optional | varies | B (alias of TBRRidge factory) | — | **B** | Same as TBRRidge point recovery | Use TBRRidge for evidence |
 | **TBRRidge** | expert_review | relative_att_post | Optional | varies | B (point recovery configs) | — | **B** | `tbrridge_*` recovery scenarios | Point recovery + expert review |
-| **TBRRidge_Kfold** | expert_review | relative_att_post | Intended yes | — (never aligned on recovery_*) | A | 100% ValueError | **E** on default recovery | Single-treated scenario OR fix multi-treated k-fold | **Remove from A** on `recovery_*` |
-| **TBRRidge_BlockResidualBootstrap** | expert_review | relative_att_post | Yes (mis-ordered) | relative_att_post (aligned flag true) | A | FPR 1.0, coverage 0 | **E** until inference fix | BRB path bound audit on multi-treated | **Remove from A** |
+| **TBRRidge_Kfold** | expert_review | relative_att_post | Intended yes | — (never aligned on recovery_*) | **E** (`kfold_multi_treated_unsupported_run001`) | 100% ValueError | **E** on default recovery | Fix multi-treated k-fold or single-treated scenario | **Removed from A** (registry) |
+| **TBRRidge_BlockResidualBootstrap** | expert_review | relative_att_post | Yes (mis-ordered) | relative_att_post (aligned flag true) | **E** (`brb_bounds_inverted_run001`) | FPR 1.0, coverage 0 | **E** until inference fix | BRB path bound ordering fix | **Removed from A** (registry) |
 
 ### DID family
 
@@ -108,14 +108,11 @@ Detailed mechanism, evidence, and confidence: **`docs/CALIBRATION_FAILURE_ANALYS
 
 ---
 
-## Recommended next implementation PR
+## Registry status (shipped)
 
-**Title:** Tighten nominal calibration eligibility after Run 001 failure analysis
+`NOMINAL_CALIBRATION_ELIGIBLE_CONFIGS` = **`SCM_UnitJackKnife` only**. Removed configs return explicit `skip_reason` values documented in `VALIDATION_COVERAGE.md`.
 
-1. Update `NOMINAL_CALIBRATION_ELIGIBLE_CONFIGS` in `panel_exp/validation/nominal_calibration.py` to **`SCM_UnitJackKnife` only** (or document equivalent allowlist).  
-2. Update `docs/VALIDATION_COVERAGE.md` and `docs/ROADMAP_V3.md` Phase 5 notes to reference this plan and analysis.  
-3. Adjust `tests/test_nominal_calibration_production.py` expectations for reduced allowlist.  
-4. **Do not** schedule TBRRidge relative-ATT calibration at n≥100 until BRB bounds and Kfold multi-treated behavior are fixed in a dedicated inference PR.
+## Recommended next implementation PRs
 
 Optional follow-up PRs (ordered):
 

@@ -5,7 +5,11 @@ from __future__ import annotations
 import pytest
 
 from panel_exp.validation.calibration_report import MIN_REPLICATIONS_FOR_STABLE_CALIBRATION
-from panel_exp.validation.nominal_calibration import NOMINAL_CALIBRATION_ELIGIBLE_CONFIGS
+from panel_exp.validation.nominal_calibration import (
+    BRB_BOUNDS_INVERTED_RUN001,
+    KFOLD_MULTI_TREATED_UNSUPPORTED_RUN001,
+    NOMINAL_CALIBRATION_ELIGIBLE_CONFIGS,
+)
 from panel_exp.validation.did_interval_policy import (
     DID_RELATIVE_ATT_INTERVAL_UNSUPPORTED,
 )
@@ -144,8 +148,38 @@ def test_did_bootstrap_ineligible_interval_mismatch():
     did = out["skipped"][0]
     assert did["eligible_for_nominal_calibration"] is False
     assert did["ineligible_reason"] == DID_RELATIVE_ATT_INTERVAL_UNSUPPORTED
+    assert did["skip_reason"] == DID_RELATIVE_ATT_INTERVAL_UNSUPPORTED
     agg = out["aggregates"][0]
     assert agg["eligible_for_nominal_calibration"] is False
+
+
+@pytest.mark.parametrize(
+    "config_name,skip_reason",
+    [
+        ("TBRRidge_BlockResidualBootstrap", BRB_BOUNDS_INVERTED_RUN001),
+        ("TBRRidge_Kfold", KFOLD_MULTI_TREATED_UNSUPPORTED_RUN001),
+    ],
+)
+@pytest.mark.slow
+def test_removed_config_skipped_without_recovery_run(
+    config_name: str, skip_reason: str
+):
+    out = run_production_nominal_calibration(
+        estimator_configs=(config_name,),
+        scenarios=("recovery_null_effect",),
+        n_simulations=3,
+        random_seeds=(0, 1),
+    )
+    assert out["per_seed_runs"] == []
+    assert len(out["skipped"]) == 1
+    for entry in out["skipped"]:
+        assert entry["eligible_for_nominal_calibration"] is False
+        assert entry["ineligible_reason"] == skip_reason
+        assert entry["skip_reason"] == skip_reason
+        assert entry.get("skipped") is True
+    agg = out["aggregates"][0]
+    assert agg["eligible_for_nominal_calibration"] is False
+    assert agg["ineligible_reason"] == skip_reason
 
 
 @pytest.mark.slow
@@ -163,36 +197,19 @@ def test_point_estimate_config_skipped_without_run():
 
 
 @pytest.mark.slow
-def test_deterministic_for_fixed_seeds():
-    kwargs = dict(
-        estimator_configs=("TBRRidge_Kfold",),
-        scenarios=("recovery_null_effect",),
-        n_simulations=3,
-        random_seeds=(0, 1),
-    )
-    a = run_production_nominal_calibration(**kwargs)
-    b = run_production_nominal_calibration(**kwargs)
-    assert a["per_seed_runs"] == b["per_seed_runs"]
-
-
-@pytest.mark.slow
-@pytest.mark.parametrize(
-    "config",
-    ["SCM_UnitJackKnife", "TBRRidge_BlockResidualBootstrap"],
-)
-def test_eligible_configs_smoke_on_recovery_null(config: str):
+def test_default_configs_only_scm_unit_jackknife():
     out = run_production_nominal_calibration(
-        estimator_configs=(config,),
         scenarios=("recovery_null_effect",),
         n_simulations=3,
         random_seeds=(0,),
     )
-    assert len(out["aggregates"]) == 1
-    assert out["aggregates"][0]["eligible_for_nominal_calibration"] is True
+    configs = {a["estimator_config"] for a in out["aggregates"]}
+    assert configs == {"SCM_UnitJackKnife"}
+    assert len(out["per_seed_runs"]) == 1
 
 
-def test_tbrridge_kfold_in_eligible_registry():
-    assert "TBRRidge_Kfold" in NOMINAL_CALIBRATION_ELIGIBLE_CONFIGS
+def test_only_scm_in_eligible_registry():
+    assert NOMINAL_CALIBRATION_ELIGIBLE_CONFIGS == frozenset({"SCM_UnitJackKnife"})
 
 
 def test_default_n_is_production_oriented():

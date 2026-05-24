@@ -18,6 +18,7 @@ from panel_exp.validation.nominal_calibration import (
     ineligible_reason_for_calibration,
     interval_aligned_from_payload,
     is_nominal_calibration_eligible_config,
+    nominal_calibration_registry_skip_reason,
     payload_eligible_for_nominal_calibration,
 )
 from panel_exp.validation.synthetic_scenarios import SyntheticScenario
@@ -203,6 +204,9 @@ def _per_seed_record(
         "interval_aligned": aligned,
         "eligible_for_nominal_calibration": eligible,
         "ineligible_reason": ineligible_reason_for_calibration(estimator_config, payload),
+        "skip_reason": None
+        if eligible
+        else ineligible_reason_for_calibration(estimator_config, payload),
         "warnings": warnings,
     }
 
@@ -232,6 +236,7 @@ def _skip_without_run(
         "scenario": scenario,
         "skipped": True,
         "ineligible_reason": reason,
+        "skip_reason": reason,
         "eligible_for_nominal_calibration": False,
         "interval_aligned": False,
         "n_simulations": int(n_simulations),
@@ -415,6 +420,19 @@ def run_production_nominal_calibration(
                 scenario.name if isinstance(scenario, SyntheticScenario) else scenario
             )
             key = (estimator_config, sc_name)
+
+            registry_skip = nominal_calibration_registry_skip_reason(estimator_config)
+            if registry_skip:
+                entry = _skip_without_run(
+                    estimator_config,
+                    sc_name,
+                    reason=registry_skip,
+                    n_simulations=n_simulations,
+                    alpha=alpha,
+                )
+                skipped.append(entry)
+                grouped.setdefault(key, []).append(entry)
+                continue
 
             if not _should_run_before_eligibility_check(estimator_config):
                 entry = _skip_without_run(

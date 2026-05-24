@@ -56,6 +56,25 @@ Explicit contract (`did_interval_policy` on `DID.run_analysis` results; `panel_e
 
 ---
 
+## Nominal calibration eligibility (Run 001, post-tightening)
+
+Registry: `panel_exp/validation/nominal_calibration.py` → `NOMINAL_CALIBRATION_ELIGIBLE_CONFIGS`.
+
+| Config | Relative-ATT nominal calibration | `skip_reason` when requested |
+|--------|----------------------------------|------------------------------|
+| **SCM_UnitJackKnife** | **Eligible** — null FPR/coverage monitoring only (Run 001); not full operating-characteristic proof (zero power on positive scenario) | — |
+| **TBRRidge_BlockResidualBootstrap** | **Removed** — pending bound-ordering fix (inverted `y_lower`/`y_upper` on multi-treated panels) | `brb_bounds_inverted_run001` |
+| **TBRRidge_Kfold** | **Removed** — pending multi-treated k-fold support on default `recovery_*` scenarios | `kfold_multi_treated_unsupported_run001` |
+| **DID_Bootstrap** | **Ineligible** (policy) | `did_relative_att_interval_unsupported` |
+
+Evidence: `docs/CALIBRATION_RUN_001.md`, `docs/CALIBRATION_FAILURE_ANALYSIS_001.md`, `docs/METHOD_VALIDATION_PLAN.md`.
+
+**SCM advisory notes** (attached to eligible runs): passed null FPR/coverage in Run 001; zero power on positive scenario; use for null monitoring until power is characterized.
+
+`TBRRidge` point-estimate recovery (`inference=None`) remains available; only **relative-ATT nominal calibration** claims are restricted.
+
+---
+
 ## 1. What “validated” means in this repo
 
 **Validated** (this document) means **all** of the following:

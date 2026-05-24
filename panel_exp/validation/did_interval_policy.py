@@ -77,6 +77,13 @@ def nominal_calibration_ineligible_reason(
     payload: Mapping[str, Any],
 ) -> str:
     """Skip reason for nominal calibration (DID-aware)."""
+    from panel_exp.validation.nominal_calibration import (
+        nominal_calibration_registry_skip_reason,
+    )
+
+    removed = nominal_calibration_registry_skip_reason(estimator_config)
+    if removed:
+        return removed
     if is_did_recovery_config(estimator_config):
         return DID_RELATIVE_ATT_INTERVAL_UNSUPPORTED
     interval_est = str(payload.get("interval_estimand", "unknown"))
