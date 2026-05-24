@@ -14,6 +14,7 @@ from typing import Any, Optional, Tuple
 import numpy as np
 
 from panel_exp.panel_data import PanelDataset
+from panel_exp.validation.did_interval_policy import DID_RELATIVE_ATT_INTERVAL_UNSUPPORTED
 from panel_exp.validation.runner import _path_relative_att
 
 POINT_ESTIMAND = "relative_att_post"
@@ -152,7 +153,8 @@ def extract_recovery_interval(
     Extract recovery interval + significance with explicit estimand metadata.
 
     DID: ``treatment_ci`` and post-period ``y_lower``/``y_upper`` are not relative ATT
-    intervals for the scored point estimand — marked unaligned.
+    intervals for the scored point estimand — marked unaligned. See
+    ``did_interval_policy`` on DID results and ``DID_RELATIVE_ATT_INTERVAL_UNSUPPORTED``.
     """
     point = POINT_ESTIMAND
 
@@ -167,7 +169,7 @@ def extract_recovery_interval(
             interval_estimand=INTERVAL_ESTIMAND_CUMULATIVE_ATT,
             interval_scale=INTERVAL_SCALE_CUMULATIVE_ATT,
             interval_aligned=False,
-            unavailable_reason="interval_estimand_mismatch",
+            unavailable_reason=DID_RELATIVE_ATT_INTERVAL_UNSUPPORTED,
             significance_estimand=sig_est,
             significance_aligned=sig_aligned,
             significant=sig,

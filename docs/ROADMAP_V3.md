@@ -29,7 +29,7 @@ v2 correctly flagged a **split verdict**: strong auditability but weak calibrati
 | **Estimand ↔ recovery scoring** | Assumed misaligned | **Explicit** — `RELATIVE_ATT_POST` via `_path_relative_att`; tests in `tests/test_estimand_metric_alignment.py` |
 | **Inference in recovery** | SCM/TBR mostly `inference=None`; FPR/coverage NaN | **Inference configs wired** (`SCM_UnitJackKnife`, `TBRRidge_Kfold`, `TBRRidge_BlockResidualBootstrap`, `DID_Bootstrap`) with failure typing |
 | **Interval ↔ point estimand** | Heuristic DID `treatment_ci` scaling; path bounds mixed | **Gated** — coverage/FPR only when `interval_estimand == relative_att_post`; DID cumulative CI marked mismatch (`recovery_intervals.py`) |
-| **Nominal calibration** | None at scale | **Smoke helper** — `run_nominal_calibration_check()`; eligible configs only; documents n&lt;100 as non-production |
+| **Nominal calibration** | None at scale | **Run 001 archived** (`docs/CALIBRATION_RUN_001.md`); registry tightened to **`SCM_UnitJackKnife` only**; TBRRidge BRB/Kfold removed with explicit `skip_reason` codes |
 | **DGP missingness** | Silent `fillna(0)` | **Explicit policies** (`none`, `fill_zero`, `drop`, `error`); calibration scenarios use `none`; missing scenarios opt into `fill_zero` |
 | **Staggered timing** | Fake `staggered_declared`, one `treatment_start` | **Real per-unit starts** for `sdid_staggered_adoption`; renamed misleading scenarios |
 | **DID pretrends** | Metadata only | **Contract** on results (`did_pretrend_contract`); warn/fail + waiver path (`tests/test_did_pretrend_contract.py`) |
@@ -62,7 +62,7 @@ Mapped to `ALGORITHM_REASSESSMENT.md` and v2 must-fix list. **Implemented behavi
 | Area | Limit |
 |------|--------|
 | **Heterogeneous multi-treated truth vs pooled scoring** | Tests document divergence; aggregation rules not unified |
-| **Nominal calibration** | Plumbing + eligibility gates; **not** n≥100 threshold enforcement in CI |
+| **Nominal calibration** | Run 001 at n=100 complete; registry = SCM jackknife only for relative-ATT claims; TBRRidge inference removed pending fixes |
 | **DID pretrends** | Warn/fail contract — **ATT still exported** unless human applies waiver discipline |
 | **SCM post-period extrapolation** | Stability tests exist but **not** default post-fit hook |
 | **Power null DGP vs recovery null** | Still separate worlds (`power.py` vs `recovery_null_effect`) |
@@ -75,7 +75,7 @@ Prioritized for **algorithm/statistical validity** only.
 
 | # | Remaining risk | Why it still matters |
 |---|----------------|----------------------|
-| 1 | **No production-scale nominal calibration (n≥100)** | Smoke runs use n≈2–6; `MIN_REPLICATIONS_FOR_STABLE_CALIBRATION=100` is advisory only |
+| 1 | **Nominal calibration limited to SCM null monitoring** | Run 001 (`docs/CALIBRATION_RUN_001.md`) at n=100; only `SCM_UnitJackKnife` remains eligible; BRB/Kfold removed (`docs/CALIBRATION_FAILURE_ANALYSIS_001.md`) |
 | 2 | **DID intervals not aligned with scored relative ATT** | Correctly gated — but DID production inference still not calibratable in recovery until a relative-ATT interval path exists |
 | 3 | **Multi-treated / heterogeneous estimand aggregation** | Pooled `_path_relative_att` vs unit×time canonical truth can diverge |
 | 4 | **Spillover in DGP, not in estimators** | `scm_donor_contamination` stresses fits; no spillover term in SCM/TBR/DID |
@@ -83,7 +83,7 @@ Prioritized for **algorithm/statistical validity** only.
 | 6 | **SDID / TROP / Bayesian not recovery-validated** | SDID DGP stagger now honest; **RecoveryRunner** still has no SDID config; TROP/Bayesian skipped |
 | 7 | **Power analysis null ≠ recovery null** | A/A power readouts and recovery FPR not comparable without unified null world |
 | 8 | **Placebo vs CI interpretation** | Semantics documented in inference layer; user misuse still possible when strict mode off |
-| 9 | **TBRRidge k-fold / BRB heuristic SEs** | Documented adaptations; not paper-exact; eligible for smoke only when path intervals align |
+| 9 | **TBRRidge k-fold / BRB relative-ATT calibration** | Removed from nominal eligibility after Run 001 (`brb_bounds_inverted_run001`, `kfold_multi_treated_unsupported_run001`); inference fixes deferred |
 | 10 | **Structural-break scenario not scored in recovery assertions** | Scenario wired; no bias/recovery failure thresholds tied to break |
 
 ---
@@ -93,6 +93,12 @@ Prioritized for **algorithm/statistical validity** only.
 **Frozen:** see [`docs/ROADMAP_V3_EXECUTION_ORDER.md`](ROADMAP_V3_EXECUTION_ORDER.md) for objectives, acceptance criteria, dependencies, CI impact, blockers, and deferred work. **Do not implement** until that sequence is explicitly picked up in a phase-scoped PR.
 
 **Sequence:** Phase 5 (production calibration) → Phase 6 (DID interval policy) → Phase 7 (review flags) → Phase 8 (focused re-audit).
+
+**Phase 5 status:** `run_production_nominal_calibration()` shipped; Run 001 evidence archived. **Eligibility tightened:** only `SCM_UnitJackKnife` for relative-ATT nominal calibration; TBRRidge BRB/Kfold skipped with Run 001 `skip_reason` codes (see `VALIDATION_COVERAGE.md`).
+
+**Phase 6 status:** Resolved by explicit unsupported contract — `did_interval_policy` on DID results; `DID_Bootstrap` ineligible for relative-ATT nominal calibration (`did_relative_att_interval_unsupported`). True relative-ATT intervals deferred unless a future design proves estimand equivalence (no cumulative-CI scaling).
+
+**Phase 7 status:** `collect_review_flags` / `classify_review_flag_support` in `panel_exp/diagnostics/review_flags.py` — per-family supported flags + explicit unsupported reasons; opt-in via `build_estimator_review(..., attach_review_flags=True)` only.
 
 **Scope lock:** no new estimators, inference modes, or artifacts in Phases 5–8.
 

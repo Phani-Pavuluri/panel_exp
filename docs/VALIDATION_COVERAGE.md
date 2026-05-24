@@ -23,7 +23,7 @@ This document is the **source of truth** for which estimators are exercised by i
 | **SCM** | Validated | `expert_review` | **Yes** | **Yes** — 3 scenarios (`scm_*`) | point_estimate, UnitJackKnife, JKP, Bayesian†, BlockResidualBootstrap, Conformal, Kfold, Placebo, TimeSeriesKfold | — | scipy optimizer sensitivity; donor count; placebo portability across platforms | Multi-scenario recovery at scale; stable placebo/jackknife CIs; donor diagnostics in review packet |
 | **SyntheticControlCVXPY** | Partially validated | `expert_review` | No | No | point_estimate, Kfold, Conformal, BlockResidualBootstrap | **cvxpy**, osqp (transitive) | Not in `EstimatorValidationRunner` or `RecoveryRunner` configs; solver-dependent | Add validation + recovery configs; CVXPY CI path; correlation-filter regression tests extended to recovery |
 | **AugSynthCVXPY** | Partially validated | `expert_review` | No | No | point_estimate, Kfold, Conformal | **cvxpy**, osqp (transitive) | No automated synthetic recovery; multi-treated complexity | Recovery scenario family + runner config; stability tests tied to recovery metrics |
-| **DID** | Partially validated | `expert_review` | **Yes** — pooled timing (`multiple_treated="pooled"`) | **Yes** — 2 scenarios (`did_parallel_trends_*`) | **point_estimate only** | — | No path CIs in default validation wiring; pooled vs unit timing review | Recovery smoke parametrized in CI; optional inference + coverage metrics; parallel-trends violation scenarios documented |
+| **DID** | Partially validated | `expert_review` | **Yes** — pooled timing (`multiple_treated="pooled"`) | **Yes** — 2 scenarios (`did_parallel_trends_*`); `DID_Bootstrap` recovery config | point_estimate; bootstrap cumulative CI (`DID_Bootstrap`) | — | **Relative ATT interval calibration unsupported** — see DID support matrix below; recovery scores path `relative_att_post` only | Recovery smoke + pretrend contract; bootstrap/cumulative intervals on results; no relative-ATT nominal calibration |
 | **SyntheticDID** | Research-only (partial scenarios) | `research_only` | **Skipped** (`SKIPPED_ESTIMATORS`) | **No** — scenarios exist in `ESTIMATOR_RECOVERY_SCENARIOS` but **not** in `_extended_estimator_configs()` | point_estimate | — | Fixture/window limitations in unit tests; calling `RecoveryRunner("SyntheticDID", …)` raises `KeyError` today | Wire recovery + validation configs; stable CI smoke; staggered-timing recovery metrics |
 | **AugSynth** | Not validated | `unvalidated` | No | No | point_estimate, Kfold, Conformal | — | No dedicated recovery or validation-runner coverage | Scenario registry + runner config + unit tests comparable to SCM family |
 | **BayesianTBR** | Research-only | `research_only` | **Skipped** (listed in `SKIPPED_ESTIMATORS` as `"Bayesian"` if ever added to configs) | No | **Bayesian** (MCMC) | **jax**, **jaxlib**, **numpyro**, **arviz** | Omitted from `EstimatorValidationRunner`; JAX pin required; MCMC cost/convergence | Optional-dep CI matrix; validation runner config; recovery scenarios; convergence diagnostics policy |
@@ -38,6 +38,40 @@ This document is the **source of truth** for which estimators are exercised by i
 | Estimator | Category | Current maturity | Validation runner | Recovery runner |
 |-----------|----------|------------------|-------------------|-------------------|
 | **TBRAutoSARIMAX** | Not validated | `expert_review` | No | No |
+
+---
+
+## DID interval support matrix
+
+Explicit contract (`did_interval_policy` on `DID.run_analysis` results; `panel_exp/validation/did_interval_policy.py`):
+
+| Capability | Supported |
+|------------|-----------|
+| Point estimate (recovery path `relative_att_post` via `y` / `y_hat`) | **Yes** |
+| Pretrend contract (`did_pretrend_contract`) | **Yes** |
+| Bootstrap / cumulative interval (`treatment_ci`, `cumulative_ci`, `cumulative_att`) | **Yes** (absolute / cumulative scale) |
+| Relative ATT interval calibration (`relative_att_post` coverage in recovery) | **No** — `did_relative_att_interval_unsupported` |
+
+`DID_Bootstrap` in `RecoveryRunner` remains **ineligible** for `run_nominal_calibration_check` / production nominal calibration. No heuristic scaling of cumulative CIs to relative ATT.
+
+---
+
+## Nominal calibration eligibility (Run 001, post-tightening)
+
+Registry: `panel_exp/validation/nominal_calibration.py` → `NOMINAL_CALIBRATION_ELIGIBLE_CONFIGS`.
+
+| Config | Relative-ATT nominal calibration | `skip_reason` when requested |
+|--------|----------------------------------|------------------------------|
+| **SCM_UnitJackKnife** | **Eligible** — null FPR/coverage monitoring only (Run 001); not full operating-characteristic proof (zero power on positive scenario) | — |
+| **TBRRidge_BlockResidualBootstrap** | **Removed** — pending bound-ordering fix (inverted `y_lower`/`y_upper` on multi-treated panels) | `brb_bounds_inverted_run001` |
+| **TBRRidge_Kfold** | **Removed** — pending multi-treated k-fold support on default `recovery_*` scenarios | `kfold_multi_treated_unsupported_run001` |
+| **DID_Bootstrap** | **Ineligible** (policy) | `did_relative_att_interval_unsupported` |
+
+Evidence: `docs/CALIBRATION_RUN_001.md`, `docs/CALIBRATION_FAILURE_ANALYSIS_001.md`, `docs/METHOD_VALIDATION_PLAN.md`.
+
+**SCM advisory notes** (attached to eligible runs): passed null FPR/coverage in Run 001; zero power on positive scenario; use for null monitoring until power is characterized.
+
+`TBRRidge` point-estimate recovery (`inference=None`) remains available; only **relative-ATT nominal calibration** claims are restricted.
 
 ---
 

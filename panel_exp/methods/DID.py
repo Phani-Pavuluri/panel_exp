@@ -377,6 +377,9 @@ class DID(ImpactAnalyzer):
         contract = self._build_did_pretrend_contract(allow_pretrend_violation)
         self._did_pretrend_contract = contract
         self.results["did_pretrend_contract"] = contract
+        from panel_exp.validation.did_interval_policy import build_did_interval_policy
+
+        self.results["did_interval_policy"] = build_did_interval_policy()
         warning = contract.get("warning")
         if warning:
             warnings.warn(str(warning), UserWarning, stacklevel=2)
@@ -860,4 +863,7 @@ class DID(ImpactAnalyzer):
             "clustered_se_used": clustered_se_used,
             "did_pretrend_contract": contract,
         }
+        from panel_exp.validation.did_interval_policy import build_did_interval_policy
+
+        out["did_interval_policy"] = build_did_interval_policy()
         return out
