@@ -43,8 +43,20 @@ def flatten_single_unit_results(a: Any) -> None:
 
 
 def apply_bounds_to_results(a: Any, bounds: np.ndarray) -> None:
-    """Map k-fold / placebo / BRB bounds tensor to y_lower, y_hat, y_upper."""
-    a.results["y_upper"] = -bounds[:, :, 2].T + a.results["y"].reshape(bounds[:, :, 2].T.shape)
-    a.results["y_hat"] = -bounds[:, :, 1].T + a.results["y"].reshape(bounds[:, :, 1].T.shape)
-    a.results["y_lower"] = -bounds[:, :, 0].T + a.results["y"].reshape(bounds[:, :, 0].T.shape)
+    """
+    Map k-fold / placebo / BRB bounds tensor to ``y_lower``, ``y_hat``, ``y_upper``.
+
+    ``bounds`` channels are effect quantiles: ``[..., 0]`` lower, ``[..., 1]`` point,
+    ``[..., 2]`` upper on the treatment-effect scale. Outcome-level intervals use
+    counterfactual ``y_cf = y - effect_point`` so that ``y_lower < y_upper`` when
+    ``effect_lo < effect_hi`` (required for relative-ATT recovery extraction).
+    """
+    effect_lo = bounds[:, :, 0].T
+    effect_pt = bounds[:, :, 1].T
+    effect_hi = bounds[:, :, 2].T
+    y_arr = np.asarray(a.results["y"], dtype=float).reshape(effect_pt.shape)
+    y_cf = y_arr - effect_pt
+    a.results["y_hat"] = np.asarray(y_cf, dtype=float)
+    a.results["y_lower"] = y_cf + effect_lo
+    a.results["y_upper"] = y_cf + effect_hi
     flatten_single_unit_results(a)

@@ -31,6 +31,9 @@ SIGNIFICANCE_ESTIMAND_RELATIVE_ATT_POST = "relative_att_post"
 SIGNIFICANCE_ESTIMAND_CUMULATIVE_ATT = "cumulative_att"
 SIGNIFICANCE_ESTIMAND_UNAVAILABLE = "unavailable"
 
+# Recovery skip when path outcome bounds are ordered y_lower > y_upper (Run 001 BRB failure).
+PATH_INTERVAL_BOUNDS_INVERTED = "path_interval_bounds_inverted"
+
 
 @dataclass(frozen=True)
 class RecoveryIntervalExtraction:
@@ -114,11 +117,20 @@ def _path_relative_ci_from_results(
     if not np.any(mask):
         return None, None, "no_finite_post_periods"
 
-    rel_lo = (y_post[mask] - yu_post[mask]) / yh_post[mask]
-    rel_hi = (y_post[mask] - yl_post[mask]) / yh_post[mask]
+    yl = yl_post[mask]
+    yu = yu_post[mask]
+    if float(np.nanmean(yl)) > float(np.nanmean(yu)):
+        return None, None, PATH_INTERVAL_BOUNDS_INVERTED
+
+    rel_lo = (y_post[mask] - yu) / yh_post[mask]
+    rel_hi = (y_post[mask] - yl) / yh_post[mask]
     if not (np.any(np.isfinite(rel_lo)) and np.any(np.isfinite(rel_hi))):
         return None, None, "non_finite_relative_interval"
-    return float(np.nanmean(rel_lo)), float(np.nanmean(rel_hi)), None
+    lo = float(np.nanmean(rel_lo))
+    hi = float(np.nanmean(rel_hi))
+    if lo > hi:
+        return None, None, PATH_INTERVAL_BOUNDS_INVERTED
+    return lo, hi, None
 
 
 def _is_did_estimator(estimator: Any) -> bool:
@@ -176,7 +188,13 @@ def extract_recovery_interval(
         )
 
     lo, hi, path_reason = _path_relative_ci_from_results(estimator, panel)
-    if lo is not None and hi is not None and np.isfinite(lo) and np.isfinite(hi):
+    if (
+        lo is not None
+        and hi is not None
+        and np.isfinite(lo)
+        and np.isfinite(hi)
+        and lo <= hi
+    ):
         sig = None
         sig_est = SIGNIFICANCE_ESTIMAND_UNAVAILABLE
         sig_aligned = False

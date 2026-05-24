@@ -14,9 +14,12 @@ from panel_exp.validation.did_interval_policy import (
 from panel_exp.validation.recovery_intervals import (
     INTERVAL_ESTIMAND_CUMULATIVE_ATT,
     INTERVAL_ESTIMAND_RELATIVE_ATT_POST,
+    PATH_INTERVAL_BOUNDS_INVERTED,
     POINT_ESTIMAND,
     extract_recovery_interval,
 )
+from panel_exp.validation.nominal_calibration import is_nominal_calibration_eligible_config
+from panel_exp.methods.tbr import TBRRidge
 from panel_exp.validation.recovery_metrics import (
     SimulationRecord,
     aggregate_recovery_metrics,
@@ -188,6 +191,83 @@ def test_point_estimate_recovery_unchanged():
     pred = _path_relative_att(scm, panel)
     assert np.isfinite(pred)
     assert "estimator_diagnostics" not in scm.results
+
+
+class _MockInvertedOutcomeBounds:
+    """Outcome-level y_lower > y_upper (pre-fix BRB mapping)."""
+
+    def __init__(self, y, y_hat, gap: float = 0.05):
+        y = np.asarray(y, dtype=float).ravel()
+        y_hat = np.asarray(y_hat, dtype=float).ravel()
+        self.results = {
+            "y": y,
+            "y_hat": y_hat,
+            "y_lower": y_hat + gap,
+            "y_upper": y_hat - gap,
+        }
+
+
+def test_inverted_outcome_bounds_mark_unavailable_no_significance():
+    panel = _panel()
+    y = panel.treated_series(["u0"]).values.T.flatten()
+    y_hat = panel.control_series(["u0"]).values.T.mean(axis=1)
+    est = _MockInvertedOutcomeBounds(y, y_hat)
+    ext = extract_recovery_interval(
+        est,
+        panel,
+        alpha=0.05,
+        significance_from_ci=True,
+        supports_significance=True,
+    )
+    assert ext.interval_aligned is False
+    assert ext.unavailable_reason == PATH_INTERVAL_BOUNDS_INVERTED
+    assert ext.ci_lower is None and ext.ci_upper is None
+    assert ext.significant is None
+    assert ext.significance_aligned is False
+
+
+def test_tbrridge_brb_null_does_not_force_fpr_one():
+    """After bound-ordering fix, BRB must not silently mark every null rep significant."""
+    payload = RecoveryRunner(
+        "TBRRidge_BlockResidualBootstrap",
+        "recovery_null_effect",
+        n_simulations=6,
+        random_state=42,
+    ).run()
+    assert is_nominal_calibration_eligible_config("TBRRidge_BlockResidualBootstrap") is False
+    assert payload["interval_estimand"] == INTERVAL_ESTIMAND_RELATIVE_ATT_POST
+    if payload["false_positive_rate_status"] == "computed":
+        assert payload["false_positive_rate"] < 1.0
+    assert payload.get("coverage_unavailable_reason") != PATH_INTERVAL_BOUNDS_INVERTED
+
+
+def test_tbrridge_brb_interval_ordering_when_aligned():
+    scenario = SyntheticScenario(
+        name="brb_order",
+        n_geos=12,
+        n_periods=40,
+        treatment_start=28,
+        true_effect=0.08,
+        random_state=7,
+    )
+    world = SyntheticWorld.generate(scenario)
+    panel = world.to_panel_dataset()
+    est = TBRRidge(inference="BlockResidualBootstrap", alpha=0.05)
+    est.n_bootstrap = 20
+    est.block_length = 5
+    est.run_analysis(panel, show_progress=False, random_state=7)
+    ext = extract_recovery_interval(
+        est,
+        panel,
+        alpha=0.05,
+        significance_from_ci=True,
+        supports_significance=True,
+    )
+    if ext.interval_aligned:
+        assert ext.ci_lower is not None and ext.ci_upper is not None
+        assert ext.ci_lower <= ext.ci_upper
+    else:
+        assert ext.unavailable_reason == PATH_INTERVAL_BOUNDS_INVERTED
 
 
 def test_scm_jackknife_interval_aligned_when_finite():
