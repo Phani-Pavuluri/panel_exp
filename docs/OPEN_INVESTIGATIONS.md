@@ -4,7 +4,7 @@
 **Last updated:** 2026-05-28  
 **Package version:** 0.2.1  
 
-**Related:** `docs/ROADMAP_V3.md` (governance), `docs/ROADMAP_V4.md` (Phases 11–15), `docs/METHOD_VALIDATION_PLAN.md`, `docs/VALIDATION_COVERAGE.md`
+**Related:** `docs/ROADMAP_V3.md` (governance), `docs/ROADMAP_V4.md` (Phases 11–15; Tracks A/B/C), `docs/METHOD_VALIDATION_PLAN.md`, `docs/VALIDATION_COVERAGE.md`, `docs/EXPERIMENTATION_PLATFORM_VISION.md`
 
 ---
 
@@ -31,7 +31,97 @@ Track **unresolved gaps, deferred work, and open scientific questions** discover
 
 **Successful Phase 12 examples:** “BRB remains research-only”; “Kfold permanently single-treated-only”; “no TBRRidge config re-enters nominal eligibility.” These are **successful** if evidence supports them.
 
-Execution detail: [`ROADMAP_V4.md`](ROADMAP_V4.md) § Phase 12.
+Execution detail: [`ROADMAP_V4.md`](ROADMAP_V4.md) § Phase 12 · [`PHASE12_INVESTIGATION_PLAN.md`](PHASE12_INVESTIGATION_PLAN.md).
+
+---
+
+## Future platform investigations (Track C)
+
+**Framing:** User-level experimentation, conversion lift, MMM calibration bridges, and cross-modality trust semantics — **future architecture / governance** only. Gated behind Track A stabilization and Track B shared contracts (`ExperimentSpec`, `ExperimentEvidence`, estimand registry).
+
+**Conceptual reference:** Industry conversion-lift practice (e.g. Google Conversion Lift — ghost ads, opportunity logging, user-randomized designs) informs **governance questions** — not mathematical implementation blueprints.
+
+**No code, API, schema, eligibility, or production behavior in v0.2.1.**
+
+| ID | Title | Category | Status |
+|----|-------|----------|--------|
+| **INV-020** | Unified experimentation estimand contracts | architecture / causal_validity | intentionally_deferred |
+| **INV-021** | User-randomized experiment TrustReport semantics | governance / architecture | intentionally_deferred |
+| **INV-022** | Experiment feasibility and viability governance | governance / operational | intentionally_deferred |
+| **INV-023** | Experiment-to-MMM compatibility resolver | architecture / calibration | intentionally_deferred |
+| **INV-024** | Sequential experimentation governance | governance / statistical_validity | intentionally_deferred |
+| **INV-025** | Randomization integrity and SRM diagnostics | operational / causal_validity | intentionally_deferred |
+| **INV-026** | Exposure eligibility and opportunity logging semantics | causal_validity / architecture | intentionally_deferred |
+
+### INV-020 — Unified experimentation estimand contracts
+
+| Field | Detail |
+|-------|--------|
+| **Category** | architecture / causal_validity |
+| **Status** | intentionally_deferred |
+| **Why deferred** | Geo `relative_att_post` documented; A/B/CLS/MMM estimands not unified |
+| **Risk if unresolved** | Silent “lift” labels across modalities; MMM miscalibration |
+| **Revisit when** | Track B `Estimand` registry design PR; after Phase 12 aggregation semantics (INV-003) |
+
+### INV-021 — User-randomized experiment TrustReport semantics
+
+| Field | Detail |
+|-------|--------|
+| **Category** | governance / architecture |
+| **Status** | intentionally_deferred |
+| **Why deferred** | TrustReport taxonomy conceptual only; no user-level experiments |
+| **Risk if unresolved** | `inconclusive` misread as null; binary launch/stop narratives |
+| **Revisit when** | TrustReport outcome taxonomy ratified in platform vision + Track B evidence schema |
+
+### INV-022 — Experiment feasibility and viability governance
+
+| Field | Detail |
+|-------|--------|
+| **Category** | governance / operational |
+| **Status** | intentionally_deferred |
+| **Why deferred** | Power/MDE exists for design; no cross-modality feasibility engine |
+| **Risk if unresolved** | Underpowered CLS/A/B studies run without governed viability assessment |
+| **Revisit when** | Shared feasibility contract scoped for A/B, CLS, GeoX, holdouts |
+
+### INV-023 — Experiment-to-MMM compatibility resolver
+
+| Field | Detail |
+|-------|--------|
+| **Category** | architecture / calibration |
+| **Status** | intentionally_deferred |
+| **Why deferred** | No MMM API; geo evidence exports only |
+| **Risk if unresolved** | Raw lift points fed to MMM as calibrated incrementality |
+| **Revisit when** | MMM integration milestone; calibrated contribution estimand defined |
+
+### INV-024 — Sequential experimentation governance
+
+| Field | Detail |
+|-------|--------|
+| **Category** | governance / statistical_validity |
+| **Status** | intentionally_deferred |
+| **Why deferred** | No sequential testing product surface |
+| **Risk if unresolved** | Peeking and optional stopping without human-governed discipline |
+| **Revisit when** | Track C experimentation orchestration design |
+
+### INV-025 — Randomization integrity and SRM diagnostics
+
+| Field | Detail |
+|-------|--------|
+| **Category** | operational / causal_validity |
+| **Status** | intentionally_deferred |
+| **Why deferred** | Geo randomization differs from user-level SRM patterns |
+| **Risk if unresolved** | Assignment bugs undetected in user-randomized studies |
+| **Revisit when** | User/session randomization in `ExperimentSpec`; links to TrustReport |
+
+### INV-026 — Exposure eligibility and opportunity logging semantics
+
+| Field | Detail |
+|-------|--------|
+| **Category** | causal_validity / architecture |
+| **Status** | intentionally_deferred |
+| **Why deferred** | Ghost-ad / opportunity concepts are Track C governance only |
+| **Risk if unresolved** | Conversion lift estimands misaligned with exposure definition |
+| **Revisit when** | Conversion lift `ExperimentSpec` extension; not vendor-specific copy |
 
 ---
 
@@ -412,6 +502,14 @@ Execution detail: [`ROADMAP_V4.md`](ROADMAP_V4.md) § Phase 12.
 | Topic | Section |
 |-------|---------|
 | Phase 12 program (INV-003/007/008/017) | Phase 12 investigation program |
+| Track C platform (INV-020–026) | Future platform investigations |
+| Unified estimand contracts (INV-020) | Future platform investigations |
+| TrustReport semantics (INV-021) | Future platform investigations |
+| Feasibility governance (INV-022) | Future platform investigations |
+| MMM compatibility (INV-023) | Future platform investigations |
+| Sequential testing governance (INV-024) | Future platform investigations |
+| SRM / randomization integrity (INV-025) | Future platform investigations |
+| Exposure eligibility (INV-026) | Future platform investigations |
 | BRB inference behavior (INV-008) | Inference concerns |
 | Kfold multi-treated geometry (INV-007) | Inference concerns |
 | SCM over-coverage | Critical investigations |
@@ -428,4 +526,4 @@ Execution detail: [`ROADMAP_V4.md`](ROADMAP_V4.md) § Phase 12.
 
 ---
 
-*Update when investigations close, new calibration runs are archived, or Phase 12–15 evidence arrives. Do not delete entries without resolution evidence.*
+*Update when investigations close, new calibration runs are archived, or Phase 12–15 / Track C evidence arrives. Do not delete entries without resolution evidence.*
