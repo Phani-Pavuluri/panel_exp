@@ -1,7 +1,7 @@
 # panel_exp roadmap v4 (post Phase 8 / Run 001)
 
 **Status:** active (Phases 11–15 scoped; priorities frozen; dual-track)  
-**Last reviewed:** 2026-05-26  
+**Last reviewed:** 2026-05-28  
 **Supersedes:** `docs/ROADMAP_V3.md` (Phases 5–8 execution and v3 priority ordering)  
 **Package version:** 0.2.1  
 
@@ -34,7 +34,7 @@ The roadmap **bifurcates** after the GeoX strategic checkpoint. **Not in scope:*
 
 | Work | Examples |
 |------|----------|
-| Operating-characteristic characterization | Phase 11 SCM (done); Phase 12 TBRRidge; Phase 14 DID |
+| Operating-characteristic characterization | Phase 11 SCM (done); Phase 12 TBRRidge investigation program; Phase 14 DID |
 | Calibration archives | Run 001; Run 002 (post–BRB merge) |
 | Failure analysis + eligibility | Registry skip reasons; no threshold tuning |
 | Investigation ledger | `OPEN_INVESTIGATIONS.md` — deferred ≠ abandoned |
@@ -120,8 +120,8 @@ Investigation IDs in [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIGATIONS.md) map to g
 | 2 | Add/maintain **`docs/OPEN_INVESTIGATIONS.md`** | **Done** — single source of truth for unresolved gaps |
 | 3 | **Freeze priorities** | **Done** — top investigations and phase order locked here + OPEN_INVESTIGATIONS §1 |
 | 4 | **Phase 11** — SCM UnitJackKnife OC | **Done** — `SCM_JACKKNIFE_CHARACTERIZATION_001.md` |
-| 5 | **Merge BRB bound-ordering fix** | **Next** — correctness preservation; not re-promotion |
-| 6 | **Phase 12** — TBRRidge inference rehabilitation | After BRB merge — Run 002 + OC; all outcomes acceptable |
+| 5 | **Merge BRB bound-ordering fix** | **Ready** — on `estimator-maturity-metadata`; PR to `main` pending |
+| 6 | **Phase 12** — TBRRidge inference investigation program | After BRB merge — characterize, do not “fix”; all outcomes acceptable |
 | 7 | **Re-audit** after Phases 11–15 | Mini-audit; update investigations |
 | 8 | Create **`docs/ROADMAP_V5.md`** | After re-audit |
 | 9 | **Track B** — unified experimentation abstractions | After Phase 12 stabilizes |
@@ -184,20 +184,58 @@ One phase per scoped PR (or PR series). **No new estimators, inference modes, ar
 
 ---
 
-### Phase 12 — TBRRidge inference rehabilitation
+### Phase 12 — TBRRidge inference investigation program
 
-**Framing:** This is **not** “make TBRRidge production-ready.” It is: **determine whether TBRRidge inference can become trustworthy enough for calibrated expert-review workflows.**
+**Framing:** This is **not** “fix TBRRidge” or “make TBRRidge production-ready.” It is an **investigation program** to characterize whether TBRRidge inference can support **calibrated expert-review workflows**.
+
+**Scientific posture:** You are not trying to “win.” You are trying to **characterize reality honestly.** All outcomes are acceptable — including “TBRRidge BRB remains research-only” if the evidence supports it. That discipline is rare and valuable.
 
 | Field | Detail |
 |-------|--------|
-| **Prerequisite** | BRB bound-ordering fix merged (correctness only — still ineligible until Run 002) |
-| **Goal** | Characterize BRB post-fix, Kfold geometry, single- vs multi-treated behavior, interval validity, OC, failure surfaces |
-| **Workstreams** | **BRB** — Run 002 at n≥100 after merge; failure analysis. **Kfold** — multi-treated fix **or** single-treated-only contract. **Geometry matrix** — default recovery vs single-treated panels |
-| **Investigations** | INV-008, INV-007, INV-003, INV-017 |
-| **In scope** | OC archives, Run 002, guards, recovery tests; registry update **only** after full advancement policy chain |
-| **Out of scope** | “Production-ready” narrative; automatic eligibility; new inference modes |
-| **Acceptable outcomes** | Re-enable partially · restrict to single-treated · null-monitoring-only · remain expert-review · permanently research-only — **all are valid** |
-| **Exit** | Governance decision doc (→ Phase 13) with Run 002 + OC evidence; eligibility unchanged unless OC passes |
+| **Prerequisite** | BRB bound-ordering fix merged to `main` (correctness only — eligibility unchanged until evidence closes investigations) |
+| **Program goal** | Archived operating characteristics, interval validity, failure surfaces, and governance inputs for Phase 13 decision |
+| **In scope** | Run 002 (n≥100), geometry matrices, OC archives, guards, recovery tests; registry update **only** after full advancement policy chain |
+| **Out of scope** | “Fix TBRRidge” narrative; production-ready claims; automatic eligibility; threshold tuning; new inference modes |
+| **Acceptable outcomes** | Partially re-enable · restrict to single-treated · null-monitoring-only · remain expert-review · permanently research-only — **all valid if evidenced** |
+| **Exit** | Phase 12 evidence archive + investigation resolutions → Phase 13 governance decision; eligibility unchanged unless OC + policy chain pass |
+
+#### Investigation tracks
+
+Each track produces an **archived evidence artifact** (OC tables, Run 002 slice, or governance note). Tracks may close independently.
+
+**INV-007 — KFold geometry characterization**
+
+| | |
+|---|---|
+| **Questions** | Single-treated only? Donor-count sensitivity? Treated-count failure surface? Fundamentally incompatible with pooled geometry? |
+| **Work** | Geometry matrix on default recovery vs single-treated panels; document hard-failure modes |
+| **Possible outcome** | Permanently restricted (single-treated-only contract or research-only) |
+
+**INV-008 — BRB operating characteristics after bound fix**
+
+| | |
+|---|---|
+| **Questions** | Did inversion fix restore sane intervals? Behavior at n≥100? Coverage vs power tradeoff? Interval width? Seed stability? Geometry sensitivity? |
+| **Work** | Calibration Run 002 at n≥100 post-merge; failure analysis vs Run 001; OC archive |
+| **Possible outcome** | Partially re-enable within expert-review · or permanently remove from nominal path |
+
+**INV-003 — Multi-treated aggregation semantics** *(broader than TBRRidge)*
+
+| | |
+|---|---|
+| **Questions** | Pooled relative ATT behavior? Heterogeneous treated effects? Aggregation stability? Relative vs pooled estimands? |
+| **Work** | Document scoring contract; optional heterogeneous DGP equivalence probes; tie to recovery runner `_path_relative_att` |
+| **Possible outcome** | Documented contract only · alternate scoring path · calibration scenario catalog (single- vs multi-treated) |
+
+**INV-017 — Calibration scaling and governance** *(foundational for Track B)*
+
+| | |
+|---|---|
+| **Questions** | When is nominal calibration meaningful? How should operating characteristics be archived? How should eligibility evolve? How should trust signals eventually form? |
+| **Work** | Run 002 archival conventions; smoke vs production tier tags; eligibility evolution rules; inputs to future `CalibrationSignal` / `TrustReport` |
+| **Possible outcome** | Governance playbook for calibration archives and trust formation — not estimator promotion |
+
+See [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIGATIONS.md) § Phase 12 program for cross-links to living backlog entries.
 
 ---
 
@@ -205,7 +243,7 @@ One phase per scoped PR (or PR series). **No new estimators, inference modes, ar
 
 | Field | Detail |
 |-------|--------|
-| **Goal** | **Decision only** — whether any TBRRidge inference config may advance within **expert_review** (not `production_safe`) based on Phase 12 evidence. |
+| **Goal** | **Decision only** — record governance outcome from Phase 12 investigation program (per config: go / no-go / monitor-only / research-only) within **expert_review** — not `production_safe` |
 | **Investigations** | INV-039 (partial), METHOD_VALIDATION_PLAN paths |
 | **In scope** | Governance doc / validation plan update; explicit “go / no-go / monitor-only” per config |
 | **Out of scope** | `production_safe` label; catalog auto-promotion; blocking gates |
@@ -240,7 +278,9 @@ One phase per scoped PR (or PR series). **No new estimators, inference modes, ar
 
 ## 3b. Track B — after Phase 12 (medium-term platform)
 
-Start **unified experimentation abstractions** only after TBRRidge characterization stabilizes.
+Start **unified experimentation abstractions** only after Phase 12 investigation program closes and **estimator governance, evidence contracts, and calibration semantics stabilize.**
+
+You are approaching that point — conceptual foundation exists in [`EXPERIMENTATION_PLATFORM_VISION.md`](EXPERIMENTATION_PLATFORM_VISION.md) and the strategic checkpoint — but **implementation waits** on Phase 12 evidence archives and INV-017 governance playbook.
 
 | Future abstraction | Role |
 |--------------------|------|
@@ -322,8 +362,8 @@ Suggested audit triggers also listed in [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIG
 | Phases 5–8 | **Complete / frozen** | See §1 Completed |
 | Phase 9 | Run 001 archive | Evidence input to Phases 11–12 |
 | Phase 10 | Failure analysis + eligibility tighten | BRB fix shipped; registry SCM-only |
-| **Phase 11** | **Next** | SCM UnitJackKnife OC |
-| **Phase 12** | Planned | TBRRidge inference rehabilitation |
+| **Phase 11** | **Complete** | SCM UnitJackKnife OC — `SCM_JACKKNIFE_CHARACTERIZATION_001.md` |
+| **Phase 12** | **Next** | TBRRidge inference investigation program |
 | **Phase 13** | Planned | TBRRidge promotion **decision** |
 | **Phase 14** | Planned | DID OC characterization |
 | **Phase 15** | Planned | AugSynth/CVXPY validation |
@@ -336,10 +376,10 @@ Suggested audit triggers also listed in [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIG
 | Investigation | Title (short) | Phase |
 |---------------|---------------|-------|
 | INV-004 | SCM jackknife zero power | 11 |
-| INV-003 | Multi-treated default DGP | 11–12 |
-| INV-008 | BRB bound ordering / Run 002 | 12 |
-| INV-007 | Kfold multi-treated failure | 12 |
-| INV-017 | Few-donor inference geometry | 12 |
+| INV-003 | Multi-treated aggregation semantics | 12 |
+| INV-008 | BRB OC after bound fix / Run 002 | 12 |
+| INV-007 | KFold geometry characterization | 12 |
+| INV-017 | Calibration scaling and governance | 12 |
 | INV-039 | Package calibration claim | 11–13 |
 | INV-005, INV-006, INV-032 | DID pretrend / intervals / timing | 14 |
 | INV-018, INV-037 | CVXPY / collinearity | 15 |

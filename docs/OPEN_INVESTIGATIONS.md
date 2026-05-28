@@ -1,7 +1,7 @@
 # Open investigations
 
 **Status:** living backlog for intentionally deferred or unresolved issues  
-**Last updated:** 2026-05-26  
+**Last updated:** 2026-05-28  
 **Package version:** 0.2.1  
 
 **Related:** `docs/ROADMAP_V3.md` (governance), `docs/ROADMAP_V4.md` (Phases 11–15), `docs/METHOD_VALIDATION_PLAN.md`, `docs/VALIDATION_COVERAGE.md`
@@ -15,6 +15,23 @@ Track **unresolved gaps, deferred work, and open scientific questions** discover
 **Deferred ≠ abandoned.** Items remain listed until evidence closes them. Passing tests, calibration plumbing, or implemented diagnostics do not close an investigation without archived operating-characteristic evidence.
 
 **Not claimed:** `production_safe` for any estimator; package-wide nominal calibration (only partial SCM null monitoring is evidenced).
+
+---
+
+## Phase 12 investigation program (TBRRidge)
+
+**Framing:** Characterize whether TBRRidge inference can support calibrated expert-review workflows — **not** “fix TBRRidge.” All outcomes are acceptable if evidenced.
+
+| ID | Track | Backlog cross-link | Primary artifact |
+|----|-------|-------------------|------------------|
+| **INV-007** | KFold geometry characterization | [TBRRidge Kfold multi-treated geometry](#tbrridge-kfold-multi-treated-geometry) | Geometry OC matrix; single-treated vs pooled failure surface |
+| **INV-008** | BRB operating characteristics after bound fix | [TBRRidge BRB inference behavior](#tbrridge-brb-inference-behavior) | Run 002 archive (n≥100); width/coverage/power/seed stability |
+| **INV-003** | Multi-treated aggregation semantics | [Multi-treated default recovery DGP](#multi-treated-default-recovery-dgp), [Heterogeneous vs pooled recovery scoring](#heterogeneous-vs-pooled-recovery-scoring) | Estimand/aggregation contract doc; optional heterogeneous probes |
+| **INV-017** | Calibration scaling and governance | [Calibration scaling (CI n ≪ production n)](#calibration-scaling-ci-n--production-n), [Trust-score / TrustReport evolution](#trust-score--trustreport-evolution) | Archival conventions; eligibility evolution rules; trust-signal inputs |
+
+**Successful Phase 12 examples:** “BRB remains research-only”; “Kfold permanently single-treated-only”; “no TBRRidge config re-enters nominal eligibility.” These are **successful** if evidence supports them.
+
+Execution detail: [`ROADMAP_V4.md`](ROADMAP_V4.md) § Phase 12.
 
 ---
 
@@ -56,6 +73,8 @@ Track **unresolved gaps, deferred work, and open scientific questions** discover
 
 ### Heterogeneous vs pooled recovery scoring
 
+**Phase 12 ID:** INV-003
+
 | Field | Detail |
 |-------|--------|
 | **Category** | statistical_validity |
@@ -75,6 +94,8 @@ Track **unresolved gaps, deferred work, and open scientific questions** discover
 | **Revisit when** | Experiment-card / workflow audit for pretrend fail visibility |
 
 ### Multi-treated default recovery DGP
+
+**Phase 12 ID:** INV-003 (partial — aggregation semantics broader than DGP default)
 
 | Field | Detail |
 |-------|--------|
@@ -184,6 +205,8 @@ Track **unresolved gaps, deferred work, and open scientific questions** discover
 
 ### Trust-score / TrustReport evolution
 
+**Phase 12 ID:** INV-017 (partial — trust formation rules depend on calibration archives)
+
 | Field | Detail |
 |-------|--------|
 | **Category** | architecture / governance |
@@ -218,6 +241,8 @@ Track **unresolved gaps, deferred work, and open scientific questions** discover
 
 ### TBRRidge BRB inference behavior
 
+**Phase 12 ID:** INV-008
+
 | Field | Detail |
 |-------|--------|
 | **Category** | inference / calibration |
@@ -227,6 +252,8 @@ Track **unresolved gaps, deferred work, and open scientific questions** discover
 | **Revisit when** | Run 002 at n≥100 + failure analysis (Phase 12) |
 
 ### TBRRidge Kfold multi-treated geometry
+
+**Phase 12 ID:** INV-007
 
 | Field | Detail |
 |-------|--------|
@@ -302,6 +329,8 @@ Track **unresolved gaps, deferred work, and open scientific questions** discover
 
 ### Calibration scaling (CI n ≪ production n)
 
+**Phase 12 ID:** INV-017 (partial — governance playbook is foundational)
+
 | Field | Detail |
 |-------|--------|
 | **Category** | calibration / operational |
@@ -324,7 +353,9 @@ Track **unresolved gaps, deferred work, and open scientific questions** discover
 | **Risk if unresolved** | Promotion beyond null monitor without redesign |
 | **Revisit when** | Any eligibility or maturity discussion |
 
-### TBRRidge — inference rehabilitation
+### TBRRidge — inference investigation program
+
+**Phase 12 IDs:** INV-007, INV-008 (+ INV-003, INV-017 where aggregation/governance intersect)
 
 | Field | Detail |
 |-------|--------|
@@ -380,8 +411,9 @@ Track **unresolved gaps, deferred work, and open scientific questions** discover
 
 | Topic | Section |
 |-------|---------|
-| BRB inference behavior | Inference concerns |
-| Kfold multi-treated geometry | Inference concerns |
+| Phase 12 program (INV-003/007/008/017) | Phase 12 investigation program |
+| BRB inference behavior (INV-008) | Inference concerns |
+| Kfold multi-treated geometry (INV-007) | Inference concerns |
 | SCM over-coverage | Critical investigations |
 | DID interval semantics | Inference concerns |
 | Spillover estimation | Research backlog |
@@ -391,8 +423,8 @@ Track **unresolved gaps, deferred work, and open scientific questions** discover
 | Dynamic causal models | Research backlog |
 | Donor collinearity | DGP realism |
 | Missingness realism | DGP realism |
-| Calibration scaling | DGP realism |
-| Trust-score evolution | Deferred architecture |
+| Calibration scaling (INV-017) | DGP realism / Phase 12 program |
+| Trust-score evolution (INV-017) | Deferred architecture / Phase 12 program |
 
 ---
 
