@@ -1,7 +1,7 @@
 # panel_exp roadmap v4 (post Phase 8 / Run 001)
 
-**Status:** active (Phases 11–15 scoped; priorities frozen)  
-**Last reviewed:** 2026-05-20  
+**Status:** active (Phases 11–15 scoped; priorities frozen; dual-track)  
+**Last reviewed:** 2026-05-26  
 **Supersedes:** `docs/ROADMAP_V3.md` (Phases 5–8 execution and v3 priority ordering)  
 **Package version:** 0.2.1  
 
@@ -17,8 +17,82 @@
 | [`docs/METHOD_VALIDATION_PLAN.md`](METHOD_VALIDATION_PLAN.md) | Per-estimator validation paths A–E |
 | [`docs/VALIDATION_COVERAGE.md`](VALIDATION_COVERAGE.md) | Estimator × scenario × inference matrix |
 | [`docs/PHASE8_ALGORITHM_AUDIT.md`](PHASE8_ALGORITHM_AUDIT.md) | Focused mini-audit (superseded in part by Run 001 archive) |
+| [`docs/GEOX_PANEL_EXP_STRATEGIC_CHECKPOINT.md`](GEOX_PANEL_EXP_STRATEGIC_CHECKPOINT.md) | Architecture milestone snapshot; Track A/B framing |
+| [`docs/SCM_JACKKNIFE_CHARACTERIZATION_001.md`](SCM_JACKKNIFE_CHARACTERIZATION_001.md) | Phase 11 OC archive (complete) |
 
 **Read-only roadmap — no package code in this document.**
+
+---
+
+## Dual-track roadmap (post checkpoint)
+
+The roadmap **bifurcates** after the GeoX strategic checkpoint. **Not in scope:** random estimator expansion.
+
+### Track A — evidence / governance stabilization
+
+**Objective:** Make causal claims honest, bounded, and auditable.
+
+| Work | Examples |
+|------|----------|
+| Operating-characteristic characterization | Phase 11 SCM (done); Phase 12 TBRRidge; Phase 14 DID |
+| Calibration archives | Run 001; Run 002 (post–BRB merge) |
+| Failure analysis + eligibility | Registry skip reasons; no threshold tuning |
+| Investigation ledger | `OPEN_INVESTIGATIONS.md` — deferred ≠ abandoned |
+| Correctness preservation | **Merge BRB bound-ordering fix** (not re-promotion) |
+| Governed measurement instruments | Per-estimator: estimand, interval, OC, failure analysis, usage boundary |
+
+**Moat here:** evidence lineage, calibration honesty, estimator governance, explainable trust.
+
+### Track B — experimentation-platform evolution
+
+**Objective:** Unified experimentation architecture inside MIP (mid-term, after Phase 12 stabilizes).
+
+| Work | Examples |
+|------|----------|
+| Shared abstractions (future) | `ExperimentSpec`, `ExperimentEvidence`, `Estimand`, `DiagnosticSummary`, `CalibrationSignal`, `TrustReport`, `RecommendationContext`, `ReleaseGate` |
+| GeoX + A/B + MMM convergence | Shared contracts across geo, conversion lift, budget optimization |
+| Experiment memory + calibration exchange | Cross-study reuse; trust-aware recommendations |
+| LLM orchestration reference | Grounded in investigations + runs; no unsourced promotion |
+
+Detail: [`EXPERIMENTATION_PLATFORM_VISION.md`](EXPERIMENTATION_PLATFORM_VISION.md).
+
+**Track A is gate for Track B** — do not build unified abstractions before TBRRidge OC and governance stabilize.
+
+---
+
+## Governed measurement instruments (mindset)
+
+Treat estimators as **governed measurement instruments**, not interchangeable ML models.
+
+Every estimator should eventually have:
+
+| Artifact | Purpose |
+|----------|---------|
+| Estimand contract | What is estimated, on whom, when |
+| Interval contract | Scale, alignment, unsupported paths |
+| Calibration evidence | n≥100 archives where claimed |
+| OC archive | Width, power, geometry sensitivity |
+| Failure analysis | Mechanism when calibration fails |
+| Investigation registry entry | Open/deferred gaps |
+| Governance status | Supported / expert-review / research / deferred |
+| Intended usage boundary | e.g. SCM jackknife = null monitor only |
+
+This is mature scientific infrastructure — rare among experimentation platforms.
+
+---
+
+## Immediate next step (before Phase 12 / Run 002)
+
+**Merge `brb-bound-ordering-fix` into integration mainline** (`estimator-maturity-metadata` → PR to `main`).
+
+| Does | Does not |
+|------|----------|
+| Remove known BRB bound-ordering defect | Re-promote BRB to nominal eligibility |
+| Improve inference hygiene (`apply_bounds_to_results`, guard) | Change `NOMINAL_CALIBRATION_ELIGIBLE_CONFIGS` |
+| Preserve future rehabilitation options | Make calibration claims |
+| Enable honest Run 002 characterization | Imply TBRRidge production-ready |
+
+**Classification:** correctness preservation only. BRB remains skipped with `brb_bounds_inverted_run001` until Run 002 + failure analysis + OC pass.
 
 ---
 
@@ -45,9 +119,12 @@ Investigation IDs in [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIGATIONS.md) map to g
 | 1 | Create/update **`docs/ROADMAP_V4.md`** (this file) | **Done** |
 | 2 | Add/maintain **`docs/OPEN_INVESTIGATIONS.md`** | **Done** — single source of truth for unresolved gaps |
 | 3 | **Freeze priorities** | **Done** — top investigations and phase order locked here + OPEN_INVESTIGATIONS §1 |
-| 4 | Start **Phase 11** work | Next — SCM UnitJackKnife characterization |
-| 5 | **Re-audit** after Phases 11–15 | Mini-audit (algorithm/statistical); update investigations |
-| 6 | Create **`docs/ROADMAP_V5.md`** | After re-audit — reflects post–Phase 15 evidence only |
+| 4 | **Phase 11** — SCM UnitJackKnife OC | **Done** — `SCM_JACKKNIFE_CHARACTERIZATION_001.md` |
+| 5 | **Merge BRB bound-ordering fix** | **Next** — correctness preservation; not re-promotion |
+| 6 | **Phase 12** — TBRRidge inference rehabilitation | After BRB merge — Run 002 + OC; all outcomes acceptable |
+| 7 | **Re-audit** after Phases 11–15 | Mini-audit; update investigations |
+| 8 | Create **`docs/ROADMAP_V5.md`** | After re-audit |
+| 9 | **Track B** — unified experimentation abstractions | After Phase 12 stabilizes |
 
 ---
 
@@ -109,15 +186,18 @@ One phase per scoped PR (or PR series). **No new estimators, inference modes, ar
 
 ### Phase 12 — TBRRidge inference rehabilitation
 
+**Framing:** This is **not** “make TBRRidge production-ready.” It is: **determine whether TBRRidge inference can become trustworthy enough for calibrated expert-review workflows.**
+
 | Field | Detail |
 |-------|--------|
-| **Goal** | Restore **evidence-backed** relative-ATT calibration for TBRRidge inference modes on honest panels. |
-| **Workstreams** | **BRB** — merge bound fix if needed; **Calibration Run 002** at n≥100; failure analysis if OC fails. **Kfold** — fix multi-treated broadcast **or** document/enforce single-treated-only contract. **Multi-treated geometry** — explicit scenario matrix (default recovery vs single-treated). |
+| **Prerequisite** | BRB bound-ordering fix merged (correctness only — still ineligible until Run 002) |
+| **Goal** | Characterize BRB post-fix, Kfold geometry, single- vs multi-treated behavior, interval validity, OC, failure surfaces |
+| **Workstreams** | **BRB** — Run 002 at n≥100 after merge; failure analysis. **Kfold** — multi-treated fix **or** single-treated-only contract. **Geometry matrix** — default recovery vs single-treated panels |
 | **Investigations** | INV-008, INV-007, INV-003, INV-017 |
-| **In scope** | Inference fixes, guards, recovery tests, Run 002 archive, registry `skip_reason` updates only after OC pass |
-| **Out of scope** | Automatic eligibility without Run 002; new inference modes |
-| **Promotion policy steps** | Full chain per mode (BRB, then Kfold separately) |
-| **Exit** | Run 002 archived; BRB/Kfold either pass null FPR/coverage gates **or** remain skipped with updated failure analysis |
+| **In scope** | OC archives, Run 002, guards, recovery tests; registry update **only** after full advancement policy chain |
+| **Out of scope** | “Production-ready” narrative; automatic eligibility; new inference modes |
+| **Acceptable outcomes** | Re-enable partially · restrict to single-treated · null-monitoring-only · remain expert-review · permanently research-only — **all are valid** |
+| **Exit** | Governance decision doc (→ Phase 13) with Run 002 + OC evidence; eligibility unchanged unless OC passes |
 
 ---
 
@@ -155,6 +235,28 @@ One phase per scoped PR (or PR series). **No new estimators, inference modes, ar
 | **In scope** | `RecoveryRunner` configs and/or `SKIPPED_ESTIMATORS` hardening; METHOD_VALIDATION_PLAN path B vs E decision |
 | **Out of scope** | `production_safe`; full OSQP cross-platform golden refresh (see INV-040) |
 | **Exit** | VALIDATION_COVERAGE row updated with honest maturity evidence path |
+
+---
+
+## 3b. Track B — after Phase 12 (medium-term platform)
+
+Start **unified experimentation abstractions** only after TBRRidge characterization stabilizes.
+
+| Future abstraction | Role |
+|--------------------|------|
+| `ExperimentSpec` | Declared design + estimand + interference |
+| `ExperimentExecution` | Runnable measurement invocation |
+| `ExperimentEvidence` | Portable evidence object (estimand, intervals, run refs, flags) |
+| `Estimand` | Registry entry with family mapping |
+| `DiagnosticSummary` | Reviewer-facing diagnostics aggregate |
+| `CalibrationSignal` | Lifecycle state from recovery → OC → eligibility |
+| `TrustReport` | Honest trust narrative (passes, limits, deferrals) |
+| `RecommendationContext` | Inputs for budget / lift recommendations |
+| `ReleaseGate` | Human-governed promotion checkpoint (not auto-block) |
+
+**Shared across:** GeoX, A/B, conversion lift, MMM replay/calibration, budget optimization, future causal agents.
+
+**Not in v0.2.1:** new schema versions or implementation — vision and sequencing only.
 
 ---
 
