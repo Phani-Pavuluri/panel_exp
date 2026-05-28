@@ -2,6 +2,8 @@
 
 This document is the **source of truth** for which estimators are exercised by in-repo synthetic validation, which are skipped, and what would be required before any `production_safe` promotion. It reflects the code as of package version **0.2.1**.
 
+**Governance:** No estimator is `production_safe`. Nominal calibration eligibility is separate from maturity labels — see registry below and `METHOD_VALIDATION_PLAN.md`.
+
 **Code references:**
 
 | Mechanism | Module |
@@ -69,9 +71,26 @@ Registry: `panel_exp/validation/nominal_calibration.py` → `NOMINAL_CALIBRATION
 
 Evidence: `docs/CALIBRATION_RUN_001.md`, `docs/CALIBRATION_FAILURE_ANALYSIS_001.md`, `docs/METHOD_VALIDATION_PLAN.md`.
 
-**SCM advisory notes** (attached to eligible runs): passed null FPR/coverage in Run 001; zero power on positive scenario; use for null monitoring until power is characterized.
+**SCM advisory notes** (attached to eligible runs): passed null FPR/coverage in Run 001; zero power on positive scenario; Phase 11 (`SCM_JACKKNIFE_CHARACTERIZATION_001.md`) confirms persistent over-coverage and zero power across 144-cell matrix — **null monitoring only**, not lift detection.
+
+**Removed configs (Run 001 + Phase 10):**
+
+| Config | `skip_reason` | Reason (short) |
+|--------|---------------|----------------|
+| `TBRRidge_BlockResidualBootstrap` | `brb_bounds_inverted_run001` | Inverted path bounds → FPR=1.0 on null |
+| `TBRRidge_Kfold` | `kfold_multi_treated_unsupported_run001` | Multi-treated broadcast failure on default `recovery_*` |
+| `DID_Bootstrap` | `did_relative_att_interval_unsupported` | Policy: no relative-ATT interval path |
 
 `TBRRidge` point-estimate recovery (`inference=None`) remains available; only **relative-ATT nominal calibration** claims are restricted.
+
+### Unsupported / research estimators (batch validation)
+
+| Estimator | Batch runner | Recovery runner | Notes |
+|-----------|--------------|-----------------|-------|
+| **SyntheticDID** | Skipped (`SKIPPED_ESTIMATORS`) | No config — `KeyError` | Staggered DGP exists; runner unwired |
+| **TROP** | Skipped | Smoke only (`trop_*`) | Often NaN metrics |
+| **BayesianTBR / HorseShoe** | Skipped | No | JAX MCMC; `research_only` |
+| **MTGP** | Skipped | No | GP MCMC; `research_only` |
 
 ---
 

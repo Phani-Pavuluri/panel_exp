@@ -1,8 +1,36 @@
 # Method validation plan
 
-**Date:** 2026-05-20  
+**Date:** 2026-05-26  
 **Version:** 0.2.1  
-**Inputs:** `docs/CALIBRATION_RUN_001.md`, `docs/CALIBRATION_FAILURE_ANALYSIS_001.md`, `docs/VALIDATION_COVERAGE.md`, `docs/PHASE8_ALGORITHM_AUDIT.md`, `panel_exp/method_metadata.py`
+**Inputs:** `docs/CALIBRATION_RUN_001.md`, `docs/CALIBRATION_FAILURE_ANALYSIS_001.md`, `docs/SCM_JACKKNIFE_CHARACTERIZATION_001.md`, `docs/VALIDATION_COVERAGE.md`, `docs/PHASE8_ALGORITHM_AUDIT.md`, `panel_exp/method_metadata.py`
+
+---
+
+## Validation philosophy
+
+| Principle | Meaning |
+|-----------|---------|
+| **Recovery plumbing ≠ calibration proof** | Wiring `RecoveryRunner` with inference configs does not demonstrate nominal validity. |
+| **Green tests ≠ nominal validity** | Passing CI at small n proves harness behavior, not operating characteristics at n≥100. |
+| **Evidence-driven eligibility** | Nominal-calibration registry changes only after archived runs + failure analysis — not after plumbing merges. |
+| **Estimator-specific OC required** | Each eligible config needs width/power/geometry characterization before promotion claims (Phase 11 SCM template). |
+| **Characterization ≠ certification** | Documented OC narrows role (e.g. null monitor); it does not auto-promote maturity labels. |
+| **Deferred ≠ abandoned** | Removed configs and open investigations remain tracked in `OPEN_INVESTIGATIONS.md`. |
+
+**Governance chain (no promotion without):** estimand definition → recovery evidence → interval alignment → OC characterization → failure analysis → calibration evidence (`ROADMAP_V3.md`, `ROADMAP_V4.md`).
+
+---
+
+## Registry updates (post Run 001 + Phase 11)
+
+| Change | Detail |
+|--------|--------|
+| **BRB removed from nominal calibration eligibility** | `TBRRidge_BlockResidualBootstrap` — `brb_bounds_inverted_run001`; Run 001 FPR=1.0 on null. Re-eligibility requires Run 002 after bound-ordering fix + failure analysis. |
+| **Kfold removed from eligibility on default recovery panels** | `TBRRidge_Kfold` — `kfold_multi_treated_unsupported_run001`; 100% `ValueError` on multi-treated `recovery_*` DGP. |
+| **SCM null-monitoring-only interpretation** | `SCM_UnitJackKnife` remains eligible for **null** FPR/coverage monitoring only; Phase 11 shows zero power and persistent over-coverage — **not** a lift detector under tested geometries. |
+| **Calibration characterization vs certification** | Run 001 + Phase 11 are **characterization archives**; they do **not** certify package-wide nominal calibration or `production_safe` readiness. |
+
+---
 
 ## Validation path legend
 
@@ -26,7 +54,7 @@
 | Method / config | Maturity | Point estimand | Interval available | Interval estimand | Cal. eligibility (pre-Run-001) | Run 001 | Path | Next validation | Recommendation |
 |-----------------|----------|----------------|--------------------|-------------------|----------------------------------|---------|------|-----------------|----------------|
 | **SCM** | expert_review | relative_att_post | Optional (many modes) | varies | B only (default recovery) | — | **B** | Family recovery scenarios (`scm_*`); point bias/ATT direction | Default recovery without inference |
-| **SCM_UnitJackKnife** | expert_review + UnitJackKnife | relative_att_post | Yes | relative_att_post | **A** (only registry member) | Null pass; power 0 | **A*** | Null nominal calibration on default DGP; separate power study with documented CI width | **Keep A** — null monitoring only; Run 001 advisory notes in harness |
+| **SCM_UnitJackKnife** | expert_review + UnitJackKnife | relative_att_post | Yes | relative_att_post | **A** (only registry member) | Null pass; power 0; Phase 11 OC | **A*** | Null monitoring only; Phase 11: conservatism + geometry, not defect | **Keep A** — null monitor role only; not lift certification |
 | **SyntheticControlCVXPY** | expert_review | relative_att_post | Optional | relative_att_post (if wired) | E (no recovery runner) | — | **E** → **B** after wiring | Add `RecoveryRunner` config + smoke | Wire recovery before any calibration |
 | **AugSynth** | unvalidated | relative_att_post | Optional | unknown | E | — | **E** | Basic recovery wiring + unit tests | Skip calibration until validated |
 | **AugSynthCVXPY** | expert_review | relative_att_post | Optional | relative_att_post (if wired) | E | — | **E** → **B** | Same as CVXPY SCM | Skip calibration until runner exists |
@@ -102,9 +130,10 @@ Detailed mechanism, evidence, and confidence: **`docs/CALIBRATION_FAILURE_ANALYS
 
 | Question | Answer |
 |----------|--------|
-| Can we claim “aligned inference configs are nominally calibrated”? | **No** — 2/3 Run 001 configs fail or are ineligible. |
-| Can expert-review use SCM + unit jackknife on similar panels? | **Yes, with caveats** — null FPR OK; treat power as unknown; expect wide CIs. |
-| Can production-tier calibration complete without code changes? | **No** — BRB and Kfold require inference fixes or eligibility removal; SCM power needs interpretation or scenario change, not threshold tuning. |
+| Can we claim “aligned inference configs are nominally calibrated”? | **No** — 2/3 Run 001 configs fail or are ineligible; package-wide certification not supported. |
+| Can expert-review use SCM + unit jackknife on similar panels? | **Yes, with caveats** — null FPR OK; **null monitoring only** (Phase 11); not a lift detector. |
+| Is Run 001 / Phase 11 **certification**? | **No** — these are **characterization archives**; they bound role and document limits, not promote maturity. |
+| Can production-tier calibration complete without code changes? | **No** — BRB and Kfold require inference fixes or remain skipped; SCM role is documented, not expanded by tuning. |
 
 ---
 
