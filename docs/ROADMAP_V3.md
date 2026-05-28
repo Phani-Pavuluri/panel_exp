@@ -1,18 +1,181 @@
 # panel_exp roadmap v3 (post interval/DGP cleanup)
 
-**Status:** frozen (execution order in `docs/ROADMAP_V3_EXECUTION_ORDER.md`)  
-**Last reviewed:** 2026-05-20  
+**Status:** frozen for Phases 5–8; governance sections updated through Phase 11  
+**Last reviewed:** 2026-05-26  
 **Supersedes:** `docs/ROADMAP_V2.md` (priority ordering and open gates)  
+**Forward execution:** Phases 11–15 in `docs/ROADMAP_V4.md`  
 **Inputs:**
 
 | Document | Role |
 |----------|------|
 | `docs/ROADMAP_V2.md` | Prior tiering, PR list, success criteria |
+| `docs/ROADMAP_V4.md` | Phases 11–15, promotion policy, frozen priorities |
 | `docs/ALGORITHM_REASSESSMENT.md` | Original risk inventory (partially closed) |
-| Recent validation work | Commits through `d209f9b` (estimand alignment, interval gating, nominal calibration smoke, DGP semantics) |
+| `docs/SCM_JACKKNIFE_CHARACTERIZATION_001.md` | Phase 11 operating-characteristic evidence |
+| `docs/OPEN_INVESTIGATIONS.md` | Deferred and unresolved gaps |
+| `docs/EXPERIMENTATION_PLATFORM_VISION.md` | Long-term platform architecture |
 
 **Package version:** 0.2.1  
 **Read-only roadmap — no package code in this change.**
+
+---
+
+## Current platform positioning
+
+| Statement | Detail |
+|-----------|--------|
+| **Expert-review platform** | Disciplined contracts, evidence exports, and calibration instrumentation for human reviewers — not unattended certification. |
+| **Not production-safe** | No estimator carries `production_safe` in the maturity catalog; policy tests enforce this. |
+| **No automated decisioning** | Readiness, calibration status, and experiment cards are **advisory**; they do not block runs or approve business decisions. |
+| **No estimator promotions** | Maturity labels unchanged until the estimator advancement policy chain is satisfied per method. |
+| **Validation-first** | Recovery plumbing, green tests, and implemented diagnostics are necessary but not sufficient for calibration or promotion claims. |
+
+---
+
+## Roadmap philosophy shift
+
+| Before (v1–v2) | Now (v3+) |
+|----------------|-----------|
+| Expand estimator and artifact surface | **Measure honestly** — estimand, interval alignment, DGP semantics, typed failures |
+| Assume smoke/recovery implies validity | **Evidence-driven eligibility** — Run 001 + failure analysis before claims |
+| Implicit ATT comparability | **Explicit estimand contracts** — per-family mapping to `relative_att_post` scoring |
+| Calibration as plumbing goal | **Operating-characteristic characterization** before promotion (Phase 11 SCM example) |
+| Roadmap as feature list | **Governance ledger** — `OPEN_INVESTIGATIONS.md` preserves deferred work |
+
+---
+
+## Estimator governance model
+
+Four tiers — **not** maturity labels:
+
+| Tier | Meaning | Examples |
+|------|---------|----------|
+| **Supported** | Runnable in default validation/recovery paths with documented contracts | SCM (point), TBR/TBRRidge (point), DID (point + pretrend) |
+| **Expert-review only** | Shipped with catalog `expert_review`; human review required; limited calibration evidence | SCM_UnitJackKnife (null monitoring only), TBRRidge point recovery |
+| **Research-only** | In registry; skipped or smoke-only in batch validation | TROP, SyntheticDID, BayesianTBR, MTGP |
+| **Deferred** | Intentionally not on near-term promotion path | Spillover estimation, consensus ATT, blocking readiness gates, Jackknife+ |
+
+Governance docs: `VALIDATION_COVERAGE.md`, `METHOD_VALIDATION_PLAN.md`, `OPEN_INVESTIGATIONS.md`.
+
+---
+
+## Estimator advancement policy
+
+**No estimator promotion** (maturity label change, nominal-calibration eligibility expansion, or “recommended for production-like workflows”) without completing this chain **in order**, with archived evidence:
+
+1. **Estimand definition** — quantity, units, time window, mapping to recovery scoring.
+2. **Recovery evidence** — finite metrics or typed failures on standard recovery battery.
+3. **Interval alignment** — coverage/FPR only when `interval_estimand == relative_att_post` (or explicit alternate estimand documented).
+4. **Operating-characteristic characterization** — width, power, geometry sensitivity documented (e.g. Phase 11 SCM doc).
+5. **Failure analysis** — root-cause doc when calibration fails; no threshold tuning without mechanism.
+6. **Calibration evidence** — null FPR/coverage (and power when claimed) at **n≥100**, archived like Run 001.
+
+Skipping a step is **roadmap drift**. See `docs/ROADMAP_V4.md` for phase mapping.
+
+### Estimator → Status → Calibration → Validation → Intended role
+
+| Estimator | Status | Calibration | Validation | Intended role |
+|-----------|--------|-------------|------------|---------------|
+| **SCM** | Expert-review only | Point recovery (B); `SCM_UnitJackKnife` eligible for **null monitoring only** | Batch + recovery (`scm_*`) | Geo-lift point estimate; conservative null monitor via unit jackknife |
+| **TBR** | Expert-review only | None (nominal) | Batch via TBR alias; recovery (`tbr_*`) | Legacy single-treated ridge path; prefer TBRRidge |
+| **TBRRidge** | Expert-review only | Point recovery (B); BRB/Kfold **removed** from nominal eligibility | Recovery (`tbrridge_*`); batch via TBR factory | Multi-geo ridge extrapolation; inference rehab deferred (Phase 12) |
+| **DID** | Expert-review only | **Relative-ATT interval unsupported**; cumulative bootstrap only (C) | Batch + recovery (`did_parallel_trends_*`) | Pooled TWFE ATT with pretrend contract |
+| **SyntheticDID** | Research-only / deferred | None | Skipped batch; no `RecoveryRunner` config | Staggered SDID research; wire before claims |
+| **TROP** | Research-only | None | Smoke recovery only; skipped batch | Sparse-donor robustness research |
+| **BayesianTBR** | Research-only | None | Skipped; JAX optional | Full MCMC uncertainty research |
+| **MTGP** | Research-only | None | Skipped | Bayesian GP MCMC research |
+| **AugSynth family** | Deferred / unvalidated | None | Unit tests only; no recovery wiring | CVXPY augmented SCM; validate before expert use |
+
+**Not claimed:** `production_safe` for any row.
+
+---
+
+## Deferred but strategic capabilities
+
+Intentionally **not** in Phases 5–11 near-term work. **Deferred ≠ abandoned** — see `OPEN_INVESTIGATIONS.md`.
+
+| Capability | Why deferred | Trigger to revisit |
+|------------|--------------|-------------------|
+| Spillover estimation in core estimators | Metadata-only today; D6 in execution order | Partial-interference product requirement |
+| SDID / staggered end-to-end recovery | Research-only; runner unwired | Recovery wiring + staggered OC study |
+| TROP / Bayesian / MTGP productionization | Skipped in batch validation | Path D characterization complete |
+| Consensus ATT across estimators | Heterogeneous aggregation unresolved | Estimand contract + equivalence tests |
+| Automated blocking readiness | Advisory culture; weak calibration inputs | Post–Phase 15 re-audit + product decision |
+| Jackknife+ / new inference modes | Baseline modes not fully characterized | SCM/TBRRidge OC gates pass |
+| Unified experimentation layer (A/B + geo) | Platform vision doc only | Mid-term architecture PR |
+| Conversational / LLM orchestration | Long-term vision | ExperimentEvidence ecosystem mature |
+
+---
+
+## Explicit non-goals
+
+Do **not** schedule without roadmap amendment and re-audit:
+
+- `production_safe` catalog labels or automated promotion from smoke tests  
+- More inference variants (Jackknife+, etc.) before baseline OC evidence  
+- Consensus ATT or cross-estimator “single number” without proof  
+- Automatic blocking gates on readiness alone  
+- New artifact schema versions (cards, bundles, readiness v2) without external consumers  
+- DID relative-ATT intervals via cumulative-CI scaling  
+- Threshold tuning to pass calibration without failure analysis  
+- Unattended “certified causal effect” marketing language  
+
+---
+
+## Validation-first development policy
+
+| Principle | Implication |
+|-----------|-------------|
+| **Recovery plumbing ≠ calibration proof** | `RecoveryRunner` wired with inference does not imply nominal validity. |
+| **Green tests ≠ nominal validity** | CI smoke at n≪100 proves harness; production claims need n≥100 archives. |
+| **Evidence-driven eligibility** | `NOMINAL_CALIBRATION_ELIGIBLE_CONFIGS` changed only after Run + failure analysis. |
+| **Estimator-specific OC required** | Each config needs characterization (Phase 11 SCM template). |
+| **Characterization ≠ certification** | SCM jackknife: null monitor role documented; not lift-detector certification. |
+| **Investigations persist** | Deferred items stay in `OPEN_INVESTIGATIONS.md` until evidence closes them. |
+
+---
+
+## Shipped through Phase 11 (governance record)
+
+| Phase | Deliverable | Evidence |
+|-------|-------------|----------|
+| **5** | Production calibration harness; Run 001 archive | `production_nominal_calibration.py`, `docs/CALIBRATION_RUN_001.md` |
+| **6** | DID interval policy finalized | `did_interval_policy.py`, `did_relative_att_interval_unsupported` |
+| **7** | Opt-in review flags | `build_estimator_review(..., attach_review_flags=True)` |
+| **8** | Focused algorithm mini-audit | `docs/PHASE8_ALGORITHM_AUDIT.md` |
+| **9** | Run 001 evidence archive (n=100, 3 seeds) | `docs/CALIBRATION_RUN_001.md` |
+| **10** | Failure analysis + eligibility tightening | `docs/CALIBRATION_FAILURE_ANALYSIS_001.md`; registry = `SCM_UnitJackKnife` only |
+| **10** | BRB removed from nominal eligibility | `brb_bounds_inverted_run001` |
+| **10** | Kfold removed from nominal eligibility | `kfold_multi_treated_unsupported_run001` |
+| **Foundations** | Estimand alignment, interval gating, DGP semantics | `recovery_runner`, `recovery_intervals.py`, `synthetic_world.py` |
+| **11** | SCM UnitJackKnife OC characterization | `docs/SCM_JACKKNIFE_CHARACTERIZATION_001.md` — conservatism + geometry, not defect |
+
+---
+
+## Roadmap sequencing update
+
+### Near-term (Phases 11–15, `ROADMAP_V4.md`)
+
+- Estimator operating-characteristic characterization  
+- TBRRidge inference rehabilitation (BRB Run 002, Kfold geometry)  
+- Governance decisions (promotion policy chain)  
+- DID and AugSynth/CVXPY OC / wiring  
+
+### Mid-term
+
+- Unified experimentation layer (geo + A/B convergence)  
+- Shared estimand and evidence contracts  
+- MMM calibration integration  
+- ExperimentEvidence ecosystem  
+
+### Long-term
+
+- Conversational experiment intelligence  
+- LLM orchestration agents  
+- Adaptive experimentation and trust-aware optimization  
+- Calibration exchange across studies  
+
+Detail: `docs/EXPERIMENTATION_PLATFORM_VISION.md`.
 
 ---
 
@@ -223,4 +386,4 @@ When re-running assessment (focused mini-audit only; see execution order doc), a
 
 ---
 
-*Roadmap frozen for Phases 5–8 execution order. Supersedes v2 priority ordering for statistical work; does not modify estimator code or maturity labels. Implementation: `docs/ROADMAP_V3_EXECUTION_ORDER.md`.*
+*Roadmap frozen for Phases 5–8 execution order; governance sections updated 2026-05-26 through Phase 11. Forward phases: `docs/ROADMAP_V4.md`. Vision: `docs/EXPERIMENTATION_PLATFORM_VISION.md`. Investigations: `docs/OPEN_INVESTIGATIONS.md`.*
