@@ -1,6 +1,6 @@
 # panel_exp roadmap v4 (post Phase 8 / Run 001)
 
-**Status:** active (Phases 11–15 scoped; priorities frozen; dual-track)  
+**Status:** active (Phases 11–15 scoped; priorities frozen; Tracks A / B / C)  
 **Last reviewed:** 2026-05-28  
 **Supersedes:** `docs/ROADMAP_V3.md` (Phases 5–8 execution and v3 priority ordering)  
 **Package version:** 0.2.1  
@@ -9,7 +9,7 @@
 
 | Document | Role |
 |----------|------|
-| [`docs/OPEN_INVESTIGATIONS.md`](OPEN_INVESTIGATIONS.md) | **Frozen priority backlog** — 38 investigations, scored and deduplicated |
+| [`docs/OPEN_INVESTIGATIONS.md`](OPEN_INVESTIGATIONS.md) | **Frozen priority backlog** — investigations ledger; Track C IDs INV-020–026 |
 | [`docs/ROADMAP_V3.md`](ROADMAP_V3.md) | Phases 5–8 history and shipped measurement-honesty work |
 | [`docs/ROADMAP_V3_EXECUTION_ORDER.md`](ROADMAP_V3_EXECUTION_ORDER.md) | Frozen execution spec for Phases 5–8 |
 | [`docs/CALIBRATION_RUN_001.md`](CALIBRATION_RUN_001.md) | Production nominal calibration evidence (n=100) |
@@ -20,13 +20,17 @@
 | [`docs/GEOX_PANEL_EXP_STRATEGIC_CHECKPOINT.md`](GEOX_PANEL_EXP_STRATEGIC_CHECKPOINT.md) | Architecture milestone snapshot; Track A/B framing |
 | [`docs/SCM_JACKKNIFE_CHARACTERIZATION_001.md`](SCM_JACKKNIFE_CHARACTERIZATION_001.md) | Phase 11 OC archive (complete) |
 
+| [`docs/PHASE12_INVESTIGATION_PLAN.md`](PHASE12_INVESTIGATION_PLAN.md) | Phase 12 governed investigation plan (pre-execution) |
+
 **Read-only roadmap — no package code in this document.**
+
+**Conceptual reference (not implementation blueprint):** Industry conversion-lift and user-level incrementality practice (e.g. Google Conversion Lift methodology — ghost ads, exposure-opportunity logging, user-randomized designs) informs **Track C governance semantics only**. Do not copy external estimators or certify parity without archived OC.
 
 ---
 
-## Dual-track roadmap (post checkpoint)
+## Multi-track roadmap (post checkpoint)
 
-The roadmap **bifurcates** after the GeoX strategic checkpoint. **Not in scope:** random estimator expansion.
+The roadmap **bifurcates and extends** after the GeoX strategic checkpoint. **Not in scope:** random estimator expansion.
 
 ### Track A — evidence / governance stabilization
 
@@ -58,6 +62,33 @@ Detail: [`EXPERIMENTATION_PLATFORM_VISION.md`](EXPERIMENTATION_PLATFORM_VISION.m
 
 **Track A is gate for Track B** — do not build unified abstractions before TBRRidge OC and governance stabilize.
 
+### Track C — unified user-level experimentation & conversion lift
+
+**Objective:** Extend governed experimentation architecture from **geo-level** experiments to **user-randomized incrementality** systems (A/B, conversion lift, holdouts) — as a **future architecture track**, not immediate implementation.
+
+| Future scope (examples) | Role |
+|-------------------------|------|
+| `ExperimentSpec` for user-randomized studies | Declared design, estimand, randomization unit |
+| Ghost Ads / opportunity-logging abstractions | Exposure-eligibility semantics (conceptual; not copied from vendors) |
+| CUPED / variance-reduction governance | Allowed transforms with estimand compatibility rules |
+| Experiment feasibility engine | Governed viability assessment across A/B, CLS, GeoX, holdouts |
+| Sequential experimentation governance | Human-governed stopping; no auto-promotion from peeking |
+| SRM / randomization-integrity diagnostics | Sample-ratio mismatch and assignment-integrity signals |
+| Unified `TrustReport` semantics | Cross-modality outcome taxonomy (see platform vision) |
+| Experiment-to-MMM calibration contracts | Calibrated contribution inputs, not raw lift points |
+| Holdout governance | Cohort/holdout randomization semantics and replay rules |
+| Experiment replay & evidence freshness | Stale / superseded evidence boundaries |
+
+**Explicit:**
+
+- **Future architecture work** — no API, schema, or production behavior in v0.2.1  
+- **Gated behind Track A stabilization** (Phases 11–15 evidence) **and Track B contract foundations** (`ExperimentSpec`, `ExperimentEvidence`, estimand registry)  
+- **Conceptual reference only** — conversion-lift industry practice informs governance; it is **not** a mathematical blueprint to copy  
+
+Detail: [`EXPERIMENTATION_PLATFORM_VISION.md`](EXPERIMENTATION_PLATFORM_VISION.md) § Track C · investigations **INV-020–INV-026** in [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIGATIONS.md).
+
+**Track sequencing:** A → B → C. Do not implement user-level experimentation surfaces before geo governance and shared contracts stabilize.
+
 ---
 
 ## Governed measurement instruments (mindset)
@@ -78,6 +109,37 @@ Every estimator should eventually have:
 | Intended usage boundary | e.g. SCM jackknife = null monitor only |
 
 This is mature scientific infrastructure — rare among experimentation platforms.
+
+---
+
+## Unified experimentation estimand philosophy
+
+GeoX, conversion lift, A/B tests, MMM replay/calibration, and budget optimization must eventually share **governed estimand semantics** — not silent “lift” labels.
+
+### Canonical estimand examples (cross-modality)
+
+| Estimand (conceptual) | Typical modality | Notes |
+|----------------------|------------------|-------|
+| Absolute incremental lift | A/B, CLS | Δ on outcome scale |
+| Relative lift / relative ATT | GeoX, some A/B | Ratio or percent change |
+| ATT | GeoX, DID | Treatment effect on treated |
+| iROAS | MMM + lift calibration | Incremental return on ad spend |
+| Incremental conversions | CLS, A/B | Count scale; lag-sensitive |
+| Incremental revenue | CLS, geo revenue tests | Currency scale |
+| Calibrated contribution | MMM replay | Posterior/prior informed by experiment OC |
+| Δμ (mean shift) | A/B frequentist | Must map to business estimand explicitly |
+
+### Governance rules (future contracts)
+
+| Rule | Intent |
+|------|--------|
+| **Allowed transformations** | CUPED, variance reduction, aggregation — only when estimand contract preserved and documented |
+| **Aggregation semantics** | Pooled vs unit-level vs geo-level — explicit; no implicit consensus ATT (INV-003, INV-020) |
+| **Compatibility rules** | Which estimands may feed MMM calibration, TrustReport, or eligibility registry |
+| **Calibration eligibility** | Nominal calibration claims only on aligned intervals at n≥100 with archived OC |
+| **Trust boundaries** | `TrustReport` states what is supported, inconclusive, incompatible, or stale |
+
+**Today:** geo `relative_att_post` path is the best-documented contract. User-level and MMM estimands are **Track C investigations** — not implemented claims.
 
 ---
 
@@ -125,6 +187,7 @@ Investigation IDs in [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIGATIONS.md) map to g
 | 7 | **Re-audit** after Phases 11–15 | Mini-audit; update investigations |
 | 8 | Create **`docs/ROADMAP_V5.md`** | After re-audit |
 | 9 | **Track B** — unified experimentation abstractions | After Phase 12 stabilizes |
+| 10 | **Track C** — user-level / conversion-lift architecture | After Track B contracts; investigations INV-020–026 |
 
 ---
 
@@ -300,6 +363,52 @@ You are approaching that point — conceptual foundation exists in [`EXPERIMENTA
 
 ---
 
+## 3c. Track C — experimentation outcome taxonomy & feasibility (future)
+
+These concepts inform **TrustReport** and conversational orchestration — not current product behavior.
+
+### Experiment outcome taxonomy (future `TrustReport` semantics)
+
+| Outcome | Meaning |
+|---------|---------|
+| `supported_positive` | Evidence supports positive incremental effect within declared estimand |
+| `supported_negative` | Evidence supports negative incremental effect |
+| `inconclusive` | Insufficient evidence — **does not imply “no effect”** |
+| `underpowered` | Design/feasibility inputs indicate low power at planned duration |
+| `incompatible_estimand` | Measurement export does not match declared estimand contract |
+| `stale` | Evidence superseded or outside freshness policy |
+| `interference_detected` | Interference / spillover diagnostics exceed review threshold |
+| `calibration_unavailable` | No archived calibration path for claimed modality |
+
+All outcomes are **advisory** — human governance retains decision authority.
+
+### Experiment feasibility governance (future shared engine)
+
+**Purpose:** Governed experiment **viability assessment** — not just a power calculator.
+
+| Inputs (examples) | Outputs (examples) |
+|-------------------|-------------------|
+| Baseline conversion rate, expected lift, variance | Feasibility score (advisory) |
+| Spend, duration, traffic, conversion lag | Expected CI width / MDE |
+| Randomization unit, clustering, interference assumptions | Power estimate |
+| Modality (A/B, CLS, GeoX, holdout) | Operational recommendation (run / extend / redesign / do not run) |
+
+Applies across **A/B**, **conversion lift**, **GeoX**, and **holdouts** with modality-specific constraints documented in `ExperimentSpec`.
+
+### Randomization-unit semantics (future architecture)
+
+| Unit | Modality | Connects to |
+|------|----------|-------------|
+| User / session randomization | A/B, CLS | `ExperimentSpec`, exposure eligibility |
+| Exposure-opportunity randomization | Ghost-ad / opportunity logging (conceptual) | INV-026; not vendor-specific implementation |
+| Geo randomization | GeoX | Current panel_exp strength |
+| Cohort / holdout randomization | MMM calibration, incrementality holdouts | INV-023 replay contracts |
+| Aggregate replay calibration | MMM posterior update | Calibrated contribution estimand |
+
+Each unit carries **calibration compatibility rules** and **TrustReport** boundaries — see INV-020–INV-026.
+
+---
+
 ## 4. Research backlog (post Phase 15)
 
 Explicitly **not** in Phases 11–15. Each item requires the **promotion policy** chain before any maturity movement.
@@ -307,7 +416,7 @@ Explicitly **not** in Phases 11–15. Each item requires the **promotion policy*
 | Area | Estimators / topics | Notes |
 |------|---------------------|--------|
 | **SDID** | `SyntheticDID` | Staggered DGP honest; recovery unwired (INV-019, INV-011) |
-| **TROP** | `TROP` | Recovery smoke tolerates NaN; skipped in batch validation (INV-020) |
+| **TROP** | `TROP` | Recovery smoke tolerates NaN; skipped in batch validation (see OPEN_INVESTIGATIONS — TROP) |
 | **BayesianTBR** | `BayesianTBR`, `BayesianTBRHorseShoe` | JAX optional deps; registry `Bayesian` ≠ MCMC path (INV-015) |
 | **MTGP** | `MTGP` | Not validated; Bayesian GP MCMC |
 | **Spillover estimation** | Core SCM/TBR/DID | DGP stress only; no spillover term (INV-009) |
@@ -324,7 +433,7 @@ Stop scheduling these unless **ROADMAP_V5** explicitly reopens after re-audit.
 | Item | Reason |
 |------|--------|
 | **`production_safe` labels** | No estimator meets bar; promotion policy does not allow skip to label |
-| **More inference variants** | Jackknife+, time JK+, etc. — baseline modes not calibrated (INV-026) |
+| **More inference variants** | Jackknife+, time JK+, etc. — baseline modes not calibrated (INV-027) |
 | **Consensus ATT** | Cross-estimator single estimand without proof (INV-001) |
 | **Automatic blocking gates** | Advisory culture; weak calibration inputs make blocking harmful (INV-035) |
 | **Artifact churn** | New card/bundle/readiness schema versions without external consumers (INV-034) |
@@ -383,9 +492,16 @@ Suggested audit triggers also listed in [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIG
 | INV-039 | Package calibration claim | 11–13 |
 | INV-005, INV-006, INV-032 | DID pretrend / intervals / timing | 14 |
 | INV-018, INV-037 | CVXPY / collinearity | 15 |
-| INV-011, INV-019, INV-020 | SDID/TROP/Bayesian | Research backlog |
+| INV-011, INV-019 | SDID staggered validation | Research backlog |
 | INV-009 | Spillover | Research backlog |
 | INV-001, INV-002, INV-036 | Estimand / pooling / truth | Ongoing documentation; not a promotion shortcut |
+| INV-020 | Unified experimentation estimand contracts | Track C |
+| INV-021 | User-randomized TrustReport semantics | Track C |
+| INV-022 | Experiment feasibility & viability governance | Track C |
+| INV-023 | Experiment-to-MMM compatibility resolver | Track C |
+| INV-024 | Sequential experimentation governance | Track C |
+| INV-025 | Randomization integrity & SRM diagnostics | Track C |
+| INV-026 | Exposure eligibility & opportunity logging | Track C |
 
 ---
 

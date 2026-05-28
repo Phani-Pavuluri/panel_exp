@@ -412,7 +412,8 @@ When an LLM agent operates on this codebase or GeoX workflows, it **must**:
 | "Is SCM calibrated?" | Null monitor only; Phase 11 zero power; not lift detector |
 | "Why was BRB removed?" | `CALIBRATION_FAILURE_ANALYSIS_001.md` §2.2; `brb_bounds_inverted_run001` |
 | "Can we compare SCM and DID ATT?" | Estimand not fully enforced — `OPEN_INVESTIGATIONS.md` critical |
-| "What's next technically?" | Phase 12 TBRRidge rehabilitation — `ROADMAP_V4.md` |
+| "What's next technically?" | Phase 12 TBRRidge investigation program — `ROADMAP_V4.md`, `PHASE12_INVESTIGATION_PLAN.md` |
+| "Are we building A/B testing?" | Track C future architecture only — governed contracts first (Track B) |
 
 ---
 
@@ -438,7 +439,7 @@ Full ledger: [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIGATIONS.md).
 
 ### Research / deferred architecture
 
-Spillover estimation · SDID staggered validation · TROP/Bayesian/MTGP · unified experimentation layer · TrustReport evolution · automated blocking gates.
+Spillover estimation · SDID staggered validation · TROP/Bayesian/MTGP · unified experimentation layer (Track B) · user-level / conversion-lift architecture (Track C, INV-020–026) · TrustReport evolution · automated blocking gates.
 
 **Explicit:** every deferred item has a **revisit trigger** in the investigations doc.
 
@@ -472,8 +473,9 @@ Phase 8 verdict **still holds** on:
 5. `CALIBRATION_RUN_001.md` + `CALIBRATION_FAILURE_ANALYSIS_001.md` (evidence story)  
 6. `SCM_JACKKNIFE_CHARACTERIZATION_001.md` (OC characterization template)  
 7. `OPEN_INVESTIGATIONS.md` (what is intentionally unresolved)  
-8. `EXPERIMENTATION_PLATFORM_VISION.md` (where MIP is heading)  
-9. `ROADMAP_V4.md` (what to execute next)
+8. `EXPERIMENTATION_PLATFORM_VISION.md` (Tracks B/C; estimand, TrustReport, feasibility)  
+9. `ROADMAP_V4.md` (Tracks A/B/C; what to execute next)  
+10. `PHASE12_INVESTIGATION_PLAN.md` (Phase 12 pre-execution plan)
 
 **Reviewer path:**
 
@@ -496,15 +498,29 @@ One config is nominally eligible for relative-ATT monitoring (`SCM_UnitJackKnife
 
 ### Experimentation platform baseline
 
-`panel_exp` v0.2.1 is an **expert-review geo measurement engine** with validation instrumentation, not a certified causal decision system. The baseline for MIP integration is **honest exports + archived OC**, not automated trust.
+`panel_exp` v0.2.1 is an **expert-review geo measurement engine** with validation instrumentation, not a certified causal decision system or generic A/B platform. The baseline for MIP integration is **honest exports + archived OC + governed estimand/trust semantics**, not automated trust or significance-test theater.
+
+Future direction (Tracks B/C): unified `ExperimentEvidence`, conversion-lift **governance** (conceptual reference: industry CLS practice — not copied math), MMM calibration contracts, feasibility engine, TrustReport outcome taxonomy — see [`EXPERIMENTATION_PLATFORM_VISION.md`](EXPERIMENTATION_PLATFORM_VISION.md).
 
 ### Strategic direction
 
-Execute Phases 12–15 as **characterization and rehabilitation** — not feature expansion. Then re-audit → `ROADMAP_V5.md`. Mid-term: unified experimentation layer. Long-term: causal operating system with calibration exchange and trust-aware intelligence.
+Execute Phases 12–15 as **characterization and investigation** — not feature expansion. Then re-audit → `ROADMAP_V5.md`.
+
+**Roadmap tracks:**
+
+| Track | Focus |
+|-------|--------|
+| **A** | Evidence / governance stabilization (Phases 11–15) |
+| **B** | Unified experimentation abstractions (`ExperimentSpec`, `ExperimentEvidence`, estimand registry) |
+| **C** | User-level experimentation & conversion lift (A/B, CLS, feasibility, MMM bridge) — future only |
+
+Mid-term: Track B shared contracts. Long-term: **governed experimentation operating system** with calibration exchange, feasibility governance, TrustReport semantics, and conversational intelligence **through governed contracts** — not generic A/B utilities.
+
+**Moat:** trustworthy evidence, calibration governance, estimand alignment, experiment compatibility, explainability, causal OS infrastructure — **not** estimator catalog breadth.
 
 ### Immediate technical next step
 
-**Phase 12 — TBRRidge inference rehabilitation** (Phase 11 complete):
+**Phase 12 — TBRRidge inference investigation program** (Phase 11 complete):
 
 - Merge BRB bound-ordering fix if not already on mainline.  
 - Archive **Calibration Run 002** at n≥100.  
@@ -526,4 +542,4 @@ Execute Phases 12–15 as **characterization and rehabilitation** — not featur
 
 ---
 
-*Strategic checkpoint report. Does not modify code, maturity labels, eligibility registry, or inference behavior. Update after Phase 12–15 evidence or MIP architecture milestones.*
+*Strategic checkpoint report. Does not modify code, maturity labels, eligibility registry, or inference behavior. Update after Phase 12–15 evidence, Track B/C milestones, or MIP architecture milestones.*
