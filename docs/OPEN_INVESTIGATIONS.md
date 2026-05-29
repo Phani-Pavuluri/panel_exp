@@ -4,13 +4,30 @@
 **Last updated:** 2026-05-28  
 **Package version:** 0.2.1  
 
-**Related:** `docs/ROADMAP_V3.md` (governance), `docs/ROADMAP_V4.md` (Phases 11–15; Tracks A/B/C), `docs/METHOD_VALIDATION_PLAN.md`, `docs/VALIDATION_COVERAGE.md`, `docs/EXPERIMENTATION_PLATFORM_VISION.md`
+**Related:** `docs/ROADMAP_V3.md` (governance), `docs/ROADMAP_V4.md` (Phases 11–15; Tracks A/B/C), `docs/METHOD_VALIDATION_PLAN.md`, `docs/VALIDATION_COVERAGE.md`, `docs/EXPERIMENTATION_PLATFORM_VISION.md`, [`docs/DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md)
+
+---
+
+## OPEN_INVESTIGATIONS vs DEFERRED_WORK_REGISTRY
+
+Two complementary ledgers — not duplicates.
+
+| Document | Question it answers | Typical contents |
+|----------|---------------------|------------------|
+| **`OPEN_INVESTIGATIONS.md`** (this file) | **What are we still investigating?** | Open questions, active Phase 12 tracks, hypothesis-to-test framing |
+| **[`DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md)** | **What do we already know is deferred?** | Characterized findings, accepted limitations, deferred fixes, deferred platform capabilities |
+
+**Workflow:** A gap starts as an **investigation** here. When characterized, it receives a **disposition** (Fixed · Deferred · Accepted · Rejected · Escalated) and a **`DEF-xxx`** entry in the deferred registry. Investigations may close; deferred work remains until a revisit trigger fires or the item is fixed.
+
+**Rule (both docs):** No investigation, audit, calibration run, or governance decision may close without a disposition — **no orphan findings**.
 
 ---
 
 ## Purpose
 
 Track **unresolved gaps, deferred work, and open scientific questions** discovered during development. This is institutional memory for honest governance — not an implementation roadmap and not proof of correctness.
+
+For **known future work** already characterized (e.g. DEF-001 KFold geometry, DEF-002 BRB positive under-coverage, DEF-009 aggregation semantics), see [`DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md).
 
 **Deferred ≠ abandoned.** Items remain listed until evidence closes them. Passing tests, calibration plumbing, or implemented diagnostics do not close an investigation without archived operating-characteristic evidence.
 
@@ -523,7 +540,8 @@ Execution detail: [`ROADMAP_V4.md`](ROADMAP_V4.md) § Phase 12 · [`PHASE12_INVE
 | Missingness realism | DGP realism |
 | Calibration scaling (INV-017) | DGP realism / Phase 12 program |
 | Trust-score evolution (INV-017) | Deferred architecture / Phase 12 program |
+| Deferred work registry (DEF-xxx) | [`DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md) |
 
 ---
 
-*Update when investigations close, new calibration runs are archived, or Phase 12–15 / Track C evidence arrives. Do not delete entries without resolution evidence.*
+*Update when investigations close, new calibration runs are archived, or Phase 12–15 / Track C evidence arrives. Do not delete entries without resolution evidence. When a finding is characterized, add or update the matching `DEF-xxx` entry in [`DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md).*
