@@ -311,39 +311,58 @@ See [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIGATIONS.md) § Phase 12 program for c
 | **In scope** | Governance doc / validation plan update; explicit “go / no-go / monitor-only” per config |
 | **Out of scope** | `production_safe` label; catalog auto-promotion; blocking gates |
 | **Exit** | Recorded decision with citations to Run 002 and OC characterization; no promotion without passing promotion policy |
+| **Status** | **Complete** — [`PHASE13_GOVERNANCE_DECISION_001.md`](PHASE13_GOVERNANCE_DECISION_001.md) |
 
 ---
 
-### Phase 14 — DID operating-characteristic characterization
+### Track A governance vs characterization (roadmap clarification)
 
-| Field | Detail |
-|-------|--------|
-| **Goal** | Characterize DID **point and cumulative** inference under recovery scenarios: pretrend violation behavior, interval scale, and what can be claimed without relative-ATT intervals. |
-| **Investigations** | INV-005, INV-006, INV-032 |
-| **In scope** | OC study on `did_parallel_trends_*`; strengthen reviewer-facing contract docs; confirm `did_relative_att_interval_unsupported` remains |
-| **Out of scope** | Cumulative-CI scaling to relative ATT; nominal calibration eligibility for `DID_Bootstrap` on relative ATT |
-| **Promotion policy steps** | Estimand documentation for DID vs recovery score; recovery evidence; **no** relative-ATT calibration claim unless new interval design (deferred) |
-| **Exit** | DID OC appendix: what FPR/coverage mean on cumulative scale; pretrend waiver discipline |
+**Track A governance foundation is complete** (estimand alignment, recovery interval gates, nominal calibration framework, DGP hardening, diagnostics separation, review flags, Phase 12–13 investigations, deferred work registry, [`TRACK_B_ARCHITECTURE_PLAN.md`](TRACK_B_ARCHITECTURE_PLAN.md) planning input).
+
+**Track A estimator characterization remains open** for core long-term expert-review instruments **not yet OC-archived**:
+
+| Phase | Focus | Plan |
+|-------|-------|------|
+| **Phase 14** | AugSynth / AugSynthCVXPY OC | [`PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md`](PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md) |
+| **Phase 15** | Placebo inference OC | [`PHASE15_PLACEBO_INVESTIGATION_PLAN.md`](PHASE15_PLACEBO_INVESTIGATION_PLAN.md) |
+
+**Track B:** Planning may proceed **in parallel** ([`TRACK_B_ARCHITECTURE_PLAN.md`](TRACK_B_ARCHITECTURE_PLAN.md)). **Track B implementation** should not become the **primary** roadmap focus until Phase 14–15 produce archived OC evidence for the intended core instrument set (AugSynth + Placebo).
+
+**Re-scoped from earlier v4 draft:** DID operating-characteristic characterization (formerly listed as Phase 14) remains **deferred** — policy closure on relative-ATT intervals exists; full DID OC is tracked in [`DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md) **DEF-016** and may run at low intensity in parallel or after Phase 15.
 
 ---
 
-### Phase 15 — AugSynth / CVXPY validation
+### Phase 14 — AugSynth operating-characteristic characterization
 
 | Field | Detail |
 |-------|--------|
-| **Goal** | Close the **validation wiring gap** for CVXPY SCM variants: recovery configs or permanent research-only guard. |
-| **Investigations** | INV-018, INV-037 (collinearity scenario) |
-| **In scope** | `RecoveryRunner` configs and/or `SKIPPED_ESTIMATORS` hardening; METHOD_VALIDATION_PLAN path B vs E decision |
-| **Out of scope** | `production_safe`; full OSQP cross-platform golden refresh (see INV-040) |
-| **Exit** | VALIDATION_COVERAGE row updated with honest maturity evidence path |
+| **Goal** | Characterize **AugSynthCVXPY** (and `AugSynth` where viable) point recovery, null/positive OC, geometry sensitivity, and inference viability — before Track B implementation prioritization |
+| **Investigations** | INV-028 (AugSynth OC), INV-018 / INV-037 (collinearity; partial) |
+| **In scope** | Governed investigation per [`PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md`](PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md); characterization-tier + optional n≥100 archive; failure analysis if needed |
+| **Out of scope** | Promotion; eligibility changes; estimator math changes; Track B schema/API work |
+| **Acceptable outcomes** | Expert-review point-only · null monitor only · research-only · deferred wiring |
+| **Exit** | `PHASE14_AUGSYNTH_CHARACTERIZATION_001.md` + DEF-019 disposition update |
+
+---
+
+### Phase 15 — Placebo inference operating-characteristic characterization
+
+| Field | Detail |
+|-------|--------|
+| **Goal** | Characterize **Placebo** inference (`placebo_band` semantics) on SCM/TBR-family paths: null behavior, geometry limits, export discipline — core expert-review null-reference mode |
+| **Investigations** | INV-029 (Placebo OC); placebo vs CI interpretation ([`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIGATIONS.md)) |
+| **In scope** | Governed investigation per [`PHASE15_PLACEBO_INVESTIGATION_PLAN.md`](PHASE15_PLACEBO_INVESTIGATION_PLAN.md); interval-semantics track; geometry matrix |
+| **Out of scope** | Implementation changes; promotion; nominal eligibility without estimand alignment proof |
+| **Acceptable outcomes** | Trustworthy null monitor · expert-review strict export · research-only · policy exclude from relative-ATT calibration |
+| **Exit** | `PHASE15_PLACEBO_CHARACTERIZATION_001.md` + DEF-020 disposition update |
 
 ---
 
 ## 3b. Track B — after Phase 12 (medium-term platform)
 
-Start **unified experimentation abstractions** only after Phase 12 investigation program closes and **estimator governance, evidence contracts, and calibration semantics stabilize.**
+**Track A governance is complete;** Phase 14–15 characterization of AugSynth and Placebo remains before Track B should become the **primary implementation** focus. **Track B planning may proceed in parallel** — see [`TRACK_B_ARCHITECTURE_PLAN.md`](TRACK_B_ARCHITECTURE_PLAN.md).
 
-You are approaching that point — conceptual foundation exists in [`EXPERIMENTATION_PLATFORM_VISION.md`](EXPERIMENTATION_PLATFORM_VISION.md) and the strategic checkpoint — but **implementation waits** on Phase 12 evidence archives and INV-017 governance playbook.
+Start **unified experimentation abstractions** when shared contracts are defined **and** core geo instrument OC archives exist for AugSynth and Placebo (Phase 14–15 exit artifacts).
 
 | Future abstraction | Role |
 |--------------------|------|
@@ -472,10 +491,11 @@ Suggested audit triggers also listed in [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIG
 | Phase 9 | Run 001 archive | Evidence input to Phases 11–12 |
 | Phase 10 | Failure analysis + eligibility tighten | BRB fix shipped; registry SCM-only |
 | **Phase 11** | **Complete** | SCM UnitJackKnife OC — `SCM_JACKKNIFE_CHARACTERIZATION_001.md` |
-| **Phase 12** | **Next** | TBRRidge inference investigation program |
-| **Phase 13** | Planned | TBRRidge promotion **decision** |
-| **Phase 14** | Planned | DID OC characterization |
-| **Phase 15** | Planned | AugSynth/CVXPY validation |
+| **Phase 12** | **Complete** | TBRRidge inference investigation program |
+| **Phase 13** | **Complete** | TBRRidge governance decision — `PHASE13_GOVERNANCE_DECISION_001.md` |
+| **Phase 14** | **Next** | AugSynth OC — `PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md` |
+| **Phase 15** | Planned | Placebo inference OC — `PHASE15_PLACEBO_INVESTIGATION_PLAN.md` |
+| Track B planning | **Parallel** | `TRACK_B_ARCHITECTURE_PLAN.md` (planning only; implementation not primary until 14–15 evidence) |
 | Re-audit | After 15 | → ROADMAP_V5 |
 
 ---
@@ -490,8 +510,10 @@ Suggested audit triggers also listed in [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIG
 | INV-007 | KFold geometry characterization | 12 |
 | INV-017 | Calibration scaling and governance | 12 |
 | INV-039 | Package calibration claim | 11–13 |
-| INV-005, INV-006, INV-032 | DID pretrend / intervals / timing | 14 |
-| INV-018, INV-037 | CVXPY / collinearity | 15 |
+| INV-005, INV-006, INV-032 | DID pretrend / intervals / timing | Deferred (DEF-016); was v4 draft Phase 14 |
+| INV-028 | AugSynth OC characterization | 14 |
+| INV-029 | Placebo inference OC | 15 |
+| INV-018, INV-037 | CVXPY / collinearity | 14 (partial — AugSynth stress) |
 | INV-011, INV-019 | SDID staggered validation | Research backlog |
 | INV-009 | Spillover | Research backlog |
 | INV-001, INV-002, INV-036 | Estimand / pooling / truth | Ongoing documentation; not a promotion shortcut |

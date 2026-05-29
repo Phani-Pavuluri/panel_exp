@@ -330,14 +330,14 @@ Optional: **Resolution date**, **Resolution artifact**, **Supersedes**.
 | Field | Value |
 |-------|--------|
 | **Category** | validation / operational |
-| **Source artifact(s)** | [`ROADMAP_V4.md`](ROADMAP_V4.md) Phase 15 · [`METHOD_VALIDATION_PLAN.md`](METHOD_VALIDATION_PLAN.md) path B vs E · [`VALIDATION_COVERAGE.md`](VALIDATION_COVERAGE.md) |
-| **Status** | **Deferred** |
-| **Why deferred** | Unit tests only; no `RecoveryRunner` configs or permanent research-only guard finalized. |
+| **Source artifact(s)** | [`ROADMAP_V4.md`](ROADMAP_V4.md) Phase 14 · [`PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md`](PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md) · [`METHOD_VALIDATION_PLAN.md`](METHOD_VALIDATION_PLAN.md) · [`VALIDATION_COVERAGE.md`](VALIDATION_COVERAGE.md) |
+| **Status** | **Investigating** → execution via Phase 14 |
+| **Why deferred** | Unit tests only; no `RecoveryRunner` configs or permanent research-only guard finalized. OC program: [`PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md`](PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md). |
 | **Risk if not addressed** | Expert-review maturity overstates automated evidence for CVXPY variants. |
-| **Revisit trigger** | Phase 15 activation; collinearity scenario decision (INV-037) |
-| **Future work** | Recovery configs and/or `SKIPPED_ESTIMATORS` hardening; VALIDATION_COVERAGE update |
-| **Related investigations** | INV-018 · INV-037 |
-| **Related roadmap area** | Phase 15 · Track A |
+| **Revisit trigger** | Phase 14 execution; `PHASE14_AUGSYNTH_CHARACTERIZATION_001.md` archive; collinearity scenario (INV-037) |
+| **Future work** | Execute INV-028; recovery wiring per OC outcome; VALIDATION_COVERAGE update |
+| **Related investigations** | INV-018 · INV-037 · **INV-028** |
+| **Related roadmap area** | Phase 14 · Track A |
 
 #### DEF-018 — Absolute-effect DGP vs relative recovery scoring
 
@@ -353,6 +353,34 @@ Optional: **Resolution date**, **Resolution artifact**, **Supersedes**.
 | **Related investigations** | INV-003 · INV-020 |
 | **Related roadmap area** | Phase 13 · Track B |
 
+#### DEF-019 — AugSynth OC characterization (Phase 14)
+
+| Field | Value |
+|-------|--------|
+| **Category** | validation / calibration |
+| **Source artifact(s)** | [`PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md`](PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md) · [`VALIDATION_COVERAGE.md`](VALIDATION_COVERAGE.md) AugSynthCVXPY row |
+| **Status** | **Investigating** (plan committed; execution pending) |
+| **Why deferred** | AugSynthCVXPY is expert-review tier without n≥100 OC archive; no recovery runner wiring; strategic core-instrument candidate uncharacterized. |
+| **Risk if not addressed** | Track B trust contracts cite immature instrument; GeoX over-claims AugSynth validity. |
+| **Revisit trigger** | Phase 14 execution; `PHASE14_AUGSYNTH_CHARACTERIZATION_001.md` archive; Track B implementation prioritization |
+| **Future work** | INV-028 geometry + null/positive OC; failure analysis if anti-calibration; governance disposition (expert-review / research-only / restrict) |
+| **Related investigations** | INV-028 · INV-018 · INV-037 · DEF-017 |
+| **Related roadmap area** | Phase 14 · Track A · Track B gate |
+
+#### DEF-020 — Placebo inference OC characterization (Phase 15)
+
+| Field | Value |
+|-------|--------|
+| **Category** | inference / calibration |
+| **Source artifact(s)** | [`PHASE15_PLACEBO_INVESTIGATION_PLAN.md`](PHASE15_PLACEBO_INVESTIGATION_PLAN.md) · [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIGATIONS.md) § Placebo vs CI · `IntervalType.PLACEBO_BAND` |
+| **Status** | **Investigating** (plan committed; execution pending) |
+| **Why deferred** | Placebo catalog-listed for SCM/TBR but no OC archive; `placebo_band` vs CI semantic gap; not in nominal calibration registry. |
+| **Risk if not addressed** | Placebo bands misread as confidence intervals; TrustReport mis-calibration claims; wrong null-monitor trust. |
+| **Revisit trigger** | Phase 15 execution; `PHASE15_PLACEBO_CHARACTERIZATION_001.md` archive; TrustReport placebo export policy |
+| **Future work** | INV-029 null/positive OC; interval-alignment policy decision; export discipline recommendations |
+| **Related investigations** | INV-029 · placebo vs CI (OPEN_INVESTIGATIONS) |
+| **Related roadmap area** | Phase 15 · Track A · Track B gate |
+
 ---
 
 ## 4. Revisit-trigger policy
@@ -365,13 +393,14 @@ Every deferred or accepted entry **must** have an explicit revisit trigger. Trig
 |---------|-------------------------|
 | **Need for multi-treated inference** | DEF-001, DEF-009 |
 | **Eligibility reconsideration** | DEF-001, DEF-002, DEF-015 |
-| **Phase gate (13 / 14 / 15)** | DEF-002, DEF-009, DEF-016, DEF-017 |
+| **Phase gate (13 / 14 / 15)** | DEF-002, DEF-009, DEF-016, DEF-017, **DEF-019**, **DEF-020** |
+| **Track B implementation prioritization** | DEF-019, DEF-020 (core instrument OC) |
 | **Track B activation** | DEF-008, DEF-011, DEF-014 |
 | **Track C activation** | DEF-010, DEF-011, DEF-012, DEF-004 |
 | **MMM integration work** | DEF-012, DEF-011 |
 | **TrustReport implementation** | DEF-008, DEF-009, DEF-010, DEF-018 |
 | **Release-gate expansion** | DEF-008, DEF-015 |
-| **Recovery wiring decision** | DEF-005, DEF-006, DEF-007, DEF-017 |
+| **Recovery wiring decision** | DEF-005, DEF-006, DEF-007, DEF-017, **DEF-019** |
 | **Product interference / spillover requirement** | DEF-004 |
 | **New relative-ATT interval design (DID)** | DEF-003 |
 
@@ -472,6 +501,10 @@ Phase 12 investigation tracks closed by [`PHASE13_GOVERNANCE_DECISION_001.md`](P
 | INV-008 | Deferred (partial fix: bounds) | DEF-002 |
 | INV-017 | Deferred | DEF-008 |
 | Phase 11 SCM OC | Accepted | DEF-013 |
+| INV-028 (AugSynth OC) | Investigating | DEF-019, DEF-017 |
+| INV-029 (Placebo OC) | Investigating | DEF-020 |
+
+**Phase 14–15 (planned):** AugSynth and Placebo characterization plans committed — execution pending ([`PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md`](PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md), [`PHASE15_PLACEBO_INVESTIGATION_PLAN.md`](PHASE15_PLACEBO_INVESTIGATION_PLAN.md)).
 
 **Eligibility unchanged:** `NOMINAL_CALIBRATION_ELIGIBLE_CONFIGS = {"SCM_UnitJackKnife"}`.
 
@@ -499,10 +532,10 @@ Entries moved here when **Fixed** or **Retired**. None at initial publication (2
 
 | Category | IDs |
 |----------|-----|
-| inference / geometry | DEF-001, DEF-002, DEF-003, DEF-006 |
-| calibration | DEF-002, DEF-008, DEF-013, DEF-015, DEF-016 |
+| inference / geometry | DEF-001, DEF-002, DEF-003, DEF-006, **DEF-020** |
+| calibration | DEF-002, DEF-008, DEF-013, DEF-015, DEF-016, **DEF-019**, **DEF-020** |
 | causal_validity / estimand | DEF-003, DEF-004, DEF-009, DEF-014, DEF-018 |
-| validation / estimators | DEF-005, DEF-006, DEF-007, DEF-017 |
+| validation / estimators | DEF-005, DEF-006, DEF-007, DEF-017, **DEF-019** |
 | platform / Track C | DEF-010, DEF-011, DEF-012 |
 | governance / architecture | DEF-008, DEF-011 |
 
