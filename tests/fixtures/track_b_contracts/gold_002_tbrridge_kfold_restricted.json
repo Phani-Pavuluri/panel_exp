@@ -1,0 +1,123 @@
+{
+  "fixture_id": "GOLD-002",
+  "fixture_version": "1.0.0",
+  "description": "TBRRidge + KFold multi-treated. Complete evidence export. Restricted instrument — not trusted for calibration-backed lift claims.",
+  "binding_docs": [
+    "TRACK_B_CONTRACT_TEST_PLAN_001",
+    "TRACK_B_MEASUREMENT_INSTRUMENT_CATALOG_001",
+    "DEF-001"
+  ],
+  "spec": {
+    "study_id": "fixture-study-gold-002",
+    "spec_version": "1",
+    "modality": "geo",
+    "study_purpose": "business",
+    "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+    "interval_estimand_expectation_id": "geo.relative_att_post.pooled_path.relative",
+    "geometry_class": "multi_treated_default",
+    "mmm_calibration_intent": false
+  },
+  "run_artifacts_stub": {
+    "config_alias": "TBRRidge_Kfold",
+    "estimator_family": "tbrridge",
+    "inference_method": "kfold",
+    "n_treated": 4,
+    "geometry_observed": "multi_treated_default",
+    "run_status": "success",
+    "path_interval_type_legacy": "confidence_interval",
+    "has_path_intervals": true
+  },
+  "adapter_expected_output": {
+    "export_status": "complete",
+    "experiment_evidence": {
+      "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+      "exported_estimand_id": "geo.relative_att_post.pooled_path.relative",
+      "scored_estimand_id": null,
+      "interval_estimand_id": "geo.relative_att_post.pooled_path.relative",
+      "measurement_instrument_id": "geo.tbrridge.kfold.relative_att_post.multi_treated_default.confidence_interval",
+      "instrument_family": "tbrridge",
+      "inference_method": "kfold",
+      "geometry_class": "multi_treated_default",
+      "interval_semantics": "confidence_interval",
+      "config_alias": "TBRRidge_Kfold",
+      "measurement_instrument_id_resolved_from": "config_hash",
+      "instrument_plan_violation": false,
+      "calibration_signal_id": "cs-geo-tbr-kf-001",
+      "calibration_signal_version": "1",
+      "calibration_signal_missing": false,
+      "calibration_signal_stale": false,
+      "mmm_intake_blocked": false,
+      "mmm_export_ready": false
+    },
+    "alignment_facts": {
+      "declared_exported_aligned": true,
+      "declared_interval_aligned": true,
+      "exported_interval_aligned": true,
+      "scored_exported_aligned": null,
+      "scale_compatible": true,
+      "aggregation_divergence_detected": false,
+      "geometry_within_scope": true,
+      "interval_semantics_compatible": true,
+      "transform_declared": false,
+      "transform_evidence_complete": null
+    },
+    "diagnostic_summary": {
+      "export_status": "complete",
+      "primary_context_estimand_id": "geo.relative_att_post.pooled_path.relative",
+      "diagnostic_estimand_id": null,
+      "measurement_instrument_id": "geo.tbrridge.kfold.relative_att_post.multi_treated_default.confidence_interval",
+      "must_not_contain_trust_outcome": true
+    },
+    "must_not_contain_on_evidence": [
+      "trust_outcome",
+      "alignment_verdict"
+    ]
+  },
+  "calibration_signal_binding": {
+    "lookup_key": "geo.tbrridge.kfold.relative_att_post.multi_treated_default.confidence_interval",
+    "expected_signal_id": "cs-geo-tbr-kf-001",
+    "expected_signal_version": "1",
+    "expected_calibration_estimand_id": "geo.relative_att_post.pooled_path.relative",
+    "expected_usage_boundary": "runnable_not_trusted",
+    "expected_lift_detection_calibrated": false,
+    "expected_lifecycle_state": "restricted",
+    "signal_must_not_contain_trust_outcome": true
+  },
+  "trust_report_expected_output": {
+    "alignment_reference_estimand_id": "geo.relative_att_post.pooled_path.relative",
+    "scenarios": [
+      {
+        "scenario_id": "calibration_backed_lift",
+        "intended_use": "business_lift_launch",
+        "claim_type": "positive_lift_detection",
+        "alignment_verdict": "aligned",
+        "trust_outcome": "inconclusive",
+        "notes": "May also be not_assessable per policy. Must NOT be supported citing Run 001 alone. DEF-001."
+      },
+      {
+        "scenario_id": "measurement_record_only",
+        "intended_use": "measurement_audit",
+        "claim_type": "point_directional_read",
+        "alignment_verdict": "aligned",
+        "trust_outcome": "inconclusive",
+        "notes": "Evidence export is valid measurement record. Not governed lift calibration."
+      }
+    ]
+  },
+  "expected_test_ids": [
+    "INST-008",
+    "INST-009",
+    "EV-001",
+    "EV-008",
+    "ALIGN-002",
+    "CS-003",
+    "CS-007",
+    "TR-008",
+    "TR-011"
+  ],
+  "forbidden_regressions": ["F5", "F12"],
+  "negative_assertions": [
+    "trust_outcome must not be supported for calibration_backed_lift",
+    "config_alias TBRRidge_Kfold must not be used as canonical measurement_instrument_id"
+  ]
+}

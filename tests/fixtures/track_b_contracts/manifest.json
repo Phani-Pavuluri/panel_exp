@@ -1,0 +1,71 @@
+{
+  "manifest_version": "1.0.0",
+  "description": "Track B contract golden fixture index (B5a)",
+  "binding_doc": "docs/TRACK_B_CONTRACT_TEST_PLAN_001.md",
+  "fixtures": [
+    {
+      "fixture_id": "GOLD-001",
+      "file": "gold_001_scm_jk_null_monitor.json",
+      "export_status": "complete",
+      "has_variants": false
+    },
+    {
+      "fixture_id": "GOLD-002",
+      "file": "gold_002_tbrridge_kfold_restricted.json",
+      "export_status": "complete",
+      "has_variants": false
+    },
+    {
+      "fixture_id": "GOLD-003",
+      "file": "gold_003_augsynth_point_no_ci.json",
+      "export_status": "complete",
+      "has_variants": false
+    },
+    {
+      "fixture_id": "GOLD-004",
+      "file": "gold_004_mmm_intake_transform_required.json",
+      "export_status": "complete",
+      "has_variants": true,
+      "variant_ids": ["no_transform_ref", "transform_ref_incomplete_pipeline"]
+    },
+    {
+      "fixture_id": "GOLD-005",
+      "file": "gold_005_placebo_semantics.json",
+      "export_status": "complete",
+      "has_variants": false,
+      "has_mislabel_regression_variant": true
+    },
+    {
+      "fixture_id": "GOLD-006",
+      "file": "gold_006_missing_declared_estimand_blocked.json",
+      "export_status": "blocked",
+      "has_variants": false
+    },
+    {
+      "fixture_id": "GOLD-007",
+      "file": "gold_007_legacy_mapping.json",
+      "export_status": "mixed",
+      "has_variants": true,
+      "variant_ids": ["relative_att_post_pooled_policy_maps", "unknown_legacy_blocks"]
+    },
+    {
+      "fixture_id": "GOLD-008",
+      "file": "gold_008_did_cumulative_not_relative.json",
+      "export_status": "complete",
+      "has_variants": false
+    },
+    {
+      "fixture_id": "GOLD-009",
+      "file": "gold_009_ab_drift.json",
+      "export_status": "complete",
+      "has_variants": false,
+      "has_homogeneous_control_variant": true
+    },
+    {
+      "fixture_id": "GOLD-010",
+      "file": "gold_010_placebo_geometry.json",
+      "export_status": "partial",
+      "has_variants": false
+    }
+  ]
+}

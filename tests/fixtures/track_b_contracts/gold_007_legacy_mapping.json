@@ -1,0 +1,109 @@
+{
+  "fixture_id": "GOLD-007",
+  "fixture_version": "1.0.0",
+  "description": "Legacy TargetEstimand maps only through explicit registry table. UNKNOWN blocks export.",
+  "binding_docs": [
+    "TRACK_B_CONTRACT_TEST_PLAN_001",
+    "TRACK_B_ADAPTER_ID_RESOLUTION_001"
+  ],
+  "variants": [
+    {
+      "variant_id": "relative_att_post_pooled_policy_maps",
+      "spec": {
+        "study_id": "fixture-study-gold-007a",
+        "spec_version": "1",
+        "modality": "geo",
+        "study_purpose": "business",
+        "declared_estimand_id": null,
+        "legacy_target_estimand": "relative_att_post",
+        "legacy_aggregation_policy": "pooled_path",
+        "geometry_class": "multi_treated_default"
+      },
+      "run_artifacts_stub": {
+        "config_alias": "SCM_UnitJackKnife",
+        "estimator_family": "synthetic_control",
+        "inference_method": "unit_jackknife",
+        "n_treated": 4,
+        "run_status": "success"
+      },
+      "adapter_expected_output": {
+        "export_status": "complete",
+        "legacy_mapping_applied": true,
+        "experiment_evidence": {
+          "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+          "exported_estimand_id": "geo.relative_att_post.pooled_path.relative",
+          "measurement_instrument_id": "geo.synthetic_control.unit_jackknife.relative_att_post.multi_treated_default.confidence_interval",
+          "estimand_family_legacy": "relative_att_post"
+        },
+        "alignment_facts": {
+          "declared_exported_aligned": true
+        }
+      },
+      "trust_report_expected_output": {
+        "scenarios": [
+          {
+            "scenario_id": "default_business",
+            "trust_outcome": "inconclusive",
+            "alignment_verdict": "aligned",
+            "notes": "Verdict depends on claim type; IDs must be registry canonical after mapping."
+          }
+        ]
+      }
+    },
+    {
+      "variant_id": "unknown_legacy_blocks",
+      "spec": {
+        "study_id": "fixture-study-gold-007b",
+        "spec_version": "1",
+        "modality": "geo",
+        "study_purpose": "business",
+        "declared_estimand_id": null,
+        "legacy_target_estimand": "unknown",
+        "geometry_class": "multi_treated_default"
+      },
+      "run_artifacts_stub": {
+        "config_alias": "SCM_UnitJackKnife",
+        "estimator_family": "synthetic_control",
+        "inference_method": "unit_jackknife",
+        "n_treated": 4,
+        "run_status": "success"
+      },
+      "adapter_expected_output": {
+        "export_status": "blocked",
+        "block_reason": "legacy_target_estimand_unknown",
+        "legacy_mapping_applied": false,
+        "experiment_evidence": {
+          "declared_estimand_id": null,
+          "exported_estimand_id": "unknown",
+          "decision_grade_export_permitted": false
+        }
+      },
+      "trust_report_expected_output": {
+        "composition_permitted": false,
+        "scenarios": [
+          {
+            "scenario_id": "any",
+            "trust_outcome": "not_assessable",
+            "alignment_verdict": "not_assessable"
+          }
+        ]
+      }
+    }
+  ],
+  "legacy_translation_table_reference": {
+    "relative_att_post+pooled_path": "geo.relative_att_post.pooled_path.relative",
+    "relative_att_post+cell_mean": "geo.relative_att_post.cell_mean.relative",
+    "cumulative_att": "geo.cumulative_att.full_post.absolute",
+    "absolute_att_post": "geo.mean_post_period_att.post_window.absolute",
+    "unknown": "BLOCK"
+  },
+  "expected_test_ids": [
+    "SPEC-003",
+    "SPEC-004"
+  ],
+  "forbidden_regressions": ["F1"],
+  "negative_assertions": [
+    "legacy relative_att_post string alone is not sufficient for alignment without aggregation policy",
+    "unknown legacy must not default to pooled_path"
+  ]
+}

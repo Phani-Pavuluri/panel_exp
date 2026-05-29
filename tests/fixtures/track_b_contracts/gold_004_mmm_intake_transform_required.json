@@ -1,0 +1,128 @@
+{
+  "fixture_id": "GOLD-004",
+  "fixture_version": "1.0.0",
+  "description": "MMM calibration intent on geo relative ATT. Transform required. Variants for missing ref vs incomplete pipeline.",
+  "binding_docs": [
+    "TRACK_B_CONTRACT_TEST_PLAN_001",
+    "TRACK_B_ESTIMAND_REGISTRY_001",
+    "DEF-012"
+  ],
+  "variants": [
+    {
+      "variant_id": "no_transform_ref",
+      "spec": {
+        "study_id": "fixture-study-gold-004a",
+        "spec_version": "1",
+        "modality": "geo",
+        "study_purpose": "business",
+        "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+        "interval_estimand_expectation_id": "geo.relative_att_post.pooled_path.relative",
+        "geometry_class": "multi_treated_default",
+        "mmm_calibration_intent": true,
+        "estimand_transform_ref": null
+      },
+      "run_artifacts_stub": {
+        "config_alias": "SCM_UnitJackKnife",
+        "estimator_family": "synthetic_control",
+        "inference_method": "unit_jackknife",
+        "n_treated": 4,
+        "run_status": "success"
+      },
+      "adapter_expected_output": {
+        "export_status": "complete",
+        "experiment_evidence": {
+          "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+          "exported_estimand_id": "geo.relative_att_post.pooled_path.relative",
+          "measurement_instrument_id": "geo.synthetic_control.unit_jackknife.relative_att_post.multi_treated_default.confidence_interval",
+          "mmm_intake_blocked": true,
+          "mmm_export_ready": false,
+          "transform_source_estimand_id": "geo.relative_att_post.pooled_path.relative",
+          "transform_target_estimand_id": null,
+          "transform_evidence_complete": false
+        },
+        "alignment_facts": {
+          "declared_exported_aligned": true,
+          "transform_declared": false,
+          "transform_evidence_complete": false,
+          "mmm_intake_blocked": true
+        }
+      },
+      "trust_report_expected_output": {
+        "scenarios": [
+          {
+            "scenario_id": "mmm_intake",
+            "intended_use": "mmm_calibration_intake",
+            "claim_type": "mmm_delta_mu",
+            "alignment_verdict": "incompatible",
+            "trust_outcome": "unsupported",
+            "notes": "SPEC-007. No estimand_transform_ref."
+          }
+        ]
+      }
+    },
+    {
+      "variant_id": "transform_ref_incomplete_pipeline",
+      "spec": {
+        "study_id": "fixture-study-gold-004b",
+        "spec_version": "1",
+        "modality": "geo",
+        "study_purpose": "business",
+        "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+        "interval_estimand_expectation_id": "geo.relative_att_post.pooled_path.relative",
+        "geometry_class": "multi_treated_default",
+        "mmm_calibration_intent": true,
+        "estimand_transform_ref": "transform.geo_pooled_relative_to_mmm_delta_mu.v1"
+      },
+      "run_artifacts_stub": {
+        "config_alias": "SCM_UnitJackKnife",
+        "estimator_family": "synthetic_control",
+        "inference_method": "unit_jackknife",
+        "n_treated": 4,
+        "run_status": "success",
+        "transform_pipeline_attested": false
+      },
+      "adapter_expected_output": {
+        "export_status": "complete",
+        "experiment_evidence": {
+          "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+          "exported_estimand_id": "geo.relative_att_post.pooled_path.relative",
+          "measurement_instrument_id": "geo.synthetic_control.unit_jackknife.relative_att_post.multi_treated_default.confidence_interval",
+          "mmm_intake_blocked": true,
+          "mmm_export_ready": false,
+          "transform_source_estimand_id": "geo.relative_att_post.pooled_path.relative",
+          "transform_target_estimand_id": "mmm.delta_mu.simulated_response.absolute",
+          "transform_evidence_complete": false
+        },
+        "alignment_facts": {
+          "declared_exported_aligned": true,
+          "transform_declared": true,
+          "transform_evidence_complete": false,
+          "mmm_intake_blocked": true
+        }
+      },
+      "trust_report_expected_output": {
+        "scenarios": [
+          {
+            "scenario_id": "mmm_intake",
+            "intended_use": "mmm_calibration_intake",
+            "claim_type": "mmm_delta_mu",
+            "alignment_verdict": "aligned",
+            "trust_outcome": "not_assessable",
+            "notes": "Transform declared but pipeline not complete. DEF-012."
+          }
+        ]
+      }
+    }
+  ],
+  "expected_test_ids": [
+    "SPEC-007",
+    "ALIGN-005",
+    "ALIGN-006",
+    "TR-005"
+  ],
+  "forbidden_regressions": ["F6"],
+  "negative_assertions": [
+    "exported_estimand_id alone must not set mmm_export_ready true",
+    "geo CalibrationSignal must not license direct MMM intake without transform OC"
+  ]
+}

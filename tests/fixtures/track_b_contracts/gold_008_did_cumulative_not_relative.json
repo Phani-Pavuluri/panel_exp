@@ -1,0 +1,117 @@
+{
+  "fixture_id": "GOLD-008",
+  "fixture_version": "1.0.0",
+  "description": "DID bootstrap cumulative interval target is not relative ATT interval. Relative lift claim via DID interval unsupported.",
+  "binding_docs": [
+    "TRACK_B_CONTRACT_TEST_PLAN_001",
+    "TRACK_B_ESTIMAND_REGISTRY_001",
+    "DEF-003"
+  ],
+  "spec": {
+    "study_id": "fixture-study-gold-008",
+    "spec_version": "1",
+    "modality": "geo",
+    "study_purpose": "business",
+    "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+    "interval_estimand_expectation_id": "geo.relative_att_post.pooled_path.relative",
+    "geometry_class": "multi_treated_default",
+    "mmm_calibration_intent": false
+  },
+  "run_artifacts_stub": {
+    "config_alias": "DID_Bootstrap",
+    "estimator_family": "did",
+    "inference_method": "bootstrap",
+    "n_treated": 4,
+    "geometry_observed": "multi_treated_default",
+    "run_status": "success",
+    "path_interval_type_legacy": "cumulative_att_interval",
+    "did_interval_policy": "did_relative_att_interval_unsupported",
+    "has_path_intervals": true
+  },
+  "adapter_expected_output": {
+    "export_status": "complete",
+    "experiment_evidence": {
+      "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+      "exported_estimand_id": "geo.relative_att_post.pooled_path.relative",
+      "scored_estimand_id": null,
+      "interval_estimand_id": "geo.cumulative_att.did_bootstrap.absolute",
+      "measurement_instrument_id": "geo.did.bootstrap.relative_att_post.multi_treated_default.cumulative_att_interval",
+      "instrument_family": "did",
+      "inference_method": "bootstrap",
+      "geometry_class": "multi_treated_default",
+      "interval_semantics": "cumulative_att_interval",
+      "config_alias": "DID_Bootstrap",
+      "measurement_instrument_id_resolved_from": "config_hash",
+      "calibration_signal_id": "cs-geo-did-boot-001",
+      "calibration_signal_version": "1",
+      "calibration_signal_missing": false,
+      "mmm_intake_blocked": false,
+      "mmm_export_ready": false
+    },
+    "alignment_facts": {
+      "declared_exported_aligned": true,
+      "declared_interval_aligned": false,
+      "exported_interval_aligned": false,
+      "scale_compatible": false,
+      "aggregation_divergence_detected": false,
+      "geometry_within_scope": true,
+      "interval_semantics_compatible": true,
+      "transform_declared": false
+    },
+    "diagnostic_summary": {
+      "export_status": "complete",
+      "primary_context_estimand_id": "geo.relative_att_post.pooled_path.relative",
+      "diagnostic_estimand_id": "geo.cumulative_att.did_bootstrap.absolute",
+      "measurement_instrument_id": "geo.did.bootstrap.relative_att_post.multi_treated_default.cumulative_att_interval",
+      "must_not_contain_trust_outcome": true
+    },
+    "must_not_contain_on_evidence": [
+      "trust_outcome",
+      "alignment_verdict"
+    ]
+  },
+  "calibration_signal_binding": {
+    "lookup_key": "geo.did.bootstrap.relative_att_post.multi_treated_default.cumulative_att_interval",
+    "expected_signal_id": "cs-geo-did-boot-001",
+    "expected_signal_version": "1",
+    "expected_calibration_estimand_id": "geo.cumulative_att.did_bootstrap.absolute",
+    "expected_usage_boundary": "expert_review",
+    "expected_lift_detection_calibrated": false,
+    "expected_lifecycle_state": "characterized",
+    "signal_must_not_contain_trust_outcome": true
+  },
+  "trust_report_expected_output": {
+    "alignment_reference_estimand_id": "geo.relative_att_post.pooled_path.relative",
+    "scenarios": [
+      {
+        "scenario_id": "relative_lift_via_did_interval",
+        "intended_use": "business_lift_launch",
+        "claim_type": "positive_lift_detection",
+        "alignment_verdict": "incompatible",
+        "trust_outcome": "unsupported",
+        "notes": "DEF-003. Interval is cumulative absolute. F4."
+      },
+      {
+        "scenario_id": "did_cumulative_diagnostic",
+        "intended_use": "expert_review_diagnostic",
+        "claim_type": "cumulative_att_read",
+        "alignment_verdict": "aligned",
+        "trust_outcome": "inconclusive",
+        "notes": "Claim must reference cumulative estimand explicitly."
+      }
+    ]
+  },
+  "expected_test_ids": [
+    "EV-003",
+    "EV-007",
+    "ALIGN-004",
+    "TR-005",
+    "TR-012",
+    "DIAG-002"
+  ],
+  "forbidden_regressions": ["F4"],
+  "negative_assertions": [
+    "interval_estimand_id must not be geo.relative_att_post.pooled_path.relative when DID bootstrap cumulative policy applies",
+    "must not treat cumulative interval as relative ATT coverage for lift"
+  ]
+}
