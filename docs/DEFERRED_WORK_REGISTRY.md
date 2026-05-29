@@ -4,7 +4,7 @@
 **Last updated:** 2026-05-28  
 **Package version:** 0.2.1  
 
-**Related:** [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIGATIONS.md) (active questions) · [`ROADMAP_V4.md`](ROADMAP_V4.md) (phase sequencing) · [`PHASE12_INV017_CALIBRATION_GOVERNANCE_001.md`](PHASE12_INV017_CALIBRATION_GOVERNANCE_001.md) (archive lifecycle)
+**Related:** [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIGATIONS.md) (active questions) · [`ROADMAP_V4.md`](ROADMAP_V4.md) (phase sequencing) · [`PHASE12_INV017_CALIBRATION_GOVERNANCE_001.md`](PHASE12_INV017_CALIBRATION_GOVERNANCE_001.md) (archive lifecycle) · [`PHASE13_GOVERNANCE_DECISION_001.md`](PHASE13_GOVERNANCE_DECISION_001.md) (Phase 12 closure)
 
 ---
 
@@ -458,6 +458,22 @@ This registry **is**:
 - **Disposition enforcement** so findings do not become orphans  
 - **Revisit-trigger catalog** for honest reactivation  
 - **Bridge** between investigations (questions) and roadmap (sequencing)
+
+---
+
+### Phase 12–13 closure (2026-05-28)
+
+Phase 12 investigation tracks closed by [`PHASE13_GOVERNANCE_DECISION_001.md`](PHASE13_GOVERNANCE_DECISION_001.md). Corresponding dispositions:
+
+| Investigation | Disposition | DEF entry |
+|---------------|-------------|-----------|
+| INV-003 | Escalated → Deferred | DEF-009, DEF-018 |
+| INV-007 | Deferred | DEF-001 |
+| INV-008 | Deferred (partial fix: bounds) | DEF-002 |
+| INV-017 | Deferred | DEF-008 |
+| Phase 11 SCM OC | Accepted | DEF-013 |
+
+**Eligibility unchanged:** `NOMINAL_CALIBRATION_ELIGIBLE_CONFIGS = {"SCM_UnitJackKnife"}`.
 
 ---
 

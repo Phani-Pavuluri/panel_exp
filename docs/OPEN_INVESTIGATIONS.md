@@ -35,20 +35,19 @@ For **known future work** already characterized (e.g. DEF-001 KFold geometry, DE
 
 ---
 
-## Phase 12 investigation program (TBRRidge)
+## Phase 12 investigation program (TBRRidge) — **CLOSED**
 
+**Status:** **Closed** 2026-05-28 by [`PHASE13_GOVERNANCE_DECISION_001.md`](PHASE13_GOVERNANCE_DECISION_001.md).  
 **Framing:** Characterize whether TBRRidge inference can support calibrated expert-review workflows — **not** “fix TBRRidge.” All outcomes are acceptable if evidenced.
 
-| ID | Track | Backlog cross-link | Primary artifact |
-|----|-------|-------------------|------------------|
-| **INV-007** | KFold geometry characterization | [TBRRidge Kfold multi-treated geometry](#tbrridge-kfold-multi-treated-geometry) | Geometry OC matrix; single-treated vs pooled failure surface |
-| **INV-008** | BRB operating characteristics after bound fix | [TBRRidge BRB inference behavior](#tbrridge-brb-inference-behavior) | Run 002 archive (n≥100); width/coverage/power/seed stability |
-| **INV-003** | Multi-treated aggregation semantics | [Multi-treated default recovery DGP](#multi-treated-default-recovery-dgp), [Heterogeneous vs pooled recovery scoring](#heterogeneous-vs-pooled-recovery-scoring) | Estimand/aggregation contract doc; optional heterogeneous probes |
-| **INV-017** | Calibration scaling and governance | [Calibration scaling (CI n ≪ production n)](#calibration-scaling-ci-n--production-n), [Trust-score / TrustReport evolution](#trust-score--trustreport-evolution) | Archival conventions; eligibility evolution rules; trust-signal inputs |
+| ID | Track | Disposition | Primary artifact | DEF entry |
+|----|-------|-------------|------------------|-----------|
+| **INV-007** | KFold geometry | **Deferred** | [`PHASE12_INV007_KFOLD_GEOMETRY_001.md`](PHASE12_INV007_KFOLD_GEOMETRY_001.md) | DEF-001 |
+| **INV-008** | BRB OC after bound fix | **Deferred** (bounds **Fixed**) | [`CALIBRATION_RUN_002.md`](CALIBRATION_RUN_002.md) | DEF-002 |
+| **INV-003** | Multi-treated aggregation | **Deferred** | [`PHASE12_INV003_AGGREGATION_SEMANTICS_001.md`](PHASE12_INV003_AGGREGATION_SEMANTICS_001.md) | DEF-009, DEF-018 |
+| **INV-017** | Calibration governance | **Deferred** | [`PHASE12_INV017_CALIBRATION_GOVERNANCE_001.md`](PHASE12_INV017_CALIBRATION_GOVERNANCE_001.md) | DEF-008 |
 
-**Successful Phase 12 examples:** “BRB remains research-only”; “Kfold permanently single-treated-only”; “no TBRRidge config re-enters nominal eligibility.” These are **successful** if evidence supports them.
-
-Execution detail: [`ROADMAP_V4.md`](ROADMAP_V4.md) § Phase 12 · [`PHASE12_INVESTIGATION_PLAN.md`](PHASE12_INVESTIGATION_PLAN.md).
+**Phase 13 outcomes:** SCM retain (null monitor); BRB restrict (excluded); Kfold restrict (research-only on default DGP). Eligibility registry **unchanged**.
 
 ---
 
@@ -169,10 +168,10 @@ Execution detail: [`ROADMAP_V4.md`](ROADMAP_V4.md) § Phase 12 · [`PHASE12_INVE
 | Field | Detail |
 |-------|--------|
 | **Category** | calibration / inference |
-| **Status** | characterized, not closed |
-| **Why deferred** | Phase 11 shows **expected conservatism + geometry limitation**, not implementation defect — no math change warranted yet |
-| **Risk if unresolved** | Misuse as lift detector; false confidence in positive-scenario detection |
-| **Revisit when** | Product requires power claims → inference redesign or geometry-specific policy (`SCM_JACKKNIFE_CHARACTERIZATION_001.md`) |
+| **Status** | **closed — accepted** (Phase 13) |
+| **Resolution** | Phase 11 + Phase 13: null-monitor role ratified; zero power on positive is expected conservatism |
+| **Disposition** | **DEF-013** |
+| **Governance** | [`PHASE13_GOVERNANCE_DECISION_001.md`](PHASE13_GOVERNANCE_DECISION_001.md) §3 |
 
 ---
 
@@ -180,15 +179,15 @@ Execution detail: [`ROADMAP_V4.md`](ROADMAP_V4.md) § Phase 12 · [`PHASE12_INVE
 
 ### Heterogeneous vs pooled recovery scoring
 
-**Phase 12 ID:** INV-003
+**Phase 12 ID:** INV-003 — **Closed** (Phase 13: governance evolution **deferred**)
 
 | Field | Detail |
 |-------|--------|
 | **Category** | statistical_validity |
-| **Status** | open |
-| **Why deferred** | Pooled `_path_relative_att` contract in recovery runner; documentation-first |
-| **Risk if unresolved** | High recovery success while unit-level truth diverges |
-| **Revisit when** | Heterogeneous DGP equivalence tests or alternate scoring path defined |
+| **Status** | **closed — deferred** |
+| **Resolution** | INV-003 archive: A ≈ B on default DGP; drift under heterogeneity; absolute/relative hard mismatch |
+| **Disposition** | **DEF-009**, **DEF-018** |
+| **Revisit when** | Track B estimand registry; TrustReport rules |
 
 ### DID ATT exported under pretrend violation
 
@@ -348,27 +347,27 @@ Execution detail: [`ROADMAP_V4.md`](ROADMAP_V4.md) § Phase 12 · [`PHASE12_INVE
 
 ### TBRRidge BRB inference behavior
 
-**Phase 12 ID:** INV-008
+**Phase 12 ID:** INV-008 — **Closed** (Phase 13: **restrict**, remain excluded)
 
 | Field | Detail |
 |-------|--------|
 | **Category** | inference / calibration |
-| **Status** | investigating |
-| **Why deferred** | Removed from eligibility (`brb_bounds_inverted_run001`); bound-ordering fix on branch; Run 002 not archived |
-| **Risk if unresolved** | Re-eligibility without OC → repeat Run 001 anti-calibration |
-| **Revisit when** | Run 002 at n≥100 + failure analysis (Phase 12) |
+| **Status** | **closed — deferred** |
+| **Resolution** | Run 002: bounds fixed; null pass; positive under-coverage. Keep excluded from eligibility. |
+| **Disposition** | **DEF-002** in [`DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md) |
+| **Governance** | [`PHASE13_GOVERNANCE_DECISION_001.md`](PHASE13_GOVERNANCE_DECISION_001.md) §4 |
 
 ### TBRRidge Kfold multi-treated geometry
 
-**Phase 12 ID:** INV-007
+**Phase 12 ID:** INV-007 — **Closed** (Phase 13: **restrict**, research-only on default DGP)
 
 | Field | Detail |
 |-------|--------|
-| **Category** | inference / bug |
-| **Status** | open |
-| **Why deferred** | Removed from eligibility; fix or single-treated-only contract pending |
-| **Risk if unresolved** | Hard failures on multi-geo panels if users enable Kfold |
-| **Revisit when** | Multi-treated fix or documented single-treated-only policy (Phase 12) |
+| **Category** | inference / geometry |
+| **Status** | **closed — deferred** |
+| **Resolution** | n_treated=1 viable; n_treated≥2 100% failure. Skip reason remains valid. |
+| **Disposition** | **DEF-001** in [`DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md) |
+| **Governance** | [`PHASE13_GOVERNANCE_DECISION_001.md`](PHASE13_GOVERNANCE_DECISION_001.md) §5 |
 
 ### DID interval semantics (relative ATT unsupported)
 
@@ -518,7 +517,8 @@ Execution detail: [`ROADMAP_V4.md`](ROADMAP_V4.md) § Phase 12 · [`PHASE12_INVE
 
 | Topic | Section |
 |-------|---------|
-| Phase 12 program (INV-003/007/008/017) | Phase 12 investigation program |
+| Phase 12 program (INV-003/007/008/017) | Phase 12 investigation program (**closed** — see Phase 13) |
+| Phase 13 governance | [`PHASE13_GOVERNANCE_DECISION_001.md`](PHASE13_GOVERNANCE_DECISION_001.md) |
 | Track C platform (INV-020–026) | Future platform investigations |
 | Unified estimand contracts (INV-020) | Future platform investigations |
 | TrustReport semantics (INV-021) | Future platform investigations |
