@@ -33,7 +33,6 @@
       "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
       "exported_estimand_id": "geo.relative_att_post.pooled_path.relative",
       "scored_estimand_id": null,
-      "interval_estimand_id": null,
       "measurement_instrument_id": "geo.augsynth_cvxpy.point_only.relative_att_post.multi_treated_default.none",
       "instrument_family": "augsynth_cvxpy",
       "inference_method": "point_only",
