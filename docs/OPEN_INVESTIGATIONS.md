@@ -1,7 +1,7 @@
 # Open investigations
 
 **Status:** living backlog for intentionally deferred or unresolved issues  
-**Last updated:** 2026-05-28  
+**Last updated:** 2026-05-20  
 **Package version:** 0.2.1  
 
 **Related:** `docs/ROADMAP_V3.md` (governance), `docs/ROADMAP_V4.md` (Phases 11–15; Tracks A/B/C), `docs/METHOD_VALIDATION_PLAN.md`, `docs/VALIDATION_COVERAGE.md`, `docs/EXPERIMENTATION_PLATFORM_VISION.md`, [`docs/DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md)
@@ -27,7 +27,7 @@ Two complementary ledgers — not duplicates.
 
 Track **unresolved gaps, deferred work, and open scientific questions** discovered during development. This is institutional memory for honest governance — not an implementation roadmap and not proof of correctness.
 
-For **known future work** already characterized (e.g. DEF-001 KFold geometry, DEF-002 BRB positive under-coverage, DEF-009 aggregation semantics), see [`DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md).
+For **known future work** already characterized (e.g. DEF-001 KFold geometry, DEF-002 BRB positive under-coverage, DEF-009 aggregation semantics, **DEF-021 jackknife family alternatives**), see [`DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md).
 
 **Deferred ≠ abandoned.** Items remain listed until evidence closes them. Passing tests, calibration plumbing, or implemented diagnostics do not close an investigation without archived operating-characteristic evidence.
 
@@ -48,6 +48,28 @@ For **known future work** already characterized (e.g. DEF-001 KFold geometry, DE
 | **INV-017** | Calibration governance | **Deferred** | [`PHASE12_INV017_CALIBRATION_GOVERNANCE_001.md`](PHASE12_INV017_CALIBRATION_GOVERNANCE_001.md) | DEF-008 |
 
 **Phase 13 outcomes:** SCM retain (null monitor); BRB restrict (excluded); Kfold restrict (research-only on default DGP). Eligibility registry **unchanged**.
+
+---
+
+## Active Track A investigations (post–Phase 14)
+
+| ID | Track | Status | Primary artifact | DEF entry |
+|----|-------|--------|------------------|-----------|
+| **INV-030** | Jackknife family characterization | **Investigating** (plan committed) | [`INV030_JACKKNIFE_FAMILY_CHARACTERIZATION_PLAN.md`](INV030_JACKKNIFE_FAMILY_CHARACTERIZATION_PLAN.md) | DEF-013 (refine), **DEF-021** (alternatives backlog) |
+
+### INV-030 — Jackknife family characterization
+
+| Field | Detail |
+|-------|--------|
+| **Category** | inference / calibration / governance |
+| **Status** | **investigating** — plan committed; execution pending |
+| **Why open** | Phase 11 + Phase 14 characterized **implemented `UnitJackKnife` only**; shared conservatism (coverage ≈ 1, FPR ≈ 0, power ≈ 0) unexplained at **family** level |
+| **Governing question** | Is conservatism expected donor-sensitivity semantics vs geometry/aggregation artifact — and which jackknife **families** merit future OC? |
+| **Risk if unresolved** | Track B trust contracts mislabel JK intervals as lift-detection CIs; premature jackknife+ scope |
+| **Revisit when** | INV-030 execution archive; Track B uncertainty semantics design |
+| **Non-goals** | No variant implementation; no eligibility/maturity/release-gate change |
+
+**Distinction:** Phase 11 (`SCM_JACKKNIFE_CHARACTERIZATION_001.md`) and Phase 14 (`PHASE14_AUGSYNTH_CHARACTERIZATION_001.md` §4) = **implemented path OC**. INV-030 = **family semantics + inventory + explanatory synthesis**.
 
 ---
 
@@ -401,13 +423,16 @@ For **known future work** already characterized (e.g. DEF-001 KFold geometry, DE
 
 ### Jackknife+ / new inference variants
 
+**Superseded in planning by INV-030** — see [`INV030_JACKKNIFE_FAMILY_CHARACTERIZATION_PLAN.md`](INV030_JACKKNIFE_FAMILY_CHARACTERIZATION_PLAN.md) §4 (family inventory) and **DEF-021**.
+
 | Field | Detail |
 |-------|--------|
 | **Category** | research |
-| **Status** | intentionally_deferred |
-| **Why deferred** | `uncertainty.md`; baseline modes not fully characterized |
-| **Risk if unresolved** | Scope creep before OC gates |
-| **Revisit when** | SCM/TBRRidge baseline calibration evidence improves |
+| **Status** | **investigating** (INV-030 plan) |
+| **Why deferred** | `uncertainty.md`; only leave-one-donor `UnitJackKnife` OC-archived; `JKP` / time jackknife+ uncharacterized |
+| **Risk if unresolved** | Scope creep before OC gates; jackknife+ shipped without properties archive |
+| **Revisit when** | INV-030 execution; governance approval for variant OC scope |
+| **Disposition** | **DEF-021** |
 
 ---
 
@@ -531,6 +556,8 @@ For **known future work** already characterized (e.g. DEF-001 KFold geometry, DE
 | Exposure eligibility (INV-026) | Future platform investigations |
 | BRB inference behavior (INV-008) | Inference concerns |
 | Kfold multi-treated geometry (INV-007) | Inference concerns |
+| Jackknife family semantics (INV-030) | Active Track A investigations |
+| Jackknife+ / alternative families (DEF-021) | Inference concerns · INV-030 |
 | SCM over-coverage | Critical investigations |
 | DID interval semantics | Inference concerns |
 | Spillover estimation | Research backlog |

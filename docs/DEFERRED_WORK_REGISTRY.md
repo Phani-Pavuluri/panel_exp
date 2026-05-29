@@ -1,7 +1,7 @@
 # Deferred work registry
 
 **Status:** active governance artifact  
-**Last updated:** 2026-05-28  
+**Last updated:** 2026-05-20  
 **Package version:** 0.2.1  
 
 **Related:** [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIGATIONS.md) (active questions) · [`ROADMAP_V4.md`](ROADMAP_V4.md) (phase sequencing) · [`PHASE12_INV017_CALIBRATION_GOVERNANCE_001.md`](PHASE12_INV017_CALIBRATION_GOVERNANCE_001.md) (archive lifecycle) · [`PHASE13_GOVERNANCE_DECISION_001.md`](PHASE13_GOVERNANCE_DECISION_001.md) (Phase 12 closure)
@@ -369,6 +369,24 @@ Optional: **Resolution date**, **Resolution artifact**, **Supersedes**.
 
 **Phase 14 outcome (summary):** Point path = **expert-review candidate (point only)**; UnitJackKnife = **null-monitor only** (power 0); spillover DGP = **material bias**; 0% execution failures on battery.
 
+#### DEF-021 — Jackknife family alternatives (research backlog)
+
+| Field | Value |
+|-------|--------|
+| **Category** | inference / research |
+| **Source artifact(s)** | [`INV030_JACKKNIFE_FAMILY_CHARACTERIZATION_PLAN.md`](INV030_JACKKNIFE_FAMILY_CHARACTERIZATION_PLAN.md) · [`SCM_JACKKNIFE_CHARACTERIZATION_001.md`](SCM_JACKKNIFE_CHARACTERIZATION_001.md) · [`PHASE14_AUGSYNTH_CHARACTERIZATION_001.md`](PHASE14_AUGSYNTH_CHARACTERIZATION_001.md) · `panel_exp/inference/uncertainty.md` |
+| **Status** | **Investigating** (plan committed; empirical OC **Deferred**) |
+| **Why deferred** | Only leave-one-donor `UnitJackKnife` is OC-archived (Phase 11 + 14). Alternative families (time-block, cluster, delete-d, jackknife+) are catalogued conceptually or exist as uncalibrated code stubs (`JKP`, `time_jackknife_plus`) — implementing or promoting variants before governed OC violates roadmap scope lock. INV-030 must first **explain** current conservatism before any variant work is scoped. |
+| **Risk if not addressed** | Track B trust artifacts treat all “jackknife” labels as equivalent; jackknife+ or time JK shipped without properties archive; lift-detection claims on wrong uncertainty semantics. |
+| **Revisit trigger** | INV-030 execution archive; governance approval for variant OC scope; Track B `ExperimentEvidence` uncertainty semantics design |
+| **Future work** | Execute INV-030 explanatory synthesis; if H4 supported, prioritize time-block / jackknife+ **characterization-only** studies on geo recovery battery — **no eligibility impact** without full promotion chain; do not modify wired `UnitJackKnife` without separate fix governance |
+| **Related investigations** | **INV-030** · DEF-013 (current path boundary) · roadmap INV-027 (folded into INV-030 scope) |
+| **Related roadmap area** | Post–Phase 14 Track A adjunct · Track B trust semantics · research backlog ([`ROADMAP_V4.md`](ROADMAP_V4.md) §5) |
+
+**Distinction from DEF-013:** DEF-013 = **accepted boundary** of implemented UnitJackKnife (null monitor, zero power). DEF-021 = **deferred research** on whether alternative jackknife **families** merit future OC — not a claim that current path is defective.
+
+---
+
 #### DEF-020 — Placebo inference OC characterization (Phase 15)
 
 | Field | Value |
@@ -395,7 +413,9 @@ Every deferred or accepted entry **must** have an explicit revisit trigger. Trig
 |---------|-------------------------|
 | **Need for multi-treated inference** | DEF-001, DEF-009 |
 | **Eligibility reconsideration** | DEF-001, DEF-002, DEF-015 |
+| **Jackknife family / uncertainty semantics** | **DEF-021**, DEF-013 |
 | **Phase gate (13 / 14 / 15)** | DEF-002, DEF-009, DEF-016, DEF-017, **DEF-019**, **DEF-020** |
+| **INV-030 execution** | **DEF-021**, DEF-013 (wording) |
 | **Track B implementation prioritization** | DEF-019, DEF-020 (core instrument OC) |
 | **Track B activation** | DEF-008, DEF-011, DEF-014 |
 | **Track C activation** | DEF-010, DEF-011, DEF-012, DEF-004 |
@@ -505,8 +525,9 @@ Phase 12 investigation tracks closed by [`PHASE13_GOVERNANCE_DECISION_001.md`](P
 | Phase 11 SCM OC | Accepted | DEF-013 |
 | INV-028 (AugSynth OC) | **Closed — characterized** | DEF-019, DEF-017 |
 | INV-029 (Placebo OC) | Investigating | DEF-020 |
+| **INV-030 (Jackknife family)** | **Investigating** (plan committed) | **DEF-021**, DEF-013 |
 
-**Phase 14–15:** AugSynth characterized ([`PHASE14_AUGSYNTH_CHARACTERIZATION_001.md`](PHASE14_AUGSYNTH_CHARACTERIZATION_001.md)); Placebo plan committed — execution pending.
+**Phase 14–15:** AugSynth characterized ([`PHASE14_AUGSYNTH_CHARACTERIZATION_001.md`](PHASE14_AUGSYNTH_CHARACTERIZATION_001.md)); Placebo plan committed — execution pending. **INV-030** jackknife family plan committed — execution pending.
 
 **Eligibility unchanged:** `NOMINAL_CALIBRATION_ELIGIBLE_CONFIGS = {"SCM_UnitJackKnife"}`.
 
@@ -534,8 +555,8 @@ Entries moved here when **Fixed** or **Retired**. None at initial publication (2
 
 | Category | IDs |
 |----------|-----|
-| inference / geometry | DEF-001, DEF-002, DEF-003, DEF-006, **DEF-020** |
-| calibration | DEF-002, DEF-008, DEF-013, DEF-015, DEF-016, **DEF-019**, **DEF-020** |
+| inference / geometry | DEF-001, DEF-002, DEF-003, DEF-006, **DEF-020**, **DEF-021** |
+| calibration | DEF-002, DEF-008, DEF-013, DEF-015, DEF-016, **DEF-019**, **DEF-020**, **DEF-021** |
 | causal_validity / estimand | DEF-003, DEF-004, DEF-009, DEF-014, DEF-018 |
 | validation / estimators | DEF-005, DEF-006, DEF-007, DEF-017, **DEF-019** |
 | platform / Track C | DEF-010, DEF-011, DEF-012 |
