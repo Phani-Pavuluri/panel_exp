@@ -56,6 +56,8 @@ For **known future work** already characterized (e.g. DEF-001 KFold geometry, DE
 | ID | Track | Status | Primary artifact | DEF entry |
 |----|-------|--------|------------------|-----------|
 | **INV-030** | Jackknife family characterization | **Investigating** (plan committed) | [`INV030_JACKKNIFE_FAMILY_CHARACTERIZATION_PLAN.md`](INV030_JACKKNIFE_FAMILY_CHARACTERIZATION_PLAN.md) | DEF-013 (refine), **DEF-021** (alternatives backlog) |
+| **INV-031** | Inference conservatism synthesis | **Investigating** (plan committed) | [`INV031_INFERENCE_CONSERVATISM_PLAN.md`](INV031_INFERENCE_CONSERVATISM_PLAN.md) | DEF-013, DEF-002, DEF-020, DEF-015 |
+| **INV-029** | Placebo OC | **Closed — characterized** | [`PHASE15_PLACEBO_CHARACTERIZATION_001.md`](PHASE15_PLACEBO_CHARACTERIZATION_001.md) | DEF-020 (governance pending) |
 
 ### INV-030 — Jackknife family characterization
 
