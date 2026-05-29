@@ -483,13 +483,15 @@ For **known future work** already characterized (e.g. DEF-001 KFold geometry, DE
 
 ### AugSynth / CVXPY — validation wiring
 
+**Phase 14 ID:** INV-028 — **Closed** (characterized)
+
 | Field | Detail |
 |-------|--------|
-| **Category** | operational |
-| **Status** | open |
-| **Why deferred** | Phase 15 scope; unit tests only today |
-| **Risk if unresolved** | Expert-review maturity overstates automated evidence |
-| **Revisit when** | Recovery configs or permanent research-only guard |
+| **Category** | operational / validation |
+| **Status** | **closed — characterized** |
+| **Resolution** | [`PHASE14_AUGSYNTH_CHARACTERIZATION_001.md`](PHASE14_AUGSYNTH_CHARACTERIZATION_001.md): point expert-review candidate; UnitJackKnife null-monitor only; spillover DGP bias |
+| **Disposition** | **DEF-019**, **DEF-017** (wiring still open) |
+| **Revisit when** | RecoveryRunner registry wiring PR only |
 
 ### MTGP orchestration
 

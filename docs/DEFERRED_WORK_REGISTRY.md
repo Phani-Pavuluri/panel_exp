@@ -358,14 +358,16 @@ Optional: **Resolution date**, **Resolution artifact**, **Supersedes**.
 | Field | Value |
 |-------|--------|
 | **Category** | validation / calibration |
-| **Source artifact(s)** | [`PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md`](PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md) · [`VALIDATION_COVERAGE.md`](VALIDATION_COVERAGE.md) AugSynthCVXPY row |
-| **Status** | **Investigating** (plan committed; execution pending) |
-| **Why deferred** | AugSynthCVXPY is expert-review tier without n≥100 OC archive; no recovery runner wiring; strategic core-instrument candidate uncharacterized. |
-| **Risk if not addressed** | Track B trust contracts cite immature instrument; GeoX over-claims AugSynth validity. |
-| **Revisit trigger** | Phase 14 execution; `PHASE14_AUGSYNTH_CHARACTERIZATION_001.md` archive; Track B implementation prioritization |
-| **Future work** | INV-028 geometry + null/positive OC; failure analysis if anti-calibration; governance disposition (expert-review / research-only / restrict) |
-| **Related investigations** | INV-028 · INV-018 · INV-037 · DEF-017 |
-| **Related roadmap area** | Phase 14 · Track A · Track B gate |
+| **Source artifact(s)** | [`PHASE14_AUGSYNTH_CHARACTERIZATION_001.md`](PHASE14_AUGSYNTH_CHARACTERIZATION_001.md) · [`PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md`](PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md) |
+| **Status** | **Accepted** (usage boundaries) · wiring **Deferred** |
+| **Why deferred (wiring)** | `RecoveryRunner` still unwired; OC reproduced via investigation script only |
+| **Risk if not addressed** | Track B trust contracts cite immature instrument; GeoX over-claims AugSynth validity |
+| **Revisit trigger** | RecoveryRunner registry PR; TrustReport export policy; spillover product requirement |
+| **Future work** | Optional registry config; spillover warning in reviewer docs; no eligibility without new interval design |
+| **Related investigations** | INV-028 (closed) · INV-018 · DEF-017 |
+| **Related roadmap area** | Phase 14 complete · Track B gate cleared for planning (not implementation primary) |
+
+**Phase 14 outcome (summary):** Point path = **expert-review candidate (point only)**; UnitJackKnife = **null-monitor only** (power 0); spillover DGP = **material bias**; 0% execution failures on battery.
 
 #### DEF-020 — Placebo inference OC characterization (Phase 15)
 
@@ -501,10 +503,10 @@ Phase 12 investigation tracks closed by [`PHASE13_GOVERNANCE_DECISION_001.md`](P
 | INV-008 | Deferred (partial fix: bounds) | DEF-002 |
 | INV-017 | Deferred | DEF-008 |
 | Phase 11 SCM OC | Accepted | DEF-013 |
-| INV-028 (AugSynth OC) | Investigating | DEF-019, DEF-017 |
+| INV-028 (AugSynth OC) | **Closed — characterized** | DEF-019, DEF-017 |
 | INV-029 (Placebo OC) | Investigating | DEF-020 |
 
-**Phase 14–15 (planned):** AugSynth and Placebo characterization plans committed — execution pending ([`PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md`](PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md), [`PHASE15_PLACEBO_INVESTIGATION_PLAN.md`](PHASE15_PLACEBO_INVESTIGATION_PLAN.md)).
+**Phase 14–15:** AugSynth characterized ([`PHASE14_AUGSYNTH_CHARACTERIZATION_001.md`](PHASE14_AUGSYNTH_CHARACTERIZATION_001.md)); Placebo plan committed — execution pending.
 
 **Eligibility unchanged:** `NOMINAL_CALIBRATION_ELIGIBLE_CONFIGS = {"SCM_UnitJackKnife"}`.
 

@@ -493,7 +493,7 @@ Suggested audit triggers also listed in [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIG
 | **Phase 11** | **Complete** | SCM UnitJackKnife OC — `SCM_JACKKNIFE_CHARACTERIZATION_001.md` |
 | **Phase 12** | **Complete** | TBRRidge inference investigation program |
 | **Phase 13** | **Complete** | TBRRidge governance decision — `PHASE13_GOVERNANCE_DECISION_001.md` |
-| **Phase 14** | **Next** | AugSynth OC — `PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md` |
+| **Phase 14** | **Complete** | AugSynth OC — [`PHASE14_AUGSYNTH_CHARACTERIZATION_001.md`](PHASE14_AUGSYNTH_CHARACTERIZATION_001.md) |
 | **Phase 15** | Planned | Placebo inference OC — `PHASE15_PLACEBO_INVESTIGATION_PLAN.md` |
 | Track B planning | **Parallel** | `TRACK_B_ARCHITECTURE_PLAN.md` (planning only; implementation not primary until 14–15 evidence) |
 | Re-audit | After 15 | → ROADMAP_V5 |
@@ -511,7 +511,7 @@ Suggested audit triggers also listed in [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIG
 | INV-017 | Calibration scaling and governance | 12 |
 | INV-039 | Package calibration claim | 11–13 |
 | INV-005, INV-006, INV-032 | DID pretrend / intervals / timing | Deferred (DEF-016); was v4 draft Phase 14 |
-| INV-028 | AugSynth OC characterization | 14 |
+| INV-028 | AugSynth OC characterization | 14 (complete) |
 | INV-029 | Placebo inference OC | 15 |
 | INV-018, INV-037 | CVXPY / collinearity | 14 (partial — AugSynth stress) |
 | INV-011, INV-019 | SDID staggered validation | Research backlog |
