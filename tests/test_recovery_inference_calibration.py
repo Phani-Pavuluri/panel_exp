@@ -33,6 +33,32 @@ def _single_treated_null_scenario() -> SyntheticScenario:
     )
 
 
+def _multi_treated_scenario(n_treated: int, *, true_effect: float = 0.0) -> SyntheticScenario:
+    return SyntheticScenario(
+        name=f"recovery_null_{n_treated}_treated",
+        n_geos=20,
+        n_periods=50,
+        treatment_start=35,
+        true_effect=true_effect,
+        treated_units=tuple(f"geo_{i}" for i in range(n_treated)),
+        heterogeneous_effects=False,
+        spillover_strength=0.0,
+        noise_scale=0.8,
+        cross_geo_correlation=0.4,
+        random_state=0,
+    )
+
+
+def _assert_kfold_geometry_payload(payload: dict) -> None:
+    assert payload["recovery_config"] == "TBRRidge_Kfold"
+    assert payload["intervals_expected"] is True
+    assert payload["failure_rate"] == pytest.approx(0.0, abs=1e-9)
+    assert "ValueError" not in (payload.get("failure_types") or {})
+    _assert_finite_or_explicit(payload, "coverage", "coverage_status")
+    _assert_finite_or_explicit(payload, "false_positive_rate", "false_positive_rate_status")
+    if payload.get("interval_aligned_rate") is not None:
+        assert 0.0 <= payload["interval_aligned_rate"] <= 1.0
+
 def _assert_finite_or_explicit(payload: dict, metric: str, status_key: str) -> None:
     value = payload[metric]
     status = payload[status_key]
@@ -74,10 +100,49 @@ def test_tbrridge_kfold_null_on_single_treated_panel():
         n_simulations=3,
         random_state=20,
     ).run()
-    assert payload["recovery_config"] == "TBRRidge_Kfold"
-    assert payload["intervals_expected"] is True
-    _assert_finite_or_explicit(payload, "coverage", "coverage_status")
-    _assert_finite_or_explicit(payload, "false_positive_rate", "false_positive_rate_status")
+    _assert_kfold_geometry_payload(payload)
+
+
+@pytest.mark.parametrize("n_treated", [2, 4])
+def test_tbrridge_kfold_multi_treated_null_no_broadcast_failure(n_treated: int):
+    payload = RecoveryRunner(
+        "TBRRidge_Kfold",
+        _multi_treated_scenario(n_treated),
+        n_simulations=3,
+        random_state=30 + n_treated,
+    ).run()
+    _assert_kfold_geometry_payload(payload)
+
+
+def test_tbrridge_kfold_default_recovery_geometry_no_failure():
+    payload = RecoveryRunner(
+        "TBRRidge_Kfold",
+        "recovery_null_effect",
+        n_simulations=3,
+        random_state=40,
+    ).run()
+    _assert_kfold_geometry_payload(payload)
+
+
+def test_tbrridge_kfold_interval_bounds_ordered_when_aligned():
+    from dataclasses import replace
+
+    from panel_exp.validation.recovery_runner import _run_simulation, all_recovery_configs
+    from panel_exp.validation.synthetic_world import SyntheticWorld
+
+    config = all_recovery_configs()["TBRRidge_Kfold"]
+    for n_treated in (1, 2, 4):
+        scenario = _multi_treated_scenario(n_treated)
+        for seed in (0, 1):
+            world = SyntheticWorld.generate(replace(scenario, random_state=seed))
+            record = _run_simulation(config, world)
+            assert not record.failed
+            if record.interval_aligned:
+                assert record.ci_lower is not None
+                assert record.ci_upper is not None
+                assert record.ci_lower <= record.ci_upper
+                assert record.interval_estimand == "relative_att_post"
+                assert record.interval_scale == "path_period_relative_mean"
 
 
 def test_point_estimate_scm_still_works():

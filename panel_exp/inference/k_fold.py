@@ -19,6 +19,36 @@ from scipy.stats import t
 from panel_exp.panel_data import PanelDataset, TimePeriod
 
 
+def _aggregate_treatment_residuals(
+    y_raw: np.ndarray,
+    y_hat_raw: np.ndarray,
+) -> np.ndarray:
+    """Return period-level aggregate residuals for K-Fold bias/debias paths.
+
+    Semantics (matches ``_compute_tsk_fold_diagnostics``):
+    - Both ``y`` and ``y_hat`` per-unit with matching 2D shapes: sum unit residuals.
+    - ``y`` per-unit (2D) and ``y_hat`` pooled aggregate (1D): sum treated ``y``
+      across units, then subtract pooled ``y_hat`` (TBRRidge multi-treated geometry).
+    - Otherwise flatten and align lengths when ``y`` is stacked per-unit over time.
+    """
+    y_raw = np.asarray(y_raw, dtype=float)
+    y_hat_raw = np.asarray(y_hat_raw, dtype=float)
+
+    if y_raw.ndim == 2 and y_hat_raw.ndim == 2 and y_raw.shape == y_hat_raw.shape:
+        return (y_raw - y_hat_raw).sum(axis=1)
+    if y_raw.ndim == 2:
+        y_full = y_raw.sum(axis=1)
+        y_hat_full = y_hat_raw.ravel()
+        return y_full - y_hat_full
+
+    y_full = y_raw.ravel()
+    y_hat_full = y_hat_raw.ravel()
+    if len(y_full) != len(y_hat_full) and len(y_hat_full) > 0:
+        n_units = len(y_full) // len(y_hat_full)
+        y_full = y_full.reshape(n_units, len(y_hat_full)).sum(axis=0)
+    return y_full - y_hat_full
+
+
 def debias(model
          , new_pds
          , og_pds
@@ -39,7 +69,11 @@ def debias(model
     est.run_analysis(new_pds)
     treatment_mask = (new_pds.times >= new_pds.treated_start_idxs[0]) & (new_pds.times<= new_pds.treated_end_idxs[0])
     
-    bias = (est.results['y'] - est.results['y_hat'])[treatment_mask].mean()
+    resid_full = _aggregate_treatment_residuals(
+        est.results["y"],
+        est.results["y_hat"],
+    )
+    bias = resid_full[treatment_mask].mean()
     y_hat = est.model.predict(np.array(og_pds.wide_data.loc[og_pds.control_units, og_pds.treated_periods[0].start:og_pds.treated_periods[0].end].T))
     y_hat = y_hat[:, np.newaxis] if y_hat.ndim == 1 else y_hat
     
@@ -518,26 +552,10 @@ def _compute_tsk_fold_diagnostics(
             est = model()
             est.run_analysis(new_pds)
 
-            # y and y_hat may be (n_periods,) aggregate or (n_periods, n_units) per-unit.
-            # Compute aggregate residuals in a shape-agnostic way.
-            y_raw     = np.asarray(est.results["y"],     dtype=float)
-            y_hat_raw = np.asarray(est.results["y_hat"], dtype=float)
-
-            if y_raw.ndim == 2 and y_hat_raw.ndim == 2 and y_raw.shape == y_hat_raw.shape:
-                # Both per-unit (e.g. AugSynth): residual per unit then sum over units
-                resid_full = (y_raw - y_hat_raw).sum(axis=1)
-            elif y_raw.ndim == 2:
-                # y is per-unit, y_hat is aggregate (e.g. TBRRidge)
-                y_full     = y_raw.sum(axis=1)
-                y_hat_full = y_hat_raw.ravel()
-                resid_full = y_full - y_hat_full
-            else:
-                y_full     = y_raw.ravel()
-                y_hat_full = y_hat_raw.ravel()
-                if len(y_full) != len(y_hat_full) and len(y_hat_full) > 0:
-                    n_units = len(y_full) // len(y_hat_full)
-                    y_full = y_full.reshape(n_units, len(y_hat_full)).sum(axis=0)
-                resid_full = y_full - y_hat_full
+            resid_full = _aggregate_treatment_residuals(
+                est.results["y"],
+                est.results["y_hat"],
+            )
 
             # Holdout residuals (fold "treatment" period)
             ho_mask    = (new_pds.times >= new_pds.treated_start_idxs[0]) & \
