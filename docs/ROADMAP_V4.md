@@ -62,6 +62,52 @@ Detail: [`EXPERIMENTATION_PLATFORM_VISION.md`](EXPERIMENTATION_PLATFORM_VISION.m
 
 **Track A is gate for Track B** — do not build unified abstractions before TBRRidge OC and governance stabilize.
 
+#### Track B execution status (2026-05-20)
+
+Architecture contracts and test discipline (planning + fixtures; implementation in progress):
+
+| Artifact | Doc | Status |
+|----------|-----|--------|
+| B3a Measurement Instrument Catalog | [`TRACK_B_MEASUREMENT_INSTRUMENT_CATALOG_001.md`](TRACK_B_MEASUREMENT_INSTRUMENT_CATALOG_001.md) | Complete |
+| B3b Estimand Registry | [`TRACK_B_ESTIMAND_REGISTRY_001.md`](TRACK_B_ESTIMAND_REGISTRY_001.md) | Complete |
+| B2 Contract Schema Draft | [`TRACK_B_CONTRACT_SCHEMA_DRAFT_001.md`](TRACK_B_CONTRACT_SCHEMA_DRAFT_001.md) | Complete |
+| B4 Adapter ID Resolution | [`TRACK_B_ADAPTER_ID_RESOLUTION_001.md`](TRACK_B_ADAPTER_ID_RESOLUTION_001.md) | Complete |
+| B5 Contract Test Plan | [`TRACK_B_CONTRACT_TEST_PLAN_001.md`](TRACK_B_CONTRACT_TEST_PLAN_001.md) | Complete |
+| B5a Golden fixtures | [`tests/fixtures/track_b_contracts/`](../tests/fixtures/track_b_contracts/) | Complete |
+| B5b Pytest loader | [`tests/track_b/`](../tests/track_b/) | Complete |
+| B5c TrustReport composer tests | — | Planned |
+| B5d Contract validator | — | Planned |
+| M2 Dual-write | [`TRACK_B_ARTIFACT_CONSOLIDATION_001.md`](TRACK_B_ARTIFACT_CONSOLIDATION_001.md) | Planned |
+
+**Near-term Track B sequence:** B5c → B5d → M2 dual-write → wire adapter (`resolve_adapter_output`).
+
+### Track D — statistical robustness, method coverage, literature cross-check
+
+**Roadmap ID:** `TRACK-D-STATISTICAL-ROBUSTNESS`  
+**Status:** planned (D0/D0b architecture started)  
+**Trigger:** Begin D1+ execution after B5c, B5d, and M2 dual-write produce governed Track B exports from real GeoX runs. D0 inventory may proceed in parallel.
+
+**Purpose:** Harden the **scientific core** — every design method, matching algorithm, estimator, inference mode, power/MDE method, diagnostic, and validation gate is inventoried, literature-checked, implementation-audited, simulation-characterized, mapped to Track B identity, and assigned a governed robustness status before calibration or decision-grade claims.
+
+**Core principle:** Contracts prevent semantic lies (Track B). Track D prevents statistical and mathematical lies.
+
+| Package | Document | Status |
+|---------|----------|--------|
+| **D0** | [`TRACK_D_METHOD_INVENTORY_AND_ROBUSTNESS_MATRIX_001.md`](TRACK_D_METHOD_INVENTORY_AND_ROBUSTNESS_MATRIX_001.md) | Complete (planning) |
+| **D0b** | [`TRACK_D_LITERATURE_CROSSCHECK_001.md`](TRACK_D_LITERATURE_CROSSCHECK_001.md) | Complete (template) |
+| D1 | Design + matching audit | Planned |
+| D2 | Estimator math audit | Planned |
+| D3 | Inference audit | Planned |
+| D4 | Power / MDE audit | Planned |
+| D5 | OC simulation harness | Planned |
+| D6 | Runtime monitoring | Planned |
+| D7 | Promotion / demotion framework | Planned |
+| D8 | Cross-method triangulation | Planned |
+
+**Non-goals:** No new estimator promotion without OC; no eligibility/maturity changes without governance; no silent averaging of conflicting methods; no paper-based trust without implementation validation; no Track B identity rule changes without explicit ADR.
+
+**Success criteria:** Every method explicitly inventoried, literature-checked, audited, characterized where needed, mapped to `estimand_id` / `measurement_instrument_id`, and status-governed before decision-grade claims.
+
 ### Track C — unified user-level experimentation & conversion lift
 
 **Objective:** Extend governed experimentation architecture from **geo-level** experiments to **user-randomized incrementality** systems (A/B, conversion lift, holdouts) — as a **future architecture track**, not immediate implementation.
@@ -495,7 +541,8 @@ Suggested audit triggers also listed in [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIG
 | **Phase 13** | **Complete** | TBRRidge governance decision — `PHASE13_GOVERNANCE_DECISION_001.md` |
 | **Phase 14** | **Complete** | AugSynth OC — [`PHASE14_AUGSYNTH_CHARACTERIZATION_001.md`](PHASE14_AUGSYNTH_CHARACTERIZATION_001.md) |
 | **Phase 15** | Planned | Placebo inference OC — `PHASE15_PLACEBO_INVESTIGATION_PLAN.md` |
-| Track B planning | **Parallel** | `TRACK_B_ARCHITECTURE_PLAN.md` (planning only; implementation not primary until 14–15 evidence) |
+| Track B contracts + B5 | **In progress** | B0–B5b complete; B5c/B5d/M2 next — see Track B table above |
+| Track D robustness | **Planned** | D0/D0b docs; D1+ after M2 dual-write |
 | Re-audit | After 15 | → ROADMAP_V5 |
 
 ---

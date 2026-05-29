@@ -484,6 +484,12 @@ This plan **does**:
 
 ---
 
+## Appendix D — Track D (statistical robustness)
+
+Track B defines **identity and trust contracts**. **Track D** ([`TRACK_D_METHOD_INVENTORY_AND_ROBUSTNESS_MATRIX_001.md`](TRACK_D_METHOD_INVENTORY_AND_ROBUSTNESS_MATRIX_001.md)) hardens the scientific core: full method inventory, literature cross-check, design/matching and estimator math audits, inference and power validity, OC simulation, and instrument promotion/demotion. Track D feeds Track B catalogs and fixtures; it does not replace `estimand_id` / `measurement_instrument_id` rules.
+
+---
+
 ## Appendix C — Success criterion
 
 **Architecture bridge achieved when:**
