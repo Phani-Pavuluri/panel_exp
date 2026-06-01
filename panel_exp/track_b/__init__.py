@@ -15,6 +15,13 @@ from panel_exp.track_b.geo_adapter import (
     resolve_geo_adapter_output,
     resolve_geo_adapter_output_from_bundle,
 )
+from panel_exp.track_b.trust_report import (
+    TRUST_REPORT_VERSION,
+    TrustComposeContext,
+    attach_trust_report_to_views,
+    compose_trust_report,
+    trust_report_to_dict,
+)
 
 __all__ = [
     "ADAPTER_VERSION",
@@ -26,4 +33,9 @@ __all__ = [
     "extract_resolve_input_from_bundle",
     "resolve_geo_adapter_output",
     "resolve_geo_adapter_output_from_bundle",
+    "TRUST_REPORT_VERSION",
+    "TrustComposeContext",
+    "attach_trust_report_to_views",
+    "compose_trust_report",
+    "trust_report_to_dict",
 ]

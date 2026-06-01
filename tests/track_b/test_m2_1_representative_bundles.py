@@ -69,6 +69,7 @@ class TestGeoRunBundleExportPath:
         bundle = build_geo_run_artifact_bundle(
             evidence=rep["bundle"]["evidence"],
             include_track_b_views=True,
+            include_trust_report=False,
         )
         payload = bundle.to_dict()
         assert "track_b_views" in payload
