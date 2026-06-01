@@ -197,7 +197,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D3-FIND-001 — Unit JK LOO compares `y_hat` to observed `y` → **INV-D3-001** opened (D5-INF-002a).
 
-**Next:** Track E E1/E2; D5-POW-001e.
+**Next:** D5-POW-001e (confirmed design set); Track E E1/E2.
 
 ---
 
@@ -216,7 +216,16 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D4-FIND-001 — design MDE not aligned to `SCM_UnitJackKnife` instrument.
 
-**Next:** Track E E1; D5-POW-001e; not MMM integration.
+**Next:** D5-POW-001e; Track E E1; not MMM integration.
+
+---
+
+## DESIGN-INVENTORY-001 checkpoint (2026-06-01)
+
+**Artifact:** [`docs/track_d/archives/DESIGN_INVENTORY_001_results.json`](track_d/archives/DESIGN_INVENTORY_001_results.json)  
+**Doc:** [`TRACK_D_DESIGN_METHOD_INVENTORY_001.md`](TRACK_D_DESIGN_METHOD_INVENTORY_001.md)
+
+**Confirmed for D5-POW-001e (6):** `greedy_match_markets`, `rerandomization_wrapper`, `completerandomization`, `balancedrandomization`, `stratifiedrandomization`, `thinningdesign`. No `multi_cell_multi_treated` class — use `n_test_grps>1` config. Blocked: `supergeos`, `trimmedmatch`, legacy `quickblock`/`matchedpair`.
 
 ---
 

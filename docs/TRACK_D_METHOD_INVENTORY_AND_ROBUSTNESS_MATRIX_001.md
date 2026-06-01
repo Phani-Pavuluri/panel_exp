@@ -116,7 +116,7 @@ Where applicable, each inventory row records:
 
 | Method ID | Implementation | Geo run supported | Robustness status | Track B | Literature (D0b) | Next action |
 |-----------|----------------|-------------------|-------------------|---------|------------------|-------------|
-| **DES-001** | `greedy_match_markets` | Yes | **characterization_required** | Spec `design_method`; DG-007 | TBR / matched markets ([INV-D1-001](investigations/INV-D1-001_PRE_PERIOD_MATCHING_LEAKAGE.md) fix `61a174f`) | D5-DES-001a ✅; broader OC |
+| **DES-001** | `greedy_match_markets` | Yes | **characterization_required** | Spec `design_method`; DG-007 | TBR / matched markets ([INV-D1-001](investigations/INV-D1-001_PRE_PERIOD_MATCHING_LEAKAGE.md) fix `61a174f`) | D5-DES-001a ✅; **DESIGN-INVENTORY-001** ✅; D5-POW-001e tier-1 |
 | **DES-002** | `thinningdesign` | Yes | implementation_review_required | TBD | Geo design | D1b / D5 |
 | **DES-003** | `balancedrandomization` | Yes | implementation_review_required | TBD | Randomization inference | D5 |
 | **DES-004** | `completerandomization` | Yes | implementation_review_required | TBD | Randomization | D5 |
