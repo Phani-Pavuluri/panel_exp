@@ -85,9 +85,10 @@ Architecture contracts and test discipline (planning + fixtures; implementation 
 | B5c TrustReport composer tests | [`tests/track_b/trust_report_composer.py`](../tests/track_b/trust_report_composer.py) | **Complete** |
 | B5d Contract validator | [`tests/track_b/contract_validator.py`](../tests/track_b/contract_validator.py) | **Complete** |
 | M2 Dual-write | [`panel_exp/track_b/`](../panel_exp/track_b/) · [`TRACK_B_ARTIFACT_CONSOLIDATION_001.md`](TRACK_B_ARTIFACT_CONSOLIDATION_001.md) | **Complete** (AUDIT-002 `2754c0a`) |
-| M2.1 Adapter production wire-up | `resolve_adapter_output` / real RunBundle hardening | **Next** |
+| M2.1 Adapter production wire-up | [`panel_exp/track_b/bundle_extract.py`](../panel_exp/track_b/bundle_extract.py) · [`export.py`](../panel_exp/track_b/export.py) | **Complete** (REP-001–005; AUDIT-003 pending) |
+| M2.2 Production TrustReport path | composer in product export | **Next** |
 
-**Near-term Track B sequence:** ~~B5c → B5d → M2~~ → **adapter production wire-up** → TrustReport in product (later).
+**Near-term Track B sequence:** ~~B5c → B5d → M2 → M2.1~~ → **TrustReport in product (M2.2)** · Track D D1 after AUDIT-003.
 
 **Alignment registry:** [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) § Track B — per-item capability, risk, artifacts, stop conditions.
 

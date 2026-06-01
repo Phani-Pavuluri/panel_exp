@@ -27,7 +27,8 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 |----------|------|-------------------|--------|-----------------|----------------------|-----------|--------|
 | **AUDIT-001** | 2026-05-28 | B5c + B5d + alignment gate (`f3df38b`) | `f3df38b` | `continue_with_minor_corrections` | M2 not on mainline; no production TrustReport; Track D D1+ not started | Commit M2; run **AUDIT-002**; wire adapter on real GeoX | **closed** (summary below) |
 | **AUDIT-002** | 2026-05-28 | M2 dual-write + live adapter compare | `2754c0a` | `continue_with_minor_corrections` | Prod TrustReport; real-bundle adapter hardening; Track D D1+ | Adapter wire-up on GeoX; then Track D D1 | **closed** |
-| **AUDIT-003** | — | Track D D1 design/matching | TBD | — | — | — | planned |
+| **AUDIT-003** | — | M2.1 wire-up gate (before Track D D1) | TBD | — | — | Fill after M2.1 commit | **scheduled** |
+| **AUDIT-004** | — | Track D D1 design/matching | TBD | — | — | — | planned |
 | **AUDIT-004** | — | Track D D2 estimator math | TBD | — | — | — | planned |
 | **AUDIT-005** | — | Before MMM intake promotion | TBD | — | — | — | planned |
 | **AUDIT-006** | — | Before planning / optimizer | TBD | — | — | — | planned |

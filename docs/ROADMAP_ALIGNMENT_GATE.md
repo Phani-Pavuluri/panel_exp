@@ -212,7 +212,7 @@ Skipping a box without documented waiver is **ungoverned promotion** (forbidden)
 | **Improves** | Trust, explainability |
 | **Out of scope** | TrustReport in product; Track D math audits; eligibility changes |
 | **Sideways risk** | Forcing adapter guess on unmapped configs — must remain **blocked** |
-| **Stop condition** | ≥3 representative non-fixture RunBundles resolve with explicit complete/partial/blocked; GeoX opt-in dual-write documented |
+| **Stop condition** | ≥3 representative non-fixture RunBundles resolve with explicit complete/partial/blocked; GeoX opt-in dual-write documented — **met** (`build_geo_run_artifact_bundle`, `tests/fixtures/representative_run_bundles/`) |
 
 #### Wire adapter (`resolve_adapter_output`) — fixture path complete
 
