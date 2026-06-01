@@ -151,9 +151,11 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 3. No estimator/inference/eligibility/maturity changes in D1.  
 4. TrustReport boundary unchanged.
 
-**Top finding:** D1-FIND-001 — default geo pipeline may match on full panel when `pre_treatment_period` is not passed to `assign` (investigating).
+**Top finding:** D1-FIND-001 — default geo pipeline matched on full panel when `pre_treatment_period` was not passed (fixed `61a174f`).
 
-**Next:** D5-DES-001* simulations; D2 estimator/donor audit; optional DEF/INV for D1-FIND-001.
+**Post-fix checkpoint:** D5-DES-001a Jaccard fixed vs pre-only **1.00** — D2 eligible under research lane.
+
+**Next:** Broader design OC; D2 estimator/donor audit.
 
 ---
 

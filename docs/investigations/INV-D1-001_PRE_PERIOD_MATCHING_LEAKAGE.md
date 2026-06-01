@@ -2,7 +2,7 @@
 
 **Investigation ID:** INV-D1-001  
 **Track:** D (research / robustness)  
-**Status:** **investigating** → characterization complete; **restrict** recommended  
+**Status:** **fix applied** (`61a174f`) — D5-DES-001a re-run **passed** (Jaccard 1.0)  
 **Opened:** 2026-05-28  
 **Source finding:** [D1-FIND-001](../TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md) §8  
 **Characterization:** [D5_DES_001a_results.json](../track_d/archives/D5_DES_001a_results.json)  
@@ -58,8 +58,11 @@ The default GeoX design pipeline may allow **look-ahead** in market matching: `r
 | Pre SMD (mean) | 0.47 | 0.36 | Full panel slightly worse pre balance |
 | Null \|ρ\|>0.3 rate | 14% | — | Non-trivial spurious association |
 
-**Automated recommendation:** `restrict`  
-**Disposition for D1-FIND-001:** `restricted` (research lane — not production code change yet)
+**Post-fix D5-DES-001a (commit `61a174f`+):** `test_set_jaccard_fixed_vs_pre_only` mean **1.00** · recommendation **`accepted_deviation`**
+
+**Pre-fix recommendation:** `restrict` (baseline full-panel vs pre-only Jaccard 0.27)
+
+**Disposition for D1-FIND-001:** `characterization_required` (fix verified; promotion still forbidden)
 
 ---
 
@@ -67,7 +70,7 @@ The default GeoX design pipeline may allow **look-ahead** in market matching: `r
 
 | Field | Value |
 |-------|--------|
-| **Current disposition** | `restricted` (inventory: DES-001 / MAT-001 remain `characterization_required`) |
+| **Current disposition** | `characterization_required` (fix in `61a174f`; D5 re-run confirms pre-period boundary) |
 | **TrustReport** | Unchanged — do not infer design validity from export alone |
 | **Promotion** | **Forbidden** until fix + re-run OC |
 | **MMM / planning** | **No feed** |
@@ -83,16 +86,16 @@ The default GeoX design pipeline may allow **look-ahead** in market matching: `r
 
 ---
 
-## 6. Proposed fix path (not implemented)
+## 6. Fix implemented (`61a174f`)
 
-**Separate change proposal** after governance review:
+1. **`geo_runner`:** passes `pre_treatment_period=TimePeriod(0, train_length)` when `train_length > 0`.
+2. **`greedy_match_markets`:** slices `wide` via `slice_wide_to_time_period` when `pre_treatment_period` is set.
+3. **`Rerandomization`:** imbalance evaluation uses pre-period panel; `_eval_period_clipped` maps period labels to sliced columns.
+4. **Shared helper:** `panel_exp/design/period_slice.py`.
 
-1. In `run_geo_experiment_design`, pass `pre_treatment_period=TimePeriod(0, train_length-1)` **or** slice `panel_data` to pre columns before `assign` when `train_length` is defined on geo orchestrator.
-2. Extend `greedy_match_markets` to honor `pre_treatment_period` by slicing `wide` before `sales_df` (defense in depth).
-3. Add DG-007 check: warn/fail if matching window includes experiment-period columns when spec declares pre-period end.
-4. Re-run D5-DES-001a — target mean Jaccard > 0.95 vs explicit pre-only reference.
+**D5-DES-001a post-fix:** mean Jaccard (fixed vs pre-only) **1.00** — see updated [`D5_DES_001a_results.json`](../track_d/archives/D5_DES_001a_results.json).
 
-**Migration:** Existing studies that ran full-panel matching should be flagged in evidence metadata (research note only until product consumer exists).
+**Migration (research):** Historical runs that used full-panel matching before this fix may differ; flag in study metadata when replaying old evidence.
 
 ---
 

@@ -55,9 +55,9 @@ For **known future work** already characterized (e.g. DEF-001 KFold geometry, DE
 
 | ID | Track | Status | Primary artifact | Disposition |
 |----|-------|--------|------------------|-------------|
-| **INV-D1-001** | Pre-period matching leakage | **Restricted** (characterized) | [`investigations/INV-D1-001_PRE_PERIOD_MATCHING_LEAKAGE.md`](investigations/INV-D1-001_PRE_PERIOD_MATCHING_LEAKAGE.md) · [`track_d/archives/D5_DES_001a_results.json`](track_d/archives/D5_DES_001a_results.json) | **restricted** — fix proposal pending; D2 blocked until resolved or accepted |
+| **INV-D1-001** | Pre-period matching leakage | **Fix applied** (`61a174f`) | [`investigations/INV-D1-001_PRE_PERIOD_MATCHING_LEAKAGE.md`](investigations/INV-D1-001_PRE_PERIOD_MATCHING_LEAKAGE.md) · [`track_d/archives/D5_DES_001a_results.json`](track_d/archives/D5_DES_001a_results.json) | **characterization_required** — D5 re-run Jaccard **1.0**; D2 eligible |
 
-**D5-DES-001a headline:** Full-panel vs pre-only `greedy_match_markets` assignments differ materially (mean Jaccard **0.27**); recommend **restrict** geo matching to pre-period columns. No production code change in this package.
+**D5-DES-001a headline (post-fix):** `pre_treatment_period` path matches pre-only reference (Jaccard **1.00**). Pre-fix baseline Jaccard **0.27** documented in artifact history.
 
 ---
 

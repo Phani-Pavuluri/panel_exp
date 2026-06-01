@@ -3,7 +3,8 @@
     "panel_exp.design.geo_runner.run_geo_experiment_design",
     "panel_exp.design.geo_experiment_design.GeoExperimentDesign.run_design",
     "panel_exp.design.assign.greedy_match_markets.assign",
-    "panel_exp.design.assign.Rerandomization (wraps base design)"
+    "panel_exp.design.assign.Rerandomization (wraps base design)",
+    "panel_exp.design.period_slice.slice_wide_to_time_period"
   ],
   "artifact_id": "D5-DES-001a",
   "config": {
@@ -15,9 +16,10 @@
     "random_state_base": 20260528,
     "treatment_probability": 0.5
   },
-  "disposition_d1_find_001": "restricted",
-  "generated_at": "2026-06-01T18:15:52+00:00",
+  "disposition_d1_find_001": "characterization_required",
+  "generated_at": "2026-06-01T18:25:19+00:00",
   "hypothesis": "Full-panel greedy matching uses post-treatment columns when present, increasing |corr(test, post_mean)| and post-period balance vs pre-only matching.",
+  "inv_d1_001_fix_applied": true,
   "investigation_id": "INV-D1-001",
   "lane": "research",
   "null_dgp": {
@@ -82,12 +84,17 @@
       "p95": 1.142117994619402,
       "std": 0.35850579889076123
     },
+    "test_set_jaccard_fixed_vs_pre_only": {
+      "mean": 1.0,
+      "p95": 1.0,
+      "std": 0.0
+    },
     "test_set_jaccard_full_vs_pre_only": {
       "mean": 0.26502576739709094,
       "p95": 0.45454545454545453,
       "std": 0.10247940220442006
     }
   },
-  "rationale": "Full-panel vs pre-only matching produce materially different test sets (mean Jaccard 0.27); geo design should not balance on post-treatment columns when pre-period is defined.",
-  "recommendation": "restrict"
+  "rationale": "INV-D1-001 fix verified: pre_treatment_period assignment matches pre-only reference (mean Jaccard 1.00).",
+  "recommendation": "accepted_deviation"
 }
