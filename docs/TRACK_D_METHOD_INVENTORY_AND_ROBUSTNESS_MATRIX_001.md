@@ -202,7 +202,7 @@ Where applicable, each inventory row records:
 |--------|--------|-------------------|--------------|-------------|
 | **POW-001** | Simulation-based power (design) | diagnostic_only | Feasibility DEF-010; D5-POW-001a optimistic_proxy; 001b SCM JK **null_monitor_only** | **D4** ✅ **D5-POW-001a/b** ✅ |
 | **POW-002** | Formula MDE (variance-based) | diagnostic_only | Spec `mde_target` (not wired) | **D4** ✅ |
-| **POW-003** | Geo-level power (aggregated panel) | restricted | TBRRidge+Kfold ≠ SCM JK readout; D5-POW-001a confirms optimistic_proxy | **D4** ✅ **D5-POW-001a** ✅ |
+| **POW-003** | Geo-level power (aggregated panel) | restricted | 2-row agg **narrow_diagnostics_only** (D5-POW-001c); not unit readout proxy | **D4** ✅ **D5-POW-001a/c** ✅ |
 | **POW-004** | Multi-cell power | blocked | Track C | Defer |
 | **POW-005** | Business ROI detectability | diagnostic_only | TrustReport profile | **D4** ✅ |
 | **POW-006** | Long-term holdout power | blocked | Holdout Track C | Defer |

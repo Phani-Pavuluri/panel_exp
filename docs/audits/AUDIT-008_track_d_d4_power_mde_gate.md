@@ -33,7 +33,12 @@ Track D D4 — power/MDE methods (POW-001–006), estimand alignment, design geo
 
 ## Next
 
-Track E E1; D5-POW-001c–e; broader D5 OC — not MMM integration.
+Track E E1; D5-POW-001d–e; broader D5 OC — not MMM integration.
+
+## D5-POW-001c follow-up (2026-06-01)
+
+**Artifact:** [`D5_POW_001c_results.json`](../track_d/archives/D5_POW_001c_results.json)  
+**Verdict:** **`narrow_diagnostics_only`** — 2-row aggregation preserves assignment but not unit readout scale; SCM+JK infeasible on agg panel.
 
 ## D5-POW-001b follow-up (2026-06-01)
 

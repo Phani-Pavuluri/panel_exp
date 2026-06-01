@@ -197,7 +197,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D3-FIND-001 — Unit JK LOO compares `y_hat` to observed `y` → **INV-D3-001** opened (D5-INF-002a).
 
-**Next:** Track E E1/E2; D5-POW-001c–e.
+**Next:** Track E E1/E2; D5-POW-001d–e.
 
 ---
 
@@ -216,7 +216,18 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D4-FIND-001 — design MDE not aligned to `SCM_UnitJackKnife` instrument.
 
-**Next:** Track E E1; D5-POW-001c–e; not MMM integration.
+**Next:** Track E E1; D5-POW-001d–e; not MMM integration.
+
+---
+
+## D5-POW-001c checkpoint (2026-06-01)
+
+**Artifact:** [`docs/track_d/archives/D5_POW_001c_results.json`](track_d/archives/D5_POW_001c_results.json)  
+**Harness:** `panel_exp/validation/track_d_d5_pow_001c.py`
+
+**Verdict:** **`narrow_diagnostics_only`** — greedy pre-period assignment held fixed; unit SCM+JK vs 2-row sum+TBRRidge+Kfold. Injection-grid point correlation ≈1 but effect magnitudes differ ~12× (sum aggregation). SCM+JK **infeasible** on 2-row panel (one control row). 2-row path is **not** an acceptable proxy for governed unit readout; geo power remains diagnostic-only.
+
+**Design-aware:** `design_context_reference` + `design_methods_for_001e` tier table in artifact.
 
 ---
 
