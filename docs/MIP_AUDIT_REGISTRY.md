@@ -2,7 +2,7 @@
 
 **Program ID:** MIP-PERIODIC-AUDIT  
 **Status:** active  
-**Last updated:** 2026-05-28 (Track D D1 package)  
+**Last updated:** 2026-05-28 (Track D D2 package)  
 
 **Template:** [`MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md`](MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md)  
 **Alignment gate:** [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md)
@@ -30,7 +30,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 | **AUDIT-003** | 2026-05-28 | M2.1 wire-up gate (before Track D D1) | `5000fc5` | `continue_with_minor_corrections` | GeoX main export hook; M2.2 TrustReport; Track D D1 optional | **M2.2** prod lane; D1 research optional | **closed** |
 | **AUDIT-004** | 2026-05-28 | M2.2 TrustReport sidecar gate | `ec2d351` | `continue_with_minor_corrections` | Product UI consumer; `__init__` re-exports; Track D D1+ | Track D D1 research lane | **closed** |
 | **AUDIT-005** | 2026-05-28 | Track D D1 design/matching (research lane) | `7af9ef9` | `continue_with_characterization_required` | Pre-period matching risk (D1-FIND-001); D5 OC pending | D5 design OC; D2 | **closed** (research) |
-| **AUDIT-006** | — | Track D D2 estimator math | TBD | — | — | — | planned |
+| **AUDIT-006** | 2026-05-28 | Track D D2 estimator/donor (research lane) | `1a31e69` | `continue_with_characterization_required` | `full_model` SCM fit risk (D2-FIND-001); D5 OC pending | INV-D2-001; D3; D5-EST-002a | **closed** (research) |
 | **AUDIT-007** | — | Before MMM intake promotion | TBD | — | — | — | planned |
 | **AUDIT-008** | — | Before planning / optimizer | TBD | — | — | — | planned |
 | **AUDIT-009** | — | Before LLM interface | TBD | — | — | — | planned |
@@ -155,7 +155,27 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Post-fix checkpoint:** D5-DES-001a Jaccard fixed vs pre-only **1.00** — D2 eligible under research lane.
 
-**Next:** Broader design OC; D2 estimator/donor audit.
+**Next:** D2 estimator/donor audit (→ AUDIT-006).
+
+---
+
+## AUDIT-006 summary (Track D D2 — research lane)
+
+**Report:** [`TRACK_D_D2_ESTIMATOR_AND_DONOR_AUDIT_001.md`](TRACK_D_D2_ESTIMATOR_AND_DONOR_AUDIT_001.md)
+
+**Verdict:** `continue_with_characterization_required` — D2 package complete; **no** production promotion.
+
+**Confirmed**
+
+1. Default SCM CVXPY path fits on pre-period only; treated units excluded from donor pool.  
+2. Estimator vs inference separation intact (`ImpactAnalyzer` + inference registry).  
+3. MAT-004/005 and EST-001–004 receive explicit robustness statuses.  
+4. No estimator/inference/TrustReport/eligibility changes in D2.  
+5. CalibrationSignal eligibility **unchanged** (SCM JK null-monitor only).
+
+**Top finding:** D2-FIND-001 — `full_model=True` fits SCM weights on post-period columns → propose **INV-D2-001** (separate governed fix PR).
+
+**Next:** D3 inference audit; D5-EST-002a/002b OC; do not broaden D5 before D3 unless sims are estimator-only.
 
 ---
 

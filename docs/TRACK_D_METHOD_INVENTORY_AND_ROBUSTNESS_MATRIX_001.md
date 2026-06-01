@@ -145,8 +145,8 @@ Where applicable, each inventory row records:
 | **MAT-001** | Greedy market matching | DES-001 | **characterization_required** | [INV-D1-001](investigations/INV-D1-001_PRE_PERIOD_MATCHING_LEAKAGE.md) fix verified |
 | **MAT-002** | Distance-based pairing (trimmed match) | DES-008 | unreviewed | Defer (not geo-run) |
 | **MAT-003** | Correlation / pre-period KPI matching | Product + tests | implementation_review_required | D1b / D0b §3.3 |
-| **MAT-004** | Donor pool construction (SCM) | SCM estimators | math_review_required | **D2** + D0b SCM |
-| **MAT-005** | Synthetic donor eligibility / weight constraints | SCM CVXPY | math_review_required | **D2** |
+| **MAT-004** | Donor pool construction (SCM) | SCM estimators | characterization_required | **D2** ✅ + D0b SCM |
+| **MAT-005** | Synthetic donor eligibility / weight constraints | SCM CVXPY | characterization_required | **D2** ✅ |
 | **MAT-006** | Supergeo cluster matching | DES-009 | unreviewed | Defer |
 | **MAT-007** | Spend/outcome covariate matching | Docs | unreviewed | Product / D1b |
 
@@ -158,10 +158,10 @@ Where applicable, each inventory row records:
 
 | Est ID | Catalog name | Class | Maturity (today) | Robustness status | Primary instrument(s) | Next action |
 |--------|--------------|-------|------------------|-------------------|----------------------|-------------|
-| **EST-001** | SCM | SyntheticControl | EXPERT_REVIEW | restricted | SCM JK, Placebo | D2 + GOLD-001/005 |
-| **EST-002** | SCM CVXPY | SyntheticControlCVXPY | EXPERT_REVIEW | math_review_required | — | D2 |
-| **EST-003** | AugSynth | AugSynth | UNVALIDATED | unreviewed | — | D2 |
-| **EST-004** | AugSynthCVXPY | AugSynthCVXPY | EXPERT_REVIEW | restricted | AS point, AS JK | D2 + GOLD-003 |
+| **EST-001** | SCM | SyntheticControl | EXPERT_REVIEW | restricted | SCM JK, Placebo | **D2** ✅ + GOLD-001/005 |
+| **EST-002** | SCM CVXPY | SyntheticControlCVXPY | EXPERT_REVIEW | characterization_required | — | **D2** ✅ |
+| **EST-003** | AugSynth | AugSynth | UNVALIDATED | blocked | — | **D2** ✅ |
+| **EST-004** | AugSynthCVXPY | AugSynthCVXPY | EXPERT_REVIEW | restricted | AS point, AS JK | **D2** ✅ + GOLD-003 |
 | **EST-005** | TBR | TBR | EXPERT_REVIEW | characterization_required | — | D2 + D0b TBR |
 | **EST-006** | TBRRidge | TBRRidge | EXPERT_REVIEW | restricted | BRB, KFold, Placebo | D2 + GOLD-002 |
 | **EST-007** | TBRAutoSARIMAX | TBRAutoSARIMAX | EXPERT_REVIEW | unreviewed | — | D2 |
