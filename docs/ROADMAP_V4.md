@@ -88,7 +88,7 @@ Architecture contracts and test discipline (planning + fixtures; implementation 
 | M2.1 Adapter production wire-up | [`panel_exp/track_b/bundle_extract.py`](../panel_exp/track_b/bundle_extract.py) · [`export.py`](../panel_exp/track_b/export.py) | **Complete** ([AUDIT-003](audits/AUDIT-003_m2_1_wire_up_gate.md) `5000fc5`) |
 | M2.2 Production TrustReport path | [`trust_report.py`](../panel_exp/track_b/trust_report.py) · [`geo_run_export.py`](../panel_exp/artifacts/geo_run_export.py) | **Complete** ([AUDIT-004](audits/AUDIT-004_m2_2_trust_report_gate.md) `ec2d351`) |
 
-**Near-term sequence:** Track B M2.2 **complete** · Track D **D1–D4** **complete** · D5-POW **001a–d** **complete** · DESIGN-INVENTORY-001 **`e3e6aeb`** · [**ROADMAP-DESIGN-READOUT-UPDATE-001**](ROADMAP_DESIGN_READOUT_UPDATE_001.md) **complete** · **D5-POW-001e next** (SCM+JK reference null-monitor only) · Track E E1/E2 · not MMM yet.
+**Near-term sequence:** Track B M2.2 **complete** · Track D **D1–D4** **complete** · D5-POW **001a–e** **complete** · DESIGN-INVENTORY-001 **`e3e6aeb`** · [**ROADMAP-DESIGN-READOUT-UPDATE-001**](ROADMAP_DESIGN_READOUT_UPDATE_001.md) **complete** · **Track E E1/E2 next** · not MMM yet.
 
 **Alignment registry:** [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) § Track B — per-item capability, risk, artifacts, stop conditions.
 
@@ -114,7 +114,7 @@ Architecture contracts and test discipline (planning + fixtures; implementation 
 | D2 | Estimator + SCM donor audit | **Complete** ([`TRACK_D_D2_ESTIMATOR_AND_DONOR_AUDIT_001.md`](TRACK_D_D2_ESTIMATOR_AND_DONOR_AUDIT_001.md)) |
 | D3 | Inference method audit | **Complete** ([`TRACK_D_D3_INFERENCE_METHOD_AUDIT_001.md`](TRACK_D_D3_INFERENCE_METHOD_AUDIT_001.md)) |
 | D4 | Power / MDE audit | **Complete** ([`TRACK_D_D4_POWER_MDE_AUDIT_001.md`](TRACK_D_D4_POWER_MDE_AUDIT_001.md)) |
-| D5 | OC simulation harness | In progress (001a–d ✅; DESIGN-INVENTORY-001 ✅; readout update ✅; **001e scoped, not started**) |
+| D5 | OC simulation harness | In progress (001a–e ✅; DESIGN-INVENTORY-001 ✅; readout update ✅; **Track E E1/E2 next**) |
 | D6 | Runtime monitoring | Planned |
 | D7 | Promotion / demotion framework | Planned |
 | D8 | Cross-method triangulation | Superseded by **Track E** (governance layer) |
@@ -132,9 +132,9 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | **SCM+UnitJackKnife** | **Reference** null-monitor branch for fixed-window unit-level OC (D5-POW-001b/d); **not** universal GeoX readout, platform MDE, or lift detection |
 | **Multi-cell** | **Geometry mode** (`n_test_grps > 1`); not a design method class |
 | **supergeos / trimmedmatch** | In roadmap as **separate-semantics** paths (D5-DES-SUPERGEO-001, D5-DES-TRIM-001); not ignored |
-| **D5-POW-001e** | Six confirmed design methods; SCM+JK reference null FPR; single-cell required; limited multi_cell **per-cell** only; no pooling |
+| **D5-POW-001e** | ✅ Six confirmed methods; SCM+JK reference null FPR; [`D5_POW_001e_results.json`](track_d/archives/D5_POW_001e_results.json) — `acceptable_with_caveats` |
 
-**Next steps:** (1) D5-POW-001e → (2) Track E E1/E2 cards → (3) targeted D5 follow-ups for other instruments (TBRRidge+KFold, BRB, DID, AugSynth, placebo, geo PowerAnalysis diagnostic).
+**Next steps:** (1) Track E E1/E2 cards → (2) D5-DES-SUPERGEO-001 / D5-DES-TRIM-001 / D5-MCELL → (3) other instrument OC batteries (TBRRidge+KFold, BRB, DID, AugSynth, placebo).
 
 ### Track E — method suitability & triangulation
 

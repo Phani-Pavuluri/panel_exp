@@ -203,7 +203,7 @@ Where applicable, each inventory row records:
 | OC tensor | **design-method × geometry-mode × measurement-instrument** |
 | SCM+JK | **Reference null-monitor** for unit-level fixed-window OC only |
 | Multi-cell | **Geometry** (`n_test_grps > 1`), not a design method |
-| D5-POW-001e | Six confirmed design methods; SCM+JK reference null FPR; **not started** |
+| D5-POW-001e | ✅ Six confirmed methods; SCM+JK reference null FPR; [`D5_POW_001e_results.json`](track_d/archives/D5_POW_001e_results.json) |
 | supergeos / trimmedmatch | Separate-semantics; D5-DES-SUPERGEO-001 / D5-DES-TRIM-001 |
 
 ---

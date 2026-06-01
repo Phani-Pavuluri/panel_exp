@@ -19,7 +19,7 @@ Correct roadmap and governance framing **before** D5-POW-001e implementation. Po
 | Item | Status |
 |------|--------|
 | **DESIGN-INVENTORY-001** | ✅ Complete @ commit `e3e6aeb` |
-| **D5-POW-001e** | **Not started** (scoped below; implement after this update) |
+| **D5-POW-001e** | ✅ Complete — [`D5_POW_001e_results.json`](track_d/archives/D5_POW_001e_results.json) |
 | **Discovery** | Code-grounded via `get_design_registry()`, not roadmap-assumed names |
 
 **Registry:** 9 entries. **Geo-run supported (5):** `greedy_match_markets`, `thinningdesign`, `balancedrandomization`, `completerandomization`, `stratifiedrandomization` — matches `LEGACY_GEO_RUN_DESIGN_SUPPORTED`.
@@ -154,7 +154,7 @@ Per **method × geometry_mode** row, record at minimum:
 ## 10. Updated next-step sequence
 
 1. ✅ **ROADMAP-DESIGN-READOUT-UPDATE-001** (this document)  
-2. **D5-POW-001e** — six confirmed methods; SCM+JK reference branch; single-cell required; limited multi_cell per-cell; no pooling  
+2. ✅ **D5-POW-001e** — six confirmed methods; SCM+JK reference branch; per-cell single/multi_cell; no pooling  
 3. **Track E E1/E2** — cards + diagnostics (multi-cell, donor, windows, supergeos, trimmedmatch, instrument panel)  
 4. **Later:** D5-DES-SUPERGEO-001 · D5-DES-TRIM-001 · D5-MCELL optimal-cell-count · OC batteries for TBRRidge+KFold, BRB, DID+bootstrap, AugSynth, placebo where compatible  
 
@@ -171,4 +171,18 @@ Per **method × geometry_mode** row, record at minimum:
 
 ---
 
-*ROADMAP-DESIGN-READOUT-UPDATE-001 v1.0.0 — 2026-06-01*
+## 12. D5-POW-001e results (2026-06-01)
+
+**Artifact:** [`D5_POW_001e_results.json`](track_d/archives/D5_POW_001e_results.json) · harness `panel_exp/validation/track_d_d5_pow_001e.py`
+
+| Finding | Detail |
+|---------|--------|
+| **Overall** | `acceptable_with_caveats` — SCM+JK **null-monitor reference** only |
+| **Single-cell** | All six methods **acceptable** (mean per-cell null interval-exclusion FPR ≈ 0 on `scm_low_signal` battery) |
+| **Multi-cell** | All six **acceptable**; `thinningdesign` test_1 mean null FPR ≈ 3.6%; no pooled multi-cell claim |
+| **Greedy vs wrapper** | `Rerandomization(greedy)` matches bare greedy on this battery (Δ FPR 0) |
+| **Track E** | Register **E-DES-MCELL-*** for multi-cell suitability; **E-SCM-DONOR-*** / **E-DES-WIN-*** as follow-ons |
+
+---
+
+*ROADMAP-DESIGN-READOUT-UPDATE-001 v1.0.1 — D5-POW-001e complete*

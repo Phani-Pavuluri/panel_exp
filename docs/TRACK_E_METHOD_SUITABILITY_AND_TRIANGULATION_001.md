@@ -136,7 +136,7 @@ From D5-POW-001d and [ROADMAP-DESIGN-READOUT-UPDATE-001](ROADMAP_DESIGN_READOUT_
 | **Compatible estimands** | `relative_att_post` (pooled path) for **null monitor** only |
 | **Failure modes** | Not lift detection; not platform MDE (001a optimistic_proxy for geo power) |
 | **Track B role** | **null_monitor_only**; calibration-eligible |
-| **D5 OC** | 001b null-monitor; 001d windows; **001e** design-method null FPR (planned) |
+| **D5 OC** | 001b null-monitor; 001d windows; **001e** design-method null FPR ✅ |
 
 ### SCM + Placebo (`SCM_Placebo`)
 
@@ -330,7 +330,7 @@ flowchart LR
 | **E6** | Golden fixtures: agreement / conflict scenarios | Planned |
 | **E7** | Implementation after Track D OC evidence | Deferred |
 
-**Recommended program order:** INV-D3-001 fix ✅ → **E0** ✅ → D5-POW-001a–d ✅ → DESIGN-INVENTORY-001 ✅ → **ROADMAP-DESIGN-READOUT-UPDATE-001** ✅ → **D5-POW-001e** (SCM+JK reference null FPR) → **E1/E2** (cards for full instrument panel + design methods) → D5-DES-SUPERGEO-001 / D5-DES-TRIM-001 / D5-MCELL → other instrument OC → E3/E4/E6 → MMM integration.
+**Recommended program order:** INV-D3-001 fix ✅ → **E0** ✅ → D5-POW-001a–e ✅ → DESIGN-INVENTORY-001 ✅ → **ROADMAP-DESIGN-READOUT-UPDATE-001** ✅ → **E1/E2** (cards for full instrument panel + design methods) → D5-DES-SUPERGEO-001 / D5-DES-TRIM-001 / D5-MCELL → other instrument OC → E3/E4/E6 → MMM integration.
 
 ### E1 / E2 scope (updated)
 

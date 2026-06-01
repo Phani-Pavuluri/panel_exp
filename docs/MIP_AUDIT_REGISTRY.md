@@ -197,7 +197,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D3-FIND-001 — Unit JK LOO compares `y_hat` to observed `y` → **INV-D3-001** opened (D5-INF-002a).
 
-**Next:** D5-POW-001e (scoped); Track E E1/E2.
+**Next:** Track E E1/E2.
 
 ---
 
@@ -216,7 +216,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D4-FIND-001 — design MDE not aligned to `SCM_UnitJackKnife` instrument.
 
-**Next:** D5-POW-001e (scoped); Track E E1/E2; not MMM integration.
+**Next:** Track E E1/E2; not MMM integration.
 
 ---
 
@@ -230,7 +230,16 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 - Power/OC = **design-method × geometry-mode × measurement-instrument** specific.  
 - Multi-cell = **geometry mode** (`n_test_grps > 1`), not a design method.  
 - **supergeos** / **trimmedmatch** in roadmap (D5-DES-SUPERGEO-001, D5-DES-TRIM-001); not ignored.  
-- D5-POW-001e **scoped, not started** — six confirmed methods; single-cell required; limited multi_cell per-cell; no pooling.
+- D5-POW-001e **complete** — see checkpoint below.
+
+---
+
+## D5-POW-001e checkpoint (2026-06-01)
+
+**Artifact:** [`docs/track_d/archives/D5_POW_001e_results.json`](track_d/archives/D5_POW_001e_results.json)  
+**Harness:** `panel_exp/validation/track_d_d5_pow_001e.py`
+
+**Verdict:** **`acceptable_with_caveats`** — fixed-window unit SCM+JK null-monitor reference across six confirmed design methods. **Single_cell:** all methods **acceptable** (mean per-cell null interval-exclusion FPR ≈ 0 on `scm_low_signal`, n=28). **Multi_cell** (`n_test_grps=2`): all **acceptable**; per-cell metrics only (control-only donors); `thinningdesign` test_1 mean null FPR ≈ 3.6%. **Greedy vs `Rerandomization(greedy)`:** identical on this battery. **Track E:** E-DES-MCELL-* + E-SCM-DONOR / E-DES-WIN follow-ons. **Excluded:** supergeos, trimmedmatch, quickblock, matchedpair. Not platform power / MDE / lift promotion.
 
 ---
 
@@ -239,7 +248,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 **Artifact:** [`docs/track_d/archives/DESIGN_INVENTORY_001_results.json`](track_d/archives/DESIGN_INVENTORY_001_results.json)  
 **Doc:** [`TRACK_D_DESIGN_METHOD_INVENTORY_001.md`](TRACK_D_DESIGN_METHOD_INVENTORY_001.md)
 
-**Confirmed for D5-POW-001e (6):** `greedy_match_markets`, `rerandomization_wrapper`, `completerandomization`, `balancedrandomization`, `stratifiedrandomization`, `thinningdesign`. **Commit:** `e3e6aeb`. **Not started.** No `multi_cell_multi_treated` class — multi-cell = `n_test_grps>1`. **Separate follow-ups:** `supergeos`, `trimmedmatch`. **tier_3:** `quickblock`, `matchedpair`.
+**Confirmed for D5-POW-001e (6):** `greedy_match_markets`, `rerandomization_wrapper`, `completerandomization`, `balancedrandomization`, `stratifiedrandomization`, `thinningdesign`. **Commit:** `e3e6aeb`. **001e:** ✅ complete. No `multi_cell_multi_treated` class — multi-cell = `n_test_grps>1`. **Separate follow-ups:** `supergeos`, `trimmedmatch`. **tier_3:** `quickblock`, `matchedpair`.
 
 ---
 
