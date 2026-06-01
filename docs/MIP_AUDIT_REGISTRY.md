@@ -2,7 +2,7 @@
 
 **Program ID:** MIP-PERIODIC-AUDIT  
 **Status:** active  
-**Last updated:** 2026-05-28 (AUDIT-004 closed)  
+**Last updated:** 2026-05-28 (Track D D1 package)  
 
 **Template:** [`MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md`](MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md)  
 **Alignment gate:** [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md)
@@ -29,7 +29,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 | **AUDIT-002** | 2026-05-28 | M2 dual-write + live adapter compare | `2754c0a` | `continue_with_minor_corrections` | Prod TrustReport; real-bundle adapter hardening; Track D D1+ | Adapter wire-up on GeoX; then Track D D1 | **closed** |
 | **AUDIT-003** | 2026-05-28 | M2.1 wire-up gate (before Track D D1) | `5000fc5` | `continue_with_minor_corrections` | GeoX main export hook; M2.2 TrustReport; Track D D1 optional | **M2.2** prod lane; D1 research optional | **closed** |
 | **AUDIT-004** | 2026-05-28 | M2.2 TrustReport sidecar gate | `ec2d351` | `continue_with_minor_corrections` | Product UI consumer; `__init__` re-exports; Track D D1+ | Track D D1 research lane | **closed** |
-| **AUDIT-005** | — | Track D D1 design/matching | TBD | — | — | — | planned |
+| **AUDIT-005** | 2026-05-28 | Track D D1 design/matching (research lane) | `7af9ef9` | `continue_with_characterization_required` | Pre-period matching risk (D1-FIND-001); D5 OC pending | D5 design OC; D2 | **closed** (research) |
 | **AUDIT-006** | — | Track D D2 estimator math | TBD | — | — | — | planned |
 | **AUDIT-007** | — | Before MMM intake promotion | TBD | — | — | — | planned |
 | **AUDIT-008** | — | Before planning / optimizer | TBD | — | — | — | planned |
@@ -135,6 +135,25 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 | **Track B `__init__.py` re-exports** | Minor follow-up (uncommitted at audit) |
 
 **Next item:** Track D D1 under research lane, or Track B consumer wiring.
+
+---
+
+## AUDIT-005 summary (Track D D1 — research lane)
+
+**Report:** [`TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md`](TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md)
+
+**Verdict:** `continue_with_characterization_required` — D1 package complete; **no** production promotion.
+
+**Confirmed**
+
+1. Geo-run designs and MAT-001 audited; matrix statuses updated.  
+2. DG-007 validation gate **restricted** (integrity, not matching correctness).  
+3. No estimator/inference/eligibility/maturity changes in D1.  
+4. TrustReport boundary unchanged.
+
+**Top finding:** D1-FIND-001 — default geo pipeline may match on full panel when `pre_treatment_period` is not passed to `assign` (investigating).
+
+**Next:** D5-DES-001* simulations; D2 estimator/donor audit; optional DEF/INV for D1-FIND-001.
 
 ---
 

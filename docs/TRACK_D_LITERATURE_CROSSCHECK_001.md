@@ -210,7 +210,11 @@ next_action: D2 estimator math audit
 | EST-011 | SDID | needs_characterization | D2 |
 | INF-002 | Jackknife | aligned_with_deviation | D3 (null monitor) |
 | INF-006 | Placebo | aligned_with_deviation | D3 (Phase 15) |
-| DES-001 | Matched markets | needs_characterization | D1 |
+| DES-001 | Matched markets | needs_characterization | D1 ✅ → D0b YAML + D5 OC |
+| DES-010 | Rerandomization | needs_characterization | D1 ✅ → D5-DES-010a |
+| DES-011 | Constraints | aligned (pending D0b record) | D1 |
+| DES-013 | Design validation | aligned_with_deviation | D1 |
+| MAT-001 | Greedy market match | needs_characterization | D1 (alias DES-001) |
 
 ---
 

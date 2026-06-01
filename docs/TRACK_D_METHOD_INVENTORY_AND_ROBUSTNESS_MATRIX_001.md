@@ -2,7 +2,7 @@
 
 **Document ID:** TRACK-D-METHOD-INVENTORY-001  
 **Status:** architecture design — D0 deliverable  
-**Last updated:** 2026-05-20  
+**Last updated:** 2026-05-28 (D1 design/matching audit)  
 **Package version:** 0.2.1 (current implementation)  
 
 **Related:** [`TRACK_B_MEASUREMENT_INSTRUMENT_CATALOG_001.md`](TRACK_B_MEASUREMENT_INSTRUMENT_CATALOG_001.md) · [`TRACK_B_ESTIMAND_REGISTRY_001.md`](TRACK_B_ESTIMAND_REGISTRY_001.md) · [`TRACK_B_CONTRACT_TEST_PLAN_001.md`](TRACK_B_CONTRACT_TEST_PLAN_001.md) · [`TRACK_D_LITERATURE_CROSSCHECK_001.md`](TRACK_D_LITERATURE_CROSSCHECK_001.md) · [`ROADMAP_V4.md`](ROADMAP_V4.md) · [`VALIDATION_COVERAGE.md`](VALIDATION_COVERAGE.md) · [`METHOD_VALIDATION_PLAN.md`](METHOD_VALIDATION_PLAN.md) · [`DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md)
@@ -116,19 +116,19 @@ Where applicable, each inventory row records:
 
 | Method ID | Implementation | Geo run supported | Robustness status | Track B | Literature (D0b) | Next action |
 |-----------|----------------|-------------------|-------------------|---------|------------------|-------------|
-| **DES-001** | `greedy_match_markets` | Yes | implementation_review_required | DiagnosticSummary: assignment integrity (future) | TBR / matched markets | D1 design audit |
-| **DES-002** | `thinningdesign` | Yes | unreviewed | TBD | Geo design | D1 |
-| **DES-003** | `balancedrandomization` | Yes | unreviewed | TBD | Randomization inference | D1 |
-| **DES-004** | `completerandomization` | Yes | unreviewed | TBD | Randomization | D1 |
-| **DES-005** | `stratifiedrandomization` | Yes | unreviewed | TBD | Stratified experiments | D1 |
-| **DES-006** | `quickblock` | No | unreviewed | TBD | Blocking designs | D1 if productized |
-| **DES-007** | `matchedpair` | No | unreviewed | TBD | Paired designs | D1 |
-| **DES-008** | `trimmedmatch` | No | unreviewed | TBD | Trimmed match | D1 |
-| **DES-009** | `supergeos` | No | unreviewed | TBD | Cluster/supergeo | D1 |
-| **DES-010** | Rerandomization (capability on geo designs) | Partial | unreviewed | Spec field | Rerandomization tests | D1 |
-| **DES-011** | Whitelist / blacklist constraints | Partial | implementation_review_required | Spec + design validation | Constraint validity | D1 |
+| **DES-001** | `greedy_match_markets` | Yes | **characterization_required** | Spec `design_method`; DG-007 | TBR / matched markets ([D1](TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md)) | D5-DES-001* OC |
+| **DES-002** | `thinningdesign` | Yes | implementation_review_required | TBD | Geo design | D1b / D5 |
+| **DES-003** | `balancedrandomization` | Yes | implementation_review_required | TBD | Randomization inference | D5 |
+| **DES-004** | `completerandomization` | Yes | implementation_review_required | TBD | Randomization | D5 |
+| **DES-005** | `stratifiedrandomization` | Yes | unreviewed | TBD | Stratified experiments | D1b |
+| **DES-006** | `quickblock` | No | unreviewed | TBD | Blocking designs | Defer |
+| **DES-007** | `matchedpair` | No | unreviewed | TBD | Paired designs | Defer |
+| **DES-008** | `trimmedmatch` | No | unreviewed | TBD | Trimmed match | Defer |
+| **DES-009** | `supergeos` | No | unreviewed | TBD | Cluster/supergeo | Defer |
+| **DES-010** | Rerandomization (capability on geo designs) | Partial | **characterization_required** | Spec field | Rerandomization tests ([D1](TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md)) | D5-DES-010a |
+| **DES-011** | Whitelist / blacklist constraints | Partial | **restricted** | Spec + design validation | Constraint validity ([D1](TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md)) | D0b record |
 | **DES-012** | Treatment–control ratio optimization | Docs/product | unreviewed | Feasibility (DEF-010) | Power literature | D4 |
-| **DES-013** | Geo eligibility filtering | `design/validation.py` | implementation_review_required | Spec `target_population` | Eligibility | D1 |
+| **DES-013** | Geo eligibility filtering | `design/validation.py` | **restricted** | Spec + validation_summary | Eligibility ([D1](TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md)) | D1-FIND-003 |
 | **DES-014** | Heavy-up / go-dark assignment | Planned/product | unreviewed | Track C | Media experiments | Defer |
 | **DES-015** | Multi-cell assignment | Product | unreviewed | Track C | Multi-arm geo | Defer |
 
@@ -142,13 +142,13 @@ Where applicable, each inventory row records:
 
 | Match ID | Description | Used by | Robustness status | Next action |
 |----------|-------------|---------|-------------------|-------------|
-| **MAT-001** | Greedy market matching | DES-001 | implementation_review_required | D1 |
-| **MAT-002** | Distance-based pairing (trimmed match) | DES-008 | unreviewed | D1 |
-| **MAT-003** | Correlation / pre-period KPI matching | Product + tests | unreviewed | D1 |
-| **MAT-004** | Donor pool construction (SCM) | SCM estimators | math_review_required | D2 + D0b SCM |
-| **MAT-005** | Synthetic donor eligibility / weight constraints | SCM CVXPY | math_review_required | D2 |
-| **MAT-006** | Supergeo cluster matching | DES-009 | unreviewed | D1 |
-| **MAT-007** | Spend/outcome covariate matching | Docs | unreviewed | D1 |
+| **MAT-001** | Greedy market matching | DES-001 | **characterization_required** | D5-DES-001* ([D1](TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md)) |
+| **MAT-002** | Distance-based pairing (trimmed match) | DES-008 | unreviewed | Defer (not geo-run) |
+| **MAT-003** | Correlation / pre-period KPI matching | Product + tests | implementation_review_required | D1b / D0b §3.3 |
+| **MAT-004** | Donor pool construction (SCM) | SCM estimators | math_review_required | **D2** + D0b SCM |
+| **MAT-005** | Synthetic donor eligibility / weight constraints | SCM CVXPY | math_review_required | **D2** |
+| **MAT-006** | Supergeo cluster matching | DES-009 | unreviewed | Defer |
+| **MAT-007** | Spend/outcome covariate matching | Docs | unreviewed | Product / D1b |
 
 ---
 
@@ -253,7 +253,7 @@ Full instrument rows live in [`TRACK_B_MEASUREMENT_INSTRUMENT_CATALOG_001.md`](T
 |----|---------|-------------------|
 | **D0** | Inventory + matrix (this doc) | TRACK-D-METHOD-INVENTORY-001 |
 | **D0b** | Literature cross-check | [`TRACK_D_LITERATURE_CROSSCHECK_001.md`](TRACK_D_LITERATURE_CROSSCHECK_001.md) |
-| **D1** | Design + matching correctness | `TRACK_D_DESIGN_MATCHING_AUDIT_001.md` |
+| **D1** | Design + matching correctness | [`TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md`](TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md) ✅ |
 | **D2** | Estimator math audit | `TRACK_D_ESTIMATOR_MATH_AUDIT_001.md` |
 | **D3** | Inference audit + repair backlog | `TRACK_D_INFERENCE_AUDIT_001.md` |
 | **D4** | Power / MDE audit | `TRACK_D_POWER_MDE_AUDIT_001.md` |
@@ -300,8 +300,8 @@ Track D updates **feed** Track B artifacts — not replace identity rules.
 
 | Family | Count (inventoried) | Reviewed | Characterized | Decision-eligible |
 |--------|---------------------|----------|---------------|-------------------|
-| Design | 15 | 0 | 0 | 0 |
-| Matching | 7 | 0 | 0 | 0 |
+| Design | 15 | 9 (D1 geo scope) | 0 | 0 |
+| Matching | 7 | 4 (D1 scope) | 0 | 0 |
 | Estimators | 14 | Partial (Track A) | Partial | 0 |
 | Inference | 10 | Partial | Partial | 0 |
 | Power/MDE | 6 | 0 | 0 | 0 |

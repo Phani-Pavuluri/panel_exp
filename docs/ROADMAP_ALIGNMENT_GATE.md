@@ -270,6 +270,18 @@ Skipping a box without documented waiver is **ungoverned promotion** (forbidden)
 | **Sideways risk** | Audit conclusions treated as production-ready without OC → forbidden |
 | **Stop condition** | Terminal outcome per method row (`characterized`, `blocked`, `deprecated`, etc.) + matrix row updated; promotion only via separate governed milestone |
 
+#### D1 — Design + matching correctness audit ✅ (research lane)
+
+| Dimension | Statement |
+|-----------|-----------|
+| **Lane** | **Research / robustness** — not decision-eligible |
+| **Capability** | Audited geo-run designs and market matching; finding register + D5 sim spec |
+| **Decision risk** | Invalid assignment or pre-period leakage despite correct Track B IDs |
+| **Artifacts** | **Creates** [`TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md`](TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md); **updates** matrix §5–6 |
+| **Improves** | Causal validity (design layer) |
+| **Out of scope** | Code fixes; promotion; TrustReport changes |
+| **Stop condition** | D1 package + matrix rows + finding dispositions — **met** (2026-05-28) |
+
 ---
 
 ### Track C — user-level experimentation (future)
