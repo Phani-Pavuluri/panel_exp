@@ -28,15 +28,14 @@ def unit_jk(
     Returns:
         list: list of confidence intervals
     """
-    # estimate mu
+    # Full-sample counterfactual anchor (Abadie et al. donor jackknife: compare
+    # leave-one-out y_hat to full-fit y_hat, equivalently tau_{-i} - tau on Y - y_hat).
     full_est = estimator(**estimator_kwargs)
     full_est.run_analysis(panel)
-    mu = full_est.results[
-        "y"
-    ]
+    mu = full_est.results["y_hat"]
 
     if variation == 1:
-        squared_diffs = 1.0*np.zeros_like(mu)
+        squared_diffs = 1.0 * np.zeros_like(mu)
     if variation == 2:
         assert alpha is not None, "Must pass alpha with variation 2"
         residuals = []
@@ -46,13 +45,11 @@ def unit_jk(
         cur_panel = panel.drop_units(unit)
         est = estimator(**estimator_kwargs)
         est.run_analysis(cur_panel)
-        mu_i = est.results[
-            "y_hat"
-        ]
+        mu_i = est.results["y_hat"]
         if variation == 1:
-            squared_diffs += np.square(mu_i*1.0 - mu*1.0).astype(float)
+            squared_diffs += np.square(mu_i * 1.0 - mu * 1.0).astype(float)
         if variation == 2:
-            residuals.append(np.abs(mu_i*1.0 - mu*1.0))
+            residuals.append(np.abs(mu_i * 1.0 - mu * 1.0))
 
     # compute JK variance
     if variation == 1:
