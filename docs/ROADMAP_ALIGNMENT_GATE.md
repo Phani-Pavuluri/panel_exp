@@ -199,13 +199,26 @@ Skipping a box without documented waiver is **ungoverned promotion** (forbidden)
 | **Improves** | Trust, calibration exchange, explainability |
 | **Out of scope** | TrustReport composer in production path; Track C; MMM transforms |
 | **Sideways risk** | Dual-write diverges from legacy without tests → stop if B5 contract tests not run on exported views |
-| **Stop condition** | RunBundle carries `track_b_views.experiment_evidence` for five instrument configs; B5 adapter compare tests pass on live export |
+| **Stop condition** | RunBundle carries `track_b_views.experiment_evidence` for five instrument configs; B5 adapter compare tests pass on live export — **met** ([AUDIT-002](audits/AUDIT-002_m2_dual_write.md), `2754c0a`) |
 
-#### Wire adapter (`resolve_adapter_output`)
+#### M2.1 — Adapter production wire-up (`resolve_adapter_output` hardening)
 
 | Dimension | Statement |
 |-----------|-----------|
-| **Capability** | B4 rules produce adapter output matching golden oracles |
+| **Lane** | **Production / integration** |
+| **Capability** | GeoX export paths attach `track_b_views` from real run metadata, not only GOLD fixture slices |
+| **Decision risk** | Fixture–production gap; incomplete `inference_metadata` on live bundles |
+| **Artifacts** | **Consumes** RunBundle legacy evidence; **creates** governed sidecar on representative runs |
+| **Improves** | Trust, explainability |
+| **Out of scope** | TrustReport in product; Track D math audits; eligibility changes |
+| **Sideways risk** | Forcing adapter guess on unmapped configs — must remain **blocked** |
+| **Stop condition** | ≥3 representative non-fixture RunBundles resolve with explicit complete/partial/blocked; GeoX opt-in dual-write documented |
+
+#### Wire adapter (`resolve_adapter_output`) — fixture path complete
+
+| Dimension | Statement |
+|-----------|-----------|
+| **Capability** | B4 rules produce adapter output matching golden oracles on contract slices |
 | **Decision risk** | IDs inferred from estimator names (F1); wrong instrument (F2) |
 | **Artifacts** | **Creates** resolved ExperimentEvidence + alignment facts; **consumes** spec + registry + catalog |
 | **Improves** | Causal validity, trust |

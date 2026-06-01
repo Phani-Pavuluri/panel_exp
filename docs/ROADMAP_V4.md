@@ -84,9 +84,10 @@ Architecture contracts and test discipline (planning + fixtures; implementation 
 | B5b Pytest loader | [`tests/track_b/`](../tests/track_b/) | Complete |
 | B5c TrustReport composer tests | [`tests/track_b/trust_report_composer.py`](../tests/track_b/trust_report_composer.py) | **Complete** |
 | B5d Contract validator | [`tests/track_b/contract_validator.py`](../tests/track_b/contract_validator.py) | **Complete** |
-| M2 Dual-write | [`TRACK_B_ARTIFACT_CONSOLIDATION_001.md`](TRACK_B_ARTIFACT_CONSOLIDATION_001.md) | Planned |
+| M2 Dual-write | [`panel_exp/track_b/`](../panel_exp/track_b/) · [`TRACK_B_ARTIFACT_CONSOLIDATION_001.md`](TRACK_B_ARTIFACT_CONSOLIDATION_001.md) | **Complete** (AUDIT-002 `2754c0a`) |
+| M2.1 Adapter production wire-up | `resolve_adapter_output` / real RunBundle hardening | **Next** |
 
-**Near-term Track B sequence:** ~~B5c → B5d~~ → **M2 dual-write** → wire adapter (`resolve_adapter_output`).
+**Near-term Track B sequence:** ~~B5c → B5d → M2~~ → **adapter production wire-up** → TrustReport in product (later).
 
 **Alignment registry:** [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) § Track B — per-item capability, risk, artifacts, stop conditions.
 
@@ -94,7 +95,7 @@ Architecture contracts and test discipline (planning + fixtures; implementation 
 
 **Roadmap ID:** `TRACK-D-STATISTICAL-ROBUSTNESS`  
 **Status:** planned (D0/D0b architecture started)  
-**Trigger:** Begin D1+ execution after **M2 dual-write** produces governed Track B exports from real GeoX runs (B5c/B5d complete on fixtures). D0 inventory may proceed in parallel.
+**Trigger:** Begin D1+ execution after **M2 adapter wire-up** on representative real GeoX RunBundles (M2 dual-write complete per [AUDIT-002](audits/AUDIT-002_m2_dual_write.md)). D0 inventory may proceed in parallel — **do not skip AUDIT-002 gate before D1**.
 
 **Alignment registry:** [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) § Track D.
 
@@ -556,8 +557,8 @@ Suggested audit triggers also listed in [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIG
 | **Phase 13** | **Complete** | TBRRidge governance decision — `PHASE13_GOVERNANCE_DECISION_001.md` |
 | **Phase 14** | **Complete** | AugSynth OC — [`PHASE14_AUGSYNTH_CHARACTERIZATION_001.md`](PHASE14_AUGSYNTH_CHARACTERIZATION_001.md) |
 | **Phase 15** | Planned | Placebo inference OC — `PHASE15_PLACEBO_INVESTIGATION_PLAN.md` |
-| Track B contracts + B5 | **In progress** | B0–B5d complete; **M2 dual-write next** — see Track B table + alignment gate |
-| Track D robustness | **Planned** | D0/D0b complete; D1+ after M2 dual-write |
+| Track B contracts + B5 | **In progress** | B0–M2 complete; **adapter production wire-up next** — [AUDIT-002](audits/AUDIT-002_m2_dual_write.md) |
+| Track D robustness | **Planned** | D0/D0b complete; D1+ after adapter wire-up (research lane) |
 | Re-audit | After 15 | → ROADMAP_V5 |
 
 ---

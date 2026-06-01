@@ -26,7 +26,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 | Audit ID | Date | Milestone / scope | Commit | Overall verdict | Critical gaps (short) | Follow-up | Status |
 |----------|------|-------------------|--------|-----------------|----------------------|-----------|--------|
 | **AUDIT-001** | 2026-05-28 | B5c + B5d + alignment gate (`f3df38b`) | `f3df38b` | `continue_with_minor_corrections` | M2 not on mainline; no production TrustReport; Track D D1+ not started | Commit M2; run **AUDIT-002**; wire adapter on real GeoX | **closed** (summary below) |
-| **AUDIT-002** | — | M2 dual-write + live adapter compare | TBD | — | — | Production TrustReport path; GeoX export hook | **scheduled** |
+| **AUDIT-002** | 2026-05-28 | M2 dual-write + live adapter compare | `2754c0a` | `continue_with_minor_corrections` | Prod TrustReport; real-bundle adapter hardening; Track D D1+ | Adapter wire-up on GeoX; then Track D D1 | **closed** |
 | **AUDIT-003** | — | Track D D1 design/matching | TBD | — | — | — | planned |
 | **AUDIT-004** | — | Track D D2 estimator math | TBD | — | — | — | planned |
 | **AUDIT-005** | — | Before MMM intake promotion | TBD | — | — | — | planned |
@@ -60,6 +60,29 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 **Verdict:** `continue_with_minor_corrections` — stay on production path B5 → M2 → adapter wire-up; keep Track D in research lane.
 
 **Full report:** Use template sections 1–11 when copying to `docs/audits/AUDIT-001_b5_alignment_gate.md` for archival detail.
+
+---
+
+## AUDIT-002 summary (M2 dual-write)
+
+**Report:** [`audits/AUDIT-002_m2_dual_write.md`](audits/AUDIT-002_m2_dual_write.md)
+
+**Verdict:** `continue_with_minor_corrections` — M2 alignment gate stop conditions **met** (313 tests; 14/14 live adapter oracle; legacy bundle schema stable; opt-in sidecar).
+
+**Confirmed**
+
+1. Legacy RunBundle unchanged when `include_track_b_views=False`.  
+2. `track_b_views` sidecar-only; no legacy key replacement.  
+3. No `alignment_verdict` / `trust_outcome` on adapter or evidence layers.  
+4. Unmapped `config_alias` → `export_status: blocked` (no ID guessing).
+
+**Remaining gaps (explicit)**
+
+1. Production TrustReport path not wired.  
+2. Track D D1+ robustness audits not started (research lane; do not skip).  
+3. Bundle metadata extraction from all real GeoX runs not yet proven.
+
+**Next production-lane item:** `resolve_adapter_output` / production adapter wire-up hardening.
 
 ---
 
