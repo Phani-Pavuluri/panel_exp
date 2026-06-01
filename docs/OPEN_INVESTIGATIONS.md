@@ -1,7 +1,7 @@
 # Open investigations
 
 **Status:** living backlog for intentionally deferred or unresolved issues  
-**Last updated:** 2026-05-20  
+**Last updated:** 2026-05-28  
 **Package version:** 0.2.1  
 
 **Related:** `docs/ROADMAP_V3.md` (governance), `docs/ROADMAP_V4.md` (Phases 11–15; Tracks A/B/C), `docs/METHOD_VALIDATION_PLAN.md`, `docs/VALIDATION_COVERAGE.md`, `docs/EXPERIMENTATION_PLATFORM_VISION.md`, [`docs/DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md)
@@ -48,6 +48,16 @@ For **known future work** already characterized (e.g. DEF-001 KFold geometry, DE
 | **INV-017** | Calibration governance | **Deferred** | [`PHASE12_INV017_CALIBRATION_GOVERNANCE_001.md`](PHASE12_INV017_CALIBRATION_GOVERNANCE_001.md) | DEF-008 |
 
 **Phase 13 outcomes:** SCM retain (null monitor); BRB restrict (excluded); Kfold restrict (research-only on default DGP). Eligibility registry **unchanged**.
+
+---
+
+## Active Track D investigations (research lane)
+
+| ID | Track | Status | Primary artifact | Disposition |
+|----|-------|--------|------------------|-------------|
+| **INV-D1-001** | Pre-period matching leakage | **Restricted** (characterized) | [`investigations/INV-D1-001_PRE_PERIOD_MATCHING_LEAKAGE.md`](investigations/INV-D1-001_PRE_PERIOD_MATCHING_LEAKAGE.md) · [`track_d/archives/D5_DES_001a_results.json`](track_d/archives/D5_DES_001a_results.json) | **restricted** — fix proposal pending; D2 blocked until resolved or accepted |
+
+**D5-DES-001a headline:** Full-panel vs pre-only `greedy_match_markets` assignments differ materially (mean Jaccard **0.27**); recommend **restrict** geo matching to pre-period columns. No production code change in this package.
 
 ---
 

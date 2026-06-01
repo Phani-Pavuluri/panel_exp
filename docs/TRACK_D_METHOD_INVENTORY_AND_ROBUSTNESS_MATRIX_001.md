@@ -116,7 +116,7 @@ Where applicable, each inventory row records:
 
 | Method ID | Implementation | Geo run supported | Robustness status | Track B | Literature (D0b) | Next action |
 |-----------|----------------|-------------------|-------------------|---------|------------------|-------------|
-| **DES-001** | `greedy_match_markets` | Yes | **characterization_required** | Spec `design_method`; DG-007 | TBR / matched markets ([D1](TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md)) | D5-DES-001* OC |
+| **DES-001** | `greedy_match_markets` | Yes | **restricted** | Spec `design_method`; DG-007 | TBR / matched markets ([INV-D1-001](investigations/INV-D1-001_PRE_PERIOD_MATCHING_LEAKAGE.md)) | Pre-period fix + re-OC |
 | **DES-002** | `thinningdesign` | Yes | implementation_review_required | TBD | Geo design | D1b / D5 |
 | **DES-003** | `balancedrandomization` | Yes | implementation_review_required | TBD | Randomization inference | D5 |
 | **DES-004** | `completerandomization` | Yes | implementation_review_required | TBD | Randomization | D5 |
@@ -142,7 +142,7 @@ Where applicable, each inventory row records:
 
 | Match ID | Description | Used by | Robustness status | Next action |
 |----------|-------------|---------|-------------------|-------------|
-| **MAT-001** | Greedy market matching | DES-001 | **characterization_required** | D5-DES-001* ([D1](TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md)) |
+| **MAT-001** | Greedy market matching | DES-001 | **restricted** | [INV-D1-001](investigations/INV-D1-001_PRE_PERIOD_MATCHING_LEAKAGE.md) |
 | **MAT-002** | Distance-based pairing (trimmed match) | DES-008 | unreviewed | Defer (not geo-run) |
 | **MAT-003** | Correlation / pre-period KPI matching | Product + tests | implementation_review_required | D1b / D0b §3.3 |
 | **MAT-004** | Donor pool construction (SCM) | SCM estimators | math_review_required | **D2** + D0b SCM |

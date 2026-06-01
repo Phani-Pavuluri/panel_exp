@@ -275,7 +275,7 @@ DG-007 validates **assignment integrity**, not **matching algorithm correctness*
 
 | Finding ID | Summary | Severity | Disposition | Owner package |
 |------------|---------|----------|-------------|---------------|
-| **D1-FIND-001** | Geo runner null `pre_treatment_period` → full-panel matching risk | high | **investigating** | D1 → DEF/INV + design fix proposal (not in D1) |
+| **D1-FIND-001** | Geo runner null `pre_treatment_period` → full-panel matching risk | high | **restricted** ([INV-D1-001](investigations/INV-D1-001_PRE_PERIOD_MATCHING_LEAKAGE.md), D5-DES-001a) | Fix proposal after governance |
 | **D1-FIND-002** | KPI-mass treatment share vs unit-count semantics | medium | **accepted_deviation** | Document in D0b §3.3 for DES-001 |
 | **D1-FIND-003** | DG-007 does not assert pre-period-only matching | medium | **deferred** | D6 or D1b validation extension |
 | **D1-FIND-004** | Greedy match local optimum / no global pairing guarantee | low | **accepted_deviation** | Literature + D5 |
