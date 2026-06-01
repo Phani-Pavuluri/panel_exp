@@ -197,7 +197,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D3-FIND-001 — Unit JK LOO compares `y_hat` to observed `y` → **INV-D3-001** opened (D5-INF-002a).
 
-**Next:** Track E E1/E2; D5-POW-001b–e.
+**Next:** Track E E1/E2; D5-POW-001c–e.
 
 ---
 
@@ -216,7 +216,16 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D4-FIND-001 — design MDE not aligned to `SCM_UnitJackKnife` instrument.
 
-**Next:** Track E E1; D5-POW-001b–e; not MMM integration.
+**Next:** Track E E1; D5-POW-001c–e; not MMM integration.
+
+---
+
+## D5-POW-001b checkpoint (2026-06-01)
+
+**Artifact:** [`docs/track_d/archives/D5_POW_001b_results.json`](track_d/archives/D5_POW_001b_results.json)  
+**Harness:** `panel_exp/validation/track_d_d5_pow_001b.py`
+
+**Verdict:** **`null_monitor_only`** — D5-POW-001a pooled detection degeneracy is explained by **swapped interval endpoints** in the research harness (`mean(y-y_lower)` vs correct `mean(y-y_upper)` for effect-lo). Under correct PowerAnalysis semantics, null interval-exclusion FPR ≈ **3%** (not 100%); wrong 001a-style FPR = **100%**. SCM+JK does **not** support power/MDE via interval-excludes-zero; use null-monitor cell coverage only.
 
 ---
 

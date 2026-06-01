@@ -33,7 +33,12 @@ Track D D4 — power/MDE methods (POW-001–006), estimand alignment, design geo
 
 ## Next
 
-Track E E1; D5-POW-001b–e; broader D5 OC — not MMM integration.
+Track E E1; D5-POW-001c–e; broader D5 OC — not MMM integration.
+
+## D5-POW-001b follow-up (2026-06-01)
+
+**Artifact:** [`D5_POW_001b_results.json`](../track_d/archives/D5_POW_001b_results.json)  
+**Verdict:** **`null_monitor_only`** — interval-excludes-zero invalid for SCM+JK power/MDE; 001a degeneracy = harness endpoint swap.
 
 ## D5-POW-001a follow-up (2026-06-01)
 
