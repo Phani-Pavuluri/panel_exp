@@ -2,7 +2,7 @@
 
 **Program ID:** MIP-PERIODIC-AUDIT  
 **Status:** active  
-**Last updated:** 2026-05-28  
+**Last updated:** 2026-05-28 (AUDIT-003 closed)  
 
 **Template:** [`MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md`](MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md)  
 **Alignment gate:** [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md)
@@ -27,7 +27,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 |----------|------|-------------------|--------|-----------------|----------------------|-----------|--------|
 | **AUDIT-001** | 2026-05-28 | B5c + B5d + alignment gate (`f3df38b`) | `f3df38b` | `continue_with_minor_corrections` | M2 not on mainline; no production TrustReport; Track D D1+ not started | Commit M2; run **AUDIT-002**; wire adapter on real GeoX | **closed** (summary below) |
 | **AUDIT-002** | 2026-05-28 | M2 dual-write + live adapter compare | `2754c0a` | `continue_with_minor_corrections` | Prod TrustReport; real-bundle adapter hardening; Track D D1+ | Adapter wire-up on GeoX; then Track D D1 | **closed** |
-| **AUDIT-003** | — | M2.1 wire-up gate (before Track D D1) | TBD | — | — | Fill after M2.1 commit | **scheduled** |
+| **AUDIT-003** | 2026-05-28 | M2.1 wire-up gate (before Track D D1) | `5000fc5` | `continue_with_minor_corrections` | GeoX main export hook; M2.2 TrustReport; Track D D1 optional | **M2.2** prod lane; D1 research optional | **closed** |
 | **AUDIT-004** | — | Track D D1 design/matching | TBD | — | — | — | planned |
 | **AUDIT-004** | — | Track D D2 estimator math | TBD | — | — | — | planned |
 | **AUDIT-005** | — | Before MMM intake promotion | TBD | — | — | — | planned |
@@ -83,7 +83,31 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 2. Track D D1+ robustness audits not started (research lane; do not skip).  
 3. Bundle metadata extraction from all real GeoX runs not yet proven.
 
-**Next production-lane item:** `resolve_adapter_output` / production adapter wire-up hardening.
+**Next production-lane item:** M2.2 production TrustReport path (AUDIT-003 gate passed).
+
+---
+
+## AUDIT-003 summary (M2.1 wire-up gate)
+
+**Report:** [`audits/AUDIT-003_m2_1_wire_up_gate.md`](audits/AUDIT-003_m2_1_wire_up_gate.md)
+
+**Verdict:** `continue_with_minor_corrections` — **gate passed**; M2.1 meets AUDIT-002 follow-up.
+
+**Confirmed**
+
+1. Five representative RunBundles (REP-001–005): complete, blocked, partial explicit.  
+2. `extract_resolve_input_from_bundle` — no estimand-from-estimator guess; cataloged `estimator+inference_mode` only.  
+3. Legacy `build_run_artifact_bundle` default unchanged (`include_track_b_views=False`).  
+4. No `alignment_verdict` / `trust_outcome` on adapter or evidence (REP + B5 boundary).  
+5. Production TrustReport deferred (M2.2 next); Track D D1+ not started (eligible research-lane parallel).
+
+**Post-gate decision**
+
+| Path | Status |
+|------|--------|
+| **M2.2** production TrustReport | **Recommended next** (production lane) |
+| **Track D D1** | Allowed in parallel (research lane only) |
+| **More M2.1 hardening** | Only on new live GeoX shape failures |
 
 ---
 
