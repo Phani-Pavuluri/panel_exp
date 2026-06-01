@@ -47,6 +47,16 @@ poetry run python -m tests.track_b.contract_validator
 
 Validates manifest coverage (GOLD-001–010), bundle structure, trust-boundary fields, calibration bindings, composed TrustReport oracle parity, and F1–F12 regression guards.
 
+## M2 dual-write
+
+`panel_exp.track_b` resolves adapter output from spec + run metadata. Opt in on RunBundle export:
+
+```python
+build_run_artifact_bundle(..., include_track_b_views=True, track_b_spec=spec, track_b_run_stub=stub)
+```
+
+Live adapter compare: `tests/track_b/test_adapter_identity_resolution.py` (no longer skipped).
+
 ## Regeneration
 
 No auto-regeneration script yet. Update fixtures only when architecture docs change via governed doc revision.

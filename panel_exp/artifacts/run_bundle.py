@@ -32,6 +32,7 @@ _BUNDLE_KEY_ORDER: Tuple[str, ...] = (
     "maturity_evidence",
     "readiness_assessment",
     "interference_review",
+    "track_b_views",
 )
 
 
@@ -152,6 +153,7 @@ class RunArtifactBundle:
     maturity_evidence: Optional[Dict[str, Any]] = None
     readiness_assessment: Optional[Dict[str, Any]] = None
     interference_review: Optional[Dict[str, Any]] = None
+    track_b_views: Optional[Dict[str, Any]] = None
     warnings: Tuple[str, ...] = ()
     errors: Tuple[str, ...] = ()
     lineage: Mapping[str, Any] = field(default_factory=dict)
@@ -172,6 +174,8 @@ class RunArtifactBundle:
             "readiness_assessment": self.readiness_assessment,
             "interference_review": self.interference_review,
         }
+        if self.track_b_views is not None:
+            payload["track_b_views"] = self.track_b_views
         return _ordered_dict(payload)
 
     def to_json(self, *, indent: int = 2) -> str:
@@ -346,11 +350,19 @@ def build_run_artifact_bundle(
     warnings: Optional[Sequence[str]] = None,
     errors: Optional[Sequence[str]] = None,
     created_at: Optional[str] = None,
+    track_b_views: Optional[Mapping[str, Any]] = None,
+    include_track_b_views: bool = False,
+    track_b_spec: Optional[Mapping[str, Any]] = None,
+    track_b_run_stub: Optional[Mapping[str, Any]] = None,
+    track_b_calibration_binding: Optional[Mapping[str, Any]] = None,
 ) -> RunArtifactBundle:
     """
     Assemble a portable run bundle from optional readout components.
 
     Does not mutate input objects. Uses each component's ``to_dict()`` when available.
+
+    When ``include_track_b_views`` is True, attaches governed Track B sidecar views
+    (M2 dual-write). Explicit ``track_b_views`` wins over auto-build.
     """
     evidence_dict = _serialize_component(evidence)
     card_dict = _serialize_component(experiment_card)
@@ -390,6 +402,23 @@ def build_run_artifact_bundle(
     if ir_dict is None:
         ir_dict = _interference_review_from_evidence(evidence)
 
+    tb_views = _serialize_component(track_b_views) if track_b_views is not None else None
+    if include_track_b_views and tb_views is None:
+        from panel_exp.track_b.dual_write import build_track_b_views, build_track_b_views_from_bundle
+
+        if track_b_spec is not None and track_b_run_stub is not None:
+            tb_views = build_track_b_views(
+                spec=track_b_spec,
+                run_artifacts_stub=track_b_run_stub,
+                calibration_signal_binding=track_b_calibration_binding,
+            )
+        else:
+            interim = {
+                "evidence": evidence_dict,
+                "experiment_id": _experiment_id_from_inputs(evidence, experiment_card),
+            }
+            tb_views = build_track_b_views_from_bundle(interim)
+
     return RunArtifactBundle(
         bundle_version=BUNDLE_VERSION,
         created_at=timestamp,
@@ -401,6 +430,7 @@ def build_run_artifact_bundle(
         maturity_evidence=_serialize_component(maturity_evidence),
         readiness_assessment=_serialize_component(readiness_assessment),
         interference_review=ir_dict,
+        track_b_views=tb_views,
         warnings=merged_warnings,
         errors=merged_errors,
         lineage=lineage,

@@ -24,13 +24,13 @@ def _oracle_adapter_output(case: FixtureCase) -> dict[str, Any]:
 
 
 def resolve_adapter_output(case: FixtureCase) -> dict[str, Any]:
-    """Implementation hook: replace with real adapter export when available.
+    """Resolve adapter output via M2 geo adapter (fixture slice = live export input)."""
+    from panel_exp.track_b.geo_adapter import resolve_geo_adapter_output
 
-    Until Track B adapter code exists, this raises NotImplementedError so tests
-    that require a live adapter are explicitly skipped rather than silently passing.
-    """
-    raise NotImplementedError(
-        "Track B geo adapter not wired; use oracle comparison tests only"
+    return resolve_geo_adapter_output(
+        spec=case.spec,
+        run_artifacts_stub=case.run_artifacts_stub,
+        calibration_signal_binding=case.calibration_signal_binding,
     )
 
 
