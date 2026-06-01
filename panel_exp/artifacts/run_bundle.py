@@ -352,9 +352,13 @@ def build_run_artifact_bundle(
     created_at: Optional[str] = None,
     track_b_views: Optional[Mapping[str, Any]] = None,
     include_track_b_views: bool = False,
+    include_trust_report: bool = False,
     track_b_spec: Optional[Mapping[str, Any]] = None,
     track_b_run_stub: Optional[Mapping[str, Any]] = None,
     track_b_calibration_binding: Optional[Mapping[str, Any]] = None,
+    trust_report_scenarios: Optional[Sequence[Mapping[str, Any]]] = None,
+    trust_composition_permitted: bool = True,
+    alignment_reference_estimand_id: Optional[str] = None,
 ) -> RunArtifactBundle:
     """
     Assemble a portable run bundle from optional readout components.
@@ -411,13 +415,27 @@ def build_run_artifact_bundle(
                 spec=track_b_spec,
                 run_artifacts_stub=track_b_run_stub,
                 calibration_signal_binding=track_b_calibration_binding,
+                include_trust_report=include_trust_report,
+                trust_report_scenarios=list(trust_report_scenarios)
+                if trust_report_scenarios
+                else None,
+                trust_composition_permitted=trust_composition_permitted,
+                alignment_reference_estimand_id=alignment_reference_estimand_id,
             )
         else:
             interim = {
                 "evidence": evidence_dict,
                 "experiment_id": _experiment_id_from_inputs(evidence, experiment_card),
             }
-            tb_views = build_track_b_views_from_bundle(interim)
+            tb_views = build_track_b_views_from_bundle(
+                interim,
+                include_trust_report=include_trust_report,
+                trust_report_scenarios=list(trust_report_scenarios)
+                if trust_report_scenarios
+                else None,
+                trust_composition_permitted=trust_composition_permitted,
+                alignment_reference_estimand_id=alignment_reference_estimand_id,
+            )
 
     return RunArtifactBundle(
         bundle_version=BUNDLE_VERSION,

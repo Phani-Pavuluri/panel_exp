@@ -1,14 +1,19 @@
-"""GeoX RunBundle export with opt-in Track B dual-write (M2.1)."""
+"""Canonical GeoX RunBundle export (M2.1 / M2.2).
+
+Opt-in Track B sidecar and TrustReport composition. Legacy ``build_run_artifact_bundle``
+remains the default for non-geo callers.
+"""
 
 from __future__ import annotations
 
 from typing import Any, Mapping, Optional, Sequence, Union
 
-from panel_exp.artifacts.run_bundle import RunArtifactBundle, build_run_artifact_bundle
+from panel_exp.artifacts.run_bundle import RunArtifactBundle
 from panel_exp.evidence import DesignEvidence, ExperimentEvidence
+from panel_exp.track_b.export import build_geo_run_artifact_bundle
 
 
-def build_geo_run_artifact_bundle(
+def export_geo_run_bundle(
     *,
     evidence: Optional[
         Union[DesignEvidence, ExperimentEvidence, Mapping[str, Any]]
@@ -32,30 +37,14 @@ def build_geo_run_artifact_bundle(
     alignment_reference_estimand_id: Optional[str] = None,
 ) -> RunArtifactBundle:
     """
-    Build a Geo RunBundle with optional ``track_b_views`` / TrustReport sidecar.
+    Export a GeoX run readout bundle with optional governed Track B sidecar.
 
-    Both sidecars are opt-in (default off). When ``track_b_spec`` /
-    ``track_b_run_stub`` are omitted, resolves from ``evidence`` (including
-    ``track_b_export_hints``). Trust scenarios may be passed explicitly or via
-    hints ``trust_scenarios`` / ``track_b_trust_scenarios``.
-    Does not change legacy bundle fields or estimator behavior.
+    Defaults preserve legacy behavior (no ``track_b_views``). Set
+    ``include_track_b_views=True`` for adapter sidecar; add
+    ``include_trust_report=True`` and ``trust_report_scenarios`` for TrustReport.
     """
-    evidence_payload = evidence
-    if track_b_export_hints and isinstance(evidence, Mapping):
-        merged = dict(evidence)
-        hints = dict(merged.get("track_b_export_hints") or {})
-        hints.update(track_b_export_hints)
-        merged["track_b_export_hints"] = hints
-        evidence_payload = merged
-    elif track_b_export_hints and hasattr(evidence, "to_dict"):
-        d = evidence.to_dict()
-        hints = dict(d.get("track_b_export_hints") or {})
-        hints.update(track_b_export_hints)
-        d["track_b_export_hints"] = hints
-        evidence_payload = d
-
-    return build_run_artifact_bundle(
-        evidence=evidence_payload,
+    return build_geo_run_artifact_bundle(
+        evidence=evidence,
         experiment_card=experiment_card,
         calibration_report=calibration_report,
         maturity_evidence=maturity_evidence,
@@ -69,6 +58,7 @@ def build_geo_run_artifact_bundle(
         track_b_spec=track_b_spec,
         track_b_run_stub=track_b_run_stub,
         track_b_calibration_binding=track_b_calibration_binding,
+        track_b_export_hints=track_b_export_hints,
         trust_report_scenarios=trust_report_scenarios,
         trust_composition_permitted=trust_composition_permitted,
         alignment_reference_estimand_id=alignment_reference_estimand_id,
