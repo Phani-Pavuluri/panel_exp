@@ -67,6 +67,8 @@ For **known future work** already characterized (e.g. DEF-001 KFold geometry, DE
 
 **D5-INF-002a headline:** Pre-fix JK sensitive to treated post noise (rel Δ **3.0×**). **D5-INF-002b:** post-fix prod=ref (ratio **1.0**), treated noise Δ **0** — **INV-D3-001 fix accepted**.
 
+**D4 headline:** Geo `PowerAnalysis` is **diagnostic_only**; default path **TBRRidge+Kfold** on aggregated panel — **not** aligned to **SCM_UnitJackKnife** readout ([`TRACK_D_D4_POWER_MDE_AUDIT_001.md`](TRACK_D_D4_POWER_MDE_AUDIT_001.md)).
+
 ---
 
 ## Active Track A investigations (post–Phase 14)

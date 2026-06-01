@@ -2,7 +2,7 @@
 
 **Program ID:** MIP-PERIODIC-AUDIT  
 **Status:** active  
-**Last updated:** 2026-06-01 (INV-D3-001 fix + Track E E0)  
+**Last updated:** 2026-06-01 (Track D D4 package)  
 
 **Template:** [`MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md`](MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md)  
 **Alignment gate:** [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md)
@@ -32,9 +32,10 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 | **AUDIT-005** | 2026-05-28 | Track D D1 design/matching (research lane) | `7af9ef9` | `continue_with_characterization_required` | Pre-period matching risk (D1-FIND-001); D5 OC pending | D5 design OC; D2 | **closed** (research) |
 | **AUDIT-006** | 2026-05-28 | Track D D2 estimator/donor (research lane) | `1a31e69` | `continue_with_characterization_required` | `full_model` SCM fit risk (D2-FIND-001); D5 OC pending | INV-D2-001; D3; D5-EST-002a | **closed** (research) |
 | **AUDIT-007** | 2026-05-28 | Track D D3 inference (research lane) | `fed7050` | `continue_with_characterization_required` | JK LOO target review (D3-FIND-001); eligibility unchanged | INV-D3-001; D5-INF-002a; D4 | **closed** (research) |
-| **AUDIT-008** | — | Before MMM intake promotion | TBD | — | — | — | planned |
-| **AUDIT-009** | — | Before planning / optimizer | TBD | — | — | — | planned |
-| **AUDIT-010** | — | Before LLM interface | TBD | — | — | — | planned |
+| **AUDIT-008** | 2026-06-01 | Track D D4 power/MDE (research lane) | `24beae8` | `continue_with_characterization_required` | Power ≠ SCM JK readout; aggregation | D5-POW-001a; E1 | **closed** (research) |
+| **AUDIT-009** | — | Before MMM intake promotion | TBD | — | — | — | planned |
+| **AUDIT-010** | — | Before planning / optimizer | TBD | — | — | — | planned |
+| **AUDIT-011** | — | Before LLM interface | TBD | — | — | — | planned |
 
 ---
 
@@ -196,7 +197,26 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D3-FIND-001 — Unit JK LOO compares `y_hat` to observed `y` → **INV-D3-001** opened (D5-INF-002a).
 
-**Next:** D4 power/MDE; Track E E1/E2.
+**Next:** D5-POW-001a; Track E E1/E2.
+
+---
+
+## AUDIT-008 summary (Track D D4 — research lane)
+
+**Report:** [`TRACK_D_D4_POWER_MDE_AUDIT_001.md`](TRACK_D_D4_POWER_MDE_AUDIT_001.md)
+
+**Verdict:** `continue_with_characterization_required` — D4 complete; **no** production promotion.
+
+**Confirmed**
+
+1. `PowerAnalysis` semantics and `power_contract` are explicit (simulation-coverage, not classical).  
+2. Default geo path uses TBRRidge+Kfold on aggregated 2-row panel — **not** SCM JK readout.  
+3. POW rows updated; D5-POW-001a–e specified.  
+4. No code / TrustReport / eligibility changes in D4.
+
+**Top finding:** D4-FIND-001 — design MDE not aligned to `SCM_UnitJackKnife` instrument.
+
+**Next:** D5 power/readout bridge; Track E E1; not MMM integration.
 
 ---
 

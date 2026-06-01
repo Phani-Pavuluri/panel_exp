@@ -200,12 +200,12 @@ Where applicable, each inventory row records:
 
 | Pow ID | Method | Robustness status | Track B link | Next action |
 |--------|--------|-------------------|--------------|-------------|
-| **POW-001** | Simulation-based power (design) | characterization_required | Feasibility DEF-010 | D4 |
-| **POW-002** | Formula MDE (variance-based) | math_review_required | Spec `mde_target` | D4 |
-| **POW-003** | Geo-level power | unreviewed | — | D4 |
-| **POW-004** | Multi-cell power | unreviewed | Track C | Defer |
-| **POW-005** | Business ROI detectability | unreviewed | TrustReport profile | D4 |
-| **POW-006** | Long-term holdout power | unreviewed | Holdout Track C | Defer |
+| **POW-001** | Simulation-based power (design) | diagnostic_only | Feasibility DEF-010 | **D4** ✅ |
+| **POW-002** | Formula MDE (variance-based) | diagnostic_only | Spec `mde_target` (not wired) | **D4** ✅ |
+| **POW-003** | Geo-level power (aggregated panel) | restricted | TBRRidge+Kfold ≠ SCM JK readout | **D4** ✅ |
+| **POW-004** | Multi-cell power | blocked | Track C | Defer |
+| **POW-005** | Business ROI detectability | diagnostic_only | TrustReport profile | **D4** ✅ |
+| **POW-006** | Long-term holdout power | blocked | Holdout Track C | Defer |
 
 **D4 principle:** Power method must match **readout estimator + estimand_id**, not a generic “lift %.”
 
@@ -256,7 +256,7 @@ Full instrument rows live in [`TRACK_B_MEASUREMENT_INSTRUMENT_CATALOG_001.md`](T
 | **D1** | Design + matching correctness | [`TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md`](TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md) ✅ |
 | **D2** | Estimator math audit | `TRACK_D_ESTIMATOR_MATH_AUDIT_001.md` |
 | **D3** | Inference audit + repair backlog | `TRACK_D_INFERENCE_AUDIT_001.md` |
-| **D4** | Power / MDE audit | `TRACK_D_POWER_MDE_AUDIT_001.md` |
+| **D4** | Power / MDE audit | [`TRACK_D_D4_POWER_MDE_AUDIT_001.md`](TRACK_D_D4_POWER_MDE_AUDIT_001.md) ✅ |
 | **D5** | OC simulation harness | `TRACK_D_OC_SIMULATION_SPEC_001.md` |
 | **D6** | Runtime monitoring gates | `TRACK_D_RUNTIME_DIAGNOSTICS_001.md` |
 | **D7** | Promotion / demotion framework | `TRACK_D_INSTRUMENT_PROMOTION_001.md` |
