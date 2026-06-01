@@ -2,7 +2,7 @@
 
 **Program ID:** MIP-PERIODIC-AUDIT  
 **Status:** active  
-**Last updated:** 2026-05-28 (Track D D2 package)  
+**Last updated:** 2026-05-28 (Track D D3 package)  
 
 **Template:** [`MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md`](MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md)  
 **Alignment gate:** [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md)
@@ -31,9 +31,10 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 | **AUDIT-004** | 2026-05-28 | M2.2 TrustReport sidecar gate | `ec2d351` | `continue_with_minor_corrections` | Product UI consumer; `__init__` re-exports; Track D D1+ | Track D D1 research lane | **closed** |
 | **AUDIT-005** | 2026-05-28 | Track D D1 design/matching (research lane) | `7af9ef9` | `continue_with_characterization_required` | Pre-period matching risk (D1-FIND-001); D5 OC pending | D5 design OC; D2 | **closed** (research) |
 | **AUDIT-006** | 2026-05-28 | Track D D2 estimator/donor (research lane) | `1a31e69` | `continue_with_characterization_required` | `full_model` SCM fit risk (D2-FIND-001); D5 OC pending | INV-D2-001; D3; D5-EST-002a | **closed** (research) |
-| **AUDIT-007** | — | Before MMM intake promotion | TBD | — | — | — | planned |
-| **AUDIT-008** | — | Before planning / optimizer | TBD | — | — | — | planned |
-| **AUDIT-009** | — | Before LLM interface | TBD | — | — | — | planned |
+| **AUDIT-007** | 2026-05-28 | Track D D3 inference (research lane) | `fed7050` | `continue_with_characterization_required` | JK LOO target review (D3-FIND-001); eligibility unchanged | INV-D3-001; D5-INF-002a; D4 | **closed** (research) |
+| **AUDIT-008** | — | Before MMM intake promotion | TBD | — | — | — | planned |
+| **AUDIT-009** | — | Before planning / optimizer | TBD | — | — | — | planned |
+| **AUDIT-010** | — | Before LLM interface | TBD | — | — | — | planned |
 
 ---
 
@@ -175,7 +176,27 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D2-FIND-001 — `full_model=True` fits SCM weights on post-period columns → propose **INV-D2-001** (separate governed fix PR).
 
-**Next:** D3 inference audit; D5-EST-002a/002b OC; do not broaden D5 before D3 unless sims are estimator-only.
+**Next:** D3 inference audit (→ AUDIT-007).
+
+---
+
+## AUDIT-007 summary (Track D D3 — research lane)
+
+**Report:** [`TRACK_D_D3_INFERENCE_METHOD_AUDIT_001.md`](TRACK_D_D3_INFERENCE_METHOD_AUDIT_001.md)
+
+**Verdict:** `continue_with_characterization_required` — D3 package complete; **no** production promotion.
+
+**Confirmed**
+
+1. INF-001–010 audited with explicit governance roles.  
+2. Registry `IntervalType` / Track B `interval_semantics` separation intact.  
+3. SCM JK **null_monitor_only** — sole `NOMINAL_CALIBRATION_ELIGIBLE_CONFIGS` member (unchanged).  
+4. Placebo **diagnostic_only**, single-treated scope (Phase 15).  
+5. No inference/TrustReport/eligibility code changes in D3.
+
+**Top finding:** D3-FIND-001 — Unit JK LOO compares `y_hat` to observed `y` → propose **INV-D3-001**.
+
+**Next:** D5-INF-002a; D4 power/MDE; INV-D2-001 / INV-D3-001 as separate fix PRs.
 
 ---
 

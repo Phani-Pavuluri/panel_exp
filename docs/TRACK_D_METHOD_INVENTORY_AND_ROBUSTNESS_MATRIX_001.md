@@ -182,14 +182,14 @@ Where applicable, each inventory row records:
 | Inf ID | Mode | Interval semantics | Robustness status | Characterized instrument | Known issues |
 |--------|------|-------------------|-------------------|-------------------------|--------------|
 | **INF-001** | point_estimate | none | diagnostic_only | AugSynth point, many | No uncertainty |
-| **INF-002** | UnitJackKnife | confidence_interval | diagnostic_only | SCM JK, AugSynth JK | FPR≈0, power≈0 null battery |
+| **INF-002** | UnitJackKnife | confidence_interval | null_monitor_characterized | SCM JK, AugSynth JK | FPR≈0, power≈0; INV-D3-001 LOO target |
 | **INF-003** | JKP | confidence_interval | characterization_required | — | Registry tests only |
-| **INF-004** | Kfold | confidence_interval | restricted | TBRRidge KFold | DEF-001 geometry |
+| **INF-004** | Kfold | confidence_interval | restricted | TBRRidge KFold | DEF-001; not calibration-eligible |
 | **INF-005** | BlockResidualBootstrap | confidence_interval | restricted | TBRRidge BRB | DEF-002 positive OC |
-| **INF-006** | Placebo | placebo_band | diagnostic_only | SCM/TBR Placebo | Not CI; DEF-020 |
-| **INF-007** | Conformal | conformal_interval | characterization_required | — | Assumption audit |
+| **INF-006** | Placebo | placebo_band | diagnostic_characterized | SCM/TBR Placebo | Not CI; single-treated; DEF-020 |
+| **INF-007** | Conformal | conformal_interval | characterization_required | — | **D3** ✅ assumption audit pending D5 |
 | **INF-008** | Bayesian (registry) | credible_interval | blocked | — | Not full BayesianTBR |
-| **INF-009** | TimeSeriesKfold | confidence_interval | characterization_required | — | Temporal blocking |
+| **INF-009** | TimeSeriesKfold | confidence_interval | characterization_required | — | **D3** ✅ temporal blocking |
 | **INF-010** | DID bootstrap | cumulative_att_interval | restricted | DID | DEF-003 relative unsupported |
 
 ---

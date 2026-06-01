@@ -88,7 +88,7 @@ Architecture contracts and test discipline (planning + fixtures; implementation 
 | M2.1 Adapter production wire-up | [`panel_exp/track_b/bundle_extract.py`](../panel_exp/track_b/bundle_extract.py) · [`export.py`](../panel_exp/track_b/export.py) | **Complete** ([AUDIT-003](audits/AUDIT-003_m2_1_wire_up_gate.md) `5000fc5`) |
 | M2.2 Production TrustReport path | [`trust_report.py`](../panel_exp/track_b/trust_report.py) · [`geo_run_export.py`](../panel_exp/artifacts/geo_run_export.py) | **Complete** ([AUDIT-004](audits/AUDIT-004_m2_2_trust_report_gate.md) `ec2d351`) |
 
-**Near-term sequence:** Track B through M2.2 **complete** · **Track D D1** design/matching **complete** · **Track D D2** estimator/donor audit **complete** (research lane) · D3 inference audit / targeted D5 OC next.
+**Near-term sequence:** Track B through M2.2 **complete** · **Track D D1–D3** audits **complete** (research lane) · targeted D5 inference OC / D4 power next.
 
 **Alignment registry:** [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) § Track B — per-item capability, risk, artifacts, stop conditions.
 
@@ -112,7 +112,7 @@ Architecture contracts and test discipline (planning + fixtures; implementation 
 | **D0b** | [`TRACK_D_LITERATURE_CROSSCHECK_001.md`](TRACK_D_LITERATURE_CROSSCHECK_001.md) | Complete (template) |
 | D1 | Design + matching audit | **Complete** ([`TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md`](TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md)) |
 | D2 | Estimator + SCM donor audit | **Complete** ([`TRACK_D_D2_ESTIMATOR_AND_DONOR_AUDIT_001.md`](TRACK_D_D2_ESTIMATOR_AND_DONOR_AUDIT_001.md)) |
-| D3 | Inference audit | Planned (next) |
+| D3 | Inference method audit | **Complete** ([`TRACK_D_D3_INFERENCE_METHOD_AUDIT_001.md`](TRACK_D_D3_INFERENCE_METHOD_AUDIT_001.md)) |
 | D4 | Power / MDE audit | Planned |
 | D5 | OC simulation harness | Planned |
 | D6 | Runtime monitoring | Planned |
@@ -559,7 +559,7 @@ Suggested audit triggers also listed in [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIG
 | **Phase 14** | **Complete** | AugSynth OC — [`PHASE14_AUGSYNTH_CHARACTERIZATION_001.md`](PHASE14_AUGSYNTH_CHARACTERIZATION_001.md) |
 | **Phase 15** | Planned | Placebo inference OC — `PHASE15_PLACEBO_INVESTIGATION_PLAN.md` |
 | Track B contracts + B5 | **In progress** | B0–M2 complete; **adapter production wire-up next** — [AUDIT-002](audits/AUDIT-002_m2_dual_write.md) |
-| Track D robustness | **In progress** | D0/D0b + **D1** + **D2** complete; D3+ research lane |
+| Track D robustness | **In progress** | D0/D0b + **D1–D3** complete; D4/D5 OC research lane |
 | Re-audit | After 15 | → ROADMAP_V5 |
 
 ---
