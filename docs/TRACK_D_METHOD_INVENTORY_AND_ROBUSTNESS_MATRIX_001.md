@@ -200,7 +200,7 @@ Where applicable, each inventory row records:
 
 | Pow ID | Method | Robustness status | Track B link | Next action |
 |--------|--------|-------------------|--------------|-------------|
-| **POW-001** | Simulation-based power (design) | diagnostic_only | Feasibility DEF-010; D5-POW-001a optimistic_proxy; 001b SCM JK **null_monitor_only** | **D4** ✅ **D5-POW-001a/b** ✅ |
+| **POW-001** | Simulation-based power (design) | diagnostic_only | 001a optimistic_proxy; 001b null_monitor_only; 001d **fixed_window_preferred** | **D4** ✅ **D5-POW-001a/b/d** ✅ |
 | **POW-002** | Formula MDE (variance-based) | diagnostic_only | Spec `mde_target` (not wired) | **D4** ✅ |
 | **POW-003** | Geo-level power (aggregated panel) | restricted | 2-row agg **narrow_diagnostics_only** (D5-POW-001c); not unit readout proxy | **D4** ✅ **D5-POW-001a/c** ✅ |
 | **POW-004** | Multi-cell power | blocked | Track C | Defer |

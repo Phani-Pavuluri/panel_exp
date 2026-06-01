@@ -197,7 +197,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D3-FIND-001 — Unit JK LOO compares `y_hat` to observed `y` → **INV-D3-001** opened (D5-INF-002a).
 
-**Next:** Track E E1/E2; D5-POW-001d–e.
+**Next:** Track E E1/E2; D5-POW-001e.
 
 ---
 
@@ -216,7 +216,16 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D4-FIND-001 — design MDE not aligned to `SCM_UnitJackKnife` instrument.
 
-**Next:** Track E E1; D5-POW-001d–e; not MMM integration.
+**Next:** Track E E1; D5-POW-001e; not MMM integration.
+
+---
+
+## D5-POW-001d checkpoint (2026-06-01)
+
+**Artifact:** [`docs/track_d/archives/D5_POW_001d_results.json`](track_d/archives/D5_POW_001d_results.json)  
+**Harness:** `panel_exp/validation/track_d_d5_pow_001d.py`
+
+**Verdict:** **`fixed_window_preferred`** — unit SCM+JK readout OC relatively stable across pre/post grid; greedy assignment overlap with baseline (pre28/post8) high when post length varies at fixed pre=28. Prefer **fixed experiment windows** for governed readout; PowerAnalysis **circular sliding** is not SCM+JK readout. Track E diagnostics **E-POW-WIN-001–007** registered in artifact.
 
 ---
 

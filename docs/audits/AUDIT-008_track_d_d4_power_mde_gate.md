@@ -33,7 +33,12 @@ Track D D4 — power/MDE methods (POW-001–006), estimand alignment, design geo
 
 ## Next
 
-Track E E1; D5-POW-001d–e; broader D5 OC — not MMM integration.
+Track E E1; D5-POW-001e; broader D5 OC — not MMM integration.
+
+## D5-POW-001d follow-up (2026-06-01)
+
+**Artifact:** [`D5_POW_001d_results.json`](../track_d/archives/D5_POW_001d_results.json)  
+**Verdict:** **`fixed_window_preferred`** — window sensitivity characterized; E-POW-WIN-* suitability diagnostics for Track E.
 
 ## D5-POW-001c follow-up (2026-06-01)
 

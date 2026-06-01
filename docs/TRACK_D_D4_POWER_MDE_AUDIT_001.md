@@ -250,7 +250,7 @@ mde_percent / mde_kpi_cumulative + power_contract
 | **D5-POW-001a** | POW-001 | Same assignment/DGP: MDE percent under TBRRidge+Kfold vs SCM+JK | ✅ [`D5_POW_001a_results.json`](track_d/archives/D5_POW_001a_results.json) |
 | **D5-POW-001b** | POW-001 | SCM+JK null-monitor / detection semantics post INV-D3-001 | ✅ [`D5_POW_001b_results.json`](track_d/archives/D5_POW_001b_results.json) |
 | **D5-POW-001c** | POW-003 | Unit-level panel vs 2-row aggregation — design geometry | ✅ [`D5_POW_001c_results.json`](track_d/archives/D5_POW_001c_results.json) |
-| **D5-POW-001d** | POW-001 | Circular windows vs fixed pre/post window | Planned |
+| **D5-POW-001d** | POW-001 | Pre/post window sensitivity (fixed vs circular sample) | ✅ [`D5_POW_001d_results.json`](track_d/archives/D5_POW_001d_results.json) |
 | **D5-POW-001e** | aa_calibration | Null-effect FPR at n≥100 replications per inference choice | Planned |
 | **D5-POW-002a** | POW-002 | Record `mde_target` vs simulated `mde_percent` when both present | Planned |
 
@@ -301,7 +301,7 @@ Applied in [`TRACK_D_METHOD_INVENTORY_AND_ROBUSTNESS_MATRIX_001.md`](TRACK_D_MET
 
 | Priority | Action | Lane |
 |----------|--------|------|
-| P1 | **D5-POW-001d–e** — windows and design-tier null FPR at scale | D5 |
+| P1 | **D5-POW-001e** — design-tier null FPR at scale | D5 |
 | P1 | **Track E E1** — suitability diagnostic inventory (power/feasibility facets) | E1 |
 | P2 | Optional **INV-D4-001** if D5 shows large MDE divergence | Research |
 | P2 | **Broader D5** OC (inference/design) before MMM | D5 |
