@@ -57,14 +57,16 @@ Every design method, matching algorithm, estimator, inference mode, power/MDE me
 | B5 | Contract Test Plan | **Complete** |
 | B5a | Golden fixture JSON | **Complete** |
 | B5b | Pytest fixture loader | **Complete** |
-| **B5c** | TrustReport composer contract tests | Planned |
-| **B5d** | Track B contract validator | Planned |
+| **B5c** | TrustReport composer contract tests | **Complete** |
+| **B5d** | Track B contract validator | **Complete** |
 | **M2** | Dual-write GeoX → Track B views | Planned |
 | **Track D** | Statistical robustness program | **This document (D0)** |
 
-**Trigger:** Begin D1+ execution **after** B5c/B5d and M2 dual-write so real GeoX outputs flow through governed contracts during audits.
+**Trigger:** Begin D1+ execution **after** M2 dual-write so real GeoX outputs flow through governed contracts during audits (B5c/B5d complete on golden fixtures).
 
-**D0 (this doc):** May proceed **in parallel** with B5c/M2 — inventory and literature templates do not require dual-write.
+**D0 (this doc):** Complete. Inventory and literature templates do not require dual-write.
+
+**Alignment:** [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) — Track D uses the **Research / robustness lane** (literature, audits, OC, negative findings allowed; not decision-eligible until promotion bridge). D1+ closes with a terminal outcome and matrix row update; promotion is a separate governed milestone.
 
 ---
 

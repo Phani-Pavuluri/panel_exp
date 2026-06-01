@@ -21,8 +21,11 @@
 | [`docs/SCM_JACKKNIFE_CHARACTERIZATION_001.md`](SCM_JACKKNIFE_CHARACTERIZATION_001.md) | Phase 11 OC archive (complete) |
 
 | [`docs/PHASE12_INVESTIGATION_PLAN.md`](PHASE12_INVESTIGATION_PLAN.md) | Phase 12 governed investigation plan (pre-execution) |
+| [`docs/ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) | **Alignment gate** — north star, six questions, stop conditions per item |
 
 **Read-only roadmap — no package code in this document.**
+
+**Alignment:** Every active execution item must satisfy [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) before start and at completion.
 
 **Conceptual reference (not implementation blueprint):** Industry conversion-lift and user-level incrementality practice (e.g. Google Conversion Lift methodology — ghost ads, exposure-opportunity logging, user-randomized designs) informs **Track C governance semantics only**. Do not copy external estimators or certify parity without archived OC.
 
@@ -75,21 +78,27 @@ Architecture contracts and test discipline (planning + fixtures; implementation 
 | B5 Contract Test Plan | [`TRACK_B_CONTRACT_TEST_PLAN_001.md`](TRACK_B_CONTRACT_TEST_PLAN_001.md) | Complete |
 | B5a Golden fixtures | [`tests/fixtures/track_b_contracts/`](../tests/fixtures/track_b_contracts/) | Complete |
 | B5b Pytest loader | [`tests/track_b/`](../tests/track_b/) | Complete |
-| B5c TrustReport composer tests | — | Planned |
-| B5d Contract validator | — | Planned |
+| B5c TrustReport composer tests | [`tests/track_b/trust_report_composer.py`](../tests/track_b/trust_report_composer.py) | **Complete** |
+| B5d Contract validator | [`tests/track_b/contract_validator.py`](../tests/track_b/contract_validator.py) | **Complete** |
 | M2 Dual-write | [`TRACK_B_ARTIFACT_CONSOLIDATION_001.md`](TRACK_B_ARTIFACT_CONSOLIDATION_001.md) | Planned |
 
-**Near-term Track B sequence:** B5c → B5d → M2 dual-write → wire adapter (`resolve_adapter_output`).
+**Near-term Track B sequence:** ~~B5c → B5d~~ → **M2 dual-write** → wire adapter (`resolve_adapter_output`).
+
+**Alignment registry:** [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) § Track B — per-item capability, risk, artifacts, stop conditions.
 
 ### Track D — statistical robustness, method coverage, literature cross-check
 
 **Roadmap ID:** `TRACK-D-STATISTICAL-ROBUSTNESS`  
 **Status:** planned (D0/D0b architecture started)  
-**Trigger:** Begin D1+ execution after B5c, B5d, and M2 dual-write produce governed Track B exports from real GeoX runs. D0 inventory may proceed in parallel.
+**Trigger:** Begin D1+ execution after **M2 dual-write** produces governed Track B exports from real GeoX runs (B5c/B5d complete on fixtures). D0 inventory may proceed in parallel.
+
+**Alignment registry:** [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) § Track D.
 
 **Purpose:** Harden the **scientific core** — every design method, matching algorithm, estimator, inference mode, power/MDE method, diagnostic, and validation gate is inventoried, literature-checked, implementation-audited, simulation-characterized, mapped to Track B identity, and assigned a governed robustness status before calibration or decision-grade claims.
 
 **Core principle:** Contracts prevent semantic lies (Track B). Track D prevents statistical and mathematical lies.
+
+**Lane:** Track D execution is **research / robustness** by default — ambitious literature-backed and statistical work is encouraged under [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) § Research / robustness lane. Outputs are not production-, calibration-, or decision-eligible until the promotion bridge completes.
 
 | Package | Document | Status |
 |---------|----------|--------|
@@ -134,6 +143,8 @@ Architecture contracts and test discipline (planning + fixtures; implementation 
 Detail: [`EXPERIMENTATION_PLATFORM_VISION.md`](EXPERIMENTATION_PLATFORM_VISION.md) § Track C · investigations **INV-020–INV-026** in [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIGATIONS.md).
 
 **Track sequencing:** A → B → C. Do not implement user-level experimentation surfaces before geo governance and shared contracts stabilize.
+
+**Alignment registry:** [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) § Track C · MMM · LLM — gated; stop conditions documented.
 
 ---
 
@@ -541,8 +552,8 @@ Suggested audit triggers also listed in [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIG
 | **Phase 13** | **Complete** | TBRRidge governance decision — `PHASE13_GOVERNANCE_DECISION_001.md` |
 | **Phase 14** | **Complete** | AugSynth OC — [`PHASE14_AUGSYNTH_CHARACTERIZATION_001.md`](PHASE14_AUGSYNTH_CHARACTERIZATION_001.md) |
 | **Phase 15** | Planned | Placebo inference OC — `PHASE15_PLACEBO_INVESTIGATION_PLAN.md` |
-| Track B contracts + B5 | **In progress** | B0–B5b complete; B5c/B5d/M2 next — see Track B table above |
-| Track D robustness | **Planned** | D0/D0b docs; D1+ after M2 dual-write |
+| Track B contracts + B5 | **In progress** | B0–B5d complete; **M2 dual-write next** — see Track B table + alignment gate |
+| Track D robustness | **Planned** | D0/D0b complete; D1+ after M2 dual-write |
 | Re-audit | After 15 | → ROADMAP_V5 |
 
 ---

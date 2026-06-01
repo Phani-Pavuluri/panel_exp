@@ -4,7 +4,7 @@
 **Last updated:** 2026-05-28  
 **Package version:** 0.2.1 (current implementation)  
 
-**Related:** [`ROADMAP_V4.md`](ROADMAP_V4.md) · [`EXPERIMENTATION_PLATFORM_VISION.md`](EXPERIMENTATION_PLATFORM_VISION.md) · [`GEOX_PANEL_EXP_STRATEGIC_CHECKPOINT.md`](GEOX_PANEL_EXP_STRATEGIC_CHECKPOINT.md) · [`PHASE13_GOVERNANCE_DECISION_001.md`](PHASE13_GOVERNANCE_DECISION_001.md) · [`DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md)
+**Related:** [`ROADMAP_V4.md`](ROADMAP_V4.md) · [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) · [`EXPERIMENTATION_PLATFORM_VISION.md`](EXPERIMENTATION_PLATFORM_VISION.md) · [`GEOX_PANEL_EXP_STRATEGIC_CHECKPOINT.md`](GEOX_PANEL_EXP_STRATEGIC_CHECKPOINT.md) · [`PHASE13_GOVERNANCE_DECISION_001.md`](PHASE13_GOVERNANCE_DECISION_001.md) · [`DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md)
 
 This document defines **shared experimentation contracts** for the mid-term platform layer. It is a **planning artifact**, not an implementation spec. It does **not** change code, schemas, APIs, eligibility, maturity, or roadmap sequencing until formally adopted in `ROADMAP_V5.md`.
 
