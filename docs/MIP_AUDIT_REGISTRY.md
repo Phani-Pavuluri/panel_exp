@@ -197,7 +197,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D3-FIND-001 — Unit JK LOO compares `y_hat` to observed `y` → **INV-D3-001** opened (D5-INF-002a).
 
-**Next:** D5-POW-001e (confirmed design set); Track E E1/E2.
+**Next:** D5-POW-001e (scoped); Track E E1/E2.
 
 ---
 
@@ -216,7 +216,21 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D4-FIND-001 — design MDE not aligned to `SCM_UnitJackKnife` instrument.
 
-**Next:** D5-POW-001e; Track E E1; not MMM integration.
+**Next:** D5-POW-001e (scoped); Track E E1/E2; not MMM integration.
+
+---
+
+## ROADMAP-DESIGN-READOUT-UPDATE-001 checkpoint (2026-06-01)
+
+**Doc:** [`ROADMAP_DESIGN_READOUT_UPDATE_001.md`](ROADMAP_DESIGN_READOUT_UPDATE_001.md)
+
+**Corrections before D5-POW-001e:**
+
+- SCM+UnitJackKnife = **reference null-monitor branch** only (not universal readout / platform MDE / lift detection).  
+- Power/OC = **design-method × geometry-mode × measurement-instrument** specific.  
+- Multi-cell = **geometry mode** (`n_test_grps > 1`), not a design method.  
+- **supergeos** / **trimmedmatch** in roadmap (D5-DES-SUPERGEO-001, D5-DES-TRIM-001); not ignored.  
+- D5-POW-001e **scoped, not started** — six confirmed methods; single-cell required; limited multi_cell per-cell; no pooling.
 
 ---
 
@@ -225,7 +239,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 **Artifact:** [`docs/track_d/archives/DESIGN_INVENTORY_001_results.json`](track_d/archives/DESIGN_INVENTORY_001_results.json)  
 **Doc:** [`TRACK_D_DESIGN_METHOD_INVENTORY_001.md`](TRACK_D_DESIGN_METHOD_INVENTORY_001.md)
 
-**Confirmed for D5-POW-001e (6):** `greedy_match_markets`, `rerandomization_wrapper`, `completerandomization`, `balancedrandomization`, `stratifiedrandomization`, `thinningdesign`. No `multi_cell_multi_treated` class — use `n_test_grps>1` config. Blocked: `supergeos`, `trimmedmatch`, legacy `quickblock`/`matchedpair`.
+**Confirmed for D5-POW-001e (6):** `greedy_match_markets`, `rerandomization_wrapper`, `completerandomization`, `balancedrandomization`, `stratifiedrandomization`, `thinningdesign`. **Commit:** `e3e6aeb`. **Not started.** No `multi_cell_multi_treated` class — multi-cell = `n_test_grps>1`. **Separate follow-ups:** `supergeos`, `trimmedmatch`. **tier_3:** `quickblock`, `matchedpair`.
 
 ---
 

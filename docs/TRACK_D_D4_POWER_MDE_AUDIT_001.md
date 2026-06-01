@@ -251,7 +251,7 @@ mde_percent / mde_kpi_cumulative + power_contract
 | **D5-POW-001b** | POW-001 | SCM+JK null-monitor / detection semantics post INV-D3-001 | ✅ [`D5_POW_001b_results.json`](track_d/archives/D5_POW_001b_results.json) |
 | **D5-POW-001c** | POW-003 | Unit-level panel vs 2-row aggregation — design geometry | ✅ [`D5_POW_001c_results.json`](track_d/archives/D5_POW_001c_results.json) |
 | **D5-POW-001d** | POW-001 | Pre/post window sensitivity (fixed vs circular sample) | ✅ [`D5_POW_001d_results.json`](track_d/archives/D5_POW_001d_results.json) |
-| **D5-POW-001e** | aa_calibration | Null-effect FPR at scale per **DESIGN-INVENTORY-001** tier-1 methods | Planned (inventory ✅) |
+| **D5-POW-001e** | SCM+JK reference null-monitor | Null FPR at scale: 6 confirmed design methods; single-cell required; limited multi_cell per-cell | **Scoped** ([ROADMAP-DESIGN-READOUT-UPDATE-001](ROADMAP_DESIGN_READOUT_UPDATE_001.md)); **not started** |
 | **D5-POW-002a** | POW-002 | Record `mde_target` vs simulated `mde_percent` when both present | Planned |
 
 Archive under `docs/track_d/archives/`.
@@ -301,11 +301,19 @@ Applied in [`TRACK_D_METHOD_INVENTORY_AND_ROBUSTNESS_MATRIX_001.md`](TRACK_D_MET
 
 | Priority | Action | Lane |
 |----------|--------|------|
-| P1 | **D5-POW-001e** — null FPR at scale on DESIGN-INVENTORY-001 tier-1 set | D5 |
-| P1 | **Track E E1** — suitability diagnostic inventory (power/feasibility facets) | E1 |
-| P2 | Optional **INV-D4-001** if D5 shows large MDE divergence | Research |
-| P2 | **Broader D5** OC (inference/design) before MMM | D5 |
+| P0 | [**ROADMAP-DESIGN-READOUT-UPDATE-001**](ROADMAP_DESIGN_READOUT_UPDATE_001.md) — governance framing | Docs ✅ |
+| P1 | **D5-POW-001e** — SCM+JK **reference** null FPR; 6 design methods; bare greedy vs `Rerandomization(greedy)`; single-cell + limited multi_cell per-cell | D5 |
+| P1 | **Track E E1/E2** — design × geometry × instrument cards; E-DES-WIN / E-SCM-DONOR / E-DES-MCELL | E |
+| P2 | **D5-DES-SUPERGEO-001**, **D5-DES-TRIM-001**, **D5-MCELL** optimal cell count | D5 |
+| P2 | OC batteries for TBRRidge+KFold, BRB, DID+bootstrap, AugSynth, placebo (separate instruments) | D5 |
+| — | **Do not** treat SCM+JK as universal readout or platform MDE | Governance |
 | — | **Do not** feed current geo MDE to MMM CalibrationSignal | Governance |
+
+### SCM+UnitJackKnife readout framing (post D5-POW-001a–d)
+
+SCM+UnitJackKnife is the **reference readout** for fixed-window unit-level **null-monitor OC**. It is **not** the universal GeoX readout, not a platform-wide power/MDE instrument, and not a lift-detection instrument. Power/OC is **design-method × geometry-mode × measurement-instrument** specific ([ROADMAP-DESIGN-READOUT-UPDATE-001](ROADMAP_DESIGN_READOUT_UPDATE_001.md)).
+
+**D5-POW-001e** answers: which **confirmed design methods** and supported **geometry modes** have acceptable null behavior under that reference branch—not full platform validation.
 
 ---
 

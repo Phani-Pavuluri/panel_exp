@@ -14,6 +14,8 @@
 
 GeoX produces **governed causal evidence**, not raw estimator outputs. MMM and planning consume evidence only when it passes **instrument-level** suitability, triangulation, and conflict rules.
 
+**Governance correction ([ROADMAP-DESIGN-READOUT-UPDATE-001](ROADMAP_DESIGN_READOUT_UPDATE_001.md)):** Suitability and OC are **design-method × geometry-mode × measurement-instrument** specific. **SCM+UnitJackKnife** is the current **reference null-monitor branch** for fixed-window unit-level D5 OC—not the universal GeoX readout, not platform-wide MDE, and not lift detection. Track E E1/E2 must issue **separate cards** for TBRRidge+KFold, BRB, DID+bootstrap, AugSynth, placebo, and geo `PowerAnalysis` diagnostic path, each with its own D5 evidence before promotion.
+
 **Track E governs:**
 
 - Which methods are **suitable** for a given test’s data geometry and diagnostics  
@@ -71,22 +73,70 @@ Diagnostics inform suitability; they do **not** auto-promote trust.
 | Missing uncertainty | No intervals / wrong semantics | Point-only configs |
 | Evidence freshness | CalibrationSignal age | Stale OC |
 
+### 3.1 Diagnostic families (design-readout program)
+
+From D5-POW-001d and [ROADMAP-DESIGN-READOUT-UPDATE-001](ROADMAP_DESIGN_READOUT_UPDATE_001.md):
+
+**E-DES-WIN** (window / assignment stability)
+
+| ID | Diagnostic |
+|----|------------|
+| E-DES-WIN-001 | Assignment stability across pre-period lengths |
+| E-DES-WIN-002 | Pre-balance stability across windows |
+| E-DES-WIN-003 | Readout FPR stability across windows |
+| E-DES-WIN-004 | Post-period length adequacy |
+| E-DES-WIN-005 | Fixed-window requirement for governed readout OC |
+
+**E-SCM-DONOR** (donor sensitivity — SCM+JK branch)
+
+| ID | Diagnostic |
+|----|------------|
+| E-SCM-DONOR-001 | Minimum donor/control count |
+| E-SCM-DONOR-002 | Donor concentration / max donor weight |
+| E-SCM-DONOR-003 | Leave-one-donor-out stability |
+| E-SCM-DONOR-004 | Donor pool overlap with treated markets |
+| E-SCM-DONOR-005 | Donor feasibility after whitelist/blacklist/constraints |
+| E-SCM-DONOR-006 | Donor sensitivity by region/spend/channel constraints |
+
+**E-DES-MCELL** (multi-cell geometry — not a design method)
+
+| ID | Diagnostic |
+|----|------------|
+| E-DES-MCELL-001 | Method supports `n_test_grps > 1` |
+| E-DES-MCELL-002 | Requested cell-count feasibility |
+| E-DES-MCELL-003 | Per-cell balance quality |
+| E-DES-MCELL-004 | Shared-control adequacy |
+| E-DES-MCELL-005 | Per-cell donor/control count |
+| E-DES-MCELL-006 | Per-cell UnitJackKnife feasibility (SCM+JK branch) |
+| E-DES-MCELL-007 | Per-cell null FPR / null-monitor coverage |
+| E-DES-MCELL-008 | Treatment-cell conflict / directional disagreement |
+| E-DES-MCELL-009 | Multiple-comparison warning |
+| E-DES-MCELL-010 | Minimum viable controls per cell |
+| E-DES-MCELL-011 | No pooled multi-cell claim without governed pooling rule |
+| E-DES-MCELL-012 | Recommended / maximum feasible cell count |
+
+**Rules:** No naive averaging across instruments. No pooled multi-cell lift claim without governed pooling rule. No direct MMM feed outside CalibrationSignal and TrustReport governance.
+
 ---
 
 ## 4. Method Suitability Cards (summary)
 
-### SCM + Unit Jackknife (`SCM_UnitJackKnife`)
+**E2 target:** Each card includes design method identity, geometry mode (`single_cell`, `multi_cell`, `supergeo`, `trimmed_population`), compatible/incompatible readout instruments, window requirements, pre-period and donor diagnostics, shared-control adequacy (multi-cell), method-specific D5 OC evidence, and output role (CalibrationSignal / TrustReport-only / diagnostic-only / restricted / blocked) plus MMM implication.
+
+### SCM + Unit Jackknife (`SCM_UnitJackKnife`) — reference null-monitor branch
 
 | Field | Guidance |
 |-------|----------|
-| **Good when** | ≥5 donors, stable pre-fit, multi-treated pooled read acceptable |
-| **Risky when** | Donor concentration, poor pre-fit, staggered starts |
-| **Required diagnostics** | Pre-fit, donor concentration, geometry |
-| **Compatible geometries** | `multi_treated_default` |
-| **Compatible estimands** | `relative_att_post` (pooled path) |
-| **Failure modes** | Zero power on positive DGP; conservative null (DEF-013) |
+| **Role** | **Reference readout** for D5 fixed-window unit-level null-monitor OC — **not** universal GeoX readout |
+| **Good when** | ≥2 control units (JK), stable pre-fit, fixed chronological windows (D5-POW-001d) |
+| **Risky when** | Donor concentration, poor pre-fit, 2-row aggregation proxy (D5-POW-001c), interval-excludes-zero as “power” (001b) |
+| **Required diagnostics** | E-SCM-DONOR-*; E-DES-WIN-*; per-cell E-DES-MCELL-* when multi_cell |
+| **Compatible geometries** | Unit-level `single_cell`; limited `multi_cell` with **per-cell** reporting only |
+| **Incompatible geometries** | 2-row geo power panel; supergeo clusters |
+| **Compatible estimands** | `relative_att_post` (pooled path) for **null monitor** only |
+| **Failure modes** | Not lift detection; not platform MDE (001a optimistic_proxy for geo power) |
 | **Track B role** | **null_monitor_only**; calibration-eligible |
-| **D5 OC before promotion** | Null FPR + post-fix LOO target (D5-INF-002b ✅); lift OC if ever considered |
+| **D5 OC** | 001b null-monitor; 001d windows; **001e** design-method null FPR (planned) |
 
 ### SCM + Placebo (`SCM_Placebo`)
 
@@ -280,7 +330,16 @@ flowchart LR
 | **E6** | Golden fixtures: agreement / conflict scenarios | Planned |
 | **E7** | Implementation after Track D OC evidence | Deferred |
 
-**Recommended program order:** INV-D3-001 fix ✅ → **E0** ✅ → D4 power/MDE → E1/E2 → broader D5 → E3/E4/E6 → MMM integration.
+**Recommended program order:** INV-D3-001 fix ✅ → **E0** ✅ → D5-POW-001a–d ✅ → DESIGN-INVENTORY-001 ✅ → **ROADMAP-DESIGN-READOUT-UPDATE-001** ✅ → **D5-POW-001e** (SCM+JK reference null FPR) → **E1/E2** (cards for full instrument panel + design methods) → D5-DES-SUPERGEO-001 / D5-DES-TRIM-001 / D5-MCELL → other instrument OC → E3/E4/E6 → MMM integration.
+
+### E1 / E2 scope (updated)
+
+| Phase | Deliverable |
+|-------|-------------|
+| **E1** | Formal inventory: E-DES-WIN, E-SCM-DONOR, E-DES-MCELL; link D5-POW-001e rows |
+| **E2** | Design-method cards + measurement-instrument cards (SCM+JK is **one** card) |
+
+**Explicit:** Other instruments need their own OC evidence before promotion. Include **supergeos** and **trimmedmatch** as separate geometry/population cards—not omitted from roadmap.
 
 ---
 

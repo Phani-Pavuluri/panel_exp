@@ -33,7 +33,18 @@ Track D D4 — power/MDE methods (POW-001–006), estimand alignment, design geo
 
 ## Next
 
-Track E E1; D5-POW-001e; broader D5 OC — not MMM integration.
+1. **D5-POW-001e** — SCM+JK reference null FPR; six confirmed design methods ([ROADMAP-DESIGN-READOUT-UPDATE-001](../ROADMAP_DESIGN_READOUT_UPDATE_001.md))  
+2. **Track E E1/E2** — design × geometry × instrument suitability cards  
+3. Later: D5-DES-SUPERGEO-001, D5-DES-TRIM-001, other instrument OC batteries — not MMM integration
+
+## ROADMAP-DESIGN-READOUT-UPDATE-001 (2026-06-01)
+
+**Doc:** [`ROADMAP_DESIGN_READOUT_UPDATE_001.md`](../ROADMAP_DESIGN_READOUT_UPDATE_001.md)
+
+- SCM+JK is **reference null-monitor** branch, not universal readout.  
+- Multi-cell is **geometry mode** (`n_test_grps > 1`), not a method.  
+- **supergeos** / **trimmedmatch** documented as separate-semantics paths.  
+- D5-POW-001e **scoped, not implemented** in this update.
 
 ## D5-POW-001d follow-up (2026-06-01)
 
@@ -57,4 +68,4 @@ Track E E1; D5-POW-001e; broader D5 OC — not MMM integration.
 
 ---
 
-*AUDIT-008 v1.0.1 — D5-POW-001a characterized (research lane)*
+*AUDIT-008 v1.0.2 — design-readout governance update (research lane)*

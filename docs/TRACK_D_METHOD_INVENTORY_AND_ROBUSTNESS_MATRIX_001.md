@@ -194,16 +194,32 @@ Where applicable, each inventory row records:
 
 ---
 
+## 8b. Design-readout OC framing (ROADMAP-DESIGN-READOUT-UPDATE-001)
+
+**Doc:** [`ROADMAP_DESIGN_READOUT_UPDATE_001.md`](ROADMAP_DESIGN_READOUT_UPDATE_001.md) · [`TRACK_D_DESIGN_METHOD_INVENTORY_001.md`](TRACK_D_DESIGN_METHOD_INVENTORY_001.md)
+
+| Principle | Statement |
+|-----------|-----------|
+| OC tensor | **design-method × geometry-mode × measurement-instrument** |
+| SCM+JK | **Reference null-monitor** for unit-level fixed-window OC only |
+| Multi-cell | **Geometry** (`n_test_grps > 1`), not a design method |
+| D5-POW-001e | Six confirmed design methods; SCM+JK reference null FPR; **not started** |
+| supergeos / trimmedmatch | Separate-semantics; D5-DES-SUPERGEO-001 / D5-DES-TRIM-001 |
+
+---
+
 ## 9. Power and MDE methods
 
 **Code authority:** `panel_exp/design/power.py` · notebooks · product docs
+
+**Note:** Geo `PowerAnalysis` (POW-001/003) is a **diagnostic** path on aggregated geometry—not a substitute for SCM+JK unit-level readout OC ([D5-POW-001a](track_d/archives/D5_POW_001a_results.json), [001c](track_d/archives/D5_POW_001c_results.json)).
 
 | Pow ID | Method | Robustness status | Track B link | Next action |
 |--------|--------|-------------------|--------------|-------------|
 | **POW-001** | Simulation-based power (design) | diagnostic_only | 001a optimistic_proxy; 001b null_monitor_only; 001d **fixed_window_preferred** | **D4** ✅ **D5-POW-001a/b/d** ✅ |
 | **POW-002** | Formula MDE (variance-based) | diagnostic_only | Spec `mde_target` (not wired) | **D4** ✅ |
 | **POW-003** | Geo-level power (aggregated panel) | restricted | 2-row agg **narrow_diagnostics_only** (D5-POW-001c); not unit readout proxy | **D4** ✅ **D5-POW-001a/c** ✅ |
-| **POW-004** | Multi-cell power | blocked | Track C | Defer |
+| **POW-004** | Multi-cell power | blocked | Multi-cell = geometry (`n_test_grps>1`); per-cell OC via 001e + E-DES-MCELL | D5-MCELL; not pooled |
 | **POW-005** | Business ROI detectability | diagnostic_only | TrustReport profile | **D4** ✅ |
 | **POW-006** | Long-term holdout power | blocked | Holdout Track C | Defer |
 
