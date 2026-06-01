@@ -57,13 +57,15 @@ For **known future work** already characterized (e.g. DEF-001 KFold geometry, DE
 |----|-------|--------|------------------|-------------|
 | **INV-D1-001** | Pre-period matching leakage | **Fix applied** (`61a174f`) | [`investigations/INV-D1-001_PRE_PERIOD_MATCHING_LEAKAGE.md`](investigations/INV-D1-001_PRE_PERIOD_MATCHING_LEAKAGE.md) · [`track_d/archives/D5_DES_001a_results.json`](track_d/archives/D5_DES_001a_results.json) | **characterization_required** — D5 re-run Jaccard **1.0**; D2 complete |
 | **INV-D2-001** | SCM `full_model` post-period weight fit | **Proposed** (D2-FIND-001) | [`TRACK_D_D2_ESTIMATOR_AND_DONOR_AUDIT_001.md`](TRACK_D_D2_ESTIMATOR_AND_DONOR_AUDIT_001.md) §10 | **investigating** — characterize via D5-EST-002b; fix in separate governed PR |
-| **INV-D3-001** | Unit JK LOO compares `y_hat` to observed `y` | **Proposed** (D3-FIND-001) | [`TRACK_D_D3_INFERENCE_METHOD_AUDIT_001.md`](TRACK_D_D3_INFERENCE_METHOD_AUDIT_001.md) §8 | **investigating** — D5-INF-002a; fix in separate governed PR |
+| **INV-D3-001** | Unit JK LOO target (`y` vs `y_hat_{-i}`) | **Open** (D5-INF-002a) | [`investigations/INV-D3-001_UNIT_JACKKNIFE_LOO_TARGET.md`](investigations/INV-D3-001_UNIT_JACKKNIFE_LOO_TARGET.md) · [`track_d/archives/D5_INF_002a_results.json`](track_d/archives/D5_INF_002a_results.json) | **open_inv_d3_001** — governed fix PR; eligibility unchanged |
 
 **D5-DES-001a headline (post-fix):** `pre_treatment_period` path matches pre-only reference (Jaccard **1.00**). Pre-fix baseline Jaccard **0.27** documented in artifact history.
 
 **D2 headline:** Default geo SCM donor pool and pre-fit path **OK**; `full_model=True` paths flagged — no code fix in D2 package.
 
 **D3 headline:** Inference semantics and Track B alignment **OK**; SCM JK null-monitor only; placebo diagnostic single-treated; eligibility registry **unchanged**.
+
+**D5-INF-002a headline:** Production JK sensitive to treated post noise (mean rel Δ **3.0×**); literature `y_hat` anchor stable (Δ **0**); recommend **INV-D3-001** governed fix.
 
 ---
 

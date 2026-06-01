@@ -182,7 +182,7 @@ Where applicable, each inventory row records:
 | Inf ID | Mode | Interval semantics | Robustness status | Characterized instrument | Known issues |
 |--------|------|-------------------|-------------------|-------------------------|--------------|
 | **INF-001** | point_estimate | none | diagnostic_only | AugSynth point, many | No uncertainty |
-| **INF-002** | UnitJackKnife | confidence_interval | null_monitor_characterized | SCM JK, AugSynth JK | FPR≈0, power≈0; INV-D3-001 LOO target |
+| **INF-002** | UnitJackKnife | confidence_interval | null_monitor_characterized | SCM JK, AugSynth JK | D5-INF-002a → **INV-D3-001 open**; FPR≈0, power≈0 |
 | **INF-003** | JKP | confidence_interval | characterization_required | — | Registry tests only |
 | **INF-004** | Kfold | confidence_interval | restricted | TBRRidge KFold | DEF-001; not calibration-eligible |
 | **INF-005** | BlockResidualBootstrap | confidence_interval | restricted | TBRRidge BRB | DEF-002 positive OC |

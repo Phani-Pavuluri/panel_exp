@@ -1,0 +1,67 @@
+{
+  "artifact_id": "D5-INF-002a",
+  "generated_at": "2026-06-01T19:22:55+00:00",
+  "lane": "research",
+  "investigation_id": "INV-D3-001",
+  "finding_id": "D3-FIND-001",
+  "config": {
+    "n_mc": 50,
+    "alpha": 0.05,
+    "treated_post_noise_sd": 50.0,
+    "control_post_noise_sd": 50.0,
+    "random_state_base": 20260528,
+    "scenarios": [
+      "scm_low_signal",
+      "scm_multi_treated"
+    ]
+  },
+  "hypothesis": "Production unit_jk anchors LOO on observed y while literature SCM jackknife uses (y_hat_{-i} - y_hat); treated post-outcome noise should inflate production JK width disproportionately.",
+  "primary_metrics": {
+    "post_hw_ratio_prod_over_ref": {
+      "mean": 52.362062749898605,
+      "std": 25.024596101533994,
+      "p95": 95.52441619789496
+    },
+    "post_hw_corr_prod_vs_ref": {
+      "mean": 0.000797264004962297,
+      "std": 0.15761714952410455,
+      "p95": 0.24772450455002648
+    },
+    "treated_post_noise_rel_change_production": {
+      "mean": 3.020336671746007,
+      "std": 0.4610715103204372,
+      "p95": 3.7289257321156515
+    },
+    "treated_post_noise_rel_change_reference": {
+      "mean": 0.0,
+      "std": 0.0,
+      "p95": 0.0
+    },
+    "sensitivity_ratio_treated_prod_over_ref": {
+      "mean": 3.020336671746007,
+      "std": 0.4610715103204372,
+      "p95": 3.7289257321156515
+    },
+    "control_post_noise_rel_change_production": {
+      "mean": 1.2727619416636649,
+      "std": 0.3815990205128342,
+      "p95": 1.9574556298575845
+    },
+    "control_post_noise_rel_change_reference": {
+      "mean": 34.69145174335327,
+      "std": 16.694551422320437,
+      "p95": 59.30433799248396
+    }
+  },
+  "n_replicates": 100,
+  "recommendation": "open_inv_d3_001",
+  "rationale": "Production JK post half-width shifts materially when only treated post outcomes are noised, while the literature-aligned y_hat anchor is stable (sensitivity ratio > 2). Production and reference widths differ systematically.",
+  "d3_find_001_disposition": "open_inv_d3_001",
+  "production_code_path": "panel_exp/inference/unit_jackknife.py::unit_jk",
+  "reference_definition": "y_hat_full vs y_hat_leave_one_out (Abadie tau jackknife)",
+  "calibration_eligibility_changed": false,
+  "notes": [
+    "SCM_UnitJackKnife remains null_monitor_only regardless of outcome.",
+    "No inference or eligibility code was modified."
+  ]
+}

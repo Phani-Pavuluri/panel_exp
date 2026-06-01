@@ -261,7 +261,7 @@ Per [`TRACK_B_ESTIMAND_REGISTRY_001.md`](TRACK_B_ESTIMAND_REGISTRY_001.md) §4 �
 
 | Finding ID | Summary | Severity | Disposition | Fix track |
 |------------|---------|----------|-------------|-----------|
-| **D3-FIND-001** | Unit JK LOO compares leave-one-out `y_hat` to full-fit `y` (actual), not counterfactual-to-counterfactual | medium | **investigating** → propose **INV-D3-001** | Literature + D5-INF-002a |
+| **D3-FIND-001** | Unit JK LOO compares leave-one-out `y_hat` to full-fit `y` (actual), not counterfactual-to-counterfactual | medium | **open_inv_d3_001** | [D5-INF-002a](track_d/archives/D5_INF_002a_results.json) · [INV-D3-001](investigations/INV-D3-001_UNIT_JACKKNIFE_LOO_TARGET.md) |
 | **D3-FIND-002** | SCM JK conservative null (FPR≈0, power≈0) — not lift CI | low | **accepted_deviation** | DEF-013; INV-030 |
 | **D3-FIND-003** | Placebo multi-treated unsupported on default geo DGP | medium | **geometry_blocked** | DEF-020; product scope doc |
 | **D3-FIND-004** | Placebo path band must not be read as classical CI | low | **accepted_deviation** | GOLD-005; Phase 15 |
@@ -274,19 +274,20 @@ Per [`TRACK_B_ESTIMAND_REGISTRY_001.md`](TRACK_B_ESTIMAND_REGISTRY_001.md) §4 �
 
 **Promotion rule:** No change to `NOMINAL_CALIBRATION_ELIGIBLE_CONFIGS` from D3.
 
-### Proposed INV-D3-001 (not implemented in D3)
+### INV-D3-001 (opened by D5-INF-002a — 2026-06-01)
 
 **Title:** Unit jackknife LOO target uses observed `y` vs leave-one-out `y_hat`  
-**Scope:** `panel_exp/inference/unit_jackknife.py` `unit_jk` — verify literature intent; if bug, align LOO comparison target.  
-**Pattern:** Characterize → governed fix → D5 rerun (do not fix in D3).
+**Artifact:** [`track_d/archives/D5_INF_002a_results.json`](track_d/archives/D5_INF_002a_results.json) — **`open_inv_d3_001`**  
+**Doc:** [`investigations/INV-D3-001_UNIT_JACKKNIFE_LOO_TARGET.md`](investigations/INV-D3-001_UNIT_JACKKNIFE_LOO_TARGET.md)  
+**Pattern:** Characterize → governed fix → D5 re-run (fix **not** in D5 package).
 
 ---
 
-## 9. Required D5 / OC simulations (specified, not run)
+## 9. Required D5 / OC simulations
 
-| Sim ID | Target | Purpose |
-|--------|--------|---------|
-| **D5-INF-002a** | SCM JK | LOO perturbation: interval width invariant to post-period **outcome** noise on donors (estimator fixed) |
+| Sim ID | Target | Purpose | Status |
+|--------|--------|---------|--------|
+| **D5-INF-002a** | SCM JK | Treated post noise invariance; prod vs literature LOO anchor | **Done** → INV-D3-001 |
 | **D5-INF-002b** | SCM JK | Compare JK variation 1 vs 2 on null DGP |
 | **D5-INF-002c** | SCM JK | Multi-treated vs single-treated width/concentration |
 | **D5-INF-006a** | Placebo | Single-treated: band rate = 1.0; multi-treated failure rate |
@@ -354,7 +355,7 @@ Applied in [`TRACK_D_METHOD_INVENTORY_AND_ROBUSTNESS_MATRIX_001.md`](TRACK_D_MET
 | Priority | Action | Lane |
 |----------|--------|------|
 | P1 | **D5** — D5-INF-002a (JK LOO target / post noise invariance) | D5 |
-| P1 | Open **INV-D3-001** if D5 confirms JK target mismatch | Research → fix PR |
+| P0 | **INV-D3-001** governed fix (`unit_jk` anchor → `y_hat`) + D5-INF-002b post-fix | Research → fix PR |
 | P2 | **D4** power/MDE audit (match readout estimator + estimand) | D4 |
 | P2 | **INV-D2-001** estimator `full_model` (inference refit coupling) | Research |
 | P2 | Complete D0b YAML for INF-002, INF-006 | D0b |

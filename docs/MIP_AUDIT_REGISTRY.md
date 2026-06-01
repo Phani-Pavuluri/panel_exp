@@ -194,9 +194,9 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 4. Placebo **diagnostic_only**, single-treated scope (Phase 15).  
 5. No inference/TrustReport/eligibility code changes in D3.
 
-**Top finding:** D3-FIND-001 — Unit JK LOO compares `y_hat` to observed `y` → propose **INV-D3-001**.
+**Top finding:** D3-FIND-001 — Unit JK LOO compares `y_hat` to observed `y` → **INV-D3-001** opened (D5-INF-002a).
 
-**Next:** D5-INF-002a; D4 power/MDE; INV-D2-001 / INV-D3-001 as separate fix PRs.
+**Next:** INV-D3-001 governed fix; D5-INF-002b post-fix; then D4 power/MDE.
 
 ---
 
