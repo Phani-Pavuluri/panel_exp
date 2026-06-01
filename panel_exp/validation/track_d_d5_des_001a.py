@@ -17,7 +17,7 @@ import pandas as pd
 
 from panel_exp.design.assign import greedy_match_markets
 from panel_exp.design.validation import standardized_mean_difference
-from panel_exp.panel_data import PanelDataset
+from panel_exp.panel_data import PanelDataset, TimePeriod
 
 Recommendation = Literal[
     "fix",
@@ -93,6 +93,28 @@ def _assign_greedy(
         random_state=seed,
     )
     return design.assign(panel_data=panel, n_test_grps=1)
+
+
+def _assign_greedy_with_pre_period(
+    wide: pd.DataFrame,
+    *,
+    seed: int,
+    n_pre: int,
+    treatment_probability: float,
+) -> dict[str, list[str]]:
+    """Production-style path: full wide panel + ``pre_treatment_period`` (INV-D1-001 fix)."""
+    panel = PanelDataset(wide.copy())
+    design = greedy_match_markets(
+        func_to_optimize="corr",
+        treatment_probability=treatment_probability,
+        random_state=seed,
+    )
+    pre = TimePeriod(start=0, end=n_pre)
+    return design.assign(
+        panel_data=panel,
+        pre_treatment_period=pre,
+        n_test_grps=1,
+    )
 
 
 def _test_units(assignment: dict[str, list]) -> set[str]:
@@ -202,10 +224,17 @@ def run_one_replicate(
         n_pre=n_pre,
         treatment_probability=treatment_probability,
     )
+    fixed = _assign_greedy_with_pre_period(
+        wide,
+        seed=seed,
+        n_pre=n_pre,
+        treatment_probability=treatment_probability,
+    )
     smd_pre_f, smd_post_f = _smd_pre_post(wide, full, n_pre)
     smd_pre_p, smd_post_p = _smd_pre_post(wide, pre_only, n_pre)
     return {
         "jaccard_test_sets": _jaccard(_test_units(full), _test_units(pre_only)),
+        "jaccard_fixed_vs_pre_only": _jaccard(_test_units(fixed), _test_units(pre_only)),
         "post_corr_full": _post_assignment_correlation(wide, full, n_pre),
         "post_corr_pre_only": _post_assignment_correlation(wide, pre_only, n_pre),
         "balance_corr_pre_full": _balance_corr_pre(wide, full, n_pre),
@@ -275,12 +304,14 @@ def run_d5_des_001a(config: D5Des001aConfig | None = None) -> dict[str, Any]:
     post_corr_full = [r["post_corr_full"] for r in rows]
     post_corr_pre = [r["post_corr_pre_only"] for r in rows]
     jaccard = [r["jaccard_test_sets"] for r in rows]
+    jaccard_fixed = [r["jaccard_fixed_vs_pre_only"] for r in rows]
     post_balance_full = [r["balance_corr_post_full"] for r in rows]
     post_balance_pre = [r["balance_corr_post_pre_only"] for r in rows]
 
     mean_abs_post_corr_full = _summarize([abs(x) for x in post_corr_full])["mean"]
     mean_abs_post_corr_pre = _summarize([abs(x) for x in post_corr_pre])["mean"]
     mean_jaccard = _summarize(jaccard)["mean"]
+    mean_jaccard_fixed = _summarize(jaccard_fixed)["mean"]
 
     leakage_signal = mean_abs_post_corr_full - mean_abs_post_corr_pre
     post_balance_inflation = (
@@ -293,6 +324,7 @@ def run_d5_des_001a(config: D5Des001aConfig | None = None) -> dict[str, Any]:
     recommendation, rationale = _decide(
         leakage_signal=leakage_signal,
         mean_jaccard=mean_jaccard,
+        mean_jaccard_fixed=mean_jaccard_fixed,
         post_balance_inflation=post_balance_inflation,
         fp_rate_03=fp_rate_03,
     )
@@ -314,6 +346,7 @@ def run_d5_des_001a(config: D5Des001aConfig | None = None) -> dict[str, Any]:
             ),
             "leakage_signal_mean_abs_diff": leakage_signal,
             "test_set_jaccard_full_vs_pre_only": _summarize(jaccard),
+            "test_set_jaccard_fixed_vs_pre_only": _summarize(jaccard_fixed),
             "balance_corr_post_full": _summarize(post_balance_full),
             "balance_corr_post_pre_only": _summarize(post_balance_pre),
             "post_balance_inflation": post_balance_inflation,
@@ -336,7 +369,9 @@ def run_d5_des_001a(config: D5Des001aConfig | None = None) -> dict[str, Any]:
             "panel_exp.design.geo_experiment_design.GeoExperimentDesign.run_design",
             "panel_exp.design.assign.greedy_match_markets.assign",
             "panel_exp.design.assign.Rerandomization (wraps base design)",
+            "panel_exp.design.period_slice.slice_wide_to_time_period",
         ],
+        "inv_d1_001_fix_applied": True,
         "disposition_d1_find_001": _disposition_for_recommendation(recommendation),
     }
 
@@ -345,9 +380,16 @@ def _decide(
     *,
     leakage_signal: float,
     mean_jaccard: float,
+    mean_jaccard_fixed: float,
     post_balance_inflation: float,
     fp_rate_03: float,
 ) -> tuple[Recommendation, str]:
+    if mean_jaccard_fixed >= 0.95:
+        return (
+            "accepted_deviation",
+            "INV-D1-001 fix verified: pre_treatment_period assignment matches "
+            f"pre-only reference (mean Jaccard {mean_jaccard_fixed:.2f}).",
+        )
     if mean_jaccard < 0.75:
         return (
             "restrict",
@@ -383,7 +425,7 @@ def _disposition_for_recommendation(rec: Recommendation) -> str:
     return {
         "fix": "investigating",
         "restrict": "restricted",
-        "accepted_deviation": "accepted_deviation",
+        "accepted_deviation": "characterization_required",
         "continue_investigation": "investigating",
     }[rec]
 

@@ -58,12 +58,16 @@ def run_geo_experiment_design(ctx: DesignRunContext) -> tuple:
 
     design_method = design_class_name(geo.base_randomizer_cls)
 
+    pre_treatment_period = None
+    if geo.train_length is not None and geo.train_length > 0:
+        pre_treatment_period = TimePeriod(start=0, end=geo.train_length)
+
     # 1. Assignment
     design = geo.create_design()
     rs_dp_grps = design.assign(
         panel_data=geo.panel_data,
         treatment_period=None,
-        pre_treatment_period=None,
+        pre_treatment_period=pre_treatment_period,
         test_whitelist=geo.test_whitelist,
         test_blacklist=geo.test_blacklist,
         control_whitelist=geo.control_whitelist,

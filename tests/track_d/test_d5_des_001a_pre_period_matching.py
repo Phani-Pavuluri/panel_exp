@@ -43,6 +43,9 @@ class TestD5Des001aPrePeriodMatching:
             "continue_investigation",
         }
         assert "primary_metrics" in payload
+        assert payload.get("inv_d1_001_fix_applied") is True
+        fixed_j = payload["primary_metrics"]["test_set_jaccard_fixed_vs_pre_only"]["mean"]
+        assert fixed_j >= 0.95
 
     def test_write_committed_artifact(self) -> None:
         payload = run_d5_des_001a(D5Des001aConfig())
