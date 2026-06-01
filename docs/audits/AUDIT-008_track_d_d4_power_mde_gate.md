@@ -33,8 +33,13 @@ Track D D4 — power/MDE methods (POW-001–006), estimand alignment, design geo
 
 ## Next
 
-D5-POW-001a; Track E E1; broader D5 OC — not MMM integration.
+Track E E1; D5-POW-001b–e; broader D5 OC — not MMM integration.
+
+## D5-POW-001a follow-up (2026-06-01)
+
+**Artifact:** [`D5_POW_001a_results.json`](../track_d/archives/D5_POW_001a_results.json)  
+**Proxy verdict:** **`optimistic_proxy`** — geo `mde_percent` understates SCM+JK interval-detection MDE on matched assignment; not feasibility evidence for governed readout.
 
 ---
 
-*AUDIT-008 v1.0.0 — closed (research lane)*
+*AUDIT-008 v1.0.1 — D5-POW-001a characterized (research lane)*

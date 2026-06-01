@@ -197,7 +197,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D3-FIND-001 — Unit JK LOO compares `y_hat` to observed `y` → **INV-D3-001** opened (D5-INF-002a).
 
-**Next:** D5-POW-001a; Track E E1/E2.
+**Next:** Track E E1/E2; D5-POW-001b–e.
 
 ---
 
@@ -216,7 +216,18 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D4-FIND-001 — design MDE not aligned to `SCM_UnitJackKnife` instrument.
 
-**Next:** D5 power/readout bridge; Track E E1; not MMM integration.
+**Next:** Track E E1; D5-POW-001b–e; not MMM integration.
+
+---
+
+## D5-POW-001a checkpoint (2026-06-01)
+
+**Artifact:** [`docs/track_d/archives/D5_POW_001a_results.json`](track_d/archives/D5_POW_001a_results.json)  
+**Harness:** `panel_exp/validation/track_d_d5_pow_001a.py`
+
+**Verdict:** **`optimistic_proxy`** — geo `PowerAnalysis` `mde_percent` (~1.5% mean) is materially lower than pooled SCM+JK interval-detection MDE (~4%) on the same greedy assignment battery (n=24). Pooled interval-detection curves are degenerate (100% exclude zero at all grid points). **Do not** use geo MDE for SCM JK feasibility or MMM planning.
+
+**Governance:** No production, TrustReport, Track B, or eligibility changes.
 
 ---
 

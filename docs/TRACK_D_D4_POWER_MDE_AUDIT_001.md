@@ -237,20 +237,22 @@ mde_percent / mde_kpi_cumulative + power_contract
 ### Proposed INV-D4-001 (optional, not opened in D4)
 
 **Title:** Geo design power/readout instrument alignment  
-**Scope:** Characterize MDE curves under `TBRRidge+Kfold` vs `SyntheticControl+UnitJackKnife` on identical assignment — separate PR after D5-POW-001a.
+**Scope:** Characterize MDE curves under `TBRRidge+Kfold` vs `SyntheticControl+UnitJackKnife` on identical assignment — **D5-POW-001a complete** (verdict: **optimistic_proxy**; geo `mde_percent` ~1.5% vs ~4% pooled SCM+JK detection MDE on same assignment).
+
+**D5-POW-001a summary:** On `scm_low_signal` + greedy pre-period assignment (n=24 MC), injection-grid point effects correlate for both paths, but pooled interval-detection curves are degenerate (100% exclude zero at all grid points). Geo `PowerAnalysis` `mde_percent` (ci_version=2) is materially **lower** than pooled SCM+JK interval MDE — **do not** use geo MDE for SCM JK feasibility or MMM planning.
 
 ---
 
-## 11. Required D5 / OC simulations (specified, not run)
+## 11. Required D5 / OC simulations
 
-| Sim ID | Target | Purpose |
-|--------|--------|---------|
-| **D5-POW-001a** | POW-001 | Same assignment/DGP: MDE percent under TBRRidge+Kfold vs SCM+JK |
-| **D5-POW-001b** | POW-001 | Parameter sweep `inference=UnitJackKnife` post INV-D3-001 |
-| **D5-POW-001c** | POW-003 | Unit-level panel vs 2-row aggregation — MDE stability |
-| **D5-POW-001d** | POW-001 | Circular windows vs fixed pre/post window |
-| **D5-POW-001e** | aa_calibration | Null-effect FPR at n≥100 replications per inference choice |
-| **D5-POW-002a** | POW-002 | Record `mde_target` vs simulated `mde_percent` when both present |
+| Sim ID | Target | Purpose | Status |
+|--------|--------|---------|--------|
+| **D5-POW-001a** | POW-001 | Same assignment/DGP: MDE percent under TBRRidge+Kfold vs SCM+JK | ✅ [`D5_POW_001a_results.json`](track_d/archives/D5_POW_001a_results.json) |
+| **D5-POW-001b** | POW-001 | Parameter sweep `inference=UnitJackKnife` post INV-D3-001 | Planned |
+| **D5-POW-001c** | POW-003 | Unit-level panel vs 2-row aggregation — MDE stability | Planned |
+| **D5-POW-001d** | POW-001 | Circular windows vs fixed pre/post window | Planned |
+| **D5-POW-001e** | aa_calibration | Null-effect FPR at n≥100 replications per inference choice | Planned |
+| **D5-POW-002a** | POW-002 | Record `mde_target` vs simulated `mde_percent` when both present | Planned |
 
 Archive under `docs/track_d/archives/`.
 
@@ -299,7 +301,7 @@ Applied in [`TRACK_D_METHOD_INVENTORY_AND_ROBUSTNESS_MATRIX_001.md`](TRACK_D_MET
 
 | Priority | Action | Lane |
 |----------|--------|------|
-| P1 | **D5-POW-001a** — power vs readout instrument bridge | D5 |
+| P1 | **D5-POW-001b–e** — remaining power OC (aggregation, windows, null FPR) | D5 |
 | P1 | **Track E E1** — suitability diagnostic inventory (power/feasibility facets) | E1 |
 | P2 | Optional **INV-D4-001** if D5 shows large MDE divergence | Research |
 | P2 | **Broader D5** OC (inference/design) before MMM | D5 |

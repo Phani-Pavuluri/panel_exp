@@ -200,9 +200,9 @@ Where applicable, each inventory row records:
 
 | Pow ID | Method | Robustness status | Track B link | Next action |
 |--------|--------|-------------------|--------------|-------------|
-| **POW-001** | Simulation-based power (design) | diagnostic_only | Feasibility DEF-010 | **D4** ✅ |
+| **POW-001** | Simulation-based power (design) | diagnostic_only | Feasibility DEF-010; D5-POW-001a **optimistic_proxy** vs SCM JK | **D4** ✅ **D5-POW-001a** ✅ |
 | **POW-002** | Formula MDE (variance-based) | diagnostic_only | Spec `mde_target` (not wired) | **D4** ✅ |
-| **POW-003** | Geo-level power (aggregated panel) | restricted | TBRRidge+Kfold ≠ SCM JK readout | **D4** ✅ |
+| **POW-003** | Geo-level power (aggregated panel) | restricted | TBRRidge+Kfold ≠ SCM JK readout; D5-POW-001a confirms optimistic_proxy | **D4** ✅ **D5-POW-001a** ✅ |
 | **POW-004** | Multi-cell power | blocked | Track C | Defer |
 | **POW-005** | Business ROI detectability | diagnostic_only | TrustReport profile | **D4** ✅ |
 | **POW-006** | Long-term holdout power | blocked | Holdout Track C | Defer |
