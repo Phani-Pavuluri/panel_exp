@@ -36,7 +36,7 @@ Each JSON file contains:
 ## Discipline
 
 - Adapter tests assert `adapter_expected_output` only — **no** `trust_outcome` on evidence.
-- TrustReport tests assert `trust_report_expected_output` on composed inputs.
+- TrustReport tests (`tests/track_b/test_trust_report_composer.py`, B5c) assert `trust_report_expected_output` via the contract composer in `trust_report_composer.py` — **only** that layer emits `alignment_verdict` / `trust_outcome`.
 - Do not shorten IDs or collapse aggregation segments for elegance.
 
 ## Regeneration

@@ -43,6 +43,8 @@
         "scenarios": [
           {
             "scenario_id": "default_business",
+            "intended_use": "business_lift_launch",
+            "claim_type": "positive_lift_detection",
             "trust_outcome": "inconclusive",
             "alignment_verdict": "aligned",
             "notes": "Verdict depends on claim type; IDs must be registry canonical after mapping."
@@ -83,6 +85,8 @@
         "scenarios": [
           {
             "scenario_id": "any",
+            "intended_use": "any",
+            "claim_type": "any",
             "trust_outcome": "not_assessable",
             "alignment_verdict": "not_assessable"
           }
