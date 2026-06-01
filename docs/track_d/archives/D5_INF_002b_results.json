@@ -1,0 +1,53 @@
+{
+  "artifact_id": "D5-INF-002b",
+  "generated_at": "2026-06-01T19:50:27+00:00",
+  "lane": "research",
+  "investigation_id": "INV-D3-001",
+  "finding_id": "D3-FIND-001",
+  "inv_d3_001_fix_applied": true,
+  "pre_fix_artifact": "docs/track_d/archives/D5_INF_002a_results.json",
+  "config": {
+    "n_mc": 50,
+    "alpha": 0.05,
+    "treated_post_noise_sd": 50.0,
+    "control_post_noise_sd": 50.0,
+    "random_state_base": 20260528,
+    "scenarios": [
+      "scm_low_signal",
+      "scm_multi_treated"
+    ]
+  },
+  "primary_metrics": {
+    "post_hw_ratio_prod_over_ref": {
+      "mean": 1.0,
+      "std": 0.0,
+      "p95": 1.0
+    },
+    "post_hw_corr_prod_vs_ref": {
+      "mean": 1.0,
+      "std": 7.231314961041786e-17,
+      "p95": 1.0
+    },
+    "treated_post_noise_rel_change_production": {
+      "mean": 0.0,
+      "std": 0.0,
+      "p95": 0.0
+    },
+    "treated_post_noise_rel_change_reference": {
+      "mean": 0.0,
+      "std": 0.0,
+      "p95": 0.0
+    }
+  },
+  "n_replicates": 100,
+  "recommendation": "accepted_deviation",
+  "rationale": "Post-fix production unit_jk matches literature reference and is stable under treated post-outcome noise.",
+  "inv_d3_001_disposition": "fix_accepted",
+  "d3_find_001_disposition": "fix_accepted",
+  "calibration_eligibility_changed": false,
+  "scm_unit_jackknife_governance": "calibration_eligible_null_monitor_only",
+  "notes": [
+    "Other estimator + UnitJackKnife pairings unchanged in governance.",
+    "No TrustReport, Track B, or eligibility registry changes."
+  ]
+}

@@ -88,7 +88,7 @@ Architecture contracts and test discipline (planning + fixtures; implementation 
 | M2.1 Adapter production wire-up | [`panel_exp/track_b/bundle_extract.py`](../panel_exp/track_b/bundle_extract.py) · [`export.py`](../panel_exp/track_b/export.py) | **Complete** ([AUDIT-003](audits/AUDIT-003_m2_1_wire_up_gate.md) `5000fc5`) |
 | M2.2 Production TrustReport path | [`trust_report.py`](../panel_exp/track_b/trust_report.py) · [`geo_run_export.py`](../panel_exp/artifacts/geo_run_export.py) | **Complete** ([AUDIT-004](audits/AUDIT-004_m2_2_trust_report_gate.md) `ec2d351`) |
 
-**Near-term sequence:** Track B through M2.2 **complete** · **Track D D1–D3** audits **complete** · **D5-INF-002a** complete → **INV-D3-001** governed fix · then D4 power/MDE.
+**Near-term sequence:** Track B M2.2 **complete** · Track D D1–D3 **complete** · **INV-D3-001 fix + D5-INF-002b** **complete** · **Track E E0** framework · D4 power/MDE · E1/E2 suitability.
 
 **Alignment registry:** [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) § Track B — per-item capability, risk, artifacts, stop conditions.
 
@@ -117,11 +117,26 @@ Architecture contracts and test discipline (planning + fixtures; implementation 
 | D5 | OC simulation harness | Planned |
 | D6 | Runtime monitoring | Planned |
 | D7 | Promotion / demotion framework | Planned |
-| D8 | Cross-method triangulation | Planned |
+| D8 | Cross-method triangulation | Superseded by **Track E** (governance layer) |
 
 **Non-goals:** No new estimator promotion without OC; no eligibility/maturity changes without governance; no silent averaging of conflicting methods; no paper-based trust without implementation validation; no Track B identity rule changes without explicit ADR.
 
 **Success criteria:** Every method explicitly inventoried, literature-checked, audited, characterized where needed, mapped to `estimand_id` / `measurement_instrument_id`, and status-governed before decision-grade claims.
+
+### Track E — method suitability & triangulation
+
+**Roadmap ID:** `TRACK-E-SUITABILITY-TRIANGULATION`  
+**Status:** E0 framework drafted  
+**Purpose:** Govern **estimator × inference** comparison, data-driven method suitability, conflict taxonomy, and MMM-readiness — bridge between Track D OC evidence and Track B TrustReport / CalibrationSignal.
+
+| Phase | Document | Status |
+|-------|----------|--------|
+| **E0** | [`TRACK_E_METHOD_SUITABILITY_AND_TRIANGULATION_001.md`](TRACK_E_METHOD_SUITABILITY_AND_TRIANGULATION_001.md) | **Draft (planning)** |
+| E1 | Suitability diagnostic inventory | Planned |
+| E2 | Method suitability cards | Planned |
+| E3–E7 | Schema, conflicts, fixtures, implementation | Planned |
+
+**Non-goals (E0):** No code, TrustReport, CalibrationSignal, or MMM changes.
 
 ### Track C — unified user-level experimentation & conversion lift
 

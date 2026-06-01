@@ -261,7 +261,7 @@ Per [`TRACK_B_ESTIMAND_REGISTRY_001.md`](TRACK_B_ESTIMAND_REGISTRY_001.md) §4 �
 
 | Finding ID | Summary | Severity | Disposition | Fix track |
 |------------|---------|----------|-------------|-----------|
-| **D3-FIND-001** | Unit JK LOO compares leave-one-out `y_hat` to full-fit `y` (actual), not counterfactual-to-counterfactual | medium | **open_inv_d3_001** | [D5-INF-002a](track_d/archives/D5_INF_002a_results.json) · [INV-D3-001](investigations/INV-D3-001_UNIT_JACKKNIFE_LOO_TARGET.md) |
+| **D3-FIND-001** | Unit JK LOO compared `y_hat` to full-fit `y` (pre-fix) | medium | **fix_accepted** | [D5-INF-002b](track_d/archives/D5_INF_002b_results.json) · [INV-D3-001](investigations/INV-D3-001_UNIT_JACKKNIFE_LOO_TARGET.md) |
 | **D3-FIND-002** | SCM JK conservative null (FPR≈0, power≈0) — not lift CI | low | **accepted_deviation** | DEF-013; INV-030 |
 | **D3-FIND-003** | Placebo multi-treated unsupported on default geo DGP | medium | **geometry_blocked** | DEF-020; product scope doc |
 | **D3-FIND-004** | Placebo path band must not be read as classical CI | low | **accepted_deviation** | GOLD-005; Phase 15 |

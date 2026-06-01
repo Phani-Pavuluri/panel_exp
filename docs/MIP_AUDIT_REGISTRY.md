@@ -2,7 +2,7 @@
 
 **Program ID:** MIP-PERIODIC-AUDIT  
 **Status:** active  
-**Last updated:** 2026-05-28 (Track D D3 package)  
+**Last updated:** 2026-06-01 (INV-D3-001 fix + Track E E0)  
 
 **Template:** [`MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md`](MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md)  
 **Alignment gate:** [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md)
@@ -196,7 +196,16 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D3-FIND-001 — Unit JK LOO compares `y_hat` to observed `y` → **INV-D3-001** opened (D5-INF-002a).
 
-**Next:** INV-D3-001 governed fix; D5-INF-002b post-fix; then D4 power/MDE.
+**Next:** D4 power/MDE; Track E E1/E2.
+
+---
+
+## INV-D3-001 checkpoint (2026-06-01)
+
+**Fix:** `unit_jk` LOO anchor → `y_hat` (shared primitive).  
+**Validation:** [D5_INF_002b_results.json](track_d/archives/D5_INF_002b_results.json) — `accepted_deviation`, prod/ref ratio **1.0**, treated post noise Δ **0**.  
+**Governance:** `SCM_UnitJackKnife` remains **null_monitor_only**; eligibility unchanged.  
+**Track E:** [TRACK_E_METHOD_SUITABILITY_AND_TRIANGULATION_001.md](TRACK_E_METHOD_SUITABILITY_AND_TRIANGULATION_001.md) E0 planning doc added.
 
 ---
 
