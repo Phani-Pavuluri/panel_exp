@@ -22,10 +22,14 @@
 
 | [`docs/PHASE12_INVESTIGATION_PLAN.md`](PHASE12_INVESTIGATION_PLAN.md) | Phase 12 governed investigation plan (pre-execution) |
 | [`docs/ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) | **Alignment gate** — north star, six questions, stop conditions per item |
+| [`docs/MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md`](MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md) | **Periodic audit** — “building the right thing, correctly?” |
+| [`docs/MIP_AUDIT_REGISTRY.md`](MIP_AUDIT_REGISTRY.md) | Audit index and follow-ups |
 
 **Read-only roadmap — no package code in this document.**
 
 **Alignment:** Every active execution item must satisfy [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) before start and at completion.
+
+**Periodic audit (MIP-PERIODIC-AUDIT):** After major milestones and before production-promotion, run the [audit template](MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md) and update the [audit registry](MIP_AUDIT_REGISTRY.md). Cadence: after B5d, after M2, after Track D D1/D2/D3, before MMM intake, before planning/optimizer, before LLM interface. Not a substitute for tests or Track D OC.
 
 **Conceptual reference (not implementation blueprint):** Industry conversion-lift and user-level incrementality practice (e.g. Google Conversion Lift methodology — ghost ads, exposure-opportunity logging, user-randomized designs) informs **Track C governance semantics only**. Do not copy external estimators or certify parity without archived OC.
 

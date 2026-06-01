@@ -4,7 +4,7 @@
 **Status:** active  
 **Last updated:** 2026-05-28  
 
-**Binding:** [`ROADMAP_V4.md`](ROADMAP_V4.md) · [`EXPERIMENTATION_PLATFORM_VISION.md`](EXPERIMENTATION_PLATFORM_VISION.md) · [`TRACK_B_ARCHITECTURE_PLAN.md`](TRACK_B_ARCHITECTURE_PLAN.md)
+**Binding:** [`ROADMAP_V4.md`](ROADMAP_V4.md) · [`EXPERIMENTATION_PLATFORM_VISION.md`](EXPERIMENTATION_PLATFORM_VISION.md) · [`TRACK_B_ARCHITECTURE_PLAN.md`](TRACK_B_ARCHITECTURE_PLAN.md) · [`MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md`](MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md) · [`MIP_AUDIT_REGISTRY.md`](MIP_AUDIT_REGISTRY.md)
 
 ---
 
@@ -314,7 +314,8 @@ Copy into investigation plan, Track D package header, or Phase memo:
 ### Shared rules
 
 4. **Re-audit** — Phase 15 / ROADMAP_V5 verifies no production claim without lane + stop condition; no research orphan without terminal outcome.  
-5. **Ambiguous items** — Default to research lane until promotion path is named; never default to production-eligible.
+5. **Ambiguous items** — Default to research lane until promotion path is named; never default to production-eligible.  
+6. **Periodic audit** — After major milestones, run [`MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md`](MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md) and update [`MIP_AUDIT_REGISTRY.md`](MIP_AUDIT_REGISTRY.md).
 
 ---
 
