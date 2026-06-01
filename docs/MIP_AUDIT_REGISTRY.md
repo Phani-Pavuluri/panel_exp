@@ -2,7 +2,7 @@
 
 **Program ID:** MIP-PERIODIC-AUDIT  
 **Status:** active  
-**Last updated:** 2026-05-28 (AUDIT-003 closed)  
+**Last updated:** 2026-05-28 (AUDIT-004 closed)  
 
 **Template:** [`MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md`](MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md)  
 **Alignment gate:** [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md)
@@ -28,11 +28,12 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 | **AUDIT-001** | 2026-05-28 | B5c + B5d + alignment gate (`f3df38b`) | `f3df38b` | `continue_with_minor_corrections` | M2 not on mainline; no production TrustReport; Track D D1+ not started | Commit M2; run **AUDIT-002**; wire adapter on real GeoX | **closed** (summary below) |
 | **AUDIT-002** | 2026-05-28 | M2 dual-write + live adapter compare | `2754c0a` | `continue_with_minor_corrections` | Prod TrustReport; real-bundle adapter hardening; Track D D1+ | Adapter wire-up on GeoX; then Track D D1 | **closed** |
 | **AUDIT-003** | 2026-05-28 | M2.1 wire-up gate (before Track D D1) | `5000fc5` | `continue_with_minor_corrections` | GeoX main export hook; M2.2 TrustReport; Track D D1 optional | **M2.2** prod lane; D1 research optional | **closed** |
-| **AUDIT-004** | — | Track D D1 design/matching | TBD | — | — | — | planned |
-| **AUDIT-004** | — | Track D D2 estimator math | TBD | — | — | — | planned |
-| **AUDIT-005** | — | Before MMM intake promotion | TBD | — | — | — | planned |
-| **AUDIT-006** | — | Before planning / optimizer | TBD | — | — | — | planned |
-| **AUDIT-007** | — | Before LLM interface | TBD | — | — | — | planned |
+| **AUDIT-004** | 2026-05-28 | M2.2 TrustReport sidecar gate | `ec2d351` | `continue_with_minor_corrections` | Product UI consumer; `__init__` re-exports; Track D D1+ | Track D D1 research lane | **closed** |
+| **AUDIT-005** | — | Track D D1 design/matching | TBD | — | — | — | planned |
+| **AUDIT-006** | — | Track D D2 estimator math | TBD | — | — | — | planned |
+| **AUDIT-007** | — | Before MMM intake promotion | TBD | — | — | — | planned |
+| **AUDIT-008** | — | Before planning / optimizer | TBD | — | — | — | planned |
+| **AUDIT-009** | — | Before LLM interface | TBD | — | — | — | planned |
 
 ---
 
@@ -108,6 +109,32 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 | **M2.2** production TrustReport | **Recommended next** (production lane) |
 | **Track D D1** | Allowed in parallel (research lane only) |
 | **More M2.1 hardening** | Only on new live GeoX shape failures |
+
+---
+
+## AUDIT-004 summary (M2.2 TrustReport sidecar gate)
+
+**Report:** [`audits/AUDIT-004_m2_2_trust_report_gate.md`](audits/AUDIT-004_m2_2_trust_report_gate.md)
+
+**Verdict:** `continue_with_minor_corrections` — **gate passed**; production TrustReport opt-in on `track_b_views`.
+
+**Confirmed**
+
+1. Verdicts only on `trust_report_view.scenarios`; adapter/evidence fact-only.  
+2. Missing scenarios → `trust_report_omit_reason: missing_trust_scenarios`.  
+3. `export_geo_run_bundle` / `GeoExperimentDesign.export_run_readout_bundle` wired; defaults off.  
+4. GOLD-001 export oracle parity; REP blocked/partial TrustReport paths.  
+5. No estimator/scoring/eligibility changes; Track D D1+ not started.
+
+**Post-gate decision**
+
+| Path | Status |
+|------|--------|
+| **Track D D1** | **Eligible** (research lane) |
+| **Product TrustReport consumer** | Next integration when ready |
+| **Track B `__init__.py` re-exports** | Minor follow-up (uncommitted at audit) |
+
+**Next item:** Track D D1 under research lane, or Track B consumer wiring.
 
 ---
 

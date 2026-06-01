@@ -214,6 +214,19 @@ Skipping a box without documented waiver is **ungoverned promotion** (forbidden)
 | **Sideways risk** | Forcing adapter guess on unmapped configs — must remain **blocked** |
 | **Stop condition** | ≥3 representative non-fixture RunBundles resolve with explicit complete/partial/blocked; GeoX opt-in dual-write documented — **met** (`build_geo_run_artifact_bundle`, `tests/fixtures/representative_run_bundles/`) |
 
+#### M2.2 — Production TrustReport sidecar (opt-in export)
+
+| Dimension | Statement |
+|-----------|-----------|
+| **Lane** | **Production / integration** (opt-in) |
+| **Capability** | `track_b_views.trust_report_view` composes `alignment_verdict` / `trust_outcome` from adapter facts + declared scenarios |
+| **Decision risk** | Verdicts on evidence layer; TrustReport composed without scenarios |
+| **Artifacts** | **Creates** `trust_report_view`; **consumes** adapter_output + scenario list |
+| **Improves** | Trust, governance |
+| **Out of scope** | Estimator/scoring changes; eligibility; Track D; product UI consumer |
+| **Sideways risk** | Default-on TrustReport without scenarios → mitigated by explicit omit reason |
+| **Stop condition** | Opt-in export with TrustReport oracle parity (GOLD-001), REP blocked/partial paths, Geo hook (`export_geo_run_bundle`, `GeoExperimentDesign.export_run_readout_bundle`) — **met** ([AUDIT-004](audits/AUDIT-004_m2_2_trust_report_gate.md), `ec2d351`) |
+
 #### Wire adapter (`resolve_adapter_output`) — fixture path complete
 
 | Dimension | Statement |
