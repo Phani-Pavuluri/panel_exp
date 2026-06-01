@@ -1,6 +1,6 @@
 # Track B contract golden fixtures (B5a)
 
-**Status:** normative truth table for B5b adapter tests, B5c TrustReport composer tests, and B5d validators.
+**Status:** normative truth table for B5b adapter tests, B5c TrustReport composer tests, and B5d contract validator.
 
 **Binding architecture:** `docs/TRACK_B_CONTRACT_TEST_PLAN_001.md`, `docs/TRACK_B_ADAPTER_ID_RESOLUTION_001.md`, `docs/TRACK_B_CONTRACT_SCHEMA_DRAFT_001.md`, `docs/TRACK_B_ESTIMAND_REGISTRY_001.md`, `docs/TRACK_B_MEASUREMENT_INSTRUMENT_CATALOG_001.md`.
 
@@ -38,6 +38,14 @@ Each JSON file contains:
 - Adapter tests assert `adapter_expected_output` only — **no** `trust_outcome` on evidence.
 - TrustReport tests (`tests/track_b/test_trust_report_composer.py`, B5c) assert `trust_report_expected_output` via the contract composer in `trust_report_composer.py` — **only** that layer emits `alignment_verdict` / `trust_outcome`.
 - Do not shorten IDs or collapse aggregation segments for elegance.
+
+## Validation (B5d)
+
+```bash
+poetry run python -m tests.track_b.contract_validator
+```
+
+Validates manifest coverage (GOLD-001–010), bundle structure, trust-boundary fields, calibration bindings, composed TrustReport oracle parity, and F1–F12 regression guards.
 
 ## Regeneration
 
