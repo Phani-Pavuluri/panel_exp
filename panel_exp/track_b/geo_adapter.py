@@ -125,83 +125,29 @@ def resolve_geo_adapter_output_from_bundle(
     bundle: Mapping[str, Any],
 ) -> dict[str, Any]:
     """Resolve adapter output from a RunBundle-shaped mapping (legacy evidence path)."""
-    inp = extract_resolve_input_from_bundle(bundle)
-    return resolve_geo_adapter_input(inp)
+    from panel_exp.track_b.bundle_extract import extract_resolve_input_from_bundle
+
+    extracted = extract_resolve_input_from_bundle(bundle)
+    if not extracted.input.run_artifacts_stub.get("config_alias"):
+        return _blocked_output(
+            extracted.input.spec,
+            extracted.input.run_artifacts_stub,
+            "bundle_extraction_incomplete:"
+            + ",".join(extracted.missing_fields or ("config_alias",)),
+            legacy_applied=False,
+        )
+    return resolve_geo_adapter_input(extracted.input)
 
 
 def extract_resolve_input_from_bundle(
     bundle: Mapping[str, Any],
 ) -> GeoAdapterResolveInput:
-    """Build resolve input from bundle legacy ``evidence`` (best-effort)."""
-    evidence = bundle.get("evidence") or {}
-    meta = evidence.get("inference_metadata") or {}
-    design = evidence.get("design") or {}
+    """Build resolve input from bundle legacy ``evidence`` (M2.1 extraction)."""
+    from panel_exp.track_b.bundle_extract import (
+        extract_resolve_input_from_bundle as _extract,
+    )
 
-    spec: dict[str, Any] = {
-        "study_id": evidence.get("experiment_id") or bundle.get("experiment_id") or "",
-        "spec_version": "1",
-        "modality": "geo",
-        "study_purpose": "business",
-        "geometry_class": meta.get("geometry_class") or "multi_treated_default",
-        "mmm_calibration_intent": bool(meta.get("mmm_calibration_intent")),
-    }
-
-    declared = meta.get("declared_estimand_id") or design.get("declared_estimand_id")
-    if declared:
-        spec["declared_estimand_id"] = declared
-    else:
-        target = design.get("target_estimand") or meta.get("target_estimand")
-        legacy_policy = meta.get("legacy_aggregation_policy") or meta.get(
-            "aggregation_policy"
-        )
-        if target:
-            spec["legacy_target_estimand"] = str(target)
-        if legacy_policy:
-            spec["legacy_aggregation_policy"] = str(legacy_policy)
-
-    interval_exp = meta.get("interval_estimand_expectation_id")
-    if interval_exp:
-        spec["interval_estimand_expectation_id"] = interval_exp
-
-    transform_ref = meta.get("estimand_transform_ref")
-    if transform_ref:
-        spec["estimand_transform_ref"] = transform_ref
-
-    config_alias = meta.get("config_alias") or _config_alias_from_metadata(meta)
-    stub: dict[str, Any] = {
-        "config_alias": config_alias,
-        "estimator_family": meta.get("estimator_family") or meta.get("estimator_name"),
-        "inference_method": meta.get("inference_method"),
-        "n_treated": meta.get("n_treated"),
-        "geometry_observed": meta.get("geometry_observed"),
-        "run_status": meta.get("run_status") or "success",
-        "path_interval_type_legacy": meta.get("path_interval_type")
-        or meta.get("interval_type"),
-        "has_path_intervals": meta.get("has_path_intervals"),
-        "export_resolver_default": meta.get("export_resolver_default"),
-        "transform_pipeline_attested": meta.get("transform_pipeline_attested"),
-    }
-    return GeoAdapterResolveInput(spec=spec, run_artifacts_stub=stub)
-
-
-def _config_alias_from_metadata(meta: Mapping[str, Any]) -> str:
-    estimator = str(meta.get("estimator_name") or meta.get("estimator_family") or "")
-    inference = str(meta.get("inference_method") or meta.get("inference_mode") or "")
-    mapping = {
-        ("SCM", "unit_jackknife"): "SCM_UnitJackKnife",
-        ("synthetic_control", "unit_jackknife"): "SCM_UnitJackKnife",
-        ("TBRRidge", "kfold"): "TBRRidge_Kfold",
-        ("tbrridge", "kfold"): "TBRRidge_Kfold",
-        ("TBRRidge", "block_residual_bootstrap"): "TBRRidge_BlockResidualBootstrap",
-        ("tbrridge", "block_residual_bootstrap"): "TBRRidge_BlockResidualBootstrap",
-        ("AugSynthCVXPY", "point_only"): "AugSynthCVXPY_Point",
-        ("augsynth_cvxpy", "point_only"): "AugSynthCVXPY_Point",
-        ("DID", "bootstrap"): "DID_Bootstrap",
-        ("did", "bootstrap"): "DID_Bootstrap",
-        ("SCM", "placebo"): "SCM_Placebo",
-        ("synthetic_control", "placebo"): "SCM_Placebo",
-    }
-    return mapping.get((estimator, inference), "")
+    return _extract(bundle).input
 
 
 def _resolve_declaration(

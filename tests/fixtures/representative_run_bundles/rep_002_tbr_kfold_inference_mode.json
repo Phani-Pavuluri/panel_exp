@@ -1,0 +1,24 @@
+{
+  "case_id": "REP-002",
+  "description": "inference_mode key (not inference_method) with estimator pair mapping",
+  "bundle": {
+    "bundle_version": "1.0",
+    "experiment_id": "geo-study-rep-002",
+    "evidence": {
+      "experiment_id": "geo-study-rep-002",
+      "inference_metadata": {
+        "estimator_name": "TBRRidge",
+        "inference_mode": "Kfold",
+        "intervals_available": true,
+        "path_interval_type": "confidence_interval"
+      },
+      "track_b_export_hints": {
+        "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+        "interval_estimand_expectation_id": "geo.relative_att_post.pooled_path.relative",
+        "geometry_class": "multi_treated_default"
+      }
+    }
+  },
+  "expected_export_status": "complete",
+  "expected_block_reason": null
+}

@@ -1,0 +1,31 @@
+{
+  "manifest_version": "1.0.0",
+  "description": "Representative non-fixture RunBundle evidence shapes for M2.1 adapter wire-up",
+  "cases": [
+    {
+      "case_id": "REP-001",
+      "file": "rep_001_scm_explicit_hints.json",
+      "expected_export_status": "complete"
+    },
+    {
+      "case_id": "REP-002",
+      "file": "rep_002_tbr_kfold_inference_mode.json",
+      "expected_export_status": "complete"
+    },
+    {
+      "case_id": "REP-003",
+      "file": "rep_003_unmapped_estimator_blocked.json",
+      "expected_export_status": "blocked"
+    },
+    {
+      "case_id": "REP-004",
+      "file": "rep_004_placebo_geometry_partial.json",
+      "expected_export_status": "partial"
+    },
+    {
+      "case_id": "REP-005",
+      "file": "rep_005_legacy_relative_att_post.json",
+      "expected_export_status": "complete"
+    }
+  ]
+}

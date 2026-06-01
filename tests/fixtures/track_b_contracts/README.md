@@ -57,6 +57,10 @@ build_run_artifact_bundle(..., include_track_b_views=True, track_b_spec=spec, tr
 
 Live adapter compare: `tests/track_b/test_adapter_identity_resolution.py` (no longer skipped).
 
+Representative RunBundles (M2.1): `tests/fixtures/representative_run_bundles/` · `tests/track_b/test_m2_1_representative_bundles.py`
+
+GeoX export entry point: `panel_exp.track_b.build_geo_run_artifact_bundle` (opt-in `track_b_views`; set `track_b_export_hints` on evidence).
+
 ## Regeneration
 
 No auto-regeneration script yet. Update fixtures only when architecture docs change via governed doc revision.

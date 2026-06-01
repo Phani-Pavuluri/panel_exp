@@ -49,12 +49,19 @@ def build_track_b_views_from_bundle(
     bundle: Mapping[str, Any],
 ) -> dict[str, Any]:
     """Build sidecar from an existing bundle (extract spec from legacy evidence)."""
-    inp = extract_resolve_input_from_bundle(bundle)
-    return build_track_b_views(
-        spec=inp.spec,
-        run_artifacts_stub=inp.run_artifacts_stub,
-        calibration_signal_binding=inp.calibration_signal_binding,
+    from panel_exp.track_b.bundle_extract import (
+        extract_resolve_input_from_bundle,
+        extraction_to_sidecar_dict,
     )
+
+    extracted = extract_resolve_input_from_bundle(bundle)
+    views = build_track_b_views(
+        spec=extracted.input.spec,
+        run_artifacts_stub=extracted.input.run_artifacts_stub,
+        calibration_signal_binding=extracted.input.calibration_signal_binding,
+    )
+    views["extraction"] = extraction_to_sidecar_dict(extracted)
+    return views
 
 
 def attach_track_b_views(
