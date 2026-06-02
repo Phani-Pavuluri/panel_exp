@@ -1,0 +1,69 @@
+{
+  "fixture_id": "E4-005",
+  "fixture_version": "1.0.0",
+  "description": "Multi-cell: test_1 positive, test_2 null/negative — cell_level_conflict, no pooling.",
+  "triangulation_profile": {
+    "profile_id": "tri-fixture-e4-005",
+    "profile_version": "1.0.0",
+    "experiment_id": "fixture-study-e4-005",
+    "run_id": "run-005",
+    "modality": "geo",
+    "design_method_id": "greedy_match_markets",
+    "geometry_mode": "multi_cell",
+    "n_test_grps": 3,
+    "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+    "declared_claim_type": "positive_lift_detection",
+    "pooling_rule_id": null,
+    "evidence_rows": [
+      {
+        "row_id": "row-scm-test0",
+        "cell_id": "test_0",
+        "measurement_instrument_id": "geo.synthetic_control.unit_jackknife.relative_att_post.multi_treated_default.confidence_interval",
+        "suitability_status": "suitable_with_caveats",
+        "evidence_role": "primary",
+        "point_estimate": 0.02,
+        "uncertainty": {"lower": -0.01, "upper": 0.05, "covers_zero": true, "semantics": "confidence_interval"},
+        "comparability_group": "rel_att_post_unit_multi_cell_test_0",
+        "conflict_group": "governed_primary",
+        "calibration_signal_eligibility": {"eligible": false, "reason_code": "null_monitor_only", "mmm_ingress_allowed": false}
+      },
+      {
+        "row_id": "row-scm-test1",
+        "cell_id": "test_1",
+        "measurement_instrument_id": "geo.synthetic_control.unit_jackknife.relative_att_post.multi_treated_default.confidence_interval",
+        "suitability_status": "suitable_with_caveats",
+        "evidence_role": "primary",
+        "point_estimate": 0.06,
+        "uncertainty": {"lower": 0.01, "upper": 0.11, "covers_zero": false, "semantics": "confidence_interval"},
+        "comparability_group": "rel_att_post_unit_multi_cell_test_1",
+        "conflict_group": "governed_primary",
+        "calibration_signal_eligibility": {"eligible": false, "reason_code": "null_monitor_only", "mmm_ingress_allowed": false}
+      },
+      {
+        "row_id": "row-scm-test2",
+        "cell_id": "test_2",
+        "measurement_instrument_id": "geo.synthetic_control.unit_jackknife.relative_att_post.multi_treated_default.confidence_interval",
+        "suitability_status": "suitable_with_caveats",
+        "evidence_role": "primary",
+        "point_estimate": -0.015,
+        "uncertainty": {"lower": -0.06, "upper": 0.02, "covers_zero": true, "semantics": "confidence_interval"},
+        "comparability_group": "rel_att_post_unit_multi_cell_test_2",
+        "conflict_group": "governed_primary",
+        "calibration_signal_eligibility": {"eligible": false, "reason_code": "null_monitor_only", "mmm_ingress_allowed": false}
+      }
+    ]
+  },
+  "expected": {
+    "agreement_state": "cell_level_conflict",
+    "conflict_class": "E-CONFLICT-008",
+    "trust_report_disposition": "cell_level_conflict",
+    "per_cell_dispositions": {
+      "test_0": "inconclusive",
+      "test_1": "supported_with_limitations",
+      "test_2": "null_compatible"
+    },
+    "calibration_signal_eligibility": {"eligible": false, "pooled_allowed": false},
+    "trust_outcome_hint": "inconclusive"
+  },
+  "forbidden_actions": ["no_pooled_multi_cell_claim", "no_averaging_across_cells", "no_mmm_pooled_feed"]
+}

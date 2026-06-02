@@ -1,0 +1,40 @@
+{
+  "fixture_id": "E4-009",
+  "fixture_version": "1.0.0",
+  "description": "Missing uncertainty / SE when interval-backed claim requested.",
+  "triangulation_profile": {
+    "profile_id": "tri-fixture-e4-009",
+    "profile_version": "1.0.0",
+    "experiment_id": "fixture-study-e4-009",
+    "run_id": "run-009",
+    "modality": "geo",
+    "design_method_id": "completerandomization",
+    "geometry_mode": "single_cell",
+    "n_test_grps": 1,
+    "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+    "declared_claim_type": "positive_lift_detection",
+    "evidence_rows": [
+      {
+        "row_id": "row-augsynth-point",
+        "cell_id": "test_0",
+        "measurement_instrument_id": "geo.augsynth_cvxpy.point_only.relative_att_post.multi_treated_default.none",
+        "suitability_status": "diagnostic_only",
+        "evidence_role": "diagnostic",
+        "point_estimate": 0.05,
+        "uncertainty": null,
+        "interval_semantics": "none",
+        "comparability_group": "rel_att_post_unit_single_cell",
+        "conflict_group": "diagnostic_only",
+        "calibration_signal_eligibility": {"eligible": false, "reason_code": "diagnostic_only", "mmm_ingress_allowed": false}
+      }
+    ]
+  },
+  "expected": {
+    "agreement_state": "missing_uncertainty",
+    "conflict_class": "E-CONFLICT-002",
+    "trust_report_disposition": "missing_uncertainty_warning",
+    "calibration_signal_eligibility": {"eligible": false, "interval_claim_blocked": true},
+    "trust_outcome_hint": "unsupported"
+  },
+  "forbidden_actions": ["no_interval_lift_claim", "no_mmm_feed", "no_promotion"]
+}

@@ -1,0 +1,53 @@
+{
+  "fixture_id": "E4-002",
+  "fixture_version": "1.0.0",
+  "description": "SCM+JK null-compatible interval + restricted TBR strong positive — no lift claim.",
+  "triangulation_profile": {
+    "profile_id": "tri-fixture-e4-002",
+    "profile_version": "1.0.0",
+    "experiment_id": "fixture-study-e4-002",
+    "run_id": "run-002",
+    "modality": "geo",
+    "design_method_id": "rerandomization_wrapper",
+    "geometry_mode": "single_cell",
+    "n_test_grps": 1,
+    "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+    "declared_claim_type": "null_viability",
+    "evidence_rows": [
+      {
+        "row_id": "row-scm-jk",
+        "cell_id": "test_0",
+        "measurement_instrument_id": "geo.synthetic_control.unit_jackknife.relative_att_post.multi_treated_default.confidence_interval",
+        "suitability_status": "suitable_with_caveats",
+        "evidence_role": "primary",
+        "point_estimate": 0.005,
+        "uncertainty": {"lower": -0.02, "upper": 0.03, "covers_zero": true, "semantics": "confidence_interval"},
+        "interval_semantics": "confidence_interval",
+        "comparability_group": "rel_att_post_unit_single_cell",
+        "conflict_group": "governed_primary",
+        "calibration_signal_eligibility": {"eligible": true, "reason_code": "governed_null_monitor", "mmm_ingress_allowed": false}
+      },
+      {
+        "row_id": "row-tbr",
+        "cell_id": "test_0",
+        "measurement_instrument_id": "geo.tbr_ridge.kfold.relative_att_post.multi_treated_default.confidence_interval",
+        "suitability_status": "restricted",
+        "evidence_role": "restricted",
+        "point_estimate": 0.09,
+        "uncertainty": {"lower": 0.02, "upper": 0.16, "covers_zero": false, "semantics": "confidence_interval"},
+        "interval_semantics": "confidence_interval",
+        "comparability_group": "rel_att_post_unit_single_cell",
+        "conflict_group": "restricted_secondary",
+        "calibration_signal_eligibility": {"eligible": false, "reason_code": "restricted", "mmm_ingress_allowed": false}
+      }
+    ]
+  },
+  "expected": {
+    "agreement_state": "restricted_method_conflict",
+    "conflict_class": "E-CONFLICT-001",
+    "trust_report_disposition": "restricted_method_positive_but_primary_null_compatible",
+    "calibration_signal_eligibility": {"eligible": false, "lift_mmm_allowed": false},
+    "trust_outcome_hint": "inconclusive"
+  },
+  "forbidden_actions": ["no_lift_claim", "no_averaging", "no_mmm_feed"]
+}

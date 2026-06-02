@@ -2,7 +2,7 @@
 
 **Document ID:** TRACK-E-SUITABILITY-TRIANGULATION-001  
 **Type:** Framework ADR (E0)  
-**Status:** **E0+E1+E2 complete** (documentation contract) — E3+ implementation deferred  
+**Status:** **E0–E4 complete** (documentation contract) — E5–E7 implementation deferred  
 **Date:** 2026-06-01  
 **Lane:** Research / governance bridge (pre-MMM)  
 
@@ -199,9 +199,11 @@ Summary (see E1 for full IDs and D5 links). From D5-POW-001d and [ROADMAP-DESIGN
 
 ---
 
-## 5. Triangulation Output Model (E3 target schema)
+## 5. Triangulation Output Model
 
-Per-test **evidence profile** row:
+**Authoritative schema:** [`TRACK_E_E3_TRIANGULATION_SCHEMA_001.md`](TRACK_E_E3_TRIANGULATION_SCHEMA_001.md)
+
+Per-test **evidence profile** row (summary — see E3 for full contract):
 
 | Field | Description |
 |-------|-------------|
@@ -223,6 +225,8 @@ Per-test **evidence profile** row:
 
 ## 6. Conflict Taxonomy
 
+**Fixtures:** [`TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001.md`](TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001.md) · [`tests/fixtures/track_e_conflicts/`](../../tests/fixtures/track_e_conflicts/)
+
 | Class | Definition | TrustReport posture |
 |-------|------------|---------------------|
 | **benign_disagreement** | Methods differ within noise; same estimand/geometry | Inconclusive / note |
@@ -240,6 +244,8 @@ Per-test **evidence profile** row:
 ---
 
 ## 7. TrustReport Mapping (E4)
+
+**Golden fixtures:** E4 dispositions (`directional_support_with_caveats`, `method_conflict_warning`, `cell_level_conflict`, …) — see E4 doc.
 
 | Situation | Alignment / trust guidance |
 |-----------|----------------------------|
@@ -328,13 +334,13 @@ flowchart LR
 | **E0** | This framework ADR | **This document** |
 | **E1** | Suitability diagnostic inventory | ✅ [`TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md`](TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md) |
 | **E2** | Full method suitability cards | ✅ [`TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md`](TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md) |
-| **E3** | Triangulation evidence schema | Planned |
-| **E4** | Conflict taxonomy + TrustReport mapping fixtures | Planned |
+| **E3** | Triangulation evidence schema | ✅ [`TRACK_E_E3_TRIANGULATION_SCHEMA_001.md`](TRACK_E_E3_TRIANGULATION_SCHEMA_001.md) |
+| **E4** | Conflict taxonomy + TrustReport mapping fixtures | ✅ [`TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001.md`](TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001.md) |
 | **E5** | CalibrationSignal eligibility policy (governance) | Planned |
-| **E6** | Golden fixtures: agreement / conflict scenarios | Planned |
+| **E6** | TrustReport composer tests (consume E4 JSON) | Planned — fixtures in [`tests/fixtures/track_e_conflicts/`](../tests/fixtures/track_e_conflicts/) |
 | **E7** | Implementation after Track D OC evidence | Deferred |
 
-**Recommended program order:** INV-D3-001 fix ✅ → **E0** ✅ → D5-POW-001a–e ✅ → DESIGN-INVENTORY-001 ✅ → **ROADMAP-DESIGN-READOUT-UPDATE-001** ✅ → **E1/E2** ✅ → **E3/E4** (triangulation schema + TrustReport fixtures) → D5-DES-SUPERGEO-001 / D5-DES-TRIM-001 / D5-MCELL → other instrument OC → E5/E6 → MMM integration.
+**Recommended program order:** INV-D3-001 fix ✅ → **E0** ✅ → D5-POW-001a–e ✅ → DESIGN-INVENTORY-001 ✅ → **ROADMAP-DESIGN-READOUT-UPDATE-001** ✅ → **E1/E2** ✅ → **E3/E4** ✅ → **E5/E6** → D5-DES-SUPERGEO-001 / D5-DES-TRIM-001 / D5-MCELL → other instrument OC → MMM integration.
 
 ### E1 / E2 scope (complete)
 
@@ -357,4 +363,4 @@ flowchart LR
 
 ---
 
-*TRACK-E-SUITABILITY-TRIANGULATION-001 v0.2.0 — E1/E2 complete — 2026-06-01*
+*TRACK-E-SUITABILITY-TRIANGULATION-001 v0.3.0 — E3/E4 complete — 2026-06-01*

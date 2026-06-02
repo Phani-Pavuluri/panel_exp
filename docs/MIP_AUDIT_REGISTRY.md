@@ -197,7 +197,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D3-FIND-001 — Unit JK LOO compares `y_hat` to observed `y` → **INV-D3-001** opened (D5-INF-002a).
 
-**Next:** Track E E3/E4.
+**Next:** Track E E5/E6.
 
 ---
 
@@ -216,7 +216,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D4-FIND-001 — design MDE not aligned to `SCM_UnitJackKnife` instrument.
 
-**Next:** Track E E3/E4; not MMM integration.
+**Next:** Track E E5/E6; not MMM integration.
 
 ---
 
@@ -238,7 +238,17 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Docs:** [`TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md`](TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md) · [`TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md`](TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md)
 
-**Verdict:** Documentation contract complete — eight diagnostic families (E-DES-WIN, E-SCM-DONOR, E-DES-MCELL, E-DES-GEO, E-INST-OC, E-ESTIMAND, E-CONFLICT, E-MMM); design/geometry/instrument suitability cards grounded in D5-POW-001a–e. SCM+JK = **one** reference null-monitor card (`suitable_with_caveats`); tier-1 design × geometry **suitable_with_caveats** for null-monitor only; supergeos/trimmedmatch **characterization_required**; Geo PowerAnalysis **diagnostic_only**; no MMM promotion. **Next:** E3 triangulation schema, E4 TrustReport fixtures.
+**Verdict:** Documentation contract complete — eight diagnostic families; design/geometry/instrument cards grounded in D5-POW-001a–e. **Next:** E3/E4 (complete — see below).
+
+---
+
+## Track E E3/E4 checkpoint (2026-06-01)
+
+**Docs:** [`TRACK_E_E3_TRIANGULATION_SCHEMA_001.md`](TRACK_E_E3_TRIANGULATION_SCHEMA_001.md) · [`TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001.md`](TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001.md)
+
+**Fixtures:** [`tests/fixtures/track_e_conflicts/`](../../tests/fixtures/track_e_conflicts/) (E4-001 … E4-010)
+
+**Verdict:** Triangulation schema defines multi-instrument `TriangulationProfile` + agreement states; E4 golden fixtures specify TrustReport dispositions and forbidden actions (no averaging, no pooled multi-cell, no MMM outside CalibrationSignal). **Next:** E5 CalibrationSignal policy, E6 composer tests.
 
 ---
 

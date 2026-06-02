@@ -1,0 +1,51 @@
+{
+  "fixture_id": "E4-003",
+  "fixture_version": "1.0.0",
+  "description": "SCM+JK positive + DID bootstrap opposite sign — method conflict warning.",
+  "triangulation_profile": {
+    "profile_id": "tri-fixture-e4-003",
+    "profile_version": "1.0.0",
+    "experiment_id": "fixture-study-e4-003",
+    "run_id": "run-003",
+    "modality": "geo",
+    "design_method_id": "greedy_match_markets",
+    "geometry_mode": "single_cell",
+    "n_test_grps": 1,
+    "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+    "declared_claim_type": "positive_lift_detection",
+    "evidence_rows": [
+      {
+        "row_id": "row-scm-jk",
+        "cell_id": "test_0",
+        "measurement_instrument_id": "geo.synthetic_control.unit_jackknife.relative_att_post.multi_treated_default.confidence_interval",
+        "suitability_status": "suitable_with_caveats",
+        "evidence_role": "primary",
+        "point_estimate": 0.045,
+        "uncertainty": {"lower": 0.01, "upper": 0.08, "covers_zero": false, "semantics": "confidence_interval"},
+        "comparability_group": "rel_att_post_unit_single_cell",
+        "conflict_group": "governed_primary",
+        "calibration_signal_eligibility": {"eligible": false, "reason_code": "null_monitor_only", "mmm_ingress_allowed": false}
+      },
+      {
+        "row_id": "row-did",
+        "cell_id": "test_0",
+        "measurement_instrument_id": "geo.did.bootstrap.relative_att_post.multi_treated_default.confidence_interval",
+        "suitability_status": "restricted",
+        "evidence_role": "restricted",
+        "point_estimate": -0.03,
+        "uncertainty": {"lower": -0.08, "upper": 0.01, "covers_zero": true, "semantics": "confidence_interval"},
+        "comparability_group": "rel_att_post_unit_single_cell",
+        "conflict_group": "restricted_secondary",
+        "calibration_signal_eligibility": {"eligible": false, "reason_code": "restricted", "mmm_ingress_allowed": false}
+      }
+    ]
+  },
+  "expected": {
+    "agreement_state": "high_trust_conflict",
+    "conflict_class": "E-CONFLICT-008",
+    "trust_report_disposition": "method_conflict_warning",
+    "calibration_signal_eligibility": {"eligible": false, "lift_mmm_allowed": false},
+    "trust_outcome_hint": "divergent"
+  },
+  "forbidden_actions": ["no_averaging", "no_silent_average", "no_mmm_feed"]
+}

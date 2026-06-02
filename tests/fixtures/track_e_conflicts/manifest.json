@@ -1,0 +1,20 @@
+{
+  "manifest_version": "1.0.0",
+  "description": "Track E E4 triangulation conflict golden fixtures",
+  "binding_docs": [
+    "docs/TRACK_E_E3_TRIANGULATION_SCHEMA_001.md",
+    "docs/TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001.md"
+  ],
+  "fixtures": [
+    {"fixture_id": "E4-001", "file": "e4_001_scm_jk_tbr_same_direction.json"},
+    {"fixture_id": "E4-002", "file": "e4_002_primary_null_restricted_tbr_positive.json"},
+    {"fixture_id": "E4-003", "file": "e4_003_scm_did_opposite_sign.json"},
+    {"fixture_id": "E4-004", "file": "e4_004_same_direction_different_estimands.json"},
+    {"fixture_id": "E4-005", "file": "e4_005_multi_cell_cell_conflict.json"},
+    {"fixture_id": "E4-006", "file": "e4_006_placebo_multi_treated_blocked.json"},
+    {"fixture_id": "E4-007", "file": "e4_007_geo_power_planning_only.json"},
+    {"fixture_id": "E4-008", "file": "e4_008_supergeo_uncharacterized.json"},
+    {"fixture_id": "E4-009", "file": "e4_009_missing_uncertainty.json"},
+    {"fixture_id": "E4-010", "file": "e4_010_stale_evidence.json"}
+  ]
+}

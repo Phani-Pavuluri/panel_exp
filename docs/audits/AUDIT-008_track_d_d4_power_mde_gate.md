@@ -33,7 +33,7 @@ Track D D4 — power/MDE methods (POW-001–006), estimand alignment, design geo
 
 ## Next
 
-1. **Track E E3/E4** — triangulation schema + TrustReport conflict fixtures ([E1](../TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md) · [E2](../TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md) ✅)  
+1. **Track E E5/E6** — CalibrationSignal policy + TrustReport composer tests ([E3](../TRACK_E_E3_TRIANGULATION_SCHEMA_001.md) · [E4](../TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001.md) ✅)  
 2. Later: D5-DES-SUPERGEO-001, D5-DES-TRIM-001, D5-MCELL, other instrument OC batteries — not MMM integration
 
 ## ROADMAP-DESIGN-READOUT-UPDATE-001 (2026-06-01)
@@ -72,4 +72,4 @@ Track D D4 — power/MDE methods (POW-001–006), estimand alignment, design geo
 
 ---
 
-*AUDIT-008 v1.0.4 — Track E E1/E2 complete (research lane)*
+*AUDIT-008 v1.0.5 — Track E E3/E4 complete (research lane)*

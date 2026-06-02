@@ -1,0 +1,50 @@
+{
+  "fixture_id": "E4-004",
+  "fixture_version": "1.0.0",
+  "description": "Same direction but different estimands — non-comparable, no combined estimate.",
+  "triangulation_profile": {
+    "profile_id": "tri-fixture-e4-004",
+    "profile_version": "1.0.0",
+    "experiment_id": "fixture-study-e4-004",
+    "run_id": "run-004",
+    "modality": "geo",
+    "design_method_id": "balancedrandomization",
+    "geometry_mode": "single_cell",
+    "n_test_grps": 1,
+    "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+    "evidence_rows": [
+      {
+        "row_id": "row-scm",
+        "cell_id": "test_0",
+        "estimand_id": "geo.relative_att_post.pooled_path.relative",
+        "measurement_instrument_id": "geo.synthetic_control.unit_jackknife.relative_att_post.multi_treated_default.confidence_interval",
+        "suitability_status": "suitable_with_caveats",
+        "evidence_role": "primary",
+        "point_estimate": 0.04,
+        "comparability_group": "rel_att_post_unit_single_cell",
+        "conflict_group": "governed_primary",
+        "calibration_signal_eligibility": {"eligible": true, "reason_code": "governed_null_monitor", "mmm_ingress_allowed": false}
+      },
+      {
+        "row_id": "row-did-cum",
+        "cell_id": "test_0",
+        "estimand_id": "geo.cumulative_att.panel_did.cumulative",
+        "measurement_instrument_id": "geo.did.bootstrap.cumulative_att.multi_treated_default.cumulative_att_interval",
+        "suitability_status": "restricted",
+        "evidence_role": "restricted",
+        "point_estimate": 0.035,
+        "comparability_group": "non_comparable_estimand",
+        "conflict_group": "restricted_secondary",
+        "calibration_signal_eligibility": {"eligible": false, "reason_code": "estimand_mismatch", "mmm_ingress_allowed": false}
+      }
+    ]
+  },
+  "expected": {
+    "agreement_state": "non_comparable_estimand",
+    "conflict_class": "E-CONFLICT-003",
+    "trust_report_disposition": "non_comparable_estimand",
+    "calibration_signal_eligibility": {"eligible": false, "combined_signal_allowed": false},
+    "trust_outcome_hint": "unsupported"
+  },
+  "forbidden_actions": ["no_combined_estimate", "no_agreement_narrative", "no_averaging"]
+}
