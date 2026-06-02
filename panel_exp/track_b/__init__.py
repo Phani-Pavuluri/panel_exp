@@ -17,10 +17,16 @@ from panel_exp.track_b.geo_adapter import (
 )
 from panel_exp.track_b.trust_report import (
     TRUST_REPORT_VERSION,
+    TrackETriangulationAttachment,
     TrustComposeContext,
     attach_trust_report_to_views,
     compose_trust_report,
     trust_report_to_dict,
+)
+from panel_exp.track_b.triangulation import (
+    TriangulationOutcome,
+    evaluate_triangulation,
+    evaluate_triangulation_fixture,
 )
 
 __all__ = [
@@ -34,8 +40,12 @@ __all__ = [
     "resolve_geo_adapter_output",
     "resolve_geo_adapter_output_from_bundle",
     "TRUST_REPORT_VERSION",
+    "TrackETriangulationAttachment",
+    "TriangulationOutcome",
     "TrustComposeContext",
     "attach_trust_report_to_views",
     "compose_trust_report",
+    "evaluate_triangulation",
+    "evaluate_triangulation_fixture",
     "trust_report_to_dict",
 ]

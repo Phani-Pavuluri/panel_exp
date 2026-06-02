@@ -88,7 +88,7 @@ Architecture contracts and test discipline (planning + fixtures; implementation 
 | M2.1 Adapter production wire-up | [`panel_exp/track_b/bundle_extract.py`](../panel_exp/track_b/bundle_extract.py) · [`export.py`](../panel_exp/track_b/export.py) | **Complete** ([AUDIT-003](audits/AUDIT-003_m2_1_wire_up_gate.md) `5000fc5`) |
 | M2.2 Production TrustReport path | [`trust_report.py`](../panel_exp/track_b/trust_report.py) · [`geo_run_export.py`](../panel_exp/artifacts/geo_run_export.py) | **Complete** ([AUDIT-004](audits/AUDIT-004_m2_2_trust_report_gate.md) `ec2d351`) |
 
-**Near-term sequence:** … **Track E E3/E4** **complete** · **Track E E5/E6** **complete** · **E7 next** · not MMM yet.
+**Near-term sequence:** … **Track E E3/E4** **complete** · **Track E E5/E6** **complete** · **Track E E7** **complete** · not MMM yet.
 
 **Alignment registry:** [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) § Track B — per-item capability, risk, artifacts, stop conditions.
 
@@ -134,7 +134,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | **supergeos / trimmedmatch** | In roadmap as **separate-semantics** paths (D5-DES-SUPERGEO-001, D5-DES-TRIM-001); not ignored |
 | **D5-POW-001e** | ✅ Six confirmed methods; SCM+JK reference null FPR; [`D5_POW_001e_results.json`](track_d/archives/D5_POW_001e_results.json) — `acceptable_with_caveats` |
 
-**Next steps:** (1) Track E **E7** (wire contract into production TrustReport composer) → (2) D5-DES-SUPERGEO-001 / D5-DES-TRIM-001 / D5-MCELL → (3) other instrument OC batteries.
+**Next steps:** (1) D5-DES-SUPERGEO-001 / D5-DES-TRIM-001 / D5-MCELL → (2) other instrument OC batteries → (3) MMM integration (post-governance).
 
 ### Track E — method suitability & triangulation
 
@@ -151,7 +151,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | E4 | TrustReport conflict fixtures | ✅ [`TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001.md`](TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001.md) · [`tests/fixtures/track_e_conflicts/`](../tests/fixtures/track_e_conflicts/) |
 | E5 | CalibrationSignal eligibility policy | ✅ [`TRACK_E_E5_CALIBRATIONSIGNAL_ELIGIBILITY_POLICY_001.md`](TRACK_E_E5_CALIBRATIONSIGNAL_ELIGIBILITY_POLICY_001.md) |
 | E6 | TrustReport contract tests (E4 fixtures) | ✅ [`tests/track_e/test_e6_e4_conflict_fixtures.py`](../tests/track_e/test_e6_e4_conflict_fixtures.py) |
-| E7 | Production triangulation integration | Planned |
+| E7 | Production triangulation integration | ✅ [`panel_exp/track_b/triangulation.py`](../panel_exp/track_b/triangulation.py) · [`tests/track_b/test_e7_track_e_trust_report.py`](../tests/track_b/test_e7_track_e_trust_report.py) |
 
 **Non-goals (E0):** No code, TrustReport, CalibrationSignal, or MMM changes.
 

@@ -10,6 +10,15 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Literal, Mapping, Optional, Sequence
 
+from panel_exp.track_b.triangulation import (
+    TriangulationOutcome,
+    apply_e5_calibration_policy,
+    assert_forbidden_actions,
+    evaluate_triangulation,
+    forbidden_action_flags,
+    trust_verdicts_from_triangulation,
+)
+
 TRUST_REPORT_VERSION = "0.1-m2.2"
 
 AlignmentVerdict = Literal["aligned", "divergent", "incompatible", "not_assessable"]
@@ -37,6 +46,24 @@ class TrustComposeContext:
     calibration_signal_binding: Optional[Mapping[str, Any]] = None
     composition_permitted: bool = True
     alignment_reference_estimand_id: Optional[str] = None
+    triangulation_profile: Optional[Mapping[str, Any]] = None
+    triangulation_forbidden_actions: Optional[Sequence[str]] = None
+
+
+@dataclass(frozen=True)
+class TrackETriangulationAttachment:
+    """Track E triangulation metadata on TrustReport (E7)."""
+
+    profile_id: Optional[str]
+    agreement_state: str
+    trust_report_disposition: str
+    conflict_class: str
+    calibration_signal_eligibility: Mapping[str, Any]
+    warnings: tuple[str, ...]
+    exclusions: tuple[str, ...]
+    per_cell_dispositions: Mapping[str, str]
+    forbidden_action_flags: Mapping[str, bool]
+    forbidden_violations: tuple[str, ...]
 
 
 @dataclass(frozen=True)
@@ -56,6 +83,7 @@ class TrustReportComposition:
     exported_estimand_id: Optional[str]
     measurement_instrument_id: Optional[str]
     scenarios: tuple[TrustScenarioVerdict, ...]
+    track_e_triangulation: Optional[TrackETriangulationAttachment] = None
 
 
 @dataclass(frozen=True)
@@ -78,11 +106,68 @@ def alignment_reference_estimand_id(ctx: TrustComposeContext) -> str:
     return effective_declared_estimand_id(ctx) or ""
 
 
+def _evaluate_track_e(ctx: TrustComposeContext) -> TriangulationOutcome:
+    profile = ctx.triangulation_profile
+    if profile is None:
+        raise ValueError("triangulation_profile required")
+    outcome = evaluate_triangulation(profile)
+    cs = apply_e5_calibration_policy(outcome)
+    violations = assert_forbidden_actions(
+        outcome,
+        profile,
+        ctx.triangulation_forbidden_actions or (),
+    )
+    return TriangulationOutcome(
+        agreement_state=outcome.agreement_state,
+        trust_report_disposition=outcome.trust_report_disposition,
+        conflict_class=outcome.conflict_class,
+        trust_outcome_hint=outcome.trust_outcome_hint,
+        calibration_signal_eligibility=cs,
+        per_cell_dispositions=outcome.per_cell_dispositions,
+        warning_class=outcome.warning_class,
+        exclusion_class=outcome.exclusion_class,
+        forbidden_violations=tuple(violations),
+    )
+
+
+def _build_track_e_attachment(
+    ctx: TrustComposeContext,
+    outcome: TriangulationOutcome,
+) -> TrackETriangulationAttachment:
+    profile = ctx.triangulation_profile or {}
+    warnings: list[str] = []
+    exclusions: list[str] = []
+    if outcome.warning_class:
+        warnings.append(outcome.warning_class)
+    if outcome.exclusion_class:
+        exclusions.append(outcome.exclusion_class)
+    forbidden = ctx.triangulation_forbidden_actions or ()
+    return TrackETriangulationAttachment(
+        profile_id=profile.get("profile_id"),
+        agreement_state=outcome.agreement_state,
+        trust_report_disposition=outcome.trust_report_disposition,
+        conflict_class=outcome.conflict_class,
+        calibration_signal_eligibility=outcome.calibration_signal_eligibility,
+        warnings=tuple(warnings),
+        exclusions=tuple(exclusions),
+        per_cell_dispositions=dict(outcome.per_cell_dispositions),
+        forbidden_action_flags=forbidden_action_flags(forbidden, outcome.forbidden_violations),
+        forbidden_violations=outcome.forbidden_violations,
+    )
+
+
 def compose_trust_scenario_verdict(
     ctx: TrustComposeContext,
     scenario: Mapping[str, Any],
 ) -> TrustScenarioVerdict:
-    alignment_verdict, trust_outcome = _interpret(ctx, scenario)
+    if ctx.triangulation_profile is not None:
+        tri = _evaluate_track_e(ctx)
+        alignment_verdict, trust_outcome = trust_verdicts_from_triangulation(
+            tri,
+            str(scenario.get("claim_type", "any")),
+        )
+    else:
+        alignment_verdict, trust_outcome = _interpret(ctx, scenario)
     return TrustScenarioVerdict(
         scenario_id=str(scenario["scenario_id"]),
         intended_use=str(scenario.get("intended_use", "")),
@@ -106,19 +191,28 @@ def compose_trust_report(
                 "claim_type": "any",
             }
         ]
+    track_e: Optional[TrackETriangulationAttachment] = None
+    tri_outcome: Optional[TriangulationOutcome] = None
+    if ctx.triangulation_profile is not None:
+        tri_outcome = _evaluate_track_e(ctx)
+        track_e = _build_track_e_attachment(ctx, tri_outcome)
     composed = tuple(compose_trust_scenario_verdict(ctx, s) for s in scenarios_cfg)
     evidence = ctx.adapter_output.get("experiment_evidence") or {}
+    profile = ctx.triangulation_profile or {}
     return TrustReportComposition(
-        alignment_reference_estimand_id=alignment_reference_estimand_id(ctx),
-        declared_estimand_id=evidence.get("declared_estimand_id"),
+        alignment_reference_estimand_id=alignment_reference_estimand_id(ctx)
+        or str(profile.get("declared_estimand_id", "")),
+        declared_estimand_id=evidence.get("declared_estimand_id")
+        or profile.get("declared_estimand_id"),
         exported_estimand_id=evidence.get("exported_estimand_id"),
         measurement_instrument_id=evidence.get("measurement_instrument_id"),
         scenarios=composed,
+        track_e_triangulation=track_e,
     )
 
 
 def trust_report_to_dict(composition: TrustReportComposition) -> dict[str, Any]:
-    return {
+    out: dict[str, Any] = {
         "trust_report_version": TRUST_REPORT_VERSION,
         "alignment_reference_estimand_id": composition.alignment_reference_estimand_id,
         "declared_estimand_id": composition.declared_estimand_id,
@@ -135,6 +229,21 @@ def trust_report_to_dict(composition: TrustReportComposition) -> dict[str, Any]:
             for s in composition.scenarios
         ],
     }
+    te = composition.track_e_triangulation
+    if te is not None:
+        out["track_e_triangulation"] = {
+            "profile_id": te.profile_id,
+            "agreement_state": te.agreement_state,
+            "trust_report_disposition": te.trust_report_disposition,
+            "conflict_class": te.conflict_class,
+            "calibration_signal_eligibility": dict(te.calibration_signal_eligibility),
+            "warnings": list(te.warnings),
+            "exclusions": list(te.exclusions),
+            "per_cell_dispositions": dict(te.per_cell_dispositions),
+            "forbidden_action_flags": dict(te.forbidden_action_flags),
+            "forbidden_violations": list(te.forbidden_violations),
+        }
+    return out
 
 
 def attach_trust_report_to_views(
@@ -146,6 +255,8 @@ def attach_trust_report_to_views(
     calibration_signal_binding: Optional[Mapping[str, Any]] = None,
     composition_permitted: bool = True,
     alignment_reference_estimand_id: Optional[str] = None,
+    triangulation_profile: Optional[Mapping[str, Any]] = None,
+    triangulation_forbidden_actions: Optional[Sequence[str]] = None,
 ) -> TrustReportAttachResult:
     """
     Attach TrustReport to an existing ``track_b_views`` dict (mutates ``views``).
@@ -167,6 +278,8 @@ def attach_trust_report_to_views(
         calibration_signal_binding=calibration_signal_binding,
         composition_permitted=composition_permitted,
         alignment_reference_estimand_id=alignment_reference_estimand_id,
+        triangulation_profile=triangulation_profile,
+        triangulation_forbidden_actions=triangulation_forbidden_actions,
     )
     composition = compose_trust_report(ctx, scenarios)
     views["trust_report_present"] = True

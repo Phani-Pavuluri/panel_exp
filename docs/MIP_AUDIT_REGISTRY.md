@@ -197,7 +197,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D3-FIND-001 — Unit JK LOO compares `y_hat` to observed `y` → **INV-D3-001** opened (D5-INF-002a).
 
-**Next:** Track E E7.
+**Next:** D5-DES-SUPERGEO-001 / D5-MCELL (not MMM).
 
 ---
 
@@ -256,9 +256,9 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Docs:** [`TRACK_E_E5_CALIBRATIONSIGNAL_ELIGIBILITY_POLICY_001.md`](TRACK_E_E5_CALIBRATIONSIGNAL_ELIGIBILITY_POLICY_001.md)
 
-**Tests:** [`tests/track_e/test_e6_e4_conflict_fixtures.py`](../tests/track_e/test_e6_e4_conflict_fixtures.py) · [`tests/track_e/triangulation_contract.py`](../tests/track_e/triangulation_contract.py) (non-production oracle)
+**Tests:** E6 [`tests/track_e/test_e6_e4_conflict_fixtures.py`](../tests/track_e/test_e6_e4_conflict_fixtures.py) · E7 [`tests/track_b/test_e7_track_e_trust_report.py`](../tests/track_b/test_e7_track_e_trust_report.py) · production [`panel_exp/track_b/triangulation.py`](../panel_exp/track_b/triangulation.py)
 
-**Verdict:** E5 maps E4 dispositions → CalibrationSignal eligibility (conditional weak null-monitor only; fail-closed on conflict/stale/missing uncertainty/pooled multi-cell). E6: **69 passed** against all E4 JSON fixtures — no averaging, no MMM outside CalibrationSignal, no restricted override. **Next:** E7 production integration.
+**Verdict:** E5 maps E4 dispositions → CalibrationSignal eligibility (conditional weak null-monitor only; fail-closed on conflict/stale/missing uncertainty/pooled multi-cell). E6/E7: contract + production TrustReport composer assert all E4 fixtures — no averaging, no MMM outside CalibrationSignal, no restricted override. **E7 complete.**
 
 ---
 

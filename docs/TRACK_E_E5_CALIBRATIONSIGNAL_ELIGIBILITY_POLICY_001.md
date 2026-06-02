@@ -9,7 +9,7 @@
 
 **Related:** [`TRACK_E_E3_TRIANGULATION_SCHEMA_001.md`](TRACK_E_E3_TRIANGULATION_SCHEMA_001.md) · [`TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001.md`](TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001.md) · [`TRACK_B_CALIBRATION_SIGNAL_001.md`](TRACK_B_CALIBRATION_SIGNAL_001.md) · [`TRACK_B_TRUST_REPORT_001.md`](TRACK_B_TRUST_REPORT_001.md)
 
-**Test oracle:** [`tests/track_e/triangulation_contract.py`](../../tests/track_e/triangulation_contract.py) · E6 [`tests/track_e/test_e6_e4_conflict_fixtures.py`](../../tests/track_e/test_e6_e4_conflict_fixtures.py)
+**Test oracle:** [`panel_exp/track_b/triangulation.py`](../../panel_exp/track_b/triangulation.py) (production) · E6 [`tests/track_e/test_e6_e4_conflict_fixtures.py`](../../tests/track_e/test_e6_e4_conflict_fixtures.py) · E7 [`tests/track_b/test_e7_track_e_trust_report.py`](../../tests/track_b/test_e7_track_e_trust_report.py)
 
 ---
 
@@ -201,7 +201,7 @@ E5 does **not** change Track B schemas or production `trust_report.py`.
 |-------------|--------|
 | E5 policy (this document) | ✅ |
 | E6 fixture tests | ✅ [`test_e6_e4_conflict_fixtures.py`](../../tests/track_e/test_e6_e4_conflict_fixtures.py) |
-| E7 production implementation | Deferred |
+| E7 production implementation | ✅ TrustReport composer [`trust_report.py`](../../panel_exp/track_b/trust_report.py) |
 
 ---
 

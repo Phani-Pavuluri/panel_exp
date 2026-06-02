@@ -2,7 +2,7 @@
 
 **Document ID:** TRACK-E-SUITABILITY-TRIANGULATION-001  
 **Type:** Framework ADR (E0)  
-**Status:** **E0–E6 complete** (documentation + contract tests) — E7 production implementation deferred  
+**Status:** **E0–E7 complete** (documentation + contract tests + production TrustReport wiring)  
 **Date:** 2026-06-01  
 **Lane:** Research / governance bridge (pre-MMM)  
 
@@ -340,9 +340,9 @@ flowchart LR
 | **E4** | Conflict taxonomy + TrustReport mapping fixtures | ✅ [`TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001.md`](TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001.md) |
 | **E5** | CalibrationSignal eligibility policy | ✅ [`TRACK_E_E5_CALIBRATIONSIGNAL_ELIGIBILITY_POLICY_001.md`](TRACK_E_E5_CALIBRATIONSIGNAL_ELIGIBILITY_POLICY_001.md) |
 | **E6** | TrustReport composer tests (E4 fixtures) | ✅ [`tests/track_e/test_e6_e4_conflict_fixtures.py`](../../tests/track_e/test_e6_e4_conflict_fixtures.py) |
-| **E7** | Production triangulation + TrustReport integration | Deferred |
+| **E7** | Production triangulation + TrustReport integration | ✅ [`panel_exp/track_b/triangulation.py`](../panel_exp/track_b/triangulation.py) · [`tests/track_b/test_e7_track_e_trust_report.py`](../tests/track_b/test_e7_track_e_trust_report.py) |
 
-**Recommended program order:** … **E3/E4** ✅ → **E5/E6** ✅ → **E7** (production integration) → D5-DES-SUPERGEO-001 / … → MMM integration.
+**Recommended program order:** … **E3/E4** ✅ → **E5/E6** ✅ → **E7** ✅ → D5-DES-SUPERGEO-001 / … → MMM integration.
 
 ### E1 / E2 scope (complete)
 
