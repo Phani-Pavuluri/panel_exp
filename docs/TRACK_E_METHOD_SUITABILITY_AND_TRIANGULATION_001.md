@@ -2,7 +2,7 @@
 
 **Document ID:** TRACK-E-SUITABILITY-TRIANGULATION-001  
 **Type:** Framework ADR (E0)  
-**Status:** **draft (planning)** — no implementation in this package  
+**Status:** **E0+E1+E2 complete** (documentation contract) — E3+ implementation deferred  
 **Date:** 2026-06-01  
 **Lane:** Research / governance bridge (pre-MMM)  
 
@@ -75,7 +75,9 @@ Diagnostics inform suitability; they do **not** auto-promote trust.
 
 ### 3.1 Diagnostic families (design-readout program)
 
-From D5-POW-001d and [ROADMAP-DESIGN-READOUT-UPDATE-001](ROADMAP_DESIGN_READOUT_UPDATE_001.md):
+**Authoritative inventory:** [`TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md`](TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md) — families **E-DES-WIN**, **E-SCM-DONOR**, **E-DES-MCELL**, **E-DES-GEO**, **E-INST-OC**, **E-ESTIMAND**, **E-CONFLICT**, **E-MMM**.
+
+Summary (see E1 for full IDs and D5 links). From D5-POW-001d and [ROADMAP-DESIGN-READOUT-UPDATE-001](ROADMAP_DESIGN_READOUT_UPDATE_001.md):
 
 **E-DES-WIN** (window / assignment stability)
 
@@ -121,7 +123,9 @@ From D5-POW-001d and [ROADMAP-DESIGN-READOUT-UPDATE-001](ROADMAP_DESIGN_READOUT_
 
 ## 4. Method Suitability Cards (summary)
 
-**E2 target:** Each card includes design method identity, geometry mode (`single_cell`, `multi_cell`, `supergeo`, `trimmed_population`), compatible/incompatible readout instruments, window requirements, pre-period and donor diagnostics, shared-control adequacy (multi-cell), method-specific D5 OC evidence, and output role (CalibrationSignal / TrustReport-only / diagnostic-only / restricted / blocked) plus MMM implication.
+**Authoritative cards:** [`TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md`](TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md) — design methods, geometry modes, measurement instruments, combination matrix.
+
+**E2 delivered:** Each card includes design method identity, geometry mode (`single_cell`, `multi_cell`, `supergeo`, `trimmed_population`), compatible/incompatible readout instruments, window requirements, pre-period and donor diagnostics, shared-control adequacy (multi-cell), method-specific D5 OC evidence, and output role (CalibrationSignal / TrustReport-only / diagnostic-only / restricted / blocked) plus MMM implication.
 
 ### SCM + Unit Jackknife (`SCM_UnitJackKnife`) — reference null-monitor branch
 
@@ -322,24 +326,24 @@ flowchart LR
 | Phase | Deliverable | Status |
 |-------|-------------|--------|
 | **E0** | This framework ADR | **This document** |
-| **E1** | Suitability diagnostic inventory | Planned |
-| **E2** | Full method suitability cards | Planned |
+| **E1** | Suitability diagnostic inventory | ✅ [`TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md`](TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md) |
+| **E2** | Full method suitability cards | ✅ [`TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md`](TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md) |
 | **E3** | Triangulation evidence schema | Planned |
 | **E4** | Conflict taxonomy + TrustReport mapping fixtures | Planned |
 | **E5** | CalibrationSignal eligibility policy (governance) | Planned |
 | **E6** | Golden fixtures: agreement / conflict scenarios | Planned |
 | **E7** | Implementation after Track D OC evidence | Deferred |
 
-**Recommended program order:** INV-D3-001 fix ✅ → **E0** ✅ → D5-POW-001a–e ✅ → DESIGN-INVENTORY-001 ✅ → **ROADMAP-DESIGN-READOUT-UPDATE-001** ✅ → **E1/E2** (cards for full instrument panel + design methods) → D5-DES-SUPERGEO-001 / D5-DES-TRIM-001 / D5-MCELL → other instrument OC → E3/E4/E6 → MMM integration.
+**Recommended program order:** INV-D3-001 fix ✅ → **E0** ✅ → D5-POW-001a–e ✅ → DESIGN-INVENTORY-001 ✅ → **ROADMAP-DESIGN-READOUT-UPDATE-001** ✅ → **E1/E2** ✅ → **E3/E4** (triangulation schema + TrustReport fixtures) → D5-DES-SUPERGEO-001 / D5-DES-TRIM-001 / D5-MCELL → other instrument OC → E5/E6 → MMM integration.
 
-### E1 / E2 scope (updated)
+### E1 / E2 scope (complete)
 
 | Phase | Deliverable |
 |-------|-------------|
-| **E1** | Formal inventory: E-DES-WIN, E-SCM-DONOR, E-DES-MCELL; link D5-POW-001e rows |
-| **E2** | Design-method cards + measurement-instrument cards (SCM+JK is **one** card) |
+| **E1** | ✅ Eight families; D5 a–e artifact map — [`TRACK_E_E1_...`](TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md) |
+| **E2** | ✅ Design, geometry, instrument cards + matrix — [`TRACK_E_E2_...`](TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md) |
 
-**Explicit:** Other instruments need their own OC evidence before promotion. Include **supergeos** and **trimmedmatch** as separate geometry/population cards—not omitted from roadmap.
+**Explicit:** SCM+JK is **one** instrument card (`INST-001`). D5-POW-001e supports suitability evidence only—not MDE, lift, or MMM. **supergeos** / **trimmedmatch** are `characterization_required`, not omitted.
 
 ---
 
@@ -353,4 +357,4 @@ flowchart LR
 
 ---
 
-*TRACK-E-SUITABILITY-TRIANGULATION-001 v0.1.0 — planning — 2026-06-01*
+*TRACK-E-SUITABILITY-TRIANGULATION-001 v0.2.0 — E1/E2 complete — 2026-06-01*

@@ -13,7 +13,7 @@
 
 Enumerate **actual** design/assignment implementations in `panel_exp/design/` from code (registry + source). Classify eligibility for **D5-POW-001e** under the **SCM+UnitJackKnife reference null-monitor branch**—not as universal platform validation.
 
-**D5-POW-001e:** **not started** (scoped in ROADMAP-DESIGN-READOUT-UPDATE-001).
+**D5-POW-001e:** ✅ complete — [`D5_POW_001e_results.json`](track_d/archives/D5_POW_001e_results.json). **Track E:** [`TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md`](TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md) · [`TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md`](TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md).
 
 ---
 

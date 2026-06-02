@@ -155,7 +155,7 @@ Per **method × geometry_mode** row, record at minimum:
 
 1. ✅ **ROADMAP-DESIGN-READOUT-UPDATE-001** (this document)  
 2. ✅ **D5-POW-001e** — six confirmed methods; SCM+JK reference branch; per-cell single/multi_cell; no pooling  
-3. **Track E E1/E2** — cards + diagnostics (multi-cell, donor, windows, supergeos, trimmedmatch, instrument panel)  
+3. ✅ **Track E E1/E2** — [`TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md`](TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md) · [`TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md`](TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md)  
 4. **Later:** D5-DES-SUPERGEO-001 · D5-DES-TRIM-001 · D5-MCELL optimal-cell-count · OC batteries for TBRRidge+KFold, BRB, DID+bootstrap, AugSynth, placebo where compatible  
 
 ---

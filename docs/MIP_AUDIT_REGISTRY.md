@@ -197,7 +197,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D3-FIND-001 — Unit JK LOO compares `y_hat` to observed `y` → **INV-D3-001** opened (D5-INF-002a).
 
-**Next:** Track E E1/E2.
+**Next:** Track E E3/E4.
 
 ---
 
@@ -216,7 +216,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D4-FIND-001 — design MDE not aligned to `SCM_UnitJackKnife` instrument.
 
-**Next:** Track E E1/E2; not MMM integration.
+**Next:** Track E E3/E4; not MMM integration.
 
 ---
 
@@ -231,6 +231,14 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 - Multi-cell = **geometry mode** (`n_test_grps > 1`), not a design method.  
 - **supergeos** / **trimmedmatch** in roadmap (D5-DES-SUPERGEO-001, D5-DES-TRIM-001); not ignored.  
 - D5-POW-001e **complete** — see checkpoint below.
+
+---
+
+## Track E E1/E2 checkpoint (2026-06-01)
+
+**Docs:** [`TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md`](TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md) · [`TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md`](TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md)
+
+**Verdict:** Documentation contract complete — eight diagnostic families (E-DES-WIN, E-SCM-DONOR, E-DES-MCELL, E-DES-GEO, E-INST-OC, E-ESTIMAND, E-CONFLICT, E-MMM); design/geometry/instrument suitability cards grounded in D5-POW-001a–e. SCM+JK = **one** reference null-monitor card (`suitable_with_caveats`); tier-1 design × geometry **suitable_with_caveats** for null-monitor only; supergeos/trimmedmatch **characterization_required**; Geo PowerAnalysis **diagnostic_only**; no MMM promotion. **Next:** E3 triangulation schema, E4 TrustReport fixtures.
 
 ---
 

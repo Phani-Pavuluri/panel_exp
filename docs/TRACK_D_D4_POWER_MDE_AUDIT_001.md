@@ -303,7 +303,8 @@ Applied in [`TRACK_D_METHOD_INVENTORY_AND_ROBUSTNESS_MATRIX_001.md`](TRACK_D_MET
 |----------|--------|------|
 | P0 | [**ROADMAP-DESIGN-READOUT-UPDATE-001**](ROADMAP_DESIGN_READOUT_UPDATE_001.md) — governance framing | Docs ✅ |
 | P0 | **D5-POW-001e** — SCM+JK **reference** null FPR; 6 design methods; bare greedy vs `Rerandomization(greedy)` | D5 ✅ |
-| P1 | **Track E E1/E2** — design × geometry × instrument cards; E-DES-WIN / E-SCM-DONOR / E-DES-MCELL | E |
+| P1 | **Track E E1/E2** — design × geometry × instrument cards | E ✅ |
+| P1 | **Track E E3/E4** — triangulation schema + TrustReport conflict fixtures | E |
 | P2 | **D5-DES-SUPERGEO-001**, **D5-DES-TRIM-001**, **D5-MCELL** optimal cell count | D5 |
 | P2 | OC batteries for TBRRidge+KFold, BRB, DID+bootstrap, AugSynth, placebo (separate instruments) | D5 |
 | — | **Do not** treat SCM+JK as universal readout or platform MDE | Governance |
