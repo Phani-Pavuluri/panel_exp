@@ -139,12 +139,12 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 ### Track E — method suitability & triangulation
 
 **Roadmap ID:** `TRACK-E-SUITABILITY-TRIANGULATION`  
-**Status:** E0–E6 documentation + contract tests complete  
+**Status:** **E0–E7 complete** ([AUDIT-009](audits/AUDIT-009_track_e_completion_gate.md) `79c59c4`) — documentation, contract tests, production TrustReport wiring  
 **Purpose:** Govern **design-method × geometry × measurement-instrument** suitability, triangulation, conflict taxonomy, and MMM-readiness — bridge between Track D OC evidence and Track B TrustReport / CalibrationSignal. **SCM+JK is one instrument card, not the whole system** ([ROADMAP-DESIGN-READOUT-UPDATE-001](ROADMAP_DESIGN_READOUT_UPDATE_001.md)).
 
 | Phase | Document | Status |
 |-------|----------|--------|
-| **E0** | [`TRACK_E_METHOD_SUITABILITY_AND_TRIANGULATION_001.md`](TRACK_E_METHOD_SUITABILITY_AND_TRIANGULATION_001.md) | **E0–E6 complete** |
+| **E0** | [`TRACK_E_METHOD_SUITABILITY_AND_TRIANGULATION_001.md`](TRACK_E_METHOD_SUITABILITY_AND_TRIANGULATION_001.md) | **E0–E7 complete** |
 | E1 | Suitability diagnostic inventory | ✅ [`TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md`](TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md) |
 | E2 | Method suitability cards | ✅ [`TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md`](TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md) |
 | E3 | Triangulation schema | ✅ [`TRACK_E_E3_TRIANGULATION_SCHEMA_001.md`](TRACK_E_E3_TRIANGULATION_SCHEMA_001.md) |
@@ -153,7 +153,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | E6 | TrustReport contract tests (E4 fixtures) | ✅ [`tests/track_e/test_e6_e4_conflict_fixtures.py`](../tests/track_e/test_e6_e4_conflict_fixtures.py) |
 | E7 | Production triangulation integration | ✅ [`panel_exp/track_b/triangulation.py`](../panel_exp/track_b/triangulation.py) · [`tests/track_b/test_e7_track_e_trust_report.py`](../tests/track_b/test_e7_track_e_trust_report.py) |
 
-**Non-goals (E0):** No code, TrustReport, CalibrationSignal, or MMM changes.
+**Non-goals (program):** No MMM ingestion, optimizer/planning feed, instrument promotion, or estimator/design/inference changes. E7 adds opt-in TrustReport triangulation only.
 
 ### Track C — unified user-level experimentation & conversion lift
 

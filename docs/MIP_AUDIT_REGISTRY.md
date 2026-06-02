@@ -2,7 +2,7 @@
 
 **Program ID:** MIP-PERIODIC-AUDIT  
 **Status:** active  
-**Last updated:** 2026-06-01 (Track D D4 package)  
+**Last updated:** 2026-06-01 (Track E E1–E7 completion gate)  
 
 **Template:** [`MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md`](MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md)  
 **Alignment gate:** [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md)
@@ -33,7 +33,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 | **AUDIT-006** | 2026-05-28 | Track D D2 estimator/donor (research lane) | `1a31e69` | `continue_with_characterization_required` | `full_model` SCM fit risk (D2-FIND-001); D5 OC pending | INV-D2-001; D3; D5-EST-002a | **closed** (research) |
 | **AUDIT-007** | 2026-05-28 | Track D D3 inference (research lane) | `fed7050` | `continue_with_characterization_required` | JK LOO target review (D3-FIND-001); eligibility unchanged | INV-D3-001; D5-INF-002a; D4 | **closed** (research) |
 | **AUDIT-008** | 2026-06-01 | Track D D4 power/MDE (research lane) | `24beae8` | `continue_with_characterization_required` | Power ≠ SCM JK readout; aggregation | D5-POW-001a; E1 | **closed** (research) |
-| **AUDIT-009** | — | Before MMM intake promotion | TBD | — | — | — | planned |
+| **AUDIT-009** | 2026-06-01 | Track E E1–E7 completion gate | `79c59c4` | `continue` | Live export lacks auto profile assembly (E7-FIND-001) | D5-DES-SUPERGEO-001; AUDIT-010 before MMM | **closed** |
 | **AUDIT-010** | — | Before planning / optimizer | TBD | — | — | — | planned |
 | **AUDIT-011** | — | Before LLM interface | TBD | — | — | — | planned |
 
@@ -216,7 +216,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D4-FIND-001 — design MDE not aligned to `SCM_UnitJackKnife` instrument.
 
-**Next:** Track E E7; not MMM integration.
+**Next:** D5-DES-SUPERGEO-001 / D5-MCELL (Track E E7 complete per AUDIT-009).
 
 ---
 
@@ -259,6 +259,26 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 **Tests:** E6 [`tests/track_e/test_e6_e4_conflict_fixtures.py`](../tests/track_e/test_e6_e4_conflict_fixtures.py) · E7 [`tests/track_b/test_e7_track_e_trust_report.py`](../tests/track_b/test_e7_track_e_trust_report.py) · production [`panel_exp/track_b/triangulation.py`](../panel_exp/track_b/triangulation.py)
 
 **Verdict:** E5 maps E4 dispositions → CalibrationSignal eligibility (conditional weak null-monitor only; fail-closed on conflict/stale/missing uncertainty/pooled multi-cell). E6/E7: contract + production TrustReport composer assert all E4 fixtures — no averaging, no MMM outside CalibrationSignal, no restricted override. **E7 complete.**
+
+---
+
+## AUDIT-009 summary (Track E E1–E7 completion gate)
+
+**Report:** [`audits/AUDIT-009_track_e_completion_gate.md`](audits/AUDIT-009_track_e_completion_gate.md)
+
+**Verdict:** **`continue`** — Track E E1–E7 **complete**; production TrustReport wiring bounded; **no** MMM ingestion or instrument promotion.
+
+**Confirmed**
+
+1. E1/E2 classify design-method × geometry-mode × measurement-instrument (documentation).  
+2. E3/E4 schema + 10 golden conflict fixtures with forbidden actions.  
+3. E5/E6 policy + tests; production evaluator in `triangulation.py`.  
+4. E7: `track_e_triangulation` only when `triangulation_profile` supplied; legacy `_interpret` unchanged.  
+5. No changes to estimators, design, inference, or eligibility registry in E7 scope.
+
+**Top finding:** E7-FIND-001 — `export_geo_run_bundle` does not auto-assemble triangulation profiles (product follow-up, not an E1–E7 blocker).
+
+**Next:** D5-DES-SUPERGEO-001 → D5-DES-TRIM-001 → D5-MCELL; AUDIT-010 before MMM intake.
 
 ---
 

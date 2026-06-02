@@ -2,7 +2,7 @@
 
 **Document ID:** TRACK-E-SUITABILITY-TRIANGULATION-001  
 **Type:** Framework ADR (E0)  
-**Status:** **E0–E7 complete** (documentation + contract tests + production TrustReport wiring)  
+**Status:** **E0–E7 complete** (documentation + contract tests + production TrustReport wiring) — gate: [AUDIT-009](audits/AUDIT-009_track_e_completion_gate.md)  
 **Date:** 2026-06-01  
 **Lane:** Research / governance bridge (pre-MMM)  
 
