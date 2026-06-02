@@ -213,6 +213,7 @@ Where applicable, each inventory row records:
 | TBRRidge Kfold/BRB | **D5-INST-TBRRIDGE-001** ✅ — restricted; not SCM+JK comparable |
 | SCM Placebo | **D5-INST-PLACEBO-001** ✅ — diagnostic_only; multi-treated blocked |
 | Full estimator × inference × geometry | **D5-INST-AUDIT-001** ✅ — code probes + roadmap |
+| AugSynthCVXPY point/JK | **D5-INST-AUGSYNTH-001** ✅ — diagnostic_only; not CalibrationSignal |
 
 ---
 

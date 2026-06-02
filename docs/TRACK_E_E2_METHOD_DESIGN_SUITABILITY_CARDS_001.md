@@ -264,10 +264,10 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 | **Purpose** | Augmented synthetic control point path; JK mirrors SCM conservatism when available. |
 | **Compatible design geometry** | Unit panels per Phase 14 scope; spillover-sensitive DGPs risky. |
 | **Required diagnostics** | E-INST-OC-010; Phase 14 archive. |
-| **OC evidence** | Phase 14 characterization — point bias under spillover. |
-| **Allowed claims** | Point triangulation diagnostic only (point card). |
-| **Disallowed claims** | CalibrationSignal for JK without separate instrument OC. |
-| **Track E status** | Point: **`diagnostic_only`**; JK: **`characterization_required`** |
+| **OC evidence** | Phase 14 + **D5-INST-AUGSYNTH-001** ✅ (001e windows; JK null FPR 0). |
+| **Allowed claims** | Point triangulation diagnostic; JK null-monitor context only. |
+| **Disallowed claims** | CalibrationSignal; MMM ingress; lift compare to SCM+JK without scale bridge. |
+| **Track E status** | Point: **`diagnostic_only`** (characterized comparator); JK: **`diagnostic_only`** |
 
 ---
 
@@ -323,7 +323,7 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 - **13** estimator classes cataloged; **9** registry inference modes; live geometry probes.
 - **Governed null monitor:** unit SCM+JK only. **Geo power:** aggregate TBRRidge+Kfold (not class TBR).
 - **TBR class:** aggregate 1×1 only; **BayesianTBR:** research_only; registry `Bayesian` ≠ NUTS.
-- **Remaining OC batteries:** AUGSYNTH-001, TBR-001, TBRRIDGE-002 (optional), BAYESIANTBR-001; DID deferred.
+- **Remaining OC batteries:** ~~AUGSYNTH-001~~ ✅, TBR-001, TBRRIDGE-002 (optional), BAYESIANTBR-001; DID deferred.
 
 ---
 

@@ -1,0 +1,376 @@
+{
+  "artifact_id": "D5-INST-AUGSYNTH-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-02T22:06:32.131621+00:00",
+  "lane": "research",
+  "binding_docs": [
+    "D5_INST_AUDIT_001_REPORT",
+    "TRACK_B_MEASUREMENT_INSTRUMENT_CATALOG_001",
+    "TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001",
+    "TRACK_E_E5_CALIBRATIONSIGNAL_ELIGIBILITY_POLICY_001",
+    "PHASE14_AUGSYNTH_CHARACTERIZATION_001"
+  ],
+  "governance": {
+    "no_promotion": true,
+    "no_calibration_signal_ingress": true,
+    "no_mmm": true,
+    "characterized_comparator_not_governed_mmm": true
+  },
+  "config": {
+    "n_mc": 14,
+    "train_length": 28,
+    "test_length": 8,
+    "reference_design_method": "greedy_match_markets",
+    "effect_grid": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "include_multi_cell_k2": true,
+    "probe_base_augsynth": true,
+    "min_donors_augsynth": 5
+  },
+  "callable_surfaces": {
+    "AugSynthCVXPY": {
+      "module": "panel_exp.methods.scm",
+      "inference": [
+        "point_estimate",
+        "UnitJackKnife",
+        "Kfold",
+        "Conformal"
+      ],
+      "track_b": [
+        "AugSynthCVXPY_Point"
+      ],
+      "requires": [
+        "cvxpy",
+        "osqp"
+      ]
+    },
+    "AugSynth": {
+      "module": "panel_exp.methods.scm",
+      "inner_solver": "SyntheticControlCVXPY",
+      "maturity": "unvalidated",
+      "d5_role": "optional_probe_only"
+    }
+  },
+  "instrument_summaries_null_single_cell": [
+    {
+      "instrument": "scm_jk_reference",
+      "geometry_mode": "single_cell",
+      "effect": 0.0,
+      "feasibility_rate": 1.0,
+      "fit_success_rate": 1.0,
+      "mean_point_effect": {
+        "mean": -0.09764614967266039,
+        "std": 0.8310591481727652,
+        "p95": 1.2738011611226852,
+        "n": 14
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 14
+      },
+      "mean_interval_halfwidth": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_wall_time_s": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "failure_counts": {}
+    },
+    {
+      "instrument": "augsynth_cvxpy_point",
+      "geometry_mode": "single_cell",
+      "effect": 0.0,
+      "feasibility_rate": 1.0,
+      "fit_success_rate": 1.0,
+      "mean_point_effect": {
+        "mean": 0.17619819811708318,
+        "std": 0.6082376049901943,
+        "p95": 1.0081147956479717,
+        "n": 14
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_interval_halfwidth": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_wall_time_s": {
+        "mean": 0.002195648564208698,
+        "std": 0.0017439566086503136,
+        "p95": 0.004517108654545153,
+        "n": 14
+      },
+      "failure_counts": {}
+    },
+    {
+      "instrument": "augsynth_cvxpy_jk",
+      "geometry_mode": "single_cell",
+      "effect": 0.0,
+      "feasibility_rate": 1.0,
+      "fit_success_rate": 1.0,
+      "mean_point_effect": {
+        "mean": 0.17619819811708318,
+        "std": 0.6082376049901943,
+        "p95": 1.0081147956479717,
+        "n": 14
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 14
+      },
+      "mean_interval_halfwidth": {
+        "mean": 3.679319023392574,
+        "std": 0.9190236038870021,
+        "p95": 5.04350534937703,
+        "n": 14
+      },
+      "mean_wall_time_s": {
+        "mean": 0.014529919497103297,
+        "std": 0.0028868729390228234,
+        "p95": 0.017743548251746687,
+        "n": 14
+      },
+      "failure_counts": {}
+    },
+    {
+      "instrument": "augsynth_base_point",
+      "geometry_mode": "single_cell",
+      "effect": 0.0,
+      "feasibility_rate": 1.0,
+      "fit_success_rate": 1.0,
+      "mean_point_effect": {
+        "mean": 0.17619819811708318,
+        "std": 0.6082376049901943,
+        "p95": 1.0081147956479717,
+        "n": 14
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_interval_halfwidth": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_wall_time_s": {
+        "mean": 0.0014343569949102988,
+        "std": 0.00014578496915780982,
+        "p95": 0.001660857885144651,
+        "n": 14
+      },
+      "failure_counts": {}
+    }
+  ],
+  "instrument_summaries_injected_8pct_single_cell": [
+    {
+      "instrument": "augsynth_cvxpy_point",
+      "geometry_mode": "single_cell",
+      "effect": 0.08,
+      "feasibility_rate": 1.0,
+      "fit_success_rate": 1.0,
+      "mean_point_effect": {
+        "mean": 8.187792715479825,
+        "std": 0.6347666661173701,
+        "p95": 9.049245915871433,
+        "n": 14
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_interval_halfwidth": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_wall_time_s": {
+        "mean": 0.0017140059311973996,
+        "std": 0.00026449399810107556,
+        "p95": 0.0020823335522436536,
+        "n": 14
+      },
+      "failure_counts": {}
+    },
+    {
+      "instrument": "augsynth_cvxpy_jk",
+      "geometry_mode": "single_cell",
+      "effect": 0.08,
+      "feasibility_rate": 1.0,
+      "fit_success_rate": 1.0,
+      "mean_point_effect": {
+        "mean": 8.187792715479825,
+        "std": 0.6347666661173701,
+        "p95": 9.049245915871433,
+        "n": 14
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0,
+        "n": 14
+      },
+      "mean_interval_halfwidth": {
+        "mean": 3.679319023392574,
+        "std": 0.9190236038870021,
+        "p95": 5.04350534937703,
+        "n": 14
+      },
+      "mean_wall_time_s": {
+        "mean": 0.016029184713261202,
+        "std": 0.006864027926515441,
+        "p95": 0.025019083434017368,
+        "n": 14
+      },
+      "failure_counts": {}
+    }
+  ],
+  "instrument_summary_null_multi_cell_k2": {
+    "instrument": "augsynth_cvxpy_point",
+    "geometry_mode": "multi_cell_k2_per_cell",
+    "effect": 0.0,
+    "feasibility_rate": 1.0,
+    "fit_success_rate": 1.0,
+    "mean_point_effect": {
+      "mean": 0.06569810278995615,
+      "std": 0.9605264672755001,
+      "p95": 1.6856766649715933,
+      "n": 26
+    },
+    "null_interval_exclusion_fpr": {
+      "mean": NaN,
+      "std": NaN,
+      "p95": NaN,
+      "n": 0
+    },
+    "mean_interval_halfwidth": {
+      "mean": NaN,
+      "std": NaN,
+      "p95": NaN,
+      "n": 0
+    },
+    "mean_wall_time_s": {
+      "mean": 0.0016173012655389567,
+      "std": 0.0009480131591840912,
+      "p95": 0.0020523224884527735,
+      "n": 26
+    },
+    "failure_counts": {
+      "insufficient_donors_need_5_got_2": 2
+    }
+  },
+  "instrument_status": {
+    "augsynth_cvxpy_point": {
+      "track_e_inst_004_point": "diagnostic_only",
+      "governance": "characterized_comparator_not_calibration_signal",
+      "feasibility_single_cell": 1.0,
+      "calibration_signal_ingress": false,
+      "mmm_ingress": false,
+      "lift_evidence": false
+    },
+    "augsynth_cvxpy_jk": {
+      "track_e_inst_004_jk": "diagnostic_only",
+      "prior_e2_jk": "characterization_required",
+      "refinement": "JK null-monitor style per Phase 14 + D5; not lift detector",
+      "feasibility_single_cell": 1.0,
+      "calibration_signal_ingress": false
+    },
+    "augsynth_base": {
+      "status": "callable_not_governed",
+      "force_oc": false,
+      "note": "Base AugSynth depends on inner SyntheticControlCVXPY; not primary D5 surface."
+    },
+    "multi_cell_k2": {
+      "per_cell_only": true,
+      "feasibility_rate": 1.0,
+      "no_pooled_claim": true
+    },
+    "track_b_aliases": [
+      "AugSynthCVXPY_Point"
+    ]
+  },
+  "scm_jk_reference_context": {
+    "null_interval_exclusion_fpr": {
+      "mean": 0.0,
+      "std": 0.0,
+      "p95": 0.0,
+      "n": 14
+    },
+    "note": "SCM+JK reference only; not interchangeable estimand/scale with AugSynth."
+  },
+  "disagreement_with_scm_jk": {
+    "null_point_material_mismatch_rate": {
+      "mean": 1.0,
+      "std": 0.0,
+      "p95": 1.0,
+      "n": 14
+    }
+  },
+  "findings": [
+    {
+      "id": "D5-AS-FIND-001",
+      "severity": "high",
+      "summary": "AugSynthCVXPY feasible on 001e single-cell greedy panels when donors >= min_donors.",
+      "implication": "Strongest characterized comparator candidate; still not CalibrationSignal."
+    },
+    {
+      "id": "D5-AS-FIND-002",
+      "severity": "high",
+      "summary": "AugSynthCVXPY+JK mirrors SCM+JK conservative null-monitor (low/null FPR on battery).",
+      "implication": "JK remains diagnostic_only; refine E2 JK from characterization_required."
+    },
+    {
+      "id": "D5-AS-FIND-003",
+      "severity": "medium",
+      "summary": "Multi-cell k=2 per-cell runs feasible; no pooled AugSynth claim.",
+      "implication": "Align with MCELL k<=2 discipline."
+    },
+    {
+      "id": "D5-AS-FIND-004",
+      "severity": "low",
+      "summary": "Base AugSynth probe optional; not primary governed instrument.",
+      "implication": "Do not force base AugSynth OC battery."
+    }
+  ],
+  "overall_verdict": "remain_diagnostic_only_no_calibration_signal",
+  "track_e_recommendation": {
+    "INST-004_point": "diagnostic_only (characterized comparator for triangulation)",
+    "INST-004_jk": "diagnostic_only (was characterization_required \u2014 D5+Phase14 close gap)",
+    "AUDIT_010_prerequisite": "AugSynthCVXPY D5 complete; normal TBR (D5-INST-TBR-001) still required"
+  },
+  "user_facing_warnings": [
+    "Reliable point recovery \u2260 governed MMM-ingress instrument.",
+    "Do not treat AugSynth JK intervals as lift detection or SCM+JK substitute without scale bridge.",
+    "Compare to SCM+JK as context only on this battery."
+  ],
+  "rules_acknowledged": {
+    "no_production_changes": true,
+    "no_estimator_changes": true,
+    "no_trust_report_changes": true
+  }
+}
