@@ -102,12 +102,12 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 |-------|--------|
 | **Purpose** | TrimmedMatchDesign — pair trimming, Tp/Te split; may shift target population / estimand. |
 | **Compatible design geometry** | `TrimmedMatchDesign` / registry `trimmedmatch`. |
-| **Compatible measurement instruments** | **None** governed until D5-DES-TRIM-001. |
+| **Compatible measurement instruments** | Native pair-lift CI (**diagnostic only**); no governed SCM+JK. |
 | **Incompatible / blocked** | Standard geo ATT cards without population bridge; SCM+JK 001e tensor. |
 | **Required diagnostics** | E-DES-GEO-007; E-ESTIMAND-007. |
-| **OC evidence** | DESIGN-INVENTORY-001; excluded from 001e. |
-| **Known restrictions** | Own power/rerandomization semantics in product docs. |
-| **Allowed claims** | Diagnostic-only if explicitly scoped to trimmed estimand (future). |
+| **OC evidence** | DESIGN-INVENTORY-001; **D5-DES-TRIM-001** ✅ [`D5_DES_TRIM_001_results.json`](track_d/archives/D5_DES_TRIM_001_results.json); excluded from 001e. |
+| **Known restrictions** | Tp/Te split; pair trim; **severe target-population shift** on battery; classical pair power. |
+| **Allowed claims** | Diagnostic-only — `power_analysis_with_cross_validation` on retained pairs. |
 | **Disallowed claims** | MMM geo relative ATT without estimand bridge. |
 | **Track B / CalibrationSignal** | No ingress. |
 | **Track E status** | **`characterization_required`** (`separate_population_design`) |
