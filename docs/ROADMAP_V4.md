@@ -139,9 +139,10 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | **Instrument inventory** | **D5-INST-AUDIT-001** ✅ [`D5_INST_AUDIT_001_results.json`](track_d/archives/D5_INST_AUDIT_001_results.json) — estimator × inference × geometry matrix |
 | **AugSynth OC** | **D5-INST-AUGSYNTH-001** ✅ [`D5_INST_AUGSYNTH_001_results.json`](track_d/archives/D5_INST_AUGSYNTH_001_results.json) — diagnostic_only; characterized comparator |
 | **Combo compatibility** | **D5-INST-COMBO-AUDIT-001** ✅ [`D5_INST_COMBO_AUDIT_001_results.json`](track_d/archives/D5_INST_COMBO_AUDIT_001_results.json) — curated matrix; no Cartesian OC |
+| **Conceptual validity** | **TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001** ✅ [`TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) — literature/method fidelity; synthetic OC ≠ paper validity; prerequisite for AUDIT-010 |
 | **D5-POW-001e** | ✅ Six confirmed methods; SCM+JK reference null FPR; [`D5_POW_001e_results.json`](track_d/archives/D5_POW_001e_results.json) — `acceptable_with_caveats` |
 
-**Next steps:** (1) ~~D5-INST-AUDIT-001~~ ✅ → ~~D5-INST-AUGSYNTH-001~~ ✅ → (2) D5-INST-TBR-001 → (3) **AUDIT-010** (MMM **readiness/gap** — not promotion) → (4) MMM only if gaps closed → P2/P3: TBRRidge-002, BayesianTBR, TROP.
+**Next steps:** (1) ~~D5-INST-AUDIT-001~~ ✅ → ~~D5-INST-AUGSYNTH-001~~ ✅ → ~~COMBO-AUDIT-001~~ ✅ → ~~CONCEPTUAL-VALIDITY-001~~ ✅ → (2) D5-INST-TBR-001 → (3) **AUDIT-010** (MMM **readiness/gap** — not promotion) → (4) MMM only if gaps closed → P2/P3: TBRRidge-002, BayesianTBR, TROP.
 
 ### Track E — method suitability & triangulation
 

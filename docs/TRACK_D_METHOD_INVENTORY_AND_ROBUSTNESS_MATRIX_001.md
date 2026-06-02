@@ -215,6 +215,7 @@ Where applicable, each inventory row records:
 | Full estimator × inference × geometry | **D5-INST-AUDIT-001** ✅ — code probes + roadmap |
 | AugSynthCVXPY point/JK | **D5-INST-AUGSYNTH-001** ✅ — diagnostic_only; not CalibrationSignal |
 | Estimator×inference×geometry | **D5-INST-COMBO-AUDIT-001** ✅ — curated compatibility matrix |
+| Conceptual / literature fidelity | **TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001** ✅ — paper vs implementation; synthetic OC ≠ validity; **0** MMM-ready paths |
 
 ---
 

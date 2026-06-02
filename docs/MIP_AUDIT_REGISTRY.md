@@ -34,7 +34,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 | **AUDIT-007** | 2026-05-28 | Track D D3 inference (research lane) | `fed7050` | `continue_with_characterization_required` | JK LOO target review (D3-FIND-001); eligibility unchanged | INV-D3-001; D5-INF-002a; D4 | **closed** (research) |
 | **AUDIT-008** | 2026-06-01 | Track D D4 power/MDE (research lane) | `24beae8` | `continue_with_characterization_required` | Power ≠ SCM JK readout; aggregation | D5-POW-001a; E1 | **closed** (research) |
 | **AUDIT-009** | 2026-06-01 | Track E E1–E7 completion gate | `79c59c4` | `continue` | Live export lacks auto profile assembly (E7-FIND-001) | D5-DES-SUPERGEO-001; AUDIT-010 before MMM | **closed** |
-| **AUDIT-010** | — | Before planning / optimizer | TBD | — | — | — | planned |
+| **AUDIT-010** | — | Before MMM planning / optimizer | TBD | — | Prereq: CONCEPTUAL-VALIDITY-001 ✅ + D5-INST-TBR-001 | MMM readiness/gap (not promotion) | planned |
 | **AUDIT-011** | — | Before LLM interface | TBD | — | — | — | planned |
 
 ---
@@ -315,6 +315,14 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 **Verdict:** **`acceptable_with_caveats_two_cells`** — k≤2 for most tier-1 methods on n_geos=16 battery; conservative k≤1; k≥3 degrades. Per-cell SCM+JK only; no pooling.
 
 **Next:** D5-INST-TBR-001 → AUDIT-010 (MMM readiness/gap) → MMM only if gaps closed.
+
+---
+
+## TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001 checkpoint (2026-06-02)
+
+**Artifact:** [`docs/TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) · [`docs/track_d/archives/TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001_results.json`](track_d/archives/TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001_results.json)
+
+**Verdict:** **`continue_with_restricted_diagnostics_only`** — method-by-method literature fidelity; **0** production-ready paths; synthetic OC ≠ conceptual validity. **AUDIT-010 prerequisite** (with D5-INST-TBR-001). Blockers: `full_model` SCM, registry Bayesian≠MCMC, TBR/TBRRidge conflation, DID relative CI.
 
 ---
 

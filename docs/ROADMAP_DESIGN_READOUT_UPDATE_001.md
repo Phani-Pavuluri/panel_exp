@@ -201,4 +201,16 @@ Per **method × geometry_mode** row, record at minimum:
 
 ---
 
-*ROADMAP-DESIGN-READOUT-UPDATE-001 v1.0.2 — D5-COMBO-AUDIT-001 complete*
+## 14. Conceptual validity audit (TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001)
+
+**Status:** ✅ [`TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md)
+
+Literature/method fidelity audit for all estimator and inference families. **Synthetic OC ≠ paper validity.** Verdict: **`continue_with_restricted_diagnostics_only`** — **0** production/MMM-ready paths.
+
+**AUDIT-010 prerequisites:** this audit ✅ + **D5-INST-TBR-001** (aggregate class TBR).
+
+**Blocking conceptual gaps:** `full_model` SCM/AugSynth; registry `Bayesian` ≠ BayesianTBR MCMC; TBR/TBRRidge conflation; DID relative ATT CI vs SCM.
+
+---
+
+*ROADMAP-DESIGN-READOUT-UPDATE-001 v1.0.3 — TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001 complete*

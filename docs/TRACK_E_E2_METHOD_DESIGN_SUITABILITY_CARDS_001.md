@@ -223,6 +223,7 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 | **Disallowed claims** | MDE planning; lift detection; MMM causal lift; platform-wide power module. |
 | **Track B / CalibrationSignal** | **`null_monitor_only`** — calibration-eligible for null-monitor role only. |
 | **Track E status** | **`suitable_with_caveats`** |
+| **Conceptual validity (CV-001)** | Faithful **null-monitor** within scope; `full_model` SCM path **blocking** for production ([`TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) §5.1). |
 
 ---
 
@@ -240,6 +241,7 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 | **Disallowed claims** | CalibrationSignal; MMM; primary null-monitor for unit geo tests. |
 | **Track B / CalibrationSignal** | **Excluded**. |
 | **Track E status** | **`restricted`** |
+| **Conceptual validity (CV-001)** | Not interchangeable with SCM+JK estimand; agg2 geo-power **restricted** (§5.4). |
 
 ---
 
@@ -268,6 +270,7 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 | **Allowed claims** | Point triangulation diagnostic; JK null-monitor context only. |
 | **Disallowed claims** | CalibrationSignal; MMM ingress; lift compare to SCM+JK without scale bridge. |
 | **Track E status** | Point: **`diagnostic_only`** (characterized comparator); JK: **`diagnostic_only`** |
+| **Conceptual validity (CV-001)** | Aligned with deviation; spillover DGP **restricted**; no CalibrationSignal (§5.2). |
 
 ---
 
@@ -296,6 +299,7 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 | **Allowed claims** | Null-reference diagnostic; TrustReport diagnostic role. |
 | **Disallowed claims** | Lift detection; CalibrationSignal without single-treated OC. |
 | **Track E status** | **`diagnostic_only`** (single-treated); **`blocked`** (multi-treated default) |
+| **Conceptual validity (CV-001)** | Placebo-in-space faithful **single-treated**; `placebo_band` ≠ JK CI (§6.3). |
 
 ---
 
@@ -324,6 +328,22 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 - **Governed null monitor:** unit SCM+JK only. **Geo power:** aggregate TBRRidge+Kfold (not class TBR).
 - **TBR class:** aggregate 1×1 only; **BayesianTBR:** research_only; registry `Bayesian` ≠ NUTS.
 - **Remaining OC batteries:** ~~AUGSYNTH-001~~ ✅, TBR-001, TBRRIDGE-002 (optional); see **D5-INST-COMBO-AUDIT-001** for valid vs invalid tuples.
+
+---
+
+## Part C3 — Conceptual validity (TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001)
+
+**Authority:** [`TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) · JSON [`track_d/archives/TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001_results.json`](track_d/archives/TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001_results.json)
+
+| Rule | Statement |
+|------|-----------|
+| **Synthetic OC** | D5 batteries prove callability/geometry/OC under a DGP — **not** paper fidelity. |
+| **COMBO valid_candidate** | Interface plausible — still needs conceptual + OC promotion path. |
+| **Production ready** | **0** instrument paths cleared for MMM on conceptual audit alone. |
+| **AUDIT-010** | MMM readiness/gap runs **after** CONCEPTUAL-VALIDITY-001 + D5-INST-TBR-001. |
+| **TBR vs TBRRidge** | Different research objects — INST-007 uses TBRRidge on agg2, not class TBR. |
+
+**Card status unchanged** except explicit CV-001 cross-links on INST-001–006 above; statuses remain governed by OC + Track B, not literature alone.
 
 ---
 
