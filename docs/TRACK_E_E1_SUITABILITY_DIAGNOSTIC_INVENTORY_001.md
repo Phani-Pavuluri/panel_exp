@@ -139,7 +139,7 @@ Every diagnostic evaluation is scoped to:
 | E-INST-OC-006 | KFold geometry / multi-treated | Fold scope vs treated units | DEF-001 geometry failure | Track D D3 |
 | E-INST-OC-007 | BRB null viability | Block bootstrap null behavior | DEF-002 | Track D D3 |
 | E-INST-OC-008 | DID interval estimand | Cumulative vs relative ATT | DEF-003 compare error | Track D D3 |
-| E-INST-OC-009 | Placebo band semantics | `placebo_band` ≠ CI | Lift compare invalid | Phase 15 |
+| E-INST-OC-009 | Placebo band semantics | `placebo_band` ≠ CI | Lift compare invalid | Phase 15 + **D5-INST-PLACEBO-001** ✅ |
 | E-INST-OC-010 | AugSynth point / spillover | Point bias under spillover DGP | Phase 14 characterization | Phase 14 archive |
 | E-INST-OC-011 | Evidence freshness / archive link | Committed JSON + doc ID | Stale or missing OC | MIP registry |
 

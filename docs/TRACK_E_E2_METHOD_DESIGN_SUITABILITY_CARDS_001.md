@@ -292,7 +292,7 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 | **Purpose** | Placebo-band null reference — **not** a confidence interval. |
 | **Compatible design geometry** | **`single_treated_only`** — multi-treated default blocked. |
 | **Required diagnostics** | E-INST-OC-009; E-ESTIMAND-004; E-CONFLICT-005. |
-| **OC evidence** | Phase 15 (single-treated); geometry matrix. |
+| **OC evidence** | Phase 15 + **D5-INST-PLACEBO-001** ✅ (001e windows; multi-treated 100% blocked). |
 | **Allowed claims** | Null-reference diagnostic; TrustReport diagnostic role. |
 | **Disallowed claims** | Lift detection; CalibrationSignal without single-treated OC. |
 | **Track E status** | **`diagnostic_only`** (single-treated); **`blocked`** (multi-treated default) |

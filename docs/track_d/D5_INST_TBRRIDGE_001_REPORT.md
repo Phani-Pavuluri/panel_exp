@@ -73,4 +73,4 @@ Optional **k=2 multi-cell** per-cell runs included in artifact (per-cell only, n
 2. **D5-TBR-FIND-002:** Unit TBR vs SCM+JK point effects are not comparable at null or under injection.
 3. **D5-TBR-FIND-003:** BRB runs on this battery but does not justify promotion.
 
-**Next:** D5-INST-PLACEBO-001 → D5-INST-DID-001 → AUDIT-010 (not MMM).
+**Next:** ~~D5-INST-PLACEBO-001~~ ✅ → D5-INST-DID-001 → AUDIT-010 (not MMM).

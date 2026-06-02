@@ -186,7 +186,7 @@ Where applicable, each inventory row records:
 | **INF-003** | JKP | confidence_interval | characterization_required | — | Registry tests only |
 | **INF-004** | Kfold | confidence_interval | restricted | TBRRidge KFold | DEF-001; not calibration-eligible |
 | **INF-005** | BlockResidualBootstrap | confidence_interval | restricted | TBRRidge BRB | DEF-002 positive OC |
-| **INF-006** | Placebo | placebo_band | diagnostic_characterized | SCM/TBR Placebo | Not CI; single-treated; DEF-020 |
+| **INF-006** | Placebo | placebo_band | diagnostic_characterized | SCM Placebo | **D5-INST-PLACEBO-001** ✅ — single-treated only; multi-treated blocked; not CI |
 | **INF-007** | Conformal | conformal_interval | characterization_required | — | **D3** ✅ assumption audit pending D5 |
 | **INF-008** | Bayesian (registry) | credible_interval | blocked | — | Not full BayesianTBR |
 | **INF-009** | TimeSeriesKfold | confidence_interval | characterization_required | — | **D3** ✅ temporal blocking |
@@ -211,6 +211,7 @@ Where applicable, each inventory row records:
 | trimmedmatch | **D5-DES-TRIM-001** ✅ — severe population shift; diagnostic pair power only |
 | Multi-cell geometry | **D5-MCELL-001** ✅ — k≤2 typical; per-cell only |
 | TBRRidge Kfold/BRB | **D5-INST-TBRRIDGE-001** ✅ — restricted; not SCM+JK comparable |
+| SCM Placebo | **D5-INST-PLACEBO-001** ✅ — diagnostic_only; multi-treated blocked |
 
 ---
 

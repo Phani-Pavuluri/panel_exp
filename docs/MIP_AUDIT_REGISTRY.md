@@ -314,7 +314,16 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **`acceptable_with_caveats_two_cells`** — k≤2 for most tier-1 methods on n_geos=16 battery; conservative k≤1; k≥3 degrades. Per-cell SCM+JK only; no pooling.
 
-**Next:** D5-INST-PLACEBO-001; AUDIT-010 before MMM.
+**Next:** D5-INST-DID-001; AUDIT-010 before MMM.
+
+---
+
+## D5-INST-PLACEBO-001 checkpoint (2026-06-02)
+
+**Artifact:** [`docs/track_d/archives/D5_INST_PLACEBO_001_results.json`](track_d/archives/D5_INST_PLACEBO_001_results.json)  
+**Report:** [`docs/track_d/D5_INST_PLACEBO_001_REPORT.md`](track_d/D5_INST_PLACEBO_001_REPORT.md)
+
+**Verdict:** **`remain_diagnostic_only_no_promotion`** — single-treated feasible (`placebo_band`); multi-treated natural assignment **100% blocked**; multi-cell k=2 per-cell single-treated only; no CalibrationSignal.
 
 ---
 

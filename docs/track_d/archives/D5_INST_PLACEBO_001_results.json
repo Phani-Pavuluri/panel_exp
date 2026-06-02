@@ -1,0 +1,234 @@
+{
+  "artifact_id": "D5-INST-PLACEBO-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-02T19:46:44.335205+00:00",
+  "lane": "research",
+  "binding_docs": [
+    "TRACK_B_MEASUREMENT_INSTRUMENT_CATALOG_001",
+    "TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001",
+    "TRACK_E_E5_CALIBRATIONSIGNAL_ELIGIBILITY_POLICY_001",
+    "TRACK_D_D3_INFERENCE_METHOD_AUDIT_001",
+    "D5_POW_001e_results",
+    "D5_MCELL_001_REPORT",
+    "PHASE15_PLACEBO_CHARACTERIZATION_001"
+  ],
+  "governance": {
+    "instrument": "SCM_Placebo",
+    "reference_instrument": "SCM_UnitJackKnife",
+    "status": "diagnostic_only",
+    "no_promotion": true,
+    "no_calibration_signal_ingress": true,
+    "no_lift_evidence": true,
+    "no_pooled_multi_cell_placebo": true,
+    "placebo_band_not_ci": true
+  },
+  "config": {
+    "n_mc": 14,
+    "reference_design_method": "greedy_match_markets",
+    "train_length": 28,
+    "test_length": 8,
+    "effect_grid": [
+      0.0,
+      0.04
+    ],
+    "min_control_for_placebo": 5,
+    "include_multi_cell_k2": true
+  },
+  "geometry_aggregates": [
+    {
+      "geometry_case": "single_treated_forced",
+      "n_replicate_cells": 14,
+      "feasibility_rate": 1.0,
+      "block_rate": 0.0,
+      "block_reason_counts": {},
+      "n_treated_units": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0,
+        "n": 14
+      },
+      "n_control_donors": {
+        "mean": 7.928571428571429,
+        "std": 1.7304639535412156,
+        "p95": 10.0,
+        "n": 14
+      },
+      "n_placebo_pseudo_treated": {
+        "mean": 7.928571428571429,
+        "std": 1.7304639535412156,
+        "p95": 10.0,
+        "n": 14
+      },
+      "placebo_p_value": {
+        "mean": 0.6093279736136878,
+        "std": 0.3135059132008036,
+        "p95": 1.0,
+        "n": 14
+      },
+      "placebo_band_semantics_rate": 1.0,
+      "inversion_ci_excludes_zero_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 14
+      },
+      "geometry_failure_mode": "supported_single_treated"
+    },
+    {
+      "geometry_case": "multi_treated_natural",
+      "n_replicate_cells": 14,
+      "feasibility_rate": 0.0,
+      "block_rate": 1.0,
+      "block_reason_counts": {
+        "placebo_in_space_single_treated_only": 14
+      },
+      "n_treated_units": {
+        "mean": 4.857142857142857,
+        "std": 0.5345224838248489,
+        "p95": 5.0,
+        "n": 14
+      },
+      "n_control_donors": {
+        "mean": 7.928571428571429,
+        "std": 1.7304639535412156,
+        "p95": 10.0,
+        "n": 14
+      },
+      "n_placebo_pseudo_treated": {
+        "mean": null,
+        "std": null,
+        "p95": null,
+        "n": 0
+      },
+      "placebo_p_value": {
+        "mean": null,
+        "std": null,
+        "p95": null,
+        "n": 0
+      },
+      "placebo_band_semantics_rate": 0.0,
+      "inversion_ci_excludes_zero_fpr": {
+        "mean": null,
+        "std": null,
+        "p95": null,
+        "n": 0
+      },
+      "geometry_failure_mode": "blocked_multi_treated"
+    },
+    {
+      "geometry_case": "multi_cell_k2_per_cell_single",
+      "n_replicate_cells": 28,
+      "feasibility_rate": 1.0,
+      "block_rate": 0.0,
+      "block_reason_counts": {},
+      "n_treated_units": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0,
+        "n": 28
+      },
+      "n_control_donors": {
+        "mean": 7.785714285714286,
+        "std": 1.4493202201477424,
+        "p95": 10.0,
+        "n": 28
+      },
+      "n_placebo_pseudo_treated": {
+        "mean": 7.785714285714286,
+        "std": 1.4493202201477424,
+        "p95": 10.0,
+        "n": 28
+      },
+      "placebo_p_value": {
+        "mean": 0.6241999072356215,
+        "std": 0.30654687637080846,
+        "p95": 1.0,
+        "n": 28
+      },
+      "placebo_band_semantics_rate": 1.0,
+      "inversion_ci_excludes_zero_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 28
+      },
+      "geometry_failure_mode": "per_cell_single_treated_only"
+    }
+  ],
+  "instrument_status": {
+    "single_treated": {
+      "feasibility_rate": 1.0,
+      "track_e_status": "diagnostic_only",
+      "calibration_signal_ingress": false,
+      "governed_lift": false,
+      "interval_semantics": "placebo_band",
+      "not_confidence_interval": true
+    },
+    "multi_treated_natural": {
+      "block_rate": 1.0,
+      "track_e_status": "blocked",
+      "calibration_signal_ingress": false,
+      "pooling_invalid": true,
+      "implementation_gate": "placebo() requires len(treated_units)==1"
+    },
+    "multi_cell_k2": {
+      "feasibility_rate": 1.0,
+      "track_e_status": "diagnostic_only_per_cell",
+      "no_pooled_placebo": true
+    },
+    "measurement_instrument_tuple": "greedy_match_markets \u00d7 {single_treated_only|blocked_multi} \u00d7 geo.synthetic_control.placebo.relative_att_post.{geometry}.placebo_band",
+    "scm_jk_reference_role": "null_monitor_context_only"
+  },
+  "scm_jk_vs_placebo_null_context": {
+    "scm_jk_interval_exclusion_fpr": {
+      "mean": 0.07142857142857142,
+      "std": 0.26726124191242434,
+      "p95": 0.34999999999999964,
+      "n": 14
+    },
+    "placebo_inversion_exclusion_fpr": {
+      "mean": 0.0,
+      "std": 0.0,
+      "p95": 0.0,
+      "n": 14
+    },
+    "note": "SCM+JK null-monitor FPR and placebo inversion exclusion are not interchangeable estimands; compare as context only."
+  },
+  "findings": [
+    {
+      "id": "D5-PLAC-FIND-001",
+      "severity": "high",
+      "summary": "placebo() enforces exactly one treated unit; multi-treated panels block.",
+      "implication": "Track E INST-006 multi-treated remains blocked; E4-006 fixture valid."
+    },
+    {
+      "id": "D5-PLAC-FIND-002",
+      "severity": "high",
+      "summary": "Placebo band semantics (placebo_band) are not CI lift intervals.",
+      "implication": "No CalibrationSignal or governed lift from placebo output."
+    },
+    {
+      "id": "D5-PLAC-FIND-003",
+      "severity": "medium",
+      "summary": "Multi-cell k=2 supports per-cell single-treated placebo only.",
+      "implication": "Do not pool pseudo-treated counts or p-values across cells."
+    }
+  ],
+  "overall_verdict": "remain_diagnostic_only_no_promotion",
+  "track_e_recommendation": {
+    "INST-006_single_treated": "diagnostic_only",
+    "INST-006_multi_treated": "blocked",
+    "wording": "Remain **diagnostic_only** (single-treated); **blocked** (multi-treated default). TrustReport null-reference context only; never MMM or CalibrationSignal."
+  },
+  "user_facing_warnings": [
+    "Same null flag on placebo inversion vs SCM+JK does not imply same estimand.",
+    "Placebo p-value / band is geometry-limited to single-treated-in-space.",
+    "Do not average placebo diagnostics across treated cells or multi-treated pools."
+  ],
+  "rules_acknowledged": {
+    "no_production_changes": true,
+    "no_estimator_changes": true,
+    "no_trust_report_changes": true,
+    "no_mmm": true
+  }
+}
