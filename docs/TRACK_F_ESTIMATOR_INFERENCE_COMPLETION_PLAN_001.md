@@ -62,7 +62,7 @@ flowchart LR
 | **Invalid by geometry** | 3 | **Remain blocked** or design-only adapters |
 | **Research only** | 2 | Quarantine; no production wiring |
 
-**P0 blockers (before AUDIT-010 intake):** `full_model` SCM/AugSynth production guard · recovery_runner TBR→TBRRidge mislabel · registry `Bayesian` ≠ BayesianTBR MCMC · DID relative ATT CI policy · TBR aggregate OC (TBR-001).
+**P0 blockers (Track F — address after AUDIT-010 gap list, not before TBR-001):** `full_model` SCM/AugSynth production guard · recovery_runner TBR→TBRRidge mislabel · registry `Bayesian` ≠ BayesianTBR MCMC · DID relative ATT CI policy · TBR aggregate OC (TBR-001).
 
 ---
 
@@ -317,27 +317,30 @@ Candidates may graduate to **governed production diagnostics** (TrustReport role
 
 ```mermaid
 flowchart TD
-  P0[P0 blocking hygiene\nfull_model TBR label Bayesian DID]
   TBR[D5-INST-TBR-001]
-  A10[AUDIT-010\nMMM readiness gap]
-  P2A[D5-AUGSYNTH-KFOLD-001 done]
-  P2B[D5-TBRRIDGE-002\nJK Conformal TSKfold JKP]
-  MMM[MMM intake\nif gaps closed]
+  A10A[AUDIT-010A done]
+  A10[AUDIT-010 MMM readiness gap]
+  P0[Track F P0 hygiene]
+  P2B[D5-TBRRIDGE-002 + Conformal etc]
+  MMM[MMM intake if gaps closed]
 
-  P0 --> TBR
+  A10A --> TBR
   TBR --> A10
-  A10 --> P2A
+  A10 --> P0
   A10 --> P2B
-  A10 --> MMM
+  P0 --> MMM
+  P2B --> MMM
 ```
 
 | Phase | Deliverables | Exit criterion |
 |-------|--------------|----------------|
-| **P0** | F-P0-001…004 PRs | AUDIT-010 checklist items green |
 | **P1** | TBR-001 report + F-GEO-001 + F-EIF-001 | 4 TBR agg combos OC'd or explicitly failed |
 | **P1.5** | AUDIT-010 report | MMM block list + approved diagnostic set |
-| **P2** | ~~AUGSYNTH-KFOLD-001~~ ✅, TBRRIDGE-002 | Valid candidates promoted to Tier B/C or re-blocked |
+| **P0 (post AUDIT-010)** | F-P0-001…004 PRs | AUDIT-010 checklist hygiene items addressed |
+| **P2** | TBRRIDGE-002; AugSynth Conformal; remaining COMBO valid_candidates | Promote to Tier B/C or re-block |
 | **P3** | AugSynth BRB catalog decision; base AugSynth | Optional; no MMM impact |
+
+**Note:** AugSynthCVXPY+Kfold OC ([`D5_INST_AUGSYNTH_KFOLD_001`](track_d/D5_INST_AUGSYNTH_KFOLD_001_REPORT.md)) completed **before** TBR-001 as research characterization; remains **restricted diagnostic**, not a promotion.
 
 ---
 

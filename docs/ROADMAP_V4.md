@@ -29,7 +29,7 @@
 
 **Alignment:** Every active execution item must satisfy [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) before start and at completion.
 
-**Periodic audit (MIP-PERIODIC-AUDIT):** After major milestones and before production-promotion, run the [audit template](MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md) and update the [audit registry](MIP_AUDIT_REGISTRY.md). Cadence: after B5d, after M2, after Track D D1/D2/D3, before MMM intake, before planning/optimizer, before LLM interface. Not a substitute for tests or Track D OC.
+**Periodic audit (MIP-PERIODIC-AUDIT):** After major milestones and before production-promotion, run the [audit template](MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md) and update the [audit registry](MIP_AUDIT_REGISTRY.md). Cadence: after B5d, after M2, after Track D D1/D2/D3, **before MMM intake readiness/gap audit (AUDIT-010)**, before planning/optimizer, before LLM interface. Not a substitute for tests or Track D OC.
 
 **Conceptual reference (not implementation blueprint):** Industry conversion-lift and user-level incrementality practice (e.g. Google Conversion Lift methodology — ghost ads, exposure-opportunity logging, user-randomized designs) informs **Track C governance semantics only**. Do not copy external estimators or certify parity without archived OC.
 
@@ -141,9 +141,10 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | **Combo compatibility** | **D5-INST-COMBO-AUDIT-001** ✅ [`D5_INST_COMBO_AUDIT_001_results.json`](track_d/archives/D5_INST_COMBO_AUDIT_001_results.json) — curated matrix; no Cartesian OC |
 | **Conceptual validity** | **TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001** ✅ [`TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) — literature/method fidelity; synthetic OC ≠ paper validity; prerequisite for AUDIT-010 |
 | **AugSynth Kfold OC** | **D5-INST-AUGSYNTH-KFOLD-001** ✅ [`D5_INST_AUGSYNTH_KFOLD_001_results.json`](track_d/archives/D5_INST_AUGSYNTH_KFOLD_001_results.json) — restricted diagnostic comparator |
+| **Roadmap consistency** | **AUDIT-010A** ✅ [`audits/AUDIT-010A_roadmap_consistency_pre_mmm_gate.md`](audits/AUDIT-010A_roadmap_consistency_pre_mmm_gate.md) — pre-MMM sanity check |
 | **D5-POW-001e** | ✅ Six confirmed methods; SCM+JK reference null FPR; [`D5_POW_001e_results.json`](track_d/archives/D5_POW_001e_results.json) — `acceptable_with_caveats` |
 
-**Next steps:** (1) ~~D5-INST-AUDIT-001~~ ✅ → ~~D5-INST-AUGSYNTH-001~~ ✅ → ~~COMBO-AUDIT-001~~ ✅ → ~~CONCEPTUAL-VALIDITY-001~~ ✅ → (2) D5-INST-TBR-001 → (3) **AUDIT-010** (MMM **readiness/gap** — not promotion) → (4) MMM only if gaps closed → P2/P3: TBRRidge-002, BayesianTBR, TROP. **Implementation plan:** [`TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md`](TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md).
+**Next steps:** (0) ~~AUDIT-010A~~ ✅ → (1) ~~D5-INST-AUDIT-001~~ ✅ → ~~D5-INST-AUGSYNTH-001~~ ✅ → ~~COMBO-AUDIT-001~~ ✅ → ~~CONCEPTUAL-VALIDITY-001~~ ✅ → ~~AUGSYNTH-KFOLD-001~~ ✅ → (2) **D5-INST-TBR-001** → (3) **AUDIT-010** (MMM **readiness/gap** — not promotion) → (4) Track F **P0 hygiene** → (5) Track F **P2 OC** (TBRRidge-002, etc.) → (6) MMM / promotion lane **only if** AUDIT-010 gaps closed. **Implementation plan:** [`TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md`](TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md).
 
 ### Track F — estimator / inference completion (implementation planning)
 
@@ -156,7 +157,8 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | **P0** | Blocking hygiene: `full_model` guard, TBR/TBRRidge labels, registry Bayesian, DID CI policy |
 | **P1** | D5-INST-TBR-001 + aggregate geometry adapter |
 | **P1.5** | AUDIT-010 MMM readiness/gap |
-| **P2** | OC for valid candidates (AugSynth Kfold, TBRRidge JK/TSKfold/Conformal/JKP) |
+| **P2** | TBRRidge-002, AugSynth Conformal, remaining COMBO valid_candidates |
+| **P0 (post AUDIT-010)** | Blocking hygiene: `full_model` guard, TBR/TBRRidge labels, registry Bayesian, DID CI policy |
 | **P3** | Optional catalog clarifications (AugSynth BRB) |
 
 **Non-goals:** No fixes in planning doc; no MMM ingestion; no CalibrationSignal expansion without separate governance PR.
@@ -431,7 +433,7 @@ See [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIGATIONS.md) § Phase 12 program for c
 | **In scope** | Governance doc / validation plan update; explicit “go / no-go / monitor-only” per config |
 | **Out of scope** | `production_safe` label; catalog auto-promotion; blocking gates |
 | **Exit** | Recorded decision with citations to Run 002 and OC characterization; no promotion without passing promotion policy |
-| **Status** | **Complete** — [`PHASE13_GOVERNANCE_DECISION_001.md`](PHASE13_GOVERNANCE_DECISION_001.md) |
+| **Status** | **Complete (historical)** — [`PHASE13_GOVERNANCE_DECISION_001.md`](PHASE13_GOVERNANCE_DECISION_001.md). **Not** the current MMM or instrument promotion path; superseded by Track D/E/F characterization + **AUDIT-010** readiness/gap. |
 
 ---
 

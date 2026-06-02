@@ -195,7 +195,7 @@ Per **method × geometry_mode** row, record at minimum:
 30 **curated** estimator × inference × geometry tuples (not a blind Cartesian product). Key gates:
 
 - **TBR** — valid only on **aggregate 1×1**; invalid on unit multi-control.
-- **AugSynthCVXPY + Kfold** — valid OC candidate; **BRB/Placebo** blocked at catalog interface until clarified.
+- **AugSynthCVXPY + Kfold** — ~~valid OC candidate~~ **characterized restricted** ([`D5_INST_AUGSYNTH_KFOLD_001_REPORT.md`](track_d/D5_INST_AUGSYNTH_KFOLD_001_REPORT.md) ✅).
 - **TBRRidge + Kfold/BRB** — already characterized; other inference modes unvalidated.
 - **AUDIT-010** — MMM readiness/gap audit blocks invalid combos from intake.
 
@@ -213,4 +213,14 @@ Literature/method fidelity audit for all estimator and inference families. **Syn
 
 ---
 
-*ROADMAP-DESIGN-READOUT-UPDATE-001 v1.0.3 — TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001 complete*
+## 15. Roadmap consistency audit (AUDIT-010A)
+
+**Status:** ✅ [`audits/AUDIT-010A_roadmap_consistency_pre_mmm_gate.md`](audits/AUDIT-010A_roadmap_consistency_pre_mmm_gate.md)
+
+Pre-MMM sanity check after Track E completion, D5 instrument characterization, COMBO audit, conceptual validity, Track F, and AugSynth Kfold OC. **Verdict:** `continue_with_minor_corrections` — roadmaps aligned; stale next-lines corrected.
+
+**Corrected sequence:** D5-INST-TBR-001 → AUDIT-010 (readiness/gap) → Track F P0 hygiene → Track F P2 OC → promotion lane only if AUDIT-010 closes gaps.
+
+---
+
+*ROADMAP-DESIGN-READOUT-UPDATE-001 v1.0.4 — AUDIT-010A complete*

@@ -218,6 +218,7 @@ Where applicable, each inventory row records:
 | Estimator×inference×geometry | **D5-INST-COMBO-AUDIT-001** ✅ — curated compatibility matrix |
 | Conceptual / literature fidelity | **TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001** ✅ — paper vs implementation; synthetic OC ≠ validity; **0** MMM-ready paths |
 | Implementation completion plan | **TRACK-F-ESTIMATOR-INFERENCE-COMPLETION-PLAN-001** ✅ — FIX/BLOCK/adapter roadmap from D audits |
+| Roadmap consistency | **AUDIT-010A** ✅ — pre-MMM sanity check; corrected sequence in [`audits/AUDIT-010A_roadmap_consistency_pre_mmm_gate.md`](audits/AUDIT-010A_roadmap_consistency_pre_mmm_gate.md) |
 
 ---
 
