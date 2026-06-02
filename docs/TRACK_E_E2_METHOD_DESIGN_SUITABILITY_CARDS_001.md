@@ -345,6 +345,8 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 
 **Card status unchanged** except explicit CV-001 cross-links on INST-001–006 above; statuses remain governed by OC + Track B, not literature alone.
 
+**Track F:** [`TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md`](TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md) — promotion tiers and P0–P2 fix sequence when statuses change post OC.
+
 ---
 
 ## Part D — Combination matrix (quick reference)

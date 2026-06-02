@@ -142,7 +142,23 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | **Conceptual validity** | **TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001** ✅ [`TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) — literature/method fidelity; synthetic OC ≠ paper validity; prerequisite for AUDIT-010 |
 | **D5-POW-001e** | ✅ Six confirmed methods; SCM+JK reference null FPR; [`D5_POW_001e_results.json`](track_d/archives/D5_POW_001e_results.json) — `acceptable_with_caveats` |
 
-**Next steps:** (1) ~~D5-INST-AUDIT-001~~ ✅ → ~~D5-INST-AUGSYNTH-001~~ ✅ → ~~COMBO-AUDIT-001~~ ✅ → ~~CONCEPTUAL-VALIDITY-001~~ ✅ → (2) D5-INST-TBR-001 → (3) **AUDIT-010** (MMM **readiness/gap** — not promotion) → (4) MMM only if gaps closed → P2/P3: TBRRidge-002, BayesianTBR, TROP.
+**Next steps:** (1) ~~D5-INST-AUDIT-001~~ ✅ → ~~D5-INST-AUGSYNTH-001~~ ✅ → ~~COMBO-AUDIT-001~~ ✅ → ~~CONCEPTUAL-VALIDITY-001~~ ✅ → (2) D5-INST-TBR-001 → (3) **AUDIT-010** (MMM **readiness/gap** — not promotion) → (4) MMM only if gaps closed → P2/P3: TBRRidge-002, BayesianTBR, TROP. **Implementation plan:** [`TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md`](TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md).
+
+### Track F — estimator / inference completion (implementation planning)
+
+**Roadmap ID:** `TRACK-F-ESTIMATOR-INFERENCE-COMPLETION`  
+**Status:** **plan v1** — converts Track D compatibility + conceptual validity + OC into fix roadmap  
+**Document:** [`TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md`](TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md)
+
+| Phase | Scope |
+|-------|--------|
+| **P0** | Blocking hygiene: `full_model` guard, TBR/TBRRidge labels, registry Bayesian, DID CI policy |
+| **P1** | D5-INST-TBR-001 + aggregate geometry adapter |
+| **P1.5** | AUDIT-010 MMM readiness/gap |
+| **P2** | OC for valid candidates (AugSynth Kfold, TBRRidge JK/TSKfold/Conformal/JKP) |
+| **P3** | Optional catalog clarifications (AugSynth BRB) |
+
+**Non-goals:** No fixes in planning doc; no MMM ingestion; no CalibrationSignal expansion without separate governance PR.
 
 ### Track E — method suitability & triangulation
 

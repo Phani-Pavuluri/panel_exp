@@ -322,7 +322,15 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Artifact:** [`docs/TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) · [`docs/track_d/archives/TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001_results.json`](track_d/archives/TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001_results.json)
 
-**Verdict:** **`continue_with_restricted_diagnostics_only`** — method-by-method literature fidelity; **0** production-ready paths; synthetic OC ≠ conceptual validity. **AUDIT-010 prerequisite** (with D5-INST-TBR-001). Blockers: `full_model` SCM, registry Bayesian≠MCMC, TBR/TBRRidge conflation, DID relative CI.
+**Verdict:** **`continue_with_restricted_diagnostics_only`** — method-by-method literature fidelity; **0** production-ready paths; synthetic OC ≠ conceptual validity. **AUDIT-010 prerequisite** (with D5-INST-TBR-001). Blockers: `full_model` SCM, registry Bayesian≠MCMC, TBR/TBRRidge conflation, DID relative CI. **Implementation plan:** [`TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md`](TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md).
+
+---
+
+## TRACK-F-ESTIMATOR-INFERENCE-COMPLETION-PLAN-001 (2026-06-02)
+
+**Artifact:** [`docs/TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md`](TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md)
+
+**Verdict:** **plan v1** — 30 COMBO tuples dispositioned (FIX/BLOCK/HOLD/R&D); P0 hygiene → TBR-001 → AUDIT-010 → P2 OC. **Planning only** — no code changes in package.
 
 ---
 
