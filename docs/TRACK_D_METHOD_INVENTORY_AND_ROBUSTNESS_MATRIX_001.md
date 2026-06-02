@@ -214,6 +214,7 @@ Where applicable, each inventory row records:
 | SCM Placebo | **D5-INST-PLACEBO-001** ✅ — diagnostic_only; multi-treated blocked |
 | Full estimator × inference × geometry | **D5-INST-AUDIT-001** ✅ — code probes + roadmap |
 | AugSynthCVXPY point/JK | **D5-INST-AUGSYNTH-001** ✅ — diagnostic_only; not CalibrationSignal |
+| AugSynthCVXPY + Kfold | **D5-INST-AUGSYNTH-KFOLD-001** ✅ — restricted diagnostic comparator |
 | Estimator×inference×geometry | **D5-INST-COMBO-AUDIT-001** ✅ — curated compatibility matrix |
 | Conceptual / literature fidelity | **TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001** ✅ — paper vs implementation; synthetic OC ≠ validity; **0** MMM-ready paths |
 | Implementation completion plan | **TRACK-F-ESTIMATOR-INFERENCE-COMPLETION-PLAN-001** ✅ — FIX/BLOCK/adapter roadmap from D audits |

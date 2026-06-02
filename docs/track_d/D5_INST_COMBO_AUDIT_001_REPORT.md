@@ -83,7 +83,7 @@
 |----------|---------|--------|
 | **P1** | D5-INST-TBR-001 | TBR aggregate path (4 combos above) |
 | **P2** | D5-INST-TBRRIDGE-002 | TBRRidge JK, Conformal, JKP, Bayesian (unit) |
-| **P2** | D5-INST-AUGSYNTH-002 | AugSynthCVXPY + Kfold (probe-validated candidate) |
+| **P2** | ~~D5-INST-AUGSYNTH-KFOLD-001~~ ✅ | [`D5_INST_AUGSYNTH_KFOLD_001_REPORT.md`](D5_INST_AUGSYNTH_KFOLD_001_REPORT.md) |
 | **P0 after P1** | AUDIT-010 | MMM readiness/gap — block invalid tuples from intake |
 
 ---

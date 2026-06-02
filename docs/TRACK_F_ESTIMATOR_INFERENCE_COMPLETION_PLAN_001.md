@@ -28,7 +28,7 @@
 | [`D5_INST_COMBO_AUDIT_001`](track_d/D5_INST_COMBO_AUDIT_001_REPORT.md) | ✅ | 30 curated tuples; fix vs block vs OC |
 | [`TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) | ✅ | Literature fidelity; blocking deviations |
 | [`D5_INST_AUGSYNTH_001`](track_d/D5_INST_AUGSYNTH_001_REPORT.md) | ✅ | AugSynthCVXPY point/JK diagnostic comparator |
-| **D5-INST-AUGSYNTH-KFOLD-001** | ⏳ planned | AugSynthCVXPY + Kfold OC — COMBO valid_candidate |
+| [`D5_INST_AUGSYNTH_KFOLD_001`](track_d/D5_INST_AUGSYNTH_KFOLD_001_REPORT.md) | ✅ | AugSynthCVXPY + Kfold restricted diagnostic |
 | **D5-INST-TBR-001** | ⏳ planned | Aggregate class TBR OC — **updates §7 candidates** |
 | **AUDIT-010** | ⏳ planned | MMM readiness/gap — **finalizes production intake set** |
 
@@ -74,7 +74,7 @@ Legend: **FIX** = implement + OC · **BLOCK** = remain forbidden · **ADAPT** = 
 |-----------|-----------|----------|--------------|---------------------|-------------|
 | AugSynthCVXPY | point | single_cell | already_characterized | **HOLD** | diagnostic TrustReport |
 | AugSynthCVXPY | JK | single_cell | already_characterized | **HOLD** | diagnostic TrustReport |
-| AugSynthCVXPY | Kfold | single_cell | valid_candidate | **FIX** + D5-AUGSYNTH-KFOLD-001 | restricted diagnostic |
+| AugSynthCVXPY | Kfold | single_cell | ~~valid_candidate~~ characterized | **HOLD** | restricted diagnostic |
 | AugSynthCVXPY | BRB | single_cell | invalid_by_interface | **CLEAN-I** then decide | block unless catalog+concept |
 | AugSynthCVXPY | Conformal | single_cell | valid_candidate | **FIX** + OC | restricted / block MMM |
 | AugSynthCVXPY | Placebo | single_treated | invalid_by_interface | **BLOCK** (no catalog support) | blocked |
@@ -133,7 +133,7 @@ These tuples are **conceptually plausible** (or blocking hygiene) and should be 
 
 | Combo | Battery | Fix scope |
 |-------|---------|-----------|
-| `AugSynthCVXPY + Kfold + single_cell` | D5-AUGSYNTH-KFOLD-001 | Probe OK; needs OC on 001e windows |
+| `AugSynthCVXPY + Kfold + single_cell` | ~~D5-AUGSYNTH-KFOLD-001~~ ✅ | OC complete — remain restricted diagnostic |
 | `AugSynthCVXPY + Conformal + single_cell` | D5-AUGSYNTH-003 (proposed) | Exchangeability caveat; not MMM |
 | `TBRRidge + TimeSeriesKfold + single_cell` | D5-TBRRIDGE-002 | Registry wired; OC missing |
 
@@ -247,7 +247,7 @@ Candidates may graduate to **governed production diagnostics** (TrustReport role
 | **AugSynthCVXPY + JK** | AUGSYNTH-001; spillover on card | diagnostic_only | neither |
 | **TBR aggregate + point** | TBR-001 ✅; F-GEO-001; F-EIF-001 | restricted diagnostic | neither |
 | **TBR aggregate + JK/JKP/Kfold** | TBR-001 ✅; estimand card distinct from TBRRidge | restricted diagnostic | neither |
-| **AugSynthCVXPY + Kfold** | AUGSYNTH-KFOLD-001; conceptual restricted OK | restricted diagnostic | neither |
+| **AugSynthCVXPY + Kfold** | AUGSYNTH-KFOLD-001 ✅; conceptual restricted OK | restricted diagnostic | neither |
 | **TBRRidge_Kfold / BRB** | TBRRIDGE-001 ✅ maintained | restricted (existing) | neither |
 | **TBRRidge + TimeSeriesKfold** | TBRRIDGE-002 ✅ | restricted diagnostic | neither |
 | **DID_Bootstrap** | DEF-003 enforced in export | restricted | neither |
@@ -320,7 +320,7 @@ flowchart TD
   P0[P0 blocking hygiene\nfull_model TBR label Bayesian DID]
   TBR[D5-INST-TBR-001]
   A10[AUDIT-010\nMMM readiness gap]
-  P2A[D5-AUGSYNTH-KFOLD-001 Kfold]
+  P2A[D5-AUGSYNTH-KFOLD-001 done]
   P2B[D5-TBRRIDGE-002\nJK Conformal TSKfold JKP]
   MMM[MMM intake\nif gaps closed]
 
@@ -336,7 +336,7 @@ flowchart TD
 | **P0** | F-P0-001…004 PRs | AUDIT-010 checklist items green |
 | **P1** | TBR-001 report + F-GEO-001 + F-EIF-001 | 4 TBR agg combos OC'd or explicitly failed |
 | **P1.5** | AUDIT-010 report | MMM block list + approved diagnostic set |
-| **P2** | AUGSYNTH-KFOLD-001, TBRRIDGE-002 | Valid candidates promoted to Tier B/C or re-blocked |
+| **P2** | ~~AUGSYNTH-KFOLD-001~~ ✅, TBRRIDGE-002 | Valid candidates promoted to Tier B/C or re-blocked |
 | **P3** | AugSynth BRB catalog decision; base AugSynth | Optional; no MMM impact |
 
 ---

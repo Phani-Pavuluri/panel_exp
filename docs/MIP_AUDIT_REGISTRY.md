@@ -318,6 +318,15 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 ---
 
+## D5-INST-AUGSYNTH-KFOLD-001 checkpoint (2026-06-02)
+
+**Artifact:** [`docs/track_d/archives/D5_INST_AUGSYNTH_KFOLD_001_results.json`](track_d/archives/D5_INST_AUGSYNTH_KFOLD_001_results.json)  
+**Report:** [`docs/track_d/D5_INST_AUGSYNTH_KFOLD_001_REPORT.md`](track_d/D5_INST_AUGSYNTH_KFOLD_001_REPORT.md)
+
+**Verdict:** **`remain_restricted_diagnostic_comparator`** — AugSynthCVXPY+Kfold feasible single-cell + k=2 per-cell; null FPR 0 on battery; **not** CalibrationSignal; COMBO `valid_candidate` → characterized restricted.
+
+---
+
 ## TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001 checkpoint (2026-06-02)
 
 **Artifact:** [`docs/TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) · [`docs/track_d/archives/TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001_results.json`](track_d/archives/TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001_results.json)
