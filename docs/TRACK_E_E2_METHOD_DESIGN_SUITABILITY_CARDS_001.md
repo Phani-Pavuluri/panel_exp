@@ -69,8 +69,8 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 | **Compatible measurement instruments** | `SCM_UnitJackKnife` per-cell only (001e contract). |
 | **Incompatible / blocked** | Pooled multi-cell SCM+JK null FPR or lift; supergeo without D5-DES-SUPERGEO-001. |
 | **Required diagnostics** | E-DES-MCELL-001–012 (especially 004–007, 011); E-SCM-DONOR-001 per cell. |
-| **OC evidence** | D5-POW-001e: all six methods **acceptable** multi_cell; `thinningdesign` test_1 mean null FPR ≈ 3.6%; no pooled metric. |
-| **Known restrictions** | Multiple-comparison risk; shared-control stress when k large; optimal k not characterized (D5-MCELL planned). |
+| **OC evidence** | D5-POW-001e + **D5-MCELL-001** ✅ [`D5_MCELL_001_results.json`](track_d/archives/D5_MCELL_001_results.json): k≤2 typical; k≥3 degrades; `thinningdesign` test_1 slightly elevated at k=2. |
+| **Known restrictions** | Multiple-comparison risk; shared-control stress when k≥3; conservative k≤1 if all methods required. |
 | **Allowed claims** | Per-cell null-monitor; per-cell balance/donor diagnostics to TrustReport. |
 | **Disallowed claims** | Pooled multi-cell lift; single headline FPR across cells; MMM pooled cell evidence. |
 | **Track B / CalibrationSignal** | Per-cell signals only if future policy defines cell-level CalibrationSignal keys (not default today). |

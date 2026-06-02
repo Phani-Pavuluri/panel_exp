@@ -302,7 +302,19 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **`target_population_shift_severe`** — Tp/Te pair design + trim excludes most markets; classical pair power on Te only; flat SCM+JK / 001e **blocked**. Track E GEO-004 stays **`characterization_required`**.
 
-**Next:** D5-MCELL optimal-cell-count characterization.
+**Next:** Other instrument OC batteries; not MMM.
+
+---
+
+## D5-MCELL-001 checkpoint (2026-06-02)
+
+**Artifact:** [`docs/track_d/archives/D5_MCELL_001_results.json`](track_d/archives/D5_MCELL_001_results.json)  
+**Report:** [`docs/track_d/D5_MCELL_001_REPORT.md`](track_d/D5_MCELL_001_REPORT.md)  
+**Harness:** `panel_exp/validation/track_d_d5_mcell_001.py`
+
+**Verdict:** **`acceptable_with_caveats_two_cells`** — k≤2 for most tier-1 methods on n_geos=16 battery; conservative k≤1; k≥3 degrades. Per-cell SCM+JK only; no pooling.
+
+**Next:** Other instrument OC; AUDIT-010 before MMM.
 
 ---
 

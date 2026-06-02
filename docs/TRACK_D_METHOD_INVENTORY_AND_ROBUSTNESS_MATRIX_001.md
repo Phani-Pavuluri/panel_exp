@@ -209,6 +209,7 @@ Where applicable, each inventory row records:
 | Track E E5/E6 | ✅ [`TRACK_E_E5_...`](TRACK_E_E5_CALIBRATIONSIGNAL_ELIGIBILITY_POLICY_001.md) · E6 tests `tests/track_e/` |
 | supergeos | **D5-DES-SUPERGEO-001** ✅ — separate geometry; blocked flat SCM+JK |
 | trimmedmatch | **D5-DES-TRIM-001** ✅ — severe population shift; diagnostic pair power only |
+| Multi-cell geometry | **D5-MCELL-001** ✅ — k≤2 typical; per-cell only |
 
 ---
 

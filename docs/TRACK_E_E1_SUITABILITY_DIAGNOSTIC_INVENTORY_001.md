@@ -101,7 +101,7 @@ Every diagnostic evaluation is scoped to:
 | E-DES-MCELL-009 | Multiple-comparison warning | Any cell FPR above concern threshold | k cells inflate family-wise error | 001e flag |
 | E-DES-MCELL-010 | Minimum viable controls per cell | Per-cell control adequacy | Cell cannot support JK | 001e |
 | E-DES-MCELL-011 | No pooled multi-cell claim without governed pooling rule | Explicit ban on pooled multi-cell lift/null | Implied platform claim from pooled metric | Governance |
-| E-DES-MCELL-012 | Recommended / maximum feasible cell count | Optimal k vs degradation | k too large degrades per-cell OC | **D5-MCELL** (planned) |
+| E-DES-MCELL-012 | Recommended / maximum feasible cell count | Optimal k vs degradation | k too large degrades per-cell OC | **Characterized** — D5-MCELL-001 ✅ (k≤2 typical) |
 
 **Gate rule:** Multi-cell **suitability_with_caveats** at best until E-DES-MCELL-012 characterized; **never** pool cells without rule.
 
