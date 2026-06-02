@@ -1,0 +1,274 @@
+{
+  "artifact_id": "D5-DES-TRIM-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-02T18:48:31.176060+00:00",
+  "lane": "research",
+  "binding_docs": [
+    "TRACK_D_DESIGN_METHOD_INVENTORY_001",
+    "DESIGN_INVENTORY_001_results",
+    "TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001",
+    "TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001",
+    "D5_DES_SUPERGEO_001_REPORT",
+    "AUDIT-009_track_e_completion_gate"
+  ],
+  "registry": {
+    "registry_name": "trimmedmatch",
+    "aliases": [
+      "trimmed_match"
+    ],
+    "geo_run_supported": false,
+    "output_type": "assignment_dict",
+    "randomizer_cls": "TrimmedMatchDesign",
+    "module_path": "panel_exp/design/trimmed_match.py",
+    "entrypoint": "TrimmedMatchDesign.run_design(use_imbalance=True)",
+    "handler_registered": "run_geo_experiment_design"
+  },
+  "input_requirements": {
+    "panel_dataset": "PanelDataset with wide_data (markets \u00d7 time periods)",
+    "optional_spend_data": "DataFrame aligned to panel for iROAS power path",
+    "constructor_kwargs": [
+      "n_test_groups",
+      "min_pairs",
+      "max_pairs",
+      "trim_rate",
+      "test_size (Te fraction)",
+      "num_simulations",
+      "pairing_method (distance|correlation)"
+    ],
+    "geo_experiment_design": "not supported (geo_run_supported=false)"
+  },
+  "output_structure": {
+    "run_design_return": "(best_design: dict, power_results: list)",
+    "best_design_keys": [
+      "geo_pairs",
+      "test_groups",
+      "control_group",
+      "metric",
+      "score",
+      "power"
+    ],
+    "assignment_geometry": "pair_level test/control lists per n_test_groups",
+    "not_emitted": "control/test_* flat assignment dict for geo_runner"
+  },
+  "population_semantics": {
+    "tp_te_split": "Tp = first (1-test_size) of periods for pairing; Te for power",
+    "pairing": "Hungarian assignment on Tp; at most num_pairs pairs (2*num_pairs markets max)",
+    "trimming": "distribution_based trim_rate tails on pair |\u0394Tp response|",
+    "excluded_markets": "never paired + both markets in trimmed-out pairs",
+    "target_population": "union of markets in trimmed_pairs after rerandomization"
+  },
+  "estimand_implications": {
+    "full_universe_claim": {
+      "supported": false,
+      "reason": "Only subset of markets enter pairing; trim removes additional pairs."
+    },
+    "retained_trimmed_population": {
+      "supported": true,
+      "description": "ATT / lift on markets appearing in trimmed_pairs after Tp pairing."
+    },
+    "pair_level_contrast": {
+      "supported": true,
+      "description": "Within-pair randomization; power on pair lifts in Te."
+    },
+    "bridge_to_geo_relative_att_post": {
+      "required": true,
+      "default_comparable": false
+    },
+    "oc_tensor_representation": {
+      "design_method_id": "trimmedmatch",
+      "geometry_mode": "trimmed_population",
+      "measurement_instrument_id": "trimmed_match.pair_lift_classical_ci",
+      "valid_without_bridge": false
+    }
+  },
+  "readout_compatibility": [
+    {
+      "instrument": "SCM+UnitJackKnife @ full candidate universe",
+      "compatibility": "blocked",
+      "reason": "Trimming + pair cap exclude markets; estimand is retained-pair population."
+    },
+    {
+      "instrument": "SCM+UnitJackKnife @ retained markets only",
+      "compatibility": "blocked_without_estimand_bridge",
+      "reason": "Pair-structured test/control; not tier-1 shared-donor geometry."
+    },
+    {
+      "instrument": "TBRRidge+Kfold (geo unit panel)",
+      "compatibility": "blocked_without_bridge",
+      "reason": "Requires explicit retained-population assignment export."
+    },
+    {
+      "instrument": "TrimmedMatchDesign.power_analysis_with_cross_validation",
+      "compatibility": "native_diagnostic_only",
+      "reason": "Classical pair-lift CIs on Te; not PowerAnalysis / SCM+JK."
+    },
+    {
+      "instrument": "Geo PowerAnalysis (2-row agg)",
+      "compatibility": "not_trimmedmatch_geometry",
+      "reason": "Separate product path (TBRRidge+Kfold on agg panel)."
+    },
+    {
+      "instrument": "D5-POW-001e null-monitor tensor",
+      "compatibility": "excluded",
+      "reason": "tier_2_separate_characterization; population shift invalidates 001e."
+    }
+  ],
+  "panel_characterizations": [
+    {
+      "n_markets": 16,
+      "n_periods": 50,
+      "tp_te_split": {
+        "n_periods": 50,
+        "tp_periods": 35,
+        "te_periods": 15,
+        "test_size_fraction": 0.3
+      },
+      "num_pairs_requested": 5,
+      "n_pairs_before_trim": 5,
+      "n_pairs_after_trim": 3,
+      "pair_trim_fraction_removed": 0.4,
+      "population": {
+        "n_candidate_markets": 16,
+        "n_markets_in_optimal_pairing": 10,
+        "n_markets_retained_after_trim": 6,
+        "n_markets_removed_by_trim": 4,
+        "n_markets_never_paired": 6,
+        "share_markets_retained": 0.375,
+        "share_tp_response_mass_retained": 0.3742795389280452,
+        "share_tp_mass_never_paired": 0.37887312428181014,
+        "share_tp_mass_trimmed_out": 0.2468473367901447,
+        "high_volume_quartile_retention_rate": 0.0,
+        "non_high_volume_retention_rate": 0.5,
+        "target_population_shift_severity": "severe"
+      },
+      "pair_balance": {
+        "n_trimmed_pairs": 3,
+        "mean_abs_pair_tp_diff": 23.101889420801097,
+        "median_abs_pair_tp_diff": 23.81127118388804,
+        "mean_relative_pair_tp_diff": 0.006539634202079235
+      },
+      "balance_before_after_trim": {
+        "mean_abs_tp_diff_all_pairs": 22.37182920505875,
+        "mean_abs_tp_diff_trimmed_pairs": 23.101889420801097,
+        "trim_improves_balance": false
+      }
+    },
+    {
+      "n_markets": 20,
+      "n_periods": 50,
+      "tp_te_split": {
+        "n_periods": 50,
+        "tp_periods": 35,
+        "te_periods": 15,
+        "test_size_fraction": 0.3
+      },
+      "num_pairs_requested": 5,
+      "n_pairs_before_trim": 5,
+      "n_pairs_after_trim": 3,
+      "pair_trim_fraction_removed": 0.4,
+      "population": {
+        "n_candidate_markets": 20,
+        "n_markets_in_optimal_pairing": 9,
+        "n_markets_retained_after_trim": 6,
+        "n_markets_removed_by_trim": 3,
+        "n_markets_never_paired": 11,
+        "share_markets_retained": 0.3,
+        "share_tp_response_mass_retained": 0.2992094755622024,
+        "share_tp_mass_never_paired": 0.5547054480349439,
+        "share_tp_mass_trimmed_out": 0.14608507640285387,
+        "high_volume_quartile_retention_rate": 0.2,
+        "non_high_volume_retention_rate": 0.3333333333333333,
+        "target_population_shift_severity": "severe"
+      },
+      "pair_balance": {
+        "n_trimmed_pairs": 3,
+        "mean_abs_pair_tp_diff": 26.77735520968842,
+        "median_abs_pair_tp_diff": 23.81127118388804,
+        "mean_relative_pair_tp_diff": 0.007601304546728187
+      },
+      "balance_before_after_trim": {
+        "mean_abs_tp_diff_all_pairs": 32.86317302804673,
+        "mean_abs_tp_diff_trimmed_pairs": 26.77735520968842,
+        "trim_improves_balance": true
+      },
+      "run_design": {
+        "run_design_attempted": true,
+        "run_design_status": "completed",
+        "best_design_metric": "total_imbalance",
+        "best_design_score": 1.5309221630585939,
+        "best_design_power": 0.0,
+        "assignment": {
+          "assignment_available": true,
+          "assignment_geometry": "pair_level_split_one_geo_per_pair_to_test_or_control",
+          "n_test_group_markets": 8,
+          "n_control_markets": 8,
+          "n_test_groups": 1,
+          "flat_control_test_dict": false,
+          "scm_jk_donor_feasibility": {
+            "n_control_units": 8,
+            "meets_min_2_controls": true,
+            "note": "Controls are one market per retained pair; not the shared-donor geometry of tier-1 geo designs."
+          },
+          "power_semantics": {
+            "classical_pair_lift_ci": true,
+            "geo_power_analysis_2row": false,
+            "mmm_ingress": false
+          }
+        }
+      }
+    }
+  ],
+  "findings": [
+    {
+      "id": "D5-TRIM-FIND-001",
+      "severity": "high",
+      "summary": "Target population is retained trimmed pairs only \u2014 large share of candidate markets excluded.",
+      "implication": "Full-universe geo.relative_att_post claims are invalid without bridge."
+    },
+    {
+      "id": "D5-TRIM-FIND-002",
+      "severity": "high",
+      "summary": "Native power uses classical pair-lift CIs on Te, not SCM+JK or geo PowerAnalysis.",
+      "implication": "Excluded from D5-POW-001e; diagnostic_only for native instrument."
+    },
+    {
+      "id": "D5-TRIM-FIND-003",
+      "severity": "medium",
+      "summary": "Assignment is pair-structured (one market per pair to test, other to control).",
+      "implication": "Not compatible with shared-donor multi-cell SCM+JK readout."
+    },
+    {
+      "id": "D5-TRIM-FIND-004",
+      "severity": "medium",
+      "summary": "run_design sweeps num_pairs from min_pairs..max_pairs with rerandomization (100 iter) per step.",
+      "implication": "Expensive; product path separate from GeoExperimentDesign."
+    }
+  ],
+  "overall_verdict": "target_population_shift_severe",
+  "track_e": {
+    "geo_004_card": "characterization_required",
+    "separate_population_design": true,
+    "move_to_suitable": false,
+    "move_to_diagnostic_only": false,
+    "diagnostic_only_for": [
+      "native pair power_analysis_with_cross_validation"
+    ],
+    "rationale": "D5-DES-TRIM-001 confirms severe target-population shift on the battery: most candidate markets never enter or are trimmed out. Native power is classical pair-lift on Te \u2014 not governed SCM+JK. Keep characterization_required; disallow full-universe lift and MMM ingress without estimand bridge.",
+    "overall_verdict": "target_population_shift_severe"
+  },
+  "excluded_from": [
+    "D5-POW-001e",
+    "tier_1_scm_jk_null_fpr_tensor"
+  ],
+  "next_steps": [
+    "D5-MCELL optimal-cell-count characterization"
+  ],
+  "rules_acknowledged": {
+    "no_production_behavior_changes": true,
+    "no_design_algorithm_changes": true,
+    "no_estimator_inference_changes": true,
+    "no_trust_report_changes": true,
+    "no_mmm_planning_feed": true,
+    "no_promotion": true
+  }
+}

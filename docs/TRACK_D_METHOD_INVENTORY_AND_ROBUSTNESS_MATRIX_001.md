@@ -123,7 +123,7 @@ Where applicable, each inventory row records:
 | **DES-005** | `stratifiedrandomization` | Yes | unreviewed | TBD | Stratified experiments | D1b |
 | **DES-006** | `quickblock` | No | unreviewed | TBD | Blocking designs | Defer |
 | **DES-007** | `matchedpair` | No | unreviewed | TBD | Paired designs | Defer |
-| **DES-008** | `trimmedmatch` | No | unreviewed | TBD | Trimmed match | Defer |
+| **DES-008** | `trimmedmatch` | No | **characterized** (D5-DES-TRIM-001) | trimmed_population | Pair trim + Tp/Te | Blocked for 001e |
 | **DES-009** | `supergeos` | No | **characterized** (D5-DES-SUPERGEO-001) | separate_geometry | Cluster/supergeo MILP pairs | Blocked for 001e |
 | **DES-010** | Rerandomization (capability on geo designs) | Partial | **characterization_required** | Spec field | Rerandomization tests ([D1](TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md)) | D5-DES-010a |
 | **DES-011** | Whitelist / blacklist constraints | Partial | **restricted** | Spec + design validation | Constraint validity ([D1](TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md)) | D0b record |
@@ -208,7 +208,7 @@ Where applicable, each inventory row records:
 | Track E E3/E4 | ✅ [`TRACK_E_E3_...`](TRACK_E_E3_TRIANGULATION_SCHEMA_001.md) · [`TRACK_E_E4_...`](TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001.md) |
 | Track E E5/E6 | ✅ [`TRACK_E_E5_...`](TRACK_E_E5_CALIBRATIONSIGNAL_ELIGIBILITY_POLICY_001.md) · E6 tests `tests/track_e/` |
 | supergeos | **D5-DES-SUPERGEO-001** ✅ — separate geometry; blocked flat SCM+JK |
-| trimmedmatch | D5-DES-TRIM-001 (next) |
+| trimmedmatch | **D5-DES-TRIM-001** ✅ — severe population shift; diagnostic pair power only |
 
 ---
 
