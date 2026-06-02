@@ -134,9 +134,10 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | **supergeos** | **D5-DES-SUPERGEO-001** ✅ [`D5_DES_SUPERGEO_001_results.json`](track_d/archives/D5_DES_SUPERGEO_001_results.json) — separate geometry; blocked for 001e |
 | **trimmedmatch** | **D5-DES-TRIM-001** ✅ [`D5_DES_TRIM_001_results.json`](track_d/archives/D5_DES_TRIM_001_results.json) — separate population; blocked for 001e |
 | **Multi-cell k** | **D5-MCELL-001** ✅ [`D5_MCELL_001_results.json`](track_d/archives/D5_MCELL_001_results.json) — k≤2 typical; k≥3 degrades |
+| **TBRRidge OC** | **D5-INST-TBRRIDGE-001** ✅ [`D5_INST_TBRRIDGE_001_results.json`](track_d/archives/D5_INST_TBRRIDGE_001_results.json) — remain restricted |
 | **D5-POW-001e** | ✅ Six confirmed methods; SCM+JK reference null FPR; [`D5_POW_001e_results.json`](track_d/archives/D5_POW_001e_results.json) — `acceptable_with_caveats` |
 
-**Next steps:** (1) ~~D5-DES-SUPERGEO-001~~ ✅ → ~~D5-DES-TRIM-001~~ ✅ → ~~**D5-MCELL-001**~~ ✅ → (2) other instrument OC batteries → (3) MMM integration (post-governance).
+**Next steps:** (1) ~~D5-MCELL-001~~ ✅ → **D5-INST-TBRRIDGE-001** ✅ → D5-INST-PLACEBO-001 / DID → (2) AUDIT-010 → (3) MMM (post-governance only).
 
 ### Track E — method suitability & triangulation
 

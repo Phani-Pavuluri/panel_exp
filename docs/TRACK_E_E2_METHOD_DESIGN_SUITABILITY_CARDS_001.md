@@ -235,7 +235,7 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 | **Compatible design methods** | Geo orchestrator default; **not** interchangeable with unit SCM+JK 001e tensor. |
 | **Incompatible / blocked** | Governed compare to SCM+JK relative ATT CI without estimand bridge; multi-treated pre-fix geometry. |
 | **Required diagnostics** | E-INST-OC-006; E-ESTIMAND-003; DEF-001. |
-| **OC evidence** | 001c: point correlation high but ~12× magnitude vs unit SCM; Track D D3. |
+| **OC evidence** | 001c + **D5-INST-TBRRIDGE-001** ✅ — null FPR may match but unit point scale ≠ SCM+JK; agg2 geo-power path. |
 | **Allowed claims** | Diagnostic / exploratory; TrustReport restricted role. |
 | **Disallowed claims** | CalibrationSignal; MMM; primary null-monitor for unit geo tests. |
 | **Track B / CalibrationSignal** | **Excluded**. |
@@ -250,7 +250,7 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 | **Purpose** | Block residual bootstrap uncertainty on TBR path. |
 | **Compatible design geometry** | Geo aggregated / multi_treated per DEF-002 scope. |
 | **Required diagnostics** | E-INST-OC-007; DEF-002. |
-| **OC evidence** | Track D D3; Phase 12 characterization tiers. |
+| **OC evidence** | Track D D3; **D5-INST-TBRRIDGE-001** ✅ (BRB feasible; remain restricted). |
 | **Allowed claims** | Null-viability characterization tier only. |
 | **Disallowed claims** | CalibrationSignal; governed lift without separate D5 promotion. |
 | **Track E status** | **`restricted`** |

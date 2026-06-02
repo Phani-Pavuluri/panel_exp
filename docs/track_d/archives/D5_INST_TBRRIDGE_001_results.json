@@ -1,0 +1,274 @@
+{
+  "artifact_id": "D5-INST-TBRRIDGE-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-02T19:40:52.354090+00:00",
+  "lane": "research",
+  "binding_docs": [
+    "TRACK_B_MEASUREMENT_INSTRUMENT_CATALOG_001",
+    "TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001",
+    "TRACK_E_E5_CALIBRATIONSIGNAL_ELIGIBILITY_POLICY_001",
+    "D5_POW_001e_results",
+    "D5_MCELL_001_REPORT"
+  ],
+  "governance": {
+    "instruments": [
+      "TBRRidge_Kfold",
+      "TBRRidge_BlockResidualBootstrap"
+    ],
+    "reference_instrument": "SCM_UnitJackKnife",
+    "status": "restricted_comparator",
+    "no_promotion": true,
+    "no_calibration_signal_ingress": true,
+    "no_pooled_multi_cell_claim": true,
+    "no_override_governed_primary": true
+  },
+  "config": {
+    "n_mc": 14,
+    "reference_design_method": "greedy_match_markets",
+    "train_length": 28,
+    "test_length": 8,
+    "effect_grid": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "include_multi_cell_k2": true
+  },
+  "instrument_summaries_null": [
+    {
+      "instrument": "scm_jk_unit",
+      "effect": 0.0,
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 14
+      },
+      "mean_point_effect": {
+        "mean": 0.06832159212910713,
+        "std": 0.8620515868368508,
+        "p95": 1.2785083237308148,
+        "n": 14
+      },
+      "mean_interval_halfwidth": {
+        "mean": 3.025384133897603,
+        "std": 0.5011043323265183,
+        "p95": 3.9024524324887038,
+        "n": 14
+      },
+      "covers_zero_rate": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0,
+        "n": 14
+      },
+      "feasibility_rate": 1.0
+    },
+    {
+      "instrument": "tbr_kfold_unit",
+      "effect": 0.0,
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 14
+      },
+      "mean_point_effect": {
+        "mean": -387.13562887351253,
+        "std": 56.125773264438486,
+        "p95": -324.19327847054194,
+        "n": 14
+      },
+      "mean_interval_halfwidth": {
+        "mean": 17.872850243613577,
+        "std": 4.822277405314491,
+        "p95": 24.615768016645603,
+        "n": 14
+      },
+      "covers_zero_rate": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0,
+        "n": 14
+      },
+      "feasibility_rate": 1.0
+    },
+    {
+      "instrument": "tbr_kfold_agg2",
+      "effect": 0.0,
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 14
+      },
+      "mean_point_effect": {
+        "mean": 0.6969226031045673,
+        "std": 2.384049377059391,
+        "p95": 4.255587509477059,
+        "n": 14
+      },
+      "mean_interval_halfwidth": {
+        "mean": 6.405033806928172,
+        "std": 1.6738216766948721,
+        "p95": 8.818765128569712,
+        "n": 14
+      },
+      "covers_zero_rate": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0,
+        "n": 14
+      },
+      "feasibility_rate": 1.0
+    },
+    {
+      "instrument": "tbr_brb_unit",
+      "effect": 0.0,
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 14
+      },
+      "mean_point_effect": {
+        "mean": 0.8534895862178274,
+        "std": 1.9220539180139666,
+        "p95": 3.1335261001060086,
+        "n": 14
+      },
+      "mean_interval_halfwidth": {
+        "mean": 6.3605679262004955,
+        "std": 0.7673541350793448,
+        "p95": 7.5503053982603285,
+        "n": 14
+      },
+      "covers_zero_rate": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0,
+        "n": 14
+      },
+      "feasibility_rate": 1.0
+    },
+    {
+      "instrument": "tbr_brb_agg2",
+      "effect": 0.0,
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 14
+      },
+      "mean_point_effect": {
+        "mean": 1.113240977934738,
+        "std": 2.3740657891420054,
+        "p95": 5.0281692896582975,
+        "n": 14
+      },
+      "mean_interval_halfwidth": {
+        "mean": 9.59307773799378,
+        "std": 2.285581179175989,
+        "p95": 13.063507385694598,
+        "n": 14
+      },
+      "covers_zero_rate": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0,
+        "n": 14
+      },
+      "feasibility_rate": 1.0
+    }
+  ],
+  "instrument_summary_injected_8pct": {
+    "instrument": "tbr_kfold_unit",
+    "effect": 0.08,
+    "null_interval_exclusion_fpr": {
+      "mean": 0.0,
+      "std": 0.0,
+      "p95": 0.0,
+      "n": 14
+    },
+    "mean_point_effect": {
+      "mean": -379.11564725979457,
+      "std": 56.08676558239617,
+      "p95": -316.2981913575367,
+      "n": 14
+    },
+    "mean_interval_halfwidth": {
+      "mean": 17.96147678448748,
+      "std": 4.811212361524482,
+      "p95": 24.698849015171483,
+      "n": 14
+    },
+    "covers_zero_rate": {
+      "mean": 1.0,
+      "std": 0.0,
+      "p95": 1.0,
+      "n": 14
+    },
+    "feasibility_rate": 1.0
+  },
+  "disagreement_with_scm_jk": {
+    "detection_mismatch_rate": 0.0,
+    "kfold_null_point_std_across_seeds": {
+      "mean": 2.030122102171715e-14,
+      "std": 2.826511479832145e-14,
+      "p95": 5.684341886080802e-14,
+      "n": 14
+    }
+  },
+  "instrument_status": {
+    "tbr_kfold_unit": "remain_restricted",
+    "tbr_kfold_agg2": "remain_restricted",
+    "tbr_brb_unit": "remain_restricted",
+    "rationale": "TBRRidge remains restricted comparator; not governed lift or CalibrationSignal.",
+    "null_fpr_tbr_kfold_unit": 0.0,
+    "null_fpr_scm_jk_unit": 0.0,
+    "null_fpr_tbr_kfold_agg2": 0.0,
+    "agg_to_unit_point_ratio_at_null": 0.0018002026967460297,
+    "brb_feasibility_rate": 1.0,
+    "track_e_inst_002": "restricted",
+    "track_e_inst_003": "restricted",
+    "calibration_signal_ingress": false,
+    "governed_lift": false
+  },
+  "findings": [
+    {
+      "id": "D5-TBR-FIND-001",
+      "severity": "high",
+      "summary": "TBRRidge+Kfold on 2-row aggregate diverges from unit SCM+JK (001a/001c).",
+      "implication": "Do not use geo power / agg TBR as null-monitor for unit tests."
+    },
+    {
+      "id": "D5-TBR-FIND-002",
+      "severity": "high",
+      "summary": "TBRRidge null interval-exclusion behavior differs from SCM+JK reference.",
+      "implication": "E4 restricted-positive context must not upgrade governed primary."
+    },
+    {
+      "id": "D5-TBR-FIND-003",
+      "severity": "medium",
+      "summary": "Kfold seed sensitivity affects TBR point readout at null.",
+      "implication": "Report as diagnostic_only; not decision-grade stability."
+    }
+  ],
+  "overall_verdict": "remain_restricted_no_promotion",
+  "track_e_recommendation": {
+    "INST-002": "restricted",
+    "INST-003": "restricted",
+    "wording": "Remain **restricted** / **diagnostic_only** for TrustReport context; never CalibrationSignal or governed lift. Unit SCM+JK is null-monitor reference."
+  },
+  "user_facing_warnings": [
+    "TBRRidge+Kfold is the geo PowerAnalysis readout path \u2014 not equivalent to SCM+JK unit null-monitor.",
+    "Do not treat restricted TBR positive intervals as lift promotion over null-compatible SCM+JK primary.",
+    "2-row aggregated TBR magnitudes are not comparable to unit relative ATT without estimand bridge."
+  ],
+  "rules_acknowledged": {
+    "no_production_changes": true,
+    "no_estimator_changes": true,
+    "no_trust_report_changes": true,
+    "no_mmm": true
+  }
+}

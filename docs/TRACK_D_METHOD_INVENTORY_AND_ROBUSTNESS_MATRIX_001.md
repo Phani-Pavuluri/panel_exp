@@ -210,6 +210,7 @@ Where applicable, each inventory row records:
 | supergeos | **D5-DES-SUPERGEO-001** ✅ — separate geometry; blocked flat SCM+JK |
 | trimmedmatch | **D5-DES-TRIM-001** ✅ — severe population shift; diagnostic pair power only |
 | Multi-cell geometry | **D5-MCELL-001** ✅ — k≤2 typical; per-cell only |
+| TBRRidge Kfold/BRB | **D5-INST-TBRRIDGE-001** ✅ — restricted; not SCM+JK comparable |
 
 ---
 
