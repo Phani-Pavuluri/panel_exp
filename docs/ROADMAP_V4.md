@@ -136,9 +136,10 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | **Multi-cell k** | **D5-MCELL-001** ✅ [`D5_MCELL_001_results.json`](track_d/archives/D5_MCELL_001_results.json) — k≤2 typical; k≥3 degrades |
 | **TBRRidge OC** | **D5-INST-TBRRIDGE-001** ✅ [`D5_INST_TBRRIDGE_001_results.json`](track_d/archives/D5_INST_TBRRIDGE_001_results.json) — remain restricted |
 | **Placebo OC** | **D5-INST-PLACEBO-001** ✅ [`D5_INST_PLACEBO_001_results.json`](track_d/archives/D5_INST_PLACEBO_001_results.json) — remain diagnostic_only |
+| **Instrument inventory** | **D5-INST-AUDIT-001** ✅ [`D5_INST_AUDIT_001_results.json`](track_d/archives/D5_INST_AUDIT_001_results.json) — estimator × inference × geometry matrix |
 | **D5-POW-001e** | ✅ Six confirmed methods; SCM+JK reference null FPR; [`D5_POW_001e_results.json`](track_d/archives/D5_POW_001e_results.json) — `acceptable_with_caveats` |
 
-**Next steps:** (1) ~~D5-MCELL-001~~ ✅ → **D5-INST-TBRRIDGE-001** ✅ → **D5-INST-PLACEBO-001** ✅ → D5-INST-DID-001 → (2) AUDIT-010 → (3) MMM (post-governance only).
+**Next steps:** (1) ~~D5-INST-AUDIT-001~~ ✅ → (2) D5-INST-AUGSYNTH-001 / D5-INST-TBR-001 → (3) **AUDIT-010** (MMM **readiness/gap** audit — not promotion) → (4) MMM intake only if gaps closed → P2/P3: TBRRidge-002, BayesianTBR, TROP (research-only blocks).
 
 ### Track E — method suitability & triangulation
 

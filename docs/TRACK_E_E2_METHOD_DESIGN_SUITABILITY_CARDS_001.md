@@ -316,6 +316,17 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 
 ---
 
+## Part C2 — Instrument inventory (D5-INST-AUDIT-001)
+
+**Artifact:** [`track_d/D5_INST_AUDIT_001_REPORT.md`](track_d/D5_INST_AUDIT_001_REPORT.md)
+
+- **13** estimator classes cataloged; **9** registry inference modes; live geometry probes.
+- **Governed null monitor:** unit SCM+JK only. **Geo power:** aggregate TBRRidge+Kfold (not class TBR).
+- **TBR class:** aggregate 1×1 only; **BayesianTBR:** research_only; registry `Bayesian` ≠ NUTS.
+- **Remaining OC batteries:** AUGSYNTH-001, TBR-001, TBRRIDGE-002 (optional), BAYESIANTBR-001; DID deferred.
+
+---
+
 ## Part D — Combination matrix (quick reference)
 
 **Legend:** ✅ = suitable_with_caveats (SCM+JK null-monitor) · ⚠️ = diagnostic_only / restricted · ⛔ = blocked / characterization_required · — = not evaluated

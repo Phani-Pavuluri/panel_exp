@@ -212,6 +212,7 @@ Where applicable, each inventory row records:
 | Multi-cell geometry | **D5-MCELL-001** ✅ — k≤2 typical; per-cell only |
 | TBRRidge Kfold/BRB | **D5-INST-TBRRIDGE-001** ✅ — restricted; not SCM+JK comparable |
 | SCM Placebo | **D5-INST-PLACEBO-001** ✅ — diagnostic_only; multi-treated blocked |
+| Full estimator × inference × geometry | **D5-INST-AUDIT-001** ✅ — code probes + roadmap |
 
 ---
 
