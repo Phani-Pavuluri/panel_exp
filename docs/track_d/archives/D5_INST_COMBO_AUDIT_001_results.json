@@ -1,0 +1,1199 @@
+{
+  "artifact_id": "D5-INST-COMBO-AUDIT-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-02T22:29:42.837989+00:00",
+  "lane": "research",
+  "governance": {
+    "no_cartesian_product": true,
+    "no_promotion": true,
+    "no_new_production_combinations": true
+  },
+  "binding_docs": [
+    "D5_INST_AUDIT_001",
+    "D5_INST_AUGSYNTH_001"
+  ],
+  "compatibility_matrix": [
+    {
+      "estimator_class": "AugSynthCVXPY",
+      "inference": "point_estimate",
+      "geometry_mode": "single_cell_unit_level",
+      "status": "already_characterized",
+      "rationale": "Prior D5/Phase evidence: D5-INST-AUGSYNTH-001",
+      "code_refs": [
+        "prior_artifacts"
+      ],
+      "probe_required": false,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": true,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": false,
+        "track_b": {
+          "config_aliases": [
+            "AugSynthCVXPY_Point"
+          ],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "probe": {
+        "status": "skipped",
+        "reason": "already_characterized"
+      }
+    },
+    {
+      "estimator_class": "AugSynthCVXPY",
+      "inference": "UnitJackKnife",
+      "geometry_mode": "single_cell_unit_level",
+      "status": "already_characterized",
+      "rationale": "Prior D5/Phase evidence: D5-INST-AUGSYNTH-001",
+      "code_refs": [
+        "prior_artifacts"
+      ],
+      "probe_required": false,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": true,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "probe": {
+        "status": "skipped",
+        "reason": "already_characterized"
+      }
+    },
+    {
+      "estimator_class": "AugSynthCVXPY",
+      "inference": "Kfold",
+      "geometry_mode": "single_cell_unit_level",
+      "status": "valid_candidate",
+      "rationale": "Registry wires Kfold; refits estimator \u2014 OC not run on 001e windows. BRB uses SCM-tuned defaults for AugSynth family. Probe succeeded on battery panel.",
+      "code_refs": [
+        "impl.run_block_residual_bootstrap _is_scm",
+        "registry"
+      ],
+      "probe_required": true,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": true,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      }
+    },
+    {
+      "estimator_class": "AugSynthCVXPY",
+      "inference": "BlockResidualBootstrap",
+      "geometry_mode": "single_cell_unit_level",
+      "status": "invalid_by_interface",
+      "rationale": "AugSynthCVXPY catalog inference_support does not include BlockResidualBootstrap.",
+      "code_refs": [
+        "method_metadata.py"
+      ],
+      "probe_required": false,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": true,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 4,
+        "n_control": 4
+      }
+    },
+    {
+      "estimator_class": "AugSynthCVXPY",
+      "inference": "Conformal",
+      "geometry_mode": "single_cell_unit_level",
+      "status": "valid_candidate",
+      "rationale": "Registry wires Conformal; refits estimator \u2014 OC not run on 001e windows. BRB uses SCM-tuned defaults for AugSynth family. Probe succeeded on battery panel.",
+      "code_refs": [
+        "impl.run_block_residual_bootstrap _is_scm",
+        "registry"
+      ],
+      "probe_required": true,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": true,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 4,
+        "n_control": 4
+      }
+    },
+    {
+      "estimator_class": "AugSynthCVXPY",
+      "inference": "Placebo",
+      "geometry_mode": "single_treated_unit",
+      "status": "invalid_by_interface",
+      "rationale": "AugSynthCVXPY catalog inference_support does not include Placebo.",
+      "code_refs": [
+        "method_metadata.py"
+      ],
+      "probe_required": false,
+      "geometry_support": {
+        "single_treated": true,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": false,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 1,
+        "n_control": 4
+      }
+    },
+    {
+      "estimator_class": "TBR",
+      "inference": "point_estimate",
+      "geometry_mode": "aggregate_two_series",
+      "status": "valid_candidate",
+      "rationale": "TBR aggregate 1\u00d71 panel; point_estimate via registry if probe passes.",
+      "code_refs": [
+        "tbr.py",
+        "ImpactAnalyzer.run_analysis"
+      ],
+      "probe_required": true,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": true,
+        "unit_level_donors": false,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": false,
+        "track_b": {
+          "config_aliases": [],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 1,
+        "n_control": 1
+      }
+    },
+    {
+      "estimator_class": "TBR",
+      "inference": "UnitJackKnife",
+      "geometry_mode": "aggregate_two_series",
+      "status": "implemented_but_unvalidated",
+      "rationale": "TBR aggregate 1\u00d71 panel; UnitJackKnife via registry if probe passes.",
+      "code_refs": [
+        "tbr.py",
+        "ImpactAnalyzer.run_analysis"
+      ],
+      "probe_required": true,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": true,
+        "unit_level_donors": false,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "ValueError",
+        "error": "UnitJackKnife requires at least 2 control units",
+        "n_treated": 1,
+        "n_control": 1
+      }
+    },
+    {
+      "estimator_class": "TBR",
+      "inference": "JKP",
+      "geometry_mode": "aggregate_two_series",
+      "status": "valid_candidate",
+      "rationale": "TBR aggregate 1\u00d71 panel; JKP via registry if probe passes. Probe succeeded on battery panel.",
+      "code_refs": [
+        "tbr.py",
+        "ImpactAnalyzer.run_analysis"
+      ],
+      "probe_required": true,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": true,
+        "unit_level_donors": false,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 1
+      }
+    },
+    {
+      "estimator_class": "TBR",
+      "inference": "Kfold",
+      "geometry_mode": "aggregate_two_series",
+      "status": "valid_candidate",
+      "rationale": "TBR aggregate 1\u00d71 panel; Kfold via registry if probe passes. Probe succeeded on battery panel.",
+      "code_refs": [
+        "tbr.py",
+        "ImpactAnalyzer.run_analysis"
+      ],
+      "probe_required": true,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": true,
+        "unit_level_donors": false,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 1
+      }
+    },
+    {
+      "estimator_class": "TBR",
+      "inference": "Placebo",
+      "geometry_mode": "aggregate_two_series",
+      "status": "invalid_by_interface",
+      "rationale": "TBR catalog inference_support does not include Placebo.",
+      "code_refs": [
+        "method_metadata.py"
+      ],
+      "probe_required": false,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": true,
+        "unit_level_donors": false,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 1,
+        "n_control": 1
+      }
+    },
+    {
+      "estimator_class": "TBR",
+      "inference": "point_estimate",
+      "geometry_mode": "single_cell_unit_level",
+      "status": "invalid_by_geometry",
+      "rationale": "TBR.fit_data requires exactly 1 treated + 1 control (pre-aggregated).",
+      "code_refs": [
+        "methods/tbr.py TBR.fit_data asserts"
+      ],
+      "probe_required": false,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": true,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": false,
+        "track_b": {
+          "config_aliases": [],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 4,
+        "n_control": 4
+      }
+    },
+    {
+      "estimator_class": "TBRRidge",
+      "inference": "Kfold",
+      "geometry_mode": "single_cell_unit_level",
+      "status": "already_characterized",
+      "rationale": "Prior D5/Phase evidence: D5-INST-TBRRIDGE-001",
+      "code_refs": [
+        "prior_artifacts"
+      ],
+      "probe_required": false,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": true,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [
+            "TBRRidge_Kfold"
+          ],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "probe": {
+        "status": "skipped",
+        "reason": "already_characterized"
+      }
+    },
+    {
+      "estimator_class": "TBRRidge",
+      "inference": "BlockResidualBootstrap",
+      "geometry_mode": "single_cell_unit_level",
+      "status": "already_characterized",
+      "rationale": "Prior D5/Phase evidence: D5-INST-TBRRIDGE-001",
+      "code_refs": [
+        "prior_artifacts"
+      ],
+      "probe_required": false,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": true,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [
+            "TBRRidge_BlockResidualBootstrap"
+          ],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "probe": {
+        "status": "skipped",
+        "reason": "already_characterized"
+      }
+    },
+    {
+      "estimator_class": "TBRRidge",
+      "inference": "Kfold",
+      "geometry_mode": "aggregate_two_series",
+      "status": "already_characterized",
+      "rationale": "Prior D5/Phase evidence: D5-INST-TBRRIDGE-001",
+      "code_refs": [
+        "prior_artifacts"
+      ],
+      "probe_required": false,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": true,
+        "unit_level_donors": false,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [
+            "TBRRidge_Kfold"
+          ],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "probe": {
+        "status": "skipped",
+        "reason": "already_characterized"
+      }
+    },
+    {
+      "estimator_class": "TBRRidge",
+      "inference": "UnitJackKnife",
+      "geometry_mode": "single_cell_unit_level",
+      "status": "implemented_but_unvalidated",
+      "rationale": "Wired but not characterized; scale may diverge from SCM JK.",
+      "code_refs": [
+        "unit_jackknife"
+      ],
+      "probe_required": true,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": true,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "ValueError",
+        "error": "operands could not be broadcast together with shapes (6,4) (6,) ",
+        "n_treated": 4,
+        "n_control": 4
+      }
+    },
+    {
+      "estimator_class": "TBRRidge",
+      "inference": "Placebo",
+      "geometry_mode": "single_treated_unit",
+      "status": "invalid_by_interface",
+      "rationale": "TBRRidge catalog inference_support does not include Placebo.",
+      "code_refs": [
+        "method_metadata.py"
+      ],
+      "probe_required": false,
+      "geometry_support": {
+        "single_treated": true,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": false,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 1,
+        "n_control": 4
+      }
+    },
+    {
+      "estimator_class": "BayesianTBR",
+      "inference": "Bayesian",
+      "geometry_mode": "single_cell_unit_level",
+      "status": "research_only",
+      "rationale": "Registry Bayesian uses JAX predict quantiles \u2014 not equivalent to estimator-native NUTS MCMC (INV-015).",
+      "code_refs": [
+        "inference/modes/impl.py run_bayesian"
+      ],
+      "probe_required": true,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": true,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      }
+    },
+    {
+      "estimator_class": "BayesianTBR",
+      "inference": "mcmc_native",
+      "geometry_mode": "single_cell_unit_level",
+      "status": "invalid_by_interface",
+      "rationale": "BayesianTBR catalog inference_support does not include mcmc_native.",
+      "code_refs": [
+        "method_metadata.py"
+      ],
+      "probe_required": false,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": true,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": false,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 4,
+        "n_control": 4
+      }
+    },
+    {
+      "estimator_class": "TROP",
+      "inference": "point_estimate",
+      "geometry_mode": "single_cell_unit_level",
+      "status": "research_only",
+      "rationale": "TROP research_only; validation runner skipped.",
+      "code_refs": [
+        "runner.SKIPPED_ESTIMATORS"
+      ],
+      "probe_required": false,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": true,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": false,
+        "track_b": {
+          "config_aliases": [],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      }
+    },
+    {
+      "estimator_class": "DID",
+      "inference": "estimator_native_bootstrap",
+      "geometry_mode": "single_cell_unit_level",
+      "status": "already_characterized",
+      "rationale": "Prior D5/Phase evidence: D3/DEF-003",
+      "code_refs": [
+        "prior_artifacts"
+      ],
+      "probe_required": false,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": true,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": false,
+        "track_b": {
+          "config_aliases": [],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "probe": {
+        "status": "skipped",
+        "reason": "DID uses native run_analysis"
+      }
+    },
+    {
+      "estimator_class": "SyntheticControl",
+      "inference": "UnitJackKnife",
+      "geometry_mode": "single_cell_unit_level",
+      "status": "already_characterized",
+      "rationale": "Prior D5/Phase evidence: D5-POW-001e",
+      "code_refs": [
+        "prior_artifacts"
+      ],
+      "probe_required": false,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": true,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [
+            "SCM_UnitJackKnife"
+          ],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "probe": {
+        "status": "skipped",
+        "reason": "already_characterized"
+      }
+    },
+    {
+      "estimator_class": "SyntheticControl",
+      "inference": "Placebo",
+      "geometry_mode": "single_treated_unit",
+      "status": "already_characterized",
+      "rationale": "Prior D5/Phase evidence: D5-INST-PLACEBO-001",
+      "code_refs": [
+        "prior_artifacts"
+      ],
+      "probe_required": false,
+      "geometry_support": {
+        "single_treated": true,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": false,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [
+            "SCM_Placebo"
+          ],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "probe": {
+        "status": "skipped",
+        "reason": "already_characterized"
+      }
+    },
+    {
+      "estimator_class": "SyntheticControl",
+      "inference": "Placebo",
+      "geometry_mode": "multi_treated_natural",
+      "status": "already_characterized",
+      "rationale": "Prior D5/Phase evidence: D5-INST-PLACEBO-001",
+      "code_refs": [
+        "prior_artifacts"
+      ],
+      "probe_required": false,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": true,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": true,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [
+            "SCM_Placebo"
+          ],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "probe": {
+        "status": "skipped",
+        "reason": "already_characterized"
+      }
+    },
+    {
+      "estimator_class": "SyntheticControl",
+      "inference": "UnitJackKnife",
+      "geometry_mode": "supergeo_design_only",
+      "status": "invalid_by_geometry",
+      "rationale": "Design-method geometry (supergeo/trim); not ImpactAnalyzer readout scope.",
+      "code_refs": [
+        "D5-DES-SUPERGEO-001",
+        "D5-DES-TRIM-001"
+      ],
+      "probe_required": false,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": false,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [
+            "SCM_UnitJackKnife"
+          ],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      }
+    },
+    {
+      "estimator_class": "SyntheticControl",
+      "inference": "UnitJackKnife",
+      "geometry_mode": "trimmed_population_design_only",
+      "status": "invalid_by_geometry",
+      "rationale": "Design-method geometry (supergeo/trim); not ImpactAnalyzer readout scope.",
+      "code_refs": [
+        "D5-DES-SUPERGEO-001",
+        "D5-DES-TRIM-001"
+      ],
+      "probe_required": false,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": false,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [
+            "SCM_UnitJackKnife"
+          ],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      }
+    },
+    {
+      "estimator_class": "TBRRidge",
+      "inference": "Conformal",
+      "geometry_mode": "single_cell_unit_level",
+      "status": "implemented_but_unvalidated",
+      "rationale": "Default classification for TBRRidge+Conformal on single_cell_unit_level.",
+      "code_refs": [
+        "ImpactAnalyzer.run_analysis",
+        "registry"
+      ],
+      "probe_required": true,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": true,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "ValueError",
+        "error": "operands could not be broadcast together with shapes (26,4) (26,) ",
+        "n_treated": 4,
+        "n_control": 4
+      }
+    },
+    {
+      "estimator_class": "TBRRidge",
+      "inference": "TimeSeriesKfold",
+      "geometry_mode": "single_cell_unit_level",
+      "status": "valid_candidate",
+      "rationale": "Default classification for TBRRidge+TimeSeriesKfold on single_cell_unit_level. Probe succeeded on battery panel.",
+      "code_refs": [
+        "ImpactAnalyzer.run_analysis",
+        "registry"
+      ],
+      "probe_required": true,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": true,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      }
+    },
+    {
+      "estimator_class": "TBRRidge",
+      "inference": "Bayesian",
+      "geometry_mode": "single_cell_unit_level",
+      "status": "implemented_but_unvalidated",
+      "rationale": "Default classification for TBRRidge+Bayesian on single_cell_unit_level.",
+      "code_refs": [
+        "ImpactAnalyzer.run_analysis",
+        "registry"
+      ],
+      "probe_required": true,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": true,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "IndexError",
+        "error": "too many indices for array: array is 0-dimensional, but 1 were indexed",
+        "n_treated": 4,
+        "n_control": 4
+      }
+    },
+    {
+      "estimator_class": "TBRRidge",
+      "inference": "JKP",
+      "geometry_mode": "single_cell_unit_level",
+      "status": "implemented_but_unvalidated",
+      "rationale": "Default classification for TBRRidge+JKP on single_cell_unit_level.",
+      "code_refs": [
+        "ImpactAnalyzer.run_analysis",
+        "registry"
+      ],
+      "probe_required": true,
+      "geometry_support": {
+        "single_treated": false,
+        "multi_treated": false,
+        "multi_cell_per_cell": false,
+        "aggregate_two_series": false,
+        "unit_level_donors": true,
+        "pooled_multi_cell": false
+      },
+      "conceptual_checks": {
+        "registry_wired": true,
+        "refits_estimator": true,
+        "track_b": {
+          "config_aliases": [],
+          "calibration_signal_eligible": false,
+          "note": "Only SCM_UnitJackKnife is nominal-calibration eligible per policy."
+        }
+      },
+      "panel_meta": {
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "ValueError",
+        "error": "operands could not be broadcast together with shapes (7,4) (7,) ",
+        "n_treated": 4,
+        "n_control": 4
+      }
+    }
+  ],
+  "status_counts": {
+    "already_characterized": 9,
+    "valid_candidate": 6,
+    "invalid_by_interface": 5,
+    "implemented_but_unvalidated": 5,
+    "invalid_by_geometry": 3,
+    "research_only": 2
+  },
+  "n_combinations_audited": 30,
+  "oc_battery_roadmap": [
+    {
+      "priority": "P1",
+      "battery_id": "D5-INST-TBR-001",
+      "combos": [
+        "TBR+point_estimate+aggregate_two_series",
+        "TBR+JKP+aggregate_two_series",
+        "TBR+Kfold+aggregate_two_series"
+      ]
+    },
+    {
+      "priority": "P2",
+      "battery_id": "D5-INST-TBRRIDGE-002",
+      "combos": [
+        "TBRRidge+UnitJackKnife+single_cell_unit_level",
+        "TBRRidge+Conformal+single_cell_unit_level",
+        "TBRRidge+Bayesian+single_cell_unit_level",
+        "TBRRidge+JKP+single_cell_unit_level"
+      ]
+    },
+    {
+      "priority": "P2",
+      "battery_id": "D5-INST-AUGSYNTH-002-inference",
+      "combos": []
+    },
+    {
+      "priority": "deferred",
+      "battery_id": "invalid_or_blocked",
+      "count": 8,
+      "examples": [
+        "AugSynthCVXPY+BlockResidualBootstrap+single_cell_unit_level: invalid_by_interface",
+        "AugSynthCVXPY+Placebo+single_treated_unit: invalid_by_interface",
+        "TBR+Placebo+aggregate_two_series: invalid_by_interface",
+        "TBR+point_estimate+single_cell_unit_level: invalid_by_geometry",
+        "TBRRidge+Placebo+single_treated_unit: invalid_by_interface",
+        "BayesianTBR+mcmc_native+single_cell_unit_level: invalid_by_interface",
+        "SyntheticControl+UnitJackKnife+supergeo_design_only: invalid_by_geometry",
+        "SyntheticControl+UnitJackKnife+trimmed_population_design_only: invalid_by_geometry"
+      ]
+    },
+    {
+      "priority": "P0_after_P1",
+      "battery_id": "AUDIT-010",
+      "note": "MMM readiness/gap after TBR-001 + characterized comparators"
+    }
+  ],
+  "findings": [
+    {
+      "id": "D5-COMBO-FIND-001",
+      "summary": "TBR+Kfold/Placebo on unit panel invalid_by_geometry; aggregate 1\u00d71 only."
+    },
+    {
+      "id": "D5-COMBO-FIND-002",
+      "summary": "AugSynthCVXPY+Kfold/BRB wired but unvalidated \u2014 probe before OC battery."
+    },
+    {
+      "id": "D5-COMBO-FIND-003",
+      "summary": "TBRRidge+Placebo may run (not is_tbr) but single-treated+donors required."
+    },
+    {
+      "id": "D5-COMBO-FIND-004",
+      "summary": "BayesianTBR registry Bayesian \u2260 NUTS MCMC \u2014 invalid_by_estimand for governed use."
+    }
+  ],
+  "overall_verdict": "compatibility_audited_curated_combinations_only",
+  "user_facing_warnings": [
+    "Do not OC test invalid_by_* combinations.",
+    "already_characterized combos do not need repeat batteries unless geometry changes.",
+    "AUDIT-010 blocks invalid combos from MMM intake explicitly."
+  ]
+}

@@ -188,4 +188,17 @@ Per **method × geometry_mode** row, record at minimum:
 
 ---
 
-*ROADMAP-DESIGN-READOUT-UPDATE-001 v1.0.1 — D5-POW-001e complete*
+## 13. Combo compatibility audit (D5-INST-COMBO-AUDIT-001)
+
+**Status:** ✅ [`D5_INST_COMBO_AUDIT_001_REPORT.md`](track_d/D5_INST_COMBO_AUDIT_001_REPORT.md)
+
+30 **curated** estimator × inference × geometry tuples (not a blind Cartesian product). Key gates:
+
+- **TBR** — valid only on **aggregate 1×1**; invalid on unit multi-control.
+- **AugSynthCVXPY + Kfold** — valid OC candidate; **BRB/Placebo** blocked at catalog interface until clarified.
+- **TBRRidge + Kfold/BRB** — already characterized; other inference modes unvalidated.
+- **AUDIT-010** — MMM readiness/gap audit blocks invalid combos from intake.
+
+---
+
+*ROADMAP-DESIGN-READOUT-UPDATE-001 v1.0.2 — D5-COMBO-AUDIT-001 complete*

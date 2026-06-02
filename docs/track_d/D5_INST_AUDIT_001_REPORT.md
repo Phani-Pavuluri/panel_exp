@@ -118,4 +118,4 @@ Code-grounded inventory of **13 estimator classes**, **9 registry inference mode
 3. **D5-AUD-FIND-003:** DID bootstrap is native, not registry `bootstrap`.
 4. **D5-AUD-FIND-004:** recovery_runner `TBR` config points at TBRRidge factory.
 
-**Sequence:** ~~D5-INST-AUGSYNTH-001~~ ✅ → D5-INST-TBR-001 → **AUDIT-010** (readiness/gap) → P2/P3 follow-ups. MMM intake only after AUDIT-010 gaps closed.
+**Sequence:** ~~D5-INST-AUGSYNTH-001~~ ✅ → D5-INST-TBR-001 → **AUDIT-010** (readiness/gap) → P2/P3 follow-ups. **Combo audit:** [`D5_INST_COMBO_AUDIT_001_REPORT.md`](D5_INST_COMBO_AUDIT_001_REPORT.md). MMM intake only after AUDIT-010 gaps closed.

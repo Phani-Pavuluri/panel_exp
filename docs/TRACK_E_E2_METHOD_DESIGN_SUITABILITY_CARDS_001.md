@@ -323,7 +323,7 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 - **13** estimator classes cataloged; **9** registry inference modes; live geometry probes.
 - **Governed null monitor:** unit SCM+JK only. **Geo power:** aggregate TBRRidge+Kfold (not class TBR).
 - **TBR class:** aggregate 1×1 only; **BayesianTBR:** research_only; registry `Bayesian` ≠ NUTS.
-- **Remaining OC batteries:** ~~AUGSYNTH-001~~ ✅, TBR-001, TBRRIDGE-002 (optional), BAYESIANTBR-001; DID deferred.
+- **Remaining OC batteries:** ~~AUGSYNTH-001~~ ✅, TBR-001, TBRRIDGE-002 (optional); see **D5-INST-COMBO-AUDIT-001** for valid vs invalid tuples.
 
 ---
 

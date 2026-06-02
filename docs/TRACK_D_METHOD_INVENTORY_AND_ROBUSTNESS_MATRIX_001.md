@@ -214,6 +214,7 @@ Where applicable, each inventory row records:
 | SCM Placebo | **D5-INST-PLACEBO-001** ✅ — diagnostic_only; multi-treated blocked |
 | Full estimator × inference × geometry | **D5-INST-AUDIT-001** ✅ — code probes + roadmap |
 | AugSynthCVXPY point/JK | **D5-INST-AUGSYNTH-001** ✅ — diagnostic_only; not CalibrationSignal |
+| Estimator×inference×geometry | **D5-INST-COMBO-AUDIT-001** ✅ — curated compatibility matrix |
 
 ---
 

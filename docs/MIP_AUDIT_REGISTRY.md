@@ -318,6 +318,15 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 ---
 
+## D5-INST-COMBO-AUDIT-001 checkpoint (2026-06-02)
+
+**Artifact:** [`docs/track_d/archives/D5_INST_COMBO_AUDIT_001_results.json`](track_d/archives/D5_INST_COMBO_AUDIT_001_results.json)  
+**Report:** [`docs/track_d/D5_INST_COMBO_AUDIT_001_REPORT.md`](track_d/D5_INST_COMBO_AUDIT_001_REPORT.md)
+
+**Verdict:** **30 curated combos** — 9 already_characterized, 6 valid_candidate, 8 invalid/blocked/research_only. No blind Cartesian OC. TBR aggregate-only; AugSynthCVXPY+Kfold candidate; TBRRidge Kfold/BRB characterized.
+
+---
+
 ## D5-INST-AUGSYNTH-001 checkpoint (2026-06-02)
 
 **Artifact:** [`docs/track_d/archives/D5_INST_AUGSYNTH_001_results.json`](track_d/archives/D5_INST_AUGSYNTH_001_results.json)  
