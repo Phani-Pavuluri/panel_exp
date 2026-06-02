@@ -197,7 +197,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D3-FIND-001 — Unit JK LOO compares `y_hat` to observed `y` → **INV-D3-001** opened (D5-INF-002a).
 
-**Next:** Track E E5/E6.
+**Next:** Track E E7.
 
 ---
 
@@ -216,7 +216,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D4-FIND-001 — design MDE not aligned to `SCM_UnitJackKnife` instrument.
 
-**Next:** Track E E5/E6; not MMM integration.
+**Next:** Track E E7; not MMM integration.
 
 ---
 
@@ -248,7 +248,17 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Fixtures:** [`tests/fixtures/track_e_conflicts/`](../../tests/fixtures/track_e_conflicts/) (E4-001 … E4-010)
 
-**Verdict:** Triangulation schema defines multi-instrument `TriangulationProfile` + agreement states; E4 golden fixtures specify TrustReport dispositions and forbidden actions (no averaging, no pooled multi-cell, no MMM outside CalibrationSignal). **Next:** E5 CalibrationSignal policy, E6 composer tests.
+**Verdict:** Triangulation schema + E4 fixtures complete. **Next:** E5/E6 (complete — see below).
+
+---
+
+## Track E E5/E6 checkpoint (2026-06-01)
+
+**Docs:** [`TRACK_E_E5_CALIBRATIONSIGNAL_ELIGIBILITY_POLICY_001.md`](TRACK_E_E5_CALIBRATIONSIGNAL_ELIGIBILITY_POLICY_001.md)
+
+**Tests:** [`tests/track_e/test_e6_e4_conflict_fixtures.py`](../tests/track_e/test_e6_e4_conflict_fixtures.py) · [`tests/track_e/triangulation_contract.py`](../tests/track_e/triangulation_contract.py) (non-production oracle)
+
+**Verdict:** E5 maps E4 dispositions → CalibrationSignal eligibility (conditional weak null-monitor only; fail-closed on conflict/stale/missing uncertainty/pooled multi-cell). E6: **69 passed** against all E4 JSON fixtures — no averaging, no MMM outside CalibrationSignal, no restricted override. **Next:** E7 production integration.
 
 ---
 

@@ -157,8 +157,9 @@ Per **method × geometry_mode** row, record at minimum:
 2. ✅ **D5-POW-001e** — six confirmed methods; SCM+JK reference branch; per-cell single/multi_cell; no pooling  
 3. ✅ **Track E E1/E2** — [`TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md`](TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md) · [`TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md`](TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md)  
 4. ✅ **Track E E3/E4** — [`TRACK_E_E3_TRIANGULATION_SCHEMA_001.md`](TRACK_E_E3_TRIANGULATION_SCHEMA_001.md) · [`TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001.md`](TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001.md)  
-5. **Track E E5/E6** — CalibrationSignal policy + TrustReport composer tests  
-6. **Later:** D5-DES-SUPERGEO-001 · D5-DES-TRIM-001 · D5-MCELL optimal-cell-count · OC batteries for TBRRidge+KFold, BRB, DID+bootstrap, AugSynth, placebo where compatible  
+5. ✅ **Track E E5/E6** — CalibrationSignal eligibility policy + E4 fixture contract tests  
+6. **Track E E7** — production triangulation / TrustReport integration  
+7. **Later:** D5-DES-SUPERGEO-001 · D5-DES-TRIM-001 · D5-MCELL · other instrument OC batteries  
 
 ---
 

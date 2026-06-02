@@ -206,6 +206,7 @@ Where applicable, each inventory row records:
 | D5-POW-001e | ✅ Six confirmed methods; SCM+JK reference null FPR; [`D5_POW_001e_results.json`](track_d/archives/D5_POW_001e_results.json) |
 | Track E E1/E2 | ✅ [`TRACK_E_E1_...`](TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md) · [`TRACK_E_E2_...`](TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md) |
 | Track E E3/E4 | ✅ [`TRACK_E_E3_...`](TRACK_E_E3_TRIANGULATION_SCHEMA_001.md) · [`TRACK_E_E4_...`](TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001.md) |
+| Track E E5/E6 | ✅ [`TRACK_E_E5_...`](TRACK_E_E5_CALIBRATIONSIGNAL_ELIGIBILITY_POLICY_001.md) · E6 tests `tests/track_e/` |
 | supergeos / trimmedmatch | Separate-semantics; D5-DES-SUPERGEO-001 / D5-DES-TRIM-001 |
 
 ---

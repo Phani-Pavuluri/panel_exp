@@ -2,7 +2,7 @@
 
 **Document ID:** TRACK-E-SUITABILITY-TRIANGULATION-001  
 **Type:** Framework ADR (E0)  
-**Status:** **E0–E4 complete** (documentation contract) — E5–E7 implementation deferred  
+**Status:** **E0–E6 complete** (documentation + contract tests) — E7 production implementation deferred  
 **Date:** 2026-06-01  
 **Lane:** Research / governance bridge (pre-MMM)  
 
@@ -265,6 +265,8 @@ Existing composer rules in `trust_report.py` remain authoritative until E6 fixtu
 
 ## 8. MMM Consumption Rules
 
+**Policy:** [`TRACK_E_E5_CALIBRATIONSIGNAL_ELIGIBILITY_POLICY_001.md`](TRACK_E_E5_CALIBRATIONSIGNAL_ELIGIBILITY_POLICY_001.md)
+
 | Path | Criteria |
 |------|----------|
 | **CalibrationSignal** | Instrument governed + estimand match + interval semantics match + freshness + conflict rules pass + D5 OC archived |
@@ -336,11 +338,11 @@ flowchart LR
 | **E2** | Full method suitability cards | ✅ [`TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md`](TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md) |
 | **E3** | Triangulation evidence schema | ✅ [`TRACK_E_E3_TRIANGULATION_SCHEMA_001.md`](TRACK_E_E3_TRIANGULATION_SCHEMA_001.md) |
 | **E4** | Conflict taxonomy + TrustReport mapping fixtures | ✅ [`TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001.md`](TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001.md) |
-| **E5** | CalibrationSignal eligibility policy (governance) | Planned |
-| **E6** | TrustReport composer tests (consume E4 JSON) | Planned — fixtures in [`tests/fixtures/track_e_conflicts/`](../tests/fixtures/track_e_conflicts/) |
-| **E7** | Implementation after Track D OC evidence | Deferred |
+| **E5** | CalibrationSignal eligibility policy | ✅ [`TRACK_E_E5_CALIBRATIONSIGNAL_ELIGIBILITY_POLICY_001.md`](TRACK_E_E5_CALIBRATIONSIGNAL_ELIGIBILITY_POLICY_001.md) |
+| **E6** | TrustReport composer tests (E4 fixtures) | ✅ [`tests/track_e/test_e6_e4_conflict_fixtures.py`](../../tests/track_e/test_e6_e4_conflict_fixtures.py) |
+| **E7** | Production triangulation + TrustReport integration | Deferred |
 
-**Recommended program order:** INV-D3-001 fix ✅ → **E0** ✅ → D5-POW-001a–e ✅ → DESIGN-INVENTORY-001 ✅ → **ROADMAP-DESIGN-READOUT-UPDATE-001** ✅ → **E1/E2** ✅ → **E3/E4** ✅ → **E5/E6** → D5-DES-SUPERGEO-001 / D5-DES-TRIM-001 / D5-MCELL → other instrument OC → MMM integration.
+**Recommended program order:** … **E3/E4** ✅ → **E5/E6** ✅ → **E7** (production integration) → D5-DES-SUPERGEO-001 / … → MMM integration.
 
 ### E1 / E2 scope (complete)
 
@@ -363,4 +365,4 @@ flowchart LR
 
 ---
 
-*TRACK-E-SUITABILITY-TRIANGULATION-001 v0.3.0 — E3/E4 complete — 2026-06-01*
+*TRACK-E-SUITABILITY-TRIANGULATION-001 v0.4.0 — E5/E6 complete — 2026-06-01*
