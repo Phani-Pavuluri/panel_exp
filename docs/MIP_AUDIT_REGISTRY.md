@@ -278,7 +278,19 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** E7-FIND-001 — `export_geo_run_bundle` does not auto-assemble triangulation profiles (product follow-up, not an E1–E7 blocker).
 
-**Next:** D5-DES-SUPERGEO-001 → D5-DES-TRIM-001 → D5-MCELL; AUDIT-010 before MMM intake.
+**Next:** D5-DES-TRIM-001 → D5-MCELL; AUDIT-010 before MMM intake.
+
+---
+
+## D5-DES-SUPERGEO-001 checkpoint (2026-06-01)
+
+**Artifact:** [`docs/track_d/archives/D5_DES_SUPERGEO_001_results.json`](track_d/archives/D5_DES_SUPERGEO_001_results.json)  
+**Report:** [`docs/track_d/D5_DES_SUPERGEO_001_REPORT.md`](track_d/D5_DES_SUPERGEO_001_REPORT.md)  
+**Harness:** `panel_exp/validation/track_d_d5_des_supergeo_001.py`
+
+**Verdict:** **`requires_implementation_fix_before_oc`** — separate supergeo geometry confirmed; flat SCM+JK / 001e **blocked**; MILP scope mismatch (largest-cluster combos vs all-market assignment constraints). Track E GEO-003 stays **`characterization_required`**.
+
+**Next:** D5-DES-TRIM-001.
 
 ---
 

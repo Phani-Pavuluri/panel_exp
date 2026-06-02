@@ -118,7 +118,7 @@ Every diagnostic evaluation is scoped to:
 | E-DES-GEO-003 | Pre-period-only matching | `pre_treatment_period` honored in assign | Post-period leakage in matching | INV-D1-001 / D5-DES-001a |
 | E-DES-GEO-004 | Constraint satisfaction | Whitelist/blacklist valid assignment | Infeasible assignment | assign.py validation |
 | E-DES-GEO-005 | Rerandomization wrapper vs bare base | Null OC delta rerandom vs greedy | Wrapper materially changes null behavior | D5-POW-001e greedy vs wrapper |
-| E-DES-GEO-006 | Supergeo cluster geometry | MILP / supergeo unit aggregation | Flat unit SCM+JK contract invalid | Blocked — D5-DES-SUPERGEO-001 |
+| E-DES-GEO-006 | Supergeo cluster geometry | MILP / supergeo unit aggregation | Flat unit SCM+JK contract invalid | **Characterized** — D5-DES-SUPERGEO-001 ✅; Track E `characterization_required` |
 | E-DES-GEO-007 | Trimmed population geometry | Pair trim / Tp–Te split | Estimand population shift | Blocked — D5-DES-TRIM-001 |
 | E-DES-GEO-008 | Treatment probability / volume targets | Realized test share vs target | Severe imbalance | 001e balance metrics |
 

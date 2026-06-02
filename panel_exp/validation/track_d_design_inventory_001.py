@@ -253,7 +253,7 @@ def _non_geo_records() -> list[MethodRecord]:
             registry_name="supergeos",
             geo_run_supported=False,
             active_status="registered_not_geo_run_supported",
-            entrypoints=("SupergeoModel.run_model()",),
+            entrypoints=("SupergeoModel.run_design()",),
             output_assignment_geometry="supergeo clusters / MILP pairs (not control+test_* dict)",
             single_cell_vs_multi_cell="cluster-based",
             unit_level_vs_aggregated="aggregated supergeo units",

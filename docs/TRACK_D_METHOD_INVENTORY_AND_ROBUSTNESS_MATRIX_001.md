@@ -124,7 +124,7 @@ Where applicable, each inventory row records:
 | **DES-006** | `quickblock` | No | unreviewed | TBD | Blocking designs | Defer |
 | **DES-007** | `matchedpair` | No | unreviewed | TBD | Paired designs | Defer |
 | **DES-008** | `trimmedmatch` | No | unreviewed | TBD | Trimmed match | Defer |
-| **DES-009** | `supergeos` | No | unreviewed | TBD | Cluster/supergeo | Defer |
+| **DES-009** | `supergeos` | No | **characterized** (D5-DES-SUPERGEO-001) | separate_geometry | Cluster/supergeo MILP pairs | Blocked for 001e |
 | **DES-010** | Rerandomization (capability on geo designs) | Partial | **characterization_required** | Spec field | Rerandomization tests ([D1](TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md)) | D5-DES-010a |
 | **DES-011** | Whitelist / blacklist constraints | Partial | **restricted** | Spec + design validation | Constraint validity ([D1](TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md)) | D0b record |
 | **DES-012** | Treatment–control ratio optimization | Docs/product | unreviewed | Feasibility (DEF-010) | Power literature | D4 |
@@ -207,7 +207,8 @@ Where applicable, each inventory row records:
 | Track E E1/E2 | ✅ [`TRACK_E_E1_...`](TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md) · [`TRACK_E_E2_...`](TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md) |
 | Track E E3/E4 | ✅ [`TRACK_E_E3_...`](TRACK_E_E3_TRIANGULATION_SCHEMA_001.md) · [`TRACK_E_E4_...`](TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001.md) |
 | Track E E5/E6 | ✅ [`TRACK_E_E5_...`](TRACK_E_E5_CALIBRATIONSIGNAL_ELIGIBILITY_POLICY_001.md) · E6 tests `tests/track_e/` |
-| supergeos / trimmedmatch | Separate-semantics; D5-DES-SUPERGEO-001 / D5-DES-TRIM-001 |
+| supergeos | **D5-DES-SUPERGEO-001** ✅ — separate geometry; blocked flat SCM+JK |
+| trimmedmatch | D5-DES-TRIM-001 (next) |
 
 ---
 

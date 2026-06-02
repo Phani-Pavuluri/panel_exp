@@ -87,9 +87,9 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 | **Compatible measurement instruments** | **None** for flat unit-level SCM+JK contract until D5-DES-SUPERGEO-001. |
 | **Incompatible / blocked** | SCM+JK on flat unit dict assumed by 001e; standard geo tier-1 cards without supergeo OC. |
 | **Required diagnostics** | E-DES-GEO-006; full E-DES-GEO + E-INST-OC battery on supergeo panel. |
-| **OC evidence** | DESIGN-INVENTORY-001; excluded from D5-POW-001e. |
-| **Known restrictions** | Separate geometry semantics; not ignored in roadmap. |
-| **Allowed claims** | None governed until characterization. |
+| **OC evidence** | DESIGN-INVENTORY-001; **D5-DES-SUPERGEO-001** ✅ [`D5_DES_SUPERGEO_001_results.json`](track_d/archives/D5_DES_SUPERGEO_001_results.json); excluded from D5-POW-001e. |
+| **Known restrictions** | Separate geometry semantics; MILP pair output (not control/test dict); MILP scope mismatch (largest cluster only). |
+| **Allowed claims** | None governed — flat market SCM+JK blocked; supergeo-unit readout uncharacterized. |
 | **Disallowed claims** | Any claim transferring tier-1 001e results to supergeo tests. |
 | **Track B / CalibrationSignal** | No ingress. |
 | **Track E status** | **`characterization_required`** (`separate_geometry_design`) |
