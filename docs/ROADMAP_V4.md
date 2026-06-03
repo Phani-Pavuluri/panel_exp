@@ -154,7 +154,12 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | **MMM readiness / gap** | **AUDIT-010** ✅ [`audits/AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md) — `not_ready_continue_track_f`; Appendix A = 30 tuples |
 | **D5-POW-001e** | ✅ Six confirmed methods; SCM+JK reference null FPR; [`D5_POW_001e_results.json`](track_d/archives/D5_POW_001e_results.json) — `acceptable_with_caveats` |
 
-**Next steps:** … → ~~**F-INF-002**~~ ✅ → ~~**D5-INST-TBRRIDGE-003**~~ ✅ → promotion **only if** later audit allows (not authorized).
+**Next steps:** … → ~~**F-INF-002**~~ ✅ → ~~**D5-INST-TBRRIDGE-003**~~ ✅ → **[TRACK-F-IMPLEMENTATION-CHECKPOINT-001](TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md)** (**pause** default) → promotion **only if** governance PR allows (not authorized).
+
+### Track F — implementation checkpoint (2026-06-03)
+
+**Document:** [`TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md`](TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md)  
+**Verdict:** Active fix→OC loop **paused**; contracts + F-INF-003/002 + POSTFIX/TBRRIDGE-003 complete; governed uncertainty ∅; optional **F-INF-004** only on product pull.
 
 ### Track F — estimator / inference completion (implementation planning)
 
@@ -168,7 +173,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | **P1.5** | ~~AUDIT-010~~ ✅ — `not_ready_continue_track_f` |
 | **P0 (post AUDIT-010)** | ~~Blocking hygiene~~ ✅ — [`instrument_contract.py`](../panel_exp/governance/instrument_contract.py) |
 | **P2** | ~~D5-INST-TBRRIDGE-002~~ ✅ · ~~D5-INST-AUGSYNTH-003~~ ✅ · [`TRACK_F_P2_CLOSEOUT_001`](TRACK_F_P2_CLOSEOUT_001.md) ✅ | P2 closed — no more OC batteries unless fix reopens |
-| **P3+** | ~~F-INF-003~~ ✅ · ~~POSTFIX~~ ✅ · ~~F-INF-002~~ ✅ · ~~TBRRIDGE-003~~ ✅ | No default impl queue |
+| **P3+** | ~~F-INF-003~~ ✅ · ~~POSTFIX~~ ✅ · ~~F-INF-002~~ ✅ · ~~TBRRIDGE-003~~ ✅ | **CHECKPOINT-001** ✅ — **pause** (default) |
 
 **Non-goals:** No fixes in planning doc; no MMM ingestion; no CalibrationSignal expansion without separate governance PR.
 

@@ -143,7 +143,8 @@ flowchart LR
 | ~~**1**~~ | ~~**F-INF-003**~~ ✅ | Orientation fix at source |
 | ~~**2**~~ | ~~**D5-INF-POSTFIX-001**~~ ✅ | A05/A19 → `diagnostic_interval_only` / `characterized_restricted`; not governed |
 | ~~**1**~~ | ~~**F-INF-002**~~ ✅ · ~~**D5-INST-TBRRIDGE-003**~~ ✅ | A18 characterized_restricted; A16/A21 callable unverified |
-| **1** | **F-INF-004** / TBR JKP | Aggregate diagnostic — optional OC | Aggregate diagnostic — lower blast radius; optional OC after F-INF-003 patterns proven |
+| — | **TRACK-F-IMPLEMENTATION-CHECKPOINT-001** | ✅ Pause default; see [`TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md`](TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md) |
+| (optional) | **F-INF-004** / TBR JKP | A09 aggregate 1×1 — **not** default queue |
 | 4 | F-GEO-002 | Hardening only — contract already blocks wrong geometry |
 | 5 | F-P0-004 | DID CI policy — parallel policy lane |
 | 6 | F-CAT-002 | ADR-only — no code until decision |
@@ -187,19 +188,21 @@ Full rows: [`AUDIT-010` Appendix A](audits/AUDIT-010_mmm_readiness_gap.md).
 | Criterion | Status |
 |-----------|--------|
 | Backlog classified across F-INF / F-GEO / F-CAT / F-MCELL / R&D / promotion | ✅ |
-| Execution order defined | ✅ |
-| Next authorized implementation task explicit | ✅ **F-INF-003** |
+| P3+ execution order complete (F-INF-003 → POSTFIX → F-INF-002 → TBRRIDGE-003) | ✅ |
+| Implementation checkpoint published | ✅ **TRACK-F-IMPLEMENTATION-CHECKPOINT-001** |
 | MMM / CalibrationSignal / promotion remain blocked | ✅ |
-| No code / OC / TrustReport changes in this lane | ✅ |
+| Governed uncertainty allowlist empty | ✅ |
 
 ---
 
 ## 9. Next authorized task (explicit)
 
-~~**F-INF-003**~~ ✅ · ~~**D5-INF-POSTFIX-001**~~ ✅ — see [`D5_INF_POSTFIX_001_REPORT.md`](track_d/D5_INF_POSTFIX_001_REPORT.md).
+~~**F-INF-003**~~ ✅ · ~~**D5-INF-POSTFIX-001**~~ ✅ · ~~**F-INF-002**~~ ✅ · ~~**D5-INST-TBRRIDGE-003**~~ ✅.
 
-**Next:** No default implementation queue until governance PR. **F-INF-004** (TBR JKP) optional. Promotion/MMM/CS still blocked.
+**Default:** **Pause** — see [`TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md`](TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md). Await **governance PR** before reopening impl/OC.
+
+**Optional (product pull only):** **F-INF-004** (A09 TBR JKP). **Design ADR:** F-GEO-003/004, F-MCELL-001, F-CAT-002. Promotion/MMM/CS still blocked.
 
 ---
 
-*F-BACKLOG-001 v1.1.0 — F-INF-003 complete; OC rerun is the active lane.*
+*F-BACKLOG-001 v1.2.0 — P3+ loop closed at TRACK-F-IMPLEMENTATION-CHECKPOINT-001; pause default.*

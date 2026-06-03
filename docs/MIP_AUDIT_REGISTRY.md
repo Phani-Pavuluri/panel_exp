@@ -392,7 +392,17 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **Track F P2 formally closed** — no additional OC batteries scheduled; promotion not authorized.
 
-**Next lane:** ~~TBRRIDGE-003~~ ✅ — no default Track F impl until governance PR
+**Next lane:** ~~TBRRIDGE-003~~ ✅ → **[TRACK-F-IMPLEMENTATION-CHECKPOINT-001](TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md)** (pause default)
+
+---
+
+## TRACK-F-IMPLEMENTATION-CHECKPOINT-001 (2026-06-03)
+
+**Artifact:** [`docs/TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md`](TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md)
+
+**Verdict:** Contract stack + P3+ fixes/OC **complete**; **pause** default implementation; optional **F-INF-004** (A09) on product pull only; promotion/MMM/CS **blocked**; governed uncertainty **empty**.
+
+**Commits (P3+ spine):** `cf128a2` F-INF-003 · `d9afc2a` POSTFIX · `3993ba7` F-INF-002 · `9f1dba0` TBRRIDGE-003.
 
 ---
 

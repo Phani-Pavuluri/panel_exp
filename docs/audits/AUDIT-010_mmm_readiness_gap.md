@@ -4,7 +4,7 @@
 **Type:** MMM **readiness / gap** audit — **not** a promotion gate  
 **Status:** **closed** — readiness/gap gate (not promotion)  
 **Verdict:** **`not_ready_continue_track_f`** — MMM **not ready / blocked**; CalibrationSignal **no expansion**  
-**Next:** ~~F-INF-002~~ ✅ · ~~D5-INST-TBRRIDGE-003~~ ✅ — no further Track F impl until governance PR  
+**Next:** [**TRACK-F-IMPLEMENTATION-CHECKPOINT-001**](../TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md) — **pause** default impl/OC; governance PR for MMM/promotion/CS  
 **Branch / baseline:** `fix-kfold-multitreated-geometry` @ post `D5-INST-TBR-001` (`4cfa77b`)  
 **Prerequisites:** AUDIT-010A ✅ · TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001 ✅ · D5-INST-TBR-001 ✅  
 
@@ -132,7 +132,7 @@ AUDIT-010 **must** ship two levels of evidence. The executive summary is for rea
 | A29 | `invalid_by_geometry` | SCM | UnitJackKnife | supergeo | invalid_by_geometry | blocked readout | **SUPERGEO-001** | GEO-003 char req | **BLOCK** | neither | **blocked** | Design-only |
 | A30 | `invalid_by_geometry` | SCM | UnitJackKnife | trimmed | invalid_by_geometry | blocked readout | **TRIM-001** | GEO-004 char req | **BLOCK** | neither | **blocked** | Design-only |
 
-### Appendix A — disposition bucket roll-up (post P2 closeout)
+### Appendix A — disposition bucket roll-up (post TRACK-F-IMPLEMENTATION-CHECKPOINT-001)
 
 | Bucket | Tuple IDs | Count |
 |--------|-----------|------:|
@@ -176,7 +176,7 @@ AUDIT-010 **must** ship two levels of evidence. The executive summary is for rea
 | **CalibrationSignal expansion** | **No** — `SCM_UnitJackKnife` null_monitor_only unchanged |
 | **Approved MMM intake list** | **Empty** (null-monitor ≠ MMM lift) |
 | **Promotion** | **Not authorized** |
-| **Next lane** | ~~F-INF-002 / TBRRIDGE-003~~ ✅ — no default Track F impl queue until governance PR |
+| **Next lane** | [**TRACK-F-IMPLEMENTATION-CHECKPOINT-001**](../TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md) — pause default; optional F-INF-004 on product pull |
 
 **P0 gap list (Track F):** F-P0-001 `full_model` · F-P0-002 TBR label · F-P0-003 INV-015 · F-P0-004 DID CI · F-P0-005 Placebo taxonomy · F-P0-006 multi-cell pooling.
 
