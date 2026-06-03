@@ -135,8 +135,8 @@ Same roles; geometry `UNIT_PANEL` with `n_treated > 1`. Placebo blocked unless `
 
 ## Next steps (program)
 
-1. **Governance PR** — package Track F checkpoint + F-DECISION-001 + [**F-BACKLOG-002**](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md) as decision-safe layer
-2. Wire resolver outputs into TrustReport / decision support (separate integration PR)
+1. ~~**Governance PR**~~ ✅ — [`GOVERNANCE_PR_TRACK_F_DECISION_PACKAGE_001.md`](GOVERNANCE_PR_TRACK_F_DECISION_PACKAGE_001.md)
+2. **TrustReport integration** — wire resolver outputs into TrustReport / decision support (**next authorized PR**)
 3. Optional **F-INF-004** (A09) only on product pull — see F-BACKLOG-002 §10
 4. Design ADRs: supergeo, trim, pooling (parallel) — F-BACKLOG-002 §8
 

@@ -148,7 +148,8 @@ None of these reopen the **default** P3+ fix→OC loop without a **governance PR
 ### 7.1 Explicit next state
 
 ```
-TRACK_F_IMPLEMENTATION_STATE = PAUSED_PENDING_GOVERNANCE_PR
+TRACK_F_IMPLEMENTATION_STATE = PAUSED_PENDING_TRUSTREPORT_INTEGRATION
+GOVERNANCE_PACKAGE = GOVERNANCE-PR-TRACK-F-DECISION-PACKAGE-001 complete
 DEFAULT_IMPL_QUEUE = empty
 DECISION_LAYER = F-DECISION-001 complete (policy only)
 OPTIONAL_NEXT = F-INF-004  # only if product reprioritizes

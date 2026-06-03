@@ -203,7 +203,7 @@ Full rows: [`AUDIT-010` Appendix A](audits/AUDIT-010_mmm_readiness_gap.md).
 
 **Decision layer:** **F-DECISION-001** ✅ — [`F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md`](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md).
 
-**Next:** **Governance PR** (Track F checkpoint + decision resolver + F-BACKLOG-002). **Optional:** F-INF-004 (A09). Promotion/MMM/CS still blocked.
+**Next:** ~~**Governance PR**~~ ✅ [`GOVERNANCE_PR_TRACK_F_DECISION_PACKAGE_001.md`](GOVERNANCE_PR_TRACK_F_DECISION_PACKAGE_001.md) → **TrustReport integration** (separate PR). **Optional:** F-INF-004 (A09). Promotion/MMM/CS still blocked.
 
 ---
 

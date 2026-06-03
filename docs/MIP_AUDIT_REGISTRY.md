@@ -423,6 +423,18 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 ---
 
+## GOVERNANCE-PR-TRACK-F-DECISION-PACKAGE-001 (2026-06-03)
+
+**Artifact:** [`docs/GOVERNANCE_PR_TRACK_F_DECISION_PACKAGE_001.md`](GOVERNANCE_PR_TRACK_F_DECISION_PACKAGE_001.md)
+
+**Verdict:** Governance PR summary **ready** — documents commit spine (F-INF-002 → TBRRIDGE-003 → CHECKPOINT → F-DECISION-001 → F-BACKLOG-002 `97e7acc`); decision-safe layer; guardrails; **TrustReport integration** authorized as **next** engineering step (separate PR).
+
+**Not in this package:** TrustReport wiring, OC, promotion, MMM, CalibrationSignal expansion.
+
+**Next:** TrustReport integration PR consuming `decision_policy.py` outputs.
+
+---
+
 ## TRACK-F-IMPLEMENTATION-CHECKPOINT-001 (2026-06-03)
 
 **Artifact:** [`docs/TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md`](TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md)

@@ -155,7 +155,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | **MMM readiness / gap** | **AUDIT-010** ✅ [`audits/AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md) — `not_ready_continue_track_f`; Appendix A = 30 tuples |
 | **D5-POW-001e** | ✅ Six confirmed methods; SCM+JK reference null FPR; [`D5_POW_001e_results.json`](track_d/archives/D5_POW_001e_results.json) — `acceptable_with_caveats` |
 
-**Next steps:** … → ~~**CHECKPOINT-001**~~ ✅ → ~~**F-DECISION-001**~~ ✅ → ~~**F-BACKLOG-002**~~ ✅ → **governance PR** (package Track F + decision layer + backlog relevance) → promotion **only if** governance PR allows (not authorized).
+**Next steps:** … → ~~**CHECKPOINT-001**~~ ✅ → ~~**F-DECISION-001**~~ ✅ → ~~**F-BACKLOG-002**~~ ✅ → ~~**GOVERNANCE-PR-TRACK-F-DECISION-PACKAGE-001**~~ ✅ → **TrustReport integration** (F-DECISION-001 consumption) → promotion **only if** future governance PR allows (not authorized).
 
 ### Track F — implementation checkpoint (2026-06-03)
 
@@ -167,6 +167,11 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Document:** [`F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md`](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md)  
 **Code:** [`panel_exp/governance/decision_policy.py`](../panel_exp/governance/decision_policy.py)  
 **Verdict:** Resolver assigns roles (null monitor / diagnostic / falsification / excluded) and evidence posture **without** promotion, MMM, or CalibrationSignal expansion.
+
+### GOVERNANCE-PR-TRACK-F-DECISION-PACKAGE-001 — governance PR summary
+
+**Document:** [`GOVERNANCE_PR_TRACK_F_DECISION_PACKAGE_001.md`](GOVERNANCE_PR_TRACK_F_DECISION_PACKAGE_001.md)  
+**Verdict:** Packages checkpoint + F-DECISION-001 + F-BACKLOG-002; confirms production-safe decision posture; **next authorized step = TrustReport integration** (separate PR; no wiring in this package).
 
 ### Track F — estimator / inference completion (implementation planning)
 
