@@ -480,7 +480,19 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** METHOD-READINESS-AND-COMPATIBILITY-MATRIX-001 · F-BACKLOG-002 · F-DECISION-001 (baseline until audit).
 
-**Future artifact:** METHOD-PROMOTION-AUDIT-TEMPLATE-001 (not yet authored).
+**Future artifact:** METHOD-PROMOTION-AUDIT-TEMPLATE-001 (placeholder: [`METHOD_PROMOTION_AUDIT_TEMPLATE_001.md`](METHOD_PROMOTION_AUDIT_TEMPLATE_001.md)).
+
+**Downstream:** [`METHOD_STRENGTHENING_LANES_001.md`](METHOD_STRENGTHENING_LANES_001.md) — strengthening work packages; does not duplicate routing.
+
+---
+
+## METHOD-STRENGTHENING-LANES-001 (2026-06-03)
+
+**Artifact:** [`docs/METHOD_STRENGTHENING_LANES_001.md`](METHOD_STRENGTHENING_LANES_001.md)
+
+**Verdict:** Strengthening layer — estimator / inference / combination evidence categories; first lanes AUGSYNTH_ASCM, TBR_AGGREGATE, MULTICELL, TRIM_SUPERGEO, BAYESIAN_TBR_TROP_RTP; entry/exit criteria; next-artifact map. **Not promotion**; no TrustReport / F-DECISION / CS / MMM change.
+
+**Prerequisites:** METHOD-SELECTION-AND-PROMOTION-FRAMEWORK-001 · METHOD-READINESS matrix · F-BACKLOG-002 · F-DECISION-001 (baseline).
 
 ---
 

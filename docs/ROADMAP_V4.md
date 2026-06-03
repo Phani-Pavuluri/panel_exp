@@ -201,7 +201,14 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Document:** [`METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001.md`](METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001.md)  
 **Verdict:** Positive promotion pipeline on top of L1/L2/L3 matrix; A26 = conservative baseline (not permanent winner); benchmark + **METHOD-PROMOTION-AUDIT-TEMPLATE-001** required for role upgrades; **0** promotions in v1.
 
-**Future:** [`METHOD_PROMOTION_AUDIT_TEMPLATE_001`](METHOD_PROMOTION_AUDIT_TEMPLATE_001.md) (to be authored) — required gate per role × data structure.
+**Future:** [`METHOD_PROMOTION_AUDIT_TEMPLATE_001`](METHOD_PROMOTION_AUDIT_TEMPLATE_001.md) (placeholder) — required gate per role × data structure.
+
+### METHOD-STRENGTHENING-LANES-001
+
+**Document:** [`METHOD_STRENGTHENING_LANES_001.md`](METHOD_STRENGTHENING_LANES_001.md)  
+**Verdict:** Evidence-building lanes between [`METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001`](METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001.md) and future OC/ADR/promotion audits; five first lanes (AugSynth/ASCM, TBR aggregate, multi-cell, trim/supergeo, BayesianTBR/TROP); **no** production role change.
+
+**Bridge:** METHOD-SELECTION (pipeline) → **METHOD-STRENGTHENING** (this doc) → OC / ADR / charter → METHOD-PROMOTION-AUDIT-TEMPLATE-001 → F-DECISION amendment.
 
 ### Track F — estimator / inference completion (implementation planning)
 

@@ -285,6 +285,10 @@ Use the matrix for **strengthening** discourse; use this doc for **ranking**.
 
 Investigation rank (this doc) + layered matrix → **positive promotion pipeline**: [`METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001.md`](METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001.md). Defines benchmark vs **A26 baseline**, first promotion lanes, and **METHOD-PROMOTION-AUDIT-TEMPLATE-001** as required future gate. **No promotion authorized here or in framework v1.**
 
+## 17. Strengthening lanes (METHOD-STRENGTHENING-LANES-001)
+
+F-BACKLOG ranks **what to investigate**; the promotion framework defines **how promotion could work**; [`METHOD_STRENGTHENING_LANES_001.md`](METHOD_STRENGTHENING_LANES_001.md) defines **what evidence work** each high-value lane requires before a promotion audit. Strengthening does not change production roles.
+
 ---
 
-*F-BACKLOG-002 v1.2.0 — investigation priority only; does not authorize implementation or promotion.*
+*F-BACKLOG-002 v1.3.0 — investigation priority only; does not authorize implementation or promotion.*

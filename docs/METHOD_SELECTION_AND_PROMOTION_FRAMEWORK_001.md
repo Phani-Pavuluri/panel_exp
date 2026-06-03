@@ -7,7 +7,7 @@
 **Verdict:** Governance is a **promotion pipeline**, not a freeze; **no method promoted in this artifact**  
 **Decomposition input:** [`METHOD_READINESS_AND_COMPATIBILITY_MATRIX_001.md`](METHOD_READINESS_AND_COMPATIBILITY_MATRIX_001.md) (L1/L2/L3 complete)
 
-**Related:** [`F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md`](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md) · [`F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md`](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md) · [`TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md`](TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md) · [`TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) · [`audits/AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md)
+**Related:** [`F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md`](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md) · [`F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md`](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md) · [`TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md`](TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md) · [`TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) · [`audits/AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md) · [`METHOD_STRENGTHENING_LANES_001.md`](METHOD_STRENGTHENING_LANES_001.md) (evidence work between lanes and promotion audit)
 
 **Future gate (not authored here):** **METHOD-PROMOTION-AUDIT-TEMPLATE-001**
 
@@ -216,6 +216,8 @@ Using F-BACKLOG-002 rank + matrix L3 classifications. **Lanes authorize investig
 | **LANE-R&D-001** | **BayesianTBR**, **TROP** | research_only | RTP-001, RTP-002 | No F-DECISION prod role until charter exit |
 
 **Explicitly not first lanes for primary null-monitor:** TBRRidge+JK/JKP (A16/A21) until L3 exits `callable_unverified`; registry Bayesian (INV-015); pooled multi-cell without ADR.
+
+**Strengthening (downstream):** Concrete OC/ADR/audit work packages for each lane are defined in [`METHOD_STRENGTHENING_LANES_001.md`](METHOD_STRENGTHENING_LANES_001.md). That artifact does **not** duplicate routing or promotion rules from this document.
 
 ---
 
