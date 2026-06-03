@@ -355,7 +355,8 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 | **Synthetic OC** | D5 batteries prove callability/geometry/OC under a DGP — **not** paper fidelity. |
 | **COMBO valid_candidate** | Interface plausible — needs conceptual + OC before promotion (**Kfold closed** by D5-INST-AUGSYNTH-KFOLD-001). |
 | **Production ready** | **0** instrument paths cleared for MMM on conceptual audit alone. |
-| **AUDIT-010** | MMM readiness/gap runs **after** CONCEPTUAL-VALIDITY-001 + D5-INST-TBR-001. |
+| **AUDIT-010** | MMM readiness/gap runs **after** CONCEPTUAL-VALIDITY-001 + D5-INST-TBR-001 — ✅ closed `mmm_intake_blocked`. |
+| **Track F P0** | Governance contract hygiene — ✅ [`instrument_contract.py`](../panel_exp/governance/instrument_contract.py). |
 | **TBR vs TBRRidge** | Different research objects — INST-007 uses TBRRidge on agg2, not class TBR. |
 
 **Card status unchanged** except explicit CV-001 cross-links on INST-001–006 above; statuses remain governed by OC + Track B, not literature alone.

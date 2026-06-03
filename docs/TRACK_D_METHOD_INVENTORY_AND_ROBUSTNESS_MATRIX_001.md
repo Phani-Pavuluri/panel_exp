@@ -220,6 +220,8 @@ Where applicable, each inventory row records:
 | Conceptual / literature fidelity | **TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001** ✅ — paper vs implementation; synthetic OC ≠ validity; **0** MMM-ready paths |
 | Implementation completion plan | **TRACK-F-ESTIMATOR-INFERENCE-COMPLETION-PLAN-001** ✅ — FIX/BLOCK/adapter roadmap from D audits |
 | Roadmap consistency | **AUDIT-010A** ✅ — pre-MMM sanity check; corrected sequence in [`audits/AUDIT-010A_roadmap_consistency_pre_mmm_gate.md`](audits/AUDIT-010A_roadmap_consistency_pre_mmm_gate.md) |
+| MMM readiness / gap | **AUDIT-010** ✅ — [`audits/AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md); `mmm_intake_blocked`; Appendix A = 30 tuples |
+| Track F P0 hygiene | ✅ — [`panel_exp/governance/instrument_contract.py`](../panel_exp/governance/instrument_contract.py) |
 
 ---
 

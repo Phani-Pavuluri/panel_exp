@@ -2,7 +2,7 @@
 
 **Document ID:** TRACK-F-ESTIMATOR-INFERENCE-COMPLETION-PLAN-001  
 **Type:** Implementation roadmap (planning only — no code changes in this package)  
-**Status:** **draft v1** — AUDIT-010 ✅ (`not_ready_continue_track_f`); **Track F P0** next    
+**Status:** **draft v1** — AUDIT-010 ✅ (`not_ready_continue_track_f`); **Track F P0 hygiene** ✅; next P2 OC  
 **Date:** 2026-06-02  
 **Lane:** Implementation planning bridge — Track D/E evidence → governed fixes  
 **Branch / baseline:** `fix-kfold-multitreated-geometry` @ post `TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001`
@@ -30,7 +30,7 @@
 | [`D5_INST_AUGSYNTH_001`](track_d/D5_INST_AUGSYNTH_001_REPORT.md) | ✅ | AugSynthCVXPY point/JK diagnostic comparator |
 | [`D5_INST_AUGSYNTH_KFOLD_001`](track_d/D5_INST_AUGSYNTH_KFOLD_001_REPORT.md) | ✅ | AugSynthCVXPY + Kfold restricted diagnostic |
 | **D5-INST-TBR-001** | ✅ | Aggregate class TBR OC — point/Kfold restricted; JK blocked on agg2 |
-| **AUDIT-010** | ⏳ planned | MMM readiness/gap — **finalizes production intake set** |
+| **AUDIT-010** | ✅ | MMM readiness/gap closed — `not_ready_continue_track_f`; P0 hygiene next |
 
 **Binding governance (unchanged until separate PR):**
 
@@ -109,14 +109,20 @@ Legend: **FIX** = implement + OC · **BLOCK** = remain forbidden · **ADAPT** = 
 
 These tuples are **conceptually plausible** (or blocking hygiene) and should be implemented, clarified, or OC'd — not left in ambiguous `implemented_but_unvalidated` state.
 
-### P0 — Blocking hygiene (no new combos; required for AUDIT-010)
+### P0 — Blocking hygiene (post AUDIT-010; no promotion)
 
-| ID | Gap | Work type | Owner refs |
-|----|-----|-----------|------------|
-| **F-P0-001** | `full_model=True` SCM/AugSynth fits post-period columns | **CLEAN-E** + export guard | D2 INV-D2-001; CV-EST-SCM |
-| **F-P0-002** | `recovery_runner` key `"TBR"` uses TBRRidge factory | **CLEAN-E** | D5-AUD-FIND-004 |
-| **F-P0-003** | Registry `Bayesian` on BayesianTBR ≠ NUTS MCMC | **CLEAN-I** block or bridge | INV-015; CV-INF-BAYESIAN-REG |
-| **F-P0-004** | DID relative ATT CI unsupported vs SCM | **CLEAN-I** + Track B policy | DEF-003 |
+| ID | Gap | Status | Implementation |
+|----|-----|--------|----------------|
+| **F-P0-001** | `full_model=True` SCM/AugSynth fits post-period columns | ✅ | `panel_exp/governance/instrument_contract.py` — `full_model_export_block_reason` |
+| **F-P0-002** | `recovery_runner` key `"TBR"` uses TBRRidge factory | ✅ | `runner.py`, `recovery_runner.py` — `class_tbr_recovery_factory` |
+| **F-P0-003** | Registry `Bayesian` on BayesianTBR ≠ NUTS MCMC | ✅ | INV-015 helpers + `method_metadata` known_limitations |
+| **F-P0-004** | DID relative ATT CI unsupported vs SCM | ✅ | `did_interval_policy.py` (existing) + tests |
+| **F-P0-005** | Placebo = inference/falsification, not estimator | ✅ | `assert_not_placebo_as_estimator`; inference catalog rationale |
+| **F-P0-006** | Multi-cell per-cell only unless `pooling_rule_id` | ✅ | `multi_cell_pooling_block_reason` + tests |
+
+**Tests:** [`tests/governance/test_track_f_p0_hygiene.py`](../../tests/governance/test_track_f_p0_hygiene.py)
+
+**Next:** Track F **P2 OC** (TBRRidge-002, AugSynth Conformal) — not promotion.
 
 ### P1 — Aggregate TBR path (~~D5-INST-TBR-001~~ ✅)
 

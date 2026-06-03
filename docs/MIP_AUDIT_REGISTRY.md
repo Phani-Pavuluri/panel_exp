@@ -348,7 +348,17 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **`not_ready_continue_track_f`** — MMM **not ready / blocked**; CalibrationSignal **no expansion**; Appendix A primary buckets A01–A30; **not** promotion.
 
-**Next:** **Track F P0 hygiene**.
+**Next:** ~~Track F P0~~ ✅ → **Track F P2 OC**.
+
+---
+
+## Track F P0 hygiene checkpoint (2026-06-03)
+
+**Code:** [`panel_exp/governance/instrument_contract.py`](../panel_exp/governance/instrument_contract.py) · [`tests/governance/test_track_f_p0_hygiene.py`](../tests/governance/test_track_f_p0_hygiene.py)
+
+**Verdict:** **P0 complete** — F-P0-001…006 guards/tests; no CalibrationSignal expansion; no MMM ingress.
+
+**Next:** Track F P2 OC (TBRRidge-002, AugSynth Conformal).
 
 ---
 
