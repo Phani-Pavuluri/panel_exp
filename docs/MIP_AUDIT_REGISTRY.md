@@ -392,7 +392,18 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **Track F P2 formally closed** — no additional OC batteries scheduled; promotion not authorized.
 
-**Next lane:** **F-INF-001** interval semantics and inference wrapper contract · F-GEO-001 · F-CAT-001
+**Next lane:** ~~F-INF-001~~ ✅ → **F-GEO-001** · **F-CAT-001**
+
+---
+
+## F-INF-001 checkpoint (2026-06-03)
+
+**Artifact:** [`docs/F_INF_001_INTERVAL_SEMANTICS_CONTRACT.md`](F_INF_001_INTERVAL_SEMANTICS_CONTRACT.md)  
+**Code:** [`panel_exp/governance/interval_semantics_contract.py`](../panel_exp/governance/interval_semantics_contract.py) · [`tests/governance/test_f_inf_001_interval_semantics.py`](../tests/governance/test_f_inf_001_interval_semantics.py)
+
+**Verdict:** **Contract complete** — callable invalid intervals classified safely; `GOVERNED_UNCERTAINTY_EXPORT_ALLOWLIST` empty; no silent bound fixes.
+
+**Next:** **F-GEO-001** geometry adapter hardening.
 
 ---
 

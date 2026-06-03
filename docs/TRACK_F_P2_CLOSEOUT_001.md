@@ -131,9 +131,9 @@ All open items are classified below. **No additional P2 OC batteries** unless a 
 
 | ID | Lane | Finding | Source | Reopens OC? |
 |----|------|---------|--------|-------------|
-| **F-INF-001** | F-INF | Conformal interval band sign / y_upper/y_lower transform — negative HW on AugSynthCVXPY + TBRRidge TimeSeriesKfold | AUGSYNTH-003, TBRRIDGE-002 | Yes — Conformal, TimeSeriesKfold |
+| **F-INF-001** | F-INF | Interval semantics **contract** (classify callable vs governed) | D3 + P2 batteries | ✅ contract complete |
 | **F-INF-002** | F-INF | TBRRidge multi-treated residual shape — JK/JKP/Conformal broadcast failure | TBRRIDGE-002 A16/A18/A21 | Yes — after interface fix |
-| **F-INF-003** | F-INF | Interval semantics contract — document and test `path_interval_type` vs half-width sign | D3 + P2 batteries | Prerequisite for any governed export |
+| **F-INF-003** | F-INF | Conformal / TimeSeriesKfold band sign fix (implementation — not silent reclassification) | AUGSYNTH-003, TBRRIDGE-002 | Yes — after fix + re-OC |
 | **F-GEO-001** | F-GEO | Geometry adapter hardening — unit vs aggregate vs multi-treated readout contracts | COMBO + CV-001 | Per adapter |
 | **F-CAT-001** | F-CAT | Registry/catalog cleanup — inference_support vs impl.py parity; base AugSynth vs CVXPY | COMBO-AUDIT-001 | Catalog ADRs |
 | **F-CAT-002** | F-CAT | AugSynthCVXPY + BRB — explicit BLOCK in catalog or add with concept doc (F-OD-002) | A04 | After ADR only |
@@ -187,7 +187,7 @@ flowchart TD
 
 | Lane | Scope | Priority items |
 |------|-------|----------------|
-| **F-INF** | Inference wrapper and interval semantics fixes | F-INF-001 Conformal/TSKF band sign · F-INF-002 TBRRidge multi-treated shape · F-INF-003 interval contract tests |
+| **F-INF** | Inference wrapper and interval semantics fixes | ~~F-INF-001 contract~~ ✅ · F-INF-002 TBRRidge shape · F-INF-003 band sign fix |
 | **F-GEO** | Geometry adapters | Unit vs aggregate vs multi-treated readout hardening (F-GEO-001) |
 | **F-CAT** | Registry/catalog cleanup | inference_support parity · AugSynth BRB ADR (F-OD-002) · base AugSynth quarantine |
 | **F-MCELL** | Multi-cell pooling | Design `pooling_rule_id` **only if** product ever requires pooled multi-cell claims |
@@ -220,7 +220,7 @@ flowchart TD
 | No additional P2 OC batteries scheduled | ✅ |
 | Promotion not authorized | ✅ |
 
-**Next lane:** **Track F implementation backlog** — start with **F-INF-001** (interval semantics and inference wrapper contract).
+**Next lane:** ~~**F-INF-001**~~ ✅ → **F-GEO-001** (geometry adapters) · **F-CAT-001** (registry/catalog cleanup).
 
 ---
 

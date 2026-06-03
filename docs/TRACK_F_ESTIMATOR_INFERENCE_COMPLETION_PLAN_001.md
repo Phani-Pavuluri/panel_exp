@@ -34,6 +34,7 @@
 | **D5-INST-AUGSYNTH-003** | ✅ | AugSynthCVXPY Conformal — callable_unverified |
 | **AUDIT-010** | ✅ | MMM readiness/gap closed — `not_ready_continue_track_f` |
 | **TRACK-F-P2-CLOSEOUT-001** | ✅ | P2 closed; F-INF / F-GEO / F-CAT backlog |
+| **F-INF-001** | ✅ | Interval semantics contract — [`F_INF_001_INTERVAL_SEMANTICS_CONTRACT.md`](F_INF_001_INTERVAL_SEMANTICS_CONTRACT.md) |
 
 **Binding governance (unchanged until separate PR):**
 
@@ -131,15 +132,15 @@ These tuples are **conceptually plausible** (or blocking hygiene) and should be 
 
 | Lane | ID | Scope | Priority |
 |------|-----|-------|----------|
-| **F-INF** | F-INF-001 | Conformal / TimeSeriesKfold interval band sign and semantics contract | **P0 impl** |
+| **F-INF** | F-INF-001 | Conformal / TimeSeriesKfold interval band sign and semantics contract | ~~**P0 impl**~~ ✅ contract |
 | **F-INF** | F-INF-002 | TBRRidge multi-treated residual shape for JK/JKP/Conformal | **P0 impl** |
-| **F-INF** | F-INF-003 | `path_interval_type` + half-width sign tests | **P0 impl** |
+| **F-INF** | F-INF-003 | Conformal / TimeSeriesKfold band sign fix (implementation) | **P0 impl** |
 | **F-GEO** | F-GEO-001 | Geometry adapter hardening (unit / aggregate / multi-treated) | P1 impl |
 | **F-CAT** | F-CAT-001 | Registry/catalog cleanup — inference_support parity | P1 impl |
 | **F-CAT** | F-CAT-002 | AugSynthCVXPY + BRB explicit BLOCK or ADR (F-OD-002) | P2 impl |
 | **F-MCELL** | F-MCELL-001 | `pooling_rule_id` design if pooled multi-cell ever required | Deferred |
 
-**Rule:** Do not schedule new D5 OC batteries until an implementation fix explicitly reopens a COMBO row.
+**Next lane:** **F-GEO-001** geometry adapter hardening · **F-CAT-001** registry/catalog cleanup.
 
 ### P2 — TBRRidge remaining inference (~~D5-INST-TBRRIDGE-002~~ ✅)
 

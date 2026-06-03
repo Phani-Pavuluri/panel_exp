@@ -187,7 +187,7 @@ Where applicable, each inventory row records:
 | **INF-004** | Kfold | confidence_interval | restricted | TBRRidge KFold | DEF-001; not calibration-eligible |
 | **INF-005** | BlockResidualBootstrap | confidence_interval | restricted | TBRRidge BRB | DEF-002 positive OC |
 | **INF-006** | Placebo | placebo_band | diagnostic_characterized | SCM Placebo | **D5-INST-PLACEBO-001** ✅ — single-treated only; multi-treated blocked; not CI |
-| **INF-007** | Conformal | conformal_interval | **callable_unverified** (D5-AUGSYNTH-003) | AugSynthCVXPY Conformal | Negative HW + 100% null exclude on 001e; not governed |
+| **INF-007** | Conformal | conformal_interval | **callable_unverified** (D5-AUGSYNTH-003; **F-INF-001** contract) | AugSynthCVXPY Conformal | Negative HW + 100% null exclude; classified `blocked_invalid_interval` on live band |
 | **INF-008** | Bayesian (registry) | credible_interval | blocked | — | Not full BayesianTBR |
 | **INF-009** | TimeSeriesKfold | confidence_interval | characterization_required | — | **D3** ✅ temporal blocking |
 | **INF-010** | DID bootstrap | cumulative_att_interval | restricted | DID | DEF-003 relative unsupported |
@@ -225,6 +225,7 @@ Where applicable, each inventory row records:
 | MMM readiness / gap | **AUDIT-010** ✅ — [`audits/AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md); `mmm_intake_blocked`; Appendix A = 30 tuples |
 | Track F P0 hygiene | ✅ — [`panel_exp/governance/instrument_contract.py`](../panel_exp/governance/instrument_contract.py) |
 | Track F P2 closeout | **TRACK-F-P2-CLOSEOUT-001** ✅ — P2 closed; F-INF/F-GEO/F-CAT backlog active |
+| F-INF-001 interval contract | ✅ — [`F_INF_001_INTERVAL_SEMANTICS_CONTRACT.md`](F_INF_001_INTERVAL_SEMANTICS_CONTRACT.md) |
 
 ---
 
