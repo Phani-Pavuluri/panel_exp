@@ -8,7 +8,7 @@
 **Framework lane:** LANE-ASCM-001 ([`METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001.md`](METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001.md) §8)  
 **Parent lane registry:** [`METHOD_STRENGTHENING_LANES_001.md`](METHOD_STRENGTHENING_LANES_001.md) §3.1
 
-**Related:** [`METHOD_READINESS_AND_COMPATIBILITY_MATRIX_001.md`](METHOD_READINESS_AND_COMPATIBILITY_MATRIX_001.md) · [`F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md`](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md) · [`TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) (`CV-EST-AUGSYNTH`) · [`track_d/D5_INST_AUGSYNTH_001_REPORT.md`](track_d/D5_INST_AUGSYNTH_001_REPORT.md) · [`track_d/D5_INST_AUGSYNTH_003_REPORT.md`](track_d/D5_INST_AUGSYNTH_003_REPORT.md) · [`METHOD_PROMOTION_AUDIT_TEMPLATE_001.md`](METHOD_PROMOTION_AUDIT_TEMPLATE_001.md) (future gate)
+**Related:** [`METHOD_READINESS_AND_COMPATIBILITY_MATRIX_001.md`](METHOD_READINESS_AND_COMPATIBILITY_MATRIX_001.md) · [`F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md`](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md) · [`TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) (`CV-EST-AUGSYNTH`) · [`track_d/D5_INST_AUGSYNTH_001_REPORT.md`](track_d/D5_INST_AUGSYNTH_001_REPORT.md) · [`track_d/D5_INST_AUGSYNTH_003_REPORT.md`](track_d/D5_INST_AUGSYNTH_003_REPORT.md) · [`track_d/D5_INST_AUGSYNTH_ASCM_002_REPORT.md`](track_d/D5_INST_AUGSYNTH_ASCM_002_REPORT.md) · [`AUGSYNTH_ASCM_INFERENCE_PAIRING_ADR_001.md`](AUGSYNTH_ASCM_INFERENCE_PAIRING_ADR_001.md) · [`SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md`](SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md) · [`METHOD_PROMOTION_AUDIT_TEMPLATE_001.md`](METHOD_PROMOTION_AUDIT_TEMPLATE_001.md) (future gate)
 
 **Baseline (unchanged):** **A26** — SCM + UnitJackKnife, `primary_null_monitor`, `ready_limited_governed_use`, CalibrationSignal `null_monitor_only` only.
 
@@ -65,9 +65,9 @@
 | L2 | **SCM baseline assumptions** | Convex combination of donors, pre-period fit, no extrapolation without risk flag. | **Aligned** — inner `SyntheticControlCVXPY`; inherits `full_model` risk. |
 | L3 | **ASCM improvement mechanism** | SCM leg + **ridge (or declared) outcome model** on residualized outcomes; bias correction when SCM underfits. | **Aligned with deviation** — restricted on contaminated geo DGPs. |
 | L4 | **Outcome-model dependence** | Report ridge λ / model spec; sensitivity to outcome-model misspecification. | **Gap** — sensitivity suite not standardized in D5. |
-| L5 | **Extrapolation / negative-weight risk** | Policy when weights outside [0,1] or outside donor hull; regularization interpretation. | **Gap** — needs explicit diagnostic thresholds (§5). |
-| L6 | **Donor convex-hull diagnostics** | Distance of treated pre-treatment profile to donor hull; flag extrapolation. | **Gap** — not in archived D5 JSON. |
-| L7 | **Weak pretreatment fit trigger** | Operational definition (e.g. SCM pre-RMSE percentile, max weight, LEEF imbalance) triggering “ASCM challenge mode.” | **Gap** — **primary strengthening deliverable** for OC stratification. |
+| L5 | **Extrapolation / negative-weight risk** | Policy when weights outside [0,1] or outside donor hull; regularization interpretation. | **Partial** — provisional labels in [`SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md`](SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md) §2.4–§2.7; numeric calibration pending ASCM-003. |
+| L6 | **Donor convex-hull diagnostics** | Distance of treated pre-treatment profile to donor hull; flag extrapolation. | **Partial** — `hull_min_donor_z_distance` archived in ASCM-002; threshold audit defines `donor_hull_*` / `extrapolation_risk_high` labels. |
+| L7 | **Weak pretreatment fit trigger** | Operational definition (e.g. SCM pre-RMSE percentile, max weight, LEEF imbalance) triggering “ASCM challenge mode.” | **Partial** — `scm_pre_rmse` archived; **`fit_good` / `fit_weak` / `fit_failed`** vocabulary in threshold audit §5; cutoffs provisional. |
 | L8 | **GeoLift / industry practice** | Position vs GeoLift-style ASCM and competitor dashboards (F-BACKLOG-002 rank 3–7). | **Aligned** — investigation priority high; governance blocks auto-promotion. |
 
 **Forbidden claims (reaffirm):** CalibrationSignal eligibility; JK as **lift detector**; Conformal as governed uncertainty; pooled multi-cell AugSynth; equivalence of AugSynth point scale to SCM+JK without bridge.
@@ -83,11 +83,11 @@
 | I1 | **Objective / loss** | Inner SCM CVXPY objective matches documented SCM leg; ridge loss on residuals documented. | Inner `SyntheticControlCVXPY`; probe matches CVXPY point (D5-INST-AUGSYNTH-001). |
 | I2 | **Constraints** | Donor weights, `min_donors`, correlation filter — match catalog. | `min_donors=5` on batteries; thin-cell blocks recorded. |
 | I3 | **Regularization** | Ridge (or stated) penalty on outcome model; defaults recorded. | Conceptual audit §5.2; **sensitivity grid not archived**. |
-| I4 | **Donor weights** | Export weight vector / concentration metrics for OC JSON. | **Gap** for strengthening OC artifact. |
+| I4 | **Donor weights** | Export weight vector / concentration metrics for OC JSON. | **Partial** — `weight_herfindahl`, `max_weight` archived in ASCM-002; full vector export still open. |
 | I5 | **Outcome-model component** | Fit on residualized Y; post-period counterfactual path. | Implemented; **metadata emission incomplete** for TrustReport (no wiring change in this charter). |
 | I6 | **Treated/control geometry** | Unit panel only; reject aggregate JK on AugSynth path. | F-GEO aligned; aggregate JK **invalid**. |
 | I7 | **Point estimand** | `AugSynthCVXPY_Point` Track B alias; scale documented vs SCM. | 100% material point mismatch vs SCM+JK @ null on 001e battery (D5-AS-FIND-004). |
-| I8 | **Metadata emitted** | Pre-fit RMSE, weights, augmentation flags, failure codes. | **Partial** — strengthen OC harness to archive. |
+| I8 | **Metadata emitted** | Pre-fit RMSE, weights, augmentation flags, failure codes. | **Partial** — D1–D7 archived in ASCM-002 JSON; D8/D10/D11 gaps remain. |
 | I9 | **Unsupported modes** | `full_model=True`, registry Bayesian on AugSynth, BRB (A04), base AugSynth prod. | **Blocked** per F-CAT / AUDIT-010. |
 
 **Verdict:** Implementation is **faithful enough for diagnostic OC** but **not audit-complete** for promotion — fidelity audit must close I4–I8 before promotion audit.
@@ -110,7 +110,9 @@ Diagnostics below must be **defined, computed, and archived** in the strengtheni
 | D8 | **Outcome-model sensitivity** | ± ridge λ or alternate outcome spec (small grid). | Robustness of augmentation. |
 | D9 | **Placebo / falsification** | SCM-space placebo where geometry allows (A27 pattern); not AugSynth-primary placebo. | Falsification slice only. |
 | D10 | **Scale compatibility** | Explicit bridge: relative ATT vs level path; sign agreement rate vs A26. | Forbid silent lift compare (D5-AS-FIND-004). |
-| D11 | **False confidence / over-extrapolation** | High point effect + poor pre-fit + hull flag. | Downgrade to diagnostic-only. |
+| D11 | **False confidence / over-extrapolation** | High point effect + poor pre-fit + hull flag. | Downgrade to diagnostic-only. **Threshold rule:** [`SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md`](SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md) §2.9 (`false_confidence_risk`). **Harness gap:** not emitted in ASCM-002 JSON — target ASCM-003. |
+
+**Threshold policy (P1):** Operational label vocabulary and threshold **types** are defined in [`SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md`](SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md). Numeric cutoffs remain **provisional** until **D5-INST-AUGSYNTH-ASCM-003**.
 
 ---
 
@@ -128,11 +130,7 @@ Diagnostics below must be **defined, computed, and archived** in the strengtheni
 | **A04** AugSynth + BRB | `blocked` | F-CAT-002 | **Out of scope** phase 1. |
 | **Registry Bayesian** | INV-015 blocked | — | **Unsupported**. |
 
-**Inference pairing ADR** (`inference_semantics_ADR`) must answer:
-
-1. What randomness does the interval represent (donor LOO, fold CV, conformal residual)?
-2. Null behavior on **weak-fit** and **strong-fit** slices separately vs A26.
-3. Whether pairing is **supplement band**, **diagnostic comparator**, or **candidate null-monitor** (promotion audit only).
+**Inference pairing ADR** — see [`AUGSYNTH_ASCM_INFERENCE_PAIRING_ADR_001.md`](AUGSYNTH_ASCM_INFERENCE_PAIRING_ADR_001.md) (accepted; no pairing promoted). Prior open questions (uncertainty source, weak-fit null behavior, role nomination) are resolved in ADR §2–§6. Original charter questions (interval randomness, weak-fit null slices, role nomination) are answered there without promoting any pairing.
 
 ---
 
@@ -203,13 +201,13 @@ Opening [`METHOD_PROMOTION_AUDIT_TEMPLATE_001.md`](METHOD_PROMOTION_AUDIT_TEMPLA
 | # | Criterion | Status |
 |---|-----------|--------|
 | P1 | AugSynth **improves effect recovery** (MAE/RMSE) vs A26 in **weak-fit worlds** (W2–W3) without unacceptable bias in W1. | ⚠️ **Partial** (1/2 weak-fit worlds @ 8% in D5-ASCM2) |
-| P2 | Does **not materially worsen** null FPR vs A26 on the **nominated inference arm** (separate strong-fit slice). | ❌ Conformal fails; JK estimand unclear |
-| P3 | **Clear failure diagnostics** (D1–D11) archived and wired to TrustReport **proposal** (not production). | ❌ Partial |
-| P4 | **Approved inference pairing** via `inference_semantics_ADR` + F-INF classification. | ❌ Open |
+| P2 | Does **not materially worsen** null FPR vs A26 on the **nominated inference arm** (separate strong-fit slice). | ⚠️ JK **0.0** on W2/W3 (ASCM-002); Conformal **fails** — see ADR |
+| P3 | **Clear failure diagnostics** (D1–D11) archived and wired to TrustReport **proposal** (not production). | ⚠️ D1–D7 in ASCM-002 JSON; D8/D10/D11 + threshold calibration pending |
+| P4 | **Approved inference pairing** via `inference_semantics_ADR` + F-INF classification. | ✅ [`AUGSYNTH_ASCM_INFERENCE_PAIRING_ADR_001.md`](AUGSYNTH_ASCM_INFERENCE_PAIRING_ADR_001.md) — **no pairing promoted** |
 | P5 | **TrustReport disagreement policy** documented (supplement vs challenge vs block); no silent averaging. | ❌ Proposal only |
 | P6 | **No unresolved geometry/estimand mismatch** (F-GEO, F-CAT, Track B estimand IDs). | ⚠️ Scale bridge open (D5-AS-FIND-004) |
 | P7 | **CalibrationSignal** unchanged unless separate E5 amendment explicitly scoped. | ✅ Unchanged |
-| P8 | **Implementation fidelity** checklist (§4) closed. | ❌ I4–I8 open |
+| P8 | **Implementation fidelity** checklist (§4) closed. | ⚠️ I4/I8 partial in ASCM-002; full vector + D11 emission open |
 | P9 | **Literature fidelity** checklist (§3) signed with deviation bounds. | ⚠️ Spillover restricted |
 
 **Target roles (audit scope only — not granted here):**
@@ -227,19 +225,20 @@ Opening [`METHOD_PROMOTION_AUDIT_TEMPLATE_001.md`](METHOD_PROMOTION_AUDIT_TEMPLA
 | Exit code | When | Current recommendation |
 |-----------|------|------------------------|
 | **`proceed_to_OC`** | Charter complete; D5-INST-AUGSYNTH-ASCM-002 not run | ✅ **Done** — see D5-INST-AUGSYNTH-ASCM-002 |
-| **`proceed_to_inference_pairing_ADR`** | OC shows partial weak-fit gain; Conformal unsafe | Optional — D5-ASCM2 exit `remain_diagnostic_comparator` |
-| **`proceed_to_inference_pairing_ADR`** | After OC stratification; Conformal vs JK vs Kfold | ✅ **Parallel** after W1–W3 slice from OC |
-| **`remain_diagnostic_comparator`** | OC does not beat A26 on null FPR or weak-fit recovery | **Default baseline** until OC proves otherwise |
+| **`proceed_to_inference_pairing_ADR`** | OC complete; pairing policy required | ✅ [`AUGSYNTH_ASCM_INFERENCE_PAIRING_ADR_001.md`](AUGSYNTH_ASCM_INFERENCE_PAIRING_ADR_001.md) — **no pairing promoted** |
+| **`remain_diagnostic_comparator`** | OC does not beat A26 on weak-fit recovery sufficiently | ✅ **Current** (ASCM-002 + ADR) |
 | **`proceed_to_promotion_audit`** | §8 all criteria met | ❌ **Not authorized** |
 | **`keep_restricted`** | Conformal / callable_unverified arms | ✅ **A05** stays `characterized_restricted` |
 
 **Immediate program order:**
 
-1. Close implementation fidelity gaps (§4 I4–I8) in OC harness design.  
-2. Run **D5-INST-AUGSYNTH-ASCM-002** (§7).  
-3. Draft **inference_semantics_ADR** for leading arm(s).  
-4. If §8 passes → **promotion_charter** scoped to `(unit panel × role × tuple)` only.  
-5. Else → **`remain_diagnostic_comparator`** and refresh Track E INST-004 cards.
+1. ~~Run **D5-INST-AUGSYNTH-ASCM-002** (§7).~~ ✅  
+2. ~~Draft **inference pairing ADR**.~~ ✅ [`AUGSYNTH_ASCM_INFERENCE_PAIRING_ADR_001.md`](AUGSYNTH_ASCM_INFERENCE_PAIRING_ADR_001.md)  
+3. ~~P1 diagnostic threshold audit.~~ ✅ [`SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md`](SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md)  
+4. Optional **D5-INST-AUGSYNTH-ASCM-003** — calibrate §2 cutoffs; emit D8/D10/D11; larger `n_mc`.  
+5. Close remaining implementation fidelity gaps (§4 I4–I8 full vector / D11 emission).  
+6. If §8 passes in future → **promotion_charter** — **not met today**.  
+7. Else → **`remain_diagnostic_comparator`** (current) and refresh Track E INST-004 cards.
 
 ---
 

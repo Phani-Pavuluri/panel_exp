@@ -213,7 +213,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 ### AUGSYNTH-ASCM-STRENGTHENING-001
 
 **Document:** [`AUGSYNTH_ASCM_STRENGTHENING_001.md`](AUGSYNTH_ASCM_STRENGTHENING_001.md)  
-**Verdict:** First strengthening charter — when AugSynth/ASCM may challenge A26 on unit-panel geo; diagnostics §5; inference pairing evidence bar; **D5-INST-AUGSYNTH-ASCM-002** OC spec (not run). **No promotion**; AugSynth not primary.
+**Verdict:** First strengthening charter — when AugSynth/ASCM may challenge A26 on unit-panel geo; diagnostics §5; **D5-INST-AUGSYNTH-ASCM-002** executed. **No promotion**; AugSynth not primary.
 
 **Prior OC (inputs):** D5-INST-AUGSYNTH-001 · 003 · KFOLD — do not satisfy weak-fit stratification alone.
 
@@ -223,6 +223,25 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Artifact:** [`track_d/archives/D5_INST_AUGSYNTH_ASCM_002_results.json`](track_d/archives/D5_INST_AUGSYNTH_ASCM_002_results.json)  
 **Harness:** [`track_d_d5_inst_augsynth_ascm_002.py`](../panel_exp/validation/track_d_d5_inst_augsynth_ascm_002.py)  
 **Verdict:** `remain_diagnostic_comparator` — stratified OC complete; AugSynth point MAE beats A26 on **1/2** weak-fit worlds @ 8%; JK null FPR 0 on battery; **no** promotion.
+
+### AUGSYNTH-ASCM-INFERENCE-PAIRING-ADR-001
+
+**Document:** [`AUGSYNTH_ASCM_INFERENCE_PAIRING_ADR_001.md`](AUGSYNTH_ASCM_INFERENCE_PAIRING_ADR_001.md)  
+**Verdict:** **Accepted** — no AugSynth inference pairing promoted; Conformal **keep_restricted**; JK **more OC only**; KFold diagnostic; Placebo falsification-only; A26 baseline unchanged.
+
+### METHOD-FOUNDATION-HARDENING-001
+
+**Document:** [`METHOD_FOUNDATION_HARDENING_001.md`](METHOD_FOUNDATION_HARDENING_001.md)  
+**Verdict:** Pre-LLM scientific hardening phase — **LLM layer paused**; gap table; lanes P0 ✅ → P1 threshold audit ✅ (calibration via ASCM-003) → P2–P5. **No promotion.**
+
+**Bridge:** METHOD-STRENGTHENING + Track D OC → **FOUNDATION HARDENING** → AUDIT-011 / LLM (future).
+
+### SCM-AUGSYNTH-DIAGNOSTIC-THRESHOLD-AUDIT-001
+
+**Document:** [`SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md`](SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md)  
+**Verdict:** Provisional SCM/A26 and AugSynth/ASCM failure-mode **labels** and threshold **categories** (block / caution / diagnostic-only / insufficient-evidence). **No promotion**; **no TrustReport/F-DECISION change**. ASCM-003 recommended for numeric calibration.
+
+**Inputs:** METHOD-FOUNDATION-HARDENING-001 P1 · ASCM-002 · ADR-001 · AUGSYNTH-ASCM-STRENGTHENING-001 §5.
 
 ### Track F — estimator / inference completion (implementation planning)
 
