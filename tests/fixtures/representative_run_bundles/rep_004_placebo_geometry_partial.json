@@ -1,0 +1,28 @@
+{
+  "case_id": "REP-004",
+  "description": "Placebo multi-treated geometry failure → partial export",
+  "bundle": {
+    "bundle_version": "1.0",
+    "experiment_id": "geo-study-rep-004",
+    "evidence": {
+      "experiment_id": "geo-study-rep-004",
+      "inference_metadata": {
+        "estimator_name": "SCM",
+        "inference_mode": "Placebo",
+        "run_status": "failed"
+      },
+      "track_b_export_hints": {
+        "config_alias": "SCM_Placebo",
+        "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+        "interval_estimand_expectation_id": "geo.placebo_null_envelope.pooled_path.relative",
+        "geometry_class": "single_treated_only",
+        "geometry_observed": "multi_treated_default",
+        "n_treated": 4,
+        "run_status": "failed",
+        "failure_type": "placebo_multi_treated_unsupported"
+      }
+    }
+  },
+  "expected_export_status": "partial",
+  "expected_partial_reason": "geometry_out_of_scope_for_placebo_instrument"
+}

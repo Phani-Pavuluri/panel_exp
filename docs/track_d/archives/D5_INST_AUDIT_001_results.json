@@ -1,0 +1,6085 @@
+{
+  "artifact_id": "D5-INST-AUDIT-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-02T21:49:45.070631+00:00",
+  "git_commit": "4f6ae6b957b8dbb60a8602eafe7df784678b0ddc",
+  "lane": "research",
+  "governance": {
+    "no_promotion": true,
+    "no_production_changes": true,
+    "inventory_only": true
+  },
+  "config": {
+    "probe": {
+      "train_length": 20,
+      "test_length": 6,
+      "n_geos": 12,
+      "seed": 42
+    }
+  },
+  "inference_modes_registered": [
+    {
+      "name": "point_estimate",
+      "maturity": "expert_review",
+      "path_interval_type": "unavailable"
+    },
+    {
+      "name": "UnitJackKnife",
+      "maturity": "expert_review",
+      "path_interval_type": "confidence_interval"
+    },
+    {
+      "name": "JKP",
+      "maturity": "expert_review",
+      "path_interval_type": "confidence_interval"
+    },
+    {
+      "name": "Bayesian",
+      "maturity": "research_only",
+      "path_interval_type": "credible_interval"
+    },
+    {
+      "name": "BlockResidualBootstrap",
+      "maturity": "expert_review",
+      "path_interval_type": "confidence_interval"
+    },
+    {
+      "name": "Conformal",
+      "maturity": "expert_review",
+      "path_interval_type": "conformal_interval"
+    },
+    {
+      "name": "Kfold",
+      "maturity": "expert_review",
+      "path_interval_type": "confidence_interval"
+    },
+    {
+      "name": "Placebo",
+      "maturity": "expert_review",
+      "path_interval_type": "placebo_band"
+    },
+    {
+      "name": "TimeSeriesKfold",
+      "maturity": "expert_review",
+      "path_interval_type": "confidence_interval"
+    }
+  ],
+  "estimators": [
+    {
+      "registry_name": "SCM",
+      "class_name": "SyntheticControl",
+      "module_path": "panel_exp.methods.scm",
+      "maturity_catalog": "expert_review",
+      "inference_support_declared": [
+        "point_estimate",
+        "UnitJackKnife",
+        "JKP",
+        "Bayesian",
+        "BlockResidualBootstrap",
+        "Conformal",
+        "Kfold",
+        "Placebo",
+        "TimeSeriesKfold"
+      ],
+      "known_limitations": [
+        "Requires sufficient controls; scipy optimizer sensitivity."
+      ],
+      "optional_dependencies": [],
+      "synthetic_validation_flag": true,
+      "import_ok": true,
+      "default_validation_runner": true,
+      "validation_runner_skipped": false,
+      "recovery_config_keys": [
+        "SCM",
+        "SCM_UnitJackKnife"
+      ],
+      "track_b_config_aliases": [
+        "SCM_UnitJackKnife",
+        "SCM_Placebo"
+      ]
+    },
+    {
+      "registry_name": "AugSynth",
+      "class_name": "AugSynth",
+      "module_path": "panel_exp.methods.scm",
+      "maturity_catalog": "unvalidated",
+      "inference_support_declared": [
+        "point_estimate",
+        "Kfold",
+        "Conformal"
+      ],
+      "known_limitations": [
+        "Less automated validation than CVXPY SCM variants."
+      ],
+      "optional_dependencies": [],
+      "synthetic_validation_flag": false,
+      "import_ok": true,
+      "default_validation_runner": false,
+      "validation_runner_skipped": false,
+      "recovery_config_keys": [],
+      "track_b_config_aliases": [
+        "AugSynthCVXPY_Point"
+      ]
+    },
+    {
+      "registry_name": "SyntheticControlCVXPY",
+      "class_name": "SyntheticControlCVXPY",
+      "module_path": "panel_exp.methods.scm",
+      "maturity_catalog": "expert_review",
+      "inference_support_declared": [
+        "point_estimate",
+        "Kfold",
+        "Conformal",
+        "BlockResidualBootstrap"
+      ],
+      "known_limitations": [
+        "Solver-dependent; review donor correlations."
+      ],
+      "optional_dependencies": [
+        "cvxpy"
+      ],
+      "synthetic_validation_flag": false,
+      "import_ok": true,
+      "default_validation_runner": false,
+      "validation_runner_skipped": false,
+      "recovery_config_keys": [],
+      "track_b_config_aliases": []
+    },
+    {
+      "registry_name": "AugSynthCVXPY",
+      "class_name": "AugSynthCVXPY",
+      "module_path": "panel_exp.methods.scm",
+      "maturity_catalog": "expert_review",
+      "inference_support_declared": [
+        "point_estimate",
+        "Kfold",
+        "Conformal"
+      ],
+      "known_limitations": [
+        "More complex than base SCM."
+      ],
+      "optional_dependencies": [
+        "cvxpy"
+      ],
+      "synthetic_validation_flag": false,
+      "import_ok": true,
+      "default_validation_runner": false,
+      "validation_runner_skipped": false,
+      "recovery_config_keys": [],
+      "track_b_config_aliases": [
+        "AugSynthCVXPY_Point"
+      ]
+    },
+    {
+      "registry_name": "TBR",
+      "class_name": "TBR",
+      "module_path": "panel_exp.methods.tbr",
+      "maturity_catalog": "expert_review",
+      "inference_support_declared": [
+        "point_estimate",
+        "UnitJackKnife",
+        "JKP",
+        "Kfold"
+      ],
+      "known_limitations": [
+        "Prefer TBRRidge for default workflows."
+      ],
+      "optional_dependencies": [],
+      "synthetic_validation_flag": false,
+      "import_ok": true,
+      "default_validation_runner": true,
+      "validation_runner_skipped": false,
+      "recovery_config_keys": [
+        "TBR"
+      ],
+      "track_b_config_aliases": [
+        "TBRRidge_Kfold",
+        "TBRRidge_BlockResidualBootstrap"
+      ]
+    },
+    {
+      "registry_name": "TBRRidge",
+      "class_name": "TBRRidge",
+      "module_path": "panel_exp.methods.tbr",
+      "maturity_catalog": "expert_review",
+      "inference_support_declared": [
+        "point_estimate",
+        "UnitJackKnife",
+        "JKP",
+        "Bayesian",
+        "BlockResidualBootstrap",
+        "Conformal",
+        "Kfold",
+        "TimeSeriesKfold"
+      ],
+      "known_limitations": [
+        "Registry Bayesian mode on TBRRidge is not full BayesianTBR MCMC."
+      ],
+      "optional_dependencies": [],
+      "synthetic_validation_flag": true,
+      "import_ok": true,
+      "default_validation_runner": false,
+      "validation_runner_skipped": false,
+      "recovery_config_keys": [
+        "TBRRidge",
+        "TBRRidge_Kfold",
+        "TBRRidge_BlockResidualBootstrap"
+      ],
+      "track_b_config_aliases": [
+        "TBRRidge_Kfold",
+        "TBRRidge_BlockResidualBootstrap"
+      ]
+    },
+    {
+      "registry_name": "TBRAutoSARIMAX",
+      "class_name": "TBRAutoSARIMAX",
+      "module_path": "panel_exp.methods.tbr",
+      "maturity_catalog": "expert_review",
+      "inference_support_declared": [
+        "point_estimate"
+      ],
+      "known_limitations": [
+        "Runtime and model-selection review required."
+      ],
+      "optional_dependencies": [
+        "pmdarima",
+        "statsmodels"
+      ],
+      "synthetic_validation_flag": false,
+      "import_ok": true,
+      "default_validation_runner": false,
+      "validation_runner_skipped": false,
+      "recovery_config_keys": [],
+      "track_b_config_aliases": []
+    },
+    {
+      "registry_name": "BayesianTBR",
+      "class_name": "BayesianTBR",
+      "module_path": "panel_exp.methods.bayesian_regression",
+      "maturity_catalog": "research_only",
+      "inference_support_declared": [
+        "Bayesian"
+      ],
+      "known_limitations": [
+        "Exploratory; convergence diagnostics required."
+      ],
+      "optional_dependencies": [
+        "jax",
+        "jaxlib",
+        "numpyro",
+        "arviz"
+      ],
+      "synthetic_validation_flag": false,
+      "import_ok": true,
+      "default_validation_runner": false,
+      "validation_runner_skipped": false,
+      "recovery_config_keys": [],
+      "track_b_config_aliases": []
+    },
+    {
+      "registry_name": "BayesianTBRHorseShoe",
+      "class_name": "BayesianTBRHorseShoe",
+      "module_path": "panel_exp.methods.bayesian_regression",
+      "maturity_catalog": "research_only",
+      "inference_support_declared": [
+        "Bayesian"
+      ],
+      "known_limitations": [
+        "Research-only MCMC path."
+      ],
+      "optional_dependencies": [
+        "jax",
+        "jaxlib",
+        "numpyro",
+        "arviz"
+      ],
+      "synthetic_validation_flag": false,
+      "import_ok": true,
+      "default_validation_runner": false,
+      "validation_runner_skipped": false,
+      "recovery_config_keys": [],
+      "track_b_config_aliases": []
+    },
+    {
+      "registry_name": "DID",
+      "class_name": "DID",
+      "module_path": "panel_exp.methods.DID",
+      "maturity_catalog": "expert_review",
+      "inference_support_declared": [
+        "point_estimate"
+      ],
+      "known_limitations": [
+        "Pooled vs unit timing choices need expert review."
+      ],
+      "optional_dependencies": [],
+      "synthetic_validation_flag": true,
+      "import_ok": true,
+      "default_validation_runner": true,
+      "validation_runner_skipped": false,
+      "recovery_config_keys": [
+        "DID",
+        "DID_Bootstrap"
+      ],
+      "track_b_config_aliases": [
+        "DID_Bootstrap"
+      ]
+    },
+    {
+      "registry_name": "SyntheticDID",
+      "class_name": "SyntheticDID",
+      "module_path": "panel_exp.methods.synthetic_did",
+      "maturity_catalog": "research_only",
+      "inference_support_declared": [
+        "point_estimate"
+      ],
+      "known_limitations": [
+        "Limited stable recovery automation in CI."
+      ],
+      "optional_dependencies": [],
+      "synthetic_validation_flag": false,
+      "import_ok": true,
+      "default_validation_runner": false,
+      "validation_runner_skipped": false,
+      "recovery_config_keys": [],
+      "track_b_config_aliases": [
+        "DID_Bootstrap"
+      ]
+    },
+    {
+      "registry_name": "TROP",
+      "class_name": "TROP",
+      "module_path": "panel_exp.methods.triply_robust_est",
+      "maturity_catalog": "research_only",
+      "inference_support_declared": [
+        "point_estimate"
+      ],
+      "known_limitations": [
+        "Large config space; expert tuning required."
+      ],
+      "optional_dependencies": [],
+      "synthetic_validation_flag": false,
+      "import_ok": true,
+      "default_validation_runner": false,
+      "validation_runner_skipped": true,
+      "recovery_config_keys": [
+        "TROP"
+      ],
+      "track_b_config_aliases": []
+    },
+    {
+      "registry_name": "MTGP",
+      "class_name": "MTGP",
+      "module_path": "panel_exp.methods.mtgp",
+      "maturity_catalog": "research_only",
+      "inference_support_declared": [
+        "Bayesian"
+      ],
+      "known_limitations": [
+        "Experimental runtime and stability."
+      ],
+      "optional_dependencies": [
+        "jax",
+        "jaxlib",
+        "numpyro"
+      ],
+      "synthetic_validation_flag": false,
+      "import_ok": true,
+      "default_validation_runner": false,
+      "validation_runner_skipped": true,
+      "recovery_config_keys": [],
+      "track_b_config_aliases": []
+    }
+  ],
+  "track_b_config_aliases": [
+    "SCM_UnitJackKnife",
+    "TBRRidge_Kfold",
+    "AugSynthCVXPY_Point",
+    "SCM_Placebo",
+    "DID_Bootstrap",
+    "TBRRidge_BlockResidualBootstrap"
+  ],
+  "nominal_calibration_eligible": [
+    "SCM_UnitJackKnife"
+  ],
+  "validation_runner_default": [
+    "SCM",
+    "TBR",
+    "DID"
+  ],
+  "validation_runner_skipped": [
+    "Bayesian",
+    "MTGP",
+    "SDID",
+    "TROP"
+  ],
+  "recovery_config_names": [
+    "DID",
+    "DID_Bootstrap",
+    "SCM",
+    "SCM_UnitJackKnife",
+    "TBR",
+    "TBRRidge",
+    "TBRRidge_BlockResidualBootstrap",
+    "TBRRidge_Kfold",
+    "TROP"
+  ],
+  "compatibility_matrix": [
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": null,
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "UnitJackKnife",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "diagnostic_only",
+      "d5_oc_evidence": [
+        "D5-POW-001b",
+        "D5-POW-001e",
+        "D5-INF-002a/002b",
+        "D3"
+      ]
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "JKP",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "Bayesian",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "ValueError",
+        "error": "operands could not be broadcast together with shapes (6,4) (0,) ",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "BlockResidualBootstrap",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "Conformal",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "Kfold",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "Placebo",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_blocked",
+      "probe": {
+        "status": "probe_blocked",
+        "reason": "placebo() single_treated_only",
+        "n_treated": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "diagnostic_only",
+      "d5_oc_evidence": [
+        "D5-INST-PLACEBO-001",
+        "PHASE15"
+      ]
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "TimeSeriesKfold",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": null,
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "UnitJackKnife",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "diagnostic_only",
+      "d5_oc_evidence": [
+        "D5-POW-001b",
+        "D5-POW-001e",
+        "D5-INF-002a/002b",
+        "D3"
+      ]
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "JKP",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "Bayesian",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "ValueError",
+        "error": "operands could not be broadcast together with shapes (6,) (0,) ",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "BlockResidualBootstrap",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "Conformal",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "Kfold",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "Placebo",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "diagnostic_only",
+      "d5_oc_evidence": [
+        "D5-INST-PLACEBO-001",
+        "PHASE15"
+      ]
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "TimeSeriesKfold",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": null,
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "UnitJackKnife",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "diagnostic_only",
+      "d5_oc_evidence": [
+        "D5-POW-001b",
+        "D5-POW-001e",
+        "D5-INF-002a/002b",
+        "D3"
+      ]
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "JKP",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "Bayesian",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "ValueError",
+        "error": "operands could not be broadcast together with shapes (6,) (0,) ",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "BlockResidualBootstrap",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "Conformal",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "Kfold",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "Placebo",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "diagnostic_only",
+      "d5_oc_evidence": [
+        "D5-INST-PLACEBO-001",
+        "PHASE15"
+      ]
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "TimeSeriesKfold",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": null,
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "UnitJackKnife",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "diagnostic_only",
+      "d5_oc_evidence": [
+        "D5-POW-001b",
+        "D5-POW-001e",
+        "D5-INF-002a/002b",
+        "D3"
+      ]
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "JKP",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "Bayesian",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "ValueError",
+        "error": "operands could not be broadcast together with shapes (6,4) (0,) ",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "BlockResidualBootstrap",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "Conformal",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "Kfold",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "Placebo",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_blocked",
+      "probe": {
+        "status": "probe_blocked",
+        "reason": "placebo() single_treated_only",
+        "n_treated": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "blocked",
+      "d5_oc_evidence": [
+        "D5-INST-PLACEBO-001",
+        "PHASE15"
+      ]
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "TimeSeriesKfold",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": null,
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "UnitJackKnife",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "ValueError",
+        "error": "UnitJackKnife requires at least 2 control units",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "diagnostic_only",
+      "d5_oc_evidence": [
+        "D5-POW-001b",
+        "D5-POW-001e",
+        "D5-INF-002a/002b",
+        "D3"
+      ]
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "JKP",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "Bayesian",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "ValueError",
+        "error": "operands could not be broadcast together with shapes (6,) (0,) ",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "BlockResidualBootstrap",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "Conformal",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "Kfold",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "Placebo",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "diagnostic_only",
+      "d5_oc_evidence": [
+        "D5-INST-PLACEBO-001",
+        "PHASE15"
+      ]
+    },
+    {
+      "estimator": "SCM",
+      "class_name": "SyntheticControl",
+      "inference": "TimeSeriesKfold",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "AugSynth",
+      "class_name": "AugSynth",
+      "inference": null,
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "blocked",
+      "d5_oc_evidence": [
+        "D2",
+        "limited"
+      ]
+    },
+    {
+      "estimator": "AugSynth",
+      "class_name": "AugSynth",
+      "inference": "Kfold",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "blocked",
+      "d5_oc_evidence": [
+        "D2",
+        "limited"
+      ]
+    },
+    {
+      "estimator": "AugSynth",
+      "class_name": "AugSynth",
+      "inference": "Conformal",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "blocked",
+      "d5_oc_evidence": [
+        "D2",
+        "limited"
+      ]
+    },
+    {
+      "estimator": "AugSynth",
+      "class_name": "AugSynth",
+      "inference": null,
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "blocked",
+      "d5_oc_evidence": [
+        "D2",
+        "limited"
+      ]
+    },
+    {
+      "estimator": "AugSynth",
+      "class_name": "AugSynth",
+      "inference": "Kfold",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "blocked",
+      "d5_oc_evidence": [
+        "D2",
+        "limited"
+      ]
+    },
+    {
+      "estimator": "AugSynth",
+      "class_name": "AugSynth",
+      "inference": "Conformal",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "blocked",
+      "d5_oc_evidence": [
+        "D2",
+        "limited"
+      ]
+    },
+    {
+      "estimator": "AugSynth",
+      "class_name": "AugSynth",
+      "inference": null,
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "blocked",
+      "d5_oc_evidence": [
+        "D2",
+        "limited"
+      ]
+    },
+    {
+      "estimator": "AugSynth",
+      "class_name": "AugSynth",
+      "inference": "Kfold",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "blocked",
+      "d5_oc_evidence": [
+        "D2",
+        "limited"
+      ]
+    },
+    {
+      "estimator": "AugSynth",
+      "class_name": "AugSynth",
+      "inference": "Conformal",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "blocked",
+      "d5_oc_evidence": [
+        "D2",
+        "limited"
+      ]
+    },
+    {
+      "estimator": "AugSynth",
+      "class_name": "AugSynth",
+      "inference": null,
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "blocked",
+      "d5_oc_evidence": [
+        "D2",
+        "limited"
+      ]
+    },
+    {
+      "estimator": "AugSynth",
+      "class_name": "AugSynth",
+      "inference": "Kfold",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "blocked",
+      "d5_oc_evidence": [
+        "D2",
+        "limited"
+      ]
+    },
+    {
+      "estimator": "AugSynth",
+      "class_name": "AugSynth",
+      "inference": "Conformal",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "blocked",
+      "d5_oc_evidence": [
+        "D2",
+        "limited"
+      ]
+    },
+    {
+      "estimator": "AugSynth",
+      "class_name": "AugSynth",
+      "inference": null,
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "blocked",
+      "d5_oc_evidence": [
+        "D2",
+        "limited"
+      ]
+    },
+    {
+      "estimator": "AugSynth",
+      "class_name": "AugSynth",
+      "inference": "Kfold",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "blocked",
+      "d5_oc_evidence": [
+        "D2",
+        "limited"
+      ]
+    },
+    {
+      "estimator": "AugSynth",
+      "class_name": "AugSynth",
+      "inference": "Conformal",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "blocked",
+      "d5_oc_evidence": [
+        "D2",
+        "limited"
+      ]
+    },
+    {
+      "estimator": "SyntheticControlCVXPY",
+      "class_name": "SyntheticControlCVXPY",
+      "inference": null,
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "characterization_required",
+      "d5_oc_evidence": [
+        "D2",
+        "test_scm.py"
+      ]
+    },
+    {
+      "estimator": "SyntheticControlCVXPY",
+      "class_name": "SyntheticControlCVXPY",
+      "inference": "Kfold",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": [
+        "D2",
+        "test_scm.py"
+      ]
+    },
+    {
+      "estimator": "SyntheticControlCVXPY",
+      "class_name": "SyntheticControlCVXPY",
+      "inference": "Conformal",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": [
+        "D2",
+        "test_scm.py"
+      ]
+    },
+    {
+      "estimator": "SyntheticControlCVXPY",
+      "class_name": "SyntheticControlCVXPY",
+      "inference": "BlockResidualBootstrap",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": [
+        "D2",
+        "test_scm.py"
+      ]
+    },
+    {
+      "estimator": "SyntheticControlCVXPY",
+      "class_name": "SyntheticControlCVXPY",
+      "inference": null,
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "characterization_required",
+      "d5_oc_evidence": [
+        "D2",
+        "test_scm.py"
+      ]
+    },
+    {
+      "estimator": "SyntheticControlCVXPY",
+      "class_name": "SyntheticControlCVXPY",
+      "inference": "Kfold",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": [
+        "D2",
+        "test_scm.py"
+      ]
+    },
+    {
+      "estimator": "SyntheticControlCVXPY",
+      "class_name": "SyntheticControlCVXPY",
+      "inference": "Conformal",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": [
+        "D2",
+        "test_scm.py"
+      ]
+    },
+    {
+      "estimator": "SyntheticControlCVXPY",
+      "class_name": "SyntheticControlCVXPY",
+      "inference": "BlockResidualBootstrap",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": [
+        "D2",
+        "test_scm.py"
+      ]
+    },
+    {
+      "estimator": "SyntheticControlCVXPY",
+      "class_name": "SyntheticControlCVXPY",
+      "inference": null,
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "characterization_required",
+      "d5_oc_evidence": [
+        "D2",
+        "test_scm.py"
+      ]
+    },
+    {
+      "estimator": "SyntheticControlCVXPY",
+      "class_name": "SyntheticControlCVXPY",
+      "inference": "Kfold",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": [
+        "D2",
+        "test_scm.py"
+      ]
+    },
+    {
+      "estimator": "SyntheticControlCVXPY",
+      "class_name": "SyntheticControlCVXPY",
+      "inference": "Conformal",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": [
+        "D2",
+        "test_scm.py"
+      ]
+    },
+    {
+      "estimator": "SyntheticControlCVXPY",
+      "class_name": "SyntheticControlCVXPY",
+      "inference": "BlockResidualBootstrap",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": [
+        "D2",
+        "test_scm.py"
+      ]
+    },
+    {
+      "estimator": "SyntheticControlCVXPY",
+      "class_name": "SyntheticControlCVXPY",
+      "inference": null,
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "characterization_required",
+      "d5_oc_evidence": [
+        "D2",
+        "test_scm.py"
+      ]
+    },
+    {
+      "estimator": "SyntheticControlCVXPY",
+      "class_name": "SyntheticControlCVXPY",
+      "inference": "Kfold",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": [
+        "D2",
+        "test_scm.py"
+      ]
+    },
+    {
+      "estimator": "SyntheticControlCVXPY",
+      "class_name": "SyntheticControlCVXPY",
+      "inference": "Conformal",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": [
+        "D2",
+        "test_scm.py"
+      ]
+    },
+    {
+      "estimator": "SyntheticControlCVXPY",
+      "class_name": "SyntheticControlCVXPY",
+      "inference": "BlockResidualBootstrap",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": [
+        "D2",
+        "test_scm.py"
+      ]
+    },
+    {
+      "estimator": "SyntheticControlCVXPY",
+      "class_name": "SyntheticControlCVXPY",
+      "inference": null,
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "characterization_required",
+      "d5_oc_evidence": [
+        "D2",
+        "test_scm.py"
+      ]
+    },
+    {
+      "estimator": "SyntheticControlCVXPY",
+      "class_name": "SyntheticControlCVXPY",
+      "inference": "Kfold",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": [
+        "D2",
+        "test_scm.py"
+      ]
+    },
+    {
+      "estimator": "SyntheticControlCVXPY",
+      "class_name": "SyntheticControlCVXPY",
+      "inference": "Conformal",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": [
+        "D2",
+        "test_scm.py"
+      ]
+    },
+    {
+      "estimator": "SyntheticControlCVXPY",
+      "class_name": "SyntheticControlCVXPY",
+      "inference": "BlockResidualBootstrap",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": [
+        "D2",
+        "test_scm.py"
+      ]
+    },
+    {
+      "estimator": "AugSynthCVXPY",
+      "class_name": "AugSynthCVXPY",
+      "inference": null,
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "characterization_required",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "AugSynthCVXPY",
+      "class_name": "AugSynthCVXPY",
+      "inference": "Kfold",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "AugSynthCVXPY",
+      "class_name": "AugSynthCVXPY",
+      "inference": "Conformal",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "AugSynthCVXPY",
+      "class_name": "AugSynthCVXPY",
+      "inference": null,
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "characterization_required",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "AugSynthCVXPY",
+      "class_name": "AugSynthCVXPY",
+      "inference": "Kfold",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "AugSynthCVXPY",
+      "class_name": "AugSynthCVXPY",
+      "inference": "Conformal",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "AugSynthCVXPY",
+      "class_name": "AugSynthCVXPY",
+      "inference": null,
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "characterization_required",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "AugSynthCVXPY",
+      "class_name": "AugSynthCVXPY",
+      "inference": "Kfold",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "AugSynthCVXPY",
+      "class_name": "AugSynthCVXPY",
+      "inference": "Conformal",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "AugSynthCVXPY",
+      "class_name": "AugSynthCVXPY",
+      "inference": null,
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "characterization_required",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "AugSynthCVXPY",
+      "class_name": "AugSynthCVXPY",
+      "inference": "Kfold",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "AugSynthCVXPY",
+      "class_name": "AugSynthCVXPY",
+      "inference": "Conformal",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "AugSynthCVXPY",
+      "class_name": "AugSynthCVXPY",
+      "inference": null,
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "characterization_required",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "AugSynthCVXPY",
+      "class_name": "AugSynthCVXPY",
+      "inference": "Kfold",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "AugSynthCVXPY",
+      "class_name": "AugSynthCVXPY",
+      "inference": "Conformal",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "TBR",
+      "class_name": "TBR",
+      "inference": null,
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "reason": "TBR requires 1 aggregated treated + 1 aggregated control (tbr.py asserts)",
+        "error_type": "AssertionError",
+        "error": "TBR requires treated units to be pre-aggregated. Try TBRRidge or aggregate treated units",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "tbr.py asserts"
+      ]
+    },
+    {
+      "estimator": "TBR",
+      "class_name": "TBR",
+      "inference": "UnitJackKnife",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "reason": "TBR requires 1 aggregated treated + 1 aggregated control (tbr.py asserts)",
+        "error_type": "AssertionError",
+        "error": "TBR requires treated units to be pre-aggregated. Try TBRRidge or aggregate treated units",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "tbr.py asserts"
+      ]
+    },
+    {
+      "estimator": "TBR",
+      "class_name": "TBR",
+      "inference": "JKP",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "reason": "TBR requires 1 aggregated treated + 1 aggregated control (tbr.py asserts)",
+        "error_type": "AssertionError",
+        "error": "TBR requires treated units to be pre-aggregated. Try TBRRidge or aggregate treated units",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "tbr.py asserts"
+      ]
+    },
+    {
+      "estimator": "TBR",
+      "class_name": "TBR",
+      "inference": "Kfold",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "reason": "TBR requires 1 aggregated treated + 1 aggregated control (tbr.py asserts)",
+        "error_type": "AssertionError",
+        "error": "TBR requires treated units to be pre-aggregated. Try TBRRidge or aggregate treated units",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "tbr.py asserts"
+      ]
+    },
+    {
+      "estimator": "TBR",
+      "class_name": "TBR",
+      "inference": null,
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "AssertionError",
+        "error": "TBR requires control units to be pre-aggregated. Try TBRRidge or aggregate control units",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "tbr.py asserts"
+      ]
+    },
+    {
+      "estimator": "TBR",
+      "class_name": "TBR",
+      "inference": "UnitJackKnife",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "AssertionError",
+        "error": "TBR requires control units to be pre-aggregated. Try TBRRidge or aggregate control units",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "tbr.py asserts"
+      ]
+    },
+    {
+      "estimator": "TBR",
+      "class_name": "TBR",
+      "inference": "JKP",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "AssertionError",
+        "error": "TBR requires control units to be pre-aggregated. Try TBRRidge or aggregate control units",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "tbr.py asserts"
+      ]
+    },
+    {
+      "estimator": "TBR",
+      "class_name": "TBR",
+      "inference": "Kfold",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "AssertionError",
+        "error": "TBR requires control units to be pre-aggregated. Try TBRRidge or aggregate control units",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "tbr.py asserts"
+      ]
+    },
+    {
+      "estimator": "TBR",
+      "class_name": "TBR",
+      "inference": null,
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "AssertionError",
+        "error": "TBR requires control units to be pre-aggregated. Try TBRRidge or aggregate control units",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "tbr.py asserts"
+      ]
+    },
+    {
+      "estimator": "TBR",
+      "class_name": "TBR",
+      "inference": "UnitJackKnife",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "AssertionError",
+        "error": "TBR requires control units to be pre-aggregated. Try TBRRidge or aggregate control units",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "tbr.py asserts"
+      ]
+    },
+    {
+      "estimator": "TBR",
+      "class_name": "TBR",
+      "inference": "JKP",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "AssertionError",
+        "error": "TBR requires control units to be pre-aggregated. Try TBRRidge or aggregate control units",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "tbr.py asserts"
+      ]
+    },
+    {
+      "estimator": "TBR",
+      "class_name": "TBR",
+      "inference": "Kfold",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "AssertionError",
+        "error": "TBR requires control units to be pre-aggregated. Try TBRRidge or aggregate control units",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "tbr.py asserts"
+      ]
+    },
+    {
+      "estimator": "TBR",
+      "class_name": "TBR",
+      "inference": null,
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "AssertionError",
+        "error": "TBR requires treated units to be pre-aggregated. Try TBRRidge or aggregate treated units",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "tbr.py asserts"
+      ]
+    },
+    {
+      "estimator": "TBR",
+      "class_name": "TBR",
+      "inference": "UnitJackKnife",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "AssertionError",
+        "error": "TBR requires treated units to be pre-aggregated. Try TBRRidge or aggregate treated units",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "tbr.py asserts"
+      ]
+    },
+    {
+      "estimator": "TBR",
+      "class_name": "TBR",
+      "inference": "JKP",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "AssertionError",
+        "error": "TBR requires treated units to be pre-aggregated. Try TBRRidge or aggregate treated units",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "tbr.py asserts"
+      ]
+    },
+    {
+      "estimator": "TBR",
+      "class_name": "TBR",
+      "inference": "Kfold",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "AssertionError",
+        "error": "TBR requires treated units to be pre-aggregated. Try TBRRidge or aggregate treated units",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "tbr.py asserts"
+      ]
+    },
+    {
+      "estimator": "TBR",
+      "class_name": "TBR",
+      "inference": null,
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "tbr.py asserts"
+      ]
+    },
+    {
+      "estimator": "TBR",
+      "class_name": "TBR",
+      "inference": "UnitJackKnife",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "ValueError",
+        "error": "UnitJackKnife requires at least 2 control units",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "tbr.py asserts"
+      ]
+    },
+    {
+      "estimator": "TBR",
+      "class_name": "TBR",
+      "inference": "JKP",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "tbr.py asserts"
+      ]
+    },
+    {
+      "estimator": "TBR",
+      "class_name": "TBR",
+      "inference": "Kfold",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "tbr.py asserts"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": null,
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "UnitJackKnife",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "ValueError",
+        "error": "operands could not be broadcast together with shapes (6,4) (6,) ",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "JKP",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "ValueError",
+        "error": "operands could not be broadcast together with shapes (7,4) (7,) ",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "Bayesian",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "IndexError",
+        "error": "too many indices for array: array is 0-dimensional, but 1 were indexed",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "BlockResidualBootstrap",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-INST-TBRRIDGE-001",
+        "D3"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "Conformal",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "ValueError",
+        "error": "operands could not be broadcast together with shapes (26,4) (26,) ",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "Kfold",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-INST-TBRRIDGE-001",
+        "D5-POW-001a",
+        "D5-POW-001c"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "TimeSeriesKfold",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": null,
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "UnitJackKnife",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "JKP",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "Bayesian",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "IndexError",
+        "error": "too many indices for array: array is 0-dimensional, but 1 were indexed",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "BlockResidualBootstrap",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-INST-TBRRIDGE-001",
+        "D3"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "Conformal",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "Kfold",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-INST-TBRRIDGE-001",
+        "D5-POW-001a",
+        "D5-POW-001c"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "TimeSeriesKfold",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": null,
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "UnitJackKnife",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "JKP",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "Bayesian",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "IndexError",
+        "error": "too many indices for array: array is 0-dimensional, but 1 were indexed",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "BlockResidualBootstrap",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-INST-TBRRIDGE-001",
+        "D3"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "Conformal",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "Kfold",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-INST-TBRRIDGE-001",
+        "D5-POW-001a",
+        "D5-POW-001c"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "TimeSeriesKfold",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": null,
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "UnitJackKnife",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "ValueError",
+        "error": "operands could not be broadcast together with shapes (6,4) (6,) ",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "JKP",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "ValueError",
+        "error": "operands could not be broadcast together with shapes (7,4) (7,) ",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "Bayesian",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "IndexError",
+        "error": "too many indices for array: array is 0-dimensional, but 1 were indexed",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "BlockResidualBootstrap",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-INST-TBRRIDGE-001",
+        "D3"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "Conformal",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "ValueError",
+        "error": "operands could not be broadcast together with shapes (26,4) (26,) ",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "Kfold",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-INST-TBRRIDGE-001",
+        "D5-POW-001a",
+        "D5-POW-001c"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "TimeSeriesKfold",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": null,
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": true,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "UnitJackKnife",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "ValueError",
+        "error": "UnitJackKnife requires at least 2 control units",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "JKP",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "Bayesian",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_failed",
+      "probe": {
+        "status": "probe_failed",
+        "error_type": "IndexError",
+        "error": "too many indices for array: array is 0-dimensional, but 1 were indexed",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "BlockResidualBootstrap",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-INST-TBRRIDGE-001",
+        "D3"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "Conformal",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "conformal_interval",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "Kfold",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": true,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-INST-TBRRIDGE-001",
+        "D5-POW-001a",
+        "D5-POW-001c"
+      ]
+    },
+    {
+      "estimator": "TBRRidge",
+      "class_name": "TBRRidge",
+      "inference": "TimeSeriesKfold",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "restricted",
+      "d5_oc_evidence": [
+        "D5-POW-001a/c",
+        "recovery_runner"
+      ]
+    },
+    {
+      "estimator": "TBRAutoSARIMAX",
+      "class_name": "TBRAutoSARIMAX",
+      "inference": null,
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "TBRAutoSARIMAX",
+      "class_name": "TBRAutoSARIMAX",
+      "inference": null,
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "TBRAutoSARIMAX",
+      "class_name": "TBRAutoSARIMAX",
+      "inference": null,
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "TBRAutoSARIMAX",
+      "class_name": "TBRAutoSARIMAX",
+      "inference": null,
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "TBRAutoSARIMAX",
+      "class_name": "TBRAutoSARIMAX",
+      "inference": null,
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "unavailable",
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "uncharacterized",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "BayesianTBR",
+      "class_name": "BayesianTBR",
+      "inference": "Bayesian",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": [
+        "INV-015",
+        "method_metadata"
+      ]
+    },
+    {
+      "estimator": "BayesianTBR",
+      "class_name": "BayesianTBR",
+      "inference": "Bayesian",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": [
+        "INV-015",
+        "method_metadata"
+      ]
+    },
+    {
+      "estimator": "BayesianTBR",
+      "class_name": "BayesianTBR",
+      "inference": "Bayesian",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": [
+        "INV-015",
+        "method_metadata"
+      ]
+    },
+    {
+      "estimator": "BayesianTBR",
+      "class_name": "BayesianTBR",
+      "inference": "Bayesian",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": [
+        "INV-015",
+        "method_metadata"
+      ]
+    },
+    {
+      "estimator": "BayesianTBR",
+      "class_name": "BayesianTBR",
+      "inference": "Bayesian",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": [
+        "INV-015",
+        "method_metadata"
+      ]
+    },
+    {
+      "estimator": "BayesianTBRHorseShoe",
+      "class_name": "BayesianTBRHorseShoe",
+      "inference": "Bayesian",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "BayesianTBRHorseShoe",
+      "class_name": "BayesianTBRHorseShoe",
+      "inference": "Bayesian",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "BayesianTBRHorseShoe",
+      "class_name": "BayesianTBRHorseShoe",
+      "inference": "Bayesian",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "BayesianTBRHorseShoe",
+      "class_name": "BayesianTBRHorseShoe",
+      "inference": "Bayesian",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "BayesianTBRHorseShoe",
+      "class_name": "BayesianTBRHorseShoe",
+      "inference": "Bayesian",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "DID",
+      "class_name": "DID",
+      "inference": null,
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": null,
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": true,
+      "governance_class": "restricted",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "DID",
+      "class_name": "DID",
+      "inference": null,
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": null,
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": true,
+      "governance_class": "restricted",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "DID",
+      "class_name": "DID",
+      "inference": null,
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": null,
+        "n_treated": 1,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": true,
+      "governance_class": "restricted",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "DID",
+      "class_name": "DID",
+      "inference": null,
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": null,
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": true,
+      "governance_class": "restricted",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "DID",
+      "class_name": "DID",
+      "inference": null,
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_success",
+      "probe": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": null,
+        "n_treated": 1,
+        "n_control": 1
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": true,
+      "governance_class": "restricted",
+      "d5_oc_evidence": []
+    },
+    {
+      "estimator": "SyntheticDID",
+      "class_name": "SyntheticDID",
+      "inference": null,
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": [
+        "synthetic_did_test.py",
+        "recovery skipped"
+      ]
+    },
+    {
+      "estimator": "SyntheticDID",
+      "class_name": "SyntheticDID",
+      "inference": null,
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": [
+        "synthetic_did_test.py",
+        "recovery skipped"
+      ]
+    },
+    {
+      "estimator": "SyntheticDID",
+      "class_name": "SyntheticDID",
+      "inference": null,
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": [
+        "synthetic_did_test.py",
+        "recovery skipped"
+      ]
+    },
+    {
+      "estimator": "SyntheticDID",
+      "class_name": "SyntheticDID",
+      "inference": null,
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": [
+        "synthetic_did_test.py",
+        "recovery skipped"
+      ]
+    },
+    {
+      "estimator": "SyntheticDID",
+      "class_name": "SyntheticDID",
+      "inference": null,
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": [
+        "synthetic_did_test.py",
+        "recovery skipped"
+      ]
+    },
+    {
+      "estimator": "TROP",
+      "class_name": "TROP",
+      "inference": null,
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": [
+        "trop_test.py",
+        "recovery_runner skipped"
+      ]
+    },
+    {
+      "estimator": "TROP",
+      "class_name": "TROP",
+      "inference": null,
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": [
+        "trop_test.py",
+        "recovery_runner skipped"
+      ]
+    },
+    {
+      "estimator": "TROP",
+      "class_name": "TROP",
+      "inference": null,
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": [
+        "trop_test.py",
+        "recovery_runner skipped"
+      ]
+    },
+    {
+      "estimator": "TROP",
+      "class_name": "TROP",
+      "inference": null,
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": [
+        "trop_test.py",
+        "recovery_runner skipped"
+      ]
+    },
+    {
+      "estimator": "TROP",
+      "class_name": "TROP",
+      "inference": null,
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": false,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": [
+        "trop_test.py",
+        "recovery_runner skipped"
+      ]
+    },
+    {
+      "estimator": "MTGP",
+      "class_name": "MTGP",
+      "inference": "Bayesian",
+      "geometry_mode": "single_cell_unit_level",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "validation skipped"
+      ]
+    },
+    {
+      "estimator": "MTGP",
+      "class_name": "MTGP",
+      "inference": "Bayesian",
+      "geometry_mode": "multi_cell_per_cell_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": true,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "validation skipped"
+      ]
+    },
+    {
+      "estimator": "MTGP",
+      "class_name": "MTGP",
+      "inference": "Bayesian",
+      "geometry_mode": "single_treated_unit",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "validation skipped"
+      ]
+    },
+    {
+      "estimator": "MTGP",
+      "class_name": "MTGP",
+      "inference": "Bayesian",
+      "geometry_mode": "multi_treated_natural",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": true,
+      "supports_aggregate_treated_control": false,
+      "supports_multi_treated": true,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "validation skipped"
+      ]
+    },
+    {
+      "estimator": "MTGP",
+      "class_name": "MTGP",
+      "inference": "Bayesian",
+      "geometry_mode": "aggregate_two_series",
+      "implemented": true,
+      "registry_inference_wired": true,
+      "callable_status": "probe_skipped",
+      "probe": {
+        "status": "probe_skipped",
+        "reason": "slow_or_mcmc_estimator"
+      },
+      "supports_unit_level_data": false,
+      "supports_aggregate_treated_control": true,
+      "supports_multi_treated": false,
+      "supports_multi_cell_per_cell": false,
+      "supports_pooled_multi_cell": false,
+      "has_uncertainty": true,
+      "geo_power_readout": false,
+      "impact_analyzer_path": true,
+      "did_native_bootstrap": false,
+      "governance_class": "research_only",
+      "d5_oc_evidence": [
+        "method_metadata",
+        "validation skipped"
+      ]
+    },
+    {
+      "estimator": "_design_geometry_",
+      "class_name": null,
+      "inference": null,
+      "geometry_mode": "supergeo_design_only",
+      "implemented": false,
+      "callable_status": "not_estimator_scope",
+      "note": "Design-method geometry (D5-DES-SUPERGEO/TRIM); not ImpactAnalyzer readout.",
+      "governance_class": "characterization_required",
+      "d5_oc_evidence": [
+        "D5-DES-SUPERGEO-001",
+        "D5-DES-TRIM-001"
+      ]
+    },
+    {
+      "estimator": "_design_geometry_",
+      "class_name": null,
+      "inference": null,
+      "geometry_mode": "trimmed_population_design_only",
+      "implemented": false,
+      "callable_status": "not_estimator_scope",
+      "note": "Design-method geometry (D5-DES-SUPERGEO/TRIM); not ImpactAnalyzer readout.",
+      "governance_class": "characterization_required",
+      "d5_oc_evidence": [
+        "D5-DES-SUPERGEO-001",
+        "D5-DES-TRIM-001"
+      ]
+    }
+  ],
+  "matrix_summary": {
+    "n_rows": 192,
+    "n_probe_success": 128,
+    "geometry_modes": [
+      "single_cell_unit_level",
+      "multi_cell_per_cell_unit",
+      "single_treated_unit",
+      "multi_treated_natural",
+      "aggregate_two_series",
+      "pooled_multi_cell",
+      "supergeo_design_only",
+      "trimmed_population_design_only"
+    ]
+  },
+  "test_file_hits_by_estimator": {
+    "SCM": 12,
+    "AugSynth": 3,
+    "SyntheticControlCVXPY": 3,
+    "AugSynthCVXPY": 4,
+    "TBR": 9,
+    "TBRRidge": 23,
+    "TBRAutoSARIMAX": 0,
+    "BayesianTBR": 6,
+    "BayesianTBRHorseShoe": 3,
+    "DID": 15,
+    "SyntheticDID": 4,
+    "TROP": 7,
+    "MTGP": 4
+  },
+  "explicit_answers": {
+    "normal_tbr_where_runs": [
+      "panel_exp.methods.tbr.TBR \u2014 ImpactAnalyzer + inference registry when panel has exactly 1 treated and 1 control series.",
+      "NOT in default_estimator_configs (TBRRidge is listed as 'TBR' label but factory is TBRRidge).",
+      "recovery_runner 'TBR' config incorrectly uses TBRRidge factory (audit finding).",
+      "Geo PowerAnalysis uses TBRRidge on aggregate two-row panel, not class TBR."
+    ],
+    "normal_tbr_geometry": {
+      "unit_level_multi_control": "Blocked \u2014 fit_data asserts num_control_units == 1.",
+      "aggregated_two_series": "Required \u2014 1 treated row + 1 control row (or single treated + single control column).",
+      "multi_treated": "Blocked at TBR class; use TBRRidge for multiple treated units."
+    },
+    "normal_tbr_inference_wired": [
+      "Declared in method_metadata: point_estimate, UnitJackKnife, JKP, Kfold.",
+      "Placebo explicitly excluded in inference/modes/impl.py for TBR class.",
+      "Live probe: unit-level multi-control panel fails asserts."
+    ],
+    "bayesian_tbr_where_runs": [
+      "panel_exp.methods.bayesian_regression.BayesianTBR / BayesianTBRHorseShoe.",
+      "Uses ImpactAnalyzer.run_analysis \u2192 registry 'Bayesian' mode (NOT full NUTS path in registry handler).",
+      "Skipped in EstimatorValidationRunner (SKIPPED_ESTIMATORS / jax)."
+    ],
+    "bayesian_tbr_geometry": {
+      "multi_control_unit_level": "Supported in fit_data (de-aggregated controls).",
+      "aggregate_control": "Docstring notes aggregated or de-aggregated controls.",
+      "multi_treated": "Treated series can be multivariate; registry Bayesian uses quantiles on predict output."
+    },
+    "bayesian_tbr_uncertainty_object": "Registry path: IntervalType.CREDIBLE_INTERVAL on path via JAX quantiles of predict() \u2014 NOT the same as estimator-native NUTS posterior from fit_model MCMC unless caller uses MCMC API directly.",
+    "bayesian_tbr_production_status": "research_only (method_metadata RESEARCH_ONLY; optional jax stack; INV-015)",
+    "augsynth_variants": {
+      "AugSynth": "Implemented; inference point_estimate/Kfold/Conformal per catalog; limited tests; UNVALIDATED.",
+      "AugSynthCVXPY": "Implemented; requires cvxpy+osqp; point/Kfold/Conformal; Phase 14 OC.",
+      "SyntheticControlCVXPY": "SCM CVXPY variant; expert_review; test_scm.py.",
+      "track_b": "AugSynthCVXPY_Point, AugSynthCVXPY_UnitJackKnife (characterized, not eligible)."
+    },
+    "trop_status": "research_only \u2014 TROP class in triply_robust_est.py; validation runner SKIPPED; tests/trop_test.py only.",
+    "combinations_tested_today": {
+      "d5_instrument_batteries": [
+        "SCM+JK (001b/e)",
+        "TBRRidge+Kfold/BRB (001a/c, D5-INST-TBRRIDGE-001)",
+        "SCM+Placebo (D5-INST-PLACEBO-001)"
+      ],
+      "not_d5_battery": [
+        "normal TBR class",
+        "BayesianTBR MCMC",
+        "TROP",
+        "SyntheticDID recovery",
+        "MTGP",
+        "AugSynth base (non-CVXPY) D5"
+      ]
+    },
+    "readout_path_summary": {
+      "governed_null_monitor": "unit panel + SyntheticControl + UnitJackKnife (001e)",
+      "geo_power_mde": "aggregate two-row + TBRRidge + Kfold (001a/c)",
+      "placebo_diagnostic": "unit single-treated + SCM + Placebo",
+      "did": "native moving_block_bootstrap in DID.run_analysis (overrides registry)"
+    }
+  },
+  "oc_battery_roadmap": [
+    {
+      "battery_id": "D5-INST-AUGSYNTH-001",
+      "priority": "P1",
+      "estimators": [
+        "AugSynthCVXPY",
+        "AugSynth"
+      ],
+      "rationale": "Phase 14 archive exists but no 001e-window D5 harness; base AugSynth unvalidated.",
+      "blocked_by": "cvxpy optional deps for CVXPY path"
+    },
+    {
+      "battery_id": "D5-INST-TBR-001",
+      "priority": "P1",
+      "estimators": [
+        "TBR"
+      ],
+      "rationale": "Distinct from TBRRidge; aggregate-only asserts; geo product confusion risk.",
+      "blocked_by": "Must use aggregate_two_series panels only"
+    },
+    {
+      "battery_id": "D5-INST-BAYESIANTBR-001",
+      "priority": "P2",
+      "estimators": [
+        "BayesianTBR"
+      ],
+      "rationale": "Clarify registry Bayesian vs NUTS MCMC; multi-treated/aggregate geometry.",
+      "blocked_by": "jax stack; slow MCMC"
+    },
+    {
+      "battery_id": "D5-INST-TROP-001",
+      "priority": "P3",
+      "estimators": [
+        "TROP"
+      ],
+      "rationale": "Active code but skipped in validation runner; research_only.",
+      "blocked_by": "Runtime; large config space"
+    },
+    {
+      "battery_id": "D5-INST-DID-001",
+      "priority": "deferred",
+      "estimators": [
+        "DID"
+      ],
+      "rationale": "DEF-016 deferred; native bootstrap already documented; cumulative vs relative ATT policy closed.",
+      "blocked_by": "Policy closure DEF-003; low marginal governance value"
+    },
+    {
+      "battery_id": "D5-INST-TBRRIDGE-002",
+      "priority": "P2",
+      "estimators": [
+        "TBRRidge"
+      ],
+      "rationale": "Remaining inference paths: UnitJackKnife, Conformal, TimeSeriesKfold, registry Bayesian on TBRRidge.",
+      "blocked_by": "001 covered Kfold/BRB only"
+    },
+    {
+      "battery_id": "AUDIT-010",
+      "priority": "P0_after_P1_instruments",
+      "estimators": [
+        "_governance_"
+      ],
+      "rationale": "MMM readiness / gap audit \u2014 not a promotion gate until D5-INST-AUGSYNTH-001 and D5-INST-TBR-001 characterize core gaps.",
+      "blocked_by": "AugSynthCVXPY and normal TBR uncharacterized on 001e windows"
+    }
+  ],
+  "findings": [
+    {
+      "id": "D5-AUD-FIND-001",
+      "summary": "TBR class requires aggregated 1\u00d71 treated/control; TBRRidge is unit/multi-control path.",
+      "implication": "Geo PowerAnalysis uses TBRRidge+agg2, not TBR class."
+    },
+    {
+      "id": "D5-AUD-FIND-002",
+      "summary": "Registry 'Bayesian' \u2260 BayesianTBR NUTS MCMC (INV-015).",
+      "implication": "Do not promote registry Bayesian as BayesianTBR evidence."
+    },
+    {
+      "id": "D5-AUD-FIND-003",
+      "summary": "DID.run_analysis overrides registry; bootstrap is estimator-native cumulative ATT.",
+      "implication": "DID_Bootstrap Track B alias maps to native bootstrap, not registry mode."
+    },
+    {
+      "id": "D5-AUD-FIND-004",
+      "summary": "recovery_runner TBR config uses TBRRidge factory.",
+      "implication": "Fix or document before any TBR OC battery."
+    }
+  ],
+  "overall_verdict": "inventory_complete_augsynth_tbr_then_mmm_readiness_audit_010",
+  "recommended_sequence": [
+    "D5-INST-AUGSYNTH-001",
+    "D5-INST-TBR-001",
+    "AUDIT-010 (MMM readiness/gap \u2014 not promotion)",
+    "D5-INST-TBRRIDGE-002",
+    "D5-INST-BAYESIANTBR-001",
+    "D5-INST-TROP-001"
+  ]
+}

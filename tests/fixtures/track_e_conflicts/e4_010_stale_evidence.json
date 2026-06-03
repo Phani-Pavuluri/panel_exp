@@ -1,0 +1,41 @@
+{
+  "fixture_id": "E4-010",
+  "fixture_version": "1.0.0",
+  "description": "Stale or missing CalibrationSignal when calibration-backed claim requested.",
+  "triangulation_profile": {
+    "profile_id": "tri-fixture-e4-010",
+    "profile_version": "1.0.0",
+    "experiment_id": "fixture-study-e4-010",
+    "run_id": "run-010",
+    "modality": "geo",
+    "design_method_id": "stratifiedrandomization",
+    "geometry_mode": "single_cell",
+    "n_test_grps": 1,
+    "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+    "declared_claim_type": "null_viability",
+    "evidence_rows": [
+      {
+        "row_id": "row-scm-jk",
+        "cell_id": "test_0",
+        "measurement_instrument_id": "geo.synthetic_control.unit_jackknife.relative_att_post.multi_treated_default.confidence_interval",
+        "suitability_status": "suitable_with_caveats",
+        "evidence_role": "primary",
+        "point_estimate": 0.008,
+        "uncertainty": {"lower": -0.015, "upper": 0.028, "covers_zero": true, "semantics": "confidence_interval"},
+        "comparability_group": "rel_att_post_unit_single_cell",
+        "conflict_group": "governed_primary",
+        "freshness": {"stale": true, "age_days": 540},
+        "calibration_signal_eligibility": {"eligible": false, "reason_code": "stale_or_missing", "requires_fresh_signal": true, "mmm_ingress_allowed": false},
+        "diagnostic_flags": ["E-MMM-006"]
+      }
+    ]
+  },
+  "expected": {
+    "agreement_state": "stale_or_freshness_blocked",
+    "conflict_class": "E-CONFLICT-002",
+    "trust_report_disposition": "stale_downweight_or_exclude",
+    "calibration_signal_eligibility": {"eligible": false, "bind_blocked": true},
+    "trust_outcome_hint": "not_assessable"
+  },
+  "forbidden_actions": ["no_mmm_feed", "no_freshness_assumption", "no_promotion"]
+}

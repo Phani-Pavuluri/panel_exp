@@ -1,0 +1,672 @@
+{
+  "artifact_id": "D5-POW-001d",
+  "generated_at": "2026-06-01T22:06:06+00:00",
+  "lane": "research",
+  "investigation_id": "D4-FIND-006",
+  "prior_artifacts": [
+    "docs/track_d/archives/D5_POW_001a_results.json",
+    "docs/track_d/archives/D5_POW_001b_results.json",
+    "docs/track_d/archives/D5_POW_001c_results.json"
+  ],
+  "config": {
+    "n_mc": 20,
+    "n_geos": 16,
+    "n_periods": 44,
+    "treatment_start": 32,
+    "alpha": 0.05,
+    "treatment_probability": 0.35,
+    "random_state_base": 20260604,
+    "scenario_name": "scm_low_signal",
+    "min_control_units": 2,
+    "baseline_window": {
+      "train_length": 28,
+      "test_length": 8
+    },
+    "window_grid": [
+      {
+        "train_length": 20,
+        "test_length": 8
+      },
+      {
+        "train_length": 24,
+        "test_length": 8
+      },
+      {
+        "train_length": 28,
+        "test_length": 8
+      },
+      {
+        "train_length": 32,
+        "test_length": 8
+      },
+      {
+        "train_length": 28,
+        "test_length": 4
+      },
+      {
+        "train_length": 28,
+        "test_length": 6
+      },
+      {
+        "train_length": 28,
+        "test_length": 10
+      },
+      {
+        "train_length": 28,
+        "test_length": 12
+      }
+    ],
+    "effect_grid": [
+      0.0,
+      0.04,
+      0.08,
+      0.12
+    ],
+    "include_circular_sliding_sample": true
+  },
+  "hypothesis": "Pre/post window length and construction affect greedy assignment balance and unit-level SCM+JK readout OC metrics.",
+  "by_window_summary": {
+    "pre20_post8": {
+      "window": {
+        "train_length": 20,
+        "test_length": 8
+      },
+      "design_context": {
+        "design_method_id": "greedy_match_markets",
+        "design_method_tier": "tier_1_production_geo",
+        "balance_objective": "corr",
+        "assignment_constraints": {
+          "pre_treatment_period_only": true,
+          "n_test_groups": 1,
+          "treatment_probability": 0.35
+        },
+        "pre_period_length": 20,
+        "post_period_length": 8,
+        "pre_period_window": {
+          "start": 0,
+          "end": 19
+        },
+        "post_period_window": {
+          "start": 20,
+          "end": 27
+        },
+        "window_construction": "fixed_experiment_window",
+        "assignment_geometry": "unit_level_markets",
+        "n_geos": 16,
+        "n_treated_markets": 11,
+        "n_control_markets": 5,
+        "test_control_ratio": 2.2,
+        "readout_instrument": "SyntheticControl+UnitJackKnife"
+      },
+      "pre_balance_corr": {
+        "mean": 0.7637961364416835,
+        "std": 0.09868906378477554,
+        "p95": 0.9106593300455023
+      },
+      "assignment_jaccard_vs_baseline": {
+        "mean": 0.7314046370296371,
+        "std": 0.14571440395252128,
+        "p95": 0.9321428571428573
+      },
+      "null_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0
+      },
+      "null_cell_covers_zero_rate": {
+        "mean": 0.622640102952603,
+        "std": 0.10214442712657801,
+        "p95": 0.7439285714285716
+      },
+      "effect_grid_corr": {
+        "mean": 0.9999999999999998,
+        "std": 1.3716156391149031e-16,
+        "p95": 1.0
+      },
+      "effect_response_8pct": {
+        "mean": 8.025909552952069,
+        "std": 0.08830622158763766,
+        "p95": 8.177655278646816
+      },
+      "circular_vs_fixed_null_point_delta": {
+        "mean": -0.06865786235091861,
+        "std": 0.8188619581016106,
+        "p95": 1.1153080567878855
+      },
+      "n_replicates": 20
+    },
+    "pre24_post8": {
+      "window": {
+        "train_length": 24,
+        "test_length": 8
+      },
+      "design_context": {
+        "design_method_id": "greedy_match_markets",
+        "design_method_tier": "tier_1_production_geo",
+        "balance_objective": "corr",
+        "assignment_constraints": {
+          "pre_treatment_period_only": true,
+          "n_test_groups": 1,
+          "treatment_probability": 0.35
+        },
+        "pre_period_length": 24,
+        "post_period_length": 8,
+        "pre_period_window": {
+          "start": 0,
+          "end": 23
+        },
+        "post_period_window": {
+          "start": 24,
+          "end": 31
+        },
+        "window_construction": "fixed_experiment_window",
+        "assignment_geometry": "unit_level_markets",
+        "n_geos": 16,
+        "n_treated_markets": 10,
+        "n_control_markets": 6,
+        "test_control_ratio": 1.6666666666666667,
+        "readout_instrument": "SyntheticControl+UnitJackKnife"
+      },
+      "pre_balance_corr": {
+        "mean": 0.7895794938892218,
+        "std": 0.05755211976796788,
+        "p95": 0.8572956147130023
+      },
+      "assignment_jaccard_vs_baseline": {
+        "mean": 0.7774350649350649,
+        "std": 0.1456927954280013,
+        "p95": 1.0
+      },
+      "null_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0
+      },
+      "null_cell_covers_zero_rate": {
+        "mean": 0.6542598547286048,
+        "std": 0.1266675989812119,
+        "p95": 0.8050892857142858
+      },
+      "effect_grid_corr": {
+        "mean": 1.0,
+        "std": 1.463155214010901e-16,
+        "p95": 1.0
+      },
+      "effect_response_8pct": {
+        "mean": 8.023370456898187,
+        "std": 0.06063505207435752,
+        "p95": 8.14273845804979
+      },
+      "circular_vs_fixed_null_point_delta": {
+        "mean": 0.06076625420577886,
+        "std": 0.7226140806345716,
+        "p95": 1.207342508968661
+      },
+      "n_replicates": 20
+    },
+    "pre28_post10": {
+      "window": {
+        "train_length": 28,
+        "test_length": 10
+      },
+      "design_context": {
+        "design_method_id": "greedy_match_markets",
+        "design_method_tier": "tier_1_production_geo",
+        "balance_objective": "corr",
+        "assignment_constraints": {
+          "pre_treatment_period_only": true,
+          "n_test_groups": 1,
+          "treatment_probability": 0.35
+        },
+        "pre_period_length": 28,
+        "post_period_length": 10,
+        "pre_period_window": {
+          "start": 0,
+          "end": 27
+        },
+        "post_period_window": {
+          "start": 28,
+          "end": 37
+        },
+        "window_construction": "fixed_experiment_window",
+        "assignment_geometry": "unit_level_markets",
+        "n_geos": 16,
+        "n_treated_markets": 10,
+        "n_control_markets": 6,
+        "test_control_ratio": 1.6666666666666667,
+        "readout_instrument": "SyntheticControl+UnitJackKnife"
+      },
+      "pre_balance_corr": {
+        "mean": 0.7741095002721912,
+        "std": 0.08801759104291618,
+        "p95": 0.8593322708962458
+      },
+      "assignment_jaccard_vs_baseline": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0
+      },
+      "null_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0
+      },
+      "null_cell_covers_zero_rate": {
+        "mean": 0.6685656010656011,
+        "std": 0.12115690511064015,
+        "p95": 0.8214285714285714
+      },
+      "effect_grid_corr": {
+        "mean": 0.9999999999999999,
+        "std": 1.146633409319802e-16,
+        "p95": 1.0
+      },
+      "effect_response_8pct": {
+        "mean": 8.035452584971774,
+        "std": 0.06400888379844093,
+        "p95": 8.148738255384446
+      },
+      "circular_vs_fixed_null_point_delta": {
+        "mean": -0.05199765454576322,
+        "std": 0.5535389825856765,
+        "p95": 0.7260262424500323
+      },
+      "n_replicates": 16
+    },
+    "pre28_post12": {
+      "window": {
+        "train_length": 28,
+        "test_length": 12
+      },
+      "design_context": {
+        "design_method_id": "greedy_match_markets",
+        "design_method_tier": "tier_1_production_geo",
+        "balance_objective": "corr",
+        "assignment_constraints": {
+          "pre_treatment_period_only": true,
+          "n_test_groups": 1,
+          "treatment_probability": 0.35
+        },
+        "pre_period_length": 28,
+        "post_period_length": 12,
+        "pre_period_window": {
+          "start": 0,
+          "end": 27
+        },
+        "post_period_window": {
+          "start": 28,
+          "end": 39
+        },
+        "window_construction": "fixed_experiment_window",
+        "assignment_geometry": "unit_level_markets",
+        "n_geos": 16,
+        "n_treated_markets": 10,
+        "n_control_markets": 6,
+        "test_control_ratio": 1.6666666666666667,
+        "readout_instrument": "SyntheticControl+UnitJackKnife"
+      },
+      "pre_balance_corr": {
+        "mean": 0.7741095002721912,
+        "std": 0.08801759104291618,
+        "p95": 0.8593322708962458
+      },
+      "assignment_jaccard_vs_baseline": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0
+      },
+      "null_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0
+      },
+      "null_cell_covers_zero_rate": {
+        "mean": 0.6802224685037186,
+        "std": 0.11131627987010766,
+        "p95": 0.8110119047619048
+      },
+      "effect_grid_corr": {
+        "mean": 0.9999999999999998,
+        "std": 1.5168534230091639e-16,
+        "p95": 1.0
+      },
+      "effect_response_8pct": {
+        "mean": 8.038384080317151,
+        "std": 0.06569275757960659,
+        "p95": 8.149121322156388
+      },
+      "circular_vs_fixed_null_point_delta": {
+        "mean": 0.15646935413918184,
+        "std": 0.574618103192425,
+        "p95": 1.0502841379021166
+      },
+      "n_replicates": 16
+    },
+    "pre28_post4": {
+      "window": {
+        "train_length": 28,
+        "test_length": 4
+      },
+      "design_context": {
+        "design_method_id": "greedy_match_markets",
+        "design_method_tier": "tier_1_production_geo",
+        "balance_objective": "corr",
+        "assignment_constraints": {
+          "pre_treatment_period_only": true,
+          "n_test_groups": 1,
+          "treatment_probability": 0.35
+        },
+        "pre_period_length": 28,
+        "post_period_length": 4,
+        "pre_period_window": {
+          "start": 0,
+          "end": 27
+        },
+        "post_period_window": {
+          "start": 28,
+          "end": 31
+        },
+        "window_construction": "fixed_experiment_window",
+        "assignment_geometry": "unit_level_markets",
+        "n_geos": 16,
+        "n_treated_markets": 10,
+        "n_control_markets": 6,
+        "test_control_ratio": 1.6666666666666667,
+        "readout_instrument": "SyntheticControl+UnitJackKnife"
+      },
+      "pre_balance_corr": {
+        "mean": 0.7741095002721912,
+        "std": 0.08801759104291618,
+        "p95": 0.8593322708962458
+      },
+      "assignment_jaccard_vs_baseline": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0
+      },
+      "null_fpr": {
+        "mean": 0.0625,
+        "std": 0.25,
+        "p95": 0.25
+      },
+      "null_cell_covers_zero_rate": {
+        "mean": 0.6543329066766567,
+        "std": 0.18215430998537496,
+        "p95": 0.8482142857142857
+      },
+      "effect_grid_corr": {
+        "mean": 0.9999999999999999,
+        "std": 1.2495147891281317e-16,
+        "p95": 1.0
+      },
+      "effect_response_8pct": {
+        "mean": 8.025906508357505,
+        "std": 0.06487503449112939,
+        "p95": 8.150975097944666
+      },
+      "circular_vs_fixed_null_point_delta": {
+        "mean": 0.013247405544807536,
+        "std": 0.8982606697766712,
+        "p95": 1.3613922057541898
+      },
+      "n_replicates": 16
+    },
+    "pre28_post6": {
+      "window": {
+        "train_length": 28,
+        "test_length": 6
+      },
+      "design_context": {
+        "design_method_id": "greedy_match_markets",
+        "design_method_tier": "tier_1_production_geo",
+        "balance_objective": "corr",
+        "assignment_constraints": {
+          "pre_treatment_period_only": true,
+          "n_test_groups": 1,
+          "treatment_probability": 0.35
+        },
+        "pre_period_length": 28,
+        "post_period_length": 6,
+        "pre_period_window": {
+          "start": 0,
+          "end": 27
+        },
+        "post_period_window": {
+          "start": 28,
+          "end": 33
+        },
+        "window_construction": "fixed_experiment_window",
+        "assignment_geometry": "unit_level_markets",
+        "n_geos": 16,
+        "n_treated_markets": 10,
+        "n_control_markets": 6,
+        "test_control_ratio": 1.6666666666666667,
+        "readout_instrument": "SyntheticControl+UnitJackKnife"
+      },
+      "pre_balance_corr": {
+        "mean": 0.7741095002721912,
+        "std": 0.08801759104291618,
+        "p95": 0.8593322708962458
+      },
+      "assignment_jaccard_vs_baseline": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0
+      },
+      "null_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0
+      },
+      "null_cell_covers_zero_rate": {
+        "mean": 0.6646064005439005,
+        "std": 0.1272283892513461,
+        "p95": 0.8452380952380952
+      },
+      "effect_grid_corr": {
+        "mean": 0.9999999999999998,
+        "std": 1.4043333874306804e-16,
+        "p95": 1.0
+      },
+      "effect_response_8pct": {
+        "mean": 8.028125344932882,
+        "std": 0.06478825844750133,
+        "p95": 8.153088280327191
+      },
+      "circular_vs_fixed_null_point_delta": {
+        "mean": 0.36441985139722094,
+        "std": 1.1571871020886906,
+        "p95": 2.0344572161013152
+      },
+      "n_replicates": 16
+    },
+    "pre28_post8": {
+      "window": {
+        "train_length": 28,
+        "test_length": 8
+      },
+      "design_context": {
+        "design_method_id": "greedy_match_markets",
+        "design_method_tier": "tier_1_production_geo",
+        "balance_objective": "corr",
+        "assignment_constraints": {
+          "pre_treatment_period_only": true,
+          "n_test_groups": 1,
+          "treatment_probability": 0.35
+        },
+        "pre_period_length": 28,
+        "post_period_length": 8,
+        "pre_period_window": {
+          "start": 0,
+          "end": 27
+        },
+        "post_period_window": {
+          "start": 28,
+          "end": 35
+        },
+        "window_construction": "fixed_experiment_window",
+        "assignment_geometry": "unit_level_markets",
+        "n_geos": 16,
+        "n_treated_markets": 10,
+        "n_control_markets": 6,
+        "test_control_ratio": 1.6666666666666667,
+        "readout_instrument": "SyntheticControl+UnitJackKnife"
+      },
+      "pre_balance_corr": {
+        "mean": 0.7741095002721912,
+        "std": 0.08801759104291618,
+        "p95": 0.8593322708962458
+      },
+      "assignment_jaccard_vs_baseline": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0
+      },
+      "null_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0
+      },
+      "null_cell_covers_zero_rate": {
+        "mean": 0.6587361856893107,
+        "std": 0.10855171147740969,
+        "p95": 0.7879464285714286
+      },
+      "effect_grid_corr": {
+        "mean": 0.9999999999999999,
+        "std": 1.146633409319802e-16,
+        "p95": 1.0
+      },
+      "effect_response_8pct": {
+        "mean": 8.032184147626662,
+        "std": 0.06428103136286328,
+        "p95": 8.151550898947333
+      },
+      "circular_vs_fixed_null_point_delta": {
+        "mean": 0.06839598377063867,
+        "std": 0.7179672598095139,
+        "p95": 1.202964752564495
+      },
+      "n_replicates": 16
+    },
+    "pre32_post8": {
+      "window": {
+        "train_length": 32,
+        "test_length": 8
+      },
+      "design_context": {
+        "design_method_id": "greedy_match_markets",
+        "design_method_tier": "tier_1_production_geo",
+        "balance_objective": "corr",
+        "assignment_constraints": {
+          "pre_treatment_period_only": true,
+          "n_test_groups": 1,
+          "treatment_probability": 0.35
+        },
+        "pre_period_length": 32,
+        "post_period_length": 8,
+        "pre_period_window": {
+          "start": 0,
+          "end": 31
+        },
+        "post_period_window": {
+          "start": 32,
+          "end": 39
+        },
+        "window_construction": "fixed_experiment_window",
+        "assignment_geometry": "unit_level_markets",
+        "n_geos": 16,
+        "n_treated_markets": 14,
+        "n_control_markets": 2,
+        "test_control_ratio": 7.0,
+        "readout_instrument": "SyntheticControl+UnitJackKnife"
+      },
+      "pre_balance_corr": {
+        "mean": 0.7766064749858905,
+        "std": 0.07159741642538905,
+        "p95": 0.8687098651762657
+      },
+      "assignment_jaccard_vs_baseline": {
+        "mean": 0.7800368901931402,
+        "std": 0.14978208435889973,
+        "p95": 1.0
+      },
+      "null_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0
+      },
+      "null_cell_covers_zero_rate": {
+        "mean": 0.690964590964591,
+        "std": 0.09777604332501738,
+        "p95": 0.8035714285714286
+      },
+      "effect_grid_corr": {
+        "mean": 0.9999999999999998,
+        "std": 1.4043333874306804e-16,
+        "p95": 1.0
+      },
+      "effect_response_8pct": {
+        "mean": 8.038103006435346,
+        "std": 0.068172545386138,
+        "p95": 8.169829079301914
+      },
+      "circular_vs_fixed_null_point_delta": {
+        "mean": -0.07055888484523634,
+        "std": 0.708055571879135,
+        "p95": 0.674472242274893
+      },
+      "n_replicates": 16
+    }
+  },
+  "window_sensitivity_verdict": "fixed_window_preferred",
+  "rationale": "Readout metrics are relatively stable across characterized windows; prefer fixed experiment pre/post windows over PowerAnalysis circular sliding for governed SCM+JK interpretation (aligns with D4-FIND-006 accepted_deviation for geo power only).",
+  "track_e_suitability_diagnostics": [
+    {
+      "id": "E-POW-WIN-001",
+      "diagnostic": "pre_period_balance_corr",
+      "description": "Pearson corr of summed treated vs control KPI in pre-period; flag if below 0.5."
+    },
+    {
+      "id": "E-POW-WIN-002",
+      "diagnostic": "assignment_jaccard_vs_baseline",
+      "description": "Overlap of treated markets vs baseline window on same DGP seed."
+    },
+    {
+      "id": "E-POW-WIN-003",
+      "diagnostic": "null_interval_exclusion_fpr",
+      "description": "SCM+JK null FPR using correct effect_lo/hi (post D5-POW-001b)."
+    },
+    {
+      "id": "E-POW-WIN-004",
+      "diagnostic": "null_monitor_cell_coverage",
+      "description": "Fraction of post period\u00d7unit cells where JK interval covers zero at null."
+    },
+    {
+      "id": "E-POW-WIN-005",
+      "diagnostic": "injection_grid_point_correlation",
+      "description": "Correlation of injected vs mean point effect across small grid."
+    },
+    {
+      "id": "E-POW-WIN-006",
+      "diagnostic": "window_mode_disagreement",
+      "description": "Fixed experiment window vs one circular sliding window (PowerAnalysis style)."
+    },
+    {
+      "id": "E-POW-WIN-007",
+      "diagnostic": "pre_post_length_bounds",
+      "description": "Reject or warn when train_length or test_length outside characterized grid."
+    }
+  ],
+  "track_e_flags": [],
+  "d4_find_006_update": "fixed_window_preferred",
+  "n_replicates": 20,
+  "pow_001_window_recommendation": "Use fixed design pre/post windows for SCM+JK readout OC; do not interpret PowerAnalysis circular sliding windows as governed readout behavior.",
+  "calibration_eligibility_changed": false,
+  "notes": [
+    "Design method: greedy_match_markets with pre-period-only assignment.",
+    "Unit-level geometry preserved (no 2-row aggregation).",
+    "Null FPR uses correct effect_lo/hi semantics (D5-POW-001b).",
+    "No production design, power, inference, or eligibility changes."
+  ]
+}

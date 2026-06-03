@@ -1,0 +1,184 @@
+{
+  "artifact_id": "D5-INF-POSTFIX-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-03T06:43:17.289288+00:00",
+  "lane": "research",
+  "prerequisite": "F-INF-003",
+  "binding_docs": [
+    "F_INF_003_INTERVAL_ORIENTATION_FIX.md",
+    "D5_INST_AUGSYNTH_003",
+    "D5_INST_TBRRIDGE_002",
+    "AUDIT-010_mmm_readiness_gap.md",
+    "F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md"
+  ],
+  "governance": {
+    "scope": "A05 + A19 only",
+    "no_promotion": true,
+    "no_calibration_signal_expansion": true,
+    "no_mmm_ingress": true,
+    "no_governed_uncertainty_claim": true,
+    "f_inf_classifier_unchanged": true
+  },
+  "config": {
+    "n_mc": 2,
+    "train_length": 28,
+    "test_length": 8,
+    "include_multi_cell_k2": false
+  },
+  "tuples": {
+    "A05": {
+      "estimator": "AugSynthCVXPY",
+      "inference": "Conformal",
+      "geometries": [
+        "single_cell",
+        "multi_cell_k2_per_cell"
+      ],
+      "pre_fix": {
+        "source_artifact": "D5-INST-AUGSYNTH-003",
+        "audit_010_row": "A05",
+        "single_cell": {
+          "feasibility_rate": 1.0,
+          "null_interval_exclusion_fpr_mean": 1.0,
+          "negative_halfwidth_rate": 1.0,
+          "inverted_bound_rate": 1.0,
+          "mean_interval_halfwidth_mean": -8.188834247396114
+        },
+        "multi_cell_k2_per_cell": {
+          "feasibility_rate": 1.0,
+          "null_interval_exclusion_fpr_mean": 1.0,
+          "negative_halfwidth_rate": 1.0,
+          "inverted_bound_rate": 1.0
+        }
+      },
+      "post_fix": {
+        "single_cell": {
+          "instrument": "augsynth_cvxpy_conformal",
+          "geometry_mode": "single_cell",
+          "effect": 0.0,
+          "feasibility_rate": 1.0,
+          "null_interval_exclusion_fpr": {
+            "mean": 0.0,
+            "std": 0.0,
+            "p95": 0.0,
+            "n": 2
+          },
+          "mean_interval_halfwidth": {
+            "mean": 8.639193191150317,
+            "std": 1.9593584763198415,
+            "p95": 9.886121289993309,
+            "n": 2
+          },
+          "negative_halfwidth_rate": 0.0,
+          "inverted_bound_rate": 0.0,
+          "mean_point_effect": {
+            "mean": -0.203326725400804,
+            "std": 0.6329801924814913,
+            "p95": 0.19949940241358174,
+            "n": 2
+          },
+          "failure_counts": {},
+          "n_feasible": 2
+        },
+        "multi_cell_k2_per_cell": null
+      },
+      "comparison_single_cell": {
+        "feasibility_rate_delta": 0.0,
+        "null_fpr_delta": null,
+        "negative_halfwidth_rate_delta": -1.0,
+        "inverted_bound_rate_delta": -1.0,
+        "mean_halfwidth_delta": null,
+        "structural_interval_fixed": true
+      },
+      "postfix_disposition": "diagnostic_interval_only",
+      "disposition_rationale": "Structural interval checks pass on battery; remain diagnostic \u2014 not governed uncertainty.",
+      "f_inf_classification": {
+        "classification": "diagnostic_interval_only",
+        "is_governed_uncertainty": false,
+        "mean_interval_halfwidth": 8.63919319115032,
+        "issue_codes": []
+      },
+      "structurally_valid_interval_ready_for_OC": true,
+      "audit_010_status_after_oc": "diagnostic_interval_only",
+      "promotion": false,
+      "calibration_signal_eligible": false,
+      "mmm_ready": false
+    },
+    "A19": {
+      "estimator": "TBRRidge",
+      "inference": "TimeSeriesKfold",
+      "geometries": [
+        "single_cell"
+      ],
+      "pre_fix": {
+        "source_artifact": "D5-INST-TBRRIDGE-002",
+        "audit_010_row": "A19",
+        "single_cell": {
+          "feasibility_rate": 1.0,
+          "null_interval_exclusion_fpr_mean": 1.0,
+          "negative_halfwidth_rate": 1.0,
+          "inverted_bound_rate": 1.0,
+          "mean_interval_halfwidth_mean": -21.60470591065306
+        }
+      },
+      "post_fix": {
+        "single_cell": {
+          "instrument": "tbrridge_timeseries_kfold",
+          "geometry_mode": "single_cell",
+          "effect": 0.0,
+          "feasibility_rate": 1.0,
+          "null_interval_exclusion_fpr": {
+            "mean": 0.0,
+            "std": 0.0,
+            "p95": 0.0,
+            "n": 2
+          },
+          "mean_interval_halfwidth": {
+            "mean": 20.045063353175866,
+            "std": 4.26623222854195,
+            "p95": 22.760076918202614,
+            "n": 2
+          },
+          "negative_halfwidth_rate": 0.0,
+          "inverted_bound_rate": 0.0,
+          "mean_point_effect": {
+            "mean": -406.0516492950338,
+            "std": 0.945970238491728,
+            "p95": -405.4496375216395,
+            "n": 2
+          },
+          "failure_counts": {},
+          "n_feasible": 2
+        }
+      },
+      "comparison_single_cell": {
+        "feasibility_rate_delta": 0.0,
+        "null_fpr_delta": null,
+        "negative_halfwidth_rate_delta": -1.0,
+        "inverted_bound_rate_delta": -1.0,
+        "mean_halfwidth_delta": null,
+        "structural_interval_fixed": true
+      },
+      "postfix_disposition": "diagnostic_interval_only",
+      "disposition_rationale": "Structural interval checks pass on battery; remain diagnostic \u2014 not governed uncertainty.",
+      "f_inf_classification": {
+        "classification": "diagnostic_interval_only",
+        "is_governed_uncertainty": false,
+        "mean_interval_halfwidth": 20.045063353175866,
+        "issue_codes": []
+      },
+      "structurally_valid_interval_ready_for_OC": true,
+      "audit_010_status_after_oc": "diagnostic_interval_only",
+      "promotion": false,
+      "calibration_signal_eligible": false,
+      "mmm_ready": false
+    }
+  },
+  "overall_verdict": "remain_restricted_no_promotion",
+  "next_authorized_track_f_implementation": "F-INF-002",
+  "track_f_notes": {
+    "A05_prior_battery": "D5-INST-AUGSYNTH-003",
+    "A19_prior_battery": "D5-INST-TBRRIDGE-002",
+    "structural_fix": "F-INF-003",
+    "behavioral_verdict": "Intervals are structurally valid post-fix; null FPR may remain elevated \u2014 not governed uncertainty without further evidence."
+  }
+}

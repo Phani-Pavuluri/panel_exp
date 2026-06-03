@@ -1,0 +1,131 @@
+{
+  "fixture_id": "GOLD-010",
+  "fixture_version": "1.0.0",
+  "description": "SCM Placebo on multi-treated default DGP. Geometry out of scope. Partial export or failed run. Not assessable for placebo null-reference claims.",
+  "binding_docs": [
+    "TRACK_B_CONTRACT_TEST_PLAN_001",
+    "PHASE15_GOVERNANCE_DECISION_001",
+    "DEF-020"
+  ],
+  "spec": {
+    "study_id": "fixture-study-gold-010",
+    "spec_version": "1",
+    "modality": "geo",
+    "study_purpose": "business",
+    "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+    "interval_estimand_expectation_id": "geo.placebo_null_envelope.pooled_path.relative",
+    "geometry_class": "single_treated_only",
+    "mmm_calibration_intent": false,
+    "measurement_instrument_id_expected": "geo.synthetic_control.placebo.relative_att_post.single_treated_only.placebo_band"
+  },
+  "run_artifacts_stub": {
+    "config_alias": "SCM_Placebo",
+    "estimator_family": "synthetic_control",
+    "inference_method": "placebo",
+    "n_treated": 4,
+    "geometry_observed": "multi_treated_default",
+    "run_status": "failed",
+    "failure_type": "placebo_multi_treated_unsupported",
+    "path_interval_type_legacy": null,
+    "has_path_intervals": false
+  },
+  "adapter_expected_output": {
+    "export_status": "partial",
+    "partial_reason": "geometry_out_of_scope_for_placebo_instrument",
+    "experiment_evidence": {
+      "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+      "exported_estimand_id": "unknown",
+      "scored_estimand_id": null,
+      "interval_estimand_id": null,
+      "measurement_instrument_id": "geo.synthetic_control.placebo.relative_att_post.single_treated_only.placebo_band",
+      "instrument_family": "synthetic_control",
+      "inference_method": "placebo",
+      "geometry_class": "single_treated_only",
+      "geometry_observed": "multi_treated_default",
+      "interval_semantics": "placebo_band",
+      "config_alias": "SCM_Placebo",
+      "instrument_plan_violation": true,
+      "run_status": "failed",
+      "calibration_signal_id": "cs-geo-scm-plac-001",
+      "calibration_signal_version": "1",
+      "calibration_signal_missing": false,
+      "decision_grade_export_permitted": false,
+      "mmm_intake_blocked": false,
+      "mmm_export_ready": false
+    },
+    "alignment_facts": {
+      "declared_exported_aligned": false,
+      "declared_interval_aligned": false,
+      "exported_interval_aligned": false,
+      "scale_compatible": null,
+      "aggregation_divergence_detected": false,
+      "geometry_within_scope": false,
+      "interval_semantics_compatible": null,
+      "transform_declared": false
+    },
+    "diagnostic_summary": {
+      "export_status": "partial",
+      "primary_context_estimand_id": "geo.relative_att_post.pooled_path.relative",
+      "diagnostic_estimand_id": null,
+      "measurement_instrument_id": "geo.synthetic_control.placebo.relative_att_post.single_treated_only.placebo_band",
+      "estimand_diagnostic_facets": [
+        {
+          "facet_id": "geometry_out_of_scope",
+          "severity": "blocking",
+          "modifier_class": "trust_modifier",
+          "notes": "Placebo instrument single_treated_only; run n_treated=4"
+        }
+      ],
+      "must_not_contain_trust_outcome": true
+    },
+    "must_not_contain_on_evidence": [
+      "trust_outcome",
+      "alignment_verdict"
+    ]
+  },
+  "calibration_signal_binding": {
+    "lookup_key": "geo.synthetic_control.placebo.relative_att_post.single_treated_only.placebo_band",
+    "expected_signal_id": "cs-geo-scm-plac-001",
+    "expected_signal_version": "1",
+    "expected_known_exclusions": [
+      "multi_treated_default_dgp_100_percent_failure"
+    ],
+    "expected_usage_boundary": "null_reference_diagnostic",
+    "signal_must_not_contain_trust_outcome": true
+  },
+  "trust_report_expected_output": {
+    "alignment_reference_estimand_id": "geo.relative_att_post.pooled_path.relative",
+    "scenarios": [
+      {
+        "scenario_id": "placebo_null_reference",
+        "intended_use": "null_reference_screening",
+        "claim_type": "null_viability",
+        "alignment_verdict": "incompatible",
+        "trust_outcome": "not_assessable",
+        "notes": "Run failed. geometry_within_scope false. Phase 15 multi-treated placebo failure."
+      },
+      {
+        "scenario_id": "any_lift",
+        "intended_use": "business_lift_launch",
+        "claim_type": "positive_lift_detection",
+        "alignment_verdict": "incompatible",
+        "trust_outcome": "unsupported",
+        "notes": "No valid measurement export."
+      }
+    ]
+  },
+  "expected_test_ids": [
+    "INST-002",
+    "INST-010",
+    "ALIGN-007",
+    "TR-007",
+    "TR-012",
+    "DIAG-004"
+  ],
+  "forbidden_regressions": ["F2", "F3"],
+  "negative_assertions": [
+    "must not set export_status complete with successful placebo_band on multi-treated failure run",
+    "must not set geometry_within_scope true when n_treated=4 for single_treated_only placebo instrument",
+    "must not infer success from config_alias SCM_Placebo alone"
+  ]
+}

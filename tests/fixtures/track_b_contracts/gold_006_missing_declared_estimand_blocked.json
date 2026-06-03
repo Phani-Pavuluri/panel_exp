@@ -1,0 +1,79 @@
+{
+  "fixture_id": "GOLD-006",
+  "fixture_version": "1.0.0",
+  "description": "ExperimentSpec missing declared_estimand_id. Adapter must block decision-grade export.",
+  "binding_docs": [
+    "TRACK_B_CONTRACT_TEST_PLAN_001",
+    "TRACK_B_ADAPTER_ID_RESOLUTION_001",
+    "TRACK_B_CONTRACT_SCHEMA_DRAFT_001"
+  ],
+  "spec": {
+    "study_id": "fixture-study-gold-006",
+    "spec_version": "1",
+    "modality": "geo",
+    "study_purpose": "business",
+    "declared_estimand_id": null,
+    "geometry_class": "multi_treated_default",
+    "mmm_calibration_intent": false,
+    "legacy_target_estimand": null
+  },
+  "run_artifacts_stub": {
+    "config_alias": "SCM_UnitJackKnife",
+    "estimator_family": "synthetic_control",
+    "inference_method": "unit_jackknife",
+    "n_treated": 4,
+    "run_status": "success",
+    "has_path_intervals": true
+  },
+  "adapter_expected_output": {
+    "export_status": "blocked",
+    "block_reason": "missing_declared_estimand_id",
+    "experiment_evidence": {
+      "declared_estimand_id": null,
+      "exported_estimand_id": "unknown",
+      "measurement_instrument_id": "geo.synthetic_control.unit_jackknife.relative_att_post.multi_treated_default.confidence_interval",
+      "decision_grade_export_permitted": false
+    },
+    "alignment_facts": null,
+    "diagnostic_summary": {
+      "export_status": "blocked",
+      "primary_context_estimand_id": null,
+      "measurement_instrument_id": null,
+      "must_not_contain_trust_outcome": true
+    },
+    "must_not_contain_on_evidence": [
+      "trust_outcome",
+      "alignment_verdict",
+      "declared_exported_aligned"
+    ]
+  },
+  "calibration_signal_binding": {
+    "lookup_attempted": false,
+    "notes": "Signal binding optional on blocked export. TrustReport must not use calibration-backed claims."
+  },
+  "trust_report_expected_output": {
+    "composition_permitted": false,
+    "scenarios": [
+      {
+        "scenario_id": "any_claim",
+        "intended_use": "any",
+        "claim_type": "any",
+        "alignment_verdict": "not_assessable",
+        "trust_outcome": "not_assessable",
+        "notes": "TR-007. SPEC-001."
+      }
+    ]
+  },
+  "expected_test_ids": [
+    "SPEC-001",
+    "SPEC-005",
+    "TR-007",
+    "DIAG-004"
+  ],
+  "forbidden_regressions": ["F1", "F9"],
+  "negative_assertions": [
+    "adapter must not infer declared_estimand_id from estimator_family synthetic_control",
+    "adapter must not set export_status complete for business export",
+    "must not set exported_estimand_id to geo.relative_att_post.pooled_path.relative without declared spec"
+  ]
+}

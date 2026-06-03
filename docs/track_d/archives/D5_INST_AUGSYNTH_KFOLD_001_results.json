@@ -1,0 +1,351 @@
+{
+  "artifact_id": "D5-INST-AUGSYNTH-KFOLD-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-02T22:43:41.695794+00:00",
+  "lane": "research",
+  "binding_docs": [
+    "D5_INST_COMBO_AUDIT_001",
+    "D5_INST_AUGSYNTH_001",
+    "TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001",
+    "TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001"
+  ],
+  "governance": {
+    "estimator": "AugSynthCVXPY",
+    "inference": "Kfold",
+    "no_base_augsynth": true,
+    "no_promotion": true,
+    "no_calibration_signal_ingress": true,
+    "no_mmm": true,
+    "no_estimand_equivalence": true,
+    "context_only": [
+      "SCM_UnitJackKnife",
+      "AugSynthCVXPY_UnitJackKnife"
+    ]
+  },
+  "config": {
+    "n_mc": 14,
+    "train_length": 28,
+    "test_length": 8,
+    "reference_design_method": "greedy_match_markets",
+    "effect_grid": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "include_multi_cell_k2": true,
+    "min_donors_augsynth": 5,
+    "kfold_random_state": 0
+  },
+  "instrument_summaries_null_single_cell": [
+    {
+      "instrument": "scm_jk_reference",
+      "geometry_mode": "single_cell",
+      "effect": 0.0,
+      "feasibility_rate": 1.0,
+      "fit_success_rate": 1.0,
+      "mean_point_effect": {
+        "mean": -0.03305001183445339,
+        "std": 0.6857854041110683,
+        "p95": 0.9792590491199848,
+        "n": 14
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 14
+      },
+      "mean_interval_halfwidth": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_wall_time_s": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "path_interval_type_mode": null,
+      "failure_counts": {}
+    },
+    {
+      "instrument": "augsynth_cvxpy_jk",
+      "geometry_mode": "single_cell",
+      "effect": 0.0,
+      "feasibility_rate": 1.0,
+      "fit_success_rate": 1.0,
+      "mean_point_effect": {
+        "mean": 0.008838969458388682,
+        "std": 0.5266389374085634,
+        "p95": 0.6933408663235425,
+        "n": 13
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 13
+      },
+      "mean_interval_halfwidth": {
+        "mean": 3.3849363607026635,
+        "std": 0.662888992807984,
+        "p95": 4.379762095253732,
+        "n": 13
+      },
+      "mean_wall_time_s": {
+        "mean": 0.016269871841919106,
+        "std": 0.0031818708572218858,
+        "p95": 0.020483700017211958,
+        "n": 13
+      },
+      "path_interval_type_mode": "confidence_interval",
+      "failure_counts": {
+        "insufficient_donors_need_5_got_3": 1
+      }
+    },
+    {
+      "instrument": "augsynth_cvxpy_kfold",
+      "geometry_mode": "single_cell",
+      "effect": 0.0,
+      "feasibility_rate": 1.0,
+      "fit_success_rate": 1.0,
+      "mean_point_effect": {
+        "mean": 0.08049668721244502,
+        "std": 0.8147509434449316,
+        "p95": 1.2559186684187649,
+        "n": 13
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 13
+      },
+      "mean_interval_halfwidth": {
+        "mean": 8.865803245266425,
+        "std": 1.6447919805319557,
+        "p95": 11.1664534810201,
+        "n": 13
+      },
+      "mean_wall_time_s": {
+        "mean": 0.08578637185228917,
+        "std": 0.009334090724817518,
+        "p95": 0.09944879959803074,
+        "n": 13
+      },
+      "path_interval_type_mode": "confidence_interval",
+      "failure_counts": {
+        "insufficient_donors_need_5_got_3": 1
+      }
+    }
+  ],
+  "instrument_summaries_injected_8pct_single_cell": [
+    {
+      "instrument": "augsynth_cvxpy_kfold",
+      "geometry_mode": "single_cell",
+      "effect": 0.08,
+      "feasibility_rate": 1.0,
+      "fit_success_rate": 1.0,
+      "mean_point_effect": {
+        "mean": 8.135612880957607,
+        "std": 0.8470946739830538,
+        "p95": 9.340009852422186,
+        "n": 13
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 13
+      },
+      "mean_interval_halfwidth": {
+        "mean": 8.879910273299314,
+        "std": 1.6847162782189475,
+        "p95": 11.210840864877158,
+        "n": 13
+      },
+      "mean_wall_time_s": {
+        "mean": 0.08024511853895652,
+        "std": 0.003899017992362615,
+        "p95": 0.0858549917989876,
+        "n": 13
+      },
+      "path_interval_type_mode": "confidence_interval",
+      "failure_counts": {
+        "insufficient_donors_need_5_got_3": 1
+      }
+    },
+    {
+      "instrument": "augsynth_cvxpy_jk",
+      "geometry_mode": "single_cell",
+      "effect": 0.08,
+      "feasibility_rate": 1.0,
+      "fit_success_rate": 1.0,
+      "mean_point_effect": {
+        "mean": 8.063955163203552,
+        "std": 0.5455101457531,
+        "p95": 8.754230348198542,
+        "n": 13
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0,
+        "n": 13
+      },
+      "mean_interval_halfwidth": {
+        "mean": 3.3849363607026635,
+        "std": 0.662888992807984,
+        "p95": 4.379762095253732,
+        "n": 13
+      },
+      "mean_wall_time_s": {
+        "mean": 0.015812499999391057,
+        "std": 0.002817993360022096,
+        "p95": 0.019164966599782927,
+        "n": 13
+      },
+      "path_interval_type_mode": "confidence_interval",
+      "failure_counts": {
+        "insufficient_donors_need_5_got_3": 1
+      }
+    }
+  ],
+  "instrument_summaries_null_multi_cell_k2": {
+    "augsynth_cvxpy_kfold": {
+      "instrument": "augsynth_cvxpy_kfold",
+      "geometry_mode": "multi_cell_k2_per_cell",
+      "effect": 0.0,
+      "feasibility_rate": 1.0,
+      "fit_success_rate": 1.0,
+      "mean_point_effect": {
+        "mean": 0.09553722975848318,
+        "std": 1.5160464370063333,
+        "p95": 2.7062281915512623,
+        "n": 28
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 28
+      },
+      "mean_interval_halfwidth": {
+        "mean": 5.904051887159058,
+        "std": 1.3280434851981096,
+        "p95": 7.850097514335748,
+        "n": 28
+      },
+      "mean_wall_time_s": {
+        "mean": 0.07646181542596812,
+        "std": 0.0059355734767856504,
+        "p95": 0.08777162279002368,
+        "n": 28
+      },
+      "path_interval_type_mode": "confidence_interval",
+      "failure_counts": {}
+    },
+    "augsynth_cvxpy_jk": {
+      "instrument": "augsynth_cvxpy_jk",
+      "geometry_mode": "multi_cell_k2_per_cell",
+      "effect": 0.0,
+      "feasibility_rate": 1.0,
+      "fit_success_rate": 1.0,
+      "mean_point_effect": {
+        "mean": -0.04267076106172775,
+        "std": 0.9441676346800522,
+        "p95": 1.4583239034520457,
+        "n": 28
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 28
+      },
+      "mean_interval_halfwidth": {
+        "mean": 3.3785671260600907,
+        "std": 1.0882618797067594,
+        "p95": 5.309614272260488,
+        "n": 28
+      },
+      "mean_wall_time_s": {
+        "mean": 0.012169770784177152,
+        "std": 0.0019223562039259409,
+        "p95": 0.015844926744466647,
+        "n": 28
+      },
+      "path_interval_type_mode": "confidence_interval",
+      "failure_counts": {}
+    }
+  },
+  "instrument_status": {
+    "primary_instrument": "AugSynthCVXPY_Kfold",
+    "overall_verdict": "remain_restricted_diagnostic_comparator",
+    "rationale": "Feasible on 001e windows; interval semantics are confidence_interval not null-monitor. Valid diagnostic comparator for triangulation \u2014 not CalibrationSignal or estimand-equivalent to SCM+JK.",
+    "track_e_inst_004_kfold": "restricted",
+    "calibration_signal_ingress": false,
+    "mmm_ingress": false,
+    "estimand_equivalence_claim": false,
+    "feasibility_single_cell": 1.0,
+    "feasibility_multi_cell_k2_per_cell": 1.0,
+    "null_fpr_kfold": 0.0,
+    "null_fpr_augsynth_jk": 0.0,
+    "null_fpr_scm_jk": 0.0,
+    "multi_cell_policy": "per_cell_only",
+    "combo_audit_status_update": "valid_candidate \u2192 characterized_restricted"
+  },
+  "context_comparison": {
+    "null_detection_disagreement_kfold_vs_jk_rate": {
+      "mean": 0.0,
+      "std": 0.0,
+      "p95": 0.0,
+      "n": 13
+    },
+    "null_detection_disagreement_kfold_vs_scm_jk_rate": {
+      "mean": 0.0,
+      "std": 0.0,
+      "p95": 0.0,
+      "n": 13
+    },
+    "kfold_null_point_seed_sensitivity_std": {
+      "mean": 0.0,
+      "std": 0.0,
+      "p95": 0.0,
+      "n": 14
+    },
+    "note": "Context comparisons are not estimand-equivalence tests."
+  },
+  "findings": [
+    {
+      "id": "D5-ASKF-FIND-001",
+      "summary": "AugSynthCVXPY+Kfold runs on 001e single-cell panels when donors >= min_donors."
+    },
+    {
+      "id": "D5-ASKF-FIND-002",
+      "summary": "Kfold path_interval_type is confidence_interval \u2014 distinct from JK null-monitor semantics."
+    },
+    {
+      "id": "D5-ASKF-FIND-003",
+      "summary": "Multi-cell k=2 per-cell Kfold follows MCELL thin-donor blocking pattern."
+    },
+    {
+      "id": "D5-ASKF-FIND-004",
+      "summary": "No CalibrationSignal or MMM ingress; remain restricted diagnostic comparator."
+    }
+  ],
+  "overall_verdict": "remain_restricted_diagnostic_comparator",
+  "user_facing_warnings": [
+    "Kfold CI is not interchangeable with SCM+JK null-monitor intervals.",
+    "Do not claim direct estimand equivalence between AugSynth Kfold and SCM+JK.",
+    "Compare JK/Kfold/SCM+JK as triangulation context only on this battery."
+  ],
+  "rules_acknowledged": {
+    "no_production_changes": true,
+    "no_estimator_changes": true,
+    "no_inference_changes": true,
+    "no_trust_report_changes": true
+  }
+}

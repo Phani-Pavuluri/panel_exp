@@ -1,0 +1,210 @@
+{
+  "artifact_id": "D5-POW-001c",
+  "generated_at": "2026-06-01T21:19:53+00:00",
+  "lane": "research",
+  "investigation_id": "D4-FIND-002",
+  "prior_artifacts": [
+    "docs/track_d/archives/D5_POW_001a_results.json",
+    "docs/track_d/archives/D5_POW_001b_results.json"
+  ],
+  "config": {
+    "n_mc": 28,
+    "n_geos": 16,
+    "n_periods": 44,
+    "treatment_start": 32,
+    "test_length": 8,
+    "train_length": 28,
+    "alpha": 0.05,
+    "treatment_probability": 0.35,
+    "random_state_base": 20260603,
+    "scenario_name": "scm_low_signal",
+    "min_control_units": 2,
+    "effect_grid": [
+      0.0,
+      0.04,
+      0.08,
+      0.12
+    ]
+  },
+  "design_context_reference": {
+    "design_method_id": "greedy_match_markets",
+    "design_method_tier": "tier_1_production_geo",
+    "balance_objective": "corr",
+    "assignment_constraints": {
+      "pre_treatment_period_only": true,
+      "n_test_groups": 1,
+      "treatment_probability": 0.35,
+      "func_to_optimize": "corr"
+    },
+    "pre_period_window": {
+      "start": 0,
+      "end": 27
+    },
+    "post_period_window": {
+      "start": 28,
+      "end": 35
+    },
+    "test_length": 8,
+    "train_length": 28,
+    "n_geos": 16,
+    "n_treated_markets": 12,
+    "n_control_markets": 4,
+    "test_control_ratio": 3.0,
+    "aggregation_geometry": {
+      "unit_panel": "market_level_preserving_assignment",
+      "power_panel": "sum_treated_sum_control_two_row",
+      "markets_preserved_in_power_panel": false,
+      "row_count_unit": 16,
+      "row_count_aggregated": 2
+    },
+    "readout_paths": {
+      "governed": "unit_panel + SyntheticControl + UnitJackKnife",
+      "geo_power_default": "aggregated_two_row + TBRRidge + Kfold",
+      "geometry_stress": "aggregated_two_row + SyntheticControl + UnitJackKnife"
+    }
+  },
+  "design_methods_for_001e": [
+    {
+      "design_method_id": "greedy_match_markets",
+      "tier": "tier_1_production_geo",
+      "balance_objective": "corr",
+      "pre_period_assignment": true,
+      "in_d5_pow_001c": true,
+      "in_d5_pow_001e_recommended": true,
+      "notes": "Default geo pre-period matching; baseline for 001c."
+    },
+    {
+      "design_method_id": "rerandomization",
+      "tier": "tier_1_production_geo",
+      "balance_objective": "constraint_satisfaction",
+      "pre_period_assignment": true,
+      "in_d5_pow_001c": false,
+      "in_d5_pow_001e_recommended": true,
+      "notes": "DES-010 wrapper; scale null FPR in 001e."
+    },
+    {
+      "design_method_id": "complete_randomization",
+      "tier": "tier_2_exposed_not_default",
+      "pre_period_assignment": false,
+      "in_d5_pow_001c": false,
+      "in_d5_pow_001e_recommended": true,
+      "notes": "Include if exposed in geo_runner registry."
+    },
+    {
+      "design_method_id": "stratified_randomization",
+      "tier": "tier_2_exposed_not_default",
+      "pre_period_assignment": false,
+      "in_d5_pow_001c": false,
+      "in_d5_pow_001e_recommended": false,
+      "notes": "Add to 001e only if active in production path."
+    },
+    {
+      "design_method_id": "supergeo_construction",
+      "tier": "tier_1_production_geo",
+      "pre_period_assignment": false,
+      "in_d5_pow_001c": false,
+      "in_d5_pow_001e_recommended": true,
+      "notes": "Aggregation/supermarket geometry; pair with 001c-style agg checks."
+    },
+    {
+      "design_method_id": "multi_cell_multi_treated",
+      "tier": "tier_1_if_active",
+      "pre_period_assignment": true,
+      "in_d5_pow_001c": false,
+      "in_d5_pow_001e_recommended": true,
+      "notes": "Multi test-group path when n_test_grps>1 in production."
+    },
+    {
+      "design_method_id": "trimmed_match_design",
+      "tier": "tier_2_adjacent_product",
+      "pre_period_assignment": false,
+      "in_d5_pow_001c": false,
+      "in_d5_pow_001e_recommended": false,
+      "notes": "Separate power semantics (classical CI); not geo PowerAnalysis."
+    }
+  ],
+  "hypothesis": "2-row sum aggregation (geo power panel) may distort unit-level design-readout behavior while preserving market assignment.",
+  "primary_metrics": {
+    "null_fpr_unit_scm_jk": {
+      "mean": 0.03571428571428571,
+      "std": 0.18898223650461365,
+      "p95": 0.0
+    },
+    "null_fpr_agg2_tbr_kfold": {
+      "mean": 0.0,
+      "std": 0.0,
+      "p95": 0.0
+    },
+    "cross_path_point_effect_corr": {
+      "mean": 1.0,
+      "std": 8.275113844157577e-17,
+      "p95": 1.0
+    },
+    "effect_response_8pct_unit_scm": {
+      "mean": 8.03824846684221,
+      "std": 0.06822056196489343,
+      "p95": 8.154446316780575
+    },
+    "effect_response_8pct_agg_tbr": {
+      "mean": 93.56157206841364,
+      "std": 16.18812887909636,
+      "p95": 112.67064424345205
+    },
+    "effect_response_ratio_agg_over_unit": {
+      "mean": 11.642857142857142,
+      "std": 2.0223617604046735,
+      "p95": 14.000000000000002
+    },
+    "geometry_loss_level_ratio": {
+      "mean": 11.642857142857142,
+      "std": 2.0223617604046735,
+      "p95": 14.0
+    }
+  },
+  "pooled_by_effect": {
+    "unit_scm_jk_detected": {
+      "0.0": 0.03571428571428571,
+      "0.04": 0.6428571428571429,
+      "0.08": 1.0,
+      "0.12": 1.0
+    },
+    "agg2_tbr_kfold_detected": {
+      "0.0": 0.0,
+      "0.04": 0.0,
+      "0.08": 0.0,
+      "0.12": 0.0
+    },
+    "unit_scm_jk_point": {
+      "0.0": 0.295198843673428,
+      "0.04": 4.314323077094533,
+      "0.08": 8.33344731051564,
+      "0.12": 12.352571543936744
+    },
+    "agg2_tbr_kfold_point": {
+      "0.0": 1.99623998823911,
+      "0.04": 48.77702602244592,
+      "0.08": 95.55781205665274,
+      "0.12": 142.33859809085956
+    },
+    "agg2_scm_jk_point": {
+      "0.0": null,
+      "0.04": null,
+      "0.08": null,
+      "0.12": null
+    }
+  },
+  "n_replicates": 28,
+  "aggregation_proxy_verdict": "narrow_diagnostics_only",
+  "rationale": "Point-effect magnitudes differ materially between geometries; use aggregated panels only for coarse diagnostics, not SCM readout feasibility.",
+  "pow_003_status_recommendation": "characterization_required",
+  "d4_find_002_update": "narrow_diagnostics_only",
+  "calibration_eligibility_changed": false,
+  "notes": [
+    "Assignment fixed: greedy_match_markets on pre-period only (INV-D1-001 aligned).",
+    "Governed readout: unit panel + SCM+UnitJackKnife.",
+    "Geo power default: 2-row sum + TBRRidge+Kfold.",
+    "SCM+UnitJackKnife on 2-row panel is infeasible (requires >=2 control units).",
+    "Interval exclusion uses correct effect_lo/hi semantics (post D5-POW-001b).",
+    "Do not promote 2-row aggregation to SCM feasibility or MMM planning."
+  ]
+}

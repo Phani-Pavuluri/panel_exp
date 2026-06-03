@@ -1,0 +1,100 @@
+{
+  "affected_pathways": [
+    "panel_exp.design.geo_runner.run_geo_experiment_design",
+    "panel_exp.design.geo_experiment_design.GeoExperimentDesign.run_design",
+    "panel_exp.design.assign.greedy_match_markets.assign",
+    "panel_exp.design.assign.Rerandomization (wraps base design)",
+    "panel_exp.design.period_slice.slice_wide_to_time_period"
+  ],
+  "artifact_id": "D5-DES-001a",
+  "config": {
+    "n_mc": 120,
+    "n_post": 20,
+    "n_pre": 50,
+    "n_units": 24,
+    "post_unit_shift_sd": 12.0,
+    "random_state_base": 20260528,
+    "treatment_probability": 0.5
+  },
+  "disposition_d1_find_001": "characterization_required",
+  "generated_at": "2026-06-01T18:25:19+00:00",
+  "hypothesis": "Full-panel greedy matching uses post-treatment columns when present, increasing |corr(test, post_mean)| and post-period balance vs pre-only matching.",
+  "inv_d1_001_fix_applied": true,
+  "investigation_id": "INV-D1-001",
+  "lane": "research",
+  "null_dgp": {
+    "false_positive_rate_abs_post_corr_gt_0.3": 0.14166666666666666,
+    "post_assignment_corr_abs_full": {
+      "mean": 0.16525966187853366,
+      "p95": 0.3881123666256116,
+      "std": 0.12129878046067674
+    },
+    "post_unit_shift_sd": 0.0
+  },
+  "primary_metrics": {
+    "att_proxy_full": {
+      "mean": -0.14550686586254452,
+      "p95": 16.59517524676277,
+      "std": 8.430272779170386
+    },
+    "att_proxy_pre_only": {
+      "mean": -0.6334392814153512,
+      "p95": 17.555825855825795,
+      "std": 8.101773716187884
+    },
+    "balance_corr_post_full": {
+      "mean": 0.9901023715974699,
+      "p95": 0.9966752544968259,
+      "std": 0.006188243084532997
+    },
+    "balance_corr_post_pre_only": {
+      "mean": 0.9924504733740104,
+      "p95": 0.9974479529977871,
+      "std": 0.00414191293011228
+    },
+    "leakage_signal_mean_abs_diff": 0.017875613915991156,
+    "post_assignment_corr_abs_full": {
+      "mean": 0.18352252140469302,
+      "p95": 0.4239857090365267,
+      "std": 0.12829881772114662
+    },
+    "post_assignment_corr_abs_pre_only": {
+      "mean": 0.16564690748870187,
+      "p95": 0.4351239798347808,
+      "std": 0.1230856749354802
+    },
+    "post_balance_inflation": -0.0023481017765404344,
+    "smd_post_full": {
+      "mean": 0.44498857610979514,
+      "p95": 1.1513611624872808,
+      "std": 0.38336093645515174
+    },
+    "smd_post_pre_only": {
+      "mean": 0.33773320939711554,
+      "p95": 1.0125323961695616,
+      "std": 0.2942152123113499
+    },
+    "smd_pre_full": {
+      "mean": 0.4726204866105718,
+      "p95": 1.1481915054383927,
+      "std": 0.3706073073575413
+    },
+    "smd_pre_pre_only": {
+      "mean": 0.3569081506816909,
+      "p95": 1.142117994619402,
+      "std": 0.35850579889076123
+    },
+    "test_set_jaccard_fixed_vs_pre_only": {
+      "mean": 1.0,
+      "p95": 1.0,
+      "std": 0.0
+    },
+    "test_set_jaccard_full_vs_pre_only": {
+      "mean": 0.26502576739709094,
+      "p95": 0.45454545454545453,
+      "std": 0.10247940220442006
+    }
+  },
+  "rationale": "INV-D1-001 fix verified: pre_treatment_period assignment matches pre-only reference (mean Jaccard 1.00).",
+  "recommendation": "accepted_deviation"
+}

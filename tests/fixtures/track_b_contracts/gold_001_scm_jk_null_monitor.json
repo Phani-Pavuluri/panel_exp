@@ -1,0 +1,133 @@
+{
+  "fixture_id": "GOLD-001",
+  "fixture_version": "1.0.0",
+  "description": "SCM + UnitJackKnife on multi-treated geo panel. Complete export. Null-monitor instrument scope.",
+  "binding_docs": [
+    "TRACK_B_CONTRACT_TEST_PLAN_001",
+    "TRACK_B_ADAPTER_ID_RESOLUTION_001",
+    "TRACK_B_MEASUREMENT_INSTRUMENT_CATALOG_001"
+  ],
+  "spec": {
+    "study_id": "fixture-study-gold-001",
+    "spec_version": "1",
+    "modality": "geo",
+    "study_purpose": "business",
+    "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+    "interval_estimand_expectation_id": "geo.relative_att_post.pooled_path.relative",
+    "geometry_class": "multi_treated_default",
+    "mmm_calibration_intent": false,
+    "measurement_instrument_id_expected": "geo.synthetic_control.unit_jackknife.relative_att_post.multi_treated_default.confidence_interval"
+  },
+  "run_artifacts_stub": {
+    "config_alias": "SCM_UnitJackKnife",
+    "estimator_family": "synthetic_control",
+    "inference_method": "unit_jackknife",
+    "n_treated": 4,
+    "geometry_observed": "multi_treated_default",
+    "run_status": "success",
+    "path_interval_type_legacy": "confidence_interval",
+    "has_path_intervals": true
+  },
+  "adapter_expected_output": {
+    "export_status": "complete",
+    "experiment_evidence": {
+      "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+      "exported_estimand_id": "geo.relative_att_post.pooled_path.relative",
+      "scored_estimand_id": null,
+      "interval_estimand_id": "geo.relative_att_post.pooled_path.relative",
+      "measurement_instrument_id": "geo.synthetic_control.unit_jackknife.relative_att_post.multi_treated_default.confidence_interval",
+      "instrument_family": "synthetic_control",
+      "inference_method": "unit_jackknife",
+      "geometry_class": "multi_treated_default",
+      "interval_semantics": "confidence_interval",
+      "config_alias": "SCM_UnitJackKnife",
+      "measurement_instrument_id_resolved_from": "config_hash",
+      "instrument_plan_violation": false,
+      "calibration_signal_id": "cs-geo-scm-jk-001",
+      "calibration_signal_version": "1",
+      "calibration_signal_missing": false,
+      "calibration_signal_stale": false,
+      "mmm_intake_blocked": false,
+      "mmm_export_ready": false
+    },
+    "alignment_facts": {
+      "declared_exported_aligned": true,
+      "declared_interval_aligned": true,
+      "exported_interval_aligned": true,
+      "scored_exported_aligned": null,
+      "scale_compatible": true,
+      "aggregation_divergence_detected": false,
+      "geometry_within_scope": true,
+      "interval_semantics_compatible": true,
+      "transform_declared": false,
+      "transform_evidence_complete": null
+    },
+    "diagnostic_summary": {
+      "export_status": "complete",
+      "primary_context_estimand_id": "geo.relative_att_post.pooled_path.relative",
+      "diagnostic_estimand_id": null,
+      "measurement_instrument_id": "geo.synthetic_control.unit_jackknife.relative_att_post.multi_treated_default.confidence_interval",
+      "must_not_contain_trust_outcome": true
+    },
+    "must_not_contain_on_evidence": [
+      "trust_outcome",
+      "alignment_verdict"
+    ]
+  },
+  "calibration_signal_binding": {
+    "lookup_key": "geo.synthetic_control.unit_jackknife.relative_att_post.multi_treated_default.confidence_interval",
+    "expected_signal_id": "cs-geo-scm-jk-001",
+    "expected_signal_version": "1",
+    "expected_calibration_estimand_id": "geo.relative_att_post.pooled_path.relative",
+    "expected_truth_reference_estimand_id": "geo.relative_att_post.cell_mean.relative",
+    "expected_usage_boundary": "null_monitor_only",
+    "expected_lift_detection_calibrated": false,
+    "expected_lifecycle_state": "governed",
+    "signal_must_not_contain_trust_outcome": true
+  },
+  "trust_report_expected_output": {
+    "alignment_reference_estimand_id": "geo.relative_att_post.pooled_path.relative",
+    "scenarios": [
+      {
+        "scenario_id": "null_screen",
+        "intended_use": "null_monitor_screening",
+        "claim_type": "null_viability",
+        "alignment_verdict": "aligned",
+        "trust_outcome": "supported",
+        "notes": "Within SCM JK null-monitor scope. Not lift detection."
+      },
+      {
+        "scenario_id": "lift_launch",
+        "intended_use": "business_lift_launch",
+        "claim_type": "positive_lift_detection",
+        "alignment_verdict": "aligned",
+        "trust_outcome": "inconclusive",
+        "notes": "DEF-013. Signal usage_boundary null_monitor_only. Power=0 on positive battery."
+      }
+    ]
+  },
+  "expected_test_ids": [
+    "SPEC-002",
+    "INST-001",
+    "INST-006",
+    "EV-001",
+    "EV-008",
+    "ALIGN-001",
+    "ALIGN-002",
+    "ALIGN-004",
+    "CS-001",
+    "CS-003",
+    "CS-007",
+    "DIAG-001",
+    "TR-001",
+    "TR-002",
+    "TR-004",
+    "TR-011"
+  ],
+  "forbidden_regressions": ["F1", "F2", "F5", "F8", "F12"],
+  "negative_assertions": [
+    "evidence.interval_semantics must not be placebo_band",
+    "trust_report lift_launch scenario must not be supported",
+    "adapter must not infer declared_estimand_id from estimator_family synthetic_control alone"
+  ]
+}

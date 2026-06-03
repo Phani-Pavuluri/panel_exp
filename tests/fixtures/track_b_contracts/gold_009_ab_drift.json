@@ -1,0 +1,132 @@
+{
+  "fixture_id": "GOLD-009",
+  "fixture_version": "1.0.0",
+  "description": "Declared cell-mean estimand (A) with pooled-path export (B) under heterogeneous multi-treated context. Divergence recorded as fact; inconclusive for business claim.",
+  "binding_docs": [
+    "TRACK_B_CONTRACT_TEST_PLAN_001",
+    "PHASE12_INV003_AGGREGATION_SEMANTICS_001",
+    "DEF-009"
+  ],
+  "spec": {
+    "study_id": "fixture-study-gold-009",
+    "spec_version": "1",
+    "modality": "geo",
+    "study_purpose": "business",
+    "declared_estimand_id": "geo.relative_att_post.cell_mean.relative",
+    "interval_estimand_expectation_id": "geo.relative_att_post.cell_mean.relative",
+    "geometry_class": "multi_treated_default",
+    "heterogeneity_context": "heterogeneous_multi_treated",
+    "mmm_calibration_intent": false
+  },
+  "run_artifacts_stub": {
+    "config_alias": "TBRRidge_BlockResidualBootstrap",
+    "estimator_family": "tbrridge",
+    "inference_method": "block_residual_bootstrap",
+    "n_treated": 4,
+    "geometry_observed": "multi_treated_default",
+    "run_status": "success",
+    "path_interval_type_legacy": "confidence_interval",
+    "has_path_intervals": true,
+    "export_resolver_default": "pooled_path"
+  },
+  "adapter_expected_output": {
+    "export_status": "complete",
+    "experiment_evidence": {
+      "declared_estimand_id": "geo.relative_att_post.cell_mean.relative",
+      "exported_estimand_id": "geo.relative_att_post.pooled_path.relative",
+      "scored_estimand_id": null,
+      "interval_estimand_id": "geo.relative_att_post.pooled_path.relative",
+      "measurement_instrument_id": "geo.tbrridge.block_residual_bootstrap.relative_att_post.multi_treated_default.confidence_interval",
+      "instrument_family": "tbrridge",
+      "inference_method": "block_residual_bootstrap",
+      "geometry_class": "multi_treated_default",
+      "interval_semantics": "confidence_interval",
+      "config_alias": "TBRRidge_BlockResidualBootstrap",
+      "calibration_signal_id": "cs-geo-tbr-brb-002",
+      "calibration_signal_version": "2",
+      "calibration_signal_missing": false,
+      "mmm_intake_blocked": false,
+      "mmm_export_ready": false
+    },
+    "alignment_facts": {
+      "declared_exported_aligned": false,
+      "declared_interval_aligned": false,
+      "exported_interval_aligned": true,
+      "scale_compatible": true,
+      "aggregation_divergence_detected": true,
+      "geometry_within_scope": true,
+      "interval_semantics_compatible": true,
+      "transform_declared": false
+    },
+    "diagnostic_summary": {
+      "export_status": "complete",
+      "primary_context_estimand_id": "geo.relative_att_post.cell_mean.relative",
+      "diagnostic_estimand_id": "geo.relative_att_post.pooled_path.relative",
+      "measurement_instrument_id": "geo.tbrridge.block_residual_bootstrap.relative_att_post.multi_treated_default.confidence_interval",
+      "estimand_diagnostic_facets": [
+        {
+          "facet_id": "aggregation_mismatch",
+          "severity": "moderate",
+          "modifier_class": "trust_modifier",
+          "declared_id": "geo.relative_att_post.cell_mean.relative",
+          "exported_id": "geo.relative_att_post.pooled_path.relative"
+        }
+      ],
+      "must_not_contain_trust_outcome": true
+    },
+    "must_not_contain_on_evidence": [
+      "trust_outcome",
+      "alignment_verdict"
+    ]
+  },
+  "calibration_signal_binding": {
+    "lookup_key": "geo.tbrridge.block_residual_bootstrap.relative_att_post.multi_treated_default.confidence_interval",
+    "expected_signal_id": "cs-geo-tbr-brb-002",
+    "expected_signal_version": "2",
+    "expected_calibration_estimand_id": "geo.relative_att_post.pooled_path.relative",
+    "expected_truth_reference_estimand_id": "geo.relative_att_post.cell_mean.relative",
+    "expected_usage_boundary": "null_viable",
+    "expected_lift_detection_calibrated": false,
+    "expected_lifecycle_state": "restricted",
+    "signal_must_not_contain_trust_outcome": true
+  },
+  "trust_report_expected_output": {
+    "alignment_reference_estimand_id": "geo.relative_att_post.cell_mean.relative",
+    "scenarios": [
+      {
+        "scenario_id": "business_claim_cell_mean",
+        "intended_use": "business_lift_launch",
+        "claim_type": "positive_lift_detection",
+        "alignment_verdict": "divergent",
+        "trust_outcome": "inconclusive",
+        "notes": "DEF-009. INV-003. declared_exported_aligned false. aggregation_divergence_detected true."
+      }
+    ]
+  },
+  "homogeneous_control_variant": {
+    "description": "When heterogeneity_context homogeneous, drift fact may be false — separate test file not required",
+    "spec_override": {
+      "heterogeneity_context": "homogeneous_multi_treated"
+    },
+    "adapter_expected_output": {
+      "alignment_facts": {
+        "declared_exported_aligned": true,
+        "aggregation_divergence_detected": false
+      }
+    }
+  },
+  "expected_test_ids": [
+    "SPEC-006",
+    "ALIGN-003",
+    "ALIGN-008",
+    "TR-006",
+    "TR-009",
+    "DIAG-002"
+  ],
+  "forbidden_regressions": ["F10"],
+  "negative_assertions": [
+    "adapter must not collapse cell_mean and pooled_path to same registry ID",
+    "adapter must not set declared_exported_aligned true when IDs differ",
+    "TrustReport must not use exported_estimand_id as alignment_reference when spec declares cell_mean"
+  ]
+}

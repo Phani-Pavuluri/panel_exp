@@ -125,9 +125,11 @@ class Design(ABC):
 
         # Subset data if pre-treatment period is specified (on copy only)
         if pre_treatment_period:
-            start_idx = panel_data.wide_data.columns.get_loc(pre_treatment_period.start) if pre_treatment_period.start else None
-            end_idx = panel_data.wide_data.columns.get_loc(pre_treatment_period.end) if pre_treatment_period.end else None
-            panel_data.wide_data = panel_data.wide_data.iloc[:, start_idx:end_idx].copy()
+            from panel_exp.design.period_slice import slice_wide_to_time_period
+
+            panel_data.wide_data = slice_wide_to_time_period(
+                panel_data.wide_data, pre_treatment_period
+            )
 
         # Assignments with or without blacklists and whitelists
         if not (self.control_blacklist or self.test_blacklist or self.control_test_blacklist):
@@ -905,7 +907,7 @@ class Rerandomization(Design):
         imbalance_val = np.inf
         cur_iter = 0
         best_assignment = None
-        eval_period = treatment_period
+        eval_period = pre_treatment_period or treatment_period
 
         while (imbalance_val > self.target_imbalance) and (cur_iter < self.max_iter):
             panel = self.base_randomizer.assign(
@@ -919,8 +921,16 @@ class Rerandomization(Design):
                 control_test_blacklist=control_test_blacklist,
                 n_test_grps=n_test_grps,
             )
+            balance_panel = panel_data
+            if pre_treatment_period is not None:
+                from panel_exp.design.period_slice import slice_wide_to_time_period
+
+                balance_panel = copy.deepcopy(panel_data)
+                balance_panel.wide_data = slice_wide_to_time_period(
+                    panel_data.wide_data, pre_treatment_period
+                )
             cur_imbalance = _compute_assignment_imbalance(
-                panel_data,
+                balance_panel,
                 panel,
                 n_test_grps,
                 eval_period,
@@ -941,6 +951,20 @@ class Rerandomization(Design):
         return best_assignment
 
 
+def _eval_period_clipped(
+    panel_data: PanelDataset,
+    period: Optional[TimePeriod],
+) -> TimePeriod:
+    """Map a requested period to labels present on ``panel_data.wide_data``."""
+    cols = panel_data.wide_data.columns
+    lo, hi = cols.min(), cols.max()
+    if period is None:
+        return TimePeriod(lo, hi)
+    start = period.start if period.start in cols else lo
+    end = period.end if period.end in cols else hi
+    return TimePeriod(start, end)
+
+
 def _compute_assignment_imbalance(
     panel_data: PanelDataset,
     assignment: Dict[str, List],
@@ -949,10 +973,7 @@ def _compute_assignment_imbalance(
     metric: str,
 ) -> float:
     """Sum imbalance across test arms vs shared control."""
-    if treatment_period is None:
-        treatment_period = TimePeriod(
-            panel_data.wide_data.columns.min(), panel_data.wide_data.columns.max()
-        )
+    treatment_period = _eval_period_clipped(panel_data, treatment_period)
     wide_reset = panel_data.wide_data.reset_index()
     unit_col = wide_reset.columns[0]
     data = wide_reset.melt(id_vars=unit_col, var_name="time", value_name="value")
@@ -1086,6 +1107,10 @@ class greedy_match_markets(Design):
             control_test_blacklist,
         )
         wide = panel_data.wide_data
+        if pre_treatment_period is not None:
+            from panel_exp.design.period_slice import slice_wide_to_time_period
+
+            wide = slice_wide_to_time_period(wide, pre_treatment_period)
         ctx = prepare_constraint_context(
             wide,
             self.treatment_probability,

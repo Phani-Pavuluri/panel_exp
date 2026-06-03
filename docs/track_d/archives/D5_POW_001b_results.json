@@ -1,0 +1,127 @@
+{
+  "artifact_id": "D5-POW-001b",
+  "generated_at": "2026-06-01T20:49:16+00:00",
+  "lane": "research",
+  "investigation_id": "D4-FIND-001",
+  "prior_artifact": "docs/track_d/archives/D5_POW_001a_results.json",
+  "inv_d3_001_fix_applied": true,
+  "config": {
+    "n_mc": 32,
+    "n_geos": 16,
+    "n_periods": 44,
+    "treatment_start": 32,
+    "test_length": 8,
+    "train_length": 28,
+    "alpha": 0.05,
+    "treatment_probability": 0.35,
+    "random_state_base": 20260602,
+    "scenario_name": "scm_low_signal",
+    "min_control_units": 2,
+    "effect_grid": [
+      0.0,
+      0.02,
+      0.04,
+      0.06,
+      0.08,
+      0.1,
+      0.12
+    ]
+  },
+  "hypothesis": "Pooled interval-detection degeneracy in D5-POW-001a may reflect harness semantics rather than SCM+JK null-monitor failure.",
+  "primary_metrics": {
+    "null_fpr_interval_excludes_zero_correct": {
+      "mean": 0.03125,
+      "std": 0.1767766952966369,
+      "p95": 0.0
+    },
+    "null_fpr_interval_excludes_zero_wrong_001a_style": {
+      "mean": 1.0,
+      "std": 0.0,
+      "p95": 1.0
+    },
+    "null_cell_level_detected_rate": {
+      "mean": 0.33372103157259403,
+      "std": 0.10859341810947669,
+      "p95": 0.5087499999999999
+    },
+    "effect_grid_point_correlation": {
+      "mean": 1.0,
+      "std": 8.917525927715206e-17,
+      "p95": 1.0
+    },
+    "directional_recovery_null": {
+      "mean": 1.0,
+      "std": 0.0,
+      "p95": 1.0
+    },
+    "directional_recovery_8pct": {
+      "mean": 1.0,
+      "std": 0.0,
+      "p95": 1.0
+    }
+  },
+  "pooled_by_effect": {
+    "detected_correct": {
+      "0.0": 0.03125,
+      "0.02": 0.0625,
+      "0.04": 0.625,
+      "0.06": 0.90625,
+      "0.08": 1.0,
+      "0.1": 1.0,
+      "0.12": 1.0
+    },
+    "detected_wrong_001a": {
+      "0.0": 1.0,
+      "0.02": 1.0,
+      "0.04": 1.0,
+      "0.06": 1.0,
+      "0.08": 1.0,
+      "0.1": 1.0,
+      "0.12": 1.0
+    },
+    "cell_detected_rate": {
+      "0.0": 0.33372103157259403,
+      "0.02": 0.4121490813873626,
+      "0.04": 0.5606132799492174,
+      "0.06": 0.7240088036963037,
+      "0.08": 0.8380433693910256,
+      "0.1": 0.9173195944680319,
+      "0.12": 0.9523149701860639
+    },
+    "mean_point_effect": {
+      "0.0": 0.25794016760388616,
+      "0.02": 2.2668234372473677,
+      "0.04": 4.275706706890849,
+      "0.06": 6.284589976534331,
+      "0.08": 8.293473246177815,
+      "0.1": 10.302356515821295,
+      "0.12": 12.311239785464776
+    },
+    "cell_covers_zero_rate": {
+      "0.0": 0.666278968427406,
+      "0.02": 0.5878509186126373,
+      "0.04": 0.4393867200507826,
+      "0.06": 0.2759911963036963,
+      "0.08": 0.16195663060897436,
+      "0.1": 0.08268040553196804,
+      "0.12": 0.04768502981393606
+    }
+  },
+  "degeneracy_attribution": [
+    "simulation_harness_endpoint_swap",
+    "d5_pow_001a_inverted_interval_aggregation"
+  ],
+  "interval_excludes_zero_valid_for_scm_jk": false,
+  "n_replicates": 32,
+  "pow_verdict": "null_monitor_only",
+  "rationale": "D5-POW-001a pooled detection degeneracy is explained by swapped interval endpoints on mean aggregation (y-y_lower vs y-y_upper). Under correct PowerAnalysis semantics, null false-positive rate is moderate and SCM+UnitJackKnife supports null-monitor interpretation only\u2014not lift detection or MDE planning via interval-excludes-zero.",
+  "scm_unit_jackknife_governance": "calibration_eligible_null_monitor_only",
+  "pow_001_status": "diagnostic_only",
+  "pow_001b_recommendation": "Do not use interval-excludes-zero (PowerAnalysis mean_ss) for SCM+JK power or MDE; use null-monitor cell coverage and readout-aligned metrics if simulation is required.",
+  "calibration_eligibility_changed": false,
+  "notes": [
+    "Correct effect bounds: effect_lo = y - y_upper, effect_hi = y - y_lower.",
+    "D5-POW-001a used mean(y-y_lower) and mean(y-y_upper), inverting the interval test.",
+    "No production power, inference, estimator, TrustReport, or eligibility changes."
+  ]
+}

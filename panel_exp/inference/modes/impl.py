@@ -4,7 +4,15 @@ from __future__ import annotations
 
 import numpy as np
 
-from panel_exp.inference._impact_common import apply_bounds_to_results, flatten_single_unit_results, prepare_y_and_y_hat
+from panel_exp.inference._impact_common import (
+    apply_bounds_to_results,
+    apply_effect_bounds_to_results,
+    apply_jkp_bounds_to_results,
+    flatten_single_unit_results,
+    is_tbrridge_multi_treated,
+    prepare_y_and_y_hat,
+    treatment_window_residuals,
+)
 from panel_exp.inference.block_residual_bootstrap import block_residual_bootstrap
 from panel_exp.inference.conformal import conformal
 from panel_exp.inference.context import InferenceRunContext
@@ -22,8 +30,17 @@ def run_unit_jackknife(ctx: InferenceRunContext) -> None:
     a = ctx.analyzer
     prepare_y_and_y_hat(ctx)
     a.errors = unit_jk(a.panel_data, a.__class__, alpha=a.alpha, **ctx.inference_kwargs)
-    a.results["y_upper"] = a.results["y_hat"] + a.errors
-    a.results["y_lower"] = a.results["y_hat"] - a.errors
+    err = np.asarray(a.errors, dtype=float)
+    y_hat = np.asarray(a.results["y_hat"], dtype=float)
+    if is_tbrridge_multi_treated(a):
+        n_u = len(a.panel_data.treated_units)
+        err_b = np.broadcast_to(err.reshape(-1, 1), (err.size, n_u))
+        y_hat_b = np.broadcast_to(y_hat.reshape(-1, 1), (y_hat.size, n_u))
+        a.results["y_upper"] = y_hat_b + err_b
+        a.results["y_lower"] = y_hat_b - err_b
+    else:
+        a.results["y_upper"] = y_hat + err
+        a.results["y_lower"] = y_hat - err
 
 
 def run_jkp(ctx: InferenceRunContext) -> None:
@@ -32,14 +49,16 @@ def run_jkp(ctx: InferenceRunContext) -> None:
     a.lower, a.upper, a.y_hat_median = jkp(
         a.panel_data, a.__class__, alpha=a.alpha, **ctx.inference_kwargs
     )
-    a.results["y_lower"] = np.zeros_like(a.results["y"])
-    a.results["y_upper"] = np.zeros_like(a.results["y"])
-    a.results["y_lower"][-len(a.lower) :,] = (
-        a.results["y"][a.panel_data.treated_start_idxs[0] :] - a.lower
-    )
-    a.results["y_upper"][-len(a.upper) :,] = (
-        a.results["y"][a.panel_data.treated_start_idxs[0] :] - a.upper
-    )
+    lo = np.asarray(a.lower, dtype=float)
+    if lo.ndim == 2:
+        apply_jkp_bounds_to_results(a, a.lower, a.y_hat_median, a.upper)
+    else:
+        a.results["y_lower"] = np.zeros_like(a.results["y"])
+        a.results["y_upper"] = np.zeros_like(a.results["y"])
+        pre = a.panel_data.treated_start_idxs[0]
+        a.results["y_lower"][pre:] = a.results["y"][pre:] - a.lower
+        a.results["y_upper"][pre:] = a.results["y"][pre:] - a.upper
+        flatten_single_unit_results(a)
 
 
 def run_bayesian(ctx: InferenceRunContext) -> None:
@@ -125,8 +144,17 @@ def run_conformal(ctx: InferenceRunContext) -> None:
     kw = ctx.inference_kwargs
     prepare_y_and_y_hat(ctx)
 
-    post_mean = (a.results["y"] - a.results["y_hat"])[a.panel_data.treated_start_idxs[0] :].std()
-    post_mean = np.max(np.abs((a.results["y"] - a.results["y_hat"])[a.panel_data.treated_start_idxs[0] :]))
+    pre = a.panel_data.treated_start_idxs[0]
+    if is_tbrridge_multi_treated(a):
+        y_post = np.asarray(a.results["y"], dtype=float)[pre:]
+        y_hat_post = np.asarray(a.results["y_hat"], dtype=float)[pre:]
+        resid = y_post - y_hat_post[:, np.newaxis]
+        post_mean = float(np.nanmax(np.abs(resid))) if resid.size else 0.0
+    else:
+        resid = treatment_window_residuals(a.results, a.panel_data)
+        post_mean = float(np.max(np.abs(resid))) if resid.size else 0.0
+    if post_mean == 0.0:
+        post_mean = 1.0
 
     lower, upper = conformal(
         a.panel_data,
@@ -138,8 +166,7 @@ def run_conformal(ctx: InferenceRunContext) -> None:
 
     a.lower = lower
     a.upper = upper
-    a.results["y_upper"] = -upper + a.results["y"]
-    a.results["y_lower"] = -lower + a.results["y"]
+    apply_effect_bounds_to_results(a, lower, upper)
 
 
 def run_kfold(ctx: InferenceRunContext) -> None:
@@ -239,8 +266,20 @@ def run_timeseries_kfold(ctx: InferenceRunContext) -> None:
     show_progress = kw.get("show_progress", True)
     diagnostics_path = kw.get("diagnostics_path", None) or getattr(a, "tsk_diagnostics_path", None)
 
-    a.fit_data(ctx.panel_data)
-    a.model = a.fit_model()
+    pre_t = a.panel_data.treated_start_idxs[0]
+    model_pre_yhat: np.ndarray | None = None
+
+    if a.full_model:
+        a.fit_data(ctx.panel_data)
+        a.model = a.fit_model()
+        raw_yhat = a.model.predict(a.panel_data.control_series(a.panel_data.treated_units).values.T)
+        if (
+            len(raw_yhat.shape) == 2
+            and raw_yhat.shape[0] == a.panel_data.num_timepoints
+            and raw_yhat.shape[1] == 1
+        ):
+            raw_yhat = raw_yhat.reshape(-1)
+        model_pre_yhat = np.asarray(raw_yhat[:pre_t], dtype=float).copy()
 
     y = a.panel_data.treated_series(a.panel_data.treated_units).values.T
     if y.shape[0] == a.panel_data.num_timepoints and y.shape[1] == 1:
@@ -249,93 +288,24 @@ def run_timeseries_kfold(ctx: InferenceRunContext) -> None:
     a.results = {
         "times": a.panel_data.times,
         "y": y,
-        "y_hat": None,
     }
 
-    if a.full_model:
-        a.y_hat = a.model.predict(a.panel_data.control_series(a.panel_data.treated_units).values.T)
+    a.bounds = panel_timeseries_kfold(
+        a.panel_data,
+        a.__class__,
+        alpha=a.alpha,
+        k=k,
+        debias_flag=debias_flag,
+        block_scheme=block_scheme,
+        n_jobs=n_jobs,
+        random_state=random_state,
+        show_progress=show_progress,
+        diagnostics_path=diagnostics_path,
+    )
+    apply_bounds_to_results(a, a.bounds)
 
-        if (
-            len(a.y_hat.shape) == 2
-            and a.y_hat.shape[0] == a.panel_data.num_timepoints
-            and a.y_hat.shape[1] == 1
-        ):
-            a.y_hat = a.y_hat.reshape(-1)
-
-        a.results["y_hat"] = a.y_hat
-
-        treatment_bounds = panel_timeseries_kfold(
-            a.panel_data,
-            a.__class__,
-            alpha=a.alpha,
-            k=k,
-            debias_flag=debias_flag,
-            block_scheme=block_scheme,
-            n_jobs=n_jobs,
-            random_state=random_state,
-            show_progress=show_progress,
-            diagnostics_path=diagnostics_path,
-        )
-
-        pre_t = a.panel_data.treated_start_idxs[0]
-        a.results["y_hat"][:pre_t] = a.y_hat[:pre_t]
-
-        treatment_predictions = -treatment_bounds[:, pre_t:, 1].T + a.results["y"][pre_t:].reshape(
-            treatment_bounds[:, pre_t:, 1].T.shape
-        )
-        if treatment_predictions.shape[1] == 1:
-            treatment_predictions = treatment_predictions.flatten()
-        a.results["y_hat"][pre_t:] = treatment_predictions
-
-        a.results["y_upper"] = np.zeros_like(a.results["y"])
-        a.results["y_lower"] = np.zeros_like(a.results["y"])
-
-        treatment_upper = -treatment_bounds[:, pre_t:, 2].T + a.results["y"][pre_t:].reshape(
-            treatment_bounds[:, pre_t:, 2].T.shape
-        )
-        treatment_lower = -treatment_bounds[:, pre_t:, 0].T + a.results["y"][pre_t:].reshape(
-            treatment_bounds[:, pre_t:, 0].T.shape
-        )
-
-        if treatment_upper.shape[1] == 1:
-            treatment_upper = treatment_upper.flatten()
-        if treatment_lower.shape[1] == 1:
-            treatment_lower = treatment_lower.flatten()
-
-        a.results["y_upper"][pre_t:] = treatment_upper
-        a.results["y_lower"][pre_t:] = treatment_lower
-
-    else:
-        a.bounds = panel_timeseries_kfold(
-            a.panel_data,
-            a.__class__,
-            alpha=a.alpha,
-            k=k,
-            debias_flag=debias_flag,
-            block_scheme=block_scheme,
-            n_jobs=n_jobs,
-            random_state=random_state,
-            show_progress=show_progress,
-            diagnostics_path=diagnostics_path,
-        )
-
-        y_hat_from_bounds = -a.bounds[:, :, 1].T + a.results["y"].reshape(a.bounds[:, :, 1].T.shape)
-        if y_hat_from_bounds.shape[1] == 1:
-            y_hat_from_bounds = y_hat_from_bounds.flatten()
-        a.results["y_hat"] = y_hat_from_bounds
-
-        y_upper_from_bounds = -a.bounds[:, :, 2].T + a.results["y"].reshape(a.bounds[:, :, 2].T.shape)
-        y_lower_from_bounds = -a.bounds[:, :, 0].T + a.results["y"].reshape(a.bounds[:, :, 0].T.shape)
-
-        if y_upper_from_bounds.shape[1] == 1:
-            y_upper_from_bounds = y_upper_from_bounds.flatten()
-        if y_lower_from_bounds.shape[1] == 1:
-            y_lower_from_bounds = y_lower_from_bounds.flatten()
-
-        a.results["y_upper"] = y_upper_from_bounds
-        a.results["y_lower"] = y_lower_from_bounds
-
-    flatten_single_unit_results(a)
+    if model_pre_yhat is not None:
+        a.results["y_hat"][:pre_t] = model_pre_yhat
 
     cumulative_bounds = panel_timeseries_kfold_cumulative(
         a.panel_data,

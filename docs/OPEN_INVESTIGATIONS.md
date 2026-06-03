@@ -4,7 +4,22 @@
 **Last updated:** 2026-05-28  
 **Package version:** 0.2.1  
 
-**Related:** `docs/ROADMAP_V3.md` (governance), `docs/ROADMAP_V4.md` (Phases 11–15; Tracks A/B/C), `docs/METHOD_VALIDATION_PLAN.md`, `docs/VALIDATION_COVERAGE.md`, `docs/EXPERIMENTATION_PLATFORM_VISION.md`
+**Related:** `docs/ROADMAP_V3.md` (governance), `docs/ROADMAP_V4.md` (Phases 11–15; Tracks A/B/C), `docs/METHOD_VALIDATION_PLAN.md`, `docs/VALIDATION_COVERAGE.md`, `docs/EXPERIMENTATION_PLATFORM_VISION.md`, [`docs/DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md)
+
+---
+
+## OPEN_INVESTIGATIONS vs DEFERRED_WORK_REGISTRY
+
+Two complementary ledgers — not duplicates.
+
+| Document | Question it answers | Typical contents |
+|----------|---------------------|------------------|
+| **`OPEN_INVESTIGATIONS.md`** (this file) | **What are we still investigating?** | Open questions, active Phase 12 tracks, hypothesis-to-test framing |
+| **[`DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md)** | **What do we already know is deferred?** | Characterized findings, accepted limitations, deferred fixes, deferred platform capabilities |
+
+**Workflow:** A gap starts as an **investigation** here. When characterized, it receives a **disposition** (Fixed · Deferred · Accepted · Rejected · Escalated) and a **`DEF-xxx`** entry in the deferred registry. Investigations may close; deferred work remains until a revisit trigger fires or the item is fixed.
+
+**Rule (both docs):** No investigation, audit, calibration run, or governance decision may close without a disposition — **no orphan findings**.
 
 ---
 
@@ -12,26 +27,71 @@
 
 Track **unresolved gaps, deferred work, and open scientific questions** discovered during development. This is institutional memory for honest governance — not an implementation roadmap and not proof of correctness.
 
+For **known future work** already characterized (e.g. DEF-001 KFold geometry, DEF-002 BRB positive under-coverage, DEF-009 aggregation semantics, **DEF-021 jackknife family alternatives**), see [`DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md).
+
 **Deferred ≠ abandoned.** Items remain listed until evidence closes them. Passing tests, calibration plumbing, or implemented diagnostics do not close an investigation without archived operating-characteristic evidence.
 
 **Not claimed:** `production_safe` for any estimator; package-wide nominal calibration (only partial SCM null monitoring is evidenced).
 
 ---
 
-## Phase 12 investigation program (TBRRidge)
+## Phase 12 investigation program (TBRRidge) — **CLOSED**
 
+**Status:** **Closed** 2026-05-28 by [`PHASE13_GOVERNANCE_DECISION_001.md`](PHASE13_GOVERNANCE_DECISION_001.md).  
 **Framing:** Characterize whether TBRRidge inference can support calibrated expert-review workflows — **not** “fix TBRRidge.” All outcomes are acceptable if evidenced.
 
-| ID | Track | Backlog cross-link | Primary artifact |
-|----|-------|-------------------|------------------|
-| **INV-007** | KFold geometry characterization | [TBRRidge Kfold multi-treated geometry](#tbrridge-kfold-multi-treated-geometry) | Geometry OC matrix; single-treated vs pooled failure surface |
-| **INV-008** | BRB operating characteristics after bound fix | [TBRRidge BRB inference behavior](#tbrridge-brb-inference-behavior) | Run 002 archive (n≥100); width/coverage/power/seed stability |
-| **INV-003** | Multi-treated aggregation semantics | [Multi-treated default recovery DGP](#multi-treated-default-recovery-dgp), [Heterogeneous vs pooled recovery scoring](#heterogeneous-vs-pooled-recovery-scoring) | Estimand/aggregation contract doc; optional heterogeneous probes |
-| **INV-017** | Calibration scaling and governance | [Calibration scaling (CI n ≪ production n)](#calibration-scaling-ci-n--production-n), [Trust-score / TrustReport evolution](#trust-score--trustreport-evolution) | Archival conventions; eligibility evolution rules; trust-signal inputs |
+| ID | Track | Disposition | Primary artifact | DEF entry |
+|----|-------|-------------|------------------|-----------|
+| **INV-007** | KFold geometry | **Deferred** | [`PHASE12_INV007_KFOLD_GEOMETRY_001.md`](PHASE12_INV007_KFOLD_GEOMETRY_001.md) | DEF-001 |
+| **INV-008** | BRB OC after bound fix | **Deferred** (bounds **Fixed**) | [`CALIBRATION_RUN_002.md`](CALIBRATION_RUN_002.md) | DEF-002 |
+| **INV-003** | Multi-treated aggregation | **Deferred** | [`PHASE12_INV003_AGGREGATION_SEMANTICS_001.md`](PHASE12_INV003_AGGREGATION_SEMANTICS_001.md) | DEF-009, DEF-018 |
+| **INV-017** | Calibration governance | **Deferred** | [`PHASE12_INV017_CALIBRATION_GOVERNANCE_001.md`](PHASE12_INV017_CALIBRATION_GOVERNANCE_001.md) | DEF-008 |
 
-**Successful Phase 12 examples:** “BRB remains research-only”; “Kfold permanently single-treated-only”; “no TBRRidge config re-enters nominal eligibility.” These are **successful** if evidence supports them.
+**Phase 13 outcomes:** SCM retain (null monitor); BRB restrict (excluded); Kfold restrict (research-only on default DGP). Eligibility registry **unchanged**.
 
-Execution detail: [`ROADMAP_V4.md`](ROADMAP_V4.md) § Phase 12 · [`PHASE12_INVESTIGATION_PLAN.md`](PHASE12_INVESTIGATION_PLAN.md).
+---
+
+## Active Track D investigations (research lane)
+
+| ID | Track | Status | Primary artifact | Disposition |
+|----|-------|--------|------------------|-------------|
+| **INV-D1-001** | Pre-period matching leakage | **Fix applied** (`61a174f`) | [`investigations/INV-D1-001_PRE_PERIOD_MATCHING_LEAKAGE.md`](investigations/INV-D1-001_PRE_PERIOD_MATCHING_LEAKAGE.md) · [`track_d/archives/D5_DES_001a_results.json`](track_d/archives/D5_DES_001a_results.json) | **characterization_required** — D5 re-run Jaccard **1.0**; D2 complete |
+| **INV-D2-001** | SCM `full_model` post-period weight fit | **Proposed** (D2-FIND-001) | [`TRACK_D_D2_ESTIMATOR_AND_DONOR_AUDIT_001.md`](TRACK_D_D2_ESTIMATOR_AND_DONOR_AUDIT_001.md) §10 | **investigating** — characterize via D5-EST-002b; fix in separate governed PR |
+| **INV-D3-001** | Unit JK LOO target (`y` vs `y_hat_{-i}`) | **Fix accepted** | [`investigations/INV-D3-001_UNIT_JACKKNIFE_LOO_TARGET.md`](investigations/INV-D3-001_UNIT_JACKKNIFE_LOO_TARGET.md) · [`D5_INF_002b_results.json`](track_d/archives/D5_INF_002b_results.json) | **fix_accepted** — null_monitor_only unchanged |
+
+**D5-DES-001a headline (post-fix):** `pre_treatment_period` path matches pre-only reference (Jaccard **1.00**). Pre-fix baseline Jaccard **0.27** documented in artifact history.
+
+**D2 headline:** Default geo SCM donor pool and pre-fit path **OK**; `full_model=True` paths flagged — no code fix in D2 package.
+
+**D3 headline:** Inference semantics and Track B alignment **OK**; SCM JK null-monitor only; placebo diagnostic single-treated; eligibility registry **unchanged**.
+
+**D5-INF-002a headline:** Pre-fix JK sensitive to treated post noise (rel Δ **3.0×**). **D5-INF-002b:** post-fix prod=ref (ratio **1.0**), treated noise Δ **0** — **INV-D3-001 fix accepted**.
+
+**D4 headline:** Geo `PowerAnalysis` is **diagnostic_only**; default path **TBRRidge+Kfold** on aggregated panel — **not** aligned to **SCM_UnitJackKnife** readout ([`TRACK_D_D4_POWER_MDE_AUDIT_001.md`](TRACK_D_D4_POWER_MDE_AUDIT_001.md)).
+
+---
+
+## Active Track A investigations (post–Phase 14)
+
+| ID | Track | Status | Primary artifact | DEF entry |
+|----|-------|--------|------------------|-----------|
+| **INV-030** | Jackknife family characterization | **Investigating** (plan committed) | [`INV030_JACKKNIFE_FAMILY_CHARACTERIZATION_PLAN.md`](INV030_JACKKNIFE_FAMILY_CHARACTERIZATION_PLAN.md) | DEF-013 (refine), **DEF-021** (alternatives backlog) |
+| **INV-031** | Inference conservatism synthesis | **Investigating** (plan committed) | [`INV031_INFERENCE_CONSERVATISM_PLAN.md`](INV031_INFERENCE_CONSERVATISM_PLAN.md) | DEF-013, DEF-002, DEF-020, DEF-015 |
+| **INV-029** | Placebo OC | **Closed — characterized** | [`PHASE15_PLACEBO_CHARACTERIZATION_001.md`](PHASE15_PLACEBO_CHARACTERIZATION_001.md) | DEF-020 (governance pending) |
+
+### INV-030 — Jackknife family characterization
+
+| Field | Detail |
+|-------|--------|
+| **Category** | inference / calibration / governance |
+| **Status** | **investigating** — plan committed; execution pending |
+| **Why open** | Phase 11 + Phase 14 characterized **implemented `UnitJackKnife` only**; shared conservatism (coverage ≈ 1, FPR ≈ 0, power ≈ 0) unexplained at **family** level |
+| **Governing question** | Is conservatism expected donor-sensitivity semantics vs geometry/aggregation artifact — and which jackknife **families** merit future OC? |
+| **Risk if unresolved** | Track B trust contracts mislabel JK intervals as lift-detection CIs; premature jackknife+ scope |
+| **Revisit when** | INV-030 execution archive; Track B uncertainty semantics design |
+| **Non-goals** | No variant implementation; no eligibility/maturity/release-gate change |
+
+**Distinction:** Phase 11 (`SCM_JACKKNIFE_CHARACTERIZATION_001.md`) and Phase 14 (`PHASE14_AUGSYNTH_CHARACTERIZATION_001.md` §4) = **implemented path OC**. INV-030 = **family semantics + inventory + explanatory synthesis**.
 
 ---
 
@@ -152,10 +212,10 @@ Execution detail: [`ROADMAP_V4.md`](ROADMAP_V4.md) § Phase 12 · [`PHASE12_INVE
 | Field | Detail |
 |-------|--------|
 | **Category** | calibration / inference |
-| **Status** | characterized, not closed |
-| **Why deferred** | Phase 11 shows **expected conservatism + geometry limitation**, not implementation defect — no math change warranted yet |
-| **Risk if unresolved** | Misuse as lift detector; false confidence in positive-scenario detection |
-| **Revisit when** | Product requires power claims → inference redesign or geometry-specific policy (`SCM_JACKKNIFE_CHARACTERIZATION_001.md`) |
+| **Status** | **closed — accepted** (Phase 13) |
+| **Resolution** | Phase 11 + Phase 13: null-monitor role ratified; zero power on positive is expected conservatism |
+| **Disposition** | **DEF-013** |
+| **Governance** | [`PHASE13_GOVERNANCE_DECISION_001.md`](PHASE13_GOVERNANCE_DECISION_001.md) §3 |
 
 ---
 
@@ -163,15 +223,15 @@ Execution detail: [`ROADMAP_V4.md`](ROADMAP_V4.md) § Phase 12 · [`PHASE12_INVE
 
 ### Heterogeneous vs pooled recovery scoring
 
-**Phase 12 ID:** INV-003
+**Phase 12 ID:** INV-003 — **Closed** (Phase 13: governance evolution **deferred**)
 
 | Field | Detail |
 |-------|--------|
 | **Category** | statistical_validity |
-| **Status** | open |
-| **Why deferred** | Pooled `_path_relative_att` contract in recovery runner; documentation-first |
-| **Risk if unresolved** | High recovery success while unit-level truth diverges |
-| **Revisit when** | Heterogeneous DGP equivalence tests or alternate scoring path defined |
+| **Status** | **closed — deferred** |
+| **Resolution** | INV-003 archive: A ≈ B on default DGP; drift under heterogeneity; absolute/relative hard mismatch |
+| **Disposition** | **DEF-009**, **DEF-018** |
+| **Revisit when** | Track B estimand registry; TrustReport rules |
 
 ### DID ATT exported under pretrend violation
 
@@ -331,27 +391,27 @@ Execution detail: [`ROADMAP_V4.md`](ROADMAP_V4.md) § Phase 12 · [`PHASE12_INVE
 
 ### TBRRidge BRB inference behavior
 
-**Phase 12 ID:** INV-008
+**Phase 12 ID:** INV-008 — **Closed** (Phase 13: **restrict**, remain excluded)
 
 | Field | Detail |
 |-------|--------|
 | **Category** | inference / calibration |
-| **Status** | investigating |
-| **Why deferred** | Removed from eligibility (`brb_bounds_inverted_run001`); bound-ordering fix on branch; Run 002 not archived |
-| **Risk if unresolved** | Re-eligibility without OC → repeat Run 001 anti-calibration |
-| **Revisit when** | Run 002 at n≥100 + failure analysis (Phase 12) |
+| **Status** | **closed — deferred** |
+| **Resolution** | Run 002: bounds fixed; null pass; positive under-coverage. Keep excluded from eligibility. |
+| **Disposition** | **DEF-002** in [`DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md) |
+| **Governance** | [`PHASE13_GOVERNANCE_DECISION_001.md`](PHASE13_GOVERNANCE_DECISION_001.md) §4 |
 
 ### TBRRidge Kfold multi-treated geometry
 
-**Phase 12 ID:** INV-007
+**Phase 12 ID:** INV-007 — **Closed** (Phase 13: **restrict**, research-only on default DGP)
 
 | Field | Detail |
 |-------|--------|
-| **Category** | inference / bug |
-| **Status** | open |
-| **Why deferred** | Removed from eligibility; fix or single-treated-only contract pending |
-| **Risk if unresolved** | Hard failures on multi-geo panels if users enable Kfold |
-| **Revisit when** | Multi-treated fix or documented single-treated-only policy (Phase 12) |
+| **Category** | inference / geometry |
+| **Status** | **closed — deferred** |
+| **Resolution** | n_treated=1 viable; n_treated≥2 100% failure. Skip reason remains valid. |
+| **Disposition** | **DEF-001** in [`DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md) |
+| **Governance** | [`PHASE13_GOVERNANCE_DECISION_001.md`](PHASE13_GOVERNANCE_DECISION_001.md) §5 |
 
 ### DID interval semantics (relative ATT unsupported)
 
@@ -385,13 +445,16 @@ Execution detail: [`ROADMAP_V4.md`](ROADMAP_V4.md) § Phase 12 · [`PHASE12_INVE
 
 ### Jackknife+ / new inference variants
 
+**Superseded in planning by INV-030** — see [`INV030_JACKKNIFE_FAMILY_CHARACTERIZATION_PLAN.md`](INV030_JACKKNIFE_FAMILY_CHARACTERIZATION_PLAN.md) §4 (family inventory) and **DEF-021**.
+
 | Field | Detail |
 |-------|--------|
 | **Category** | research |
-| **Status** | intentionally_deferred |
-| **Why deferred** | `uncertainty.md`; baseline modes not fully characterized |
-| **Risk if unresolved** | Scope creep before OC gates |
-| **Revisit when** | SCM/TBRRidge baseline calibration evidence improves |
+| **Status** | **investigating** (INV-030 plan) |
+| **Why deferred** | `uncertainty.md`; only leave-one-donor `UnitJackKnife` OC-archived; `JKP` / time jackknife+ uncharacterized |
+| **Risk if unresolved** | Scope creep before OC gates; jackknife+ shipped without properties archive |
+| **Revisit when** | INV-030 execution; governance approval for variant OC scope |
+| **Disposition** | **DEF-021** |
 
 ---
 
@@ -467,13 +530,15 @@ Execution detail: [`ROADMAP_V4.md`](ROADMAP_V4.md) § Phase 12 · [`PHASE12_INVE
 
 ### AugSynth / CVXPY — validation wiring
 
+**Phase 14 ID:** INV-028 — **Closed** (characterized)
+
 | Field | Detail |
 |-------|--------|
-| **Category** | operational |
-| **Status** | open |
-| **Why deferred** | Phase 15 scope; unit tests only today |
-| **Risk if unresolved** | Expert-review maturity overstates automated evidence |
-| **Revisit when** | Recovery configs or permanent research-only guard |
+| **Category** | operational / validation |
+| **Status** | **closed — characterized** |
+| **Resolution** | [`PHASE14_AUGSYNTH_CHARACTERIZATION_001.md`](PHASE14_AUGSYNTH_CHARACTERIZATION_001.md): point expert-review candidate; UnitJackKnife null-monitor only; spillover DGP bias |
+| **Disposition** | **DEF-019**, **DEF-017** (wiring still open) |
+| **Revisit when** | RecoveryRunner registry wiring PR only |
 
 ### MTGP orchestration
 
@@ -501,7 +566,8 @@ Execution detail: [`ROADMAP_V4.md`](ROADMAP_V4.md) § Phase 12 · [`PHASE12_INVE
 
 | Topic | Section |
 |-------|---------|
-| Phase 12 program (INV-003/007/008/017) | Phase 12 investigation program |
+| Phase 12 program (INV-003/007/008/017) | Phase 12 investigation program (**closed** — see Phase 13) |
+| Phase 13 governance | [`PHASE13_GOVERNANCE_DECISION_001.md`](PHASE13_GOVERNANCE_DECISION_001.md) |
 | Track C platform (INV-020–026) | Future platform investigations |
 | Unified estimand contracts (INV-020) | Future platform investigations |
 | TrustReport semantics (INV-021) | Future platform investigations |
@@ -512,6 +578,8 @@ Execution detail: [`ROADMAP_V4.md`](ROADMAP_V4.md) § Phase 12 · [`PHASE12_INVE
 | Exposure eligibility (INV-026) | Future platform investigations |
 | BRB inference behavior (INV-008) | Inference concerns |
 | Kfold multi-treated geometry (INV-007) | Inference concerns |
+| Jackknife family semantics (INV-030) | Active Track A investigations |
+| Jackknife+ / alternative families (DEF-021) | Inference concerns · INV-030 |
 | SCM over-coverage | Critical investigations |
 | DID interval semantics | Inference concerns |
 | Spillover estimation | Research backlog |
@@ -523,7 +591,8 @@ Execution detail: [`ROADMAP_V4.md`](ROADMAP_V4.md) § Phase 12 · [`PHASE12_INVE
 | Missingness realism | DGP realism |
 | Calibration scaling (INV-017) | DGP realism / Phase 12 program |
 | Trust-score evolution (INV-017) | Deferred architecture / Phase 12 program |
+| Deferred work registry (DEF-xxx) | [`DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md) |
 
 ---
 
-*Update when investigations close, new calibration runs are archived, or Phase 12–15 / Track C evidence arrives. Do not delete entries without resolution evidence.*
+*Update when investigations close, new calibration runs are archived, or Phase 12–15 / Track C evidence arrives. Do not delete entries without resolution evidence. When a finding is characterized, add or update the matching `DEF-xxx` entry in [`DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md).*

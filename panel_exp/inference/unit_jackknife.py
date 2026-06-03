@@ -28,15 +28,14 @@ def unit_jk(
     Returns:
         list: list of confidence intervals
     """
-    # estimate mu
+    # Full-sample counterfactual anchor (Abadie et al. donor jackknife: compare
+    # leave-one-out y_hat to full-fit y_hat, equivalently tau_{-i} - tau on Y - y_hat).
     full_est = estimator(**estimator_kwargs)
     full_est.run_analysis(panel)
-    mu = full_est.results[
-        "y"
-    ]
+    mu = full_est.results["y_hat"]
 
     if variation == 1:
-        squared_diffs = 1.0*np.zeros_like(mu)
+        squared_diffs = 1.0 * np.zeros_like(mu)
     if variation == 2:
         assert alpha is not None, "Must pass alpha with variation 2"
         residuals = []
@@ -46,13 +45,11 @@ def unit_jk(
         cur_panel = panel.drop_units(unit)
         est = estimator(**estimator_kwargs)
         est.run_analysis(cur_panel)
-        mu_i = est.results[
-            "y_hat"
-        ]
+        mu_i = est.results["y_hat"]
         if variation == 1:
-            squared_diffs += np.square(mu_i*1.0 - mu*1.0).astype(float)
+            squared_diffs += np.square(mu_i * 1.0 - mu * 1.0).astype(float)
         if variation == 2:
-            residuals.append(np.abs(mu_i*1.0 - mu*1.0))
+            residuals.append(np.abs(mu_i * 1.0 - mu * 1.0))
 
     # compute JK variance
     if variation == 1:
@@ -63,6 +60,19 @@ def unit_jk(
     if variation == 2:
         residuals = np.array(residuals)
         return np.percentile(residuals, 1 - alpha, axis=0)
+
+
+def _jkp_residual_matrix(
+    y: np.ndarray,
+    y_hat: np.ndarray,
+    start_idx: int,
+) -> np.ndarray:
+    """Per-unit residuals vs counterfactual on the treated window (TBRRidge: broadcast pooled ``y_hat``)."""
+    y_win = np.asarray(y, dtype=float)[start_idx:]
+    y_hat_win = np.asarray(y_hat, dtype=float)[start_idx:]
+    if y_win.ndim == 2 and y_hat_win.ndim == 1:
+        return y_win - y_hat_win[:, np.newaxis]
+    return y_win - y_hat_win
 
 
 def resolve_end_period(time_period):
@@ -124,9 +134,10 @@ def jkp(
         model = estimator(**estimator_kwargs)
         model.run_analysis(new_pds)
 
-        residuals = (
-            model.results["y"][new_pds.treated_start_idxs[0] :]
-            - model.results["y_hat"][new_pds.treated_start_idxs[0] :]
+        residuals = _jkp_residual_matrix(
+            model.results["y"],
+            model.results["y_hat"],
+            new_pds.treated_start_idxs[0],
         )
         error = np.abs(residuals[-1])
 

@@ -1,0 +1,376 @@
+{
+  "artifact_id": "D5-INST-TBR-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-03T00:30:43.337982+00:00",
+  "lane": "research",
+  "binding_docs": [
+    "D5_INST_AUDIT_001",
+    "D5_INST_COMBO_AUDIT_001",
+    "TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001",
+    "AUDIT-010A_roadmap_consistency_pre_mmm_gate",
+    "TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001"
+  ],
+  "governance": {
+    "estimator": "TBR",
+    "not_tbrridge": true,
+    "geometry": "aggregate_two_series_only",
+    "no_promotion": true,
+    "no_calibration_signal": true,
+    "no_mmm": true,
+    "no_unit_level_claim": true,
+    "no_geo_relative_att_default": true
+  },
+  "tbr_call_path": {
+    "class": "panel_exp.methods.tbr.TBR",
+    "fit_data_asserts": [
+      "len(treated_units) == 1",
+      "num_control_units == 1"
+    ],
+    "fit_model": "LinearRegression on pre-period (default full_model=False)",
+    "estimand": "aggregate treated vs control level contrast (y - y_hat)",
+    "not": [
+      "TBRRidge multi-control unit path",
+      "geo.relative_att_post unit SCM"
+    ]
+  },
+  "config": {
+    "n_mc": 14,
+    "train_length": 28,
+    "test_length": 8,
+    "reference_design_method": "greedy_match_markets",
+    "effect_grid": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "include_multi_cell_k2": true
+  },
+  "instrument_summaries_null_single_cell_agg2": [
+    {
+      "instrument": "tbr_point",
+      "geometry_mode": "single_cell_agg2",
+      "effect": 0.0,
+      "feasibility_rate": 1.0,
+      "mean_point_effect": {
+        "mean": -0.5421555518166608,
+        "std": 1.754033651643403,
+        "p95": 1.8709473033300976,
+        "n": 14
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_interval_halfwidth": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "point_to_injected_ratio": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "failure_counts": {}
+    },
+    {
+      "instrument": "tbr_jk",
+      "geometry_mode": "single_cell_agg2",
+      "effect": 0.0,
+      "feasibility_rate": 0.0,
+      "mean_point_effect": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_interval_halfwidth": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "point_to_injected_ratio": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "failure_counts": {
+        "ValueError": 14
+      }
+    },
+    {
+      "instrument": "tbr_jkp",
+      "geometry_mode": "single_cell_agg2",
+      "effect": 0.0,
+      "feasibility_rate": 1.0,
+      "mean_point_effect": {
+        "mean": -0.5421555518166608,
+        "std": 1.754033651643403,
+        "p95": 1.8709473033300976,
+        "n": 14
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0,
+        "n": 14
+      },
+      "mean_interval_halfwidth": {
+        "mean": -5.161191370316892,
+        "std": 0.602611077796571,
+        "p95": -4.512056735185945,
+        "n": 14
+      },
+      "point_to_injected_ratio": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "failure_counts": {}
+    },
+    {
+      "instrument": "tbr_kfold",
+      "geometry_mode": "single_cell_agg2",
+      "effect": 0.0,
+      "feasibility_rate": 1.0,
+      "mean_point_effect": {
+        "mean": -0.46546555367612186,
+        "std": 2.8622287646357183,
+        "p95": 4.469177804918616,
+        "n": 14
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 14
+      },
+      "mean_interval_halfwidth": {
+        "mean": 6.685405867170526,
+        "std": 1.4458587544424535,
+        "p95": 9.06951441058441,
+        "n": 14
+      },
+      "point_to_injected_ratio": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "failure_counts": {}
+    }
+  ],
+  "instrument_summaries_injected_8pct_single_cell_agg2": [
+    {
+      "instrument": "tbr_point",
+      "geometry_mode": "single_cell_agg2",
+      "effect": 0.08,
+      "feasibility_rate": 1.0,
+      "mean_point_effect": {
+        "mean": 39.65731296869848,
+        "std": 1.8366624511694136,
+        "p95": 42.40056985187649,
+        "n": 14
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_interval_halfwidth": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "point_to_injected_ratio": {
+        "mean": 0.9865010106896897,
+        "std": 0.043584504596358604,
+        "p95": 1.0461728846857206,
+        "n": 14
+      },
+      "failure_counts": {}
+    },
+    {
+      "instrument": "tbr_kfold",
+      "geometry_mode": "single_cell_agg2",
+      "effect": 0.08,
+      "feasibility_rate": 1.0,
+      "mean_point_effect": {
+        "mean": 39.734002966839014,
+        "std": 3.036900099601123,
+        "p95": 45.12838987397472,
+        "n": 14
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 14
+      },
+      "mean_interval_halfwidth": {
+        "mean": 6.685405867170526,
+        "std": 1.445858754442448,
+        "p95": 9.069514410584405,
+        "n": 14
+      },
+      "point_to_injected_ratio": {
+        "mean": 0.9881975723621131,
+        "std": 0.0708736405805437,
+        "p95": 1.109916447920677,
+        "n": 14
+      },
+      "failure_counts": {}
+    }
+  ],
+  "instrument_summary_null_multi_cell_k2_agg2": {
+    "instrument": "tbr_point",
+    "geometry_mode": "multi_cell_k2_per_cell_agg2",
+    "effect": 0.0,
+    "feasibility_rate": 1.0,
+    "mean_point_effect": {
+      "mean": -0.2747292745664161,
+      "std": 1.4619405667019376,
+      "p95": 1.8390071555133256,
+      "n": 28
+    },
+    "null_interval_exclusion_fpr": {
+      "mean": NaN,
+      "std": NaN,
+      "p95": NaN,
+      "n": 0
+    },
+    "mean_interval_halfwidth": {
+      "mean": NaN,
+      "std": NaN,
+      "p95": NaN,
+      "n": 0
+    },
+    "point_to_injected_ratio": {
+      "mean": NaN,
+      "std": NaN,
+      "p95": NaN,
+      "n": 0
+    },
+    "failure_counts": {}
+  },
+  "instrument_status": {
+    "overall_verdict": "remain_restricted_aggregate_diagnostic",
+    "rationale": "Class TBR point/Kfold feasible on aggregate 1\u00d71. JKP runs but null interval semantics unverified (100% exclude-zero at null). UnitJackKnife blocked (1 control row). Not geo.relative_att_post; not MMM-eligible.",
+    "callable_inference_modes": {
+      "point_estimate": "callable",
+      "Kfold": "callable",
+      "UnitJackKnife": "blocked_on_agg2",
+      "JKP": "callable_unverified_interval_semantics"
+    },
+    "blocked_geometries": {
+      "unit_panel_multi_control": {
+        "status": "blocked",
+        "reason": "TBR requires treated units to be pre-aggregated. Try TBRRidge or aggregate treated units",
+        "geometry": "single_cell_unit_level"
+      },
+      "placebo": {
+        "status": "blocked",
+        "error_type": "ValueError",
+        "reason": "Placebo inference unavailable: TBR requires aggregated control; placebo-in-space excluded"
+      },
+      "pooled_multi_cell": {
+        "status": "blocked",
+        "reason": "No governed pooling rule for cross-cell aggregate treated series."
+      }
+    },
+    "calibration_signal_ingress": false,
+    "mmm_ingress": false,
+    "geo_relative_att_post_claim": false,
+    "tbrridge_conflation_risk": "Geo PowerAnalysis uses TBRRidge on agg2 \u2014 not class TBR",
+    "audit_010_prerequisites_met": false,
+    "audit_010_remaining": [
+      "F-P0-002 recovery_runner TBR factory label",
+      "F-P0-001 full_model SCM/AugSynth export guard",
+      "Track B alias for class TBR aggregate readout (if any)",
+      "AUDIT-010 MMM readiness/gap execution"
+    ],
+    "feasibility_single_cell_agg2": {
+      "point": 1.0,
+      "jk": 0.0,
+      "jkp": 1.0,
+      "kfold": 1.0
+    },
+    "feasibility_multi_cell_k2_per_cell_agg2": 1.0
+  },
+  "blocked_geometry_probes_sample": {
+    "unit_panel_class_tbr": {
+      "status": "blocked",
+      "reason": "TBR requires treated units to be pre-aggregated. Try TBRRidge or aggregate treated units",
+      "geometry": "single_cell_unit_level"
+    },
+    "placebo_on_agg2": {
+      "status": "blocked",
+      "error_type": "ValueError",
+      "reason": "Placebo inference unavailable: TBR requires aggregated control; placebo-in-space excluded"
+    },
+    "pooled_multi_cell_agg": {
+      "status": "blocked",
+      "reason": "No governed pooling rule for cross-cell aggregate treated series."
+    }
+  },
+  "context_comparison": {
+    "tbr_vs_tbrridge_kfold_null_point_ratio": {
+      "mean": 0.47283208458361325,
+      "std": 1.1862115899781813,
+      "p95": 1.9915845485432129,
+      "n": 14
+    },
+    "note": "TBRRidge shown for conflation check only."
+  },
+  "findings": [
+    {
+      "id": "D5-TBR-FIND-001",
+      "summary": "Class TBR point/JKP/Kfold feasible on aggregate 1\u00d71 panels."
+    },
+    {
+      "id": "D5-TBR-FIND-002",
+      "summary": "UnitJackKnife fails on agg2 (requires >=2 control units for LOO)."
+    },
+    {
+      "id": "D5-TBR-FIND-003",
+      "summary": "Unit-panel and placebo paths blocked by asserts / impl."
+    },
+    {
+      "id": "D5-TBR-FIND-004",
+      "summary": "Aggregate point scale differs from unit SCM+JK \u2014 not interchangeable."
+    },
+    {
+      "id": "D5-TBR-FIND-005",
+      "summary": "Remain restricted diagnostic; AUDIT-010 still required before MMM."
+    },
+    {
+      "id": "D5-TBR-FIND-006",
+      "summary": "JKP on agg2: 100% null interval-exclusion \u2014 not governed; verify semantics before any TrustReport use."
+    }
+  ],
+  "overall_verdict": "remain_restricted_aggregate_diagnostic",
+  "user_facing_warnings": [
+    "Class TBR is not TBRRidge and not geo PowerAnalysis default.",
+    "Do not claim unit-level or geo.relative_att_post without estimand bridge.",
+    "JK on aggregate 1\u00d71 is not callable despite catalog listing."
+  ],
+  "rules_acknowledged": {
+    "no_production_changes": true,
+    "no_estimator_changes": true
+  }
+}

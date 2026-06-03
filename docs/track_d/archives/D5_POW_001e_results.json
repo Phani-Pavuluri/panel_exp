@@ -1,0 +1,866 @@
+{
+  "artifact_id": "D5-POW-001e",
+  "generated_at": "2026-06-01T22:49:09+00:00",
+  "lane": "research",
+  "investigation_id": "D5-POW-001e",
+  "prior_artifacts": [
+    "docs/track_d/archives/D5_POW_001b_results.json",
+    "docs/track_d/archives/D5_POW_001c_results.json",
+    "docs/track_d/archives/D5_POW_001d_results.json",
+    "docs/track_d/archives/DESIGN_INVENTORY_001_results.json"
+  ],
+  "governance": {
+    "readout_branch": "SCM+UnitJackKnife_reference_null_monitor_only",
+    "not_platform_power_validation": true,
+    "not_mde_promotion": true,
+    "not_lift_detection": true,
+    "no_pooled_multi_cell_claim": true,
+    "excluded_methods": [
+      "supergeos",
+      "trimmedmatch",
+      "quickblock",
+      "matchedpair"
+    ]
+  },
+  "config": {
+    "n_mc": 28,
+    "n_geos": 16,
+    "n_periods": 44,
+    "treatment_start": 32,
+    "train_length": 28,
+    "test_length": 8,
+    "alpha": 0.05,
+    "treatment_probability": 0.35,
+    "random_state_base": 20260605,
+    "scenario_name": "scm_low_signal",
+    "min_control_units": 2,
+    "n_test_grps_multi": 2,
+    "rerandomization_max_iter": 500,
+    "null_fpr_acceptable_max": 0.15,
+    "null_fpr_concerning_max": 0.35,
+    "geometry_modes": [
+      "single_cell",
+      "multi_cell"
+    ],
+    "readout_instrument": "SyntheticControl+UnitJackKnife",
+    "confirmed_methods": [
+      "greedy_match_markets",
+      "rerandomization_wrapper",
+      "completerandomization",
+      "balancedrandomization",
+      "stratifiedrandomization",
+      "thinningdesign"
+    ]
+  },
+  "hypothesis": "Under fixed-window unit-level SCM+JK reference readout, confirmed design methods and geometry modes differ in null-monitor false-positive rate.",
+  "method_geometry_summary": [
+    {
+      "method_id": "greedy_match_markets",
+      "geometry_mode": "single_cell",
+      "entrypoint": "greedy_match_markets(...).assign(pre_treatment_period=TimePeriod(0, train_length))",
+      "n_replicates": 28,
+      "n_valid": 28,
+      "n_skipped": 0,
+      "skip_reasons": [],
+      "null_interval_exclusion_fpr_pooled_across_cells": null,
+      "per_cell_summary": {
+        "test_0": {
+          "null_interval_exclusion_fpr": {
+            "mean": 0.0,
+            "std": 0.0,
+            "p95": 0.0,
+            "n": 28
+          },
+          "null_monitor_cell_coverage": {
+            "mean": 0.6300595238095238,
+            "std": 0.08670165739851585,
+            "p95": 0.7575,
+            "n": 28
+          },
+          "point_null_drift": {
+            "mean": 0.007270481415803022,
+            "std": 0.7405469198871648,
+            "p95": 1.2947823007850094,
+            "n": 28
+          },
+          "pre_period_balance_corr": {
+            "mean": 0.9216295825402007,
+            "std": 0.03159060793753165,
+            "p95": 0.9513822181480474,
+            "n": 28
+          }
+        }
+      },
+      "shared_control_adequacy_rate": 1.0,
+      "treatment_cell_conflict_rate": 0.0,
+      "multiple_comparison_warning_rate": 0.0,
+      "multi_cell_degradation": {
+        "applies": false
+      },
+      "null_behavior_verdict": "acceptable",
+      "rationale": "Mean per-cell null FPR 0.000 within acceptable band for null-monitor reference readout.",
+      "track_e_candidate_flags": []
+    },
+    {
+      "method_id": "greedy_match_markets",
+      "geometry_mode": "multi_cell",
+      "entrypoint": "greedy_match_markets(...).assign(pre_treatment_period=TimePeriod(0, train_length))",
+      "n_replicates": 28,
+      "n_valid": 28,
+      "n_skipped": 0,
+      "skip_reasons": [],
+      "null_interval_exclusion_fpr_pooled_across_cells": null,
+      "per_cell_summary": {
+        "test_0": {
+          "null_interval_exclusion_fpr": {
+            "mean": 0.0,
+            "std": 0.0,
+            "p95": 0.0,
+            "n": 28
+          },
+          "null_monitor_cell_coverage": {
+            "mean": 0.6361607142857143,
+            "std": 0.13291337011386947,
+            "p95": 0.8125,
+            "n": 28
+          },
+          "point_null_drift": {
+            "mean": -0.09126941581646782,
+            "std": 0.8833118836369609,
+            "p95": 1.2343658115516687,
+            "n": 28
+          },
+          "pre_period_balance_corr": {
+            "mean": 0.8078023581906331,
+            "std": 0.08161380252241707,
+            "p95": 0.8974631760145009,
+            "n": 28
+          }
+        },
+        "test_1": {
+          "null_interval_exclusion_fpr": {
+            "mean": 0.0,
+            "std": 0.0,
+            "p95": 0.0,
+            "n": 28
+          },
+          "null_monitor_cell_coverage": {
+            "mean": 0.625,
+            "std": 0.11785113019775792,
+            "p95": 0.8125,
+            "n": 28
+          },
+          "point_null_drift": {
+            "mean": 0.34384321786694944,
+            "std": 0.9444234252106016,
+            "p95": 1.7019914909167504,
+            "n": 28
+          },
+          "pre_period_balance_corr": {
+            "mean": 0.7950346110628705,
+            "std": 0.06852839077776182,
+            "p95": 0.8858236222115615,
+            "n": 28
+          }
+        }
+      },
+      "shared_control_adequacy_rate": 1.0,
+      "treatment_cell_conflict_rate": 0.2857142857142857,
+      "multiple_comparison_warning_rate": 0.0,
+      "multi_cell_degradation": {
+        "applies": true,
+        "per_cell_fpr_spread": 0.0,
+        "feasibility_warning": false,
+        "per_cell_fpr": {
+          "test_0": 0.0,
+          "test_1": 0.0
+        }
+      },
+      "null_behavior_verdict": "acceptable",
+      "rationale": "Mean per-cell null FPR 0.000 within acceptable band for null-monitor reference readout.",
+      "track_e_candidate_flags": [
+        "E-DES-MCELL-007",
+        "E-DES-MCELL-008"
+      ]
+    },
+    {
+      "method_id": "rerandomization_wrapper",
+      "geometry_mode": "single_cell",
+      "entrypoint": "Rerandomization(base_randomizer_cls=greedy_match_markets, ...).assign(...)",
+      "n_replicates": 28,
+      "n_valid": 28,
+      "n_skipped": 0,
+      "skip_reasons": [],
+      "null_interval_exclusion_fpr_pooled_across_cells": null,
+      "per_cell_summary": {
+        "test_0": {
+          "null_interval_exclusion_fpr": {
+            "mean": 0.0,
+            "std": 0.0,
+            "p95": 0.0,
+            "n": 28
+          },
+          "null_monitor_cell_coverage": {
+            "mean": 0.6300595238095238,
+            "std": 0.08670165739851585,
+            "p95": 0.7575,
+            "n": 28
+          },
+          "point_null_drift": {
+            "mean": 0.007270481415803022,
+            "std": 0.7405469198871648,
+            "p95": 1.2947823007850094,
+            "n": 28
+          },
+          "pre_period_balance_corr": {
+            "mean": 0.9216295825402007,
+            "std": 0.03159060793753165,
+            "p95": 0.9513822181480474,
+            "n": 28
+          }
+        }
+      },
+      "shared_control_adequacy_rate": 1.0,
+      "treatment_cell_conflict_rate": 0.0,
+      "multiple_comparison_warning_rate": 0.0,
+      "multi_cell_degradation": {
+        "applies": false
+      },
+      "null_behavior_verdict": "acceptable",
+      "rationale": "Mean per-cell null FPR 0.000 within acceptable band for null-monitor reference readout.",
+      "track_e_candidate_flags": []
+    },
+    {
+      "method_id": "rerandomization_wrapper",
+      "geometry_mode": "multi_cell",
+      "entrypoint": "Rerandomization(base_randomizer_cls=greedy_match_markets, ...).assign(...)",
+      "n_replicates": 28,
+      "n_valid": 28,
+      "n_skipped": 0,
+      "skip_reasons": [],
+      "null_interval_exclusion_fpr_pooled_across_cells": null,
+      "per_cell_summary": {
+        "test_0": {
+          "null_interval_exclusion_fpr": {
+            "mean": 0.0,
+            "std": 0.0,
+            "p95": 0.0,
+            "n": 28
+          },
+          "null_monitor_cell_coverage": {
+            "mean": 0.6361607142857143,
+            "std": 0.13291337011386947,
+            "p95": 0.8125,
+            "n": 28
+          },
+          "point_null_drift": {
+            "mean": -0.09126941581646782,
+            "std": 0.8833118836369609,
+            "p95": 1.2343658115516687,
+            "n": 28
+          },
+          "pre_period_balance_corr": {
+            "mean": 0.8078023581906331,
+            "std": 0.08161380252241707,
+            "p95": 0.8974631760145009,
+            "n": 28
+          }
+        },
+        "test_1": {
+          "null_interval_exclusion_fpr": {
+            "mean": 0.0,
+            "std": 0.0,
+            "p95": 0.0,
+            "n": 28
+          },
+          "null_monitor_cell_coverage": {
+            "mean": 0.625,
+            "std": 0.11785113019775792,
+            "p95": 0.8125,
+            "n": 28
+          },
+          "point_null_drift": {
+            "mean": 0.34384321786694944,
+            "std": 0.9444234252106016,
+            "p95": 1.7019914909167504,
+            "n": 28
+          },
+          "pre_period_balance_corr": {
+            "mean": 0.7950346110628705,
+            "std": 0.06852839077776182,
+            "p95": 0.8858236222115615,
+            "n": 28
+          }
+        }
+      },
+      "shared_control_adequacy_rate": 1.0,
+      "treatment_cell_conflict_rate": 0.2857142857142857,
+      "multiple_comparison_warning_rate": 0.0,
+      "multi_cell_degradation": {
+        "applies": true,
+        "per_cell_fpr_spread": 0.0,
+        "feasibility_warning": false,
+        "per_cell_fpr": {
+          "test_0": 0.0,
+          "test_1": 0.0
+        }
+      },
+      "null_behavior_verdict": "acceptable",
+      "rationale": "Mean per-cell null FPR 0.000 within acceptable band for null-monitor reference readout.",
+      "track_e_candidate_flags": [
+        "E-DES-MCELL-007",
+        "E-DES-MCELL-008"
+      ]
+    },
+    {
+      "method_id": "completerandomization",
+      "geometry_mode": "single_cell",
+      "entrypoint": "CompleteRandomization(...).assign(...)",
+      "n_replicates": 28,
+      "n_valid": 28,
+      "n_skipped": 0,
+      "skip_reasons": [],
+      "null_interval_exclusion_fpr_pooled_across_cells": null,
+      "per_cell_summary": {
+        "test_0": {
+          "null_interval_exclusion_fpr": {
+            "mean": 0.0,
+            "std": 0.0,
+            "p95": 0.0,
+            "n": 28
+          },
+          "null_monitor_cell_coverage": {
+            "mean": 0.5901785714285713,
+            "std": 0.09984693974109259,
+            "p95": 0.725,
+            "n": 28
+          },
+          "point_null_drift": {
+            "mean": 0.12078669060337467,
+            "std": 0.7800455235590245,
+            "p95": 1.4009847698754951,
+            "n": 28
+          },
+          "pre_period_balance_corr": {
+            "mean": 0.834957499427634,
+            "std": 0.07043202467036078,
+            "p95": 0.9137513508330887,
+            "n": 28
+          }
+        }
+      },
+      "shared_control_adequacy_rate": 1.0,
+      "treatment_cell_conflict_rate": 0.0,
+      "multiple_comparison_warning_rate": 0.0,
+      "multi_cell_degradation": {
+        "applies": false
+      },
+      "null_behavior_verdict": "acceptable",
+      "rationale": "Mean per-cell null FPR 0.000 within acceptable band for null-monitor reference readout.",
+      "track_e_candidate_flags": []
+    },
+    {
+      "method_id": "completerandomization",
+      "geometry_mode": "multi_cell",
+      "entrypoint": "CompleteRandomization(...).assign(...)",
+      "n_replicates": 28,
+      "n_valid": 28,
+      "n_skipped": 0,
+      "skip_reasons": [],
+      "null_interval_exclusion_fpr_pooled_across_cells": null,
+      "per_cell_summary": {
+        "test_0": {
+          "null_interval_exclusion_fpr": {
+            "mean": 0.0,
+            "std": 0.0,
+            "p95": 0.0,
+            "n": 28
+          },
+          "null_monitor_cell_coverage": {
+            "mean": 0.6026785714285714,
+            "std": 0.11973593999413316,
+            "p95": 0.75,
+            "n": 28
+          },
+          "point_null_drift": {
+            "mean": 0.056101390041769776,
+            "std": 0.8199480772478593,
+            "p95": 1.331402683143772,
+            "n": 28
+          },
+          "pre_period_balance_corr": {
+            "mean": 0.7721119975766125,
+            "std": 0.0808909338899192,
+            "p95": 0.8629408731065897,
+            "n": 28
+          }
+        },
+        "test_1": {
+          "null_interval_exclusion_fpr": {
+            "mean": 0.03571428571428571,
+            "std": 0.18898223650461365,
+            "p95": 0.0,
+            "n": 28
+          },
+          "null_monitor_cell_coverage": {
+            "mean": 0.5691964285714286,
+            "std": 0.13749924843469444,
+            "p95": 0.75,
+            "n": 28
+          },
+          "point_null_drift": {
+            "mean": 0.21784317306791393,
+            "std": 1.0606008131267535,
+            "p95": 1.970521003488209,
+            "n": 28
+          },
+          "pre_period_balance_corr": {
+            "mean": 0.736670198390355,
+            "std": 0.09849972767852018,
+            "p95": 0.8743618173984482,
+            "n": 28
+          }
+        }
+      },
+      "shared_control_adequacy_rate": 1.0,
+      "treatment_cell_conflict_rate": 0.25,
+      "multiple_comparison_warning_rate": 0.03571428571428571,
+      "multi_cell_degradation": {
+        "applies": true,
+        "per_cell_fpr_spread": 0.03571428571428571,
+        "feasibility_warning": false,
+        "per_cell_fpr": {
+          "test_0": 0.0,
+          "test_1": 0.03571428571428571
+        }
+      },
+      "null_behavior_verdict": "acceptable",
+      "rationale": "Mean per-cell null FPR 0.018 within acceptable band for null-monitor reference readout.",
+      "track_e_candidate_flags": [
+        "E-DES-MCELL-007",
+        "E-DES-MCELL-008"
+      ]
+    },
+    {
+      "method_id": "balancedrandomization",
+      "geometry_mode": "single_cell",
+      "entrypoint": "BalancedRandomization(...).assign(...)",
+      "n_replicates": 28,
+      "n_valid": 28,
+      "n_skipped": 0,
+      "skip_reasons": [],
+      "null_interval_exclusion_fpr_pooled_across_cells": null,
+      "per_cell_summary": {
+        "test_0": {
+          "null_interval_exclusion_fpr": {
+            "mean": 0.0,
+            "std": 0.0,
+            "p95": 0.0,
+            "n": 28
+          },
+          "null_monitor_cell_coverage": {
+            "mean": 0.6183035714285714,
+            "std": 0.07608389691313487,
+            "p95": 0.7291666666666666,
+            "n": 28
+          },
+          "point_null_drift": {
+            "mean": -0.0013621788343659465,
+            "std": 0.671723571460393,
+            "p95": 0.996304767937763,
+            "n": 28
+          },
+          "pre_period_balance_corr": {
+            "mean": 0.8613858928960774,
+            "std": 0.05148877837667758,
+            "p95": 0.9270276316642421,
+            "n": 28
+          }
+        }
+      },
+      "shared_control_adequacy_rate": 1.0,
+      "treatment_cell_conflict_rate": 0.0,
+      "multiple_comparison_warning_rate": 0.0,
+      "multi_cell_degradation": {
+        "applies": false
+      },
+      "null_behavior_verdict": "acceptable",
+      "rationale": "Mean per-cell null FPR 0.000 within acceptable band for null-monitor reference readout.",
+      "track_e_candidate_flags": []
+    },
+    {
+      "method_id": "balancedrandomization",
+      "geometry_mode": "multi_cell",
+      "entrypoint": "BalancedRandomization(...).assign(...)",
+      "n_replicates": 28,
+      "n_valid": 28,
+      "n_skipped": 0,
+      "skip_reasons": [],
+      "null_interval_exclusion_fpr_pooled_across_cells": null,
+      "per_cell_summary": {
+        "test_0": {
+          "null_interval_exclusion_fpr": {
+            "mean": 0.0,
+            "std": 0.0,
+            "p95": 0.0,
+            "n": 28
+          },
+          "null_monitor_cell_coverage": {
+            "mean": 0.6547619047619048,
+            "std": 0.11667611450785047,
+            "p95": 0.8604166666666666,
+            "n": 28
+          },
+          "point_null_drift": {
+            "mean": -0.20394853460845028,
+            "std": 0.7039428232476451,
+            "p95": 0.590485014787921,
+            "n": 28
+          },
+          "pre_period_balance_corr": {
+            "mean": 0.7896276175928795,
+            "std": 0.07723858419424456,
+            "p95": 0.8901119988343993,
+            "n": 28
+          }
+        },
+        "test_1": {
+          "null_interval_exclusion_fpr": {
+            "mean": 0.0,
+            "std": 0.0,
+            "p95": 0.0,
+            "n": 28
+          },
+          "null_monitor_cell_coverage": {
+            "mean": 0.5952380952380951,
+            "std": 0.08322303105688425,
+            "p95": 0.7354166666666666,
+            "n": 28
+          },
+          "point_null_drift": {
+            "mean": -0.009464539968583917,
+            "std": 0.7165425388507479,
+            "p95": 1.210061212057568,
+            "n": 28
+          },
+          "pre_period_balance_corr": {
+            "mean": 0.7947260158706037,
+            "std": 0.05605349184008807,
+            "p95": 0.8658958528939481,
+            "n": 28
+          }
+        }
+      },
+      "shared_control_adequacy_rate": 1.0,
+      "treatment_cell_conflict_rate": 0.14285714285714285,
+      "multiple_comparison_warning_rate": 0.0,
+      "multi_cell_degradation": {
+        "applies": true,
+        "per_cell_fpr_spread": 0.0,
+        "feasibility_warning": false,
+        "per_cell_fpr": {
+          "test_0": 0.0,
+          "test_1": 0.0
+        }
+      },
+      "null_behavior_verdict": "acceptable",
+      "rationale": "Mean per-cell null FPR 0.000 within acceptable band for null-monitor reference readout.",
+      "track_e_candidate_flags": [
+        "E-DES-MCELL-007",
+        "E-DES-MCELL-008"
+      ]
+    },
+    {
+      "method_id": "stratifiedrandomization",
+      "geometry_mode": "single_cell",
+      "entrypoint": "StratifiedRandomization(...).assign(...)",
+      "n_replicates": 28,
+      "n_valid": 28,
+      "n_skipped": 0,
+      "skip_reasons": [],
+      "null_interval_exclusion_fpr_pooled_across_cells": null,
+      "per_cell_summary": {
+        "test_0": {
+          "null_interval_exclusion_fpr": {
+            "mean": 0.0,
+            "std": 0.0,
+            "p95": 0.0,
+            "n": 28
+          },
+          "null_monitor_cell_coverage": {
+            "mean": 0.6044642857142858,
+            "std": 0.09230925564237139,
+            "p95": 0.725,
+            "n": 28
+          },
+          "point_null_drift": {
+            "mean": 0.4282079637849757,
+            "std": 0.6237178797462314,
+            "p95": 1.291773559497882,
+            "n": 28
+          },
+          "pre_period_balance_corr": {
+            "mean": 0.8555434820396159,
+            "std": 0.05641710234664789,
+            "p95": 0.9275584449713338,
+            "n": 28
+          }
+        }
+      },
+      "shared_control_adequacy_rate": 1.0,
+      "treatment_cell_conflict_rate": 0.0,
+      "multiple_comparison_warning_rate": 0.0,
+      "multi_cell_degradation": {
+        "applies": false
+      },
+      "null_behavior_verdict": "acceptable",
+      "rationale": "Mean per-cell null FPR 0.000 within acceptable band for null-monitor reference readout.",
+      "track_e_candidate_flags": []
+    },
+    {
+      "method_id": "stratifiedrandomization",
+      "geometry_mode": "multi_cell",
+      "entrypoint": "StratifiedRandomization(...).assign(...)",
+      "n_replicates": 28,
+      "n_valid": 28,
+      "n_skipped": 0,
+      "skip_reasons": [],
+      "null_interval_exclusion_fpr_pooled_across_cells": null,
+      "per_cell_summary": {
+        "test_0": {
+          "null_interval_exclusion_fpr": {
+            "mean": 0.0,
+            "std": 0.0,
+            "p95": 0.0,
+            "n": 28
+          },
+          "null_monitor_cell_coverage": {
+            "mean": 0.6235119047619048,
+            "std": 0.12133630040270087,
+            "p95": 0.81875,
+            "n": 28
+          },
+          "point_null_drift": {
+            "mean": 0.7274212021616685,
+            "std": 0.7861251098667663,
+            "p95": 1.7824385397523765,
+            "n": 28
+          },
+          "pre_period_balance_corr": {
+            "mean": 0.7843398911958885,
+            "std": 0.08467577610088388,
+            "p95": 0.8769589427456593,
+            "n": 28
+          }
+        },
+        "test_1": {
+          "null_interval_exclusion_fpr": {
+            "mean": 0.03571428571428571,
+            "std": 0.18898223650461365,
+            "p95": 0.0,
+            "n": 28
+          },
+          "null_monitor_cell_coverage": {
+            "mean": 0.6540178571428571,
+            "std": 0.13119172301570967,
+            "p95": 0.8531249999999999,
+            "n": 28
+          },
+          "point_null_drift": {
+            "mean": 0.5428732710441404,
+            "std": 0.9174604737827372,
+            "p95": 1.866680939627847,
+            "n": 28
+          },
+          "pre_period_balance_corr": {
+            "mean": 0.7412285120147916,
+            "std": 0.0941592744329648,
+            "p95": 0.867242079070238,
+            "n": 28
+          }
+        }
+      },
+      "shared_control_adequacy_rate": 1.0,
+      "treatment_cell_conflict_rate": 0.10714285714285714,
+      "multiple_comparison_warning_rate": 0.03571428571428571,
+      "multi_cell_degradation": {
+        "applies": true,
+        "per_cell_fpr_spread": 0.03571428571428571,
+        "feasibility_warning": false,
+        "per_cell_fpr": {
+          "test_0": 0.0,
+          "test_1": 0.03571428571428571
+        }
+      },
+      "null_behavior_verdict": "acceptable",
+      "rationale": "Mean per-cell null FPR 0.018 within acceptable band for null-monitor reference readout.",
+      "track_e_candidate_flags": [
+        "E-DES-MCELL-007",
+        "E-DES-MCELL-008"
+      ]
+    },
+    {
+      "method_id": "thinningdesign",
+      "geometry_mode": "single_cell",
+      "entrypoint": "ThinningDesign(...).assign(...)",
+      "n_replicates": 28,
+      "n_valid": 28,
+      "n_skipped": 0,
+      "skip_reasons": [],
+      "null_interval_exclusion_fpr_pooled_across_cells": null,
+      "per_cell_summary": {
+        "test_0": {
+          "null_interval_exclusion_fpr": {
+            "mean": 0.0,
+            "std": 0.0,
+            "p95": 0.0,
+            "n": 28
+          },
+          "null_monitor_cell_coverage": {
+            "mean": 0.6084821428571427,
+            "std": 0.09366839481826669,
+            "p95": 0.76625,
+            "n": 28
+          },
+          "point_null_drift": {
+            "mean": 0.1325132898951853,
+            "std": 0.6975452397242851,
+            "p95": 0.9923408693557318,
+            "n": 28
+          },
+          "pre_period_balance_corr": {
+            "mean": 0.8391660043100505,
+            "std": 0.07847815253248143,
+            "p95": 0.8966329157519359,
+            "n": 28
+          }
+        }
+      },
+      "shared_control_adequacy_rate": 1.0,
+      "treatment_cell_conflict_rate": 0.0,
+      "multiple_comparison_warning_rate": 0.0,
+      "multi_cell_degradation": {
+        "applies": false
+      },
+      "null_behavior_verdict": "acceptable",
+      "rationale": "Mean per-cell null FPR 0.000 within acceptable band for null-monitor reference readout.",
+      "track_e_candidate_flags": []
+    },
+    {
+      "method_id": "thinningdesign",
+      "geometry_mode": "multi_cell",
+      "entrypoint": "ThinningDesign(...).assign(...)",
+      "n_replicates": 28,
+      "n_valid": 28,
+      "n_skipped": 0,
+      "skip_reasons": [],
+      "null_interval_exclusion_fpr_pooled_across_cells": null,
+      "per_cell_summary": {
+        "test_0": {
+          "null_interval_exclusion_fpr": {
+            "mean": 0.03571428571428571,
+            "std": 0.18898223650461365,
+            "p95": 0.0,
+            "n": 28
+          },
+          "null_monitor_cell_coverage": {
+            "mean": 0.6183035714285714,
+            "std": 0.11453823066150788,
+            "p95": 0.75,
+            "n": 28
+          },
+          "point_null_drift": {
+            "mean": 0.27466362622762314,
+            "std": 0.9393680332552236,
+            "p95": 1.5368382522678752,
+            "n": 28
+          },
+          "pre_period_balance_corr": {
+            "mean": 0.7195558753248469,
+            "std": 0.10174420987529177,
+            "p95": 0.8387722143781313,
+            "n": 28
+          }
+        },
+        "test_1": {
+          "null_interval_exclusion_fpr": {
+            "mean": 0.03571428571428571,
+            "std": 0.18898223650461363,
+            "p95": 0.0,
+            "n": 28
+          },
+          "null_monitor_cell_coverage": {
+            "mean": 0.6049107142857143,
+            "std": 0.1632049979701414,
+            "p95": 0.8125,
+            "n": 28
+          },
+          "point_null_drift": {
+            "mean": -0.13732416670404599,
+            "std": 0.9620117843175562,
+            "p95": 1.4015078063708555,
+            "n": 28
+          },
+          "pre_period_balance_corr": {
+            "mean": 0.7329270305583756,
+            "std": 0.10554668045073243,
+            "p95": 0.8524572394634408,
+            "n": 28
+          }
+        }
+      },
+      "shared_control_adequacy_rate": 1.0,
+      "treatment_cell_conflict_rate": 0.2857142857142857,
+      "multiple_comparison_warning_rate": 0.07142857142857142,
+      "multi_cell_degradation": {
+        "applies": true,
+        "per_cell_fpr_spread": 0.0,
+        "feasibility_warning": false,
+        "per_cell_fpr": {
+          "test_0": 0.03571428571428571,
+          "test_1": 0.03571428571428571
+        }
+      },
+      "null_behavior_verdict": "acceptable",
+      "rationale": "Mean per-cell null FPR 0.036 within acceptable band for null-monitor reference readout.",
+      "track_e_candidate_flags": [
+        "E-DES-MCELL-007",
+        "E-DES-MCELL-008"
+      ]
+    }
+  ],
+  "greedy_vs_rerandomization_wrapper": {
+    "single_cell": {
+      "greedy_mean_null_fpr": 0.0,
+      "rerandomization_mean_null_fpr": 0.0,
+      "delta_rerandomization_minus_greedy": 0.0,
+      "greedy_verdict": "acceptable",
+      "rerandomization_verdict": "acceptable"
+    },
+    "multi_cell": {
+      "greedy_mean_null_fpr": 0.0,
+      "rerandomization_mean_null_fpr": 0.0,
+      "delta_rerandomization_minus_greedy": 0.0,
+      "greedy_verdict": "acceptable",
+      "rerandomization_verdict": "acceptable"
+    }
+  },
+  "overall_verdict": "acceptable_with_caveats",
+  "overall_rationale": "Confirmed design methods characterized under SCM+JK null-monitor reference; not platform power validation.",
+  "track_e_diagnostics_for_e1_e2": [
+    "E-DES-MCELL-007",
+    "E-DES-MCELL-008",
+    "E-DES-MCELL-001",
+    "E-DES-MCELL-011"
+  ],
+  "n_replicates": 28,
+  "scm_unit_jackknife_governance": "calibration_eligible_null_monitor_only",
+  "calibration_eligibility_changed": false,
+  "notes": [
+    "Fixed pre/post windows (D5-POW-001d); correct effect interval semantics (001b).",
+    "Unit-level geometry (001c); per-cell metrics only for multi_cell; no pooling.",
+    "Bare greedy_match_markets vs Rerandomization(greedy) compared explicitly.",
+    "supergeos, trimmedmatch, quickblock, matchedpair excluded per ROADMAP-DESIGN-READOUT-UPDATE-001.",
+    "No production, TrustReport, Track B, or MMM changes."
+  ]
+}

@@ -162,7 +162,10 @@ _ESTIMATOR_CATALOG: Tuple[EstimatorMetadata, ...] = (
         assumptions=("Augmented outcomes and weights correctly specified.",),
         optional_dependencies=("cvxpy",),
         inference_support=("point_estimate", "Kfold", "Conformal"),
-        known_limitations=("More complex than base SCM.",),
+        known_limitations=(
+            "More complex than base SCM.",
+            "Conformal callable ≠ governed uncertainty (F-INF-001 / D5-AUGSYNTH-003).",
+        ),
     ),
     _est(
         "TBR",
@@ -172,7 +175,10 @@ _ESTIMATOR_CATALOG: Tuple[EstimatorMetadata, ...] = (
         rationale=("Less smoke/validation coverage than TBRRidge in-repo.",),
         assumptions=("Linear pre-period structure continues post treatment.",),
         inference_support=("point_estimate", "UnitJackKnife", "JKP", "Kfold"),
-        known_limitations=("Prefer TBRRidge for default workflows.",),
+        known_limitations=(
+            "Aggregate 1 treated + 1 control row only; not TBRRidge; not geo.relative_att_post.",
+            "Placebo is inference/falsification — use SCM+Placebo, not TBR+Placebo.",
+        ),
     ),
     _est(
         "TBRRidge",
@@ -200,7 +206,8 @@ _ESTIMATOR_CATALOG: Tuple[EstimatorMetadata, ...] = (
             "TimeSeriesKfold",
         ),
         known_limitations=(
-            "Registry Bayesian mode on TBRRidge is not full BayesianTBR MCMC.",
+            "Registry Bayesian mode on TBRRidge is not full BayesianTBR MCMC (INV-015).",
+            "Placebo is inference on SCM — TBRRidge+Placebo is not SCM placebo-in-space.",
         ),
     ),
     _est(
@@ -299,13 +306,21 @@ _INFERENCE_MODE_CATALOG: Tuple[InferenceModeMaturityMetadata, ...] = (
     InferenceModeMaturityMetadata(
         "UnitJackKnife",
         EstimatorMaturity.EXPERT_REVIEW,
-        rationale=("Registry equivalence tests; needs >=2 control units.",),
+        rationale=(
+            "Registry equivalence tests; needs >=2 control units.",
+            "Unit-level LOO jackknife — distinct from JKP (Jackknife+) assumptions.",
+        ),
         assumptions=("Unit-level jackknife appropriate.",),
+        known_limitations=("Not interchangeable with JKP path; distinct F-CAT taxonomy.",),
     ),
     InferenceModeMaturityMetadata(
         "JKP",
         EstimatorMaturity.EXPERT_REVIEW,
-        rationale=("Registry golden/equivalence coverage.",),
+        rationale=(
+            "Registry golden/equivalence coverage.",
+            "Jackknife+ path — distinct assumptions from UnitJackKnife.",
+        ),
+        known_limitations=("Degenerate on aggregate 1×1 class TBR; not governed without bridge.",),
     ),
     InferenceModeMaturityMetadata(
         "Bayesian",
@@ -325,13 +340,20 @@ _INFERENCE_MODE_CATALOG: Tuple[InferenceModeMaturityMetadata, ...] = (
     InferenceModeMaturityMetadata(
         "Conformal",
         EstimatorMaturity.EXPERT_REVIEW,
-        rationale=("Registry tests; conformal assumptions on residuals.",),
+        rationale=(
+            "Registry tests; conformal assumptions on residuals.",
+            "Callable conformal path ≠ governed uncertainty (F-INF-001).",
+        ),
         assumptions=("Exchangeability/split behavior adequate.",),
+        known_limitations=("Band sign/semantics must pass F-INF before any export claim.",),
     ),
     InferenceModeMaturityMetadata(
         "Kfold",
         EstimatorMaturity.EXPERT_REVIEW,
-        rationale=("Golden fixtures; reproducible when random_state set.",),
+        rationale=(
+            "Golden fixtures; reproducible when random_state set.",
+            "Panel K-fold CV — distinct from TimeSeriesKfold horizon blocking.",
+        ),
         assumptions=("Panel K-fold appropriate for pre-treatment fit.",),
     ),
     InferenceModeMaturityMetadata(
@@ -339,6 +361,8 @@ _INFERENCE_MODE_CATALOG: Tuple[InferenceModeMaturityMetadata, ...] = (
         EstimatorMaturity.EXPERT_REVIEW,
         rationale=(
             "Registry tests; placebo bands may vary by platform (optimizer path).",
+            "Placebo is an inference/falsification layer paired with estimators (e.g. SCM), "
+            "not a standalone estimator readout (AUDIT-010 taxonomy).",
         ),
         assumptions=("Enough placebos; inversion CI interpretable.",),
         known_limitations=("Coverage-based bands, not classical analytical CIs.",),
@@ -346,8 +370,12 @@ _INFERENCE_MODE_CATALOG: Tuple[InferenceModeMaturityMetadata, ...] = (
     InferenceModeMaturityMetadata(
         "TimeSeriesKfold",
         EstimatorMaturity.EXPERT_REVIEW,
-        rationale=("Registry golden tests.",),
+        rationale=(
+            "Registry golden tests.",
+            "Horizon-blocked temporal folds — distinct from panel Kfold.",
+        ),
         assumptions=("Temporal blocking appropriate.",),
+        known_limitations=("F-INF may classify intervals unverified on OC batteries.",),
     ),
 )
 
@@ -356,6 +384,16 @@ _NAME_TO_META: Dict[str, EstimatorMetadata] = {m.name: m for m in _ESTIMATOR_CAT
 _INFERENCE_NAME_TO_META: Dict[str, InferenceModeMaturityMetadata] = {
     m.name: m for m in _INFERENCE_MODE_CATALOG
 }
+
+
+def estimator_catalog() -> Tuple[EstimatorMetadata, ...]:
+    """Return the frozen estimator maturity catalog (F-CAT-001 audit surface)."""
+    return _ESTIMATOR_CATALOG
+
+
+def inference_mode_catalog() -> Tuple[InferenceModeMaturityMetadata, ...]:
+    """Return the frozen inference-mode maturity catalog (F-CAT-001 audit surface)."""
+    return _INFERENCE_MODE_CATALOG
 
 
 def get_inference_mode_metadata(mode_name: str) -> InferenceModeMaturityMetadata:
@@ -426,6 +464,8 @@ __all__ = [
     "EstimatorMetadata",
     "InferenceModeMaturityMetadata",
     "MATURITY_DOC",
+    "estimator_catalog",
+    "inference_mode_catalog",
     "merge_maturity_into_results",
     "get_inference_mode_metadata",
 ]

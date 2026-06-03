@@ -1,0 +1,41 @@
+{
+  "fixture_id": "E4-006",
+  "fixture_version": "1.0.0",
+  "description": "SCM Placebo on multi-treated default — blocked_by_geometry.",
+  "triangulation_profile": {
+    "profile_id": "tri-fixture-e4-006",
+    "profile_version": "1.0.0",
+    "experiment_id": "fixture-study-e4-006",
+    "run_id": "run-006",
+    "modality": "geo",
+    "design_method_id": "greedy_match_markets",
+    "geometry_mode": "single_cell",
+    "n_test_grps": 1,
+    "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+    "evidence_rows": [
+      {
+        "row_id": "row-placebo",
+        "cell_id": "test_0",
+        "measurement_instrument_id": "geo.synthetic_control.placebo.relative_att_post.single_treated_only.placebo_band",
+        "config_alias": "SCM_Placebo",
+        "suitability_status": "blocked",
+        "evidence_role": "blocked",
+        "point_estimate": 0.02,
+        "interval_semantics": "placebo_band",
+        "uncertainty": null,
+        "comparability_group": "blocked_instrument",
+        "conflict_group": "blocked",
+        "calibration_signal_eligibility": {"eligible": false, "reason_code": "blocked_suitability", "mmm_ingress_allowed": false},
+        "diagnostic_flags": ["E-DES-GEO-002"]
+      }
+    ]
+  },
+  "expected": {
+    "agreement_state": "blocked_by_suitability",
+    "conflict_class": "E-CONFLICT-004",
+    "trust_report_disposition": "blocked_by_geometry",
+    "calibration_signal_eligibility": {"eligible": false},
+    "trust_outcome_hint": "not_assessable"
+  },
+  "forbidden_actions": ["no_triangulation_lift_compare", "no_mmm_feed", "no_promotion"]
+}

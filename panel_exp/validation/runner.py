@@ -34,8 +34,8 @@ class EstimatorConfig:
 def default_estimator_configs() -> List[EstimatorConfig]:
     """Stable estimators only (no optional-dep failures, no unstable SDID)."""
     from panel_exp.methods.DID import DID
+    from panel_exp.governance.instrument_contract import class_tbr_recovery_factory
     from panel_exp.methods.scm import SyntheticControl
-    from panel_exp.methods.tbr import TBRRidge
 
     return [
         EstimatorConfig(
@@ -46,7 +46,7 @@ def default_estimator_configs() -> List[EstimatorConfig]:
         ),
         EstimatorConfig(
             estimator_name="TBR",
-            factory=lambda: TBRRidge(inference=None),
+            factory=class_tbr_recovery_factory(inference=None),
             inference=None,
             supports_significance=False,
         ),

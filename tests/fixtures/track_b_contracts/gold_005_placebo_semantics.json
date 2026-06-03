@@ -1,0 +1,137 @@
+{
+  "fixture_id": "GOLD-005",
+  "fixture_version": "1.0.0",
+  "description": "SCM Placebo single-treated success. Placebo band is not a confidence interval. Lift via placebo unsupported.",
+  "binding_docs": [
+    "TRACK_B_CONTRACT_TEST_PLAN_001",
+    "PHASE15_GOVERNANCE_DECISION_001",
+    "DEF-020"
+  ],
+  "spec": {
+    "study_id": "fixture-study-gold-005",
+    "spec_version": "1",
+    "modality": "geo",
+    "study_purpose": "business",
+    "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+    "interval_estimand_expectation_id": "geo.placebo_null_envelope.pooled_path.relative",
+    "geometry_class": "single_treated_only",
+    "mmm_calibration_intent": false
+  },
+  "run_artifacts_stub": {
+    "config_alias": "SCM_Placebo",
+    "estimator_family": "synthetic_control",
+    "inference_method": "placebo",
+    "n_treated": 1,
+    "geometry_observed": "single_treated_only",
+    "run_status": "success",
+    "path_interval_type_legacy": "placebo_band",
+    "has_path_intervals": true
+  },
+  "adapter_expected_output": {
+    "export_status": "complete",
+    "experiment_evidence": {
+      "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+      "exported_estimand_id": "geo.relative_att_post.pooled_path.relative",
+      "scored_estimand_id": null,
+      "interval_estimand_id": "geo.placebo_null_envelope.pooled_path.relative",
+      "measurement_instrument_id": "geo.synthetic_control.placebo.relative_att_post.single_treated_only.placebo_band",
+      "instrument_family": "synthetic_control",
+      "inference_method": "placebo",
+      "geometry_class": "single_treated_only",
+      "interval_semantics": "placebo_band",
+      "config_alias": "SCM_Placebo",
+      "measurement_instrument_id_resolved_from": "config_hash",
+      "instrument_plan_violation": false,
+      "calibration_signal_id": "cs-geo-scm-plac-001",
+      "calibration_signal_version": "1",
+      "calibration_signal_missing": false,
+      "mmm_intake_blocked": false,
+      "mmm_export_ready": false
+    },
+    "alignment_facts": {
+      "declared_exported_aligned": true,
+      "declared_interval_aligned": true,
+      "exported_interval_aligned": true,
+      "scale_compatible": true,
+      "aggregation_divergence_detected": false,
+      "geometry_within_scope": true,
+      "interval_semantics_compatible": true,
+      "transform_declared": false
+    },
+    "diagnostic_summary": {
+      "export_status": "complete",
+      "primary_context_estimand_id": "geo.relative_att_post.pooled_path.relative",
+      "diagnostic_estimand_id": "geo.placebo_null_envelope.pooled_path.relative",
+      "measurement_instrument_id": "geo.synthetic_control.placebo.relative_att_post.single_treated_only.placebo_band",
+      "must_not_contain_trust_outcome": true
+    },
+    "must_not_contain_on_evidence": [
+      "trust_outcome",
+      "alignment_verdict"
+    ]
+  },
+  "calibration_signal_binding": {
+    "lookup_key": "geo.synthetic_control.placebo.relative_att_post.single_treated_only.placebo_band",
+    "expected_signal_id": "cs-geo-scm-plac-001",
+    "expected_signal_version": "1",
+    "expected_calibration_estimand_id": "geo.relative_att_post.pooled_path.relative",
+    "expected_usage_boundary": "null_reference_diagnostic",
+    "expected_lift_detection_calibrated": false,
+    "expected_lifecycle_state": "governed",
+    "signal_must_not_contain_trust_outcome": true
+  },
+  "trust_report_expected_output": {
+    "alignment_reference_estimand_id": "geo.relative_att_post.pooled_path.relative",
+    "scenarios": [
+      {
+        "scenario_id": "null_reference_diagnostic",
+        "intended_use": "null_reference_screening",
+        "claim_type": "null_viability",
+        "alignment_verdict": "aligned",
+        "trust_outcome": "supported",
+        "notes": "Within placebo null-reference scope. single_treated_only."
+      },
+      {
+        "scenario_id": "lift_via_placebo_band",
+        "intended_use": "business_lift_launch",
+        "claim_type": "positive_lift_detection",
+        "alignment_verdict": "incompatible",
+        "trust_outcome": "unsupported",
+        "notes": "placebo_band is not CI. TR-012. F3."
+      }
+    ]
+  },
+  "mislabel_regression_variant": {
+    "description": "If run stub incorrectly labels path_interval_type as confidence_interval",
+    "run_artifacts_stub_override": {
+      "path_interval_type_legacy": "confidence_interval"
+    },
+    "adapter_expected_output": {
+      "alignment_facts": {
+        "interval_semantics_compatible": false
+      }
+    },
+    "trust_report_expected_output": {
+      "scenarios": [
+        {
+          "scenario_id": "mislabeled_placebo_as_ci",
+          "claim_type": "positive_lift_detection",
+          "trust_outcome": "unsupported"
+        }
+      ]
+    }
+  },
+  "expected_test_ids": [
+    "EV-004",
+    "EV-005",
+    "INST-002",
+    "ALIGN-004",
+    "TR-012",
+    "CS-003"
+  ],
+  "forbidden_regressions": ["F3"],
+  "negative_assertions": [
+    "interval_semantics must not be confidence_interval for successful SCM Placebo",
+    "must not use interval_estimand_id geo.relative_att_post.pooled_path.relative for placebo band target"
+  ]
+}

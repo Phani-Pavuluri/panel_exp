@@ -1,0 +1,130 @@
+{
+  "artifact_id": "D5-POW-001a",
+  "generated_at": "2026-06-01T20:23:01+00:00",
+  "lane": "research",
+  "investigation_id": "D4-FIND-001",
+  "config": {
+    "n_mc": 24,
+    "n_geos": 16,
+    "n_periods": 44,
+    "treatment_start": 32,
+    "n_treated_target": 3,
+    "test_length": 8,
+    "train_length": 28,
+    "mx_effect": 0.15,
+    "power_threshold": 0.8,
+    "alpha": 0.05,
+    "treatment_probability": 0.35,
+    "random_state_base": 20260601,
+    "scenario_name": "scm_low_signal",
+    "min_control_units": 2,
+    "include_power_analysis_mde": true,
+    "effect_grid": [
+      -0.12,
+      -0.08,
+      -0.04,
+      0.0,
+      0.04,
+      0.08,
+      0.12,
+      0.16
+    ]
+  },
+  "hypothesis": "Geo TBRRidge+KFold MDE on aggregated panel may not align with SCM+UnitJackKnife readout on the same assignment.",
+  "primary_metrics": {
+    "pooled_detection_curve_corr": {
+      "mean": null,
+      "std": 0.0,
+      "p95": null
+    },
+    "mde_pooled_detection_tbr": {
+      "mean": 0.04,
+      "std": 0.0,
+      "p95": 0.04
+    },
+    "mde_pooled_detection_scm": {
+      "mean": 0.04,
+      "std": 0.0,
+      "p95": 0.04
+    },
+    "pooled_null_detection_tbr": {
+      "mean": 1.0,
+      "std": 0.0,
+      "p95": 1.0
+    },
+    "pooled_null_detection_scm": {
+      "mean": 1.0,
+      "std": 0.0,
+      "p95": 1.0
+    },
+    "effect_response_8pct_tbr": {
+      "mean": 8.037095016401002,
+      "std": 0.06237894217561152,
+      "p95": 8.145002715456666
+    },
+    "effect_response_8pct_scm": {
+      "mean": 8.04313007872873,
+      "std": 0.07117373923750436,
+      "p95": 8.172195758716695
+    },
+    "effect_grid_corr_tbr": {
+      "mean": 1.0,
+      "std": 4.629950069047756e-17,
+      "p95": 1.0
+    },
+    "effect_grid_corr_scm": {
+      "mean": 1.0,
+      "std": 4.629950069047756e-17,
+      "p95": 1.0
+    },
+    "directional_recovery_tbr": {
+      "mean": 0.8511904761904763,
+      "std": 0.15466233458833314,
+      "p95": 1.0
+    },
+    "directional_recovery_scm": {
+      "mean": 0.9940476190476191,
+      "std": 0.029160592175990225,
+      "p95": 1.0
+    },
+    "poweranalysis_mde_percent_geo": {
+      "mean": 0.015,
+      "std": 0.00659380473395787,
+      "p95": 0.028499999999999977
+    }
+  },
+  "pooled_detection_curves": {
+    "tbr_kfold": {
+      "-0.12": 1.0,
+      "-0.08": 1.0,
+      "-0.04": 1.0,
+      "0.0": 1.0,
+      "0.04": 1.0,
+      "0.08": 1.0,
+      "0.12": 1.0,
+      "0.16": 1.0
+    },
+    "scm_unit_jk": {
+      "-0.12": 1.0,
+      "-0.08": 1.0,
+      "-0.04": 1.0,
+      "0.0": 1.0,
+      "0.04": 1.0,
+      "0.08": 1.0,
+      "0.12": 1.0,
+      "0.16": 1.0
+    }
+  },
+  "n_replicates": 24,
+  "proxy_verdict": "optimistic_proxy",
+  "rationale": "Geo PowerAnalysis mde_percent (ci_version=2 null-spread semantics) is materially lower than pooled SCM+JK interval-detection MDE on the same assignment; do not treat geo MDE as SCM feasibility evidence.",
+  "pow_001_status": "diagnostic_only",
+  "pow_003_status_recommendation": "restricted",
+  "d4_find_001_update": "optimistic_proxy",
+  "calibration_eligibility_changed": false,
+  "notes": [
+    "SCM_UnitJackKnife remains null_monitor_only.",
+    "Do not use geo PowerAnalysis MDE for MMM or lift feasibility.",
+    "TBRRidge+KFold on 2-row panel vs SCM+JK on unit panel \u2014 geometry differs by design."
+  ]
+}

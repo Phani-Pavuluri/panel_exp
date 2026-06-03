@@ -1,5 +1,5 @@
 import copy
-from typing import List, Optional
+from typing import Any, List, Optional
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -339,6 +339,36 @@ class GeoExperimentDesign:
             mde_percent.append(result_df["MDE Percent"][0])
 
         return mde_val, mde_percent, pa_df_dict, power_curve_dict
+
+    def export_run_readout_bundle(
+        self,
+        *,
+        experiment_card: Optional[Any] = None,
+        include_track_b_views: bool = False,
+        include_trust_report: bool = False,
+        trust_report_scenarios: Optional[list] = None,
+        **bundle_kwargs: Any,
+    ):
+        """
+        Export a portable RunBundle from ``last_evidence`` (opt-in Track B sidecar).
+
+        Requires ``run_design`` to have populated ``last_evidence``. Does not run
+        estimators or change scoring; delegates to ``export_geo_run_bundle``.
+        """
+        from panel_exp.artifacts.geo_run_export import export_geo_run_bundle
+
+        if self.last_evidence is None:
+            raise ValueError(
+                "No experiment evidence on this design object; run run_design first."
+            )
+        return export_geo_run_bundle(
+            evidence=self.last_evidence,
+            experiment_card=experiment_card,
+            include_track_b_views=include_track_b_views,
+            include_trust_report=include_trust_report,
+            trust_report_scenarios=trust_report_scenarios,
+            **bundle_kwargs,
+        )
 
     @staticmethod
     def plot_power_curve(pa_df_combined, test_length_label):

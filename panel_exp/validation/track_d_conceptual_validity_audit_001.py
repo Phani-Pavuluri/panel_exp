@@ -1,0 +1,649 @@
+"""TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001 — Literature/method fidelity audit (research).
+
+Code-grounded + literature cross-check. No production changes. Synthetic OC ≠ conceptual validity.
+"""
+
+from __future__ import annotations
+
+import json
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Literal
+
+DeviationVerdict = Literal["acceptable", "restricted", "blocking", "research_only", "none"]
+TrustCalib = Literal["trust_report_only", "calibration_signal", "neither", "diagnostic_trust_only"]
+
+
+def _geometry_block(
+    *,
+    single_treated: str,
+    multi_treated: str,
+    multi_cell_per_cell: str,
+    aggregate_test_control: str,
+    supergeo: str,
+    trimmed: str,
+    pooled_multi_cell: str = "blocked",
+) -> dict[str, str]:
+    return {
+        "single_treated": single_treated,
+        "multi_treated": multi_treated,
+        "multi_cell_per_cell": multi_cell_per_cell,
+        "aggregate_test_control": aggregate_test_control,
+        "supergeo": supergeo,
+        "trimmed_population": trimmed,
+        "pooled_multi_cell": pooled_multi_cell,
+    }
+
+
+def _method_records() -> list[dict[str, Any]]:
+    """Curated conceptual validity records — not inferred from class names alone."""
+    return [
+        {
+            "audit_id": "CV-EST-SCM",
+            "family": "estimator",
+            "name": "SCM (SyntheticControl / SyntheticControlCVXPY)",
+            "code_refs": [
+                "panel_exp/methods/scm.py",
+                "panel_exp/methods/synthetic_control.py",
+                "D2 EST-001/002",
+                "D5-POW-001e",
+            ],
+            "research_basis": (
+                "Abadie-Diamond-Hainmueller synthetic control: convex donor weights on pre-treatment "
+                "outcomes, counterfactual for treated unit(s)."
+            ),
+            "required_assumptions": [
+                "Donor pool can approximate treated pre-trends (no structural break at treatment).",
+                "Treated units excluded from donor weighting.",
+                "Sparse/simplex or ridge-regularized weights stable (OSQP path).",
+                "Interference/spillover absent or not modeled.",
+            ],
+            "implementation_behavior": (
+                "Default `full_model=False`: pre-period fit via split_control_test_units; "
+                "CVXPY/OSQP simplex weights; treated excluded from controls. "
+                "`full_model=True` fits on full timeline — documented D2 fail-risk (INV-D2-001)."
+            ),
+            "deviations": [
+                {
+                    "item": "full_model=True post-period columns in fit",
+                    "verdict": "blocking",
+                    "note": "Conceptually leaks post-treatment into weight estimation.",
+                },
+                {
+                    "item": "Geo multi-treated panels without per-unit SCM theory bridge",
+                    "verdict": "restricted",
+                    "note": "Runs mechanically; estimand is per treated unit path, not pooled ATT without bridge.",
+                },
+            ],
+            "overall_fidelity": "aligned_with_deviation",
+            "supported_estimand": "geo.relative_att_post.pooled_path.relative (Track B); path y−y_hat",
+            "geometry": _geometry_block(
+                single_treated="supported",
+                multi_treated="restricted_per_unit_only",
+                multi_cell_per_cell="restricted_per_cell",
+                aggregate_test_control="invalid_for_JK",
+                supergeo="not_estimator_scope",
+                trimmed="not_estimator_scope",
+            ),
+            "inference_semantics": "Estimator point path; uncertainty via separate inference modes.",
+            "trust_report_eligibility": "diagnostic_trust_only",
+            "calibration_signal_eligibility": "neither",
+            "forbidden_claims": [
+                "Universal SCM validity for all geo designs without geometry card.",
+                "Lift detection from JK alone without null-monitor framing.",
+            ],
+            "required_fixes_before_production": [
+                "Govern full_model paths or block in production exports.",
+                "Per-cell multi-treated readout discipline (MCELL).",
+            ],
+            "d5_oc_note": "001e null-monitor characterized; not conceptual promotion.",
+        },
+        {
+            "audit_id": "CV-EST-AUGSYNTH",
+            "family": "estimator",
+            "name": "AugSynth / AugSynthCVXPY",
+            "code_refs": ["panel_exp/methods/scm.py AugSynth*", "PHASE14", "D5-INST-AUGSYNTH-001"],
+            "research_basis": (
+                "Augmented SCM (Ben-Michael et al.): SCM weights + outcome model for residuals; "
+                "addresses bias when SCM fit is imperfect."
+            ),
+            "required_assumptions": [
+                "SCM leg valid on pre-period.",
+                "Ridge (or chosen) outcome model correctly specified on donor residuals.",
+                "min_donors and correlation filter appropriate for panel.",
+            ],
+            "implementation_behavior": (
+                "Inner SyntheticControlCVXPY + Ridge on residualized treated outcomes; "
+                "same full_model leakage risk as SCM on inner solver."
+            ),
+            "deviations": [
+                {
+                    "item": "Spillover DGP bias (Phase 14)",
+                    "verdict": "restricted",
+                    "note": "~−0.034 vs 0.10 truth under contamination — not modeled.",
+                },
+            ],
+            "overall_fidelity": "aligned_with_deviation",
+            "supported_estimand": "relative_att_post point path; JK mirrors SCM conservatism",
+            "geometry": _geometry_block(
+                single_treated="supported",
+                multi_treated="restricted",
+                multi_cell_per_cell="restricted",
+                aggregate_test_control="invalid_for_JK",
+                supergeo="not_estimator_scope",
+                trimmed="not_estimator_scope",
+            ),
+            "inference_semantics": "Point strong; JK null-monitor only (not lift).",
+            "trust_report_eligibility": "diagnostic_trust_only",
+            "calibration_signal_eligibility": "neither",
+            "forbidden_claims": [
+                "CalibrationSignal ingress.",
+                "Treat JK as lift detector.",
+                "Generalize point recovery on default DGP to spillover geo.",
+            ],
+            "required_fixes_before_production": [
+                "Document spillover/interference on instrument card.",
+                "D5-INST-AUGSYNTH-002 for Kfold if promoted beyond diagnostic.",
+            ],
+            "d5_oc_note": "D5-INST-AUGSYNTH-001: diagnostic_only characterized comparator.",
+        },
+        {
+            "audit_id": "CV-EST-TBR",
+            "family": "estimator",
+            "name": "TBR (class TBR, not TBRRidge)",
+            "code_refs": ["panel_exp/methods/tbr.py TBR", "D5-INST-AUDIT-001", "D5-INST-COMBO-AUDIT-001"],
+            "research_basis": (
+                "Google geo experiments TBR: regression of treated on control aggregate "
+                "using pre-period fit — intended for **aggregated** test/control series."
+            ),
+            "required_assumptions": [
+                "Exactly one treated and one control aggregate series.",
+                "Linear relationship stable pre/post.",
+                "Pre-period used for fit (default full_model=False).",
+            ],
+            "implementation_behavior": (
+                "Assert len(treated_units)==1 and num_control_units==1; LinearRegression on "
+                "pre-period. Geo PowerAnalysis uses TBRRidge on agg panel, **not** class TBR."
+            ),
+            "deviations": [
+                {
+                    "item": "recovery_runner labels TBR but factory is TBRRidge",
+                    "verdict": "blocking",
+                    "note": "Documentation/harness bug — confounds audit trails.",
+                },
+            ],
+            "overall_fidelity": "aligned_on_aggregate_only",
+            "supported_estimand": "aggregate treated vs control level shift (not unit SCM ATT)",
+            "geometry": _geometry_block(
+                single_treated="invalid",
+                multi_treated="invalid",
+                multi_cell_per_cell="invalid",
+                aggregate_test_control="supported",
+                supergeo="invalid",
+                trimmed="invalid",
+            ),
+            "inference_semantics": "Registry JK/Kfold on 1×1 panel — atypical vs paper.",
+            "trust_report_eligibility": "neither",
+            "calibration_signal_eligibility": "neither",
+            "forbidden_claims": [
+                "Equating TBR with TBRRidge or SCM unit readout.",
+                "Unit-level multi-market TBR without aggregation.",
+            ],
+            "required_fixes_before_production": [
+                "D5-INST-TBR-001 on true aggregate panels.",
+                "Fix recovery_runner TBR factory.",
+            ],
+            "d5_oc_note": "COMBO: valid_candidate on aggregate_two_series only.",
+        },
+        {
+            "audit_id": "CV-EST-TBRRIDGE",
+            "family": "estimator",
+            "name": "TBRRidge",
+            "code_refs": ["panel_exp/methods/tbr.py TBRRidge", "D5-INST-TBRRIDGE-001", "D5-POW-001a"],
+            "research_basis": (
+                "TBR family with ridge on multiple control unit series — geo product extension "
+                "for multi-unit panels and PowerAnalysis MDE path."
+            ),
+            "required_assumptions": [
+                "Controls comparable after normalization/ridge.",
+                "Pre-period ridge fit meaningful for post extrapolation.",
+            ],
+            "implementation_behavior": (
+                "Unit-level multi-control ridge; also used on 2-row aggregate for geo power. "
+                "Point scale differs from SCM+JK at null (D5-TBRIDGE)."
+            ),
+            "deviations": [
+                {
+                    "item": "Geo power MDE vs SCM+JK null-monitor",
+                    "verdict": "restricted",
+                    "note": "001a optimistic_proxy — different estimand/scale.",
+                },
+            ],
+            "overall_fidelity": "aligned_with_deviation",
+            "supported_estimand": "unit path effect or agg2 power proxy — not interchangeable",
+            "geometry": _geometry_block(
+                single_treated="supported",
+                multi_treated="supported_with_aggregation_caveat",
+                multi_cell_per_cell="restricted",
+                aggregate_test_control="supported_geo_power_only",
+                supergeo="invalid",
+                trimmed="invalid",
+            ),
+            "inference_semantics": "Via registry Kfold/BRB/JK — each needs own validity row.",
+            "trust_report_eligibility": "diagnostic_trust_only",
+            "calibration_signal_eligibility": "neither",
+            "forbidden_claims": [
+                "Governed lift or MMM from Kfold on agg2.",
+                "Null FPR match implies same estimand as SCM+JK.",
+            ],
+            "required_fixes_before_production": [
+                "Estimand bridge doc for agg2 vs unit.",
+                "TBRRidge-002 for unconstrained inference combos.",
+            ],
+            "d5_oc_note": "TBRRIDGE-001: remain restricted.",
+        },
+        {
+            "audit_id": "CV-EST-BAYESIANTBR",
+            "family": "estimator",
+            "name": "BayesianTBR / BayesianTBRHorseShoe",
+            "code_refs": ["panel_exp/methods/bayesian_regression.py", "INV-015", "impl.run_bayesian"],
+            "research_basis": "Bayesian regression / horseshoe priors for high-dimensional controls; MCMC (NUTS).",
+            "required_assumptions": [
+                "Priors adequate; MCMC converged.",
+                "Likelihood matches data generating process.",
+            ],
+            "implementation_behavior": (
+                "fit_model runs NUTS; ImpactAnalyzer registry 'Bayesian' uses JAX quantiles on "
+                "predict() — **not** full posterior from MCMC path."
+            ),
+            "deviations": [
+                {
+                    "item": "Registry Bayesian ≠ MCMC posterior",
+                    "verdict": "blocking",
+                    "note": "Cannot claim BayesianTBR paper fidelity via registry mode.",
+                },
+            ],
+            "overall_fidelity": "research_only",
+            "supported_estimand": "exploratory; not Track B governed",
+            "geometry": _geometry_block(
+                single_treated="research",
+                multi_treated="research",
+                multi_cell_per_cell="research",
+                aggregate_test_control="research",
+                supergeo="invalid",
+                trimmed="invalid",
+            ),
+            "inference_semantics": "posterior_uncertainty (native) vs credible_interval (registry shortcut)",
+            "trust_report_eligibility": "neither",
+            "calibration_signal_eligibility": "neither",
+            "forbidden_claims": [
+                "Production TrustReport or CalibrationSignal.",
+                "Registry Bayesian as paper-faithful MCMC.",
+            ],
+            "required_fixes_before_production": [
+                "Bridge or block registry Bayesian on BayesianTBR.",
+                "Convergence diagnostics if revived.",
+            ],
+            "d5_oc_note": "Skipped in validation runner.",
+        },
+        {
+            "audit_id": "CV-EST-DID",
+            "family": "estimator",
+            "name": "DID (TWFE + native bootstrap)",
+            "code_refs": ["panel_exp/methods/DID.py", "DEF-003", "did_interval_policy.py"],
+            "research_basis": "Two-way fixed effects DID; cluster/block bootstrap for inference.",
+            "required_assumptions": [
+                "Parallel trends.",
+                "Simultaneous adoption.",
+                "Correct unit/time FE specification.",
+            ],
+            "implementation_behavior": (
+                "TWFE on long panel; moving block bootstrap on post path; cumulative ATT intervals; "
+                "overrides registry — not registry bootstrap mode."
+            ),
+            "deviations": [
+                {
+                    "item": "Relative ATT post CI unsupported (DEF-003)",
+                    "verdict": "blocking",
+                    "note": "Track B cumulative_att_interval semantics.",
+                },
+            ],
+            "overall_fidelity": "aligned_with_deviation",
+            "supported_estimand": "cumulative_att / mean post ATT — not SCM relative ATT",
+            "geometry": _geometry_block(
+                single_treated="supported_pooled",
+                multi_treated="supported_pooled",
+                multi_cell_per_cell="restricted",
+                aggregate_test_control="invalid",
+                supergeo="invalid",
+                trimmed="invalid",
+            ),
+            "inference_semantics": "bootstrap_approximation (native)",
+            "trust_report_eligibility": "diagnostic_trust_only",
+            "calibration_signal_eligibility": "neither",
+            "forbidden_claims": [
+                "Relative ATT lift compare to SCM+JK.",
+                "CalibrationSignal without estimand bridge.",
+            ],
+            "required_fixes_before_production": [
+                "Pretrend contract enforcement in exports.",
+            ],
+            "d5_oc_note": "DEF-016 deferred OC.",
+        },
+        {
+            "audit_id": "CV-EST-TROP",
+            "family": "estimator",
+            "name": "TROP",
+            "code_refs": ["panel_exp/methods/triply_robust_est.py", "trop_test.py"],
+            "research_basis": "Triply robust panel estimators (recent econometrics literature); nuclear norm + unit/time penalties.",
+            "required_assumptions": [
+                "Low-rank structure; tuning parameters appropriate.",
+                "Panel dimensions sufficient.",
+            ],
+            "implementation_behavior": "Research estimator; validation runner skipped; aggregates multi-treated y for display.",
+            "deviations": [{"item": "Not production wired", "verdict": "blocking", "note": "Research only."}],
+            "overall_fidelity": "research_only",
+            "supported_estimand": "panel ATT (implementation-specific)",
+            "geometry": _geometry_block(
+                single_treated="research",
+                multi_treated="research",
+                multi_cell_per_cell="research",
+                aggregate_test_control="research",
+                supergeo="invalid",
+                trimmed="invalid",
+            ),
+            "inference_semantics": "point_estimate / internal bootstrap hooks",
+            "trust_report_eligibility": "neither",
+            "calibration_signal_eligibility": "neither",
+            "forbidden_claims": ["Production geo instrument."],
+            "required_fixes_before_production": ["Full D5 OC + Track B instrument if promoted."],
+            "d5_oc_note": "No D5 battery.",
+        },
+        # --- Inference families ---
+        {
+            "audit_id": "CV-INF-JK",
+            "family": "inference",
+            "name": "UnitJackKnife / JKP",
+            "code_refs": ["panel_exp/inference/unit_jackknife.py", "INV-D3-001", "D5-INF-002b"],
+            "research_basis": "Leave-one-out donor stability for SCM-style counterfactuals (Abadie et al. permutation/JK literature).",
+            "required_assumptions": [
+                ">=2 control donors.",
+                "LOO refit stable; donors exchangeable for diagnostic.",
+            ],
+            "implementation_behavior": (
+                "LOO on control units refits estimator; post INV-D3-001 uses correct LOO target. "
+                "Conservative null monitor (FPR≈0, power≈0 on batteries)."
+            ),
+            "deviations": [{"item": "Not classical sampling CI for ATT", "verdict": "acceptable", "note": "Null-monitor role only."}],
+            "overall_fidelity": "aligned_with_deviation",
+            "supported_estimand": "relative_att_post path CI (effect scale y−y_hat)",
+            "geometry": _geometry_block(
+                single_treated="supported",
+                multi_treated="restricted_per_unit",
+                multi_cell_per_cell="restricted",
+                aggregate_test_control="invalid",
+                supergeo="invalid",
+                trimmed="invalid",
+            ),
+            "inference_semantics": "diagnostic_interval_only",
+            "trust_report_eligibility": "diagnostic_trust_only",
+            "calibration_signal_eligibility": "null_monitor_only_SCM",
+            "forbidden_claims": ["Lift detection", "MMM planning MDE"],
+            "required_fixes_before_production": ["Maintain eligibility registry scope."],
+            "d5_oc_note": "Only SCM_UnitJackKnife nominal-calibration eligible.",
+        },
+        {
+            "audit_id": "CV-INF-PLACEBO",
+            "family": "inference",
+            "name": "Placebo (in-space)",
+            "code_refs": ["panel_exp/inference/placebo.py", "PHASE15", "D5-INST-PLACEBO-001"],
+            "research_basis": "Placebo-in-space: reassign treatment to control units; build null for test statistic.",
+            "required_assumptions": [
+                "Exactly one treated unit.",
+                ">=5 donors (implementation); >=2 hard minimum.",
+                "Placebo units exchangeable.",
+            ],
+            "implementation_behavior": (
+                "Pointwise placebo paths + optional inversion CI; path_interval_type=placebo_band. "
+                "TBR class blocked in impl."
+            ),
+            "deviations": [
+                {
+                    "item": "Inversion CI can be mistaken for ATT CI",
+                    "verdict": "restricted",
+                    "note": "E-ESTIMAND-004 governance.",
+                }
+            ],
+            "overall_fidelity": "aligned_with_deviation",
+            "supported_estimand": "placebo null envelope — not pooled ATT",
+            "geometry": _geometry_block(
+                single_treated="supported",
+                multi_treated="blocked",
+                multi_cell_per_cell="blocked",
+                aggregate_test_control="invalid",
+                supergeo="invalid",
+                trimmed="invalid",
+            ),
+            "inference_semantics": "placebo_randomization_uncertainty",
+            "trust_report_eligibility": "diagnostic_trust_only",
+            "calibration_signal_eligibility": "neither",
+            "forbidden_claims": ["Lift evidence", "CI comparable to JK"],
+            "required_fixes_before_production": [],
+            "d5_oc_note": "PLACEBO-001 complete.",
+        },
+        {
+            "audit_id": "CV-INF-KFOLD",
+            "family": "inference",
+            "name": "KFold (panel time-series CV)",
+            "code_refs": ["panel_exp/inference/k_fold.py", "D5-INST-TBRRIDGE-001"],
+            "research_basis": "Chernozhukov et al. synthetic control CV / cross-validation for bias correction.",
+            "required_assumptions": [
+                "CV folds respect time structure (implementation uses horizon folds).",
+                "Refit estimator per fold.",
+            ],
+            "implementation_behavior": (
+                "Aggregates multi-treated residuals for TBRRidge; debias optional. "
+                "Geo power uses Kfold on agg2 — restricted."
+            ),
+            "deviations": [
+                {
+                    "item": "Multi-treated aggregation in kfold path",
+                    "verdict": "restricted",
+                    "note": "Document geometry when multiple treated units.",
+                }
+            ],
+            "overall_fidelity": "aligned_with_deviation",
+            "supported_estimand": "confidence_interval on effect path (not always relative ATT)",
+            "geometry": _geometry_block(
+                single_treated="supported",
+                multi_treated="restricted",
+                multi_cell_per_cell="restricted",
+                aggregate_test_control="restricted_geo_power",
+                supergeo="invalid",
+                trimmed="invalid",
+            ),
+            "inference_semantics": "sampling_uncertainty_approximation",
+            "trust_report_eligibility": "diagnostic_trust_only",
+            "calibration_signal_eligibility": "neither",
+            "forbidden_claims": ["Platform MDE", "Governed null-monitor"],
+            "required_fixes_before_production": ["Per-instrument OC before promotion."],
+            "d5_oc_note": "TBRRidge Kfold restricted.",
+        },
+        {
+            "audit_id": "CV-INF-BRB",
+            "family": "inference",
+            "name": "BlockResidualBootstrap (BRB)",
+            "code_refs": ["panel_exp/inference/block_residual_bootstrap.py"],
+            "research_basis": "Block bootstrap for time-series panels; residual resampling.",
+            "required_assumptions": ["Stationarity within blocks", "Enough periods for block length"],
+            "implementation_behavior": "Cumulative effect primary for multi-unit; SCM uses lower default n_bootstrap.",
+            "deviations": [],
+            "overall_fidelity": "aligned_with_deviation",
+            "supported_estimand": "confidence_interval cumulative/path",
+            "geometry": _geometry_block(
+                single_treated="supported",
+                multi_treated="restricted",
+                multi_cell_per_cell="restricted",
+                aggregate_test_control="invalid",
+                supergeo="invalid",
+                trimmed="invalid",
+            ),
+            "inference_semantics": "bootstrap_approximation",
+            "trust_report_eligibility": "diagnostic_trust_only",
+            "calibration_signal_eligibility": "neither",
+            "forbidden_claims": ["Lift promotion"],
+            "required_fixes_before_production": [],
+            "d5_oc_note": "TBRRidge BRB restricted.",
+        },
+        {
+            "audit_id": "CV-INF-CONFORMAL",
+            "family": "inference",
+            "name": "Conformal",
+            "code_refs": ["panel_exp/inference/conformal.py", "TRACK_D_LITERATURE_CROSSCHECK §3.8"],
+            "research_basis": "Distribution-free predictive intervals under exchangeability — often violated in panels.",
+            "required_assumptions": ["Exchangeable residuals", "Stable conformal score"],
+            "implementation_behavior": "Registry mode; grid null search on post mean — diagnostic.",
+            "deviations": [{"item": "Panel geo likely violates exchangeability", "verdict": "restricted", "note": ""}],
+            "overall_fidelity": "needs_characterization",
+            "supported_estimand": "conformal_interval on effect path",
+            "geometry": _geometry_block(
+                single_treated="uncharacterized",
+                multi_treated="uncharacterized",
+                multi_cell_per_cell="uncharacterized",
+                aggregate_test_control="uncharacterized",
+                supergeo="invalid",
+                trimmed="invalid",
+            ),
+            "inference_semantics": "conformal_interval",
+            "trust_report_eligibility": "neither",
+            "calibration_signal_eligibility": "neither",
+            "forbidden_claims": ["Decision-grade geo lift"],
+            "required_fixes_before_production": ["D5 conformal OC if used in prod."],
+            "d5_oc_note": "Registry tests only.",
+        },
+        {
+            "audit_id": "CV-INF-BAYESIAN-REG",
+            "family": "inference",
+            "name": "Registry Bayesian (JAX)",
+            "code_refs": ["inference/modes/impl.py run_bayesian"],
+            "research_basis": "Posterior predictive intervals from MCMC — **not** what registry does.",
+            "required_assumptions": ["N/A — shortcut path"],
+            "implementation_behavior": "Quantiles of predict() outputs after single fit — not NUTS on BayesianTBR.",
+            "deviations": [{"item": "Not MCMC posterior", "verdict": "blocking", "note": "INV-015"}],
+            "overall_fidelity": "implementation_bug_for_claimed_family",
+            "supported_estimand": "credible_interval mislabeled if called posterior",
+            "geometry": _geometry_block(
+                single_treated="blocked",
+                multi_treated="blocked",
+                multi_cell_per_cell="blocked",
+                aggregate_test_control="blocked",
+                supergeo="invalid",
+                trimmed="invalid",
+            ),
+            "inference_semantics": "mislabeled_credible_interval",
+            "trust_report_eligibility": "neither",
+            "calibration_signal_eligibility": "neither",
+            "forbidden_claims": ["BayesianTBR paper claims via registry"],
+            "required_fixes_before_production": ["Remove or bridge registry Bayesian."],
+            "d5_oc_note": "Blocked.",
+        },
+    ]
+
+
+def _fix_typo_records(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    for r in records:
+        r.pop("required_assumations", None)
+    return records
+
+
+def build_conceptual_validity_audit_001() -> dict[str, Any]:
+    records = _fix_typo_records(_method_records())
+    blocking = [r for r in records if any(d.get("verdict") == "blocking" for d in r.get("deviations", []))]
+    restricted = [r["audit_id"] for r in records if r.get("overall_fidelity", "").find("restricted") >= 0]
+
+    return {
+        "artifact_id": "TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001",
+        "artifact_version": "1.0.0",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "lane": "research",
+        "governance": {
+            "no_promotion": True,
+            "synthetic_oc_not_conceptual_validity": True,
+            "no_mmm": True,
+            "audit_010_prerequisite": True,
+        },
+        "binding_docs": [
+            "TRACK_D_LITERATURE_CROSSCHECK_001",
+            "TRACK_D_D2_ESTIMATOR_AND_DONOR_AUDIT_001",
+            "TRACK_D_D3_INFERENCE_METHOD_AUDIT_001",
+            "D5_INST_AUDIT_001",
+            "D5_INST_COMBO_AUDIT_001",
+        ],
+        "method_records": records,
+        "summary": {
+            "n_records": len(records),
+            "blocking_deviation_count": len(blocking),
+            "restricted_ids": restricted,
+            "production_ready_count": 0,
+            "null_monitor_faithful": ["CV-EST-SCM", "CV-INF-JK"],
+            "diagnostic_only_faithful": ["CV-EST-AUGSYNTH", "CV-INF-PLACEBO"],
+            "research_only": ["CV-EST-BAYESIANTBR", "CV-EST-TROP"],
+        },
+        "overall_verdict": "continue_with_restricted_diagnostics_only",
+        "audit_010_inputs": {
+            "faithful_enough_for_trust_diagnostic": [
+                "SCM+JK null-monitor (with full_model guard)",
+                "SCM placebo single-treated",
+                "AugSynthCVXPY point/JK diagnostic",
+            ],
+            "blocked_from_mmm_without_fix": [
+                "Registry Bayesian as BayesianTBR",
+                "DID relative ATT CI",
+                "TBRRidge Kfold as platform MDE",
+                "TBR vs TBRRidge conflation",
+                "full_model SCM/AugSynth post-fit",
+            ],
+            "required_before_mmm": [
+                "D5-INST-TBR-001",
+                "AUDIT-010 readiness/gap (not promotion)",
+                "Resolve INV-D2-001 / INV-015 / recovery_runner TBR factory",
+            ],
+        },
+        "findings": [
+            {
+                "id": "CV-FIND-001",
+                "summary": "Synthetic OC batteries do not establish paper fidelity — only code+geometry+estimand alignment.",
+            },
+            {
+                "id": "CV-FIND-002",
+                "summary": "SCM+JK is the only calibration-eligible path; conceptually null-monitor not lift.",
+            },
+            {
+                "id": "CV-FIND-003",
+                "summary": "Placebo and JK answer different estimands — governance must keep placebo_band separate.",
+            },
+            {
+                "id": "CV-FIND-004",
+                "summary": "TBR (aggregate) vs TBRRidge (unit/agg power) are different research objects.",
+            },
+        ],
+    }
+
+
+def write_artifact(path: Path | None = None) -> Path:
+    path = path or (
+        Path(__file__).resolve().parents[2]
+        / "docs"
+        / "track_d"
+        / "archives"
+        / "TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001_results.json"
+    )
+    payload = build_conceptual_validity_audit_001()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, sort_keys=False) + "\n", encoding="utf-8")
+    return path
+
+
+if __name__ == "__main__":
+    out = write_artifact()
+    print(f"Wrote {out}")

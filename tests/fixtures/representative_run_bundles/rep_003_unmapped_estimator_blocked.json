@@ -1,0 +1,17 @@
+{
+  "case_id": "REP-003",
+  "description": "Unmapped estimator without config_alias must block (no guessing)",
+  "bundle": {
+    "bundle_version": "1.0",
+    "experiment_id": "geo-study-rep-003",
+    "evidence": {
+      "experiment_id": "geo-study-rep-003",
+      "inference_metadata": {
+        "estimator_name": "TBR",
+        "inference_method": "unknown_mode"
+      }
+    }
+  },
+  "expected_export_status": "blocked",
+  "expected_block_reason_prefix": "bundle_extraction_incomplete"
+}

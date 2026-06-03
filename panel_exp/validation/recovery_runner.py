@@ -135,8 +135,9 @@ def _inference_recovery_configs() -> Dict[str, RecoveryEstimatorConfig]:
 def all_recovery_configs() -> Dict[str, RecoveryEstimatorConfig]:
     """Point-estimate and inference-enabled recovery configs keyed by config name."""
     specs = _point_estimate_configs()
-    from panel_exp.methods.tbr import TBRRidge
+    from panel_exp.methods.tbr import TBR, TBRRidge
     from panel_exp.methods.triply_robust_est import TROP
+    from panel_exp.governance.instrument_contract import class_tbr_recovery_factory
 
     specs["TBRRidge"] = RecoveryEstimatorConfig(
         config_name="TBRRidge",
@@ -148,17 +149,16 @@ def all_recovery_configs() -> Dict[str, RecoveryEstimatorConfig]:
         intervals_expected=False,
         significance_from_ci=False,
     )
-    if "TBR" not in specs:
-        specs["TBR"] = RecoveryEstimatorConfig(
-            config_name="TBR",
-            estimator_name="TBR",
-            factory=lambda: TBRRidge(inference=None, alpha=0.05),
-            inference=None,
-            run_kwargs={},
-            supports_significance=False,
-            intervals_expected=False,
-            significance_from_ci=False,
-        )
+    specs["TBR"] = RecoveryEstimatorConfig(
+        config_name="TBR",
+        estimator_name="TBR",
+        factory=class_tbr_recovery_factory(inference=None, alpha=0.05),
+        inference=None,
+        run_kwargs={},
+        supports_significance=False,
+        intervals_expected=False,
+        significance_from_ci=False,
+    )
     specs["TROP"] = RecoveryEstimatorConfig(
         config_name="TROP",
         estimator_name="TROP",

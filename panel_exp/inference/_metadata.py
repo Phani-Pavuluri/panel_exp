@@ -6,6 +6,7 @@ from typing import Any, Optional
 
 import numpy as np
 
+from panel_exp.inference._impact_common import treatment_window_residuals
 from panel_exp.inference.registry import InferenceModeSpec
 from panel_exp.inference_result import InferenceResult, IntervalType
 from panel_exp.method_metadata import merge_maturity_into_results
@@ -19,8 +20,7 @@ def treatment_window_point_effect(analyzer: Any) -> Optional[float]:
         return None
     if "y" not in results or "y_hat" not in results:
         return None
-    pre = panel.treated_start_idxs[0]
-    diff = np.asarray(results["y"], dtype=float)[pre:] - np.asarray(results["y_hat"], dtype=float)[pre:]
+    diff = treatment_window_residuals(results, panel)
     if diff.size == 0:
         return None
     return float(np.nanmean(diff))

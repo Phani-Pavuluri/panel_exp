@@ -1,0 +1,40 @@
+{
+  "fixture_id": "E4-008",
+  "fixture_version": "1.0.0",
+  "description": "Supergeo output without D5-DES-SUPERGEO-001 — characterization_required.",
+  "triangulation_profile": {
+    "profile_id": "tri-fixture-e4-008",
+    "profile_version": "1.0.0",
+    "experiment_id": "fixture-study-e4-008",
+    "run_id": "run-008",
+    "modality": "geo",
+    "design_method_id": "supergeos",
+    "geometry_mode": "supergeo",
+    "n_test_grps": 1,
+    "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+    "evidence_rows": [
+      {
+        "row_id": "row-supergeo-scm",
+        "cell_id": "test_0",
+        "design_method_id": "supergeos",
+        "geometry_mode": "supergeo",
+        "measurement_instrument_id": "geo.synthetic_control.unit_jackknife.relative_att_post.multi_treated_default.confidence_interval",
+        "suitability_status": "characterization_required",
+        "evidence_role": "blocked",
+        "point_estimate": 0.03,
+        "comparability_group": "non_comparable_geometry",
+        "conflict_group": "blocked",
+        "calibration_signal_eligibility": {"eligible": false, "reason_code": "characterization_required", "mmm_ingress_allowed": false},
+        "diagnostic_flags": ["E-DES-GEO-006"]
+      }
+    ]
+  },
+  "expected": {
+    "agreement_state": "blocked_by_suitability",
+    "conflict_class": "E-CONFLICT-004",
+    "trust_report_disposition": "characterization_required",
+    "calibration_signal_eligibility": {"eligible": false},
+    "trust_outcome_hint": "not_assessable"
+  },
+  "forbidden_actions": ["no_full_universe_claim", "no_001e_transfer", "no_mmm_feed"]
+}

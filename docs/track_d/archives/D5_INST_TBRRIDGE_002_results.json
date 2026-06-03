@@ -1,0 +1,671 @@
+{
+  "artifact_id": "D5-INST-TBRRIDGE-002",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-03T03:45:10.836892+00:00",
+  "lane": "research",
+  "binding_docs": [
+    "AUDIT-010_mmm_readiness_gap.md",
+    "D5_INST_TBRRIDGE_001_REPORT.md",
+    "TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md",
+    "D5_INST_COMBO_AUDIT_001_REPORT.md"
+  ],
+  "governance": {
+    "estimator": "TBRRidge",
+    "not_class_TBR": true,
+    "tbr_label_audit": {
+      "recovery_runner_TBR_class": "TBR",
+      "recovery_runner_TBRRidge_class": "TBRRidge",
+      "distinct_from_class_TBR": true,
+      "p0_002_satisfied": true
+    },
+    "reference_context": "D5-INST-TBRRIDGE-001 (Kfold/BRB)",
+    "calibration_signal_ingress": false,
+    "mmm_ingress": false,
+    "track_b_alias_expansion": false,
+    "promotion": false,
+    "audit_010_verdict": "not_ready_continue_track_f"
+  },
+  "config": {
+    "n_mc": 14,
+    "train_length": 28,
+    "test_length": 8,
+    "effect_grid": [
+      0.0,
+      0.08
+    ],
+    "p2_targets": [
+      [
+        "UnitJackKnife",
+        "tbrridge_jk"
+      ],
+      [
+        "JKP",
+        "tbrridge_jkp"
+      ],
+      [
+        "Conformal",
+        "tbrridge_conformal"
+      ],
+      [
+        "TimeSeriesKfold",
+        "tbrridge_timeseries_kfold"
+      ],
+      [
+        "Bayesian",
+        "tbrridge_bayesian_registry"
+      ]
+    ],
+    "context_001": [
+      [
+        "Kfold",
+        "tbrridge_kfold_unit"
+      ],
+      [
+        "BlockResidualBootstrap",
+        "tbrridge_brb_unit"
+      ]
+    ]
+  },
+  "mode_summaries_null": {
+    "tbrridge_jk": {
+      "instrument": "tbrridge_jk",
+      "effect": 0.0,
+      "null_interval_exclusion_fpr": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_point_effect": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_interval_halfwidth": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "covers_zero_rate": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "feasibility_rate": 0.0,
+      "negative_halfwidth_rate": NaN,
+      "dominant_failure_class": "interface_shape"
+    },
+    "tbrridge_jkp": {
+      "instrument": "tbrridge_jkp",
+      "effect": 0.0,
+      "null_interval_exclusion_fpr": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_point_effect": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_interval_halfwidth": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "covers_zero_rate": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "feasibility_rate": 0.0,
+      "negative_halfwidth_rate": NaN,
+      "dominant_failure_class": "interface_shape"
+    },
+    "tbrridge_conformal": {
+      "instrument": "tbrridge_conformal",
+      "effect": 0.0,
+      "null_interval_exclusion_fpr": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_point_effect": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_interval_halfwidth": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "covers_zero_rate": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "feasibility_rate": 0.0,
+      "negative_halfwidth_rate": NaN,
+      "dominant_failure_class": "interface_shape"
+    },
+    "tbrridge_timeseries_kfold": {
+      "instrument": "tbrridge_timeseries_kfold",
+      "effect": 0.0,
+      "null_interval_exclusion_fpr": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0,
+        "n": 14
+      },
+      "mean_point_effect": {
+        "mean": -400.88967421686186,
+        "std": 5.216544831716397,
+        "p95": -391.4028192009311,
+        "n": 14
+      },
+      "mean_interval_halfwidth": {
+        "mean": -21.60470591065306,
+        "std": 8.565868408590923,
+        "p95": -10.725451562981686,
+        "n": 14
+      },
+      "covers_zero_rate": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 14
+      },
+      "feasibility_rate": 1.0,
+      "negative_halfwidth_rate": 1.0,
+      "dominant_failure_class": null
+    },
+    "tbrridge_bayesian_registry": {
+      "instrument": "tbrridge_bayesian_registry",
+      "effect": 0.0,
+      "null_interval_exclusion_fpr": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_point_effect": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_interval_halfwidth": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "covers_zero_rate": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "feasibility_rate": 0.0,
+      "negative_halfwidth_rate": NaN,
+      "dominant_failure_class": null
+    },
+    "tbrridge_kfold_unit": {
+      "instrument": "tbrridge_kfold_unit",
+      "effect": 0.0,
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 14
+      },
+      "mean_point_effect": {
+        "mean": -400.9204820320825,
+        "std": 5.35961185158543,
+        "p95": -391.74813062356816,
+        "n": 14
+      },
+      "mean_interval_halfwidth": {
+        "mean": 15.89392273978491,
+        "std": 2.696163200738091,
+        "p95": 20.484726025594252,
+        "n": 14
+      },
+      "covers_zero_rate": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0,
+        "n": 14
+      },
+      "feasibility_rate": 1.0,
+      "negative_halfwidth_rate": 0.0,
+      "dominant_failure_class": null
+    },
+    "tbrridge_brb_unit": {
+      "instrument": "tbrridge_brb_unit",
+      "effect": 0.0,
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 14
+      },
+      "mean_point_effect": {
+        "mean": 0.5733887015811903,
+        "std": 1.9993943094641993,
+        "p95": 3.2461126638252567,
+        "n": 14
+      },
+      "mean_interval_halfwidth": {
+        "mean": 6.183386722529437,
+        "std": 0.9071164128770828,
+        "p95": 7.634396008232118,
+        "n": 14
+      },
+      "covers_zero_rate": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0,
+        "n": 14
+      },
+      "feasibility_rate": 1.0,
+      "negative_halfwidth_rate": 0.0,
+      "dominant_failure_class": null
+    }
+  },
+  "mode_summaries_injected_8pct": {
+    "tbrridge_jk": {
+      "instrument": "tbrridge_jk",
+      "effect": 0.08,
+      "null_interval_exclusion_fpr": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_point_effect": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_interval_halfwidth": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "covers_zero_rate": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "feasibility_rate": 0.0,
+      "negative_halfwidth_rate": NaN,
+      "dominant_failure_class": "interface_shape"
+    },
+    "tbrridge_jkp": {
+      "instrument": "tbrridge_jkp",
+      "effect": 0.08,
+      "null_interval_exclusion_fpr": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_point_effect": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_interval_halfwidth": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "covers_zero_rate": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "feasibility_rate": 0.0,
+      "negative_halfwidth_rate": NaN,
+      "dominant_failure_class": "interface_shape"
+    },
+    "tbrridge_conformal": {
+      "instrument": "tbrridge_conformal",
+      "effect": 0.08,
+      "null_interval_exclusion_fpr": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_point_effect": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_interval_halfwidth": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "covers_zero_rate": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "feasibility_rate": 0.0,
+      "negative_halfwidth_rate": NaN,
+      "dominant_failure_class": "interface_shape"
+    },
+    "tbrridge_timeseries_kfold": {
+      "instrument": "tbrridge_timeseries_kfold",
+      "effect": 0.08,
+      "null_interval_exclusion_fpr": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0,
+        "n": 14
+      },
+      "mean_point_effect": {
+        "mean": -392.84293227274793,
+        "std": 5.137253324920179,
+        "p95": -383.524663429949,
+        "n": 14
+      },
+      "mean_interval_halfwidth": {
+        "mean": -21.60470591065306,
+        "std": 8.565868408590923,
+        "p95": -10.725451562981679,
+        "n": 14
+      },
+      "covers_zero_rate": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 14
+      },
+      "feasibility_rate": 1.0,
+      "negative_halfwidth_rate": 1.0,
+      "dominant_failure_class": null
+    },
+    "tbrridge_bayesian_registry": {
+      "instrument": "tbrridge_bayesian_registry",
+      "effect": 0.08,
+      "null_interval_exclusion_fpr": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_point_effect": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_interval_halfwidth": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "covers_zero_rate": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "feasibility_rate": 0.0,
+      "negative_halfwidth_rate": NaN,
+      "dominant_failure_class": null
+    },
+    "tbrridge_kfold_unit": {
+      "instrument": "tbrridge_kfold_unit",
+      "effect": 0.08,
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 14
+      },
+      "mean_point_effect": {
+        "mean": -392.8737400879685,
+        "std": 5.2801016716823925,
+        "p95": -383.85761653623,
+        "n": 14
+      },
+      "mean_interval_halfwidth": {
+        "mean": 16.002932783891314,
+        "std": 2.7149977304979287,
+        "p95": 20.540259420084436,
+        "n": 14
+      },
+      "covers_zero_rate": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0,
+        "n": 14
+      },
+      "feasibility_rate": 1.0,
+      "negative_halfwidth_rate": 0.0,
+      "dominant_failure_class": null
+    },
+    "tbrridge_brb_unit": {
+      "instrument": "tbrridge_brb_unit",
+      "effect": 0.08,
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 14
+      },
+      "mean_point_effect": {
+        "mean": 8.62013064569522,
+        "std": 1.9750507928060652,
+        "p95": 11.252097644819674,
+        "n": 14
+      },
+      "mean_interval_halfwidth": {
+        "mean": 6.177237837325891,
+        "std": 0.9166763699499239,
+        "p95": 7.566549216464669,
+        "n": 14
+      },
+      "covers_zero_rate": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0,
+        "n": 14
+      },
+      "feasibility_rate": 1.0,
+      "negative_halfwidth_rate": 0.0,
+      "dominant_failure_class": null
+    }
+  },
+  "mode_dispositions": {
+    "UnitJackKnife": {
+      "instrument_key": "tbrridge_jk",
+      "disposition": "blocked_interface",
+      "reason": "TBRRidge multi-treated path shape breaks unit LOO/JKP/Conformal readout (broadcast).",
+      "audit_010_row": "A16\u2013A21 (TBRRidge+UnitJackKnife)"
+    },
+    "JKP": {
+      "instrument_key": "tbrridge_jkp",
+      "disposition": "blocked_interface",
+      "reason": "TBRRidge multi-treated path shape breaks unit LOO/JKP/Conformal readout (broadcast).",
+      "audit_010_row": "A16\u2013A21 (TBRRidge+JKP)"
+    },
+    "Conformal": {
+      "instrument_key": "tbrridge_conformal",
+      "disposition": "blocked_interface",
+      "reason": "TBRRidge multi-treated path shape breaks unit LOO/JKP/Conformal readout (broadcast).",
+      "audit_010_row": "A16\u2013A21 (TBRRidge+Conformal)"
+    },
+    "TimeSeriesKfold": {
+      "instrument_key": "tbrridge_timeseries_kfold",
+      "disposition": "callable_unverified_interval_semantics",
+      "reason": "Runs on 001e panel but negative interval half-width \u2014 not governed uncertainty.",
+      "audit_010_row": "A16\u2013A21 (TBRRidge+TimeSeriesKfold)"
+    },
+    "Bayesian": {
+      "instrument_key": "tbrridge_bayesian_registry",
+      "disposition": "blocked_production_policy",
+      "reason": "INV-015: registry Bayesian \u2260 BayesianTBR MCMC; probe policy block (registry_inference_bayesian_is_not_bayesian_tbr_mcmc).",
+      "audit_010_row": "A16\u2013A21 (TBRRidge+Bayesian)"
+    },
+    "Kfold": {
+      "instrument_key": "tbrridge_kfold_unit",
+      "disposition": "already_characterized_restricted",
+      "reason": "D5-INST-TBRRIDGE-001 \u2014 remain restricted diagnostic; no re-promotion.",
+      "audit_010_row": "A13\u2013A14"
+    },
+    "BlockResidualBootstrap": {
+      "instrument_key": "tbrridge_brb_unit",
+      "disposition": "already_characterized_restricted",
+      "reason": "D5-INST-TBRRIDGE-001 \u2014 remain restricted diagnostic; no re-promotion.",
+      "audit_010_row": "A13\u2013A14"
+    }
+  },
+  "kfold_vs_timeseries_kfold": {
+    "both_feasible": true,
+    "null_point_mean_delta": 0.030807815220612156,
+    "distinct_inference_path": true,
+    "note": "TimeSeriesKfold uses horizon-blocked folds; Kfold uses panel K-fold \u2014 not interchangeable."
+  },
+  "combo_scale_probes": {
+    "enabled": true,
+    "panel_meta": {
+      "train_length": 20,
+      "test_length": 6,
+      "n_geos": 12
+    },
+    "probes": {
+      "UnitJackKnife": {
+        "status": "probe_failed",
+        "error_type": "ValueError",
+        "error": "operands could not be broadcast together with shapes (6,4) (6,) ",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "JKP": {
+        "status": "probe_failed",
+        "error_type": "ValueError",
+        "error": "operands could not be broadcast together with shapes (7,4) (7,) ",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "Conformal": {
+        "status": "probe_failed",
+        "error_type": "ValueError",
+        "error": "operands could not be broadcast together with shapes (26,4) (26,) ",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "TimeSeriesKfold": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "Bayesian": {
+        "status": "probe_failed",
+        "error_type": "IndexError",
+        "error": "too many indices for array: array is 0-dimensional, but 1 were indexed",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "Kfold": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      },
+      "BlockResidualBootstrap": {
+        "status": "probe_success",
+        "has_y_hat": true,
+        "path_interval_type": "confidence_interval",
+        "n_treated": 4,
+        "n_control": 4
+      }
+    }
+  },
+  "scm_jk_null_detected_rate": {
+    "mean": 0.0,
+    "std": 0.0,
+    "p95": 0.0,
+    "n": 14
+  },
+  "overall_verdict": "remain_restricted_no_promotion",
+  "track_f_p2_roadmap": {
+    "TBRRidge_UnitJackKnife": "blocked_interface",
+    "TBRRidge_JKP": "blocked_interface",
+    "TBRRidge_Conformal": "blocked_interface",
+    "TBRRidge_TimeSeriesKfold": "callable_unverified_interval_semantics",
+    "TBRRidge_Bayesian_registry": "blocked_production_policy",
+    "next_battery": "D5-INST-AUGSYNTH-003 (Conformal) \u2014 separate estimator family"
+  },
+  "findings": [
+    {
+      "id": "D5-TBR2-FIND-001",
+      "severity": "high",
+      "summary": "TBRRidge+UnitJackKnife/JKP/Conformal fail on 001e unit panel (shape broadcast).",
+      "implication": "Remain blocked_interface; not Track B / MMM candidates."
+    },
+    {
+      "id": "D5-TBR2-FIND-002",
+      "severity": "high",
+      "summary": "TimeSeriesKfold feasible but interval semantics unverified (negative HW possible).",
+      "implication": "Restricted diagnostic only \u2014 distinct from governed Kfold in 001."
+    },
+    {
+      "id": "D5-TBR2-FIND-003",
+      "severity": "high",
+      "summary": "Registry Bayesian on TBRRidge blocked by INV-015; not BayesianTBR MCMC.",
+      "implication": "No production or CalibrationSignal path."
+    },
+    {
+      "id": "D5-TBR2-FIND-004",
+      "severity": "medium",
+      "summary": "TBRRidge \u2260 class TBR \u2014 recovery_runner P0 label audit passes.",
+      "implication": "Reports must keep estimand families separate."
+    }
+  ],
+  "user_facing_warnings": [
+    "Do not conflate TBRRidge with class TBR (aggregate 1\u00d71 only).",
+    "Do not treat registry Bayesian as BayesianTBR NUTS posterior.",
+    "TBRRidge unit point scale \u2260 SCM+JK relative ATT without bridge.",
+    "TimeSeriesKfold \u2260 Kfold \u2014 different fold geometry; both restricted."
+  ],
+  "rules_acknowledged": {
+    "no_production_changes": true,
+    "no_estimator_redesign": true,
+    "no_trust_report_changes": true,
+    "no_calibration_signal": true,
+    "no_mmm": true,
+    "no_promotion": true
+  }
+}

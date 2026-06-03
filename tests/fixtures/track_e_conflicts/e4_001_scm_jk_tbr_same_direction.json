@@ -1,0 +1,69 @@
+{
+  "fixture_id": "E4-001",
+  "fixture_version": "1.0.0",
+  "description": "SCM+JK null-monitor compatible + TBRRidge diagnostic same direction — caveats only.",
+  "binding_docs": ["TRACK_E_E3_TRIANGULATION_SCHEMA_001", "TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001"],
+  "declared_claim_type": "null_viability",
+  "triangulation_profile": {
+    "profile_id": "tri-fixture-e4-001",
+    "profile_version": "1.0.0",
+    "experiment_id": "fixture-study-e4-001",
+    "run_id": "run-001",
+    "modality": "geo",
+    "design_method_id": "greedy_match_markets",
+    "geometry_mode": "single_cell",
+    "n_test_grps": 1,
+    "declared_estimand_id": "geo.relative_att_post.pooled_path.relative",
+    "evidence_rows": [
+      {
+        "row_id": "row-scm-jk",
+        "cell_id": "test_0",
+        "design_method_id": "greedy_match_markets",
+        "geometry_mode": "single_cell",
+        "estimand_id": "geo.relative_att_post.pooled_path.relative",
+        "measurement_instrument_id": "geo.synthetic_control.unit_jackknife.relative_att_post.multi_treated_default.confidence_interval",
+        "config_alias": "SCM_UnitJackKnife",
+        "suitability_status": "suitable_with_caveats",
+        "evidence_role": "primary",
+        "point_estimate": 0.012,
+        "uncertainty": {"lower": -0.008, "upper": 0.035, "covers_zero": true, "interval_estimand_id": "geo.relative_att_post.pooled_path.relative", "semantics": "confidence_interval"},
+        "interval_semantics": "confidence_interval",
+        "claim_type": "null_monitor",
+        "allowed_claim_types": ["null_monitor", "null_viability"],
+        "disallowed_claim_types": ["positive_lift_detection", "mmm_lift"],
+        "comparability_group": "rel_att_post_unit_single_cell",
+        "conflict_group": "governed_primary",
+        "calibration_signal_eligibility": {"eligible": true, "reason_code": "governed_null_monitor", "mmm_ingress_allowed": false}
+      },
+      {
+        "row_id": "row-tbr-kfold",
+        "cell_id": "test_0",
+        "design_method_id": "greedy_match_markets",
+        "geometry_mode": "single_cell",
+        "estimand_id": "geo.relative_att_post.pooled_path.relative",
+        "measurement_instrument_id": "geo.tbr_ridge.kfold.relative_att_post.multi_treated_default.confidence_interval",
+        "config_alias": "TBRRidge_Kfold",
+        "suitability_status": "restricted",
+        "evidence_role": "restricted",
+        "point_estimate": 0.018,
+        "uncertainty": {"lower": -0.05, "upper": 0.09, "covers_zero": true, "interval_estimand_id": "geo.relative_att_post.pooled_path.relative", "semantics": "confidence_interval"},
+        "interval_semantics": "confidence_interval",
+        "claim_type": "lift_point",
+        "allowed_claim_types": ["diagnostic_context"],
+        "disallowed_claim_types": ["positive_lift_detection", "mmm_lift"],
+        "comparability_group": "rel_att_post_unit_single_cell",
+        "conflict_group": "restricted_secondary",
+        "calibration_signal_eligibility": {"eligible": false, "reason_code": "restricted", "mmm_ingress_allowed": false}
+      }
+    ]
+  },
+  "expected": {
+    "comparability_classification": "same_group_directional_compare_allowed",
+    "conflict_class": "E-CONFLICT-001",
+    "agreement_state": "directional_agreement_magnitude_differs",
+    "trust_report_disposition": "directional_support_with_caveats",
+    "calibration_signal_eligibility": {"eligible": true, "scope": "null_monitor_only", "lift_mmm_allowed": false},
+    "trust_outcome_hint": "supported_with_limitations"
+  },
+  "forbidden_actions": ["no_averaging", "no_lift_promotion_from_restricted", "no_mmm_lift_feed"]
+}

@@ -21,8 +21,15 @@
 | [`docs/SCM_JACKKNIFE_CHARACTERIZATION_001.md`](SCM_JACKKNIFE_CHARACTERIZATION_001.md) | Phase 11 OC archive (complete) |
 
 | [`docs/PHASE12_INVESTIGATION_PLAN.md`](PHASE12_INVESTIGATION_PLAN.md) | Phase 12 governed investigation plan (pre-execution) |
+| [`docs/ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) | **Alignment gate** — north star, six questions, stop conditions per item |
+| [`docs/MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md`](MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md) | **Periodic audit** — “building the right thing, correctly?” |
+| [`docs/MIP_AUDIT_REGISTRY.md`](MIP_AUDIT_REGISTRY.md) | Audit index and follow-ups |
 
 **Read-only roadmap — no package code in this document.**
+
+**Alignment:** Every active execution item must satisfy [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) before start and at completion.
+
+**Periodic audit (MIP-PERIODIC-AUDIT):** After major milestones and before production-promotion, run the [audit template](MIP_PERIODIC_ARCHITECTURE_AND_ROBUSTNESS_AUDIT_TEMPLATE.md) and update the [audit registry](MIP_AUDIT_REGISTRY.md). Cadence: after B5d, after M2, after Track D D1/D2/D3, **before MMM intake readiness/gap audit (AUDIT-010)**, before planning/optimizer, before LLM interface. Not a substitute for tests or Track D OC.
 
 **Conceptual reference (not implementation blueprint):** Industry conversion-lift and user-level incrementality practice (e.g. Google Conversion Lift methodology — ghost ads, exposure-opportunity logging, user-randomized designs) informs **Track C governance semantics only**. Do not copy external estimators or certify parity without archived OC.
 
@@ -62,6 +69,151 @@ Detail: [`EXPERIMENTATION_PLATFORM_VISION.md`](EXPERIMENTATION_PLATFORM_VISION.m
 
 **Track A is gate for Track B** — do not build unified abstractions before TBRRidge OC and governance stabilize.
 
+#### Track B execution status (2026-05-20)
+
+Architecture contracts and test discipline (planning + fixtures; implementation in progress):
+
+| Artifact | Doc | Status |
+|----------|-----|--------|
+| B3a Measurement Instrument Catalog | [`TRACK_B_MEASUREMENT_INSTRUMENT_CATALOG_001.md`](TRACK_B_MEASUREMENT_INSTRUMENT_CATALOG_001.md) | Complete |
+| B3b Estimand Registry | [`TRACK_B_ESTIMAND_REGISTRY_001.md`](TRACK_B_ESTIMAND_REGISTRY_001.md) | Complete |
+| B2 Contract Schema Draft | [`TRACK_B_CONTRACT_SCHEMA_DRAFT_001.md`](TRACK_B_CONTRACT_SCHEMA_DRAFT_001.md) | Complete |
+| B4 Adapter ID Resolution | [`TRACK_B_ADAPTER_ID_RESOLUTION_001.md`](TRACK_B_ADAPTER_ID_RESOLUTION_001.md) | Complete |
+| B5 Contract Test Plan | [`TRACK_B_CONTRACT_TEST_PLAN_001.md`](TRACK_B_CONTRACT_TEST_PLAN_001.md) | Complete |
+| B5a Golden fixtures | [`tests/fixtures/track_b_contracts/`](../tests/fixtures/track_b_contracts/) | Complete |
+| B5b Pytest loader | [`tests/track_b/`](../tests/track_b/) | Complete |
+| B5c TrustReport composer tests | [`tests/track_b/trust_report_composer.py`](../tests/track_b/trust_report_composer.py) | **Complete** |
+| B5d Contract validator | [`tests/track_b/contract_validator.py`](../tests/track_b/contract_validator.py) | **Complete** |
+| M2 Dual-write | [`panel_exp/track_b/`](../panel_exp/track_b/) · [`TRACK_B_ARTIFACT_CONSOLIDATION_001.md`](TRACK_B_ARTIFACT_CONSOLIDATION_001.md) | **Complete** (AUDIT-002 `2754c0a`) |
+| M2.1 Adapter production wire-up | [`panel_exp/track_b/bundle_extract.py`](../panel_exp/track_b/bundle_extract.py) · [`export.py`](../panel_exp/track_b/export.py) | **Complete** ([AUDIT-003](audits/AUDIT-003_m2_1_wire_up_gate.md) `5000fc5`) |
+| M2.2 Production TrustReport path | [`trust_report.py`](../panel_exp/track_b/trust_report.py) · [`geo_run_export.py`](../panel_exp/artifacts/geo_run_export.py) | **Complete** ([AUDIT-004](audits/AUDIT-004_m2_2_trust_report_gate.md) `ec2d351`) |
+
+**Near-term sequence:** … **Track E E3/E4** **complete** · **Track E E5/E6** **complete** · **Track E E7** **complete** · not MMM yet.
+
+**Alignment registry:** [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) § Track B — per-item capability, risk, artifacts, stop conditions.
+
+### Track D — statistical robustness, method coverage, literature cross-check
+
+**Roadmap ID:** `TRACK-D-STATISTICAL-ROBUSTNESS`  
+**Status:** planned (D0/D0b architecture started)  
+**Trigger:** Begin D1+ execution after **M2 adapter wire-up** on representative real GeoX RunBundles (M2 dual-write complete per [AUDIT-002](audits/AUDIT-002_m2_dual_write.md)). D0 inventory may proceed in parallel — **do not skip AUDIT-002 gate before D1**.
+
+**Alignment registry:** [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) § Track D.
+
+**Purpose:** Harden the **scientific core** — every design method, matching algorithm, estimator, inference mode, power/MDE method, diagnostic, and validation gate is inventoried, literature-checked, implementation-audited, simulation-characterized, mapped to Track B identity, and assigned a governed robustness status before calibration or decision-grade claims.
+
+**Core principle:** Contracts prevent semantic lies (Track B). Track D prevents statistical and mathematical lies.
+
+**Lane:** Track D execution is **research / robustness** by default — ambitious literature-backed and statistical work is encouraged under [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) § Research / robustness lane. Outputs are not production-, calibration-, or decision-eligible until the promotion bridge completes.
+
+| Package | Document | Status |
+|---------|----------|--------|
+| **D0** | [`TRACK_D_METHOD_INVENTORY_AND_ROBUSTNESS_MATRIX_001.md`](TRACK_D_METHOD_INVENTORY_AND_ROBUSTNESS_MATRIX_001.md) | Complete (planning) |
+| **D0b** | [`TRACK_D_LITERATURE_CROSSCHECK_001.md`](TRACK_D_LITERATURE_CROSSCHECK_001.md) | Complete (template) |
+| D1 | Design + matching audit | **Complete** ([`TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md`](TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md)) |
+| D2 | Estimator + SCM donor audit | **Complete** ([`TRACK_D_D2_ESTIMATOR_AND_DONOR_AUDIT_001.md`](TRACK_D_D2_ESTIMATOR_AND_DONOR_AUDIT_001.md)) |
+| D3 | Inference method audit | **Complete** ([`TRACK_D_D3_INFERENCE_METHOD_AUDIT_001.md`](TRACK_D_D3_INFERENCE_METHOD_AUDIT_001.md)) |
+| D4 | Power / MDE audit | **Complete** ([`TRACK_D_D4_POWER_MDE_AUDIT_001.md`](TRACK_D_D4_POWER_MDE_AUDIT_001.md)) |
+| D5 | OC simulation harness | In progress (001a–e ✅; DESIGN-INVENTORY-001 ✅; readout update ✅) |
+| D6 | Runtime monitoring | Planned |
+| D7 | Promotion / demotion framework | Planned |
+| D8 | Cross-method triangulation | Superseded by **Track E** (governance layer) |
+
+**Non-goals:** No new estimator promotion without OC; no eligibility/maturity changes without governance; no silent averaging of conflicting methods; no paper-based trust without implementation validation; no Track B identity rule changes without explicit ADR.
+
+**Success criteria:** Every method explicitly inventoried, literature-checked, audited, characterized where needed, mapped to `estimand_id` / `measurement_instrument_id`, and status-governed before decision-grade claims.
+
+#### Design-readout OC framing ([ROADMAP-DESIGN-READOUT-UPDATE-001](ROADMAP_DESIGN_READOUT_UPDATE_001.md))
+
+Power/OC evidence is **design-method × geometry-mode × measurement-instrument** specific—not one universal readout.
+
+| Concept | Governance |
+|---------|------------|
+| **SCM+UnitJackKnife** | **Reference** null-monitor branch for fixed-window unit-level OC (D5-POW-001b/d); **not** universal GeoX readout, platform MDE, or lift detection |
+| **Multi-cell** | **Geometry mode** (`n_test_grps > 1`); not a design method class |
+| **supergeos** | **D5-DES-SUPERGEO-001** ✅ [`D5_DES_SUPERGEO_001_results.json`](track_d/archives/D5_DES_SUPERGEO_001_results.json) — separate geometry; blocked for 001e |
+| **trimmedmatch** | **D5-DES-TRIM-001** ✅ [`D5_DES_TRIM_001_results.json`](track_d/archives/D5_DES_TRIM_001_results.json) — separate population; blocked for 001e |
+| **Multi-cell k** | **D5-MCELL-001** ✅ [`D5_MCELL_001_results.json`](track_d/archives/D5_MCELL_001_results.json) — k≤2 typical; k≥3 degrades |
+| **TBRRidge OC** | **D5-INST-TBRRIDGE-001** ✅ [`D5_INST_TBRRIDGE_001_results.json`](track_d/archives/D5_INST_TBRRIDGE_001_results.json) — remain restricted |
+| **Placebo OC** | **D5-INST-PLACEBO-001** ✅ [`D5_INST_PLACEBO_001_results.json`](track_d/archives/D5_INST_PLACEBO_001_results.json) — remain diagnostic_only |
+| **Instrument inventory** | **D5-INST-AUDIT-001** ✅ [`D5_INST_AUDIT_001_results.json`](track_d/archives/D5_INST_AUDIT_001_results.json) — estimator × inference × geometry matrix |
+| **AugSynth OC** | **D5-INST-AUGSYNTH-001** ✅ [`D5_INST_AUGSYNTH_001_results.json`](track_d/archives/D5_INST_AUGSYNTH_001_results.json) — diagnostic_only; characterized comparator |
+| **Combo compatibility** | **D5-INST-COMBO-AUDIT-001** ✅ [`D5_INST_COMBO_AUDIT_001_results.json`](track_d/archives/D5_INST_COMBO_AUDIT_001_results.json) — curated matrix; no Cartesian OC |
+| **Conceptual validity** | **TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001** ✅ [`TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) — literature/method fidelity; synthetic OC ≠ paper validity; prerequisite for AUDIT-010 |
+| **AugSynth Kfold OC** | **D5-INST-AUGSYNTH-KFOLD-001** ✅ [`D5_INST_AUGSYNTH_KFOLD_001_results.json`](track_d/archives/D5_INST_AUGSYNTH_KFOLD_001_results.json) — restricted diagnostic comparator |
+| **AugSynth Conformal OC** | **D5-INST-AUGSYNTH-003** ✅ [`D5_INST_AUGSYNTH_003_results.json`](track_d/archives/D5_INST_AUGSYNTH_003_results.json) — callable; interval semantics unverified |
+| **Track F P2 closeout** | **TRACK-F-P2-CLOSEOUT-001** ✅ [`TRACK_F_P2_CLOSEOUT_001.md`](TRACK_F_P2_CLOSEOUT_001.md) — P2 closed; implementation backlog active |
+| **F-INF-001 contract** | ✅ [`F_INF_001_INTERVAL_SEMANTICS_CONTRACT.md`](F_INF_001_INTERVAL_SEMANTICS_CONTRACT.md) — interval semantics classification |
+| **F-GEO-001 contract** | ✅ [`F_GEO_001_GEOMETRY_ADAPTER_CONTRACT.md`](F_GEO_001_GEOMETRY_ADAPTER_CONTRACT.md) — geometry adapter rules; depends on F-INF-001 |
+| **F-CAT-001 catalog** | ✅ [`F_CAT_001_REGISTRY_CATALOG_CLEANUP.md`](F_CAT_001_REGISTRY_CATALOG_CLEANUP.md) — registry/catalog metadata aligned with F-INF + F-GEO |
+| **F-BACKLOG-001 closeout** | ✅ [`F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md`](F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md) — prioritized implementation queue |
+| **F-BACKLOG-002 relevance** | ✅ [`F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md`](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md) — industry/literature re-rank; investigation only (no promotion) |
+| **F-INF-003 fix** | ✅ [`F_INF_003_INTERVAL_ORIENTATION_FIX.md`](F_INF_003_INTERVAL_ORIENTATION_FIX.md) — Conformal/TimeSeriesKfold orientation |
+| **D5-INF-POSTFIX-001** | ✅ [`D5_INF_POSTFIX_001_REPORT.md`](track_d/D5_INF_POSTFIX_001_REPORT.md) — A05/A19 targeted OC post-fix |
+| **Class TBR OC** | **D5-INST-TBR-001** ✅ [`D5_INST_TBR_001_results.json`](track_d/archives/D5_INST_TBR_001_results.json) — aggregate 1×1 restricted diagnostic |
+| **Roadmap consistency** | **AUDIT-010A** ✅ [`audits/AUDIT-010A_roadmap_consistency_pre_mmm_gate.md`](audits/AUDIT-010A_roadmap_consistency_pre_mmm_gate.md) — pre-MMM sanity check |
+| **MMM readiness / gap** | **AUDIT-010** ✅ [`audits/AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md) — `not_ready_continue_track_f`; Appendix A = 30 tuples |
+| **D5-POW-001e** | ✅ Six confirmed methods; SCM+JK reference null FPR; [`D5_POW_001e_results.json`](track_d/archives/D5_POW_001e_results.json) — `acceptable_with_caveats` |
+
+**Next steps:** … → ~~**GOVERNANCE-PR-TRACK-F-DECISION-PACKAGE-001**~~ ✅ → ~~**TRUSTREPORT-F-DECISION-INTEGRATION-001**~~ ✅ → promotion **only if** future governance PR allows (not authorized).
+
+### Track F — implementation checkpoint (2026-06-03)
+
+**Document:** [`TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md`](TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md)  
+**Verdict:** Active fix→OC loop **paused**; contracts + F-INF-003/002 + POSTFIX/TBRRIDGE-003 complete; governed uncertainty ∅; optional **F-INF-004** only on product pull.
+
+### F-DECISION-001 — method eligibility and evidence decision policy
+
+**Document:** [`F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md`](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md)  
+**Code:** [`panel_exp/governance/decision_policy.py`](../panel_exp/governance/decision_policy.py)  
+**Verdict:** Resolver assigns roles (null monitor / diagnostic / falsification / excluded) and evidence posture **without** promotion, MMM, or CalibrationSignal expansion.
+
+### GOVERNANCE-PR-TRACK-F-DECISION-PACKAGE-001 — governance PR summary
+
+**Document:** [`GOVERNANCE_PR_TRACK_F_DECISION_PACKAGE_001.md`](GOVERNANCE_PR_TRACK_F_DECISION_PACKAGE_001.md)  
+**Verdict:** Packages checkpoint + F-DECISION-001 + F-BACKLOG-002; confirms production-safe decision posture; **next authorized step = TrustReport integration** (separate PR; no wiring in this package).
+
+### TRUSTREPORT-F-DECISION-INTEGRATION-001
+
+**Document:** [`TRUSTREPORT_F_DECISION_INTEGRATION_001.md`](TRUSTREPORT_F_DECISION_INTEGRATION_001.md)  
+**Code:** [`panel_exp/track_b/f_decision_context.py`](../panel_exp/track_b/f_decision_context.py) · [`trust_report.py`](../panel_exp/track_b/trust_report.py)  
+**Verdict:** Optional `f_decision_context` on TrustReport; backward compatible; guardrails asserted at build; no promotion/MMM/CS expansion.
+
+### Track F — estimator / inference completion (implementation planning)
+
+**Roadmap ID:** `TRACK-F-ESTIMATOR-INFERENCE-COMPLETION`  
+**Status:** **plan v1** — converts Track D compatibility + conceptual validity + OC into fix roadmap  
+**Document:** [`TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md`](TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md)
+
+| Phase | Scope |
+|-------|--------|
+| **P1** | ~~D5-INST-TBR-001~~ ✅ — aggregate class TBR OC |
+| **P1.5** | ~~AUDIT-010~~ ✅ — `not_ready_continue_track_f` |
+| **P0 (post AUDIT-010)** | ~~Blocking hygiene~~ ✅ — [`instrument_contract.py`](../panel_exp/governance/instrument_contract.py) |
+| **P2** | ~~D5-INST-TBRRIDGE-002~~ ✅ · ~~D5-INST-AUGSYNTH-003~~ ✅ · [`TRACK_F_P2_CLOSEOUT_001`](TRACK_F_P2_CLOSEOUT_001.md) ✅ | P2 closed — no more OC batteries unless fix reopens |
+| **P3+** | ~~F-INF-003~~ ✅ · ~~POSTFIX~~ ✅ · ~~F-INF-002~~ ✅ · ~~TBRRIDGE-003~~ ✅ | **CHECKPOINT-001** ✅ — **pause** (default) |
+
+**Non-goals:** No fixes in planning doc; no MMM ingestion; no CalibrationSignal expansion without separate governance PR.
+
+### Track E — method suitability & triangulation
+
+**Roadmap ID:** `TRACK-E-SUITABILITY-TRIANGULATION`  
+**Status:** **E0–E7 complete** ([AUDIT-009](audits/AUDIT-009_track_e_completion_gate.md) `79c59c4`) — documentation, contract tests, production TrustReport wiring  
+**Purpose:** Govern **design-method × geometry × measurement-instrument** suitability, triangulation, conflict taxonomy, and MMM-readiness — bridge between Track D OC evidence and Track B TrustReport / CalibrationSignal. **SCM+JK is one instrument card, not the whole system** ([ROADMAP-DESIGN-READOUT-UPDATE-001](ROADMAP_DESIGN_READOUT_UPDATE_001.md)).
+
+| Phase | Document | Status |
+|-------|----------|--------|
+| **E0** | [`TRACK_E_METHOD_SUITABILITY_AND_TRIANGULATION_001.md`](TRACK_E_METHOD_SUITABILITY_AND_TRIANGULATION_001.md) | **E0–E7 complete** |
+| E1 | Suitability diagnostic inventory | ✅ [`TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md`](TRACK_E_E1_SUITABILITY_DIAGNOSTIC_INVENTORY_001.md) |
+| E2 | Method suitability cards | ✅ [`TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md`](TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md) |
+| E3 | Triangulation schema | ✅ [`TRACK_E_E3_TRIANGULATION_SCHEMA_001.md`](TRACK_E_E3_TRIANGULATION_SCHEMA_001.md) |
+| E4 | TrustReport conflict fixtures | ✅ [`TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001.md`](TRACK_E_E4_TRUSTREPORT_CONFLICT_FIXTURES_001.md) · [`tests/fixtures/track_e_conflicts/`](../tests/fixtures/track_e_conflicts/) |
+| E5 | CalibrationSignal eligibility policy | ✅ [`TRACK_E_E5_CALIBRATIONSIGNAL_ELIGIBILITY_POLICY_001.md`](TRACK_E_E5_CALIBRATIONSIGNAL_ELIGIBILITY_POLICY_001.md) |
+| E6 | TrustReport contract tests (E4 fixtures) | ✅ [`tests/track_e/test_e6_e4_conflict_fixtures.py`](../tests/track_e/test_e6_e4_conflict_fixtures.py) |
+| E7 | Production triangulation integration | ✅ [`panel_exp/track_b/triangulation.py`](../panel_exp/track_b/triangulation.py) · [`tests/track_b/test_e7_track_e_trust_report.py`](../tests/track_b/test_e7_track_e_trust_report.py) |
+
+**Non-goals (program):** No MMM ingestion, optimizer/planning feed, instrument promotion, or estimator/design/inference changes. E7 adds opt-in TrustReport triangulation only.
+
 ### Track C — unified user-level experimentation & conversion lift
 
 **Objective:** Extend governed experimentation architecture from **geo-level** experiments to **user-randomized incrementality** systems (A/B, conversion lift, holdouts) — as a **future architecture track**, not immediate implementation.
@@ -88,6 +240,8 @@ Detail: [`EXPERIMENTATION_PLATFORM_VISION.md`](EXPERIMENTATION_PLATFORM_VISION.m
 Detail: [`EXPERIMENTATION_PLATFORM_VISION.md`](EXPERIMENTATION_PLATFORM_VISION.md) § Track C · investigations **INV-020–INV-026** in [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIGATIONS.md).
 
 **Track sequencing:** A → B → C. Do not implement user-level experimentation surfaces before geo governance and shared contracts stabilize.
+
+**Alignment registry:** [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) § Track C · MMM · LLM — gated; stop conditions documented.
 
 ---
 
@@ -311,39 +465,58 @@ See [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIGATIONS.md) § Phase 12 program for c
 | **In scope** | Governance doc / validation plan update; explicit “go / no-go / monitor-only” per config |
 | **Out of scope** | `production_safe` label; catalog auto-promotion; blocking gates |
 | **Exit** | Recorded decision with citations to Run 002 and OC characterization; no promotion without passing promotion policy |
+| **Status** | **Complete (historical)** — [`PHASE13_GOVERNANCE_DECISION_001.md`](PHASE13_GOVERNANCE_DECISION_001.md). **Not** the current MMM or instrument promotion path; superseded by Track D/E/F characterization + **AUDIT-010** readiness/gap. |
 
 ---
 
-### Phase 14 — DID operating-characteristic characterization
+### Track A governance vs characterization (roadmap clarification)
 
-| Field | Detail |
-|-------|--------|
-| **Goal** | Characterize DID **point and cumulative** inference under recovery scenarios: pretrend violation behavior, interval scale, and what can be claimed without relative-ATT intervals. |
-| **Investigations** | INV-005, INV-006, INV-032 |
-| **In scope** | OC study on `did_parallel_trends_*`; strengthen reviewer-facing contract docs; confirm `did_relative_att_interval_unsupported` remains |
-| **Out of scope** | Cumulative-CI scaling to relative ATT; nominal calibration eligibility for `DID_Bootstrap` on relative ATT |
-| **Promotion policy steps** | Estimand documentation for DID vs recovery score; recovery evidence; **no** relative-ATT calibration claim unless new interval design (deferred) |
-| **Exit** | DID OC appendix: what FPR/coverage mean on cumulative scale; pretrend waiver discipline |
+**Track A governance foundation is complete** (estimand alignment, recovery interval gates, nominal calibration framework, DGP hardening, diagnostics separation, review flags, Phase 12–13 investigations, deferred work registry, [`TRACK_B_ARCHITECTURE_PLAN.md`](TRACK_B_ARCHITECTURE_PLAN.md) planning input).
+
+**Track A estimator characterization remains open** for core long-term expert-review instruments **not yet OC-archived**:
+
+| Phase | Focus | Plan |
+|-------|-------|------|
+| **Phase 14** | AugSynth / AugSynthCVXPY OC | [`PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md`](PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md) |
+| **Phase 15** | Placebo inference OC | [`PHASE15_PLACEBO_INVESTIGATION_PLAN.md`](PHASE15_PLACEBO_INVESTIGATION_PLAN.md) |
+
+**Track B:** Planning may proceed **in parallel** ([`TRACK_B_ARCHITECTURE_PLAN.md`](TRACK_B_ARCHITECTURE_PLAN.md)). **Track B implementation** should not become the **primary** roadmap focus until Phase 14–15 produce archived OC evidence for the intended core instrument set (AugSynth + Placebo).
+
+**Re-scoped from earlier v4 draft:** DID operating-characteristic characterization (formerly listed as Phase 14) remains **deferred** — policy closure on relative-ATT intervals exists; full DID OC is tracked in [`DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md) **DEF-016** and may run at low intensity in parallel or after Phase 15.
 
 ---
 
-### Phase 15 — AugSynth / CVXPY validation
+### Phase 14 — AugSynth operating-characteristic characterization
 
 | Field | Detail |
 |-------|--------|
-| **Goal** | Close the **validation wiring gap** for CVXPY SCM variants: recovery configs or permanent research-only guard. |
-| **Investigations** | INV-018, INV-037 (collinearity scenario) |
-| **In scope** | `RecoveryRunner` configs and/or `SKIPPED_ESTIMATORS` hardening; METHOD_VALIDATION_PLAN path B vs E decision |
-| **Out of scope** | `production_safe`; full OSQP cross-platform golden refresh (see INV-040) |
-| **Exit** | VALIDATION_COVERAGE row updated with honest maturity evidence path |
+| **Goal** | Characterize **AugSynthCVXPY** (and `AugSynth` where viable) point recovery, null/positive OC, geometry sensitivity, and inference viability — before Track B implementation prioritization |
+| **Investigations** | INV-028 (AugSynth OC), INV-018 / INV-037 (collinearity; partial) |
+| **In scope** | Governed investigation per [`PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md`](PHASE14_AUGSYNTH_INVESTIGATION_PLAN.md); characterization-tier + optional n≥100 archive; failure analysis if needed |
+| **Out of scope** | Promotion; eligibility changes; estimator math changes; Track B schema/API work |
+| **Acceptable outcomes** | Expert-review point-only · null monitor only · research-only · deferred wiring |
+| **Exit** | `PHASE14_AUGSYNTH_CHARACTERIZATION_001.md` + DEF-019 disposition update |
+
+---
+
+### Phase 15 — Placebo inference operating-characteristic characterization
+
+| Field | Detail |
+|-------|--------|
+| **Goal** | Characterize **Placebo** inference (`placebo_band` semantics) on SCM/TBR-family paths: null behavior, geometry limits, export discipline — core expert-review null-reference mode |
+| **Investigations** | INV-029 (Placebo OC); placebo vs CI interpretation ([`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIGATIONS.md)) |
+| **In scope** | Governed investigation per [`PHASE15_PLACEBO_INVESTIGATION_PLAN.md`](PHASE15_PLACEBO_INVESTIGATION_PLAN.md); interval-semantics track; geometry matrix |
+| **Out of scope** | Implementation changes; promotion; nominal eligibility without estimand alignment proof |
+| **Acceptable outcomes** | Trustworthy null monitor · expert-review strict export · research-only · policy exclude from relative-ATT calibration |
+| **Exit** | `PHASE15_PLACEBO_CHARACTERIZATION_001.md` + DEF-020 disposition update |
 
 ---
 
 ## 3b. Track B — after Phase 12 (medium-term platform)
 
-Start **unified experimentation abstractions** only after Phase 12 investigation program closes and **estimator governance, evidence contracts, and calibration semantics stabilize.**
+**Track A governance is complete;** Phase 14–15 characterization of AugSynth and Placebo remains before Track B should become the **primary implementation** focus. **Track B planning may proceed in parallel** — see [`TRACK_B_ARCHITECTURE_PLAN.md`](TRACK_B_ARCHITECTURE_PLAN.md).
 
-You are approaching that point — conceptual foundation exists in [`EXPERIMENTATION_PLATFORM_VISION.md`](EXPERIMENTATION_PLATFORM_VISION.md) and the strategic checkpoint — but **implementation waits** on Phase 12 evidence archives and INV-017 governance playbook.
+Start **unified experimentation abstractions** when shared contracts are defined **and** core geo instrument OC archives exist for AugSynth and Placebo (Phase 14–15 exit artifacts).
 
 | Future abstraction | Role |
 |--------------------|------|
@@ -472,10 +645,12 @@ Suggested audit triggers also listed in [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIG
 | Phase 9 | Run 001 archive | Evidence input to Phases 11–12 |
 | Phase 10 | Failure analysis + eligibility tighten | BRB fix shipped; registry SCM-only |
 | **Phase 11** | **Complete** | SCM UnitJackKnife OC — `SCM_JACKKNIFE_CHARACTERIZATION_001.md` |
-| **Phase 12** | **Next** | TBRRidge inference investigation program |
-| **Phase 13** | Planned | TBRRidge promotion **decision** |
-| **Phase 14** | Planned | DID OC characterization |
-| **Phase 15** | Planned | AugSynth/CVXPY validation |
+| **Phase 12** | **Complete** | TBRRidge inference investigation program |
+| **Phase 13** | **Complete** | TBRRidge governance decision — `PHASE13_GOVERNANCE_DECISION_001.md` |
+| **Phase 14** | **Complete** | AugSynth OC — [`PHASE14_AUGSYNTH_CHARACTERIZATION_001.md`](PHASE14_AUGSYNTH_CHARACTERIZATION_001.md) |
+| **Phase 15** | Planned | Placebo inference OC — `PHASE15_PLACEBO_INVESTIGATION_PLAN.md` |
+| Track B contracts + B5 | **In progress** | B0–M2 complete; **adapter production wire-up next** — [AUDIT-002](audits/AUDIT-002_m2_dual_write.md) |
+| Track D robustness | **In progress** | D0/D0b + **D1–D4** complete; D5 OC research lane |
 | Re-audit | After 15 | → ROADMAP_V5 |
 
 ---
@@ -490,8 +665,10 @@ Suggested audit triggers also listed in [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIG
 | INV-007 | KFold geometry characterization | 12 |
 | INV-017 | Calibration scaling and governance | 12 |
 | INV-039 | Package calibration claim | 11–13 |
-| INV-005, INV-006, INV-032 | DID pretrend / intervals / timing | 14 |
-| INV-018, INV-037 | CVXPY / collinearity | 15 |
+| INV-005, INV-006, INV-032 | DID pretrend / intervals / timing | Deferred (DEF-016); was v4 draft Phase 14 |
+| INV-028 | AugSynth OC characterization | 14 (complete) |
+| INV-029 | Placebo inference OC | 15 |
+| INV-018, INV-037 | CVXPY / collinearity | 14 (partial — AugSynth stress) |
 | INV-011, INV-019 | SDID staggered validation | Research backlog |
 | INV-009 | Spillover | Research backlog |
 | INV-001, INV-002, INV-036 | Estimand / pooling / truth | Ongoing documentation; not a promotion shortcut |
