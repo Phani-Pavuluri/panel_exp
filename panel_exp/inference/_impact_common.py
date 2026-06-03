@@ -60,3 +60,25 @@ def apply_bounds_to_results(a: Any, bounds: np.ndarray) -> None:
     a.results["y_lower"] = y_cf + effect_lo
     a.results["y_upper"] = y_cf + effect_hi
     flatten_single_unit_results(a)
+
+
+def apply_effect_bounds_to_results(
+    a: Any,
+    effect_lower: np.ndarray,
+    effect_upper: np.ndarray,
+) -> None:
+    """
+    Map effect-scale interval bounds to outcome ``y_lower`` / ``y_upper``.
+
+    Uses existing counterfactual ``y_hat`` as the point path; adds effect_lo/hi on
+    the treatment-effect scale (F-INF-003 conformal orientation fix).
+    """
+    y_hat = np.asarray(a.results["y_hat"], dtype=float)
+    effect_lower = np.asarray(effect_lower, dtype=float)
+    effect_upper = np.asarray(effect_upper, dtype=float)
+    if effect_lower.shape != y_hat.shape:
+        effect_lower = np.broadcast_to(effect_lower, y_hat.shape).copy()
+        effect_upper = np.broadcast_to(effect_upper, y_hat.shape).copy()
+    a.results["y_lower"] = y_hat + effect_lower
+    a.results["y_upper"] = y_hat + effect_upper
+    flatten_single_unit_results(a)

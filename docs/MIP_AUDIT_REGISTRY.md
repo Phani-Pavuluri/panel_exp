@@ -392,7 +392,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **Track F P2 formally closed** — no additional OC batteries scheduled; promotion not authorized.
 
-**Next lane:** ~~contract stack + F-BACKLOG-001~~ ✅ → **F-INF-003**
+**Next lane:** ~~F-INF-003~~ ✅ → **D5-INF-POSTFIX-001** OC
 
 ---
 
@@ -427,7 +427,18 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **Catalog cleanup complete** — taxonomy notes in `method_metadata`; canonical combo records + audits; no method behavior changes.
 
-**Next:** ~~**F-BACKLOG-001**~~ ✅ → **F-INF-003** (band sign implementation).
+**Next:** ~~**F-INF-003**~~ ✅ → **D5-INF-POSTFIX-001** targeted OC (A05/A19).
+
+---
+
+## F-INF-003 checkpoint (2026-06-03)
+
+**Artifact:** [`docs/F_INF_003_INTERVAL_ORIENTATION_FIX.md`](F_INF_003_INTERVAL_ORIENTATION_FIX.md)  
+**Code:** [`panel_exp/inference/modes/impl.py`](../panel_exp/inference/modes/impl.py) · [`panel_exp/inference/_impact_common.py`](../panel_exp/inference/_impact_common.py) · [`tests/governance/test_f_inf_003_interval_orientation.py`](../tests/governance/test_f_inf_003_interval_orientation.py)
+
+**Verdict:** **Orientation fix complete** — Conformal/TimeSeriesKfold map effect bounds via `y_hat + effect`; F-INF-001 unchanged. A05/A19 **structurally_valid_interval_ready_for_OC** — not governed uncertainty.
+
+**Next:** **D5-INF-POSTFIX-001** OC rerun.
 
 ---
 

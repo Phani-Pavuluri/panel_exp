@@ -201,7 +201,7 @@ def canonical_catalog_combo_records() -> Tuple[CatalogComboRecord, ...]:
             GeometryType.UNIT_PANEL,
             "single_cell",
             inf_tier=IntervalSemanticsClassification.CALLABLE_UNVERIFIED_INTERVAL_SEMANTICS,
-            note="Distinct from Kfold; F-INF unverified.",
+            note="F-INF-003: structurally valid bands; OC pending (not governed).",
         ),
         _combo(
             "TBRRidge",
@@ -240,7 +240,7 @@ def canonical_catalog_combo_records() -> Tuple[CatalogComboRecord, ...]:
             GeometryType.UNIT_PANEL,
             "single_cell",
             inf_tier=IntervalSemanticsClassification.CALLABLE_UNVERIFIED_INTERVAL_SEMANTICS,
-            note="Conformal callable; F-INF unverified.",
+            note="F-INF-003: structurally valid bands; OC pending (not governed).",
         ),
         _combo(
             "AugSynthCVXPY",

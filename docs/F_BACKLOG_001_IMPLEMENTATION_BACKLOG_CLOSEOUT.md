@@ -77,7 +77,7 @@ flowchart LR
 | ID | Item | AUDIT / source | Classification | Notes |
 |----|------|----------------|----------------|-------|
 | **F-INF-001** | Interval semantics **contract** | D3, P2, A05/A19 | ✅ complete | Classify only; allowlist empty |
-| **F-INF-003** | **Band sign / interval orientation** for Conformal + TimeSeriesKfold | A05, A19; AUGSYNTH-003; TBRRIDGE-002 | **`fix_now`** · `requires_OC_after_fix` | **Next authorized implementation** — no `abs()`/swap in classifier |
+| **F-INF-003** | **Band sign / interval orientation** for Conformal + TimeSeriesKfold | A05, A19; AUGSYNTH-003; TBRRIDGE-002 | ~~**`fix_now`**~~ ✅ · `requires_OC_after_fix` | [`F_INF_003_INTERVAL_ORIENTATION_FIX.md`](F_INF_003_INTERVAL_ORIENTATION_FIX.md) — structurally valid; OC pending |
 | **F-INF-002** | TBRRidge multi-treated residual **shape/broadcast** (JK, JKP, Conformal) | A16, A18, A21; TBRRIDGE-002 | `fix_later` · `requires_OC_after_fix` | After F-INF-003 unless product reprioritizes interface |
 | **F-INF-004** | TBR + JKP interval artifacts on aggregate 1×1 | A09; TBR-001 | `fix_later` · `requires_OC_after_fix` | Callable but unverified; may share orientation logic with F-INF-003 |
 | **F-P0-004** | DID relative ATT CI policy **enforcement** (DEF-003) | A25; P0 guard | `fix_later` | Guard exists; full enforcement separate from band sign |
@@ -139,7 +139,8 @@ flowchart LR
 
 | Rank | ID | Rationale |
 |------|-----|-----------|
-| **1** | **F-INF-003** | Shared symptom (negative HW, 100% null interval-exclusion) on **callable** paths A05/A19; fixes interval orientation without reopening geometry/catalog ambiguity |
+| ~~**1**~~ | ~~**F-INF-003**~~ ✅ | Orientation fix landed — **D5-INF-POSTFIX-001** OC next for A05/A19 |
+| **1** | **D5-INF-POSTFIX-001** | Targeted OC rerun A05 + A19 after F-INF-003 |
 | 2 | F-INF-002 | Unblocks three `blocked_interface` tuples — larger interface change than band sign |
 | 3 | F-INF-004 / TBR JKP | Aggregate diagnostic — lower blast radius; optional OC after F-INF-003 patterns proven |
 | 4 | F-GEO-002 | Hardening only — contract already blocks wrong geometry |
@@ -194,10 +195,12 @@ Full rows: [`AUDIT-010` Appendix A](audits/AUDIT-010_mmm_readiness_gap.md).
 
 ## 9. Next authorized task (explicit)
 
-**Implement F-INF-003** — band sign / interval orientation fix for **Conformal** and **TimeSeriesKfold** readouts (AugSynthCVXPY A05, TBRRidge A19), using F-INF-001 classifiers **without** silent bound swaps in governance layer.
+~~**F-INF-003**~~ ✅ — see [`F_INF_003_INTERVAL_ORIENTATION_FIX.md`](F_INF_003_INTERVAL_ORIENTATION_FIX.md).
 
-After F-INF-003 merges: run **targeted OC** per §7, then reassess whether F-INF-002 or F-INF-004 is next.
+**Next:** **D5-INF-POSTFIX-001** (F-INF-003-OC) — targeted OC for **A05** (AugSynthCVXPY+Conformal) and **A19** (TBRRidge+TimeSeriesKfold). Outcome target: behavioral semantics verification, **not** governed uncertainty or promotion.
+
+After OC: reassess **F-INF-002** (TBRRidge interface) vs **F-INF-004** (TBR JKP).
 
 ---
 
-*F-BACKLOG-001 v1.0.0 — implementation queue locked; F-INF-003 is the first authorized code change.*
+*F-BACKLOG-001 v1.1.0 — F-INF-003 complete; OC rerun is the active lane.*
