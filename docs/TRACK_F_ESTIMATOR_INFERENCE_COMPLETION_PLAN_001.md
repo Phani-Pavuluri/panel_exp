@@ -2,7 +2,7 @@
 
 **Document ID:** TRACK-F-ESTIMATOR-INFERENCE-COMPLETION-PLAN-001  
 **Type:** Implementation roadmap (planning only — no code changes in this package)  
-| **Status:** **draft v1** — AUDIT-010 ✅; P0 ✅; ~~TBRRidge-002~~ ✅; ~~AugSynth Conformal (003)~~ ✅ — **P2 complete**  
+| **Status:** **draft v1** — AUDIT-010 ✅; P0 ✅; P2 ✅; [`TRACK_F_P2_CLOSEOUT_001`](TRACK_F_P2_CLOSEOUT_001.md) ✅ — **implementation backlog active**  
 **Date:** 2026-06-02  
 **Lane:** Implementation planning bridge — Track D/E evidence → governed fixes  
 **Branch / baseline:** `fix-kfold-multitreated-geometry` @ post `TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001`
@@ -31,7 +31,9 @@
 | [`D5_INST_AUGSYNTH_KFOLD_001`](track_d/D5_INST_AUGSYNTH_KFOLD_001_REPORT.md) | ✅ | AugSynthCVXPY + Kfold restricted diagnostic |
 | **D5-INST-TBR-001** | ✅ | Aggregate class TBR OC — point/Kfold restricted; JK blocked on agg2 |
 | **D5-INST-TBRRIDGE-002** | ✅ | P2 TBRRidge inference OC — blocked / unverified / INV-015 |
+| **D5-INST-AUGSYNTH-003** | ✅ | AugSynthCVXPY Conformal — callable_unverified |
 | **AUDIT-010** | ✅ | MMM readiness/gap closed — `not_ready_continue_track_f` |
+| **TRACK-F-P2-CLOSEOUT-001** | ✅ | P2 closed; F-INF / F-GEO / F-CAT backlog |
 
 **Binding governance (unchanged until separate PR):**
 
@@ -77,7 +79,7 @@ Legend: **FIX** = implement + OC · **BLOCK** = remain forbidden · **ADAPT** = 
 | AugSynthCVXPY | JK | single_cell | already_characterized | **HOLD** | diagnostic TrustReport |
 | AugSynthCVXPY | Kfold | single_cell | ~~valid_candidate~~ characterized | **HOLD** | restricted diagnostic |
 | AugSynthCVXPY | BRB | single_cell | invalid_by_interface | **CLEAN-I** then decide | block unless catalog+concept |
-| AugSynthCVXPY | Conformal | single_cell | valid_candidate | **FIX** + OC | restricted / block MMM |
+| AugSynthCVXPY | Conformal | single_cell | ~~valid_candidate~~ OC'd | **HOLD** unverified (F-INF-001) | blocked MMM |
 | AugSynthCVXPY | Placebo | single_treated | invalid_by_interface | **BLOCK** (no catalog support) | blocked |
 | TBR | point | aggregate_2row | valid_candidate | **HOLD** | restricted diagnostic |
 | TBR | JK | aggregate_2row | implemented_but_unvalidated | **BLOCK** on agg2 | blocked (1 control) |
@@ -88,12 +90,12 @@ Legend: **FIX** = implement + OC · **BLOCK** = remain forbidden · **ADAPT** = 
 | TBRRidge | Kfold | single_cell | already_characterized | **HOLD** | restricted |
 | TBRRidge | BRB | single_cell | already_characterized | **HOLD** | restricted |
 | TBRRidge | Kfold | aggregate_2row | already_characterized | **HOLD** | geo-power diagnostic |
-| TBRRidge | JK | single_cell | implemented_but_unvalidated | **FIX** + TBRRIDGE-002 | restricted |
+| TBRRidge | JK | single_cell | ~~implemented_but_unvalidated~~ OC'd | **blocked_interface** (F-INF-002) | blocked until fix |
 | TBRRidge | Placebo | single_treated | invalid_by_interface | **BLOCK** (probe failed) | blocked |
-| TBRRidge | Conformal | single_cell | implemented_but_unvalidated | **FIX** + TBRRIDGE-002 | restricted / block MMM |
-| TBRRidge | TimeSeriesKfold | single_cell | valid_candidate | **FIX** + TBRRIDGE-002 | restricted diagnostic |
+| TBRRidge | Conformal | single_cell | ~~implemented_but_unvalidated~~ OC'd | **blocked_interface** (F-INF-002) | blocked until fix |
+| TBRRidge | TimeSeriesKfold | single_cell | ~~valid_candidate~~ OC'd | **callable_unverified** (F-INF-001) | restricted |
 | TBRRidge | Bayesian | single_cell | implemented_but_unvalidated | **BLOCK** prod (INV-015) | research quarantine |
-| TBRRidge | JKP | single_cell | implemented_but_unvalidated | **FIX** + TBRRIDGE-002 | restricted |
+| TBRRidge | JKP | single_cell | ~~implemented_but_unvalidated~~ OC'd | **blocked_interface** (F-INF-002) | blocked until fix |
 | BayesianTBR | Bayesian | single_cell | research_only | **R&D** | blocked production |
 | BayesianTBR | mcmc_native | single_cell | invalid_by_interface | **R&D** (no registry mode) | research only |
 | TROP | point | single_cell | research_only | **R&D** | blocked production |
@@ -123,7 +125,21 @@ These tuples are **conceptually plausible** (or blocking hygiene) and should be 
 
 **Tests:** [`tests/governance/test_track_f_p0_hygiene.py`](../../tests/governance/test_track_f_p0_hygiene.py)
 
-**Next:** Track F **P2 complete** — ~~TBRRidge-002~~ ✅ · ~~AugSynth Conformal (003)~~ ✅ — not promotion.
+**Next:** **Track F implementation backlog** — see [`TRACK_F_P2_CLOSEOUT_001.md`](TRACK_F_P2_CLOSEOUT_001.md). **No additional P2 OC batteries** unless a fix reopens a candidate.
+
+### P2 closeout — implementation backlog (active lane)
+
+| Lane | ID | Scope | Priority |
+|------|-----|-------|----------|
+| **F-INF** | F-INF-001 | Conformal / TimeSeriesKfold interval band sign and semantics contract | **P0 impl** |
+| **F-INF** | F-INF-002 | TBRRidge multi-treated residual shape for JK/JKP/Conformal | **P0 impl** |
+| **F-INF** | F-INF-003 | `path_interval_type` + half-width sign tests | **P0 impl** |
+| **F-GEO** | F-GEO-001 | Geometry adapter hardening (unit / aggregate / multi-treated) | P1 impl |
+| **F-CAT** | F-CAT-001 | Registry/catalog cleanup — inference_support parity | P1 impl |
+| **F-CAT** | F-CAT-002 | AugSynthCVXPY + BRB explicit BLOCK or ADR (F-OD-002) | P2 impl |
+| **F-MCELL** | F-MCELL-001 | `pooling_rule_id` design if pooled multi-cell ever required | Deferred |
+
+**Rule:** Do not schedule new D5 OC batteries until an implementation fix explicitly reopens a COMBO row.
 
 ### P2 — TBRRidge remaining inference (~~D5-INST-TBRRIDGE-002~~ ✅)
 
@@ -342,8 +358,8 @@ flowchart TD
 | **P1** | ~~TBR-001~~ ✅ report + F-GEO-001 + F-EIF-001 | Point/Kfold OC'd; JK blocked; JKP unverified |
 | **P1.5** | AUDIT-010 report | MMM block list + approved diagnostic set; **Appendix A = all 30 COMBO tuples** ([`AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md)) |
 | **P0 (post AUDIT-010)** | F-P0-001…004 PRs | AUDIT-010 checklist hygiene items addressed |
-| **P2** | TBRRIDGE-002 ✅; AugSynth Conformal ✅; remaining COMBO valid_candidates OC'd | Remain restricted — no promotion |
-| **P3** | AugSynth BRB catalog decision; base AugSynth | Optional; no MMM impact |
+| **P2** | ~~TBRRIDGE-002~~ ✅ · ~~AUGSYNTH-003~~ ✅ · [`TRACK_F_P2_CLOSEOUT_001`](TRACK_F_P2_CLOSEOUT_001.md) ✅ | P2 closed — no more OC batteries by default |
+| **P3+** | F-INF / F-GEO / F-CAT / F-MCELL | Implementation backlog — see closeout doc |
 
 **Note:** AugSynthCVXPY+Kfold OC ([`D5_INST_AUGSYNTH_KFOLD_001`](track_d/D5_INST_AUGSYNTH_KFOLD_001_REPORT.md)) completed **before** TBR-001 as research characterization; remains **restricted diagnostic**, not a promotion.
 

@@ -382,7 +382,17 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **`callable_unverified_interval_semantics`** — interface-valid on 001e; 100% negative half-width and 100% null interval-exclusion FPR; not governed uncertainty; no promotion.
 
-**Next:** Track F **P2 complete** — no further P2 batteries unless governance directs.
+**Next:** Track F **P2 complete** — [`TRACK_F_P2_CLOSEOUT_001.md`](TRACK_F_P2_CLOSEOUT_001.md) — implementation backlog (F-INF / F-GEO / F-CAT).
+
+---
+
+## TRACK-F-P2-CLOSEOUT-001 checkpoint (2026-06-03)
+
+**Artifact:** [`docs/TRACK_F_P2_CLOSEOUT_001.md`](TRACK_F_P2_CLOSEOUT_001.md)
+
+**Verdict:** **Track F P2 formally closed** — no additional OC batteries scheduled; promotion not authorized.
+
+**Next lane:** **F-INF-001** interval semantics and inference wrapper contract · F-GEO-001 · F-CAT-001
 
 ---
 
