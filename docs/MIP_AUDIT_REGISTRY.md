@@ -35,7 +35,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 | **AUDIT-008** | 2026-06-01 | Track D D4 power/MDE (research lane) | `24beae8` | `continue_with_characterization_required` | Power ≠ SCM JK readout; aggregation | D5-POW-001a; E1 | **closed** (research) |
 | **AUDIT-009** | 2026-06-01 | Track E E1–E7 completion gate | `79c59c4` | `continue` | Live export lacks auto profile assembly (E7-FIND-001) | AUDIT-010A ✅; ~~D5-INST-TBR-001~~ ✅ → AUDIT-010 | **closed** |
 | **AUDIT-010A** | 2026-06-02 | Roadmap consistency pre-MMM (post Track F + Kfold OC) | `ebc899c` | `continue_with_minor_corrections` | Stale MCELL next-lines; Track F P0/TBR sequence; DESIGN §13 Kfold | ~~D5-INST-TBR-001~~ ✅ → **AUDIT-010** | **closed** |
-| **AUDIT-010** | 2026-06-03 | MMM readiness / gap (not promotion) | `7695e7c` | **`not_ready_continue_track_f`** | MMM blocked; CS no expansion; 30-tuple Appendix A | **Track F P0 hygiene** | **closed** |
+| **AUDIT-010** | 2026-06-03 | MMM readiness / gap (not promotion) | `696045a` | **`not_ready_continue_track_f`** | MMM blocked; CS no expansion; 30-tuple Appendix A | **Track F P2 OC** | **closed** |
 | **AUDIT-011** | — | Before LLM interface | TBD | — | — | — | planned |
 
 ---
