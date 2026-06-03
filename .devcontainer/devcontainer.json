@@ -7,11 +7,20 @@
   "workspaceFolder": "/workspace/panel_exp",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace/panel_exp,type=bind",
   "remoteUser": "vscode",
-  "postCreateCommand": "python -m pip install -U pip 'poetry==1.8.5' && poetry config virtualenvs.create false && poetry install --with dev --no-interaction",
+  "postCreateCommand": "python -m pip install -U pip 'poetry==1.8.5' && poetry install --with dev --no-interaction",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+        "python.terminal.activateEnvironment": true
+      }
+    }
+  },
   "mounts": [
     "source=/run/host-services/ssh-auth.sock,target=/ssh-agent,type=bind"
   ],
   "remoteEnv": {
-    "SSH_AUTH_SOCK": "/ssh-agent"
+    "SSH_AUTH_SOCK": "/ssh-agent",
+    "PATH": "${containerWorkspaceFolder}/.venv/bin:${containerEnv:PATH}"
   }
 }

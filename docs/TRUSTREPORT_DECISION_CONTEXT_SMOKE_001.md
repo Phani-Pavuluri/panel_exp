@@ -34,13 +34,13 @@ Separate **smoke PR** from the integration PR. This document records a minimal p
 [`tests/track_b/test_trustreport_decision_context_smoke_001.py`](../tests/track_b/test_trustreport_decision_context_smoke_001.py)
 
 ```bash
-pytest tests/track_b/test_trustreport_decision_context_smoke_001.py -v
+poetry run pytest tests/track_b/test_trustreport_decision_context_smoke_001.py -v
 ```
 
 Regenerate committed golden excerpt:
 
 ```bash
-python tests/track_b/test_trustreport_decision_context_smoke_001.py
+poetry run python tests/track_b/test_trustreport_decision_context_smoke_001.py
 ```
 
 ---

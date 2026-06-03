@@ -252,8 +252,17 @@ See **Current package status** above for the geo-supported allowlist vs register
 ## Tests
 
 ```bash
+poetry install --with dev   # once per clone
 poetry run pytest
 ```
+
+Focused Track B example:
+
+```bash
+poetry run pytest tests/track_b/test_trustreport_decision_context_smoke_001.py -q
+```
+
+If collection fails with `ModuleNotFoundError: No module named 'matplotlib'`, pytest is not using the Poetry environment — see [`tests/README.md`](tests/README.md).
 
 ---
 
