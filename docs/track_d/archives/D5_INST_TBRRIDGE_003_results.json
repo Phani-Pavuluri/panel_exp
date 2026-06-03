@@ -1,0 +1,348 @@
+{
+  "artifact_id": "D5-INST-TBRRIDGE-003",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-03T07:07:18.657875+00:00",
+  "lane": "research",
+  "prerequisite": "F-INF-002",
+  "binding_docs": [
+    "F_INF_002_TBRRIDGE_INTERFACE_FIX.md",
+    "D5_INST_TBRRIDGE_002",
+    "AUDIT-010_mmm_readiness_gap.md",
+    "F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md"
+  ],
+  "governance": {
+    "scope": "A16 + A18 + A21 only",
+    "no_promotion": true,
+    "no_calibration_signal_expansion": true,
+    "no_mmm_ingress": true,
+    "no_governed_uncertainty_claim": true,
+    "no_additional_inference_fix": true,
+    "f_inf_classifier_unchanged": true,
+    "audit_010_verdict": "not_ready_continue_track_f"
+  },
+  "config": {
+    "n_mc": 14,
+    "train_length": 28,
+    "test_length": 8,
+    "effect_grid": [
+      0.0,
+      0.08
+    ],
+    "include_single_treated_probe": true,
+    "single_treated_n_mc": 6
+  },
+  "tuples": {
+    "A16": {
+      "audit_010_row": "A16",
+      "estimator": "TBRRidge",
+      "inference": "UnitJackKnife",
+      "instrument_key": "tbrridge_jk",
+      "geometries": [
+        "single_cell_multi_treated",
+        "single_cell_single_treated"
+      ],
+      "pre_fix": {
+        "source_artifact": "D5-INST-TBRRIDGE-002",
+        "instrument_key": "tbrridge_jk",
+        "single_cell_multi_treated": {
+          "feasibility_rate": 0.0,
+          "null_interval_exclusion_fpr_mean": NaN,
+          "negative_halfwidth_rate": NaN,
+          "inverted_bound_rate": NaN,
+          "mean_interval_halfwidth_mean": NaN,
+          "dominant_failure_class": "interface_shape"
+        }
+      },
+      "post_fix": {
+        "single_cell_multi_treated": {
+          "instrument": "tbrridge_jk",
+          "geometry_mode": "single_cell_multi_treated",
+          "effect": 0.0,
+          "feasibility_rate": 1.0,
+          "null_interval_exclusion_fpr": {
+            "mean": 0.7857142857142857,
+            "std": 0.42581531362632,
+            "p95": 1.0,
+            "n": 14
+          },
+          "mean_interval_halfwidth": {
+            "mean": 1.0540274175726605,
+            "std": 1.918864652728523,
+            "p95": 5.376450294095129,
+            "n": 14
+          },
+          "negative_halfwidth_rate": 0.0,
+          "inverted_bound_rate": 0.0,
+          "mean_point_effect": {
+            "mean": 405.1622661853168,
+            "std": 7.371527031162357,
+            "p95": 416.5345552841511,
+            "n": 14
+          },
+          "failure_counts": {},
+          "n_feasible": 14
+        },
+        "single_cell_single_treated": {
+          "instrument": "tbrridge_jk",
+          "geometry_mode": "single_cell_single_treated",
+          "effect": 0.0,
+          "feasibility_rate": 1.0,
+          "null_interval_exclusion_fpr": {
+            "mean": 0.16666666666666666,
+            "std": 0.408248290463863,
+            "p95": 0.75,
+            "n": 6
+          },
+          "mean_interval_halfwidth": {
+            "mean": 1.903010438259872,
+            "std": 1.3704694160183353,
+            "p95": 3.613703250672294,
+            "n": 6
+          },
+          "negative_halfwidth_rate": 0.0,
+          "inverted_bound_rate": 0.0,
+          "mean_point_effect": {
+            "mean": 0.7398844700617652,
+            "std": 0.5323607082684659,
+            "p95": 1.5100881462173747,
+            "n": 6
+          },
+          "failure_counts": {},
+          "n_feasible": 6
+        }
+      },
+      "comparison_multi_treated": {
+        "feasibility_rate_delta": 1.0,
+        "null_fpr_delta": null,
+        "negative_halfwidth_rate_delta": null,
+        "inverted_bound_rate_delta": null,
+        "mean_halfwidth_delta": null,
+        "structural_interval_fixed": false
+      },
+      "tbrridge_003_disposition": "callable_unverified_interval_semantics",
+      "disposition_rationale": "Structurally valid bands but null interval-exclusion FPR 0.786 > 0.35 \u2014 behavioral semantics unverified.",
+      "f_inf_classification": {
+        "classification": "callable_unverified_interval_semantics",
+        "is_governed_uncertainty": false,
+        "issue_codes": [
+          "null_interval_exclusion_fpr"
+        ]
+      },
+      "interface_failure_resolved": true,
+      "audit_010_status_after_oc": "callable_unverified_interval_semantics",
+      "promotion": false,
+      "calibration_signal_eligible": false,
+      "mmm_ready": false,
+      "governed_uncertainty": false
+    },
+    "A18": {
+      "audit_010_row": "A18",
+      "estimator": "TBRRidge",
+      "inference": "Conformal",
+      "instrument_key": "tbrridge_conformal",
+      "geometries": [
+        "single_cell_multi_treated",
+        "single_cell_single_treated"
+      ],
+      "pre_fix": {
+        "source_artifact": "D5-INST-TBRRIDGE-002",
+        "instrument_key": "tbrridge_conformal",
+        "single_cell_multi_treated": {
+          "feasibility_rate": 0.0,
+          "null_interval_exclusion_fpr_mean": NaN,
+          "negative_halfwidth_rate": NaN,
+          "inverted_bound_rate": NaN,
+          "mean_interval_halfwidth_mean": NaN,
+          "dominant_failure_class": "interface_shape"
+        }
+      },
+      "post_fix": {
+        "single_cell_multi_treated": {
+          "instrument": "tbrridge_conformal",
+          "geometry_mode": "single_cell_multi_treated",
+          "effect": 0.0,
+          "feasibility_rate": 1.0,
+          "null_interval_exclusion_fpr": {
+            "mean": 0.0,
+            "std": 0.0,
+            "p95": 0.0,
+            "n": 14
+          },
+          "mean_interval_halfwidth": {
+            "mean": 5.470925979240498,
+            "std": 0.8505887809249941,
+            "p95": 6.512713967238342,
+            "n": 14
+          },
+          "negative_halfwidth_rate": 0.0,
+          "inverted_bound_rate": 0.0,
+          "mean_point_effect": {
+            "mean": 405.1622661853168,
+            "std": 7.371527031162357,
+            "p95": 416.5345552841511,
+            "n": 14
+          },
+          "failure_counts": {},
+          "n_feasible": 14
+        },
+        "single_cell_single_treated": {
+          "instrument": "tbrridge_conformal",
+          "geometry_mode": "single_cell_single_treated",
+          "effect": 0.0,
+          "feasibility_rate": 1.0,
+          "null_interval_exclusion_fpr": {
+            "mean": 0.0,
+            "std": 0.0,
+            "p95": 0.0,
+            "n": 6
+          },
+          "mean_interval_halfwidth": {
+            "mean": 6.127810973931367,
+            "std": 1.464098736604766,
+            "p95": 8.033290191596844,
+            "n": 6
+          },
+          "negative_halfwidth_rate": 0.0,
+          "inverted_bound_rate": 0.0,
+          "mean_point_effect": {
+            "mean": 0.7398844700617652,
+            "std": 0.5323607082684659,
+            "p95": 1.5100881462173747,
+            "n": 6
+          },
+          "failure_counts": {},
+          "n_feasible": 6
+        }
+      },
+      "comparison_multi_treated": {
+        "feasibility_rate_delta": 1.0,
+        "null_fpr_delta": null,
+        "negative_halfwidth_rate_delta": null,
+        "inverted_bound_rate_delta": null,
+        "mean_halfwidth_delta": null,
+        "structural_interval_fixed": false
+      },
+      "tbrridge_003_disposition": "characterized_restricted",
+      "disposition_rationale": "Feasible on 001e battery; structural bands valid; null FPR within acceptable range \u2014 restricted diagnostic (not governed uncertainty).",
+      "f_inf_classification": {
+        "classification": "diagnostic_interval_only",
+        "is_governed_uncertainty": false,
+        "issue_codes": []
+      },
+      "interface_failure_resolved": true,
+      "audit_010_status_after_oc": "characterized_restricted",
+      "promotion": false,
+      "calibration_signal_eligible": false,
+      "mmm_ready": false,
+      "governed_uncertainty": false
+    },
+    "A21": {
+      "audit_010_row": "A21",
+      "estimator": "TBRRidge",
+      "inference": "JKP",
+      "instrument_key": "tbrridge_jkp",
+      "geometries": [
+        "single_cell_multi_treated",
+        "single_cell_single_treated"
+      ],
+      "pre_fix": {
+        "source_artifact": "D5-INST-TBRRIDGE-002",
+        "instrument_key": "tbrridge_jkp",
+        "single_cell_multi_treated": {
+          "feasibility_rate": 0.0,
+          "null_interval_exclusion_fpr_mean": NaN,
+          "negative_halfwidth_rate": NaN,
+          "inverted_bound_rate": NaN,
+          "mean_interval_halfwidth_mean": NaN,
+          "dominant_failure_class": "interface_shape"
+        }
+      },
+      "post_fix": {
+        "single_cell_multi_treated": {
+          "instrument": "tbrridge_jkp",
+          "geometry_mode": "single_cell_multi_treated",
+          "effect": 0.0,
+          "feasibility_rate": 1.0,
+          "null_interval_exclusion_fpr": {
+            "mean": 0.2857142857142857,
+            "std": 0.4688072309384954,
+            "p95": 1.0,
+            "n": 14
+          },
+          "mean_interval_halfwidth": {
+            "mean": 3.8099316392593745,
+            "std": 0.9054336243859556,
+            "p95": 5.53720618381058,
+            "n": 14
+          },
+          "negative_halfwidth_rate": 0.0,
+          "inverted_bound_rate": 0.0,
+          "mean_point_effect": {
+            "mean": 0.46937667690096546,
+            "std": 1.7253711208033506,
+            "p95": 2.5258438426082828,
+            "n": 14
+          },
+          "failure_counts": {},
+          "n_feasible": 14
+        },
+        "single_cell_single_treated": {
+          "instrument": "tbrridge_jkp",
+          "geometry_mode": "single_cell_single_treated",
+          "effect": 0.0,
+          "feasibility_rate": 1.0,
+          "null_interval_exclusion_fpr": {
+            "mean": 1.0,
+            "std": 0.0,
+            "p95": 1.0,
+            "n": 6
+          },
+          "mean_interval_halfwidth": {
+            "mean": -2.77152695157575,
+            "std": 0.4265406736610318,
+            "p95": -2.3861954466273634,
+            "n": 6
+          },
+          "negative_halfwidth_rate": 1.0,
+          "inverted_bound_rate": 1.0,
+          "mean_point_effect": {
+            "mean": 0.7398844700617652,
+            "std": 0.5323607082684659,
+            "p95": 1.5100881462173747,
+            "n": 6
+          },
+          "failure_counts": {},
+          "n_feasible": 6
+        }
+      },
+      "comparison_multi_treated": {
+        "feasibility_rate_delta": 1.0,
+        "null_fpr_delta": null,
+        "negative_halfwidth_rate_delta": null,
+        "inverted_bound_rate_delta": null,
+        "mean_halfwidth_delta": null,
+        "structural_interval_fixed": false
+      },
+      "tbrridge_003_disposition": "callable_unverified_interval_semantics",
+      "disposition_rationale": "Structurally valid; null interval-exclusion FPR 0.286 elevated \u2014 behavioral semantics unverified.",
+      "f_inf_classification": {
+        "classification": "diagnostic_interval_only",
+        "is_governed_uncertainty": false,
+        "issue_codes": []
+      },
+      "interface_failure_resolved": true,
+      "audit_010_status_after_oc": "callable_unverified_interval_semantics",
+      "promotion": false,
+      "calibration_signal_eligible": false,
+      "mmm_ready": false,
+      "governed_uncertainty": false
+    }
+  },
+  "overall_verdict": "remain_restricted_no_promotion",
+  "next_authorized_track_f_implementation": "none_until_governance_pr",
+  "track_f_notes": {
+    "prior_battery": "D5-INST-TBRRIDGE-002",
+    "interface_fix": "F-INF-002",
+    "expected_outcome": "restricted diagnostic at best \u2014 not promotion or governed uncertainty"
+  }
+}

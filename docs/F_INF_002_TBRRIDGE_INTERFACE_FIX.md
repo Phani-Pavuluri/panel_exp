@@ -58,4 +58,4 @@ Governance registry: `TRACK_F_KNOWN_INTERVAL_DISPOSITIONS` and F-GEO TBRRidge JK
 
 ## Next authorized step
 
-**D5-INST-TBRRIDGE-003** (or equivalent): targeted OC for A16/A18/A21 only after this fix. Do not rerun full P2 battery unless governance PR requires it.
+~~**D5-INST-TBRRIDGE-003**~~ ✅ — see [`D5_INST_TBRRIDGE_003_REPORT.md`](track_d/D5_INST_TBRRIDGE_003_REPORT.md). A18 → `characterized_restricted`; A16/A21 remain `callable_unverified_interval_semantics`.

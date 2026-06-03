@@ -154,7 +154,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | **MMM readiness / gap** | **AUDIT-010** ✅ [`audits/AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md) — `not_ready_continue_track_f`; Appendix A = 30 tuples |
 | **D5-POW-001e** | ✅ Six confirmed methods; SCM+JK reference null FPR; [`D5_POW_001e_results.json`](track_d/archives/D5_POW_001e_results.json) — `acceptable_with_caveats` |
 
-**Next steps:** … → ~~**F-INF-002**~~ ✅ → **D5-INST-TBRRIDGE-003** OC (A16/A18/A21) → promotion **only if** later audit allows (not authorized).
+**Next steps:** … → ~~**F-INF-002**~~ ✅ → ~~**D5-INST-TBRRIDGE-003**~~ ✅ → promotion **only if** later audit allows (not authorized).
 
 ### Track F — estimator / inference completion (implementation planning)
 
@@ -168,7 +168,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | **P1.5** | ~~AUDIT-010~~ ✅ — `not_ready_continue_track_f` |
 | **P0 (post AUDIT-010)** | ~~Blocking hygiene~~ ✅ — [`instrument_contract.py`](../panel_exp/governance/instrument_contract.py) |
 | **P2** | ~~D5-INST-TBRRIDGE-002~~ ✅ · ~~D5-INST-AUGSYNTH-003~~ ✅ · [`TRACK_F_P2_CLOSEOUT_001`](TRACK_F_P2_CLOSEOUT_001.md) ✅ | P2 closed — no more OC batteries unless fix reopens |
-| **P3+** | ~~F-INF-003~~ ✅ · ~~D5-INF-POSTFIX-001~~ ✅ · ~~F-INF-002~~ ✅ | **D5-INST-TBRRIDGE-003** OC next |
+| **P3+** | ~~F-INF-003~~ ✅ · ~~POSTFIX~~ ✅ · ~~F-INF-002~~ ✅ · ~~TBRRIDGE-003~~ ✅ | No default impl queue |
 
 **Non-goals:** No fixes in planning doc; no MMM ingestion; no CalibrationSignal expansion without separate governance PR.
 

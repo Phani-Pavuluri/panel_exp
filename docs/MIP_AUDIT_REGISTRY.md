@@ -392,7 +392,18 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **Track F P2 formally closed** — no additional OC batteries scheduled; promotion not authorized.
 
-**Next lane:** ~~F-INF-002~~ ✅ → **D5-INST-TBRRIDGE-003**
+**Next lane:** ~~TBRRIDGE-003~~ ✅ — no default Track F impl until governance PR
+
+---
+
+## D5-INST-TBRRIDGE-003 checkpoint (2026-06-03)
+
+**Artifact:** [`docs/track_d/D5_INST_TBRRIDGE_003_REPORT.md`](track_d/D5_INST_TBRRIDGE_003_REPORT.md) · [`D5_INST_TBRRIDGE_003_results.json`](track_d/archives/D5_INST_TBRRIDGE_003_results.json)  
+**Harness:** [`panel_exp/validation/track_d_d5_inst_tbrridge_003.py`](../panel_exp/validation/track_d_d5_inst_tbrridge_003.py)
+
+**Verdict:** A16/A21 `callable_unverified_interval_semantics`; **A18** `characterized_restricted`; not governed; promotion blocked.
+
+**Prerequisite:** F-INF-002 (`3993ba7`).
 
 ---
 
@@ -403,7 +414,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** A16/A18/A21 no longer `blocked_interface` — pooled-CF multi-treated readout; structurally valid on 001e fixture; **`callable_unverified_interval_semantics`** until TBRRIDGE-003 OC; not governed.
 
-**Next:** **D5-INST-TBRRIDGE-003**.
+**Next:** ~~**D5-INST-TBRRIDGE-003**~~ ✅.
 
 ---
 

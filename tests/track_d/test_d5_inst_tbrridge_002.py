@@ -30,11 +30,25 @@ class TestD5InstTbrridge002:
         assert payload["governance"]["not_class_TBR"] is True
         assert payload["governance"]["tbr_label_audit"]["p0_002_satisfied"] is True
 
-    def test_jk_jkp_conformal_blocked(self) -> None:
+    def test_jk_jkp_conformal_blocked_in_committed_artifact(self) -> None:
+        if not ARTIFACT.is_file():
+            pytest.skip("Run D5-INST-TBRRIDGE-002 generator")
+        loaded = json.loads(ARTIFACT.read_text(encoding="utf-8"))
+        for inf in ("UnitJackKnife", "JKP", "Conformal"):
+            assert loaded["mode_dispositions"][inf]["disposition"] == "blocked_interface"
+
+    def test_jk_jkp_conformal_feasible_after_f_inf_002(self) -> None:
+        """Live build uses current code; F-INF-002 unblocks interface failures."""
         cfg = D5InstTbrridge002Config(n_mc=2, include_combo_scale_probe=False)
         payload = build_d5_inst_tbrridge_002(cfg)
-        for inf in ("UnitJackKnife", "JKP", "Conformal"):
-            assert payload["mode_dispositions"][inf]["disposition"] == "blocked_interface"
+        keys = {
+            "UnitJackKnife": "tbrridge_jk",
+            "JKP": "tbrridge_jkp",
+            "Conformal": "tbrridge_conformal",
+        }
+        for inf, key in keys.items():
+            assert payload["mode_dispositions"][inf]["disposition"] != "blocked_interface"
+            assert payload["mode_summaries_null"][key]["feasibility_rate"] > 0.0
 
     def test_bayesian_blocked_policy(self) -> None:
         cfg = D5InstTbrridge002Config(n_mc=2, include_combo_scale_probe=False)

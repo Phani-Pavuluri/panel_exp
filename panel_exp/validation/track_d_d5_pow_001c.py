@@ -241,6 +241,13 @@ def _post_window_arrays(
     return y[sl], y_hat[sl], y_lo[sl], y_hi[sl]
 
 
+def _pooled_point_path(y: np.ndarray, y_hat: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    """Align TBRRidge multi-treated readout (per-unit ``y``, pooled ``y_hat``)."""
+    if y.ndim == 2 and y_hat.ndim == 1 and y.shape[0] == y_hat.shape[0]:
+        return y.sum(axis=1), y_hat
+    return y, y_hat
+
+
 def _readout_metrics(
     results: dict,
     *,
@@ -248,7 +255,8 @@ def _readout_metrics(
     percent_effect: float,
 ) -> dict[str, float]:
     y, y_hat, y_lo, y_hi = _post_window_arrays(results, test_length=test_length)
-    effect = y - y_hat
+    y_pt, y_hat_pt = _pooled_point_path(y, y_hat)
+    effect = y_pt - y_hat_pt
     effect_lo = y - y_hi
     effect_hi = y - y_lo
     point_mean = float(np.mean(effect))

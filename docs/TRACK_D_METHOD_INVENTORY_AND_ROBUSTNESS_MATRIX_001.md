@@ -225,7 +225,8 @@ Where applicable, each inventory row records:
 | MMM readiness / gap | **AUDIT-010** ✅ — [`audits/AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md); `mmm_intake_blocked`; Appendix A = 30 tuples |
 | Track F P0 hygiene | ✅ — [`panel_exp/governance/instrument_contract.py`](../panel_exp/governance/instrument_contract.py) |
 | D5-INF-POSTFIX-001 | ✅ A05/A19 post F-INF-003 OC — `characterized_restricted` |
-| F-INF-002 | ✅ A16/A18/A21 pooled-CF interface — struct valid; **next: D5-INST-TBRRIDGE-003** OC |
+| F-INF-002 | ✅ A16/A18/A21 pooled-CF interface (`3993ba7`) |
+| D5-INST-TBRRIDGE-003 | ✅ A18 `characterized_restricted`; A16/A21 `callable_unverified` |
 | F-INF-001 interval contract | ✅ — [`F_INF_001_INTERVAL_SEMANTICS_CONTRACT.md`](F_INF_001_INTERVAL_SEMANTICS_CONTRACT.md) |
 | F-GEO-001 geometry contract | ✅ — [`F_GEO_001_GEOMETRY_ADAPTER_CONTRACT.md`](F_GEO_001_GEOMETRY_ADAPTER_CONTRACT.md) · depends on F-INF-001 |
 

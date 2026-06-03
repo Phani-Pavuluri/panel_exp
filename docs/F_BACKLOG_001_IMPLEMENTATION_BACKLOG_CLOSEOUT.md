@@ -125,8 +125,8 @@ flowchart LR
 | Prerequisite | Status | Classification |
 |--------------|--------|----------------|
 | F-INF-003 + targeted OC for A05/A19 | Not started | `requires_OC_after_fix` |
-| F-INF-002 interface fix for A16/A18/A21 | ✅ complete | `requires_OC_after_fix` |
-| D5-INST-TBRRIDGE-003 OC for A16/A18/A21 | Not started | `requires_OC_after_fix` |
+| F-INF-002 interface fix for A16/A18/A21 | ✅ complete (`3993ba7`) | — |
+| D5-INST-TBRRIDGE-003 OC for A16/A18/A21 | ✅ complete | A18 → `characterized_restricted`; A16/A21 → `callable_unverified` |
 | Conceptual validity re-review for promoted combo | Not scheduled | `fix_later` |
 | AUDIT re-open for MMM readiness | Not authorized | `keep_blocked` |
 | CalibrationSignal expansion | Not authorized | `keep_blocked` |
@@ -142,9 +142,8 @@ flowchart LR
 |------|-----|-----------|
 | ~~**1**~~ | ~~**F-INF-003**~~ ✅ | Orientation fix at source |
 | ~~**2**~~ | ~~**D5-INF-POSTFIX-001**~~ ✅ | A05/A19 → `diagnostic_interval_only` / `characterized_restricted`; not governed |
-| ~~**1**~~ | ~~**F-INF-002**~~ ✅ | TBRRidge JK/JKP/Conformal pooled-CF readout (A16, A18, A21) |
-| **1** | **D5-INST-TBRRIDGE-003** | Targeted OC for A16/A18/A21 post F-INF-002 |
-| 2 | F-INF-004 / TBR JKP | Aggregate diagnostic — lower blast radius; optional OC after F-INF-003 patterns proven |
+| ~~**1**~~ | ~~**F-INF-002**~~ ✅ · ~~**D5-INST-TBRRIDGE-003**~~ ✅ | A18 characterized_restricted; A16/A21 callable unverified |
+| **1** | **F-INF-004** / TBR JKP | Aggregate diagnostic — optional OC | Aggregate diagnostic — lower blast radius; optional OC after F-INF-003 patterns proven |
 | 4 | F-GEO-002 | Hardening only — contract already blocks wrong geometry |
 | 5 | F-P0-004 | DID CI policy — parallel policy lane |
 | 6 | F-CAT-002 | ADR-only — no code until decision |
@@ -158,8 +157,8 @@ flowchart LR
 
 | Bucket | IDs | Backlog action |
 |--------|-----|----------------|
-| `callable_unverified_interval_semantics` | A16, A18, A21 | **F-INF-002** ✅ — **TBRRIDGE-003** OC pending |
-| `characterized_restricted` | A05, A19 | **F-INF-003** + POSTFIX ✅ |
+| `callable_unverified_interval_semantics` | A16, A21 | **TBRRIDGE-003** ✅ |
+| `characterized_restricted` | A03, A05, A07, A10, A18, A19 | **F-INF-003** + POSTFIX / **TBRRIDGE-003** ✅ |
 | `implemented_but_unvalidated` | A09 | **F-INF-004** / shared orientation — optional OC |
 | `invalid_by_geometry` | A12, A29, A30 | **keep_blocked** / design ADR |
 | `invalid_by_interface` | A04, A06, A11, A17, A23 | **keep_blocked** or F-CAT-002 ADR (A04 only) |
@@ -199,7 +198,7 @@ Full rows: [`AUDIT-010` Appendix A](audits/AUDIT-010_mmm_readiness_gap.md).
 
 ~~**F-INF-003**~~ ✅ · ~~**D5-INF-POSTFIX-001**~~ ✅ — see [`D5_INF_POSTFIX_001_REPORT.md`](track_d/D5_INF_POSTFIX_001_REPORT.md).
 
-**Next:** **D5-INST-TBRRIDGE-003** — targeted OC for A16/A18/A21 post [`F_INF_002`](F_INF_002_TBRRIDGE_INTERFACE_FIX.md). A05/A19 remain `characterized_restricted` diagnostics; promotion/MMM/CS still blocked.
+**Next:** No default implementation queue until governance PR. **F-INF-004** (TBR JKP) optional. Promotion/MMM/CS still blocked.
 
 ---
 

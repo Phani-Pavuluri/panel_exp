@@ -92,12 +92,12 @@ Legend: **FIX** = implement + OC · **BLOCK** = remain forbidden · **ADAPT** = 
 | TBRRidge | Kfold | single_cell | already_characterized | **HOLD** | restricted |
 | TBRRidge | BRB | single_cell | already_characterized | **HOLD** | restricted |
 | TBRRidge | Kfold | aggregate_2row | already_characterized | **HOLD** | geo-power diagnostic |
-| TBRRidge | JK | single_cell | F-INF-002 ✅ struct | **callable_unverified** (TBRRIDGE-003 OC) | blocked until OC |
+| TBRRidge | JK | single_cell | **TBRRIDGE-003** ✅ | **callable_unverified** | blocked |
 | TBRRidge | Placebo | single_treated | invalid_by_interface | **BLOCK** (probe failed) | blocked |
-| TBRRidge | Conformal | single_cell | F-INF-002 ✅ struct | **callable_unverified** (TBRRIDGE-003 OC) | blocked until OC |
+| TBRRidge | Conformal | single_cell | **TBRRIDGE-003** ✅ | **characterized_restricted** | blocked |
 | TBRRidge | TimeSeriesKfold | single_cell | ~~valid_candidate~~ OC'd | **callable_unverified** (F-INF-001) | restricted |
 | TBRRidge | Bayesian | single_cell | implemented_but_unvalidated | **BLOCK** prod (INV-015) | research quarantine |
-| TBRRidge | JKP | single_cell | F-INF-002 ✅ struct | **callable_unverified** (TBRRIDGE-003 OC) | blocked until OC |
+| TBRRidge | JKP | single_cell | **TBRRIDGE-003** ✅ | **callable_unverified** | blocked |
 | BayesianTBR | Bayesian | single_cell | research_only | **R&D** | blocked production |
 | BayesianTBR | mcmc_native | single_cell | invalid_by_interface | **R&D** (no registry mode) | research only |
 | TROP | point | single_cell | research_only | **R&D** | blocked production |
@@ -142,7 +142,7 @@ These tuples are **conceptually plausible** (or blocking hygiene) and should be 
 | **F-MCELL** | F-MCELL-001 | `pooling_rule_id` design if pooled multi-cell ever required | Deferred · `requires_design_ADR` |
 | **F-BACKLOG** | F-BACKLOG-001 | Implementation backlog closeout | ~~**complete**~~ ✅ |
 
-**Next lane:** ~~F-INF-002~~ ✅ → **D5-INST-TBRRIDGE-003** OC (A16/A18/A21).
+**Next lane:** ~~F-INF-002 / TBRRIDGE-003~~ ✅ — no default impl queue until governance PR.
 
 ### P2 — TBRRidge remaining inference (~~D5-INST-TBRRIDGE-002~~ ✅)
 

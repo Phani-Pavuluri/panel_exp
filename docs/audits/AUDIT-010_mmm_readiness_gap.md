@@ -4,7 +4,7 @@
 **Type:** MMM **readiness / gap** audit — **not** a promotion gate  
 **Status:** **closed** — readiness/gap gate (not promotion)  
 **Verdict:** **`not_ready_continue_track_f`** — MMM **not ready / blocked**; CalibrationSignal **no expansion**  
-**Next:** ~~F-INF-002~~ ✅ (interface) · **D5-INST-TBRRIDGE-003** OC for A16/A18/A21 ([`F_INF_002_TBRRIDGE_INTERFACE_FIX.md`](../F_INF_002_TBRRIDGE_INTERFACE_FIX.md))  
+**Next:** ~~F-INF-002~~ ✅ · ~~D5-INST-TBRRIDGE-003~~ ✅ — no further Track F impl until governance PR  
 **Branch / baseline:** `fix-kfold-multitreated-geometry` @ post `D5-INST-TBR-001` (`4cfa77b`)  
 **Prerequisites:** AUDIT-010A ✅ · TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001 ✅ · D5-INST-TBR-001 ✅  
 
@@ -82,7 +82,8 @@ AUDIT-010 **must** ship two levels of evidence. The executive summary is for rea
 | **Class TBR + JKP** | **Callable; unverified / not governed** | neither | **Blocked** MMM |
 | **Class TBR + UnitJackKnife** | **Blocked** on aggregate 1×1 (1 control row) | neither | **Blocked** |
 | **TBRRidge + KFold / BRB** | **Restricted diagnostic** (unit + geo-power agg2) | neither | **Blocked** MMM |
-| **TBRRidge + JK / Conformal / JKP** | **callable_unverified** (F-INF-002 struct ✅; TBRRIDGE-003 OC pending) | neither | **Blocked** MMM |
+| **TBRRidge + Conformal** | **characterized_restricted** (TBRRIDGE-003) | neither | **Blocked** MMM |
+| **TBRRidge + JK / JKP** | **callable_unverified** (TBRRIDGE-003) | neither | **Blocked** MMM |
 | **TBRRidge + Bayesian (registry)** | **blocked** prod (INV-015) | neither | **Blocked** MMM |
 | **BayesianTBR / TROP** | **Research-only** | neither | **Blocked** production |
 | **DID + native bootstrap** | **Restricted** — cumulative ATT; DEF-003 CI policy | neither | **Blocked** MMM pending policy |
@@ -115,12 +116,12 @@ AUDIT-010 **must** ship two levels of evidence. The executive summary is for rea
 | A13 | `already_characterized` | TBRRidge | Kfold | single_cell_unit | already_characterized | restricted | **TBRRIDGE-001** ✅ | INST-002 restricted | **HOLD** | neither | **blocked** | Unit scale ≠ SCM+JK |
 | A14 | `already_characterized` | TBRRidge | BlockResidualBootstrap | single_cell_unit | already_characterized | restricted | **TBRRIDGE-001** ✅ | INST-003 restricted | **HOLD** | neither | **blocked** | Restricted diagnostic |
 | A15 | `already_characterized` | TBRRidge | Kfold | aggregate_two_series | already_characterized | restricted | **TBRRIDGE-001** ✅ | INST-007 geo-power | **HOLD** | neither | **blocked** | Geo power path; not class TBR |
-| A16 | `callable_unverified_interval_semantics` | TBRRidge | UnitJackKnife | single_cell_unit | implemented_but_unvalidated | restricted | **F-INF-002** ✅ struct; OC pending | — | **HOLD** unverified | neither | **blocked** | Pooled-CF readout fix; requires TBRRIDGE-003 OC |
+| A16 | `callable_unverified_interval_semantics` | TBRRidge | UnitJackKnife | single_cell_unit | implemented_but_unvalidated | restricted | **TBRRIDGE-003** ✅ | — | **HOLD** unverified | neither | **blocked** | Struct valid; null FPR 79% on battery — not governed |
 | A17 | `invalid_by_interface` | TBRRidge | Placebo | single_treated | invalid_by_interface | n/a | probe failed | — | **BLOCK** | neither | **blocked** | Not SCM placebo-in-space |
-| A18 | `callable_unverified_interval_semantics` | TBRRidge | Conformal | single_cell_unit | implemented_but_unvalidated | restricted | **F-INF-002** ✅ struct; OC pending | — | **HOLD** unverified | neither | **blocked** | Per-unit null scale + bounds; requires OC |
+| A18 | `characterized_restricted` | TBRRidge | Conformal | single_cell_unit | valid_candidate | restricted | **TBRRIDGE-003** ✅ | INST-002 restricted | **HOLD** restricted | neither | **blocked** | F-INF-002 + OC: struct valid; null FPR 0; not governed |
 | A19 | `characterized_restricted` | TBRRidge | TimeSeriesKfold | single_cell_unit | valid_candidate | restricted | **INF-POSTFIX-001** ✅ | INST-002 restricted | **HOLD** restricted | neither | **blocked** | F-INF-003 + POSTFIX: struct valid; null FPR 0; scale ≠ SCM+JK |
 | A20 | `blocked` | TBRRidge | Bayesian (registry) | single_cell_unit | implemented_but_unvalidated | **BLOCK** prod | not governed | — | **BLOCK** prod | neither | **blocked** | INV-015 |
-| A21 | `callable_unverified_interval_semantics` | TBRRidge | JKP | single_cell_unit | implemented_but_unvalidated | restricted | **F-INF-002** ✅ struct; OC pending | — | **HOLD** unverified | neither | **blocked** | JKP residual matrix broadcast; requires OC |
+| A21 | `callable_unverified_interval_semantics` | TBRRidge | JKP | single_cell_unit | implemented_but_unvalidated | restricted | **TBRRIDGE-003** ✅ | — | **HOLD** unverified | neither | **blocked** | Struct valid; null FPR 29% — behavioral unverified |
 | A22 | `research_only` | BayesianTBR | Bayesian (registry) | single_cell_unit | research_only | research_only | R&D | — | **R&D** | neither | **blocked** | JAX ≠ paper MCMC |
 | A23 | `invalid_by_interface` | BayesianTBR | mcmc_native | single_cell_unit | invalid_by_interface | research_only | R&D | — | **R&D** | neither | **blocked** | No registry mode |
 | A24 | `research_only` | TROP | point_estimate | single_cell_unit | research_only | research_only | none | — | **R&D** | neither | **blocked** | No registry inference |
@@ -136,8 +137,8 @@ AUDIT-010 **must** ship two levels of evidence. The executive summary is for rea
 | Bucket | Tuple IDs | Count |
 |--------|-----------|------:|
 | `already_characterized` | A01, A02, A13, A14, A15, A25, A26, A27 | 8 |
-| `characterized_restricted` | A03, A05, A07, A10, A19 | 5 |
-| `callable_unverified_interval_semantics` | A16, A18, A21 | 3 |
+| `characterized_restricted` | A03, A05, A07, A10, A18, A19 | 6 |
+| `callable_unverified_interval_semantics` | A16, A21 | 2 |
 | `blocked_interface` | — | 0 |
 | `invalid_by_interface` | A04, A06, A11, A17, A23 | 5 |
 | `invalid_by_geometry` | A12, A29, A30 | 3 |
@@ -175,7 +176,7 @@ AUDIT-010 **must** ship two levels of evidence. The executive summary is for rea
 | **CalibrationSignal expansion** | **No** — `SCM_UnitJackKnife` null_monitor_only unchanged |
 | **Approved MMM intake list** | **Empty** (null-monitor ≠ MMM lift) |
 | **Promotion** | **Not authorized** |
-| **Next lane** | ~~F-INF-002~~ ✅ → **D5-INST-TBRRIDGE-003** OC (A16/A18/A21) ([`F_INF_002`](../F_INF_002_TBRRIDGE_INTERFACE_FIX.md)) |
+| **Next lane** | ~~F-INF-002 / TBRRIDGE-003~~ ✅ — no default Track F impl queue until governance PR |
 
 **P0 gap list (Track F):** F-P0-001 `full_model` · F-P0-002 TBR label · F-P0-003 INV-015 · F-P0-004 DID CI · F-P0-005 Placebo taxonomy · F-P0-006 multi-cell pooling.
 
