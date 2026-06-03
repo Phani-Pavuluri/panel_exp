@@ -4,7 +4,7 @@
 **Type:** MMM **readiness / gap** audit — **not** a promotion gate  
 **Status:** **closed** — readiness/gap gate (not promotion)  
 **Verdict:** **`not_ready_continue_track_f`** — MMM **not ready / blocked**; CalibrationSignal **no expansion**  
-**Next:** ~~Track F P0 hygiene~~ ✅ · ~~P2 OC~~ ✅ · **Track F implementation backlog** ([`TRACK_F_P2_CLOSEOUT_001.md`](../TRACK_F_P2_CLOSEOUT_001.md))  
+**Next:** ~~Track F P0~~ ✅ · ~~P2 OC~~ ✅ · ~~contract stack + F-BACKLOG-001~~ ✅ · **F-INF-003** ([`F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md`](../F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md))  
 **Branch / baseline:** `fix-kfold-multitreated-geometry` @ post `D5-INST-TBR-001` (`4cfa77b`)  
 **Prerequisites:** AUDIT-010A ✅ · TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001 ✅ · D5-INST-TBR-001 ✅  
 
@@ -174,7 +174,7 @@ AUDIT-010 **must** ship two levels of evidence. The executive summary is for rea
 | **CalibrationSignal expansion** | **No** — `SCM_UnitJackKnife` null_monitor_only unchanged |
 | **Approved MMM intake list** | **Empty** (null-monitor ≠ MMM lift) |
 | **Promotion** | **Not authorized** |
-| **Next lane** | ~~Track F P0 hygiene~~ ✅ → ~~P2 OC~~ ✅ → **Track F implementation backlog** ([`TRACK_F_P2_CLOSEOUT_001.md`](../TRACK_F_P2_CLOSEOUT_001.md)) |
+| **Next lane** | ~~P0 / P2 / contracts / F-BACKLOG-001~~ ✅ → **F-INF-003** implementation ([`F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md`](../F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md)) |
 
 **P0 gap list (Track F):** F-P0-001 `full_model` · F-P0-002 TBR label · F-P0-003 INV-015 · F-P0-004 DID CI · F-P0-005 Placebo taxonomy · F-P0-006 multi-cell pooling.
 

@@ -224,7 +224,7 @@ Where applicable, each inventory row records:
 | Roadmap consistency | **AUDIT-010A** ✅ — pre-MMM sanity check; corrected sequence in [`audits/AUDIT-010A_roadmap_consistency_pre_mmm_gate.md`](audits/AUDIT-010A_roadmap_consistency_pre_mmm_gate.md) |
 | MMM readiness / gap | **AUDIT-010** ✅ — [`audits/AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md); `mmm_intake_blocked`; Appendix A = 30 tuples |
 | Track F P0 hygiene | ✅ — [`panel_exp/governance/instrument_contract.py`](../panel_exp/governance/instrument_contract.py) |
-| Track F P2 closeout | **TRACK-F-P2-CLOSEOUT-001** ✅ — P2 closed; F-INF/F-GEO/F-CAT backlog active |
+| Track F backlog | **F-BACKLOG-001** ✅ — implementation queue locked; **next impl: F-INF-003** |
 | F-INF-001 interval contract | ✅ — [`F_INF_001_INTERVAL_SEMANTICS_CONTRACT.md`](F_INF_001_INTERVAL_SEMANTICS_CONTRACT.md) |
 | F-GEO-001 geometry contract | ✅ — [`F_GEO_001_GEOMETRY_ADAPTER_CONTRACT.md`](F_GEO_001_GEOMETRY_ADAPTER_CONTRACT.md) · depends on F-INF-001 |
 

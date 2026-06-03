@@ -79,7 +79,7 @@ Reconcile estimator, inference, geometry, and instrument **catalog/registry meta
 | No MMM / CalibrationSignal expansion / promotion | ✅ |
 | No estimator/inference rewrites | ✅ |
 
-**Next decision point:** **F-BACKLOG-001** implementation roadmap closeout **or** **F-INF-003** band sign fix (implementation).
+**Next:** ~~**F-BACKLOG-001**~~ ✅ · authorized implementation = **F-INF-003** ([`F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md`](F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md)).
 
 ---
 

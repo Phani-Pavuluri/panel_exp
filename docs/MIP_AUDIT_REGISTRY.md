@@ -392,7 +392,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **Track F P2 formally closed** — no additional OC batteries scheduled; promotion not authorized.
 
-**Next lane:** ~~F-INF-001~~ ✅ · ~~F-GEO-001~~ ✅ · ~~F-CAT-001~~ ✅ → F-BACKLOG-001 or F-INF-003
+**Next lane:** ~~contract stack + F-BACKLOG-001~~ ✅ → **F-INF-003**
 
 ---
 
@@ -427,7 +427,17 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **Catalog cleanup complete** — taxonomy notes in `method_metadata`; canonical combo records + audits; no method behavior changes.
 
-**Next:** **F-BACKLOG-001** closeout or **F-INF-003** (band sign implementation).
+**Next:** ~~**F-BACKLOG-001**~~ ✅ → **F-INF-003** (band sign implementation).
+
+---
+
+## F-BACKLOG-001 checkpoint (2026-06-03)
+
+**Artifact:** [`docs/F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md`](F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md)
+
+**Verdict:** **Implementation backlog locked** — contract stack complete; classified queue across F-INF / F-GEO / F-CAT / F-MCELL / R&D / promotion prerequisites.
+
+**Next authorized implementation:** **F-INF-003** (Conformal + TimeSeriesKfold band sign / orientation). OC rerun only after fix per backlog §7.
 
 ---
 

@@ -220,7 +220,7 @@ flowchart TD
 | No additional P2 OC batteries scheduled | ✅ |
 | Promotion not authorized | ✅ |
 
-**Next lane:** ~~**F-INF-001**~~ ✅ · ~~**F-GEO-001**~~ ✅ · ~~**F-CAT-001**~~ ✅ → **F-BACKLOG-001** or **F-INF-003**.
+**Next lane:** ~~contract stack + **F-BACKLOG-001**~~ ✅ → **F-INF-003** ([`F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md`](F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md)).
 
 ---
 

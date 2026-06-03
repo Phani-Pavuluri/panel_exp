@@ -96,3 +96,5 @@
 **Next:** ~~D5-INST-TBR-001~~ ✅ → **AUDIT-010** ([charter](../audits/AUDIT-010_mmm_readiness_gap.md): Appendix A = authoritative 30-tuple matrix).
 
 **F-CAT-001 overlay (2026-06-03):** Canonical catalog combo records in [`catalog_contract.py`](../../panel_exp/governance/catalog_contract.py) align COMBO matrix labels with F-INF/F-GEO — TBR≠TBRRidge, Placebo=falsification, Conformal≠governed uncertainty, pooled multi-cell blocked without `pooling_rule_id`.
+
+**F-BACKLOG-001 (2026-06-03):** Implementation queue in [`F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md`](../F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md) — **F-INF-003** first fix (A05/A19 band sign); F-INF-002 second (A16/A18/A21 interfaces); promotion/MMM/CS remain blocked.

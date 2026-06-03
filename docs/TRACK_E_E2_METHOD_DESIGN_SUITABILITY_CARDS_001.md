@@ -272,7 +272,7 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 | **Track E status** | Point: **`diagnostic_only`** (characterized comparator); JK: **`diagnostic_only`** |
 | **Conceptual validity (CV-001)** | Aligned with deviation; spillover DGP **restricted**; no CalibrationSignal (§5.2). |
 | **Kfold (D5-INST-AUGSYNTH-KFOLD-001)** | **`restricted`** — valid diagnostic comparator; `confidence_interval` ≠ JK null-monitor; no Track B alias |
-| **Conformal (D5-INST-AUGSYNTH-003)** | **`callable_unverified_interval_semantics`** — runs on 001e; **F-INF-001** classifies negative HW as `blocked_invalid_interval`; not governed |
+| **Conformal (D5-INST-AUGSYNTH-003)** | **`callable_unverified_interval_semantics`** — runs on 001e; **F-INF-001** classifies negative HW; **F-BACKLOG-001** → **F-INF-003** first implementation fix, then targeted OC |
 
 ---
 
