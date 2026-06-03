@@ -91,7 +91,7 @@ Interval band sign fixes remain **F-INF-003** — out of scope for F-GEO-001.
 | Tests: interval cannot rescue geometry block | ✅ |
 | No MMM / CalibrationSignal / promotion | ✅ |
 
-**Next lane:** **F-CAT-001** registry/catalog cleanup.
+**Next lane:** ~~**F-CAT-001**~~ ✅ · **F-BACKLOG-001** or **F-INF-003**.
 
 ---
 

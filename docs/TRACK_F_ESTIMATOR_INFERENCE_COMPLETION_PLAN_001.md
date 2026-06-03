@@ -137,11 +137,11 @@ These tuples are **conceptually plausible** (or blocking hygiene) and should be 
 | **F-INF** | F-INF-002 | TBRRidge multi-treated residual shape for JK/JKP/Conformal | **P0 impl** |
 | **F-INF** | F-INF-003 | Conformal / TimeSeriesKfold band sign fix (implementation) | **P0 impl** |
 | **F-GEO** | F-GEO-001 | Geometry adapter contract (depends on F-INF-001) | ~~P1 impl~~ ✅ contract |
-| **F-CAT** | F-CAT-001 | Registry/catalog cleanup — inference_support parity | P1 impl |
+| **F-CAT** | F-CAT-001 | Registry/catalog cleanup — inference_support parity | ~~**P1 impl**~~ ✅ |
 | **F-CAT** | F-CAT-002 | AugSynthCVXPY + BRB explicit BLOCK or ADR (F-OD-002) | P2 impl |
 | **F-MCELL** | F-MCELL-001 | `pooling_rule_id` design if pooled multi-cell ever required | Deferred |
 
-**Next lane:** ~~F-INF-001~~ ✅ · ~~F-GEO-001~~ ✅ → **F-CAT-001** registry/catalog cleanup.
+**Next lane:** ~~F-INF-001~~ ✅ · ~~F-GEO-001~~ ✅ · ~~F-CAT-001~~ ✅ → **F-BACKLOG-001** closeout or **F-INF-003** band sign fix.
 
 ### P2 — TBRRidge remaining inference (~~D5-INST-TBRRIDGE-002~~ ✅)
 
@@ -361,7 +361,7 @@ flowchart TD
 | **P1.5** | AUDIT-010 report | MMM block list + approved diagnostic set; **Appendix A = all 30 COMBO tuples** ([`AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md)) |
 | **P0 (post AUDIT-010)** | F-P0-001…004 PRs | AUDIT-010 checklist hygiene items addressed |
 | **P2** | ~~TBRRIDGE-002~~ ✅ · ~~AUGSYNTH-003~~ ✅ · [`TRACK_F_P2_CLOSEOUT_001`](TRACK_F_P2_CLOSEOUT_001.md) ✅ | P2 closed — no more OC batteries by default |
-| **P3+** | ~~F-INF-001~~ ✅ · ~~F-GEO-001~~ ✅ · F-CAT-001 · F-MCELL | F-CAT catalog cleanup next |
+| **P3+** | ~~F-INF-001~~ ✅ · ~~F-GEO-001~~ ✅ · ~~F-CAT-001~~ ✅ · F-MCELL | Contract stack done; backlog closeout or F-INF-003 next |
 
 **Note:** AugSynthCVXPY+Kfold OC ([`D5_INST_AUGSYNTH_KFOLD_001`](track_d/D5_INST_AUGSYNTH_KFOLD_001_REPORT.md)) completed **before** TBR-001 as research characterization; remains **restricted diagnostic**, not a promotion.
 

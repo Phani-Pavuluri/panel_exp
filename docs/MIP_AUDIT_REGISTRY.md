@@ -392,7 +392,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **Track F P2 formally closed** — no additional OC batteries scheduled; promotion not authorized.
 
-**Next lane:** ~~F-INF-001~~ ✅ → **F-GEO-001** · **F-CAT-001**
+**Next lane:** ~~F-INF-001~~ ✅ · ~~F-GEO-001~~ ✅ · ~~F-CAT-001~~ ✅ → F-BACKLOG-001 or F-INF-003
 
 ---
 
@@ -403,7 +403,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **Contract complete** — callable invalid intervals classified safely; `GOVERNED_UNCERTAINTY_EXPORT_ALLOWLIST` empty; no silent bound fixes.
 
-**Next:** **F-CAT-001** registry/catalog cleanup.
+**Next:** ~~**F-CAT-001**~~ ✅ registry/catalog cleanup.
 
 ---
 
@@ -415,7 +415,19 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **Contract complete** — geometry support rules tested; no MMM/promotion.
 
-**Next:** **F-CAT-001**.
+**Next:** ~~**F-CAT-001**~~ ✅.
+
+---
+
+## F-CAT-001 checkpoint (2026-06-03)
+
+**Artifact:** [`docs/F_CAT_001_REGISTRY_CATALOG_CLEANUP.md`](F_CAT_001_REGISTRY_CATALOG_CLEANUP.md)  
+**Code:** [`panel_exp/governance/catalog_contract.py`](../panel_exp/governance/catalog_contract.py) · [`tests/governance/test_f_cat_001_catalog_contract.py`](../tests/governance/test_f_cat_001_catalog_contract.py)  
+**Depends on:** F-INF-001 + F-GEO-001 — catalog cannot over-claim geometry, interval semantics, CalibrationSignal, or MMM readiness.
+
+**Verdict:** **Catalog cleanup complete** — taxonomy notes in `method_metadata`; canonical combo records + audits; no method behavior changes.
+
+**Next:** **F-BACKLOG-001** closeout or **F-INF-003** (band sign implementation).
 
 ---
 

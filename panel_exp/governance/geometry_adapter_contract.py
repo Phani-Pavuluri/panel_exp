@@ -56,6 +56,7 @@ class GeometryClassification(str, Enum):
     BLOCKED_MISSING_ESTIMAND_BRIDGE = "blocked_missing_estimand_bridge"
     BLOCKED_MISSING_ADAPTER = "blocked_missing_adapter"
     BLOCKED_UNSUPPORTED_INFERENCE_GEOMETRY = "blocked_unsupported_inference_geometry"
+    BLOCKED_INTERFACE = "blocked_interface"
 
 
 class ReadoutExportTier(str, Enum):
@@ -141,6 +142,9 @@ TRACK_F_KNOWN_GEOMETRY_DISPOSITIONS: dict[
     ("TBR", "point_estimate", GeometryType.AGGREGATE_TWO_SERIES_1X1): (
         GeometryClassification.GEOMETRY_SUPPORTED_WITH_CAVEATS
     ),
+    ("TBR", "JKP", GeometryType.AGGREGATE_TWO_SERIES_1X1): (
+        GeometryClassification.GEOMETRY_SUPPORTED_WITH_CAVEATS
+    ),
     ("TBRRidge", "Kfold", GeometryType.UNIT_PANEL): (
         GeometryClassification.GEOMETRY_SUPPORTED_WITH_CAVEATS
     ),
@@ -162,8 +166,23 @@ TRACK_F_KNOWN_GEOMETRY_DISPOSITIONS: dict[
     ("AugSynthCVXPY", "Kfold", GeometryType.MULTI_CELL_PER_CELL): (
         GeometryClassification.GEOMETRY_SUPPORTED_WITH_CAVEATS
     ),
-    ("DID", "estimator_native_bootstrap", GeometryType.UNIT_PANEL): (
+    ("AugSynthCVXPY", "Conformal", GeometryType.UNIT_PANEL): (
         GeometryClassification.GEOMETRY_SUPPORTED_WITH_CAVEATS
+    ),
+    ("AugSynthCVXPY", "UnitJackKnife", GeometryType.UNIT_PANEL): (
+        GeometryClassification.GEOMETRY_SUPPORTED_WITH_CAVEATS
+    ),
+    ("TBRRidge", "TimeSeriesKfold", GeometryType.UNIT_PANEL): (
+        GeometryClassification.GEOMETRY_SUPPORTED_WITH_CAVEATS
+    ),
+    ("TBRRidge", "UnitJackKnife", GeometryType.UNIT_PANEL): (
+        GeometryClassification.BLOCKED_INTERFACE
+    ),
+    ("TBRRidge", "Conformal", GeometryType.UNIT_PANEL): (
+        GeometryClassification.BLOCKED_INTERFACE
+    ),
+    ("TBRRidge", "JKP", GeometryType.UNIT_PANEL): (
+        GeometryClassification.BLOCKED_INTERFACE
     ),
 }
 
@@ -181,6 +200,18 @@ def _is_blocked_classification(classification: GeometryClassification) -> bool:
         GeometryClassification.GEOMETRY_SUPPORTED,
         GeometryClassification.GEOMETRY_SUPPORTED_WITH_CAVEATS,
     )
+
+
+_BLOCKED_GEOMETRY_CLASSIFICATIONS = frozenset(
+    {
+        GeometryClassification.BLOCKED_GEOMETRY,
+        GeometryClassification.BLOCKED_MISSING_POOLING_RULE,
+        GeometryClassification.BLOCKED_MISSING_ESTIMAND_BRIDGE,
+        GeometryClassification.BLOCKED_MISSING_ADAPTER,
+        GeometryClassification.BLOCKED_UNSUPPORTED_INFERENCE_GEOMETRY,
+        GeometryClassification.BLOCKED_INTERFACE,
+    }
+)
 
 
 def _pooling_block(request: GeometryReadoutRequest) -> Optional[GeometryAdapterIssue]:

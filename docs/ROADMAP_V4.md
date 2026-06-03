@@ -145,12 +145,13 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | **Track F P2 closeout** | **TRACK-F-P2-CLOSEOUT-001** ✅ [`TRACK_F_P2_CLOSEOUT_001.md`](TRACK_F_P2_CLOSEOUT_001.md) — P2 closed; implementation backlog active |
 | **F-INF-001 contract** | ✅ [`F_INF_001_INTERVAL_SEMANTICS_CONTRACT.md`](F_INF_001_INTERVAL_SEMANTICS_CONTRACT.md) — interval semantics classification |
 | **F-GEO-001 contract** | ✅ [`F_GEO_001_GEOMETRY_ADAPTER_CONTRACT.md`](F_GEO_001_GEOMETRY_ADAPTER_CONTRACT.md) — geometry adapter rules; depends on F-INF-001 |
+| **F-CAT-001 catalog** | ✅ [`F_CAT_001_REGISTRY_CATALOG_CLEANUP.md`](F_CAT_001_REGISTRY_CATALOG_CLEANUP.md) — registry/catalog metadata aligned with F-INF + F-GEO |
 | **Class TBR OC** | **D5-INST-TBR-001** ✅ [`D5_INST_TBR_001_results.json`](track_d/archives/D5_INST_TBR_001_results.json) — aggregate 1×1 restricted diagnostic |
 | **Roadmap consistency** | **AUDIT-010A** ✅ [`audits/AUDIT-010A_roadmap_consistency_pre_mmm_gate.md`](audits/AUDIT-010A_roadmap_consistency_pre_mmm_gate.md) — pre-MMM sanity check |
 | **MMM readiness / gap** | **AUDIT-010** ✅ [`audits/AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md) — `not_ready_continue_track_f`; Appendix A = 30 tuples |
 | **D5-POW-001e** | ✅ Six confirmed methods; SCM+JK reference null FPR; [`D5_POW_001e_results.json`](track_d/archives/D5_POW_001e_results.json) — `acceptable_with_caveats` |
 
-**Next steps:** … → (5) ~~Track F **P2**~~ ✅ → ~~**F-INF-001**~~ ✅ → ~~**F-GEO-001**~~ ✅ → **F-CAT-001** → promotion **only if** later audit allows (not authorized).
+**Next steps:** … → (5) ~~Track F **P2**~~ ✅ → ~~**F-INF-001**~~ ✅ → ~~**F-GEO-001**~~ ✅ → ~~**F-CAT-001**~~ ✅ → **F-BACKLOG-001 closeout** or **F-INF-003** band sign fix → promotion **only if** later audit allows (not authorized).
 
 ### Track F — estimator / inference completion (implementation planning)
 
@@ -164,7 +165,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | **P1.5** | ~~AUDIT-010~~ ✅ — `not_ready_continue_track_f` |
 | **P0 (post AUDIT-010)** | ~~Blocking hygiene~~ ✅ — [`instrument_contract.py`](../panel_exp/governance/instrument_contract.py) |
 | **P2** | ~~D5-INST-TBRRIDGE-002~~ ✅ · ~~D5-INST-AUGSYNTH-003~~ ✅ · [`TRACK_F_P2_CLOSEOUT_001`](TRACK_F_P2_CLOSEOUT_001.md) ✅ | P2 closed — no more OC batteries unless fix reopens |
-| **P3+** | ~~F-INF-001~~ ✅ · ~~F-GEO-001~~ ✅ · F-CAT-001 · F-MCELL | Geometry contract done; catalog cleanup next |
+| **P3+** | ~~F-INF-001~~ ✅ · ~~F-GEO-001~~ ✅ · ~~F-CAT-001~~ ✅ · F-MCELL | Contract stack complete; backlog closeout or F-INF-003 next |
 
 **Non-goals:** No fixes in planning doc; no MMM ingestion; no CalibrationSignal expansion without separate governance PR.
 

@@ -135,7 +135,7 @@ All open items are classified below. **No additional P2 OC batteries** unless a 
 | **F-INF-002** | F-INF | TBRRidge multi-treated residual shape — JK/JKP/Conformal broadcast failure | TBRRIDGE-002 A16/A18/A21 | Yes — after interface fix |
 | **F-INF-003** | F-INF | Conformal / TimeSeriesKfold band sign fix (implementation — not silent reclassification) | AUGSYNTH-003, TBRRIDGE-002 | Yes — after fix + re-OC |
 | **F-GEO-001** | F-GEO | Geometry adapter **contract** (unit/agg/multi-cell/supergeo/trim) | COMBO + CV-001 | ✅ contract — depends on F-INF-001 |
-| **F-CAT-001** | F-CAT | Registry/catalog cleanup — inference_support vs impl.py parity; base AugSynth vs CVXPY | COMBO-AUDIT-001 | Catalog ADRs |
+| **F-CAT-001** | F-CAT | Registry/catalog cleanup — inference_support vs impl.py parity; base AugSynth vs CVXPY | COMBO-AUDIT-001 | ✅ [`F_CAT_001_REGISTRY_CATALOG_CLEANUP.md`](F_CAT_001_REGISTRY_CATALOG_CLEANUP.md) |
 | **F-CAT-002** | F-CAT | AugSynthCVXPY + BRB — explicit BLOCK in catalog or add with concept doc (F-OD-002) | A04 | After ADR only |
 | **F-P0-004** | F-INF | DID relative ATT CI policy enforcement | P0 (guard exists) | Separate lane |
 
@@ -220,7 +220,7 @@ flowchart TD
 | No additional P2 OC batteries scheduled | ✅ |
 | Promotion not authorized | ✅ |
 
-**Next lane:** ~~**F-INF-001**~~ ✅ · ~~**F-GEO-001**~~ ✅ → **F-CAT-001** (registry/catalog cleanup).
+**Next lane:** ~~**F-INF-001**~~ ✅ · ~~**F-GEO-001**~~ ✅ · ~~**F-CAT-001**~~ ✅ → **F-BACKLOG-001** or **F-INF-003**.
 
 ---
 

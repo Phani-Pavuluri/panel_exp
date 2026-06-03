@@ -94,3 +94,5 @@
 4. **D5-COMBO-FIND-004:** Registry `Bayesian` on BayesianTBR is research-only and not NUTS MCMC.
 
 **Next:** ~~D5-INST-TBR-001~~ ✅ → **AUDIT-010** ([charter](../audits/AUDIT-010_mmm_readiness_gap.md): Appendix A = authoritative 30-tuple matrix).
+
+**F-CAT-001 overlay (2026-06-03):** Canonical catalog combo records in [`catalog_contract.py`](../../panel_exp/governance/catalog_contract.py) align COMBO matrix labels with F-INF/F-GEO — TBR≠TBRRidge, Placebo=falsification, Conformal≠governed uncertainty, pooled multi-cell blocked without `pooling_rule_id`.

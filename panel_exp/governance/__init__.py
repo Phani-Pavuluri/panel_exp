@@ -29,8 +29,15 @@ from panel_exp.governance.interval_semantics_contract import (
     classify_interval_semantics,
     classify_track_f_combo,
 )
+from panel_exp.governance.catalog_contract import (
+    CALIBRATION_SIGNAL_GOVERNED_ALIASES,
+    assert_catalog_consistency,
+    canonical_catalog_combo_records,
+    track_b_alias_governance,
+)
 
 __all__ = [
+    "CALIBRATION_SIGNAL_GOVERNED_ALIASES",
     "FULL_MODEL_GOVERNED_CLASS_NAMES",
     "INV_015_REGISTRY_BAYESIAN_NOT_MCMC",
     "GeometryAdapterVerdict",
@@ -42,7 +49,9 @@ __all__ = [
     "IntervalSemanticsVerdict",
     "PLACEBO_INFERENCE_MODES",
     "ReadoutExportTier",
+    "assert_catalog_consistency",
     "assert_class_tbr_recovery_factory",
+    "canonical_catalog_combo_records",
     "assert_not_governed_uncertainty",
     "assert_not_placebo_as_estimator",
     "classify_combined_readout",
@@ -54,4 +63,5 @@ __all__ = [
     "is_registry_bayesian_inference",
     "multi_cell_pooling_block_reason",
     "registry_bayesian_production_block_reason",
+    "track_b_alias_governance",
 ]

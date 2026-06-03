@@ -239,7 +239,7 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 | **OC evidence** | 001c + **D5-INST-TBRRIDGE-001** ✅ + **D5-INST-TBRRIDGE-002** ✅ (TSKF unverified; JK/JKP/Conformal blocked) |
 | **Allowed claims** | Diagnostic / exploratory; TrustReport restricted role. |
 | **Disallowed claims** | CalibrationSignal; MMM; primary null-monitor for unit geo tests. |
-| **Track B / CalibrationSignal** | **Excluded**. |
+| **Track B / CalibrationSignal** | **Excluded** (F-CAT-001: `track_b_alias_governance` — `signal_id` is adapter metadata only). |
 | **Track E status** | **`restricted`** |
 | **Conceptual validity (CV-001)** | Not interchangeable with SCM+JK estimand; agg2 geo-power **restricted** (§5.4). |
 
@@ -301,6 +301,7 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 | **Allowed claims** | Null-reference diagnostic; TrustReport diagnostic role. |
 | **Disallowed claims** | Lift detection; CalibrationSignal without single-treated OC. |
 | **Track E status** | **`diagnostic_only`** (single-treated); **`blocked`** (multi-treated default) |
+| **Catalog layer (F-CAT-001)** | **`inference_falsification`** — not an estimator readout. |
 | **Conceptual validity (CV-001)** | Placebo-in-space faithful **single-treated**; `placebo_band` ≠ JK CI (§6.3). |
 
 ---
