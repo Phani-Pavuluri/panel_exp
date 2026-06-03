@@ -199,9 +199,11 @@ Full rows: [`AUDIT-010` Appendix A](audits/AUDIT-010_mmm_readiness_gap.md).
 
 ~~**F-INF-003**~~ ✅ · ~~**D5-INF-POSTFIX-001**~~ ✅ · ~~**F-INF-002**~~ ✅ · ~~**D5-INST-TBRRIDGE-003**~~ ✅.
 
-**Default:** **Pause** — see [`TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md`](TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md). Await **governance PR** before reopening impl/OC.
+**Default:** **Pause** impl/OC — see [`TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md`](TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md).
 
-**Optional (product pull only):** **F-INF-004** (A09 TBR JKP). **Design ADR:** F-GEO-003/004, F-MCELL-001, F-CAT-002. Promotion/MMM/CS still blocked.
+**Decision layer:** **F-DECISION-001** ✅ — [`F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md`](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md).
+
+**Next:** **Governance PR** (Track F checkpoint + decision resolver). **Optional:** F-INF-004 (A09). Promotion/MMM/CS still blocked.
 
 ---
 

@@ -22,6 +22,7 @@
 | **Geo PowerAnalysis** | **Diagnostic / narrow planning** — not governed readout MDE ([D5-POW-001a](track_d/archives/D5_POW_001a_results.json)). |
 | **MMM** | **CalibrationSignal** = only MMM ingress. |
 | **Trust** | **TrustReport** = only trust-verdict layer. |
+| **F-DECISION-001** | Post–Track F **method eligibility resolver** assigns runtime roles (`primary_null_monitor`, `diagnostic_comparator`, …) from F-INF/F-GEO/F-CAT — see [`F_DECISION_001`](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md). Track E cards inform design suitability; resolver enforces decision posture. |
 
 ### Card template fields
 

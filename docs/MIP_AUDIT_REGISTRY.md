@@ -396,6 +396,17 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 ---
 
+## F-DECISION-001 checkpoint (2026-06-03)
+
+**Artifact:** [`docs/F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md`](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md)  
+**Code:** [`panel_exp/governance/decision_policy.py`](../panel_exp/governance/decision_policy.py) · [`tests/governance/test_f_decision_001_decision_policy.py`](../tests/governance/test_f_decision_001_decision_policy.py)
+
+**Verdict:** Method eligibility resolver + evidence comparison policy complete; consumes F-INF/F-GEO/F-CAT; no promotion/MMM/CS expansion.
+
+**Next:** Governance PR wiring TrustReport/decision support (integration, not new Track F OC).
+
+---
+
 ## TRACK-F-IMPLEMENTATION-CHECKPOINT-001 (2026-06-03)
 
 **Artifact:** [`docs/TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md`](TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md)

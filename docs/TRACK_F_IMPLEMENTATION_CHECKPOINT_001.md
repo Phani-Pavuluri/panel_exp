@@ -138,16 +138,18 @@ None of these reopen the **default** P3+ fix→OC loop without a **governance PR
 
 | Option | When | Status |
 |--------|------|--------|
-| **A. Pause (recommended)** | Default after checkpoint; document state; await governance PR for MMM/promotion/CS | **✅ SELECTED** |
-| **B. Optional F-INF-004** | Concrete need to tighten class TBR + JKP aggregate 1×1 (A09) | Available; **not** default |
-| **C. Design ADR lane** | Supergeo, trim, pooling, AugSynth BRB taxonomy | Parallel; no code until ADR |
-| **D. Promotion / MMM / CS lane** | Product requests governed export or MMM feed | **Unauthorized** |
+| **A. Pause implementation/OC** | After checkpoint; await governance PR for MMM/promotion/CS | **✅ SELECTED** |
+| **B. F-DECISION-001** | Decision resolver / evidence policy (consumes Track F) | **✅ Complete** — see [`F_DECISION_001`](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md) |
+| **C. Optional F-INF-004** | Class TBR + JKP aggregate 1×1 (A09) | Available; **not** default |
+| **D. Design ADR lane** | Supergeo, trim, pooling, AugSynth BRB taxonomy | Parallel; no code until ADR |
+| **E. Promotion / MMM / CS lane** | Product requests governed export or MMM feed | **Unauthorized** |
 
 ### 7.1 Explicit next state
 
 ```
 TRACK_F_IMPLEMENTATION_STATE = PAUSED_PENDING_GOVERNANCE_PR
 DEFAULT_IMPL_QUEUE = empty
+DECISION_LAYER = F-DECISION-001 complete (policy only)
 OPTIONAL_NEXT = F-INF-004  # only if product reprioritizes
 PROMOTION = unauthorized
 MMM = blocked
@@ -173,6 +175,7 @@ Further implementation without product pull is **lower leverage** than governanc
 | [`D5_INF_POSTFIX_001_REPORT.md`](track_d/D5_INF_POSTFIX_001_REPORT.md) | A05, A19 |
 | [`F_INF_002_TBRRIDGE_INTERFACE_FIX.md`](F_INF_002_TBRRIDGE_INTERFACE_FIX.md) | F-INF-002 |
 | [`D5_INST_TBRRIDGE_003_REPORT.md`](track_d/D5_INST_TBRRIDGE_003_REPORT.md) | A16, A18, A21 |
+| [`F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md`](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md) | Decision resolver (post-checkpoint) |
 | [`TRACK_F_P2_CLOSEOUT_001.md`](TRACK_F_P2_CLOSEOUT_001.md) | P2 historical closeout |
 
 ---

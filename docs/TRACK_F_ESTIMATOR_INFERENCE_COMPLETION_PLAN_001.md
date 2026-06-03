@@ -142,7 +142,7 @@ These tuples are **conceptually plausible** (or blocking hygiene) and should be 
 | **F-MCELL** | F-MCELL-001 | `pooling_rule_id` design if pooled multi-cell ever required | Deferred · `requires_design_ADR` |
 | **F-BACKLOG** | F-BACKLOG-001 | Implementation backlog closeout | ~~**complete**~~ ✅ |
 
-**Next lane:** [**TRACK-F-IMPLEMENTATION-CHECKPOINT-001**](TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md) — **pause** default; optional F-INF-004 on product pull.
+**Next lane:** [**F-DECISION-001**](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md) ✅ → **governance PR**; optional F-INF-004 on product pull.
 
 ### P2 — TBRRidge remaining inference (~~D5-INST-TBRRIDGE-002~~ ✅)
 

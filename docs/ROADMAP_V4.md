@@ -154,12 +154,18 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | **MMM readiness / gap** | **AUDIT-010** ✅ [`audits/AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md) — `not_ready_continue_track_f`; Appendix A = 30 tuples |
 | **D5-POW-001e** | ✅ Six confirmed methods; SCM+JK reference null FPR; [`D5_POW_001e_results.json`](track_d/archives/D5_POW_001e_results.json) — `acceptable_with_caveats` |
 
-**Next steps:** … → ~~**F-INF-002**~~ ✅ → ~~**D5-INST-TBRRIDGE-003**~~ ✅ → **[TRACK-F-IMPLEMENTATION-CHECKPOINT-001](TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md)** (**pause** default) → promotion **only if** governance PR allows (not authorized).
+**Next steps:** … → ~~**CHECKPOINT-001**~~ ✅ → ~~**F-DECISION-001**~~ ✅ → **governance PR** (package Track F + decision layer) → promotion **only if** governance PR allows (not authorized).
 
 ### Track F — implementation checkpoint (2026-06-03)
 
 **Document:** [`TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md`](TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md)  
 **Verdict:** Active fix→OC loop **paused**; contracts + F-INF-003/002 + POSTFIX/TBRRIDGE-003 complete; governed uncertainty ∅; optional **F-INF-004** only on product pull.
+
+### F-DECISION-001 — method eligibility and evidence decision policy
+
+**Document:** [`F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md`](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md)  
+**Code:** [`panel_exp/governance/decision_policy.py`](../panel_exp/governance/decision_policy.py)  
+**Verdict:** Resolver assigns roles (null monitor / diagnostic / falsification / excluded) and evidence posture **without** promotion, MMM, or CalibrationSignal expansion.
 
 ### Track F — estimator / inference completion (implementation planning)
 
