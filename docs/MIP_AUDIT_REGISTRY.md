@@ -444,6 +444,15 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 ---
 
+## TRUSTREPORT-DECISION-INPUTS-WIRING-001 (2026-06-03)
+
+**Artifact:** [`docs/TRUSTREPORT_DECISION_INPUTS_WIRING_001.md`](TRUSTREPORT_DECISION_INPUTS_WIRING_001.md)  
+**Code:** [`panel_exp/track_b/readout_evidence_wiring.py`](../panel_exp/track_b/readout_evidence_wiring.py) · [`tests/track_b/test_trustreport_decision_inputs_wiring_001.py`](../tests/track_b/test_trustreport_decision_inputs_wiring_001.py)
+
+**Verdict:** `include_trust_report_decision_context` wires bundle metadata → `TrustReportDecisionInputs` → `f_decision_context` on export; default off.
+
+---
+
 ## TRACK-F-IMPLEMENTATION-CHECKPOINT-001 (2026-06-03)
 
 **Artifact:** [`docs/TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md`](TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md)
