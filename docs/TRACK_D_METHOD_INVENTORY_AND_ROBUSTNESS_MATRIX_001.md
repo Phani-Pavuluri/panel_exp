@@ -216,6 +216,7 @@ Where applicable, each inventory row records:
 | AugSynthCVXPY point/JK | **D5-INST-AUGSYNTH-001** ✅ — diagnostic_only; not CalibrationSignal |
 | AugSynthCVXPY + Kfold | **D5-INST-AUGSYNTH-KFOLD-001** ✅ — restricted diagnostic comparator |
 | Class TBR (aggregate 1×1) | **D5-INST-TBR-001** ✅ — restricted aggregate diagnostic; not TBRRidge |
+| TBRRidge P2 inference | **D5-INST-TBRRIDGE-002** ✅ — JK/JKP/Conformal blocked; TSKF unverified; Bayesian INV-015 |
 | Estimator×inference×geometry | **D5-INST-COMBO-AUDIT-001** ✅ — curated compatibility matrix |
 | Conceptual / literature fidelity | **TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001** ✅ — paper vs implementation; synthetic OC ≠ validity; **0** MMM-ready paths |
 | Implementation completion plan | **TRACK-F-ESTIMATOR-INFERENCE-COMPLETION-PLAN-001** ✅ — FIX/BLOCK/adapter roadmap from D audits |

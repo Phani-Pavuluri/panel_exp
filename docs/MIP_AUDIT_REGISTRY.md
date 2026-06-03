@@ -358,7 +358,19 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **P0 complete** — F-P0-001…006 guards/tests; no CalibrationSignal expansion; no MMM ingress.
 
-**Next:** Track F P2 OC (TBRRidge-002, AugSynth Conformal).
+**Next:** ~~Track F P0~~ ✅ → ~~TBRRidge-002~~ ✅ → **AugSynth Conformal (003)**.
+
+---
+
+## D5-INST-TBRRIDGE-002 checkpoint (2026-06-03)
+
+**Artifact:** [`docs/track_d/archives/D5_INST_TBRRIDGE_002_results.json`](track_d/archives/D5_INST_TBRRIDGE_002_results.json)  
+**Report:** [`docs/track_d/D5_INST_TBRRIDGE_002_REPORT.md`](track_d/D5_INST_TBRRIDGE_002_REPORT.md)  
+**Harness:** `panel_exp/validation/track_d_d5_inst_tbrridge_002.py`
+
+**Verdict:** **`remain_restricted_no_promotion`** — JK/JKP/Conformal blocked_interface; TimeSeriesKfold callable_unverified; Bayesian INV-015.
+
+**Next:** **D5-INST-AUGSYNTH-003** (Conformal).
 
 ---
 

@@ -2,7 +2,7 @@
 
 **Document ID:** TRACK-F-ESTIMATOR-INFERENCE-COMPLETION-PLAN-001  
 **Type:** Implementation roadmap (planning only — no code changes in this package)  
-**Status:** **draft v1** — AUDIT-010 ✅ (`not_ready_continue_track_f`); **Track F P0 hygiene** ✅; next P2 OC  
+| **Status:** **draft v1** — AUDIT-010 ✅; P0 ✅; ~~TBRRidge-002~~ ✅; next **AugSynth Conformal**  
 **Date:** 2026-06-02  
 **Lane:** Implementation planning bridge — Track D/E evidence → governed fixes  
 **Branch / baseline:** `fix-kfold-multitreated-geometry` @ post `TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001`
@@ -30,7 +30,8 @@
 | [`D5_INST_AUGSYNTH_001`](track_d/D5_INST_AUGSYNTH_001_REPORT.md) | ✅ | AugSynthCVXPY point/JK diagnostic comparator |
 | [`D5_INST_AUGSYNTH_KFOLD_001`](track_d/D5_INST_AUGSYNTH_KFOLD_001_REPORT.md) | ✅ | AugSynthCVXPY + Kfold restricted diagnostic |
 | **D5-INST-TBR-001** | ✅ | Aggregate class TBR OC — point/Kfold restricted; JK blocked on agg2 |
-| **AUDIT-010** | ✅ | MMM readiness/gap closed — `not_ready_continue_track_f`; P0 hygiene next |
+| **D5-INST-TBRRIDGE-002** | ✅ | P2 TBRRidge inference OC — blocked / unverified / INV-015 |
+| **AUDIT-010** | ✅ | MMM readiness/gap closed — `not_ready_continue_track_f` |
 
 **Binding governance (unchanged until separate PR):**
 
@@ -122,35 +123,33 @@ These tuples are **conceptually plausible** (or blocking hygiene) and should be 
 
 **Tests:** [`tests/governance/test_track_f_p0_hygiene.py`](../../tests/governance/test_track_f_p0_hygiene.py)
 
-**Next:** Track F **P2 OC** (TBRRidge-002, AugSynth Conformal) — not promotion.
+**Next:** Track F **P2** — ~~TBRRidge-002~~ ✅ → **AugSynth Conformal (003)** — not promotion.
 
-### P1 — Aggregate TBR path (~~D5-INST-TBR-001~~ ✅)
+### P2 — TBRRidge remaining inference (~~D5-INST-TBRRIDGE-002~~ ✅)
 
-| Combo | Outcome |
-|-------|---------|
-| `TBR + point_estimate + aggregate_two_series` | **OC complete** — restricted aggregate diagnostic |
-| `TBR + Kfold + aggregate_two_series` | **OC complete** — Kfold null FPR 0 |
-| `TBR + UnitJackKnife + aggregate_two_series` | **Blocked** on agg2 (1 control row) |
-| `TBR + JKP + aggregate_two_series` | Runs; **unverified** interval semantics (100% null exclude) |
+| Inference | Outcome |
+|-----------|---------|
+| UnitJackKnife / JKP / Conformal | **blocked_interface** on 001e unit panel |
+| TimeSeriesKfold | **callable_unverified_interval_semantics** |
+| Bayesian (registry) | **blocked_production_policy** (INV-015) |
+| Kfold / BRB | **already_characterized_restricted** (001 context) |
 
-**Conceptual gate:** TBR aggregate estimand ≠ TBRRidge unit/agg-power estimand — separate Track B aliases required before any promotion.
-
-### P2 — Valid candidates (post TBR-001)
+### P2 — Valid candidates (AugSynth next)
 
 | Combo | Battery | Fix scope |
 |-------|---------|-----------|
 | `AugSynthCVXPY + Kfold + single_cell` | ~~D5-AUGSYNTH-KFOLD-001~~ ✅ | OC complete — remain restricted diagnostic |
-| `AugSynthCVXPY + Conformal + single_cell` | D5-AUGSYNTH-003 (proposed) | Exchangeability caveat; not MMM |
-| `TBRRidge + TimeSeriesKfold + single_cell` | D5-TBRRIDGE-002 | Registry wired; OC missing |
+| `AugSynthCVXPY + Conformal + single_cell` | **D5-INST-AUGSYNTH-003** (next) | Exchangeability caveat; not MMM |
+| ~~`TBRRidge + TimeSeriesKfold + single_cell`~~ | ~~D5-TBRRIDGE-002~~ ✅ | Callable; unverified intervals — restricted only |
 
-### P2 — Implemented but unvalidated (fix or reclassify)
+### P2 — TBRRidge interface failures (deferred implementation)
 
-| Combo | Likely fix |
-|-------|------------|
-| `TBRRidge + UnitJackKnife + single_cell` | Probe failed — diagnose donor LOO at ridge scale; TBRRIDGE-002 |
-| `TBRRidge + Conformal + single_cell` | Probe failed — conformal score + panel exchangeability review |
-| `TBRRidge + Bayesian + single_cell` | **Reclassify to BLOCK** for production (INV-015); R&D only |
-| `TBRRidge + JKP + single_cell` | Probe failed — JKP vs JK semantics at TBRRidge scale |
+| Combo | TBRRIDGE-002 outcome |
+|-------|----------------------|
+| `TBRRidge + UnitJackKnife + single_cell` | **blocked_interface** — broadcast on multi-treated path |
+| `TBRRidge + Conformal + single_cell` | **blocked_interface** |
+| `TBRRidge + Bayesian + single_cell` | **blocked_production_policy** (INV-015) |
+| `TBRRidge + JKP + single_cell` | **blocked_interface** |
 
 ### P3 — Interface clarification (fix only if product requires)
 

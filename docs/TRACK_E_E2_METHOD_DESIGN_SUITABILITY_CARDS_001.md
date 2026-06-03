@@ -236,7 +236,7 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 | **Compatible design methods** | Geo orchestrator default; **not** interchangeable with unit SCM+JK 001e tensor. |
 | **Incompatible / blocked** | Governed compare to SCM+JK relative ATT CI without estimand bridge; multi-treated pre-fix geometry. |
 | **Required diagnostics** | E-INST-OC-006; E-ESTIMAND-003; DEF-001. |
-| **OC evidence** | 001c + **D5-INST-TBRRIDGE-001** ✅ — null FPR may match but unit point scale ≠ SCM+JK; agg2 geo-power path. |
+| **OC evidence** | 001c + **D5-INST-TBRRIDGE-001** ✅ + **D5-INST-TBRRIDGE-002** ✅ (TSKF unverified; JK/JKP/Conformal blocked) |
 | **Allowed claims** | Diagnostic / exploratory; TrustReport restricted role. |
 | **Disallowed claims** | CalibrationSignal; MMM; primary null-monitor for unit geo tests. |
 | **Track B / CalibrationSignal** | **Excluded**. |
