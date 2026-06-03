@@ -134,21 +134,21 @@ AugSynth/ASCM is the correct **immediate active development lane** because the s
 
 ## 5. Ordered next roadmap
 
-Next **3–5 execution artifacts** after this review. Artifact **#1 materialized**; **next PR is #2** (D5-DIAG code).
+Next **3–5 execution artifacts** after this review. Artifacts **#1–#2 complete**; **next is #3** (fidelity audit).
 
 | Order | Artifact | Type | Lane | Rationale |
 |-------|----------|------|------|-----------|
 | **1** | **AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001** | docs (short) | DL-1 | ✅ Materialized — [`AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md) |
-| **2** | **D5-DIAG-SCM-AUGSYNTH-001** | diagnostic harness + tests + JSON spec | DL-1 + DL-2 | **Next** — first **code-backed** evidence; emits D8/D10/D11; serves A26 + AugSynth |
-| **3** | **AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001** | fidelity audit | DL-1 | Closes charter §4 I4–I8 against harness output; pre-OC |
-| **4** | **D5-INST-AUGSYNTH-ASCM-003** | OC battery | DL-1 | Calibrates threshold cutoffs; n_mc ≥ 14; weak-fit grid (threshold audit §7) |
-| **5** | **DESIGN_READOUT_COMPATIBILITY_AUDIT_001** | compatibility audit (docs) | DL-4 | Foundation P2; **parallel** — does not block #2–#4 |
+| **2** | **D5-DIAG-SCM-AUGSYNTH-001** | diagnostic harness + tests | DL-1 + DL-2 | ✅ Complete — [`D5_DIAG_SCM_AUGSYNTH_001_REPORT.md`](track_d/D5_DIAG_SCM_AUGSYNTH_001_REPORT.md) |
+| **3** | **AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001** | fidelity audit | DL-1 | **Next** — charter §4 I4–I8 |
+| **4** | **D5-INST-AUGSYNTH-ASCM-003** | OC battery | DL-1 | Uses D5-DIAG diagnostics; calibrates threshold cutoffs |
+| **5** | **DESIGN_READOUT_COMPATIBILITY_AUDIT_001** | compatibility audit (docs) | DL-4 | Foundation P2; **parallel** — does not block #3–#4 |
 
 **Deferred to after #3–#4:** `AUGSYNTH_SCM_ESTIMAND_BRIDGE_ADR_001` (needs ASCM-003 + fidelity audit inputs).
 
 **Explicitly not next:** LLM integration · promotion audit · TrustReport wiring · CalibrationSignal expansion.
 
-**Next PR:** **P1 `D5-DIAG-SCM-AUGSYNTH-001`** per [`AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md).
+**Next PR:** **P2 `AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001`** per [`AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md). P1 D5-DIAG ✅.
 
 ---
 
@@ -159,8 +159,8 @@ Next **3–5 execution artifacts** after this review. Artifact **#1 materialized
 | This review does **not** create new eligibility decisions | ✅ — F-DECISION-001 and AUDIT-010 unchanged |
 | This review does **not** promote or demote methods | ✅ — `proceed_to_augsynth_development_lane` is development sequencing only |
 | This review **only** chooses the next development lane | ✅ |
-| Next PR after artifact #1 should produce **concrete** diagnostics, OC, code, or fidelity evidence | ✅ — **#1 materialized**; **#2 D5-DIAG** is next code PR |
-| No further roadmap docs unless they unlock execution | ✅ — #1 complete; next is code |
+| Next PR after artifact #1 should produce **concrete** diagnostics, OC, code, or fidelity evidence | ✅ — **#1–#2 complete**; **#3 fidelity audit** is next |
+| No further roadmap docs unless they unlock execution | ✅ — P1 code complete; next is P2 fidelity audit |
 
 ---
 
@@ -176,4 +176,4 @@ Next **3–5 execution artifacts** after this review. Artifact **#1 materialized
 
 ---
 
-*METHOD-SOUNDNESS-ROADMAP-REVIEW-001 v1.0.0 — checkpoint complete; execute §5 from #2.*
+*METHOD-SOUNDNESS-ROADMAP-REVIEW-001 v1.0.0 — checkpoint complete; execute §5 from #3.*

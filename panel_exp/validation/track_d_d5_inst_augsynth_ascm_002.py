@@ -16,11 +16,16 @@ from typing import Any, Literal
 import numpy as np
 import pandas as pd
 
-from panel_exp.methods.scm import AugSynthCVXPY, SyntheticControl
+from panel_exp.methods.scm import AugSynthCVXPY
 from panel_exp.panel_data import PanelDataset, TimePeriod
 from panel_exp.utils.optional_deps import cvxpy_osqp_skip_reason
 from panel_exp.validation.synthetic_scenarios import RECOVERY_SCENARIO_REGISTRY
 from panel_exp.validation.synthetic_world import SyntheticWorld
+from panel_exp.validation.scm_augsynth_diagnostics import (
+    compute_instrument_diagnostics,
+    compute_method_disagreement,
+    compute_panel_scm_augsynth_diagnostics,
+)
 from panel_exp.validation.track_d_d5_inst_augsynth_001 import (
     _build_unit_panel,
     _readout_metrics,
@@ -175,65 +180,6 @@ class D5InstAugsynthAscm002Config:
     )
 
 
-def _pre_period_rmse(results: dict[str, Any], train_length: int) -> float:
-    y = np.asarray(results["y"], dtype=float)
-    y_hat = np.asarray(results["y_hat"], dtype=float)
-    if y.ndim == 2:
-        y = np.nanmean(y, axis=1)
-        y_hat = np.nanmean(y_hat, axis=1)
-    pre = slice(0, min(train_length, y.shape[0]))
-    err = y[pre] - y_hat[pre]
-    if not np.any(np.isfinite(err)):
-        return float("nan")
-    return float(np.sqrt(np.nanmean(err**2)))
-
-
-def _hull_extrapolation_z(panel: PanelDataset, train_length: int) -> float:
-    if not panel.treated_units or not panel.control_units:
-        return float("nan")
-    wide = panel.wide_data
-    pre_cols = list(panel.times[:train_length])
-    treated = panel.treated_units[0]
-    yt = wide.loc[treated, pre_cols].values.astype(float)
-    X = wide.loc[controls, pre_cols].values.astype(float) if (controls := panel.control_units) else np.empty((0, len(pre_cols)))
-    if X.shape[0] == 0:
-        return float("nan")
-    mu = np.nanmean(X, axis=0)
-    sd = np.nanstd(X, axis=0) + 1e-9
-    z_t = (yt - mu) / sd
-    z_c = (X - mu) / sd
-    dists = [float(np.linalg.norm(z_t - z_c[i])) for i in range(X.shape[0])]
-    return float(min(dists)) if dists else float("nan")
-
-
-def _weight_diagnostics(est: AugSynthCVXPY) -> dict[str, float]:
-    scm = getattr(est, "scm", None)
-    model = getattr(scm, "model", None) if scm is not None else None
-    weights = getattr(model, "weights", None)
-    if weights is None:
-        return {
-            "weight_herfindahl": float("nan"),
-            "max_weight": float("nan"),
-            "n_negative_weights": float("nan"),
-        }
-    arr = np.asarray(weights, dtype=float).reshape(-1)
-    neg = int(np.sum(arr < -1e-9))
-    abs_arr = np.abs(arr)
-    pos = abs_arr[abs_arr > 1e-12]
-    if pos.size == 0:
-        return {
-            "weight_herfindahl": float("nan"),
-            "max_weight": float("nan"),
-            "n_negative_weights": float(neg),
-        }
-    p = pos / pos.sum()
-    return {
-        "weight_herfindahl": float(np.sum(p**2)),
-        "max_weight": float(np.max(p)),
-        "n_negative_weights": float(neg),
-    }
-
-
 def _panel_strengthening_diagnostics(
     panel: PanelDataset,
     *,
@@ -242,45 +188,15 @@ def _panel_strengthening_diagnostics(
     min_donors: int,
     alpha: float,
 ) -> dict[str, Any]:
-    out: dict[str, Any] = {
-        "scm_pre_rmse": float("nan"),
-        "augsynth_pre_rmse": float("nan"),
-        "fit_improvement_rmse": float("nan"),
-        "donor_sparsity_n_control": float(len(panel.control_units)),
-        "hull_min_donor_z_distance": _hull_extrapolation_z(panel, train_length),
-        "weight_herfindahl": float("nan"),
-        "max_weight": float("nan"),
-        "n_negative_weights": float("nan"),
-        "diagnostics_feasible": 0.0,
-    }
-    if len(panel.control_units) < min_donors:
-        out["blocked_reason"] = f"insufficient_donors_need_{min_donors}"
-        return out
-    skip = cvxpy_osqp_skip_reason()
-    if skip:
-        out["blocked_reason"] = skip
-        return out
-
-    pds = _inject_percent_effect(panel, 0.0, _mean_treated_baseline(panel))
-    try:
-        scm = SyntheticControl(inference=None, alpha=alpha)
-        scm.run_analysis(pds)
-        out["scm_pre_rmse"] = _pre_period_rmse(scm.results or {}, train_length)
-    except Exception as exc:
-        out["scm_fit_error"] = type(exc).__name__
-        return out
-
-    try:
-        aug = AugSynthCVXPY(inference=None, alpha=alpha, min_donors=min_donors)
-        aug.run_analysis(pds)
-        out["augsynth_pre_rmse"] = _pre_period_rmse(aug.results or {}, train_length)
-        out.update(_weight_diagnostics(aug))
-        if np.isfinite(out["scm_pre_rmse"]) and np.isfinite(out["augsynth_pre_rmse"]):
-            out["fit_improvement_rmse"] = float(out["scm_pre_rmse"] - out["augsynth_pre_rmse"])
-        out["diagnostics_feasible"] = 1.0
-    except Exception as exc:
-        out["augsynth_fit_error"] = type(exc).__name__
-    return out
+    del test_length  # panel diagnostics use pre-period only
+    return compute_panel_scm_augsynth_diagnostics(
+        panel,
+        train_length=train_length,
+        min_donors=min_donors,
+        alpha=alpha,
+        inject_percent_effect=_inject_percent_effect,
+        mean_treated_baseline=_mean_treated_baseline,
+    )
 
 
 def _recovery_metrics(
@@ -299,23 +215,6 @@ def _recovery_metrics(
         "effect_recovery_mae": mae,
         "directional_recovery": float(inst.get("directional_recovery", float("nan"))),
     }
-
-
-def _false_confidence_flag(
-    inst: dict[str, Any],
-    diagnostics: dict[str, Any],
-    *,
-    scm_rmse_weak_threshold: float = 1.0,
-    hull_stress_threshold: float = 2.5,
-) -> float:
-    point = abs(float(inst.get("mean_point_effect", 0.0)))
-    scm_rmse = float(diagnostics.get("scm_pre_rmse", float("nan")))
-    hull_z = float(diagnostics.get("hull_min_donor_z_distance", float("nan")))
-    if not np.isfinite(point) or point < 0.03:
-        return 0.0
-    poor_scm = np.isfinite(scm_rmse) and scm_rmse >= scm_rmse_weak_threshold
-    hull_stress = np.isfinite(hull_z) and hull_z >= hull_stress_threshold
-    return float(poor_scm and hull_stress and bool(inst.get("feasible")))
 
 
 def _run_instrument_arm(
@@ -452,22 +351,15 @@ def _run_world_replicate(
                 cfg=cfg,
             )
             inst.update(_recovery_metrics(inst, percent_effect=float(prc)))
-            inst["false_confidence_flag"] = _false_confidence_flag(inst, diagnostics)
+            inst.update(compute_instrument_diagnostics(inst, diagnostics))
             instruments[arm][float(prc)] = inst
 
     null_a26 = instruments["a26_scm_unit_jackknife"].get(0.0, {})
     null_aug = instruments["augsynth_cvxpy_point"].get(0.0, {})
-    sign_disagree = float(
-        np.sign(null_aug.get("mean_point_effect", 0))
-        != np.sign(null_a26.get("mean_point_effect", 0))
-        if null_aug.get("feasible") and "mean_point_effect" in null_a26
-        else float("nan")
-    )
-    material_mismatch = float(
-        abs(null_aug.get("mean_point_effect", 0) - null_a26.get("mean_point_effect", 0))
-        > cfg.material_point_mismatch_threshold
-        if null_aug.get("feasible") and "mean_point_effect" in null_a26
-        else float("nan")
+    conflict = compute_method_disagreement(
+        null_a26,
+        null_aug,
+        material_point_mismatch_threshold=cfg.material_point_mismatch_threshold,
     )
 
     return {
@@ -480,10 +372,7 @@ def _run_world_replicate(
         "n_treated": len(panel.treated_units),
         "diagnostics": diagnostics,
         "instruments": instruments,
-        "conflict_vs_a26": {
-            "null_sign_disagreement": sign_disagree,
-            "null_material_point_mismatch": material_mismatch,
-        },
+        "conflict_vs_a26": conflict,
     }
 
 

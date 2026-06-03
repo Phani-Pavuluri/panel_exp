@@ -250,15 +250,22 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Status:** **complete**  
 **Verdict:** Execution checkpoint — **`proceed_to_augsynth_development_lane`** confirmed; DL-2 coupled via D5-DIAG; design-readout + inference taxonomy **parallel docs**, not blockers.
 
-**Ordered next:** ✅ [`AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md) **materialized** → **P1** D5-DIAG-SCM-AUGSYNTH-001 (code, **next**) → P2 fidelity audit → P3 ASCM-003.
+**Ordered next:** ✅ [`AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md) **materialized** → ✅ D5-DIAG-SCM-AUGSYNTH-001 **complete** → **AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001** (next) → D5-INST-AUGSYNTH-ASCM-003.
 
 ### AUGSYNTH-ASCM-DEVELOPMENT-ROADMAP-001
 
 **Document:** [`AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md)  
-**Status:** **complete** (current PR) — docs/planning only; no production behavior change  
+**Status:** **complete** — docs/planning only; no production behavior change  
 **Verdict:** Focused **execution** roadmap for DL-1 — PR sequence P1–P6 (diagnostics → fidelity → OC → inference calibration → design compat). **Not promotion.**
 
-**Next PR:** P1 **D5-DIAG-SCM-AUGSYNTH-001** (code + tests).
+**P1:** ✅ D5-DIAG-SCM-AUGSYNTH-001 complete. **Next:** P2 **AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001**.
+
+### D5-DIAG-SCM-AUGSYNTH-001
+
+**Document:** [`track_d/D5_DIAG_SCM_AUGSYNTH_001_REPORT.md`](track_d/D5_DIAG_SCM_AUGSYNTH_001_REPORT.md)  
+**Module:** [`panel_exp/validation/scm_augsynth_diagnostics.py`](../panel_exp/validation/scm_augsynth_diagnostics.py)  
+**Status:** **complete** — validation-layer diagnostics only; no production behavior change.  
+**Next:** AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001 (docs). ASCM-003 OC uses these diagnostics.
 
 
 ### SCM-AUGSYNTH-DIAGNOSTIC-THRESHOLD-AUDIT-001

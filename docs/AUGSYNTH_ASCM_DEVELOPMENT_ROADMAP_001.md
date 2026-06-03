@@ -28,7 +28,7 @@ It converts prior audit, threshold, and OC evidence into **named PRs** with code
 | An **LLM-layer plan** | LLM paused per foundation hardening |
 | A **replacement for code-backed evidence** | Each PR must produce runnable artifacts |
 
-**Next step after this doc:** **P1 `D5-DIAG-SCM-AUGSYNTH-001`** (code + tests).
+**Next step after this doc:** **P2 `AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001`**. P1 D5-DIAG ✅ ([`D5_DIAG_SCM_AUGSYNTH_001_REPORT.md`](track_d/D5_DIAG_SCM_AUGSYNTH_001_REPORT.md)).
 
 ---
 
@@ -250,4 +250,4 @@ Trigger when:
 
 ---
 
-*AUGSYNTH-ASCM-DEVELOPMENT-ROADMAP-001 v1.0.0 — execute P1 next.*
+*AUGSYNTH-ASCM-DEVELOPMENT-ROADMAP-001 v1.0.0 — P1 complete; execute P2 next.*
