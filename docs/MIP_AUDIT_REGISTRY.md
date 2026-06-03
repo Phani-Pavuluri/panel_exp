@@ -564,7 +564,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** TRACK-D inventory · D2/D3/D4 · CV-001 · AUDIT-010 · METHOD-FOUNDATION-HARDENING-001 · threshold audit · F-DECISION-001.
 
-**Next active lane (DL-1):** AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001 · D5-DIAG-SCM-AUGSYNTH-001 · D5-INST-AUGSYNTH-ASCM-003.
+**Next active lane (DL-1):** ✅ [`AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md) · **P1** D5-DIAG-SCM-AUGSYNTH-001 (code).
 
 **Review checkpoint:** [`METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md`](METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md) — **`proceed_to_augsynth_development_lane`**.
 
@@ -580,7 +580,21 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** METHOD-SOUNDNESS-AND-GAP-ROADMAP-001 · threshold audit · ASCM-002 · ADR-001.
 
-**Next:** AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001 (short doc) → D5-DIAG (code) → ASCM-003 (OC).
+**Next:** ✅ [`AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md) **materialized** → **D5-DIAG-SCM-AUGSYNTH-001** (code, next).
+
+---
+
+## AUGSYNTH-ASCM-DEVELOPMENT-ROADMAP-001 (2026-06-03)
+
+**Artifact:** [`docs/AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md)
+
+**Verdict:** Active DL-1 **execution** plan — P1 diagnostics (code) through P6 design compat; stop/go criteria; **no promotion**.
+
+**Status:** **complete** (current PR) — docs/planning only; no production behavior change; no CalibrationSignal/MMM/LLM changes.
+
+**Prerequisites:** METHOD-SOUNDNESS-ROADMAP-REVIEW-001 · ASCM-002 · threshold audit · ADR-001.
+
+**Next PR:** **D5-DIAG-SCM-AUGSYNTH-001**.
 
 ---
 

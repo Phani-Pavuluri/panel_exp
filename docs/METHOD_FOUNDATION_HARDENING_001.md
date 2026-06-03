@@ -93,7 +93,7 @@ Lanes are **execution order** for foundation hardening. They **do not** change p
 |-------|---------|
 | **Goal** | Operational thresholds for weak SCM fit, hull/extrapolation, false-confidence flags (charter D1–D11) consumable by Track B / future LLM |
 | **Why now** | ASCM-002 showed inside-hull vs outside-hull split; thresholds not product-stable |
-| **Deliverables** | ✅ [`SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md`](SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md); **next:** `D5-INST-AUGSYNTH-ASCM-003` (research OC, larger n_mc, label calibration) |
+| **Deliverables** | ✅ [`SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md`](SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md); **execution:** [`AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md) → D5-DIAG → ASCM-003 |
 | **Stop condition** | Threshold definitions + evidence table + “when to surface blocker” rules documented | **Met** (numeric cutoffs provisional) |
 | **Guardrails** | No promotion; no SCM demotion; diagnostics labels only | **Met** |
 

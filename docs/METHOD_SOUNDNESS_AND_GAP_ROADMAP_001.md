@@ -287,7 +287,7 @@ Lanes convert gaps to **concrete deliverables**. Priority: scientific importance
 
 | Deliverable | Type | Gap categories | Depends on |
 |-------------|------|----------------|------------|
-| **AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001** | docs | documentation_gap | ASCM-002 ✅ · threshold audit ✅ |
+| **AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001** | docs | documentation_gap | ASCM-002 ✅ · threshold audit ✅ · review ✅ |
 | **D5-DIAG-SCM-AUGSYNTH-001** | diagnostic implementation | metadata_gap · diagnostic_gap | Threshold audit §2 |
 | **D5-INST-AUGSYNTH-ASCM-003** | OC battery | OC_evidence_gap · diagnostic_gap | ASCM-002 harness |
 | **AUGSYNTH_SCM_ESTIMAND_BRIDGE_ADR_001** | ADR | estimand_gap | D5-AS-FIND-004 · ASCM-002 conflict metrics |
@@ -369,15 +369,19 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 
 ## 9. Immediate next active lane
 
-**Checkpoint:** [`METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md`](METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md) — verdict **`proceed_to_augsynth_development_lane`** (DL-1 + coupled DL-2; design-readout parallel docs).
+**Checkpoint:** [`METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md`](METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md) — verdict **`proceed_to_augsynth_development_lane`** (DL-1 + coupled DL-2; design-readout parallel docs). **Review complete.**
+
+**Execution plan:** [`AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md) — **materialized** (current PR). **Next code-backed work:** **D5-DIAG-SCM-AUGSYNTH-001** (P1).
+
 
 **AugSynth/ASCM** is the **active method-development lane** because recent stratified evidence ([`D5_INST_AUGSYNTH_ASCM_002_REPORT.md`](track_d/D5_INST_AUGSYNTH_ASCM_002_REPORT.md)) is the richest weak-fit/hull dataset in the repo, and foundation docs ([`AUGSYNTH_ASCM_STRENGTHENING_001.md`](AUGSYNTH_ASCM_STRENGTHENING_001.md), ADR-001, threshold audit) already frame gaps — without promoting AugSynth or demoting SCM/A26.
 
 | Priority | Artifact | Type | Rationale |
 |----------|----------|------|-----------|
-| **1** | **AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001** | docs | Sequences estimator + diagnostic + OC work under one development charter |
-| **2** | **D5-DIAG-SCM-AUGSYNTH-001** | diagnostic implementation spec + harness | Closes D8/D10/D11 metadata gaps cited in threshold audit |
-| **3** | **D5-INST-AUGSYNTH-ASCM-003** | OC battery | Calibrates provisional threshold cutoffs (n_mc ≥ 14; weak-fit grid) |
+| **1** | **AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001** | docs | ✅ Materialized — sequences DL-1/DL-2 deliverables ([`AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md)) |
+| **2** | **D5-DIAG-SCM-AUGSYNTH-001** | diagnostic implementation spec + harness | **Next** — closes D8/D10/D11 metadata gaps cited in threshold audit |
+| **3** | **AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001** | fidelity audit | Charter §4 I4–I8 vs `panel_exp/methods/scm.py` |
+| **4** | **D5-INST-AUGSYNTH-ASCM-003** | OC battery | Calibrates provisional threshold cutoffs (n_mc ≥ 14; weak-fit grid) |
 
 **Parallel (non-blocking):** DESIGN_READOUT_COMPATIBILITY_AUDIT_001 (foundation P2) — design-stage work, not AugSynth algorithm work.
 
