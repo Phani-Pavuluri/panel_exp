@@ -185,6 +185,12 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Code:** [`readout_evidence_wiring.py`](../panel_exp/track_b/readout_evidence_wiring.py)  
 **Verdict:** Opt-in `include_trust_report_decision_context` on Geo RunBundle export; builds readout evidence from bundle metadata; default off.
 
+### TRUSTREPORT-DECISION-CONTEXT-SMOKE-001
+
+**Document:** [`TRUSTREPORT_DECISION_CONTEXT_SMOKE_001.md`](TRUSTREPORT_DECISION_CONTEXT_SMOKE_001.md)  
+**Artifact:** [`track_b/archives/TRUSTREPORT_DECISION_CONTEXT_SMOKE_001_export.json`](track_b/archives/TRUSTREPORT_DECISION_CONTEXT_SMOKE_001_export.json)  
+**Verdict:** End-to-end export smoke — `f_decision_context` present when opted in, absent when off; guardrails on representative fixture.
+
 ### Track F — estimator / inference completion (implementation planning)
 
 **Roadmap ID:** `TRACK-F-ESTIMATOR-INFERENCE-COMPLETION`  
