@@ -234,7 +234,14 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Document:** [`METHOD_FOUNDATION_HARDENING_001.md`](METHOD_FOUNDATION_HARDENING_001.md)  
 **Verdict:** Pre-LLM scientific hardening phase — **LLM layer paused**; gap table; lanes P0 ✅ → P1 threshold audit ✅ (calibration via ASCM-003) → P2–P5. **No promotion.**
 
-**Bridge:** METHOD-STRENGTHENING + Track D OC → **FOUNDATION HARDENING** → AUDIT-011 / LLM (future).
+**Bridge:** METHOD-STRENGTHENING + Track D OC → **FOUNDATION HARDENING** → **METHOD-SOUNDNESS-AND-GAP-ROADMAP-001** → AUDIT-011 / LLM (future).
+
+### METHOD-SOUNDNESS-AND-GAP-ROADMAP-001
+
+**Document:** [`METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md`](METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md)  
+**Verdict:** Audit-derived **development-first** inventory, scorecard, and sequenced lanes (DL-0–DL-8). Reconciles Track D audits + OC archives; **no new eligibility decisions**. Active lane: AugSynth/ASCM (DL-1).
+
+**Inputs:** Track D D1–D5 · CV-001 · AUDIT-010 · foundation hardening · threshold audit · F-DECISION baseline.
 
 ### SCM-AUGSYNTH-DIAGNOSTIC-THRESHOLD-AUDIT-001
 

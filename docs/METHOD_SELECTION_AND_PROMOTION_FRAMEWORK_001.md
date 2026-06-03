@@ -7,7 +7,7 @@
 **Verdict:** Governance is a **promotion pipeline**, not a freeze; **no method promoted in this artifact**  
 **Decomposition input:** [`METHOD_READINESS_AND_COMPATIBILITY_MATRIX_001.md`](METHOD_READINESS_AND_COMPATIBILITY_MATRIX_001.md) (L1/L2/L3 complete)
 
-**Related:** [`F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md`](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md) · [`F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md`](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md) · [`TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md`](TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md) · [`TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) · [`audits/AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md) · [`METHOD_STRENGTHENING_LANES_001.md`](METHOD_STRENGTHENING_LANES_001.md) · [`METHOD_FOUNDATION_HARDENING_001.md`](METHOD_FOUNDATION_HARDENING_001.md)
+**Related:** [`F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md`](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md) · [`F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md`](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md) · [`TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md`](TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md) · [`TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) · [`audits/AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md) · [`METHOD_STRENGTHENING_LANES_001.md`](METHOD_STRENGTHENING_LANES_001.md) · [`METHOD_FOUNDATION_HARDENING_001.md`](METHOD_FOUNDATION_HARDENING_001.md) · [`METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md`](METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md)
 
 **Future gate (not authored here):** **METHOD-PROMOTION-AUDIT-TEMPLATE-001**
 
@@ -23,6 +23,13 @@ The platform is **decision-safe** today: F-INF, F-GEO, F-CAT, AUDIT-010, F-DECIS
 | **L1/L2/L3 decomposition is complete** | See METHOD-READINESS-AND-COMPATIBILITY-MATRIX-001 |
 | **Promotion-ready count today** | **0** |
 | **This artifact** | Defines **how** strong-but-restricted methods move toward stronger roles — **not** that any move today |
+| **METHOD-SOUNDNESS-AND-GAP-ROADMAP-001** | **Development-first** gap closure and OC sequencing — **not** a parallel eligibility hierarchy |
+
+```text
+Evidence + audits  →  development lanes (soundness roadmap)  →  promotion pipeline (this doc)  →  F-DECISION amendment
+```
+
+**Development-first rule:** AUDIT-010 buckets and F-DECISION roles describe **current evidence posture**. [`METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md`](METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md) sequences **concrete development work** (OC, diagnostics, fidelity audits) to close gaps — **`restricted` means development needed**, not discard.
 
 ```text
 L1 nominate estimator  +  L2 nominate inference  →  L3 must pass  →  benchmark vs A26  →  METHOD-PROMOTION-AUDIT-TEMPLATE-001  →  F-DECISION role change
