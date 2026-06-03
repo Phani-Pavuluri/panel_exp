@@ -157,6 +157,19 @@ Per [F-BACKLOG-002 §7](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md): optional `s
 
 Omit `decision_inputs` → legacy TrustReport unchanged.
 
+### Layered readiness (METHOD-READINESS-AND-COMPATIBILITY-MATRIX-001)
+
+F-DECISION roles apply to **Layer 3 combinations** only — not estimator or inference rows alone. See [`METHOD_READINESS_AND_COMPATIBILITY_MATRIX_001.md`](METHOD_READINESS_AND_COMPATIBILITY_MATRIX_001.md) for which tuples are `characterized_restricted` vs `callable_unverified` vs `ready_limited_governed_use` (A26 only).
+
+### Baseline policy until method-promotion gates pass
+
+**F-DECISION-001 is the authoritative production baseline** until a tuple completes:
+
+1. L3 compatibility + governed benchmark vs **A26** (see [`METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001.md`](METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001.md)), and  
+2. **METHOD-PROMOTION-AUDIT-TEMPLATE-001** (or equivalent) with explicit governance amendment.
+
+**A26 (SCM + UnitJackKnife)** is the **current conservative null-monitor baseline** — not assumed permanent. AugSynth, TBR aggregate, and other strong L1/L2 candidates remain `diagnostic_comparator` or blocked until those gates pass. **This document does not grant promotions.**
+
 ---
 
-*F-DECISION-001 v1.2.0 — resolver/policy; TrustReport optional consumption documented.*
+*F-DECISION-001 v1.4.0 — baseline until promotion audit; see METHOD-SELECTION-AND-PROMOTION-FRAMEWORK-001.*

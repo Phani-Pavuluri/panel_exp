@@ -462,6 +462,40 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 ---
 
+## METHOD-READINESS-AND-COMPATIBILITY-MATRIX-001 (2026-06-03)
+
+**Artifact:** [`docs/METHOD_READINESS_AND_COMPATIBILITY_MATRIX_001.md`](METHOD_READINESS_AND_COMPATIBILITY_MATRIX_001.md)
+
+**Verdict:** Layered readiness — estimator table, inference table, combination/promotion table; F-BACKLOG-002 as rank input; top strengthen lists + blocked-despite-importance + next-artifact map. **No promotion.**
+
+**Prerequisites:** F-BACKLOG-002 · AUDIT-010 · F-DECISION-001 · CV-001.
+
+---
+
+## METHOD-SELECTION-AND-PROMOTION-FRAMEWORK-001 (2026-06-03)
+
+**Artifact:** [`docs/METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001.md`](METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001.md)
+
+**Verdict:** Promotion **pipeline** (not freeze) — data-structure routing, candidate selection (L1+L2+L3), benchmark vs A26, role-specific promotion lanes; **METHOD-PROMOTION-AUDIT-TEMPLATE-001** required for future role upgrades; **0** promotions authorized.
+
+**Prerequisites:** METHOD-READINESS-AND-COMPATIBILITY-MATRIX-001 · F-BACKLOG-002 · F-DECISION-001 (baseline until audit).
+
+**Future artifact:** METHOD-PROMOTION-AUDIT-TEMPLATE-001 (placeholder: [`METHOD_PROMOTION_AUDIT_TEMPLATE_001.md`](METHOD_PROMOTION_AUDIT_TEMPLATE_001.md)).
+
+**Downstream:** [`METHOD_STRENGTHENING_LANES_001.md`](METHOD_STRENGTHENING_LANES_001.md) — strengthening work packages; does not duplicate routing.
+
+---
+
+## METHOD-STRENGTHENING-LANES-001 (2026-06-03)
+
+**Artifact:** [`docs/METHOD_STRENGTHENING_LANES_001.md`](METHOD_STRENGTHENING_LANES_001.md)
+
+**Verdict:** Strengthening layer — estimator / inference / combination evidence categories; first lanes AUGSYNTH_ASCM, TBR_AGGREGATE, MULTICELL, TRIM_SUPERGEO, BAYESIAN_TBR_TROP_RTP; entry/exit criteria; next-artifact map. **Not promotion**; no TrustReport / F-DECISION / CS / MMM change.
+
+**Prerequisites:** METHOD-SELECTION-AND-PROMOTION-FRAMEWORK-001 · METHOD-READINESS matrix · F-BACKLOG-002 · F-DECISION-001 (baseline).
+
+---
+
 ## TRACK-F-IMPLEMENTATION-CHECKPOINT-001 (2026-06-03)
 
 **Artifact:** [`docs/TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md`](TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md)
