@@ -7,7 +7,7 @@
 **Verdict:** Re-rank parked items by **investigation value**, not production promotion; **external importance does not override** AUDIT-010 / F-DECISION-001 gates  
 **Prerequisites:** TRACK-F-IMPLEMENTATION-CHECKPOINT-001 · F-DECISION-001 (`637bb29`) · F-BACKLOG-001 · AUDIT-010
 
-**Related:** [`TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) · [`TRACK_D_METHOD_INVENTORY_AND_ROBUSTNESS_MATRIX_001.md`](TRACK_D_METHOD_INVENTORY_AND_ROBUSTNESS_MATRIX_001.md) · [`TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md`](TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md) · [`F_DECISION_001`](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md)
+**Related:** [`TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) · [`TRACK_D_METHOD_INVENTORY_AND_ROBUSTNESS_MATRIX_001.md`](TRACK_D_METHOD_INVENTORY_AND_ROBUSTNESS_MATRIX_001.md) · [`TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md`](TRACK_E_E2_METHOD_DESIGN_SUITABILITY_CARDS_001.md) · [`F_DECISION_001`](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md) · [`METHOD_READINESS_AND_COMPATIBILITY_MATRIX_001`](METHOD_READINESS_AND_COMPATIBILITY_MATRIX_001.md) (layered decomposition of this review)
 
 ---
 
@@ -271,4 +271,20 @@ flowchart TD
 
 ---
 
-*F-BACKLOG-002 v1.0.0 — investigation priority only; does not authorize implementation or promotion.*
+## 15. Layered matrix (METHOD-READINESS-AND-COMPATIBILITY-MATRIX-001)
+
+F-BACKLOG-002 ranks **investigation priority**. [`METHOD_READINESS_AND_COMPATIBILITY_MATRIX_001.md`](METHOD_READINESS_AND_COMPATIBILITY_MATRIX_001.md) separates:
+
+- **Layer 1** — estimator conceptual strength (independent of inference)
+- **Layer 2** — inference method trustworthiness by role
+- **Layer 3** — combination validity (AUDIT-010 + F-DECISION + promotion gates)
+
+Use the matrix for **strengthening** discourse; use this doc for **ranking**.
+
+## 16. Promotion pipeline (METHOD-SELECTION-AND-PROMOTION-FRAMEWORK-001)
+
+Investigation rank (this doc) + layered matrix → **positive promotion pipeline**: [`METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001.md`](METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001.md). Defines benchmark vs **A26 baseline**, first promotion lanes, and **METHOD-PROMOTION-AUDIT-TEMPLATE-001** as required future gate. **No promotion authorized here or in framework v1.**
+
+---
+
+*F-BACKLOG-002 v1.2.0 — investigation priority only; does not authorize implementation or promotion.*

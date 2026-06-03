@@ -142,6 +142,9 @@ These tuples are **conceptually plausible** (or blocking hygiene) and should be 
 | **F-MCELL** | F-MCELL-001 | `pooling_rule_id` design if pooled multi-cell ever required | Deferred · `requires_design_ADR` |
 | **F-BACKLOG** | F-BACKLOG-001 | Implementation backlog closeout | ~~**complete**~~ ✅ |
 | **F-BACKLOG** | F-BACKLOG-002 | Industry/literature relevance review | ~~**complete**~~ ✅ [`F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md`](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md) |
+| **METHOD-READINESS** | METHOD-READINESS-AND-COMPATIBILITY-MATRIX-001 | Layered estimator / inference / combination matrix | ~~**complete**~~ ✅ [`METHOD_READINESS_AND_COMPATIBILITY_MATRIX_001.md`](METHOD_READINESS_AND_COMPATIBILITY_MATRIX_001.md) |
+| **METHOD-SELECTION** | METHOD-SELECTION-AND-PROMOTION-FRAMEWORK-001 | Promotion pipeline on L1/L2/L3; benchmark vs A26 | ~~**complete**~~ ✅ [`METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001.md`](METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001.md) |
+| **METHOD-PROMOTION** | METHOD-PROMOTION-AUDIT-TEMPLATE-001 | Per-tuple promotion audit gate | **placeholder** — not authored |
 
 **Next lane:** [**F-DECISION-001**](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md) ✅ → **governance PR**; optional F-INF-004 on product pull.
 
