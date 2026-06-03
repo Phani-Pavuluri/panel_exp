@@ -392,7 +392,18 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **Track F P2 formally closed** — no additional OC batteries scheduled; promotion not authorized.
 
-**Next lane:** ~~D5-INF-POSTFIX-001~~ ✅ → **F-INF-002**
+**Next lane:** ~~F-INF-002~~ ✅ → **D5-INST-TBRRIDGE-003**
+
+---
+
+## F-INF-002 checkpoint (2026-06-03)
+
+**Artifact:** [`docs/F_INF_002_TBRRIDGE_INTERFACE_FIX.md`](F_INF_002_TBRRIDGE_INTERFACE_FIX.md)  
+**Code:** [`panel_exp/inference/_impact_common.py`](../panel_exp/inference/_impact_common.py) · [`panel_exp/inference/modes/impl.py`](../panel_exp/inference/modes/impl.py) · [`panel_exp/inference/unit_jackknife.py`](../panel_exp/inference/unit_jackknife.py) · [`tests/governance/test_f_inf_002_tbrridge_interface.py`](../tests/governance/test_f_inf_002_tbrridge_interface.py)
+
+**Verdict:** A16/A18/A21 no longer `blocked_interface` — pooled-CF multi-treated readout; structurally valid on 001e fixture; **`callable_unverified_interval_semantics`** until TBRRIDGE-003 OC; not governed.
+
+**Next:** **D5-INST-TBRRIDGE-003**.
 
 ---
 
@@ -437,7 +448,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** A05/A19 structurally valid post F-INF-003; null FPR 0 on 001e battery; **`diagnostic_interval_only`** — not governed; promotion blocked.
 
-**Next:** **F-INF-002**.
+**Next:** ~~**F-INF-002**~~ ✅.
 
 ---
 

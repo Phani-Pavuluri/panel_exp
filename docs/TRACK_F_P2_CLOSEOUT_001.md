@@ -10,6 +10,8 @@
 
 **Prerequisites:** AUDIT-010 ✅ (`not_ready_continue_track_f`) · Track F P0 ✅ · D5-INST-TBRRIDGE-002 ✅ · D5-INST-AUGSYNTH-003 ✅
 
+**Post-closeout (F-INF-002, 2026-06-03):** A16/A18/A21 moved from `blocked_interface` to **`callable_unverified_interval_semantics`** — interface fix at source; **D5-INST-TBRRIDGE-003** OC authorized next ([`F_INF_002_TBRRIDGE_INTERFACE_FIX.md`](F_INF_002_TBRRIDGE_INTERFACE_FIX.md)).
+
 **Related:** [`TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md`](TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md) · [`AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md) · [`ROADMAP_V4.md`](ROADMAP_V4.md)
 
 ---
@@ -82,10 +84,10 @@ Post-P2 updates to [`AUDIT-010`](audits/AUDIT-010_mmm_readiness_gap.md) Appendix
 | ID | Pre-P2 bucket | Post-P2 bucket | Change |
 |----|---------------|----------------|--------|
 | **A05** | `valid_candidate_pending_OC` | **`callable_unverified_interval_semantics`** | AUGSYNTH-003 ✅ |
-| **A16** | `implemented_but_unvalidated` | **`blocked_interface`** | TBRRIDGE-002 ✅ |
-| **A18** | `implemented_but_unvalidated` | **`blocked_interface`** | TBRRIDGE-002 ✅ |
+| **A16** | `implemented_but_unvalidated` | ~~`blocked_interface`~~ → **`callable_unverified`** (F-INF-002 ✅) | TBRRIDGE-003 OC pending |
+| **A18** | `implemented_but_unvalidated` | **`callable_unverified`** (F-INF-002 ✅) | TBRRIDGE-003 OC pending |
 | **A19** | `valid_candidate_pending_OC` | **`callable_unverified_interval_semantics`** | TBRRIDGE-002 ✅ |
-| **A21** | `implemented_but_unvalidated` | **`blocked_interface`** | TBRRIDGE-002 ✅ |
+| **A21** | `implemented_but_unvalidated` | **`callable_unverified`** (F-INF-002 ✅) | TBRRIDGE-003 OC pending |
 
 All other rows unchanged. **No tuple omitted.** Roll-up updated in AUDIT-010.
 

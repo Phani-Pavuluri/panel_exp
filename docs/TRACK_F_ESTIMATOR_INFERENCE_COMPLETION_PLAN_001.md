@@ -92,12 +92,12 @@ Legend: **FIX** = implement + OC · **BLOCK** = remain forbidden · **ADAPT** = 
 | TBRRidge | Kfold | single_cell | already_characterized | **HOLD** | restricted |
 | TBRRidge | BRB | single_cell | already_characterized | **HOLD** | restricted |
 | TBRRidge | Kfold | aggregate_2row | already_characterized | **HOLD** | geo-power diagnostic |
-| TBRRidge | JK | single_cell | ~~implemented_but_unvalidated~~ OC'd | **blocked_interface** (F-INF-002) | blocked until fix |
+| TBRRidge | JK | single_cell | F-INF-002 ✅ struct | **callable_unverified** (TBRRIDGE-003 OC) | blocked until OC |
 | TBRRidge | Placebo | single_treated | invalid_by_interface | **BLOCK** (probe failed) | blocked |
-| TBRRidge | Conformal | single_cell | ~~implemented_but_unvalidated~~ OC'd | **blocked_interface** (F-INF-002) | blocked until fix |
+| TBRRidge | Conformal | single_cell | F-INF-002 ✅ struct | **callable_unverified** (TBRRIDGE-003 OC) | blocked until OC |
 | TBRRidge | TimeSeriesKfold | single_cell | ~~valid_candidate~~ OC'd | **callable_unverified** (F-INF-001) | restricted |
 | TBRRidge | Bayesian | single_cell | implemented_but_unvalidated | **BLOCK** prod (INV-015) | research quarantine |
-| TBRRidge | JKP | single_cell | ~~implemented_but_unvalidated~~ OC'd | **blocked_interface** (F-INF-002) | blocked until fix |
+| TBRRidge | JKP | single_cell | F-INF-002 ✅ struct | **callable_unverified** (TBRRIDGE-003 OC) | blocked until OC |
 | BayesianTBR | Bayesian | single_cell | research_only | **R&D** | blocked production |
 | BayesianTBR | mcmc_native | single_cell | invalid_by_interface | **R&D** (no registry mode) | research only |
 | TROP | point | single_cell | research_only | **R&D** | blocked production |
@@ -134,7 +134,7 @@ These tuples are **conceptually plausible** (or blocking hygiene) and should be 
 | Lane | ID | Scope | Priority |
 |------|-----|-------|----------|
 | **F-INF** | F-INF-001 | Conformal / TimeSeriesKfold interval band sign and semantics contract | ~~**P0 impl**~~ ✅ contract |
-| **F-INF** | F-INF-002 | TBRRidge multi-treated residual shape for JK/JKP/Conformal | **P0 impl** |
+| **F-INF** | F-INF-002 | TBRRidge multi-treated pooled-CF readout (JK/JKP/Conformal) | ✅ **complete** — OC pending |
 | **F-INF** | F-INF-003 | Conformal / TimeSeriesKfold band sign fix (implementation) | ~~**P0 impl**~~ ✅ |
 | **F-GEO** | F-GEO-001 | Geometry adapter contract (depends on F-INF-001) | ~~P1 impl~~ ✅ contract |
 | **F-CAT** | F-CAT-001 | Registry/catalog cleanup — inference_support parity | ~~**P1 impl**~~ ✅ |
@@ -142,7 +142,7 @@ These tuples are **conceptually plausible** (or blocking hygiene) and should be 
 | **F-MCELL** | F-MCELL-001 | `pooling_rule_id` design if pooled multi-cell ever required | Deferred · `requires_design_ADR` |
 | **F-BACKLOG** | F-BACKLOG-001 | Implementation backlog closeout | ~~**complete**~~ ✅ |
 
-**Next lane:** ~~D5-INF-POSTFIX-001~~ ✅ → **F-INF-002** (TBRRidge interface A16/A18/A21).
+**Next lane:** ~~F-INF-002~~ ✅ → **D5-INST-TBRRIDGE-003** OC (A16/A18/A21).
 
 ### P2 — TBRRidge remaining inference (~~D5-INST-TBRRIDGE-002~~ ✅)
 
@@ -362,7 +362,7 @@ flowchart TD
 | **P1.5** | AUDIT-010 report | MMM block list + approved diagnostic set; **Appendix A = all 30 COMBO tuples** ([`AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md)) |
 | **P0 (post AUDIT-010)** | F-P0-001…004 PRs | AUDIT-010 checklist hygiene items addressed |
 | **P2** | ~~TBRRIDGE-002~~ ✅ · ~~AUGSYNTH-003~~ ✅ · [`TRACK_F_P2_CLOSEOUT_001`](TRACK_F_P2_CLOSEOUT_001.md) ✅ | P2 closed — no more OC batteries by default |
-| **P3+** | ~~F-INF-003~~ ✅ · ~~D5-INF-POSTFIX-001~~ ✅ | **F-INF-002** next |
+| **P3+** | ~~F-INF-003~~ ✅ · ~~D5-INF-POSTFIX-001~~ ✅ · ~~F-INF-002~~ ✅ | **D5-INST-TBRRIDGE-003** next |
 
 **Note:** AugSynthCVXPY+Kfold OC ([`D5_INST_AUGSYNTH_KFOLD_001`](track_d/D5_INST_AUGSYNTH_KFOLD_001_REPORT.md)) completed **before** TBR-001 as research characterization; remains **restricted diagnostic**, not a promotion.
 

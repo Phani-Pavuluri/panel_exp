@@ -176,13 +176,13 @@ TRACK_F_KNOWN_GEOMETRY_DISPOSITIONS: dict[
         GeometryClassification.GEOMETRY_SUPPORTED_WITH_CAVEATS
     ),
     ("TBRRidge", "UnitJackKnife", GeometryType.UNIT_PANEL): (
-        GeometryClassification.BLOCKED_INTERFACE
+        GeometryClassification.GEOMETRY_SUPPORTED_WITH_CAVEATS
     ),
     ("TBRRidge", "Conformal", GeometryType.UNIT_PANEL): (
-        GeometryClassification.BLOCKED_INTERFACE
+        GeometryClassification.GEOMETRY_SUPPORTED_WITH_CAVEATS
     ),
     ("TBRRidge", "JKP", GeometryType.UNIT_PANEL): (
-        GeometryClassification.BLOCKED_INTERFACE
+        GeometryClassification.GEOMETRY_SUPPORTED_WITH_CAVEATS
     ),
 }
 

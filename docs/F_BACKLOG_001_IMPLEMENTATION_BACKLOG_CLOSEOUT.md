@@ -78,7 +78,7 @@ flowchart LR
 |----|------|----------------|----------------|-------|
 | **F-INF-001** | Interval semantics **contract** | D3, P2, A05/A19 | ✅ complete | Classify only; allowlist empty |
 | **F-INF-003** | **Band sign / interval orientation** for Conformal + TimeSeriesKfold | A05, A19; AUGSYNTH-003; TBRRIDGE-002 | ~~**`fix_now`**~~ ✅ · `requires_OC_after_fix` | [`F_INF_003_INTERVAL_ORIENTATION_FIX.md`](F_INF_003_INTERVAL_ORIENTATION_FIX.md) — structurally valid; OC pending |
-| **F-INF-002** | TBRRidge multi-treated residual **shape/broadcast** (JK, JKP, Conformal) | A16, A18, A21; TBRRIDGE-002 | `fix_later` · `requires_OC_after_fix` | After F-INF-003 unless product reprioritizes interface |
+| **F-INF-002** | TBRRidge multi-treated **pooled-CF readout** (JK, JKP, Conformal) | A16, A18, A21; TBRRIDGE-002 | ~~**`fix_later`**~~ ✅ · `requires_OC_after_fix` | [`F_INF_002_TBRRIDGE_INTERFACE_FIX.md`](F_INF_002_TBRRIDGE_INTERFACE_FIX.md) — struct valid; TBRRIDGE-003 OC pending |
 | **F-INF-004** | TBR + JKP interval artifacts on aggregate 1×1 | A09; TBR-001 | `fix_later` · `requires_OC_after_fix` | Callable but unverified; may share orientation logic with F-INF-003 |
 | **F-P0-004** | DID relative ATT CI policy **enforcement** (DEF-003) | A25; P0 guard | `fix_later` | Guard exists; full enforcement separate from band sign |
 
@@ -125,7 +125,8 @@ flowchart LR
 | Prerequisite | Status | Classification |
 |--------------|--------|----------------|
 | F-INF-003 + targeted OC for A05/A19 | Not started | `requires_OC_after_fix` |
-| F-INF-002 + OC for A16/A18/A21 | Not started | `requires_OC_after_fix` |
+| F-INF-002 interface fix for A16/A18/A21 | ✅ complete | `requires_OC_after_fix` |
+| D5-INST-TBRRIDGE-003 OC for A16/A18/A21 | Not started | `requires_OC_after_fix` |
 | Conceptual validity re-review for promoted combo | Not scheduled | `fix_later` |
 | AUDIT re-open for MMM readiness | Not authorized | `keep_blocked` |
 | CalibrationSignal expansion | Not authorized | `keep_blocked` |
@@ -141,9 +142,9 @@ flowchart LR
 |------|-----|-----------|
 | ~~**1**~~ | ~~**F-INF-003**~~ ✅ | Orientation fix at source |
 | ~~**2**~~ | ~~**D5-INF-POSTFIX-001**~~ ✅ | A05/A19 → `diagnostic_interval_only` / `characterized_restricted`; not governed |
-| **1** | **F-INF-002** | TBRRidge JK/JKP/Conformal interface (A16, A18, A21) |
-| 2 | F-INF-002 | Unblocks three `blocked_interface` tuples — larger interface change than band sign |
-| 3 | F-INF-004 / TBR JKP | Aggregate diagnostic — lower blast radius; optional OC after F-INF-003 patterns proven |
+| ~~**1**~~ | ~~**F-INF-002**~~ ✅ | TBRRidge JK/JKP/Conformal pooled-CF readout (A16, A18, A21) |
+| **1** | **D5-INST-TBRRIDGE-003** | Targeted OC for A16/A18/A21 post F-INF-002 |
+| 2 | F-INF-004 / TBR JKP | Aggregate diagnostic — lower blast radius; optional OC after F-INF-003 patterns proven |
 | 4 | F-GEO-002 | Hardening only — contract already blocks wrong geometry |
 | 5 | F-P0-004 | DID CI policy — parallel policy lane |
 | 6 | F-CAT-002 | ADR-only — no code until decision |
@@ -157,8 +158,8 @@ flowchart LR
 
 | Bucket | IDs | Backlog action |
 |--------|-----|----------------|
-| `callable_unverified_interval_semantics` | A05, A19 | **F-INF-003** then OC |
-| `blocked_interface` | A16, A18, A21 | **F-INF-002** then OC |
+| `callable_unverified_interval_semantics` | A16, A18, A21 | **F-INF-002** ✅ — **TBRRIDGE-003** OC pending |
+| `characterized_restricted` | A05, A19 | **F-INF-003** + POSTFIX ✅ |
 | `implemented_but_unvalidated` | A09 | **F-INF-004** / shared orientation — optional OC |
 | `invalid_by_geometry` | A12, A29, A30 | **keep_blocked** / design ADR |
 | `invalid_by_interface` | A04, A06, A11, A17, A23 | **keep_blocked** or F-CAT-002 ADR (A04 only) |
@@ -198,7 +199,7 @@ Full rows: [`AUDIT-010` Appendix A](audits/AUDIT-010_mmm_readiness_gap.md).
 
 ~~**F-INF-003**~~ ✅ · ~~**D5-INF-POSTFIX-001**~~ ✅ — see [`D5_INF_POSTFIX_001_REPORT.md`](track_d/D5_INF_POSTFIX_001_REPORT.md).
 
-**Next:** **F-INF-002** — TBRRidge multi-treated residual shape (A16, A18, A21). A05/A19 closed for orientation/OC — remain restricted diagnostics, not governed uncertainty.
+**Next:** **D5-INST-TBRRIDGE-003** — targeted OC for A16/A18/A21 post [`F_INF_002`](F_INF_002_TBRRIDGE_INTERFACE_FIX.md). A05/A19 remain `characterized_restricted` diagnostics; promotion/MMM/CS still blocked.
 
 ---
 

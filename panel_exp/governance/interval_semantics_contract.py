@@ -135,9 +135,15 @@ TRACK_F_KNOWN_INTERVAL_DISPOSITIONS: dict[Tuple[str, str, str], IntervalSemantic
     ("TBR", "JKP", "aggregate_two_series"): (
         IntervalSemanticsClassification.CALLABLE_UNVERIFIED_INTERVAL_SEMANTICS
     ),
-    ("TBRRidge", "UnitJackKnife", "single_cell"): IntervalSemanticsClassification.BLOCKED_INTERFACE,
-    ("TBRRidge", "Conformal", "single_cell"): IntervalSemanticsClassification.BLOCKED_INTERFACE,
-    ("TBRRidge", "JKP", "single_cell"): IntervalSemanticsClassification.BLOCKED_INTERFACE,
+    ("TBRRidge", "UnitJackKnife", "single_cell"): (
+        IntervalSemanticsClassification.CALLABLE_UNVERIFIED_INTERVAL_SEMANTICS
+    ),
+    ("TBRRidge", "Conformal", "single_cell"): (
+        IntervalSemanticsClassification.CALLABLE_UNVERIFIED_INTERVAL_SEMANTICS
+    ),
+    ("TBRRidge", "JKP", "single_cell"): (
+        IntervalSemanticsClassification.CALLABLE_UNVERIFIED_INTERVAL_SEMANTICS
+    ),
     ("TBRRidge", "Kfold", "single_cell"): IntervalSemanticsClassification.DIAGNOSTIC_INTERVAL_ONLY,
     ("TBRRidge", "BlockResidualBootstrap", "single_cell"): (
         IntervalSemanticsClassification.DIAGNOSTIC_INTERVAL_ONLY

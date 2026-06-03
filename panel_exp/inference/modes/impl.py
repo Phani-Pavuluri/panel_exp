@@ -7,8 +7,11 @@ import numpy as np
 from panel_exp.inference._impact_common import (
     apply_bounds_to_results,
     apply_effect_bounds_to_results,
+    apply_jkp_bounds_to_results,
     flatten_single_unit_results,
+    is_tbrridge_multi_treated,
     prepare_y_and_y_hat,
+    treatment_window_residuals,
 )
 from panel_exp.inference.block_residual_bootstrap import block_residual_bootstrap
 from panel_exp.inference.conformal import conformal
@@ -27,8 +30,17 @@ def run_unit_jackknife(ctx: InferenceRunContext) -> None:
     a = ctx.analyzer
     prepare_y_and_y_hat(ctx)
     a.errors = unit_jk(a.panel_data, a.__class__, alpha=a.alpha, **ctx.inference_kwargs)
-    a.results["y_upper"] = a.results["y_hat"] + a.errors
-    a.results["y_lower"] = a.results["y_hat"] - a.errors
+    err = np.asarray(a.errors, dtype=float)
+    y_hat = np.asarray(a.results["y_hat"], dtype=float)
+    if is_tbrridge_multi_treated(a):
+        n_u = len(a.panel_data.treated_units)
+        err_b = np.broadcast_to(err.reshape(-1, 1), (err.size, n_u))
+        y_hat_b = np.broadcast_to(y_hat.reshape(-1, 1), (y_hat.size, n_u))
+        a.results["y_upper"] = y_hat_b + err_b
+        a.results["y_lower"] = y_hat_b - err_b
+    else:
+        a.results["y_upper"] = y_hat + err
+        a.results["y_lower"] = y_hat - err
 
 
 def run_jkp(ctx: InferenceRunContext) -> None:
@@ -37,14 +49,16 @@ def run_jkp(ctx: InferenceRunContext) -> None:
     a.lower, a.upper, a.y_hat_median = jkp(
         a.panel_data, a.__class__, alpha=a.alpha, **ctx.inference_kwargs
     )
-    a.results["y_lower"] = np.zeros_like(a.results["y"])
-    a.results["y_upper"] = np.zeros_like(a.results["y"])
-    a.results["y_lower"][-len(a.lower) :,] = (
-        a.results["y"][a.panel_data.treated_start_idxs[0] :] - a.lower
-    )
-    a.results["y_upper"][-len(a.upper) :,] = (
-        a.results["y"][a.panel_data.treated_start_idxs[0] :] - a.upper
-    )
+    lo = np.asarray(a.lower, dtype=float)
+    if lo.ndim == 2:
+        apply_jkp_bounds_to_results(a, a.lower, a.y_hat_median, a.upper)
+    else:
+        a.results["y_lower"] = np.zeros_like(a.results["y"])
+        a.results["y_upper"] = np.zeros_like(a.results["y"])
+        pre = a.panel_data.treated_start_idxs[0]
+        a.results["y_lower"][pre:] = a.results["y"][pre:] - a.lower
+        a.results["y_upper"][pre:] = a.results["y"][pre:] - a.upper
+        flatten_single_unit_results(a)
 
 
 def run_bayesian(ctx: InferenceRunContext) -> None:
@@ -130,8 +144,17 @@ def run_conformal(ctx: InferenceRunContext) -> None:
     kw = ctx.inference_kwargs
     prepare_y_and_y_hat(ctx)
 
-    post_mean = (a.results["y"] - a.results["y_hat"])[a.panel_data.treated_start_idxs[0] :].std()
-    post_mean = np.max(np.abs((a.results["y"] - a.results["y_hat"])[a.panel_data.treated_start_idxs[0] :]))
+    pre = a.panel_data.treated_start_idxs[0]
+    if is_tbrridge_multi_treated(a):
+        y_post = np.asarray(a.results["y"], dtype=float)[pre:]
+        y_hat_post = np.asarray(a.results["y_hat"], dtype=float)[pre:]
+        resid = y_post - y_hat_post[:, np.newaxis]
+        post_mean = float(np.nanmax(np.abs(resid))) if resid.size else 0.0
+    else:
+        resid = treatment_window_residuals(a.results, a.panel_data)
+        post_mean = float(np.max(np.abs(resid))) if resid.size else 0.0
+    if post_mean == 0.0:
+        post_mean = 1.0
 
     lower, upper = conformal(
         a.panel_data,
