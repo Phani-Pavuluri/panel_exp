@@ -12,6 +12,15 @@ from panel_exp.governance.instrument_contract import (
     multi_cell_pooling_block_reason,
     registry_bayesian_production_block_reason,
 )
+from panel_exp.governance.geometry_adapter_contract import (
+    GeometryAdapterVerdict,
+    GeometryClassification,
+    GeometryReadoutRequest,
+    GeometryType,
+    ReadoutExportTier,
+    classify_combined_readout,
+    classify_geometry_support,
+)
 from panel_exp.governance.interval_semantics_contract import (
     IntervalReadout,
     IntervalSemanticsClassification,
@@ -24,13 +33,20 @@ from panel_exp.governance.interval_semantics_contract import (
 __all__ = [
     "FULL_MODEL_GOVERNED_CLASS_NAMES",
     "INV_015_REGISTRY_BAYESIAN_NOT_MCMC",
+    "GeometryAdapterVerdict",
+    "GeometryClassification",
+    "GeometryReadoutRequest",
+    "GeometryType",
     "IntervalReadout",
     "IntervalSemanticsClassification",
     "IntervalSemanticsVerdict",
     "PLACEBO_INFERENCE_MODES",
+    "ReadoutExportTier",
     "assert_class_tbr_recovery_factory",
     "assert_not_governed_uncertainty",
     "assert_not_placebo_as_estimator",
+    "classify_combined_readout",
+    "classify_geometry_support",
     "classify_interval_semantics",
     "classify_track_f_combo",
     "full_model_export_block_reason",

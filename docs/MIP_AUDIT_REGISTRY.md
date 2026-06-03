@@ -403,7 +403,19 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **Contract complete** — callable invalid intervals classified safely; `GOVERNED_UNCERTAINTY_EXPORT_ALLOWLIST` empty; no silent bound fixes.
 
-**Next:** **F-GEO-001** geometry adapter hardening.
+**Next:** **F-CAT-001** registry/catalog cleanup.
+
+---
+
+## F-GEO-001 checkpoint (2026-06-03)
+
+**Artifact:** [`docs/F_GEO_001_GEOMETRY_ADAPTER_CONTRACT.md`](F_GEO_001_GEOMETRY_ADAPTER_CONTRACT.md)  
+**Code:** [`panel_exp/governance/geometry_adapter_contract.py`](../panel_exp/governance/geometry_adapter_contract.py) · [`tests/governance/test_f_geo_001_geometry_adapter_contract.py`](../tests/governance/test_f_geo_001_geometry_adapter_contract.py)  
+**Depends on:** F-INF-001 — geometry blocks before interval semantics; valid intervals do not rescue wrong geometry.
+
+**Verdict:** **Contract complete** — geometry support rules tested; no MMM/promotion.
+
+**Next:** **F-CAT-001**.
 
 ---
 

@@ -226,6 +226,7 @@ Where applicable, each inventory row records:
 | Track F P0 hygiene | ✅ — [`panel_exp/governance/instrument_contract.py`](../panel_exp/governance/instrument_contract.py) |
 | Track F P2 closeout | **TRACK-F-P2-CLOSEOUT-001** ✅ — P2 closed; F-INF/F-GEO/F-CAT backlog active |
 | F-INF-001 interval contract | ✅ — [`F_INF_001_INTERVAL_SEMANTICS_CONTRACT.md`](F_INF_001_INTERVAL_SEMANTICS_CONTRACT.md) |
+| F-GEO-001 geometry contract | ✅ — [`F_GEO_001_GEOMETRY_ADAPTER_CONTRACT.md`](F_GEO_001_GEOMETRY_ADAPTER_CONTRACT.md) · depends on F-INF-001 |
 
 ---
 

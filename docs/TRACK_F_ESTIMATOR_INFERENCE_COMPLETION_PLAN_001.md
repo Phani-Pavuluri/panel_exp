@@ -35,6 +35,7 @@
 | **AUDIT-010** | ✅ | MMM readiness/gap closed — `not_ready_continue_track_f` |
 | **TRACK-F-P2-CLOSEOUT-001** | ✅ | P2 closed; F-INF / F-GEO / F-CAT backlog |
 | **F-INF-001** | ✅ | Interval semantics contract — [`F_INF_001_INTERVAL_SEMANTICS_CONTRACT.md`](F_INF_001_INTERVAL_SEMANTICS_CONTRACT.md) |
+| **F-GEO-001** | ✅ | Geometry adapter contract — [`F_GEO_001_GEOMETRY_ADAPTER_CONTRACT.md`](F_GEO_001_GEOMETRY_ADAPTER_CONTRACT.md) |
 
 **Binding governance (unchanged until separate PR):**
 
@@ -135,12 +136,12 @@ These tuples are **conceptually plausible** (or blocking hygiene) and should be 
 | **F-INF** | F-INF-001 | Conformal / TimeSeriesKfold interval band sign and semantics contract | ~~**P0 impl**~~ ✅ contract |
 | **F-INF** | F-INF-002 | TBRRidge multi-treated residual shape for JK/JKP/Conformal | **P0 impl** |
 | **F-INF** | F-INF-003 | Conformal / TimeSeriesKfold band sign fix (implementation) | **P0 impl** |
-| **F-GEO** | F-GEO-001 | Geometry adapter hardening (unit / aggregate / multi-treated) | P1 impl |
+| **F-GEO** | F-GEO-001 | Geometry adapter contract (depends on F-INF-001) | ~~P1 impl~~ ✅ contract |
 | **F-CAT** | F-CAT-001 | Registry/catalog cleanup — inference_support parity | P1 impl |
 | **F-CAT** | F-CAT-002 | AugSynthCVXPY + BRB explicit BLOCK or ADR (F-OD-002) | P2 impl |
 | **F-MCELL** | F-MCELL-001 | `pooling_rule_id` design if pooled multi-cell ever required | Deferred |
 
-**Next lane:** **F-GEO-001** geometry adapter hardening · **F-CAT-001** registry/catalog cleanup.
+**Next lane:** ~~F-INF-001~~ ✅ · ~~F-GEO-001~~ ✅ → **F-CAT-001** registry/catalog cleanup.
 
 ### P2 — TBRRidge remaining inference (~~D5-INST-TBRRIDGE-002~~ ✅)
 
@@ -360,7 +361,7 @@ flowchart TD
 | **P1.5** | AUDIT-010 report | MMM block list + approved diagnostic set; **Appendix A = all 30 COMBO tuples** ([`AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md)) |
 | **P0 (post AUDIT-010)** | F-P0-001…004 PRs | AUDIT-010 checklist hygiene items addressed |
 | **P2** | ~~TBRRIDGE-002~~ ✅ · ~~AUGSYNTH-003~~ ✅ · [`TRACK_F_P2_CLOSEOUT_001`](TRACK_F_P2_CLOSEOUT_001.md) ✅ | P2 closed — no more OC batteries by default |
-| **P3+** | F-INF / F-GEO / F-CAT / F-MCELL | Implementation backlog — see closeout doc |
+| **P3+** | ~~F-INF-001~~ ✅ · ~~F-GEO-001~~ ✅ · F-CAT-001 · F-MCELL | F-CAT catalog cleanup next |
 
 **Note:** AugSynthCVXPY+Kfold OC ([`D5_INST_AUGSYNTH_KFOLD_001`](track_d/D5_INST_AUGSYNTH_KFOLD_001_REPORT.md)) completed **before** TBR-001 as research characterization; remains **restricted diagnostic**, not a promotion.
 
