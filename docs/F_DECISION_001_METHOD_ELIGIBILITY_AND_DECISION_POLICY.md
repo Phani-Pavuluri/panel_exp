@@ -127,7 +127,7 @@ Same roles; geometry `UNIT_PANEL` with `n_treated > 1`. Placebo blocked unless `
 - Estimator or inference rewrites
 - New OC batteries
 - Promotion, MMM ingestion, CalibrationSignal expansion
-- TrustReport schema changes (policy outputs only)
+- TrustReport schema changes beyond optional `f_decision_context` extension (policy outputs only)
 - Changing AUDIT-010 Appendix A buckets for A05/A16/A18/A19/A21
 - Silent averaging of point estimates across methods
 
@@ -136,7 +136,7 @@ Same roles; geometry `UNIT_PANEL` with `n_treated > 1`. Placebo blocked unless `
 ## Next steps (program)
 
 1. ~~**Governance PR**~~ ✅ — [`GOVERNANCE_PR_TRACK_F_DECISION_PACKAGE_001.md`](GOVERNANCE_PR_TRACK_F_DECISION_PACKAGE_001.md)
-2. **TrustReport integration** — wire resolver outputs into TrustReport / decision support (**next authorized PR**)
+2. ~~**TrustReport integration**~~ ✅ — optional `f_decision_context` via [`f_decision_context.py`](../panel_exp/track_b/f_decision_context.py) · [`TRUSTREPORT_F_DECISION_INTEGRATION_001.md`](TRUSTREPORT_F_DECISION_INTEGRATION_001.md)
 3. Optional **F-INF-004** (A09) only on product pull — see F-BACKLOG-002 §10
 4. Design ADRs: supergeo, trim, pooling (parallel) — F-BACKLOG-002 §8
 
@@ -146,4 +146,17 @@ Per [F-BACKLOG-002 §7](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md): optional `s
 
 ---
 
-*F-DECISION-001 v1.1.0 — resolver/policy only; consumes Track F contracts; F-BACKLOG-002 cross-reference for future expansion.*
+## TrustReport integration contract (TRUSTREPORT-F-DECISION-INTEGRATION-001)
+
+| API | Role |
+|-----|------|
+| `TrustReportDecisionInputs` | Readout evidence + profiles → build context |
+| `build_trust_report_f_decision_context` | Standalone builder + guardrail asserts |
+| `TrustComposeContext.decision_inputs` | Opt-in attach on `compose_trust_report` |
+| `trust_report_to_dict` → `f_decision_context` | Serialized export block |
+
+Omit `decision_inputs` → legacy TrustReport unchanged.
+
+---
+
+*F-DECISION-001 v1.2.0 — resolver/policy; TrustReport optional consumption documented.*

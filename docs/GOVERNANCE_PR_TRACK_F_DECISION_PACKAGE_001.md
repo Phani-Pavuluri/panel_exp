@@ -166,7 +166,7 @@ flowchart TD
 
 ## 6. Next authorized integration (separate PR)
 
-**Authorized:** TrustReport wiring of F-DECISION-001 outputs.
+**Authorized:** TrustReport wiring of F-DECISION-001 outputs — **implemented** in TRUSTREPORT-F-DECISION-INTEGRATION-001 ([`TRUSTREPORT_F_DECISION_INTEGRATION_001.md`](TRUSTREPORT_F_DECISION_INTEGRATION_001.md)).
 
 | In scope (integration PR) | Out of scope |
 |---------------------------|--------------|
@@ -180,8 +180,8 @@ flowchart TD
 
 **Pre-integration checklist:**
 
-- [ ] Governance PR (this package) merged or acknowledged
-- [ ] TrustReport reads `DecisionProfile` + candidate readouts from existing instrument runs
+- [x] Governance PR (this package) merged or acknowledged
+- [x] TrustReport optional `f_decision_context` via `TrustReportDecisionInputs` / `decision_inputs` on compose
 - [ ] No new tuples added to `GOVERNED_UNCERTAINTY_EXPORT_ALLOWLIST`
 - [ ] A16/A21 remain `excluded` unless F-DECISION-002 explicitly adopted
 

@@ -15,6 +15,12 @@ from panel_exp.track_b.geo_adapter import (
     resolve_geo_adapter_output,
     resolve_geo_adapter_output_from_bundle,
 )
+from panel_exp.track_b.f_decision_context import (
+    TrustReportDecisionInputs,
+    TrustReportFDecisionContext,
+    build_trust_report_f_decision_context,
+    f_decision_context_to_dict,
+)
 from panel_exp.track_b.trust_report import (
     TRUST_REPORT_VERSION,
     TrackETriangulationAttachment,
@@ -43,7 +49,11 @@ __all__ = [
     "TrackETriangulationAttachment",
     "TriangulationOutcome",
     "TrustComposeContext",
+    "TrustReportDecisionInputs",
+    "TrustReportFDecisionContext",
     "attach_trust_report_to_views",
+    "build_trust_report_f_decision_context",
+    "f_decision_context_to_dict",
     "compose_trust_report",
     "evaluate_triangulation",
     "evaluate_triangulation_fixture",

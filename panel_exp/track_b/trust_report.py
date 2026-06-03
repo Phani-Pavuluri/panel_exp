@@ -10,6 +10,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Literal, Mapping, Optional, Sequence
 
+from panel_exp.track_b.f_decision_context import (
+    TrustReportDecisionInputs,
+    TrustReportFDecisionContext,
+    build_trust_report_f_decision_context,
+    f_decision_context_to_dict,
+)
 from panel_exp.track_b.triangulation import (
     TriangulationOutcome,
     apply_e5_calibration_policy,
@@ -48,6 +54,8 @@ class TrustComposeContext:
     alignment_reference_estimand_id: Optional[str] = None
     triangulation_profile: Optional[Mapping[str, Any]] = None
     triangulation_forbidden_actions: Optional[Sequence[str]] = None
+    decision_inputs: Optional[TrustReportDecisionInputs] = None
+    f_decision_context: Optional[TrustReportFDecisionContext] = None
 
 
 @dataclass(frozen=True)
@@ -84,6 +92,7 @@ class TrustReportComposition:
     measurement_instrument_id: Optional[str]
     scenarios: tuple[TrustScenarioVerdict, ...]
     track_e_triangulation: Optional[TrackETriangulationAttachment] = None
+    f_decision_context: Optional[TrustReportFDecisionContext] = None
 
 
 @dataclass(frozen=True)
@@ -199,6 +208,9 @@ def compose_trust_report(
     composed = tuple(compose_trust_scenario_verdict(ctx, s) for s in scenarios_cfg)
     evidence = ctx.adapter_output.get("experiment_evidence") or {}
     profile = ctx.triangulation_profile or {}
+    f_decision: Optional[TrustReportFDecisionContext] = ctx.f_decision_context
+    if f_decision is None and ctx.decision_inputs is not None:
+        f_decision = build_trust_report_f_decision_context(ctx.decision_inputs)
     return TrustReportComposition(
         alignment_reference_estimand_id=alignment_reference_estimand_id(ctx)
         or str(profile.get("declared_estimand_id", "")),
@@ -208,6 +220,7 @@ def compose_trust_report(
         measurement_instrument_id=evidence.get("measurement_instrument_id"),
         scenarios=composed,
         track_e_triangulation=track_e,
+        f_decision_context=f_decision,
     )
 
 
@@ -243,6 +256,8 @@ def trust_report_to_dict(composition: TrustReportComposition) -> dict[str, Any]:
             "forbidden_action_flags": dict(te.forbidden_action_flags),
             "forbidden_violations": list(te.forbidden_violations),
         }
+    if composition.f_decision_context is not None:
+        out["f_decision_context"] = f_decision_context_to_dict(composition.f_decision_context)
     return out
 
 
@@ -257,6 +272,8 @@ def attach_trust_report_to_views(
     alignment_reference_estimand_id: Optional[str] = None,
     triangulation_profile: Optional[Mapping[str, Any]] = None,
     triangulation_forbidden_actions: Optional[Sequence[str]] = None,
+    decision_inputs: Optional[TrustReportDecisionInputs] = None,
+    f_decision_context: Optional[TrustReportFDecisionContext] = None,
 ) -> TrustReportAttachResult:
     """
     Attach TrustReport to an existing ``track_b_views`` dict (mutates ``views``).
@@ -280,6 +297,8 @@ def attach_trust_report_to_views(
         alignment_reference_estimand_id=alignment_reference_estimand_id,
         triangulation_profile=triangulation_profile,
         triangulation_forbidden_actions=triangulation_forbidden_actions,
+        decision_inputs=decision_inputs,
+        f_decision_context=f_decision_context,
     )
     composition = compose_trust_report(ctx, scenarios)
     views["trust_report_present"] = True

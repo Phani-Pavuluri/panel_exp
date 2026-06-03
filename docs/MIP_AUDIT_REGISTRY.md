@@ -431,7 +431,16 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Not in this package:** TrustReport wiring, OC, promotion, MMM, CalibrationSignal expansion.
 
-**Next:** TrustReport integration PR consuming `decision_policy.py` outputs.
+**Next:** ~~TrustReport integration~~ ✅ TRUSTREPORT-F-DECISION-INTEGRATION-001.
+
+---
+
+## TRUSTREPORT-F-DECISION-INTEGRATION-001 (2026-06-03)
+
+**Artifact:** [`docs/TRUSTREPORT_F_DECISION_INTEGRATION_001.md`](TRUSTREPORT_F_DECISION_INTEGRATION_001.md)  
+**Code:** [`panel_exp/track_b/f_decision_context.py`](../panel_exp/track_b/f_decision_context.py) · [`panel_exp/track_b/trust_report.py`](../panel_exp/track_b/trust_report.py) · [`tests/track_b/test_trustreport_f_decision_integration_001.py`](../tests/track_b/test_trustreport_f_decision_integration_001.py)
+
+**Verdict:** Optional TrustReport `f_decision_context` from F-DECISION-001; legacy exports unchanged; guardrails enforced; no promotion/MMM/CS/OC.
 
 ---
 
