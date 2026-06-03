@@ -289,6 +289,8 @@ Investigation rank (this doc) + layered matrix → **positive promotion pipeline
 
 F-BACKLOG ranks **what to investigate**; the promotion framework defines **how promotion could work**; [`METHOD_STRENGTHENING_LANES_001.md`](METHOD_STRENGTHENING_LANES_001.md) defines **what evidence work** each high-value lane requires before a promotion audit. Strengthening does not change production roles.
 
+**First concrete charter:** [`AUGSYNTH_ASCM_STRENGTHENING_001.md`](AUGSYNTH_ASCM_STRENGTHENING_001.md) (LANE-ASCM-001 / AugSynthCVXPY vs A26) — OC battery **D5-INST-AUGSYNTH-ASCM-002** specified, not executed.
+
 ---
 
 *F-BACKLOG-002 v1.3.0 — investigation priority only; does not authorize implementation or promotion.*

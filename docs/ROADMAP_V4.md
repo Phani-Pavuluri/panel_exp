@@ -210,6 +210,13 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 
 **Bridge:** METHOD-SELECTION (pipeline) → **METHOD-STRENGTHENING** (this doc) → OC / ADR / charter → METHOD-PROMOTION-AUDIT-TEMPLATE-001 → F-DECISION amendment.
 
+### AUGSYNTH-ASCM-STRENGTHENING-001
+
+**Document:** [`AUGSYNTH_ASCM_STRENGTHENING_001.md`](AUGSYNTH_ASCM_STRENGTHENING_001.md)  
+**Verdict:** First strengthening charter — when AugSynth/ASCM may challenge A26 on unit-panel geo; diagnostics §5; inference pairing evidence bar; **D5-INST-AUGSYNTH-ASCM-002** OC spec (not run). **No promotion**; AugSynth not primary.
+
+**Prior OC (inputs):** D5-INST-AUGSYNTH-001 · 003 · KFOLD — do not satisfy weak-fit stratification alone.
+
 ### Track F — estimator / inference completion (implementation planning)
 
 **Roadmap ID:** `TRACK-F-ESTIMATOR-INFERENCE-COMPLETION`  

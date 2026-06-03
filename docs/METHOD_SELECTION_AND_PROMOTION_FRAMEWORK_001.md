@@ -208,7 +208,7 @@ Using F-BACKLOG-002 rank + matrix L3 classifications. **Lanes authorize investig
 
 | Lane ID | Scope | Rationale (matrix) | Preconditions | Deliverables before role change |
 |---------|-------|-------------------|---------------|--------------------------------|
-| **LANE-ASCM-001** | AugSynthCVXPY / ASCM on **unit-panel geo**, especially **weak SCM pretreatment fit** | L1 strong; A05 L3 restricted; industry ASCM | L3 `characterized_restricted`; benchmark vs A26 on weak-fit battery | METHOD-PROMOTION-AUDIT-TEMPLATE-001 (null-monitor or supplement); optional extra OC |
+| **LANE-ASCM-001** | AugSynthCVXPY / ASCM on **unit-panel geo**, especially **weak SCM pretreatment fit** | L1 strong; A05 L3 restricted; industry ASCM | L3 `characterized_restricted`; benchmark vs A26 on weak-fit battery | [`AUGSYNTH_ASCM_STRENGTHENING_001`](AUGSYNTH_ASCM_STRENGTHENING_001.md) → **D5-INST-AUGSYNTH-ASCM-002** OC → METHOD-PROMOTION-AUDIT-TEMPLATE-001 |
 | **LANE-TBR-AGG-001** | **Class TBR** / CausalImpact-style **aggregate 1×1** | L1 niche strong; A07/A10 restricted; high product ask | TBR-001 maintained; geometry assert | Promotion audit for `aggregate_only_primary`; never unit panel |
 | **LANE-MCELL-001** | **Multi-cell per-cell** + **pooling rule** | Product k=2 tests; per-cell A26 | F-MCELL-001 ADR for any pooled claim | D5-MCELL refresh; per-cell audits; pooling ADR before pooled primary |
 | **LANE-SUPERGEO-001** | **Supergeo adapter** | L1 blocked until adapter; external imp 5 | F-GEO-003 ADR | RTP-003 charter; DES OC; then L3 rows |
