@@ -1,0 +1,61 @@
+{
+  "agreement_status": "evidence_aligned_positive_with_caveats",
+  "calibration_signal_action": "export_calibration_signal",
+  "decision_context_complete": true,
+  "diagnostic_comparators": [
+    {
+      "assigned_role": "diagnostic_comparator",
+      "estimator": "AugSynthCVXPY",
+      "inference": "Conformal"
+    },
+    {
+      "assigned_role": "diagnostic_comparator",
+      "estimator": "TBRRidge",
+      "inference": "Conformal"
+    }
+  ],
+  "document_id": "TRUSTREPORT-DECISION-CONTEXT-SMOKE-001",
+  "experiment_id": "geo-study-smoke-001",
+  "export_flags": {
+    "include_track_b_views": true,
+    "include_trust_report": true,
+    "include_trust_report_decision_context": true
+  },
+  "f_decision_context_keys": [
+    "agreement_status",
+    "blocked_readouts",
+    "calibration_signal_action",
+    "conflict_status",
+    "decision_context_complete",
+    "diagnostic_comparators",
+    "eligible_readout_profiles",
+    "evidence_decision_profile",
+    "excluded_readouts",
+    "falsification_checks",
+    "final_decision_posture",
+    "mmm_action",
+    "mmm_status",
+    "primary_readout",
+    "promotion_candidates",
+    "recommended_next_action",
+    "required_warnings",
+    "sensitivity_checks",
+    "trust_report_action"
+  ],
+  "final_decision_posture": "proceed_with_caveats",
+  "mmm_action": "exclude_from_mmm",
+  "mmm_status": "not_ready_continue_track_f",
+  "primary_readout": {
+    "assigned_role": "primary_null_monitor",
+    "calibration_signal_eligible": true,
+    "estimator": "SyntheticControl",
+    "inference": "UnitJackKnife"
+  },
+  "promotion_candidates": [],
+  "required_warnings_sample": [
+    "Primary null-monitor only \u2014 not MMM lift (E5).",
+    "Characterized restricted diagnostic \u2014 not governed uncertainty.",
+    "Characterized restricted diagnostic \u2014 not governed uncertainty."
+  ],
+  "smoke_id": "SMOKE-001"
+}

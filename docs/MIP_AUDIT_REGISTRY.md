@@ -453,6 +453,15 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 ---
 
+## TRUSTREPORT-DECISION-CONTEXT-SMOKE-001 (2026-06-03)
+
+**Artifact:** [`docs/TRUSTREPORT_DECISION_CONTEXT_SMOKE_001.md`](TRUSTREPORT_DECISION_CONTEXT_SMOKE_001.md) · [`docs/track_b/archives/TRUSTREPORT_DECISION_CONTEXT_SMOKE_001_export.json`](track_b/archives/TRUSTREPORT_DECISION_CONTEXT_SMOKE_001_export.json)  
+**Tests:** [`tests/track_b/test_trustreport_decision_context_smoke_001.py`](../tests/track_b/test_trustreport_decision_context_smoke_001.py)
+
+**Verdict:** Export smoke passes — opt-in `f_decision_context` on realistic geo bundle; legacy shape when flag off; guardrails + incomplete-metadata warning path.
+
+---
+
 ## TRACK-F-IMPLEMENTATION-CHECKPOINT-001 (2026-06-03)
 
 **Artifact:** [`docs/TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md`](TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md)

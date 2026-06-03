@@ -90,4 +90,8 @@ fdc = bundle.to_dict()["track_b_views"]["trust_report_view"]["f_decision_context
 
 ---
 
+**Smoke proof (separate PR):** [`TRUSTREPORT_DECISION_CONTEXT_SMOKE_001.md`](TRUSTREPORT_DECISION_CONTEXT_SMOKE_001.md)
+
+---
+
 *TRUSTREPORT-DECISION-INPUTS-WIRING-001 v1.0.0*

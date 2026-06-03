@@ -1,0 +1,20 @@
+{
+  "smoke_id": "SMOKE-002",
+  "description": "Blocked/unmapped estimator path: decision context opted in but metadata incomplete (REP-003 lineage).",
+  "trust_scenarios": [
+    {
+      "scenario_id": "null_viability",
+      "intended_use": "null_screen",
+      "claim_type": "null_viability"
+    }
+  ],
+  "evidence": {
+    "experiment_id": "geo-study-smoke-002",
+    "inference_metadata": {
+      "estimator_name": "TBR",
+      "inference_method": "unknown_mode"
+    }
+  },
+  "expected_export_status": "blocked",
+  "expect_decision_context_incomplete_warning": true
+}
