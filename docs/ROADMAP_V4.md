@@ -239,6 +239,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 ### METHOD-SOUNDNESS-AND-GAP-ROADMAP-001
 
 **Document:** [`METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md`](METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md)  
+**Status:** **complete**  
 **Verdict:** Audit-derived **development-first** inventory, scorecard, and sequenced lanes (DL-0–DL-8). Reconciles Track D audits + OC archives; **no new eligibility decisions**. Active lane: AugSynth/ASCM (DL-1).
 
 **Inputs:** Track D D1–D5 · CV-001 · AUDIT-010 · foundation hardening · threshold audit · F-DECISION baseline.
@@ -246,9 +247,19 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 ### METHOD-SOUNDNESS-ROADMAP-REVIEW-001
 
 **Document:** [`METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md`](METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md)  
+**Status:** **complete**  
 **Verdict:** Execution checkpoint — **`proceed_to_augsynth_development_lane`** confirmed; DL-2 coupled via D5-DIAG; design-readout + inference taxonomy **parallel docs**, not blockers.
 
-**Ordered next:** AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001 → D5-DIAG-SCM-AUGSYNTH-001 → D5-INST-AUGSYNTH-ASCM-003 → fidelity audit → DESIGN_READOUT_COMPATIBILITY_AUDIT_001 (parallel).
+**Ordered next:** ✅ [`AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md) **materialized** → **P1** D5-DIAG-SCM-AUGSYNTH-001 (code, **next**) → P2 fidelity audit → P3 ASCM-003.
+
+### AUGSYNTH-ASCM-DEVELOPMENT-ROADMAP-001
+
+**Document:** [`AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md)  
+**Status:** **complete** (current PR) — docs/planning only; no production behavior change  
+**Verdict:** Focused **execution** roadmap for DL-1 — PR sequence P1–P6 (diagnostics → fidelity → OC → inference calibration → design compat). **Not promotion.**
+
+**Next PR:** P1 **D5-DIAG-SCM-AUGSYNTH-001** (code + tests).
+
 
 ### SCM-AUGSYNTH-DIAGNOSTIC-THRESHOLD-AUDIT-001
 
