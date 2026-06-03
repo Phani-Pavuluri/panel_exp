@@ -8,6 +8,7 @@ from pathlib import Path
 import pytest
 
 from panel_exp.utils.optional_deps import cvxpy_osqp_skip_reason
+from panel_exp.validation.scm_augsynth_diagnostics import PANEL_DIAGNOSTIC_FIELDS
 from panel_exp.validation.track_d_d5_inst_augsynth_ascm_002 import (
     D5InstAugsynthAscm002Config,
     INSTRUMENT_ARMS,
@@ -99,9 +100,20 @@ class TestD5InstAugsynthAscm002:
     def test_diagnostics_present(self, cvxpy_available: None) -> None:
         payload = build_d5_inst_augsynth_ascm_002(_fast_cfg())
         diag = payload["replicates"][0]["diagnostics"]
-        assert "scm_pre_rmse" in diag
-        assert "augsynth_pre_rmse" in diag
-        assert "hull_min_donor_z_distance" in diag
+        for key in PANEL_DIAGNOSTIC_FIELDS:
+            assert key in diag
+        assert "scale_bridge_ratio" in diag
+        assert "fit_improvement_relative" in diag
+        assert "effective_donor_count" in diag
+
+    def test_instrument_diagnostic_flags(self, cvxpy_available: None) -> None:
+        payload = build_d5_inst_augsynth_ascm_002(_fast_cfg())
+        rep = payload["replicates"][0]
+        inst = rep["instruments"]["augsynth_cvxpy_unit_jackknife"][0.0]
+        assert "false_confidence_flag" in inst
+        assert "narrow_interval_poor_fit_flag" in inst
+        conflict = rep["conflict_vs_a26"]
+        assert "null_point_effect_delta" in conflict
 
     def test_summaries_schema(self, cvxpy_available: None) -> None:
         payload = build_d5_inst_augsynth_ascm_002(_fast_cfg())
