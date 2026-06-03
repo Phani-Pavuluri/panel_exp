@@ -552,7 +552,21 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** METHOD-FOUNDATION-HARDENING-001 P1 · ASCM-002 · ADR-001 · AUGSYNTH-ASCM-STRENGTHENING-001 §5 · F-DECISION-001 disagreement policy.
 
-**Next:** **D5-INST-AUGSYNTH-ASCM-003** (recommended) — larger n_mc, weak-fit grid, emit D8/D10/D11, calibrate §2 cutoffs. Then P2 `DESIGN_READOUT_COMPATIBILITY_AUDIT_001`.
+**Next:** **D5-INST-AUGSYNTH-ASCM-003** (recommended) — larger n_mc, weak-fit grid, emit D8/D10/D11, calibrate §2 cutoffs. Then DL-1 per [`METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md`](METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md).
+
+---
+
+## METHOD-SOUNDNESS-AND-GAP-ROADMAP-001 (2026-06-03)
+
+**Artifact:** [`docs/METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md`](METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md)
+
+**Verdict:** Audit-derived **development-first** method soundness inventory, gap taxonomy, scorecard, and sequenced development lanes (DL-0–DL-8). Reconciles Track D audits and 25 OC JSON archives; **no new eligibility decisions**; **`restricted` = development needed**.
+
+**Prerequisites:** TRACK-D inventory · D2/D3/D4 · CV-001 · AUDIT-010 · METHOD-FOUNDATION-HARDENING-001 · threshold audit · F-DECISION-001.
+
+**Next active lane (DL-1):** AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001 · D5-DIAG-SCM-AUGSYNTH-001 · D5-INST-AUGSYNTH-ASCM-003.
+
+**Bridge:** Foundation hardening → **this roadmap** → AUDIT-011 (LLM paused).
 
 ---
 
