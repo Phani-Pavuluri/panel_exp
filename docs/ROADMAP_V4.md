@@ -141,12 +141,13 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | **Combo compatibility** | **D5-INST-COMBO-AUDIT-001** ✅ [`D5_INST_COMBO_AUDIT_001_results.json`](track_d/archives/D5_INST_COMBO_AUDIT_001_results.json) — curated matrix; no Cartesian OC |
 | **Conceptual validity** | **TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001** ✅ [`TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) — literature/method fidelity; synthetic OC ≠ paper validity; prerequisite for AUDIT-010 |
 | **AugSynth Kfold OC** | **D5-INST-AUGSYNTH-KFOLD-001** ✅ [`D5_INST_AUGSYNTH_KFOLD_001_results.json`](track_d/archives/D5_INST_AUGSYNTH_KFOLD_001_results.json) — restricted diagnostic comparator |
+| **AugSynth Conformal OC** | **D5-INST-AUGSYNTH-003** ✅ [`D5_INST_AUGSYNTH_003_results.json`](track_d/archives/D5_INST_AUGSYNTH_003_results.json) — callable; interval semantics unverified |
 | **Class TBR OC** | **D5-INST-TBR-001** ✅ [`D5_INST_TBR_001_results.json`](track_d/archives/D5_INST_TBR_001_results.json) — aggregate 1×1 restricted diagnostic |
 | **Roadmap consistency** | **AUDIT-010A** ✅ [`audits/AUDIT-010A_roadmap_consistency_pre_mmm_gate.md`](audits/AUDIT-010A_roadmap_consistency_pre_mmm_gate.md) — pre-MMM sanity check |
 | **MMM readiness / gap** | **AUDIT-010** ✅ [`audits/AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md) — `not_ready_continue_track_f`; Appendix A = 30 tuples |
 | **D5-POW-001e** | ✅ Six confirmed methods; SCM+JK reference null FPR; [`D5_POW_001e_results.json`](track_d/archives/D5_POW_001e_results.json) — `acceptable_with_caveats` |
 
-**Next steps:** … → (5) ~~Track F **P2 TBRRidge-002**~~ ✅ → **P2 AugSynth Conformal** → promotion **only if** later audit allows.
+**Next steps:** … → (5) ~~Track F **P2 TBRRidge-002**~~ ✅ → ~~**P2 AugSynth Conformal (003)**~~ ✅ → promotion **only if** later audit allows (not authorized).
 
 ### Track F — estimator / inference completion (implementation planning)
 
@@ -159,7 +160,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | **P1** | ~~D5-INST-TBR-001~~ ✅ — aggregate class TBR OC |
 | **P1.5** | ~~AUDIT-010~~ ✅ — `not_ready_continue_track_f` |
 | **P0 (post AUDIT-010)** | ~~Blocking hygiene~~ ✅ — [`instrument_contract.py`](../panel_exp/governance/instrument_contract.py) |
-| **P2** | ~~D5-INST-TBRRIDGE-002~~ ✅ · AugSynth Conformal (003) | TBRRidge remaining inference OC; then AugSynth Conformal |
+| **P2** | ~~D5-INST-TBRRIDGE-002~~ ✅ · ~~D5-INST-AUGSYNTH-003~~ ✅ | TBRRidge remaining inference OC; AugSynth Conformal — `callable_unverified_interval_semantics` |
 | **P3** | Optional catalog clarifications (AugSynth BRB) |
 
 **Non-goals:** No fixes in planning doc; no MMM ingestion; no CalibrationSignal expansion without separate governance PR.

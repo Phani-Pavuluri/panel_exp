@@ -2,7 +2,7 @@
 
 **Document ID:** TRACK-F-ESTIMATOR-INFERENCE-COMPLETION-PLAN-001  
 **Type:** Implementation roadmap (planning only — no code changes in this package)  
-| **Status:** **draft v1** — AUDIT-010 ✅; P0 ✅; ~~TBRRidge-002~~ ✅; next **AugSynth Conformal**  
+| **Status:** **draft v1** — AUDIT-010 ✅; P0 ✅; ~~TBRRidge-002~~ ✅; ~~AugSynth Conformal (003)~~ ✅ — **P2 complete**  
 **Date:** 2026-06-02  
 **Lane:** Implementation planning bridge — Track D/E evidence → governed fixes  
 **Branch / baseline:** `fix-kfold-multitreated-geometry` @ post `TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001`
@@ -123,7 +123,7 @@ These tuples are **conceptually plausible** (or blocking hygiene) and should be 
 
 **Tests:** [`tests/governance/test_track_f_p0_hygiene.py`](../../tests/governance/test_track_f_p0_hygiene.py)
 
-**Next:** Track F **P2** — ~~TBRRidge-002~~ ✅ → **AugSynth Conformal (003)** — not promotion.
+**Next:** Track F **P2 complete** — ~~TBRRidge-002~~ ✅ · ~~AugSynth Conformal (003)~~ ✅ — not promotion.
 
 ### P2 — TBRRidge remaining inference (~~D5-INST-TBRRIDGE-002~~ ✅)
 
@@ -134,12 +134,12 @@ These tuples are **conceptually plausible** (or blocking hygiene) and should be 
 | Bayesian (registry) | **blocked_production_policy** (INV-015) |
 | Kfold / BRB | **already_characterized_restricted** (001 context) |
 
-### P2 — Valid candidates (AugSynth next)
+### P2 — Valid candidates (complete)
 
 | Combo | Battery | Fix scope |
 |-------|---------|-----------|
 | `AugSynthCVXPY + Kfold + single_cell` | ~~D5-AUGSYNTH-KFOLD-001~~ ✅ | OC complete — remain restricted diagnostic |
-| `AugSynthCVXPY + Conformal + single_cell` | **D5-INST-AUGSYNTH-003** (next) | Exchangeability caveat; not MMM |
+| `AugSynthCVXPY + Conformal + single_cell` | ~~D5-INST-AUGSYNTH-003~~ ✅ | **callable_unverified_interval_semantics** — negative HW; 100% null exclude; not MMM |
 | ~~`TBRRidge + TimeSeriesKfold + single_cell`~~ | ~~D5-TBRRIDGE-002~~ ✅ | Callable; unverified intervals — restricted only |
 
 ### P2 — TBRRidge interface failures (deferred implementation)
@@ -342,7 +342,7 @@ flowchart TD
 | **P1** | ~~TBR-001~~ ✅ report + F-GEO-001 + F-EIF-001 | Point/Kfold OC'd; JK blocked; JKP unverified |
 | **P1.5** | AUDIT-010 report | MMM block list + approved diagnostic set; **Appendix A = all 30 COMBO tuples** ([`AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md)) |
 | **P0 (post AUDIT-010)** | F-P0-001…004 PRs | AUDIT-010 checklist hygiene items addressed |
-| **P2** | TBRRIDGE-002; AugSynth Conformal; remaining COMBO valid_candidates | Promote to Tier B/C or re-block |
+| **P2** | TBRRIDGE-002 ✅; AugSynth Conformal ✅; remaining COMBO valid_candidates OC'd | Remain restricted — no promotion |
 | **P3** | AugSynth BRB catalog decision; base AugSynth | Optional; no MMM impact |
 
 **Note:** AugSynthCVXPY+Kfold OC ([`D5_INST_AUGSYNTH_KFOLD_001`](track_d/D5_INST_AUGSYNTH_KFOLD_001_REPORT.md)) completed **before** TBR-001 as research characterization; remains **restricted diagnostic**, not a promotion.
@@ -360,7 +360,7 @@ Charter + pre-reconciled Appendix A: [`audits/AUDIT-010_mmm_readiness_gap.md`](a
 
 | ID | Question | Default recommendation |
 |----|----------|------------------------|
-| **F-OD-001** | Allow AugSynthCVXPY+Conformal in exports? | **No** until exchangeability OC |
+| **F-OD-001** | Allow AugSynthCVXPY+Conformal in exports? | **No** — D5-AUGSYNTH-003: interval semantics fail (negative HW, 100% null exclude) |
 | **F-OD-002** | Fix or permanently block AugSynth+BRB? | **Block** until catalog+concept ADR |
 | **F-OD-003** | TBRRidge+JK as triangulation peer to SCM+JK? | **No** — restricted diagnostic only |
 | **F-OD-004** | Expand CalibrationSignal beyond SCM JK? | **No** in AUDIT-010 scope |

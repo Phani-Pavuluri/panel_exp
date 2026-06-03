@@ -1,0 +1,545 @@
+{
+  "artifact_id": "D5-INST-AUGSYNTH-003",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-03T04:06:47.582630+00:00",
+  "lane": "research",
+  "binding_docs": [
+    "AUDIT-010_mmm_readiness_gap.md",
+    "D5_INST_COMBO_AUDIT_001",
+    "D5_INST_AUGSYNTH_001",
+    "D5_INST_AUGSYNTH_KFOLD_001",
+    "D5_INST_TBRRIDGE_002",
+    "TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001"
+  ],
+  "governance": {
+    "estimator": "AugSynthCVXPY",
+    "inference": "Conformal",
+    "no_base_augsynth": true,
+    "no_promotion": true,
+    "no_calibration_signal_ingress": true,
+    "no_mmm": true,
+    "no_estimand_equivalence": true,
+    "no_pooled_multi_cell": true,
+    "context_only": [
+      "SCM_UnitJackKnife",
+      "AugSynthCVXPY_Point",
+      "AugSynthCVXPY_UnitJackKnife",
+      "AugSynthCVXPY_Kfold"
+    ],
+    "explicit_blocks": {
+      "AugSynthCVXPY_Placebo": {
+        "status": "blocked_catalog",
+        "in_catalog": false,
+        "reason": "Placebo not in AugSynthCVXPY inference_support \u2014 inference/falsification layer only (F-P0-005; COMBO invalid_by_interface).",
+        "explicit_block": true
+      },
+      "AugSynthCVXPY_BlockResidualBootstrap": {
+        "status": "blocked_catalog",
+        "in_catalog": false,
+        "reason": "BlockResidualBootstrap not in AugSynthCVXPY inference_support \u2014 P3 catalog clarification; not in scope for this battery.",
+        "explicit_block": true
+      },
+      "AugSynthCVXPY_full_model_true": {
+        "status": "blocked_policy",
+        "reason": "full_model_true_blocked_for_governed_export",
+        "explicit_block": true
+      },
+      "pooled_multi_cell_claim": {
+        "status": "blocked_policy",
+        "reason": "multi_cell_pooled_without_pooling_rule_id",
+        "explicit_block": true,
+        "policy": "per_cell_only \u2014 no pooling_rule_id"
+      },
+      "base_AugSynth_not_CVXPY": {
+        "status": "blocked_scope",
+        "reason": "D5-INST-AUGSYNTH-003 scope is AugSynthCVXPY only \u2014 not base AugSynth.",
+        "explicit_block": true
+      }
+    }
+  },
+  "conformal_interval_semantics": {
+    "score_definition": "Pre-period absolute residuals |Y_{j,t} - Y_hat_{j,t}| calibrated against treated-period |Y_{j,T} - Y_hat_{j,T}|; one-sided p-value via rank in pre-period empirical distribution (conformal.py).",
+    "exchangeability_assumption": "Pre-treatment residual magnitudes are exchangeable with treated-period residuals under the null; fragile under spillover, donor composition shifts, or post-fit structural breaks.",
+    "residual_source_units": "Level outcomes on the treated unit path \u2014 same y/y_hat scale as AugSynthCVXPY results after percent-effect injection on the post window.",
+    "path_interval_type": "conformal_interval",
+    "governed_uncertainty_eligible": false,
+    "diagnostic_only": true,
+    "exchangeability_caveat": "AUDIT-010 A05 / Track F F-OD-001 \u2014 do not treat as governed uncertainty unless interval semantics pass on OC battery.",
+    "code_refs": [
+      "panel_exp/inference/conformal.py",
+      "panel_exp/inference/modes/impl.py::run_conformal"
+    ]
+  },
+  "config": {
+    "n_mc": 14,
+    "train_length": 28,
+    "test_length": 8,
+    "reference_design_method": "greedy_match_markets",
+    "effect_grid": [
+      0.0,
+      0.04,
+      0.08
+    ],
+    "include_multi_cell_k2": true,
+    "min_donors_augsynth": 5,
+    "kfold_random_state": 0
+  },
+  "instrument_summaries_null_single_cell": [
+    {
+      "instrument": "scm_jk_reference",
+      "geometry_mode": "single_cell",
+      "effect": 0.0,
+      "feasibility_rate": 1.0,
+      "fit_success_rate": 1.0,
+      "mean_point_effect": {
+        "mean": -0.012586988004313864,
+        "std": 0.8570388437972809,
+        "p95": 1.29187436269242,
+        "n": 14
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 14
+      },
+      "mean_interval_halfwidth": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "negative_halfwidth_rate": NaN,
+      "mean_wall_time_s": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "path_interval_type_mode": null,
+      "failure_counts": {}
+    },
+    {
+      "instrument": "augsynth_cvxpy_point",
+      "geometry_mode": "single_cell",
+      "effect": 0.0,
+      "feasibility_rate": 1.0,
+      "fit_success_rate": 1.0,
+      "mean_point_effect": {
+        "mean": -0.08071846383923437,
+        "std": 0.48636165803612885,
+        "p95": 0.599941903347001,
+        "n": 13
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "mean_interval_halfwidth": {
+        "mean": NaN,
+        "std": NaN,
+        "p95": NaN,
+        "n": 0
+      },
+      "negative_halfwidth_rate": NaN,
+      "mean_wall_time_s": {
+        "mean": 0.005455692459900792,
+        "std": 0.004935364894247537,
+        "p95": 0.015421033592429011,
+        "n": 13
+      },
+      "path_interval_type_mode": "unavailable",
+      "failure_counts": {
+        "insufficient_donors_need_5_got_3": 1
+      }
+    },
+    {
+      "instrument": "augsynth_cvxpy_jk",
+      "geometry_mode": "single_cell",
+      "effect": 0.0,
+      "feasibility_rate": 1.0,
+      "fit_success_rate": 1.0,
+      "mean_point_effect": {
+        "mean": -0.08071846383923437,
+        "std": 0.48636165803612885,
+        "p95": 0.599941903347001,
+        "n": 13
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 13
+      },
+      "mean_interval_halfwidth": {
+        "mean": 3.4336050105891633,
+        "std": 0.7614663411709767,
+        "p95": 4.37976209525373,
+        "n": 13
+      },
+      "negative_halfwidth_rate": NaN,
+      "mean_wall_time_s": {
+        "mean": 0.02554904800714352,
+        "std": 0.010634443963076003,
+        "p95": 0.044406717200763515,
+        "n": 13
+      },
+      "path_interval_type_mode": "confidence_interval",
+      "failure_counts": {
+        "insufficient_donors_need_5_got_3": 1
+      }
+    },
+    {
+      "instrument": "augsynth_cvxpy_kfold",
+      "geometry_mode": "single_cell",
+      "effect": 0.0,
+      "feasibility_rate": 1.0,
+      "fit_success_rate": 1.0,
+      "mean_point_effect": {
+        "mean": -0.01840498831623832,
+        "std": 1.0658937943561995,
+        "p95": 1.2559186684187649,
+        "n": 13
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 13
+      },
+      "mean_interval_halfwidth": {
+        "mean": 9.28751030216381,
+        "std": 2.0381962513981273,
+        "p95": 12.334927884270982,
+        "n": 13
+      },
+      "negative_halfwidth_rate": NaN,
+      "mean_wall_time_s": {
+        "mean": 0.1037296059993633,
+        "std": 0.01581991480312087,
+        "p95": 0.11861961638787762,
+        "n": 13
+      },
+      "path_interval_type_mode": "confidence_interval",
+      "failure_counts": {
+        "insufficient_donors_need_5_got_3": 1
+      }
+    },
+    {
+      "instrument": "augsynth_cvxpy_conformal",
+      "geometry_mode": "single_cell",
+      "effect": 0.0,
+      "feasibility_rate": 1.0,
+      "fit_success_rate": 1.0,
+      "mean_point_effect": {
+        "mean": -0.08071846383923437,
+        "std": 0.48636165803612885,
+        "p95": 0.599941903347001,
+        "n": 13
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0,
+        "n": 13
+      },
+      "mean_interval_halfwidth": {
+        "mean": -8.188834247396114,
+        "std": 1.397768851863542,
+        "p95": -6.060523812765773,
+        "n": 13
+      },
+      "negative_halfwidth_rate": 1.0,
+      "mean_wall_time_s": {
+        "mean": 7.60284369261801,
+        "std": 1.91740660609401,
+        "p95": 11.60848335500341,
+        "n": 13
+      },
+      "path_interval_type_mode": "conformal_interval",
+      "failure_counts": {
+        "insufficient_donors_need_5_got_3": 1
+      }
+    }
+  ],
+  "instrument_summaries_injected_8pct_single_cell": [
+    {
+      "instrument": "augsynth_cvxpy_conformal",
+      "geometry_mode": "single_cell",
+      "effect": 0.08,
+      "feasibility_rate": 1.0,
+      "fit_success_rate": 1.0,
+      "mean_point_effect": {
+        "mean": 7.9690508124606,
+        "std": 0.5033704855671062,
+        "p95": 8.615915284054136,
+        "n": 13
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0,
+        "n": 13
+      },
+      "mean_interval_halfwidth": {
+        "mean": -73.85524204964835,
+        "std": 29.443913747204977,
+        "p95": -32.52107943285951,
+        "n": 13
+      },
+      "negative_halfwidth_rate": 1.0,
+      "mean_wall_time_s": {
+        "mean": 7.299843195613134,
+        "std": 1.2247799038916412,
+        "p95": 9.658753562986385,
+        "n": 13
+      },
+      "path_interval_type_mode": "conformal_interval",
+      "failure_counts": {
+        "insufficient_donors_need_5_got_3": 1
+      }
+    },
+    {
+      "instrument": "augsynth_cvxpy_jk",
+      "geometry_mode": "single_cell",
+      "effect": 0.08,
+      "feasibility_rate": 1.0,
+      "fit_success_rate": 1.0,
+      "mean_point_effect": {
+        "mean": 7.9690508124606,
+        "std": 0.5033704855671062,
+        "p95": 8.615915284054136,
+        "n": 13
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0,
+        "n": 13
+      },
+      "mean_interval_halfwidth": {
+        "mean": 3.4336050105891633,
+        "std": 0.7614663411709767,
+        "p95": 4.37976209525373,
+        "n": 13
+      },
+      "negative_halfwidth_rate": NaN,
+      "mean_wall_time_s": {
+        "mean": 0.051799285234525226,
+        "std": 0.055130926038639734,
+        "p95": 0.1279362668166866,
+        "n": 13
+      },
+      "path_interval_type_mode": "confidence_interval",
+      "failure_counts": {
+        "insufficient_donors_need_5_got_3": 1
+      }
+    },
+    {
+      "instrument": "augsynth_cvxpy_kfold",
+      "geometry_mode": "single_cell",
+      "effect": 0.08,
+      "feasibility_rate": 1.0,
+      "fit_success_rate": 1.0,
+      "mean_point_effect": {
+        "mean": 8.0313642879836,
+        "std": 1.0789270615707707,
+        "p95": 9.340009852422185,
+        "n": 13
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 13
+      },
+      "mean_interval_halfwidth": {
+        "mean": 9.30716964951105,
+        "std": 2.057360134794371,
+        "p95": 12.375144459973207,
+        "n": 13
+      },
+      "negative_halfwidth_rate": NaN,
+      "mean_wall_time_s": {
+        "mean": 0.11530446145871583,
+        "std": 0.030059862727086196,
+        "p95": 0.16543437518994322,
+        "n": 13
+      },
+      "path_interval_type_mode": "confidence_interval",
+      "failure_counts": {
+        "insufficient_donors_need_5_got_3": 1
+      }
+    }
+  ],
+  "instrument_summaries_null_multi_cell_k2": {
+    "augsynth_cvxpy_conformal": {
+      "instrument": "augsynth_cvxpy_conformal",
+      "geometry_mode": "multi_cell_k2_per_cell",
+      "effect": 0.0,
+      "feasibility_rate": 1.0,
+      "fit_success_rate": 1.0,
+      "mean_point_effect": {
+        "mean": 0.0019409142808426744,
+        "std": 0.8525365253429047,
+        "p95": 1.2398833094297954,
+        "n": 28
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": 1.0,
+        "std": 0.0,
+        "p95": 1.0,
+        "n": 28
+      },
+      "mean_interval_halfwidth": {
+        "mean": -6.720731984760984,
+        "std": 0.8170252330333586,
+        "p95": -5.740724427333337,
+        "n": 28
+      },
+      "negative_halfwidth_rate": 1.0,
+      "mean_wall_time_s": {
+        "mean": 2.610190196141567,
+        "std": 0.3398170990032429,
+        "p95": 3.0556732374054256,
+        "n": 28
+      },
+      "path_interval_type_mode": "conformal_interval",
+      "failure_counts": {}
+    },
+    "augsynth_cvxpy_jk": {
+      "instrument": "augsynth_cvxpy_jk",
+      "geometry_mode": "multi_cell_k2_per_cell",
+      "effect": 0.0,
+      "feasibility_rate": 1.0,
+      "fit_success_rate": 1.0,
+      "mean_point_effect": {
+        "mean": 0.0019409142808426744,
+        "std": 0.8525365253429047,
+        "p95": 1.2398833094297954,
+        "n": 28
+      },
+      "null_interval_exclusion_fpr": {
+        "mean": 0.0,
+        "std": 0.0,
+        "p95": 0.0,
+        "n": 28
+      },
+      "mean_interval_halfwidth": {
+        "mean": 3.3725967522594327,
+        "std": 1.1642590904600645,
+        "p95": 5.3560896584730395,
+        "n": 28
+      },
+      "negative_halfwidth_rate": NaN,
+      "mean_wall_time_s": {
+        "mean": 0.012110507464967668,
+        "std": 0.001984292457942776,
+        "p95": 0.015121547787566669,
+        "n": 28
+      },
+      "path_interval_type_mode": "confidence_interval",
+      "failure_counts": {}
+    }
+  },
+  "instrument_status": {
+    "primary_instrument": "AugSynthCVXPY_Conformal",
+    "primary_disposition": "callable_unverified_interval_semantics",
+    "overall_verdict": "remain_restricted_no_promotion",
+    "rationale": "Interface-valid on 001e panel but 100% negative interval half-width \u2014 not governed uncertainty; conformal band sign fails OC.",
+    "track_e_inst_004_conformal": "restricted",
+    "calibration_signal_ingress": false,
+    "mmm_ingress": false,
+    "estimand_equivalence_claim": false,
+    "feasibility_single_cell": 1.0,
+    "feasibility_multi_cell_k2_per_cell": 1.0,
+    "null_fpr_conformal": 1.0,
+    "negative_halfwidth_rate_single_cell": 1.0,
+    "multi_cell_policy": "per_cell_only",
+    "combo_audit_status_update": "valid_candidate_pending_OC \u2192 callable_unverified_interval_semantics",
+    "promotion": false
+  },
+  "context_comparison": {
+    "null_detection_disagreement_conformal_vs_jk_rate": {
+      "mean": 1.0,
+      "std": 0.0,
+      "p95": 1.0,
+      "n": 13
+    },
+    "null_detection_disagreement_conformal_vs_kfold_rate": {
+      "mean": 1.0,
+      "std": 0.0,
+      "p95": 1.0,
+      "n": 13
+    },
+    "null_detection_disagreement_conformal_vs_scm_jk_rate": {
+      "mean": 1.0,
+      "std": 0.0,
+      "p95": 1.0,
+      "n": 13
+    },
+    "conformal_negative_halfwidth_cell_rate": {
+      "mean": 1.0,
+      "std": 0.0,
+      "p95": 1.0,
+      "n": 13
+    },
+    "note": "Context comparisons are not estimand-equivalence tests."
+  },
+  "combo_scale_probes": {
+    "enabled": true,
+    "panel_meta": {
+      "train_length": 20,
+      "test_length": 6,
+      "n_geos": 12
+    },
+    "probe": {
+      "status": "probe_success",
+      "has_y_hat": true,
+      "path_interval_type": "conformal_interval",
+      "n_treated": 4,
+      "n_control": 4
+    }
+  },
+  "findings": [
+    {
+      "id": "D5-ASCF-FIND-001",
+      "summary": "AugSynthCVXPY+Conformal is interface-valid on 001e unit panels when donors >= min_donors."
+    },
+    {
+      "id": "D5-ASCF-FIND-002",
+      "summary": "Conformal path_interval_type is conformal_interval \u2014 distinct from JK null-monitor and Kfold CI."
+    },
+    {
+      "id": "D5-ASCF-FIND-003",
+      "summary": "Negative interval half-width and 100% null interval-exclusion on this battery \u2014 not governed uncertainty."
+    },
+    {
+      "id": "D5-ASCF-FIND-004",
+      "summary": "Placebo/BRB/full_model/pooled multi-cell explicitly blocked; no CalibrationSignal or MMM ingress."
+    }
+  ],
+  "overall_verdict": "remain_restricted_no_promotion",
+  "primary_disposition": "callable_unverified_interval_semantics",
+  "track_f_p2_roadmap": {
+    "AugSynthCVXPY_Conformal": "callable_unverified_interval_semantics",
+    "TBRRidge_Conformal": "blocked_interface (TBRRIDGE-002)",
+    "next_battery": null,
+    "p2_complete": true
+  },
+  "user_facing_warnings": [
+    "Conformal intervals are not interchangeable with SCM+JK null-monitor or Kfold CI.",
+    "Do not treat conformal band as governed uncertainty unless interval semantics pass.",
+    "Exchangeability of pre-period residuals is a strong assumption \u2014 AUDIT-010 A05 caveat.",
+    "Compare point/JK/Kfold/Conformal as triangulation context only on this battery.",
+    "Per-cell only for multi-cell k=2 \u2014 no pooled claims."
+  ],
+  "rules_acknowledged": {
+    "no_production_changes": true,
+    "no_estimator_changes": true,
+    "no_inference_changes": true,
+    "no_trust_report_changes": true
+  }
+}

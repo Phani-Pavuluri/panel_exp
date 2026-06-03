@@ -187,7 +187,7 @@ Where applicable, each inventory row records:
 | **INF-004** | Kfold | confidence_interval | restricted | TBRRidge KFold | DEF-001; not calibration-eligible |
 | **INF-005** | BlockResidualBootstrap | confidence_interval | restricted | TBRRidge BRB | DEF-002 positive OC |
 | **INF-006** | Placebo | placebo_band | diagnostic_characterized | SCM Placebo | **D5-INST-PLACEBO-001** ✅ — single-treated only; multi-treated blocked; not CI |
-| **INF-007** | Conformal | conformal_interval | characterization_required | — | **D3** ✅ assumption audit pending D5 |
+| **INF-007** | Conformal | conformal_interval | **callable_unverified** (D5-AUGSYNTH-003) | AugSynthCVXPY Conformal | Negative HW + 100% null exclude on 001e; not governed |
 | **INF-008** | Bayesian (registry) | credible_interval | blocked | — | Not full BayesianTBR |
 | **INF-009** | TimeSeriesKfold | confidence_interval | characterization_required | — | **D3** ✅ temporal blocking |
 | **INF-010** | DID bootstrap | cumulative_att_interval | restricted | DID | DEF-003 relative unsupported |
@@ -215,6 +215,7 @@ Where applicable, each inventory row records:
 | Full estimator × inference × geometry | **D5-INST-AUDIT-001** ✅ — code probes + roadmap |
 | AugSynthCVXPY point/JK | **D5-INST-AUGSYNTH-001** ✅ — diagnostic_only; not CalibrationSignal |
 | AugSynthCVXPY + Kfold | **D5-INST-AUGSYNTH-KFOLD-001** ✅ — restricted diagnostic comparator |
+| AugSynthCVXPY + Conformal | **D5-INST-AUGSYNTH-003** ✅ — callable; interval semantics unverified (negative HW, 100% null exclude) |
 | Class TBR (aggregate 1×1) | **D5-INST-TBR-001** ✅ — restricted aggregate diagnostic; not TBRRidge |
 | TBRRidge P2 inference | **D5-INST-TBRRIDGE-002** ✅ — JK/JKP/Conformal blocked; TSKF unverified; Bayesian INV-015 |
 | Estimator×inference×geometry | **D5-INST-COMBO-AUDIT-001** ✅ — curated compatibility matrix |
@@ -277,6 +278,7 @@ Full instrument rows live in [`TRACK_B_MEASUREMENT_INSTRUMENT_CATALOG_001.md`](T
 | TBRRidge + KFold | Restricted | restricted | INV-007 |
 | AugSynthCVXPY + Point | Restricted | restricted | Phase 14 |
 | AugSynthCVXPY + JK | Characterized | diagnostic_only | Phase 14 |
+| AugSynthCVXPY + Conformal | Callable | callable_unverified | D5-AUGSYNTH-003 — not governed |
 | DID + Bootstrap | Characterized | restricted | DEF-016 |
 
 ---

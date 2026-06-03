@@ -358,7 +358,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **P0 complete** — F-P0-001…006 guards/tests; no CalibrationSignal expansion; no MMM ingress.
 
-**Next:** ~~Track F P0~~ ✅ → ~~TBRRidge-002~~ ✅ → **AugSynth Conformal (003)**.
+**Next:** ~~Track F P0~~ ✅ → ~~TBRRidge-002~~ ✅ → ~~AugSynth Conformal (003)~~ ✅ — **P2 complete**.
 
 ---
 
@@ -371,6 +371,18 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 **Verdict:** **`remain_restricted_no_promotion`** — JK/JKP/Conformal blocked_interface; TimeSeriesKfold callable_unverified; Bayesian INV-015.
 
 **Next:** **D5-INST-AUGSYNTH-003** (Conformal).
+
+---
+
+## D5-INST-AUGSYNTH-003 checkpoint (2026-06-03)
+
+**Artifact:** [`docs/track_d/archives/D5_INST_AUGSYNTH_003_results.json`](track_d/archives/D5_INST_AUGSYNTH_003_results.json)  
+**Report:** [`docs/track_d/D5_INST_AUGSYNTH_003_REPORT.md`](track_d/D5_INST_AUGSYNTH_003_REPORT.md)  
+**Harness:** `panel_exp/validation/track_d_d5_inst_augsynth_003.py`
+
+**Verdict:** **`callable_unverified_interval_semantics`** — interface-valid on 001e; 100% negative half-width and 100% null interval-exclusion FPR; not governed uncertainty; no promotion.
+
+**Next:** Track F **P2 complete** — no further P2 batteries unless governance directs.
 
 ---
 
