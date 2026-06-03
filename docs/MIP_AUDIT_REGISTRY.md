@@ -35,7 +35,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 | **AUDIT-008** | 2026-06-01 | Track D D4 power/MDE (research lane) | `24beae8` | `continue_with_characterization_required` | Power ≠ SCM JK readout; aggregation | D5-POW-001a; E1 | **closed** (research) |
 | **AUDIT-009** | 2026-06-01 | Track E E1–E7 completion gate | `79c59c4` | `continue` | Live export lacks auto profile assembly (E7-FIND-001) | AUDIT-010A ✅; ~~D5-INST-TBR-001~~ ✅ → AUDIT-010 | **closed** |
 | **AUDIT-010A** | 2026-06-02 | Roadmap consistency pre-MMM (post Track F + Kfold OC) | `ebc899c` | `continue_with_minor_corrections` | Stale MCELL next-lines; Track F P0/TBR sequence; DESIGN §13 Kfold | ~~D5-INST-TBR-001~~ ✅ → **AUDIT-010** | **closed** |
-| **AUDIT-010** | — | MMM readiness / gap (not promotion) | TBD | — | Prereq: 010A ✅ + CONCEPTUAL-VALIDITY-001 ✅ + **D5-INST-TBR-001** ✅ | Block invalid combos; no default MMM ingress | planned |
+| **AUDIT-010** | — | MMM readiness / gap (not promotion) | TBD | — | Charter: [`AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md) — Appendix A = 30 tuples; verdict at close | Execute §3 checklist → close | **charter** |
 | **AUDIT-011** | — | Before LLM interface | TBD | — | — | — | planned |
 
 ---
@@ -338,7 +338,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **`remain_restricted_aggregate_diagnostic`** — class TBR aggregate 1×1 only; point/Kfold callable; JK blocked on agg2; JKP unverified; not TBRRidge; not MMM-eligible.
 
-**Next:** **AUDIT-010** MMM readiness/gap.
+**Next:** **AUDIT-010** charter → audit close.
 
 ---
 

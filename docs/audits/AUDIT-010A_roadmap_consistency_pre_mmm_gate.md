@@ -6,7 +6,7 @@
 **Branch / baseline:** `fix-kfold-multitreated-geometry` @ `ebc899c` (post Track F + D5-INST-AUGSYNTH-KFOLD-001)  
 **Lane:** Governance / documentation only — **not** a production or MMM promotion gate  
 
-**Related:** [`AUDIT-010`](MIP_AUDIT_REGISTRY.md) (planned MMM **readiness/gap** audit) · [`TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md`](TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md)
+**Related:** [`AUDIT-010`](AUDIT-010_mmm_readiness_gap.md) (planned MMM **readiness/gap** audit — **Appendix A = 30-tuple authoritative matrix**) · [`TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md`](TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md)
 
 ---
 
@@ -122,8 +122,8 @@ flowchart TD
 | Step | Work | Gate type |
 |------|------|-----------|
 | **0** | ~~AUDIT-010A~~ ✅ | Roadmap consistency |
-| **1** | **D5-INST-TBR-001** | Research OC — aggregate class TBR only |
-| **2** | **AUDIT-010** | MMM **readiness/gap** — block list + approved diagnostic set |
+| **1** | ~~D5-INST-TBR-001~~ ✅ | Research OC — aggregate class TBR only |
+| **2** | **AUDIT-010** | MMM **readiness/gap** — executive summary + **Appendix A (30 tuples)** per [`AUDIT-010_mmm_readiness_gap.md`](AUDIT-010_mmm_readiness_gap.md) |
 | **3** | **Track F P0** | Implementation hygiene (not automatic promotion) |
 | **4** | **Track F P2 OC** | TBRRidge-002; AugSynth Conformal; remaining COMBO valid_candidates |
 | **5** | **Promotion lane** | Separate governed milestones **only if** AUDIT-010 prerequisites met |

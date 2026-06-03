@@ -335,7 +335,7 @@ flowchart TD
 | Phase | Deliverables | Exit criterion |
 |-------|--------------|----------------|
 | **P1** | ~~TBR-001~~ ✅ report + F-GEO-001 + F-EIF-001 | Point/Kfold OC'd; JK blocked; JKP unverified |
-| **P1.5** | AUDIT-010 report | MMM block list + approved diagnostic set |
+| **P1.5** | AUDIT-010 report | MMM block list + approved diagnostic set; **Appendix A = all 30 COMBO tuples** ([`AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md)) |
 | **P0 (post AUDIT-010)** | F-P0-001…004 PRs | AUDIT-010 checklist hygiene items addressed |
 | **P2** | TBRRIDGE-002; AugSynth Conformal; remaining COMBO valid_candidates | Promote to Tier B/C or re-block |
 | **P3** | AugSynth BRB catalog decision; base AugSynth | Optional; no MMM impact |
@@ -345,6 +345,13 @@ flowchart TD
 ---
 
 ## 13. Open decisions for AUDIT-010
+
+**AUDIT-010 deliverable structure (mandatory):**
+
+1. **Executive summary** — major evidence families only (grouped table); illustrative, not authoritative for per-tuple coverage.
+2. **Appendix A** — full 30-row matrix: estimator × inference × geometry × COMBO status × conceptual validity × D5 OC × Track E/B × Track F disposition × CalibrationSignal × MMM readiness × reason. **No tuple may be omitted.** Reconcile against COMBO-AUDIT-001, CONCEPTUAL-VALIDITY-001, and Track F §3.
+
+Charter + pre-reconciled Appendix A: [`audits/AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md).
 
 | ID | Question | Default recommendation |
 |----|----------|------------------------|
@@ -377,7 +384,7 @@ Track F v1 is **complete as a planning artifact** when:
 2. P0–P2 sequence and promotion tiers are defined (§11–§12).  
 3. AUDIT-010 open decisions are listed (§13).  
 
-**Implementation stop condition (future):** AUDIT-010 reports **approved MMM intake set** and **closed gaps** — then Track F v2 reconciles §7 with live production configs.
+**Implementation stop condition (future):** AUDIT-010 reports **approved MMM intake set** and **closed gaps** — Appendix A proves all 30 tuples accounted for — then Track F v2 reconciles §7 with live production configs.
 
 ---
 

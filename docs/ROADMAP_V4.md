@@ -143,6 +143,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | **AugSynth Kfold OC** | **D5-INST-AUGSYNTH-KFOLD-001** ✅ [`D5_INST_AUGSYNTH_KFOLD_001_results.json`](track_d/archives/D5_INST_AUGSYNTH_KFOLD_001_results.json) — restricted diagnostic comparator |
 | **Class TBR OC** | **D5-INST-TBR-001** ✅ [`D5_INST_TBR_001_results.json`](track_d/archives/D5_INST_TBR_001_results.json) — aggregate 1×1 restricted diagnostic |
 | **Roadmap consistency** | **AUDIT-010A** ✅ [`audits/AUDIT-010A_roadmap_consistency_pre_mmm_gate.md`](audits/AUDIT-010A_roadmap_consistency_pre_mmm_gate.md) — pre-MMM sanity check |
+| **MMM readiness charter** | **AUDIT-010** (planned) [`audits/AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md) — executive summary + **Appendix A (30 COMBO tuples)** |
 | **D5-POW-001e** | ✅ Six confirmed methods; SCM+JK reference null FPR; [`D5_POW_001e_results.json`](track_d/archives/D5_POW_001e_results.json) — `acceptable_with_caveats` |
 
 **Next steps:** (0) ~~AUDIT-010A~~ ✅ → (1) ~~D5-INST-AUDIT-001~~ ✅ → ~~AUGSYNTH/KFOLD/COMBO/CV~~ ✅ → (2) ~~**D5-INST-TBR-001**~~ ✅ → (3) **AUDIT-010** (MMM **readiness/gap** — not promotion) → (4) Track F **P0 hygiene** → (5) Track F **P2 OC** → (6) MMM / promotion **only if** AUDIT-010 gaps closed. **Implementation plan:** [`TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md`](TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md).
