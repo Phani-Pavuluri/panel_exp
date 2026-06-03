@@ -203,8 +203,26 @@ Full rows: [`AUDIT-010` Appendix A](audits/AUDIT-010_mmm_readiness_gap.md).
 
 **Decision layer:** **F-DECISION-001** ✅ — [`F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md`](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md).
 
-**Next:** **Governance PR** (Track F checkpoint + decision resolver). **Optional:** F-INF-004 (A09). Promotion/MMM/CS still blocked.
+**Next:** **Governance PR** (Track F checkpoint + decision resolver + F-BACKLOG-002). **Optional:** F-INF-004 (A09). Promotion/MMM/CS still blocked.
 
 ---
 
-*F-BACKLOG-001 v1.2.0 — P3+ loop closed at TRACK-F-IMPLEMENTATION-CHECKPOINT-001; pause default.*
+## 10. F-BACKLOG-002 industry relevance (2026-06-03)
+
+**Artifact:** [`F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md`](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md)
+
+Supersedes **investigation priority** for parked items in §6–7 of this doc — **not** implementation authorization.
+
+| Outcome | Action |
+|---------|--------|
+| **Decision-layer candidates** | SCM+JK, Placebo, AugSynth/TBRRidge characterized diagnostics — see F-DECISION-001 |
+| **OC optional** | A09 (F-INF-004), per-cell multi-cell — product pull only |
+| **Design ADR first** | F-MCELL-001, F-GEO-003/004, F-CAT-002, F-P0-004 |
+| **Parked watch** | A16/A21 high null FPR — behavior research, not default impl |
+| **Keep blocked** | Registry Bayesian, TROP prod, pooled multi-cell, supergeo/trim SCM+JK |
+
+**Rule:** External/industry importance **does not** override AUDIT-010 buckets or F-DECISION-001 roles.
+
+---
+
+*F-BACKLOG-001 v1.3.0 — P3+ loop closed; F-BACKLOG-002 locks investigation lanes; pause default.*

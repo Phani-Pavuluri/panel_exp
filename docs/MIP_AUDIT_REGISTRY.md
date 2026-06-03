@@ -403,7 +403,23 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** Method eligibility resolver + evidence comparison policy complete; consumes F-INF/F-GEO/F-CAT; no promotion/MMM/CS expansion.
 
-**Next:** Governance PR wiring TrustReport/decision support (integration, not new Track F OC).
+**Next:** ~~Governance PR~~ — package with F-BACKLOG-002; TrustReport integration (no new Track F OC).
+
+---
+
+## F-BACKLOG-002 checkpoint (2026-06-03)
+
+**Artifact:** [`docs/F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md`](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md)
+
+**Verdict:** Parked estimator/inference/design items re-ranked by external importance × internal readiness × product fit; **external importance does not override** AUDIT-010 / F-DECISION-001 gates.
+
+**Surfaced:** SCM+JK null monitor, characterized diagnostics (A05/A18/A19), placebo falsification, class TBR aggregate diagnostic.
+
+**Blocked/buried:** Registry Bayesian, TROP prod, pooled multi-cell, supergeo/trim SCM+JK without ADR.
+
+**Next program lanes:** design ADRs (F-MCELL-001, F-GEO-003/004, F-CAT-002, F-P0-004); optional OC (A09, per-cell); research charters RTP-001..004; **no promotion candidates**.
+
+**Prerequisites:** TRACK-F-IMPLEMENTATION-CHECKPOINT-001 · F-DECISION-001 · F-BACKLOG-001.
 
 ---
 

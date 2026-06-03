@@ -7,7 +7,7 @@
 **Verdict:** **Pause default implementation/OC loop** — await governance PR unless product reprioritizes optional **F-INF-004**  
 **Branch baseline:** `fix-kfold-multitreated-geometry` @ `9f1dba0` (D5-INST-TBRRIDGE-003)
 
-**Related:** [`AUDIT-010`](audits/AUDIT-010_mmm_readiness_gap.md) · [`F_BACKLOG_001`](F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md) · [`TRACK_F_P2_CLOSEOUT_001`](TRACK_F_P2_CLOSEOUT_001.md)
+**Related:** [`AUDIT-010`](audits/AUDIT-010_mmm_readiness_gap.md) · [`F_BACKLOG_001`](F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md) · [`F_BACKLOG_002`](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md) · [`TRACK_F_P2_CLOSEOUT_001`](TRACK_F_P2_CLOSEOUT_001.md)
 
 ---
 
@@ -120,15 +120,15 @@ Appendix A roll-up (30 tuples, one bucket each) — **verified consistent** with
 
 | Item | Tuple / lane | Issue | Default classification |
 |------|--------------|-------|------------------------|
-| **High null FPR** | **A16** TBRRidge + UnitJackKnife | ~79% null interval-exclusion on 001e battery | Research / estimand review — not impl without ADR |
-| **Elevated null FPR** | **A21** TBRRidge + JKP | ~29% null exclusion | Callable unverified — optional deeper study |
-| **TBR JKP artifacts** | **A09** class TBR + JKP (aggregate 1×1) | Callable; interval semantics not governed | Optional **F-INF-004** + spot OC |
-| **Supergeo readout** | **A29** | No estimand bridge | **F-GEO-003** — design ADR |
-| **Trimmed population** | **A30** | No estimand bridge | **F-GEO-004** — design ADR |
-| **Multi-cell pooling** | global | No `pooling_rule_id` | **F-MCELL-001** — design ADR |
-| **AugSynth BRB catalog** | **A04** | Not in `inference_support` | **F-CAT-002** — block vs add ADR |
-| **Registry Bayesian prod** | **A20** | INV-015 | **keep_blocked** |
-| **DID relative ATT CI** | **A25** | DEF-003 policy | **F-P0-004** parallel lane |
+| **High null FPR** | **A16** TBRRidge + UnitJackKnife | ~79% null interval-exclusion on 001e battery | **parked_watch** ([F-BACKLOG-002](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md) §4) — not default impl |
+| **Elevated null FPR** | **A21** TBRRidge + JKP | ~29% null exclusion | **parked_watch** — optional F-DECISION-002 sensitivity only |
+| **TBR JKP artifacts** | **A09** class TBR + JKP (aggregate 1×1) | Callable; interval semantics not governed | **OC_priority** optional — **F-INF-004** on product pull |
+| **Supergeo readout** | **A29** | No estimand bridge | **design_ADR** → RTP-003 charter ([F-GEO-003](F_GEO_001_GEOMETRY_ADAPTER_CONTRACT.md)) |
+| **Trimmed population** | **A30** | No estimand bridge | **design_ADR** → RTP-004 charter ([F-GEO-004](F_GEO_001_GEOMETRY_ADAPTER_CONTRACT.md)) |
+| **Multi-cell pooling** | global | No `pooling_rule_id` | **design_ADR** **keep_blocked** — F-MCELL-001 |
+| **AugSynth BRB catalog** | **A04** | Not in `inference_support` | **design_ADR** — F-CAT-002 |
+| **Registry Bayesian prod** | **A20** | INV-015 | **keep_blocked** (permanent) |
+| **DID relative ATT CI** | **A25** | DEF-003 policy | **design_ADR** — F-P0-004 |
 
 None of these reopen the **default** P3+ fix→OC loop without a **governance PR** or explicit product priority.
 
@@ -141,8 +141,9 @@ None of these reopen the **default** P3+ fix→OC loop without a **governance PR
 | **A. Pause implementation/OC** | After checkpoint; await governance PR for MMM/promotion/CS | **✅ SELECTED** |
 | **B. F-DECISION-001** | Decision resolver / evidence policy (consumes Track F) | **✅ Complete** — see [`F_DECISION_001`](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md) |
 | **C. Optional F-INF-004** | Class TBR + JKP aggregate 1×1 (A09) | Available; **not** default |
-| **D. Design ADR lane** | Supergeo, trim, pooling, AugSynth BRB taxonomy | Parallel; no code until ADR |
-| **E. Promotion / MMM / CS lane** | Product requests governed export or MMM feed | **Unauthorized** |
+| **D. Design ADR lane** | Supergeo, trim, pooling, AugSynth BRB taxonomy | Parallel; no code until ADR — ranked in [**F-BACKLOG-002**](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md) |
+| **E. Promotion / MMM / CS lane** | Product requests governed export or MMM feed | **Unauthorized** — **0** promotion candidates per F-BACKLOG-002 §11 |
+| **F. F-BACKLOG-002** | Industry/literature relevance re-rank | **✅ Complete** — investigation priority only |
 
 ### 7.1 Explicit next state
 
@@ -176,8 +177,9 @@ Further implementation without product pull is **lower leverage** than governanc
 | [`F_INF_002_TBRRIDGE_INTERFACE_FIX.md`](F_INF_002_TBRRIDGE_INTERFACE_FIX.md) | F-INF-002 |
 | [`D5_INST_TBRRIDGE_003_REPORT.md`](track_d/D5_INST_TBRRIDGE_003_REPORT.md) | A16, A18, A21 |
 | [`F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md`](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md) | Decision resolver (post-checkpoint) |
+| [`F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md`](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md) | Parked-item industry/literature re-rank |
 | [`TRACK_F_P2_CLOSEOUT_001.md`](TRACK_F_P2_CLOSEOUT_001.md) | P2 historical closeout |
 
 ---
 
-*TRACK-F-IMPLEMENTATION-CHECKPOINT-001 v1.0.0 — closes active Track F implementation/OC loop; pause unless governance PR or F-INF-004.*
+*TRACK-F-IMPLEMENTATION-CHECKPOINT-001 v1.1.0 — closes active Track F implementation/OC loop; F-BACKLOG-002 locks investigation lanes; pause unless governance PR or F-INF-004.*

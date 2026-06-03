@@ -141,6 +141,7 @@ These tuples are **conceptually plausible** (or blocking hygiene) and should be 
 | **F-CAT** | F-CAT-002 | AugSynthCVXPY + BRB explicit BLOCK or ADR (F-OD-002) | P2 impl · `requires_design_ADR` |
 | **F-MCELL** | F-MCELL-001 | `pooling_rule_id` design if pooled multi-cell ever required | Deferred · `requires_design_ADR` |
 | **F-BACKLOG** | F-BACKLOG-001 | Implementation backlog closeout | ~~**complete**~~ ✅ |
+| **F-BACKLOG** | F-BACKLOG-002 | Industry/literature relevance review | ~~**complete**~~ ✅ [`F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md`](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md) |
 
 **Next lane:** [**F-DECISION-001**](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md) ✅ → **governance PR**; optional F-INF-004 on product pull.
 

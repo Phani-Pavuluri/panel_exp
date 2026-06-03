@@ -147,6 +147,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | **F-GEO-001 contract** | ✅ [`F_GEO_001_GEOMETRY_ADAPTER_CONTRACT.md`](F_GEO_001_GEOMETRY_ADAPTER_CONTRACT.md) — geometry adapter rules; depends on F-INF-001 |
 | **F-CAT-001 catalog** | ✅ [`F_CAT_001_REGISTRY_CATALOG_CLEANUP.md`](F_CAT_001_REGISTRY_CATALOG_CLEANUP.md) — registry/catalog metadata aligned with F-INF + F-GEO |
 | **F-BACKLOG-001 closeout** | ✅ [`F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md`](F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md) — prioritized implementation queue |
+| **F-BACKLOG-002 relevance** | ✅ [`F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md`](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md) — industry/literature re-rank; investigation only (no promotion) |
 | **F-INF-003 fix** | ✅ [`F_INF_003_INTERVAL_ORIENTATION_FIX.md`](F_INF_003_INTERVAL_ORIENTATION_FIX.md) — Conformal/TimeSeriesKfold orientation |
 | **D5-INF-POSTFIX-001** | ✅ [`D5_INF_POSTFIX_001_REPORT.md`](track_d/D5_INF_POSTFIX_001_REPORT.md) — A05/A19 targeted OC post-fix |
 | **Class TBR OC** | **D5-INST-TBR-001** ✅ [`D5_INST_TBR_001_results.json`](track_d/archives/D5_INST_TBR_001_results.json) — aggregate 1×1 restricted diagnostic |
@@ -154,7 +155,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | **MMM readiness / gap** | **AUDIT-010** ✅ [`audits/AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md) — `not_ready_continue_track_f`; Appendix A = 30 tuples |
 | **D5-POW-001e** | ✅ Six confirmed methods; SCM+JK reference null FPR; [`D5_POW_001e_results.json`](track_d/archives/D5_POW_001e_results.json) — `acceptable_with_caveats` |
 
-**Next steps:** … → ~~**CHECKPOINT-001**~~ ✅ → ~~**F-DECISION-001**~~ ✅ → **governance PR** (package Track F + decision layer) → promotion **only if** governance PR allows (not authorized).
+**Next steps:** … → ~~**CHECKPOINT-001**~~ ✅ → ~~**F-DECISION-001**~~ ✅ → ~~**F-BACKLOG-002**~~ ✅ → **governance PR** (package Track F + decision layer + backlog relevance) → promotion **only if** governance PR allows (not authorized).
 
 ### Track F — implementation checkpoint (2026-06-03)
 

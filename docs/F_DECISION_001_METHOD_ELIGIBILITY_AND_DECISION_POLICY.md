@@ -135,11 +135,15 @@ Same roles; geometry `UNIT_PANEL` with `n_treated > 1`. Placebo blocked unless `
 
 ## Next steps (program)
 
-1. **Governance PR** — package Track F checkpoint + F-DECISION-001 as decision-safe layer
+1. **Governance PR** — package Track F checkpoint + F-DECISION-001 + [**F-BACKLOG-002**](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md) as decision-safe layer
 2. Wire resolver outputs into TrustReport / decision support (separate integration PR)
-3. Optional **F-INF-004** (A09) only on product pull
-4. Design ADRs: supergeo, trim, pooling (parallel)
+3. Optional **F-INF-004** (A09) only on product pull — see F-BACKLOG-002 §10
+4. Design ADRs: supergeo, trim, pooling (parallel) — F-BACKLOG-002 §8
+
+### Future F-DECISION-002 candidates (docs only — no v1 behavior change)
+
+Per [F-BACKLOG-002 §7](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md): optional `sensitivity_check` for **A16/A21** with mandatory warnings; auto-offer class TBR 1×1 `diagnostic_comparator`; per-cell multi-cell candidate expansion; DID bootstrap when F-P0-004 ADR satisfied. **External importance does not override** v1 roles or AUDIT-010 buckets.
 
 ---
 
-*F-DECISION-001 v1.0.0 — resolver/policy only; consumes Track F contracts.*
+*F-DECISION-001 v1.1.0 — resolver/policy only; consumes Track F contracts; F-BACKLOG-002 cross-reference for future expansion.*

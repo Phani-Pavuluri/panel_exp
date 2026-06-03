@@ -23,6 +23,7 @@
 | **MMM** | **CalibrationSignal** = only MMM ingress. |
 | **Trust** | **TrustReport** = only trust-verdict layer. |
 | **F-DECISION-001** | Post–Track F **method eligibility resolver** assigns runtime roles (`primary_null_monitor`, `diagnostic_comparator`, …) from F-INF/F-GEO/F-CAT — see [`F_DECISION_001`](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md). Track E cards inform design suitability; resolver enforces decision posture. |
+| **F-BACKLOG-002** | Industry/literature **investigation lanes** for parked items — [`F_BACKLOG_002`](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md). Does **not** change card statuses or promote instruments. |
 
 ### Card template fields
 
@@ -76,6 +77,7 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 | **Disallowed claims** | Pooled multi-cell lift; single headline FPR across cells; MMM pooled cell evidence. |
 | **Track B / CalibrationSignal** | Per-cell signals only if future policy defines cell-level CalibrationSignal keys (not default today). |
 | **Track E status** | **`suitable_with_caveats`** |
+| **F-BACKLOG-002 lane** | Per-cell **OC_priority**; pooled claims **design_ADR** F-MCELL-001 — **keep_blocked** |
 
 ---
 
@@ -94,6 +96,7 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 | **Disallowed claims** | Any claim transferring tier-1 001e results to supergeo tests. |
 | **Track B / CalibrationSignal** | No ingress. |
 | **Track E status** | **`characterization_required`** (`separate_geometry_design`) |
+| **F-BACKLOG-002 lane** | **design_ADR** (F-GEO-003) → **research_to_production_charter** RTP-003 — **keep_blocked** for flat SCM+JK |
 
 ---
 
@@ -112,6 +115,7 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 | **Disallowed claims** | MMM geo relative ATT without estimand bridge. |
 | **Track B / CalibrationSignal** | No ingress. |
 | **Track E status** | **`characterization_required`** (`separate_population_design`) |
+| **F-BACKLOG-002 lane** | **design_ADR** (F-GEO-004) → **research_to_production_charter** RTP-004 — **keep_blocked** for governed SCM+JK |
 
 ---
 
@@ -335,6 +339,7 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 | **OC evidence** | **D5-INST-TBR-001** ✅ — ~0.99 point/injected ratio @ 8%; Kfold null FPR 0. |
 | **Disallowed claims** | TBRRidge equivalence; unit-level support; MMM; CalibrationSignal. |
 | **Track E status** | **`restricted`** (aggregate diagnostic) |
+| **F-BACKLOG-002 lane** | **diagnostic_only** + **parked_watch**; optional **OC_priority** for A09 JKP (F-INF-004) |
 
 ---
 
@@ -365,6 +370,8 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 **Card status unchanged** except explicit CV-001 cross-links on INST-001–006 above; statuses remain governed by OC + Track B, not literature alone.
 
 **Track F:** [`TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md`](TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md) — promotion tiers and P0–P2 fix sequence when statuses change post OC.
+
+**F-BACKLOG-002:** [`F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md`](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md) — investigation lanes for parked methods; **0** promotion candidates; external importance subordinate to governance.
 
 ---
 
