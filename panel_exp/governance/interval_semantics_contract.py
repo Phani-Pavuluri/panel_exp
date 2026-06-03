@@ -127,10 +127,10 @@ DIAGNOSTIC_INTERVAL_POLICY: frozenset[Tuple[str, str]] = frozenset(
 # Track F P2 OC dispositions (expected classification targets for regression tests).
 TRACK_F_KNOWN_INTERVAL_DISPOSITIONS: dict[Tuple[str, str, str], IntervalSemanticsClassification] = {
     ("TBRRidge", "TimeSeriesKfold", "single_cell"): (
-        IntervalSemanticsClassification.CALLABLE_UNVERIFIED_INTERVAL_SEMANTICS
+        IntervalSemanticsClassification.DIAGNOSTIC_INTERVAL_ONLY
     ),
     ("AugSynthCVXPY", "Conformal", "single_cell"): (
-        IntervalSemanticsClassification.CALLABLE_UNVERIFIED_INTERVAL_SEMANTICS
+        IntervalSemanticsClassification.DIAGNOSTIC_INTERVAL_ONLY
     ),
     ("TBR", "JKP", "aggregate_two_series"): (
         IntervalSemanticsClassification.CALLABLE_UNVERIFIED_INTERVAL_SEMANTICS

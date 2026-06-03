@@ -68,6 +68,7 @@ class TestStaleClaimsBlocked:
             if r.estimator_class_name == "AugSynthCVXPY" and r.inference_mode == "Conformal"
         )
         assert rec.interval_semantics_tier in (
+            IntervalSemanticsClassification.DIAGNOSTIC_INTERVAL_ONLY,
             IntervalSemanticsClassification.CALLABLE_UNVERIFIED_INTERVAL_SEMANTICS,
             IntervalSemanticsClassification.BLOCKED_INVALID_INTERVAL,
         )

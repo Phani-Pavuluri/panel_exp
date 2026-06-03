@@ -142,7 +142,7 @@ These tuples are **conceptually plausible** (or blocking hygiene) and should be 
 | **F-MCELL** | F-MCELL-001 | `pooling_rule_id` design if pooled multi-cell ever required | Deferred · `requires_design_ADR` |
 | **F-BACKLOG** | F-BACKLOG-001 | Implementation backlog closeout | ~~**complete**~~ ✅ |
 
-**Next lane:** ~~F-INF-003~~ ✅ → **D5-INF-POSTFIX-001** OC (A05/A19).
+**Next lane:** ~~D5-INF-POSTFIX-001~~ ✅ → **F-INF-002** (TBRRidge interface A16/A18/A21).
 
 ### P2 — TBRRidge remaining inference (~~D5-INST-TBRRIDGE-002~~ ✅)
 
@@ -362,7 +362,7 @@ flowchart TD
 | **P1.5** | AUDIT-010 report | MMM block list + approved diagnostic set; **Appendix A = all 30 COMBO tuples** ([`AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md)) |
 | **P0 (post AUDIT-010)** | F-P0-001…004 PRs | AUDIT-010 checklist hygiene items addressed |
 | **P2** | ~~TBRRIDGE-002~~ ✅ · ~~AUGSYNTH-003~~ ✅ · [`TRACK_F_P2_CLOSEOUT_001`](TRACK_F_P2_CLOSEOUT_001.md) ✅ | P2 closed — no more OC batteries by default |
-| **P3+** | ~~F-INF-003~~ ✅ | **D5-INF-POSTFIX-001** OC next · F-INF-002 interface fix queued |
+| **P3+** | ~~F-INF-003~~ ✅ · ~~D5-INF-POSTFIX-001~~ ✅ | **F-INF-002** next |
 
 **Note:** AugSynthCVXPY+Kfold OC ([`D5_INST_AUGSYNTH_KFOLD_001`](track_d/D5_INST_AUGSYNTH_KFOLD_001_REPORT.md)) completed **before** TBR-001 as research characterization; remains **restricted diagnostic**, not a promotion.
 

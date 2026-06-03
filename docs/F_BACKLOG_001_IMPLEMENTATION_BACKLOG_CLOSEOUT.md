@@ -139,8 +139,9 @@ flowchart LR
 
 | Rank | ID | Rationale |
 |------|-----|-----------|
-| ~~**1**~~ | ~~**F-INF-003**~~ ✅ | Orientation fix landed — **D5-INF-POSTFIX-001** OC next for A05/A19 |
-| **1** | **D5-INF-POSTFIX-001** | Targeted OC rerun A05 + A19 after F-INF-003 |
+| ~~**1**~~ | ~~**F-INF-003**~~ ✅ | Orientation fix at source |
+| ~~**2**~~ | ~~**D5-INF-POSTFIX-001**~~ ✅ | A05/A19 → `diagnostic_interval_only` / `characterized_restricted`; not governed |
+| **1** | **F-INF-002** | TBRRidge JK/JKP/Conformal interface (A16, A18, A21) |
 | 2 | F-INF-002 | Unblocks three `blocked_interface` tuples — larger interface change than band sign |
 | 3 | F-INF-004 / TBR JKP | Aggregate diagnostic — lower blast radius; optional OC after F-INF-003 patterns proven |
 | 4 | F-GEO-002 | Hardening only — contract already blocks wrong geometry |
@@ -195,11 +196,9 @@ Full rows: [`AUDIT-010` Appendix A](audits/AUDIT-010_mmm_readiness_gap.md).
 
 ## 9. Next authorized task (explicit)
 
-~~**F-INF-003**~~ ✅ — see [`F_INF_003_INTERVAL_ORIENTATION_FIX.md`](F_INF_003_INTERVAL_ORIENTATION_FIX.md).
+~~**F-INF-003**~~ ✅ · ~~**D5-INF-POSTFIX-001**~~ ✅ — see [`D5_INF_POSTFIX_001_REPORT.md`](track_d/D5_INF_POSTFIX_001_REPORT.md).
 
-**Next:** **D5-INF-POSTFIX-001** (F-INF-003-OC) — targeted OC for **A05** (AugSynthCVXPY+Conformal) and **A19** (TBRRidge+TimeSeriesKfold). Outcome target: behavioral semantics verification, **not** governed uncertainty or promotion.
-
-After OC: reassess **F-INF-002** (TBRRidge interface) vs **F-INF-004** (TBR JKP).
+**Next:** **F-INF-002** — TBRRidge multi-treated residual shape (A16, A18, A21). A05/A19 closed for orientation/OC — remain restricted diagnostics, not governed uncertainty.
 
 ---
 

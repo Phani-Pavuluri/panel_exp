@@ -4,7 +4,7 @@
 **Type:** MMM **readiness / gap** audit — **not** a promotion gate  
 **Status:** **closed** — readiness/gap gate (not promotion)  
 **Verdict:** **`not_ready_continue_track_f`** — MMM **not ready / blocked**; CalibrationSignal **no expansion**  
-**Next:** ~~Track F P0~~ ✅ · ~~P2 OC~~ ✅ · ~~contract stack + F-BACKLOG-001~~ ✅ · **F-INF-003** ([`F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md`](../F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md))  
+**Next:** ~~F-INF-003~~ ✅ · ~~D5-INF-POSTFIX-001~~ ✅ · **F-INF-002** ([`F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md`](../F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md))  
 **Branch / baseline:** `fix-kfold-multitreated-geometry` @ post `D5-INST-TBR-001` (`4cfa77b`)  
 **Prerequisites:** AUDIT-010A ✅ · TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001 ✅ · D5-INST-TBR-001 ✅  
 
@@ -103,7 +103,7 @@ AUDIT-010 **must** ship two levels of evidence. The executive summary is for rea
 | A02 | `already_characterized` | AugSynthCVXPY | UnitJackKnife | single_cell_unit | already_characterized | aligned_with_deviation | **AUGSYNTH-001** ✅ | INST-004 diagnostic | **HOLD** | neither | **blocked** | JK null FPR 0 on battery; not CalibrationSignal |
 | A03 | `characterized_restricted` | AugSynthCVXPY | Kfold | single_cell_unit | already_characterized | restricted | **AUGSYNTH-KFOLD-001** ✅ | INST-004 restricted | **HOLD** | neither | **blocked** | Restricted diagnostic; COMBO was valid_candidate |
 | A04 | `invalid_by_interface` | AugSynthCVXPY | BlockResidualBootstrap | single_cell_unit | invalid_by_interface | n/a | not OC'd | — | **CLEAN-I** | neither | **blocked** | Not in `inference_support`; block or catalog ADR (F-OD-002) |
-| A05 | `callable_unverified_interval_semantics` | AugSynthCVXPY | Conformal | single_cell_unit | valid_candidate | restricted | **AUGSYNTH-003** ✅ | INST-004 unverified | **HOLD** unverified | neither | **blocked** | Negative HW; 100% null exclude; F-INF-001 |
+| A05 | `characterized_restricted` | AugSynthCVXPY | Conformal | single_cell_unit | valid_candidate | restricted | **INF-POSTFIX-001** ✅ | INST-004 restricted | **HOLD** restricted | neither | **blocked** | F-INF-003 + POSTFIX: struct valid; null FPR 0 on battery; not governed |
 | A06 | `invalid_by_interface` | AugSynthCVXPY | Placebo | single_treated | invalid_by_interface | n/a | not OC'd | — | **BLOCK** | neither | **blocked** | Placebo inference not in AugSynth catalog |
 | A07 | `characterized_restricted` | TBR (class) | point_estimate | aggregate_two_series | valid_candidate → OC | aggregate-only | **TBR-001** ✅ | INST-008 restricted | **HOLD** | neither | **blocked** | ~0.99 scale @ 8%; not MMM |
 | A08 | `blocked` | TBR (class) | UnitJackKnife | aggregate_two_series | implemented_but_unvalidated | aggregate-only | **TBR-001** blocked | INST-008 | **BLOCK** | neither | **blocked** | 1 control row; geometry block |
@@ -117,7 +117,7 @@ AUDIT-010 **must** ship two levels of evidence. The executive summary is for rea
 | A16 | `blocked_interface` | TBRRidge | UnitJackKnife | single_cell_unit | implemented_but_unvalidated | restricted | **TBRRIDGE-002** ✅ blocked | — | **FIX** F-INF-002 | neither | **blocked** | Broadcast on multi-treated path |
 | A17 | `invalid_by_interface` | TBRRidge | Placebo | single_treated | invalid_by_interface | n/a | probe failed | — | **BLOCK** | neither | **blocked** | Not SCM placebo-in-space |
 | A18 | `blocked_interface` | TBRRidge | Conformal | single_cell_unit | implemented_but_unvalidated | restricted | **TBRRIDGE-002** ✅ blocked | — | **FIX** F-INF-002 | neither | **blocked** | Same interface failure as JK |
-| A19 | `callable_unverified_interval_semantics` | TBRRidge | TimeSeriesKfold | single_cell_unit | valid_candidate | restricted | **TBRRIDGE-002** ✅ | — | **FIX** F-INF-001 | neither | **blocked** | Negative HW; 100% null exclude |
+| A19 | `characterized_restricted` | TBRRidge | TimeSeriesKfold | single_cell_unit | valid_candidate | restricted | **INF-POSTFIX-001** ✅ | INST-002 restricted | **HOLD** restricted | neither | **blocked** | F-INF-003 + POSTFIX: struct valid; null FPR 0; scale ≠ SCM+JK |
 | A20 | `blocked` | TBRRidge | Bayesian (registry) | single_cell_unit | implemented_but_unvalidated | **BLOCK** prod | not governed | — | **BLOCK** prod | neither | **blocked** | INV-015 |
 | A21 | `blocked_interface` | TBRRidge | JKP | single_cell_unit | implemented_but_unvalidated | restricted | **TBRRIDGE-002** ✅ blocked | — | **FIX** F-INF-002 | neither | **blocked** | Same interface failure as JK |
 | A22 | `research_only` | BayesianTBR | Bayesian (registry) | single_cell_unit | research_only | research_only | R&D | — | **R&D** | neither | **blocked** | JAX ≠ paper MCMC |
@@ -135,8 +135,8 @@ AUDIT-010 **must** ship two levels of evidence. The executive summary is for rea
 | Bucket | Tuple IDs | Count |
 |--------|-----------|------:|
 | `already_characterized` | A01, A02, A13, A14, A15, A25, A26, A27 | 8 |
-| `characterized_restricted` | A03, A07, A10 | 3 |
-| `callable_unverified_interval_semantics` | A05, A19 | 2 |
+| `characterized_restricted` | A03, A05, A07, A10, A19 | 5 |
+| `callable_unverified_interval_semantics` | — | 0 |
 | `blocked_interface` | A16, A18, A21 | 3 |
 | `invalid_by_interface` | A04, A06, A11, A17, A23 | 5 |
 | `invalid_by_geometry` | A12, A29, A30 | 3 |
@@ -174,7 +174,7 @@ AUDIT-010 **must** ship two levels of evidence. The executive summary is for rea
 | **CalibrationSignal expansion** | **No** — `SCM_UnitJackKnife` null_monitor_only unchanged |
 | **Approved MMM intake list** | **Empty** (null-monitor ≠ MMM lift) |
 | **Promotion** | **Not authorized** |
-| **Next lane** | ~~P0 / P2 / contracts / F-BACKLOG-001~~ ✅ → **F-INF-003** implementation ([`F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md`](../F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md)) |
+| **Next lane** | ~~F-INF-003 / D5-INF-POSTFIX-001~~ ✅ → **F-INF-002** TBRRidge interface ([`F_BACKLOG_001`](../F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md)) |
 
 **P0 gap list (Track F):** F-P0-001 `full_model` · F-P0-002 TBR label · F-P0-003 INV-015 · F-P0-004 DID CI · F-P0-005 Placebo taxonomy · F-P0-006 multi-cell pooling.
 

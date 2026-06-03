@@ -98,3 +98,5 @@
 **F-CAT-001 overlay (2026-06-03):** Canonical catalog combo records in [`catalog_contract.py`](../../panel_exp/governance/catalog_contract.py) align COMBO matrix labels with F-INF/F-GEO — TBR≠TBRRidge, Placebo=falsification, Conformal≠governed uncertainty, pooled multi-cell blocked without `pooling_rule_id`.
 
 **F-BACKLOG-001 (2026-06-03):** Implementation queue in [`F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md`](../F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md) — **F-INF-003** first fix (A05/A19 band sign); F-INF-002 second (A16/A18/A21 interfaces); promotion/MMM/CS remain blocked.
+
+**D5-INF-POSTFIX-001 (2026-06-03):** Post-fix OC [`D5_INF_POSTFIX_001_REPORT.md`](D5_INF_POSTFIX_001_REPORT.md) — A05/A19 negative HW 100%→0%; null FPR 100%→0% on battery; Appendix A → `characterized_restricted`.

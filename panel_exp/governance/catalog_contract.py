@@ -200,8 +200,9 @@ def canonical_catalog_combo_records() -> Tuple[CatalogComboRecord, ...]:
             "TimeSeriesKfold",
             GeometryType.UNIT_PANEL,
             "single_cell",
-            inf_tier=IntervalSemanticsClassification.CALLABLE_UNVERIFIED_INTERVAL_SEMANTICS,
-            note="F-INF-003: structurally valid bands; OC pending (not governed).",
+            inf_tier=IntervalSemanticsClassification.DIAGNOSTIC_INTERVAL_ONLY,
+            readiness=CatalogReadiness.DIAGNOSTIC_ONLY,
+            note="POSTFIX-001: structurally valid; restricted diagnostic.",
         ),
         _combo(
             "TBRRidge",
@@ -239,8 +240,9 @@ def canonical_catalog_combo_records() -> Tuple[CatalogComboRecord, ...]:
             "Conformal",
             GeometryType.UNIT_PANEL,
             "single_cell",
-            inf_tier=IntervalSemanticsClassification.CALLABLE_UNVERIFIED_INTERVAL_SEMANTICS,
-            note="F-INF-003: structurally valid bands; OC pending (not governed).",
+            inf_tier=IntervalSemanticsClassification.DIAGNOSTIC_INTERVAL_ONLY,
+            readiness=CatalogReadiness.DIAGNOSTIC_ONLY,
+            note="POSTFIX-001: structurally valid; restricted diagnostic.",
         ),
         _combo(
             "AugSynthCVXPY",

@@ -392,7 +392,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **Track F P2 formally closed** — no additional OC batteries scheduled; promotion not authorized.
 
-**Next lane:** ~~F-INF-003~~ ✅ → **D5-INF-POSTFIX-001** OC
+**Next lane:** ~~D5-INF-POSTFIX-001~~ ✅ → **F-INF-002**
 
 ---
 
@@ -427,7 +427,17 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **Catalog cleanup complete** — taxonomy notes in `method_metadata`; canonical combo records + audits; no method behavior changes.
 
-**Next:** ~~**F-INF-003**~~ ✅ → **D5-INF-POSTFIX-001** targeted OC (A05/A19).
+**Next:** ~~**D5-INF-POSTFIX-001**~~ ✅ → **F-INF-002**.
+
+---
+
+## D5-INF-POSTFIX-001 checkpoint (2026-06-03)
+
+**Artifact:** [`docs/track_d/D5_INF_POSTFIX_001_REPORT.md`](track_d/D5_INF_POSTFIX_001_REPORT.md) · [`D5_INF_POSTFIX_001_results.json`](track_d/archives/D5_INF_POSTFIX_001_results.json)
+
+**Verdict:** A05/A19 structurally valid post F-INF-003; null FPR 0 on 001e battery; **`diagnostic_interval_only`** — not governed; promotion blocked.
+
+**Next:** **F-INF-002**.
 
 ---
 

@@ -228,8 +228,8 @@ class TestTrackFRegistry:
     @pytest.mark.parametrize(
         "estimator,inference,geometry,expected",
         [
-            ("TBRRidge", "TimeSeriesKfold", "single_cell", CallableUnverified),
-            ("AugSynthCVXPY", "Conformal", "single_cell", CallableUnverified),
+            ("TBRRidge", "TimeSeriesKfold", "single_cell", DiagnosticOnly),
+            ("AugSynthCVXPY", "Conformal", "single_cell", DiagnosticOnly),
             ("TBR", "JKP", "aggregate_two_series", CallableUnverified),
             ("TBRRidge", "UnitJackKnife", "single_cell", BlockedInterface),
             ("TBRRidge", "Kfold", "single_cell", DiagnosticOnly),
