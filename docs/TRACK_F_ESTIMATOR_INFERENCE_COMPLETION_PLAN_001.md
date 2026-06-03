@@ -2,7 +2,7 @@
 
 **Document ID:** TRACK-F-ESTIMATOR-INFERENCE-COMPLETION-PLAN-001  
 **Type:** Implementation roadmap (planning only — no code changes in this package)  
-**Status:** **draft v1** — post D5-INST-TBR-001; awaits **AUDIT-010**  
+**Status:** **draft v1** — AUDIT-010 ✅ (`not_ready_continue_track_f`); **Track F P0** next    
 **Date:** 2026-06-02  
 **Lane:** Implementation planning bridge — Track D/E evidence → governed fixes  
 **Branch / baseline:** `fix-kfold-multitreated-geometry` @ post `TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001`

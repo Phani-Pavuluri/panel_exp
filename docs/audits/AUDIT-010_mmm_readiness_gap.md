@@ -2,9 +2,9 @@
 
 **Audit ID:** AUDIT-010  
 **Type:** MMM **readiness / gap** audit — **not** a promotion gate  
-**Status:** **charter** — governance scaffold; verdict assigned at audit close  
-**Verdict:** _TBD at audit close_  
-**Next:** Execute §3 checklist → close audit (not promotion)  
+**Status:** **closed** — readiness/gap gate (not promotion)  
+**Verdict:** **`not_ready_continue_track_f`** — MMM **not ready / blocked**; CalibrationSignal **no expansion**  
+**Next:** **Track F P0 hygiene** (then P2 OC; promotion lane **not** authorized)  
 **Branch / baseline:** `fix-kfold-multitreated-geometry` @ post `D5-INST-TBR-001` (`4cfa77b`)  
 **Prerequisites:** AUDIT-010A ✅ · TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001 ✅ · D5-INST-TBR-001 ✅  
 
@@ -97,45 +97,45 @@ AUDIT-010 **must** ship two levels of evidence. The executive summary is for rea
 
 **Row ID** = stable tuple key for AUDIT-010 traceability (matches Track F §3 order).
 
-| ID | Estimator / readout | Inference / falsification | Geometry | COMBO status | Conceptual validity | D5 OC status | Track E / B status | Track F disposition | CalibrationSignal | MMM readiness | Reason / next action |
-|----|---------------------|---------------------------|----------|--------------|---------------------|--------------|-------------------|---------------------|-------------------|---------------|----------------------|
-| A01 | AugSynthCVXPY | point_estimate | single_cell_unit | already_characterized | aligned_with_deviation | **AUGSYNTH-001** ✅ | INST-004 diagnostic | **HOLD** | neither | **blocked** | Diagnostic comparator; not MMM |
-| A02 | AugSynthCVXPY | UnitJackKnife | single_cell_unit | already_characterized | aligned_with_deviation | **AUGSYNTH-001** ✅ | INST-004 diagnostic | **HOLD** | neither | **blocked** | JK null FPR 0 on battery; not CalibrationSignal |
-| A03 | AugSynthCVXPY | Kfold | single_cell_unit | already_characterized | restricted | **AUGSYNTH-KFOLD-001** ✅ | INST-004 restricted | **HOLD** | neither | **blocked** | `characterized_restricted`; COMBO was valid_candidate |
-| A04 | AugSynthCVXPY | BlockResidualBootstrap | single_cell_unit | invalid_by_interface | n/a | not OC'd | — | **CLEAN-I** | neither | **blocked** | Not in `inference_support`; block or catalog ADR (F-OD-002) |
-| A05 | AugSynthCVXPY | Conformal | single_cell_unit | valid_candidate | restricted | pending | — | **FIX** + OC | neither | **blocked** | Exchangeability caveat; D5-AUGSYNTH-003 proposed |
-| A06 | AugSynthCVXPY | Placebo | single_treated | invalid_by_interface | n/a | not OC'd | — | **BLOCK** | neither | **blocked** | Placebo not in catalog `inference_support` |
-| A07 | TBR (class) | point_estimate | aggregate_two_series | valid_candidate → OC | aggregate-only | **TBR-001** ✅ | INST-008 restricted | **HOLD** | neither | **blocked** | `characterized_restricted`; ~0.99 scale @ 8% |
-| A08 | TBR (class) | UnitJackKnife | aggregate_two_series | implemented_but_unvalidated | aggregate-only | **TBR-001** blocked | INST-008 | **BLOCK** | neither | **blocked** | 1 control row → `requires at least 2 control units` |
-| A09 | TBR (class) | JKP | aggregate_two_series | valid_candidate | aggregate-only | **TBR-001** unverified | INST-008 | **HOLD** unverified | neither | **blocked** | 100% null interval-exclusion; not governed |
-| A10 | TBR (class) | Kfold | aggregate_two_series | valid_candidate → OC | restricted | **TBR-001** ✅ | INST-008 restricted | **HOLD** | neither | **blocked** | `characterized_restricted`; null FPR 0 |
-| A11 | TBR (class) | Placebo | aggregate_two_series | invalid_by_interface | n/a | blocked probe | — | **BLOCK** | neither | **blocked** | `run_placebo` blocks TBR class |
-| A12 | TBR (class) | point_estimate | single_cell_unit | invalid_by_geometry | blocked unit | blocked assert | — | **BLOCK** | neither | **blocked** | 1×1 treated+control assert fails on unit panel |
-| A13 | TBRRidge | Kfold | single_cell_unit | already_characterized | restricted | **TBRRIDGE-001** ✅ | INST-002 restricted | **HOLD** | neither | **blocked** | Unit scale ≠ SCM+JK; diagnostic only |
-| A14 | TBRRidge | BlockResidualBootstrap | single_cell_unit | already_characterized | restricted | **TBRRIDGE-001** ✅ | INST-003 restricted | **HOLD** | neither | **blocked** | Restricted diagnostic |
-| A15 | TBRRidge | Kfold | aggregate_two_series | already_characterized | restricted | **TBRRIDGE-001** ✅ | INST-007 geo-power | **HOLD** | neither | **blocked** | Geo PowerAnalysis path; not class TBR |
-| A16 | TBRRidge | UnitJackKnife | single_cell_unit | implemented_but_unvalidated | restricted | probe failed | — | **FIX** TBRRIDGE-002 | neither | **blocked** | Donor LOO at ridge scale; schedule OC |
-| A17 | TBRRidge | Placebo | single_treated | invalid_by_interface | n/a | probe failed | — | **BLOCK** | neither | **blocked** | Not SCM placebo; donor/thin-cell |
-| A18 | TBRRidge | Conformal | single_cell_unit | implemented_but_unvalidated | restricted | probe failed | — | **FIX** TBRRIDGE-002 | neither | **blocked** | Exchangeability + panel review |
-| A19 | TBRRidge | TimeSeriesKfold | single_cell_unit | valid_candidate | restricted | pending | — | **FIX** TBRRIDGE-002 | neither | **blocked** | Registry wired; OC missing |
-| A20 | TBRRidge | Bayesian (registry) | single_cell_unit | implemented_but_unvalidated | **BLOCK** prod | not governed | — | **BLOCK** prod | neither | **blocked** | INV-015: registry ≠ NUTS MCMC |
-| A21 | TBRRidge | JKP | single_cell_unit | implemented_but_unvalidated | restricted | probe failed | — | **FIX** TBRRIDGE-002 | neither | **blocked** | JKP semantics vs JK at ridge scale |
-| A22 | BayesianTBR | Bayesian (registry) | single_cell_unit | research_only | research_only | R&D | — | **R&D** | neither | **blocked** | JAX path ≠ paper MCMC |
-| A23 | BayesianTBR | mcmc_native | single_cell_unit | invalid_by_interface | research_only | R&D | — | **R&D** | neither | **blocked** | No registry inference mode |
-| A24 | TROP | point_estimate | single_cell_unit | research_only | research_only | none | — | **R&D** | neither | **blocked** | No registry inference |
-| A25 | DID | native_bootstrap | single_cell_unit | already_characterized | restricted | partial / DEF-003 | INST-005 restricted | **HOLD** + guard | neither | **blocked** | Relative ATT CI policy open |
-| A26 | SCM | UnitJackKnife | single_cell_unit | already_characterized | aligned (caveats) | **001e** ✅ | INST-001 null_monitor | **HOLD** + F-P0-001 | **null_monitor_only** | **not MMM lift** | Only CalibrationSignal-eligible combo |
-| A27 | SCM | Placebo | single_treated | already_characterized | diagnostic | **PLACEBO-001** ✅ | INST-006 diagnostic | **HOLD** | neither | **blocked** | Falsification; not lift evidence |
-| A28 | SCM | Placebo | multi_treated | already_characterized | blocked | **PLACEBO-001** 100% block | INST-006 blocked | **BLOCK** | neither | **blocked** | Multi-treated placebo invalid |
-| A29 | SCM | UnitJackKnife | supergeo | invalid_by_geometry | blocked readout | **SUPERGEO-001** | GEO-003 char req | **BLOCK** | neither | **blocked** | Design-only; no flat SCM+JK readout |
-| A30 | SCM | UnitJackKnife | trimmed | invalid_by_geometry | blocked readout | **TRIM-001** | GEO-004 char req | **BLOCK** | neither | **blocked** | Design-only; no flat SCM+JK readout |
+| ID | Primary bucket | Estimator / readout | Inference / falsification | Geometry | COMBO status | Conceptual validity | D5 OC status | Track E / B status | Track F disposition | CalibrationSignal | MMM readiness | Reason / next action |
+|----|----------------|---------------------|---------------------------|----------|--------------|---------------------|--------------|-------------------|---------------------|-------------------|---------------|----------------------|
+| A01 | `already_characterized` | AugSynthCVXPY | point_estimate | single_cell_unit | already_characterized | aligned_with_deviation | **AUGSYNTH-001** ✅ | INST-004 diagnostic | **HOLD** | neither | **blocked** | Diagnostic comparator; not MMM |
+| A02 | `already_characterized` | AugSynthCVXPY | UnitJackKnife | single_cell_unit | already_characterized | aligned_with_deviation | **AUGSYNTH-001** ✅ | INST-004 diagnostic | **HOLD** | neither | **blocked** | JK null FPR 0 on battery; not CalibrationSignal |
+| A03 | `characterized_restricted` | AugSynthCVXPY | Kfold | single_cell_unit | already_characterized | restricted | **AUGSYNTH-KFOLD-001** ✅ | INST-004 restricted | **HOLD** | neither | **blocked** | Restricted diagnostic; COMBO was valid_candidate |
+| A04 | `invalid_by_interface` | AugSynthCVXPY | BlockResidualBootstrap | single_cell_unit | invalid_by_interface | n/a | not OC'd | — | **CLEAN-I** | neither | **blocked** | Not in `inference_support`; block or catalog ADR (F-OD-002) |
+| A05 | `valid_candidate_pending_OC` | AugSynthCVXPY | Conformal | single_cell_unit | valid_candidate | restricted | pending | — | **FIX** + OC | neither | **blocked** | Exchangeability caveat; D5-AUGSYNTH-003 proposed |
+| A06 | `invalid_by_interface` | AugSynthCVXPY | Placebo | single_treated | invalid_by_interface | n/a | not OC'd | — | **BLOCK** | neither | **blocked** | Placebo inference not in AugSynth catalog |
+| A07 | `characterized_restricted` | TBR (class) | point_estimate | aggregate_two_series | valid_candidate → OC | aggregate-only | **TBR-001** ✅ | INST-008 restricted | **HOLD** | neither | **blocked** | ~0.99 scale @ 8%; not MMM |
+| A08 | `blocked` | TBR (class) | UnitJackKnife | aggregate_two_series | implemented_but_unvalidated | aggregate-only | **TBR-001** blocked | INST-008 | **BLOCK** | neither | **blocked** | 1 control row; geometry block |
+| A09 | `implemented_but_unvalidated` | TBR (class) | JKP | aggregate_two_series | valid_candidate | aggregate-only | **TBR-001** unverified | INST-008 | **HOLD** unverified | neither | **blocked** | Callable; interval semantics not governed |
+| A10 | `characterized_restricted` | TBR (class) | Kfold | aggregate_two_series | valid_candidate → OC | restricted | **TBR-001** ✅ | INST-008 restricted | **HOLD** | neither | **blocked** | Null FPR 0; restricted diagnostic |
+| A11 | `invalid_by_interface` | TBR (class) | Placebo | aggregate_two_series | invalid_by_interface | n/a | blocked probe | — | **BLOCK** | neither | **blocked** | `run_placebo` blocks TBR class |
+| A12 | `invalid_by_geometry` | TBR (class) | point_estimate | single_cell_unit | invalid_by_geometry | blocked unit | blocked assert | — | **BLOCK** | neither | **blocked** | Unit panel fails 1×1 assert |
+| A13 | `already_characterized` | TBRRidge | Kfold | single_cell_unit | already_characterized | restricted | **TBRRIDGE-001** ✅ | INST-002 restricted | **HOLD** | neither | **blocked** | Unit scale ≠ SCM+JK |
+| A14 | `already_characterized` | TBRRidge | BlockResidualBootstrap | single_cell_unit | already_characterized | restricted | **TBRRIDGE-001** ✅ | INST-003 restricted | **HOLD** | neither | **blocked** | Restricted diagnostic |
+| A15 | `already_characterized` | TBRRidge | Kfold | aggregate_two_series | already_characterized | restricted | **TBRRIDGE-001** ✅ | INST-007 geo-power | **HOLD** | neither | **blocked** | Geo power path; not class TBR |
+| A16 | `implemented_but_unvalidated` | TBRRidge | UnitJackKnife | single_cell_unit | implemented_but_unvalidated | restricted | probe failed | — | **FIX** TBRRIDGE-002 | neither | **blocked** | TBRRIDGE-002 OC |
+| A17 | `invalid_by_interface` | TBRRidge | Placebo | single_treated | invalid_by_interface | n/a | probe failed | — | **BLOCK** | neither | **blocked** | Not SCM placebo-in-space |
+| A18 | `implemented_but_unvalidated` | TBRRidge | Conformal | single_cell_unit | implemented_but_unvalidated | restricted | probe failed | — | **FIX** TBRRIDGE-002 | neither | **blocked** | Exchangeability review |
+| A19 | `valid_candidate_pending_OC` | TBRRidge | TimeSeriesKfold | single_cell_unit | valid_candidate | restricted | pending | — | **FIX** TBRRIDGE-002 | neither | **blocked** | OC missing |
+| A20 | `blocked` | TBRRidge | Bayesian (registry) | single_cell_unit | implemented_but_unvalidated | **BLOCK** prod | not governed | — | **BLOCK** prod | neither | **blocked** | INV-015 |
+| A21 | `implemented_but_unvalidated` | TBRRidge | JKP | single_cell_unit | implemented_but_unvalidated | restricted | probe failed | — | **FIX** TBRRIDGE-002 | neither | **blocked** | JKP vs JK at ridge scale |
+| A22 | `research_only` | BayesianTBR | Bayesian (registry) | single_cell_unit | research_only | research_only | R&D | — | **R&D** | neither | **blocked** | JAX ≠ paper MCMC |
+| A23 | `invalid_by_interface` | BayesianTBR | mcmc_native | single_cell_unit | invalid_by_interface | research_only | R&D | — | **R&D** | neither | **blocked** | No registry mode |
+| A24 | `research_only` | TROP | point_estimate | single_cell_unit | research_only | research_only | none | — | **R&D** | neither | **blocked** | No registry inference |
+| A25 | `already_characterized` | DID | native_bootstrap | single_cell_unit | already_characterized | restricted | partial / DEF-003 | INST-005 restricted | **HOLD** + guard | neither | **blocked** | Relative ATT CI deferred |
+| A26 | `already_characterized` | SCM | UnitJackKnife | single_cell_unit | already_characterized | aligned (caveats) | **001e** ✅ | INST-001 null_monitor | **HOLD** | **null_monitor_only** | **not MMM lift** | Only CS-eligible tuple |
+| A27 | `already_characterized` | SCM | Placebo | single_treated | already_characterized | diagnostic | **PLACEBO-001** ✅ | INST-006 diagnostic | **HOLD** | neither | **blocked** | Falsification only |
+| A28 | `blocked` | SCM | Placebo | multi_treated | already_characterized | blocked | **PLACEBO-001** 100% block | INST-006 blocked | **BLOCK** | neither | **blocked** | Multi-treated placebo invalid |
+| A29 | `invalid_by_geometry` | SCM | UnitJackKnife | supergeo | invalid_by_geometry | blocked readout | **SUPERGEO-001** | GEO-003 char req | **BLOCK** | neither | **blocked** | Design-only |
+| A30 | `invalid_by_geometry` | SCM | UnitJackKnife | trimmed | invalid_by_geometry | blocked readout | **TRIM-001** | GEO-004 char req | **BLOCK** | neither | **blocked** | Design-only |
 
-### Appendix A — disposition bucket roll-up (draft — primary bucket assigned at audit close)
+### Appendix A — disposition bucket roll-up (closed)
 
-| Bucket | Tuple IDs (draft) | Count |
-|--------|-------------------|------:|
-| `already_characterized` | A01, A02, A03, A13–A15, A25, A27 | 9 |
-| `characterized_restricted` | A07, A10 | 2 |
+| Bucket | Tuple IDs | Count |
+|--------|-----------|------:|
+| `already_characterized` | A01, A02, A13, A14, A15, A25, A26, A27 | 8 |
+| `characterized_restricted` | A03, A07, A10 | 3 |
 | `valid_candidate_pending_OC` | A05, A19 | 2 |
 | `invalid_by_interface` | A04, A06, A11, A17, A23 | 5 |
 | `invalid_by_geometry` | A12, A29, A30 | 3 |
@@ -143,30 +143,41 @@ AUDIT-010 **must** ship two levels of evidence. The executive summary is for rea
 | `research_only` | A22, A24 | 2 |
 | `blocked` | A08, A20, A28 | 3 |
 
-\*At **audit close**, assign exactly **one primary bucket** per row (A01–A30). Rows such as A08 (COMBO `implemented_but_unvalidated` → D5 geometry block) resolve to **`blocked`**.
+**Total:** 30 tuples — each row has exactly one primary bucket.
 
 ---
 
-## 3. AUDIT-010 checklist (to execute at audit close)
+## 3. AUDIT-010 checklist (executed at close)
 
 | # | Check | Status |
 |---|-------|--------|
-| 1 | All 30 Appendix A rows reviewed; no missing tuple vs COMBO JSON | ⏳ |
-| 2 | Executive summary groups match Appendix A (no contradictions) | ⏳ |
-| 3 | CalibrationSignal intake = `SCM_UnitJackKnife` only (E5) | ⏳ |
-| 4 | MMM default ingress **blocked**; approved subset documented | ⏳ |
-| 5 | P0 hygiene gaps listed with owners (Track F §4) | ⏳ |
-| 6 | TBR ≠ TBRRidge documented in intake validator spec | ⏳ |
-| 7 | Multi-cell: per-cell only unless `pooling_rule_id` (global) | ⏳ |
-| 8 | Class TBR JKP marked **not governed** despite callable | ⏳ |
-| 9 | Placebo classified as inference/falsification, not estimator | ⏳ |
-| 10 | MIP registry + ROADMAP_V4 updated at close | ⏳ |
+| 1 | All 30 Appendix A rows reviewed; no missing tuple vs COMBO JSON | ✅ |
+| 2 | Executive summary groups match Appendix A (no contradictions) | ✅ |
+| 3 | CalibrationSignal intake = `SCM_UnitJackKnife` only (E5) | ✅ |
+| 4 | MMM default ingress **blocked**; approved subset documented | ✅ |
+| 5 | P0 hygiene gaps listed with owners (Track F §4) | ✅ |
+| 6 | TBR ≠ TBRRidge documented in intake validator spec | ✅ |
+| 7 | Multi-cell: per-cell only unless `pooling_rule_id` (global) | ✅ |
+| 8 | Class TBR JKP marked **not governed** despite callable | ✅ |
+| 9 | Placebo classified as inference/falsification, not estimator | ✅ |
+| 10 | MIP registry + ROADMAP_V4 updated at close | ✅ |
 
 ---
 
-## 4. Audit outcomes
+## 4. Audit outcomes (closed)
 
-_Section completed at audit close — not part of this charter commit._
+| Outcome | Result |
+|---------|--------|
+| **Final verdict** | **`not_ready_continue_track_f`** |
+| **MMM readiness** | **Not ready / blocked** — no default MMM ingress |
+| **CalibrationSignal expansion** | **No** — `SCM_UnitJackKnife` null_monitor_only unchanged |
+| **Approved MMM intake list** | **Empty** (null-monitor ≠ MMM lift) |
+| **Promotion** | **Not authorized** |
+| **Next lane** | **Track F P0 hygiene** → P2 OC |
+
+**P0 gap list (Track F):** F-P0-001 `full_model` · F-P0-002 TBR label · F-P0-003 INV-015 · F-P0-004 DID CI · F-P0-005 Placebo taxonomy · F-P0-006 multi-cell pooling.
+
+**Final verdict:** **`not_ready_continue_track_f`**
 
 ---
 
@@ -182,4 +193,4 @@ _Section completed at audit close — not part of this charter commit._
 
 ---
 
-*AUDIT-010 charter v0.1 — locks two-level structure (executive illustrative; Appendix A authoritative). Verdict at audit close.*
+*AUDIT-010 v1.0.0 closed — `not_ready_continue_track_f`; Appendix A authoritative (30 tuples); next: Track F P0.*
