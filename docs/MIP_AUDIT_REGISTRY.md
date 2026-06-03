@@ -504,7 +504,19 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** METHOD-STRENGTHENING-LANES-001 §3.1 · D5-INST-AUGSYNTH-001/003/KFOLD · CV-EST-AUGSYNTH.
 
-**Next:** Execute D5-INST-AUGSYNTH-ASCM-002 → inference_semantics_ADR → promotion audit only if §8 criteria met.
+**Next:** inference_semantics_ADR → promotion audit only if §8 criteria met.
+
+---
+
+## D5-INST-AUGSYNTH-ASCM-002 checkpoint (2026-06-03)
+
+**Artifact:** [`docs/track_d/archives/D5_INST_AUGSYNTH_ASCM_002_results.json`](track_d/archives/D5_INST_AUGSYNTH_ASCM_002_results.json)  
+**Report:** [`docs/track_d/D5_INST_AUGSYNTH_ASCM_002_REPORT.md`](track_d/D5_INST_AUGSYNTH_ASCM_002_REPORT.md)  
+**Harness:** [`panel_exp/validation/track_d_d5_inst_augsynth_ascm_002.py`](../panel_exp/validation/track_d_d5_inst_augsynth_ascm_002.py)
+
+**Verdict:** `remain_diagnostic_comparator` — 12 stratified worlds vs A26; partial weak-fit MAE gain (1/2 @ 8%); JK null FPR conservative; Conformal unsafe; **promotion_audit_eligible: false**.
+
+**Prerequisites:** AUGSYNTH-ASCM-STRENGTHENING-001 · D5-INST-AUGSYNTH-001/003/KFOLD.
 
 ---
 
