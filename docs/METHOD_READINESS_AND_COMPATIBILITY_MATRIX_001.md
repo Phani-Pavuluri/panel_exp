@@ -231,6 +231,8 @@ L1/L2/L3 in this matrix are **inputs** to [`METHOD_SELECTION_AND_PROMOTION_FRAME
 
 This matrix does **not** authorize promotion.
 
+**Strengthening bridge:** Evidence work between framework lanes and promotion audit is scoped in [`METHOD_STRENGTHENING_LANES_001.md`](METHOD_STRENGTHENING_LANES_001.md) (§8 next-artifact map aligns with this matrix §8).
+
 ---
 
 ## 10. Crosswalk: contracts and decision layer
