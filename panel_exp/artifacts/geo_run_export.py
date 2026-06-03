@@ -35,6 +35,8 @@ def export_geo_run_bundle(
     trust_report_scenarios: Optional[Sequence[Mapping[str, Any]]] = None,
     trust_composition_permitted: bool = True,
     alignment_reference_estimand_id: Optional[str] = None,
+    include_trust_report_decision_context: bool = False,
+    trust_report_decision_inputs_strict: bool = False,
 ) -> RunArtifactBundle:
     """
     Export a GeoX run readout bundle with optional governed Track B sidecar.
@@ -62,4 +64,6 @@ def export_geo_run_bundle(
         trust_report_scenarios=trust_report_scenarios,
         trust_composition_permitted=trust_composition_permitted,
         alignment_reference_estimand_id=alignment_reference_estimand_id,
+        include_trust_report_decision_context=include_trust_report_decision_context,
+        trust_report_decision_inputs_strict=trust_report_decision_inputs_strict,
     )

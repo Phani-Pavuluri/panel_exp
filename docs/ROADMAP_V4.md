@@ -179,6 +179,12 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Code:** [`panel_exp/track_b/f_decision_context.py`](../panel_exp/track_b/f_decision_context.py) · [`trust_report.py`](../panel_exp/track_b/trust_report.py)  
 **Verdict:** Optional `f_decision_context` on TrustReport; backward compatible; guardrails asserted at build; no promotion/MMM/CS expansion.
 
+### TRUSTREPORT-DECISION-INPUTS-WIRING-001
+
+**Document:** [`TRUSTREPORT_DECISION_INPUTS_WIRING_001.md`](TRUSTREPORT_DECISION_INPUTS_WIRING_001.md)  
+**Code:** [`readout_evidence_wiring.py`](../panel_exp/track_b/readout_evidence_wiring.py)  
+**Verdict:** Opt-in `include_trust_report_decision_context` on Geo RunBundle export; builds readout evidence from bundle metadata; default off.
+
 ### Track F — estimator / inference completion (implementation planning)
 
 **Roadmap ID:** `TRACK-F-ESTIMATOR-INFERENCE-COMPLETION`  

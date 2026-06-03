@@ -25,6 +25,9 @@ def build_track_b_views(
     trust_report_scenarios: Optional[list[Mapping[str, Any]]] = None,
     trust_composition_permitted: bool = True,
     alignment_reference_estimand_id: Optional[str] = None,
+    include_trust_report_decision_context: bool = False,
+    trust_report_decision_inputs_strict: bool = False,
+    decision_inputs: Optional[Any] = None,
 ) -> dict[str, Any]:
     """Build ``track_b_views`` sidecar from spec slice and adapter resolution."""
     resolved = adapter_output or resolve_geo_adapter_output(
@@ -50,6 +53,19 @@ def build_track_b_views(
     if include_trust_report:
         from panel_exp.track_b.trust_report import attach_trust_report_to_views
 
+        di = None
+        if include_trust_report_decision_context:
+            from panel_exp.track_b.readout_evidence_wiring import (
+                build_trust_report_decision_inputs_from_bundle,
+            )
+
+            if decision_inputs is None:
+                decision_inputs = build_trust_report_decision_inputs_from_bundle(
+                    _bundle_shim_from_spec_stub(spec, run_artifacts_stub),
+                    strict=trust_report_decision_inputs_strict,
+                )
+            di = decision_inputs
+
         attach_trust_report_to_views(
             views,
             spec=spec,
@@ -58,6 +74,7 @@ def build_track_b_views(
             calibration_signal_binding=calibration_signal_binding,
             composition_permitted=trust_composition_permitted,
             alignment_reference_estimand_id=alignment_reference_estimand_id,
+            decision_inputs=di,
         )
     return views
 
@@ -69,6 +86,8 @@ def build_track_b_views_from_bundle(
     trust_report_scenarios: Optional[list[Mapping[str, Any]]] = None,
     trust_composition_permitted: bool = True,
     alignment_reference_estimand_id: Optional[str] = None,
+    include_trust_report_decision_context: bool = False,
+    trust_report_decision_inputs_strict: bool = False,
 ) -> dict[str, Any]:
     """Build sidecar from an existing bundle (extract spec from legacy evidence)."""
     from panel_exp.track_b.bundle_extract import (
@@ -87,6 +106,16 @@ def build_track_b_views_from_bundle(
     align_ref = alignment_reference_estimand_id or hints.get(
         "alignment_reference_estimand_id"
     )
+    prebuilt_decision_inputs = None
+    if include_trust_report and include_trust_report_decision_context:
+        from panel_exp.track_b.readout_evidence_wiring import (
+            build_trust_report_decision_inputs_from_bundle,
+        )
+
+        prebuilt_decision_inputs = build_trust_report_decision_inputs_from_bundle(
+            bundle,
+            strict=trust_report_decision_inputs_strict,
+        )
     views = build_track_b_views(
         spec=extracted.input.spec,
         run_artifacts_stub=extracted.input.run_artifacts_stub,
@@ -95,9 +124,42 @@ def build_track_b_views_from_bundle(
         trust_report_scenarios=scenarios,
         trust_composition_permitted=composition_ok,
         alignment_reference_estimand_id=align_ref,
+        include_trust_report_decision_context=include_trust_report_decision_context,
+        trust_report_decision_inputs_strict=trust_report_decision_inputs_strict,
+        decision_inputs=prebuilt_decision_inputs,
     )
     views["extraction"] = extraction_to_sidecar_dict(extracted)
     return views
+
+
+def _bundle_shim_from_spec_stub(
+    spec: Mapping[str, Any],
+    stub: Mapping[str, Any],
+) -> dict[str, Any]:
+    """Minimal bundle shape for readout evidence wiring from spec + stub."""
+    hints = dict(stub)
+    for key in (
+        "declared_estimand_id",
+        "interval_estimand_expectation_id",
+        "geometry_class",
+        "study_id",
+        "n_treated",
+        "n_control",
+        "n_test_grps",
+        "readout_evidence",
+        "decision_readout_evidence",
+    ):
+        if spec.get(key) is not None:
+            hints[key] = spec[key]
+    meta: dict[str, Any] = {}
+    if stub.get("estimator_family"):
+        meta["estimator_name"] = stub["estimator_family"]
+    for key in ("inference_method", "inference_mode"):
+        if stub.get(key):
+            meta["inference_mode"] = stub[key]
+    if stub.get("path_interval_type_legacy"):
+        meta["path_interval_type"] = stub["path_interval_type_legacy"]
+    return {"evidence": {"track_b_export_hints": hints, "inference_metadata": meta}}
 
 
 def _hints_from_bundle_evidence(bundle: Mapping[str, Any]) -> dict[str, Any]:

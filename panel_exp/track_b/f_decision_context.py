@@ -70,6 +70,7 @@ class TrustReportDecisionInputs:
     strict: bool = False
     allow_sensitivity_in_comparison: bool = False
     mmm_status: str = MMM_DEFAULT_STATUS
+    extraction_warnings: Tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -293,7 +294,11 @@ def build_trust_report_f_decision_context(
         decision.excluded_readouts
     )
 
-    all_warnings = tuple(build_warnings) + tuple(decision.required_warnings)
+    all_warnings = (
+        tuple(inputs.extraction_warnings)
+        + tuple(build_warnings)
+        + tuple(decision.required_warnings)
+    )
     complete = not any("decision_context_incomplete" in w for w in build_warnings)
 
     context = TrustReportFDecisionContext(
