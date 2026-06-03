@@ -552,7 +552,19 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** METHOD-FOUNDATION-HARDENING-001 P1 · ASCM-002 · ADR-001 · AUGSYNTH-ASCM-STRENGTHENING-001 §5 · F-DECISION-001 disagreement policy.
 
-**Next:** **D5-INST-AUGSYNTH-ASCM-003** (recommended) — larger n_mc, weak-fit grid, emit D8/D10/D11, calibrate §2 cutoffs. Then DL-1 per [`METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md`](METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md).
+**Next:** **D5-INST-AUGSYNTH-ASCM-003** — fidelity audit ✅ [`AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001.md`](AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001.md); uses D5-DIAG diagnostics.
+
+---
+
+## AUGSYNTH-ASCM-IMPLEMENTATION-FIDELITY-AUDIT-001 (2026-06-03)
+
+**Artifact:** [`docs/AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001.md`](AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001.md)
+
+**Verdict:** **`fidelity_confirmed_with_caveats`** — `AugSynthCVXPY` implements SCM + Ridge-on-residuals ASCM; gaps in diagnostic SCM leg alignment, estimand reporting, D8 grid. **No mandatory fix before OC.**
+
+**Prerequisites:** ASCM-002 · threshold audit · D5-DIAG-SCM-AUGSYNTH-001.
+
+**Next:** **D5-INST-AUGSYNTH-ASCM-003**.
 
 ---
 
@@ -564,7 +576,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** TRACK-D inventory · D2/D3/D4 · CV-001 · AUDIT-010 · METHOD-FOUNDATION-HARDENING-001 · threshold audit · F-DECISION-001.
 
-**Next active lane (DL-1):** ✅ [`AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md) **materialized** → ✅ D5-DIAG-SCM-AUGSYNTH-001 **complete** → **AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001** → D5-INST-AUGSYNTH-ASCM-003.
+**Next active lane (DL-1):** ✅ development roadmap **materialized** → ✅ D5-DIAG **complete** → ✅ fidelity audit **complete** → **D5-INST-AUGSYNTH-ASCM-003**.
 
 ---
 
@@ -577,8 +589,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** Threshold audit · ASCM-002 harness · METHOD-SOUNDNESS-ROADMAP-REVIEW-001 · AUGSYNTH-ASCM-DEVELOPMENT-ROADMAP-001.
 
-**Next:** **AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001** → **D5-INST-AUGSYNTH-ASCM-003** (uses D5-DIAG fields).
-
+**Next:** ✅ fidelity audit complete → **D5-INST-AUGSYNTH-ASCM-003**.
 
 **Review checkpoint:** [`METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md`](METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md) — **`proceed_to_augsynth_development_lane`**.
 
@@ -594,7 +605,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** METHOD-SOUNDNESS-AND-GAP-ROADMAP-001 · threshold audit · ASCM-002 · ADR-001.
 
-**Next:** ✅ D5-DIAG-SCM-AUGSYNTH-001 **complete** → **AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001** (next).
+**Next:** ✅ D5-DIAG **complete** → ✅ fidelity audit **complete** → **D5-INST-AUGSYNTH-ASCM-003**.
 
 ---
 
@@ -608,7 +619,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** METHOD-SOUNDNESS-ROADMAP-REVIEW-001 · ASCM-002 · threshold audit · ADR-001.
 
-**Next PR:** **AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001** (P2). P1 D5-DIAG ✅.
+**Next PR:** **D5-INST-AUGSYNTH-ASCM-003** (P3). P1 D5-DIAG ✅ · P2 fidelity audit ✅.
 
 ---
 
