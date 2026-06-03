@@ -141,10 +141,11 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | **Combo compatibility** | **D5-INST-COMBO-AUDIT-001** ✅ [`D5_INST_COMBO_AUDIT_001_results.json`](track_d/archives/D5_INST_COMBO_AUDIT_001_results.json) — curated matrix; no Cartesian OC |
 | **Conceptual validity** | **TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001** ✅ [`TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) — literature/method fidelity; synthetic OC ≠ paper validity; prerequisite for AUDIT-010 |
 | **AugSynth Kfold OC** | **D5-INST-AUGSYNTH-KFOLD-001** ✅ [`D5_INST_AUGSYNTH_KFOLD_001_results.json`](track_d/archives/D5_INST_AUGSYNTH_KFOLD_001_results.json) — restricted diagnostic comparator |
+| **Class TBR OC** | **D5-INST-TBR-001** ✅ [`D5_INST_TBR_001_results.json`](track_d/archives/D5_INST_TBR_001_results.json) — aggregate 1×1 restricted diagnostic |
 | **Roadmap consistency** | **AUDIT-010A** ✅ [`audits/AUDIT-010A_roadmap_consistency_pre_mmm_gate.md`](audits/AUDIT-010A_roadmap_consistency_pre_mmm_gate.md) — pre-MMM sanity check |
 | **D5-POW-001e** | ✅ Six confirmed methods; SCM+JK reference null FPR; [`D5_POW_001e_results.json`](track_d/archives/D5_POW_001e_results.json) — `acceptable_with_caveats` |
 
-**Next steps:** (0) ~~AUDIT-010A~~ ✅ → (1) ~~D5-INST-AUDIT-001~~ ✅ → ~~D5-INST-AUGSYNTH-001~~ ✅ → ~~COMBO-AUDIT-001~~ ✅ → ~~CONCEPTUAL-VALIDITY-001~~ ✅ → ~~AUGSYNTH-KFOLD-001~~ ✅ → (2) **D5-INST-TBR-001** → (3) **AUDIT-010** (MMM **readiness/gap** — not promotion) → (4) Track F **P0 hygiene** → (5) Track F **P2 OC** (TBRRidge-002, etc.) → (6) MMM / promotion lane **only if** AUDIT-010 gaps closed. **Implementation plan:** [`TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md`](TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md).
+**Next steps:** (0) ~~AUDIT-010A~~ ✅ → (1) ~~D5-INST-AUDIT-001~~ ✅ → ~~AUGSYNTH/KFOLD/COMBO/CV~~ ✅ → (2) ~~**D5-INST-TBR-001**~~ ✅ → (3) **AUDIT-010** (MMM **readiness/gap** — not promotion) → (4) Track F **P0 hygiene** → (5) Track F **P2 OC** → (6) MMM / promotion **only if** AUDIT-010 gaps closed. **Implementation plan:** [`TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md`](TRACK_F_ESTIMATOR_INFERENCE_COMPLETION_PLAN_001.md).
 
 ### Track F — estimator / inference completion (implementation planning)
 
@@ -155,7 +156,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 | Phase | Scope |
 |-------|--------|
 | **P0** | Blocking hygiene: `full_model` guard, TBR/TBRRidge labels, registry Bayesian, DID CI policy |
-| **P1** | D5-INST-TBR-001 + aggregate geometry adapter |
+| **P1** | ~~D5-INST-TBR-001~~ ✅ — aggregate class TBR OC |
 | **P1.5** | AUDIT-010 MMM readiness/gap |
 | **P2** | TBRRidge-002, AugSynth Conformal, remaining COMBO valid_candidates |
 | **P0 (post AUDIT-010)** | Blocking hygiene: `full_model` guard, TBR/TBRRidge labels, registry Bayesian, DID CI policy |

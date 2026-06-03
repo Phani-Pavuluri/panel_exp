@@ -33,9 +33,9 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 | **AUDIT-006** | 2026-05-28 | Track D D2 estimator/donor (research lane) | `1a31e69` | `continue_with_characterization_required` | `full_model` SCM fit risk (D2-FIND-001); D5 OC pending | INV-D2-001; D3; D5-EST-002a | **closed** (research) |
 | **AUDIT-007** | 2026-05-28 | Track D D3 inference (research lane) | `fed7050` | `continue_with_characterization_required` | JK LOO target review (D3-FIND-001); eligibility unchanged | INV-D3-001; D5-INF-002a; D4 | **closed** (research) |
 | **AUDIT-008** | 2026-06-01 | Track D D4 power/MDE (research lane) | `24beae8` | `continue_with_characterization_required` | Power ≠ SCM JK readout; aggregation | D5-POW-001a; E1 | **closed** (research) |
-| **AUDIT-009** | 2026-06-01 | Track E E1–E7 completion gate | `79c59c4` | `continue` | Live export lacks auto profile assembly (E7-FIND-001) | AUDIT-010A ✅; D5-INST-TBR-001 → AUDIT-010 | **closed** |
-| **AUDIT-010A** | 2026-06-02 | Roadmap consistency pre-MMM (post Track F + Kfold OC) | `ebc899c` | `continue_with_minor_corrections` | Stale MCELL next-lines; Track F P0/TBR sequence; DESIGN §13 Kfold | D5-INST-TBR-001 → AUDIT-010 | **closed** |
-| **AUDIT-010** | — | MMM readiness / gap (not promotion) | TBD | — | Prereq: 010A ✅ + CONCEPTUAL-VALIDITY-001 ✅ + D5-INST-TBR-001 | Block invalid combos; no default MMM ingress | planned |
+| **AUDIT-009** | 2026-06-01 | Track E E1–E7 completion gate | `79c59c4` | `continue` | Live export lacks auto profile assembly (E7-FIND-001) | AUDIT-010A ✅; ~~D5-INST-TBR-001~~ ✅ → AUDIT-010 | **closed** |
+| **AUDIT-010A** | 2026-06-02 | Roadmap consistency pre-MMM (post Track F + Kfold OC) | `ebc899c` | `continue_with_minor_corrections` | Stale MCELL next-lines; Track F P0/TBR sequence; DESIGN §13 Kfold | ~~D5-INST-TBR-001~~ ✅ → **AUDIT-010** | **closed** |
+| **AUDIT-010** | — | MMM readiness / gap (not promotion) | TBD | — | Prereq: 010A ✅ + CONCEPTUAL-VALIDITY-001 ✅ + **D5-INST-TBR-001** ✅ | Block invalid combos; no default MMM ingress | planned |
 | **AUDIT-011** | — | Before LLM interface | TBD | — | — | — | planned |
 
 ---
@@ -217,7 +217,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** D4-FIND-001 — design MDE not aligned to `SCM_UnitJackKnife` instrument.
 
-**Next:** D5-MCELL ✅; D5-INST-TBR-001 → AUDIT-010.
+**Next:** D5-MCELL ✅; ~~D5-INST-TBR-001~~ ✅ → **AUDIT-010**.
 
 ---
 
@@ -279,7 +279,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Top finding:** E7-FIND-001 — `export_geo_run_bundle` does not auto-assemble triangulation profiles (product follow-up, not an E1–E7 blocker).
 
-**Next:** D5-INST-TBR-001 → AUDIT-010 (MMM readiness/gap).
+**Next:** ~~D5-INST-TBR-001~~ ✅ → **AUDIT-010** (MMM readiness/gap).
 
 ---
 
@@ -291,7 +291,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **`requires_implementation_fix_before_oc`** — separate supergeo geometry confirmed; flat SCM+JK / 001e **blocked**; MILP scope mismatch (largest-cluster combos vs all-market assignment constraints). Track E GEO-003 stays **`characterization_required`**.
 
-**Next:** D5-MCELL ✅; D5-INST-TBR-001 → AUDIT-010.
+**Next:** D5-MCELL ✅; ~~D5-INST-TBR-001~~ ✅ → **AUDIT-010**.
 
 ---
 
@@ -315,7 +315,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **`acceptable_with_caveats_two_cells`** — k≤2 for most tier-1 methods on n_geos=16 battery; conservative k≤1; k≥3 degrades. Per-cell SCM+JK only; no pooling.
 
-**Next:** D5-INST-TBR-001 → AUDIT-010 (MMM readiness/gap) → MMM only if gaps closed.
+**Next:** ~~D5-INST-TBR-001~~ ✅ → **AUDIT-010** (MMM readiness/gap) → MMM only if gaps closed.
 
 ---
 
@@ -327,7 +327,18 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** **`continue_with_minor_corrections`** — roadmaps aligned after doc fixes; stale MCELL next-lines; Track F sequence corrected (TBR-001 → AUDIT-010 → P0 → P2). **Not** MMM approval.
 
-**Next:** D5-INST-TBR-001 → AUDIT-010.
+**Next:** ~~D5-INST-TBR-001~~ ✅ → **AUDIT-010**.
+
+---
+
+## D5-INST-TBR-001 checkpoint (2026-06-03)
+
+**Artifact:** [`docs/track_d/archives/D5_INST_TBR_001_results.json`](track_d/archives/D5_INST_TBR_001_results.json)  
+**Report:** [`docs/track_d/D5_INST_TBR_001_REPORT.md`](track_d/D5_INST_TBR_001_REPORT.md)
+
+**Verdict:** **`remain_restricted_aggregate_diagnostic`** — class TBR aggregate 1×1 only; point/Kfold callable; JK blocked on agg2; JKP unverified; not TBRRidge; not MMM-eligible.
+
+**Next:** **AUDIT-010** MMM readiness/gap.
 
 ---
 

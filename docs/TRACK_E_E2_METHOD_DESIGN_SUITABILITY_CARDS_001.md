@@ -321,6 +321,20 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 
 ---
 
+### INST-008 — Class `TBR` aggregate (not TBRRidge)
+
+| Field | Value |
+|-------|--------|
+| **Purpose** | Google geo **class TBR** on **pre-aggregated** 1 treated + 1 control series — distinct from TBRRidge unit/agg-power path. |
+| **Compatible design geometry** | `aggregate_two_series` only (sum treated / sum control). |
+| **Compatible inference** | **point_estimate**, **Kfold** (restricted); **JK blocked** on agg2; **JKP unverified**. |
+| **Incompatible / blocked** | Unit multi-control panel; placebo; pooled multi-cell; geo.relative_att_post without bridge. |
+| **OC evidence** | **D5-INST-TBR-001** ✅ — ~0.99 point/injected ratio @ 8%; Kfold null FPR 0. |
+| **Disallowed claims** | TBRRidge equivalence; unit-level support; MMM; CalibrationSignal. |
+| **Track E status** | **`restricted`** (aggregate diagnostic) |
+
+---
+
 ## Part C2 — Instrument inventory (D5-INST-AUDIT-001)
 
 **Artifact:** [`track_d/D5_INST_AUDIT_001_REPORT.md`](track_d/D5_INST_AUDIT_001_REPORT.md)
@@ -328,7 +342,7 @@ Each card includes: **purpose** · **compatible design geometry** · **compatibl
 - **13** estimator classes cataloged; **9** registry inference modes; live geometry probes.
 - **Governed null monitor:** unit SCM+JK only. **Geo power:** aggregate TBRRidge+Kfold (not class TBR).
 - **TBR class:** aggregate 1×1 only; **BayesianTBR:** research_only; registry `Bayesian` ≠ NUTS.
-- **Remaining OC batteries:** ~~AUGSYNTH-001~~ ✅, TBR-001, TBRRIDGE-002 (optional); see **D5-INST-COMBO-AUDIT-001** for valid vs invalid tuples.
+- **Remaining OC batteries:** ~~AUGSYNTH-001~~ ✅, ~~AUGSYNTH-KFOLD-001~~ ✅, ~~TBR-001~~ ✅, TBRRIDGE-002 (optional); see **D5-INST-COMBO-AUDIT-001** for valid vs invalid tuples.
 
 ---
 

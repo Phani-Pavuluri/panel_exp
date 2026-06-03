@@ -81,10 +81,8 @@
 
 | Priority | Battery | Combos |
 |----------|---------|--------|
-| **P1** | D5-INST-TBR-001 | TBR aggregate path (4 combos above) |
-| **P2** | D5-INST-TBRRIDGE-002 | TBRRidge JK, Conformal, JKP, Bayesian (unit) |
-| **P2** | ~~D5-INST-AUGSYNTH-KFOLD-001~~ ✅ | [`D5_INST_AUGSYNTH_KFOLD_001_REPORT.md`](D5_INST_AUGSYNTH_KFOLD_001_REPORT.md) |
-| **P0 after P1** | AUDIT-010 | MMM readiness/gap — block invalid tuples from intake |
+| **P1** | ~~D5-INST-TBR-001~~ ✅ | [`D5_INST_TBR_001_REPORT.md`](D5_INST_TBR_001_REPORT.md) — aggregate 1×1; JK blocked |
+| **P0 after P1** | **AUDIT-010** | MMM readiness/gap — block invalid tuples from intake |
 
 ---
 
@@ -95,4 +93,4 @@
 3. **D5-COMBO-FIND-003:** TBRRidge+Placebo is not the same as SCM placebo (donor/thin-cell failures).
 4. **D5-COMBO-FIND-004:** Registry `Bayesian` on BayesianTBR is research-only and not NUTS MCMC.
 
-**Next:** D5-INST-TBR-001 → AUDIT-010.
+**Next:** ~~D5-INST-TBR-001~~ ✅ → **AUDIT-010**.

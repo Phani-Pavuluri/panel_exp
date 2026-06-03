@@ -2,7 +2,7 @@
 
 **Document ID:** TRACK-F-ESTIMATOR-INFERENCE-COMPLETION-PLAN-001  
 **Type:** Implementation roadmap (planning only — no code changes in this package)  
-**Status:** **draft v1** — awaits D5-INST-TBR-001 and AUDIT-010 inputs  
+**Status:** **draft v1** — post D5-INST-TBR-001; awaits **AUDIT-010**  
 **Date:** 2026-06-02  
 **Lane:** Implementation planning bridge — Track D/E evidence → governed fixes  
 **Branch / baseline:** `fix-kfold-multitreated-geometry` @ post `TRACK-D-CONCEPTUAL-VALIDITY-AUDIT-001`
@@ -29,7 +29,7 @@
 | [`TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) | ✅ | Literature fidelity; blocking deviations |
 | [`D5_INST_AUGSYNTH_001`](track_d/D5_INST_AUGSYNTH_001_REPORT.md) | ✅ | AugSynthCVXPY point/JK diagnostic comparator |
 | [`D5_INST_AUGSYNTH_KFOLD_001`](track_d/D5_INST_AUGSYNTH_KFOLD_001_REPORT.md) | ✅ | AugSynthCVXPY + Kfold restricted diagnostic |
-| **D5-INST-TBR-001** | ⏳ planned | Aggregate class TBR OC — **updates §7 candidates** |
+| **D5-INST-TBR-001** | ✅ | Aggregate class TBR OC — point/Kfold restricted; JK blocked on agg2 |
 | **AUDIT-010** | ⏳ planned | MMM readiness/gap — **finalizes production intake set** |
 
 **Binding governance (unchanged until separate PR):**
@@ -78,10 +78,10 @@ Legend: **FIX** = implement + OC · **BLOCK** = remain forbidden · **ADAPT** = 
 | AugSynthCVXPY | BRB | single_cell | invalid_by_interface | **CLEAN-I** then decide | block unless catalog+concept |
 | AugSynthCVXPY | Conformal | single_cell | valid_candidate | **FIX** + OC | restricted / block MMM |
 | AugSynthCVXPY | Placebo | single_treated | invalid_by_interface | **BLOCK** (no catalog support) | blocked |
-| TBR | point | aggregate_2row | valid_candidate | **FIX** + TBR-001 | restricted diagnostic |
-| TBR | JK | aggregate_2row | implemented_but_unvalidated | **FIX** probe + TBR-001 | restricted diagnostic |
-| TBR | JKP | aggregate_2row | valid_candidate | **FIX** + TBR-001 | restricted diagnostic |
-| TBR | Kfold | aggregate_2row | valid_candidate | **FIX** + TBR-001 | restricted diagnostic |
+| TBR | point | aggregate_2row | valid_candidate | **HOLD** | restricted diagnostic |
+| TBR | JK | aggregate_2row | implemented_but_unvalidated | **BLOCK** on agg2 | blocked (1 control) |
+| TBR | JKP | aggregate_2row | valid_candidate | **HOLD** unverified | restricted / not governed |
+| TBR | Kfold | aggregate_2row | valid_candidate | **HOLD** | restricted diagnostic |
 | TBR | Placebo | aggregate_2row | invalid_by_interface | **BLOCK** (impl blocks TBR) | blocked |
 | TBR | point | single_cell | invalid_by_geometry | **BLOCK** | blocked |
 | TBRRidge | Kfold | single_cell | already_characterized | **HOLD** | restricted |
@@ -118,14 +118,14 @@ These tuples are **conceptually plausible** (or blocking hygiene) and should be 
 | **F-P0-003** | Registry `Bayesian` on BayesianTBR ≠ NUTS MCMC | **CLEAN-I** block or bridge | INV-015; CV-INF-BAYESIAN-REG |
 | **F-P0-004** | DID relative ATT CI unsupported vs SCM | **CLEAN-I** + Track B policy | DEF-003 |
 
-### P1 — Aggregate TBR path (D5-INST-TBR-001)
+### P1 — Aggregate TBR path (~~D5-INST-TBR-001~~ ✅)
 
-| Combo | Fix scope |
-|-------|-----------|
-| `TBR + point_estimate + aggregate_two_series` | **ADAPT** explicit 1×1 agg panel builder; **OC** battery |
-| `TBR + UnitJackKnife + aggregate_two_series` | Fix probe failure; validate JK on 1 donor LOO semantics at agg scale |
-| `TBR + JKP + aggregate_two_series` | OC after interface verified |
-| `TBR + Kfold + aggregate_two_series` | OC; document estimand vs TBRRidge agg Kfold |
+| Combo | Outcome |
+|-------|---------|
+| `TBR + point_estimate + aggregate_two_series` | **OC complete** — restricted aggregate diagnostic |
+| `TBR + Kfold + aggregate_two_series` | **OC complete** — Kfold null FPR 0 |
+| `TBR + UnitJackKnife + aggregate_two_series` | **Blocked** on agg2 (1 control row) |
+| `TBR + JKP + aggregate_two_series` | Runs; **unverified** interval semantics (100% null exclude) |
 
 **Conceptual gate:** TBR aggregate estimand ≠ TBRRidge unit/agg-power estimand — separate Track B aliases required before any promotion.
 
@@ -245,8 +245,8 @@ Candidates may graduate to **governed production diagnostics** (TrustReport role
 | **SCM_Placebo** | single-treated geometry only | diagnostic_only | neither |
 | **AugSynthCVXPY_Point** | AUGSYNTH-001 maintained | diagnostic comparator | neither |
 | **AugSynthCVXPY + JK** | AUGSYNTH-001; spillover on card | diagnostic_only | neither |
-| **TBR aggregate + point** | TBR-001 ✅; F-GEO-001; F-EIF-001 | restricted diagnostic | neither |
-| **TBR aggregate + JK/JKP/Kfold** | TBR-001 ✅; estimand card distinct from TBRRidge | restricted diagnostic | neither |
+| **TBR aggregate + point** | TBR-001 ✅; F-GEO-001 | restricted diagnostic | neither |
+| **TBR aggregate + Kfold** | TBR-001 ✅ | restricted diagnostic | neither |
 | **AugSynthCVXPY + Kfold** | AUGSYNTH-KFOLD-001 ✅; conceptual restricted OK | restricted diagnostic | neither |
 | **TBRRidge_Kfold / BRB** | TBRRIDGE-001 ✅ maintained | restricted (existing) | neither |
 | **TBRRidge + TimeSeriesKfold** | TBRRIDGE-002 ✅ | restricted diagnostic | neither |
@@ -317,7 +317,7 @@ Candidates may graduate to **governed production diagnostics** (TrustReport role
 
 ```mermaid
 flowchart TD
-  TBR[D5-INST-TBR-001]
+  TBR[D5-INST-TBR-001 done]
   A10A[AUDIT-010A done]
   A10[AUDIT-010 MMM readiness gap]
   P0[Track F P0 hygiene]
@@ -334,7 +334,7 @@ flowchart TD
 
 | Phase | Deliverables | Exit criterion |
 |-------|--------------|----------------|
-| **P1** | TBR-001 report + F-GEO-001 + F-EIF-001 | 4 TBR agg combos OC'd or explicitly failed |
+| **P1** | ~~TBR-001~~ ✅ report + F-GEO-001 + F-EIF-001 | Point/Kfold OC'd; JK blocked; JKP unverified |
 | **P1.5** | AUDIT-010 report | MMM block list + approved diagnostic set |
 | **P0 (post AUDIT-010)** | F-P0-001…004 PRs | AUDIT-010 checklist hygiene items addressed |
 | **P2** | TBRRIDGE-002; AugSynth Conformal; remaining COMBO valid_candidates | Promote to Tier B/C or re-block |

@@ -219,7 +219,7 @@ Literature/method fidelity audit for all estimator and inference families. **Syn
 
 Pre-MMM sanity check after Track E completion, D5 instrument characterization, COMBO audit, conceptual validity, Track F, and AugSynth Kfold OC. **Verdict:** `continue_with_minor_corrections` — roadmaps aligned; stale next-lines corrected.
 
-**Corrected sequence:** D5-INST-TBR-001 → AUDIT-010 (readiness/gap) → Track F P0 hygiene → Track F P2 OC → promotion lane only if AUDIT-010 closes gaps.
+**Corrected sequence:** ~~D5-INST-TBR-001~~ ✅ → **AUDIT-010** (readiness/gap) → Track F P0 hygiene → Track F P2 OC → promotion lane only if AUDIT-010 closes gaps.
 
 ---
 

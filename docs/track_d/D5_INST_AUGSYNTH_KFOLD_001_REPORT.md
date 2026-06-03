@@ -103,6 +103,6 @@ On **greedy_match_markets**, fixed windows (train=28, test=8), `scm_low_signal` 
 
 ## Sequence
 
-**Next:** D5-INST-TBR-001 → AUDIT-010. Optional P2: TBRRidge-002; AugSynth Conformal (separate battery).
+**Next:** ~~D5-INST-TBR-001~~ ✅ → **AUDIT-010**. Optional P2: TBRRidge-002; AugSynth Conformal (separate battery).
 
 **Rules acknowledged:** No production, estimator, inference, TrustReport, Track B schema, or MMM changes in this package.
