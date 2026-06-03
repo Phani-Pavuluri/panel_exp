@@ -2,7 +2,7 @@
 
 **Document ID:** AUGSYNTH-ASCM-STRENGTHENING-001  
 **Type:** Method-strengthening charter / audit plan — **governance & research only**  
-**Status:** **complete** (charter); **OC not executed**  
+**Status:** **complete** (charter); **OC executed** — [`D5_INST_AUGSYNTH_ASCM_002_REPORT.md`](track_d/D5_INST_AUGSYNTH_ASCM_002_REPORT.md)  
 **Date:** 2026-06-03  
 **Verdict:** First concrete lane to test whether AugSynth/ASCM should **challenge** A26 (SCM+UnitJackKnife) on unit-panel geo — **no promotion, no role change**  
 **Framework lane:** LANE-ASCM-001 ([`METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001.md`](METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001.md) §8)  
@@ -138,9 +138,10 @@ Diagnostics below must be **defined, computed, and archived** in the strengtheni
 
 ## 7. Proposed OC battery
 
-**Artifact ID (future):** `D5-INST-AUGSYNTH-ASCM-002`  
-**Harness (future):** `panel_exp/validation/track_d_d5_inst_augsynth_ascm_002.py` (not implemented in this charter)  
-**Status:** **specified, not run**
+**Artifact ID:** `D5-INST-AUGSYNTH-ASCM-002`  
+**Harness:** `panel_exp/validation/track_d_d5_inst_augsynth_ascm_002.py`  
+**Results:** [`track_d/archives/D5_INST_AUGSYNTH_ASCM_002_results.json`](track_d/archives/D5_INST_AUGSYNTH_ASCM_002_results.json)  
+**Status:** **executed** (n_mc=4 per committed archive)
 
 ### 7.1 Design
 
@@ -201,7 +202,7 @@ Opening [`METHOD_PROMOTION_AUDIT_TEMPLATE_001.md`](METHOD_PROMOTION_AUDIT_TEMPLA
 
 | # | Criterion | Status |
 |---|-----------|--------|
-| P1 | AugSynth **improves effect recovery** (MAE/RMSE) vs A26 in **weak-fit worlds** (W2–W3) without unacceptable bias in W1. | ❌ Not demonstrated |
+| P1 | AugSynth **improves effect recovery** (MAE/RMSE) vs A26 in **weak-fit worlds** (W2–W3) without unacceptable bias in W1. | ⚠️ **Partial** (1/2 weak-fit worlds @ 8% in D5-ASCM2) |
 | P2 | Does **not materially worsen** null FPR vs A26 on the **nominated inference arm** (separate strong-fit slice). | ❌ Conformal fails; JK estimand unclear |
 | P3 | **Clear failure diagnostics** (D1–D11) archived and wired to TrustReport **proposal** (not production). | ❌ Partial |
 | P4 | **Approved inference pairing** via `inference_semantics_ADR` + F-INF classification. | ❌ Open |
@@ -225,7 +226,8 @@ Opening [`METHOD_PROMOTION_AUDIT_TEMPLATE_001.md`](METHOD_PROMOTION_AUDIT_TEMPLA
 
 | Exit code | When | Current recommendation |
 |-----------|------|------------------------|
-| **`proceed_to_OC`** | Charter complete; D5-INST-AUGSYNTH-ASCM-002 not run | ✅ **Yes** — next engineering step |
+| **`proceed_to_OC`** | Charter complete; D5-INST-AUGSYNTH-ASCM-002 not run | ✅ **Done** — see D5-INST-AUGSYNTH-ASCM-002 |
+| **`proceed_to_inference_pairing_ADR`** | OC shows partial weak-fit gain; Conformal unsafe | Optional — D5-ASCM2 exit `remain_diagnostic_comparator` |
 | **`proceed_to_inference_pairing_ADR`** | After OC stratification; Conformal vs JK vs Kfold | ✅ **Parallel** after W1–W3 slice from OC |
 | **`remain_diagnostic_comparator`** | OC does not beat A26 on null FPR or weak-fit recovery | **Default baseline** until OC proves otherwise |
 | **`proceed_to_promotion_audit`** | §8 all criteria met | ❌ **Not authorized** |
@@ -270,4 +272,4 @@ Opening [`METHOD_PROMOTION_AUDIT_TEMPLATE_001.md`](METHOD_PROMOTION_AUDIT_TEMPLA
 
 ---
 
-*AUGSYNTH-ASCM-STRENGTHENING-001 v1.0.0 — charter only; execute D5-INST-AUGSYNTH-ASCM-002 as follow-on.*
+*AUGSYNTH-ASCM-STRENGTHENING-001 v1.1.0 — charter + D5-INST-AUGSYNTH-ASCM-002 OC (research lane; no promotion).*

@@ -217,6 +217,13 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 
 **Prior OC (inputs):** D5-INST-AUGSYNTH-001 · 003 · KFOLD — do not satisfy weak-fit stratification alone.
 
+### D5-INST-AUGSYNTH-ASCM-002
+
+**Report:** [`track_d/D5_INST_AUGSYNTH_ASCM_002_REPORT.md`](track_d/D5_INST_AUGSYNTH_ASCM_002_REPORT.md)  
+**Artifact:** [`track_d/archives/D5_INST_AUGSYNTH_ASCM_002_results.json`](track_d/archives/D5_INST_AUGSYNTH_ASCM_002_results.json)  
+**Harness:** [`track_d_d5_inst_augsynth_ascm_002.py`](../panel_exp/validation/track_d_d5_inst_augsynth_ascm_002.py)  
+**Verdict:** `remain_diagnostic_comparator` — stratified OC complete; AugSynth point MAE beats A26 on **1/2** weak-fit worlds @ 8%; JK null FPR 0 on battery; **no** promotion.
+
 ### Track F — estimator / inference completion (implementation planning)
 
 **Roadmap ID:** `TRACK-F-ESTIMATOR-INFERENCE-COMPLETION`  
