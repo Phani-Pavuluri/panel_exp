@@ -496,6 +496,18 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 ---
 
+## AUGSYNTH-ASCM-STRENGTHENING-001 (2026-06-03)
+
+**Artifact:** [`docs/AUGSYNTH_ASCM_STRENGTHENING_001.md`](AUGSYNTH_ASCM_STRENGTHENING_001.md)
+
+**Verdict:** Strengthening **charter** for LANE-ASCM-001 — literature/implementation checklists, pre-OC diagnostics, candidate inference pairings (A05/A01–A03 vs A26), **D5-INST-AUGSYNTH-ASCM-002** OC worlds/metrics (specified, not executed), promotion-audit entry criteria. **No role change**; CS/MMM/TrustReport/F-DECISION unchanged.
+
+**Prerequisites:** METHOD-STRENGTHENING-LANES-001 §3.1 · D5-INST-AUGSYNTH-001/003/KFOLD · CV-EST-AUGSYNTH.
+
+**Next:** Execute D5-INST-AUGSYNTH-ASCM-002 → inference_semantics_ADR → promotion audit only if §8 criteria met.
+
+---
+
 ## TRACK-F-IMPLEMENTATION-CHECKPOINT-001 (2026-06-03)
 
 **Artifact:** [`docs/TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md`](TRACK_F_IMPLEMENTATION_CHECKPOINT_001.md)

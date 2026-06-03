@@ -83,6 +83,8 @@ Maps to framework lanes **LANE-ASCM-001**, **LANE-TBR-AGG-001**, **LANE-MCELL-00
 **Framework lane:** LANE-ASCM-001  
 **Goal:** Determine when AugSynth/ASCM should **challenge or replace** SCM as primary effect readout for **unit-panel geo** — especially **weak SCM pretreatment fit** — without changing roles today.
 
+**Charter (concrete plan):** [`AUGSYNTH_ASCM_STRENGTHENING_001.md`](AUGSYNTH_ASCM_STRENGTHENING_001.md) — diagnostics, inference pairing evidence bar, **D5-INST-AUGSYNTH-ASCM-002** OC specification, promotion-audit entry criteria.
+
 **Matrix / tuple focus:** L1 strong AugSynthCVXPY; L3 **A05** (Conformal), A01–A03; baseline **A26**.
 
 | # | Required strengthening work | Category | Next artifact type |
