@@ -243,6 +243,13 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 
 **Inputs:** Track D D1–D5 · CV-001 · AUDIT-010 · foundation hardening · threshold audit · F-DECISION baseline.
 
+### METHOD-SOUNDNESS-ROADMAP-REVIEW-001
+
+**Document:** [`METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md`](METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md)  
+**Verdict:** Execution checkpoint — **`proceed_to_augsynth_development_lane`** confirmed; DL-2 coupled via D5-DIAG; design-readout + inference taxonomy **parallel docs**, not blockers.
+
+**Ordered next:** AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001 → D5-DIAG-SCM-AUGSYNTH-001 → D5-INST-AUGSYNTH-ASCM-003 → fidelity audit → DESIGN_READOUT_COMPATIBILITY_AUDIT_001 (parallel).
+
 ### SCM-AUGSYNTH-DIAGNOSTIC-THRESHOLD-AUDIT-001
 
 **Document:** [`SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md`](SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md)  

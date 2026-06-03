@@ -566,7 +566,21 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Next active lane (DL-1):** AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001 · D5-DIAG-SCM-AUGSYNTH-001 · D5-INST-AUGSYNTH-ASCM-003.
 
-**Bridge:** Foundation hardening → **this roadmap** → AUDIT-011 (LLM paused).
+**Review checkpoint:** [`METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md`](METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md) — **`proceed_to_augsynth_development_lane`**.
+
+**Bridge:** Foundation hardening → soundness roadmap → **review checkpoint** → DL-1 execution → AUDIT-011 (LLM paused).
+
+---
+
+## METHOD-SOUNDNESS-ROADMAP-REVIEW-001 (2026-06-03)
+
+**Artifact:** [`docs/METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md`](METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md)
+
+**Verdict:** Confirms AugSynth/ASCM as immediate active lane vs design-readout/inference alternatives; orders next 5 artifacts; first **code** PR = D5-DIAG-SCM-AUGSYNTH-001.
+
+**Prerequisites:** METHOD-SOUNDNESS-AND-GAP-ROADMAP-001 · threshold audit · ASCM-002 · ADR-001.
+
+**Next:** AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001 (short doc) → D5-DIAG (code) → ASCM-003 (OC).
 
 ---
 
