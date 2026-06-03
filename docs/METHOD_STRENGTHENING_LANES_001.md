@@ -8,7 +8,7 @@
 **Upstream (source of truth):** [`METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001.md`](METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001.md)  
 **Decomposition input:** [`METHOD_READINESS_AND_COMPATIBILITY_MATRIX_001.md`](METHOD_READINESS_AND_COMPATIBILITY_MATRIX_001.md)
 
-**Related:** [`F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md`](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md) · [`F_DECISION_001`](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md) · [`TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) · [`METHOD_PROMOTION_AUDIT_TEMPLATE_001.md`](METHOD_PROMOTION_AUDIT_TEMPLATE_001.md) (placeholder)
+**Related:** [`F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md`](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md) · [`F_DECISION_001`](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md) · [`TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) · [`METHOD_PROMOTION_AUDIT_TEMPLATE_001.md`](METHOD_PROMOTION_AUDIT_TEMPLATE_001.md) (placeholder) · [`METHOD_FOUNDATION_HARDENING_001.md`](METHOD_FOUNDATION_HARDENING_001.md) (pre-LLM phase — **LLM paused**)
 
 ---
 
@@ -84,7 +84,9 @@ Maps to framework lanes **LANE-ASCM-001**, **LANE-TBR-AGG-001**, **LANE-MCELL-00
 **Goal:** Determine when AugSynth/ASCM should **challenge or replace** SCM as primary effect readout for **unit-panel geo** — especially **weak SCM pretreatment fit** — without changing roles today.
 
 **Charter (concrete plan):** [`AUGSYNTH_ASCM_STRENGTHENING_001.md`](AUGSYNTH_ASCM_STRENGTHENING_001.md) — diagnostics, inference pairing evidence bar, promotion-audit entry criteria.  
-**OC (executed):** [`D5_INST_AUGSYNTH_ASCM_002_REPORT.md`](track_d/D5_INST_AUGSYNTH_ASCM_002_REPORT.md) — `remain_diagnostic_comparator` (1/2 weak-fit MAE gain @ 8%); JK null FPR conservative; **not** promotion-eligible.
+**OC (executed):** [`D5_INST_AUGSYNTH_ASCM_002_REPORT.md`](track_d/D5_INST_AUGSYNTH_ASCM_002_REPORT.md) — `remain_diagnostic_comparator` (1/2 weak-fit MAE gain @ 8%); JK null FPR conservative; **not** promotion-eligible.  
+**Inference ADR:** [`AUGSYNTH_ASCM_INFERENCE_PAIRING_ADR_001.md`](AUGSYNTH_ASCM_INFERENCE_PAIRING_ADR_001.md) — no pairing promoted.  
+**Threshold audit:** [`SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md`](SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md) — provisional failure-mode labels (P1); ASCM-003 for numeric calibration.
 
 **Matrix / tuple focus:** L1 strong AugSynthCVXPY; L3 **A05** (Conformal), A01–A03; baseline **A26**.
 
@@ -97,7 +99,7 @@ Maps to framework lanes **LANE-ASCM-001**, **LANE-TBR-AGG-001**, **LANE-MCELL-00
 | 5 | Negative-weight / regularization policy doc | Estimator | `estimand_ADR` or design note |
 | 6 | Outcome-model dependence diagnostics | Estimator | `failure_mode_investigation` |
 | 7 | OC: AugSynth vs SCM under known DGPs (effect recovery, bias, null FPR) | Combination | `OC_battery` |
-| 8 | Inference pairing decision: Conformal vs JK vs Placebo vs Kfold **for audit scope** | Inference | `inference_semantics_ADR` |
+| 8 | Inference pairing decision: Conformal vs JK vs Placebo vs Kfold **for audit scope** | Inference | **`inference_semantics_ADR`** ✅ [`AUGSYNTH_ASCM_INFERENCE_PAIRING_ADR_001.md`](AUGSYNTH_ASCM_INFERENCE_PAIRING_ADR_001.md) |
 | 9 | If L3 stable + OC beat/improve on weak-fit: promotion charter scope | Program | `promotion_charter` → `promotion_audit` |
 
 **Inference pairing note (decision for strengthening, not production):**
@@ -205,7 +207,7 @@ Maps to framework lanes **LANE-ASCM-001**, **LANE-TBR-AGG-001**, **LANE-MCELL-00
 
 | Lane | Primary next artifacts (ordered) | Terminal states |
 |------|-------------------------------|-----------------|
-| **AUGSYNTH_ASCM_STRENGTHENING_001** | literature → implementation → failure modes → **OC_battery** → inference_semantics_ADR → promotion_charter → **promotion_audit** | audit or `remain_diagnostic` |
+| **AUGSYNTH_ASCM_STRENGTHENING_001** | literature → implementation → **OC_battery** ✅ → **inference_semantics_ADR** ✅ → promotion_charter → **promotion_audit** | `remain_diagnostic_comparator` (ADR) |
 | **TBR_AGGREGATE_STRENGTHENING_001** | estimand_ADR → geometry_ADR → OC_battery → **promotion_audit** | `aggregate_only_primary` audit or diagnostic |
 | **MULTICELL_STRENGTHENING_001** | **estimand_ADR** (pooling) → OC_battery (per-cell) → promotion_audit | pooled `keep_blocked` until ADR |
 | **TRIM_SUPERGEO_STRENGTHENING_001** | geometry_ADR + estimand_ADR → OC_battery → promotion_charter | `keep_blocked` until bridge |
@@ -266,6 +268,7 @@ flowchart LR
 | Decomposition | METHOD-READINESS-AND-COMPATIBILITY-MATRIX-001 | How strong is each layer? |
 | Pipeline | METHOD-SELECTION-AND-PROMOTION-FRAMEWORK-001 | How could promotion work? |
 | **Strengthening** | **METHOD-STRENGTHENING-LANES-001 (this doc)** | **What evidence work is required?** |
+| **Foundation hardening** | [`METHOD_FOUNDATION_HARDENING_001.md`](METHOD_FOUNDATION_HARDENING_001.md) | **What conceptual gaps remain pre-LLM?** |
 | Gate | METHOD-PROMOTION-AUDIT-TEMPLATE-001 | Did a tuple earn a role change? |
 
 ---

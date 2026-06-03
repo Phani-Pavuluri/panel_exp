@@ -233,6 +233,8 @@ This matrix does **not** authorize promotion.
 
 **Strengthening bridge:** Evidence work between framework lanes and promotion audit is scoped in [`METHOD_STRENGTHENING_LANES_001.md`](METHOD_STRENGTHENING_LANES_001.md) (§8 next-artifact map aligns with this matrix §8).
 
+**Foundation hardening (pre-LLM):** [`METHOD_FOUNDATION_HARDENING_001.md`](METHOD_FOUNDATION_HARDENING_001.md) ranks remaining estimator/inference/design gaps; **LLM layer paused** until §6 exit criteria.
+
 ---
 
 ## 10. Crosswalk: contracts and decision layer

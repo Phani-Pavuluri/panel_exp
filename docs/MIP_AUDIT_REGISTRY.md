@@ -36,7 +36,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 | **AUDIT-009** | 2026-06-01 | Track E E1–E7 completion gate | `79c59c4` | `continue` | Live export lacks auto profile assembly (E7-FIND-001) | AUDIT-010A ✅; ~~D5-INST-TBR-001~~ ✅ → AUDIT-010 | **closed** |
 | **AUDIT-010A** | 2026-06-02 | Roadmap consistency pre-MMM (post Track F + Kfold OC) | `ebc899c` | `continue_with_minor_corrections` | Stale MCELL next-lines; Track F P0/TBR sequence; DESIGN §13 Kfold | ~~D5-INST-TBR-001~~ ✅ → **AUDIT-010** | **closed** |
 | **AUDIT-010** | 2026-06-03 | MMM readiness / gap (not promotion) | `696045a` | **`not_ready_continue_track_f`** | MMM blocked; CS no expansion; 30-tuple Appendix A | **Track F P2 OC** | **closed** |
-| **AUDIT-011** | — | Before LLM interface | TBD | — | — | — | planned |
+| **AUDIT-011** | — | Before LLM interface | TBD | — | Blocked on [`METHOD_FOUNDATION_HARDENING_001.md`](METHOD_FOUNDATION_HARDENING_001.md) §6 exit | — | **planned** (LLM paused) |
 
 ---
 
@@ -500,11 +500,11 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Artifact:** [`docs/AUGSYNTH_ASCM_STRENGTHENING_001.md`](AUGSYNTH_ASCM_STRENGTHENING_001.md)
 
-**Verdict:** Strengthening **charter** for LANE-ASCM-001 — literature/implementation checklists, pre-OC diagnostics, candidate inference pairings (A05/A01–A03 vs A26), **D5-INST-AUGSYNTH-ASCM-002** OC worlds/metrics (specified, not executed), promotion-audit entry criteria. **No role change**; CS/MMM/TrustReport/F-DECISION unchanged.
+**Verdict:** Strengthening **charter** for LANE-ASCM-001 — literature/implementation checklists, pre-OC diagnostics, candidate inference pairings (A05/A01–A03 vs A26), **D5-INST-AUGSYNTH-ASCM-002** executed, promotion-audit entry criteria. **No role change**; CS/MMM/TrustReport/F-DECISION unchanged.
 
 **Prerequisites:** METHOD-STRENGTHENING-LANES-001 §3.1 · D5-INST-AUGSYNTH-001/003/KFOLD · CV-EST-AUGSYNTH.
 
-**Next:** inference_semantics_ADR → promotion audit only if §8 criteria met.
+**Next:** [`SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md`](SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md) ✅; optional **D5-INST-AUGSYNTH-ASCM-003** (threshold calibration); then P2 design–readout audit.
 
 ---
 
@@ -517,6 +517,42 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 **Verdict:** `remain_diagnostic_comparator` — 12 stratified worlds vs A26; partial weak-fit MAE gain (1/2 @ 8%); JK null FPR conservative; Conformal unsafe; **promotion_audit_eligible: false**.
 
 **Prerequisites:** AUGSYNTH-ASCM-STRENGTHENING-001 · D5-INST-AUGSYNTH-001/003/KFOLD.
+
+---
+
+## AUGSYNTH-ASCM-INFERENCE-PAIRING-ADR-001 (2026-06-03)
+
+**Artifact:** [`docs/AUGSYNTH_ASCM_INFERENCE_PAIRING_ADR_001.md`](AUGSYNTH_ASCM_INFERENCE_PAIRING_ADR_001.md)
+
+**Verdict:** **Accepted** — post-ASCM-002 inference pairing policy: **no promotion**; Conformal **keep_restricted**; JK diagnostic + optional future OC; A26 unchanged.
+
+**Prerequisites:** ASCM-002 · AUGSYNTH-ASCM-STRENGTHENING-001 · F-INF-001 · F-DECISION-001.
+
+---
+
+## METHOD-FOUNDATION-HARDENING-001 (2026-06-03)
+
+**Artifact:** [`docs/METHOD_FOUNDATION_HARDENING_001.md`](METHOD_FOUNDATION_HARDENING_001.md)
+
+**Verdict:** Pre-LLM foundation phase plan — **LLM paused**; gap registry; lanes P0 complete → P1 threshold audit ✅ (calibration via ASCM-003 open). **No production/promotion/CS/MMM/LLM integration.**
+
+**Prerequisites:** METHOD-READINESS matrix · METHOD-SELECTION · METHOD-STRENGTHENING · ADR-001 · F-DECISION-001.
+
+**Next program lane:** P2 design–readout compatibility audit per [`METHOD_FOUNDATION_HARDENING_001.md`](METHOD_FOUNDATION_HARDENING_001.md); optional research OC **D5-INST-AUGSYNTH-ASCM-003** for P1 threshold calibration.
+
+**AUDIT-011 linkage:** LLM interface **planned** until foundation hardening exit criteria met (P1 audit complete; ASCM-003 calibration open).
+
+---
+
+## SCM-AUGSYNTH-DIAGNOSTIC-THRESHOLD-AUDIT-001 (2026-06-03)
+
+**Artifact:** [`docs/SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md`](SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md)
+
+**Verdict:** Provisional diagnostic **label vocabulary** and threshold **types** for SCM/A26 and AugSynth/ASCM (fit, hull, sparsity, disagreement, false-confidence). **No promotion**; **no F-DECISION/TrustReport behavior change**.
+
+**Prerequisites:** METHOD-FOUNDATION-HARDENING-001 P1 · ASCM-002 · ADR-001 · AUGSYNTH-ASCM-STRENGTHENING-001 §5 · F-DECISION-001 disagreement policy.
+
+**Next:** **D5-INST-AUGSYNTH-ASCM-003** (recommended) — larger n_mc, weak-fit grid, emit D8/D10/D11, calibrate §2 cutoffs. Then P2 `DESIGN_READOUT_COMPATIBILITY_AUDIT_001`.
 
 ---
 
