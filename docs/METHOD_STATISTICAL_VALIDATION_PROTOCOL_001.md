@@ -45,7 +45,8 @@ Layer 4 defines **synthetic worlds**, **metrics**, **acceptance criteria classes
 | Layer 3 — Implementation validation | ✅ |
 | **Layer 4 — Statistical validation protocol** | ✅ **This artifact** |
 | Layer 5 — Combination matrix | ✅ [`METHOD_COMBINATION_VALIDATION_MATRIX_001.md`](METHOD_COMBINATION_VALIDATION_MATRIX_001.md) |
-| Suitability framework | **Next** — `DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001` |
+| Suitability framework | ✅ |
+| D5-STAT smoke + SCM+JK Level B | ✅ [`D5_STAT_SMOKE_CALLABLE_001_REPORT.md`](track_d/D5_STAT_SMOKE_CALLABLE_001_REPORT.md) · [`D5_STAT_SCM_JK_001_REPORT.md`](track_d/D5_STAT_SCM_JK_001_REPORT.md) |
 | Suitability / trust framework | **Paused** per program §8 |
 
 ---
@@ -320,11 +321,14 @@ Regenerate: `python -m panel_exp.validation.method_statistical_validation_protoc
 
 ---
 
-## 18. Next artifact: DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001
+## 18. Executed D5-STAT evidence (characterization)
 
-**Layer 5** complete — see [`METHOD_COMBINATION_VALIDATION_MATRIX_001.md`](METHOD_COMBINATION_VALIDATION_MATRIX_001.md).
+| Artifact | Status |
+|----------|--------|
+| `D5-STAT-SMOKE-CALLABLE-001` | ✅ smoke callable |
+| `D5-STAT-SCM-JK-001` | ✅ Level B — `characterization_mixed_requires_followup` |
 
-**Post-Layer-5** suitability framework may use matrix rows + executed D5-STAT-* evidence under explicit charter.
+**Next execution:** `D5-STAT-AUGSYNTH-POINT-001` per Layer 5 queue.
 
 **Still blocked:** Trust framework auto-expansion · primary/secondary/directional roles · promotion.
 

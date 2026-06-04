@@ -607,7 +607,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** Prior audits retained as `evidence_input` only.
 
-**Next:** ✅ Layers 1–5 + suitability + smoke callable → **`D5-STAT-SCM-JK-001`**.
+**Next:** ✅ Layers 1–5 + suitability + smoke + SCM+JK Level B → **`D5-STAT-AUGSYNTH-POINT-001`**.
 
 ---
 
@@ -689,7 +689,19 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Generator:** `python -m panel_exp.validation.track_d_d5_stat_smoke_callable_001`
 
-**Next:** **`D5-STAT-SCM-JK-001`** (Level B characterization — no TrustReport wiring from smoke artifact).
+**Next:** ✅ **`D5-STAT-SCM-JK-001`** (see below).
+
+---
+
+## D5-STAT-SCM-JK-001 (2026-06-04)
+
+**Artifact:** [`docs/track_d/D5_STAT_SCM_JK_001_REPORT.md`](track_d/D5_STAT_SCM_JK_001_REPORT.md) · [`docs/track_d/archives/D5_STAT_SCM_JK_001_results.json`](track_d/archives/D5_STAT_SCM_JK_001_results.json)
+
+**Verdict:** Level B characterization **complete** — `characterization_mixed_requires_followup`; 7 worlds × 15 replicates; interval orientation/half-width checks pass on feasible runs; no promotion/trust/CS/MMM/suitability claims.
+
+**Generator:** `python -m panel_exp.validation.track_d_d5_stat_scm_jk_001`
+
+**Next:** **`D5-STAT-AUGSYNTH-POINT-001`** (no TrustReport wiring from this artifact).
 
 ---
 

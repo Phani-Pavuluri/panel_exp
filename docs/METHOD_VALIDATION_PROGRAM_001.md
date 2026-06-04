@@ -250,7 +250,9 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **First D5-STAT smoke execution:** ✅ [`docs/track_d/D5_STAT_SMOKE_CALLABLE_001_REPORT.md`](track_d/D5_STAT_SMOKE_CALLABLE_001_REPORT.md) + [`track_d/archives/D5_STAT_SMOKE_CALLABLE_001_results.json`](track_d/archives/D5_STAT_SMOKE_CALLABLE_001_results.json) (regenerate: `python -m panel_exp.validation.track_d_d5_stat_smoke_callable_001`).
 
-**Immediate next concrete work:** **`D5-STAT-SCM-JK-001`** (Level B characterization — no TrustReport/F-DECISION wiring until OC evidence exists).
+**SCM+JK Level B characterization:** ✅ [`docs/track_d/D5_STAT_SCM_JK_001_REPORT.md`](track_d/D5_STAT_SCM_JK_001_REPORT.md) + [`track_d/archives/D5_STAT_SCM_JK_001_results.json`](track_d/archives/D5_STAT_SCM_JK_001_results.json) (regenerate: `python -m panel_exp.validation.track_d_d5_stat_scm_jk_001`).
+
+**Immediate next concrete work:** **`D5-STAT-AUGSYNTH-POINT-001`** or **`D5-STAT-TBR-AGG-001`** per Layer 5 queue (no TrustReport/F-DECISION wiring until further OC evidence exists).
 
 ---
 
