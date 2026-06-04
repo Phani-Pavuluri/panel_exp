@@ -29,6 +29,7 @@ It converts prior audit, threshold, and OC evidence into **named PRs** with code
 | A **replacement for code-backed evidence** | Each PR must produce runnable artifacts |
 
 **Next step after lane closeout:** ✅ [`METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md) → **`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001`** → **`D5-INST-AUGSYNTH-MULTICELL-001`** (gate validation only; see synthesis §7) — see [`AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md). P1–P6 ✅; **do not** start multi-cell OC before pooling ADR.
+**Next step after lane closeout:** ✅ [`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001.md`](MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001.md) **accepted** (see [`AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md)) → **`D5-INST-AUGSYNTH-MULTICELL-001`** (OC). Then [`AUGSYNTH_SCM_ESTIMAND_BRIDGE_ADR_001`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md) · optional **`D5-INST-AUGSYNTH-DESIGN-COMPAT-001`**. P1–P6 ✅.
 
 ---
 
@@ -71,6 +72,7 @@ Reconciled from ASCM-002, ADR-001, threshold audit, and AUDIT-010 — **no new d
 | **GAP-ASCM-CONF-001** | inference | Conformal failure mode needs isolation | D5-AUGSYNTH-003 + POSTFIX; not governed | Role creep to uncertainty | **D5-INF-AUGSYNTH-CONFORMAL-FAILURE-001** | **P5** |
 | **GAP-ASCM-KF-001** | inference | Kfold semantics remain diagnostic only | KFOLD-001; ADR-001 | Mislabeled as null monitor | ADR-001 (done); no promotion OC | **defer** |
 | **GAP-ASCM-MT-001** | design_compatibility | Multi-treated / per-cell compatibility needs explicit validation | W11 in ASCM-002; A28 placebo block | Pooled or wrong geometry claims | ✅ P6 · synthesis-001 | **done** → pooling ADR + D5-INST-AUGSYNTH-MULTICELL-001 |
+| **GAP-ASCM-MT-001** | design_compatibility | Multi-treated / per-cell compatibility needs explicit validation | W11 in ASCM-002; A28 placebo block | Pooled or wrong geometry claims | ✅ **MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001** | **done** → D5-INST-AUGSYNTH-MULTICELL-001 |
 | **GAP-ASCM-POW-001** | design_compatibility | Power/MDE path (TBRRidge agg2) vs AugSynth readout mismatch | D5-POW-001a | Planning vs readout confusion | **DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001** | **P6** |
 | **GAP-ASCM-D8-001** | diagnostics | Outcome-model sensitivity (D8) not archived | Charter gap | Ridge misspecification hidden | **D5-DIAG-SCM-AUGSYNTH-001** + ASCM-003 grid | **P1** / P3 |
 

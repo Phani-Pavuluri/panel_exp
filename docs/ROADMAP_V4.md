@@ -257,6 +257,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Document:** [`METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md)  
 **Status:** **complete** — docs-only checkpoint; no production behavior change  
 **Verdict:** Consolidates design × estimator × inference × geometry evidence from prior audits; **proceed** to **`D5-INST-AUGSYNTH-MULTICELL-001`** as **narrow pooling-ADR gate validation** (S0/S1 only; no pooled causal/uncertainty; no promotion). **Next:** `METHOD_LITERATURE_GAP_REVIEW_001` (parallel, non-blocking).
+**Ordered next:** ✅ DL-1 P1–P6 **closed** → [`AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md) → ✅ **`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001`** → **`D5-INST-AUGSYNTH-MULTICELL-001`**.
 
 ### AUGSYNTH-ASCM-DEVELOPMENT-ROADMAP-001
 
@@ -265,12 +266,19 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Verdict:** DL-1 lane **P6 complete** — [`DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md`](DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md) verdict `compatible_per_cell_only_pooling_blocked` + `bridge_required_before_broader_use`. **Not promotion.**
 
 **P1–P6:** ✅ complete · **Lane:** **closed** — [`AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md). **Next:** [`METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md) → pooling ADR → **`D5-INST-AUGSYNTH-MULTICELL-001`** (gate validation; not promotion).
+**P1–P6:** ✅ complete · **Lane:** **closed** — [`AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md). **Next:** **`D5-INST-AUGSYNTH-MULTICELL-001`** (pooling ADR ✅; not multi-cell OC before ADR).
 
 ### AUGSYNTH-ASCM-LANE-CLOSEOUT-001
 
 **Document:** [`AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md)  
 **Status:** **complete** — decision checkpoint; no production behavior change  
-**Verdict:** DL-1 lane **closed** at P6; next workstream **`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001`**. AugSynth point promising diagnostic-only; JK diagnostic-only (unsafe strata); Conformal blocked; no promotion.
+**Verdict:** DL-1 lane **closed** at P6; ordered next was **`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001`** (now ✅). AugSynth point promising diagnostic-only; JK diagnostic-only (unsafe strata); Conformal blocked; no promotion.
+
+### MULTICELL-AUGSYNTH-POOLING-RULE-ADR-001
+
+**Document:** [`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001.md`](MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001.md)  
+**Status:** **accepted** — docs-only; no production behavior change  
+**Verdict:** Multi-cell AugSynth **per-cell diagnostic by default**; **no pooled lift**; optional **`MULTICELL_AUGSYNTH_DESCRIPTIVE_V0`** equal-cell descriptive mean only if all per-cell gates pass; **no pooled uncertainty** (JK diagnostic-only, Conformal blocked). **Next:** **`D5-INST-AUGSYNTH-MULTICELL-001`**.
 
 ### DESIGN-READOUT-AUGSYNTH-COMPATIBILITY-001 (P6)
 
