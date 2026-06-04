@@ -38,7 +38,8 @@ Define **how** design × estimator × inference × geometry × estimand combinat
 |--------------|--------|
 | Layers 1–5 | ✅ Complete |
 | **Suitability framework** | ✅ **This artifact** — policy only |
-| D5-STAT OC execution | **Next concrete work** — `D5-STAT-SMOKE-CALLABLE-001` |
+| D5-STAT smoke (Level A) | ✅ [`D5_STAT_SMOKE_CALLABLE_001_REPORT.md`](track_d/D5_STAT_SMOKE_CALLABLE_001_REPORT.md) |
+| D5-STAT OC execution | **Next** — `D5-STAT-SCM-JK-001` |
 | Trust role assignment | **Blocked** — `TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001` after OC evidence |
 
 ---
@@ -191,7 +192,9 @@ Family-level quarantine (quickblock, matchedpair, legacy SCM) remains in Layer 3
 
 ## 16. Required D5-STAT evidence queue
 
-**Immediate next concrete artifact:** **`D5-STAT-SMOKE-CALLABLE-001`** — smoke/schema/callability/orientation/geometry guards for all callable paths.
+**Smoke callable artifact:** ✅ **`D5-STAT-SMOKE-CALLABLE-001`** — [`D5_STAT_SMOKE_CALLABLE_001_REPORT.md`](track_d/D5_STAT_SMOKE_CALLABLE_001_REPORT.md).
+
+**Immediate next concrete artifact:** **`D5-STAT-SCM-JK-001`** — Level B characterization for SCM + UnitJackKnife.
 
 Then (from Layer 5 matrix queue):
 
@@ -241,7 +244,7 @@ Regenerate: `python -m panel_exp.validation.design_estimator_inference_suitabili
 
 **Do not** wire TrustReport or F-DECISION from this framework.
 
-**Next concrete work:** execute **`D5-STAT-SMOKE-CALLABLE-001`**.
+**Next concrete work:** execute **`D5-STAT-SCM-JK-001`** (after smoke pass — see smoke report).
 
 **After OC evidence accumulates:** author **`TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001`** or targeted F-DECISION/TrustReport amendments — not before.
 
@@ -265,9 +268,10 @@ Regenerate: `python -m panel_exp.validation.design_estimator_inference_suitabili
 | Layer 5 row coverage | ✅ 30/30 |
 | Non-promotional classes only | ✅ |
 | Forbidden flags false | ✅ |
-| Next artifact = D5-STAT-SMOKE-CALLABLE-001 | ✅ |
+| Smoke artifact D5-STAT-SMOKE-CALLABLE-001 | ✅ |
+| Next artifact = D5-STAT-SCM-JK-001 | ✅ |
 | JSON + tests | ✅ |
 
 ---
 
-*DESIGN-ESTIMATOR-INFERENCE-SUITABILITY-FRAMEWORK-001 v1.0.0 — policy complete; begin D5-STAT-SMOKE-CALLABLE-001.*
+*DESIGN-ESTIMATOR-INFERENCE-SUITABILITY-FRAMEWORK-001 v1.0.0 — policy complete; smoke callable complete; begin D5-STAT-SCM-JK-001.*
