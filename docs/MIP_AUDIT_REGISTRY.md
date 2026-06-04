@@ -609,17 +609,29 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 ---
 
+## DESIGN-READOUT-AUGSYNTH-COMPATIBILITY-001 (2026-06-03)
+
+**Artifact:** [`docs/DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md`](DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md)
+
+**Verdict:** `compatible_per_cell_only_pooling_blocked`; co-verdict `bridge_required_before_broader_use`. Tier-1 geo single-cell unit-panel compatible for AugSynth **point diagnostics** (greedy OC-validated); multi-cell **per-cell only**; JK diagnostic-only (P4); Conformal blocked (P5); supergeo/trim/aggregate require bridges. **No promotion.**
+
+**Prerequisites:** P3 ASCM-003 · P4 JK calibration · P5 Conformal failure · DESIGN-INVENTORY-001.
+
+**Next:** `AUGSYNTH_SCM_ESTIMAND_BRIDGE_ADR_001` · `MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001` · optional `D5-INST-AUGSYNTH-DESIGN-COMPAT-001`.
+
+---
+
 ## AUGSYNTH-ASCM-DEVELOPMENT-ROADMAP-001 (2026-06-03)
 
 **Artifact:** [`docs/AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md)
 
-**Verdict:** Active DL-1 **execution** plan — P1 diagnostics (code) through P6 design compat; stop/go criteria; **no promotion**.
+**Verdict:** Active DL-1 **execution** plan — P1 diagnostics (code) through P6 design compat ✅; stop/go criteria; **no promotion**.
 
-**Status:** **complete** — docs/planning only; no production behavior change; no CalibrationSignal/MMM/LLM changes.
+**Status:** **complete** — P1–P6 landed; P6 docs-only [`DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md`](DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md).
 
 **Prerequisites:** METHOD-SOUNDNESS-ROADMAP-REVIEW-001 · ASCM-002 · threshold audit · ADR-001.
 
-**Next PR:** **D5-INST-AUGSYNTH-ASCM-003** (P3). P1 D5-DIAG ✅ · P2 fidelity audit ✅.
+**Next:** Bridge ADRs per P6 audit (`AUGSYNTH_SCM_ESTIMAND_BRIDGE_ADR_001`, `MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001`); optional `D5-INST-AUGSYNTH-DESIGN-COMPAT-001`.
 
 ---
 

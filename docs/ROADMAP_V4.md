@@ -250,15 +250,21 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Status:** **complete**  
 **Verdict:** Execution checkpoint — **`proceed_to_augsynth_development_lane`** confirmed; DL-2 coupled via D5-DIAG; design-readout + inference taxonomy **parallel docs**, not blockers.
 
-**Ordered next:** ✅ [`AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md) **materialized** → ✅ D5-DIAG-SCM-AUGSYNTH-001 **complete** → ✅ **AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001** **complete** → **D5-INST-AUGSYNTH-ASCM-003** (next).
+**Ordered next:** ✅ [`AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md) **P1–P6 complete** → bridge ADRs per [`DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md`](DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md).
 
 ### AUGSYNTH-ASCM-DEVELOPMENT-ROADMAP-001
 
 **Document:** [`AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md)  
-**Status:** **complete** — docs/planning only; no production behavior change  
-**Verdict:** Focused **execution** roadmap for DL-1 — PR sequence P1–P6 (diagnostics → fidelity → OC → inference calibration → design compat). **Not promotion.**
+**Status:** **complete** — P1–P6 execution landed  
+**Verdict:** DL-1 lane **P6 complete** — [`DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md`](DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md) verdict `compatible_per_cell_only_pooling_blocked` + `bridge_required_before_broader_use`. **Not promotion.**
 
-**P1:** ✅ D5-DIAG complete. **P2:** ✅ fidelity audit complete. **Next:** P3 **D5-INST-AUGSYNTH-ASCM-003**.
+**P1–P6:** ✅ complete. **Next:** bridge ADRs; optional `D5-INST-AUGSYNTH-DESIGN-COMPAT-001`.
+
+### DESIGN-READOUT-AUGSYNTH-COMPATIBILITY-001 (P6)
+
+**Document:** [`DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md`](DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md)  
+**Status:** **complete** — docs-only; no production behavior change  
+**Verdict:** `compatible_per_cell_only_pooling_blocked`; co-verdict `bridge_required_before_broader_use`. Tier-1 unit-panel single-cell structurally compatible (greedy OC-validated); multi-cell per-cell only; Conformal blocked; JK diagnostic-only.
 
 ### D5-DIAG-SCM-AUGSYNTH-001
 
