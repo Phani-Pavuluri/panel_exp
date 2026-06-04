@@ -242,7 +242,9 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **Layer 3:** ✅ [`METHOD_IMPLEMENTATION_VALIDATION_001.md`](METHOD_IMPLEMENTATION_VALIDATION_001.md) + [`track_d/archives/METHOD_IMPLEMENTATION_VALIDATION_001.json`](track_d/archives/METHOD_IMPLEMENTATION_VALIDATION_001.json) (regenerate: `python -m panel_exp.validation.method_implementation_validation_001`).
 
-**Immediate next PR target:** **`METHOD_STATISTICAL_VALIDATION_PROTOCOL_001`**.
+**Layer 4:** ✅ [`METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.md`](METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.md) + [`track_d/archives/METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.json`](track_d/archives/METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.json) (regenerate: `python -m panel_exp.validation.method_statistical_validation_protocol_001`).
+
+**Immediate next PR target:** **`METHOD_COMBINATION_VALIDATION_MATRIX_001`**.
 
 ---
 

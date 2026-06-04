@@ -47,8 +47,8 @@ This register compares **implemented** components from [`METHOD_CODE_INVENTORY_0
 | Layer 1 — Code inventory | ✅ Complete — defines method **universe** |
 | **Layer 2 — Literature alignment** | ✅ **This document** + JSON |
 | Layer 3 — Implementation validation | ✅ [`METHOD_IMPLEMENTATION_VALIDATION_001.md`](METHOD_IMPLEMENTATION_VALIDATION_001.md) |
-| Layer 4 — Statistical validation | **Next** — `METHOD_STATISTICAL_VALIDATION_PROTOCOL_001` |
-| Layer 5 — Combination matrix | Blocked until Layer 4 per family |
+| Layer 4 — Statistical validation protocol | ✅ [`METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.md`](METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.md) |
+| Layer 5 — Combination matrix | **Next** — `METHOD_COMBINATION_VALIDATION_MATRIX_001` |
 | Trust / suitability framework | **Paused** per validation program §8 |
 
 [`METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md) and combo matrices remain **hypotheses** until Layer 5.
@@ -362,13 +362,15 @@ Consolidated from JSON `implementation_questions_to_resolve` (priority order):
 
 ---
 
-## 13. Next artifact: METHOD_STATISTICAL_VALIDATION_PROTOCOL_001
+## 13. Next artifact: METHOD_COMBINATION_VALIDATION_MATRIX_001
 
 **Layer 3** complete — see [`METHOD_IMPLEMENTATION_VALIDATION_001.md`](METHOD_IMPLEMENTATION_VALIDATION_001.md).
 
-**Layer 4** defines synthetic worlds and OC batteries for families not blocked in Layer 3.
+**Layer 4** complete — see [`METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.md`](METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.md).
 
-**Inputs:** Layer 3 JSON `rows[]` · §11 statistical_validation_needed lists · prior D5 archives (evidence only).
+**Layer 5** consolidates combination suitability using Layer 4 protocol rows and executed D5-STAT-* archives.
+
+**Inputs:** Layer 4 JSON `rows[]` · §11 statistical_validation_needed lists · prior D5 archives (evidence only).
 
 ---
 
