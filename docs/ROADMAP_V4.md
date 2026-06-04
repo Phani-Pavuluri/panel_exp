@@ -250,7 +250,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Status:** **complete**  
 **Verdict:** Execution checkpoint — **`proceed_to_augsynth_development_lane`** confirmed; DL-2 coupled via D5-DIAG; design-readout + inference taxonomy **parallel docs**, not blockers.
 
-**Ordered next:** ✅ [`AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md) **P1–P6 complete** → bridge ADRs per [`DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md`](DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md).
+**Ordered next:** ✅ DL-1 P1–P6 **closed** → [`AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md) → **`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001`**.
 
 ### AUGSYNTH-ASCM-DEVELOPMENT-ROADMAP-001
 
@@ -258,7 +258,13 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Status:** **complete** — P1–P6 execution landed  
 **Verdict:** DL-1 lane **P6 complete** — [`DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md`](DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md) verdict `compatible_per_cell_only_pooling_blocked` + `bridge_required_before_broader_use`. **Not promotion.**
 
-**P1–P6:** ✅ complete. **Next:** bridge ADRs; optional `D5-INST-AUGSYNTH-DESIGN-COMPAT-001`.
+**P1–P6:** ✅ complete · **Lane:** **closed** — [`AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md). **Next:** `MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001` (not multi-cell OC first).
+
+### AUGSYNTH-ASCM-LANE-CLOSEOUT-001
+
+**Document:** [`AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md)  
+**Status:** **complete** — decision checkpoint; no production behavior change  
+**Verdict:** DL-1 lane **closed** at P6; next workstream **`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001`**. AugSynth point promising diagnostic-only; JK diagnostic-only (unsafe strata); Conformal blocked; no promotion.
 
 ### DESIGN-READOUT-AUGSYNTH-COMPATIBILITY-001 (P6)
 

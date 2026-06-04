@@ -357,7 +357,7 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 | **1** | Active AugSynth/ASCM development | DL-1: development roadmap, D5-DIAG, ASCM-003, estimand bridge ADR | ASCM-003 calibrates threshold cutoffs; D8/D10/D11 in JSON |
 | **2** | SCM baseline / failure-mode hardening | DL-2: metadata, `full_model` monitoring, diagnostic label proposal | Stable diagnostic facets documented |
 | **3** | Inference calibration | DL-3: role taxonomy, TBRRidge JK/JKP, placebo taxonomy, DID CI | Inference roles documented per F-INF + ADRs |
-| **4** | Design / readout compatibility | DL-4: design–readout audit, POW alignment, F-MCELL | Compatibility table for tier-1 designs × readouts |
+| **4** | Design / readout compatibility | DL-4: design–readout audit ✅ P6 · **DL-1 closed** [`AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md) | Pooling ADR next |
 | **5** | supergeo / trim / multi-cell | DL-5 + DL-4 F-MCELL | Adapter ADRs scoped; no flat SCM claims |
 | **6** | TBR aggregate + TBRRidge paths | DL-6 | Aggregate bridge audit complete |
 | **7** | Real-panel shadow replay | DL-7 | **`evidence_missing`** until charter + first replay |
