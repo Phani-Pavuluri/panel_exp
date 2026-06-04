@@ -34,7 +34,7 @@ Inputs from `DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001` — OC-ready 
 
 **D5-STAT-AUGSYNTH-POINT-001:** ✅ Level B point characterization complete — see [`D5_STAT_AUGSYNTH_POINT_001_REPORT.md`](D5_STAT_AUGSYNTH_POINT_001_REPORT.md).
 
-Next recommended: **D5-STAT-TBR-AGG-001** per Layer 5 queue.
+TBR aggregate Level B: ✅ **D5-STAT-TBR-AGG-001** (`characterization_mixed_requires_followup`). Next recommended: **D5-STAT-DID-BOOTSTRAP-001** per Layer 5 queue.
 
 ## 16. What this artifact does not authorize
 

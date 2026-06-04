@@ -41,7 +41,8 @@ Define **how** design × estimator × inference × geometry × estimand combinat
 | D5-STAT smoke (Level A) | ✅ [`D5_STAT_SMOKE_CALLABLE_001_REPORT.md`](track_d/D5_STAT_SMOKE_CALLABLE_001_REPORT.md) |
 | D5-STAT SCM+JK Level B | ✅ [`D5_STAT_SCM_JK_001_REPORT.md`](track_d/D5_STAT_SCM_JK_001_REPORT.md) |
 | D5-STAT AugSynth point Level B | ✅ [`D5_STAT_AUGSYNTH_POINT_001_REPORT.md`](track_d/D5_STAT_AUGSYNTH_POINT_001_REPORT.md) |
-| D5-STAT OC execution | **Next** — `D5-STAT-TBR-AGG-001` |
+| D5-STAT TBR aggregate Level B | ✅ [`D5_STAT_TBR_AGG_001_REPORT.md`](track_d/D5_STAT_TBR_AGG_001_REPORT.md) |
+| D5-STAT OC execution | **Next** — `D5-STAT-DID-BOOTSTRAP-001` |
 | Trust role assignment | **Blocked** — `TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001` after OC evidence |
 
 ---
@@ -136,7 +137,7 @@ Protocol registers (Layers 4–5) **do not** satisfy suitability evidence.
 | combination_id | Class | Pending artifact |
 |----------------|-------|------------------|
 | SCM-JK | `suitability_candidate_pending_oc` | D5-STAT-SCM-JK-001 |
-| TBR-AGG-POINT | `suitability_candidate_pending_oc` | D5-STAT-TBR-AGG-001 |
+| TBR-AGG-POINT | `suitability_candidate_pending_oc` | D5-STAT-TBR-AGG-001 ✅ Level B |
 | DID-BOOTSTRAP | `suitability_candidate_pending_oc` | D5-STAT-DID-BOOTSTRAP-001 |
 | MCELL-PERCELL-SCM-JK | `suitability_candidate_pending_oc` | D5-STAT-MCELL-PERCELL-001 |
 
@@ -200,15 +201,17 @@ Family-level quarantine (quickblock, matchedpair, legacy SCM) remains in Layer 3
 
 **AugSynth point Level B:** ✅ **`D5-STAT-AUGSYNTH-POINT-001`**.
 
-**Immediate next concrete artifact:** **`D5-STAT-TBR-AGG-001`**.
+**TBR aggregate point Level B:** ✅ **`D5-STAT-TBR-AGG-001`**.
+
+**Immediate next concrete artifact:** **`D5-STAT-DID-BOOTSTRAP-001`**.
 
 Then (from Layer 5 matrix queue):
 
-1. D5-STAT-SCM-JK-001  
-2. D5-STAT-AUGSYNTH-POINT-001  
-3. D5-STAT-TBR-AGG-001  
-4. D5-STAT-TBRRIDGE-INF-001  
-5. D5-STAT-DID-BOOTSTRAP-001  
+1. D5-STAT-SCM-JK-001 ✅  
+2. D5-STAT-AUGSYNTH-POINT-001 ✅  
+3. D5-STAT-TBR-AGG-001 ✅  
+4. D5-STAT-DID-BOOTSTRAP-001 **(next)**  
+5. D5-STAT-TBRRIDGE-INF-001  
 6. D5-STAT-MCELL-PERCELL-001  
 
 Blocked queue unchanged from Layer 5 (`d5_stat_blocked_queue` in JSON).
@@ -250,7 +253,7 @@ Regenerate: `python -m panel_exp.validation.design_estimator_inference_suitabili
 
 **Do not** wire TrustReport or F-DECISION from this framework.
 
-**Next concrete work:** execute **`D5-STAT-TBR-AGG-001`** (AugSynth point Level B complete — see characterization report).
+**Next concrete work:** execute **`D5-STAT-DID-BOOTSTRAP-001`** (TBR aggregate Level B complete — see [`D5_STAT_TBR_AGG_001_REPORT.md`](track_d/D5_STAT_TBR_AGG_001_REPORT.md)).
 
 **After OC evidence accumulates:** author **`TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001`** or targeted F-DECISION/TrustReport amendments — not before.
 
@@ -277,9 +280,10 @@ Regenerate: `python -m panel_exp.validation.design_estimator_inference_suitabili
 | Smoke artifact D5-STAT-SMOKE-CALLABLE-001 | ✅ |
 | Level B SCM+JK D5-STAT-SCM-JK-001 | ✅ |
 | Level B AugSynth point D5-STAT-AUGSYNTH-POINT-001 | ✅ |
-| Next artifact = D5-STAT-TBR-AGG-001 | ✅ |
+| Level B TBR aggregate D5-STAT-TBR-AGG-001 | ✅ |
+| Next artifact = D5-STAT-DID-BOOTSTRAP-001 | ✅ |
 | JSON + tests | ✅ |
 
 ---
 
-*DESIGN-ESTIMATOR-INFERENCE-SUITABILITY-FRAMEWORK-001 v1.0.0 — AugSynth point Level B complete; begin D5-STAT-TBR-AGG-001.*
+*DESIGN-ESTIMATOR-INFERENCE-SUITABILITY-FRAMEWORK-001 v1.0.0 — TBR aggregate Level B complete; begin D5-STAT-DID-BOOTSTRAP-001.*

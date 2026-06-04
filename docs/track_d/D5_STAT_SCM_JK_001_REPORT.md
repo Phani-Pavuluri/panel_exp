@@ -95,7 +95,7 @@ or claim that SCM+JK is statistically validated or suitable.
 
 **D5-STAT-AUGSYNTH-POINT-001:** ✅ complete — see [`D5_STAT_AUGSYNTH_POINT_001_REPORT.md`](D5_STAT_AUGSYNTH_POINT_001_REPORT.md) (compare to injected truth, not this SCM-JK battery).
 
-Next: **`D5-STAT-TBR-AGG-001`**
+TBR aggregate Level B: ✅ **D5-STAT-TBR-AGG-001**. Next: **`D5-STAT-DID-BOOTSTRAP-001`**
 
 ## 17. Guardrails
 
