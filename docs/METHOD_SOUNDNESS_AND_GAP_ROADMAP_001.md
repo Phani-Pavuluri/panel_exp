@@ -382,7 +382,8 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 | **7** | **DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001** | post-5 | ✅ [`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md`](DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md) |
 | **8** | **D5-STAT-SMOKE-CALLABLE-001** | OC execution | ✅ [`docs/track_d/D5_STAT_SMOKE_CALLABLE_001_REPORT.md`](track_d/D5_STAT_SMOKE_CALLABLE_001_REPORT.md) |
 | **9** | **D5-STAT-SCM-JK-001** | Level B characterization | ✅ [`docs/track_d/D5_STAT_SCM_JK_001_REPORT.md`](track_d/D5_STAT_SCM_JK_001_REPORT.md) |
-| **10** | **D5-STAT-AUGSYNTH-POINT-001** | Level B characterization | **Next** |
+| **10** | **D5-STAT-AUGSYNTH-POINT-001** | Level B characterization | ✅ [`docs/track_d/D5_STAT_AUGSYNTH_POINT_001_REPORT.md`](track_d/D5_STAT_AUGSYNTH_POINT_001_REPORT.md) |
+| **11** | **D5-STAT-TBR-AGG-001** | Level B characterization | **Next** |
 
 **DL-1 AugSynth lane:** closed — evidence retained; **not** active repo-wide lane.
 

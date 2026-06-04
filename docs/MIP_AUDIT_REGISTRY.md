@@ -607,7 +607,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** Prior audits retained as `evidence_input` only.
 
-**Next:** ✅ Layers 1–5 + suitability + smoke + SCM+JK Level B → **`D5-STAT-AUGSYNTH-POINT-001`**.
+**Next:** ✅ Layers 1–5 + suitability + smoke + SCM+JK + AugSynth point → **`D5-STAT-TBR-AGG-001`**.
 
 ---
 
@@ -701,7 +701,19 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Generator:** `python -m panel_exp.validation.track_d_d5_stat_scm_jk_001`
 
-**Next:** **`D5-STAT-AUGSYNTH-POINT-001`** (no TrustReport wiring from this artifact).
+**Next:** ✅ **`D5-STAT-AUGSYNTH-POINT-001`** (see below).
+
+---
+
+## D5-STAT-AUGSYNTH-POINT-001 (2026-06-04)
+
+**Artifact:** [`docs/track_d/D5_STAT_AUGSYNTH_POINT_001_REPORT.md`](track_d/D5_STAT_AUGSYNTH_POINT_001_REPORT.md) · [`docs/track_d/archives/D5_STAT_AUGSYNTH_POINT_001_results.json`](track_d/archives/D5_STAT_AUGSYNTH_POINT_001_results.json)
+
+**Verdict:** Level B AugSynthCVXPY **point** characterization **complete** — `characterization_mixed_requires_followup`; injected-truth comparison (not SCM); no interval/inference validation; forbidden flags false.
+
+**Generator:** `python -m panel_exp.validation.track_d_d5_stat_augsynth_point_001`
+
+**Next:** **`D5-STAT-TBR-AGG-001`**.
 
 ---
 

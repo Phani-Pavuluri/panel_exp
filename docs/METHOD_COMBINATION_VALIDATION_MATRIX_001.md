@@ -47,7 +47,8 @@ Layer 5 is the **final pre-suitability layer**. It converts Layers 1–4 into a 
 | Suitability framework | ✅ [`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md`](DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md) |
 | D5-STAT smoke (Level A) | ✅ [`D5_STAT_SMOKE_CALLABLE_001_REPORT.md`](track_d/D5_STAT_SMOKE_CALLABLE_001_REPORT.md) |
 | SCM+JK Level B | ✅ [`D5_STAT_SCM_JK_001_REPORT.md`](track_d/D5_STAT_SCM_JK_001_REPORT.md) |
-| Next concrete work | **`D5-STAT-AUGSYNTH-POINT-001`** |
+| AugSynth point Level B | ✅ [`D5_STAT_AUGSYNTH_POINT_001_REPORT.md`](track_d/D5_STAT_AUGSYNTH_POINT_001_REPORT.md) |
+| Next concrete work | **`D5-STAT-TBR-AGG-001`** |
 
 ---
 
@@ -224,11 +225,11 @@ Regenerate: `python -m panel_exp.validation.method_combination_validation_matrix
 
 ---
 
-## 17. Next concrete work: D5-STAT-AUGSYNTH-POINT-001
+## 17. Next concrete work: D5-STAT-TBR-AGG-001
 
-**SCM+JK Level B** complete — see [`track_d/D5_STAT_SCM_JK_001_REPORT.md`](track_d/D5_STAT_SCM_JK_001_REPORT.md).
+**AugSynth point Level B** complete — see [`track_d/D5_STAT_AUGSYNTH_POINT_001_REPORT.md`](track_d/D5_STAT_AUGSYNTH_POINT_001_REPORT.md).
 
-**Next:** AugSynth point characterization — **not** TrustReport wiring until OC archives exist.
+**Next:** TBR aggregate point characterization — **not** TrustReport wiring until OC archives exist.
 
 ---
 
@@ -256,4 +257,4 @@ Regenerate: `python -m panel_exp.validation.method_combination_validation_matrix
 
 ---
 
-*METHOD-COMBINATION-VALIDATION-MATRIX-001 v1.0.0 — Layer 5 complete; D5-STAT-AUGSYNTH-POINT-001 is next.*
+*METHOD-COMBINATION-VALIDATION-MATRIX-001 v1.0.0 — Layer 5 complete; D5-STAT-TBR-AGG-001 is next.*

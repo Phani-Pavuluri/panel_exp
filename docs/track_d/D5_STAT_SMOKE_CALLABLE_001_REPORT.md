@@ -32,7 +32,9 @@ Inputs from `DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001` — OC-ready 
 
 **D5-STAT-SCM-JK-001:** ✅ Level B characterization complete — see [`D5_STAT_SCM_JK_001_REPORT.md`](D5_STAT_SCM_JK_001_REPORT.md).
 
-Next recommended: **D5-STAT-AUGSYNTH-POINT-001** or **D5-STAT-TBR-AGG-001** per Layer 5 queue.
+**D5-STAT-AUGSYNTH-POINT-001:** ✅ Level B point characterization complete — see [`D5_STAT_AUGSYNTH_POINT_001_REPORT.md`](D5_STAT_AUGSYNTH_POINT_001_REPORT.md).
+
+Next recommended: **D5-STAT-TBR-AGG-001** per Layer 5 queue.
 
 ## 16. What this artifact does not authorize
 
