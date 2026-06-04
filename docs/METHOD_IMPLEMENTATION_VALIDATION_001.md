@@ -43,7 +43,7 @@ Layer 3 checks whether repo **code paths** match the contracts in Layer 2 litera
 | Layer 2 — Literature alignment | ✅ |
 | **Layer 3 — Implementation validation** | ✅ **This artifact** |
 | Layer 4 — Statistical validation protocol | ✅ [`METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.md`](METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.md) |
-| Layer 5 — Combination matrix | **Next** — `METHOD_COMBINATION_VALIDATION_MATRIX_001` |
+| Layer 5 — Combination matrix | ✅ [`METHOD_COMBINATION_VALIDATION_MATRIX_001.md`](METHOD_COMBINATION_VALIDATION_MATRIX_001.md) |
 
 ---
 
@@ -216,13 +216,13 @@ Layer 4 still required — Layer 3 is **not** statistical proof.
 
 ---
 
-## 15. Next artifact: METHOD_COMBINATION_VALIDATION_MATRIX_001
+## 15. Next artifact: DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001
 
 **Layer 4** complete — see [`METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.md`](METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.md).
 
-**Layer 5** builds the combination validation matrix from Layer 4 protocol rows and executed D5-STAT-* evidence.
+**Layer 5** complete — see [`METHOD_COMBINATION_VALIDATION_MATRIX_001.md`](METHOD_COMBINATION_VALIDATION_MATRIX_001.md).
 
-**Inputs:** Layer 4 JSON · this register · Layer 2 statistical_validation_needed lists · existing D5 archives (evidence only).
+**Inputs:** Layer 5 JSON · this register · executed D5-STAT-* archives (evidence only).
 
 ---
 
@@ -250,4 +250,4 @@ Layer 4 still required — Layer 3 is **not** statistical proof.
 
 ---
 
-*METHOD-IMPLEMENTATION-VALIDATION-001 v1.0.0 — Layer 3 complete; Layer 5 combination matrix is next.*
+*METHOD-IMPLEMENTATION-VALIDATION-001 v1.0.0 — Layer 3 complete; post-Layer-5 suitability framework is next.*

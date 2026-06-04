@@ -48,7 +48,8 @@ This register compares **implemented** components from [`METHOD_CODE_INVENTORY_0
 | **Layer 2 — Literature alignment** | ✅ **This document** + JSON |
 | Layer 3 — Implementation validation | ✅ [`METHOD_IMPLEMENTATION_VALIDATION_001.md`](METHOD_IMPLEMENTATION_VALIDATION_001.md) |
 | Layer 4 — Statistical validation protocol | ✅ [`METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.md`](METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.md) |
-| Layer 5 — Combination matrix | **Next** — `METHOD_COMBINATION_VALIDATION_MATRIX_001` |
+| Layer 5 — Combination matrix | ✅ [`METHOD_COMBINATION_VALIDATION_MATRIX_001.md`](METHOD_COMBINATION_VALIDATION_MATRIX_001.md) |
+| Suitability framework | **Next** — `DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001` |
 | Trust / suitability framework | **Paused** per validation program §8 |
 
 [`METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md) and combo matrices remain **hypotheses** until Layer 5.
@@ -362,15 +363,13 @@ Consolidated from JSON `implementation_questions_to_resolve` (priority order):
 
 ---
 
-## 13. Next artifact: METHOD_COMBINATION_VALIDATION_MATRIX_001
+## 13. Next artifact: DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001
 
-**Layer 3** complete — see [`METHOD_IMPLEMENTATION_VALIDATION_001.md`](METHOD_IMPLEMENTATION_VALIDATION_001.md).
+**Layers 3–5** complete — see implementation validation, statistical protocol, and combination matrix artifacts.
 
-**Layer 4** complete — see [`METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.md`](METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.md).
+**Post-Layer-5** suitability framework uses matrix rows + D5-STAT evidence; does not auto-assign trust roles.
 
-**Layer 5** consolidates combination suitability using Layer 4 protocol rows and executed D5-STAT-* archives.
-
-**Inputs:** Layer 4 JSON `rows[]` · §11 statistical_validation_needed lists · prior D5 archives (evidence only).
+**Inputs:** Layer 5 JSON `rows[]` · §11 statistical_validation_needed lists · prior D5 archives (evidence only).
 
 ---
 

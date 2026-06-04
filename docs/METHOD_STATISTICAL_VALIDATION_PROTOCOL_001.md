@@ -44,7 +44,8 @@ Layer 4 defines **synthetic worlds**, **metrics**, **acceptance criteria classes
 | Layer 2 — Literature alignment | ✅ |
 | Layer 3 — Implementation validation | ✅ |
 | **Layer 4 — Statistical validation protocol** | ✅ **This artifact** |
-| Layer 5 — Combination matrix | **Next** |
+| Layer 5 — Combination matrix | ✅ [`METHOD_COMBINATION_VALIDATION_MATRIX_001.md`](METHOD_COMBINATION_VALIDATION_MATRIX_001.md) |
+| Suitability framework | **Next** — `DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001` |
 | Suitability / trust framework | **Paused** per program §8 |
 
 ---
@@ -319,13 +320,13 @@ Regenerate: `python -m panel_exp.validation.method_statistical_validation_protoc
 
 ---
 
-## 18. Next artifact: METHOD_COMBINATION_VALIDATION_MATRIX_001
+## 18. Next artifact: DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001
 
-**Layer 5** consolidates design × estimator × inference suitability hypotheses using Layer 4 protocol rows and executed D5-STAT-* evidence.
+**Layer 5** complete — see [`METHOD_COMBINATION_VALIDATION_MATRIX_001.md`](METHOD_COMBINATION_VALIDATION_MATRIX_001.md).
 
-**Inputs:** This register · Layer 3 gap register · COMBO/AUDIT-010 · executed OC archives (when present).
+**Post-Layer-5** suitability framework may use matrix rows + executed D5-STAT-* evidence under explicit charter.
 
-**Still blocked:** Trust framework · primary/secondary/directional roles · promotion.
+**Still blocked:** Trust framework auto-expansion · primary/secondary/directional roles · promotion.
 
 ---
 
@@ -355,4 +356,4 @@ Regenerate: `python -m panel_exp.validation.method_statistical_validation_protoc
 
 ---
 
-*METHOD-STATISTICAL-VALIDATION-PROTOCOL-001 v1.0.0 — Layer 4 protocol complete; Layer 5 combination matrix is next.*
+*METHOD-STATISTICAL-VALIDATION-PROTOCOL-001 v1.0.0 — Layer 4 protocol complete; post-Layer-5 suitability framework is next.*

@@ -242,7 +242,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Status:** **active** — authoritative method-foundation sequence  
 **Verdict:** **Pauses** trust-framework / method-role expansion until layers 1–5 complete (code inventory → literature → implementation → statistical OC → combination matrix). Prior synthesis and MCELL-first chains are **evidence only**, not sequencing authority.
 
-**Ordered next:** ✅ Layer 1 **`METHOD_CODE_INVENTORY_001`** → ✅ Layer 2 **`METHOD_LITERATURE_ALIGNMENT_001`** → ✅ Layer 3 **`METHOD_IMPLEMENTATION_VALIDATION_001`** → ✅ Layer 4 **`METHOD_STATISTICAL_VALIDATION_PROTOCOL_001`** → **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** → **`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001`** → trust-framework integration.
+**Ordered next:** ✅ Layers 1–5 complete → **`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001`** → trust-framework integration (roles still paused per program §8).
 
 **Paused:** TrustReport / F-DECISION / CalibrationSignal / MMM role expansion · default **`D5-INST-AUGSYNTH-MULTICELL-001`** (optional narrow gate test later only).
 
@@ -276,7 +276,15 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Archive:** [`track_d/archives/METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.json`](track_d/archives/METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.json)  
 **Generator:** [`panel_exp/validation/method_statistical_validation_protocol_001.py`](../panel_exp/validation/method_statistical_validation_protocol_001.py)  
 **Status:** **complete** — 51 protocol rows (29 family + 22 combination); DGP/metric catalogs; battery A–E; no heavy OC  
-**Next:** **`METHOD_COMBINATION_VALIDATION_MATRIX_001`**
+**Next:** ✅ Layer 5 complete (see below)
+
+### METHOD-COMBINATION-VALIDATION-MATRIX-001 (Layer 5)
+
+**Document:** [`METHOD_COMBINATION_VALIDATION_MATRIX_001.md`](METHOD_COMBINATION_VALIDATION_MATRIX_001.md)  
+**Archive:** [`track_d/archives/METHOD_COMBINATION_VALIDATION_MATRIX_001.json`](track_d/archives/METHOD_COMBINATION_VALIDATION_MATRIX_001.json)  
+**Generator:** [`panel_exp/validation/method_combination_validation_matrix_001.py`](../panel_exp/validation/method_combination_validation_matrix_001.py)  
+**Status:** **complete** — 30 combination rows; ready-for-OC / blocked / bridge queues; no suitability roles  
+**Next:** **`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001`**
 
 ### METHOD-SOUNDNESS-AND-GAP-ROADMAP-001
 
@@ -286,7 +294,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 
 **Inputs:** Track D D1–D5 · CV-001 · AUDIT-010 · foundation hardening · validation program.
 
-**Ordered next:** See **METHOD-VALIDATION-PROGRAM-001** (Layer 5 combination matrix).
+**Ordered next:** See **METHOD-VALIDATION-PROGRAM-001** (post-Layer-5 suitability framework).
 
 ### METHOD-SOUNDNESS-ROADMAP-REVIEW-001
 

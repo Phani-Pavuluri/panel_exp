@@ -607,7 +607,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** Prior audits retained as `evidence_input` only.
 
-**Next:** ✅ Layers 1–4 → **`METHOD_COMBINATION_VALIDATION_MATRIX_001`**.
+**Next:** ✅ Layers 1–5 → **`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001`**.
 
 ---
 
@@ -653,7 +653,19 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Generator:** `python -m panel_exp.validation.method_statistical_validation_protocol_001`
 
-**Next:** **`METHOD_COMBINATION_VALIDATION_MATRIX_001`**.
+**Next:** ✅ **`METHOD_COMBINATION_VALIDATION_MATRIX_001`**.
+
+---
+
+## METHOD-COMBINATION-VALIDATION-MATRIX-001 (2026-06-04)
+
+**Artifact:** [`docs/METHOD_COMBINATION_VALIDATION_MATRIX_001.md`](METHOD_COMBINATION_VALIDATION_MATRIX_001.md) · [`docs/track_d/archives/METHOD_COMBINATION_VALIDATION_MATRIX_001.json`](track_d/archives/METHOD_COMBINATION_VALIDATION_MATRIX_001.json)
+
+**Verdict:** Layer 5 **complete** — 30 combination rows; ready-for-OC / blocked / bridge-required / research-only status; D5-STAT execution and blocked queues; forbidden flags false on all rows.
+
+**Generator:** `python -m panel_exp.validation.method_combination_validation_matrix_001`
+
+**Next:** **`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001`**.
 
 ---
 
