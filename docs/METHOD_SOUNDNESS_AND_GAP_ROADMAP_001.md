@@ -369,28 +369,24 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 
 ## 9. Immediate next active lane
 
-**Checkpoint:** [`METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md`](METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md) — verdict **`proceed_to_augsynth_development_lane`** (DL-1 + coupled DL-2; design-readout parallel docs). **Review complete.**
+**Authoritative sequence (2026-06-04):** [`METHOD_VALIDATION_PROGRAM_001.md`](METHOD_VALIDATION_PROGRAM_001.md).
 
-**Execution plan:** [`AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md) — **materialized**. **D5-DIAG-SCM-AUGSYNTH-001** ✅ complete ([`D5_DIAG_SCM_AUGSYNTH_001_REPORT.md`](track_d/D5_DIAG_SCM_AUGSYNTH_001_REPORT.md)). **Next:** **AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001** (P2).
+| Priority | Artifact | Layer | Status |
+|----------|----------|-------|--------|
+| **1** | **METHOD_VALIDATION_PROGRAM_001** | program | ✅ active |
+| **2** | **METHOD_CODE_INVENTORY_001** | 1 | ✅ [`METHOD_CODE_INVENTORY_001.md`](METHOD_CODE_INVENTORY_001.md) |
+| **3** | **METHOD_LITERATURE_ALIGNMENT_001** | 2 | **Next** |
+| **4** | **METHOD_IMPLEMENTATION_VALIDATION_001** | 3 | pending |
+| **5** | **METHOD_STATISTICAL_VALIDATION_PROTOCOL_001** | 4 | pending |
+| **6** | **METHOD_COMBINATION_VALIDATION_MATRIX_001** | 5 | pending |
 
-
-**Authoritative sequence (2026-06-04):** [`METHOD_VALIDATION_PROGRAM_001.md`](METHOD_VALIDATION_PROGRAM_001.md) — layered method-foundation validation **before** trust-framework or combo-role expansion. DL-1 AugSynth work is **complete** (`evidence_input`); not the active repo-wide lane.
-
-| Priority | Artifact | Type | Rationale |
-|----------|----------|------|-----------|
-| **1** | **METHOD_VALIDATION_PROGRAM_001** | program roadmap | ✅ Authoritative foundation sequence; pauses role expansion |
-| **2** | **METHOD_CODE_INVENTORY_001** | Layer 1 | **Next** — code-first inventory of all methods |
-| **3** | **METHOD_LITERATURE_ALIGNMENT_001** | Layer 2 | Literature vs implementation per family |
-| **4** | **METHOD_IMPLEMENTATION_VALIDATION_001** | Layer 3 | Architecture / fidelity reconciliation |
-| **5** | **METHOD_STATISTICAL_VALIDATION_PROTOCOL_001** | Layer 4 | OC protocol per family |
-| **6** | **METHOD_COMBINATION_VALIDATION_MATRIX_001** | Layer 5 | Validated design × estimator × inference tuples |
-| **7** | **DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001** | Post-5 | Role-ready suitability (not trust roles yet) |
+**DL-1 AugSynth lane:** closed — evidence retained; **not** active repo-wide lane.
 
 **Retained evidence (not sequencing authority):** AugSynth P1–P6 · [`METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md) · Track D/F audits · pooling ADR semantics.
 
 **Paused:** **`D5-INST-AUGSYNTH-MULTICELL-001`** as default next step · TrustReport/F-DECISION/CalibrationSignal/MMM role expansion · LLM layer · promotion audits.
 
-**Explicitly not next:** Ad-hoc combo OC without Layer 1–4 coverage · MCELL as method-suitability proof.
+**Explicitly not next:** Ad-hoc combo OC without Layer 3–4 coverage · MCELL as method-suitability proof.
 
 ---
 

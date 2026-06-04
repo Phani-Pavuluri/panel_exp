@@ -1,0 +1,1070 @@
+{
+  "document_id": "METHOD-CODE-INVENTORY-001",
+  "generated_at": "2026-06-04T06:29:41.991242+00:00",
+  "generator": "panel_exp/validation/method_code_inventory_001.py",
+  "discovery_sources": [
+    "panel_exp.design.registry.get_design_registry",
+    "panel_exp.method_metadata.estimator_catalog",
+    "panel_exp.method_metadata.inference_mode_catalog",
+    "manual wrapper/orchestration enrichment"
+  ],
+  "counts": {
+    "design": 10,
+    "estimator": 14,
+    "inference": 10,
+    "orchestration_registry_alias": 10,
+    "total": 44
+  },
+  "items": [
+    {
+      "canonical_name": "greedy_match_markets",
+      "aliases": [
+        "gmm",
+        "greedymatchmarkets"
+      ],
+      "method_type": "design",
+      "module_path": "panel_exp.design (handler: panel_exp.design.geo_runner)",
+      "class_or_function_name": "greedy_match_markets",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "PanelDataset / wide panel; design kwargs; optional pre_treatment_period",
+      "expected_outputs": "geo_run_design_tuple",
+      "supported_geometry_if_declared": "unit assignment dict control/test_*; multi-cell via n_test_grps",
+      "treatment_structure_if_declared": "n_test_grps >= 1",
+      "estimand_if_declared": "assignment / balance (not ATT)",
+      "uncertainty_output_if_any": "none",
+      "docs_references": [
+        "TRACK_D_DESIGN_METHOD_INVENTORY_001.md"
+      ],
+      "tests_references": [
+        "tests/track_d/test_design_inventory_001.py"
+      ],
+      "validation_artifacts_references": [
+        "track_d/D5_POW_001e",
+        "track_d/D5_DES_*"
+      ],
+      "known_gaps_from_existing_docs": "INV-D1-001: caller must pass pre_treatment_period for matching",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "thinningdesign",
+      "aliases": [
+        "thinning_design",
+        "thinning"
+      ],
+      "method_type": "design",
+      "module_path": "panel_exp.design (handler: panel_exp.design.geo_runner)",
+      "class_or_function_name": "ThinningDesign",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "PanelDataset / wide panel; design kwargs; optional pre_treatment_period",
+      "expected_outputs": "geo_run_design_tuple",
+      "supported_geometry_if_declared": "unit assignment dict control/test_*; multi-cell via n_test_grps",
+      "treatment_structure_if_declared": "n_test_grps >= 1",
+      "estimand_if_declared": "assignment / balance (not ATT)",
+      "uncertainty_output_if_any": "none",
+      "docs_references": [
+        "TRACK_D_DESIGN_METHOD_INVENTORY_001.md"
+      ],
+      "tests_references": [
+        "tests/track_d/test_design_inventory_001.py"
+      ],
+      "validation_artifacts_references": [
+        "track_d/D5_POW_001e",
+        "track_d/D5_DES_*"
+      ],
+      "known_gaps_from_existing_docs": "",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "balancedrandomization",
+      "aliases": [
+        "balanced_randomization",
+        "balanced"
+      ],
+      "method_type": "design",
+      "module_path": "panel_exp.design (handler: panel_exp.design.geo_runner)",
+      "class_or_function_name": "BalancedRandomization",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "PanelDataset / wide panel; design kwargs; optional pre_treatment_period",
+      "expected_outputs": "geo_run_design_tuple",
+      "supported_geometry_if_declared": "unit assignment dict control/test_*; multi-cell via n_test_grps",
+      "treatment_structure_if_declared": "n_test_grps >= 1",
+      "estimand_if_declared": "assignment / balance (not ATT)",
+      "uncertainty_output_if_any": "none",
+      "docs_references": [
+        "TRACK_D_DESIGN_METHOD_INVENTORY_001.md"
+      ],
+      "tests_references": [
+        "tests/track_d/test_design_inventory_001.py"
+      ],
+      "validation_artifacts_references": [
+        "track_d/D5_POW_001e",
+        "track_d/D5_DES_*"
+      ],
+      "known_gaps_from_existing_docs": "",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "completerandomization",
+      "aliases": [
+        "complete_randomization",
+        "complete"
+      ],
+      "method_type": "design",
+      "module_path": "panel_exp.design (handler: panel_exp.design.geo_runner)",
+      "class_or_function_name": "CompleteRandomization",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "PanelDataset / wide panel; design kwargs; optional pre_treatment_period",
+      "expected_outputs": "geo_run_design_tuple",
+      "supported_geometry_if_declared": "unit assignment dict control/test_*; multi-cell via n_test_grps",
+      "treatment_structure_if_declared": "n_test_grps >= 1",
+      "estimand_if_declared": "assignment / balance (not ATT)",
+      "uncertainty_output_if_any": "none",
+      "docs_references": [
+        "TRACK_D_DESIGN_METHOD_INVENTORY_001.md"
+      ],
+      "tests_references": [
+        "tests/track_d/test_design_inventory_001.py"
+      ],
+      "validation_artifacts_references": [
+        "track_d/D5_POW_001e",
+        "track_d/D5_DES_*"
+      ],
+      "known_gaps_from_existing_docs": "",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "stratifiedrandomization",
+      "aliases": [
+        "stratified_randomization",
+        "stratified"
+      ],
+      "method_type": "design",
+      "module_path": "panel_exp.design (handler: panel_exp.design.geo_runner)",
+      "class_or_function_name": "StratifiedRandomization",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "PanelDataset / wide panel; design kwargs; optional pre_treatment_period",
+      "expected_outputs": "geo_run_design_tuple",
+      "supported_geometry_if_declared": "unit assignment dict control/test_*; multi-cell via n_test_grps",
+      "treatment_structure_if_declared": "n_test_grps >= 1",
+      "estimand_if_declared": "assignment / balance (not ATT)",
+      "uncertainty_output_if_any": "none",
+      "docs_references": [
+        "TRACK_D_DESIGN_METHOD_INVENTORY_001.md"
+      ],
+      "tests_references": [
+        "tests/track_d/test_design_inventory_001.py"
+      ],
+      "validation_artifacts_references": [
+        "track_d/D5_POW_001e",
+        "track_d/D5_DES_*"
+      ],
+      "known_gaps_from_existing_docs": "",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "quickblock",
+      "aliases": [
+        "quick_block"
+      ],
+      "method_type": "design",
+      "module_path": "panel_exp.design (handler: panel_exp.design.geo_runner)",
+      "class_or_function_name": "QuickBlock",
+      "public_entrypoint_status": "internal",
+      "expected_inputs": "PanelDataset / wide panel; design kwargs; optional pre_treatment_period",
+      "expected_outputs": "assignment_dict",
+      "supported_geometry_if_declared": "design-specific (see notes)",
+      "treatment_structure_if_declared": "n_test_grps >= 1",
+      "estimand_if_declared": "assignment / balance (not ATT)",
+      "uncertainty_output_if_any": "none",
+      "docs_references": [
+        "TRACK_D_DESIGN_METHOD_INVENTORY_001.md"
+      ],
+      "tests_references": [],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Not geo-run supported",
+      "inventory_status": "partial"
+    },
+    {
+      "canonical_name": "matchedpair",
+      "aliases": [
+        "matched_pair"
+      ],
+      "method_type": "design",
+      "module_path": "panel_exp.design (handler: panel_exp.design.geo_runner)",
+      "class_or_function_name": "MatchedPair",
+      "public_entrypoint_status": "internal",
+      "expected_inputs": "PanelDataset / wide panel; design kwargs; optional pre_treatment_period",
+      "expected_outputs": "assignment_dict",
+      "supported_geometry_if_declared": "design-specific (see notes)",
+      "treatment_structure_if_declared": "n_test_grps >= 1",
+      "estimand_if_declared": "assignment / balance (not ATT)",
+      "uncertainty_output_if_any": "none",
+      "docs_references": [
+        "TRACK_D_DESIGN_METHOD_INVENTORY_001.md"
+      ],
+      "tests_references": [],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Not geo-run supported",
+      "inventory_status": "partial"
+    },
+    {
+      "canonical_name": "trimmedmatch",
+      "aliases": [
+        "trimmed_match"
+      ],
+      "method_type": "design",
+      "module_path": "panel_exp.design (handler: panel_exp.design.geo_runner)",
+      "class_or_function_name": "TrimmedMatchDesign",
+      "public_entrypoint_status": "internal",
+      "expected_inputs": "PanelDataset / wide panel; design kwargs; optional pre_treatment_period",
+      "expected_outputs": "assignment_dict",
+      "supported_geometry_if_declared": "design-specific (see notes)",
+      "treatment_structure_if_declared": "n_test_grps >= 1",
+      "estimand_if_declared": "assignment / balance (not ATT)",
+      "uncertainty_output_if_any": "none",
+      "docs_references": [
+        "TRACK_D_DESIGN_METHOD_INVENTORY_001.md"
+      ],
+      "tests_references": [],
+      "validation_artifacts_references": [
+        "track_d/D5_DES_SUPERGEO_001",
+        "track_d/D5_DES_TRIM_001"
+      ],
+      "known_gaps_from_existing_docs": "Not geo-run supported",
+      "inventory_status": "partial"
+    },
+    {
+      "canonical_name": "supergeos",
+      "aliases": [
+        "supergeo",
+        "supergeo_model"
+      ],
+      "method_type": "design",
+      "module_path": "panel_exp.design (handler: panel_exp.design.geo_runner)",
+      "class_or_function_name": "SupergeoModel",
+      "public_entrypoint_status": "internal",
+      "expected_inputs": "PanelDataset / wide panel; design kwargs; optional pre_treatment_period",
+      "expected_outputs": "assignment_dict",
+      "supported_geometry_if_declared": "design-specific (see notes)",
+      "treatment_structure_if_declared": "n_test_grps >= 1",
+      "estimand_if_declared": "assignment / balance (not ATT)",
+      "uncertainty_output_if_any": "none",
+      "docs_references": [
+        "TRACK_D_DESIGN_METHOD_INVENTORY_001.md"
+      ],
+      "tests_references": [],
+      "validation_artifacts_references": [
+        "track_d/D5_DES_SUPERGEO_001",
+        "track_d/D5_DES_TRIM_001"
+      ],
+      "known_gaps_from_existing_docs": "Not geo-run supported",
+      "inventory_status": "partial"
+    },
+    {
+      "canonical_name": "rerandomization_wrapper",
+      "aliases": [
+        "Rerandomization",
+        "rerandomization"
+      ],
+      "method_type": "wrapper",
+      "module_path": "panel_exp/design/assign.py",
+      "class_or_function_name": "Rerandomization",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "base_randomizer_cls + panel_data; imbalance metric",
+      "expected_outputs": "assignment via wrapped base randomizer",
+      "supported_geometry_if_declared": "same as wrapped base (typically unit dict)",
+      "treatment_structure_if_declared": "via base randomizer",
+      "estimand_if_declared": "assignment",
+      "uncertainty_output_if_any": "",
+      "docs_references": [
+        "DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md"
+      ],
+      "tests_references": [
+        "tests/track_d/test_design_inventory_001.py"
+      ],
+      "validation_artifacts_references": [
+        "D5-POW-001e inventory"
+      ],
+      "known_gaps_from_existing_docs": "Distinct from bare greedy in some OC paths",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "SCM",
+      "aliases": [
+        "SyntheticControl"
+      ],
+      "method_type": "estimator",
+      "module_path": "panel_exp.methods.scm",
+      "class_or_function_name": "SyntheticControl",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "PanelDataset; treated units; pre/post windows via ImpactAnalyzer",
+      "expected_outputs": "point effect / model results / optional inference paths",
+      "supported_geometry_if_declared": "unit panel typical",
+      "treatment_structure_if_declared": "single or multi treated per fit loop",
+      "estimand_if_declared": "method-specific (often undeclared in code)",
+      "uncertainty_output_if_any": "point_estimate, UnitJackKnife, JKP, Bayesian, BlockResidualBootstrap, Conformal, Kfold, Placebo, TimeSeriesKfold",
+      "docs_references": [
+        "method_metadata.py",
+        "METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md"
+      ],
+      "tests_references": [
+        "tests/test_scm.py"
+      ],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Requires sufficient controls; scipy optimizer sensitivity.",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "AugSynth",
+      "aliases": [],
+      "method_type": "estimator",
+      "module_path": "panel_exp.methods.scm",
+      "class_or_function_name": "AugSynth",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "PanelDataset; treated units; pre/post windows via ImpactAnalyzer",
+      "expected_outputs": "point effect / model results / optional inference paths",
+      "supported_geometry_if_declared": "unit panel typical",
+      "treatment_structure_if_declared": "single or multi treated per fit loop",
+      "estimand_if_declared": "method-specific (often undeclared in code)",
+      "uncertainty_output_if_any": "point_estimate, Kfold, Conformal",
+      "docs_references": [
+        "method_metadata.py",
+        "METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md"
+      ],
+      "tests_references": [
+        "tests/test_scm.py"
+      ],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Less automated validation than CVXPY SCM variants.",
+      "inventory_status": "partial"
+    },
+    {
+      "canonical_name": "SyntheticControlCVXPY",
+      "aliases": [],
+      "method_type": "estimator",
+      "module_path": "panel_exp.methods.scm",
+      "class_or_function_name": "SyntheticControlCVXPY",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "PanelDataset; treated units; pre/post windows via ImpactAnalyzer",
+      "expected_outputs": "point effect / model results / optional inference paths",
+      "supported_geometry_if_declared": "unit panel typical",
+      "treatment_structure_if_declared": "single or multi treated per fit loop",
+      "estimand_if_declared": "method-specific (often undeclared in code)",
+      "uncertainty_output_if_any": "point_estimate, Kfold, Conformal, BlockResidualBootstrap",
+      "docs_references": [
+        "method_metadata.py",
+        "METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md"
+      ],
+      "tests_references": [
+        "tests/test_scm.py"
+      ],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Solver-dependent; review donor correlations.",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "AugSynthCVXPY",
+      "aliases": [],
+      "method_type": "estimator",
+      "module_path": "panel_exp.methods.scm",
+      "class_or_function_name": "AugSynthCVXPY",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "PanelDataset; treated units; pre/post windows via ImpactAnalyzer",
+      "expected_outputs": "point effect / model results / optional inference paths",
+      "supported_geometry_if_declared": "unit panel typical",
+      "treatment_structure_if_declared": "single or multi treated per fit loop",
+      "estimand_if_declared": "method-specific (often undeclared in code)",
+      "uncertainty_output_if_any": "point_estimate, Kfold, Conformal",
+      "docs_references": [
+        "method_metadata.py",
+        "METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md"
+      ],
+      "tests_references": [
+        "tests/test_scm.py",
+        "tests/track_d/test_d5_inst_augsynth_ascm_003.py"
+      ],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "More complex than base SCM.; Conformal callable \u2260 governed uncertainty (F-INF-001 / D5-AUGSYNTH-003).",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "TBR",
+      "aliases": [],
+      "method_type": "estimator",
+      "module_path": "panel_exp.methods.tbr",
+      "class_or_function_name": "TBR",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "PanelDataset; treated units; pre/post windows via ImpactAnalyzer",
+      "expected_outputs": "point effect / model results / optional inference paths",
+      "supported_geometry_if_declared": "unit panel (SCM/AugSynth/TBRRidge/DID); aggregate 1x1 (TBR only)",
+      "treatment_structure_if_declared": "single or multi treated per fit loop",
+      "estimand_if_declared": "method-specific (often undeclared in code)",
+      "uncertainty_output_if_any": "point_estimate, UnitJackKnife, JKP, Kfold",
+      "docs_references": [
+        "method_metadata.py",
+        "METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md"
+      ],
+      "tests_references": [
+        "tests/track_d/test_d5_inst_tbr_001.py"
+      ],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Aggregate 1 treated + 1 control row only; not TBRRidge; not geo.relative_att_post.; Placebo is inference/falsification \u2014 use SCM+Placebo, not TBR+Placebo.",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "TBRRidge",
+      "aliases": [],
+      "method_type": "estimator",
+      "module_path": "panel_exp.methods.tbr",
+      "class_or_function_name": "TBRRidge",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "PanelDataset; treated units; pre/post windows via ImpactAnalyzer",
+      "expected_outputs": "point effect / model results / optional inference paths",
+      "supported_geometry_if_declared": "unit panel typical",
+      "treatment_structure_if_declared": "single or multi treated per fit loop",
+      "estimand_if_declared": "method-specific (often undeclared in code)",
+      "uncertainty_output_if_any": "point_estimate, UnitJackKnife, JKP, Bayesian, BlockResidualBootstrap, Conformal, Kfold, TimeSeriesKfold",
+      "docs_references": [
+        "method_metadata.py",
+        "METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md"
+      ],
+      "tests_references": [
+        "tests/track_d/test_d5_inst_tbrridge_001.py",
+        "tests/track_d/test_d5_inst_tbrridge_003.py"
+      ],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Registry Bayesian mode on TBRRidge is not full BayesianTBR MCMC (INV-015).; Placebo is inference on SCM \u2014 TBRRidge+Placebo is not SCM placebo-in-space.",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "TBRAutoSARIMAX",
+      "aliases": [],
+      "method_type": "estimator",
+      "module_path": "panel_exp.methods.tbr",
+      "class_or_function_name": "TBRAutoSARIMAX",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "PanelDataset; treated units; pre/post windows via ImpactAnalyzer",
+      "expected_outputs": "point effect / model results / optional inference paths",
+      "supported_geometry_if_declared": "unit panel typical",
+      "treatment_structure_if_declared": "single or multi treated per fit loop",
+      "estimand_if_declared": "method-specific (often undeclared in code)",
+      "uncertainty_output_if_any": "point_estimate",
+      "docs_references": [
+        "method_metadata.py",
+        "METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md"
+      ],
+      "tests_references": [],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Runtime and model-selection review required.",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "BayesianTBR",
+      "aliases": [],
+      "method_type": "estimator",
+      "module_path": "panel_exp.methods.bayesian_regression",
+      "class_or_function_name": "BayesianTBR",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "PanelDataset; treated units; pre/post windows via ImpactAnalyzer",
+      "expected_outputs": "point effect / model results / optional inference paths",
+      "supported_geometry_if_declared": "unit panel typical",
+      "treatment_structure_if_declared": "single or multi treated per fit loop",
+      "estimand_if_declared": "method-specific (often undeclared in code)",
+      "uncertainty_output_if_any": "Bayesian",
+      "docs_references": [
+        "method_metadata.py",
+        "METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md"
+      ],
+      "tests_references": [
+        "tests/jax_test_helpers.py"
+      ],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Exploratory; convergence diagnostics required.",
+      "inventory_status": "research_only"
+    },
+    {
+      "canonical_name": "BayesianTBRHorseShoe",
+      "aliases": [],
+      "method_type": "estimator",
+      "module_path": "panel_exp.methods.bayesian_regression",
+      "class_or_function_name": "BayesianTBRHorseShoe",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "PanelDataset; treated units; pre/post windows via ImpactAnalyzer",
+      "expected_outputs": "point effect / model results / optional inference paths",
+      "supported_geometry_if_declared": "unit panel typical",
+      "treatment_structure_if_declared": "single or multi treated per fit loop",
+      "estimand_if_declared": "method-specific (often undeclared in code)",
+      "uncertainty_output_if_any": "Bayesian",
+      "docs_references": [
+        "method_metadata.py",
+        "METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md"
+      ],
+      "tests_references": [],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Research-only MCMC path.",
+      "inventory_status": "research_only"
+    },
+    {
+      "canonical_name": "DID",
+      "aliases": [],
+      "method_type": "estimator",
+      "module_path": "panel_exp.methods.DID",
+      "class_or_function_name": "DID",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "PanelDataset; treated units; pre/post windows via ImpactAnalyzer",
+      "expected_outputs": "point effect / model results / optional inference paths",
+      "supported_geometry_if_declared": "unit panel typical",
+      "treatment_structure_if_declared": "single or multi treated per fit loop",
+      "estimand_if_declared": "method-specific (often undeclared in code)",
+      "uncertainty_output_if_any": "point_estimate",
+      "docs_references": [
+        "method_metadata.py",
+        "METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md"
+      ],
+      "tests_references": [
+        "tests/test_did_interval_policy.py",
+        "tests/test_did_pretrend_contract.py"
+      ],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Pooled vs unit timing choices need expert review.",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "SyntheticDID",
+      "aliases": [],
+      "method_type": "estimator",
+      "module_path": "panel_exp.methods.synthetic_did",
+      "class_or_function_name": "SyntheticDID",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "PanelDataset; treated units; pre/post windows via ImpactAnalyzer",
+      "expected_outputs": "point effect / model results / optional inference paths",
+      "supported_geometry_if_declared": "unit panel typical",
+      "treatment_structure_if_declared": "single or multi treated per fit loop",
+      "estimand_if_declared": "method-specific (often undeclared in code)",
+      "uncertainty_output_if_any": "point_estimate",
+      "docs_references": [
+        "method_metadata.py",
+        "METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md"
+      ],
+      "tests_references": [
+        "tests/synthetic_did_test.py"
+      ],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Limited stable recovery automation in CI.",
+      "inventory_status": "research_only"
+    },
+    {
+      "canonical_name": "TROP",
+      "aliases": [],
+      "method_type": "estimator",
+      "module_path": "panel_exp.methods.triply_robust_est",
+      "class_or_function_name": "TROP",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "PanelDataset; treated units; pre/post windows via ImpactAnalyzer",
+      "expected_outputs": "point effect / model results / optional inference paths",
+      "supported_geometry_if_declared": "unit panel typical",
+      "treatment_structure_if_declared": "single or multi treated per fit loop",
+      "estimand_if_declared": "method-specific (often undeclared in code)",
+      "uncertainty_output_if_any": "point_estimate",
+      "docs_references": [
+        "method_metadata.py",
+        "METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md"
+      ],
+      "tests_references": [
+        "tests/trop_test.py"
+      ],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Large config space; expert tuning required.",
+      "inventory_status": "research_only"
+    },
+    {
+      "canonical_name": "MTGP",
+      "aliases": [],
+      "method_type": "estimator",
+      "module_path": "panel_exp.methods.mtgp",
+      "class_or_function_name": "MTGP",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "PanelDataset; treated units; pre/post windows via ImpactAnalyzer",
+      "expected_outputs": "point effect / model results / optional inference paths",
+      "supported_geometry_if_declared": "unit panel typical",
+      "treatment_structure_if_declared": "single or multi treated per fit loop",
+      "estimand_if_declared": "method-specific (often undeclared in code)",
+      "uncertainty_output_if_any": "Bayesian",
+      "docs_references": [
+        "method_metadata.py",
+        "METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md"
+      ],
+      "tests_references": [],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Experimental runtime and stability.",
+      "inventory_status": "research_only"
+    },
+    {
+      "canonical_name": "synthetic_control_function",
+      "aliases": [
+        "synthetic_control"
+      ],
+      "method_type": "estimator",
+      "module_path": "panel_exp/methods/synthetic_control.py",
+      "class_or_function_name": "synthetic_control",
+      "public_entrypoint_status": "internal",
+      "expected_inputs": "PanelDataset",
+      "expected_outputs": "dict weights",
+      "supported_geometry_if_declared": "",
+      "treatment_structure_if_declared": "",
+      "estimand_if_declared": "",
+      "uncertainty_output_if_any": "",
+      "docs_references": [],
+      "tests_references": [],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Legacy scipy function; not ImpactAnalyzer catalog entry",
+      "inventory_status": "legacy"
+    },
+    {
+      "canonical_name": "point_estimate",
+      "aliases": [],
+      "method_type": "inference",
+      "module_path": "panel_exp/inference/modes/impl.py:run_point_estimate",
+      "class_or_function_name": "run_point_estimate",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "ImpactAnalyzer + PanelDataset post-fit",
+      "expected_outputs": "y_hat; optional y_lower/y_upper; mode-specific keys",
+      "supported_geometry_if_declared": "",
+      "treatment_structure_if_declared": "",
+      "estimand_if_declared": "",
+      "uncertainty_output_if_any": "none",
+      "docs_references": [
+        "F_INF_001",
+        "F_INF_003",
+        "method_metadata.py"
+      ],
+      "tests_references": [
+        "tests/governance/test_f_inf_001_interval_semantics.py"
+      ],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "No path-level uncertainty intervals.",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "UnitJackKnife",
+      "aliases": [],
+      "method_type": "inference",
+      "module_path": "panel_exp/inference/unit_jackknife.py",
+      "class_or_function_name": "run_UnitJackKnife",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "ImpactAnalyzer + PanelDataset post-fit",
+      "expected_outputs": "y_hat; optional y_lower/y_upper; mode-specific keys",
+      "supported_geometry_if_declared": "",
+      "treatment_structure_if_declared": "",
+      "estimand_if_declared": "",
+      "uncertainty_output_if_any": "UnitJackKnife",
+      "docs_references": [
+        "F_INF_001",
+        "F_INF_003",
+        "method_metadata.py"
+      ],
+      "tests_references": [
+        "tests/governance/test_f_inf_001_interval_semantics.py"
+      ],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Not interchangeable with JKP path; distinct F-CAT taxonomy.",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "JKP",
+      "aliases": [],
+      "method_type": "inference",
+      "module_path": "panel_exp/inference/unit_jackknife.py:jkp",
+      "class_or_function_name": "run_JKP",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "ImpactAnalyzer + PanelDataset post-fit",
+      "expected_outputs": "y_hat; optional y_lower/y_upper; mode-specific keys",
+      "supported_geometry_if_declared": "",
+      "treatment_structure_if_declared": "",
+      "estimand_if_declared": "",
+      "uncertainty_output_if_any": "JKP",
+      "docs_references": [
+        "F_INF_001",
+        "F_INF_003",
+        "method_metadata.py"
+      ],
+      "tests_references": [
+        "tests/governance/test_f_inf_001_interval_semantics.py"
+      ],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Degenerate on aggregate 1\u00d71 class TBR; not governed without bridge.",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "Bayesian",
+      "aliases": [],
+      "method_type": "inference",
+      "module_path": "panel_exp/inference/modes/impl.py:run_bayesian",
+      "class_or_function_name": "run_Bayesian",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "ImpactAnalyzer + PanelDataset post-fit",
+      "expected_outputs": "y_hat; optional y_lower/y_upper; mode-specific keys",
+      "supported_geometry_if_declared": "",
+      "treatment_structure_if_declared": "",
+      "estimand_if_declared": "",
+      "uncertainty_output_if_any": "Bayesian",
+      "docs_references": [
+        "F_INF_001",
+        "F_INF_003",
+        "method_metadata.py"
+      ],
+      "tests_references": [
+        "tests/governance/test_f_inf_001_interval_semantics.py"
+      ],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Unstable optional dependency path without pins.",
+      "inventory_status": "research_only"
+    },
+    {
+      "canonical_name": "BlockResidualBootstrap",
+      "aliases": [],
+      "method_type": "inference",
+      "module_path": "panel_exp/inference/block_residual_bootstrap.py",
+      "class_or_function_name": "run_BlockResidualBootstrap",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "ImpactAnalyzer + PanelDataset post-fit",
+      "expected_outputs": "y_hat; optional y_lower/y_upper; mode-specific keys",
+      "supported_geometry_if_declared": "",
+      "treatment_structure_if_declared": "",
+      "estimand_if_declared": "",
+      "uncertainty_output_if_any": "BlockResidualBootstrap",
+      "docs_references": [
+        "F_INF_001",
+        "F_INF_003",
+        "method_metadata.py"
+      ],
+      "tests_references": [
+        "tests/governance/test_f_inf_001_interval_semantics.py"
+      ],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "Conformal",
+      "aliases": [],
+      "method_type": "inference",
+      "module_path": "panel_exp/inference/conformal.py",
+      "class_or_function_name": "run_Conformal",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "ImpactAnalyzer + PanelDataset post-fit",
+      "expected_outputs": "y_hat; optional y_lower/y_upper; mode-specific keys",
+      "supported_geometry_if_declared": "",
+      "treatment_structure_if_declared": "",
+      "estimand_if_declared": "",
+      "uncertainty_output_if_any": "Conformal",
+      "docs_references": [
+        "F_INF_001",
+        "F_INF_003",
+        "method_metadata.py"
+      ],
+      "tests_references": [
+        "tests/governance/test_f_inf_001_interval_semantics.py"
+      ],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Band sign/semantics must pass F-INF before any export claim.",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "Kfold",
+      "aliases": [],
+      "method_type": "inference",
+      "module_path": "panel_exp/inference/k_fold.py",
+      "class_or_function_name": "run_Kfold",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "ImpactAnalyzer + PanelDataset post-fit",
+      "expected_outputs": "y_hat; optional y_lower/y_upper; mode-specific keys",
+      "supported_geometry_if_declared": "",
+      "treatment_structure_if_declared": "",
+      "estimand_if_declared": "",
+      "uncertainty_output_if_any": "Kfold",
+      "docs_references": [
+        "F_INF_001",
+        "F_INF_003",
+        "method_metadata.py"
+      ],
+      "tests_references": [
+        "tests/governance/test_f_inf_001_interval_semantics.py"
+      ],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "Placebo",
+      "aliases": [],
+      "method_type": "inference",
+      "module_path": "panel_exp/inference/placebo.py",
+      "class_or_function_name": "run_Placebo",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "ImpactAnalyzer + PanelDataset post-fit",
+      "expected_outputs": "y_hat; optional y_lower/y_upper; mode-specific keys",
+      "supported_geometry_if_declared": "",
+      "treatment_structure_if_declared": "",
+      "estimand_if_declared": "",
+      "uncertainty_output_if_any": "Placebo",
+      "docs_references": [
+        "F_INF_001",
+        "F_INF_003",
+        "method_metadata.py"
+      ],
+      "tests_references": [
+        "tests/governance/test_f_inf_001_interval_semantics.py"
+      ],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Coverage-based bands, not classical analytical CIs.",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "TimeSeriesKfold",
+      "aliases": [],
+      "method_type": "inference",
+      "module_path": "panel_exp/inference/k_fold.py (TS path)",
+      "class_or_function_name": "run_TimeSeriesKfold",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "ImpactAnalyzer + PanelDataset post-fit",
+      "expected_outputs": "y_hat; optional y_lower/y_upper; mode-specific keys",
+      "supported_geometry_if_declared": "",
+      "treatment_structure_if_declared": "",
+      "estimand_if_declared": "",
+      "uncertainty_output_if_any": "TimeSeriesKfold",
+      "docs_references": [
+        "F_INF_001",
+        "F_INF_003",
+        "method_metadata.py"
+      ],
+      "tests_references": [
+        "tests/governance/test_f_inf_001_interval_semantics.py"
+      ],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "F-INF may classify intervals unverified on OC batteries.",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "DID_native_bootstrap",
+      "aliases": [
+        "estimator_native_bootstrap"
+      ],
+      "method_type": "inference",
+      "module_path": "panel_exp/methods/DID.py",
+      "class_or_function_name": "DID.run_analysis",
+      "public_entrypoint_status": "internal",
+      "expected_inputs": "DID estimator only",
+      "expected_outputs": "cumulative ATT intervals (embedded)",
+      "supported_geometry_if_declared": "",
+      "treatment_structure_if_declared": "",
+      "estimand_if_declared": "relative ATT path (DEF-003 partial)",
+      "uncertainty_output_if_any": "",
+      "docs_references": [
+        "TRACK_D_D3_INFERENCE_METHOD_AUDIT_001.md"
+      ],
+      "tests_references": [],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Not in inference registry; DEF-003 relative CI deferred",
+      "inventory_status": "partial"
+    },
+    {
+      "canonical_name": "GeoExperimentDesign",
+      "aliases": [],
+      "method_type": "orchestration",
+      "module_path": "panel_exp/design/geo_experiment_design.py",
+      "class_or_function_name": "GeoExperimentDesign",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "PanelDataset; design kwargs; PowerAnalysis hooks",
+      "expected_outputs": "Rerandomization design; ExperimentEvidence; MDE paths",
+      "supported_geometry_if_declared": "",
+      "treatment_structure_if_declared": "",
+      "estimand_if_declared": "",
+      "uncertainty_output_if_any": "",
+      "docs_references": [],
+      "tests_references": [
+        "tests/track_d/test_design_inventory_001.py"
+      ],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "run_geo_experiment_design",
+      "aliases": [],
+      "method_type": "orchestration",
+      "module_path": "panel_exp/design/geo_runner.py",
+      "class_or_function_name": "run_geo_experiment_design",
+      "public_entrypoint_status": "internal",
+      "expected_inputs": "",
+      "expected_outputs": "",
+      "supported_geometry_if_declared": "",
+      "treatment_structure_if_declared": "",
+      "estimand_if_declared": "",
+      "uncertainty_output_if_any": "",
+      "docs_references": [],
+      "tests_references": [],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "ImpactAnalyzer",
+      "aliases": [],
+      "method_type": "orchestration",
+      "module_path": "panel_exp/impact.py",
+      "class_or_function_name": "ImpactAnalyzer",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "PanelDataset; inference mode string",
+      "expected_outputs": "",
+      "supported_geometry_if_declared": "",
+      "treatment_structure_if_declared": "",
+      "estimand_if_declared": "",
+      "uncertainty_output_if_any": "",
+      "docs_references": [],
+      "tests_references": [],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "PowerAnalysis",
+      "aliases": [],
+      "method_type": "orchestration",
+      "module_path": "panel_exp/design/power.py",
+      "class_or_function_name": "PowerAnalysis",
+      "public_entrypoint_status": "public",
+      "expected_inputs": "",
+      "expected_outputs": "",
+      "supported_geometry_if_declared": "",
+      "treatment_structure_if_declared": "",
+      "estimand_if_declared": "",
+      "uncertainty_output_if_any": "",
+      "docs_references": [],
+      "tests_references": [],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Often TBRRidge agg2; mismatch vs SCM+JK readout (POW-001a)",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "design_registry",
+      "aliases": [],
+      "method_type": "registry",
+      "module_path": "panel_exp/design/registry.py",
+      "class_or_function_name": "DesignRegistry",
+      "public_entrypoint_status": "unclear",
+      "expected_inputs": "",
+      "expected_outputs": "",
+      "supported_geometry_if_declared": "",
+      "treatment_structure_if_declared": "",
+      "estimand_if_declared": "",
+      "uncertainty_output_if_any": "",
+      "docs_references": [],
+      "tests_references": [],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "inference_registry",
+      "aliases": [],
+      "method_type": "registry",
+      "module_path": "panel_exp/inference/registry.py",
+      "class_or_function_name": "InferenceRegistry",
+      "public_entrypoint_status": "unclear",
+      "expected_inputs": "",
+      "expected_outputs": "",
+      "supported_geometry_if_declared": "",
+      "treatment_structure_if_declared": "",
+      "estimand_if_declared": "",
+      "uncertainty_output_if_any": "",
+      "docs_references": [],
+      "tests_references": [],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "estimator_maturity_catalog",
+      "aliases": [],
+      "method_type": "registry",
+      "module_path": "panel_exp/method_metadata.py",
+      "class_or_function_name": "_ESTIMATOR_CATALOG",
+      "public_entrypoint_status": "unclear",
+      "expected_inputs": "",
+      "expected_outputs": "",
+      "supported_geometry_if_declared": "",
+      "treatment_structure_if_declared": "",
+      "estimand_if_declared": "",
+      "uncertainty_output_if_any": "",
+      "docs_references": [],
+      "tests_references": [],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "governance_catalog_contract",
+      "aliases": [],
+      "method_type": "registry",
+      "module_path": "panel_exp/governance/catalog_contract.py",
+      "class_or_function_name": "FORBIDDEN_ESTIMATOR_CATALOG_NAMES",
+      "public_entrypoint_status": "unclear",
+      "expected_inputs": "",
+      "expected_outputs": "",
+      "supported_geometry_if_declared": "",
+      "treatment_structure_if_declared": "",
+      "estimand_if_declared": "",
+      "uncertainty_output_if_any": "",
+      "docs_references": [],
+      "tests_references": [],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Placebo forbidden as estimator name",
+      "inventory_status": "implemented"
+    },
+    {
+      "canonical_name": "SCM_catalog_alias",
+      "aliases": [
+        "SyntheticControl",
+        "SCM"
+      ],
+      "method_type": "registry",
+      "module_path": "panel_exp/method_metadata.py",
+      "class_or_function_name": "SyntheticControl",
+      "public_entrypoint_status": "unclear",
+      "expected_inputs": "",
+      "expected_outputs": "",
+      "supported_geometry_if_declared": "",
+      "treatment_structure_if_declared": "",
+      "estimand_if_declared": "",
+      "uncertainty_output_if_any": "",
+      "docs_references": [],
+      "tests_references": [],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Registry name SCM maps to class SyntheticControl",
+      "inventory_status": "duplicate_or_alias"
+    },
+    {
+      "canonical_name": "TBR_vs_TBRRidge",
+      "aliases": [
+        "TBR",
+        "TBRRidge"
+      ],
+      "method_type": "estimator",
+      "module_path": "panel_exp/methods/tbr.py",
+      "class_or_function_name": "",
+      "public_entrypoint_status": "unclear",
+      "expected_inputs": "",
+      "expected_outputs": "",
+      "supported_geometry_if_declared": "",
+      "treatment_structure_if_declared": "",
+      "estimand_if_declared": "",
+      "uncertainty_output_if_any": "",
+      "docs_references": [],
+      "tests_references": [],
+      "validation_artifacts_references": [],
+      "known_gaps_from_existing_docs": "Product/language conflation risk (GAP-TBR-TBRR-001)",
+      "inventory_status": "duplicate_or_alias"
+    }
+  ]
+}

@@ -28,8 +28,7 @@ It converts prior audit, threshold, and OC evidence into **named PRs** with code
 | An **LLM-layer plan** | LLM paused per foundation hardening |
 | A **replacement for code-backed evidence** | Each PR must produce runnable artifacts |
 
-**Next step (2026-06-04):** AugSynth-specific execution **paused** under [`METHOD_VALIDATION_PROGRAM_001.md`](METHOD_VALIDATION_PROGRAM_001.md). P1–P6 + [`METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md) remain **evidence inputs** only. **`D5-INST-AUGSYNTH-MULTICELL-001`** is **not** the default next step (optional later: narrow ADR metadata gate regression only). Repo-wide next: **`METHOD_CODE_INVENTORY_001`**.
-**Next step after lane closeout:** ✅ [`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001.md`](MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001.md) **accepted** (see [`AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md)) → **`D5-INST-AUGSYNTH-MULTICELL-001`** (OC). Then [`AUGSYNTH_SCM_ESTIMAND_BRIDGE_ADR_001`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md) · optional **`D5-INST-AUGSYNTH-DESIGN-COMPAT-001`**. P1–P6 ✅.
+**Next step (2026-06-04):** AugSynth-specific execution **paused** under [`METHOD_VALIDATION_PROGRAM_001.md`](METHOD_VALIDATION_PROGRAM_001.md). P1–P6 · [`METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md) · pooling ADR = **evidence only**. Repo-wide: ✅ [`METHOD_CODE_INVENTORY_001.md`](METHOD_CODE_INVENTORY_001.md) → **`METHOD_LITERATURE_ALIGNMENT_001`**. **`D5-INST-AUGSYNTH-MULTICELL-001`** not default next (optional narrow ADR metadata gate test later only).
 
 ---
 

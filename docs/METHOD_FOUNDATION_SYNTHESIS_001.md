@@ -1,6 +1,6 @@
 # METHOD-FOUNDATION-SYNTHESIS-001
 
-> **Sequencing status:** **Superseded for roadmap authority by** [`METHOD_VALIDATION_PROGRAM_001.md`](METHOD_VALIDATION_PROGRAM_001.md). **Retained** as **evidence-input synthesis** only (combination map, stable conclusions, gap register). Do **not** use §7–§8 to schedule `D5-INST-AUGSYNTH-MULTICELL-001` or trust-framework expansion.
+> **Sequencing status:** **Superseded for roadmap authority by** [`METHOD_VALIDATION_PROGRAM_001.md`](METHOD_VALIDATION_PROGRAM_001.md). **Retained** as **evidence-input synthesis** only (combination map, stable conclusions, gap register). Layer 1 inventory: [`METHOD_CODE_INVENTORY_001.md`](METHOD_CODE_INVENTORY_001.md). Do **not** use §7–§8 to schedule `D5-INST-AUGSYNTH-MULTICELL-001` or trust-framework expansion.
 
 **Document ID:** METHOD-FOUNDATION-SYNTHESIS-001  
 **Type:** Foundation synthesis — **evidence consolidation only** (not sequencing authority)  
