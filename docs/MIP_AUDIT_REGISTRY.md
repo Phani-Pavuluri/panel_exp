@@ -607,7 +607,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** Prior audits retained as `evidence_input` only.
 
-**Next:** ✅ Layers 1–3 → **`METHOD_STATISTICAL_VALIDATION_PROTOCOL_001`**.
+**Next:** ✅ Layers 1–4 → **`METHOD_COMBINATION_VALIDATION_MATRIX_001`**.
 
 ---
 
@@ -641,7 +641,19 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Generator:** `python -m panel_exp.validation.method_implementation_validation_001`
 
-**Next:** **`METHOD_STATISTICAL_VALIDATION_PROTOCOL_001`**.
+**Next:** ✅ **`METHOD_STATISTICAL_VALIDATION_PROTOCOL_001`**.
+
+---
+
+## METHOD-STATISTICAL-VALIDATION-PROTOCOL-001 (2026-06-04)
+
+**Artifact:** [`docs/METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.md`](METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.md) · [`docs/track_d/archives/METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.json`](track_d/archives/METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.json)
+
+**Verdict:** Layer 4 **complete** — 51 protocol rows; DGP world catalog; metric catalog; acceptance taxonomy; battery A–E; combination cards; blocked-before-OC register; `promotion_allowed` / `trust_role_allowed` / `calibration_signal_allowed` / `mmm_allowed` false on all rows.
+
+**Generator:** `python -m panel_exp.validation.method_statistical_validation_protocol_001`
+
+**Next:** **`METHOD_COMBINATION_VALIDATION_MATRIX_001`**.
 
 ---
 

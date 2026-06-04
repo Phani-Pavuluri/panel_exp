@@ -42,8 +42,8 @@ Layer 3 checks whether repo **code paths** match the contracts in Layer 2 litera
 | Layer 1 — Code inventory | ✅ |
 | Layer 2 — Literature alignment | ✅ |
 | **Layer 3 — Implementation validation** | ✅ **This artifact** |
-| Layer 4 — Statistical validation protocol | **Next** |
-| Layer 5 — Combination matrix | Blocked until Layer 4 per family |
+| Layer 4 — Statistical validation protocol | ✅ [`METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.md`](METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.md) |
+| Layer 5 — Combination matrix | **Next** — `METHOD_COMBINATION_VALIDATION_MATRIX_001` |
 
 ---
 
@@ -216,11 +216,13 @@ Layer 4 still required — Layer 3 is **not** statistical proof.
 
 ---
 
-## 15. Next artifact: METHOD_STATISTICAL_VALIDATION_PROTOCOL_001
+## 15. Next artifact: METHOD_COMBINATION_VALIDATION_MATRIX_001
 
-**Layer 4** defines synthetic worlds, metrics, and OC archives per family where Layer 3 status is not `implementation_gap` / `architecture_gap` / blocked geometry.
+**Layer 4** complete — see [`METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.md`](METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.md).
 
-**Inputs:** This register · Layer 2 statistical_validation_needed lists · existing D5 JSON archives (reconcile, do not copy trust roles).
+**Layer 5** builds the combination validation matrix from Layer 4 protocol rows and executed D5-STAT-* evidence.
+
+**Inputs:** Layer 4 JSON · this register · Layer 2 statistical_validation_needed lists · existing D5 archives (evidence only).
 
 ---
 
@@ -248,4 +250,4 @@ Layer 4 still required — Layer 3 is **not** statistical proof.
 
 ---
 
-*METHOD-IMPLEMENTATION-VALIDATION-001 v1.0.0 — Layer 3 complete; Layer 4 statistical validation protocol is next.*
+*METHOD-IMPLEMENTATION-VALIDATION-001 v1.0.0 — Layer 3 complete; Layer 5 combination matrix is next.*

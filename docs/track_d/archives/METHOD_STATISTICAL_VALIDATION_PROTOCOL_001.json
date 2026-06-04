@@ -1,0 +1,3876 @@
+{
+  "document_id": "METHOD-STATISTICAL-VALIDATION-PROTOCOL-001",
+  "generated_at": "2026-06-04T07:31:36.286748+00:00",
+  "generator": "panel_exp/validation/method_statistical_validation_protocol_001.py",
+  "parent_artifact": "METHOD-IMPLEMENTATION-VALIDATION-001",
+  "dgp_world_catalog": [
+    "clean_linear_additive",
+    "weak_signal",
+    "noisy_low_signal",
+    "correlated_controls_collinearity",
+    "treated_outside_donor_hull",
+    "post_period_shock",
+    "pre_period_trend_mismatch",
+    "sparse_geo_low_donor_count",
+    "multi_treated_multi_cell",
+    "aggregate_two_row",
+    "supergeo_geometry",
+    "trimmed_pair_geometry",
+    "null_no_effect",
+    "positive_injected_lift",
+    "negative_injected_lift",
+    "heterogeneous_treatment_effects",
+    "delayed_ramp_effect"
+  ],
+  "metric_catalog": [
+    "null_false_positive_rate",
+    "empirical_coverage",
+    "bias",
+    "mae",
+    "rmse",
+    "interval_width",
+    "interval_orientation_validity",
+    "lower_le_upper_rate",
+    "negative_half_width_rate",
+    "degenerate_interval_rate",
+    "over_wide_interval_rate",
+    "point_recovery_slope",
+    "point_injected_ratio",
+    "donor_stability",
+    "treated_control_prefit_quality",
+    "placebo_distribution_sanity",
+    "fold_stability",
+    "shock_sensitivity",
+    "donor_count_sensitivity",
+    "outside_hull_sensitivity",
+    "uncertainty_band_calibration",
+    "sign_error_rate",
+    "abstention_blocked_rate"
+  ],
+  "battery_levels": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "eligibility_status_values": [
+    "ready_for_protocol",
+    "ready_with_caveats",
+    "blocked_by_implementation_gap",
+    "blocked_by_architecture_gap",
+    "ready_with_caveats",
+    "blocked_by_geometry",
+    "blocked_by_implementation_gap",
+    "research_only_protocol",
+    "deprecated_or_quarantine"
+  ],
+  "acceptance_classes": [
+    "hard_gate",
+    "soft_gate",
+    "diagnostic_threshold",
+    "research_characterization_only",
+    "not_thresholded_yet"
+  ],
+  "battery_level_definitions": {
+    "A": "smoke \u2014 callable path, schema, orientation, geometry guards",
+    "B": "characterization \u2014 moderate MC null/injected; not promotion",
+    "C": "calibration \u2014 larger MC FPR/coverage/interval semantics",
+    "D": "stress \u2014 shocks, donor stress, hull, multi-cell, trim/supergeo",
+    "E": "promotion-candidate \u2014 not authorized by this artifact"
+  },
+  "counts": {
+    "rows_total": 51,
+    "family_rows": 29,
+    "combination_rows": 22,
+    "by_eligibility": {
+      "ready_with_caveats": 23,
+      "blocked_by_geometry": 6,
+      "deprecated_or_quarantine": 2,
+      "blocked_by_implementation_gap": 9,
+      "research_only_protocol": 7,
+      "ready_for_protocol": 1,
+      "blocked_by_architecture_gap": 3
+    },
+    "by_battery": {
+      "B": 28,
+      "A": 19,
+      "C": 4
+    }
+  },
+  "known_blocked_combos": [
+    "AUGSYNTH-CONFORMAL",
+    "AUGSYNTH-JK",
+    "MCELL-POOLED-AUGSYNTH",
+    "SUPERGEO-SCM-JK",
+    "TRIM-SCM-JK",
+    "TBR-UNIT-JK",
+    "TBRRIDGE-BAYESIAN-REG"
+  ],
+  "rows": [
+    {
+      "protocol_id": "STAT-FAM-DES-GMM-001-GREEDY_MATCH_MARKETS",
+      "method_family": "DES-GMM-001",
+      "combination_id": "",
+      "method_type": "design",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_with_caveats",
+      "blocked_by": [],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "pre_period_trend_mismatch",
+        "sparse_geo_low_donor_count",
+        "multi_treated_multi_cell"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "treated_control_prefit_quality",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 200,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "DES-GMM-001:greedy_match_markets"
+      ],
+      "expected_outputs": [
+        "D5-STAT-DES-GMM-001-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "greedy_match_markets",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-DES-RERAND-001-RERANDOMIZATION_WRAPPER",
+      "method_family": "DES-RERAND-001",
+      "combination_id": "",
+      "method_type": "wrapper",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_with_caveats",
+      "blocked_by": [],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "pre_period_trend_mismatch",
+        "sparse_geo_low_donor_count",
+        "multi_treated_multi_cell"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 200,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "DES-RERAND-001:rerandomization_wrapper"
+      ],
+      "expected_outputs": [
+        "D5-STAT-DES-RERAND-001-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "rerandomization_wrapper",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-DES-TIER1-RAND-001-TIER1_RANDOMIZERS",
+      "method_family": "DES-TIER1-RAND-001",
+      "combination_id": "",
+      "method_type": "design",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_with_caveats",
+      "blocked_by": [],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "pre_period_trend_mismatch",
+        "sparse_geo_low_donor_count",
+        "multi_treated_multi_cell"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "treated_control_prefit_quality",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 200,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "DES-TIER1-RAND-001:tier1_randomizers"
+      ],
+      "expected_outputs": [
+        "D5-STAT-DES-TIER1-RAND-001-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "tier1_randomizers",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-DES-SUPERGEO-001-SUPERGEOS",
+      "method_family": "DES-SUPERGEO-001",
+      "combination_id": "",
+      "method_type": "design",
+      "eligible_for_layer4": false,
+      "eligibility_status": "blocked_by_geometry",
+      "blocked_by": [
+        "F-GEO-003: no unit-panel bridge",
+        "COMBO A29 invalid flat readout",
+        "geometry_bridge_required"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "pre_period_trend_mismatch",
+        "sparse_geo_low_donor_count",
+        "multi_treated_multi_cell"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "treated_control_prefit_quality",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        },
+        {
+          "metric": "abstention_blocked_rate",
+          "class": "diagnostic_threshold",
+          "proposed_threshold": "must_block_or_document"
+        }
+      ],
+      "battery_level": "A",
+      "minimum_mc_replicates": 50,
+      "confirmatory_or_characterization": "blocked",
+      "layer3_dependencies": [
+        "DES-SUPERGEO-001:supergeos"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "supergeos",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-DES-TRIM-001-TRIMMEDMATCH",
+      "method_family": "DES-TRIM-001",
+      "combination_id": "",
+      "method_type": "design",
+      "eligible_for_layer4": false,
+      "eligibility_status": "blocked_by_geometry",
+      "blocked_by": [
+        "F-GEO-004 adapter missing",
+        "geometry_bridge_required"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "pre_period_trend_mismatch",
+        "sparse_geo_low_donor_count",
+        "multi_treated_multi_cell"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "treated_control_prefit_quality",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        },
+        {
+          "metric": "abstention_blocked_rate",
+          "class": "diagnostic_threshold",
+          "proposed_threshold": "must_block_or_document"
+        }
+      ],
+      "battery_level": "A",
+      "minimum_mc_replicates": 50,
+      "confirmatory_or_characterization": "blocked",
+      "layer3_dependencies": [
+        "DES-TRIM-001:trimmedmatch"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "trimmedmatch",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-DES-LEGACY-BLOCK-001-QUICKBLOCK_MATCHEDPAIR",
+      "method_family": "DES-LEGACY-BLOCK-001",
+      "combination_id": "",
+      "method_type": "design",
+      "eligible_for_layer4": false,
+      "eligibility_status": "deprecated_or_quarantine",
+      "blocked_by": [
+        "No geo-run; sparse tests"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "pre_period_trend_mismatch",
+        "sparse_geo_low_donor_count",
+        "multi_treated_multi_cell"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "treated_control_prefit_quality",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        },
+        {
+          "metric": "abstention_blocked_rate",
+          "class": "diagnostic_threshold",
+          "proposed_threshold": "must_block_or_document"
+        }
+      ],
+      "battery_level": "A",
+      "minimum_mc_replicates": 50,
+      "confirmatory_or_characterization": "blocked",
+      "layer3_dependencies": [
+        "DES-LEGACY-BLOCK-001:quickblock_matchedpair"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "quickblock_matchedpair",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-EST-SCM-001-SYNTHETICCONTROLCVXPY",
+      "method_family": "EST-SCM-001",
+      "combination_id": "",
+      "method_type": "estimator",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_with_caveats",
+      "blocked_by": [],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "correlated_controls_collinearity",
+        "treated_outside_donor_hull",
+        "post_period_shock",
+        "sparse_geo_low_donor_count"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 200,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "EST-SCM-001:SyntheticControlCVXPY"
+      ],
+      "expected_outputs": [
+        "D5-STAT-EST-SCM-001-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "SyntheticControlCVXPY",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-EST-SCM-001-SYNTHETICCONTROL",
+      "method_family": "EST-SCM-001",
+      "combination_id": "",
+      "method_type": "estimator",
+      "eligible_for_layer4": false,
+      "eligibility_status": "blocked_by_implementation_gap",
+      "blocked_by": [
+        "Numerical parity CVXPY vs scipy not guaranteed"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "correlated_controls_collinearity",
+        "treated_outside_donor_hull",
+        "post_period_shock",
+        "sparse_geo_low_donor_count"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        },
+        {
+          "metric": "abstention_blocked_rate",
+          "class": "diagnostic_threshold",
+          "proposed_threshold": "must_block_or_document"
+        }
+      ],
+      "battery_level": "A",
+      "minimum_mc_replicates": 50,
+      "confirmatory_or_characterization": "blocked",
+      "layer3_dependencies": [
+        "EST-SCM-001:SyntheticControl"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "SyntheticControl",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-EST-SCM-001-SYNTHETIC_CONTROL_FUNCTION",
+      "method_family": "EST-SCM-001",
+      "combination_id": "",
+      "method_type": "estimator",
+      "eligible_for_layer4": false,
+      "eligibility_status": "deprecated_or_quarantine",
+      "blocked_by": [
+        "Dead or parallel path risk"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "correlated_controls_collinearity",
+        "treated_outside_donor_hull",
+        "post_period_shock",
+        "sparse_geo_low_donor_count"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        },
+        {
+          "metric": "abstention_blocked_rate",
+          "class": "diagnostic_threshold",
+          "proposed_threshold": "must_block_or_document"
+        }
+      ],
+      "battery_level": "A",
+      "minimum_mc_replicates": 50,
+      "confirmatory_or_characterization": "blocked",
+      "layer3_dependencies": [
+        "EST-SCM-001:synthetic_control_function"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "synthetic_control_function",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-EST-AUGSYNTH-001-AUGSYNTHCVXPY",
+      "method_family": "EST-AUGSYNTH-001",
+      "combination_id": "",
+      "method_type": "estimator",
+      "eligible_for_layer4": false,
+      "eligibility_status": "blocked_by_implementation_gap",
+      "blocked_by": [
+        "G1: penalty_strength stored but unused on OSQP SCM path",
+        "G4/G7/G8: SCM leg mismatch; level vs relative; hull proxy"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "correlated_controls_collinearity",
+        "treated_outside_donor_hull",
+        "post_period_shock",
+        "sparse_geo_low_donor_count",
+        "multi_treated_multi_cell",
+        "outside_hull_sensitivity"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        },
+        {
+          "metric": "abstention_blocked_rate",
+          "class": "diagnostic_threshold",
+          "proposed_threshold": "must_block_or_document"
+        }
+      ],
+      "battery_level": "A",
+      "minimum_mc_replicates": 50,
+      "confirmatory_or_characterization": "blocked",
+      "layer3_dependencies": [
+        "EST-AUGSYNTH-001:AugSynthCVXPY"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "AugSynthCVXPY",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-EST-AUGSYNTH-001-AUGSYNTH",
+      "method_family": "EST-AUGSYNTH-001",
+      "combination_id": "",
+      "method_type": "estimator",
+      "eligible_for_layer4": false,
+      "eligibility_status": "research_only_protocol",
+      "blocked_by": [
+        "Not CVXPY fidelity path"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "correlated_controls_collinearity",
+        "treated_outside_donor_hull",
+        "post_period_shock",
+        "sparse_geo_low_donor_count",
+        "multi_treated_multi_cell",
+        "outside_hull_sensitivity"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        },
+        {
+          "metric": "abstention_blocked_rate",
+          "class": "diagnostic_threshold",
+          "proposed_threshold": "must_block_or_document"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 200,
+      "confirmatory_or_characterization": "blocked",
+      "layer3_dependencies": [
+        "EST-AUGSYNTH-001:AugSynth"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "AugSynth",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-EST-TBR-001-TBR",
+      "method_family": "EST-TBR-001",
+      "combination_id": "",
+      "method_type": "estimator",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_with_caveats",
+      "blocked_by": [],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "aggregate_two_row",
+        "weak_signal"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 200,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "EST-TBR-001:TBR"
+      ],
+      "expected_outputs": [
+        "D5-STAT-EST-TBR-001-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "TBR",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-EST-TBRRIDGE-001-TBRRIDGE",
+      "method_family": "EST-TBRRIDGE-001",
+      "combination_id": "",
+      "method_type": "estimator",
+      "eligible_for_layer4": false,
+      "eligibility_status": "blocked_by_implementation_gap",
+      "blocked_by": [
+        "POW-EST-001: PowerAnalysis agg2 vs SCM unit readout",
+        "INV-015 Bayesian handler"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "correlated_controls_collinearity",
+        "treated_outside_donor_hull",
+        "post_period_shock",
+        "sparse_geo_low_donor_count"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        },
+        {
+          "metric": "abstention_blocked_rate",
+          "class": "diagnostic_threshold",
+          "proposed_threshold": "must_block_or_document"
+        }
+      ],
+      "battery_level": "A",
+      "minimum_mc_replicates": 50,
+      "confirmatory_or_characterization": "blocked",
+      "layer3_dependencies": [
+        "EST-TBRRIDGE-001:TBRRidge"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "TBRRidge",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-EST-DID-001-DID",
+      "method_family": "EST-DID-001",
+      "combination_id": "",
+      "method_type": "estimator",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_with_caveats",
+      "blocked_by": [],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "correlated_controls_collinearity",
+        "treated_outside_donor_hull",
+        "post_period_shock",
+        "sparse_geo_low_donor_count"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 200,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "EST-DID-001:DID"
+      ],
+      "expected_outputs": [
+        "D5-STAT-EST-DID-001-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "DID",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-EST-SDID-001-SYNTHETICDID",
+      "method_family": "EST-SDID-001",
+      "combination_id": "",
+      "method_type": "estimator",
+      "eligible_for_layer4": false,
+      "eligibility_status": "research_only_protocol",
+      "blocked_by": [
+        "No Layer 3 fidelity proof"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "correlated_controls_collinearity",
+        "treated_outside_donor_hull",
+        "post_period_shock",
+        "sparse_geo_low_donor_count"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        },
+        {
+          "metric": "abstention_blocked_rate",
+          "class": "diagnostic_threshold",
+          "proposed_threshold": "must_block_or_document"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 200,
+      "confirmatory_or_characterization": "blocked",
+      "layer3_dependencies": [
+        "EST-SDID-001:SyntheticDID"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "SyntheticDID",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-EST-RESEARCH-BAYES-001-BAYESIANTBR",
+      "method_family": "EST-RESEARCH-BAYES-001",
+      "combination_id": "",
+      "method_type": "estimator",
+      "eligible_for_layer4": false,
+      "eligibility_status": "research_only_protocol",
+      "blocked_by": [
+        "INV-015 registry Bayesian on TBRRidge not NUTS"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "correlated_controls_collinearity",
+        "treated_outside_donor_hull",
+        "post_period_shock",
+        "sparse_geo_low_donor_count"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        },
+        {
+          "metric": "abstention_blocked_rate",
+          "class": "diagnostic_threshold",
+          "proposed_threshold": "must_block_or_document"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 200,
+      "confirmatory_or_characterization": "blocked",
+      "layer3_dependencies": [
+        "EST-RESEARCH-BAYES-001:BayesianTBR"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "BayesianTBR",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-EST-RESEARCH-OTHER-001-TROP_MTGP",
+      "method_family": "EST-RESEARCH-OTHER-001",
+      "combination_id": "",
+      "method_type": "estimator",
+      "eligible_for_layer4": false,
+      "eligibility_status": "research_only_protocol",
+      "blocked_by": [
+        "No implementation validation charter"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "correlated_controls_collinearity",
+        "treated_outside_donor_hull",
+        "post_period_shock",
+        "sparse_geo_low_donor_count"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        },
+        {
+          "metric": "abstention_blocked_rate",
+          "class": "diagnostic_threshold",
+          "proposed_threshold": "must_block_or_document"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 200,
+      "confirmatory_or_characterization": "blocked",
+      "layer3_dependencies": [
+        "EST-RESEARCH-OTHER-001:TROP_MTGP"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "TROP_MTGP",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-INF-POINT-001-POINT_ESTIMATE",
+      "method_family": "INF-POINT-001",
+      "combination_id": "",
+      "method_type": "inference",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_for_protocol",
+      "blocked_by": [],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "noisy_low_signal",
+        "post_period_shock"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        }
+      ],
+      "battery_level": "C",
+      "minimum_mc_replicates": 500,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "INF-POINT-001:point_estimate"
+      ],
+      "expected_outputs": [
+        "D5-STAT-INF-POINT-001-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "point_estimate",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-INF-JK-001-UNITJACKKNIFE",
+      "method_family": "INF-JK-001",
+      "combination_id": "",
+      "method_type": "inference",
+      "eligible_for_layer4": false,
+      "eligibility_status": "blocked_by_implementation_gap",
+      "blocked_by": [
+        "TBRRidge+JK high null FPR",
+        "AugSynth unsafe strata",
+        "aggregate geometry not always blocked in code"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "noisy_low_signal",
+        "post_period_shock"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        },
+        {
+          "metric": "abstention_blocked_rate",
+          "class": "diagnostic_threshold",
+          "proposed_threshold": "must_block_or_document"
+        }
+      ],
+      "battery_level": "A",
+      "minimum_mc_replicates": 50,
+      "confirmatory_or_characterization": "blocked",
+      "layer3_dependencies": [
+        "INF-JK-001:UnitJackKnife"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "UnitJackKnife",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-INF-JKP-001-JKP",
+      "method_family": "INF-JKP-001",
+      "combination_id": "",
+      "method_type": "inference",
+      "eligible_for_layer4": false,
+      "eligibility_status": "blocked_by_implementation_gap",
+      "blocked_by": [
+        "TBRRidge pooled-CF semantics (~29% null FPR A21)"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "noisy_low_signal",
+        "post_period_shock"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        },
+        {
+          "metric": "abstention_blocked_rate",
+          "class": "diagnostic_threshold",
+          "proposed_threshold": "must_block_or_document"
+        }
+      ],
+      "battery_level": "A",
+      "minimum_mc_replicates": 50,
+      "confirmatory_or_characterization": "blocked",
+      "layer3_dependencies": [
+        "INF-JKP-001:JKP"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "JKP",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-INF-KFOLD-001-KFOLD",
+      "method_family": "INF-KFOLD-001",
+      "combination_id": "",
+      "method_type": "inference",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_with_caveats",
+      "blocked_by": [],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "noisy_low_signal",
+        "post_period_shock"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 200,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "INF-KFOLD-001:Kfold"
+      ],
+      "expected_outputs": [
+        "D5-STAT-INF-KFOLD-001-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "Kfold",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-INF-TSKFOLD-001-TIMESERIESKFOLD",
+      "method_family": "INF-TSKFOLD-001",
+      "combination_id": "",
+      "method_type": "inference",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_with_caveats",
+      "blocked_by": [],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "noisy_low_signal",
+        "post_period_shock"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 200,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "INF-TSKFOLD-001:TimeSeriesKfold"
+      ],
+      "expected_outputs": [
+        "D5-STAT-INF-TSKFOLD-001-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "TimeSeriesKfold",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-INF-BRB-001-BLOCKRESIDUALBOOTSTRAP",
+      "method_family": "INF-BRB-001",
+      "combination_id": "",
+      "method_type": "inference",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_with_caveats",
+      "blocked_by": [],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "noisy_low_signal",
+        "post_period_shock"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 200,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "INF-BRB-001:BlockResidualBootstrap"
+      ],
+      "expected_outputs": [
+        "D5-STAT-INF-BRB-001-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "BlockResidualBootstrap",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-INF-CONFORMAL-001-CONFORMAL",
+      "method_family": "INF-CONFORMAL-001",
+      "combination_id": "",
+      "method_type": "inference",
+      "eligible_for_layer4": false,
+      "eligibility_status": "blocked_by_implementation_gap",
+      "blocked_by": [
+        "IMPL-CONF-001: band construction mismatch on AugSynth",
+        "Panel dependence"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "noisy_low_signal",
+        "post_period_shock"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        },
+        {
+          "metric": "abstention_blocked_rate",
+          "class": "diagnostic_threshold",
+          "proposed_threshold": "must_block_or_document"
+        }
+      ],
+      "battery_level": "A",
+      "minimum_mc_replicates": 50,
+      "confirmatory_or_characterization": "blocked",
+      "layer3_dependencies": [
+        "INF-CONFORMAL-001:Conformal"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "Conformal",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-INF-PLACEBO-001-PLACEBO",
+      "method_family": "INF-PLACEBO-001",
+      "combination_id": "",
+      "method_type": "inference",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_with_caveats",
+      "blocked_by": [],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "noisy_low_signal",
+        "post_period_shock"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 200,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "INF-PLACEBO-001:Placebo"
+      ],
+      "expected_outputs": [
+        "D5-STAT-INF-PLACEBO-001-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "Placebo",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-INF-BAYES-REG-001-BAYESIAN",
+      "method_family": "INF-BAYES-REG-001",
+      "combination_id": "",
+      "method_type": "inference",
+      "eligible_for_layer4": false,
+      "eligibility_status": "blocked_by_architecture_gap",
+      "blocked_by": [
+        "literature_mismatch on TBRRidge prod path"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "noisy_low_signal",
+        "post_period_shock"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        },
+        {
+          "metric": "abstention_blocked_rate",
+          "class": "diagnostic_threshold",
+          "proposed_threshold": "must_block_or_document"
+        }
+      ],
+      "battery_level": "A",
+      "minimum_mc_replicates": 50,
+      "confirmatory_or_characterization": "blocked",
+      "layer3_dependencies": [
+        "INF-BAYES-REG-001:Bayesian"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "Bayesian",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-INF-DID-BOOT-001-DID_NATIVE_BOOTSTRAP",
+      "method_family": "INF-DID-BOOT-001",
+      "combination_id": "",
+      "method_type": "inference",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_with_caveats",
+      "blocked_by": [],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "noisy_low_signal",
+        "post_period_shock"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 200,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "INF-DID-BOOT-001:DID_native_bootstrap"
+      ],
+      "expected_outputs": [
+        "D5-STAT-INF-DID-BOOT-001-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "DID_native_bootstrap",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-ORCH-001-GEOEXPERIMENTDESIGN",
+      "method_family": "ORCH-001",
+      "combination_id": "",
+      "method_type": "orchestration",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_with_caveats",
+      "blocked_by": [],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 200,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "ORCH-001:GeoExperimentDesign"
+      ],
+      "expected_outputs": [
+        "D5-STAT-ORCH-001-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "GeoExperimentDesign",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-FAM-ORCH-002-IMPACTANALYZER",
+      "method_family": "ORCH-002",
+      "combination_id": "",
+      "method_type": "orchestration",
+      "eligible_for_layer4": false,
+      "eligibility_status": "blocked_by_architecture_gap",
+      "blocked_by": [
+        "Invalid combos may fail late \u2014 prefer explicit pairing matrix Layer 5"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_alpha (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal_level (proposed)"
+        },
+        {
+          "metric": "abstention_blocked_rate",
+          "class": "diagnostic_threshold",
+          "proposed_threshold": "must_block_or_document"
+        }
+      ],
+      "battery_level": "A",
+      "minimum_mc_replicates": 50,
+      "confirmatory_or_characterization": "blocked",
+      "layer3_dependencies": [
+        "ORCH-002:ImpactAnalyzer"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "ImpactAnalyzer",
+      "notes": "Auto-mapped from Layer 3 row; protocol plan only \u2014 not statistical proof."
+    },
+    {
+      "protocol_id": "STAT-COMBO-SCM-JK",
+      "method_family": "COMBINATION",
+      "combination_id": "SCM-JK",
+      "method_type": "combination",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_with_caveats",
+      "blocked_by": [
+        "MAT-004 design-donor bridge",
+        "INV-D1-001 caller audit"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "sparse_geo_low_donor_count",
+        "treated_outside_donor_hull"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "point_recovery_slope",
+          "class": "soft_gate",
+          "proposed_threshold": "~1.0 clean world (proposed)"
+        }
+      ],
+      "battery_level": "C",
+      "minimum_mc_replicates": 500,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "DES-GMM-001|DES-TIER1-RAND-001",
+        "SCM/SyntheticControlCVXPY",
+        "UnitJackKnife",
+        "single_cell_unit"
+      ],
+      "expected_outputs": [
+        "D5-STAT-SCM-JK-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "",
+      "notes": "DES-GMM-001|DES-TIER1-RAND-001 + SCM/SyntheticControlCVXPY + UnitJackKnife @ single_cell_unit"
+    },
+    {
+      "protocol_id": "STAT-COMBO-SCM-PLACEBO",
+      "method_family": "COMBINATION",
+      "combination_id": "SCM-PLACEBO",
+      "method_type": "combination",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_with_caveats",
+      "blocked_by": [
+        "multi-treated scope limited"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "sparse_geo_low_donor_count",
+        "treated_outside_donor_hull",
+        "placebo_distribution_sanity"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity",
+        "placebo_distribution_sanity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "point_recovery_slope",
+          "class": "soft_gate",
+          "proposed_threshold": "~1.0 clean world (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 200,
+      "confirmatory_or_characterization": "falsification_only",
+      "layer3_dependencies": [
+        "DES-*",
+        "SCM",
+        "Placebo",
+        "single_treated"
+      ],
+      "expected_outputs": [
+        "D5-STAT-SCM-PLACEBO-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "",
+      "notes": "DES-* + SCM + Placebo @ single_treated"
+    },
+    {
+      "protocol_id": "STAT-COMBO-AUGSYNTH-POINT",
+      "method_family": "COMBINATION",
+      "combination_id": "AUGSYNTH-POINT",
+      "method_type": "combination",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_with_caveats",
+      "blocked_by": [
+        "G1-G8 fidelity open"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "sparse_geo_low_donor_count",
+        "treated_outside_donor_hull",
+        "outside_hull_sensitivity"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "point_recovery_slope",
+          "class": "soft_gate",
+          "proposed_threshold": "~1.0 clean world (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 300,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "DES-*",
+        "AugSynthCVXPY",
+        "point_estimate",
+        "single_cell_unit"
+      ],
+      "expected_outputs": [
+        "D5-STAT-AUGSYNTH-POINT-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "",
+      "notes": "DES-* + AugSynthCVXPY + point_estimate @ single_cell_unit"
+    },
+    {
+      "protocol_id": "STAT-COMBO-AUGSYNTH-JK",
+      "method_family": "COMBINATION",
+      "combination_id": "AUGSYNTH-JK",
+      "method_type": "combination",
+      "eligible_for_layer4": false,
+      "eligibility_status": "blocked_by_implementation_gap",
+      "blocked_by": [
+        "IMPL-JK-001 unsafe strata",
+        "JK not literature-default for ASCM"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "sparse_geo_low_donor_count",
+        "treated_outside_donor_hull"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "point_recovery_slope",
+          "class": "soft_gate",
+          "proposed_threshold": "~1.0 clean world (proposed)"
+        }
+      ],
+      "battery_level": "A",
+      "minimum_mc_replicates": 50,
+      "confirmatory_or_characterization": "blocked",
+      "layer3_dependencies": [
+        "DES-*",
+        "AugSynthCVXPY",
+        "UnitJackKnife",
+        "single_cell_unit"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "",
+      "notes": "DES-* + AugSynthCVXPY + UnitJackKnife @ single_cell_unit"
+    },
+    {
+      "protocol_id": "STAT-COMBO-AUGSYNTH-CONFORMAL",
+      "method_family": "COMBINATION",
+      "combination_id": "AUGSYNTH-CONFORMAL",
+      "method_type": "combination",
+      "eligible_for_layer4": false,
+      "eligibility_status": "blocked_by_implementation_gap",
+      "blocked_by": [
+        "IMPL-CONF-001",
+        "new interval design required"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "sparse_geo_low_donor_count",
+        "treated_outside_donor_hull"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "point_recovery_slope",
+          "class": "soft_gate",
+          "proposed_threshold": "~1.0 clean world (proposed)"
+        }
+      ],
+      "battery_level": "A",
+      "minimum_mc_replicates": 50,
+      "confirmatory_or_characterization": "blocked",
+      "layer3_dependencies": [
+        "DES-*",
+        "AugSynthCVXPY",
+        "Conformal",
+        "single_cell_unit"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "",
+      "notes": "DES-* + AugSynthCVXPY + Conformal @ single_cell_unit"
+    },
+    {
+      "protocol_id": "STAT-COMBO-AUGSYNTH-KFOLD",
+      "method_family": "COMBINATION",
+      "combination_id": "AUGSYNTH-KFOLD",
+      "method_type": "combination",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_with_caveats",
+      "blocked_by": [
+        "diagnostic band only \u2014 not confirmatory CI"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "sparse_geo_low_donor_count",
+        "treated_outside_donor_hull"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity",
+        "fold_stability"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "point_recovery_slope",
+          "class": "soft_gate",
+          "proposed_threshold": "~1.0 clean world (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 200,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "DES-*",
+        "AugSynthCVXPY",
+        "Kfold",
+        "single_cell_unit"
+      ],
+      "expected_outputs": [
+        "D5-STAT-AUGSYNTH-KFOLD-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "",
+      "notes": "DES-* + AugSynthCVXPY + Kfold @ single_cell_unit"
+    },
+    {
+      "protocol_id": "STAT-COMBO-TBR-AGG-POINT",
+      "method_family": "COMBINATION",
+      "combination_id": "TBR-AGG-POINT",
+      "method_type": "combination",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_with_caveats",
+      "blocked_by": [
+        "design-analysis alignment",
+        "INV-003 estimand"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "aggregate_two_row"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "point_recovery_slope",
+          "class": "soft_gate",
+          "proposed_threshold": "~1.0 clean world (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 200,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "DES-GMM-001",
+        "TBR",
+        "point_estimate",
+        "aggregate_two_row"
+      ],
+      "expected_outputs": [
+        "D5-STAT-TBR-AGG-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "",
+      "notes": "DES-GMM-001 + TBR + point_estimate @ aggregate_two_row"
+    },
+    {
+      "protocol_id": "STAT-COMBO-TBR-UNIT-JK",
+      "method_family": "COMBINATION",
+      "combination_id": "TBR-UNIT-JK",
+      "method_type": "combination",
+      "eligible_for_layer4": false,
+      "eligibility_status": "blocked_by_geometry",
+      "blocked_by": [
+        "TBR asserts aggregate only \u2014 invalid on unit panel"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "sparse_geo_low_donor_count",
+        "treated_outside_donor_hull"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "point_recovery_slope",
+          "class": "soft_gate",
+          "proposed_threshold": "~1.0 clean world (proposed)"
+        }
+      ],
+      "battery_level": "A",
+      "minimum_mc_replicates": 50,
+      "confirmatory_or_characterization": "blocked",
+      "layer3_dependencies": [
+        "DES-*",
+        "TBR",
+        "UnitJackKnife",
+        "single_cell_unit"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "",
+      "notes": "DES-* + TBR + UnitJackKnife @ single_cell_unit"
+    },
+    {
+      "protocol_id": "STAT-COMBO-TBRRIDGE-KFOLD",
+      "method_family": "COMBINATION",
+      "combination_id": "TBRRIDGE-KFOLD",
+      "method_type": "combination",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_with_caveats",
+      "blocked_by": [
+        "scale != SCM+JK",
+        "diagnostic only"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "sparse_geo_low_donor_count",
+        "treated_outside_donor_hull"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "point_recovery_slope",
+          "class": "soft_gate",
+          "proposed_threshold": "~1.0 clean world (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 200,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "DES-*",
+        "TBRRidge",
+        "Kfold",
+        "single_cell_unit"
+      ],
+      "expected_outputs": [
+        "D5-STAT-TBRRIDGE-KFOLD-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "",
+      "notes": "DES-* + TBRRidge + Kfold @ single_cell_unit"
+    },
+    {
+      "protocol_id": "STAT-COMBO-TBRRIDGE-TSKFOLD",
+      "method_family": "COMBINATION",
+      "combination_id": "TBRRIDGE-TSKFOLD",
+      "method_type": "combination",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_with_caveats",
+      "blocked_by": [
+        "F-INF-003 re-verify exports"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "sparse_geo_low_donor_count",
+        "treated_outside_donor_hull",
+        "post_period_shock"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "point_recovery_slope",
+          "class": "soft_gate",
+          "proposed_threshold": "~1.0 clean world (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 200,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "DES-*",
+        "TBRRidge",
+        "TimeSeriesKfold",
+        "single_cell_unit"
+      ],
+      "expected_outputs": [
+        "D5-STAT-TBRRIDGE-TSKFOLD-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "",
+      "notes": "DES-* + TBRRidge + TimeSeriesKfold @ single_cell_unit"
+    },
+    {
+      "protocol_id": "STAT-COMBO-TBRRIDGE-BRB",
+      "method_family": "COMBINATION",
+      "combination_id": "TBRRIDGE-BRB",
+      "method_type": "combination",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_with_caveats",
+      "blocked_by": [
+        "DEF-002 bound ordering verified in prior OC"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "sparse_geo_low_donor_count",
+        "treated_outside_donor_hull"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "point_recovery_slope",
+          "class": "soft_gate",
+          "proposed_threshold": "~1.0 clean world (proposed)"
+        }
+      ],
+      "battery_level": "C",
+      "minimum_mc_replicates": 500,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "DES-*",
+        "TBRRidge",
+        "BlockResidualBootstrap",
+        "single_cell_unit"
+      ],
+      "expected_outputs": [
+        "D5-STAT-TBRRIDGE-BRB-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "",
+      "notes": "DES-* + TBRRidge + BlockResidualBootstrap @ single_cell_unit"
+    },
+    {
+      "protocol_id": "STAT-COMBO-TBRRIDGE-JK",
+      "method_family": "COMBINATION",
+      "combination_id": "TBRRIDGE-JK",
+      "method_type": "combination",
+      "eligible_for_layer4": false,
+      "eligibility_status": "blocked_by_implementation_gap",
+      "blocked_by": [
+        "high null FPR A16 \u2014 pivot calibration required"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "sparse_geo_low_donor_count",
+        "treated_outside_donor_hull"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "point_recovery_slope",
+          "class": "soft_gate",
+          "proposed_threshold": "~1.0 clean world (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 300,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "DES-*",
+        "TBRRidge",
+        "UnitJackKnife",
+        "single_cell_unit"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "",
+      "notes": "DES-* + TBRRidge + UnitJackKnife @ single_cell_unit"
+    },
+    {
+      "protocol_id": "STAT-COMBO-TBRRIDGE-CONFORMAL",
+      "method_family": "COMBINATION",
+      "combination_id": "TBRRIDGE-CONFORMAL",
+      "method_type": "combination",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_with_caveats",
+      "blocked_by": [
+        "exchangeability caveat on panels"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "sparse_geo_low_donor_count",
+        "treated_outside_donor_hull"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "point_recovery_slope",
+          "class": "soft_gate",
+          "proposed_threshold": "~1.0 clean world (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 200,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "DES-*",
+        "TBRRidge",
+        "Conformal",
+        "single_cell_unit"
+      ],
+      "expected_outputs": [
+        "D5-STAT-TBRRIDGE-CONFORMAL-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "",
+      "notes": "DES-* + TBRRidge + Conformal @ single_cell_unit"
+    },
+    {
+      "protocol_id": "STAT-COMBO-DID-BOOTSTRAP",
+      "method_family": "COMBINATION",
+      "combination_id": "DID-BOOTSTRAP",
+      "method_type": "combination",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_with_caveats",
+      "blocked_by": [
+        "relative CI policy deferred DEF-003"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "sparse_geo_low_donor_count",
+        "treated_outside_donor_hull",
+        "pre_period_trend_mismatch"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "point_recovery_slope",
+          "class": "soft_gate",
+          "proposed_threshold": "~1.0 clean world (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 200,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "DES-*",
+        "DID",
+        "DID_native_bootstrap",
+        "single_cell_unit"
+      ],
+      "expected_outputs": [
+        "D5-STAT-DID-BOOTSTRAP-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "",
+      "notes": "DES-* + DID + DID_native_bootstrap @ single_cell_unit"
+    },
+    {
+      "protocol_id": "STAT-COMBO-TBRRIDGE-BAYESIAN-REG",
+      "method_family": "COMBINATION",
+      "combination_id": "TBRRIDGE-BAYESIAN-REG",
+      "method_type": "combination",
+      "eligible_for_layer4": false,
+      "eligibility_status": "blocked_by_architecture_gap",
+      "blocked_by": [
+        "INV-015 registry Bayesian != MCMC"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "sparse_geo_low_donor_count",
+        "treated_outside_donor_hull"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "point_recovery_slope",
+          "class": "soft_gate",
+          "proposed_threshold": "~1.0 clean world (proposed)"
+        }
+      ],
+      "battery_level": "A",
+      "minimum_mc_replicates": 50,
+      "confirmatory_or_characterization": "blocked",
+      "layer3_dependencies": [
+        "DES-*",
+        "TBRRidge",
+        "Bayesian",
+        "single_cell_unit"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "",
+      "notes": "DES-* + TBRRidge + Bayesian @ single_cell_unit"
+    },
+    {
+      "protocol_id": "STAT-COMBO-BAYESIANTBR-MCMC",
+      "method_family": "COMBINATION",
+      "combination_id": "BAYESIANTBR-MCMC",
+      "method_type": "combination",
+      "eligible_for_layer4": false,
+      "eligibility_status": "research_only_protocol",
+      "blocked_by": [
+        "RTP charter only"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "sparse_geo_low_donor_count",
+        "treated_outside_donor_hull"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "point_recovery_slope",
+          "class": "soft_gate",
+          "proposed_threshold": "~1.0 clean world (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 100,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "DES-*",
+        "BayesianTBR",
+        "Bayesian",
+        "aggregate_or_unit"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "",
+      "notes": "DES-* + BayesianTBR + Bayesian @ aggregate_or_unit"
+    },
+    {
+      "protocol_id": "STAT-COMBO-TROP-RESEARCH",
+      "method_family": "COMBINATION",
+      "combination_id": "TROP-RESEARCH",
+      "method_type": "combination",
+      "eligible_for_layer4": false,
+      "eligibility_status": "research_only_protocol",
+      "blocked_by": [
+        "not_literature_backed product path"
+      ],
+      "required_worlds": [
+        "clean_linear_additive"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "point_recovery_slope",
+          "class": "soft_gate",
+          "proposed_threshold": "~1.0 clean world (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 50,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "n/a",
+        "TROP",
+        "point_estimate",
+        "research"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "",
+      "notes": "n/a + TROP + point_estimate @ research"
+    },
+    {
+      "protocol_id": "STAT-COMBO-MTGP-RESEARCH",
+      "method_family": "COMBINATION",
+      "combination_id": "MTGP-RESEARCH",
+      "method_type": "combination",
+      "eligible_for_layer4": false,
+      "eligibility_status": "research_only_protocol",
+      "blocked_by": [
+        "optional JAX"
+      ],
+      "required_worlds": [
+        "clean_linear_additive"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "point_recovery_slope",
+          "class": "soft_gate",
+          "proposed_threshold": "~1.0 clean world (proposed)"
+        }
+      ],
+      "battery_level": "B",
+      "minimum_mc_replicates": 50,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "n/a",
+        "MTGP",
+        "Bayesian",
+        "research"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "",
+      "notes": "n/a + MTGP + Bayesian @ research"
+    },
+    {
+      "protocol_id": "STAT-COMBO-MCELL-PERCELL-SCM-JK",
+      "method_family": "COMBINATION",
+      "combination_id": "MCELL-PERCELL-SCM-JK",
+      "method_type": "combination",
+      "eligible_for_layer4": true,
+      "eligibility_status": "ready_with_caveats",
+      "blocked_by": [
+        "per-cell only \u2014 pooling ADR semantic guardrail"
+      ],
+      "required_worlds": [
+        "null_no_effect",
+        "positive_injected_lift",
+        "clean_linear_additive",
+        "weak_signal",
+        "sparse_geo_low_donor_count",
+        "treated_outside_donor_hull",
+        "multi_treated_multi_cell"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "point_recovery_slope",
+          "class": "soft_gate",
+          "proposed_threshold": "~1.0 clean world (proposed)"
+        }
+      ],
+      "battery_level": "C",
+      "minimum_mc_replicates": 400,
+      "confirmatory_or_characterization": "characterization",
+      "layer3_dependencies": [
+        "DES-* multi_cell",
+        "SCM",
+        "UnitJackKnife",
+        "multi_cell_per_cell"
+      ],
+      "expected_outputs": [
+        "D5-STAT-MCELL-PERCELL-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "",
+      "notes": "DES-* multi_cell + SCM + UnitJackKnife @ multi_cell_per_cell"
+    },
+    {
+      "protocol_id": "STAT-COMBO-MCELL-POOLED-AUGSYNTH",
+      "method_family": "COMBINATION",
+      "combination_id": "MCELL-POOLED-AUGSYNTH",
+      "method_type": "combination",
+      "eligible_for_layer4": false,
+      "eligibility_status": "blocked_by_geometry",
+      "blocked_by": [
+        "pooled causal lift not literature-backed",
+        "ADR blocks semantics"
+      ],
+      "required_worlds": [
+        "multi_treated_multi_cell"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "point_recovery_slope",
+          "class": "soft_gate",
+          "proposed_threshold": "~1.0 clean world (proposed)"
+        }
+      ],
+      "battery_level": "A",
+      "minimum_mc_replicates": 50,
+      "confirmatory_or_characterization": "blocked",
+      "layer3_dependencies": [
+        "DES-* multi_cell",
+        "AugSynthCVXPY",
+        "point_estimate",
+        "pooled_multi_cell"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "",
+      "notes": "DES-* multi_cell + AugSynthCVXPY + point_estimate @ pooled_multi_cell"
+    },
+    {
+      "protocol_id": "STAT-COMBO-SUPERGEO-SCM-JK",
+      "method_family": "COMBINATION",
+      "combination_id": "SUPERGEO-SCM-JK",
+      "method_type": "combination",
+      "eligible_for_layer4": false,
+      "eligibility_status": "blocked_by_geometry",
+      "blocked_by": [
+        "F-GEO-003 bridge required",
+        "A29 invalid flat readout"
+      ],
+      "required_worlds": [
+        "supergeo_geometry"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "point_recovery_slope",
+          "class": "soft_gate",
+          "proposed_threshold": "~1.0 clean world (proposed)"
+        }
+      ],
+      "battery_level": "A",
+      "minimum_mc_replicates": 50,
+      "confirmatory_or_characterization": "blocked",
+      "layer3_dependencies": [
+        "DES-SUPERGEO-001",
+        "SCM",
+        "UnitJackKnife",
+        "supergeo"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "",
+      "notes": "DES-SUPERGEO-001 + SCM + UnitJackKnife @ supergeo"
+    },
+    {
+      "protocol_id": "STAT-COMBO-TRIM-SCM-JK",
+      "method_family": "COMBINATION",
+      "combination_id": "TRIM-SCM-JK",
+      "method_type": "combination",
+      "eligible_for_layer4": false,
+      "eligibility_status": "blocked_by_geometry",
+      "blocked_by": [
+        "F-GEO-004 bridge required",
+        "A30 invalid flat readout"
+      ],
+      "required_worlds": [
+        "trimmed_pair_geometry"
+      ],
+      "required_metrics": [
+        "null_false_positive_rate",
+        "bias",
+        "mae",
+        "abstention_blocked_rate",
+        "empirical_coverage",
+        "interval_width",
+        "interval_orientation_validity",
+        "lower_le_upper_rate",
+        "negative_half_width_rate",
+        "degenerate_interval_rate",
+        "point_recovery_slope",
+        "point_injected_ratio",
+        "treated_control_prefit_quality",
+        "donor_stability",
+        "shock_sensitivity",
+        "outside_hull_sensitivity",
+        "donor_count_sensitivity"
+      ],
+      "acceptance_criteria": [
+        {
+          "metric": "null_false_positive_rate",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "empirical_coverage",
+          "class": "not_thresholded_yet",
+          "proposed_threshold": "nominal (proposed)"
+        },
+        {
+          "metric": "lower_le_upper_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "1.0"
+        },
+        {
+          "metric": "negative_half_width_rate",
+          "class": "hard_gate",
+          "proposed_threshold": "0.0"
+        },
+        {
+          "metric": "point_recovery_slope",
+          "class": "soft_gate",
+          "proposed_threshold": "~1.0 clean world (proposed)"
+        }
+      ],
+      "battery_level": "A",
+      "minimum_mc_replicates": 50,
+      "confirmatory_or_characterization": "blocked",
+      "layer3_dependencies": [
+        "DES-TRIM-001",
+        "SCM",
+        "UnitJackKnife",
+        "trimmed_pair"
+      ],
+      "expected_outputs": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "layer3_implementation_name": "",
+      "notes": "DES-TRIM-001 + SCM + UnitJackKnife @ trimmed_pair"
+    }
+  ]
+}

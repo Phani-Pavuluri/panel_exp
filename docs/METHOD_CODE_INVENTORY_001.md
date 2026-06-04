@@ -31,7 +31,8 @@ This inventory answers: *what exists in the repo today?* — not *what should be
 | **Layer 1 — Code inventory** | ✅ **This document** + JSON archive |
 | Layer 2 — Literature alignment | ✅ [`METHOD_LITERATURE_ALIGNMENT_001.md`](METHOD_LITERATURE_ALIGNMENT_001.md) |
 | Layer 3 — Implementation validation | ✅ [`METHOD_IMPLEMENTATION_VALIDATION_001.md`](METHOD_IMPLEMENTATION_VALIDATION_001.md) |
-| Layers 4–5 | Blocked until Layer 4 protocol per family |
+| Layer 4 — Statistical validation protocol | ✅ [`METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.md`](METHOD_STATISTICAL_VALIDATION_PROTOCOL_001.md) |
+| Layer 5 — Combination matrix | Blocked until Layer 5 matrix per family |
 | Suitability / trust framework | **Paused** per validation program §8 |
 
 [`METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md) remains a useful **evidence map** but is **superseded for sequencing**; combination rows there are hypotheses until Layer 5.
@@ -264,9 +265,9 @@ All **implemented** estimators and inference modes except `point_estimate` requi
 
 ## 16. Next artifact
 
-**`METHOD_STATISTICAL_VALIDATION_PROTOCOL_001`** — OC / synthetic worlds per family (Layer 4).
+**`METHOD_COMBINATION_VALIDATION_MATRIX_001`** — design × estimator × inference matrix (Layer 5).
 
-**Inputs from this inventory:** JSON `items[]` · Layer 2 `families[]` · Layer 3 `rows[]`.
+**Inputs from this inventory:** JSON `items[]` · Layer 2 `families[]` · Layer 3 `rows[]` · Layer 4 protocol register.
 
 ---
 
