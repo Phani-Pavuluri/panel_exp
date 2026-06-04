@@ -607,7 +607,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** Prior audits retained as `evidence_input` only.
 
-**Next:** ✅ Layers 1–5 + suitability framework → **`D5-STAT-SMOKE-CALLABLE-001`**.
+**Next:** ✅ Layers 1–5 + suitability + smoke callable → **`D5-STAT-SCM-JK-001`**.
 
 ---
 
@@ -677,7 +677,19 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Generator:** `python -m panel_exp.validation.design_estimator_inference_suitability_framework_001`
 
-**Next:** **`D5-STAT-SMOKE-CALLABLE-001`** (first OC execution — no TrustReport wiring from this artifact).
+**Next:** ✅ **`D5-STAT-SMOKE-CALLABLE-001`** (see below).
+
+---
+
+## D5-STAT-SMOKE-CALLABLE-001 (2026-06-04)
+
+**Artifact:** [`docs/track_d/D5_STAT_SMOKE_CALLABLE_001_REPORT.md`](track_d/D5_STAT_SMOKE_CALLABLE_001_REPORT.md) · [`docs/track_d/archives/D5_STAT_SMOKE_CALLABLE_001_results.json`](track_d/archives/D5_STAT_SMOKE_CALLABLE_001_results.json)
+
+**Verdict:** First evidence-execution smoke battery **complete** — `smoke_pass_with_caveats`; 11 callable passes; 16 expected blocks; 3 skipped optional TBRRidge mappings; no promotion/trust/CS/MMM/LLM claims.
+
+**Generator:** `python -m panel_exp.validation.track_d_d5_stat_smoke_callable_001`
+
+**Next:** **`D5-STAT-SCM-JK-001`** (Level B characterization — no TrustReport wiring from smoke artifact).
 
 ---
 

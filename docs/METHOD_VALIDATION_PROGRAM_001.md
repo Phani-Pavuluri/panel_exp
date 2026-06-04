@@ -248,7 +248,9 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **Suitability framework:** ✅ [`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md`](DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md) + [`track_d/archives/DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.json`](track_d/archives/DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.json) (regenerate: `python -m panel_exp.validation.design_estimator_inference_suitability_framework_001`).
 
-**Immediate next concrete work:** **`D5-STAT-SMOKE-CALLABLE-001`** (first OC execution; no TrustReport/F-DECISION wiring until OC evidence exists).
+**First D5-STAT smoke execution:** ✅ [`docs/track_d/D5_STAT_SMOKE_CALLABLE_001_REPORT.md`](track_d/D5_STAT_SMOKE_CALLABLE_001_REPORT.md) + [`track_d/archives/D5_STAT_SMOKE_CALLABLE_001_results.json`](track_d/archives/D5_STAT_SMOKE_CALLABLE_001_results.json) (regenerate: `python -m panel_exp.validation.track_d_d5_stat_smoke_callable_001`).
+
+**Immediate next concrete work:** **`D5-STAT-SCM-JK-001`** (Level B characterization — no TrustReport/F-DECISION wiring until OC evidence exists).
 
 ---
 

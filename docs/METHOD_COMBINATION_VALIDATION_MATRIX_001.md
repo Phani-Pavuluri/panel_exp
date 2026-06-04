@@ -45,7 +45,8 @@ Layer 5 is the **final pre-suitability layer**. It converts Layers 1–4 into a 
 | Layer 4 — Statistical validation protocol | ✅ |
 | **Layer 5 — Combination matrix** | ✅ **This artifact** |
 | Suitability framework | ✅ [`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md`](DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md) |
-| Next concrete work | **`D5-STAT-SMOKE-CALLABLE-001`** |
+| D5-STAT smoke (Level A) | ✅ [`D5_STAT_SMOKE_CALLABLE_001_REPORT.md`](track_d/D5_STAT_SMOKE_CALLABLE_001_REPORT.md) |
+| Next concrete work | **`D5-STAT-SCM-JK-001`** |
 
 ---
 
@@ -222,11 +223,11 @@ Regenerate: `python -m panel_exp.validation.method_combination_validation_matrix
 
 ---
 
-## 17. Next concrete work: D5-STAT-SMOKE-CALLABLE-001
+## 17. Next concrete work: D5-STAT-SCM-JK-001
 
-**Suitability framework** complete — see [`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md`](DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md).
+**Smoke callable** complete — see [`track_d/D5_STAT_SMOKE_CALLABLE_001_REPORT.md`](track_d/D5_STAT_SMOKE_CALLABLE_001_REPORT.md).
 
-**Next:** Execute smoke/schema/callability/orientation/guard tests — **not** TrustReport wiring until OC archives exist.
+**Next:** Level B characterization for SCM + UnitJackKnife — **not** TrustReport wiring until OC archives exist.
 
 ---
 
@@ -254,4 +255,4 @@ Regenerate: `python -m panel_exp.validation.method_combination_validation_matrix
 
 ---
 
-*METHOD-COMBINATION-VALIDATION-MATRIX-001 v1.0.0 — Layer 5 complete; D5-STAT-SMOKE-CALLABLE-001 is next.*
+*METHOD-COMBINATION-VALIDATION-MATRIX-001 v1.0.0 — Layer 5 complete; D5-STAT-SCM-JK-001 is next.*

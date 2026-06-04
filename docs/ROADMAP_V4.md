@@ -242,7 +242,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Status:** **active** — authoritative method-foundation sequence  
 **Verdict:** **Pauses** trust-framework / method-role expansion until layers 1–5 complete (code inventory → literature → implementation → statistical OC → combination matrix). Prior synthesis and MCELL-first chains are **evidence only**, not sequencing authority.
 
-**Ordered next:** ✅ Layers 1–5 + suitability framework → **`D5-STAT-SMOKE-CALLABLE-001`** → further D5-STAT OC → trust-framework integration (roles still paused per program §8).
+**Ordered next:** ✅ Layers 1–5 + suitability + smoke callable → **`D5-STAT-SCM-JK-001`** → further D5-STAT OC → trust-framework integration (roles still paused per program §8).
 
 **Paused:** TrustReport / F-DECISION / CalibrationSignal / MMM role expansion · default **`D5-INST-AUGSYNTH-MULTICELL-001`** (optional narrow gate test later only).
 
@@ -292,7 +292,15 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Archive:** [`track_d/archives/DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.json`](track_d/archives/DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.json)  
 **Generator:** [`panel_exp/validation/design_estimator_inference_suitability_framework_001.py`](../panel_exp/validation/design_estimator_inference_suitability_framework_001.py)  
 **Status:** **complete** — 30 suitability rows; non-promotional classes only; forbidden flags false  
-**Next:** **`D5-STAT-SMOKE-CALLABLE-001`** (first OC execution)
+**Next:** ✅ Smoke callable complete (see below) → **`D5-STAT-SCM-JK-001`**
+
+### D5-STAT-SMOKE-CALLABLE-001
+
+**Report:** [`track_d/D5_STAT_SMOKE_CALLABLE_001_REPORT.md`](track_d/D5_STAT_SMOKE_CALLABLE_001_REPORT.md)  
+**Archive:** [`track_d/archives/D5_STAT_SMOKE_CALLABLE_001_results.json`](track_d/archives/D5_STAT_SMOKE_CALLABLE_001_results.json)  
+**Generator:** [`panel_exp/validation/track_d_d5_stat_smoke_callable_001.py`](../panel_exp/validation/track_d_d5_stat_smoke_callable_001.py)  
+**Status:** **complete** — smoke/schema/callability/orientation/guards; `smoke_pass_with_caveats`  
+**Next:** **`D5-STAT-SCM-JK-001`**
 
 ### METHOD-SOUNDNESS-AND-GAP-ROADMAP-001
 
@@ -302,7 +310,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 
 **Inputs:** Track D D1–D5 · CV-001 · AUDIT-010 · foundation hardening · validation program.
 
-**Ordered next:** See **METHOD-VALIDATION-PROGRAM-001** (D5-STAT-SMOKE-CALLABLE-001).
+**Ordered next:** See **METHOD-VALIDATION-PROGRAM-001** (D5-STAT-SCM-JK-001).
 
 ### METHOD-SOUNDNESS-ROADMAP-REVIEW-001
 
