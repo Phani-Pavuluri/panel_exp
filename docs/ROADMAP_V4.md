@@ -250,7 +250,13 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Status:** **complete**  
 **Verdict:** Execution checkpoint — **`proceed_to_augsynth_development_lane`** confirmed; DL-2 coupled via D5-DIAG; design-readout + inference taxonomy **parallel docs**, not blockers.
 
-**Ordered next:** ✅ DL-1 P1–P6 **closed** → [`AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md) → **`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001`**.
+**Ordered next:** ✅ DL-1 P1–P6 **closed** → lane closeout → foundation synthesis → **`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001`** → **`D5-INST-AUGSYNTH-MULTICELL-001`** (gate validation).
+
+### METHOD-FOUNDATION-SYNTHESIS-001
+
+**Document:** [`METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md)  
+**Status:** **complete** — docs-only checkpoint; no production behavior change  
+**Verdict:** Consolidates design × estimator × inference × geometry evidence from prior audits; **proceed** to **`D5-INST-AUGSYNTH-MULTICELL-001`** as **narrow pooling-ADR gate validation** (S0/S1 only; no pooled causal/uncertainty; no promotion). **Next:** `METHOD_LITERATURE_GAP_REVIEW_001` (parallel, non-blocking).
 
 ### AUGSYNTH-ASCM-DEVELOPMENT-ROADMAP-001
 
@@ -258,7 +264,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Status:** **complete** — P1–P6 execution landed  
 **Verdict:** DL-1 lane **P6 complete** — [`DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md`](DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md) verdict `compatible_per_cell_only_pooling_blocked` + `bridge_required_before_broader_use`. **Not promotion.**
 
-**P1–P6:** ✅ complete · **Lane:** **closed** — [`AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md). **Next:** `MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001` (not multi-cell OC first).
+**P1–P6:** ✅ complete · **Lane:** **closed** — [`AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md). **Next:** [`METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md) → pooling ADR → **`D5-INST-AUGSYNTH-MULTICELL-001`** (gate validation; not promotion).
 
 ### AUGSYNTH-ASCM-LANE-CLOSEOUT-001
 

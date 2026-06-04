@@ -597,6 +597,18 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 ---
 
+## METHOD-FOUNDATION-SYNTHESIS-001 (2026-06-03)
+
+**Artifact:** [`docs/METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md)
+
+**Verdict:** **Complete** — single foundation map (design × estimator × inference × geometry) reusing prior audits; stable conclusions recorded; implementation/literature/OC gaps enumerated. **Proceed** to **`D5-INST-AUGSYNTH-MULTICELL-001`** as ADR-gate validation only (S0 per-cell; S1 descriptive metadata; no pooled causal/uncertainty; no promotion).
+
+**Prerequisites:** DL-1 P1–P6 · lane closeout · design-readout P6 · METHOD-SOUNDNESS-AND-GAP-ROADMAP-001.
+
+**Next:** **`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001`** · **`D5-INST-AUGSYNTH-MULTICELL-001`** · **`METHOD_LITERATURE_GAP_REVIEW_001`** (parallel).
+
+---
+
 ## METHOD-SOUNDNESS-ROADMAP-REVIEW-001 (2026-06-03)
 
 **Artifact:** [`docs/METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md`](METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md)
@@ -617,7 +629,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** P1–P6 complete · [`DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md`](DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md).
 
-**Next ordered:** (1) pooling ADR · (2) estimand bridge ADR · (3) multi-cell OC · (4) design-compat OC · (5) diagnostic-only vs repair-lane decision.
+**Next ordered:** (1) ✅ foundation synthesis · (2) pooling ADR · (3) **`D5-INST-AUGSYNTH-MULTICELL-001`** (gate validation) · (4) estimand bridge ADR · (5) design-compat OC · (6) diagnostic-only vs repair-lane decision.
 
 ---
 
@@ -629,7 +641,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** P3 ASCM-003 · P4 JK calibration · P5 Conformal failure · DESIGN-INVENTORY-001.
 
-**Next:** `AUGSYNTH_SCM_ESTIMAND_BRIDGE_ADR_001` · `MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001` · optional `D5-INST-AUGSYNTH-DESIGN-COMPAT-001`.
+**Next:** ✅ [`METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md) · `MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001` · **`D5-INST-AUGSYNTH-MULTICELL-001`** · `AUGSYNTH_SCM_ESTIMAND_BRIDGE_ADR_001` · optional `D5-INST-AUGSYNTH-DESIGN-COMPAT-001`.
 
 ---
 
@@ -643,7 +655,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** METHOD-SOUNDNESS-ROADMAP-REVIEW-001 · ASCM-002 · threshold audit · ADR-001.
 
-**Next:** **`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001`** (pooling ADR before multi-cell OC).
+**Next:** ✅ synthesis [`METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md) → **`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001`** → **`D5-INST-AUGSYNTH-MULTICELL-001`** (gate validation).
 
 ---
 
