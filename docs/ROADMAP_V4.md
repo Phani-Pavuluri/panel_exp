@@ -242,7 +242,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Status:** **active** — authoritative method-foundation sequence  
 **Verdict:** **Pauses** trust-framework / method-role expansion until layers 1–5 complete (code inventory → literature → implementation → statistical OC → combination matrix). Prior synthesis and MCELL-first chains are **evidence only**, not sequencing authority.
 
-**Ordered next:** ✅ Layer 1 **`METHOD_CODE_INVENTORY_001`** → ✅ Layer 2 **`METHOD_LITERATURE_ALIGNMENT_001`** → **`METHOD_IMPLEMENTATION_VALIDATION_001`** → **`METHOD_STATISTICAL_VALIDATION_PROTOCOL_001`** → **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** → **`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001`** → trust-framework integration.
+**Ordered next:** ✅ Layer 1 **`METHOD_CODE_INVENTORY_001`** → ✅ Layer 2 **`METHOD_LITERATURE_ALIGNMENT_001`** → ✅ Layer 3 **`METHOD_IMPLEMENTATION_VALIDATION_001`** → **`METHOD_STATISTICAL_VALIDATION_PROTOCOL_001`** → **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** → **`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001`** → trust-framework integration.
 
 **Paused:** TrustReport / F-DECISION / CalibrationSignal / MMM role expansion · default **`D5-INST-AUGSYNTH-MULTICELL-001`** (optional narrow gate test later only).
 
@@ -260,7 +260,15 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Archive:** [`track_d/archives/METHOD_LITERATURE_ALIGNMENT_001.json`](track_d/archives/METHOD_LITERATURE_ALIGNMENT_001.json)  
 **Generator:** [`panel_exp/validation/method_literature_alignment_001.py`](../panel_exp/validation/method_literature_alignment_001.py)  
 **Status:** **complete** — 24 literature families mapped to Layer 1 inventory; no trust roles  
-**Next:** **`METHOD_IMPLEMENTATION_VALIDATION_001`**
+**Next:** ✅ Layer 3 complete (see below)
+
+### METHOD-IMPLEMENTATION-VALIDATION-001 (Layer 3)
+
+**Document:** [`METHOD_IMPLEMENTATION_VALIDATION_001.md`](METHOD_IMPLEMENTATION_VALIDATION_001.md)  
+**Archive:** [`track_d/archives/METHOD_IMPLEMENTATION_VALIDATION_001.json`](track_d/archives/METHOD_IMPLEMENTATION_VALIDATION_001.json)  
+**Generator:** [`panel_exp/validation/method_implementation_validation_001.py`](../panel_exp/validation/method_implementation_validation_001.py)  
+**Status:** **complete** — 29 implementation-validation rows; code inspection + audit reconciliation  
+**Next:** **`METHOD_STATISTICAL_VALIDATION_PROTOCOL_001`**
 
 ### METHOD-SOUNDNESS-AND-GAP-ROADMAP-001
 
@@ -270,7 +278,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 
 **Inputs:** Track D D1–D5 · CV-001 · AUDIT-010 · foundation hardening · validation program.
 
-**Ordered next:** See **METHOD-VALIDATION-PROGRAM-001** (Layer 3 implementation validation).
+**Ordered next:** See **METHOD-VALIDATION-PROGRAM-001** (Layer 4 statistical validation protocol).
 
 ### METHOD-SOUNDNESS-ROADMAP-REVIEW-001
 

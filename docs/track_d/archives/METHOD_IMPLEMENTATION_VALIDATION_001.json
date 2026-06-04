@@ -1,0 +1,966 @@
+{
+  "document_id": "METHOD-IMPLEMENTATION-VALIDATION-001",
+  "generated_at": "2026-06-04T06:58:16.111789+00:00",
+  "generator": "panel_exp/validation/method_implementation_validation_001.py",
+  "parent_artifacts": [
+    "METHOD-CODE-INVENTORY-001",
+    "METHOD-LITERATURE-ALIGNMENT-001"
+  ],
+  "implementation_validation_status_values": [
+    "implementation_validated",
+    "implementation_validated_with_caveats",
+    "implementation_gap",
+    "architecture_gap",
+    "identity_collision",
+    "unsupported_geometry_not_blocked",
+    "requires_code_review",
+    "research_only_not_validated",
+    "deprecated_or_quarantine_candidate"
+  ],
+  "known_gap_register": [
+    "INV-D1-001",
+    "G1",
+    "G4",
+    "G7",
+    "G8",
+    "IMPL-CONF-001",
+    "GAP-TBR-TBRR-001",
+    "INV-D2-001",
+    "INV-015",
+    "F-GEO-003",
+    "F-GEO-004",
+    "POW-EST-001",
+    "F-INF-003",
+    "IMPL-JK-001"
+  ],
+  "counts": {
+    "rows_total": 29,
+    "by_status": {
+      "implementation_validated_with_caveats": 12,
+      "unsupported_geometry_not_blocked": 2,
+      "deprecated_or_quarantine_candidate": 2,
+      "implementation_gap": 6,
+      "research_only_not_validated": 4,
+      "implementation_validated": 1,
+      "architecture_gap": 2
+    },
+    "layer2_families": 24,
+    "layer2_families_covered": 24,
+    "orchestration_rows": 2
+  },
+  "coverage": {
+    "missing_layer2_family_ids": [],
+    "extra_family_ids": []
+  },
+  "rows": [
+    {
+      "method_family": "DES-GMM-001",
+      "implementation_name": "greedy_match_markets",
+      "method_type": "design",
+      "module_path": "panel_exp/design/assign.py",
+      "entrypoint": "greedy_match_markets.assign \u2192 geo_runner.run_geo_experiment_design",
+      "literature_alignment_status": "partially_aligned",
+      "implementation_validation_status": "implementation_validated_with_caveats",
+      "identity_fidelity": "Class name matches registry greedy_match_markets; aliases gmm/greedymatchmarkets",
+      "estimand_fidelity": "Assignment only; KPI-mass treatment_probability \u2014 not unit-count 50/50",
+      "geometry_fidelity": "Unit assignment dict; multi-cell via n_test_grps",
+      "inference_semantics_fidelity": "n/a at design stage",
+      "orchestration_fidelity": "GeoExperimentDesign passes pre_treatment_period when train_length>0",
+      "known_gaps": [
+        "INV-D1-001: direct assign() without pre_treatment_period uses full wide"
+      ],
+      "evidence_sources": [
+        "panel_exp/design/geo_runner.py",
+        "panel_exp/design/assign.py",
+        "TRACK_D_D1"
+      ],
+      "recommended_fix_or_next_check": "Layer 3 audit: all production callers pass pre_treatment_period; document bypass risk",
+      "layer4_statistical_validation_needed": [
+        "D5-POW-001e balance; null-monitor sensitivity with post periods in wide"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "DES-GMM-001",
+      "inventory_canonical_names": [
+        "greedy_match_markets"
+      ]
+    },
+    {
+      "method_family": "DES-RERAND-001",
+      "implementation_name": "rerandomization_wrapper",
+      "method_type": "wrapper",
+      "module_path": "panel_exp/design/assign.py",
+      "entrypoint": "Rerandomization.assign; GeoExperimentDesign.create_design",
+      "literature_alignment_status": "aligned_pending_validation",
+      "implementation_validation_status": "implementation_validated_with_caveats",
+      "identity_fidelity": "Wrapper not in design registry list_names(); collides with rerandomization concept",
+      "estimand_fidelity": "Assignment under balance threshold \u2014 not ATT",
+      "geometry_fidelity": "Inherits base randomizer geometry",
+      "inference_semantics_fidelity": "n/a",
+      "orchestration_fidelity": "Imbalance evaluated on pre_treatment_period slice when provided (assign.py)",
+      "known_gaps": [
+        "Production path may differ from bare greedy_match_markets"
+      ],
+      "evidence_sources": [
+        "panel_exp/design/assign.py",
+        "DESIGN_INVENTORY_001"
+      ],
+      "recommended_fix_or_next_check": "Document wrapper dispatch vs bare tier-1 in GeoExperimentDesign",
+      "layer4_statistical_validation_needed": [
+        "D5-POW-001e rerandomization vs bare sensitivity"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "DES-RERAND-001",
+      "inventory_canonical_names": [
+        "rerandomization_wrapper"
+      ]
+    },
+    {
+      "method_family": "DES-TIER1-RAND-001",
+      "implementation_name": "tier1_randomizers",
+      "method_type": "design",
+      "module_path": "panel_exp/design/modes/",
+      "entrypoint": "register_builtin_designs \u2192 geo_runner",
+      "literature_alignment_status": "aligned_pending_validation",
+      "implementation_validation_status": "implementation_validated_with_caveats",
+      "identity_fidelity": "Five geo_run_supported randomizers share registry dispatch",
+      "estimand_fidelity": "Probabilistic assignment \u2014 not ATT",
+      "geometry_fidelity": "Unit dict; geo_run_supported=True",
+      "inference_semantics_fidelity": "n/a",
+      "orchestration_fidelity": "Same geo_runner pre_treatment_period behavior as DES-GMM-001",
+      "known_gaps": [
+        "Design\u2013readout bridge: randomization \u2260 matched-market analysis story"
+      ],
+      "evidence_sources": [
+        "panel_exp/design/registry.py",
+        "D5-POW-001e"
+      ],
+      "recommended_fix_or_next_check": "Per-mode constraint/KPI semantics checklist",
+      "layer4_statistical_validation_needed": [
+        "001e SCM+JK reference path per tier-1 arm"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "DES-TIER1-RAND-001",
+      "inventory_canonical_names": [
+        "completerandomization",
+        "balancedrandomization",
+        "stratifiedrandomization",
+        "thinningdesign"
+      ]
+    },
+    {
+      "method_family": "DES-SUPERGEO-001",
+      "implementation_name": "supergeos",
+      "method_type": "design",
+      "module_path": "panel_exp/design/supergeos.py",
+      "entrypoint": "TrimmedMatch/Supergeo registry handler; not geo_run_supported",
+      "literature_alignment_status": "literature_mismatch",
+      "implementation_validation_status": "unsupported_geometry_not_blocked",
+      "identity_fidelity": "supergeos registry name; output not flat assignment dict for SCM+JK",
+      "estimand_fidelity": "Cluster/pair estimand undefined for flat ImpactAnalyzer readout",
+      "geometry_fidelity": "MILP cluster geometry \u2014 blocked for 001e flat SCM+JK (A29)",
+      "inference_semantics_fidelity": "n/a",
+      "orchestration_fidelity": "geo_run_supported=False \u2014 silent block only if caller respects registry",
+      "known_gaps": [
+        "F-GEO-003: no unit-panel bridge",
+        "COMBO A29 invalid flat readout"
+      ],
+      "evidence_sources": [
+        "D5-DES-SUPERGEO-001",
+        "METHOD_SOUNDNESS \u00a72.C"
+      ],
+      "recommended_fix_or_next_check": "Geometry bridge ADR before Layer 4 combo OC",
+      "layer4_statistical_validation_needed": [
+        "D5-DES-SUPERGEO-001 replay after bridge"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "DES-SUPERGEO-001",
+      "inventory_canonical_names": [
+        "supergeos"
+      ]
+    },
+    {
+      "method_family": "DES-TRIM-001",
+      "implementation_name": "trimmedmatch",
+      "method_type": "design",
+      "module_path": "panel_exp/design/trimmed_match.py",
+      "entrypoint": "registry; not geo_run_supported",
+      "literature_alignment_status": "literature_mismatch",
+      "implementation_validation_status": "unsupported_geometry_not_blocked",
+      "identity_fidelity": "trimmedmatch / trimmed_match aliases",
+      "estimand_fidelity": "Tp/Te pair population \u2014 not unit-panel SCM estimand without bridge",
+      "geometry_fidelity": "Pair geometry \u2014 A30 blocked for flat SCM+JK",
+      "inference_semantics_fidelity": "n/a",
+      "orchestration_fidelity": "geo_run_supported=False",
+      "known_gaps": [
+        "F-GEO-004 adapter missing"
+      ],
+      "evidence_sources": [
+        "D5-DES-TRIM-001",
+        "AUDIT-010 A30"
+      ],
+      "recommended_fix_or_next_check": "F-GEO-004 bridge before SCM readout",
+      "layer4_statistical_validation_needed": [
+        "D5-DES-TRIM-001"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "DES-TRIM-001",
+      "inventory_canonical_names": [
+        "trimmedmatch"
+      ]
+    },
+    {
+      "method_family": "DES-LEGACY-BLOCK-001",
+      "implementation_name": "quickblock_matchedpair",
+      "method_type": "design",
+      "module_path": "panel_exp/design/quickblock.py; matched_pair.py",
+      "entrypoint": "registry only; not geo_run",
+      "literature_alignment_status": "unclear_requires_review",
+      "implementation_validation_status": "deprecated_or_quarantine_candidate",
+      "identity_fidelity": "Legacy APIs registered but not geo orchestration path",
+      "estimand_fidelity": "Unclear product estimand",
+      "geometry_fidelity": "assignment_dict; geo_run_supported=False",
+      "inference_semantics_fidelity": "n/a",
+      "orchestration_fidelity": "Not wired through GeoExperimentDesign production path",
+      "known_gaps": [
+        "No geo-run; sparse tests"
+      ],
+      "evidence_sources": [
+        "METHOD_CODE_INVENTORY_001"
+      ],
+      "recommended_fix_or_next_check": "Quarantine unless revival charter",
+      "layer4_statistical_validation_needed": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "DES-LEGACY-BLOCK-001",
+      "inventory_canonical_names": [
+        "quickblock",
+        "matchedpair"
+      ]
+    },
+    {
+      "method_family": "EST-SCM-001",
+      "implementation_name": "SyntheticControlCVXPY",
+      "method_type": "estimator",
+      "module_path": "panel_exp/methods/scm.py",
+      "entrypoint": "ImpactAnalyzer.run_analysis; catalog SCM/SyntheticControlCVXPY",
+      "literature_alignment_status": "partially_aligned",
+      "implementation_validation_status": "implementation_validated_with_caveats",
+      "identity_fidelity": "SCM catalog alias maps to multiple classes \u2014 identity_collision risk",
+      "estimand_fidelity": "Counterfactual gap; level vs relative depends on results export path (G7)",
+      "geometry_fidelity": "Unit panel; invalid on 2-row aggregate without guard",
+      "inference_semantics_fidelity": "Multiple inference modes wired; Placebo falsification not CI",
+      "orchestration_fidelity": "method_metadata inference_support lists JK, JKP, BRB, etc.",
+      "known_gaps": [
+        "G4: OSQP SCM leg may diverge from documented pre-RMSE objective",
+        "full_model=True post-period fit leakage risk (INV-D2-001)"
+      ],
+      "evidence_sources": [
+        "panel_exp/methods/scm.py",
+        "TRACK_D_D2",
+        "D5-POW-001e"
+      ],
+      "recommended_fix_or_next_check": "D2 donor + full_model audit; disambiguate SCM alias in metadata",
+      "layer4_statistical_validation_needed": [
+        "SCM+JK null FPR; Placebo single-treated scope"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "EST-SCM-001",
+      "inventory_canonical_names": [
+        "SyntheticControlCVXPY",
+        "SCM"
+      ]
+    },
+    {
+      "method_family": "EST-SCM-001",
+      "implementation_name": "SyntheticControl",
+      "method_type": "estimator",
+      "module_path": "panel_exp/methods/scm.py",
+      "entrypoint": "SyntheticControl scipy optimizer path",
+      "literature_alignment_status": "partially_aligned",
+      "implementation_validation_status": "implementation_gap",
+      "identity_fidelity": "Distinct from SyntheticControlCVXPY but shared SCM catalog name",
+      "estimand_fidelity": "Same ATT intent; scipy vs OSQP may differ numerically",
+      "geometry_fidelity": "Unit panel",
+      "inference_semantics_fidelity": "Same registry inference list as CVXPY path",
+      "orchestration_fidelity": "Production often prefers CVXPY; scipy less exercised",
+      "known_gaps": [
+        "Numerical parity CVXPY vs scipy not guaranteed"
+      ],
+      "evidence_sources": [
+        "D2 inventory",
+        "test_scm.py"
+      ],
+      "recommended_fix_or_next_check": "Document production default path; parity spot-check",
+      "layer4_statistical_validation_needed": [
+        "Recovery runner SCM arms"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "EST-SCM-001",
+      "inventory_canonical_names": [
+        "SCM"
+      ]
+    },
+    {
+      "method_family": "EST-SCM-001",
+      "implementation_name": "synthetic_control_function",
+      "method_type": "estimator",
+      "module_path": "panel_exp/methods/synthetic_control.py",
+      "entrypoint": "legacy function \u2014 not in estimator catalog",
+      "literature_alignment_status": "not_literature_backed",
+      "implementation_validation_status": "deprecated_or_quarantine_candidate",
+      "identity_fidelity": "Legacy scipy helper outside ImpactAnalyzer catalog",
+      "estimand_fidelity": "Undeclared in catalog",
+      "geometry_fidelity": "Caller-dependent",
+      "inference_semantics_fidelity": "n/a",
+      "orchestration_fidelity": "Not dispatched via method_metadata catalog",
+      "known_gaps": [
+        "Dead or parallel path risk"
+      ],
+      "evidence_sources": [
+        "METHOD_CODE_INVENTORY_001"
+      ],
+      "recommended_fix_or_next_check": "Quarantine documentation",
+      "layer4_statistical_validation_needed": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "EST-SCM-001",
+      "inventory_canonical_names": [
+        "synthetic_control_function"
+      ]
+    },
+    {
+      "method_family": "EST-AUGSYNTH-001",
+      "implementation_name": "AugSynthCVXPY",
+      "method_type": "estimator",
+      "module_path": "panel_exp/methods/scm.py",
+      "entrypoint": "AugSynthCVXPY.run_analysis",
+      "literature_alignment_status": "partially_aligned",
+      "implementation_validation_status": "implementation_gap",
+      "identity_fidelity": "ASCM colloquial name; catalog AugSynthCVXPY",
+      "estimand_fidelity": "Augmented gap; pooled multi-cell blocked by ADR semantics only",
+      "geometry_fidelity": "Unit panel per cell",
+      "inference_semantics_fidelity": "JK unsafe strata; Conformal blocked pending interval redesign",
+      "orchestration_fidelity": "Export guards for full_model/Placebo documented in track_d harnesses",
+      "known_gaps": [
+        "G1: penalty_strength stored but unused on OSQP SCM path",
+        "G4/G7/G8: SCM leg mismatch; level vs relative; hull proxy"
+      ],
+      "evidence_sources": [
+        "AUGSYNTH_IMPLEMENTATION_FIDELITY_AUDIT_001",
+        "D5-INST-AUGSYNTH-ASCM-003",
+        "D5-INF-AUGSYNTH-JK-CALIBRATION-001"
+      ],
+      "recommended_fix_or_next_check": "Close G1\u2013G8 fidelity items; per-cell metadata enforcement",
+      "layer4_statistical_validation_needed": [
+        "ASCM-003 strata; JK calibration; Conformal POSTFIX non-promotion"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "EST-AUGSYNTH-001",
+      "inventory_canonical_names": [
+        "AugSynthCVXPY"
+      ]
+    },
+    {
+      "method_family": "EST-AUGSYNTH-001",
+      "implementation_name": "AugSynth",
+      "method_type": "estimator",
+      "module_path": "panel_exp/methods/scm.py",
+      "entrypoint": "AugSynth non-CVXPY",
+      "literature_alignment_status": "unclear_requires_review",
+      "implementation_validation_status": "research_only_not_validated",
+      "identity_fidelity": "Distinct class; UNVALIDATED maturity in metadata",
+      "estimand_fidelity": "Claimed ASCM but not production charter path",
+      "geometry_fidelity": "Unit panel",
+      "inference_semantics_fidelity": "point/Kfold/Conformal in catalog \u2014 not fidelity-reviewed",
+      "orchestration_fidelity": "F-CAT-003 deprioritized",
+      "known_gaps": [
+        "Not CVXPY fidelity path"
+      ],
+      "evidence_sources": [
+        "method_metadata.py",
+        "F-CAT-003"
+      ],
+      "recommended_fix_or_next_check": "Quarantine from production wiring",
+      "layer4_statistical_validation_needed": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "EST-AUGSYNTH-001",
+      "inventory_canonical_names": [
+        "AugSynth"
+      ]
+    },
+    {
+      "method_family": "EST-TBR-001",
+      "implementation_name": "TBR",
+      "method_type": "estimator",
+      "module_path": "panel_exp/methods/tbr.py",
+      "entrypoint": "TBR.run_analysis",
+      "literature_alignment_status": "aligned_pending_validation",
+      "implementation_validation_status": "implementation_validated_with_caveats",
+      "identity_fidelity": "TBR name distinct from TBRRidge but product conflation risk (GAP-TBR-TBRR-001)",
+      "estimand_fidelity": "Aggregate lift; cumulative vs relative via INV-003 export",
+      "geometry_fidelity": "Enforced 1 treated + 1 control pre-aggregated rows",
+      "inference_semantics_fidelity": "point/JK/JKP/Kfold in catalog \u2014 aggregate-only",
+      "orchestration_fidelity": "PowerAnalysis may use TBRRidge agg2 \u2014 not TBR class",
+      "known_gaps": [
+        "identity_collision with TBRRidge in product docs"
+      ],
+      "evidence_sources": [
+        "D5-INST-TBR-001",
+        "D4 POW-EST-001"
+      ],
+      "recommended_fix_or_next_check": "TBR aggregate estimand registry mapping",
+      "layer4_statistical_validation_needed": [
+        "D5-INST-TBR-001 ratio stability"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "EST-TBR-001",
+      "inventory_canonical_names": [
+        "TBR"
+      ]
+    },
+    {
+      "method_family": "EST-TBRRIDGE-001",
+      "implementation_name": "TBRRidge",
+      "method_type": "estimator",
+      "module_path": "panel_exp/methods/tbr.py",
+      "entrypoint": "TBRRidge.run_analysis",
+      "literature_alignment_status": "partially_aligned",
+      "implementation_validation_status": "implementation_gap",
+      "identity_fidelity": "TBRRidge vs TBR \u2014 high collision risk in naming/docs",
+      "estimand_fidelity": "Ridge-regularized lift; unit vs agg2 paths differ",
+      "geometry_fidelity": "Unit panel + agg2 power path \u2014 not equivalent to unit SCM+JK",
+      "inference_semantics_fidelity": "JK/JKP high null FPR documented; Bayesian registry \u2260 MCMC",
+      "orchestration_fidelity": "Primary OC path for BRB/Kfold/TS-Kfold",
+      "known_gaps": [
+        "POW-EST-001: PowerAnalysis agg2 vs SCM unit readout",
+        "INV-015 Bayesian handler"
+      ],
+      "evidence_sources": [
+        "D5-INST-TBRRIDGE-001/003",
+        "AUDIT-010 A16/A21"
+      ],
+      "recommended_fix_or_next_check": "JK/JKP pivot audit; disambiguate Bayesian registry",
+      "layer4_statistical_validation_needed": [
+        "TBRRIDGE-003 null FPR/coverage",
+        "BRB positive OC"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "EST-TBRRIDGE-001",
+      "inventory_canonical_names": [
+        "TBRRidge"
+      ]
+    },
+    {
+      "method_family": "EST-DID-001",
+      "implementation_name": "DID",
+      "method_type": "estimator",
+      "module_path": "panel_exp/methods/DID.py",
+      "entrypoint": "DID.run_analysis (embedded bootstrap)",
+      "literature_alignment_status": "partially_aligned",
+      "implementation_validation_status": "implementation_validated_with_caveats",
+      "identity_fidelity": "DID distinct from SyntheticDID",
+      "estimand_fidelity": "ATT / cumulative ATT; relative CI deferred DEF-003",
+      "geometry_fidelity": "Panel treated/control units",
+      "inference_semantics_fidelity": "Native bootstrap not BlockResidualBootstrap registry mode",
+      "orchestration_fidelity": "ImpactAnalyzer must route to estimator-native bootstrap",
+      "known_gaps": [
+        "Bootstrap naming collision BRB vs DID embedded",
+        "Relative ATT CI unsupported"
+      ],
+      "evidence_sources": [
+        "D3 INF-010",
+        "AUDIT-010 A25",
+        "DEF-003"
+      ],
+      "recommended_fix_or_next_check": "Document DID bootstrap dispatch; interval policy ADR",
+      "layer4_statistical_validation_needed": [
+        "A25 pretrend + bootstrap characterization"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "EST-DID-001",
+      "inventory_canonical_names": [
+        "DID"
+      ]
+    },
+    {
+      "method_family": "EST-SDID-001",
+      "implementation_name": "SyntheticDID",
+      "method_type": "estimator",
+      "module_path": "panel_exp/methods/synthetic_did.py",
+      "entrypoint": "research catalog; validation runner skip",
+      "literature_alignment_status": "unclear_requires_review",
+      "implementation_validation_status": "research_only_not_validated",
+      "identity_fidelity": "SyntheticDID registered; research_only maturity",
+      "estimand_fidelity": "SDID ATT \u2014 fidelity vs Arkhangelsky et al. not proven",
+      "geometry_fidelity": "Panel timing structure",
+      "inference_semantics_fidelity": "point only in catalog",
+      "orchestration_fidelity": "Skipped in validation runner",
+      "known_gaps": [
+        "No Layer 3 fidelity proof"
+      ],
+      "evidence_sources": [
+        "synthetic_did_test.py",
+        "CV-001"
+      ],
+      "recommended_fix_or_next_check": "Fidelity spike or quarantine",
+      "layer4_statistical_validation_needed": [
+        "Research charter OC only"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "EST-SDID-001",
+      "inventory_canonical_names": [
+        "SyntheticDID"
+      ]
+    },
+    {
+      "method_family": "EST-RESEARCH-BAYES-001",
+      "implementation_name": "BayesianTBR",
+      "method_type": "estimator",
+      "module_path": "panel_exp/methods/bayesian_regression.py",
+      "entrypoint": "JAX optional MCMC",
+      "literature_alignment_status": "unclear_requires_review",
+      "implementation_validation_status": "research_only_not_validated",
+      "identity_fidelity": "BayesianTBR \u2260 registry inference Bayesian shortcut on TBRRidge",
+      "estimand_fidelity": "Posterior lift per BSTS literature if MCMC run",
+      "geometry_fidelity": "Aggregate/unit per config",
+      "inference_semantics_fidelity": "Bayesian mode in catalog \u2014 credible intervals",
+      "orchestration_fidelity": "Optional deps; not production metadata path",
+      "known_gaps": [
+        "INV-015 registry Bayesian on TBRRidge not NUTS"
+      ],
+      "evidence_sources": [
+        "INV-015",
+        "jax_test_helpers"
+      ],
+      "recommended_fix_or_next_check": "Block registry misuse vs class MCMC",
+      "layer4_statistical_validation_needed": [
+        "RTP-001 charter only"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "EST-RESEARCH-BAYES-001",
+      "inventory_canonical_names": [
+        "BayesianTBR",
+        "BayesianTBRHorseShoe",
+        "TBRAutoSARIMAX"
+      ]
+    },
+    {
+      "method_family": "EST-RESEARCH-OTHER-001",
+      "implementation_name": "TROP_MTGP",
+      "method_type": "estimator",
+      "module_path": "panel_exp/methods/triply_robust_est.py; mtgp.py",
+      "entrypoint": "research_only catalog",
+      "literature_alignment_status": "not_literature_backed",
+      "implementation_validation_status": "research_only_not_validated",
+      "identity_fidelity": "TROP / MTGP in catalog without production inference surface",
+      "estimand_fidelity": "Undeclared for product",
+      "geometry_fidelity": "Research configs",
+      "inference_semantics_fidelity": "point/Bayesian only",
+      "orchestration_fidelity": "validation runner skip/limit",
+      "known_gaps": [
+        "No implementation validation charter"
+      ],
+      "evidence_sources": [
+        "METHOD_CODE_INVENTORY_001"
+      ],
+      "recommended_fix_or_next_check": "Quarantine list confirmation",
+      "layer4_statistical_validation_needed": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "EST-RESEARCH-OTHER-001",
+      "inventory_canonical_names": [
+        "TROP",
+        "MTGP"
+      ]
+    },
+    {
+      "method_family": "INF-POINT-001",
+      "implementation_name": "point_estimate",
+      "method_type": "inference",
+      "module_path": "panel_exp/inference/modes/impl.py",
+      "entrypoint": "run_point_estimate",
+      "literature_alignment_status": "aligned_pending_validation",
+      "implementation_validation_status": "implementation_validated",
+      "identity_fidelity": "Registry point_estimate \u2014 clear diagnostic role",
+      "estimand_fidelity": "Point effect only",
+      "geometry_fidelity": "Estimator-dependent",
+      "inference_semantics_fidelity": "No intervals \u2014 must not be labeled CI",
+      "orchestration_fidelity": "InferenceRegistry dispatch",
+      "known_gaps": [],
+      "evidence_sources": [
+        "D3 INF-001"
+      ],
+      "recommended_fix_or_next_check": "Metadata guard against promotion as uncertainty",
+      "layer4_statistical_validation_needed": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "INF-POINT-001",
+      "inventory_canonical_names": [
+        "point_estimate"
+      ]
+    },
+    {
+      "method_family": "INF-JK-001",
+      "implementation_name": "UnitJackKnife",
+      "method_type": "inference",
+      "module_path": "panel_exp/inference/unit_jackknife.py",
+      "entrypoint": "run_unit_jackknife",
+      "literature_alignment_status": "partially_aligned",
+      "implementation_validation_status": "implementation_gap",
+      "identity_fidelity": "UnitJackKnife \u2014 not generic jackknife on aggregates",
+      "estimand_fidelity": "JK pivot on unit residuals \u2014 null-monitor role for SCM in evidence",
+      "geometry_fidelity": "Blocked invalid on 2-row aggregate SCM/AugSynth in audits",
+      "inference_semantics_fidelity": "lower/upper percentiles on leave-one-unit distribution",
+      "orchestration_fidelity": "Paired SCM, AugSynthCVXPY, TBRRidge in COMBO matrix",
+      "known_gaps": [
+        "TBRRidge+JK high null FPR",
+        "AugSynth unsafe strata",
+        "aggregate geometry not always blocked in code"
+      ],
+      "evidence_sources": [
+        "D3",
+        "D5-INF-002",
+        "JK calibration-001",
+        "AUDIT-010 A16/A26"
+      ],
+      "recommended_fix_or_next_check": "Hard-block JK on aggregate 2-row; stratum gates for AugSynth",
+      "layer4_statistical_validation_needed": [
+        "001e/ASCM-002 null FPR",
+        "TBRRIDGE-003"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "INF-JK-001",
+      "inventory_canonical_names": [
+        "UnitJackKnife"
+      ]
+    },
+    {
+      "method_family": "INF-JKP-001",
+      "implementation_name": "JKP",
+      "method_type": "inference",
+      "module_path": "panel_exp/inference/modes/impl.py",
+      "entrypoint": "run_jkp",
+      "literature_alignment_status": "partially_aligned",
+      "implementation_validation_status": "implementation_gap",
+      "identity_fidelity": "JKP registry name vs JackKnifePlus literature",
+      "estimand_fidelity": "Predictive interval pivot \u2014 pooled-CF on TBRRidge disputed",
+      "geometry_fidelity": "Unit panel",
+      "inference_semantics_fidelity": "impl applies bounds to results y_lower/y_upper post-period",
+      "orchestration_fidelity": "SCM, TBR, TBRRidge wired",
+      "known_gaps": [
+        "TBRRidge pooled-CF semantics (~29% null FPR A21)"
+      ],
+      "evidence_sources": [
+        "D5-TBRRIDGE-003",
+        "impl.py run_jkp"
+      ],
+      "recommended_fix_or_next_check": "Pivot definition audit on TBRRidge",
+      "layer4_statistical_validation_needed": [
+        "TBRRIDGE-003 coverage"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "INF-JKP-001",
+      "inventory_canonical_names": [
+        "JKP"
+      ]
+    },
+    {
+      "method_family": "INF-KFOLD-001",
+      "implementation_name": "Kfold",
+      "method_type": "inference",
+      "module_path": "panel_exp/inference/k_fold.py",
+      "entrypoint": "run_kfold",
+      "literature_alignment_status": "implementation_specific_extension",
+      "implementation_validation_status": "implementation_validated_with_caveats",
+      "identity_fidelity": "Kfold diagnostic bands \u2014 not literature-primary SCM inference",
+      "estimand_fidelity": "Diagnostic band around point effect",
+      "geometry_fidelity": "Unit blocking; multi-treated guards in OC",
+      "inference_semantics_fidelity": "confidence_interval semantics in metadata \u2014 diagnostic role",
+      "orchestration_fidelity": "Multiple estimators in catalog",
+      "known_gaps": [
+        "Must not substitute for JK null monitor"
+      ],
+      "evidence_sources": [
+        "D5-KFOLD",
+        "AUDIT-010"
+      ],
+      "recommended_fix_or_next_check": "Role taxonomy in Layer 5 only",
+      "layer4_statistical_validation_needed": [
+        "KFOLD null FPR archives"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "INF-KFOLD-001",
+      "inventory_canonical_names": [
+        "Kfold"
+      ]
+    },
+    {
+      "method_family": "INF-TSKFOLD-001",
+      "implementation_name": "TimeSeriesKfold",
+      "method_type": "inference",
+      "module_path": "panel_exp/inference/modes/impl.py",
+      "entrypoint": "run_timeseries_kfold",
+      "literature_alignment_status": "partially_aligned",
+      "implementation_validation_status": "implementation_validated_with_caveats",
+      "identity_fidelity": "Distinct from Kfold \u2014 temporal blocks",
+      "estimand_fidelity": "Diagnostic band",
+      "geometry_fidelity": "TBRRidge-primary in OC",
+      "inference_semantics_fidelity": "F-INF-003 POSTFIX addressed orientation; verify half-width sign",
+      "orchestration_fidelity": "Registry separate from Kfold",
+      "known_gaps": [
+        "Historical negative half-width issue \u2014 confirm POSTFIX in all paths"
+      ],
+      "evidence_sources": [
+        "F_INF_003",
+        "AUDIT-010 A19"
+      ],
+      "recommended_fix_or_next_check": "Re-verify orientation after POSTFIX on all export paths",
+      "layer4_statistical_validation_needed": [
+        "A19 null FPR post-POSTFIX"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "INF-TSKFOLD-001",
+      "inventory_canonical_names": [
+        "TimeSeriesKfold"
+      ]
+    },
+    {
+      "method_family": "INF-BRB-001",
+      "implementation_name": "BlockResidualBootstrap",
+      "method_type": "inference",
+      "module_path": "panel_exp/inference/block_residual_bootstrap.py",
+      "entrypoint": "run_block_residual_bootstrap",
+      "literature_alignment_status": "aligned_pending_validation",
+      "implementation_validation_status": "implementation_validated_with_caveats",
+      "identity_fidelity": "BRB acronym \u2014 not named Bootstrap in registry",
+      "estimand_fidelity": "CI from block residual bootstrap",
+      "geometry_fidelity": "TBRRidge-primary validated",
+      "inference_semantics_fidelity": "effect_ci_lower/upper cumulative fields in impl",
+      "orchestration_fidelity": "Mis-pairing with AugSynth invalid (COMBO)",
+      "known_gaps": [
+        "DEF-002 bound ordering historically \u2014 verify fixed"
+      ],
+      "evidence_sources": [
+        "D5-TBRRIDGE-001",
+        "DEF-002",
+        "D3"
+      ],
+      "recommended_fix_or_next_check": "Confirm bound ordering; catalog invalid pairs",
+      "layer4_statistical_validation_needed": [
+        "TBRRIDGE-001 positive OC"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "INF-BRB-001",
+      "inventory_canonical_names": [
+        "BlockResidualBootstrap"
+      ]
+    },
+    {
+      "method_family": "INF-CONFORMAL-001",
+      "implementation_name": "Conformal",
+      "method_type": "inference",
+      "module_path": "panel_exp/inference/conformal.py",
+      "entrypoint": "run_conformal",
+      "literature_alignment_status": "partially_aligned",
+      "implementation_validation_status": "implementation_gap",
+      "identity_fidelity": "Conformal registry \u2014 not generic bootstrap CI",
+      "estimand_fidelity": "Conformal predictive band \u2014 exchangeability assumption",
+      "geometry_fidelity": "AugSynthCVXPY, TBRRidge wired",
+      "inference_semantics_fidelity": "F-INF-003 orientation fix; AugSynth+Conformal blocked for new design",
+      "orchestration_fidelity": "Not governed export for AugSynth ADR-001",
+      "known_gaps": [
+        "IMPL-CONF-001: band construction mismatch on AugSynth",
+        "Panel dependence"
+      ],
+      "evidence_sources": [
+        "D5-INF-AUGSYNTH-CONFORMAL-FAILURE-001",
+        "F_INF_003"
+      ],
+      "recommended_fix_or_next_check": "New interval design before re-enabling AugSynth+Conformal",
+      "layer4_statistical_validation_needed": [
+        "POSTFIX archives \u2014 non-promotion"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "INF-CONFORMAL-001",
+      "inventory_canonical_names": [
+        "Conformal"
+      ]
+    },
+    {
+      "method_family": "INF-PLACEBO-001",
+      "implementation_name": "Placebo",
+      "method_type": "inference",
+      "module_path": "panel_exp/inference/placebo.py",
+      "entrypoint": "run_placebo",
+      "literature_alignment_status": "aligned_pending_validation",
+      "implementation_validation_status": "implementation_validated_with_caveats",
+      "identity_fidelity": "Placebo inference-only \u2014 forbidden as estimator catalog name (governance)",
+      "estimand_fidelity": "Falsification / placebo distribution \u2014 not confirmatory CI",
+      "geometry_fidelity": "Single-treated scope in PLACEBO-001; multi-treated blocked",
+      "inference_semantics_fidelity": "placebo_band semantics",
+      "orchestration_fidelity": "SCM primary; not AugSynth/TBR in COMBO",
+      "known_gaps": [
+        "Multi-treated 100% block rate A28 \u2014 by design"
+      ],
+      "evidence_sources": [
+        "D5-INST-PLACEBO-001",
+        "AUDIT-010 A27/A28"
+      ],
+      "recommended_fix_or_next_check": "Maintain falsification taxonomy ADR",
+      "layer4_statistical_validation_needed": [
+        "PLACEBO-001 replay"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "INF-PLACEBO-001",
+      "inventory_canonical_names": [
+        "Placebo"
+      ]
+    },
+    {
+      "method_family": "INF-BAYES-REG-001",
+      "implementation_name": "Bayesian",
+      "method_type": "inference",
+      "module_path": "panel_exp/inference/modes/impl.py",
+      "entrypoint": "run_bayesian",
+      "literature_alignment_status": "literature_mismatch",
+      "implementation_validation_status": "architecture_gap",
+      "identity_fidelity": "Registry Bayesian handler \u2260 BayesianTBR MCMC (INV-015)",
+      "estimand_fidelity": "Credible intervals only if full posterior sampling",
+      "geometry_fidelity": "TBRRidge wired \u2014 research estimators optional",
+      "inference_semantics_fidelity": "impl uses jnp.quantile on y_hat samples \u2014 may not be MCMC posterior",
+      "orchestration_fidelity": "A20 blocked on production misuse",
+      "known_gaps": [
+        "literature_mismatch on TBRRidge prod path"
+      ],
+      "evidence_sources": [
+        "INV-015",
+        "D3 INF-008",
+        "AUDIT-010 A20"
+      ],
+      "recommended_fix_or_next_check": "Disallow registry Bayesian on TBRRidge or implement full MCMC",
+      "layer4_statistical_validation_needed": [],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "INF-BAYES-REG-001",
+      "inventory_canonical_names": [
+        "Bayesian"
+      ]
+    },
+    {
+      "method_family": "INF-DID-BOOT-001",
+      "implementation_name": "DID_native_bootstrap",
+      "method_type": "inference",
+      "module_path": "panel_exp/methods/DID.py",
+      "entrypoint": "DID.run_analysis embedded bootstrap",
+      "literature_alignment_status": "partially_aligned",
+      "implementation_validation_status": "implementation_validated_with_caveats",
+      "identity_fidelity": "Not in inference registry \u2014 distinct from BRB",
+      "estimand_fidelity": "Cumulative ATT intervals per DEF-003",
+      "geometry_fidelity": "DID panel only",
+      "inference_semantics_fidelity": "Separate from registry BlockResidualBootstrap naming",
+      "orchestration_fidelity": "ImpactAnalyzer must not confuse with BRB dispatch",
+      "known_gaps": [
+        "Relative ATT CI unsupported"
+      ],
+      "evidence_sources": [
+        "D3 INF-010",
+        "DEF-003",
+        "A25"
+      ],
+      "recommended_fix_or_next_check": "Document embedded bootstrap routing",
+      "layer4_statistical_validation_needed": [
+        "A25 characterization"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "INF-DID-BOOT-001",
+      "inventory_canonical_names": [
+        "DID_native_bootstrap"
+      ]
+    },
+    {
+      "method_family": "ORCH-001",
+      "implementation_name": "GeoExperimentDesign",
+      "method_type": "orchestration",
+      "module_path": "panel_exp/design/geo_experiment_design.py",
+      "entrypoint": "create_design \u2192 assign \u2192 validate_design",
+      "literature_alignment_status": "partially_aligned",
+      "implementation_validation_status": "implementation_validated_with_caveats",
+      "identity_fidelity": "Orchestrates design registry + Rerandomization wrapper",
+      "estimand_fidelity": "Design + power evidence \u2014 not estimator estimand",
+      "geometry_fidelity": "Passes n_test_grps; train_length drives pre_treatment_period in geo_runner",
+      "inference_semantics_fidelity": "n/a",
+      "orchestration_fidelity": "Stable registry names when train_length configured",
+      "known_gaps": [
+        "Power vs analysis estimator mismatch POW-EST-001"
+      ],
+      "evidence_sources": [
+        "geo_runner.py",
+        "DESIGN_INVENTORY_001"
+      ],
+      "recommended_fix_or_next_check": "End-to-end design\u2192analysis contract test",
+      "layer4_statistical_validation_needed": [
+        "001e design\u00d7readout"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "ORCH-001",
+      "inventory_canonical_names": [
+        "GeoExperimentDesign"
+      ]
+    },
+    {
+      "method_family": "ORCH-002",
+      "implementation_name": "ImpactAnalyzer",
+      "method_type": "orchestration",
+      "module_path": "panel_exp/impact.py",
+      "entrypoint": "run_analysis inference dispatch",
+      "literature_alignment_status": "partially_aligned",
+      "implementation_validation_status": "architecture_gap",
+      "identity_fidelity": "Central estimator + inference router",
+      "estimand_fidelity": "Delegates to estimator \u2014 export semantics vary by combo",
+      "geometry_fidelity": "Must enforce geometry per estimator asserts",
+      "inference_semantics_fidelity": "Dispatches inference registry; DID bootstrap special case",
+      "orchestration_fidelity": "Method names must match catalog keys in archives",
+      "known_gaps": [
+        "Invalid combos may fail late \u2014 prefer explicit pairing matrix Layer 5"
+      ],
+      "evidence_sources": [
+        "impact.py",
+        "AUDIT-010",
+        "COMBO-001"
+      ],
+      "recommended_fix_or_next_check": "Explicit invalid-pair guards where COMBO marks invalid_by_interface",
+      "layer4_statistical_validation_needed": [
+        "Combo matrix Layer 5"
+      ],
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "layer2_family_id": "ORCH-002",
+      "inventory_canonical_names": [
+        "ImpactAnalyzer"
+      ]
+    }
+  ]
+}
