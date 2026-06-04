@@ -613,11 +613,23 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Artifact:** [`docs/AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md)
 
-**Verdict:** DL-1 P1–P6 **lane closed**. AugSynth point = promising **diagnostic comparator**; not promoted. JK = diagnostic-only (`jk_unsafe_under_diagnostics`); Conformal = **blocked** (`conformal_blocked_pending_new_design`); design compat = per-cell only + bridges required. **Next:** **`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001`** — not `D5-INST-AUGSYNTH-MULTICELL-001` first.
+**Verdict:** DL-1 P1–P6 **lane closed**. AugSynth point = promising **diagnostic comparator**; not promoted. JK = diagnostic-only (`jk_unsafe_under_diagnostics`); Conformal = **blocked** (`conformal_blocked_pending_new_design`); design compat = per-cell only + bridges required. Ordered next at closeout: **`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001`** (now ✅) — not `D5-INST-AUGSYNTH-MULTICELL-001` before pooling ADR.
 
 **Prerequisites:** P1–P6 complete · [`DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md`](DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md).
 
-**Next ordered:** (1) pooling ADR · (2) estimand bridge ADR · (3) multi-cell OC · (4) design-compat OC · (5) diagnostic-only vs repair-lane decision.
+**Next ordered (post-closeout):** (1) ✅ pooling ADR · (2) **`D5-INST-AUGSYNTH-MULTICELL-001`** · (3) estimand bridge ADR · (4) design-compat OC · (5) diagnostic-only vs repair-lane decision.
+
+---
+
+## MULTICELL-AUGSYNTH-POOLING-RULE-ADR-001 (2026-06-03)
+
+**Artifact:** [`docs/MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001.md`](MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001.md)
+
+**Verdict:** **Accepted** — multi-cell AugSynth per-cell diagnostic default (S0); no pooled causal lift; optional descriptive equal-cell mean under `pooling_rule_id=MULTICELL_AUGSYNTH_DESCRIPTIVE_V0` only if all per-cell gates pass; **no pooled uncertainty**. Satisfies P6 / E-DES-MCELL-011 AugSynth specialization.
+
+**Prerequisites:** P6 [`DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md`](DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md) · lane closeout · D5-MCELL-001 · F-P0-006.
+
+**Next:** **`D5-INST-AUGSYNTH-MULTICELL-001`** (OC — not before this ADR).
 
 ---
 
@@ -643,7 +655,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** METHOD-SOUNDNESS-ROADMAP-REVIEW-001 · ASCM-002 · threshold audit · ADR-001.
 
-**Next:** **`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001`** (pooling ADR before multi-cell OC).
+**Next:** **`D5-INST-AUGSYNTH-MULTICELL-001`** after ✅ [`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001.md`](MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001.md) and [`AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md).
 
 ---
 
