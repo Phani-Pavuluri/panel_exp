@@ -327,8 +327,9 @@ Regenerate: `python -m panel_exp.validation.method_statistical_validation_protoc
 |----------|--------|
 | `D5-STAT-SMOKE-CALLABLE-001` | ✅ smoke callable |
 | `D5-STAT-SCM-JK-001` | ✅ Level B — `characterization_mixed_requires_followup` |
+| `D5-STAT-AUGSYNTH-POINT-001` | ✅ Level B point — `characterization_mixed_requires_followup` |
 
-**Next execution:** `D5-STAT-AUGSYNTH-POINT-001` per Layer 5 queue.
+**Next execution:** `D5-STAT-TBR-AGG-001` per Layer 5 queue.
 
 **Still blocked:** Trust framework auto-expansion · primary/secondary/directional roles · promotion.
 
