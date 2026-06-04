@@ -597,15 +597,31 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 ---
 
+## METHOD-VALIDATION-PROGRAM-001 (2026-06-04)
+
+**Artifact:** [`docs/METHOD_VALIDATION_PROGRAM_001.md`](METHOD_VALIDATION_PROGRAM_001.md)
+
+**Status:** **`authoritative_method_foundation_sequence`**
+
+**Verdict:** Layered validation program (code inventory → literature → implementation → statistical OC → combination matrix) **before** trust-framework / method-role expansion. Pauses default MCELL OC and TrustReport/F-DECISION/CalibrationSignal/MMM role growth until layers 1–5 complete.
+
+**Prerequisites:** Prior audits retained as `evidence_input` only.
+
+**Next:** **`METHOD_CODE_INVENTORY_001`**.
+
+---
+
 ## METHOD-FOUNDATION-SYNTHESIS-001 (2026-06-03)
 
 **Artifact:** [`docs/METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md)
 
-**Verdict:** **Complete** — single foundation map (design × estimator × inference × geometry) reusing prior audits; stable conclusions recorded; implementation/literature/OC gaps enumerated. **Proceed** to **`D5-INST-AUGSYNTH-MULTICELL-001`** as ADR-gate validation only (S0 per-cell; S1 descriptive metadata; no pooled causal/uncertainty; no promotion).
+**Status:** **complete** · **`superseded_for_sequencing`** (2026-06-04)
 
-**Prerequisites:** DL-1 P1–P6 · lane closeout · design-readout P6 · METHOD-SOUNDNESS-AND-GAP-ROADMAP-001.
+**Verdict:** Evidence-input combination map and stable conclusions — **not** sequencing authority. Superseded by **METHOD-VALIDATION-PROGRAM-001**.
 
-**Next:** **`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001`** · **`D5-INST-AUGSYNTH-MULTICELL-001`** · **`METHOD_LITERATURE_GAP_REVIEW_001`** (parallel).
+**Prerequisites:** DL-1 P1–P6 · lane closeout · design-readout P6.
+
+**Next:** N/A for sequencing — use validation program Layer 1.
 
 ---
 
@@ -629,7 +645,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** P1–P6 complete · [`DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md`](DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md).
 
-**Next ordered:** (1) ✅ foundation synthesis · (2) pooling ADR · (3) **`D5-INST-AUGSYNTH-MULTICELL-001`** (gate validation) · (4) estimand bridge ADR · (5) design-compat OC · (6) diagnostic-only vs repair-lane decision.
+**Next ordered (historical):** superseded by **METHOD-VALIDATION-PROGRAM-001** Layer 1–5 sequence.
 **Next ordered (post-closeout):** (1) ✅ pooling ADR · (2) **`D5-INST-AUGSYNTH-MULTICELL-001`** · (3) estimand bridge ADR · (4) design-compat OC · (5) diagnostic-only vs repair-lane decision.
 
 ---
@@ -654,7 +670,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** P3 ASCM-003 · P4 JK calibration · P5 Conformal failure · DESIGN-INVENTORY-001.
 
-**Next:** ✅ [`METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md) · `MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001` · **`D5-INST-AUGSYNTH-MULTICELL-001`** · `AUGSYNTH_SCM_ESTIMAND_BRIDGE_ADR_001` · optional `D5-INST-AUGSYNTH-DESIGN-COMPAT-001`.
+**Next:** **`METHOD_VALIDATION_PROGRAM_001`** → **`METHOD_CODE_INVENTORY_001`** (pooling ADR = semantic guardrail if merged; MCELL OC paused as default).
 
 ---
 
@@ -668,7 +684,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** METHOD-SOUNDNESS-ROADMAP-REVIEW-001 · ASCM-002 · threshold audit · ADR-001.
 
-**Next:** ✅ synthesis [`METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md) → **`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001`** → **`D5-INST-AUGSYNTH-MULTICELL-001`** (gate validation).
+**Next:** **`METHOD_VALIDATION_PROGRAM_001`** — AugSynth lane **paused** for new execution; evidence retained.
 **Next:** **`D5-INST-AUGSYNTH-MULTICELL-001`** after ✅ [`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001.md`](MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001.md) and [`AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md).
 
 ---

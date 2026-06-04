@@ -234,30 +234,39 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Document:** [`METHOD_FOUNDATION_HARDENING_001.md`](METHOD_FOUNDATION_HARDENING_001.md)  
 **Verdict:** Pre-LLM scientific hardening phase — **LLM layer paused**; gap table; lanes P0 ✅ → P1 threshold audit ✅ (calibration via ASCM-003) → P2–P5. **No promotion.**
 
-**Bridge:** METHOD-STRENGTHENING + Track D OC → **FOUNDATION HARDENING** → **METHOD-SOUNDNESS-AND-GAP-ROADMAP-001** → AUDIT-011 / LLM (future).
+**Bridge:** METHOD-STRENGTHENING + Track D OC → **FOUNDATION HARDENING** → **METHOD-SOUNDNESS-AND-GAP-ROADMAP-001** → **METHOD-VALIDATION-PROGRAM-001** (authoritative) → suitability framework → AUDIT-011 / LLM (future).
+
+### METHOD-VALIDATION-PROGRAM-001
+
+**Document:** [`METHOD_VALIDATION_PROGRAM_001.md`](METHOD_VALIDATION_PROGRAM_001.md)  
+**Status:** **active** — authoritative method-foundation sequence  
+**Verdict:** **Pauses** trust-framework / method-role expansion until layers 1–5 complete (code inventory → literature → implementation → statistical OC → combination matrix). Prior synthesis and MCELL-first chains are **evidence only**, not sequencing authority.
+
+**Ordered next:** **`METHOD_CODE_INVENTORY_001`** → **`METHOD_LITERATURE_ALIGNMENT_001`** → **`METHOD_IMPLEMENTATION_VALIDATION_001`** → **`METHOD_STATISTICAL_VALIDATION_PROTOCOL_001`** → **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** → **`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001`** → trust-framework integration.
+
+**Paused:** TrustReport / F-DECISION / CalibrationSignal / MMM role expansion · default **`D5-INST-AUGSYNTH-MULTICELL-001`** (optional narrow gate test later only).
 
 ### METHOD-SOUNDNESS-AND-GAP-ROADMAP-001
 
 **Document:** [`METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md`](METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md)  
 **Status:** **complete**  
-**Verdict:** Audit-derived **development-first** inventory, scorecard, and sequenced lanes (DL-0–DL-8). Reconciles Track D audits + OC archives; **no new eligibility decisions**. Active lane: AugSynth/ASCM (DL-1).
+**Verdict:** Audit-derived inventory and DL lanes — **reconciled under** [`METHOD_VALIDATION_PROGRAM_001.md`](METHOD_VALIDATION_PROGRAM_001.md). **No new eligibility decisions.**
 
-**Inputs:** Track D D1–D5 · CV-001 · AUDIT-010 · foundation hardening · threshold audit · F-DECISION baseline.
+**Inputs:** Track D D1–D5 · CV-001 · AUDIT-010 · foundation hardening · validation program.
+
+**Ordered next:** See **METHOD-VALIDATION-PROGRAM-001** (Layer 1 code inventory).
 
 ### METHOD-SOUNDNESS-ROADMAP-REVIEW-001
 
 **Document:** [`METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md`](METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md)  
-**Status:** **complete**  
-**Verdict:** Execution checkpoint — **`proceed_to_augsynth_development_lane`** confirmed; DL-2 coupled via D5-DIAG; design-readout + inference taxonomy **parallel docs**, not blockers.
-
-**Ordered next:** ✅ DL-1 P1–P6 **closed** → lane closeout → foundation synthesis → **`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001`** → **`D5-INST-AUGSYNTH-MULTICELL-001`** (gate validation).
+**Status:** **complete** · **superseded_for_sequencing**  
+**Verdict:** Historical checkpoint — DL-1 AugSynth lane selection; superseded by validation program.
 
 ### METHOD-FOUNDATION-SYNTHESIS-001
 
 **Document:** [`METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md)  
-**Status:** **complete** — docs-only checkpoint; no production behavior change  
-**Verdict:** Consolidates design × estimator × inference × geometry evidence from prior audits; **proceed** to **`D5-INST-AUGSYNTH-MULTICELL-001`** as **narrow pooling-ADR gate validation** (S0/S1 only; no pooled causal/uncertainty; no promotion). **Next:** `METHOD_LITERATURE_GAP_REVIEW_001` (parallel, non-blocking).
-**Ordered next:** ✅ DL-1 P1–P6 **closed** → [`AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md) → ✅ **`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001`** → **`D5-INST-AUGSYNTH-MULTICELL-001`**.
+**Status:** **complete** · **superseded_for_sequencing** — retained as **evidence-input** combination map only  
+**Verdict:** Useful consolidation of prior audits; **not** authoritative for next OC or trust roles. See **METHOD-VALIDATION-PROGRAM-001**.
 
 ### AUGSYNTH-ASCM-DEVELOPMENT-ROADMAP-001
 
@@ -265,8 +274,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Status:** **complete** — P1–P6 execution landed  
 **Verdict:** DL-1 lane **P6 complete** — [`DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md`](DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md) verdict `compatible_per_cell_only_pooling_blocked` + `bridge_required_before_broader_use`. **Not promotion.**
 
-**P1–P6:** ✅ complete · **Lane:** **closed** — [`AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md). **Next:** [`METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md) → pooling ADR → **`D5-INST-AUGSYNTH-MULTICELL-001`** (gate validation; not promotion).
-**P1–P6:** ✅ complete · **Lane:** **closed** — [`AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md). **Next:** **`D5-INST-AUGSYNTH-MULTICELL-001`** (pooling ADR ✅; not multi-cell OC before ADR).
+**P1–P6:** ✅ complete · **Lane:** **closed**. AugSynth-specific execution **paused** under [`METHOD_VALIDATION_PROGRAM_001.md`](METHOD_VALIDATION_PROGRAM_001.md) unless narrowly scoped (e.g. optional ADR metadata gate test later).
 
 ### AUGSYNTH-ASCM-LANE-CLOSEOUT-001
 
@@ -278,7 +286,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 
 **Document:** [`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001.md`](MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001.md)  
 **Status:** **accepted** — docs-only; no production behavior change  
-**Verdict:** Multi-cell AugSynth **per-cell diagnostic by default**; **no pooled lift**; optional **`MULTICELL_AUGSYNTH_DESCRIPTIVE_V0`** equal-cell descriptive mean only if all per-cell gates pass; **no pooled uncertainty** (JK diagnostic-only, Conformal blocked). **Next:** **`D5-INST-AUGSYNTH-MULTICELL-001`**.
+**Verdict:** Multi-cell AugSynth **per-cell diagnostic by default**; **no pooled lift**; optional **`MULTICELL_AUGSYNTH_DESCRIPTIVE_V0`** descriptive mean under gates; **no pooled uncertainty**. **Semantic guardrail only** — statistical validation deferred to validation program. **MCELL OC:** paused as default next step.
 
 ### DESIGN-READOUT-AUGSYNTH-COMPATIBILITY-001 (P6)
 
