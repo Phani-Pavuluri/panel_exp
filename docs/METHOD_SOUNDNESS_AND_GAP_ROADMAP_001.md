@@ -255,7 +255,7 @@ Soundness status: `sound_for_current_role` · `promising_needs_OC` · `unclear` 
 
 | item_id | item_type | exact repo name | evidence level | soundness status | highest-priority gap | next development artifact | not-before |
 |---------|-----------|-----------------|----------------|------------------|----------------------|---------------------------|------------|
-| DES-GREEDY | design | greedy_match_markets | stratified_OC | promising_needs_OC | design_geometry_gap | DESIGN_READOUT_COMPATIBILITY_AUDIT_001 | DESIGN-INVENTORY ✅ |
+| DES-GREEDY | design | greedy_match_markets | stratified_OC | promising_needs_OC | design_geometry_gap | DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001 ✅ | DESIGN-INVENTORY ✅ |
 | DES-MCELL | geometry | multi_cell (n_test_grps>1) | small_OC | promising_needs_OC | estimand_gap | F-MCELL-001 pooling ADR | D5-MCELL-001 ✅ |
 | DES-SGEO | design | supergeos | small_OC | blocked_by_geometry | design_geometry_gap | TRIM_SUPERGEO_STRENGTHENING_001 / F-GEO-003 | D5-DES-SUPERGEO-001 ✅ |
 | DES-TRIM | design | trimmedmatch | small_OC | blocked_by_geometry | design_geometry_gap | TRIM_SUPERGEO_STRENGTHENING_001 / F-GEO-004 | D5-DES-TRIM-001 ✅ |
@@ -313,7 +313,7 @@ Lanes convert gaps to **concrete deliverables**. Priority: scientific importance
 
 | Deliverable | Type | Gap categories | Depends on |
 |-------------|------|----------------|------------|
-| **DESIGN_READOUT_COMPATIBILITY_AUDIT_001** | compatibility study | design_geometry_gap | DESIGN-INVENTORY ✅ |
+| **DESIGN_READOUT_COMPATIBILITY_AUDIT_001** | compatibility study | design_geometry_gap | DESIGN-INVENTORY ✅ · **AugSynth-scoped:** [`DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md`](DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md) ✅ P6 |
 | **POWER_READOUT_ALIGNMENT_ADR_001** | ADR | design_geometry_gap | D5-POW-001a–e |
 | **F-MCELL-001** pooling ADR | ADR | estimand_gap | D5-MCELL-001 |
 

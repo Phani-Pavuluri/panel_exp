@@ -2,7 +2,7 @@
 
 **Document ID:** AUGSYNTH-ASCM-DEVELOPMENT-ROADMAP-001  
 **Type:** Focused execution roadmap — **AugSynth/ASCM active lane only**  
-**Status:** **complete** (planning); **execution not started**  
+**Status:** **complete** — P1–P6 execution artifacts landed (P6 docs-only)  
 **Date:** 2026-06-03  
 **Verdict:** Convert audit/review findings into a **concrete PR sequence** — diagnostics → fidelity audit → stratified OC → inference calibration → design compatibility  
 **Decision context:** [`METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md`](METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md) — **`proceed_to_augsynth_development_lane`**
@@ -28,7 +28,7 @@ It converts prior audit, threshold, and OC evidence into **named PRs** with code
 | An **LLM-layer plan** | LLM paused per foundation hardening |
 | A **replacement for code-backed evidence** | Each PR must produce runnable artifacts |
 
-**Next step after this doc:** **P2 `AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001`**. P1 D5-DIAG ✅ ([`D5_DIAG_SCM_AUGSYNTH_001_REPORT.md`](track_d/D5_DIAG_SCM_AUGSYNTH_001_REPORT.md)).
+**Next step after P6:** Bridge ADRs (`AUGSYNTH_SCM_ESTIMAND_BRIDGE_ADR_001`, `MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001`) and optional harness **`D5-INST-AUGSYNTH-DESIGN-COMPAT-001`** — see [`DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md`](DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md). P1–P6 ✅.
 
 ---
 
@@ -131,7 +131,7 @@ Concrete workstreams only — each maps to one or more PRs in §5.
 | **P3** | **D5-INST-AUGSYNTH-ASCM-003** | OC harness + JSON + report + tests | Weak-fit grid, hull/sparsity/shock variants, n_mc for calibration |
 | **P4** | **D5-INF-AUGSYNTH-JK-CALIBRATION-001** | OC | Null/effect worlds; FPR/coverage/width; no JK promotion |
 | **P5** | **D5-INF-AUGSYNTH-CONFORMAL-FAILURE-001** | OC / failure doc | Isolate Conformal unsafe modes; no CS/MMM |
-| **P6** | **DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001** | compatibility audit | Repo-supported geometries only; parallel to foundation P2 |
+| **P6** | **DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001** | compatibility audit | ✅ [`DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md`](DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md) — verdict `compatible_per_cell_only_pooling_blocked` |
 
 ```text
 P1 diagnostics (code) → P2 fidelity audit → P3 stratified OC → P4 JK OC → P5 Conformal OC → P6 design compat (docs)
