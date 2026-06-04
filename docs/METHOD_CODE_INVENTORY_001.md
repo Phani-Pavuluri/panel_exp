@@ -29,7 +29,7 @@ This inventory answers: *what exists in the repo today?* — not *what should be
 | Program layer | This artifact |
 |---------------|---------------|
 | **Layer 1 — Code inventory** | ✅ **This document** + JSON archive |
-| Layer 2 — Literature alignment | **Next:** `METHOD_LITERATURE_ALIGNMENT_001` |
+| Layer 2 — Literature alignment | ✅ [`METHOD_LITERATURE_ALIGNMENT_001.md`](METHOD_LITERATURE_ALIGNMENT_001.md) |
 | Layers 3–5 | Blocked until Layer 2 rows exist per method family |
 | Suitability / trust framework | **Paused** per validation program §8 |
 
@@ -263,9 +263,9 @@ All **implemented** estimators and inference modes except `point_estimate` requi
 
 ## 16. Next artifact
 
-**`METHOD_LITERATURE_ALIGNMENT_001`** — per-family literature identity, estimand, assumptions, geometry, valid inference companions, failure modes; map each **implemented** catalog/registry item to alignment status.
+**`METHOD_IMPLEMENTATION_VALIDATION_001`** — reconcile repo code against [`METHOD_LITERATURE_ALIGNMENT_001.md`](METHOD_LITERATURE_ALIGNMENT_001.md) per family.
 
-**Inputs from this inventory:** JSON `items[]` · §5–§7 tables · alias table §10.
+**Inputs from this inventory:** JSON `items[]` · §5–§7 tables · alias table §10 · Layer 2 JSON `families[]`.
 
 ---
 

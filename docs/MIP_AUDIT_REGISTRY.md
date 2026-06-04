@@ -607,7 +607,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** Prior audits retained as `evidence_input` only.
 
-**Next:** ✅ **`METHOD_CODE_INVENTORY_001`** → **`METHOD_LITERATURE_ALIGNMENT_001`**.
+**Next:** ✅ **`METHOD_CODE_INVENTORY_001`** → ✅ **`METHOD_LITERATURE_ALIGNMENT_001`** → **`METHOD_IMPLEMENTATION_VALIDATION_001`**.
 
 ---
 
@@ -617,7 +617,19 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** Layer 1 **complete** — 44 code-derived items (designs, estimators, inference, orchestration). Generator: `python -m panel_exp.validation.method_code_inventory_001`.
 
-**Next:** **`METHOD_LITERATURE_ALIGNMENT_001`**.
+**Next:** ✅ **`METHOD_LITERATURE_ALIGNMENT_001`**.
+
+---
+
+## METHOD-LITERATURE-ALIGNMENT-001 (2026-06-04)
+
+**Artifact:** [`docs/METHOD_LITERATURE_ALIGNMENT_001.md`](METHOD_LITERATURE_ALIGNMENT_001.md) · [`docs/track_d/archives/METHOD_LITERATURE_ALIGNMENT_001.json`](track_d/archives/METHOD_LITERATURE_ALIGNMENT_001.json)
+
+**Verdict:** Layer 2 **complete** — 24 literature families (design, estimator, inference) mapped to code inventory; canonical references and Layer 3/4 question lists; no trust roles.
+
+**Generator:** `python -m panel_exp.validation.method_literature_alignment_001`
+
+**Next:** **`METHOD_IMPLEMENTATION_VALIDATION_001`**.
 
 ---
 

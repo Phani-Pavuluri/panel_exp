@@ -1,0 +1,1072 @@
+{
+  "document_id": "METHOD-LITERATURE-ALIGNMENT-001",
+  "generated_at": "2026-06-04T06:47:18.953486+00:00",
+  "generator": "panel_exp/validation/method_literature_alignment_001.py",
+  "parent_inventory": "METHOD-CODE-INVENTORY-001",
+  "counts": {
+    "families_total": 24,
+    "by_category": {
+      "design": 5,
+      "wrapper": 1,
+      "estimator": 8,
+      "inference": 10
+    }
+  },
+  "alignment_status_values": [
+    "aligned_pending_validation",
+    "partially_aligned",
+    "literature_mismatch",
+    "unclear_requires_review",
+    "not_literature_backed",
+    "implementation_specific_extension"
+  ],
+  "families": [
+    {
+      "family_id": "DES-GMM-001",
+      "category": "design",
+      "literature_identity": "Matched-market / greedy geo market pairing for geo experiments",
+      "canonical_reference_or_reference_family": [
+        "Google geo experiments / matched markets (industry practice; see Brodersen et al. 2015 CausalImpact context for geo lift)",
+        "Matched-pair and market-selection design literature (experimental design texts)"
+      ],
+      "canonical_estimand": "Valid randomization of markets to treatment/control with balance on pre-treatment outcomes \u2014 not a causal ATT by itself",
+      "required_data_geometry": "Unit-level panel (markets/DMAs); assignment dict control + test_*",
+      "supported_treatment_structure": "Single or multi test cells via n_test_grps",
+      "assumptions": [
+        "Pre-treatment outcomes used for matching only (no post-treatment leakage in design)",
+        "Sufficient donor/control markets",
+        "Stable unit definitions across pre/post"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "Design stage only; analysis typically paired TBR or SCM family (design\u2013analysis alignment required)"
+      ],
+      "diagnostics_expected_by_literature": [
+        "Pre-period balance / correlation between arms",
+        "Constraint satisfaction (whitelist/blacklist)",
+        "Treatment fraction on KPI mass vs unit count if product uses share targets"
+      ],
+      "known_failure_modes": [
+        "Look-ahead if matching uses post-treatment periods in wide panel (INV-D1-001)",
+        "Donor pool for analysis \u2260 markets used in design matching",
+        "Too few controls for intended readout"
+      ],
+      "repo_implementation_variants": [
+        "greedy_match_markets (assign.py; corr/DTW/L2 on aggregated series)",
+        "GeoExperimentDesign + geo_runner dispatch"
+      ],
+      "repo_alignment_status": "partially_aligned",
+      "implementation_questions_to_resolve": [
+        "Confirm pre_treatment_period always passed from GeoExperimentDesign/geo_runner",
+        "Document KPI-mass vs unit-count treatment probability semantics"
+      ],
+      "statistical_validation_needed": [
+        "Balance metrics vs analysis estimand under 001e-style worlds",
+        "Sensitivity when post periods present in caller wide data"
+      ],
+      "next_layer_3_action": "GeoExperimentDesign period slicing audit; MAT-001 reconciliation with SCM donors",
+      "inventory_canonical_names": [
+        "greedy_match_markets"
+      ],
+      "inventory_aliases": [
+        "gmm",
+        "greedymatchmarkets"
+      ]
+    },
+    {
+      "family_id": "DES-RERAND-001",
+      "category": "wrapper",
+      "literature_identity": "Rerandomization / restricted randomization to improve covariate balance",
+      "canonical_reference_or_reference_family": [
+        "Morgan & Rubin (2012) \u2014 Rerandomization to improve balance",
+        "Li & Ding (2017) \u2014 rerandomization inference (when inference claimed)"
+      ],
+      "canonical_estimand": "Assignment distribution subject to balance criterion \u2014 not ATT",
+      "required_data_geometry": "Same as wrapped base randomizer (typically unit assignment dict)",
+      "supported_treatment_structure": "Via base design (tier-1 randomizers or greedy base)",
+      "assumptions": [
+        "Balance metric reflects scientifically relevant pre-treatment differences",
+        "Acceptance rule does not induce selection bias beyond stated design"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "Randomization-based inference when design is pure randomization; rerandomization p-values if formally implemented (often not in product path)"
+      ],
+      "diagnostics_expected_by_literature": [
+        "Achieved balance vs threshold",
+        "Distribution of accepted randomizations"
+      ],
+      "known_failure_modes": [
+        "Confounding rerandomization with post-hoc matching",
+        "Different production path than bare greedy (OC sensitivity)"
+      ],
+      "repo_implementation_variants": [
+        "Rerandomization class (design/assign.py)",
+        "rerandomization_wrapper row \u2014 not separate registry name"
+      ],
+      "repo_alignment_status": "aligned_pending_validation",
+      "implementation_questions_to_resolve": [
+        "Map imbalance metric to literature balance definitions",
+        "Compare rerandomization_wrapper vs bare greedy_match_markets in Layer 4"
+      ],
+      "statistical_validation_needed": [
+        "D5-POW-001e rerandomization vs bare tier-1 sensitivity"
+      ],
+      "next_layer_3_action": "Document wrapper dispatch in GeoExperimentDesign; D1 DES-010a checks",
+      "inventory_canonical_names": [
+        "rerandomization_wrapper"
+      ],
+      "inventory_aliases": [
+        "Rerandomization",
+        "rerandomization"
+      ]
+    },
+    {
+      "family_id": "DES-TIER1-RAND-001",
+      "category": "design",
+      "literature_identity": "Complete / balanced / stratified / thinning randomization for geo units",
+      "canonical_reference_or_reference_family": [
+        "Fisher\u2013Yates / stratified experiment design (standard texts)",
+        "Kerner thinning designs where thinningdesign maps to industry thinning practice"
+      ],
+      "canonical_estimand": "Probabilistic assignment to arms \u2014 not ATT",
+      "required_data_geometry": "Unit panel; geo_run assignment dict",
+      "supported_treatment_structure": "Multi-cell via n_test_grps",
+      "assumptions": [
+        "Known assignment probabilities (or documented deviations)",
+        "Strata correctly defined for stratifiedrandomization"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "Randomization inference for arms; often paired with SCM+JK null-monitor in repo OC (compatibility not automatic)"
+      ],
+      "diagnostics_expected_by_literature": [
+        "Arm sizes vs targets",
+        "Stratum balance tables"
+      ],
+      "known_failure_modes": [
+        "Constraint violations under whitelist/blacklist",
+        "Design\u2013readout mismatch when analysis assumes matched markets"
+      ],
+      "repo_implementation_variants": [
+        "completerandomization",
+        "balancedrandomization",
+        "stratifiedrandomization",
+        "thinningdesign"
+      ],
+      "repo_alignment_status": "aligned_pending_validation",
+      "implementation_questions_to_resolve": [
+        "Per-mode constraint + KPI share behavior",
+        "Thinning kernel parameters vs literature thinning"
+      ],
+      "statistical_validation_needed": [
+        "D5-POW-001e tier-1 arms with SCM+JK reference path"
+      ],
+      "next_layer_3_action": "Design inventory cross-check; design\u2192estimator bridge for each mode",
+      "inventory_canonical_names": [
+        "completerandomization",
+        "balancedrandomization",
+        "stratifiedrandomization",
+        "thinningdesign"
+      ],
+      "inventory_aliases": []
+    },
+    {
+      "family_id": "DES-SUPERGEO-001",
+      "category": "design",
+      "literature_identity": "Supergeo / cluster-based geo pair construction (MILP-style geometry)",
+      "canonical_reference_or_reference_family": [
+        "Industry supergeo / cluster market pairing (implementation-specific)",
+        "Cluster-randomized experiment literature where clusters are markets"
+      ],
+      "canonical_estimand": "Cluster-level assignment or pair structure \u2014 estimand depends on bridge",
+      "required_data_geometry": "Supergeo pair/cluster output \u2014 not flat unit dict for SCM+JK without bridge",
+      "supported_treatment_structure": "Design-specific (see D5-DES-SUPERGEO-001)",
+      "assumptions": [
+        "Interference within cluster documented",
+        "Analysis estimand matches cluster/pair structure"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "Not SCM+UnitJackKnife on flat unit panel without geometry bridge"
+      ],
+      "diagnostics_expected_by_literature": [
+        "Cluster balance",
+        "Pair feasibility"
+      ],
+      "known_failure_modes": [
+        "Flat SCM readout invalid (A29 / F-GEO-003)",
+        "Output type \u2260 standard assignment dict"
+      ],
+      "repo_implementation_variants": [
+        "supergeos (SupergeoModel)"
+      ],
+      "repo_alignment_status": "literature_mismatch",
+      "implementation_questions_to_resolve": [
+        "Define estimand bridge to unit-panel estimators",
+        "Document MILP objective vs literature cluster designs"
+      ],
+      "statistical_validation_needed": [
+        "D5-DES-SUPERGEO-001 replay; blocked 001e combos until bridge"
+      ],
+      "next_layer_3_action": "F-GEO-003 adapter design; geometry bridge ADR",
+      "inventory_canonical_names": [
+        "supergeos"
+      ],
+      "inventory_aliases": [
+        "supergeo",
+        "supergeo_model"
+      ]
+    },
+    {
+      "family_id": "DES-TRIM-001",
+      "category": "design",
+      "literature_identity": "Trimmed matching / paired markets with distance trim (Tp/Te)",
+      "canonical_reference_or_reference_family": [
+        "Trimmed matching / paired comparison designs (observational matching literature)",
+        "Geo trimmed-match product specs (implementation-specific)"
+      ],
+      "canonical_estimand": "ATT on trimmed population of pairs \u2014 requires explicit bridge",
+      "required_data_geometry": "Tp/Te pair population \u2014 not standard flat SCM panel",
+      "supported_treatment_structure": "Paired treated/test markets",
+      "assumptions": [
+        "Trim rule preserves target population definition",
+        "No post-treatment information in trimming"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "Pair-level analysis \u2014 not flat SCM+JK without bridge"
+      ],
+      "diagnostics_expected_by_literature": [
+        "Remaining pair count",
+        "Balance within trimmed set"
+      ],
+      "known_failure_modes": [
+        "Invalid flat SCM+JK readout (A30 / F-GEO-004)"
+      ],
+      "repo_implementation_variants": [
+        "trimmedmatch (TrimmedMatchDesign)"
+      ],
+      "repo_alignment_status": "literature_mismatch",
+      "implementation_questions_to_resolve": [
+        "Output schema vs ImpactAnalyzer expectations",
+        "Estimand mapping for trimmed population"
+      ],
+      "statistical_validation_needed": [
+        "D5-DES-TRIM-001; combo blocked until bridge"
+      ],
+      "next_layer_3_action": "F-GEO-004 geometry bridge",
+      "inventory_canonical_names": [
+        "trimmedmatch"
+      ],
+      "inventory_aliases": [
+        "trimmed_match"
+      ]
+    },
+    {
+      "family_id": "DES-LEGACY-BLOCK-001",
+      "category": "design",
+      "literature_identity": "Legacy blocking / matched-pair APIs (QuickBlock, MatchedPair)",
+      "canonical_reference_or_reference_family": [
+        "Blocked / matched-pair experimental designs (standard texts)"
+      ],
+      "canonical_estimand": "Assignment \u2014 product-specific",
+      "required_data_geometry": "Legacy assignment dict; not geo-run",
+      "supported_treatment_structure": "Varies by API",
+      "assumptions": [
+        "Caller supplies valid panel and blocking factors"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "Not wired to production geo orchestration"
+      ],
+      "diagnostics_expected_by_literature": [
+        "Block balance"
+      ],
+      "known_failure_modes": [
+        "Not on geo-run path; stale API risk"
+      ],
+      "repo_implementation_variants": [
+        "quickblock",
+        "matchedpair"
+      ],
+      "repo_alignment_status": "unclear_requires_review",
+      "implementation_questions_to_resolve": [
+        "Confirm no production geo wiring",
+        "Quarantine vs maintain for research"
+      ],
+      "statistical_validation_needed": [
+        "Defer unless reactivated"
+      ],
+      "next_layer_3_action": "Registry maturity review; quarantine candidate",
+      "inventory_canonical_names": [
+        "quickblock",
+        "matchedpair"
+      ],
+      "inventory_aliases": []
+    },
+    {
+      "family_id": "EST-SCM-001",
+      "category": "estimator",
+      "literature_identity": "Synthetic control method (convex combination of donors)",
+      "canonical_reference_or_reference_family": [
+        "Abadie & Gardeazabal (2003) \u2014 economic costs of conflict",
+        "Abadie, Diamond, Hainmueller (2015) \u2014 comparative politics SCM",
+        "Abadie (2021) \u2014 Using synthetic controls: https://doi.org/10.1257/jel.20191450"
+      ],
+      "canonical_estimand": "ATT or treated-unit gap vs weighted donor counterfactual (paper-specific; often unit-level treatment effect on treated)",
+      "required_data_geometry": "Donor pool + treated unit(s); panel with explicit pre/post",
+      "supported_treatment_structure": "Single or multiple treated units (estimand must be stated)",
+      "assumptions": [
+        "Donors not affected by treatment (no spillover into donors)",
+        "Convex weights non-negative summing to one (standard SCM)",
+        "Pre-treatment fit informative for counterfactual",
+        "No extrapolation beyond convex hull without diagnostics"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "Permutation / placebo / jackknife variants per Abadie et al. \u2014 not all map to classical i.i.d. CI",
+        "Repo: UnitJackKnife, Placebo, JKP, Kfold, BRB, Conformal (compatibility varies)"
+      ],
+      "diagnostics_expected_by_literature": [
+        "Pre-period RMSPE / fit",
+        "Donor weight concentration",
+        "Placebo distribution",
+        "Post-period gap trajectory"
+      ],
+      "known_failure_modes": [
+        "Post-period weight leakage (full_model paths)",
+        "Few donors / outside hull",
+        "Aggregate vs unit geometry confusion"
+      ],
+      "repo_implementation_variants": [
+        "SCM / SyntheticControl (scipy)",
+        "SyntheticControlCVXPY",
+        "synthetic_control() legacy function"
+      ],
+      "repo_alignment_status": "partially_aligned",
+      "implementation_questions_to_resolve": [
+        "full_model and post-period fitting boundaries (D2)",
+        "Level vs relative readout (INV-003)",
+        "Alias SCM \u2192 which class in production"
+      ],
+      "statistical_validation_needed": [
+        "D2 donor rules OC",
+        "SCM+JK null FPR batteries (001e, ASCM-002 context)",
+        "Placebo scope single vs multi-treated"
+      ],
+      "next_layer_3_action": "METHOD_IMPLEMENTATION_VALIDATION_001 SCM fidelity checklist",
+      "inventory_canonical_names": [
+        "SCM",
+        "SyntheticControlCVXPY",
+        "synthetic_control_function"
+      ],
+      "inventory_aliases": [
+        "SyntheticControl"
+      ]
+    },
+    {
+      "family_id": "EST-AUGSYNTH-001",
+      "category": "estimator",
+      "literature_identity": "Augmented synthetic control (ridge-augmented bias correction + SCM leg)",
+      "canonical_reference_or_reference_family": [
+        "Ben-Michael, Feller, Rothstein (2021) \u2014 The augmented synthetic control method: https://arxiv.org/abs/1811.08779"
+      ],
+      "canonical_estimand": "Augmented ATT-style gap on treated units (bias-corrected SCM)",
+      "required_data_geometry": "Unit panel; per-cell fits for multi-cell",
+      "supported_treatment_structure": "Single cell primary; multi-cell per-cell only (pooling not literature-default)",
+      "assumptions": [
+        "Same donor exclusion as SCM",
+        "Ridge augmentation role is bias correction not arbitrary ML",
+        "Pre-fit quality gates meaningful"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "Literature focuses on point + specialized inference; repo: point, Kfold, Conformal \u2014 JK/Placebo compatibility limited"
+      ],
+      "diagnostics_expected_by_literature": [
+        "Pre-period fit vs SCM leg",
+        "Weight concentration",
+        "Augmentation coefficient behavior"
+      ],
+      "known_failure_modes": [
+        "SCM leg mismatch vs outcome leg (G4/G7/G8)",
+        "JK unsafe strata",
+        "Conformal interval design blocked",
+        "Pooling across cells invalid for causal estimand"
+      ],
+      "repo_implementation_variants": [
+        "AugSynthCVXPY (production charter path)",
+        "AugSynth (non-CVXPY, UNVALIDATED)"
+      ],
+      "repo_alignment_status": "partially_aligned",
+      "implementation_questions_to_resolve": [
+        "Fidelity audit G1\u2013G8 reconciliation",
+        "Per-cell vs pooled estimand metadata"
+      ],
+      "statistical_validation_needed": [
+        "ASCM-003 / D5-INST-AUGSYNTH batteries",
+        "JK calibration stratum rules",
+        "Conformal POSTFIX semantics \u2014 not promotion"
+      ],
+      "next_layer_3_action": "AugSynthCVXPY implementation validation; ADR pooling semantics only",
+      "inventory_canonical_names": [
+        "AugSynthCVXPY",
+        "AugSynth"
+      ],
+      "inventory_aliases": [
+        "ASCM"
+      ]
+    },
+    {
+      "family_id": "EST-TBR-001",
+      "category": "estimator",
+      "literature_identity": "Time-based regression / geo lift (Google TBR-style aggregate comparison)",
+      "canonical_reference_or_reference_family": [
+        "Google Time-Based Regression geo experiment materials (industry)",
+        "Brodersen et al. (2015) CausalImpact / structural comparison context for geo series"
+      ],
+      "canonical_estimand": "Cumulative or relative lift on aggregate treated vs control series (product: relative_att_post family)",
+      "required_data_geometry": "Strict 1 treated + 1 control aggregate series (TBR class)",
+      "supported_treatment_structure": "Single treated row + single control row only",
+      "assumptions": [
+        "Design aligns markets to aggregate series",
+        "Regression specification matches intended estimand",
+        "Variance model adequate for inference paired later"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "point, JK, JKP, Kfold in catalog \u2014 aggregate geometry only"
+      ],
+      "diagnostics_expected_by_literature": [
+        "Pre-period fit of regression",
+        "Residual behavior"
+      ],
+      "known_failure_modes": [
+        "Unit-panel misuse blocked by asserts",
+        "Scale mismatch vs SCM paths"
+      ],
+      "repo_implementation_variants": [
+        "TBR"
+      ],
+      "repo_alignment_status": "aligned_pending_validation",
+      "implementation_questions_to_resolve": [
+        "Cumulative vs relative estimand in code vs INV-003",
+        "Design\u2013analysis pairing with greedy_match_markets"
+      ],
+      "statistical_validation_needed": [
+        "D5-INST-TBR-001 aggregate geometry"
+      ],
+      "next_layer_3_action": "TBR aggregate fidelity + estimand registry mapping",
+      "inventory_canonical_names": [
+        "TBR"
+      ],
+      "inventory_aliases": []
+    },
+    {
+      "family_id": "EST-TBRRIDGE-001",
+      "category": "estimator",
+      "literature_identity": "Ridge-regularized balancing / generalized SC (TBRRidge)",
+      "canonical_reference_or_reference_family": [
+        "Doudchenko & Imbens (2017) \u2014 balancing with synthetic controls",
+        "TBR/geo ridge lift product path (implementation extension)"
+      ],
+      "canonical_estimand": "Regularized counterfactual / lift (often unit-level; agg2 path for power)",
+      "required_data_geometry": "Unit panel or 2-row aggregate (agg2) depending on call path",
+      "supported_treatment_structure": "Multi-unit with ridge penalties",
+      "assumptions": [
+        "Regularization justified for donor count",
+        "Negative weights only if explicitly allowed",
+        "Pooled pivot semantics for JK/JKP understood"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "Kfold, BRB, Conformal, TS-Kfold, JK, JKP per catalog \u2014 calibration required for JK/JKP"
+      ],
+      "diagnostics_expected_by_literature": [
+        "Coefficient stability",
+        "Effective donor count"
+      ],
+      "known_failure_modes": [
+        "High null FPR for JK/JKP (TBRRIDGE-003)",
+        "Bayesian registry handler \u2260 BayesianTBR MCMC",
+        "PowerAnalysis agg2 vs unit readout mismatch"
+      ],
+      "repo_implementation_variants": [
+        "TBRRidge"
+      ],
+      "repo_alignment_status": "partially_aligned",
+      "implementation_questions_to_resolve": [
+        "JKP pooled-CF pivot definition",
+        "Placebo-in-space validity"
+      ],
+      "statistical_validation_needed": [
+        "D5-INST-TBRRIDGE-001/002/003",
+        "JK/JKP calibration protocol"
+      ],
+      "next_layer_3_action": "TBRRidge inference target matrix audit",
+      "inventory_canonical_names": [
+        "TBRRidge"
+      ],
+      "inventory_aliases": []
+    },
+    {
+      "family_id": "EST-DID-001",
+      "category": "estimator",
+      "literature_identity": "Difference-in-differences / panel treatment effect",
+      "canonical_reference_or_reference_family": [
+        "Angrist & Pischke (2009) \u2014 Mostly Harmless Econometrics (DID chapter)",
+        "Callaway & Sant'Anna (2021) \u2014 staggered DID when timing heterogeneous (if claimed)"
+      ],
+      "canonical_estimand": "ATT or cumulative ATT depending on specification",
+      "required_data_geometry": "Panel with treated and control units over time",
+      "supported_treatment_structure": "Single or multiple treated units per implementation",
+      "assumptions": [
+        "Parallel trends (pretrend diagnostic)",
+        "No anticipation / stable composition",
+        "Staggered timing handled if multi-period adoption claimed"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "Cluster/bootstrap CIs in literature",
+        "Repo: native bootstrap embedded in DID \u2014 not registry BlockResidualBootstrap"
+      ],
+      "diagnostics_expected_by_literature": [
+        "Pretrend tests",
+        "Event study"
+      ],
+      "known_failure_modes": [
+        "Relative ATT CI policy deferred (DEF-003)",
+        "TWFE bias under staggered adoption if misapplied"
+      ],
+      "repo_implementation_variants": [
+        "DID"
+      ],
+      "repo_alignment_status": "partially_aligned",
+      "implementation_questions_to_resolve": [
+        "Native bootstrap vs registry dispatch",
+        "Relative vs cumulative interval IDs"
+      ],
+      "statistical_validation_needed": [
+        "A25 combo characterization; pretrend OC"
+      ],
+      "next_layer_3_action": "DID estimand + interval policy validation",
+      "inventory_canonical_names": [
+        "DID"
+      ],
+      "inventory_aliases": []
+    },
+    {
+      "family_id": "EST-SDID-001",
+      "category": "estimator",
+      "literature_identity": "Synthetic difference-in-differences",
+      "canonical_reference_or_reference_family": [
+        "Arkhangelsky, Athey, Hirshberg, Imbens, Wager (2021): https://doi.org/10.1093/restud/rdz044"
+      ],
+      "canonical_estimand": "ATT with unit and time weights",
+      "required_data_geometry": "Panel with treatment timing",
+      "supported_treatment_structure": "Staggered adoption possible in literature \u2014 repo research_only",
+      "assumptions": [
+        "Low rank factor structure",
+        "Treatment timing well-defined"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "SDID bootstrap per paper \u2014 repo point only"
+      ],
+      "diagnostics_expected_by_literature": [
+        "Weight diagnostics unit/time"
+      ],
+      "known_failure_modes": [
+        "Skipped in validation runner; fidelity unreviewed"
+      ],
+      "repo_implementation_variants": [
+        "SyntheticDID"
+      ],
+      "repo_alignment_status": "unclear_requires_review",
+      "implementation_questions_to_resolve": [
+        "Map repo SDID to paper algorithm"
+      ],
+      "statistical_validation_needed": [
+        "Research charter OC before any product use"
+      ],
+      "next_layer_3_action": "Research-only quarantine or fidelity spike",
+      "inventory_canonical_names": [
+        "SyntheticDID"
+      ],
+      "inventory_aliases": []
+    },
+    {
+      "family_id": "EST-RESEARCH-BAYES-001",
+      "category": "estimator",
+      "literature_identity": "Bayesian structural time series / horseshoe regression (research)",
+      "canonical_reference_or_reference_family": [
+        "Brodersen et al. (2015) \u2014 Inferring causal impact using BSTS: https://doi.org/10.1214/14-AOAS788"
+      ],
+      "canonical_estimand": "Posterior counterfactual lift",
+      "required_data_geometry": "Aggregate or unit series with covariates",
+      "supported_treatment_structure": "Typically one treated aggregate",
+      "assumptions": [
+        "State-space / prior specifications correct",
+        "JAX stack available"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "Bayesian credible intervals \u2014 registry Bayesian handler not full MCMC"
+      ],
+      "diagnostics_expected_by_literature": [
+        "Posterior predictive check",
+        "Pre-period fit"
+      ],
+      "known_failure_modes": [
+        "Registry Bayesian on TBRRidge \u2260 BayesianTBR NUTS (INV-015)"
+      ],
+      "repo_implementation_variants": [
+        "BayesianTBR",
+        "BayesianTBRHorseShoe",
+        "TBRAutoSARIMAX"
+      ],
+      "repo_alignment_status": "unclear_requires_review",
+      "implementation_questions_to_resolve": [
+        "Separate registry inference from estimator MCMC"
+      ],
+      "statistical_validation_needed": [
+        "RTP charter only"
+      ],
+      "next_layer_3_action": "Research-only gate; no production metadata expansion",
+      "inventory_canonical_names": [
+        "BayesianTBR",
+        "BayesianTBRHorseShoe",
+        "TBRAutoSARIMAX"
+      ],
+      "inventory_aliases": []
+    },
+    {
+      "family_id": "EST-RESEARCH-OTHER-001",
+      "category": "estimator",
+      "literature_identity": "TROP / MTGP research estimators",
+      "canonical_reference_or_reference_family": [
+        "TROP: triply robust panel literature (verify implementation mapping)",
+        "MTGP: multi-task GP \u2014 ML literature"
+      ],
+      "canonical_estimand": "Method-specific \u2014 not product-declared",
+      "required_data_geometry": "Panel / GP covariance structure",
+      "supported_treatment_structure": "Research configs only",
+      "assumptions": [
+        "Expert tuning; optional deps"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "point / Bayesian per catalog"
+      ],
+      "diagnostics_expected_by_literature": [
+        "Cross-validation stability"
+      ],
+      "known_failure_modes": [
+        "No production OC path"
+      ],
+      "repo_implementation_variants": [
+        "TROP",
+        "MTGP"
+      ],
+      "repo_alignment_status": "not_literature_backed",
+      "implementation_questions_to_resolve": [
+        "Document scope or quarantine"
+      ],
+      "statistical_validation_needed": [
+        "Research-only batteries if retained"
+      ],
+      "next_layer_3_action": "Quarantine list confirmation",
+      "inventory_canonical_names": [
+        "TROP",
+        "MTGP"
+      ],
+      "inventory_aliases": []
+    },
+    {
+      "family_id": "INF-POINT-001",
+      "category": "inference",
+      "literature_identity": "Point estimate only (no uncertainty)",
+      "canonical_reference_or_reference_family": [
+        "N/A \u2014 diagnostic readout"
+      ],
+      "canonical_estimand": "Point effect per estimator",
+      "required_data_geometry": "Estimator-dependent",
+      "supported_treatment_structure": "Estimator-dependent",
+      "assumptions": [
+        "No inferential claims"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "None"
+      ],
+      "diagnostics_expected_by_literature": [
+        "Effect trajectory"
+      ],
+      "known_failure_modes": [
+        "Mislabeled as inferential in product copy"
+      ],
+      "repo_implementation_variants": [
+        "point_estimate"
+      ],
+      "repo_alignment_status": "aligned_pending_validation",
+      "implementation_questions_to_resolve": [
+        "Metadata forbids promotion as CI"
+      ],
+      "statistical_validation_needed": [
+        "N/A"
+      ],
+      "next_layer_3_action": "Governance metadata check only",
+      "inventory_canonical_names": [
+        "point_estimate"
+      ],
+      "inventory_aliases": []
+    },
+    {
+      "family_id": "INF-JK-001",
+      "category": "inference",
+      "literature_identity": "Delete-one-unit jackknife uncertainty",
+      "canonical_reference_or_reference_family": [
+        "Efron (1982) jackknife",
+        "Abadie et al. SCM inference discussion \u2014 compare to permutation"
+      ],
+      "canonical_estimand": "Uncertainty for SCM-style point (often conservative in geo null-monitor framing)",
+      "required_data_geometry": "Unit-level panel with \u22652 controls (repo rules)",
+      "supported_treatment_structure": "Single-cell unit geometry for SCM null-monitor",
+      "assumptions": [
+        "Leave-one-unit variation meaningful",
+        "Target estimand matches jackknife pivot"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "SCM, AugSynthCVXPY, TBRRidge wired \u2014 validity differs"
+      ],
+      "diagnostics_expected_by_literature": [
+        "JK distribution shape",
+        "Null calibration"
+      ],
+      "known_failure_modes": [
+        "Invalid on aggregate 2-row TBR/SCM",
+        "TBRRidge high null FPR",
+        "AugSynth unsafe strata"
+      ],
+      "repo_implementation_variants": [
+        "UnitJackKnife"
+      ],
+      "repo_alignment_status": "partially_aligned",
+      "implementation_questions_to_resolve": [
+        "JK target matrix definition per estimator",
+        "Pooled vs unit paths on TBRRidge"
+      ],
+      "statistical_validation_needed": [
+        "001e null FPR for SCM+JK",
+        "AugSynth JK calibration-001",
+        "TBRRIDGE-003"
+      ],
+      "next_layer_3_action": "Unit jackknife implementation validation",
+      "inventory_canonical_names": [
+        "UnitJackKnife"
+      ],
+      "inventory_aliases": []
+    },
+    {
+      "family_id": "INF-JKP-001",
+      "category": "inference",
+      "literature_identity": "Jackknife+ predictive intervals",
+      "canonical_reference_or_reference_family": [
+        "Barber, Cand\u00e8s, Tibshirani et al. \u2014 jackknife+ / conformal predictive literature family"
+      ],
+      "canonical_estimand": "Predictive interval for counterfactual path",
+      "required_data_geometry": "Unit panel with valid jackknife folds",
+      "supported_treatment_structure": "Estimator-specific",
+      "assumptions": [
+        "Exchangeability / symmetric errors (approximate in panels)"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "SCM, TBR, TBRRidge per catalog"
+      ],
+      "diagnostics_expected_by_literature": [
+        "Coverage under null"
+      ],
+      "known_failure_modes": [
+        "TBRRidge pooled-CF semantics (~29% null FPR A21)"
+      ],
+      "repo_implementation_variants": [
+        "JKP"
+      ],
+      "repo_alignment_status": "partially_aligned",
+      "implementation_questions_to_resolve": [
+        "Pivot definition on TBRRidge"
+      ],
+      "statistical_validation_needed": [
+        "TBRRIDGE-003 coverage and null"
+      ],
+      "next_layer_3_action": "JKP pivot audit Layer 3",
+      "inventory_canonical_names": [
+        "JKP"
+      ],
+      "inventory_aliases": []
+    },
+    {
+      "family_id": "INF-KFOLD-001",
+      "category": "inference",
+      "literature_identity": "Cross-validated / blocked resampling intervals (panel k-fold)",
+      "canonical_reference_or_reference_family": [
+        "Cross-validation for uncertainty (diagnostic; not always literature-primary for SCM)"
+      ],
+      "canonical_estimand": "Diagnostic band around point effect",
+      "required_data_geometry": "Unit panel blocking",
+      "supported_treatment_structure": "Multi-treated allowed with geometry guards",
+      "assumptions": [
+        "Blocks represent comparable folds"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "SCM, AugSynth, TBRRidge, TBR"
+      ],
+      "diagnostics_expected_by_literature": [
+        "Fold stability"
+      ],
+      "known_failure_modes": [
+        "Not substitute for null-monitor JK on SCM"
+      ],
+      "repo_implementation_variants": [
+        "Kfold"
+      ],
+      "repo_alignment_status": "implementation_specific_extension",
+      "implementation_questions_to_resolve": [
+        "Distinguish diagnostic band vs confirmatory CI"
+      ],
+      "statistical_validation_needed": [
+        "D5-KFOLD batteries; 0% null FPR context"
+      ],
+      "next_layer_3_action": "Role taxonomy in Layer 5 \u2014 not Layer 2 promotion",
+      "inventory_canonical_names": [
+        "Kfold"
+      ],
+      "inventory_aliases": []
+    },
+    {
+      "family_id": "INF-TSKFOLD-001",
+      "category": "inference",
+      "literature_identity": "Time-series blocked cross-validation",
+      "canonical_reference_or_reference_family": [
+        "Time-series CV literature (blocked folds over time)"
+      ],
+      "canonical_estimand": "Diagnostic band for temporal panels",
+      "required_data_geometry": "Temporal blocking distinct from unit Kfold",
+      "supported_treatment_structure": "TBRRidge primary in OC",
+      "assumptions": [
+        "Temporal blocks respect treatment timing"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "TBRRidge"
+      ],
+      "diagnostics_expected_by_literature": [
+        "Fold boundaries vs treatment start"
+      ],
+      "known_failure_modes": [
+        "Scale mismatch vs SCM+JK; POSTFIX orientation history"
+      ],
+      "repo_implementation_variants": [
+        "TimeSeriesKfold"
+      ],
+      "repo_alignment_status": "partially_aligned",
+      "implementation_questions_to_resolve": [
+        "F-INF-003 orientation rules applied?"
+      ],
+      "statistical_validation_needed": [
+        "A19 POSTFIX null FPR"
+      ],
+      "next_layer_3_action": "TS-Kfold block definition audit",
+      "inventory_canonical_names": [
+        "TimeSeriesKfold"
+      ],
+      "inventory_aliases": []
+    },
+    {
+      "family_id": "INF-BRB-001",
+      "category": "inference",
+      "literature_identity": "Block residual bootstrap",
+      "canonical_reference_or_reference_family": [
+        "Politis & Romano (1994) block bootstrap",
+        "CausalImpact posterior simulation context for geo series"
+      ],
+      "canonical_estimand": "CI for regression/SCM residuals with temporal correlation",
+      "required_data_geometry": "Panel with temporal blocks",
+      "supported_treatment_structure": "TBRRidge primary validated path",
+      "assumptions": [
+        "Block length captures dependence"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "TBRRidge; not AugSynth catalog default"
+      ],
+      "diagnostics_expected_by_literature": [
+        "Residual autocorrelation"
+      ],
+      "known_failure_modes": [
+        "Misapplied to AugSynth (combo invalid)"
+      ],
+      "repo_implementation_variants": [
+        "BlockResidualBootstrap"
+      ],
+      "repo_alignment_status": "aligned_pending_validation",
+      "implementation_questions_to_resolve": [
+        "Block length defaults; bound ordering (DEF-002)"
+      ],
+      "statistical_validation_needed": [
+        "TBRRIDGE-001 positive OC"
+      ],
+      "next_layer_3_action": "BRB block policy documentation",
+      "inventory_canonical_names": [
+        "BlockResidualBootstrap"
+      ],
+      "inventory_aliases": [
+        "BRB"
+      ]
+    },
+    {
+      "family_id": "INF-CONFORMAL-001",
+      "category": "inference",
+      "literature_identity": "Conformal / distribution-free predictive intervals",
+      "canonical_reference_or_reference_family": [
+        "Vovk, Gammerman, Shafer (2005) algorithmic learning in a random world",
+        "Tibshirani et al. conformal prediction under covariate shift (extensions)"
+      ],
+      "canonical_estimand": "Distribution-free interval for outcome path \u2014 exchangeability required",
+      "required_data_geometry": "Panel with defined conformity scores",
+      "supported_treatment_structure": "AugSynthCVXPY, TBRRidge wired",
+      "assumptions": [
+        "Exchangeability or documented shift correction",
+        "Conformity score orientation correct (F-INF-003)"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "Not governed primary uncertainty for AugSynth ADR-001"
+      ],
+      "diagnostics_expected_by_literature": [
+        "Coverage under calibration",
+        "Interval width"
+      ],
+      "known_failure_modes": [
+        "Panel dependence violates exchangeability",
+        "Pre-POSTFIX orientation bug on AugSynth"
+      ],
+      "repo_implementation_variants": [
+        "Conformal"
+      ],
+      "repo_alignment_status": "partially_aligned",
+      "implementation_questions_to_resolve": [
+        "New interval design for AugSynth+Conformal blocked"
+      ],
+      "statistical_validation_needed": [
+        "POSTFIX archive; not promotion OC"
+      ],
+      "next_layer_3_action": "Conformal score + orientation Layer 3",
+      "inventory_canonical_names": [
+        "Conformal"
+      ],
+      "inventory_aliases": []
+    },
+    {
+      "family_id": "INF-PLACEBO-001",
+      "category": "inference",
+      "literature_identity": "Placebo / in-space falsification tests for synthetic controls",
+      "canonical_reference_or_reference_family": [
+        "Abadie, Diamond, Hainmueller (2015) \u2014 placebo tests",
+        "Falsification inference literature (design of placebo arms)"
+      ],
+      "canonical_estimand": "Falsification of no-effect null \u2014 not confirmatory CI",
+      "required_data_geometry": "Usually single-treated for repo scope",
+      "supported_treatment_structure": "Single-treated primary; multi-treated blocked",
+      "assumptions": [
+        "Placebo units believable as pseudo-treated"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "SCM primarily"
+      ],
+      "diagnostics_expected_by_literature": [
+        "Distribution of placebo effects"
+      ],
+      "known_failure_modes": [
+        "100% block multi-treated (A28)",
+        "Mislabeled as CI"
+      ],
+      "repo_implementation_variants": [
+        "Placebo"
+      ],
+      "repo_alignment_status": "aligned_pending_validation",
+      "implementation_questions_to_resolve": [
+        "Scope documentation vs estimator Placebo confusion"
+      ],
+      "statistical_validation_needed": [
+        "D5-INST-PLACEBO-001"
+      ],
+      "next_layer_3_action": "Placebo taxonomy ADR cross-check",
+      "inventory_canonical_names": [
+        "Placebo"
+      ],
+      "inventory_aliases": []
+    },
+    {
+      "family_id": "INF-BAYES-REG-001",
+      "category": "inference",
+      "literature_identity": "Bayesian inference handler (registry)",
+      "canonical_reference_or_reference_family": [
+        "Brodersen et al. (2015) for BSTS-style credible intervals"
+      ],
+      "canonical_estimand": "Posterior credible interval",
+      "required_data_geometry": "Estimator with Bayesian posterior",
+      "supported_treatment_structure": "Research estimators",
+      "assumptions": [
+        "Full posterior sampling implemented"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "BayesianTBR research \u2014 not TBRRidge registry shortcut"
+      ],
+      "diagnostics_expected_by_literature": [
+        "Posterior convergence"
+      ],
+      "known_failure_modes": [
+        "TBRRidge + Bayesian registry \u2260 MCMC (A20 blocked)"
+      ],
+      "repo_implementation_variants": [
+        "Bayesian"
+      ],
+      "repo_alignment_status": "literature_mismatch",
+      "implementation_questions_to_resolve": [
+        "Disentangle registry mode from BayesianTBR class"
+      ],
+      "statistical_validation_needed": [
+        "INV-015 resolution"
+      ],
+      "next_layer_3_action": "Block production path or implement full MCMC",
+      "inventory_canonical_names": [
+        "Bayesian"
+      ],
+      "inventory_aliases": []
+    },
+    {
+      "family_id": "INF-DID-BOOT-001",
+      "category": "inference",
+      "literature_identity": "DID embedded bootstrap (estimator-native)",
+      "canonical_reference_or_reference_family": [
+        "Bootstrap for DID (standard econometrics texts)",
+        "Callaway & Sant'Anna inference when applicable"
+      ],
+      "canonical_estimand": "Cumulative ATT interval (repo DEF-003 framing)",
+      "required_data_geometry": "DID panel only",
+      "supported_treatment_structure": "Per DID implementation",
+      "assumptions": [
+        "Bootstrap resampling reflects sampling design"
+      ],
+      "recommended_or_valid_inference_methods": [
+        "DID.run_analysis only \u2014 not inference registry"
+      ],
+      "diagnostics_expected_by_literature": [
+        "Pretrend + bootstrap coverage"
+      ],
+      "known_failure_modes": [
+        "Relative ATT CI unsupported",
+        "Not composable via ImpactAnalyzer registry alone"
+      ],
+      "repo_implementation_variants": [
+        "DID_native_bootstrap"
+      ],
+      "repo_alignment_status": "partially_aligned",
+      "implementation_questions_to_resolve": [
+        "Dispatch path vs registry modes"
+      ],
+      "statistical_validation_needed": [
+        "A25 characterization"
+      ],
+      "next_layer_3_action": "DID bootstrap Layer 3 plumbing audit",
+      "inventory_canonical_names": [
+        "DID_native_bootstrap"
+      ],
+      "inventory_aliases": []
+    }
+  ]
+}
