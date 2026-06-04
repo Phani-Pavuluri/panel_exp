@@ -2,7 +2,7 @@
 
 **Document ID:** AUGSYNTH-ASCM-DEVELOPMENT-ROADMAP-001  
 **Type:** Focused execution roadmap — **AugSynth/ASCM active lane only**  
-**Status:** **complete** — P1–P6 execution artifacts landed (P6 docs-only)  
+**Status:** **complete** — P1–P6 execution ✅; lane **closed** per [`AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md)  
 **Date:** 2026-06-03  
 **Verdict:** Convert audit/review findings into a **concrete PR sequence** — diagnostics → fidelity audit → stratified OC → inference calibration → design compatibility  
 **Decision context:** [`METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md`](METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md) — **`proceed_to_augsynth_development_lane`**
@@ -28,7 +28,7 @@ It converts prior audit, threshold, and OC evidence into **named PRs** with code
 | An **LLM-layer plan** | LLM paused per foundation hardening |
 | A **replacement for code-backed evidence** | Each PR must produce runnable artifacts |
 
-**Next step after P6:** Bridge ADRs (`AUGSYNTH_SCM_ESTIMAND_BRIDGE_ADR_001`, `MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001`) and optional harness **`D5-INST-AUGSYNTH-DESIGN-COMPAT-001`** — see [`DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md`](DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md). P1–P6 ✅.
+**Next step after lane closeout:** Open **`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001`** — see [`AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md). P1–P6 ✅; **do not** start multi-cell OC before pooling ADR.
 
 ---
 
@@ -231,10 +231,10 @@ Trigger when:
 | Focused execution roadmap for AugSynth/ASCM lane | ✅ |
 | Gap table with concrete next artifacts | ✅ §3 |
 | Workstreams A–E | ✅ §4 |
-| PR sequence P1–P6 | ✅ §5 |
+| PR sequence P1–P6 | ✅ §5 — **lane closed** [`AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md) |
 | Evidence standards + stop/go | ✅ §6–§7 |
 | No promotion / eligibility / prod change | ✅ §1, §10 |
-| Points to code-backed next PR (P1) | ✅ |
+| Next workstream chosen (pooling ADR) | ✅ closeout §6 |
 
 ---
 
