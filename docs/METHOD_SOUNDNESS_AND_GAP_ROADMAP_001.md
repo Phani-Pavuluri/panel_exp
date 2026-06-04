@@ -9,7 +9,7 @@
 
 **Primary inputs:** [`TRACK_D_METHOD_INVENTORY_AND_ROBUSTNESS_MATRIX_001.md`](TRACK_D_METHOD_INVENTORY_AND_ROBUSTNESS_MATRIX_001.md) · [`TRACK_D_D2_ESTIMATOR_AND_DONOR_AUDIT_001.md`](TRACK_D_D2_ESTIMATOR_AND_DONOR_AUDIT_001.md) · [`TRACK_D_D3_INFERENCE_METHOD_AUDIT_001.md`](TRACK_D_D3_INFERENCE_METHOD_AUDIT_001.md) · [`TRACK_D_D4_POWER_MDE_AUDIT_001.md`](TRACK_D_D4_POWER_MDE_AUDIT_001.md) · [`TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md`](TRACK_D_CONCEPTUAL_VALIDITY_AUDIT_001.md) · [`METHOD_READINESS_AND_COMPATIBILITY_MATRIX_001.md`](METHOD_READINESS_AND_COMPATIBILITY_MATRIX_001.md) · [`METHOD_FOUNDATION_HARDENING_001.md`](METHOD_FOUNDATION_HARDENING_001.md) · [`SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md`](SCM_AUGSYNTH_DIAGNOSTIC_THRESHOLD_AUDIT_001.md) · [`AUGSYNTH_ASCM_STRENGTHENING_001.md`](AUGSYNTH_ASCM_STRENGTHENING_001.md) · [`AUGSYNTH_ASCM_INFERENCE_PAIRING_ADR_001.md`](AUGSYNTH_ASCM_INFERENCE_PAIRING_ADR_001.md) · [`F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md`](F_DECISION_001_METHOD_ELIGIBILITY_AND_DECISION_POLICY.md) · [`F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md`](F_BACKLOG_001_IMPLEMENTATION_BACKLOG_CLOSEOUT.md) · [`F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md`](F_BACKLOG_002_INDUSTRY_RELEVANCE_REVIEW.md) · [`track_d/D5_INST_COMBO_AUDIT_001_REPORT.md`](track_d/D5_INST_COMBO_AUDIT_001_REPORT.md) · [`audits/AUDIT-010_mmm_readiness_gap.md`](audits/AUDIT-010_mmm_readiness_gap.md)
 
-**Related:** [`ROADMAP_V4.md`](ROADMAP_V4.md) · [`MIP_AUDIT_REGISTRY.md`](MIP_AUDIT_REGISTRY.md) · [`METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md) · [`METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001.md`](METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001.md) · [`METHOD_STRENGTHENING_LANES_001.md`](METHOD_STRENGTHENING_LANES_001.md) · [`METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md`](METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md)
+**Related:** [`ROADMAP_V4.md`](ROADMAP_V4.md) · [`MIP_AUDIT_REGISTRY.md`](MIP_AUDIT_REGISTRY.md) · [`METHOD_VALIDATION_PROGRAM_001.md`](METHOD_VALIDATION_PROGRAM_001.md) · [`METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md) · [`METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001.md`](METHOD_SELECTION_AND_PROMOTION_FRAMEWORK_001.md) · [`METHOD_STRENGTHENING_LANES_001.md`](METHOD_STRENGTHENING_LANES_001.md) · [`METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md`](METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md)
 
 **Guardrails:** Docs/evidence synthesis only. No new eligibility decisions. No promotion/demotion. No TrustReport/F-DECISION/CalibrationSignal/MMM behavior change. No LLM integration. Missing evidence labeled **`evidence_missing`**.
 
@@ -374,20 +374,23 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 **Execution plan:** [`AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md) — **materialized**. **D5-DIAG-SCM-AUGSYNTH-001** ✅ complete ([`D5_DIAG_SCM_AUGSYNTH_001_REPORT.md`](track_d/D5_DIAG_SCM_AUGSYNTH_001_REPORT.md)). **Next:** **AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001** (P2).
 
 
-**AugSynth/ASCM** is the **active method-development lane** because recent stratified evidence ([`D5_INST_AUGSYNTH_ASCM_002_REPORT.md`](track_d/D5_INST_AUGSYNTH_ASCM_002_REPORT.md)) is the richest weak-fit/hull dataset in the repo, and foundation docs ([`AUGSYNTH_ASCM_STRENGTHENING_001.md`](AUGSYNTH_ASCM_STRENGTHENING_001.md), ADR-001, threshold audit) already frame gaps — without promoting AugSynth or demoting SCM/A26.
+**Authoritative sequence (2026-06-04):** [`METHOD_VALIDATION_PROGRAM_001.md`](METHOD_VALIDATION_PROGRAM_001.md) — layered method-foundation validation **before** trust-framework or combo-role expansion. DL-1 AugSynth work is **complete** (`evidence_input`); not the active repo-wide lane.
 
 | Priority | Artifact | Type | Rationale |
 |----------|----------|------|-----------|
-| **1** | **AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001** | docs | ✅ Materialized — sequences DL-1/DL-2 deliverables ([`AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md)) |
-| **2** | **D5-DIAG-SCM-AUGSYNTH-001** | diagnostic implementation | ✅ [`D5_DIAG_SCM_AUGSYNTH_001_REPORT.md`](track_d/D5_DIAG_SCM_AUGSYNTH_001_REPORT.md) — [`scm_augsynth_diagnostics.py`](../panel_exp/validation/scm_augsynth_diagnostics.py) |
-| **3** | **AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001** | fidelity audit | ✅ [`AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001.md`](AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001.md) |
-| **4** | **D5-INST-AUGSYNTH-ASCM-003** | OC battery | ✅ ASCM-003; P4/P5/P6 complete |
-| **5** | **METHOD_FOUNDATION_SYNTHESIS_001** | synthesis checkpoint | ✅ [`METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md) — combination map + MCELL gate-validation decision |
-| **6** | **D5-INST-AUGSYNTH-MULTICELL-001** | OC (narrow) | **Next** — after pooling ADR; gate validation only; not promotion |
+| **1** | **METHOD_VALIDATION_PROGRAM_001** | program roadmap | ✅ Authoritative foundation sequence; pauses role expansion |
+| **2** | **METHOD_CODE_INVENTORY_001** | Layer 1 | **Next** — code-first inventory of all methods |
+| **3** | **METHOD_LITERATURE_ALIGNMENT_001** | Layer 2 | Literature vs implementation per family |
+| **4** | **METHOD_IMPLEMENTATION_VALIDATION_001** | Layer 3 | Architecture / fidelity reconciliation |
+| **5** | **METHOD_STATISTICAL_VALIDATION_PROTOCOL_001** | Layer 4 | OC protocol per family |
+| **6** | **METHOD_COMBINATION_VALIDATION_MATRIX_001** | Layer 5 | Validated design × estimator × inference tuples |
+| **7** | **DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001** | Post-5 | Role-ready suitability (not trust roles yet) |
 
-**Parallel (non-blocking):** DESIGN_READOUT_COMPATIBILITY_AUDIT_001 (foundation P2) — design-stage work, not AugSynth algorithm work.
+**Retained evidence (not sequencing authority):** AugSynth P1–P6 · [`METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md) · Track D/F audits · pooling ADR semantics.
 
-**Explicitly not next:** LLM integration · method promotion · F-DECISION amendment · CalibrationSignal expansion.
+**Paused:** **`D5-INST-AUGSYNTH-MULTICELL-001`** as default next step · TrustReport/F-DECISION/CalibrationSignal/MMM role expansion · LLM layer · promotion audits.
+
+**Explicitly not next:** Ad-hoc combo OC without Layer 1–4 coverage · MCELL as method-suitability proof.
 
 ---
 

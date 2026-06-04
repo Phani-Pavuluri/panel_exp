@@ -1,10 +1,12 @@
 # METHOD-FOUNDATION-SYNTHESIS-001
 
+> **Sequencing status:** **Superseded for roadmap authority by** [`METHOD_VALIDATION_PROGRAM_001.md`](METHOD_VALIDATION_PROGRAM_001.md). **Retained** as **evidence-input synthesis** only (combination map, stable conclusions, gap register). Do **not** use §7–§8 to schedule `D5-INST-AUGSYNTH-MULTICELL-001` or trust-framework expansion.
+
 **Document ID:** METHOD-FOUNDATION-SYNTHESIS-001  
-**Type:** Foundation synthesis / decision checkpoint — **evidence consolidation only**  
-**Status:** **complete** (docs-only)  
+**Type:** Foundation synthesis — **evidence consolidation only** (not sequencing authority)  
+**Status:** **complete** · **superseded_for_sequencing** (2026-06-04)  
 **Date:** 2026-06-03  
-**Verdict:** Prior design, estimator, inference, and AugSynth/ASCM audits are **sufficient to sequence next work**; remaining gaps are **targeted** (literature, bridges, narrow OC) — not a new framework layer and **not promotion**.
+**Verdict:** Useful **evidence map** from prior audits; **not** sufficient to authorize method suitability or trust roles without [`METHOD_VALIDATION_PROGRAM_001.md`](METHOD_VALIDATION_PROGRAM_001.md) layers 1–5.
 
 **Primary inputs:** [`AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md`](AUGSYNTH_ASCM_LANE_CLOSEOUT_001.md) · [`MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001.md`](MULTICELL_AUGSYNTH_POOLING_RULE_ADR_001.md) · [`DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md`](DESIGN_READOUT_AUGSYNTH_COMPATIBILITY_001.md) · [`AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001.md`](AUGSYNTH_ASCM_IMPLEMENTATION_FIDELITY_AUDIT_001.md) · [`AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md`](AUGSYNTH_ASCM_DEVELOPMENT_ROADMAP_001.md) · [`METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md`](METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md) · [`METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md`](METHOD_SOUNDNESS_ROADMAP_REVIEW_001.md) · [`METHOD_FOUNDATION_HARDENING_001.md`](METHOD_FOUNDATION_HARDENING_001.md) · [`TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md`](TRACK_D_D1_DESIGN_MATCHING_AUDIT_001.md) · [`track_d/D5_INST_AUGSYNTH_ASCM_003_REPORT.md`](track_d/D5_INST_AUGSYNTH_ASCM_003_REPORT.md) · [`track_d/D5_INF_AUGSYNTH_JK_CALIBRATION_001_REPORT.md`](track_d/D5_INF_AUGSYNTH_JK_CALIBRATION_001_REPORT.md) · [`track_d/D5_INF_AUGSYNTH_CONFORMAL_FAILURE_001_REPORT.md`](track_d/D5_INF_AUGSYNTH_CONFORMAL_FAILURE_001_REPORT.md) · [`track_d/D5_DES_SUPERGEO_001_REPORT.md`](track_d/D5_DES_SUPERGEO_001_REPORT.md) · [`track_d/D5_INST_TBR_001_REPORT.md`](track_d/D5_INST_TBR_001_REPORT.md) · [`track_d/archives/D5_POW_001c_results.json`](track_d/archives/D5_POW_001c_results.json) · [`F_INF_003_INTERVAL_ORIENTATION_FIX.md`](F_INF_003_INTERVAL_ORIENTATION_FIX.md) · [`GOVERNANCE_PR_TRACK_F_DECISION_PACKAGE_001.md`](GOVERNANCE_PR_TRACK_F_DECISION_PACKAGE_001.md) · [`ROADMAP_V4.md`](ROADMAP_V4.md) · [`MIP_AUDIT_REGISTRY.md`](MIP_AUDIT_REGISTRY.md)
 
@@ -21,7 +23,7 @@ This document:
 1. **Reuses** existing evidence — no re-audit, no new OC, no new eligibility decisions  
 2. States **stable conclusions** already proved in-repo  
 3. Registers **remaining** conceptual, implementation, literature-alignment, and OC gaps only where evidence is missing or blocked  
-4. Decides whether **`D5-INST-AUGSYNTH-MULTICELL-001`** should proceed as **ADR-gate validation only**
+4. Recorded a **prior** decision to proceed to **`D5-INST-AUGSYNTH-MULTICELL-001`** — **superseded** by METHOD-VALIDATION-PROGRAM-001 (MCELL paused as default; see synthesis §7 historical note)
 
 **This is not:** a new framework layer, a promotion artifact, a literature review, or permission to change TrustReport / F-DECISION / CalibrationSignal / MMM / governed-uncertainty policy.
 
@@ -149,15 +151,17 @@ Exact gaps **already documented** — status as of synthesis date.
 
 ---
 
-## 7. Development sequencing decision
+## 7. Development sequencing decision (historical — superseded 2026-06-04)
 
-### Question
+> **Superseded by** [`METHOD_VALIDATION_PROGRAM_001.md`](METHOD_VALIDATION_PROGRAM_001.md). **Current authority:** Layer 1 **`METHOD_CODE_INVENTORY_001`** first; **`D5-INST-AUGSYNTH-MULTICELL-001`** paused as default next step.
+
+### Question (at time of writing)
 
 Continue immediately with **`D5-INST-AUGSYNTH-MULTICELL-001`**, or pause for **`METHOD_LITERATURE_GAP_REVIEW_001`**?
 
-### Decision
+### Decision (historical record only)
 
-**Proceed with `D5-INST-AUGSYNTH-MULTICELL-001`** — **only** as **narrow ADR-gate validation**, not as AugSynth promotion or broad multi-cell characterization.
+**Prior decision:** proceed with `D5-INST-AUGSYNTH-MULTICELL-001` as narrow ADR-gate validation — **no longer roadmap authority**.
 
 | Allowed in MCELL OC | Forbidden in MCELL OC |
 |---------------------|------------------------|
@@ -173,12 +177,14 @@ Continue immediately with **`D5-INST-AUGSYNTH-MULTICELL-001`**, or pause for **`
 
 ---
 
-## 8. Next roadmap
+## 8. Next roadmap (historical — superseded)
 
-| Order | Artifact | Role |
-|-------|----------|------|
-| **1** | ✅ **`METHOD_FOUNDATION_SYNTHESIS_001`** (this doc) | Single foundation map + sequencing decision |
-| **2** | **`D5-INST-AUGSYNTH-MULTICELL-001`** | ADR-gate validation only (S0/S1; no pooled causal/uncertainty) |
+**Current sequence:** see [`METHOD_VALIDATION_PROGRAM_001.md`](METHOD_VALIDATION_PROGRAM_001.md) §10.
+
+| Order | Artifact | Role (historical) |
+|-------|----------|-------------------|
+| **1** | ✅ **`METHOD_FOUNDATION_SYNTHESIS_001`** (this doc) | Evidence map — sequencing **superseded** |
+| **2** | **`D5-INST-AUGSYNTH-MULTICELL-001`** | Was ADR-gate validation — **paused** under validation program |
 | **3** | **`METHOD_LITERATURE_GAP_REVIEW_001`** | Targeted §5 queue — **not** blocking MCELL gate OC |
 | **4** | **`AUGSYNTH_SCM_ESTIMAND_BRIDGE_ADR_001`** | Level/relative + aggregate/unit (G7) — recommended before causal language expands |
 | **5** | **`D5-INST-AUGSYNTH-DESIGN-COMPAT-001`** | Non-greedy tier-1 geo AugSynth OC parity (optional) |
