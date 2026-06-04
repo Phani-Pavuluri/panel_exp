@@ -607,7 +607,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** Prior audits retained as `evidence_input` only.
 
-**Next:** ✅ **`METHOD_CODE_INVENTORY_001`** → ✅ **`METHOD_LITERATURE_ALIGNMENT_001`** → **`METHOD_IMPLEMENTATION_VALIDATION_001`**.
+**Next:** ✅ Layers 1–3 → **`METHOD_STATISTICAL_VALIDATION_PROTOCOL_001`**.
 
 ---
 
@@ -629,7 +629,19 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Generator:** `python -m panel_exp.validation.method_literature_alignment_001`
 
-**Next:** **`METHOD_IMPLEMENTATION_VALIDATION_001`**.
+**Next:** ✅ **`METHOD_IMPLEMENTATION_VALIDATION_001`**.
+
+---
+
+## METHOD-IMPLEMENTATION-VALIDATION-001 (2026-06-04)
+
+**Artifact:** [`docs/METHOD_IMPLEMENTATION_VALIDATION_001.md`](METHOD_IMPLEMENTATION_VALIDATION_001.md) · [`docs/track_d/archives/METHOD_IMPLEMENTATION_VALIDATION_001.json`](track_d/archives/METHOD_IMPLEMENTATION_VALIDATION_001.json)
+
+**Verdict:** Layer 3 **complete** — 29 rows; identity/estimand/geometry/inference/orchestration fidelity; prior audit reconciliation (D1, G1–G8, F-GEO, F-INF, COMBO); `promotion_allowed` false on all rows.
+
+**Generator:** `python -m panel_exp.validation.method_implementation_validation_001`
+
+**Next:** **`METHOD_STATISTICAL_VALIDATION_PROTOCOL_001`**.
 
 ---
 

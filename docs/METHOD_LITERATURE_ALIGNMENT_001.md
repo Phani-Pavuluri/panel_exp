@@ -46,8 +46,9 @@ This register compares **implemented** components from [`METHOD_CODE_INVENTORY_0
 |---------------|---------------|
 | Layer 1 — Code inventory | ✅ Complete — defines method **universe** |
 | **Layer 2 — Literature alignment** | ✅ **This document** + JSON |
-| Layer 3 — Implementation validation | **Next** — `METHOD_IMPLEMENTATION_VALIDATION_001` |
-| Layers 4–5 | Blocked until Layer 3 rows exist per family |
+| Layer 3 — Implementation validation | ✅ [`METHOD_IMPLEMENTATION_VALIDATION_001.md`](METHOD_IMPLEMENTATION_VALIDATION_001.md) |
+| Layer 4 — Statistical validation | **Next** — `METHOD_STATISTICAL_VALIDATION_PROTOCOL_001` |
+| Layer 5 — Combination matrix | Blocked until Layer 4 per family |
 | Trust / suitability framework | **Paused** per validation program §8 |
 
 [`METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md) and combo matrices remain **hypotheses** until Layer 5.
@@ -361,15 +362,13 @@ Consolidated from JSON `implementation_questions_to_resolve` (priority order):
 
 ---
 
-## 13. Next artifact: METHOD_IMPLEMENTATION_VALIDATION_001
+## 13. Next artifact: METHOD_STATISTICAL_VALIDATION_PROTOCOL_001
 
-**Layer 3** reconciles each family's **repo_implementation_variants** against §5–§7 literature fields.
+**Layer 3** complete — see [`METHOD_IMPLEMENTATION_VALIDATION_001.md`](METHOD_IMPLEMENTATION_VALIDATION_001.md).
 
-**Inputs:** This register · Layer 1 JSON · Track D D2/D3 fidelity audits · AugSynth G1–G8 · F-INF-003 POSTFIX evidence
+**Layer 4** defines synthetic worlds and OC batteries for families not blocked in Layer 3.
 
-**Outputs:** Per-family `implementation_validated` | `implementation_gap` with code pointers and replay commands.
-
-**Not in Layer 3:** Trust roles · promotion · new OC batteries (those are Layer 4).
+**Inputs:** Layer 3 JSON `rows[]` · §11 statistical_validation_needed lists · prior D5 archives (evidence only).
 
 ---
 

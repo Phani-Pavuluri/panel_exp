@@ -240,7 +240,9 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **Layer 2:** ✅ [`METHOD_LITERATURE_ALIGNMENT_001.md`](METHOD_LITERATURE_ALIGNMENT_001.md) + [`track_d/archives/METHOD_LITERATURE_ALIGNMENT_001.json`](track_d/archives/METHOD_LITERATURE_ALIGNMENT_001.json) (regenerate: `python -m panel_exp.validation.method_literature_alignment_001`).
 
-**Immediate next PR target:** **`METHOD_IMPLEMENTATION_VALIDATION_001`**.
+**Layer 3:** ✅ [`METHOD_IMPLEMENTATION_VALIDATION_001.md`](METHOD_IMPLEMENTATION_VALIDATION_001.md) + [`track_d/archives/METHOD_IMPLEMENTATION_VALIDATION_001.json`](track_d/archives/METHOD_IMPLEMENTATION_VALIDATION_001.json) (regenerate: `python -m panel_exp.validation.method_implementation_validation_001`).
+
+**Immediate next PR target:** **`METHOD_STATISTICAL_VALIDATION_PROTOCOL_001`**.
 
 ---
 
