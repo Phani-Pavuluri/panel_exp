@@ -1,0 +1,1213 @@
+{
+  "document_id": "DESIGN-ESTIMATOR-INFERENCE-SUITABILITY-FRAMEWORK-001",
+  "generated_at": "2026-06-04T08:09:46.820677+00:00",
+  "generator": "panel_exp/validation/design_estimator_inference_suitability_framework_001.py",
+  "parent_artifact": "METHOD-COMBINATION-VALIDATION-MATRIX-001",
+  "suitability_class_values": [
+    "not_yet_assessed",
+    "oc_ready_not_suitable_yet",
+    "diagnostic_candidate_pending_oc",
+    "suitability_candidate_pending_oc",
+    "blocked_before_suitability",
+    "bridge_required_before_suitability",
+    "implementation_fix_required",
+    "research_only",
+    "quarantine_or_deprecate"
+  ],
+  "current_allowed_use_values": [
+    "planning_only",
+    "diagnostic_research_only",
+    "oc_execution_only",
+    "metadata_guardrail_only",
+    "no_runtime_use"
+  ],
+  "next_action_values": [
+    "run_d5_stat_smoke",
+    "run_d5_stat_characterization",
+    "run_d5_stat_calibration",
+    "write_bridge_adr",
+    "fix_implementation_gap",
+    "quarantine_or_deprecate",
+    "research_only",
+    "wait_for_oc_evidence"
+  ],
+  "recommended_next_concrete_artifact": "D5-STAT-SMOKE-CALLABLE-001",
+  "future_role_assignment_prerequisite": "TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001",
+  "policy_rules": [
+    "ready_for_oc does not imply suitable",
+    "suitability requires completed D5-STAT evidence",
+    "inference suitability requires interval semantics OC",
+    "geometry evidence does not transfer across modes",
+    "pooled multicell blocked until causal pooling ADR + OC",
+    "supergeo/trim blocked until bridge ADR + validation",
+    "no CalibrationSignal/MMM/TrustReport/LLM from this artifact"
+  ],
+  "d5_stat_evidence_queue": [
+    "D5-STAT-SMOKE-CALLABLE-001",
+    "D5-STAT-SCM-JK-001",
+    "D5-STAT-AUGSYNTH-POINT-001",
+    "D5-STAT-AUGSYNTH-JK-001",
+    "D5-STAT-TBR-AGG-001",
+    "D5-STAT-TBRRIDGE-INF-001",
+    "D5-STAT-DID-BOOTSTRAP-001",
+    "D5-STAT-MCELL-PERCELL-001"
+  ],
+  "counts": {
+    "rows_total": 30,
+    "by_suitability_class": {
+      "blocked_before_suitability": 5,
+      "implementation_fix_required": 1,
+      "diagnostic_candidate_pending_oc": 10,
+      "research_only": 4,
+      "suitability_candidate_pending_oc": 4,
+      "bridge_required_before_suitability": 6
+    },
+    "layer5_rows_mapped": 30
+  },
+  "known_blocked_combos": [
+    "AUGSYNTH-CONFORMAL",
+    "AUGSYNTH-JK",
+    "MCELL-POOLED-AUGSYNTH",
+    "MCELL-POOLED-SCM-JK",
+    "SUPERGEO-SCM-JK",
+    "TRIM-SCM-JK",
+    "TBR-UNIT-JK",
+    "TBRRIDGE-BAYESIAN-REG"
+  ],
+  "rows": [
+    {
+      "combination_id": "AUGSYNTH-CONFORMAL",
+      "source_matrix_status": "blocked_before_oc",
+      "design_family": "DES-GMM-001",
+      "estimator_family": "EST-AUGSYNTH-001",
+      "inference_family": "INF-CONFORMAL-001",
+      "geometry": "unit_panel_single_cell",
+      "estimand": "augmented_gap",
+      "effect_scale": "level",
+      "interval_semantics": "conformal_blocked_IMPL-CONF-001",
+      "suitability_class": "blocked_before_suitability",
+      "required_oc_artifacts": [],
+      "required_bridge_artifacts": [],
+      "required_implementation_fixes": [
+        "IMPL-CONF-001",
+        "new interval design required"
+      ],
+      "minimum_evidence_before_diagnostic_use": "blocked \u2014 no diagnostic product use until bridge/fix",
+      "minimum_evidence_before_suitability_claim": "blocked \u2014 no suitability claim",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "no_runtime_use",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "wait_for_oc_evidence",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "AUGSYNTH-JK",
+      "source_matrix_status": "blocked_before_oc",
+      "design_family": "DES-GMM-001",
+      "estimator_family": "EST-AUGSYNTH-001 / AugSynthCVXPY",
+      "inference_family": "INF-JK-001",
+      "geometry": "unit_panel_single_cell",
+      "estimand": "augmented_gap",
+      "effect_scale": "level_vs_relative",
+      "interval_semantics": "jackknife_unsafe_strata",
+      "suitability_class": "implementation_fix_required",
+      "required_oc_artifacts": [
+        "D5-STAT-SMOKE-CALLABLE-001"
+      ],
+      "required_bridge_artifacts": [],
+      "required_implementation_fixes": [
+        "IMPL-JK-001 unsafe strata",
+        "JK not literature-default for ASCM"
+      ],
+      "minimum_evidence_before_diagnostic_use": "blocked until implementation gaps closed",
+      "minimum_evidence_before_suitability_claim": "blocked until IMPL fixes + OC",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "planning_only",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "fix_implementation_gap",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "AUGSYNTH-KFOLD",
+      "source_matrix_status": "ready_for_oc_with_caveats",
+      "design_family": "DES-GMM-001",
+      "estimator_family": "EST-AUGSYNTH-001",
+      "inference_family": "INF-KFOLD-001",
+      "geometry": "unit_panel_single_cell",
+      "estimand": "augmented_gap",
+      "effect_scale": "level",
+      "interval_semantics": "diagnostic_kfold_band",
+      "suitability_class": "diagnostic_candidate_pending_oc",
+      "required_oc_artifacts": [
+        "D5-STAT-AUGSYNTH-KFOLD-001"
+      ],
+      "required_bridge_artifacts": [],
+      "required_implementation_fixes": [
+        "diagnostic band only \u2014 not confirmatory CI"
+      ],
+      "minimum_evidence_before_diagnostic_use": "Completed D5-STAT-AUGSYNTH-KFOLD-001 Level B characterization archive (none exist yet)",
+      "minimum_evidence_before_suitability_claim": "Completed D5-STAT-AUGSYNTH-KFOLD-001 Level C calibration + interval semantics evidence (not satisfied by protocol alone)",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "oc_execution_only",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "run_d5_stat_characterization",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "AUGSYNTH-POINT",
+      "source_matrix_status": "ready_for_oc_with_caveats",
+      "design_family": "DES-GMM-001",
+      "estimator_family": "EST-AUGSYNTH-001 / AugSynthCVXPY",
+      "inference_family": "INF-POINT-001 / point_estimate",
+      "geometry": "unit_panel_single_cell",
+      "estimand": "augmented_gap",
+      "effect_scale": "level_vs_relative_G7",
+      "interval_semantics": "point_only",
+      "suitability_class": "diagnostic_candidate_pending_oc",
+      "required_oc_artifacts": [
+        "D5-STAT-AUGSYNTH-POINT-001"
+      ],
+      "required_bridge_artifacts": [],
+      "required_implementation_fixes": [
+        "G1-G8 fidelity open"
+      ],
+      "minimum_evidence_before_diagnostic_use": "Completed D5-STAT-AUGSYNTH-POINT-001 Level B characterization archive (none exist yet)",
+      "minimum_evidence_before_suitability_claim": "Completed D5-STAT-AUGSYNTH-POINT-001 Level C calibration + interval semantics evidence (not satisfied by protocol alone)",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "oc_execution_only",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "run_d5_stat_characterization",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "BAYESIANTBR-MCMC",
+      "source_matrix_status": "research_only_oc",
+      "design_family": "DES-*",
+      "estimator_family": "EST-RESEARCH-BAYESIANTBR",
+      "inference_family": "INF-BAYES-REG-001",
+      "geometry": "aggregate_or_unit",
+      "estimand": "bayesian_TBR_posterior",
+      "effect_scale": "research",
+      "interval_semantics": "mcmc_posterior",
+      "suitability_class": "research_only",
+      "required_oc_artifacts": [
+        "D5-STAT-SMOKE-CALLABLE-001"
+      ],
+      "required_bridge_artifacts": [],
+      "required_implementation_fixes": [
+        "RTP charter only"
+      ],
+      "minimum_evidence_before_diagnostic_use": "research characterization only \u2014 no product diagnostic claim",
+      "minimum_evidence_before_suitability_claim": "not applicable for product suitability",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "diagnostic_research_only",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "research_only",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "DID-BOOTSTRAP",
+      "source_matrix_status": "ready_for_oc_with_caveats",
+      "design_family": "DES-*",
+      "estimator_family": "EST-DID-001",
+      "inference_family": "INF-DID-BOOT-001",
+      "geometry": "unit_panel_single_cell",
+      "estimand": "ATT_DiD",
+      "effect_scale": "relative_CI_policy_open",
+      "interval_semantics": "embedded_bootstrap_native",
+      "suitability_class": "suitability_candidate_pending_oc",
+      "required_oc_artifacts": [
+        "D5-STAT-DID-BOOTSTRAP-001"
+      ],
+      "required_bridge_artifacts": [],
+      "required_implementation_fixes": [
+        "relative CI policy deferred DEF-003"
+      ],
+      "minimum_evidence_before_diagnostic_use": "Completed D5-STAT-DID-BOOTSTRAP-001 Level B characterization archive (none exist yet)",
+      "minimum_evidence_before_suitability_claim": "Completed D5-STAT-DID-BOOTSTRAP-001 Level C calibration + interval semantics evidence (not satisfied by protocol alone)",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "oc_execution_only",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "run_d5_stat_characterization",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "MCELL-PERCELL-SCM-JK",
+      "source_matrix_status": "ready_for_oc_with_caveats",
+      "design_family": "DES-* multi_cell",
+      "estimator_family": "EST-SCM-001",
+      "inference_family": "INF-JK-001",
+      "geometry": "multi_cell_per_cell",
+      "estimand": "per_cell_ATT",
+      "effect_scale": "per_cell_level",
+      "interval_semantics": "jackknife_per_cell",
+      "suitability_class": "suitability_candidate_pending_oc",
+      "required_oc_artifacts": [
+        "D5-STAT-MCELL-PERCELL-001"
+      ],
+      "required_bridge_artifacts": [],
+      "required_implementation_fixes": [
+        "per-cell only \u2014 pooling ADR semantic guardrail"
+      ],
+      "minimum_evidence_before_diagnostic_use": "Completed D5-STAT-MCELL-PERCELL-001 Level B characterization archive (none exist yet)",
+      "minimum_evidence_before_suitability_claim": "Completed D5-STAT-MCELL-PERCELL-001 Level C calibration + interval semantics evidence (not satisfied by protocol alone)",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "oc_execution_only",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "run_d5_stat_calibration",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "MCELL-POOLED-AUGSYNTH",
+      "source_matrix_status": "blocked_needs_bridge",
+      "design_family": "DES-* multi_cell",
+      "estimator_family": "EST-AUGSYNTH-001",
+      "inference_family": "INF-POINT-001",
+      "geometry": "pooled_multi_cell",
+      "estimand": "pooled_causal_lift_blocked",
+      "effect_scale": "blocked_ADR",
+      "interval_semantics": "blocked",
+      "suitability_class": "bridge_required_before_suitability",
+      "required_oc_artifacts": [],
+      "required_bridge_artifacts": [
+        "multicell causal pooling ADR"
+      ],
+      "required_implementation_fixes": [
+        "pooled causal lift not literature-backed",
+        "ADR blocks semantics"
+      ],
+      "minimum_evidence_before_diagnostic_use": "blocked \u2014 no diagnostic product use until bridge/fix",
+      "minimum_evidence_before_suitability_claim": "blocked \u2014 no suitability claim",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "no_runtime_use",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "write_bridge_adr",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "MTGP-RESEARCH",
+      "source_matrix_status": "research_only_oc",
+      "design_family": "n/a",
+      "estimator_family": "EST-RESEARCH-MTGP",
+      "inference_family": "INF-BAYES-REG-001",
+      "geometry": "research",
+      "estimand": "research",
+      "effect_scale": "research",
+      "interval_semantics": "bayesian",
+      "suitability_class": "research_only",
+      "required_oc_artifacts": [
+        "D5-STAT-SMOKE-CALLABLE-001"
+      ],
+      "required_bridge_artifacts": [],
+      "required_implementation_fixes": [
+        "optional JAX"
+      ],
+      "minimum_evidence_before_diagnostic_use": "research characterization only \u2014 no product diagnostic claim",
+      "minimum_evidence_before_suitability_claim": "not applicable for product suitability",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "diagnostic_research_only",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "research_only",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "SCM-JK",
+      "source_matrix_status": "ready_for_oc_with_caveats",
+      "design_family": "DES-GMM-001",
+      "estimator_family": "EST-SCM-001 / SyntheticControlCVXPY",
+      "inference_family": "INF-JK-001 / UnitJackKnife",
+      "geometry": "unit_panel_single_cell",
+      "estimand": "ATT_counterfactual_gap",
+      "effect_scale": "level_or_relative_export_dependent",
+      "interval_semantics": "jackknife_null_monitor",
+      "suitability_class": "suitability_candidate_pending_oc",
+      "required_oc_artifacts": [
+        "D5-STAT-SCM-JK-001"
+      ],
+      "required_bridge_artifacts": [],
+      "required_implementation_fixes": [
+        "MAT-004 design-donor bridge",
+        "INV-D1-001 caller audit"
+      ],
+      "minimum_evidence_before_diagnostic_use": "Completed D5-STAT-SCM-JK-001 Level B characterization archive (none exist yet)",
+      "minimum_evidence_before_suitability_claim": "Completed D5-STAT-SCM-JK-001 Level C calibration + interval semantics evidence (not satisfied by protocol alone)",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "oc_execution_only",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "run_d5_stat_calibration",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "SCM-PLACEBO",
+      "source_matrix_status": "ready_for_oc_with_caveats",
+      "design_family": "DES-GMM-001|DES-TIER1-RAND-001",
+      "estimator_family": "EST-SCM-001",
+      "inference_family": "INF-PLACEBO-001 / Placebo",
+      "geometry": "unit_panel_single_treated",
+      "estimand": "falsification_placebo",
+      "effect_scale": "level",
+      "interval_semantics": "falsification_not_CI",
+      "suitability_class": "diagnostic_candidate_pending_oc",
+      "required_oc_artifacts": [
+        "D5-STAT-SCM-PLACEBO-001"
+      ],
+      "required_bridge_artifacts": [],
+      "required_implementation_fixes": [
+        "multi-treated scope limited"
+      ],
+      "minimum_evidence_before_diagnostic_use": "Completed D5-STAT-SCM-PLACEBO-001 Level B characterization archive (none exist yet)",
+      "minimum_evidence_before_suitability_claim": "Completed D5-STAT-SCM-PLACEBO-001 Level C calibration + interval semantics evidence (not satisfied by protocol alone)",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "oc_execution_only",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "run_d5_stat_characterization",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "SUPERGEO-SCM-JK",
+      "source_matrix_status": "blocked_needs_bridge",
+      "design_family": "DES-SUPERGEO-001",
+      "estimator_family": "EST-SCM-001",
+      "inference_family": "INF-JK-001",
+      "geometry": "supergeo_cluster",
+      "estimand": "flat_readout_invalid",
+      "effect_scale": "n/a",
+      "interval_semantics": "blocked",
+      "suitability_class": "bridge_required_before_suitability",
+      "required_oc_artifacts": [],
+      "required_bridge_artifacts": [
+        "F-GEO-003 supergeo flat readout bridge"
+      ],
+      "required_implementation_fixes": [
+        "F-GEO-003 bridge required",
+        "A29 invalid flat readout"
+      ],
+      "minimum_evidence_before_diagnostic_use": "blocked \u2014 no diagnostic product use until bridge/fix",
+      "minimum_evidence_before_suitability_claim": "blocked \u2014 no suitability claim",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "no_runtime_use",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "write_bridge_adr",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "TBR-AGG-POINT",
+      "source_matrix_status": "ready_for_oc_with_caveats",
+      "design_family": "DES-GMM-001",
+      "estimator_family": "EST-TBR-001",
+      "inference_family": "INF-POINT-001",
+      "geometry": "aggregate_two_row",
+      "estimand": "aggregate_ATT",
+      "effect_scale": "aggregate_level",
+      "interval_semantics": "point_only",
+      "suitability_class": "suitability_candidate_pending_oc",
+      "required_oc_artifacts": [
+        "D5-STAT-TBR-AGG-001"
+      ],
+      "required_bridge_artifacts": [],
+      "required_implementation_fixes": [
+        "design-analysis alignment",
+        "INV-003 estimand"
+      ],
+      "minimum_evidence_before_diagnostic_use": "Completed D5-STAT-TBR-AGG-001 Level B characterization archive (none exist yet)",
+      "minimum_evidence_before_suitability_claim": "Completed D5-STAT-TBR-AGG-001 Level C calibration + interval semantics evidence (not satisfied by protocol alone)",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "oc_execution_only",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "run_d5_stat_characterization",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "TBR-UNIT-JK",
+      "source_matrix_status": "blocked_needs_bridge",
+      "design_family": "DES-*",
+      "estimator_family": "EST-TBR-001",
+      "inference_family": "INF-JK-001",
+      "geometry": "unit_panel_single_cell",
+      "estimand": "invalid_geometry",
+      "effect_scale": "n/a",
+      "interval_semantics": "blocked",
+      "suitability_class": "blocked_before_suitability",
+      "required_oc_artifacts": [],
+      "required_bridge_artifacts": [
+        "geometry_or_estimand_bridge_ADR"
+      ],
+      "required_implementation_fixes": [
+        "TBR asserts aggregate only \u2014 invalid on unit panel"
+      ],
+      "minimum_evidence_before_diagnostic_use": "blocked \u2014 no diagnostic product use until bridge/fix",
+      "minimum_evidence_before_suitability_claim": "blocked \u2014 no suitability claim",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "no_runtime_use",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "wait_for_oc_evidence",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "TBRRIDGE-BAYESIAN-REG",
+      "source_matrix_status": "blocked_before_oc",
+      "design_family": "DES-*",
+      "estimator_family": "EST-TBRRIDGE-001",
+      "inference_family": "INF-BAYES-REG-001",
+      "geometry": "unit_panel_single_cell",
+      "estimand": "ridge_gap",
+      "effect_scale": "unit_level",
+      "interval_semantics": "registry_bayesian_handler",
+      "suitability_class": "blocked_before_suitability",
+      "required_oc_artifacts": [],
+      "required_bridge_artifacts": [],
+      "required_implementation_fixes": [
+        "INV-015 registry Bayesian != MCMC"
+      ],
+      "minimum_evidence_before_diagnostic_use": "blocked \u2014 no diagnostic product use until bridge/fix",
+      "minimum_evidence_before_suitability_claim": "blocked \u2014 no suitability claim",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "no_runtime_use",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "wait_for_oc_evidence",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "TBRRIDGE-BRB",
+      "source_matrix_status": "ready_for_oc_with_caveats",
+      "design_family": "DES-*",
+      "estimator_family": "EST-TBRRIDGE-001",
+      "inference_family": "INF-BRB-001",
+      "geometry": "unit_panel_single_cell",
+      "estimand": "ridge_penalized_gap",
+      "effect_scale": "unit_level",
+      "interval_semantics": "block_residual_bootstrap",
+      "suitability_class": "diagnostic_candidate_pending_oc",
+      "required_oc_artifacts": [
+        "D5-STAT-TBRRIDGE-BRB-001"
+      ],
+      "required_bridge_artifacts": [],
+      "required_implementation_fixes": [
+        "DEF-002 bound ordering verified in prior OC"
+      ],
+      "minimum_evidence_before_diagnostic_use": "Completed D5-STAT-TBRRIDGE-BRB-001 Level B characterization archive (none exist yet)",
+      "minimum_evidence_before_suitability_claim": "Completed D5-STAT-TBRRIDGE-BRB-001 Level C calibration + interval semantics evidence (not satisfied by protocol alone)",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "oc_execution_only",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "run_d5_stat_calibration",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "TBRRIDGE-CONFORMAL",
+      "source_matrix_status": "ready_for_oc_with_caveats",
+      "design_family": "DES-*",
+      "estimator_family": "EST-TBRRIDGE-001",
+      "inference_family": "INF-CONFORMAL-001",
+      "geometry": "unit_panel_single_cell",
+      "estimand": "ridge_penalized_gap",
+      "effect_scale": "unit_level",
+      "interval_semantics": "conformal_exchangeability_caveat",
+      "suitability_class": "diagnostic_candidate_pending_oc",
+      "required_oc_artifacts": [
+        "D5-STAT-TBRRIDGE-CONFORMAL-001"
+      ],
+      "required_bridge_artifacts": [],
+      "required_implementation_fixes": [
+        "exchangeability caveat on panels"
+      ],
+      "minimum_evidence_before_diagnostic_use": "Completed D5-STAT-TBRRIDGE-CONFORMAL-001 Level B characterization archive (none exist yet)",
+      "minimum_evidence_before_suitability_claim": "Completed D5-STAT-TBRRIDGE-CONFORMAL-001 Level C calibration + interval semantics evidence (not satisfied by protocol alone)",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "oc_execution_only",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "run_d5_stat_characterization",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "TBRRIDGE-JK",
+      "source_matrix_status": "blocked_before_oc",
+      "design_family": "DES-*",
+      "estimator_family": "EST-TBRRIDGE-001",
+      "inference_family": "INF-JK-001",
+      "geometry": "unit_panel_single_cell",
+      "estimand": "ridge_penalized_gap",
+      "effect_scale": "unit_level",
+      "interval_semantics": "jackknife_miscalibrated",
+      "suitability_class": "blocked_before_suitability",
+      "required_oc_artifacts": [],
+      "required_bridge_artifacts": [],
+      "required_implementation_fixes": [
+        "high null FPR A16 \u2014 pivot calibration required"
+      ],
+      "minimum_evidence_before_diagnostic_use": "blocked \u2014 no diagnostic product use until bridge/fix",
+      "minimum_evidence_before_suitability_claim": "blocked \u2014 no suitability claim",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "no_runtime_use",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "wait_for_oc_evidence",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "TBRRIDGE-KFOLD",
+      "source_matrix_status": "ready_for_oc_with_caveats",
+      "design_family": "DES-*",
+      "estimator_family": "EST-TBRRIDGE-001",
+      "inference_family": "INF-KFOLD-001",
+      "geometry": "unit_panel_single_cell",
+      "estimand": "ridge_penalized_gap",
+      "effect_scale": "unit_level",
+      "interval_semantics": "diagnostic_kfold",
+      "suitability_class": "diagnostic_candidate_pending_oc",
+      "required_oc_artifacts": [
+        "D5-STAT-TBRRIDGE-KFOLD-001"
+      ],
+      "required_bridge_artifacts": [],
+      "required_implementation_fixes": [
+        "scale != SCM+JK",
+        "diagnostic only"
+      ],
+      "minimum_evidence_before_diagnostic_use": "Completed D5-STAT-TBRRIDGE-KFOLD-001 Level B characterization archive (none exist yet)",
+      "minimum_evidence_before_suitability_claim": "Completed D5-STAT-TBRRIDGE-KFOLD-001 Level C calibration + interval semantics evidence (not satisfied by protocol alone)",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "oc_execution_only",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "run_d5_stat_characterization",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "TBRRIDGE-TSKFOLD",
+      "source_matrix_status": "ready_for_oc_with_caveats",
+      "design_family": "DES-*",
+      "estimator_family": "EST-TBRRIDGE-001",
+      "inference_family": "INF-TSKFOLD-001",
+      "geometry": "unit_panel_single_cell",
+      "estimand": "ridge_penalized_gap",
+      "effect_scale": "unit_level",
+      "interval_semantics": "time_series_kfold_diagnostic",
+      "suitability_class": "diagnostic_candidate_pending_oc",
+      "required_oc_artifacts": [
+        "D5-STAT-TBRRIDGE-TSKFOLD-001"
+      ],
+      "required_bridge_artifacts": [],
+      "required_implementation_fixes": [
+        "F-INF-003 re-verify exports"
+      ],
+      "minimum_evidence_before_diagnostic_use": "Completed D5-STAT-TBRRIDGE-TSKFOLD-001 Level B characterization archive (none exist yet)",
+      "minimum_evidence_before_suitability_claim": "Completed D5-STAT-TBRRIDGE-TSKFOLD-001 Level C calibration + interval semantics evidence (not satisfied by protocol alone)",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "oc_execution_only",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "run_d5_stat_characterization",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "TRIM-SCM-JK",
+      "source_matrix_status": "blocked_needs_bridge",
+      "design_family": "DES-TRIM-001",
+      "estimator_family": "EST-SCM-001",
+      "inference_family": "INF-JK-001",
+      "geometry": "trimmed_pair",
+      "estimand": "flat_readout_invalid",
+      "effect_scale": "n/a",
+      "interval_semantics": "blocked",
+      "suitability_class": "bridge_required_before_suitability",
+      "required_oc_artifacts": [],
+      "required_bridge_artifacts": [
+        "F-GEO-004 trimmedmatch adapter"
+      ],
+      "required_implementation_fixes": [
+        "F-GEO-004 bridge required",
+        "A30 invalid flat readout"
+      ],
+      "minimum_evidence_before_diagnostic_use": "blocked \u2014 no diagnostic product use until bridge/fix",
+      "minimum_evidence_before_suitability_claim": "blocked \u2014 no suitability claim",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "no_runtime_use",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "write_bridge_adr",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "TROP-RESEARCH",
+      "source_matrix_status": "research_only_oc",
+      "design_family": "n/a",
+      "estimator_family": "EST-RESEARCH-TROP",
+      "inference_family": "INF-POINT-001",
+      "geometry": "research",
+      "estimand": "research",
+      "effect_scale": "research",
+      "interval_semantics": "point",
+      "suitability_class": "research_only",
+      "required_oc_artifacts": [
+        "D5-STAT-SMOKE-CALLABLE-001"
+      ],
+      "required_bridge_artifacts": [],
+      "required_implementation_fixes": [
+        "not_literature_backed product path"
+      ],
+      "minimum_evidence_before_diagnostic_use": "research characterization only \u2014 no product diagnostic claim",
+      "minimum_evidence_before_suitability_claim": "not applicable for product suitability",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "diagnostic_research_only",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "research_only",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "TIER1-SCM-JK",
+      "source_matrix_status": "ready_for_oc_with_caveats",
+      "design_family": "DES-TIER1-RAND-001",
+      "estimator_family": "EST-SCM-001 / SyntheticControlCVXPY",
+      "inference_family": "INF-JK-001 / UnitJackKnife",
+      "geometry": "unit_panel_single_cell",
+      "estimand": "ATT_counterfactual_gap",
+      "effect_scale": "level_or_relative",
+      "interval_semantics": "jackknife_null_monitor",
+      "suitability_class": "diagnostic_candidate_pending_oc",
+      "required_oc_artifacts": [
+        "D5-STAT-SCM-JK-001"
+      ],
+      "required_bridge_artifacts": [],
+      "required_implementation_fixes": [],
+      "minimum_evidence_before_diagnostic_use": "Completed D5-STAT-SCM-JK-001 Level B characterization archive (none exist yet)",
+      "minimum_evidence_before_suitability_claim": "Completed D5-STAT-SCM-JK-001 Level C calibration + interval semantics evidence (not satisfied by protocol alone)",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "oc_execution_only",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "run_d5_stat_characterization",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "MCELL-POOLED-SCM-JK",
+      "source_matrix_status": "blocked_needs_bridge",
+      "design_family": "DES-* multi_cell",
+      "estimator_family": "EST-SCM-001",
+      "inference_family": "INF-JK-001",
+      "geometry": "pooled_multi_cell",
+      "estimand": "pooled_lift_blocked",
+      "effect_scale": "undefined_without_ADR",
+      "interval_semantics": "blocked",
+      "suitability_class": "bridge_required_before_suitability",
+      "required_oc_artifacts": [
+        "D5-STAT-MCELL-POOLED-001"
+      ],
+      "required_bridge_artifacts": [
+        "multicell causal pooling ADR"
+      ],
+      "required_implementation_fixes": [
+        "geometry_bridge_required"
+      ],
+      "minimum_evidence_before_diagnostic_use": "blocked \u2014 no diagnostic product use until bridge/fix",
+      "minimum_evidence_before_suitability_claim": "blocked \u2014 no suitability claim",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "no_runtime_use",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "write_bridge_adr",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "MCELL-AUGSYNTH-POINT",
+      "source_matrix_status": "ready_for_oc_with_caveats",
+      "design_family": "DES-* multi_cell",
+      "estimator_family": "EST-AUGSYNTH-001",
+      "inference_family": "INF-POINT-001",
+      "geometry": "multi_cell_per_cell",
+      "estimand": "per_cell_augmented_gap",
+      "effect_scale": "per_cell",
+      "interval_semantics": "point_only",
+      "suitability_class": "diagnostic_candidate_pending_oc",
+      "required_oc_artifacts": [
+        "D5-STAT-AUGSYNTH-POINT-001"
+      ],
+      "required_bridge_artifacts": [],
+      "required_implementation_fixes": [],
+      "minimum_evidence_before_diagnostic_use": "Completed D5-STAT-AUGSYNTH-POINT-001 Level B characterization archive (none exist yet)",
+      "minimum_evidence_before_suitability_claim": "Completed D5-STAT-AUGSYNTH-POINT-001 Level C calibration + interval semantics evidence (not satisfied by protocol alone)",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "oc_execution_only",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "run_d5_stat_characterization",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "SUPERGEO-AUGSYNTH-POINT",
+      "source_matrix_status": "blocked_needs_bridge",
+      "design_family": "DES-SUPERGEO-001",
+      "estimator_family": "EST-AUGSYNTH-001",
+      "inference_family": "INF-POINT-001",
+      "geometry": "supergeo_cluster",
+      "estimand": "undefined_flat_readout",
+      "effect_scale": "n/a",
+      "interval_semantics": "blocked",
+      "suitability_class": "bridge_required_before_suitability",
+      "required_oc_artifacts": [],
+      "required_bridge_artifacts": [
+        "F-GEO-003 supergeo flat readout bridge"
+      ],
+      "required_implementation_fixes": [
+        "geometry_bridge_required"
+      ],
+      "minimum_evidence_before_diagnostic_use": "blocked \u2014 no diagnostic product use until bridge/fix",
+      "minimum_evidence_before_suitability_claim": "blocked \u2014 no suitability claim",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "no_runtime_use",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "write_bridge_adr",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "TRIM-AUGSYNTH-POINT",
+      "source_matrix_status": "blocked_needs_bridge",
+      "design_family": "DES-TRIM-001",
+      "estimator_family": "EST-AUGSYNTH-001",
+      "inference_family": "INF-POINT-001",
+      "geometry": "trimmed_pair",
+      "estimand": "undefined_flat_readout",
+      "effect_scale": "n/a",
+      "interval_semantics": "blocked",
+      "suitability_class": "bridge_required_before_suitability",
+      "required_oc_artifacts": [],
+      "required_bridge_artifacts": [
+        "F-GEO-004 trimmedmatch adapter"
+      ],
+      "required_implementation_fixes": [
+        "geometry_bridge_required"
+      ],
+      "minimum_evidence_before_diagnostic_use": "blocked \u2014 no diagnostic product use until bridge/fix",
+      "minimum_evidence_before_suitability_claim": "blocked \u2014 no suitability claim",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "no_runtime_use",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "write_bridge_adr",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "TBR-AGG-KFOLD",
+      "source_matrix_status": "ready_for_oc_with_caveats",
+      "design_family": "DES-GMM-001",
+      "estimator_family": "EST-TBR-001",
+      "inference_family": "INF-KFOLD-001",
+      "geometry": "aggregate_two_row",
+      "estimand": "aggregate_ATT",
+      "effect_scale": "aggregate",
+      "interval_semantics": "diagnostic_kfold",
+      "suitability_class": "diagnostic_candidate_pending_oc",
+      "required_oc_artifacts": [
+        "D5-STAT-TBR-AGG-001"
+      ],
+      "required_bridge_artifacts": [],
+      "required_implementation_fixes": [],
+      "minimum_evidence_before_diagnostic_use": "Completed D5-STAT-TBR-AGG-001 Level B characterization archive (none exist yet)",
+      "minimum_evidence_before_suitability_claim": "Completed D5-STAT-TBR-AGG-001 Level C calibration + interval semantics evidence (not satisfied by protocol alone)",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "oc_execution_only",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "run_d5_stat_characterization",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "TBRRIDGE-PLACEBO",
+      "source_matrix_status": "blocked_before_oc",
+      "design_family": "DES-*",
+      "estimator_family": "EST-TBRRIDGE-001",
+      "inference_family": "INF-PLACEBO-001",
+      "geometry": "unit_panel_single_cell",
+      "estimand": "falsification",
+      "effect_scale": "unit_level",
+      "interval_semantics": "placebo_not_wired",
+      "suitability_class": "blocked_before_suitability",
+      "required_oc_artifacts": [],
+      "required_bridge_artifacts": [],
+      "required_implementation_fixes": [
+        "placebo_not_wired_for_TBRRidge"
+      ],
+      "minimum_evidence_before_diagnostic_use": "blocked \u2014 no diagnostic product use until bridge/fix",
+      "minimum_evidence_before_suitability_claim": "blocked \u2014 no suitability claim",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "no_runtime_use",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "wait_for_oc_evidence",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    },
+    {
+      "combination_id": "SDID-POINT",
+      "source_matrix_status": "research_only_oc",
+      "design_family": "DES-*",
+      "estimator_family": "EST-SDID-001",
+      "inference_family": "INF-POINT-001",
+      "geometry": "unit_panel_single_cell",
+      "estimand": "SDID_ATT",
+      "effect_scale": "level",
+      "interval_semantics": "point_or_runner_skip",
+      "suitability_class": "research_only",
+      "required_oc_artifacts": [
+        "D5-STAT-SMOKE-CALLABLE-001"
+      ],
+      "required_bridge_artifacts": [],
+      "required_implementation_fixes": [],
+      "minimum_evidence_before_diagnostic_use": "research characterization only \u2014 no product diagnostic claim",
+      "minimum_evidence_before_suitability_claim": "not applicable for product suitability",
+      "minimum_evidence_before_role_assignment": "Explicit TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001 charter after suitability evidence; not authorized by this artifact",
+      "current_allowed_use": "diagnostic_research_only",
+      "current_forbidden_use": [
+        "trustreport_primary_secondary_directional_role",
+        "calibration_signal_export",
+        "mmm_integration",
+        "llm_product_recommendation",
+        "production_promotion_claim",
+        "governed_uncertainty_without_oc"
+      ],
+      "next_action": "research_only",
+      "promotion_allowed": false,
+      "trust_role_allowed": false,
+      "calibration_signal_allowed": false,
+      "mmm_allowed": false,
+      "llm_recommendation_allowed": false,
+      "notes": "OC-ready from Layer 5 does not imply suitable. No TrustReport/CalibrationSignal/MMM/LLM wiring from this framework."
+    }
+  ]
+}

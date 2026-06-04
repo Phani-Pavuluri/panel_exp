@@ -246,7 +246,9 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **Layer 5:** ✅ [`METHOD_COMBINATION_VALIDATION_MATRIX_001.md`](METHOD_COMBINATION_VALIDATION_MATRIX_001.md) + [`track_d/archives/METHOD_COMBINATION_VALIDATION_MATRIX_001.json`](track_d/archives/METHOD_COMBINATION_VALIDATION_MATRIX_001.json) (regenerate: `python -m panel_exp.validation.method_combination_validation_matrix_001`).
 
-**Immediate next PR target:** **`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001`** (post-Layer-5; trust roles still paused until explicit charter).
+**Suitability framework:** ✅ [`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md`](DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md) + [`track_d/archives/DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.json`](track_d/archives/DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.json) (regenerate: `python -m panel_exp.validation.design_estimator_inference_suitability_framework_001`).
+
+**Immediate next concrete work:** **`D5-STAT-SMOKE-CALLABLE-001`** (first OC execution; no TrustReport/F-DECISION wiring until OC evidence exists).
 
 ---
 

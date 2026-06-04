@@ -607,7 +607,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** Prior audits retained as `evidence_input` only.
 
-**Next:** ✅ Layers 1–5 → **`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001`**.
+**Next:** ✅ Layers 1–5 + suitability framework → **`D5-STAT-SMOKE-CALLABLE-001`**.
 
 ---
 
@@ -665,7 +665,19 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Generator:** `python -m panel_exp.validation.method_combination_validation_matrix_001`
 
-**Next:** **`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001`**.
+**Next:** ✅ **`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001`**.
+
+---
+
+## DESIGN-ESTIMATOR-INFERENCE-SUITABILITY-FRAMEWORK-001 (2026-06-04)
+
+**Artifact:** [`docs/DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md`](DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md) · [`docs/track_d/archives/DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.json`](track_d/archives/DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.json)
+
+**Verdict:** Post-foundation suitability framework **complete** — 30 rows mapped from Layer 5 matrix; non-promotional `suitability_class` only; OC-ready ≠ suitable; `promotion_allowed` / `trust_role_allowed` / `calibration_signal_allowed` / `mmm_allowed` / `llm_recommendation_allowed` false on all rows.
+
+**Generator:** `python -m panel_exp.validation.design_estimator_inference_suitability_framework_001`
+
+**Next:** **`D5-STAT-SMOKE-CALLABLE-001`** (first OC execution — no TrustReport wiring from this artifact).
 
 ---
 
