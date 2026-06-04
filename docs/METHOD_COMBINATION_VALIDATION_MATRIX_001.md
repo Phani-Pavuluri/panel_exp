@@ -44,7 +44,8 @@ Layer 5 is the **final pre-suitability layer**. It converts Layers 1–4 into a 
 | Layer 3 — Implementation validation | ✅ |
 | Layer 4 — Statistical validation protocol | ✅ |
 | **Layer 5 — Combination matrix** | ✅ **This artifact** |
-| Suitability framework | **Next** — `DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001` |
+| Suitability framework | ✅ [`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md`](DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md) |
+| Next concrete work | **`D5-STAT-SMOKE-CALLABLE-001`** |
 
 ---
 
@@ -221,11 +222,11 @@ Regenerate: `python -m panel_exp.validation.method_combination_validation_matrix
 
 ---
 
-## 17. Next artifact: DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001
+## 17. Next concrete work: D5-STAT-SMOKE-CALLABLE-001
 
-**Post-Layer-5** framework may assign suitability hypotheses **only after** executed D5-STAT evidence and explicit program charter — still not automatic trust roles.
+**Suitability framework** complete — see [`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md`](DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md).
 
-**Inputs:** This matrix · Layer 4 protocol · D5-STAT archives (when present) · COMBO/AUDIT-010.
+**Next:** Execute smoke/schema/callability/orientation/guard tests — **not** TrustReport wiring until OC archives exist.
 
 ---
 
@@ -253,4 +254,4 @@ Regenerate: `python -m panel_exp.validation.method_combination_validation_matrix
 
 ---
 
-*METHOD-COMBINATION-VALIDATION-MATRIX-001 v1.0.0 — Layer 5 complete; suitability framework is next.*
+*METHOD-COMBINATION-VALIDATION-MATRIX-001 v1.0.0 — Layer 5 complete; D5-STAT-SMOKE-CALLABLE-001 is next.*

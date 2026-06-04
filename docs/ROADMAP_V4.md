@@ -242,7 +242,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Status:** **active** — authoritative method-foundation sequence  
 **Verdict:** **Pauses** trust-framework / method-role expansion until layers 1–5 complete (code inventory → literature → implementation → statistical OC → combination matrix). Prior synthesis and MCELL-first chains are **evidence only**, not sequencing authority.
 
-**Ordered next:** ✅ Layers 1–5 complete → **`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001`** → trust-framework integration (roles still paused per program §8).
+**Ordered next:** ✅ Layers 1–5 + suitability framework → **`D5-STAT-SMOKE-CALLABLE-001`** → further D5-STAT OC → trust-framework integration (roles still paused per program §8).
 
 **Paused:** TrustReport / F-DECISION / CalibrationSignal / MMM role expansion · default **`D5-INST-AUGSYNTH-MULTICELL-001`** (optional narrow gate test later only).
 
@@ -284,7 +284,15 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Archive:** [`track_d/archives/METHOD_COMBINATION_VALIDATION_MATRIX_001.json`](track_d/archives/METHOD_COMBINATION_VALIDATION_MATRIX_001.json)  
 **Generator:** [`panel_exp/validation/method_combination_validation_matrix_001.py`](../panel_exp/validation/method_combination_validation_matrix_001.py)  
 **Status:** **complete** — 30 combination rows; ready-for-OC / blocked / bridge queues; no suitability roles  
-**Next:** **`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001`**
+**Next:** ✅ Suitability framework complete (see below)
+
+### DESIGN-ESTIMATOR-INFERENCE-SUITABILITY-FRAMEWORK-001
+
+**Document:** [`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md`](DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md)  
+**Archive:** [`track_d/archives/DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.json`](track_d/archives/DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.json)  
+**Generator:** [`panel_exp/validation/design_estimator_inference_suitability_framework_001.py`](../panel_exp/validation/design_estimator_inference_suitability_framework_001.py)  
+**Status:** **complete** — 30 suitability rows; non-promotional classes only; forbidden flags false  
+**Next:** **`D5-STAT-SMOKE-CALLABLE-001`** (first OC execution)
 
 ### METHOD-SOUNDNESS-AND-GAP-ROADMAP-001
 
@@ -294,7 +302,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 
 **Inputs:** Track D D1–D5 · CV-001 · AUDIT-010 · foundation hardening · validation program.
 
-**Ordered next:** See **METHOD-VALIDATION-PROGRAM-001** (post-Layer-5 suitability framework).
+**Ordered next:** See **METHOD-VALIDATION-PROGRAM-001** (D5-STAT-SMOKE-CALLABLE-001).
 
 ### METHOD-SOUNDNESS-ROADMAP-REVIEW-001
 
