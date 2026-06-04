@@ -236,7 +236,9 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 | **6** | **`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001`** | Post-5 — role-ready combo map |
 | **7** | TrustReport / F-DECISION / CalibrationSignal integration | After 6 |
 
-**Immediate next PR target:** **`METHOD_CODE_INVENTORY_001`** (code discovery + doc; no behavior change).
+**Layer 1:** ✅ [`METHOD_CODE_INVENTORY_001.md`](METHOD_CODE_INVENTORY_001.md) + [`track_d/archives/METHOD_CODE_INVENTORY_001.json`](track_d/archives/METHOD_CODE_INVENTORY_001.json) (regenerate: `python -m panel_exp.validation.method_code_inventory_001`).
+
+**Immediate next PR target:** **`METHOD_LITERATURE_ALIGNMENT_001`**.
 
 ---
 

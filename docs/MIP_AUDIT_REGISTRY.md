@@ -607,7 +607,17 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** Prior audits retained as `evidence_input` only.
 
-**Next:** **`METHOD_CODE_INVENTORY_001`**.
+**Next:** ✅ **`METHOD_CODE_INVENTORY_001`** → **`METHOD_LITERATURE_ALIGNMENT_001`**.
+
+---
+
+## METHOD-CODE-INVENTORY-001 (2026-06-04)
+
+**Artifact:** [`docs/METHOD_CODE_INVENTORY_001.md`](METHOD_CODE_INVENTORY_001.md) · [`docs/track_d/archives/METHOD_CODE_INVENTORY_001.json`](track_d/archives/METHOD_CODE_INVENTORY_001.json)
+
+**Verdict:** Layer 1 **complete** — 44 code-derived items (designs, estimators, inference, orchestration). Generator: `python -m panel_exp.validation.method_code_inventory_001`.
+
+**Next:** **`METHOD_LITERATURE_ALIGNMENT_001`**.
 
 ---
 
@@ -621,7 +631,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** DL-1 P1–P6 · lane closeout · design-readout P6.
 
-**Next:** N/A for sequencing — use validation program Layer 1.
+**Next:** N/A for sequencing — use validation program.
 
 ---
 
