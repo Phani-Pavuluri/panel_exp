@@ -51,7 +51,7 @@ Layer 5 is the **final pre-suitability layer**. It converts Layers 1–4 into a 
 | TBR aggregate point Level B | ✅ [`D5_STAT_TBR_AGG_001_REPORT.md`](track_d/D5_STAT_TBR_AGG_001_REPORT.md) |
 | DID bootstrap Level B | ✅ [`D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md) |
 | MCELL per-cell Level B | ✅ [`D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) |
-| Next concrete work | **`D5-STAT-TBRRIDGE-INF-001`** |
+| Next concrete work | **`INFERENCE_READOUT_SEMANTICS_001`** |
 | Enhancement synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 
 **Deferred combinations** (pooled multi-cell, supergeo, trim, AugSynth JK/Conformal, Bayesian, TBRRidge families not yet characterized) move into enhancement lanes per [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) — not removed from matrix scope.
@@ -185,7 +185,8 @@ Recommended order (not authorization to promote):
 5. **D5-STAT-TBR-AGG-001** — aggregate 2-row only ✅  
 6. **D5-STAT-DID-BOOTSTRAP-001** — embedded bootstrap characterization ✅  
 7. **D5-STAT-MCELL-PERCELL-001** — per-cell multi-cell only ✅  
-8. **D5-STAT-TBRRIDGE-INF-001** — TBRRidge KFold/TSKFold/BRB family **(next)**  
+8. **D5-STAT-TBRRIDGE-INF-001** — TBRRidge KFold/TSKFold/BRB family ✅ (`characterization_mixed_requires_followup`)  
+9. **INFERENCE_READOUT_SEMANTICS_001** — readout contract **(next)**  
 
 JSON: `d5_stat_execution_queue` · `d5_stat_blocked_queue`.
 
@@ -231,7 +232,9 @@ Regenerate: `python -m panel_exp.validation.method_combination_validation_matrix
 
 ---
 
-## 17. Next concrete work: D5-STAT-TBRRIDGE-INF-001
+## 17. Next concrete work: INFERENCE_READOUT_SEMANTICS_001
+
+D5-STAT-TBRRIDGE-INF-001 complete — see [`D5_STAT_TBRRIDGE_INF_001_REPORT.md`](track_d/D5_STAT_TBRRIDGE_INF_001_REPORT.md). Conformal blocked on multi-treated unit panel; KFold leakage and readout-scale caveats recorded.
 
 **MCELL per-cell Level B** complete — see [`track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) (`characterization_pass_with_caveats`).
 
@@ -263,4 +266,4 @@ Regenerate: `python -m panel_exp.validation.method_combination_validation_matrix
 
 ---
 
-*METHOD-COMBINATION-VALIDATION-MATRIX-001 v1.0.0 — Layer 5 complete; D5-STAT-TBRRIDGE-INF-001 is next.*
+*METHOD-COMBINATION-VALIDATION-MATRIX-001 v1.0.1 — D5-STAT-TBRRIDGE-INF-001 complete; INFERENCE_READOUT_SEMANTICS_001 is next.*

@@ -332,7 +332,7 @@ Regenerate: `python -m panel_exp.validation.method_statistical_validation_protoc
 | `D5-STAT-DID-BOOTSTRAP-001` | ✅ Level B DID bootstrap — `characterization_mixed_requires_followup` |
 | `D5-STAT-MCELL-PERCELL-001` | ✅ Level B per-cell execution — `characterization_pass_with_caveats` |
 
-**Next execution:** `D5-STAT-TBRRIDGE-INF-001` per Layer 5 queue.
+**Next execution:** `INFERENCE_READOUT_SEMANTICS_001` (D5-STAT-TBRRIDGE-INF-001 archive: [`D5_STAT_TBRRIDGE_INF_001_results.json`](track_d/archives/D5_STAT_TBRRIDGE_INF_001_results.json)).
 
 **Protocol v2 dependency:** Future revision should consume **`INFERENCE_READOUT_SEMANTICS_001`** (interval/coverage/null targets) and **`GEOMETRY_BRIDGE_REQUIREMENTS_001`** per [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md).
 

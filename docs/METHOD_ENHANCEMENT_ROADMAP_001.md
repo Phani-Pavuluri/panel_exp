@@ -51,7 +51,7 @@ The D5-STAT queue established **what the codebase does today** under controlled 
 | **D5-STAT-DID-BOOTSTRAP-001** | Level B DID embedded bootstrap | `characterization_mixed_requires_followup` | [`D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md) |
 | **D5-STAT-MCELL-PERCELL-001** | Level B per-cell execution | `characterization_pass_with_caveats` | [`D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) |
 
-**Queue status:** Level B characterization through MCELL per-cell is **complete**. Next D5 execution remains **`D5-STAT-TBRRIDGE-INF-001`** (characterization only).
+**Queue status:** Level B characterization through **`D5-STAT-TBRRIDGE-INF-001`** is **complete** (`characterization_mixed_requires_followup`). Next planning artifact: **`INFERENCE_READOUT_SEMANTICS_001`**.
 
 ---
 
@@ -228,7 +228,8 @@ Bayesian model families · priors · likelihoods · posterior estimands · conve
 
 | Step | Artifact | Mode |
 |------|----------|------|
-| **Next D5** | **`D5-STAT-TBRRIDGE-INF-001`** | Level B characterization — **not** promotion |
+| **D5-STAT-TBRRIDGE-INF-001** | ✅ **Complete** — `characterization_mixed_requires_followup`; see [`D5_STAT_TBRRIDGE_INF_001_REPORT.md`](track_d/D5_STAT_TBRRIDGE_INF_001_REPORT.md) |
+| **Next planning** | **`INFERENCE_READOUT_SEMANTICS_001`** |
 | Constraint | No governed uncertainty claim until readout semantics proven |
 | Feeds | `TBRRIDGE_OPERATOR_CONTRACT_001` · `INFERENCE_READOUT_SEMANTICS_001` |
 
@@ -240,7 +241,7 @@ Do not skip TBRRidge characterization to begin code enhancement — it completes
 
 Recommended sequence:
 
-1. Finish **`D5-STAT-TBRRIDGE-INF-001`**
+1. Execute **`INFERENCE_READOUT_SEMANTICS_001`** (post TBRRidge INF characterization)
 2. **`INFERENCE_READOUT_SEMANTICS_001`**
 3. **`GEOMETRY_BRIDGE_REQUIREMENTS_001`**
 4. **`TBR_READOUT_SEMANTICS_001`**
@@ -308,4 +309,4 @@ This roadmap does **not**:
 
 ---
 
-*METHOD-ENHANCEMENT-ROADMAP-001 v1.0.0 — post-Level-B synthesis; D5 queue through MCELL per-cell complete; next D5 = TBRRIDGE-INF.*
+*METHOD-ENHANCEMENT-ROADMAP-001 v1.0.1 — D5-STAT-TBRRIDGE-INF-001 complete; next = INFERENCE_READOUT_SEMANTICS_001.*
