@@ -260,7 +260,9 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **Multi-cell per-cell Level B:** ✅ [`docs/track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) + [`track_d/archives/D5_STAT_MCELL_PERCELL_001_results.json`](track_d/archives/D5_STAT_MCELL_PERCELL_001_results.json) (regenerate: `python -m panel_exp.validation.track_d_d5_stat_mcell_percell_001`).
 
-**Immediate next concrete work:** **`INFERENCE_READOUT_SEMANTICS_001`** per enhancement roadmap (D5-STAT-TBRRIDGE-INF-001 complete — see [`D5_STAT_TBRRIDGE_INF_001_REPORT.md`](track_d/D5_STAT_TBRRIDGE_INF_001_REPORT.md)).
+**TBRRidge inference Level B:** ✅ [`docs/track_d/D5_STAT_TBRRIDGE_INF_001_REPORT.md`](track_d/D5_STAT_TBRRIDGE_INF_001_REPORT.md) + [`track_d/archives/D5_STAT_TBRRIDGE_INF_001_results.json`](track_d/archives/D5_STAT_TBRRIDGE_INF_001_results.json) (regenerate: `poetry run python -m panel_exp.validation.track_d_d5_stat_tbrridge_inf_001`).
+
+**Post-D5 enhancement sequence (documentation):** ✅ [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) (**Accepted**) → **`GEOMETRY_BRIDGE_REQUIREMENTS_001`** → targeted method-family fixes per [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md).
 
 **Post-Level-B synthesis:** ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) — converts D5 characterization findings into prioritized enhancement lanes (readout semantics, geometry bridges, operator contracts). **Not** promotion or suitability authorization.
 

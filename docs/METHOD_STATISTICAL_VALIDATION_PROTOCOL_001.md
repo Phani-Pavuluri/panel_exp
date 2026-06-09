@@ -332,9 +332,11 @@ Regenerate: `python -m panel_exp.validation.method_statistical_validation_protoc
 | `D5-STAT-DID-BOOTSTRAP-001` | ✅ Level B DID bootstrap — `characterization_mixed_requires_followup` |
 | `D5-STAT-MCELL-PERCELL-001` | ✅ Level B per-cell execution — `characterization_pass_with_caveats` |
 
-**Next execution:** `INFERENCE_READOUT_SEMANTICS_001` (D5-STAT-TBRRIDGE-INF-001 archive: [`D5_STAT_TBRRIDGE_INF_001_results.json`](track_d/archives/D5_STAT_TBRRIDGE_INF_001_results.json)).
+**Next execution:** `GEOMETRY_BRIDGE_REQUIREMENTS_001`.
 
-**Protocol v2 dependency:** Future revision should consume **`INFERENCE_READOUT_SEMANTICS_001`** (interval/coverage/null targets) and **`GEOMETRY_BRIDGE_REQUIREMENTS_001`** per [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md).
+**Readout semantics:** ✅ [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) (**Accepted**) — canonical effect scale, interval target, coverage target, null vs directional rules.
+
+**Protocol v2 dependency:** Future revision must use **INFERENCE_READOUT_SEMANTICS_001** for coverage/null/interval interpretation and **`GEOMETRY_BRIDGE_REQUIREMENTS_001`** for geometry gates per [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md).
 
 **Still blocked:** Trust framework auto-expansion · primary/secondary/directional roles · promotion.
 
