@@ -51,7 +51,7 @@ The D5-STAT queue established **what the codebase does today** under controlled 
 | **D5-STAT-DID-BOOTSTRAP-001** | Level B DID embedded bootstrap | `characterization_mixed_requires_followup` | [`D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md) |
 | **D5-STAT-MCELL-PERCELL-001** | Level B per-cell execution | `characterization_pass_with_caveats` | [`D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) |
 
-**Queue status:** Level B characterization through **`D5-STAT-TBRRIDGE-INF-001`** is **complete**. **`INFERENCE_READOUT_SEMANTICS_001`** is **complete** (Accepted). Next enhancement artifact: **`GEOMETRY_BRIDGE_REQUIREMENTS_001`**.
+**Queue status:** D5 Level B complete. **`INFERENCE_READOUT_SEMANTICS_001`** and **`GEOMETRY_BRIDGE_REQUIREMENTS_001`** are **complete (Accepted)**. Next enhancement artifact: **`DESIGN_OUTPUT_CONTRACT_001`**.
 
 ---
 
@@ -135,7 +135,9 @@ Standardizes:
 
 **Feeds:** SCM-JK, DID bootstrap, TBRRidge, suitability v2, protocol v2.
 
-### B. GEOMETRY_BRIDGE_REQUIREMENTS_001
+### B. GEOMETRY_BRIDGE_REQUIREMENTS_001 ✅
+
+**Status:** **Complete (Accepted)** — [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md)
 
 Define bridge requirements and blocked transitions for:
 
@@ -232,7 +234,8 @@ Bayesian model families · priors · likelihoods · posterior estimands · conve
 |------|----------|------|
 | **D5-STAT-TBRRIDGE-INF-001** | ✅ **Complete** — `characterization_mixed_requires_followup`; see [`D5_STAT_TBRRIDGE_INF_001_REPORT.md`](track_d/D5_STAT_TBRRIDGE_INF_001_REPORT.md) |
 | **INFERENCE_READOUT_SEMANTICS_001** | ✅ **Complete (Accepted)** — [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) |
-| **Next enhancement** | **`GEOMETRY_BRIDGE_REQUIREMENTS_001`** |
+| **GEOMETRY_BRIDGE_REQUIREMENTS_001** | ✅ **Complete (Accepted)** — [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) |
+| **Next enhancement** | **`DESIGN_OUTPUT_CONTRACT_001`** |
 | Constraint | No governed uncertainty claim until readout semantics proven |
 | Feeds | `TBRRIDGE_OPERATOR_CONTRACT_001` · `INFERENCE_READOUT_SEMANTICS_001` |
 
@@ -244,8 +247,8 @@ Do not skip TBRRidge characterization to begin code enhancement — it completes
 
 Recommended sequence:
 
-1. Execute **`GEOMETRY_BRIDGE_REQUIREMENTS_001`**
-2. Targeted enhancement lanes (SCM-JK stress-null, DID cumulative fix, TBR readout, TBRRidge operator contract, …)
+1. Execute **`DESIGN_OUTPUT_CONTRACT_001`**
+2. Targeted method-family fixes (TBR readout, DID cumulative fix, SCM stress-null, TBRRidge operator contract, …)
 4. **`TBR_READOUT_SEMANTICS_001`**
 5. **`TBRRIDGE_OPERATOR_CONTRACT_001`**
 6. **`TBR_SARIMAX_OPERATOR_CONTRACT_001`**
@@ -311,4 +314,4 @@ This roadmap does **not**:
 
 ---
 
-*METHOD-ENHANCEMENT-ROADMAP-001 v1.0.2 — INFERENCE_READOUT_SEMANTICS_001 complete; next = GEOMETRY_BRIDGE_REQUIREMENTS_001.*
+*METHOD-ENHANCEMENT-ROADMAP-001 v1.0.3 — GEOMETRY_BRIDGE_REQUIREMENTS_001 complete; next = DESIGN_OUTPUT_CONTRACT_001.*

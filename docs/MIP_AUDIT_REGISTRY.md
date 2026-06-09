@@ -621,7 +621,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** D5-STAT queue through **`D5-STAT-MCELL-PERCELL-001`** complete.
 
-**Next planning/enhancement:** **`GEOMETRY_BRIDGE_REQUIREMENTS_001`**. Readout semantics: [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) (**Accepted**).
+**Next planning/enhancement:** **`DESIGN_OUTPUT_CONTRACT_001`**. Geometry bridge: [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) (**Accepted**).
 
 ---
 
@@ -637,7 +637,23 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `GEOMETRY_BRIDGE_REQUIREMENTS_001` · suitability framework v2 · protocol v2 · matrix v2 · method-family enhancement lanes.
 
-**Next:** **`GEOMETRY_BRIDGE_REQUIREMENTS_001`**.
+**Next:** **`DESIGN_OUTPUT_CONTRACT_001`**.
+
+---
+
+## GEOMETRY-BRIDGE-REQUIREMENTS-001 (2026-06-09)
+
+**Artifact:** [`docs/GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md)
+
+**Status:** **`accepted_post_d5_geometry_contract`**
+
+**Verdict:** Canonical geometry types, allowed/blocked/bridge-required transitions, multi-cell/supergeo/trim rules, and D5 geometry backfill. **Documentation/governance only** — no code changes, no promotion.
+
+**Prerequisites:** [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) (**Accepted**); D5 Level B queue complete.
+
+**Feeds:** `DESIGN_OUTPUT_CONTRACT_001` · method-family enhancement lanes · suitability v2 · matrix v2 · protocol v2.
+
+**Next:** **`DESIGN_OUTPUT_CONTRACT_001`**.
 
 ---
 

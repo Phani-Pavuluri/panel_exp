@@ -51,11 +51,11 @@ Layer 5 is the **final pre-suitability layer**. It converts Layers 1–4 into a 
 | TBR aggregate point Level B | ✅ [`D5_STAT_TBR_AGG_001_REPORT.md`](track_d/D5_STAT_TBR_AGG_001_REPORT.md) |
 | DID bootstrap Level B | ✅ [`D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md) |
 | MCELL per-cell Level B | ✅ [`D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) |
-| Next concrete work | **`GEOMETRY_BRIDGE_REQUIREMENTS_001`** |
-| Readout semantics (v2 input) | ✅ [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) |
+| Next concrete work | **`DESIGN_OUTPUT_CONTRACT_001`** |
+| Geometry bridge (v2 input) | ✅ [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) |
 | Enhancement synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 
-**Matrix v2 dependency:** Future register revision must reference [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) for `effect_scale`, `interval_target`, `coverage_target`, and null/directional classification fields per combination row.
+**Matrix v2 dependency:** Future register revision must reference [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) for readout fields and [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) for `geometry_id`, `bridge_status`, and pooling/aggregation flags per combination row.
 
 ---
 
@@ -188,7 +188,8 @@ Recommended order (not authorization to promote):
 7. **D5-STAT-MCELL-PERCELL-001** — per-cell multi-cell only ✅  
 8. **D5-STAT-TBRRIDGE-INF-001** — TBRRidge KFold/TSKFold/BRB family ✅ (`characterization_mixed_requires_followup`)  
 9. **INFERENCE_READOUT_SEMANTICS_001** — readout contract ✅ **Accepted**  
-10. **GEOMETRY_BRIDGE_REQUIREMENTS_001** — geometry bridge **(next)**  
+10. **GEOMETRY_BRIDGE_REQUIREMENTS_001** — geometry bridge ✅ **Accepted**  
+11. **DESIGN_OUTPUT_CONTRACT_001** — design output contract **(next)**  
 
 JSON: `d5_stat_execution_queue` · `d5_stat_blocked_queue`.
 
@@ -234,9 +235,9 @@ Regenerate: `python -m panel_exp.validation.method_combination_validation_matrix
 
 ---
 
-## 17. Next concrete work: GEOMETRY_BRIDGE_REQUIREMENTS_001
+## 17. Next concrete work: DESIGN_OUTPUT_CONTRACT_001
 
-INFERENCE_READOUT_SEMANTICS_001 complete — [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md). Matrix v2 must reference readout semantics for interval/coverage/null interpretation.
+GEOMETRY_BRIDGE_REQUIREMENTS_001 complete — [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md). Matrix v2 must reference geometry bridge status and blocked pooling transitions.
 
 **MCELL per-cell Level B** complete — see [`track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) (`characterization_pass_with_caveats`).
 
@@ -268,4 +269,4 @@ INFERENCE_READOUT_SEMANTICS_001 complete — [`INFERENCE_READOUT_SEMANTICS_001.m
 
 ---
 
-*METHOD-COMBINATION-VALIDATION-MATRIX-001 v1.0.2 — INFERENCE_READOUT_SEMANTICS_001 accepted; GEOMETRY_BRIDGE_REQUIREMENTS_001 is next.*
+*METHOD-COMBINATION-VALIDATION-MATRIX-001 v1.0.3 — GEOMETRY_BRIDGE_REQUIREMENTS_001 accepted; DESIGN_OUTPUT_CONTRACT_001 is next.*
