@@ -262,6 +262,8 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **Immediate next concrete work:** **`D5-STAT-TBRRIDGE-INF-001`** per Layer 5 queue (no TrustReport/F-DECISION wiring until further OC evidence exists).
 
+**Post-Level-B synthesis:** ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) — converts D5 characterization findings into prioritized enhancement lanes (readout semantics, geometry bridges, operator contracts). **Not** promotion or suitability authorization.
+
 ---
 
 ## 11. Roadmap implications

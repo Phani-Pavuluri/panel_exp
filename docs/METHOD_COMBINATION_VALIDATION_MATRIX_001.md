@@ -52,6 +52,9 @@ Layer 5 is the **final pre-suitability layer**. It converts Layers 1–4 into a 
 | DID bootstrap Level B | ✅ [`D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md) |
 | MCELL per-cell Level B | ✅ [`D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) |
 | Next concrete work | **`D5-STAT-TBRRIDGE-INF-001`** |
+| Enhancement synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
+
+**Deferred combinations** (pooled multi-cell, supergeo, trim, AugSynth JK/Conformal, Bayesian, TBRRidge families not yet characterized) move into enhancement lanes per [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) — not removed from matrix scope.
 
 ---
 
