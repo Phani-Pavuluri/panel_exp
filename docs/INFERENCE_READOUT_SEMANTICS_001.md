@@ -354,8 +354,8 @@ Protocol v2 and matrix v2 generators should consume this contract; D5 v1 archive
 
 This artifact **feeds** (ordered per enhancement roadmap):
 
-1. **`GEOMETRY_BRIDGE_REQUIREMENTS_001`** — geometry compatibility gates for readout portability  
-2. **`TBR_READOUT_SEMANTICS_001`** — aggregate null decision vs point recovery  
+1. **`GEOMETRY_BRIDGE_REQUIREMENTS_001`** ✅ — geometry compatibility gates  
+2. **`DESIGN_OUTPUT_CONTRACT_001`** — design-layer geometry metadata **(next)**  
 3. **`TBRRIDGE_OPERATOR_CONTRACT_001`** — split policy, leakage, path-specific targets  
 4. **`SCM_JK_STRESS_NULL_CALIBRATION_001`** — stress-null FPR and JK target clarification  
 5. **`AUGSYNTH_INFERENCE_BRIDGE_001`** — uncertainty path after point characterization  
@@ -417,7 +417,7 @@ All current D5 **`forbidden_flags`** remain **false** until separate artifacts e
 
 | Document | Update |
 |----------|--------|
-| [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) | INFERENCE_READOUT_SEMANTICS_001 marked **complete**; next = GEOMETRY_BRIDGE_REQUIREMENTS_001 |
+| [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) | GEOMETRY_BRIDGE_REQUIREMENTS_001 **complete**; next = DESIGN_OUTPUT_CONTRACT_001 |
 | [`METHOD_VALIDATION_PROGRAM_001.md`](METHOD_VALIDATION_PROGRAM_001.md) | Post-D5 enhancement sequence updated |
 | [`ROADMAP_V4.md`](ROADMAP_V4.md) | Current status / next item adjusted |
 | [`MIP_AUDIT_REGISTRY.md`](MIP_AUDIT_REGISTRY.md) | Artifact registered |
@@ -430,4 +430,4 @@ All current D5 **`forbidden_flags`** remain **false** until separate artifacts e
 
 ---
 
-*INFERENCE-READOUT-SEMANTICS-001 v1.0.0 — Accepted post-D5 semantic contract; next enhancement = GEOMETRY_BRIDGE_REQUIREMENTS_001.*
+*INFERENCE-READOUT-SEMANTICS-001 v1.0.0 — Accepted; geometry bridge complete; next = DESIGN_OUTPUT_CONTRACT_001.*
