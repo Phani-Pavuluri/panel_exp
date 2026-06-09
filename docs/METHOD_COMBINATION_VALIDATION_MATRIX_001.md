@@ -51,10 +51,11 @@ Layer 5 is the **final pre-suitability layer**. It converts Layers 1–4 into a 
 | TBR aggregate point Level B | ✅ [`D5_STAT_TBR_AGG_001_REPORT.md`](track_d/D5_STAT_TBR_AGG_001_REPORT.md) |
 | DID bootstrap Level B | ✅ [`D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md) |
 | MCELL per-cell Level B | ✅ [`D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) |
-| Next concrete work | **`INFERENCE_READOUT_SEMANTICS_001`** |
+| Next concrete work | **`GEOMETRY_BRIDGE_REQUIREMENTS_001`** |
+| Readout semantics (v2 input) | ✅ [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) |
 | Enhancement synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 
-**Deferred combinations** (pooled multi-cell, supergeo, trim, AugSynth JK/Conformal, Bayesian, TBRRidge families not yet characterized) move into enhancement lanes per [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) — not removed from matrix scope.
+**Matrix v2 dependency:** Future register revision must reference [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) for `effect_scale`, `interval_target`, `coverage_target`, and null/directional classification fields per combination row.
 
 ---
 
@@ -186,7 +187,8 @@ Recommended order (not authorization to promote):
 6. **D5-STAT-DID-BOOTSTRAP-001** — embedded bootstrap characterization ✅  
 7. **D5-STAT-MCELL-PERCELL-001** — per-cell multi-cell only ✅  
 8. **D5-STAT-TBRRIDGE-INF-001** — TBRRidge KFold/TSKFold/BRB family ✅ (`characterization_mixed_requires_followup`)  
-9. **INFERENCE_READOUT_SEMANTICS_001** — readout contract **(next)**  
+9. **INFERENCE_READOUT_SEMANTICS_001** — readout contract ✅ **Accepted**  
+10. **GEOMETRY_BRIDGE_REQUIREMENTS_001** — geometry bridge **(next)**  
 
 JSON: `d5_stat_execution_queue` · `d5_stat_blocked_queue`.
 
@@ -232,9 +234,9 @@ Regenerate: `python -m panel_exp.validation.method_combination_validation_matrix
 
 ---
 
-## 17. Next concrete work: INFERENCE_READOUT_SEMANTICS_001
+## 17. Next concrete work: GEOMETRY_BRIDGE_REQUIREMENTS_001
 
-D5-STAT-TBRRIDGE-INF-001 complete — see [`D5_STAT_TBRRIDGE_INF_001_REPORT.md`](track_d/D5_STAT_TBRRIDGE_INF_001_REPORT.md). Conformal blocked on multi-treated unit panel; KFold leakage and readout-scale caveats recorded.
+INFERENCE_READOUT_SEMANTICS_001 complete — [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md). Matrix v2 must reference readout semantics for interval/coverage/null interpretation.
 
 **MCELL per-cell Level B** complete — see [`track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) (`characterization_pass_with_caveats`).
 
@@ -266,4 +268,4 @@ D5-STAT-TBRRIDGE-INF-001 complete — see [`D5_STAT_TBRRIDGE_INF_001_REPORT.md`]
 
 ---
 
-*METHOD-COMBINATION-VALIDATION-MATRIX-001 v1.0.1 — D5-STAT-TBRRIDGE-INF-001 complete; INFERENCE_READOUT_SEMANTICS_001 is next.*
+*METHOD-COMBINATION-VALIDATION-MATRIX-001 v1.0.2 — INFERENCE_READOUT_SEMANTICS_001 accepted; GEOMETRY_BRIDGE_REQUIREMENTS_001 is next.*

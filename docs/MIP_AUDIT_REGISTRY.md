@@ -621,7 +621,23 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** D5-STAT queue through **`D5-STAT-MCELL-PERCELL-001`** complete.
 
-**Next D5/planning:** **`INFERENCE_READOUT_SEMANTICS_001`** (D5-STAT-TBRRIDGE-INF-001 complete — [`D5_STAT_TBRRIDGE_INF_001_REPORT.md`](track_d/D5_STAT_TBRRIDGE_INF_001_REPORT.md)).
+**Next planning/enhancement:** **`GEOMETRY_BRIDGE_REQUIREMENTS_001`**. Readout semantics: [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) (**Accepted**).
+
+---
+
+## INFERENCE-READOUT-SEMANTICS-001 (2026-06-09)
+
+**Artifact:** [`docs/INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md)
+
+**Status:** **`accepted_post_d5_semantic_contract`**
+
+**Verdict:** Canonical readout semantics for effect scale, point/interval targets, coverage, null vs directional rules, and prediction vs causal uncertainty. **Documentation/governance only** — no code changes, no promotion.
+
+**Prerequisites:** D5-STAT Level B queue complete through **`D5-STAT-TBRRIDGE-INF-001`**.
+
+**Feeds:** `GEOMETRY_BRIDGE_REQUIREMENTS_001` · suitability framework v2 · protocol v2 · matrix v2 · method-family enhancement lanes.
+
+**Next:** **`GEOMETRY_BRIDGE_REQUIREMENTS_001`**.
 
 ---
 
