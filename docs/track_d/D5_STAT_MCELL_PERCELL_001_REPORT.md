@@ -97,9 +97,7 @@ No pooled multi-cell causal inference, portfolio effects, TrustReport/F-DECISION
 
 Per generated JSON `next_recommended_artifacts` and Layer 5 queue:
 
-- **`D5-STAT-TBRRIDGE-INF-001`**
-
-Post-Level-B enhancement synthesis: [`METHOD_ENHANCEMENT_ROADMAP_001.md`](../METHOD_ENHANCEMENT_ROADMAP_001.md) (lane **H** — MCELL guard hardening).
+- **`INFERENCE_READOUT_SEMANTICS_001`** (see [`D5_STAT_TBRRIDGE_INF_001_REPORT.md`](D5_STAT_TBRRIDGE_INF_001_REPORT.md))
 
 ## 17. Roadmap and audit updates checked
 

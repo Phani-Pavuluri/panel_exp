@@ -607,7 +607,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** Prior audits retained as `evidence_input` only.
 
-**Next:** ✅ Layers 1–5 + suitability + smoke + SCM+JK + AugSynth point + TBR aggregate + DID bootstrap + MCELL per-cell → **`D5-STAT-TBRRIDGE-INF-001`**.
+**Next:** ✅ Layers 1–5 + suitability + smoke + SCM+JK + AugSynth point + TBR aggregate + DID bootstrap + MCELL per-cell + **TBRRidge inference Level B**.
 
 ---
 
@@ -621,7 +621,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** D5-STAT queue through **`D5-STAT-MCELL-PERCELL-001`** complete.
 
-**Next D5:** **`D5-STAT-TBRRIDGE-INF-001`**. **Next planning:** `INFERENCE_READOUT_SEMANTICS_001` after TBRRidge characterization.
+**Next D5/planning:** **`INFERENCE_READOUT_SEMANTICS_001`** (D5-STAT-TBRRIDGE-INF-001 complete — [`D5_STAT_TBRRIDGE_INF_001_REPORT.md`](track_d/D5_STAT_TBRRIDGE_INF_001_REPORT.md)).
 
 ---
 

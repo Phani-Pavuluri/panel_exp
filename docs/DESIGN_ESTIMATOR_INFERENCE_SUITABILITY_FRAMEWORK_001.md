@@ -44,7 +44,7 @@ Define **how** design × estimator × inference × geometry × estimand combinat
 | D5-STAT TBR aggregate Level B | ✅ [`D5_STAT_TBR_AGG_001_REPORT.md`](track_d/D5_STAT_TBR_AGG_001_REPORT.md) |
 | D5-STAT DID bootstrap Level B | ✅ [`D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md) |
 | D5-STAT MCELL per-cell Level B | ✅ [`D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) |
-| D5-STAT OC execution | **Next** — `D5-STAT-TBRRIDGE-INF-001` |
+| D5-STAT OC execution | ✅ **`D5-STAT-TBRRIDGE-INF-001` complete** — next planning: `INFERENCE_READOUT_SEMANTICS_001` |
 | Post-Level-B enhancement synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 | Trust role assignment | **Blocked** — `TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001` after OC evidence |
 
@@ -212,7 +212,7 @@ Family-level quarantine (quickblock, matchedpair, legacy SCM) remains in Layer 3
 
 **MCELL per-cell Level B:** ✅ **`D5-STAT-MCELL-PERCELL-001`**.
 
-**Immediate next concrete artifact:** **`D5-STAT-TBRRIDGE-INF-001`**.
+**Immediate next concrete artifact:** **`INFERENCE_READOUT_SEMANTICS_001`**.
 
 Then (from Layer 5 matrix queue):
 
@@ -221,7 +221,8 @@ Then (from Layer 5 matrix queue):
 3. D5-STAT-TBR-AGG-001 ✅  
 4. D5-STAT-DID-BOOTSTRAP-001 ✅  
 5. D5-STAT-MCELL-PERCELL-001 ✅  
-6. D5-STAT-TBRRIDGE-INF-001 **(next)**  
+6. D5-STAT-TBRRIDGE-INF-001 ✅  
+7. INFERENCE_READOUT_SEMANTICS_001 **(next)**  
 
 Blocked queue unchanged from Layer 5 (`d5_stat_blocked_queue` in JSON).
 
@@ -262,7 +263,7 @@ Regenerate: `python -m panel_exp.validation.design_estimator_inference_suitabili
 
 **Do not** wire TrustReport or F-DECISION from this framework.
 
-**Next concrete work:** execute **`D5-STAT-TBRRIDGE-INF-001`** (MCELL per-cell Level B complete — see [`D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md)).
+**Next concrete work:** execute **`INFERENCE_READOUT_SEMANTICS_001`** (TBRRidge Level B complete — see [`D5_STAT_TBRRIDGE_INF_001_REPORT.md`](track_d/D5_STAT_TBRRIDGE_INF_001_REPORT.md)).
 
 **After OC evidence accumulates:** author **`TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001`** or targeted F-DECISION/TrustReport amendments — not before.
 
@@ -292,9 +293,9 @@ Regenerate: `python -m panel_exp.validation.design_estimator_inference_suitabili
 | Level B TBR aggregate D5-STAT-TBR-AGG-001 | ✅ |
 | Level B DID bootstrap D5-STAT-DID-BOOTSTRAP-001 | ✅ |
 | Level B MCELL per-cell D5-STAT-MCELL-PERCELL-001 | ✅ |
-| Next artifact = D5-STAT-TBRRIDGE-INF-001 | ✅ |
+| Next artifact = INFERENCE_READOUT_SEMANTICS_001 | ✅ |
 | JSON + tests | ✅ |
 
 ---
 
-*DESIGN-ESTIMATOR-INFERENCE-SUITABILITY-FRAMEWORK-001 v1.0.0 — MCELL per-cell Level B complete; begin D5-STAT-TBRRIDGE-INF-001.*
+*DESIGN-ESTIMATOR-INFERENCE-SUITABILITY-FRAMEWORK-001 v1.0.1 — D5-STAT-TBRRIDGE-INF-001 complete; next = INFERENCE_READOUT_SEMANTICS_001.*

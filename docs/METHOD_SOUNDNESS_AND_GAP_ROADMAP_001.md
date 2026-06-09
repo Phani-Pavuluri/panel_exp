@@ -386,7 +386,8 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 | **11** | **D5-STAT-TBR-AGG-001** | Level B characterization | ✅ `characterization_mixed_requires_followup` |
 | **12** | **D5-STAT-DID-BOOTSTRAP-001** | Level B characterization | ✅ `characterization_mixed_requires_followup` |
 | **13** | **D5-STAT-MCELL-PERCELL-001** | Level B per-cell execution | ✅ `characterization_pass_with_caveats` |
-| **14** | **D5-STAT-TBRRIDGE-INF-001** | Level B characterization | **Next** |
+| **14** | **D5-STAT-TBRRIDGE-INF-001** | Level B characterization | ✅ **Complete** — mixed followup |
+| **15** | **INFERENCE_READOUT_SEMANTICS_001** | Readout contract | **Next** |
 | **15** | **METHOD_ENHANCEMENT_ROADMAP_001** | Post-Level-B synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 
 **Controlling enhancement plan:** [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) — deferred families (Bayesian, TBRRidge, SARIMAX, supergeo, trim, pooled multi-cell, inference wrappers) and enhancement lanes A–L.
