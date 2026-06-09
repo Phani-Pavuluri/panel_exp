@@ -256,7 +256,9 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **TBR aggregate point Level B:** ✅ [`docs/track_d/D5_STAT_TBR_AGG_001_REPORT.md`](track_d/D5_STAT_TBR_AGG_001_REPORT.md) + [`track_d/archives/D5_STAT_TBR_AGG_001_results.json`](track_d/archives/D5_STAT_TBR_AGG_001_results.json) (regenerate: `python -m panel_exp.validation.track_d_d5_stat_tbr_agg_001`).
 
-**Immediate next concrete work:** **`D5-STAT-DID-BOOTSTRAP-001`** per Layer 5 queue (no TrustReport/F-DECISION wiring until further OC evidence exists).
+**DID bootstrap Level B:** ✅ [`docs/track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md) + [`track_d/archives/D5_STAT_DID_BOOTSTRAP_001_results.json`](track_d/archives/D5_STAT_DID_BOOTSTRAP_001_results.json) (regenerate: `python -m panel_exp.validation.track_d_d5_stat_did_bootstrap_001`).
+
+**Immediate next concrete work:** **`D5-STAT-MCELL-PERCELL-001`** per Layer 5 queue (no TrustReport/F-DECISION wiring until further OC evidence exists).
 
 ---
 

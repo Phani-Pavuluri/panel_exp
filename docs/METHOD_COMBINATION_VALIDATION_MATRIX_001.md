@@ -49,7 +49,8 @@ Layer 5 is the **final pre-suitability layer**. It converts Layers 1–4 into a 
 | SCM+JK Level B | ✅ [`D5_STAT_SCM_JK_001_REPORT.md`](track_d/D5_STAT_SCM_JK_001_REPORT.md) |
 | AugSynth point Level B | ✅ [`D5_STAT_AUGSYNTH_POINT_001_REPORT.md`](track_d/D5_STAT_AUGSYNTH_POINT_001_REPORT.md) |
 | TBR aggregate point Level B | ✅ [`D5_STAT_TBR_AGG_001_REPORT.md`](track_d/D5_STAT_TBR_AGG_001_REPORT.md) |
-| Next concrete work | **`D5-STAT-DID-BOOTSTRAP-001`** |
+| DID bootstrap Level B | ✅ [`D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md) |
+| Next concrete work | **`D5-STAT-MCELL-PERCELL-001`** |
 
 ---
 
@@ -120,7 +121,7 @@ Each matrix row includes:
 | SCM-PLACEBO | `ready_for_oc_with_caveats` | D5-STAT-SCM-PLACEBO-001 | single-treated scope |
 | AUGSYNTH-POINT | `ready_for_oc_with_caveats` | D5-STAT-AUGSYNTH-POINT-001 | G1–G8 open on estimator |
 | TBR-AGG-POINT | `ready_for_oc_with_caveats` | D5-STAT-TBR-AGG-001 ✅ | aggregate 2-row only; mixed null/shock |
-| DID-BOOTSTRAP | `ready_for_oc_with_caveats` | D5-STAT-DID-BOOTSTRAP-001 | relative CI policy open |
+| DID-BOOTSTRAP | `ready_for_oc_with_caveats` | D5-STAT-DID-BOOTSTRAP-001 ✅ | cumulative CI; 0% injected coverage |
 | MCELL-PERCELL-SCM-JK | `ready_for_oc_with_caveats` | D5-STAT-MCELL-PERCELL-001 | per-cell only |
 | TBRRIDGE-KFOLD / TSKFOLD / BRB / CONFORMAL | `ready_for_oc_with_caveats` | D5-STAT-TBRRIDGE-* | diagnostic / calibration paths |
 
@@ -178,9 +179,9 @@ Recommended order (not authorization to promote):
 3. **D5-STAT-AUGSYNTH-POINT-001** — AugSynth point recovery diagnostics  
 4. **D5-STAT-AUGSYNTH-JK-001** — blocked until IMPL-JK-001; protocol exists for future run  
 5. **D5-STAT-TBR-AGG-001** — aggregate 2-row only ✅  
-6. **D5-STAT-DID-BOOTSTRAP-001** — embedded bootstrap characterization **(next)**  
-7. **D5-STAT-TBRRIDGE-INF-001** — TBRRidge KFold/TSKFold/BRB family  
-8. **D5-STAT-MCELL-PERCELL-001** — per-cell multi-cell only  
+6. **D5-STAT-DID-BOOTSTRAP-001** — embedded bootstrap characterization ✅  
+7. **D5-STAT-MCELL-PERCELL-001** — per-cell multi-cell only **(next)**  
+8. **D5-STAT-TBRRIDGE-INF-001** — TBRRidge KFold/TSKFold/BRB family  
 
 JSON: `d5_stat_execution_queue` · `d5_stat_blocked_queue`.
 
@@ -226,11 +227,11 @@ Regenerate: `python -m panel_exp.validation.method_combination_validation_matrix
 
 ---
 
-## 17. Next concrete work: D5-STAT-DID-BOOTSTRAP-001
+## 17. Next concrete work: D5-STAT-MCELL-PERCELL-001
 
-**TBR aggregate point Level B** complete — see [`track_d/D5_STAT_TBR_AGG_001_REPORT.md`](track_d/D5_STAT_TBR_AGG_001_REPORT.md) (`characterization_mixed_requires_followup`).
+**DID bootstrap Level B** complete — see [`track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md) (`characterization_mixed_requires_followup`).
 
-**Next:** DID bootstrap characterization — **not** TrustReport wiring until OC archives exist.
+**Next:** multi-cell per-cell characterization — **not** TrustReport wiring until OC archives exist.
 
 ---
 
@@ -258,4 +259,4 @@ Regenerate: `python -m panel_exp.validation.method_combination_validation_matrix
 
 ---
 
-*METHOD-COMBINATION-VALIDATION-MATRIX-001 v1.0.0 — Layer 5 complete; D5-STAT-DID-BOOTSTRAP-001 is next.*
+*METHOD-COMBINATION-VALIDATION-MATRIX-001 v1.0.0 — Layer 5 complete; D5-STAT-MCELL-PERCELL-001 is next.*
