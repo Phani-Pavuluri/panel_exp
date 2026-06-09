@@ -100,7 +100,8 @@ No unit-panel TBR validation; no TBRRidge; no governed uncertainty; no promotion
 
 ## 20. Recommended next artifacts
 
-- **`D5-STAT-DID-BOOTSTRAP-001`**
+DID bootstrap Level B: ✅ **D5-STAT-DID-BOOTSTRAP-001**. Next:
+
 - **`D5-STAT-MCELL-PERCELL-001`**
 - **`D5-STAT-TBRRIDGE-INF-001`** (aggregate inference — separate scope; not implied by this point characterization)
 
