@@ -64,7 +64,7 @@ No claim that point characterization validates AugSynth inference.
 
 ## 19. Recommended next artifacts
 
-`D5-STAT-TBR-AGG-001`, `D5-STAT-DID-BOOTSTRAP-001`
+TBR aggregate Level B: ✅ **D5-STAT-TBR-AGG-001**. Next: **`D5-STAT-DID-BOOTSTRAP-001`**, **`D5-STAT-MCELL-PERCELL-001`**
 
 ## 20. Guardrails
 

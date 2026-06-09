@@ -213,7 +213,7 @@ Minimum combination set (JSON `combination_id`):
 | AugSynthCVXPY + JK | single_cell_unit | **blocked** | blocked | D5-STAT-AUGSYNTH-JK-001 |
 | AugSynthCVXPY + Conformal | single_cell_unit | **blocked** | blocked | D5-STAT-AUGSYNTH-CONFORMAL-001 |
 | AugSynthCVXPY + KFold | single_cell_unit | `ready_with_caveats` | characterization | D5-STAT-AUGSYNTH-KFOLD-001 |
-| TBR aggregate point | aggregate_two_row | `ready_with_caveats` | characterization | D5-STAT-TBR-AGG-001 |
+| TBR aggregate point | aggregate_two_row | `ready_with_caveats` | characterization | D5-STAT-TBR-AGG-001 ✅ |
 | TBR + JK unit panel | single_cell_unit | **blocked** | blocked | D5-STAT-TBR-UNIT-JK-001 |
 | TBRRidge + KFold / TSKFold / BRB / Conformal | single_cell_unit | mixed | characterization | D5-STAT-TBRRIDGE-* |
 | TBRRidge + JK | single_cell_unit | **blocked** (impl gap) | characterization after pivot fix | D5-STAT-TBRRIDGE-JK-001 |
@@ -328,8 +328,9 @@ Regenerate: `python -m panel_exp.validation.method_statistical_validation_protoc
 | `D5-STAT-SMOKE-CALLABLE-001` | ✅ smoke callable |
 | `D5-STAT-SCM-JK-001` | ✅ Level B — `characterization_mixed_requires_followup` |
 | `D5-STAT-AUGSYNTH-POINT-001` | ✅ Level B point — `characterization_mixed_requires_followup` |
+| `D5-STAT-TBR-AGG-001` | ✅ Level B aggregate point — `characterization_mixed_requires_followup` |
 
-**Next execution:** `D5-STAT-TBR-AGG-001` per Layer 5 queue.
+**Next execution:** `D5-STAT-DID-BOOTSTRAP-001` per Layer 5 queue.
 
 **Still blocked:** Trust framework auto-expansion · primary/secondary/directional roles · promotion.
 
