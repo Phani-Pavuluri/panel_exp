@@ -242,7 +242,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Status:** **active** — authoritative method-foundation sequence  
 **Verdict:** **Pauses** trust-framework / method-role expansion until layers 1–5 complete (code inventory → literature → implementation → statistical OC → combination matrix). Prior synthesis and MCELL-first chains are **evidence only**, not sequencing authority.
 
-**Ordered next:** ✅ Layers 1–5 + suitability + smoke + SCM+JK + AugSynth point + TBR aggregate + DID bootstrap Level B → **`D5-STAT-MCELL-PERCELL-001`** → further D5-STAT OC → trust-framework integration (roles still paused per program §8).
+**Ordered next:** ✅ Layers 1–5 + suitability + smoke + SCM+JK + AugSynth point + TBR aggregate + DID bootstrap + MCELL per-cell Level B → **`D5-STAT-TBRRIDGE-INF-001`** → further D5-STAT OC → trust-framework integration (roles still paused per program §8).
 
 **Paused:** TrustReport / F-DECISION / CalibrationSignal / MMM role expansion · default **`D5-INST-AUGSYNTH-MULTICELL-001`** (optional narrow gate test later only).
 
@@ -316,7 +316,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Archive:** [`track_d/archives/D5_STAT_AUGSYNTH_POINT_001_results.json`](track_d/archives/D5_STAT_AUGSYNTH_POINT_001_results.json)  
 **Generator:** [`panel_exp/validation/track_d_d5_stat_augsynth_point_001.py`](../panel_exp/validation/track_d_d5_stat_augsynth_point_001.py)  
 **Status:** **complete** — AugSynthCVXPY point only; `characterization_mixed_requires_followup`  
-**Next:** **`D5-STAT-MCELL-PERCELL-001`**
+**Next:** **`D5-STAT-TBRRIDGE-INF-001`**
 
 ### METHOD-SOUNDNESS-AND-GAP-ROADMAP-001
 
@@ -326,7 +326,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 
 **Inputs:** Track D D1–D5 · CV-001 · AUDIT-010 · foundation hardening · validation program.
 
-**Ordered next:** See **METHOD-VALIDATION-PROGRAM-001** (D5-STAT-MCELL-PERCELL-001).
+**Ordered next:** See **METHOD-VALIDATION-PROGRAM-001** (D5-STAT-TBRRIDGE-INF-001).
 
 ### METHOD-SOUNDNESS-ROADMAP-REVIEW-001
 

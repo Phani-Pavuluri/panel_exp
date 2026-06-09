@@ -607,7 +607,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** Prior audits retained as `evidence_input` only.
 
-**Next:** ✅ Layers 1–5 + suitability + smoke + SCM+JK + AugSynth point + TBR aggregate + DID bootstrap → **`D5-STAT-MCELL-PERCELL-001`**.
+**Next:** ✅ Layers 1–5 + suitability + smoke + SCM+JK + AugSynth point + TBR aggregate + DID bootstrap + MCELL per-cell → **`D5-STAT-TBRRIDGE-INF-001`**.
 
 ---
 
@@ -713,7 +713,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Generator:** `python -m panel_exp.validation.track_d_d5_stat_augsynth_point_001`
 
-**Next:** **`D5-STAT-MCELL-PERCELL-001`**.
+**Next:** **`D5-STAT-TBRRIDGE-INF-001`**.
 
 ---
 

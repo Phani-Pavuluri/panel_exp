@@ -43,7 +43,8 @@ Define **how** design × estimator × inference × geometry × estimand combinat
 | D5-STAT AugSynth point Level B | ✅ [`D5_STAT_AUGSYNTH_POINT_001_REPORT.md`](track_d/D5_STAT_AUGSYNTH_POINT_001_REPORT.md) |
 | D5-STAT TBR aggregate Level B | ✅ [`D5_STAT_TBR_AGG_001_REPORT.md`](track_d/D5_STAT_TBR_AGG_001_REPORT.md) |
 | D5-STAT DID bootstrap Level B | ✅ [`D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md) |
-| D5-STAT OC execution | **Next** — `D5-STAT-MCELL-PERCELL-001` |
+| D5-STAT MCELL per-cell Level B | ✅ [`D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) |
+| D5-STAT OC execution | **Next** — `D5-STAT-TBRRIDGE-INF-001` |
 | Trust role assignment | **Blocked** — `TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001` after OC evidence |
 
 ---
@@ -140,7 +141,7 @@ Protocol registers (Layers 4–5) **do not** satisfy suitability evidence.
 | SCM-JK | `suitability_candidate_pending_oc` | D5-STAT-SCM-JK-001 |
 | TBR-AGG-POINT | `suitability_candidate_pending_oc` | D5-STAT-TBR-AGG-001 ✅ Level B |
 | DID-BOOTSTRAP | `suitability_candidate_pending_oc` | D5-STAT-DID-BOOTSTRAP-001 ✅ Level B |
-| MCELL-PERCELL-SCM-JK | `suitability_candidate_pending_oc` | D5-STAT-MCELL-PERCELL-001 |
+| MCELL-PERCELL-SCM-JK | `suitability_candidate_pending_oc` | D5-STAT-MCELL-PERCELL-001 ✅ Level B |
 
 ---
 
@@ -206,7 +207,9 @@ Family-level quarantine (quickblock, matchedpair, legacy SCM) remains in Layer 3
 
 **DID bootstrap Level B:** ✅ **`D5-STAT-DID-BOOTSTRAP-001`**.
 
-**Immediate next concrete artifact:** **`D5-STAT-MCELL-PERCELL-001`**.
+**MCELL per-cell Level B:** ✅ **`D5-STAT-MCELL-PERCELL-001`**.
+
+**Immediate next concrete artifact:** **`D5-STAT-TBRRIDGE-INF-001`**.
 
 Then (from Layer 5 matrix queue):
 
@@ -214,8 +217,8 @@ Then (from Layer 5 matrix queue):
 2. D5-STAT-AUGSYNTH-POINT-001 ✅  
 3. D5-STAT-TBR-AGG-001 ✅  
 4. D5-STAT-DID-BOOTSTRAP-001 ✅  
-5. D5-STAT-MCELL-PERCELL-001 **(next)**  
-6. D5-STAT-TBRRIDGE-INF-001  
+5. D5-STAT-MCELL-PERCELL-001 ✅  
+6. D5-STAT-TBRRIDGE-INF-001 **(next)**  
 
 Blocked queue unchanged from Layer 5 (`d5_stat_blocked_queue` in JSON).
 
@@ -256,7 +259,7 @@ Regenerate: `python -m panel_exp.validation.design_estimator_inference_suitabili
 
 **Do not** wire TrustReport or F-DECISION from this framework.
 
-**Next concrete work:** execute **`D5-STAT-MCELL-PERCELL-001`** (DID bootstrap Level B complete — see [`D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md)).
+**Next concrete work:** execute **`D5-STAT-TBRRIDGE-INF-001`** (MCELL per-cell Level B complete — see [`D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md)).
 
 **After OC evidence accumulates:** author **`TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001`** or targeted F-DECISION/TrustReport amendments — not before.
 
@@ -285,9 +288,10 @@ Regenerate: `python -m panel_exp.validation.design_estimator_inference_suitabili
 | Level B AugSynth point D5-STAT-AUGSYNTH-POINT-001 | ✅ |
 | Level B TBR aggregate D5-STAT-TBR-AGG-001 | ✅ |
 | Level B DID bootstrap D5-STAT-DID-BOOTSTRAP-001 | ✅ |
-| Next artifact = D5-STAT-MCELL-PERCELL-001 | ✅ |
+| Level B MCELL per-cell D5-STAT-MCELL-PERCELL-001 | ✅ |
+| Next artifact = D5-STAT-TBRRIDGE-INF-001 | ✅ |
 | JSON + tests | ✅ |
 
 ---
 
-*DESIGN-ESTIMATOR-INFERENCE-SUITABILITY-FRAMEWORK-001 v1.0.0 — DID bootstrap Level B complete; begin D5-STAT-MCELL-PERCELL-001.*
+*DESIGN-ESTIMATOR-INFERENCE-SUITABILITY-FRAMEWORK-001 v1.0.0 — MCELL per-cell Level B complete; begin D5-STAT-TBRRIDGE-INF-001.*

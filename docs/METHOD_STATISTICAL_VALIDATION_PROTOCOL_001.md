@@ -219,7 +219,7 @@ Minimum combination set (JSON `combination_id`):
 | TBRRidge + JK | single_cell_unit | **blocked** (impl gap) | characterization after pivot fix | D5-STAT-TBRRIDGE-JK-001 |
 | TBRRidge + registry Bayesian | single_cell_unit | **blocked** (arch) | blocked | D5-STAT-TBRRIDGE-BAYESIAN-001 |
 | DID + embedded bootstrap | single_cell_unit | `ready_with_caveats` | characterization | D5-STAT-DID-BOOTSTRAP-001 ✅ |
-| multi-cell per-cell SCM+JK | multi_cell_per_cell | `ready_with_caveats` | characterization | D5-STAT-MCELL-PERCELL-001 |
+| multi-cell per-cell SCM+JK | multi_cell_per_cell | `ready_with_caveats` | characterization | D5-STAT-MCELL-PERCELL-001 ✅ |
 | pooled multi-cell AugSynth | pooled_multi_cell | **blocked** | blocked | D5-STAT-MCELL-POOLED-001 |
 | supergeo / trim + SCM+JK | bridge geometry | **blocked** | blocked | D5-STAT-*-BRIDGE-001 |
 
@@ -330,8 +330,9 @@ Regenerate: `python -m panel_exp.validation.method_statistical_validation_protoc
 | `D5-STAT-AUGSYNTH-POINT-001` | ✅ Level B point — `characterization_mixed_requires_followup` |
 | `D5-STAT-TBR-AGG-001` | ✅ Level B aggregate point — `characterization_mixed_requires_followup` |
 | `D5-STAT-DID-BOOTSTRAP-001` | ✅ Level B DID bootstrap — `characterization_mixed_requires_followup` |
+| `D5-STAT-MCELL-PERCELL-001` | ✅ Level B per-cell execution — `characterization_pass_with_caveats` |
 
-**Next execution:** `D5-STAT-MCELL-PERCELL-001` per Layer 5 queue.
+**Next execution:** `D5-STAT-TBRRIDGE-INF-001` per Layer 5 queue.
 
 **Still blocked:** Trust framework auto-expansion · primary/secondary/directional roles · promotion.
 
