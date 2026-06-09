@@ -99,6 +99,8 @@ Per generated JSON `next_recommended_artifacts` and Layer 5 queue:
 
 - **`D5-STAT-TBRRIDGE-INF-001`**
 
+Post-Level-B enhancement synthesis: [`METHOD_ENHANCEMENT_ROADMAP_001.md`](../METHOD_ENHANCEMENT_ROADMAP_001.md) (lane **H** — MCELL guard hardening).
+
 ## 17. Roadmap and audit updates checked
 
 Updated and verified:

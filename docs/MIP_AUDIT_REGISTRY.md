@@ -611,6 +611,20 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 ---
 
+## METHOD-ENHANCEMENT-ROADMAP-001 (2026-06-09)
+
+**Artifact:** [`docs/METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md)
+
+**Status:** **`post_level_b_synthesis_planning`**
+
+**Verdict:** Synthesizes D5-STAT Level B findings (smoke through MCELL per-cell) into twelve enhancement lanes (readout semantics, geometry bridges, SCM/AugSynth/TBR/DID/MCELL fixes, TBRRidge/SARIMAX/Bayesian contracts). **Not** promotion, suitability, or TrustReport wiring.
+
+**Prerequisites:** D5-STAT queue through **`D5-STAT-MCELL-PERCELL-001`** complete.
+
+**Next D5:** **`D5-STAT-TBRRIDGE-INF-001`**. **Next planning:** `INFERENCE_READOUT_SEMANTICS_001` after TBRRidge characterization.
+
+---
+
 ## METHOD-CODE-INVENTORY-001 (2026-06-04)
 
 **Artifact:** [`docs/METHOD_CODE_INVENTORY_001.md`](METHOD_CODE_INVENTORY_001.md) · [`docs/track_d/archives/METHOD_CODE_INVENTORY_001.json`](track_d/archives/METHOD_CODE_INVENTORY_001.json)

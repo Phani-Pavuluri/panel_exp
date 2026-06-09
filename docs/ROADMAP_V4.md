@@ -244,6 +244,12 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 
 **Ordered next:** ✅ Layers 1–5 + suitability + smoke + SCM+JK + AugSynth point + TBR aggregate + DID bootstrap + MCELL per-cell Level B → **`D5-STAT-TBRRIDGE-INF-001`** → further D5-STAT OC → trust-framework integration (roles still paused per program §8).
 
+### METHOD-ENHANCEMENT-ROADMAP-001 (post-Level-B synthesis)
+
+**Document:** [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md)  
+**Status:** **active planning** — converts completed D5-STAT Level B evidence into targeted enhancement lanes (readout semantics, geometry bridges, TBRRidge/SARIMAX/Bayesian contracts).  
+**Verdict:** Enhancement starts **after** D5 baseline; no method changes implied without rerun validation. Suitability v2 and TrustReport roles remain gated.
+
 **Paused:** TrustReport / F-DECISION / CalibrationSignal / MMM role expansion · default **`D5-INST-AUGSYNTH-MULTICELL-001`** (optional narrow gate test later only).
 
 ### METHOD-CODE-INVENTORY-001 (Layer 1)

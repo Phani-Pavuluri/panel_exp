@@ -45,7 +45,10 @@ Define **how** design × estimator × inference × geometry × estimand combinat
 | D5-STAT DID bootstrap Level B | ✅ [`D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md) |
 | D5-STAT MCELL per-cell Level B | ✅ [`D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) |
 | D5-STAT OC execution | **Next** — `D5-STAT-TBRRIDGE-INF-001` |
+| Post-Level-B enhancement synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 | Trust role assignment | **Blocked** — `TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001` after OC evidence |
+
+**Suitability v2 dependency:** Framework revision requires **`INFERENCE_READOUT_SEMANTICS_001`**, **`GEOMETRY_BRIDGE_REQUIREMENTS_001`**, and targeted enhancement lanes per [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md). Current register remains v1 policy-only.
 
 ---
 

@@ -334,6 +334,8 @@ Regenerate: `python -m panel_exp.validation.method_statistical_validation_protoc
 
 **Next execution:** `D5-STAT-TBRRIDGE-INF-001` per Layer 5 queue.
 
+**Protocol v2 dependency:** Future revision should consume **`INFERENCE_READOUT_SEMANTICS_001`** (interval/coverage/null targets) and **`GEOMETRY_BRIDGE_REQUIREMENTS_001`** per [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md).
+
 **Still blocked:** Trust framework auto-expansion · primary/secondary/directional roles · promotion.
 
 ---
