@@ -385,7 +385,8 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 | **10** | **D5-STAT-AUGSYNTH-POINT-001** | Level B characterization | ✅ [`docs/track_d/D5_STAT_AUGSYNTH_POINT_001_REPORT.md`](track_d/D5_STAT_AUGSYNTH_POINT_001_REPORT.md) |
 | **11** | **D5-STAT-TBR-AGG-001** | Level B characterization | ✅ `characterization_mixed_requires_followup` |
 | **12** | **D5-STAT-DID-BOOTSTRAP-001** | Level B characterization | ✅ `characterization_mixed_requires_followup` |
-| **13** | **D5-STAT-MCELL-PERCELL-001** | Level B characterization | **Next** |
+| **13** | **D5-STAT-MCELL-PERCELL-001** | Level B per-cell execution | ✅ `characterization_pass_with_caveats` |
+| **14** | **D5-STAT-TBRRIDGE-INF-001** | Level B characterization | **Next** |
 
 **DL-1 AugSynth lane:** closed — evidence retained; **not** active repo-wide lane.
 

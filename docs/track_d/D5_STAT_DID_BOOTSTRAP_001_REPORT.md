@@ -110,7 +110,8 @@ No promotion; no TrustReport/F-DECISION roles; no CalibrationSignal/MMM; no LLM 
 
 ## 20. Recommended next artifacts
 
-- **`D5-STAT-MCELL-PERCELL-001`**
+MCELL per-cell Level B: ✅ **D5-STAT-MCELL-PERCELL-001**. Next:
+
 - **`D5-STAT-TBRRIDGE-INF-001`**
 
 ## 21. Guardrails
