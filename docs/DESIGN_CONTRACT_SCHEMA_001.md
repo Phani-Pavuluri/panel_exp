@@ -717,7 +717,7 @@ Current fixture `tests/fixtures/artifact_schemas/design_evidence_v1.json` — **
 
 | Step | Artifact / work |
 |------|-----------------|
-| 1 | **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`** — Phase 2 emission spec |
+| 1 | **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`** ✅ — Phase 2 emission spec ([`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md)); **fields not emitted yet** |
 | 2 | Implement `design_contract` block in `DesignEvidence.from_assignment` |
 | 3 | Schema validator module + negative tests |
 | 4 | Golden fixture extension |
@@ -782,9 +782,9 @@ find panel_exp/design -type f
 
 ## 37. Roadmap
 
-**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`**
+**Tier-1 emission plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) ✅ **Accepted** — defines Phase 2 producer mapping for DES-001–004, DES-006, constrained DES-011. **Fields are not emitted yet; no validator; 0/31 contract-complete.**
 
-Defines Phase 2 emission from `geo_runner` / `DesignEvidence` for DES-001–006.
+**Next artifact:** **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`**
 
 ---
 
@@ -810,7 +810,8 @@ Defines Phase 2 emission from `geo_runner` / `DesignEvidence` for DES-001–006.
 
 | Document | Update |
 |----------|--------|
-| [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) | Schema Accepted; next = tier-1 emission plan |
+| [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) | Tier-1 emission plan Accepted; next = validation test plan |
+| [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) | Maps schema fields to tier-1 producers — not implemented |
 | [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md) | Phase 1 defined |
 | [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) | Schema representation |
 | [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) | Fields schema-defined, not emitted |
@@ -825,4 +826,4 @@ Defines Phase 2 emission from `geo_runner` / `DesignEvidence` for DES-001–006.
 
 ---
 
-*DESIGN-CONTRACT-SCHEMA-001 v1.0.0 — Accepted; verdict = design_contract_schema_defined_not_implemented; next = DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.*
+*DESIGN-CONTRACT-SCHEMA-001 v1.0.1 — Accepted; tier-1 emission plan defined; fields not emitted; next = DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.*

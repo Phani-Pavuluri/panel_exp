@@ -621,7 +621,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** D5-STAT queue through **`D5-STAT-MCELL-PERCELL-001`** complete.
 
-**Next planning/enhancement:** **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`** (design-side). Contract schema: [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) (**Accepted**).
+**Next planning/enhancement:** **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`** (design-side). Tier-1 emission plan: [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) (**Accepted**; not implemented).
 
 ---
 
@@ -669,7 +669,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** Future TROP audit sequence; does not change immediate enhancement queue.
 
-**Program next (unchanged):** **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`** (design-side).
+**Program next (unchanged):** **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`** (design-side).
 
 ---
 
@@ -685,7 +685,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `DESIGN_OUTPUT_CONTRACT_001` ✅ → `DESIGN_CODE_INVENTORY_001` ✅ → `DESIGN_LITERATURE_ALIGNMENT_001` ✅ → `DESIGN_IMPLEMENTATION_VALIDATION_001` ✅ → statistical protocol → combination matrix → guardrails → design suitability.
 
-**Immediate next:** **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`**.
+**Immediate next:** **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`**.
 
 ---
 
@@ -701,7 +701,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** ✅ `DESIGN_CODE_INVENTORY_001` → design validation ladder → combination matrix v2 → experiment planning (deferred).
 
-**Next:** **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`**.
+**Next:** **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`**.
 
 ---
 
@@ -845,7 +845,23 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001` → validator → runtime enforcement.
 
-**Next:** **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`** (design-side).
+**Next:** ✅ **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`**.
+
+---
+
+## DESIGN-TIER1-CONTRACT-EMISSION-PLAN-001 (2026-06-10)
+
+**Artifact:** [`docs/DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md)
+
+**Status:** **`accepted_design_tier1_contract_emission_plan`**
+
+**Verdict:** Phase 2 tier-1 geo-run emission plan for DES-001–004, DES-006, constrained DES-011. Maps schema fields to `geo_runner` / `DesignEvidence` producers. Verdict: `design_tier1_contract_emission_plan_defined_not_implemented`. **Documentation/planning only** — no code emission; no validator; no fixture regeneration; **0/31 contract-complete**; downstream **blocked**; no TrustReport/CalibrationSignal/MMM/LLM authorization.
+
+**Prerequisites:** [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) Accepted; [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md) Accepted.
+
+**Feeds:** `DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001` → tier-1 code emission → `D5-DES-STAT-*` → experiment planning.
+
+**Next:** **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`** (design-side).
 
 ---
 

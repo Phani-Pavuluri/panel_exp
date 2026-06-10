@@ -636,4 +636,6 @@ All rows: **`contract_required`** · **`not_contract_validated`** · **not suita
 
 ---
 
-*DESIGN-OUTPUT-CONTRACT-001 v1.0.9 — Schema defines machine-readable field representation; next = DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.*
+**Tier-1 emission plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) ✅ **Accepted** — maps contract fields to geo-run producer paths; **not implemented**; 0/31 contract-complete; no downstream authorization.
+
+*DESIGN-OUTPUT-CONTRACT-001 v1.1.0 — Tier-1 path emission planned; next = DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.*

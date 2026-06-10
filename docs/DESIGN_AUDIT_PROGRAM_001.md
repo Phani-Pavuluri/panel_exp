@@ -220,7 +220,13 @@ Defines implementation plan for emitting, validating, and enforcing required con
 
 Machine-readable schema specification for `design_contract` nested block. Phase 1 of enforcement plan. Verdict: `design_contract_schema_defined_not_implemented`. **Not implemented in code.**
 
-### J. Method-specific design audits (as needed)
+### J. DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001 ✅
+
+**Status:** **Accepted** — [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md)
+
+Phase 2 tier-1 geo-run emission plan for DES-001–004, DES-006, constrained DES-011. Verdict: `design_tier1_contract_emission_plan_defined_not_implemented`. **Planned only — not implemented in code; 0/31 contract-complete.**
+
+### K. Method-specific design audits (as needed)
 
 Examples: `D5-DES-SUPERGEO-001` follow-on, `D5-DES-TRIM-001` hardening, QuickBlock geo integration ADR.
 
@@ -461,7 +467,7 @@ First concrete output contract under the design audit lane. Defines **DesignOutp
 
 **Code inventory:** [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) maps current emitted fields against this contract — **no implementation is contract-complete**.
 
-**Next design audit artifact:** `DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001` — Phase 2 tier-1 geo-run contract emission plan.
+**Next design audit artifact:** `DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001` — contract validation test specification (Phase 3).
 
 ---
 
@@ -534,7 +540,8 @@ Recommended sequence:
 8. **`DESIGN_SUITABILITY_FRAMEWORK_001`** — design-side suitability ✅ **Accepted**  
 9. **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`** — enforcement planning ✅ **Accepted**  
 10. **`DESIGN_CONTRACT_SCHEMA_001`** — machine-readable schema ✅ **Accepted**  
-11. **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`** — **(next)**  
+11. **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`** — tier-1 emission plan ✅ **Accepted**  
+12. **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`** — **(next)**  
 
 Method-specific audits (supergeo, trim, QuickBlock integration) run in parallel where blocked on bridges.
 
@@ -585,4 +592,4 @@ No design promotion, suitability status, TrustReport role, CalibrationSignal eli
 
 ---
 
-*DESIGN-AUDIT-PROGRAM-001 v1.1.0 — DESIGN_CONTRACT_SCHEMA_001 accepted; next = DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.*
+*DESIGN-AUDIT-PROGRAM-001 v1.1.1 — DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001 accepted; emission not implemented; next = DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.*
