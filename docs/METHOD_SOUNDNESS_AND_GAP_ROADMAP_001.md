@@ -93,6 +93,8 @@ From `_INFERENCE_MODE_CATALOG` and D3 INF-* rows. DID native bootstrap is **esti
 
 **Conceptual gaps (from literature alignment):** G-DES-001–014 — thinning semantics ambiguous; shared-control implicit; rerandomization inference not connected; block/pair metadata absent; trim/supergeo bridges undefined; balanced vs complete randomization naming risk. See [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) §21.
 
+**Implementation blockers (from implementation validation):** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — Accepted; **0/31 contract-complete**; 4 `adapter_required`; 8 hard blocker classes (IV-DES-001–017): missing `geometry_id`, missing `forbidden_downstream_claims`, missing `concurrent_multi_experiment_compatibility`, adapter-required designs (QuickBlock, MatchedPair, TrimmedMatch, Supergeo), missing trim/supergeo metadata, missing shared-control/cell metadata, no design contract validation tests.
+
 From [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) (supersedes [`TRACK_D_DESIGN_METHOD_INVENTORY_001.md`](TRACK_D_DESIGN_METHOD_INVENTORY_001.md) for enumeration authority) and design registry.
 
 | Repo name | Code path | Compatible readouts observed | Power/MDE evidence | Geometry / estimand assumptions | Design–readout gaps | Development status |
@@ -402,7 +404,8 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 | **17** | **DESIGN_OUTPUT_CONTRACT_001** | Design output contract | ✅ Accepted |
 | **18** | **DESIGN_CODE_INVENTORY_001** | Design code inventory | ✅ Accepted — [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) |
 | **19** | **DESIGN_LITERATURE_ALIGNMENT_001** | Design literature alignment | ✅ Accepted — [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) |
-| **20** | **DESIGN_IMPLEMENTATION_VALIDATION_001** | Design implementation validation | **Next** |
+| **20** | **DESIGN_IMPLEMENTATION_VALIDATION_001** | Design implementation validation | ✅ Accepted — [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) |
+| **21** | **DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001** | Design statistical validation | **Next** |
 | **—** | **TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001** | TROP parked audit program | ✅ **Proposed** — [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) |
 | **15** | **METHOD_ENHANCEMENT_ROADMAP_001** | Post-Level-B synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 

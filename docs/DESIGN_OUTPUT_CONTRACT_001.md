@@ -521,7 +521,7 @@ This artifact is the **first concrete output contract** under [`DESIGN_AUDIT_PRO
 |---------------|-----------------|
 | **`DESIGN_CODE_INVENTORY_001`** | ✅ Maps which fields each implementation emits today vs required — [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) |
 | **`DESIGN_LITERATURE_ALIGNMENT_001`** | ✅ Align population/assignment semantics to literature — [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) |
-| **`DESIGN_IMPLEMENTATION_VALIDATION_001`** | Validate emission against §25 checks |
+| **`DESIGN_IMPLEMENTATION_VALIDATION_001`** | ✅ Validate emission against §25 checks — [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) |
 | **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`** | Assert contract completeness in simulation worlds |
 | **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** | Rows consume design output fields |
 | **`DESIGN_GUARDRAILS_001`** | Hard blockers reference forbidden claims |
@@ -610,7 +610,7 @@ All rows: **`contract_required`** · **`not_contract_validated`** · **not suita
 | Document | Update |
 |----------|--------|
 | [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) | First concrete output contract complete |
-| [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) | Literature Accepted; next = DESIGN_IMPLEMENTATION_VALIDATION_001 |
+| [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) | Literature + implementation validation Accepted; next = DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001 |
 | [`METHOD_VALIDATION_PROGRAM_001.md`](METHOD_VALIDATION_PROGRAM_001.md) | Design-output contract prerequisite |
 | [`ROADMAP_V4.md`](ROADMAP_V4.md) | State updated |
 | [`MIP_AUDIT_REGISTRY.md`](MIP_AUDIT_REGISTRY.md) | Registered |
@@ -624,6 +624,8 @@ All rows: **`contract_required`** · **`not_contract_validated`** · **not suita
 
 ---
 
-**Literature alignment:** [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) reinforces required fields for assignment, geometry, target population, block/stratum/pair IDs, trim/supergeo metadata, concurrency, balance, power/MDE, and forbidden claims — **no implementation is contract-complete**.
+**Literature alignment:** [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) reinforces required fields for assignment, geometry, target population, block/stratum/pair IDs, trim/supergeo metadata, concurrency, balance, power/MDE, and forbidden claims.
 
-*DESIGN-OUTPUT-CONTRACT-001 v1.0.2 — Literature alignment reinforces required fields; no implementation compliant; next = DESIGN_IMPLEMENTATION_VALIDATION_001.*
+**Implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) evaluated current emitted fields against this contract — **0/31 contract-complete; not implemented repo-wide**.
+
+*DESIGN-OUTPUT-CONTRACT-001 v1.0.3 — Literature alignment reinforces required fields; implementation validation evaluated emission; no implementation compliant; next = DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.*
