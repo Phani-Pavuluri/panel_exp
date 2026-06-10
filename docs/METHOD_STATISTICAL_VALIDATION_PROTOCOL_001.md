@@ -32,6 +32,8 @@ Layer 4 defines **synthetic worlds**, **metrics**, **acceptance criteria classes
 
 **Not answered here:** trust roles · promotion · suitability matrix (Layer 5).
 
+**Design methods:** Estimator/inference protocol rows do **not** substitute for design-method statistical validation. Design families require independent validation worlds per [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) → `DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001` (balance, donor pool, concurrency, trim/supergeo stress).
+
 **Wording:** Use **ready for protocol**, **blocked**, or **research-only** — never “validated,” “trusted,” or “eligible for promotion.”
 
 ---

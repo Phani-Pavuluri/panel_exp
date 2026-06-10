@@ -37,6 +37,7 @@ The D5-STAT queue established **what the codebase does today** under controlled 
 - **TBRRidge / time-series operators** — split policy, leakage, diagnostic bands
 - **TBR-SARIMAX and Auto-SARIMAX** — aggregate counterfactual operators with explicit model-selection policy
 - **Triply robust / TROP** — nuisance-model audit ladder (parked; not rejected)
+- **Design methods** — design-side audit ladder ([`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md)); estimator/inference parity incomplete until complete
 
 ---
 
@@ -222,6 +223,22 @@ Triply robust / TROP requires the **same audit rigor** as characterized estimato
 
 **Immediate program priority remains** `DESIGN_OUTPUT_CONTRACT_001` — TROP audit steps follow design/readout/geometry contracts, not implementation.
 
+### N. DESIGN_AUDIT_PROGRAM_001 ✅
+
+**Status:** **Accepted** — [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md)
+
+Design methods require the **same audit rigor** as estimator/inference families. Estimator/inference audit parity is **not complete** until the design ladder completes. **No implementation** in this artifact. Future sequence:
+
+1. `DESIGN_OUTPUT_CONTRACT_001` *(immediate next — metadata schema)*  
+2. `DESIGN_CODE_INVENTORY_001`  
+3. `DESIGN_LITERATURE_ALIGNMENT_001`  
+4. `DESIGN_IMPLEMENTATION_VALIDATION_001`  
+5. `DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`  
+6. `DESIGN_COMBINATION_VALIDATION_MATRIX_001`  
+7. `DESIGN_GUARDRAILS_001`  
+8. `DESIGN_SUITABILITY_FRAMEWORK_001`  
+9. Method-specific design audits as needed (supergeo, trim, QuickBlock integration)  
+
 ---
 
 ## 8. TBR-SARIMAX and Auto-SARIMAX positioning
@@ -329,4 +346,4 @@ This roadmap does **not**:
 
 ---
 
-*METHOD-ENHANCEMENT-ROADMAP-001 v1.0.4 — TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001 parked; next = DESIGN_OUTPUT_CONTRACT_001.*
+*METHOD-ENHANCEMENT-ROADMAP-001 v1.0.5 — DESIGN_AUDIT_PROGRAM_001 accepted; next = DESIGN_OUTPUT_CONTRACT_001.*

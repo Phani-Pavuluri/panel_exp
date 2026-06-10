@@ -673,6 +673,22 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 ---
 
+## DESIGN-AUDIT-PROGRAM-001 (2026-06-09)
+
+**Artifact:** [`docs/DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md)
+
+**Status:** **`accepted_design_audit_program`**
+
+**Verdict:** Establishes design-side audit ladder matching estimator/inference rigor. Repository discovery of 10 design implementations + helpers; concurrency/supergeo/trim guardrails. Estimator/inference audit parity **incomplete** until design ladder completes. **Documentation/governance only** — no code changes, no promotion.
+
+**Prerequisites:** Readout semantics + geometry bridge Accepted.
+
+**Feeds:** `DESIGN_OUTPUT_CONTRACT_001` → design code inventory → literature → implementation → statistical protocol → combination matrix → guardrails → design suitability.
+
+**Immediate next:** **`DESIGN_OUTPUT_CONTRACT_001`**.
+
+---
+
 ## METHOD-CODE-INVENTORY-001 (2026-06-04)
 
 **Artifact:** [`docs/METHOD_CODE_INVENTORY_001.md`](METHOD_CODE_INVENTORY_001.md) · [`docs/track_d/archives/METHOD_CODE_INVENTORY_001.json`](track_d/archives/METHOD_CODE_INVENTORY_001.json)

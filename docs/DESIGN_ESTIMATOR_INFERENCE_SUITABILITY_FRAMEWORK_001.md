@@ -50,8 +50,9 @@ Define **how** design × estimator × inference × geometry × estimand combinat
 | Next enhancement | **`DESIGN_OUTPUT_CONTRACT_001`** |
 | Post-Level-B enhancement synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 | Trust role assignment | **Blocked** — `TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001` after OC evidence |
+| Design audit program | ✅ [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) (**Accepted**) |
 
-**Suitability v2 dependency:** Requires readout semantics + geometry bridge (both ✅ Accepted), `DESIGN_OUTPUT_CONTRACT_001`, and targeted enhancement lanes. **TROP:** no current suitability status — requires [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) ladder + `TRIPLY_ROBUST_SUITABILITY_EXTENSION_001` before any row advancement.
+**Suitability v2 dependency:** Requires readout semantics + geometry bridge (both ✅ Accepted), `DESIGN_OUTPUT_CONTRACT_001`, design audit ladder ([`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md)), and targeted enhancement lanes. **Current framework is incomplete without design audit parity.** **TROP:** no current suitability status — requires [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) ladder + `TRIPLY_ROBUST_SUITABILITY_EXTENSION_001` before any row advancement.
 
 ---
 
@@ -305,4 +306,4 @@ Regenerate: `python -m panel_exp.validation.design_estimator_inference_suitabili
 
 ---
 
-*DESIGN-ESTIMATOR-INFERENCE-SUITABILITY-FRAMEWORK-001 v1.0.3 — GEOMETRY_BRIDGE_REQUIREMENTS_001 accepted; next = DESIGN_OUTPUT_CONTRACT_001.*
+*DESIGN-ESTIMATOR-INFERENCE-SUITABILITY-FRAMEWORK-001 v1.0.4 — DESIGN_AUDIT_PROGRAM_001 accepted; framework incomplete without design audit parity; next = DESIGN_OUTPUT_CONTRACT_001.*
