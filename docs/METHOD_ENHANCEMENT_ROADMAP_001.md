@@ -52,7 +52,7 @@ The D5-STAT queue established **what the codebase does today** under controlled 
 | **D5-STAT-DID-BOOTSTRAP-001** | Level B DID embedded bootstrap | `characterization_mixed_requires_followup` | [`D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md) |
 | **D5-STAT-MCELL-PERCELL-001** | Level B per-cell execution | `characterization_pass_with_caveats` | [`D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) |
 
-**Queue status:** D5 Level B complete. Design audit ladder through **contract schema** ✅ Accepted. Next enhancement artifact: **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`** (Phase 2 emission).
+**Queue status:** D5 Level B complete. Design audit ladder through **tier-1 emission plan** ✅ Accepted. Next enhancement artifact: **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`** (contract validation tests).
 
 ---
 
@@ -221,7 +221,7 @@ Triply robust / TROP requires the **same audit rigor** as characterized estimato
 5. `TRIPLY_ROBUST_SUITABILITY_EXTENSION_001`  
 6. Future D5-style characterization **only if** implementation exists under separate plan  
 
-**Immediate program priority:** `DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001` (design-side) — TROP audit steps follow design/readout/geometry/guardrail/suitability/schema contracts, not implementation.
+**Immediate program priority:** `DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001` (design-side) — tier-1 emission plan ✅; TROP audit steps follow design/readout/geometry/guardrail/suitability/schema contracts, not implementation.
 
 ### N. DESIGN_AUDIT_PROGRAM_001 ✅
 
@@ -239,8 +239,9 @@ Design methods require the **same audit rigor** as estimator/inference families.
 8. `DESIGN_SUITABILITY_FRAMEWORK_001` ✅ **Accepted** — [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)  
 9. `DESIGN_CONTRACT_ENFORCEMENT_PLAN_001` ✅ **Accepted** — [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md)  
 10. `DESIGN_CONTRACT_SCHEMA_001` ✅ **Accepted** — [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md)  
-11. `DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001` *(next)*  
-11. Method-specific design audits as needed (supergeo, trim, QuickBlock integration)
+11. `DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001` ✅ **Accepted** — [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md)  
+12. `DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001` *(next)*  
+13. Method-specific design audits as needed (supergeo, trim, QuickBlock integration)
 
 ---
 
@@ -280,7 +281,8 @@ Design methods require the **same audit rigor** as estimator/inference families.
 | **DESIGN_SUITABILITY_FRAMEWORK_001** | ✅ **Complete (Accepted)** — [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md) |
 | **DESIGN_CONTRACT_ENFORCEMENT_PLAN_001** | ✅ **Complete (Accepted)** — [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md) |
 | **DESIGN_CONTRACT_SCHEMA_001** | ✅ **Complete (Accepted)** — [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) |
-| **Next enhancement** | **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`** |
+| **DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001** | ✅ **Complete (Accepted)** — [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) |
+| **Next enhancement** | **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`** |
 | Constraint | No governed uncertainty claim until readout semantics proven |
 | Feeds | `TBRRIDGE_OPERATOR_CONTRACT_001` · `INFERENCE_READOUT_SEMANTICS_001` |
 
@@ -292,7 +294,7 @@ Do not skip TBRRidge characterization to begin code enhancement — it completes
 
 Recommended sequence:
 
-1. Execute **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`** (design-side)
+1. Execute **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`** then tier-1 code emission (design-side)
 2. Targeted method-family fixes (TBR readout, DID cumulative fix, SCM stress-null, TBRRidge operator contract, …)
 4. **`TBR_READOUT_SEMANTICS_001`**
 5. **`TBRRIDGE_OPERATOR_CONTRACT_001`**
@@ -359,4 +361,4 @@ This roadmap does **not**:
 
 ---
 
-*METHOD-ENHANCEMENT-ROADMAP-001 v1.1.6 — DESIGN_CONTRACT_SCHEMA_001 accepted; next = DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.*
+*METHOD-ENHANCEMENT-ROADMAP-001 v1.1.7 — DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001 accepted; emission not implemented; next = DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.*

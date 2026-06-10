@@ -528,7 +528,9 @@ Documented for later — **not in scope here:**
 
 **Schema:** [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) ✅ **Accepted** — contract fields are **schema-defined but still not emitted** in code (0/31 contract-complete unchanged).
 
-**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`**.
+**Tier-1 emission plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) ✅ **Accepted** — **tier-1 gaps (IV-DES-001–016) mapped to emission plan**; **implementation verdict unchanged** (0/31 contract-complete; no fields emitted).
+
+**Next artifact:** **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`**.
 
 Guardrails: [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) ✅ **Accepted** — consumes hard blockers from §25.
 
@@ -570,4 +572,4 @@ Guardrails: [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) ✅ **Accepte
 
 ---
 
-*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.0.6 — Accepted; schema-defined fields not emitted; next = DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.*
+*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.0.7 — Accepted; tier-1 gaps mapped to emission plan; verdict unchanged; next = DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.*

@@ -212,7 +212,7 @@ From [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATIO
 |-------|------|--------|-------------|
 | **0** | Docs/planning only | ✅ **Current** | This artifact |
 | **1** | Contract schema definition | ✅ **Specified** | [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) — **not implemented in code** |
-| **2** | Tier-1 geo-run emission | `emission_required` | `geometry_id`, forbidden claims, concurrency, identity |
+| **2** | Tier-1 geo-run emission | ✅ **Planned** | [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) — **not implemented** |
 | **3** | Validation tests | `test_required` | Negative + family-conditional tests |
 | **4** | Adapter plans | `adapter_required` | QuickBlock, MatchedPair, Trim, Supergeo |
 | **5** | Bridge metadata | `bridge_required` | Trim/supergeo/pooled/multi-cell bridge fields |
@@ -241,6 +241,8 @@ Future code deliverable must:
 ---
 
 ## 13. Phase 2: tier-1 emission plan
+
+**Emission plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) ✅ **Accepted** — Phase 2 defined; **code emission not implemented**; 0/31 contract-complete; downstream **blocked**.
 
 Target: DES-001–006 via `geo_runner` → `DesignEvidence` / `ExperimentEvidence`.
 
@@ -504,7 +506,8 @@ Aligns with [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) universal rul
 | Item | Status |
 |------|--------|
 | Enforcement plan | ✅ Defined (this artifact) |
-| Contract schema | ❌ Not implemented |
+| Contract schema | ✅ Defined ([`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md)); not emitted |
+| Tier-1 emission plan | ✅ Defined ([`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md)); not implemented |
 | Field emission | ❌ Not implemented |
 | Contract validation tests | ❌ Not implemented |
 | Adapters | ❌ Not implemented |
@@ -517,9 +520,9 @@ Aligns with [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) universal rul
 
 ## 30. Relationship to future enforcement artifacts
 
-**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`** — Phase 2 tier-1 emission.
+**Tier-1 emission plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) ✅ **Accepted** — Phase 2 planned; **not implemented**.
 
-Schema ✅ [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) — must precede runtime enforcement.
+Schema ✅ [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md). **Next:** **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`**.
 
 **Follow-on:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** — runtime PASS/WARN/BLOCK wiring in `geo_runner`, validators, planning orchestrator (per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §27).
 
@@ -547,7 +550,7 @@ This artifact does **not** implement enforcement, validate designs, authorize ca
 | Verdict | `design_contract_enforcement_plan_defined_not_implemented` |
 | Phase | **0** (planning only) |
 | Contract-complete designs | **0 / 31** |
-| Next implementation artifact | `DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001` |
+| Next implementation artifact | `DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001` then code emission |
 
 ### Search methodology (2026-06-10)
 
@@ -567,9 +570,11 @@ find tests -iname "*design*" -o -iname "*evidence*" -o -iname "*contract*" -o -i
 
 ## 33. Roadmap
 
-**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`**
+**Tier-1 emission:** [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) ✅ Phase 2 planned — **not implemented**.
 
-Schema ✅ Phase 1. Then: tier-1 emission (Phase 2) · validation tests (Phase 3) · adapters (Phase 4) · `DESIGN_GUARDRAIL_ENFORCEMENT_001`.
+**Next artifact:** **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`**
+
+Then: code emission · validation tests (Phase 3) · adapters (Phase 4) · `DESIGN_GUARDRAIL_ENFORCEMENT_001`.
 
 ---
 
@@ -593,7 +598,8 @@ Schema ✅ Phase 1. Then: tier-1 emission (Phase 2) · validation tests (Phase 3
 
 | Document | Update |
 |----------|--------|
-| [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) | Enforcement plan Accepted; next = schema |
+| [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) | Tier-1 emission plan Accepted; next = validation test plan |
+| [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) | Phase 2 defined; not implemented |
 | [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) | Plan defines implementation phases |
 | [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) | Blockers routed to enforcement plan |
 | [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) | Plan prerequisite for runtime enforcement |
@@ -608,4 +614,4 @@ Schema ✅ Phase 1. Then: tier-1 emission (Phase 2) · validation tests (Phase 3
 
 ---
 
-*DESIGN-CONTRACT-ENFORCEMENT-PLAN-001 v1.0.1 — Accepted; Phase 1 schema defined by DESIGN_CONTRACT_SCHEMA_001; next = DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.*
+*DESIGN-CONTRACT-ENFORCEMENT-PLAN-001 v1.0.2 — Accepted; Phase 2 tier-1 emission plan defined; not implemented; next = DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.*

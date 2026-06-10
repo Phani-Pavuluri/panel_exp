@@ -57,7 +57,8 @@ Experiment planning orchestration artifacts are **blocked** until **all** prereq
 | **`DESIGN_SUITABILITY_FRAMEWORK_001`** | ✅ Accepted — [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md) |
 | **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`** | ✅ Accepted — [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md) |
 | **`DESIGN_CONTRACT_SCHEMA_001`** | ✅ Accepted — [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) |
-| **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`** | Not started — **next** |
+| **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`** | ✅ Accepted — [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md); **not implemented** |
+| **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`** | Not started — **next** |
 | [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) | ✅ Accepted |
 | [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) | ✅ Accepted |
 | Estimator/inference method-specific fixes | Partial — D5 Level B complete; enhancement lanes open |
@@ -200,7 +201,7 @@ Must define:
 | LLM experiment-planning orchestration | **Blocked** |
 | TrustReport / CalibrationSignal / MMM calibration from recommendations | **Blocked** |
 
-**Immediate program priority (unchanged):** design audit ladder — **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`** next.
+**Immediate program priority (unchanged):** design audit ladder — tier-1 emission **planned**; **experiment planning cannot consume tier-1 outputs until emission is implemented and validation tests pass.**
 
 ---
 

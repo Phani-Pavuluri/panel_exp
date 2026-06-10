@@ -504,7 +504,9 @@ Until enforcement lands, consumers must apply this document manually or via futu
 
 **Schema:** [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) ✅ **Accepted** — **future guardrail runtime enforcement should consume this schema** for field validation.
 
-**Next artifact:** `DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`.
+**Tier-1 emission plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) ✅ **Accepted** — **runtime guardrails still wait on emission + validation tests**; verdicts unchanged; 0 downstream PASS.
+
+**Next artifact:** `DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`.
 
 ---
 
@@ -548,9 +550,9 @@ find docs -iname "*GUARDRAIL*" -o -iname "*COMBINATION*" -o -iname "*SUITABILITY
 
 ## 31. Roadmap
 
-**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`**
+**Next artifact:** **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`**
 
-Enforcement plan ✅ [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md) · Suitability framework ✅ [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md).
+Schema ✅ · Tier-1 emission plan ✅ · Enforcement plan ✅ · Suitability framework ✅.
 
 ---
 
@@ -588,4 +590,4 @@ Enforcement plan ✅ [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT
 
 ---
 
-*DESIGN-GUARDRAILS-001 v1.0.3 — Accepted; verdict unchanged; future enforcement consumes schema; next = DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.*
+*DESIGN-GUARDRAILS-001 v1.0.4 — Accepted; runtime guardrails wait on emission + validation tests; next = DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.*
