@@ -48,9 +48,11 @@ This artifact is the **authoritative design-side code inventory** for GeoX/panel
 | [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) | Requires mapping current emissions to required schema |
 | Suitability / combination matrix v2 | Must reference inventory IDs, not ad hoc design names |
 
-Future **implementation validation**, **statistical validation**, **combination matrix**, **guardrails**, and **design suitability** depend on this inventory.
+Future **statistical validation**, **combination matrix**, **guardrails**, and **design suitability** depend on this inventory.
 
-**Literature alignment:** [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) ✅ **Accepted** — consumed all DES-001–DES-031 rows; **no design validated**.
+**Literature alignment:** [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) ✅ **Accepted** — consumed all DES-001–DES-031 rows for conceptual/literature alignment; **no design validated**.
+
+**Implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) ✅ **Accepted** — consumed all DES-001–DES-031 rows for implementation behavior and contract coverage; **0 contract-complete designs**.
 
 ---
 
@@ -457,7 +459,7 @@ Suitability framework must use **inventory_id** (DES-*) or registry key from thi
 | Helpers / output / governance rows | 21 |
 | Contract-complete implementations | **0** |
 | Geo-run supported | 5 |
-| Next audit artifact | **DESIGN_IMPLEMENTATION_VALIDATION_001** |
+| Next audit artifact | **DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001** |
 
 **Not claimed:** production-ready, validated, governed, suitable, TrustReport-eligible, CalibrationSignal-eligible, MMM-ready, LLM-ready.
 
@@ -497,4 +499,4 @@ Suitability framework must use **inventory_id** (DES-*) or registry key from thi
 
 ---
 
-*DESIGN-CODE-INVENTORY-001 v1.0.1 — Literature alignment consumed inventory rows; no design validated; next = DESIGN_IMPLEMENTATION_VALIDATION_001.*
+*DESIGN-CODE-INVENTORY-001 v1.0.2 — Literature alignment + implementation validation consumed inventory; 0 contract-complete; next = DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.*
