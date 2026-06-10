@@ -211,7 +211,7 @@ From [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATIO
 | Phase | Name | Status | Deliverable |
 |-------|------|--------|-------------|
 | **0** | Docs/planning only | ✅ **Current** | This artifact |
-| **1** | Contract schema definition | `schema_required` | `DESIGN_CONTRACT_SCHEMA_001` |
+| **1** | Contract schema definition | ✅ **Specified** | [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) — **not implemented in code** |
 | **2** | Tier-1 geo-run emission | `emission_required` | `geometry_id`, forbidden claims, concurrency, identity |
 | **3** | Validation tests | `test_required` | Negative + family-conditional tests |
 | **4** | Adapter plans | `adapter_required` | QuickBlock, MatchedPair, Trim, Supergeo |
@@ -226,9 +226,9 @@ From [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATIO
 
 ## 12. Phase 1: contract schema definition
 
-**Future artifact:** **`DESIGN_CONTRACT_SCHEMA_001`**
+**Schema artifact:** **`DESIGN_CONTRACT_SCHEMA_001`** ✅ **Accepted** — [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) defines Phase 1 schema specification. **Implementation does not exist.**
 
-Must deliver:
+Future code deliverable must:
 
 - Machine-readable schema (JSON Schema and/or typed dataclass spec) for `DesignOutputContract` nested block  
 - Field required/conditional rules per design family  
@@ -517,7 +517,9 @@ Aligns with [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) universal rul
 
 ## 30. Relationship to future enforcement artifacts
 
-**Next artifact:** **`DESIGN_CONTRACT_SCHEMA_001`** — machine-readable schema must precede runtime enforcement.
+**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`** — Phase 2 tier-1 emission.
+
+Schema ✅ [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) — must precede runtime enforcement.
 
 **Follow-on:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** — runtime PASS/WARN/BLOCK wiring in `geo_runner`, validators, planning orchestrator (per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §27).
 
@@ -545,7 +547,7 @@ This artifact does **not** implement enforcement, validate designs, authorize ca
 | Verdict | `design_contract_enforcement_plan_defined_not_implemented` |
 | Phase | **0** (planning only) |
 | Contract-complete designs | **0 / 31** |
-| Next implementation artifact | `DESIGN_CONTRACT_SCHEMA_001` |
+| Next implementation artifact | `DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001` |
 
 ### Search methodology (2026-06-10)
 
@@ -565,9 +567,9 @@ find tests -iname "*design*" -o -iname "*evidence*" -o -iname "*contract*" -o -i
 
 ## 33. Roadmap
 
-**Next artifact:** **`DESIGN_CONTRACT_SCHEMA_001`**
+**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`**
 
-Then: tier-1 emission (Phase 2) · validation tests (Phase 3) · adapters (Phase 4) · `DESIGN_GUARDRAIL_ENFORCEMENT_001`.
+Schema ✅ Phase 1. Then: tier-1 emission (Phase 2) · validation tests (Phase 3) · adapters (Phase 4) · `DESIGN_GUARDRAIL_ENFORCEMENT_001`.
 
 ---
 
@@ -606,4 +608,4 @@ Then: tier-1 emission (Phase 2) · validation tests (Phase 3) · adapters (Phase
 
 ---
 
-*DESIGN-CONTRACT-ENFORCEMENT-PLAN-001 v1.0.0 — Accepted; verdict = design_contract_enforcement_plan_defined_not_implemented; next = DESIGN_CONTRACT_SCHEMA_001.*
+*DESIGN-CONTRACT-ENFORCEMENT-PLAN-001 v1.0.1 — Accepted; Phase 1 schema defined by DESIGN_CONTRACT_SCHEMA_001; next = DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.*

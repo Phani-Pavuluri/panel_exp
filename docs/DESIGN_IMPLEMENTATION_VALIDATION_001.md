@@ -526,7 +526,9 @@ Documented for later — **not in scope here:**
 
 **Enforcement plan:** [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md) ✅ **Accepted** — **current implementation blockers (§24–§25) are routed into phased enforcement** (IV-DES-001–016 → Phases 2–4).
 
-**Next artifact:** **`DESIGN_CONTRACT_SCHEMA_001`**.
+**Schema:** [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) ✅ **Accepted** — contract fields are **schema-defined but still not emitted** in code (0/31 contract-complete unchanged).
+
+**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`**.
 
 Guardrails: [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) ✅ **Accepted** — consumes hard blockers from §25.
 
@@ -568,4 +570,4 @@ Guardrails: [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) ✅ **Accepte
 
 ---
 
-*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.0.5 — Accepted; blockers routed to enforcement plan; next = DESIGN_CONTRACT_SCHEMA_001.*
+*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.0.6 — Accepted; schema-defined fields not emitted; next = DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.*

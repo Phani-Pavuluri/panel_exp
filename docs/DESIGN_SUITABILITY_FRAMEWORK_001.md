@@ -499,7 +499,8 @@ Future `EXPERIMENT_RECOMMENDATION_CONTRACT_001` and `DESIGN_CANDIDATE_RANKING_PO
 Governance sequence after this artifact:
 
 1. **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`** ✅ **Accepted** — [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md)  
-2. **`DESIGN_CONTRACT_SCHEMA_001`** *(next)* — machine-readable schema  
+2. **`DESIGN_CONTRACT_SCHEMA_001`** ✅ **Accepted** — [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) — **necessary but insufficient** for positive suitability  
+3. **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`** *(next)* — Phase 2 emission  
 3. **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** *(follow-on)* — runtime enforcement per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §27  
 
 Schema and emission precede runtime guardrail wiring.
@@ -550,7 +551,7 @@ find docs -iname "*SUITABILITY*" -o -iname "*GUARDRAIL*" -o -iname "*COMBINATION
 
 **Enforcement plan:** [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md) ✅ **Accepted** — **positive suitability requires contract enforcement implementation** (Phases 1–3 minimum). All designs remain `contract_blocked` until emission + validation land.
 
-**Next artifact:** **`DESIGN_CONTRACT_SCHEMA_001`**
+**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`**
 
 Then: tier-1 emission · `DESIGN_GUARDRAIL_ENFORCEMENT_001` · `D5-DES-STAT-*` · experiment planning.
 
@@ -592,4 +593,4 @@ Then: tier-1 emission · `DESIGN_GUARDRAIL_ENFORCEMENT_001` · `D5-DES-STAT-*` �
 
 ---
 
-*DESIGN-SUITABILITY-FRAMEWORK-001 v1.0.1 — Accepted; positive suitability requires enforcement implementation; next = DESIGN_CONTRACT_SCHEMA_001.*
+*DESIGN-SUITABILITY-FRAMEWORK-001 v1.0.2 — Accepted; schema necessary but insufficient; next = DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.*

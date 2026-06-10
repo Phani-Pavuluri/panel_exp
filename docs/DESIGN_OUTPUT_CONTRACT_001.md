@@ -526,7 +526,8 @@ This artifact is the **first concrete output contract** under [`DESIGN_AUDIT_PRO
 | **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** | ✅ Rows consume design output fields — [`DESIGN_COMBINATION_VALIDATION_MATRIX_001.md`](DESIGN_COMBINATION_VALIDATION_MATRIX_001.md) |
 | **`DESIGN_GUARDRAILS_001`** | ✅ Hard blockers reference forbidden claims — [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md); **missing required contract fields are BLOCK conditions** per §12 |
 | **`DESIGN_SUITABILITY_FRAMEWORK_001`** | ✅ Suitability requires contract completeness — [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md) |
-| **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`** | ✅ **Defines implementation phases** for contract field emission and validation — [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md) |
+| **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`** | ✅ **Defines implementation phases** — [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md) |
+| **`DESIGN_CONTRACT_SCHEMA_001`** | ✅ **Defines schema representation** of contract fields — [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) |
 
 **Enforcement plan note:** [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md) sequences schema → tier-1 emission → validation tests → adapters → bridge metadata → runtime enforcement. **No field in this contract is enforced in code until those phases complete.**
 
@@ -635,4 +636,4 @@ All rows: **`contract_required`** · **`not_contract_validated`** · **not suita
 
 ---
 
-*DESIGN-OUTPUT-CONTRACT-001 v1.0.8 — Enforcement plan defines implementation phases; next = DESIGN_CONTRACT_SCHEMA_001.*
+*DESIGN-OUTPUT-CONTRACT-001 v1.0.9 — Schema defines machine-readable field representation; next = DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.*
