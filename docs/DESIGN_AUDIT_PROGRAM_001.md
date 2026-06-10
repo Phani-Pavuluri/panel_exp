@@ -202,9 +202,11 @@ Allowed / blocked / deferred / bridge-required combinations across design × geo
 
 Converts contract blockers, implementation gaps, statistical protocol eligibility, and combination matrix statuses into PASS/WARN/BLOCK policy. Verdict: `design_guardrails_defined_no_downstream_pass`. **0 downstream PASS.**
 
-### G. DESIGN_SUITABILITY_FRAMEWORK_001
+### G. DESIGN_SUITABILITY_FRAMEWORK_001 ✅
 
-Classify each design into role categories (`blocked`, `research_only`, `characterization_candidate`, `bridge_required`, `not_applicable`, future suitability candidate).
+**Status:** **Accepted** — [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)
+
+Classify each design into suitability categories (`contract_blocked`, `stat_validation_required`, `adapter_required`, `bridge_required`, `planning_only`, `blocked`, …). Consumes guardrails + combination matrix. Verdict: `design_suitability_framework_defined_no_downstream_suitable_designs`. **0 downstream suitable designs.**
 
 ### H. Method-specific design audits (as needed)
 
@@ -447,7 +449,7 @@ First concrete output contract under the design audit lane. Defines **DesignOutp
 
 **Code inventory:** [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) maps current emitted fields against this contract — **no implementation is contract-complete**.
 
-**Later design audit artifact:** `DESIGN_SUITABILITY_FRAMEWORK_001` (next) — consumes guardrails + combination matrix + executed `D5-DES-STAT-*` outcomes.
+**Next design audit artifact:** `DESIGN_CONTRACT_ENFORCEMENT_PLAN_001` — contract field emission and validation planning in code.
 
 ---
 
@@ -517,7 +519,8 @@ Recommended sequence:
 5. **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`** — statistical protocol ✅ **Accepted**
 6. **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** — design × geometry × estimator × inference × readout ✅ **Accepted**  
 7. **`DESIGN_GUARDRAILS_001`** — PASS/WARN/BLOCK policy ✅ **Accepted**  
-8. **`DESIGN_SUITABILITY_FRAMEWORK_001`** — **(next)**  
+8. **`DESIGN_SUITABILITY_FRAMEWORK_001`** — design-side suitability ✅ **Accepted**  
+9. **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`** — **(next)**  
 
 Method-specific audits (supergeo, trim, QuickBlock integration) run in parallel where blocked on bridges.
 
@@ -568,4 +571,4 @@ No design promotion, suitability status, TrustReport role, CalibrationSignal eli
 
 ---
 
-*DESIGN-AUDIT-PROGRAM-001 v1.0.7 — DESIGN_GUARDRAILS_001 accepted; next = DESIGN_SUITABILITY_FRAMEWORK_001.*
+*DESIGN-AUDIT-PROGRAM-001 v1.0.8 — DESIGN_SUITABILITY_FRAMEWORK_001 accepted; next = DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.*

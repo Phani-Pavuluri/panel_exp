@@ -490,15 +490,17 @@ Until enforcement lands, consumers must apply this document manually or via futu
 
 ## 28. Relationship to design suitability
 
-**Next artifact:** [`DESIGN_SUITABILITY_FRAMEWORK_001`](DESIGN_SUITABILITY_FRAMEWORK_001.md) (design-side; distinct from estimator-focused [`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md`](DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md)).
+**Suitability framework:** [`DESIGN_SUITABILITY_FRAMEWORK_001`](DESIGN_SUITABILITY_FRAMEWORK_001.md) ✅ **Accepted** (design-side; distinct from estimator-focused [`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md`](DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md)).
 
-Suitability framework will:
+**This suitability framework consumes guardrail decisions** (PASS/WARN/BLOCK/REQUIRES_*) and maps them to design-side suitability categories. Guardrail verdicts in this artifact are **unchanged** — suitability does not weaken BLOCK or REQUIRES_* decisions.
 
-1. Consume guardrail decisions (PASS/WARN/BLOCK/REQUIRES_*)  
-2. Map to role categories (`blocked`, `research_only`, `characterization_candidate`, `bridge_required`, …)  
-3. Only assign suitability after guardrails satisfied + executed statistical validation  
+1. Suitability consumes guardrail decisions  
+2. Maps to categories (`contract_blocked`, `stat_validation_required`, `adapter_required`, `bridge_required`, `planning_only`, `blocked`, …)  
+3. Only assigns positive categories after guardrails satisfied + executed statistical validation  
 
-**No suitability row may advance on BLOCK or unresolved REQUIRES_* status.**
+**No suitability row may advance on BLOCK or unresolved REQUIRES_* status.** Verdict: `design_suitability_framework_defined_no_downstream_suitable_designs`.
+
+**Next artifact:** `DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`.
 
 ---
 
@@ -542,9 +544,9 @@ find docs -iname "*GUARDRAIL*" -o -iname "*COMBINATION*" -o -iname "*SUITABILITY
 
 ## 31. Roadmap
 
-**Next artifact:** **`DESIGN_SUITABILITY_FRAMEWORK_001`**
+**Next artifact:** **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`**
 
-Consumes guardrails + combination matrix + executed `D5-DES-STAT-*` outcomes.
+Suitability framework ✅ [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md) consumes guardrails + combination matrix.
 
 ---
 
@@ -582,4 +584,4 @@ Consumes guardrails + combination matrix + executed `D5-DES-STAT-*` outcomes.
 
 ---
 
-*DESIGN-GUARDRAILS-001 v1.0.0 — Accepted; verdict = design_guardrails_defined_no_downstream_pass; next = DESIGN_SUITABILITY_FRAMEWORK_001.*
+*DESIGN-GUARDRAILS-001 v1.0.1 — Accepted; verdict unchanged; suitability framework consumes guardrails; next = DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.*

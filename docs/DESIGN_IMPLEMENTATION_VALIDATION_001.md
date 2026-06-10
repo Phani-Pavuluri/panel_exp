@@ -522,7 +522,9 @@ Documented for later — **not in scope here:**
 
 **Statistical validation protocol:** [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) — **Accepted**; derived from observed implementation statuses, contract blockers, and adapter-required scopes in this artifact (§9–§25). **Does not change implementation verdicts.**
 
-**Next artifact:** **`DESIGN_SUITABILITY_FRAMEWORK_001`**.
+**Suitability:** [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md) ✅ **Accepted** — **current implementation blockers (§25) prevent downstream-ready suitability**; 0 contract-complete designs → universal `contract_blocked`.
+
+**Next artifact:** **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`**.
 
 Guardrails: [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) ✅ **Accepted** — consumes hard blockers from §25.
 
@@ -564,4 +566,4 @@ Guardrails: [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) ✅ **Accepte
 
 ---
 
-*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.0.3 — Accepted; hard blockers feed DESIGN_GUARDRAILS_001; next = DESIGN_SUITABILITY_FRAMEWORK_001.*
+*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.0.4 — Accepted; blockers prevent downstream-ready suitability; next = DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.*

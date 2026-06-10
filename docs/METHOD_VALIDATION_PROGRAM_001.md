@@ -264,7 +264,7 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **TBRRidge inference Level B:** ✅ [`docs/track_d/D5_STAT_TBRRIDGE_INF_001_REPORT.md`](track_d/D5_STAT_TBRRIDGE_INF_001_REPORT.md) + [`track_d/archives/D5_STAT_TBRRIDGE_INF_001_results.json`](track_d/archives/D5_STAT_TBRRIDGE_INF_001_results.json) (regenerate: `poetry run python -m panel_exp.validation.track_d_d5_stat_tbrridge_inf_001`).
 
-**Post-D5 enhancement sequence (documentation):** ✅ readout semantics · ✅ geometry bridge · ✅ design output contract · ✅ design code inventory · ✅ **design literature alignment** · ✅ **design implementation validation** · ✅ **design statistical validation protocol** · ✅ **design combination matrix** · ✅ **design guardrails** → **`DESIGN_SUITABILITY_FRAMEWORK_001`** (design-side) → targeted method-family fixes.
+**Post-D5 enhancement sequence (documentation):** ✅ readout semantics · ✅ geometry bridge · ✅ design output contract · ✅ design code inventory · ✅ **design literature alignment** · ✅ **design implementation validation** · ✅ **design statistical validation protocol** · ✅ **design combination matrix** · ✅ **design guardrails** · ✅ **design suitability framework** → **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`** (design-side) → targeted method-family fixes.
 
 **Design literature alignment:** [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) — **Accepted**; prerequisite for design implementation validation and statistical protocol worlds.
 
@@ -278,7 +278,7 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **Deferred estimator audit track (parked, not rejected):** [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) — TROP audit ladder follows design-output contract; **no TROP implementation** in program scope.
 
-**Design audit track:** [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) — Accepted; inventory ✅ · literature ✅ · implementation validation ✅ · statistical protocol ✅ · combination matrix ✅ · guardrails ✅; next = **`DESIGN_SUITABILITY_FRAMEWORK_001`**. **Design guardrails are a prerequisite for suitability** per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md).
+**Design audit track:** [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) — Accepted; inventory ✅ · literature ✅ · implementation validation ✅ · statistical protocol ✅ · combination matrix ✅ · guardrails ✅ · **suitability framework** ✅; next = **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`**. **Suitability framework is the governance layer after guardrails** per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md) — 0 downstream suitable designs.
 
 **Post-Level-B synthesis:** ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) — converts D5 characterization findings into prioritized enhancement lanes (readout semantics, geometry bridges, operator contracts). **Not** promotion or suitability authorization.
 
