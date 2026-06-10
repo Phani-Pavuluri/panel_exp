@@ -523,11 +523,11 @@ This artifact is the **first concrete output contract** under [`DESIGN_AUDIT_PRO
 | **`DESIGN_LITERATURE_ALIGNMENT_001`** | ✅ Align population/assignment semantics to literature — [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) |
 | **`DESIGN_IMPLEMENTATION_VALIDATION_001`** | ✅ Validate emission against §25 checks — [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) |
 | **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`** | ✅ Assert contract completeness or scoped BLOCK in simulation worlds — [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) |
-| **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** | Rows consume design output fields |
-| **`DESIGN_GUARDRAILS_001`** | Hard blockers reference forbidden claims |
-| **`DESIGN_SUITABILITY_FRAMEWORK_001`** | Suitability requires contract PASS + audit evidence |
+| **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** | ✅ Rows consume design output fields — [`DESIGN_COMBINATION_VALIDATION_MATRIX_001.md`](DESIGN_COMBINATION_VALIDATION_MATRIX_001.md) |
+| **`DESIGN_GUARDRAILS_001`** | ✅ Hard blockers reference forbidden claims — [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md); **missing required contract fields are BLOCK conditions** per §12 |
+| **`DESIGN_SUITABILITY_FRAMEWORK_001`** | Suitability requires contract PASS + guardrails satisfied + audit evidence |
 
-Later design audit artifacts remain **pending** until implemented and Accepted.
+**Guardrail note:** Any missing required field in §25 maps to **BLOCK** in [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §12 — not WARN. Partial optional fields may WARN only.
 
 ---
 
@@ -632,4 +632,4 @@ All rows: **`contract_required`** · **`not_contract_validated`** · **not suita
 
 ---
 
-*DESIGN-OUTPUT-CONTRACT-001 v1.0.4 — Statistical validation requires contract completeness or scoped BLOCK; no implementation compliant; next = DESIGN_COMBINATION_VALIDATION_MATRIX_001.*
+*DESIGN-OUTPUT-CONTRACT-001 v1.0.6 — Missing required fields = BLOCK per DESIGN_GUARDRAILS_001; no implementation compliant; next = DESIGN_SUITABILITY_FRAMEWORK_001.*

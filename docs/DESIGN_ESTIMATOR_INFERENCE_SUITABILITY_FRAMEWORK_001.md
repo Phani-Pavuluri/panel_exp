@@ -52,12 +52,14 @@ Define **how** design × estimator × inference × geometry × estimand combinat
 | Post-D5 design literature alignment | ✅ [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) (**Accepted**) |
 | Post-D5 design implementation validation | ✅ [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) (**Accepted**) |
 | Post-D5 design statistical validation protocol | ✅ [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) (**Accepted**) |
-| Next enhancement | **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** |
+| Design combination matrix | ✅ [`DESIGN_COMBINATION_VALIDATION_MATRIX_001.md`](DESIGN_COMBINATION_VALIDATION_MATRIX_001.md) |
+| Design guardrails | ✅ [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) |
+| Next enhancement | **`DESIGN_SUITABILITY_FRAMEWORK_001`** |
 | Post-Level-B enhancement synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 | Trust role assignment | **Blocked** — `TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001` after OC evidence |
 | Design audit program | ✅ [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) (**Accepted**) |
 
-**Suitability v2 dependency:** Requires readout semantics + geometry bridge + **design output contract** + **design code inventory** + **design literature alignment** + **design implementation validation** + **design statistical validation protocol** (all ✅ Accepted), **executed design statistical validation** (`D5-DES-STAT-*` archives) + **combination matrix** + **guardrails** before suitability rows may advance. **Suitability remains blocked until actual design statistical validation is executed** per [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) — protocol definition alone does not authorize suitability. **Implementation validation alone does not authorize suitability.** **Design names in suitability rows must match inventory IDs in [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) (DES-001–DES-031).** **Current framework is incomplete without design audit parity.**
+**Suitability v2 dependency:** Requires readout semantics + geometry bridge + **design output contract** + **design code inventory** + **design literature alignment** + **design implementation validation** + **design statistical validation protocol** + **design combination matrix** + **design guardrails** (all ✅ Accepted), **executed design statistical validation** (`D5-DES-STAT-*` archives) before suitability rows may advance. **Suitability remains blocked until guardrails are satisfied** per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) — 0 downstream PASS at authoring. **Suitability remains blocked until actual design statistical validation is executed** per [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) — protocol definition alone does not authorize suitability. **Implementation validation alone does not authorize suitability.** **Design names in suitability rows must match inventory IDs in [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) (DES-001–DES-031).** **Current framework is incomplete without design audit parity.**
 
 ---
 

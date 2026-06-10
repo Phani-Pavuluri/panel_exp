@@ -571,9 +571,9 @@ Protocol marks **bridge-required** transitions as `blocked_until_geometry_bridge
 
 ## 33. Roadmap
 
-**Next artifact:** **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** — design × geometry × estimator × inference × readout rows must consume this protocol's eligibility statuses and future `D5-DES-STAT-*` outcomes.
+**Guardrails:** [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) ✅ **Accepted** — **blocks governed use until execution artifacts produce acceptable validation outcomes**; `protocol_defined_not_executed` → REQUIRES_STATISTICAL_VALIDATION.
 
-Then: `DESIGN_GUARDRAILS_001` → `DESIGN_SUITABILITY_FRAMEWORK_001`.
+**Next artifact:** **`DESIGN_SUITABILITY_FRAMEWORK_001`** — consumes guardrails + future `D5-DES-STAT-*` outcomes.
 
 ---
 
@@ -639,4 +639,4 @@ poetry run python -c "from panel_exp.design.registry import geo_run_design_suppo
 
 ---
 
-*DESIGN-STATISTICAL-VALIDATION-PROTOCOL-001 v1.0.0 — Accepted; verdict = design_statistical_validation_protocol_defined_not_executed; next = DESIGN_COMBINATION_VALIDATION_MATRIX_001.*
+*DESIGN-STATISTICAL-VALIDATION-PROTOCOL-001 v1.0.2 — Accepted; guardrails block until D5-DES-STAT-* outcomes; next = DESIGN_SUITABILITY_FRAMEWORK_001.*

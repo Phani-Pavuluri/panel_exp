@@ -190,17 +190,17 @@ Compare implementation behavior to intended semantics and required metadata emis
 
 Define simulation worlds, diagnostics, metrics, and pass/warn/block rules for design quality (§12). Verdict: `design_statistical_validation_protocol_defined_not_executed`. **0 designs statistically validated.**
 
-### E. DESIGN_COMBINATION_VALIDATION_MATRIX_001
+### E. DESIGN_COMBINATION_VALIDATION_MATRIX_001 ✅
 
-Allowed / blocked / deferred / bridge-required combinations across:
+**Status:** **Accepted** — [`DESIGN_COMBINATION_VALIDATION_MATRIX_001.md`](DESIGN_COMBINATION_VALIDATION_MATRIX_001.md)
 
-- design × geometry × estimator × inference × readout × concurrent multi-experiment mode  
+Allowed / blocked / deferred / bridge-required combinations across design × geometry × estimator × inference × readout × concurrent multi-experiment mode. Verdict: `design_combination_matrix_defined_no_combinations_promoted`. **0 combinations promoted.**
 
-Supersedes estimator-only combination planning for suitability v2.
+### F. DESIGN_GUARDRAILS_001 ✅
 
-### F. DESIGN_GUARDRAILS_001
+**Status:** **Accepted** — [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md)
 
-Hard blockers and forbidden downstream claims (§20).
+Converts contract blockers, implementation gaps, statistical protocol eligibility, and combination matrix statuses into PASS/WARN/BLOCK policy. Verdict: `design_guardrails_defined_no_downstream_pass`. **0 downstream PASS.**
 
 ### G. DESIGN_SUITABILITY_FRAMEWORK_001
 
@@ -447,7 +447,7 @@ First concrete output contract under the design audit lane. Defines **DesignOutp
 
 **Code inventory:** [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) maps current emitted fields against this contract — **no implementation is contract-complete**.
 
-**Later design audit artifacts remain pending:** `DESIGN_COMBINATION_VALIDATION_MATRIX_001` (next) → guardrails → suitability framework.
+**Later design audit artifact:** `DESIGN_SUITABILITY_FRAMEWORK_001` (next) — consumes guardrails + combination matrix + executed `D5-DES-STAT-*` outcomes.
 
 ---
 
@@ -515,9 +515,9 @@ Recommended sequence:
 3. **`DESIGN_LITERATURE_ALIGNMENT_001`** — literature alignment ✅ **Accepted**  
 4. **`DESIGN_IMPLEMENTATION_VALIDATION_001`** — implementation validation ✅ **Accepted**
 5. **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`** — statistical protocol ✅ **Accepted**
-6. **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** — **(next)** — design × geometry × estimator × inference × readout  
-7. **`DESIGN_GUARDRAILS_001`**  
-8. **`DESIGN_SUITABILITY_FRAMEWORK_001`**  
+6. **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** — design × geometry × estimator × inference × readout ✅ **Accepted**  
+7. **`DESIGN_GUARDRAILS_001`** — PASS/WARN/BLOCK policy ✅ **Accepted**  
+8. **`DESIGN_SUITABILITY_FRAMEWORK_001`** — **(next)**  
 
 Method-specific audits (supergeo, trim, QuickBlock integration) run in parallel where blocked on bridges.
 
@@ -568,4 +568,4 @@ No design promotion, suitability status, TrustReport role, CalibrationSignal eli
 
 ---
 
-*DESIGN-AUDIT-PROGRAM-001 v1.0.5 — DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001 accepted; next = DESIGN_COMBINATION_VALIDATION_MATRIX_001.*
+*DESIGN-AUDIT-PROGRAM-001 v1.0.7 — DESIGN_GUARDRAILS_001 accepted; next = DESIGN_SUITABILITY_FRAMEWORK_001.*

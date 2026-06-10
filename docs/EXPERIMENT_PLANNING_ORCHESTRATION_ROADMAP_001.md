@@ -52,9 +52,9 @@ Experiment planning orchestration artifacts are **blocked** until **all** prereq
 | [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) | ✅ Accepted |
 | [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) | ✅ Accepted |
 | [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) | ✅ Accepted — protocol only; **D5-DES-STAT-* execution blocked** |
-| **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** | Not started — **next** |
-| **`DESIGN_GUARDRAILS_001`** | Not started |
-| **`DESIGN_SUITABILITY_FRAMEWORK_001`** | Not started |
+| **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** | ✅ Accepted — [`DESIGN_COMBINATION_VALIDATION_MATRIX_001.md`](DESIGN_COMBINATION_VALIDATION_MATRIX_001.md) |
+| **`DESIGN_GUARDRAILS_001`** | ✅ Accepted — [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) |
+| **`DESIGN_SUITABILITY_FRAMEWORK_001`** | Not started — **next** |
 | [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) | ✅ Accepted |
 | [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) | ✅ Accepted |
 | Estimator/inference method-specific fixes | Partial — D5 Level B complete; enhancement lanes open |
@@ -197,7 +197,7 @@ Must define:
 | LLM experiment-planning orchestration | **Blocked** |
 | TrustReport / CalibrationSignal / MMM calibration from recommendations | **Blocked** |
 
-**Immediate program priority (unchanged):** design audit ladder — **`DESIGN_CODE_INVENTORY_001`** next.
+**Immediate program priority (unchanged):** design audit ladder — **`DESIGN_SUITABILITY_FRAMEWORK_001`** next.
 
 ---
 
@@ -206,6 +206,8 @@ Must define:
 | Artifact | Relationship |
 |----------|--------------|
 | [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) | Design candidates must come from audited, metadata-complete designs |
+| [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) | **Future experiment planning must filter candidates through design guardrails** — BLOCK rows excluded first; LLM may explain but not override |
+| [`DESIGN_COMBINATION_VALIDATION_MATRIX_001.md`](DESIGN_COMBINATION_VALIDATION_MATRIX_001.md) | Combination statuses feed guardrail evaluation |
 | [`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md`](DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md) | Suitability v2 feeds eligibility evaluation |
 | [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) | Bridge-required combinations cannot be recommended without bridge |
 | [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) | Readout targets must match recommended package |
