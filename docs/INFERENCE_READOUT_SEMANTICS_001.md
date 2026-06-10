@@ -281,10 +281,12 @@ TBR aggregate D5: high directional FPR under null despite good injected recovery
 - Forecast target separated from causal target (`TBR_SARIMAX_OPERATOR_CONTRACT_001`).
 - Auto-selection uncertainty recorded; forecast intervals **`forecast_interval_only`**.
 
-### H. Future Bayesian
+### I. Future triply robust / TROP
 
-- Posterior interval target named (`BAYESIAN_METHOD_SPECIFICATION_001`).
-- Prior/likelihood/model sensitivity recorded; credible interval **≠** causal interval by default.
+- **Parked** — [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md); not rejected.
+- Influence-function, sandwich, or cross-fitted doubly/triply robust intervals require **explicit `interval_target`** and **nuisance-model assumptions**.
+- Default classification: `causal_interval_candidate_requires_validation` or `resampling_interval_target_ambiguous` until TROP validation protocol passes.
+- **No causal interval claim** without validation; null decision and directional signal remain separate.
 
 ---
 

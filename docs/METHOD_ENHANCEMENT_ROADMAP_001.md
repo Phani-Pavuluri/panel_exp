@@ -36,7 +36,7 @@ The D5-STAT queue established **what the codebase does today** under controlled 
 - **Bayesian methods** — prior/likelihood/posterior contracts (deferred, not rejected)
 - **TBRRidge / time-series operators** — split policy, leakage, diagnostic bands
 - **TBR-SARIMAX and Auto-SARIMAX** — aggregate counterfactual operators with explicit model-selection policy
-- **Suitability rerun** — framework v2 only after readout and geometry contracts exist
+- **Triply robust / TROP** — nuisance-model audit ladder (parked; not rejected)
 
 ---
 
@@ -207,6 +207,21 @@ Safe auto-selection: candidate grid · AIC/BIC policy · no post-period leakage 
 
 Bayesian model families · priors · likelihoods · posterior estimands · convergence · PPC · sensitivity · calibration semantics
 
+### M. TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001 ✅
+
+**Status:** **Proposed (parked)** — [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md)
+
+Triply robust / TROP requires the **same audit rigor** as characterized estimator families. **No implementation** in this artifact. Future sequence:
+
+1. `TRIPLY_ROBUST_LITERATURE_ALIGNMENT_001`  
+2. `TRIPLY_ROBUST_IMPLEMENTATION_GAP_ANALYSIS_001`  
+3. `TRIPLY_ROBUST_STATISTICAL_VALIDATION_PROTOCOL_001`  
+4. `TRIPLY_ROBUST_COMBINATION_MATRIX_001`  
+5. `TRIPLY_ROBUST_SUITABILITY_EXTENSION_001`  
+6. Future D5-style characterization **only if** implementation exists under separate plan  
+
+**Immediate program priority remains** `DESIGN_OUTPUT_CONTRACT_001` — TROP audit steps follow design/readout/geometry contracts, not implementation.
+
 ---
 
 ## 8. TBR-SARIMAX and Auto-SARIMAX positioning
@@ -314,4 +329,4 @@ This roadmap does **not**:
 
 ---
 
-*METHOD-ENHANCEMENT-ROADMAP-001 v1.0.3 — GEOMETRY_BRIDGE_REQUIREMENTS_001 complete; next = DESIGN_OUTPUT_CONTRACT_001.*
+*METHOD-ENHANCEMENT-ROADMAP-001 v1.0.4 — TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001 parked; next = DESIGN_OUTPUT_CONTRACT_001.*

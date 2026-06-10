@@ -336,7 +336,7 @@ Regenerate: `python -m panel_exp.validation.method_statistical_validation_protoc
 
 **Geometry bridge:** ✅ [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) (**Accepted**) — canonical geometry IDs, bridge/blocked transitions, required metadata.
 
-**Protocol v2 dependency:** Future revision must use **INFERENCE_READOUT_SEMANTICS_001** for coverage/null/interval interpretation and **GEOMETRY_BRIDGE_REQUIREMENTS_001** for geometry declarations, bridge checks, and pooling flags per [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md).
+**Protocol v2 dependency:** Readout + geometry declarations per enhancement roadmap. **TROP:** requires **`TRIPLY_ROBUST_STATISTICAL_VALIDATION_PROTOCOL_001`** with nuisance-model correctness worlds — not covered by current Layer 4 protocol rows alone.
 
 **Still blocked:** Trust framework auto-expansion · primary/secondary/directional roles · promotion.
 
