@@ -482,7 +482,9 @@ Documented for later — **not in scope here:**
 ## 29. Relationship to combination matrix and suitability
 
 - [`METHOD_COMBINATION_VALIDATION_MATRIX_001.md`](METHOD_COMBINATION_VALIDATION_MATRIX_001.md) v2 rows must include **implementation validation status**, not design names alone  
-- [`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md`](DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md): suitability requires implementation validation pass **and** statistical validation **and** guardrails  
+- [`DESIGN_COMBINATION_VALIDATION_MATRIX_001.md`](DESIGN_COMBINATION_VALIDATION_MATRIX_001.md) consumes implementation statuses for DCM rows  
+- [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md): **hard implementation blockers (§25) feed design guardrails** — IV-DES-001–016 map to BLOCK / REQUIRES_ADAPTER  
+- [`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md`](DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md): suitability requires implementation validation pass **and** statistical validation **and** guardrails satisfied  
 - Combinations with missing contract fields or `adapter_required` status remain **blocked**  
 
 ---
@@ -520,9 +522,9 @@ Documented for later — **not in scope here:**
 
 **Statistical validation protocol:** [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) — **Accepted**; derived from observed implementation statuses, contract blockers, and adapter-required scopes in this artifact (§9–§25). **Does not change implementation verdicts.**
 
-**Next artifact:** **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`**.
+**Next artifact:** **`DESIGN_SUITABILITY_FRAMEWORK_001`**.
 
-Then: design combination matrix v2 · guardrails · design suitability framework.
+Guardrails: [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) ✅ **Accepted** — consumes hard blockers from §25.
 
 ---
 
@@ -562,4 +564,4 @@ Then: design combination matrix v2 · guardrails · design suitability framework
 
 ---
 
-*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.0.1 — Accepted; verdict unchanged; statistical protocol derived from impl statuses; next = DESIGN_COMBINATION_VALIDATION_MATRIX_001.*
+*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.0.3 — Accepted; hard blockers feed DESIGN_GUARDRAILS_001; next = DESIGN_SUITABILITY_FRAMEWORK_001.*

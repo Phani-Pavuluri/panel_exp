@@ -408,7 +408,9 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 | **19** | **DESIGN_LITERATURE_ALIGNMENT_001** | Design literature alignment | ✅ Accepted — [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) |
 | **20** | **DESIGN_IMPLEMENTATION_VALIDATION_001** | Design implementation validation | ✅ Accepted — [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) |
 | **21** | **DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001** | Design statistical validation | ✅ Accepted — [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) |
-| **22** | **DESIGN_COMBINATION_VALIDATION_MATRIX_001** | Design combination matrix | **Next** |
+| **22** | **DESIGN_COMBINATION_VALIDATION_MATRIX_001** | Design combination matrix | ✅ Accepted — [`DESIGN_COMBINATION_VALIDATION_MATRIX_001.md`](DESIGN_COMBINATION_VALIDATION_MATRIX_001.md) |
+| **23** | **DESIGN_GUARDRAILS_001** | Design guardrails | ✅ Accepted — [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) |
+| **24** | **DESIGN_SUITABILITY_FRAMEWORK_001** | Design suitability | **Next** |
 | **—** | **TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001** | TROP parked audit program | ✅ **Proposed** — [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) |
 | **15** | **METHOD_ENHANCEMENT_ROADMAP_001** | Post-Level-B synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 
@@ -421,6 +423,21 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 **Paused:** **`D5-INST-AUGSYNTH-MULTICELL-001`** as default next step · TrustReport/F-DECISION/CalibrationSignal/MMM role expansion · LLM layer · promotion audits.
 
 **Explicitly not next:** Ad-hoc combo OC without Layer 3–4 coverage · MCELL as method-suitability proof.
+
+### Unresolved design guardrail blockers (DESIGN_GUARDRAILS_001)
+
+Per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) — **0 downstream PASS** at authoring:
+
+| Blocker class | Guardrail | Affected |
+|---------------|-----------|----------|
+| Missing `geometry_id` / contract envelope | **BLOCK** | All geo designs (IV-DES-001–003) |
+| Adapter-required outputs | **REQUIRES_ADAPTER** → **BLOCK** | QuickBlock, MatchedPair, TrimmedMatch, Supergeo |
+| Trim/supergeo population transitions | **REQUIRES_BRIDGE** | DES-005, 009, 010 |
+| Pooled multi-cell claims | **BLOCK** | DES-011 / DCM-007 |
+| Statistical validation not executed | **REQUIRES_STATISTICAL_VALIDATION** | All 31 designs |
+| Future Bayesian / TROP / SARIMAX | **DEFERRED** → **BLOCK** | DCM-017–019 |
+
+**Next:** `DESIGN_SUITABILITY_FRAMEWORK_001` after guardrails satisfied + `D5-DES-STAT-*` execution.
 
 ---
 

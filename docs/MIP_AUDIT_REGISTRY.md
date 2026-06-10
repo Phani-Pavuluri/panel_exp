@@ -621,7 +621,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** D5-STAT queue through **`D5-STAT-MCELL-PERCELL-001`** complete.
 
-**Next planning/enhancement:** **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** (design-side). Statistical validation protocol: [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) (**Accepted**).
+**Next planning/enhancement:** **`DESIGN_SUITABILITY_FRAMEWORK_001`** (design-side). Design guardrails: [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) (**Accepted**).
 
 ---
 
@@ -669,7 +669,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** Future TROP audit sequence; does not change immediate enhancement queue.
 
-**Program next (unchanged):** **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** (design-side).
+**Program next (unchanged):** **`DESIGN_SUITABILITY_FRAMEWORK_001`** (design-side).
 
 ---
 
@@ -685,7 +685,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `DESIGN_OUTPUT_CONTRACT_001` ✅ → `DESIGN_CODE_INVENTORY_001` ✅ → `DESIGN_LITERATURE_ALIGNMENT_001` ✅ → `DESIGN_IMPLEMENTATION_VALIDATION_001` ✅ → statistical protocol → combination matrix → guardrails → design suitability.
 
-**Immediate next:** **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`**.
+**Immediate next:** **`DESIGN_SUITABILITY_FRAMEWORK_001`**.
 
 ---
 
@@ -701,7 +701,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** ✅ `DESIGN_CODE_INVENTORY_001` → design validation ladder → combination matrix v2 → experiment planning (deferred).
 
-**Next:** **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`**.
+**Next:** **`DESIGN_SUITABILITY_FRAMEWORK_001`**.
 
 ---
 
@@ -765,7 +765,39 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `DESIGN_COMBINATION_VALIDATION_MATRIX_001` → guardrails → design suitability.
 
-**Next:** **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** (design-side).
+**Next:** ✅ **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`**.
+
+---
+
+## DESIGN-COMBINATION-VALIDATION-MATRIX-001 (2026-06-10)
+
+**Artifact:** [`docs/DESIGN_COMBINATION_VALIDATION_MATRIX_001.md`](DESIGN_COMBINATION_VALIDATION_MATRIX_001.md)
+
+**Status:** **`accepted_design_combination_validation_matrix`**
+
+**Verdict:** Defines design × geometry × estimator × inference × readout combination statuses and D-COMB-* reason codes for DES-001–DES-031. **0 combinations promoted.** Verdict: `design_combination_matrix_defined_no_combinations_promoted`. **Documentation/governance only**.
+
+**Prerequisites:** [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) Accepted; [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) Accepted.
+
+**Feeds:** `DESIGN_GUARDRAILS_001` → design suitability.
+
+**Next:** ✅ **`DESIGN_GUARDRAILS_001`**.
+
+---
+
+## DESIGN-GUARDRAILS-001 (2026-06-10)
+
+**Artifact:** [`docs/DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md)
+
+**Status:** **`accepted_design_guardrails`**
+
+**Verdict:** Converts design audit ladder, contract blockers, implementation gaps, statistical protocol eligibility, and combination matrix statuses into PASS/WARN/BLOCK governance policy. **0 downstream PASS.** Verdict: `design_guardrails_defined_no_downstream_pass`. **Documentation/governance only** — no runtime enforcement.
+
+**Prerequisites:** [`DESIGN_COMBINATION_VALIDATION_MATRIX_001.md`](DESIGN_COMBINATION_VALIDATION_MATRIX_001.md) Accepted; [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) Accepted.
+
+**Feeds:** `DESIGN_SUITABILITY_FRAMEWORK_001` → experiment planning filters.
+
+**Next:** **`DESIGN_SUITABILITY_FRAMEWORK_001`** (design-side).
 
 ---
 
