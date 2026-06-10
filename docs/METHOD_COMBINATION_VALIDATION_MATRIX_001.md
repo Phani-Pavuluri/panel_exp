@@ -31,7 +31,7 @@ Layer 5 is the **final pre-suitability layer**. It converts Layers 1–4 into a 
 
 **Not answered here:** primary/secondary/directional roles · TrustReport eligibility · production readiness.
 
-**Design audit gap:** Current matrix rows (30) cover estimator/inference combinations with **reference designs** only. Future matrix v2 must become **design × estimator × inference × geometry × readout** per [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) and `DESIGN_COMBINATION_VALIDATION_MATRIX_001` — not estimator/inference alone.
+**Design audit gap:** Current matrix rows (30) cover estimator/inference combinations with **reference designs** only. Future matrix v2 must become **design × estimator × inference × geometry × readout** and **consume design output fields** from [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) per [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) and `DESIGN_COMBINATION_VALIDATION_MATRIX_001` — not estimator/inference alone.
 
 **Critical wording:** **Ready for OC execution** means literature identity is defined, implementation is understood, geometry is not silently unsupported, Layer 4 protocol exists, and a D5-STAT-* run is the next allowed action. It does **not** mean statistically validated, trusted, or suitable.
 
@@ -53,7 +53,8 @@ Layer 5 is the **final pre-suitability layer**. It converts Layers 1–4 into a 
 | TBR aggregate point Level B | ✅ [`D5_STAT_TBR_AGG_001_REPORT.md`](track_d/D5_STAT_TBR_AGG_001_REPORT.md) |
 | DID bootstrap Level B | ✅ [`D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md) |
 | MCELL per-cell Level B | ✅ [`D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) |
-| Next concrete work | **`DESIGN_OUTPUT_CONTRACT_001`** |
+| Next concrete work | **`DESIGN_CODE_INVENTORY_001`** |
+| Design output contract | ✅ [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) |
 | Geometry bridge (v2 input) | ✅ [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) |
 | Enhancement synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 
@@ -191,7 +192,8 @@ Recommended order (not authorization to promote):
 8. **D5-STAT-TBRRIDGE-INF-001** — TBRRidge KFold/TSKFold/BRB family ✅ (`characterization_mixed_requires_followup`)  
 9. **INFERENCE_READOUT_SEMANTICS_001** — readout contract ✅ **Accepted**  
 10. **GEOMETRY_BRIDGE_REQUIREMENTS_001** — geometry bridge ✅ **Accepted**  
-11. **DESIGN_OUTPUT_CONTRACT_001** — design output contract **(next)**  
+11. **DESIGN_OUTPUT_CONTRACT_001** — design output contract ✅ **Accepted**  
+12. **DESIGN_CODE_INVENTORY_001** — design code inventory **(next)**  
 
 JSON: `d5_stat_execution_queue` · `d5_stat_blocked_queue`.
 
@@ -237,13 +239,11 @@ Regenerate: `python -m panel_exp.validation.method_combination_validation_matrix
 
 ---
 
-## 17. Next concrete work: DESIGN_OUTPUT_CONTRACT_001
+## 17. Next concrete work: DESIGN_CODE_INVENTORY_001
 
-GEOMETRY_BRIDGE_REQUIREMENTS_001 complete — [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md). Matrix v2 must reference geometry bridge status and blocked pooling transitions.
+DESIGN_OUTPUT_CONTRACT_001 complete — [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md). Matrix v2 must consume design output contract fields per row.
 
-**MCELL per-cell Level B** complete — see [`track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) (`characterization_pass_with_caveats`).
-
-**Next:** TBRRidge inference family characterization — **not** TrustReport wiring until OC archives exist.
+**Next:** `DESIGN_CODE_INVENTORY_001` — not TrustReport wiring until OC archives exist.
 
 ---
 
@@ -271,4 +271,4 @@ GEOMETRY_BRIDGE_REQUIREMENTS_001 complete — [`GEOMETRY_BRIDGE_REQUIREMENTS_001
 
 ---
 
-*METHOD-COMBINATION-VALIDATION-MATRIX-001 v1.0.4 — DESIGN_AUDIT_PROGRAM_001 accepted; future matrix = design × estimator × inference × geometry × readout; next = DESIGN_OUTPUT_CONTRACT_001.*
+*METHOD-COMBINATION-VALIDATION-MATRIX-001 v1.0.5 — DESIGN_OUTPUT_CONTRACT_001 accepted; next = DESIGN_CODE_INVENTORY_001.*

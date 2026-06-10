@@ -87,7 +87,7 @@ From `_INFERENCE_MODE_CATALOG` and D3 INF-* rows. DID native bootstrap is **esti
 
 ### 2.C Designs / geometries / assignment modes
 
-**Design audit program:** [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) — Accepted. Estimator/inference D5 characterization used **reference designs** (mostly `greedy_match_markets`); full design-family audit is **not complete**. Soundness gaps below remain **`not_evaluated`** or **`needs_design_bridge`** until the design audit ladder (`DESIGN_CODE_INVENTORY_001` → … → `DESIGN_SUITABILITY_FRAMEWORK_001`) completes.
+**Design audit program:** [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) — Accepted. **Design output contract:** [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) — Accepted. Current implementations emit partial `DesignEvidence` only — full contract **not_contract_validated**.
 
 From [`TRACK_D_DESIGN_METHOD_INVENTORY_001.md`](TRACK_D_DESIGN_METHOD_INVENTORY_001.md) and design registry.
 
@@ -395,7 +395,8 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 | **14** | **D5-STAT-TBRRIDGE-INF-001** | Level B characterization | ✅ **Complete** — mixed followup |
 | **15** | **INFERENCE_READOUT_SEMANTICS_001** | Readout contract | ✅ **Accepted** — [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) |
 | **16** | **GEOMETRY_BRIDGE_REQUIREMENTS_001** | Geometry bridge | ✅ **Accepted** — [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) |
-| **17** | **DESIGN_OUTPUT_CONTRACT_001** | Design output contract | **Next** |
+| **17** | **DESIGN_OUTPUT_CONTRACT_001** | Design output contract | ✅ Accepted |
+| **18** | **DESIGN_CODE_INVENTORY_001** | Design code inventory | **Next** |
 | **—** | **TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001** | TROP parked audit program | ✅ **Proposed** — [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) |
 | **15** | **METHOD_ENHANCEMENT_ROADMAP_001** | Post-Level-B synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 

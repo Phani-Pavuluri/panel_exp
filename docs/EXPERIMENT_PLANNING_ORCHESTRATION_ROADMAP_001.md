@@ -47,7 +47,7 @@ Experiment planning orchestration artifacts are **blocked** until **all** prereq
 | Prerequisite | Status today |
 |--------------|--------------|
 | [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) | ✅ Accepted — ladder not complete |
-| **`DESIGN_OUTPUT_CONTRACT_001`** | Planned — **immediate next** |
+| [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) | ✅ Accepted — ladder not complete |
 | **`DESIGN_CODE_INVENTORY_001`** | Not started |
 | **`DESIGN_LITERATURE_ALIGNMENT_001`** | Not started |
 | **`DESIGN_IMPLEMENTATION_VALIDATION_001`** | Not started |
@@ -197,7 +197,7 @@ Must define:
 | LLM experiment-planning orchestration | **Blocked** |
 | TrustReport / CalibrationSignal / MMM calibration from recommendations | **Blocked** |
 
-**Immediate program priority (unchanged):** design/readout/geometry governance — **`DESIGN_OUTPUT_CONTRACT_001`** next.
+**Immediate program priority (unchanged):** design audit ladder — **`DESIGN_CODE_INVENTORY_001`** next.
 
 ---
 
@@ -257,4 +257,4 @@ Must define:
 
 ---
 
-*EXPERIMENT-PLANNING-ORCHESTRATION-ROADMAP-001 v1.0.0 — Deferred/future; parked artifacts only; immediate program next = DESIGN_OUTPUT_CONTRACT_001.*
+*EXPERIMENT-PLANNING-ORCHESTRATION-ROADMAP-001 v1.0.1 — DESIGN_OUTPUT_CONTRACT_001 prerequisite accepted; next program artifact = DESIGN_CODE_INVENTORY_001.*

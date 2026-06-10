@@ -436,11 +436,13 @@ Required checks:
 
 ---
 
-## 19. Design output metadata required later
+## 19. Design output metadata — DESIGN_OUTPUT_CONTRACT_001 ✅
 
-[`DESIGN_OUTPUT_CONTRACT_001`](METHOD_ENHANCEMENT_ROADMAP_001.md) (planned, immediate next artifact) must define:
+**Status:** **Accepted** — [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md)
 
-`design_method_id` · `design_family` · `design_version` · `random_seed` · `eligible_units` · `excluded_units` · `exclusion_reason` · `treated_units` · `control_units` · `donor_pool` · `cell_ids` · `experiment_ids` · `test_group_ids` · `shared_control_policy` · `control_reuse_policy` · `block_ids` · `stratum_ids` · `supergeo_ids` · `supergeo_source_unit_map` · `trim_policy` · `thinning_policy` · `target_population_pre_design` · `target_population_post_design` · `geometry_id` · `concurrent_multi_experiment_compatibility` · `balance_diagnostics` · `power_metadata` · `mde_metadata` · `estimator_compatibility_hints` · `inference_compatibility_hints` · `forbidden_downstream_claims`
+First concrete output contract under the design audit lane. Defines **DesignOutputContract** schema (identity, unit universe, assignment, multi-cell, geometry, trim/supergeo, balance, power/MDE, compatibility hints, forbidden claims, PASS/WARN/BLOCK policy).
+
+**Later design audit artifacts remain pending:** `DESIGN_CODE_INVENTORY_001` (next) → literature → implementation validation → statistical protocol → combination matrix → guardrails → suitability framework.
 
 ---
 
@@ -471,7 +473,7 @@ Initial guardrails (enforce via `DESIGN_GUARDRAILS_001`):
 | [`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md`](DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md) | **Incomplete** until design audit parity; v2 requires design × estimator × inference rows |
 | D5 Level B reports | Reference-design characterization — not full design audit |
 | D5-POW / D5-DES | Partial design evidence (001e, supergeo, trim) |
-| **`DESIGN_OUTPUT_CONTRACT_001`** | Immediate next artifact — metadata schema for this program |
+| **`DESIGN_OUTPUT_CONTRACT_001`** | ✅ Accepted — [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md); feeds design audit ladder |
 | Suitability v2 | Requires design combination matrix + design suitability framework |
 | TROP / Bayesian extensions | Depend on design output metadata (assignment, eligibility, covariates) |
 
@@ -492,7 +494,7 @@ Initial guardrails (enforce via `DESIGN_GUARDRAILS_001`):
 | TrimmedMatchDesign | trimmed_population | trimmed_match.py | registered, direct API | not_evaluated | trimmed_geometry | restricted | bridge_required | DESIGN_LITERATURE_ALIGNMENT_001 |
 | SupergeoModel | supergeo_design | supergeos.py | registered, direct API | not_evaluated | supergeo | blocked_without_bridge | bridge_required | DESIGN_LITERATURE_ALIGNMENT_001 |
 | multi_test_groups | multi_cell_assignment | n_test_grps config | geo-run param | not_evaluated | multi_cell_per_cell | restricted | bridge_required (pooled) | DESIGN_COMBINATION_VALIDATION_MATRIX_001 |
-| GeoExperimentDesign | orchestration | geo_experiment_design.py | active | not_evaluated | emits via assignment | not_evaluated | contract_required | DESIGN_OUTPUT_CONTRACT_001 |
+| GeoExperimentDesign | orchestration | geo_experiment_design.py | active | not_evaluated | emits via assignment | not_evaluated | contract_required | DESIGN_CODE_INVENTORY_001 |
 | PowerAnalysis | power_mde_helper | power.py | active | not_evaluated | aggregate_two_row (MDE path) | not_evaluated | contract_required | DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001 |
 
 **No row assigns** production readiness, trust, CalibrationSignal, MMM, or suitability.
@@ -503,8 +505,8 @@ Initial guardrails (enforce via `DESIGN_GUARDRAILS_001`):
 
 Recommended sequence:
 
-1. **`DESIGN_OUTPUT_CONTRACT_001`** — metadata schema (immediate next)  
-2. **`DESIGN_CODE_INVENTORY_001`** — authoritative repo enumeration  
+1. **`DESIGN_OUTPUT_CONTRACT_001`** — metadata schema ✅ **Accepted**  
+2. **`DESIGN_CODE_INVENTORY_001`** — authoritative repo enumeration **(next)**  
 3. **`DESIGN_LITERATURE_ALIGNMENT_001`**  
 4. **`DESIGN_IMPLEMENTATION_VALIDATION_001`**  
 5. **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`**  
@@ -521,7 +523,7 @@ Method-specific audits (supergeo, trim, QuickBlock integration) run in parallel 
 No design promotion, suitability status, TrustReport role, CalibrationSignal eligibility, MMM/LLM authorization, or downstream estimator compatibility claim until:
 
 1. Design audit ladder artifacts **Accepted** (§8)  
-2. [`DESIGN_OUTPUT_CONTRACT_001`](METHOD_ENHANCEMENT_ROADMAP_001.md) supplies required metadata  
+2. [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) supplies required metadata schema ✅  
 3. Geometry and readout contracts satisfied per companion artifacts  
 4. Design combination matrix row exists for each design × estimator × inference path  
 5. `DESIGN_SUITABILITY_FRAMEWORK_001` explicitly approves a role  
@@ -561,4 +563,4 @@ No design promotion, suitability status, TrustReport role, CalibrationSignal eli
 
 ---
 
-*DESIGN-AUDIT-PROGRAM-001 v1.0.0 — Accepted design-side audit program; immediate next artifact = DESIGN_OUTPUT_CONTRACT_001.*
+*DESIGN-AUDIT-PROGRAM-001 v1.0.1 — DESIGN_OUTPUT_CONTRACT_001 accepted; next = DESIGN_CODE_INVENTORY_001.*
