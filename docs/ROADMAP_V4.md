@@ -242,13 +242,15 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Status:** **active** — authoritative method-foundation sequence  
 **Verdict:** **Pauses** trust-framework / method-role expansion until layers 1–5 complete (code inventory → literature → implementation → statistical OC → combination matrix). Prior synthesis and MCELL-first chains are **evidence only**, not sequencing authority.
 
-**Ordered next:** ✅ D5 Level B + readout semantics + geometry bridge + design output contract → **`DESIGN_CODE_INVENTORY_001`** → enhancement lanes → trust-framework integration (roles paused).
+**Ordered next:** ✅ D5 Level B + readout semantics + geometry bridge + design output contract + **design code inventory** → **`DESIGN_LITERATURE_ALIGNMENT_001`** → enhancement lanes → trust-framework integration (roles paused).
+
+**Design code inventory:** [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) — ✅ Accepted; authoritative design-side enumeration (31 rows).
 
 **Design output contract:** [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) — ✅ Accepted.
 
 **Future estimator audit (parked):** [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) — TROP; follows design-output contract; not implementation.
 
-**Design audit lane:** [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) — Accepted; next = **`DESIGN_CODE_INVENTORY_001`**.
+**Design audit lane:** [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) — Accepted; inventory ✅; next = **`DESIGN_LITERATURE_ALIGNMENT_001`**.
 
 ### METHOD-ENHANCEMENT-ROADMAP-001 (post-Level-B synthesis)
 
@@ -328,7 +330,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Archive:** [`track_d/archives/D5_STAT_AUGSYNTH_POINT_001_results.json`](track_d/archives/D5_STAT_AUGSYNTH_POINT_001_results.json)  
 **Generator:** [`panel_exp/validation/track_d_d5_stat_augsynth_point_001.py`](../panel_exp/validation/track_d_d5_stat_augsynth_point_001.py)  
 **Status:** **complete** — AugSynthCVXPY point only; `characterization_mixed_requires_followup`  
-**Next:** **`DESIGN_CODE_INVENTORY_001`**
+**Next:** **`DESIGN_LITERATURE_ALIGNMENT_001`**
 
 ### METHOD-SOUNDNESS-AND-GAP-ROADMAP-001
 
@@ -338,7 +340,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 
 **Inputs:** Track D D1–D5 · CV-001 · AUDIT-010 · foundation hardening · validation program.
 
-**Ordered next:** See **METHOD-ENHANCEMENT-ROADMAP-001** (`DESIGN_CODE_INVENTORY_001`).
+**Ordered next:** See **METHOD-ENHANCEMENT-ROADMAP-001** (`DESIGN_LITERATURE_ALIGNMENT_001`).
 
 ### METHOD-SOUNDNESS-ROADMAP-REVIEW-001
 

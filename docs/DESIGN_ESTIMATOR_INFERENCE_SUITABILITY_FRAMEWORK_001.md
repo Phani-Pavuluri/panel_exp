@@ -48,12 +48,13 @@ Define **how** design × estimator × inference × geometry × estimand combinat
 | Post-D5 readout semantics | ✅ [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) (**Accepted**) |
 | Post-D5 geometry bridge | ✅ [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) (**Accepted**) |
 | Post-D5 design output contract | ✅ [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) (**Accepted**) |
-| Next enhancement | **`DESIGN_CODE_INVENTORY_001`** |
+| Post-D5 design code inventory | ✅ [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) (**Accepted**) |
+| Next enhancement | **`DESIGN_LITERATURE_ALIGNMENT_001`** |
 | Post-Level-B enhancement synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 | Trust role assignment | **Blocked** — `TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001` after OC evidence |
 | Design audit program | ✅ [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) (**Accepted**) |
 
-**Suitability v2 dependency:** Requires readout semantics + geometry bridge + **design output contract** (all ✅ Accepted), design audit ladder completion, and targeted enhancement lanes. **Suitability cannot be evaluated for any combination unless design output satisfies [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md).** **Current framework is incomplete without design audit parity.**
+**Suitability v2 dependency:** Requires readout semantics + geometry bridge + **design output contract** + **design code inventory** (all ✅ Accepted), design audit ladder completion, and targeted enhancement lanes. **Suitability cannot be evaluated for any combination unless design output satisfies [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md).** **Design names in suitability rows must match inventory IDs in [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) (DES-001–DES-031) and pass later audit steps — ad hoc design names are not authorized.** **Current framework is incomplete without design audit parity.**
 
 ---
 
@@ -61,7 +62,7 @@ Define **how** design × estimator × inference × geometry × estimand combinat
 
 | Layer | Role in suitability framework |
 |-------|------------------------------|
-| 1 — Code inventory | Canonical modules and names |
+| 1 — Code inventory | Canonical modules and names; **design-side:** [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) |
 | 2 — Literature alignment | Estimand and literature scope |
 | 3 — Implementation validation | Gaps → `required_implementation_fixes` |
 | 4 — Statistical protocol | D5-STAT artifact names and batteries |
@@ -217,7 +218,7 @@ Family-level quarantine (quickblock, matchedpair, legacy SCM) remains in Layer 3
 
 **MCELL per-cell Level B:** ✅ **`D5-STAT-MCELL-PERCELL-001`**.
 
-**Immediate next concrete artifact:** **`DESIGN_CODE_INVENTORY_001`**.
+**Immediate next concrete artifact:** **`DESIGN_LITERATURE_ALIGNMENT_001`**.
 
 Then (from Layer 5 matrix queue):
 
@@ -230,7 +231,8 @@ Then (from Layer 5 matrix queue):
 7. INFERENCE_READOUT_SEMANTICS_001 ✅  
 8. GEOMETRY_BRIDGE_REQUIREMENTS_001 ✅  
 9. DESIGN_OUTPUT_CONTRACT_001 ✅  
-10. DESIGN_CODE_INVENTORY_001 **(next)**  
+10. DESIGN_CODE_INVENTORY_001 ✅  
+11. DESIGN_LITERATURE_ALIGNMENT_001 **(next)**  
 
 Blocked queue unchanged from Layer 5 (`d5_stat_blocked_queue` in JSON).
 
@@ -271,7 +273,7 @@ Regenerate: `python -m panel_exp.validation.design_estimator_inference_suitabili
 
 **Do not** wire TrustReport or F-DECISION from this framework.
 
-**Next concrete work:** execute **`DESIGN_CODE_INVENTORY_001`** (design output contract complete — [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md)).
+**Next concrete work:** execute **`DESIGN_LITERATURE_ALIGNMENT_001`** (design code inventory complete — [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md)).
 
 **After OC evidence accumulates:** author **`TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001`** or targeted F-DECISION/TrustReport amendments — not before.
 
@@ -304,9 +306,10 @@ Regenerate: `python -m panel_exp.validation.design_estimator_inference_suitabili
 | Readout semantics controller | ✅ [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) |
 | Geometry bridge controller | ✅ [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) |
 | Design output contract = DESIGN_OUTPUT_CONTRACT_001 | ✅ |
-| Next artifact = DESIGN_CODE_INVENTORY_001 | ✅ |
+| Design code inventory = DESIGN_CODE_INVENTORY_001 | ✅ |
+| Next artifact = DESIGN_LITERATURE_ALIGNMENT_001 | ✅ |
 | JSON + tests | ✅ |
 
 ---
 
-*DESIGN-ESTIMATOR-INFERENCE-SUITABILITY-FRAMEWORK-001 v1.0.5 — DESIGN_OUTPUT_CONTRACT_001 accepted; suitability requires contract satisfaction; next = DESIGN_CODE_INVENTORY_001.*
+*DESIGN-ESTIMATOR-INFERENCE-SUITABILITY-FRAMEWORK-001 v1.0.6 — DESIGN_CODE_INVENTORY_001 accepted; suitability requires inventory IDs; next = DESIGN_LITERATURE_ALIGNMENT_001.*

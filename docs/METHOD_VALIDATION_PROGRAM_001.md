@@ -70,6 +70,8 @@ TrustReport / F-DECISION / CalibrationSignal / MMM (paused until above)
 | **Per-row fields** | Method name · type · module path · entrypoint · inputs · outputs · geometry · tests · docs · implementation status |
 | **Output** | Machine- and human-readable inventory; feeds layers 2–5 |
 
+**Design-side inventory (parallel track):** [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) — **Accepted**; authoritative enumeration of design methods, helpers, and contract field mapping (31 rows). Estimator/inference Layer 1 does not substitute for design inventory.
+
 ### Layer 2 — Literature alignment (`METHOD_LITERATURE_ALIGNMENT_001`)
 
 | Requirement | Detail |
@@ -262,13 +264,15 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **TBRRidge inference Level B:** ✅ [`docs/track_d/D5_STAT_TBRRIDGE_INF_001_REPORT.md`](track_d/D5_STAT_TBRRIDGE_INF_001_REPORT.md) + [`track_d/archives/D5_STAT_TBRRIDGE_INF_001_results.json`](track_d/archives/D5_STAT_TBRRIDGE_INF_001_results.json) (regenerate: `poetry run python -m panel_exp.validation.track_d_d5_stat_tbrridge_inf_001`).
 
-**Post-D5 enhancement sequence (documentation):** ✅ readout semantics · ✅ geometry bridge · ✅ design output contract → **`DESIGN_CODE_INVENTORY_001`** → targeted method-family fixes.
+**Post-D5 enhancement sequence (documentation):** ✅ readout semantics · ✅ geometry bridge · ✅ design output contract · ✅ **design code inventory** → **`DESIGN_LITERATURE_ALIGNMENT_001`** → targeted method-family fixes.
+
+**Design code inventory:** [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) — **Accepted**; authoritative enumeration of design methods and helpers; maps emitted fields to design output contract.
 
 **Design-output contract:** [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) — **Accepted**; prerequisite for design validation, combination matrix v2, and suitability evaluation.
 
 **Deferred estimator audit track (parked, not rejected):** [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) — TROP audit ladder follows design-output contract; **no TROP implementation** in program scope.
 
-**Design audit track:** [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) — Accepted; next = **`DESIGN_CODE_INVENTORY_001`**.
+**Design audit track:** [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) — Accepted; inventory ✅ [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md); next = **`DESIGN_LITERATURE_ALIGNMENT_001`**.
 
 **Post-Level-B synthesis:** ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) — converts D5 characterization findings into prioritized enhancement lanes (readout semantics, geometry bridges, operator contracts). **Not** promotion or suitability authorization.
 

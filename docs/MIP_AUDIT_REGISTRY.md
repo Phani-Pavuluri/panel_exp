@@ -621,7 +621,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** D5-STAT queue through **`D5-STAT-MCELL-PERCELL-001`** complete.
 
-**Next planning/enhancement:** **`DESIGN_CODE_INVENTORY_001`**. Design output contract: [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) (**Accepted**).
+**Next planning/enhancement:** **`DESIGN_LITERATURE_ALIGNMENT_001`**. Design code inventory: [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) (**Accepted**).
 
 ---
 
@@ -669,7 +669,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** Future TROP audit sequence; does not change immediate enhancement queue.
 
-**Program next (unchanged):** **`DESIGN_CODE_INVENTORY_001`**.
+**Program next (unchanged):** **`DESIGN_LITERATURE_ALIGNMENT_001`**.
 
 ---
 
@@ -683,9 +683,9 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** Readout semantics + geometry bridge Accepted.
 
-**Feeds:** `DESIGN_OUTPUT_CONTRACT_001` ✅ → design code inventory → literature → implementation → statistical protocol → combination matrix → guardrails → design suitability.
+**Feeds:** `DESIGN_OUTPUT_CONTRACT_001` ✅ → `DESIGN_CODE_INVENTORY_001` ✅ → literature → implementation → statistical protocol → combination matrix → guardrails → design suitability.
 
-**Immediate next:** **`DESIGN_CODE_INVENTORY_001`**.
+**Immediate next:** **`DESIGN_LITERATURE_ALIGNMENT_001`**.
 
 ---
 
@@ -699,9 +699,25 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) Accepted; readout + geometry bridge Accepted.
 
-**Feeds:** `DESIGN_CODE_INVENTORY_001` → design validation ladder → combination matrix v2 → experiment planning (deferred).
+**Feeds:** ✅ `DESIGN_CODE_INVENTORY_001` → design validation ladder → combination matrix v2 → experiment planning (deferred).
 
-**Next:** **`DESIGN_CODE_INVENTORY_001`**.
+**Next:** **`DESIGN_LITERATURE_ALIGNMENT_001`**.
+
+---
+
+## DESIGN-CODE-INVENTORY-001 (2026-06-09)
+
+**Artifact:** [`docs/DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md)
+
+**Status:** **`accepted_design_code_inventory`**
+
+**Verdict:** Authoritative design-side code inventory — 31 rows (10 registered designs + wrapper + multi-cell + helpers/output/governance). Maps emitted fields to [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md). **0 contract-complete implementations.** Verdict: `design_code_inventory_complete_contract_gaps_identified`. **Documentation/governance only** — no code changes, no promotion.
+
+**Prerequisites:** [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) Accepted; [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) Accepted.
+
+**Feeds:** `DESIGN_LITERATURE_ALIGNMENT_001` → design implementation validation → statistical protocol → combination matrix v2 → guardrails → design suitability.
+
+**Next:** **`DESIGN_LITERATURE_ALIGNMENT_001`**.
 
 ---
 

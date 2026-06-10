@@ -519,7 +519,7 @@ This artifact is the **first concrete output contract** under [`DESIGN_AUDIT_PRO
 
 | Next artifact | Use of contract |
 |---------------|-----------------|
-| **`DESIGN_CODE_INVENTORY_001`** | Map which fields each implementation emits today vs required |
+| **`DESIGN_CODE_INVENTORY_001`** | ✅ Maps which fields each implementation emits today vs required — [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) |
 | **`DESIGN_LITERATURE_ALIGNMENT_001`** | Align population/assignment semantics to literature |
 | **`DESIGN_IMPLEMENTATION_VALIDATION_001`** | Validate emission against §25 checks |
 | **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`** | Assert contract completeness in simulation worlds |
@@ -551,27 +551,27 @@ All rows: **`contract_required`** · **`not_contract_validated`** · **not suita
 
 | Name | Category | Expected key fields | Likely blockers | Concurrency | Next audit artifact |
 |------|----------|---------------------|-----------------|-------------|---------------------|
-| greedy_match_markets | matching | assignment, geometry, donor pool, balance | partial metadata only | compatible_with_constraints | DESIGN_CODE_INVENTORY_001 |
-| CompleteRandomization | standard | assignment, geometry, donor pool | partial metadata | compatible_with_constraints | DESIGN_CODE_INVENTORY_001 |
-| BalancedRandomization | standard | assignment, geometry, balance KPI | partial metadata | compatible_with_constraints | DESIGN_CODE_INVENTORY_001 |
+| greedy_match_markets | matching | assignment, geometry, donor pool, balance | partial metadata only | compatible_with_constraints | DESIGN_LITERATURE_ALIGNMENT_001 |
+| CompleteRandomization | standard | assignment, geometry, donor pool | partial metadata | compatible_with_constraints | DESIGN_LITERATURE_ALIGNMENT_001 |
+| BalancedRandomization | standard | assignment, geometry, balance KPI | partial metadata | compatible_with_constraints | DESIGN_LITERATURE_ALIGNMENT_001 |
 | StratifiedRandomization | stratified | + stratum_ids | stratum IDs not emitted | compatible_with_constraints | DESIGN_IMPLEMENTATION_VALIDATION_001 |
 | ThinningDesign | thinning | + thinning_policy | thinning metadata gap | not_evaluated | DESIGN_LITERATURE_ALIGNMENT_001 |
 | Rerandomization | wrapper | inherits base + imbalance | wrapper identity | compatible_with_constraints | DESIGN_IMPLEMENTATION_VALIDATION_001 |
-| QuickBlock | blocking | + block_ids | not geo-run; block IDs absent | not_evaluated | DESIGN_CODE_INVENTORY_001 |
-| MatchedPair | matching | pair_ids, numpy vector | non-dict output | not_evaluated | DESIGN_CODE_INVENTORY_001 |
+| QuickBlock | blocking | + block_ids | not geo-run; block IDs absent | not_evaluated | DESIGN_LITERATURE_ALIGNMENT_001 |
+| MatchedPair | matching | pair_ids, numpy vector | non-dict output | not_evaluated | DESIGN_LITERATURE_ALIGNMENT_001 |
 | TrimmedMatchDesign | trimmed | trim fields, pair_ids | population shift; no flat dict | restricted | DESIGN_LITERATURE_ALIGNMENT_001 |
 | SupergeoModel | supergeo | supergeo_source_unit_map | MILP pairs ≠ assignment dict | blocked_without_bridge | DESIGN_LITERATURE_ALIGNMENT_001 |
 | multi_test_groups | multi_cell | cell_ids, shared_control_policy | cell metadata partial in D5 | restricted | DESIGN_COMBINATION_VALIDATION_MATRIX_001 |
 | GeoExperimentDesign | orchestration | full contract envelope | emits partial DesignEvidence | not_evaluated | DESIGN_IMPLEMENTATION_VALIDATION_001 |
 | run_geo_experiment_design | orchestration | pipeline metadata | no contract object | not_evaluated | DESIGN_IMPLEMENTATION_VALIDATION_001 |
 | PowerAnalysis | power_mde | power/MDE §18; aggregate geometry | 2-row vs unit-panel mismatch | not_evaluated | DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001 |
-| prepare_constraint_context | eligibility | excluded_units, eligible_units | not surfaced as contract | not_evaluated | DESIGN_CODE_INVENTORY_001 |
+| prepare_constraint_context | eligibility | excluded_units, eligible_units | not surfaced as contract | not_evaluated | DESIGN_IMPLEMENTATION_VALIDATION_001 |
 | validate_assignment_dict | eligibility | assignment checks | validator only | not_evaluated | DESIGN_GUARDRAILS_001 |
 | validate_design | validation | balance_pass_warn_fail | partial validation_summary | not_evaluated | DESIGN_IMPLEMENTATION_VALIDATION_001 |
-| slice_wide_to_time_period | helper | time-window refs | helper only | not_evaluated | DESIGN_CODE_INVENTORY_001 |
-| imbalance | helper | imbalance_score | helper only | not_evaluated | DESIGN_CODE_INVENTORY_001 |
-| make_generator | helper | random_seed | helper only | not_evaluated | DESIGN_CODE_INVENTORY_001 |
-| DesignRegistry | registry | design_method_id lookup | registry only | not_evaluated | DESIGN_CODE_INVENTORY_001 |
+| slice_wide_to_time_period | helper | time-window refs | helper only | not_evaluated | DESIGN_IMPLEMENTATION_VALIDATION_001 |
+| imbalance | helper | imbalance_score | helper only | not_evaluated | DESIGN_IMPLEMENTATION_VALIDATION_001 |
+| make_generator | helper | random_seed | helper only | not_evaluated | DESIGN_IMPLEMENTATION_VALIDATION_001 |
+| DesignRegistry | registry | design_method_id lookup | registry only | not_evaluated | DESIGN_GUARDRAILS_001 |
 | create_design_comparison_dashboard | utility | ranking outputs ungoverned | not in contract path | not_evaluated | DESIGN_GUARDRAILS_001 |
 
 ---
@@ -610,7 +610,7 @@ All rows: **`contract_required`** · **`not_contract_validated`** · **not suita
 | Document | Update |
 |----------|--------|
 | [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) | First concrete output contract complete |
-| [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) | Contract Accepted; next = DESIGN_CODE_INVENTORY_001 |
+| [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) | Inventory Accepted; next = DESIGN_LITERATURE_ALIGNMENT_001 |
 | [`METHOD_VALIDATION_PROGRAM_001.md`](METHOD_VALIDATION_PROGRAM_001.md) | Design-output contract prerequisite |
 | [`ROADMAP_V4.md`](ROADMAP_V4.md) | State updated |
 | [`MIP_AUDIT_REGISTRY.md`](MIP_AUDIT_REGISTRY.md) | Registered |
@@ -624,4 +624,4 @@ All rows: **`contract_required`** · **`not_contract_validated`** · **not suita
 
 ---
 
-*DESIGN-OUTPUT-CONTRACT-001 v1.0.0 — Accepted design-output schema; next design audit artifact = DESIGN_CODE_INVENTORY_001.*
+*DESIGN-OUTPUT-CONTRACT-001 v1.0.1 — Inventory mapped emitted fields (partial); no implementation compliant; next = DESIGN_LITERATURE_ALIGNMENT_001.*
