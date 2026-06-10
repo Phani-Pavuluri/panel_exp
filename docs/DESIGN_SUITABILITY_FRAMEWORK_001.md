@@ -501,8 +501,9 @@ Governance sequence after this artifact:
 1. **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`** ✅ **Accepted** — [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md)  
 2. **`DESIGN_CONTRACT_SCHEMA_001`** ✅ **Accepted** — [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) — **necessary but insufficient** for positive suitability  
 3. **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`** ✅ **Accepted** — Phase 2 emission plan (**not implemented**)  
-4. **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`** *(next)* — validation tests  
-5. **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** *(follow-on)* — runtime enforcement per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §27  
+4. **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`** ✅ **Accepted** — validation test plan (**tests not implemented**)  
+5. **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`** *(next)* — validator implementation  
+6. **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** *(follow-on)* — runtime enforcement per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §27  
 
 Schema and emission precede runtime guardrail wiring.
 
@@ -554,9 +555,11 @@ find docs -iname "*SUITABILITY*" -o -iname "*GUARDRAIL*" -o -iname "*COMBINATION
 
 **Tier-1 emission plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) ✅ **Accepted** — **tier-1 designs remain `contract_blocked` until emission is implemented and validation tests pass**; 0 downstream suitable designs.
 
-**Next artifact:** **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`**
+**Validation test plan:** [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md) ✅ **Accepted** — **positive suitability requires passing validation tests**; 0 downstream suitable designs.
 
-Then: code emission · `DESIGN_GUARDRAIL_ENFORCEMENT_001` · `D5-DES-STAT-*` · experiment planning.
+**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`**
+
+Then: validator · tests · code emission · `DESIGN_GUARDRAIL_ENFORCEMENT_001` · `D5-DES-STAT-*`.
 
 ---
 
@@ -596,4 +599,4 @@ Then: code emission · `DESIGN_GUARDRAIL_ENFORCEMENT_001` · `D5-DES-STAT-*` · 
 
 ---
 
-*DESIGN-SUITABILITY-FRAMEWORK-001 v1.0.3 — Accepted; tier-1 remains contract-blocked until emission + tests; next = DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.*
+*DESIGN-SUITABILITY-FRAMEWORK-001 v1.0.4 — Accepted; positive suitability requires passing validation tests; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.*

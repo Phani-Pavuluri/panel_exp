@@ -506,7 +506,9 @@ Until enforcement lands, consumers must apply this document manually or via futu
 
 **Tier-1 emission plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) ✅ **Accepted** — **runtime guardrails still wait on emission + validation tests**; verdicts unchanged; 0 downstream PASS.
 
-**Next artifact:** `DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`.
+**Validation test plan:** [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md) ✅ **Accepted** — **runtime guardrails require implemented validation tests**; verdicts unchanged until tests pass.
+
+**Next artifact:** `DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`.
 
 ---
 
@@ -550,9 +552,9 @@ find docs -iname "*GUARDRAIL*" -o -iname "*COMBINATION*" -o -iname "*SUITABILITY
 
 ## 31. Roadmap
 
-**Next artifact:** **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`**
+**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`**
 
-Schema ✅ · Tier-1 emission plan ✅ · Enforcement plan ✅ · Suitability framework ✅.
+Schema ✅ · Tier-1 plan ✅ · Validation test plan ✅ · Enforcement plan ✅ · Suitability framework ✅.
 
 ---
 
@@ -590,4 +592,4 @@ Schema ✅ · Tier-1 emission plan ✅ · Enforcement plan ✅ · Suitability fr
 
 ---
 
-*DESIGN-GUARDRAILS-001 v1.0.4 — Accepted; runtime guardrails wait on emission + validation tests; next = DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.*
+*DESIGN-GUARDRAILS-001 v1.0.5 — Accepted; runtime guardrails require implemented validation tests; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.*

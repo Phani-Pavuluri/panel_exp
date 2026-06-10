@@ -415,11 +415,11 @@ When `n_test_grps > 1` (DES-011 partial):
 
 ---
 
-## 26. Test plan placeholder
+## 26. Test plan
 
-**Future artifact:** **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`**
+**Validation test plan:** [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md) ✅ **Accepted** — defines required positive, negative, conditional, fixture, and CI tests **before tier-1 emission can claim contract completeness**. **Tests not implemented.**
 
-High-level tests (not implemented here):
+Key requirements (see test plan for full matrix):
 
 - Universal field presence after emission  
 - Enum validity (`geometry_id`, forbidden claims)  
@@ -541,9 +541,9 @@ find panel_exp/design -type f
 
 ## 35. Roadmap
 
-**Next artifact:** **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`**
+**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`**
 
-Defines negative/positive contract validation tests before declaring any tier-1 row `contract_complete`.
+Then: implement validator → fixtures → tests → tier-1 code emission.
 
 ---
 
@@ -583,4 +583,4 @@ Defines negative/positive contract validation tests before declaring any tier-1 
 
 ---
 
-*DESIGN-TIER1-CONTRACT-EMISSION-PLAN-001 v1.0.0 — Accepted; verdict = design_tier1_contract_emission_plan_defined_not_implemented; next = DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.*
+*DESIGN-TIER1-CONTRACT-EMISSION-PLAN-001 v1.0.1 — Accepted; validation test plan defined; emission cannot claim contract-complete until tests pass; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.*

@@ -638,4 +638,6 @@ All rows: **`contract_required`** · **`not_contract_validated`** · **not suita
 
 **Tier-1 emission plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) ✅ **Accepted** — maps contract fields to geo-run producer paths; **not implemented**; 0/31 contract-complete; no downstream authorization.
 
-*DESIGN-OUTPUT-CONTRACT-001 v1.1.0 — Tier-1 path emission planned; next = DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.*
+**Validation test plan:** [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md) ✅ **Accepted** — contract fields require schema validation tests before governed product consumption; **tests not implemented**.
+
+*DESIGN-OUTPUT-CONTRACT-001 v1.1.1 — Validation tests planned; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.*
