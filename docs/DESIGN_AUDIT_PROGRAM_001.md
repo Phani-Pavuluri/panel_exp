@@ -226,7 +226,13 @@ Machine-readable schema specification for `design_contract` nested block. Phase 
 
 Phase 2 tier-1 geo-run emission plan for DES-001–004, DES-006, constrained DES-011. Verdict: `design_tier1_contract_emission_plan_defined_not_implemented`. **Planned only — not implemented in code; 0/31 contract-complete.**
 
-### K. Method-specific design audits (as needed)
+### K. DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001 ✅
+
+**Status:** **Accepted** — [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md)
+
+Phase 3 contract validation test plan — positive, negative, conditional, fixture, and CI gating before emission can be trusted. Verdict: `design_contract_validation_test_plan_defined_not_implemented`. **Tests not implemented.**
+
+### L. Method-specific design audits (as needed)
 
 Examples: `D5-DES-SUPERGEO-001` follow-on, `D5-DES-TRIM-001` hardening, QuickBlock geo integration ADR.
 
@@ -467,7 +473,7 @@ First concrete output contract under the design audit lane. Defines **DesignOutp
 
 **Code inventory:** [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) maps current emitted fields against this contract — **no implementation is contract-complete**.
 
-**Next design audit artifact:** `DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001` — contract validation test specification (Phase 3).
+**Next design audit artifact:** `DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001` — validator implementation planning (Phase 3 implementation).
 
 ---
 
@@ -541,7 +547,8 @@ Recommended sequence:
 9. **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`** — enforcement planning ✅ **Accepted**  
 10. **`DESIGN_CONTRACT_SCHEMA_001`** — machine-readable schema ✅ **Accepted**  
 11. **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`** — tier-1 emission plan ✅ **Accepted**  
-12. **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`** — **(next)**  
+12. **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`** — validation test plan ✅ **Accepted**  
+13. **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`** — **(next)**  
 
 Method-specific audits (supergeo, trim, QuickBlock integration) run in parallel where blocked on bridges.
 
@@ -592,4 +599,4 @@ No design promotion, suitability status, TrustReport role, CalibrationSignal eli
 
 ---
 
-*DESIGN-AUDIT-PROGRAM-001 v1.1.1 — DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001 accepted; emission not implemented; next = DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.*
+*DESIGN-AUDIT-PROGRAM-001 v1.1.2 — DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001 accepted; tests not implemented; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.*

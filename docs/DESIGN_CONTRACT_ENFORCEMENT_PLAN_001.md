@@ -213,7 +213,7 @@ From [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATIO
 | **0** | Docs/planning only | ✅ **Current** | This artifact |
 | **1** | Contract schema definition | ✅ **Specified** | [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) — **not implemented in code** |
 | **2** | Tier-1 geo-run emission | ✅ **Planned** | [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) — **not implemented** |
-| **3** | Validation tests | `test_required` | Negative + family-conditional tests |
+| **3** | Validation tests | ✅ **Planned** | [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md) — **not implemented** |
 | **4** | Adapter plans | `adapter_required` | QuickBlock, MatchedPair, Trim, Supergeo |
 | **5** | Bridge metadata | `bridge_required` | Trim/supergeo/pooled/multi-cell bridge fields |
 | **6** | Guardrail runtime enforcement | `future_runtime_enforcement` | `DESIGN_GUARDRAIL_ENFORCEMENT_001` |
@@ -267,7 +267,9 @@ Target: DES-001–006 via `geo_runner` → `DesignEvidence` / `ExperimentEvidenc
 
 ## 14. Phase 3: validation test plan
 
-Planned tests (no implementation in this artifact):
+**Test plan:** [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md) ✅ **Accepted** — Phase 3 defined; **tests not implemented**; validator not implemented; 0/31 contract-complete.
+
+Planned tests (no implementation yet):
 
 | Test | Assertion |
 |------|-----------|
@@ -522,7 +524,7 @@ Aligns with [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) universal rul
 
 **Tier-1 emission plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) ✅ **Accepted** — Phase 2 planned; **not implemented**.
 
-Schema ✅ [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md). **Next:** **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`**.
+Schema ✅ · Tier-1 plan ✅ · Validation test plan ✅ [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md). **Next:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`**.
 
 **Follow-on:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** — runtime PASS/WARN/BLOCK wiring in `geo_runner`, validators, planning orchestrator (per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §27).
 
@@ -550,7 +552,7 @@ This artifact does **not** implement enforcement, validate designs, authorize ca
 | Verdict | `design_contract_enforcement_plan_defined_not_implemented` |
 | Phase | **0** (planning only) |
 | Contract-complete designs | **0 / 31** |
-| Next implementation artifact | `DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001` then code emission |
+| Next implementation artifact | `DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001` then validator + tests |
 
 ### Search methodology (2026-06-10)
 
@@ -572,9 +574,11 @@ find tests -iname "*design*" -o -iname "*evidence*" -o -iname "*contract*" -o -i
 
 **Tier-1 emission:** [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) ✅ Phase 2 planned — **not implemented**.
 
-**Next artifact:** **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`**
+**Validation test plan:** [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md) ✅ Phase 3 planned — **not implemented**.
 
-Then: code emission · validation tests (Phase 3) · adapters (Phase 4) · `DESIGN_GUARDRAIL_ENFORCEMENT_001`.
+**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`**
+
+Then: validator · fixtures · tests · code emission · adapters (Phase 4) · `DESIGN_GUARDRAIL_ENFORCEMENT_001`.
 
 ---
 
@@ -614,4 +618,4 @@ Then: code emission · validation tests (Phase 3) · adapters (Phase 4) · `DESI
 
 ---
 
-*DESIGN-CONTRACT-ENFORCEMENT-PLAN-001 v1.0.2 — Accepted; Phase 2 tier-1 emission plan defined; not implemented; next = DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.*
+*DESIGN-CONTRACT-ENFORCEMENT-PLAN-001 v1.0.3 — Accepted; Phase 3 validation test plan defined; not implemented; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.*

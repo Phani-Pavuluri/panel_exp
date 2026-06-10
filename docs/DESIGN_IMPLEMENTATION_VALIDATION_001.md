@@ -530,7 +530,9 @@ Documented for later — **not in scope here:**
 
 **Tier-1 emission plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) ✅ **Accepted** — **tier-1 gaps (IV-DES-001–016) mapped to emission plan**; **implementation verdict unchanged** (0/31 contract-complete; no fields emitted).
 
-**Next artifact:** **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`**.
+**Validation test plan:** [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md) ✅ **Accepted** — **implementation blockers (IV-DES-001–016) remain unresolved until validation tests are implemented and pass**; verdict unchanged (0/31 contract-complete).
+
+**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`**.
 
 Guardrails: [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) ✅ **Accepted** — consumes hard blockers from §25.
 
@@ -572,4 +574,4 @@ Guardrails: [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) ✅ **Accepte
 
 ---
 
-*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.0.7 — Accepted; tier-1 gaps mapped to emission plan; verdict unchanged; next = DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.*
+*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.0.8 — Accepted; blockers until validation tests pass; verdict unchanged; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.*

@@ -425,7 +425,9 @@ Per [`EXPERIMENT_PLANNING_ORCHESTRATION_ROADMAP_001.md`](EXPERIMENT_PLANNING_ORC
 
 **Tier-1 emission plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) ✅ **Accepted** — matrix remains advisory until fields emitted and validated.
 
-**Next artifact:** **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`**
+**Validation test plan:** [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md) ✅ **Accepted** — matrix integration tests planned; matrix remains advisory until validator passes.
+
+**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`**
 
 Suitability framework ✅ [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md) consumes matrix statuses.
 
@@ -489,4 +491,4 @@ poetry run python -c "from panel_exp.design.registry import get_design_registry;
 
 ---
 
-*DESIGN-COMBINATION-VALIDATION-MATRIX-001 v1.0.4 — Accepted; matrix advisory until emission + validation tests; next = DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.*
+*DESIGN-COMBINATION-VALIDATION-MATRIX-001 v1.0.5 — Accepted; validation test plan defined; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.*

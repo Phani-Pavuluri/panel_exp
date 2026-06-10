@@ -784,7 +784,9 @@ find panel_exp/design -type f
 
 **Tier-1 emission plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) ✅ **Accepted** — defines Phase 2 producer mapping for DES-001–004, DES-006, constrained DES-011. **Fields are not emitted yet; no validator; 0/31 contract-complete.**
 
-**Next artifact:** **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`**
+**Validation test plan:** [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md) ✅ **Accepted** — defines tests required before schema implementation can be trusted; **tests not implemented**.
+
+**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`**
 
 ---
 
@@ -826,4 +828,4 @@ find panel_exp/design -type f
 
 ---
 
-*DESIGN-CONTRACT-SCHEMA-001 v1.0.1 — Accepted; tier-1 emission plan defined; fields not emitted; next = DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.*
+*DESIGN-CONTRACT-SCHEMA-001 v1.0.2 — Accepted; validation test plan defined; schema implementation untrusted until tests land; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.*
