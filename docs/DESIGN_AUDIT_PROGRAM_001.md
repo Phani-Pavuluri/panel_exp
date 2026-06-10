@@ -172,16 +172,11 @@ Full sequence — later steps blocked until earlier artifacts are **Accepted**:
 
 Enumerate all design methods and helpers from repo inspection; map to [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md). Verdict: `design_code_inventory_complete_contract_gaps_identified`.
 
-### B. DESIGN_LITERATURE_ALIGNMENT_001
+### B. DESIGN_LITERATURE_ALIGNMENT_001 ✅
 
-Per design family, compare to published or standard design logic:
+**Status:** **Accepted** — [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md)
 
-- Matched-market / greedy matching  
-- Blocking / stratification / rerandomization  
-- Trimming / restricted population designs  
-- Supergeo / geo aggregation  
-- Multi-arm / shared-control experiments  
-- Power and MDE design principles  
+Per design family, compare to published or standard design logic (matched-market, blocking, rerandomization, trim, supergeo, multi-cell, power/MDE). Verdict: `design_literature_alignment_complete_with_open_conceptual_gaps`.
 
 ### C. DESIGN_IMPLEMENTATION_VALIDATION_001
 
@@ -448,7 +443,7 @@ First concrete output contract under the design audit lane. Defines **DesignOutp
 
 **Code inventory:** [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) maps current emitted fields against this contract — **no implementation is contract-complete**.
 
-**Later design audit artifacts remain pending:** `DESIGN_LITERATURE_ALIGNMENT_001` (next) → implementation validation → statistical protocol → combination matrix → guardrails → suitability framework.
+**Later design audit artifacts remain pending:** `DESIGN_IMPLEMENTATION_VALIDATION_001` (next) → statistical protocol → combination matrix → guardrails → suitability framework.
 
 ---
 
@@ -489,16 +484,16 @@ Initial guardrails (enforce via `DESIGN_GUARDRAILS_001`):
 
 | Design name | Category | Discovered in | Support status | Audit status | Geometry impact | Concurrency status | Downstream claim status | Required next audit artifact |
 |-------------|----------|---------------|----------------|--------------|-----------------|--------------------|-------------------------|------------------------------|
-| greedy_match_markets | matching_design | assign.py | geo-run active | not_evaluated | unit_panel_single_cell | compatible_with_constraints | contract_required | DESIGN_LITERATURE_ALIGNMENT_001 |
-| CompleteRandomization | standard_assignment | assign.py | geo-run active | not_evaluated | unit_panel_single_cell | compatible_with_constraints | contract_required | DESIGN_LITERATURE_ALIGNMENT_001 |
-| BalancedRandomization | standard_assignment | assign.py | geo-run active | not_evaluated | unit_panel_single_cell | compatible_with_constraints | contract_required | DESIGN_LITERATURE_ALIGNMENT_001 |
-| StratifiedRandomization | stratified_assignment | assign.py | geo-run active | not_evaluated | unit_panel_single_cell | compatible_with_constraints | contract_required | DESIGN_LITERATURE_ALIGNMENT_001 |
-| ThinningDesign | thinning_design | assign.py | geo-run active | not_evaluated | unit_panel_single_cell | not_evaluated | contract_required | DESIGN_LITERATURE_ALIGNMENT_001 |
+| greedy_match_markets | matching_design | assign.py | geo-run active | not_evaluated | unit_panel_single_cell | compatible_with_constraints | contract_required | DESIGN_IMPLEMENTATION_VALIDATION_001 |
+| CompleteRandomization | standard_assignment | assign.py | geo-run active | not_evaluated | unit_panel_single_cell | compatible_with_constraints | contract_required | DESIGN_IMPLEMENTATION_VALIDATION_001 |
+| BalancedRandomization | standard_assignment | assign.py | geo-run active | not_evaluated | unit_panel_single_cell | compatible_with_constraints | contract_required | DESIGN_IMPLEMENTATION_VALIDATION_001 |
+| StratifiedRandomization | stratified_assignment | assign.py | geo-run active | not_evaluated | unit_panel_single_cell | compatible_with_constraints | contract_required | DESIGN_IMPLEMENTATION_VALIDATION_001 |
+| ThinningDesign | thinning_design | assign.py | geo-run active | not_evaluated | unit_panel_single_cell | not_evaluated | contract_required | DESIGN_IMPLEMENTATION_VALIDATION_001 |
 | Rerandomization | blocking wrapper | assign.py | geo-run orchestration | not_evaluated | inherits base | compatible_with_constraints | contract_required | DESIGN_IMPLEMENTATION_VALIDATION_001 |
-| QuickBlock | blocking_assignment | quickblock.py | registered, not geo-run | not_evaluated | unknown_or_not_evaluated | not_evaluated | not_evaluated | DESIGN_LITERATURE_ALIGNMENT_001 |
-| MatchedPair | matching_design | matched_pair.py | registered, not geo-run | not_evaluated | unknown_or_not_evaluated | not_evaluated | not_evaluated | DESIGN_LITERATURE_ALIGNMENT_001 |
-| TrimmedMatchDesign | trimmed_population | trimmed_match.py | registered, direct API | not_evaluated | trimmed_geometry | restricted | bridge_required | DESIGN_LITERATURE_ALIGNMENT_001 |
-| SupergeoModel | supergeo_design | supergeos.py | registered, direct API | not_evaluated | supergeo | blocked_without_bridge | bridge_required | DESIGN_LITERATURE_ALIGNMENT_001 |
+| QuickBlock | blocking_assignment | quickblock.py | registered, not geo-run | not_evaluated | unknown_or_not_evaluated | not_evaluated | not_evaluated | DESIGN_IMPLEMENTATION_VALIDATION_001 |
+| MatchedPair | matching_design | matched_pair.py | registered, not geo-run | not_evaluated | unknown_or_not_evaluated | not_evaluated | not_evaluated | DESIGN_IMPLEMENTATION_VALIDATION_001 |
+| TrimmedMatchDesign | trimmed_population | trimmed_match.py | registered, direct API | not_evaluated | trimmed_geometry | restricted | bridge_required | DESIGN_IMPLEMENTATION_VALIDATION_001 |
+| SupergeoModel | supergeo_design | supergeos.py | registered, direct API | not_evaluated | supergeo | blocked_without_bridge | bridge_required | DESIGN_IMPLEMENTATION_VALIDATION_001 |
 | multi_test_groups | multi_cell_assignment | n_test_grps config | geo-run param | not_evaluated | multi_cell_per_cell | restricted | bridge_required (pooled) | DESIGN_COMBINATION_VALIDATION_MATRIX_001 |
 | GeoExperimentDesign | orchestration | geo_experiment_design.py | active | not_evaluated | emits via assignment | not_evaluated | contract_required | DESIGN_IMPLEMENTATION_VALIDATION_001 |
 | PowerAnalysis | power_mde_helper | power.py | active | not_evaluated | aggregate_two_row (MDE path) | not_evaluated | contract_required | DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001 |
@@ -513,8 +508,8 @@ Recommended sequence:
 
 1. **`DESIGN_OUTPUT_CONTRACT_001`** — metadata schema ✅ **Accepted**  
 2. **`DESIGN_CODE_INVENTORY_001`** — repo enumeration ✅ **Accepted**  
-3. **`DESIGN_LITERATURE_ALIGNMENT_001`** — **(next)**  
-4. **`DESIGN_IMPLEMENTATION_VALIDATION_001`**  
+3. **`DESIGN_LITERATURE_ALIGNMENT_001`** — literature alignment ✅ **Accepted**  
+4. **`DESIGN_IMPLEMENTATION_VALIDATION_001`** — **(next)**  
 5. **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`**  
 6. **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** — design × geometry × estimator × inference × readout  
 7. **`DESIGN_GUARDRAILS_001`**  
@@ -569,4 +564,4 @@ No design promotion, suitability status, TrustReport role, CalibrationSignal eli
 
 ---
 
-*DESIGN-AUDIT-PROGRAM-001 v1.0.2 — DESIGN_CODE_INVENTORY_001 accepted; next = DESIGN_LITERATURE_ALIGNMENT_001.*
+*DESIGN-AUDIT-PROGRAM-001 v1.0.3 — DESIGN_LITERATURE_ALIGNMENT_001 accepted; next = DESIGN_IMPLEMENTATION_VALIDATION_001.*

@@ -621,7 +621,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** D5-STAT queue through **`D5-STAT-MCELL-PERCELL-001`** complete.
 
-**Next planning/enhancement:** **`DESIGN_LITERATURE_ALIGNMENT_001`**. Design code inventory: [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) (**Accepted**).
+**Next planning/enhancement:** **`DESIGN_IMPLEMENTATION_VALIDATION_001`**. Design literature alignment: [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) (**Accepted**).
 
 ---
 
@@ -669,7 +669,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** Future TROP audit sequence; does not change immediate enhancement queue.
 
-**Program next (unchanged):** **`DESIGN_LITERATURE_ALIGNMENT_001`**.
+**Program next (unchanged):** **`DESIGN_IMPLEMENTATION_VALIDATION_001`**.
 
 ---
 
@@ -683,9 +683,9 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** Readout semantics + geometry bridge Accepted.
 
-**Feeds:** `DESIGN_OUTPUT_CONTRACT_001` ✅ → `DESIGN_CODE_INVENTORY_001` ✅ → literature → implementation → statistical protocol → combination matrix → guardrails → design suitability.
+**Feeds:** `DESIGN_OUTPUT_CONTRACT_001` ✅ → `DESIGN_CODE_INVENTORY_001` ✅ → `DESIGN_LITERATURE_ALIGNMENT_001` ✅ → implementation → statistical protocol → combination matrix → guardrails → design suitability.
 
-**Immediate next:** **`DESIGN_LITERATURE_ALIGNMENT_001`**.
+**Immediate next:** **`DESIGN_IMPLEMENTATION_VALIDATION_001`**.
 
 ---
 
@@ -701,7 +701,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** ✅ `DESIGN_CODE_INVENTORY_001` → design validation ladder → combination matrix v2 → experiment planning (deferred).
 
-**Next:** **`DESIGN_LITERATURE_ALIGNMENT_001`**.
+**Next:** **`DESIGN_IMPLEMENTATION_VALIDATION_001`**.
 
 ---
 
@@ -717,7 +717,23 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `DESIGN_LITERATURE_ALIGNMENT_001` → design implementation validation → statistical protocol → combination matrix v2 → guardrails → design suitability.
 
-**Next:** **`DESIGN_LITERATURE_ALIGNMENT_001`**.
+**Next:** **`DESIGN_IMPLEMENTATION_VALIDATION_001`**.
+
+---
+
+## DESIGN-LITERATURE-ALIGNMENT-001 (2026-06-10)
+
+**Artifact:** [`docs/DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md)
+
+**Status:** **`accepted_design_literature_alignment`**
+
+**Verdict:** Aligns 31 inventory rows (DES-001–DES-031) to canonical experimental-design methodology (geo/matched-market, randomization, blocking, rerandomization, thinning, trim, supergeo, multi-cell, power/MDE). **14 open conceptual gaps (G-DES-001–014).** **0 validated designs.** Verdict: `design_literature_alignment_complete_with_open_conceptual_gaps`. **Documentation/governance only** — no code changes, no promotion.
+
+**Prerequisites:** [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) Accepted; [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) Accepted.
+
+**Feeds:** `DESIGN_IMPLEMENTATION_VALIDATION_001` → statistical protocol → combination matrix v2 → guardrails → design suitability.
+
+**Next:** **`DESIGN_IMPLEMENTATION_VALIDATION_001`**.
 
 ---
 

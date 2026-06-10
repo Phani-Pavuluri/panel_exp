@@ -91,6 +91,8 @@ From `_INFERENCE_MODE_CATALOG` and D3 INF-* rows. DID native bootstrap is **esti
 
 **Metadata gap summary (from inventory):** No design emits `geometry_id`, `forbidden_downstream_claims`, or full unit-universe fields. `DesignEvidence` partial only. Supergeo lacks `supergeo_source_unit_map` in output path. Trim lacks exclusion/target-population metadata. Multi-cell lacks `cell_ids` / shared-control policy in evidence. Power/MDE not linked to design contract envelope.
 
+**Conceptual gaps (from literature alignment):** G-DES-001–014 — thinning semantics ambiguous; shared-control implicit; rerandomization inference not connected; block/pair metadata absent; trim/supergeo bridges undefined; balanced vs complete randomization naming risk. See [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) §21.
+
 From [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) (supersedes [`TRACK_D_DESIGN_METHOD_INVENTORY_001.md`](TRACK_D_DESIGN_METHOD_INVENTORY_001.md) for enumeration authority) and design registry.
 
 | Repo name | Code path | Compatible readouts observed | Power/MDE evidence | Geometry / estimand assumptions | Design–readout gaps | Development status |
@@ -399,7 +401,8 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 | **16** | **GEOMETRY_BRIDGE_REQUIREMENTS_001** | Geometry bridge | ✅ **Accepted** — [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) |
 | **17** | **DESIGN_OUTPUT_CONTRACT_001** | Design output contract | ✅ Accepted |
 | **18** | **DESIGN_CODE_INVENTORY_001** | Design code inventory | ✅ Accepted — [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) |
-| **19** | **DESIGN_LITERATURE_ALIGNMENT_001** | Design literature alignment | **Next** |
+| **19** | **DESIGN_LITERATURE_ALIGNMENT_001** | Design literature alignment | ✅ Accepted — [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) |
+| **20** | **DESIGN_IMPLEMENTATION_VALIDATION_001** | Design implementation validation | **Next** |
 | **—** | **TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001** | TROP parked audit program | ✅ **Proposed** — [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) |
 | **15** | **METHOD_ENHANCEMENT_ROADMAP_001** | Post-Level-B synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 

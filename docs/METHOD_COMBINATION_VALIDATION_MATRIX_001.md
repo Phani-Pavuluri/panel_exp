@@ -53,7 +53,7 @@ Layer 5 is the **final pre-suitability layer**. It converts Layers 1–4 into a 
 | TBR aggregate point Level B | ✅ [`D5_STAT_TBR_AGG_001_REPORT.md`](track_d/D5_STAT_TBR_AGG_001_REPORT.md) |
 | DID bootstrap Level B | ✅ [`D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md) |
 | MCELL per-cell Level B | ✅ [`D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) |
-| Next concrete work | **`DESIGN_LITERATURE_ALIGNMENT_001`** |
+| Next concrete work | **`DESIGN_IMPLEMENTATION_VALIDATION_001`** |
 | Design output contract | ✅ [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) |
 | Geometry bridge (v2 input) | ✅ [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) |
 | Enhancement synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
@@ -194,7 +194,8 @@ Recommended order (not authorization to promote):
 10. **GEOMETRY_BRIDGE_REQUIREMENTS_001** — geometry bridge ✅ **Accepted**  
 11. **DESIGN_OUTPUT_CONTRACT_001** — design output contract ✅ **Accepted**  
 12. **DESIGN_CODE_INVENTORY_001** — design code inventory ✅ **Accepted** — [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md)  
-13. **DESIGN_LITERATURE_ALIGNMENT_001** — **(next)**  
+13. **DESIGN_LITERATURE_ALIGNMENT_001** — design literature alignment ✅ **Accepted** — [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md)  
+14. **DESIGN_IMPLEMENTATION_VALIDATION_001** — **(next)**  
 
 JSON: `d5_stat_execution_queue` · `d5_stat_blocked_queue`.
 
@@ -240,11 +241,11 @@ Regenerate: `python -m panel_exp.validation.method_combination_validation_matrix
 
 ---
 
-## 17. Next concrete work: DESIGN_LITERATURE_ALIGNMENT_001
+## 17. Next concrete work: DESIGN_IMPLEMENTATION_VALIDATION_001
 
-DESIGN_OUTPUT_CONTRACT_001 ✅ · DESIGN_CODE_INVENTORY_001 ✅ — [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md). **Matrix v2 must reference inventory IDs (DES-001–DES-031) and contract field coverage per row** — not ad hoc design names.
+DESIGN_OUTPUT_CONTRACT_001 ✅ · DESIGN_CODE_INVENTORY_001 ✅ · DESIGN_LITERATURE_ALIGNMENT_001 ✅. **Matrix v2 must use literature-aligned design semantics** ([`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md)) and inventory IDs (DES-001–DES-031) per row.
 
-**Next:** `DESIGN_LITERATURE_ALIGNMENT_001` — not TrustReport wiring until OC archives exist.
+**Next:** `DESIGN_IMPLEMENTATION_VALIDATION_001` — not TrustReport wiring until OC archives exist.
 
 ---
 
@@ -272,4 +273,4 @@ DESIGN_OUTPUT_CONTRACT_001 ✅ · DESIGN_CODE_INVENTORY_001 ✅ — [`DESIGN_COD
 
 ---
 
-*METHOD-COMBINATION-VALIDATION-MATRIX-001 v1.0.6 — DESIGN_CODE_INVENTORY_001 accepted; matrix v2 must use inventory IDs; next = DESIGN_LITERATURE_ALIGNMENT_001.*
+*METHOD-COMBINATION-VALIDATION-MATRIX-001 v1.0.7 — DESIGN_LITERATURE_ALIGNMENT_001 accepted; matrix v2 must use literature-aligned semantics; next = DESIGN_IMPLEMENTATION_VALIDATION_001.*
