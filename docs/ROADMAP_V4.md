@@ -242,7 +242,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Status:** **active** — authoritative method-foundation sequence  
 **Verdict:** **Pauses** trust-framework / method-role expansion until layers 1–5 complete (code inventory → literature → implementation → statistical OC → combination matrix). Prior synthesis and MCELL-first chains are **evidence only**, not sequencing authority.
 
-**Ordered next:** ✅ D5 Level B + design audit ladder (through **validator implementation**) → **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`** → tier-1 emission → trust-framework integration (roles paused).
+**Ordered next:** ✅ D5 Level B + design audit ladder (through **tier-1 emission implementation plan**) → **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`** → runtime emission → trust-framework integration (roles paused).
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 
@@ -254,7 +254,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 
 **Design statistical validation protocol:** [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) — ✅ Accepted; protocol defined; 0 designs statistically validated.
 
-**Design audit lane:** [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) — Accepted; validator ✅ implemented; **emission not wired**; next = **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`**. **0 contract-complete designs; downstream blocked.**
+**Design audit lane:** [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) — Accepted; validator ✅ implemented; tier-1 emission wiring plan ✅ defined; **runtime not implemented**; next = **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`**. **0 contract-complete designs; downstream blocked.**
 
 ### METHOD-ENHANCEMENT-ROADMAP-001 (post-Level-B synthesis)
 
@@ -334,7 +334,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Archive:** [`track_d/archives/D5_STAT_AUGSYNTH_POINT_001_results.json`](track_d/archives/D5_STAT_AUGSYNTH_POINT_001_results.json)  
 **Generator:** [`panel_exp/validation/track_d_d5_stat_augsynth_point_001.py`](../panel_exp/validation/track_d_d5_stat_augsynth_point_001.py)  
 **Status:** **complete** — AugSynthCVXPY point only; `characterization_mixed_requires_followup`  
-**Next:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`**
+**Next:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`**
 
 ### METHOD-SOUNDNESS-AND-GAP-ROADMAP-001
 
