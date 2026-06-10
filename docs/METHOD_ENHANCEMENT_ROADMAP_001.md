@@ -52,7 +52,7 @@ The D5-STAT queue established **what the codebase does today** under controlled 
 | **D5-STAT-DID-BOOTSTRAP-001** | Level B DID embedded bootstrap | `characterization_mixed_requires_followup` | [`D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md) |
 | **D5-STAT-MCELL-PERCELL-001** | Level B per-cell execution | `characterization_pass_with_caveats` | [`D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) |
 
-**Queue status:** D5 Level B complete. Readout semantics + geometry bridge + **design output contract** ✅ Accepted. Next enhancement artifact: **`DESIGN_CODE_INVENTORY_001`**.
+**Queue status:** D5 Level B complete. Readout semantics + geometry bridge + design output contract + **design code inventory** ✅ Accepted. Next enhancement artifact: **`DESIGN_LITERATURE_ALIGNMENT_001`**.
 
 ---
 
@@ -152,7 +152,7 @@ Define bridge requirements and blocked transitions for:
 
 Governed **DesignOutputContract** schema for all designs: identity, unit universe, assignment, multi-cell, geometry, trim/supergeo, balance, power/MDE, compatibility hints, forbidden claims, PASS/WARN/BLOCK policy.
 
-**Feeds:** `DESIGN_CODE_INVENTORY_001` → design implementation validation → combination matrix v2 → suitability v2.
+**Feeds:** ✅ `DESIGN_CODE_INVENTORY_001` → `DESIGN_LITERATURE_ALIGNMENT_001` → design implementation validation → combination matrix v2 → suitability v2.
 
 ### D. SCM_JK_STRESS_NULL_CALIBRATION_001
 
@@ -221,7 +221,7 @@ Triply robust / TROP requires the **same audit rigor** as characterized estimato
 5. `TRIPLY_ROBUST_SUITABILITY_EXTENSION_001`  
 6. Future D5-style characterization **only if** implementation exists under separate plan  
 
-**Immediate program priority:** `DESIGN_CODE_INVENTORY_001` — TROP audit steps follow design/readout/geometry contracts, not implementation.
+**Immediate program priority:** `DESIGN_LITERATURE_ALIGNMENT_001` — TROP audit steps follow design/readout/geometry contracts, not implementation.
 
 ### N. DESIGN_AUDIT_PROGRAM_001 ✅
 
@@ -230,8 +230,8 @@ Triply robust / TROP requires the **same audit rigor** as characterized estimato
 Design methods require the **same audit rigor** as estimator/inference families. Estimator/inference audit parity is **not complete** until the design ladder completes. **No implementation** in this artifact. Future sequence:
 
 1. `DESIGN_OUTPUT_CONTRACT_001` ✅ **Accepted** — [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md)  
-2. `DESIGN_CODE_INVENTORY_001` *(next)*  
-3. `DESIGN_LITERATURE_ALIGNMENT_001`  
+2. `DESIGN_CODE_INVENTORY_001` ✅ **Accepted** — [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md)  
+3. `DESIGN_LITERATURE_ALIGNMENT_001` *(next)*  
 4. `DESIGN_IMPLEMENTATION_VALIDATION_001`  
 5. `DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`  
 6. `DESIGN_COMBINATION_VALIDATION_MATRIX_001`  
@@ -268,7 +268,8 @@ Design methods require the **same audit rigor** as estimator/inference families.
 | **INFERENCE_READOUT_SEMANTICS_001** | ✅ **Complete (Accepted)** — [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) |
 | **GEOMETRY_BRIDGE_REQUIREMENTS_001** | ✅ **Complete (Accepted)** — [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) |
 | **DESIGN_OUTPUT_CONTRACT_001** | ✅ **Complete (Accepted)** — [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) |
-| **Next enhancement** | **`DESIGN_CODE_INVENTORY_001`** |
+| **DESIGN_CODE_INVENTORY_001** | ✅ **Complete (Accepted)** — [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) |
+| **Next enhancement** | **`DESIGN_LITERATURE_ALIGNMENT_001`** |
 | Constraint | No governed uncertainty claim until readout semantics proven |
 | Feeds | `TBRRIDGE_OPERATOR_CONTRACT_001` · `INFERENCE_READOUT_SEMANTICS_001` |
 
@@ -280,7 +281,7 @@ Do not skip TBRRidge characterization to begin code enhancement — it completes
 
 Recommended sequence:
 
-1. Execute **`DESIGN_CODE_INVENTORY_001`**
+1. Execute **`DESIGN_LITERATURE_ALIGNMENT_001`**
 2. Targeted method-family fixes (TBR readout, DID cumulative fix, SCM stress-null, TBRRidge operator contract, …)
 4. **`TBR_READOUT_SEMANTICS_001`**
 5. **`TBRRIDGE_OPERATOR_CONTRACT_001`**
@@ -347,4 +348,4 @@ This roadmap does **not**:
 
 ---
 
-*METHOD-ENHANCEMENT-ROADMAP-001 v1.0.7 — DESIGN_OUTPUT_CONTRACT_001 accepted; next = DESIGN_CODE_INVENTORY_001.*
+*METHOD-ENHANCEMENT-ROADMAP-001 v1.0.8 — DESIGN_CODE_INVENTORY_001 accepted; next = DESIGN_LITERATURE_ALIGNMENT_001.*

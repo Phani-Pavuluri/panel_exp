@@ -334,7 +334,9 @@ Regenerate: `python -m panel_exp.validation.method_statistical_validation_protoc
 | `D5-STAT-DID-BOOTSTRAP-001` | ✅ Level B DID bootstrap — `characterization_mixed_requires_followup` |
 | `D5-STAT-MCELL-PERCELL-001` | ✅ Level B per-cell execution — `characterization_pass_with_caveats` |
 
-**Next execution:** `DESIGN_CODE_INVENTORY_001`.
+**Next execution:** `DESIGN_LITERATURE_ALIGNMENT_001`.
+
+**Design validation worlds:** Future design-side statistical validation (`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`) must use methods discovered in [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) — not ad hoc design shortlists.
 
 **Geometry bridge:** ✅ [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) (**Accepted**) — canonical geometry IDs, bridge/blocked transitions, required metadata.
 
