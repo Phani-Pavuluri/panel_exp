@@ -47,12 +47,13 @@ Define **how** design × estimator × inference × geometry × estimand combinat
 | D5-STAT OC execution | ✅ Complete through TBRRidge INF |
 | Post-D5 readout semantics | ✅ [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) (**Accepted**) |
 | Post-D5 geometry bridge | ✅ [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) (**Accepted**) |
-| Next enhancement | **`DESIGN_OUTPUT_CONTRACT_001`** |
+| Post-D5 design output contract | ✅ [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) (**Accepted**) |
+| Next enhancement | **`DESIGN_CODE_INVENTORY_001`** |
 | Post-Level-B enhancement synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 | Trust role assignment | **Blocked** — `TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001` after OC evidence |
 | Design audit program | ✅ [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) (**Accepted**) |
 
-**Suitability v2 dependency:** Requires readout semantics + geometry bridge (both ✅ Accepted), `DESIGN_OUTPUT_CONTRACT_001`, design audit ladder ([`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md)), and targeted enhancement lanes. **Current framework is incomplete without design audit parity.** **TROP:** no current suitability status — requires [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) ladder + `TRIPLY_ROBUST_SUITABILITY_EXTENSION_001` before any row advancement.
+**Suitability v2 dependency:** Requires readout semantics + geometry bridge + **design output contract** (all ✅ Accepted), design audit ladder completion, and targeted enhancement lanes. **Suitability cannot be evaluated for any combination unless design output satisfies [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md).** **Current framework is incomplete without design audit parity.**
 
 ---
 
@@ -216,7 +217,7 @@ Family-level quarantine (quickblock, matchedpair, legacy SCM) remains in Layer 3
 
 **MCELL per-cell Level B:** ✅ **`D5-STAT-MCELL-PERCELL-001`**.
 
-**Immediate next concrete artifact:** **`DESIGN_OUTPUT_CONTRACT_001`**.
+**Immediate next concrete artifact:** **`DESIGN_CODE_INVENTORY_001`**.
 
 Then (from Layer 5 matrix queue):
 
@@ -228,7 +229,8 @@ Then (from Layer 5 matrix queue):
 6. D5-STAT-TBRRIDGE-INF-001 ✅  
 7. INFERENCE_READOUT_SEMANTICS_001 ✅  
 8. GEOMETRY_BRIDGE_REQUIREMENTS_001 ✅  
-9. DESIGN_OUTPUT_CONTRACT_001 **(next)**  
+9. DESIGN_OUTPUT_CONTRACT_001 ✅  
+10. DESIGN_CODE_INVENTORY_001 **(next)**  
 
 Blocked queue unchanged from Layer 5 (`d5_stat_blocked_queue` in JSON).
 
@@ -269,7 +271,7 @@ Regenerate: `python -m panel_exp.validation.design_estimator_inference_suitabili
 
 **Do not** wire TrustReport or F-DECISION from this framework.
 
-**Next concrete work:** execute **`DESIGN_OUTPUT_CONTRACT_001`** (geometry bridge complete — [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md)).
+**Next concrete work:** execute **`DESIGN_CODE_INVENTORY_001`** (design output contract complete — [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md)).
 
 **After OC evidence accumulates:** author **`TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001`** or targeted F-DECISION/TrustReport amendments — not before.
 
@@ -301,9 +303,10 @@ Regenerate: `python -m panel_exp.validation.design_estimator_inference_suitabili
 | Level B MCELL per-cell D5-STAT-MCELL-PERCELL-001 | ✅ |
 | Readout semantics controller | ✅ [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) |
 | Geometry bridge controller | ✅ [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) |
-| Next artifact = DESIGN_OUTPUT_CONTRACT_001 | ✅ |
+| Design output contract = DESIGN_OUTPUT_CONTRACT_001 | ✅ |
+| Next artifact = DESIGN_CODE_INVENTORY_001 | ✅ |
 | JSON + tests | ✅ |
 
 ---
 
-*DESIGN-ESTIMATOR-INFERENCE-SUITABILITY-FRAMEWORK-001 v1.0.4 — DESIGN_AUDIT_PROGRAM_001 accepted; framework incomplete without design audit parity; next = DESIGN_OUTPUT_CONTRACT_001.*
+*DESIGN-ESTIMATOR-INFERENCE-SUITABILITY-FRAMEWORK-001 v1.0.5 — DESIGN_OUTPUT_CONTRACT_001 accepted; suitability requires contract satisfaction; next = DESIGN_CODE_INVENTORY_001.*

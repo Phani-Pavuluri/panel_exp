@@ -621,7 +621,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** D5-STAT queue through **`D5-STAT-MCELL-PERCELL-001`** complete.
 
-**Next planning/enhancement:** **`DESIGN_OUTPUT_CONTRACT_001`**. Geometry bridge: [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) (**Accepted**).
+**Next planning/enhancement:** **`DESIGN_CODE_INVENTORY_001`**. Design output contract: [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) (**Accepted**).
 
 ---
 
@@ -669,7 +669,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** Future TROP audit sequence; does not change immediate enhancement queue.
 
-**Program next (unchanged):** **`DESIGN_OUTPUT_CONTRACT_001`**.
+**Program next (unchanged):** **`DESIGN_CODE_INVENTORY_001`**.
 
 ---
 
@@ -683,9 +683,25 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** Readout semantics + geometry bridge Accepted.
 
-**Feeds:** `DESIGN_OUTPUT_CONTRACT_001` → design code inventory → literature → implementation → statistical protocol → combination matrix → guardrails → design suitability.
+**Feeds:** `DESIGN_OUTPUT_CONTRACT_001` ✅ → design code inventory → literature → implementation → statistical protocol → combination matrix → guardrails → design suitability.
 
-**Immediate next:** **`DESIGN_OUTPUT_CONTRACT_001`**.
+**Immediate next:** **`DESIGN_CODE_INVENTORY_001`**.
+
+---
+
+## DESIGN-OUTPUT-CONTRACT-001 (2026-06-09)
+
+**Artifact:** [`docs/DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md)
+
+**Status:** **`accepted_design_output_contract`**
+
+**Verdict:** Governed **DesignOutputContract** schema for all designs (identity, assignment, geometry, multi-cell, trim/supergeo, balance, power/MDE, forbidden claims, PASS/WARN/BLOCK). Operationalizes geometry bridge + readout semantics + design audit program. **No implementation** — current `DesignEvidence` partial only.
+
+**Prerequisites:** [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) Accepted; readout + geometry bridge Accepted.
+
+**Feeds:** `DESIGN_CODE_INVENTORY_001` → design validation ladder → combination matrix v2 → experiment planning (deferred).
+
+**Next:** **`DESIGN_CODE_INVENTORY_001`**.
 
 ---
 
