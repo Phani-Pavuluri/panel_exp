@@ -500,7 +500,9 @@ Until enforcement lands, consumers must apply this document manually or via futu
 
 **No suitability row may advance on BLOCK or unresolved REQUIRES_* status.** Verdict: `design_suitability_framework_defined_no_downstream_suitable_designs`.
 
-**Next artifact:** `DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`.
+**Enforcement plan:** [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md) ✅ **Accepted** — **prerequisite for runtime guardrail enforcement** (`DESIGN_GUARDRAIL_ENFORCEMENT_001`). Guardrail verdicts unchanged until contract fields are emitted and validated.
+
+**Next artifact:** `DESIGN_CONTRACT_SCHEMA_001`.
 
 ---
 
@@ -544,9 +546,9 @@ find docs -iname "*GUARDRAIL*" -o -iname "*COMBINATION*" -o -iname "*SUITABILITY
 
 ## 31. Roadmap
 
-**Next artifact:** **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`**
+**Next artifact:** **`DESIGN_CONTRACT_SCHEMA_001`**
 
-Suitability framework ✅ [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md) consumes guardrails + combination matrix.
+Enforcement plan ✅ [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md) · Suitability framework ✅ [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md).
 
 ---
 
@@ -584,4 +586,4 @@ Suitability framework ✅ [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABI
 
 ---
 
-*DESIGN-GUARDRAILS-001 v1.0.1 — Accepted; verdict unchanged; suitability framework consumes guardrails; next = DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.*
+*DESIGN-GUARDRAILS-001 v1.0.2 — Accepted; verdict unchanged; enforcement plan prerequisite for runtime; next = DESIGN_CONTRACT_SCHEMA_001.*

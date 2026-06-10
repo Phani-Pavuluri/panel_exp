@@ -524,7 +524,9 @@ Documented for later — **not in scope here:**
 
 **Suitability:** [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md) ✅ **Accepted** — **current implementation blockers (§25) prevent downstream-ready suitability**; 0 contract-complete designs → universal `contract_blocked`.
 
-**Next artifact:** **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`**.
+**Enforcement plan:** [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md) ✅ **Accepted** — **current implementation blockers (§24–§25) are routed into phased enforcement** (IV-DES-001–016 → Phases 2–4).
+
+**Next artifact:** **`DESIGN_CONTRACT_SCHEMA_001`**.
 
 Guardrails: [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) ✅ **Accepted** — consumes hard blockers from §25.
 
@@ -566,4 +568,4 @@ Guardrails: [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) ✅ **Accepte
 
 ---
 
-*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.0.4 — Accepted; blockers prevent downstream-ready suitability; next = DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.*
+*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.0.5 — Accepted; blockers routed to enforcement plan; next = DESIGN_CONTRACT_SCHEMA_001.*

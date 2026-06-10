@@ -498,10 +498,11 @@ Future `EXPERIMENT_RECOMMENDATION_CONTRACT_001` and `DESIGN_CANDIDATE_RANKING_PO
 
 Governance sequence after this artifact:
 
-1. **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`** *(next)* — plan for emitting `geometry_id`, `forbidden_downstream_claims`, concurrency status, and contract validation in `DesignEvidence` / `geo_runner`  
-2. **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** *(follow-on)* — runtime PASS/WARN/BLOCK enforcement per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §27  
+1. **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`** ✅ **Accepted** — [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md)  
+2. **`DESIGN_CONTRACT_SCHEMA_001`** *(next)* — machine-readable schema  
+3. **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** *(follow-on)* — runtime enforcement per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §27  
 
-Contract enforcement planning precedes runtime guardrail wiring.
+Schema and emission precede runtime guardrail wiring.
 
 ---
 
@@ -547,9 +548,11 @@ find docs -iname "*SUITABILITY*" -o -iname "*GUARDRAIL*" -o -iname "*COMBINATION
 
 ## 32. Roadmap
 
-**Next artifact:** **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`**
+**Enforcement plan:** [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md) ✅ **Accepted** — **positive suitability requires contract enforcement implementation** (Phases 1–3 minimum). All designs remain `contract_blocked` until emission + validation land.
 
-Then: `DESIGN_GUARDRAIL_ENFORCEMENT_001` (runtime) · `D5-DES-STAT-*` execution · experiment planning artifacts.
+**Next artifact:** **`DESIGN_CONTRACT_SCHEMA_001`**
+
+Then: tier-1 emission · `DESIGN_GUARDRAIL_ENFORCEMENT_001` · `D5-DES-STAT-*` · experiment planning.
 
 ---
 
@@ -589,4 +592,4 @@ Then: `DESIGN_GUARDRAIL_ENFORCEMENT_001` (runtime) · `D5-DES-STAT-*` execution 
 
 ---
 
-*DESIGN-SUITABILITY-FRAMEWORK-001 v1.0.0 — Accepted; verdict = design_suitability_framework_defined_no_downstream_suitable_designs; next = DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.*
+*DESIGN-SUITABILITY-FRAMEWORK-001 v1.0.1 — Accepted; positive suitability requires enforcement implementation; next = DESIGN_CONTRACT_SCHEMA_001.*
