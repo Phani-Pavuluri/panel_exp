@@ -421,7 +421,9 @@ Per [`EXPERIMENT_PLANNING_ORCHESTRATION_ROADMAP_001.md`](EXPERIMENT_PLANNING_ORC
 
 **Enforcement plan:** [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md) ✅ **Accepted** — **matrix statuses remain advisory until contract fields are emitted and validated** in code.
 
-**Next artifact:** **`DESIGN_CONTRACT_SCHEMA_001`**
+**Schema:** [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) ✅ — **matrix statuses remain advisory until contract fields are emitted and validated** per schema.
+
+**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`**
 
 Suitability framework ✅ [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md) consumes matrix statuses.
 
@@ -485,4 +487,4 @@ poetry run python -c "from panel_exp.design.registry import get_design_registry;
 
 ---
 
-*DESIGN-COMBINATION-VALIDATION-MATRIX-001 v1.0.2 — Accepted; matrix advisory until contract enforcement; next = DESIGN_CONTRACT_SCHEMA_001.*
+*DESIGN-COMBINATION-VALIDATION-MATRIX-001 v1.0.3 — Accepted; matrix advisory until emission; next = DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.*

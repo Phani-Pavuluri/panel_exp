@@ -412,7 +412,8 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 | **23** | **DESIGN_GUARDRAILS_001** | Design guardrails | ✅ Accepted — [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) |
 | **24** | **DESIGN_SUITABILITY_FRAMEWORK_001** | Design suitability | ✅ Accepted — [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md) |
 | **25** | **DESIGN_CONTRACT_ENFORCEMENT_PLAN_001** | Contract enforcement planning | ✅ Accepted — [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md) |
-| **26** | **DESIGN_CONTRACT_SCHEMA_001** | Contract schema | **Next** |
+| **26** | **DESIGN_CONTRACT_SCHEMA_001** | Contract schema | ✅ Accepted — [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) |
+| **27** | **DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001** | Tier-1 emission plan | **Next** |
 | **—** | **TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001** | TROP parked audit program | ✅ **Proposed** — [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) |
 | **15** | **METHOD_ENHANCEMENT_ROADMAP_001** | Post-Level-B synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 
@@ -439,7 +440,11 @@ Per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) — **0 downstream PA
 | Statistical validation not executed | **REQUIRES_STATISTICAL_VALIDATION** | All 31 designs |
 | Future Bayesian / TROP / SARIMAX | **DEFERRED** → **BLOCK** | DCM-017–019 |
 
-**Next:** `DESIGN_CONTRACT_SCHEMA_001` → tier-1 emission (enforcement plan Phase 2).
+**Next:** `DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001` → code emission (enforcement plan Phase 2).
+
+### Unresolved gap: schema defined, emission/validation not implemented
+
+Per [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) — schema specified; **no `design_contract` block in `DesignEvidence`**; no validator; fixture unchanged; downstream BLOCK.
 
 ### Unresolved implementation gaps (enforcement plan must close)
 
