@@ -462,7 +462,9 @@ This artifact does **not** implement tests, validate contract outputs, promote d
 
 **Validator:** ✅ **`panel_exp/validation/design_contract_validator_001.py`** + **`tests/validation/test_design_contract_validator_001.py`** — validator-only scope implemented (26 tests). **Not wired to runtime emission.**
 
-**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`**
+**Tier-1 emission implementation plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md) ✅ **Accepted** — tier-1 emission integration tests (§14) **planned until** `DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`.
+
+**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`**
 
 Then: implement validator → add fixtures → add tests → wire tier-1 emission → `DESIGN_GUARDRAIL_ENFORCEMENT_001` → `D5-DES-STAT-*`.
 
@@ -507,4 +509,4 @@ Then: implement validator → add fixtures → add tests → wire tier-1 emissio
 
 ---
 
-*DESIGN-CONTRACT-VALIDATION-TEST-PLAN-001 v1.0.2 — Accepted; validator tests implemented (validator-only); emission not wired; next = DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.*
+*DESIGN-CONTRACT-VALIDATION-TEST-PLAN-001 v1.0.3 — Accepted; validator tests implemented; tier-1 emission tests planned; next = DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001.*

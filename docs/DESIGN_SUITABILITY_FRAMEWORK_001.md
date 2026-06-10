@@ -504,8 +504,9 @@ Governance sequence after this artifact:
 4. **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`** ✅ **Accepted** — validation test plan (**tests not implemented**)  
 5. **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`** ✅ **Accepted** — validator architecture (**not implemented**)  
 6. **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`** ✅ — validator module implemented  
-7. **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`** *(next)* — emission wiring plan  
-8. **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** *(follow-on)* — runtime enforcement per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §27  
+7. **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`** ✅ — emission wiring plan  
+8. **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`** *(next)* — runtime emission code  
+9. **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** *(follow-on)* — runtime enforcement per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §27  
 
 Schema and emission precede runtime guardrail wiring.
 
@@ -561,7 +562,9 @@ find docs -iname "*SUITABILITY*" -o -iname "*GUARDRAIL*" -o -iname "*COMBINATION
 
 **Validator implementation plan:** [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md) ✅ **Accepted** — **positive suitability requires validator PASS plus separate statistical validation**; 0 downstream suitable designs.
 
-**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`**
+**Tier-1 emission implementation plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md) ✅ — **suitability remains blocked until emitted contracts pass validator and separate statistical validation**.
+
+**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`**
 
 Then: tests · tier-1 emission · `DESIGN_GUARDRAIL_ENFORCEMENT_001` · `D5-DES-STAT-*`.
 
@@ -603,4 +606,4 @@ Then: tests · tier-1 emission · `DESIGN_GUARDRAIL_ENFORCEMENT_001` · `D5-DES-
 
 ---
 
-*DESIGN-SUITABILITY-FRAMEWORK-001 v1.0.6 — Accepted; validator exists; positive suitability requires validator PASS + stat validation; next = DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.*
+*DESIGN-SUITABILITY-FRAMEWORK-001 v1.0.7 — Accepted; emission wiring plan defined; suitability blocked; next = DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001.*

@@ -545,7 +545,9 @@ This artifact does **not** implement the validator, validate contracts, promote 
 
 **Implementation:** ✅ **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`** — `panel_exp/validation/design_contract_validator_001.py` + `tests/validation/test_design_contract_validator_001.py`.
 
-**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`** — plan tier-1 emission wiring before runtime `design_contract` emission.
+**Tier-1 emission implementation plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md) ✅ **Accepted** — plans runtime validator invocation at emission; **not wired yet**.
+
+**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`** — runtime emission code.
 
 ---
 
@@ -587,4 +589,4 @@ This artifact does **not** implement the validator, validate contracts, promote 
 
 ---
 
-*DESIGN-CONTRACT-VALIDATOR-IMPLEMENTATION-PLAN-001 v1.0.1 — Accepted; validator implemented; not wired to emission; 0 contract-complete; next = DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.*
+*DESIGN-CONTRACT-VALIDATOR-IMPLEMENTATION-PLAN-001 v1.0.2 — Accepted; validator implemented; tier-1 emission wiring plan defined; runtime not wired; next = DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001.*

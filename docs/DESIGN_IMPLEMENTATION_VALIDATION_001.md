@@ -536,7 +536,9 @@ Documented for later — **not in scope here:**
 
 **Validator:** ✅ **`panel_exp/validation/design_contract_validator_001.py`** — blockers remain until validator passes on **emitted** contracts; **no runtime emission yet**; verdict unchanged (0/31 contract-complete).
 
-**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`**.
+**Tier-1 emission implementation plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md) ✅ **Accepted** — **implementation blockers (IV-DES-001–016) remain until emission code and tier-1 tests pass**; verdict unchanged.
+
+**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`**.
 
 Guardrails: [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) ✅ **Accepted** — consumes hard blockers from §25.
 
@@ -578,4 +580,4 @@ Guardrails: [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) ✅ **Accepte
 
 ---
 
-*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.1.0 — Accepted; validator + tests pass; emission not wired; verdict unchanged (0/31 contract-complete); next = DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.*
+*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.1.1 — Accepted; emission wiring plan defined; blockers until emission code; verdict unchanged (0/31 contract-complete); next = DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001.*

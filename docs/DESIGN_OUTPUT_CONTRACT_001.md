@@ -531,6 +531,8 @@ This artifact is the **first concrete output contract** under [`DESIGN_AUDIT_PRO
 
 **Enforcement plan note:** [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md) sequences schema → tier-1 emission → validation tests → adapters → bridge metadata → runtime enforcement. **No field in this contract is enforced in code until those phases complete.**
 
+**Tier-1 emission implementation plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md) ✅ **Accepted** — design outputs **will eventually include** nested `design_contract` per this schema; **plan-only artifact; not implemented in code**; 0/31 contract-complete unchanged.
+
 **Guardrail note:** Missing required fields in §25 → **BLOCK** per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §12.
 
 ---

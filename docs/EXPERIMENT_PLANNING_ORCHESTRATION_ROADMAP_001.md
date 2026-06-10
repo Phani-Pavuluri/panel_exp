@@ -61,13 +61,16 @@ Experiment planning orchestration artifacts are **blocked** until **all** prereq
 | **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`** | ✅ Accepted — [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md); **tests not implemented** |
 | **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`** | ✅ Accepted — [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md); **not implemented** |
 | **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`** | ✅ Implemented — `design_contract_validator_001.py`; not wired to emission |
-| **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`** | Not started — **next** |
+| **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`** | ✅ Accepted — wiring plan defined; runtime not implemented |
+| **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`** | Not started — **next** |
 | [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) | ✅ Accepted |
 | [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) | ✅ Accepted |
 | Estimator/inference method-specific fixes | Partial — D5 Level B complete; enhancement lanes open |
 | **Suitability framework v2** | Not started — requires design audit parity + combination matrix v2 |
 
 **Rule:** No experiment-planning artifact may be **Accepted** or implemented until dependency gates clear. Parked status does **not** waive gates.
+
+**Design contract note:** Orchestration **cannot consume** `design_contract` fields until **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`** (runtime emission code — pending) **and** guardrail integration exist. [`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md) defines wiring only — **runtime not implemented**.
 
 ---
 

@@ -621,7 +621,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** D5-STAT queue through **`D5-STAT-MCELL-PERCELL-001`** complete.
 
-**Next planning/enhancement:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`** (design-side). Validator: [`panel_exp/validation/design_contract_validator_001.py`](../panel_exp/validation/design_contract_validator_001.py) (**Implemented**; not wired to emission).
+**Next planning/enhancement:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`** (design-side). Tier-1 emission wiring plan: [`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md) (**Accepted**; runtime not implemented).
 
 ---
 
@@ -669,7 +669,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** Future TROP audit sequence; does not change immediate enhancement queue.
 
-**Program next (unchanged):** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`** (design-side).
+**Program next (unchanged):** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`** (design-side).
 
 ---
 
@@ -685,7 +685,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `DESIGN_OUTPUT_CONTRACT_001` ✅ → `DESIGN_CODE_INVENTORY_001` ✅ → `DESIGN_LITERATURE_ALIGNMENT_001` ✅ → `DESIGN_IMPLEMENTATION_VALIDATION_001` ✅ → statistical protocol → combination matrix → guardrails → design suitability.
 
-**Immediate next:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`**.
+**Immediate next:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`**.
 
 ---
 
@@ -701,7 +701,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** ✅ `DESIGN_CODE_INVENTORY_001` → design validation ladder → combination matrix v2 → experiment planning (deferred).
 
-**Next:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`**.
+**Next:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`**.
 
 ---
 
@@ -909,7 +909,23 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** tier-1 emission wiring → guardrail/suitability integration.
 
-**Next:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`** (design-side).
+**Next:** ✅ **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`**.
+
+---
+
+## DESIGN-TIER1-CONTRACT-EMISSION-IMPLEMENTATION-PLAN-001 (2026-06-10)
+
+**Artifact:** [`docs/DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md)
+
+**Status:** **`accepted_design_tier1_contract_emission_implementation_plan`**
+
+**Verdict:** Decomposes tier-1 `design_contract` emission into concrete wiring steps — builder module, `DesignEvidence` optional fields, `geo_runner` validator invocation, tier-1 tests, backward compatibility. Verdict: `design_tier1_contract_emission_implementation_plan_defined_not_implemented`. **Documentation/planning only** — no runtime emission; no fixture regeneration; **0/31 contract-complete**; downstream **blocked**; no TrustReport/CalibrationSignal/MMM/LLM authorization.
+
+**Prerequisites:** [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) Accepted; [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`](../panel_exp/validation/design_contract_validator_001.py) Implemented.
+
+**Feeds:** `DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001` → tier-1 emission tests → guardrail integration.
+
+**Next:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`** (design-side).
 
 ---
 

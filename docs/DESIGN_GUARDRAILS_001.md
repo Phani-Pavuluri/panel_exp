@@ -512,7 +512,9 @@ Until enforcement lands, consumers must apply this document manually or via futu
 
 **Validator:** ✅ **`panel_exp/validation/design_contract_validator_001.py`** — runtime guardrails **will consume** `guardrail_inputs` from validator; **not wired to `geo_runner` yet**.
 
-**Next artifact:** `DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`.
+**Tier-1 emission implementation plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md) ✅ — **guardrails cannot consume runtime contract fields until tier-1 emission is wired** and validator passes on emitted blocks.
+
+**Next artifact:** `DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`.
 
 ---
 
@@ -556,7 +558,7 @@ find docs -iname "*GUARDRAIL*" -o -iname "*COMBINATION*" -o -iname "*SUITABILITY
 
 ## 31. Roadmap
 
-**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`**
+**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`**
 
 Schema ✅ · Tier-1 plan ✅ · Test plan ✅ · Validator plan ✅ · Enforcement plan ✅ · Suitability framework ✅.
 
@@ -596,4 +598,4 @@ Schema ✅ · Tier-1 plan ✅ · Test plan ✅ · Validator plan ✅ · Enforcem
 
 ---
 
-*DESIGN-GUARDRAILS-001 v1.0.7 — Accepted; validator exists; runtime guardrails will consume validator decisions; next = DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.*
+*DESIGN-GUARDRAILS-001 v1.0.8 — Accepted; emission wiring plan defined; guardrails blocked until emission; next = DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001.*

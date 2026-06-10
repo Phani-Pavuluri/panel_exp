@@ -417,7 +417,8 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 | **28** | **DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001** | Contract validation tests | ✅ Accepted — [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md) |
 | **29** | **DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001** | Validator implementation plan | ✅ Accepted — [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md) |
 | **30** | **DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001** | Validator code | ✅ Implemented — `design_contract_validator_001.py` |
-| **31** | **DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001** | Tier-1 emission wiring | **Next** |
+| **31** | **DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001** | Tier-1 emission wiring plan | ✅ Accepted |
+| **32** | **DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001** | Tier-1 runtime emission code | **Next** |
 | **—** | **TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001** | TROP parked audit program | ✅ **Proposed** — [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) |
 | **15** | **METHOD_ENHANCEMENT_ROADMAP_001** | Post-Level-B synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 
@@ -444,7 +445,7 @@ Per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) — **0 downstream PA
 | Statistical validation not executed | **REQUIRES_STATISTICAL_VALIDATION** | All 31 designs |
 | Future Bayesian / TROP / SARIMAX | **DEFERRED** → **BLOCK** | DCM-017–019 |
 
-**Next:** `DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001` → tier-1 code emission (Phase 2 — **planned, not implemented**).
+**Next:** `DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001` → tier-1 runtime emission (Phase 2 — **planned, not implemented**).
 
 ### Unresolved gap: schema defined, emission/validation not implemented
 
@@ -475,7 +476,7 @@ Per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)
 | 0/31 contract-complete | `contract_blocked` | Tier-1 emission **planned** ([`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md)); **not implemented** |
 | Tier-1 emission planned, not implemented | `contract_blocked` | Code emission (Phase 2) |
 | Validation test plan defined, tests not implemented | `contract_blocked` | Tests (Phase 3) |
-| Validator implemented, emission not wired | `contract_blocked` | Tier-1 emission wiring (Phase 2) |
+| Validator implemented, emission wiring plan defined, runtime not wired | `contract_blocked` | Tier-1 emission code (Phase 2) |
 | 0/31 statistically validated | `stat_validation_required` | D5-DES-STAT-* execution |
 | Adapter-required designs | `adapter_required` | QuickBlock/MatchedPair/Trim/Supergeo adapters |
 | Trim/supergeo bridges | `bridge_required` | F-GEO-003/004 |

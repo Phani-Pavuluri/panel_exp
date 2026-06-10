@@ -790,7 +790,9 @@ find panel_exp/design -type f
 
 **Validator:** ✅ **`panel_exp/validation/design_contract_validator_001.py`** — schema enforced by validator; **no runtime emission yet**.
 
-**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`**
+**Tier-1 emission implementation plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md) ✅ — tier-1 emission **must populate schema fields conservatively** per §9; **not implemented in code**.
+
+**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`**
 
 ---
 
@@ -832,4 +834,4 @@ find panel_exp/design -type f
 
 ---
 
-*DESIGN-CONTRACT-SCHEMA-001 v1.0.4 — Accepted; validator implemented; emission not wired; next = DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.*
+*DESIGN-CONTRACT-SCHEMA-001 v1.0.5 — Accepted; tier-1 emission wiring plan defined; fields not emitted; next = DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001.*
