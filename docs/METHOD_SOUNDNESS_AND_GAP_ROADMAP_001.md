@@ -411,7 +411,8 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 | **22** | **DESIGN_COMBINATION_VALIDATION_MATRIX_001** | Design combination matrix | ✅ Accepted — [`DESIGN_COMBINATION_VALIDATION_MATRIX_001.md`](DESIGN_COMBINATION_VALIDATION_MATRIX_001.md) |
 | **23** | **DESIGN_GUARDRAILS_001** | Design guardrails | ✅ Accepted — [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) |
 | **24** | **DESIGN_SUITABILITY_FRAMEWORK_001** | Design suitability | ✅ Accepted — [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md) |
-| **25** | **DESIGN_CONTRACT_ENFORCEMENT_PLAN_001** | Contract enforcement planning | **Next** |
+| **25** | **DESIGN_CONTRACT_ENFORCEMENT_PLAN_001** | Contract enforcement planning | ✅ Accepted — [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md) |
+| **26** | **DESIGN_CONTRACT_SCHEMA_001** | Contract schema | **Next** |
 | **—** | **TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001** | TROP parked audit program | ✅ **Proposed** — [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) |
 | **15** | **METHOD_ENHANCEMENT_ROADMAP_001** | Post-Level-B synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 
@@ -438,7 +439,23 @@ Per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) — **0 downstream PA
 | Statistical validation not executed | **REQUIRES_STATISTICAL_VALIDATION** | All 31 designs |
 | Future Bayesian / TROP / SARIMAX | **DEFERRED** → **BLOCK** | DCM-017–019 |
 
-**Next:** `DESIGN_CONTRACT_ENFORCEMENT_PLAN_001` — contract field emission before positive suitability.
+**Next:** `DESIGN_CONTRACT_SCHEMA_001` → tier-1 emission (enforcement plan Phase 2).
+
+### Unresolved implementation gaps (enforcement plan must close)
+
+Per [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md) §8:
+
+| Gap | Phase | Resolution |
+|-----|-------|------------|
+| IV-DES-001 `geometry_id` | 2 | Emit on DesignEvidence contract block |
+| IV-DES-002 forbidden claims | 2 | Emit static list per geometry |
+| IV-DES-003 concurrency | 2 | Emit compatibility enum |
+| IV-DES-004 adapters | 4 | QuickBlock/MatchedPair/Trim/Supergeo |
+| IV-DES-005–006 supergeo/trim metadata | 4–5 | Adapter + bridge fields |
+| IV-DES-007–009 block/cell/shared-control | 2, 6 | Family-conditional emission |
+| IV-DES-010 power linkage | 7 | Join PowerContract |
+| IV-DES-011–014 assignment/identity caveats | 2–3 | Emission + tests |
+| IV-DES-016 contract tests | 3 | New validator test suite |
 
 ### Remaining blockers preventing positive suitability
 

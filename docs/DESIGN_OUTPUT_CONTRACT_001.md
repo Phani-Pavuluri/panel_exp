@@ -525,9 +525,12 @@ This artifact is the **first concrete output contract** under [`DESIGN_AUDIT_PRO
 | **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`** | ✅ Assert contract completeness or scoped BLOCK in simulation worlds — [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) |
 | **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** | ✅ Rows consume design output fields — [`DESIGN_COMBINATION_VALIDATION_MATRIX_001.md`](DESIGN_COMBINATION_VALIDATION_MATRIX_001.md) |
 | **`DESIGN_GUARDRAILS_001`** | ✅ Hard blockers reference forbidden claims — [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md); **missing required contract fields are BLOCK conditions** per §12 |
-| **`DESIGN_SUITABILITY_FRAMEWORK_001`** | ✅ Suitability requires contract completeness — [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md); **positive suitability is a prerequisite for any non-blocked category** |
+| **`DESIGN_SUITABILITY_FRAMEWORK_001`** | ✅ Suitability requires contract completeness — [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md) |
+| **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`** | ✅ **Defines implementation phases** for contract field emission and validation — [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md) |
 
-**Guardrail note:** Any missing required field in §25 maps to **BLOCK** in [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §12 — not WARN. **Contract completeness is a prerequisite for positive suitability** per suitability framework §11.
+**Enforcement plan note:** [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md) sequences schema → tier-1 emission → validation tests → adapters → bridge metadata → runtime enforcement. **No field in this contract is enforced in code until those phases complete.**
+
+**Guardrail note:** Missing required fields in §25 → **BLOCK** per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §12.
 
 ---
 
@@ -632,4 +635,4 @@ All rows: **`contract_required`** · **`not_contract_validated`** · **not suita
 
 ---
 
-*DESIGN-OUTPUT-CONTRACT-001 v1.0.7 — Contract completeness prerequisite for suitability; next = DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.*
+*DESIGN-OUTPUT-CONTRACT-001 v1.0.8 — Enforcement plan defines implementation phases; next = DESIGN_CONTRACT_SCHEMA_001.*
