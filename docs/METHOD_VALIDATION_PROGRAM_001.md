@@ -264,11 +264,13 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **TBRRidge inference Level B:** ✅ [`docs/track_d/D5_STAT_TBRRIDGE_INF_001_REPORT.md`](track_d/D5_STAT_TBRRIDGE_INF_001_REPORT.md) + [`track_d/archives/D5_STAT_TBRRIDGE_INF_001_results.json`](track_d/archives/D5_STAT_TBRRIDGE_INF_001_results.json) (regenerate: `poetry run python -m panel_exp.validation.track_d_d5_stat_tbrridge_inf_001`).
 
-**Post-D5 enhancement sequence (documentation):** ✅ readout semantics · ✅ geometry bridge · ✅ design output contract · ✅ design code inventory · ✅ **design literature alignment** · ✅ **design implementation validation** → **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`** (design-side) → targeted method-family fixes.
+**Post-D5 enhancement sequence (documentation):** ✅ readout semantics · ✅ geometry bridge · ✅ design output contract · ✅ design code inventory · ✅ **design literature alignment** · ✅ **design implementation validation** · ✅ **design statistical validation protocol** → **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** (design-side) → targeted method-family fixes.
 
 **Design literature alignment:** [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) — **Accepted**; prerequisite for design implementation validation and statistical protocol worlds.
 
-**Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — **Accepted**; prerequisite for design statistical validation; statistical validation must be scoped to implementation-validated behavior, not intended behavior; **0 contract-complete designs**.
+**Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — **Accepted**; prerequisite for design statistical validation; **0 contract-complete designs**.
+
+**Design statistical validation protocol:** [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) — **Accepted**; design-side counterpart to Layer 4; worlds scoped to implementation-validated behavior; **0 designs statistically validated**; future execution via `D5-DES-STAT-*` harnesses only.
 
 **Design code inventory:** [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) — **Accepted**; authoritative enumeration of design methods and helpers; maps emitted fields to design output contract.
 
@@ -276,7 +278,7 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **Deferred estimator audit track (parked, not rejected):** [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) — TROP audit ladder follows design-output contract; **no TROP implementation** in program scope.
 
-**Design audit track:** [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) — Accepted; inventory ✅ · literature ✅ · implementation validation ✅; next = **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`**.
+**Design audit track:** [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) — Accepted; inventory ✅ · literature ✅ · implementation validation ✅ · statistical protocol ✅; next = **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`**.
 
 **Post-Level-B synthesis:** ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) — converts D5 characterization findings into prioritized enhancement lanes (readout semantics, geometry bridges, operator contracts). **Not** promotion or suitability authorization.
 

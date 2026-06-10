@@ -32,7 +32,7 @@ Layer 4 defines **synthetic worlds**, **metrics**, **acceptance criteria classes
 
 **Not answered here:** trust roles · promotion · suitability matrix (Layer 5).
 
-**Design methods:** Estimator/inference protocol rows do **not** substitute for design-method statistical validation. Future **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`** must assert **DesignOutputContract** completeness per [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) in every design simulation world.
+**Design methods:** Estimator/inference protocol rows do **not** substitute for design-method statistical validation. **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`** — ✅ Accepted — [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) is the **design-specific counterpart**; it asserts **DesignOutputContract** completeness or explicit scoped BLOCK per [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) in every design simulation world. **0 designs statistically validated.**
 
 **Wording:** Use **ready for protocol**, **blocked**, or **research-only** — never “validated,” “trusted,” or “eligible for promotion.”
 
@@ -334,9 +334,11 @@ Regenerate: `python -m panel_exp.validation.method_statistical_validation_protoc
 | `D5-STAT-DID-BOOTSTRAP-001` | ✅ Level B DID bootstrap — `characterization_mixed_requires_followup` |
 | `D5-STAT-MCELL-PERCELL-001` | ✅ Level B per-cell execution — `characterization_pass_with_caveats` |
 
-**Next execution:** `DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001` (design-side).
+**Design-side protocol:** ✅ [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) — Accepted; verdict `design_statistical_validation_protocol_defined_not_executed`.
 
-**Design validation worlds:** Must be scoped to **implementation-validated behavior** from [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) and methods in [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) with **literature-aligned failure modes** from [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) — not intended-only behavior or ad hoc shortlists. `adapter_required` and `implementation_behavior_ambiguous` designs remain blocked or separately scoped.
+**Next execution (design-side):** `D5-DES-STAT-*` harnesses per design protocol §27 — **not started**. Then `DESIGN_COMBINATION_VALIDATION_MATRIX_001`.
+
+**Design validation worlds:** Scoped to **implementation-validated behavior** from [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) and methods in [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) with **literature-aligned failure modes** from [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md). `adapter_required` and `implementation_behavior_ambiguous` designs remain blocked or separately scoped.
 
 **Geometry bridge:** ✅ [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) (**Accepted**) — canonical geometry IDs, bridge/blocked transitions, required metadata.
 

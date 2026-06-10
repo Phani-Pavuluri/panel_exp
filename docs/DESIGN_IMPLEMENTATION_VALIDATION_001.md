@@ -518,7 +518,9 @@ Documented for later — **not in scope here:**
 
 ## 32. Roadmap
 
-**Next artifact:** **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`** (design-side statistical validation worlds scoped to validated behavior).
+**Statistical validation protocol:** [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) — **Accepted**; derived from observed implementation statuses, contract blockers, and adapter-required scopes in this artifact (§9–§25). **Does not change implementation verdicts.**
+
+**Next artifact:** **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`**.
 
 Then: design combination matrix v2 · guardrails · design suitability framework.
 
@@ -560,4 +562,4 @@ Then: design combination matrix v2 · guardrails · design suitability framework
 
 ---
 
-*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.0.0 — Accepted; verdict = design_implementation_validation_complete_contract_blockers_identified; next = DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.*
+*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.0.1 — Accepted; verdict unchanged; statistical protocol derived from impl statuses; next = DESIGN_COMBINATION_VALIDATION_MATRIX_001.*

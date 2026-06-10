@@ -48,11 +48,11 @@ Experiment planning orchestration artifacts are **blocked** until **all** prereq
 |--------------|--------------|
 | [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) | ✅ Accepted — ladder not complete |
 | [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) | ✅ Accepted — ladder not complete |
-| **`DESIGN_CODE_INVENTORY_001`** | Not started |
-| **`DESIGN_LITERATURE_ALIGNMENT_001`** | Not started |
-| **`DESIGN_IMPLEMENTATION_VALIDATION_001`** | Not started |
-| **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`** | Not started |
-| **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** | Not started |
+| [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) | ✅ Accepted |
+| [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) | ✅ Accepted |
+| [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) | ✅ Accepted |
+| [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) | ✅ Accepted — protocol only; **D5-DES-STAT-* execution blocked** |
+| **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** | Not started — **next** |
 | **`DESIGN_GUARDRAILS_001`** | Not started |
 | **`DESIGN_SUITABILITY_FRAMEWORK_001`** | Not started |
 | [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) | ✅ Accepted |
