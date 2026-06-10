@@ -51,12 +51,13 @@ Define **how** design × estimator × inference × geometry × estimand combinat
 | Post-D5 design code inventory | ✅ [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) (**Accepted**) |
 | Post-D5 design literature alignment | ✅ [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) (**Accepted**) |
 | Post-D5 design implementation validation | ✅ [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) (**Accepted**) |
-| Next enhancement | **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`** |
+| Post-D5 design statistical validation protocol | ✅ [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) (**Accepted**) |
+| Next enhancement | **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** |
 | Post-Level-B enhancement synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 | Trust role assignment | **Blocked** — `TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001` after OC evidence |
 | Design audit program | ✅ [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) (**Accepted**) |
 
-**Suitability v2 dependency:** Requires readout semantics + geometry bridge + **design output contract** + **design code inventory** + **design literature alignment** + **design implementation validation** (all ✅ Accepted), **design statistical validation** + **guardrails** before suitability rows may advance, design audit ladder completion, and targeted enhancement lanes. **Suitability cannot rely on design family names until literature alignment, implementation validation, statistical validation, and guardrails are complete** ([`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) + [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md)). **Implementation validation alone does not authorize suitability.** **Design names in suitability rows must match inventory IDs in [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) (DES-001–DES-031).** **Current framework is incomplete without design audit parity.**
+**Suitability v2 dependency:** Requires readout semantics + geometry bridge + **design output contract** + **design code inventory** + **design literature alignment** + **design implementation validation** + **design statistical validation protocol** (all ✅ Accepted), **executed design statistical validation** (`D5-DES-STAT-*` archives) + **combination matrix** + **guardrails** before suitability rows may advance. **Suitability remains blocked until actual design statistical validation is executed** per [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) — protocol definition alone does not authorize suitability. **Implementation validation alone does not authorize suitability.** **Design names in suitability rows must match inventory IDs in [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) (DES-001–DES-031).** **Current framework is incomplete without design audit parity.**
 
 ---
 
@@ -220,7 +221,7 @@ Family-level quarantine (quickblock, matchedpair, legacy SCM) remains in Layer 3
 
 **MCELL per-cell Level B:** ✅ **`D5-STAT-MCELL-PERCELL-001`**.
 
-**Immediate next concrete artifact:** **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`** (design-side).
+**Immediate next concrete artifact:** **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** (design-side).
 
 Then (from Layer 5 matrix queue):
 
@@ -236,7 +237,8 @@ Then (from Layer 5 matrix queue):
 10. DESIGN_CODE_INVENTORY_001 ✅  
 11. DESIGN_LITERATURE_ALIGNMENT_001 ✅  
 12. DESIGN_IMPLEMENTATION_VALIDATION_001 ✅
-13. DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001 **(next)**
+13. DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001 ✅
+14. DESIGN_COMBINATION_VALIDATION_MATRIX_001 **(next)**
 
 Blocked queue unchanged from Layer 5 (`d5_stat_blocked_queue` in JSON).
 
@@ -277,7 +279,7 @@ Regenerate: `python -m panel_exp.validation.design_estimator_inference_suitabili
 
 **Do not** wire TrustReport or F-DECISION from this framework.
 
-**Next concrete work:** execute **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`** (literature alignment + implementation validation complete — [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) · [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md)).
+**Next concrete work:** execute **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** (statistical protocol defined — [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md); suitability blocked until `D5-DES-STAT-*` execution).
 
 **After OC evidence accumulates:** author **`TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001`** or targeted F-DECISION/TrustReport amendments — not before.
 
@@ -313,9 +315,10 @@ Regenerate: `python -m panel_exp.validation.design_estimator_inference_suitabili
 | Design code inventory = DESIGN_CODE_INVENTORY_001 | ✅ |
 | Design literature alignment = DESIGN_LITERATURE_ALIGNMENT_001 | ✅ |
 | Design implementation validation = DESIGN_IMPLEMENTATION_VALIDATION_001 | ✅ |
-| Next artifact = DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001 | ✅ |
+| Design statistical validation protocol = DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001 | ✅ |
+| Next artifact = DESIGN_COMBINATION_VALIDATION_MATRIX_001 | ✅ |
 | JSON + tests | ✅ |
 
 ---
 
-*DESIGN-ESTIMATOR-INFERENCE-SUITABILITY-FRAMEWORK-001 v1.0.8 — DESIGN_LITERATURE_ALIGNMENT_001 + DESIGN_IMPLEMENTATION_VALIDATION_001 accepted; suitability requires literature + impl + stat validation + guardrails; next = DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.*
+*DESIGN-ESTIMATOR-INFERENCE-SUITABILITY-FRAMEWORK-001 v1.0.9 — DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001 accepted; suitability blocked until DES-STAT execution + combination matrix + guardrails; next = DESIGN_COMBINATION_VALIDATION_MATRIX_001.*

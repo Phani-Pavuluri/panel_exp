@@ -54,6 +54,8 @@ Future **statistical validation**, **combination matrix**, **guardrails**, and *
 
 **Implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) ✅ **Accepted** — consumed all DES-001–DES-031 rows for implementation behavior and contract coverage; **0 contract-complete designs**.
 
+**Statistical validation protocol:** [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) ✅ **Accepted** — consumes DES-001–DES-031 inventory IDs for protocol eligibility, worlds, and future harness targets; **0 designs statistically validated**.
+
 ---
 
 ## 4. Scope
@@ -459,7 +461,7 @@ Suitability framework must use **inventory_id** (DES-*) or registry key from thi
 | Helpers / output / governance rows | 21 |
 | Contract-complete implementations | **0** |
 | Geo-run supported | 5 |
-| Next audit artifact | **DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001** |
+| Next audit artifact | **DESIGN_COMBINATION_VALIDATION_MATRIX_001** |
 
 **Not claimed:** production-ready, validated, governed, suitable, TrustReport-eligible, CalibrationSignal-eligible, MMM-ready, LLM-ready.
 
@@ -499,4 +501,4 @@ Suitability framework must use **inventory_id** (DES-*) or registry key from thi
 
 ---
 
-*DESIGN-CODE-INVENTORY-001 v1.0.2 — Literature alignment + implementation validation consumed inventory; 0 contract-complete; next = DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.*
+*DESIGN-CODE-INVENTORY-001 v1.0.3 — Statistical validation protocol consumes DES IDs; 0 statistically validated; next = DESIGN_COMBINATION_VALIDATION_MATRIX_001.*

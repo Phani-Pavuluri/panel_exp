@@ -184,9 +184,11 @@ Per design family, compare to published or standard design logic (matched-market
 
 Compare implementation behavior to intended semantics and required metadata emission. Verdict: `design_implementation_validation_complete_contract_blockers_identified`. **0 contract-complete designs.**
 
-### D. DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001
+### D. DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001 ✅
 
-Define simulation worlds and metrics for design quality (§12).
+**Status:** **Accepted** — [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md)
+
+Define simulation worlds, diagnostics, metrics, and pass/warn/block rules for design quality (§12). Verdict: `design_statistical_validation_protocol_defined_not_executed`. **0 designs statistically validated.**
 
 ### E. DESIGN_COMBINATION_VALIDATION_MATRIX_001
 
@@ -445,7 +447,7 @@ First concrete output contract under the design audit lane. Defines **DesignOutp
 
 **Code inventory:** [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) maps current emitted fields against this contract — **no implementation is contract-complete**.
 
-**Later design audit artifacts remain pending:** `DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001` (next) → combination matrix → guardrails → suitability framework.
+**Later design audit artifacts remain pending:** `DESIGN_COMBINATION_VALIDATION_MATRIX_001` (next) → guardrails → suitability framework.
 
 ---
 
@@ -512,8 +514,8 @@ Recommended sequence:
 2. **`DESIGN_CODE_INVENTORY_001`** — repo enumeration ✅ **Accepted**  
 3. **`DESIGN_LITERATURE_ALIGNMENT_001`** — literature alignment ✅ **Accepted**  
 4. **`DESIGN_IMPLEMENTATION_VALIDATION_001`** — implementation validation ✅ **Accepted**
-5. **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`** — **(next)**
-6. **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** — design × geometry × estimator × inference × readout  
+5. **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`** — statistical protocol ✅ **Accepted**
+6. **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** — **(next)** — design × geometry × estimator × inference × readout  
 7. **`DESIGN_GUARDRAILS_001`**  
 8. **`DESIGN_SUITABILITY_FRAMEWORK_001`**  
 
@@ -566,4 +568,4 @@ No design promotion, suitability status, TrustReport role, CalibrationSignal eli
 
 ---
 
-*DESIGN-AUDIT-PROGRAM-001 v1.0.4 — DESIGN_IMPLEMENTATION_VALIDATION_001 accepted; next = DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.*
+*DESIGN-AUDIT-PROGRAM-001 v1.0.5 — DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001 accepted; next = DESIGN_COMBINATION_VALIDATION_MATRIX_001.*

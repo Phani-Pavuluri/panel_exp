@@ -53,7 +53,8 @@ Layer 5 is the **final pre-suitability layer**. It converts Layers 1–4 into a 
 | TBR aggregate point Level B | ✅ [`D5_STAT_TBR_AGG_001_REPORT.md`](track_d/D5_STAT_TBR_AGG_001_REPORT.md) |
 | DID bootstrap Level B | ✅ [`D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md) |
 | MCELL per-cell Level B | ✅ [`D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) |
-| Next concrete work | **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`** |
+| Design statistical validation protocol | ✅ [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) |
+| Next concrete work | **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** |
 | Design output contract | ✅ [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) |
 | Geometry bridge (v2 input) | ✅ [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) |
 | Enhancement synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
@@ -196,7 +197,8 @@ Recommended order (not authorization to promote):
 12. **DESIGN_CODE_INVENTORY_001** — design code inventory ✅ **Accepted** — [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md)  
 13. **DESIGN_LITERATURE_ALIGNMENT_001** — design literature alignment ✅ **Accepted** — [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md)  
 14. **DESIGN_IMPLEMENTATION_VALIDATION_001** — implementation validation ✅ **Accepted** — [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md)
-15. **DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001** — **(next)**
+15. **DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001** — statistical protocol ✅ **Accepted** — [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md)
+16. **DESIGN_COMBINATION_VALIDATION_MATRIX_001** — **(next)**
 
 JSON: `d5_stat_execution_queue` · `d5_stat_blocked_queue`.
 
@@ -242,11 +244,11 @@ Regenerate: `python -m panel_exp.validation.method_combination_validation_matrix
 
 ---
 
-## 17. Next concrete work: DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001
+## 17. Next concrete work: DESIGN_COMBINATION_VALIDATION_MATRIX_001
 
-DESIGN_OUTPUT_CONTRACT_001 ✅ · DESIGN_CODE_INVENTORY_001 ✅ · DESIGN_LITERATURE_ALIGNMENT_001 ✅ · DESIGN_IMPLEMENTATION_VALIDATION_001 ✅. **Matrix v2 must account for literature-aligned semantics** ([`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md)) **and implementation validation status** per row ([`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md)) — inventory IDs (DES-001–DES-031) required; design names alone are insufficient; `adapter_required` and missing contract fields remain blocked.
+DESIGN_OUTPUT_CONTRACT_001 ✅ · DESIGN_CODE_INVENTORY_001 ✅ · DESIGN_LITERATURE_ALIGNMENT_001 ✅ · DESIGN_IMPLEMENTATION_VALIDATION_001 ✅ · DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001 ✅. **Matrix v2 must account for literature-aligned semantics** ([`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md)), **implementation validation status** ([`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md)), and **protocol eligibility / future DES-STAT outcomes** ([`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md)) — inventory IDs (DES-001–DES-031) required; design names alone are insufficient.
 
-**Next:** `DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001` — not TrustReport wiring until OC archives exist.
+**Next:** `DESIGN_COMBINATION_VALIDATION_MATRIX_001` — not TrustReport wiring until OC archives exist.
 
 ---
 
@@ -274,4 +276,4 @@ DESIGN_OUTPUT_CONTRACT_001 ✅ · DESIGN_CODE_INVENTORY_001 ✅ · DESIGN_LITERA
 
 ---
 
-*METHOD-COMBINATION-VALIDATION-MATRIX-001 v1.0.8 — DESIGN_LITERATURE_ALIGNMENT_001 + DESIGN_IMPLEMENTATION_VALIDATION_001 accepted; matrix v2 must use literature-aligned semantics + impl validation status; next = DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.*
+*METHOD-COMBINATION-VALIDATION-MATRIX-001 v1.0.9 — DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001 accepted; matrix v2 must use protocol eligibility + future DES-STAT outcomes; next = DESIGN_COMBINATION_VALIDATION_MATRIX_001 (design-side).*

@@ -621,7 +621,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** D5-STAT queue through **`D5-STAT-MCELL-PERCELL-001`** complete.
 
-**Next planning/enhancement:** **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`** (design-side). Design literature alignment: [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) (**Accepted**). Implementation validation: [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) (**Accepted**).
+**Next planning/enhancement:** **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** (design-side). Statistical validation protocol: [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) (**Accepted**).
 
 ---
 
@@ -669,7 +669,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** Future TROP audit sequence; does not change immediate enhancement queue.
 
-**Program next (unchanged):** **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`** (design-side).
+**Program next (unchanged):** **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** (design-side).
 
 ---
 
@@ -685,7 +685,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `DESIGN_OUTPUT_CONTRACT_001` ✅ → `DESIGN_CODE_INVENTORY_001` ✅ → `DESIGN_LITERATURE_ALIGNMENT_001` ✅ → `DESIGN_IMPLEMENTATION_VALIDATION_001` ✅ → statistical protocol → combination matrix → guardrails → design suitability.
 
-**Immediate next:** **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`**.
+**Immediate next:** **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`**.
 
 ---
 
@@ -701,7 +701,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** ✅ `DESIGN_CODE_INVENTORY_001` → design validation ladder → combination matrix v2 → experiment planning (deferred).
 
-**Next:** **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`**.
+**Next:** **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`**.
 
 ---
 
@@ -715,11 +715,9 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) Accepted; [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) Accepted.
 
-**Feeds:** ✅ `DESIGN_IMPLEMENTATION_VALIDATION_001` → statistical protocol → combination matrix v2 → guardrails → design suitability.
+**Feeds:** ✅ `DESIGN_IMPLEMENTATION_VALIDATION_001` → ✅ statistical protocol → combination matrix v2 → guardrails → design suitability.
 
-**Feeds:** ✅ `DESIGN_IMPLEMENTATION_VALIDATION_001` → statistical protocol → combination matrix v2 → guardrails → design suitability.
-
-**Next:** ✅ **`DESIGN_IMPLEMENTATION_VALIDATION_001`**.
+**Next:** ✅ **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`**.
 
 ---
 
@@ -751,7 +749,23 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001` → combination matrix v2 → guardrails → design suitability.
 
-**Next:** **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`** (design-side).
+**Next:** ✅ **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`**.
+
+---
+
+## DESIGN-STATISTICAL-VALIDATION-PROTOCOL-001 (2026-06-10)
+
+**Artifact:** [`docs/DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md)
+
+**Status:** **`accepted_design_statistical_validation_protocol`**
+
+**Verdict:** Defines design-side simulation worlds, diagnostics, metrics, pass/warn/block rules, and future `D5-DES-STAT-*` harness requirements for all DES-001–DES-031 rows. Scoped to **observed** implementation behavior from [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md). **0 designs statistically validated.** Verdict: `design_statistical_validation_protocol_defined_not_executed`. **Documentation/governance only** — no harness execution.
+
+**Prerequisites:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) Accepted; [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) Accepted; [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) Accepted.
+
+**Feeds:** `DESIGN_COMBINATION_VALIDATION_MATRIX_001` → guardrails → design suitability.
+
+**Next:** **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** (design-side).
 
 ---
 

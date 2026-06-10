@@ -593,4 +593,8 @@ Dimensions:
 
 ---
 
-*DESIGN-LITERATURE-ALIGNMENT-001 v1.0.0 — Accepted; verdict = design_literature_alignment_complete_with_open_conceptual_gaps; next = DESIGN_IMPLEMENTATION_VALIDATION_001.*
+**Statistical validation protocol:** [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) maps literature-aligned failure modes (G-DES-001–014) into design-family-specific validation worlds (§13).
+
+---
+
+*DESIGN-LITERATURE-ALIGNMENT-001 v1.0.1 — Accepted; verdict unchanged; statistical protocol maps literature failure modes to worlds; next = DESIGN_COMBINATION_VALIDATION_MATRIX_001.*
