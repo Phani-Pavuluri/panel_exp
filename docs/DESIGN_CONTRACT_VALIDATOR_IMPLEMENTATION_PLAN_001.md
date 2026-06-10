@@ -23,7 +23,7 @@
 | Scope | Validator architecture and implementation sequencing |
 | Artifact type | Documentation / implementation plan |
 
-Twelfth design audit / enforcement artifact. Defines how a future validator module validates emitted `design_contract` blocks against schema, tier-1 emission rules, and the validation test plan. **Validator not implemented.**
+Twelfth design audit / enforcement artifact. Defined validator architecture; **implementation complete** as DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001 (`panel_exp/validation/design_contract_validator_001.py`). **Not wired to tier-1 emission.**
 
 ---
 
@@ -491,7 +491,9 @@ Docs-only PRs (this artifact) do not waive gates.
 | Item | Status |
 |------|--------|
 | Validator implementation plan | ✅ This artifact |
-| Validator module | ❌ Not implemented |
+| Validator module | ✅ Implemented — `design_contract_validator_001.py` |
+| Validator tests | ✅ `test_design_contract_validator_001.py` (26 tests) |
+| Tier-1 emission wiring | ❌ Not implemented |
 | Validation tests | ❌ Not implemented |
 | Fixtures v2 / negative | ❌ Not regenerated |
 | Tier-1 emission | ❌ Not implemented |
@@ -541,9 +543,9 @@ This artifact does **not** implement the validator, validate contracts, promote 
 
 ## 31. Roadmap
 
-**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`**
+**Implementation:** ✅ **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`** — `panel_exp/validation/design_contract_validator_001.py` + `tests/validation/test_design_contract_validator_001.py`.
 
-Implement `panel_exp/validation/design_contract_validator_001.py`, constants, result types, universal + conditional rules, and wire to planned pytest suite **before** tier-1 code emission (`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`).
+**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`** — plan tier-1 emission wiring before runtime `design_contract` emission.
 
 ---
 
@@ -585,4 +587,4 @@ Implement `panel_exp/validation/design_contract_validator_001.py`, constants, re
 
 ---
 
-*DESIGN-CONTRACT-VALIDATOR-IMPLEMENTATION-PLAN-001 v1.0.0 — Accepted; verdict = design_contract_validator_implementation_plan_defined_not_implemented; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001.*
+*DESIGN-CONTRACT-VALIDATOR-IMPLEMENTATION-PLAN-001 v1.0.1 — Accepted; validator implemented; not wired to emission; 0 contract-complete; next = DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.*

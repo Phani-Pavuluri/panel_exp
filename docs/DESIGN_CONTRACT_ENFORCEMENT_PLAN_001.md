@@ -213,7 +213,7 @@ From [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATIO
 | **0** | Docs/planning only | ✅ **Current** | This artifact |
 | **1** | Contract schema definition | ✅ **Specified** | [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) — **not implemented in code** |
 | **2** | Tier-1 geo-run emission | ✅ **Planned** | [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) — **not implemented** |
-| **3** | Validation tests + validator | ✅ **Planned** | Test plan ✅ · Validator plan ✅ [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md) — **not implemented** |
+| **3** | Validation tests + validator | ✅ **Implemented** | Validator module + tests ✅ — **not wired to emission** |
 | **4** | Adapter plans | `adapter_required` | QuickBlock, MatchedPair, Trim, Supergeo |
 | **5** | Bridge metadata | `bridge_required` | Trim/supergeo/pooled/multi-cell bridge fields |
 | **6** | Guardrail runtime enforcement | `future_runtime_enforcement` | `DESIGN_GUARDRAIL_ENFORCEMENT_001` |
@@ -267,7 +267,7 @@ Target: DES-001–006 via `geo_runner` → `DesignEvidence` / `ExperimentEvidenc
 
 ## 14. Phase 3: validation test plan
 
-**Test plan:** [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md) ✅ **Accepted**. **Validator plan:** [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md) ✅ **Accepted** — Phase 3 defined; **validator and tests not implemented**; 0/31 contract-complete.
+**Test plan:** [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md) ✅ **Accepted**. **Validator:** [`design_contract_validator_001.py`](../panel_exp/validation/design_contract_validator_001.py) ✅ **Implemented** — Phase 3 validator + tests complete; **emission not wired**; 0/31 contract-complete.
 
 Planned tests (no implementation yet):
 
@@ -524,7 +524,7 @@ Aligns with [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) universal rul
 
 **Tier-1 emission plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) ✅ **Accepted** — Phase 2 planned; **not implemented**.
 
-Schema ✅ · Tier-1 plan ✅ · Test plan ✅ · Validator plan ✅ [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md). **Next:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`**.
+Schema ✅ · Tier-1 plan ✅ · Test plan ✅ · Validator plan ✅ · Validator module ✅ [`design_contract_validator_001.py`](../panel_exp/validation/design_contract_validator_001.py). **Next:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`** (emission not wired).
 
 **Follow-on:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** — runtime PASS/WARN/BLOCK wiring in `geo_runner`, validators, planning orchestrator (per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §27).
 
@@ -552,7 +552,7 @@ This artifact does **not** implement enforcement, validate designs, authorize ca
 | Verdict | `design_contract_enforcement_plan_defined_not_implemented` |
 | Phase | **0** (planning only) |
 | Contract-complete designs | **0 / 31** |
-| Next implementation artifact | `DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001` then tests + tier-1 emission |
+| Next implementation artifact | `DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001` then tier-1 emission (validator ✅ implemented) |
 
 ### Search methodology (2026-06-10)
 
@@ -576,9 +576,9 @@ find tests -iname "*design*" -o -iname "*evidence*" -o -iname "*contract*" -o -i
 
 **Validation test plan:** [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md) ✅ Phase 3 planned — **not implemented**.
 
-**Validator plan:** [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md) ✅ Phase 3 planned — **not implemented**.
+**Validator:** ✅ `panel_exp/validation/design_contract_validator_001.py` — Phase 3 code complete; **tier-1 emission not wired**.
 
-**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`**
+**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`**
 
 Then: fixtures · tests · tier-1 code emission · adapters (Phase 4) · `DESIGN_GUARDRAIL_ENFORCEMENT_001`.
 
@@ -620,4 +620,4 @@ Then: fixtures · tests · tier-1 code emission · adapters (Phase 4) · `DESIGN
 
 ---
 
-*DESIGN-CONTRACT-ENFORCEMENT-PLAN-001 v1.0.4 — Accepted; Phase 3 validator plan defined; not implemented; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001.*
+*DESIGN-CONTRACT-ENFORCEMENT-PLAN-001 v1.0.5 — Accepted; Phase 3 validator implemented; emission not wired; next = DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.*

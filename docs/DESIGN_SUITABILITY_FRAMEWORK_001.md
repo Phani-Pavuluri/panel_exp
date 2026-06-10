@@ -503,8 +503,9 @@ Governance sequence after this artifact:
 3. **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`** ✅ **Accepted** — Phase 2 emission plan (**not implemented**)  
 4. **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`** ✅ **Accepted** — validation test plan (**tests not implemented**)  
 5. **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`** ✅ **Accepted** — validator architecture (**not implemented**)  
-6. **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`** *(next)* — validator code  
-7. **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** *(follow-on)* — runtime enforcement per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §27  
+6. **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`** ✅ — validator module implemented  
+7. **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`** *(next)* — emission wiring plan  
+8. **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** *(follow-on)* — runtime enforcement per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §27  
 
 Schema and emission precede runtime guardrail wiring.
 
@@ -560,7 +561,7 @@ find docs -iname "*SUITABILITY*" -o -iname "*GUARDRAIL*" -o -iname "*COMBINATION
 
 **Validator implementation plan:** [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md) ✅ **Accepted** — **positive suitability requires validator PASS plus separate statistical validation**; 0 downstream suitable designs.
 
-**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`**
+**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`**
 
 Then: tests · tier-1 emission · `DESIGN_GUARDRAIL_ENFORCEMENT_001` · `D5-DES-STAT-*`.
 
@@ -602,4 +603,4 @@ Then: tests · tier-1 emission · `DESIGN_GUARDRAIL_ENFORCEMENT_001` · `D5-DES-
 
 ---
 
-*DESIGN-SUITABILITY-FRAMEWORK-001 v1.0.5 — Accepted; positive suitability requires validator PASS + stat validation; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001.*
+*DESIGN-SUITABILITY-FRAMEWORK-001 v1.0.6 — Accepted; validator exists; positive suitability requires validator PASS + stat validation; next = DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.*

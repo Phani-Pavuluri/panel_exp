@@ -510,7 +510,9 @@ Until enforcement lands, consumers must apply this document manually or via futu
 
 **Validator implementation plan:** [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md) ✅ **Accepted** — **runtime guardrails will consume validator decisions** (`guardrail_inputs`); not wired until implementation.
 
-**Next artifact:** `DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`.
+**Validator:** ✅ **`panel_exp/validation/design_contract_validator_001.py`** — runtime guardrails **will consume** `guardrail_inputs` from validator; **not wired to `geo_runner` yet**.
+
+**Next artifact:** `DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`.
 
 ---
 
@@ -554,7 +556,7 @@ find docs -iname "*GUARDRAIL*" -o -iname "*COMBINATION*" -o -iname "*SUITABILITY
 
 ## 31. Roadmap
 
-**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`**
+**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`**
 
 Schema ✅ · Tier-1 plan ✅ · Test plan ✅ · Validator plan ✅ · Enforcement plan ✅ · Suitability framework ✅.
 
@@ -594,4 +596,4 @@ Schema ✅ · Tier-1 plan ✅ · Test plan ✅ · Validator plan ✅ · Enforcem
 
 ---
 
-*DESIGN-GUARDRAILS-001 v1.0.6 — Accepted; runtime guardrails will consume validator decisions; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001.*
+*DESIGN-GUARDRAILS-001 v1.0.7 — Accepted; validator exists; runtime guardrails will consume validator decisions; next = DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.*
