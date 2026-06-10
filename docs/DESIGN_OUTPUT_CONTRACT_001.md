@@ -525,9 +525,9 @@ This artifact is the **first concrete output contract** under [`DESIGN_AUDIT_PRO
 | **`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001`** | ✅ Assert contract completeness or scoped BLOCK in simulation worlds — [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) |
 | **`DESIGN_COMBINATION_VALIDATION_MATRIX_001`** | ✅ Rows consume design output fields — [`DESIGN_COMBINATION_VALIDATION_MATRIX_001.md`](DESIGN_COMBINATION_VALIDATION_MATRIX_001.md) |
 | **`DESIGN_GUARDRAILS_001`** | ✅ Hard blockers reference forbidden claims — [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md); **missing required contract fields are BLOCK conditions** per §12 |
-| **`DESIGN_SUITABILITY_FRAMEWORK_001`** | Suitability requires contract PASS + guardrails satisfied + audit evidence |
+| **`DESIGN_SUITABILITY_FRAMEWORK_001`** | ✅ Suitability requires contract completeness — [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md); **positive suitability is a prerequisite for any non-blocked category** |
 
-**Guardrail note:** Any missing required field in §25 maps to **BLOCK** in [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §12 — not WARN. Partial optional fields may WARN only.
+**Guardrail note:** Any missing required field in §25 maps to **BLOCK** in [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §12 — not WARN. **Contract completeness is a prerequisite for positive suitability** per suitability framework §11.
 
 ---
 
@@ -632,4 +632,4 @@ All rows: **`contract_required`** · **`not_contract_validated`** · **not suita
 
 ---
 
-*DESIGN-OUTPUT-CONTRACT-001 v1.0.6 — Missing required fields = BLOCK per DESIGN_GUARDRAILS_001; no implementation compliant; next = DESIGN_SUITABILITY_FRAMEWORK_001.*
+*DESIGN-OUTPUT-CONTRACT-001 v1.0.7 — Contract completeness prerequisite for suitability; next = DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.*

@@ -370,15 +370,15 @@ Compact master table — key combinations (all `downstream_status`: not_validate
 
 ## 24. Relationship to design suitability framework
 
-[`DESIGN_SUITABILITY_FRAMEWORK_001`](DESIGN_SUITABILITY_FRAMEWORK_001.md) will consume:
+[`DESIGN_SUITABILITY_FRAMEWORK_001`](DESIGN_SUITABILITY_FRAMEWORK_001.md) ✅ **Accepted** consumes:
 
 - Design output contract status  
 - Inventory / literature / implementation statuses  
 - Statistical validation outcomes (`D5-DES-STAT-*`)  
-- **This matrix** combination statuses  
+- **This matrix** combination statuses → suitability categories (§14 mapping)  
 - Guardrail policies  
 
-Suitability rows may not advance on `blocked_*` or `adapter_required` without resolution.
+**Matrix statuses feed suitability categories** per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md) §14. Suitability rows may not advance on `blocked_*` or `adapter_required` without resolution.
 
 ---
 
@@ -419,9 +419,9 @@ Per [`EXPERIMENT_PLANNING_ORCHESTRATION_ROADMAP_001.md`](EXPERIMENT_PLANNING_ORC
 
 **Guardrails:** [`DESIGN_GUARDRAILS_001`](DESIGN_GUARDRAILS_001.md) ✅ **Accepted** — converts matrix statuses and D-COMB-* reason codes into PASS/WARN/BLOCK policy.
 
-**Next artifact:** **`DESIGN_SUITABILITY_FRAMEWORK_001`**
+**Next artifact:** **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`**
 
-Then: `DESIGN_SUITABILITY_FRAMEWORK_001`.
+Suitability framework ✅ [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md) consumes matrix statuses.
 
 ---
 
@@ -483,4 +483,4 @@ poetry run python -c "from panel_exp.design.registry import get_design_registry;
 
 ---
 
-*DESIGN-COMBINATION-VALIDATION-MATRIX-001 v1.0.0 — Accepted; verdict = design_combination_matrix_defined_no_combinations_promoted; guardrails Accepted; next = DESIGN_SUITABILITY_FRAMEWORK_001.*
+*DESIGN-COMBINATION-VALIDATION-MATRIX-001 v1.0.1 — Accepted; matrix statuses feed suitability framework; next = DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.*

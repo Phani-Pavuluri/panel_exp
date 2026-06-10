@@ -410,7 +410,8 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 | **21** | **DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001** | Design statistical validation | ✅ Accepted — [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) |
 | **22** | **DESIGN_COMBINATION_VALIDATION_MATRIX_001** | Design combination matrix | ✅ Accepted — [`DESIGN_COMBINATION_VALIDATION_MATRIX_001.md`](DESIGN_COMBINATION_VALIDATION_MATRIX_001.md) |
 | **23** | **DESIGN_GUARDRAILS_001** | Design guardrails | ✅ Accepted — [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) |
-| **24** | **DESIGN_SUITABILITY_FRAMEWORK_001** | Design suitability | **Next** |
+| **24** | **DESIGN_SUITABILITY_FRAMEWORK_001** | Design suitability | ✅ Accepted — [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md) |
+| **25** | **DESIGN_CONTRACT_ENFORCEMENT_PLAN_001** | Contract enforcement planning | **Next** |
 | **—** | **TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001** | TROP parked audit program | ✅ **Proposed** — [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) |
 | **15** | **METHOD_ENHANCEMENT_ROADMAP_001** | Post-Level-B synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 
@@ -437,7 +438,21 @@ Per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) — **0 downstream PA
 | Statistical validation not executed | **REQUIRES_STATISTICAL_VALIDATION** | All 31 designs |
 | Future Bayesian / TROP / SARIMAX | **DEFERRED** → **BLOCK** | DCM-017–019 |
 
-**Next:** `DESIGN_SUITABILITY_FRAMEWORK_001` after guardrails satisfied + `D5-DES-STAT-*` execution.
+**Next:** `DESIGN_CONTRACT_ENFORCEMENT_PLAN_001` — contract field emission before positive suitability.
+
+### Remaining blockers preventing positive suitability
+
+Per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md) — **0 downstream suitable designs**:
+
+| Blocker | Suitability category | Resolution |
+|---------|---------------------|------------|
+| 0/31 contract-complete | `contract_blocked` | DESIGN_CONTRACT_ENFORCEMENT_PLAN_001 |
+| 0/31 statistically validated | `stat_validation_required` | D5-DES-STAT-* execution |
+| Adapter-required designs | `adapter_required` | QuickBlock/MatchedPair/Trim/Supergeo adapters |
+| Trim/supergeo bridges | `bridge_required` | F-GEO-003/004 |
+| Thinning ambiguity | `implementation_ambiguous` | Thinning ADR |
+| Multi-cell metadata | `contract_blocked` | cell_ids + shared-control policy |
+| Product layers | `blocked` | TrustReport/CalibrationSignal/MMM/LLM gates |
 
 ---
 

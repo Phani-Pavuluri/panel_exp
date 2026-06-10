@@ -573,7 +573,9 @@ Protocol marks **bridge-required** transitions as `blocked_until_geometry_bridge
 
 **Guardrails:** [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) ✅ **Accepted** — **blocks governed use until execution artifacts produce acceptable validation outcomes**; `protocol_defined_not_executed` → REQUIRES_STATISTICAL_VALIDATION.
 
-**Next artifact:** **`DESIGN_SUITABILITY_FRAMEWORK_001`** — consumes guardrails + future `D5-DES-STAT-*` outcomes.
+**Suitability:** [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md) ✅ **Accepted** — **strong suitability categories require executed `D5-DES-STAT-*` outcomes**; `protocol_defined_not_executed` → `stat_validation_required` for all designs.
+
+**Next artifact:** **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`**.
 
 ---
 
@@ -639,4 +641,4 @@ poetry run python -c "from panel_exp.design.registry import geo_run_design_suppo
 
 ---
 
-*DESIGN-STATISTICAL-VALIDATION-PROTOCOL-001 v1.0.2 — Accepted; guardrails block until D5-DES-STAT-* outcomes; next = DESIGN_SUITABILITY_FRAMEWORK_001.*
+*DESIGN-STATISTICAL-VALIDATION-PROTOCOL-001 v1.0.3 — Accepted; suitability requires D5-DES-STAT execution; next = DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.*

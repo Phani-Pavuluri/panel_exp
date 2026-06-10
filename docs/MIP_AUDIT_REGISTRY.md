@@ -621,7 +621,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** D5-STAT queue through **`D5-STAT-MCELL-PERCELL-001`** complete.
 
-**Next planning/enhancement:** **`DESIGN_SUITABILITY_FRAMEWORK_001`** (design-side). Design guardrails: [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) (**Accepted**).
+**Next planning/enhancement:** **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`** (design-side). Design suitability: [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md) (**Accepted**).
 
 ---
 
@@ -669,7 +669,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** Future TROP audit sequence; does not change immediate enhancement queue.
 
-**Program next (unchanged):** **`DESIGN_SUITABILITY_FRAMEWORK_001`** (design-side).
+**Program next (unchanged):** **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`** (design-side).
 
 ---
 
@@ -685,7 +685,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `DESIGN_OUTPUT_CONTRACT_001` ✅ → `DESIGN_CODE_INVENTORY_001` ✅ → `DESIGN_LITERATURE_ALIGNMENT_001` ✅ → `DESIGN_IMPLEMENTATION_VALIDATION_001` ✅ → statistical protocol → combination matrix → guardrails → design suitability.
 
-**Immediate next:** **`DESIGN_SUITABILITY_FRAMEWORK_001`**.
+**Immediate next:** **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`**.
 
 ---
 
@@ -701,7 +701,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** ✅ `DESIGN_CODE_INVENTORY_001` → design validation ladder → combination matrix v2 → experiment planning (deferred).
 
-**Next:** **`DESIGN_SUITABILITY_FRAMEWORK_001`**.
+**Next:** **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`**.
 
 ---
 
@@ -797,7 +797,23 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `DESIGN_SUITABILITY_FRAMEWORK_001` → experiment planning filters.
 
-**Next:** **`DESIGN_SUITABILITY_FRAMEWORK_001`** (design-side).
+**Next:** ✅ **`DESIGN_SUITABILITY_FRAMEWORK_001`**.
+
+---
+
+## DESIGN-SUITABILITY-FRAMEWORK-001 (2026-06-10)
+
+**Artifact:** [`docs/DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)
+
+**Status:** **`accepted_design_suitability_framework`**
+
+**Verdict:** Classifies design methods and design × estimator × inference combinations for structural suitability after consuming contract, implementation, statistical protocol, combination matrix, and guardrails. **0 downstream suitable designs.** Verdict: `design_suitability_framework_defined_no_downstream_suitable_designs`. **Documentation/governance only** — distinct from [`DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md`](DESIGN_ESTIMATOR_INFERENCE_SUITABILITY_FRAMEWORK_001.md).
+
+**Prerequisites:** [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) Accepted; [`DESIGN_COMBINATION_VALIDATION_MATRIX_001.md`](DESIGN_COMBINATION_VALIDATION_MATRIX_001.md) Accepted.
+
+**Feeds:** `DESIGN_CONTRACT_ENFORCEMENT_PLAN_001` → `D5-DES-STAT-*` execution → experiment planning.
+
+**Next:** **`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001`** (design-side).
 
 ---
 
