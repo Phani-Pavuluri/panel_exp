@@ -508,7 +508,9 @@ Until enforcement lands, consumers must apply this document manually or via futu
 
 **Validation test plan:** [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md) ✅ **Accepted** — **runtime guardrails require implemented validation tests**; verdicts unchanged until tests pass.
 
-**Next artifact:** `DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`.
+**Validator implementation plan:** [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md) ✅ **Accepted** — **runtime guardrails will consume validator decisions** (`guardrail_inputs`); not wired until implementation.
+
+**Next artifact:** `DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`.
 
 ---
 
@@ -552,9 +554,9 @@ find docs -iname "*GUARDRAIL*" -o -iname "*COMBINATION*" -o -iname "*SUITABILITY
 
 ## 31. Roadmap
 
-**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`**
+**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`**
 
-Schema ✅ · Tier-1 plan ✅ · Validation test plan ✅ · Enforcement plan ✅ · Suitability framework ✅.
+Schema ✅ · Tier-1 plan ✅ · Test plan ✅ · Validator plan ✅ · Enforcement plan ✅ · Suitability framework ✅.
 
 ---
 
@@ -592,4 +594,4 @@ Schema ✅ · Tier-1 plan ✅ · Validation test plan ✅ · Enforcement plan �
 
 ---
 
-*DESIGN-GUARDRAILS-001 v1.0.5 — Accepted; runtime guardrails require implemented validation tests; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.*
+*DESIGN-GUARDRAILS-001 v1.0.6 — Accepted; runtime guardrails will consume validator decisions; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001.*

@@ -460,9 +460,9 @@ This artifact does **not** implement tests, validate contract outputs, promote d
 
 ## 29. Roadmap
 
-**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`**
+**Validator implementation plan:** [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md) ✅ **Accepted** — maps planned tests (§9–§22) to validator architecture (`validate_design_contract`, reason codes, severity aggregation). **Tests not implemented.**
 
-Defines validator module structure, reason codes, and implementation sequencing **before** tier-1 code emission (`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001` or inline emission work).
+**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`**
 
 Then: implement validator → add fixtures → add tests → wire tier-1 emission → `DESIGN_GUARDRAIL_ENFORCEMENT_001` → `D5-DES-STAT-*`.
 
@@ -507,4 +507,4 @@ Then: implement validator → add fixtures → add tests → wire tier-1 emissio
 
 ---
 
-*DESIGN-CONTRACT-VALIDATION-TEST-PLAN-001 v1.0.0 — Accepted; verdict = design_contract_validation_test_plan_defined_not_implemented; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.*
+*DESIGN-CONTRACT-VALIDATION-TEST-PLAN-001 v1.0.1 — Accepted; validator implementation plan maps tests to architecture; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001.*

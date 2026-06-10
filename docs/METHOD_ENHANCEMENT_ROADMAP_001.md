@@ -52,7 +52,7 @@ The D5-STAT queue established **what the codebase does today** under controlled 
 | **D5-STAT-DID-BOOTSTRAP-001** | Level B DID embedded bootstrap | `characterization_mixed_requires_followup` | [`D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md) |
 | **D5-STAT-MCELL-PERCELL-001** | Level B per-cell execution | `characterization_pass_with_caveats` | [`D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) |
 
-**Queue status:** D5 Level B complete. Design audit ladder through **validation test plan** ✅ Accepted. Next enhancement artifact: **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`** (validator implementation planning).
+**Queue status:** D5 Level B complete. Design audit ladder through **validator implementation plan** ✅ Accepted. Next enhancement artifact: **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`** (validator module code).
 
 ---
 
@@ -221,7 +221,7 @@ Triply robust / TROP requires the **same audit rigor** as characterized estimato
 5. `TRIPLY_ROBUST_SUITABILITY_EXTENSION_001`  
 6. Future D5-style characterization **only if** implementation exists under separate plan  
 
-**Immediate program priority:** `DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001` (design-side) — validation test plan ✅; TROP audit steps follow design/readout/geometry/guardrail/suitability/schema contracts, not implementation.
+**Immediate program priority:** `DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001` (design-side) — validator plan ✅; TROP audit steps follow design/readout/geometry/guardrail/suitability/schema contracts, not implementation.
 
 ### N. DESIGN_AUDIT_PROGRAM_001 ✅
 
@@ -241,8 +241,9 @@ Design methods require the **same audit rigor** as estimator/inference families.
 10. `DESIGN_CONTRACT_SCHEMA_001` ✅ **Accepted** — [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md)  
 11. `DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001` ✅ **Accepted** — [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md)  
 12. `DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001` ✅ **Accepted** — [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md)  
-13. `DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001` *(next)*  
-14. Method-specific design audits as needed (supergeo, trim, QuickBlock integration)
+13. `DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001` ✅ **Accepted** — [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md)  
+14. `DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001` *(next)*  
+15. Method-specific design audits as needed (supergeo, trim, QuickBlock integration)
 
 ---
 
@@ -284,7 +285,8 @@ Design methods require the **same audit rigor** as estimator/inference families.
 | **DESIGN_CONTRACT_SCHEMA_001** | ✅ **Complete (Accepted)** — [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) |
 | **DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001** | ✅ **Complete (Accepted)** — [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) |
 | **DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001** | ✅ **Complete (Accepted)** — [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md) |
-| **Next enhancement** | **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`** |
+| **DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001** | ✅ **Complete (Accepted)** — [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md) |
+| **Next enhancement** | **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`** |
 | Constraint | No governed uncertainty claim until readout semantics proven |
 | Feeds | `TBRRIDGE_OPERATOR_CONTRACT_001` · `INFERENCE_READOUT_SEMANTICS_001` |
 
@@ -296,7 +298,7 @@ Do not skip TBRRidge characterization to begin code enhancement — it completes
 
 Recommended sequence:
 
-1. Execute **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`** then validator + tests + tier-1 code emission (design-side)
+1. Execute **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`** then tests + tier-1 code emission (design-side)
 2. Targeted method-family fixes (TBR readout, DID cumulative fix, SCM stress-null, TBRRidge operator contract, …)
 4. **`TBR_READOUT_SEMANTICS_001`**
 5. **`TBRRIDGE_OPERATOR_CONTRACT_001`**
@@ -363,4 +365,4 @@ This roadmap does **not**:
 
 ---
 
-*METHOD-ENHANCEMENT-ROADMAP-001 v1.1.8 — DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001 accepted; tests not implemented; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.*
+*METHOD-ENHANCEMENT-ROADMAP-001 v1.1.9 — DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001 accepted; validator not implemented; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001.*

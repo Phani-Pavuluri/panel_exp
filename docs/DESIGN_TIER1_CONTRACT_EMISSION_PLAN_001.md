@@ -541,9 +541,11 @@ find panel_exp/design -type f
 
 ## 35. Roadmap
 
-**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`**
+**Validator implementation plan:** [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md) ✅ **Accepted** — tier-1 emission must call or be checked by the future validator **before any `contract_complete` claim**. **Validator not implemented.**
 
-Then: implement validator → fixtures → tests → tier-1 code emission.
+**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`**
+
+Then: fixtures → tests → tier-1 code emission.
 
 ---
 
@@ -583,4 +585,4 @@ Then: implement validator → fixtures → tests → tier-1 code emission.
 
 ---
 
-*DESIGN-TIER1-CONTRACT-EMISSION-PLAN-001 v1.0.1 — Accepted; validation test plan defined; emission cannot claim contract-complete until tests pass; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.*
+*DESIGN-TIER1-CONTRACT-EMISSION-PLAN-001 v1.0.2 — Accepted; validator plan defined; emission requires validator pass; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001.*

@@ -786,7 +786,9 @@ find panel_exp/design -type f
 
 **Validation test plan:** [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md) ✅ **Accepted** — defines tests required before schema implementation can be trusted; **tests not implemented**.
 
-**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`**
+**Validator implementation plan:** [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md) ✅ **Accepted** — future validator will consume schema blocks, enums, and severity rules (§8–§10). **Not implemented.**
+
+**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`**
 
 ---
 
@@ -828,4 +830,4 @@ find panel_exp/design -type f
 
 ---
 
-*DESIGN-CONTRACT-SCHEMA-001 v1.0.2 — Accepted; validation test plan defined; schema implementation untrusted until tests land; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.*
+*DESIGN-CONTRACT-SCHEMA-001 v1.0.3 — Accepted; validator implementation plan defined; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001.*
