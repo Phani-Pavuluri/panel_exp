@@ -788,7 +788,9 @@ find panel_exp/design -type f
 
 **Validator implementation plan:** [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md) ✅ **Accepted** — future validator will consume schema blocks, enums, and severity rules (§8–§10). **Not implemented.**
 
-**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`**
+**Validator:** ✅ **`panel_exp/validation/design_contract_validator_001.py`** — schema enforced by validator; **no runtime emission yet**.
+
+**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`**
 
 ---
 
@@ -830,4 +832,4 @@ find panel_exp/design -type f
 
 ---
 
-*DESIGN-CONTRACT-SCHEMA-001 v1.0.3 — Accepted; validator implementation plan defined; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001.*
+*DESIGN-CONTRACT-SCHEMA-001 v1.0.4 — Accepted; validator implemented; emission not wired; next = DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.*

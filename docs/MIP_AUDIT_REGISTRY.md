@@ -621,7 +621,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** D5-STAT queue through **`D5-STAT-MCELL-PERCELL-001`** complete.
 
-**Next planning/enhancement:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`** (design-side). Validator plan: [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md) (**Accepted**; not implemented).
+**Next planning/enhancement:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`** (design-side). Validator: [`panel_exp/validation/design_contract_validator_001.py`](../panel_exp/validation/design_contract_validator_001.py) (**Implemented**; not wired to emission).
 
 ---
 
@@ -669,7 +669,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** Future TROP audit sequence; does not change immediate enhancement queue.
 
-**Program next (unchanged):** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`** (design-side).
+**Program next (unchanged):** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`** (design-side).
 
 ---
 
@@ -685,7 +685,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `DESIGN_OUTPUT_CONTRACT_001` ✅ → `DESIGN_CODE_INVENTORY_001` ✅ → `DESIGN_LITERATURE_ALIGNMENT_001` ✅ → `DESIGN_IMPLEMENTATION_VALIDATION_001` ✅ → statistical protocol → combination matrix → guardrails → design suitability.
 
-**Immediate next:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`**.
+**Immediate next:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`**.
 
 ---
 
@@ -701,7 +701,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** ✅ `DESIGN_CODE_INVENTORY_001` → design validation ladder → combination matrix v2 → experiment planning (deferred).
 
-**Next:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`**.
+**Next:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`**.
 
 ---
 
@@ -887,13 +887,29 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Status:** **`accepted_design_contract_validator_implementation_plan`**
 
-**Verdict:** Validator architecture and implementation sequencing for `design_contract` blocks — module target, result object, reason codes, severity rules, tier-1 behavior, guardrail/suitability integration. Verdict: `design_contract_validator_implementation_plan_defined_not_implemented`. **Documentation/planning only** — no validator code; no tests; no fixture regeneration; **0/31 contract-complete**; downstream **blocked**; no TrustReport/CalibrationSignal/MMM/LLM authorization.
+**Verdict:** Validator architecture and implementation sequencing for `design_contract` blocks — module target, result object, reason codes, severity rules, tier-1 behavior, guardrail/suitability integration. Verdict: `design_contract_validator_implementation_plan_defined`. **Implementation complete** as DESIGN-CONTRACT-VALIDATOR-IMPLEMENTATION-001.
 
 **Prerequisites:** [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md) Accepted; [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) Accepted.
 
-**Feeds:** `DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001` → fixtures → pytest → tier-1 emission.
+**Feeds:** ✅ `DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001` → tier-1 emission wiring → pytest on emitted contracts.
 
-**Next:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`** (design-side).
+**Next:** ✅ **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`**.
+
+---
+
+## DESIGN-CONTRACT-VALIDATOR-IMPLEMENTATION-001 (2026-06-10)
+
+**Artifact:** [`panel_exp/validation/design_contract_validator_001.py`](../panel_exp/validation/design_contract_validator_001.py) · [`tests/validation/test_design_contract_validator_001.py`](../tests/validation/test_design_contract_validator_001.py)
+
+**Status:** **`implemented_design_contract_validator`**
+
+**Verdict:** First design-contract validator module — universal + conditional + no-overclaim checks per DESIGN-CONTRACT-SCHEMA-001. `validate_design_contract`, `validate_design_evidence_contract`, `compute_contract_status`; conservative `contract_complete_allowed=False`. **Validator-only scope** — no tier-1 emission wiring; no fixture regeneration; **0/31 contract-complete**; downstream **blocked**; no TrustReport/CalibrationSignal/MMM/LLM authorization.
+
+**Prerequisites:** [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md) Accepted.
+
+**Feeds:** tier-1 emission wiring → guardrail/suitability integration.
+
+**Next:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`** (design-side).
 
 ---
 

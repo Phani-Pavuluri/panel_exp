@@ -264,7 +264,7 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **TBRRidge inference Level B:** ✅ [`docs/track_d/D5_STAT_TBRRIDGE_INF_001_REPORT.md`](track_d/D5_STAT_TBRRIDGE_INF_001_REPORT.md) + [`track_d/archives/D5_STAT_TBRRIDGE_INF_001_results.json`](track_d/archives/D5_STAT_TBRRIDGE_INF_001_results.json) (regenerate: `poetry run python -m panel_exp.validation.track_d_d5_stat_tbrridge_inf_001`).
 
-**Post-D5 enhancement sequence (documentation):** ✅ … · ✅ **tier-1 emission plan** · ✅ **validation test plan** · ✅ **validator implementation plan** → **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`** (prerequisite for contract enforcement) → targeted method-family fixes.
+**Post-D5 enhancement sequence (documentation):** ✅ … · ✅ **tier-1 emission plan** · ✅ **validation test plan** · ✅ **validator implementation plan** · ✅ **validator module** → **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`** → tier-1 emission → targeted method-family fixes.
 
 **Design literature alignment:** [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) — **Accepted**; prerequisite for design implementation validation and statistical protocol worlds.
 
@@ -278,7 +278,7 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **Deferred estimator audit track (parked, not rejected):** [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) — TROP audit ladder follows design-output contract; **no TROP implementation** in program scope.
 
-**Design audit track:** [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) — Accepted; ladder through **validator implementation plan** ✅; next = **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`**. **Validator plan** [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md) — prerequisite for enforcement; **validator not implemented**; 0 contract-complete designs.
+**Design audit track:** [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) — Accepted; ladder through **validator implementation** ✅; next = **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`**. Validator module implemented; **not wired to emission**; 0 contract-complete designs.
 
 **Post-Level-B synthesis:** ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) — converts D5 characterization findings into prioritized enhancement lanes (readout semantics, geometry bridges, operator contracts). **Not** promotion or suitability authorization.
 
