@@ -31,6 +31,8 @@ Layer 5 is the **final pre-suitability layer**. It converts Layers 1–4 into a 
 
 **Not answered here:** primary/secondary/directional roles · TrustReport eligibility · production readiness.
 
+**Design audit gap:** Current matrix rows (30) cover estimator/inference combinations with **reference designs** only. Future matrix v2 must become **design × estimator × inference × geometry × readout** per [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) and `DESIGN_COMBINATION_VALIDATION_MATRIX_001` — not estimator/inference alone.
+
 **Critical wording:** **Ready for OC execution** means literature identity is defined, implementation is understood, geometry is not silently unsupported, Layer 4 protocol exists, and a D5-STAT-* run is the next allowed action. It does **not** mean statistically validated, trusted, or suitable.
 
 ---
@@ -269,4 +271,4 @@ GEOMETRY_BRIDGE_REQUIREMENTS_001 complete — [`GEOMETRY_BRIDGE_REQUIREMENTS_001
 
 ---
 
-*METHOD-COMBINATION-VALIDATION-MATRIX-001 v1.0.3 — GEOMETRY_BRIDGE_REQUIREMENTS_001 accepted; DESIGN_OUTPUT_CONTRACT_001 is next.*
+*METHOD-COMBINATION-VALIDATION-MATRIX-001 v1.0.4 — DESIGN_AUDIT_PROGRAM_001 accepted; future matrix = design × estimator × inference × geometry × readout; next = DESIGN_OUTPUT_CONTRACT_001.*

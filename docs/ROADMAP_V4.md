@@ -246,6 +246,8 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 
 **Future estimator audit (parked):** [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) — TROP; follows design-output contract; not implementation.
 
+**Design audit lane:** [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) — Accepted; full design discovery + audit ladder; immediate next = **`DESIGN_OUTPUT_CONTRACT_001`**.
+
 ### METHOD-ENHANCEMENT-ROADMAP-001 (post-Level-B synthesis)
 
 **Document:** [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md)  
