@@ -242,7 +242,9 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Status:** **active** — authoritative method-foundation sequence  
 **Verdict:** **Pauses** trust-framework / method-role expansion until layers 1–5 complete (code inventory → literature → implementation → statistical OC → combination matrix). Prior synthesis and MCELL-first chains are **evidence only**, not sequencing authority.
 
-**Ordered next:** ✅ D5 Level B + readout semantics + **geometry bridge** → **`DESIGN_OUTPUT_CONTRACT_001`** → further enhancement lanes → trust-framework integration (roles paused per program §8).
+**Ordered next:** ✅ D5 Level B + readout semantics + geometry bridge → **`DESIGN_OUTPUT_CONTRACT_001`** → enhancement lanes → trust-framework integration (roles paused).
+
+**Future estimator audit (parked):** [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) — TROP; follows design-output contract; not implementation.
 
 ### METHOD-ENHANCEMENT-ROADMAP-001 (post-Level-B synthesis)
 

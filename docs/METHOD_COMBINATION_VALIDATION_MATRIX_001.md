@@ -55,7 +55,7 @@ Layer 5 is the **final pre-suitability layer**. It converts Layers 1–4 into a 
 | Geometry bridge (v2 input) | ✅ [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) |
 | Enhancement synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 
-**Matrix v2 dependency:** Future register revision must reference [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) for readout fields and [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) for `geometry_id`, `bridge_status`, and pooling/aggregation flags per combination row.
+**Matrix v2 dependency:** Readout + geometry bridge fields per combination row. **TROP:** combinations remain **`research_only_oc`** / deferred until added via **`TRIPLY_ROBUST_COMBINATION_MATRIX_001`** — not through matrix v1 row edits alone.
 
 ---
 
@@ -162,7 +162,7 @@ Each matrix row includes:
 
 | combination_id | Mode |
 |----------------|------|
-| TROP-RESEARCH | Level B characterization only |
+| TROP-RESEARCH | Level B characterization only — **deferred**; see [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) |
 | MTGP-RESEARCH | Level B Bayesian research |
 | BAYESIANTBR-MCMC | MCMC path ≠ registry handler |
 | SDID-POINT | Runner skip / research |

@@ -657,6 +657,22 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 ---
 
+## TRIPLY-ROBUST-ESTIMATOR-AUDIT-PROGRAM-001 (2026-06-09)
+
+**Artifact:** [`docs/TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md)
+
+**Status:** **`proposed_parked_future_estimator`**
+
+**Verdict:** Parks triply robust / TROP as a **future candidate estimator family** with full audit ladder (literature → implementation gap → validation protocol → combination matrix → suitability extension → optional D5). **Not rejected.** Existing `TROP` code remains `research_only`; validation runner skipped. **No implementation** in this artifact.
+
+**Prerequisites:** Readout semantics + geometry bridge Accepted; `DESIGN_OUTPUT_CONTRACT_001` before TROP audit execution.
+
+**Feeds:** Future TROP audit sequence; does not change immediate enhancement queue.
+
+**Program next (unchanged):** **`DESIGN_OUTPUT_CONTRACT_001`**.
+
+---
+
 ## METHOD-CODE-INVENTORY-001 (2026-06-04)
 
 **Artifact:** [`docs/METHOD_CODE_INVENTORY_001.md`](METHOD_CODE_INVENTORY_001.md) · [`docs/track_d/archives/METHOD_CODE_INVENTORY_001.json`](track_d/archives/METHOD_CODE_INVENTORY_001.json)

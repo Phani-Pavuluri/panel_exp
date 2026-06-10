@@ -51,7 +51,7 @@ Define **how** design × estimator × inference × geometry × estimand combinat
 | Post-Level-B enhancement synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 | Trust role assignment | **Blocked** — `TRUST_ROLE_ASSIGNMENT_FRAMEWORK_001` after OC evidence |
 
-**Suitability v2 dependency:** Requires **`INFERENCE_READOUT_SEMANTICS_001`** (✅ Accepted), **`GEOMETRY_BRIDGE_REQUIREMENTS_001`** (✅ Accepted), and targeted enhancement lanes per [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md). Current register remains v1 policy-only.
+**Suitability v2 dependency:** Requires readout semantics + geometry bridge (both ✅ Accepted), `DESIGN_OUTPUT_CONTRACT_001`, and targeted enhancement lanes. **TROP:** no current suitability status — requires [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) ladder + `TRIPLY_ROBUST_SUITABILITY_EXTENSION_001` before any row advancement.
 
 ---
 
@@ -188,7 +188,7 @@ Protocol registers (Layers 4–5) **do not** satisfy suitability evidence.
 
 | combination_id | Class |
 |----------------|-------|
-| TROP-RESEARCH | `research_only` |
+| TROP-RESEARCH | `research_only` — no advancement until TROP audit ladder complete ([`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md)) |
 | MTGP-RESEARCH | `research_only` |
 | BAYESIANTBR-MCMC | `research_only` |
 | SDID-POINT | `research_only` |

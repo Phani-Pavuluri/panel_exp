@@ -275,10 +275,13 @@ A valid geometry bridge artifact must specify:
 - **`time_series_operator_geometry`** required.
 - Forecast target ≠ causal target; auto-selection policy before causal reporting bridge.
 
-### H. Future Bayesian
+### I. Future triply robust / TROP
 
-- Hierarchical geometry declared explicitly.
-- Pooling/shrinkage **not** automatic valid bridge.
+- **Future nuisance-model estimator geometry** — **not yet accepted**.
+- Must declare: unit/market covariate layout, assignment geometry, selection/transport geometry, target population.
+- Current SCM/AugSynth/TBR/DID/MCELL/TBRRidge D5 geometries do **not** automatically support TROP.
+- `aggregate_two_row` **blocked** for TROP unless `TRIPLY_ROBUST_COMBINATION_MATRIX_001` + bridge justify.
+- Transport or trimmed-population claims require **geometry bridge**.
 
 ---
 
