@@ -48,7 +48,9 @@ This artifact is the **authoritative design-side code inventory** for GeoX/panel
 | [`DESIGN_OUTPUT_CONTRACT_001.md`](DESIGN_OUTPUT_CONTRACT_001.md) | Requires mapping current emissions to required schema |
 | Suitability / combination matrix v2 | Must reference inventory IDs, not ad hoc design names |
 
-Future **literature alignment**, **implementation validation**, **statistical validation**, **combination matrix**, **guardrails**, and **design suitability** depend on this inventory.
+Future **implementation validation**, **statistical validation**, **combination matrix**, **guardrails**, and **design suitability** depend on this inventory.
+
+**Literature alignment:** [`DESIGN_LITERATURE_ALIGNMENT_001.md`](DESIGN_LITERATURE_ALIGNMENT_001.md) ✅ **Accepted** — consumed all DES-001–DES-031 rows; **no design validated**.
 
 ---
 
@@ -132,16 +134,16 @@ Uses [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) categories plu
 
 | inventory_id | name | category | file path | symbol | registry | API | contract status | next audit |
 |--------------|------|----------|-----------|--------|----------|-----|-----------------|------------|
-| DES-001 | greedy_match_markets | matching_design | `design/assign.py` | class | yes | public | contract_mapping_partial | DESIGN_LITERATURE_ALIGNMENT_001 |
-| DES-002 | CompleteRandomization | standard_assignment | `design/assign.py` | class | yes | public | contract_mapping_partial | DESIGN_LITERATURE_ALIGNMENT_001 |
-| DES-003 | BalancedRandomization | standard_assignment | `design/assign.py` | class | yes | public | contract_mapping_partial | DESIGN_LITERATURE_ALIGNMENT_001 |
-| DES-004 | StratifiedRandomization | stratified_assignment | `design/assign.py` | class | yes | public | contract_mapping_partial | DESIGN_LITERATURE_ALIGNMENT_001 |
-| DES-005 | ThinningDesign | thinning_design | `design/assign.py` | class | yes | public | contract_mapping_partial | DESIGN_LITERATURE_ALIGNMENT_001 |
+| DES-001 | greedy_match_markets | matching_design | `design/assign.py` | class | yes | public | contract_mapping_partial | DESIGN_IMPLEMENTATION_VALIDATION_001 |
+| DES-002 | CompleteRandomization | standard_assignment | `design/assign.py` | class | yes | public | contract_mapping_partial | DESIGN_IMPLEMENTATION_VALIDATION_001 |
+| DES-003 | BalancedRandomization | standard_assignment | `design/assign.py` | class | yes | public | contract_mapping_partial | DESIGN_IMPLEMENTATION_VALIDATION_001 |
+| DES-004 | StratifiedRandomization | stratified_assignment | `design/assign.py` | class | yes | public | contract_mapping_partial | DESIGN_IMPLEMENTATION_VALIDATION_001 |
+| DES-005 | ThinningDesign | thinning_design | `design/assign.py` | class | yes | public | contract_mapping_partial | DESIGN_IMPLEMENTATION_VALIDATION_001 |
 | DES-006 | Rerandomization | blocking_assignment | `design/assign.py` | class | no | public | contract_mapping_partial | DESIGN_IMPLEMENTATION_VALIDATION_001 |
-| DES-007 | QuickBlock | blocking_assignment | `design/quickblock.py` | class | yes | public | contract_required | DESIGN_LITERATURE_ALIGNMENT_001 |
-| DES-008 | MatchedPair | matching_design | `design/matched_pair.py` | class | yes | public | contract_required | DESIGN_LITERATURE_ALIGNMENT_001 |
-| DES-009 | TrimmedMatchDesign | trimmed_population | `design/trimmed_match.py` | class | yes | public | contract_required | DESIGN_LITERATURE_ALIGNMENT_001 |
-| DES-010 | SupergeoModel | supergeo_design | `design/supergeos.py` | class | yes | public | contract_required | DESIGN_LITERATURE_ALIGNMENT_001 |
+| DES-007 | QuickBlock | blocking_assignment | `design/quickblock.py` | class | yes | public | contract_required | DESIGN_IMPLEMENTATION_VALIDATION_001 |
+| DES-008 | MatchedPair | matching_design | `design/matched_pair.py` | class | yes | public | contract_required | DESIGN_IMPLEMENTATION_VALIDATION_001 |
+| DES-009 | TrimmedMatchDesign | trimmed_population | `design/trimmed_match.py` | class | yes | public | contract_required | DESIGN_IMPLEMENTATION_VALIDATION_001 |
+| DES-010 | SupergeoModel | supergeo_design | `design/supergeos.py` | class | yes | public | contract_required | DESIGN_IMPLEMENTATION_VALIDATION_001 |
 | DES-011 | multi_test_groups | multi_cell_assignment | config | `n_test_grps` | n/a | public | contract_mapping_partial | DESIGN_COMBINATION_VALIDATION_MATRIX_001 |
 | DES-012 | GeoExperimentDesign | orchestration_helper | `design/geo_experiment_design.py` | class | n/a | public | contract_mapping_partial | DESIGN_IMPLEMENTATION_VALIDATION_001 |
 | DES-013 | run_geo_experiment_design | orchestration_helper | `design/geo_runner.py` | function | n/a | internal | contract_mapping_partial | DESIGN_IMPLEMENTATION_VALIDATION_001 |
@@ -160,7 +162,7 @@ Uses [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) categories plu
 | DES-026 | DesignEvidence | output_contract_object | `evidence.py` | class | n/a | public | contract_mapping_partial | DESIGN_IMPLEMENTATION_VALIDATION_001 |
 | DES-027 | ExperimentEvidence | output_contract_object | `evidence.py` | class | n/a | public | contract_mapping_partial | DESIGN_IMPLEMENTATION_VALIDATION_001 |
 | DES-028 | spec.py DesignSpec | governance_spec | `spec.py` | dataclass | n/a | public | partial | DESIGN_IMPLEMENTATION_VALIDATION_001 |
-| DES-029 | DesignMethod enum | governance_spec | `spec.py` | Enum | n/a | public | partial | DESIGN_LITERATURE_ALIGNMENT_001 |
+| DES-029 | DesignMethod enum | governance_spec | `spec.py` | Enum | n/a | public | partial | DESIGN_IMPLEMENTATION_VALIDATION_001 |
 | DES-030 | DesignProfile | governance_spec | `governance/decision_policy.py` | dataclass | n/a | internal | not_contract | DESIGN_SUITABILITY_FRAMEWORK_001 |
 | DES-031 | track_d_design_inventory_001 | panel_construction | `validation/track_d_design_inventory_001.py` | generator | n/a | internal | superseded_by_this_doc | — |
 
@@ -455,7 +457,7 @@ Suitability framework must use **inventory_id** (DES-*) or registry key from thi
 | Helpers / output / governance rows | 21 |
 | Contract-complete implementations | **0** |
 | Geo-run supported | 5 |
-| Next audit artifact | **DESIGN_LITERATURE_ALIGNMENT_001** |
+| Next audit artifact | **DESIGN_IMPLEMENTATION_VALIDATION_001** |
 
 **Not claimed:** production-ready, validated, governed, suitable, TrustReport-eligible, CalibrationSignal-eligible, MMM-ready, LLM-ready.
 
@@ -495,4 +497,4 @@ Suitability framework must use **inventory_id** (DES-*) or registry key from thi
 
 ---
 
-*DESIGN-CODE-INVENTORY-001 v1.0.0 — Accepted; verdict = design_code_inventory_complete_contract_gaps_identified; next = DESIGN_LITERATURE_ALIGNMENT_001.*
+*DESIGN-CODE-INVENTORY-001 v1.0.1 — Literature alignment consumed inventory rows; no design validated; next = DESIGN_IMPLEMENTATION_VALIDATION_001.*
