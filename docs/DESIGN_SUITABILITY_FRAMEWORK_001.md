@@ -502,8 +502,9 @@ Governance sequence after this artifact:
 2. **`DESIGN_CONTRACT_SCHEMA_001`** ✅ **Accepted** — [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) — **necessary but insufficient** for positive suitability  
 3. **`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001`** ✅ **Accepted** — Phase 2 emission plan (**not implemented**)  
 4. **`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001`** ✅ **Accepted** — validation test plan (**tests not implemented**)  
-5. **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`** *(next)* — validator implementation  
-6. **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** *(follow-on)* — runtime enforcement per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §27  
+5. **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`** ✅ **Accepted** — validator architecture (**not implemented**)  
+6. **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`** *(next)* — validator code  
+7. **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** *(follow-on)* — runtime enforcement per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §27  
 
 Schema and emission precede runtime guardrail wiring.
 
@@ -557,9 +558,11 @@ find docs -iname "*SUITABILITY*" -o -iname "*GUARDRAIL*" -o -iname "*COMBINATION
 
 **Validation test plan:** [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md) ✅ **Accepted** — **positive suitability requires passing validation tests**; 0 downstream suitable designs.
 
-**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`**
+**Validator implementation plan:** [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md) ✅ **Accepted** — **positive suitability requires validator PASS plus separate statistical validation**; 0 downstream suitable designs.
 
-Then: validator · tests · code emission · `DESIGN_GUARDRAIL_ENFORCEMENT_001` · `D5-DES-STAT-*`.
+**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`**
+
+Then: tests · tier-1 emission · `DESIGN_GUARDRAIL_ENFORCEMENT_001` · `D5-DES-STAT-*`.
 
 ---
 
@@ -599,4 +602,4 @@ Then: validator · tests · code emission · `DESIGN_GUARDRAIL_ENFORCEMENT_001` 
 
 ---
 
-*DESIGN-SUITABILITY-FRAMEWORK-001 v1.0.4 — Accepted; positive suitability requires passing validation tests; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.*
+*DESIGN-SUITABILITY-FRAMEWORK-001 v1.0.5 — Accepted; positive suitability requires validator PASS + stat validation; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001.*

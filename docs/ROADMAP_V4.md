@@ -242,7 +242,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Status:** **active** — authoritative method-foundation sequence  
 **Verdict:** **Pauses** trust-framework / method-role expansion until layers 1–5 complete (code inventory → literature → implementation → statistical OC → combination matrix). Prior synthesis and MCELL-first chains are **evidence only**, not sequencing authority.
 
-**Ordered next:** ✅ D5 Level B + design audit ladder (through **validation test plan**) → **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`** → validator + tests + code emission → trust-framework integration (roles paused).
+**Ordered next:** ✅ D5 Level B + design audit ladder (through **validator implementation plan**) → **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`** → tests + tier-1 emission → trust-framework integration (roles paused).
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 
@@ -254,7 +254,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 
 **Design statistical validation protocol:** [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) — ✅ Accepted; protocol defined; 0 designs statistically validated.
 
-**Design audit lane:** [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) — Accepted; ladder through **validation test plan** ✅; next = **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`**. **Phase 3 planned, tests not implemented; 0 contract-complete designs; downstream blocked.**
+**Design audit lane:** [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) — Accepted; ladder through **validator implementation plan** ✅; next = **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`**. **Validator not implemented; 0 contract-complete designs; downstream blocked.**
 
 ### METHOD-ENHANCEMENT-ROADMAP-001 (post-Level-B synthesis)
 
@@ -334,7 +334,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Archive:** [`track_d/archives/D5_STAT_AUGSYNTH_POINT_001_results.json`](track_d/archives/D5_STAT_AUGSYNTH_POINT_001_results.json)  
 **Generator:** [`panel_exp/validation/track_d_d5_stat_augsynth_point_001.py`](../panel_exp/validation/track_d_d5_stat_augsynth_point_001.py)  
 **Status:** **complete** — AugSynthCVXPY point only; `characterization_mixed_requires_followup`  
-**Next:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`**
+**Next:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`**
 
 ### METHOD-SOUNDNESS-AND-GAP-ROADMAP-001
 
@@ -344,7 +344,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 
 **Inputs:** Track D D1–D5 · CV-001 · AUDIT-010 · foundation hardening · validation program.
 
-**Ordered next:** See **METHOD-ENHANCEMENT-ROADMAP-001** (`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`).
+**Ordered next:** See **METHOD-ENHANCEMENT-ROADMAP-001** (`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`).
 
 ### METHOD-SOUNDNESS-ROADMAP-REVIEW-001
 

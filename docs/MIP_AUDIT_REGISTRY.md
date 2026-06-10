@@ -621,7 +621,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** D5-STAT queue through **`D5-STAT-MCELL-PERCELL-001`** complete.
 
-**Next planning/enhancement:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`** (design-side). Validation test plan: [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md) (**Accepted**; tests not implemented).
+**Next planning/enhancement:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`** (design-side). Validator plan: [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md) (**Accepted**; not implemented).
 
 ---
 
@@ -669,7 +669,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** Future TROP audit sequence; does not change immediate enhancement queue.
 
-**Program next (unchanged):** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`** (design-side).
+**Program next (unchanged):** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`** (design-side).
 
 ---
 
@@ -685,7 +685,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `DESIGN_OUTPUT_CONTRACT_001` ✅ → `DESIGN_CODE_INVENTORY_001` ✅ → `DESIGN_LITERATURE_ALIGNMENT_001` ✅ → `DESIGN_IMPLEMENTATION_VALIDATION_001` ✅ → statistical protocol → combination matrix → guardrails → design suitability.
 
-**Immediate next:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`**.
+**Immediate next:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`**.
 
 ---
 
@@ -701,7 +701,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** ✅ `DESIGN_CODE_INVENTORY_001` → design validation ladder → combination matrix v2 → experiment planning (deferred).
 
-**Next:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`**.
+**Next:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`**.
 
 ---
 
@@ -877,7 +877,23 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001` → validator module → fixtures → pytest suite → tier-1 code emission.
 
-**Next:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`** (design-side).
+**Next:** ✅ **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`**.
+
+---
+
+## DESIGN-CONTRACT-VALIDATOR-IMPLEMENTATION-PLAN-001 (2026-06-10)
+
+**Artifact:** [`docs/DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md)
+
+**Status:** **`accepted_design_contract_validator_implementation_plan`**
+
+**Verdict:** Validator architecture and implementation sequencing for `design_contract` blocks — module target, result object, reason codes, severity rules, tier-1 behavior, guardrail/suitability integration. Verdict: `design_contract_validator_implementation_plan_defined_not_implemented`. **Documentation/planning only** — no validator code; no tests; no fixture regeneration; **0/31 contract-complete**; downstream **blocked**; no TrustReport/CalibrationSignal/MMM/LLM authorization.
+
+**Prerequisites:** [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md) Accepted; [`DESIGN_CONTRACT_SCHEMA_001.md`](DESIGN_CONTRACT_SCHEMA_001.md) Accepted.
+
+**Feeds:** `DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001` → fixtures → pytest → tier-1 emission.
+
+**Next:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`** (design-side).
 
 ---
 

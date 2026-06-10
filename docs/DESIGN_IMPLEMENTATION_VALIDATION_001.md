@@ -532,7 +532,9 @@ Documented for later — **not in scope here:**
 
 **Validation test plan:** [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md) ✅ **Accepted** — **implementation blockers (IV-DES-001–016) remain unresolved until validation tests are implemented and pass**; verdict unchanged (0/31 contract-complete).
 
-**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`**.
+**Validator implementation plan:** [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md) ✅ **Accepted** — **implementation blockers (IV-DES-001–016) remain unresolved until validator exists and validation tests pass**; verdict unchanged (0/31 contract-complete).
+
+**Next artifact:** **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`**.
 
 Guardrails: [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) ✅ **Accepted** — consumes hard blockers from §25.
 
@@ -574,4 +576,4 @@ Guardrails: [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) ✅ **Accepte
 
 ---
 
-*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.0.8 — Accepted; blockers until validation tests pass; verdict unchanged; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.*
+*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.0.9 — Accepted; blockers until validator + tests pass; verdict unchanged; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001.*
