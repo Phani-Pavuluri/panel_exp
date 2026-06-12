@@ -504,4 +504,6 @@ find tests -iname "*design*" -o -iname "*contract*" ...
 
 ---
 
-*DESIGN-TIER1-CONTRACT-EMISSION-IMPLEMENTATION-PLAN-001 v1.0.0 — Accepted; decomposes tier-1 emission into concrete wiring; runtime not implemented; 0 contract-complete; next = DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001.*
+**Implementation:** ✅ **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`** — `design_contract_builder_001.py` · `geo_runner` · `DesignEvidence` · `test_design_tier1_contract_emission_001.py` (15 tests).
+
+*DESIGN-TIER1-CONTRACT-EMISSION-IMPLEMENTATION-PLAN-001 v1.0.1 — Accepted; implementation complete; conservative runtime emission wired; 0 contract-complete; next = DESIGN_CONTRACT_GOLDEN_FIXTURES_001.*

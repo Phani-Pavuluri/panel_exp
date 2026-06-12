@@ -524,7 +524,7 @@ Aligns with [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) universal rul
 
 **Tier-1 emission plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) ✅ **Accepted** — Phase 2 planned; **not implemented**.
 
-Schema ✅ · Tier-1 plan ✅ · Tier-1 **implementation plan** ✅ [`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md) · Validator ✅. **Runtime emission not implemented.** **Next:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`**.
+Schema ✅ · Tier-1 plan ✅ · Tier-1 emission ✅ [`design_contract_builder_001.py`](../panel_exp/validation/design_contract_builder_001.py) · Validator ✅ wired. **Guardrail runtime not integrated.** **Next:** **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`**.
 
 **Follow-on:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** — runtime PASS/WARN/BLOCK wiring in `geo_runner`, validators, planning orchestrator (per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §27).
 
@@ -552,7 +552,7 @@ This artifact does **not** implement enforcement, validate designs, authorize ca
 | Verdict | `design_contract_enforcement_plan_defined_not_implemented` |
 | Phase | **0** (planning only) |
 | Contract-complete designs | **0 / 31** |
-| Next implementation artifact | `DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001` (tier-1 emission wiring plan ✅ defined) |
+| Next implementation artifact | `DESIGN_CONTRACT_GOLDEN_FIXTURES_001` (tier-1 emission ✅ implemented; guardrails deferred) |
 
 ### Search methodology (2026-06-10)
 
@@ -574,11 +574,11 @@ find tests -iname "*design*" -o -iname "*evidence*" -o -iname "*contract*" -o -i
 
 **Tier-1 emission plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) ✅ Phase 2 — **not implemented**.
 
-**Tier-1 emission implementation plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md) ✅ **Defined** — concrete wiring steps; **runtime not implemented**.
+**Tier-1 emission:** ✅ `design_contract_builder_001.py` + `geo_runner` — conservative `design_contract` emission wired.
 
-**Validator:** ✅ `panel_exp/validation/design_contract_validator_001.py` — Phase 3 code complete; **not wired to emission**.
+**Validator:** ✅ invoked at emission via `build_and_validate_tier1_contract`.
 
-**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`**
+**Next artifact:** **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`**
 
 Then: adapters (Phase 4) · `DESIGN_GUARDRAIL_ENFORCEMENT_001`.
 
@@ -620,4 +620,4 @@ Then: adapters (Phase 4) · `DESIGN_GUARDRAIL_ENFORCEMENT_001`.
 
 ---
 
-*DESIGN-CONTRACT-ENFORCEMENT-PLAN-001 v1.0.6 — Accepted; tier-1 emission implementation plan defined; runtime not implemented; next = DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001.*
+*DESIGN-CONTRACT-ENFORCEMENT-PLAN-001 v1.0.7 — Accepted; tier-1 emission implemented; guardrails not wired; 0 contract-complete; next = DESIGN_CONTRACT_GOLDEN_FIXTURES_001.*

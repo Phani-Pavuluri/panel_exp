@@ -621,7 +621,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** D5-STAT queue through **`D5-STAT-MCELL-PERCELL-001`** complete.
 
-**Next planning/enhancement:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`** (design-side). Tier-1 emission wiring plan: [`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md) (**Accepted**; runtime not implemented).
+**Next planning/enhancement:** **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`** (design-side). Tier-1 emission: [`design_contract_builder_001.py`](../panel_exp/validation/design_contract_builder_001.py) (**Implemented**; conservative; 0/31 contract-complete).
 
 ---
 
@@ -669,7 +669,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** Future TROP audit sequence; does not change immediate enhancement queue.
 
-**Program next (unchanged):** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`** (design-side).
+**Program next (unchanged):** **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`** (design-side).
 
 ---
 
@@ -685,7 +685,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `DESIGN_OUTPUT_CONTRACT_001` ✅ → `DESIGN_CODE_INVENTORY_001` ✅ → `DESIGN_LITERATURE_ALIGNMENT_001` ✅ → `DESIGN_IMPLEMENTATION_VALIDATION_001` ✅ → statistical protocol → combination matrix → guardrails → design suitability.
 
-**Immediate next:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`**.
+**Immediate next:** **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`**.
 
 ---
 
@@ -701,7 +701,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** ✅ `DESIGN_CODE_INVENTORY_001` → design validation ladder → combination matrix v2 → experiment planning (deferred).
 
-**Next:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`**.
+**Next:** **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`**.
 
 ---
 
@@ -923,9 +923,25 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) Accepted; [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`](../panel_exp/validation/design_contract_validator_001.py) Implemented.
 
-**Feeds:** `DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001` → tier-1 emission tests → guardrail integration.
+**Feeds:** ✅ `DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001` → golden fixtures → guardrail integration.
 
-**Next:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`** (design-side).
+**Next:** ✅ **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`**.
+
+---
+
+## DESIGN-TIER1-CONTRACT-EMISSION-IMPLEMENTATION-001 (2026-06-10)
+
+**Artifact:** [`panel_exp/validation/design_contract_builder_001.py`](../panel_exp/validation/design_contract_builder_001.py) · [`panel_exp/design/geo_runner.py`](../panel_exp/design/geo_runner.py) · [`tests/validation/test_design_tier1_contract_emission_001.py`](../tests/validation/test_design_tier1_contract_emission_001.py)
+
+**Status:** **`implemented_design_tier1_contract_emission`**
+
+**Verdict:** First tier-1 runtime `design_contract` emission — builder + validator invocation in `geo_runner`; optional `DesignEvidence.design_contract` / `contract_validation`; conservative governance defaults. Verdict: `design_tier1_contract_emission_implemented_conservative`. **0/31 contract-complete**; downstream **blocked**; no TrustReport/CalibrationSignal/MMM/LLM authorization; no `design_evidence_v1.json` overwrite.
+
+**Prerequisites:** [`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md) Accepted; validator implemented.
+
+**Feeds:** golden fixtures → guardrail runtime → D5-DES-STAT.
+
+**Next:** **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`** (design-side).
 
 ---
 

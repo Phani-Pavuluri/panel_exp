@@ -543,9 +543,11 @@ find panel_exp/design -type f
 
 **Validator:** ✅ **`panel_exp/validation/design_contract_validator_001.py`** — tier-1 emission **must call validator before `contract_complete` claims**; **not wired to `geo_runner` / `DesignEvidence` yet**.
 
-**Implementation plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md) ✅ **Accepted** — decomposes this plan into concrete wiring steps (builder, evidence, geo_runner, validator, tests). **Runtime emission not implemented.**
+**Implementation plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md) ✅ **Accepted**.
 
-**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`**
+**Runtime emission:** ✅ [`design_contract_builder_001.py`](../panel_exp/validation/design_contract_builder_001.py) + `geo_runner` — tier-1 geo-run emits conservative `design_contract` + `contract_validation`. **Not contract-complete; downstream blocked.**
+
+**Next artifact:** **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`**
 
 Then: fixtures → tests → tier-1 code emission.
 
@@ -587,4 +589,4 @@ Then: fixtures → tests → tier-1 code emission.
 
 ---
 
-*DESIGN-TIER1-CONTRACT-EMISSION-PLAN-001 v1.0.4 — Accepted; implementation plan decomposes wiring; emission not implemented; next = DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001.*
+*DESIGN-TIER1-CONTRACT-EMISSION-PLAN-001 v1.0.5 — Accepted; conservative tier-1 runtime emission implemented; 0 contract-complete; next = DESIGN_CONTRACT_GOLDEN_FIXTURES_001.*
