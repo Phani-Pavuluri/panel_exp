@@ -462,9 +462,11 @@ This artifact does **not** implement tests, validate contract outputs, promote d
 
 **Validator:** ✅ **`panel_exp/validation/design_contract_validator_001.py`** + **`tests/validation/test_design_contract_validator_001.py`** — validator-only scope implemented (26 tests). **Not wired to runtime emission.**
 
-**Tier-1 emission tests:** ✅ [`tests/validation/test_design_tier1_contract_emission_001.py`](../tests/validation/test_design_tier1_contract_emission_001.py) — 15 tests for current tier-1 scope. Validator tests ✅ (26).
+**Tier-1 emission tests:** ✅ [`tests/validation/test_design_tier1_contract_emission_001.py`](../tests/validation/test_design_tier1_contract_emission_001.py) — 15 tests.
 
-**Next artifact:** **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`**
+**Golden fixture tests:** ✅ [`tests/validation/test_design_contract_golden_fixtures_001.py`](../tests/validation/test_design_contract_golden_fixtures_001.py) — 39 tests; fixtures under `tests/fixtures/artifact_schemas/design_contract_golden_001/`.
+
+**Next artifact:** **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`**
 
 Then: implement validator → add fixtures → add tests → wire tier-1 emission → `DESIGN_GUARDRAIL_ENFORCEMENT_001` → `D5-DES-STAT-*`.
 
@@ -509,4 +511,4 @@ Then: implement validator → add fixtures → add tests → wire tier-1 emissio
 
 ---
 
-*DESIGN-CONTRACT-VALIDATION-TEST-PLAN-001 v1.0.4 — Accepted; validator + tier-1 emission tests implemented; next = DESIGN_CONTRACT_GOLDEN_FIXTURES_001.*
+*DESIGN-CONTRACT-VALIDATION-TEST-PLAN-001 v1.0.5 — Accepted; validator + emission + golden fixture tests implemented; next = DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.*

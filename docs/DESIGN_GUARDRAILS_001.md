@@ -512,9 +512,11 @@ Until enforcement lands, consumers must apply this document manually or via futu
 
 **Validator:** ✅ **`panel_exp/validation/design_contract_validator_001.py`** — runtime guardrails **will consume** `guardrail_inputs` from validator; **not wired to `geo_runner` yet**.
 
-**Tier-1 emission:** ✅ runtime `design_contract` fields emitted on geo-run evidence. **Guardrail runtime integration remains separate** — fields exist but guardrails not wired to consume them yet.
+**Tier-1 emission:** ✅ runtime `design_contract` fields emitted on geo-run evidence.
 
-**Next artifact:** `DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001` or `DESIGN_CONTRACT_GOLDEN_FIXTURES_001`.
+**Golden fixtures:** ✅ [`DESIGN_CONTRACT_GOLDEN_FIXTURES_001.md`](DESIGN_CONTRACT_GOLDEN_FIXTURES_001.md) — guardrails can target stable fixture-backed contract shape; **runtime guardrail integration still future**.
+
+**Next artifact:** `DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`.
 
 ---
 

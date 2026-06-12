@@ -547,7 +547,9 @@ find panel_exp/design -type f
 
 **Runtime emission:** ✅ [`design_contract_builder_001.py`](../panel_exp/validation/design_contract_builder_001.py) + `geo_runner` — tier-1 geo-run emits conservative `design_contract` + `contract_validation`. **Not contract-complete; downstream blocked.**
 
-**Next artifact:** **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`**
+**Golden fixtures:** ✅ [`DESIGN_CONTRACT_GOLDEN_FIXTURES_001.md`](DESIGN_CONTRACT_GOLDEN_FIXTURES_001.md) — emitted shape stabilized.
+
+**Next artifact:** **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`**
 
 Then: fixtures → tests → tier-1 code emission.
 
@@ -589,4 +591,4 @@ Then: fixtures → tests → tier-1 code emission.
 
 ---
 
-*DESIGN-TIER1-CONTRACT-EMISSION-PLAN-001 v1.0.5 — Accepted; conservative tier-1 runtime emission implemented; 0 contract-complete; next = DESIGN_CONTRACT_GOLDEN_FIXTURES_001.*
+*DESIGN-TIER1-CONTRACT-EMISSION-PLAN-001 v1.0.6 — Accepted; emission + golden fixtures; 0 contract-complete; next = DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.*

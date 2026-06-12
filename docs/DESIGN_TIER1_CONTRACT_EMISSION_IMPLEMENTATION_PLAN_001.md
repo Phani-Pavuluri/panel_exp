@@ -506,4 +506,6 @@ find tests -iname "*design*" -o -iname "*contract*" ...
 
 **Implementation:** ✅ **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`** — `design_contract_builder_001.py` · `geo_runner` · `DesignEvidence` · `test_design_tier1_contract_emission_001.py` (15 tests).
 
-*DESIGN-TIER1-CONTRACT-EMISSION-IMPLEMENTATION-PLAN-001 v1.0.1 — Accepted; implementation complete; conservative runtime emission wired; 0 contract-complete; next = DESIGN_CONTRACT_GOLDEN_FIXTURES_001.*
+**Golden fixtures:** ✅ [`DESIGN_CONTRACT_GOLDEN_FIXTURES_001.md`](DESIGN_CONTRACT_GOLDEN_FIXTURES_001.md) — emitted shape fixture-stabilized.
+
+*DESIGN-TIER1-CONTRACT-EMISSION-IMPLEMENTATION-PLAN-001 v1.0.2 — Accepted; implementation complete; golden fixtures stabilize shape; next = DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.*
