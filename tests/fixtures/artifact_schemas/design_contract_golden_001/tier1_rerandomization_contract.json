@@ -1,0 +1,160 @@
+{
+  "contract_validation": {
+    "blocked_downstream_roles": [
+      "trust_report",
+      "calibration_signal",
+      "mmm",
+      "llm",
+      "production"
+    ],
+    "contract_complete_allowed": false,
+    "reason_codes": [],
+    "severity": "PASS",
+    "status": "contract_valid",
+    "validator_version": "1.0.0"
+  },
+  "design_contract": {
+    "artifact_type": "design_output_contract",
+    "assignment": {
+      "assignment_map": {
+        "control": [
+          "u0",
+          "u1",
+          "u2",
+          "u3"
+        ],
+        "test_0": [
+          "u4",
+          "u5",
+          "u6",
+          "u7"
+        ]
+      },
+      "assignment_probability": 0.5,
+      "control_labels": [
+        "control"
+      ],
+      "control_units": [
+        "u0",
+        "u1",
+        "u2",
+        "u3"
+      ],
+      "treated_units": [
+        "u4",
+        "u5",
+        "u6",
+        "u7"
+      ],
+      "treatment_labels": [
+        "test_0"
+      ]
+    },
+    "compatibility": {
+      "advisory_only": true,
+      "calibration_signal_eligible": false,
+      "llm_authorized": false,
+      "mmm_eligible": false,
+      "requires_adapter": false,
+      "requires_statistical_validation": true,
+      "trust_report_eligible": false
+    },
+    "concurrency": {
+      "concurrent_multi_experiment_compatibility": "not_evaluated"
+    },
+    "created_at": "2026-06-10T12:00:00+00:00",
+    "design_contract_status": "contract_valid",
+    "design_identity": {
+      "design_family": "standard_assignment",
+      "design_inventory_id": "DES-002",
+      "design_method_class": "CompleteRandomization",
+      "design_name": "complete_randomization",
+      "is_rerandomization_wrapped": true,
+      "random_seed": 42,
+      "registry_key": "completerandomization",
+      "wrapper_identity": "Rerandomization"
+    },
+    "diagnostics": {
+      "diagnostic_completeness_status": "partial",
+      "validation_summary_present": false
+    },
+    "geometry": {
+      "bridge_status": "direct",
+      "geometry_id": "unit_panel_single_cell",
+      "target_population_status": "full_panel"
+    },
+    "governance": {
+      "calibration_signal_eligible": false,
+      "downstream_authorization_status": "blocked",
+      "forbidden_downstream_claims": [
+        "trust_report",
+        "calibration_signal",
+        "mmm_calibration",
+        "llm_product_recommendation",
+        "production_experiment_recommendation"
+      ],
+      "guardrail_status": "REQUIRES_STATISTICAL_VALIDATION",
+      "llm_authorized": false,
+      "mmm_ready": false,
+      "production_ready": false,
+      "statistical_validation_status": "protocol_defined_not_executed",
+      "suitability_status": "contract_blocked",
+      "trust_report_eligible": false
+    },
+    "multi_cell": {
+      "is_multi_cell": false,
+      "pooled_claims_allowed": false,
+      "portfolio_claims_allowed": false
+    },
+    "outcomes": {
+      "primary_outcome": "outcome"
+    },
+    "producer": "geo_runner",
+    "provenance": {
+      "assignment_hash": "golden-assignment-hash-004",
+      "builder_version": "1.0.0",
+      "package_version": "0.2.1",
+      "producer_function": "run_geo_experiment_design",
+      "producer_module": "panel_exp.design.geo_runner",
+      "run_id": "golden-fixture-exp",
+      "spec_hash": "golden-spec-hash-004"
+    },
+    "schema_name": "DESIGN-CONTRACT-SCHEMA-001",
+    "schema_version": "1.0.0",
+    "time_windows": {
+      "pre_period_end": 18,
+      "pre_period_start": 0,
+      "test_period_end": null,
+      "test_period_start": 18
+    },
+    "units": {
+      "all_units": [
+        "u0",
+        "u1",
+        "u2",
+        "u3",
+        "u4",
+        "u5",
+        "u6",
+        "u7"
+      ],
+      "donor_pool_units": [
+        "u0",
+        "u1",
+        "u2",
+        "u3"
+      ],
+      "eligible_units": [
+        "u0",
+        "u1",
+        "u2",
+        "u3",
+        "u4",
+        "u5",
+        "u6",
+        "u7"
+      ],
+      "excluded_units": []
+    }
+  }
+}

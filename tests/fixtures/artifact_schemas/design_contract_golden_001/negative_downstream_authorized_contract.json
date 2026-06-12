@@ -1,0 +1,46 @@
+{
+  "design_contract": {
+    "artifact_type": "design_output_contract",
+    "concurrency": {
+      "concurrent_multi_experiment_compatibility": "not_evaluated"
+    },
+    "created_at": "2026-06-10T12:00:00Z",
+    "design_contract_status": "contract_incomplete",
+    "design_identity": {
+      "design_family": "standard_assignment",
+      "design_inventory_id": "DES-002",
+      "design_method_class": "CompleteRandomization",
+      "design_name": "complete_randomization",
+      "registry_key": "complete_randomization"
+    },
+    "geometry": {
+      "geometry_id": "unit_panel_single_cell",
+      "target_population_status": "full_panel"
+    },
+    "governance": {
+      "downstream_authorization_status": "authorized",
+      "forbidden_downstream_claims": [
+        "trust_report",
+        "calibration_signal",
+        "mmm_calibration",
+        "llm_product_recommendation",
+        "production_experiment_recommendation"
+      ],
+      "guardrail_status": "BLOCK",
+      "statistical_validation_status": "protocol_defined_not_executed",
+      "suitability_status": "contract_blocked"
+    },
+    "multi_cell": {
+      "is_multi_cell": false
+    },
+    "producer": "geo_runner",
+    "provenance": {
+      "producer_function": "run_geo_experiment_design",
+      "producer_module": "panel_exp.design.geo_runner",
+      "run_id": "test-exp-001",
+      "spec_hash": "abc123"
+    },
+    "schema_name": "DESIGN-CONTRACT-SCHEMA-001",
+    "schema_version": "1.0.0"
+  }
+}

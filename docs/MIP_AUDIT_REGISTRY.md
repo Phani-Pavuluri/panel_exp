@@ -621,7 +621,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** D5-STAT queue through **`D5-STAT-MCELL-PERCELL-001`** complete.
 
-**Next planning/enhancement:** **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`** (design-side). Tier-1 emission: [`design_contract_builder_001.py`](../panel_exp/validation/design_contract_builder_001.py) (**Implemented**; conservative; 0/31 contract-complete).
+**Next planning/enhancement:** **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`** (design-side). Golden fixtures: [`DESIGN_CONTRACT_GOLDEN_FIXTURES_001.md`](DESIGN_CONTRACT_GOLDEN_FIXTURES_001.md) (**Accepted**; 0/31 contract-complete).
 
 ---
 
@@ -669,7 +669,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** Future TROP audit sequence; does not change immediate enhancement queue.
 
-**Program next (unchanged):** **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`** (design-side).
+**Program next (unchanged):** **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`** (design-side).
 
 ---
 
@@ -685,7 +685,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `DESIGN_OUTPUT_CONTRACT_001` ✅ → `DESIGN_CODE_INVENTORY_001` ✅ → `DESIGN_LITERATURE_ALIGNMENT_001` ✅ → `DESIGN_IMPLEMENTATION_VALIDATION_001` ✅ → statistical protocol → combination matrix → guardrails → design suitability.
 
-**Immediate next:** **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`**.
+**Immediate next:** **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`**.
 
 ---
 
@@ -701,7 +701,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** ✅ `DESIGN_CODE_INVENTORY_001` → design validation ladder → combination matrix v2 → experiment planning (deferred).
 
-**Next:** **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`**.
+**Next:** **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`**.
 
 ---
 
@@ -941,7 +941,23 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** golden fixtures → guardrail runtime → D5-DES-STAT.
 
-**Next:** **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`** (design-side).
+**Next:** ✅ **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`**.
+
+---
+
+## DESIGN-CONTRACT-GOLDEN-FIXTURES-001 (2026-06-10)
+
+**Artifact:** [`docs/DESIGN_CONTRACT_GOLDEN_FIXTURES_001.md`](DESIGN_CONTRACT_GOLDEN_FIXTURES_001.md) · [`tests/fixtures/artifact_schemas/design_contract_golden_001/`](../tests/fixtures/artifact_schemas/design_contract_golden_001/) · [`tests/validation/test_design_contract_golden_fixtures_001.py`](../tests/validation/test_design_contract_golden_fixtures_001.py)
+
+**Status:** **`accepted_design_contract_golden_fixtures`**
+
+**Verdict:** Golden fixtures stabilize tier-1 `design_contract` emitted shape — 9 JSON fixtures, 39 regression tests. Verdict: `design_contract_golden_fixtures_defined_and_tested_no_promotion`. **0/31 contract-complete**; downstream **blocked**; `design_evidence_v1.json` unchanged.
+
+**Prerequisites:** [`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`](../panel_exp/validation/design_contract_builder_001.py) Implemented.
+
+**Feeds:** guardrail runtime integration → D5-DES-STAT.
+
+**Next:** **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`** (design-side).
 
 ---
 

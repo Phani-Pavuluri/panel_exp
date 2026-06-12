@@ -538,7 +538,9 @@ Documented for later — **not in scope here:**
 
 **Tier-1 emission:** ✅ **`design_contract_builder_001.py`** + `geo_runner` — contracts emitted and validated conservatively. **IV-DES-001–003 partially addressed** for tier-1 geo-run; **contract-complete still blocked** pending golden fixtures, guardrails, stat validation; verdict unchanged (0/31 contract-complete).
 
-**Next artifact:** **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`**.
+**Golden fixtures:** ✅ [`DESIGN_CONTRACT_GOLDEN_FIXTURES_001.md`](DESIGN_CONTRACT_GOLDEN_FIXTURES_001.md) — shape stabilized; contract-complete still blocked.
+
+**Next artifact:** **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`**.
 
 Guardrails: [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) ✅ **Accepted** — consumes hard blockers from §25.
 
@@ -580,4 +582,4 @@ Guardrails: [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) ✅ **Accepte
 
 ---
 
-*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.1.2 — Accepted; tier-1 emission implemented; contract-complete blocked; verdict unchanged (0/31); next = DESIGN_CONTRACT_GOLDEN_FIXTURES_001.*
+*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.1.3 — Accepted; golden fixtures complete; contract-complete blocked; verdict unchanged (0/31); next = DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.*
