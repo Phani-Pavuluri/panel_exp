@@ -3,9 +3,14 @@
 from __future__ import annotations
 
 from panel_exp.design.context import DesignRunContext
+from panel_exp import evidence as evidence_module
 from panel_exp.evidence import ExperimentEvidence, input_data_hash_from_wide
+from panel_exp.evidence_hash import assignment_hash
 from panel_exp.panel_data import TimePeriod
 from panel_exp.spec import spillover_metadata_available, spec_from_geo_design
+from panel_exp.validation.design_contract_builder_001 import (
+    build_and_validate_tier1_contract,
+)
 
 
 def _build_geo_spec(geo, design_method: str, treatment_probability: float):
@@ -106,6 +111,23 @@ def run_geo_experiment_design(ctx: DesignRunContext) -> tuple:
             if check.status.value == "WARN":
                 warnings.append(check.message)
 
+    registry_spec = geo._design_spec
+    design_contract, contract_validation = build_and_validate_tier1_contract(
+        spec=spec,
+        assignment=rs_dp_grps,
+        registry_key=registry_spec.name,
+        base_randomizer_cls=geo.base_randomizer_cls,
+        n_test_grps=geo.n_test_grps,
+        treatment_probability=tp,
+        is_rerandomization_wrapped=True,
+        validation_summary=validation_summary,
+        wide_data=geo.panel_data.wide_data,
+        design_kwargs=geo.design_kwargs,
+        spec_hash=spec.content_hash(),
+        assignment_hash_value=assignment_hash(rs_dp_grps),
+        package_version=evidence_module.__version__,
+    )
+
     geo.last_evidence = ExperimentEvidence.build(
         spec,
         rs_dp_grps,
@@ -113,6 +135,8 @@ def run_geo_experiment_design(ctx: DesignRunContext) -> tuple:
         warnings=warnings,
         errors=errors,
         input_data_hash=input_data_hash_from_wide(geo.panel_data.wide_data),
+        design_contract=design_contract,
+        contract_validation=contract_validation,
     )
 
     # 4. Power / MDE sensitivity

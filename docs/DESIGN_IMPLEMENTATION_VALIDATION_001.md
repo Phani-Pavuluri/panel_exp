@@ -534,11 +534,11 @@ Documented for later — **not in scope here:**
 
 **Validator implementation plan:** [`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md`](DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.md) ✅ **Accepted** — **implementation blockers (IV-DES-001–016) remain unresolved until validator exists and validation tests pass**; verdict unchanged (0/31 contract-complete).
 
-**Validator:** ✅ **`panel_exp/validation/design_contract_validator_001.py`** — blockers remain until validator passes on **emitted** contracts; **no runtime emission yet**; verdict unchanged (0/31 contract-complete).
+**Validator:** ✅ invoked at tier-1 geo-run emission.
 
-**Tier-1 emission implementation plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md) ✅ **Accepted** — **implementation blockers (IV-DES-001–016) remain until emission code and tier-1 tests pass**; verdict unchanged.
+**Tier-1 emission:** ✅ **`design_contract_builder_001.py`** + `geo_runner` — contracts emitted and validated conservatively. **IV-DES-001–003 partially addressed** for tier-1 geo-run; **contract-complete still blocked** pending golden fixtures, guardrails, stat validation; verdict unchanged (0/31 contract-complete).
 
-**Next artifact:** **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`**.
+**Next artifact:** **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`**.
 
 Guardrails: [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) ✅ **Accepted** — consumes hard blockers from §25.
 
@@ -580,4 +580,4 @@ Guardrails: [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) ✅ **Accepte
 
 ---
 
-*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.1.1 — Accepted; emission wiring plan defined; blockers until emission code; verdict unchanged (0/31 contract-complete); next = DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001.*
+*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.1.2 — Accepted; tier-1 emission implemented; contract-complete blocked; verdict unchanged (0/31); next = DESIGN_CONTRACT_GOLDEN_FIXTURES_001.*

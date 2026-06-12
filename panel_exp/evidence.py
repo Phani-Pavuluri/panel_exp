@@ -399,6 +399,8 @@ class DesignEvidence:
     errors: Tuple[str, ...] = ()
     artifacts: Mapping[str, Any] = field(default_factory=dict)
     diagnostics: Mapping[str, Any] = field(default_factory=dict)
+    design_contract: Mapping[str, Any] | None = None
+    contract_validation: Mapping[str, Any] | None = None
 
     @property
     def design_method(self) -> str:
@@ -443,6 +445,10 @@ class DesignEvidence:
             "artifacts": canonicalize(self.artifacts),
             "diagnostics": dict(self.diagnostics),
         }
+        if self.design_contract is not None:
+            payload["design_contract"] = canonicalize(self.design_contract)
+        if self.contract_validation is not None:
+            payload["contract_validation"] = canonicalize(self.contract_validation)
         return _ordered_dict(payload, _EXPERIMENT_EVIDENCE_KEY_ORDER)
 
     def to_json(self, **kwargs: Any) -> str:
@@ -466,6 +472,8 @@ class DesignEvidence:
         artifacts: Optional[Dict[str, Any]] = None,
         input_data_hash: Optional[str] = None,
         created_at: Optional[str] = None,
+        design_contract: Optional[Dict[str, Any]] = None,
+        contract_validation: Optional[Dict[str, Any]] = None,
     ) -> "DesignEvidence":
         canonical = canonical_assignment(assignment)
         merged_warnings = list(warnings or [])
@@ -504,6 +512,10 @@ class DesignEvidence:
             errors=tuple(errors or []),
             artifacts=_freeze_payload(frozen_artifacts),
             diagnostics=_freeze_payload(diagnostics),
+            design_contract=_freeze_payload(design_contract) if design_contract else None,
+            contract_validation=_freeze_payload(contract_validation)
+            if contract_validation
+            else None,
         )
 
     @classmethod
@@ -533,6 +545,12 @@ class DesignEvidence:
             errors=tuple(data.get("errors") or ()),
             artifacts=_freeze_payload(data.get("artifacts")),
             diagnostics=_freeze_payload(data.get("diagnostics")),
+            design_contract=_freeze_payload(data.get("design_contract"))
+            if data.get("design_contract") is not None
+            else None,
+            contract_validation=_freeze_payload(data.get("contract_validation"))
+            if data.get("contract_validation") is not None
+            else None,
         )
 
     @classmethod
@@ -709,6 +727,8 @@ class ExperimentEvidence:
         errors: Optional[List[str]] = None,
         artifacts: Optional[Dict[str, Any]] = None,
         created_at: Optional[str] = None,
+        design_contract: Optional[Dict[str, Any]] = None,
+        contract_validation: Optional[Dict[str, Any]] = None,
     ) -> "ExperimentEvidence":
         created = created_at or _utc_now_iso()
         inference_meta: Dict[str, Any] = {}
@@ -737,6 +757,8 @@ class ExperimentEvidence:
             artifacts=merged_artifacts,
             input_data_hash=input_data_hash,
             created_at=created,
+            design_contract=design_contract,
+            contract_validation=contract_validation,
         )
         a_hash = assignment_hash_override or design_ev.assignment_hash
 

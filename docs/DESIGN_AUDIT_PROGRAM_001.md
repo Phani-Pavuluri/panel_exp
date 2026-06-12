@@ -248,9 +248,15 @@ Validator architecture plan. Implementation: **`panel_exp/validation/design_cont
 
 **Status:** **Accepted** — [`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001.md)
 
-Decomposes tier-1 emission plan into concrete wiring steps (builder, evidence, geo_runner, validator invocation, tests). Verdict: `design_tier1_contract_emission_implementation_plan_defined_not_implemented`. **Plan only — runtime emission not implemented; 0/31 contract-complete.**
+Decomposes tier-1 emission plan into concrete wiring steps (builder, evidence, geo_runner, validator invocation, tests). Verdict: `design_tier1_contract_emission_implementation_plan_defined`.
 
-### O. Method-specific design audits (as needed)
+### O. DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001 ✅
+
+**Status:** **Implemented** — `panel_exp/validation/design_contract_builder_001.py` · `geo_runner` · `DesignEvidence` · `tests/validation/test_design_tier1_contract_emission_001.py`
+
+Tier-1 geo-run emits conservative `design_contract` + `contract_validation` via builder + validator. Verdict: `design_tier1_contract_emission_implemented_conservative`. **0/31 contract-complete; downstream blocked.**
+
+### P. Method-specific design audits (as needed)
 
 Examples: `D5-DES-SUPERGEO-001` follow-on, `D5-DES-TRIM-001` hardening, QuickBlock geo integration ADR.
 
@@ -491,7 +497,7 @@ First concrete output contract under the design audit lane. Defines **DesignOutp
 
 **Code inventory:** [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) maps current emitted fields against this contract — **no implementation is contract-complete**.
 
-**Next design audit artifact:** `DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001` — tier-1 runtime emission code (Phase 2).
+**Next design audit artifact:** `DESIGN_CONTRACT_GOLDEN_FIXTURES_001` — stabilize emitted contract fixtures (optional v2 lane).
 
 ---
 
@@ -569,7 +575,8 @@ Recommended sequence:
 13. **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001`** — validator implementation plan ✅ **Accepted**  
 14. **`DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_001`** — validator module ✅ **Implemented**  
 15. **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`** — tier-1 emission wiring plan ✅ **Accepted**  
-16. **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`** — **(next)**  
+16. **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`** — tier-1 runtime emission ✅ **Implemented**  
+17. **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`** — **(next)**  
 
 Method-specific audits (supergeo, trim, QuickBlock integration) run in parallel where blocked on bridges.
 
@@ -620,4 +627,4 @@ No design promotion, suitability status, TrustReport role, CalibrationSignal eli
 
 ---
 
-*DESIGN-AUDIT-PROGRAM-001 v1.1.5 — DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001 accepted; runtime emission not wired; 0 contract-complete; next = DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001.*
+*DESIGN-AUDIT-PROGRAM-001 v1.1.6 — DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001 implemented; conservative emission wired; 0 contract-complete; next = DESIGN_CONTRACT_GOLDEN_FIXTURES_001.*
