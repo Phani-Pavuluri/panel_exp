@@ -256,13 +256,19 @@ Decomposes tier-1 emission plan into concrete wiring steps (builder, evidence, g
 
 Golden fixtures for tier-1 `design_contract` shape under `tests/fixtures/artifact_schemas/design_contract_golden_001/`. Verdict: `design_contract_golden_fixtures_defined_and_tested_no_promotion`. **0/31 contract-complete.**
 
-### P. DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001 ✅
+### P. DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001 ✅
+
+**Status:** **Implemented** — [`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md`](DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md) · `panel_exp/validation/design_guardrail_runtime_001.py`
+
+Runtime guardrail evaluator consumes emitted `design_contract` + `contract_validation` metadata. Verdict: `design_guardrail_runtime_integration_defined_and_tested_no_promotion`. **0/31 contract-complete; downstream blocked; not wired to producers.**
+
+### Q. DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001 ✅
 
 **Status:** **Implemented** — `panel_exp/validation/design_contract_builder_001.py` · `geo_runner` · `DesignEvidence` · `tests/validation/test_design_tier1_contract_emission_001.py`
 
 Tier-1 geo-run emits conservative `design_contract` + `contract_validation` via builder + validator. Verdict: `design_tier1_contract_emission_implemented_conservative`. **0/31 contract-complete; downstream blocked.**
 
-### Q. Method-specific design audits (as needed)
+### R. Method-specific design audits (as needed)
 
 Examples: `D5-DES-SUPERGEO-001` follow-on, `D5-DES-TRIM-001` hardening, QuickBlock geo integration ADR.
 
@@ -503,7 +509,7 @@ First concrete output contract under the design audit lane. Defines **DesignOutp
 
 **Code inventory:** [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) maps current emitted fields against this contract — **no implementation is contract-complete**.
 
-**Next design audit artifact:** `DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001` — runtime guardrail consumption of emitted contracts.
+**Next design audit artifact:** `DESIGN_SUITABILITY_REASSESSMENT_001` — suitability reassessment under guardrail + contract metadata.
 
 ---
 
@@ -583,7 +589,8 @@ Recommended sequence:
 15. **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`** — tier-1 emission wiring plan ✅ **Accepted**  
 16. **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`** — tier-1 runtime emission ✅ **Implemented**  
 17. **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`** — golden fixtures ✅ **Accepted**  
-18. **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`** — **(next)**  
+18. **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`** — runtime guardrail evaluator ✅ **Implemented**  
+19. **`DESIGN_SUITABILITY_REASSESSMENT_001`** — **(next)**  
 
 Method-specific audits (supergeo, trim, QuickBlock integration) run in parallel where blocked on bridges.
 
@@ -634,4 +641,4 @@ No design promotion, suitability status, TrustReport role, CalibrationSignal eli
 
 ---
 
-*DESIGN-AUDIT-PROGRAM-001 v1.1.7 — DESIGN_CONTRACT_GOLDEN_FIXTURES_001 accepted; shape stabilized; 0 contract-complete; next = DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.*
+*DESIGN-AUDIT-PROGRAM-001 v1.1.8 — DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001 implemented; runtime evaluator defined and tested; 0 contract-complete; next = DESIGN_SUITABILITY_REASSESSMENT_001.*

@@ -192,7 +192,7 @@ Required passing suites:
 
 ## 17. Roadmap
 
-**Next artifact:** **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`** — consume stable fixture-backed contract shape at runtime.
+**Next artifact:** **`DESIGN_SUITABILITY_REASSESSMENT_001`** — suitability reassessment under guardrail metadata.
 
 ---
 
@@ -208,6 +208,8 @@ Required passing suites:
 | Companion docs updated | ✅ |
 | No estimator/inference changes | ✅ |
 
+| Golden fixtures feed guardrail runtime tests | ✅ |
+
 ---
 
 ## 19. Current status and verdict
@@ -222,4 +224,4 @@ Required passing suites:
 
 ---
 
-*DESIGN-CONTRACT-GOLDEN-FIXTURES-001 v1.0.0 — Accepted; golden fixtures defined and tested; 0 contract-complete; next = DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.*
+*DESIGN-CONTRACT-GOLDEN-FIXTURES-001 v1.0.1 — Accepted; golden fixtures feed runtime guardrail tests; 0 contract-complete; next = DESIGN_SUITABILITY_REASSESSMENT_001.*

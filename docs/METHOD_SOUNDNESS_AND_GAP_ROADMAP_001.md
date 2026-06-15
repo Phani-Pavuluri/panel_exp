@@ -420,7 +420,8 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 | **31** | **DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001** | Tier-1 emission wiring plan | ✅ Accepted |
 | **32** | **DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001** | Tier-1 runtime emission code | ✅ Implemented |
 | **33** | **DESIGN_CONTRACT_GOLDEN_FIXTURES_001** | Golden contract fixtures | ✅ Accepted |
-| **34** | **DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001** | Runtime guardrails | **Next** |
+| **34** | **DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001** | Runtime guardrails | ✅ **Implemented** |
+| **35** | **DESIGN_SUITABILITY_REASSESSMENT_001** | Suitability reassessment | **Next** |
 | **—** | **TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001** | TROP parked audit program | ✅ **Proposed** — [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) |
 | **15** | **METHOD_ENHANCEMENT_ROADMAP_001** | Post-Level-B synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 
@@ -447,7 +448,7 @@ Per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) — **0 downstream PA
 | Statistical validation not executed | **REQUIRES_STATISTICAL_VALIDATION** | All 31 designs |
 | Future Bayesian / TROP / SARIMAX | **DEFERRED** → **BLOCK** | DCM-017–019 |
 
-**Next:** `DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001` → guardrail runtime integration (Phase 3).
+**Next:** `DESIGN_SUITABILITY_REASSESSMENT_001` → suitability reassessment under guardrail metadata (Phase 3).
 
 ### Unresolved gap: schema defined, emission/validation not implemented
 
