@@ -507,8 +507,9 @@ Governance sequence after this artifact:
 7. **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001`** ✅ — emission wiring plan  
 8. **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`** ✅ — runtime emission code  
 9. **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`** ✅ — fixture stabilization  
-10. **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`** *(next)* — runtime guardrails  
-11. **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** *(follow-on)* — runtime enforcement per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §27  
+10. **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`** ✅ — runtime guardrail evaluator (metadata only; no downstream promotion)  
+11. **`DESIGN_SUITABILITY_REASSESSMENT_001`** *(next)* — suitability reassessment under guardrails + statistical validation gate  
+12. **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** *(follow-on)* — runtime enforcement per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §27  
 
 Schema and emission precede runtime guardrail wiring.
 
@@ -522,7 +523,7 @@ Schema and emission precede runtime guardrail wiring.
 | Designs structurally suitable for production | ❌ **0** |
 | TrustReport / CalibrationSignal / MMM / LLM | ❌ **BLOCKED** |
 | Statistical validation executed | ❌ **0** `D5-DES-STAT-*` |
-| Contract enforcement in code | ❌ Not implemented |
+| Contract enforcement in code | ✅ Metadata guardrail evaluator; suitability still blocked |
 
 This artifact does **not** validate or promote designs. It does **not** authorize causal claims or product layers. Contract enforcement and validation execution are required before any positive production suitability.
 
@@ -566,7 +567,7 @@ find docs -iname "*SUITABILITY*" -o -iname "*GUARDRAIL*" -o -iname "*COMBINATION
 
 **Golden fixtures:** ✅ shape stabilized. **Suitability remains blocked** — fixture stabilization ≠ statistical validation or downstream promotion.
 
-**Next artifact:** **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`**
+**Next artifact:** **`DESIGN_SUITABILITY_REASSESSMENT_001`**
 
 Then: tests · tier-1 emission · `DESIGN_GUARDRAIL_ENFORCEMENT_001` · `D5-DES-STAT-*`.
 
@@ -608,4 +609,4 @@ Then: tests · tier-1 emission · `DESIGN_GUARDRAIL_ENFORCEMENT_001` · `D5-DES-
 
 ---
 
-*DESIGN-SUITABILITY-FRAMEWORK-001 v1.0.9 — Accepted; golden fixtures complete; suitability blocked; next = DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.*
+*DESIGN-SUITABILITY-FRAMEWORK-001 v1.1.0 — Accepted; guardrail runtime implemented; suitability remains blocked until reassessment and statistical validation; next = DESIGN_SUITABILITY_REASSESSMENT_001.*

@@ -621,7 +621,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** D5-STAT queue through **`D5-STAT-MCELL-PERCELL-001`** complete.
 
-**Next planning/enhancement:** **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`** (design-side). Golden fixtures: [`DESIGN_CONTRACT_GOLDEN_FIXTURES_001.md`](DESIGN_CONTRACT_GOLDEN_FIXTURES_001.md) (**Accepted**; 0/31 contract-complete).
+**Next planning/enhancement:** **`DESIGN_SUITABILITY_REASSESSMENT_001`** (design-side). Guardrail runtime: [`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md`](DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md) (**Accepted**; 0/31 contract-complete).
 
 ---
 
@@ -669,7 +669,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** Future TROP audit sequence; does not change immediate enhancement queue.
 
-**Program next (unchanged):** **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`** (design-side).
+**Program next (unchanged):** **`DESIGN_SUITABILITY_REASSESSMENT_001`** (design-side).
 
 ---
 
@@ -685,7 +685,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `DESIGN_OUTPUT_CONTRACT_001` ✅ → `DESIGN_CODE_INVENTORY_001` ✅ → `DESIGN_LITERATURE_ALIGNMENT_001` ✅ → `DESIGN_IMPLEMENTATION_VALIDATION_001` ✅ → statistical protocol → combination matrix → guardrails → design suitability.
 
-**Immediate next:** **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`**.
+**Immediate next:** **`DESIGN_SUITABILITY_REASSESSMENT_001`**.
 
 ---
 
@@ -701,7 +701,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** ✅ `DESIGN_CODE_INVENTORY_001` → design validation ladder → combination matrix v2 → experiment planning (deferred).
 
-**Next:** **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`**.
+**Next:** **`DESIGN_SUITABILITY_REASSESSMENT_001`**.
 
 ---
 
@@ -955,9 +955,25 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** [`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`](../panel_exp/validation/design_contract_builder_001.py) Implemented.
 
-**Feeds:** guardrail runtime integration → D5-DES-STAT.
+**Feeds:** ✅ guardrail runtime integration → suitability reassessment → D5-DES-STAT.
 
-**Next:** **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`** (design-side).
+**Next:** ✅ **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`**.
+
+---
+
+## DESIGN-GUARDRAIL-RUNTIME-INTEGRATION-001 (2026-06-10)
+
+**Artifact:** [`docs/DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md`](DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md) · [`panel_exp/validation/design_guardrail_runtime_001.py`](../panel_exp/validation/design_guardrail_runtime_001.py) · [`tests/validation/test_design_guardrail_runtime_integration_001.py`](../tests/validation/test_design_guardrail_runtime_integration_001.py)
+
+**Status:** **`design_guardrail_runtime_integration_defined_and_tested_no_promotion`**
+
+**Verdict:** Runtime guardrail evaluator consumes emitted `design_contract` + `contract_validation` metadata — 24 integration tests over golden fixtures. Maps validator state to PASS/WARN/BLOCK; enforces no-overclaim policy. **0/31 contract-complete**; downstream **blocked**; `downstream_may_proceed=False` always; not wired to producers.
+
+**Prerequisites:** [`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`](DESIGN_CONTRACT_GOLDEN_FIXTURES_001.md) Accepted; tier-1 emission implemented.
+
+**Feeds:** suitability reassessment → D5-DES-STAT.
+
+**Next:** **`DESIGN_SUITABILITY_REASSESSMENT_001`** (design-side).
 
 ---
 

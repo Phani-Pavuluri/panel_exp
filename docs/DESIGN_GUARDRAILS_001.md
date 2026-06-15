@@ -514,9 +514,11 @@ Until enforcement lands, consumers must apply this document manually or via futu
 
 **Tier-1 emission:** ✅ runtime `design_contract` fields emitted on geo-run evidence.
 
-**Golden fixtures:** ✅ [`DESIGN_CONTRACT_GOLDEN_FIXTURES_001.md`](DESIGN_CONTRACT_GOLDEN_FIXTURES_001.md) — guardrails can target stable fixture-backed contract shape; **runtime guardrail integration still future**.
+**Golden fixtures:** ✅ [`DESIGN_CONTRACT_GOLDEN_FIXTURES_001.md`](DESIGN_CONTRACT_GOLDEN_FIXTURES_001.md) — feed runtime guardrail integration tests.
 
-**Next artifact:** `DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`.
+**Runtime evaluator:** ✅ [`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md`](DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md) · [`panel_exp/validation/design_guardrail_runtime_001.py`](../panel_exp/validation/design_guardrail_runtime_001.py) — consumes emitted `design_contract` + `contract_validation` metadata; **no downstream promotion** (`downstream_may_proceed=False` always).
+
+**Next artifact:** `DESIGN_SUITABILITY_REASSESSMENT_001`.
 
 ---
 
@@ -525,7 +527,7 @@ Until enforcement lands, consumers must apply this document manually or via futu
 | Gate | Status |
 |------|--------|
 | Guardrails defined | ✅ This artifact |
-| Runtime enforcement | ❌ Not implemented |
+| Runtime enforcement (metadata evaluator) | ✅ Implemented — not wired to producers |
 | Designs validated | ❌ 0 statistically validated |
 | Combinations promoted | ❌ 0 |
 | Suitability assigned (design-side) | ❌ None |
@@ -560,7 +562,7 @@ find docs -iname "*GUARDRAIL*" -o -iname "*COMBINATION*" -o -iname "*SUITABILITY
 
 ## 31. Roadmap
 
-**Next artifact:** **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`**
+**Next artifact:** **`DESIGN_SUITABILITY_REASSESSMENT_001`**
 
 Schema ✅ · Tier-1 plan ✅ · Test plan ✅ · Validator plan ✅ · Enforcement plan ✅ · Suitability framework ✅.
 
@@ -600,4 +602,4 @@ Schema ✅ · Tier-1 plan ✅ · Test plan ✅ · Validator plan ✅ · Enforcem
 
 ---
 
-*DESIGN-GUARDRAILS-001 v1.0.9 — Accepted; runtime contract fields exist; guardrail runtime not wired; next = DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.*
+*DESIGN-GUARDRAILS-001 v1.1.0 — Accepted; runtime guardrail evaluator implemented for contract metadata; no downstream promotion; next = DESIGN_SUITABILITY_REASSESSMENT_001.*

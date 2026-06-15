@@ -52,7 +52,7 @@ The D5-STAT queue established **what the codebase does today** under controlled 
 | **D5-STAT-DID-BOOTSTRAP-001** | Level B DID embedded bootstrap | `characterization_mixed_requires_followup` | [`D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md) |
 | **D5-STAT-MCELL-PERCELL-001** | Level B per-cell execution | `characterization_pass_with_caveats` | [`D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) |
 
-**Queue status:** D5 Level B complete. Design audit ladder through **golden fixtures** ✅. Next enhancement artifact: **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`**.
+**Queue status:** D5 Level B complete. Design audit ladder through **guardrail runtime** ✅. Next enhancement artifact: **`DESIGN_SUITABILITY_REASSESSMENT_001`**.
 
 ---
 
@@ -246,7 +246,8 @@ Design methods require the **same audit rigor** as estimator/inference families.
 15. `DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001` ✅ **Accepted**  
 16. `DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001` ✅ **Implemented**  
 17. `DESIGN_CONTRACT_GOLDEN_FIXTURES_001` ✅ **Accepted**  
-18. `DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001` *(next)*  
+18. `DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001` ✅  
+19. `DESIGN_SUITABILITY_REASSESSMENT_001` *(next)*  
 15. Method-specific design audits as needed (supergeo, trim, QuickBlock integration)
 
 ---
@@ -294,7 +295,7 @@ Design methods require the **same audit rigor** as estimator/inference families.
 | **DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_PLAN_001** | ✅ **Accepted** |
 | **DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001** | ✅ **Implemented** |
 | **DESIGN_CONTRACT_GOLDEN_FIXTURES_001** | ✅ **Accepted** |
-| **Next enhancement** | **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`** |
+| **Next enhancement** | **`DESIGN_SUITABILITY_REASSESSMENT_001`** |
 | Constraint | No governed uncertainty claim until readout semantics proven |
 | Feeds | `TBRRIDGE_OPERATOR_CONTRACT_001` · `INFERENCE_READOUT_SEMANTICS_001` |
 
@@ -306,7 +307,7 @@ Do not skip TBRRidge characterization to begin code enhancement — it completes
 
 Recommended sequence:
 
-1. Execute **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`** — runtime guardrail consumption (design-side)
+1. Execute **`DESIGN_SUITABILITY_REASSESSMENT_001`** — suitability reassessment under guardrail metadata (design-side)
 2. Targeted method-family fixes (TBR readout, DID cumulative fix, SCM stress-null, TBRRidge operator contract, …)
 4. **`TBR_READOUT_SEMANTICS_001`**
 5. **`TBRRIDGE_OPERATOR_CONTRACT_001`**
@@ -373,4 +374,4 @@ This roadmap does **not**:
 
 ---
 
-*METHOD-ENHANCEMENT-ROADMAP-001 v1.2.3 — DESIGN_CONTRACT_GOLDEN_FIXTURES_001 accepted; 0 contract-complete; next = DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.*
+*METHOD-ENHANCEMENT-ROADMAP-001 v1.2.4 — DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001 implemented; 0 contract-complete; next = DESIGN_SUITABILITY_REASSESSMENT_001.*
