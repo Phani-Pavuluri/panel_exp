@@ -508,10 +508,10 @@ Governance sequence after this artifact:
 8. **`DESIGN_TIER1_CONTRACT_EMISSION_IMPLEMENTATION_001`** ✅ — runtime emission code  
 9. **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`** ✅ — fixture stabilization  
 10. **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`** ✅ — runtime guardrail evaluator (metadata only; no downstream promotion)  
-11. **`DESIGN_SUITABILITY_REASSESSMENT_001`** *(next)* — suitability reassessment under guardrails + statistical validation gate  
+11. **`DESIGN_SUITABILITY_REASSESSMENT_001`** ✅ — post-runtime reassessment; metadata improved, downstream still blocked  
 12. **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** *(follow-on)* — runtime enforcement per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §27  
 
-Schema and emission precede runtime guardrail wiring.
+**Post-reassessment:** [`DESIGN_SUITABILITY_REASSESSMENT_001.md`](DESIGN_SUITABILITY_REASSESSMENT_001.md) ✅ — tier-1 metadata validity measurable; **0 downstream suitable designs**; verdict `design_metadata_suitability_improved_statistical_and_downstream_suitability_still_blocked`.
 
 ---
 
@@ -520,6 +520,7 @@ Schema and emission precede runtime guardrail wiring.
 | Gate | Status |
 |------|--------|
 | Suitability framework defined | ✅ This artifact |
+| Designs with metadata-valid tier-1 contracts | **4 fixture-backed + DES-001 path** (not production suitable) |
 | Designs structurally suitable for production | ❌ **0** |
 | TrustReport / CalibrationSignal / MMM / LLM | ❌ **BLOCKED** |
 | Statistical validation executed | ❌ **0** `D5-DES-STAT-*` |
@@ -533,7 +534,7 @@ This artifact does **not** validate or promote designs. It does **not** authoriz
 
 | Field | Value |
 |-------|-------|
-| Verdict | `design_suitability_framework_defined_no_downstream_suitable_designs` |
+| Verdict | `design_suitability_framework_defined_no_downstream_suitable_designs` (reassessment: `design_metadata_suitability_improved_statistical_and_downstream_suitability_still_blocked`) |
 | Master suitability rows | 14 key policies (DSU-001–DSU-014) |
 | Downstream suitable designs | **0** |
 | Reason codes defined | 12 D-SUIT-* codes |
@@ -567,9 +568,9 @@ find docs -iname "*SUITABILITY*" -o -iname "*GUARDRAIL*" -o -iname "*COMBINATION
 
 **Golden fixtures:** ✅ shape stabilized. **Suitability remains blocked** — fixture stabilization ≠ statistical validation or downstream promotion.
 
-**Next artifact:** **`DESIGN_SUITABILITY_REASSESSMENT_001`**
+**Next artifact:** **`D5-DES-STAT-TIER1-001`** — executed tier-1 design statistical validation (default; not another infra artifact).
 
-Then: tests · tier-1 emission · `DESIGN_GUARDRAIL_ENFORCEMENT_001` · `D5-DES-STAT-*`.
+Then: `D5-DES-STAT-MULTICELL-001` · adapter lanes · `DESIGN_GUARDRAIL_ENFORCEMENT_001`.
 
 ---
 
@@ -609,4 +610,4 @@ Then: tests · tier-1 emission · `DESIGN_GUARDRAIL_ENFORCEMENT_001` · `D5-DES-
 
 ---
 
-*DESIGN-SUITABILITY-FRAMEWORK-001 v1.1.0 — Accepted; guardrail runtime implemented; suitability remains blocked until reassessment and statistical validation; next = DESIGN_SUITABILITY_REASSESSMENT_001.*
+*DESIGN-SUITABILITY-FRAMEWORK-001 v1.1.1 — Accepted; post-runtime reassessment complete; 0 downstream suitable; next = D5-DES-STAT-TIER1-001.*

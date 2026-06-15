@@ -621,7 +621,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** D5-STAT queue through **`D5-STAT-MCELL-PERCELL-001`** complete.
 
-**Next planning/enhancement:** **`DESIGN_SUITABILITY_REASSESSMENT_001`** (design-side). Guardrail runtime: [`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md`](DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md) (**Accepted**; 0/31 contract-complete).
+**Next planning/enhancement:** **`D5-DES-STAT-TIER1-001`** (design-side). Reassessment: [`DESIGN_SUITABILITY_REASSESSMENT_001.md`](DESIGN_SUITABILITY_REASSESSMENT_001.md) (**Accepted**; 0/31 contract-complete).
 
 ---
 
@@ -669,7 +669,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** Future TROP audit sequence; does not change immediate enhancement queue.
 
-**Program next (unchanged):** **`DESIGN_SUITABILITY_REASSESSMENT_001`** (design-side).
+**Program next (unchanged):** **`D5-DES-STAT-TIER1-001`** (design-side evidence execution).
 
 ---
 
@@ -685,7 +685,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `DESIGN_OUTPUT_CONTRACT_001` ✅ → `DESIGN_CODE_INVENTORY_001` ✅ → `DESIGN_LITERATURE_ALIGNMENT_001` ✅ → `DESIGN_IMPLEMENTATION_VALIDATION_001` ✅ → statistical protocol → combination matrix → guardrails → design suitability.
 
-**Immediate next:** **`DESIGN_SUITABILITY_REASSESSMENT_001`**.
+**Immediate next:** **`D5-DES-STAT-TIER1-001`**.
 
 ---
 
@@ -701,7 +701,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** ✅ `DESIGN_CODE_INVENTORY_001` → design validation ladder → combination matrix v2 → experiment planning (deferred).
 
-**Next:** **`DESIGN_SUITABILITY_REASSESSMENT_001`**.
+**Next:** **`D5-DES-STAT-TIER1-001`**.
 
 ---
 
@@ -973,7 +973,23 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** suitability reassessment → D5-DES-STAT.
 
-**Next:** **`DESIGN_SUITABILITY_REASSESSMENT_001`** (design-side).
+**Next:** ✅ **`DESIGN_SUITABILITY_REASSESSMENT_001`**.
+
+---
+
+## DESIGN-SUITABILITY-REASSESSMENT-001 (2026-06-10)
+
+**Artifact:** [`docs/DESIGN_SUITABILITY_REASSESSMENT_001.md`](DESIGN_SUITABILITY_REASSESSMENT_001.md)
+
+**Status:** **`design_metadata_suitability_improved_statistical_and_downstream_suitability_still_blocked`**
+
+**Verdict:** Post-contract-emission and post-guardrail-runtime reassessment. Separates metadata validity, guardrail status, statistical validation, combination compatibility, and downstream authorization. Tier-1 metadata improved; **0 downstream suitable designs**; **0/31 contract-complete** for authorization.
+
+**Prerequisites:** [`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`](DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md) Implemented.
+
+**Feeds:** `D5-DES-STAT-TIER1-001` → experiment planning filters.
+
+**Next:** **`D5-DES-STAT-TIER1-001`** (design-side evidence execution).
 
 ---
 

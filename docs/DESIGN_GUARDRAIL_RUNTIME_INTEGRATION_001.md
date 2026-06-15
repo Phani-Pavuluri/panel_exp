@@ -227,7 +227,7 @@ Companion regression (unchanged):
 | Downstream authorization | **Blocked** |
 | TrustReport / CalibrationSignal / MMM / LLM | **Blocked** |
 | Guardrail runtime evaluator | **Implemented** (not wired to producers) |
-| Suitability reassessment | **Pending** (`DESIGN_SUITABILITY_REASSESSMENT_001`) |
+| Suitability reassessment | ✅ **Complete** — consumes runtime guardrail results per [`DESIGN_SUITABILITY_REASSESSMENT_001`](DESIGN_SUITABILITY_REASSESSMENT_001.md) |
 
 ---
 
@@ -245,9 +245,9 @@ Companion regression (unchanged):
 
 ## 17. Roadmap
 
-**Completed:** Schema → validator → tier-1 emission → golden fixtures → **guardrail runtime integration**.
+**Completed:** Schema → validator → tier-1 emission → golden fixtures → **guardrail runtime integration** → **suitability reassessment**.
 
-**Next artifact:** **`DESIGN_SUITABILITY_REASSESSMENT_001`** — reassess suitability under guardrail + contract metadata; still no promotion without statistical validation.
+**Next artifact:** **`D5-DES-STAT-TIER1-001`** — executed tier-1 design statistical validation.
 
 ---
 
@@ -276,4 +276,4 @@ Runtime guardrail evaluator consumes emitted contract metadata, maps validator s
 
 ---
 
-*DESIGN-GUARDRAIL-RUNTIME-INTEGRATION-001 v1.0.0 — Accepted; runtime evaluator defined and tested; 0 contract-complete; next = DESIGN_SUITABILITY_REASSESSMENT_001.*
+*DESIGN-GUARDRAIL-RUNTIME-INTEGRATION-001 v1.0.1 — Accepted; reassessment consumes guardrail results; 0 contract-complete; next = D5-DES-STAT-TIER1-001.*

@@ -540,9 +540,9 @@ Documented for later — **not in scope here:**
 
 **Golden fixtures:** ✅ [`DESIGN_CONTRACT_GOLDEN_FIXTURES_001.md`](DESIGN_CONTRACT_GOLDEN_FIXTURES_001.md) — shape stabilized; feed guardrail runtime tests.
 
-**Guardrail runtime:** ✅ [`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md`](DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md) — metadata evaluator implemented; no downstream promotion.
+**Reassessment:** ✅ [`DESIGN_SUITABILITY_REASSESSMENT_001.md`](DESIGN_SUITABILITY_REASSESSMENT_001.md) — metadata layer improved; statistical/downstream blocked.
 
-**Next artifact:** **`DESIGN_SUITABILITY_REASSESSMENT_001`**.
+**Next artifact:** **`D5-DES-STAT-TIER1-001`**.
 
 Guardrails: [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) ✅ **Accepted** — consumes hard blockers from §25.
 
@@ -584,4 +584,4 @@ Guardrails: [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) ✅ **Accepte
 
 ---
 
-*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.1.4 — Accepted; guardrail runtime complete; contract-complete blocked; verdict unchanged (0/31); next = DESIGN_SUITABILITY_REASSESSMENT_001.*
+*DESIGN-IMPLEMENTATION-VALIDATION-001 v1.1.5 — Accepted; suitability reassessment complete; contract-complete blocked; verdict unchanged (0/31); next = D5-DES-STAT-TIER1-001.*
