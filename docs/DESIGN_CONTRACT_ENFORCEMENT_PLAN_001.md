@@ -524,7 +524,7 @@ Aligns with [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) universal rul
 
 **Tier-1 emission plan:** [`DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md`](DESIGN_TIER1_CONTRACT_EMISSION_PLAN_001.md) ✅ **Accepted** — Phase 2 planned; **not implemented**.
 
-Schema ✅ · Tier-1 emission ✅ · Golden fixtures ✅ · Validator ✅ wired · **Guardrail runtime integration ✅** [`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md`](DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md). **Next:** **`DESIGN_SUITABILITY_REASSESSMENT_001`**.
+Schema ✅ · Tier-1 emission ✅ · Golden fixtures ✅ · Validator ✅ · Guardrail runtime ✅ · **Reassessment ✅** [`DESIGN_SUITABILITY_REASSESSMENT_001.md`](DESIGN_SUITABILITY_REASSESSMENT_001.md). **Next:** **`D5-DES-STAT-TIER1-001`**.
 
 **Follow-on:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** — runtime PASS/WARN/BLOCK wiring in `geo_runner`, validators, planning orchestrator (per [`DESIGN_GUARDRAILS_001.md`](DESIGN_GUARDRAILS_001.md) §27).
 
@@ -552,7 +552,7 @@ This artifact does **not** implement enforcement, validate designs, authorize ca
 | Verdict | `design_contract_enforcement_plan_defined_not_implemented` |
 | Phase | **0** (planning only) |
 | Contract-complete designs | **0 / 31** |
-| Next implementation artifact | `DESIGN_SUITABILITY_REASSESSMENT_001` (guardrail runtime ✅) |
+| Next implementation artifact | `D5-DES-STAT-TIER1-001` (reassessment ✅; contract-infra lane complete) |
 
 ### Search methodology (2026-06-10)
 
@@ -578,7 +578,7 @@ find tests -iname "*design*" -o -iname "*evidence*" -o -iname "*contract*" -o -i
 
 **Validator:** ✅ invoked at emission via `build_and_validate_tier1_contract`.
 
-**Next artifact:** **`DESIGN_SUITABILITY_REASSESSMENT_001`**
+**Next artifact:** **`D5-DES-STAT-TIER1-001`**
 
 Then: adapters (Phase 4) · `DESIGN_GUARDRAIL_ENFORCEMENT_001`.
 
@@ -620,4 +620,4 @@ Then: adapters (Phase 4) · `DESIGN_GUARDRAIL_ENFORCEMENT_001`.
 
 ---
 
-*DESIGN-CONTRACT-ENFORCEMENT-PLAN-001 v1.0.9 — Accepted; guardrail runtime integration complete for metadata layer; 0 contract-complete; next = DESIGN_SUITABILITY_REASSESSMENT_001.*
+*DESIGN-CONTRACT-ENFORCEMENT-PLAN-001 v1.1.0 — Accepted; reassessment complete; metadata layer improved; 0 contract-complete; next = D5-DES-STAT-TIER1-001.*

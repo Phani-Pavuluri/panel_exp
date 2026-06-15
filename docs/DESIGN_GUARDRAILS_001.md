@@ -516,9 +516,11 @@ Until enforcement lands, consumers must apply this document manually or via futu
 
 **Golden fixtures:** ✅ [`DESIGN_CONTRACT_GOLDEN_FIXTURES_001.md`](DESIGN_CONTRACT_GOLDEN_FIXTURES_001.md) — feed runtime guardrail integration tests.
 
-**Runtime evaluator:** ✅ [`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md`](DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md) · [`panel_exp/validation/design_guardrail_runtime_001.py`](../panel_exp/validation/design_guardrail_runtime_001.py) — consumes emitted `design_contract` + `contract_validation` metadata; **no downstream promotion** (`downstream_may_proceed=False` always).
+**Runtime evaluator:** ✅ [`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md`](DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md) · [`panel_exp/validation/design_guardrail_runtime_001.py`](../panel_exp/validation/design_guardrail_runtime_001.py) — consumes emitted `design_contract` + `contract_validation` metadata; **`WARN` is metadata-only, not statistical suitability**; `downstream_may_proceed=False` always.
 
-**Next artifact:** `DESIGN_SUITABILITY_REASSESSMENT_001`.
+**Reassessment:** ✅ [`DESIGN_SUITABILITY_REASSESSMENT_001.md`](DESIGN_SUITABILITY_REASSESSMENT_001.md) — metadata layer improved; downstream blocked.
+
+**Next artifact:** `D5-DES-STAT-TIER1-001`.
 
 ---
 
@@ -562,7 +564,7 @@ find docs -iname "*GUARDRAIL*" -o -iname "*COMBINATION*" -o -iname "*SUITABILITY
 
 ## 31. Roadmap
 
-**Next artifact:** **`DESIGN_SUITABILITY_REASSESSMENT_001`**
+**Next artifact:** **`D5-DES-STAT-TIER1-001`**
 
 Schema ✅ · Tier-1 plan ✅ · Test plan ✅ · Validator plan ✅ · Enforcement plan ✅ · Suitability framework ✅.
 
@@ -602,4 +604,4 @@ Schema ✅ · Tier-1 plan ✅ · Test plan ✅ · Validator plan ✅ · Enforcem
 
 ---
 
-*DESIGN-GUARDRAILS-001 v1.1.0 — Accepted; runtime guardrail evaluator implemented for contract metadata; no downstream promotion; next = DESIGN_SUITABILITY_REASSESSMENT_001.*
+*DESIGN-GUARDRAILS-001 v1.1.1 — Accepted; WARN is metadata-only; reassessment complete; next = D5-DES-STAT-TIER1-001.*

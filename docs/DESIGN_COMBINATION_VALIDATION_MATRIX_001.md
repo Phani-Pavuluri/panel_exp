@@ -417,7 +417,7 @@ Per [`EXPERIMENT_PLANNING_ORCHESTRATION_ROADMAP_001.md`](EXPERIMENT_PLANNING_ORC
 
 ## 28. Roadmap
 
-**Guardrails:** [`DESIGN_GUARDRAILS_001`](DESIGN_GUARDRAILS_001.md) ✅ **Accepted** — converts matrix statuses and D-COMB-* reason codes into PASS/WARN/BLOCK policy. **Runtime evaluator:** [`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`](DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md) ✅ — consumes contract metadata; **does not auto-upgrade matrix row statuses**.
+**Guardrails:** [`DESIGN_GUARDRAILS_001`](DESIGN_GUARDRAILS_001.md) ✅ **Accepted** — converts matrix statuses and D-COMB-* reason codes into PASS/WARN/BLOCK policy. **Runtime evaluator:** [`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`](DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md) ✅ — consumes contract metadata; **does not auto-upgrade matrix row statuses**. **Reassessment:** [`DESIGN_SUITABILITY_REASSESSMENT_001`](DESIGN_SUITABILITY_REASSESSMENT_001.md) ✅ — metadata validity ≠ matrix promotion.
 
 **Enforcement plan:** [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md) ✅ **Accepted** — **matrix statuses remain advisory until contract fields are emitted and validated** in code.
 

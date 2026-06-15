@@ -192,7 +192,7 @@ Required passing suites:
 
 ## 17. Roadmap
 
-**Next artifact:** **`DESIGN_SUITABILITY_REASSESSMENT_001`** — suitability reassessment under guardrail metadata.
+**Next artifact:** **`D5-DES-STAT-TIER1-001`** — executed tier-1 design statistical validation.
 
 ---
 
@@ -224,4 +224,4 @@ Required passing suites:
 
 ---
 
-*DESIGN-CONTRACT-GOLDEN-FIXTURES-001 v1.0.1 — Accepted; golden fixtures feed runtime guardrail tests; 0 contract-complete; next = DESIGN_SUITABILITY_REASSESSMENT_001.*
+*DESIGN-CONTRACT-GOLDEN-FIXTURES-001 v1.0.2 — Accepted; feed guardrail + reassessment; 0 contract-complete; next = D5-DES-STAT-TIER1-001.*
