@@ -314,7 +314,7 @@ Compact master table — key combinations (all `downstream_status`: not_validate
 | DCM-005 | tier-1 | `unit_panel_single_cell` | TBRRidge KFold/BRB | `restricted_requires_statistical_validation` | D-COMB-STAT-VALIDATION-REQUIRED | D5-STAT-TBRRIDGE-INF + operator contract |
 | DCM-006 | multi-cell (DES-011) | `multi_cell_per_cell` | MCELL per-cell SCM-JK | `restricted_requires_statistical_validation` | D-COMB-POOLED-CLAIM-BLOCKED | ✅ D5-DES-STAT-MULTICELL-001; per-cell only |
 | DCM-007 | multi-cell | `pooled_multi_cell` | Pooled SCM-JK / lift | `blocked_for_pooled_claim` | D-COMB-POOLED-CLAIM-BLOCKED | Pooling ADR |
-| DCM-008 | stratified (DES-004) | `unit_panel_single_cell` | SCM-JK | `restricted_requires_contract_fields` | D-COMB-MISSING-CONTRACT-FIELDS | stratum_ids emission |
+| DCM-008 | stratified (DES-004) | `unit_panel_single_cell` | SCM-JK | `restricted_requires_contract_fields` | D-COMB-MISSING-CONTRACT-FIELDS | ✅ D5-DES-STAT-STRATIFIED-001; stratum_ids emission |
 | DCM-009 | QuickBlock / MatchedPair | `unit_panel_single_cell` | Block-aware inference | `adapter_required` | D-COMB-ADAPTER-REQUIRED | D5-DES-STAT-BLOCK-PAIR-001 |
 | DCM-010 | QuickBlock / MatchedPair | `unit_panel_single_cell` | Unadjusted bootstrap | `blocked_due_to_readout_mismatch` | D-COMB-BLOCK-PAIR-INFERENCE-REQUIRED | — |
 | DCM-011 | TrimmedMatch (DES-009) | `trimmed_geometry` | Trimmed-scope readout | `bridge_required` | D-COMB-GEOMETRY-BRIDGE-REQUIRED; D-COMB-ADAPTER-REQUIRED | F-GEO-004 + D5-DES-STAT-TRIM-001 |

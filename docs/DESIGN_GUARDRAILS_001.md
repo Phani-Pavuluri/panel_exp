@@ -520,11 +520,11 @@ Until enforcement lands, consumers must apply this document manually or via futu
 
 **Statistical execution:** ✅ [`D5_DES_STAT_TIER1_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_001_REPORT.md) — greedy exhaustion at π≈0.35 observed; ✅ [`D5_DES_STAT_GREEDY_FEASIBILITY_001_REPORT.md`](track_d/D5_DES_STAT_GREEDY_FEASIBILITY_001_REPORT.md) — `control_reservation` fix; legacy control-floor violation rate 28% → 0% under fixed policy.
 
-**Observed failure reasons (statistical):** minimum control floor violation (legacy greedy); treatment-pool exhaustion at volume-share targets; unassigned units after score-gated greedy loop.
+**Observed failure reasons (statistical):** sparse/singleton strata under legacy stratified; volume-gap assignment within strata (not Bernoulli); elevated global SMD when n_strata≈n_units. ✅ Fixed under `adaptive_strata` policy.
 
 **Next artifact:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`**.
 
-**Statistical execution:** ✅ [`D5_DES_STAT_MULTICELL_001_REPORT.md`](track_d/D5_DES_STAT_MULTICELL_001_REPORT.md) — multi-cell metadata + per-cell characterization; pooled claims blocked; **no promotion**.
+**Statistical execution:** ✅ [`D5_DES_STAT_STRATIFIED_001_REPORT.md`](track_d/D5_DES_STAT_STRATIFIED_001_REPORT.md) — adaptive strata fix; legacy high-SMD blocks reduced; **no promotion**. ✅ [`D5_DES_STAT_MULTICELL_001_REPORT.md`](track_d/D5_DES_STAT_MULTICELL_001_REPORT.md) — multi-cell metadata + per-cell characterization; pooled claims blocked; **no promotion**.
 
 ---
 

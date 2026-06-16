@@ -27,6 +27,14 @@ from .multicell_feasibility import (
     assign_multicell,
     compute_multicell_feasibility,
 )
+from .stratified_feasibility import (
+    StratificationPolicy,
+    StrataBuildResult,
+    assign_within_stratum,
+    build_strata,
+    build_stratification_metadata,
+    compute_stratified_feasibility,
+)
 from .rng import make_generator
 
 # Base randomizers supported for imbalance computation in Rerandomization
@@ -218,12 +226,23 @@ class StratifiedRandomization(Design):
     ----------
     treatment_probability : float
         Probability of assigning treatment to a unit in the dataset.
-
-    Methods
-    -------
-    assign(panel_data, treatment_period, pre_treatment_period, control_whitelist, test_whitelist, control_blacklist, test_blacklist, control_test_blacklist, n_test_grps):
-        Assigns units to control and treatment groups based on stratified randomization.
+    stratification_policy : StratificationPolicy
+        Feasibility and stratum-handling policy (default ``adaptive_strata``).
+    min_units_per_stratum : int
+        Minimum units required per retained stratum for non-legacy policies.
     """
+
+    def __init__(
+        self,
+        treatment_probability: float = 0.5,
+        random_state: Optional[int] = 42,
+        stratification_policy: StratificationPolicy = "adaptive_strata",
+        min_units_per_stratum: int = 2,
+    ):
+        super().__init__(treatment_probability, random_state=random_state)
+        self.stratification_policy = stratification_policy
+        self.min_units_per_stratum = max(2, int(min_units_per_stratum))
+        self.last_stratification_metadata: dict[str, Any] | None = None
 
     def assign_all(self, wide_data: pd.DataFrame, num_units: int, num_timepoints: int) -> np.array:
         """
@@ -235,6 +254,61 @@ class StratifiedRandomization(Design):
             Always raises an exception as it is not implemented.
         """
         raise Exception()
+
+    def _covariate_series(
+        self,
+        wide: pd.DataFrame,
+        pre_treatment_period: Optional[TimePeriod],
+    ) -> pd.Series:
+        if pre_treatment_period is not None:
+            from panel_exp.design.period_slice import slice_wide_to_time_period
+
+            sliced = slice_wide_to_time_period(wide, pre_treatment_period)
+            return sliced.mean(axis=1)
+        return wide.mean(axis=1)
+
+    def _assign_legacy(
+        self,
+        wide: pd.DataFrame,
+        ctx,
+        *,
+        n_test_grps: int,
+        n_percentiles: int,
+        rng: np.random.Generator,
+    ) -> dict[str, list]:
+        control_group = list(ctx.pinned_control)
+        test_groups = {f"test_{i}": list(ctx.pinned_test[f"test_{i}"]) for i in range(n_test_grps)}
+        total_volume = float(wide.sum().sum())
+        if total_volume <= 0:
+            raise ValueError("Total KPI volume must be positive for stratified assignment.")
+        group_shares = {"control": sum(float(wide.loc[u].sum()) / total_volume for u in control_group)}
+        for i in range(n_test_grps):
+            key = f"test_{i}"
+            group_shares[key] = sum(float(wide.loc[u].sum()) / total_volume for u in test_groups[key])
+        target_shares = {
+            "control": 1 - self.treatment_probability,
+            **{f"test_{i}": self.treatment_probability / n_test_grps for i in range(n_test_grps)},
+        }
+        free_units = list(ctx.free_units)
+        if free_units:
+            covariate_values = wide.loc[free_units].mean(axis=1)
+            percentiles = np.linspace(0, 100, n_percentiles + 1)
+            stratum_labels = np.percentile(covariate_values.values, percentiles)
+            strata = np.digitize(covariate_values.values, bins=stratum_labels, right=True)
+            stratified_df = pd.DataFrame({"DMA": covariate_values.index, "Stratum": strata})
+            for stratum in range(1, n_percentiles + 1):
+                stratum_units = stratified_df[stratified_df["Stratum"] == stratum]["DMA"].tolist()
+                rng.shuffle(stratum_units)
+                for unit in stratum_units:
+                    unit_share = float(wide.loc[unit].sum()) / total_volume
+                    share_gaps = {g: target_shares[g] - group_shares[g] for g in target_shares}
+                    best_group = max(share_gaps, key=share_gaps.get)
+                    if best_group == "control":
+                        control_group.append(unit)
+                    else:
+                        test_groups[best_group].append(unit)
+                    group_shares[best_group] += unit_share
+        return {"control": control_group, **test_groups}
 
     def assign(self,
         panel_data: PanelDataset,
@@ -292,39 +366,97 @@ class StratifiedRandomization(Design):
             control_test_blacklist,
         )
         rng = self._rng
-        control_group = list(ctx.pinned_control)
-        test_groups = {f"test_{i}": list(ctx.pinned_test[f"test_{i}"]) for i in range(n_test_grps)}
-        total_volume = float(wide.sum().sum())
-        if total_volume <= 0:
-            raise ValueError("Total KPI volume must be positive for stratified assignment.")
-        group_shares = {"control": sum(float(wide.loc[u].sum()) / total_volume for u in control_group)}
-        for i in range(n_test_grps):
-            key = f"test_{i}"
-            group_shares[key] = sum(float(wide.loc[u].sum()) / total_volume for u in test_groups[key])
-        target_shares = {
-            "control": 1 - self.treatment_probability,
-            **{f"test_{i}": self.treatment_probability / n_test_grps for i in range(n_test_grps)},
-        }
-        free_units = list(ctx.free_units)
-        if free_units:
-            covariate_values = wide.loc[free_units].mean(axis=1)
-            percentiles = np.linspace(0, 100, n_percentiles + 1)
-            stratum_labels = np.percentile(covariate_values.values, percentiles)
-            strata = np.digitize(covariate_values.values, bins=stratum_labels, right=True)
-            stratified_df = pd.DataFrame({"DMA": covariate_values.index, "Stratum": strata})
-            for stratum in range(1, n_percentiles + 1):
-                stratum_units = stratified_df[stratified_df["Stratum"] == stratum]["DMA"].tolist()
-                rng.shuffle(stratum_units)
-                for unit in stratum_units:
-                    unit_share = float(wide.loc[unit].sum()) / total_volume
-                    share_gaps = {g: target_shares[g] - group_shares[g] for g in target_shares}
-                    best_group = max(share_gaps, key=share_gaps.get)
-                    if best_group == "control":
-                        control_group.append(unit)
-                    else:
-                        test_groups[best_group].append(unit)
-                    group_shares[best_group] += unit_share
-        assignment = {"control": control_group, **test_groups}
+        policy = self.stratification_policy
+        n_free = len(ctx.free_units)
+        feasibility = compute_stratified_feasibility(
+            n_eligible=n_free,
+            requested_n_strata=n_percentiles,
+            min_units_per_stratum=self.min_units_per_stratum,
+            treatment_probability=self.treatment_probability,
+            policy=policy,
+        )
+
+        if policy == "preflight_fail" and not feasibility.feasible:
+            raise ValueError(
+                f"Stratified assignment infeasible: {feasibility.feasibility_reason} "
+                f"(requested_n_strata={n_percentiles}, "
+                f"max_feasible_n_strata={feasibility.max_feasible_n_strata})."
+            )
+
+        if policy == "complete_randomization_fallback" and not feasibility.feasible:
+            cr = CompleteRandomization(
+                treatment_probability=self.treatment_probability,
+                random_state=self.random_state,
+            )
+            assignment = cr.assign(
+                panel_data=panel_data,
+                treatment_period=treatment_period,
+                pre_treatment_period=pre_treatment_period,
+                control_whitelist=control_whitelist,
+                test_whitelist=test_whitelist,
+                control_blacklist=control_blacklist,
+                test_blacklist=test_blacklist,
+                control_test_blacklist=control_test_blacklist,
+                n_test_grps=n_test_grps,
+            )
+            empty_strata = StrataBuildResult(
+                {}, [], {}, 0, [], [], [], [], 0
+            )
+            self.last_stratification_metadata = build_stratification_metadata(
+                feasibility,
+                empty_strata,
+                realized_treatment_probability=self.treatment_probability,
+                fallback_used=True,
+                fallback_reason=feasibility.feasibility_reason,
+            )
+            return assignment
+
+        if policy == "legacy":
+            assignment = self._assign_legacy(
+                wide, ctx, n_test_grps=n_test_grps, n_percentiles=n_percentiles, rng=rng
+            )
+            self.last_stratification_metadata = None
+        else:
+            control_group = list(ctx.pinned_control)
+            test_groups = {
+                f"test_{i}": list(ctx.pinned_test[f"test_{i}"]) for i in range(n_test_grps)
+            }
+            covariate = self._covariate_series(wide, pre_treatment_period).loc[ctx.free_units]
+            strata = build_strata(
+                covariate,
+                requested_n_strata=n_percentiles,
+                min_units_per_stratum=self.min_units_per_stratum,
+                policy=policy,
+            )
+            for sid in strata.stratum_ids:
+                stratum_units = [
+                    u for u, s in strata.unit_to_stratum.items() if str(s) == sid
+                ]
+                ctrl, trt = assign_within_stratum(
+                    stratum_units,
+                    treatment_probability=self.treatment_probability,
+                    rng=rng,
+                    method="bernoulli",
+                )
+                control_group.extend(ctrl)
+                test_groups["test_0"].extend(trt)
+
+            assignment = {"control": control_group, **test_groups}
+            n_assigned = len(control_group) + sum(len(v) for v in test_groups.values())
+            realized_tp = (
+                len(test_groups["test_0"]) / n_assigned if n_assigned > 0 else None
+            )
+            self.last_stratification_metadata = build_stratification_metadata(
+                feasibility,
+                strata,
+                realized_treatment_probability=realized_tp,
+                fallback_used=False,
+                fallback_reason=None,
+                stratification_variable=(
+                    "pre_period_mean" if pre_treatment_period is not None else "full_panel_mean"
+                ),
+            )
+
         validate_assignment_dict(
             assignment,
             ctx,
