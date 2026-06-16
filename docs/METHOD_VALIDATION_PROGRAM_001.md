@@ -278,7 +278,7 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **Deferred estimator audit track (parked, not rejected):** [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) — TROP audit ladder follows design-output contract; **no TROP implementation** in program scope.
 
-**Design audit track:** [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) — Accepted; **reassessment** ✅; next = **`D5-DES-STAT-TIER1-001`**. 0 contract-complete designs.
+**Design audit track:** [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) — **D5-DES-STAT-TIER1-001** ✅ executed; next = **`D5-DES-STAT-GREEDY-FEASIBILITY-001`**. 0 contract-complete designs.
 
 **Post-Level-B synthesis:** ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) — converts D5 characterization findings into prioritized enhancement lanes (readout semantics, geometry bridges, operator contracts). **Not** promotion or suitability authorization.
 

@@ -274,6 +274,12 @@ Post-contract-emission and post-guardrail-runtime suitability reassessment. Verd
 
 Tier-1 geo-run emits conservative `design_contract` + `contract_validation` via builder + validator. Verdict: `design_tier1_contract_emission_implemented_conservative`. **0/31 contract-complete; downstream blocked.**
 
+### R. D5-DES-STAT-TIER1-001 ✅
+
+**Status:** **Executed** — [`D5_DES_STAT_TIER1_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_001_REPORT.md)
+
+First tier-1 design statistical validation harness. 9,500 runs; verdict `tier1_designs_mixed_requires_method_specific_followup`. **No promotion.**
+
 ### S. Method-specific design audits (as needed)
 
 Examples: `D5-DES-SUPERGEO-001` follow-on, `D5-DES-TRIM-001` hardening, QuickBlock geo integration ADR.
@@ -515,7 +521,7 @@ First concrete output contract under the design audit lane. Defines **DesignOutp
 
 **Code inventory:** [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) maps current emitted fields against this contract — **no implementation is contract-complete**.
 
-**Next design audit artifact:** `D5-DES-STAT-TIER1-001` — executed tier-1 design statistical validation (default; contract-infra lane paused).
+**Next design audit artifact:** `D5-DES-STAT-GREEDY-FEASIBILITY-001` — greedy treatment-pool exhaustion follow-on from tier-1 execution.
 
 ---
 
@@ -597,7 +603,8 @@ Recommended sequence:
 17. **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`** — golden fixtures ✅ **Accepted**  
 18. **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`** — runtime guardrail evaluator ✅ **Implemented**  
 19. **`DESIGN_SUITABILITY_REASSESSMENT_001`** — post-runtime reassessment ✅ **Accepted**  
-20. **`D5-DES-STAT-TIER1-001`** — **(next default)** — executed tier-1 design statistical validation  
+20. **`D5-DES-STAT-TIER1-001`** — tier-1 design statistical execution ✅ **Executed**  
+21. **`D5-DES-STAT-GREEDY-FEASIBILITY-001`** — **(next)** — greedy π≈0.35 exhaustion follow-on  
 
 Method-specific audits (supergeo, trim, QuickBlock integration) run in parallel where blocked on bridges.
 
@@ -648,4 +655,4 @@ No design promotion, suitability status, TrustReport role, CalibrationSignal eli
 
 ---
 
-*DESIGN-AUDIT-PROGRAM-001 v1.1.9 — DESIGN_SUITABILITY_REASSESSMENT_001 accepted; metadata suitability improved; statistical/downstream blocked; next = D5-DES-STAT-TIER1-001.*
+*DESIGN-AUDIT-PROGRAM-001 v1.2.0 — D5-DES-STAT-TIER1-001 executed; tier-1 characterized; no promotion; next = D5-DES-STAT-GREEDY-FEASIBILITY-001.*

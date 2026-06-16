@@ -621,7 +621,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** D5-STAT queue through **`D5-STAT-MCELL-PERCELL-001`** complete.
 
-**Next planning/enhancement:** **`D5-DES-STAT-TIER1-001`** (design-side). Reassessment: [`DESIGN_SUITABILITY_REASSESSMENT_001.md`](DESIGN_SUITABILITY_REASSESSMENT_001.md) (**Accepted**; 0/31 contract-complete).
+**Next planning/enhancement:** **`D5-DES-STAT-GREEDY-FEASIBILITY-001`**. Tier-1 execution: [`D5_DES_STAT_TIER1_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_001_REPORT.md) (**Executed**; no promotion).
 
 ---
 
@@ -669,7 +669,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** Future TROP audit sequence; does not change immediate enhancement queue.
 
-**Program next (unchanged):** **`D5-DES-STAT-TIER1-001`** (design-side evidence execution).
+**Program next (unchanged):** **`D5-DES-STAT-GREEDY-FEASIBILITY-001`** (design-side).
 
 ---
 
@@ -685,7 +685,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `DESIGN_OUTPUT_CONTRACT_001` ✅ → `DESIGN_CODE_INVENTORY_001` ✅ → `DESIGN_LITERATURE_ALIGNMENT_001` ✅ → `DESIGN_IMPLEMENTATION_VALIDATION_001` ✅ → statistical protocol → combination matrix → guardrails → design suitability.
 
-**Immediate next:** **`D5-DES-STAT-TIER1-001`**.
+**Immediate next:** **`D5-DES-STAT-GREEDY-FEASIBILITY-001`** (tier-1 execution ✅).
 
 ---
 
@@ -701,7 +701,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** ✅ `DESIGN_CODE_INVENTORY_001` → design validation ladder → combination matrix v2 → experiment planning (deferred).
 
-**Next:** **`D5-DES-STAT-TIER1-001`**.
+**Next:** **`D5-DES-STAT-GREEDY-FEASIBILITY-001`** (tier-1 execution ✅).
 
 ---
 
@@ -989,7 +989,23 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `D5-DES-STAT-TIER1-001` → experiment planning filters.
 
-**Next:** **`D5-DES-STAT-TIER1-001`** (design-side evidence execution).
+**Next:** **`D5-DES-STAT-GREEDY-FEASIBILITY-001`** (tier-1 execution ✅ [`D5_DES_STAT_TIER1_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_001_REPORT.md)).
+
+---
+
+## D5-DES-STAT-TIER1-001 (2026-06-15)
+
+**Artifact:** [`docs/track_d/D5_DES_STAT_TIER1_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_001_REPORT.md) · [`docs/track_d/archives/D5_DES_STAT_TIER1_001_results.json`](track_d/archives/D5_DES_STAT_TIER1_001_results.json) · [`panel_exp/validation/track_d_d5_des_stat_tier1_001.py`](../panel_exp/validation/track_d_d5_des_stat_tier1_001.py)
+
+**Status:** **`tier1_designs_mixed_requires_method_specific_followup`**
+
+**Verdict:** First executed tier-1 design statistical validation — 9,500 runs across DES-001–004, DES-006; 18 simulation worlds; assignment/balance/contract/guardrail metrics. Greedy exhaustion at π≈0.35 recorded (450 flagged runs). **No promotion**; downstream blocked.
+
+**Prerequisites:** [`DESIGN_SUITABILITY_REASSESSMENT_001`](DESIGN_SUITABILITY_REASSESSMENT_001.md) Accepted.
+
+**Feeds:** combination matrix evidence · suitability characterization · method-specific follow-ons.
+
+**Next:** **`D5-DES-STAT-GREEDY-FEASIBILITY-001`**.
 
 ---
 

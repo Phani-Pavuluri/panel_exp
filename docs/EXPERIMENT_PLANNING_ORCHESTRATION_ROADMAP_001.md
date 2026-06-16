@@ -66,7 +66,8 @@ Experiment planning orchestration artifacts are **blocked** until **all** prereq
 | **`DESIGN_CONTRACT_GOLDEN_FIXTURES_001`** | ✅ Accepted — golden fixtures under `design_contract_golden_001/` |
 | **`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`** | ✅ Implemented — metadata evaluator; no producer wiring |
 | **`DESIGN_SUITABILITY_REASSESSMENT_001`** | ✅ Accepted — metadata improved; downstream blocked |
-| **`D5-DES-STAT-TIER1-001`** | Not started — **next default** |
+| **`D5-DES-STAT-TIER1-001`** | ✅ Executed — [`D5_DES_STAT_TIER1_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_001_REPORT.md); no promotion |
+| **`D5-DES-STAT-GREEDY-FEASIBILITY-001`** | Not started — **next** |
 | [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) | ✅ Accepted |
 | [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) | ✅ Accepted |
 | Estimator/inference method-specific fixes | Partial — D5 Level B complete; enhancement lanes open |

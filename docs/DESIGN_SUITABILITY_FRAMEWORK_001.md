@@ -568,7 +568,9 @@ find docs -iname "*SUITABILITY*" -o -iname "*GUARDRAIL*" -o -iname "*COMBINATION
 
 **Golden fixtures:** ✅ shape stabilized. **Suitability remains blocked** — fixture stabilization ≠ statistical validation or downstream promotion.
 
-**Next artifact:** **`D5-DES-STAT-TIER1-001`** — executed tier-1 design statistical validation (default; not another infra artifact).
+**Tier-1 statistical execution:** ✅ [`D5_DES_STAT_TIER1_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_001_REPORT.md) — 5 families characterized; verdict `tier1_designs_mixed_requires_method_specific_followup`; **0 downstream suitable**.
+
+**Next artifact:** **`D5-DES-STAT-GREEDY-FEASIBILITY-001`**
 
 Then: `D5-DES-STAT-MULTICELL-001` · adapter lanes · `DESIGN_GUARDRAIL_ENFORCEMENT_001`.
 

@@ -52,7 +52,7 @@ The D5-STAT queue established **what the codebase does today** under controlled 
 | **D5-STAT-DID-BOOTSTRAP-001** | Level B DID embedded bootstrap | `characterization_mixed_requires_followup` | [`D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md) |
 | **D5-STAT-MCELL-PERCELL-001** | Level B per-cell execution | `characterization_pass_with_caveats` | [`D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) |
 
-**Queue status:** D5 Level B complete. Design contract-infra lane **paused** (through reassessment ✅). Next: **`D5-DES-STAT-TIER1-001`** — executed design validation.
+**Queue status:** Tier-1 design statistical execution ✅ [`D5_DES_STAT_TIER1_001`](track_d/D5_DES_STAT_TIER1_001_REPORT.md). Next: **`D5-DES-STAT-GREEDY-FEASIBILITY-001`**.
 
 ---
 
@@ -248,7 +248,8 @@ Design methods require the **same audit rigor** as estimator/inference families.
 17. `DESIGN_CONTRACT_GOLDEN_FIXTURES_001` ✅ **Accepted**  
 18. `DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001` ✅  
 19. `DESIGN_SUITABILITY_REASSESSMENT_001` ✅  
-20. `D5-DES-STAT-TIER1-001` *(next default)*  
+20. `D5-DES-STAT-TIER1-001` ✅  
+21. `D5-DES-STAT-GREEDY-FEASIBILITY-001` *(next)*  
 15. Method-specific design audits as needed (supergeo, trim, QuickBlock integration)
 
 ---

@@ -317,7 +317,7 @@ A design may move toward **positive structural suitability** only after **all** 
 | Contract-emitting tier-1 paths | **5 families** | DES-001–004, DES-006 (+ constrained DES-011 emission) |
 | Mechanically valid fixture-backed paths | **4 positive fixtures** | DES-002, DES-003, DES-004, DES-006 (DES-001 path exists; no golden file yet) |
 | Contract-complete for downstream authorization | **0 / 31** | `contract_complete_allowed=False` always |
-| Statistically validated design families (executed `D5-DES-STAT-*`) | **0** | Protocol defined only |
+| Statistically validated design families (executed `D5-DES-STAT-*`) | **5 tier-1 families characterized** | [`D5_DES_STAT_TIER1_001`](track_d/D5_DES_STAT_TIER1_001_REPORT.md); not production-suitable |
 | Downstream-authorized designs | **0** | |
 | TrustReport-eligible designs | **0** | |
 | CalibrationSignal-eligible designs | **0** | |
@@ -390,7 +390,7 @@ Do **not** default to another generic infrastructure artifact unless a concrete 
 | Golden fixtures | ✅ |
 | Guardrail runtime | ✅ |
 | **Suitability reassessment** | ✅ **This artifact** |
-| **Next default** | **`D5-DES-STAT-TIER1-001`** |
+| **Next default** | **`D5-DES-STAT-GREEDY-FEASIBILITY-001`** (follow-on from tier-1 execution) |
 
 ---
 
