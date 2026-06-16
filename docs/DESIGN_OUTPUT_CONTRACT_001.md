@@ -146,6 +146,7 @@ Nested field groups §7–§24 compose the full contract payload.
 | `assignment_by_unit` | Map unit → arm label |
 | `assignment_probability` | Declared or estimated treatment probability |
 | `requested_n_treated` / `realized_n_treated` | Greedy (DES-001): requested vs realized unit counts via `greedy_match_markets.last_feasibility_metadata` when `feasibility_policy != legacy` |
+| `requested_per_cell_shares` / `realized_per_cell_shares` | Multi-cell (DES-011): via `last_multicell_metadata` when `multicell_policy != legacy` |
 | `assignment_rule` | Human-readable rule name |
 | `randomization_unit` | Unit of randomization |
 | `treatment_labels` | Allowed treated labels (`test_0`, …) |

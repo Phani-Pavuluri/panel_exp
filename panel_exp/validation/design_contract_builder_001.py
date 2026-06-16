@@ -218,12 +218,29 @@ def build_tier1_design_contract(
     }
     if is_multi_cell:
         cell_ids = _cell_ids(assignment_map)
+        multicell_meta = kwargs.get("last_multicell_metadata") or {}
         multi_cell.update(
             {
                 "cell_ids": cell_ids,
                 "shared_control_mode": "shared",
-                "shared_control_policy": "shared_single_control_arm",
-                "control_reuse_policy": "shared_donor_pool_across_cells",
+                "shared_control_policy": multicell_meta.get(
+                    "shared_control_policy", "shared_single_control_arm"
+                ),
+                "control_reuse_policy": multicell_meta.get(
+                    "control_reuse_policy", "shared_donor_pool_across_cells"
+                ),
+                "requested_total_treatment_share": multicell_meta.get(
+                    "requested_total_treatment_share", treatment_probability
+                ),
+                "realized_total_treatment_share": multicell_meta.get(
+                    "realized_total_treatment_share"
+                ),
+                "requested_per_cell_shares": multicell_meta.get("requested_per_cell_shares"),
+                "realized_per_cell_shares": multicell_meta.get("realized_per_cell_shares"),
+                "per_cell_unit_counts": multicell_meta.get("per_cell_unit_counts"),
+                "concurrency_compatibility": multicell_meta.get(
+                    "concurrency_compatibility", "restricted"
+                ),
             }
         )
 

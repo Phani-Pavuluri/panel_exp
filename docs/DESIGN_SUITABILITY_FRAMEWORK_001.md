@@ -570,9 +570,9 @@ find docs -iname "*SUITABILITY*" -o -iname "*GUARDRAIL*" -o -iname "*COMBINATION
 
 **Tier-1 statistical execution:** ✅ [`D5_DES_STAT_TIER1_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_001_REPORT.md) — 5 families characterized; verdict `tier1_designs_mixed_requires_method_specific_followup`; **0 downstream suitable**.
 
-**Next artifact:** **`D5-DES-STAT-STRATIFIED-001`**
+**Next artifact:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`**
 
-Then: `D5-DES-STAT-MULTICELL-001` · adapter lanes · `DESIGN_GUARDRAIL_ENFORCEMENT_001`.
+Then: adapter lanes · block/pair/trim design audits.
 
 ---
 

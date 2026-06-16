@@ -522,7 +522,9 @@ Until enforcement lands, consumers must apply this document manually or via futu
 
 **Observed failure reasons (statistical):** minimum control floor violation (legacy greedy); treatment-pool exhaustion at volume-share targets; unassigned units after score-gated greedy loop.
 
-**Next artifact:** `D5-DES-STAT-STRATIFIED-001`.
+**Next artifact:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`**.
+
+**Statistical execution:** ✅ [`D5_DES_STAT_MULTICELL_001_REPORT.md`](track_d/D5_DES_STAT_MULTICELL_001_REPORT.md) — multi-cell metadata + per-cell characterization; pooled claims blocked; **no promotion**.
 
 ---
 

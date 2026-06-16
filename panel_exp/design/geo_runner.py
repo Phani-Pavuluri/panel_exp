@@ -103,6 +103,9 @@ def run_geo_experiment_design(ctx: DesignRunContext) -> tuple:
     validation_summary = (
         geo.last_validation.to_dict() if geo.last_validation else {}
     )
+    design_kwargs = dict(geo.design_kwargs or {})
+    if getattr(design, "last_multicell_metadata", None):
+        design_kwargs["last_multicell_metadata"] = design.last_multicell_metadata
     warnings: list[str] = []
     errors: list[str] = []
     if geo.last_validation is not None:
@@ -122,7 +125,7 @@ def run_geo_experiment_design(ctx: DesignRunContext) -> tuple:
         is_rerandomization_wrapped=True,
         validation_summary=validation_summary,
         wide_data=geo.panel_data.wide_data,
-        design_kwargs=geo.design_kwargs,
+        design_kwargs=design_kwargs,
         spec_hash=spec.content_hash(),
         assignment_hash_value=assignment_hash(rs_dp_grps),
         package_version=evidence_module.__version__,

@@ -162,7 +162,7 @@ A design may pass layers 1–3 while failing 4–8. **No layer implies the next.
 | **DES-003** `BalancedRandomization` | ✅ emitted | ✅ `contract_valid` (golden fixture) | `WARN` | ❌ not executed | `metadata_valid_guardrail_warn` · `statistical_validation_required` |
 | **DES-004** `StratifiedRandomization` | ✅ emitted | ✅ `contract_valid` **when stratum metadata present** (golden fixture); `contract_blocked` if `stratum_ids` missing | `WARN` or `BLOCK` | ❌ not executed | `metadata_valid_guardrail_warn` (with strata) · `contract_blocked` (without) |
 | **DES-006** `Rerandomization` | ✅ emitted (wrapper) | ✅ `contract_valid` **when wrapper/base identity preserved** (golden fixture) | `WARN` | ❌ not executed | `metadata_valid_guardrail_warn` · `statistical_validation_required` |
-| **DES-011** `multi_test_groups` | ✅ emitted (conservative) | `contract_blocked` when shared-control policy / cell metadata incomplete (golden: `tier1_multicell_contract_blocked.json`) | `BLOCK` | ❌ not executed | `contract_blocked` · `combination_validation_required` · pooled claims blocked |
+| **DES-011** `multi_test_groups` | ✅ emitted | ✅ metadata when `last_multicell_metadata` present | `BLOCK` | ✅ **`D5-DES-STAT-MULTICELL-001`** | `metadata_valid_per_cell_only_pooled_blocked` · pooled claims blocked |
 
 **Conservative interpretation:** DES-002/003/004 (with strata)/006 may be mechanically contract-valid with guardrail `WARN`. None are statistically validated or downstream-authorized.
 
@@ -286,7 +286,7 @@ D5-DES-TRIM / D5-DES-SUPERGEO / D5-POW-001e provide **characterization evidence*
 |--------------|-----------------|-----------|------------------------|----------------|-------------|------------|
 | Tier-1 single-cell (DES-001–003, DES-006) | Valid when emitted | WARN | Required | None | `D5-DES-STAT-TIER1-001` | Blocked |
 | Tier-1 stratified (DES-004) | Valid with strata | WARN / BLOCK | Required | None | Stat validation + strata regression | Blocked |
-| Tier-1 multi-cell (DES-011) | Incomplete metadata | BLOCK | Required | Per-cell only | Fix shared-control emission; `D5-DES-STAT-MULTICELL-001` follow-on | Blocked |
+| Tier-1 multi-cell (DES-011) | ✅ D5-DES-STAT-MULTICELL-001 | BLOCK | Required | Per-cell only | Pooled blocked; downstream still blocked | Blocked |
 | Thinning (DES-005) | Not tier-1 | N/A | Required | Ambiguous | Semantic ADR | Blocked |
 | Block/pair adapters | No contract | N/A | Required | Adapter | Adapter lane | Blocked |
 | Trim/supergeo | No tier-1 contract | N/A | Required | Adapter + bridge | Bridge validation | Blocked |
@@ -350,7 +350,7 @@ The design contract-infrastructure lane has reached a useful stopping point. Nex
 
 **Follow-on artifacts (not default):**
 
-- `D5-DES-STAT-MULTICELL-001` — after DES-011 contract metadata complete  
+- ✅ `D5-DES-STAT-MULTICELL-001` — executed; per-cell metadata + pooled blocking characterized  
 - Thinning semantic clarification (DES-005)  
 - Block/pair adapter lane (QuickBlock, MatchedPair)  
 - Trim/supergeo bridge validation  

@@ -286,7 +286,13 @@ First tier-1 design statistical validation harness. 9,500 runs; verdict `tier1_d
 
 Greedy feasibility root-cause analysis and `control_reservation` fix. 12,000 runs; legacy violations 836 → fixed 0. **No promotion.**
 
-### T. Method-specific design audits (as needed)
+### T. D5-DES-STAT-MULTICELL-001 ✅
+
+**Status:** **Executed** — [`D5_DES_STAT_MULTICELL_001_REPORT.md`](track_d/D5_DES_STAT_MULTICELL_001_REPORT.md) · summary [`D5_DES_STAT_MULTICELL_001_summary.json`](track_d/archives/D5_DES_STAT_MULTICELL_001_summary.json)
+
+DES-011 multi-cell characterization; `control_reservation` default; pooled claims blocked. 17,280 runs. **No promotion.**
+
+### U. Method-specific design audits (as needed)
 
 Examples: `D5-DES-SUPERGEO-001` follow-on, `D5-DES-TRIM-001` hardening, QuickBlock geo integration ADR.
 
@@ -527,7 +533,7 @@ First concrete output contract under the design audit lane. Defines **DesignOutp
 
 **Code inventory:** [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) maps current emitted fields against this contract — **no implementation is contract-complete**.
 
-**Next design audit artifact:** `D5-DES-STAT-STRATIFIED-001` — stratified sparse-strata follow-on from tier-1 execution.
+**Next design audit artifact:** `DESIGN_GUARDRAIL_ENFORCEMENT_001` — runtime enforcement follow-on.
 
 ---
 
@@ -661,4 +667,4 @@ No design promotion, suitability status, TrustReport role, CalibrationSignal eli
 
 ---
 
-*DESIGN-AUDIT-PROGRAM-001 v1.2.1 — D5-DES-STAT-GREEDY-FEASIBILITY-001 executed; greedy fix characterized; no promotion; next = D5-DES-STAT-STRATIFIED-001.*
+*DESIGN-AUDIT-PROGRAM-001 v1.3.0 — D5-DES-STAT-MULTICELL-001 executed; per-cell characterized; pooled blocked; no promotion; next = DESIGN_GUARDRAIL_ENFORCEMENT_001.*

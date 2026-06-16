@@ -1,0 +1,210 @@
+{
+  "artifact_id": "D5-DES-STAT-MULTICELL-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-16T21:54:17.800442+00:00",
+  "git_commit": "71b6db5ef139ffe069e7f64fb359566539b026e1",
+  "config": {
+    "fast": false,
+    "n_pre": 30,
+    "n_post": 10,
+    "replicates_per_cell": 2,
+    "min_control_units": 3,
+    "min_units_per_cell": 1,
+    "random_state_base": 20260617,
+    "include_contract_guardrail": true,
+    "min_control_threshold": 3
+  },
+  "policies": [
+    {
+      "policy_id": "A_legacy",
+      "policy": "legacy",
+      "description": "Current Bernoulli round-robin baseline"
+    },
+    {
+      "policy_id": "B_equal_per_cell",
+      "policy": "equal_per_cell",
+      "description": "Equal per-cell treatment allocation"
+    },
+    {
+      "policy_id": "C_feasibility_aware",
+      "policy": "feasibility_aware",
+      "description": "Cap treated with explicit metadata"
+    },
+    {
+      "policy_id": "D_control_reservation",
+      "policy": "control_reservation",
+      "description": "Reserve min shared control pool"
+    },
+    {
+      "policy_id": "E_weighted",
+      "policy": "weighted",
+      "description": "Explicit unequal cell weights (research)"
+    },
+    {
+      "policy_id": "F_independent_control",
+      "policy": "independent_control",
+      "description": "Independent controls (research only)"
+    }
+  ],
+  "worlds": [
+    "balanced_two_cell",
+    "balanced_three_cell",
+    "balanced_five_cell",
+    "small_n_multi_cell",
+    "control_pool_overload",
+    "cell_size_imbalance",
+    "high_unit_heterogeneity",
+    "weak_shared_control",
+    "treatment_share_exhaustion",
+    "cell_collision_stress",
+    "missing_covariates",
+    "outlier_dominant_cell",
+    "trend_mismatch",
+    "geographic_cluster_correlation",
+    "pooled_claim_trap_world",
+    "shared_control_overload_world",
+    "concurrent_experiment_pressure",
+    "unequal_cell_weight_world"
+  ],
+  "aggregate_results": {
+    "A_legacy": {
+      "n_runs": 2880,
+      "assignment_success_rate": 1.0,
+      "control_floor_violation_rate": 0.0,
+      "cell_collision_rate": 0.0,
+      "mean_worst_cell_smd": 1.0150923933484668,
+      "mean_control_burden": 13.940972222222221,
+      "n_pass": 2450,
+      "n_warn": 430,
+      "n_block": 0,
+      "n_failed": 0
+    },
+    "B_equal_per_cell": {
+      "n_runs": 2880,
+      "assignment_success_rate": 1.0,
+      "control_floor_violation_rate": 0.0,
+      "cell_collision_rate": 0.0,
+      "mean_worst_cell_smd": 1.0963981859913416,
+      "mean_control_burden": 13.940972222222221,
+      "n_pass": 2450,
+      "n_warn": 430,
+      "n_block": 0,
+      "n_failed": 0
+    },
+    "C_feasibility_aware": {
+      "n_runs": 2880,
+      "assignment_success_rate": 1.0,
+      "control_floor_violation_rate": 0.0,
+      "cell_collision_rate": 0.0,
+      "mean_worst_cell_smd": 1.0963981859913416,
+      "mean_control_burden": 13.940972222222221,
+      "n_pass": 2450,
+      "n_warn": 430,
+      "n_block": 0,
+      "n_failed": 0
+    },
+    "D_control_reservation": {
+      "n_runs": 2880,
+      "assignment_success_rate": 1.0,
+      "control_floor_violation_rate": 0.0,
+      "cell_collision_rate": 0.0,
+      "mean_worst_cell_smd": 1.0963981859913416,
+      "mean_control_burden": 13.940972222222221,
+      "n_pass": 2450,
+      "n_warn": 430,
+      "n_block": 0,
+      "n_failed": 0
+    },
+    "E_weighted": {
+      "n_runs": 2880,
+      "assignment_success_rate": 1.0,
+      "control_floor_violation_rate": 0.0,
+      "cell_collision_rate": 0.0,
+      "mean_worst_cell_smd": 1.111617925671261,
+      "mean_control_burden": 13.940972222222221,
+      "n_pass": 2430,
+      "n_warn": 450,
+      "n_block": 0,
+      "n_failed": 0
+    },
+    "F_independent_control": {
+      "n_runs": 2880,
+      "assignment_success_rate": 1.0,
+      "control_floor_violation_rate": 0.0,
+      "cell_collision_rate": 0.0,
+      "mean_worst_cell_smd": 0.8255892738059288,
+      "mean_control_burden": 15.75,
+      "n_pass": 0,
+      "n_warn": 2880,
+      "n_block": 0,
+      "n_failed": 0
+    }
+  },
+  "failure_summary": {
+    "n_assignment_failures": 0,
+    "legacy_control_floor_violations": 0,
+    "fixed_control_floor_violations": 0,
+    "legacy_cell_collisions": 0,
+    "fixed_cell_collisions": 0,
+    "pooled_claims_blocked_rate": 1.0
+  },
+  "cell_balance_summary": {
+    "mean_worst_cell_smd_by_policy": {
+      "A_legacy": 1.0150923933484668,
+      "B_equal_per_cell": 1.0963981859913416,
+      "C_feasibility_aware": 1.0963981859913416,
+      "D_control_reservation": 1.0963981859913416,
+      "E_weighted": 1.111617925671261,
+      "F_independent_control": 0.8255892738059288
+    },
+    "legacy_mean_worst_cell_smd": 1.0150923933484668,
+    "selected_mean_worst_cell_smd": 1.0963981859913416
+  },
+  "control_burden_summary": {
+    "mean_control_burden_by_policy": {
+      "A_legacy": 13.940972222222221,
+      "B_equal_per_cell": 13.940972222222221,
+      "C_feasibility_aware": 13.940972222222221,
+      "D_control_reservation": 13.940972222222221,
+      "E_weighted": 13.940972222222221,
+      "F_independent_control": 15.75
+    }
+  },
+  "geometry_summary": {
+    "per_cell_only": true,
+    "pooled_claims_blocked": true,
+    "pooled_geometry_blocked": true
+  },
+  "contract_guardrail_summary": {
+    "downstream_may_proceed": false,
+    "contract_complete_allowed": false,
+    "pooled_claims_allowed": false,
+    "guardrail_warn_rate": 1.0,
+    "sampled_in_fast_mode_only": false
+  },
+  "policy_comparisons": [
+    {
+      "comparison_id": "legacy_vs_control_reservation",
+      "n_paired": 2520,
+      "control_floor_violations_baseline": 0,
+      "control_floor_violations_fixed": 0,
+      "median_worst_cell_smd_change": 0.0,
+      "note": "exploratory; provisional_for_characterization_only"
+    }
+  ],
+  "selected_policy": "control_reservation",
+  "verdict": "multicell_per_cell_only_pooled_claims_blocked",
+  "limitations": [
+    "Design-only multi-cell characterization; not statistical suitability proof.",
+    "Pooled multi-cell causal claims remain blocked.",
+    "Independent-control policy is research-only and not DES-011 production semantics.",
+    "Legacy policy preserved for baseline comparison only."
+  ],
+  "runtime": {
+    "total_attempted_runs": 17280,
+    "completed_runs": 17280,
+    "failed_runs": 0,
+    "skipped_runs": 0,
+    "elapsed_seconds": 15.746
+  }
+}

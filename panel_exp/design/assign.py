@@ -20,6 +20,13 @@ from .greedy_feasibility import (
     build_feasibility_metadata,
     compute_greedy_feasibility,
 )
+from .multicell_feasibility import (
+    DEFAULT_MIN_CONTROL_UNITS as DEFAULT_MULTICELL_MIN_CONTROL,
+    DEFAULT_MIN_UNITS_PER_CELL,
+    MulticellPolicy,
+    assign_multicell,
+    compute_multicell_feasibility,
+)
 from .rng import make_generator
 
 # Base randomizers supported for imbalance computation in Rerandomization
@@ -375,6 +382,22 @@ class BalancedRandomization(Design):
 class CompleteRandomization(Design):
     """Bernoulli complete randomization with whitelist/blacklist enforcement."""
 
+    def __init__(
+        self,
+        treatment_probability: float = 0.5,
+        random_state: Optional[int] = 42,
+        multicell_policy: MulticellPolicy = "control_reservation",
+        min_control_units: int = DEFAULT_MULTICELL_MIN_CONTROL,
+        min_units_per_cell: int = DEFAULT_MIN_UNITS_PER_CELL,
+        cell_weights: Optional[dict[str, float]] = None,
+    ):
+        super().__init__(treatment_probability, random_state=random_state)
+        self.multicell_policy = multicell_policy
+        self.min_control_units = max(1, int(min_control_units))
+        self.min_units_per_cell = max(1, int(min_units_per_cell))
+        self.cell_weights = dict(cell_weights) if cell_weights else None
+        self.last_multicell_metadata: dict[str, Any] | None = None
+
     def assign_all(self, wide_data: pd.DataFrame, num_units: int, num_timepoints: int) -> np.array:
         raise NotImplementedError("Use assign() returning a group dictionary.")
 
@@ -401,7 +424,30 @@ class CompleteRandomization(Design):
             test_blacklist,
             control_test_blacklist,
         )
-        assignment = bernoulli_complete_assign(wide, ctx, self._rng)
+        if n_test_grps > 1:
+            n_eligible = len([u for u in ctx.all_units if u not in ctx.excluded])
+            pinned_test = sum(len(ctx.pinned_test[f"test_{i}"]) for i in range(n_test_grps))
+            feasibility = compute_multicell_feasibility(
+                n_eligible=n_eligible,
+                treatment_probability=self.treatment_probability,
+                n_treatment_cells=n_test_grps,
+                pinned_control=len(ctx.pinned_control),
+                pinned_test=pinned_test,
+                min_control_units=self.min_control_units,
+                min_units_per_cell=self.min_units_per_cell,
+                cell_weights=self.cell_weights,
+                policy=self.multicell_policy,
+            )
+            assignment, self.last_multicell_metadata = assign_multicell(
+                ctx,
+                self._rng,
+                feasibility=feasibility,
+                policy=self.multicell_policy,
+                cell_weights=self.cell_weights,
+            )
+        else:
+            assignment = bernoulli_complete_assign(wide, ctx, self._rng)
+            self.last_multicell_metadata = None
         validate_assignment_dict(
             assignment,
             ctx,
