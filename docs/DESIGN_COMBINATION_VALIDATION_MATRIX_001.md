@@ -307,7 +307,7 @@ Compact master table — key combinations (all `downstream_status`: not_validate
 
 | Row ID | Design group | Geometry | Estimator / inference / readout | Status | Reason codes | Next artifact |
 |--------|--------------|----------|--------------------------------|--------|--------------|---------------|
-| DCM-001 | tier-1 (DES-001–006) | `unit_panel_single_cell` | SCM + UnitJackknife | `restricted_requires_contract_fields` | D-COMB-MISSING-CONTRACT-FIELDS; D-COMB-STAT-VALIDATION-REQUIRED | D5-DES-STAT-TIER1-001 + D5-STAT-SCM-JK |
+| DCM-001 | tier-1 (DES-001–006) | `unit_panel_single_cell` | SCM + UnitJackknife | `restricted_requires_contract_fields` | D-COMB-MISSING-CONTRACT-FIELDS; D-COMB-STAT-VALIDATION-REQUIRED | ✅ D5-DES-STAT-TIER1-001; DES-001 ✅ D5-DES-STAT-GREEDY-FEASIBILITY-001 |
 | DCM-002 | tier-1 | `unit_panel_single_cell` | AugSynth point-only | `restricted_requires_contract_fields` | D-COMB-MISSING-CONTRACT-FIELDS | D5-DES-STAT-TIER1-001 |
 | DCM-003 | tier-1 | `aggregate_two_row` | TBR aggregate point | `blocked_due_to_geometry_mismatch` | D-COMB-GEOMETRY-BRIDGE-REQUIRED | Aggregate design bridge |
 | DCM-004 | tier-1 | `unit_panel_single_cell` | DID bootstrap | `blocked_due_to_geometry_mismatch` | D-COMB-GEOMETRY-BRIDGE-REQUIRED | Geometry bridge ADR |

@@ -423,7 +423,8 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 | **34** | **DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001** | Runtime guardrails | ✅ **Implemented** |
 | **35** | **DESIGN_SUITABILITY_REASSESSMENT_001** | Suitability reassessment | ✅ **Accepted** |
 | **36** | **D5-DES-STAT-TIER1-001** | Tier-1 design statistical execution | ✅ **Executed** |
-| **37** | **D5-DES-STAT-GREEDY-FEASIBILITY-001** | Greedy π exhaustion follow-on | **Next** |
+| **37** | **D5-DES-STAT-GREEDY-FEASIBILITY-001** | Greedy π exhaustion follow-on | ✅ **Executed** — [`D5_DES_STAT_GREEDY_FEASIBILITY_001_REPORT.md`](track_d/D5_DES_STAT_GREEDY_FEASIBILITY_001_REPORT.md) |
+| **38** | **D5-DES-STAT-STRATIFIED-001** | Stratified sparse-strata follow-on | **Next** |
 | **—** | **TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001** | TROP parked audit program | ✅ **Proposed** — [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) |
 | **15** | **METHOD_ENHANCEMENT_ROADMAP_001** | Post-Level-B synthesis | ✅ [`METHOD_ENHANCEMENT_ROADMAP_001.md`](METHOD_ENHANCEMENT_ROADMAP_001.md) |
 
