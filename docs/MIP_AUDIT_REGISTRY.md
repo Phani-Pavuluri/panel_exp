@@ -621,7 +621,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** D5-STAT queue through **`D5-STAT-MCELL-PERCELL-001`** complete.
 
-**Next planning/enhancement:** **`D5-DES-STAT-STRATIFIED-001`**. Greedy feasibility: [`D5_DES_STAT_GREEDY_FEASIBILITY_001_REPORT.md`](track_d/D5_DES_STAT_GREEDY_FEASIBILITY_001_REPORT.md) (**Executed**; no promotion).
+**Next planning/enhancement:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`**. Multi-cell: [`D5_DES_STAT_MULTICELL_001_REPORT.md`](track_d/D5_DES_STAT_MULTICELL_001_REPORT.md) (**Executed**).
 
 ---
 
@@ -669,7 +669,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** Future TROP audit sequence; does not change immediate enhancement queue.
 
-**Program next (unchanged):** **`D5-DES-STAT-STRATIFIED-001`** (design-side).
+**Program next (unchanged):** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** (design-side).
 
 ---
 
@@ -685,7 +685,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `DESIGN_OUTPUT_CONTRACT_001` ✅ → `DESIGN_CODE_INVENTORY_001` ✅ → `DESIGN_LITERATURE_ALIGNMENT_001` ✅ → `DESIGN_IMPLEMENTATION_VALIDATION_001` ✅ → statistical protocol → combination matrix → guardrails → design suitability.
 
-**Immediate next:** **`D5-DES-STAT-STRATIFIED-001`** (greedy feasibility ✅).
+**Immediate next:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** (multi-cell ✅).
 
 ---
 
@@ -701,7 +701,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** ✅ `DESIGN_CODE_INVENTORY_001` → design validation ladder → combination matrix v2 → experiment planning (deferred).
 
-**Next:** **`D5-DES-STAT-STRATIFIED-001`** (greedy feasibility ✅).
+**Next:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** (multi-cell ✅).
 
 ---
 
@@ -1017,7 +1017,28 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Verdict:** Root cause = volume-share vs unit-count mismatch + score-gated assignment leaving units unassigned. Fix = `control_reservation` policy (default). 12,000 runs; legacy control-floor violation rate 28%; fixed policy 0%. **No promotion.**
 
-**Next:** **`D5-DES-STAT-STRATIFIED-001`** or tier-1 DES-001 re-run with fixed policy.
+**Next:** ✅ **`D5-DES-STAT-MULTICELL-001`** · follow-on = **`DESIGN_GUARDRAIL_ENFORCEMENT_001`**.
+
+---
+
+## D5-DES-STAT-MULTICELL-001 (2026-06-16)
+
+**Artifact:** [`docs/track_d/D5_DES_STAT_MULTICELL_001_REPORT.md`](track_d/D5_DES_STAT_MULTICELL_001_REPORT.md) · [`docs/track_d/archives/D5_DES_STAT_MULTICELL_001_summary.json`](track_d/archives/D5_DES_STAT_MULTICELL_001_summary.json) · [`panel_exp/design/multicell_feasibility.py`](../panel_exp/design/multicell_feasibility.py)
+
+**Archive:** Full run-level archive generated locally (not committed). Generation:
+
+```bash
+poetry run python -m panel_exp.validation.track_d_d5_des_stat_multicell_001 \
+  --output-local /tmp/D5_DES_STAT_MULTICELL_001_results.json \
+  --summary-output docs/track_d/archives/D5_DES_STAT_MULTICELL_001_summary.json \
+  --overwrite
+```
+
+**Status:** **`multicell_per_cell_only_pooled_claims_blocked`**
+
+**Verdict:** DES-011 multi-cell characterized across 6 policies × 18 worlds; explicit shared-control metadata; cell collisions 0; pooled claims blocked. 17,280 runs. **No promotion.**
+
+**Next:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`**.
 
 ---
 

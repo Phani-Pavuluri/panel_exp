@@ -312,7 +312,7 @@ Compact master table — key combinations (all `downstream_status`: not_validate
 | DCM-003 | tier-1 | `aggregate_two_row` | TBR aggregate point | `blocked_due_to_geometry_mismatch` | D-COMB-GEOMETRY-BRIDGE-REQUIRED | Aggregate design bridge |
 | DCM-004 | tier-1 | `unit_panel_single_cell` | DID bootstrap | `blocked_due_to_geometry_mismatch` | D-COMB-GEOMETRY-BRIDGE-REQUIRED | Geometry bridge ADR |
 | DCM-005 | tier-1 | `unit_panel_single_cell` | TBRRidge KFold/BRB | `restricted_requires_statistical_validation` | D-COMB-STAT-VALIDATION-REQUIRED | D5-STAT-TBRRIDGE-INF + operator contract |
-| DCM-006 | multi-cell (DES-011) | `multi_cell_per_cell` | MCELL per-cell SCM-JK | `restricted_requires_contract_fields` | D-COMB-SHARED-CONTROL-METADATA-MISSING | D5-DES-STAT-MULTICELL-001 |
+| DCM-006 | multi-cell (DES-011) | `multi_cell_per_cell` | MCELL per-cell SCM-JK | `restricted_requires_statistical_validation` | D-COMB-POOLED-CLAIM-BLOCKED | ✅ D5-DES-STAT-MULTICELL-001; per-cell only |
 | DCM-007 | multi-cell | `pooled_multi_cell` | Pooled SCM-JK / lift | `blocked_for_pooled_claim` | D-COMB-POOLED-CLAIM-BLOCKED | Pooling ADR |
 | DCM-008 | stratified (DES-004) | `unit_panel_single_cell` | SCM-JK | `restricted_requires_contract_fields` | D-COMB-MISSING-CONTRACT-FIELDS | stratum_ids emission |
 | DCM-009 | QuickBlock / MatchedPair | `unit_panel_single_cell` | Block-aware inference | `adapter_required` | D-COMB-ADAPTER-REQUIRED | D5-DES-STAT-BLOCK-PAIR-001 |

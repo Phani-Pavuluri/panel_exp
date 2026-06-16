@@ -242,7 +242,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Status:** **active** — authoritative method-foundation sequence  
 **Verdict:** **Pauses** trust-framework / method-role expansion until layers 1–5 complete (code inventory → literature → implementation → statistical OC → combination matrix). Prior synthesis and MCELL-first chains are **evidence only**, not sequencing authority.
 
-**Ordered next:** ✅ tier-1 design statistical execution (**`D5-DES-STAT-TIER1-001`**) → ✅ **`D5-DES-STAT-GREEDY-FEASIBILITY-001`** → **`D5-DES-STAT-STRATIFIED-001`** → trust-framework integration (roles paused).
+**Ordered next:** ✅ tier-1 → ✅ greedy → ✅ **`D5-DES-STAT-MULTICELL-001`** → **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** → trust-framework (roles paused).
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 
@@ -254,7 +254,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 
 **Design statistical validation protocol:** [`DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md`](DESIGN_STATISTICAL_VALIDATION_PROTOCOL_001.md) — ✅ Accepted; **tier-1 execution complete** [`D5_DES_STAT_TIER1_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_001_REPORT.md); no promotion.
 
-**Design audit lane:** [`DESIGN_AUDIT_PROGRAM_001.md`](DESIGN_AUDIT_PROGRAM_001.md) — D5-DES-STAT-GREEDY-FEASIBILITY-001 ✅ executed; next = **`D5-DES-STAT-STRATIFIED-001`**. **0 contract-complete; downstream blocked.**
+**Design audit lane:** D5-DES-STAT-MULTICELL-001 ✅ executed; next = **`DESIGN_GUARDRAIL_ENFORCEMENT_001`**. **0 contract-complete; downstream blocked.**
 
 ### METHOD-ENHANCEMENT-ROADMAP-001 (post-Level-B synthesis)
 
