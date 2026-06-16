@@ -562,10 +562,11 @@ Protocol marks **bridge-required** transitions as `blocked_until_geometry_bridge
 
 | Field | Value |
 |-------|-------|
-| Verdict | `design_statistical_validation_protocol_defined_not_executed` |
-| Designs statistically validated | **0 / 31** |
+| Verdict | `tier1_design_statistical_validation_partially_executed_no_promotion` |
+| Designs statistically validated (full program) | **0 / 31** |
+| Tier-1 designs characterized (D5-DES-STAT-TIER1-001) | **5 / 5 in-scope** |
 | Contract-complete designs | **0 / 31** |
-| Executed harnesses | **0** |
+| Executed harnesses | **1** (`D5-DES-STAT-TIER1-001`) |
 
 ---
 
@@ -575,7 +576,9 @@ Protocol marks **bridge-required** transitions as `blocked_until_geometry_bridge
 
 **Suitability:** [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md) ✅ **Accepted** — **strong suitability categories require executed `D5-DES-STAT-*` outcomes**; reassessment: [`DESIGN_SUITABILITY_REASSESSMENT_001.md`](DESIGN_SUITABILITY_REASSESSMENT_001.md) ✅.
 
-**Next execution target:** **`D5-DES-STAT-TIER1-001`** — tier-1 design statistical validation harness (default; contract-infra lane complete).
+**Next execution target:** ✅ **`D5-DES-STAT-TIER1-001`** executed — [`D5_DES_STAT_TIER1_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_001_REPORT.md) · [`track_d/archives/D5_DES_STAT_TIER1_001_results.json`](track_d/archives/D5_DES_STAT_TIER1_001_results.json). Verdict: `tier1_designs_mixed_requires_method_specific_followup`. **No promotion.**
+
+**Next follow-on:** **`D5-DES-STAT-GREEDY-FEASIBILITY-001`** (greedy treatment-pool exhaustion at π≈0.35).
 
 ---
 

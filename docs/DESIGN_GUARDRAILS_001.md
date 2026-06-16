@@ -518,7 +518,7 @@ Until enforcement lands, consumers must apply this document manually or via futu
 
 **Runtime evaluator:** ✅ [`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md`](DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md) · [`panel_exp/validation/design_guardrail_runtime_001.py`](../panel_exp/validation/design_guardrail_runtime_001.py) — consumes emitted `design_contract` + `contract_validation` metadata; **`WARN` is metadata-only, not statistical suitability**; `downstream_may_proceed=False` always.
 
-**Reassessment:** ✅ [`DESIGN_SUITABILITY_REASSESSMENT_001.md`](DESIGN_SUITABILITY_REASSESSMENT_001.md) — metadata layer improved; downstream blocked.
+**Statistical execution:** ✅ [`D5_DES_STAT_TIER1_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_001_REPORT.md) — greedy exhaustion at π≈0.35 observed; WARN is metadata-only, not statistical suitability.
 
 **Next artifact:** `D5-DES-STAT-TIER1-001`.
 
