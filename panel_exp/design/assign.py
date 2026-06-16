@@ -2,7 +2,7 @@ import copy
 
 import numpy as np
 import pandas as pd
-from typing import Dict, List, NewType, Optional, Union, Callable
+from typing import Any, Dict, List, NewType, Optional, Union, Callable
 from abc import ABC, abstractmethod
 from dtaidistance import dtw
 from ..panel_data import PanelDataset, TimePeriod, long_df_to_paneldataset
@@ -14,6 +14,11 @@ from .constraints import (
     bernoulli_complete_assign,
     freeze_assignment,
     freeze_constraint_lists,
+)
+from .greedy_feasibility import (
+    FeasibilityPolicy,
+    build_feasibility_metadata,
+    compute_greedy_feasibility,
 )
 from .rng import make_generator
 
@@ -1038,12 +1043,16 @@ class greedy_match_markets(Design):
         treatment_probability: Optional[float] = 0.5,
         split_type: Optional[str] = "kpi_share",
         random_state: Optional[int] = 42,
+        min_control_units: int = 1,
+        feasibility_policy: FeasibilityPolicy = "control_reservation",
     ):
         super().__init__(treatment_probability, random_state=random_state)
         self.func_to_optimize = func_to_optimize
         self.treatment_probability = treatment_probability
         self.split_type = split_type
-    
+        self.min_control_units = max(1, int(min_control_units))
+        self.feasibility_policy: FeasibilityPolicy = feasibility_policy
+        self.last_feasibility_metadata: dict[str, Any] | None = None
 
     def assign_all(self, wide_data: pd.DataFrame, num_units: int, num_timepoints: int) -> np.array:
         """
@@ -1055,6 +1064,64 @@ class greedy_match_markets(Design):
             Always raises an exception as it is not implemented.
         """
         raise Exception()
+
+    @staticmethod
+    def _count_test_units(r: dict, n_test_grps: int) -> int:
+        return sum(len(r[f"test_{i}"]) for i in range(n_test_grps))
+
+    def _can_assign_to_test(
+        self,
+        r: dict,
+        *,
+        n_test_grps: int,
+        feasibility,
+        dma_list: list,
+        unit_index: int,
+        unit: str,
+        assigned: set,
+        test_whitelist: list,
+        control_blacklist: list,
+    ) -> bool:
+        if self.feasibility_policy == "legacy":
+            return True
+        n_test = self._count_test_units(r, n_test_grps)
+        if n_test + 1 > feasibility.max_feasible_n_treated:
+            return False
+        if self.feasibility_policy == "feasibility_cap":
+            return True
+        remaining = [
+            u
+            for u in dma_list[unit_index + 1 :]
+            if u not in assigned and u != unit
+        ]
+        potential_control = len(r["control"]) + len(
+            [
+                u
+                for u in remaining
+                if u not in test_whitelist and u not in control_blacklist
+            ]
+        )
+        return potential_control >= feasibility.min_control_units
+
+    def _sweep_unassigned_to_control(
+        self,
+        r: dict,
+        *,
+        ctx,
+        n_test_grps: int,
+        control_blacklist: list,
+        test_blacklist: list,
+    ) -> None:
+        assigned = set(r["control"]) | {
+            u for i in range(n_test_grps) for u in r[f"test_{i}"]
+        }
+        for unit in ctx.all_units:
+            if unit in assigned or unit in ctx.excluded:
+                continue
+            if unit in control_blacklist or unit in test_blacklist:
+                continue
+            r["control"].append(unit)
+            assigned.add(unit)
 
     def assign(
         self,
@@ -1121,6 +1188,24 @@ class greedy_match_markets(Design):
             tb,
             ctb,
         )
+        n_assignable = len([u for u in ctx.all_units if u not in ctx.excluded])
+        pinned_test = sum(len(v) for v in ctx.pinned_test.values())
+        feasibility = compute_greedy_feasibility(
+            n_assignable=n_assignable,
+            treatment_probability=self.treatment_probability,
+            n_test_grps=n_test_grps,
+            pinned_control=len(ctx.pinned_control),
+            pinned_test=pinned_test,
+            min_control_units=self.min_control_units,
+            policy=self.feasibility_policy,
+        )
+        if self.feasibility_policy == "preflight_fail" and not feasibility.feasible:
+            raise ValueError(
+                f"Greedy assignment infeasible: {feasibility.feasibility_reason} "
+                f"(requested_n_treated={feasibility.requested_n_treated}, "
+                f"max_feasible_n_treated={feasibility.max_feasible_n_treated}, "
+                f"min_control_units={feasibility.min_control_units})."
+            )
 
         # Function to compute the correlation between control and test groups.
         def corr_func(df, x, y):
@@ -1175,10 +1260,14 @@ class greedy_match_markets(Design):
         ]
         self._rng.shuffle(dma_list)
 
-        for c in dma_list:
+        for unit_idx, c in enumerate(dma_list):
             # Skip DMAs already assigned
             if c in r["control"] or any(c in r[f"test_{i}"] for i in range(n_test_grps)):
                 continue
+
+            assigned = set(r["control"]) | {
+                u for i in range(n_test_grps) for u in r[f"test_{i}"]
+            }
 
             best_score = -np.inf
             best_assignment = None
@@ -1298,8 +1387,19 @@ class greedy_match_markets(Design):
             if best_assignment == "control":
                 r["control"].append(c)
             elif best_assignment and best_assignment.startswith("test_"):
-                group_index = int(best_assignment.split("_")[1])
-                r[f"test_{group_index}"].append(c)
+                if self._can_assign_to_test(
+                    r,
+                    n_test_grps=n_test_grps,
+                    feasibility=feasibility,
+                    dma_list=dma_list,
+                    unit_index=unit_idx,
+                    unit=c,
+                    assigned=assigned,
+                    test_whitelist=tw,
+                    control_blacklist=cb,
+                ):
+                    group_index = int(best_assignment.split("_")[1])
+                    r[f"test_{group_index}"].append(c)
 
             # Update shares
             r["control_share"] = [
@@ -1311,11 +1411,41 @@ class greedy_match_markets(Design):
             ]
             r["test_share"] = sum(r["test_grps_share"])
 
+        if self.feasibility_policy != "legacy":
+            self._sweep_unassigned_to_control(
+                r,
+                ctx=ctx,
+                n_test_grps=n_test_grps,
+                control_blacklist=cb,
+                test_blacklist=tb,
+            )
+
         result = {
             "control": r["control"],
             **{f"test_{i}": r[f"test_{i}"] for i in range(n_test_grps)},
         }
         validate_assignment_dict(result, ctx, cw, tw, cb, tb, ctb)
+        realized_n_treated = self._count_test_units(result, n_test_grps)
+        realized_n_control = len(result["control"])
+        n_assigned = realized_n_treated + realized_n_control
+        candidate_pool_exhausted = n_assigned < n_assignable
+        feasibility_adjusted = (
+            self.feasibility_policy != "legacy"
+            and (
+                realized_n_treated < feasibility.requested_n_treated
+                or candidate_pool_exhausted
+            )
+        )
+        if self.feasibility_policy == "legacy":
+            self.last_feasibility_metadata = None
+        else:
+            self.last_feasibility_metadata = build_feasibility_metadata(
+                feasibility,
+                realized_n_treated=realized_n_treated,
+                realized_n_control=realized_n_control,
+                feasibility_adjusted=feasibility_adjusted,
+                candidate_pool_exhausted=candidate_pool_exhausted,
+            )
         return freeze_assignment(result)
 
 

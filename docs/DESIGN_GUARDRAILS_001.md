@@ -518,9 +518,11 @@ Until enforcement lands, consumers must apply this document manually or via futu
 
 **Runtime evaluator:** ✅ [`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md`](DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md) · [`panel_exp/validation/design_guardrail_runtime_001.py`](../panel_exp/validation/design_guardrail_runtime_001.py) — consumes emitted `design_contract` + `contract_validation` metadata; **`WARN` is metadata-only, not statistical suitability**; `downstream_may_proceed=False` always.
 
-**Statistical execution:** ✅ [`D5_DES_STAT_TIER1_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_001_REPORT.md) — greedy exhaustion at π≈0.35 observed; WARN is metadata-only, not statistical suitability.
+**Statistical execution:** ✅ [`D5_DES_STAT_TIER1_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_001_REPORT.md) — greedy exhaustion at π≈0.35 observed; ✅ [`D5_DES_STAT_GREEDY_FEASIBILITY_001_REPORT.md`](track_d/D5_DES_STAT_GREEDY_FEASIBILITY_001_REPORT.md) — `control_reservation` fix; legacy control-floor violation rate 28% → 0% under fixed policy.
 
-**Next artifact:** `D5-DES-STAT-TIER1-001`.
+**Observed failure reasons (statistical):** minimum control floor violation (legacy greedy); treatment-pool exhaustion at volume-share targets; unassigned units after score-gated greedy loop.
+
+**Next artifact:** `D5-DES-STAT-STRATIFIED-001`.
 
 ---
 

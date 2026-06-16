@@ -157,7 +157,7 @@ A design may pass layers 1–3 while failing 4–8. **No layer implies the next.
 
 | Design | Contract emission | Validator | Guardrail | Statistical validation | Current category |
 |--------|-------------------|-----------|-----------|------------------------|------------------|
-| **DES-001** `greedy_match_markets` | ✅ tier-1 path via `geo_runner` | Expected `contract_valid` when universal fields populated (no dedicated golden fixture yet) | Expected `WARN` + `D-GUARDRAIL-REQUIRES-STATISTICAL-VALIDATION` | ❌ not executed | `metadata_valid_statistically_unvalidated` · `eligible_for_next_validation_stage` |
+| **DES-001** `greedy_match_markets` | ✅ tier-1 path via `geo_runner` | Expected `contract_valid` when universal fields populated | Expected `WARN` + `D-GUARDRAIL-REQUIRES-STATISTICAL-VALIDATION` | ✅ tier-1 + ✅ feasibility fix (`control_reservation`) | `metadata_valid_feasibility_improved_statistically_unvalidated` · `eligible_for_next_validation_stage` |
 | **DES-002** `CompleteRandomization` | ✅ emitted | ✅ `contract_valid` (golden fixture) | `WARN` | ❌ not executed | `metadata_valid_guardrail_warn` · `statistical_validation_required` |
 | **DES-003** `BalancedRandomization` | ✅ emitted | ✅ `contract_valid` (golden fixture) | `WARN` | ❌ not executed | `metadata_valid_guardrail_warn` · `statistical_validation_required` |
 | **DES-004** `StratifiedRandomization` | ✅ emitted | ✅ `contract_valid` **when stratum metadata present** (golden fixture); `contract_blocked` if `stratum_ids` missing | `WARN` or `BLOCK` | ❌ not executed | `metadata_valid_guardrail_warn` (with strata) · `contract_blocked` (without) |
@@ -390,7 +390,7 @@ Do **not** default to another generic infrastructure artifact unless a concrete 
 | Golden fixtures | ✅ |
 | Guardrail runtime | ✅ |
 | **Suitability reassessment** | ✅ **This artifact** |
-| **Next default** | **`D5-DES-STAT-GREEDY-FEASIBILITY-001`** (follow-on from tier-1 execution) |
+| **Next default** | **`D5-DES-STAT-STRATIFIED-001`** (after greedy feasibility fix ✅) |
 
 ---
 

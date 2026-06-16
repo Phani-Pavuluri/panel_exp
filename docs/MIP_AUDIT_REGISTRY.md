@@ -621,7 +621,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** D5-STAT queue through **`D5-STAT-MCELL-PERCELL-001`** complete.
 
-**Next planning/enhancement:** **`D5-DES-STAT-GREEDY-FEASIBILITY-001`**. Tier-1 execution: [`D5_DES_STAT_TIER1_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_001_REPORT.md) (**Executed**; no promotion).
+**Next planning/enhancement:** **`D5-DES-STAT-STRATIFIED-001`**. Greedy feasibility: [`D5_DES_STAT_GREEDY_FEASIBILITY_001_REPORT.md`](track_d/D5_DES_STAT_GREEDY_FEASIBILITY_001_REPORT.md) (**Executed**; no promotion).
 
 ---
 
@@ -669,7 +669,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** Future TROP audit sequence; does not change immediate enhancement queue.
 
-**Program next (unchanged):** **`D5-DES-STAT-GREEDY-FEASIBILITY-001`** (design-side).
+**Program next (unchanged):** **`D5-DES-STAT-STRATIFIED-001`** (design-side).
 
 ---
 
@@ -685,7 +685,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `DESIGN_OUTPUT_CONTRACT_001` ✅ → `DESIGN_CODE_INVENTORY_001` ✅ → `DESIGN_LITERATURE_ALIGNMENT_001` ✅ → `DESIGN_IMPLEMENTATION_VALIDATION_001` ✅ → statistical protocol → combination matrix → guardrails → design suitability.
 
-**Immediate next:** **`D5-DES-STAT-GREEDY-FEASIBILITY-001`** (tier-1 execution ✅).
+**Immediate next:** **`D5-DES-STAT-STRATIFIED-001`** (greedy feasibility ✅).
 
 ---
 
@@ -701,7 +701,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** ✅ `DESIGN_CODE_INVENTORY_001` → design validation ladder → combination matrix v2 → experiment planning (deferred).
 
-**Next:** **`D5-DES-STAT-GREEDY-FEASIBILITY-001`** (tier-1 execution ✅).
+**Next:** **`D5-DES-STAT-STRATIFIED-001`** (greedy feasibility ✅).
 
 ---
 
@@ -989,7 +989,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `D5-DES-STAT-TIER1-001` → experiment planning filters.
 
-**Next:** **`D5-DES-STAT-GREEDY-FEASIBILITY-001`** (tier-1 execution ✅ [`D5_DES_STAT_TIER1_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_001_REPORT.md)).
+**Next:** **`D5-DES-STAT-STRATIFIED-001`** (greedy feasibility ✅ [`D5_DES_STAT_GREEDY_FEASIBILITY_001_REPORT.md`](track_d/D5_DES_STAT_GREEDY_FEASIBILITY_001_REPORT.md)).
 
 ---
 
@@ -1005,7 +1005,19 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** combination matrix evidence · suitability characterization · method-specific follow-ons.
 
-**Next:** **`D5-DES-STAT-GREEDY-FEASIBILITY-001`**.
+**Next:** ✅ **`D5-DES-STAT-GREEDY-FEASIBILITY-001`** · follow-on = **`D5-DES-STAT-STRATIFIED-001`**.
+
+---
+
+## D5-DES-STAT-GREEDY-FEASIBILITY-001 (2026-06-16)
+
+**Artifact:** [`docs/track_d/D5_DES_STAT_GREEDY_FEASIBILITY_001_REPORT.md`](track_d/D5_DES_STAT_GREEDY_FEASIBILITY_001_REPORT.md) · [`docs/track_d/archives/D5_DES_STAT_GREEDY_FEASIBILITY_001_results.json`](track_d/archives/D5_DES_STAT_GREEDY_FEASIBILITY_001_results.json) · [`panel_exp/design/greedy_feasibility.py`](../panel_exp/design/greedy_feasibility.py)
+
+**Status:** **`greedy_feasibility_fixed_requires_statistical_followup`**
+
+**Verdict:** Root cause = volume-share vs unit-count mismatch + score-gated assignment leaving units unassigned. Fix = `control_reservation` policy (default). 12,000 runs; legacy control-floor violation rate 28%; fixed policy 0%. **No promotion.**
+
+**Next:** **`D5-DES-STAT-STRATIFIED-001`** or tier-1 DES-001 re-run with fixed policy.
 
 ---
 
