@@ -52,7 +52,7 @@ The D5-STAT queue established **what the codebase does today** under controlled 
 | **D5-STAT-DID-BOOTSTRAP-001** | Level B DID embedded bootstrap | `characterization_mixed_requires_followup` | [`D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md) |
 | **D5-STAT-MCELL-PERCELL-001** | Level B per-cell execution | `characterization_pass_with_caveats` | [`D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) |
 
-**Queue status:** Tier-1 ✅ · Greedy ✅ · Stratified ✅ · Multi-cell ✅. Next: **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** (tier-1 recharacterization pending).
+**Queue status:** Tier-1 ✅ (recharacterized) · Greedy ✅ · Stratified ✅ · Multi-cell ✅. Next: **`DESIGN_COMBINATION_VALIDATION_EXECUTION_001`** · then **`DESIGN_GUARDRAIL_ENFORCEMENT_001`**.
 
 ---
 

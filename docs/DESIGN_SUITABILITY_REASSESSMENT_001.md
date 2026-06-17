@@ -157,12 +157,12 @@ A design may pass layers 1–3 while failing 4–8. **No layer implies the next.
 
 | Design | Contract emission | Validator | Guardrail | Statistical validation | Current category |
 |--------|-------------------|-----------|-----------|------------------------|------------------|
-| **DES-001** `greedy_match_markets` | ✅ tier-1 path via `geo_runner` | Expected `contract_valid` when universal fields populated | Expected `WARN` + `D-GUARDRAIL-REQUIRES-STATISTICAL-VALIDATION` | ✅ tier-1 + ✅ feasibility fix (`control_reservation`) | `metadata_valid_feasibility_improved_statistically_unvalidated` · `eligible_for_next_validation_stage` |
-| **DES-002** `CompleteRandomization` | ✅ emitted | ✅ `contract_valid` (golden fixture) | `WARN` | ❌ not executed | `metadata_valid_guardrail_warn` · `statistical_validation_required` |
-| **DES-003** `BalancedRandomization` | ✅ emitted | ✅ `contract_valid` (golden fixture) | `WARN` | ❌ not executed | `metadata_valid_guardrail_warn` · `statistical_validation_required` |
-| **DES-004** `StratifiedRandomization` | ✅ emitted | ✅ `contract_valid` **when stratum metadata present** | `WARN` or `BLOCK` | ✅ tier-1 + ✅ stratified fix (`adaptive_strata`) | `metadata_valid_feasibility_improved_statistically_unvalidated` |
-| **DES-006** `Rerandomization` | ✅ emitted (wrapper) | ✅ `contract_valid` **when wrapper/base identity preserved** (golden fixture) | `WARN` | ❌ not executed | `metadata_valid_guardrail_warn` · `statistical_validation_required` |
-| **DES-011** `multi_test_groups` | ✅ emitted | ✅ metadata when `last_multicell_metadata` present | `BLOCK` | ✅ **`D5-DES-STAT-MULTICELL-001`** | `metadata_valid_per_cell_only_pooled_blocked` · pooled claims blocked |
+| **DES-001** `greedy_match_markets` | ✅ tier-1 path via `geo_runner` | Expected `contract_valid` when universal fields populated | Expected `WARN` + `D-GUARDRAIL-REQUIRES-STATISTICAL-VALIDATION` | ✅ tier-1 + ✅ feasibility fix + ✅ recharacterization (`control_reservation`; mixed balance) | `metadata_valid_feasibility_improved_statistically_unvalidated` · not production-suitable |
+| **DES-002** `CompleteRandomization` | ✅ emitted | ✅ `contract_valid` (golden fixture) | `WARN` | ✅ tier-1 recharacterization characterized | `metadata_valid_guardrail_warn` · `statistical_validation_required` · not production-suitable |
+| **DES-003** `BalancedRandomization` | ✅ emitted | ✅ `contract_valid` (golden fixture) | `WARN` | ✅ tier-1 recharacterization characterized | `metadata_valid_guardrail_warn` · `statistical_validation_required` · not production-suitable |
+| **DES-004** `StratifiedRandomization` | ✅ emitted | ✅ `contract_valid` **when stratum metadata present** | `WARN` or `BLOCK` | ✅ tier-1 + ✅ stratified fix + ✅ recharacterization (`adaptive_strata`; improved balance) | `metadata_valid_feasibility_improved_statistically_unvalidated` · not production-suitable |
+| **DES-006** `Rerandomization` | ✅ emitted (wrapper) | ✅ `contract_valid` **when wrapper/base identity preserved** (golden fixture) | `WARN` | ✅ tier-1 recharacterization characterized | `metadata_valid_guardrail_warn` · `statistical_validation_required` · not production-suitable |
+| **DES-011** `multi_test_groups` | ✅ emitted | ✅ metadata when `last_multicell_metadata` present | `BLOCK` | ✅ multi-cell + ✅ recharacterization (per-cell lane only) | `metadata_valid_per_cell_only_pooled_blocked` · pooled claims blocked · not production-suitable |
 
 **Conservative interpretation:** DES-002/003/004 (with strata)/006 may be mechanically contract-valid with guardrail `WARN`. None are statistically validated or downstream-authorized.
 
@@ -390,7 +390,7 @@ Do **not** default to another generic infrastructure artifact unless a concrete 
 | Golden fixtures | ✅ |
 | Guardrail runtime | ✅ |
 | **Suitability reassessment** | ✅ **This artifact** |
-| **Next default** | **`D5-DES-STAT-MULTICELL-001`** (after stratified fix ✅) |
+| **Next default** | **`DESIGN_COMBINATION_VALIDATION_EXECUTION_001`** (tier-1 recharacterized ✅ [`D5_DES_STAT_TIER1_RECHARACTERIZATION_001`](track_d/D5_DES_STAT_TIER1_RECHARACTERIZATION_001_REPORT.md); then guardrail enforcement) |
 
 ---
 
@@ -414,8 +414,8 @@ Do **not** default to another generic infrastructure artifact unless a concrete 
 
 **Verdict:** `design_metadata_suitability_improved_statistical_and_downstream_suitability_still_blocked`
 
-Tier-1 metadata suitability improved through measurable contract emission, validation, fixtures, and guardrail evaluation. Statistical validation and downstream authorization remain blocked for all designs. Next default artifact: **`D5-DES-STAT-TIER1-001`**.
+Tier-1 metadata suitability improved through measurable contract emission, validation, fixtures, and guardrail evaluation. Statistical validation and downstream authorization remain blocked for all designs. Current tier-1 baseline: **`D5-DES-STAT-TIER1-RECHARACTERIZATION-001`** ([`D5_DES_STAT_TIER1_RECHARACTERIZATION_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_RECHARACTERIZATION_001_REPORT.md)). **0 downstream-authorized designs** · **0 TrustReport / CalibrationSignal / MMM / LLM eligible**. Next: **`DESIGN_COMBINATION_VALIDATION_EXECUTION_001`**.
 
 ---
 
-*DESIGN-SUITABILITY-REASSESSMENT-001 v1.0.0 — Accepted; metadata suitability improved; statistical and downstream suitability still blocked; next = D5-DES-STAT-TIER1-001.*
+*DESIGN-SUITABILITY-REASSESSMENT-001 v1.1.0 — tier-1 recharacterized; statistical and downstream suitability still blocked; next = DESIGN_COMBINATION_VALIDATION_EXECUTION_001.*

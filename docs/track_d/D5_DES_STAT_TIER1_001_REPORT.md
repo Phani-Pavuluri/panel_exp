@@ -2,6 +2,8 @@
 
 **Artifact:** `D5-DES-STAT-TIER1-001` · **Verdict:** `tier1_designs_mixed_requires_method_specific_followup`
 
+> **Superseded defaults (2026-06-16):** Corrected-default comparisons for DES-001, DES-004, and DES-011 in this report reflect **legacy implementations**. Current empirical baseline: **[D5_DES_STAT_TIER1_RECHARACTERIZATION_001_REPORT.md](D5_DES_STAT_TIER1_RECHARACTERIZATION_001_REPORT.md)**. This archive remains **historical evidence**.
+
 ## 1. Executive summary
 
 First executed tier-1 design statistical validation harness. Characterizes assignment feasibility, balance, reproducibility inputs, and contract/guardrail metadata for DES-001–004 and DES-006. **No promotion; downstream blocked.**

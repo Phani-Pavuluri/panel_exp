@@ -568,9 +568,9 @@ find docs -iname "*SUITABILITY*" -o -iname "*GUARDRAIL*" -o -iname "*COMBINATION
 
 **Golden fixtures:** ✅ shape stabilized. **Suitability remains blocked** — fixture stabilization ≠ statistical validation or downstream promotion.
 
-**Tier-1 statistical execution:** ✅ [`D5_DES_STAT_TIER1_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_001_REPORT.md) — 5 families characterized; verdict `tier1_designs_mixed_requires_method_specific_followup`; **0 downstream suitable**.
+**Tier-1 statistical execution:** ✅ [`D5_DES_STAT_TIER1_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_001_REPORT.md) (historical) · ✅ **recharacterized** [`D5_DES_STAT_TIER1_RECHARACTERIZATION_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_RECHARACTERIZATION_001_REPORT.md) — current corrected-default baseline; **0 downstream suitable**.
 
-**Next artifact:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** (tier-1 recharacterization pending)
+**Next artifact:** **`DESIGN_COMBINATION_VALIDATION_EXECUTION_001`** · then **`DESIGN_GUARDRAIL_ENFORCEMENT_001`**
 
 Then: adapter lanes · block/pair/trim design audits.
 
