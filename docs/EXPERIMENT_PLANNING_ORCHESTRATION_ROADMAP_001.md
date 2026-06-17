@@ -275,6 +275,9 @@ Must define:
 | [`ROADMAP_V4.md`](ROADMAP_V4.md) | Future planning layer placement |
 | [`MIP_AUDIT_REGISTRY.md`](MIP_AUDIT_REGISTRY.md) | Artifact registered |
 | [`METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md`](METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md) | Planning gap cross-link |
+| [`TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md`](TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md) | SCM+JK remediation complete; reassessment planned |
+
+**TrustReport eligibility remediation (2026-06-17):** [`D5_TRUST_SCM_JK_COVERAGE_REMEDIATION_001_REPORT.md`](track_d/D5_TRUST_SCM_JK_COVERAGE_REMEDIATION_001_REPORT.md) — no planning-layer authorization; null-monitor evidence only.
 
 **Optional architecture docs:** `ARCHITECTURE.md`, `PLATFORM_VISION.md`, `TRUST_ARCHITECTURE.md` — **not present** in repo; no update.
 

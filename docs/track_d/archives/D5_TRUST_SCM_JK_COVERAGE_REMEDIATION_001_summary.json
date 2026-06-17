@@ -1,0 +1,488 @@
+{
+  "artifact_id": "D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-17T22:40:15.493447+00:00",
+  "git_commit": "a898cd295241915687ff36e95f18ed40b9e41594",
+  "config": {
+    "n_replicates": 2,
+    "fast": true,
+    "effect_sizes": [
+      0.0,
+      0.08
+    ],
+    "threshold_label": "provisional_for_remediation_characterization_only",
+    "train_length": 28,
+    "test_length": 8,
+    "alpha": 0.05
+  },
+  "worlds": [
+    {
+      "world_id": "clean_balanced",
+      "scenario_name": "scm_low_signal",
+      "percent_effect": 0.08,
+      "n_geos": 16,
+      "n_periods": 44,
+      "treatment_start": 32,
+      "treatment_probability": 0.35,
+      "scenario_overrides": {},
+      "donor_regime": "strong",
+      "notes": "clean balanced SCM"
+    },
+    {
+      "world_id": "weak_donor_pool",
+      "scenario_name": "scm_low_signal",
+      "percent_effect": 0.08,
+      "n_geos": 14,
+      "n_periods": 44,
+      "treatment_start": 32,
+      "treatment_probability": 0.42,
+      "scenario_overrides": {},
+      "donor_regime": "weak",
+      "notes": "weak donor pool"
+    },
+    {
+      "world_id": "poor_prefit",
+      "scenario_name": "scm_trend_mismatch",
+      "percent_effect": 0.08,
+      "n_geos": 16,
+      "n_periods": 44,
+      "treatment_start": 32,
+      "treatment_probability": 0.35,
+      "scenario_overrides": {},
+      "donor_regime": "moderate",
+      "notes": "poor pre-fit"
+    },
+    {
+      "world_id": "latent_factor_mismatch",
+      "scenario_name": "scm_high_collinearity",
+      "percent_effect": 0.08,
+      "n_geos": 16,
+      "n_periods": 44,
+      "treatment_start": 32,
+      "treatment_probability": 0.35,
+      "scenario_overrides": {},
+      "donor_regime": "moderate",
+      "notes": "latent-factor mismatch"
+    },
+    {
+      "world_id": "high_heterogeneity",
+      "scenario_name": "scm_low_signal",
+      "percent_effect": 0.08,
+      "n_geos": 16,
+      "n_periods": 44,
+      "treatment_start": 32,
+      "treatment_probability": 0.35,
+      "scenario_overrides": {
+        "heterogeneous_effects": true
+      },
+      "donor_regime": "moderate",
+      "notes": "effect heterogeneity"
+    },
+    {
+      "world_id": "serial_correlation",
+      "scenario_name": "scm_low_signal",
+      "percent_effect": 0.08,
+      "n_geos": 16,
+      "n_periods": 44,
+      "treatment_start": 32,
+      "treatment_probability": 0.35,
+      "scenario_overrides": {
+        "autocorrelation": 0.85
+      },
+      "donor_regime": "moderate",
+      "notes": "serial correlation"
+    }
+  ],
+  "effect_sizes": [
+    0.0,
+    0.08
+  ],
+  "donor_regimes": [
+    {
+      "regime_id": "strong",
+      "n_geos": 16,
+      "treatment_probability": 0.35
+    },
+    {
+      "regime_id": "moderate",
+      "n_geos": 14,
+      "treatment_probability": 0.38
+    },
+    {
+      "regime_id": "weak",
+      "n_geos": 12,
+      "treatment_probability": 0.45
+    }
+  ],
+  "run_counts": {
+    "total_runs": 22,
+    "failed_runs": 0,
+    "overall_failure_rate": 0.0
+  },
+  "point_estimate_results": {
+    "mean_bias_level": -0.23498007992735187,
+    "rmse_level": 0.03554657025173835
+  },
+  "interval_results": {
+    "mean_jk_half_width": 2.6139606028590707,
+    "mean_empirical_loo_half_width": 0.28392851083698295,
+    "mean_variance_ratio": 9.86944893933711
+  },
+  "coverage_by_effect": {
+    "0.0": {
+      "n_runs": 2,
+      "feasible_runs": 2,
+      "failure_rate": 0.0,
+      "coverage_level": 1.0,
+      "coverage_percent_scale": 1.0,
+      "null_rejection_rate": 1.0,
+      "mean_bias_level": -0.6083135310027092,
+      "mean_bias_percent": -0.6083135310027092,
+      "rmse_level": 0.849773964954323,
+      "mean_interval_width": 5.069108850907018,
+      "mean_prefit_rmse": 2.0466575322810474,
+      "mean_variance_ratio_jk_to_empirical": 9.823854791237494,
+      "oracle_centered_coverage_level": 1.0
+    },
+    "0.08": {
+      "n_runs": 2,
+      "feasible_runs": 2,
+      "failure_rate": 0.0,
+      "coverage_level": 1.0,
+      "coverage_percent_scale": 0.0,
+      "null_rejection_rate": null,
+      "mean_bias_level": -0.006157229997941549,
+      "mean_bias_percent": 7.946086481603922,
+      "rmse_level": 0.03554657025173835,
+      "mean_interval_width": 5.432079923804478,
+      "mean_prefit_rmse": 2.3529252684370174,
+      "mean_variance_ratio_jk_to_empirical": 9.290050900307797,
+      "oracle_centered_coverage_level": 1.0
+    }
+  },
+  "coverage_by_world": {
+    "clean_balanced": {
+      "n_runs": 2,
+      "feasible_runs": 2,
+      "failure_rate": 0.0,
+      "coverage_level": 0.5,
+      "coverage_percent_scale": 0.0,
+      "null_rejection_rate": null,
+      "mean_bias_level": -0.8130131966353304,
+      "mean_bias_percent": 7.086886692419222,
+      "rmse_level": 2.453328570899975,
+      "mean_interval_width": 3.27027212147639,
+      "mean_prefit_rmse": 2.6781323356854774,
+      "mean_variance_ratio_jk_to_empirical": 9.434681612609102,
+      "oracle_centered_coverage_level": 0.5
+    },
+    "weak_donor_pool": {
+      "n_runs": 2,
+      "feasible_runs": 2,
+      "failure_rate": 0.0,
+      "coverage_level": 1.0,
+      "coverage_percent_scale": 0.0,
+      "null_rejection_rate": null,
+      "mean_bias_level": -0.14931231832268477,
+      "mean_bias_percent": 7.867157446453808,
+      "rmse_level": 1.2643234166426192,
+      "mean_interval_width": 6.856097563621365,
+      "mean_prefit_rmse": 2.213384770575071,
+      "mean_variance_ratio_jk_to_empirical": 8.224009845941618,
+      "oracle_centered_coverage_level": 1.0
+    },
+    "poor_prefit": {
+      "n_runs": 2,
+      "feasible_runs": 2,
+      "failure_rate": 0.0,
+      "coverage_level": 0.5,
+      "coverage_percent_scale": 0.0,
+      "null_rejection_rate": null,
+      "mean_bias_level": -0.7028670194218467,
+      "mean_bias_percent": 7.28121322880717,
+      "rmse_level": 0.9290102459471455,
+      "mean_interval_width": 3.591849803580846,
+      "mean_prefit_rmse": 1.1463575139355346,
+      "mean_variance_ratio_jk_to_empirical": 7.437381283212412,
+      "oracle_centered_coverage_level": 0.5
+    },
+    "latent_factor_mismatch": {
+      "n_runs": 2,
+      "feasible_runs": 2,
+      "failure_rate": 0.0,
+      "coverage_level": 1.0,
+      "coverage_percent_scale": 0.0,
+      "null_rejection_rate": null,
+      "mean_bias_level": 0.021035161698519822,
+      "mean_bias_percent": 7.98256356698713,
+      "rmse_level": 0.25383419921993694,
+      "mean_interval_width": 0.7397162497290868,
+      "mean_prefit_rmse": 0.5932463542296804,
+      "mean_variance_ratio_jk_to_empirical": 12.595268102927607,
+      "oracle_centered_coverage_level": 1.0
+    },
+    "high_heterogeneity": {
+      "n_runs": 2,
+      "feasible_runs": 2,
+      "failure_rate": 0.0,
+      "coverage_level": 1.0,
+      "coverage_percent_scale": 0.0,
+      "null_rejection_rate": null,
+      "mean_bias_level": -0.5091351680010963,
+      "mean_bias_percent": 7.3061562044279755,
+      "rmse_level": 0.7236713597880149,
+      "mean_interval_width": 6.8944547313417655,
+      "mean_prefit_rmse": 2.393983518850969,
+      "mean_variance_ratio_jk_to_empirical": 12.46007827631463,
+      "oracle_centered_coverage_level": 1.0
+    },
+    "serial_correlation": {
+      "n_runs": 2,
+      "feasible_runs": 2,
+      "failure_rate": 0.0,
+      "coverage_level": 1.0,
+      "coverage_percent_scale": 0.0,
+      "null_rejection_rate": null,
+      "mean_bias_level": -0.9100277732614126,
+      "mean_bias_percent": 6.938099675583464,
+      "rmse_level": 0.9100375394835268,
+      "mean_interval_width": 6.021588010942114,
+      "mean_prefit_rmse": 2.3721971319826674,
+      "mean_variance_ratio_jk_to_empirical": 12.729868636834102,
+      "oracle_centered_coverage_level": 1.0
+    }
+  },
+  "coverage_by_donor_regime": {
+    "strong": {
+      "n_runs": 2,
+      "feasible_runs": 2,
+      "failure_rate": 0.0,
+      "coverage_level": 1.0,
+      "coverage_percent_scale": 0.0,
+      "null_rejection_rate": null,
+      "mean_bias_level": 1.2018048151006164,
+      "mean_bias_percent": 9.125432109040322,
+      "rmse_level": 1.2048002999433218,
+      "mean_interval_width": 7.658740574146673,
+      "mean_prefit_rmse": 3.1201695984898468,
+      "mean_variance_ratio_jk_to_empirical": 9.2605380518197,
+      "oracle_centered_coverage_level": 1.0
+    },
+    "moderate": {
+      "n_runs": 2,
+      "feasible_runs": 2,
+      "failure_rate": 0.0,
+      "coverage_level": 1.0,
+      "coverage_percent_scale": 0.0,
+      "null_rejection_rate": null,
+      "mean_bias_level": 0.670038210593912,
+      "mean_bias_percent": 8.760884531952572,
+      "rmse_level": 1.483631712218912,
+      "mean_interval_width": 5.367546756323485,
+      "mean_prefit_rmse": 2.188413259112618,
+      "mean_variance_ratio_jk_to_empirical": 10.516277225423206,
+      "oracle_centered_coverage_level": 1.0
+    },
+    "weak": {
+      "n_runs": 2,
+      "feasible_runs": 2,
+      "failure_rate": 0.0,
+      "coverage_level": 1.0,
+      "coverage_percent_scale": 0.0,
+      "null_rejection_rate": null,
+      "mean_bias_level": -1.1521662810262545,
+      "mean_bias_percent": 6.81809809448629,
+      "rmse_level": 1.1521678374866284,
+      "mean_interval_width": 6.605678677026344,
+      "mean_prefit_rmse": 2.750243410041289,
+      "mean_variance_ratio_jk_to_empirical": 6.791929606080538,
+      "oracle_centered_coverage_level": 1.0
+    }
+  },
+  "bias_decomposition": {
+    "mean_bias_level_positive": -0.23498007992735187,
+    "mean_bias_percent_positive": 7.711257803176187,
+    "mean_interval_miscentering_level": -0.23498007992735187,
+    "percent_scale_mismatch_dominant": true,
+    "undercoverage_driver_hypothesis": "estimator_bias_and_or_variance_miscalibration"
+  },
+  "variance_decomposition": {
+    "mean_jk_half_width": 2.6139606028590707,
+    "mean_empirical_loo_half_width": 0.28392851083698295,
+    "mean_variance_ratio": 9.86944893933711
+  },
+  "pre_fit_relationships": {
+    "coverage_vs_prefit": [
+      {
+        "prefit_rmse": 2.324225644023261,
+        "contains_level": true,
+        "world_id": "clean_balanced"
+      },
+      {
+        "prefit_rmse": 3.0320390273476936,
+        "contains_level": false,
+        "world_id": "clean_balanced"
+      },
+      {
+        "prefit_rmse": 2.2230835226820753,
+        "contains_level": true,
+        "world_id": "weak_donor_pool"
+      },
+      {
+        "prefit_rmse": 2.2036860184680664,
+        "contains_level": true,
+        "world_id": "weak_donor_pool"
+      },
+      {
+        "prefit_rmse": 1.359021777700977,
+        "contains_level": false,
+        "world_id": "poor_prefit"
+      },
+      {
+        "prefit_rmse": 0.9336932501700924,
+        "contains_level": true,
+        "world_id": "poor_prefit"
+      },
+      {
+        "prefit_rmse": 0.23926928685183843,
+        "contains_level": true,
+        "world_id": "latent_factor_mismatch"
+      },
+      {
+        "prefit_rmse": 0.9472234216075224,
+        "contains_level": true,
+        "world_id": "latent_factor_mismatch"
+      },
+      {
+        "prefit_rmse": 2.3662890991448635,
+        "contains_level": true,
+        "world_id": "high_heterogeneity"
+      },
+      {
+        "prefit_rmse": 2.4216779385570737,
+        "contains_level": true,
+        "world_id": "high_heterogeneity"
+      },
+      {
+        "prefit_rmse": 2.4499397850285263,
+        "contains_level": true,
+        "world_id": "serial_correlation"
+      },
+      {
+        "prefit_rmse": 2.294454478936809,
+        "contains_level": true,
+        "world_id": "serial_correlation"
+      },
+      {
+        "prefit_rmse": 1.9636820807857889,
+        "contains_level": true,
+        "world_id": "effect_sweep"
+      },
+      {
+        "prefit_rmse": 2.129632983776306,
+        "contains_level": true,
+        "world_id": "effect_sweep"
+      },
+      {
+        "prefit_rmse": 2.268563217919257,
+        "contains_level": true,
+        "world_id": "effect_sweep"
+      },
+      {
+        "prefit_rmse": 2.4372873189547777,
+        "contains_level": true,
+        "world_id": "effect_sweep"
+      },
+      {
+        "prefit_rmse": 2.4869560110285382,
+        "contains_level": true,
+        "world_id": "donor_strong"
+      },
+      {
+        "prefit_rmse": 3.7533831859511557,
+        "contains_level": true,
+        "world_id": "donor_strong"
+      },
+      {
+        "prefit_rmse": 2.226116128515159,
+        "contains_level": true,
+        "world_id": "donor_moderate"
+      },
+      {
+        "prefit_rmse": 2.1507103897100777,
+        "contains_level": true,
+        "world_id": "donor_moderate"
+      },
+      {
+        "prefit_rmse": 3.0905597793232067,
+        "contains_level": true,
+        "world_id": "donor_weak"
+      },
+      {
+        "prefit_rmse": 2.409927040759372,
+        "contains_level": true,
+        "world_id": "donor_weak"
+      }
+    ]
+  },
+  "failure_summary": {
+    "total_runs": 22,
+    "failed_runs": 0,
+    "overall_failure_rate": 0.0
+  },
+  "policy_comparisons": {
+    "A_current_unit_jackknife": {
+      "null_coverage_level": 1.0,
+      "positive_coverage_level": 0.9,
+      "positive_coverage_percent_scale": 0.0
+    },
+    "B_null_monitor_only": {
+      "recommended_when": "null_coverage acceptable and positive level coverage insufficient",
+      "null_coverage_level": 1.0
+    },
+    "oracle_centered_diagnostic": {
+      "positive_coverage_level": 0.9,
+      "note": "diagnosis_only_not_for_production"
+    },
+    "empirical_loo_diagnostic": {
+      "mean_empirical_hw": 0.28392851083698295,
+      "note": "characterization_only"
+    }
+  },
+  "semantic_classification": {
+    "readout_classes_considered": [
+      "descriptive_point",
+      "null_monitor",
+      "causal_interval",
+      "per_cell_restricted",
+      "diagnostic_only"
+    ],
+    "supported_without_overreach": [
+      "null_monitor",
+      "diagnostic_only"
+    ],
+    "not_supported": [
+      "causal_interval"
+    ]
+  },
+  "trustreport_eligibility_implications": {
+    "eligible_for_promotion": false,
+    "eligible_candidate": false,
+    "restricted_classes": [
+      "null_monitor",
+      "diagnostic_only"
+    ],
+    "requires_reassessment_artifact": "TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001"
+  },
+  "authorization_summary": {
+    "trust_report_authorized": false,
+    "trust_report_authorized_count": 0
+  },
+  "limitations": [
+    "Synthetic worlds only; percent injection uses level delta on treated mean.",
+    "Oracle/empirical intervals are diagnostic only.",
+    "Does not modify D5-STAT-SCM-JK-001 committed archive.",
+    "Production thresholds not defined."
+  ],
+  "verdict": "scm_jk_eligible_as_null_monitor_only"
+}

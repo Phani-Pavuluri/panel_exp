@@ -114,7 +114,7 @@ Architecture contracts and test discipline (planning + fixtures; implementation 
 | D2 | Estimator + SCM donor audit | **Complete** ([`TRACK_D_D2_ESTIMATOR_AND_DONOR_AUDIT_001.md`](TRACK_D_D2_ESTIMATOR_AND_DONOR_AUDIT_001.md)) |
 | D3 | Inference method audit | **Complete** ([`TRACK_D_D3_INFERENCE_METHOD_AUDIT_001.md`](TRACK_D_D3_INFERENCE_METHOD_AUDIT_001.md)) |
 | D4 | Power / MDE audit | **Complete** ([`TRACK_D_D4_POWER_MDE_AUDIT_001.md`](TRACK_D_D4_POWER_MDE_AUDIT_001.md)) |
-| D5 | OC simulation harness | In progress (001a–e ✅; DESIGN-INVENTORY-001 ✅; readout update ✅) |
+| D5 | OC simulation harness | In progress (001a–e ✅; DESIGN-INVENTORY-001 ✅; readout update ✅; **D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001** ✅) |
 | D6 | Runtime monitoring | Planned |
 | D7 | Promotion / demotion framework | Planned |
 | D8 | Cross-method triangulation | Superseded by **Track E** (governance layer) |

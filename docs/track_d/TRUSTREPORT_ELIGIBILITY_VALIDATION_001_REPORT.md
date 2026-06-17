@@ -52,7 +52,9 @@ Lane A evaluated: SCM+JK, stratified+SCM/JK, DID+bootstrap, multi-cell per-cell,
 
 ## 14. DCM-001 findings
 
-**ELIGIBLE_WITH_RESTRICTIONS.** Null-world coverage ~93%; positive-scenario coverage ~7%. Causal interval TrustReport not supported; null-monitor / research CI only.
+**ELIGIBLE_WITH_RESTRICTIONS.** Null-world coverage ~93%; positive-scenario coverage ~7% on **percent-labeled** D5-STAT-SCM-JK-001 metrics. Causal interval TrustReport not supported; null-monitor / research CI only.
+
+**Remediation (2026-06-17):** [`D5_TRUST_SCM_JK_COVERAGE_REMEDIATION_001_REPORT.md`](D5_TRUST_SCM_JK_COVERAGE_REMEDIATION_001_REPORT.md) — level-scale positive coverage ~94–100%; percent-scale reproduces prior ~7–9%. Primary driver: **semantic scale mismatch**, not JK interval collapse. Verdict: `scm_jk_eligible_as_null_monitor_only`. Reassessment required before any class upgrade. **No authorization change.**
 
 ## 15. DCM-002 findings
 

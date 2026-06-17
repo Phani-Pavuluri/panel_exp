@@ -1156,7 +1156,29 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 
 **Verdict:** TrustReport eligibility evaluator and D5 empirical harness implemented. DCM-001/002/006/008 classified ELIGIBLE_WITH_RESTRICTIONS; DCM-003/007 INELIGIBLE; DCM-004/005 INSUFFICIENT_EVIDENCE. Zero promotion candidates. TrustReport authorization remains BLOCKED.
 
-**Next:** **`TRUSTREPORT_DOWNSTREAM_PROMOTION_001`** (role-specific promotion evidence).
+**Next:** **`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`** (level-consistent DCM-001 re-evaluation); **`D5-TRUST-DID-BOOTSTRAP-COVERAGE-REMEDIATION-001`**.
+
+---
+
+## D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001 (2026-06-17)
+
+**Artifact:** [`docs/track_d/D5_TRUST_SCM_JK_COVERAGE_REMEDIATION_001_REPORT.md`](track_d/D5_TRUST_SCM_JK_COVERAGE_REMEDIATION_001_REPORT.md) · [`panel_exp/validation/track_d_d5_trust_scm_jk_coverage_remediation_001.py`](../panel_exp/validation/track_d_d5_trust_scm_jk_coverage_remediation_001.py) · [`tests/track_d/test_d5_trust_scm_jk_coverage_remediation_001.py`](../tests/track_d/test_d5_trust_scm_jk_coverage_remediation_001.py) · [`docs/track_d/archives/D5_TRUST_SCM_JK_COVERAGE_REMEDIATION_001_summary.json`](track_d/archives/D5_TRUST_SCM_JK_COVERAGE_REMEDIATION_001_summary.json)
+
+**Status:** **`scm_jk_eligible_as_null_monitor_only`**
+
+**Verdict:** Positive-effect undercoverage in eligibility validation explained by percent-vs-level metric mismatch. Level-scale coverage high; percent-scale reproduces ~7–9%. Interval centering not dominant failure; JK wider than LOO empirical spread. Causal-interval TrustReport not supported. Null-monitor/diagnostic classes only. **No TrustReport authorization.**
+
+**Next:** **`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`**; fix D5-STAT-SCM-JK-001 harness metrics in separate artifact.
+
+---
+
+## TRUSTREPORT-ELIGIBILITY-REMEDIATION-PLAN-001 (2026-06-17)
+
+**Artifact:** [`docs/TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md`](TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md)
+
+**Status:** **`trustreport_eligibility_remediation_planned_promotion_blocked`**
+
+**Verdict:** Remediation sequencing plan. D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001 complete. DID-bootstrap and eligibility reassessment remain planned.
 
 ---
 
