@@ -357,7 +357,7 @@ class TestDownstreamAuthorizationBoundary:
         inputs = build_trust_report_decision_inputs_from_bundle(bundle)
         assert any(DOWNSTREAM_READOUT_NOT_AUTHORIZED in w for w in inputs.extraction_warnings)
 
-    def test_governed_marker_suppresses_downstream_warning(self) -> None:
+    def test_governed_marker_hint_does_not_authorize_trust_report(self) -> None:
         from panel_exp.validation.estimator_readout_adapter_001 import GOVERNED_READOUT_MARKER
         from panel_exp.track_b.readout_evidence_wiring import (
             DOWNSTREAM_READOUT_NOT_AUTHORIZED,
@@ -372,7 +372,10 @@ class TestDownstreamAuthorizationBoundary:
             }
         }
         inputs = build_trust_report_decision_inputs_from_bundle(bundle)
-        assert not any(DOWNSTREAM_READOUT_NOT_AUTHORIZED in w for w in inputs.extraction_warnings)
+        assert any(DOWNSTREAM_READOUT_NOT_AUTHORIZED in w for w in inputs.extraction_warnings)
+        assert inputs.trust_report_ready is False
+        assert inputs.downstream_authorization is not None
+        assert inputs.downstream_authorization["authorized"] is False
 
 
 class TestDesignTimeEnforcementIntact:

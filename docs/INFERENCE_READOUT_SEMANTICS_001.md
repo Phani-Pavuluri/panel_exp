@@ -432,6 +432,6 @@ All current D5 **`forbidden_flags`** remain **false** until separate artifacts e
 
 ---
 
-**Estimator readout integration (2026-06-18):** Governed estimator readouts exist via [`ESTIMATOR_READOUT_GUARDRAIL_INTEGRATION_001.md`](ESTIMATOR_READOUT_GUARDRAIL_INTEGRATION_001.md). Native `run_analysis()` dicts are **not** governed readouts and must not be interpreted as TrustReport/CalibrationSignal/MMM/LLM authorization.
+**Estimator readout integration (2026-06-18):** Governed estimator readouts exist via [`ESTIMATOR_READOUT_GUARDRAIL_INTEGRATION_001.md`](ESTIMATOR_READOUT_GUARDRAIL_INTEGRATION_001.md). Native `run_analysis()` dicts are **not** governed readouts. Downstream authorization gateway ([`DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md`](DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md)) blocks TrustReport/CalibrationSignal/MMM/LLM/production roles.
 
 *INFERENCE-READOUT-SEMANTICS-001 v1.0.0 — Accepted; geometry bridge complete; next = DESIGN_OUTPUT_CONTRACT_001.*

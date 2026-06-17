@@ -99,4 +99,4 @@ No `force=True`, `override_guardrail`, or `bypass_guardrail` APIs. Downstream ro
 
 **Verdict:** `design_guardrail_enforcement_implemented_no_downstream_promotion`
 
-All downstream authorization remains false. Next: wire enforcement into estimator readout producers when those paths gain identity metadata.
+All downstream authorization remains false. Downstream authorization gateway implemented ([`DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md`](DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md)); all production-facing roles BLOCKED.

@@ -71,6 +71,8 @@ class TrustReportDecisionInputs:
     allow_sensitivity_in_comparison: bool = False
     mmm_status: str = MMM_DEFAULT_STATUS
     extraction_warnings: Tuple[str, ...] = ()
+    downstream_authorization: Mapping[str, Any] | None = None
+    trust_report_ready: bool = False
 
 
 @dataclass(frozen=True)

@@ -7,7 +7,7 @@ Downstream roles (TrustReport, CalibrationSignal, MMM, LLM, production) always f
 
 **Supersedes design-time gap:** `combination_status=not_evaluated` → concrete DCM status at readout boundary via `build_guarded_readout()`.
 
-**Extended by:** `ESTIMATOR-READOUT-GUARDRAIL-INTEGRATION-001` — governed adapter available; `run_analysis()` is native/internal only until `DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001`.
+**Extended by:** `ESTIMATOR-READOUT-GUARDRAIL-INTEGRATION-001` — governed adapter available; `run_analysis()` is native/internal only. `DOWNSTREAM-READOUT-AUTHORIZATION-GATEWAY-001` implemented — all production downstream roles BLOCKED ([`DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md`](DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md)).
 
 ## Summary
 
