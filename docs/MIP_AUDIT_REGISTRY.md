@@ -621,7 +621,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** D5-STAT queue through **`D5-STAT-MCELL-PERCELL-001`** complete.
 
-**Next planning/enhancement:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`**. Multi-cell: [`D5_DES_STAT_MULTICELL_001_REPORT.md`](track_d/D5_DES_STAT_MULTICELL_001_REPORT.md) (**Executed**).
+**Next planning/enhancement:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`**. Stratified: [`D5_DES_STAT_STRATIFIED_001_REPORT.md`](track_d/D5_DES_STAT_STRATIFIED_001_REPORT.md) (**Executed**). Multi-cell: [`D5_DES_STAT_MULTICELL_001_REPORT.md`](track_d/D5_DES_STAT_MULTICELL_001_REPORT.md) (**Executed**).
 
 ---
 
@@ -669,7 +669,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** Future TROP audit sequence; does not change immediate enhancement queue.
 
-**Program next (unchanged):** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** (design-side).
+**Program next (unchanged):** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** (design-side; tier-1 recharacterization pending).
 
 ---
 
@@ -685,7 +685,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `DESIGN_OUTPUT_CONTRACT_001` ✅ → `DESIGN_CODE_INVENTORY_001` ✅ → `DESIGN_LITERATURE_ALIGNMENT_001` ✅ → `DESIGN_IMPLEMENTATION_VALIDATION_001` ✅ → statistical protocol → combination matrix → guardrails → design suitability.
 
-**Immediate next:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** (multi-cell ✅).
+**Immediate next:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** (stratified ✅ · multi-cell ✅).
 
 ---
 
@@ -701,7 +701,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** ✅ `DESIGN_CODE_INVENTORY_001` → design validation ladder → combination matrix v2 → experiment planning (deferred).
 
-**Next:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** (multi-cell ✅).
+**Next:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** (stratified ✅ · multi-cell ✅).
 
 ---
 
@@ -989,7 +989,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `D5-DES-STAT-TIER1-001` → experiment planning filters.
 
-**Next:** **`D5-DES-STAT-STRATIFIED-001`** (greedy feasibility ✅ [`D5_DES_STAT_GREEDY_FEASIBILITY_001_REPORT.md`](track_d/D5_DES_STAT_GREEDY_FEASIBILITY_001_REPORT.md)).
+**Next:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** (stratified ✅ · multi-cell ✅).
 
 ---
 
@@ -1005,7 +1005,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** combination matrix evidence · suitability characterization · method-specific follow-ons.
 
-**Next:** ✅ **`D5-DES-STAT-GREEDY-FEASIBILITY-001`** · follow-on = **`D5-DES-STAT-STRATIFIED-001`**.
+**Next:** ✅ **`D5-DES-STAT-STRATIFIED-001`** · follow-on = **`D5-DES-STAT-MULTICELL-001`**.
 
 ---
 
@@ -1039,6 +1039,24 @@ poetry run python -m panel_exp.validation.track_d_d5_des_stat_multicell_001 \
 **Verdict:** DES-011 multi-cell characterized across 6 policies × 18 worlds; explicit shared-control metadata; cell collisions 0; pooled claims blocked. 17,280 runs. **No promotion.**
 
 **Next:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`**.
+
+---
+
+## D5-DES-STAT-STRATIFIED-001 (2026-06-16)
+
+**Artifact:** [`docs/track_d/D5_DES_STAT_STRATIFIED_001_REPORT.md`](track_d/D5_DES_STAT_STRATIFIED_001_REPORT.md) · [`panel_exp/design/stratified_feasibility.py`](../panel_exp/design/stratified_feasibility.py)
+
+**Archive:** Full run-level archive is generated locally and intentionally not committed due to size. Generation command:
+
+```bash
+poetry run python -m panel_exp.validation.track_d_d5_des_stat_stratified_001 --overwrite
+```
+
+**Status:** **`stratified_feasibility_fixed_requires_statistical_followup`**
+
+**Verdict:** Root cause = singleton strata + volume-gap (non-Bernoulli) within-stratum assignment. Fix = `adaptive_strata` + Bernoulli within strata. 57,600 runs; legacy high-SMD blocks 7,214 → fixed 1,319. **No promotion.**
+
+**Next:** **`D5-DES-STAT-MULTICELL-001`**.
 
 ---
 

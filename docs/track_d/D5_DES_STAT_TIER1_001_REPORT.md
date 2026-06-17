@@ -132,7 +132,10 @@ Follow method-specific artifacts based on blocking failures (greedy feasibility,
 ## 25. Follow-up artifacts
 
 - ✅ [`D5-DES-STAT-GREEDY-FEASIBILITY-001`](D5_DES_STAT_GREEDY_FEASIBILITY_001_REPORT.md) — executed; control-reservation fix; verdict `greedy_feasibility_fixed_requires_statistical_followup`
+- ✅ [`D5-DES-STAT-STRATIFIED-001`](D5_DES_STAT_STRATIFIED_001_REPORT.md) — executed; adaptive strata fix; verdict `stratified_feasibility_fixed_requires_statistical_followup`
 - ✅ [`D5-DES-STAT-MULTICELL-001`](D5_DES_STAT_MULTICELL_001_REPORT.md) — executed; per-cell metadata; pooled blocked
+
+> **Historical note:** Corrected-default comparisons for DES-001, DES-004, and DES-011 in this report reflect **legacy implementations** at tier-1 execution time. Follow-on feasibility fixes are characterized in the artifacts above; tier-1 recharacterization is pending.
 
 ## 26. Governance verdict
 

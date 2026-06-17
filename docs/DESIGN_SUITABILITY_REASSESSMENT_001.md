@@ -160,7 +160,7 @@ A design may pass layers 1–3 while failing 4–8. **No layer implies the next.
 | **DES-001** `greedy_match_markets` | ✅ tier-1 path via `geo_runner` | Expected `contract_valid` when universal fields populated | Expected `WARN` + `D-GUARDRAIL-REQUIRES-STATISTICAL-VALIDATION` | ✅ tier-1 + ✅ feasibility fix (`control_reservation`) | `metadata_valid_feasibility_improved_statistically_unvalidated` · `eligible_for_next_validation_stage` |
 | **DES-002** `CompleteRandomization` | ✅ emitted | ✅ `contract_valid` (golden fixture) | `WARN` | ❌ not executed | `metadata_valid_guardrail_warn` · `statistical_validation_required` |
 | **DES-003** `BalancedRandomization` | ✅ emitted | ✅ `contract_valid` (golden fixture) | `WARN` | ❌ not executed | `metadata_valid_guardrail_warn` · `statistical_validation_required` |
-| **DES-004** `StratifiedRandomization` | ✅ emitted | ✅ `contract_valid` **when stratum metadata present** (golden fixture); `contract_blocked` if `stratum_ids` missing | `WARN` or `BLOCK` | ❌ not executed | `metadata_valid_guardrail_warn` (with strata) · `contract_blocked` (without) |
+| **DES-004** `StratifiedRandomization` | ✅ emitted | ✅ `contract_valid` **when stratum metadata present** | `WARN` or `BLOCK` | ✅ tier-1 + ✅ stratified fix (`adaptive_strata`) | `metadata_valid_feasibility_improved_statistically_unvalidated` |
 | **DES-006** `Rerandomization` | ✅ emitted (wrapper) | ✅ `contract_valid` **when wrapper/base identity preserved** (golden fixture) | `WARN` | ❌ not executed | `metadata_valid_guardrail_warn` · `statistical_validation_required` |
 | **DES-011** `multi_test_groups` | ✅ emitted | ✅ metadata when `last_multicell_metadata` present | `BLOCK` | ✅ **`D5-DES-STAT-MULTICELL-001`** | `metadata_valid_per_cell_only_pooled_blocked` · pooled claims blocked |
 
@@ -390,7 +390,7 @@ Do **not** default to another generic infrastructure artifact unless a concrete 
 | Golden fixtures | ✅ |
 | Guardrail runtime | ✅ |
 | **Suitability reassessment** | ✅ **This artifact** |
-| **Next default** | **`D5-DES-STAT-STRATIFIED-001`** (after greedy feasibility fix ✅) |
+| **Next default** | **`D5-DES-STAT-MULTICELL-001`** (after stratified fix ✅) |
 
 ---
 

@@ -580,9 +580,11 @@ Protocol marks **bridge-required** transitions as `blocked_until_geometry_bridge
 
 **Next follow-on:** ✅ **`D5-DES-STAT-GREEDY-FEASIBILITY-001`** executed — [`D5_DES_STAT_GREEDY_FEASIBILITY_001_REPORT.md`](track_d/D5_DES_STAT_GREEDY_FEASIBILITY_001_REPORT.md). Verdict: `greedy_feasibility_fixed_requires_statistical_followup`. **No promotion.**
 
+**Next:** ✅ **`D5-DES-STAT-STRATIFIED-001`** executed — [`D5_DES_STAT_STRATIFIED_001_REPORT.md`](track_d/D5_DES_STAT_STRATIFIED_001_REPORT.md). Verdict: `stratified_feasibility_fixed_requires_statistical_followup`. **No promotion.**
+
 **Next:** ✅ **`D5-DES-STAT-MULTICELL-001`** executed — [`D5_DES_STAT_MULTICELL_001_REPORT.md`](track_d/D5_DES_STAT_MULTICELL_001_REPORT.md). Verdict: `multicell_per_cell_only_pooled_claims_blocked`. **No promotion.**
 
-**Next:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** · adapter lanes · block/pair/trim follow-ons.
+**Next:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** · tier-1 recharacterization · adapter lanes · block/pair/trim follow-ons.
 
 ---
 
