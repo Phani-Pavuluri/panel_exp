@@ -1,0 +1,1188 @@
+{
+  "artifact_id": "DESIGN-COMBINATION-VALIDATION-EXECUTION-001",
+  "artifact_version": "001",
+  "generated_at": "2026-06-17T00:52:59.935771+00:00",
+  "git_commit": "6cb957c26234a61ed3ba01c0733081a8ea04a78c",
+  "config": {
+    "fast": false,
+    "train_length": 30,
+    "test_length": 10,
+    "provisional_thresholds": {
+      "coverage_deviation_max": 0.15,
+      "type_i_error_tolerance": 0.1,
+      "rmse_degradation_ratio_max": 2.0,
+      "failure_rate_max": 0.35,
+      "min_control_units": 3,
+      "interval_width_inflation_max": 3.0,
+      "note": "provisional_for_characterization_only"
+    },
+    "baseline_design": "complete_randomization",
+    "design_baseline_artifact": "D5-DES-STAT-TIER1-RECHARACTERIZATION-001",
+    "legacy_tier1_not_default": true
+  },
+  "matrix_rows": [
+    {
+      "combination_id": "DCM-001",
+      "design_scope": "tier-1 corrected (DES-001\u2013006)",
+      "geometry": "unit_panel_single_cell",
+      "estimator_inference": "SCM + UnitJackknife",
+      "matrix_status_prior": "restricted_requires_contract_fields",
+      "execution_lane": "A"
+    },
+    {
+      "combination_id": "DCM-002",
+      "design_scope": "tier-1 corrected",
+      "geometry": "unit_panel_single_cell",
+      "estimator_inference": "AugSynth point-only",
+      "matrix_status_prior": "restricted_requires_contract_fields",
+      "execution_lane": "A"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_scope": "tier-1 corrected",
+      "geometry": "aggregate_two_row",
+      "estimator_inference": "TBR aggregate point",
+      "matrix_status_prior": "blocked_due_to_geometry_mismatch",
+      "execution_lane": "B"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_scope": "tier-1 corrected",
+      "geometry": "unit_panel_single_cell",
+      "estimator_inference": "DID bootstrap",
+      "matrix_status_prior": "blocked_due_to_geometry_mismatch",
+      "execution_lane": "B"
+    },
+    {
+      "combination_id": "DCM-005",
+      "design_scope": "tier-1 corrected",
+      "geometry": "unit_panel_single_cell",
+      "estimator_inference": "TBRRidge KFold/BRB",
+      "matrix_status_prior": "restricted_requires_statistical_validation",
+      "execution_lane": "A",
+      "optional_dep": true
+    },
+    {
+      "combination_id": "DCM-006",
+      "design_scope": "DES-011 multicell corrected",
+      "geometry": "multi_cell_per_cell",
+      "estimator_inference": "MCELL per-cell SCM-JK",
+      "matrix_status_prior": "restricted_requires_statistical_validation",
+      "execution_lane": "D"
+    },
+    {
+      "combination_id": "DCM-007",
+      "design_scope": "DES-011 multicell",
+      "geometry": "pooled_multi_cell",
+      "estimator_inference": "Pooled SCM-JK / lift",
+      "matrix_status_prior": "blocked_for_pooled_claim",
+      "execution_lane": "D"
+    },
+    {
+      "combination_id": "DCM-008",
+      "design_scope": "DES-004 stratified corrected",
+      "geometry": "unit_panel_single_cell",
+      "estimator_inference": "SCM-JK (stratified lane)",
+      "matrix_status_prior": "restricted_requires_contract_fields",
+      "execution_lane": "A",
+      "design_filter": "stratified_corrected"
+    },
+    {
+      "combination_id": "DCM-009",
+      "design_scope": "QuickBlock / MatchedPair",
+      "geometry": "unit_panel_single_cell",
+      "estimator_inference": "Block-aware inference",
+      "matrix_status_prior": "adapter_required",
+      "execution_lane": "E"
+    },
+    {
+      "combination_id": "DCM-010",
+      "design_scope": "QuickBlock / MatchedPair",
+      "geometry": "unit_panel_single_cell",
+      "estimator_inference": "Unadjusted bootstrap",
+      "matrix_status_prior": "blocked_due_to_readout_mismatch",
+      "execution_lane": "E"
+    },
+    {
+      "combination_id": "DCM-011",
+      "design_scope": "DES-009 TrimmedMatch",
+      "geometry": "trimmed_geometry",
+      "estimator_inference": "Trimmed-scope readout",
+      "matrix_status_prior": "bridge_required",
+      "execution_lane": "E"
+    },
+    {
+      "combination_id": "DCM-012",
+      "design_scope": "DES-009 TrimmedMatch",
+      "geometry": "unit_panel_single_cell",
+      "estimator_inference": "Full-population SCM-JK",
+      "matrix_status_prior": "bridge_required",
+      "execution_lane": "E"
+    },
+    {
+      "combination_id": "DCM-013",
+      "design_scope": "DES-010 Supergeo",
+      "geometry": "supergeo",
+      "estimator_inference": "Supergeo-scope readout",
+      "matrix_status_prior": "bridge_required",
+      "execution_lane": "E"
+    },
+    {
+      "combination_id": "DCM-014",
+      "design_scope": "DES-010 Supergeo",
+      "geometry": "unit_panel_single_cell",
+      "estimator_inference": "Original-geo SCM-JK",
+      "matrix_status_prior": "blocked_due_to_geometry_mismatch",
+      "execution_lane": "E"
+    },
+    {
+      "combination_id": "DCM-015",
+      "design_scope": "DES-014 Power/MDE",
+      "geometry": "planning",
+      "estimator_inference": "Experiment planning rank",
+      "matrix_status_prior": "restricted_requires_contract_fields",
+      "execution_lane": "E",
+      "planning_only": true
+    },
+    {
+      "combination_id": "DCM-016",
+      "design_scope": "DES-005 Thinning",
+      "geometry": "unit_panel_single_cell",
+      "estimator_inference": "SCM-JK",
+      "matrix_status_prior": "blocked_due_to_implementation_ambiguity",
+      "execution_lane": "E"
+    },
+    {
+      "combination_id": "DCM-017",
+      "design_scope": "Bayesian future",
+      "geometry": "TBD",
+      "estimator_inference": "Posterior readout",
+      "matrix_status_prior": "not_evaluated",
+      "execution_lane": "E"
+    },
+    {
+      "combination_id": "DCM-018",
+      "design_scope": "TROP future",
+      "geometry": "TBD",
+      "estimator_inference": "Triply robust",
+      "matrix_status_prior": "not_evaluated",
+      "execution_lane": "E"
+    },
+    {
+      "combination_id": "DCM-019",
+      "design_scope": "SARIMAX future",
+      "geometry": "time_series_operator_geometry",
+      "estimator_inference": "Forecast interval",
+      "matrix_status_prior": "blocked_due_to_readout_mismatch",
+      "execution_lane": "E"
+    }
+  ],
+  "designs": [
+    "greedy_corrected",
+    "complete_randomization",
+    "balanced_randomization",
+    "stratified_corrected",
+    "rerandomization"
+  ],
+  "estimators": [
+    "SCM+UnitJackknife",
+    "AugSynth point-only",
+    "TBR aggregate",
+    "DID bootstrap"
+  ],
+  "inference_paths": [
+    "UnitJackknife",
+    "point_only",
+    "bootstrap",
+    "blocked_geometry"
+  ],
+  "worlds": [
+    "balanced_markets",
+    "weak_donor_pool",
+    "high_unit_heterogeneity",
+    "small_n_markets",
+    "high_pre_period_noise",
+    "strong_seasonality",
+    "trend_mismatch",
+    "sparse_outcomes",
+    "spend_imbalance",
+    "geographic_cluster_correlation",
+    "assignment_infeasibility",
+    "missing_covariates",
+    "outlier_markets",
+    "unstable_pre_period",
+    "matched_market_poor_match_world",
+    "rerandomization_selection_effect_world",
+    "stratification_poor_strata_world",
+    "treatment_pool_exhaustion_world"
+  ],
+  "run_counts": {
+    "total_records": 1680,
+    "elapsed_seconds": 57.258,
+    "fast_mode": false,
+    "worlds": [
+      "balanced_markets",
+      "weak_donor_pool",
+      "high_unit_heterogeneity",
+      "small_n_markets",
+      "high_pre_period_noise",
+      "strong_seasonality",
+      "trend_mismatch",
+      "sparse_outcomes",
+      "spend_imbalance",
+      "geographic_cluster_correlation",
+      "assignment_infeasibility",
+      "missing_covariates",
+      "outlier_markets",
+      "unstable_pre_period",
+      "matched_market_poor_match_world",
+      "rerandomization_selection_effect_world",
+      "stratification_poor_strata_world",
+      "treatment_pool_exhaustion_world"
+    ],
+    "seeds": [
+      101,
+      202
+    ],
+    "replicates": 2,
+    "percent_effects": [
+      0.0,
+      0.08
+    ]
+  },
+  "aggregate_results": {
+    "DCM-001": {
+      "n_records": 720,
+      "n_mechanical_success": 670,
+      "n_blocked": 0,
+      "failure_rate": 0.0694,
+      "observed_statuses": [
+        "characterized_with_restrictions",
+        "empirically_blocked"
+      ],
+      "matrix_status_prior": "restricted_requires_contract_fields",
+      "execution_lane": "A"
+    },
+    "DCM-002": {
+      "n_records": 720,
+      "n_mechanical_success": 670,
+      "n_blocked": 0,
+      "failure_rate": 0.0694,
+      "observed_statuses": [
+        "compatible_point_only",
+        "empirically_blocked"
+      ],
+      "matrix_status_prior": "restricted_requires_contract_fields",
+      "execution_lane": "A"
+    },
+    "DCM-003": {
+      "n_records": 24,
+      "n_mechanical_success": 0,
+      "n_blocked": 24,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "blocked_due_to_geometry_mismatch"
+      ],
+      "matrix_status_prior": "blocked_due_to_geometry_mismatch",
+      "execution_lane": "B"
+    },
+    "DCM-004": {
+      "n_records": 24,
+      "n_mechanical_success": 24,
+      "n_blocked": 0,
+      "failure_rate": 0.0,
+      "observed_statuses": [
+        "characterized_with_restrictions"
+      ],
+      "matrix_status_prior": "blocked_due_to_geometry_mismatch",
+      "execution_lane": "B"
+    },
+    "DCM-006": {
+      "n_records": 16,
+      "n_mechanical_success": 0,
+      "n_blocked": 0,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "compatible_per_cell_only"
+      ],
+      "matrix_status_prior": "restricted_requires_statistical_validation",
+      "execution_lane": "D"
+    },
+    "DCM-007": {
+      "n_records": 16,
+      "n_mechanical_success": 0,
+      "n_blocked": 16,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "blocked_for_pooled_claim"
+      ],
+      "matrix_status_prior": "blocked_for_pooled_claim",
+      "execution_lane": "D"
+    },
+    "DCM-008": {
+      "n_records": 144,
+      "n_mechanical_success": 136,
+      "n_blocked": 0,
+      "failure_rate": 0.0556,
+      "observed_statuses": [
+        "characterized_with_restrictions",
+        "empirically_blocked"
+      ],
+      "matrix_status_prior": "restricted_requires_contract_fields",
+      "execution_lane": "A"
+    },
+    "DCM-009": {
+      "n_records": 1,
+      "n_mechanical_success": 0,
+      "n_blocked": 0,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "adapter_required"
+      ],
+      "matrix_status_prior": "adapter_required",
+      "execution_lane": "E"
+    },
+    "DCM-010": {
+      "n_records": 1,
+      "n_mechanical_success": 0,
+      "n_blocked": 1,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "blocked_due_to_readout_mismatch"
+      ],
+      "matrix_status_prior": "blocked_due_to_readout_mismatch",
+      "execution_lane": "E"
+    },
+    "DCM-011": {
+      "n_records": 1,
+      "n_mechanical_success": 0,
+      "n_blocked": 0,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "bridge_required"
+      ],
+      "matrix_status_prior": "bridge_required",
+      "execution_lane": "E"
+    },
+    "DCM-012": {
+      "n_records": 1,
+      "n_mechanical_success": 0,
+      "n_blocked": 0,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "bridge_required"
+      ],
+      "matrix_status_prior": "bridge_required",
+      "execution_lane": "E"
+    },
+    "DCM-013": {
+      "n_records": 1,
+      "n_mechanical_success": 0,
+      "n_blocked": 0,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "bridge_required"
+      ],
+      "matrix_status_prior": "bridge_required",
+      "execution_lane": "E"
+    },
+    "DCM-014": {
+      "n_records": 1,
+      "n_mechanical_success": 0,
+      "n_blocked": 1,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "blocked_due_to_geometry_mismatch"
+      ],
+      "matrix_status_prior": "blocked_due_to_geometry_mismatch",
+      "execution_lane": "E"
+    },
+    "DCM-015": {
+      "n_records": 1,
+      "n_mechanical_success": 0,
+      "n_blocked": 0,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "restricted_requires_contract_fields"
+      ],
+      "matrix_status_prior": "restricted_requires_contract_fields",
+      "execution_lane": "E"
+    },
+    "DCM-016": {
+      "n_records": 1,
+      "n_mechanical_success": 0,
+      "n_blocked": 1,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "blocked_due_to_implementation_ambiguity"
+      ],
+      "matrix_status_prior": "blocked_due_to_implementation_ambiguity",
+      "execution_lane": "E"
+    },
+    "DCM-017": {
+      "n_records": 1,
+      "n_mechanical_success": 0,
+      "n_blocked": 0,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "not_evaluated"
+      ],
+      "matrix_status_prior": "not_evaluated",
+      "execution_lane": "E"
+    },
+    "DCM-018": {
+      "n_records": 1,
+      "n_mechanical_success": 0,
+      "n_blocked": 0,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "not_evaluated"
+      ],
+      "matrix_status_prior": "not_evaluated",
+      "execution_lane": "E"
+    },
+    "DCM-019": {
+      "n_records": 1,
+      "n_mechanical_success": 0,
+      "n_blocked": 1,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "blocked_due_to_readout_mismatch"
+      ],
+      "matrix_status_prior": "blocked_due_to_readout_mismatch",
+      "execution_lane": "E"
+    }
+  },
+  "combination_results": {
+    "DCM-001": {
+      "n_records": 720,
+      "n_mechanical_success": 670,
+      "n_blocked": 0,
+      "failure_rate": 0.0694,
+      "observed_statuses": [
+        "characterized_with_restrictions",
+        "empirically_blocked"
+      ],
+      "matrix_status_prior": "restricted_requires_contract_fields",
+      "execution_lane": "A"
+    },
+    "DCM-002": {
+      "n_records": 720,
+      "n_mechanical_success": 670,
+      "n_blocked": 0,
+      "failure_rate": 0.0694,
+      "observed_statuses": [
+        "compatible_point_only",
+        "empirically_blocked"
+      ],
+      "matrix_status_prior": "restricted_requires_contract_fields",
+      "execution_lane": "A"
+    },
+    "DCM-003": {
+      "n_records": 24,
+      "n_mechanical_success": 0,
+      "n_blocked": 24,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "blocked_due_to_geometry_mismatch"
+      ],
+      "matrix_status_prior": "blocked_due_to_geometry_mismatch",
+      "execution_lane": "B"
+    },
+    "DCM-004": {
+      "n_records": 24,
+      "n_mechanical_success": 24,
+      "n_blocked": 0,
+      "failure_rate": 0.0,
+      "observed_statuses": [
+        "characterized_with_restrictions"
+      ],
+      "matrix_status_prior": "blocked_due_to_geometry_mismatch",
+      "execution_lane": "B"
+    },
+    "DCM-006": {
+      "n_records": 16,
+      "n_mechanical_success": 0,
+      "n_blocked": 0,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "compatible_per_cell_only"
+      ],
+      "matrix_status_prior": "restricted_requires_statistical_validation",
+      "execution_lane": "D"
+    },
+    "DCM-007": {
+      "n_records": 16,
+      "n_mechanical_success": 0,
+      "n_blocked": 16,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "blocked_for_pooled_claim"
+      ],
+      "matrix_status_prior": "blocked_for_pooled_claim",
+      "execution_lane": "D"
+    },
+    "DCM-008": {
+      "n_records": 144,
+      "n_mechanical_success": 136,
+      "n_blocked": 0,
+      "failure_rate": 0.0556,
+      "observed_statuses": [
+        "characterized_with_restrictions",
+        "empirically_blocked"
+      ],
+      "matrix_status_prior": "restricted_requires_contract_fields",
+      "execution_lane": "A"
+    },
+    "DCM-009": {
+      "n_records": 1,
+      "n_mechanical_success": 0,
+      "n_blocked": 0,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "adapter_required"
+      ],
+      "matrix_status_prior": "adapter_required",
+      "execution_lane": "E"
+    },
+    "DCM-010": {
+      "n_records": 1,
+      "n_mechanical_success": 0,
+      "n_blocked": 1,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "blocked_due_to_readout_mismatch"
+      ],
+      "matrix_status_prior": "blocked_due_to_readout_mismatch",
+      "execution_lane": "E"
+    },
+    "DCM-011": {
+      "n_records": 1,
+      "n_mechanical_success": 0,
+      "n_blocked": 0,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "bridge_required"
+      ],
+      "matrix_status_prior": "bridge_required",
+      "execution_lane": "E"
+    },
+    "DCM-012": {
+      "n_records": 1,
+      "n_mechanical_success": 0,
+      "n_blocked": 0,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "bridge_required"
+      ],
+      "matrix_status_prior": "bridge_required",
+      "execution_lane": "E"
+    },
+    "DCM-013": {
+      "n_records": 1,
+      "n_mechanical_success": 0,
+      "n_blocked": 0,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "bridge_required"
+      ],
+      "matrix_status_prior": "bridge_required",
+      "execution_lane": "E"
+    },
+    "DCM-014": {
+      "n_records": 1,
+      "n_mechanical_success": 0,
+      "n_blocked": 1,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "blocked_due_to_geometry_mismatch"
+      ],
+      "matrix_status_prior": "blocked_due_to_geometry_mismatch",
+      "execution_lane": "E"
+    },
+    "DCM-015": {
+      "n_records": 1,
+      "n_mechanical_success": 0,
+      "n_blocked": 0,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "restricted_requires_contract_fields"
+      ],
+      "matrix_status_prior": "restricted_requires_contract_fields",
+      "execution_lane": "E"
+    },
+    "DCM-016": {
+      "n_records": 1,
+      "n_mechanical_success": 0,
+      "n_blocked": 1,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "blocked_due_to_implementation_ambiguity"
+      ],
+      "matrix_status_prior": "blocked_due_to_implementation_ambiguity",
+      "execution_lane": "E"
+    },
+    "DCM-017": {
+      "n_records": 1,
+      "n_mechanical_success": 0,
+      "n_blocked": 0,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "not_evaluated"
+      ],
+      "matrix_status_prior": "not_evaluated",
+      "execution_lane": "E"
+    },
+    "DCM-018": {
+      "n_records": 1,
+      "n_mechanical_success": 0,
+      "n_blocked": 0,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "not_evaluated"
+      ],
+      "matrix_status_prior": "not_evaluated",
+      "execution_lane": "E"
+    },
+    "DCM-019": {
+      "n_records": 1,
+      "n_mechanical_success": 0,
+      "n_blocked": 1,
+      "failure_rate": 1.0,
+      "observed_statuses": [
+        "blocked_due_to_readout_mismatch"
+      ],
+      "matrix_status_prior": "blocked_due_to_readout_mismatch",
+      "execution_lane": "E"
+    }
+  },
+  "geometry_results": [
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "balanced_markets",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "balanced_markets",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "balanced_markets",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "balanced_markets",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "balanced_markets",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "balanced_markets",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "balanced_markets",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "balanced_markets",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "weak_donor_pool",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "weak_donor_pool",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "weak_donor_pool",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "weak_donor_pool",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "weak_donor_pool",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "weak_donor_pool",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "weak_donor_pool",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "weak_donor_pool",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "high_unit_heterogeneity",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "high_unit_heterogeneity",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "high_unit_heterogeneity",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "high_unit_heterogeneity",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "high_unit_heterogeneity",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "high_unit_heterogeneity",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "high_unit_heterogeneity",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "high_unit_heterogeneity",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "small_n_markets",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "small_n_markets",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "small_n_markets",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "small_n_markets",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "small_n_markets",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "small_n_markets",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "small_n_markets",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "small_n_markets",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "high_pre_period_noise",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "high_pre_period_noise",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "high_pre_period_noise",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "high_pre_period_noise",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "high_pre_period_noise",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "high_pre_period_noise",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "high_pre_period_noise",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "high_pre_period_noise",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "strong_seasonality",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "strong_seasonality",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "strong_seasonality",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "strong_seasonality",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "strong_seasonality",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "strong_seasonality",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-003",
+      "design_label": "complete_randomization",
+      "world_id": "strong_seasonality",
+      "combination_status": "blocked_due_to_geometry_mismatch",
+      "geometry_id": "unit_panel_single_cell"
+    },
+    {
+      "combination_id": "DCM-004",
+      "design_label": "complete_randomization",
+      "world_id": "strong_seasonality",
+      "combination_status": "characterized_with_restrictions",
+      "geometry_id": "unit_panel_single_cell"
+    }
+  ],
+  "readout_results": [
+    {
+      "case_id": "readout_point_as_interval",
+      "readout_semantics": "point_only",
+      "claim_type": "causal_interval",
+      "observed_status": "blocked_due_to_readout_mismatch",
+      "expected_status": "blocked_due_to_readout_mismatch",
+      "block_enforced": true,
+      "reason_codes": [
+        "point_only_cannot_authorize_uncertainty"
+      ],
+      "lane": "C"
+    },
+    {
+      "case_id": "readout_forecast_as_causal",
+      "readout_semantics": "forecast_interval",
+      "claim_type": "causal_interval",
+      "observed_status": "blocked_due_to_readout_mismatch",
+      "expected_status": "blocked_due_to_readout_mismatch",
+      "block_enforced": true,
+      "reason_codes": [
+        "forecast_interval_not_causal"
+      ],
+      "lane": "C"
+    },
+    {
+      "case_id": "readout_directional_as_significance",
+      "readout_semantics": "directional_sign",
+      "claim_type": "significance_test",
+      "observed_status": "blocked_due_to_readout_mismatch",
+      "expected_status": "blocked_due_to_readout_mismatch",
+      "block_enforced": true,
+      "reason_codes": [
+        "directional_sign_not_significance"
+      ],
+      "lane": "C"
+    },
+    {
+      "case_id": "readout_null_monitor_as_causal",
+      "readout_semantics": "null_monitor",
+      "claim_type": "causal_inference",
+      "observed_status": "blocked_due_to_readout_mismatch",
+      "expected_status": "blocked_due_to_readout_mismatch",
+      "block_enforced": true,
+      "reason_codes": [
+        "null_monitor_not_causal"
+      ],
+      "lane": "C"
+    },
+    {
+      "case_id": "pooled_multicell_causal_claim",
+      "readout_semantics": "causal_interval",
+      "claim_type": "pooled_multicell_causal",
+      "observed_status": "blocked_for_pooled_claim",
+      "expected_status": "blocked_for_pooled_claim",
+      "block_enforced": true,
+      "reason_codes": [
+        "pooled_multicell_blocked"
+      ],
+      "lane": "C"
+    }
+  ],
+  "pairwise_comparisons": [
+    {
+      "comparison": "complete_randomization_vs_balanced_randomization",
+      "estimator": "SCM+UnitJackknife",
+      "paired_worlds": 126,
+      "mean_absolute_error_delta": 837.4635752820834,
+      "median_absolute_error_delta": 0.8900876651122601
+    },
+    {
+      "comparison": "complete_randomization_vs_greedy_corrected",
+      "estimator": "SCM+UnitJackknife",
+      "paired_worlds": 136,
+      "mean_absolute_error_delta": -131.398008710746,
+      "median_absolute_error_delta": 0.21683458563544467
+    },
+    {
+      "comparison": "complete_randomization_vs_rerandomization",
+      "estimator": "SCM+UnitJackknife",
+      "paired_worlds": 136,
+      "mean_absolute_error_delta": 0.0,
+      "median_absolute_error_delta": 0.0
+    },
+    {
+      "comparison": "complete_randomization_vs_stratified_corrected",
+      "estimator": "SCM+UnitJackknife",
+      "paired_worlds": 272,
+      "mean_absolute_error_delta": -18.77809434048267,
+      "median_absolute_error_delta": -0.29529271093810733
+    }
+  ],
+  "failure_summary": {
+    "n_failed_or_blocked": 152,
+    "reason_code_counts": {
+      "design_assignment_failed": 88,
+      "ValueError": 88,
+      "panel_build_failed": 20,
+      "unit_panel_not_aggregate_two_row": 24,
+      "pooled_multicell_blocked": 16,
+      "prerequisite_not_met_lane_e_classification_only": 4
+    },
+    "preserved_failed_runs": true
+  },
+  "reason_code_summary": {
+    "design_assignment_failed": 88,
+    "ValueError": 88,
+    "panel_build_failed": 20,
+    "unit_panel_not_aggregate_two_row": 24,
+    "pooled_multicell_blocked": 16,
+    "prerequisite_not_met_lane_e_classification_only": 4
+  },
+  "contract_guardrail_summary": {
+    "contract_fields_evaluated": true,
+    "downstream_authorization": false
+  },
+  "multicell_summary": {
+    "per_cell_lane_separated": true,
+    "pooled_claims_blocked": true,
+    "legacy_baseline_not_default": true
+  },
+  "promotion_summary": {
+    "promotion_allowed": false,
+    "trust_role_allowed": false,
+    "calibration_signal_allowed": false,
+    "mmm_allowed": false,
+    "llm_allowed": false,
+    "suitability_claim_allowed": false,
+    "pooled_multicell_claim_allowed": false,
+    "production_ready": false
+  },
+  "verdict": "design_combinations_mixed_with_method_specific_restrictions",
+  "limitations": [
+    "characterization_only_no_promotion",
+    "provisional_thresholds_not_production",
+    "inference_coverage_not_fully_validated",
+    "rerandomization_selection_effects_restricted",
+    "pooled_multicell_causal_claims_blocked"
+  ],
+  "matrix_row_updates": {
+    "DCM-001": {
+      "prior_status": "restricted_requires_contract_fields",
+      "executed_status": "characterized_with_restrictions",
+      "evidence": "DESIGN-COMBINATION-VALIDATION-EXECUTION-001"
+    },
+    "DCM-002": {
+      "prior_status": "restricted_requires_contract_fields",
+      "executed_status": "characterized_with_restrictions",
+      "evidence": "DESIGN-COMBINATION-VALIDATION-EXECUTION-001"
+    },
+    "DCM-003": {
+      "prior_status": "blocked_due_to_geometry_mismatch",
+      "executed_status": "empirically_blocked",
+      "evidence": "DESIGN-COMBINATION-VALIDATION-EXECUTION-001"
+    },
+    "DCM-004": {
+      "prior_status": "blocked_due_to_geometry_mismatch",
+      "executed_status": "characterized_with_restrictions",
+      "evidence": "DESIGN-COMBINATION-VALIDATION-EXECUTION-001"
+    },
+    "DCM-007": {
+      "prior_status": "blocked_for_pooled_claim",
+      "executed_status": "empirically_blocked",
+      "evidence": "DESIGN-COMBINATION-VALIDATION-EXECUTION-001"
+    },
+    "DCM-008": {
+      "prior_status": "restricted_requires_contract_fields",
+      "executed_status": "characterized_with_restrictions",
+      "evidence": "DESIGN-COMBINATION-VALIDATION-EXECUTION-001"
+    },
+    "DCM-010": {
+      "prior_status": "blocked_due_to_readout_mismatch",
+      "executed_status": "empirically_blocked",
+      "evidence": "DESIGN-COMBINATION-VALIDATION-EXECUTION-001"
+    },
+    "DCM-014": {
+      "prior_status": "blocked_due_to_geometry_mismatch",
+      "executed_status": "empirically_blocked",
+      "evidence": "DESIGN-COMBINATION-VALIDATION-EXECUTION-001"
+    },
+    "DCM-016": {
+      "prior_status": "blocked_due_to_implementation_ambiguity",
+      "executed_status": "empirically_blocked",
+      "evidence": "DESIGN-COMBINATION-VALIDATION-EXECUTION-001"
+    },
+    "DCM-019": {
+      "prior_status": "blocked_due_to_readout_mismatch",
+      "executed_status": "empirically_blocked",
+      "evidence": "DESIGN-COMBINATION-VALIDATION-EXECUTION-001"
+    }
+  }
+}

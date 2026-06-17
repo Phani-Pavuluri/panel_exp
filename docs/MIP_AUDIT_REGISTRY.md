@@ -1077,7 +1077,28 @@ poetry run python -m panel_exp.validation.track_d_d5_des_stat_tier1_recharacteri
 
 **Verdict:** Post-fix tier-1 baseline refresh across corrected defaults (greedy/stratified), legacy references, and separate multi-cell lane. 6,500 attempted · 6,200 completed · 300 failed (primarily explicit infeasible worlds). Greedy control violations legacy 94 → corrected 0; stratified high-SMD blocks legacy 374 → corrected 13. **No promotion.** Supersedes corrected-default comparisons in historical tier-1 report.
 
-**Next:** **`DESIGN_COMBINATION_VALIDATION_EXECUTION_001`**.
+**Next:** ✅ **`DESIGN_COMBINATION_VALIDATION_EXECUTION_001`**.
+
+---
+
+## DESIGN-COMBINATION-VALIDATION-EXECUTION-001 (2026-06-17)
+
+**Artifact:** [`docs/track_d/DESIGN_COMBINATION_VALIDATION_EXECUTION_001_REPORT.md`](track_d/DESIGN_COMBINATION_VALIDATION_EXECUTION_001_REPORT.md) · [`docs/track_d/archives/DESIGN_COMBINATION_VALIDATION_EXECUTION_001_summary.json`](track_d/archives/DESIGN_COMBINATION_VALIDATION_EXECUTION_001_summary.json) · [`panel_exp/validation/track_d_design_combination_validation_execution_001.py`](../panel_exp/validation/track_d_design_combination_validation_execution_001.py) · [`tests/track_d/test_design_combination_validation_execution_001.py`](../tests/track_d/test_design_combination_validation_execution_001.py)
+
+**Archive:** Full run-level archive local only (`/tmp/DESIGN_COMBINATION_VALIDATION_EXECUTION_001_results.json`). Generation:
+
+```bash
+poetry run python -m panel_exp.validation.track_d_design_combination_validation_execution_001 \
+  --output-local /tmp/DESIGN_COMBINATION_VALIDATION_EXECUTION_001_results.json \
+  --summary-output docs/track_d/archives/DESIGN_COMBINATION_VALIDATION_EXECUTION_001_summary.json \
+  --overwrite
+```
+
+**Status:** **`design_combinations_mixed_with_method_specific_restrictions`**
+
+**Verdict:** First empirical design × estimator × inference execution against corrected tier-1 baseline. 1,680 records · 59s. SCM+JK and AugSynth point characterized with restrictions; TBR aggregate geometry-blocked; DID unit-panel mechanical; pooled multi-cell blocked. **No promotion.** TrustReport/CalibrationSignal/MMM/LLM blocked.
+
+**Next:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`**.
 
 ---
 
