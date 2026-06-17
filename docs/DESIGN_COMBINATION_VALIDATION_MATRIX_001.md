@@ -349,6 +349,10 @@ The table in §20 remains the **pre-execution matrix snapshot**. Executed status
 
 **Downstream status remains:** not_validated · not_suitability_approved · no production authorization.
 
+### 20.2 Runtime enforcement (DESIGN-GUARDRAIL-ENFORCEMENT-001)
+
+Combination statuses above are enforced at runtime via `design_guardrail_enforcement_001.py` on `DesignEvidence` (`design_guardrail`, `combination_guardrail`, `guardrail_enforcement`). Downstream roles (TrustReport, CalibrationSignal, MMM, LLM, production) fail closed via `assert_design_path_allowed`.
+
 ---
 
 ## 21. Reason-code registry

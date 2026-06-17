@@ -401,6 +401,9 @@ class DesignEvidence:
     diagnostics: Mapping[str, Any] = field(default_factory=dict)
     design_contract: Mapping[str, Any] | None = None
     contract_validation: Mapping[str, Any] | None = None
+    design_guardrail: Mapping[str, Any] | None = None
+    combination_guardrail: Mapping[str, Any] | None = None
+    guardrail_enforcement: Mapping[str, Any] | None = None
 
     @property
     def design_method(self) -> str:
@@ -449,6 +452,12 @@ class DesignEvidence:
             payload["design_contract"] = canonicalize(self.design_contract)
         if self.contract_validation is not None:
             payload["contract_validation"] = canonicalize(self.contract_validation)
+        if self.design_guardrail is not None:
+            payload["design_guardrail"] = canonicalize(self.design_guardrail)
+        if self.combination_guardrail is not None:
+            payload["combination_guardrail"] = canonicalize(self.combination_guardrail)
+        if self.guardrail_enforcement is not None:
+            payload["guardrail_enforcement"] = canonicalize(self.guardrail_enforcement)
         return _ordered_dict(payload, _EXPERIMENT_EVIDENCE_KEY_ORDER)
 
     def to_json(self, **kwargs: Any) -> str:
@@ -474,6 +483,9 @@ class DesignEvidence:
         created_at: Optional[str] = None,
         design_contract: Optional[Dict[str, Any]] = None,
         contract_validation: Optional[Dict[str, Any]] = None,
+        design_guardrail: Optional[Dict[str, Any]] = None,
+        combination_guardrail: Optional[Dict[str, Any]] = None,
+        guardrail_enforcement: Optional[Dict[str, Any]] = None,
     ) -> "DesignEvidence":
         canonical = canonical_assignment(assignment)
         merged_warnings = list(warnings or [])
@@ -516,6 +528,13 @@ class DesignEvidence:
             contract_validation=_freeze_payload(contract_validation)
             if contract_validation
             else None,
+            design_guardrail=_freeze_payload(design_guardrail) if design_guardrail else None,
+            combination_guardrail=_freeze_payload(combination_guardrail)
+            if combination_guardrail
+            else None,
+            guardrail_enforcement=_freeze_payload(guardrail_enforcement)
+            if guardrail_enforcement
+            else None,
         )
 
     @classmethod
@@ -550,6 +569,15 @@ class DesignEvidence:
             else None,
             contract_validation=_freeze_payload(data.get("contract_validation"))
             if data.get("contract_validation") is not None
+            else None,
+            design_guardrail=_freeze_payload(data.get("design_guardrail"))
+            if data.get("design_guardrail") is not None
+            else None,
+            combination_guardrail=_freeze_payload(data.get("combination_guardrail"))
+            if data.get("combination_guardrail") is not None
+            else None,
+            guardrail_enforcement=_freeze_payload(data.get("guardrail_enforcement"))
+            if data.get("guardrail_enforcement") is not None
             else None,
         )
 
@@ -729,6 +757,9 @@ class ExperimentEvidence:
         created_at: Optional[str] = None,
         design_contract: Optional[Dict[str, Any]] = None,
         contract_validation: Optional[Dict[str, Any]] = None,
+        design_guardrail: Optional[Dict[str, Any]] = None,
+        combination_guardrail: Optional[Dict[str, Any]] = None,
+        guardrail_enforcement: Optional[Dict[str, Any]] = None,
     ) -> "ExperimentEvidence":
         created = created_at or _utc_now_iso()
         inference_meta: Dict[str, Any] = {}
@@ -747,6 +778,27 @@ class ExperimentEvidence:
             spec=spec,
             inference_metadata=inference_meta,
         )
+
+        guardrail_fields: Dict[str, Any] = {}
+        if design_contract is not None and guardrail_enforcement is None:
+            from panel_exp.validation.design_guardrail_enforcement_001 import (
+                build_producer_guardrail_bundle,
+            )
+
+            bundle = build_producer_guardrail_bundle(
+                design_contract=design_contract,
+                contract_validation=contract_validation,
+                estimator_id=inference_method,
+            )
+            guardrail_fields = bundle
+        else:
+            if design_guardrail is not None:
+                guardrail_fields["design_guardrail"] = design_guardrail
+            if combination_guardrail is not None:
+                guardrail_fields["combination_guardrail"] = combination_guardrail
+            if guardrail_enforcement is not None:
+                guardrail_fields["guardrail_enforcement"] = guardrail_enforcement
+
         design_ev = DesignEvidence.from_assignment(
             spec,
             assignment,
@@ -759,6 +811,9 @@ class ExperimentEvidence:
             created_at=created,
             design_contract=design_contract,
             contract_validation=contract_validation,
+            design_guardrail=guardrail_fields.get("design_guardrail"),
+            combination_guardrail=guardrail_fields.get("combination_guardrail"),
+            guardrail_enforcement=guardrail_fields.get("guardrail_enforcement"),
         )
         a_hash = assignment_hash_override or design_ev.assignment_hash
 

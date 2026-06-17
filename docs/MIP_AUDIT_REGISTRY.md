@@ -1098,7 +1098,19 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 
 **Verdict:** First empirical design × estimator × inference execution against corrected tier-1 baseline. 1,680 records · 59s. SCM+JK and AugSynth point characterized with restrictions; TBR aggregate geometry-blocked; DID unit-panel mechanical; pooled multi-cell blocked. **No promotion.** TrustReport/CalibrationSignal/MMM/LLM blocked.
 
-**Next:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`**.
+**Next:** ✅ **`DESIGN_GUARDRAIL_ENFORCEMENT_001`**.
+
+---
+
+## DESIGN-GUARDRAIL-ENFORCEMENT-001 (2026-06-17)
+
+**Artifact:** [`docs/DESIGN_GUARDRAIL_ENFORCEMENT_001.md`](DESIGN_GUARDRAIL_ENFORCEMENT_001.md) · [`panel_exp/validation/design_guardrail_enforcement_001.py`](../panel_exp/validation/design_guardrail_enforcement_001.py) · [`panel_exp/validation/design_combination_guardrail_001.py`](../panel_exp/validation/design_combination_guardrail_001.py) · [`tests/validation/test_design_guardrail_enforcement_001.py`](../tests/validation/test_design_guardrail_enforcement_001.py)
+
+**Status:** **`design_guardrail_enforcement_implemented_no_downstream_promotion`**
+
+**Verdict:** Runtime enforcement layer (L3 combination + L4 authoritative) wired to `DesignEvidence` via `ExperimentEvidence.build`. DCM-001–008 registry consumed; downstream roles fail closed via `assert_design_path_allowed`. No bypass API.
+
+**Next:** Inference-boundary enforcement when estimator identity available at readout construction.
 
 ---
 
