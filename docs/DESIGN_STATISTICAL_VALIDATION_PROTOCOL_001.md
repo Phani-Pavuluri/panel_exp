@@ -586,7 +586,7 @@ Protocol marks **bridge-required** transitions as `blocked_until_geometry_bridge
 
 **Next:** ✅ **`D5-DES-STAT-TIER1-RECHARACTERIZATION-001`** executed — [`D5_DES_STAT_TIER1_RECHARACTERIZATION_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_RECHARACTERIZATION_001_REPORT.md). Verdict: `tier1_recharacterized_mixed_method_specific_restrictions`. 6,500 attempted · 6,200 completed · 300 failed (primarily explicit infeasible worlds). **No promotion.**
 
-**Next execution target:** **`DESIGN_COMBINATION_VALIDATION_EXECUTION_001`** · then **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** · adapter lanes · block/pair/trim follow-ons.
+**Next execution target:** ✅ **`DESIGN_COMBINATION_VALIDATION_EXECUTION_001`** executed ([`track_d/DESIGN_COMBINATION_VALIDATION_EXECUTION_001_REPORT.md`](track_d/DESIGN_COMBINATION_VALIDATION_EXECUTION_001_REPORT.md); verdict `design_combinations_mixed_with_method_specific_restrictions`) · **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** · adapter lanes · block/pair/trim follow-ons.
 
 ---
 

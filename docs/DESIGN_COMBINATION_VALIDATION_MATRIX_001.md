@@ -329,6 +329,26 @@ Compact master table — key combinations (all `downstream_status`: not_validate
 
 **Combinations promoted:** **0**
 
+### 20.1 Execution evidence (DESIGN-COMBINATION-VALIDATION-EXECUTION-001)
+
+**Date:** 2026-06-17 · **Verdict:** `design_combinations_mixed_with_method_specific_restrictions`
+**Report:** [`track_d/DESIGN_COMBINATION_VALIDATION_EXECUTION_001_REPORT.md`](track_d/DESIGN_COMBINATION_VALIDATION_EXECUTION_001_REPORT.md) · **Summary:** [`track_d/archives/DESIGN_COMBINATION_VALIDATION_EXECUTION_001_summary.json`](track_d/archives/DESIGN_COMBINATION_VALIDATION_EXECUTION_001_summary.json)
+
+The table in §20 remains the **pre-execution matrix snapshot**. Executed status (characterization only, no promotion):
+
+| Row ID | Matrix status (prior) | Executed status | Evidence |
+|--------|-------------------------|-----------------|----------|
+| DCM-001 | restricted_requires_contract_fields | **characterized_with_restrictions** | 670/720 mechanical SCM+JK success |
+| DCM-002 | restricted_requires_contract_fields | **compatible_point_only** | 670/720 point estimates; intervals blocked |
+| DCM-003 | blocked_due_to_geometry_mismatch | **empirically_blocked** (confirmed) | 24/24 geometry mismatch |
+| DCM-004 | blocked_due_to_geometry_mismatch | **characterized_with_restrictions** | 24/24 DID mechanical on unit-panel |
+| DCM-006 | restricted_requires_statistical_validation | **compatible_per_cell_only** | per-cell lane; pooled blocked |
+| DCM-007 | blocked_for_pooled_claim | **blocked_for_pooled_claim** (confirmed) | 16/16 |
+| DCM-008 | restricted_requires_contract_fields | **characterized_with_restrictions** | stratified SCM+JK lane |
+| DCM-005, 009–019 | (unchanged) | not executed / classified lane E | prerequisites |
+
+**Downstream status remains:** not_validated · not_suitability_approved · no production authorization.
+
 ---
 
 ## 21. Reason-code registry
