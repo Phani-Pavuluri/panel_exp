@@ -1098,7 +1098,7 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 
 **Verdict:** First empirical design × estimator × inference execution against corrected tier-1 baseline. 1,680 records · 59s. SCM+JK and AugSynth point characterized with restrictions; TBR aggregate geometry-blocked; DID unit-panel mechanical; pooled multi-cell blocked. **No promotion.** TrustReport/CalibrationSignal/MMM/LLM blocked.
 
-**Next:** ✅ **`DESIGN_GUARDRAIL_ENFORCEMENT_001`**.
+**Next:** ✅ **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** · ✅ **`INFERENCE-BOUNDARY-GUARDRAIL-ENFORCEMENT-001`**.
 
 ---
 
@@ -1110,7 +1110,15 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 
 **Verdict:** Runtime enforcement layer (L3 combination + L4 authoritative) wired to `DesignEvidence` via `ExperimentEvidence.build`. DCM-001–008 registry consumed; downstream roles fail closed via `assert_design_path_allowed`. No bypass API.
 
-**Next:** Inference-boundary enforcement when estimator identity available at readout construction.
+---
+
+## INFERENCE-BOUNDARY-GUARDRAIL-ENFORCEMENT-001 (2026-06-17)
+
+**Artifact:** [`docs/INFERENCE_BOUNDARY_GUARDRAIL_ENFORCEMENT_001.md`](INFERENCE_BOUNDARY_GUARDRAIL_ENFORCEMENT_001.md) · [`panel_exp/validation/inference_boundary_guardrail_001.py`](../panel_exp/validation/inference_boundary_guardrail_001.py) · [`panel_exp/validation/readout_boundary_builder_001.py`](../panel_exp/validation/readout_boundary_builder_001.py) · [`tests/validation/test_inference_boundary_guardrail_enforcement_001.py`](../tests/validation/test_inference_boundary_guardrail_enforcement_001.py)
+
+**Status:** **`inference_boundary_guardrail_enforcement_implemented_no_downstream_promotion`**
+
+**Verdict:** Attaches estimator/inference identity at readout boundary; re-resolves DCM-001–008 from `not_evaluated` to concrete combination statuses; `ReadoutEvidence` serializes boundary guardrail metadata. No bypass API. Downstream blocked.
 
 ---
 

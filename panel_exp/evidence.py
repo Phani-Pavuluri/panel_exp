@@ -889,10 +889,91 @@ class ExperimentEvidence:
         return cls.from_dict(json.loads(payload))
 
 
+@dataclass(frozen=True)
+class ReadoutEvidence:
+    """Governed readout evidence with inference-boundary guardrail metadata."""
+
+    evidence_version: str
+    created_at: str
+    builder_version: str
+    estimator_identity: Mapping[str, Any] | None = None
+    inference_identity: Mapping[str, Any] | None = None
+    readout_identity: Mapping[str, Any] | None = None
+    combination_resolution: Mapping[str, Any] | None = None
+    inference_boundary_guardrail: Mapping[str, Any] | None = None
+    guardrail_enforcement: Mapping[str, Any] | None = None
+    result_payload: Mapping[str, Any] | None = None
+
+    def to_dict(self) -> Dict[str, Any]:
+        payload: Dict[str, Any] = {
+            "evidence_version": self.evidence_version,
+            "created_at": self.created_at,
+            "builder_version": self.builder_version,
+        }
+        if self.estimator_identity is not None:
+            payload["estimator_identity"] = canonicalize(self.estimator_identity)
+        if self.inference_identity is not None:
+            payload["inference_identity"] = canonicalize(self.inference_identity)
+        if self.readout_identity is not None:
+            payload["readout_identity"] = canonicalize(self.readout_identity)
+        if self.combination_resolution is not None:
+            payload["combination_resolution"] = canonicalize(self.combination_resolution)
+        if self.inference_boundary_guardrail is not None:
+            payload["inference_boundary_guardrail"] = canonicalize(
+                self.inference_boundary_guardrail
+            )
+        if self.guardrail_enforcement is not None:
+            payload["guardrail_enforcement"] = canonicalize(self.guardrail_enforcement)
+        if self.result_payload is not None:
+            payload["result_payload"] = canonicalize(self.result_payload)
+        return payload
+
+    def to_json(self, **kwargs: Any) -> str:
+        kwargs.pop("sort_keys", None)
+        indent = kwargs.pop("indent", None)
+        if indent is not None:
+            return json.dumps(self.to_dict(), indent=indent, **kwargs)
+        return canonical_json(self.to_dict())
+
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> "ReadoutEvidence":
+        return cls(
+            evidence_version=data.get("evidence_version", EVIDENCE_VERSION),
+            created_at=data["created_at"],
+            builder_version=data.get("builder_version", "1.0.0"),
+            estimator_identity=_freeze_payload(data.get("estimator_identity"))
+            if data.get("estimator_identity") is not None
+            else None,
+            inference_identity=_freeze_payload(data.get("inference_identity"))
+            if data.get("inference_identity") is not None
+            else None,
+            readout_identity=_freeze_payload(data.get("readout_identity"))
+            if data.get("readout_identity") is not None
+            else None,
+            combination_resolution=_freeze_payload(data.get("combination_resolution"))
+            if data.get("combination_resolution") is not None
+            else None,
+            inference_boundary_guardrail=_freeze_payload(data.get("inference_boundary_guardrail"))
+            if data.get("inference_boundary_guardrail") is not None
+            else None,
+            guardrail_enforcement=_freeze_payload(data.get("guardrail_enforcement"))
+            if data.get("guardrail_enforcement") is not None
+            else None,
+            result_payload=_freeze_payload(data.get("result_payload"))
+            if data.get("result_payload") is not None
+            else None,
+        )
+
+    @classmethod
+    def from_json(cls, payload: str) -> "ReadoutEvidence":
+        return cls.from_dict(json.loads(payload))
+
+
 __all__ = [
     "EVIDENCE_VERSION",
     "DesignEvidence",
     "InferenceEvidence",
+    "ReadoutEvidence",
     "ExperimentEvidence",
     "attach_did_pretrend_contract",
     "attach_interference_review",
