@@ -247,7 +247,7 @@ Companion regression (unchanged):
 
 **Completed:** Schema → validator → tier-1 emission → golden fixtures → **guardrail runtime integration** → **suitability reassessment**.
 
-**Next artifact:** **`D5-DES-STAT-TIER1-001`** — executed tier-1 design statistical validation.
+**Next artifact:** ✅ **`DESIGN_GUARDRAIL_ENFORCEMENT-001`** — runtime enforcement wired to `DesignEvidence` ([`DESIGN_GUARDRAIL_ENFORCEMENT_001.md`](DESIGN_GUARDRAIL_ENFORCEMENT_001.md)).
 
 ---
 

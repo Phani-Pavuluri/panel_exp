@@ -522,7 +522,7 @@ Until enforcement lands, consumers must apply this document manually or via futu
 
 **Observed failure reasons (statistical):** sparse/singleton strata under legacy stratified; volume-gap assignment within strata (not Bernoulli); elevated global SMD when n_strata≈n_units. ✅ Fixed under `adaptive_strata` policy.
 
-**Next artifact:** **`DESIGN_COMBINATION_VALIDATION_EXECUTION_001`** · then **`DESIGN_GUARDRAIL_ENFORCEMENT_001`**.
+**Next artifact:** ✅ **`DESIGN_COMBINATION_VALIDATION_EXECUTION_001`** · ✅ **`DESIGN_GUARDRAIL_ENFORCEMENT-001`** ([`DESIGN_GUARDRAIL_ENFORCEMENT_001.md`](DESIGN_GUARDRAIL_ENFORCEMENT_001.md)).
 
 **Statistical execution:** ✅ [`D5_DES_STAT_STRATIFIED_001_REPORT.md`](track_d/D5_DES_STAT_STRATIFIED_001_REPORT.md) — adaptive strata fix; legacy high-SMD blocks reduced; **no promotion**. ✅ [`D5_DES_STAT_MULTICELL_001_REPORT.md`](track_d/D5_DES_STAT_MULTICELL_001_REPORT.md) — multi-cell metadata + per-cell characterization; pooled claims blocked; **no promotion**.
 
