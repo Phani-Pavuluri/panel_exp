@@ -23,12 +23,18 @@ from panel_exp.track_b.bundle_extract import (
     extract_resolve_input_from_bundle,
 )
 from panel_exp.track_b.f_decision_context import TrustReportDecisionInputs
+from panel_exp.validation.downstream_readout_authorization_001 import (
+    DOWNSTREAM_READOUT_NOT_AUTHORIZED,
+    STATUS_BLOCKED,
+    assert_downstream_readout_authorized,
+    evaluate_downstream_readout_authorization,
+    extract_readout_evidence_object,
+)
 
 ReadoutEvidenceMapping = dict[str, Any]
 
 # Must match ``estimator_readout_adapter_001.GOVERNED_READOUT_MARKER``.
 GOVERNED_READOUT_MARKER = "governed_readout_evidence"
-DOWNSTREAM_READOUT_NOT_AUTHORIZED = "downstream_readout_not_authorized"
 
 _CONFIG_ALIAS_TO_PAIR: dict[str, tuple[str, str]] = {}
 for (est, inf), alias in _ESTIMATOR_INFERENCE_TO_CONFIG.items():
@@ -423,6 +429,27 @@ def build_decision_profiles_from_bundle(
     return design, data, geometry, estimand, warnings
 
 
+def evaluate_bundle_downstream_authorization(
+    bundle: Mapping[str, Any],
+    *,
+    requested_role: str = "trust_report",
+    promotion_evidence: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Evaluate downstream authorization for a bundle's governed readout evidence."""
+    evidence = bundle.get("evidence") or {}
+    readout = None
+    if isinstance(evidence, Mapping):
+        readout = extract_readout_evidence_object(evidence)
+        if readout is None:
+            readout = extract_readout_evidence_object(bundle)
+    result = evaluate_downstream_readout_authorization(
+        readout_evidence=readout,
+        requested_role=requested_role,
+        promotion_evidence=promotion_evidence,
+    )
+    return result.to_dict()
+
+
 def build_trust_report_decision_inputs_from_bundle(
     bundle: Mapping[str, Any],
     *,
@@ -435,12 +462,26 @@ def build_trust_report_decision_inputs_from_bundle(
         bundle
     )
     extraction_warnings = list(readout_warnings + profile_warnings)
-    if not _bundle_has_governed_readout_evidence(bundle):
+
+    evidence = bundle.get("evidence") or {}
+    governed_readout = None
+    if isinstance(evidence, Mapping):
+        governed_readout = extract_readout_evidence_object(evidence)
+
+    auth_result = evaluate_downstream_readout_authorization(
+        readout_evidence=governed_readout,
+        requested_role="trust_report",
+    )
+    auth_dict = auth_result.to_dict()
+
+    if auth_result.status == STATUS_BLOCKED or not _bundle_has_governed_readout_evidence(bundle):
         extraction_warnings.append(
-            f"{DOWNSTREAM_READOUT_NOT_AUTHORIZED}: native run_analysis output is not "
-            "downstream-authorized; TrustReport/CalibrationSignal/MMM/LLM require governed "
-            "ReadoutEvidence from build_estimator_readout() or run_governed_analysis()"
+            f"{DOWNSTREAM_READOUT_NOT_AUTHORIZED}: "
+            f"status={auth_result.status}; "
+            f"codes={','.join(auth_result.reason_codes)}"
         )
+    trust_report_ready = False
+
     return TrustReportDecisionInputs(
         readout_evidence=readouts,
         design=design,
@@ -450,4 +491,17 @@ def build_trust_report_decision_inputs_from_bundle(
         strict=strict,
         allow_sensitivity_in_comparison=allow_sensitivity_in_comparison,
         extraction_warnings=tuple(extraction_warnings),
+        downstream_authorization=auth_dict,
+        trust_report_ready=trust_report_ready,
     )
+
+
+def assert_trust_report_bundle_authorized(bundle: Mapping[str, Any]) -> None:
+    """Fail closed when TrustReport consumption is not authorized."""
+    evidence = bundle.get("evidence") or {}
+    readout = extract_readout_evidence_object(evidence) if isinstance(evidence, Mapping) else None
+    result = evaluate_downstream_readout_authorization(
+        readout_evidence=readout,
+        requested_role="trust_report",
+    )
+    assert_downstream_readout_authorized(result, requested_role="trust_report")

@@ -7,7 +7,7 @@
 
 Wires native estimator and inference result paths into the existing inference-boundary enforcement stack via a shared adapter. Governed readouts are available through `build_estimator_readout()` or `run_governed_analysis()`.
 
-**Transitional rule:** `ImpactAnalyzer.run_analysis()` remains an **internal/native primitive**. It is **not** downstream-authorized. TrustReport, CalibrationSignal, MMM, LLM, and production-facing paths must consume `ReadoutEvidence` (see `DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001`).
+**Transitional rule:** `ImpactAnalyzer.run_analysis()` remains an **internal/native primitive**. It is **not** downstream-authorized. TrustReport, CalibrationSignal, MMM, LLM, and production-facing paths must pass [`DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md`](DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md) (implemented; all production roles BLOCKED).
 
 ## 2. Why inference-boundary code alone was insufficient
 
@@ -115,7 +115,7 @@ Fail closed on BLOCK combinations. Research WARN does not authorize production. 
 
 ## 23. Backward compatibility
 
-`ImpactAnalyzer.run_analysis()` return shape unchanged and documented as **native/internal** in `panel_exp/impact.py`. Governed readout construction is **opt-in** via `run_governed_analysis()` or `build_estimator_readout()`. Track B bundle wiring emits `downstream_readout_not_authorized` when governed `ReadoutEvidence` is absent.
+`ImpactAnalyzer.run_analysis()` return shape unchanged and documented as **native/internal** in `panel_exp/impact.py`. Governed readout construction is **opt-in** via `run_governed_analysis()` or `build_estimator_readout()`. Track B bundle wiring uses `evaluate_downstream_readout_authorization()` via [`DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md`](DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md); all production-facing downstream roles remain BLOCKED.
 
 ## 24. Fixture inventory
 
@@ -141,7 +141,7 @@ No `force=True`, `override_guardrail`, or `bypass_guardrail` APIs. Downstream ro
 
 ## 29. Follow-up work
 
-- **`DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001`** — fail-closed gateway for TrustReport/CalibrationSignal/MMM/LLM
+- **`DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001`** — ✅ implemented; fail-closed for TrustReport/CalibrationSignal/MMM/LLM
 - Promote characterized combinations only after statistical validation artifacts complete
 
 ## 30. Verdict

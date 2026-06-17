@@ -1132,7 +1132,19 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 
 **Verdict:** Native estimator/inference results route through `build_estimator_readout()` → `build_guarded_readout()` when the governed path is used. `run_analysis()` remains a native/internal primitive (not downstream-authorized). Design geometry propagated; multi-cell remains geometry not estimator; DCM resolution automatic when governed path used. Track B wiring warns when bundles lack governed `ReadoutEvidence`. No bypass API. Downstream blocked.
 
-**Next:** **`DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001`** (fail-closed for TrustReport/CalibrationSignal/MMM/LLM).
+**Next:** ✅ **`DOWNSTREAM-READOUT-AUTHORIZATION-GATEWAY-001`**.
+
+---
+
+## DOWNSTREAM-READOUT-AUTHORIZATION-GATEWAY-001 (2026-06-03)
+
+**Artifact:** [`docs/DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md`](DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md) · [`panel_exp/validation/downstream_readout_authorization_001.py`](../panel_exp/validation/downstream_readout_authorization_001.py) · [`tests/validation/test_downstream_readout_authorization_gateway_001.py`](../tests/validation/test_downstream_readout_authorization_gateway_001.py)
+
+**Status:** **`downstream_readout_authorization_gateway_implemented_fail_closed_no_promotion`**
+
+**Verdict:** Single authoritative downstream authorization gateway implemented. All production-facing roles (TrustReport, CalibrationSignal, MMM, LLM, production recommendation, automated budget action, external export) remain BLOCKED. Research-safe roles return RESTRICTED only. Track B wiring uses gateway evaluation. No bypass API. Future promotion requires separate role-specific evidence.
+
+**Next:** Role-specific promotion artifacts (TrustReport, CalibrationSignal, MMM).
 
 ---
 
