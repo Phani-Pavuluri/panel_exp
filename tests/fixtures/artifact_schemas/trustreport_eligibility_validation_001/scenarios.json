@@ -1,0 +1,22 @@
+[
+  {"fixture_id": "scm_jk_candidate", "template": "scm_jk", "empirical": "scm_jk_full", "expected_status": "ELIGIBLE_WITH_RESTRICTIONS"},
+  {"fixture_id": "scm_jk_missing_coverage", "template": "scm_jk", "empirical": "missing_coverage", "expected_status": "ELIGIBLE_WITH_RESTRICTIONS"},
+  {"fixture_id": "scm_null_monitor_mislabeled_causal", "template": "scm_placebo_causal", "expected_status": "INELIGIBLE"},
+  {"fixture_id": "stratified_scm_jk_candidate", "template": "stratified_scm_jk", "expected_status": "ELIGIBLE_WITH_RESTRICTIONS"},
+  {"fixture_id": "augsynth_point_only", "template": "augsynth_point", "empirical": "augsynth_point", "expected_status": "ELIGIBLE_WITH_RESTRICTIONS"},
+  {"fixture_id": "augsynth_interval_claim", "template": "augsynth_interval", "expected_status": "INELIGIBLE"},
+  {"fixture_id": "did_bootstrap_candidate", "template": "did_bootstrap", "empirical": "did_bootstrap", "expected_status": "INSUFFICIENT_EVIDENCE"},
+  {"fixture_id": "did_missing_identification", "template": "did_bootstrap", "empirical": "missing", "expected_status": "INSUFFICIENT_EVIDENCE"},
+  {"fixture_id": "tbr_unit_panel_mismatch", "template": "tbr_unit_panel", "expected_status": "INELIGIBLE"},
+  {"fixture_id": "tbrridge_brb_insufficient", "template": "tbrridge_brb", "empirical": "tbrridge_brb", "expected_status": "INELIGIBLE"},
+  {"fixture_id": "tbrridge_kfold_insufficient", "template": "tbrridge_kfold", "empirical": "tbrridge_kfold", "expected_status": "INELIGIBLE"},
+  {"fixture_id": "tbrridge_placebo_insufficient", "template": "tbrridge_placebo", "empirical": "tbrridge_placebo", "expected_status": "INELIGIBLE"},
+  {"fixture_id": "multicell_percell_candidate", "template": "multicell_percell", "empirical": "mcell", "expected_status": "ELIGIBLE_WITH_RESTRICTIONS"},
+  {"fixture_id": "multicell_missing_shared_control", "template": "multicell_percell", "strip_shared_control": true, "expected_status": "ELIGIBLE_WITH_RESTRICTIONS"},
+  {"fixture_id": "pooled_multicell", "template": "multicell_pooled", "expected_status": "INELIGIBLE"},
+  {"fixture_id": "missing_provenance", "template": "scm_jk", "empirical": "no_provenance", "expected_status": "ELIGIBLE_WITH_RESTRICTIONS"},
+  {"fixture_id": "stale_evidence", "template": "scm_jk", "empirical": "stale", "expected_status": "ELIGIBLE_WITH_RESTRICTIONS"},
+  {"fixture_id": "native_ungoverned", "native": {"y": [1], "y_hat": [1]}, "expected_status": "INELIGIBLE"},
+  {"fixture_id": "legacy_readout", "readout": {"evidence_version": "0.1"}, "expected_status": "UNKNOWN"},
+  {"fixture_id": "blocked_inference_boundary", "template": "scm_jk", "strip_boundary": true, "expected_status": "INELIGIBLE"}
+]

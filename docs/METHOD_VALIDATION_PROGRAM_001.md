@@ -309,7 +309,7 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 ---
 
-**Estimator readout integration (2026-06-18):** Layer 2/3 validation may continue using native `run_analysis()` for characterization. Product/downstream consumption requires governed `ReadoutEvidence` ([`ESTIMATOR_READOUT_GUARDRAIL_INTEGRATION_001.md`](ESTIMATOR_READOUT_GUARDRAIL_INTEGRATION_001.md)) and must pass [`DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md`](DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md) (gateway implemented; all production roles blocked).
+**TrustReport eligibility (2026-06-17):** Promotion candidacy evaluation via [`TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md`](track_d/TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md). Eligibility separate from authorization; zero promotion candidates in current evidence.
 
 ## 13. Stop condition
 

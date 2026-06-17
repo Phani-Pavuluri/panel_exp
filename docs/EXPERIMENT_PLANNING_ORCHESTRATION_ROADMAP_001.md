@@ -232,6 +232,7 @@ Must define:
 | [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) | Future estimator families enter ranking only after own audit ladder |
 | [`ESTIMATOR_READOUT_GUARDRAIL_INTEGRATION_001.md`](ESTIMATOR_READOUT_GUARDRAIL_INTEGRATION_001.md) | Governed readout adapter exists; native `run_analysis()` not downstream-authorized |
 | [`DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md`](DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md) | Gateway implemented; all production downstream roles blocked |
+| [`TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md`](track_d/TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md) | Eligibility validation; mixed restrictions; zero promotion candidates |
 | F-DECISION / TrustReport | Role assignment paused until foundation + suitability v2 |
 
 ---
