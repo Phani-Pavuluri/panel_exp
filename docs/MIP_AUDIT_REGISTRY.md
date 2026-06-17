@@ -1120,6 +1120,20 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 
 **Verdict:** Attaches estimator/inference identity at readout boundary; re-resolves DCM-001–008 from `not_evaluated` to concrete combination statuses; `ReadoutEvidence` serializes boundary guardrail metadata. No bypass API. Downstream blocked.
 
+**Next:** ✅ **`ESTIMATOR-READOUT-GUARDRAIL-INTEGRATION-001`**.
+
+---
+
+## ESTIMATOR-READOUT-GUARDRAIL-INTEGRATION-001 (2026-06-18)
+
+**Artifact:** [`docs/ESTIMATOR_READOUT_GUARDRAIL_INTEGRATION_001.md`](ESTIMATOR_READOUT_GUARDRAIL_INTEGRATION_001.md) · [`panel_exp/validation/estimator_readout_adapter_001.py`](../panel_exp/validation/estimator_readout_adapter_001.py) · [`tests/validation/test_estimator_readout_guardrail_integration_001.py`](../tests/validation/test_estimator_readout_guardrail_integration_001.py)
+
+**Status:** **`estimator_readout_guardrail_adapter_implemented_not_yet_mandatory`**
+
+**Verdict:** Native estimator/inference results route through `build_estimator_readout()` → `build_guarded_readout()` when the governed path is used. `run_analysis()` remains a native/internal primitive (not downstream-authorized). Design geometry propagated; multi-cell remains geometry not estimator; DCM resolution automatic when governed path used. Track B wiring warns when bundles lack governed `ReadoutEvidence`. No bypass API. Downstream blocked.
+
+**Next:** **`DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001`** (fail-closed for TrustReport/CalibrationSignal/MMM/LLM).
+
 ---
 
 ## METHOD-CODE-INVENTORY-001 (2026-06-04)

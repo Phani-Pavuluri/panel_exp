@@ -308,6 +308,8 @@ Regenerate: `python -m panel_exp.validation.design_estimator_inference_suitabili
 
 ---
 
+**Estimator readout integration (2026-06-18):** Suitability evaluation must consume governed `ReadoutEvidence` when asserting estimator×inference readout paths. Native `run_analysis()` output is diagnostic/internal only ([`ESTIMATOR_READOUT_GUARDRAIL_INTEGRATION_001.md`](ESTIMATOR_READOUT_GUARDRAIL_INTEGRATION_001.md)); not downstream-authorized.
+
 ## Stop condition
 
 | Criterion | Status |

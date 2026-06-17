@@ -26,6 +26,10 @@ from panel_exp.track_b.f_decision_context import TrustReportDecisionInputs
 
 ReadoutEvidenceMapping = dict[str, Any]
 
+# Must match ``estimator_readout_adapter_001.GOVERNED_READOUT_MARKER``.
+GOVERNED_READOUT_MARKER = "governed_readout_evidence"
+DOWNSTREAM_READOUT_NOT_AUTHORIZED = "downstream_readout_not_authorized"
+
 _CONFIG_ALIAS_TO_PAIR: dict[str, tuple[str, str]] = {}
 for (est, inf), alias in _ESTIMATOR_INFERENCE_TO_CONFIG.items():
     _CONFIG_ALIAS_TO_PAIR.setdefault(alias, (est, inf))
@@ -44,6 +48,27 @@ _INFERENCE_CANONICAL: dict[str, str] = {
     "point_only": "point_estimate",
     "bootstrap": "bootstrap",
 }
+
+
+def _bundle_has_governed_readout_evidence(bundle: Mapping[str, Any]) -> bool:
+    """True when bundle carries governed ``ReadoutEvidence`` (not native ``run_analysis`` dict)."""
+    evidence = bundle.get("evidence") or {}
+    if not isinstance(evidence, Mapping):
+        return False
+    if evidence.get("readout_evidence") is not None:
+        return True
+    artifacts = evidence.get("artifacts")
+    if isinstance(artifacts, Mapping) and artifacts.get(GOVERNED_READOUT_MARKER):
+        return True
+    result_payload = evidence.get("result_payload")
+    if isinstance(result_payload, Mapping):
+        meta = result_payload.get("metadata")
+        if isinstance(meta, Mapping) and meta.get(GOVERNED_READOUT_MARKER):
+            return True
+    hints = _merge_hints(evidence)
+    if hints.get(GOVERNED_READOUT_MARKER):
+        return True
+    return False
 
 
 def _merge_hints(evidence: Mapping[str, Any]) -> dict[str, Any]:
@@ -409,7 +434,13 @@ def build_trust_report_decision_inputs_from_bundle(
     design, data, geometry, estimand, profile_warnings = build_decision_profiles_from_bundle(
         bundle
     )
-    extraction_warnings = tuple(readout_warnings + profile_warnings)
+    extraction_warnings = list(readout_warnings + profile_warnings)
+    if not _bundle_has_governed_readout_evidence(bundle):
+        extraction_warnings.append(
+            f"{DOWNSTREAM_READOUT_NOT_AUTHORIZED}: native run_analysis output is not "
+            "downstream-authorized; TrustReport/CalibrationSignal/MMM/LLM require governed "
+            "ReadoutEvidence from build_estimator_readout() or run_governed_analysis()"
+        )
     return TrustReportDecisionInputs(
         readout_evidence=readouts,
         design=design,
@@ -418,5 +449,5 @@ def build_trust_report_decision_inputs_from_bundle(
         estimand=estimand,
         strict=strict,
         allow_sensitivity_in_comparison=allow_sensitivity_in_comparison,
-        extraction_warnings=extraction_warnings,
+        extraction_warnings=tuple(extraction_warnings),
     )

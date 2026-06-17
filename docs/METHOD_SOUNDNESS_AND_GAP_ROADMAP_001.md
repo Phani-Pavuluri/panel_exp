@@ -508,6 +508,8 @@ Per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)
 
 ---
 
+**Estimator readout integration (2026-06-18):** Runtime adapter wires native results to inference-boundary guardrails when opted in. TBR (DCM-003) and TBRRidge (DCM-005) remain **blocked at research** per combination registry until additional D5 statistical evidence — adapter routes correctly; guardrail BLOCK is expected, not adapter failure.
+
 ## 11. Stop condition
 
 | Criterion | Status |
