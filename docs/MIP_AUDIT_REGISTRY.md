@@ -621,7 +621,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Prerequisites:** D5-STAT queue through **`D5-STAT-MCELL-PERCELL-001`** complete.
 
-**Next planning/enhancement:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`**. Stratified: [`D5_DES_STAT_STRATIFIED_001_REPORT.md`](track_d/D5_DES_STAT_STRATIFIED_001_REPORT.md) (**Executed**). Multi-cell: [`D5_DES_STAT_MULTICELL_001_REPORT.md`](track_d/D5_DES_STAT_MULTICELL_001_REPORT.md) (**Executed**).
+**Next planning/enhancement:** **`DESIGN_COMBINATION_VALIDATION_EXECUTION_001`**. Stratified: [`D5_DES_STAT_STRATIFIED_001_REPORT.md`](track_d/D5_DES_STAT_STRATIFIED_001_REPORT.md) (**Executed**). Multi-cell: [`D5_DES_STAT_MULTICELL_001_REPORT.md`](track_d/D5_DES_STAT_MULTICELL_001_REPORT.md) (**Executed**). Tier-1 recharacterized: [`D5_DES_STAT_TIER1_RECHARACTERIZATION_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_RECHARACTERIZATION_001_REPORT.md) (**Executed**).
 
 ---
 
@@ -669,7 +669,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** Future TROP audit sequence; does not change immediate enhancement queue.
 
-**Program next (unchanged):** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** (design-side; tier-1 recharacterization pending).
+**Program next (unchanged):** **`DESIGN_COMBINATION_VALIDATION_EXECUTION_001`** (design-side; then guardrail enforcement).
 
 ---
 
@@ -685,7 +685,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `DESIGN_OUTPUT_CONTRACT_001` ✅ → `DESIGN_CODE_INVENTORY_001` ✅ → `DESIGN_LITERATURE_ALIGNMENT_001` ✅ → `DESIGN_IMPLEMENTATION_VALIDATION_001` ✅ → statistical protocol → combination matrix → guardrails → design suitability.
 
-**Immediate next:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** (stratified ✅ · multi-cell ✅).
+**Immediate next:** **`DESIGN_COMBINATION_VALIDATION_EXECUTION_001`** (stratified ✅ · multi-cell ✅ · tier-1 recharacterized ✅).
 
 ---
 
@@ -701,7 +701,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** ✅ `DESIGN_CODE_INVENTORY_001` → design validation ladder → combination matrix v2 → experiment planning (deferred).
 
-**Next:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** (stratified ✅ · multi-cell ✅).
+**Next:** **`DESIGN_COMBINATION_VALIDATION_EXECUTION_001`** (stratified ✅ · multi-cell ✅ · tier-1 recharacterized ✅).
 
 ---
 
@@ -989,7 +989,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 
 **Feeds:** `D5-DES-STAT-TIER1-001` → experiment planning filters.
 
-**Next:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** (stratified ✅ · multi-cell ✅).
+**Next:** **`DESIGN_COMBINATION_VALIDATION_EXECUTION_001`** (stratified ✅ · multi-cell ✅ · tier-1 recharacterized ✅).
 
 ---
 
@@ -1056,7 +1056,28 @@ poetry run python -m panel_exp.validation.track_d_d5_des_stat_stratified_001 --o
 
 **Verdict:** Root cause = singleton strata + volume-gap (non-Bernoulli) within-stratum assignment. Fix = `adaptive_strata` + Bernoulli within strata. 57,600 runs; legacy high-SMD blocks 7,214 → fixed 1,319. **No promotion.**
 
-**Next:** **`D5-DES-STAT-MULTICELL-001`**.
+**Next:** ✅ **`D5-DES-STAT-MULTICELL-001`** · follow-on = tier-1 recharacterization.
+
+---
+
+## D5-DES-STAT-TIER1-RECHARACTERIZATION-001 (2026-06-16)
+
+**Artifact:** [`docs/track_d/D5_DES_STAT_TIER1_RECHARACTERIZATION_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_RECHARACTERIZATION_001_REPORT.md) · [`docs/track_d/archives/D5_DES_STAT_TIER1_RECHARACTERIZATION_001_summary.json`](track_d/archives/D5_DES_STAT_TIER1_RECHARACTERIZATION_001_summary.json) · [`panel_exp/validation/track_d_d5_des_stat_tier1_recharacterization_001.py`](../panel_exp/validation/track_d_d5_des_stat_tier1_recharacterization_001.py) · [`tests/track_d/test_d5_des_stat_tier1_recharacterization_001.py`](../tests/track_d/test_d5_des_stat_tier1_recharacterization_001.py)
+
+**Archive:** Full run-level archive generated locally (not committed). Generation:
+
+```bash
+poetry run python -m panel_exp.validation.track_d_d5_des_stat_tier1_recharacterization_001 \
+  --output-local /tmp/D5_DES_STAT_TIER1_RECHARACTERIZATION_001_results.json \
+  --summary-output docs/track_d/archives/D5_DES_STAT_TIER1_RECHARACTERIZATION_001_summary.json \
+  --overwrite
+```
+
+**Status:** **`tier1_recharacterized_mixed_method_specific_restrictions`**
+
+**Verdict:** Post-fix tier-1 baseline refresh across corrected defaults (greedy/stratified), legacy references, and separate multi-cell lane. 6,500 attempted · 6,200 completed · 300 failed (primarily explicit infeasible worlds). Greedy control violations legacy 94 → corrected 0; stratified high-SMD blocks legacy 374 → corrected 13. **No promotion.** Supersedes corrected-default comparisons in historical tier-1 report.
+
+**Next:** **`DESIGN_COMBINATION_VALIDATION_EXECUTION_001`**.
 
 ---
 

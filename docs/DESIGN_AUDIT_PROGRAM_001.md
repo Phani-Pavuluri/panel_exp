@@ -298,7 +298,13 @@ Stratified sparse-strata root cause and `adaptive_strata` fix. 57,600 runs; lega
 
 DES-011 multi-cell characterization; `control_reservation` default; pooled claims blocked. 17,280 runs. **No promotion.**
 
-### V. Method-specific design audits (as needed)
+### V. D5-DES-STAT-TIER1-RECHARACTERIZATION-001 ✅
+
+**Status:** **Executed** — [`D5_DES_STAT_TIER1_RECHARACTERIZATION_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_RECHARACTERIZATION_001_REPORT.md) · summary [`D5_DES_STAT_TIER1_RECHARACTERIZATION_001_summary.json`](track_d/archives/D5_DES_STAT_TIER1_RECHARACTERIZATION_001_summary.json)
+
+Post-fix tier-1 baseline refresh. 6,500 runs; corrected defaults + legacy references + separate multi-cell lane. **No promotion.**
+
+### W. Method-specific design audits (as needed)
 
 Examples: `D5-DES-SUPERGEO-001` follow-on, `D5-DES-TRIM-001` hardening, QuickBlock geo integration ADR.
 
@@ -539,7 +545,7 @@ First concrete output contract under the design audit lane. Defines **DesignOutp
 
 **Code inventory:** [`DESIGN_CODE_INVENTORY_001.md`](DESIGN_CODE_INVENTORY_001.md) maps current emitted fields against this contract — **no implementation is contract-complete**.
 
-**Next design audit artifact:** `DESIGN_GUARDRAIL_ENFORCEMENT_001` — runtime enforcement follow-on (tier-1 recharacterization pending).
+**Next design audit artifact:** `DESIGN_COMBINATION_VALIDATION_EXECUTION_001` — execute approved design × estimator × inference rows against the corrected tier-1 baseline before runtime guardrail hardening.
 
 ---
 
@@ -673,4 +679,4 @@ No design promotion, suitability status, TrustReport role, CalibrationSignal eli
 
 ---
 
-*DESIGN-AUDIT-PROGRAM-001 v1.3.1 — D5-DES-STAT-STRATIFIED-001 and D5-DES-STAT-MULTICELL-001 executed; no promotion; next = DESIGN_GUARDRAIL_ENFORCEMENT_001 (tier-1 recharacterization pending).*
+*DESIGN-AUDIT-PROGRAM-001 v1.4.0 — D5-DES-STAT-TIER1-RECHARACTERIZATION-001 executed with 6,500 runs; corrected tier-1 baseline refreshed; no promotion; next = DESIGN_COMBINATION_VALIDATION_EXECUTION_001.*

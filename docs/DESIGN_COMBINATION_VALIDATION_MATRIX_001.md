@@ -307,7 +307,7 @@ Compact master table — key combinations (all `downstream_status`: not_validate
 
 | Row ID | Design group | Geometry | Estimator / inference / readout | Status | Reason codes | Next artifact |
 |--------|--------------|----------|--------------------------------|--------|--------------|---------------|
-| DCM-001 | tier-1 (DES-001–006) | `unit_panel_single_cell` | SCM + UnitJackknife | `restricted_requires_contract_fields` | D-COMB-MISSING-CONTRACT-FIELDS; D-COMB-STAT-VALIDATION-REQUIRED | ✅ D5-DES-STAT-TIER1-001; DES-001 ✅ D5-DES-STAT-GREEDY-FEASIBILITY-001 |
+| DCM-001 | tier-1 (DES-001–006) | `unit_panel_single_cell` | SCM + UnitJackknife | `restricted_requires_contract_fields` | D-COMB-MISSING-CONTRACT-FIELDS; D-COMB-STAT-VALIDATION-REQUIRED | ✅ D5-DES-STAT-TIER1-RECHARACTERIZATION-001; DES-001 ✅ greedy fix |
 | DCM-002 | tier-1 | `unit_panel_single_cell` | AugSynth point-only | `restricted_requires_contract_fields` | D-COMB-MISSING-CONTRACT-FIELDS | D5-DES-STAT-TIER1-001 |
 | DCM-003 | tier-1 | `aggregate_two_row` | TBR aggregate point | `blocked_due_to_geometry_mismatch` | D-COMB-GEOMETRY-BRIDGE-REQUIRED | Aggregate design bridge |
 | DCM-004 | tier-1 | `unit_panel_single_cell` | DID bootstrap | `blocked_due_to_geometry_mismatch` | D-COMB-GEOMETRY-BRIDGE-REQUIRED | Geometry bridge ADR |
@@ -417,7 +417,7 @@ Per [`EXPERIMENT_PLANNING_ORCHESTRATION_ROADMAP_001.md`](EXPERIMENT_PLANNING_ORC
 
 ## 28. Roadmap
 
-**Guardrails:** [`DESIGN_GUARDRAILS_001`](DESIGN_GUARDRAILS_001.md) ✅ **Accepted** — converts matrix statuses and D-COMB-* reason codes into PASS/WARN/BLOCK policy. **Runtime evaluator:** [`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`](DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md) ✅ — consumes contract metadata; **does not auto-upgrade matrix row statuses**. **Tier-1 execution evidence:** ✅ [`D5_DES_STAT_TIER1_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_001_REPORT.md) — informs matrix rows; **no automatic upgrade** from characterization alone.
+**Guardrails:** [`DESIGN_GUARDRAILS_001`](DESIGN_GUARDRAILS_001.md) ✅ **Accepted** — converts matrix statuses and D-COMB-* reason codes into PASS/WARN/BLOCK policy. **Runtime evaluator:** [`DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001`](DESIGN_GUARDRAIL_RUNTIME_INTEGRATION_001.md) ✅ — consumes contract metadata; **does not auto-upgrade matrix row statuses**. **Tier-1 execution evidence:** ✅ [`D5_DES_STAT_TIER1_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_001_REPORT.md) (historical) · ✅ [`D5_DES_STAT_TIER1_RECHARACTERIZATION_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_RECHARACTERIZATION_001_REPORT.md) — current corrected-default baseline; **no automatic upgrade** from characterization alone.
 
 **Enforcement plan:** [`DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md`](DESIGN_CONTRACT_ENFORCEMENT_PLAN_001.md) ✅ **Accepted** — **matrix statuses remain advisory until contract fields are emitted and validated** in code.
 

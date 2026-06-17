@@ -566,7 +566,7 @@ Protocol marks **bridge-required** transitions as `blocked_until_geometry_bridge
 | Designs statistically validated (full program) | **0 / 31** |
 | Tier-1 designs characterized (D5-DES-STAT-TIER1-001) | **5 / 5 in-scope** |
 | Contract-complete designs | **0 / 31** |
-| Executed harnesses | **1** (`D5-DES-STAT-TIER1-001`) |
+| Executed design-statistical harnesses | **5** (tier-1 · greedy · stratified · multi-cell · tier-1 recharacterization) |
 
 ---
 
@@ -584,7 +584,9 @@ Protocol marks **bridge-required** transitions as `blocked_until_geometry_bridge
 
 **Next:** ✅ **`D5-DES-STAT-MULTICELL-001`** executed — [`D5_DES_STAT_MULTICELL_001_REPORT.md`](track_d/D5_DES_STAT_MULTICELL_001_REPORT.md). Verdict: `multicell_per_cell_only_pooled_claims_blocked`. **No promotion.**
 
-**Next:** **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** · tier-1 recharacterization · adapter lanes · block/pair/trim follow-ons.
+**Next:** ✅ **`D5-DES-STAT-TIER1-RECHARACTERIZATION-001`** executed — [`D5_DES_STAT_TIER1_RECHARACTERIZATION_001_REPORT.md`](track_d/D5_DES_STAT_TIER1_RECHARACTERIZATION_001_REPORT.md). Verdict: `tier1_recharacterized_mixed_method_specific_restrictions`. 6,500 attempted · 6,200 completed · 300 failed (primarily explicit infeasible worlds). **No promotion.**
+
+**Next execution target:** **`DESIGN_COMBINATION_VALIDATION_EXECUTION_001`** · then **`DESIGN_GUARDRAIL_ENFORCEMENT_001`** · adapter lanes · block/pair/trim follow-ons.
 
 ---
 

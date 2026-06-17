@@ -117,8 +117,8 @@ Volume-share vs unit-count tension remains; poor-match worlds still high SMD.
 
 ## 26. Follow-up work
 
-- Re-run tier-1 DES-001 subset with fixed policy
-- D5-DES-STAT-STRATIFIED-001
+- ✅ Re-run tier-1 with fixed policy — [`D5_DES_STAT_TIER1_RECHARACTERIZATION_001_REPORT.md`](D5_DES_STAT_TIER1_RECHARACTERIZATION_001_REPORT.md)
+- ✅ D5-DES-STAT-STRATIFIED-001 · D5-DES-STAT-MULTICELL-001
 
 ## 27. Governance verdict
 

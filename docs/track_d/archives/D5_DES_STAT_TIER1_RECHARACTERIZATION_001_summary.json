@@ -1,0 +1,400 @@
+{
+  "artifact_id": "D5-DES-STAT-TIER1-RECHARACTERIZATION-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-16T23:34:07.562513+00:00",
+  "git_commit": "9dc800b06c6371494a01abbf11d5d04a6b0ec707",
+  "config": {
+    "fast": false,
+    "n_pre": 30,
+    "n_post": 10,
+    "n_units": 18,
+    "replicates_single_cell": 10,
+    "replicates_legacy": 5,
+    "replicates_multicell": 5,
+    "treatment_probability_default": 0.35,
+    "rerandomization_max_iter": 200,
+    "rerandomization_target_imbalance": 0.01,
+    "random_state_base": 20260618,
+    "include_contract_guardrail": true,
+    "min_control_threshold": 3
+  },
+  "lanes": [
+    "single_cell_tier1",
+    "legacy_reference",
+    "multicell_per_cell_only"
+  ],
+  "designs": [
+    {
+      "design_inventory_id": "DES-001",
+      "lane": "single_cell_tier1",
+      "label": "greedy_corrected",
+      "registry_key": "greedy_match_markets",
+      "base_randomizer_cls": "greedy_match_markets",
+      "is_rerandomization_wrapper": false,
+      "design_kwargs": {
+        "feasibility_policy": "control_reservation",
+        "min_control_units": 3
+      },
+      "n_test_grps": 1
+    },
+    {
+      "design_inventory_id": "DES-002",
+      "lane": "single_cell_tier1",
+      "label": "complete_randomization",
+      "registry_key": "completerandomization",
+      "base_randomizer_cls": "CompleteRandomization",
+      "is_rerandomization_wrapper": false,
+      "design_kwargs": {},
+      "n_test_grps": 1
+    },
+    {
+      "design_inventory_id": "DES-003",
+      "lane": "single_cell_tier1",
+      "label": "balanced_randomization",
+      "registry_key": "balancedrandomization",
+      "base_randomizer_cls": "BalancedRandomization",
+      "is_rerandomization_wrapper": false,
+      "design_kwargs": {},
+      "n_test_grps": 1
+    },
+    {
+      "design_inventory_id": "DES-004",
+      "lane": "single_cell_tier1",
+      "label": "stratified_corrected",
+      "registry_key": "stratifiedrandomization",
+      "base_randomizer_cls": "StratifiedRandomization",
+      "is_rerandomization_wrapper": false,
+      "design_kwargs": {
+        "stratification_policy": "adaptive_strata"
+      },
+      "n_test_grps": 1
+    },
+    {
+      "design_inventory_id": "DES-006",
+      "lane": "single_cell_tier1",
+      "label": "rerandomization",
+      "registry_key": "completerandomization",
+      "base_randomizer_cls": "CompleteRandomization",
+      "is_rerandomization_wrapper": true,
+      "design_kwargs": {},
+      "n_test_grps": 1
+    },
+    {
+      "design_inventory_id": "DES-001",
+      "lane": "legacy_reference",
+      "label": "greedy_legacy",
+      "registry_key": "greedy_match_markets",
+      "base_randomizer_cls": "greedy_match_markets",
+      "is_rerandomization_wrapper": false,
+      "design_kwargs": {
+        "feasibility_policy": "legacy",
+        "min_control_units": 3
+      },
+      "n_test_grps": 1
+    },
+    {
+      "design_inventory_id": "DES-004",
+      "lane": "legacy_reference",
+      "label": "stratified_legacy",
+      "registry_key": "stratifiedrandomization",
+      "base_randomizer_cls": "StratifiedRandomization",
+      "is_rerandomization_wrapper": false,
+      "design_kwargs": {
+        "stratification_policy": "legacy"
+      },
+      "n_test_grps": 1
+    },
+    {
+      "design_inventory_id": "DES-011",
+      "lane": "legacy_reference",
+      "label": "multicell_legacy",
+      "registry_key": "completerandomization",
+      "base_randomizer_cls": "CompleteRandomization",
+      "is_rerandomization_wrapper": false,
+      "design_kwargs": {
+        "multicell_policy": "legacy",
+        "min_control_units": 3
+      },
+      "n_test_grps": 2
+    },
+    {
+      "design_inventory_id": "DES-011",
+      "lane": "multicell_per_cell_only",
+      "label": "multicell_corrected",
+      "registry_key": "completerandomization",
+      "base_randomizer_cls": "CompleteRandomization",
+      "is_rerandomization_wrapper": false,
+      "design_kwargs": {
+        "multicell_policy": "control_reservation",
+        "min_control_units": 3
+      },
+      "n_test_grps": 2
+    },
+    {
+      "design_inventory_id": "DES-011",
+      "lane": "multicell_per_cell_only",
+      "label": "multicell_legacy",
+      "registry_key": "completerandomization",
+      "base_randomizer_cls": "CompleteRandomization",
+      "is_rerandomization_wrapper": false,
+      "design_kwargs": {
+        "multicell_policy": "legacy",
+        "min_control_units": 3
+      },
+      "n_test_grps": 2
+    }
+  ],
+  "worlds": {
+    "single_cell": [
+      "balanced_markets",
+      "weak_donor_pool",
+      "high_unit_heterogeneity",
+      "small_n_markets",
+      "high_pre_period_noise",
+      "strong_seasonality",
+      "trend_mismatch",
+      "sparse_outcomes",
+      "spend_imbalance",
+      "geographic_cluster_correlation",
+      "assignment_infeasibility",
+      "missing_covariates",
+      "outlier_markets",
+      "unstable_pre_period",
+      "matched_market_poor_match_world",
+      "rerandomization_selection_effect_world",
+      "stratification_poor_strata_world",
+      "treatment_pool_exhaustion_world"
+    ],
+    "multicell": [
+      "balanced_two_cell",
+      "balanced_three_cell",
+      "shared_control_overload_world",
+      "pooled_claim_trap_world",
+      "cell_size_imbalance",
+      "concurrent_experiment_pressure"
+    ]
+  },
+  "aggregate_results": {
+    "single_cell_tier1:greedy_corrected": {
+      "design_inventory_id": "DES-001",
+      "lane": "single_cell_tier1",
+      "label": "greedy_corrected",
+      "n_runs": 1100,
+      "assignment_success_rate": 0.9545454545454546,
+      "control_violation_rate": 0.0,
+      "block_rate": 0.045454545454545456,
+      "mean_max_smd": 0.5862078397888353
+    },
+    "single_cell_tier1:complete_randomization": {
+      "design_inventory_id": "DES-002",
+      "lane": "single_cell_tier1",
+      "label": "complete_randomization",
+      "n_runs": 900,
+      "assignment_success_rate": 0.9444444444444444,
+      "control_violation_rate": 0.0,
+      "block_rate": 0.05555555555555555,
+      "mean_max_smd": 0.38073269332513976
+    },
+    "single_cell_tier1:balanced_randomization": {
+      "design_inventory_id": "DES-003",
+      "lane": "single_cell_tier1",
+      "label": "balanced_randomization",
+      "n_runs": 900,
+      "assignment_success_rate": 0.9444444444444444,
+      "control_violation_rate": 0.002352941176470588,
+      "block_rate": 0.057777777777777775,
+      "mean_max_smd": 0.3576505613701057
+    },
+    "single_cell_tier1:stratified_corrected": {
+      "design_inventory_id": "DES-004",
+      "lane": "single_cell_tier1",
+      "label": "stratified_corrected",
+      "n_runs": 900,
+      "assignment_success_rate": 0.9444444444444444,
+      "control_violation_rate": 0.0,
+      "block_rate": 0.05555555555555555,
+      "mean_max_smd": 0.10800355917098184
+    },
+    "single_cell_tier1:rerandomization": {
+      "design_inventory_id": "DES-006",
+      "lane": "single_cell_tier1",
+      "label": "rerandomization",
+      "n_runs": 900,
+      "assignment_success_rate": 0.9444444444444444,
+      "control_violation_rate": 0.0,
+      "block_rate": 0.05555555555555555,
+      "mean_max_smd": 0.38073269332513976
+    },
+    "legacy_reference:greedy_legacy": {
+      "design_inventory_id": "DES-001",
+      "lane": "legacy_reference",
+      "label": "greedy_legacy",
+      "n_runs": 450,
+      "assignment_success_rate": 0.9444444444444444,
+      "control_violation_rate": 0.2211764705882353,
+      "block_rate": 0.9444444444444444,
+      "mean_max_smd": 0.6467356928026545
+    },
+    "legacy_reference:stratified_legacy": {
+      "design_inventory_id": "DES-004",
+      "lane": "legacy_reference",
+      "label": "stratified_legacy",
+      "n_runs": 450,
+      "assignment_success_rate": 0.9444444444444444,
+      "control_violation_rate": 0.0,
+      "block_rate": 0.9444444444444444,
+      "mean_max_smd": 0.9030434029821387
+    },
+    "multicell_per_cell_only:multicell_corrected": {
+      "design_inventory_id": "DES-011",
+      "lane": "multicell_per_cell_only",
+      "label": "multicell_corrected",
+      "n_runs": 450,
+      "assignment_success_rate": 1.0,
+      "control_violation_rate": 0.0,
+      "block_rate": 0.0,
+      "mean_max_smd": 1.6355350695383792
+    },
+    "multicell_per_cell_only:multicell_legacy": {
+      "design_inventory_id": "DES-011",
+      "lane": "multicell_per_cell_only",
+      "label": "multicell_legacy",
+      "n_runs": 450,
+      "assignment_success_rate": 1.0,
+      "control_violation_rate": 0.0,
+      "block_rate": 0.0,
+      "mean_max_smd": 1.721986124873091
+    }
+  },
+  "legacy_vs_corrected": {
+    "DES-001": {
+      "legacy_label": "greedy_legacy",
+      "corrected_label": "greedy_corrected",
+      "n_paired": 425,
+      "median_smd_change_corrected_minus_legacy": -0.055216987763195155,
+      "control_violations_legacy": 94,
+      "control_violations_corrected": 0,
+      "high_smd_blocks_legacy": 260,
+      "high_smd_blocks_corrected": 231
+    },
+    "DES-004": {
+      "legacy_label": "stratified_legacy",
+      "corrected_label": "stratified_corrected",
+      "n_paired": 425,
+      "median_smd_change_corrected_minus_legacy": -0.81270684154212,
+      "control_violations_legacy": 0,
+      "control_violations_corrected": 0,
+      "high_smd_blocks_legacy": 374,
+      "high_smd_blocks_corrected": 13
+    },
+    "DES-011": {
+      "legacy_label": "multicell_legacy",
+      "corrected_label": "multicell_corrected",
+      "n_paired": 150,
+      "median_smd_change_corrected_minus_legacy": 0.05393804628918775,
+      "control_violations_legacy": 0,
+      "control_violations_corrected": 0,
+      "high_smd_blocks_legacy": 0,
+      "high_smd_blocks_corrected": 0
+    }
+  },
+  "pairwise_comparisons": [
+    {
+      "comparison_id": "complete_vs_balanced",
+      "median_smd_a": 0.3407985751460906,
+      "median_smd_b": 0.3573080916475164,
+      "median_smd_change_a_minus_b": -0.016509516501425847,
+      "note": "single_cell_tier1 lane only"
+    },
+    {
+      "comparison_id": "complete_vs_stratified_corrected",
+      "median_smd_a": 0.3407985751460906,
+      "median_smd_b": 0.10800355917098184,
+      "median_smd_change_a_minus_b": 0.23279501597510874,
+      "note": "single_cell_tier1 lane only"
+    },
+    {
+      "comparison_id": "complete_vs_rerandomization",
+      "median_smd_a": 0.3407985751460906,
+      "median_smd_b": 0.3407985751460906,
+      "median_smd_change_a_minus_b": 0.0,
+      "note": "single_cell_tier1 lane only"
+    },
+    {
+      "comparison_id": "greedy_corrected_vs_complete",
+      "median_smd_a": 0.4803258369099481,
+      "median_smd_b": 0.3407985751460906,
+      "median_smd_change_a_minus_b": 0.13952726176385755,
+      "note": "single_cell_tier1 lane only"
+    }
+  ],
+  "failure_summary": {
+    "n_assignment_failures": 300,
+    "n_blocks": 1102,
+    "greedy_corrected_control_violations": 50,
+    "greedy_legacy_control_violations": 119,
+    "stratified_poor_strata_high_smd_legacy": 24,
+    "stratified_poor_strata_high_smd_corrected": 1
+  },
+  "balance_summary": {
+    "corrected_mean_max_smd_by_design": {
+      "single_cell_tier1:greedy_corrected": 0.5862078397888353,
+      "single_cell_tier1:complete_randomization": 0.38073269332513976,
+      "single_cell_tier1:balanced_randomization": 0.3576505613701057,
+      "single_cell_tier1:stratified_corrected": 0.10800355917098184,
+      "single_cell_tier1:rerandomization": 0.38073269332513976
+    }
+  },
+  "multicell_summary": {
+    "pooled_claims_blocked": true,
+    "cell_collision_rate": 0.0,
+    "mean_worst_cell_smd_corrected": 1.6355350695383792
+  },
+  "contract_guardrail_summary": {
+    "downstream_may_proceed": false,
+    "contract_complete_allowed": false,
+    "pooled_claims_allowed": false
+  },
+  "supersession": {
+    "historical_artifact_id": "D5-DES-STAT-TIER1-001",
+    "historical_report": "docs/track_d/D5_DES_STAT_TIER1_001_REPORT.md",
+    "supersedes_default_comparisons_for": [
+      "DES-001",
+      "DES-004",
+      "DES-011"
+    ],
+    "historical_evidence_retained": true,
+    "note": "Original tier-1 archive remains historical; greedy/stratified/multicell default comparisons in that report are superseded for corrected-default policy.",
+    "historical_baseline_notes": {
+      "greedy_legacy_control_floor_rate_approx": 0.28,
+      "stratified_legacy_high_smd_reduction_approx": 0.82,
+      "multicell_pooled_claims_blocked": true
+    }
+  },
+  "verdict": "tier1_recharacterized_mixed_method_specific_restrictions",
+  "limitations": [
+    "Design-only recharacterization; no promotion or downstream authorization.",
+    "Multi-cell lane excluded from single-cell rankings.",
+    "Legacy lanes are reference-only, not supported defaults."
+  ],
+  "runtime": {
+    "total_attempted_runs": 6500,
+    "expected_attempted_runs": 6500,
+    "completed_runs": 6200,
+    "failed_runs": 300,
+    "skipped_runs": 0,
+    "elapsed_seconds": 53.301,
+    "per_lane_counts": {
+      "single_cell_tier1": 4700,
+      "legacy_reference": 900,
+      "multicell_per_cell_only": 900
+    },
+    "expected_per_lane_counts": {
+      "single_cell_tier1": 4700,
+      "legacy_reference": 900,
+      "multicell_per_cell_only": 900,
+      "total": 6500
+    },
+    "replicate_semantics": "replicates \u00d7 seeds independent (matches D5-DES-STAT-TIER1-001); not replicates divided across seeds"
+  }
+}

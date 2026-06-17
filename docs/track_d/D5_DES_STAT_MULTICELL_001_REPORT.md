@@ -149,7 +149,7 @@ DCM-006 evidence updated; pooled rows remain blocked.
 
 ## 31. Follow-up work
 
-- Multi-cell re-characterization across BalancedRandomization / greedy
+- ✅ Tier-1 recharacterization — [`D5_DES_STAT_TIER1_RECHARACTERIZATION_001_REPORT.md`](D5_DES_STAT_TIER1_RECHARACTERIZATION_001_REPORT.md)
 - DESIGN_GUARDRAIL_ENFORCEMENT_001
 
 ## 32. Governance verdict
