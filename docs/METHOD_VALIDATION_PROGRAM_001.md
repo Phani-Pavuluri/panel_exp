@@ -309,6 +309,8 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 ---
 
+**Estimator readout integration (2026-06-18):** Layer 2/3 validation may continue using native `run_analysis()` for characterization. Product/downstream consumption requires governed `ReadoutEvidence` ([`ESTIMATOR_READOUT_GUARDRAIL_INTEGRATION_001.md`](ESTIMATOR_READOUT_GUARDRAIL_INTEGRATION_001.md)); gateway enforcement deferred to `DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001`.
+
 ## 13. Stop condition
 
 | Criterion | Status |

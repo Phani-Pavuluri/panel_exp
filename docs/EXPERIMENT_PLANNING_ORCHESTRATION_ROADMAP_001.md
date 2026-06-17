@@ -230,6 +230,7 @@ Must define:
 | [`GEOMETRY_BRIDGE_REQUIREMENTS_001.md`](GEOMETRY_BRIDGE_REQUIREMENTS_001.md) | Bridge-required combinations cannot be recommended without bridge |
 | [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) | Readout targets must match recommended package |
 | [`TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md`](TRIPLY_ROBUST_ESTIMATOR_AUDIT_PROGRAM_001.md) | Future estimator families enter ranking only after own audit ladder |
+| [`ESTIMATOR_READOUT_GUARDRAIL_INTEGRATION_001.md`](ESTIMATOR_READOUT_GUARDRAIL_INTEGRATION_001.md) | Governed readout adapter exists; native `run_analysis()` not downstream-authorized; planning/orchestration must require `ReadoutEvidence` |
 | F-DECISION / TrustReport | Role assignment paused until foundation + suitability v2 |
 
 ---

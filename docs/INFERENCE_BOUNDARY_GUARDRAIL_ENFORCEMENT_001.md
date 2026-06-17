@@ -7,6 +7,8 @@ Downstream roles (TrustReport, CalibrationSignal, MMM, LLM, production) always f
 
 **Supersedes design-time gap:** `combination_status=not_evaluated` → concrete DCM status at readout boundary via `build_guarded_readout()`.
 
+**Extended by:** `ESTIMATOR-READOUT-GUARDRAIL-INTEGRATION-001` — governed adapter available; `run_analysis()` is native/internal only until `DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001`.
+
 ## Summary
 
 Closes the design-time `combination_status=not_evaluated` gap by attaching estimator/inference identity at readout construction, resolving DCM rows, and re-running combination + authoritative enforcement.

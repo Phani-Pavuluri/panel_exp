@@ -645,4 +645,6 @@ All rows: **`contract_required`** · **`not_contract_validated`** · **not suita
 
 **Validation test plan:** [`DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md`](DESIGN_CONTRACT_VALIDATION_TEST_PLAN_001.md) ✅ **Accepted** — contract fields require schema validation tests before governed product consumption; **tests not implemented**.
 
+**Estimator readout integration (2026-06-18):** [`ESTIMATOR_READOUT_GUARDRAIL_INTEGRATION_001.md`](ESTIMATOR_READOUT_GUARDRAIL_INTEGRATION_001.md) provides `build_estimator_readout()` / `run_governed_analysis()` for governed `ReadoutEvidence`. Native `run_analysis()` output remains **internal** and is **not** downstream-authorized for TrustReport, CalibrationSignal, MMM, or LLM until `DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001`.
+
 *DESIGN-OUTPUT-CONTRACT-001 v1.1.1 — Validation tests planned; next = DESIGN_CONTRACT_VALIDATOR_IMPLEMENTATION_PLAN_001.*
