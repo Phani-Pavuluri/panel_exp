@@ -30,6 +30,10 @@ from panel_exp.validation.downstream_readout_authorization_001 import (
     evaluate_downstream_readout_authorization,
     extract_readout_evidence_object,
 )
+from panel_exp.validation.trustreport_eligibility_001 import (
+    TrustReportEmpiricalEvidence,
+    evaluate_trustreport_eligibility,
+)
 
 ReadoutEvidenceMapping = dict[str, Any]
 
@@ -450,6 +454,19 @@ def evaluate_bundle_downstream_authorization(
     return result.to_dict()
 
 
+def _extract_empirical_evidence_from_bundle(
+    bundle: Mapping[str, Any],
+) -> TrustReportEmpiricalEvidence | None:
+    """Optional empirical evidence block on bundle evidence."""
+    evidence = bundle.get("evidence") or {}
+    if not isinstance(evidence, Mapping):
+        return None
+    raw = evidence.get("trustreport_empirical_evidence") or evidence.get(
+        "empirical_validation_evidence"
+    )
+    return TrustReportEmpiricalEvidence.from_dict(raw) if raw else None
+
+
 def build_trust_report_decision_inputs_from_bundle(
     bundle: Mapping[str, Any],
     *,
@@ -474,12 +491,20 @@ def build_trust_report_decision_inputs_from_bundle(
     )
     auth_dict = auth_result.to_dict()
 
+    empirical = _extract_empirical_evidence_from_bundle(bundle)
+    elig_result = evaluate_trustreport_eligibility(
+        readout_evidence=governed_readout,
+        empirical_evidence=empirical,
+    )
+    elig_dict = elig_result.to_dict()
+
     if auth_result.status == STATUS_BLOCKED or not _bundle_has_governed_readout_evidence(bundle):
         extraction_warnings.append(
             f"{DOWNSTREAM_READOUT_NOT_AUTHORIZED}: "
             f"status={auth_result.status}; "
             f"codes={','.join(auth_result.reason_codes)}"
         )
+    trust_report_promotion_candidate = elig_result.eligible_for_promotion
     trust_report_ready = False
 
     return TrustReportDecisionInputs(
@@ -492,6 +517,8 @@ def build_trust_report_decision_inputs_from_bundle(
         allow_sensitivity_in_comparison=allow_sensitivity_in_comparison,
         extraction_warnings=tuple(extraction_warnings),
         downstream_authorization=auth_dict,
+        trustreport_eligibility=elig_dict,
+        trust_report_promotion_candidate=trust_report_promotion_candidate,
         trust_report_ready=trust_report_ready,
     )
 

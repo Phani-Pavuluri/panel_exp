@@ -72,6 +72,8 @@ class TrustReportDecisionInputs:
     mmm_status: str = MMM_DEFAULT_STATUS
     extraction_warnings: Tuple[str, ...] = ()
     downstream_authorization: Mapping[str, Any] | None = None
+    trustreport_eligibility: Mapping[str, Any] | None = None
+    trust_report_promotion_candidate: bool = False
     trust_report_ready: bool = False
 
 

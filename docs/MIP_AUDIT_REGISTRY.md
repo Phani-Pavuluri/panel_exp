@@ -1148,6 +1148,18 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 
 ---
 
+## TRUSTREPORT-ELIGIBILITY-VALIDATION-001 (2026-06-17)
+
+**Artifact:** [`docs/track_d/TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md`](track_d/TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md) · [`panel_exp/validation/trustreport_eligibility_001.py`](../panel_exp/validation/trustreport_eligibility_001.py) · [`tests/validation/test_trustreport_eligibility_validation_001.py`](../tests/validation/test_trustreport_eligibility_validation_001.py)
+
+**Status:** **`trustreport_eligibility_mixed_with_restrictions_no_authorization`**
+
+**Verdict:** TrustReport eligibility evaluator and D5 empirical harness implemented. DCM-001/002/006/008 classified ELIGIBLE_WITH_RESTRICTIONS; DCM-003/007 INELIGIBLE; DCM-004/005 INSUFFICIENT_EVIDENCE. Zero promotion candidates. TrustReport authorization remains BLOCKED.
+
+**Next:** **`TRUSTREPORT_DOWNSTREAM_PROMOTION_001`** (role-specific promotion evidence).
+
+---
+
 ## METHOD-CODE-INVENTORY-001 (2026-06-04)
 
 **Artifact:** [`docs/METHOD_CODE_INVENTORY_001.md`](METHOD_CODE_INVENTORY_001.md) · [`docs/track_d/archives/METHOD_CODE_INVENTORY_001.json`](track_d/archives/METHOD_CODE_INVENTORY_001.json)

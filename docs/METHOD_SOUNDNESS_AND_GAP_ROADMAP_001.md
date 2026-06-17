@@ -510,7 +510,9 @@ Per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)
 
 **Estimator readout integration (2026-06-18):** Runtime adapter wires native results to inference-boundary guardrails when opted in. TBR (DCM-003) and TBRRidge (DCM-005) remain **blocked at research** per combination registry until additional D5 statistical evidence — adapter routes correctly; guardrail BLOCK is expected, not adapter failure.
 
-**Downstream authorization gateway (2026-06-03):** [`DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md`](DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md) implemented. All production-facing downstream roles (TrustReport, CalibrationSignal, MMM, LLM, production recommendation, automated budget action, external export) remain BLOCKED. Future promotion requires separate role-specific evidence.
+**Downstream authorization gateway (2026-06-03):** [`DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md`](DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md) implemented. All production-facing downstream roles remain BLOCKED.
+
+**TrustReport eligibility validation (2026-06-17):** [`TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md`](track_d/TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md) classifies DCM combinations for promotion candidacy; zero candidates; authorization separate and still BLOCKED.
 
 ## 11. Stop condition
 

@@ -209,7 +209,7 @@ No `force=True`, `override_authorization`, `bypass_authorization`, or `ignore_au
 
 ## 29. Current governance status
 
-Gateway implemented. All downstream production roles blocked. Future promotion requires separate role-specific evidence artifacts.
+Gateway implemented. All downstream production roles blocked. TrustReport eligibility validation implemented ([`TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md`](track_d/TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md)); zero promotion candidates; authorization still BLOCKED.
 
 ## 30. Remaining limitations
 

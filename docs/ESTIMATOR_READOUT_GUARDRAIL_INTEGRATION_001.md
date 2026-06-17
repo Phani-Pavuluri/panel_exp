@@ -141,7 +141,7 @@ No `force=True`, `override_guardrail`, or `bypass_guardrail` APIs. Downstream ro
 
 ## 29. Follow-up work
 
-- **`DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001`** — ✅ implemented; fail-closed for TrustReport/CalibrationSignal/MMM/LLM
+- **`TRUSTREPORT_ELIGIBILITY_VALIDATION_001`** — ✅ implemented; mixed restrictions; zero promotion candidates
 - Promote characterized combinations only after statistical validation artifacts complete
 
 ## 30. Verdict
