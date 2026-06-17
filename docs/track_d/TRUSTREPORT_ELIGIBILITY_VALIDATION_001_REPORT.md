@@ -116,7 +116,7 @@ Future `TRUSTREPORT_DOWNSTREAM_PROMOTION_001` must supply role-specific approved
 
 ## 30. Recommended next work
 
-Role-specific TrustReport promotion artifact; positive-scenario coverage remediation for SCM-JK and DID-bootstrap; TBRRidge path-specific statistical follow-up.
+See [`TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md`](../TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md) for prioritized `D5-TRUST-*` remediation artifacts. Sequence: remediation → `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` → `TRUSTREPORT_DOWNSTREAM_PROMOTION_001`.
 
 ## 31. Governance verdict
 

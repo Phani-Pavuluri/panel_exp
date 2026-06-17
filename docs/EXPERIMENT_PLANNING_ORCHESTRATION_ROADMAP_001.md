@@ -233,6 +233,7 @@ Must define:
 | [`ESTIMATOR_READOUT_GUARDRAIL_INTEGRATION_001.md`](ESTIMATOR_READOUT_GUARDRAIL_INTEGRATION_001.md) | Governed readout adapter exists; native `run_analysis()` not downstream-authorized |
 | [`DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md`](DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md) | Gateway implemented; all production downstream roles blocked |
 | [`TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md`](track_d/TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md) | Eligibility validation; mixed restrictions; zero promotion candidates |
+| [`TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md`](TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md) | Remediation plan; D5-TRUST follow-ups; promotion blocked |
 | F-DECISION / TrustReport | Role assignment paused until foundation + suitability v2 |
 
 ---

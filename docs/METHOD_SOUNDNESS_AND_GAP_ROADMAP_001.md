@@ -510,9 +510,9 @@ Per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)
 
 **Estimator readout integration (2026-06-18):** Runtime adapter wires native results to inference-boundary guardrails when opted in. TBR (DCM-003) and TBRRidge (DCM-005) remain **blocked at research** per combination registry until additional D5 statistical evidence — adapter routes correctly; guardrail BLOCK is expected, not adapter failure.
 
-**Downstream authorization gateway (2026-06-03):** [`DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md`](DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md) implemented. All production-facing downstream roles remain BLOCKED.
+**TrustReport eligibility validation (2026-06-17):** [`TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md`](track_d/TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md) implemented. All production-facing downstream roles remain BLOCKED.
 
-**TrustReport eligibility validation (2026-06-17):** [`TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md`](track_d/TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md) classifies DCM combinations for promotion candidacy; zero candidates; authorization separate and still BLOCKED.
+**TrustReport remediation plan (2026-06-17):** [`TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md`](TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md) — SCM+JK and DID+bootstrap positive-coverage failures drive prioritized `D5-TRUST-*` revalidation; reassessment before promotion.
 
 ## 11. Stop condition
 

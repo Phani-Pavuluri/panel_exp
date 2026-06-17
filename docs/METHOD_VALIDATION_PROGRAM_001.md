@@ -309,7 +309,9 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 ---
 
-**TrustReport eligibility (2026-06-17):** Promotion candidacy evaluation via [`TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md`](track_d/TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md). Eligibility separate from authorization; zero promotion candidates in current evidence.
+**TrustReport eligibility (2026-06-17):** Promotion candidacy evaluation via [`TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md`](track_d/TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md). Zero promotion candidates; authorization BLOCKED.
+
+**TrustReport remediation plan (2026-06-17):** [`TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md`](TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md) defines `D5-TRUST-*` follow-ups and reassessment sequence; promotion blocked.
 
 ## 13. Stop condition
 
