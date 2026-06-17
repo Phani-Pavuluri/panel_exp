@@ -1156,7 +1156,19 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 
 **Verdict:** TrustReport eligibility evaluator and D5 empirical harness implemented. DCM-001/002/006/008 classified ELIGIBLE_WITH_RESTRICTIONS; DCM-003/007 INELIGIBLE; DCM-004/005 INSUFFICIENT_EVIDENCE. Zero promotion candidates. TrustReport authorization remains BLOCKED.
 
-**Next:** **`TRUSTREPORT_DOWNSTREAM_PROMOTION_001`** (role-specific promotion evidence).
+**Next:** ✅ **`TRUSTREPORT-ELIGIBILITY-REMEDIATION-PLAN-001`**.
+
+---
+
+## TRUSTREPORT-ELIGIBILITY-REMEDIATION-PLAN-001 (2026-06-17)
+
+**Artifact:** [`docs/TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md`](TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md)
+
+**Status:** **`trustreport_eligibility_remediation_planned_promotion_blocked`**
+
+**Verdict:** Method-specific remediation and revalidation program defined from eligibility findings. Root-cause taxonomy, threshold tiers, seven D5-TRUST follow-up artifacts, semantic classes, prioritization, and reassessment criteria documented. No promotion; TrustReport authorization remains BLOCKED.
+
+**Next:** `D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001` → … → `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` → `TRUSTREPORT_DOWNSTREAM_PROMOTION_001`.
 
 ---
 
