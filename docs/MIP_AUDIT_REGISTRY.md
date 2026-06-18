@@ -1169,6 +1169,7 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 **Verdict:** Positive-effect undercoverage in eligibility validation explained by percent-vs-level metric mismatch. Level-scale coverage high; percent-scale reproduces ~7–9%. Interval centering not dominant failure; JK wider than LOO empirical spread. Causal-interval TrustReport not supported. Null-monitor/diagnostic classes only. **No TrustReport authorization.**
 
 **Next:** **`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`**; fix D5-STAT-SCM-JK-001 harness metrics in separate artifact.
+**Next:** ✅ **`TRUSTREPORT-ELIGIBILITY-REMEDIATION-PLAN-001`**.
 
 ---
 
@@ -1179,6 +1180,9 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 **Status:** **`trustreport_eligibility_remediation_planned_promotion_blocked`**
 
 **Verdict:** Remediation sequencing plan. D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001 complete. DID-bootstrap and eligibility reassessment remain planned.
+**Verdict:** Method-specific remediation and revalidation program defined from eligibility findings. Root-cause taxonomy, threshold tiers, seven D5-TRUST follow-up artifacts, semantic classes, prioritization, and reassessment criteria documented. No promotion; TrustReport authorization remains BLOCKED.
+
+**Next:** `D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001` → … → `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` → `TRUSTREPORT_DOWNSTREAM_PROMOTION_001`.
 
 ---
 

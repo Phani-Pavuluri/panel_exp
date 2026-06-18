@@ -242,7 +242,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Status:** **active** — authoritative method-foundation sequence  
 **Verdict:** **Pauses** trust-framework / method-role expansion until layers 1–5 complete (code inventory → literature → implementation → statistical OC → combination matrix). Prior synthesis and MCELL-first chains are **evidence only**, not sequencing authority.
 
-**Ordered next:** ✅ tier-1 → ✅ greedy → ✅ stratified → ✅ multi-cell → ✅ tier-1 recharacterization → ✅ design combination execution → ✅ guardrail enforcement → ✅ inference-boundary enforcement → ✅ estimator readout adapter → ✅ downstream readout authorization gateway → ✅ **TrustReport eligibility validation** → TrustReport downstream promotion → CalibrationSignal/MMM promotion → trust-framework (roles paused).
+**Ordered next:** ✅ tier-1 → ✅ greedy → ✅ stratified → ✅ multi-cell → ✅ tier-1 recharacterization → ✅ design combination execution → ✅ guardrail enforcement → ✅ inference-boundary enforcement → ✅ estimator readout adapter → ✅ downstream readout authorization gateway → ✅ TrustReport eligibility validation → ✅ **TrustReport eligibility remediation plan** → method-specific revalidation (`D5-TRUST-*`) → `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` → `TRUSTREPORT_DOWNSTREAM_PROMOTION_001` → downstream authorization update → CalibrationSignal/MMM promotion → trust-framework (roles paused).
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 
