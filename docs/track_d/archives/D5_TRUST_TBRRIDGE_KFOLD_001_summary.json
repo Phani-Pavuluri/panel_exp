@@ -1,0 +1,534 @@
+{
+  "artifact_id": "D5-TRUST-TBRRIDGE-KFOLD-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-18T21:06:26.503206+00:00",
+  "git_commit": "77b34a5eb0e05d1975b20ad0526f00bbcf3f2e4c",
+  "config": {
+    "fast": false,
+    "n_replicates": 3,
+    "k_folds": 5,
+    "alpha": 0.05,
+    "train_length": 28,
+    "test_length": 8,
+    "canonical_scale": "level_mean_relative_percent_injection",
+    "null_directional_threshold": 500.0
+  },
+  "worlds": [
+    "clean_null",
+    "clean_positive_effect",
+    "clean_negative_effect",
+    "weak_signal",
+    "strong_signal",
+    "serial_correlation",
+    "high_serial_correlation",
+    "heteroskedasticity",
+    "regime_shift",
+    "post_treatment_shock",
+    "pre_trend_violation",
+    "poor_pre_fit",
+    "small_pre_period",
+    "large_pre_period",
+    "small_donor_set",
+    "ridge_dominant",
+    "low_noise_null",
+    "placebo_null"
+  ],
+  "effect_sizes": [
+    0.0,
+    0.03,
+    0.08,
+    0.12,
+    -0.05
+  ],
+  "fold_variants": [
+    "random_kfold",
+    "blocked_time_kfold",
+    "forward_chaining_time_series_kfold"
+  ],
+  "run_counts": {
+    "total_runs": 178,
+    "successful_runs": 178,
+    "failed_runs": 0,
+    "runtime_seconds": 20.02
+  },
+  "point_estimate_results": {
+    "mean_bias_clean_positive": -393.2389925183539,
+    "sign_accuracy_positive": 0.017094017094017096
+  },
+  "fold_diagnostics": {
+    "variants": {
+      "random_kfold": "Production legacy kfold(); blocked consecutive pre-period holdouts (not sklearn random unit KFold).",
+      "blocked_time_kfold": "TimeSeriesKfold rolling blocked holdouts on pre-period.",
+      "forward_chaining_time_series_kfold": "TimeSeriesKfold expanding / forward-chaining pre-period blocks."
+    },
+    "mean_fold_std": 9.493781198108163
+  },
+  "coverage_by_effect": {
+    "0.0": {
+      "null_coverage": 1.0,
+      "type_i_error": 0.0,
+      "directional_type_i": 0.0,
+      "positive_coverage": null,
+      "negative_coverage": null,
+      "n_null": 48,
+      "n_positive": 0,
+      "n_negative": 0
+    },
+    "0.03": {
+      "null_coverage": null,
+      "type_i_error": null,
+      "directional_type_i": null,
+      "positive_coverage": 1.0,
+      "negative_coverage": null,
+      "n_null": 0,
+      "n_positive": 12,
+      "n_negative": 0
+    },
+    "0.08": {
+      "null_coverage": null,
+      "type_i_error": null,
+      "directional_type_i": null,
+      "positive_coverage": 0.967741935483871,
+      "negative_coverage": null,
+      "n_null": 0,
+      "n_positive": 93,
+      "n_negative": 0
+    },
+    "0.12": {
+      "null_coverage": null,
+      "type_i_error": null,
+      "directional_type_i": null,
+      "positive_coverage": 0.75,
+      "negative_coverage": null,
+      "n_null": 0,
+      "n_positive": 12,
+      "n_negative": 0
+    },
+    "-0.05": {
+      "null_coverage": null,
+      "type_i_error": null,
+      "directional_type_i": null,
+      "positive_coverage": null,
+      "negative_coverage": 1.0,
+      "n_null": 0,
+      "n_positive": 0,
+      "n_negative": 13
+    }
+  },
+  "coverage_by_world": {
+    "clean_null": {
+      "null_coverage": 1.0,
+      "type_i_error": 0.0,
+      "directional_type_i": 0.0,
+      "positive_coverage": 1.0,
+      "negative_coverage": 1.0,
+      "n_null": 9,
+      "n_positive": 3,
+      "n_negative": 1
+    },
+    "clean_positive_effect": {
+      "null_coverage": 1.0,
+      "type_i_error": 0.0,
+      "directional_type_i": 0.0,
+      "positive_coverage": 0.9090909090909091,
+      "negative_coverage": 1.0,
+      "n_null": 1,
+      "n_positive": 11,
+      "n_negative": 1
+    },
+    "clean_negative_effect": {
+      "null_coverage": null,
+      "type_i_error": null,
+      "directional_type_i": null,
+      "positive_coverage": null,
+      "negative_coverage": 1.0,
+      "n_null": 0,
+      "n_positive": 0,
+      "n_negative": 9
+    },
+    "weak_signal": {
+      "null_coverage": 1.0,
+      "type_i_error": 0.0,
+      "directional_type_i": 0.0,
+      "positive_coverage": 1.0,
+      "negative_coverage": 1.0,
+      "n_null": 1,
+      "n_positive": 11,
+      "n_negative": 1
+    },
+    "strong_signal": {
+      "null_coverage": 1.0,
+      "type_i_error": 0.0,
+      "directional_type_i": 0.0,
+      "positive_coverage": 0.8181818181818182,
+      "negative_coverage": 1.0,
+      "n_null": 1,
+      "n_positive": 11,
+      "n_negative": 1
+    },
+    "serial_correlation": {
+      "null_coverage": null,
+      "type_i_error": null,
+      "directional_type_i": null,
+      "positive_coverage": 1.0,
+      "negative_coverage": null,
+      "n_null": 0,
+      "n_positive": 9,
+      "n_negative": 0
+    },
+    "high_serial_correlation": {
+      "null_coverage": null,
+      "type_i_error": null,
+      "directional_type_i": null,
+      "positive_coverage": 1.0,
+      "negative_coverage": null,
+      "n_null": 0,
+      "n_positive": 9,
+      "n_negative": 0
+    },
+    "heteroskedasticity": {
+      "null_coverage": null,
+      "type_i_error": null,
+      "directional_type_i": null,
+      "positive_coverage": 1.0,
+      "negative_coverage": null,
+      "n_null": 0,
+      "n_positive": 9,
+      "n_negative": 0
+    },
+    "regime_shift": {
+      "null_coverage": null,
+      "type_i_error": null,
+      "directional_type_i": null,
+      "positive_coverage": 0.6666666666666666,
+      "negative_coverage": null,
+      "n_null": 0,
+      "n_positive": 9,
+      "n_negative": 0
+    },
+    "post_treatment_shock": {
+      "null_coverage": 1.0,
+      "type_i_error": 0.0,
+      "directional_type_i": 0.0,
+      "positive_coverage": null,
+      "negative_coverage": null,
+      "n_null": 9,
+      "n_positive": 0,
+      "n_negative": 0
+    },
+    "pre_trend_violation": {
+      "null_coverage": 1.0,
+      "type_i_error": 0.0,
+      "directional_type_i": 0.0,
+      "positive_coverage": null,
+      "negative_coverage": null,
+      "n_null": 9,
+      "n_positive": 0,
+      "n_negative": 0
+    },
+    "poor_pre_fit": {
+      "null_coverage": null,
+      "type_i_error": null,
+      "directional_type_i": null,
+      "positive_coverage": 1.0,
+      "negative_coverage": null,
+      "n_null": 0,
+      "n_positive": 9,
+      "n_negative": 0
+    },
+    "small_pre_period": {
+      "null_coverage": null,
+      "type_i_error": null,
+      "directional_type_i": null,
+      "positive_coverage": 1.0,
+      "negative_coverage": null,
+      "n_null": 0,
+      "n_positive": 9,
+      "n_negative": 0
+    },
+    "large_pre_period": {
+      "null_coverage": null,
+      "type_i_error": null,
+      "directional_type_i": null,
+      "positive_coverage": 1.0,
+      "negative_coverage": null,
+      "n_null": 0,
+      "n_positive": 9,
+      "n_negative": 0
+    },
+    "small_donor_set": {
+      "null_coverage": null,
+      "type_i_error": null,
+      "directional_type_i": null,
+      "positive_coverage": 1.0,
+      "negative_coverage": null,
+      "n_null": 0,
+      "n_positive": 9,
+      "n_negative": 0
+    },
+    "ridge_dominant": {
+      "null_coverage": null,
+      "type_i_error": null,
+      "directional_type_i": null,
+      "positive_coverage": 1.0,
+      "negative_coverage": null,
+      "n_null": 0,
+      "n_positive": 9,
+      "n_negative": 0
+    },
+    "low_noise_null": {
+      "null_coverage": 1.0,
+      "type_i_error": 0.0,
+      "directional_type_i": 0.0,
+      "positive_coverage": null,
+      "negative_coverage": null,
+      "n_null": 9,
+      "n_positive": 0,
+      "n_negative": 0
+    },
+    "placebo_null": {
+      "null_coverage": 1.0,
+      "type_i_error": 0.0,
+      "directional_type_i": 0.0,
+      "positive_coverage": null,
+      "negative_coverage": null,
+      "n_null": 9,
+      "n_positive": 0,
+      "n_negative": 0
+    }
+  },
+  "type_i_by_world": {
+    "clean_null": 0.0,
+    "clean_positive_effect": 0.0,
+    "clean_negative_effect": null,
+    "weak_signal": 0.0,
+    "strong_signal": 0.0,
+    "serial_correlation": null,
+    "high_serial_correlation": null,
+    "heteroskedasticity": null,
+    "regime_shift": null,
+    "post_treatment_shock": 0.0,
+    "pre_trend_violation": 0.0,
+    "poor_pre_fit": null,
+    "small_pre_period": null,
+    "large_pre_period": null,
+    "small_donor_set": null,
+    "ridge_dominant": null,
+    "low_noise_null": 0.0,
+    "placebo_null": 0.0
+  },
+  "type_i_by_fold_variant": {
+    "random_kfold": {
+      "null_coverage": 1.0,
+      "type_i_error": 0.0,
+      "directional_type_i": 0.0,
+      "positive_coverage": 0.9555555555555556,
+      "negative_coverage": 1.0,
+      "n_null": 18,
+      "n_positive": 45,
+      "n_negative": 7
+    },
+    "blocked_time_kfold": {
+      "null_coverage": 1.0,
+      "type_i_error": 0.0,
+      "directional_type_i": 0.0,
+      "positive_coverage": 0.9444444444444444,
+      "negative_coverage": 1.0,
+      "n_null": 15,
+      "n_positive": 36,
+      "n_negative": 3
+    },
+    "forward_chaining_time_series_kfold": {
+      "null_coverage": 1.0,
+      "type_i_error": 0.0,
+      "directional_type_i": 0.0,
+      "positive_coverage": 0.9444444444444444,
+      "negative_coverage": 1.0,
+      "n_null": 15,
+      "n_positive": 36,
+      "n_negative": 3
+    }
+  },
+  "sign_accuracy": 0.3539325842696629,
+  "leakage_diagnostics": {
+    "runs_with_leakage_flag": 0,
+    "mean_fold_instability": 9.493781198108163,
+    "fold_types": [
+      "random_kfold",
+      "blocked_time_kfold",
+      "forward_chaining_time_series_kfold"
+    ]
+  },
+  "variance_decomposition": {
+    "mean_variance_ratio": 3.4445175951490756,
+    "mean_interval_width": 49.27263849265232,
+    "mean_fold_std": 9.493781198108163,
+    "decomposition_note": "high_null_fpr = temporal_leakage + fold_dependence + estimator_bias + inappropriate_directional_threshold + variance_underestimation + scale_mismatch + semantic_misuse"
+  },
+  "prefit_relationships": {
+    "mean_prefit_rmse": 0.0,
+    "prefit_rmse_vs_directional_fpr": "high prefit_rmse correlates with unstable fold dispersion"
+  },
+  "ridge_relationships": {
+    "mean_ridge_alpha": 0.7068571428571429
+  },
+  "failure_summary": {
+    "n_fail": 0,
+    "failure_reasons": []
+  },
+  "policy_comparisons": [
+    {
+      "policy": {
+        "policy_id": "A",
+        "name": "current_random_kfold",
+        "description": "production legacy Kfold path (blocked pre-period holdouts)"
+      },
+      "metrics": {
+        "null_coverage": 1.0,
+        "type_i_error": 0.0,
+        "directional_type_i": 0.0,
+        "positive_coverage": 0.9555555555555556,
+        "negative_coverage": 1.0,
+        "n_null": 18,
+        "n_positive": 45,
+        "n_negative": 7
+      }
+    },
+    {
+      "policy": {
+        "policy_id": "B",
+        "name": "time_ordered_kfold",
+        "description": "TimeSeriesKfold expanding forward-chaining blocks"
+      },
+      "metrics": {
+        "null_coverage": 1.0,
+        "type_i_error": 0.0,
+        "directional_type_i": 0.0,
+        "positive_coverage": 0.9444444444444444,
+        "negative_coverage": 1.0,
+        "n_null": 15,
+        "n_positive": 36,
+        "n_negative": 3
+      }
+    },
+    {
+      "policy": {
+        "policy_id": "C",
+        "name": "blocked_time_kfold",
+        "description": "TimeSeriesKfold rolling blocked holdouts"
+      },
+      "metrics": {
+        "null_coverage": 1.0,
+        "type_i_error": 0.0,
+        "directional_type_i": 0.0,
+        "positive_coverage": 0.9444444444444444,
+        "negative_coverage": 1.0,
+        "n_null": 15,
+        "n_positive": 36,
+        "n_negative": 3
+      }
+    },
+    {
+      "policy": {
+        "policy_id": "D",
+        "name": "directional_diagnostic_only",
+        "description": "sign/ranking diagnostic; not causal interval"
+      },
+      "metrics": {
+        "null_coverage": 1.0,
+        "type_i_error": 0.0,
+        "directional_type_i": 0.0,
+        "positive_coverage": 0.9487179487179487,
+        "negative_coverage": 1.0,
+        "n_null": 48,
+        "n_positive": 117,
+        "n_negative": 13
+      }
+    },
+    {
+      "policy": {
+        "policy_id": "E",
+        "name": "prefit_gated",
+        "description": "acceptable pre-period fit only"
+      },
+      "metrics": {
+        "null_coverage": 1.0,
+        "type_i_error": 0.0,
+        "directional_type_i": 0.0,
+        "positive_coverage": 0.9555555555555556,
+        "negative_coverage": 1.0,
+        "n_null": 18,
+        "n_positive": 45,
+        "n_negative": 7
+      }
+    },
+    {
+      "policy": {
+        "policy_id": "F",
+        "name": "causal_interval_blocked",
+        "description": "DCM-005 registry block until reassessment"
+      },
+      "metrics": {
+        "null_coverage": 1.0,
+        "type_i_error": 0.0,
+        "directional_type_i": 0.0,
+        "positive_coverage": 0.9487179487179487,
+        "negative_coverage": 1.0,
+        "n_null": 48,
+        "n_positive": 117,
+        "n_negative": 13
+      }
+    }
+  ],
+  "production_defect_assessment": {
+    "decision": "method_unsuitable_for_causal_interval",
+    "directional_type_i_random_kfold": 0.0,
+    "directional_type_i_time_ordered": 0.0,
+    "interval_type_i_null": 0.0,
+    "null_interval_coverage": 1.0,
+    "mean_abs_null_point_estimate": 386.1259673095883,
+    "sign_accuracy_positive": 0.017094017094017096,
+    "rationale": [
+      "CV dispersion intervals cover zero on null worlds while level-scale point estimates remain far from zero and positive-effect sign accuracy collapses; readout is not a calibrated causal ATT interval."
+    ],
+    "recommended_correction_artifact": null
+  },
+  "semantic_classification": {
+    "verdict": "tbrridge_kfold_not_causal_interval_eligible",
+    "supported_roles": [
+      "directional_diagnostic",
+      "model_selection_diagnostic"
+    ],
+    "unsupported_roles": [
+      "restricted_causal_interval",
+      "trust_report",
+      "calibration_signal"
+    ],
+    "readout_type": "cross_validation_dispersion_interval_not_causal_att"
+  },
+  "trustreport_eligibility_implications": {
+    "dcm_005_kfold": "blocked_pending_placebo_and_reassessment",
+    "prior_harness_status": "directional_null_fpr_elevated",
+    "reassessment_required": true
+  },
+  "authorization_summary": {
+    "trust_report_authorized": false,
+    "trust_report_ready": false,
+    "trust_report_authorized_count": 0
+  },
+  "limitations": [
+    "Characterizes DCM-005 KFold only; Placebo and DCM-005 reassessment out of scope.",
+    "Level-scale truth contract; percent injection converted to level mean shift.",
+    "Legacy Kfold is blocked pre-period CV, not sklearn random unit KFold.",
+    "Does not authorize TrustReport or modify production inference code."
+  ],
+  "investigation_handoff": {
+    "follow_up_issues": [
+      "INV-TBRRIDGE-KFOLD-NULL-FPR-001"
+    ],
+    "resolved_issues": [],
+    "terminal_dispositions": [],
+    "next_artifact": "D5-TRUST-TBRRIDGE-PLACEBO-001"
+  },
+  "verdict": "tbrridge_kfold_not_causal_interval_eligible"
+}

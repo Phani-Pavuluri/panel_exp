@@ -1308,6 +1308,18 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 
 ---
 
+## D5-TRUST-TBRRIDGE-KFOLD-001 (2026-06-18)
+
+**Artifact:** [`docs/track_d/D5_TRUST_TBRRIDGE_KFOLD_001_REPORT.md`](track_d/D5_TRUST_TBRRIDGE_KFOLD_001_REPORT.md) · [`docs/track_d/archives/D5_TRUST_TBRRIDGE_KFOLD_001_summary.json`](track_d/archives/D5_TRUST_TBRRIDGE_KFOLD_001_summary.json) · [`panel_exp/validation/track_d_d5_trust_tbrridge_kfold_001.py`](../panel_exp/validation/track_d_d5_trust_tbrridge_kfold_001.py)
+
+**Status:** **`tbrridge_kfold_not_causal_interval_eligible`**
+
+**Verdict:** TBRRidge+KFold characterized across 18 worlds and 3 fold variants (legacy blocked Kfold, rolling TSKFold, expanding TSKFold). Null **interval** coverage 100% / type-I 0%; level-scale null point estimates remain ~|395| from zero; positive sign accuracy ~1.7%. **Method unsuitable for causal interval** — diagnostic/model-selection only. **INV-TBRRIDGE-KFOLD-NULL-FPR-001** remains **OPEN** with provisional **DIAGNOSTIC_ONLY** recommendation ([`OPEN_INVESTIGATIONS_001.json`](governance/OPEN_INVESTIGATIONS_001.json)); terminal disposition deferred to DCM-005 reassessment. **No TrustReport authorization.**
+
+**Next:** `D5-TRUST-TBRRIDGE-PLACEBO-001` → DCM-005 eligibility reassessment (must consume open BRB variance + KFold investigations).
+
+---
+
 ## METHOD-CODE-INVENTORY-001 (2026-06-04)
 
 **Artifact:** [`docs/METHOD_CODE_INVENTORY_001.md`](METHOD_CODE_INVENTORY_001.md) · [`docs/track_d/archives/METHOD_CODE_INVENTORY_001.json`](track_d/archives/METHOD_CODE_INVENTORY_001.json)
