@@ -185,7 +185,7 @@ Existing governance references: `calibration_report.py` (FPR ≤0.10, null cover
 
 **Primary root causes:** R (registry block), S (causal interval claimed on unvalidated path), E/I (readout scale mismatch documented in D5-STAT-TBRRIDGE-INF-001).
 
-**Follow-up artifact:** `D5-TRUST-TBRRIDGE-BRB-001`
+**Follow-up artifact:** `D5-TRUST-TBRRIDGE-BRB-001` ✅ — `production_defect_confirmed`; **`TBRRIDGE_BRB_INTERVAL_CORRECTION_001`** ✅ applied.
 
 **Evaluate:** geometry support, interval semantics (causal vs forecast), null vs causal inference, coverage, type-I, failure rate, DCM-005 block reason (remediable if scale + semantics resolved).
 
@@ -302,7 +302,8 @@ Remain ineligible unless a **separate future artifact** explicitly changes them:
 | `D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION` | Canonical DID bootstrap harness + archive | DCM-004 evidence baseline | ✅ complete |
 | `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001` | Production DID bootstrap readout alignment | DCM-004 | ✅ complete |
 | `DCM-004-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001` | Partial re-run (DCM-004 only) | DCM-004 promotion candidacy | ✅ complete (DCM-004 only) |
-| `D5-TRUST-TBRRIDGE-BRB-001` | TBRRidge BRB path | DCM-005-BRB |
+| `D5-TRUST-TBRRIDGE-BRB-001` | TBRRidge BRB path | DCM-005-BRB | ✅ complete |
+| `TBRRIDGE_BRB_INTERVAL_CORRECTION_001` | Production BRB interval alignment | DCM-005-BRB | ✅ complete |
 | `D5-TRUST-TBRRIDGE-KFOLD-001` | TBRRidge KFold path | DCM-005-KFOLD |
 | `D5-TRUST-TBRRIDGE-PLACEBO-001` | TBRRidge placebo null-monitor | DCM-005-PLACEBO |
 | `D5-TRUST-STRATIFIED-SCM-JK-001` | Stratified combination | DCM-008 |
@@ -340,8 +341,10 @@ D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001  ✅
   → D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION  ✅
   → DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001  ✅
   → DCM-004-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001  ✅
+  → D5-TRUST-TBRRIDGE-BRB-001  ✅
+  → TBRRIDGE_BRB_INTERVAL_CORRECTION_001  ✅
 
-D5-TRUST-TBRRIDGE-{BRB,KFOLD,PLACEBO}-001  ← next
+D5-TRUST-TBRRIDGE-{KFOLD,PLACEBO}-001  ← next
   → independent; do not collapse
 
 Disposition decisions (§2b): AugSynth+JK · SCM+Placebo · TBRRidge JK/JKP · rerandomization · DCM-009–014

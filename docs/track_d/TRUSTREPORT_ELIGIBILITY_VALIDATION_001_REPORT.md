@@ -74,7 +74,7 @@ Lane A evaluated: SCM+JK, stratified+SCM/JK, DID+bootstrap, multi-cell per-cell,
 
 ## 18. DCM-005 findings
 
-**INSUFFICIENT_EVIDENCE** (harness) / **INELIGIBLE** when inference boundary BLOCKED. TBRRidge BRB, KFold, Placebo evaluated separately; causal interval semantics not validated.
+**INSUFFICIENT_EVIDENCE** (harness) / **INELIGIBLE** when inference boundary BLOCKED. **Update (2026-06-18):** ✅ [`D5_TRUST_TBRRIDGE_BRB_001_REPORT.md`](D5_TRUST_TBRRIDGE_BRB_001_REPORT.md) + ✅ [`TBRRIDGE_BRB_INTERVAL_CORRECTION_001_REPORT.md`](TBRRIDGE_BRB_INTERVAL_CORRECTION_001_REPORT.md) — BRB interval centering corrected (`centered_deviation_percentile_mean_effect`); positive coverage ~21% → ~51%; null calibration caveat (~40%). KFold/Placebo pending. **No TrustReport authorization.**
 
 ## 19. DCM-006 findings
 
