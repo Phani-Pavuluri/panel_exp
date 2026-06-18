@@ -528,6 +528,8 @@ Per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)
 
 **D5-TRUST-TBRRIDGE-PLACEBO-001 (2026-06-22):** [`D5_TRUST_TBRRIDGE_PLACEBO_001_REPORT.md`](track_d/D5_TRUST_TBRRIDGE_PLACEBO_001_REPORT.md) — Placebo null-monitor / falsification only; single-treated restricted; null type-I 0%; power ~24%; provisional NULL_MONITOR_ONLY for INV-TBRRIDGE-PLACEBO-GOVERNED-SEMANTICS-001 (OPEN pending DCM-005); no authorization.
 
+**DCM-005 TrustReport eligibility reassessment (2026-06-23):** [`DCM005_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/DCM005_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) — BRB deferred REMEDIATE; KFold DIAGNOSTIC_ONLY; Placebo NULL_MONITOR_ONLY; no authorization.
+
 ## 11. Stop condition
 
 | Criterion | Status |

@@ -74,7 +74,7 @@ Lane A evaluated: SCM+JK, stratified+SCM/JK, DID+bootstrap, multi-cell per-cell,
 
 ## 18. DCM-005 findings
 
-**INSUFFICIENT_EVIDENCE** (harness) / **INELIGIBLE** when inference boundary BLOCKED. **Update (2026-06-22):** ✅ [`D5_TRUST_TBRRIDGE_BRB_001_REPORT.md`](D5_TRUST_TBRRIDGE_BRB_001_REPORT.md) + ✅ [`TBRRIDGE_BRB_INTERVAL_CORRECTION_001_REPORT.md`](TBRRIDGE_BRB_INTERVAL_CORRECTION_001_REPORT.md) — BRB interval centering corrected; null variance investigation OPEN. ✅ [`D5_TRUST_TBRRIDGE_KFOLD_001_REPORT.md`](D5_TRUST_TBRRIDGE_KFOLD_001_REPORT.md) — KFold not causal-interval eligible; INV-TBRRIDGE-KFOLD-NULL-FPR-001 OPEN with provisional DIAGNOSTIC_ONLY recommendation. ✅ [`D5_TRUST_TBRRIDGE_PLACEBO_001_REPORT.md`](D5_TRUST_TBRRIDGE_PLACEBO_001_REPORT.md) — Placebo null-monitor / falsification only; INV-TBRRIDGE-PLACEBO-GOVERNED-SEMANTICS-001 OPEN with provisional NULL_MONITOR_ONLY recommendation. DCM-005 eligibility reassessment pending. **No TrustReport authorization.**
+**INSUFFICIENT_EVIDENCE** (harness) / **INELIGIBLE** when inference boundary BLOCKED. **Update (2026-06-23):** ✅ DCM-005 path-specific reassessment complete — [`DCM005_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](DCM005_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md). BRB: DEFERRED_FOR_REMEDIATION (variance calibration failed). KFold: DIAGNOSTIC_ONLY. Placebo: NULL_MONITOR_ONLY. Aggregate `MIXED_WITH_TERMINAL_PATH_DECISIONS`. **No TrustReport authorization.**
 
 ## 19. DCM-006 findings
 

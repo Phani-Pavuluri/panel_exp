@@ -1,7 +1,7 @@
 {
   "registry_id": "OPEN_INVESTIGATIONS_001",
   "registry_version": "1.0.0",
-  "last_updated": "2026-06-22",
+  "last_updated": "2026-06-23",
   "authoritative": true,
   "contract": "INVESTIGATION_LIFECYCLE_AND_HANDOFF_CONTRACT_001",
   "status_vocabulary": [
@@ -41,7 +41,7 @@
     {
       "investigation_id": "INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001",
       "title": "TBRRidge BRB variance and null calibration",
-      "status": "OPEN",
+      "status": "DEFERRED_WITH_TRIGGER",
       "priority": "P1",
       "discovered_by": "TBRRIDGE-BRB-INTERVAL-CORRECTION-001",
       "affected_combination": "DCM-005-BRB",
@@ -55,20 +55,23 @@
         "type_i_error": 0.595,
         "positive_coverage": 0.507,
         "negative_coverage": 0.7,
-        "variance_ratio": 11.0
+        "variance_ratio": 11.0,
+        "dcm005_reassessment": "DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001",
+        "terminal_disposition": "REMEDIATE"
       },
-      "current_decision": "BLOCKED_FOR_CAUSAL_INTERVAL",
+      "current_decision": "REMEDIATE_PENDING_VARIANCE_CALIBRATION",
       "blocked_roles": [
         "trust_report",
         "calibration_signal",
         "mmm",
         "llm",
-        "production"
+        "production",
+        "causal_interval"
       ],
       "target_artifact": "TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001",
-      "revisit_trigger": "After KFold and Placebo characterization, before DCM-005 eligibility reassessment",
-      "decision_checkpoint": "DCM-005 eligibility reassessment",
-      "blocking_policy": "Causal-interval and TrustReport paths blocked until terminal disposition (REMEDIATE, RESTRICT, DIAGNOSTIC_ONLY, or PERMANENTLY_BLOCK)",
+      "revisit_trigger": "Upon opening TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001 or remediation closeout",
+      "decision_checkpoint": "BRB variance remediation closeout",
+      "blocking_policy": "Causal-interval and TrustReport blocked until variance remediation completes or terminal RESTRICT/PERMANENTLY_BLOCK",
       "terminal_decisions": [
         "REMEDIATE",
         "RESTRICT",
@@ -80,7 +83,7 @@
     {
       "investigation_id": "INV-TBRRIDGE-KFOLD-NULL-FPR-001",
       "title": "TBRRidge KFold null false-positive rate and leakage",
-      "status": "OPEN",
+      "status": "RESOLVED",
       "priority": "P1",
       "discovered_by": "TRUSTREPORT-ELIGIBILITY-VALIDATION-001",
       "affected_combination": "DCM-005-KFOLD",
@@ -94,26 +97,22 @@
         "mean_abs_null_point_estimate": 395.0,
         "sign_accuracy_positive": 0.017,
         "verdict": "tbrridge_kfold_not_causal_interval_eligible",
-        "recommended_provisional_disposition": "DIAGNOSTIC_ONLY"
+        "terminal_disposition": "DIAGNOSTIC_ONLY",
+        "dcm005_reassessment": "DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001"
       },
-      "current_decision": "DIAGNOSTIC_ONLY_PENDING_DCM005_CONSUME",
-      "blocked_roles": ["trust_report", "calibration_signal", "production"],
-      "target_artifact": "DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001",
-      "revisit_trigger": "Before DCM-005 eligibility reassessment; after Placebo characterization",
-      "decision_checkpoint": "DCM-005 eligibility reassessment",
-      "blocking_policy": "KFold path diagnostic/model-selection only; causal-interval and TrustReport blocked until terminal disposition consumed at DCM-005 reassessment",
-      "terminal_decisions": [
-        "REMEDIATE",
-        "RESTRICT",
-        "DIAGNOSTIC_ONLY",
-        "PERMANENTLY_BLOCK"
-      ],
-      "resolution_artifact": null
+      "current_decision": "DIAGNOSTIC_ONLY",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "causal_interval"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": null,
+      "blocking_policy": "KFold path diagnostic/model-selection only; causal-interval and TrustReport permanently blocked for this path",
+      "terminal_decisions": ["DIAGNOSTIC_ONLY"],
+      "resolution_artifact": "DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001"
     },
     {
       "investigation_id": "INV-TBRRIDGE-PLACEBO-GOVERNED-SEMANTICS-001",
       "title": "TBRRidge placebo governed null-monitor semantics",
-      "status": "OPEN",
+      "status": "RESOLVED",
       "priority": "P1",
       "discovered_by": "TRUSTREPORT-ELIGIBILITY-VALIDATION-001",
       "affected_combination": "DCM-005-PLACEBO",
@@ -130,20 +129,17 @@
         "mean_placebo_rank_null": 0.59,
         "single_treated_required": true,
         "multi_treated_blocked": true,
-        "recommended_provisional_disposition": "NULL_MONITOR_ONLY"
+        "terminal_disposition": "NULL_MONITOR_ONLY",
+        "dcm005_reassessment": "DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001"
       },
-      "current_decision": "NULL_MONITOR_ONLY_PENDING_DCM005_CONSUME",
-      "blocked_roles": ["trust_report", "calibration_signal", "production"],
-      "target_artifact": "DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001",
-      "revisit_trigger": "Before DCM-005 eligibility reassessment",
-      "decision_checkpoint": "DCM-005 eligibility reassessment",
-      "blocking_policy": "Placebo path null-monitor / falsification only; causal-interval and TrustReport blocked until terminal disposition consumed at DCM-005 reassessment",
-      "terminal_decisions": [
-        "RESTRICT",
-        "DIAGNOSTIC_ONLY",
-        "PERMANENTLY_BLOCK"
-      ],
-      "resolution_artifact": null
+      "current_decision": "NULL_MONITOR_ONLY",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "causal_interval"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": null,
+      "blocking_policy": "Placebo path null-monitor / falsification only; no causal-interval relabeling",
+      "terminal_decisions": ["NULL_MONITOR_ONLY"],
+      "resolution_artifact": "DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001"
     },
     {
       "investigation_id": "INV-AUGSYNTH-JK-TRUSTREPORT-DISPOSITION-001",
@@ -256,14 +252,16 @@
     },
     {
       "lane_id": "DCM-005-ELIGIBILITY-REASSESSMENT",
-      "status": "pending",
-      "open_investigations": [
-        "INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
         "INV-TBRRIDGE-KFOLD-NULL-FPR-001",
         "INV-TBRRIDGE-PLACEBO-GOVERNED-SEMANTICS-001"
       ],
+      "deferred_investigations": ["INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001"],
       "must_consume_before_close": true,
-      "next_artifact": "FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT"
+      "next_artifact": "D5-TRUST-MULTICELL-PERCELL-INFERENCE-001",
+      "resolution_artifact": "DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001"
     }
   ]
 }

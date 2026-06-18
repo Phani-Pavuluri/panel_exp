@@ -325,6 +325,8 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **D5-TRUST-TBRRIDGE-PLACEBO-001 (2026-06-22):** [`D5_TRUST_TBRRIDGE_PLACEBO_001_REPORT.md`](track_d/D5_TRUST_TBRRIDGE_PLACEBO_001_REPORT.md) — TBRRidge Placebo null-monitor / falsification characterized; single-treated restricted; regenerate: `poetry run python -m panel_exp.validation.track_d_d5_trust_tbrridge_placebo_001`.
 
+**DCM-005 TrustReport eligibility reassessment (2026-06-23):** [`DCM005_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/DCM005_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) — path-specific BRB/KFold/Placebo decisions; aggregate MIXED_WITH_TERMINAL_PATH_DECISIONS; no authorization.
+
 ## 13. Stop condition
 
 | Criterion | Status |
