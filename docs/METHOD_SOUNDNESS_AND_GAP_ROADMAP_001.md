@@ -398,7 +398,7 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 | **9** | **D5-STAT-SCM-JK-001** | Level B characterization | ✅ [`docs/track_d/D5_STAT_SCM_JK_001_REPORT.md`](track_d/D5_STAT_SCM_JK_001_REPORT.md) |
 | **10** | **D5-STAT-AUGSYNTH-POINT-001** | Level B characterization | ✅ [`docs/track_d/D5_STAT_AUGSYNTH_POINT_001_REPORT.md`](track_d/D5_STAT_AUGSYNTH_POINT_001_REPORT.md) |
 | **11** | **D5-STAT-TBR-AGG-001** | Level B characterization | ✅ `characterization_mixed_requires_followup` |
-| **12** | **D5-STAT-DID-BOOTSTRAP-001** | Level B characterization | ✅ `characterization_mixed_requires_followup` |
+| **12** | **D5-STAT-DID-BOOTSTRAP-001** | Level B characterization | ✅ `characterization_mixed_requires_followup` · harness corrected (`did_bootstrap_harness_corrected_production_miscoverage_confirmed`) |
 | **13** | **D5-STAT-MCELL-PERCELL-001** | Level B per-cell execution | ✅ `characterization_pass_with_caveats` |
 | **14** | **D5-STAT-TBRRIDGE-INF-001** | Level B characterization | ✅ **Complete** — mixed followup |
 | **15** | **INFERENCE_READOUT_SEMANTICS_001** | Readout contract | ✅ **Accepted** — [`INFERENCE_READOUT_SEMANTICS_001.md`](INFERENCE_READOUT_SEMANTICS_001.md) |
