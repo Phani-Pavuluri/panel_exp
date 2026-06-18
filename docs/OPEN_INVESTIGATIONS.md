@@ -1,8 +1,10 @@
 # Open investigations
 
 **Status:** living backlog for intentionally deferred or unresolved issues  
-**Last updated:** 2026-05-28  
+**Last updated:** 2026-06-18  
 **Package version:** 0.2.1  
+
+**Authoritative registry (Track D trust lanes):** [`governance/OPEN_INVESTIGATIONS_001.json`](governance/OPEN_INVESTIGATIONS_001.json) — machine-readable source of truth per [`INVESTIGATION_LIFECYCLE_AND_HANDOFF_CONTRACT_001.md`](INVESTIGATION_LIFECYCLE_AND_HANDOFF_CONTRACT_001.md). This markdown file retains Phase 12 historical context; new unresolved findings must be registered in the JSON ledger with revisit triggers.
 
 **Related:** `docs/ROADMAP_V3.md` (governance), `docs/ROADMAP_V4.md` (Phases 11–15; Tracks A/B/C), `docs/METHOD_VALIDATION_PLAN.md`, `docs/VALIDATION_COVERAGE.md`, `docs/EXPERIMENTATION_PLATFORM_VISION.md`, [`docs/DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md)
 

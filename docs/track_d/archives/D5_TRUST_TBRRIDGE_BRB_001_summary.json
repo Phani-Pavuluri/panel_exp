@@ -517,5 +517,13 @@
     "Does not authorize TrustReport or modify production TBRRidge/BRB.",
     "Policy B/C comparisons are diagnostic; no production changes applied."
   ],
+  "investigation_handoff": {
+    "follow_up_issues": [
+      "INV-TBRRIDGE-BRB-ESTIMAND-ALIGNMENT-001"
+    ],
+    "resolved_issues": [],
+    "terminal_dispositions": [],
+    "next_artifact": "TBRRIDGE-BRB-INTERVAL-CORRECTION-001"
+  },
   "verdict": "tbrridge_brb_production_defect_confirmed"
 }

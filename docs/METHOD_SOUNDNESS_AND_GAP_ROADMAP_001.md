@@ -522,7 +522,7 @@ Per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)
 
 **TBRRIDGE-BRB-INTERVAL-CORRECTION-001 (2026-06-18):** [`TBRRIDGE_BRB_INTERVAL_CORRECTION_001_REPORT.md`](track_d/TBRRIDGE_BRB_INTERVAL_CORRECTION_001_REPORT.md) — mean-effect centered-deviation CI; positive coverage improved; null caveat; no authorization.
 
-**DCM-004 TrustReport eligibility reassessment (2026-06-18):** [`DCM004_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/DCM004_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) — DCM-004 `ELIGIBLE_WITH_RESTRICTIONS` on corrected bootstrap evidence; supported null type-I ~13%; no authorization.
+**INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001 (OPEN):** [`OPEN_INVESTIGATIONS_001.json`](governance/OPEN_INVESTIGATIONS_001.json) — post-correction BRB variance ratio ~11; null coverage ~40.5%; positive coverage ~50.7%; causal-interval eligibility blocked; TrustReport authorization false.
 
 ## 11. Stop condition
 

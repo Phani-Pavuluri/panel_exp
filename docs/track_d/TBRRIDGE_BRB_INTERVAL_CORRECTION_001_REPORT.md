@@ -49,3 +49,26 @@ Blocked.
 
 `tbrridge_brb_centering_corrected_variance_issue_remains`
 
+## Residual Issues and Handoff
+
+**Resolved in this artifact:**
+- INV-TBRRIDGE-BRB-ESTIMAND-ALIGNMENT-001
+
+**New investigations opened:**
+- INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001
+
+**Existing investigations updated:**
+- INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001 → OPEN in [`OPEN_INVESTIGATIONS_001.json`](../governance/OPEN_INVESTIGATIONS_001.json)
+
+**Deferred issues:** none
+
+**Explicit exclusions:**
+- KFold/Placebo validation
+- DCM-005 eligibility reassessment
+
+**Revisit trigger:** After KFold and Placebo characterization, before DCM-005 eligibility reassessment
+
+**Required decision checkpoint:** DCM-005 eligibility reassessment must consume INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001
+
+**Next artifact:** D5-TRUST-TBRRIDGE-KFOLD-001
+
