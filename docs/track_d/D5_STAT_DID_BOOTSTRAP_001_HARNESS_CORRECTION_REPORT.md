@@ -1,7 +1,7 @@
 # D5-STAT-DID-BOOTSTRAP-001 Harness Correction — Report
 
 **Artifact ID:** D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION
-**Verdict:** `did_bootstrap_harness_corrected_production_miscoverage_confirmed`
+**Verdict:** `did_bootstrap_harness_correction_inconclusive`
 **Canonical archive:** [`archives/D5_STAT_DID_BOOTSTRAP_001_results.json`](archives/D5_STAT_DID_BOOTSTRAP_001_results.json)
 **Historical archive:** [`archives/D5_STAT_DID_BOOTSTRAP_001_results_historical_pre_harness_correction.json`](archives/D5_STAT_DID_BOOTSTRAP_001_results_historical_pre_harness_correction.json)
 **Harness:** `panel_exp/validation/track_d_d5_stat_did_bootstrap_001.py`
@@ -71,11 +71,11 @@ Mean bootstrap center vs point gap persists on positive worlds (production misce
 
 ## 15. Null coverage
 
-Aggregate null coverage: 1.0; clean parallel null: 1.0.
+Aggregate null coverage: 0.625; clean parallel null: 0.75.
 
 ## 16. Positive coverage
 
-Aggregate positive coverage: 0.0; clean parallel positive: 0.0.
+Aggregate positive coverage: 1.0; clean parallel positive: 1.0.
 
 ## 17. Negative coverage
 
@@ -83,7 +83,7 @@ No dedicated negative-effect world in canonical battery.
 
 ## 18. Type-I error
 
-Empirical type-I (null rejection): 0.0.
+Empirical type-I (null rejection): 0.375.
 
 ## 19. Bias and RMSE
 
@@ -91,7 +91,7 @@ Clean positive lift RMSE: 32.17407857480725; mean bias: -5.000737703192968.
 
 ## 20. Interval width
 
-Mean interval width (clean positive): 324.2008580237211.
+Mean interval width (clean positive): 324.20085802372114.
 
 ## 21. Parallel-trends findings
 
@@ -131,5 +131,5 @@ Synthetic worlds only; embedded bootstrap only; production miscoverage not repai
 
 ## 30. Governance verdict
 
-**`did_bootstrap_harness_corrected_production_miscoverage_confirmed`**
+**`did_bootstrap_harness_correction_inconclusive`**
 
