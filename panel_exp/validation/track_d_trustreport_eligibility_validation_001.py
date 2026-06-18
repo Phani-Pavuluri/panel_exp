@@ -194,9 +194,13 @@ def _extract_empirical_evidence(
         if worlds and isinstance(worlds[0], dict):
             trust_allowed = worlds[0].get("trust_role_allowed")
 
-    coverage = _safe_float((null_metrics or {}).get("coverage"))
+    coverage = _safe_float((null_metrics or {}).get("coverage_level")) or _safe_float(
+        (null_metrics or {}).get("coverage")
+    )
     coverage_null = coverage
-    coverage_positive = _safe_float((pos_metrics or {}).get("coverage"))
+    coverage_positive = _safe_float((pos_metrics or {}).get("coverage_level")) or _safe_float(
+        (pos_metrics or {}).get("coverage")
+    )
 
     return TrustReportEmpiricalEvidence(
         artifact_id=archive.get("artifact_id"),

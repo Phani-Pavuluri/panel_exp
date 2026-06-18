@@ -516,6 +516,8 @@ Per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)
 
 **SCM+JK harness correction (2026-06-17):** [`D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md`](track_d/D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md) — canonical D5-STAT-SCM-JK-001 archive corrected (`scm_jk_harness_corrected_level_consistent_baseline_established`).
 
+**TrustReport eligibility reassessment (2026-06-18):** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) — DCM-001 remains support-gated `ELIGIBLE_WITH_RESTRICTIONS`; no authorization.
+
 ## 11. Stop condition
 
 | Criterion | Status |
