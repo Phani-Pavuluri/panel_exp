@@ -56,7 +56,9 @@ Lane A evaluated: SCM+JK, stratified+SCM/JK, DID+bootstrap, multi-cell per-cell,
 
 **Remediation (2026-06-17):** [`D5_TRUST_SCM_JK_COVERAGE_REMEDIATION_001_REPORT.md`](D5_TRUST_SCM_JK_COVERAGE_REMEDIATION_001_REPORT.md) diagnosed percent-vs-level mismatch.
 
-**Harness correction (2026-06-17):** [`D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md`](D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md) regenerated canonical archive with level-consistent coverage (positive ~90%). Historical archive retained. **Eligibility reassessment not complete in this artifact.**
+**Harness correction (2026-06-17):** [`D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md`](D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md) regenerated canonical archive with level-consistent coverage (positive ~90%). Historical archive retained.
+
+**Eligibility reassessment (2026-06-18):** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) — DCM-001 remains `ELIGIBLE_WITH_RESTRICTIONS` on corrected evidence; no authorization.
 
 ## 15. DCM-002 findings
 

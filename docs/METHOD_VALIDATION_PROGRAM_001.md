@@ -315,6 +315,8 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **SCM+JK harness correction (2026-06-17):** [`D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md`](track_d/D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md) — canonical archive regenerated with level-consistent coverage; historical archive retained. Next: **TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001**.
 
+**TrustReport eligibility reassessment (2026-06-18):** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) — DCM-001 remains `ELIGIBLE_WITH_RESTRICTIONS` on corrected level-scale evidence; historical ~7% positive coverage superseded; no authorization.
+
 ## 13. Stop condition
 
 | Criterion | Status |

@@ -276,7 +276,7 @@ Remain ineligible unless a **separate future artifact** explicitly changes them:
 | `D5-TRUST-TBRRIDGE-PLACEBO-001` | TBRRidge placebo null-monitor | DCM-005-PLACEBO |
 | `D5-TRUST-STRATIFIED-SCM-JK-001` | Stratified combination | DCM-008 |
 | `D5-TRUST-MULTICELL-PERCELL-INFERENCE-001` | Per-cell inference | DCM-006 |
-| `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` | Re-run eligibility harness | Promotion candidacy |
+| `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` | Re-run eligibility harness | Promotion candidacy | ✅ complete (DCM-001 only) |
 | `TRUSTREPORT_DOWNSTREAM_PROMOTION_001` | Role-specific promotion | Authorization update |
 
 ## 17. Prioritization
@@ -300,7 +300,7 @@ Ranked by scientific value × likelihood of remediation × downstream usefulness
 ```
 D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001  ✅
   → D5-STAT-SCM-JK-001-HARNESS-CORRECTION  ✅
-  → TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001
+  → TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001  ✅ (DCM-001)
   → informs D5-TRUST-STRATIFIED-SCM-JK-001
   → informs D5-TRUST-MULTICELL-PERCELL-INFERENCE-001 (shared JK inference)
 

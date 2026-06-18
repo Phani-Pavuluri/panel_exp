@@ -116,7 +116,7 @@ Historical archive preserved at `D5_STAT_SCM_JK_001_results_historical_pre_harne
 
 ## 22. TrustReport implications
 
-Corrected evidence supports **level-consistent null-monitor and diagnostic characterization**. Causal-interval TrustReport promotion remains **not authorized**. **TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001** required before any DCM-001 class change.
+Corrected evidence supports **level-consistent null-monitor and diagnostic characterization**. Causal-interval TrustReport promotion remains **not authorized**. **TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001** completed — DCM-001 remains `ELIGIBLE_WITH_RESTRICTIONS`; see [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md).
 
 ## 23. Archive policy
 

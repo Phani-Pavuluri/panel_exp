@@ -1190,7 +1190,19 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 
 **Verdict:** Fixed assignment (`test_0`/control) and level-consistent coverage in canonical D5-STAT-SCM-JK-001 archive. Historical archive retained. No production SCM/JK changes. No TrustReport authorization.
 
-**Next:** **`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`**.
+**Next:** **`TRUSTREPORT_DOWNSTREAM_PROMOTION_001`** (after remaining D5-TRUST remediations).
+
+---
+
+## TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001 (2026-06-18)
+
+**Artifact:** [`docs/track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) · [`panel_exp/validation/trustreport_eligibility_reassessment_001.py`](../panel_exp/validation/trustreport_eligibility_reassessment_001.py) · [`panel_exp/validation/track_d_trustreport_eligibility_reassessment_001.py`](../panel_exp/validation/track_d_trustreport_eligibility_reassessment_001.py) · [`docs/track_d/archives/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_summary.json`](track_d/archives/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_summary.json)
+
+**Status:** **`trustreport_dcm001_eligible_with_restrictions_no_authorization`**
+
+**Verdict:** DCM-001 reassessed using corrected D5-STAT-SCM-JK-001 level-scale evidence. Positive coverage ~90%; historical ~7% superseded. Type-I (~10.7%) and noisy-world (80%) caveats; support-gated restrictions remain. Other DCM rows unchanged. **No TrustReport authorization.**
+
+**Next:** `D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001` → TBRRidge validation → stratified SCM-JK → full promotion decision.
 
 ---
 
