@@ -327,6 +327,8 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **DCM-005 TrustReport eligibility reassessment (2026-06-23):** [`DCM005_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/DCM005_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) — path-specific BRB/KFold/Placebo decisions; aggregate MIXED_WITH_TERMINAL_PATH_DECISIONS; no authorization.
 
+**D5-TRUST-MULTICELL-PERCELL-INFERENCE-001 (2026-06-03):** [`D5_TRUST_MULTICELL_PERCELL_INFERENCE_001_REPORT.md`](track_d/D5_TRUST_MULTICELL_PERCELL_INFERENCE_001_REPORT.md) — DCM-006 per-cell inference; `multicell_percell_multiplicity_unresolved`; regenerate: `poetry run python -m panel_exp.validation.track_d_d5_trust_multicell_percell_inference_001`.
+
 ## 13. Stop condition
 
 | Criterion | Status |
