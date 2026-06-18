@@ -14,13 +14,35 @@ This artifact identifies root causes, minimum remediations, follow-up validation
 | Finding | Blocker |
 |---------|---------|
 | Zero `ELIGIBLE_CANDIDATE` combinations | No promotion candidacy |
-| SCM+JK positive coverage ~7% | Causal-interval candidacy unsupported |
+| SCM+JK positive coverage ~7% | Causal-interval candidacy unsupported (**superseded for DCM-001** by harness correction + partial reassessment; ~90% level positive coverage with type-I caveats) |
 | DID+bootstrap positive coverage 0% | Causal-interval candidacy unsupported |
 | TBRRidge DCM-005 BLOCK + scale mismatch | Path-specific evidence incomplete |
 | All D5 archives `trust_role_allowed=false` | Governance forbids trust claims |
 | Downstream gateway BLOCK | Authorization separate and closed |
 
-Promotion requires: remediation → revalidation → **`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`** → **`TRUSTREPORT_DOWNSTREAM_PROMOTION_001`** → downstream authorization update. None of these are satisfied.
+Promotion requires: remediation → revalidation → **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** (all DCM-001–008) → **`TRUSTREPORT_DOWNSTREAM_PROMOTION_001`** → downstream authorization update. Partial **`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`** (DCM-001 only) is complete; full reassessment is not.
+
+## 2a. Combination-validation scopes (do not conflate)
+
+| Scope | Artifact | Role |
+|-------|----------|------|
+| **DCM-001–019** | [`DESIGN_COMBINATION_VALIDATION_MATRIX_001.md`](DESIGN_COMBINATION_VALIDATION_MATRIX_001.md) | Design-side compatibility and geometry matrix |
+| **Layer-5 (30 rows)** | [`METHOD_COMBINATION_VALIDATION_MATRIX_001.md`](METHOD_COMBINATION_VALIDATION_MATRIX_001.md) | Estimator × inference with reference designs |
+| **DCM-001–008** | TrustReport eligibility queue | Deliberately narrower near-term promotion subset |
+
+Omitted combinations are not all accidental. Many are intentionally outside the TrustReport queue (adapter-dependent, diagnostic-only, research-only, geometry-incompatible, forecast-not-causal, or lower priority). **Genuine gaps** requiring explicit terminal decisions before full reassessment are listed in §2b.
+
+## 2b. Disposition decisions required before full reassessment
+
+| Combination | Current issue | Decision needed |
+|-------------|---------------|-----------------|
+| AugSynth + UnitJackknife | Implemented; D5-INST evidence; no TrustReport lane | Validate later or explicitly keep research-only |
+| SCM + Placebo | Implemented falsification path | Define null-monitor / diagnostic product class |
+| TBRRidge + JK/JKP | Implemented; poor evidence | Remediate or explicitly exclude |
+| DID production bootstrap | Defect diagnosed off-main; remediation pending | If production fix required: **`DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001`** (separate from reassessment) |
+| Rerandomization combinations | Runtime capability; no dedicated D5-STAT lane | Schedule or explicitly defer |
+| DCM-009–014 adapters | Classified; not executed | Future product surface vs adapter-only |
+| Full matrix v2 | Planned; unscheduled | Explicit place in parallel later lane |
 
 ## 3. Current eligibility findings
 
@@ -270,13 +292,15 @@ Remain ineligible unless a **separate future artifact** explicitly changes them:
 |----|------|--------|
 | `D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001` | SCM+JK causal vs null-monitor | DCM-001 causal class | ✅ complete |
 | `D5-STAT-SCM-JK-001-HARNESS-CORRECTION` | Canonical SCM-JK harness + archive | DCM-001 evidence baseline | ✅ complete |
-| `D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001` | DID identification + bootstrap | DCM-004 |
+| `D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001` | DID identification + bootstrap diagnosis | DCM-004 |
+| `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001` | Production DID bootstrap readout alignment (if required) | DCM-004 |
 | `D5-TRUST-TBRRIDGE-BRB-001` | TBRRidge BRB path | DCM-005-BRB |
 | `D5-TRUST-TBRRIDGE-KFOLD-001` | TBRRidge KFold path | DCM-005-KFOLD |
 | `D5-TRUST-TBRRIDGE-PLACEBO-001` | TBRRidge placebo null-monitor | DCM-005-PLACEBO |
 | `D5-TRUST-STRATIFIED-SCM-JK-001` | Stratified combination | DCM-008 |
 | `D5-TRUST-MULTICELL-PERCELL-INFERENCE-001` | Per-cell inference | DCM-006 |
-| `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` | Re-run eligibility harness | Promotion candidacy | ✅ complete (DCM-001 only) |
+| `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` | Partial re-run (DCM-001 only) | DCM-001 promotion candidacy | ✅ complete (DCM-001 only) |
+| `FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT` | Re-run eligibility harness for all DCM-001–008 | Promotion candidacy | pending |
 | `TRUSTREPORT_DOWNSTREAM_PROMOTION_001` | Role-specific promotion | Authorization update |
 
 ## 17. Prioritization
@@ -290,8 +314,8 @@ Ranked by scientific value × likelihood of remediation × downstream usefulness
 | 3 | TBRRidge inference paths (BRB → KFold → Placebo) | Separate paths; BRB most plausible for causal if scale fixed |
 | 4 | Stratified+SCM/JK | Depends on DCM-001 outcome |
 | 5 | Multi-cell per-cell inference | Restricted class ceiling |
-| 6 | TrustReport eligibility reassessment | After remediation artifacts complete |
-| 7 | TrustReport promotion decision | After reassessment only |
+| 6 | **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** | After remediation artifacts + disposition decisions |
+| 7 | TrustReport promotion decision | After full reassessment only |
 
 **Not scheduled:** Promotion before reassessment. DCM-003, DCM-007 remain excluded. AugSynth point remains `descriptive_point` only without new interval evidence.
 
@@ -300,20 +324,25 @@ Ranked by scientific value × likelihood of remediation × downstream usefulness
 ```
 D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001  ✅
   → D5-STAT-SCM-JK-001-HARNESS-CORRECTION  ✅
-  → TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001  ✅ (DCM-001)
+  → TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001  ✅ (DCM-001 only — not full reassessment)
   → informs D5-TRUST-STRATIFIED-SCM-JK-001
   → informs D5-TRUST-MULTICELL-PERCELL-INFERENCE-001 (shared JK inference)
 
-D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001
-  → independent parallel track
+D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001  ← current
+  → DCM-004 reassessment
+  → DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001 (conditional on production-fix finding)
 
 D5-TRUST-TBRRIDGE-{BRB,KFOLD,PLACEBO}-001
   → independent; do not collapse
 
-All D5-TRUST-* complete
-  → TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001
+Disposition decisions (§2b): AugSynth+JK · SCM+Placebo · TBRRidge JK/JKP · rerandomization · DCM-009–014
+
+All D5-TRUST-* complete + disposition decisions recorded
+  → FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT
   → TRUSTREPORT_DOWNSTREAM_PROMOTION_001 (if any ELIGIBLE_CANDIDATE)
   → downstream authorization gateway update
+
+Parallel later lane (non-blocking): DCM-009–019 adapters → matrix v2 → broader qualification
 ```
 
 ## 19. Promotion prerequisites
@@ -330,11 +359,14 @@ Before any `ELIGIBLE_CANDIDATE` or authorization update:
 
 ## 20. Reassessment criteria
 
-`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` runs when:
+**Partial reassessment (`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`):** ✅ complete for **DCM-001 only** after SCM-JK harness correction.
 
-- At least one `D5-TRUST-*` remediation artifact completes with `remediation_verdict` ∈ {`causal_interval_supported`, `null_monitor_supported`, `per_cell_restricted_supported`, `descriptive_point_supported`}
+**Full reassessment (`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`):** runs when:
+
+- Remaining `D5-TRUST-*` remediation artifacts complete with `remediation_verdict` ∈ {`causal_interval_supported`, `null_monitor_supported`, `per_cell_restricted_supported`, `descriptive_point_supported`}
+- Disposition decisions in §2b recorded for AugSynth+JK, SCM+Placebo, TBRRidge JK/JKP, rerandomization, and adapter lanes as applicable
 - Updated evidence ingested into eligibility harness
-- Re-evaluates all DCM rows; may still yield zero candidates
+- Re-evaluates **all DCM-001–008** rows; may still yield zero candidates
 - Must not lower thresholds to force candidates
 - `trust_report_authorized` remains false until promotion artifact
 
@@ -353,16 +385,20 @@ Authorized sequence:
 ```
 TrustReport eligibility validation (✅)
   → eligibility remediation plan (✅ this artifact)
-  → method-specific revalidation (D5-TRUST-*)
-  → TrustReport eligibility reassessment
+  → DCM-001 partial reassessment (✅ TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001)
+  → governance scope reconciliation (✅)
+  → method-specific revalidation (D5-TRUST-* — DID current)
+  → disposition decisions (§2b)
+  → FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT
   → TrustReport promotion decision
   → downstream authorization update
 ```
 
-Future artifacts (blocked):
+Future artifacts (blocked until prerequisites):
 
-- `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`
+- `FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`
 - `TRUSTREPORT_DOWNSTREAM_PROMOTION_001`
+- `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001` (conditional)
 
 ## 23. Governance verdict
 

@@ -1,7 +1,7 @@
 # panel_exp roadmap v4 (post Phase 8 / Run 001)
 
 **Status:** active (Phases 11–15 scoped; priorities frozen; Tracks A / B / C)  
-**Last reviewed:** 2026-05-28  
+**Last reviewed:** 2026-06-03  
 **Supersedes:** `docs/ROADMAP_V3.md` (Phases 5–8 execution and v3 priority ordering)  
 **Package version:** 0.2.1  
 
@@ -242,7 +242,36 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Status:** **active** — authoritative method-foundation sequence  
 **Verdict:** **Pauses** trust-framework / method-role expansion until layers 1–5 complete (code inventory → literature → implementation → statistical OC → combination matrix). Prior synthesis and MCELL-first chains are **evidence only**, not sequencing authority.
 
-**Ordered next:** ✅ … → ✅ **`D5-STAT-SCM-JK-001-HARNESS-CORRECTION`** → ✅ **`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`** → `D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001` → TBRRidge validation → stratified SCM-JK → `TRUSTREPORT_DOWNSTREAM_PROMOTION_001` → downstream authorization update → CalibrationSignal/MMM promotion → trust-framework (roles paused).
+**Combination-validation scopes (do not conflate):**
+
+| Scope | Artifact | Role |
+|-------|----------|------|
+| **DCM-001–019** | [`DESIGN_COMBINATION_VALIDATION_MATRIX_001.md`](DESIGN_COMBINATION_VALIDATION_MATRIX_001.md) | Design-side compatibility and geometry matrix |
+| **Layer-5 (30 rows)** | [`METHOD_COMBINATION_VALIDATION_MATRIX_001.md`](METHOD_COMBINATION_VALIDATION_MATRIX_001.md) | Estimator × inference validation with reference designs |
+| **DCM-001–008** | [`TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md`](track_d/TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md) | Deliberately narrower TrustReport eligibility / promotion subset |
+
+**TrustReport qualification spine (active):**
+
+```
+Foundation and compatibility audits ✅
+  → DCM-001 SCM-JK correction + partial reassessment ✅
+  → governance scope reconciliation ✅
+  → DCM-004 DID remediation (`D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001`)  ← current
+  → DCM-004 reassessment (post-DID; `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001` if production fix required)
+  → DCM-005 TBRRidge BRB / KFold / Placebo validation
+  → DCM-006 multi-cell per-cell validation
+  → DCM-008 stratified SCM-JK validation
+  → disposition decisions: AugSynth+JK · SCM+Placebo · TBRRidge JK/JKP · rerandomization lanes
+  → FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT (all DCM-001–008 rows)
+  → allow / restrict / block table
+  → narrow promotion decision (`TRUSTREPORT_DOWNSTREAM_PROMOTION_001`)
+```
+
+**Parallel later lane (not blocking core TrustReport qualification):** DCM-009–019 adapter lanes → full design × estimator × inference **matrix v2** → broader product-surface qualification.
+
+**Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). It is **not** a full TrustReport reassessment. **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** is a future artifact after remaining D5-TRUST lanes and explicit disposition decisions complete.
+
+**Ordered next:** ✅ **`D5-STAT-SCM-JK-001-HARNESS-CORRECTION`** → ✅ **`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`** (DCM-001 only) → **`D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001`** → DCM-004 reassessment → TBRRidge validation → multi-cell + stratified validation → disposition decisions → **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** → **`TRUSTREPORT_DOWNSTREAM_PROMOTION_001`** → downstream authorization update.
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 
@@ -327,7 +356,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Archive:** [`track_d/archives/D5_STAT_SCM_JK_001_results.json`](track_d/archives/D5_STAT_SCM_JK_001_results.json) (historical pre-correction: [`D5_STAT_SCM_JK_001_results_historical_pre_harness_correction.json`](track_d/archives/D5_STAT_SCM_JK_001_results_historical_pre_harness_correction.json))  
 **Generator:** [`panel_exp/validation/track_d_d5_stat_scm_jk_001.py`](../panel_exp/validation/track_d_d5_stat_scm_jk_001.py)  
 **Status:** **complete** — Level B characterization; harness corrected 2026-06-17; `characterization_pass_with_caveats` / `scm_jk_harness_corrected_level_consistent_baseline_established`  
-**Next:** **`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`** → ✅ **`D5-STAT-AUGSYNTH-POINT-001`** (already complete)
+**Next:** ✅ **`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`** (DCM-001 only) → **`D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001`**
 
 ### D5-STAT-AUGSYNTH-POINT-001
 

@@ -1168,7 +1168,7 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 
 **Verdict:** Method-specific remediation and revalidation program defined from eligibility findings. Root-cause taxonomy, threshold tiers, seven D5-TRUST follow-up artifacts, semantic classes, prioritization, and reassessment criteria documented. No promotion; TrustReport authorization remains BLOCKED.
 
-**Next:** ✅ `D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001` → ✅ `D5-STAT-SCM-JK-001-HARNESS-CORRECTION` → `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` → `TRUSTREPORT_DOWNSTREAM_PROMOTION_001`.
+**Next:** ✅ `D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001` → ✅ `D5-STAT-SCM-JK-001-HARNESS-CORRECTION` → ✅ `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` (DCM-001 only) → `D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001` → remaining D5-TRUST lanes → **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** → `TRUSTREPORT_DOWNSTREAM_PROMOTION_001`.
 
 ---
 
@@ -1190,7 +1190,7 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 
 **Verdict:** Fixed assignment (`test_0`/control) and level-consistent coverage in canonical D5-STAT-SCM-JK-001 archive. Historical archive retained. No production SCM/JK changes. No TrustReport authorization.
 
-**Next:** **`TRUSTREPORT_DOWNSTREAM_PROMOTION_001`** (after remaining D5-TRUST remediations).
+**Next:** `D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001` → remaining D5-TRUST lanes → **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** → `TRUSTREPORT_DOWNSTREAM_PROMOTION_001`.
 
 ---
 
@@ -1200,9 +1200,23 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 
 **Status:** **`trustreport_dcm001_eligible_with_restrictions_no_authorization`**
 
+**Scope:** **Partial reassessment — DCM-001 only** (SCM + UnitJackknife). DCM-002–008 unchanged (`unchanged_due_to_no_new_evidence`). **Not** `FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`.
+
 **Verdict:** DCM-001 reassessed using corrected D5-STAT-SCM-JK-001 level-scale evidence. Positive coverage ~90%; historical ~7% superseded. Type-I (~10.7%) and noisy-world (80%) caveats; support-gated restrictions remain. Other DCM rows unchanged. **No TrustReport authorization.**
 
-**Next:** `D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001` → TBRRidge validation → stratified SCM-JK → full promotion decision.
+**Next:** `D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001` → DCM-004 reassessment (conditional `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001` if production fix required) → TBRRidge validation → multi-cell + stratified validation → disposition decisions (AugSynth+JK, SCM+Placebo, TBRRidge JK/JKP) → **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** → promotion decision.
+
+---
+
+## TRUSTREPORT-QUALIFICATION-SCOPE-RECONCILIATION-001 (2026-06-03)
+
+**Artifact:** [`docs/ROADMAP_V4.md`](ROADMAP_V4.md) (TrustReport qualification spine) · [`docs/TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md`](TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md) (scope + disposition table)
+
+**Status:** **`trustreport_scope_reconciled_partial_vs_full_reassessment`**
+
+**Verdict:** Read-only combination-governance reconciliation. Documents three non-conflated scopes (DCM-001–019 design matrix · Layer-5 30-row estimator×inference matrix · DCM-001–008 TrustReport subset). Clarifies `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` = DCM-001 only; **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** = future after D5-TRUST lanes and explicit disposition decisions. Lists genuine gaps requiring terminal decisions (AugSynth+JK, SCM+Placebo, TBRRidge JK/JKP, rerandomization, DCM-009–014 adapters, matrix v2). No statistical audit; no promotion.
+
+**Next:** `D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001` on branch `validation/d5-trust-did-bootstrap-remediation-001`.
 
 ---
 
