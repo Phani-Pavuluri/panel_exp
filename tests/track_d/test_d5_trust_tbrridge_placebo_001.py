@@ -177,15 +177,15 @@ def test_committed_summary_schema_when_present():
 def test_registry_placebo_investigation_exists():
     reg = load_registry()
     inv = next(i for i in reg["investigations"] if i["investigation_id"] == _INVESTIGATION_ID)
-    assert inv["status"] == "OPEN"
+    assert inv["status"] == "RESOLVED"
     assert inv["evidence"].get("d5_trust_characterization") == "D5-TRUST-TBRRIDGE-PLACEBO-001"
 
 
-def test_dcm005_binding_consumes_placebo_investigation():
+def test_dcm005_binding_reassessment_complete():
     reg = load_registry()
     binding = next(b for b in reg["roadmap_lane_bindings"] if b["lane_id"] == "DCM-005-ELIGIBILITY-REASSESSMENT")
-    assert binding["must_consume_before_close"] is True
-    assert _INVESTIGATION_ID in binding["open_investigations"]
+    assert binding["status"] == "complete"
+    assert binding["resolution_artifact"] == "DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001"
 
 
 def test_report_handoff_section_when_written(tmp_path: Path):

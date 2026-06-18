@@ -166,7 +166,7 @@ def test_no_large_archive_committed():
 def test_registry_kfold_investigation_exists():
     reg = load_registry()
     inv = next(i for i in reg["investigations"] if i["investigation_id"] == "INV-TBRRIDGE-KFOLD-NULL-FPR-001")
-    assert inv["status"] == "OPEN"
+    assert inv["status"] == "RESOLVED"
     assert inv["evidence"].get("d5_trust_characterization") == "D5-TRUST-TBRRIDGE-KFOLD-001"
 
 

@@ -1332,6 +1332,24 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 
 ---
 
+## DCM-005-ELIGIBILITY-REASSESSMENT (2026-06-23)
+
+Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001** below.
+
+---
+
+## DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001 (2026-06-23)
+
+**Artifact:** [`docs/track_d/DCM005_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/DCM005_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) · [`docs/track_d/archives/DCM005_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_summary.json`](track_d/archives/DCM005_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_summary.json) · [`panel_exp/validation/dcm005_trustreport_eligibility_reassessment_001.py`](../panel_exp/validation/dcm005_trustreport_eligibility_reassessment_001.py)
+
+**Status:** **`dcm005_mixed_path_specific_restrictions_no_authorization`**
+
+**Verdict:** Path-specific DCM-005 reassessment. BRB: DEFERRED_FOR_REMEDIATION (variance calibration failed; REMEDIATE → `TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001`). KFold: RESOLVED DIAGNOSTIC_ONLY. Placebo: RESOLVED NULL_MONITOR_ONLY. Aggregate `MIXED_WITH_TERMINAL_PATH_DECISIONS`. **No TrustReport authorization.**
+
+**Next:** `D5-TRUST-MULTICELL-PERCELL-INFERENCE-001` → `D5-TRUST-STRATIFIED-SCM-JK-001` → disposition decisions → `FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`.
+
+---
+
 ## METHOD-CODE-INVENTORY-001 (2026-06-04)
 
 **Artifact:** [`docs/METHOD_CODE_INVENTORY_001.md`](METHOD_CODE_INVENTORY_001.md) · [`docs/track_d/archives/METHOD_CODE_INVENTORY_001.json`](track_d/archives/METHOD_CODE_INVENTORY_001.json)

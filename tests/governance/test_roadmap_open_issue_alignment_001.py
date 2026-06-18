@@ -49,13 +49,8 @@ class TestRoadmapOpenIssueAlignment001:
         reg = load_registry()
         binding = next(b for b in reg["roadmap_lane_bindings"] if b["lane_id"] == "DCM-005-ELIGIBILITY-REASSESSMENT")
         assert binding["must_consume_before_close"]
-        open_ids = set(binding["open_investigations"])
-        reg_open = {
-            i["investigation_id"]
-            for i in reg["investigations"]
-            if i["status"] in {"OPEN", "BLOCKED", "IN_PROGRESS"}
-        }
-        assert open_ids & reg_open, "DCM-005 reassessment must list at least one live open investigation"
+        assert binding["status"] == "complete"
+        assert binding.get("resolved_investigations") or binding.get("deferred_investigations")
 
     def test_roadmap_ordered_next_lists_variance_before_kfold(self) -> None:
         text = ROADMAP_V4.read_text(encoding="utf-8")

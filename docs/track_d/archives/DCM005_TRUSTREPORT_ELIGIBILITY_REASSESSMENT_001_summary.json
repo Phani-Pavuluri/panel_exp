@@ -1,0 +1,377 @@
+{
+  "artifact_id": "DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-18T21:42:29.080478+00:00",
+  "git_commit": "5ddb8446c168910706613eab53036117db9c7237",
+  "reassessment_scope": [
+    "DCM-005-BRB",
+    "DCM-005-KFOLD",
+    "DCM-005-PLACEBO"
+  ],
+  "prior_dcm005_status": {
+    "DCM-005-BRB": "INSUFFICIENT_EVIDENCE",
+    "DCM-005-KFOLD": "INSUFFICIENT_EVIDENCE",
+    "DCM-005-PLACEBO": "INELIGIBLE"
+  },
+  "evidence_sources": [
+    "D5-TRUST-TBRRIDGE-BRB-001",
+    "TBRRIDGE-BRB-INTERVAL-CORRECTION-001",
+    "D5-TRUST-TBRRIDGE-KFOLD-001",
+    "D5-TRUST-TBRRIDGE-PLACEBO-001"
+  ],
+  "path_decisions": [
+    {
+      "path_id": "DCM-005-BRB",
+      "estimator_id": "tbrridge",
+      "inference_id": "brb",
+      "statistical_status": "DEFERRED_FOR_REMEDIATION",
+      "semantic_class": "restricted_causal_interval_blocked",
+      "trustreport_eligibility_status": "INELIGIBLE_FOR_CAUSAL_INTERVAL",
+      "promotion_candidate": false,
+      "trust_report_authorized": false,
+      "supported_roles": [],
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "causal_interval"
+      ],
+      "restrictions": [
+        "centering_corrected_post_interval_correction",
+        "causal_interval_blocked_until_variance_remediation",
+        "null_calibration_unacceptable",
+        "remediation_artifact:TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001"
+      ],
+      "reason_codes": [
+        "TR-DCM005-AUTHORIZATION-STILL-BLOCKED",
+        "TR-DCM005-BRB-CENTERING-CORRECTED",
+        "TR-DCM005-BRB-VARIANCE-CALIBRATION-FAILED",
+        "TR-DCM005-BRB-TYPEI-UNACCEPTABLE",
+        "TR-DCM005-BRB-CAUSAL-INTERVAL-BLOCKED"
+      ],
+      "investigation_id": "INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001",
+      "investigation_disposition": "REMEDIATE",
+      "production_role": "blocked_pending_remediation"
+    },
+    {
+      "path_id": "DCM-005-KFOLD",
+      "estimator_id": "tbrridge",
+      "inference_id": "kfold",
+      "statistical_status": "INELIGIBLE_FOR_CAUSAL_INTERVAL",
+      "semantic_class": "DIAGNOSTIC_ONLY",
+      "trustreport_eligibility_status": "DIAGNOSTIC_ONLY",
+      "promotion_candidate": false,
+      "trust_report_authorized": false,
+      "supported_roles": [
+        "directional_diagnostic",
+        "model_selection_diagnostic"
+      ],
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "causal_interval"
+      ],
+      "restrictions": [
+        "cross_validation_dispersion_not_causal_att_uncertainty",
+        "directional_diagnostic_and_model_selection_only",
+        "no_trustreport_promotion"
+      ],
+      "reason_codes": [
+        "TR-DCM005-AUTHORIZATION-STILL-BLOCKED",
+        "TR-DCM005-KFOLD-CV-STABILITY-NOT-CAUSAL",
+        "TR-DCM005-KFOLD-DIAGNOSTIC-ONLY",
+        "TR-DCM005-KFOLD-SIGN-FAILURE"
+      ],
+      "investigation_id": "INV-TBRRIDGE-KFOLD-NULL-FPR-001",
+      "investigation_disposition": "DIAGNOSTIC_ONLY",
+      "production_role": "diagnostic_only"
+    },
+    {
+      "path_id": "DCM-005-PLACEBO",
+      "estimator_id": "tbrridge",
+      "inference_id": "placebo",
+      "statistical_status": "NULL_MONITOR_ACCEPTABLE",
+      "semantic_class": "NULL_MONITOR_ONLY",
+      "trustreport_eligibility_status": "NULL_MONITOR_ONLY",
+      "promotion_candidate": false,
+      "trust_report_authorized": false,
+      "supported_roles": [
+        "null_monitor",
+        "falsification_diagnostic"
+      ],
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "causal_interval"
+      ],
+      "restrictions": [
+        "single_treated_unit_only",
+        "minimum_five_control_units",
+        "exchangeability_caveat_under_serial_dependence",
+        "null_monitor_and_falsification_only",
+        "no_causal_interval_relabeling"
+      ],
+      "reason_codes": [
+        "TR-DCM005-AUTHORIZATION-STILL-BLOCKED",
+        "TR-DCM005-PLACEBO-NULL-MONITOR-ONLY",
+        "TR-DCM005-PLACEBO-CAUSAL-RELABEL-BLOCKED",
+        "TR-DCM005-PLACEBO-SINGLE-TREATED-ONLY",
+        "TR-DCM005-PLACEBO-MIN-CONTROLS"
+      ],
+      "investigation_id": "INV-TBRRIDGE-PLACEBO-GOVERNED-SEMANTICS-001",
+      "investigation_disposition": "NULL_MONITOR_ONLY",
+      "production_role": "null_monitor_restricted"
+    }
+  ],
+  "aggregate_dcm005_status": "MIXED_WITH_TERMINAL_PATH_DECISIONS",
+  "dcm005_reassessment": {
+    "dcm_row_id": "DCM-005",
+    "prior_status": "INSUFFICIENT_EVIDENCE",
+    "aggregate_status": "MIXED_WITH_TERMINAL_PATH_DECISIONS",
+    "eligible_for_promotion": false,
+    "trust_report_authorized": false,
+    "path_decisions": [
+      {
+        "path_id": "DCM-005-BRB",
+        "estimator_id": "tbrridge",
+        "inference_id": "brb",
+        "statistical_status": "DEFERRED_FOR_REMEDIATION",
+        "semantic_class": "restricted_causal_interval_blocked",
+        "trustreport_eligibility_status": "INELIGIBLE_FOR_CAUSAL_INTERVAL",
+        "promotion_candidate": false,
+        "trust_report_authorized": false,
+        "supported_roles": [],
+        "blocked_roles": [
+          "trust_report",
+          "calibration_signal",
+          "production",
+          "causal_interval"
+        ],
+        "restrictions": [
+          "centering_corrected_post_interval_correction",
+          "causal_interval_blocked_until_variance_remediation",
+          "null_calibration_unacceptable",
+          "remediation_artifact:TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001"
+        ],
+        "reason_codes": [
+          "TR-DCM005-AUTHORIZATION-STILL-BLOCKED",
+          "TR-DCM005-BRB-CENTERING-CORRECTED",
+          "TR-DCM005-BRB-VARIANCE-CALIBRATION-FAILED",
+          "TR-DCM005-BRB-TYPEI-UNACCEPTABLE",
+          "TR-DCM005-BRB-CAUSAL-INTERVAL-BLOCKED"
+        ],
+        "investigation_id": "INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001",
+        "investigation_disposition": "REMEDIATE",
+        "production_role": "blocked_pending_remediation"
+      },
+      {
+        "path_id": "DCM-005-KFOLD",
+        "estimator_id": "tbrridge",
+        "inference_id": "kfold",
+        "statistical_status": "INELIGIBLE_FOR_CAUSAL_INTERVAL",
+        "semantic_class": "DIAGNOSTIC_ONLY",
+        "trustreport_eligibility_status": "DIAGNOSTIC_ONLY",
+        "promotion_candidate": false,
+        "trust_report_authorized": false,
+        "supported_roles": [
+          "directional_diagnostic",
+          "model_selection_diagnostic"
+        ],
+        "blocked_roles": [
+          "trust_report",
+          "calibration_signal",
+          "production",
+          "causal_interval"
+        ],
+        "restrictions": [
+          "cross_validation_dispersion_not_causal_att_uncertainty",
+          "directional_diagnostic_and_model_selection_only",
+          "no_trustreport_promotion"
+        ],
+        "reason_codes": [
+          "TR-DCM005-AUTHORIZATION-STILL-BLOCKED",
+          "TR-DCM005-KFOLD-CV-STABILITY-NOT-CAUSAL",
+          "TR-DCM005-KFOLD-DIAGNOSTIC-ONLY",
+          "TR-DCM005-KFOLD-SIGN-FAILURE"
+        ],
+        "investigation_id": "INV-TBRRIDGE-KFOLD-NULL-FPR-001",
+        "investigation_disposition": "DIAGNOSTIC_ONLY",
+        "production_role": "diagnostic_only"
+      },
+      {
+        "path_id": "DCM-005-PLACEBO",
+        "estimator_id": "tbrridge",
+        "inference_id": "placebo",
+        "statistical_status": "NULL_MONITOR_ACCEPTABLE",
+        "semantic_class": "NULL_MONITOR_ONLY",
+        "trustreport_eligibility_status": "NULL_MONITOR_ONLY",
+        "promotion_candidate": false,
+        "trust_report_authorized": false,
+        "supported_roles": [
+          "null_monitor",
+          "falsification_diagnostic"
+        ],
+        "blocked_roles": [
+          "trust_report",
+          "calibration_signal",
+          "production",
+          "causal_interval"
+        ],
+        "restrictions": [
+          "single_treated_unit_only",
+          "minimum_five_control_units",
+          "exchangeability_caveat_under_serial_dependence",
+          "null_monitor_and_falsification_only",
+          "no_causal_interval_relabeling"
+        ],
+        "reason_codes": [
+          "TR-DCM005-AUTHORIZATION-STILL-BLOCKED",
+          "TR-DCM005-PLACEBO-NULL-MONITOR-ONLY",
+          "TR-DCM005-PLACEBO-CAUSAL-RELABEL-BLOCKED",
+          "TR-DCM005-PLACEBO-SINGLE-TREATED-ONLY",
+          "TR-DCM005-PLACEBO-MIN-CONTROLS"
+        ],
+        "investigation_id": "INV-TBRRIDGE-PLACEBO-GOVERNED-SEMANTICS-001",
+        "investigation_disposition": "NULL_MONITOR_ONLY",
+        "production_role": "null_monitor_restricted"
+      }
+    ],
+    "investigation_handoff": {
+      "follow_up_issues": [
+        "INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001"
+      ],
+      "resolved_issues": [
+        "INV-TBRRIDGE-KFOLD-NULL-FPR-001",
+        "INV-TBRRIDGE-PLACEBO-GOVERNED-SEMANTICS-001"
+      ],
+      "terminal_dispositions": [
+        "INV-TBRRIDGE-KFOLD-NULL-FPR-001",
+        "INV-TBRRIDGE-PLACEBO-GOVERNED-SEMANTICS-001"
+      ],
+      "next_artifact": "D5-TRUST-MULTICELL-PERCELL-INFERENCE-001"
+    },
+    "evidence_sources": [
+      "D5-TRUST-TBRRIDGE-BRB-001",
+      "TBRRIDGE-BRB-INTERVAL-CORRECTION-001",
+      "D5-TRUST-TBRRIDGE-KFOLD-001",
+      "D5-TRUST-TBRRIDGE-PLACEBO-001"
+    ],
+    "authorization_status": "blocked",
+    "reassessment_version": "1.0.0"
+  },
+  "promotion_candidate_summary": {
+    "count": 0,
+    "promotion_candidate_count": 0,
+    "promotion_candidates": [],
+    "dcm005_eligible_for_promotion": false
+  },
+  "investigation_consumption": {
+    "INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001": {
+      "prior_status": "OPEN",
+      "reassessed_status": "DEFERRED_WITH_TRIGGER",
+      "terminal_disposition": "REMEDIATE",
+      "target_artifact": "TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001"
+    },
+    "INV-TBRRIDGE-KFOLD-NULL-FPR-001": {
+      "prior_status": "OPEN",
+      "reassessed_status": "RESOLVED",
+      "terminal_disposition": "DIAGNOSTIC_ONLY",
+      "resolution_artifact": "DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001"
+    },
+    "INV-TBRRIDGE-PLACEBO-GOVERNED-SEMANTICS-001": {
+      "prior_status": "OPEN",
+      "reassessed_status": "RESOLVED",
+      "terminal_disposition": "NULL_MONITOR_ONLY",
+      "resolution_artifact": "DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001"
+    }
+  },
+  "investigation_handoff": {
+    "follow_up_issues": [
+      "INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001"
+    ],
+    "resolved_issues": [
+      "INV-TBRRIDGE-KFOLD-NULL-FPR-001",
+      "INV-TBRRIDGE-PLACEBO-GOVERNED-SEMANTICS-001"
+    ],
+    "terminal_dispositions": [
+      "INV-TBRRIDGE-KFOLD-NULL-FPR-001",
+      "INV-TBRRIDGE-PLACEBO-GOVERNED-SEMANTICS-001"
+    ],
+    "next_artifact": "D5-TRUST-MULTICELL-PERCELL-INFERENCE-001"
+  },
+  "unchanged_combination_results": [
+    {
+      "combination_key": "DCM-001",
+      "dcm_row_id": "DCM-001",
+      "eligibility_status": "ELIGIBLE_WITH_RESTRICTIONS",
+      "eligible_for_promotion": false,
+      "trust_report_authorized": false,
+      "unchanged_due_to_no_new_evidence": true
+    },
+    {
+      "combination_key": "DCM-002",
+      "dcm_row_id": "DCM-002",
+      "eligibility_status": "ELIGIBLE_WITH_RESTRICTIONS",
+      "eligible_for_promotion": false,
+      "trust_report_authorized": false,
+      "unchanged_due_to_no_new_evidence": true
+    },
+    {
+      "combination_key": "DCM-003",
+      "dcm_row_id": "DCM-003",
+      "eligibility_status": "INELIGIBLE",
+      "eligible_for_promotion": false,
+      "trust_report_authorized": false,
+      "unchanged_due_to_no_new_evidence": true
+    },
+    {
+      "combination_key": "DCM-004",
+      "dcm_row_id": "DCM-004",
+      "eligibility_status": "INSUFFICIENT_EVIDENCE",
+      "eligible_for_promotion": false,
+      "trust_report_authorized": false,
+      "unchanged_due_to_no_new_evidence": true
+    },
+    {
+      "combination_key": "DCM-006",
+      "dcm_row_id": "DCM-006",
+      "eligibility_status": "ELIGIBLE_WITH_RESTRICTIONS",
+      "eligible_for_promotion": false,
+      "trust_report_authorized": false,
+      "unchanged_due_to_no_new_evidence": true
+    },
+    {
+      "combination_key": "DCM-007",
+      "dcm_row_id": "DCM-007",
+      "eligibility_status": "INELIGIBLE",
+      "eligible_for_promotion": false,
+      "trust_report_authorized": false,
+      "unchanged_due_to_no_new_evidence": true
+    },
+    {
+      "combination_key": "DCM-008",
+      "dcm_row_id": "DCM-008",
+      "eligibility_status": "ELIGIBLE_WITH_RESTRICTIONS",
+      "eligible_for_promotion": false,
+      "trust_report_authorized": false,
+      "unchanged_due_to_no_new_evidence": true
+    }
+  ],
+  "authorization_summary": {
+    "trust_report_authorized": false,
+    "trust_report_authorized_count": 0,
+    "trust_report_ready": false,
+    "label": "provisional_for_dcm005_reassessment_only"
+  },
+  "limitations": [
+    "Reassessment applies to DCM-005 TBRRidge paths only; other DCM rows unchanged.",
+    "Uses committed D5-TRUST characterization summaries; no new statistical runs.",
+    "BRB causal-interval path deferred for variance remediation.",
+    "KFold diagnostic-only; Placebo null-monitor-only.",
+    "Does not authorize TrustReport or downstream roles.",
+    "Does not complete FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT."
+  ],
+  "verdict": "dcm005_mixed_path_specific_restrictions_no_authorization"
+}

@@ -34,7 +34,7 @@ class TestOpenInvestigationRegistry001:
     def test_brb_variance_investigation_seeded(self) -> None:
         by_id = investigations_by_id()
         inv = by_id["INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001"]
-        assert inv.status == "OPEN"
+        assert inv.status == "DEFERRED_WITH_TRIGGER"
         assert inv.discovered_by == "TBRRIDGE-BRB-INTERVAL-CORRECTION-001"
         assert inv.revisit_trigger is not None
         assert inv.decision_checkpoint is not None
@@ -63,4 +63,8 @@ class TestOpenInvestigationRegistry001:
         reg = load_registry()
         dcm005 = next(b for b in reg["roadmap_lane_bindings"] if b["lane_id"] == "DCM-005-ELIGIBILITY-REASSESSMENT")
         assert dcm005["must_consume_before_close"] is True
-        assert "INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001" in dcm005["open_investigations"]
+        assert dcm005["status"] == "complete"
+        assert dcm005["resolution_artifact"] == "DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001"
+        assert "INV-TBRRIDGE-KFOLD-NULL-FPR-001" in dcm005["resolved_investigations"]
+        assert "INV-TBRRIDGE-PLACEBO-GOVERNED-SEMANTICS-001" in dcm005["resolved_investigations"]
+        assert "INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001" in dcm005.get("deferred_investigations", [])
