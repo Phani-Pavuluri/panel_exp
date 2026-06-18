@@ -1168,7 +1168,29 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 
 **Verdict:** Method-specific remediation and revalidation program defined from eligibility findings. Root-cause taxonomy, threshold tiers, seven D5-TRUST follow-up artifacts, semantic classes, prioritization, and reassessment criteria documented. No promotion; TrustReport authorization remains BLOCKED.
 
-**Next:** `D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001` → … → `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` → `TRUSTREPORT_DOWNSTREAM_PROMOTION_001`.
+**Next:** ✅ `D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001` → ✅ `D5-STAT-SCM-JK-001-HARNESS-CORRECTION` → `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` → `TRUSTREPORT_DOWNSTREAM_PROMOTION_001`.
+
+---
+
+## D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001 (2026-06-17)
+
+**Artifact:** [`docs/track_d/D5_TRUST_SCM_JK_COVERAGE_REMEDIATION_001_REPORT.md`](track_d/D5_TRUST_SCM_JK_COVERAGE_REMEDIATION_001_REPORT.md)
+
+**Status:** **`scm_jk_eligible_as_null_monitor_only`**
+
+**Verdict:** Positive undercoverage explained by percent-vs-level metric mismatch. No TrustReport authorization.
+
+---
+
+## D5-STAT-SCM-JK-001-HARNESS-CORRECTION (2026-06-17)
+
+**Artifact:** [`docs/track_d/D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md`](track_d/D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md) · [`panel_exp/validation/track_d_d5_stat_scm_jk_001.py`](../panel_exp/validation/track_d_d5_stat_scm_jk_001.py) · [`docs/track_d/archives/D5_STAT_SCM_JK_001_results.json`](track_d/archives/D5_STAT_SCM_JK_001_results.json) · [`docs/track_d/archives/D5_STAT_SCM_JK_001_results_historical_pre_harness_correction.json`](track_d/archives/D5_STAT_SCM_JK_001_results_historical_pre_harness_correction.json)
+
+**Status:** **`scm_jk_harness_corrected_level_consistent_baseline_established`**
+
+**Verdict:** Fixed assignment (`test_0`/control) and level-consistent coverage in canonical D5-STAT-SCM-JK-001 archive. Historical archive retained. No production SCM/JK changes. No TrustReport authorization.
+
+**Next:** **`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`**.
 
 ---
 

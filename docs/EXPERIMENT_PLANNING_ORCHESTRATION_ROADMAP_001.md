@@ -234,6 +234,7 @@ Must define:
 | [`DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md`](DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001.md) | Gateway implemented; all production downstream roles blocked |
 | [`TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md`](track_d/TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md) | Eligibility validation; mixed restrictions; zero promotion candidates |
 | [`TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md`](TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md) | Remediation plan; D5-TRUST follow-ups; promotion blocked |
+| [`D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md`](track_d/D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md) | Canonical SCM-JK harness corrected; reassessment next |
 | F-DECISION / TrustReport | Role assignment paused until foundation + suitability v2 |
 
 ---

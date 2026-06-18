@@ -242,7 +242,7 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 **Status:** **active** — authoritative method-foundation sequence  
 **Verdict:** **Pauses** trust-framework / method-role expansion until layers 1–5 complete (code inventory → literature → implementation → statistical OC → combination matrix). Prior synthesis and MCELL-first chains are **evidence only**, not sequencing authority.
 
-**Ordered next:** ✅ tier-1 → ✅ greedy → ✅ stratified → ✅ multi-cell → ✅ tier-1 recharacterization → ✅ design combination execution → ✅ guardrail enforcement → ✅ inference-boundary enforcement → ✅ estimator readout adapter → ✅ downstream readout authorization gateway → ✅ TrustReport eligibility validation → ✅ **TrustReport eligibility remediation plan** → method-specific revalidation (`D5-TRUST-*`) → `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` → `TRUSTREPORT_DOWNSTREAM_PROMOTION_001` → downstream authorization update → CalibrationSignal/MMM promotion → trust-framework (roles paused).
+**Ordered next:** ✅ tier-1 → ✅ greedy → ✅ stratified → ✅ multi-cell → ✅ tier-1 recharacterization → ✅ design combination execution → ✅ guardrail enforcement → ✅ inference-boundary enforcement → ✅ estimator readout adapter → ✅ downstream readout authorization gateway → ✅ TrustReport eligibility validation → ✅ **TrustReport eligibility remediation plan** → ✅ `D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001` → ✅ **`D5-STAT-SCM-JK-001-HARNESS-CORRECTION`** → `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` → `TRUSTREPORT_DOWNSTREAM_PROMOTION_001` → downstream authorization update → CalibrationSignal/MMM promotion → trust-framework (roles paused).
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 
@@ -323,10 +323,11 @@ Power/OC evidence is **design-method × geometry-mode × measurement-instrument*
 ### D5-STAT-SCM-JK-001
 
 **Report:** [`track_d/D5_STAT_SCM_JK_001_REPORT.md`](track_d/D5_STAT_SCM_JK_001_REPORT.md)  
-**Archive:** [`track_d/archives/D5_STAT_SCM_JK_001_results.json`](track_d/archives/D5_STAT_SCM_JK_001_results.json)  
+**Harness correction:** [`track_d/D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md`](track_d/D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md)  
+**Archive:** [`track_d/archives/D5_STAT_SCM_JK_001_results.json`](track_d/archives/D5_STAT_SCM_JK_001_results.json) (historical pre-correction: [`D5_STAT_SCM_JK_001_results_historical_pre_harness_correction.json`](track_d/archives/D5_STAT_SCM_JK_001_results_historical_pre_harness_correction.json))  
 **Generator:** [`panel_exp/validation/track_d_d5_stat_scm_jk_001.py`](../panel_exp/validation/track_d_d5_stat_scm_jk_001.py)  
-**Status:** **complete** — Level B characterization; `characterization_mixed_requires_followup`  
-**Next:** ✅ **`D5-STAT-AUGSYNTH-POINT-001`** (see below)
+**Status:** **complete** — Level B characterization; harness corrected 2026-06-17; `characterization_pass_with_caveats` / `scm_jk_harness_corrected_level_consistent_baseline_established`  
+**Next:** **`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`** → ✅ **`D5-STAT-AUGSYNTH-POINT-001`** (already complete)
 
 ### D5-STAT-AUGSYNTH-POINT-001
 
