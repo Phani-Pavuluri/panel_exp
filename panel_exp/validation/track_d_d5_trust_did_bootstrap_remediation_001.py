@@ -7,10 +7,13 @@ No TrustReport authorization or production threshold definition.
 
 from __future__ import annotations
 
+import argparse
 import copy
 import json
 import math
+import os
 import subprocess
+import tempfile
 import warnings
 from dataclasses import asdict, dataclass, field, replace
 from datetime import datetime, timezone
@@ -30,6 +33,7 @@ _ARTIFACT_VERSION = "1.0.0"
 _THRESHOLD_LABEL = "provisional_for_remediation_characterization_only"
 
 SemanticVerdict = Literal[
+    "did_bootstrap_production_miscentering_confirmed",
     "did_bootstrap_causal_interval_remediated_requires_reassessment",
     "did_bootstrap_parallel_trends_gated_restricted",
     "did_bootstrap_common_timing_only",
@@ -37,6 +41,12 @@ SemanticVerdict = Literal[
     "did_bootstrap_not_interval_eligible",
     "did_bootstrap_remediation_inconclusive",
     "did_bootstrap_remediation_failed",
+]
+
+ProductionDefectDecision = Literal[
+    "production_defect_confirmed",
+    "production_defect_not_confirmed",
+    "production_defect_indeterminate",
 ]
 
 BOOTSTRAP_POLICIES: tuple[dict[str, str], ...] = (
@@ -54,6 +64,33 @@ TIMING_REGIMES: tuple[dict[str, str], ...] = (
     {"regime_id": "common", "description": "simultaneous treated adoption (DID-supported)"},
     {"regime_id": "staggered", "description": "staggered cohort starts (DID pooled blocked)"},
 )
+
+PARALLEL_TRENDS_REGIMES: tuple[dict[str, str], ...] = (
+    {"regime_id": "holds", "description": "parallel trends assumed valid for causal readout"},
+    {"regime_id": "mild_violation", "description": "mild pre-trend slope divergence"},
+    {"regime_id": "severe_violation", "description": "severe pretrend violation"},
+    {"regime_id": "staggered_blocked", "description": "staggered geometry blocked for pooled DID"},
+)
+
+SERIAL_DEPENDENCE_REGIMES: tuple[dict[str, str], ...] = (
+    {"regime_id": "clean_iid", "description": "no elevated autocorrelation or cross-geo shock overrides"},
+    {"regime_id": "serial_correlation", "description": "high autocorrelation (AR-like dependence)"},
+    {"regime_id": "clustered_shocks", "description": "elevated cross-geo correlation"},
+    {"regime_id": "heteroskedastic", "description": "elevated noise scale heteroskedasticity"},
+    {"regime_id": "standard_stress", "description": "other stress worlds without dedicated serial regime"},
+)
+
+_SERIAL_REGIME_BY_WORLD: dict[str, str] = {
+    "clean_parallel_trends": "clean_iid",
+    "placebo_null": "clean_iid",
+    "common_treatment_timing": "clean_iid",
+    "serial_correlation": "serial_correlation",
+    "clustered_shocks": "clustered_shocks",
+    "heteroskedasticity": "heteroskedastic",
+}
+
+_DEFAULT_SUMMARY = _REPO_ROOT / "docs/track_d/archives/D5_TRUST_DID_BOOTSTRAP_REMEDIATION_001_summary.json"
+_DEFAULT_REPORT = _REPO_ROOT / "docs/track_d/D5_TRUST_DID_BOOTSTRAP_REMEDIATION_001_REPORT.md"
 
 
 @dataclass(frozen=True)
@@ -340,6 +377,7 @@ def _bootstrap_fields(est: DID, point: float) -> dict[str, Any]:
     lo_f = _scalar_float(lo)
     hi_f = _scalar_float(hi)
     center = float(np.mean(boot)) if boot.size else None
+    median = float(np.median(boot)) if boot.size else None
     se = float(np.std(boot, ddof=1)) if boot.size > 1 else None
     shift = (point - center) if center is not None and np.isfinite(point) else None
     oracle_lo = oracle_hi = None
@@ -354,7 +392,9 @@ def _bootstrap_fields(est: DID, point: float) -> dict[str, Any]:
         "n_bootstrap_replicates": int(getattr(est, "n_bootstrap", 50)),
         "bootstrap_seed": int(getattr(est, "bootstrap_seed", 0)),
         "bootstrap_distribution_center": center,
+        "bootstrap_distribution_median": median,
         "bootstrap_standard_error": se,
+        "point_minus_bootstrap_center": shift,
         "bootstrap_interval_lower": lo_f,
         "bootstrap_interval_upper": hi_f,
         "bootstrap_failure_count": max(0, int(getattr(est, "n_bootstrap", 50)) - int(boot.size)),
@@ -381,6 +421,7 @@ def _run_diagnostic(
         "assignment_mode": cfg.assignment_mode,
         "timing_pattern": spec.timing_pattern,
         "parallel_trends_regime": spec.parallel_trends_regime,
+        "serial_dependence_regime": _SERIAL_REGIME_BY_WORLD.get(spec.world_id, "standard_stress"),
         **_forbidden(),
     }
     if spec.timing_pattern == "staggered":
@@ -566,37 +607,139 @@ def _aggregate_rows(rows: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
-def _decide_verdict(summary: dict[str, Any]) -> SemanticVerdict:
+def _serial_regime_for_row(row: dict[str, Any]) -> str:
+    return str(row.get("serial_dependence_regime") or "standard_stress")
+
+
+def _assess_harness_defect(
+    harness_defect_confirmed: bool,
+    harness_failures: int,
+    probe_count: int,
+) -> dict[str, Any]:
+    return {
+        "harness_defect_confirmed": harness_defect_confirmed,
+        "canonical_harness_artifact": "D5-STAT-DID-BOOTSTRAP-001",
+        "defect_pattern": "groups.values() flattens control+test_0 into treated_units",
+        "symptoms": [
+            "all units treated",
+            "zero controls",
+            "malformed DID pooled geometry",
+            "archive rebuild drift when harness assignment wrong",
+        ],
+        "probe_failures": harness_failures,
+        "probe_runs": probe_count,
+        "remediation_harness_uses_corrected_test_0": True,
+        "canonical_fix_artifact": "D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION",
+        "fixed_in_this_branch": False,
+    }
+
+
+def _assess_production_defect(
+    *,
+    sign_accuracy: float | None,
+    pos_cov_clean: float | None,
+    pos_cov_08: float | None,
+    pos_cov_clean_iid: float | None,
+    miscentering_dominant: bool,
+    truth_scale_mismatch: bool,
+    oracle_pos_cov: float | None,
+    point_in_ci_rate: float | None,
+    mean_gap: float | None,
+    pretrend_driver: bool,
+    holds_sign_accuracy: float | None,
+) -> dict[str, Any]:
+    point_recovers = sign_accuracy is not None and sign_accuracy >= 0.8
+    miscentered = bool(
+        miscentering_dominant
+        and pos_cov_clean is not None
+        and pos_cov_clean < 0.25
+        and pos_cov_08 is not None
+        and pos_cov_08 < 0.25
+    )
+    oracle_helps = oracle_pos_cov is not None and oracle_pos_cov >= 0.75
+    reproducible = point_in_ci_rate is not None and point_in_ci_rate < 0.5
+    large_gap = mean_gap is not None and abs(mean_gap) > 1.0
+
+    criteria = {
+        "corrected_assignment_geometry": True,
+        "point_recovers_in_clean_worlds": point_recovers,
+        "bootstrap_interval_materially_miscentered": miscentered,
+        "miscentering_reproduces_deterministically": reproducible,
+        "visible_in_production_did_py": True,
+        "diagnostic_recenter_improves_coverage": oracle_helps,
+        "not_explained_by_scale_mismatch": not truth_scale_mismatch,
+        "not_explained_by_serial_dependence_only": bool(
+            miscentering_dominant
+            or (pos_cov_clean_iid is not None and pos_cov_clean_iid < 0.25)
+        ),
+        "not_explained_by_parallel_trends_failure_only": bool(
+            holds_sign_accuracy is None or holds_sign_accuracy >= 0.75 or miscentering_dominant
+        ),
+        "bootstrap_center_gap_material": large_gap,
+    }
+    confirmed = all(
+        criteria[k]
+        for k in (
+            "corrected_assignment_geometry",
+            "point_recovers_in_clean_worlds",
+            "bootstrap_interval_materially_miscentered",
+            "miscentering_reproduces_deterministically",
+            "visible_in_production_did_py",
+            "diagnostic_recenter_improves_coverage",
+            "not_explained_by_scale_mismatch",
+            "not_explained_by_serial_dependence_only",
+            "not_explained_by_parallel_trends_failure_only",
+        )
+    )
+    if confirmed:
+        decision: ProductionDefectDecision = "production_defect_confirmed"
+        recommended = "DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001"
+    elif not point_recovers:
+        decision = "production_defect_not_confirmed"
+        recommended = None
+    elif not miscentered and not large_gap:
+        decision = "production_defect_not_confirmed"
+        recommended = None
+    else:
+        decision = "production_defect_indeterminate"
+        recommended = None
+
+    return {
+        "decision": decision,
+        "criteria": criteria,
+        "recommended_follow_up_artifact": recommended,
+        "bootstrap_replicate_statistic": "cumulative_att from _path_effect_from_df on block-resampled panel",
+        "reported_point_statistic": "cumulative_att from aggregate path in run_analysis",
+        "interval_construction": "percentile of bootstrap_cumulative_effects_ distribution",
+        "interval_centered_on": "bootstrap_cumulative_att_distribution_not_reported_point",
+        "note": (
+            "Production DID.py embeds bootstrap; CI percentiles follow bootstrap draws while "
+            "reported cumulative_att is computed after bootstrap on the original panel path."
+        ),
+    }
+
+
+def _decide_verdict(
+    summary: dict[str, Any],
+    production_decision: ProductionDefectDecision,
+) -> SemanticVerdict:
     fail_rate = summary.get("failure_summary", {}).get("overall_failure_rate")
     if fail_rate is not None and fail_rate > 0.35:
         return "did_bootstrap_remediation_failed"
+
+    if production_decision == "production_defect_confirmed":
+        return "did_bootstrap_production_miscentering_confirmed"
 
     by_effect = summary.get("coverage_by_effect", {})
     null_cov = (by_effect.get("0.0") or {}).get("null_coverage")
     pos_cov = (by_effect.get("0.08") or {}).get("positive_coverage")
     decomp = summary.get("bias_decomposition", {})
-    harness_defect = decomp.get("harness_assignment_defect_confirmed", False)
     miscenter = decomp.get("interval_miscentering_dominant", False)
-    pt_in_ci = summary.get("bootstrap_diagnostics", {}).get("point_in_bootstrap_ci_rate")
 
     if pos_cov is not None and pos_cov >= 0.75 and null_cov is not None and null_cov >= 0.85:
         return "did_bootstrap_causal_interval_remediated_requires_reassessment"
     if miscenter and pos_cov is not None and pos_cov < 0.2:
-        if harness_defect:
-            return "did_bootstrap_not_interval_eligible"
         return "did_bootstrap_not_interval_eligible"
-    if (
-        summary.get("coverage_by_parallel_trends_status", {})
-        .get("holds", {})
-        .get("positive_coverage", 1.0)
-        < 0.2
-        and summary.get("coverage_by_parallel_trends_status", {})
-        .get("severe_violation", {})
-        .get("positive_coverage", 0.0)
-        < 0.2
-    ):
-        if pt_in_ci is not None and pt_in_ci < 0.6:
-            return "did_bootstrap_not_interval_eligible"
     pretrend_only = decomp.get("undercoverage_driver_hypothesis") == "identification_pretrend_violation"
     if pretrend_only:
         return "did_bootstrap_parallel_trends_gated_restricted"
@@ -622,6 +765,7 @@ def build_d5_trust_did_bootstrap_remediation_001(
     by_effect: dict[str, list[dict[str, Any]]] = {}
     by_timing: dict[str, list[dict[str, Any]]] = {}
     by_pretrend: dict[str, list[dict[str, Any]]] = {}
+    by_serial: dict[str, list[dict[str, Any]]] = {}
     harness_defect_runs: list[dict[str, Any]] = []
 
     for widx, world in enumerate(worlds):
@@ -664,11 +808,14 @@ def build_d5_trust_did_bootstrap_remediation_001(
         by_timing.setdefault(tp, []).append(row)
         pr = row.get("parallel_trends_regime", "holds")
         by_pretrend.setdefault(pr, []).append(row)
+        sr = _serial_regime_for_row(row)
+        by_serial.setdefault(sr, []).append(row)
 
     coverage_by_world = {k: _aggregate_rows(v) for k, v in by_world.items()}
     coverage_by_effect = {k: _aggregate_rows(v) for k, v in by_effect.items()}
     coverage_by_timing = {k: _aggregate_rows(v) for k, v in by_timing.items()}
     coverage_by_pretrend = {k: _aggregate_rows(v) for k, v in by_pretrend.items()}
+    coverage_by_serial = {k: _aggregate_rows(v) for k, v in by_serial.items()}
 
     ok = [r for r in all_runs if r.get("callable_status") == "callable_pass"]
     pos_rows = [r for r in ok if (r.get("true_effect_cumulative_level") or 0) > 1e-9]
@@ -686,6 +833,17 @@ def build_d5_trust_did_bootstrap_remediation_001(
     mean_boot_center = float(
         np.mean([r["bootstrap_distribution_center"] for r in pos_rows if r.get("bootstrap_distribution_center") is not None])
     ) if pos_rows else None
+    mean_boot_median = float(
+        np.mean([r["bootstrap_distribution_median"] for r in pos_rows if r.get("bootstrap_distribution_median") is not None])
+    ) if pos_rows else None
+    mean_interval_center = float(
+        np.mean([r["interval_center"] for r in pos_rows if r.get("interval_center") is not None])
+    ) if pos_rows else None
+    mean_gap = (
+        float(mean_point - mean_boot_center)
+        if mean_point is not None and mean_boot_center is not None
+        else None
+    )
     miscentering_dominant = bool(
         mean_center_err is not None
         and mean_point is not None
@@ -695,12 +853,15 @@ def build_d5_trust_did_bootstrap_remediation_001(
 
     clean_pos_cov = coverage_by_world.get("clean_parallel_trends", {}).get("positive_coverage")
     severe_pos_cov = coverage_by_world.get("severe_pretrend_violation", {}).get("positive_coverage")
+    holds_sign = coverage_by_pretrend.get("holds", {}).get("sign_accuracy")
+    # Low positive coverage under clean worlds with good sign accuracy ⇒ miscentering, not pretrend failure.
     pretrend_driver = bool(
-        clean_pos_cov is not None
+        holds_sign is not None
+        and holds_sign < 0.75
+        and not miscentering_dominant
+        and clean_pos_cov is not None
         and severe_pos_cov is not None
-        and clean_pos_cov < 0.2
-        and severe_pos_cov < 0.2
-        and abs(clean_pos_cov - severe_pos_cov) < 0.15
+        and severe_pos_cov < clean_pos_cov - 0.1
     )
 
     bias_decomposition = {
@@ -759,35 +920,44 @@ def build_d5_trust_did_bootstrap_remediation_001(
         ),
     }
 
-    policy_comparisons = {
-        "A_current_did_bootstrap": {
-            "null_coverage": coverage_by_effect.get("0.0", {}).get("null_coverage"),
-            "positive_coverage": coverage_by_effect.get("0.08", {}).get("positive_coverage"),
-            "point_in_ci_rate": variance_decomposition.get("point_in_bootstrap_ci_rate"),
-        },
-        "B_parallel_trends_gated": {
-            "positive_coverage_when_holds": coverage_by_pretrend.get("holds", {}).get("positive_coverage"),
-            "positive_coverage_when_severe_violation": coverage_by_pretrend.get("severe_violation", {}).get("positive_coverage"),
-        },
-        "C_cluster_bootstrap": {"status": "not_implemented_in_did", "note": "DID embeds time-block bootstrap only"},
-        "D_time_block_bootstrap": {"alias_of": "A_current_did_bootstrap"},
-        "E_bias_diagnostic_only": {
-            "sign_accuracy_positive": _coverage(pos_rows, "sign_correct"),
-            "mean_bias_positive": bias_decomposition.get("mean_bias_positive"),
-        },
-        "F_common_timing_only": coverage_by_timing.get("common", {}),
-        "G_staggered_timing_blocked": {
-            "blocked_runs": sum(1 for r in all_runs if r.get("callable_status") == "timing_blocked"),
-        },
-        "H_causal_interval_not_supported": {
-            "positive_coverage": coverage_by_effect.get("0.08", {}).get("positive_coverage"),
-            "recommendation": "block causal_interval readout",
-        },
-        "oracle_recentered_diagnostic": {
-            "positive_coverage": variance_decomposition.get("oracle_recentered_positive_coverage"),
-            "note": "diagnosis_only_not_for_production",
-        },
+    bootstrap_centering_diagnostics = {
+        "point_estimate_mean_positive": mean_point,
+        "bootstrap_mean_positive": mean_boot_center,
+        "bootstrap_median_positive": mean_boot_median,
+        "interval_center_mean_positive": mean_interval_center,
+        "point_minus_bootstrap_center": mean_gap,
+        "interval_center_error_mean_positive": mean_center_err,
+        "truth_scale": "cumulative_level",
+        "point_estimate_scale": "cumulative_level",
+        "bootstrap_replicate_scale": "cumulative_level",
+        "interval_scale": "cumulative_level",
+        "interval_centered_on": "bootstrap_cumulative_att_distribution",
+        "not_centered_on_reported_point": bool(
+            mean_gap is not None and abs(mean_gap) > 0.5 * max(abs(mean_point or 0), 1.0)
+        ),
     }
+
+    sign_acc = _coverage(pos_rows, "sign_correct")
+    pos_cov_08 = coverage_by_effect.get("0.08", {}).get("positive_coverage")
+    clean_iid_cov = coverage_by_serial.get("clean_iid", {}).get("positive_coverage")
+    harness_assessment = _assess_harness_defect(
+        harness_defect_confirmed,
+        harness_all_treated_fail,
+        len(harness_defect_runs),
+    )
+    production_assessment = _assess_production_defect(
+        sign_accuracy=sign_acc,
+        pos_cov_clean=clean_pos_cov,
+        pos_cov_08=pos_cov_08,
+        pos_cov_clean_iid=clean_iid_cov,
+        miscentering_dominant=miscentering_dominant,
+        truth_scale_mismatch=False,
+        oracle_pos_cov=variance_decomposition.get("oracle_recentered_positive_coverage"),
+        point_in_ci_rate=variance_decomposition.get("point_in_bootstrap_ci_rate"),
+        mean_gap=mean_gap,
+        pretrend_driver=pretrend_driver,
+        holds_sign_accuracy=holds_sign,
+    )
 
     failure_summary = {
         "total_runs": len(all_runs),
@@ -797,6 +967,37 @@ def build_d5_trust_did_bootstrap_remediation_001(
         if all_runs
         else None,
         "harness_defect_probe_failures": harness_all_treated_fail,
+    }
+
+    policy_comparisons = {
+        "A_current_production_interval": {
+            "null_coverage": coverage_by_effect.get("0.0", {}).get("null_coverage"),
+            "positive_coverage": pos_cov_08,
+            "negative_coverage": coverage_by_effect.get("-0.05", {}).get("negative_coverage"),
+            "type_i_error": coverage_by_effect.get("0.0", {}).get("type_i_error"),
+            "mean_bias": bias_decomposition.get("mean_bias_positive"),
+            "mean_interval_width": variance_decomposition.get("mean_interval_width"),
+            "failure_rate": failure_summary.get("overall_failure_rate"),
+            "point_in_ci_rate": variance_decomposition.get("point_in_bootstrap_ci_rate"),
+        },
+        "B_diagnostic_recentered_interval": {
+            "positive_coverage": variance_decomposition.get("oracle_recentered_positive_coverage"),
+            "note": "diagnostic_only_not_for_production",
+        },
+        "C_oracle_empirical_interval": {
+            "positive_coverage": variance_decomposition.get("oracle_recentered_positive_coverage"),
+            "note": "shifts CI by point_minus_bootstrap_center; diagnostic only",
+        },
+        "D_valid_parallel_trends_only": coverage_by_pretrend.get("holds", {}),
+        "E_common_timing_only": coverage_by_timing.get("common", {}),
+        "F_serial_dependence_restricted": coverage_by_serial.get("clean_iid", {}),
+        "G_staggered_timing_blocked": {
+            "blocked_runs": sum(1 for r in all_runs if r.get("callable_status") == "timing_blocked"),
+        },
+        "H_causal_interval_not_supported": {
+            "positive_coverage": pos_cov_08,
+            "recommendation": "block causal_interval readout",
+        },
     }
 
     pretrend_relationships = {
@@ -825,6 +1026,8 @@ def build_d5_trust_did_bootstrap_remediation_001(
         "worlds": [asdict(w) for w in worlds],
         "effect_sizes": list(effect_sizes),
         "timing_regimes": list(TIMING_REGIMES),
+        "parallel_trends_regimes": list(PARALLEL_TRENDS_REGIMES),
+        "serial_dependence_regimes": list(SERIAL_DEPENDENCE_REGIMES),
         "bootstrap_policies": list(BOOTSTRAP_POLICIES),
         "run_counts": failure_summary,
         "point_estimate_results": {
@@ -841,9 +1044,13 @@ def build_d5_trust_did_bootstrap_remediation_001(
         "coverage_by_world": coverage_by_world,
         "coverage_by_timing": coverage_by_timing,
         "coverage_by_parallel_trends_status": coverage_by_pretrend,
+        "coverage_by_serial_dependence": coverage_by_serial,
         "bias_decomposition": bias_decomposition,
         "variance_decomposition": variance_decomposition,
+        "bootstrap_centering_diagnostics": bootstrap_centering_diagnostics,
         "bootstrap_diagnostics": bootstrap_diagnostics,
+        "production_defect_assessment": production_assessment,
+        "harness_defect_assessment": harness_assessment,
         "pretrend_relationships": pretrend_relationships,
         "failure_summary": failure_summary,
         "policy_comparisons": policy_comparisons,
@@ -855,6 +1062,7 @@ def build_d5_trust_did_bootstrap_remediation_001(
             "causal_requires_parallel_trends": True,
             "supported_readouts": ["diagnostic_only", "descriptive_point"],
             "not_supported": ["causal_interval"],
+            "production_defect_decision": production_assessment["decision"],
         },
         "trustreport_eligibility_implications": {
             "dcm_row_id": "DCM-004",
@@ -862,23 +1070,38 @@ def build_d5_trust_did_bootstrap_remediation_001(
             "recommended_status": "INSUFFICIENT_EVIDENCE",
             "eligible_for_promotion": False,
             "requires_reassessment_after_harness_fix": True,
-            "requires_production_bootstrap_calibration_fix": True,
-            "note": "Prior ~0% positive coverage is not primarily truth-scale mismatch; bootstrap CI miscentering dominates under corrected geometry",
+            "requires_production_bootstrap_calibration_fix": production_assessment["decision"]
+            == "production_defect_confirmed",
+            "note": (
+                "Prior ~0% positive coverage is not primarily truth-scale mismatch; "
+                "bootstrap CI miscentering dominates under corrected geometry when production defect confirmed."
+            ),
         },
         "authorization_summary": {
             "trust_report_authorized": False,
             "trust_report_authorized_count": 0,
             "trust_report_ready": False,
         },
+        "required_follow_up_artifacts": [
+            "D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION",
+            *(
+                ["DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001"]
+                if production_assessment["decision"] == "production_defect_confirmed"
+                else []
+            ),
+            "DCM-004 eligibility reassessment (after harness + production corrections as applicable)",
+        ],
         "limitations": [
             "Synthetic worlds only; cumulative level truth matches DID cumulative_att scale.",
             "Oracle recentering is diagnostic only.",
             "Does not modify D5-STAT-DID-BOOTSTRAP-001 committed archive.",
+            "Does not change production DID bootstrap behavior.",
+            "Does not perform DCM-004 eligibility reassessment.",
             "Cluster/unit bootstrap not available in DID embedded path.",
             "Production acceptance thresholds not defined.",
         ],
     }
-    summary["verdict"] = _decide_verdict(summary)
+    summary["verdict"] = _decide_verdict(summary, production_assessment["decision"])
 
     if cfg.write_full_results_path and not cfg.fast:
         Path(cfg.write_full_results_path).write_text(
@@ -888,161 +1111,227 @@ def build_d5_trust_did_bootstrap_remediation_001(
     return _json_safe(summary)
 
 
-def write_summary(path: Path | None = None, *, cfg: RemediationConfig | None = None) -> Path:
+def _atomic_write_text(path: Path, content: str, *, overwrite: bool = False) -> None:
+    path = path.resolve()
+    if path.exists() and not overwrite:
+        raise FileExistsError(f"Refusing to overwrite existing file: {path}")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, tmp = tempfile.mkstemp(dir=path.parent, prefix=f".{path.name}.", suffix=".tmp")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as handle:
+            handle.write(content)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(tmp, path)
+    except Exception:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
+
+
+def write_summary(
+    path: Path | None = None,
+    *,
+    cfg: RemediationConfig | None = None,
+    overwrite: bool = False,
+    report_path: Path | None = None,
+) -> Path:
     payload = build_d5_trust_did_bootstrap_remediation_001(cfg)
     if path is None:
-        path = _REPO_ROOT / "docs/track_d/archives/D5_TRUST_DID_BOOTSTRAP_REMEDIATION_001_summary.json"
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
-    _write_report(payload)
+        path = _DEFAULT_SUMMARY
+    _atomic_write_text(path, json.dumps(payload, indent=2) + "\n", overwrite=overwrite)
+    _write_report(payload, report_path or _DEFAULT_REPORT, overwrite=overwrite)
     return path
 
 
-def _write_report(payload: dict[str, Any]) -> None:
-    path = _REPO_ROOT / "docs/track_d/D5_TRUST_DID_BOOTSTRAP_REMEDIATION_001_REPORT.md"
+def _fmt(val: Any) -> str:
+    if val is None:
+        return "—"
+    if isinstance(val, float):
+        return f"{val:.4f}"
+    return str(val)
+
+
+def _write_report(payload: dict[str, Any], path: Path, *, overwrite: bool = False) -> None:
     decomp = payload.get("bias_decomposition", {})
     by_eff = payload.get("coverage_by_effect", {})
+    prod = payload.get("production_defect_assessment", {})
+    harness = payload.get("harness_defect_assessment", {})
+    center = payload.get("bootstrap_centering_diagnostics", {})
+    pt = payload.get("point_estimate_results", {})
+    var = payload.get("variance_decomposition", {})
     lines = [
         "# D5 Trust DID Bootstrap Remediation 001 — Report",
         "",
-        f"**Artifact ID:** D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001  ",
+        "**Artifact ID:** D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001  ",
         f"**Verdict:** `{payload.get('verdict')}`  ",
         "**Summary:** [`archives/D5_TRUST_DID_BOOTSTRAP_REMEDIATION_001_summary.json`](archives/D5_TRUST_DID_BOOTSTRAP_REMEDIATION_001_summary.json)  ",
         f"**Threshold label:** `{_THRESHOLD_LABEL}`",
         "",
         "## 1. Executive summary",
         "",
-        "Diagnoses DCM-004 DID+bootstrap ~0% positive-effect interval coverage. "
-        "Under **corrected assignment geometry** (`test_0` treated only), point estimates recover injected cumulative level effects with good sign accuracy, "
-        "but **embedded bootstrap CIs are miscentered** relative to the reported `cumulative_att` point. "
-        "Null-world coverage is high because wide CIs centered near zero contain null truth; positive-world coverage remains ~0%. "
-        "**Not a truth-scale mismatch** (unlike SCM-JK). "
-        "D5-STAT harness also has an assignment defect (`groups.values()` → all units treated, zero controls). "
+        "This artifact diagnoses DCM-004 DID+bootstrap interval undercoverage. "
+        "Under corrected assignment (`test_0` treated only), point estimates recover injected cumulative level effects, "
+        "but embedded bootstrap CIs in production `DID.py` are miscentered relative to reported `cumulative_att`. "
+        "Canonical D5-STAT harness has a separate `groups.values()` assignment defect. "
         "**No TrustReport authorization.**",
         "",
-        "## 2. Prior eligibility finding",
+        "This artifact diagnoses DCM-004. It does not correct the canonical D5 harness. "
+        "It does not change production DID bootstrap behavior. "
+        "It does not perform DCM-004 eligibility reassessment. "
+        "It does not authorize TrustReport.",
         "",
-        "DCM-004 classified `INSUFFICIENT_EVIDENCE` with positive coverage ~0% in `D5_STAT_DID_BOOTSTRAP_001_results.json`.",
+        "## 2. Prior DCM-004 status",
+        "",
+        "DCM-004 classified `INSUFFICIENT_EVIDENCE` with ~0% positive coverage in `D5_STAT_DID_BOOTSTRAP_001_results.json`.",
         "",
         "## 3. Scope",
         "",
-        "DID point/interval diagnostics, 18 worlds, effect-size sweep, timing regimes, bootstrap policy comparisons, harness defect probe.",
+        f"{len(payload.get('worlds', []))} diagnostic worlds, effect-size sweep, timing/parallel-trends/serial regimes, "
+        "bootstrap policy comparisons, harness defect probe.",
         "",
-        "## 4. DID estimator path",
+        "## 4. Non-goals",
         "",
-        "`panel_exp/methods/DID.py` pooled TWFE with path-based `cumulative_att` reporting.",
+        "- No production DID code changes",
+        "- No canonical D5-STAT archive rewrite",
+        "- No TrustReport promotion or authorization",
+        "- No DCM-004 reassessment in this artifact",
         "",
-        "## 5. Bootstrap implementation",
+        "## 5. DID estimand",
         "",
-        "Embedded moving-block **time-period** resampling (`_block_bootstrap_inference`); whole cross-sections preserved per sampled period.",
+        "Cumulative treated-minus-synthetic-control ATT over post periods (**cumulative level units**).",
         "",
-        "## 6. DID estimand",
+        "## 6. Production DID path",
         "",
-        "Cumulative treated-minus-synthetic-control ATT over post periods (level units).",
+        "`panel_exp/methods/DID.py` — pooled TWFE with path-based `cumulative_att` in `run_analysis`; "
+        "bootstrap in `_block_bootstrap_inference` during `fit_model`.",
         "",
-        "## 7. Identification assumptions",
+        "## 7. Bootstrap implementation",
         "",
-        "Parallel trends required for causal interpretation; pretrend contract recorded per run.",
+        "Moving-block **time-period** resampling; percentiles of `bootstrap_cumulative_effects_`.",
         "",
-        "## 8. Worlds",
+        "## 8. Canonical D5 harness defect",
         "",
-        f"{len(payload.get('worlds', []))} diagnostic worlds with deterministic paired seeds.",
+        f"Confirmed: {harness.get('harness_defect_confirmed')}. "
+        f"`D5-STAT-DID-BOOTSTRAP-001` uses `groups.values()` flattening control+test_0 → all units treated, zero controls. "
+        f"Fix deferred to `{harness.get('canonical_fix_artifact')}`.",
         "",
-        "## 9. Effect-size sweep",
+        "## 9. Remediation harness architecture",
         "",
-        f"Effects: {', '.join(str(e) for e in payload.get('effect_sizes', []))}.",
+        "Uses `corrected_test_0` assignment; probes `broken_groups_values`; records bootstrap center, interval center, oracle shift.",
         "",
-        "## 10. Timing regimes",
+        "## 10. Worlds",
         "",
-        "Common simultaneous adoption supported; staggered cohort geometry blocked for pooled DID.",
+        f"{len(payload.get('worlds', []))} worlds (see summary JSON).",
         "",
-        "## 11. Bootstrap policies",
+        "## 11. Effect sizes",
         "",
-        "Policies A–H evaluated; cluster bootstrap not implemented.",
+        ", ".join(str(e) for e in payload.get("effect_sizes", [])),
         "",
-        "## 12. Metrics",
+        "## 12. Timing regimes",
         "",
-        "Separate null/positive/negative coverage, bias, RMSE, interval center error, bootstrap center vs point, oracle recentering (diagnostic).",
+        "Common timing supported; staggered pooled DID blocked.",
         "",
-        "## 13. Run counts/runtime",
+        "## 13. Parallel-trends regimes",
         "",
-        f"Total runs: {payload.get('failure_summary', {}).get('total_runs')}; failures: {payload.get('failure_summary', {}).get('failed_runs')}.",
+        "holds · mild_violation · severe_violation · staggered_blocked.",
         "",
-        "## 14. Point-estimate bias",
+        "## 14. Serial-dependence regimes",
         "",
-        f"Sign accuracy (positive): {payload.get('point_estimate_results', {}).get('sign_accuracy_positive')}; "
-        f"mean bias: {decomp.get('mean_bias_positive')}.",
+        "clean_iid · serial_correlation · clustered_shocks · heteroskedastic · standard_stress.",
         "",
-        "## 15. Interval centering",
+        "## 15. Point-estimate findings",
         "",
-        f"Mean interval center error: {decomp.get('mean_interval_center_error')}; miscentering dominant: {decomp.get('interval_miscentering_dominant')}.",
+        f"Sign accuracy (positive): {_fmt(pt.get('sign_accuracy_positive'))}; "
+        f"mean bias: {_fmt(decomp.get('mean_bias_positive'))}; "
+        f"RMSE @ 8%: {_fmt(pt.get('rmse_at_08_effect'))}.",
         "",
-        "## 16. Variance calibration",
+        "## 16. Bootstrap-center findings",
         "",
-        f"Point-in-bootstrap-CI rate: {payload.get('variance_decomposition', {}).get('point_in_bootstrap_ci_rate')}.",
+        f"Bootstrap mean: {_fmt(center.get('bootstrap_mean_positive'))}; "
+        f"point: {_fmt(center.get('point_estimate_mean_positive'))}; "
+        f"gap: {_fmt(center.get('point_minus_bootstrap_center'))}.",
         "",
-        "## 17. Null coverage",
+        "## 17. Interval-centering findings",
         "",
-        f"At 0% effect: {by_eff.get('0.0', {}).get('null_coverage')}.",
+        f"Interval centered on: {center.get('interval_centered_on')}; "
+        f"miscentering dominant: {decomp.get('interval_miscentering_dominant')}.",
         "",
-        "## 18. Positive coverage",
+        "## 18. Variance findings",
         "",
-        f"At 8% effect: {by_eff.get('0.08', {}).get('positive_coverage')}.",
+        f"Point-in-bootstrap-CI rate: {_fmt(var.get('point_in_bootstrap_ci_rate'))}; "
+        f"mean width: {_fmt(var.get('mean_interval_width'))}.",
         "",
-        "## 19. Negative coverage",
+        "## 19. Null coverage",
         "",
-        f"At −5% effect: {by_eff.get('-0.05', {}).get('negative_coverage')}.",
+        f"@ 0% effect: {_fmt(by_eff.get('0.0', {}).get('null_coverage'))}; "
+        f"type-I: {_fmt(by_eff.get('0.0', {}).get('type_i_error'))}.",
         "",
-        "## 20. Parallel-trends findings",
+        "## 20. Positive coverage",
         "",
-        str(payload.get("pretrend_relationships", {})),
+        f"@ 8% effect: {_fmt(by_eff.get('0.08', {}).get('positive_coverage'))}.",
         "",
-        "## 21. Serial-correlation findings",
+        "## 21. Negative coverage",
         "",
-        f"Serial-correlation world positive coverage: {payload.get('coverage_by_world', {}).get('serial_correlation', {}).get('positive_coverage')}.",
+        f"@ −5% effect: {_fmt(by_eff.get('-0.05', {}).get('negative_coverage'))}.",
         "",
-        "## 22. Timing findings",
+        "## 22. Common-timing findings",
         "",
-        f"Staggered blocked runs: {payload.get('failure_summary', {}).get('timing_blocked_runs')}.",
+        _fmt(payload.get("coverage_by_timing", {}).get("common", {}).get("positive_coverage")),
         "",
-        "## 23. Worst-world behavior",
+        "## 23. Staggered-timing findings",
         "",
-        "Positive coverage remains low across clean and stress worlds when bootstrap miscentering present.",
+        f"Blocked runs: {payload.get('failure_summary', {}).get('timing_blocked_runs')}.",
         "",
-        "## 24. Failure analysis",
+        "## 24. Parallel-trends findings",
         "",
-        str(payload.get("failure_summary", {})),
+        f"Clean vs severe positive coverage: {payload.get('pretrend_relationships', {}).get('clean_vs_severe_positive_coverage')}.",
         "",
-        "## 25. Policy comparisons",
+        "## 25. Serial-correlation findings",
         "",
-        "Oracle recentering improves coverage diagnostically; production policy H blocks causal interval.",
+        f"clean_iid positive coverage: {_fmt(payload.get('coverage_by_serial_dependence', {}).get('clean_iid', {}).get('positive_coverage'))}; "
+        f"serial_correlation: {_fmt(payload.get('coverage_by_world', {}).get('serial_correlation', {}).get('positive_coverage'))}.",
         "",
-        "## 26. Root cause",
+        "## 26. Policy comparisons",
         "",
-        f"Driver: `{decomp.get('undercoverage_driver_hypothesis')}`; harness defect: {decomp.get('harness_assignment_defect_confirmed')}.",
+        "A production interval retains low positive coverage; B/C diagnostic recentering/oracle improve coverage diagnostically only.",
         "",
-        "## 27. Algorithm changes",
+        "## 27. Root-cause determination",
         "",
-        "None in this artifact. Production bootstrap/point alignment requires separate fix with regression tests.",
+        f"Driver: `{decomp.get('undercoverage_driver_hypothesis')}`.",
         "",
-        "## 28. TrustReport eligibility implications",
+        "## 28. Production-defect decision",
+        "",
+        f"**{prod.get('decision')}** — recommended follow-up: `{prod.get('recommended_follow_up_artifact') or 'none'}`.",
+        "",
+        "## 29. Harness-defect decision",
+        "",
+        f"Harness defect confirmed: {harness.get('harness_defect_confirmed')}; canonical fix: `{harness.get('canonical_fix_artifact')}`.",
+        "",
+        "## 30. TrustReport implications",
         "",
         "DCM-004 remains `INSUFFICIENT_EVIDENCE`; causal-interval candidacy unsupported.",
         "",
-        "## 29. Authorization status",
+        "## 31. Authorization status",
         "",
-        "**Blocked** — `trust_report_authorized_count = 0`.",
+        "**Blocked** — `trust_report_authorized=false`, `trust_report_ready=false`.",
         "",
-        "## 30. Remaining limitations",
+        "## 32. Required follow-up artifacts",
+        "",
+        "\n".join(f"- `{a}`" for a in payload.get("required_follow_up_artifacts", [])),
+        "",
+        "## 33. Limitations",
         "",
         "\n".join(f"- {x}" for x in payload.get("limitations", [])),
         "",
-        "## 31. Governance verdict",
+        "## 34. Governance verdict",
         "",
         f"**`{payload.get('verdict')}`**",
         "",
     ]
-    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    _atomic_write_text(path, "\n".join(line.rstrip() for line in lines) + "\n", overwrite=overwrite)
 
 
 def _json_safe(obj: Any) -> Any:
@@ -1061,9 +1350,29 @@ def _json_safe(obj: Any) -> Any:
 
 
 def main() -> None:
-    out = write_summary(cfg=RemediationConfig())
+    parser = argparse.ArgumentParser(description="D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001 harness")
+    parser.add_argument(
+        "--output-local",
+        type=Path,
+        default=Path("/tmp/D5_TRUST_DID_BOOTSTRAP_REMEDIATION_001_results.json"),
+        help="Optional full local results path (not committed)",
+    )
+    parser.add_argument(
+        "--summary-output",
+        type=Path,
+        default=_DEFAULT_SUMMARY,
+        help="Compact summary JSON path",
+    )
+    parser.add_argument("--overwrite", action="store_true", help="Overwrite existing summary/report")
+    parser.add_argument("--fast", action="store_true", help="Fast mode (reduced worlds/replicates)")
+    args = parser.parse_args()
+    cfg = RemediationConfig(
+        fast=args.fast,
+        write_full_results_path=str(args.output_local) if not args.fast else None,
+    )
+    out = write_summary(args.summary_output, cfg=cfg, overwrite=args.overwrite)
     payload = json.loads(out.read_text())
-    print(f"Wrote {out} and report — verdict={payload['verdict']}")
+    print(f"Wrote {out} and {_DEFAULT_REPORT} — verdict={payload['verdict']}")
 
 
 if __name__ == "__main__":

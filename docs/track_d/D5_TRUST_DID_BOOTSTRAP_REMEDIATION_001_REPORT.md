@@ -1,135 +1,156 @@
 # D5 Trust DID Bootstrap Remediation 001 — Report
 
-**Artifact ID:** D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001  
-**Verdict:** `did_bootstrap_remediation_failed`  
-**Summary:** [`archives/D5_TRUST_DID_BOOTSTRAP_REMEDIATION_001_summary.json`](archives/D5_TRUST_DID_BOOTSTRAP_REMEDIATION_001_summary.json)  
+**Artifact ID:** D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001
+**Verdict:** `did_bootstrap_production_miscentering_confirmed`
+**Summary:** [`archives/D5_TRUST_DID_BOOTSTRAP_REMEDIATION_001_summary.json`](archives/D5_TRUST_DID_BOOTSTRAP_REMEDIATION_001_summary.json)
 **Threshold label:** `provisional_for_remediation_characterization_only`
 
 ## 1. Executive summary
 
-Diagnoses DCM-004 DID+bootstrap ~0% positive-effect interval coverage. Under **corrected assignment geometry** (`test_0` treated only), point estimates recover injected cumulative level effects with good sign accuracy, but **embedded bootstrap CIs are miscentered** relative to the reported `cumulative_att` point. Null-world coverage is high because wide CIs centered near zero contain null truth; positive-world coverage remains ~0%. **Not a truth-scale mismatch** (unlike SCM-JK). D5-STAT harness also has an assignment defect (`groups.values()` → all units treated, zero controls). **No TrustReport authorization.**
+This artifact diagnoses DCM-004 DID+bootstrap interval undercoverage. Under corrected assignment (`test_0` treated only), point estimates recover injected cumulative level effects, but embedded bootstrap CIs in production `DID.py` are miscentered relative to reported `cumulative_att`. Canonical D5-STAT harness has a separate `groups.values()` assignment defect. **No TrustReport authorization.**
 
-## 2. Prior eligibility finding
+This artifact diagnoses DCM-004. It does not correct the canonical D5 harness. It does not change production DID bootstrap behavior. It does not perform DCM-004 eligibility reassessment. It does not authorize TrustReport.
 
-DCM-004 classified `INSUFFICIENT_EVIDENCE` with positive coverage ~0% in `D5_STAT_DID_BOOTSTRAP_001_results.json`.
+## 2. Prior DCM-004 status
+
+DCM-004 classified `INSUFFICIENT_EVIDENCE` with ~0% positive coverage in `D5_STAT_DID_BOOTSTRAP_001_results.json`.
 
 ## 3. Scope
 
-DID point/interval diagnostics, 18 worlds, effect-size sweep, timing regimes, bootstrap policy comparisons, harness defect probe.
+18 diagnostic worlds, effect-size sweep, timing/parallel-trends/serial regimes, bootstrap policy comparisons, harness defect probe.
 
-## 4. DID estimator path
+## 4. Non-goals
 
-`panel_exp/methods/DID.py` pooled TWFE with path-based `cumulative_att` reporting.
+- No production DID code changes
+- No canonical D5-STAT archive rewrite
+- No TrustReport promotion or authorization
+- No DCM-004 reassessment in this artifact
 
-## 5. Bootstrap implementation
+## 5. DID estimand
 
-Embedded moving-block **time-period** resampling (`_block_bootstrap_inference`); whole cross-sections preserved per sampled period.
+Cumulative treated-minus-synthetic-control ATT over post periods (**cumulative level units**).
 
-## 6. DID estimand
+## 6. Production DID path
 
-Cumulative treated-minus-synthetic-control ATT over post periods (level units).
+`panel_exp/methods/DID.py` — pooled TWFE with path-based `cumulative_att` in `run_analysis`; bootstrap in `_block_bootstrap_inference` during `fit_model`.
 
-## 7. Identification assumptions
+## 7. Bootstrap implementation
 
-Parallel trends required for causal interpretation; pretrend contract recorded per run.
+Moving-block **time-period** resampling; percentiles of `bootstrap_cumulative_effects_`.
 
-## 8. Worlds
+## 8. Canonical D5 harness defect
 
-8 diagnostic worlds with deterministic paired seeds.
+Confirmed: True. `D5-STAT-DID-BOOTSTRAP-001` uses `groups.values()` flattening control+test_0 → all units treated, zero controls. Fix deferred to `D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION`.
 
-## 9. Effect-size sweep
+## 9. Remediation harness architecture
 
-Effects: 0.0, 0.08.
+Uses `corrected_test_0` assignment; probes `broken_groups_values`; records bootstrap center, interval center, oracle shift.
 
-## 10. Timing regimes
+## 10. Worlds
 
-Common simultaneous adoption supported; staggered cohort geometry blocked for pooled DID.
+18 worlds (see summary JSON).
 
-## 11. Bootstrap policies
+## 11. Effect sizes
 
-Policies A–H evaluated; cluster bootstrap not implemented.
+0.0, 0.03, 0.08, 0.12, -0.05
 
-## 12. Metrics
+## 12. Timing regimes
 
-Separate null/positive/negative coverage, bias, RMSE, interval center error, bootstrap center vs point, oracle recentering (diagnostic).
+Common timing supported; staggered pooled DID blocked.
 
-## 13. Run counts/runtime
+## 13. Parallel-trends regimes
 
-Total runs: 22; failures: 22.
+holds · mild_violation · severe_violation · staggered_blocked.
 
-## 14. Point-estimate bias
+## 14. Serial-dependence regimes
 
-Sign accuracy (positive): None; mean bias: None.
+clean_iid · serial_correlation · clustered_shocks · heteroskedastic · standard_stress.
 
-## 15. Interval centering
+## 15. Point-estimate findings
 
-Mean interval center error: None; miscentering dominant: False.
+Sign accuracy (positive): 1.0000; mean bias: 24.8162; RMSE @ 8%: 19.2992.
 
-## 16. Variance calibration
+## 16. Bootstrap-center findings
 
-Point-in-bootstrap-CI rate: None.
+Bootstrap mean: 4.3032; point: 335.3780; gap: 331.0748.
 
-## 17. Null coverage
+## 17. Interval-centering findings
 
-At 0% effect: None.
+Interval centered on: bootstrap_cumulative_att_distribution; miscentering dominant: True.
 
-## 18. Positive coverage
+## 18. Variance findings
 
-At 8% effect: None.
+Point-in-bootstrap-CI rate: 0.1429; mean width: 421.7012.
 
-## 19. Negative coverage
+## 19. Null coverage
 
-At −5% effect: None.
+@ 0% effect: 1.0000; type-I: 0.0000.
 
-## 20. Parallel-trends findings
+## 20. Positive coverage
 
-{'coverage_by_parallel_trends_regime': {}, 'clean_vs_severe_positive_coverage': {'clean_parallel_trends': None, 'severe_pretrend_violation': None}}
+@ 8% effect: 0.0000.
 
-## 21. Serial-correlation findings
+## 21. Negative coverage
 
-Serial-correlation world positive coverage: None.
+@ −5% effect: 0.0000.
 
-## 22. Timing findings
+## 22. Common-timing findings
 
-Staggered blocked runs: 0.
+0.0694
 
-## 23. Worst-world behavior
+## 23. Staggered-timing findings
 
-Positive coverage remains low across clean and stress worlds when bootstrap miscentering present.
+Blocked runs: 4.
 
-## 24. Failure analysis
+## 24. Parallel-trends findings
 
-{'total_runs': 22, 'failed_runs': 22, 'timing_blocked_runs': 0, 'overall_failure_rate': 1.0, 'harness_defect_probe_failures': 2}
+Clean vs severe positive coverage: {'clean_parallel_trends': 0.0, 'severe_pretrend_violation': 0.0}.
 
-## 25. Policy comparisons
+## 25. Serial-correlation findings
 
-Oracle recentering improves coverage diagnostically; production policy H blocks causal interval.
+clean_iid positive coverage: 0.0000; serial_correlation: 0.0000.
 
-## 26. Root cause
+## 26. Policy comparisons
 
-Driver: `bootstrap_interval_miscentering_plus_harness_geometry_defect`; harness defect: True.
+A production interval retains low positive coverage; B/C diagnostic recentering/oracle improve coverage diagnostically only.
 
-## 27. Algorithm changes
+## 27. Root-cause determination
 
-None in this artifact. Production bootstrap/point alignment requires separate fix with regression tests.
+Driver: `bootstrap_interval_miscentering_relative_to_path_cumulative_att`.
 
-## 28. TrustReport eligibility implications
+## 28. Production-defect decision
+
+**production_defect_confirmed** — recommended follow-up: `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001`.
+
+## 29. Harness-defect decision
+
+Harness defect confirmed: True; canonical fix: `D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION`.
+
+## 30. TrustReport implications
 
 DCM-004 remains `INSUFFICIENT_EVIDENCE`; causal-interval candidacy unsupported.
 
-## 29. Authorization status
+## 31. Authorization status
 
-**Blocked** — `trust_report_authorized_count = 0`.
+**Blocked** — `trust_report_authorized=false`, `trust_report_ready=false`.
 
-## 30. Remaining limitations
+## 32. Required follow-up artifacts
+
+- `D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION`
+- `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001`
+- `DCM-004 eligibility reassessment (after harness + production corrections as applicable)`
+
+## 33. Limitations
 
 - Synthetic worlds only; cumulative level truth matches DID cumulative_att scale.
 - Oracle recentering is diagnostic only.
 - Does not modify D5-STAT-DID-BOOTSTRAP-001 committed archive.
+- Does not change production DID bootstrap behavior.
+- Does not perform DCM-004 eligibility reassessment.
 - Cluster/unit bootstrap not available in DID embedded path.
 - Production acceptance thresholds not defined.
 
-## 31. Governance verdict
+## 34. Governance verdict
 
-**`did_bootstrap_remediation_failed`**
+**`did_bootstrap_production_miscentering_confirmed`**
 

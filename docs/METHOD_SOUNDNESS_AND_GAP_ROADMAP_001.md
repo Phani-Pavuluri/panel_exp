@@ -512,7 +512,7 @@ Per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)
 
 **TrustReport eligibility validation (2026-06-17):** [`TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md`](track_d/TRUSTREPORT_ELIGIBILITY_VALIDATION_001_REPORT.md) implemented. All production-facing downstream roles remain BLOCKED.
 
-**TrustReport remediation plan (2026-06-17):** [`TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md`](TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md) — SCM+JK and DID+bootstrap positive-coverage failures drive prioritized `D5-TRUST-*` revalidation; reassessment before promotion.
+**TrustReport remediation plan (2026-06-17):** [`TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md`](TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md) — SCM+JK reassessed (DCM-001); ✅ **`D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001`** confirms production DID bootstrap miscentering + canonical harness defect; next: harness correction → production readout correction → DCM-004 reassessment.
 
 **SCM+JK harness correction (2026-06-17):** [`D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md`](track_d/D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md) — canonical D5-STAT-SCM-JK-001 archive corrected (`scm_jk_harness_corrected_level_consistent_baseline_established`).
 

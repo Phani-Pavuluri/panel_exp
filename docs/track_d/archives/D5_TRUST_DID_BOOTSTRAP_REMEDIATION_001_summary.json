@@ -1,8 +1,8 @@
 {
   "artifact_id": "D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001",
   "artifact_version": "1.0.0",
-  "generated_at": "2026-06-18T01:37:40.027509+00:00",
-  "git_commit": "2f40ca0fb14834bfaafaa482707c995a3ed42f3e",
+  "generated_at": "2026-06-18T03:57:07.982512+00:00",
+  "git_commit": "2f1655ef09da0600271840cf0b8ffbba62a3b7c0",
   "config": {
     "n_replicates": 4,
     "fast": false,
@@ -308,6 +308,46 @@
     {
       "regime_id": "staggered",
       "description": "staggered cohort starts (DID pooled blocked)"
+    }
+  ],
+  "parallel_trends_regimes": [
+    {
+      "regime_id": "holds",
+      "description": "parallel trends assumed valid for causal readout"
+    },
+    {
+      "regime_id": "mild_violation",
+      "description": "mild pre-trend slope divergence"
+    },
+    {
+      "regime_id": "severe_violation",
+      "description": "severe pretrend violation"
+    },
+    {
+      "regime_id": "staggered_blocked",
+      "description": "staggered geometry blocked for pooled DID"
+    }
+  ],
+  "serial_dependence_regimes": [
+    {
+      "regime_id": "clean_iid",
+      "description": "no elevated autocorrelation or cross-geo shock overrides"
+    },
+    {
+      "regime_id": "serial_correlation",
+      "description": "high autocorrelation (AR-like dependence)"
+    },
+    {
+      "regime_id": "clustered_shocks",
+      "description": "elevated cross-geo correlation"
+    },
+    {
+      "regime_id": "heteroskedastic",
+      "description": "elevated noise scale heteroskedasticity"
+    },
+    {
+      "regime_id": "standard_stress",
+      "description": "other stress worlds without dedicated serial regime"
     }
   ],
   "bootstrap_policies": [
@@ -944,6 +984,113 @@
       "mean_bootstrap_se": 113.2224022164813
     }
   },
+  "coverage_by_serial_dependence": {
+    "clean_iid": {
+      "n_runs": 12,
+      "feasible_runs": 12,
+      "timing_blocked_runs": 0,
+      "failed_runs": 0,
+      "failure_rate": 0.0,
+      "null_coverage": 1.0,
+      "positive_coverage": 0.0,
+      "negative_coverage": null,
+      "null_rejection_rate": 1.0,
+      "type_i_error": 0.0,
+      "sign_accuracy": 0.6666666666666666,
+      "mean_bias": -10.085435139981868,
+      "median_bias": -11.296320349427987,
+      "rmse": 19.164493140277646,
+      "mean_interval_width": 246.36292885754753,
+      "mean_interval_center_error": -194.6316638251349,
+      "point_in_bootstrap_ci_rate": 0.25,
+      "oracle_recentered_coverage": 1.0,
+      "mean_bootstrap_se": 68.10379099038421
+    },
+    "standard_stress": {
+      "n_runs": 60,
+      "feasible_runs": 60,
+      "timing_blocked_runs": 0,
+      "failed_runs": 0,
+      "failure_rate": 0.0,
+      "null_coverage": 1.0,
+      "positive_coverage": 0.07692307692307693,
+      "negative_coverage": 0.0,
+      "null_rejection_rate": 1.0,
+      "type_i_error": 0.0,
+      "sign_accuracy": 0.9333333333333333,
+      "mean_bias": 28.70460591565158,
+      "median_bias": -10.126370861471713,
+      "rmse": 155.3915762470877,
+      "mean_interval_width": 466.289332226954,
+      "mean_interval_center_error": -280.0886543829655,
+      "point_in_bootstrap_ci_rate": 0.11666666666666667,
+      "oracle_recentered_coverage": 1.0,
+      "mean_bootstrap_se": 129.5933111983783
+    },
+    "serial_correlation": {
+      "n_runs": 4,
+      "feasible_runs": 4,
+      "timing_blocked_runs": 0,
+      "failed_runs": 0,
+      "failure_rate": 0.0,
+      "null_coverage": null,
+      "positive_coverage": 0.0,
+      "negative_coverage": null,
+      "null_rejection_rate": null,
+      "type_i_error": null,
+      "sign_accuracy": 1.0,
+      "mean_bias": -0.5668728836279655,
+      "median_bias": 11.065106061353333,
+      "rmse": 60.54710812397225,
+      "mean_interval_width": 311.29502640651026,
+      "mean_interval_center_error": -264.4132583347846,
+      "point_in_bootstrap_ci_rate": 0.0,
+      "oracle_recentered_coverage": 1.0,
+      "mean_bootstrap_se": 84.75440675798197
+    },
+    "clustered_shocks": {
+      "n_runs": 4,
+      "feasible_runs": 4,
+      "timing_blocked_runs": 0,
+      "failed_runs": 0,
+      "failure_rate": 0.0,
+      "null_coverage": null,
+      "positive_coverage": 0.0,
+      "negative_coverage": null,
+      "null_rejection_rate": null,
+      "type_i_error": null,
+      "sign_accuracy": 1.0,
+      "mean_bias": -11.439399049584267,
+      "median_bias": -14.72554863590591,
+      "rmse": 14.812676766035619,
+      "mean_interval_width": 295.83026007006254,
+      "mean_interval_center_error": -302.76626337251446,
+      "point_in_bootstrap_ci_rate": 0.0,
+      "oracle_recentered_coverage": 1.0,
+      "mean_bootstrap_se": 82.9253190107991
+    },
+    "heteroskedastic": {
+      "n_runs": 4,
+      "feasible_runs": 4,
+      "timing_blocked_runs": 0,
+      "failed_runs": 0,
+      "failure_rate": 0.0,
+      "null_coverage": null,
+      "positive_coverage": 0.25,
+      "negative_coverage": null,
+      "null_rejection_rate": null,
+      "type_i_error": null,
+      "sign_accuracy": 1.0,
+      "mean_bias": 40.46103605346826,
+      "median_bias": 67.09694426707256,
+      "rmse": 120.89909896211273,
+      "mean_interval_width": 515.1721611707361,
+      "mean_interval_center_error": -344.7198626789813,
+      "point_in_bootstrap_ci_rate": 0.5,
+      "oracle_recentered_coverage": 1.0,
+      "mean_bootstrap_se": 148.99575333246094
+    }
+  },
   "bias_decomposition": {
     "mean_bias_positive": 24.816203205480186,
     "mean_interval_miscentering": -303.5302620950428,
@@ -952,9 +1099,9 @@
     "harness_assignment_defect_confirmed": true,
     "harness_defect_description": "D5-STAT-DID-BOOTSTRAP-001 uses groups.values() flattening control+test_0 into treated_units, yielding zero controls and invalid geometry",
     "truth_scale_mismatch": false,
-    "undercoverage_driver_hypothesis": "bootstrap_interval_miscentering_plus_harness_geometry_defect",
+    "undercoverage_driver_hypothesis": "bootstrap_interval_miscentering_relative_to_path_cumulative_att",
     "components": {
-      "identification_failure": true,
+      "identification_failure": false,
       "estimator_bias": false,
       "interval_miscentering": true,
       "variance_underestimation": false,
@@ -970,6 +1117,20 @@
     "oracle_recentered_positive_coverage": 1.0,
     "note": "oracle recentering is diagnostic_only_not_for_production"
   },
+  "bootstrap_centering_diagnostics": {
+    "point_estimate_mean_positive": 335.37800212387856,
+    "bootstrap_mean_positive": 4.303226294993855,
+    "bootstrap_median_positive": -4.803198644019164,
+    "interval_center_mean_positive": 7.031536823355517,
+    "point_minus_bootstrap_center": 331.0747758288847,
+    "interval_center_error_mean_positive": 328.34646530052305,
+    "truth_scale": "cumulative_level",
+    "point_estimate_scale": "cumulative_level",
+    "bootstrap_replicate_scale": "cumulative_level",
+    "interval_scale": "cumulative_level",
+    "interval_centered_on": "bootstrap_cumulative_att_distribution",
+    "not_centered_on_reported_point": true
+  },
   "bootstrap_diagnostics": {
     "bootstrap_unit": "time_period_moving_block",
     "resamples": "whole cross-sections at sampled time indices",
@@ -977,6 +1138,43 @@
     "preserves_serial_dependence_partially": true,
     "point_in_bootstrap_ci_rate": 0.14285714285714285,
     "mean_bootstrap_center_vs_point_gap": 331.0747758288847
+  },
+  "production_defect_assessment": {
+    "decision": "production_defect_confirmed",
+    "criteria": {
+      "corrected_assignment_geometry": true,
+      "point_recovers_in_clean_worlds": true,
+      "bootstrap_interval_materially_miscentered": true,
+      "miscentering_reproduces_deterministically": true,
+      "visible_in_production_did_py": true,
+      "diagnostic_recenter_improves_coverage": true,
+      "not_explained_by_scale_mismatch": true,
+      "not_explained_by_serial_dependence_only": true,
+      "not_explained_by_parallel_trends_failure_only": true,
+      "bootstrap_center_gap_material": true
+    },
+    "recommended_follow_up_artifact": "DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001",
+    "bootstrap_replicate_statistic": "cumulative_att from _path_effect_from_df on block-resampled panel",
+    "reported_point_statistic": "cumulative_att from aggregate path in run_analysis",
+    "interval_construction": "percentile of bootstrap_cumulative_effects_ distribution",
+    "interval_centered_on": "bootstrap_cumulative_att_distribution_not_reported_point",
+    "note": "Production DID.py embeds bootstrap; CI percentiles follow bootstrap draws while reported cumulative_att is computed after bootstrap on the original panel path."
+  },
+  "harness_defect_assessment": {
+    "harness_defect_confirmed": true,
+    "canonical_harness_artifact": "D5-STAT-DID-BOOTSTRAP-001",
+    "defect_pattern": "groups.values() flattens control+test_0 into treated_units",
+    "symptoms": [
+      "all units treated",
+      "zero controls",
+      "malformed DID pooled geometry",
+      "archive rebuild drift when harness assignment wrong"
+    ],
+    "probe_failures": 3,
+    "probe_runs": 3,
+    "remediation_harness_uses_corrected_test_0": true,
+    "canonical_fix_artifact": "D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION",
+    "fixed_in_this_branch": false
   },
   "pretrend_relationships": {
     "coverage_by_parallel_trends_regime": {
@@ -1057,27 +1255,46 @@
     "harness_defect_probe_failures": 3
   },
   "policy_comparisons": {
-    "A_current_did_bootstrap": {
+    "A_current_production_interval": {
       "null_coverage": 1.0,
       "positive_coverage": 0.0,
+      "negative_coverage": 0.0,
+      "type_i_error": 0.0,
+      "mean_bias": 24.816203205480186,
+      "mean_interval_width": 421.7012484582982,
+      "failure_rate": 0.07368421052631578,
       "point_in_ci_rate": 0.14285714285714285
     },
-    "B_parallel_trends_gated": {
-      "positive_coverage_when_holds": 0.078125,
-      "positive_coverage_when_severe_violation": 0.0
+    "B_diagnostic_recentered_interval": {
+      "positive_coverage": 1.0,
+      "note": "diagnostic_only_not_for_production"
     },
-    "C_cluster_bootstrap": {
-      "status": "not_implemented_in_did",
-      "note": "DID embeds time-block bootstrap only"
+    "C_oracle_empirical_interval": {
+      "positive_coverage": 1.0,
+      "note": "shifts CI by point_minus_bootstrap_center; diagnostic only"
     },
-    "D_time_block_bootstrap": {
-      "alias_of": "A_current_did_bootstrap"
+    "D_valid_parallel_trends_only": {
+      "n_runs": 76,
+      "feasible_runs": 76,
+      "timing_blocked_runs": 0,
+      "failed_runs": 0,
+      "failure_rate": 0.0,
+      "null_coverage": 1.0,
+      "positive_coverage": 0.078125,
+      "negative_coverage": 0.0,
+      "null_rejection_rate": 1.0,
+      "type_i_error": 0.0,
+      "sign_accuracy": 0.8947368421052632,
+      "mean_bias": 27.340072785520928,
+      "median_bias": -8.759031085840434,
+      "rmse": 140.8802173754169,
+      "mean_interval_width": 430.67201123617605,
+      "mean_interval_center_error": -273.25509153493886,
+      "point_in_bootstrap_ci_rate": 0.15789473684210525,
+      "oracle_recentered_coverage": 1.0,
+      "mean_bootstrap_se": 119.26325308021715
     },
-    "E_bias_diagnostic_only": {
-      "sign_accuracy_positive": 1.0,
-      "mean_bias_positive": 24.816203205480186
-    },
-    "F_common_timing_only": {
+    "E_common_timing_only": {
       "n_runs": 84,
       "feasible_runs": 84,
       "timing_blocked_runs": 0,
@@ -1098,16 +1315,33 @@
       "oracle_recentered_coverage": 1.0,
       "mean_bootstrap_se": 117.37554857371758
     },
+    "F_serial_dependence_restricted": {
+      "n_runs": 12,
+      "feasible_runs": 12,
+      "timing_blocked_runs": 0,
+      "failed_runs": 0,
+      "failure_rate": 0.0,
+      "null_coverage": 1.0,
+      "positive_coverage": 0.0,
+      "negative_coverage": null,
+      "null_rejection_rate": 1.0,
+      "type_i_error": 0.0,
+      "sign_accuracy": 0.6666666666666666,
+      "mean_bias": -10.085435139981868,
+      "median_bias": -11.296320349427987,
+      "rmse": 19.164493140277646,
+      "mean_interval_width": 246.36292885754753,
+      "mean_interval_center_error": -194.6316638251349,
+      "point_in_bootstrap_ci_rate": 0.25,
+      "oracle_recentered_coverage": 1.0,
+      "mean_bootstrap_se": 68.10379099038421
+    },
     "G_staggered_timing_blocked": {
       "blocked_runs": 4
     },
     "H_causal_interval_not_supported": {
       "positive_coverage": 0.0,
       "recommendation": "block causal_interval readout"
-    },
-    "oracle_recentered_diagnostic": {
-      "positive_coverage": 1.0,
-      "note": "diagnosis_only_not_for_production"
     }
   },
   "semantic_classification": {
@@ -1122,7 +1356,8 @@
     ],
     "not_supported": [
       "causal_interval"
-    ]
+    ],
+    "production_defect_decision": "production_defect_confirmed"
   },
   "trustreport_eligibility_implications": {
     "dcm_row_id": "DCM-004",
@@ -1131,19 +1366,26 @@
     "eligible_for_promotion": false,
     "requires_reassessment_after_harness_fix": true,
     "requires_production_bootstrap_calibration_fix": true,
-    "note": "Prior ~0% positive coverage is not primarily truth-scale mismatch; bootstrap CI miscentering dominates under corrected geometry"
+    "note": "Prior ~0% positive coverage is not primarily truth-scale mismatch; bootstrap CI miscentering dominates under corrected geometry when production defect confirmed."
   },
   "authorization_summary": {
     "trust_report_authorized": false,
     "trust_report_authorized_count": 0,
     "trust_report_ready": false
   },
+  "required_follow_up_artifacts": [
+    "D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION",
+    "DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001",
+    "DCM-004 eligibility reassessment (after harness + production corrections as applicable)"
+  ],
   "limitations": [
     "Synthetic worlds only; cumulative level truth matches DID cumulative_att scale.",
     "Oracle recentering is diagnostic only.",
     "Does not modify D5-STAT-DID-BOOTSTRAP-001 committed archive.",
+    "Does not change production DID bootstrap behavior.",
+    "Does not perform DCM-004 eligibility reassessment.",
     "Cluster/unit bootstrap not available in DID embedded path.",
     "Production acceptance thresholds not defined."
   ],
-  "verdict": "did_bootstrap_not_interval_eligible"
+  "verdict": "did_bootstrap_production_miscentering_confirmed"
 }
