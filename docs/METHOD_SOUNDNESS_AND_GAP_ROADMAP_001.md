@@ -516,7 +516,11 @@ Per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)
 
 **SCM+JK harness correction (2026-06-17):** [`D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md`](track_d/D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md) — canonical D5-STAT-SCM-JK-001 archive corrected (`scm_jk_harness_corrected_level_consistent_baseline_established`).
 
-**TrustReport eligibility reassessment (2026-06-18):** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) — DCM-001 remains support-gated `ELIGIBLE_WITH_RESTRICTIONS`; no authorization.
+**DCM-004 TrustReport eligibility reassessment (2026-06-18):** [`DCM004_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/DCM004_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) — DCM-004 `ELIGIBLE_WITH_RESTRICTIONS` on corrected bootstrap evidence; supported null type-I ~13%; no authorization.
+
+**D5-TRUST-TBRRIDGE-BRB-001 (2026-06-18):** [`D5_TRUST_TBRRIDGE_BRB_001_REPORT.md`](track_d/D5_TRUST_TBRRIDGE_BRB_001_REPORT.md) — BRB production defect confirmed (interval miscentering); diagnostic-only; no authorization.
+
+**TBRRIDGE-BRB-INTERVAL-CORRECTION-001 (2026-06-18):** [`TBRRIDGE_BRB_INTERVAL_CORRECTION_001_REPORT.md`](track_d/TBRRIDGE_BRB_INTERVAL_CORRECTION_001_REPORT.md) — mean-effect centered-deviation CI; positive coverage improved; null caveat; no authorization.
 
 **DCM-004 TrustReport eligibility reassessment (2026-06-18):** [`DCM004_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/DCM004_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) — DCM-004 `ELIGIBLE_WITH_RESTRICTIONS` on corrected bootstrap evidence; supported null type-I ~13%; no authorization.
 

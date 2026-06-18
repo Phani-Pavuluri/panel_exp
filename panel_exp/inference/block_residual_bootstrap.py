@@ -177,6 +177,27 @@ def _compute_bca_quantiles(
         return (lower, upper, 0.0, 0.0, True)
 
 
+def _mean_effect_bootstrap_interval(
+    boot_replicates: np.ndarray,
+    point_estimate: float,
+    alpha: float,
+) -> tuple[float, float, float]:
+    """Centered-deviation percentile CI for mean post-window treatment effect.
+
+    Bootstrap replicates and plug-in point must both be on the **mean effect**
+    scale (average treated-minus-counterfactual over the post window).
+    """
+    boot_flat = np.asarray(boot_replicates, dtype=float).ravel()
+    boot_flat = boot_flat[np.isfinite(boot_flat)]
+    if boot_flat.size == 0 or not np.isfinite(point_estimate):
+        return np.nan, np.nan, np.nan
+    bootstrap_center = float(np.mean(boot_flat))
+    deviations = boot_flat - bootstrap_center
+    ci_lower = float(point_estimate + np.percentile(deviations, (alpha / 2.0) * 100.0))
+    ci_upper = float(point_estimate + np.percentile(deviations, (1.0 - alpha / 2.0) * 100.0))
+    return ci_lower, ci_upper, bootstrap_center
+
+
 # New helpers
 def _slice_panel_to_periods(
     pds: 'PanelDataset',
@@ -709,13 +730,33 @@ def block_residual_bootstrap(
             f"treatment_window_len={treated_len}, n_units={n_units}, bootstrap_n_series={bootstrap_n_series}"
         )
 
-    lower_path = np.nanquantile(boot_paths, alpha / 2.0, axis=0)
-    upper_path = np.nanquantile(boot_paths, 1.0 - alpha / 2.0, axis=0)
+    # Mean post-window effect estimand (matches TBRRidge / recovery path-period readout).
+    plugin_mean_effect = float(np.nanmean(treated_effect))
+    boot_mean_replicates = np.nanmean(boot_paths, axis=(1, 2))
+    mean_ci_lower, mean_ci_upper, bootstrap_center_mean = _mean_effect_bootstrap_interval(
+        boot_mean_replicates,
+        plugin_mean_effect,
+        alpha,
+    )
+    bootstrap_center_minus_point = (
+        float(bootstrap_center_mean - plugin_mean_effect)
+        if np.isfinite(bootstrap_center_mean) and np.isfinite(plugin_mean_effect)
+        else np.nan
+    )
+
+    # Path bounds: constant shift from plug-in path so recovery mean-effect interval
+    # equals the centered-deviation CI (see TBRRIDGE_BRB_INTERVAL_CORRECTION_001).
+    if np.isfinite(mean_ci_lower) and np.isfinite(mean_ci_upper):
+        effect_lo_path = treated_effect - mean_ci_upper
+        effect_hi_path = treated_effect - mean_ci_lower
+    else:
+        effect_lo_path = np.nanquantile(boot_paths, alpha / 2.0, axis=0)
+        effect_hi_path = np.nanquantile(boot_paths, 1.0 - alpha / 2.0, axis=0)
 
     out = np.full((n_units, pds.num_timepoints, 3), np.nan)
-    out[:, start:end, 0] = lower_path.T
+    out[:, start:end, 0] = effect_lo_path.T
     out[:, start:end, 1] = treated_effect.T
-    out[:, start:end, 2] = upper_path.T
+    out[:, start:end, 2] = effect_hi_path.T
 
     cumulative_boot = np.nansum(boot_paths, axis=1)
     observed_cumulative = np.nansum(treated_effect, axis=0)
@@ -809,6 +850,17 @@ def block_residual_bootstrap(
     # Primary stats: scalars for downstream (aggregate when n_units > 1)
     if n_units > 1:
         brb_stats = {
+            'effect_mean_brb': plugin_mean_effect,
+            'effect_ci_lower_mean_brb': mean_ci_lower,
+            'effect_ci_upper_mean_brb': mean_ci_upper,
+            'bootstrap_interval_method': 'centered_deviation_percentile_mean_effect',
+            'bootstrap_replicate_estimand': 'post_window_mean_effect_level',
+            'bootstrap_center': bootstrap_center_mean,
+            'bootstrap_center_minus_point': bootstrap_center_minus_point,
+            'bootstrap_replicate_count': int(np.sum(np.isfinite(boot_mean_replicates))),
+            'point_estimate': plugin_mean_effect,
+            'interval_lower': mean_ci_lower,
+            'interval_upper': mean_ci_upper,
             'effect_cumulative_brb': observed_cumulative_agg,
             'effect_ci_lower_cumulative_brb': cumulative_lower_agg,
             'effect_ci_upper_cumulative_brb': cumulative_upper_agg,
@@ -854,6 +906,17 @@ def block_residual_bootstrap(
     else:
         boot_std_agg = float(np.nanstd(cumulative_boot_agg))
         brb_stats = {
+            'effect_mean_brb': plugin_mean_effect,
+            'effect_ci_lower_mean_brb': mean_ci_lower,
+            'effect_ci_upper_mean_brb': mean_ci_upper,
+            'bootstrap_interval_method': 'centered_deviation_percentile_mean_effect',
+            'bootstrap_replicate_estimand': 'post_window_mean_effect_level',
+            'bootstrap_center': bootstrap_center_mean,
+            'bootstrap_center_minus_point': bootstrap_center_minus_point,
+            'bootstrap_replicate_count': int(np.sum(np.isfinite(boot_mean_replicates))),
+            'point_estimate': plugin_mean_effect,
+            'interval_lower': mean_ci_lower,
+            'interval_upper': mean_ci_upper,
             'effect_cumulative_brb': float(observed_cumulative[0]),
             'effect_ci_lower_cumulative_brb': float(cumulative_lower[0]),
             'effect_ci_upper_cumulative_brb': float(cumulative_upper[0]),

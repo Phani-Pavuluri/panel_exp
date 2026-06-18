@@ -137,6 +137,13 @@ def run_block_residual_bootstrap(ctx: InferenceRunContext) -> None:
     a.results["effect_ci_upper_cumulative_brb"] = brb_stats.get(
         "effect_ci_upper_cumulative_brb", np.nan
     )
+    a.results["effect_mean_brb"] = brb_stats.get("effect_mean_brb", np.nan)
+    a.results["effect_ci_lower_mean_brb"] = brb_stats.get("effect_ci_lower_mean_brb", np.nan)
+    a.results["effect_ci_upper_mean_brb"] = brb_stats.get("effect_ci_upper_mean_brb", np.nan)
+    a.results["bootstrap_interval_method"] = brb_stats.get("bootstrap_interval_method")
+    a.results["bootstrap_replicate_estimand"] = brb_stats.get("bootstrap_replicate_estimand")
+    a.results["bootstrap_center"] = brb_stats.get("bootstrap_center", np.nan)
+    a.results["bootstrap_center_minus_point"] = brb_stats.get("bootstrap_center_minus_point", np.nan)
 
 
 def run_conformal(ctx: InferenceRunContext) -> None:

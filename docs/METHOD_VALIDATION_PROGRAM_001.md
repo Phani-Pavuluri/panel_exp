@@ -319,6 +319,8 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **DCM-004 TrustReport eligibility reassessment (2026-06-18):** [`DCM004_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/DCM004_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) — DCM-004 reassessed `ELIGIBLE_WITH_RESTRICTIONS` on corrected production bootstrap evidence; positive coverage ~93%; supported null type-I ~13%; stress worlds excluded; no authorization.
 
+**TBRRidge BRB interval correction (2026-06-18):** [`TBRRIDGE_BRB_INTERVAL_CORRECTION_001_REPORT.md`](track_d/TBRRIDGE_BRB_INTERVAL_CORRECTION_001_REPORT.md) — production BRB mean-effect centered-deviation intervals; centering gap resolved; null calibration caveat; no authorization.
+
 ## 13. Stop condition
 
 | Criterion | Status |

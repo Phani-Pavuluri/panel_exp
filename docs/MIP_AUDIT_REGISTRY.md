@@ -1266,7 +1266,31 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 
 **Verdict:** DCM-004 reassessed using corrected production evidence chain (harness correction → cumulative readout correction). Positive coverage ~4% → ~93%; clean parallel positive 100%; point-in-interval 100%. Aggregate null type-I ~32% driven by unsupported `post_shock_null` stress world; supported-world type-I ~13%. Provisional supported contract: cumulative-level ATT, common timing, parallel-trends gate, stress worlds excluded. **No TrustReport authorization.**
 
-**Next:** DCM-005 TBRRidge BRB/KFold/Placebo validation → DCM-006 multi-cell per-cell → DCM-008 stratified SCM-JK → disposition decisions → **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** → promotion decision.
+**Next:** ✅ `D5-TRUST-TBRRIDGE-BRB-001` → ✅ `TBRRIDGE-BRB-INTERVAL-CORRECTION-001` → `D5-TRUST-TBRRIDGE-KFOLD-001` → disposition decisions → **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** → promotion decision.
+
+---
+
+## D5-TRUST-TBRRIDGE-BRB-001 (2026-06-18)
+
+**Artifact:** [`docs/track_d/D5_TRUST_TBRRIDGE_BRB_001_REPORT.md`](track_d/D5_TRUST_TBRRIDGE_BRB_001_REPORT.md) · [`panel_exp/validation/track_d_d5_trust_tbrridge_brb_001.py`](../panel_exp/validation/track_d_d5_trust_tbrridge_brb_001.py) · [`docs/track_d/archives/D5_TRUST_TBRRIDGE_BRB_001_summary.json`](track_d/archives/D5_TRUST_TBRRIDGE_BRB_001_summary.json)
+
+**Status:** **`tbrridge_brb_production_defect_confirmed`**
+
+**Verdict:** BRB cumulative-sum bootstrap center misaligned with mean post-window point readout; positive coverage ~21%; null coverage artificially high pre-fix. **`production_defect_confirmed`**. No TrustReport authorization.
+
+**Next:** ✅ `TBRRIDGE-BRB-INTERVAL-CORRECTION-001`.
+
+---
+
+## TBRRIDGE-BRB-INTERVAL-CORRECTION-001 (2026-06-18)
+
+**Artifact:** [`docs/track_d/TBRRIDGE_BRB_INTERVAL_CORRECTION_001_REPORT.md`](track_d/TBRRIDGE_BRB_INTERVAL_CORRECTION_001_REPORT.md) · [`panel_exp/inference/block_residual_bootstrap.py`](../panel_exp/inference/block_residual_bootstrap.py) · [`docs/track_d/archives/TBRRIDGE_BRB_INTERVAL_CORRECTION_001_summary.json`](track_d/archives/TBRRIDGE_BRB_INTERVAL_CORRECTION_001_summary.json)
+
+**Status:** **`tbrridge_brb_centering_corrected_variance_issue_remains`**
+
+**Verdict:** Production BRB intervals now use `centered_deviation_percentile_mean_effect` aligned to post-window mean effect estimand. Bootstrap center gap ~292 → ~0.006. Positive coverage ~21% → ~51%; null coverage ~100% → ~40% (centering on plug-in point exposes estimator null bias). **No TrustReport authorization.** DCM-005 reassessment deferred.
+
+**Next:** `D5-TRUST-TBRRIDGE-KFOLD-001` → `D5-TRUST-TBRRIDGE-PLACEBO-001` → DCM-005 eligibility reassessment.
 
 ---
 
