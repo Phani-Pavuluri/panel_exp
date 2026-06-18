@@ -1,16 +1,23 @@
 # D5-STAT-DID-BOOTSTRAP-001 — Level B characterization (DID + embedded bootstrap)
 
+> **Harness correction:** `D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION` supersedes canonical
+> rebuild geometry and coverage interpretation. Historical archive:
+> [`archives/D5_STAT_DID_BOOTSTRAP_001_results_historical_pre_harness_correction.json`](archives/D5_STAT_DID_BOOTSTRAP_001_results_historical_pre_harness_correction.json).
+> Correction report: [`D5_STAT_DID_BOOTSTRAP_001_HARNESS_CORRECTION_REPORT.md`](D5_STAT_DID_BOOTSTRAP_001_HARNESS_CORRECTION_REPORT.md).
+> **Does not supersede production bootstrap behavior.**
+
 **Artifact ID:** D5-STAT-DID-BOOTSTRAP-001
 **Type:** Level B characterization — **not** promotion, **not** governed uncertainty validation
 **Overall verdict:** `characterization_mixed_requires_followup`
+**Harness correction verdict:** `did_bootstrap_harness_corrected_production_miscoverage_confirmed`
 
 **Archive:** [`archives/D5_STAT_DID_BOOTSTRAP_001_results.json`](archives/D5_STAT_DID_BOOTSTRAP_001_results.json)
 **Harness:** `panel_exp/validation/track_d_d5_stat_did_bootstrap_001.py`
-**Regenerate:** `python -m panel_exp.validation.track_d_d5_stat_did_bootstrap_001`
+**Regenerate:** `poetry run python -m panel_exp.validation.track_d_d5_stat_did_bootstrap_001 --output docs/track_d/archives/D5_STAT_DID_BOOTSTRAP_001_results.json --overwrite`
 
 ## 1. Purpose
 
-Characterize **DID** with **estimator-native embedded moving-block bootstrap** on **single-cell unit-panel** geometry (`multiple_treated="pooled"`). Evaluates callable stability, finite point/interval outputs, interval orientation, null interval behavior, injected cumulative lift recovery, and pretrend/shock sensitivity.
+Characterize **DID** with **estimator-native embedded moving-block bootstrap** on **single-cell unit-panel** geometry (`multiple_treated="pooled"`). Evaluates callable stability, finite point/interval outputs, interval orientation, null interval behavior, injected cumulative lift recovery, bootstrap center diagnostics, and pretrend/shock sensitivity.
 
 ## 2. Relationship to D5-STAT-SMOKE-CALLABLE-001
 
@@ -26,13 +33,13 @@ Parallel to SCM-JK, AugSynth point, and TBR aggregate characterizations. Prior a
 
 ## 5. Scope and exclusions
 
-**In scope:** DID estimator, embedded bootstrap inference, single-cell unit panel, seven worlds × 15 replicates.
+**In scope:** DID estimator, embedded bootstrap inference, single-cell unit panel, common simultaneous timing, seven worlds × 15 replicates.
 
-**Out of scope:** SCM, AugSynth, TBR/TBRRidge, multi-cell pooling, production roles, TrustReport/F-DECISION, CalibrationSignal, MMM, LLM, primary/secondary evidence labels.
+**Out of scope:** SCM, AugSynth, TBR/TBRRidge, multi-cell pooling, production roles, TrustReport/F-DECISION, CalibrationSignal, MMM, LLM, primary/secondary evidence labels, production bootstrap recentering.
 
 ## 6. Panel geometry
 
-`single_cell_unit_level`: multiple treated units assigned via `greedy_match_markets`, simultaneous adoption, pooled DID readout. Cumulative ATT (`cumulative_att`) and cumulative bootstrap CI (`treatment_ci`) are the primary interval scale.
+`single_cell_unit_level`: treated units from explicit `test_0`; controls from explicit `control` (never `groups.values()`). Simultaneous adoption (`common_simultaneous_adoption`). Pooled DID readout. Cumulative ATT (`cumulative_att`) and cumulative bootstrap CI (`treatment_ci`) on **cumulative level** scale.
 
 ## 7. DGP world design
 
@@ -46,63 +53,63 @@ Parallel to SCM-JK, AugSynth point, and TBR aggregate characterizations. Prior a
 | `trend_violation_positive_lift` | `did_parallel_trends_violation` | 8% |
 | `post_shock_null` | `scm_structural_break` | 0% |
 
-Fixed seeds: `random_state_base + widx*1000 + rep*17 + attempt`.
+Fixed seeds: `random_state_base + widx*1000 + rep*17 + attempt` (base `20260608`).
 
 ## 8. DID execution path
 
-`DID(alpha=0.05)` → `run_analysis(panel, multiple_treated="pooled")` with embedded `_block_bootstrap_inference`. Point: `cumulative_att`. Interval: `treatment_ci` (cumulative absolute scale). Pretrend-violation worlds use `allow_pretrend_violation=True` for characterization under violation (not waiver authorization).
+`DID(alpha=0.05)` → `run_analysis(panel, multiple_treated="pooled")` with embedded `_block_bootstrap_inference`. Point: `cumulative_att`. Interval: `treatment_ci` (cumulative level scale). Pretrend-violation worlds use `allow_pretrend_violation=True` for characterization under violation (not waiver authorization).
 
 ## 9. Metrics
 
-Callable rate, bias/MAE/RMSE vs injected cumulative truth, sign errors, null interval false-positive rate (interval excludes 0), injected-world coverage, interval width, orientation failure rate, negative half-width rate, degenerate interval rate, non-finite rate.
+Callable rate, assignment geometry (`n_treated`, `n_control`), bias/MAE/RMSE vs injected cumulative truth, sign errors, null/positive coverage (separate), type-I error, bootstrap center vs point gap, interval width, orientation failure rate, negative half-width rate, degenerate interval rate, non-finite rate.
 
 ## 10. Results by world
 
-| world | feasible | null FPR | coverage | sign err | orient fail | neg HW | callable fail |
-|-------|----------|----------|----------|----------|-------------|--------|---------------|
-| `clean_parallel_null` | 15/15 | 0.0000 | 1.0000 | — | 0.000 | 0.000 | 0.000 |
-| `clean_parallel_positive_lift` | 15/15 | — | 0.0000 | 0.0000 | 0.000 | 0.000 | 0.000 |
-| `weak_signal_null` | 15/15 | 0.0000 | 1.0000 | — | 0.000 | 0.000 | 0.000 |
-| `noisy_positive_lift` | 15/15 | — | 0.0000 | 0.0000 | 0.000 | 0.000 | 0.000 |
-| `trend_violation_null` | 14/15 | 0.0000 | 1.0000 | — | 0.000 | 0.000 | 0.067 |
-| `trend_violation_positive_lift` | 15/15 | — | 0.0000 | 0.0000 | 0.000 | 0.000 | 0.000 |
-| `post_shock_null` | 15/15 | 0.0000 | 1.0000 | — | 0.000 | 0.000 | 0.000 |
+| world | feasible | null FPR | coverage | sign err | orient fail | callable fail |
+|-------|----------|----------|----------|----------|-------------|---------------|
+| `clean_parallel_null` | 15/15 | 0.0000 | 1.0000 | — | 0.000 | 0.000 |
+| `clean_parallel_positive_lift` | 15/15 | — | 0.0000 | 0.0000 | 0.000 | 0.000 |
+| `weak_signal_null` | 15/15 | 0.0000 | 1.0000 | — | 0.000 | 0.000 |
+| `noisy_positive_lift` | 15/15 | — | 0.0667 | 0.0000 | 0.000 | 0.000 |
+| `trend_violation_null` | 15/15 | 0.0000 | 1.0000 | — | 0.000 | 0.000 |
+| `trend_violation_positive_lift` | 15/15 | — | 0.0667 | 0.0000 | 0.000 | 0.000 |
+| `post_shock_null` | 15/15 | 0.0000 | 1.0000 | — | 0.000 | 0.000 |
 
-**Structural checks:** 0 interval orientation failures, 0 negative half-widths across all feasible runs.
+**Structural checks:** 0 interval orientation failures, 0 negative half-widths, 105/105 feasible runs post-correction.
 
 ## 11. Null behavior
 
-Null worlds show **0% interval false-positive rate** (bootstrap CI contains 0) despite often-large point estimates — wide cumulative intervals absorb null. This is **not** nominal calibration validation; characterization only.
+Null worlds show **0% type-I error** (bootstrap CI contains 0) with **100% null coverage** on cumulative level truth. Wide cumulative intervals absorb null point noise — characterization only, not nominal calibration.
 
 ## 12. Injected lift recovery
 
-Injected worlds show **0% sign errors** and point estimates near injected cumulative truth (mean bias &lt; 76 on ~700–800 scale). **Coverage is 0%** on injected worlds — cumulative bootstrap intervals do not cover injected cumulative truth in this battery.
+Injected worlds show **0% sign errors** and point estimates near injected cumulative truth (clean positive mean bias ~−8.5 on ~318 scale). **Positive coverage ~4.4% aggregate** (clean parallel 0%) — bootstrap intervals remain miscentered relative to `cumulative_att` under corrected geometry (production defect reproduced honestly).
 
 ## 13. Bias / MAE / RMSE
 
-Injected worlds: directionally correct cumulative points with moderate MAE vs injected cumulative level. Null/stress worlds: large point MAE under shock/trend stress while intervals still cover 0.
+Injected worlds: directionally correct cumulative points; RMSE ~27 on clean positive lift. Null/stress worlds: larger point bias under shock/trend stress while intervals still cover 0.
 
 ## 14. Trend-violation behavior
 
-`trend_violation_null`: 1 callable failure / 15; remaining runs finite with 0% null FPR. `trend_violation_positive_lift`: 0 sign errors, 0% coverage — pretrend violation does not break callable path but interval width/point alignment remains mixed.
+All pretrend-violation runs feasible post-correction. Sign accuracy 100%; positive coverage ~6.7% on violation+lift world.
 
 ## 15. Post-shock behavior
 
-`post_shock_null`: large spurious cumulative points (~922 mean) but intervals contain 0 (null FPR 0%). Characterizes shock sensitivity without structural interval failure.
+`post_shock_null`: spurious cumulative points but intervals contain 0 (null FPR 0%, null coverage 100%).
 
 ## 16. Interval sanity
 
-All emitted intervals satisfy `lower <= upper`; no negative half-widths detected. Degenerate interval rate 0%.
+All emitted intervals satisfy `lower <= upper`; no negative half-widths. Bootstrap center (`bootstrap_mean`) misaligned with `cumulative_att` on positive worlds — supports separate production correction artifact.
 
 ## 17. Failure register
 
-1 failure in `trend_violation_null` (callable_fail); all other worlds 15/15 feasible.
+0 failures post-correction (vs pre-correction all-treated geometry failures on rebuild).
 
 ## 18. Overall verdict
 
 `characterization_mixed_requires_followup`
 
-**Rationale:** Structural interval checks pass (orientation, half-width, finiteness in clean worlds), directional recovery is reasonable, but **injected-world coverage is 0%** and stress-world point behavior is unstable — follow-up required before any suitability movement.
+**Rationale:** Structural interval checks pass; directional recovery is correct under fixed assignment; **injected-world coverage remains poor** due to production bootstrap miscentering — follow-up via `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001` before any suitability movement.
 
 ## 19. What this artifact does not authorize
 
@@ -110,10 +117,10 @@ No promotion; no TrustReport/F-DECISION roles; no CalibrationSignal/MMM; no LLM 
 
 ## 20. Recommended next artifacts
 
-MCELL per-cell Level B: ✅ **D5-STAT-MCELL-PERCELL-001**. Next:
-
-- **`D5-STAT-TBRRIDGE-INF-001`**
+- **`DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001`** (production bootstrap readout alignment)
+- DCM-004 eligibility reassessment (after production correction if required)
+- **`D5-STAT-TBRRIDGE-INF-001`** (already complete; context)
 
 ## 21. Guardrails
 
-Level B only; cumulative ATT interval scale explicit; all `forbidden_flags` false; compare to injected cumulative truth, not relative ATT recovery estimand.
+Level B only; cumulative level ATT interval scale explicit; explicit `test_0`/`control` assignment; all `forbidden_flags` false; compare to injected cumulative truth on level scale.

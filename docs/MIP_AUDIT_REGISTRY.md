@@ -1168,7 +1168,11 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 
 **Verdict:** Method-specific remediation and revalidation program defined from eligibility findings. Root-cause taxonomy, threshold tiers, seven D5-TRUST follow-up artifacts, semantic classes, prioritization, and reassessment criteria documented. No promotion; TrustReport authorization remains BLOCKED.
 
+<<<<<<< HEAD
 **Next:** ✅ `D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001` → ✅ `D5-STAT-SCM-JK-001-HARNESS-CORRECTION` → ✅ `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` (DCM-001 only) → ✅ `D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001` → `D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION` → `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001` → DCM-004 reassessment → remaining D5-TRUST lanes → **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** → `TRUSTREPORT_DOWNSTREAM_PROMOTION_001`.
+=======
+**Next:** ✅ `D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001` → ✅ `D5-STAT-SCM-JK-001-HARNESS-CORRECTION` → ✅ `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` (DCM-001 only) → ✅ `D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001` → ✅ `D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION` → `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001` → remaining D5-TRUST lanes → **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** → `TRUSTREPORT_DOWNSTREAM_PROMOTION_001`.
+>>>>>>> 5469ed9 (Correct DID bootstrap validation harness)
 
 ---
 
@@ -1190,7 +1194,11 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 
 **Verdict:** Fixed assignment (`test_0`/control) and level-consistent coverage in canonical D5-STAT-SCM-JK-001 archive. Historical archive retained. No production SCM/JK changes. No TrustReport authorization.
 
+<<<<<<< HEAD
 **Next:** ✅ `D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001` → `D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION` → `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001` → DCM-004 reassessment → remaining D5-TRUST lanes → **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** → `TRUSTREPORT_DOWNSTREAM_PROMOTION_001`.
+=======
+**Next:** ✅ `D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001` → ✅ `D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION` → `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001` → remaining D5-TRUST lanes → **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** → `TRUSTREPORT_DOWNSTREAM_PROMOTION_001`.
+>>>>>>> 5469ed9 (Correct DID bootstrap validation harness)
 
 ---
 
@@ -1204,7 +1212,11 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 
 **Verdict:** DCM-001 reassessed using corrected D5-STAT-SCM-JK-001 level-scale evidence. Positive coverage ~90%; historical ~7% superseded. Type-I (~10.7%) and noisy-world (80%) caveats; support-gated restrictions remain. Other DCM rows unchanged. **No TrustReport authorization.**
 
+<<<<<<< HEAD
 **Next:** ✅ `D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001` → `D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION` → `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001` → DCM-004 reassessment → TBRRidge validation → multi-cell + stratified validation → disposition decisions → **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** → promotion decision.
+=======
+**Next:** ✅ `D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001` → ✅ `D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION` → `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001` → DCM-004 reassessment → TBRRidge validation → multi-cell + stratified validation → disposition decisions (AugSynth+JK, SCM+Placebo, TBRRidge JK/JKP) → **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** → promotion decision.
+>>>>>>> 5469ed9 (Correct DID bootstrap validation harness)
 
 ---
 
@@ -1216,6 +1228,7 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 
 **Verdict:** Read-only combination-governance reconciliation. Documents three non-conflated scopes (DCM-001–019 design matrix · Layer-5 30-row estimator×inference matrix · DCM-001–008 TrustReport subset). Clarifies `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` = DCM-001 only; **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** = future after D5-TRUST lanes and explicit disposition decisions. Lists genuine gaps requiring terminal decisions (AugSynth+JK, SCM+Placebo, TBRRidge JK/JKP, rerandomization, DCM-009–014 adapters, matrix v2). No statistical audit; no promotion.
 
+<<<<<<< HEAD
 **Next:** ✅ `D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001` → `D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION` → `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001` → DCM-004 reassessment.
 
 ---
@@ -1229,6 +1242,21 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 **Verdict:** DCM-004 DID+bootstrap diagnosis complete. Under corrected assignment, point estimates recover injected cumulative level effects; production embedded bootstrap CIs are miscentered relative to `cumulative_att`. Canonical D5-STAT harness `groups.values()` defect confirmed separately. **No production changes. No TrustReport authorization.**
 
 **Next:** `D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION` → `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001` → DCM-004 eligibility reassessment.
+=======
+**Next:** ✅ `D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION` → `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001` → DCM-004 reassessment.
+
+---
+
+## D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION (2026-06-18)
+
+**Artifact:** [`docs/track_d/D5_STAT_DID_BOOTSTRAP_001_HARNESS_CORRECTION_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_HARNESS_CORRECTION_REPORT.md) · [`panel_exp/validation/track_d_d5_stat_did_bootstrap_001.py`](../panel_exp/validation/track_d_d5_stat_did_bootstrap_001.py) · [`docs/track_d/archives/D5_STAT_DID_BOOTSTRAP_001_results.json`](track_d/archives/D5_STAT_DID_BOOTSTRAP_001_results.json) · [`docs/track_d/archives/D5_STAT_DID_BOOTSTRAP_001_results_historical_pre_harness_correction.json`](track_d/archives/D5_STAT_DID_BOOTSTRAP_001_results_historical_pre_harness_correction.json)
+
+**Status:** **`did_bootstrap_harness_corrected_production_miscoverage_confirmed`**
+
+**Verdict:** Fixed canonical assignment (`test_0`/control) and cumulative-level truth scale in D5-STAT-DID-BOOTSTRAP-001 archive. Historical archive retained. Production bootstrap miscoverage reproduced honestly (positive coverage ~4.4%; sign accuracy 100%). No production DID changes. No TrustReport authorization.
+
+**Next:** `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001` → DCM-004 reassessment → remaining D5-TRUST lanes → **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** → `TRUSTREPORT_DOWNSTREAM_PROMOTION_001`.
+>>>>>>> 5469ed9 (Correct DID bootstrap validation harness)
 
 ---
 

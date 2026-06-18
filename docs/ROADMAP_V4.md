@@ -257,9 +257,15 @@ Foundation and compatibility audits ✅
   → DCM-001 SCM-JK correction + partial reassessment ✅
   → governance scope reconciliation ✅
   → DCM-004 DID remediation (`D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001`) ✅
+<<<<<<< HEAD
   → D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION
   → DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001
   → DCM-004 eligibility reassessment
+=======
+  → D5-STAT-DID-BOOTSTRAP-001 harness correction ✅
+  → `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001` (production bootstrap readout)
+  → DCM-004 eligibility reassessment (post-production correction)
+>>>>>>> 5469ed9 (Correct DID bootstrap validation harness)
   → DCM-005 TBRRidge BRB / KFold / Placebo validation
   → DCM-006 multi-cell per-cell validation
   → DCM-008 stratified SCM-JK validation
@@ -273,7 +279,11 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). It is **not** a full TrustReport reassessment. **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** is a future artifact after remaining D5-TRUST lanes and explicit disposition decisions complete.
 
+<<<<<<< HEAD
 **Ordered next:** ✅ **`D5-STAT-SCM-JK-001-HARNESS-CORRECTION`** → ✅ **`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`** (DCM-001 only) → ✅ **`D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001`** → **`D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION`** → **`DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001`** → DCM-004 reassessment → TBRRidge validation → multi-cell + stratified validation → disposition decisions → **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** → **`TRUSTREPORT_DOWNSTREAM_PROMOTION_001`** → downstream authorization update.
+=======
+**Ordered next:** ✅ **`D5-STAT-SCM-JK-001-HARNESS-CORRECTION`** → ✅ **`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`** (DCM-001 only) → ✅ **`D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001`** → ✅ **`D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION`** → **`DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001`** → DCM-004 reassessment → TBRRidge validation → multi-cell + stratified validation → disposition decisions → **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** → **`TRUSTREPORT_DOWNSTREAM_PROMOTION_001`** → downstream authorization update.
+>>>>>>> 5469ed9 (Correct DID bootstrap validation harness)
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 
