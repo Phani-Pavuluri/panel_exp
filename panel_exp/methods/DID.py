@@ -168,9 +168,38 @@ class DID(ImpactAnalyzer):
         boot_df["time_fe"] = boot_df["time_unit"].astype(str).astype("category")
         return boot_df
 
+    def _cumulative_bootstrap_interval(
+        self,
+        boot_cum_arr: np.ndarray,
+        point_estimate: float,
+    ) -> Tuple[float, float, float]:
+        """Construct cumulative ATT CI anchored to the plug-in path estimate.
+
+        Bootstrap replicates are absolute cumulative path ATT on block-resampled panels.
+        The centered-deviation percentile interval recenters bootstrap spread on the
+        plug-in cumulative ATT: CI = theta_hat + quantiles(theta*_b - mean(theta*)).
+        """
+        if boot_cum_arr.size == 0 or not np.isfinite(point_estimate):
+            return np.nan, np.nan, np.nan
+        finite = boot_cum_arr[np.isfinite(boot_cum_arr)]
+        if finite.size == 0:
+            return np.nan, np.nan, np.nan
+        bootstrap_center = float(np.mean(finite))
+        deviations = finite - bootstrap_center
+        ci_lower = float(
+            point_estimate + np.percentile(deviations, (self.alpha / 2) * 100)
+        )
+        ci_upper = float(
+            point_estimate + np.percentile(deviations, (1 - self.alpha / 2) * 100)
+        )
+        return ci_lower, ci_upper, bootstrap_center
+
     def _block_bootstrap_inference(self) -> Tuple[float, float, float, float]:
         """Moving block bootstrap inference for pooled DID. Path-based: bootstrap the post-period effect path.
         Returns (se, ci_lower, ci_upper, pvalue) for cumulative ATT. Primary inference uses cumulative distribution."""
+        plugin_cumulative, _, _ = self._path_effect_from_df(self.data)
+        self.bootstrap_replicate_estimand_ = "cumulative_path_att_block_resampled_panel"
+        self.bootstrap_interval_method_ = "centered_deviation_percentile"
         ordered_times = list(pd.Series(self.data["time_unit"]).drop_duplicates())
         n_times = len(ordered_times)
         if n_times < 4:
@@ -183,6 +212,8 @@ class DID(ImpactAnalyzer):
             pvalue = self.model_based_pvalue if np.isfinite(getattr(self, "model_based_pvalue", np.nan)) else np.nan
             self.bootstrap_cumulative_effects_ = np.array([], dtype=float)
             self.bootstrap_mean_effects_ = np.array([], dtype=float)
+            self.bootstrap_center_ = np.nan
+            self.bootstrap_replicate_count_ = 0
             return float(se), float(ci_lower), float(ci_upper), float(pvalue)
 
         rng = np.random.default_rng(self.bootstrap_seed)
@@ -203,15 +234,24 @@ class DID(ImpactAnalyzer):
         boot_mean_arr = np.asarray(boot_mean, dtype=float)
         self.bootstrap_cumulative_effects_ = boot_cum_arr
         self.bootstrap_mean_effects_ = boot_mean_arr
+        self.bootstrap_replicate_count_ = int(boot_cum_arr.size)
         # Keep regression bootstrap for secondary diagnostics
         self.bootstrap_effects_ = boot_mean_arr  # per-period draws
+
+        point_estimate = (
+            float(plugin_cumulative)
+            if np.isfinite(plugin_cumulative)
+            else float(self.treatment_effect * max(self.data["post"].sum() / max(self.data["treated"].sum(), 1), 1))
+        )
 
         if len(boot_cumulative) < 30:
             # Prefer cumulative bootstrap draws only (no per-period SE × n_post scaling).
             if len(boot_cum_arr) > 0:
                 se = float(np.std(boot_cum_arr, ddof=1))
-                ci_lower = float(np.percentile(boot_cum_arr, (self.alpha / 2) * 100))
-                ci_upper = float(np.percentile(boot_cum_arr, (1 - self.alpha / 2) * 100))
+                ci_lower, ci_upper, bootstrap_center = self._cumulative_bootstrap_interval(
+                    boot_cum_arr, point_estimate
+                )
+                self.bootstrap_center_ = bootstrap_center
                 prop_below = float(np.mean(boot_cum_arr < 0))
                 prop_above = float(np.mean(boot_cum_arr > 0))
                 pvalue = float(min(1.0, 2 * min(prop_below, prop_above)))
@@ -227,8 +267,10 @@ class DID(ImpactAnalyzer):
             return float(se), float(ci_lower), float(ci_upper), float(pvalue)
 
         se = float(np.std(boot_cum_arr, ddof=1))
-        ci_lower = float(np.percentile(boot_cum_arr, (self.alpha / 2) * 100))
-        ci_upper = float(np.percentile(boot_cum_arr, (1 - self.alpha / 2) * 100))
+        ci_lower, ci_upper, bootstrap_center = self._cumulative_bootstrap_interval(
+            boot_cum_arr, point_estimate
+        )
+        self.bootstrap_center_ = bootstrap_center
         prop_below = float(np.mean(boot_cum_arr < 0))
         prop_above = float(np.mean(boot_cum_arr > 0))
         pvalue = float(min(1.0, 2 * min(prop_below, prop_above)))
@@ -380,6 +422,20 @@ class DID(ImpactAnalyzer):
         from panel_exp.validation.did_interval_policy import build_did_interval_policy
 
         self.results["did_interval_policy"] = build_did_interval_policy()
+        self.results["bootstrap_interval_method"] = getattr(
+            self, "bootstrap_interval_method_", "centered_deviation_percentile"
+        )
+        self.results["bootstrap_replicate_estimand"] = getattr(
+            self, "bootstrap_replicate_estimand_", "cumulative_path_att_block_resampled_panel"
+        )
+        self.results["bootstrap_center"] = getattr(self, "bootstrap_center_", np.nan)
+        self.results["bootstrap_standard_error"] = getattr(self, "treatment_se", np.nan)
+        self.results["bootstrap_replicate_count"] = getattr(
+            self, "bootstrap_replicate_count_", len(getattr(self, "bootstrap_cumulative_effects_", []))
+        )
+        self.results["point_estimate"] = cumulative_att
+        self.results["interval_lower"] = self.treatment_ci[0]
+        self.results["interval_upper"] = self.treatment_ci[1]
         warning = contract.get("warning")
         if warning:
             warnings.warn(str(warning), UserWarning, stacklevel=2)
@@ -832,6 +888,20 @@ class DID(ImpactAnalyzer):
             "bootstrap_n": int(len(getattr(self, "bootstrap_cumulative_effects_", [])) or len(getattr(self, "bootstrap_effects_", []))),
             "bootstrap_block_size": self.bootstrap_block_size,
             "n_bootstrap": self.n_bootstrap,
+            "bootstrap_interval_method": getattr(
+                self, "bootstrap_interval_method_", "centered_deviation_percentile"
+            ),
+            "bootstrap_center": getattr(self, "bootstrap_center_", np.nan),
+            "bootstrap_replicate_estimand": getattr(
+                self, "bootstrap_replicate_estimand_", "cumulative_path_att_block_resampled_panel"
+            ),
+            "bootstrap_standard_error": getattr(self, "treatment_se", np.nan),
+            "bootstrap_replicate_count": getattr(
+                self, "bootstrap_replicate_count_", len(getattr(self, "bootstrap_cumulative_effects_", []))
+            ),
+            "point_estimate": cumulative_att,
+            "interval_lower": cum_ci[0],
+            "interval_upper": cum_ci[1],
             "parallel_trends_test": parallel_trends_test,
             "placebo_test": {"placebo_pvalue": 1.0},
             "parallel_trends_test_type": pt_test_type,

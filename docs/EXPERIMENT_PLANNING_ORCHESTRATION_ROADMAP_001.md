@@ -236,6 +236,7 @@ Must define:
 | [`TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md`](TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md) | Remediation plan; ✅ D5-TRUST-DID diagnosis complete; harness + production corrections pending |
 | [`D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md`](track_d/D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md) | Canonical SCM-JK harness corrected; reassessment next |
 | [`D5_STAT_DID_BOOTSTRAP_001_HARNESS_CORRECTION_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_HARNESS_CORRECTION_REPORT.md) | Canonical DID bootstrap harness corrected; production miscoverage confirmed |
+| [`DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001_REPORT.md`](track_d/DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001_REPORT.md) | Production DID bootstrap interval readout corrected; DCM-004 reassessment next |
 | [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) | DCM-001 reassessed; promotion still blocked |
 | F-DECISION / TrustReport | Role assignment paused until foundation + suitability v2 |
 

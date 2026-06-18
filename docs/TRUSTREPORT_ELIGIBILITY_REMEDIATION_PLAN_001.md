@@ -298,15 +298,9 @@ Remain ineligible unless a **separate future artifact** explicitly changes them:
 |----|------|--------|
 | `D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001` | SCM+JK causal vs null-monitor | DCM-001 causal class | ✅ complete |
 | `D5-STAT-SCM-JK-001-HARNESS-CORRECTION` | Canonical SCM-JK harness + archive | DCM-001 evidence baseline | ✅ complete |
-<<<<<<< HEAD
-| `D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001` | DID bootstrap diagnosis (DCM-004) | DCM-004 | ✅ complete |
-| `D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION` | Canonical D5 DID harness assignment fix | DCM-004 evidence baseline | pending |
-| `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001` | Production DID bootstrap/point alignment | DCM-004 | pending (confirmed by remediation) |
-=======
 | `D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001` | DID identification + bootstrap diagnosis | DCM-004 | ✅ complete |
 | `D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION` | Canonical DID bootstrap harness + archive | DCM-004 evidence baseline | ✅ complete |
-| `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001` | Production DID bootstrap readout alignment (if required) | DCM-004 |
->>>>>>> 5469ed9 (Correct DID bootstrap validation harness)
+| `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001` | Production DID bootstrap readout alignment | DCM-004 | ✅ complete |
 | `D5-TRUST-TBRRIDGE-BRB-001` | TBRRidge BRB path | DCM-005-BRB |
 | `D5-TRUST-TBRRIDGE-KFOLD-001` | TBRRidge KFold path | DCM-005-KFOLD |
 | `D5-TRUST-TBRRIDGE-PLACEBO-001` | TBRRidge placebo null-monitor | DCM-005-PLACEBO |
@@ -342,15 +336,9 @@ D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001  ✅
   → informs D5-TRUST-MULTICELL-PERCELL-INFERENCE-001 (shared JK inference)
 
 D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001  ✅
-<<<<<<< HEAD
-  → D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION
-  → DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001 (production miscentering confirmed)
-  → DCM-004 eligibility reassessment
-=======
   → D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION  ✅
-  → DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001  ← next (production fix)
-  → DCM-004 reassessment
->>>>>>> 5469ed9 (Correct DID bootstrap validation harness)
+  → DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001  ✅
+  → DCM-004 eligibility reassessment  ← next
 
 D5-TRUST-TBRRIDGE-{BRB,KFOLD,PLACEBO}-001
   → independent; do not collapse

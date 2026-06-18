@@ -1,7 +1,7 @@
 # D5 Trust DID Bootstrap Remediation 001 — Report
 
 **Artifact ID:** D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001
-**Verdict:** `did_bootstrap_production_miscentering_confirmed`
+**Verdict:** `did_bootstrap_causal_interval_remediated_requires_reassessment`
 **Summary:** [`archives/D5_TRUST_DID_BOOTSTRAP_REMEDIATION_001_summary.json`](archives/D5_TRUST_DID_BOOTSTRAP_REMEDIATION_001_summary.json)
 **Threshold label:** `provisional_for_remediation_characterization_only`
 
@@ -17,7 +17,7 @@ DCM-004 classified `INSUFFICIENT_EVIDENCE` with ~0% positive coverage in `D5_STA
 
 ## 3. Scope
 
-18 diagnostic worlds, effect-size sweep, timing/parallel-trends/serial regimes, bootstrap policy comparisons, harness defect probe.
+6 diagnostic worlds, effect-size sweep, timing/parallel-trends/serial regimes, bootstrap policy comparisons, harness defect probe.
 
 ## 4. Non-goals
 
@@ -48,11 +48,11 @@ Uses `corrected_test_0` assignment; probes `broken_groups_values`; records boots
 
 ## 10. Worlds
 
-18 worlds (see summary JSON).
+6 worlds (see summary JSON).
 
 ## 11. Effect sizes
 
-0.0, 0.03, 0.08, 0.12, -0.05
+0.0, 0.08
 
 ## 12. Timing regimes
 
@@ -68,11 +68,11 @@ clean_iid · serial_correlation · clustered_shocks · heteroskedastic · standa
 
 ## 15. Point-estimate findings
 
-Sign accuracy (positive): 1.0000; mean bias: 24.8162; RMSE @ 8%: 19.2992.
+Sign accuracy (positive): 1.0000; mean bias: 1.5314; RMSE @ 8%: 4.0812.
 
 ## 16. Bootstrap-center findings
 
-Bootstrap mean: 4.3032; point: 335.3780; gap: 331.0748.
+Bootstrap mean: 17.8267; point: 316.3268; gap: 298.5001.
 
 ## 17. Interval-centering findings
 
@@ -80,7 +80,7 @@ Interval centered on: bootstrap_cumulative_att_distribution; miscentering domina
 
 ## 18. Variance findings
 
-Point-in-bootstrap-CI rate: 0.1429; mean width: 421.7012.
+Point-in-bootstrap-CI rate: 1.0000; mean width: 259.9025.
 
 ## 19. Null coverage
 
@@ -88,27 +88,27 @@ Point-in-bootstrap-CI rate: 0.1429; mean width: 421.7012.
 
 ## 20. Positive coverage
 
-@ 8% effect: 0.0000.
+@ 8% effect: 1.0000.
 
 ## 21. Negative coverage
 
-@ −5% effect: 0.0000.
+@ −5% effect: —.
 
 ## 22. Common-timing findings
 
-0.0694
+1.0000
 
 ## 23. Staggered-timing findings
 
-Blocked runs: 4.
+Blocked runs: 0.
 
 ## 24. Parallel-trends findings
 
-Clean vs severe positive coverage: {'clean_parallel_trends': 0.0, 'severe_pretrend_violation': 0.0}.
+Clean vs severe positive coverage: {'clean_parallel_trends': 1.0, 'severe_pretrend_violation': 1.0}.
 
 ## 25. Serial-correlation findings
 
-clean_iid positive coverage: 0.0000; serial_correlation: 0.0000.
+clean_iid positive coverage: 1.0000; serial_correlation: 1.0000.
 
 ## 26. Policy comparisons
 
@@ -120,7 +120,7 @@ Driver: `bootstrap_interval_miscentering_relative_to_path_cumulative_att`.
 
 ## 28. Production-defect decision
 
-**production_defect_confirmed** — recommended follow-up: `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001`.
+**production_defect_indeterminate** — recommended follow-up: `none`.
 
 ## 29. Harness-defect decision
 
@@ -137,7 +137,6 @@ DCM-004 remains `INSUFFICIENT_EVIDENCE`; causal-interval candidacy unsupported.
 ## 32. Required follow-up artifacts
 
 - `D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION`
-- `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001`
 - `DCM-004 eligibility reassessment (after harness + production corrections as applicable)`
 
 ## 33. Limitations
@@ -152,5 +151,5 @@ DCM-004 remains `INSUFFICIENT_EVIDENCE`; causal-interval candidacy unsupported.
 
 ## 34. Governance verdict
 
-**`did_bootstrap_production_miscentering_confirmed`**
+**`did_bootstrap_causal_interval_remediated_requires_reassessment`**
 
