@@ -268,7 +268,8 @@ Remain ineligible unless a **separate future artifact** explicitly changes them:
 
 | ID | Lane | Blocks |
 |----|------|--------|
-| `D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001` | SCM+JK causal vs null-monitor | DCM-001 causal class |
+| `D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001` | SCM+JK causal vs null-monitor | DCM-001 causal class | ✅ complete |
+| `D5-STAT-SCM-JK-001-HARNESS-CORRECTION` | Canonical SCM-JK harness + archive | DCM-001 evidence baseline | ✅ complete |
 | `D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001` | DID identification + bootstrap | DCM-004 |
 | `D5-TRUST-TBRRIDGE-BRB-001` | TBRRidge BRB path | DCM-005-BRB |
 | `D5-TRUST-TBRRIDGE-KFOLD-001` | TBRRidge KFold path | DCM-005-KFOLD |
@@ -297,7 +298,9 @@ Ranked by scientific value × likelihood of remediation × downstream usefulness
 ## 18. Dependencies
 
 ```
-D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001
+D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001  ✅
+  → D5-STAT-SCM-JK-001-HARNESS-CORRECTION  ✅
+  → TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001
   → informs D5-TRUST-STRATIFIED-SCM-JK-001
   → informs D5-TRUST-MULTICELL-PERCELL-INFERENCE-001 (shared JK inference)
 

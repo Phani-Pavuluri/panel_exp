@@ -52,7 +52,11 @@ Lane A evaluated: SCM+JK, stratified+SCM/JK, DID+bootstrap, multi-cell per-cell,
 
 ## 14. DCM-001 findings
 
-**ELIGIBLE_WITH_RESTRICTIONS.** Null-world coverage ~93%; positive-scenario coverage ~7%. Causal interval TrustReport not supported; null-monitor / research CI only.
+**ELIGIBLE_WITH_RESTRICTIONS** (eligibility validation, 2026-06-17). Null-world coverage ~93%; positive-scenario coverage ~7% on **pre-correction fractional-percent metrics**. Causal interval TrustReport not supported at validation time; null-monitor / research CI only.
+
+**Remediation (2026-06-17):** [`D5_TRUST_SCM_JK_COVERAGE_REMEDIATION_001_REPORT.md`](D5_TRUST_SCM_JK_COVERAGE_REMEDIATION_001_REPORT.md) diagnosed percent-vs-level mismatch.
+
+**Harness correction (2026-06-17):** [`D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md`](D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md) regenerated canonical archive with level-consistent coverage (positive ~90%). Historical archive retained. **Eligibility reassessment not complete in this artifact.**
 
 ## 15. DCM-002 findings
 

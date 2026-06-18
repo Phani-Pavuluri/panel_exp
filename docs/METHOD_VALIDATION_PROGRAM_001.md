@@ -313,6 +313,8 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **TrustReport remediation plan (2026-06-17):** [`TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md`](TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md) defines `D5-TRUST-*` follow-ups and reassessment sequence; promotion blocked.
 
+**SCM+JK harness correction (2026-06-17):** [`D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md`](track_d/D5_STAT_SCM_JK_001_HARNESS_CORRECTION_REPORT.md) — canonical archive regenerated with level-consistent coverage; historical archive retained. Next: **TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001**.
+
 ## 13. Stop condition
 
 | Criterion | Status |
