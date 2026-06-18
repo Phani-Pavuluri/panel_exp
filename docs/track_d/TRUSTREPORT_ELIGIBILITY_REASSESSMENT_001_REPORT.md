@@ -110,7 +110,7 @@ eligible_for_promotion=False
 
 ## 26. Required next validation
 
-D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001; D5-TRUST-STRATIFIED-SCM-JK-001; full promotion decision.
+✅ `D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001` (production miscentering confirmed) → `D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION` → `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001` → DCM-004 reassessment → remaining D5-TRUST lanes → **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`**.
 
 ## 27. Governance verdict
 

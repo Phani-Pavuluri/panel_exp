@@ -258,7 +258,7 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **TBR aggregate point Level B:** ✅ [`docs/track_d/D5_STAT_TBR_AGG_001_REPORT.md`](track_d/D5_STAT_TBR_AGG_001_REPORT.md) + [`track_d/archives/D5_STAT_TBR_AGG_001_results.json`](track_d/archives/D5_STAT_TBR_AGG_001_results.json) (regenerate: `python -m panel_exp.validation.track_d_d5_stat_tbr_agg_001`).
 
-**DID bootstrap Level B:** ✅ [`docs/track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md) + [`track_d/archives/D5_STAT_DID_BOOTSTRAP_001_results.json`](track_d/archives/D5_STAT_DID_BOOTSTRAP_001_results.json) (regenerate: `python -m panel_exp.validation.track_d_d5_stat_did_bootstrap_001`).
+**DID bootstrap Level B:** ✅ [`docs/track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md`](track_d/D5_STAT_DID_BOOTSTRAP_001_REPORT.md) + [`track_d/archives/D5_STAT_DID_BOOTSTRAP_001_results.json`](track_d/archives/D5_STAT_DID_BOOTSTRAP_001_results.json) (regenerate: `python -m panel_exp.validation.track_d_d5_stat_did_bootstrap_001`). **Remediation:** ✅ [`D5_TRUST_DID_BOOTSTRAP_REMEDIATION_001_REPORT.md`](track_d/D5_TRUST_DID_BOOTSTRAP_REMEDIATION_001_REPORT.md) — production bootstrap miscentering confirmed; harness `groups.values()` defect separate; next: harness correction → `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001`.
 
 **Multi-cell per-cell Level B:** ✅ [`docs/track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md`](track_d/D5_STAT_MCELL_PERCELL_001_REPORT.md) + [`track_d/archives/D5_STAT_MCELL_PERCELL_001_results.json`](track_d/archives/D5_STAT_MCELL_PERCELL_001_results.json) (regenerate: `python -m panel_exp.validation.track_d_d5_stat_mcell_percell_001`).
 

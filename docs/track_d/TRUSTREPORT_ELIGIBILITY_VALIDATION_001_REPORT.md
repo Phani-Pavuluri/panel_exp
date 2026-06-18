@@ -70,7 +70,7 @@ Lane A evaluated: SCM+JK, stratified+SCM/JK, DID+bootstrap, multi-cell per-cell,
 
 ## 17. DCM-004 findings
 
-**INSUFFICIENT_EVIDENCE.** Null FPR controlled; positive-scenario coverage 0%; identification diagnostics incomplete.
+**INSUFFICIENT_EVIDENCE.** Null FPR controlled; positive-scenario coverage 0%; identification diagnostics incomplete. **Update (2026-06-03):** ✅ [`D5_TRUST_DID_BOOTSTRAP_REMEDIATION_001_REPORT.md`](D5_TRUST_DID_BOOTSTRAP_REMEDIATION_001_REPORT.md) diagnoses production bootstrap miscentering + canonical harness `groups.values()` defect; eligibility status unchanged pending harness correction and `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001`.
 
 ## 18. DCM-005 findings
 
