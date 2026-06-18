@@ -21,6 +21,14 @@ from panel_exp.governance.geometry_adapter_contract import (
     classify_combined_readout,
     classify_geometry_support,
 )
+from panel_exp.governance.investigation_lifecycle_contract import (
+    build_investigation_handoff,
+    format_handoff_report_section,
+    investigations_by_id,
+    load_registry,
+    validate_artifact_handoff,
+    validate_registry,
+)
 from panel_exp.governance.interval_semantics_contract import (
     IntervalReadout,
     IntervalSemanticsClassification,
@@ -59,6 +67,12 @@ __all__ = [
     "GeometryClassification",
     "GeometryReadoutRequest",
     "GeometryType",
+    "build_investigation_handoff",
+    "format_handoff_report_section",
+    "investigations_by_id",
+    "load_registry",
+    "validate_artifact_handoff",
+    "validate_registry",
     "IntervalReadout",
     "IntervalSemanticsClassification",
     "IntervalSemanticsVerdict",

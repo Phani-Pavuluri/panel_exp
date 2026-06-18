@@ -23,6 +23,10 @@ from typing import Any, Literal
 import numpy as np
 
 from panel_exp.design.assign import greedy_match_markets
+from panel_exp.governance.investigation_lifecycle_contract import (
+    build_investigation_handoff,
+    format_handoff_report_section,
+)
 from panel_exp.methods.tbr import TBRRidge
 from panel_exp.panel_data import PanelDataset, TimePeriod
 from panel_exp.validation.synthetic_scenarios import RECOVERY_SCENARIO_REGISTRY
@@ -860,6 +864,12 @@ def build_d5_trust_tbrridge_brb_001(cfg: BrbTrustConfig | None = None) -> dict[s
     }
     summary["verdict"] = _decide_semantic_verdict(summary, prod)
     summary["semantic_classification"]["verdict"] = summary["verdict"]
+    summary["investigation_handoff"] = build_investigation_handoff(
+        follow_up_issues=["INV-TBRRIDGE-BRB-ESTIMAND-ALIGNMENT-001"],
+        resolved_issues=[],
+        terminal_dispositions=[],
+        next_artifact="TBRRIDGE-BRB-INTERVAL-CORRECTION-001",
+    )
 
     if cfg.write_full_results_path and not cfg.fast:
         Path(cfg.write_full_results_path).write_text(
@@ -1066,6 +1076,23 @@ def _write_report(payload: dict[str, Any], path: Path, *, overwrite: bool = Fals
         f"**`{payload.get('verdict')}`**",
         "",
     ]
+    handoff = payload.get("investigation_handoff") or {}
+    lines.extend(
+        format_handoff_report_section(
+            resolved_in_artifact=[],
+            new_investigations=handoff.get("follow_up_issues") or [],
+            updated_investigations=[],
+            deferred_issues=[],
+            explicit_exclusions=[
+                "KFold and Placebo characterization",
+                "DCM-005 eligibility reassessment",
+                "Production TBRRidge/BRB code changes",
+            ],
+            revisit_trigger="Upon opening TBRRIDGE-BRB-INTERVAL-CORRECTION-001 production correction",
+            decision_checkpoint="DCM-005 eligibility reassessment (after KFold/Placebo lanes)",
+            next_artifact=handoff.get("next_artifact"),
+        )
+    )
     _atomic_write_text(path, "\n".join(lines) + "\n", overwrite=overwrite)
 
 

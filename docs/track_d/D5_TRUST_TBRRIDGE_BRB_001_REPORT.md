@@ -147,3 +147,25 @@ Characterizes DCM-005 BRB only; KFold/Placebo out of scope.; Level-scale truth c
 
 **`tbrridge_brb_production_defect_confirmed`**
 
+## Residual Issues and Handoff
+
+**Resolved in this artifact:** none
+
+**New investigations opened:**
+- INV-TBRRIDGE-BRB-ESTIMAND-ALIGNMENT-001
+
+**Existing investigations updated:** none
+
+**Deferred issues:** none
+
+**Explicit exclusions:**
+- KFold and Placebo characterization
+- DCM-005 eligibility reassessment
+- Production TBRRidge/BRB code changes
+
+**Revisit trigger:** Upon opening TBRRIDGE-BRB-INTERVAL-CORRECTION-001 production correction
+
+**Required decision checkpoint:** DCM-005 eligibility reassessment (after KFold/Placebo lanes)
+
+**Next artifact:** TBRRIDGE-BRB-INTERVAL-CORRECTION-001
+

@@ -1288,9 +1288,23 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 
 **Status:** **`tbrridge_brb_centering_corrected_variance_issue_remains`**
 
-**Verdict:** Production BRB intervals now use `centered_deviation_percentile_mean_effect` aligned to post-window mean effect estimand. Bootstrap center gap ~292 → ~0.006. Positive coverage ~21% → ~51%; null coverage ~100% → ~40% (centering on plug-in point exposes estimator null bias). **No TrustReport authorization.** DCM-005 reassessment deferred.
+**Verdict:** Production BRB intervals now use `centered_deviation_percentile_mean_effect` aligned to post-window mean effect estimand. Bootstrap center gap ~−292.6 → ~0.006. Positive coverage ~21% → ~50.7%; null coverage ~100% → ~40.5% (centering on plug-in point exposes estimator null bias). **No TrustReport authorization.** DCM-005 reassessment deferred.
 
-**Next:** `D5-TRUST-TBRRIDGE-KFOLD-001` → `D5-TRUST-TBRRIDGE-PLACEBO-001` → DCM-005 eligibility reassessment.
+**Next:** `INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001` (OPEN) → `D5-TRUST-TBRRIDGE-KFOLD-001` → `D5-TRUST-TBRRIDGE-PLACEBO-001` → DCM-005 eligibility reassessment.
+
+---
+
+## INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001 (OPEN)
+
+**Authoritative record:** [`docs/governance/OPEN_INVESTIGATIONS_001.json`](governance/OPEN_INVESTIGATIONS_001.json) · contract [`INVESTIGATION_LIFECYCLE_AND_HANDOFF_CONTRACT_001.md`](INVESTIGATION_LIFECYCLE_AND_HANDOFF_CONTRACT_001.md).
+
+**Status:** **`open_variance_calibration_defect`**
+
+**Scope:** Post-`TBRRIDGE-BRB-INTERVAL-CORRECTION-001` BRB path. Centering mismatch corrected; variance calibration and null-world behavior remain unresolved.
+
+**Recorded evidence:** Bootstrap center gap ~−292.6 → ~0.006; null coverage ~40.5%; type-I ~59.5%; positive coverage ~50.7%; negative coverage ~70%; variance ratio ~11. Causal-interval eligibility **blocked**. **TrustReport authorization: false.**
+
+**Next:** Characterize variance source (residual pool scale, block length, plug-in null bias) → terminal BRB disposition decision after KFold/Placebo lanes.
 
 ---
 

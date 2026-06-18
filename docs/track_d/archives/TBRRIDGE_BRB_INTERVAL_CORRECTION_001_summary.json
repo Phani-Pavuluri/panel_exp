@@ -903,5 +903,15 @@
     "Does not perform DCM-005 eligibility reassessment.",
     "KFold/Placebo paths unchanged."
   ],
+  "investigation_handoff": {
+    "follow_up_issues": [
+      "INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001"
+    ],
+    "resolved_issues": [
+      "INV-TBRRIDGE-BRB-ESTIMAND-ALIGNMENT-001"
+    ],
+    "terminal_dispositions": [],
+    "next_artifact": "D5-TRUST-TBRRIDGE-KFOLD-001"
+  },
   "verdict": "tbrridge_brb_centering_corrected_variance_issue_remains"
 }

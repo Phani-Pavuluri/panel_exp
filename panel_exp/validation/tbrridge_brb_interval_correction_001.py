@@ -13,6 +13,10 @@ from typing import Any, Literal
 
 import numpy as np
 
+from panel_exp.governance.investigation_lifecycle_contract import (
+    build_investigation_handoff,
+    format_handoff_report_section,
+)
 from panel_exp.validation.track_d_d5_trust_tbrridge_brb_001 import (
     BrbTrustConfig,
     build_d5_trust_tbrridge_brb_001,
@@ -179,6 +183,12 @@ def build_tbrridge_brb_interval_correction_001(
             "Does not perform DCM-005 eligibility reassessment.",
             "KFold/Placebo paths unchanged.",
         ],
+        "investigation_handoff": build_investigation_handoff(
+            follow_up_issues=["INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001"],
+            resolved_issues=["INV-TBRRIDGE-BRB-ESTIMAND-ALIGNMENT-001"],
+            terminal_dispositions=[],
+            next_artifact="D5-TRUST-TBRRIDGE-KFOLD-001",
+        ),
         "verdict": verdict,
     }
 
@@ -269,6 +279,19 @@ def _write_report(payload: dict[str, Any], path: Path, *, overwrite: bool = Fals
         f"`{payload.get('verdict')}`",
         "",
     ]
+    handoff = payload.get("investigation_handoff") or {}
+    lines.extend(
+        format_handoff_report_section(
+            resolved_in_artifact=handoff.get("resolved_issues") or [],
+            new_investigations=handoff.get("follow_up_issues") or [],
+            updated_investigations=["INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001 → OPEN in registry"],
+            deferred_issues=[],
+            explicit_exclusions=["KFold/Placebo validation", "DCM-005 eligibility reassessment"],
+            revisit_trigger="After KFold and Placebo characterization, before DCM-005 eligibility reassessment",
+            decision_checkpoint="DCM-005 eligibility reassessment must consume INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001",
+            next_artifact=handoff.get("next_artifact"),
+        )
+    )
     _atomic_write(path, "\n".join(lines) + "\n", overwrite=overwrite)
 
 
