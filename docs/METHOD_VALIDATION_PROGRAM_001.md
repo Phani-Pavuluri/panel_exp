@@ -313,6 +313,8 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **TrustReport remediation plan (2026-06-17):** [`TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md`](TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md) defines `D5-TRUST-*` follow-ups and reassessment sequence; promotion blocked.
 
+**SCM+JK coverage remediation (2026-06-17):** [`D5_TRUST_SCM_JK_COVERAGE_REMEDIATION_001_REPORT.md`](track_d/D5_TRUST_SCM_JK_COVERAGE_REMEDIATION_001_REPORT.md) — prior positive undercoverage primarily **percent-vs-level metric mismatch**; null-monitor/diagnostic only; no authorization. Plan: [`TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md`](TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md).
+
 ## 13. Stop condition
 
 | Criterion | Status |
