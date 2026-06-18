@@ -317,6 +317,8 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **TrustReport eligibility reassessment (2026-06-18):** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) — DCM-001 remains `ELIGIBLE_WITH_RESTRICTIONS` on corrected level-scale evidence; historical ~7% positive coverage superseded; no authorization.
 
+**DCM-004 TrustReport eligibility reassessment (2026-06-18):** [`DCM004_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/DCM004_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) — DCM-004 reassessed `ELIGIBLE_WITH_RESTRICTIONS` on corrected production bootstrap evidence; positive coverage ~93%; supported null type-I ~13%; stress worlds excluded; no authorization.
+
 ## 13. Stop condition
 
 | Criterion | Status |

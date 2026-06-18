@@ -136,7 +136,7 @@ Noisy/serial worlds remain feasible; positive coverage improves under `scm_low_s
 
 ## 22. TrustReport implications
 
-TrustReport remains **blocked**. DCM-004 requires separate eligibility reassessment.
+TrustReport remains **blocked**. DCM-004 reassessed separately in **`DCM-004-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001`** (`ELIGIBLE_WITH_RESTRICTIONS`; no authorization).
 
 ## 23. Archive policy
 
@@ -148,8 +148,8 @@ Pre-production-fix canonical archive `D5_STAT_DID_BOOTSTRAP_001_results.json` **
 
 ## 25. Governance verdict
 
-**`did_bootstrap_cumulative_readout_corrected_requires_reassessment`**
+**`did_bootstrap_cumulative_readout_corrected_dcm004_reassessed`**
 
 ## 26. Recommended next artifact
 
-**DCM-004 eligibility reassessment** (not in scope here).
+**DCM-005 TBRRidge BRB/KFold/Placebo validation** (not in scope here).

@@ -53,7 +53,7 @@ Source: [`TRUSTREPORT_ELIGIBILITY_VALIDATION_001_summary.json`](track_d/archives
 | DCM-001 SCM+JK | ELIGIBLE_WITH_RESTRICTIONS | null coverage 93%; positive coverage 7%; type-I 6.7%; bias ratio >>1 on lift |
 | DCM-002 AugSynth point | ELIGIBLE_WITH_RESTRICTIONS | Point-only; no interval evidence |
 | DCM-003 TBR aggregate | INELIGIBLE | Geometry mismatch |
-| DCM-004 DID+bootstrap | INSUFFICIENT_EVIDENCE | Null FPR 0%; positive coverage 0% |
+| DCM-004 DID+bootstrap | ELIGIBLE_WITH_RESTRICTIONS | **Reassessed 2026-06-18:** positive coverage ~93%; supported null type-I ~13%; aggregate ~32% (stress world); common timing + parallel-trends gate required |
 | DCM-005-BRB | INSUFFICIENT_EVIDENCE | Null metrics OK; scale/bias mismatch on lift |
 | DCM-005-KFOLD | INSUFFICIENT_EVIDENCE | Directional false signal 100% on null; scale mismatch |
 | DCM-005-PLACEBO | INELIGIBLE | Null-monitor; not causal |
@@ -301,6 +301,7 @@ Remain ineligible unless a **separate future artifact** explicitly changes them:
 | `D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001` | DID identification + bootstrap diagnosis | DCM-004 | ✅ complete |
 | `D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION` | Canonical DID bootstrap harness + archive | DCM-004 evidence baseline | ✅ complete |
 | `DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001` | Production DID bootstrap readout alignment | DCM-004 | ✅ complete |
+| `DCM-004-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001` | Partial re-run (DCM-004 only) | DCM-004 promotion candidacy | ✅ complete (DCM-004 only) |
 | `D5-TRUST-TBRRIDGE-BRB-001` | TBRRidge BRB path | DCM-005-BRB |
 | `D5-TRUST-TBRRIDGE-KFOLD-001` | TBRRidge KFold path | DCM-005-KFOLD |
 | `D5-TRUST-TBRRIDGE-PLACEBO-001` | TBRRidge placebo null-monitor | DCM-005-PLACEBO |
@@ -338,9 +339,9 @@ D5-TRUST-SCM-JK-COVERAGE-REMEDIATION-001  ✅
 D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001  ✅
   → D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION  ✅
   → DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001  ✅
-  → DCM-004 eligibility reassessment  ← next
+  → DCM-004-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001  ✅
 
-D5-TRUST-TBRRIDGE-{BRB,KFOLD,PLACEBO}-001
+D5-TRUST-TBRRIDGE-{BRB,KFOLD,PLACEBO}-001  ← next
   → independent; do not collapse
 
 Disposition decisions (§2b): AugSynth+JK · SCM+Placebo · TBRRidge JK/JKP · rerandomization · DCM-009–014

@@ -1,0 +1,433 @@
+{
+  "artifact_id": "DCM-004-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-18T18:33:16.141362+00:00",
+  "git_commit": "392fdeebac1834421d4a18ae27883f4b545306cf",
+  "reassessment_scope": [
+    "DCM-004"
+  ],
+  "prior_dcm004_status": "INSUFFICIENT_EVIDENCE",
+  "corrected_evidence_sources": [
+    "D5-STAT-DID-BOOTSTRAP-001 (post-fix replay)",
+    "D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION",
+    "DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001",
+    "D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001"
+  ],
+  "supported_contract": {
+    "label": "provisional_for_dcm004_reassessment_only",
+    "timing": {
+      "regime": "common_simultaneous_adoption",
+      "staggered_pooled_blocked": true
+    },
+    "geometry": {
+      "unit_panel_single_cell": true,
+      "min_treated": 1,
+      "min_control": 4,
+      "explicit_test_0_control": true,
+      "no_overlap": true
+    },
+    "estimand": {
+      "id": "cumulative_att_level",
+      "truth_scale": "cumulative_level",
+      "point_scale": "cumulative_level",
+      "interval_scale": "cumulative_level"
+    },
+    "identification": {
+      "parallel_trends_required": true,
+      "pretrend_diagnostic_required": true,
+      "allow_pretrend_violation_characterization_only": false
+    },
+    "inference": {
+      "method": "centered_deviation_percentile_block_bootstrap",
+      "min_bootstrap_replicates": 30,
+      "block_resampling": true
+    },
+    "excluded_regimes": [
+      "parallel_trends_violation",
+      "stress_or_outlier",
+      "staggered_timing"
+    ],
+    "semantic": {
+      "readout_class": "restricted_causal_interval",
+      "estimand": "cumulative_att_level",
+      "population_ate_blocked": true,
+      "staggered_pooled_blocked": true,
+      "null_monitor_relabel_blocked": true
+    }
+  },
+  "world_classification": {
+    "clean_parallel_null": "supported_clean_parallel_common_timing",
+    "clean_parallel_positive_lift": "supported_clean_parallel_common_timing",
+    "weak_signal_null": "supported_serial_dependence",
+    "noisy_positive_lift": "supported_heteroskedastic",
+    "trend_violation_null": "parallel_trends_violation",
+    "trend_violation_positive_lift": "parallel_trends_violation",
+    "post_shock_null": "stress_or_outlier"
+  },
+  "null_metrics_overall": {
+    "null_coverage": 0.6833333333333333,
+    "type_i_error": 0.31666666666666665
+  },
+  "null_metrics_supported": {
+    "null_coverage": 0.8666666666666667,
+    "type_i_error": 0.13333333333333333
+  },
+  "null_metrics_unsupported": {
+    "null_coverage": 0.5,
+    "type_i_error": 0.5
+  },
+  "positive_metrics": {
+    "overall_positive_coverage": 0.9333333333333332,
+    "clean_positive_coverage": 1.0,
+    "noisy_positive_coverage": 0.8,
+    "before_positive_coverage": 0.044444444444444446,
+    "point_in_interval_rate": 1.0
+  },
+  "negative_metrics": {
+    "negative_coverage": null
+  },
+  "type_i_decomposition": {
+    "overall": 0.31666666666666665,
+    "supported_worlds": 0.13333333333333333,
+    "unsupported_worlds": 0.5,
+    "clean_parallel_null": 0.13333333333333333,
+    "post_shock_null": 1.0,
+    "interpretation": "Aggregate elevation driven primarily by unsupported stress world post_shock_null; supported clean/weak-signal null worlds ~13% type-I."
+  },
+  "coverage_decomposition": {
+    "overall_null": 0.6833333333333333,
+    "supported_null": 0.8666666666666667,
+    "unsupported_null": 0.5,
+    "overall_positive": 0.9333333333333332,
+    "before_positive": 0.044444444444444446
+  },
+  "gate_results": {
+    "geometry_gate_status": "pass",
+    "scale_gate_status": "pass",
+    "parallel_trends_gate_status": "warning_required",
+    "timing_gate_status": "pass",
+    "dependence_gate_status": "warning_required",
+    "label": "provisional_for_dcm004_reassessment_only"
+  },
+  "calibration_by_world_class": {
+    "supported_clean_parallel_common_timing": {
+      "n_runs": 30,
+      "n_failures": 0,
+      "null_coverage": 0.8666666666666667,
+      "type_i_error": 0.13333333333333333,
+      "positive_coverage": 1.0,
+      "mean_interval_width": 200.4374540618853,
+      "point_in_interval_rate": 1.0,
+      "bias": -9.366992489581872,
+      "rmse": 28.26438628552386
+    },
+    "supported_serial_dependence": {
+      "n_runs": 15,
+      "n_failures": 0,
+      "null_coverage": 0.8666666666666667,
+      "type_i_error": 0.13333333333333333,
+      "positive_coverage": null,
+      "mean_interval_width": 388.14698956153154,
+      "point_in_interval_rate": 1.0,
+      "bias": 34.451825929136085,
+      "rmse": 140.59012621804706
+    },
+    "supported_heteroskedastic": {
+      "n_runs": 15,
+      "n_failures": 0,
+      "null_coverage": null,
+      "type_i_error": null,
+      "positive_coverage": 0.8,
+      "mean_interval_width": 383.60638228978934,
+      "point_in_interval_rate": 1.0,
+      "bias": 12.688484740116284,
+      "rmse": 126.43035951265303
+    },
+    "parallel_trends_violation": {
+      "n_runs": 30,
+      "n_failures": 0,
+      "null_coverage": 1.0,
+      "type_i_error": 0.0,
+      "positive_coverage": 1.0,
+      "mean_interval_width": 334.5444942093933,
+      "point_in_interval_rate": 1.0,
+      "bias": -54.629117394893775,
+      "rmse": 58.66944935363673
+    },
+    "stress_or_outlier": {
+      "n_runs": 15,
+      "n_failures": 0,
+      "null_coverage": 0.0,
+      "type_i_error": 1.0,
+      "positive_coverage": null,
+      "mean_interval_width": 1141.2243062431794,
+      "point_in_interval_rate": 1.0,
+      "bias": -1127.0577704132577,
+      "rmse": 1209.248799790559
+    }
+  },
+  "reassessed_status": "ELIGIBLE_WITH_RESTRICTIONS",
+  "dcm004_reassessment": {
+    "dcm_row_id": "DCM-004",
+    "prior_status": "INSUFFICIENT_EVIDENCE",
+    "reassessed_status": "ELIGIBLE_WITH_RESTRICTIONS",
+    "eligible_for_promotion": false,
+    "trust_report_authorized": false,
+    "reason_codes": [
+      "TR-DCM004-CORRECTED-PRODUCTION-EVIDENCE-USED",
+      "TR-DCM004-AUTHORIZATION-STILL-BLOCKED",
+      "TR-DCM004-HARNESS-CORRECTED",
+      "TR-DCM004-CUMULATIVE-LEVEL-SCALE-CONSISTENT",
+      "TR-DCM004-COMMON-TIMING-ONLY",
+      "TR-DCM004-PARALLEL-TRENDS-GATE-REQUIRED",
+      "TR-DCM004-SERIAL-DEPENDENCE-CAVEAT",
+      "TR-DCM004-HETEROSKEDASTIC-CAVEAT",
+      "TR-DCM004-STRESS-WORLD-EXCLUDED",
+      "TR-DCM004-POSITIVE-COVERAGE-IMPROVED",
+      "TR-DCM004-NULL-TYPEI-CAVEAT",
+      "TR-DCM004-ELIGIBLE-WITH-RESTRICTIONS"
+    ],
+    "warnings": [
+      "Parallel-trends diagnostic required; pretrend-violation worlds are characterization-only.",
+      "Noisy positive-world coverage 0.800; heteroskedastic caveat.",
+      "post_shock_null shows elevated null rejection; stress worlds excluded from supported contract.",
+      "Supported-world null type-I 0.133 exceeds provisional max 0.10.",
+      "Aggregate null type-I elevation concentrated in unsupported stress/violation worlds.",
+      "Restricted causal-interval candidacy: cumulative level ATT, common timing, parallel-trends gate, stress worlds excluded."
+    ],
+    "supported_contract": {
+      "label": "provisional_for_dcm004_reassessment_only",
+      "timing": {
+        "regime": "common_simultaneous_adoption",
+        "staggered_pooled_blocked": true
+      },
+      "geometry": {
+        "unit_panel_single_cell": true,
+        "min_treated": 1,
+        "min_control": 4,
+        "explicit_test_0_control": true,
+        "no_overlap": true
+      },
+      "estimand": {
+        "id": "cumulative_att_level",
+        "truth_scale": "cumulative_level",
+        "point_scale": "cumulative_level",
+        "interval_scale": "cumulative_level"
+      },
+      "identification": {
+        "parallel_trends_required": true,
+        "pretrend_diagnostic_required": true,
+        "allow_pretrend_violation_characterization_only": false
+      },
+      "inference": {
+        "method": "centered_deviation_percentile_block_bootstrap",
+        "min_bootstrap_replicates": 30,
+        "block_resampling": true
+      },
+      "excluded_regimes": [
+        "parallel_trends_violation",
+        "stress_or_outlier",
+        "staggered_timing"
+      ],
+      "semantic": {
+        "readout_class": "restricted_causal_interval",
+        "estimand": "cumulative_att_level",
+        "population_ate_blocked": true,
+        "staggered_pooled_blocked": true,
+        "null_monitor_relabel_blocked": true
+      }
+    },
+    "evidence_sources": [
+      "D5-STAT-DID-BOOTSTRAP-001 (post-fix replay)",
+      "D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION",
+      "DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001",
+      "D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001"
+    ],
+    "null_metrics": {
+      "overall": {
+        "null_coverage": 0.6833333333333333,
+        "type_i_error": 0.31666666666666665
+      },
+      "supported": {
+        "null_coverage": 0.8666666666666667,
+        "type_i_error": 0.13333333333333333
+      },
+      "unsupported": {
+        "null_coverage": 0.5,
+        "type_i_error": 0.5
+      },
+      "clean_parallel_null": {
+        "null_coverage": 0.8666666666666667,
+        "type_i_error": 0.13333333333333333
+      }
+    },
+    "positive_metrics": {
+      "overall_positive_coverage": 0.9333333333333332,
+      "clean_positive_coverage": 1.0,
+      "noisy_positive_coverage": 0.8,
+      "before_positive_coverage": 0.044444444444444446,
+      "point_in_interval_rate": 1.0
+    },
+    "negative_metrics": {
+      "negative_coverage": null
+    },
+    "calibration_by_world_class": {
+      "supported_clean_parallel_common_timing": {
+        "n_runs": 30,
+        "n_failures": 0,
+        "null_coverage": 0.8666666666666667,
+        "type_i_error": 0.13333333333333333,
+        "positive_coverage": 1.0,
+        "mean_interval_width": 200.4374540618853,
+        "point_in_interval_rate": 1.0,
+        "bias": -9.366992489581872,
+        "rmse": 28.26438628552386
+      },
+      "supported_serial_dependence": {
+        "n_runs": 15,
+        "n_failures": 0,
+        "null_coverage": 0.8666666666666667,
+        "type_i_error": 0.13333333333333333,
+        "positive_coverage": null,
+        "mean_interval_width": 388.14698956153154,
+        "point_in_interval_rate": 1.0,
+        "bias": 34.451825929136085,
+        "rmse": 140.59012621804706
+      },
+      "supported_heteroskedastic": {
+        "n_runs": 15,
+        "n_failures": 0,
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.8,
+        "mean_interval_width": 383.60638228978934,
+        "point_in_interval_rate": 1.0,
+        "bias": 12.688484740116284,
+        "rmse": 126.43035951265303
+      },
+      "parallel_trends_violation": {
+        "n_runs": 30,
+        "n_failures": 0,
+        "null_coverage": 1.0,
+        "type_i_error": 0.0,
+        "positive_coverage": 1.0,
+        "mean_interval_width": 334.5444942093933,
+        "point_in_interval_rate": 1.0,
+        "bias": -54.629117394893775,
+        "rmse": 58.66944935363673
+      },
+      "stress_or_outlier": {
+        "n_runs": 15,
+        "n_failures": 0,
+        "null_coverage": 0.0,
+        "type_i_error": 1.0,
+        "positive_coverage": null,
+        "mean_interval_width": 1141.2243062431794,
+        "point_in_interval_rate": 1.0,
+        "bias": -1127.0577704132577,
+        "rmse": 1209.248799790559
+      }
+    },
+    "geometry_gate_status": "pass",
+    "scale_gate_status": "pass",
+    "parallel_trends_gate_status": "warning_required",
+    "timing_gate_status": "pass",
+    "dependence_gate_status": "warning_required",
+    "semantic_class": "restricted_causal_interval",
+    "authorization_status": "blocked",
+    "reassessment_version": "1.0.0"
+  },
+  "promotion_candidate_summary": {
+    "promotion_candidate_count": 0,
+    "promotion_candidates": [],
+    "dcm004_eligible_for_promotion": false
+  },
+  "unchanged_combination_results": [
+    {
+      "combination_key": "DCM-001",
+      "dcm_row_id": "DCM-001",
+      "eligibility_status": "ELIGIBLE_WITH_RESTRICTIONS",
+      "eligible_for_promotion": false,
+      "trust_report_authorized": false,
+      "unchanged_due_to_no_new_evidence": true
+    },
+    {
+      "combination_key": "DCM-002",
+      "dcm_row_id": "DCM-002",
+      "eligibility_status": "ELIGIBLE_WITH_RESTRICTIONS",
+      "eligible_for_promotion": false,
+      "trust_report_authorized": false,
+      "unchanged_due_to_no_new_evidence": true
+    },
+    {
+      "combination_key": "DCM-003",
+      "dcm_row_id": "DCM-003",
+      "eligibility_status": "INELIGIBLE",
+      "eligible_for_promotion": false,
+      "trust_report_authorized": false,
+      "unchanged_due_to_no_new_evidence": true
+    },
+    {
+      "combination_key": "DCM-005-BRB",
+      "dcm_row_id": "DCM-005",
+      "eligibility_status": "INSUFFICIENT_EVIDENCE",
+      "eligible_for_promotion": false,
+      "trust_report_authorized": false,
+      "unchanged_due_to_no_new_evidence": true
+    },
+    {
+      "combination_key": "DCM-005-KFOLD",
+      "dcm_row_id": "DCM-005",
+      "eligibility_status": "INSUFFICIENT_EVIDENCE",
+      "eligible_for_promotion": false,
+      "trust_report_authorized": false,
+      "unchanged_due_to_no_new_evidence": true
+    },
+    {
+      "combination_key": "DCM-005-PLACEBO",
+      "dcm_row_id": "DCM-005",
+      "eligibility_status": "INELIGIBLE",
+      "eligible_for_promotion": false,
+      "trust_report_authorized": false,
+      "unchanged_due_to_no_new_evidence": true
+    },
+    {
+      "combination_key": "DCM-006",
+      "dcm_row_id": "DCM-006",
+      "eligibility_status": "ELIGIBLE_WITH_RESTRICTIONS",
+      "eligible_for_promotion": false,
+      "trust_report_authorized": false,
+      "unchanged_due_to_no_new_evidence": true
+    },
+    {
+      "combination_key": "DCM-007",
+      "dcm_row_id": "DCM-007",
+      "eligibility_status": "INELIGIBLE",
+      "eligible_for_promotion": false,
+      "trust_report_authorized": false,
+      "unchanged_due_to_no_new_evidence": true
+    },
+    {
+      "combination_key": "DCM-008",
+      "dcm_row_id": "DCM-008",
+      "eligibility_status": "ELIGIBLE_WITH_RESTRICTIONS",
+      "eligible_for_promotion": false,
+      "trust_report_authorized": false,
+      "unchanged_due_to_no_new_evidence": true
+    }
+  ],
+  "authorization_summary": {
+    "trust_report_authorized": false,
+    "trust_report_authorized_count": 0,
+    "trust_report_ready": false
+  },
+  "limitations": [
+    "Reassessment applies to DCM-004 only; other DCM rows unchanged.",
+    "Post-fix evidence from live D5-STAT-DID-BOOTSTRAP-001 replay with production correction.",
+    "Pre-fix canonical archive retained as historical only.",
+    "Provisional gates labeled provisional_for_dcm004_reassessment_only.",
+    "Does not authorize TrustReport or downstream roles.",
+    "Staggered timing and stress worlds excluded from supported contract."
+  ],
+  "verdict": "dcm004_eligible_with_restrictions_no_authorization"
+}

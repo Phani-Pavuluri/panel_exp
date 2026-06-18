@@ -185,7 +185,7 @@
   "forbidden_flags": {
     "trust_report_authorized": 0,
     "trust_report_ready": 0,
-    "dcm004_reassessment_complete": 0
+    "dcm004_reassessment_complete": 1
   },
-  "next_recommended_artifact": "DCM-004 eligibility reassessment"
+  "next_recommended_artifact": "D5-TRUST-TBRRIDGE-BRB-001"
 }
