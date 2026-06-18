@@ -305,7 +305,7 @@ Remain ineligible unless a **separate future artifact** explicitly changes them:
 | `D5-TRUST-TBRRIDGE-BRB-001` | TBRRidge BRB path | DCM-005-BRB | ✅ complete |
 | `TBRRIDGE_BRB_INTERVAL_CORRECTION_001` | Production BRB interval alignment | DCM-005-BRB | ✅ complete |
 | `INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001` | BRB variance calibration / null coverage | DCM-005-BRB | OPEN — [`OPEN_INVESTIGATIONS_001.json`](governance/OPEN_INVESTIGATIONS_001.json) |
-| `D5-TRUST-TBRRIDGE-KFOLD-001` | TBRRidge KFold path | DCM-005-KFOLD |
+| `D5-TRUST-TBRRIDGE-KFOLD-001` | TBRRidge KFold path | DCM-005-KFOLD | ✅ complete — not causal-interval eligible; [`OPEN_INVESTIGATIONS_001.json`](governance/OPEN_INVESTIGATIONS_001.json) |
 | `D5-TRUST-TBRRIDGE-PLACEBO-001` | TBRRidge placebo null-monitor | DCM-005-PLACEBO |
 | `D5-TRUST-STRATIFIED-SCM-JK-001` | Stratified combination | DCM-008 |
 | `D5-TRUST-MULTICELL-PERCELL-INFERENCE-001` | Per-cell inference | DCM-006 |

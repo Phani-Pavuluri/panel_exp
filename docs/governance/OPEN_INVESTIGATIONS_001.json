@@ -80,21 +80,28 @@
     {
       "investigation_id": "INV-TBRRIDGE-KFOLD-NULL-FPR-001",
       "title": "TBRRidge KFold null false-positive rate and leakage",
-      "status": "PLANNED",
+      "status": "OPEN",
       "priority": "P1",
       "discovered_by": "TRUSTREPORT-ELIGIBILITY-VALIDATION-001",
       "affected_combination": "DCM-005-KFOLD",
-      "problem_class": ["null_type_i", "leakage", "split_policy"],
+      "problem_class": ["null_type_i", "leakage", "split_policy", "semantic_misuse"],
       "evidence": {
         "prior_null_directional_false_signal": 1.0,
-        "leakage_guard_flagged": true
+        "leakage_guard_flagged": true,
+        "d5_trust_characterization": "D5-TRUST-TBRRIDGE-KFOLD-001",
+        "null_interval_coverage": 1.0,
+        "interval_type_i_null": 0.0,
+        "mean_abs_null_point_estimate": 395.0,
+        "sign_accuracy_positive": 0.017,
+        "verdict": "tbrridge_kfold_not_causal_interval_eligible",
+        "recommended_provisional_disposition": "DIAGNOSTIC_ONLY"
       },
-      "current_decision": "PENDING_CHARACTERIZATION",
+      "current_decision": "DIAGNOSTIC_ONLY_PENDING_DCM005_CONSUME",
       "blocked_roles": ["trust_report", "calibration_signal", "production"],
-      "target_artifact": "D5-TRUST-TBRRIDGE-KFOLD-001",
-      "revisit_trigger": "Upon completion of D5-TRUST-TBRRIDGE-KFOLD-001 characterization",
+      "target_artifact": "D5-TRUST-TBRRIDGE-PLACEBO-001",
+      "revisit_trigger": "Before DCM-005 eligibility reassessment; after Placebo characterization",
       "decision_checkpoint": "DCM-005 eligibility reassessment",
-      "blocking_policy": "KFold path remains diagnostic-only until characterization completes and investigation receives terminal disposition",
+      "blocking_policy": "KFold path diagnostic/model-selection only; causal-interval and TrustReport blocked until terminal disposition consumed at DCM-005 reassessment",
       "terminal_decisions": [
         "REMEDIATE",
         "RESTRICT",
@@ -200,7 +207,7 @@
     },
     {
       "lane_id": "D5-TRUST-TBRRIDGE-KFOLD-001",
-      "status": "pending",
+      "status": "complete",
       "open_investigations": ["INV-TBRRIDGE-KFOLD-NULL-FPR-001"],
       "resolved_investigations": [],
       "next_artifact": "D5-TRUST-TBRRIDGE-PLACEBO-001"

@@ -524,6 +524,8 @@ Per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)
 
 **INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001 (OPEN):** [`OPEN_INVESTIGATIONS_001.json`](governance/OPEN_INVESTIGATIONS_001.json) — post-correction BRB variance ratio ~11; null coverage ~40.5%; positive coverage ~50.7%; causal-interval eligibility blocked; TrustReport authorization false.
 
+**D5-TRUST-TBRRIDGE-KFOLD-001 (2026-06-18):** [`D5_TRUST_TBRRIDGE_KFOLD_001_REPORT.md`](track_d/D5_TRUST_TBRRIDGE_KFOLD_001_REPORT.md) — KFold not causal-interval eligible; null interval coverage 100% but level point bias ~395; sign accuracy ~1.7%; provisional DIAGNOSTIC_ONLY recommendation for INV-TBRRIDGE-KFOLD-NULL-FPR-001 (OPEN pending DCM-005); no authorization.
+
 ## 11. Stop condition
 
 | Criterion | Status |

@@ -321,6 +321,8 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **TBRRidge BRB interval correction (2026-06-18):** [`TBRRIDGE_BRB_INTERVAL_CORRECTION_001_REPORT.md`](track_d/TBRRIDGE_BRB_INTERVAL_CORRECTION_001_REPORT.md) — production BRB mean-effect centered-deviation intervals; centering gap resolved; null calibration caveat; no authorization.
 
+**D5-TRUST-TBRRIDGE-KFOLD-001 (2026-06-18):** [`D5_TRUST_TBRRIDGE_KFOLD_001_REPORT.md`](track_d/D5_TRUST_TBRRIDGE_KFOLD_001_REPORT.md) — TBRRidge KFold/TSKFold characterized; method unsuitable for causal interval; diagnostic-only; regenerate: `poetry run python -m panel_exp.validation.track_d_d5_trust_tbrridge_kfold_001`.
+
 ## 13. Stop condition
 
 | Criterion | Status |
