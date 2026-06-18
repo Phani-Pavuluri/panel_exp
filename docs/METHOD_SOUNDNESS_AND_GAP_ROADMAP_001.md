@@ -526,6 +526,8 @@ Per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)
 
 **D5-TRUST-TBRRIDGE-KFOLD-001 (2026-06-18):** [`D5_TRUST_TBRRIDGE_KFOLD_001_REPORT.md`](track_d/D5_TRUST_TBRRIDGE_KFOLD_001_REPORT.md) — KFold not causal-interval eligible; null interval coverage 100% but level point bias ~395; sign accuracy ~1.7%; provisional DIAGNOSTIC_ONLY recommendation for INV-TBRRIDGE-KFOLD-NULL-FPR-001 (OPEN pending DCM-005); no authorization.
 
+**D5-TRUST-TBRRIDGE-PLACEBO-001 (2026-06-22):** [`D5_TRUST_TBRRIDGE_PLACEBO_001_REPORT.md`](track_d/D5_TRUST_TBRRIDGE_PLACEBO_001_REPORT.md) — Placebo null-monitor / falsification only; single-treated restricted; null type-I 0%; power ~24%; provisional NULL_MONITOR_ONLY for INV-TBRRIDGE-PLACEBO-GOVERNED-SEMANTICS-001 (OPEN pending DCM-005); no authorization.
+
 ## 11. Stop condition
 
 | Criterion | Status |

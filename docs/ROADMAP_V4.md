@@ -266,8 +266,8 @@ Foundation and compatibility audits ✅
   → TBRRIDGE_BRB_INTERVAL_CORRECTION_001 ✅
   → INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001 (OPEN)
   → D5-TRUST-TBRRIDGE-KFOLD-001 ✅
-  → D5-TRUST-TBRRIDGE-PLACEBO-001
-  → DCM-008 stratified SCM-JK validation
+  → D5-TRUST-TBRRIDGE-PLACEBO-001 ✅
+  → DCM-005 eligibility reassessment
   → disposition decisions: AugSynth+JK · SCM+Placebo · TBRRidge JK/JKP · rerandomization lanes
   → FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT (all DCM-001–008 rows)
   → allow / restrict / block table
@@ -278,7 +278,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). It is **not** a full TrustReport reassessment. **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** is a future artifact after remaining D5-TRUST lanes and explicit disposition decisions complete.
 
-**Ordered next:** ✅ **`D5-STAT-SCM-JK-001-HARNESS-CORRECTION`** → ✅ **`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`** (DCM-001 only) → ✅ **`D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001`** → ✅ **`D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION`** → ✅ **`DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001`** → ✅ **`DCM-004-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001`** → ✅ **`D5-TRUST-TBRRIDGE-BRB-001`** → ✅ **`TBRRIDGE-BRB-INTERVAL-CORRECTION-001`** → **`INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001`** (OPEN; [`OPEN_INVESTIGATIONS_001.json`](governance/OPEN_INVESTIGATIONS_001.json)) → ✅ **`D5-TRUST-TBRRIDGE-KFOLD-001`** → **`INV-TBRRIDGE-KFOLD-NULL-FPR-001`** (OPEN; provisional DIAGNOSTIC_ONLY recommendation) → **`D5-TRUST-TBRRIDGE-PLACEBO-001`** → DCM-005 eligibility reassessment → multi-cell + stratified validation → disposition decisions → **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** → **`TRUSTREPORT_DOWNSTREAM_PROMOTION_001`** → downstream authorization update.
+**Ordered next:** ✅ **`D5-STAT-SCM-JK-001-HARNESS-CORRECTION`** → ✅ **`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`** (DCM-001 only) → ✅ **`D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001`** → ✅ **`D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION`** → ✅ **`DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001`** → ✅ **`DCM-004-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001`** → ✅ **`D5-TRUST-TBRRIDGE-BRB-001`** → ✅ **`TBRRIDGE-BRB-INTERVAL-CORRECTION-001`** → **`INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001`** (OPEN; [`OPEN_INVESTIGATIONS_001.json`](governance/OPEN_INVESTIGATIONS_001.json)) → ✅ **`D5-TRUST-TBRRIDGE-KFOLD-001`** → **`INV-TBRRIDGE-KFOLD-NULL-FPR-001`** (OPEN; provisional DIAGNOSTIC_ONLY recommendation) → ✅ **`D5-TRUST-TBRRIDGE-PLACEBO-001`** → **`INV-TBRRIDGE-PLACEBO-GOVERNED-SEMANTICS-001`** (OPEN; provisional NULL_MONITOR_ONLY recommendation) → **DCM-005 eligibility reassessment** (must consume BRB variance + KFold + Placebo investigations) → multi-cell + stratified validation → disposition decisions → **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** → **`TRUSTREPORT_DOWNSTREAM_PROMOTION_001`** → downstream authorization update.
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 

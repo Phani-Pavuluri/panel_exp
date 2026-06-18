@@ -323,6 +323,8 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **D5-TRUST-TBRRIDGE-KFOLD-001 (2026-06-18):** [`D5_TRUST_TBRRIDGE_KFOLD_001_REPORT.md`](track_d/D5_TRUST_TBRRIDGE_KFOLD_001_REPORT.md) — TBRRidge KFold/TSKFold characterized; method unsuitable for causal interval; diagnostic-only; regenerate: `poetry run python -m panel_exp.validation.track_d_d5_trust_tbrridge_kfold_001`.
 
+**D5-TRUST-TBRRIDGE-PLACEBO-001 (2026-06-22):** [`D5_TRUST_TBRRIDGE_PLACEBO_001_REPORT.md`](track_d/D5_TRUST_TBRRIDGE_PLACEBO_001_REPORT.md) — TBRRidge Placebo null-monitor / falsification characterized; single-treated restricted; regenerate: `poetry run python -m panel_exp.validation.track_d_d5_trust_tbrridge_placebo_001`.
+
 ## 13. Stop condition
 
 | Criterion | Status |

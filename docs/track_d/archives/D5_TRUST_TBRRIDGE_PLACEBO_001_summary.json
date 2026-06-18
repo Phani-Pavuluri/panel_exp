@@ -1,0 +1,443 @@
+{
+  "artifact_id": "D5-TRUST-TBRRIDGE-PLACEBO-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-18T21:20:23.165567+00:00",
+  "git_commit": "546acf560709adc2faeba98286159c6347d9ba2e",
+  "config": {
+    "fast": false,
+    "n_replicates": 3,
+    "alpha": 0.05,
+    "canonical_scale": "level_mean_relative_percent_injection",
+    "min_controls_production": 5
+  },
+  "worlds": [
+    "clean_null",
+    "clean_positive_effect",
+    "clean_negative_effect",
+    "weak_signal",
+    "strong_signal",
+    "serial_correlation",
+    "high_serial_correlation",
+    "heteroskedasticity",
+    "regime_shift",
+    "post_treatment_shock",
+    "pre_trend_violation",
+    "poor_pre_fit",
+    "outlier_period",
+    "small_donor_set",
+    "large_donor_set",
+    "low_noise_null",
+    "contaminated_donor",
+    "placebo_null"
+  ],
+  "effect_sizes": [
+    0.0,
+    0.03,
+    0.08,
+    0.12,
+    -0.05
+  ],
+  "geometry_variants": [
+    "single_treated_unit",
+    "multiple_treated_units",
+    "small_control_pool",
+    "large_control_pool"
+  ],
+  "run_counts": {
+    "total_runs": 232,
+    "successful_runs": 179,
+    "failed_runs": 53,
+    "runtime_seconds": 9.88
+  },
+  "point_estimate_results": {
+    "mean_bias_clean_positive": 0.5610826065916746,
+    "sign_accuracy_positive": 1.0
+  },
+  "placebo_distribution_results": {
+    "mean_placebo_draws": 11.865921787709498,
+    "mean_placebo_std": 2.0188914562581033
+  },
+  "placebo_rank_calibration": {
+    "mean_rank_null": 0.5896799472457367,
+    "uniform_reference": 0.5
+  },
+  "p_value_calibration": {
+    "mean_p_null": 0.6304232804232804,
+    "uniform_reference": 0.5
+  },
+  "type_i_by_world": {
+    "clean_null": 0.0,
+    "clean_positive_effect": 0.0,
+    "clean_negative_effect": null,
+    "weak_signal": 0.0,
+    "strong_signal": 0.0,
+    "serial_correlation": null,
+    "high_serial_correlation": null,
+    "heteroskedasticity": null,
+    "regime_shift": null,
+    "post_treatment_shock": 0.0,
+    "pre_trend_violation": 0.0,
+    "poor_pre_fit": null,
+    "outlier_period": null,
+    "small_donor_set": null,
+    "large_donor_set": null,
+    "low_noise_null": 0.0,
+    "contaminated_donor": null,
+    "placebo_null": 0.0
+  },
+  "power_by_effect": {
+    "0.0": {
+      "type_i_error": 0.0,
+      "power": null,
+      "negative_power": null,
+      "sign_accuracy": 1.0,
+      "mean_placebo_rank_null": 0.5896799472457367,
+      "n_null": 48,
+      "n_positive": 0,
+      "n_negative": 0,
+      "n_ok": 48
+    },
+    "0.03": {
+      "type_i_error": null,
+      "power": 0.0,
+      "negative_power": null,
+      "sign_accuracy": 1.0,
+      "mean_placebo_rank_null": null,
+      "n_null": 0,
+      "n_positive": 12,
+      "n_negative": 0,
+      "n_ok": 12
+    },
+    "0.08": {
+      "type_i_error": null,
+      "power": 0.26595744680851063,
+      "negative_power": null,
+      "sign_accuracy": 1.0,
+      "mean_placebo_rank_null": null,
+      "n_null": 0,
+      "n_positive": 94,
+      "n_negative": 0,
+      "n_ok": 94
+    },
+    "0.12": {
+      "type_i_error": null,
+      "power": 0.25,
+      "negative_power": null,
+      "sign_accuracy": 1.0,
+      "mean_placebo_rank_null": null,
+      "n_null": 0,
+      "n_positive": 12,
+      "n_negative": 0,
+      "n_ok": 12
+    },
+    "-0.05": {
+      "type_i_error": null,
+      "power": null,
+      "negative_power": 0.23076923076923078,
+      "sign_accuracy": 1.0,
+      "mean_placebo_rank_null": null,
+      "n_null": 0,
+      "n_positive": 0,
+      "n_negative": 13,
+      "n_ok": 13
+    }
+  },
+  "results_by_geometry": {
+    "single_treated_unit": {
+      "type_i_error": 0.0,
+      "power": 0.0,
+      "negative_power": 0.0,
+      "sign_accuracy": 1.0,
+      "mean_placebo_rank_null": 0.6245791245791246,
+      "n_null": 18,
+      "n_positive": 45,
+      "n_negative": 7,
+      "n_ok": 70
+    },
+    "small_control_pool": {
+      "type_i_error": 0.0,
+      "power": 0.0,
+      "negative_power": 0.0,
+      "sign_accuracy": 1.0,
+      "mean_placebo_rank_null": 0.5711111111111111,
+      "n_null": 15,
+      "n_positive": 35,
+      "n_negative": 3,
+      "n_ok": 53
+    },
+    "large_control_pool": {
+      "type_i_error": 0.0,
+      "power": 0.7777777777777778,
+      "negative_power": 1.0,
+      "sign_accuracy": 1.0,
+      "mean_placebo_rank_null": 0.5663697705802968,
+      "n_null": 15,
+      "n_positive": 36,
+      "n_negative": 3,
+      "n_ok": 54
+    },
+    "multiple_treated_units": {
+      "type_i_error": null,
+      "power": 0.0,
+      "negative_power": null,
+      "sign_accuracy": 1.0,
+      "mean_placebo_rank_null": null,
+      "n_null": 0,
+      "n_positive": 2,
+      "n_negative": 0,
+      "n_ok": 2
+    }
+  },
+  "results_by_control_count": {
+    "small": {
+      "type_i_error": 0.0,
+      "power": 0.0,
+      "negative_power": 0.0,
+      "sign_accuracy": 1.0,
+      "mean_placebo_rank_null": 0.5999999999999999,
+      "n_null": 14,
+      "n_positive": 38,
+      "n_negative": 3,
+      "n_ok": 55
+    },
+    "medium": {
+      "type_i_error": 0.0,
+      "power": 0.0,
+      "negative_power": 0.0,
+      "sign_accuracy": 1.0,
+      "mean_placebo_rank_null": 0.6004784688995215,
+      "n_null": 19,
+      "n_positive": 39,
+      "n_negative": 7,
+      "n_ok": 65
+    },
+    "large": {
+      "type_i_error": 0.0,
+      "power": 0.6829268292682927,
+      "negative_power": 1.0,
+      "sign_accuracy": 1.0,
+      "mean_placebo_rank_null": 0.5663697705802968,
+      "n_null": 15,
+      "n_positive": 41,
+      "n_negative": 3,
+      "n_ok": 59
+    }
+  },
+  "results_by_prefit": {
+    "low_prefit_rmse": {
+      "type_i_error": null,
+      "power": null,
+      "negative_power": null,
+      "sign_accuracy": null,
+      "mean_placebo_rank_null": null,
+      "n_null": 0,
+      "n_positive": 0,
+      "n_negative": 0,
+      "n_ok": 0
+    },
+    "high_prefit_rmse": {
+      "type_i_error": null,
+      "power": null,
+      "negative_power": null,
+      "sign_accuracy": null,
+      "mean_placebo_rank_null": null,
+      "n_null": 0,
+      "n_positive": 0,
+      "n_negative": 0,
+      "n_ok": 0
+    }
+  },
+  "results_by_serial_dependence": {
+    "assumed_under_placebo_in_space": {
+      "type_i_error": 0.0,
+      "power": 0.2222222222222222,
+      "negative_power": 0.23076923076923078,
+      "sign_accuracy": 1.0,
+      "mean_placebo_rank_null": 0.5896799472457367,
+      "n_null": 48,
+      "n_positive": 99,
+      "n_negative": 13,
+      "n_ok": 160
+    },
+    "serial_dependence_caveat": {
+      "type_i_error": null,
+      "power": 0.3157894736842105,
+      "negative_power": null,
+      "sign_accuracy": 1.0,
+      "mean_placebo_rank_null": null,
+      "n_null": 0,
+      "n_positive": 19,
+      "n_negative": 0,
+      "n_ok": 19
+    }
+  },
+  "failure_summary": {
+    "n_fail": 53,
+    "failure_reasons": [
+      "Placebo requires >=5 control units (got 4)",
+      "placebo-in-space currently supports exactly one treated unit"
+    ]
+  },
+  "policy_comparisons": [
+    {
+      "policy": {
+        "policy_id": "A",
+        "name": "current_placebo",
+        "description": "production placebo-in-space with RMSPE filter"
+      },
+      "metrics": {
+        "type_i_error": 0.0,
+        "power": 0.23728813559322035,
+        "negative_power": 0.23076923076923078,
+        "sign_accuracy": 1.0,
+        "mean_placebo_rank_null": 0.5896799472457367,
+        "n_null": 48,
+        "n_positive": 118,
+        "n_negative": 13,
+        "n_ok": 179
+      }
+    },
+    {
+      "policy": {
+        "policy_id": "B",
+        "name": "prefit_gated_placebo",
+        "description": "acceptable pre-period fit only"
+      },
+      "metrics": {
+        "type_i_error": 0.0,
+        "power": 0.23728813559322035,
+        "negative_power": 0.23076923076923078,
+        "sign_accuracy": 1.0,
+        "mean_placebo_rank_null": 0.5896799472457367,
+        "n_null": 48,
+        "n_positive": 118,
+        "n_negative": 13,
+        "n_ok": 179
+      }
+    },
+    {
+      "policy": {
+        "policy_id": "C",
+        "name": "single_treated_only",
+        "description": "exactly one treated unit (production requirement)"
+      },
+      "metrics": {
+        "type_i_error": 0.0,
+        "power": 0.0,
+        "negative_power": 0.0,
+        "sign_accuracy": 1.0,
+        "mean_placebo_rank_null": 0.6245791245791246,
+        "n_null": 18,
+        "n_positive": 45,
+        "n_negative": 7,
+        "n_ok": 70
+      }
+    },
+    {
+      "policy": {
+        "policy_id": "D",
+        "name": "minimum_control_count",
+        "description": "requires >=5 control units"
+      },
+      "metrics": {
+        "type_i_error": 0.0,
+        "power": 0.23728813559322035,
+        "negative_power": 0.23076923076923078,
+        "sign_accuracy": 1.0,
+        "mean_placebo_rank_null": 0.5896799472457367,
+        "n_null": 48,
+        "n_positive": 118,
+        "n_negative": 13,
+        "n_ok": 179
+      }
+    },
+    {
+      "policy": {
+        "policy_id": "E",
+        "name": "null_monitor_only",
+        "description": "placebo envelope / p-value falsification only"
+      },
+      "metrics": {
+        "type_i_error": 0.0,
+        "power": 0.23728813559322035,
+        "negative_power": 0.23076923076923078,
+        "sign_accuracy": 1.0,
+        "mean_placebo_rank_null": 0.5896799472457367,
+        "n_null": 48,
+        "n_positive": 118,
+        "n_negative": 13,
+        "n_ok": 179
+      }
+    },
+    {
+      "policy": {
+        "policy_id": "F",
+        "name": "causal_interval_blocked",
+        "description": "DCM-005 registry block until reassessment"
+      },
+      "metrics": {
+        "type_i_error": 0.0,
+        "power": 0.23728813559322035,
+        "negative_power": 0.23076923076923078,
+        "sign_accuracy": 1.0,
+        "mean_placebo_rank_null": 0.5896799472457367,
+        "n_null": 48,
+        "n_positive": 118,
+        "n_negative": 13,
+        "n_ok": 179
+      }
+    }
+  ],
+  "production_defect_assessment": {
+    "decision": "method_unsuitable_for_causal_interval",
+    "type_i_null": 0.0,
+    "power_positive": 0.23728813559322035,
+    "mean_placebo_rank_null": 0.5896799472457367,
+    "rationale": [
+      "Placebo-in-space produces a null-reference envelope and randomization p-value; it is not a causal sampling distribution for ATT intervals on TBRRidge.",
+      "Production requires exactly one treated unit and >=5 controls; multi-treated geometry is unsupported by design."
+    ],
+    "recommended_correction_artifact": null
+  },
+  "semantic_classification": {
+    "verdict": "tbrridge_placebo_single_treated_restricted",
+    "supported_roles": [
+      "null_monitor",
+      "falsification_diagnostic"
+    ],
+    "unsupported_roles": [
+      "restricted_causal_interval",
+      "trust_report",
+      "calibration_signal"
+    ],
+    "readout_types": {
+      "path_band": "null_monitor_interval",
+      "p_value": "placebo_p_value",
+      "inversion_ci": "falsification_score_not_causal_interval"
+    }
+  },
+  "trustreport_eligibility_implications": {
+    "dcm_005_placebo": "null_monitor_falsification_only_pending_dcm005",
+    "reassessment_required": true
+  },
+  "authorization_summary": {
+    "trust_report_authorized": false,
+    "trust_report_ready": false,
+    "trust_report_authorized_count": 0
+  },
+  "limitations": [
+    "Characterizes DCM-005 Placebo only; DCM-005 eligibility reassessment out of scope.",
+    "Placebo distribution \u2260 causal sampling distribution.",
+    "Single-treated-unit geometry required; multi-treated unsupported in production.",
+    "Does not authorize TrustReport or modify production inference code."
+  ],
+  "investigation_handoff": {
+    "follow_up_issues": [
+      "INV-TBRRIDGE-PLACEBO-GOVERNED-SEMANTICS-001"
+    ],
+    "resolved_issues": [],
+    "terminal_dispositions": [],
+    "next_artifact": "DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001"
+  },
+  "verdict": "tbrridge_placebo_single_treated_restricted"
+}

@@ -74,7 +74,7 @@ Lane A evaluated: SCM+JK, stratified+SCM/JK, DID+bootstrap, multi-cell per-cell,
 
 ## 18. DCM-005 findings
 
-**INSUFFICIENT_EVIDENCE** (harness) / **INELIGIBLE** when inference boundary BLOCKED. **Update (2026-06-18):** ✅ [`D5_TRUST_TBRRIDGE_BRB_001_REPORT.md`](D5_TRUST_TBRRIDGE_BRB_001_REPORT.md) + ✅ [`TBRRIDGE_BRB_INTERVAL_CORRECTION_001_REPORT.md`](TBRRIDGE_BRB_INTERVAL_CORRECTION_001_REPORT.md) — BRB interval centering corrected; null variance investigation OPEN. ✅ [`D5_TRUST_TBRRIDGE_KFOLD_001_REPORT.md`](D5_TRUST_TBRRIDGE_KFOLD_001_REPORT.md) — KFold not causal-interval eligible; INV-TBRRIDGE-KFOLD-NULL-FPR-001 OPEN with provisional DIAGNOSTIC_ONLY recommendation. Placebo pending. **No TrustReport authorization.**
+**INSUFFICIENT_EVIDENCE** (harness) / **INELIGIBLE** when inference boundary BLOCKED. **Update (2026-06-22):** ✅ [`D5_TRUST_TBRRIDGE_BRB_001_REPORT.md`](D5_TRUST_TBRRIDGE_BRB_001_REPORT.md) + ✅ [`TBRRIDGE_BRB_INTERVAL_CORRECTION_001_REPORT.md`](TBRRIDGE_BRB_INTERVAL_CORRECTION_001_REPORT.md) — BRB interval centering corrected; null variance investigation OPEN. ✅ [`D5_TRUST_TBRRIDGE_KFOLD_001_REPORT.md`](D5_TRUST_TBRRIDGE_KFOLD_001_REPORT.md) — KFold not causal-interval eligible; INV-TBRRIDGE-KFOLD-NULL-FPR-001 OPEN with provisional DIAGNOSTIC_ONLY recommendation. ✅ [`D5_TRUST_TBRRIDGE_PLACEBO_001_REPORT.md`](D5_TRUST_TBRRIDGE_PLACEBO_001_REPORT.md) — Placebo null-monitor / falsification only; INV-TBRRIDGE-PLACEBO-GOVERNED-SEMANTICS-001 OPEN with provisional NULL_MONITOR_ONLY recommendation. DCM-005 eligibility reassessment pending. **No TrustReport authorization.**
 
 ## 19. DCM-006 findings
 

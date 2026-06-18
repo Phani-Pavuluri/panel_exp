@@ -1,7 +1,7 @@
 {
   "registry_id": "OPEN_INVESTIGATIONS_001",
   "registry_version": "1.0.0",
-  "last_updated": "2026-06-18",
+  "last_updated": "2026-06-22",
   "authoritative": true,
   "contract": "INVESTIGATION_LIFECYCLE_AND_HANDOFF_CONTRACT_001",
   "status_vocabulary": [
@@ -98,12 +98,47 @@
       },
       "current_decision": "DIAGNOSTIC_ONLY_PENDING_DCM005_CONSUME",
       "blocked_roles": ["trust_report", "calibration_signal", "production"],
-      "target_artifact": "D5-TRUST-TBRRIDGE-PLACEBO-001",
+      "target_artifact": "DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001",
       "revisit_trigger": "Before DCM-005 eligibility reassessment; after Placebo characterization",
       "decision_checkpoint": "DCM-005 eligibility reassessment",
       "blocking_policy": "KFold path diagnostic/model-selection only; causal-interval and TrustReport blocked until terminal disposition consumed at DCM-005 reassessment",
       "terminal_decisions": [
         "REMEDIATE",
+        "RESTRICT",
+        "DIAGNOSTIC_ONLY",
+        "PERMANENTLY_BLOCK"
+      ],
+      "resolution_artifact": null
+    },
+    {
+      "investigation_id": "INV-TBRRIDGE-PLACEBO-GOVERNED-SEMANTICS-001",
+      "title": "TBRRidge placebo governed null-monitor semantics",
+      "status": "OPEN",
+      "priority": "P1",
+      "discovered_by": "TRUSTREPORT-ELIGIBILITY-VALIDATION-001",
+      "affected_combination": "DCM-005-PLACEBO",
+      "problem_class": [
+        "semantic_misuse",
+        "null_monitor",
+        "geometry_constraint"
+      ],
+      "evidence": {
+        "d5_trust_characterization": "D5-TRUST-TBRRIDGE-PLACEBO-001",
+        "verdict": "tbrridge_placebo_single_treated_restricted",
+        "type_i_null": 0.0,
+        "power_positive": 0.237,
+        "mean_placebo_rank_null": 0.59,
+        "single_treated_required": true,
+        "multi_treated_blocked": true,
+        "recommended_provisional_disposition": "NULL_MONITOR_ONLY"
+      },
+      "current_decision": "NULL_MONITOR_ONLY_PENDING_DCM005_CONSUME",
+      "blocked_roles": ["trust_report", "calibration_signal", "production"],
+      "target_artifact": "DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001",
+      "revisit_trigger": "Before DCM-005 eligibility reassessment",
+      "decision_checkpoint": "DCM-005 eligibility reassessment",
+      "blocking_policy": "Placebo path null-monitor / falsification only; causal-interval and TrustReport blocked until terminal disposition consumed at DCM-005 reassessment",
+      "terminal_decisions": [
         "RESTRICT",
         "DIAGNOSTIC_ONLY",
         "PERMANENTLY_BLOCK"
@@ -213,11 +248,19 @@
       "next_artifact": "D5-TRUST-TBRRIDGE-PLACEBO-001"
     },
     {
+      "lane_id": "D5-TRUST-TBRRIDGE-PLACEBO-001",
+      "status": "complete",
+      "open_investigations": ["INV-TBRRIDGE-PLACEBO-GOVERNED-SEMANTICS-001"],
+      "resolved_investigations": [],
+      "next_artifact": "DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001"
+    },
+    {
       "lane_id": "DCM-005-ELIGIBILITY-REASSESSMENT",
       "status": "pending",
       "open_investigations": [
         "INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001",
-        "INV-TBRRIDGE-KFOLD-NULL-FPR-001"
+        "INV-TBRRIDGE-KFOLD-NULL-FPR-001",
+        "INV-TBRRIDGE-PLACEBO-GOVERNED-SEMANTICS-001"
       ],
       "must_consume_before_close": true,
       "next_artifact": "FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT"

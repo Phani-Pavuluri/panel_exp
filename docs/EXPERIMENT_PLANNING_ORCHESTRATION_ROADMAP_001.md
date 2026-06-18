@@ -239,6 +239,7 @@ Must define:
 | [`D5_TRUST_TBRRIDGE_BRB_001_REPORT.md`](track_d/D5_TRUST_TBRRIDGE_BRB_001_REPORT.md) | TBRRidge BRB production defect confirmed |
 | [`TBRRIDGE_BRB_INTERVAL_CORRECTION_001_REPORT.md`](track_d/TBRRIDGE_BRB_INTERVAL_CORRECTION_001_REPORT.md) | Production BRB interval corrected; KFold next |
 | [`D5_TRUST_TBRRIDGE_KFOLD_001_REPORT.md`](track_d/D5_TRUST_TBRRIDGE_KFOLD_001_REPORT.md) | TBRRidge KFold not causal-interval eligible; Placebo next |
+| [`D5_TRUST_TBRRIDGE_PLACEBO_001_REPORT.md`](track_d/D5_TRUST_TBRRIDGE_PLACEBO_001_REPORT.md) | TBRRidge Placebo null-monitor only; DCM-005 reassessment next |
 | [`DCM004_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/DCM004_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) | DCM-004 reassessed `ELIGIBLE_WITH_RESTRICTIONS`; DCM-005 TBRRidge validation next |
 | [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) | DCM-001 reassessed; promotion still blocked |
 | F-DECISION / TrustReport | Role assignment paused until foundation + suitability v2 |

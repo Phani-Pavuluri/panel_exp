@@ -209,9 +209,9 @@ Existing governance references: `calibration_report.py` (FPR ≤0.10, null cover
 
 **Primary root causes:** S (semantic — placebo is null-monitor, not causal).
 
-**Follow-up artifact:** `D5-TRUST-TBRRIDGE-PLACEBO-001`
+**Follow-up artifact:** `DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001`
 
-**Evaluate:** null-monitor calibration only; target class `null_monitor` or `diagnostic_only`.
+**Evaluate:** null-monitor calibration only; target class `null_monitor` or `diagnostic_only`. ✅ Characterized by `D5-TRUST-TBRRIDGE-PLACEBO-001` — single-treated restricted; provisional NULL_MONITOR_ONLY.
 
 **Worth fixing?** **Low priority for causal promotion.** Valuable for null-screening semantics only.
 
@@ -306,7 +306,8 @@ Remain ineligible unless a **separate future artifact** explicitly changes them:
 | `TBRRIDGE_BRB_INTERVAL_CORRECTION_001` | Production BRB interval alignment | DCM-005-BRB | ✅ complete |
 | `INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001` | BRB variance calibration / null coverage | DCM-005-BRB | OPEN — [`OPEN_INVESTIGATIONS_001.json`](governance/OPEN_INVESTIGATIONS_001.json) |
 | `D5-TRUST-TBRRIDGE-KFOLD-001` | TBRRidge KFold path | DCM-005-KFOLD | ✅ complete — not causal-interval eligible; [`OPEN_INVESTIGATIONS_001.json`](governance/OPEN_INVESTIGATIONS_001.json) |
-| `D5-TRUST-TBRRIDGE-PLACEBO-001` | TBRRidge placebo null-monitor | DCM-005-PLACEBO |
+| `D5-TRUST-TBRRIDGE-PLACEBO-001` | TBRRidge placebo null-monitor | DCM-005-PLACEBO | ✅ complete — null-monitor / falsification only; [`OPEN_INVESTIGATIONS_001.json`](governance/OPEN_INVESTIGATIONS_001.json) |
+| `DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001` | DCM-005 partial re-run | DCM-005 promotion candidacy | pending — must consume BRB variance + KFold + Placebo investigations |
 | `D5-TRUST-STRATIFIED-SCM-JK-001` | Stratified combination | DCM-008 |
 | `D5-TRUST-MULTICELL-PERCELL-INFERENCE-001` | Per-cell inference | DCM-006 |
 | `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` | Partial re-run (DCM-001 only) | DCM-001 promotion candidacy | ✅ complete (DCM-001 only) |

@@ -1316,7 +1316,19 @@ poetry run python -m panel_exp.validation.track_d_design_combination_validation_
 
 **Verdict:** TBRRidge+KFold characterized across 18 worlds and 3 fold variants (legacy blocked Kfold, rolling TSKFold, expanding TSKFold). Null **interval** coverage 100% / type-I 0%; level-scale null point estimates remain ~|395| from zero; positive sign accuracy ~1.7%. **Method unsuitable for causal interval** — diagnostic/model-selection only. **INV-TBRRIDGE-KFOLD-NULL-FPR-001** remains **OPEN** with provisional **DIAGNOSTIC_ONLY** recommendation ([`OPEN_INVESTIGATIONS_001.json`](governance/OPEN_INVESTIGATIONS_001.json)); terminal disposition deferred to DCM-005 reassessment. **No TrustReport authorization.**
 
-**Next:** `D5-TRUST-TBRRIDGE-PLACEBO-001` → DCM-005 eligibility reassessment (must consume open BRB variance + KFold investigations).
+**Next:** `D5-TRUST-TBRRIDGE-PLACEBO-001` → DCM-005 eligibility reassessment (must consume open BRB variance + KFold + Placebo investigations).
+
+---
+
+## D5-TRUST-TBRRIDGE-PLACEBO-001 (2026-06-22)
+
+**Artifact:** [`docs/track_d/D5_TRUST_TBRRIDGE_PLACEBO_001_REPORT.md`](track_d/D5_TRUST_TBRRIDGE_PLACEBO_001_REPORT.md) · [`docs/track_d/archives/D5_TRUST_TBRRIDGE_PLACEBO_001_summary.json`](track_d/archives/D5_TRUST_TBRRIDGE_PLACEBO_001_summary.json) · [`panel_exp/validation/track_d_d5_trust_tbrridge_placebo_001.py`](../panel_exp/validation/track_d_d5_trust_tbrridge_placebo_001.py)
+
+**Status:** **`tbrridge_placebo_single_treated_restricted`**
+
+**Verdict:** TBRRidge+Placebo characterized across 18 worlds and 4 geometry variants. Placebo-in-space null-reference envelope and randomization p-value; **method unsuitable for causal interval**. Null type-I 0% on supported geometries; power ~24% on positive worlds; mean placebo rank ~0.59 under null. Production requires exactly one treated unit and ≥5 controls; multi-treated and small-control geometries fail by design. **INV-TBRRIDGE-PLACEBO-GOVERNED-SEMANTICS-001** remains **OPEN** with provisional **NULL_MONITOR_ONLY** recommendation ([`OPEN_INVESTIGATIONS_001.json`](governance/OPEN_INVESTIGATIONS_001.json)); terminal disposition deferred to DCM-005 reassessment. **No TrustReport authorization.**
+
+**Next:** DCM-005 eligibility reassessment (must consume `INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001`, `INV-TBRRIDGE-KFOLD-NULL-FPR-001`, `INV-TBRRIDGE-PLACEBO-GOVERNED-SEMANTICS-001`).
 
 ---
 
