@@ -1338,6 +1338,30 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## MULTICELL-CELL-RELATIONSHIP-AND-DECISION-POLICY-CONTRACT-001 (2026-06-03)
+
+**Artifact:** [`docs/MULTICELL_CELL_RELATIONSHIP_AND_DECISION_POLICY_CONTRACT_001.md`](MULTICELL_CELL_RELATIONSHIP_AND_DECISION_POLICY_CONTRACT_001.md) · [`panel_exp/validation/multicell_decision_policy_contract_001.py`](../panel_exp/validation/multicell_decision_policy_contract_001.py)
+
+**Status:** **`SEMANTIC_GUARDRAIL_ADDED`**
+
+**Verdict:** Governance-only semantic contract for `cell_relationship` × `decision_policy`. `PARALLEL_MARGINAL_CELLS` + `REPORT_EACH_CELL_ONLY` allows marginal per-cell readout without multiplicity; competing-cell selection/pooled/global claims gated. **`INV-MULTICELL-CELL-RELATIONSHIP-DECISION-POLICY-001`** RESOLVED. Deferred investigations unchanged. **No TrustReport authorization.**
+
+**Next:** `D5-TRUST-STRATIFIED-SCM-JK-001` → disposition decisions → `FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`.
+
+---
+
+## D5-TRUST-MULTICELL-PERCELL-INFERENCE-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/D5_TRUST_MULTICELL_PERCELL_INFERENCE_001_REPORT.md`](track_d/D5_TRUST_MULTICELL_PERCELL_INFERENCE_001_REPORT.md) · [`docs/track_d/archives/D5_TRUST_MULTICELL_PERCELL_INFERENCE_001_summary.json`](track_d/archives/D5_TRUST_MULTICELL_PERCELL_INFERENCE_001_summary.json) · [`panel_exp/validation/track_d_d5_trust_multicell_percell_inference_001.py`](../panel_exp/validation/track_d_d5_trust_multicell_percell_inference_001.py)
+
+**Status:** **`multicell_percell_multiplicity_unresolved`**
+
+**Verdict:** DCM-006 per-cell SCM+JK characterization. Cell identity preserved; pooled readout blocked (810/810). Per-cell coverage ~0.926; familywise null type-I ~0.272 (unadjusted only); simultaneous coverage ~0.856; shared-control cross-cell correlation ~0.90. Bonferroni/Holm proxy comparison invalid (no per-cell p-values / adjusted intervals on SCM+JK). **`INV-MULTICELL-PERCELL-INFERENCE-001`** RESOLVED (PER_CELL_RESTRICTED). Deferred: **`INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001`**, **`INV-MULTICELL-MULTIPLICITY-CALIBRATION-001`**. Production defect: `geometry_or_semantic_limitation`. **No TrustReport authorization.**
+
+**Next:** `D5-TRUST-STRATIFIED-SCM-JK-001` → disposition decisions → `FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`.
+
+---
+
 ## DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001 (2026-06-23)
 
 **Artifact:** [`docs/track_d/DCM005_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/DCM005_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) · [`docs/track_d/archives/DCM005_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_summary.json`](track_d/archives/DCM005_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_summary.json) · [`panel_exp/validation/dcm005_trustreport_eligibility_reassessment_001.py`](../panel_exp/validation/dcm005_trustreport_eligibility_reassessment_001.py)

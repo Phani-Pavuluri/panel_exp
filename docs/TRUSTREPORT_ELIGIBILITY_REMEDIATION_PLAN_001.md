@@ -231,13 +231,21 @@ Existing governance references: `calibration_report.py` (FPR ≤0.10, null cover
 
 ## 12. Multi-cell per-cell inference
 
-**Problem:** DCM-006 ELIGIBLE_WITH_RESTRICTIONS. Cell identity preserved 100%; no per-cell interval coverage; shared-control dependence not validated for TrustReport.
+**Problem:** DCM-006 ELIGIBLE_WITH_RESTRICTIONS. Cell identity preserved 100%; per-cell interval coverage and shared-control dependence previously unresolved.
 
-**Primary root causes:** C (interval/multiplicity evidence missing), I (simultaneous intervals), G (shared-control covariance).
+**Status (2026-06-03):** ✅ **`D5-TRUST-MULTICELL-PERCELL-INFERENCE-001`** complete.
 
-**Follow-up artifact:** `D5-TRUST-MULTICELL-PERCELL-INFERENCE-001`
+**Findings:** Per-cell SCM+JK coverage ~92.6%; familywise null type-I ~27.2% (unadjusted interval-excludes-zero only); simultaneous coverage ~85.6%; shared-control cross-cell correlation ~0.90. Pooled multi-cell readout blocked. Bonferroni/Holm proxy comparison **not valid** — SCM+JK lacks per-cell p-values and adjusted-interval reconstruction; equal FWER across proxy labels does not imply procedure ineffectiveness. Verdict: `multicell_percell_multiplicity_unresolved`. Aggregate: **INSUFFICIENT_EVIDENCE** for simultaneous multi-cell decisioning; **PER_CELL_RESTRICTED** for marginal per-cell diagnostic/restricted intervals.
 
-**Focus:**
+**Investigations:** `INV-MULTICELL-PERCELL-INFERENCE-001` → RESOLVED. Deferred: `INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001`, `INV-MULTICELL-MULTIPLICITY-CALIBRATION-001`.
+
+**Next artifact:** `D5-TRUST-STRATIFIED-SCM-JK-001`
+
+**Semantic guardrail (2026-06-03):** ✅ [`MULTICELL_CELL_RELATIONSHIP_AND_DECISION_POLICY_CONTRACT_001.md`](MULTICELL_CELL_RELATIONSHIP_AND_DECISION_POLICY_CONTRACT_001.md) — distinguishes parallel marginal readouts (multiplicity not required) from competing-cell selection (multiplicity required). Does not authorize TrustReport.
+
+**Primary root causes:** C (multiplicity/familywise evidence), I (simultaneous intervals), G (shared-control covariance).
+
+**Focus (addressed in artifact):**
 
 - Shared-control covariance structure
 - Multiplicity and simultaneous intervals
@@ -310,7 +318,7 @@ Remain ineligible unless a **separate future artifact** explicitly changes them:
 | `DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001` | DCM-005 partial re-run | DCM-005 promotion candidacy | ✅ complete — path-specific restrictions; no authorization |
 | `TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001` | BRB variance remediation | DCM-005-BRB causal path | pending — deferred from reassessment |
 | `D5-TRUST-STRATIFIED-SCM-JK-001` | Stratified combination | DCM-008 |
-| `D5-TRUST-MULTICELL-PERCELL-INFERENCE-001` | Per-cell inference | DCM-006 |
+| `D5-TRUST-MULTICELL-PERCELL-INFERENCE-001` | Per-cell inference | DCM-006 | ✅ complete |
 | `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` | Partial re-run (DCM-001 only) | DCM-001 promotion candidacy | ✅ complete (DCM-001 only) |
 | `FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT` | Re-run eligibility harness for all DCM-001–008 | Promotion candidacy | pending |
 | `TRUSTREPORT_DOWNSTREAM_PROMOTION_001` | Role-specific promotion | Authorization update |

@@ -78,7 +78,9 @@ Lane A evaluated: SCM+JK, stratified+SCM/JK, DID+bootstrap, multi-cell per-cell,
 
 ## 19. DCM-006 findings
 
-**ELIGIBLE_WITH_RESTRICTIONS.** Per-cell identity preserved; shared-control dependence and multiplicity limitations documented.
+**ELIGIBLE_WITH_RESTRICTIONS** (design-only at initial validation). Per-cell identity preserved; shared-control dependence and multiplicity limitations documented.
+
+**Update (2026-06-03):** ✅ **`D5-TRUST-MULTICELL-PERCELL-INFERENCE-001`** — [`D5_TRUST_MULTICELL_PERCELL_INFERENCE_001_REPORT.md`](D5_TRUST_MULTICELL_PERCELL_INFERENCE_001_REPORT.md). Verdict: `multicell_percell_multiplicity_unresolved`. Per-cell coverage ~92.6%; familywise null type-I ~27.2%; pooled readout blocked. `INV-MULTICELL-PERCELL-INFERENCE-001` RESOLVED (PER_CELL_RESTRICTED). **No TrustReport authorization.**
 
 ## 20. DCM-007 findings
 
