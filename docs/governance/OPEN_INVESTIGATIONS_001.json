@@ -55,27 +55,31 @@
         "type_i_error_before_remediation": 0.595,
         "positive_coverage_before_remediation": 0.507,
         "remediation_artifact": "TBRRIDGE-BRB-VARIANCE-CALIBRATION-REMEDIATION-001",
-        "selected_policy": "adaptive_block_length_brb",
-        "verdict": "tbrridge_brb_variance_remediation_candidate_only",
+        "selected_policy": "larger_block_length_brb",
+        "post_remediation_decision": "BRB_DIAGNOSTIC_ONLY",
+        "null_type_i_post": 0.5,
+        "null_coverage_post": 0.5,
+        "verdict": "dcm005_brb_diagnostic_only_no_authorization",
         "null_gates_pass": false,
-        "truth_coverage_clean_pass": true,
         "trust_report_authorized": false
       },
-      "current_decision": "REMEDIATION_CANDIDATE_PENDING_REASSESSMENT",
+      "current_decision": "DIAGNOSTIC_ONLY",
       "blocked_roles": [
         "trust_report",
         "calibration_signal",
         "mmm",
         "llm",
         "production",
-        "causal_interval"
+        "causal_interval",
+        "production_decisioning",
+        "budget_optimization_input"
       ],
       "target_artifact": null,
       "revisit_trigger": null,
       "decision_checkpoint": "DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001",
-      "blocking_policy": "Null type-I gates still fail; optional variance policies added; post-remediation reassessment required before promotion",
-      "terminal_decisions": ["REMEDIATE", "RESTRICT"],
-      "resolution_artifact": "TBRRIDGE-BRB-VARIANCE-CALIBRATION-REMEDIATION-001"
+      "blocking_policy": "Null calibration gates failed; BRB diagnostic/research only; no causal interval or TrustReport",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY"],
+      "resolution_artifact": "DCM005-TBRRIDGE-BRB-POST-REMEDIATION-REASSESSMENT-001"
     },
     {
       "investigation_id": "INV-TBRRIDGE-KFOLD-NULL-FPR-001",
@@ -423,6 +427,16 @@
       "must_consume_before_close": true,
       "next_artifact": "DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001",
       "resolution_artifact": "TBRRIDGE-BRB-VARIANCE-CALIBRATION-REMEDIATION-001"
+    },
+    {
+      "lane_id": "DCM005-TBRRIDGE-BRB-POST-REMEDIATION-REASSESSMENT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": ["INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001"],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "TRUSTREPORT_DOWNSTREAM_PROMOTION_001",
+      "resolution_artifact": "DCM005-TBRRIDGE-BRB-POST-REMEDIATION-REASSESSMENT-001"
     }
   ]
 }

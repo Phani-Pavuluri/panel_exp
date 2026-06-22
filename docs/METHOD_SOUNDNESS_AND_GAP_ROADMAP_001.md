@@ -540,6 +540,8 @@ Per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)
 
 **TBRRIDGE-BRB-VARIANCE-CALIBRATION-REMEDIATION-001 (2026-06-03):** [`TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001_REPORT.md`](track_d/TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001_REPORT.md) — BRB variance policies characterized; `tbrridge_brb_variance_remediation_candidate_only`; null gates fail; post-remediation reassessment next.
 
+**DCM005-TBRRIDGE-BRB-POST-REMEDIATION-REASSESSMENT-001 (2026-06-03):** [`DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001_REPORT.md`](track_d/DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001_REPORT.md) — BRB terminally `DIAGNOSTIC_ONLY`; null calibration blocked; regenerate: `poetry run python -m panel_exp.validation.dcm005_tbrridge_brb_post_remediation_reassessment_001 --overwrite`.
+
 ## 11. Stop condition
 
 | Criterion | Status |
