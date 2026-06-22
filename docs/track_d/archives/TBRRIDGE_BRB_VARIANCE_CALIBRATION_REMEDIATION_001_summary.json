@@ -1,0 +1,2050 @@
+{
+  "artifact_id": "TBRRIDGE-BRB-VARIANCE-CALIBRATION-REMEDIATION-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-22T21:34:06.374988+00:00",
+  "git_commit": "0abc8c01fca0d43e4bf7075310be8f917f3ad136",
+  "input_artifacts": {
+    "d5_trust_brb": "/workspace/panel_exp/docs/track_d/archives/D5_TRUST_TBRRIDGE_BRB_001_summary.json",
+    "interval_correction": "/workspace/panel_exp/docs/track_d/archives/TBRRIDGE_BRB_INTERVAL_CORRECTION_001_summary.json",
+    "dcm005_reassessment": "/workspace/panel_exp/docs/track_d/archives/DCM005_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_summary.json",
+    "full_reassessment": "/workspace/panel_exp/docs/track_d/archives/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_summary.json"
+  },
+  "config": {
+    "fast": false,
+    "n_replicates": 3,
+    "n_bootstrap": 40,
+    "candidates": [
+      "baseline_corrected_brb",
+      "variance_scaled_brb",
+      "studentized_brb",
+      "wild_block_brb",
+      "larger_block_length_brb",
+      "adaptive_block_length_brb",
+      "null_calibrated_brb"
+    ],
+    "world_count": 22,
+    "runtime_seconds": 13.906989090028219
+  },
+  "candidate_policies": {
+    "baseline_corrected_brb": {
+      "implemented": true,
+      "variance_calibration_policy": "none",
+      "bootstrap_type": "block",
+      "block_length": 3,
+      "description": "Centered-deviation BRB after TBRRIDGE_BRB_INTERVAL_CORRECTION_001"
+    },
+    "variance_scaled_brb": {
+      "implemented": true,
+      "variance_calibration_policy": "residual_scaled",
+      "bootstrap_type": "block",
+      "block_length": 3,
+      "description": "Residual-pool scaled deviation CI"
+    },
+    "studentized_brb": {
+      "implemented": true,
+      "variance_calibration_policy": "studentized",
+      "bootstrap_type": "block",
+      "block_length": 3,
+      "description": "Bootstrap-t pivot on mean-effect replicates"
+    },
+    "wild_block_brb": {
+      "implemented": true,
+      "variance_calibration_policy": "none",
+      "bootstrap_type": "wild",
+      "block_length": 3,
+      "description": "Wild (Rademacher) residual bootstrap"
+    },
+    "larger_block_length_brb": {
+      "implemented": true,
+      "variance_calibration_policy": "none",
+      "bootstrap_type": "block",
+      "block_length": 7,
+      "description": "Longer moving blocks (length 7)"
+    },
+    "adaptive_block_length_brb": {
+      "implemented": true,
+      "variance_calibration_policy": "none",
+      "bootstrap_type": "block",
+      "block_length": null,
+      "description": "Adaptive T^(1/3) block length"
+    },
+    "null_calibrated_brb": {
+      "implemented": true,
+      "variance_calibration_policy": "null_calibrated",
+      "bootstrap_type": "block",
+      "block_length": 3,
+      "description": "Minimum half-width from residual-pool null calibration"
+    },
+    "restricted_worlds_only_brb": {
+      "implemented": false,
+      "reason": "evaluation filter only; not a production policy"
+    }
+  },
+  "worlds": [
+    "clean_null",
+    "weak_signal",
+    "clean_positive_effect",
+    "strong_signal",
+    "clean_negative_effect",
+    "serial_correlation",
+    "high_serial_correlation",
+    "heteroskedastic_residuals",
+    "heavy_tailed_noise",
+    "regime_shift",
+    "post_treatment_shock",
+    "donor_contamination",
+    "poor_pre_fit",
+    "low_noise",
+    "small_pre_period",
+    "long_pre_period",
+    "short_post_period",
+    "long_post_period",
+    "small_donor_support",
+    "ridge_dominant",
+    "low_ridge_shrinkage",
+    "outlier_period"
+  ],
+  "run_counts": {
+    "baseline_corrected_brb": 66,
+    "variance_scaled_brb": 66,
+    "studentized_brb": 66,
+    "wild_block_brb": 66,
+    "larger_block_length_brb": 66,
+    "adaptive_block_length_brb": 66,
+    "null_calibrated_brb": 66
+  },
+  "baseline_results": {
+    "n_runs": 66,
+    "failure_rate": 0.0,
+    "mean_bias": 2.679097659155361,
+    "median_bias": 0.8491045192758677,
+    "rmse": 6.117821496636192,
+    "mean_interval_width": 4.39119446168216,
+    "median_interval_width": 3.8168967379660623,
+    "coverage_truth": 0.5454545454545454,
+    "coverage_zero_under_null": 0.5,
+    "type_i_under_null": 0.5,
+    "positive_coverage": 0.5789473684210527,
+    "negative_coverage": 0.0,
+    "positive_power": 0.5789473684210527,
+    "negative_power": 0.0,
+    "sign_accuracy": 0.9393939393939394,
+    "interval_center_gap": 0.22939460717250748,
+    "variance_ratio": 11.751570447560006,
+    "calibration_ratio": 0.8820238084299761,
+    "bootstrap_replicate_sd": 1.259460948817461,
+    "empirical_error_sd": 1.5773474238061669,
+    "mean_block_length": 3.0,
+    "mean_effective_blocks": 22.90909090909091,
+    "clean_truth_coverage": 0.5555555555555556,
+    "clean_negative_coverage": 0.0,
+    "coverage_by_world": {
+      "clean_negative_effect": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": null,
+        "negative_coverage": 0.0,
+        "n_null": 0,
+        "n_positive": 0,
+        "n_negative": 3
+      },
+      "clean_null": {
+        "null_coverage": 1.0,
+        "type_i_error": 0.0,
+        "positive_coverage": null,
+        "negative_coverage": null,
+        "n_null": 3,
+        "n_positive": 0,
+        "n_negative": 0
+      },
+      "clean_positive_effect": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.6666666666666666,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "donor_contamination": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.6666666666666666,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "heavy_tailed_noise": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 1.0,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "heteroskedastic_residuals": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 1.0,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "high_serial_correlation": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.3333333333333333,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "long_post_period": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.6666666666666666,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "long_pre_period": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.6666666666666666,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "low_noise": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.0,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "low_ridge_shrinkage": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 1.0,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "outlier_period": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.0,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "poor_pre_fit": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 1.0,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "post_treatment_shock": {
+        "null_coverage": 0.0,
+        "type_i_error": 1.0,
+        "positive_coverage": null,
+        "negative_coverage": null,
+        "n_null": 3,
+        "n_positive": 0,
+        "n_negative": 0
+      },
+      "regime_shift": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.0,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "ridge_dominant": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.3333333333333333,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "serial_correlation": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.6666666666666666,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "short_post_period": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 1.0,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "small_donor_support": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.0,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "small_pre_period": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 1.0,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "strong_signal": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.3333333333333333,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "weak_signal": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.6666666666666666,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      }
+    },
+    "gate_evaluation": {
+      "gates": {
+        "null_type_i": false,
+        "null_coverage_zero": false,
+        "truth_coverage_clean": false,
+        "interval_center_gap": true,
+        "failure_rate": true
+      },
+      "all_pass": false,
+      "pass_count": 2,
+      "truth_coverage_aggregate": 0.2777777777777778
+    }
+  },
+  "candidate_results": {
+    "variance_scaled_brb": {
+      "n_runs": 66,
+      "failure_rate": 0.0,
+      "mean_bias": 2.7611406298479477,
+      "median_bias": 1.0510490754337298,
+      "rmse": 6.356506282842987,
+      "mean_interval_width": 4.94357024718091,
+      "median_interval_width": 4.062050663191744,
+      "coverage_truth": 0.5757575757575758,
+      "coverage_zero_under_null": 0.3333333333333333,
+      "type_i_under_null": 0.6666666666666666,
+      "positive_coverage": 0.5964912280701754,
+      "negative_coverage": 0.6666666666666666,
+      "positive_power": 0.5964912280701754,
+      "negative_power": 0.6666666666666666,
+      "sign_accuracy": 0.9393939393939394,
+      "interval_center_gap": 0.21221714539563047,
+      "variance_ratio": 13.04993938008022,
+      "calibration_ratio": 0.9940474960895067,
+      "bootstrap_replicate_sd": 1.3127146040816446,
+      "empirical_error_sd": 1.544993854391895,
+      "mean_block_length": 3.0,
+      "mean_effective_blocks": 22.90909090909091,
+      "clean_truth_coverage": 0.7777777777777778,
+      "clean_negative_coverage": 0.6666666666666666,
+      "coverage_by_world": {
+        "clean_negative_effect": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": null,
+          "negative_coverage": 0.6666666666666666,
+          "n_null": 0,
+          "n_positive": 0,
+          "n_negative": 3
+        },
+        "clean_null": {
+          "null_coverage": 0.6666666666666666,
+          "type_i_error": 0.3333333333333333,
+          "positive_coverage": null,
+          "negative_coverage": null,
+          "n_null": 3,
+          "n_positive": 0,
+          "n_negative": 0
+        },
+        "clean_positive_effect": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "donor_contamination": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "heavy_tailed_noise": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "heteroskedastic_residuals": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "high_serial_correlation": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "long_post_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "long_pre_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "low_noise": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "low_ridge_shrinkage": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "outlier_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "poor_pre_fit": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "post_treatment_shock": {
+          "null_coverage": 0.0,
+          "type_i_error": 1.0,
+          "positive_coverage": null,
+          "negative_coverage": null,
+          "n_null": 3,
+          "n_positive": 0,
+          "n_negative": 0
+        },
+        "regime_shift": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "ridge_dominant": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "serial_correlation": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "short_post_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "small_donor_support": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "small_pre_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "strong_signal": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "weak_signal": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        }
+      },
+      "gate_evaluation": {
+        "gates": {
+          "null_type_i": false,
+          "null_coverage_zero": false,
+          "truth_coverage_clean": false,
+          "interval_center_gap": true,
+          "failure_rate": true
+        },
+        "all_pass": false,
+        "pass_count": 2,
+        "truth_coverage_aggregate": 0.7222222222222222
+      }
+    },
+    "studentized_brb": {
+      "n_runs": 66,
+      "failure_rate": 0.0,
+      "mean_bias": 2.6664899704149017,
+      "median_bias": 1.1621452581016056,
+      "rmse": 6.14249753955531,
+      "mean_interval_width": 4.953531379937983,
+      "median_interval_width": 4.42431990968546,
+      "coverage_truth": 0.5454545454545454,
+      "coverage_zero_under_null": 0.3333333333333333,
+      "type_i_under_null": 0.6666666666666666,
+      "positive_coverage": 0.5789473684210527,
+      "negative_coverage": 0.3333333333333333,
+      "positive_power": 0.5789473684210527,
+      "negative_power": 0.3333333333333333,
+      "sign_accuracy": 0.9393939393939394,
+      "interval_center_gap": 0.2613431996333913,
+      "variance_ratio": 12.346031495672264,
+      "calibration_ratio": 1.0385754279455393,
+      "bootstrap_replicate_sd": 1.4259633918639159,
+      "empirical_error_sd": 1.5010836520395987,
+      "mean_block_length": 3.0,
+      "mean_effective_blocks": 22.90909090909091,
+      "clean_truth_coverage": 0.6666666666666666,
+      "clean_negative_coverage": 0.3333333333333333,
+      "coverage_by_world": {
+        "clean_negative_effect": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": null,
+          "negative_coverage": 0.3333333333333333,
+          "n_null": 0,
+          "n_positive": 0,
+          "n_negative": 3
+        },
+        "clean_null": {
+          "null_coverage": 0.6666666666666666,
+          "type_i_error": 0.3333333333333333,
+          "positive_coverage": null,
+          "negative_coverage": null,
+          "n_null": 3,
+          "n_positive": 0,
+          "n_negative": 0
+        },
+        "clean_positive_effect": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "donor_contamination": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "heavy_tailed_noise": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "heteroskedastic_residuals": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "high_serial_correlation": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "long_post_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "long_pre_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "low_noise": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "low_ridge_shrinkage": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "outlier_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "poor_pre_fit": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "post_treatment_shock": {
+          "null_coverage": 0.0,
+          "type_i_error": 1.0,
+          "positive_coverage": null,
+          "negative_coverage": null,
+          "n_null": 3,
+          "n_positive": 0,
+          "n_negative": 0
+        },
+        "regime_shift": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "ridge_dominant": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "serial_correlation": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "short_post_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "small_donor_support": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "small_pre_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "strong_signal": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "weak_signal": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        }
+      },
+      "gate_evaluation": {
+        "gates": {
+          "null_type_i": false,
+          "null_coverage_zero": false,
+          "truth_coverage_clean": false,
+          "interval_center_gap": true,
+          "failure_rate": true
+        },
+        "all_pass": false,
+        "pass_count": 2,
+        "truth_coverage_aggregate": 0.5
+      }
+    },
+    "wild_block_brb": {
+      "n_runs": 66,
+      "failure_rate": 0.0,
+      "mean_bias": 2.811100666980165,
+      "median_bias": 0.834477159415739,
+      "rmse": 6.47832065244491,
+      "mean_interval_width": 2.5137774033469857,
+      "median_interval_width": 2.158313988967163,
+      "coverage_truth": 0.4090909090909091,
+      "coverage_zero_under_null": 0.0,
+      "type_i_under_null": 1.0,
+      "positive_coverage": 0.43859649122807015,
+      "negative_coverage": 0.6666666666666666,
+      "positive_power": 0.43859649122807015,
+      "negative_power": 0.6666666666666666,
+      "sign_accuracy": 0.9090909090909091,
+      "interval_center_gap": 0.10315666142643898,
+      "variance_ratio": 6.242591053095697,
+      "calibration_ratio": 0.49610675968795676,
+      "bootstrap_replicate_sd": 0.7043391287460171,
+      "empirical_error_sd": 1.5779637912414746,
+      "mean_block_length": 3.0,
+      "mean_effective_blocks": 22.90909090909091,
+      "clean_truth_coverage": 0.5555555555555556,
+      "clean_negative_coverage": 0.6666666666666666,
+      "coverage_by_world": {
+        "clean_negative_effect": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": null,
+          "negative_coverage": 0.6666666666666666,
+          "n_null": 0,
+          "n_positive": 0,
+          "n_negative": 3
+        },
+        "clean_null": {
+          "null_coverage": 0.0,
+          "type_i_error": 1.0,
+          "positive_coverage": null,
+          "negative_coverage": null,
+          "n_null": 3,
+          "n_positive": 0,
+          "n_negative": 0
+        },
+        "clean_positive_effect": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "donor_contamination": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "heavy_tailed_noise": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "heteroskedastic_residuals": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "high_serial_correlation": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "long_post_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "long_pre_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "low_noise": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "low_ridge_shrinkage": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "outlier_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "poor_pre_fit": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "post_treatment_shock": {
+          "null_coverage": 0.0,
+          "type_i_error": 1.0,
+          "positive_coverage": null,
+          "negative_coverage": null,
+          "n_null": 3,
+          "n_positive": 0,
+          "n_negative": 0
+        },
+        "regime_shift": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "ridge_dominant": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "serial_correlation": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "short_post_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "small_donor_support": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "small_pre_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "strong_signal": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "weak_signal": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        }
+      },
+      "gate_evaluation": {
+        "gates": {
+          "null_type_i": false,
+          "null_coverage_zero": false,
+          "truth_coverage_clean": false,
+          "interval_center_gap": true,
+          "failure_rate": true
+        },
+        "all_pass": false,
+        "pass_count": 2,
+        "truth_coverage_aggregate": 0.6111111111111112
+      }
+    },
+    "larger_block_length_brb": {
+      "n_runs": 66,
+      "failure_rate": 0.0,
+      "mean_bias": 2.55883220781534,
+      "median_bias": 0.971155200979319,
+      "rmse": 5.919334736189997,
+      "mean_interval_width": 4.624946170606937,
+      "median_interval_width": 3.5413419333600373,
+      "coverage_truth": 0.5606060606060606,
+      "coverage_zero_under_null": 0.5,
+      "type_i_under_null": 0.5,
+      "positive_coverage": 0.543859649122807,
+      "negative_coverage": 1.0,
+      "positive_power": 0.543859649122807,
+      "negative_power": 1.0,
+      "sign_accuracy": 0.9545454545454546,
+      "interval_center_gap": 0.38018257845679104,
+      "variance_ratio": 12.805948294001254,
+      "calibration_ratio": 1.017787532819671,
+      "bootstrap_replicate_sd": 1.3997744934733614,
+      "empirical_error_sd": 1.7023038165053608,
+      "mean_block_length": 7.0,
+      "mean_effective_blocks": 23.136363636363637,
+      "clean_truth_coverage": 0.7777777777777778,
+      "clean_negative_coverage": 1.0,
+      "coverage_by_world": {
+        "clean_negative_effect": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": null,
+          "negative_coverage": 1.0,
+          "n_null": 0,
+          "n_positive": 0,
+          "n_negative": 3
+        },
+        "clean_null": {
+          "null_coverage": 0.6666666666666666,
+          "type_i_error": 0.3333333333333333,
+          "positive_coverage": null,
+          "negative_coverage": null,
+          "n_null": 3,
+          "n_positive": 0,
+          "n_negative": 0
+        },
+        "clean_positive_effect": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "donor_contamination": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "heavy_tailed_noise": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "heteroskedastic_residuals": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "high_serial_correlation": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "long_post_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "long_pre_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "low_noise": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "low_ridge_shrinkage": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "outlier_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "poor_pre_fit": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "post_treatment_shock": {
+          "null_coverage": 0.3333333333333333,
+          "type_i_error": 0.6666666666666666,
+          "positive_coverage": null,
+          "negative_coverage": null,
+          "n_null": 3,
+          "n_positive": 0,
+          "n_negative": 0
+        },
+        "regime_shift": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "ridge_dominant": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "serial_correlation": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "short_post_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "small_donor_support": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "small_pre_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "strong_signal": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "weak_signal": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        }
+      },
+      "gate_evaluation": {
+        "gates": {
+          "null_type_i": false,
+          "null_coverage_zero": false,
+          "truth_coverage_clean": true,
+          "interval_center_gap": true,
+          "failure_rate": true
+        },
+        "all_pass": false,
+        "pass_count": 3,
+        "truth_coverage_aggregate": 0.8888888888888888
+      }
+    },
+    "adaptive_block_length_brb": {
+      "n_runs": 66,
+      "failure_rate": 0.0,
+      "mean_bias": 2.3744602005811983,
+      "median_bias": 0.9148873421946444,
+      "rmse": 6.276674282742015,
+      "mean_interval_width": 4.358529614917311,
+      "median_interval_width": 3.7171614633313013,
+      "coverage_truth": 0.4696969696969697,
+      "coverage_zero_under_null": 0.16666666666666666,
+      "type_i_under_null": 0.8333333333333334,
+      "positive_coverage": 0.49122807017543857,
+      "negative_coverage": 0.6666666666666666,
+      "positive_power": 0.49122807017543857,
+      "negative_power": 0.6666666666666666,
+      "sign_accuracy": 0.9242424242424242,
+      "interval_center_gap": 0.35913013806563143,
+      "variance_ratio": 11.706621478823722,
+      "calibration_ratio": 0.9217951631941322,
+      "bootstrap_replicate_sd": 1.3438543910404057,
+      "empirical_error_sd": 1.6390108465219182,
+      "mean_block_length": 7.0,
+      "mean_effective_blocks": 23.136363636363637,
+      "clean_truth_coverage": 0.4444444444444444,
+      "clean_negative_coverage": 0.6666666666666666,
+      "coverage_by_world": {
+        "clean_negative_effect": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": null,
+          "negative_coverage": 0.6666666666666666,
+          "n_null": 0,
+          "n_positive": 0,
+          "n_negative": 3
+        },
+        "clean_null": {
+          "null_coverage": 0.3333333333333333,
+          "type_i_error": 0.6666666666666666,
+          "positive_coverage": null,
+          "negative_coverage": null,
+          "n_null": 3,
+          "n_positive": 0,
+          "n_negative": 0
+        },
+        "clean_positive_effect": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "donor_contamination": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "heavy_tailed_noise": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "heteroskedastic_residuals": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "high_serial_correlation": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "long_post_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "long_pre_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "low_noise": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "low_ridge_shrinkage": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "outlier_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "poor_pre_fit": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "post_treatment_shock": {
+          "null_coverage": 0.0,
+          "type_i_error": 1.0,
+          "positive_coverage": null,
+          "negative_coverage": null,
+          "n_null": 3,
+          "n_positive": 0,
+          "n_negative": 0
+        },
+        "regime_shift": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "ridge_dominant": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "serial_correlation": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "short_post_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "small_donor_support": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "small_pre_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "strong_signal": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "weak_signal": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        }
+      },
+      "gate_evaluation": {
+        "gates": {
+          "null_type_i": false,
+          "null_coverage_zero": false,
+          "truth_coverage_clean": false,
+          "interval_center_gap": true,
+          "failure_rate": true
+        },
+        "all_pass": false,
+        "pass_count": 2,
+        "truth_coverage_aggregate": 0.5555555555555556
+      }
+    },
+    "null_calibrated_brb": {
+      "n_runs": 66,
+      "failure_rate": 0.0,
+      "mean_bias": 2.4181330602857525,
+      "median_bias": 0.8374693933532003,
+      "rmse": 6.284279697090273,
+      "mean_interval_width": 5.1173953762182585,
+      "median_interval_width": 4.05861169323731,
+      "coverage_truth": 0.696969696969697,
+      "coverage_zero_under_null": 0.5,
+      "type_i_under_null": 0.5,
+      "positive_coverage": 0.7192982456140351,
+      "negative_coverage": 0.6666666666666666,
+      "positive_power": 0.7192982456140351,
+      "negative_power": 0.6666666666666666,
+      "sign_accuracy": 0.9545454545454546,
+      "interval_center_gap": 0.2057993762393949,
+      "variance_ratio": 10.346112804935894,
+      "calibration_ratio": 0.8297865569358582,
+      "bootstrap_replicate_sd": 1.3489118608454023,
+      "empirical_error_sd": 1.5875111391300218,
+      "mean_block_length": 3.0,
+      "mean_effective_blocks": 22.90909090909091,
+      "clean_truth_coverage": 0.8888888888888888,
+      "clean_negative_coverage": 0.6666666666666666,
+      "coverage_by_world": {
+        "clean_negative_effect": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": null,
+          "negative_coverage": 0.6666666666666666,
+          "n_null": 0,
+          "n_positive": 0,
+          "n_negative": 3
+        },
+        "clean_null": {
+          "null_coverage": 1.0,
+          "type_i_error": 0.0,
+          "positive_coverage": null,
+          "negative_coverage": null,
+          "n_null": 3,
+          "n_positive": 0,
+          "n_negative": 0
+        },
+        "clean_positive_effect": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "donor_contamination": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "heavy_tailed_noise": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "heteroskedastic_residuals": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "high_serial_correlation": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "long_post_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "long_pre_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "low_noise": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "low_ridge_shrinkage": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "outlier_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "poor_pre_fit": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "post_treatment_shock": {
+          "null_coverage": 0.0,
+          "type_i_error": 1.0,
+          "positive_coverage": null,
+          "negative_coverage": null,
+          "n_null": 3,
+          "n_positive": 0,
+          "n_negative": 0
+        },
+        "regime_shift": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "ridge_dominant": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.3333333333333333,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "serial_correlation": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 0.6666666666666666,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "short_post_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "small_donor_support": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "small_pre_period": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "strong_signal": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        },
+        "weak_signal": {
+          "null_coverage": null,
+          "type_i_error": null,
+          "positive_coverage": 1.0,
+          "negative_coverage": null,
+          "n_null": 0,
+          "n_positive": 3,
+          "n_negative": 0
+        }
+      },
+      "gate_evaluation": {
+        "gates": {
+          "null_type_i": false,
+          "null_coverage_zero": false,
+          "truth_coverage_clean": false,
+          "interval_center_gap": true,
+          "failure_rate": true
+        },
+        "all_pass": false,
+        "pass_count": 2,
+        "truth_coverage_aggregate": 0.7777777777777777
+      }
+    }
+  },
+  "candidate_comparison": {
+    "baseline_corrected_brb": {
+      "gate_pass_count": 2,
+      "all_gates_pass": false,
+      "type_i_under_null": 0.5,
+      "null_coverage": 0.5,
+      "positive_coverage": 0.5789473684210527,
+      "calibration_ratio": 0.8820238084299761
+    },
+    "variance_scaled_brb": {
+      "gate_pass_count": 2,
+      "all_gates_pass": false,
+      "type_i_under_null": 0.6666666666666666,
+      "null_coverage": 0.3333333333333333,
+      "positive_coverage": 0.5964912280701754,
+      "calibration_ratio": 0.9940474960895067
+    },
+    "studentized_brb": {
+      "gate_pass_count": 2,
+      "all_gates_pass": false,
+      "type_i_under_null": 0.6666666666666666,
+      "null_coverage": 0.3333333333333333,
+      "positive_coverage": 0.5789473684210527,
+      "calibration_ratio": 1.0385754279455393
+    },
+    "wild_block_brb": {
+      "gate_pass_count": 2,
+      "all_gates_pass": false,
+      "type_i_under_null": 1.0,
+      "null_coverage": 0.0,
+      "positive_coverage": 0.43859649122807015,
+      "calibration_ratio": 0.49610675968795676
+    },
+    "larger_block_length_brb": {
+      "gate_pass_count": 3,
+      "all_gates_pass": false,
+      "type_i_under_null": 0.5,
+      "null_coverage": 0.5,
+      "positive_coverage": 0.543859649122807,
+      "calibration_ratio": 1.017787532819671
+    },
+    "adaptive_block_length_brb": {
+      "gate_pass_count": 2,
+      "all_gates_pass": false,
+      "type_i_under_null": 0.8333333333333334,
+      "null_coverage": 0.16666666666666666,
+      "positive_coverage": 0.49122807017543857,
+      "calibration_ratio": 0.9217951631941322
+    },
+    "null_calibrated_brb": {
+      "gate_pass_count": 2,
+      "all_gates_pass": false,
+      "type_i_under_null": 0.5,
+      "null_coverage": 0.5,
+      "positive_coverage": 0.7192982456140351,
+      "calibration_ratio": 0.8297865569358582
+    }
+  },
+  "root_cause_analysis": [
+    {
+      "question": "Is undercoverage caused by bootstrap replicate variance being too small?",
+      "finding": "Partially on mean-effect scale: calibration_ratio_mean_effect often < 1 (baseline mean 0.8820238084299761); cumulative variance_ratio is inflated by scale mismatch.",
+      "tags": [
+        "mean_replicate_underestimation",
+        "cumulative_diagnostic_mismatch"
+      ]
+    },
+    {
+      "question": "Is null type-I high because intervals are too narrow?",
+      "finding": "Partially: type-I 0.5 with null coverage 0.5; null_calibrated widening helps marginally but does not reach gates.",
+      "tags": [
+        "interval_width",
+        "null_type_i"
+      ]
+    },
+    {
+      "question": "Is the interval centered correctly after the prior correction?",
+      "finding": "Yes: mean |bootstrap_center_minus_point| \u2248 0.22939460717250748 (prior gap 0.005962036865426644).",
+      "tags": [
+        "centering_resolved"
+      ]
+    },
+    {
+      "question": "Does ridge shrinkage bias interact with bootstrap variance?",
+      "finding": "Yes: null worlds show material point bias (mean bias 2.679097659155361); conditional BRB cannot correct estimator bias.",
+      "tags": [
+        "point_bias",
+        "ridge_shrinkage"
+      ]
+    },
+    {
+      "question": "Does BRB condition on fitted ridge coefficients correctly?",
+      "finding": "Conditional resampling (no refit) ignores coefficient-estimation uncertainty.",
+      "tags": [
+        "conditional_bootstrap",
+        "coefficient_uncertainty_omitted"
+      ]
+    }
+  ],
+  "pass_fail_gates": {
+    "null_type_i_max": 0.1,
+    "null_coverage_zero_min": 0.9,
+    "truth_coverage_clean_min": 0.8,
+    "interval_center_gap_abs_max": 2.0,
+    "failure_rate_max": 0.1
+  },
+  "selected_policy": "larger_block_length_brb",
+  "production_changes": false,
+  "coverage_results": {
+    "baseline_corrected_brb": {
+      "null": 0.5,
+      "positive": 0.5789473684210527,
+      "negative": 0.0
+    },
+    "variance_scaled_brb": {
+      "null": 0.3333333333333333,
+      "positive": 0.5964912280701754,
+      "negative": 0.6666666666666666
+    },
+    "studentized_brb": {
+      "null": 0.3333333333333333,
+      "positive": 0.5789473684210527,
+      "negative": 0.3333333333333333
+    },
+    "wild_block_brb": {
+      "null": 0.0,
+      "positive": 0.43859649122807015,
+      "negative": 0.6666666666666666
+    },
+    "larger_block_length_brb": {
+      "null": 0.5,
+      "positive": 0.543859649122807,
+      "negative": 1.0
+    },
+    "adaptive_block_length_brb": {
+      "null": 0.16666666666666666,
+      "positive": 0.49122807017543857,
+      "negative": 0.6666666666666666
+    },
+    "null_calibrated_brb": {
+      "null": 0.5,
+      "positive": 0.7192982456140351,
+      "negative": 0.6666666666666666
+    }
+  },
+  "type_i_results": {
+    "baseline_corrected_brb": 0.5,
+    "variance_scaled_brb": 0.6666666666666666,
+    "studentized_brb": 0.6666666666666666,
+    "wild_block_brb": 1.0,
+    "larger_block_length_brb": 0.5,
+    "adaptive_block_length_brb": 0.8333333333333334,
+    "null_calibrated_brb": 0.5
+  },
+  "power_results": {
+    "baseline_corrected_brb": {
+      "positive": 0.5789473684210527,
+      "negative": 0.0
+    },
+    "variance_scaled_brb": {
+      "positive": 0.5964912280701754,
+      "negative": 0.6666666666666666
+    },
+    "studentized_brb": {
+      "positive": 0.5789473684210527,
+      "negative": 0.3333333333333333
+    },
+    "wild_block_brb": {
+      "positive": 0.43859649122807015,
+      "negative": 0.6666666666666666
+    },
+    "larger_block_length_brb": {
+      "positive": 0.543859649122807,
+      "negative": 1.0
+    },
+    "adaptive_block_length_brb": {
+      "positive": 0.49122807017543857,
+      "negative": 0.6666666666666666
+    },
+    "null_calibrated_brb": {
+      "positive": 0.7192982456140351,
+      "negative": 0.6666666666666666
+    }
+  },
+  "sign_accuracy_results": {
+    "baseline_corrected_brb": 0.9393939393939394,
+    "variance_scaled_brb": 0.9393939393939394,
+    "studentized_brb": 0.9393939393939394,
+    "wild_block_brb": 0.9090909090909091,
+    "larger_block_length_brb": 0.9545454545454546,
+    "adaptive_block_length_brb": 0.9242424242424242,
+    "null_calibrated_brb": 0.9545454545454546
+  },
+  "calibration_ratio_results": {
+    "baseline_corrected_brb": 0.8820238084299761,
+    "variance_scaled_brb": 0.9940474960895067,
+    "studentized_brb": 1.0385754279455393,
+    "wild_block_brb": 0.49610675968795676,
+    "larger_block_length_brb": 1.017787532819671,
+    "adaptive_block_length_brb": 0.9217951631941322,
+    "null_calibrated_brb": 0.8297865569358582
+  },
+  "interval_width_results": {
+    "baseline_corrected_brb": 4.39119446168216,
+    "variance_scaled_brb": 4.94357024718091,
+    "studentized_brb": 4.953531379937983,
+    "wild_block_brb": 2.5137774033469857,
+    "larger_block_length_brb": 4.624946170606937,
+    "adaptive_block_length_brb": 4.358529614917311,
+    "null_calibrated_brb": 5.1173953762182585
+  },
+  "failure_summary": {
+    "baseline_corrected_brb": 0.0,
+    "variance_scaled_brb": 0.0,
+    "studentized_brb": 0.0,
+    "wild_block_brb": 0.0,
+    "larger_block_length_brb": 0.0,
+    "adaptive_block_length_brb": 0.0,
+    "null_calibrated_brb": 0.0
+  },
+  "semantic_classification": "remediation_candidate_pending_reassessment",
+  "trustreport_eligibility_implications": {
+    "trust_report_authorized": false,
+    "candidate_for_reassessment": true,
+    "dcm005_brb_path": "PENDING_POST_REMEDIATION_REASSESSMENT"
+  },
+  "authorization_summary": {
+    "trust_report_authorized": false,
+    "trust_report_ready": false,
+    "trust_report_authorized_count": 0,
+    "candidate_for_reassessment": true
+  },
+  "investigation_handoff": {
+    "follow_up_issues": [],
+    "resolved_issues": [
+      "INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001"
+    ],
+    "terminal_dispositions": [
+      "REMEDIATION_CANDIDATE_PENDING_REASSESSMENT"
+    ],
+    "next_artifact": "DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001"
+  },
+  "limitations": [
+    "Conditional BRB does not refit ridge coefficients; point bias under null remains.",
+    "Cumulative variance_ratio diagnostic mixes sum-scale bootstrap with per-period empirical SE.",
+    "Remediation policies widen or recalibrate mean-effect intervals only.",
+    "Does not authorize TrustReport; post-remediation reassessment required if candidate."
+  ],
+  "verdict": "tbrridge_brb_variance_remediation_candidate_only",
+  "next_artifact": "DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001",
+  "gate_evaluation_selected": {
+    "gates": {
+      "null_type_i": false,
+      "null_coverage_zero": false,
+      "truth_coverage_clean": true,
+      "interval_center_gap": true,
+      "failure_rate": true
+    },
+    "all_pass": false,
+    "pass_count": 3,
+    "truth_coverage_aggregate": 0.8888888888888888
+  },
+  "investigation_resolution": {
+    "investigation_id": "INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001",
+    "terminal_decision": "REMEDIATION_CANDIDATE_PENDING_REASSESSMENT"
+  }
+}

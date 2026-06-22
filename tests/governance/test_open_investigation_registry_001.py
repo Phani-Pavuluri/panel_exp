@@ -34,12 +34,13 @@ class TestOpenInvestigationRegistry001:
     def test_brb_variance_investigation_seeded(self) -> None:
         by_id = investigations_by_id()
         inv = by_id["INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001"]
-        assert inv.status == "DEFERRED_WITH_TRIGGER"
+        assert inv.status == "RESOLVED"
         assert inv.discovered_by == "TBRRIDGE-BRB-INTERVAL-CORRECTION-001"
-        assert inv.revisit_trigger is not None
+        assert inv.revisit_trigger is None
         assert inv.decision_checkpoint is not None
         assert inv.blocking_policy is not None
-        assert inv.evidence["variance_ratio"] == 11.0
+        assert inv.resolution_artifact == "TBRRIDGE-BRB-VARIANCE-CALIBRATION-REMEDIATION-001"
+        assert inv.evidence["verdict"] == "tbrridge_brb_variance_remediation_candidate_only"
 
     def test_brb_estimand_alignment_resolved(self) -> None:
         inv = investigations_by_id()["INV-TBRRIDGE-BRB-ESTIMAND-ALIGNMENT-001"]

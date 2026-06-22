@@ -41,7 +41,7 @@
     {
       "investigation_id": "INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001",
       "title": "TBRRidge BRB variance and null calibration",
-      "status": "DEFERRED_WITH_TRIGGER",
+      "status": "RESOLVED",
       "priority": "P1",
       "discovered_by": "TBRRIDGE-BRB-INTERVAL-CORRECTION-001",
       "affected_combination": "DCM-005-BRB",
@@ -51,15 +51,17 @@
         "interval_coverage"
       ],
       "evidence": {
-        "null_coverage": 0.405,
-        "type_i_error": 0.595,
-        "positive_coverage": 0.507,
-        "negative_coverage": 0.7,
-        "variance_ratio": 11.0,
-        "dcm005_reassessment": "DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001",
-        "terminal_disposition": "REMEDIATE"
+        "null_coverage_before_remediation": 0.405,
+        "type_i_error_before_remediation": 0.595,
+        "positive_coverage_before_remediation": 0.507,
+        "remediation_artifact": "TBRRIDGE-BRB-VARIANCE-CALIBRATION-REMEDIATION-001",
+        "selected_policy": "adaptive_block_length_brb",
+        "verdict": "tbrridge_brb_variance_remediation_candidate_only",
+        "null_gates_pass": false,
+        "truth_coverage_clean_pass": true,
+        "trust_report_authorized": false
       },
-      "current_decision": "REMEDIATE_PENDING_VARIANCE_CALIBRATION",
+      "current_decision": "REMEDIATION_CANDIDATE_PENDING_REASSESSMENT",
       "blocked_roles": [
         "trust_report",
         "calibration_signal",
@@ -68,17 +70,12 @@
         "production",
         "causal_interval"
       ],
-      "target_artifact": "TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001",
-      "revisit_trigger": "Upon opening TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001 or remediation closeout",
-      "decision_checkpoint": "BRB variance remediation closeout",
-      "blocking_policy": "Causal-interval and TrustReport blocked until variance remediation completes or terminal RESTRICT/PERMANENTLY_BLOCK",
-      "terminal_decisions": [
-        "REMEDIATE",
-        "RESTRICT",
-        "DIAGNOSTIC_ONLY",
-        "PERMANENTLY_BLOCK"
-      ],
-      "resolution_artifact": null
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001",
+      "blocking_policy": "Null type-I gates still fail; optional variance policies added; post-remediation reassessment required before promotion",
+      "terminal_decisions": ["REMEDIATE", "RESTRICT"],
+      "resolution_artifact": "TBRRIDGE-BRB-VARIANCE-CALIBRATION-REMEDIATION-001"
     },
     {
       "investigation_id": "INV-TBRRIDGE-KFOLD-NULL-FPR-001",
@@ -416,6 +413,16 @@
       "must_consume_before_close": true,
       "next_artifact": "TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001",
       "resolution_artifact": "FULL-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001"
+    },
+    {
+      "lane_id": "TBRRIDGE-BRB-VARIANCE-CALIBRATION-REMEDIATION-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": ["INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001"],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001",
+      "resolution_artifact": "TBRRIDGE-BRB-VARIANCE-CALIBRATION-REMEDIATION-001"
     }
   ]
 }
