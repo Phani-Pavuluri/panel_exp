@@ -1344,7 +1344,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Status:** **`multicell_percell_multiplicity_unresolved`**
 
-**Verdict:** DCM-006 per-cell SCM+JK characterization. Cell identity preserved; pooled readout blocked (810/810). Per-cell coverage ~0.926; familywise null type-I ~0.272; simultaneous coverage ~0.856; shared-control cross-cell correlation ~0.90. **`INV-MULTICELL-PERCELL-INFERENCE-001`** RESOLVED (PER_CELL_RESTRICTED). Deferred: **`INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001`**, **`INV-MULTICELL-MULTIPLICITY-CALIBRATION-001`**. Production defect: `geometry_or_semantic_limitation`. **No TrustReport authorization.**
+**Verdict:** DCM-006 per-cell SCM+JK characterization. Cell identity preserved; pooled readout blocked (810/810). Per-cell coverage ~0.926; familywise null type-I ~0.272 (unadjusted only); simultaneous coverage ~0.856; shared-control cross-cell correlation ~0.90. Bonferroni/Holm proxy comparison invalid (no per-cell p-values / adjusted intervals on SCM+JK). **`INV-MULTICELL-PERCELL-INFERENCE-001`** RESOLVED (PER_CELL_RESTRICTED). Deferred: **`INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001`**, **`INV-MULTICELL-MULTIPLICITY-CALIBRATION-001`**. Production defect: `geometry_or_semantic_limitation`. **No TrustReport authorization.**
 
 **Next:** `D5-TRUST-STRATIFIED-SCM-JK-001` → disposition decisions → `FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`.
 

@@ -235,7 +235,7 @@ Existing governance references: `calibration_report.py` (FPR ≤0.10, null cover
 
 **Status (2026-06-03):** ✅ **`D5-TRUST-MULTICELL-PERCELL-INFERENCE-001`** complete.
 
-**Findings:** Per-cell SCM+JK coverage ~92.6%; familywise null type-I ~27.2%; simultaneous coverage ~85.6%; shared-control cross-cell correlation ~0.90. Pooled multi-cell readout blocked. Verdict: `multicell_percell_multiplicity_unresolved`. Aggregate: **INSUFFICIENT_EVIDENCE** for simultaneous multi-cell decisioning; **PER_CELL_RESTRICTED** for marginal per-cell diagnostic/restricted intervals.
+**Findings:** Per-cell SCM+JK coverage ~92.6%; familywise null type-I ~27.2% (unadjusted interval-excludes-zero only); simultaneous coverage ~85.6%; shared-control cross-cell correlation ~0.90. Pooled multi-cell readout blocked. Bonferroni/Holm proxy comparison **not valid** — SCM+JK lacks per-cell p-values and adjusted-interval reconstruction; equal FWER across proxy labels does not imply procedure ineffectiveness. Verdict: `multicell_percell_multiplicity_unresolved`. Aggregate: **INSUFFICIENT_EVIDENCE** for simultaneous multi-cell decisioning; **PER_CELL_RESTRICTED** for marginal per-cell diagnostic/restricted intervals.
 
 **Investigations:** `INV-MULTICELL-PERCELL-INFERENCE-001` → RESOLVED. Deferred: `INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001`, `INV-MULTICELL-MULTIPLICITY-CALIBRATION-001`.
 

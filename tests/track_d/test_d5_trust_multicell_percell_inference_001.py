@@ -158,9 +158,19 @@ def test_pooled_block_verification(fast_payload: dict):
 
 def test_multiplicity_comparisons(fast_payload: dict):
     mc = fast_payload["multiplicity_comparisons"]
-    assert "unadjusted" in mc
-    assert "bonferroni_proxy" in mc
-    assert "holm_proxy" in mc
+    assert mc.get("proxy_comparison_valid") is False
+    assert mc.get("bonferroni_proxy") is None
+    assert mc.get("holm_proxy") is None
+    assert "unadjusted_familywise_type_i" in mc
+    audit = mc.get("calibration_audit") or {}
+    assert audit.get("per_cell_p_values_available") is False
+    assert audit.get("adjusted_intervals_reconstructed") is False
+    assert "does not expose compatible per-cell p-values" in mc.get("disclaimer", "")
+
+
+def test_multiplicity_proxy_disclaimer_in_limitations(fast_payload: dict):
+    lim = " ".join(fast_payload.get("limitations", [])).lower()
+    assert "bonferroni/holm proxy" in lim or "not a valid calibration test" in lim
 
 
 def test_shared_control_results(fast_payload: dict):

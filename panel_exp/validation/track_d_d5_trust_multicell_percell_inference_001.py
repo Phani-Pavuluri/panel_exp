@@ -66,11 +66,31 @@ ProductionDefectDecision = Literal[
     "geometry_or_semantic_limitation",
 ]
 
+_MULTIPLICITY_PROXY_DISCLAIMER = (
+    "Bonferroni/Holm proxy comparison was not a valid calibration test because "
+    "the current SCM+JK path does not expose compatible per-cell p-values or "
+    "adjusted confidence-level interval reconstruction. Multiplicity remains "
+    "unresolved; equal FWER values across unadjusted and proxy-adjusted labels "
+    "do not establish that Bonferroni or Holm are ineffective."
+)
+
 POLICY_COMPARISONS: tuple[dict[str, str], ...] = (
     {"policy_id": "A", "name": "per_cell_unadjusted", "description": "marginal per-cell JK intervals"},
-    {"policy_id": "B", "name": "per_cell_bonferroni", "description": "Bonferroni-scaled rejection on per-cell intervals"},
-    {"policy_id": "C", "name": "per_cell_holm", "description": "Holm step-down on per-cell interval rejections"},
-    {"policy_id": "D", "name": "simultaneous_max_stat_if_available", "description": "max-stat simultaneous proxy (characterization only)"},
+    {
+        "policy_id": "B",
+        "name": "per_cell_bonferroni",
+        "description": "Bonferroni not calibrated here — SCM+JK lacks per-cell p-values / adjusted intervals",
+    },
+    {
+        "policy_id": "C",
+        "name": "per_cell_holm",
+        "description": "Holm not calibrated here — interval-excludes-zero proxies only",
+    },
+    {
+        "policy_id": "D",
+        "name": "simultaneous_max_stat_if_available",
+        "description": "max-stat simultaneous procedure not available on SCM+JK readout",
+    },
     {"policy_id": "E", "name": "shared_control_restricted", "description": "shared-control geometries flagged; disjoint preferred"},
     {"policy_id": "F", "name": "disjoint_control_only", "description": "disjoint donor pools per cell"},
     {"policy_id": "G", "name": "pooled_blocked", "description": "pooled multi-cell causal readout blocked"},
@@ -393,21 +413,25 @@ def _attempt_pooled_block(
     }
 
 
-def _holm_rejections(contains_zero_flags: list[bool], alpha: float) -> list[bool]:
-    """Proxy Holm on interval-excludes-zero ordering (characterization only)."""
-    m = len(contains_zero_flags)
-    if m == 0:
-        return []
-    p_proxy = [0.01 if not cz else 1.0 for cz in contains_zero_flags]
-    order = sorted(range(m), key=lambda i: p_proxy[i])
-    reject = [False] * m
-    for rank, idx in enumerate(order):
-        thresh = alpha / (m - rank)
-        if p_proxy[idx] <= thresh:
-            reject[idx] = True
-        else:
-            break
-    return reject
+def _multiplicity_calibration_audit() -> dict[str, Any]:
+    """Document why Bonferroni/Holm FWER comparisons are not valid calibration tests."""
+    return {
+        "bonferroni_threshold_adjusted": False,
+        "holm_threshold_adjusted": False,
+        "per_cell_p_values_available": False,
+        "p_value_source": "none — SCM+UnitJackknife exposes interval bounds only",
+        "rejection_proxy": "interval_excludes_zero (0 in [lower, upper])",
+        "adjusted_intervals_reconstructed": False,
+        "familywise_from_adjusted_decisions": False,
+        "familywise_metric_valid": "unadjusted_interval_excludes_zero_any_cell_only",
+        "shared_control_handling": (
+            "consistent — all multiplicity labels reuse the same underlying per-cell "
+            "JK intervals; shared-control dependence affects intervals but was not "
+            "modeled separately per policy"
+        ),
+        "proxy_comparison_valid": False,
+        "disclaimer": _MULTIPLICITY_PROXY_DISCLAIMER,
+    }
 
 
 def _run_one(
@@ -570,15 +594,6 @@ def _run_one(
             if contains_truth
             else None
         )
-        bonf_reject = [
-            cz is False
-            for cz in contains_zero
-            if cz is not None
-        ] if all_null else []
-        holm_reject = _holm_rejections(
-            [cz if cz is not None else True for cz in contains_zero], cfg.alpha
-        ) if all_null else []
-
         est_vec = [e for e in estimates if e is not None and np.isfinite(e)]
         err_vec = [
             (e - t)
@@ -602,8 +617,9 @@ def _run_one(
                 "simultaneous_coverage": simultaneous_cov,
                 "multiplicity_adjustment": {
                     "unadjusted_fp_any": familywise_fp,
-                    "bonferroni_fp_any": any(bonf_reject) if bonf_reject else None,
-                    "holm_fp_any": any(holm_reject) if holm_reject else None,
+                    "bonferroni_fp_any": None,
+                    "holm_fp_any": None,
+                    "calibration_valid": False,
                 },
                 "control_overlap_matrix": overlap_mat,
                 "shared_control_policy": geom.shared_control_policy,
@@ -813,9 +829,15 @@ def build_d5_trust_multicell_percell_inference_001(
             subset = [r for r in ok_runs if "disjoint" in str(r.get("geometry_id", ""))]
         elif pol["policy_id"] == "G":
             subset = pool_runs
+        elif pol["policy_id"] in ("B", "C", "D"):
+            subset = []
         else:
             subset = ok_runs
-        policy_rows.append({"policy": pol, "metrics": _coverage_metrics(subset)})
+        row: dict[str, Any] = {"policy": pol, "metrics": _coverage_metrics(subset)}
+        if pol["policy_id"] in ("B", "C", "D"):
+            row["calibration_valid"] = False
+            row["note"] = _MULTIPLICITY_PROXY_DISCLAIMER
+        policy_rows.append(row)
 
     follow_up = [_FOLLOW_UP_SHARED, _FOLLOW_UP_MULTIPLICITY]
     resolved = [_INVESTIGATION_ID]
@@ -867,20 +889,12 @@ def build_d5_trust_multicell_percell_inference_001(
         "familywise_type_i": cross_dep.get("familywise_null_fp_rate"),
         "simultaneous_coverage": _rate([r.get("simultaneous_coverage") for r in ok_runs]),
         "multiplicity_comparisons": {
-            "unadjusted": cross_dep.get("familywise_null_fp_rate"),
-            "bonferroni_proxy": _rate(
-                [
-                    (r.get("multiplicity_adjustment") or {}).get("bonferroni_fp_any")
-                    for r in null_runs
-                ]
-            ),
-            "holm_proxy": _rate(
-                [
-                    (r.get("multiplicity_adjustment") or {}).get("holm_fp_any")
-                    for r in null_runs
-                ]
-            ),
-            "note": "characterization only; no production multiplicity correction added",
+            "unadjusted_familywise_type_i": cross_dep.get("familywise_null_fp_rate"),
+            "bonferroni_proxy": None,
+            "holm_proxy": None,
+            "proxy_comparison_valid": False,
+            "calibration_audit": _multiplicity_calibration_audit(),
+            "disclaimer": _MULTIPLICITY_PROXY_DISCLAIMER,
         },
         "shared_control_results": {
             "shared_geometry": shared_metrics,
@@ -931,7 +945,8 @@ def build_d5_trust_multicell_percell_inference_001(
             "Does not authorize TrustReport.",
             "Does not perform the full TrustReport eligibility reassessment.",
             "SCM+UnitJackknife primary path only; AugSynth/TBR/DID per-cell paths not expanded.",
-            "Multiplicity comparisons are characterization proxies; no production correction shipped.",
+            "Bonferroni/Holm proxy comparison was not a valid calibration test (no per-cell p-values or adjusted intervals on SCM+JK path).",
+            "Multiplicity remains unresolved; equal FWER across proxy labels does not imply Bonferroni/Holm ineffectiveness.",
             "Shared-control dependence is structural; marginal per-cell coverage does not imply valid multi-cell decisioning.",
         ],
         "verdict": verdict,
@@ -1060,6 +1075,10 @@ def _write_report(payload: dict[str, Any], path: Path, *, overwrite: bool = Fals
         "",
         "## 22. Multiplicity findings",
         "",
+        f"**Unadjusted familywise null type-I:** {payload.get('familywise_type_i')}",
+        "",
+        _MULTIPLICITY_PROXY_DISCLAIMER,
+        "",
         json.dumps(payload.get("multiplicity_comparisons", {}), indent=2),
         "",
         "## 23. Shared-control dependence",
@@ -1088,7 +1107,10 @@ def _write_report(payload: dict[str, Any], path: Path, *, overwrite: bool = Fals
         "",
         "## 29. Policy comparisons",
         "",
-        "See summary policy_comparisons.",
+        "Policy A (unadjusted per-cell) and E/F (geometry subsets) are calibrated. "
+        "Policies B/C/D (Bonferroni, Holm, max-stat) were **not** valid calibration tests in this artifact — see §22.",
+        "",
+        "See summary `policy_comparisons`.",
         "",
         "## 30. Root-cause determination",
         "",

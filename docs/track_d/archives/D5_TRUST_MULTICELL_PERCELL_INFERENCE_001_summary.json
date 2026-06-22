@@ -1,8 +1,8 @@
 {
   "artifact_id": "D5-TRUST-MULTICELL-PERCELL-INFERENCE-001",
   "artifact_version": "1.0.0",
-  "generated_at": "2026-06-18T22:41:41.312195+00:00",
-  "git_commit": "559a4e15d22a602096a927892c8f84d8798ba292",
+  "generated_at": "2026-06-22T03:01:29.620861+00:00",
+  "git_commit": "cf108985a29185f3aa99ab5b71001137a69dffd0",
   "config": {
     "fast": false,
     "n_replicates": 4,
@@ -161,7 +161,7 @@
     "successful_runs": 810,
     "failed_runs": 0,
     "cell_level_results": 1554,
-    "runtime_seconds": 46.93
+    "runtime_seconds": 59.79
   },
   "cell_level_results": [
     {
@@ -13794,10 +13794,24 @@
   "familywise_type_i": 0.2722772277227723,
   "simultaneous_coverage": 0.8563685636856369,
   "multiplicity_comparisons": {
-    "unadjusted": 0.2722772277227723,
-    "bonferroni_proxy": 0.2722772277227723,
-    "holm_proxy": 0.2722772277227723,
-    "note": "characterization only; no production multiplicity correction added"
+    "unadjusted_familywise_type_i": 0.2722772277227723,
+    "bonferroni_proxy": null,
+    "holm_proxy": null,
+    "proxy_comparison_valid": false,
+    "calibration_audit": {
+      "bonferroni_threshold_adjusted": false,
+      "holm_threshold_adjusted": false,
+      "per_cell_p_values_available": false,
+      "p_value_source": "none \u2014 SCM+UnitJackknife exposes interval bounds only",
+      "rejection_proxy": "interval_excludes_zero (0 in [lower, upper])",
+      "adjusted_intervals_reconstructed": false,
+      "familywise_from_adjusted_decisions": false,
+      "familywise_metric_valid": "unadjusted_interval_excludes_zero_any_cell_only",
+      "shared_control_handling": "consistent \u2014 all multiplicity labels reuse the same underlying per-cell JK intervals; shared-control dependence affects intervals but was not modeled separately per policy",
+      "proxy_comparison_valid": false,
+      "disclaimer": "Bonferroni/Holm proxy comparison was not a valid calibration test because the current SCM+JK path does not expose compatible per-cell p-values or adjusted confidence-level interval reconstruction. Multiplicity remains unresolved; equal FWER values across unadjusted and proxy-adjusted labels do not establish that Bonferroni or Holm are ineffective."
+    },
+    "disclaimer": "Bonferroni/Holm proxy comparison was not a valid calibration test because the current SCM+JK path does not expose compatible per-cell p-values or adjusted confidence-level interval reconstruction. Multiplicity remains unresolved; equal FWER values across unadjusted and proxy-adjusted labels do not establish that Bonferroni or Holm are ineffective."
   },
   "shared_control_results": {
     "shared_geometry": {
@@ -13849,46 +13863,52 @@
       "policy": {
         "policy_id": "B",
         "name": "per_cell_bonferroni",
-        "description": "Bonferroni-scaled rejection on per-cell intervals"
+        "description": "Bonferroni not calibrated here \u2014 SCM+JK lacks per-cell p-values / adjusted intervals"
       },
       "metrics": {
-        "n_cell_results": 1554,
-        "n_ok": 1554,
-        "coverage": 0.925997425997426,
-        "type_i_error": 0.10047281323877069,
-        "mean_bias": 0.39381452461915445,
-        "mean_interval_width": 6.408015112649753
-      }
+        "n_cell_results": 0,
+        "n_ok": 0,
+        "coverage": null,
+        "type_i_error": null,
+        "mean_bias": null,
+        "mean_interval_width": null
+      },
+      "calibration_valid": false,
+      "note": "Bonferroni/Holm proxy comparison was not a valid calibration test because the current SCM+JK path does not expose compatible per-cell p-values or adjusted confidence-level interval reconstruction. Multiplicity remains unresolved; equal FWER values across unadjusted and proxy-adjusted labels do not establish that Bonferroni or Holm are ineffective."
     },
     {
       "policy": {
         "policy_id": "C",
         "name": "per_cell_holm",
-        "description": "Holm step-down on per-cell interval rejections"
+        "description": "Holm not calibrated here \u2014 interval-excludes-zero proxies only"
       },
       "metrics": {
-        "n_cell_results": 1554,
-        "n_ok": 1554,
-        "coverage": 0.925997425997426,
-        "type_i_error": 0.10047281323877069,
-        "mean_bias": 0.39381452461915445,
-        "mean_interval_width": 6.408015112649753
-      }
+        "n_cell_results": 0,
+        "n_ok": 0,
+        "coverage": null,
+        "type_i_error": null,
+        "mean_bias": null,
+        "mean_interval_width": null
+      },
+      "calibration_valid": false,
+      "note": "Bonferroni/Holm proxy comparison was not a valid calibration test because the current SCM+JK path does not expose compatible per-cell p-values or adjusted confidence-level interval reconstruction. Multiplicity remains unresolved; equal FWER values across unadjusted and proxy-adjusted labels do not establish that Bonferroni or Holm are ineffective."
     },
     {
       "policy": {
         "policy_id": "D",
         "name": "simultaneous_max_stat_if_available",
-        "description": "max-stat simultaneous proxy (characterization only)"
+        "description": "max-stat simultaneous procedure not available on SCM+JK readout"
       },
       "metrics": {
-        "n_cell_results": 1554,
-        "n_ok": 1554,
-        "coverage": 0.925997425997426,
-        "type_i_error": 0.10047281323877069,
-        "mean_bias": 0.39381452461915445,
-        "mean_interval_width": 6.408015112649753
-      }
+        "n_cell_results": 0,
+        "n_ok": 0,
+        "coverage": null,
+        "type_i_error": null,
+        "mean_bias": null,
+        "mean_interval_width": null
+      },
+      "calibration_valid": false,
+      "note": "Bonferroni/Holm proxy comparison was not a valid calibration test because the current SCM+JK path does not expose compatible per-cell p-values or adjusted confidence-level interval reconstruction. Multiplicity remains unresolved; equal FWER values across unadjusted and proxy-adjusted labels do not establish that Bonferroni or Holm are ineffective."
     },
     {
       "policy": {
@@ -13989,7 +14009,8 @@
     "Does not authorize TrustReport.",
     "Does not perform the full TrustReport eligibility reassessment.",
     "SCM+UnitJackknife primary path only; AugSynth/TBR/DID per-cell paths not expanded.",
-    "Multiplicity comparisons are characterization proxies; no production correction shipped.",
+    "Bonferroni/Holm proxy comparison was not a valid calibration test (no per-cell p-values or adjusted intervals on SCM+JK path).",
+    "Multiplicity remains unresolved; equal FWER across proxy labels does not imply Bonferroni/Holm ineffectiveness.",
     "Shared-control dependence is structural; marginal per-cell coverage does not imply valid multi-cell decisioning."
   ],
   "verdict": "multicell_percell_multiplicity_unresolved"

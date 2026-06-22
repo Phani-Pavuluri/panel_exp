@@ -165,7 +165,7 @@ all_cell_null, one_cell_positive_others_null, two_cell_positive, mixed_positive_
   "successful_runs": 810,
   "failed_runs": 0,
   "cell_level_results": 1554,
-  "runtime_seconds": 46.93
+  "runtime_seconds": 59.79
 }
 
 ## 16. Cell-level point behavior
@@ -291,11 +291,29 @@ Coverage by geometry: {
 
 ## 22. Multiplicity findings
 
+**Unadjusted familywise null type-I:** 0.2722772277227723
+
+Bonferroni/Holm proxy comparison was not a valid calibration test because the current SCM+JK path does not expose compatible per-cell p-values or adjusted confidence-level interval reconstruction. Multiplicity remains unresolved; equal FWER values across unadjusted and proxy-adjusted labels do not establish that Bonferroni or Holm are ineffective.
+
 {
-  "unadjusted": 0.2722772277227723,
-  "bonferroni_proxy": 0.2722772277227723,
-  "holm_proxy": 0.2722772277227723,
-  "note": "characterization only; no production multiplicity correction added"
+  "unadjusted_familywise_type_i": 0.2722772277227723,
+  "bonferroni_proxy": null,
+  "holm_proxy": null,
+  "proxy_comparison_valid": false,
+  "calibration_audit": {
+    "bonferroni_threshold_adjusted": false,
+    "holm_threshold_adjusted": false,
+    "per_cell_p_values_available": false,
+    "p_value_source": "none \u2014 SCM+UnitJackknife exposes interval bounds only",
+    "rejection_proxy": "interval_excludes_zero (0 in [lower, upper])",
+    "adjusted_intervals_reconstructed": false,
+    "familywise_from_adjusted_decisions": false,
+    "familywise_metric_valid": "unadjusted_interval_excludes_zero_any_cell_only",
+    "shared_control_handling": "consistent \u2014 all multiplicity labels reuse the same underlying per-cell JK intervals; shared-control dependence affects intervals but was not modeled separately per policy",
+    "proxy_comparison_valid": false,
+    "disclaimer": "Bonferroni/Holm proxy comparison was not a valid calibration test because the current SCM+JK path does not expose compatible per-cell p-values or adjusted confidence-level interval reconstruction. Multiplicity remains unresolved; equal FWER values across unadjusted and proxy-adjusted labels do not establish that Bonferroni or Holm are ineffective."
+  },
+  "disclaimer": "Bonferroni/Holm proxy comparison was not a valid calibration test because the current SCM+JK path does not expose compatible per-cell p-values or adjusted confidence-level interval reconstruction. Multiplicity remains unresolved; equal FWER values across unadjusted and proxy-adjusted labels do not establish that Bonferroni or Holm are ineffective."
 }
 
 ## 23. Shared-control dependence
@@ -348,7 +366,9 @@ See small_donor_pool and heavy_control_reuse worlds.
 
 ## 29. Policy comparisons
 
-See summary policy_comparisons.
+Policy A (unadjusted per-cell) and E/F (geometry subsets) are calibrated. Policies B/C/D (Bonferroni, Holm, max-stat) were **not** valid calibration tests in this artifact — see §22.
+
+See summary `policy_comparisons`.
 
 ## 30. Root-cause determination
 
@@ -408,7 +428,7 @@ Opened `INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001`, `INV-MULTICELL-MULTIPLICIT
 
 ## 36. Remaining limitations
 
-Evaluates per-cell inference for multi-cell designs; does not validate pooled multi-cell causal inference.; Does not authorize TrustReport.; Does not perform the full TrustReport eligibility reassessment.; SCM+UnitJackknife primary path only; AugSynth/TBR/DID per-cell paths not expanded.; Multiplicity comparisons are characterization proxies; no production correction shipped.; Shared-control dependence is structural; marginal per-cell coverage does not imply valid multi-cell decisioning.
+Evaluates per-cell inference for multi-cell designs; does not validate pooled multi-cell causal inference.; Does not authorize TrustReport.; Does not perform the full TrustReport eligibility reassessment.; SCM+UnitJackknife primary path only; AugSynth/TBR/DID per-cell paths not expanded.; Bonferroni/Holm proxy comparison was not a valid calibration test (no per-cell p-values or adjusted intervals on SCM+JK path).; Multiplicity remains unresolved; equal FWER across proxy labels does not imply Bonferroni/Holm ineffectiveness.; Shared-control dependence is structural; marginal per-cell coverage does not imply valid multi-cell decisioning.
 
 ## 37. Governance verdict
 
