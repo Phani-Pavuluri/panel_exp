@@ -536,6 +536,8 @@ Per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)
 
 **D5-TRUST-STRATIFIED-SCM-JK-001 (2026-06-03):** [`D5_TRUST_STRATIFIED_SCM_JK_001_REPORT.md`](track_d/D5_TRUST_STRATIFIED_SCM_JK_001_REPORT.md) — DCM-008 per-stratum SCM+JK; diagnostic_only; aggregate claims blocked; within-stratum donor preferred; no authorization.
 
+**FULL-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001 (2026-06-03):** [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) — matrix reassessment all governed DCM rows; global `trust_report_authorized` false; SCM Placebo and AugSynth JK resolved; BRB/multicell lanes deferred.
+
 ## 11. Stop condition
 
 | Criterion | Status |

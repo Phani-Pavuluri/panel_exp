@@ -331,6 +331,8 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **D5-TRUST-STRATIFIED-SCM-JK-001 (2026-06-03):** [`D5_TRUST_STRATIFIED_SCM_JK_001_REPORT.md`](track_d/D5_TRUST_STRATIFIED_SCM_JK_001_REPORT.md) — DCM-008 stratified SCM+JK; `stratified_scm_jk_diagnostic_only`; regenerate: `poetry run python -m panel_exp.validation.track_d_d5_trust_stratified_scm_jk_001`.
 
+**FULL-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001 (2026-06-03):** [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) — matrix-level reassessment; `full_trustreport_reassessment_restricted_candidates_only`; regenerate: `poetry run python -m panel_exp.validation.full_trustreport_eligibility_reassessment_001 --overwrite`.
+
 ## 13. Stop condition
 
 | Criterion | Status |
