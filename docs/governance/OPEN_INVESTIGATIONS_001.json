@@ -267,6 +267,29 @@
       "blocking_policy": "Marginal per-cell intervals cannot authorize simultaneous multi-cell decisions without multiplicity correction lane",
       "terminal_decisions": ["REMEDIATE", "RESTRICT", "DIAGNOSTIC_ONLY"],
       "resolution_artifact": null
+    },
+    {
+      "investigation_id": "INV-MULTICELL-CELL-RELATIONSHIP-DECISION-POLICY-001",
+      "title": "Multi-cell cell-relationship and decision-policy semantic guardrail",
+      "status": "RESOLVED",
+      "priority": "P2",
+      "discovered_by": "D5-TRUST-MULTICELL-PERCELL-INFERENCE-001",
+      "affected_combination": "DCM-006",
+      "problem_class": ["semantic_misuse", "readout_labeling", "decision_policy"],
+      "evidence": {
+        "contract_artifact": "MULTICELL-CELL-RELATIONSHIP-AND-DECISION-POLICY-CONTRACT-001",
+        "parallel_marginal_multiplicity_not_required": true,
+        "competing_cells_multiplicity_required": true,
+        "trust_report_authorized": false
+      },
+      "current_decision": "SEMANTIC_GUARDRAIL_ADDED",
+      "blocked_roles": [],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT DCM-006 row",
+      "blocking_policy": "Marginal per-cell readout allowed for PARALLEL_MARGINAL_CELLS+REPORT_EACH_CELL_ONLY; selection/pooled/global claims gated by contract",
+      "terminal_decisions": ["RESTRICT"],
+      "resolution_artifact": "MULTICELL-CELL-RELATIONSHIP-AND-DECISION-POLICY-CONTRACT-001"
     }
   ],
   "roadmap_lane_bindings": [
@@ -323,6 +346,19 @@
       "must_consume_before_close": true,
       "next_artifact": "D5-TRUST-STRATIFIED-SCM-JK-001",
       "resolution_artifact": "D5-TRUST-MULTICELL-PERCELL-INFERENCE-001"
+    },
+    {
+      "lane_id": "MULTICELL-CELL-RELATIONSHIP-AND-DECISION-POLICY-CONTRACT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": ["INV-MULTICELL-CELL-RELATIONSHIP-DECISION-POLICY-001"],
+      "deferred_investigations": [
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+      ],
+      "must_consume_before_close": false,
+      "next_artifact": "D5-TRUST-STRATIFIED-SCM-JK-001",
+      "resolution_artifact": "MULTICELL-CELL-RELATIONSHIP-AND-DECISION-POLICY-CONTRACT-001"
     }
   ]
 }

@@ -532,6 +532,8 @@ Per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)
 
 **D5-TRUST-MULTICELL-PERCELL-INFERENCE-001 (2026-06-03):** [`D5_TRUST_MULTICELL_PERCELL_INFERENCE_001_REPORT.md`](track_d/D5_TRUST_MULTICELL_PERCELL_INFERENCE_001_REPORT.md) — DCM-006 per-cell SCM+JK; multiplicity unresolved (familywise type-I ~27%); PER_CELL_RESTRICTED; pooled blocked; no authorization.
 
+**MULTICELL-CELL-RELATIONSHIP-AND-DECISION-POLICY-CONTRACT-001 (2026-06-03):** [`MULTICELL_CELL_RELATIONSHIP_AND_DECISION_POLICY_CONTRACT_001.md`](MULTICELL_CELL_RELATIONSHIP_AND_DECISION_POLICY_CONTRACT_001.md) — semantic guardrail for cell_relationship × decision_policy; parallel marginal readouts not blocked; selection/pooled/global claims gated.
+
 ## 11. Stop condition
 
 | Criterion | Status |

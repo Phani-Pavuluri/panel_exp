@@ -241,6 +241,8 @@ Existing governance references: `calibration_report.py` (FPR ≤0.10, null cover
 
 **Next artifact:** `D5-TRUST-STRATIFIED-SCM-JK-001`
 
+**Semantic guardrail (2026-06-03):** ✅ [`MULTICELL_CELL_RELATIONSHIP_AND_DECISION_POLICY_CONTRACT_001.md`](MULTICELL_CELL_RELATIONSHIP_AND_DECISION_POLICY_CONTRACT_001.md) — distinguishes parallel marginal readouts (multiplicity not required) from competing-cell selection (multiplicity required). Does not authorize TrustReport.
+
 **Primary root causes:** C (multiplicity/familywise evidence), I (simultaneous intervals), G (shared-control covariance).
 
 **Focus (addressed in artifact):**

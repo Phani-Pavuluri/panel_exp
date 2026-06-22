@@ -459,3 +459,13 @@ Evaluates per-cell inference for multi-cell designs; does not validate pooled mu
 
 **Next artifact:** D5-TRUST-STRATIFIED-SCM-JK-001
 
+## 38. Semantic decision-policy contract (follow-up)
+
+**Update:** [`MULTICELL_CELL_RELATIONSHIP_AND_DECISION_POLICY_CONTRACT_001.md`](../MULTICELL_CELL_RELATIONSHIP_AND_DECISION_POLICY_CONTRACT_001.md) clarifies when multiplicity is required vs not:
+
+- `PARALLEL_MARGINAL_CELLS` + `REPORT_EACH_CELL_ONLY`: marginal per-cell readout allowed; multiplicity not required; shared-control warning when donors overlap.
+- `COMPETING_CELLS` + `SELECT_OR_RANK_CELLS`: multiplicity/selection adjustment required before decisioning.
+- Familywise type-I ~27.2% applies to unadjusted any-cell rejection under null; it does not block separate marginal platform readouts when decision policy is report-each-cell-only.
+
+`INV-MULTICELL-CELL-RELATIONSHIP-DECISION-POLICY-001` → RESOLVED (`SEMANTIC_GUARDRAIL_ADDED`). Deferred investigations unchanged.
+

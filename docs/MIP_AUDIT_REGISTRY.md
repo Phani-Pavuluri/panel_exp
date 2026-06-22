@@ -1338,6 +1338,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## MULTICELL-CELL-RELATIONSHIP-AND-DECISION-POLICY-CONTRACT-001 (2026-06-03)
+
+**Artifact:** [`docs/MULTICELL_CELL_RELATIONSHIP_AND_DECISION_POLICY_CONTRACT_001.md`](MULTICELL_CELL_RELATIONSHIP_AND_DECISION_POLICY_CONTRACT_001.md) · [`panel_exp/validation/multicell_decision_policy_contract_001.py`](../panel_exp/validation/multicell_decision_policy_contract_001.py)
+
+**Status:** **`SEMANTIC_GUARDRAIL_ADDED`**
+
+**Verdict:** Governance-only semantic contract for `cell_relationship` × `decision_policy`. `PARALLEL_MARGINAL_CELLS` + `REPORT_EACH_CELL_ONLY` allows marginal per-cell readout without multiplicity; competing-cell selection/pooled/global claims gated. **`INV-MULTICELL-CELL-RELATIONSHIP-DECISION-POLICY-001`** RESOLVED. Deferred investigations unchanged. **No TrustReport authorization.**
+
+**Next:** `D5-TRUST-STRATIFIED-SCM-JK-001` → disposition decisions → `FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`.
+
+---
+
 ## D5-TRUST-MULTICELL-PERCELL-INFERENCE-001 (2026-06-03)
 
 **Artifact:** [`docs/track_d/D5_TRUST_MULTICELL_PERCELL_INFERENCE_001_REPORT.md`](track_d/D5_TRUST_MULTICELL_PERCELL_INFERENCE_001_REPORT.md) · [`docs/track_d/archives/D5_TRUST_MULTICELL_PERCELL_INFERENCE_001_summary.json`](track_d/archives/D5_TRUST_MULTICELL_PERCELL_INFERENCE_001_summary.json) · [`panel_exp/validation/track_d_d5_trust_multicell_percell_inference_001.py`](../panel_exp/validation/track_d_d5_trust_multicell_percell_inference_001.py)
