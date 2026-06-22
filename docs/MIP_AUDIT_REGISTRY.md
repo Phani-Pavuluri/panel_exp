@@ -1350,6 +1350,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## D5-TRUST-STRATIFIED-SCM-JK-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/D5_TRUST_STRATIFIED_SCM_JK_001_REPORT.md`](track_d/D5_TRUST_STRATIFIED_SCM_JK_001_REPORT.md) · [`docs/track_d/archives/D5_TRUST_STRATIFIED_SCM_JK_001_summary.json`](track_d/archives/D5_TRUST_STRATIFIED_SCM_JK_001_summary.json) · [`panel_exp/validation/track_d_d5_trust_stratified_scm_jk_001.py`](../panel_exp/validation/track_d_d5_trust_stratified_scm_jk_001.py)
+
+**Status:** **`stratified_scm_jk_diagnostic_only`**
+
+**Verdict:** DCM-008 stratified SCM+JK characterization. SCM fit per-stratum panel (aggregate treated in stratum). Balanced two-strata per-stratum coverage ~0.851; per-stratum null type-I ~0.170; aggregate characterization type-I ~0.260; aggregate claims blocked 100%. Within-stratum donor pool preferred. **`INV-STRATIFIED-SCM-JK-TRUSTREPORT-DISPOSITION-001`** RESOLVED (`DIAGNOSTIC_ONLY`). Production defect: `geometry_or_semantic_limitation`. **No TrustReport authorization.**
+
+**Next:** `FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT` → disposition decisions → `TRUSTREPORT_DOWNSTREAM_PROMOTION_001`.
+
+---
+
 ## D5-TRUST-MULTICELL-PERCELL-INFERENCE-001 (2026-06-03)
 
 **Artifact:** [`docs/track_d/D5_TRUST_MULTICELL_PERCELL_INFERENCE_001_REPORT.md`](track_d/D5_TRUST_MULTICELL_PERCELL_INFERENCE_001_REPORT.md) · [`docs/track_d/archives/D5_TRUST_MULTICELL_PERCELL_INFERENCE_001_summary.json`](track_d/archives/D5_TRUST_MULTICELL_PERCELL_INFERENCE_001_summary.json) · [`panel_exp/validation/track_d_d5_trust_multicell_percell_inference_001.py`](../panel_exp/validation/track_d_d5_trust_multicell_percell_inference_001.py)

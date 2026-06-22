@@ -290,6 +290,40 @@
       "blocking_policy": "Marginal per-cell readout allowed for PARALLEL_MARGINAL_CELLS+REPORT_EACH_CELL_ONLY; selection/pooled/global claims gated by contract",
       "terminal_decisions": ["RESTRICT"],
       "resolution_artifact": "MULTICELL-CELL-RELATIONSHIP-AND-DECISION-POLICY-CONTRACT-001"
+    },
+    {
+      "investigation_id": "INV-STRATIFIED-SCM-JK-TRUSTREPORT-DISPOSITION-001",
+      "title": "Stratified SCM+JK TrustReport disposition and combination validation",
+      "status": "RESOLVED",
+      "priority": "P2",
+      "discovered_by": "TRUSTREPORT-ELIGIBILITY-VALIDATION-001",
+      "affected_combination": "DCM-008",
+      "problem_class": [
+        "stratified_inference",
+        "aggregate_readout_semantics",
+        "donor_pool_policy",
+        "small_stratum_support"
+      ],
+      "evidence": {
+        "per_stratum_coverage_balanced": 0.851,
+        "per_stratum_type_i_balanced": 0.170,
+        "aggregate_type_i": 0.260,
+        "aggregate_coverage": 0.888,
+        "weight_dominance_rate": 0.044,
+        "aggregate_claim_blocked": true,
+        "scm_fit_mode": "per_stratum_panel_aggregate_treated",
+        "d5_trust_characterization": "D5-TRUST-STRATIFIED-SCM-JK-001",
+        "verdict": "stratified_scm_jk_diagnostic_only",
+        "production_defect": "geometry_or_semantic_limitation"
+      },
+      "current_decision": "DIAGNOSTIC_ONLY",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "aggregate_causal_claim"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT DCM-008 row",
+      "blocking_policy": "Per-stratum diagnostic/restricted intervals only; aggregate causal claims blocked; within-stratum donor pool preferred",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY"],
+      "resolution_artifact": "D5-TRUST-STRATIFIED-SCM-JK-001"
     }
   ],
   "roadmap_lane_bindings": [
@@ -359,6 +393,16 @@
       "must_consume_before_close": false,
       "next_artifact": "D5-TRUST-STRATIFIED-SCM-JK-001",
       "resolution_artifact": "MULTICELL-CELL-RELATIONSHIP-AND-DECISION-POLICY-CONTRACT-001"
+    },
+    {
+      "lane_id": "D5-TRUST-STRATIFIED-SCM-JK-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": ["INV-STRATIFIED-SCM-JK-TRUSTREPORT-DISPOSITION-001"],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT",
+      "resolution_artifact": "D5-TRUST-STRATIFIED-SCM-JK-001"
     }
   ]
 }

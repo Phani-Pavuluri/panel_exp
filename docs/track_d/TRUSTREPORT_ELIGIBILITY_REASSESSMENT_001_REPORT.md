@@ -106,7 +106,7 @@ eligible_for_promotion=False
 - Provisional gates labeled provisional_for_trustreport_reassessment_only.
 - Does not authorize TrustReport or downstream roles.
 - Historical percent-scale coverage excluded from reassessment metrics.
-- Stratified DCM-008 and multi-cell paths require separate artifacts.
+- Stratified DCM-008: ✅ `D5-TRUST-STRATIFIED-SCM-JK-001` complete (`stratified_scm_jk_diagnostic_only`). Multi-cell DCM-006: separate artifacts complete.
 
 ## 26. Required next validation
 

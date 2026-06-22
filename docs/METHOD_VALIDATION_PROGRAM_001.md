@@ -329,6 +329,8 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **D5-TRUST-MULTICELL-PERCELL-INFERENCE-001 (2026-06-03):** [`D5_TRUST_MULTICELL_PERCELL_INFERENCE_001_REPORT.md`](track_d/D5_TRUST_MULTICELL_PERCELL_INFERENCE_001_REPORT.md) — DCM-006 per-cell inference; `multicell_percell_multiplicity_unresolved`; regenerate: `poetry run python -m panel_exp.validation.track_d_d5_trust_multicell_percell_inference_001`.
 
+**D5-TRUST-STRATIFIED-SCM-JK-001 (2026-06-03):** [`D5_TRUST_STRATIFIED_SCM_JK_001_REPORT.md`](track_d/D5_TRUST_STRATIFIED_SCM_JK_001_REPORT.md) — DCM-008 stratified SCM+JK; `stratified_scm_jk_diagnostic_only`; regenerate: `poetry run python -m panel_exp.validation.track_d_d5_trust_stratified_scm_jk_001`.
+
 ## 13. Stop condition
 
 | Criterion | Status |

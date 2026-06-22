@@ -219,15 +219,22 @@ Existing governance references: `calibration_report.py` (FPR ≤0.10, null cover
 
 **Problem:** DCM-008 ELIGIBLE_WITH_RESTRICTIONS on design feasibility only (`D5_DES_STAT_STRATIFIED_001`). Inherits generic SCM+JK stat evidence — insufficient for stratified combination.
 
-**Primary root causes:** C (missing dedicated D5-STAT), G (strata-specific donor support), possible E (selection effects).
+**Status (2026-06-03):** ✅ **`D5-TRUST-STRATIFIED-SCM-JK-001`** complete.
 
-**Follow-up artifact:** `D5-TRUST-STRATIFIED-SCM-JK-001`
+**Findings:** Per-stratum SCM+JK on balanced two-strata geometry: coverage ~85.1%; per-stratum null type-I ~17.0%; aggregate characterization coverage ~88.8% with aggregate null type-I ~26.0%. SCM fit mode: per-stratum panel (aggregate treated units in stratum). Within-stratum donor pool preferred over global. Aggregate causal claims blocked (100%). Weight-dominance rate ~4.4%. Verdict: `stratified_scm_jk_diagnostic_only`. Production defect: `geometry_or_semantic_limitation` (not isolated code bug).
 
-**Worlds:** adaptive strata, small/sparse strata, heterogeneous strata, weak donor support, selection effects, effect and null worlds.
+**Investigations:** `INV-STRATIFIED-SCM-JK-TRUSTREPORT-DISPOSITION-001` → RESOLVED (`DIAGNOSTIC_ONLY`).
 
-**Minimum remediation:** Dedicated combination validation before any stratified promotion candidacy.
+**Next artifact:** `FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`
 
-**Worth fixing?** **After SCM+JK core remediation.** Depends on DCM-001 diagnosis outcome.
+**Primary root causes:** C (aggregate readout semantics), G (strata-specific donor support), I (small-stratum instability).
+
+**Focus (addressed in artifact):**
+
+- Per-stratum vs aggregate readout semantics
+- Donor-pool policy (within-stratum vs global)
+- Small-stratum and weight-dominance restrictions
+- Stratified-specific behavior (distinct from DCM-006)
 
 ## 12. Multi-cell per-cell inference
 
@@ -317,7 +324,7 @@ Remain ineligible unless a **separate future artifact** explicitly changes them:
 | `D5-TRUST-TBRRIDGE-PLACEBO-001` | TBRRidge placebo null-monitor | DCM-005-PLACEBO | ✅ complete — null-monitor / falsification only; [`OPEN_INVESTIGATIONS_001.json`](governance/OPEN_INVESTIGATIONS_001.json) |
 | `DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001` | DCM-005 partial re-run | DCM-005 promotion candidacy | ✅ complete — path-specific restrictions; no authorization |
 | `TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001` | BRB variance remediation | DCM-005-BRB causal path | pending — deferred from reassessment |
-| `D5-TRUST-STRATIFIED-SCM-JK-001` | Stratified combination | DCM-008 |
+| `D5-TRUST-STRATIFIED-SCM-JK-001` | Stratified combination | DCM-008 | ✅ complete |
 | `D5-TRUST-MULTICELL-PERCELL-INFERENCE-001` | Per-cell inference | DCM-006 | ✅ complete |
 | `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` | Partial re-run (DCM-001 only) | DCM-001 promotion candidacy | ✅ complete (DCM-001 only) |
 | `FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT` | Re-run eligibility harness for all DCM-001–008 | Promotion candidacy | pending |
