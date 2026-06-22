@@ -534,6 +534,8 @@ Per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)
 
 **MULTICELL-CELL-RELATIONSHIP-AND-DECISION-POLICY-CONTRACT-001 (2026-06-03):** [`MULTICELL_CELL_RELATIONSHIP_AND_DECISION_POLICY_CONTRACT_001.md`](MULTICELL_CELL_RELATIONSHIP_AND_DECISION_POLICY_CONTRACT_001.md) — semantic guardrail for cell_relationship × decision_policy; parallel marginal readouts not blocked; selection/pooled/global claims gated.
 
+**D5-TRUST-STRATIFIED-SCM-JK-001 (2026-06-03):** [`D5_TRUST_STRATIFIED_SCM_JK_001_REPORT.md`](track_d/D5_TRUST_STRATIFIED_SCM_JK_001_REPORT.md) — DCM-008 per-stratum SCM+JK; diagnostic_only; aggregate claims blocked; within-stratum donor preferred; no authorization.
+
 ## 11. Stop condition
 
 | Criterion | Status |
