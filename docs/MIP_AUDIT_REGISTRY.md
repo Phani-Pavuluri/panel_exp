@@ -1338,13 +1338,25 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## DCM005-TBRRIDGE-BRB-POST-REMEDIATION-REASSESSMENT-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001_REPORT.md`](track_d/DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001_REPORT.md) · [`docs/track_d/archives/DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001_summary.json`](track_d/archives/DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001_summary.json) · [`panel_exp/validation/dcm005_tbrridge_brb_post_remediation_reassessment_001.py`](../panel_exp/validation/dcm005_tbrridge_brb_post_remediation_reassessment_001.py)
+
+**Status:** **`dcm005_brb_diagnostic_only_no_authorization`**
+
+**Verdict:** Post-remediation adjudication of `larger_block_length_brb` candidate. Null type-I ~50%, null coverage ~50% — gates fail. Clean-world truth coverage improved (~89%). **BRB_DIAGNOSTIC_ONLY**; causal interval, TrustReport, CalibrationSignal, production decisioning blocked. **`INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001`** terminally RESOLVED (`DIAGNOSTIC_ONLY`). **No TrustReport authorization.**
+
+**Next:** `TRUSTREPORT_DOWNSTREAM_PROMOTION_001` (DCM-001/004 restricted review; BRB excluded).
+
+---
+
 ## TBRRIDGE-BRB-VARIANCE-CALIBRATION-REMEDIATION-001 (2026-06-03)
 
 **Artifact:** [`docs/track_d/TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001_REPORT.md`](track_d/TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001_REPORT.md) · [`docs/track_d/archives/TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001_summary.json`](track_d/archives/TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001_summary.json) · [`panel_exp/validation/tbrridge_brb_variance_calibration_remediation_001.py`](../panel_exp/validation/tbrridge_brb_variance_calibration_remediation_001.py)
 
 **Status:** **`tbrridge_brb_variance_remediation_candidate_only`**
 
-**Verdict:** Evaluated 7 candidate policies across 22 worlds. Centering preserved. Optional production `variance_calibration_policy` added (`residual_scaled`, `studentized`, `null_calibrated`). Best harness policy: `adaptive_block_length_brb` (truth-coverage gate pass); null type-I still fails (~67–83%). **`INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001`** RESOLVED (`REMEDIATION_CANDIDATE_PENDING_REASSESSMENT`). **No TrustReport authorization.**
+**Verdict:** Evaluated 7 candidate policies across 22 worlds. Centering preserved. Optional production `variance_calibration_policy` added (`residual_scaled`, `studentized`, `null_calibrated`). Best harness policy: `larger_block_length_brb` (block_length=7; truth-coverage gate pass); null type-I still fails (~50%). **`INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001`** RESOLVED pending post-remediation adjudication. **No TrustReport authorization.**
 
 **Next:** `DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001`.
 

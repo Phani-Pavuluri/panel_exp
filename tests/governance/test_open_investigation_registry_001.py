@@ -39,8 +39,9 @@ class TestOpenInvestigationRegistry001:
         assert inv.revisit_trigger is None
         assert inv.decision_checkpoint is not None
         assert inv.blocking_policy is not None
-        assert inv.resolution_artifact == "TBRRIDGE-BRB-VARIANCE-CALIBRATION-REMEDIATION-001"
-        assert inv.evidence["verdict"] == "tbrridge_brb_variance_remediation_candidate_only"
+        assert inv.resolution_artifact == "DCM005-TBRRIDGE-BRB-POST-REMEDIATION-REASSESSMENT-001"
+        assert inv.current_decision == "DIAGNOSTIC_ONLY"
+        assert inv.evidence.get("post_remediation_decision") == "BRB_DIAGNOSTIC_ONLY"
 
     def test_brb_estimand_alignment_resolved(self) -> None:
         inv = investigations_by_id()["INV-TBRRIDGE-BRB-ESTIMAND-ALIGNMENT-001"]
@@ -60,12 +61,13 @@ class TestOpenInvestigationRegistry001:
             if binding.get("open_investigations"):
                 assert binding.get("next_artifact"), binding["lane_id"]
 
-    def test_dcm005_reassessment_must_consume_open_brb_variance(self) -> None:
+    def test_post_remediation_lane_resolves_brb_variance(self) -> None:
         reg = load_registry()
-        dcm005 = next(b for b in reg["roadmap_lane_bindings"] if b["lane_id"] == "DCM-005-ELIGIBILITY-REASSESSMENT")
-        assert dcm005["must_consume_before_close"] is True
-        assert dcm005["status"] == "complete"
-        assert dcm005["resolution_artifact"] == "DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001"
-        assert "INV-TBRRIDGE-KFOLD-NULL-FPR-001" in dcm005["resolved_investigations"]
-        assert "INV-TBRRIDGE-PLACEBO-GOVERNED-SEMANTICS-001" in dcm005["resolved_investigations"]
-        assert "INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001" in dcm005.get("deferred_investigations", [])
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "DCM005-TBRRIDGE-BRB-POST-REMEDIATION-REASSESSMENT-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "DCM005-TBRRIDGE-BRB-POST-REMEDIATION-REASSESSMENT-001"
+        assert "INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001" in lane["resolved_investigations"]
+        assert lane["next_artifact"] == "TRUSTREPORT_DOWNSTREAM_PROMOTION_001"

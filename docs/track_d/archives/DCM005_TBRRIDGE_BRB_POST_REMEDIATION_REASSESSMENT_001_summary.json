@@ -1,0 +1,388 @@
+{
+  "artifact_id": "DCM005-TBRRIDGE-BRB-POST-REMEDIATION-REASSESSMENT-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-22T23:51:46.177278+00:00",
+  "git_commit": "85eb7bf7d7e0ee12da03b8324b12d858291d09f5",
+  "input_artifacts": {
+    "variance_remediation": "/workspace/panel_exp/docs/track_d/archives/TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001_summary.json",
+    "d5_trust_brb": "/workspace/panel_exp/docs/track_d/archives/D5_TRUST_TBRRIDGE_BRB_001_summary.json",
+    "brb_interval_correction": "/workspace/panel_exp/docs/track_d/archives/TBRRIDGE_BRB_INTERVAL_CORRECTION_001_summary.json",
+    "dcm005_reassessment": "/workspace/panel_exp/docs/track_d/archives/DCM005_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_summary.json",
+    "full_reassessment": "/workspace/panel_exp/docs/track_d/archives/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_summary.json"
+  },
+  "prior_brb_status": {
+    "dcm005_reassessment": "DEFERRED_FOR_REMEDIATION",
+    "full_reassessment": "DEFERRED_REMEDIATION"
+  },
+  "remediation_candidate": {
+    "policy": "larger_block_length_brb",
+    "source_verdict": "tbrridge_brb_variance_remediation_candidate_only",
+    "candidate_for_reassessment": true
+  },
+  "candidate_evidence": {
+    "n_runs": 66,
+    "failure_rate": 0.0,
+    "mean_bias": 2.55883220781534,
+    "median_bias": 0.971155200979319,
+    "rmse": 5.919334736189997,
+    "mean_interval_width": 4.624946170606937,
+    "median_interval_width": 3.5413419333600373,
+    "coverage_truth": 0.5606060606060606,
+    "coverage_zero_under_null": 0.5,
+    "type_i_under_null": 0.5,
+    "positive_coverage": 0.543859649122807,
+    "negative_coverage": 1.0,
+    "positive_power": 0.543859649122807,
+    "negative_power": 1.0,
+    "sign_accuracy": 0.9545454545454546,
+    "interval_center_gap": 0.38018257845679104,
+    "variance_ratio": 12.805948294001254,
+    "calibration_ratio": 1.017787532819671,
+    "bootstrap_replicate_sd": 1.3997744934733614,
+    "empirical_error_sd": 1.7023038165053608,
+    "mean_block_length": 7.0,
+    "mean_effective_blocks": 23.136363636363637,
+    "clean_truth_coverage": 0.7777777777777778,
+    "clean_negative_coverage": 1.0,
+    "coverage_by_world": {
+      "clean_negative_effect": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": null,
+        "negative_coverage": 1.0,
+        "n_null": 0,
+        "n_positive": 0,
+        "n_negative": 3
+      },
+      "clean_null": {
+        "null_coverage": 0.6666666666666666,
+        "type_i_error": 0.3333333333333333,
+        "positive_coverage": null,
+        "negative_coverage": null,
+        "n_null": 3,
+        "n_positive": 0,
+        "n_negative": 0
+      },
+      "clean_positive_effect": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 1.0,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "donor_contamination": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.6666666666666666,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "heavy_tailed_noise": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.6666666666666666,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "heteroskedastic_residuals": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.3333333333333333,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "high_serial_correlation": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.3333333333333333,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "long_post_period": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.6666666666666666,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "long_pre_period": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.6666666666666666,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "low_noise": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.3333333333333333,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "low_ridge_shrinkage": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.3333333333333333,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "outlier_period": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.0,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "poor_pre_fit": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.6666666666666666,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "post_treatment_shock": {
+        "null_coverage": 0.3333333333333333,
+        "type_i_error": 0.6666666666666666,
+        "positive_coverage": null,
+        "negative_coverage": null,
+        "n_null": 3,
+        "n_positive": 0,
+        "n_negative": 0
+      },
+      "regime_shift": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.0,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "ridge_dominant": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 1.0,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "serial_correlation": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.6666666666666666,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "short_post_period": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.6666666666666666,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "small_donor_support": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.6666666666666666,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "small_pre_period": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.3333333333333333,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "strong_signal": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 1.0,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      },
+      "weak_signal": {
+        "null_coverage": null,
+        "type_i_error": null,
+        "positive_coverage": 0.3333333333333333,
+        "negative_coverage": null,
+        "n_null": 0,
+        "n_positive": 3,
+        "n_negative": 0
+      }
+    },
+    "gate_evaluation": {
+      "gates": {
+        "null_type_i": false,
+        "null_coverage_zero": false,
+        "truth_coverage_clean": true,
+        "interval_center_gap": true,
+        "failure_rate": true
+      },
+      "all_pass": false,
+      "pass_count": 3,
+      "truth_coverage_aggregate": 0.8888888888888888
+    }
+  },
+  "gate_results": {
+    "gates": {
+      "null_type_i": false,
+      "null_coverage_zero": false,
+      "truth_coverage_clean": true,
+      "interval_center_gap": true,
+      "failure_rate": true,
+      "scale_contract_preserved": true
+    },
+    "all_pass": false,
+    "null_gates_pass": false,
+    "pass_count": 4,
+    "truth_coverage_aggregate": 0.8888888888888888,
+    "null_type_i": 0.5,
+    "null_coverage": 0.5,
+    "positive_coverage": 0.543859649122807,
+    "negative_coverage": 1.0,
+    "interval_center_gap": 0.38018257845679104
+  },
+  "row_decision": {
+    "row_id": "DCM-005-BRB",
+    "path_id": "DCM-005-BRB",
+    "estimator": "tbrridge",
+    "inference_method": "block_residual_bootstrap",
+    "candidate_policy": "larger_block_length_brb",
+    "candidate_source_artifact": "TBRRIDGE-BRB-VARIANCE-CALIBRATION-REMEDIATION-001",
+    "prior_status": "DEFERRED_FOR_REMEDIATION",
+    "post_remediation_evidence": "tbrridge_brb_variance_remediation_candidate_only",
+    "null_type_i": 0.5,
+    "null_coverage": 0.5,
+    "positive_coverage": 0.543859649122807,
+    "negative_coverage": 1.0,
+    "clean_truth_coverage": 0.8888888888888888,
+    "center_gap_status": "pass",
+    "scale_status": "pass",
+    "production_change_status": false,
+    "selected_decision": "BRB_DIAGNOSTIC_ONLY",
+    "allowed_roles": [
+      "model_fit_diagnostic",
+      "research_only",
+      "sensitivity_diagnostic",
+      "uncertainty_stress_test"
+    ],
+    "blocked_roles": [
+      "budget_optimization_input",
+      "calibration_signal",
+      "causal_interval",
+      "production_decisioning",
+      "trust_report"
+    ],
+    "required_warnings": [
+      "null_calibration_gate_failed",
+      "not_valid_causal_interval",
+      "conditional_bootstrap_omits_coefficient_uncertainty",
+      "larger_block_length_research_diagnostic_only"
+    ],
+    "calibration_signal_allowed": false,
+    "trustreport_allowed": false,
+    "downstream_authorization": false,
+    "next_action": "No BRB promotion; diagnostic display only if explicitly labeled"
+  },
+  "allowed_roles": [
+    "model_fit_diagnostic",
+    "research_only",
+    "sensitivity_diagnostic",
+    "uncertainty_stress_test"
+  ],
+  "blocked_roles": [
+    "budget_optimization_input",
+    "calibration_signal",
+    "causal_interval",
+    "production_decisioning",
+    "trust_report"
+  ],
+  "calibration_signal_implications": {
+    "calibration_signal_allowed": false,
+    "rationale": "Null calibration gates failed; BRB intervals not valid calibration signal"
+  },
+  "trustreport_implications": {
+    "trust_report_authorized": false,
+    "dcm005_brb_trustreport_allowed": false,
+    "rationale": "The remediation candidate improved or preserved selected clean-world behavior, but null type-I remained approximately 50% and null coverage remained approximately 50%. This fails the null-calibration gate and blocks causal interval, TrustReport, CalibrationSignal, and production decisioning roles."
+  },
+  "downstream_authorization_implications": {
+    "any_downstream_authorized": false,
+    "brb_downstream_authorized": false,
+    "diagnostic_roles_only": true
+  },
+  "investigation_update": {
+    "investigation_id": "INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001",
+    "prior_status": "RESOLVED",
+    "prior_decision": "REMEDIATION_CANDIDATE_PENDING_REASSESSMENT",
+    "new_status": "RESOLVED",
+    "terminal_disposition": "DIAGNOSTIC_ONLY",
+    "resolution_artifact": "DCM005-TBRRIDGE-BRB-POST-REMEDIATION-REASSESSMENT-001"
+  },
+  "authorization_summary": {
+    "trust_report_authorized": false,
+    "trust_report_ready": false,
+    "calibration_signal_allowed": false,
+    "brb_causal_interval_authorized": false
+  },
+  "governance_verdict": "dcm005_brb_diagnostic_only_no_authorization",
+  "limitations": [
+    "The remediation candidate improved or preserved selected clean-world behavior, but null type-I remained approximately 50% and null coverage remained approximately 50%. This fails the null-calibration gate and blocks causal interval, TrustReport, CalibrationSignal, and production decisioning roles.",
+    "The larger-block-length candidate may remain useful as a research diagnostic or sensitivity check, but it does not remediate BRB into a governed causal interval.",
+    "Does not authorize TrustReport.",
+    "Does not perform full matrix reassessment.",
+    "Does not introduce new remediation."
+  ],
+  "next_artifact": "TRUSTREPORT_DOWNSTREAM_PROMOTION_001",
+  "dcm005_aggregate_paths": {
+    "DCM-005-BRB": "BRB_DIAGNOSTIC_ONLY",
+    "DCM-005-KFOLD": "DIAGNOSTIC_ONLY",
+    "DCM-005-PLACEBO": "NULL_MONITOR_ONLY"
+  },
+  "investigation_handoff": {
+    "follow_up_issues": [],
+    "resolved_issues": [
+      "INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001"
+    ],
+    "terminal_dispositions": [
+      "DIAGNOSTIC_ONLY"
+    ],
+    "next_artifact": "TRUSTREPORT_DOWNSTREAM_PROMOTION_001"
+  },
+  "verdict": "dcm005_brb_diagnostic_only_no_authorization",
+  "path_decision": "BRB_DIAGNOSTIC_ONLY"
+}

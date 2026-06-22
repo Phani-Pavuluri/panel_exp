@@ -150,3 +150,10 @@ OPEN_INVESTIGATIONS_001 consumed for KFold and Placebo; BRB deferred with remedi
 
 **Next artifact:** D5-TRUST-MULTICELL-PERCELL-INFERENCE-001
 
+---
+
+## Post-remediation update (2026-06-03)
+
+**Follow-on artifact:** [`DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001_REPORT.md`](DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001_REPORT.md)
+
+**Final BRB path decision:** `BRB_DIAGNOSTIC_ONLY` — null calibration gates failed (~50% type-I, ~50% null coverage). **`INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001`** terminally RESOLVED (`DIAGNOSTIC_ONLY`). No TrustReport authorization.

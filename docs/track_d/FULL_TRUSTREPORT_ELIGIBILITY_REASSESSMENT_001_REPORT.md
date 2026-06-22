@@ -368,3 +368,10 @@ CalibrationSignal remains blocked for all rows in current matrix.
 
 **Next artifact:** TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001
 
+---
+
+## Post-remediation BRB update (2026-06-03)
+
+**Follow-on:** [`DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001_REPORT.md`](DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001_REPORT.md)
+
+**DCM-005-BRB final disposition:** `BRB_DIAGNOSTIC_ONLY` (was `DEFERRED_REMEDIATION`). Null gates remain failed. **`INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001`** no longer deferred — terminally RESOLVED. Global TrustReport authorization unchanged (false).
