@@ -538,6 +538,8 @@ Per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)
 
 **FULL-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001 (2026-06-03):** [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) — matrix reassessment all governed DCM rows; global `trust_report_authorized` false; SCM Placebo and AugSynth JK resolved; BRB/multicell lanes deferred.
 
+**TBRRIDGE-BRB-VARIANCE-CALIBRATION-REMEDIATION-001 (2026-06-03):** [`TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001_REPORT.md`](track_d/TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001_REPORT.md) — BRB variance policies characterized; `tbrridge_brb_variance_remediation_candidate_only`; null gates fail; post-remediation reassessment next.
+
 ## 11. Stop condition
 
 | Criterion | Status |

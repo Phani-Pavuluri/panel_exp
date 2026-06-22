@@ -1338,6 +1338,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## TBRRIDGE-BRB-VARIANCE-CALIBRATION-REMEDIATION-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001_REPORT.md`](track_d/TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001_REPORT.md) · [`docs/track_d/archives/TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001_summary.json`](track_d/archives/TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001_summary.json) · [`panel_exp/validation/tbrridge_brb_variance_calibration_remediation_001.py`](../panel_exp/validation/tbrridge_brb_variance_calibration_remediation_001.py)
+
+**Status:** **`tbrridge_brb_variance_remediation_candidate_only`**
+
+**Verdict:** Evaluated 7 candidate policies across 22 worlds. Centering preserved. Optional production `variance_calibration_policy` added (`residual_scaled`, `studentized`, `null_calibrated`). Best harness policy: `adaptive_block_length_brb` (truth-coverage gate pass); null type-I still fails (~67–83%). **`INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001`** RESOLVED (`REMEDIATION_CANDIDATE_PENDING_REASSESSMENT`). **No TrustReport authorization.**
+
+**Next:** `DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001`.
+
+---
+
 ## FULL-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001 (2026-06-03)
 
 **Artifact:** [`docs/track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) · [`docs/track_d/archives/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_summary.json`](track_d/archives/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_summary.json) · [`panel_exp/validation/full_trustreport_eligibility_reassessment_001.py`](../panel_exp/validation/full_trustreport_eligibility_reassessment_001.py)

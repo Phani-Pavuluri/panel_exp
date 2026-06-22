@@ -109,6 +109,8 @@ def run_block_residual_bootstrap(ctx: InferenceRunContext) -> None:
     refit_mode = kw.pop("refit_mode", "post_only")
     ci_method = kw.pop("ci_method", "percentile")
     bootstrap_type = kw.pop("bootstrap_type", "block")
+    variance_calibration_policy = kw.pop("variance_calibration_policy", "none")
+    variance_scale_cap = kw.pop("variance_scale_cap", 10.0)
 
     a.bounds, brb_stats = block_residual_bootstrap(
         a.panel_data,
@@ -125,6 +127,8 @@ def run_block_residual_bootstrap(ctx: InferenceRunContext) -> None:
         refit_mode=refit_mode,
         ci_method=ci_method,
         bootstrap_type=bootstrap_type,
+        variance_calibration_policy=variance_calibration_policy,
+        variance_scale_cap=variance_scale_cap,
         return_stats=True,
         **kw,
     )

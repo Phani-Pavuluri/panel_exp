@@ -177,25 +177,90 @@ def _compute_bca_quantiles(
         return (lower, upper, 0.0, 0.0, True)
 
 
+def _residual_pool_per_period_std(pre_residuals: np.ndarray) -> float:
+    """Per-period cross-unit mean residual std for variance calibration."""
+    arr = np.asarray(pre_residuals, dtype=float)
+    if arr.size == 0:
+        return float("nan")
+    if arr.ndim == 1:
+        return float(np.nanstd(arr, ddof=1)) if arr.size > 1 else float("nan")
+    per_period = np.nanmean(arr, axis=1)
+    return float(np.nanstd(per_period, ddof=1)) if per_period.size > 1 else float("nan")
+
+
 def _mean_effect_bootstrap_interval(
     boot_replicates: np.ndarray,
     point_estimate: float,
     alpha: float,
-) -> tuple[float, float, float]:
+    *,
+    variance_calibration_policy: str = "none",
+    residual_pool_std: float | None = None,
+    post_window_len: int | None = None,
+    variance_scale_cap: float = 10.0,
+) -> tuple[float, float, float, float]:
     """Centered-deviation percentile CI for mean post-window treatment effect.
 
     Bootstrap replicates and plug-in point must both be on the **mean effect**
     scale (average treated-minus-counterfactual over the post window).
-    """
+
+    Returns (ci_lower, ci_upper, bootstrap_center, variance_scale_factor).
+  """
     boot_flat = np.asarray(boot_replicates, dtype=float).ravel()
     boot_flat = boot_flat[np.isfinite(boot_flat)]
     if boot_flat.size == 0 or not np.isfinite(point_estimate):
-        return np.nan, np.nan, np.nan
+        return np.nan, np.nan, np.nan, 1.0
     bootstrap_center = float(np.mean(boot_flat))
+    boot_sd = float(np.std(boot_flat, ddof=1)) if boot_flat.size > 1 else 0.0
     deviations = boot_flat - bootstrap_center
-    ci_lower = float(point_estimate + np.percentile(deviations, (alpha / 2.0) * 100.0))
-    ci_upper = float(point_estimate + np.percentile(deviations, (1.0 - alpha / 2.0) * 100.0))
-    return ci_lower, ci_upper, bootstrap_center
+    variance_scale = 1.0
+    policy = str(variance_calibration_policy or "none").lower()
+
+    if policy in ("residual_scaled", "variance_scaled", "brb_variance_calibrated"):
+        if (
+            residual_pool_std is not None
+            and np.isfinite(residual_pool_std)
+            and post_window_len
+            and post_window_len > 0
+            and boot_sd > 1e-12
+        ):
+            target_sd = float(residual_pool_std) / np.sqrt(float(post_window_len))
+            variance_scale = float(
+                np.clip(target_sd / boot_sd, 1.0, float(variance_scale_cap))
+            )
+            deviations = deviations * variance_scale
+        ci_lower = float(point_estimate + np.percentile(deviations, (alpha / 2.0) * 100.0))
+        ci_upper = float(point_estimate + np.percentile(deviations, (1.0 - alpha / 2.0) * 100.0))
+    elif policy in ("studentized", "brb_studentized"):
+        if boot_sd > 1e-12:
+            pivots = (point_estimate - boot_flat) / boot_sd
+            ci_lower = float(point_estimate - boot_sd * np.percentile(pivots, (1.0 - alpha / 2.0) * 100.0))
+            ci_upper = float(point_estimate - boot_sd * np.percentile(pivots, (alpha / 2.0) * 100.0))
+        else:
+            ci_lower = float(point_estimate + np.percentile(deviations, (alpha / 2.0) * 100.0))
+            ci_upper = float(point_estimate + np.percentile(deviations, (1.0 - alpha / 2.0) * 100.0))
+    elif policy in ("null_calibrated", "brb_null_calibrated"):
+        ci_lower = float(point_estimate + np.percentile(deviations, (alpha / 2.0) * 100.0))
+        ci_upper = float(point_estimate + np.percentile(deviations, (1.0 - alpha / 2.0) * 100.0))
+        width_before = float(ci_upper - ci_lower)
+        if (
+            residual_pool_std is not None
+            and np.isfinite(residual_pool_std)
+            and post_window_len
+            and post_window_len > 0
+        ):
+            z = float(stats.norm.ppf(1.0 - alpha / 2.0))
+            min_hw = z * float(residual_pool_std) / np.sqrt(float(post_window_len))
+            if point_estimate - ci_lower < min_hw:
+                ci_lower = float(point_estimate - min_hw)
+            if ci_upper - point_estimate < min_hw:
+                ci_upper = float(point_estimate + min_hw)
+            if width_before > 1e-12:
+                variance_scale = float((ci_upper - ci_lower) / width_before)
+    else:
+        ci_lower = float(point_estimate + np.percentile(deviations, (alpha / 2.0) * 100.0))
+        ci_upper = float(point_estimate + np.percentile(deviations, (1.0 - alpha / 2.0) * 100.0))
+
+    return ci_lower, ci_upper, bootstrap_center, variance_scale
 
 
 # New helpers
@@ -496,6 +561,8 @@ def block_residual_bootstrap(
     refit_mode: str = "post_only",
     ci_method: str = "percentile",
     bootstrap_type: str = "block",
+    variance_calibration_policy: str = "none",
+    variance_scale_cap: float = 10.0,
     return_stats: bool = False,
     verbose: bool = False,
     **model_args,
@@ -528,6 +595,11 @@ def block_residual_bootstrap(
     bootstrap_type : "block" | "wild"
         "block" (default): moving-block bootstrap. "wild": Rademacher sign
         weights (experimental, off by default).
+    variance_calibration_policy : "none" | "residual_scaled" | "studentized" | "null_calibrated"
+        Optional mean-effect interval calibration. Default "none" preserves
+        centered-deviation percentile behavior (TBRRIDGE_BRB_INTERVAL_CORRECTION_001).
+    variance_scale_cap : float
+        Upper cap for residual-scaled deviation multiplier (default 10).
 
     Notes
     -----
@@ -560,7 +632,14 @@ def block_residual_bootstrap(
         )
 
     # Filter BRB-only params so they are not passed to estimator __init__
-    _brb_only = {"refit_mode", "refit_in_bootstrap", "ci_method", "bootstrap_type"}
+    _brb_only = {
+        "refit_mode",
+        "refit_in_bootstrap",
+        "ci_method",
+        "bootstrap_type",
+        "variance_calibration_policy",
+        "variance_scale_cap",
+    }
     model_args = {k: v for k, v in model_args.items() if k not in _brb_only}
 
     rng = np.random.default_rng(random_state)
@@ -733,10 +812,34 @@ def block_residual_bootstrap(
     # Mean post-window effect estimand (matches TBRRidge / recovery path-period readout).
     plugin_mean_effect = float(np.nanmean(treated_effect))
     boot_mean_replicates = np.nanmean(boot_paths, axis=(1, 2))
-    mean_ci_lower, mean_ci_upper, bootstrap_center_mean = _mean_effect_bootstrap_interval(
-        boot_mean_replicates,
-        plugin_mean_effect,
-        alpha,
+    residual_pool_std = _residual_pool_per_period_std(pre_residuals)
+    mean_ci_lower, mean_ci_upper, bootstrap_center_mean, variance_scale_factor = (
+        _mean_effect_bootstrap_interval(
+            boot_mean_replicates,
+            plugin_mean_effect,
+            alpha,
+            variance_calibration_policy=variance_calibration_policy,
+            residual_pool_std=residual_pool_std,
+            post_window_len=treated_len,
+            variance_scale_cap=variance_scale_cap,
+        )
+    )
+    boot_mean_replicate_std = (
+        float(np.std(boot_mean_replicates[np.isfinite(boot_mean_replicates)], ddof=1))
+        if np.sum(np.isfinite(boot_mean_replicates)) > 1
+        else float("nan")
+    )
+    empirical_mean_se = (
+        float(np.nanstd(treated_effect, ddof=1) / np.sqrt(treated_len))
+        if treated_effect.size > 1
+        else float("nan")
+    )
+    calibration_ratio_mean_effect = (
+        float(boot_mean_replicate_std / empirical_mean_se)
+        if np.isfinite(boot_mean_replicate_std)
+        and np.isfinite(empirical_mean_se)
+        and empirical_mean_se > 1e-12
+        else None
     )
     bootstrap_center_minus_point = (
         float(bootstrap_center_mean - plugin_mean_effect)
@@ -853,10 +956,20 @@ def block_residual_bootstrap(
             'effect_mean_brb': plugin_mean_effect,
             'effect_ci_lower_mean_brb': mean_ci_lower,
             'effect_ci_upper_mean_brb': mean_ci_upper,
-            'bootstrap_interval_method': 'centered_deviation_percentile_mean_effect',
+            'bootstrap_interval_method': (
+                'centered_deviation_percentile_mean_effect'
+                if variance_calibration_policy in (None, '', 'none')
+                else f'centered_deviation_{variance_calibration_policy}_mean_effect'
+            ),
             'bootstrap_replicate_estimand': 'post_window_mean_effect_level',
             'bootstrap_center': bootstrap_center_mean,
             'bootstrap_center_minus_point': bootstrap_center_minus_point,
+            'bootstrap_mean_replicate_std': boot_mean_replicate_std,
+            'empirical_mean_standard_error': empirical_mean_se,
+            'calibration_ratio_mean_effect': calibration_ratio_mean_effect,
+            'variance_calibration_policy': variance_calibration_policy,
+            'variance_scale_factor': variance_scale_factor,
+            'residual_pool_per_period_std': residual_pool_std,
             'bootstrap_replicate_count': int(np.sum(np.isfinite(boot_mean_replicates))),
             'point_estimate': plugin_mean_effect,
             'interval_lower': mean_ci_lower,
@@ -909,10 +1022,20 @@ def block_residual_bootstrap(
             'effect_mean_brb': plugin_mean_effect,
             'effect_ci_lower_mean_brb': mean_ci_lower,
             'effect_ci_upper_mean_brb': mean_ci_upper,
-            'bootstrap_interval_method': 'centered_deviation_percentile_mean_effect',
+            'bootstrap_interval_method': (
+                'centered_deviation_percentile_mean_effect'
+                if variance_calibration_policy in (None, '', 'none')
+                else f'centered_deviation_{variance_calibration_policy}_mean_effect'
+            ),
             'bootstrap_replicate_estimand': 'post_window_mean_effect_level',
             'bootstrap_center': bootstrap_center_mean,
             'bootstrap_center_minus_point': bootstrap_center_minus_point,
+            'bootstrap_mean_replicate_std': boot_mean_replicate_std,
+            'empirical_mean_standard_error': empirical_mean_se,
+            'calibration_ratio_mean_effect': calibration_ratio_mean_effect,
+            'variance_calibration_policy': variance_calibration_policy,
+            'variance_scale_factor': variance_scale_factor,
+            'residual_pool_per_period_std': residual_pool_std,
             'bootstrap_replicate_count': int(np.sum(np.isfinite(boot_mean_replicates))),
             'point_estimate': plugin_mean_effect,
             'interval_lower': mean_ci_lower,

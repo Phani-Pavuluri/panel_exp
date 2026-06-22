@@ -75,6 +75,32 @@ def test_clean_null_finite_interval():
     assert r["finite_outputs"]
 
 
+def test_variance_scaled_policy_widens_or_preserves_width():
+    est_base, r_base, _ = _run_brb(DIAGNOSTIC_WORLDS[1], seed=7)
+    est_scaled, r_scaled, _ = _run_brb(
+        DIAGNOSTIC_WORLDS[1], seed=7, variance_calibration_policy="residual_scaled"
+    )
+    b_base = est_base.results["block_residual_bootstrap_stats"]
+    b_scaled = est_scaled.results["block_residual_bootstrap_stats"]
+    assert b_scaled["variance_calibration_policy"] == "residual_scaled"
+    assert b_scaled.get("variance_scale_factor", 1.0) >= 1.0
+    assert r_scaled["interval_width"] >= r_base["interval_width"] * 0.99
+
+
+def test_studentized_policy_metadata():
+    est, _, _ = _run_brb(DIAGNOSTIC_WORLDS[1], variance_calibration_policy="studentized")
+    brb = est.results["block_residual_bootstrap_stats"]
+    assert "studentized" in brb["bootstrap_interval_method"]
+    assert brb["bootstrap_center_minus_point"] is not None
+
+
+def test_baseline_policy_backward_compatible():
+    est, _, _ = _run_brb(DIAGNOSTIC_WORLDS[1])
+    brb = est.results["block_residual_bootstrap_stats"]
+    assert brb.get("variance_calibration_policy", "none") in ("none", None)
+    assert brb["bootstrap_interval_method"] == "centered_deviation_percentile_mean_effect"
+
+
 def test_clean_negative_characterized():
     est, r, true = _run_brb(DIAGNOSTIC_WORLDS[2])
     assert true < 0

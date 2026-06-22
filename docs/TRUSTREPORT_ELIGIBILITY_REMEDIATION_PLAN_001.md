@@ -323,7 +323,7 @@ Remain ineligible unless a **separate future artifact** explicitly changes them:
 | `D5-TRUST-TBRRIDGE-KFOLD-001` | TBRRidge KFold path | DCM-005-KFOLD | ✅ complete — not causal-interval eligible; [`OPEN_INVESTIGATIONS_001.json`](governance/OPEN_INVESTIGATIONS_001.json) |
 | `D5-TRUST-TBRRIDGE-PLACEBO-001` | TBRRidge placebo null-monitor | DCM-005-PLACEBO | ✅ complete — null-monitor / falsification only; [`OPEN_INVESTIGATIONS_001.json`](governance/OPEN_INVESTIGATIONS_001.json) |
 | `DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001` | DCM-005 partial re-run | DCM-005 promotion candidacy | ✅ complete — path-specific restrictions; no authorization |
-| `TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001` | BRB variance remediation | DCM-005-BRB causal path | pending — deferred from reassessment |
+| `TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001` | BRB variance remediation | DCM-005-BRB causal path | ✅ complete — candidate_only; null gates fail |
 | `D5-TRUST-STRATIFIED-SCM-JK-001` | Stratified combination | DCM-008 | ✅ complete |
 | `D5-TRUST-MULTICELL-PERCELL-INFERENCE-001` | Per-cell inference | DCM-006 | ✅ complete |
 | `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` | Partial re-run (DCM-001 only) | DCM-001 promotion candidacy | ✅ complete (DCM-001 only) |
