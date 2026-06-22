@@ -243,7 +243,8 @@ Must define:
 | [`DCM005_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/DCM005_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) | DCM-005 path-specific restrictions; multi-cell validation next |
 | [`D5_TRUST_MULTICELL_PERCELL_INFERENCE_001_REPORT.md`](track_d/D5_TRUST_MULTICELL_PERCELL_INFERENCE_001_REPORT.md) | DCM-006 per-cell inference; multiplicity unresolved; stratified SCM+JK next |
 | [`MULTICELL_CELL_RELATIONSHIP_AND_DECISION_POLICY_CONTRACT_001.md`](MULTICELL_CELL_RELATIONSHIP_AND_DECISION_POLICY_CONTRACT_001.md) | DCM-006 semantic guardrail; parallel marginal vs competing-cell policies |
-| [`D5_TRUST_STRATIFIED_SCM_JK_001_REPORT.md`](track_d/D5_TRUST_STRATIFIED_SCM_JK_001_REPORT.md) | DCM-008 stratified SCM+JK diagnostic_only; aggregate blocked; FULL_TRUSTREPORT reassessment next |
+| [`D5_TRUST_STRATIFIED_SCM_JK_001_REPORT.md`](track_d/D5_TRUST_STRATIFIED_SCM_JK_001_REPORT.md) | DCM-008 stratified SCM+JK diagnostic_only; aggregate blocked |
+| [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) | Matrix reassessment complete; no promotion candidates; BRB remediation next |
 | [`DCM004_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/DCM004_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) | DCM-004 reassessed `ELIGIBLE_WITH_RESTRICTIONS`; DCM-005 TBRRidge validation next |
 | [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) | DCM-001 reassessed; promotion still blocked |
 | F-DECISION / TrustReport | Role assignment paused until foundation + suitability v2 |

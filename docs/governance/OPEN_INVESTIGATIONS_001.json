@@ -144,52 +144,48 @@
     {
       "investigation_id": "INV-AUGSYNTH-JK-TRUSTREPORT-DISPOSITION-001",
       "title": "AugSynth + UnitJackknife TrustReport disposition",
-      "status": "DEFERRED_WITH_TRIGGER",
+      "status": "RESOLVED",
       "priority": "P2",
       "discovered_by": "TRUSTREPORT-ELIGIBILITY-VALIDATION-001",
       "affected_combination": "DCM-002",
       "problem_class": ["trustreport_disposition", "causal_interval"],
       "evidence": {
         "current_class": "descriptive_point",
-        "jk_causal_evidence": "insufficient"
+        "jk_causal_evidence": "insufficient",
+        "full_reassessment_disposition": "DIAGNOSTIC_ONLY",
+        "trust_report_authorized": false
       },
-      "current_decision": "DESCRIPTIVE_POINT_ONLY",
-      "blocked_roles": ["trust_report", "calibration_signal"],
-      "target_artifact": "DISPOSITION-AUGSYNTH-JK-001",
-      "revisit_trigger": "At explicit disposition-decisions milestone after DCM-001 SCM+JK remediation evidence is finalized",
-      "decision_checkpoint": "FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT",
-      "blocking_policy": "No causal-interval or TrustReport promotion without separate disposition artifact",
-      "terminal_decisions": [
-        "RESTRICT",
-        "DIAGNOSTIC_ONLY",
-        "PERMANENTLY_BLOCK"
-      ],
-      "resolution_artifact": null
+      "current_decision": "DIAGNOSTIC_ONLY",
+      "blocked_roles": ["trust_report", "calibration_signal", "production"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT DCM-002 row",
+      "blocking_policy": "Descriptive point and diagnostic display only; no causal-interval TrustReport promotion",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY"],
+      "resolution_artifact": "FULL-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001"
     },
     {
       "investigation_id": "INV-SCM-PLACEBO-GOVERNED-SEMANTICS-001",
       "title": "SCM placebo governed null-monitor semantics",
-      "status": "OPEN",
+      "status": "RESOLVED",
       "priority": "P2",
       "discovered_by": "TRUSTREPORT-ELIGIBILITY-VALIDATION-001",
       "affected_combination": "DCM-001-PLACEBO",
       "problem_class": ["semantic_misuse", "null_monitor"],
       "evidence": {
         "role": "null_monitor",
-        "causal_interval_claimed": false
+        "causal_interval_claimed": false,
+        "full_reassessment_disposition": "NULL_MONITOR_ONLY",
+        "trust_report_authorized": false
       },
       "current_decision": "NULL_MONITOR_ONLY",
       "blocked_roles": ["trust_report", "calibration_signal", "production"],
-      "target_artifact": "D5-TRUST-SCM-PLACEBO-SEMANTICS-001",
-      "revisit_trigger": "Before SCM+Placebo disposition decision at §2b milestone",
-      "decision_checkpoint": "disposition decisions (AugSynth+JK · SCM+Placebo)",
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT SCM-PLACEBO row",
       "blocking_policy": "Placebo path cannot export as causal interval; null-monitor calibration only",
-      "terminal_decisions": [
-        "RESTRICT",
-        "DIAGNOSTIC_ONLY",
-        "PERMANENTLY_BLOCK"
-      ],
-      "resolution_artifact": null
+      "terminal_decisions": ["RESTRICT", "NULL_MONITOR_ONLY"],
+      "resolution_artifact": "FULL-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001"
     },
     {
       "investigation_id": "INV-MULTICELL-PERCELL-INFERENCE-001",
@@ -403,6 +399,23 @@
       "must_consume_before_close": true,
       "next_artifact": "FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT",
       "resolution_artifact": "D5-TRUST-STRATIFIED-SCM-JK-001"
+    },
+    {
+      "lane_id": "FULL-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-SCM-PLACEBO-GOVERNED-SEMANTICS-001",
+        "INV-AUGSYNTH-JK-TRUSTREPORT-DISPOSITION-001"
+      ],
+      "deferred_investigations": [
+        "INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001",
+      "resolution_artifact": "FULL-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001"
     }
   ]
 }

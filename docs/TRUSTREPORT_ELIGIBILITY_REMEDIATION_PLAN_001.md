@@ -20,7 +20,7 @@ This artifact identifies root causes, minimum remediations, follow-up validation
 | All D5 archives `trust_role_allowed=false` | Governance forbids trust claims |
 | Downstream gateway BLOCK | Authorization separate and closed |
 
-Promotion requires: remediation → revalidation → **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** (all DCM-001–008) → **`TRUSTREPORT_DOWNSTREAM_PROMOTION_001`** → downstream authorization update. Partial **`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`** (DCM-001 only) is complete; full reassessment is not.
+Promotion requires: remediation → revalidation → **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT`** (all DCM-001–008) → **`TRUSTREPORT_DOWNSTREAM_PROMOTION_001`** → downstream authorization update. Partial **`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`** (DCM-001 only) and **`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`** (2026-06-03) are complete; global TrustReport authorization remains false; no promotion candidates.
 
 ## 2a. Combination-validation scopes (do not conflate)
 
@@ -327,7 +327,7 @@ Remain ineligible unless a **separate future artifact** explicitly changes them:
 | `D5-TRUST-STRATIFIED-SCM-JK-001` | Stratified combination | DCM-008 | ✅ complete |
 | `D5-TRUST-MULTICELL-PERCELL-INFERENCE-001` | Per-cell inference | DCM-006 | ✅ complete |
 | `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` | Partial re-run (DCM-001 only) | DCM-001 promotion candidacy | ✅ complete (DCM-001 only) |
-| `FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT` | Re-run eligibility harness for all DCM-001–008 | Promotion candidacy | pending |
+| `FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` | Matrix reassessment all DCM rows | Promotion candidacy | ✅ complete — no promotion candidates; global authorization false |
 | `TRUSTREPORT_DOWNSTREAM_PROMOTION_001` | Role-specific promotion | Authorization update |
 
 ## 17. Prioritization

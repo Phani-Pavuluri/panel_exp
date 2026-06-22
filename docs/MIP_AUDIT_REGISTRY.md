@@ -1338,6 +1338,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## FULL-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) · [`docs/track_d/archives/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_summary.json`](track_d/archives/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_summary.json) · [`panel_exp/validation/full_trustreport_eligibility_reassessment_001.py`](../panel_exp/validation/full_trustreport_eligibility_reassessment_001.py)
+
+**Status:** **`full_trustreport_reassessment_restricted_candidates_only`**
+
+**Verdict:** Matrix-level TrustReport eligibility reassessment across all governed DCM rows. Consumes DCM-001/004/005/006/008 trust lanes and prior partial reassessments. DCM-001/004 `ELIGIBLE_WITH_RESTRICTIONS` (no downstream authorization); DCM-005 BRB `DEFERRED_REMEDIATION`; DCM-005 KFold `DIAGNOSTIC_ONLY`; DCM-005 Placebo `NULL_MONITOR_ONLY`; DCM-006 per-cell restricted; DCM-008 `DIAGNOSTIC_ONLY`; SCM Placebo `NULL_MONITOR_ONLY`; AugSynth JK `DIAGNOSTIC_ONLY`; DCM-003/007 `INELIGIBLE`; DCM-009–019 `INSUFFICIENT_EVIDENCE`. **`INV-SCM-PLACEBO-GOVERNED-SEMANTICS-001`** and **`INV-AUGSYNTH-JK-TRUSTREPORT-DISPOSITION-001`** RESOLVED. Deferred unchanged: BRB variance, multicell shared-control, multicell multiplicity. **Global `trust_report_authorized`: false.** **No promotion candidates.**
+
+**Next:** `TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001` → optional `TRUSTREPORT_DOWNSTREAM_PROMOTION_001` (restricted review only).
+
+---
+
 ## MULTICELL-CELL-RELATIONSHIP-AND-DECISION-POLICY-CONTRACT-001 (2026-06-03)
 
 **Artifact:** [`docs/MULTICELL_CELL_RELATIONSHIP_AND_DECISION_POLICY_CONTRACT_001.md`](MULTICELL_CELL_RELATIONSHIP_AND_DECISION_POLICY_CONTRACT_001.md) · [`panel_exp/validation/multicell_decision_policy_contract_001.py`](../panel_exp/validation/multicell_decision_policy_contract_001.py)
