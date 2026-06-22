@@ -57,9 +57,9 @@ Source: [`TRUSTREPORT_ELIGIBILITY_VALIDATION_001_summary.json`](track_d/archives
 | DCM-005-BRB | INSUFFICIENT_EVIDENCE | Null metrics OK; scale/bias mismatch on lift |
 | DCM-005-KFOLD | INSUFFICIENT_EVIDENCE | Directional false signal 100% on null; scale mismatch |
 | DCM-005-PLACEBO | INELIGIBLE | Null-monitor; not causal |
-| DCM-006 multi-cell per-cell | ELIGIBLE_WITH_RESTRICTIONS | Cell identity preserved; no interval coverage |
+| DCM-006 multi-cell per-cell | PER_CELL_RESTRICTED | Marginal per-cell diagnostic/restricted only; familywise/pooled/global blocked |
 | DCM-007 pooled | INELIGIBLE | Permanent exclusion |
-| DCM-008 stratified+SCM/JK | ELIGIBLE_WITH_RESTRICTIONS | Design-only evidence; no dedicated D5-STAT |
+| DCM-008 stratified+SCM/JK | DIAGNOSTIC_ONLY | Per-stratum diagnostic/restricted; aggregate readout characterization only — not a governed pooled causal estimand |
 
 ## 4. Root-cause taxonomy
 
@@ -221,7 +221,7 @@ Existing governance references: `calibration_report.py` (FPR ≤0.10, null cover
 
 **Status (2026-06-03):** ✅ **`D5-TRUST-STRATIFIED-SCM-JK-001`** complete.
 
-**Findings:** Per-stratum SCM+JK on balanced two-strata geometry: coverage ~85.1%; per-stratum null type-I ~17.0%; aggregate characterization coverage ~88.8% with aggregate null type-I ~26.0%. SCM fit mode: per-stratum panel (aggregate treated units in stratum). Within-stratum donor pool preferred over global. Aggregate causal claims blocked (100%). Weight-dominance rate ~4.4%. Verdict: `stratified_scm_jk_diagnostic_only`. Production defect: `geometry_or_semantic_limitation` (not isolated code bug).
+**Findings:** Per-stratum SCM+JK on balanced two-strata geometry: coverage ~85.9%; per-stratum null type-I ~16.7%; aggregate characterization coverage ~89.7% with aggregate null type-I ~26.0%. SCM fit mode: per-stratum panel (aggregate treated units in stratum). Within-stratum donor pool preferred over global. **Aggregate stratified readout is characterization only, not a governed pooled causal estimand.** Aggregate causal claims blocked (100%). Weight-dominance rate ~6.1%. Verdict: `stratified_scm_jk_diagnostic_only`. Production defect: `geometry_or_semantic_limitation` (not isolated code bug).
 
 **Investigations:** `INV-STRATIFIED-SCM-JK-TRUSTREPORT-DISPOSITION-001` → RESOLVED (`DIAGNOSTIC_ONLY`).
 

@@ -10,6 +10,8 @@ It does not validate unrelated estimator/inference combinations.
 **Verdict:** `stratified_scm_jk_diagnostic_only`
 **Aggregate status:** `DIAGNOSTIC_ONLY`
 
+**Aggregate stratified readout is characterization only, not a governed pooled causal estimand.** Per-stratum marginal intervals may be shown under diagnostic/restricted semantics; aggregate volume-weighted readout does not authorize causal claims unless a later pooled/stratified estimand artifact is built.
+
 ## 2. Prior DCM-008 status
 
 DCM-008 was characterized_with_restrictions; stratified SCM+JK statistical behavior unresolved.

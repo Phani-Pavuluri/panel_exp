@@ -88,7 +88,7 @@ Lane A evaluated: SCM+JK, stratified+SCM/JK, DID+bootstrap, multi-cell per-cell,
 
 ## 21. DCM-008 findings
 
-**ELIGIBLE_WITH_RESTRICTIONS → DIAGNOSTIC_ONLY (2026-06-03).** ✅ `D5-TRUST-STRATIFIED-SCM-JK-001` complete. Per-stratum SCM+JK coverage ~85% on balanced strata; aggregate causal claims blocked; verdict `stratified_scm_jk_diagnostic_only`. No TrustReport authorization.
+**ELIGIBLE_WITH_RESTRICTIONS → DIAGNOSTIC_ONLY (2026-06-03).** ✅ `D5-TRUST-STRATIFIED-SCM-JK-001` complete. Per-stratum SCM+JK coverage ~86% on balanced strata; aggregate null type-I ~26%. **Aggregate stratified readout is characterization only, not a governed pooled causal estimand.** Verdict `stratified_scm_jk_diagnostic_only`. No TrustReport authorization.
 
 ## 22. Known ineligible controls
 

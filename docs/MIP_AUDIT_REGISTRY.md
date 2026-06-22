@@ -1356,7 +1356,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Status:** **`stratified_scm_jk_diagnostic_only`**
 
-**Verdict:** DCM-008 stratified SCM+JK characterization. SCM fit per-stratum panel (aggregate treated in stratum). Balanced two-strata per-stratum coverage ~0.851; per-stratum null type-I ~0.170; aggregate characterization type-I ~0.260; aggregate claims blocked 100%. Within-stratum donor pool preferred. **`INV-STRATIFIED-SCM-JK-TRUSTREPORT-DISPOSITION-001`** RESOLVED (`DIAGNOSTIC_ONLY`). Production defect: `geometry_or_semantic_limitation`. **No TrustReport authorization.**
+**Verdict:** DCM-008 stratified SCM+JK characterization. SCM fit per-stratum panel (aggregate treated in stratum). Balanced two-strata per-stratum coverage ~0.859; per-stratum null type-I ~0.167; aggregate characterization type-I ~0.260; aggregate claims blocked 100%. **Aggregate stratified readout is characterization only, not a governed pooled causal estimand.** Within-stratum donor pool preferred. **`INV-STRATIFIED-SCM-JK-TRUSTREPORT-DISPOSITION-001`** RESOLVED (`DIAGNOSTIC_ONLY`). Production defect: `geometry_or_semantic_limitation`. **No TrustReport authorization.**
 
 **Next:** `FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT` → disposition decisions → `TRUSTREPORT_DOWNSTREAM_PROMOTION_001`.
 
