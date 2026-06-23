@@ -276,3 +276,15 @@ class TestOpenInvestigationRegistry001:
         assert lane["next_artifact"] == "CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001"
         assert "readiness_matrix" in lane["artifact_tags"]
         assert "no_downstream_authorization" in lane["artifact_tags"]
+
+    def test_calibration_signal_method_gate_draft_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "CALIBRATION-SIGNAL-METHOD-GATE-DRAFT-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001"
+        assert lane["next_artifact"] == "CALIBRATION_SIGNAL_SCHEMA_ALIGNMENT_DRAFT_001"
+        assert "calibration_signal_draft_gate" in lane["artifact_tags"]
+        assert "no_downstream_authorization" in lane["artifact_tags"]

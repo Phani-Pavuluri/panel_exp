@@ -1,0 +1,253 @@
+{
+  "artifact_id": "CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001",
+  "artifact_version": "1.0.0",
+  "status": "completed",
+  "generated_at": "2026-06-23T19:52:30.847623+00:00",
+  "git_commit": "0ea68841c6a35a3a87d982212578df8bd5f4a099",
+  "verdict": "calibration_signal_method_gate_draft_defined_no_authorization",
+  "governance_verdict": "calibration_signal_method_gate_draft_defined_no_authorization",
+  "source_matrix_artifact_id": "METHOD_READINESS_MATRIX_V2_001",
+  "roadmap_spine": [
+    "ROADMAP_REFOCUS_METHOD_VALIDATION_001",
+    "INFERENCE_REPLACEMENT_SCOUT_001",
+    "DESIGN_AWARE_ASSIGNMENT_GENERATORS_001",
+    "MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001",
+    "SCM_PLACEBO_GOVERNED_SEMANTICS_001",
+    "METHOD_ROADMAP_ALIGNMENT_AUDIT_001",
+    "METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001",
+    "SCM_TREATED_SET_PLACEBO_INTEGRATION_001",
+    "STUDENTIZED_PLACEBO_RANK_INFERENCE_001",
+    "SCM_STUDENTIZED_TREATED_SET_PLACEBO_INTEGRATION_001",
+    "MULTICELL_SHARED_CONTROL_MULTIPLICITY_001",
+    "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001",
+    "AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001",
+    "METHOD_READINESS_MATRIX_V2_001",
+    "CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001"
+  ],
+  "row_count": 25,
+  "source_row_count": 25,
+  "method_ids_match_source_matrix": true,
+  "unique_method_ids": true,
+  "scenario_count": 35,
+  "passed_scenarios": 35,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "draft_builds_from_matrix",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "row_count_equals_source_matrix",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "all_source_method_ids_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_ids_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "restricted_research_maps_eligible_future_review",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "framework_candidates_conditionally_reviewable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "per_cell_marginal_conditionally_reviewable_with_scope_evidence",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_candidate_not_eligible_contract_only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "diagnostic_rows_not_eligible_diagnostic_only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "sensitivity_row_not_eligible_sensitivity_only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "heterogeneity_review_conditionally_reviewable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multiplicity_unresolved_not_eligible",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "research_deferred_not_eligible",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "blocked_rows_not_eligible_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "all_rows_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "all_rows_calibration_signal_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "all_rows_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "all_rows_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "all_rows_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "all_rows_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "all_rows_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "all_rows_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "all_rows_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "eligible_rows_have_required_evidence",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "conditionally_reviewable_rows_have_required_evidence",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "ineligible_rows_have_exclusion_reasons",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "all_rows_forbid_signal_creation_export",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "all_rows_forbid_downstream_execution",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "find_row_works",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "filter_by_gate_status_works",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "filter_by_method_family_works",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "summary_counts_match_rows",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "summary_json_authorization_flags_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_row_claims_trustreport_expansion",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "draft_validation_passes",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "gate_status_counts": {
+    "eligible_for_future_review": 2,
+    "conditionally_reviewable_after_additional_evidence": 5,
+    "not_eligible_diagnostic_only": 6,
+    "not_eligible_sensitivity_only": 1,
+    "not_eligible_contract_only": 1,
+    "not_eligible_unresolved_multiplicity_dependence": 2,
+    "not_eligible_research_deferred": 1,
+    "not_eligible_blocked": 7
+  },
+  "draft_gate_boundaries": {
+    "eligible_for_future_review": "future review only; no signal creation or downstream authorization",
+    "conditionally_reviewable_after_additional_evidence": "not signal-ready; requires additional evidence before review",
+    "not_eligible_diagnostic_only": "diagnostic rows cannot produce CalibrationSignal",
+    "not_eligible_sensitivity_only": "sensitivity rows cannot produce CalibrationSignal",
+    "not_eligible_contract_only": "contract rows are not inference authorization",
+    "not_eligible_unresolved_multiplicity_dependence": "multiplicity/dependence unresolved rows cannot produce CalibrationSignal",
+    "not_eligible_research_deferred": "research deferred rows cannot produce CalibrationSignal",
+    "not_eligible_blocked": "blocked rows cannot produce CalibrationSignal"
+  },
+  "forbidden_outputs": [
+    "actual_calibration_signal_creation",
+    "calibration_signal_export",
+    "calibration_signal_ingestion",
+    "trustreport_expansion",
+    "mmm_ingestion",
+    "llm_decisioning",
+    "production_decisioning",
+    "live_api_execution",
+    "scheduler_execution",
+    "budget_optimization"
+  ],
+  "next_artifact": "CALIBRATION_SIGNAL_SCHEMA_ALIGNMENT_DRAFT_001",
+  "calibration_signal_allowed": false,
+  "calibration_signal_authorized": false,
+  "trustreport_authorized": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false
+}

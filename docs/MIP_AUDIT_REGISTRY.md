@@ -1466,7 +1466,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Governed method-readiness matrix v2 consolidating 25+ rows across restricted research-mode, framework candidates, per-cell/contract candidates, diagnostic/sensitivity, multiplicity unresolved, and blocked paths. **No TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production inference authorization.**
 
-**Next:** `CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001`.
+**Next:** `CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001` (completed — see CalibrationSignal method gate draft report).
+
+---
+
+## CALIBRATION-SIGNAL-METHOD-GATE-DRAFT-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001_REPORT.md`](track_d/CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001_REPORT.md) · [`docs/track_d/archives/CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001_summary.json`](track_d/archives/CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001_summary.json) · [`panel_exp/inference/calibration_signal_method_gate_draft.py`](../panel_exp/inference/calibration_signal_method_gate_draft.py) · [`panel_exp/validation/calibration_signal_method_gate_draft_001.py`](../panel_exp/validation/calibration_signal_method_gate_draft_001.py)
+
+**Status:** **`calibration_signal_method_gate_draft_defined_no_authorization`**
+
+**Verdict:** Draft CalibrationSignal method gate mapping Method Readiness Matrix V2 tiers to future review eligibility. Future-review eligible and conditionally reviewable rows are not signal-ready. **No CalibrationSignal creation, export, TrustReport expansion, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `CALIBRATION_SIGNAL_SCHEMA_ALIGNMENT_DRAFT_001`.
 
 ---
 
