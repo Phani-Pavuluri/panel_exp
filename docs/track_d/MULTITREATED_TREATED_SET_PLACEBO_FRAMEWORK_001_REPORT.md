@@ -16,7 +16,7 @@ The framework evaluates an observed treated-set statistic against design-valid p
 
 **Governance verdict:** `multitreated_treated_set_placebo_framework_defined_no_inference_authorization`
 
-**Next artifact:** `SCM_PLACEBO_GOVERNED_SEMANTICS_001`
+**Next artifact:** `METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001`
 
 ---
 
@@ -209,7 +209,7 @@ Harness blocks explicit authorization requests at evaluation time.
 
 ### Next artifact
 
-`SCM_PLACEBO_GOVERNED_SEMANTICS_001`
+`METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001`
 
 Regenerate:
 

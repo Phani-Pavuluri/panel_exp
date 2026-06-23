@@ -1358,7 +1358,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Governed multi-treated treated-set placebo framework consuming design-aware pseudo-assignments. Design-based, falsification-only, and blocked semantic paths validated. Leave-one-treated-out rejected as placebo substitute. Multicell global/winner claims blocked. Empirical tail fraction framework-only — **no production p-value or CI authorization.** **`INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001`** disposition: `TREATED_SET_PLACEBO_FRAMEWORK_DEFINED_PENDING_METHOD_SPECIFIC_VALIDATION`. **No TrustReport authorization.**
 
-**Next:** `SCM_PLACEBO_GOVERNED_SEMANTICS_001`.
+**Next:** `SCM_PLACEBO_GOVERNED_SEMANTICS_001` (completed — see SCM placebo semantics report).
+
+---
+
+## SCM-PLACEBO-GOVERNED-SEMANTICS-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/SCM_PLACEBO_GOVERNED_SEMANTICS_001_REPORT.md`](track_d/SCM_PLACEBO_GOVERNED_SEMANTICS_001_REPORT.md) · [`docs/track_d/archives/SCM_PLACEBO_GOVERNED_SEMANTICS_001_summary.json`](track_d/archives/SCM_PLACEBO_GOVERNED_SEMANTICS_001_summary.json) · [`panel_exp/inference/scm_placebo_semantics.py`](../panel_exp/inference/scm_placebo_semantics.py) · [`panel_exp/validation/scm_placebo_governed_semantics_001.py`](../panel_exp/validation/scm_placebo_governed_semantics_001.py)
+
+**Status:** **`scm_placebo_governed_semantics_defined_no_authorization`**
+
+**Verdict:** Governed SCM placebo semantics across single-treated falsification, multi-treated treated-set placebo, leave-one-treated-out sensitivity, and design-aware pseudo-assignment paths. Null-monitor, falsification, design-based candidate, sensitivity-only, and blocked roles enforced. Platform overclaims blocked. **No production p-value, CI, TrustReport, or CalibrationSignal authorization.** **`INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001`** disposition: `SCM_PLACEBO_GOVERNED_SEMANTICS_DEFINED_PENDING_METHOD_SPECIFIC_VALIDATION`.
+
+**Next:** `METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001`.
 
 ---
 
