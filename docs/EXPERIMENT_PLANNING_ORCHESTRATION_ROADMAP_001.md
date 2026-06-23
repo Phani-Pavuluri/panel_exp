@@ -256,6 +256,7 @@ Must define:
 | [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md) | TrustReport ops frozen; method validation active; inference scout next |
 | [`INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) | Inference scout complete; design-aware generators primary; no authorization |
 | [`DESIGN_AWARE_ASSIGNMENT_GENERATORS_001_REPORT.md`](track_d/DESIGN_AWARE_ASSIGNMENT_GENERATORS_001_REPORT.md) | Assignment generators defined; treated-set placebo framework next |
+| [`MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001_REPORT.md`](track_d/MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001_REPORT.md) | Treated-set placebo framework defined; SCM placebo semantics next |
 | [`DCM004_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/DCM004_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) | DCM-004 reassessed `ELIGIBLE_WITH_RESTRICTIONS`; DCM-005 TBRRidge validation next |
 | [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) | DCM-001 reassessed; promotion still blocked |
 | F-DECISION / TrustReport | Role assignment paused until foundation + suitability v2 |

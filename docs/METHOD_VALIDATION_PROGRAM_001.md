@@ -355,6 +355,8 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **DESIGN-AWARE-ASSIGNMENT-GENERATORS-001 (2026-06-03):** [`DESIGN_AWARE_ASSIGNMENT_GENERATORS_001_REPORT.md`](track_d/DESIGN_AWARE_ASSIGNMENT_GENERATORS_001_REPORT.md) — pseudo-assignment generators; regenerate: `poetry run python -m panel_exp.validation.design_aware_assignment_generators_001 --overwrite`.
 
+**MULTITREATED-TREATED-SET-PLACEBO-FRAMEWORK-001 (2026-06-03):** [`MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001_REPORT.md`](track_d/MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001_REPORT.md) — multi-treated treated-set placebo framework; `multitreated_treated_set_placebo_framework_defined_no_inference_authorization`; regenerate: `poetry run python -m panel_exp.validation.multitreated_treated_set_placebo_framework_001 --overwrite`.
+
 ## 13. Stop condition
 
 | Criterion | Status |

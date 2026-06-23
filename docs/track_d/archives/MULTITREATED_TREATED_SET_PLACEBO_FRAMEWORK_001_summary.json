@@ -1,0 +1,593 @@
+{
+  "artifact_id": "MULTITREATED-TREATED-SET-PLACEBO-FRAMEWORK-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-23T06:28:48.703387+00:00",
+  "git_commit": "48eb0509f25d91ed5b11abed5ffbce9d7496f923",
+  "input_artifacts": [
+    "docs/track_d/DESIGN_AWARE_ASSIGNMENT_GENERATORS_001_REPORT.md",
+    "docs/track_d/archives/DESIGN_AWARE_ASSIGNMENT_GENERATORS_001_summary.json",
+    "docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md"
+  ],
+  "dependency_artifacts": [
+    "DESIGN-AWARE-ASSIGNMENT-GENERATORS-001"
+  ],
+  "assignment_generator_dependency": {
+    "module": "panel_exp.design.assignment_generators",
+    "functions": [
+      "generate_pseudo_assignments"
+    ]
+  },
+  "treated_set_placebo_contract": {
+    "module": "panel_exp.inference.treated_set_placebo",
+    "functions": [
+      "evaluate_treated_set_placebo",
+      "classify_placebo_semantics",
+      "compute_placebo_rank",
+      "reject_leave_one_treated_out_as_placebo",
+      "summarize_treated_set_placebo_result"
+    ]
+  },
+  "statistic_contract": {
+    "kinds": [
+      "absolute_effect",
+      "relative_effect",
+      "studentized_effect",
+      "signed_effect",
+      "rank_statistic"
+    ],
+    "effect_directions": [
+      "greater",
+      "less",
+      "two_sided"
+    ],
+    "tail_fraction_label": "framework_only_not_production_p_value"
+  },
+  "scenario_results": [
+    {
+      "scenario_id": "complete_randomized_positive",
+      "passed": true,
+      "expected_decision": "placebo_framework_supported",
+      "result": {
+        "decision": "placebo_framework_supported",
+        "semantic_role": "design_based_randomization_candidate",
+        "observed_statistic": 0.55,
+        "pseudo_statistics_count": 10,
+        "placebo_rank": 0,
+        "empirical_tail_fraction": 0.0,
+        "num_valid_placebo_sets": 10,
+        "minimum_valid_placebo_sets": 5,
+        "assignment_role_counts": {
+          "design_based_randomization_candidate": 10
+        },
+        "blocked_reasons": [],
+        "warnings": [
+          "empirical_tail_fraction_is_framework_only_not_production_p_value"
+        ],
+        "metadata": {
+          "statistic_kind": "signed_effect",
+          "effect_direction": "two_sided",
+          "framework_tail_fraction_label": "not_production_p_value"
+        }
+      }
+    },
+    {
+      "scenario_id": "stratified_positive",
+      "passed": true,
+      "expected_decision": "placebo_framework_supported",
+      "result": {
+        "decision": "placebo_framework_supported",
+        "semantic_role": "design_based_randomization_candidate",
+        "observed_statistic": 0.55,
+        "pseudo_statistics_count": 6,
+        "placebo_rank": 0,
+        "empirical_tail_fraction": 0.0,
+        "num_valid_placebo_sets": 6,
+        "minimum_valid_placebo_sets": 4,
+        "assignment_role_counts": {
+          "design_based_randomization_candidate": 6
+        },
+        "blocked_reasons": [],
+        "warnings": [
+          "empirical_tail_fraction_is_framework_only_not_production_p_value"
+        ],
+        "metadata": {
+          "statistic_kind": "signed_effect",
+          "effect_direction": "two_sided",
+          "framework_tail_fraction_label": "not_production_p_value"
+        }
+      }
+    },
+    {
+      "scenario_id": "matched_pair_positive",
+      "passed": true,
+      "expected_decision": "placebo_framework_supported",
+      "result": {
+        "decision": "placebo_framework_supported",
+        "semantic_role": "design_based_randomization_candidate",
+        "observed_statistic": 0.55,
+        "pseudo_statistics_count": 8,
+        "placebo_rank": 0,
+        "empirical_tail_fraction": 0.0,
+        "num_valid_placebo_sets": 8,
+        "minimum_valid_placebo_sets": 4,
+        "assignment_role_counts": {
+          "design_based_randomization_candidate": 8
+        },
+        "blocked_reasons": [],
+        "warnings": [
+          "empirical_tail_fraction_is_framework_only_not_production_p_value"
+        ],
+        "metadata": {
+          "statistic_kind": "signed_effect",
+          "effect_direction": "two_sided",
+          "framework_tail_fraction_label": "not_production_p_value"
+        }
+      }
+    },
+    {
+      "scenario_id": "matched_block_positive",
+      "passed": true,
+      "expected_decision": "placebo_framework_supported",
+      "result": {
+        "decision": "placebo_framework_supported",
+        "semantic_role": "design_based_randomization_candidate",
+        "observed_statistic": 0.55,
+        "pseudo_statistics_count": 7,
+        "placebo_rank": 0,
+        "empirical_tail_fraction": 0.0,
+        "num_valid_placebo_sets": 7,
+        "minimum_valid_placebo_sets": 2,
+        "assignment_role_counts": {
+          "design_based_randomization_candidate": 7
+        },
+        "blocked_reasons": [],
+        "warnings": [
+          "empirical_tail_fraction_is_framework_only_not_production_p_value"
+        ],
+        "metadata": {
+          "statistic_kind": "signed_effect",
+          "effect_direction": "two_sided",
+          "framework_tail_fraction_label": "not_production_p_value"
+        }
+      }
+    },
+    {
+      "scenario_id": "rerandomized_with_acceptance_rule",
+      "passed": true,
+      "expected_decision": "placebo_framework_supported",
+      "result": {
+        "decision": "placebo_framework_supported",
+        "semantic_role": "design_based_randomization_candidate",
+        "observed_statistic": 0.55,
+        "pseudo_statistics_count": 6,
+        "placebo_rank": 0,
+        "empirical_tail_fraction": 0.0,
+        "num_valid_placebo_sets": 6,
+        "minimum_valid_placebo_sets": 2,
+        "assignment_role_counts": {
+          "design_based_randomization_candidate": 6
+        },
+        "blocked_reasons": [],
+        "warnings": [
+          "empirical_tail_fraction_is_framework_only_not_production_p_value"
+        ],
+        "metadata": {
+          "statistic_kind": "signed_effect",
+          "effect_direction": "two_sided",
+          "framework_tail_fraction_label": "not_production_p_value"
+        }
+      }
+    },
+    {
+      "scenario_id": "greedy_falsification_only",
+      "passed": true,
+      "expected_decision": "placebo_framework_falsification_only",
+      "result": {
+        "decision": "placebo_framework_falsification_only",
+        "semantic_role": "falsification_diagnostic",
+        "observed_statistic": 0.55,
+        "pseudo_statistics_count": 8,
+        "placebo_rank": 0,
+        "empirical_tail_fraction": 0.0,
+        "num_valid_placebo_sets": 8,
+        "minimum_valid_placebo_sets": 3,
+        "assignment_role_counts": {
+          "falsification_only": 8
+        },
+        "blocked_reasons": [],
+        "warnings": [
+          "Pseudo-assignments are falsification-only because the original assignment mechanism is deterministic, design-search-based, or not known to be randomized.",
+          "empirical_tail_fraction_is_framework_only_not_production_p_value"
+        ],
+        "metadata": {
+          "statistic_kind": "signed_effect",
+          "effect_direction": "two_sided",
+          "framework_tail_fraction_label": "not_production_p_value"
+        }
+      }
+    },
+    {
+      "scenario_id": "kernel_thinning_falsification_only",
+      "passed": true,
+      "expected_decision": "placebo_framework_falsification_only",
+      "result": {
+        "decision": "placebo_framework_falsification_only",
+        "semantic_role": "falsification_diagnostic",
+        "observed_statistic": 0.55,
+        "pseudo_statistics_count": 7,
+        "placebo_rank": 0,
+        "empirical_tail_fraction": 0.0,
+        "num_valid_placebo_sets": 7,
+        "minimum_valid_placebo_sets": 3,
+        "assignment_role_counts": {
+          "falsification_only": 7
+        },
+        "blocked_reasons": [],
+        "warnings": [
+          "Pseudo-assignments are falsification-only because the original assignment mechanism is deterministic, design-search-based, or not known to be randomized.",
+          "empirical_tail_fraction_is_framework_only_not_production_p_value"
+        ],
+        "metadata": {
+          "statistic_kind": "signed_effect",
+          "effect_direction": "two_sided",
+          "framework_tail_fraction_label": "not_production_p_value"
+        }
+      }
+    },
+    {
+      "scenario_id": "fixed_deterministic_falsification_only",
+      "passed": true,
+      "expected_decision": "placebo_framework_falsification_only",
+      "result": {
+        "decision": "placebo_framework_falsification_only",
+        "semantic_role": "falsification_diagnostic",
+        "observed_statistic": 0.55,
+        "pseudo_statistics_count": 6,
+        "placebo_rank": 0,
+        "empirical_tail_fraction": 0.0,
+        "num_valid_placebo_sets": 6,
+        "minimum_valid_placebo_sets": 2,
+        "assignment_role_counts": {
+          "falsification_only": 6
+        },
+        "blocked_reasons": [],
+        "warnings": [
+          "Pseudo-assignments are falsification-only because the original assignment mechanism is deterministic, design-search-based, or not known to be randomized.",
+          "empirical_tail_fraction_is_framework_only_not_production_p_value"
+        ],
+        "metadata": {
+          "statistic_kind": "signed_effect",
+          "effect_direction": "two_sided",
+          "framework_tail_fraction_label": "not_production_p_value"
+        }
+      }
+    },
+    {
+      "scenario_id": "rerandomized_without_acceptance_rule",
+      "passed": true,
+      "expected_decision": "placebo_framework_falsification_only",
+      "result": {
+        "decision": "placebo_framework_falsification_only",
+        "semantic_role": "falsification_diagnostic",
+        "observed_statistic": 0.55,
+        "pseudo_statistics_count": 8,
+        "placebo_rank": 0,
+        "empirical_tail_fraction": 0.0,
+        "num_valid_placebo_sets": 8,
+        "minimum_valid_placebo_sets": 3,
+        "assignment_role_counts": {
+          "falsification_only": 8
+        },
+        "blocked_reasons": [],
+        "warnings": [
+          "Pseudo-assignments are falsification-only because the original assignment mechanism is deterministic, design-search-based, or not known to be randomized.",
+          "empirical_tail_fraction_is_framework_only_not_production_p_value"
+        ],
+        "metadata": {
+          "statistic_kind": "signed_effect",
+          "effect_direction": "two_sided",
+          "framework_tail_fraction_label": "not_production_p_value"
+        }
+      }
+    },
+    {
+      "scenario_id": "unknown_assignment_blocked",
+      "passed": true,
+      "expected_decision": "unknown_assignment_design_blocked",
+      "result": {
+        "decision": "unknown_assignment_design_blocked",
+        "semantic_role": "blocked",
+        "observed_statistic": 0.55,
+        "pseudo_statistics_count": 0,
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_valid_placebo_sets": 0,
+        "minimum_valid_placebo_sets": 2,
+        "assignment_role_counts": {},
+        "blocked_reasons": [
+          "UNKNOWN_ASSIGNMENT_DESIGN_BLOCKED"
+        ],
+        "warnings": [],
+        "metadata": {}
+      }
+    },
+    {
+      "scenario_id": "too_few_valid_assignments",
+      "passed": true,
+      "expected_decision": "too_few_valid_pseudo_assignments",
+      "result": {
+        "decision": "too_few_valid_pseudo_assignments",
+        "semantic_role": "blocked",
+        "observed_statistic": 0.55,
+        "pseudo_statistics_count": 0,
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_valid_placebo_sets": 0,
+        "minimum_valid_placebo_sets": 20,
+        "assignment_role_counts": {},
+        "blocked_reasons": [
+          "no valid pseudo-treated assignments generated"
+        ],
+        "warnings": [],
+        "metadata": {
+          "assignment_role_counts": {}
+        }
+      }
+    },
+    {
+      "scenario_id": "leave_one_treated_out_blocked",
+      "passed": true,
+      "expected_decision": "leave_one_treated_out_rejected_as_placebo",
+      "result": {
+        "decision": "leave_one_treated_out_rejected_as_placebo",
+        "semantic_role": "blocked",
+        "observed_statistic": 0.55,
+        "pseudo_statistics_count": 0,
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_valid_placebo_sets": 0,
+        "minimum_valid_placebo_sets": 5,
+        "assignment_role_counts": {},
+        "blocked_reasons": [
+          "Leave-one-treated-out is retained as sensitivity analysis only and cannot substitute for full treated-set placebo."
+        ],
+        "warnings": [
+          "framework_only_not_production_inference"
+        ],
+        "metadata": {
+          "leave_one_treated_out_requested": true
+        }
+      }
+    },
+    {
+      "scenario_id": "missing_pseudo_statistics_blocked",
+      "passed": true,
+      "expected_decision": "placebo_framework_blocked",
+      "result": {
+        "decision": "placebo_framework_blocked",
+        "semantic_role": "blocked",
+        "observed_statistic": 0.55,
+        "pseudo_statistics_count": 0,
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_valid_placebo_sets": 0,
+        "minimum_valid_placebo_sets": 5,
+        "assignment_role_counts": {},
+        "blocked_reasons": [
+          "missing pseudo statistics for assignments: complete_randomized_set:0:0, complete_randomized_set:0:1, complete_randomized_set:0:2"
+        ],
+        "warnings": [],
+        "metadata": {
+          "assignment_role_counts": {
+            "design_based_randomization_candidate": 10
+          },
+          "missing_count": 10
+        }
+      }
+    },
+    {
+      "scenario_id": "assignment_id_mismatch_blocked",
+      "passed": true,
+      "expected_decision": "placebo_framework_blocked",
+      "result": {
+        "decision": "placebo_framework_blocked",
+        "semantic_role": "blocked",
+        "observed_statistic": 0.55,
+        "pseudo_statistics_count": 0,
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_valid_placebo_sets": 0,
+        "minimum_valid_placebo_sets": 5,
+        "assignment_role_counts": {},
+        "blocked_reasons": [
+          "missing pseudo statistics for assignments: complete_randomized_set:0:0, complete_randomized_set:0:1, complete_randomized_set:0:2"
+        ],
+        "warnings": [],
+        "metadata": {
+          "assignment_role_counts": {
+            "design_based_randomization_candidate": 10
+          },
+          "missing_count": 10
+        }
+      }
+    },
+    {
+      "scenario_id": "multicell_global_claim_blocked",
+      "passed": true,
+      "expected_decision": "multicell_global_claim_blocked",
+      "result": {
+        "decision": "multicell_global_claim_blocked",
+        "semantic_role": "blocked",
+        "observed_statistic": 0.55,
+        "pseudo_statistics_count": 0,
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_valid_placebo_sets": 0,
+        "minimum_valid_placebo_sets": 5,
+        "assignment_role_counts": {},
+        "blocked_reasons": [
+          "multicell global/winner/pooled claims are not supported by treated-set placebo framework"
+        ],
+        "warnings": [],
+        "metadata": {
+          "multicell_global_claim_requested": true
+        }
+      }
+    },
+    {
+      "scenario_id": "trustreport_authorization_blocked",
+      "passed": true,
+      "expected_decision": "placebo_framework_blocked",
+      "result": {
+        "decision": "placebo_framework_blocked",
+        "semantic_role": "blocked",
+        "observed_statistic": 0.55,
+        "pseudo_statistics_count": 0,
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_valid_placebo_sets": 0,
+        "minimum_valid_placebo_sets": 5,
+        "assignment_role_counts": {},
+        "blocked_reasons": [
+          "TrustReport authorization is not supported"
+        ],
+        "warnings": [],
+        "metadata": {
+          "trustreport_authorization_requested": true
+        }
+      }
+    },
+    {
+      "scenario_id": "calibration_signal_blocked",
+      "passed": true,
+      "expected_decision": "placebo_framework_blocked",
+      "result": {
+        "decision": "placebo_framework_blocked",
+        "semantic_role": "blocked",
+        "observed_statistic": 0.55,
+        "pseudo_statistics_count": 0,
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_valid_placebo_sets": 0,
+        "minimum_valid_placebo_sets": 5,
+        "assignment_role_counts": {},
+        "blocked_reasons": [
+          "CalibrationSignal export is not supported"
+        ],
+        "warnings": [],
+        "metadata": {
+          "calibration_signal_requested": true
+        }
+      }
+    },
+    {
+      "scenario_id": "production_decisioning_blocked",
+      "passed": true,
+      "expected_decision": "placebo_framework_blocked",
+      "result": {
+        "decision": "placebo_framework_blocked",
+        "semantic_role": "blocked",
+        "observed_statistic": 0.55,
+        "pseudo_statistics_count": 0,
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_valid_placebo_sets": 0,
+        "minimum_valid_placebo_sets": 5,
+        "assignment_role_counts": {},
+        "blocked_reasons": [
+          "production decisioning is not supported"
+        ],
+        "warnings": [],
+        "metadata": {
+          "production_decisioning_requested": true
+        }
+      }
+    },
+    {
+      "scenario_id": "budget_optimization_blocked",
+      "passed": true,
+      "expected_decision": "placebo_framework_blocked",
+      "result": {
+        "decision": "placebo_framework_blocked",
+        "semantic_role": "blocked",
+        "observed_statistic": 0.55,
+        "pseudo_statistics_count": 0,
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_valid_placebo_sets": 0,
+        "minimum_valid_placebo_sets": 5,
+        "assignment_role_counts": {},
+        "blocked_reasons": [
+          "budget optimization is not supported"
+        ],
+        "warnings": [],
+        "metadata": {
+          "budget_optimization_requested": true
+        }
+      }
+    }
+  ],
+  "positive_scenarios": [
+    "complete_randomized_positive",
+    "matched_block_positive",
+    "matched_pair_positive",
+    "rerandomized_with_acceptance_rule",
+    "stratified_positive"
+  ],
+  "falsification_only_scenarios": [
+    "fixed_deterministic_falsification_only",
+    "greedy_falsification_only",
+    "kernel_thinning_falsification_only",
+    "rerandomized_without_acceptance_rule"
+  ],
+  "blocked_scenarios": [
+    "assignment_id_mismatch_blocked",
+    "budget_optimization_blocked",
+    "calibration_signal_blocked",
+    "leave_one_treated_out_blocked",
+    "missing_pseudo_statistics_blocked",
+    "multicell_global_claim_blocked",
+    "production_decisioning_blocked",
+    "too_few_valid_assignments",
+    "trustreport_authorization_blocked",
+    "unknown_assignment_blocked"
+  ],
+  "decision_counts": {
+    "placebo_framework_supported": 5,
+    "placebo_framework_falsification_only": 4,
+    "unknown_assignment_design_blocked": 1,
+    "too_few_valid_pseudo_assignments": 1,
+    "leave_one_treated_out_rejected_as_placebo": 1,
+    "placebo_framework_blocked": 6,
+    "multicell_global_claim_blocked": 1
+  },
+  "semantic_role_counts": {
+    "design_based_randomization_candidate": 5,
+    "falsification_diagnostic": 4,
+    "blocked": 10
+  },
+  "tail_fraction_examples": {
+    "complete_randomized_positive": {
+      "observed_statistic": 0.55,
+      "placebo_rank": 0,
+      "empirical_tail_fraction": 0.0,
+      "label": "not_production_p_value"
+    }
+  },
+  "leave_one_treated_out_decision": "leave_one_treated_out_rejected_as_placebo",
+  "multicell_global_claim_decision": "multicell_global_claim_blocked",
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false,
+  "governance_verdict": "multitreated_treated_set_placebo_framework_defined_no_inference_authorization",
+  "known_limitations": [
+    "No estimator-specific SCM/TBRRidge/DID placebo integration yet.",
+    "Empirical tail fraction is framework-only; not a production p-value.",
+    "Leave-one-treated-out remains sensitivity analysis only.",
+    "Multicell global/winner/pooled claims blocked."
+  ],
+  "next_artifact": "SCM_PLACEBO_GOVERNED_SEMANTICS_001"
+}
