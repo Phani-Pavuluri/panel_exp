@@ -264,3 +264,15 @@ class TestOpenInvestigationRegistry001:
         assert lane["next_artifact"] == "METHOD_READINESS_MATRIX_V2_001"
         assert "augsynth_point" in lane["artifact_tags"]
         assert "randomization_inference" in lane["artifact_tags"]
+
+    def test_method_readiness_matrix_v2_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "METHOD-READINESS-MATRIX-V2-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "METHOD_READINESS_MATRIX_V2_001"
+        assert lane["next_artifact"] == "CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001"
+        assert "readiness_matrix" in lane["artifact_tags"]
+        assert "no_downstream_authorization" in lane["artifact_tags"]
