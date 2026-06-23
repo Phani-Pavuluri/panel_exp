@@ -1,0 +1,1296 @@
+{
+  "artifact_id": "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001",
+  "artifact_version": "1.0.0",
+  "status": "completed",
+  "generated_at": "2026-06-23T18:16:34.642133+00:00",
+  "git_commit": "cfa3ea3c9efd4fb450cc00c31925cd1a1cda60f7",
+  "verdict": "stratified_pooled_estimand_contract_defined_no_downstream_authorization",
+  "governance_verdict": "stratified_pooled_estimand_contract_defined_no_downstream_authorization",
+  "roadmap_spine": [
+    "ROADMAP_REFOCUS_METHOD_VALIDATION_001",
+    "INFERENCE_REPLACEMENT_SCOUT_001",
+    "DESIGN_AWARE_ASSIGNMENT_GENERATORS_001",
+    "MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001",
+    "SCM_PLACEBO_GOVERNED_SEMANTICS_001",
+    "METHOD_ROADMAP_ALIGNMENT_AUDIT_001",
+    "METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001",
+    "SCM_TREATED_SET_PLACEBO_INTEGRATION_001",
+    "STUDENTIZED_PLACEBO_RANK_INFERENCE_001",
+    "SCM_STUDENTIZED_TREATED_SET_PLACEBO_INTEGRATION_001",
+    "MULTICELL_SHARED_CONTROL_MULTIPLICITY_001",
+    "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001"
+  ],
+  "scenario_count": 34,
+  "passed_scenarios": 34,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "stratum_level_readout_allowed",
+      "passed": true,
+      "expected_decision": "stratum_level_readout_allowed",
+      "expected_role": "stratum_level_only",
+      "result": {
+        "role": "stratum_level_only",
+        "decision": "stratum_level_readout_allowed",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 1,
+        "is_stratum_level_only": true,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": false,
+        "required_next_evidence": [],
+        "warnings": [
+          "Stratum-level readout only \u2014 not pooled or global causal inference; no aggregate causal claim."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "multiple_stratum_readouts_not_pooled",
+      "passed": true,
+      "expected_decision": "stratum_level_readout_allowed",
+      "expected_role": "stratum_level_only",
+      "result": {
+        "role": "stratum_level_only",
+        "decision": "stratum_level_readout_allowed",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": true,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": false,
+        "required_next_evidence": [],
+        "warnings": [
+          "Stratum-level readout only \u2014 not pooled or global causal inference; no aggregate causal claim."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "stratified_aggregate_contract_candidate",
+      "passed": true,
+      "expected_decision": "pooled_estimand_contract_candidate",
+      "expected_role": "pooled_estimand_contract_candidate",
+      "result": {
+        "role": "pooled_estimand_contract_candidate",
+        "decision": "pooled_estimand_contract_candidate",
+        "normalized_weights_by_stratum": {
+          "s1": 0.6,
+          "s2": 0.4
+        },
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": true,
+        "is_diagnostic_only": false,
+        "is_blocked": false,
+        "required_next_evidence": [],
+        "warnings": [
+          "Pooled estimand contract candidate only \u2014 not production pooled inference; no final p-value or causal confidence interval."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "stratified_aggregate_diagnostic_only",
+      "passed": true,
+      "expected_decision": "stratified_aggregate_diagnostic_only",
+      "expected_role": "diagnostic_summary_only",
+      "result": {
+        "role": "diagnostic_summary_only",
+        "decision": "stratified_aggregate_diagnostic_only",
+        "normalized_weights_by_stratum": {
+          "s1": 0.6,
+          "s2": 0.4
+        },
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": true,
+        "is_blocked": false,
+        "required_next_evidence": [
+          "valid_pooling_inference"
+        ],
+        "warnings": [
+          "Stratified aggregate diagnostic summary only \u2014 not production pooled causal effect."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "heterogeneity_not_assessed_review_required",
+      "passed": true,
+      "expected_decision": "heterogeneity_review_required",
+      "expected_role": "heterogeneity_review_required",
+      "result": {
+        "role": "heterogeneity_review_required",
+        "decision": "heterogeneity_review_required",
+        "normalized_weights_by_stratum": {
+          "s1": 0.6,
+          "s2": 0.4
+        },
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [
+          "heterogeneity_assessment",
+          "pre_specified_heterogeneity_policy",
+          "stratum_level_effect_compatibility_review"
+        ],
+        "warnings": [
+          "heterogeneity must be assessed before pooling promotion"
+        ],
+        "blocked_reasons": [
+          "heterogeneity not assessed"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "material_heterogeneity_block_policy_blocked",
+      "passed": true,
+      "expected_decision": "pooled_estimand_blocked",
+      "expected_role": "blocked",
+      "result": {
+        "role": "blocked",
+        "decision": "pooled_estimand_blocked",
+        "normalized_weights_by_stratum": {
+          "s1": 0.6,
+          "s2": 0.4
+        },
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "material_heterogeneity_blocks_pooling"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "material_heterogeneity_report_separately_not_pooled",
+      "passed": true,
+      "expected_decision": "stratified_aggregate_diagnostic_only",
+      "expected_role": "diagnostic_summary_only",
+      "result": {
+        "role": "diagnostic_summary_only",
+        "decision": "stratified_aggregate_diagnostic_only",
+        "normalized_weights_by_stratum": {
+          "s1": 0.6,
+          "s2": 0.4
+        },
+        "num_strata": 2,
+        "is_stratum_level_only": true,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": true,
+        "is_blocked": false,
+        "required_next_evidence": [
+          "heterogeneity_assessment",
+          "pre_specified_heterogeneity_policy",
+          "stratum_level_effect_compatibility_review"
+        ],
+        "warnings": [
+          "Stratum-level readout only \u2014 not pooled or global causal inference; no aggregate causal claim.",
+          "Material heterogeneity \u2014 report strata separately; no pooled claim."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "incompatible_metric_blocked",
+      "passed": true,
+      "expected_decision": "pooled_estimand_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "pooled_estimand_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "strata do not share a common metric",
+          "incompatible metrics across strata"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "incompatible_effect_scale_blocked",
+      "passed": true,
+      "expected_decision": "pooled_estimand_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "pooled_estimand_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "strata do not share a common effect scale",
+          "incompatible effect scales across strata"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "incompatible_time_window_blocked",
+      "passed": true,
+      "expected_decision": "pooled_estimand_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "pooled_estimand_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "strata do not share a common time window",
+          "incompatible time windows across strata"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "incompatible_target_population_blocked",
+      "passed": true,
+      "expected_decision": "pooled_estimand_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "pooled_estimand_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "strata do not share a common target population",
+          "incompatible target populations across strata"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "missing_pooled_estimand_statement_blocked",
+      "passed": true,
+      "expected_decision": "pooled_estimand_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "pooled_estimand_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "missing valid pooled estimand statement"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "missing_weights_blocked",
+      "passed": true,
+      "expected_decision": "pooled_estimand_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "pooled_estimand_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "missing weights for pooling use case"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "weight_id_mismatch_blocked",
+      "passed": true,
+      "expected_decision": "pooled_estimand_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "pooled_estimand_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "weight IDs do not match stratum IDs"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "negative_weight_blocked",
+      "passed": true,
+      "expected_decision": "pooled_estimand_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "pooled_estimand_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "negative weight for stratum s1"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "zero_total_weights_blocked",
+      "passed": true,
+      "expected_decision": "pooled_estimand_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "pooled_estimand_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "weights sum to zero"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "non_finite_weight_blocked",
+      "passed": true,
+      "expected_decision": "pooled_estimand_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "pooled_estimand_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "non-finite weight for stratum s1"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "post_hoc_effect_size_weights_blocked",
+      "passed": true,
+      "expected_decision": "pooled_estimand_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "pooled_estimand_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "blocked weighting rule: post_hoc_effect_size"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "winner_selected_weights_blocked",
+      "passed": true,
+      "expected_decision": "pooled_estimand_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "pooled_estimand_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "blocked weighting rule: winner_selected"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "pooled_multicell_effect_blocked",
+      "passed": true,
+      "expected_decision": "multicell_pooled_effect_blocked",
+      "expected_role": "multiplicity_or_dependence_unresolved",
+      "result": {
+        "role": "multiplicity_or_dependence_unresolved",
+        "decision": "multicell_pooled_effect_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [
+          "valid_pooling_inference",
+          "multiplicity_or_dependence_resolution",
+          "pre_registered_pooled_estimand"
+        ],
+        "warnings": [],
+        "blocked_reasons": [
+          "pooled_multicell_effect_requires_pooled_estimand_and_dependence_aware_inference"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "shared_control_unresolved_pooled_blocked",
+      "passed": true,
+      "expected_decision": "pooled_estimand_blocked",
+      "expected_role": "multiplicity_or_dependence_unresolved",
+      "result": {
+        "role": "multiplicity_or_dependence_unresolved",
+        "decision": "pooled_estimand_blocked",
+        "normalized_weights_by_stratum": {
+          "s1": 0.6,
+          "s2": 0.4
+        },
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [
+          "valid_pooling_inference",
+          "multiplicity_or_dependence_resolution",
+          "pre_registered_pooled_estimand"
+        ],
+        "warnings": [],
+        "blocked_reasons": [
+          "multiplicity or shared-control dependence unresolved for pooling"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "global_summary_blocked",
+      "passed": true,
+      "expected_decision": "global_summary_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "global_summary_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "global summary requires unresolved pooled estimand and dependence evidence"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "winner_selected_summary_blocked",
+      "passed": true,
+      "expected_decision": "winner_selected_summary_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "winner_selected_summary_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "winner_selected_summary_requires_selection_adjusted_inference"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "trustreport_request_blocked",
+      "passed": true,
+      "expected_decision": "pooled_estimand_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "pooled_estimand_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "TrustReport authorization is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "calibration_signal_blocked",
+      "passed": true,
+      "expected_decision": "pooled_estimand_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "pooled_estimand_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "CalibrationSignal export is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "mmm_ingestion_blocked",
+      "passed": true,
+      "expected_decision": "pooled_estimand_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "pooled_estimand_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "MMM ingestion is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "llm_decisioning_blocked",
+      "passed": true,
+      "expected_decision": "pooled_estimand_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "pooled_estimand_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "LLM decisioning is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "production_decisioning_blocked",
+      "passed": true,
+      "expected_decision": "pooled_estimand_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "pooled_estimand_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "production decisioning is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "live_api_blocked",
+      "passed": true,
+      "expected_decision": "pooled_estimand_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "pooled_estimand_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "live API authorization is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "scheduler_blocked",
+      "passed": true,
+      "expected_decision": "pooled_estimand_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "pooled_estimand_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "scheduler authorization is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "budget_optimization_blocked",
+      "passed": true,
+      "expected_decision": "pooled_estimand_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "pooled_estimand_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "budget optimization is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "pooled_effect_authorization_blocked",
+      "passed": true,
+      "expected_decision": "pooled_estimand_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "pooled_estimand_blocked",
+        "normalized_weights_by_stratum": {},
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "pooled effect authorization is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "normalized_weights_sum_to_one",
+      "passed": true,
+      "expected_decision": "pooled_estimand_contract_candidate",
+      "expected_role": null,
+      "result": {
+        "role": "pooled_estimand_contract_candidate",
+        "decision": "pooled_estimand_contract_candidate",
+        "normalized_weights_by_stratum": {
+          "s1": 0.6,
+          "s2": 0.4
+        },
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": true,
+        "is_diagnostic_only": false,
+        "is_blocked": false,
+        "required_next_evidence": [],
+        "warnings": [
+          "Pooled estimand contract candidate only \u2014 not production pooled inference; no final p-value or causal confidence interval."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "governance_flags_all_false",
+      "passed": true,
+      "expected_decision": "pooled_estimand_contract_candidate",
+      "expected_role": null,
+      "result": {
+        "role": "pooled_estimand_contract_candidate",
+        "decision": "pooled_estimand_contract_candidate",
+        "normalized_weights_by_stratum": {
+          "s1": 0.6,
+          "s2": 0.4
+        },
+        "num_strata": 2,
+        "is_stratum_level_only": false,
+        "is_contract_candidate": true,
+        "is_diagnostic_only": false,
+        "is_blocked": false,
+        "required_next_evidence": [],
+        "warnings": [
+          "Pooled estimand contract candidate only \u2014 not production pooled inference; no final p-value or causal confidence interval."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "pooled_effect_authorized": false,
+          "global_summary_allowed": false,
+          "winner_selection_allowed": false
+        }
+      }
+    }
+  ],
+  "stratum_level_only_scenarios": 2,
+  "contract_candidate_scenarios": 3,
+  "diagnostic_only_scenarios": 2,
+  "heterogeneity_review_required_scenarios": 1,
+  "blocked_scenarios": 26,
+  "pooled_estimand_contract": {
+    "required_fields": [
+      "compatible_stratum_estimands",
+      "common_metric",
+      "common_effect_scale",
+      "common_time_window",
+      "common_target_population",
+      "pre_specified_weights",
+      "heterogeneity_policy",
+      "valid_pooling_inference",
+      "multiplicity_or_dependence_resolution"
+    ],
+    "blocked_weighting_rules": [
+      "post_hoc_effect_size",
+      "winner_selected",
+      "unknown"
+    ],
+    "blocked_claims": [
+      "pooled_effect_authorization",
+      "global_summary",
+      "winner_selection",
+      "production_decisioning"
+    ]
+  },
+  "allowed_outputs": [
+    "stratum_level_only",
+    "pooled_estimand_contract_candidate",
+    "diagnostic_summary_only",
+    "heterogeneity_review_required",
+    "blocked"
+  ],
+  "forbidden_outputs": [
+    "production_pooled_effect",
+    "global_multicell_decision",
+    "winner_selection",
+    "final_p_value",
+    "causal_confidence_interval",
+    "trustreport_authorization",
+    "calibration_signal",
+    "mmm_ingestion",
+    "llm_decisioning",
+    "production_decisioning",
+    "live_api",
+    "scheduler",
+    "budget_optimization"
+  ],
+  "next_artifact": "AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001",
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false,
+  "pooled_effect_authorized": false,
+  "global_summary_allowed": false,
+  "winner_selection_allowed": false
+}

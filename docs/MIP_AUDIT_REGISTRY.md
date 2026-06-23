@@ -1430,7 +1430,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Governed multi-cell multiplicity and shared-control dependence boundaries. Per-cell marginal readouts, independent FWER proxy, Bonferroni alpha, adjustment-required paths, and shared-control unresolved paths validated. Global/winner/pooled multi-cell decisions blocked. **No TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or global multi-cell authorization.** **`INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001`** disposition: `MULTICELL_MULTIPLICITY_BOUNDARIES_DEFINED_PENDING_STRATIFIED_ESTIMAND`.
 
-**Next:** `STRATIFIED_POOLED_ESTIMAND_CONTRACT_001`.
+**Next:** `STRATIFIED_POOLED_ESTIMAND_CONTRACT_001` (completed — see stratified pooled estimand report).
+
+---
+
+## STRATIFIED-POOLED-ESTIMAND-CONTRACT-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/STRATIFIED_POOLED_ESTIMAND_CONTRACT_001_REPORT.md`](track_d/STRATIFIED_POOLED_ESTIMAND_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/STRATIFIED_POOLED_ESTIMAND_CONTRACT_001_summary.json`](track_d/archives/STRATIFIED_POOLED_ESTIMAND_CONTRACT_001_summary.json) · [`panel_exp/inference/stratified_pooled_estimand.py`](../panel_exp/inference/stratified_pooled_estimand.py) · [`panel_exp/validation/stratified_pooled_estimand_contract_001.py`](../panel_exp/validation/stratified_pooled_estimand_contract_001.py)
+
+**Status:** **`stratified_pooled_estimand_contract_defined_no_downstream_authorization`**
+
+**Verdict:** Governed stratified/pooled estimand contract layer. Stratum-level readouts allowed; stratified aggregates diagnostic or contract-candidate only; pooled multi-cell/global/winner blocked. **No TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or pooled-effect authorization.** **`INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001`** disposition: `STRATIFIED_POOLED_ESTIMAND_CONTRACT_DEFINED_POOLING_STILL_BLOCKED`.
+
+**Next:** `AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001`.
 
 ---
 
