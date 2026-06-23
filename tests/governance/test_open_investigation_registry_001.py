@@ -173,4 +173,37 @@ class TestOpenInvestigationRegistry001:
         assert lane["status"] == "complete"
         assert lane["resolution_artifact"] == "MULTITREATED-TREATED-SET-PLACEBO-FRAMEWORK-001"
         assert lane["next_artifact"] == "SCM_PLACEBO_GOVERNED_SEMANTICS_001"
+        assert "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001" not in lane["deferred_investigations"]
+
+    def test_scm_placebo_governed_semantics_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "SCM-PLACEBO-GOVERNED-SEMANTICS-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "SCM_PLACEBO_GOVERNED_SEMANTICS_001"
+        assert lane["next_artifact"] == "METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001"
         assert "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001" in lane["deferred_investigations"]
+
+    def test_method_specific_randomization_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "METHOD-SPECIFIC-RANDOMIZATION-INFERENCE-VALIDATION-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001"
+        assert lane["next_artifact"] == "SCM_TREATED_SET_PLACEBO_INTEGRATION_001"
+        assert "method_validity" in lane["artifact_tags"]
+
+    def test_scm_treated_set_placebo_integration_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "SCM-TREATED-SET-PLACEBO-INTEGRATION-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "SCM_TREATED_SET_PLACEBO_INTEGRATION_001"
+        assert lane["next_artifact"] == "STUDENTIZED_PLACEBO_RANK_INFERENCE_001"
+        assert "scm_integration" in lane["artifact_tags"]

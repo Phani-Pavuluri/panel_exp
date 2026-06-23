@@ -284,7 +284,10 @@ Foundation and compatibility audits ✅
   → INFERENCE_REPLACEMENT_SCOUT_001 ✅ (design generators primary; placebo secondary)
   → DESIGN_AWARE_ASSIGNMENT_GENERATORS_001 ✅
   → MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001 ✅
-  → SCM_PLACEBO_GOVERNED_SEMANTICS_001 (active method lane)
+  → SCM_PLACEBO_GOVERNED_SEMANTICS_001 ✅
+  → METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001 ✅
+  → SCM_TREATED_SET_PLACEBO_INTEGRATION_001 ✅
+  → STUDENTIZED_PLACEBO_RANK_INFERENCE_001 (active method lane)
 ```
 
 **TrustReport ops freeze (2026-06-03):** Research-mode operationalization is complete enough for package-level governance. Audit log, review queue, UI, API, scheduler, and platform rollout are **deferred to the MIP application/orchestration layer**. Active lane is **method validation** — see [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md).
@@ -293,7 +296,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`INFERENCE_REPLACEMENT_SCOUT_001`** → ✅ **`DESIGN_AWARE_ASSIGNMENT_GENERATORS_001`** → ✅ **`MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001`** → **`SCM_PLACEBO_GOVERNED_SEMANTICS_001`** → method-validation backlog.
+**Ordered next:** ✅ … → ✅ **`METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001`** → ✅ **`SCM_TREATED_SET_PLACEBO_INTEGRATION_001`** → **`STUDENTIZED_PLACEBO_RANK_INFERENCE_001`** → method-validation backlog.
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 
