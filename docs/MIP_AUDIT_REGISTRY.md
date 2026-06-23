@@ -1338,6 +1338,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## TRUSTREPORT-RESEARCH-MODE-RENDERER-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/TRUSTREPORT_RESEARCH_MODE_RENDERER_001_REPORT.md`](track_d/TRUSTREPORT_RESEARCH_MODE_RENDERER_001_REPORT.md) · [`docs/track_d/archives/TRUSTREPORT_RESEARCH_MODE_RENDERER_001_summary.json`](track_d/archives/TRUSTREPORT_RESEARCH_MODE_RENDERER_001_summary.json) · [`panel_exp/validation/trustreport_research_mode_renderer_001.py`](../panel_exp/validation/trustreport_research_mode_renderer_001.py)
+
+**Status:** **`trustreport_research_mode_renderer_passed`**
+
+**Verdict:** Research-mode TrustReport renderer for DCM-001/004 only. Positive and negative render scenarios pass. Placeholder and synthetic payloads labeled. BRB/KFold/Placebo/DCM-006/DCM-008 blocked. Live API, scheduler, CalibrationSignal, production decisioning, budget optimization false. **No live deployment authorization.**
+
+**Next:** `TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001`.
+
+---
+
 ## TRUSTREPORT-INTEGRATION-DRY-RUN-001 (2026-06-03)
 
 **Artifact:** [`docs/track_d/TRUSTREPORT_INTEGRATION_DRY_RUN_001_REPORT.md`](track_d/TRUSTREPORT_INTEGRATION_DRY_RUN_001_REPORT.md) · [`docs/track_d/archives/TRUSTREPORT_INTEGRATION_DRY_RUN_001_summary.json`](track_d/archives/TRUSTREPORT_INTEGRATION_DRY_RUN_001_summary.json) · [`panel_exp/validation/trustreport_integration_dry_run_001.py`](../panel_exp/validation/trustreport_integration_dry_run_001.py)

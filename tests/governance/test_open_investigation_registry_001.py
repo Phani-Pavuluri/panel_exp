@@ -91,3 +91,13 @@ class TestOpenInvestigationRegistry001:
         assert lane["status"] == "complete"
         assert lane["resolution_artifact"] == "TRUSTREPORT-INTEGRATION-DRY-RUN-001"
         assert lane["next_artifact"] == "TRUSTREPORT_RESEARCH_MODE_RENDERER_001"
+
+    def test_research_mode_renderer_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "TRUSTREPORT-RESEARCH-MODE-RENDERER-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "TRUSTREPORT-RESEARCH-MODE-RENDERER-001"
+        assert lane["next_artifact"] == "TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001"

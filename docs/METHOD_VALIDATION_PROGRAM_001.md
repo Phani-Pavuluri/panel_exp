@@ -341,6 +341,8 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **TRUSTREPORT-INTEGRATION-DRY-RUN-001 (2026-06-03):** [`TRUSTREPORT_INTEGRATION_DRY_RUN_001_REPORT.md`](track_d/TRUSTREPORT_INTEGRATION_DRY_RUN_001_REPORT.md) — integration dry-run; regenerate: `poetry run python -m panel_exp.validation.trustreport_integration_dry_run_001 --overwrite`.
 
+**TRUSTREPORT-RESEARCH-MODE-RENDERER-001 (2026-06-03):** [`TRUSTREPORT_RESEARCH_MODE_RENDERER_001_REPORT.md`](track_d/TRUSTREPORT_RESEARCH_MODE_RENDERER_001_REPORT.md) — research-mode renderer; regenerate: `poetry run python -m panel_exp.validation.trustreport_research_mode_renderer_001 --overwrite`.
+
 ## 13. Stop condition
 
 | Criterion | Status |

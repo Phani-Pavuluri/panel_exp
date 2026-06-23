@@ -1,0 +1,1679 @@
+{
+  "artifact_id": "TRUSTREPORT-RESEARCH-MODE-RENDERER-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-23T01:32:08.861889+00:00",
+  "git_commit": "207df0f9eeb0aba93dd5a213ee7577ad365d5595",
+  "input_artifacts": {
+    "integration_dry_run": "/workspace/panel_exp/docs/track_d/archives/TRUSTREPORT_INTEGRATION_DRY_RUN_001_summary.json",
+    "downstream_promotion": "/workspace/panel_exp/docs/track_d/archives/TRUSTREPORT_DOWNSTREAM_PROMOTION_001_summary.json",
+    "full_reassessment": "/workspace/panel_exp/docs/track_d/archives/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_summary.json"
+  },
+  "renderer_scope": [
+    "DCM-001",
+    "DCM-004"
+  ],
+  "render_requests": [
+    {
+      "request_id": "pos-dcm001-valid",
+      "row_id": "DCM-001",
+      "request_type": "valid_research",
+      "render_mode": "research_mode_only",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-dcm004-valid",
+      "row_id": "DCM-004",
+      "request_type": "valid_research",
+      "render_mode": "research_mode_only",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-dcm001-placeholder",
+      "row_id": "DCM-001",
+      "request_type": "placeholder_payload",
+      "render_mode": "research_mode_only",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "placeholder",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-dcm004-placeholder",
+      "row_id": "DCM-004",
+      "request_type": "placeholder_payload",
+      "render_mode": "research_mode_only",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "placeholder",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-dcm001-synthetic",
+      "row_id": "DCM-001",
+      "request_type": "synthetic_payload",
+      "render_mode": "research_mode_only",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "synthetic",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-dcm004-synthetic",
+      "row_id": "DCM-004",
+      "request_type": "synthetic_payload",
+      "render_mode": "research_mode_only",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "synthetic",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-dcm001-missing-warnings",
+      "row_id": "DCM-001",
+      "request_type": "missing_warnings",
+      "render_mode": "research_mode_only",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": false,
+      "include_diagnostics": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-dcm004-missing-diagnostics",
+      "row_id": "DCM-004",
+      "request_type": "missing_diagnostics",
+      "render_mode": "research_mode_only",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": false,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-dcm001-bad-geometry",
+      "row_id": "DCM-001",
+      "request_type": "unsupported_geometry",
+      "render_mode": "research_mode_only",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": "aggregate_1x1",
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-dcm004-bad-timing",
+      "row_id": "DCM-004",
+      "request_type": "unsupported_timing",
+      "render_mode": "research_mode_only",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": "parallel_trends_violation",
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "request_type": "causal_trustreport",
+      "render_mode": "research_mode_only",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "request_type": "causal_trustreport",
+      "render_mode": "research_mode_only",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "request_type": "causal_trustreport",
+      "render_mode": "research_mode_only",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-dcm006-global",
+      "row_id": "DCM-006",
+      "request_type": "global_claim",
+      "render_mode": "research_mode_only",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "claim_type": "global",
+      "notes": ""
+    },
+    {
+      "request_id": "neg-dcm008-aggregate",
+      "row_id": "DCM-008",
+      "request_type": "aggregate_stratified",
+      "render_mode": "research_mode_only",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "claim_type": "aggregate_stratified",
+      "notes": ""
+    },
+    {
+      "request_id": "neg-cal",
+      "row_id": "DCM-001",
+      "request_type": "calibration",
+      "render_mode": "calibration_mode",
+      "requested_role": "calibration_signal",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-live",
+      "row_id": "DCM-004",
+      "request_type": "live_api",
+      "render_mode": "api_mode",
+      "requested_role": "live_api",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-scheduler",
+      "row_id": "DCM-001",
+      "request_type": "scheduler",
+      "render_mode": "scheduler_mode",
+      "requested_role": "scheduler",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-prod",
+      "row_id": "DCM-004",
+      "request_type": "production",
+      "render_mode": "production_mode",
+      "requested_role": "production_decisioning",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-budget",
+      "row_id": "DCM-001",
+      "request_type": "budget",
+      "render_mode": "optimization_mode",
+      "requested_role": "budget_optimization_input",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "request_type": "unknown",
+      "render_mode": "research_mode_only",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "claim_type": null,
+      "notes": ""
+    }
+  ],
+  "accepted_renders": [
+    {
+      "request_id": "pos-dcm001-valid",
+      "row_id": "DCM-001",
+      "request_type": "valid_research",
+      "decision": "RENDER_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "accepted": true,
+      "audit_record_id": "render-audit-pos-dcm001-valid",
+      "render_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport render accepted"
+    },
+    {
+      "request_id": "pos-dcm004-valid",
+      "row_id": "DCM-004",
+      "request_type": "valid_research",
+      "decision": "RENDER_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "accepted": true,
+      "audit_record_id": "render-audit-pos-dcm004-valid",
+      "render_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport render accepted"
+    },
+    {
+      "request_id": "pos-dcm001-placeholder",
+      "row_id": "DCM-001",
+      "request_type": "placeholder_payload",
+      "decision": "RENDER_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "accepted": true,
+      "audit_record_id": "render-audit-pos-dcm001-placeholder",
+      "render_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport render accepted"
+    },
+    {
+      "request_id": "pos-dcm004-placeholder",
+      "row_id": "DCM-004",
+      "request_type": "placeholder_payload",
+      "decision": "RENDER_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "accepted": true,
+      "audit_record_id": "render-audit-pos-dcm004-placeholder",
+      "render_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport render accepted"
+    },
+    {
+      "request_id": "pos-dcm001-synthetic",
+      "row_id": "DCM-001",
+      "request_type": "synthetic_payload",
+      "decision": "RENDER_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "audit_record_id": "render-audit-pos-dcm001-synthetic",
+      "render_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport render accepted"
+    },
+    {
+      "request_id": "pos-dcm004-synthetic",
+      "row_id": "DCM-004",
+      "request_type": "synthetic_payload",
+      "decision": "RENDER_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "audit_record_id": "render-audit-pos-dcm004-synthetic",
+      "render_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport render accepted"
+    }
+  ],
+  "blocked_renders": [
+    {
+      "request_id": "neg-dcm001-missing-warnings",
+      "row_id": "DCM-001",
+      "request_type": "missing_warnings",
+      "decision": "RENDER_BLOCKED_MISSING_CONTRACT",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-dcm001-missing-warnings",
+      "render_status": "blocked",
+      "gate_results": {
+        "warnings_missing": true
+      },
+      "reason": "Required warnings missing"
+    },
+    {
+      "request_id": "neg-dcm004-missing-diagnostics",
+      "row_id": "DCM-004",
+      "request_type": "missing_diagnostics",
+      "decision": "RENDER_BLOCKED_MISSING_DIAGNOSTICS",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-dcm004-missing-diagnostics",
+      "render_status": "blocked",
+      "gate_results": {
+        "diagnostics_missing": true
+      },
+      "reason": "Parallel-trends diagnostics required for DCM-004"
+    },
+    {
+      "request_id": "neg-dcm001-bad-geometry",
+      "row_id": "DCM-001",
+      "request_type": "unsupported_geometry",
+      "decision": "RENDER_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-dcm001-bad-geometry",
+      "render_status": "blocked",
+      "gate_results": {
+        "unsupported_geometry": true
+      },
+      "reason": "Geometry aggregate_1x1 blocked"
+    },
+    {
+      "request_id": "neg-dcm004-bad-timing",
+      "row_id": "DCM-004",
+      "request_type": "unsupported_timing",
+      "decision": "RENDER_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-dcm004-bad-timing",
+      "render_status": "blocked",
+      "gate_results": {
+        "unsupported_geometry": true
+      },
+      "reason": "Geometry parallel_trends_violation blocked"
+    },
+    {
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "request_type": "causal_trustreport",
+      "decision": "RENDER_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-brb",
+      "render_status": "blocked",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-BRB is diagnostic-only"
+    },
+    {
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "request_type": "causal_trustreport",
+      "decision": "RENDER_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-kfold",
+      "render_status": "blocked",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-KFOLD is diagnostic-only"
+    },
+    {
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "request_type": "causal_trustreport",
+      "decision": "RENDER_BLOCKED_NULL_MONITOR_CAUSAL_REUSE",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-placebo",
+      "render_status": "blocked",
+      "gate_results": {
+        "null_monitor_causal_reuse": true
+      },
+      "reason": "Null-monitor path cannot render causal TrustReport"
+    },
+    {
+      "request_id": "neg-dcm006-global",
+      "row_id": "DCM-006",
+      "request_type": "global_claim",
+      "decision": "RENDER_BLOCKED_NOT_PROMOTED",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-dcm006-global",
+      "render_status": "blocked",
+      "gate_results": {
+        "multicell_global_blocked": true
+      },
+      "reason": "DCM-006 global/winner/pooled render blocked"
+    },
+    {
+      "request_id": "neg-dcm008-aggregate",
+      "row_id": "DCM-008",
+      "request_type": "aggregate_stratified",
+      "decision": "RENDER_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-dcm008-aggregate",
+      "render_status": "blocked",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-008 is diagnostic-only"
+    },
+    {
+      "request_id": "neg-cal",
+      "row_id": "DCM-001",
+      "request_type": "calibration",
+      "decision": "RENDER_BLOCKED_CALIBRATION_SIGNAL",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-cal",
+      "render_status": "blocked",
+      "gate_results": {
+        "calibration_signal_blocked": true
+      },
+      "reason": "CalibrationSignal render forbidden"
+    },
+    {
+      "request_id": "neg-live",
+      "row_id": "DCM-004",
+      "request_type": "live_api",
+      "decision": "RENDER_BLOCKED_LIVE_API",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-live",
+      "render_status": "blocked",
+      "gate_results": {
+        "live_api_blocked": true
+      },
+      "reason": "Live API render mode forbidden"
+    },
+    {
+      "request_id": "neg-scheduler",
+      "row_id": "DCM-001",
+      "request_type": "scheduler",
+      "decision": "RENDER_BLOCKED_SCHEDULER",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-scheduler",
+      "render_status": "blocked",
+      "gate_results": {
+        "scheduler_blocked": true
+      },
+      "reason": "Scheduler render mode forbidden"
+    },
+    {
+      "request_id": "neg-prod",
+      "row_id": "DCM-004",
+      "request_type": "production",
+      "decision": "RENDER_BLOCKED_PRODUCTION_DECISIONING",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-prod",
+      "render_status": "blocked",
+      "gate_results": {
+        "production_mode_blocked": true
+      },
+      "reason": "Production render mode forbidden"
+    },
+    {
+      "request_id": "neg-budget",
+      "row_id": "DCM-001",
+      "request_type": "budget",
+      "decision": "RENDER_BLOCKED_BUDGET_OPTIMIZATION",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-budget",
+      "render_status": "blocked",
+      "gate_results": {
+        "budget_optimization_blocked": true
+      },
+      "reason": "Budget optimization render forbidden"
+    },
+    {
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "request_type": "unknown",
+      "decision": "RENDER_BLOCKED_UNKNOWN_ROW",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-unknown",
+      "render_status": "blocked",
+      "gate_results": {
+        "unknown_row": true
+      },
+      "reason": "Unknown row: DCM-999"
+    }
+  ],
+  "accepted_rows": [
+    "DCM-001",
+    "DCM-004"
+  ],
+  "blocked_rows": [
+    "DCM-001",
+    "DCM-004",
+    "DCM-005-BRB",
+    "DCM-005-KFOLD",
+    "DCM-005-PLACEBO",
+    "DCM-006",
+    "DCM-008",
+    "DCM-999"
+  ],
+  "renderer_contracts": {
+    "DCM-001": {
+      "row_id": "DCM-001",
+      "design_family": "single_cell",
+      "estimator": "scm",
+      "inference_method": "unit_jackknife",
+      "estimand": "treated_unit_effect_level",
+      "readout_scope": "restricted_causal_interval",
+      "allowed_geometry": "unit_panel_single_cell",
+      "blocked_geometry": [
+        "aggregate_1x1",
+        "multi_cell_pooled",
+        "staggered_timing"
+      ],
+      "minimum_pre_period": "provisional_for_trustreport_reassessment_only",
+      "minimum_post_period": "provisional_for_trustreport_reassessment_only",
+      "required_diagnostics": [
+        "prefit_warning_required",
+        "donor_support_gate"
+      ],
+      "required_warnings": [
+        "noisy_world_coverage_caveat",
+        "type_i_caveat"
+      ],
+      "interval_semantics": "restricted_causal_interval_level_scale",
+      "allowed_role": "restricted_trustreport_research_only",
+      "blocked_roles": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "production_decisioning",
+        "scheduler"
+      ],
+      "audit_artifacts": [
+        "TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001",
+        "D5-STAT-SCM-JK-001"
+      ],
+      "dry_run_approval_artifact": "TRUSTREPORT-INTEGRATION-DRY-RUN-001",
+      "promotion_artifact": "TRUSTREPORT-DOWNSTREAM-PROMOTION-001",
+      "research_mode_only": true
+    },
+    "DCM-004": {
+      "row_id": "DCM-004",
+      "design_family": "single_cell",
+      "estimator": "did",
+      "inference_method": "bootstrap",
+      "estimand": "cumulative_att_level",
+      "readout_scope": "restricted_causal_interval",
+      "allowed_geometry": "unit_panel_single_cell",
+      "blocked_geometry": [
+        "parallel_trends_violation",
+        "stress_or_outlier",
+        "staggered_timing",
+        "staggered_pooled",
+        "aggregate_1x1"
+      ],
+      "minimum_pre_period": 4,
+      "minimum_post_period": "support_gated",
+      "required_diagnostics": [
+        "parallel_trends_diagnostic_required",
+        "pretrend_diagnostic_required"
+      ],
+      "required_warnings": [
+        "unsupported_worlds_excluded"
+      ],
+      "interval_semantics": "restricted_causal_interval",
+      "allowed_role": "restricted_trustreport_research_only",
+      "blocked_roles": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "production_decisioning",
+        "scheduler"
+      ],
+      "audit_artifacts": [
+        "DCM-004-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001",
+        "D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001"
+      ],
+      "dry_run_approval_artifact": "TRUSTREPORT-INTEGRATION-DRY-RUN-001",
+      "promotion_artifact": "TRUSTREPORT-DOWNSTREAM-PROMOTION-001",
+      "research_mode_only": true
+    }
+  },
+  "rendered_example_metadata": {
+    "pos-dcm001-valid": {
+      "row_id": "DCM-001",
+      "render_status": "RENDER_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED",
+      "synthetic": false,
+      "placeholder": true
+    },
+    "pos-dcm004-valid": {
+      "row_id": "DCM-004",
+      "render_status": "RENDER_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED",
+      "synthetic": false,
+      "placeholder": true
+    },
+    "pos-dcm001-placeholder": {
+      "row_id": "DCM-001",
+      "render_status": "RENDER_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED",
+      "synthetic": false,
+      "placeholder": true
+    },
+    "pos-dcm004-placeholder": {
+      "row_id": "DCM-004",
+      "render_status": "RENDER_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED",
+      "synthetic": false,
+      "placeholder": true
+    },
+    "pos-dcm001-synthetic": {
+      "row_id": "DCM-001",
+      "render_status": "RENDER_ACCEPTED_RESEARCH_MODE",
+      "measurement_label": "SYNTHETIC_DRY_RUN_PAYLOAD",
+      "synthetic": true,
+      "placeholder": false
+    },
+    "pos-dcm004-synthetic": {
+      "row_id": "DCM-004",
+      "render_status": "RENDER_ACCEPTED_RESEARCH_MODE",
+      "measurement_label": "SYNTHETIC_DRY_RUN_PAYLOAD",
+      "synthetic": true,
+      "placeholder": false
+    }
+  },
+  "warning_contracts": {
+    "DCM-001": [
+      "noisy_world_coverage_caveat",
+      "type_i_caveat",
+      "restricted_geometry_only",
+      "fit_diagnostics_required"
+    ],
+    "DCM-004": [
+      "parallel_trends_required",
+      "common_timing_required",
+      "unsupported_worlds_excluded",
+      "fit_diagnostics_required"
+    ]
+  },
+  "restriction_contracts": {
+    "DCM-001": {
+      "blocked_roles": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "production_decisioning",
+        "scheduler"
+      ],
+      "blocked_geometry": [
+        "aggregate_1x1",
+        "multi_cell_pooled",
+        "staggered_timing"
+      ]
+    },
+    "DCM-004": {
+      "blocked_roles": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "production_decisioning",
+        "scheduler"
+      ],
+      "blocked_geometry": [
+        "parallel_trends_violation",
+        "stress_or_outlier",
+        "staggered_timing",
+        "staggered_pooled",
+        "aggregate_1x1"
+      ]
+    }
+  },
+  "audit_records": [
+    {
+      "audit_record_id": "render-audit-pos-dcm001-valid",
+      "request_id": "pos-dcm001-valid",
+      "row_id": "DCM-001",
+      "decision": "RENDER_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "accepted": true,
+      "render_mode": "research_mode_only",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T01:32:08.861758+00:00"
+    },
+    {
+      "audit_record_id": "render-audit-pos-dcm004-valid",
+      "request_id": "pos-dcm004-valid",
+      "row_id": "DCM-004",
+      "decision": "RENDER_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "accepted": true,
+      "render_mode": "research_mode_only",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T01:32:08.861796+00:00"
+    },
+    {
+      "audit_record_id": "render-audit-pos-dcm001-placeholder",
+      "request_id": "pos-dcm001-placeholder",
+      "row_id": "DCM-001",
+      "decision": "RENDER_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "accepted": true,
+      "render_mode": "research_mode_only",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T01:32:08.861804+00:00"
+    },
+    {
+      "audit_record_id": "render-audit-pos-dcm004-placeholder",
+      "request_id": "pos-dcm004-placeholder",
+      "row_id": "DCM-004",
+      "decision": "RENDER_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "accepted": true,
+      "render_mode": "research_mode_only",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T01:32:08.861810+00:00"
+    },
+    {
+      "audit_record_id": "render-audit-pos-dcm001-synthetic",
+      "request_id": "pos-dcm001-synthetic",
+      "row_id": "DCM-001",
+      "decision": "RENDER_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "render_mode": "research_mode_only",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T01:32:08.861820+00:00"
+    },
+    {
+      "audit_record_id": "render-audit-pos-dcm004-synthetic",
+      "request_id": "pos-dcm004-synthetic",
+      "row_id": "DCM-004",
+      "decision": "RENDER_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "render_mode": "research_mode_only",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T01:32:08.861829+00:00"
+    },
+    {
+      "audit_record_id": "render-audit-neg-dcm001-missing-warnings",
+      "request_id": "neg-dcm001-missing-warnings",
+      "row_id": "DCM-001",
+      "decision": "RENDER_BLOCKED_MISSING_CONTRACT",
+      "accepted": false,
+      "render_mode": "research_mode_only",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T01:32:08.861833+00:00"
+    },
+    {
+      "audit_record_id": "render-audit-neg-dcm004-missing-diagnostics",
+      "request_id": "neg-dcm004-missing-diagnostics",
+      "row_id": "DCM-004",
+      "decision": "RENDER_BLOCKED_MISSING_DIAGNOSTICS",
+      "accepted": false,
+      "render_mode": "research_mode_only",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T01:32:08.861842+00:00"
+    },
+    {
+      "audit_record_id": "render-audit-neg-dcm001-bad-geometry",
+      "request_id": "neg-dcm001-bad-geometry",
+      "row_id": "DCM-001",
+      "decision": "RENDER_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "render_mode": "research_mode_only",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T01:32:08.861847+00:00"
+    },
+    {
+      "audit_record_id": "render-audit-neg-dcm004-bad-timing",
+      "request_id": "neg-dcm004-bad-timing",
+      "row_id": "DCM-004",
+      "decision": "RENDER_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "render_mode": "research_mode_only",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T01:32:08.861851+00:00"
+    },
+    {
+      "audit_record_id": "render-audit-neg-brb",
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "decision": "RENDER_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "render_mode": "research_mode_only",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T01:32:08.861854+00:00"
+    },
+    {
+      "audit_record_id": "render-audit-neg-kfold",
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "decision": "RENDER_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "render_mode": "research_mode_only",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T01:32:08.861857+00:00"
+    },
+    {
+      "audit_record_id": "render-audit-neg-placebo",
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "decision": "RENDER_BLOCKED_NULL_MONITOR_CAUSAL_REUSE",
+      "accepted": false,
+      "render_mode": "research_mode_only",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T01:32:08.861859+00:00"
+    },
+    {
+      "audit_record_id": "render-audit-neg-dcm006-global",
+      "request_id": "neg-dcm006-global",
+      "row_id": "DCM-006",
+      "decision": "RENDER_BLOCKED_NOT_PROMOTED",
+      "accepted": false,
+      "render_mode": "research_mode_only",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T01:32:08.861862+00:00"
+    },
+    {
+      "audit_record_id": "render-audit-neg-dcm008-aggregate",
+      "request_id": "neg-dcm008-aggregate",
+      "row_id": "DCM-008",
+      "decision": "RENDER_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "render_mode": "research_mode_only",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T01:32:08.861864+00:00"
+    },
+    {
+      "audit_record_id": "render-audit-neg-cal",
+      "request_id": "neg-cal",
+      "row_id": "DCM-001",
+      "decision": "RENDER_BLOCKED_CALIBRATION_SIGNAL",
+      "accepted": false,
+      "render_mode": "calibration_mode",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T01:32:08.861866+00:00"
+    },
+    {
+      "audit_record_id": "render-audit-neg-live",
+      "request_id": "neg-live",
+      "row_id": "DCM-004",
+      "decision": "RENDER_BLOCKED_LIVE_API",
+      "accepted": false,
+      "render_mode": "api_mode",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T01:32:08.861868+00:00"
+    },
+    {
+      "audit_record_id": "render-audit-neg-scheduler",
+      "request_id": "neg-scheduler",
+      "row_id": "DCM-001",
+      "decision": "RENDER_BLOCKED_SCHEDULER",
+      "accepted": false,
+      "render_mode": "scheduler_mode",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T01:32:08.861870+00:00"
+    },
+    {
+      "audit_record_id": "render-audit-neg-prod",
+      "request_id": "neg-prod",
+      "row_id": "DCM-004",
+      "decision": "RENDER_BLOCKED_PRODUCTION_DECISIONING",
+      "accepted": false,
+      "render_mode": "production_mode",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T01:32:08.861872+00:00"
+    },
+    {
+      "audit_record_id": "render-audit-neg-budget",
+      "request_id": "neg-budget",
+      "row_id": "DCM-001",
+      "decision": "RENDER_BLOCKED_BUDGET_OPTIMIZATION",
+      "accepted": false,
+      "render_mode": "optimization_mode",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T01:32:08.861873+00:00"
+    },
+    {
+      "audit_record_id": "render-audit-neg-unknown",
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "decision": "RENDER_BLOCKED_UNKNOWN_ROW",
+      "accepted": false,
+      "render_mode": "research_mode_only",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T01:32:08.861876+00:00"
+    }
+  ],
+  "negative_control_results": [
+    {
+      "request_id": "neg-dcm001-missing-warnings",
+      "row_id": "DCM-001",
+      "request_type": "missing_warnings",
+      "decision": "RENDER_BLOCKED_MISSING_CONTRACT",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-dcm001-missing-warnings",
+      "render_status": "blocked",
+      "gate_results": {
+        "warnings_missing": true
+      },
+      "reason": "Required warnings missing"
+    },
+    {
+      "request_id": "neg-dcm004-missing-diagnostics",
+      "row_id": "DCM-004",
+      "request_type": "missing_diagnostics",
+      "decision": "RENDER_BLOCKED_MISSING_DIAGNOSTICS",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-dcm004-missing-diagnostics",
+      "render_status": "blocked",
+      "gate_results": {
+        "diagnostics_missing": true
+      },
+      "reason": "Parallel-trends diagnostics required for DCM-004"
+    },
+    {
+      "request_id": "neg-dcm001-bad-geometry",
+      "row_id": "DCM-001",
+      "request_type": "unsupported_geometry",
+      "decision": "RENDER_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-dcm001-bad-geometry",
+      "render_status": "blocked",
+      "gate_results": {
+        "unsupported_geometry": true
+      },
+      "reason": "Geometry aggregate_1x1 blocked"
+    },
+    {
+      "request_id": "neg-dcm004-bad-timing",
+      "row_id": "DCM-004",
+      "request_type": "unsupported_timing",
+      "decision": "RENDER_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-dcm004-bad-timing",
+      "render_status": "blocked",
+      "gate_results": {
+        "unsupported_geometry": true
+      },
+      "reason": "Geometry parallel_trends_violation blocked"
+    },
+    {
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "request_type": "causal_trustreport",
+      "decision": "RENDER_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-brb",
+      "render_status": "blocked",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-BRB is diagnostic-only"
+    },
+    {
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "request_type": "causal_trustreport",
+      "decision": "RENDER_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-kfold",
+      "render_status": "blocked",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-KFOLD is diagnostic-only"
+    },
+    {
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "request_type": "causal_trustreport",
+      "decision": "RENDER_BLOCKED_NULL_MONITOR_CAUSAL_REUSE",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-placebo",
+      "render_status": "blocked",
+      "gate_results": {
+        "null_monitor_causal_reuse": true
+      },
+      "reason": "Null-monitor path cannot render causal TrustReport"
+    },
+    {
+      "request_id": "neg-dcm006-global",
+      "row_id": "DCM-006",
+      "request_type": "global_claim",
+      "decision": "RENDER_BLOCKED_NOT_PROMOTED",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-dcm006-global",
+      "render_status": "blocked",
+      "gate_results": {
+        "multicell_global_blocked": true
+      },
+      "reason": "DCM-006 global/winner/pooled render blocked"
+    },
+    {
+      "request_id": "neg-dcm008-aggregate",
+      "row_id": "DCM-008",
+      "request_type": "aggregate_stratified",
+      "decision": "RENDER_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-dcm008-aggregate",
+      "render_status": "blocked",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-008 is diagnostic-only"
+    },
+    {
+      "request_id": "neg-cal",
+      "row_id": "DCM-001",
+      "request_type": "calibration",
+      "decision": "RENDER_BLOCKED_CALIBRATION_SIGNAL",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-cal",
+      "render_status": "blocked",
+      "gate_results": {
+        "calibration_signal_blocked": true
+      },
+      "reason": "CalibrationSignal render forbidden"
+    },
+    {
+      "request_id": "neg-live",
+      "row_id": "DCM-004",
+      "request_type": "live_api",
+      "decision": "RENDER_BLOCKED_LIVE_API",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-live",
+      "render_status": "blocked",
+      "gate_results": {
+        "live_api_blocked": true
+      },
+      "reason": "Live API render mode forbidden"
+    },
+    {
+      "request_id": "neg-scheduler",
+      "row_id": "DCM-001",
+      "request_type": "scheduler",
+      "decision": "RENDER_BLOCKED_SCHEDULER",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-scheduler",
+      "render_status": "blocked",
+      "gate_results": {
+        "scheduler_blocked": true
+      },
+      "reason": "Scheduler render mode forbidden"
+    },
+    {
+      "request_id": "neg-prod",
+      "row_id": "DCM-004",
+      "request_type": "production",
+      "decision": "RENDER_BLOCKED_PRODUCTION_DECISIONING",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-prod",
+      "render_status": "blocked",
+      "gate_results": {
+        "production_mode_blocked": true
+      },
+      "reason": "Production render mode forbidden"
+    },
+    {
+      "request_id": "neg-budget",
+      "row_id": "DCM-001",
+      "request_type": "budget",
+      "decision": "RENDER_BLOCKED_BUDGET_OPTIMIZATION",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-budget",
+      "render_status": "blocked",
+      "gate_results": {
+        "budget_optimization_blocked": true
+      },
+      "reason": "Budget optimization render forbidden"
+    },
+    {
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "request_type": "unknown",
+      "decision": "RENDER_BLOCKED_UNKNOWN_ROW",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-unknown",
+      "render_status": "blocked",
+      "gate_results": {
+        "unknown_row": true
+      },
+      "reason": "Unknown row: DCM-999"
+    }
+  ],
+  "global_authorization_summary": {
+    "trust_report_platform_authorized": false,
+    "live_api_authorized": false,
+    "scheduler_authorized": false
+  },
+  "live_api_authorization_summary": {
+    "live_api_authorized": false,
+    "research_mode_only": true
+  },
+  "scheduler_authorization_summary": {
+    "scheduler_authorized": false,
+    "research_mode_only": true
+  },
+  "calibration_signal_summary": {
+    "any_calibration_signal_allowed": false
+  },
+  "production_decisioning_summary": {
+    "any_production_decisioning_allowed": false
+  },
+  "budget_optimization_summary": {
+    "any_budget_optimization_allowed": false
+  },
+  "open_investigation_check": {
+    "deferred_investigations": [
+      "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+      "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+    ],
+    "blocking_for_renderer": []
+  },
+  "governance_verdict": "trustreport_research_mode_renderer_passed",
+  "limitations": [
+    "This artifact renders restricted row-level TrustReport contracts in research mode only.",
+    "It does not authorize live APIs, scheduler execution, production decisioning, CalibrationSignal, budget optimization, or global platform rollout.",
+    "Only DCM-001 and DCM-004 are accepted for research-mode rendering.",
+    "All diagnostic-only, null-monitor-only, deferred, ineligible, global multi-cell, and stratified aggregate paths remain blocked.",
+    "No live measurement payloads are fabricated; placeholders and synthetic dry-run payloads are explicitly labeled."
+  ],
+  "next_artifact": "TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001",
+  "investigation_handoff": {
+    "follow_up_issues": [],
+    "resolved_issues": [],
+    "terminal_dispositions": [],
+    "next_artifact": "TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001"
+  },
+  "verdict": "trustreport_research_mode_renderer_passed",
+  "contracts_complete": true,
+  "dcm001_render_result": {
+    "request_id": "pos-dcm001-valid",
+    "row_id": "DCM-001",
+    "request_type": "valid_research",
+    "decision": "RENDER_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+    "accepted": true,
+    "audit_record_id": "render-audit-pos-dcm001-valid",
+    "render_status": "accepted",
+    "gate_results": {
+      "row_promoted": true,
+      "dry_run_approved": true,
+      "contract_complete": true,
+      "warnings_present": true,
+      "research_mode_only": true,
+      "live_api_blocked": true,
+      "scheduler_blocked": true,
+      "calibration_signal_blocked": true
+    },
+    "reason": "Research-mode TrustReport render accepted"
+  },
+  "dcm004_render_result": {
+    "request_id": "pos-dcm004-valid",
+    "row_id": "DCM-004",
+    "request_type": "valid_research",
+    "decision": "RENDER_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+    "accepted": true,
+    "audit_record_id": "render-audit-pos-dcm004-valid",
+    "render_status": "accepted",
+    "gate_results": {
+      "row_promoted": true,
+      "dry_run_approved": true,
+      "contract_complete": true,
+      "warnings_present": true,
+      "research_mode_only": true,
+      "live_api_blocked": true,
+      "scheduler_blocked": true,
+      "calibration_signal_blocked": true
+    },
+    "reason": "Research-mode TrustReport render accepted"
+  },
+  "render_results": [
+    {
+      "request_id": "pos-dcm001-valid",
+      "row_id": "DCM-001",
+      "request_type": "valid_research",
+      "decision": "RENDER_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "accepted": true,
+      "audit_record_id": "render-audit-pos-dcm001-valid",
+      "render_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport render accepted"
+    },
+    {
+      "request_id": "pos-dcm004-valid",
+      "row_id": "DCM-004",
+      "request_type": "valid_research",
+      "decision": "RENDER_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "accepted": true,
+      "audit_record_id": "render-audit-pos-dcm004-valid",
+      "render_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport render accepted"
+    },
+    {
+      "request_id": "pos-dcm001-placeholder",
+      "row_id": "DCM-001",
+      "request_type": "placeholder_payload",
+      "decision": "RENDER_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "accepted": true,
+      "audit_record_id": "render-audit-pos-dcm001-placeholder",
+      "render_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport render accepted"
+    },
+    {
+      "request_id": "pos-dcm004-placeholder",
+      "row_id": "DCM-004",
+      "request_type": "placeholder_payload",
+      "decision": "RENDER_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "accepted": true,
+      "audit_record_id": "render-audit-pos-dcm004-placeholder",
+      "render_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport render accepted"
+    },
+    {
+      "request_id": "pos-dcm001-synthetic",
+      "row_id": "DCM-001",
+      "request_type": "synthetic_payload",
+      "decision": "RENDER_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "audit_record_id": "render-audit-pos-dcm001-synthetic",
+      "render_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport render accepted"
+    },
+    {
+      "request_id": "pos-dcm004-synthetic",
+      "row_id": "DCM-004",
+      "request_type": "synthetic_payload",
+      "decision": "RENDER_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "audit_record_id": "render-audit-pos-dcm004-synthetic",
+      "render_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport render accepted"
+    },
+    {
+      "request_id": "neg-dcm001-missing-warnings",
+      "row_id": "DCM-001",
+      "request_type": "missing_warnings",
+      "decision": "RENDER_BLOCKED_MISSING_CONTRACT",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-dcm001-missing-warnings",
+      "render_status": "blocked",
+      "gate_results": {
+        "warnings_missing": true
+      },
+      "reason": "Required warnings missing"
+    },
+    {
+      "request_id": "neg-dcm004-missing-diagnostics",
+      "row_id": "DCM-004",
+      "request_type": "missing_diagnostics",
+      "decision": "RENDER_BLOCKED_MISSING_DIAGNOSTICS",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-dcm004-missing-diagnostics",
+      "render_status": "blocked",
+      "gate_results": {
+        "diagnostics_missing": true
+      },
+      "reason": "Parallel-trends diagnostics required for DCM-004"
+    },
+    {
+      "request_id": "neg-dcm001-bad-geometry",
+      "row_id": "DCM-001",
+      "request_type": "unsupported_geometry",
+      "decision": "RENDER_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-dcm001-bad-geometry",
+      "render_status": "blocked",
+      "gate_results": {
+        "unsupported_geometry": true
+      },
+      "reason": "Geometry aggregate_1x1 blocked"
+    },
+    {
+      "request_id": "neg-dcm004-bad-timing",
+      "row_id": "DCM-004",
+      "request_type": "unsupported_timing",
+      "decision": "RENDER_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-dcm004-bad-timing",
+      "render_status": "blocked",
+      "gate_results": {
+        "unsupported_geometry": true
+      },
+      "reason": "Geometry parallel_trends_violation blocked"
+    },
+    {
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "request_type": "causal_trustreport",
+      "decision": "RENDER_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-brb",
+      "render_status": "blocked",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-BRB is diagnostic-only"
+    },
+    {
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "request_type": "causal_trustreport",
+      "decision": "RENDER_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-kfold",
+      "render_status": "blocked",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-KFOLD is diagnostic-only"
+    },
+    {
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "request_type": "causal_trustreport",
+      "decision": "RENDER_BLOCKED_NULL_MONITOR_CAUSAL_REUSE",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-placebo",
+      "render_status": "blocked",
+      "gate_results": {
+        "null_monitor_causal_reuse": true
+      },
+      "reason": "Null-monitor path cannot render causal TrustReport"
+    },
+    {
+      "request_id": "neg-dcm006-global",
+      "row_id": "DCM-006",
+      "request_type": "global_claim",
+      "decision": "RENDER_BLOCKED_NOT_PROMOTED",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-dcm006-global",
+      "render_status": "blocked",
+      "gate_results": {
+        "multicell_global_blocked": true
+      },
+      "reason": "DCM-006 global/winner/pooled render blocked"
+    },
+    {
+      "request_id": "neg-dcm008-aggregate",
+      "row_id": "DCM-008",
+      "request_type": "aggregate_stratified",
+      "decision": "RENDER_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-dcm008-aggregate",
+      "render_status": "blocked",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-008 is diagnostic-only"
+    },
+    {
+      "request_id": "neg-cal",
+      "row_id": "DCM-001",
+      "request_type": "calibration",
+      "decision": "RENDER_BLOCKED_CALIBRATION_SIGNAL",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-cal",
+      "render_status": "blocked",
+      "gate_results": {
+        "calibration_signal_blocked": true
+      },
+      "reason": "CalibrationSignal render forbidden"
+    },
+    {
+      "request_id": "neg-live",
+      "row_id": "DCM-004",
+      "request_type": "live_api",
+      "decision": "RENDER_BLOCKED_LIVE_API",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-live",
+      "render_status": "blocked",
+      "gate_results": {
+        "live_api_blocked": true
+      },
+      "reason": "Live API render mode forbidden"
+    },
+    {
+      "request_id": "neg-scheduler",
+      "row_id": "DCM-001",
+      "request_type": "scheduler",
+      "decision": "RENDER_BLOCKED_SCHEDULER",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-scheduler",
+      "render_status": "blocked",
+      "gate_results": {
+        "scheduler_blocked": true
+      },
+      "reason": "Scheduler render mode forbidden"
+    },
+    {
+      "request_id": "neg-prod",
+      "row_id": "DCM-004",
+      "request_type": "production",
+      "decision": "RENDER_BLOCKED_PRODUCTION_DECISIONING",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-prod",
+      "render_status": "blocked",
+      "gate_results": {
+        "production_mode_blocked": true
+      },
+      "reason": "Production render mode forbidden"
+    },
+    {
+      "request_id": "neg-budget",
+      "row_id": "DCM-001",
+      "request_type": "budget",
+      "decision": "RENDER_BLOCKED_BUDGET_OPTIMIZATION",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-budget",
+      "render_status": "blocked",
+      "gate_results": {
+        "budget_optimization_blocked": true
+      },
+      "reason": "Budget optimization render forbidden"
+    },
+    {
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "request_type": "unknown",
+      "decision": "RENDER_BLOCKED_UNKNOWN_ROW",
+      "accepted": false,
+      "audit_record_id": "render-audit-neg-unknown",
+      "render_status": "blocked",
+      "gate_results": {
+        "unknown_row": true
+      },
+      "reason": "Unknown row: DCM-999"
+    }
+  ],
+  "rendered_output_schema": {
+    "required_fields": [
+      "title",
+      "artifact_id",
+      "row_id",
+      "method_identity",
+      "estimand",
+      "allowed_scope",
+      "measurement",
+      "diagnostic_requirements",
+      "warnings",
+      "restrictions",
+      "blocked_uses",
+      "audit_trail",
+      "authorization_boundaries",
+      "banners",
+      "render_status"
+    ],
+    "placeholder_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED",
+    "synthetic_label": "SYNTHETIC_DRY_RUN_PAYLOAD"
+  }
+}

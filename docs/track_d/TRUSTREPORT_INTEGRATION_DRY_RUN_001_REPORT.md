@@ -484,3 +484,11 @@ Audit records emitted: 22
 ## Residual Issues and Handoff
 
 Next artifact: `TRUSTREPORT_RESEARCH_MODE_RENDERER_001`
+
+---
+
+## Research-mode renderer update (2026-06-03)
+
+**Follow-on:** [`TRUSTREPORT_RESEARCH_MODE_RENDERER_001_REPORT.md`](TRUSTREPORT_RESEARCH_MODE_RENDERER_001_REPORT.md)
+
+Research-mode renderer **passed** for DCM-001/004. Live API, scheduler, CalibrationSignal, production decisioning remain blocked. Next: `TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001`.
