@@ -1,0 +1,338 @@
+{
+  "artifact_id": "SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001",
+  "artifact_version": "1.0.0",
+  "status": "completed",
+  "generated_at": "2026-06-23T23:13:07.114902+00:00",
+  "git_commit": "e8dd2f024bed84ff0a0f6e250aa775a61a4e46a4",
+  "verdict": "scm_treated_set_placebo_null_calibration_completed_no_downstream_authorization",
+  "governance_verdict": "scm_treated_set_placebo_null_calibration_completed_no_downstream_authorization",
+  "roadmap_spine": [
+    "ROADMAP_REFOCUS_METHOD_VALIDATION_001",
+    "INFERENCE_REPLACEMENT_SCOUT_001",
+    "DESIGN_AWARE_ASSIGNMENT_GENERATORS_001",
+    "MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001",
+    "SCM_PLACEBO_GOVERNED_SEMANTICS_001",
+    "METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001",
+    "SCM_TREATED_SET_PLACEBO_INTEGRATION_001",
+    "STUDENTIZED_PLACEBO_RANK_INFERENCE_001",
+    "SCM_STUDENTIZED_TREATED_SET_PLACEBO_INTEGRATION_001",
+    "MULTICELL_SHARED_CONTROL_MULTIPLICITY_001",
+    "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001",
+    "AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001",
+    "METHOD_READINESS_MATRIX_V2_001",
+    "CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001",
+    "METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001",
+    "STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001",
+    "SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001"
+  ],
+  "grid_result_count": 10,
+  "scenario_count": 43,
+  "passed_scenarios": 43,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "valid_spec_passes_validation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "invalid_num_units_blocked",
+      "passed": true,
+      "detail": "num_units must be >= 4; num_treated must be < num_units"
+    },
+    {
+      "scenario_id": "invalid_num_treated_blocked",
+      "passed": true,
+      "detail": "num_treated must be >= 1"
+    },
+    {
+      "scenario_id": "num_treated_ge_num_units_blocked",
+      "passed": true,
+      "detail": "num_treated must be < num_units"
+    },
+    {
+      "scenario_id": "invalid_pre_post_periods_blocked",
+      "passed": true,
+      "detail": "num_pre_periods must be >= 2"
+    },
+    {
+      "scenario_id": "invalid_alpha_blocked",
+      "passed": true,
+      "detail": "alpha 1.5 must be in (0, 1)"
+    },
+    {
+      "scenario_id": "too_few_replications_blocked",
+      "passed": true,
+      "detail": "num_replications 5 < min_replications 100"
+    },
+    {
+      "scenario_id": "too_few_pseudo_assignments_blocked",
+      "passed": true,
+      "detail": "num_pseudo_assignments 5 < min_pseudo_assignments 20"
+    },
+    {
+      "scenario_id": "iid_null_simulation_runs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "unit_fixed_effect_null_simulation_runs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "unit_time_fixed_effect_null_simulation_runs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "heteroskedastic_null_simulation_runs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "donor_matched_latent_factor_null_simulation_runs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "complete_randomized_assignment_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "matched_pair_assignment_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stratified_assignment_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_style_effect_mode_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_style_studentized_effect_mode_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "simple_diff_in_means_baseline_mode_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "empirical_tail_fraction_bounded",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "empirical_type_i_bounded",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "type_i_excess_computed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tail_fraction_quantiles_computed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "deterministic_seed_reproducibility",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "different_seed_changes_results",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_verdict_assigned",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "grid_summary_counts_by_verdict",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "comparison_summary_includes_scm_style_effect",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "comparison_summary_includes_scm_style_studentized_effect",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "comparison_summary_includes_simple_diff_in_means_baseline",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "comparison_summary_identifies_max_type_i_excess_mode",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_result_authorizes_production_p_value_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_result_authorizes_causal_confidence_interval_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_result_authorizes_trustreport_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_result_authorizes_calibration_signal_allowed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_result_authorizes_mmm_ingestion_allowed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_result_authorizes_llm_decisioning_allowed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_result_authorizes_production_decisioning_allowed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_result_authorizes_live_api_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_result_authorizes_scheduler_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_result_authorizes_budget_optimization_allowed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "summary_json_flags_all_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_valid",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "dgp_coverage": {
+    "iid_normal": true,
+    "unit_fixed_effect": true,
+    "unit_and_time_fixed_effect": true,
+    "heteroskedastic": true,
+    "donor_matched_latent_factor": true
+  },
+  "assignment_family_coverage": {
+    "complete_randomized_set": true,
+    "matched_pair_randomized": true,
+    "stratified_randomized": true
+  },
+  "statistic_mode_coverage": {
+    "scm_style_effect": true,
+    "scm_style_studentized_effect": true,
+    "simple_diff_in_means_baseline": true
+  },
+  "verdict_counts": {
+    "borderline_requires_more_simulation": 4,
+    "calibrated_under_tested_nulls": 6
+  },
+  "max_empirical_type_i_excess": 0.06,
+  "comparison_summary": {
+    "max_type_i_excess_by_statistic_mode": {
+      "scm_style_effect": 0.06,
+      "scm_style_studentized_effect": 0.06,
+      "simple_diff_in_means_baseline": 0.06
+    },
+    "studentized_vs_unstudentized_note": "preliminary grid: SCM-style studentization does not reduce max type-I excess (0.060 vs 0.060)",
+    "scm_vs_diff_in_means_note": "under donor-matched latent-factor null, SCM-style effect shows lower max type-I excess than diff-in-means (-0.020 vs 0.050)",
+    "fragile_assignment_families": [],
+    "fragile_dgps": [],
+    "max_type_i_excess_mode": "scm_style_effect",
+    "most_fragile_assignment_family": "complete_randomized_set",
+    "most_fragile_dgp": "iid_normal"
+  },
+  "recommended_next_artifact": "SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001",
+  "calibration_scope": {
+    "purpose": "SCM-style treated-set placebo null calibration",
+    "production_claim": false,
+    "tested_dgps": [
+      "iid_normal",
+      "unit_fixed_effect",
+      "unit_and_time_fixed_effect",
+      "heteroskedastic",
+      "donor_matched_latent_factor"
+    ],
+    "tested_assignment_families": [
+      "complete_randomized_set",
+      "matched_pair_randomized",
+      "stratified_randomized"
+    ],
+    "tested_statistic_modes": [
+      "scm_style_effect",
+      "scm_style_studentized_effect",
+      "simple_diff_in_means_baseline"
+    ],
+    "tail_semantics": "empirical_tail_fraction_only_not_final_p_value"
+  },
+  "next_required_evidence": [
+    "larger_simulation_grid",
+    "production SCM estimator adapter",
+    "observed/pseudo statistic recomputation contract",
+    "SCM/AugSynth shared statistic adapter",
+    "assignment-generator stress tests"
+  ],
+  "forbidden_outputs": [
+    "production_p_value",
+    "causal_confidence_interval",
+    "trustreport_authorization",
+    "calibration_signal",
+    "mmm_ingestion",
+    "llm_decisioning",
+    "production_decisioning",
+    "live_api",
+    "scheduler",
+    "budget_optimization"
+  ],
+  "next_artifact": "SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001",
+  "production_p_value_authorized": false,
+  "causal_confidence_interval_authorized": false,
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false
+}

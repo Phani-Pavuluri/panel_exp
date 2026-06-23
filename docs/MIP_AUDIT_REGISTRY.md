@@ -1502,7 +1502,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Empirical null-calibration harness for studentized placebo-rank mechanics. Tail fractions are diagnostic only. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
 
-**Next:** `SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001`.
+**Next:** `SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001` (completed — see SCM treated-set placebo null calibration report).
+
+---
+
+## SCM-TREATED-SET-PLACEBO-NULL-CALIBRATION-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001_REPORT.md`](track_d/SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001_REPORT.md) · [`docs/track_d/archives/SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001_summary.json`](track_d/archives/SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001_summary.json) · [`panel_exp/inference/scm_treated_set_placebo_calibration.py`](../panel_exp/inference/scm_treated_set_placebo_calibration.py) · [`panel_exp/validation/scm_treated_set_placebo_null_calibration_001.py`](../panel_exp/validation/scm_treated_set_placebo_null_calibration_001.py)
+
+**Status:** **`scm_treated_set_placebo_null_calibration_completed_no_downstream_authorization`**
+
+**Verdict:** SCM-specific empirical null calibration with lightweight SCM-style statistic adapter. Tail fractions are diagnostic only. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001`.
 
 ---
 
