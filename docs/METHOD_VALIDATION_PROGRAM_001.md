@@ -339,6 +339,8 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **TRUSTREPORT-DOWNSTREAM-PROMOTION-001 (2026-06-03):** [`TRUSTREPORT_DOWNSTREAM_PROMOTION_001_REPORT.md`](track_d/TRUSTREPORT_DOWNSTREAM_PROMOTION_001_REPORT.md) — restricted row-level promotion gate; regenerate: `poetry run python -m panel_exp.validation.trustreport_downstream_promotion_001 --overwrite`.
 
+**TRUSTREPORT-INTEGRATION-DRY-RUN-001 (2026-06-03):** [`TRUSTREPORT_INTEGRATION_DRY_RUN_001_REPORT.md`](track_d/TRUSTREPORT_INTEGRATION_DRY_RUN_001_REPORT.md) — integration dry-run; regenerate: `poetry run python -m panel_exp.validation.trustreport_integration_dry_run_001 --overwrite`.
+
 ## 13. Stop condition
 
 | Criterion | Status |

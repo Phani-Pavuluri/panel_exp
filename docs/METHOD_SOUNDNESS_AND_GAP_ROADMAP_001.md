@@ -544,6 +544,8 @@ Per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)
 
 **TRUSTREPORT-DOWNSTREAM-PROMOTION-001 (2026-06-03):** [`TRUSTREPORT_DOWNSTREAM_PROMOTION_001_REPORT.md`](track_d/TRUSTREPORT_DOWNSTREAM_PROMOTION_001_REPORT.md) — DCM-001/004 row-level restricted promotion; global platform false; regenerate: `poetry run python -m panel_exp.validation.trustreport_downstream_promotion_001 --overwrite`.
 
+**TRUSTREPORT-INTEGRATION-DRY-RUN-001 (2026-06-03):** [`TRUSTREPORT_INTEGRATION_DRY_RUN_001_REPORT.md`](track_d/TRUSTREPORT_INTEGRATION_DRY_RUN_001_REPORT.md) — dry-run integration check passed; regenerate: `poetry run python -m panel_exp.validation.trustreport_integration_dry_run_001 --overwrite`.
+
 ## 11. Stop condition
 
 | Criterion | Status |
