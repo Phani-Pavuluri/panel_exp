@@ -9,6 +9,8 @@ Converts findings from [`TRUSTREPORT_ELIGIBILITY_VALIDATION_001`](track_d/TRUSTR
 
 This artifact identifies root causes, minimum remediations, follow-up validation artifacts, execution order, and lanes worth fixing versus permanently excluding.
 
+**TrustReport ops freeze (2026-06-03):** [`ROADMAP_REFOCUS_METHOD_VALIDATION_001`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md) — research-mode ops complete through access control; audit log / API / scheduler / platform rollout paused. Active work returns to method validation (`MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001` first).
+
 ## 2. Why promotion cannot proceed
 
 | Finding | Blocker |
@@ -331,6 +333,8 @@ Remain ineligible unless a **separate future artifact** explicitly changes them:
 | `TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001` | Research-mode artifact export | DCM-001/004 | ✅ complete — sanitized export passed; no live auth |
 | `TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001` | Research-mode review workflow | DCM-001/004 | ✅ complete — review workflow passed; not production approval |
 | `TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001` | Research-mode access control | DCM-001/004 | ✅ complete — access control passed; not deployment permission |
+| `ROADMAP_REFOCUS_METHOD_VALIDATION_001` | TrustReport ops freeze + method refocus | Active lane | ✅ complete — ops frozen; method validation active |
+| `TRUSTREPORT_RESEARCH_MODE_AUDIT_LOG_001` | Audit log | DCM-001/004 | **PAUSED** — deferred to MIP application layer |
 | `D5-TRUST-STRATIFIED-SCM-JK-001` | Stratified combination | DCM-008 | ✅ complete |
 | `D5-TRUST-MULTICELL-PERCELL-INFERENCE-001` | Per-cell inference | DCM-006 | ✅ complete |
 | `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` | Partial re-run (DCM-001 only) | DCM-001 promotion candidacy | ✅ complete (DCM-001 only) |

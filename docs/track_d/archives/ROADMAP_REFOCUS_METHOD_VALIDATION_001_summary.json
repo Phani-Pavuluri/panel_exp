@@ -1,0 +1,284 @@
+{
+  "artifact_id": "ROADMAP-REFOCUS-METHOD-VALIDATION-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-03T12:00:00+00:00",
+  "git_commit": "86d558797e44bbd8f21694834c6b77e9cbc70d39",
+  "input_documents": [
+    "docs/ROADMAP_V4.md",
+    "docs/MIP_AUDIT_REGISTRY.md",
+    "docs/TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md",
+    "docs/METHOD_VALIDATION_PROGRAM_001.md",
+    "docs/METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md",
+    "docs/EXPERIMENT_PLANNING_ORCHESTRATION_ROADMAP_001.md",
+    "docs/governance/OPEN_INVESTIGATIONS_001.json",
+    "docs/track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md",
+    "docs/track_d/TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001_REPORT.md",
+    "docs/MULTICELL_CELL_RELATIONSHIP_AND_DECISION_POLICY_CONTRACT_001.md"
+  ],
+  "trustreport_ops_status": "freeze_after_research_mode_access_control",
+  "trustreport_ops_freeze": {
+    "decision": "TrustReport research-mode operationalization is complete enough for package-level governance.",
+    "paused_artifacts": [
+      "TRUSTREPORT_RESEARCH_MODE_AUDIT_LOG_001",
+      "TRUSTREPORT_RESEARCH_MODE_REVIEW_QUEUE_001",
+      "TRUSTREPORT_LIVE_API_READINESS_001",
+      "TRUSTREPORT_SCHEDULER_READINESS_001",
+      "TRUSTREPORT_PLATFORM_ROLLOUT_001",
+      "downstream_authorization_update"
+    ],
+    "completed_ops_chain": [
+      "TRUSTREPORT_DOWNSTREAM_PROMOTION_001",
+      "TRUSTREPORT_INTEGRATION_DRY_RUN_001",
+      "TRUSTREPORT_RESEARCH_MODE_RENDERER_001",
+      "TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001",
+      "TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001",
+      "TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001"
+    ]
+  },
+  "active_method_priorities": [
+    {
+      "rank": "P0",
+      "artifact": "MERGE_CHECKPOINT_TRUSTREPORT_STACK",
+      "classification": "KEEP_ACTIVE_METHOD_VALIDATION",
+      "rationale": "Checkpoint restricted DCM-001/004 research-mode governance before method lane resumes"
+    },
+    {
+      "rank": "P1",
+      "artifact": "MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001",
+      "classification": "KEEP_ACTIVE_ESTIMAND_DESIGN",
+      "rationale": "Placebo currently single-treated only; multi-treated randomization inference is a GeoX blocker"
+    },
+    {
+      "rank": "P2",
+      "artifact": "DESIGN_AWARE_ASSIGNMENT_GENERATORS_001",
+      "classification": "KEEP_ACTIVE_ESTIMAND_DESIGN",
+      "rationale": "Design/readout bridge gaps (G-DES-001–014); rerandomization not connected to inference"
+    },
+    {
+      "rank": "P3",
+      "artifact": "SCM_PLACEBO_GOVERNED_SEMANTICS_001",
+      "classification": "KEEP_ACTIVE_DIAGNOSTIC_DISPOSITION",
+      "rationale": "SCM Placebo null-monitor semantics resolved at matrix level; package contract still needed"
+    },
+    {
+      "rank": "P4",
+      "artifact": "AUGSYNTH_JK_TRUSTREPORT_DISPOSITION_001",
+      "classification": "KEEP_ACTIVE_ALGORITHM_REMEDIATION",
+      "rationale": "AugSynth JK diagnostic-only; estimand/scale bridge blocks usable causal readout"
+    },
+    {
+      "rank": "P5",
+      "artifact": "TBRRIDGE_INFERENCE_REPLACEMENT_SCOUT_001",
+      "classification": "KEEP_ACTIVE_ALGORITHM_REMEDIATION",
+      "rationale": "BRB/KFold/Placebo paths terminally restricted; replacement inference scout before more TBRRidge ops"
+    },
+    {
+      "rank": "P6",
+      "artifact": "MULTICELL_MULTIPLICITY_CALIBRATION_001",
+      "classification": "KEEP_ACTIVE_METHOD_VALIDATION",
+      "rationale": "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001 deferred; familywise type-I ~27%"
+    },
+    {
+      "rank": "P7",
+      "artifact": "MULTICELL_SHARED_CONTROL_DEPENDENCE_001",
+      "classification": "KEEP_ACTIVE_METHOD_VALIDATION",
+      "rationale": "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001 deferred; cross-cell correlation ~0.90"
+    },
+    {
+      "rank": "P8",
+      "artifact": "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001",
+      "classification": "KEEP_ACTIVE_ESTIMAND_DESIGN",
+      "rationale": "DCM-008 aggregate readout is characterization only; pooled estimand undefined"
+    }
+  ],
+  "paused_platform_priorities": [
+    {
+      "artifact": "TRUSTREPORT_RESEARCH_MODE_AUDIT_LOG_001",
+      "classification": "DEFER_PLATFORM_LAYER"
+    },
+    {
+      "artifact": "TRUSTREPORT_LIVE_API_READINESS_001",
+      "classification": "DEFER_PLATFORM_LAYER"
+    },
+    {
+      "artifact": "TRUSTREPORT_SCHEDULER_READINESS_001",
+      "classification": "DEFER_PLATFORM_LAYER"
+    },
+    {
+      "artifact": "TRUSTREPORT_PLATFORM_ROLLOUT_001",
+      "classification": "DEFER_PLATFORM_LAYER"
+    },
+    {
+      "artifact": "downstream_authorization_update",
+      "classification": "DEFER_UNTIL_METHODS_PASS"
+    },
+    {
+      "artifact": "CalibrationSignal production wiring",
+      "classification": "DEFER_PRODUCT_OPS"
+    },
+    {
+      "artifact": "MMM ingestion promotion",
+      "classification": "DEFER_UNTIL_METHODS_PASS"
+    }
+  ],
+  "usable_methods": [
+    {
+      "row_id": "DCM-001",
+      "combination": "SCM + UnitJackknife",
+      "usable_scope": "restricted_research_mode_trustreport",
+      "gates": "null coverage ~93%; positive coverage ~90% post harness correction; type-I caveats; geometry restricted",
+      "classification": "KEEP_ACTIVE_METHOD_VALIDATION"
+    },
+    {
+      "row_id": "DCM-004",
+      "combination": "DID + bootstrap",
+      "usable_scope": "restricted_research_mode_trustreport",
+      "gates": "positive coverage ~93%; parallel-trends and common-timing required; unsupported worlds excluded",
+      "classification": "KEEP_ACTIVE_METHOD_VALIDATION"
+    }
+  ],
+  "diagnostic_only_methods": [
+    {
+      "row_id": "DCM-002",
+      "combination": "AugSynth point",
+      "classification": "KEEP_ACTIVE_DIAGNOSTIC_DISPOSITION"
+    },
+    {
+      "row_id": "DCM-005-BRB",
+      "combination": "TBRRidge + BlockResidualBootstrap",
+      "verdict": "BRB_DIAGNOSTIC_ONLY",
+      "classification": "CLOSE_AS_DIAGNOSTIC_ONLY"
+    },
+    {
+      "row_id": "DCM-005-KFOLD",
+      "combination": "TBRRidge + KFold",
+      "verdict": "DIAGNOSTIC_ONLY",
+      "classification": "CLOSE_AS_DIAGNOSTIC_ONLY"
+    },
+    {
+      "row_id": "DCM-008",
+      "combination": "Stratified SCM + JK",
+      "verdict": "stratified_scm_jk_diagnostic_only",
+      "classification": "CLOSE_AS_DIAGNOSTIC_ONLY"
+    },
+    {
+      "combination": "AugSynthCVXPY + UnitJackknife",
+      "verdict": "DIAGNOSTIC_ONLY",
+      "classification": "KEEP_ACTIVE_ALGORITHM_REMEDIATION"
+    },
+    {
+      "combination": "TBRRidge + UnitJackknife",
+      "verdict": "known_failure_mode",
+      "classification": "KEEP_ACTIVE_ALGORITHM_REMEDIATION"
+    }
+  ],
+  "blocked_methods": [
+    {
+      "row_id": "DCM-003",
+      "combination": "TBR aggregate",
+      "reason": "geometry_mismatch",
+      "classification": "CLOSE_AS_NOT_PACKAGE_SCOPE"
+    },
+    {
+      "row_id": "DCM-005-PLACEBO",
+      "combination": "TBRRidge + Placebo",
+      "reason": "null_monitor_only_not_causal",
+      "classification": "CLOSE_AS_DIAGNOSTIC_ONLY"
+    },
+    {
+      "row_id": "DCM-006",
+      "combination": "Multi-cell SCM+JK global/winner/pooled",
+      "reason": "multiplicity_unresolved",
+      "classification": "KEEP_ACTIVE_METHOD_VALIDATION"
+    },
+    {
+      "row_id": "DCM-007",
+      "combination": "Pooled multi-cell",
+      "reason": "permanent_exclusion",
+      "classification": "CLOSE_AS_NOT_PACKAGE_SCOPE"
+    },
+    {
+      "combination": "SCM + Placebo multi-treated",
+      "reason": "single_treated_scope_only",
+      "classification": "KEEP_ACTIVE_ESTIMAND_DESIGN"
+    }
+  ],
+  "item_classifications": [
+    {"item": "FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001", "classification": "CLOSE_AS_COMPLETED"},
+    {"item": "TRUSTREPORT_DOWNSTREAM_PROMOTION_001", "classification": "CLOSE_AS_COMPLETED"},
+    {"item": "TRUSTREPORT_INTEGRATION_DRY_RUN_001", "classification": "CLOSE_AS_COMPLETED"},
+    {"item": "TRUSTREPORT_RESEARCH_MODE_RENDERER_001", "classification": "CLOSE_AS_COMPLETED"},
+    {"item": "TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001", "classification": "CLOSE_AS_COMPLETED"},
+    {"item": "TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001", "classification": "CLOSE_AS_COMPLETED"},
+    {"item": "TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001", "classification": "CLOSE_AS_COMPLETED"},
+    {"item": "TRUSTREPORT_RESEARCH_MODE_AUDIT_LOG_001", "classification": "DEFER_PLATFORM_LAYER"},
+    {"item": "DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001", "classification": "CLOSE_AS_DIAGNOSTIC_ONLY"},
+    {"item": "D5-TRUST-MULTICELL-PERCELL-INFERENCE-001", "classification": "CLOSE_AS_COMPLETED"},
+    {"item": "MULTICELL_CELL_RELATIONSHIP_AND_DECISION_POLICY_CONTRACT_001", "classification": "CLOSE_AS_COMPLETED"},
+    {"item": "D5-TRUST-STRATIFIED-SCM-JK-001", "classification": "CLOSE_AS_DIAGNOSTIC_ONLY"},
+    {"item": "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001", "classification": "KEEP_ACTIVE_METHOD_VALIDATION"},
+    {"item": "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001", "classification": "KEEP_ACTIVE_METHOD_VALIDATION"},
+    {"item": "D5-INST-AUGSYNTH-ASCM-003", "classification": "KEEP_ACTIVE_ALGORITHM_REMEDIATION"},
+    {"item": "D5-INST-TBR-001", "classification": "KEEP_ACTIVE_METHOD_VALIDATION"},
+    {"item": "DCM-009-019 adapter lanes", "classification": "DEFER_UNTIL_METHODS_PASS"},
+    {"item": "METHOD_COMBINATION_VALIDATION_MATRIX v2", "classification": "DEFER_UNTIL_METHODS_PASS"},
+    {"item": "AUDIT-010 MMM readiness", "classification": "DEFER_PRODUCT_OPS"}
+  ],
+  "open_investigation_triage": [
+    {
+      "investigation_id": "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001",
+      "priority": "P1_method",
+      "action": "KEEP_ACTIVE",
+      "target": "MULTICELL_MULTIPLICITY_CALIBRATION_001"
+    },
+    {
+      "investigation_id": "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+      "priority": "P2_method",
+      "action": "KEEP_ACTIVE",
+      "target": "MULTICELL_SHARED_CONTROL_DEPENDENCE_001"
+    }
+  ],
+  "recommended_next_artifacts": [
+    "MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001",
+    "DESIGN_AWARE_ASSIGNMENT_GENERATORS_001",
+    "SCM_PLACEBO_GOVERNED_SEMANTICS_001"
+  ],
+  "deferred_to_mip_layer": [
+    "TRUSTREPORT_RESEARCH_MODE_AUDIT_LOG_001",
+    "TrustReport review queue / UI access surface",
+    "Live API contract and readiness",
+    "Scheduler readiness and job orchestration",
+    "Global TrustReport platform rollout",
+    "CalibrationSignal production wiring",
+    "MMM ingestion promotion",
+    "Production decisioning and budget optimization surfaces"
+  ],
+  "audit_answers": {
+    "method_validity_blockers": [
+      "Multi-treated placebo/randomization inference gap",
+      "Design-to-readout bridge gaps (rerandomization, supergeo, trim)",
+      "AugSynth estimand/scale and JK disposition",
+      "TBRRidge causal inference replacement (BRB/KFold terminal)",
+      "Multicell multiplicity and shared-control dependence",
+      "Stratified pooled estimand undefined"
+    ],
+    "product_ops_to_pause": [
+      "TRUSTREPORT_RESEARCH_MODE_AUDIT_LOG_001",
+      "Live API / scheduler / platform rollout",
+      "Downstream authorization update",
+      "CalibrationSignal production wiring"
+    ],
+    "geo_x_priority_blockers": [
+      "MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001",
+      "DESIGN_AWARE_ASSIGNMENT_GENERATORS_001",
+      "MULTICELL_MULTIPLICITY_CALIBRATION_001"
+    ]
+  },
+  "governance_verdict": "refocus_on_method_validation",
+  "limitations": [
+    "Planning audit only; no new simulations or algorithm changes.",
+    "Usable-method set is narrow: DCM-001/004 research-mode only; global TrustReport authorization remains false.",
+    "Priority ranking uses repo evidence plus stated GeoX defaults; reorder only with new evidence."
+  ],
+  "next_artifact": "MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001"
+}

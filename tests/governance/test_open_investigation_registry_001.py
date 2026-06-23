@@ -130,4 +130,15 @@ class TestOpenInvestigationRegistry001:
         )
         assert lane["status"] == "complete"
         assert lane["resolution_artifact"] == "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001"
-        assert lane["next_artifact"] == "TRUSTREPORT_RESEARCH_MODE_AUDIT_LOG_001"
+        assert lane["next_artifact"] == "ROADMAP_REFOCUS_METHOD_VALIDATION_001"
+
+    def test_roadmap_refocus_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "ROADMAP-REFOCUS-METHOD-VALIDATION-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "ROADMAP-REFOCUS-METHOD-VALIDATION-001"
+        assert lane["next_artifact"] == "MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001"
+        assert lane.get("trustreport_ops_status") == "freeze_after_research_mode_access_control"
