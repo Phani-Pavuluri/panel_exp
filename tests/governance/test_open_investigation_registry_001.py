@@ -252,3 +252,15 @@ class TestOpenInvestigationRegistry001:
         assert lane["next_artifact"] == "AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001"
         assert "stratified_estimand" in lane["artifact_tags"]
         assert "pooled_estimand_contract" in lane["artifact_tags"]
+
+    def test_augsynth_point_randomization_integration_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "AUGSYNTH-POINT-RANDOMIZATION-INTEGRATION-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001"
+        assert lane["next_artifact"] == "METHOD_READINESS_MATRIX_V2_001"
+        assert "augsynth_point" in lane["artifact_tags"]
+        assert "randomization_inference" in lane["artifact_tags"]

@@ -1442,7 +1442,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Governed stratified/pooled estimand contract layer. Stratum-level readouts allowed; stratified aggregates diagnostic or contract-candidate only; pooled multi-cell/global/winner blocked. **No TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or pooled-effect authorization.** **`INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001`** disposition: `STRATIFIED_POOLED_ESTIMAND_CONTRACT_DEFINED_POOLING_STILL_BLOCKED`.
 
-**Next:** `AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001`.
+**Next:** `AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001` (completed — see AugSynth point randomization report).
+
+---
+
+## AUGSYNTH-POINT-RANDOMIZATION-INTEGRATION-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001_REPORT.md`](track_d/AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001_REPORT.md) · [`docs/track_d/archives/AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001_summary.json`](track_d/archives/AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001_summary.json) · [`panel_exp/inference/augsynth_point_randomization.py`](../panel_exp/inference/augsynth_point_randomization.py) · [`panel_exp/validation/augsynth_point_randomization_integration_001.py`](../panel_exp/validation/augsynth_point_randomization_integration_001.py)
+
+**Status:** **`augsynth_point_randomization_integration_defined_no_downstream_authorization`**
+
+**Verdict:** Governed AugSynth point randomization integration bridging precomputed point statistics, treated-set placebo rank/tail, and method-specific readiness. AugSynth point = framework candidate; AugSynth JK = diagnostic-only. **No final p-value, CI, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or AugSynth JK authorization.** **`INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001`** disposition: `AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_DEFINED_JK_STILL_DIAGNOSTIC`.
+
+**Next:** `METHOD_READINESS_MATRIX_V2_001`.
 
 ---
 

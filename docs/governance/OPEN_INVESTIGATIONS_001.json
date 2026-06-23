@@ -233,14 +233,14 @@
         "shared_vs_disjoint_type_i_delta": 0.011,
         "d5_trust_characterization": "D5-TRUST-MULTICELL-PERCELL-INFERENCE-001"
       },
-      "current_decision": "STRATIFIED_POOLED_ESTIMAND_CONTRACT_DEFINED_DEPENDENCE_MODEL_STILL_REQUIRED",
+      "current_decision": "AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_DEFINED_DEPENDENCE_MODEL_STILL_REQUIRED",
       "blocked_roles": ["trust_report", "calibration_signal", "production"],
-      "target_artifact": "AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001",
-      "revisit_trigger": "Upon opening AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001",
+      "target_artifact": "METHOD_READINESS_MATRIX_V2_001",
+      "revisit_trigger": "Upon opening METHOD_READINESS_MATRIX_V2_001",
       "decision_checkpoint": "Shared-control dependence model closeout before global multi-cell promotion",
       "blocking_policy": "Shared-control geometries require explicit dependence contract; per-cell marginal only unless promotion evidence complete",
       "terminal_decisions": ["REMEDIATE", "RESTRICT", "DIAGNOSTIC_ONLY"],
-      "resolution_artifact": "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001"
+      "resolution_artifact": "AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001"
     },
     {
       "investigation_id": "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001",
@@ -256,14 +256,14 @@
         "simultaneous_coverage": 0.856,
         "d5_trust_characterization": "D5-TRUST-MULTICELL-PERCELL-INFERENCE-001"
       },
-      "current_decision": "STRATIFIED_POOLED_ESTIMAND_CONTRACT_DEFINED_ADJUSTMENT_STILL_REQUIRED",
+      "current_decision": "AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_DEFINED_ADJUSTMENT_STILL_REQUIRED",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "simultaneous_multi_cell_decision"],
-      "target_artifact": "AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001",
-      "revisit_trigger": "Upon opening AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001",
+      "target_artifact": "METHOD_READINESS_MATRIX_V2_001",
+      "revisit_trigger": "Upon opening METHOD_READINESS_MATRIX_V2_001",
       "decision_checkpoint": "Multiplicity calibration closeout before familywise multi-cell decisioning",
-      "blocking_policy": "Marginal per-cell readouts cannot authorize simultaneous multi-cell decisions; stratified/pooled estimand contract defined",
+      "blocking_policy": "Marginal per-cell readouts cannot authorize simultaneous multi-cell decisions; AugSynth point randomization integration defined",
       "terminal_decisions": ["REMEDIATE", "RESTRICT", "DIAGNOSTIC_ONLY"],
-      "resolution_artifact": "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001"
+      "resolution_artifact": "AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001"
     },
     {
       "investigation_id": "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
@@ -282,14 +282,14 @@
         "scout_primary_prerequisite_complete": true,
         "scm_placebo_single_treated_only": true
       },
-      "current_decision": "STRATIFIED_POOLED_ESTIMAND_CONTRACT_DEFINED_POOLING_STILL_BLOCKED",
+      "current_decision": "AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_DEFINED_JK_STILL_DIAGNOSTIC",
       "blocked_roles": ["trust_report", "calibration_signal", "production"],
-      "target_artifact": "AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001",
-      "revisit_trigger": "Upon opening AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001",
-      "decision_checkpoint": "AugSynth point randomization integration before pooled promotion",
-      "blocking_policy": "Stratified/pooled estimand contract defined; production pooled/global/winner still blocked",
+      "target_artifact": "METHOD_READINESS_MATRIX_V2_001",
+      "revisit_trigger": "Upon opening METHOD_READINESS_MATRIX_V2_001",
+      "decision_checkpoint": "Method readiness matrix v2 before pooled promotion",
+      "blocking_policy": "AugSynth point randomization candidate defined; AugSynth JK and production inference still blocked",
       "terminal_decisions": ["REMEDIATE", "RESTRICT", "DIAGNOSTIC_ONLY"],
-      "resolution_artifact": "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001"
+      "resolution_artifact": "AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001"
     },
     {
       "investigation_id": "INV-MULTICELL-CELL-RELATIONSHIP-DECISION-POLICY-001",
@@ -719,6 +719,27 @@
         "stratified_estimand",
         "pooled_estimand_contract",
         "heterogeneity_policy",
+        "downstream_blocking_prerequisite"
+      ]
+    },
+    {
+      "lane_id": "AUGSYNTH-POINT-RANDOMIZATION-INTEGRATION-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "METHOD_READINESS_MATRIX_V2_001",
+      "resolution_artifact": "AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001",
+      "artifact_tags": [
+        "method_validity",
+        "augsynth_point",
+        "randomization_inference",
+        "treated_set_placebo",
         "downstream_blocking_prerequisite"
       ]
     }
