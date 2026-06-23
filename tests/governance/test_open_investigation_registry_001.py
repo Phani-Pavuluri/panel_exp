@@ -162,4 +162,15 @@ class TestOpenInvestigationRegistry001:
         assert lane["status"] == "complete"
         assert lane["resolution_artifact"] == "DESIGN-AWARE-ASSIGNMENT-GENERATORS-001"
         assert lane["next_artifact"] == "MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001"
+        assert "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001" not in lane["deferred_investigations"]
+
+    def test_multitreated_treated_set_placebo_framework_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "MULTITREATED-TREATED-SET-PLACEBO-FRAMEWORK-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "MULTITREATED-TREATED-SET-PLACEBO-FRAMEWORK-001"
+        assert lane["next_artifact"] == "SCM_PLACEBO_GOVERNED_SEMANTICS_001"
         assert "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001" in lane["deferred_investigations"]

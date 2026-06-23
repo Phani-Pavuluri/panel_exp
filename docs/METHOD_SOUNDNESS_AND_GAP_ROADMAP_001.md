@@ -440,7 +440,7 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 
 **Paused:** **`D5-INST-AUGSYNTH-MULTICELL-001`** as default next step · TrustReport/F-DECISION/CalibrationSignal/MMM role expansion · TrustReport product-ops (audit log, API, scheduler, platform — frozen per [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md)) · LLM layer · promotion audits.
 
-**Active method lane (2026-06-03):** `DESIGN_AWARE_ASSIGNMENT_GENERATORS_001` → `MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001` → SCM Placebo semantics → AugSynth/multicell/stratified backlog per [`INFERENCE_REPLACEMENT_SCOUT_001`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md).
+**Active method lane (2026-06-03):** `DESIGN_AWARE_ASSIGNMENT_GENERATORS_001` → `MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001` → `SCM_PLACEBO_GOVERNED_SEMANTICS_001` → AugSynth/multicell/stratified backlog per [`INFERENCE_REPLACEMENT_SCOUT_001`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md).
 
 **Explicitly not next:** Ad-hoc combo OC without Layer 3–4 coverage · MCELL as method-suitability proof.
 
@@ -561,6 +561,8 @@ Per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)
 **INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03):** [`INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) — inference-family scout completed; primary `DESIGN_AWARE_ASSIGNMENT_GENERATORS_001`; no authorization.
 
 **DESIGN-AWARE-ASSIGNMENT-GENERATORS-001 (2026-06-03):** [`DESIGN_AWARE_ASSIGNMENT_GENERATORS_001_REPORT.md`](track_d/DESIGN_AWARE_ASSIGNMENT_GENERATORS_001_REPORT.md) — assignment generator contract; `design_aware_assignment_generators_defined_no_inference_authorization`; regenerate: `poetry run python -m panel_exp.validation.design_aware_assignment_generators_001 --overwrite`.
+
+**MULTITREATED-TREATED-SET-PLACEBO-FRAMEWORK-001 (2026-06-03):** [`MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001_REPORT.md`](track_d/MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001_REPORT.md) — treated-set placebo framework; `multitreated_treated_set_placebo_framework_defined_no_inference_authorization`; regenerate: `poetry run python -m panel_exp.validation.multitreated_treated_set_placebo_framework_001 --overwrite`.
 
 ## 11. Stop condition
 

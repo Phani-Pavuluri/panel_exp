@@ -282,14 +282,14 @@
         "scout_primary_prerequisite_complete": true,
         "scm_placebo_single_treated_only": true
       },
-      "current_decision": "ASSIGNMENT_GENERATORS_DEFINED_PENDING_PLACEBO_FRAMEWORK",
+      "current_decision": "TREATED_SET_PLACEBO_FRAMEWORK_DEFINED_PENDING_METHOD_SPECIFIC_VALIDATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production"],
-      "target_artifact": "MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001",
-      "revisit_trigger": "Upon opening MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001",
-      "decision_checkpoint": "Treated-set placebo framework before randomization inference claims",
-      "blocking_policy": "Pseudo-assignments require design-aware generators; placebo semantics not yet defined for multi-treated sets",
+      "target_artifact": "SCM_PLACEBO_GOVERNED_SEMANTICS_001",
+      "revisit_trigger": "Upon opening SCM_PLACEBO_GOVERNED_SEMANTICS_001 or METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001",
+      "decision_checkpoint": "Estimator-specific placebo statistics before randomization inference claims",
+      "blocking_policy": "Treated-set placebo framework defined; estimator wiring and method-specific validation pending",
       "terminal_decisions": ["REMEDIATE", "RESTRICT", "DIAGNOSTIC_ONLY"],
-      "resolution_artifact": null
+      "resolution_artifact": "MULTITREATED-TREATED-SET-PLACEBO-FRAMEWORK-001"
     },
     {
       "investigation_id": "INV-MULTICELL-CELL-RELATIONSHIP-DECISION-POLICY-001",
@@ -575,13 +575,26 @@
       "open_investigations": [],
       "resolved_investigations": [],
       "deferred_investigations": [
-        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
         "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
         "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
       ],
       "must_consume_before_close": true,
       "next_artifact": "MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001",
       "resolution_artifact": "DESIGN-AWARE-ASSIGNMENT-GENERATORS-001"
+    },
+    {
+      "lane_id": "MULTITREATED-TREATED-SET-PLACEBO-FRAMEWORK-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "SCM_PLACEBO_GOVERNED_SEMANTICS_001",
+      "resolution_artifact": "MULTITREATED-TREATED-SET-PLACEBO-FRAMEWORK-001"
     }
   ]
 }

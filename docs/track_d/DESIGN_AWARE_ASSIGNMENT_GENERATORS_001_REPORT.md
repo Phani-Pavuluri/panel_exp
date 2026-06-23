@@ -182,7 +182,7 @@ All scenarios passed; `failed_scenarios: []`.
 ### Resolved in this artifact
 
 - Design-aware pseudo-assignment contract defined and tested  
-- `INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001` seeded: `ASSIGNMENT_GENERATORS_DEFINED_PENDING_PLACEBO_FRAMEWORK`
+- `INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001` disposition: `TREATED_SET_PLACEBO_FRAMEWORK_DEFINED_PENDING_METHOD_SPECIFIC_VALIDATION`
 
 ### Deferred (unchanged)
 
@@ -191,4 +191,4 @@ All scenarios passed; `failed_scenarios: []`.
 
 ### Next artifact
 
-`MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001`
+`MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001` (completed — see treated-set placebo framework report)

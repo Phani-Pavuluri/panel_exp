@@ -1346,7 +1346,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Governed pseudo-assignment generator contract and implementations for nine assignment families. Design-based candidates for complete/pair/block/stratified/rerandomized (with rule); falsification-only for greedy/thinning/fixed; unknown blocked. Determinism and constraint preservation validated. **No inference authorization.**
 
-**Next:** `MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001`.
+**Next:** `MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001` (completed — see treated-set placebo framework report).
+
+---
+
+## MULTITREATED-TREATED-SET-PLACEBO-FRAMEWORK-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001_REPORT.md`](track_d/MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001_REPORT.md) · [`docs/track_d/archives/MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001_summary.json`](track_d/archives/MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001_summary.json) · [`panel_exp/inference/treated_set_placebo.py`](../panel_exp/inference/treated_set_placebo.py) · [`panel_exp/validation/multitreated_treated_set_placebo_framework_001.py`](../panel_exp/validation/multitreated_treated_set_placebo_framework_001.py)
+
+**Status:** **`multitreated_treated_set_placebo_framework_defined_no_inference_authorization`**
+
+**Verdict:** Governed multi-treated treated-set placebo framework consuming design-aware pseudo-assignments. Design-based, falsification-only, and blocked semantic paths validated. Leave-one-treated-out rejected as placebo substitute. Multicell global/winner claims blocked. Empirical tail fraction framework-only — **no production p-value or CI authorization.** **`INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001`** disposition: `TREATED_SET_PLACEBO_FRAMEWORK_DEFINED_PENDING_METHOD_SPECIFIC_VALIDATION`. **No TrustReport authorization.**
+
+**Next:** `SCM_PLACEBO_GOVERNED_SEMANTICS_001`.
 
 ---
 
