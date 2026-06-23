@@ -1478,11 +1478,23 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Draft CalibrationSignal method gate mapping Method Readiness Matrix V2 tiers to future review eligibility. Future-review eligible and conditionally reviewable rows are not signal-ready. **No CalibrationSignal creation, export, TrustReport expansion, MMM, LLM, live API, scheduler, budget, or production authorization.**
 
-**Next:** `CALIBRATION_SIGNAL_SCHEMA_ALIGNMENT_DRAFT_001`.
+**Next:** `METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001` (completed — see method accuracy refocus audit).
 
 ---
 
-## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
+## METHOD-ACCURACY-COMPATIBILITY-REFOCUS-AUDIT-001 (2026-06-03)
+
+**Artifact:** [`docs/audits/METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001.md`](audits/METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001.md) · [`docs/track_d/archives/METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001_summary.json`](track_d/archives/METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001_summary.json) · [`panel_exp/validation/method_accuracy_compatibility_refocus_audit_001.py`](../panel_exp/validation/method_accuracy_compatibility_refocus_audit_001.py)
+
+**Status:** **`refocus_on_method_accuracy_and_compatibility`**
+
+**Verdict:** Method-accuracy and compatibility refocus audit converting readiness classifications into a ranked remediation backlog. Downstream schema, ingestion, and decisioning work paused. **No CalibrationSignal, TrustReport, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001`.
+
+---
+
+## CALIBRATION-SIGNAL-METHOD-GATE-DRAFT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)
 

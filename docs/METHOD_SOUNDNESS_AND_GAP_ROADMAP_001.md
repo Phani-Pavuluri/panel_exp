@@ -440,7 +440,7 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 
 **Paused:** **`D5-INST-AUGSYNTH-MULTICELL-001`** as default next step · TrustReport/F-DECISION/CalibrationSignal/MMM role expansion · TrustReport product-ops (audit log, API, scheduler, platform — frozen per [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md)) · LLM layer · promotion audits.
 
-**Active method lane (2026-06-03):** `DESIGN_AWARE_ASSIGNMENT_GENERATORS_001` → … → `METHOD_READINESS_MATRIX_V2_001` → `CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001` ✅ → `CALIBRATION_SIGNAL_SCHEMA_ALIGNMENT_DRAFT_001` per [`INFERENCE_REPLACEMENT_SCOUT_001`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md).
+**Active method lane (2026-06-03):** `DESIGN_AWARE_ASSIGNMENT_GENERATORS_001` → … → `METHOD_READINESS_MATRIX_V2_001` → `CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001` ✅ → `METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001` ✅ → `STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001` per [`METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001`](audits/METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001.md). Downstream schema/ingestion/decisioning paused.
 
 **Explicitly not next:** Ad-hoc combo OC without Layer 3–4 coverage · MCELL as method-suitability proof.
 
