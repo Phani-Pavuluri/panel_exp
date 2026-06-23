@@ -1490,7 +1490,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Method-accuracy and compatibility refocus audit converting readiness classifications into a ranked remediation backlog. Downstream schema, ingestion, and decisioning work paused. **No CalibrationSignal, TrustReport, MMM, LLM, live API, scheduler, budget, or production authorization.**
 
-**Next:** `STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001`.
+**Next:** `STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001` (completed — see studentized null calibration report).
+
+---
+
+## STUDENTIZED-RANDOMIZATION-NULL-CALIBRATION-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001_REPORT.md`](track_d/STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001_REPORT.md) · [`docs/track_d/archives/STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001_summary.json`](track_d/archives/STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001_summary.json) · [`panel_exp/inference/studentized_randomization_calibration.py`](../panel_exp/inference/studentized_randomization_calibration.py) · [`panel_exp/validation/studentized_randomization_null_calibration_001.py`](../panel_exp/validation/studentized_randomization_null_calibration_001.py)
+
+**Status:** **`studentized_randomization_null_calibration_completed_no_downstream_authorization`**
+
+**Verdict:** Empirical null-calibration harness for studentized placebo-rank mechanics. Tail fractions are diagnostic only. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001`.
 
 ---
 

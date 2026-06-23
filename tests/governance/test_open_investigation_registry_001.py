@@ -300,3 +300,15 @@ class TestOpenInvestigationRegistry001:
         assert lane["next_artifact"] == "STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001"
         assert "method_accuracy" in lane["artifact_tags"]
         assert "downstream_pause" in lane["artifact_tags"]
+
+    def test_studentized_randomization_null_calibration_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "STUDENTIZED-RANDOMIZATION-NULL-CALIBRATION-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001"
+        assert lane["next_artifact"] == "SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001"
+        assert "null_calibration" in lane["artifact_tags"]
+        assert "no_downstream_authorization" in lane["artifact_tags"]
