@@ -375,3 +375,11 @@ CalibrationSignal remains blocked for all rows in current matrix.
 **Follow-on:** [`DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001_REPORT.md`](DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001_REPORT.md)
 
 **DCM-005-BRB final disposition:** `BRB_DIAGNOSTIC_ONLY` (was `DEFERRED_REMEDIATION`). Null gates remain failed. **`INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001`** no longer deferred — terminally RESOLVED. Global TrustReport authorization unchanged (false).
+
+---
+
+## Downstream promotion update (2026-06-03)
+
+**Follow-on:** [`TRUSTREPORT_DOWNSTREAM_PROMOTION_001_REPORT.md`](TRUSTREPORT_DOWNSTREAM_PROMOTION_001_REPORT.md)
+
+Row-level restricted promotion approved for DCM-001 and DCM-004 only. Global platform, live API, and scheduler authorization remain false.

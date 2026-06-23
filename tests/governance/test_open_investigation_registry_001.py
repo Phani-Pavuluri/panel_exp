@@ -71,3 +71,13 @@ class TestOpenInvestigationRegistry001:
         assert lane["resolution_artifact"] == "DCM005-TBRRIDGE-BRB-POST-REMEDIATION-REASSESSMENT-001"
         assert "INV-TBRRIDGE-BRB-VARIANCE-CALIBRATION-001" in lane["resolved_investigations"]
         assert lane["next_artifact"] == "TRUSTREPORT_DOWNSTREAM_PROMOTION_001"
+
+    def test_downstream_promotion_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "TRUSTREPORT-DOWNSTREAM-PROMOTION-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "TRUSTREPORT-DOWNSTREAM-PROMOTION-001"
+        assert lane["next_artifact"] == "TRUSTREPORT_INTEGRATION_DRY_RUN_001"
