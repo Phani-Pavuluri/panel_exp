@@ -1,0 +1,385 @@
+{
+  "artifact_id": "DESIGN-AWARE-ASSIGNMENT-GENERATORS-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-23T06:16:09.935953+00:00",
+  "git_commit": "ae294965986eb17b9f51795df904857e50e5693c",
+  "input_artifacts": [
+    "docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md",
+    "panel_exp/design/assignment_generators.py"
+  ],
+  "assignment_families_evaluated": [
+    "complete_randomized_set",
+    "matched_pair_randomized",
+    "matched_block_randomized",
+    "stratified_randomized",
+    "rerandomized_design_candidate",
+    "greedy_matched_market_falsification",
+    "kernel_thinning_falsification",
+    "fixed_deterministic_falsification",
+    "unknown_assignment_blocked"
+  ],
+  "generator_contract": {
+    "module": "panel_exp.design.assignment_generators",
+    "functions": [
+      "generate_pseudo_assignments",
+      "validate_pseudo_assignment",
+      "summarize_assignment_generation"
+    ]
+  },
+  "scenario_results": [
+    {
+      "scenario_id": "complete_randomized_positive",
+      "family": "complete_randomized_set",
+      "passed": true,
+      "reasons": [],
+      "assignment_count": 10,
+      "summary": {
+        "family": "complete_randomized_set",
+        "seed": 11,
+        "assignment_count": 10,
+        "role_counts": {
+          "design_based_randomization_candidate": 10
+        },
+        "decision_counts": {
+          "ASSIGNMENT_GENERATION_SUPPORTED": 10
+        },
+        "observed_treated_count": 2,
+        "eligible_unit_count": 10,
+        "deterministic_seed": 11
+      },
+      "sample_assignment_ids": [
+        "complete_randomized_set:11:0",
+        "complete_randomized_set:11:1",
+        "complete_randomized_set:11:2"
+      ]
+    },
+    {
+      "scenario_id": "complete_randomized_blocked_too_few",
+      "family": "complete_randomized_set",
+      "passed": true,
+      "reasons": [],
+      "assignment_count": 0,
+      "summary": {
+        "family": "complete_randomized_set",
+        "seed": 1,
+        "assignment_count": 0,
+        "role_counts": {},
+        "decision_counts": {},
+        "observed_treated_count": 3,
+        "eligible_unit_count": 4,
+        "deterministic_seed": 1
+      },
+      "sample_assignment_ids": []
+    },
+    {
+      "scenario_id": "matched_pair_positive",
+      "family": "matched_pair_randomized",
+      "passed": true,
+      "reasons": [],
+      "assignment_count": 8,
+      "summary": {
+        "family": "matched_pair_randomized",
+        "seed": 3,
+        "assignment_count": 8,
+        "role_counts": {
+          "design_based_randomization_candidate": 8
+        },
+        "decision_counts": {
+          "ASSIGNMENT_GENERATION_SUPPORTED": 8
+        },
+        "observed_treated_count": 3,
+        "eligible_unit_count": 6,
+        "deterministic_seed": 3
+      },
+      "sample_assignment_ids": [
+        "matched_pair_randomized:3:0",
+        "matched_pair_randomized:3:1",
+        "matched_pair_randomized:3:2"
+      ]
+    },
+    {
+      "scenario_id": "matched_pair_malformed_blocked",
+      "family": "matched_pair_randomized",
+      "passed": true,
+      "reasons": [],
+      "assignment_count": 0,
+      "summary": {
+        "family": "matched_pair_randomized",
+        "seed": 0,
+        "assignment_count": 0,
+        "role_counts": {},
+        "decision_counts": {},
+        "observed_treated_count": 1,
+        "eligible_unit_count": 3,
+        "deterministic_seed": 0
+      },
+      "sample_assignment_ids": []
+    },
+    {
+      "scenario_id": "matched_block_positive",
+      "family": "matched_block_randomized",
+      "passed": true,
+      "reasons": [],
+      "assignment_count": 9,
+      "summary": {
+        "family": "matched_block_randomized",
+        "seed": 5,
+        "assignment_count": 9,
+        "role_counts": {
+          "design_based_randomization_candidate": 9
+        },
+        "decision_counts": {
+          "ASSIGNMENT_GENERATION_SUPPORTED": 9
+        },
+        "observed_treated_count": 3,
+        "eligible_unit_count": 6,
+        "deterministic_seed": 5
+      },
+      "sample_assignment_ids": [
+        "matched_block_randomized:5:0",
+        "matched_block_randomized:5:1",
+        "matched_block_randomized:5:2"
+      ]
+    },
+    {
+      "scenario_id": "stratified_positive",
+      "family": "stratified_randomized",
+      "passed": true,
+      "reasons": [],
+      "assignment_count": 6,
+      "summary": {
+        "family": "stratified_randomized",
+        "seed": 7,
+        "assignment_count": 6,
+        "role_counts": {
+          "design_based_randomization_candidate": 6
+        },
+        "decision_counts": {
+          "ASSIGNMENT_GENERATION_SUPPORTED": 6
+        },
+        "observed_treated_count": 3,
+        "eligible_unit_count": 5,
+        "deterministic_seed": 7
+      },
+      "sample_assignment_ids": [
+        "stratified_randomized:7:0",
+        "stratified_randomized:7:1",
+        "stratified_randomized:7:2"
+      ]
+    },
+    {
+      "scenario_id": "rerandomized_downgrade_without_rule",
+      "family": "rerandomized_design_candidate",
+      "passed": true,
+      "reasons": [],
+      "assignment_count": 10,
+      "summary": {
+        "family": "rerandomized_design_candidate",
+        "seed": 2,
+        "assignment_count": 10,
+        "role_counts": {
+          "falsification_only": 10
+        },
+        "decision_counts": {
+          "ASSIGNMENT_GENERATION_DOWNGRADED_TO_FALSIFICATION_ONLY": 10
+        },
+        "observed_treated_count": 2,
+        "eligible_unit_count": 8,
+        "deterministic_seed": 2
+      },
+      "sample_assignment_ids": [
+        "rerandomized_design_candidate:2:0",
+        "rerandomized_design_candidate:2:1",
+        "rerandomized_design_candidate:2:2"
+      ]
+    },
+    {
+      "scenario_id": "rerandomized_balance_filtered",
+      "family": "rerandomized_design_candidate",
+      "passed": true,
+      "reasons": [],
+      "assignment_count": 6,
+      "summary": {
+        "family": "rerandomized_design_candidate",
+        "seed": 4,
+        "assignment_count": 6,
+        "role_counts": {
+          "design_based_randomization_candidate": 6
+        },
+        "decision_counts": {
+          "ASSIGNMENT_GENERATION_SUPPORTED": 6
+        },
+        "observed_treated_count": 2,
+        "eligible_unit_count": 6,
+        "deterministic_seed": 4
+      },
+      "sample_assignment_ids": [
+        "rerandomized_design_candidate:4:3",
+        "rerandomized_design_candidate:4:4",
+        "rerandomized_design_candidate:4:6"
+      ]
+    },
+    {
+      "scenario_id": "greedy_falsification_only",
+      "family": "greedy_matched_market_falsification",
+      "passed": true,
+      "reasons": [],
+      "assignment_count": 10,
+      "summary": {
+        "family": "greedy_matched_market_falsification",
+        "seed": 1,
+        "assignment_count": 10,
+        "role_counts": {
+          "falsification_only": 10
+        },
+        "decision_counts": {
+          "ASSIGNMENT_GENERATION_FALSIFICATION_ONLY": 10
+        },
+        "observed_treated_count": 2,
+        "eligible_unit_count": 7,
+        "deterministic_seed": 1
+      },
+      "sample_assignment_ids": [
+        "greedy_matched_market_falsification:1:0",
+        "greedy_matched_market_falsification:1:1",
+        "greedy_matched_market_falsification:1:2"
+      ]
+    },
+    {
+      "scenario_id": "kernel_thinning_falsification_only",
+      "family": "kernel_thinning_falsification",
+      "passed": true,
+      "reasons": [],
+      "assignment_count": 7,
+      "summary": {
+        "family": "kernel_thinning_falsification",
+        "seed": 1,
+        "assignment_count": 7,
+        "role_counts": {
+          "falsification_only": 7
+        },
+        "decision_counts": {
+          "ASSIGNMENT_GENERATION_FALSIFICATION_ONLY": 7
+        },
+        "observed_treated_count": 1,
+        "eligible_unit_count": 7,
+        "deterministic_seed": 1
+      },
+      "sample_assignment_ids": [
+        "kernel_thinning_falsification:1:0",
+        "kernel_thinning_falsification:1:1",
+        "kernel_thinning_falsification:1:2"
+      ]
+    },
+    {
+      "scenario_id": "fixed_deterministic_falsification_only",
+      "family": "fixed_deterministic_falsification",
+      "passed": true,
+      "reasons": [],
+      "assignment_count": 6,
+      "summary": {
+        "family": "fixed_deterministic_falsification",
+        "seed": 1,
+        "assignment_count": 6,
+        "role_counts": {
+          "falsification_only": 6
+        },
+        "decision_counts": {
+          "ASSIGNMENT_GENERATION_FALSIFICATION_ONLY": 6
+        },
+        "observed_treated_count": 1,
+        "eligible_unit_count": 6,
+        "deterministic_seed": 1
+      },
+      "sample_assignment_ids": [
+        "fixed_deterministic_falsification:1:0",
+        "fixed_deterministic_falsification:1:1",
+        "fixed_deterministic_falsification:1:2"
+      ]
+    },
+    {
+      "scenario_id": "unknown_assignment_blocked",
+      "family": "unknown_assignment_blocked",
+      "passed": true,
+      "reasons": [],
+      "assignment_count": 0,
+      "summary": {
+        "family": "unknown_assignment_blocked",
+        "seed": 0,
+        "assignment_count": 0,
+        "role_counts": {},
+        "decision_counts": {
+          "ASSIGNMENT_GENERATION_BLOCKED_UNKNOWN_DESIGN": 1
+        },
+        "observed_treated_count": 1,
+        "eligible_unit_count": 5,
+        "deterministic_seed": 0
+      },
+      "sample_assignment_ids": []
+    }
+  ],
+  "positive_scenarios": [
+    "complete_randomized_positive",
+    "matched_pair_positive",
+    "matched_block_positive",
+    "stratified_positive",
+    "rerandomized_downgrade_without_rule",
+    "rerandomized_balance_filtered",
+    "greedy_falsification_only",
+    "kernel_thinning_falsification_only",
+    "fixed_deterministic_falsification_only"
+  ],
+  "negative_scenarios": [
+    "complete_randomized_blocked_too_few",
+    "matched_pair_malformed_blocked",
+    "unknown_assignment_blocked"
+  ],
+  "failed_scenarios": [],
+  "role_counts": {
+    "design_based_randomization_candidate": 39,
+    "falsification_only": 33
+  },
+  "decision_counts": {
+    "ASSIGNMENT_GENERATION_SUPPORTED": 39,
+    "ASSIGNMENT_GENERATION_DOWNGRADED_TO_FALSIFICATION_ONLY": 10,
+    "ASSIGNMENT_GENERATION_FALSIFICATION_ONLY": 23,
+    "ASSIGNMENT_GENERATION_BLOCKED_UNKNOWN_DESIGN": 1
+  },
+  "determinism_checks": {
+    "passed": true,
+    "assignment_count": 8
+  },
+  "constraint_preservation_checks": {
+    "pair_level": "matched_pair_positive",
+    "block_level": "matched_block_positive",
+    "stratum_level": "stratified_positive",
+    "all_passed": true
+  },
+  "blocked_designs": [
+    "unknown_assignment_blocked"
+  ],
+  "falsification_only_designs": [
+    "greedy_matched_market_falsification",
+    "kernel_thinning_falsification",
+    "fixed_deterministic_falsification"
+  ],
+  "design_based_candidate_designs": [
+    "complete_randomized_set",
+    "matched_pair_randomized",
+    "matched_block_randomized",
+    "stratified_randomized"
+  ],
+  "known_limitations": [
+    "No placebo p-values or randomization inference implemented.",
+    "Rerandomization without explicit acceptance rule downgrades to falsification only.",
+    "Greedy/thinning/fixed designs never marked design-based randomization candidates."
+  ],
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false,
+  "governance_verdict": "design_aware_assignment_generators_defined_no_inference_authorization",
+  "next_artifact": "MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001"
+}

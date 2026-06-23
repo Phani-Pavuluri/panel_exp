@@ -14,7 +14,7 @@ Several inference paths in `panel_exp` are **blocked or diagnostic-only** (TBRRi
 
 **Primary recommendation:** `DESIGN_AWARE_ASSIGNMENT_GENERATORS_001`  
 **Secondary recommendation:** `MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001`  
-**Next artifact:** `DESIGN_AWARE_ASSIGNMENT_GENERATORS_001`
+**Next artifact:** `MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001` (assignment generators implemented — see [`DESIGN_AWARE_ASSIGNMENT_GENERATORS_001_REPORT.md`](../track_d/DESIGN_AWARE_ASSIGNMENT_GENERATORS_001_REPORT.md))
 
 Design-valid pseudo-assignment generation is a **prerequisite** for treated-set placebo, permutation/rerandomization inference, and credible falsification across SCM, TBRRidge, AugSynth, and multicell geometries. Further BRB tuning and KFold recovery are **not** justified by current evidence.
 
@@ -309,4 +309,4 @@ Deliverables should include: governed pseudo-assignment generation for rerandomi
 - `INV-MULTICELL-MULTIPLICITY-CALIBRATION-001` — deferred; clearer target after design lane
 - `INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001` — deferred
 
-**Next artifact:** `DESIGN_AWARE_ASSIGNMENT_GENERATORS_001`
+**Next artifact:** `MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001` (assignment generators implemented — see [`DESIGN_AWARE_ASSIGNMENT_GENERATORS_001_REPORT.md`](../track_d/DESIGN_AWARE_ASSIGNMENT_GENERATORS_001_REPORT.md))

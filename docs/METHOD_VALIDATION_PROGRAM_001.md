@@ -353,6 +353,8 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03):** [`INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) — inference-family scout; primary `DESIGN_AWARE_ASSIGNMENT_GENERATORS_001`; secondary `MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001`; no authorization.
 
+**DESIGN-AWARE-ASSIGNMENT-GENERATORS-001 (2026-06-03):** [`DESIGN_AWARE_ASSIGNMENT_GENERATORS_001_REPORT.md`](track_d/DESIGN_AWARE_ASSIGNMENT_GENERATORS_001_REPORT.md) — pseudo-assignment generators; regenerate: `poetry run python -m panel_exp.validation.design_aware_assignment_generators_001 --overwrite`.
+
 ## 13. Stop condition
 
 | Criterion | Status |
