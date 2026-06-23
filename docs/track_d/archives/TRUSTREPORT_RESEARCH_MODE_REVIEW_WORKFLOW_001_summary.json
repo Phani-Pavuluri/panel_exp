@@ -1,0 +1,2970 @@
+{
+  "artifact_id": "TRUSTREPORT-RESEARCH-MODE-REVIEW-WORKFLOW-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-23T03:29:44.172374+00:00",
+  "git_commit": "f8813ed1de8ea33744538a16248ca8412d8e53e3",
+  "input_artifacts": {
+    "artifact_export": "/workspace/panel_exp/docs/track_d/archives/TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001_summary.json",
+    "renderer_summary": "/workspace/panel_exp/docs/track_d/archives/TRUSTREPORT_RESEARCH_MODE_RENDERER_001_summary.json",
+    "integration_dry_run": "/workspace/panel_exp/docs/track_d/archives/TRUSTREPORT_INTEGRATION_DRY_RUN_001_summary.json",
+    "downstream_promotion": "/workspace/panel_exp/docs/track_d/archives/TRUSTREPORT_DOWNSTREAM_PROMOTION_001_summary.json",
+    "export_manifest": "/workspace/panel_exp/docs/track_d/examples/TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001_manifest.json"
+  },
+  "review_scope": [
+    "DCM-001",
+    "DCM-004"
+  ],
+  "review_requests": [
+    {
+      "request_id": "pos-dcm001-placeholder",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "research_review",
+      "reviewer_role": "research_reviewer",
+      "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-dcm001-synthetic",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-synthetic",
+      "request_type": "research_review",
+      "reviewer_role": "causal_methods_reviewer",
+      "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-dcm001-manifest",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-manifest",
+      "request_type": "research_review",
+      "reviewer_role": "governance_reviewer",
+      "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-dcm004-placeholder",
+      "row_id": "DCM-004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "request_type": "research_review",
+      "reviewer_role": "research_reviewer",
+      "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-dcm004-synthetic",
+      "row_id": "DCM-004",
+      "export_request_id": "pos-dcm004-synthetic",
+      "request_type": "research_review",
+      "reviewer_role": "causal_methods_reviewer",
+      "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-dcm004-manifest",
+      "row_id": "DCM-004",
+      "export_request_id": "pos-dcm004-manifest",
+      "request_type": "research_review",
+      "reviewer_role": "governance_reviewer",
+      "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-missing-banner",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "missing_banner",
+      "reviewer_role": "research_reviewer",
+      "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+      "claim_type": null,
+      "defect": "missing_banner",
+      "notes": ""
+    },
+    {
+      "request_id": "neg-missing-warnings",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "missing_warnings",
+      "reviewer_role": "research_reviewer",
+      "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+      "claim_type": null,
+      "defect": "missing_warnings",
+      "notes": ""
+    },
+    {
+      "request_id": "neg-missing-restrictions",
+      "row_id": "DCM-004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "request_type": "missing_restrictions",
+      "reviewer_role": "research_reviewer",
+      "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+      "claim_type": null,
+      "defect": "missing_restrictions",
+      "notes": ""
+    },
+    {
+      "request_id": "neg-missing-audit",
+      "row_id": "DCM-004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "request_type": "missing_audit_trail",
+      "reviewer_role": "governance_reviewer",
+      "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+      "claim_type": null,
+      "defect": "missing_audit_trail",
+      "notes": ""
+    },
+    {
+      "request_id": "neg-hash-mismatch",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-synthetic",
+      "request_type": "hash_mismatch",
+      "reviewer_role": "causal_methods_reviewer",
+      "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+      "claim_type": null,
+      "defect": "hash_mismatch",
+      "notes": ""
+    },
+    {
+      "request_id": "neg-manifest-mismatch",
+      "row_id": "DCM-004",
+      "export_request_id": "pos-dcm004-synthetic",
+      "request_type": "manifest_mismatch",
+      "reviewer_role": "causal_methods_reviewer",
+      "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+      "claim_type": null,
+      "defect": "manifest_mismatch",
+      "notes": ""
+    },
+    {
+      "request_id": "neg-unsanitized",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "unsanitized_payload",
+      "reviewer_role": "research_reviewer",
+      "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+      "claim_type": null,
+      "defect": "unsanitized_payload",
+      "notes": ""
+    },
+    {
+      "request_id": "neg-live-payload",
+      "row_id": "DCM-004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "request_type": "live_measurement_payload",
+      "reviewer_role": "research_reviewer",
+      "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+      "claim_type": null,
+      "defect": "live_measurement_payload",
+      "notes": ""
+    },
+    {
+      "request_id": "neg-prod-rec",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "production_recommendation",
+      "reviewer_role": "research_reviewer",
+      "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+      "claim_type": null,
+      "defect": "production_recommendation",
+      "notes": ""
+    },
+    {
+      "request_id": "neg-budget-rec",
+      "row_id": "DCM-004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "request_type": "budget_recommendation",
+      "reviewer_role": "research_reviewer",
+      "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+      "claim_type": null,
+      "defect": "budget_recommendation",
+      "notes": ""
+    },
+    {
+      "request_id": "neg-invalid-role",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "invalid_reviewer_role",
+      "reviewer_role": "production_approver",
+      "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "causal_trustreport",
+      "reviewer_role": "research_reviewer",
+      "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "causal_trustreport",
+      "reviewer_role": "research_reviewer",
+      "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "causal_trustreport",
+      "reviewer_role": "research_reviewer",
+      "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-dcm006",
+      "row_id": "DCM-006",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "global_claim",
+      "reviewer_role": "research_reviewer",
+      "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+      "claim_type": "global",
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-dcm008",
+      "row_id": "DCM-008",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "aggregate_stratified",
+      "reviewer_role": "governance_reviewer",
+      "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+      "claim_type": "aggregate_stratified",
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-cal",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "calibration_approval",
+      "reviewer_role": "governance_reviewer",
+      "workflow_action": "CALIBRATION_SIGNAL_APPROVAL",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-live",
+      "row_id": "DCM-004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "request_type": "live_api_approval",
+      "reviewer_role": "research_reviewer",
+      "workflow_action": "LIVE_API_APPROVAL",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-scheduler",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "scheduler_approval",
+      "reviewer_role": "research_reviewer",
+      "workflow_action": "SCHEDULER_APPROVAL",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-prod",
+      "row_id": "DCM-004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "request_type": "production_approval",
+      "reviewer_role": "research_reviewer",
+      "workflow_action": "PRODUCTION_APPROVAL",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-budget",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "budget_approval",
+      "reviewer_role": "research_reviewer",
+      "workflow_action": "BUDGET_OPTIMIZATION_APPROVAL",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "unknown_row",
+      "reviewer_role": "research_reviewer",
+      "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    }
+  ],
+  "accepted_reviews": [
+    {
+      "request_id": "pos-dcm001-placeholder",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "research_review",
+      "decision": "REVIEW_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "audit_record_id": "review-audit-pos-dcm001-placeholder",
+      "gate_results": {
+        "row_promoted": true,
+        "checklist_complete": true,
+        "research_mode_review_only": true,
+        "production_approval": false
+      },
+      "reason": "Research-mode review approved (not production authorization)"
+    },
+    {
+      "request_id": "pos-dcm001-synthetic",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-synthetic",
+      "request_type": "research_review",
+      "decision": "REVIEW_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "audit_record_id": "review-audit-pos-dcm001-synthetic",
+      "gate_results": {
+        "row_promoted": true,
+        "checklist_complete": true,
+        "research_mode_review_only": true,
+        "production_approval": false
+      },
+      "reason": "Research-mode review approved (not production authorization)"
+    },
+    {
+      "request_id": "pos-dcm001-manifest",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-manifest",
+      "request_type": "research_review",
+      "decision": "REVIEW_ACCEPTED_MANIFEST_ONLY",
+      "accepted": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "audit_record_id": "review-audit-pos-dcm001-manifest",
+      "gate_results": {
+        "row_promoted": true,
+        "checklist_complete": true,
+        "research_mode_review_only": true,
+        "production_approval": false
+      },
+      "reason": "Research-mode review approved (not production authorization)"
+    },
+    {
+      "request_id": "pos-dcm004-placeholder",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "research_review",
+      "decision": "REVIEW_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "audit_record_id": "review-audit-pos-dcm004-placeholder",
+      "gate_results": {
+        "row_promoted": true,
+        "checklist_complete": true,
+        "research_mode_review_only": true,
+        "production_approval": false
+      },
+      "reason": "Research-mode review approved (not production authorization)"
+    },
+    {
+      "request_id": "pos-dcm004-synthetic",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-synthetic",
+      "request_type": "research_review",
+      "decision": "REVIEW_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "audit_record_id": "review-audit-pos-dcm004-synthetic",
+      "gate_results": {
+        "row_promoted": true,
+        "checklist_complete": true,
+        "research_mode_review_only": true,
+        "production_approval": false
+      },
+      "reason": "Research-mode review approved (not production authorization)"
+    },
+    {
+      "request_id": "pos-dcm004-manifest",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-manifest",
+      "request_type": "research_review",
+      "decision": "REVIEW_ACCEPTED_MANIFEST_ONLY",
+      "accepted": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "audit_record_id": "review-audit-pos-dcm004-manifest",
+      "gate_results": {
+        "row_promoted": true,
+        "checklist_complete": true,
+        "research_mode_review_only": true,
+        "production_approval": false
+      },
+      "reason": "Research-mode review approved (not production authorization)"
+    }
+  ],
+  "blocked_reviews": [
+    {
+      "request_id": "neg-missing-banner",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "missing_banner",
+      "decision": "REVIEW_BLOCKED_MISSING_BANNER",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-missing-banner",
+      "gate_results": {
+        "missing_banner": true
+      },
+      "reason": "Required banners missing"
+    },
+    {
+      "request_id": "neg-missing-warnings",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "missing_warnings",
+      "decision": "REVIEW_BLOCKED_MISSING_WARNING",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_REJECTED",
+      "audit_record_id": "review-audit-neg-missing-warnings",
+      "gate_results": {
+        "missing_warnings": true
+      },
+      "reason": "Required warnings missing"
+    },
+    {
+      "request_id": "neg-missing-restrictions",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "missing_restrictions",
+      "decision": "REVIEW_BLOCKED_MISSING_RESTRICTION",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_REJECTED",
+      "audit_record_id": "review-audit-neg-missing-restrictions",
+      "gate_results": {
+        "missing_restrictions": true
+      },
+      "reason": "Required restrictions missing"
+    },
+    {
+      "request_id": "neg-missing-audit",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "missing_audit_trail",
+      "decision": "REVIEW_BLOCKED_MISSING_AUDIT_TRAIL",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-missing-audit",
+      "gate_results": {
+        "missing_audit_trail": true
+      },
+      "reason": "Audit trail missing"
+    },
+    {
+      "request_id": "neg-hash-mismatch",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-synthetic",
+      "request_type": "hash_mismatch",
+      "decision": "REVIEW_BLOCKED_HASH_MISMATCH",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-hash-mismatch",
+      "gate_results": {
+        "hash_mismatch": true
+      },
+      "reason": "Content hash mismatch"
+    },
+    {
+      "request_id": "neg-manifest-mismatch",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-synthetic",
+      "request_type": "manifest_mismatch",
+      "decision": "REVIEW_BLOCKED_MANIFEST_MISMATCH",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-manifest-mismatch",
+      "gate_results": {
+        "manifest_mismatch": true
+      },
+      "reason": "Manifest mismatch"
+    },
+    {
+      "request_id": "neg-unsanitized",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "unsanitized_payload",
+      "decision": "REVIEW_BLOCKED_UNSANITIZED_PAYLOAD",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-unsanitized",
+      "gate_results": {
+        "unsanitized_payload": true
+      },
+      "reason": "Unsanitized payload"
+    },
+    {
+      "request_id": "neg-live-payload",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "live_measurement_payload",
+      "decision": "REVIEW_BLOCKED_LIVE_MEASUREMENT_PAYLOAD",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-live-payload",
+      "gate_results": {
+        "live_measurement_payload": true
+      },
+      "reason": "Raw/live measurement payload"
+    },
+    {
+      "request_id": "neg-prod-rec",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "production_recommendation",
+      "decision": "REVIEW_BLOCKED_PRODUCTION_RECOMMENDATION",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-prod-rec",
+      "gate_results": {
+        "production_recommendation": true
+      },
+      "reason": "Production recommendation present"
+    },
+    {
+      "request_id": "neg-budget-rec",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "budget_recommendation",
+      "decision": "REVIEW_BLOCKED_BUDGET_RECOMMENDATION",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-budget-rec",
+      "gate_results": {
+        "budget_recommendation": true
+      },
+      "reason": "Budget allocation recommendation present"
+    },
+    {
+      "request_id": "neg-invalid-role",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "invalid_reviewer_role",
+      "decision": "REVIEW_BLOCKED_INVALID_REVIEWER_ROLE",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-invalid-role",
+      "gate_results": {
+        "invalid_reviewer_role": true
+      },
+      "reason": "Invalid reviewer role: production_approver"
+    },
+    {
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "export_id": "",
+      "request_type": "causal_trustreport",
+      "decision": "REVIEW_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-brb",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-BRB is diagnostic-only"
+    },
+    {
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "export_id": "",
+      "request_type": "causal_trustreport",
+      "decision": "REVIEW_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-kfold",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-KFOLD is diagnostic-only"
+    },
+    {
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "export_id": "",
+      "request_type": "causal_trustreport",
+      "decision": "REVIEW_BLOCKED_NULL_MONITOR_CAUSAL_REUSE",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-placebo",
+      "gate_results": {
+        "null_monitor_causal_reuse": true
+      },
+      "reason": "Null-monitor path cannot receive causal TrustReport review"
+    },
+    {
+      "request_id": "neg-dcm006",
+      "row_id": "DCM-006",
+      "export_id": "",
+      "request_type": "global_claim",
+      "decision": "REVIEW_BLOCKED_NOT_PROMOTED",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-dcm006",
+      "gate_results": {
+        "multicell_global_blocked": true
+      },
+      "reason": "DCM-006 global/winner/pooled review blocked"
+    },
+    {
+      "request_id": "neg-dcm008",
+      "row_id": "DCM-008",
+      "export_id": "",
+      "request_type": "aggregate_stratified",
+      "decision": "REVIEW_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-dcm008",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-008 is diagnostic-only"
+    },
+    {
+      "request_id": "neg-cal",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "calibration_approval",
+      "decision": "REVIEW_BLOCKED_CALIBRATION_SIGNAL",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-cal",
+      "gate_results": {
+        "CALIBRATION_SIGNAL_APPROVAL_blocked": true
+      },
+      "reason": "Workflow action CALIBRATION_SIGNAL_APPROVAL forbidden"
+    },
+    {
+      "request_id": "neg-live",
+      "row_id": "DCM-004",
+      "export_id": "",
+      "request_type": "live_api_approval",
+      "decision": "REVIEW_BLOCKED_LIVE_API",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-live",
+      "gate_results": {
+        "LIVE_API_APPROVAL_blocked": true
+      },
+      "reason": "Workflow action LIVE_API_APPROVAL forbidden"
+    },
+    {
+      "request_id": "neg-scheduler",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "scheduler_approval",
+      "decision": "REVIEW_BLOCKED_SCHEDULER",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-scheduler",
+      "gate_results": {
+        "SCHEDULER_APPROVAL_blocked": true
+      },
+      "reason": "Workflow action SCHEDULER_APPROVAL forbidden"
+    },
+    {
+      "request_id": "neg-prod",
+      "row_id": "DCM-004",
+      "export_id": "",
+      "request_type": "production_approval",
+      "decision": "REVIEW_BLOCKED_PRODUCTION_DECISIONING",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-prod",
+      "gate_results": {
+        "PRODUCTION_APPROVAL_blocked": true
+      },
+      "reason": "Workflow action PRODUCTION_APPROVAL forbidden"
+    },
+    {
+      "request_id": "neg-budget",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "budget_approval",
+      "decision": "REVIEW_BLOCKED_BUDGET_OPTIMIZATION",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-budget",
+      "gate_results": {
+        "BUDGET_OPTIMIZATION_APPROVAL_blocked": true
+      },
+      "reason": "Workflow action BUDGET_OPTIMIZATION_APPROVAL forbidden"
+    },
+    {
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "export_id": "",
+      "request_type": "unknown_row",
+      "decision": "REVIEW_BLOCKED_UNKNOWN_ROW",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-unknown",
+      "gate_results": {
+        "unknown_row": true
+      },
+      "reason": "Unknown row: DCM-999"
+    }
+  ],
+  "accepted_rows": [
+    "DCM-001",
+    "DCM-004"
+  ],
+  "blocked_rows": [
+    "DCM-001",
+    "DCM-004",
+    "DCM-005-BRB",
+    "DCM-005-KFOLD",
+    "DCM-005-PLACEBO",
+    "DCM-006",
+    "DCM-008",
+    "DCM-999"
+  ],
+  "review_contracts": {
+    "review-pos-dcm001-placeholder": {
+      "review_id": "review-pos-dcm001-placeholder",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-REVIEW-WORKFLOW-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "row_id": "DCM-001",
+      "review_mode": "research_mode_review_only",
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "reviewer_role": "research_reviewer",
+      "review_checklist": {
+        "research_mode_banner_present": true,
+        "not_for_production_banner_present": true,
+        "not_for_budget_optimization_banner_present": true,
+        "no_calibration_signal_banner_present": true,
+        "no_live_api_banner_present": true,
+        "no_scheduler_banner_present": true,
+        "sanitized_artifact_export_banner_present": true,
+        "row_identity_preserved": true,
+        "method_identity_preserved": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "blocked_uses_present": true,
+        "audit_trail_present": true,
+        "manifest_present": true,
+        "content_hash_matches": true,
+        "payload_placeholder_or_synthetic_only": true,
+        "no_raw_live_measurement_payload": true,
+        "no_production_recommendation": true,
+        "no_budget_allocation_recommendation": true,
+        "manifest_verified": true,
+        "sanitization_verified": true,
+        "authorization_boundaries_verified": true
+      },
+      "required_banners_present": true,
+      "warnings_present": true,
+      "restrictions_present": true,
+      "blocked_uses_present": true,
+      "audit_trail_present": true,
+      "content_hash_verified": true,
+      "manifest_verified": true,
+      "sanitization_verified": true,
+      "authorization_boundaries_verified": true,
+      "open_investigation_check": {
+        "deferred_investigations": [
+          "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+          "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+        ],
+        "blocking_for_review": []
+      },
+      "decision_record": {
+        "decision": "REVIEW_ACCEPTED_RESEARCH_MODE",
+        "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+        "production_approval": false,
+        "research_mode_review_only": true
+      },
+      "created_at": "2026-06-23T03:29:44.171477+00:00"
+    },
+    "review-pos-dcm001-synthetic": {
+      "review_id": "review-pos-dcm001-synthetic",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-REVIEW-WORKFLOW-001",
+      "export_id": "export-pos-dcm001-synthetic",
+      "row_id": "DCM-001",
+      "review_mode": "research_mode_review_only",
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "reviewer_role": "causal_methods_reviewer",
+      "review_checklist": {
+        "research_mode_banner_present": true,
+        "not_for_production_banner_present": true,
+        "not_for_budget_optimization_banner_present": true,
+        "no_calibration_signal_banner_present": true,
+        "no_live_api_banner_present": true,
+        "no_scheduler_banner_present": true,
+        "sanitized_artifact_export_banner_present": true,
+        "row_identity_preserved": true,
+        "method_identity_preserved": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "blocked_uses_present": true,
+        "audit_trail_present": true,
+        "manifest_present": true,
+        "content_hash_matches": true,
+        "payload_placeholder_or_synthetic_only": true,
+        "no_raw_live_measurement_payload": true,
+        "no_production_recommendation": true,
+        "no_budget_allocation_recommendation": true,
+        "manifest_verified": true,
+        "sanitization_verified": true,
+        "authorization_boundaries_verified": true
+      },
+      "required_banners_present": true,
+      "warnings_present": true,
+      "restrictions_present": true,
+      "blocked_uses_present": true,
+      "audit_trail_present": true,
+      "content_hash_verified": true,
+      "manifest_verified": true,
+      "sanitization_verified": true,
+      "authorization_boundaries_verified": true,
+      "open_investigation_check": {
+        "deferred_investigations": [
+          "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+          "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+        ],
+        "blocking_for_review": []
+      },
+      "decision_record": {
+        "decision": "REVIEW_ACCEPTED_RESEARCH_MODE",
+        "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+        "production_approval": false,
+        "research_mode_review_only": true
+      },
+      "created_at": "2026-06-23T03:29:44.171562+00:00"
+    },
+    "review-pos-dcm001-manifest": {
+      "review_id": "review-pos-dcm001-manifest",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-REVIEW-WORKFLOW-001",
+      "export_id": "export-pos-dcm001-manifest",
+      "row_id": "DCM-001",
+      "review_mode": "research_mode_review_only",
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "reviewer_role": "governance_reviewer",
+      "review_checklist": {
+        "research_mode_banner_present": true,
+        "not_for_production_banner_present": true,
+        "not_for_budget_optimization_banner_present": true,
+        "no_calibration_signal_banner_present": true,
+        "no_live_api_banner_present": true,
+        "no_scheduler_banner_present": true,
+        "sanitized_artifact_export_banner_present": true,
+        "row_identity_preserved": true,
+        "method_identity_preserved": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "blocked_uses_present": true,
+        "audit_trail_present": true,
+        "manifest_present": true,
+        "content_hash_matches": true,
+        "payload_placeholder_or_synthetic_only": true,
+        "no_raw_live_measurement_payload": true,
+        "no_production_recommendation": true,
+        "no_budget_allocation_recommendation": true,
+        "manifest_verified": true,
+        "sanitization_verified": true,
+        "authorization_boundaries_verified": true
+      },
+      "required_banners_present": true,
+      "warnings_present": true,
+      "restrictions_present": true,
+      "blocked_uses_present": true,
+      "audit_trail_present": true,
+      "content_hash_verified": true,
+      "manifest_verified": true,
+      "sanitization_verified": true,
+      "authorization_boundaries_verified": true,
+      "open_investigation_check": {
+        "deferred_investigations": [
+          "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+          "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+        ],
+        "blocking_for_review": []
+      },
+      "decision_record": {
+        "decision": "REVIEW_ACCEPTED_MANIFEST_ONLY",
+        "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+        "production_approval": false,
+        "research_mode_review_only": true
+      },
+      "created_at": "2026-06-23T03:29:44.171631+00:00"
+    },
+    "review-pos-dcm004-placeholder": {
+      "review_id": "review-pos-dcm004-placeholder",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-REVIEW-WORKFLOW-001",
+      "export_id": "export-pos-dcm004-placeholder",
+      "row_id": "DCM-004",
+      "review_mode": "research_mode_review_only",
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "reviewer_role": "research_reviewer",
+      "review_checklist": {
+        "research_mode_banner_present": true,
+        "not_for_production_banner_present": true,
+        "not_for_budget_optimization_banner_present": true,
+        "no_calibration_signal_banner_present": true,
+        "no_live_api_banner_present": true,
+        "no_scheduler_banner_present": true,
+        "sanitized_artifact_export_banner_present": true,
+        "row_identity_preserved": true,
+        "method_identity_preserved": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "blocked_uses_present": true,
+        "audit_trail_present": true,
+        "manifest_present": true,
+        "content_hash_matches": true,
+        "payload_placeholder_or_synthetic_only": true,
+        "no_raw_live_measurement_payload": true,
+        "no_production_recommendation": true,
+        "no_budget_allocation_recommendation": true,
+        "manifest_verified": true,
+        "sanitization_verified": true,
+        "authorization_boundaries_verified": true
+      },
+      "required_banners_present": true,
+      "warnings_present": true,
+      "restrictions_present": true,
+      "blocked_uses_present": true,
+      "audit_trail_present": true,
+      "content_hash_verified": true,
+      "manifest_verified": true,
+      "sanitization_verified": true,
+      "authorization_boundaries_verified": true,
+      "open_investigation_check": {
+        "deferred_investigations": [
+          "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+          "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+        ],
+        "blocking_for_review": []
+      },
+      "decision_record": {
+        "decision": "REVIEW_ACCEPTED_RESEARCH_MODE",
+        "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+        "production_approval": false,
+        "research_mode_review_only": true
+      },
+      "created_at": "2026-06-23T03:29:44.171689+00:00"
+    },
+    "review-pos-dcm004-synthetic": {
+      "review_id": "review-pos-dcm004-synthetic",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-REVIEW-WORKFLOW-001",
+      "export_id": "export-pos-dcm004-synthetic",
+      "row_id": "DCM-004",
+      "review_mode": "research_mode_review_only",
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "reviewer_role": "causal_methods_reviewer",
+      "review_checklist": {
+        "research_mode_banner_present": true,
+        "not_for_production_banner_present": true,
+        "not_for_budget_optimization_banner_present": true,
+        "no_calibration_signal_banner_present": true,
+        "no_live_api_banner_present": true,
+        "no_scheduler_banner_present": true,
+        "sanitized_artifact_export_banner_present": true,
+        "row_identity_preserved": true,
+        "method_identity_preserved": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "blocked_uses_present": true,
+        "audit_trail_present": true,
+        "manifest_present": true,
+        "content_hash_matches": true,
+        "payload_placeholder_or_synthetic_only": true,
+        "no_raw_live_measurement_payload": true,
+        "no_production_recommendation": true,
+        "no_budget_allocation_recommendation": true,
+        "manifest_verified": true,
+        "sanitization_verified": true,
+        "authorization_boundaries_verified": true
+      },
+      "required_banners_present": true,
+      "warnings_present": true,
+      "restrictions_present": true,
+      "blocked_uses_present": true,
+      "audit_trail_present": true,
+      "content_hash_verified": true,
+      "manifest_verified": true,
+      "sanitization_verified": true,
+      "authorization_boundaries_verified": true,
+      "open_investigation_check": {
+        "deferred_investigations": [
+          "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+          "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+        ],
+        "blocking_for_review": []
+      },
+      "decision_record": {
+        "decision": "REVIEW_ACCEPTED_RESEARCH_MODE",
+        "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+        "production_approval": false,
+        "research_mode_review_only": true
+      },
+      "created_at": "2026-06-23T03:29:44.171750+00:00"
+    },
+    "review-pos-dcm004-manifest": {
+      "review_id": "review-pos-dcm004-manifest",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-REVIEW-WORKFLOW-001",
+      "export_id": "export-pos-dcm004-manifest",
+      "row_id": "DCM-004",
+      "review_mode": "research_mode_review_only",
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "reviewer_role": "governance_reviewer",
+      "review_checklist": {
+        "research_mode_banner_present": true,
+        "not_for_production_banner_present": true,
+        "not_for_budget_optimization_banner_present": true,
+        "no_calibration_signal_banner_present": true,
+        "no_live_api_banner_present": true,
+        "no_scheduler_banner_present": true,
+        "sanitized_artifact_export_banner_present": true,
+        "row_identity_preserved": true,
+        "method_identity_preserved": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "blocked_uses_present": true,
+        "audit_trail_present": true,
+        "manifest_present": true,
+        "content_hash_matches": true,
+        "payload_placeholder_or_synthetic_only": true,
+        "no_raw_live_measurement_payload": true,
+        "no_production_recommendation": true,
+        "no_budget_allocation_recommendation": true,
+        "manifest_verified": true,
+        "sanitization_verified": true,
+        "authorization_boundaries_verified": true
+      },
+      "required_banners_present": true,
+      "warnings_present": true,
+      "restrictions_present": true,
+      "blocked_uses_present": true,
+      "audit_trail_present": true,
+      "content_hash_verified": true,
+      "manifest_verified": true,
+      "sanitization_verified": true,
+      "authorization_boundaries_verified": true,
+      "open_investigation_check": {
+        "deferred_investigations": [
+          "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+          "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+        ],
+        "blocking_for_review": []
+      },
+      "decision_record": {
+        "decision": "REVIEW_ACCEPTED_MANIFEST_ONLY",
+        "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+        "production_approval": false,
+        "research_mode_review_only": true
+      },
+      "created_at": "2026-06-23T03:29:44.171818+00:00"
+    }
+  },
+  "review_checklists": {
+    "review-pos-dcm001-placeholder": {
+      "research_mode_banner_present": true,
+      "not_for_production_banner_present": true,
+      "not_for_budget_optimization_banner_present": true,
+      "no_calibration_signal_banner_present": true,
+      "no_live_api_banner_present": true,
+      "no_scheduler_banner_present": true,
+      "sanitized_artifact_export_banner_present": true,
+      "row_identity_preserved": true,
+      "method_identity_preserved": true,
+      "warnings_present": true,
+      "restrictions_present": true,
+      "blocked_uses_present": true,
+      "audit_trail_present": true,
+      "manifest_present": true,
+      "content_hash_matches": true,
+      "payload_placeholder_or_synthetic_only": true,
+      "no_raw_live_measurement_payload": true,
+      "no_production_recommendation": true,
+      "no_budget_allocation_recommendation": true,
+      "manifest_verified": true,
+      "sanitization_verified": true,
+      "authorization_boundaries_verified": true
+    },
+    "review-pos-dcm001-synthetic": {
+      "research_mode_banner_present": true,
+      "not_for_production_banner_present": true,
+      "not_for_budget_optimization_banner_present": true,
+      "no_calibration_signal_banner_present": true,
+      "no_live_api_banner_present": true,
+      "no_scheduler_banner_present": true,
+      "sanitized_artifact_export_banner_present": true,
+      "row_identity_preserved": true,
+      "method_identity_preserved": true,
+      "warnings_present": true,
+      "restrictions_present": true,
+      "blocked_uses_present": true,
+      "audit_trail_present": true,
+      "manifest_present": true,
+      "content_hash_matches": true,
+      "payload_placeholder_or_synthetic_only": true,
+      "no_raw_live_measurement_payload": true,
+      "no_production_recommendation": true,
+      "no_budget_allocation_recommendation": true,
+      "manifest_verified": true,
+      "sanitization_verified": true,
+      "authorization_boundaries_verified": true
+    },
+    "review-pos-dcm001-manifest": {
+      "research_mode_banner_present": true,
+      "not_for_production_banner_present": true,
+      "not_for_budget_optimization_banner_present": true,
+      "no_calibration_signal_banner_present": true,
+      "no_live_api_banner_present": true,
+      "no_scheduler_banner_present": true,
+      "sanitized_artifact_export_banner_present": true,
+      "row_identity_preserved": true,
+      "method_identity_preserved": true,
+      "warnings_present": true,
+      "restrictions_present": true,
+      "blocked_uses_present": true,
+      "audit_trail_present": true,
+      "manifest_present": true,
+      "content_hash_matches": true,
+      "payload_placeholder_or_synthetic_only": true,
+      "no_raw_live_measurement_payload": true,
+      "no_production_recommendation": true,
+      "no_budget_allocation_recommendation": true,
+      "manifest_verified": true,
+      "sanitization_verified": true,
+      "authorization_boundaries_verified": true
+    },
+    "review-pos-dcm004-placeholder": {
+      "research_mode_banner_present": true,
+      "not_for_production_banner_present": true,
+      "not_for_budget_optimization_banner_present": true,
+      "no_calibration_signal_banner_present": true,
+      "no_live_api_banner_present": true,
+      "no_scheduler_banner_present": true,
+      "sanitized_artifact_export_banner_present": true,
+      "row_identity_preserved": true,
+      "method_identity_preserved": true,
+      "warnings_present": true,
+      "restrictions_present": true,
+      "blocked_uses_present": true,
+      "audit_trail_present": true,
+      "manifest_present": true,
+      "content_hash_matches": true,
+      "payload_placeholder_or_synthetic_only": true,
+      "no_raw_live_measurement_payload": true,
+      "no_production_recommendation": true,
+      "no_budget_allocation_recommendation": true,
+      "manifest_verified": true,
+      "sanitization_verified": true,
+      "authorization_boundaries_verified": true
+    },
+    "review-pos-dcm004-synthetic": {
+      "research_mode_banner_present": true,
+      "not_for_production_banner_present": true,
+      "not_for_budget_optimization_banner_present": true,
+      "no_calibration_signal_banner_present": true,
+      "no_live_api_banner_present": true,
+      "no_scheduler_banner_present": true,
+      "sanitized_artifact_export_banner_present": true,
+      "row_identity_preserved": true,
+      "method_identity_preserved": true,
+      "warnings_present": true,
+      "restrictions_present": true,
+      "blocked_uses_present": true,
+      "audit_trail_present": true,
+      "manifest_present": true,
+      "content_hash_matches": true,
+      "payload_placeholder_or_synthetic_only": true,
+      "no_raw_live_measurement_payload": true,
+      "no_production_recommendation": true,
+      "no_budget_allocation_recommendation": true,
+      "manifest_verified": true,
+      "sanitization_verified": true,
+      "authorization_boundaries_verified": true
+    },
+    "review-pos-dcm004-manifest": {
+      "research_mode_banner_present": true,
+      "not_for_production_banner_present": true,
+      "not_for_budget_optimization_banner_present": true,
+      "no_calibration_signal_banner_present": true,
+      "no_live_api_banner_present": true,
+      "no_scheduler_banner_present": true,
+      "sanitized_artifact_export_banner_present": true,
+      "row_identity_preserved": true,
+      "method_identity_preserved": true,
+      "warnings_present": true,
+      "restrictions_present": true,
+      "blocked_uses_present": true,
+      "audit_trail_present": true,
+      "manifest_present": true,
+      "content_hash_matches": true,
+      "payload_placeholder_or_synthetic_only": true,
+      "no_raw_live_measurement_payload": true,
+      "no_production_recommendation": true,
+      "no_budget_allocation_recommendation": true,
+      "manifest_verified": true,
+      "sanitization_verified": true,
+      "authorization_boundaries_verified": true
+    }
+  },
+  "review_decision_records": {
+    "pos-dcm001-placeholder": {
+      "review_id": "review-pos-dcm001-placeholder",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-REVIEW-WORKFLOW-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "row_id": "DCM-001",
+      "review_mode": "research_mode_review_only",
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "reviewer_role": "research_reviewer",
+      "review_checklist": {
+        "research_mode_banner_present": true,
+        "not_for_production_banner_present": true,
+        "not_for_budget_optimization_banner_present": true,
+        "no_calibration_signal_banner_present": true,
+        "no_live_api_banner_present": true,
+        "no_scheduler_banner_present": true,
+        "sanitized_artifact_export_banner_present": true,
+        "row_identity_preserved": true,
+        "method_identity_preserved": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "blocked_uses_present": true,
+        "audit_trail_present": true,
+        "manifest_present": true,
+        "content_hash_matches": true,
+        "payload_placeholder_or_synthetic_only": true,
+        "no_raw_live_measurement_payload": true,
+        "no_production_recommendation": true,
+        "no_budget_allocation_recommendation": true,
+        "manifest_verified": true,
+        "sanitization_verified": true,
+        "authorization_boundaries_verified": true
+      },
+      "required_banners_present": true,
+      "warnings_present": true,
+      "restrictions_present": true,
+      "blocked_uses_present": true,
+      "audit_trail_present": true,
+      "content_hash_verified": true,
+      "manifest_verified": true,
+      "sanitization_verified": true,
+      "authorization_boundaries_verified": true,
+      "open_investigation_check": {
+        "deferred_investigations": [
+          "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+          "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+        ],
+        "blocking_for_review": []
+      },
+      "decision_record": {
+        "decision": "REVIEW_ACCEPTED_RESEARCH_MODE",
+        "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+        "production_approval": false,
+        "research_mode_review_only": true
+      },
+      "created_at": "2026-06-23T03:29:44.171477+00:00"
+    },
+    "pos-dcm001-synthetic": {
+      "review_id": "review-pos-dcm001-synthetic",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-REVIEW-WORKFLOW-001",
+      "export_id": "export-pos-dcm001-synthetic",
+      "row_id": "DCM-001",
+      "review_mode": "research_mode_review_only",
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "reviewer_role": "causal_methods_reviewer",
+      "review_checklist": {
+        "research_mode_banner_present": true,
+        "not_for_production_banner_present": true,
+        "not_for_budget_optimization_banner_present": true,
+        "no_calibration_signal_banner_present": true,
+        "no_live_api_banner_present": true,
+        "no_scheduler_banner_present": true,
+        "sanitized_artifact_export_banner_present": true,
+        "row_identity_preserved": true,
+        "method_identity_preserved": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "blocked_uses_present": true,
+        "audit_trail_present": true,
+        "manifest_present": true,
+        "content_hash_matches": true,
+        "payload_placeholder_or_synthetic_only": true,
+        "no_raw_live_measurement_payload": true,
+        "no_production_recommendation": true,
+        "no_budget_allocation_recommendation": true,
+        "manifest_verified": true,
+        "sanitization_verified": true,
+        "authorization_boundaries_verified": true
+      },
+      "required_banners_present": true,
+      "warnings_present": true,
+      "restrictions_present": true,
+      "blocked_uses_present": true,
+      "audit_trail_present": true,
+      "content_hash_verified": true,
+      "manifest_verified": true,
+      "sanitization_verified": true,
+      "authorization_boundaries_verified": true,
+      "open_investigation_check": {
+        "deferred_investigations": [
+          "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+          "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+        ],
+        "blocking_for_review": []
+      },
+      "decision_record": {
+        "decision": "REVIEW_ACCEPTED_RESEARCH_MODE",
+        "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+        "production_approval": false,
+        "research_mode_review_only": true
+      },
+      "created_at": "2026-06-23T03:29:44.171562+00:00"
+    },
+    "pos-dcm001-manifest": {
+      "review_id": "review-pos-dcm001-manifest",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-REVIEW-WORKFLOW-001",
+      "export_id": "export-pos-dcm001-manifest",
+      "row_id": "DCM-001",
+      "review_mode": "research_mode_review_only",
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "reviewer_role": "governance_reviewer",
+      "review_checklist": {
+        "research_mode_banner_present": true,
+        "not_for_production_banner_present": true,
+        "not_for_budget_optimization_banner_present": true,
+        "no_calibration_signal_banner_present": true,
+        "no_live_api_banner_present": true,
+        "no_scheduler_banner_present": true,
+        "sanitized_artifact_export_banner_present": true,
+        "row_identity_preserved": true,
+        "method_identity_preserved": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "blocked_uses_present": true,
+        "audit_trail_present": true,
+        "manifest_present": true,
+        "content_hash_matches": true,
+        "payload_placeholder_or_synthetic_only": true,
+        "no_raw_live_measurement_payload": true,
+        "no_production_recommendation": true,
+        "no_budget_allocation_recommendation": true,
+        "manifest_verified": true,
+        "sanitization_verified": true,
+        "authorization_boundaries_verified": true
+      },
+      "required_banners_present": true,
+      "warnings_present": true,
+      "restrictions_present": true,
+      "blocked_uses_present": true,
+      "audit_trail_present": true,
+      "content_hash_verified": true,
+      "manifest_verified": true,
+      "sanitization_verified": true,
+      "authorization_boundaries_verified": true,
+      "open_investigation_check": {
+        "deferred_investigations": [
+          "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+          "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+        ],
+        "blocking_for_review": []
+      },
+      "decision_record": {
+        "decision": "REVIEW_ACCEPTED_MANIFEST_ONLY",
+        "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+        "production_approval": false,
+        "research_mode_review_only": true
+      },
+      "created_at": "2026-06-23T03:29:44.171631+00:00"
+    },
+    "pos-dcm004-placeholder": {
+      "review_id": "review-pos-dcm004-placeholder",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-REVIEW-WORKFLOW-001",
+      "export_id": "export-pos-dcm004-placeholder",
+      "row_id": "DCM-004",
+      "review_mode": "research_mode_review_only",
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "reviewer_role": "research_reviewer",
+      "review_checklist": {
+        "research_mode_banner_present": true,
+        "not_for_production_banner_present": true,
+        "not_for_budget_optimization_banner_present": true,
+        "no_calibration_signal_banner_present": true,
+        "no_live_api_banner_present": true,
+        "no_scheduler_banner_present": true,
+        "sanitized_artifact_export_banner_present": true,
+        "row_identity_preserved": true,
+        "method_identity_preserved": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "blocked_uses_present": true,
+        "audit_trail_present": true,
+        "manifest_present": true,
+        "content_hash_matches": true,
+        "payload_placeholder_or_synthetic_only": true,
+        "no_raw_live_measurement_payload": true,
+        "no_production_recommendation": true,
+        "no_budget_allocation_recommendation": true,
+        "manifest_verified": true,
+        "sanitization_verified": true,
+        "authorization_boundaries_verified": true
+      },
+      "required_banners_present": true,
+      "warnings_present": true,
+      "restrictions_present": true,
+      "blocked_uses_present": true,
+      "audit_trail_present": true,
+      "content_hash_verified": true,
+      "manifest_verified": true,
+      "sanitization_verified": true,
+      "authorization_boundaries_verified": true,
+      "open_investigation_check": {
+        "deferred_investigations": [
+          "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+          "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+        ],
+        "blocking_for_review": []
+      },
+      "decision_record": {
+        "decision": "REVIEW_ACCEPTED_RESEARCH_MODE",
+        "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+        "production_approval": false,
+        "research_mode_review_only": true
+      },
+      "created_at": "2026-06-23T03:29:44.171689+00:00"
+    },
+    "pos-dcm004-synthetic": {
+      "review_id": "review-pos-dcm004-synthetic",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-REVIEW-WORKFLOW-001",
+      "export_id": "export-pos-dcm004-synthetic",
+      "row_id": "DCM-004",
+      "review_mode": "research_mode_review_only",
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "reviewer_role": "causal_methods_reviewer",
+      "review_checklist": {
+        "research_mode_banner_present": true,
+        "not_for_production_banner_present": true,
+        "not_for_budget_optimization_banner_present": true,
+        "no_calibration_signal_banner_present": true,
+        "no_live_api_banner_present": true,
+        "no_scheduler_banner_present": true,
+        "sanitized_artifact_export_banner_present": true,
+        "row_identity_preserved": true,
+        "method_identity_preserved": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "blocked_uses_present": true,
+        "audit_trail_present": true,
+        "manifest_present": true,
+        "content_hash_matches": true,
+        "payload_placeholder_or_synthetic_only": true,
+        "no_raw_live_measurement_payload": true,
+        "no_production_recommendation": true,
+        "no_budget_allocation_recommendation": true,
+        "manifest_verified": true,
+        "sanitization_verified": true,
+        "authorization_boundaries_verified": true
+      },
+      "required_banners_present": true,
+      "warnings_present": true,
+      "restrictions_present": true,
+      "blocked_uses_present": true,
+      "audit_trail_present": true,
+      "content_hash_verified": true,
+      "manifest_verified": true,
+      "sanitization_verified": true,
+      "authorization_boundaries_verified": true,
+      "open_investigation_check": {
+        "deferred_investigations": [
+          "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+          "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+        ],
+        "blocking_for_review": []
+      },
+      "decision_record": {
+        "decision": "REVIEW_ACCEPTED_RESEARCH_MODE",
+        "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+        "production_approval": false,
+        "research_mode_review_only": true
+      },
+      "created_at": "2026-06-23T03:29:44.171750+00:00"
+    },
+    "pos-dcm004-manifest": {
+      "review_id": "review-pos-dcm004-manifest",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-REVIEW-WORKFLOW-001",
+      "export_id": "export-pos-dcm004-manifest",
+      "row_id": "DCM-004",
+      "review_mode": "research_mode_review_only",
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "reviewer_role": "governance_reviewer",
+      "review_checklist": {
+        "research_mode_banner_present": true,
+        "not_for_production_banner_present": true,
+        "not_for_budget_optimization_banner_present": true,
+        "no_calibration_signal_banner_present": true,
+        "no_live_api_banner_present": true,
+        "no_scheduler_banner_present": true,
+        "sanitized_artifact_export_banner_present": true,
+        "row_identity_preserved": true,
+        "method_identity_preserved": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "blocked_uses_present": true,
+        "audit_trail_present": true,
+        "manifest_present": true,
+        "content_hash_matches": true,
+        "payload_placeholder_or_synthetic_only": true,
+        "no_raw_live_measurement_payload": true,
+        "no_production_recommendation": true,
+        "no_budget_allocation_recommendation": true,
+        "manifest_verified": true,
+        "sanitization_verified": true,
+        "authorization_boundaries_verified": true
+      },
+      "required_banners_present": true,
+      "warnings_present": true,
+      "restrictions_present": true,
+      "blocked_uses_present": true,
+      "audit_trail_present": true,
+      "content_hash_verified": true,
+      "manifest_verified": true,
+      "sanitization_verified": true,
+      "authorization_boundaries_verified": true,
+      "open_investigation_check": {
+        "deferred_investigations": [
+          "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+          "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+        ],
+        "blocking_for_review": []
+      },
+      "decision_record": {
+        "decision": "REVIEW_ACCEPTED_MANIFEST_ONLY",
+        "workflow_action": "RESEARCH_MODE_REVIEW_APPROVAL",
+        "production_approval": false,
+        "research_mode_review_only": true
+      },
+      "created_at": "2026-06-23T03:29:44.171818+00:00"
+    }
+  },
+  "audit_records": [
+    {
+      "audit_record_id": "review-audit-pos-dcm001-placeholder",
+      "request_id": "pos-dcm001-placeholder",
+      "row_id": "DCM-001",
+      "decision": "REVIEW_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "reviewer_role": "research_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.171518+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-pos-dcm001-synthetic",
+      "request_id": "pos-dcm001-synthetic",
+      "row_id": "DCM-001",
+      "decision": "REVIEW_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "reviewer_role": "causal_methods_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.171594+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-pos-dcm001-manifest",
+      "request_id": "pos-dcm001-manifest",
+      "row_id": "DCM-001",
+      "decision": "REVIEW_ACCEPTED_MANIFEST_ONLY",
+      "accepted": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "reviewer_role": "governance_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.171658+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-pos-dcm004-placeholder",
+      "request_id": "pos-dcm004-placeholder",
+      "row_id": "DCM-004",
+      "decision": "REVIEW_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "reviewer_role": "research_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.171717+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-pos-dcm004-synthetic",
+      "request_id": "pos-dcm004-synthetic",
+      "row_id": "DCM-004",
+      "decision": "REVIEW_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "reviewer_role": "causal_methods_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.171778+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-pos-dcm004-manifest",
+      "request_id": "pos-dcm004-manifest",
+      "row_id": "DCM-004",
+      "decision": "REVIEW_ACCEPTED_MANIFEST_ONLY",
+      "accepted": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "reviewer_role": "governance_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.171846+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-neg-missing-banner",
+      "request_id": "neg-missing-banner",
+      "row_id": "DCM-001",
+      "decision": "REVIEW_BLOCKED_MISSING_BANNER",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "reviewer_role": "research_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.171894+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-neg-missing-warnings",
+      "request_id": "neg-missing-warnings",
+      "row_id": "DCM-001",
+      "decision": "REVIEW_BLOCKED_MISSING_WARNING",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_REJECTED",
+      "reviewer_role": "research_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.171954+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-neg-missing-restrictions",
+      "request_id": "neg-missing-restrictions",
+      "row_id": "DCM-004",
+      "decision": "REVIEW_BLOCKED_MISSING_RESTRICTION",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_REJECTED",
+      "reviewer_role": "research_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.172001+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-neg-missing-audit",
+      "request_id": "neg-missing-audit",
+      "row_id": "DCM-004",
+      "decision": "REVIEW_BLOCKED_MISSING_AUDIT_TRAIL",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "reviewer_role": "governance_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.172048+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-neg-hash-mismatch",
+      "request_id": "neg-hash-mismatch",
+      "row_id": "DCM-001",
+      "decision": "REVIEW_BLOCKED_HASH_MISMATCH",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "reviewer_role": "causal_methods_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.172073+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-neg-manifest-mismatch",
+      "request_id": "neg-manifest-mismatch",
+      "row_id": "DCM-004",
+      "decision": "REVIEW_BLOCKED_MANIFEST_MISMATCH",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "reviewer_role": "causal_methods_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.172138+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-neg-unsanitized",
+      "request_id": "neg-unsanitized",
+      "row_id": "DCM-001",
+      "decision": "REVIEW_BLOCKED_UNSANITIZED_PAYLOAD",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "reviewer_role": "research_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.172185+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-neg-live-payload",
+      "request_id": "neg-live-payload",
+      "row_id": "DCM-004",
+      "decision": "REVIEW_BLOCKED_LIVE_MEASUREMENT_PAYLOAD",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "reviewer_role": "research_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.172233+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-neg-prod-rec",
+      "request_id": "neg-prod-rec",
+      "row_id": "DCM-001",
+      "decision": "REVIEW_BLOCKED_PRODUCTION_RECOMMENDATION",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "reviewer_role": "research_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.172278+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-neg-budget-rec",
+      "request_id": "neg-budget-rec",
+      "row_id": "DCM-004",
+      "decision": "REVIEW_BLOCKED_BUDGET_RECOMMENDATION",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "reviewer_role": "research_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.172324+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-neg-invalid-role",
+      "request_id": "neg-invalid-role",
+      "row_id": "DCM-001",
+      "decision": "REVIEW_BLOCKED_INVALID_REVIEWER_ROLE",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "reviewer_role": "production_approver",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.172326+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-neg-brb",
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "decision": "REVIEW_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "reviewer_role": "research_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.172330+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-neg-kfold",
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "decision": "REVIEW_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "reviewer_role": "research_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.172333+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-neg-placebo",
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "decision": "REVIEW_BLOCKED_NULL_MONITOR_CAUSAL_REUSE",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "reviewer_role": "research_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.172336+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-neg-dcm006",
+      "request_id": "neg-dcm006",
+      "row_id": "DCM-006",
+      "decision": "REVIEW_BLOCKED_NOT_PROMOTED",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "reviewer_role": "research_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.172339+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-neg-dcm008",
+      "request_id": "neg-dcm008",
+      "row_id": "DCM-008",
+      "decision": "REVIEW_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "reviewer_role": "governance_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.172342+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-neg-cal",
+      "request_id": "neg-cal",
+      "row_id": "DCM-001",
+      "decision": "REVIEW_BLOCKED_CALIBRATION_SIGNAL",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "reviewer_role": "governance_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.172344+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-neg-live",
+      "request_id": "neg-live",
+      "row_id": "DCM-004",
+      "decision": "REVIEW_BLOCKED_LIVE_API",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "reviewer_role": "research_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.172346+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-neg-scheduler",
+      "request_id": "neg-scheduler",
+      "row_id": "DCM-001",
+      "decision": "REVIEW_BLOCKED_SCHEDULER",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "reviewer_role": "research_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.172348+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-neg-prod",
+      "request_id": "neg-prod",
+      "row_id": "DCM-004",
+      "decision": "REVIEW_BLOCKED_PRODUCTION_DECISIONING",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "reviewer_role": "research_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.172350+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-neg-budget",
+      "request_id": "neg-budget",
+      "row_id": "DCM-001",
+      "decision": "REVIEW_BLOCKED_BUDGET_OPTIMIZATION",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "reviewer_role": "research_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.172352+00:00"
+    },
+    {
+      "audit_record_id": "review-audit-neg-unknown",
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "decision": "REVIEW_BLOCKED_UNKNOWN_ROW",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "reviewer_role": "research_reviewer",
+      "research_mode_review_only": true,
+      "production_approval": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T03:29:44.172361+00:00"
+    }
+  ],
+  "negative_control_results": [
+    {
+      "request_id": "neg-missing-banner",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "missing_banner",
+      "decision": "REVIEW_BLOCKED_MISSING_BANNER",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-missing-banner",
+      "gate_results": {
+        "missing_banner": true
+      },
+      "reason": "Required banners missing"
+    },
+    {
+      "request_id": "neg-missing-warnings",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "missing_warnings",
+      "decision": "REVIEW_BLOCKED_MISSING_WARNING",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_REJECTED",
+      "audit_record_id": "review-audit-neg-missing-warnings",
+      "gate_results": {
+        "missing_warnings": true
+      },
+      "reason": "Required warnings missing"
+    },
+    {
+      "request_id": "neg-missing-restrictions",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "missing_restrictions",
+      "decision": "REVIEW_BLOCKED_MISSING_RESTRICTION",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_REJECTED",
+      "audit_record_id": "review-audit-neg-missing-restrictions",
+      "gate_results": {
+        "missing_restrictions": true
+      },
+      "reason": "Required restrictions missing"
+    },
+    {
+      "request_id": "neg-missing-audit",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "missing_audit_trail",
+      "decision": "REVIEW_BLOCKED_MISSING_AUDIT_TRAIL",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-missing-audit",
+      "gate_results": {
+        "missing_audit_trail": true
+      },
+      "reason": "Audit trail missing"
+    },
+    {
+      "request_id": "neg-hash-mismatch",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-synthetic",
+      "request_type": "hash_mismatch",
+      "decision": "REVIEW_BLOCKED_HASH_MISMATCH",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-hash-mismatch",
+      "gate_results": {
+        "hash_mismatch": true
+      },
+      "reason": "Content hash mismatch"
+    },
+    {
+      "request_id": "neg-manifest-mismatch",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-synthetic",
+      "request_type": "manifest_mismatch",
+      "decision": "REVIEW_BLOCKED_MANIFEST_MISMATCH",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-manifest-mismatch",
+      "gate_results": {
+        "manifest_mismatch": true
+      },
+      "reason": "Manifest mismatch"
+    },
+    {
+      "request_id": "neg-unsanitized",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "unsanitized_payload",
+      "decision": "REVIEW_BLOCKED_UNSANITIZED_PAYLOAD",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-unsanitized",
+      "gate_results": {
+        "unsanitized_payload": true
+      },
+      "reason": "Unsanitized payload"
+    },
+    {
+      "request_id": "neg-live-payload",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "live_measurement_payload",
+      "decision": "REVIEW_BLOCKED_LIVE_MEASUREMENT_PAYLOAD",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-live-payload",
+      "gate_results": {
+        "live_measurement_payload": true
+      },
+      "reason": "Raw/live measurement payload"
+    },
+    {
+      "request_id": "neg-prod-rec",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "production_recommendation",
+      "decision": "REVIEW_BLOCKED_PRODUCTION_RECOMMENDATION",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-prod-rec",
+      "gate_results": {
+        "production_recommendation": true
+      },
+      "reason": "Production recommendation present"
+    },
+    {
+      "request_id": "neg-budget-rec",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "budget_recommendation",
+      "decision": "REVIEW_BLOCKED_BUDGET_RECOMMENDATION",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-budget-rec",
+      "gate_results": {
+        "budget_recommendation": true
+      },
+      "reason": "Budget allocation recommendation present"
+    },
+    {
+      "request_id": "neg-invalid-role",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "invalid_reviewer_role",
+      "decision": "REVIEW_BLOCKED_INVALID_REVIEWER_ROLE",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-invalid-role",
+      "gate_results": {
+        "invalid_reviewer_role": true
+      },
+      "reason": "Invalid reviewer role: production_approver"
+    },
+    {
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "export_id": "",
+      "request_type": "causal_trustreport",
+      "decision": "REVIEW_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-brb",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-BRB is diagnostic-only"
+    },
+    {
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "export_id": "",
+      "request_type": "causal_trustreport",
+      "decision": "REVIEW_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-kfold",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-KFOLD is diagnostic-only"
+    },
+    {
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "export_id": "",
+      "request_type": "causal_trustreport",
+      "decision": "REVIEW_BLOCKED_NULL_MONITOR_CAUSAL_REUSE",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-placebo",
+      "gate_results": {
+        "null_monitor_causal_reuse": true
+      },
+      "reason": "Null-monitor path cannot receive causal TrustReport review"
+    },
+    {
+      "request_id": "neg-dcm006",
+      "row_id": "DCM-006",
+      "export_id": "",
+      "request_type": "global_claim",
+      "decision": "REVIEW_BLOCKED_NOT_PROMOTED",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-dcm006",
+      "gate_results": {
+        "multicell_global_blocked": true
+      },
+      "reason": "DCM-006 global/winner/pooled review blocked"
+    },
+    {
+      "request_id": "neg-dcm008",
+      "row_id": "DCM-008",
+      "export_id": "",
+      "request_type": "aggregate_stratified",
+      "decision": "REVIEW_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-dcm008",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-008 is diagnostic-only"
+    },
+    {
+      "request_id": "neg-cal",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "calibration_approval",
+      "decision": "REVIEW_BLOCKED_CALIBRATION_SIGNAL",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-cal",
+      "gate_results": {
+        "CALIBRATION_SIGNAL_APPROVAL_blocked": true
+      },
+      "reason": "Workflow action CALIBRATION_SIGNAL_APPROVAL forbidden"
+    },
+    {
+      "request_id": "neg-live",
+      "row_id": "DCM-004",
+      "export_id": "",
+      "request_type": "live_api_approval",
+      "decision": "REVIEW_BLOCKED_LIVE_API",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-live",
+      "gate_results": {
+        "LIVE_API_APPROVAL_blocked": true
+      },
+      "reason": "Workflow action LIVE_API_APPROVAL forbidden"
+    },
+    {
+      "request_id": "neg-scheduler",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "scheduler_approval",
+      "decision": "REVIEW_BLOCKED_SCHEDULER",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-scheduler",
+      "gate_results": {
+        "SCHEDULER_APPROVAL_blocked": true
+      },
+      "reason": "Workflow action SCHEDULER_APPROVAL forbidden"
+    },
+    {
+      "request_id": "neg-prod",
+      "row_id": "DCM-004",
+      "export_id": "",
+      "request_type": "production_approval",
+      "decision": "REVIEW_BLOCKED_PRODUCTION_DECISIONING",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-prod",
+      "gate_results": {
+        "PRODUCTION_APPROVAL_blocked": true
+      },
+      "reason": "Workflow action PRODUCTION_APPROVAL forbidden"
+    },
+    {
+      "request_id": "neg-budget",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "budget_approval",
+      "decision": "REVIEW_BLOCKED_BUDGET_OPTIMIZATION",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-budget",
+      "gate_results": {
+        "BUDGET_OPTIMIZATION_APPROVAL_blocked": true
+      },
+      "reason": "Workflow action BUDGET_OPTIMIZATION_APPROVAL forbidden"
+    },
+    {
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "export_id": "",
+      "request_type": "unknown_row",
+      "decision": "REVIEW_BLOCKED_UNKNOWN_ROW",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-unknown",
+      "gate_results": {
+        "unknown_row": true
+      },
+      "reason": "Unknown row: DCM-999"
+    }
+  ],
+  "hash_verification_results": [
+    {
+      "request_id": "pos-dcm001-placeholder",
+      "export_id": "export-pos-dcm001-placeholder",
+      "verified": true,
+      "content_hash": "2168462379e105571df6b660984cc36b64163e3c8b5190eee680486e7017de5e"
+    },
+    {
+      "request_id": "pos-dcm001-synthetic",
+      "export_id": "export-pos-dcm001-synthetic",
+      "verified": true,
+      "content_hash": "f9a0960bbb06cca2d2373a6918a03c0fe2cc5939700f101c593a95f6f3b8c495"
+    },
+    {
+      "request_id": "pos-dcm001-manifest",
+      "export_id": "export-pos-dcm001-manifest",
+      "verified": true,
+      "content_hash": "f8372f936de17b4ad8a53c8507f189c5a607fa46b8ae39910e33ec7797cd8754"
+    },
+    {
+      "request_id": "pos-dcm004-placeholder",
+      "export_id": "export-pos-dcm004-placeholder",
+      "verified": true,
+      "content_hash": "b2a4748bae9383ae45ccc51fc2c14c104f097d170303113e405c11730994f516"
+    },
+    {
+      "request_id": "pos-dcm004-synthetic",
+      "export_id": "export-pos-dcm004-synthetic",
+      "verified": true,
+      "content_hash": "c54cb2b171ee51efe79bb901a8839dcb09a74249e57d5cf14d99929239c7662c"
+    },
+    {
+      "request_id": "pos-dcm004-manifest",
+      "export_id": "export-pos-dcm004-manifest",
+      "verified": true,
+      "content_hash": "e51becb6cf3628ba9b0cbe7d21ac356499f01d35f5f022a74cb451340962326b"
+    }
+  ],
+  "manifest_verification_results": [
+    {
+      "request_id": "pos-dcm001-placeholder",
+      "export_id": "export-pos-dcm001-placeholder",
+      "verified": true
+    },
+    {
+      "request_id": "pos-dcm001-synthetic",
+      "export_id": "export-pos-dcm001-synthetic",
+      "verified": true
+    },
+    {
+      "request_id": "pos-dcm001-manifest",
+      "export_id": "export-pos-dcm001-manifest",
+      "verified": true
+    },
+    {
+      "request_id": "pos-dcm004-placeholder",
+      "export_id": "export-pos-dcm004-placeholder",
+      "verified": true
+    },
+    {
+      "request_id": "pos-dcm004-synthetic",
+      "export_id": "export-pos-dcm004-synthetic",
+      "verified": true
+    },
+    {
+      "request_id": "pos-dcm004-manifest",
+      "export_id": "export-pos-dcm004-manifest",
+      "verified": true
+    }
+  ],
+  "sanitization_results": [
+    {
+      "request_id": "pos-dcm001-placeholder",
+      "sanitized": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED"
+    },
+    {
+      "request_id": "pos-dcm001-synthetic",
+      "sanitized": true,
+      "measurement_label": "SYNTHETIC_DRY_RUN_PAYLOAD"
+    },
+    {
+      "request_id": "pos-dcm001-manifest",
+      "sanitized": true,
+      "measurement_label": "MANIFEST_ONLY_EXPORT"
+    },
+    {
+      "request_id": "pos-dcm004-placeholder",
+      "sanitized": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED"
+    },
+    {
+      "request_id": "pos-dcm004-synthetic",
+      "sanitized": true,
+      "measurement_label": "SYNTHETIC_DRY_RUN_PAYLOAD"
+    },
+    {
+      "request_id": "pos-dcm004-manifest",
+      "sanitized": true,
+      "measurement_label": "MANIFEST_ONLY_EXPORT"
+    }
+  ],
+  "warning_contracts": {
+    "DCM-004": [
+      "parallel_trends_required",
+      "common_timing_required",
+      "unsupported_worlds_excluded",
+      "fit_diagnostics_required"
+    ],
+    "DCM-001": [
+      "noisy_world_coverage_caveat",
+      "type_i_caveat",
+      "restricted_geometry_only",
+      "fit_diagnostics_required"
+    ]
+  },
+  "restriction_contracts": {
+    "DCM-004": {
+      "blocked_roles": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "production_decisioning",
+        "scheduler"
+      ],
+      "blocked_geometry": [
+        "parallel_trends_violation",
+        "stress_or_outlier",
+        "staggered_timing",
+        "staggered_pooled",
+        "aggregate_1x1"
+      ]
+    },
+    "DCM-001": {
+      "blocked_roles": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "production_decisioning",
+        "scheduler"
+      ],
+      "blocked_geometry": [
+        "aggregate_1x1",
+        "multi_cell_pooled",
+        "staggered_timing"
+      ]
+    }
+  },
+  "global_authorization_summary": {
+    "trust_report_platform_authorized": false,
+    "live_api_authorized": false,
+    "scheduler_authorized": false
+  },
+  "live_api_authorization_summary": {
+    "live_api_authorized": false,
+    "research_mode_review_only": true
+  },
+  "scheduler_authorization_summary": {
+    "scheduler_authorized": false,
+    "research_mode_review_only": true
+  },
+  "calibration_signal_summary": {
+    "any_calibration_signal_allowed": false
+  },
+  "production_decisioning_summary": {
+    "any_production_decisioning_allowed": false
+  },
+  "budget_optimization_summary": {
+    "any_budget_optimization_allowed": false
+  },
+  "open_investigation_check": {
+    "deferred_investigations": [
+      "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+      "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+    ],
+    "blocking_for_review": []
+  },
+  "governance_verdict": "trustreport_research_mode_review_workflow_passed",
+  "limitations": [
+    "This artifact defines the research-mode human-review workflow for exported TrustReport artifacts.",
+    "It does not authorize live APIs, scheduler execution, production decisioning, CalibrationSignal, budget optimization, or global platform rollout.",
+    "Review approval is research-mode review approval only.",
+    "Only DCM-001 and DCM-004 are accepted for research-mode review.",
+    "All diagnostic-only, null-monitor-only, deferred, ineligible, global multi-cell, and stratified aggregate paths remain blocked."
+  ],
+  "next_artifact": "TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001",
+  "investigation_handoff": {
+    "follow_up_issues": [],
+    "resolved_issues": [],
+    "terminal_dispositions": [],
+    "next_artifact": "TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001"
+  },
+  "verdict": "trustreport_research_mode_review_workflow_passed",
+  "contracts_complete": true,
+  "reviewer_role_model": {
+    "valid_roles": [
+      "causal_methods_reviewer",
+      "governance_reviewer",
+      "research_reviewer"
+    ],
+    "invalid_roles": [
+      "api_operator",
+      "budget_optimizer",
+      "production_approver",
+      "scheduler_operator",
+      "unknown"
+    ],
+    "workflow_action_allowed": "RESEARCH_MODE_REVIEW_APPROVAL",
+    "workflow_actions_blocked": [
+      "PRODUCTION_APPROVAL",
+      "LIVE_API_APPROVAL",
+      "SCHEDULER_APPROVAL",
+      "CALIBRATION_SIGNAL_APPROVAL",
+      "BUDGET_OPTIMIZATION_APPROVAL",
+      "AUTO_RECOMMENDATION_APPROVAL",
+      "GLOBAL_PLATFORM_APPROVAL"
+    ]
+  },
+  "review_checklist_items": [
+    "research_mode_banner_present",
+    "not_for_production_banner_present",
+    "not_for_budget_optimization_banner_present",
+    "no_calibration_signal_banner_present",
+    "no_live_api_banner_present",
+    "no_scheduler_banner_present",
+    "sanitized_artifact_export_banner_present",
+    "row_identity_preserved",
+    "method_identity_preserved",
+    "warnings_present",
+    "restrictions_present",
+    "blocked_uses_present",
+    "audit_trail_present",
+    "manifest_present",
+    "content_hash_matches",
+    "payload_placeholder_or_synthetic_only",
+    "no_raw_live_measurement_payload",
+    "no_production_recommendation",
+    "no_budget_allocation_recommendation"
+  ],
+  "dcm001_review_result": {
+    "request_id": "pos-dcm001-placeholder",
+    "row_id": "DCM-001",
+    "export_id": "export-pos-dcm001-placeholder",
+    "request_type": "research_review",
+    "decision": "REVIEW_ACCEPTED_RESEARCH_MODE",
+    "accepted": true,
+    "review_status": "RESEARCH_REVIEW_APPROVED",
+    "audit_record_id": "review-audit-pos-dcm001-placeholder",
+    "gate_results": {
+      "row_promoted": true,
+      "checklist_complete": true,
+      "research_mode_review_only": true,
+      "production_approval": false
+    },
+    "reason": "Research-mode review approved (not production authorization)"
+  },
+  "dcm004_review_result": {
+    "request_id": "pos-dcm004-placeholder",
+    "row_id": "DCM-004",
+    "export_id": "export-pos-dcm004-placeholder",
+    "request_type": "research_review",
+    "decision": "REVIEW_ACCEPTED_RESEARCH_MODE",
+    "accepted": true,
+    "review_status": "RESEARCH_REVIEW_APPROVED",
+    "audit_record_id": "review-audit-pos-dcm004-placeholder",
+    "gate_results": {
+      "row_promoted": true,
+      "checklist_complete": true,
+      "research_mode_review_only": true,
+      "production_approval": false
+    },
+    "reason": "Research-mode review approved (not production authorization)"
+  },
+  "review_results": [
+    {
+      "request_id": "pos-dcm001-placeholder",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "research_review",
+      "decision": "REVIEW_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "audit_record_id": "review-audit-pos-dcm001-placeholder",
+      "gate_results": {
+        "row_promoted": true,
+        "checklist_complete": true,
+        "research_mode_review_only": true,
+        "production_approval": false
+      },
+      "reason": "Research-mode review approved (not production authorization)"
+    },
+    {
+      "request_id": "pos-dcm001-synthetic",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-synthetic",
+      "request_type": "research_review",
+      "decision": "REVIEW_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "audit_record_id": "review-audit-pos-dcm001-synthetic",
+      "gate_results": {
+        "row_promoted": true,
+        "checklist_complete": true,
+        "research_mode_review_only": true,
+        "production_approval": false
+      },
+      "reason": "Research-mode review approved (not production authorization)"
+    },
+    {
+      "request_id": "pos-dcm001-manifest",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-manifest",
+      "request_type": "research_review",
+      "decision": "REVIEW_ACCEPTED_MANIFEST_ONLY",
+      "accepted": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "audit_record_id": "review-audit-pos-dcm001-manifest",
+      "gate_results": {
+        "row_promoted": true,
+        "checklist_complete": true,
+        "research_mode_review_only": true,
+        "production_approval": false
+      },
+      "reason": "Research-mode review approved (not production authorization)"
+    },
+    {
+      "request_id": "pos-dcm004-placeholder",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "research_review",
+      "decision": "REVIEW_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "audit_record_id": "review-audit-pos-dcm004-placeholder",
+      "gate_results": {
+        "row_promoted": true,
+        "checklist_complete": true,
+        "research_mode_review_only": true,
+        "production_approval": false
+      },
+      "reason": "Research-mode review approved (not production authorization)"
+    },
+    {
+      "request_id": "pos-dcm004-synthetic",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-synthetic",
+      "request_type": "research_review",
+      "decision": "REVIEW_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "audit_record_id": "review-audit-pos-dcm004-synthetic",
+      "gate_results": {
+        "row_promoted": true,
+        "checklist_complete": true,
+        "research_mode_review_only": true,
+        "production_approval": false
+      },
+      "reason": "Research-mode review approved (not production authorization)"
+    },
+    {
+      "request_id": "pos-dcm004-manifest",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-manifest",
+      "request_type": "research_review",
+      "decision": "REVIEW_ACCEPTED_MANIFEST_ONLY",
+      "accepted": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "audit_record_id": "review-audit-pos-dcm004-manifest",
+      "gate_results": {
+        "row_promoted": true,
+        "checklist_complete": true,
+        "research_mode_review_only": true,
+        "production_approval": false
+      },
+      "reason": "Research-mode review approved (not production authorization)"
+    },
+    {
+      "request_id": "neg-missing-banner",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "missing_banner",
+      "decision": "REVIEW_BLOCKED_MISSING_BANNER",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-missing-banner",
+      "gate_results": {
+        "missing_banner": true
+      },
+      "reason": "Required banners missing"
+    },
+    {
+      "request_id": "neg-missing-warnings",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "missing_warnings",
+      "decision": "REVIEW_BLOCKED_MISSING_WARNING",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_REJECTED",
+      "audit_record_id": "review-audit-neg-missing-warnings",
+      "gate_results": {
+        "missing_warnings": true
+      },
+      "reason": "Required warnings missing"
+    },
+    {
+      "request_id": "neg-missing-restrictions",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "missing_restrictions",
+      "decision": "REVIEW_BLOCKED_MISSING_RESTRICTION",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_REJECTED",
+      "audit_record_id": "review-audit-neg-missing-restrictions",
+      "gate_results": {
+        "missing_restrictions": true
+      },
+      "reason": "Required restrictions missing"
+    },
+    {
+      "request_id": "neg-missing-audit",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "missing_audit_trail",
+      "decision": "REVIEW_BLOCKED_MISSING_AUDIT_TRAIL",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-missing-audit",
+      "gate_results": {
+        "missing_audit_trail": true
+      },
+      "reason": "Audit trail missing"
+    },
+    {
+      "request_id": "neg-hash-mismatch",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-synthetic",
+      "request_type": "hash_mismatch",
+      "decision": "REVIEW_BLOCKED_HASH_MISMATCH",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-hash-mismatch",
+      "gate_results": {
+        "hash_mismatch": true
+      },
+      "reason": "Content hash mismatch"
+    },
+    {
+      "request_id": "neg-manifest-mismatch",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-synthetic",
+      "request_type": "manifest_mismatch",
+      "decision": "REVIEW_BLOCKED_MANIFEST_MISMATCH",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-manifest-mismatch",
+      "gate_results": {
+        "manifest_mismatch": true
+      },
+      "reason": "Manifest mismatch"
+    },
+    {
+      "request_id": "neg-unsanitized",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "unsanitized_payload",
+      "decision": "REVIEW_BLOCKED_UNSANITIZED_PAYLOAD",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-unsanitized",
+      "gate_results": {
+        "unsanitized_payload": true
+      },
+      "reason": "Unsanitized payload"
+    },
+    {
+      "request_id": "neg-live-payload",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "live_measurement_payload",
+      "decision": "REVIEW_BLOCKED_LIVE_MEASUREMENT_PAYLOAD",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-live-payload",
+      "gate_results": {
+        "live_measurement_payload": true
+      },
+      "reason": "Raw/live measurement payload"
+    },
+    {
+      "request_id": "neg-prod-rec",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "production_recommendation",
+      "decision": "REVIEW_BLOCKED_PRODUCTION_RECOMMENDATION",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-prod-rec",
+      "gate_results": {
+        "production_recommendation": true
+      },
+      "reason": "Production recommendation present"
+    },
+    {
+      "request_id": "neg-budget-rec",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "budget_recommendation",
+      "decision": "REVIEW_BLOCKED_BUDGET_RECOMMENDATION",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-budget-rec",
+      "gate_results": {
+        "budget_recommendation": true
+      },
+      "reason": "Budget allocation recommendation present"
+    },
+    {
+      "request_id": "neg-invalid-role",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "invalid_reviewer_role",
+      "decision": "REVIEW_BLOCKED_INVALID_REVIEWER_ROLE",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-invalid-role",
+      "gate_results": {
+        "invalid_reviewer_role": true
+      },
+      "reason": "Invalid reviewer role: production_approver"
+    },
+    {
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "export_id": "",
+      "request_type": "causal_trustreport",
+      "decision": "REVIEW_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-brb",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-BRB is diagnostic-only"
+    },
+    {
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "export_id": "",
+      "request_type": "causal_trustreport",
+      "decision": "REVIEW_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-kfold",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-KFOLD is diagnostic-only"
+    },
+    {
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "export_id": "",
+      "request_type": "causal_trustreport",
+      "decision": "REVIEW_BLOCKED_NULL_MONITOR_CAUSAL_REUSE",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-placebo",
+      "gate_results": {
+        "null_monitor_causal_reuse": true
+      },
+      "reason": "Null-monitor path cannot receive causal TrustReport review"
+    },
+    {
+      "request_id": "neg-dcm006",
+      "row_id": "DCM-006",
+      "export_id": "",
+      "request_type": "global_claim",
+      "decision": "REVIEW_BLOCKED_NOT_PROMOTED",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-dcm006",
+      "gate_results": {
+        "multicell_global_blocked": true
+      },
+      "reason": "DCM-006 global/winner/pooled review blocked"
+    },
+    {
+      "request_id": "neg-dcm008",
+      "row_id": "DCM-008",
+      "export_id": "",
+      "request_type": "aggregate_stratified",
+      "decision": "REVIEW_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-dcm008",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-008 is diagnostic-only"
+    },
+    {
+      "request_id": "neg-cal",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "calibration_approval",
+      "decision": "REVIEW_BLOCKED_CALIBRATION_SIGNAL",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-cal",
+      "gate_results": {
+        "CALIBRATION_SIGNAL_APPROVAL_blocked": true
+      },
+      "reason": "Workflow action CALIBRATION_SIGNAL_APPROVAL forbidden"
+    },
+    {
+      "request_id": "neg-live",
+      "row_id": "DCM-004",
+      "export_id": "",
+      "request_type": "live_api_approval",
+      "decision": "REVIEW_BLOCKED_LIVE_API",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-live",
+      "gate_results": {
+        "LIVE_API_APPROVAL_blocked": true
+      },
+      "reason": "Workflow action LIVE_API_APPROVAL forbidden"
+    },
+    {
+      "request_id": "neg-scheduler",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "scheduler_approval",
+      "decision": "REVIEW_BLOCKED_SCHEDULER",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-scheduler",
+      "gate_results": {
+        "SCHEDULER_APPROVAL_blocked": true
+      },
+      "reason": "Workflow action SCHEDULER_APPROVAL forbidden"
+    },
+    {
+      "request_id": "neg-prod",
+      "row_id": "DCM-004",
+      "export_id": "",
+      "request_type": "production_approval",
+      "decision": "REVIEW_BLOCKED_PRODUCTION_DECISIONING",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-prod",
+      "gate_results": {
+        "PRODUCTION_APPROVAL_blocked": true
+      },
+      "reason": "Workflow action PRODUCTION_APPROVAL forbidden"
+    },
+    {
+      "request_id": "neg-budget",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "budget_approval",
+      "decision": "REVIEW_BLOCKED_BUDGET_OPTIMIZATION",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-budget",
+      "gate_results": {
+        "BUDGET_OPTIMIZATION_APPROVAL_blocked": true
+      },
+      "reason": "Workflow action BUDGET_OPTIMIZATION_APPROVAL forbidden"
+    },
+    {
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "export_id": "",
+      "request_type": "unknown_row",
+      "decision": "REVIEW_BLOCKED_UNKNOWN_ROW",
+      "accepted": false,
+      "review_status": "RESEARCH_REVIEW_BLOCKED",
+      "audit_record_id": "review-audit-neg-unknown",
+      "gate_results": {
+        "unknown_row": true
+      },
+      "reason": "Unknown row: DCM-999"
+    }
+  ]
+}

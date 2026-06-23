@@ -550,6 +550,8 @@ Per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)
 
 **TRUSTREPORT-RESEARCH-MODE-ARTIFACT-EXPORT-001 (2026-06-03):** [`TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001_REPORT.md`](track_d/TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001_REPORT.md) — sanitized artifact export passed; regenerate: `poetry run python -m panel_exp.validation.trustreport_research_mode_artifact_export_001 --overwrite`.
 
+**TRUSTREPORT-RESEARCH-MODE-REVIEW-WORKFLOW-001 (2026-06-03):** [`TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001_REPORT.md`](track_d/TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001_REPORT.md) — research-mode review workflow passed; regenerate: `poetry run python -m panel_exp.validation.trustreport_research_mode_review_workflow_001 --overwrite`.
+
 ## 11. Stop condition
 
 | Criterion | Status |
