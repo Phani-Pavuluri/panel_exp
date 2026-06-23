@@ -526,9 +526,22 @@
         "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
       ],
       "must_consume_before_close": true,
-      "next_artifact": "MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001",
+      "next_artifact": "INFERENCE_REPLACEMENT_SCOUT_001",
       "resolution_artifact": "ROADMAP-REFOCUS-METHOD-VALIDATION-001",
       "trustreport_ops_status": "freeze_after_research_mode_access_control"
+    },
+    {
+      "lane_id": "INFERENCE-REPLACEMENT-SCOUT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [],
+      "deferred_investigations": [
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "DESIGN_AWARE_ASSIGNMENT_GENERATORS_001",
+      "resolution_artifact": "INFERENCE-REPLACEMENT-SCOUT-001"
     }
   ]
 }
