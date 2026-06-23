@@ -1368,9 +1368,21 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Status:** **`scm_placebo_governed_semantics_defined_no_authorization`**
 
-**Verdict:** Governed SCM placebo semantics across single-treated falsification, multi-treated treated-set placebo, leave-one-treated-out sensitivity, and design-aware pseudo-assignment paths. Null-monitor, falsification, design-based candidate, sensitivity-only, and blocked roles enforced. Platform overclaims blocked. **No production p-value, CI, TrustReport, or CalibrationSignal authorization.** **`INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001`** disposition: `SCM_PLACEBO_GOVERNED_SEMANTICS_DEFINED_PENDING_METHOD_SPECIFIC_VALIDATION`.
+**Verdict:** Governed SCM placebo semantics across single-treated falsification, multi-treated treated-set placebo, leave-one-treated-out sensitivity, and design-aware pseudo-assignment paths. Null-monitor, falsification, design-based candidate, sensitivity-only, and blocked roles enforced. Platform overclaims blocked. **No production p-value, CI, TrustReport, or CalibrationSignal authorization.** **`INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001`** disposition: `METHOD_SPECIFIC_RANDOMIZATION_VALIDATED_PENDING_SCM_INTEGRATION`.
 
-**Next:** `METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001`.
+**Next:** `SCM_TREATED_SET_PLACEBO_INTEGRATION_001`.
+
+---
+
+## METHOD-SPECIFIC-RANDOMIZATION-INFERENCE-VALIDATION-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001_REPORT.md`](track_d/METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001_REPORT.md) · [`docs/track_d/archives/METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001_summary.json`](track_d/archives/METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001_summary.json) · [`panel_exp/inference/method_specific_randomization.py`](../panel_exp/inference/method_specific_randomization.py) · [`panel_exp/validation/method_specific_randomization_inference_validation_001.py`](../panel_exp/validation/method_specific_randomization_inference_validation_001.py)
+
+**Status:** **`method_specific_randomization_inference_validated_no_downstream_authorization`**
+
+**Verdict:** Method-specific readiness classification for SCM, DID, AugSynth, TBRRidge, TBR, BayesianTBR, SyntheticDID, and TROP across design-based randomization candidate, falsification diagnostic, sensitivity-only, diagnostic-only, research-deferred, and blocked roles. Platform overclaims and multicell global/winner/pooled claims blocked. **No production p-value, CI, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, or budget authorization.** **`INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001`** disposition: `METHOD_SPECIFIC_RANDOMIZATION_VALIDATED_PENDING_SCM_INTEGRATION`.
+
+**Next:** `SCM_TREATED_SET_PLACEBO_INTEGRATION_001`.
 
 ---
 
