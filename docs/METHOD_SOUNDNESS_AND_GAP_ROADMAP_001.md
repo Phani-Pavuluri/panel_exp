@@ -542,6 +542,8 @@ Per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)
 
 **DCM005-TBRRIDGE-BRB-POST-REMEDIATION-REASSESSMENT-001 (2026-06-03):** [`DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001_REPORT.md`](track_d/DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001_REPORT.md) — BRB terminally `DIAGNOSTIC_ONLY`; null calibration blocked; regenerate: `poetry run python -m panel_exp.validation.dcm005_tbrridge_brb_post_remediation_reassessment_001 --overwrite`.
 
+**TRUSTREPORT-DOWNSTREAM-PROMOTION-001 (2026-06-03):** [`TRUSTREPORT_DOWNSTREAM_PROMOTION_001_REPORT.md`](track_d/TRUSTREPORT_DOWNSTREAM_PROMOTION_001_REPORT.md) — DCM-001/004 row-level restricted promotion; global platform false; regenerate: `poetry run python -m panel_exp.validation.trustreport_downstream_promotion_001 --overwrite`.
+
 ## 11. Stop condition
 
 | Criterion | Status |

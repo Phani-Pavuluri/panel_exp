@@ -337,6 +337,8 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **DCM005-TBRRIDGE-BRB-POST-REMEDIATION-REASSESSMENT-001 (2026-06-03):** [`DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001_REPORT.md`](track_d/DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001_REPORT.md) — BRB post-remediation `BRB_DIAGNOSTIC_ONLY`; regenerate: `poetry run python -m panel_exp.validation.dcm005_tbrridge_brb_post_remediation_reassessment_001 --overwrite`.
 
+**TRUSTREPORT-DOWNSTREAM-PROMOTION-001 (2026-06-03):** [`TRUSTREPORT_DOWNSTREAM_PROMOTION_001_REPORT.md`](track_d/TRUSTREPORT_DOWNSTREAM_PROMOTION_001_REPORT.md) — restricted row-level promotion gate; regenerate: `poetry run python -m panel_exp.validation.trustreport_downstream_promotion_001 --overwrite`.
+
 ## 13. Stop condition
 
 | Criterion | Status |

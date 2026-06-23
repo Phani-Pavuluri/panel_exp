@@ -325,6 +325,7 @@ Remain ineligible unless a **separate future artifact** explicitly changes them:
 | `DCM-005-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001` | DCM-005 partial re-run | DCM-005 promotion candidacy | ✅ complete — path-specific restrictions; no authorization |
 | `TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001` | BRB variance remediation | DCM-005-BRB causal path | ✅ complete — candidate_only; null gates fail |
 | `DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001` | Post-remediation BRB adjudication | DCM-005-BRB | ✅ complete — `BRB_DIAGNOSTIC_ONLY`; no authorization |
+| `TRUSTREPORT_DOWNSTREAM_PROMOTION_001` | Restricted row-level promotion gate | DCM-001/004 | ✅ complete — row-level restricted only; no platform auth |
 | `D5-TRUST-STRATIFIED-SCM-JK-001` | Stratified combination | DCM-008 | ✅ complete |
 | `D5-TRUST-MULTICELL-PERCELL-INFERENCE-001` | Per-cell inference | DCM-006 | ✅ complete |
 | `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` | Partial re-run (DCM-001 only) | DCM-001 promotion candidacy | ✅ complete (DCM-001 only) |

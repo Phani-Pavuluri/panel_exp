@@ -1338,6 +1338,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## TRUSTREPORT-DOWNSTREAM-PROMOTION-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/TRUSTREPORT_DOWNSTREAM_PROMOTION_001_REPORT.md`](track_d/TRUSTREPORT_DOWNSTREAM_PROMOTION_001_REPORT.md) · [`docs/track_d/archives/TRUSTREPORT_DOWNSTREAM_PROMOTION_001_summary.json`](track_d/archives/TRUSTREPORT_DOWNSTREAM_PROMOTION_001_summary.json) · [`panel_exp/validation/trustreport_downstream_promotion_001.py`](../panel_exp/validation/trustreport_downstream_promotion_001.py)
+
+**Status:** **`trustreport_downstream_restricted_row_promotion_approved`**
+
+**Verdict:** Row-level restricted TrustReport promotion approved for DCM-001 (SCM+JK) and DCM-004 (DID+bootstrap) only. BRB, KFold, Placebo, DCM-006 global, DCM-008 aggregate, diagnostic/null-monitor paths excluded. Global platform, live API, scheduler authorization false. CalibrationSignal false for all rows. **No live deployment authorization.**
+
+**Next:** `TRUSTREPORT_INTEGRATION_DRY_RUN_001`.
+
+---
+
 ## DCM005-TBRRIDGE-BRB-POST-REMEDIATION-REASSESSMENT-001 (2026-06-03)
 
 **Artifact:** [`docs/track_d/DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001_REPORT.md`](track_d/DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001_REPORT.md) · [`docs/track_d/archives/DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001_summary.json`](track_d/archives/DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001_summary.json) · [`panel_exp/validation/dcm005_tbrridge_brb_post_remediation_reassessment_001.py`](../panel_exp/validation/dcm005_tbrridge_brb_post_remediation_reassessment_001.py)
