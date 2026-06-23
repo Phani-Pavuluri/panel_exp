@@ -1338,6 +1338,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## ROADMAP-REFOCUS-METHOD-VALIDATION-001 (2026-06-03)
+
+**Artifact:** [`docs/audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md) · [`docs/track_d/archives/ROADMAP_REFOCUS_METHOD_VALIDATION_001_summary.json`](track_d/archives/ROADMAP_REFOCUS_METHOD_VALIDATION_001_summary.json)
+
+**Status:** **`refocus_on_method_validation`**
+
+**Verdict:** Planning audit. TrustReport research-mode ops **frozen** after access control. Further ops (audit log, API, scheduler, platform) deferred to MIP application layer. Active lane: method validity — multi-treated placebo, design-aware generators, AugSynth/TBRRidge remediation, multicell multiplicity, stratified estimand. **No deployment authorization.**
+
+**Next:** `MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001`.
+
+---
+
 ## TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001 (2026-06-03)
 
 **Artifact:** [`docs/track_d/TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001_REPORT.md`](track_d/TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001_REPORT.md) · [`docs/track_d/archives/TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001_summary.json`](track_d/archives/TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001_summary.json) · [`panel_exp/validation/trustreport_research_mode_access_control_001.py`](../panel_exp/validation/trustreport_research_mode_access_control_001.py)
@@ -1346,7 +1358,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Research-mode access control for DCM-001/004 exported artifacts. Role-permission matrix grants view/export/review/approve only. Production, API, scheduler, CalibrationSignal, budget, and global platform modes blocked. **No deployment authorization.**
 
-**Next:** `TRUSTREPORT_RESEARCH_MODE_AUDIT_LOG_001`.
+**Next:** `ROADMAP_REFOCUS_METHOD_VALIDATION_001` (TrustReport ops frozen; see refocus audit).
 
 ---
 

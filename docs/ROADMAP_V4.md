@@ -280,15 +280,17 @@ Foundation and compatibility audits ✅
   → TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001 ✅
   → TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001 ✅
   → TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001 ✅
-  → allow / restrict / block table
-  → narrow promotion decision (`TRUSTREPORT_DOWNSTREAM_PROMOTION_001`)
+  → ROADMAP_REFOCUS_METHOD_VALIDATION_001 ✅ (TrustReport ops **frozen**; method validation active)
+  → MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001 (active method lane)
 ```
+
+**TrustReport ops freeze (2026-06-03):** Research-mode operationalization is complete enough for package-level governance. Audit log, review queue, UI, API, scheduler, and platform rollout are **deferred to the MIP application/orchestration layer**. Active lane is **method validation** — see [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md).
 
 **Parallel later lane (not blocking core TrustReport qualification):** DCM-009–019 adapter lanes → full design × estimator × inference **matrix v2** → broader product-surface qualification.
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ **`D5-STAT-SCM-JK-001-HARNESS-CORRECTION`** → ✅ **`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`** (DCM-001 only) → ✅ **`D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001`** → ✅ **`D5-STAT-DID-BOOTSTRAP-001-HARNESS-CORRECTION`** → ✅ **`DID_BOOTSTRAP_CUMULATIVE_READOUT_CORRECTION_001`** → ✅ **`DCM-004-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001`** → ✅ **`D5-TRUST-TBRRIDGE-BRB-001`** → ✅ **`TBRRIDGE-BRB-INTERVAL-CORRECTION-001`** → ✅ **`TBRRIDGE_BRB_VARIANCE_CALIBRATION_REMEDIATION_001`** → ✅ **`DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001`** (BRB `DIAGNOSTIC_ONLY`) → ✅ **`TRUSTREPORT_DOWNSTREAM_PROMOTION_001`** (DCM-001/004 restricted row-level only) → ✅ **`TRUSTREPORT_INTEGRATION_DRY_RUN_001`** → ✅ **`TRUSTREPORT_RESEARCH_MODE_RENDERER_001`** → ✅ **`TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001`** → ✅ **`TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001`** → ✅ **`TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001`** → **`TRUSTREPORT_RESEARCH_MODE_AUDIT_LOG_001`** → downstream authorization update.
+**Ordered next:** ✅ TrustReport research-mode stack through **`TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001`** → ✅ **`ROADMAP_REFOCUS_METHOD_VALIDATION_001`** (ops frozen) → **`MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001`** → **`DESIGN_AWARE_ASSIGNMENT_GENERATORS_001`** → **`SCM_PLACEBO_GOVERNED_SEMANTICS_001`** → method-validation backlog (AugSynth disposition, TBRRidge replacement scout, multicell multiplicity/shared-control, stratified pooled estimand). **`TRUSTREPORT_RESEARCH_MODE_AUDIT_LOG_001`** and downstream platform ops **paused** — MIP layer.
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 

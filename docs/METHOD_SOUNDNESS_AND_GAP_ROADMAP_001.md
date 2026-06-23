@@ -438,7 +438,9 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 
 **Retained evidence (not sequencing authority):** AugSynth P1–P6 · [`METHOD_FOUNDATION_SYNTHESIS_001.md`](METHOD_FOUNDATION_SYNTHESIS_001.md) · Track D/F audits · pooling ADR semantics.
 
-**Paused:** **`D5-INST-AUGSYNTH-MULTICELL-001`** as default next step · TrustReport/F-DECISION/CalibrationSignal/MMM role expansion · LLM layer · promotion audits.
+**Paused:** **`D5-INST-AUGSYNTH-MULTICELL-001`** as default next step · TrustReport/F-DECISION/CalibrationSignal/MMM role expansion · TrustReport product-ops (audit log, API, scheduler, platform — frozen per [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md)) · LLM layer · promotion audits.
+
+**Active method lane (2026-06-03):** `MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001` → design-aware assignment generators → SCM Placebo semantics → AugSynth/TBRRidge/multicell/stratified backlog per refocus audit.
 
 **Explicitly not next:** Ad-hoc combo OC without Layer 3–4 coverage · MCELL as method-suitability proof.
 
@@ -553,6 +555,8 @@ Per [`DESIGN_SUITABILITY_FRAMEWORK_001.md`](DESIGN_SUITABILITY_FRAMEWORK_001.md)
 **TRUSTREPORT-RESEARCH-MODE-REVIEW-WORKFLOW-001 (2026-06-03):** [`TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001_REPORT.md`](track_d/TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001_REPORT.md) — research-mode review workflow passed; regenerate: `poetry run python -m panel_exp.validation.trustreport_research_mode_review_workflow_001 --overwrite`.
 
 **TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001 (2026-06-03):** [`TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001_REPORT.md`](track_d/TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001_REPORT.md) — research-mode access control passed; regenerate: `poetry run python -m panel_exp.validation.trustreport_research_mode_access_control_001 --overwrite`.
+
+**ROADMAP-REFOCUS-METHOD-VALIDATION-001 (2026-06-03):** [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md) — TrustReport ops frozen after access control; `refocus_on_method_validation`; next: `MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001`.
 
 ## 11. Stop condition
 

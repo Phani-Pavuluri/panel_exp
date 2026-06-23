@@ -349,6 +349,8 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001 (2026-06-03):** [`TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001_REPORT.md`](track_d/TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001_REPORT.md) — research-mode access control; regenerate: `poetry run python -m panel_exp.validation.trustreport_research_mode_access_control_001 --overwrite`.
 
+**ROADMAP-REFOCUS-METHOD-VALIDATION-001 (2026-06-03):** [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md) — TrustReport ops frozen; method validation active; next: `MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001`.
+
 ## 13. Stop condition
 
 | Criterion | Status |
