@@ -251,6 +251,7 @@ Must define:
 | [`TRUSTREPORT_INTEGRATION_DRY_RUN_001_REPORT.md`](track_d/TRUSTREPORT_INTEGRATION_DRY_RUN_001_REPORT.md) | Dry-run passed; research-mode renderer next |
 | [`TRUSTREPORT_RESEARCH_MODE_RENDERER_001_REPORT.md`](track_d/TRUSTREPORT_RESEARCH_MODE_RENDERER_001_REPORT.md) | Research-mode renderer passed; artifact export next |
 | [`TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001_REPORT.md`](track_d/TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001_REPORT.md) | Sanitized artifact export passed; review workflow next |
+| [`TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001_REPORT.md`](track_d/TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001_REPORT.md) | Research-mode review workflow passed; access control next |
 | [`DCM004_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/DCM004_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) | DCM-004 reassessed `ELIGIBLE_WITH_RESTRICTIONS`; DCM-005 TBRRidge validation next |
 | [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) | DCM-001 reassessed; promotion still blocked |
 | F-DECISION / TrustReport | Role assignment paused until foundation + suitability v2 |

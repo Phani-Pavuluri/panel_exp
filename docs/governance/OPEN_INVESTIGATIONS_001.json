@@ -489,6 +489,19 @@
       "must_consume_before_close": true,
       "next_artifact": "TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001",
       "resolution_artifact": "TRUSTREPORT-RESEARCH-MODE-ARTIFACT-EXPORT-001"
+    },
+    {
+      "lane_id": "TRUSTREPORT-RESEARCH-MODE-REVIEW-WORKFLOW-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [],
+      "deferred_investigations": [
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001",
+      "resolution_artifact": "TRUSTREPORT-RESEARCH-MODE-REVIEW-WORKFLOW-001"
     }
   ]
 }
