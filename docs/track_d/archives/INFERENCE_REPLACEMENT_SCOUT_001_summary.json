@@ -2,7 +2,7 @@
   "artifact_id": "INFERENCE-REPLACEMENT-SCOUT-001",
   "artifact_version": "1.0.0",
   "generated_at": "2026-06-03T18:00:00+00:00",
-  "git_commit": null,
+  "git_commit": "783841317dfef6c535cf37ef46195c84a6b9608a",
   "input_documents": [
     "docs/audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md",
     "docs/METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md",
