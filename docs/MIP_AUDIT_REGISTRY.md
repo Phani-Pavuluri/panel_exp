@@ -1454,7 +1454,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Governed AugSynth point randomization integration bridging precomputed point statistics, treated-set placebo rank/tail, and method-specific readiness. AugSynth point = framework candidate; AugSynth JK = diagnostic-only. **No final p-value, CI, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or AugSynth JK authorization.** **`INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001`** disposition: `AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_DEFINED_JK_STILL_DIAGNOSTIC`.
 
-**Next:** `METHOD_READINESS_MATRIX_V2_001`.
+**Next:** `METHOD_READINESS_MATRIX_V2_001` (completed — see method readiness matrix v2 report).
+
+---
+
+## METHOD-READINESS-MATRIX-V2-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/METHOD_READINESS_MATRIX_V2_001_REPORT.md`](track_d/METHOD_READINESS_MATRIX_V2_001_REPORT.md) · [`docs/track_d/archives/METHOD_READINESS_MATRIX_V2_001_summary.json`](track_d/archives/METHOD_READINESS_MATRIX_V2_001_summary.json) · [`panel_exp/inference/method_readiness_matrix_v2.py`](../panel_exp/inference/method_readiness_matrix_v2.py) · [`panel_exp/validation/method_readiness_matrix_v2_001.py`](../panel_exp/validation/method_readiness_matrix_v2_001.py)
+
+**Status:** **`method_readiness_matrix_v2_defined_no_downstream_authorization`**
+
+**Verdict:** Governed method-readiness matrix v2 consolidating 25+ rows across restricted research-mode, framework candidates, per-cell/contract candidates, diagnostic/sensitivity, multiplicity unresolved, and blocked paths. **No TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production inference authorization.**
+
+**Next:** `CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001`.
 
 ---
 

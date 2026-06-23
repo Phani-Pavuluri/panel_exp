@@ -1,0 +1,1435 @@
+{
+  "artifact_id": "METHOD_READINESS_MATRIX_V2_001",
+  "artifact_version": "1.0.0",
+  "status": "completed",
+  "generated_at": "2026-06-23T18:56:27.618511+00:00",
+  "git_commit": "92870338d4580edffd4b969dafde8cf611c967aa",
+  "verdict": "method_readiness_matrix_v2_defined_no_downstream_authorization",
+  "governance_verdict": "method_readiness_matrix_v2_defined_no_downstream_authorization",
+  "roadmap_spine": [
+    "ROADMAP_REFOCUS_METHOD_VALIDATION_001",
+    "INFERENCE_REPLACEMENT_SCOUT_001",
+    "DESIGN_AWARE_ASSIGNMENT_GENERATORS_001",
+    "MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001",
+    "SCM_PLACEBO_GOVERNED_SEMANTICS_001",
+    "METHOD_ROADMAP_ALIGNMENT_AUDIT_001",
+    "METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001",
+    "SCM_TREATED_SET_PLACEBO_INTEGRATION_001",
+    "STUDENTIZED_PLACEBO_RANK_INFERENCE_001",
+    "SCM_STUDENTIZED_TREATED_SET_PLACEBO_INTEGRATION_001",
+    "MULTICELL_SHARED_CONTROL_MULTIPLICITY_001",
+    "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001",
+    "AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001",
+    "METHOD_READINESS_MATRIX_V2_001"
+  ],
+  "row_count": 25,
+  "required_rows_present": true,
+  "unique_method_ids": true,
+  "scenario_count": 32,
+  "passed_scenarios": 32,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "matrix_builds_successfully",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "minimum_25_rows_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "all_required_method_ids_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_ids_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "all_rows_have_evidence_refs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "all_downstream_authorization_flags_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "restricted_research_rows_research_only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "framework_candidate_rows_framework_only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "candidate_rows_forbid_production_p_values",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "candidate_rows_forbid_causal_cis",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "candidate_rows_forbid_trustreport_calibration_mmm_llm",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "diagnostic_rows_diagnostic_only_boundary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "sensitivity_row_sensitivity_only_boundary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "per_cell_marginal_forbids_global_claim",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stratified_pooled_contract_row_contract_only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_shared_control_unresolved_blocked_from_downstream",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_global_decision_blocked_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_winner_selection_blocked_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_pooled_effect_blocked_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "augsynth_point_row_candidate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "augsynth_jk_diagnostic_row_diagnostic_only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "augsynth_jk_production_row_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbrridge_brb_kfold_placebo_diagnostic_only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbrridge_jk_row_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbr_aggregate_geometry_row_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "dcm_009_019_adapters_research_deferred",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "find_row_by_method_id_works",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "filter_by_method_family_works",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "filter_by_readiness_tier_works",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "summary_counts_match_row_tiers",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "summary_json_authorization_flags_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "matrix_validation_passes",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "readiness_tier_counts": {
+    "restricted_research_mode_usable": 2,
+    "framework_level_randomization_candidate": 3,
+    "per_cell_marginal_only": 1,
+    "contract_candidate": 1,
+    "diagnostic_only": 6,
+    "sensitivity_only": 1,
+    "heterogeneity_review_required": 1,
+    "multiplicity_or_dependence_unresolved": 2,
+    "research_deferred": 1,
+    "blocked": 7
+  },
+  "matrix_boundaries": {
+    "restricted_research_mode_usable": "research-mode reporting only; no downstream authorization",
+    "framework_level_randomization_candidate": "candidate only; no production p-value, CI, TrustReport, or CalibrationSignal",
+    "per_cell_marginal_only": "per-cell readout only; no global/winner/pooled claim",
+    "contract_candidate": "contract-level candidate only; no inference authorization",
+    "diagnostic_only": "diagnostic summary only",
+    "sensitivity_only": "sensitivity review only",
+    "multiplicity_or_dependence_unresolved": "blocked from downstream until dependence/multiplicity evidence exists",
+    "research_deferred": "requires future method evidence",
+    "blocked": "not allowed for governed causal evidence"
+  },
+  "forbidden_global_outputs": [
+    "final_p_value",
+    "causal_confidence_interval",
+    "trustreport_authorization",
+    "calibration_signal",
+    "mmm_ingestion",
+    "llm_decisioning",
+    "production_decisioning",
+    "live_api",
+    "scheduler",
+    "budget_optimization",
+    "global_multicell_decision",
+    "winner_selection",
+    "pooled_multicell_effect",
+    "augsynth_jk_authorization"
+  ],
+  "next_artifact": "CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001",
+  "matrix_summary": {
+    "artifact_id": "METHOD_READINESS_MATRIX_V2_001",
+    "verdict": "method_readiness_matrix_v2_defined_no_downstream_authorization",
+    "row_count": 25,
+    "summary_counts": {
+      "restricted_research_mode_usable": 2,
+      "framework_level_randomization_candidate": 3,
+      "per_cell_marginal_only": 1,
+      "contract_candidate": 1,
+      "diagnostic_only": 6,
+      "sensitivity_only": 1,
+      "heterogeneity_review_required": 1,
+      "multiplicity_or_dependence_unresolved": 2,
+      "research_deferred": 1,
+      "blocked": 7
+    },
+    "downstream_authorization_flags": {
+      "trustreport_authorized": false,
+      "calibration_signal_allowed": false,
+      "mmm_ingestion_allowed": false,
+      "llm_decisioning_allowed": false,
+      "production_decisioning_allowed": false,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "budget_optimization_allowed": false
+    },
+    "warnings": [
+      "Method-readiness matrix v2 is an evidence-index only \u2014 not production authorization, TrustReport expansion, CalibrationSignal, or downstream decisioning."
+    ],
+    "rows": [
+      {
+        "method_id": "scm_unit_jackknife_restricted_research",
+        "method_family": "scm",
+        "estimator": "scm",
+        "inference_mode": "unit_jackknife",
+        "geometry": "multi_treated_set",
+        "estimand_scope": "cell_level_ate",
+        "interval_or_tail_semantics": "jackknife_interval_research_mode",
+        "readiness_tier": "restricted_research_mode_usable",
+        "usage_boundary": "research_mode_reporting_only",
+        "allowed_outputs": [
+          "restricted_research_mode_point_estimate",
+          "jackknife_interval"
+        ],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "calibration_signal",
+          "live_api",
+          "scheduler"
+        ],
+        "blocked_reasons": [],
+        "required_next_evidence": [],
+        "evidence_refs": [
+          {
+            "artifact_id": "METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001",
+            "summary_json": "docs/track_d/archives/METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001_summary.json",
+            "report_path": "docs/track_d/METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001_REPORT.md",
+            "commit": null,
+            "evidence_note": "SCM unit jackknife restricted research-mode usable per prior D5 trust characterization"
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "did_bootstrap_restricted_research",
+        "method_family": "did",
+        "estimator": "did",
+        "inference_mode": "did_bootstrap",
+        "geometry": "multi_treated_set",
+        "estimand_scope": "cell_level_ate",
+        "interval_or_tail_semantics": "bootstrap_interval_research_mode",
+        "readiness_tier": "restricted_research_mode_usable",
+        "usage_boundary": "research_mode_reporting_only",
+        "allowed_outputs": [
+          "restricted_research_mode_point_estimate",
+          "bootstrap_interval"
+        ],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "live_api",
+          "scheduler"
+        ],
+        "blocked_reasons": [],
+        "required_next_evidence": [],
+        "evidence_refs": [
+          {
+            "artifact_id": "METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001",
+            "summary_json": "docs/track_d/archives/METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001_summary.json",
+            "report_path": null,
+            "commit": null,
+            "evidence_note": "DID bootstrap restricted research-mode usable without comparable pseudo point statistics"
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "scm_treated_set_placebo_candidate",
+        "method_family": "scm",
+        "estimator": "scm",
+        "inference_mode": "treated_set_placebo",
+        "geometry": "multi_treated_set",
+        "estimand_scope": "multi_treated_set_ate",
+        "interval_or_tail_semantics": "empirical_tail_fraction_not_production_p_value",
+        "readiness_tier": "framework_level_randomization_candidate",
+        "usage_boundary": "framework_level_candidate_only",
+        "allowed_outputs": [
+          "placebo_rank",
+          "empirical_tail_fraction",
+          "framework_level_candidate"
+        ],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning"
+        ],
+        "blocked_reasons": [],
+        "required_next_evidence": [],
+        "evidence_refs": [
+          {
+            "artifact_id": "SCM_TREATED_SET_PLACEBO_INTEGRATION_001",
+            "summary_json": "docs/track_d/archives/SCM_TREATED_SET_PLACEBO_INTEGRATION_001_summary.json",
+            "report_path": "docs/track_d/SCM_TREATED_SET_PLACEBO_INTEGRATION_001_REPORT.md",
+            "commit": null,
+            "evidence_note": "SCM treated-set placebo integration defined as framework candidate"
+          },
+          {
+            "artifact_id": "MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001",
+            "summary_json": null,
+            "report_path": null,
+            "commit": null,
+            "evidence_note": "Design-aware pseudo-assignment framework prerequisite"
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "scm_studentized_treated_set_placebo_candidate",
+        "method_family": "scm_studentized",
+        "estimator": "scm",
+        "inference_mode": "studentized_placebo_rank",
+        "geometry": "multi_treated_set",
+        "estimand_scope": "multi_treated_set_ate",
+        "interval_or_tail_semantics": "studentized_empirical_tail_fraction_not_production_p_value",
+        "readiness_tier": "framework_level_randomization_candidate",
+        "usage_boundary": "framework_level_candidate_only",
+        "allowed_outputs": [
+          "studentized_placebo_rank",
+          "empirical_tail_fraction",
+          "framework_level_candidate"
+        ],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning"
+        ],
+        "blocked_reasons": [],
+        "required_next_evidence": [],
+        "evidence_refs": [
+          {
+            "artifact_id": "SCM_STUDENTIZED_TREATED_SET_PLACEBO_INTEGRATION_001",
+            "summary_json": "docs/track_d/archives/SCM_STUDENTIZED_TREATED_SET_PLACEBO_INTEGRATION_001_summary.json",
+            "report_path": "docs/track_d/SCM_STUDENTIZED_TREATED_SET_PLACEBO_INTEGRATION_001_REPORT.md",
+            "commit": null,
+            "evidence_note": ""
+          },
+          {
+            "artifact_id": "STUDENTIZED_PLACEBO_RANK_INFERENCE_001",
+            "summary_json": "docs/track_d/archives/STUDENTIZED_PLACEBO_RANK_INFERENCE_001_summary.json",
+            "report_path": null,
+            "commit": null,
+            "evidence_note": ""
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "augsynth_point_randomization_candidate",
+        "method_family": "augsynth_cvxpy",
+        "estimator": "augsynth_cvxpy",
+        "inference_mode": "augsynth_point_randomization",
+        "geometry": "multi_treated_set",
+        "estimand_scope": "augsynth_point_effect",
+        "interval_or_tail_semantics": "empirical_tail_fraction_not_production_p_value",
+        "readiness_tier": "framework_level_randomization_candidate",
+        "usage_boundary": "framework_level_candidate_only",
+        "allowed_outputs": [
+          "placebo_rank",
+          "empirical_tail_fraction",
+          "framework_level_candidate"
+        ],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "augsynth_jk_authorization"
+        ],
+        "blocked_reasons": [],
+        "required_next_evidence": [],
+        "evidence_refs": [
+          {
+            "artifact_id": "AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001",
+            "summary_json": "docs/track_d/archives/AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001_summary.json",
+            "report_path": "docs/track_d/AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001_REPORT.md",
+            "commit": null,
+            "evidence_note": "AugSynth point randomization candidate; JK remains diagnostic-only"
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "multicell_per_cell_marginal_only",
+        "method_family": "multicell",
+        "estimator": "multicell",
+        "inference_mode": "multicell_family",
+        "geometry": "per_cell_marginal",
+        "estimand_scope": "per_cell_marginal_ate",
+        "interval_or_tail_semantics": "per_cell_marginal_readout_only",
+        "readiness_tier": "per_cell_marginal_only",
+        "usage_boundary": "per_cell_only_no_global_claim",
+        "allowed_outputs": [
+          "per_cell_marginal_readout"
+        ],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "global_multicell_decision",
+          "winner_selection",
+          "pooled_multicell_effect"
+        ],
+        "blocked_reasons": [],
+        "required_next_evidence": [],
+        "evidence_refs": [
+          {
+            "artifact_id": "MULTICELL_SHARED_CONTROL_MULTIPLICITY_001",
+            "summary_json": "docs/track_d/archives/MULTICELL_SHARED_CONTROL_MULTIPLICITY_001_summary.json",
+            "report_path": "docs/track_d/MULTICELL_SHARED_CONTROL_MULTIPLICITY_001_REPORT.md",
+            "commit": null,
+            "evidence_note": "Per-cell marginal allowed as separate readout only"
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "stratified_pooled_estimand_contract_candidate",
+        "method_family": "stratified_pooled",
+        "estimator": "stratified_aggregate",
+        "inference_mode": "pooled",
+        "geometry": "stratified",
+        "estimand_scope": "pooled_estimand_contract",
+        "interval_or_tail_semantics": "contract_candidate_no_inference_authorization",
+        "readiness_tier": "contract_candidate",
+        "usage_boundary": "contract_only_no_inference_authorization",
+        "allowed_outputs": [
+          "pooled_estimand_contract_candidate",
+          "pre_specified_weights"
+        ],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "production_pooled_effect",
+          "global_summary",
+          "winner_selected_summary"
+        ],
+        "blocked_reasons": [],
+        "required_next_evidence": [
+          "valid_pooling_inference",
+          "multiplicity_or_dependence_resolution"
+        ],
+        "evidence_refs": [
+          {
+            "artifact_id": "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001",
+            "summary_json": "docs/track_d/archives/STRATIFIED_POOLED_ESTIMAND_CONTRACT_001_summary.json",
+            "report_path": "docs/track_d/STRATIFIED_POOLED_ESTIMAND_CONTRACT_001_REPORT.md",
+            "commit": null,
+            "evidence_note": "Contract candidate only \u2014 not production pooled effect"
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "scm_single_treated_placebo_null_monitor",
+        "method_family": "scm",
+        "estimator": "scm",
+        "inference_mode": "placebo",
+        "geometry": "single_treated",
+        "estimand_scope": "single_treated_null_monitor",
+        "interval_or_tail_semantics": "placebo_tail_fraction_falsification_only",
+        "readiness_tier": "diagnostic_only",
+        "usage_boundary": "diagnostic_summary_only",
+        "allowed_outputs": [
+          "null_monitor_diagnostic",
+          "falsification_diagnostic"
+        ],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning"
+        ],
+        "blocked_reasons": [],
+        "required_next_evidence": [],
+        "evidence_refs": [
+          {
+            "artifact_id": "SCM_PLACEBO_GOVERNED_SEMANTICS_001",
+            "summary_json": null,
+            "report_path": null,
+            "commit": null,
+            "evidence_note": "SCM single-treated placebo is null-monitor/falsification only"
+          },
+          {
+            "artifact_id": "METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001",
+            "summary_json": "docs/track_d/archives/METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001_summary.json",
+            "report_path": null,
+            "commit": null,
+            "evidence_note": ""
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "augsynth_jackknife_diagnostic_only",
+        "method_family": "augsynth_cvxpy",
+        "estimator": "augsynth_cvxpy",
+        "inference_mode": "augsynth_jackknife",
+        "geometry": "multi_treated_set",
+        "estimand_scope": "augsynth_jk_interval",
+        "interval_or_tail_semantics": "jackknife_interval_diagnostic_only",
+        "readiness_tier": "diagnostic_only",
+        "usage_boundary": "diagnostic_summary_only",
+        "allowed_outputs": [
+          "augsynth_jk_diagnostic",
+          "characterized_interval"
+        ],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "augsynth_jk_authorization"
+        ],
+        "blocked_reasons": [],
+        "required_next_evidence": [],
+        "evidence_refs": [
+          {
+            "artifact_id": "AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001",
+            "summary_json": "docs/track_d/archives/AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001_summary.json",
+            "report_path": null,
+            "commit": null,
+            "evidence_note": "AugSynth JK diagnostic-only / characterized-only"
+          },
+          {
+            "artifact_id": "METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001",
+            "summary_json": null,
+            "report_path": null,
+            "commit": null,
+            "evidence_note": "AugSynth JK interval is diagnostic-only per method-specific validation"
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "tbrridge_brb_diagnostic_only",
+        "method_family": "tbrridge",
+        "estimator": "tbrridge",
+        "inference_mode": "block_residual_bootstrap",
+        "geometry": "multi_treated_set",
+        "estimand_scope": "cell_level_ate",
+        "interval_or_tail_semantics": "bootstrap_interval_diagnostic_only",
+        "readiness_tier": "diagnostic_only",
+        "usage_boundary": "diagnostic_summary_only",
+        "allowed_outputs": [
+          "diagnostic_bootstrap_interval"
+        ],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning"
+        ],
+        "blocked_reasons": [],
+        "required_next_evidence": [
+          "tbrridge_replacement_inference_required"
+        ],
+        "evidence_refs": [
+          {
+            "artifact_id": "METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001",
+            "summary_json": "docs/track_d/archives/METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001_summary.json",
+            "report_path": null,
+            "commit": null,
+            "evidence_note": "TBRRidge BRB path diagnostic-only \u2014 replacement inference required"
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "tbrridge_kfold_diagnostic_only",
+        "method_family": "tbrridge",
+        "estimator": "tbrridge",
+        "inference_mode": "kfold",
+        "geometry": "multi_treated_set",
+        "estimand_scope": "cell_level_ate",
+        "interval_or_tail_semantics": "kfold_diagnostic_only",
+        "readiness_tier": "diagnostic_only",
+        "usage_boundary": "diagnostic_summary_only",
+        "allowed_outputs": [
+          "kfold_diagnostic"
+        ],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning"
+        ],
+        "blocked_reasons": [],
+        "required_next_evidence": [
+          "tbrridge_replacement_inference_required"
+        ],
+        "evidence_refs": [
+          {
+            "artifact_id": "METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001",
+            "summary_json": null,
+            "report_path": null,
+            "commit": null,
+            "evidence_note": "TBRRidge KFold tuning rejected as production inference"
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "tbrridge_placebo_diagnostic_only",
+        "method_family": "tbrridge",
+        "estimator": "tbrridge",
+        "inference_mode": "placebo",
+        "geometry": "multi_treated_set",
+        "estimand_scope": "cell_level_ate",
+        "interval_or_tail_semantics": "placebo_tail_fraction_diagnostic_only",
+        "readiness_tier": "diagnostic_only",
+        "usage_boundary": "diagnostic_summary_only",
+        "allowed_outputs": [
+          "placebo_tail_fraction_diagnostic"
+        ],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning"
+        ],
+        "blocked_reasons": [],
+        "required_next_evidence": [
+          "tbrridge_replacement_inference_required"
+        ],
+        "evidence_refs": [
+          {
+            "artifact_id": "METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001",
+            "summary_json": null,
+            "report_path": null,
+            "commit": null,
+            "evidence_note": "TBRRidge placebo path diagnostic-only"
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "stratified_scm_jk_aggregate_diagnostic_only",
+        "method_family": "scm",
+        "estimator": "scm",
+        "inference_mode": "unit_jackknife",
+        "geometry": "stratified",
+        "estimand_scope": "stratified_aggregate",
+        "interval_or_tail_semantics": "jackknife_aggregate_diagnostic_only",
+        "readiness_tier": "diagnostic_only",
+        "usage_boundary": "diagnostic_summary_only",
+        "allowed_outputs": [
+          "stratified_aggregate_diagnostic_summary"
+        ],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "production_pooled_effect",
+          "global_summary"
+        ],
+        "blocked_reasons": [],
+        "required_next_evidence": [],
+        "evidence_refs": [
+          {
+            "artifact_id": "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001",
+            "summary_json": "docs/track_d/archives/STRATIFIED_POOLED_ESTIMAND_CONTRACT_001_summary.json",
+            "report_path": null,
+            "commit": null,
+            "evidence_note": "Stratified SCM+JK aggregate remains diagnostic-only without pooled estimand contract"
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "scm_leave_one_treated_out_sensitivity_only",
+        "method_family": "scm",
+        "estimator": "scm",
+        "inference_mode": "placebo",
+        "geometry": "multi_treated_set",
+        "estimand_scope": "treated_unit_sensitivity",
+        "interval_or_tail_semantics": "not_placebo_inference",
+        "readiness_tier": "sensitivity_only",
+        "usage_boundary": "sensitivity_review_only",
+        "allowed_outputs": [
+          "leave_one_treated_out_sensitivity"
+        ],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "treated_set_placebo_substitute"
+        ],
+        "blocked_reasons": [
+          "leave_one_treated_out_rejected_as_placebo"
+        ],
+        "required_next_evidence": [],
+        "evidence_refs": [
+          {
+            "artifact_id": "MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001",
+            "summary_json": null,
+            "report_path": null,
+            "commit": null,
+            "evidence_note": "LOTO is sensitivity analysis only \u2014 not multi-treated placebo inference"
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "multicell_shared_control_unresolved",
+        "method_family": "multicell",
+        "estimator": "multicell",
+        "inference_mode": "multicell_family",
+        "geometry": "multicell_shared_control",
+        "estimand_scope": "shared_control_family",
+        "interval_or_tail_semantics": "independent_fwer_proxy_only",
+        "readiness_tier": "multiplicity_or_dependence_unresolved",
+        "usage_boundary": "blocked_from_downstream",
+        "allowed_outputs": [
+          "familywise_false_positive_risk_proxy"
+        ],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "global_multicell_decision",
+          "winner_selection",
+          "pooled_multicell_effect"
+        ],
+        "blocked_reasons": [
+          "shared_control_dependence_model_required"
+        ],
+        "required_next_evidence": [
+          "joint_null_distribution",
+          "shared_control_dependence_model"
+        ],
+        "evidence_refs": [
+          {
+            "artifact_id": "MULTICELL_SHARED_CONTROL_MULTIPLICITY_001",
+            "summary_json": "docs/track_d/archives/MULTICELL_SHARED_CONTROL_MULTIPLICITY_001_summary.json",
+            "report_path": "docs/track_d/MULTICELL_SHARED_CONTROL_MULTIPLICITY_001_REPORT.md",
+            "commit": null,
+            "evidence_note": ""
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "multicell_multiple_cell_family_adjustment_required",
+        "method_family": "multicell",
+        "estimator": "multicell",
+        "inference_mode": "multicell_family",
+        "geometry": "multicell_shared_control",
+        "estimand_scope": "multiple_cell_family",
+        "interval_or_tail_semantics": "multiplicity_adjustment_required",
+        "readiness_tier": "multiplicity_or_dependence_unresolved",
+        "usage_boundary": "blocked_from_downstream",
+        "allowed_outputs": [
+          "bonferroni_alpha",
+          "multiplicity_adjustment_required"
+        ],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "global_multicell_decision",
+          "winner_selection"
+        ],
+        "blocked_reasons": [
+          "multiplicity_adjustment_required"
+        ],
+        "required_next_evidence": [
+          "pre_registered_hypothesis_family",
+          "closed_testing_validation"
+        ],
+        "evidence_refs": [
+          {
+            "artifact_id": "MULTICELL_SHARED_CONTROL_MULTIPLICITY_001",
+            "summary_json": "docs/track_d/archives/MULTICELL_SHARED_CONTROL_MULTIPLICITY_001_summary.json",
+            "report_path": null,
+            "commit": null,
+            "evidence_note": ""
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "stratified_pooling_heterogeneity_review_required",
+        "method_family": "stratified_pooled",
+        "estimator": "stratified_aggregate",
+        "inference_mode": "pooled",
+        "geometry": "stratified",
+        "estimand_scope": "pooled_estimand_pre_contract",
+        "interval_or_tail_semantics": "heterogeneity_review_required",
+        "readiness_tier": "heterogeneity_review_required",
+        "usage_boundary": "contract_only_no_inference_authorization",
+        "allowed_outputs": [
+          "heterogeneity_review_required",
+          "stratum_level_readout"
+        ],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "production_pooled_effect"
+        ],
+        "blocked_reasons": [],
+        "required_next_evidence": [
+          "heterogeneity_assessment",
+          "pre_specified_heterogeneity_policy"
+        ],
+        "evidence_refs": [
+          {
+            "artifact_id": "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001",
+            "summary_json": "docs/track_d/archives/STRATIFIED_POOLED_ESTIMAND_CONTRACT_001_summary.json",
+            "report_path": null,
+            "commit": null,
+            "evidence_note": ""
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "tbr_aggregate_geometry_blocked",
+        "method_family": "tbr",
+        "estimator": "tbr",
+        "inference_mode": "unknown",
+        "geometry": "unknown",
+        "estimand_scope": "aggregate",
+        "interval_or_tail_semantics": "blocked",
+        "readiness_tier": "blocked",
+        "usage_boundary": "blocked_from_downstream",
+        "allowed_outputs": [],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning"
+        ],
+        "blocked_reasons": [
+          "aggregate_geometry_mismatch"
+        ],
+        "required_next_evidence": [],
+        "evidence_refs": [
+          {
+            "artifact_id": "METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001",
+            "summary_json": null,
+            "report_path": null,
+            "commit": null,
+            "evidence_note": "TBR aggregate geometry blocked per method-specific validation"
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "tbrridge_jackknife_blocked",
+        "method_family": "tbrridge",
+        "estimator": "tbrridge",
+        "inference_mode": "unit_jackknife",
+        "geometry": "multi_treated_set",
+        "estimand_scope": "cell_level_ate",
+        "interval_or_tail_semantics": "jackknife_known_failure_mode",
+        "readiness_tier": "blocked",
+        "usage_boundary": "blocked_from_downstream",
+        "allowed_outputs": [],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning"
+        ],
+        "blocked_reasons": [
+          "tbrridge_jk_known_failure_mode"
+        ],
+        "required_next_evidence": [
+          "tbrridge_replacement_inference_required"
+        ],
+        "evidence_refs": [
+          {
+            "artifact_id": "METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001",
+            "summary_json": null,
+            "report_path": null,
+            "commit": null,
+            "evidence_note": "TBRRidge JK known failure mode \u2014 not randomization candidate"
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "multicell_global_decision_blocked",
+        "method_family": "multicell",
+        "estimator": "multicell",
+        "inference_mode": "multicell_family",
+        "geometry": "global",
+        "estimand_scope": "global_multicell_decision",
+        "interval_or_tail_semantics": "blocked",
+        "readiness_tier": "blocked",
+        "usage_boundary": "blocked_from_downstream",
+        "allowed_outputs": [],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "global_multicell_decision"
+        ],
+        "blocked_reasons": [
+          "multiplicity_or_shared_control_dependence_unresolved",
+          "global_multicell_decision_blocked"
+        ],
+        "required_next_evidence": [],
+        "evidence_refs": [
+          {
+            "artifact_id": "MULTICELL_SHARED_CONTROL_MULTIPLICITY_001",
+            "summary_json": "docs/track_d/archives/MULTICELL_SHARED_CONTROL_MULTIPLICITY_001_summary.json",
+            "report_path": null,
+            "commit": null,
+            "evidence_note": ""
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "multicell_winner_selection_blocked",
+        "method_family": "multicell",
+        "estimator": "multicell",
+        "inference_mode": "multicell_family",
+        "geometry": "winner_selection",
+        "estimand_scope": "winner_selected_summary",
+        "interval_or_tail_semantics": "blocked",
+        "readiness_tier": "blocked",
+        "usage_boundary": "blocked_from_downstream",
+        "allowed_outputs": [],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "winner_selection"
+        ],
+        "blocked_reasons": [
+          "selection_adjusted_inference_missing",
+          "winner_selected_summary_blocked"
+        ],
+        "required_next_evidence": [],
+        "evidence_refs": [
+          {
+            "artifact_id": "MULTICELL_SHARED_CONTROL_MULTIPLICITY_001",
+            "summary_json": "docs/track_d/archives/MULTICELL_SHARED_CONTROL_MULTIPLICITY_001_summary.json",
+            "report_path": null,
+            "commit": null,
+            "evidence_note": ""
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "multicell_pooled_effect_blocked",
+        "method_family": "multicell",
+        "estimator": "multicell",
+        "inference_mode": "multicell_family",
+        "geometry": "pooled_multicell",
+        "estimand_scope": "pooled_multicell_effect",
+        "interval_or_tail_semantics": "blocked",
+        "readiness_tier": "blocked",
+        "usage_boundary": "blocked_from_downstream",
+        "allowed_outputs": [],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "pooled_multicell_effect"
+        ],
+        "blocked_reasons": [
+          "pooled_estimand_contract_and_dependence_aware_inference_missing",
+          "pooled_multicell_effect_blocked"
+        ],
+        "required_next_evidence": [],
+        "evidence_refs": [
+          {
+            "artifact_id": "MULTICELL_SHARED_CONTROL_MULTIPLICITY_001",
+            "summary_json": "docs/track_d/archives/MULTICELL_SHARED_CONTROL_MULTIPLICITY_001_summary.json",
+            "report_path": null,
+            "commit": null,
+            "evidence_note": ""
+          },
+          {
+            "artifact_id": "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001",
+            "summary_json": null,
+            "report_path": null,
+            "commit": null,
+            "evidence_note": "Pooled multi-cell requires stratified/pooled estimand contract"
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "stratified_posthoc_pooling_blocked",
+        "method_family": "stratified_pooled",
+        "estimator": "stratified_aggregate",
+        "inference_mode": "pooled",
+        "geometry": "stratified",
+        "estimand_scope": "post_hoc_weighted_aggregate",
+        "interval_or_tail_semantics": "blocked",
+        "readiness_tier": "blocked",
+        "usage_boundary": "blocked_from_downstream",
+        "allowed_outputs": [],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "production_pooled_effect"
+        ],
+        "blocked_reasons": [
+          "post_hoc_effect_size_weights_blocked",
+          "weights_not_pre_specified"
+        ],
+        "required_next_evidence": [],
+        "evidence_refs": [
+          {
+            "artifact_id": "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001",
+            "summary_json": "docs/track_d/archives/STRATIFIED_POOLED_ESTIMAND_CONTRACT_001_summary.json",
+            "report_path": null,
+            "commit": null,
+            "evidence_note": ""
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "augsynth_jk_production_inference_blocked",
+        "method_family": "augsynth_cvxpy",
+        "estimator": "augsynth_cvxpy",
+        "inference_mode": "augsynth_jackknife",
+        "geometry": "multi_treated_set",
+        "estimand_scope": "augsynth_jk_production_request",
+        "interval_or_tail_semantics": "blocked",
+        "readiness_tier": "blocked",
+        "usage_boundary": "blocked_from_downstream",
+        "allowed_outputs": [],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "augsynth_jk_authorization"
+        ],
+        "blocked_reasons": [
+          "augsynth_jk_production_inference_not_authorized"
+        ],
+        "required_next_evidence": [],
+        "evidence_refs": [
+          {
+            "artifact_id": "AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001",
+            "summary_json": "docs/track_d/archives/AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001_summary.json",
+            "report_path": null,
+            "commit": null,
+            "evidence_note": ""
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      },
+      {
+        "method_id": "dcm_009_019_adapters_research_deferred",
+        "method_family": "unknown",
+        "estimator": "dcm_adapter",
+        "inference_mode": "unknown",
+        "geometry": "unknown",
+        "estimand_scope": "adapter_qualification_pending",
+        "interval_or_tail_semantics": "research_deferred",
+        "readiness_tier": "research_deferred",
+        "usage_boundary": "blocked_from_downstream",
+        "allowed_outputs": [],
+        "forbidden_outputs": [
+          "final_p_value",
+          "causal_confidence_interval",
+          "trustreport_authorization",
+          "calibration_signal",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning"
+        ],
+        "blocked_reasons": [],
+        "required_next_evidence": [
+          "dcm_adapter_qualification_evidence"
+        ],
+        "evidence_refs": [
+          {
+            "artifact_id": "METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001",
+            "summary_json": null,
+            "report_path": null,
+            "commit": null,
+            "evidence_note": "DCM-009\u2013019 adapter methods research-deferred pending qualification"
+          },
+          {
+            "artifact_id": "METHOD_ROADMAP_ALIGNMENT_AUDIT_001",
+            "summary_json": null,
+            "report_path": "docs/track_d/METHOD_ROADMAP_ALIGNMENT_AUDIT_001.md",
+            "commit": null,
+            "evidence_note": ""
+          }
+        ],
+        "trustreport_authorized": false,
+        "calibration_signal_allowed": false,
+        "mmm_ingestion_allowed": false,
+        "llm_decisioning_allowed": false,
+        "production_decisioning_allowed": false,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "budget_optimization_allowed": false
+      }
+    ]
+  },
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false
+}
