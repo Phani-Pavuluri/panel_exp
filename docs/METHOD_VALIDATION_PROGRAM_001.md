@@ -349,7 +349,11 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001 (2026-06-03):** [`TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001_REPORT.md`](track_d/TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001_REPORT.md) — research-mode access control; regenerate: `poetry run python -m panel_exp.validation.trustreport_research_mode_access_control_001 --overwrite`.
 
-**ROADMAP-REFOCUS-METHOD-VALIDATION-001 (2026-06-03):** [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md) — TrustReport ops frozen; method validation active; next: `MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001`.
+**ROADMAP-REFOCUS-METHOD-VALIDATION-001 (2026-06-03):** [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md) — TrustReport ops frozen after access control; `refocus_on_method_validation`; next: `INFERENCE_REPLACEMENT_SCOUT_001`.
+
+**INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03):** [`INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) — inference-family scout; primary `DESIGN_AWARE_ASSIGNMENT_GENERATORS_001`; secondary `MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001`; no authorization.
+
+**DESIGN-AWARE-ASSIGNMENT-GENERATORS-001 (2026-06-03):** [`DESIGN_AWARE_ASSIGNMENT_GENERATORS_001_REPORT.md`](track_d/DESIGN_AWARE_ASSIGNMENT_GENERATORS_001_REPORT.md) — pseudo-assignment generators; regenerate: `poetry run python -m panel_exp.validation.design_aware_assignment_generators_001 --overwrite`.
 
 ## 13. Stop condition
 

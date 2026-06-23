@@ -1338,6 +1338,30 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## DESIGN-AWARE-ASSIGNMENT-GENERATORS-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/DESIGN_AWARE_ASSIGNMENT_GENERATORS_001_REPORT.md`](track_d/DESIGN_AWARE_ASSIGNMENT_GENERATORS_001_REPORT.md) · [`docs/track_d/archives/DESIGN_AWARE_ASSIGNMENT_GENERATORS_001_summary.json`](track_d/archives/DESIGN_AWARE_ASSIGNMENT_GENERATORS_001_summary.json) · [`panel_exp/design/assignment_generators.py`](../panel_exp/design/assignment_generators.py) · [`panel_exp/validation/design_aware_assignment_generators_001.py`](../panel_exp/validation/design_aware_assignment_generators_001.py)
+
+**Status:** **`design_aware_assignment_generators_defined_no_inference_authorization`**
+
+**Verdict:** Governed pseudo-assignment generator contract and implementations for nine assignment families. Design-based candidates for complete/pair/block/stratified/rerandomized (with rule); falsification-only for greedy/thinning/fixed; unknown blocked. Determinism and constraint preservation validated. **No inference authorization.**
+
+**Next:** `MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001`.
+
+---
+
+## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
+
+**Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)
+
+**Status:** **`inference_replacement_scout_completed_no_authorization`**
+
+**Verdict:** Governed inference-family scout across estimators, designs, and blocked paths. Primary: `DESIGN_AWARE_ASSIGNMENT_GENERATORS_001`. Secondary: `MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001`. BRB/KFold tuning rejected; cluster-robust not credible at geo counts. **No TrustReport, CalibrationSignal, or production authorization.**
+
+**Next:** `DESIGN_AWARE_ASSIGNMENT_GENERATORS_001` (completed — see assignment generators report).
+
+---
+
 ## ROADMAP-REFOCUS-METHOD-VALIDATION-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md) · [`docs/track_d/archives/ROADMAP_REFOCUS_METHOD_VALIDATION_001_summary.json`](track_d/archives/ROADMAP_REFOCUS_METHOD_VALIDATION_001_summary.json)
@@ -1346,7 +1370,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Planning audit. TrustReport research-mode ops **frozen** after access control. Further ops (audit log, API, scheduler, platform) deferred to MIP application layer. Active lane: method validity — multi-treated placebo, design-aware generators, AugSynth/TBRRidge remediation, multicell multiplicity, stratified estimand. **No deployment authorization.**
 
-**Next:** `MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001`.
+**Next:** `INFERENCE_REPLACEMENT_SCOUT_001` (see inference replacement scout).
 
 ---
 

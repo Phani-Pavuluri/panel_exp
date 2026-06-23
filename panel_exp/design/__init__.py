@@ -6,6 +6,17 @@ from panel_exp.design.assign import (
     Rerandomization,
     greedy_match_markets,
 )
+from panel_exp.design.assignment_generators import (
+    AssignmentDesignSpec,
+    AssignmentFamily,
+    AssignmentRole,
+    AssignmentUnit,
+    PseudoAssignment,
+    ValidityStatus,
+    generate_pseudo_assignments,
+    summarize_assignment_generation,
+    validate_pseudo_assignment,
+)
 from panel_exp.design.geo_experiment_design import GEO_RUN_DESIGN_SUPPORTED, GeoExperimentDesign
 from panel_exp.design.matched_pair import MatchedPair
 from panel_exp.design.quickblock import QuickBlock
@@ -14,20 +25,29 @@ from panel_exp.design.power import PowerAnalysis
 from panel_exp.design.validation import DesignValidationResult, ValidationStatus, validate_design
 
 __all__ = [
+    "AssignmentDesignSpec",
+    "AssignmentFamily",
+    "AssignmentRole",
+    "AssignmentUnit",
     "BalancedRandomization",
     "CompleteRandomization",
-    "StratifiedRandomization",
-    "ThinningDesign",
-    "Rerandomization",
-    "greedy_match_markets",
-    "GeoExperimentDesign",
+    "DesignValidationResult",
     "GEO_RUN_DESIGN_SUPPORTED",
-    "get_design_registry",
-    "RegistryDesignSpec",
-    "QuickBlock",
+    "GeoExperimentDesign",
     "MatchedPair",
     "PowerAnalysis",
-    "validate_design",
-    "DesignValidationResult",
+    "PseudoAssignment",
+    "QuickBlock",
+    "RegistryDesignSpec",
+    "Rerandomization",
+    "StratifiedRandomization",
+    "ThinningDesign",
     "ValidationStatus",
+    "ValidityStatus",
+    "generate_pseudo_assignments",
+    "get_design_registry",
+    "greedy_match_markets",
+    "summarize_assignment_generation",
+    "validate_design",
+    "validate_pseudo_assignment",
 ]

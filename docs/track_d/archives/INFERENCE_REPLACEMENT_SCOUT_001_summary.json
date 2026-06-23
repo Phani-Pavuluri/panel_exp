@@ -1,0 +1,248 @@
+{
+  "artifact_id": "INFERENCE-REPLACEMENT-SCOUT-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-03T18:00:00+00:00",
+  "git_commit": "783841317dfef6c535cf37ef46195c84a6b9608a",
+  "input_documents": [
+    "docs/audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md",
+    "docs/METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md",
+    "docs/TRUSTREPORT_ELIGIBILITY_REMEDIATION_PLAN_001.md",
+    "docs/governance/OPEN_INVESTIGATIONS_001.json",
+    "docs/track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md",
+    "docs/track_d/DCM005_TBRRIDGE_BRB_POST_REMEDIATION_REASSESSMENT_001_REPORT.md",
+    "docs/track_d/D5_TRUST_MULTICELL_PERCELL_INFERENCE_001_REPORT.md",
+    "docs/track_d/D5_TRUST_STRATIFIED_SCM_JK_001_REPORT.md",
+    "panel_exp/inference/",
+    "panel_exp/design/",
+    "panel_exp/methods/"
+  ],
+  "estimator_inventory": [
+    {"id": "SCM", "module": "panel_exp/methods/scm.py", "variants": ["SyntheticControl", "SyntheticControlCVXPY"], "trust_lane": "DCM-001", "status": "restricted_research_mode"},
+    {"id": "TBRRidge", "module": "panel_exp/methods/scm.py", "variants": ["TBRRidge"], "trust_lane": "DCM-005", "status": "inference_paths_blocked"},
+    {"id": "DID", "module": "panel_exp/methods/DID.py", "variants": ["DID"], "trust_lane": "DCM-004", "status": "restricted_research_mode"},
+    {"id": "AugSynthCVXPY", "module": "panel_exp/methods/scm.py", "variants": ["AugSynthCVXPY"], "trust_lane": "DCM-002", "status": "diagnostic_point_jk"},
+    {"id": "TBR", "module": "panel_exp/methods/tbr.py", "variants": ["TBR"], "trust_lane": "DCM-003", "status": "geometry_ineligible"},
+    {"id": "BayesianTBR", "module": "panel_exp/methods/bayesian_regression.py", "variants": ["BayesianTBR", "BayesianTBRHorseShoe"], "trust_lane": null, "status": "research_only"},
+    {"id": "SyntheticDID", "module": "panel_exp/methods/synthetic_did.py", "status": "unvalidated"},
+    {"id": "TROP", "module": "panel_exp/methods/triply_robust_est.py", "status": "research_only"}
+  ],
+  "design_inventory": [
+    {"id": "single_treated_geo", "modes": ["greedy_match_markets", "completerandomization"], "readout_bridge": "partial"},
+    {"id": "multi_treated_geo", "modes": ["greedy_match_markets", "multicell"], "readout_bridge": "blocked"},
+    {"id": "matched_pair", "module": "design/matched_pair.py", "readout_bridge": "requires_adapter"},
+    {"id": "stratified", "modes": ["stratifiedrandomization"], "readout_bridge": "needs_design_bridge"},
+    {"id": "rerandomized", "modes": ["rerandomization_wrapper"], "readout_bridge": "not_connected_to_inference"},
+    {"id": "greedy_matched_market", "modes": ["greedy_match_markets"], "readout_bridge": "needs_design_bridge"},
+    {"id": "kernel_thinning", "modes": ["thinningdesign"], "readout_bridge": "ambiguous_semantics"},
+    {"id": "multicell_shared_control", "modes": ["multicell"], "readout_bridge": "per_cell_marginal_only"},
+    {"id": "fixed_observational", "status": "unsupported_for_randomization_inference"},
+    {"id": "unknown_assignment", "status": "fail_closed"}
+  ],
+  "current_inference_inventory": [
+    {"mode": "UnitJackKnife", "module": "inference/unit_jackknife.py", "wired": ["SCM", "AugSynthCVXPY", "TBRRidge"], "role": "scm_restricted_trustreport"},
+    {"mode": "BlockResidualBootstrap", "module": "inference/block_residual_bootstrap.py", "wired": ["TBRRidge"], "role": "diagnostic_only"},
+    {"mode": "Kfold", "module": "inference/k_fold.py", "wired": ["SCM", "AugSynthCVXPY", "TBRRidge"], "role": "diagnostic_only"},
+    {"mode": "TimeSeriesKfold", "module": "inference/k_fold.py", "wired": ["TBRRidge"], "role": "diagnostic_only"},
+    {"mode": "Placebo", "module": "inference/placebo.py", "wired": ["SCM", "TBRRidge"], "role": "null_monitor_single_treated"},
+    {"mode": "Conformal", "module": "inference/conformal.py", "wired": ["AugSynthCVXPY", "TBRRidge"], "role": "diagnostic_not_governed"},
+    {"mode": "Bayesian", "module": "inference/modes/impl.py", "wired": ["TBRRidge", "BayesianTBR"], "role": "research_registry_mismatch"},
+    {"mode": "DID_bootstrap", "module": "methods/DID.py", "wired": ["DID"], "role": "embedded_restricted_trustreport"},
+    {"mode": "JKP", "module": "inference/modes/impl.py", "wired": ["TBRRidge"], "role": "known_failure_mode"}
+  ],
+  "known_failures": [
+    {"path": "TBRRidge+BRB", "verdict": "BRB_DIAGNOSTIC_ONLY", "gate": "null_type_i~0.50"},
+    {"path": "TBRRidge+KFold", "verdict": "DIAGNOSTIC_ONLY", "gate": "not_causal_interval_eligible"},
+    {"path": "TBRRidge+Placebo", "verdict": "NULL_MONITOR_ONLY", "gate": "single_treated_only"},
+    {"path": "TBRRidge+JK", "verdict": "known_failure_mode", "gate": "null_fpr~0.79"},
+    {"path": "SCM+Placebo", "verdict": "NULL_MONITOR_ONLY", "gate": "single_treated_only_A28"},
+    {"path": "AugSynthCVXPY+JK", "verdict": "DIAGNOSTIC_ONLY", "gate": "estimand_scale_gap"},
+    {"path": "DCM-006_global", "verdict": "PER_CELL_RESTRICTED", "gate": "familywise_type_i~0.27"},
+    {"path": "DCM-008_aggregate", "verdict": "DIAGNOSTIC_ONLY", "gate": "pooled_estimand_undefined"}
+  ],
+  "candidate_inference_families": [
+    {"family": "design_based_randomization_inference", "classification": "PROMISING_BUT_NEEDS_DESIGN_GENERATORS"},
+    {"family": "treated_set_placebo_inference", "classification": "PROMISING_BUT_NEEDS_DESIGN_GENERATORS"},
+    {"family": "studentized_placebo_rank_inference", "classification": "PROMISING_BUT_NEEDS_DESIGN_GENERATORS"},
+    {"family": "permutation_or_rerandomization_inference", "classification": "PROMISING_BUT_NEEDS_DESIGN_GENERATORS"},
+    {"family": "jackknife_family", "classification": "DIAGNOSTIC_ONLY"},
+    {"family": "crossfit_or_kfold_family", "classification": "DIAGNOSTIC_ONLY"},
+    {"family": "BRB_family", "classification": "BLOCKED_BY_NULL_CALIBRATION_RISK"},
+    {"family": "wild_bootstrap_or_residual_bootstrap", "classification": "BLOCKED_BY_NULL_CALIBRATION_RISK"},
+    {"family": "conformal_residual_inference", "classification": "DIAGNOSTIC_ONLY"},
+    {"family": "cluster_or_block_robust_inference", "classification": "BLOCKED_BY_SMALL_GEO_COUNTS"},
+    {"family": "Bayesian_posterior_predictive_inference", "classification": "PROMISING_BUT_RESEARCH_ONLY"},
+    {"family": "Bayesian_structural_time_series_inference", "classification": "PROMISING_BUT_RESEARCH_ONLY"}
+  ],
+  "evaluation_criteria": [
+    "method_validity",
+    "null_calibration_potential",
+    "coverage_potential",
+    "small_sample_feasibility",
+    "multi_treated_support",
+    "single_treated_support",
+    "multicell_support",
+    "stratified_support",
+    "estimator_agnostic_reuse",
+    "implementation_complexity_inverse",
+    "testability",
+    "governance_clarity",
+    "alignment_with_existing_designs",
+    "alignment_with_existing_estimators",
+    "risk_of_false_authorization_inverse"
+  ],
+  "candidate_scores": [
+    {
+      "family": "design_based_randomization_inference",
+      "classification": "PROMISING_BUT_NEEDS_DESIGN_GENERATORS",
+      "aggregate_score": 4.1,
+      "scores": {"method_validity": 5, "null_calibration_potential": 4, "coverage_potential": 4, "small_sample_feasibility": 3, "multi_treated_support": 4, "single_treated_support": 5, "multicell_support": 3, "stratified_support": 3, "estimator_agnostic_reuse": 5, "implementation_complexity_inverse": 3, "testability": 4, "governance_clarity": 4, "alignment_with_existing_designs": 2, "alignment_with_existing_estimators": 4, "risk_of_false_authorization_inverse": 4},
+      "flags": {"requires_known_assignment_process": true, "requires_design_aware_generators": true, "produces_interval": true, "produces_diagnostic_only": false}
+    },
+    {
+      "family": "treated_set_placebo_inference",
+      "classification": "PROMISING_BUT_NEEDS_DESIGN_GENERATORS",
+      "aggregate_score": 3.9,
+      "scores": {"method_validity": 4, "null_calibration_potential": 4, "coverage_potential": 3, "small_sample_feasibility": 3, "multi_treated_support": 5, "single_treated_support": 4, "multicell_support": 3, "stratified_support": 2, "estimator_agnostic_reuse": 4, "implementation_complexity_inverse": 3, "testability": 4, "governance_clarity": 4, "alignment_with_existing_designs": 2, "alignment_with_existing_estimators": 4, "risk_of_false_authorization_inverse": 4},
+      "flags": {"requires_known_assignment_process": true, "requires_design_aware_generators": true, "produces_p_value": true, "produces_interval": true, "can_support_scm": true, "can_support_tbrridge": true}
+    },
+    {
+      "family": "permutation_or_rerandomization_inference",
+      "classification": "PROMISING_BUT_NEEDS_DESIGN_GENERATORS",
+      "aggregate_score": 3.8,
+      "scores": {"method_validity": 4, "null_calibration_potential": 4, "coverage_potential": 3, "small_sample_feasibility": 3, "multi_treated_support": 4, "single_treated_support": 5, "multicell_support": 3, "stratified_support": 3, "estimator_agnostic_reuse": 5, "implementation_complexity_inverse": 3, "testability": 4, "governance_clarity": 4, "alignment_with_existing_designs": 2, "alignment_with_existing_estimators": 4, "risk_of_false_authorization_inverse": 4},
+      "flags": {"requires_known_assignment_process": true, "requires_design_aware_generators": true, "produces_p_value": true}
+    },
+    {
+      "family": "studentized_placebo_rank_inference",
+      "classification": "PROMISING_BUT_NEEDS_DESIGN_GENERATORS",
+      "aggregate_score": 3.5,
+      "scores": {"method_validity": 4, "null_calibration_potential": 3, "coverage_potential": 3, "small_sample_feasibility": 3, "multi_treated_support": 4, "single_treated_support": 4, "multicell_support": 2, "stratified_support": 2, "estimator_agnostic_reuse": 3, "implementation_complexity_inverse": 3, "testability": 3, "governance_clarity": 3, "alignment_with_existing_designs": 2, "alignment_with_existing_estimators": 3, "risk_of_false_authorization_inverse": 3}
+    },
+    {
+      "family": "jackknife_family",
+      "classification": "DIAGNOSTIC_ONLY",
+      "aggregate_score": 3.2,
+      "scores": {"method_validity": 3, "null_calibration_potential": 3, "coverage_potential": 3, "small_sample_feasibility": 4, "multi_treated_support": 2, "single_treated_support": 4, "multicell_support": 2, "stratified_support": 2, "estimator_agnostic_reuse": 3, "implementation_complexity_inverse": 4, "testability": 5, "governance_clarity": 3, "alignment_with_existing_designs": 4, "alignment_with_existing_estimators": 3, "risk_of_false_authorization_inverse": 2},
+      "note": "SCM+JK restricted path works; TBRRidge+JK fails; AugSynth diagnostic"
+    },
+    {
+      "family": "crossfit_or_kfold_family",
+      "classification": "DIAGNOSTIC_ONLY",
+      "aggregate_score": 2.4,
+      "scores": {"method_validity": 2, "null_calibration_potential": 2, "coverage_potential": 2, "small_sample_feasibility": 3, "multi_treated_support": 2, "single_treated_support": 3, "multicell_support": 2, "stratified_support": 2, "estimator_agnostic_reuse": 3, "implementation_complexity_inverse": 3, "testability": 4, "governance_clarity": 3, "alignment_with_existing_designs": 3, "alignment_with_existing_estimators": 2, "risk_of_false_authorization_inverse": 2},
+      "note": "Terminal diagnostic for TBRRidge; not recoverable without new assumptions"
+    },
+    {
+      "family": "BRB_family",
+      "classification": "BLOCKED_BY_NULL_CALIBRATION_RISK",
+      "aggregate_score": 2.0,
+      "scores": {"method_validity": 2, "null_calibration_potential": 1, "coverage_potential": 2, "small_sample_feasibility": 3, "multi_treated_support": 3, "single_treated_support": 3, "multicell_support": 2, "stratified_support": 2, "estimator_agnostic_reuse": 2, "implementation_complexity_inverse": 2, "testability": 4, "governance_clarity": 4, "alignment_with_existing_designs": 3, "alignment_with_existing_estimators": 2, "risk_of_false_authorization_inverse": 3},
+      "note": "Abandon further minor tuning; post-remediation null gates failed"
+    },
+    {
+      "family": "conformal_residual_inference",
+      "classification": "DIAGNOSTIC_ONLY",
+      "aggregate_score": 2.6,
+      "scores": {"method_validity": 2, "null_calibration_potential": 3, "coverage_potential": 3, "small_sample_feasibility": 2, "multi_treated_support": 1, "single_treated_support": 3, "multicell_support": 1, "stratified_support": 2, "estimator_agnostic_reuse": 3, "implementation_complexity_inverse": 3, "testability": 3, "governance_clarity": 2, "alignment_with_existing_designs": 3, "alignment_with_existing_estimators": 3, "risk_of_false_authorization_inverse": 2},
+      "note": "Structurally callable; not governed export; multi-treated broadcast failure on TBRRidge"
+    },
+    {
+      "family": "cluster_or_block_robust_inference",
+      "classification": "BLOCKED_BY_SMALL_GEO_COUNTS",
+      "aggregate_score": 2.2,
+      "scores": {"method_validity": 2, "null_calibration_potential": 2, "coverage_potential": 2, "small_sample_feasibility": 1, "multi_treated_support": 2, "single_treated_support": 2, "multicell_support": 2, "stratified_support": 3, "estimator_agnostic_reuse": 2, "implementation_complexity_inverse": 3, "testability": 2, "governance_clarity": 2, "alignment_with_existing_designs": 2, "alignment_with_existing_estimators": 2, "risk_of_false_authorization_inverse": 2},
+      "flags": {"requires_large_number_of_units": true}
+    },
+    {
+      "family": "Bayesian_posterior_predictive_inference",
+      "classification": "PROMISING_BUT_RESEARCH_ONLY",
+      "aggregate_score": 2.8,
+      "scores": {"method_validity": 3, "null_calibration_potential": 3, "coverage_potential": 3, "small_sample_feasibility": 2, "multi_treated_support": 3, "single_treated_support": 3, "multicell_support": 2, "stratified_support": 2, "estimator_agnostic_reuse": 2, "implementation_complexity_inverse": 1, "testability": 2, "governance_clarity": 2, "alignment_with_existing_designs": 2, "alignment_with_existing_estimators": 2, "risk_of_false_authorization_inverse": 2},
+      "flags": {"requires_bayesian_modeling_stack": true, "requires_strong_model_assumptions": true}
+    },
+    {
+      "family": "Bayesian_structural_time_series_inference",
+      "classification": "PROMISING_BUT_RESEARCH_ONLY",
+      "aggregate_score": 2.5,
+      "flags": {"requires_bayesian_modeling_stack": true}
+    }
+  ],
+  "estimator_compatibility_matrix": {
+    "SCM": {"jackknife_family": "restricted_trustreport", "treated_set_placebo_inference": "blocked_pending_framework", "BRB_family": "not_wired", "conformal_residual_inference": "not_primary"},
+    "TBRRidge": {"BRB_family": "diagnostic_only", "crossfit_or_kfold_family": "diagnostic_only", "treated_set_placebo_inference": "blocked_pending_framework", "jackknife_family": "known_failure"},
+    "DID": {"wild_bootstrap_or_residual_bootstrap": "embedded_native_restricted", "design_based_randomization_inference": "needs_assignment_bridge"},
+    "AugSynthCVXPY": {"jackknife_family": "diagnostic_only", "conformal_residual_inference": "diagnostic_not_governed", "treated_set_placebo_inference": "not_implemented"}
+  },
+  "design_compatibility_matrix": {
+    "single_treated_geo": {"jackknife_family": "supported", "treated_set_placebo_inference": "single_treated_only_today", "permutation_or_rerandomization_inference": "needs_generators"},
+    "multi_treated_geo": {"treated_set_placebo_inference": "blocked", "jackknife_family": "partial", "BRB_family": "diagnostic_failed"},
+    "multicell_shared_control": {"any_winner_global": "no_method_now", "marginal_per_cell": "SCM+JK_restricted"},
+    "stratified": {"aggregate_trustreport": "blocked", "per_stratum_diagnostic": "SCM+JK_diagnostic"},
+    "rerandomized": {"permutation_or_rerandomization_inference": "wrapper_exists_inference_disconnected"},
+    "unknown_assignment": {"all_randomization_families": "fail_closed"}
+  },
+  "small_sample_constraints": {
+    "typical_geo_unit_counts": "small_to_moderate",
+    "cluster_robust_credibility": "low",
+    "kfold_viability": "diagnostic_only_not_causal",
+    "brb_null_calibration": "failed_at_observed_counts",
+    "implication": "Prefer design-valid falsification and assignment-aware generators over more resampling tuning on existing paths"
+  },
+  "multicell_constraints": {
+    "familywise_type_i": 0.272,
+    "cross_cell_correlation": 0.901,
+    "global_winner_pooled_support": "no_inference_family_ready",
+    "marginal_per_cell": "SCM+JK_with_semantic_contract",
+    "required_before_global": ["MULTICELL_MULTIPLICITY_CALIBRATION_001", "MULTICELL_SHARED_CONTROL_DEPENDENCE_001"]
+  },
+  "stratified_constraints": {
+    "aggregate_readout": "characterization_only",
+    "pooled_estimand_defined": false,
+    "required_before_aggregate": "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001",
+    "per_stratum_scm_jk": "diagnostic_only"
+  },
+  "scout_answers": {
+    "implement_multitreated_placebo_next": false,
+    "build_design_aware_generators_first": true,
+    "abandon_brb_tuning": true,
+    "kfold_recoverable": false,
+    "conformal_promising_for_tbrridge_augsynth": "diagnostic_only_not_near_term_primary",
+    "bayesian_posterior_near_term": false,
+    "cluster_robust_credible_small_geo": false,
+    "multicell_winner_global_now": false,
+    "stratified_aggregate_trustreport_now": false
+  },
+  "recommended_primary_path": "DESIGN_AWARE_ASSIGNMENT_GENERATORS_001",
+  "recommended_secondary_path": "MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001",
+  "deferred_paths": [
+    "CONFORMAL_INFERENCE_FEASIBILITY_001",
+    "BAYESIAN_POSTERIOR_PREDICTIVE_SCOUT_001",
+    "TBRRIDGE_INFERENCE_REPLACEMENT_PROTOTYPE_001",
+    "MULTICELL_SHARED_CONTROL_INFERENCE_SCOUT_001",
+    "AUGSYNTH_INFERENCE_DISPOSITION_001"
+  ],
+  "rejected_paths": [
+    "BRB_family_further_tuning",
+    "crossfit_or_kfold_family_as_causal_interval",
+    "cluster_or_block_robust_inference_near_term"
+  ],
+  "required_prerequisites": [
+    "Design-to-readout bridge for rerandomization and stratified assignment metadata (G-DES-001–014)",
+    "Governed pseudo-assignment generation for valid placebo/permutation nulls",
+    "Known assignment process or explicit observational fail-closed policy",
+    "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001 before aggregate stratified causal claims"
+  ],
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false,
+  "governance_verdict": "inference_replacement_scout_completed_no_authorization",
+  "limitations": [
+    "Scouting artifact only; no new inference implementation or simulations.",
+    "Scores are governance-weighted expert synthesis from existing Track D evidence, not fresh OC runs.",
+    "Bayesian and conformal lanes deferred pending design-generator foundation."
+  ],
+  "next_artifact": "DESIGN_AWARE_ASSIGNMENT_GENERATORS_001"
+}

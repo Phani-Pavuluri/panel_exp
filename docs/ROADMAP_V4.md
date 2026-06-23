@@ -281,6 +281,8 @@ Foundation and compatibility audits ✅
   → TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001 ✅
   → TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001 ✅
   → ROADMAP_REFOCUS_METHOD_VALIDATION_001 ✅ (TrustReport ops **frozen**; method validation active)
+  → INFERENCE_REPLACEMENT_SCOUT_001 ✅ (design generators primary; placebo secondary)
+  → DESIGN_AWARE_ASSIGNMENT_GENERATORS_001 ✅
   → MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001 (active method lane)
 ```
 
@@ -290,7 +292,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ TrustReport research-mode stack through **`TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001`** → ✅ **`ROADMAP_REFOCUS_METHOD_VALIDATION_001`** (ops frozen) → **`MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001`** → **`DESIGN_AWARE_ASSIGNMENT_GENERATORS_001`** → **`SCM_PLACEBO_GOVERNED_SEMANTICS_001`** → method-validation backlog (AugSynth disposition, TBRRidge replacement scout, multicell multiplicity/shared-control, stratified pooled estimand). **`TRUSTREPORT_RESEARCH_MODE_AUDIT_LOG_001`** and downstream platform ops **paused** — MIP layer.
+**Ordered next:** ✅ … → ✅ **`INFERENCE_REPLACEMENT_SCOUT_001`** → ✅ **`DESIGN_AWARE_ASSIGNMENT_GENERATORS_001`** → **`MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001`** → method-validation backlog.
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 

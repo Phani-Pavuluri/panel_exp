@@ -16,7 +16,7 @@ The TrustReport research-mode governance stack (downstream promotion → integra
 
 **Governance verdict:** `refocus_on_method_validation`  
 **TrustReport ops status:** `freeze_after_research_mode_access_control`  
-**Next artifact:** `MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001`
+**Next artifact:** `INFERENCE_REPLACEMENT_SCOUT_001` (completed — see [`INFERENCE_REPLACEMENT_SCOUT_001.md`](INFERENCE_REPLACEMENT_SCOUT_001.md); active lane: `DESIGN_AWARE_ASSIGNMENT_GENERATORS_001`)
 
 Only **two** DCM rows have restricted research-mode TrustReport paths today (DCM-001 SCM+JK, DCM-004 DID+bootstrap). Global `trust_report_authorized` remains **false**. Further ops work is deferred to the future MIP application/orchestration layer.
 
@@ -260,7 +260,7 @@ These belong outside core `panel_exp` method validation.
 
 **Regenerate:** docs-only artifact; no simulation harness.
 
-**Next artifact:** `MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001`
+**Next artifact:** `DESIGN_AWARE_ASSIGNMENT_GENERATORS_001` (selected by inference scout; placebo framework secondary)
 
 ---
 
