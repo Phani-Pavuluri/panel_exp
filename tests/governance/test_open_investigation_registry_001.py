@@ -229,3 +229,14 @@ class TestOpenInvestigationRegistry001:
         assert lane["resolution_artifact"] == "SCM_STUDENTIZED_TREATED_SET_PLACEBO_INTEGRATION_001"
         assert lane["next_artifact"] == "MULTICELL_SHARED_CONTROL_MULTIPLICITY_001"
         assert "scm_studentized_integration" in lane["artifact_tags"]
+
+    def test_multicell_shared_control_multiplicity_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "MULTICELL-SHARED-CONTROL-MULTIPLICITY-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "MULTICELL_SHARED_CONTROL_MULTIPLICITY_001"
+        assert lane["next_artifact"] == "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001"
+        assert "multicell_multiplicity" in lane["artifact_tags"]

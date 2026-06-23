@@ -233,14 +233,14 @@
         "shared_vs_disjoint_type_i_delta": 0.011,
         "d5_trust_characterization": "D5-TRUST-MULTICELL-PERCELL-INFERENCE-001"
       },
-      "current_decision": "REMEDIATE_PENDING_SHARED_CONTROL_FRAMEWORK",
+      "current_decision": "MULTICELL_MULTIPLICITY_BOUNDARIES_DEFINED_DEPENDENCE_MODEL_STILL_REQUIRED",
       "blocked_roles": ["trust_report", "calibration_signal", "production"],
-      "target_artifact": "MULTICELL_SHARED_CONTROL_DEPENDENCE_REMEDIATION_001",
-      "revisit_trigger": "Upon opening MULTICELL_SHARED_CONTROL_DEPENDENCE_REMEDIATION_001",
-      "decision_checkpoint": "Shared-control dependence closeout before TrustReport DCM-006 promotion",
-      "blocking_policy": "Shared-control geometries require explicit dependence contract; disjoint preferred for causal readout",
+      "target_artifact": "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001",
+      "revisit_trigger": "Upon opening STRATIFIED_POOLED_ESTIMAND_CONTRACT_001",
+      "decision_checkpoint": "Shared-control dependence model closeout before global multi-cell promotion",
+      "blocking_policy": "Shared-control geometries require explicit dependence contract; per-cell marginal only unless promotion evidence complete",
       "terminal_decisions": ["REMEDIATE", "RESTRICT", "DIAGNOSTIC_ONLY"],
-      "resolution_artifact": null
+      "resolution_artifact": "MULTICELL_SHARED_CONTROL_MULTIPLICITY_001"
     },
     {
       "investigation_id": "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001",
@@ -256,14 +256,14 @@
         "simultaneous_coverage": 0.856,
         "d5_trust_characterization": "D5-TRUST-MULTICELL-PERCELL-INFERENCE-001"
       },
-      "current_decision": "REMEDIATE_PENDING_SIMULTANEOUS_INFERENCE",
+      "current_decision": "MULTICELL_MULTIPLICITY_BOUNDARIES_DEFINED_ADJUSTMENT_STILL_REQUIRED",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "simultaneous_multi_cell_decision"],
-      "target_artifact": "MULTICELL_SIMULTANEOUS_INFERENCE_001",
-      "revisit_trigger": "Upon opening MULTICELL_SIMULTANEOUS_INFERENCE_001",
+      "target_artifact": "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001",
+      "revisit_trigger": "Upon opening STRATIFIED_POOLED_ESTIMAND_CONTRACT_001",
       "decision_checkpoint": "Multiplicity calibration closeout before familywise multi-cell decisioning",
-      "blocking_policy": "Marginal per-cell intervals cannot authorize simultaneous multi-cell decisions without multiplicity correction lane",
+      "blocking_policy": "Marginal per-cell readouts cannot authorize simultaneous multi-cell decisions; multiplicity boundaries defined",
       "terminal_decisions": ["REMEDIATE", "RESTRICT", "DIAGNOSTIC_ONLY"],
-      "resolution_artifact": null
+      "resolution_artifact": "MULTICELL_SHARED_CONTROL_MULTIPLICITY_001"
     },
     {
       "investigation_id": "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
@@ -282,14 +282,14 @@
         "scout_primary_prerequisite_complete": true,
         "scm_placebo_single_treated_only": true
       },
-      "current_decision": "SCM_STUDENTIZED_INTEGRATION_DEFINED_PENDING_MULTICELL_MULTIPLICITY",
+      "current_decision": "MULTICELL_MULTIPLICITY_BOUNDARIES_DEFINED_PENDING_STRATIFIED_ESTIMAND",
       "blocked_roles": ["trust_report", "calibration_signal", "production"],
-      "target_artifact": "MULTICELL_SHARED_CONTROL_MULTIPLICITY_001",
-      "revisit_trigger": "Upon opening MULTICELL_SHARED_CONTROL_MULTIPLICITY_001",
-      "decision_checkpoint": "Multicell shared-control multiplicity before global decisioning",
-      "blocking_policy": "SCM studentized integration defined; multicell and downstream gates still blocked",
+      "target_artifact": "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001",
+      "revisit_trigger": "Upon opening STRATIFIED_POOLED_ESTIMAND_CONTRACT_001",
+      "decision_checkpoint": "Stratified pooled estimand contract before global multi-cell promotion",
+      "blocking_policy": "Multicell multiplicity boundaries defined; global/winner/pooled still blocked",
       "terminal_decisions": ["REMEDIATE", "RESTRICT", "DIAGNOSTIC_ONLY"],
-      "resolution_artifact": "SCM_STUDENTIZED_TREATED_SET_PLACEBO_INTEGRATION_001"
+      "resolution_artifact": "MULTICELL_SHARED_CONTROL_MULTIPLICITY_001"
     },
     {
       "investigation_id": "INV-MULTICELL-CELL-RELATIONSHIP-DECISION-POLICY-001",
@@ -676,6 +676,27 @@
         "method_validity",
         "scm_studentized_integration",
         "studentized_placebo_rank",
+        "inference_validation",
+        "downstream_blocking_prerequisite"
+      ]
+    },
+    {
+      "lane_id": "MULTICELL-SHARED-CONTROL-MULTIPLICITY-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001",
+      "resolution_artifact": "MULTICELL_SHARED_CONTROL_MULTIPLICITY_001",
+      "artifact_tags": [
+        "method_validity",
+        "multicell_multiplicity",
+        "shared_control_dependence",
         "inference_validation",
         "downstream_blocking_prerequisite"
       ]

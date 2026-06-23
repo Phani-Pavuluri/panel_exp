@@ -1,0 +1,1067 @@
+{
+  "artifact_id": "MULTICELL_SHARED_CONTROL_MULTIPLICITY_001",
+  "artifact_version": "1.0.0",
+  "status": "completed",
+  "generated_at": "2026-06-23T18:01:30.480474+00:00",
+  "git_commit": "44f192a6c676549774f1d6d7b0567a26c7f97363",
+  "verdict": "multicell_shared_control_multiplicity_defined_no_downstream_authorization",
+  "governance_verdict": "multicell_shared_control_multiplicity_defined_no_downstream_authorization",
+  "roadmap_spine": [
+    "ROADMAP_REFOCUS_METHOD_VALIDATION_001",
+    "INFERENCE_REPLACEMENT_SCOUT_001",
+    "DESIGN_AWARE_ASSIGNMENT_GENERATORS_001",
+    "MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001",
+    "SCM_PLACEBO_GOVERNED_SEMANTICS_001",
+    "METHOD_ROADMAP_ALIGNMENT_AUDIT_001",
+    "METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001",
+    "SCM_TREATED_SET_PLACEBO_INTEGRATION_001",
+    "STUDENTIZED_PLACEBO_RANK_INFERENCE_001",
+    "SCM_STUDENTIZED_TREATED_SET_PLACEBO_INTEGRATION_001",
+    "MULTICELL_SHARED_CONTROL_MULTIPLICITY_001"
+  ],
+  "scenario_count": 27,
+  "passed_scenarios": 27,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "per_cell_marginal_with_estimands",
+      "passed": true,
+      "expected_decision": "multicell_per_cell_marginal_allowed_as_separate_readout",
+      "expected_role": "per_cell_marginal_only",
+      "result": {
+        "role": "per_cell_marginal_only",
+        "decision": "multicell_per_cell_marginal_allowed_as_separate_readout",
+        "independent_familywise_false_positive_risk": null,
+        "adjusted_alpha_bonferroni": null,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": true,
+        "is_adjustment_required": false,
+        "is_shared_control_unresolved": false,
+        "is_blocked": false,
+        "required_next_evidence": [],
+        "warnings": [
+          "Per-cell marginal readout only \u2014 no global, winner, or pooled multi-cell conclusion. Multiplicity applies if multiple cells are interpreted as one decision family."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "per_cell_marginal_missing_estimands",
+      "passed": true,
+      "expected_decision": "multicell_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "multicell_blocked",
+        "independent_familywise_false_positive_risk": 0.2709999999999999,
+        "adjusted_alpha_bonferroni": 0.03333333333333333,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": false,
+        "is_shared_control_unresolved": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "missing cell-level estimand contracts for per-cell marginal readout"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "multiple_cell_family_no_adjustment",
+      "passed": true,
+      "expected_decision": "multicell_family_requires_multiplicity_adjustment",
+      "expected_role": "multiplicity_adjustment_required",
+      "result": {
+        "role": "multiplicity_adjustment_required",
+        "decision": "multicell_family_requires_multiplicity_adjustment",
+        "independent_familywise_false_positive_risk": 0.2709999999999999,
+        "adjusted_alpha_bonferroni": 0.03333333333333333,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": true,
+        "is_shared_control_unresolved": false,
+        "is_blocked": false,
+        "required_next_evidence": [],
+        "warnings": [
+          "no multiplicity adjustment declared for multi-cell family",
+          "Independent familywise false-positive risk is a proxy only and does not authorize shared-control global, winner, or pooled inference."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "multiple_cell_family_bonferroni",
+      "passed": true,
+      "expected_decision": "multicell_family_requires_multiplicity_adjustment",
+      "expected_role": "multiplicity_adjustment_required",
+      "result": {
+        "role": "multiplicity_adjustment_required",
+        "decision": "multicell_family_requires_multiplicity_adjustment",
+        "independent_familywise_false_positive_risk": 0.2709999999999999,
+        "adjusted_alpha_bonferroni": 0.03333333333333333,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": true,
+        "is_shared_control_unresolved": false,
+        "is_blocked": false,
+        "required_next_evidence": [],
+        "warnings": [
+          "multiplicity adjustment bonferroni declared \u2014 diagnostic only",
+          "Independent familywise false-positive risk is a proxy only and does not authorize shared-control global, winner, or pooled inference.",
+          "Bonferroni/Holm adjustment does not authorize global multi-cell decisions under shared-control dependence"
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "multiple_cell_family_holm",
+      "passed": true,
+      "expected_decision": "multicell_family_requires_multiplicity_adjustment",
+      "expected_role": "multiplicity_adjustment_required",
+      "result": {
+        "role": "multiplicity_adjustment_required",
+        "decision": "multicell_family_requires_multiplicity_adjustment",
+        "independent_familywise_false_positive_risk": 0.2709999999999999,
+        "adjusted_alpha_bonferroni": 0.03333333333333333,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": true,
+        "is_shared_control_unresolved": false,
+        "is_blocked": false,
+        "required_next_evidence": [],
+        "warnings": [
+          "multiplicity adjustment holm declared \u2014 diagnostic only",
+          "Independent familywise false-positive risk is a proxy only and does not authorize shared-control global, winner, or pooled inference.",
+          "Bonferroni/Holm adjustment does not authorize global multi-cell decisions under shared-control dependence"
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "shared_control_no_dependence_model",
+      "passed": true,
+      "expected_decision": "multicell_shared_control_requires_dependence_model",
+      "expected_role": "shared_control_dependence_unresolved",
+      "result": {
+        "role": "shared_control_dependence_unresolved",
+        "decision": "multicell_shared_control_requires_dependence_model",
+        "independent_familywise_false_positive_risk": 0.2709999999999999,
+        "adjusted_alpha_bonferroni": 0.03333333333333333,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": true,
+        "is_shared_control_unresolved": true,
+        "is_blocked": true,
+        "required_next_evidence": [
+          "joint_null_distribution",
+          "shared_control_dependence_model",
+          "max_t_or_closed_testing_validation",
+          "pre_registered_hypothesis_family"
+        ],
+        "warnings": [
+          "Shared-control comparisons require a dependence model; independent FWER is insufficient.",
+          "Independent familywise false-positive risk is a proxy only and does not authorize shared-control global, winner, or pooled inference."
+        ],
+        "blocked_reasons": [
+          "shared-control dependence model not available"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "shared_control_dependence_no_joint_null",
+      "passed": true,
+      "expected_decision": "multicell_research_deferred",
+      "expected_role": "research_deferred",
+      "result": {
+        "role": "research_deferred",
+        "decision": "multicell_research_deferred",
+        "independent_familywise_false_positive_risk": 0.2709999999999999,
+        "adjusted_alpha_bonferroni": 0.03333333333333333,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": false,
+        "is_shared_control_unresolved": false,
+        "is_blocked": true,
+        "required_next_evidence": [
+          "joint_null_distribution",
+          "shared_control_dependence_model",
+          "max_t_or_closed_testing_validation",
+          "pre_registered_hypothesis_family"
+        ],
+        "warnings": [
+          "Shared-control comparisons require a dependence model; independent FWER is insufficient."
+        ],
+        "blocked_reasons": [
+          "dependence model present but joint null distribution not validated"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "global_decision_blocked",
+      "passed": true,
+      "expected_decision": "multicell_global_decision_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "multicell_global_decision_blocked",
+        "independent_familywise_false_positive_risk": 0.2709999999999999,
+        "adjusted_alpha_bonferroni": 0.03333333333333333,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": false,
+        "is_shared_control_unresolved": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "global multi-cell decision requires joint null, dependence model, and pre-registered family"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "winner_selection_blocked",
+      "passed": true,
+      "expected_decision": "multicell_winner_selection_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "multicell_winner_selection_blocked",
+        "independent_familywise_false_positive_risk": 0.2709999999999999,
+        "adjusted_alpha_bonferroni": 0.03333333333333333,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": false,
+        "is_shared_control_unresolved": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "winner_selection_requires_selection_adjusted_inference"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "pooled_effect_blocked",
+      "passed": true,
+      "expected_decision": "multicell_pooled_effect_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "multicell_pooled_effect_blocked",
+        "independent_familywise_false_positive_risk": 0.2709999999999999,
+        "adjusted_alpha_bonferroni": 0.03333333333333333,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": false,
+        "is_shared_control_unresolved": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "pooled_effect_requires_pooled_estimand_and_dependence_aware_inference"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "pooled_effect_missing_estimand",
+      "passed": true,
+      "expected_decision": "multicell_pooled_effect_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "multicell_pooled_effect_blocked",
+        "independent_familywise_false_positive_risk": 0.2709999999999999,
+        "adjusted_alpha_bonferroni": 0.03333333333333333,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": false,
+        "is_shared_control_unresolved": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "pooled_effect_requires_pooled_estimand_and_dependence_aware_inference",
+          "missing pooled estimand contract"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "unknown_dependence_research_deferred",
+      "passed": true,
+      "expected_decision": "multicell_research_deferred",
+      "expected_role": "research_deferred",
+      "result": {
+        "role": "research_deferred",
+        "decision": "multicell_research_deferred",
+        "independent_familywise_false_positive_risk": 0.2709999999999999,
+        "adjusted_alpha_bonferroni": 0.03333333333333333,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": false,
+        "is_shared_control_unresolved": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "unknown dependence structure"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "invalid_num_cells_zero",
+      "passed": true,
+      "expected_decision": "multicell_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "multicell_blocked",
+        "independent_familywise_false_positive_risk": null,
+        "adjusted_alpha_bonferroni": null,
+        "num_cells": 0,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": false,
+        "is_shared_control_unresolved": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "num_cells must be positive"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "invalid_negative_alpha",
+      "passed": true,
+      "expected_decision": "multicell_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "multicell_blocked",
+        "independent_familywise_false_positive_risk": null,
+        "adjusted_alpha_bonferroni": null,
+        "num_cells": 3,
+        "nominal_alpha": -0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": false,
+        "is_shared_control_unresolved": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "nominal_alpha must be in (0, 1)"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "invalid_alpha_ge_one",
+      "passed": true,
+      "expected_decision": "multicell_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "multicell_blocked",
+        "independent_familywise_false_positive_risk": null,
+        "adjusted_alpha_bonferroni": null,
+        "num_cells": 3,
+        "nominal_alpha": 1.0,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": false,
+        "is_shared_control_unresolved": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "nominal_alpha must be in (0, 1)"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "fwer_formula_alpha_010_m_3",
+      "passed": true,
+      "expected_decision": "multicell_family_requires_multiplicity_adjustment",
+      "expected_role": null,
+      "result": {
+        "role": "multiplicity_adjustment_required",
+        "decision": "multicell_family_requires_multiplicity_adjustment",
+        "independent_familywise_false_positive_risk": 0.2709999999999999,
+        "adjusted_alpha_bonferroni": 0.03333333333333333,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": true,
+        "is_shared_control_unresolved": false,
+        "is_blocked": false,
+        "required_next_evidence": [],
+        "warnings": [
+          "no multiplicity adjustment declared for multi-cell family",
+          "Independent familywise false-positive risk is a proxy only and does not authorize shared-control global, winner, or pooled inference."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "bonferroni_formula_alpha_010_m_3",
+      "passed": true,
+      "expected_decision": "multicell_family_requires_multiplicity_adjustment",
+      "expected_role": null,
+      "result": {
+        "role": "multiplicity_adjustment_required",
+        "decision": "multicell_family_requires_multiplicity_adjustment",
+        "independent_familywise_false_positive_risk": 0.2709999999999999,
+        "adjusted_alpha_bonferroni": 0.03333333333333333,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": true,
+        "is_shared_control_unresolved": false,
+        "is_blocked": false,
+        "required_next_evidence": [],
+        "warnings": [
+          "no multiplicity adjustment declared for multi-cell family",
+          "Independent familywise false-positive risk is a proxy only and does not authorize shared-control global, winner, or pooled inference."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "trustreport_blocked",
+      "passed": true,
+      "expected_decision": "multicell_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "multicell_blocked",
+        "independent_familywise_false_positive_risk": 0.2709999999999999,
+        "adjusted_alpha_bonferroni": 0.03333333333333333,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": false,
+        "is_shared_control_unresolved": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "TrustReport authorization is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "calibration_signal_blocked",
+      "passed": true,
+      "expected_decision": "multicell_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "multicell_blocked",
+        "independent_familywise_false_positive_risk": 0.2709999999999999,
+        "adjusted_alpha_bonferroni": 0.03333333333333333,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": false,
+        "is_shared_control_unresolved": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "CalibrationSignal export is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "mmm_ingestion_blocked",
+      "passed": true,
+      "expected_decision": "multicell_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "multicell_blocked",
+        "independent_familywise_false_positive_risk": 0.2709999999999999,
+        "adjusted_alpha_bonferroni": 0.03333333333333333,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": false,
+        "is_shared_control_unresolved": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "MMM ingestion is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "llm_decisioning_blocked",
+      "passed": true,
+      "expected_decision": "multicell_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "multicell_blocked",
+        "independent_familywise_false_positive_risk": 0.2709999999999999,
+        "adjusted_alpha_bonferroni": 0.03333333333333333,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": false,
+        "is_shared_control_unresolved": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "LLM decisioning is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "production_decisioning_blocked",
+      "passed": true,
+      "expected_decision": "multicell_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "multicell_blocked",
+        "independent_familywise_false_positive_risk": 0.2709999999999999,
+        "adjusted_alpha_bonferroni": 0.03333333333333333,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": false,
+        "is_shared_control_unresolved": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "production decisioning is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "live_api_blocked",
+      "passed": true,
+      "expected_decision": "multicell_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "multicell_blocked",
+        "independent_familywise_false_positive_risk": 0.2709999999999999,
+        "adjusted_alpha_bonferroni": 0.03333333333333333,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": false,
+        "is_shared_control_unresolved": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "live API authorization is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "scheduler_blocked",
+      "passed": true,
+      "expected_decision": "multicell_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "multicell_blocked",
+        "independent_familywise_false_positive_risk": 0.2709999999999999,
+        "adjusted_alpha_bonferroni": 0.03333333333333333,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": false,
+        "is_shared_control_unresolved": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "scheduler authorization is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "budget_optimization_blocked",
+      "passed": true,
+      "expected_decision": "multicell_blocked",
+      "expected_role": null,
+      "result": {
+        "role": "blocked",
+        "decision": "multicell_blocked",
+        "independent_familywise_false_positive_risk": 0.2709999999999999,
+        "adjusted_alpha_bonferroni": 0.03333333333333333,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": false,
+        "is_shared_control_unresolved": false,
+        "is_blocked": true,
+        "required_next_evidence": [],
+        "warnings": [],
+        "blocked_reasons": [
+          "budget optimization is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "governance_flags_all_false",
+      "passed": true,
+      "expected_decision": "multicell_per_cell_marginal_allowed_as_separate_readout",
+      "expected_role": null,
+      "result": {
+        "role": "per_cell_marginal_only",
+        "decision": "multicell_per_cell_marginal_allowed_as_separate_readout",
+        "independent_familywise_false_positive_risk": null,
+        "adjusted_alpha_bonferroni": null,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": true,
+        "is_adjustment_required": false,
+        "is_shared_control_unresolved": false,
+        "is_blocked": false,
+        "required_next_evidence": [],
+        "warnings": [
+          "Per-cell marginal readout only \u2014 no global, winner, or pooled multi-cell conclusion. Multiplicity applies if multiple cells are interpreted as one decision family."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "no_downstream_promotion_authorized",
+      "passed": true,
+      "expected_decision": "multicell_family_requires_multiplicity_adjustment",
+      "expected_role": null,
+      "result": {
+        "role": "multiplicity_adjustment_required",
+        "decision": "multicell_family_requires_multiplicity_adjustment",
+        "independent_familywise_false_positive_risk": 0.2709999999999999,
+        "adjusted_alpha_bonferroni": 0.03333333333333333,
+        "num_cells": 3,
+        "nominal_alpha": 0.1,
+        "is_per_cell_marginal_only": false,
+        "is_adjustment_required": true,
+        "is_shared_control_unresolved": false,
+        "is_blocked": false,
+        "required_next_evidence": [],
+        "warnings": [
+          "no multiplicity adjustment declared for multi-cell family",
+          "Independent familywise false-positive risk is a proxy only and does not authorize shared-control global, winner, or pooled inference."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "global_multicell_decision_allowed": false,
+          "winner_selection_allowed": false,
+          "pooled_multicell_effect_allowed": false
+        }
+      }
+    }
+  ],
+  "per_cell_marginal_only_scenarios": 2,
+  "adjustment_required_scenarios": 6,
+  "shared_control_unresolved_scenarios": 1,
+  "blocked_scenarios": 18,
+  "multiplicity_contract": {
+    "independent_fwer_formula": "1 - (1 - alpha)^m",
+    "bonferroni_alpha_formula": "alpha / m",
+    "shared_control_warning": "independent FWER is a proxy only and does not authorize shared-control global/winner/pooled inference"
+  },
+  "allowed_outputs": [
+    "per_cell_marginal_only",
+    "familywise_false_positive_risk_proxy",
+    "bonferroni_alpha",
+    "multiplicity_adjustment_required",
+    "shared_control_dependence_unresolved",
+    "blocked"
+  ],
+  "forbidden_outputs": [
+    "global_multicell_decision",
+    "winner_selection",
+    "pooled_multicell_effect",
+    "final_p_value",
+    "causal_confidence_interval",
+    "trustreport_authorization",
+    "calibration_signal",
+    "mmm_ingestion",
+    "llm_decisioning",
+    "production_decisioning",
+    "live_api",
+    "scheduler",
+    "budget_optimization"
+  ],
+  "next_artifact": "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001",
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false,
+  "global_multicell_decision_allowed": false,
+  "winner_selection_allowed": false,
+  "pooled_multicell_effect_allowed": false
+}
