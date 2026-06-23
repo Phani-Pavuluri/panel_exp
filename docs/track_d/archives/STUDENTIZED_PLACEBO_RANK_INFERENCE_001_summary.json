@@ -1,0 +1,1025 @@
+{
+  "artifact_id": "STUDENTIZED_PLACEBO_RANK_INFERENCE_001",
+  "artifact_version": "1.0.0",
+  "status": "completed",
+  "generated_at": "2026-06-23T17:03:21.914721+00:00",
+  "git_commit": "8f093162144adef72bd1fb34e72d6146e16b837f",
+  "verdict": "studentized_placebo_rank_inference_defined_no_downstream_authorization",
+  "governance_verdict": "studentized_placebo_rank_inference_defined_no_downstream_authorization",
+  "roadmap_spine": [
+    "ROADMAP_REFOCUS_METHOD_VALIDATION_001",
+    "INFERENCE_REPLACEMENT_SCOUT_001",
+    "DESIGN_AWARE_ASSIGNMENT_GENERATORS_001",
+    "MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001",
+    "SCM_PLACEBO_GOVERNED_SEMANTICS_001",
+    "METHOD_ROADMAP_ALIGNMENT_AUDIT_001",
+    "METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001",
+    "SCM_TREATED_SET_PLACEBO_INTEGRATION_001",
+    "STUDENTIZED_PLACEBO_RANK_INFERENCE_001"
+  ],
+  "scenario_count": 28,
+  "passed_scenarios": 28,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "design_based_greater_candidate",
+      "passed": true,
+      "expected_decision": "studentized_rank_candidate",
+      "result": {
+        "decision": "studentized_rank_candidate",
+        "scale_validity": "valid",
+        "observed_studentized_statistic": 1.05,
+        "pseudo_studentized_statistic_by_assignment": {
+          "p1": 0.5,
+          "p2": 1.0,
+          "p3": 1.5,
+          "p4": 2.0,
+          "p5": 2.5,
+          "p6": 3.0,
+          "p7": 3.5,
+          "p8": 4.0,
+          "p9": 4.5,
+          "p10": 5.0
+        },
+        "placebo_rank": 8,
+        "empirical_tail_fraction": 0.8,
+        "num_placebo_sets": 10,
+        "is_candidate": true,
+        "is_diagnostic_only": false,
+        "is_blocked": false,
+        "warnings": [
+          "Framework-level studentized placebo-rank candidate only \u2014 empirical tail fraction is not a final production p-value and no causal confidence interval is authorized."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "design_based_less_candidate",
+      "passed": true,
+      "expected_decision": "studentized_rank_candidate",
+      "result": {
+        "decision": "studentized_rank_candidate",
+        "scale_validity": "valid",
+        "observed_studentized_statistic": -1.05,
+        "pseudo_studentized_statistic_by_assignment": {
+          "p1": -0.5,
+          "p2": -1.0,
+          "p3": -1.5,
+          "p4": -2.0,
+          "p5": -2.5,
+          "p6": -3.0,
+          "p7": -3.5,
+          "p8": -4.0,
+          "p9": -4.5,
+          "p10": -5.0
+        },
+        "placebo_rank": 8,
+        "empirical_tail_fraction": 0.8,
+        "num_placebo_sets": 10,
+        "is_candidate": true,
+        "is_diagnostic_only": false,
+        "is_blocked": false,
+        "warnings": [
+          "Framework-level studentized placebo-rank candidate only \u2014 empirical tail fraction is not a final production p-value and no causal confidence interval is authorized."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "design_based_two_sided_candidate",
+      "passed": true,
+      "expected_decision": "studentized_rank_candidate",
+      "result": {
+        "decision": "studentized_rank_candidate",
+        "scale_validity": "valid",
+        "observed_studentized_statistic": 2.0,
+        "pseudo_studentized_statistic_by_assignment": {
+          "p1": -0.5,
+          "p2": 1.0,
+          "p3": -1.5,
+          "p4": 2.0,
+          "p5": -2.5,
+          "p6": 3.0,
+          "p7": -3.5,
+          "p8": 4.0,
+          "p9": -4.5,
+          "p10": 5.0
+        },
+        "placebo_rank": 7,
+        "empirical_tail_fraction": 0.7,
+        "num_placebo_sets": 10,
+        "is_candidate": true,
+        "is_diagnostic_only": false,
+        "is_blocked": false,
+        "warnings": [
+          "Framework-level studentized placebo-rank candidate only \u2014 empirical tail fraction is not a final production p-value and no causal confidence interval is authorized."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "falsification_only_diagnostic",
+      "passed": true,
+      "expected_decision": "studentized_rank_diagnostic_only",
+      "result": {
+        "decision": "studentized_rank_diagnostic_only",
+        "scale_validity": "valid",
+        "observed_studentized_statistic": 1.05,
+        "pseudo_studentized_statistic_by_assignment": {
+          "p1": 0.1,
+          "p2": 0.2,
+          "p3": 0.30000000000000004,
+          "p4": 0.4,
+          "p5": 0.5,
+          "p6": 0.6000000000000001,
+          "p7": 0.7000000000000001,
+          "p8": 0.8,
+          "p9": 0.9,
+          "p10": 1.0
+        },
+        "placebo_rank": 0,
+        "empirical_tail_fraction": 0.0,
+        "num_placebo_sets": 10,
+        "is_candidate": false,
+        "is_diagnostic_only": true,
+        "is_blocked": false,
+        "warnings": [
+          "Not design-based causal inference \u2014 studentized placebo rank is diagnostic only; empirical tail fraction is not a final production p-value."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "blocked_assignment_role",
+      "passed": true,
+      "expected_decision": "studentized_rank_blocked",
+      "result": {
+        "decision": "studentized_rank_blocked",
+        "scale_validity": "blocked",
+        "observed_studentized_statistic": null,
+        "pseudo_studentized_statistic_by_assignment": {},
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "assignment role blocked or unknown: blocked"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "missing_observed_scale",
+      "passed": true,
+      "expected_decision": "studentized_rank_blocked",
+      "result": {
+        "decision": "studentized_rank_blocked",
+        "scale_validity": "missing_observed_scale",
+        "observed_studentized_statistic": null,
+        "pseudo_studentized_statistic_by_assignment": {},
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "scale contract invalid: missing_observed_scale"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "missing_pseudo_scale",
+      "passed": true,
+      "expected_decision": "studentized_rank_blocked",
+      "result": {
+        "decision": "studentized_rank_blocked",
+        "scale_validity": "missing_pseudo_scale",
+        "observed_studentized_statistic": null,
+        "pseudo_studentized_statistic_by_assignment": {},
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "scale contract invalid: missing_pseudo_scale"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "pseudo_effect_scale_id_mismatch",
+      "passed": true,
+      "expected_decision": "studentized_rank_blocked",
+      "result": {
+        "decision": "studentized_rank_blocked",
+        "scale_validity": "missing_pseudo_scale",
+        "observed_studentized_statistic": null,
+        "pseudo_studentized_statistic_by_assignment": {},
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "scale contract invalid: missing_pseudo_scale"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "zero_observed_scale",
+      "passed": true,
+      "expected_decision": "studentized_rank_blocked",
+      "result": {
+        "decision": "studentized_rank_blocked",
+        "scale_validity": "non_positive_scale",
+        "observed_studentized_statistic": null,
+        "pseudo_studentized_statistic_by_assignment": {},
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "scale contract invalid: non_positive_scale"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "negative_pseudo_scale",
+      "passed": true,
+      "expected_decision": "studentized_rank_blocked",
+      "result": {
+        "decision": "studentized_rank_blocked",
+        "scale_validity": "non_positive_scale",
+        "observed_studentized_statistic": null,
+        "pseudo_studentized_statistic_by_assignment": {},
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "scale contract invalid: non_positive_scale"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "nan_observed_effect",
+      "passed": true,
+      "expected_decision": "studentized_rank_blocked",
+      "result": {
+        "decision": "studentized_rank_blocked",
+        "scale_validity": "non_finite_scale",
+        "observed_studentized_statistic": null,
+        "pseudo_studentized_statistic_by_assignment": {},
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "scale contract invalid: non_finite_scale"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "infinite_pseudo_effect",
+      "passed": true,
+      "expected_decision": "studentized_rank_blocked",
+      "result": {
+        "decision": "studentized_rank_blocked",
+        "scale_validity": "non_finite_scale",
+        "observed_studentized_statistic": null,
+        "pseudo_studentized_statistic_by_assignment": {},
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "scale contract invalid: non_finite_scale"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "nan_observed_scale",
+      "passed": true,
+      "expected_decision": "studentized_rank_blocked",
+      "result": {
+        "decision": "studentized_rank_blocked",
+        "scale_validity": "non_finite_scale",
+        "observed_studentized_statistic": null,
+        "pseudo_studentized_statistic_by_assignment": {},
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "scale contract invalid: non_finite_scale"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "insufficient_placebo_sets",
+      "passed": true,
+      "expected_decision": "studentized_rank_blocked",
+      "result": {
+        "decision": "studentized_rank_blocked",
+        "scale_validity": "insufficient_placebo_sets",
+        "observed_studentized_statistic": null,
+        "pseudo_studentized_statistic_by_assignment": {},
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "scale contract invalid: insufficient_placebo_sets"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "final_p_value_request_blocked",
+      "passed": true,
+      "expected_decision": "studentized_rank_blocked",
+      "result": {
+        "decision": "studentized_rank_blocked",
+        "scale_validity": "blocked",
+        "observed_studentized_statistic": null,
+        "pseudo_studentized_statistic_by_assignment": {},
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "final production p-value semantics are blocked"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "causal_ci_request_blocked",
+      "passed": true,
+      "expected_decision": "studentized_rank_blocked",
+      "result": {
+        "decision": "studentized_rank_blocked",
+        "scale_validity": "blocked",
+        "observed_studentized_statistic": null,
+        "pseudo_studentized_statistic_by_assignment": {},
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "causal confidence interval semantics are blocked"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "trustreport_request_blocked",
+      "passed": true,
+      "expected_decision": "studentized_rank_blocked",
+      "result": {
+        "decision": "studentized_rank_blocked",
+        "scale_validity": "blocked",
+        "observed_studentized_statistic": null,
+        "pseudo_studentized_statistic_by_assignment": {},
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "TrustReport authorization is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "calibration_signal_request_blocked",
+      "passed": true,
+      "expected_decision": "studentized_rank_blocked",
+      "result": {
+        "decision": "studentized_rank_blocked",
+        "scale_validity": "blocked",
+        "observed_studentized_statistic": null,
+        "pseudo_studentized_statistic_by_assignment": {},
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "CalibrationSignal export is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "mmm_ingestion_request_blocked",
+      "passed": true,
+      "expected_decision": "studentized_rank_blocked",
+      "result": {
+        "decision": "studentized_rank_blocked",
+        "scale_validity": "blocked",
+        "observed_studentized_statistic": null,
+        "pseudo_studentized_statistic_by_assignment": {},
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "MMM ingestion is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "llm_decisioning_request_blocked",
+      "passed": true,
+      "expected_decision": "studentized_rank_blocked",
+      "result": {
+        "decision": "studentized_rank_blocked",
+        "scale_validity": "blocked",
+        "observed_studentized_statistic": null,
+        "pseudo_studentized_statistic_by_assignment": {},
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "LLM decisioning is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "production_decisioning_request_blocked",
+      "passed": true,
+      "expected_decision": "studentized_rank_blocked",
+      "result": {
+        "decision": "studentized_rank_blocked",
+        "scale_validity": "blocked",
+        "observed_studentized_statistic": null,
+        "pseudo_studentized_statistic_by_assignment": {},
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "production decisioning is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "live_api_request_blocked",
+      "passed": true,
+      "expected_decision": "studentized_rank_blocked",
+      "result": {
+        "decision": "studentized_rank_blocked",
+        "scale_validity": "blocked",
+        "observed_studentized_statistic": null,
+        "pseudo_studentized_statistic_by_assignment": {},
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "live API authorization is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "scheduler_request_blocked",
+      "passed": true,
+      "expected_decision": "studentized_rank_blocked",
+      "result": {
+        "decision": "studentized_rank_blocked",
+        "scale_validity": "blocked",
+        "observed_studentized_statistic": null,
+        "pseudo_studentized_statistic_by_assignment": {},
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "scheduler authorization is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "budget_optimization_request_blocked",
+      "passed": true,
+      "expected_decision": "studentized_rank_blocked",
+      "result": {
+        "decision": "studentized_rank_blocked",
+        "scale_validity": "blocked",
+        "observed_studentized_statistic": null,
+        "pseudo_studentized_statistic_by_assignment": {},
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "budget optimization is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "governance_flags_all_false",
+      "passed": true,
+      "expected_decision": "studentized_rank_candidate",
+      "result": {
+        "decision": "studentized_rank_candidate",
+        "scale_validity": "valid",
+        "observed_studentized_statistic": 1.05,
+        "pseudo_studentized_statistic_by_assignment": {
+          "p1": 0.1,
+          "p2": 0.2,
+          "p3": 0.30000000000000004,
+          "p4": 0.4,
+          "p5": 0.5,
+          "p6": 0.6000000000000001,
+          "p7": 0.7000000000000001,
+          "p8": 0.8,
+          "p9": 0.9,
+          "p10": 1.0
+        },
+        "placebo_rank": 0,
+        "empirical_tail_fraction": 0.0,
+        "num_placebo_sets": 10,
+        "is_candidate": true,
+        "is_diagnostic_only": false,
+        "is_blocked": false,
+        "warnings": [
+          "Framework-level studentized placebo-rank candidate only \u2014 empirical tail fraction is not a final production p-value and no causal confidence interval is authorized."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "greater_rank_tail_fraction",
+      "passed": true,
+      "expected_decision": "studentized_rank_candidate",
+      "result": {
+        "decision": "studentized_rank_candidate",
+        "scale_validity": "valid",
+        "observed_studentized_statistic": 2.0,
+        "pseudo_studentized_statistic_by_assignment": {
+          "p1": 0.5,
+          "p2": 1.0,
+          "p3": 1.5,
+          "p4": 2.0,
+          "p5": 2.5
+        },
+        "placebo_rank": 2,
+        "empirical_tail_fraction": 0.4,
+        "num_placebo_sets": 5,
+        "is_candidate": true,
+        "is_diagnostic_only": false,
+        "is_blocked": false,
+        "warnings": [
+          "Framework-level studentized placebo-rank candidate only \u2014 empirical tail fraction is not a final production p-value and no causal confidence interval is authorized."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "less_rank_tail_fraction",
+      "passed": true,
+      "expected_decision": "studentized_rank_candidate",
+      "result": {
+        "decision": "studentized_rank_candidate",
+        "scale_validity": "valid",
+        "observed_studentized_statistic": -1.0,
+        "pseudo_studentized_statistic_by_assignment": {
+          "p1": -0.3,
+          "p2": -0.8,
+          "p3": -1.0,
+          "p4": -1.2,
+          "p5": -1.5
+        },
+        "placebo_rank": 3,
+        "empirical_tail_fraction": 0.6,
+        "num_placebo_sets": 5,
+        "is_candidate": true,
+        "is_diagnostic_only": false,
+        "is_blocked": false,
+        "warnings": [
+          "Framework-level studentized placebo-rank candidate only \u2014 empirical tail fraction is not a final production p-value and no causal confidence interval is authorized."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    },
+    {
+      "scenario_id": "two_sided_rank_tail_fraction",
+      "passed": true,
+      "expected_decision": "studentized_rank_candidate",
+      "result": {
+        "decision": "studentized_rank_candidate",
+        "scale_validity": "valid",
+        "observed_studentized_statistic": 2.0,
+        "pseudo_studentized_statistic_by_assignment": {
+          "p1": -2.0,
+          "p2": 0.5,
+          "p3": 1.0,
+          "p4": 2.0,
+          "p5": 1.8
+        },
+        "placebo_rank": 2,
+        "empirical_tail_fraction": 0.4,
+        "num_placebo_sets": 5,
+        "is_candidate": true,
+        "is_diagnostic_only": false,
+        "is_blocked": false,
+        "warnings": [
+          "Framework-level studentized placebo-rank candidate only \u2014 empirical tail fraction is not a final production p-value and no causal confidence interval is authorized."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false
+        }
+      }
+    }
+  ],
+  "candidate_scenarios": 7,
+  "diagnostic_only_scenarios": 1,
+  "blocked_scenarios": 20,
+  "studentized_statistic_contract": {
+    "formula": "(effect - null_value) / scale",
+    "required_inputs": [
+      "observed_effect",
+      "pseudo_effect_by_assignment",
+      "observed_scale",
+      "pseudo_scale_by_assignment",
+      "effect_direction",
+      "assignment_role"
+    ],
+    "supported_directions": [
+      "greater",
+      "less",
+      "two_sided"
+    ],
+    "scale_validity_states": [
+      "valid",
+      "missing_observed_scale",
+      "missing_pseudo_scale",
+      "non_positive_scale",
+      "non_finite_scale",
+      "mismatched_scale_source",
+      "insufficient_placebo_sets",
+      "blocked"
+    ]
+  },
+  "allowed_outputs": [
+    "observed_studentized_statistic",
+    "pseudo_studentized_statistic_by_assignment",
+    "placebo_rank",
+    "empirical_tail_fraction",
+    "framework_level_candidate",
+    "diagnostic_only",
+    "blocked"
+  ],
+  "forbidden_outputs": [
+    "final_p_value",
+    "causal_confidence_interval",
+    "trustreport_authorization",
+    "calibration_signal",
+    "mmm_ingestion",
+    "llm_decisioning",
+    "production_decisioning",
+    "live_api",
+    "scheduler",
+    "budget_optimization"
+  ],
+  "next_artifact": "SCM_STUDENTIZED_TREATED_SET_PLACEBO_INTEGRATION_001",
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false
+}

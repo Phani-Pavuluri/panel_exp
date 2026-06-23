@@ -1392,9 +1392,21 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Status:** **`scm_treated_set_placebo_integration_defined_no_downstream_authorization`**
 
-**Verdict:** SCM-specific integration connecting design-aware assignment roles, precomputed SCM statistics, treated-set placebo rank/tail diagnostics, SCM placebo semantics, and method-specific randomization readiness. Statistic-first integration — no new SCM fitting. **No production p-value, CI, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, or budget authorization.** **`INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001`** disposition: `SCM_TREATED_SET_PLACEBO_INTEGRATION_DEFINED_PENDING_STUDENTIZED_RANK`.
+**Verdict:** SCM-specific integration connecting design-aware assignment roles, precomputed SCM statistics, treated-set placebo rank/tail diagnostics, SCM placebo semantics, and method-specific randomization readiness. Statistic-first integration — no new SCM fitting. **No production p-value, CI, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, or budget authorization.** **`INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001`** disposition: `STUDENTIZED_PLACEBO_RANK_DEFINED_PENDING_SCM_STUDENTIZED_INTEGRATION`.
 
-**Next:** `STUDENTIZED_PLACEBO_RANK_INFERENCE_001`.
+**Next:** `STUDENTIZED_PLACEBO_RANK_INFERENCE_001` (completed — see studentized placebo rank report).
+
+---
+
+## STUDENTIZED-PLACEBO-RANK-INFERENCE-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/STUDENTIZED_PLACEBO_RANK_INFERENCE_001_REPORT.md`](track_d/STUDENTIZED_PLACEBO_RANK_INFERENCE_001_REPORT.md) · [`docs/track_d/archives/STUDENTIZED_PLACEBO_RANK_INFERENCE_001_summary.json`](track_d/archives/STUDENTIZED_PLACEBO_RANK_INFERENCE_001_summary.json) · [`panel_exp/inference/studentized_placebo_rank.py`](../panel_exp/inference/studentized_placebo_rank.py) · [`panel_exp/validation/studentized_placebo_rank_inference_001.py`](../panel_exp/validation/studentized_placebo_rank_inference_001.py)
+
+**Status:** **`studentized_placebo_rank_inference_defined_no_downstream_authorization`**
+
+**Verdict:** Governed studentized placebo-rank primitive comparing `(effect - null_value) / scale` across observed and pseudo assignments. Design-based candidate and falsification diagnostic paths validated. Scale contract enforcement blocks missing/non-positive/non-finite scales. **No production p-value, CI, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, or budget authorization.** **`INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001`** disposition: `STUDENTIZED_PLACEBO_RANK_DEFINED_PENDING_SCM_STUDENTIZED_INTEGRATION`.
+
+**Next:** `SCM_STUDENTIZED_TREATED_SET_PLACEBO_INTEGRATION_001`.
 
 ---
 
