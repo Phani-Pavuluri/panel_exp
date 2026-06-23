@@ -1338,6 +1338,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001_REPORT.md`](track_d/TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001_REPORT.md) · [`docs/track_d/archives/TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001_summary.json`](track_d/archives/TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001_summary.json) · [`panel_exp/validation/trustreport_research_mode_access_control_001.py`](../panel_exp/validation/trustreport_research_mode_access_control_001.py)
+
+**Status:** **`trustreport_research_mode_access_control_passed`**
+
+**Verdict:** Research-mode access control for DCM-001/004 exported artifacts. Role-permission matrix grants view/export/review/approve only. Production, API, scheduler, CalibrationSignal, budget, and global platform modes blocked. **No deployment authorization.**
+
+**Next:** `TRUSTREPORT_RESEARCH_MODE_AUDIT_LOG_001`.
+
+---
+
 ## TRUSTREPORT-RESEARCH-MODE-REVIEW-WORKFLOW-001 (2026-06-03)
 
 **Artifact:** [`docs/track_d/TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001_REPORT.md`](track_d/TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001_REPORT.md) · [`docs/track_d/archives/TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001_summary.json`](track_d/archives/TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001_summary.json) · [`panel_exp/validation/trustreport_research_mode_review_workflow_001.py`](../panel_exp/validation/trustreport_research_mode_review_workflow_001.py)

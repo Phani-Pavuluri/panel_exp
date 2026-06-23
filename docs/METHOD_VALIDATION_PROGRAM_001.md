@@ -347,6 +347,8 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **TRUSTREPORT-RESEARCH-MODE-REVIEW-WORKFLOW-001 (2026-06-03):** [`TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001_REPORT.md`](track_d/TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001_REPORT.md) — research-mode review workflow; regenerate: `poetry run python -m panel_exp.validation.trustreport_research_mode_review_workflow_001 --overwrite`.
 
+**TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001 (2026-06-03):** [`TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001_REPORT.md`](track_d/TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001_REPORT.md) — research-mode access control; regenerate: `poetry run python -m panel_exp.validation.trustreport_research_mode_access_control_001 --overwrite`.
+
 ## 13. Stop condition
 
 | Criterion | Status |
