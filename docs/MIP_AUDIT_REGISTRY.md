@@ -1404,9 +1404,21 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Status:** **`studentized_placebo_rank_inference_defined_no_downstream_authorization`**
 
-**Verdict:** Governed studentized placebo-rank primitive comparing `(effect - null_value) / scale` across observed and pseudo assignments. Design-based candidate and falsification diagnostic paths validated. Scale contract enforcement blocks missing/non-positive/non-finite scales. **No production p-value, CI, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, or budget authorization.** **`INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001`** disposition: `STUDENTIZED_PLACEBO_RANK_DEFINED_PENDING_SCM_STUDENTIZED_INTEGRATION`.
+**Verdict:** Governed studentized placebo-rank primitive comparing `(effect - null_value) / scale` across observed and pseudo assignments. Design-based candidate and falsification diagnostic paths validated. Scale contract enforcement blocks missing/non-positive/non-finite scales. **No production p-value, CI, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, or budget authorization.** **`INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001`** disposition: `SCM_STUDENTIZED_INTEGRATION_DEFINED_PENDING_MULTICELL_MULTIPLICITY`.
 
-**Next:** `SCM_STUDENTIZED_TREATED_SET_PLACEBO_INTEGRATION_001`.
+**Next:** `SCM_STUDENTIZED_TREATED_SET_PLACEBO_INTEGRATION_001` (completed — see SCM studentized integration report).
+
+---
+
+## SCM-STUDENTIZED-TREATED-SET-PLACEBO-INTEGRATION-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/SCM_STUDENTIZED_TREATED_SET_PLACEBO_INTEGRATION_001_REPORT.md`](track_d/SCM_STUDENTIZED_TREATED_SET_PLACEBO_INTEGRATION_001_REPORT.md) · [`docs/track_d/archives/SCM_STUDENTIZED_TREATED_SET_PLACEBO_INTEGRATION_001_summary.json`](track_d/archives/SCM_STUDENTIZED_TREATED_SET_PLACEBO_INTEGRATION_001_summary.json) · [`panel_exp/inference/scm_studentized_treated_set_placebo.py`](../panel_exp/inference/scm_studentized_treated_set_placebo.py) · [`panel_exp/validation/scm_studentized_treated_set_placebo_integration_001.py`](../panel_exp/validation/scm_studentized_treated_set_placebo_integration_001.py)
+
+**Status:** **`scm_studentized_treated_set_placebo_integration_defined_no_downstream_authorization`**
+
+**Verdict:** SCM-specific studentized treated-set placebo integration bridging studentized placebo-rank, SCM treated-set placebo, SCM semantics, and method-specific randomization readiness. Effect/scale contract enforced — no SCM fitting or inferred scales. **No production p-value, CI, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, or budget authorization.** **`INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001`** disposition: `SCM_STUDENTIZED_INTEGRATION_DEFINED_PENDING_MULTICELL_MULTIPLICITY`.
+
+**Next:** `MULTICELL_SHARED_CONTROL_MULTIPLICITY_001`.
 
 ---
 
