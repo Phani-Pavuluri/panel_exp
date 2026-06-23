@@ -1,0 +1,2067 @@
+{
+  "artifact_id": "AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001",
+  "artifact_version": "1.0.0",
+  "status": "completed",
+  "generated_at": "2026-06-23T18:41:10.962667+00:00",
+  "git_commit": "8a0577b2c788cba06029073b04cd352f6668e088",
+  "verdict": "augsynth_point_randomization_integration_defined_no_downstream_authorization",
+  "governance_verdict": "augsynth_point_randomization_integration_defined_no_downstream_authorization",
+  "roadmap_spine": [
+    "ROADMAP_REFOCUS_METHOD_VALIDATION_001",
+    "INFERENCE_REPLACEMENT_SCOUT_001",
+    "DESIGN_AWARE_ASSIGNMENT_GENERATORS_001",
+    "MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001",
+    "SCM_PLACEBO_GOVERNED_SEMANTICS_001",
+    "METHOD_ROADMAP_ALIGNMENT_AUDIT_001",
+    "METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001",
+    "SCM_TREATED_SET_PLACEBO_INTEGRATION_001",
+    "STUDENTIZED_PLACEBO_RANK_INFERENCE_001",
+    "SCM_STUDENTIZED_TREATED_SET_PLACEBO_INTEGRATION_001",
+    "MULTICELL_SHARED_CONTROL_MULTIPLICITY_001",
+    "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001",
+    "AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001"
+  ],
+  "scenario_count": 34,
+  "passed_scenarios": 34,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "point_effect_design_candidate",
+      "passed": true,
+      "expected_decision": "augsynth_point_randomization_candidate",
+      "expected_compatibility": "compatible",
+      "result": {
+        "decision": "augsynth_point_randomization_candidate",
+        "compatibility": "compatible",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": 3,
+          "empirical_tail_fraction": 0.2727272727272727,
+          "num_valid_placebo_sets": 11,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {
+          "role": "design_based_randomization_candidate",
+          "decision": "method_randomization_candidate",
+          "method_family": "augsynth_cvxpy",
+          "statistic_kind": "absolute_effect",
+          "geometry": "multi_treated_set",
+          "is_candidate": true,
+          "is_diagnostic_only": false,
+          "is_blocked": false,
+          "required_next_evidence": [],
+          "warnings": [
+            "Framework-level design-based randomization candidate only \u2014 not a final production p-value or causal confidence interval."
+          ],
+          "blocked_reasons": [],
+          "governance_flags": {
+            "trustreport_authorized": false,
+            "calibration_signal_allowed": false,
+            "mmm_ingestion_allowed": false,
+            "llm_decisioning_allowed": false,
+            "production_decisioning_allowed": false,
+            "live_api_authorized": false,
+            "scheduler_authorized": false,
+            "budget_optimization_allowed": false
+          }
+        },
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": 3,
+        "empirical_tail_fraction": 0.2727272727272727,
+        "num_placebo_sets": 11,
+        "is_candidate": true,
+        "is_diagnostic_only": false,
+        "is_blocked": false,
+        "warnings": [
+          "AugSynth point randomization framework-level candidate only \u2014 empirical tail fraction is not a final production p-value and no causal confidence interval is authorized.",
+          "AugSynth point randomization does not authorize AugSynth JK production inference."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "relative_point_effect_design_candidate",
+      "passed": true,
+      "expected_decision": "augsynth_point_randomization_candidate",
+      "expected_compatibility": null,
+      "result": {
+        "decision": "augsynth_point_randomization_candidate",
+        "compatibility": "compatible",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": 3,
+          "empirical_tail_fraction": 0.2727272727272727,
+          "num_valid_placebo_sets": 11,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {
+          "role": "design_based_randomization_candidate",
+          "decision": "method_randomization_candidate",
+          "method_family": "augsynth_cvxpy",
+          "statistic_kind": "relative_effect",
+          "geometry": "multi_treated_set",
+          "is_candidate": true,
+          "is_diagnostic_only": false,
+          "is_blocked": false,
+          "required_next_evidence": [],
+          "warnings": [
+            "Framework-level design-based randomization candidate only \u2014 not a final production p-value or causal confidence interval."
+          ],
+          "blocked_reasons": [],
+          "governance_flags": {
+            "trustreport_authorized": false,
+            "calibration_signal_allowed": false,
+            "mmm_ingestion_allowed": false,
+            "llm_decisioning_allowed": false,
+            "production_decisioning_allowed": false,
+            "live_api_authorized": false,
+            "scheduler_authorized": false,
+            "budget_optimization_allowed": false
+          }
+        },
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": 3,
+        "empirical_tail_fraction": 0.2727272727272727,
+        "num_placebo_sets": 11,
+        "is_candidate": true,
+        "is_diagnostic_only": false,
+        "is_blocked": false,
+        "warnings": [
+          "AugSynth point randomization framework-level candidate only \u2014 empirical tail fraction is not a final production p-value and no causal confidence interval is authorized.",
+          "AugSynth point randomization does not authorize AugSynth JK production inference."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "studentized_point_effect_design_candidate",
+      "passed": true,
+      "expected_decision": "augsynth_point_randomization_candidate",
+      "expected_compatibility": null,
+      "result": {
+        "decision": "augsynth_point_randomization_candidate",
+        "compatibility": "compatible",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": 3,
+          "empirical_tail_fraction": 0.2727272727272727,
+          "num_valid_placebo_sets": 11,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {
+          "role": "design_based_randomization_candidate",
+          "decision": "method_randomization_candidate",
+          "method_family": "augsynth_cvxpy",
+          "statistic_kind": "studentized_effect",
+          "geometry": "multi_treated_set",
+          "is_candidate": true,
+          "is_diagnostic_only": false,
+          "is_blocked": false,
+          "required_next_evidence": [],
+          "warnings": [
+            "Framework-level design-based randomization candidate only \u2014 not a final production p-value or causal confidence interval."
+          ],
+          "blocked_reasons": [],
+          "governance_flags": {
+            "trustreport_authorized": false,
+            "calibration_signal_allowed": false,
+            "mmm_ingestion_allowed": false,
+            "llm_decisioning_allowed": false,
+            "production_decisioning_allowed": false,
+            "live_api_authorized": false,
+            "scheduler_authorized": false,
+            "budget_optimization_allowed": false
+          }
+        },
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": 3,
+        "empirical_tail_fraction": 0.2727272727272727,
+        "num_placebo_sets": 11,
+        "is_candidate": true,
+        "is_diagnostic_only": false,
+        "is_blocked": false,
+        "warnings": [
+          "AugSynth point randomization framework-level candidate only \u2014 empirical tail fraction is not a final production p-value and no causal confidence interval is authorized.",
+          "AugSynth point randomization does not authorize AugSynth JK production inference."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "falsification_only_diagnostic",
+      "passed": true,
+      "expected_decision": "augsynth_point_diagnostic_only",
+      "expected_compatibility": null,
+      "result": {
+        "decision": "augsynth_point_diagnostic_only",
+        "compatibility": "compatible",
+        "treated_set_placebo_summary": {
+          "semantic_role": "falsification_diagnostic",
+          "placebo_rank": 3,
+          "empirical_tail_fraction": 0.2727272727272727,
+          "num_valid_placebo_sets": 11,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {
+          "role": "falsification_diagnostic",
+          "decision": "method_falsification_diagnostic_only",
+          "method_family": "augsynth_cvxpy",
+          "statistic_kind": "absolute_effect",
+          "geometry": "multi_treated_set",
+          "is_candidate": false,
+          "is_diagnostic_only": true,
+          "is_blocked": false,
+          "required_next_evidence": [],
+          "warnings": [
+            "Pseudo-assignments are falsification-only; this is not design-based causal inference."
+          ],
+          "blocked_reasons": [],
+          "governance_flags": {
+            "trustreport_authorized": false,
+            "calibration_signal_allowed": false,
+            "mmm_ingestion_allowed": false,
+            "llm_decisioning_allowed": false,
+            "production_decisioning_allowed": false,
+            "live_api_authorized": false,
+            "scheduler_authorized": false,
+            "budget_optimization_allowed": false
+          }
+        },
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": 3,
+        "empirical_tail_fraction": 0.2727272727272727,
+        "num_placebo_sets": 11,
+        "is_candidate": false,
+        "is_diagnostic_only": true,
+        "is_blocked": false,
+        "warnings": [
+          "Not design-based causal inference \u2014 falsification diagnostic only; empirical tail fraction is not a final production p-value."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "blocked_assignment_role",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": null,
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "blocked",
+        "treated_set_placebo_summary": {
+          "semantic_role": "blocked",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "assignment role blocked: blocked"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "jackknife_statistic_diagnostic_only",
+      "passed": true,
+      "expected_decision": "augsynth_jk_diagnostic_only",
+      "expected_compatibility": null,
+      "result": {
+        "decision": "augsynth_jk_diagnostic_only",
+        "compatibility": "statistic_kind_blocked",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {
+          "role": "diagnostic_only",
+          "decision": "method_diagnostic_only",
+          "method_family": "augsynth_cvxpy",
+          "statistic_kind": "jackknife_interval",
+          "geometry": "multi_treated_set",
+          "is_candidate": false,
+          "is_diagnostic_only": true,
+          "is_blocked": false,
+          "required_next_evidence": [
+            "augsynth_estimand_scale_bridge"
+          ],
+          "warnings": [
+            "AugSynth JK interval is diagnostic-only \u2014 distinct from point-statistic randomization candidate"
+          ],
+          "blocked_reasons": [],
+          "governance_flags": {
+            "trustreport_authorized": false,
+            "calibration_signal_allowed": false,
+            "mmm_ingestion_allowed": false,
+            "llm_decisioning_allowed": false,
+            "production_decisioning_allowed": false,
+            "live_api_authorized": false,
+            "scheduler_authorized": false,
+            "budget_optimization_allowed": false
+          }
+        },
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 11,
+        "is_candidate": false,
+        "is_diagnostic_only": true,
+        "is_blocked": false,
+        "warnings": [
+          "AugSynth JK remains diagnostic-only / characterized-only \u2014 not production inference.",
+          "AugSynth point randomization does not authorize AugSynth JK production inference."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "jackknife_production_request_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": null,
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "statistic_kind_blocked",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [
+          "AugSynth JK remains diagnostic-only / characterized-only \u2014 not production inference."
+        ],
+        "blocked_reasons": [
+          "AugSynth JK production inference is not authorized"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "missing_observed_statistic_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": "missing_observed_statistic",
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "missing_observed_statistic",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": null,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "statistic contract not compatible: missing_observed_statistic"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "missing_pseudo_statistics_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": "missing_pseudo_statistics",
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "missing_pseudo_statistics",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {},
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "statistic contract not compatible: missing_pseudo_statistics"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "unsupported_statistic_kind_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": null,
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "statistic_kind_blocked",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "unsupported statistic kind: unknown"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "unsupported_inference_mode_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": null,
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "blocked",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "unsupported inference mode: unknown"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "statistic_definition_mismatch_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": "statistic_definition_mismatch",
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "statistic_definition_mismatch",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "statistic contract not compatible: statistic_definition_mismatch"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "estimand_mismatch_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": "estimand_mismatch",
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "estimand_mismatch",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "statistic contract not compatible: estimand_mismatch"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "outcome_scale_mismatch_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": "outcome_scale_mismatch",
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "outcome_scale_mismatch",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "statistic contract not compatible: outcome_scale_mismatch"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "time_window_mismatch_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": "time_window_mismatch",
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "time_window_mismatch",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "statistic contract not compatible: time_window_mismatch"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "donor_eligibility_mismatch_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": "donor_eligibility_mismatch",
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "donor_eligibility_mismatch",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "statistic contract not compatible: donor_eligibility_mismatch"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "augmentation_config_mismatch_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": "augmentation_config_mismatch",
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "augmentation_config_mismatch",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "statistic contract not compatible: augmentation_config_mismatch"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "non_finite_observed_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": "non_numeric_statistic",
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "non_numeric_statistic",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": NaN,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "statistic contract not compatible: non_numeric_statistic"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "non_finite_pseudo_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": "non_numeric_statistic",
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "non_numeric_statistic",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": Infinity,
+          "p2": 0.1,
+          "p3": 0.1,
+          "p4": 0.1,
+          "p5": 0.1,
+          "p6": 0.1,
+          "p7": 0.1,
+          "p8": 0.1,
+          "p9": 0.1,
+          "p10": 0.1,
+          "p11": 0.1
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "statistic contract not compatible: non_numeric_statistic"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "insufficient_pseudo_assignments_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": "insufficient_pseudo_assignments",
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "insufficient_pseudo_assignments",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.1,
+          "p2": 0.1,
+          "p3": 0.1,
+          "p4": 0.1,
+          "p5": 0.1
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "statistic contract not compatible: insufficient_pseudo_assignments"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "invalid_effect_direction_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": null,
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "blocked",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "invalid effect direction: invalid"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "final_p_value_request_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": null,
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "blocked",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "final production p-value semantics are blocked"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "causal_ci_request_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": null,
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "blocked",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "causal confidence interval semantics are blocked"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "trustreport_request_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": null,
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "blocked",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "TrustReport authorization is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "calibration_signal_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": null,
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "blocked",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "CalibrationSignal export is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "mmm_ingestion_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": null,
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "blocked",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "MMM ingestion is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "llm_decisioning_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": null,
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "blocked",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "LLM decisioning is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "production_decisioning_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": null,
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "blocked",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "production decisioning is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "live_api_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": null,
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "blocked",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "live API authorization is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "scheduler_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": null,
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "blocked",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "scheduler authorization is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "budget_optimization_blocked",
+      "passed": true,
+      "expected_decision": "augsynth_randomization_blocked",
+      "expected_compatibility": null,
+      "result": {
+        "decision": "augsynth_randomization_blocked",
+        "compatibility": "blocked",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": null,
+          "empirical_tail_fraction": null,
+          "num_valid_placebo_sets": 0,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {},
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": null,
+        "empirical_tail_fraction": null,
+        "num_placebo_sets": 0,
+        "is_candidate": false,
+        "is_diagnostic_only": false,
+        "is_blocked": true,
+        "warnings": [],
+        "blocked_reasons": [
+          "budget optimization is not supported"
+        ],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "placebo_bridge_rank_tail",
+      "passed": true,
+      "expected_decision": "augsynth_point_randomization_candidate",
+      "expected_compatibility": null,
+      "result": {
+        "decision": "augsynth_point_randomization_candidate",
+        "compatibility": "compatible",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": 2,
+          "empirical_tail_fraction": 0.3333333333333333,
+          "num_valid_placebo_sets": 6,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {
+          "role": "design_based_randomization_candidate",
+          "decision": "method_randomization_candidate",
+          "method_family": "augsynth_cvxpy",
+          "statistic_kind": "absolute_effect",
+          "geometry": "multi_treated_set",
+          "is_candidate": true,
+          "is_diagnostic_only": false,
+          "is_blocked": false,
+          "required_next_evidence": [],
+          "warnings": [
+            "Framework-level design-based randomization candidate only \u2014 not a final production p-value or causal confidence interval."
+          ],
+          "blocked_reasons": [],
+          "governance_flags": {
+            "trustreport_authorized": false,
+            "calibration_signal_allowed": false,
+            "mmm_ingestion_allowed": false,
+            "llm_decisioning_allowed": false,
+            "production_decisioning_allowed": false,
+            "live_api_authorized": false,
+            "scheduler_authorized": false,
+            "budget_optimization_allowed": false
+          }
+        },
+        "observed_statistic": 0.5,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.1,
+          "p2": 0.2,
+          "p3": 0.3,
+          "p4": 0.4,
+          "p5": 0.5,
+          "p6": 0.6
+        },
+        "placebo_rank": 2,
+        "empirical_tail_fraction": 0.3333333333333333,
+        "num_placebo_sets": 6,
+        "is_candidate": true,
+        "is_diagnostic_only": false,
+        "is_blocked": false,
+        "warnings": [
+          "AugSynth point randomization framework-level candidate only \u2014 empirical tail fraction is not a final production p-value and no causal confidence interval is authorized.",
+          "AugSynth point randomization does not authorize AugSynth JK production inference."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "method_bridge_augsynth_family",
+      "passed": true,
+      "expected_decision": "augsynth_point_randomization_candidate",
+      "expected_compatibility": null,
+      "result": {
+        "decision": "augsynth_point_randomization_candidate",
+        "compatibility": "compatible",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": 3,
+          "empirical_tail_fraction": 0.2727272727272727,
+          "num_valid_placebo_sets": 11,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {
+          "role": "design_based_randomization_candidate",
+          "decision": "method_randomization_candidate",
+          "method_family": "augsynth_cvxpy",
+          "statistic_kind": "absolute_effect",
+          "geometry": "multi_treated_set",
+          "is_candidate": true,
+          "is_diagnostic_only": false,
+          "is_blocked": false,
+          "required_next_evidence": [],
+          "warnings": [
+            "Framework-level design-based randomization candidate only \u2014 not a final production p-value or causal confidence interval."
+          ],
+          "blocked_reasons": [],
+          "governance_flags": {
+            "trustreport_authorized": false,
+            "calibration_signal_allowed": false,
+            "mmm_ingestion_allowed": false,
+            "llm_decisioning_allowed": false,
+            "production_decisioning_allowed": false,
+            "live_api_authorized": false,
+            "scheduler_authorized": false,
+            "budget_optimization_allowed": false
+          }
+        },
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": 3,
+        "empirical_tail_fraction": 0.2727272727272727,
+        "num_placebo_sets": 11,
+        "is_candidate": true,
+        "is_diagnostic_only": false,
+        "is_blocked": false,
+        "warnings": [
+          "AugSynth point randomization framework-level candidate only \u2014 empirical tail fraction is not a final production p-value and no causal confidence interval is authorized.",
+          "AugSynth point randomization does not authorize AugSynth JK production inference."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    },
+    {
+      "scenario_id": "governance_flags_all_false",
+      "passed": true,
+      "expected_decision": "augsynth_point_randomization_candidate",
+      "expected_compatibility": null,
+      "result": {
+        "decision": "augsynth_point_randomization_candidate",
+        "compatibility": "compatible",
+        "treated_set_placebo_summary": {
+          "semantic_role": "design_based_randomization_candidate",
+          "placebo_rank": 3,
+          "empirical_tail_fraction": 0.2727272727272727,
+          "num_valid_placebo_sets": 11,
+          "framework_tail_fraction_label": "not_production_p_value"
+        },
+        "method_randomization_summary": {
+          "role": "design_based_randomization_candidate",
+          "decision": "method_randomization_candidate",
+          "method_family": "augsynth_cvxpy",
+          "statistic_kind": "absolute_effect",
+          "geometry": "multi_treated_set",
+          "is_candidate": true,
+          "is_diagnostic_only": false,
+          "is_blocked": false,
+          "required_next_evidence": [],
+          "warnings": [
+            "Framework-level design-based randomization candidate only \u2014 not a final production p-value or causal confidence interval."
+          ],
+          "blocked_reasons": [],
+          "governance_flags": {
+            "trustreport_authorized": false,
+            "calibration_signal_allowed": false,
+            "mmm_ingestion_allowed": false,
+            "llm_decisioning_allowed": false,
+            "production_decisioning_allowed": false,
+            "live_api_authorized": false,
+            "scheduler_authorized": false,
+            "budget_optimization_allowed": false
+          }
+        },
+        "observed_statistic": 0.42,
+        "pseudo_statistic_by_assignment": {
+          "p1": 0.05,
+          "p2": 0.1,
+          "p3": 0.15000000000000002,
+          "p4": 0.2,
+          "p5": 0.25,
+          "p6": 0.30000000000000004,
+          "p7": 0.35000000000000003,
+          "p8": 0.4,
+          "p9": 0.45,
+          "p10": 0.5,
+          "p11": 0.55
+        },
+        "placebo_rank": 3,
+        "empirical_tail_fraction": 0.2727272727272727,
+        "num_placebo_sets": 11,
+        "is_candidate": true,
+        "is_diagnostic_only": false,
+        "is_blocked": false,
+        "warnings": [
+          "AugSynth point randomization framework-level candidate only \u2014 empirical tail fraction is not a final production p-value and no causal confidence interval is authorized.",
+          "AugSynth point randomization does not authorize AugSynth JK production inference."
+        ],
+        "blocked_reasons": [],
+        "governance_flags": {
+          "trustreport_authorized": false,
+          "calibration_signal_allowed": false,
+          "mmm_ingestion_allowed": false,
+          "llm_decisioning_allowed": false,
+          "production_decisioning_allowed": false,
+          "live_api_authorized": false,
+          "scheduler_authorized": false,
+          "budget_optimization_allowed": false,
+          "augsynth_jk_authorized": false
+        }
+      }
+    }
+  ],
+  "candidate_scenarios": 6,
+  "diagnostic_only_scenarios": 1,
+  "jk_diagnostic_only_scenarios": 1,
+  "blocked_scenarios": 26,
+  "augsynth_point_contract": {
+    "required_fields": [
+      "observed_statistic",
+      "pseudo_statistic_by_assignment",
+      "statistic_kind",
+      "inference_mode",
+      "effect_direction",
+      "estimand_id",
+      "outcome_scale",
+      "pre_period_id",
+      "post_period_id",
+      "donor_eligibility_rule_id",
+      "augmentation_config_id"
+    ],
+    "candidate_statistic_kinds": [
+      "point_effect",
+      "relative_point_effect",
+      "studentized_point_effect"
+    ],
+    "blocked_or_diagnostic_statistic_kinds": [
+      "jackknife_effect",
+      "unknown"
+    ],
+    "allowed_outputs": [
+      "augsynth_point_randomization_candidate",
+      "augsynth_point_diagnostic_only",
+      "augsynth_jk_diagnostic_only",
+      "placebo_rank",
+      "empirical_tail_fraction",
+      "blocked"
+    ],
+    "forbidden_outputs": [
+      "final_p_value",
+      "causal_confidence_interval",
+      "augsynth_jk_authorization",
+      "trustreport_authorization",
+      "calibration_signal",
+      "mmm_ingestion",
+      "llm_decisioning",
+      "production_decisioning",
+      "live_api",
+      "scheduler",
+      "budget_optimization"
+    ]
+  },
+  "next_artifact": "METHOD_READINESS_MATRIX_V2_001",
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false,
+  "augsynth_jk_authorized": false
+}
