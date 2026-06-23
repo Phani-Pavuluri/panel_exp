@@ -1466,11 +1466,47 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Governed method-readiness matrix v2 consolidating 25+ rows across restricted research-mode, framework candidates, per-cell/contract candidates, diagnostic/sensitivity, multiplicity unresolved, and blocked paths. **No TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production inference authorization.**
 
-**Next:** `CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001`.
+**Next:** `CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001` (completed — see CalibrationSignal method gate draft report).
 
 ---
 
-## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
+## CALIBRATION-SIGNAL-METHOD-GATE-DRAFT-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001_REPORT.md`](track_d/CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001_REPORT.md) · [`docs/track_d/archives/CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001_summary.json`](track_d/archives/CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001_summary.json) · [`panel_exp/inference/calibration_signal_method_gate_draft.py`](../panel_exp/inference/calibration_signal_method_gate_draft.py) · [`panel_exp/validation/calibration_signal_method_gate_draft_001.py`](../panel_exp/validation/calibration_signal_method_gate_draft_001.py)
+
+**Status:** **`calibration_signal_method_gate_draft_defined_no_authorization`**
+
+**Verdict:** Draft CalibrationSignal method gate mapping Method Readiness Matrix V2 tiers to future review eligibility. Future-review eligible and conditionally reviewable rows are not signal-ready. **No CalibrationSignal creation, export, TrustReport expansion, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001` (completed — see method accuracy refocus audit).
+
+---
+
+## METHOD-ACCURACY-COMPATIBILITY-REFOCUS-AUDIT-001 (2026-06-03)
+
+**Artifact:** [`docs/audits/METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001.md`](audits/METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001.md) · [`docs/track_d/archives/METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001_summary.json`](track_d/archives/METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001_summary.json) · [`panel_exp/validation/method_accuracy_compatibility_refocus_audit_001.py`](../panel_exp/validation/method_accuracy_compatibility_refocus_audit_001.py)
+
+**Status:** **`refocus_on_method_accuracy_and_compatibility`**
+
+**Verdict:** Method-accuracy and compatibility refocus audit converting readiness classifications into a ranked remediation backlog. Downstream schema, ingestion, and decisioning work paused. **No CalibrationSignal, TrustReport, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001` (completed — see studentized null calibration report).
+
+---
+
+## STUDENTIZED-RANDOMIZATION-NULL-CALIBRATION-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001_REPORT.md`](track_d/STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001_REPORT.md) · [`docs/track_d/archives/STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001_summary.json`](track_d/archives/STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001_summary.json) · [`panel_exp/inference/studentized_randomization_calibration.py`](../panel_exp/inference/studentized_randomization_calibration.py) · [`panel_exp/validation/studentized_randomization_null_calibration_001.py`](../panel_exp/validation/studentized_randomization_null_calibration_001.py)
+
+**Status:** **`studentized_randomization_null_calibration_completed_no_downstream_authorization`**
+
+**Verdict:** Empirical null-calibration harness for studentized placebo-rank mechanics. Tail fractions are diagnostic only. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001`.
+
+---
+
+## CALIBRATION-SIGNAL-METHOD-GATE-DRAFT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)
 

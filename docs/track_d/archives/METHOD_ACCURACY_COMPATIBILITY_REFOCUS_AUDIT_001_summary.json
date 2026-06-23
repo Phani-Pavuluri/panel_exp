@@ -1,0 +1,632 @@
+{
+  "artifact_id": "METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001",
+  "artifact_version": "1.0.0",
+  "status": "completed",
+  "generated_at": "2026-06-23T20:15:47.307340+00:00",
+  "git_commit": "ffce7b2ad017f01a2c009e990cd69267e07a0fc7",
+  "verdict": "refocus_on_method_accuracy_and_compatibility",
+  "governance_verdict": "refocus_on_method_accuracy_and_compatibility",
+  "roadmap_spine": [
+    "ROADMAP_REFOCUS_METHOD_VALIDATION_001",
+    "INFERENCE_REPLACEMENT_SCOUT_001",
+    "DESIGN_AWARE_ASSIGNMENT_GENERATORS_001",
+    "MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001",
+    "SCM_PLACEBO_GOVERNED_SEMANTICS_001",
+    "METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001",
+    "SCM_TREATED_SET_PLACEBO_INTEGRATION_001",
+    "STUDENTIZED_PLACEBO_RANK_INFERENCE_001",
+    "SCM_STUDENTIZED_TREATED_SET_PLACEBO_INTEGRATION_001",
+    "MULTICELL_SHARED_CONTROL_MULTIPLICITY_001",
+    "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001",
+    "AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001",
+    "METHOD_READINESS_MATRIX_V2_001",
+    "CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001",
+    "METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001"
+  ],
+  "backlog_count": 10,
+  "scenario_count": 30,
+  "passed_scenarios": 30,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "backlog_builds_successfully",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "backlog_at_least_10_items",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "p0_studentized_randomization_null_calibration_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "p0_scm_treated_set_placebo_null_calibration_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "p0_scm_augsynth_statistic_adapter_contract_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "p1_multicell_max_t_research_scout_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "p1_tbrridge_inference_remediation_or_retirement_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "p1_augsynth_jk_retirement_or_replacement_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "p2_stratified_pooling_inference_scout_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "p2_design_assignment_generator_stress_tests_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "p3_dcm_adapter_disposition_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "downstream_pause_item_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "every_item_has_root_issue",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "non_pause_items_have_required_evidence",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "every_item_has_recommended_next_artifact",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "every_item_has_stop_go_criteria",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "every_item_has_forbidden_downstream_outputs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_item_authorizes_calibration_signal_authorization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_item_authorizes_trustreport_expansion",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_item_authorizes_mmm_ingestion",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_item_authorizes_llm_decisioning",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_item_authorizes_production_decisioning",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_item_authorizes_live_api_execution",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_item_authorizes_scheduler_execution",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_item_authorizes_budget_optimization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "summary_priority_counts_match",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "summary_bucket_counts_match",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_first_artifact_studentized_null_calibration",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "downstream_work_marked_paused",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "audit_validation_passes",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "priority_counts": {
+    "p0_immediate": 4,
+    "p1_high": 3,
+    "p2_medium": 2,
+    "p3_low": 1
+  },
+  "bucket_counts": {
+    "null_calibration": 2,
+    "estimator_statistic_adapter": 1,
+    "inference_remediation": 1,
+    "design_compatibility": 1,
+    "geometry_estimand_compatibility": 0,
+    "multicell_dependence_research": 1,
+    "pooling_heterogeneity_research": 1,
+    "retire_or_permanent_block": 2,
+    "downstream_pause": 1
+  },
+  "downstream_work_paused": true,
+  "paused_downstream_artifacts": [
+    "CALIBRATION_SIGNAL_SCHEMA_ALIGNMENT_DRAFT_001",
+    "TRUSTREPORT_METHOD_GATE_DRAFT_001",
+    "MMM_INGESTION_DRAFT_001",
+    "LLM_DECISIONING_DRAFT_001",
+    "LIVE_API_OR_SCHEDULER_WORK"
+  ],
+  "recommended_first_implementation_artifact": "STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001",
+  "refocus_decisions": [
+    "pause_downstream_schema_and_ingestion_work",
+    "prioritize_empirical_null_calibration",
+    "prioritize_estimator_statistic_adapter_compatibility",
+    "treat_tbrridge_as_remediation_or_retirement",
+    "treat_multicell_shared_control_as_research_prototype",
+    "keep_augsynth_jk_diagnostic_or_retire",
+    "keep_all_downstream_authorization_false"
+  ],
+  "p0_backlog": [
+    "STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001",
+    "SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001",
+    "SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001"
+  ],
+  "p1_backlog": [
+    "MULTICELL_MAX_T_RESEARCH_SCOUT_001",
+    "TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001",
+    "AUGSYNTH_JK_RETIREMENT_OR_REPLACEMENT_AUDIT_001"
+  ],
+  "p2_backlog": [
+    "STRATIFIED_POOLING_INFERENCE_SCOUT_001",
+    "DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001"
+  ],
+  "p3_backlog": [
+    "DCM_009_019_ADAPTER_DISPOSITION_AUDIT_001"
+  ],
+  "backlog_summary": {
+    "backlog_count": 10,
+    "priority_counts": {
+      "p0_immediate": 4,
+      "p1_high": 3,
+      "p2_medium": 2,
+      "p3_low": 1
+    },
+    "bucket_counts": {
+      "null_calibration": 2,
+      "estimator_statistic_adapter": 1,
+      "inference_remediation": 1,
+      "design_compatibility": 1,
+      "geometry_estimand_compatibility": 0,
+      "multicell_dependence_research": 1,
+      "pooling_heterogeneity_research": 1,
+      "retire_or_permanent_block": 2,
+      "downstream_pause": 1
+    },
+    "items": [
+      {
+        "item_id": "studentized_randomization_null_calibration",
+        "title": "Studentized randomization null calibration",
+        "affected_methods": [
+          "scm_studentized_treated_set_placebo_candidate",
+          "studentized_placebo_rank"
+        ],
+        "current_readiness_status": "framework_level_randomization_candidate",
+        "work_bucket": "null_calibration",
+        "priority": "p0_immediate",
+        "fixability": "needs_empirical_evidence",
+        "root_issue": "Empirical type-I behavior under null simulations is not yet validated across design-aware assignment generators.",
+        "why_it_matters": "Studentized placebo-rank candidates cannot advance without null-calibrated tail fractions under governed assignment families.",
+        "required_evidence": [
+          "null_simulation_grid",
+          "assignment_family_coverage",
+          "empirical_type_i_at_alpha_levels",
+          "tail_fraction_calibration_diagnostics",
+          "minimum_pseudo_assignment_sensitivity",
+          "false_confidence_checks"
+        ],
+        "recommended_next_artifact": "STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001",
+        "stop_go_criteria": [
+          "continue_if_type_i_controlled_under_governed_designs",
+          "restrict_to_diagnostic_only_if_false_positives_exceed_tolerance"
+        ],
+        "forbidden_outputs": [
+          "calibration_signal_authorization",
+          "calibration_signal_creation",
+          "trustreport_expansion",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "live_api_execution",
+          "scheduler_execution",
+          "budget_optimization"
+        ]
+      },
+      {
+        "item_id": "scm_treated_set_placebo_null_calibration",
+        "title": "SCM treated-set placebo null calibration",
+        "affected_methods": [
+          "scm_treated_set_placebo_candidate"
+        ],
+        "current_readiness_status": "framework_level_randomization_candidate",
+        "work_bucket": "null_calibration",
+        "priority": "p0_immediate",
+        "fixability": "needs_empirical_evidence",
+        "root_issue": "Treated-set placebo candidate exists, but empirical null calibration is not yet established.",
+        "why_it_matters": "SCM multi-treated placebo integration remains framework-level only until empirical tail fractions behave under known null assignments.",
+        "required_evidence": [
+          "null_assignment_simulations",
+          "empirical_tail_fraction_under_null",
+          "pseudo_assignment_count_sensitivity",
+          "design_aware_assignment_coverage"
+        ],
+        "recommended_next_artifact": "SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001",
+        "stop_go_criteria": [
+          "continue_if_empirical_tail_fractions_behave_under_known_null_assignments",
+          "keep_framework_level_only_if_calibration_incomplete"
+        ],
+        "forbidden_outputs": [
+          "calibration_signal_authorization",
+          "calibration_signal_creation",
+          "trustreport_expansion",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "live_api_execution",
+          "scheduler_execution",
+          "budget_optimization"
+        ]
+      },
+      {
+        "item_id": "scm_augsynth_statistic_adapter_contract",
+        "title": "SCM/AugSynth statistic adapter contract",
+        "affected_methods": [
+          "scm_treated_set_placebo_candidate",
+          "scm_studentized_treated_set_placebo_candidate",
+          "augsynth_point_randomization_candidate"
+        ],
+        "current_readiness_status": "framework_level_randomization_candidate",
+        "work_bucket": "estimator_statistic_adapter",
+        "priority": "p0_immediate",
+        "fixability": "fixable_now",
+        "root_issue": "SCM and AugSynth candidates rely on statistic-first contracts; a shared adapter contract is needed to guarantee observed/pseudo statistic comparability.",
+        "why_it_matters": "Without a shared adapter contract, randomization candidates risk incomparable observed and pseudo statistics across estimators.",
+        "required_evidence": [
+          "common_statistic_interface",
+          "observed_pseudo_recomputation_contract",
+          "metric_scale_time_window_estimand_compatibility",
+          "donor_eligibility_compatibility",
+          "estimator_config_provenance"
+        ],
+        "recommended_next_artifact": "SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001",
+        "stop_go_criteria": [
+          "continue_if_adapter_contract_validates_across_scm_and_augsynth",
+          "block_promotion_if_observed_pseudo_incomparable"
+        ],
+        "forbidden_outputs": [
+          "calibration_signal_authorization",
+          "calibration_signal_creation",
+          "trustreport_expansion",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "live_api_execution",
+          "scheduler_execution",
+          "budget_optimization"
+        ]
+      },
+      {
+        "item_id": "multicell_max_t_research_scout",
+        "title": "Multi-cell max-T research scout",
+        "affected_methods": [
+          "multicell_shared_control_unresolved",
+          "multicell_multiple_cell_family_adjustment_required",
+          "multicell_global_decision_blocked",
+          "multicell_winner_selection_blocked",
+          "multicell_pooled_effect_blocked"
+        ],
+        "current_readiness_status": "multiplicity_or_dependence_unresolved",
+        "work_bucket": "multicell_dependence_research",
+        "priority": "p1_high",
+        "fixability": "research_prototype_required",
+        "root_issue": "Shared-control dependence and multiple testing are unresolved; independent FWER proxy is not enough.",
+        "why_it_matters": "Global, winner, and pooled multi-cell claims remain blocked without dependence-aware inference research.",
+        "required_evidence": [
+          "joint_null_definition",
+          "max_t_closed_testing_step_down_candidates",
+          "dependence_aware_simulation",
+          "shared_control_covariance_handling",
+          "winner_selection_correction_policy"
+        ],
+        "recommended_next_artifact": "MULTICELL_MAX_T_RESEARCH_SCOUT_001",
+        "stop_go_criteria": [
+          "continue_if_dependence_aware_prototype_shows_credible_familywise_control",
+          "keep_blocked_if_only_independent_proxy_available"
+        ],
+        "forbidden_outputs": [
+          "calibration_signal_authorization",
+          "calibration_signal_creation",
+          "trustreport_expansion",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "live_api_execution",
+          "scheduler_execution",
+          "budget_optimization"
+        ]
+      },
+      {
+        "item_id": "tbrridge_inference_remediation_or_retirement",
+        "title": "TBRRidge inference remediation or retirement",
+        "affected_methods": [
+          "tbrridge_brb_diagnostic_only",
+          "tbrridge_kfold_diagnostic_only",
+          "tbrridge_placebo_diagnostic_only",
+          "tbrridge_jackknife_blocked"
+        ],
+        "current_readiness_status": "diagnostic_only_or_blocked",
+        "work_bucket": "inference_remediation",
+        "priority": "p1_high",
+        "fixability": "likely_retire",
+        "root_issue": "TBRRidge inference variants have diagnostic-only or blocked status due to prior null/type-I/geometry failures.",
+        "why_it_matters": "TBRRidge should not receive incremental governance; it needs remediation evidence or explicit retirement.",
+        "required_evidence": [
+          "failure_mode_inventory",
+          "geometry_specific_restrictions",
+          "null_simulation_reruns",
+          "comparison_against_scm_did_augsynth_candidates",
+          "retirement_criteria"
+        ],
+        "recommended_next_artifact": "TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001",
+        "stop_go_criteria": [
+          "retire_if_null_failures_reproduce",
+          "remediate_only_if_replacement_inference_path_validated"
+        ],
+        "forbidden_outputs": [
+          "calibration_signal_authorization",
+          "calibration_signal_creation",
+          "trustreport_expansion",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "live_api_execution",
+          "scheduler_execution",
+          "budget_optimization"
+        ]
+      },
+      {
+        "item_id": "augsynth_jk_retirement_or_replacement",
+        "title": "AugSynth JK retirement or replacement",
+        "affected_methods": [
+          "augsynth_jackknife_diagnostic_only",
+          "augsynth_jk_production_inference_blocked"
+        ],
+        "current_readiness_status": "diagnostic_only",
+        "work_bucket": "retire_or_permanent_block",
+        "priority": "p1_high",
+        "fixability": "permanent_block",
+        "root_issue": "AugSynth JK remains diagnostic-only and should not linger as implied future production inference unless a replacement path is defined.",
+        "why_it_matters": "AugSynth point/studentized randomization is the candidate path; JK must be retired or explicitly replaced to prevent downstream drift.",
+        "required_evidence": [
+          "diagnostic_value_assessment",
+          "replacement_path_through_point_studentized_randomization",
+          "retirement_criteria"
+        ],
+        "recommended_next_artifact": "AUGSYNTH_JK_RETIREMENT_OR_REPLACEMENT_AUDIT_001",
+        "stop_go_criteria": [
+          "retire_jk_from_active_roadmap_unless_diagnostic_value_justified",
+          "never_promote_jk_to_production_inference"
+        ],
+        "forbidden_outputs": [
+          "calibration_signal_authorization",
+          "calibration_signal_creation",
+          "trustreport_expansion",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "live_api_execution",
+          "scheduler_execution",
+          "budget_optimization"
+        ]
+      },
+      {
+        "item_id": "stratified_pooling_inference_scout",
+        "title": "Stratified pooling inference scout",
+        "affected_methods": [
+          "stratified_pooled_estimand_contract_candidate",
+          "stratified_pooling_heterogeneity_review_required",
+          "stratified_scm_jk_aggregate_diagnostic_only"
+        ],
+        "current_readiness_status": "contract_candidate_or_diagnostic_only",
+        "work_bucket": "pooling_heterogeneity_research",
+        "priority": "p2_medium",
+        "fixability": "research_prototype_required",
+        "root_issue": "Pooled estimand contract exists, but inference and heterogeneity policy are not validated.",
+        "why_it_matters": "Stratified aggregates remain diagnostic until pooling variance, weights, and heterogeneity rules are empirically assessed.",
+        "required_evidence": [
+          "pre_specified_weights",
+          "heterogeneity_decision_rule",
+          "pooling_variance_dependence_assumptions",
+          "stratum_compatibility_simulation"
+        ],
+        "recommended_next_artifact": "STRATIFIED_POOLING_INFERENCE_SCOUT_001",
+        "stop_go_criteria": [
+          "continue_if_heterogeneity_and_pooling_inference_evidence_complete",
+          "keep_diagnostic_only_if_contract_without_inference"
+        ],
+        "forbidden_outputs": [
+          "calibration_signal_authorization",
+          "calibration_signal_creation",
+          "trustreport_expansion",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "live_api_execution",
+          "scheduler_execution",
+          "budget_optimization"
+        ]
+      },
+      {
+        "item_id": "design_assignment_generator_stress_tests",
+        "title": "Design assignment generator stress tests",
+        "affected_methods": [
+          "scm_treated_set_placebo_candidate",
+          "scm_studentized_treated_set_placebo_candidate",
+          "augsynth_point_randomization_candidate"
+        ],
+        "current_readiness_status": "design_based_randomization_candidate",
+        "work_bucket": "design_compatibility",
+        "priority": "p2_medium",
+        "fixability": "fixable_now",
+        "root_issue": "Assignment generators are defined, but need stress tests for edge cases, support size, imbalance, and pseudo-assignment degeneracy.",
+        "why_it_matters": "All randomization candidates depend on valid pseudo-assignments; generator degeneracy undermines null calibration and adapter work.",
+        "required_evidence": [
+          "support_size_diagnostics",
+          "duplicate_assignment_checks",
+          "balance_acceptance_rate_checks",
+          "degeneracy_checks",
+          "seed_stability_reproducibility_checks"
+        ],
+        "recommended_next_artifact": "DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001",
+        "stop_go_criteria": [
+          "continue_if_generators_pass_stress_suite",
+          "block_candidates_if_degeneracy_detected"
+        ],
+        "forbidden_outputs": [
+          "calibration_signal_authorization",
+          "calibration_signal_creation",
+          "trustreport_expansion",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "live_api_execution",
+          "scheduler_execution",
+          "budget_optimization"
+        ]
+      },
+      {
+        "item_id": "dcm_009_019_adapter_disposition",
+        "title": "DCM-009\u2013019 adapter disposition",
+        "affected_methods": [
+          "dcm_009_019_adapters_research_deferred"
+        ],
+        "current_readiness_status": "research_deferred",
+        "work_bucket": "retire_or_permanent_block",
+        "priority": "p3_low",
+        "fixability": "likely_retire",
+        "root_issue": "Deferred adapters should either receive evidence requirements or be retired from the active roadmap.",
+        "why_it_matters": "Research-deferred adapter rows consume roadmap attention without method-validity progress.",
+        "required_evidence": [
+          "adapter_qualification_inventory",
+          "retirement_or_evidence_requirements_per_dcm_row"
+        ],
+        "recommended_next_artifact": "DCM_009_019_ADAPTER_DISPOSITION_AUDIT_001",
+        "stop_go_criteria": [
+          "retire_adapters_without_evidence_path",
+          "defer_only_with_explicit_qualification_plan"
+        ],
+        "forbidden_outputs": [
+          "calibration_signal_authorization",
+          "calibration_signal_creation",
+          "trustreport_expansion",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "live_api_execution",
+          "scheduler_execution",
+          "budget_optimization"
+        ]
+      },
+      {
+        "item_id": "downstream_work_pause_marker",
+        "title": "Downstream work pause marker",
+        "affected_methods": [
+          "CALIBRATION_SIGNAL_SCHEMA_ALIGNMENT_DRAFT_001",
+          "TRUSTREPORT_METHOD_GATE_DRAFT_001",
+          "MMM_INGESTION_DRAFT_001",
+          "LLM_DECISIONING_DRAFT_001",
+          "LIVE_API_OR_SCHEDULER_WORK"
+        ],
+        "current_readiness_status": "downstream_pause",
+        "work_bucket": "downstream_pause",
+        "priority": "p0_immediate",
+        "fixability": "permanent_block",
+        "root_issue": "Downstream drafts are getting ahead of method accuracy work.",
+        "why_it_matters": "CalibrationSignal schema alignment, TrustReport expansion, MMM, and LLM work must pause until P0 calibration and adapter checkpoints pass.",
+        "required_evidence": [],
+        "recommended_next_artifact": "none_until_method_calibration_checkpoints_pass",
+        "stop_go_criteria": [
+          "resume_only_after_p0_calibration_adapters_complete",
+          "updated_readiness_matrix_and_explicit_resume_decision_required"
+        ],
+        "forbidden_outputs": [
+          "calibration_signal_authorization",
+          "calibration_signal_creation",
+          "trustreport_expansion",
+          "mmm_ingestion",
+          "llm_decisioning",
+          "production_decisioning",
+          "live_api_execution",
+          "scheduler_execution",
+          "budget_optimization"
+        ]
+      }
+    ]
+  },
+  "next_artifact": "STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001",
+  "calibration_signal_allowed": false,
+  "trustreport_authorized": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false
+}

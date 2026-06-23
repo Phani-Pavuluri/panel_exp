@@ -233,14 +233,14 @@
         "shared_vs_disjoint_type_i_delta": 0.011,
         "d5_trust_characterization": "D5-TRUST-MULTICELL-PERCELL-INFERENCE-001"
       },
-      "current_decision": "METHOD_READINESS_MATRIX_V2_DEFINED_DEPENDENCE_MODEL_STILL_REQUIRED",
+      "current_decision": "CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_DEFINED_NO_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production"],
-      "target_artifact": "CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001",
-      "revisit_trigger": "Upon opening CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001",
+      "target_artifact": "SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001",
+      "revisit_trigger": "Upon opening SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001",
       "decision_checkpoint": "Shared-control dependence model closeout before global multi-cell promotion",
       "blocking_policy": "Shared-control geometries require explicit dependence contract; per-cell marginal only unless promotion evidence complete",
       "terminal_decisions": ["REMEDIATE", "RESTRICT", "DIAGNOSTIC_ONLY"],
-      "resolution_artifact": "METHOD_READINESS_MATRIX_V2_001"
+      "resolution_artifact": "METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001"
     },
     {
       "investigation_id": "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001",
@@ -256,14 +256,14 @@
         "simultaneous_coverage": 0.856,
         "d5_trust_characterization": "D5-TRUST-MULTICELL-PERCELL-INFERENCE-001"
       },
-      "current_decision": "METHOD_READINESS_MATRIX_V2_DEFINED_ADJUSTMENT_STILL_REQUIRED",
+      "current_decision": "CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_DEFINED_NO_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "simultaneous_multi_cell_decision"],
-      "target_artifact": "CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001",
-      "revisit_trigger": "Upon opening CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001",
+      "target_artifact": "SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001",
+      "revisit_trigger": "Upon opening SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001",
       "decision_checkpoint": "Multiplicity calibration closeout before familywise multi-cell decisioning",
-      "blocking_policy": "Marginal per-cell readouts cannot authorize simultaneous multi-cell decisions; method readiness matrix v2 defined",
+      "blocking_policy": "Marginal per-cell readouts cannot authorize simultaneous multi-cell decisions; CalibrationSignal method gate draft defined",
       "terminal_decisions": ["REMEDIATE", "RESTRICT", "DIAGNOSTIC_ONLY"],
-      "resolution_artifact": "METHOD_READINESS_MATRIX_V2_001"
+      "resolution_artifact": "METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001"
     },
     {
       "investigation_id": "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
@@ -282,14 +282,14 @@
         "scout_primary_prerequisite_complete": true,
         "scm_placebo_single_treated_only": true
       },
-      "current_decision": "METHOD_READINESS_MATRIX_V2_DEFINED_NO_DOWNSTREAM_AUTHORIZATION",
+      "current_decision": "METHOD_ACCURACY_COMPATIBILITY_REFOCUS_DOWNSTREAM_PAUSED",
       "blocked_roles": ["trust_report", "calibration_signal", "production"],
-      "target_artifact": "CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001",
-      "revisit_trigger": "Upon opening CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001",
-      "decision_checkpoint": "CalibrationSignal method gate draft before any downstream promotion",
-      "blocking_policy": "Method readiness matrix v2 defined; all downstream authorization remains blocked",
+      "target_artifact": "SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001",
+      "revisit_trigger": "Upon opening SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001",
+      "decision_checkpoint": "Studentized randomization null calibration before downstream resume",
+      "blocking_policy": "Downstream work paused; refocus on method accuracy and null calibration",
       "terminal_decisions": ["REMEDIATE", "RESTRICT", "DIAGNOSTIC_ONLY"],
-      "resolution_artifact": "METHOD_READINESS_MATRIX_V2_001"
+      "resolution_artifact": "METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001"
     },
     {
       "investigation_id": "INV-MULTICELL-CELL-RELATIONSHIP-DECISION-POLICY-001",
@@ -761,6 +761,71 @@
         "readiness_matrix",
         "method_inventory",
         "downstream_blocking_prerequisite",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "CALIBRATION-SIGNAL-METHOD-GATE-DRAFT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001",
+      "resolution_artifact": "CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001",
+      "artifact_tags": [
+        "method_validity",
+        "calibration_signal_draft_gate",
+        "method_gate",
+        "downstream_blocking_prerequisite",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "METHOD-ACCURACY-COMPATIBILITY-REFOCUS-AUDIT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001",
+      "resolution_artifact": "METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_compatibility",
+        "null_calibration",
+        "estimator_adapter",
+        "inference_remediation",
+        "downstream_pause"
+      ]
+    },
+    {
+      "lane_id": "STUDENTIZED-RANDOMIZATION-NULL-CALIBRATION-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001",
+      "resolution_artifact": "STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "null_calibration",
+        "studentized_randomization",
+        "type_i_error",
+        "false_confidence",
         "no_downstream_authorization"
       ]
     }
