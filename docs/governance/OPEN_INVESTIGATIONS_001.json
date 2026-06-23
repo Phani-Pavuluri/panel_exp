@@ -282,14 +282,14 @@
         "scout_primary_prerequisite_complete": true,
         "scm_placebo_single_treated_only": true
       },
-      "current_decision": "METHOD_SPECIFIC_RANDOMIZATION_VALIDATED_PENDING_SCM_INTEGRATION",
+      "current_decision": "SCM_TREATED_SET_PLACEBO_INTEGRATION_DEFINED_PENDING_STUDENTIZED_RANK",
       "blocked_roles": ["trust_report", "calibration_signal", "production"],
-      "target_artifact": "SCM_TREATED_SET_PLACEBO_INTEGRATION_001",
-      "revisit_trigger": "Upon opening SCM_TREATED_SET_PLACEBO_INTEGRATION_001",
-      "decision_checkpoint": "SCM estimator wiring into treated-set placebo framework",
-      "blocking_policy": "Method-specific randomization validated; SCM integration and downstream gates still blocked",
+      "target_artifact": "STUDENTIZED_PLACEBO_RANK_INFERENCE_001",
+      "revisit_trigger": "Upon opening STUDENTIZED_PLACEBO_RANK_INFERENCE_001",
+      "decision_checkpoint": "Studentized placebo rank inference before production claims",
+      "blocking_policy": "SCM treated-set placebo integration defined; downstream gates still blocked",
       "terminal_decisions": ["REMEDIATE", "RESTRICT", "DIAGNOSTIC_ONLY"],
-      "resolution_artifact": "METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001"
+      "resolution_artifact": "SCM_TREATED_SET_PLACEBO_INTEGRATION_001"
     },
     {
       "investigation_id": "INV-MULTICELL-CELL-RELATIONSHIP-DECISION-POLICY-001",
@@ -623,6 +623,21 @@
       "next_artifact": "SCM_TREATED_SET_PLACEBO_INTEGRATION_001",
       "resolution_artifact": "METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001",
       "artifact_tags": ["method_validity", "inference_validation", "downstream_blocking_prerequisite"]
+    },
+    {
+      "lane_id": "SCM-TREATED-SET-PLACEBO-INTEGRATION-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "STUDENTIZED_PLACEBO_RANK_INFERENCE_001",
+      "resolution_artifact": "SCM_TREATED_SET_PLACEBO_INTEGRATION_001",
+      "artifact_tags": ["method_validity", "scm_integration", "inference_validation", "downstream_blocking_prerequisite"]
     }
   ]
 }

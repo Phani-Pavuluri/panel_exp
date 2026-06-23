@@ -1380,9 +1380,21 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Status:** **`method_specific_randomization_inference_validated_no_downstream_authorization`**
 
-**Verdict:** Method-specific readiness classification for SCM, DID, AugSynth, TBRRidge, TBR, BayesianTBR, SyntheticDID, and TROP across design-based randomization candidate, falsification diagnostic, sensitivity-only, diagnostic-only, research-deferred, and blocked roles. Platform overclaims and multicell global/winner/pooled claims blocked. **No production p-value, CI, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, or budget authorization.** **`INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001`** disposition: `METHOD_SPECIFIC_RANDOMIZATION_VALIDATED_PENDING_SCM_INTEGRATION`.
+**Verdict:** Method-specific readiness classification for SCM, DID, AugSynth, TBRRidge, TBR, BayesianTBR, SyntheticDID, and TROP across design-based randomization candidate, falsification diagnostic, sensitivity-only, diagnostic-only, research-deferred, and blocked roles. Platform overclaims and multicell global/winner/pooled claims blocked. **No production p-value, CI, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, or budget authorization.** **`INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001`** disposition: `SCM_TREATED_SET_PLACEBO_INTEGRATION_DEFINED_PENDING_STUDENTIZED_RANK`.
 
-**Next:** `SCM_TREATED_SET_PLACEBO_INTEGRATION_001`.
+**Next:** `SCM_TREATED_SET_PLACEBO_INTEGRATION_001` (completed — see SCM integration report).
+
+---
+
+## SCM-TREATED-SET-PLACEBO-INTEGRATION-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/SCM_TREATED_SET_PLACEBO_INTEGRATION_001_REPORT.md`](track_d/SCM_TREATED_SET_PLACEBO_INTEGRATION_001_REPORT.md) · [`docs/track_d/archives/SCM_TREATED_SET_PLACEBO_INTEGRATION_001_summary.json`](track_d/archives/SCM_TREATED_SET_PLACEBO_INTEGRATION_001_summary.json) · [`panel_exp/inference/scm_treated_set_placebo.py`](../panel_exp/inference/scm_treated_set_placebo.py) · [`panel_exp/validation/scm_treated_set_placebo_integration_001.py`](../panel_exp/validation/scm_treated_set_placebo_integration_001.py)
+
+**Status:** **`scm_treated_set_placebo_integration_defined_no_downstream_authorization`**
+
+**Verdict:** SCM-specific integration connecting design-aware assignment roles, precomputed SCM statistics, treated-set placebo rank/tail diagnostics, SCM placebo semantics, and method-specific randomization readiness. Statistic-first integration — no new SCM fitting. **No production p-value, CI, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, or budget authorization.** **`INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001`** disposition: `SCM_TREATED_SET_PLACEBO_INTEGRATION_DEFINED_PENDING_STUDENTIZED_RANK`.
+
+**Next:** `STUDENTIZED_PLACEBO_RANK_INFERENCE_001`.
 
 ---
 
