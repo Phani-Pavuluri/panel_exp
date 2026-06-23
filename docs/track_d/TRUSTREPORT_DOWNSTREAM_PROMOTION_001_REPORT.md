@@ -627,3 +627,11 @@ CalibrationSignal remains false for all rows. No CalibrationSignal promotion.
 ## Residual Issues and Handoff
 
 Next artifact: `TRUSTREPORT_INTEGRATION_DRY_RUN_001`
+
+---
+
+## Integration dry-run update (2026-06-03)
+
+**Follow-on:** [`TRUSTREPORT_INTEGRATION_DRY_RUN_001_REPORT.md`](TRUSTREPORT_INTEGRATION_DRY_RUN_001_REPORT.md)
+
+Dry-run integration check **passed** for DCM-001/004 row contracts. Live API, scheduler, CalibrationSignal, production decisioning remain blocked. Next: `TRUSTREPORT_RESEARCH_MODE_RENDERER_001`.

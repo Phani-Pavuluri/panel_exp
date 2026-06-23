@@ -1,0 +1,1708 @@
+{
+  "artifact_id": "TRUSTREPORT-INTEGRATION-DRY-RUN-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-23T00:16:45.524669+00:00",
+  "git_commit": "555807d64bbf4fac9c1b5e8df8e041f05381f4f2",
+  "input_artifacts": {
+    "downstream_promotion": "/workspace/panel_exp/docs/track_d/archives/TRUSTREPORT_DOWNSTREAM_PROMOTION_001_summary.json",
+    "full_reassessment": "/workspace/panel_exp/docs/track_d/archives/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_summary.json",
+    "dcm001_reassessment": "/workspace/panel_exp/docs/track_d/archives/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_summary.json",
+    "dcm004_reassessment": "/workspace/panel_exp/docs/track_d/archives/DCM004_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_summary.json",
+    "prior_validation": "/workspace/panel_exp/docs/track_d/archives/TRUSTREPORT_ELIGIBILITY_VALIDATION_001_summary.json"
+  },
+  "dry_run_scope": [
+    "DCM-001",
+    "DCM-004"
+  ],
+  "dry_run_requests": [
+    {
+      "request_id": "pos-dcm001-valid",
+      "row_id": "DCM-001",
+      "request_type": "valid_restricted",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "readout_scope": null,
+      "include_warnings": true,
+      "include_parallel_trends_warning": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-dcm001-warnings",
+      "row_id": "DCM-001",
+      "request_type": "warnings_present",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "readout_scope": null,
+      "include_warnings": true,
+      "include_parallel_trends_warning": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-dcm001-geometry",
+      "row_id": "DCM-001",
+      "request_type": "allowed_geometry",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": "unit_panel_single_cell",
+      "readout_scope": "restricted_causal_interval",
+      "include_warnings": true,
+      "include_parallel_trends_warning": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-dcm004-valid",
+      "row_id": "DCM-004",
+      "request_type": "valid_restricted",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "readout_scope": null,
+      "include_warnings": true,
+      "include_parallel_trends_warning": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-dcm004-warnings",
+      "row_id": "DCM-004",
+      "request_type": "warnings_present",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "readout_scope": null,
+      "include_warnings": true,
+      "include_parallel_trends_warning": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-dcm004-geometry",
+      "row_id": "DCM-004",
+      "request_type": "allowed_geometry",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": "unit_panel_single_cell",
+      "readout_scope": "restricted_causal_interval",
+      "include_warnings": true,
+      "include_parallel_trends_warning": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-dcm001-missing-warnings",
+      "row_id": "DCM-001",
+      "request_type": "missing_warnings",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "readout_scope": null,
+      "include_warnings": false,
+      "include_parallel_trends_warning": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-dcm004-missing-pt-warning",
+      "row_id": "DCM-004",
+      "request_type": "missing_parallel_trends_warning",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "readout_scope": null,
+      "include_warnings": true,
+      "include_parallel_trends_warning": false,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-dcm001-bad-geometry",
+      "row_id": "DCM-001",
+      "request_type": "unsupported_geometry",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": "aggregate_1x1",
+      "readout_scope": null,
+      "include_warnings": true,
+      "include_parallel_trends_warning": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-dcm004-bad-timing",
+      "row_id": "DCM-004",
+      "request_type": "unsupported_timing",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": "parallel_trends_violation",
+      "readout_scope": null,
+      "include_warnings": true,
+      "include_parallel_trends_warning": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "request_type": "causal_trustreport",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "readout_scope": null,
+      "include_warnings": true,
+      "include_parallel_trends_warning": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "request_type": "causal_trustreport",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "readout_scope": null,
+      "include_warnings": true,
+      "include_parallel_trends_warning": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "request_type": "causal_trustreport",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "readout_scope": null,
+      "include_warnings": true,
+      "include_parallel_trends_warning": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-dcm006-global",
+      "row_id": "DCM-006",
+      "request_type": "global_claim",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "readout_scope": null,
+      "include_warnings": true,
+      "include_parallel_trends_warning": true,
+      "claim_type": "global",
+      "notes": ""
+    },
+    {
+      "request_id": "neg-dcm006-pooled",
+      "row_id": "DCM-006",
+      "request_type": "pooled_claim",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "readout_scope": null,
+      "include_warnings": true,
+      "include_parallel_trends_warning": true,
+      "claim_type": "pooled",
+      "notes": ""
+    },
+    {
+      "request_id": "neg-dcm008-aggregate",
+      "row_id": "DCM-008",
+      "request_type": "aggregate_stratified",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "readout_scope": null,
+      "include_warnings": true,
+      "include_parallel_trends_warning": true,
+      "claim_type": "aggregate_stratified",
+      "notes": ""
+    },
+    {
+      "request_id": "neg-cal-dcm001",
+      "row_id": "DCM-001",
+      "request_type": "calibration_signal",
+      "requested_role": "calibration_signal",
+      "geometry": null,
+      "readout_scope": null,
+      "include_warnings": true,
+      "include_parallel_trends_warning": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-live-dcm004",
+      "row_id": "DCM-004",
+      "request_type": "live_api",
+      "requested_role": "live_api",
+      "geometry": null,
+      "readout_scope": null,
+      "include_warnings": true,
+      "include_parallel_trends_warning": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-scheduler-dcm001",
+      "row_id": "DCM-001",
+      "request_type": "scheduler",
+      "requested_role": "scheduler",
+      "geometry": null,
+      "readout_scope": null,
+      "include_warnings": true,
+      "include_parallel_trends_warning": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-prod-dcm004",
+      "row_id": "DCM-004",
+      "request_type": "production",
+      "requested_role": "production_decisioning",
+      "geometry": null,
+      "readout_scope": null,
+      "include_warnings": true,
+      "include_parallel_trends_warning": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-budget-dcm001",
+      "row_id": "DCM-001",
+      "request_type": "budget",
+      "requested_role": "budget_optimization_input",
+      "geometry": null,
+      "readout_scope": null,
+      "include_warnings": true,
+      "include_parallel_trends_warning": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "request_type": "unknown",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "readout_scope": null,
+      "include_warnings": true,
+      "include_parallel_trends_warning": true,
+      "claim_type": null,
+      "notes": ""
+    }
+  ],
+  "accepted_requests": [
+    {
+      "request_id": "pos-dcm001-valid",
+      "row_id": "DCM-001",
+      "request_type": "valid_restricted",
+      "decision": "DRY_RUN_ACCEPTED_RESTRICTED_TRUSTREPORT",
+      "accepted": true,
+      "audit_record_id": "audit-pos-dcm001-valid",
+      "gate_results": {
+        "row_promoted": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "geometry_allowed": true,
+        "dry_run_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Restricted TrustReport dry-run accepted (research mode only)"
+    },
+    {
+      "request_id": "pos-dcm001-warnings",
+      "row_id": "DCM-001",
+      "request_type": "warnings_present",
+      "decision": "DRY_RUN_ACCEPTED_RESTRICTED_TRUSTREPORT",
+      "accepted": true,
+      "audit_record_id": "audit-pos-dcm001-warnings",
+      "gate_results": {
+        "row_promoted": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "geometry_allowed": true,
+        "dry_run_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Restricted TrustReport dry-run accepted (research mode only)"
+    },
+    {
+      "request_id": "pos-dcm001-geometry",
+      "row_id": "DCM-001",
+      "request_type": "allowed_geometry",
+      "decision": "DRY_RUN_ACCEPTED_RESTRICTED_TRUSTREPORT",
+      "accepted": true,
+      "audit_record_id": "audit-pos-dcm001-geometry",
+      "gate_results": {
+        "row_promoted": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "geometry_allowed": true,
+        "dry_run_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Restricted TrustReport dry-run accepted (research mode only)"
+    },
+    {
+      "request_id": "pos-dcm004-valid",
+      "row_id": "DCM-004",
+      "request_type": "valid_restricted",
+      "decision": "DRY_RUN_ACCEPTED_RESTRICTED_TRUSTREPORT",
+      "accepted": true,
+      "audit_record_id": "audit-pos-dcm004-valid",
+      "gate_results": {
+        "row_promoted": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "geometry_allowed": true,
+        "dry_run_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Restricted TrustReport dry-run accepted (research mode only)"
+    },
+    {
+      "request_id": "pos-dcm004-warnings",
+      "row_id": "DCM-004",
+      "request_type": "warnings_present",
+      "decision": "DRY_RUN_ACCEPTED_RESTRICTED_TRUSTREPORT",
+      "accepted": true,
+      "audit_record_id": "audit-pos-dcm004-warnings",
+      "gate_results": {
+        "row_promoted": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "geometry_allowed": true,
+        "dry_run_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Restricted TrustReport dry-run accepted (research mode only)"
+    },
+    {
+      "request_id": "pos-dcm004-geometry",
+      "row_id": "DCM-004",
+      "request_type": "allowed_geometry",
+      "decision": "DRY_RUN_ACCEPTED_RESTRICTED_TRUSTREPORT",
+      "accepted": true,
+      "audit_record_id": "audit-pos-dcm004-geometry",
+      "gate_results": {
+        "row_promoted": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "geometry_allowed": true,
+        "dry_run_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Restricted TrustReport dry-run accepted (research mode only)"
+    }
+  ],
+  "blocked_requests": [
+    {
+      "request_id": "neg-dcm001-missing-warnings",
+      "row_id": "DCM-001",
+      "request_type": "missing_warnings",
+      "decision": "DRY_RUN_BLOCKED_MISSING_CONTRACT",
+      "accepted": false,
+      "audit_record_id": "audit-neg-dcm001-missing-warnings",
+      "gate_results": {
+        "warnings_missing": true
+      },
+      "reason": "Required warnings contract absent"
+    },
+    {
+      "request_id": "neg-dcm004-missing-pt-warning",
+      "row_id": "DCM-004",
+      "request_type": "missing_parallel_trends_warning",
+      "decision": "DRY_RUN_BLOCKED_MISSING_CONTRACT",
+      "accepted": false,
+      "audit_record_id": "audit-neg-dcm004-missing-pt-warning",
+      "gate_results": {
+        "parallel_trends_warning_missing": true
+      },
+      "reason": "Parallel-trends warning required for DCM-004"
+    },
+    {
+      "request_id": "neg-dcm001-bad-geometry",
+      "row_id": "DCM-001",
+      "request_type": "unsupported_geometry",
+      "decision": "DRY_RUN_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "audit_record_id": "audit-neg-dcm001-bad-geometry",
+      "gate_results": {
+        "unsupported_geometry": true
+      },
+      "reason": "Geometry aggregate_1x1 blocked for DCM-001"
+    },
+    {
+      "request_id": "neg-dcm004-bad-timing",
+      "row_id": "DCM-004",
+      "request_type": "unsupported_timing",
+      "decision": "DRY_RUN_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "audit_record_id": "audit-neg-dcm004-bad-timing",
+      "gate_results": {
+        "unsupported_geometry": true
+      },
+      "reason": "Geometry parallel_trends_violation blocked for DCM-004"
+    },
+    {
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "request_type": "causal_trustreport",
+      "decision": "DRY_RUN_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "audit-neg-brb",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-BRB is diagnostic-only; restricted TrustReport dry-run blocked"
+    },
+    {
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "request_type": "causal_trustreport",
+      "decision": "DRY_RUN_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "audit-neg-kfold",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-KFOLD is diagnostic-only; restricted TrustReport dry-run blocked"
+    },
+    {
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "request_type": "causal_trustreport",
+      "decision": "DRY_RUN_BLOCKED_NULL_MONITOR_CAUSAL_REUSE",
+      "accepted": false,
+      "audit_record_id": "audit-neg-placebo",
+      "gate_results": {
+        "null_monitor_causal_reuse": true
+      },
+      "reason": "Null-monitor path cannot be reused for causal TrustReport dry-run"
+    },
+    {
+      "request_id": "neg-dcm006-global",
+      "row_id": "DCM-006",
+      "request_type": "global_claim",
+      "decision": "DRY_RUN_BLOCKED_NOT_PROMOTED",
+      "accepted": false,
+      "audit_record_id": "audit-neg-dcm006-global",
+      "gate_results": {
+        "multicell_global_blocked": true
+      },
+      "reason": "DCM-006 global/winner/pooled claims not promoted"
+    },
+    {
+      "request_id": "neg-dcm006-pooled",
+      "row_id": "DCM-006",
+      "request_type": "pooled_claim",
+      "decision": "DRY_RUN_BLOCKED_NOT_PROMOTED",
+      "accepted": false,
+      "audit_record_id": "audit-neg-dcm006-pooled",
+      "gate_results": {
+        "multicell_global_blocked": true
+      },
+      "reason": "DCM-006 global/winner/pooled claims not promoted"
+    },
+    {
+      "request_id": "neg-dcm008-aggregate",
+      "row_id": "DCM-008",
+      "request_type": "aggregate_stratified",
+      "decision": "DRY_RUN_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "audit-neg-dcm008-aggregate",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-008 is diagnostic-only; restricted TrustReport dry-run blocked"
+    },
+    {
+      "request_id": "neg-cal-dcm001",
+      "row_id": "DCM-001",
+      "request_type": "calibration_signal",
+      "decision": "DRY_RUN_BLOCKED_CALIBRATION_SIGNAL",
+      "accepted": false,
+      "audit_record_id": "audit-neg-cal-dcm001",
+      "gate_results": {
+        "calibration_signal_blocked": true
+      },
+      "reason": "CalibrationSignal not authorized for any row"
+    },
+    {
+      "request_id": "neg-live-dcm004",
+      "row_id": "DCM-004",
+      "request_type": "live_api",
+      "decision": "DRY_RUN_BLOCKED_LIVE_API",
+      "accepted": false,
+      "audit_record_id": "audit-neg-live-dcm004",
+      "gate_results": {
+        "live_api_blocked": true
+      },
+      "reason": "Live API authorization forbidden in dry-run lane"
+    },
+    {
+      "request_id": "neg-scheduler-dcm001",
+      "row_id": "DCM-001",
+      "request_type": "scheduler",
+      "decision": "DRY_RUN_BLOCKED_SCHEDULER",
+      "accepted": false,
+      "audit_record_id": "audit-neg-scheduler-dcm001",
+      "gate_results": {
+        "scheduler_blocked": true
+      },
+      "reason": "Scheduler authorization forbidden in dry-run lane"
+    },
+    {
+      "request_id": "neg-prod-dcm004",
+      "row_id": "DCM-004",
+      "request_type": "production",
+      "decision": "DRY_RUN_BLOCKED_PRODUCTION_DECISIONING",
+      "accepted": false,
+      "audit_record_id": "audit-neg-prod-dcm004",
+      "gate_results": {
+        "production_decisioning_blocked": true
+      },
+      "reason": "Production decisioning forbidden in dry-run lane"
+    },
+    {
+      "request_id": "neg-budget-dcm001",
+      "row_id": "DCM-001",
+      "request_type": "budget",
+      "decision": "DRY_RUN_BLOCKED_BUDGET_OPTIMIZATION",
+      "accepted": false,
+      "audit_record_id": "audit-neg-budget-dcm001",
+      "gate_results": {
+        "budget_optimization_blocked": true
+      },
+      "reason": "Budget optimization input forbidden in dry-run lane"
+    },
+    {
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "request_type": "unknown",
+      "decision": "DRY_RUN_BLOCKED_UNKNOWN_ROW",
+      "accepted": false,
+      "audit_record_id": "audit-neg-unknown",
+      "gate_results": {
+        "unknown_row": true
+      },
+      "reason": "Unknown or unregistered row: DCM-999"
+    }
+  ],
+  "accepted_rows": [
+    "DCM-001",
+    "DCM-004"
+  ],
+  "blocked_rows": [
+    "DCM-001",
+    "DCM-004",
+    "DCM-005-BRB",
+    "DCM-005-KFOLD",
+    "DCM-005-PLACEBO",
+    "DCM-006",
+    "DCM-008",
+    "DCM-999"
+  ],
+  "row_contracts": {
+    "DCM-001": {
+      "row_id": "DCM-001",
+      "design_family": "single_cell",
+      "estimator": "scm",
+      "inference_method": "unit_jackknife",
+      "estimand": "treated_unit_effect_level",
+      "readout_scope": "restricted_causal_interval",
+      "allowed_geometry": "unit_panel_single_cell",
+      "blocked_geometry": [
+        "aggregate_1x1",
+        "multi_cell_pooled",
+        "staggered_timing"
+      ],
+      "minimum_pre_period": "provisional_for_trustreport_reassessment_only",
+      "minimum_post_period": "provisional_for_trustreport_reassessment_only",
+      "required_diagnostics": [
+        "prefit_warning_required",
+        "donor_support_gate"
+      ],
+      "required_warnings": [
+        "noisy_world_coverage_caveat",
+        "type_i_caveat"
+      ],
+      "interval_semantics": "restricted_causal_interval_level_scale",
+      "allowed_role": "restricted_trustreport_research_only",
+      "blocked_roles": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "production_decisioning",
+        "scheduler"
+      ],
+      "audit_artifacts": [
+        "TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001",
+        "D5-STAT-SCM-JK-001"
+      ]
+    },
+    "DCM-004": {
+      "row_id": "DCM-004",
+      "design_family": "single_cell",
+      "estimator": "did",
+      "inference_method": "bootstrap",
+      "estimand": "cumulative_att_level",
+      "readout_scope": "restricted_causal_interval",
+      "allowed_geometry": "unit_panel_single_cell",
+      "blocked_geometry": [
+        "parallel_trends_violation",
+        "stress_or_outlier",
+        "staggered_timing",
+        "staggered_pooled",
+        "aggregate_1x1"
+      ],
+      "minimum_pre_period": 4,
+      "minimum_post_period": "support_gated",
+      "required_diagnostics": [
+        "parallel_trends_diagnostic_required",
+        "pretrend_diagnostic_required"
+      ],
+      "required_warnings": [
+        "unsupported_worlds_excluded"
+      ],
+      "interval_semantics": "restricted_causal_interval",
+      "allowed_role": "restricted_trustreport_research_only",
+      "blocked_roles": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "production_decisioning",
+        "scheduler"
+      ],
+      "audit_artifacts": [
+        "DCM-004-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001",
+        "D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001"
+      ]
+    }
+  },
+  "restriction_contracts": {
+    "DCM-001": {
+      "allowed_design_family": "single_cell",
+      "allowed_estimator": "scm",
+      "allowed_inference_method": "unit_jackknife",
+      "allowed_estimand": "treated_unit_effect_level",
+      "allowed_geometry": "unit_panel_single_cell",
+      "allowed_readout_scope": "restricted_causal_interval",
+      "minimum_pre_period": "provisional_for_trustreport_reassessment_only",
+      "minimum_post_period": "provisional_for_trustreport_reassessment_only",
+      "required_fit_diagnostics": [
+        "prefit_warning_required",
+        "donor_support_gate"
+      ],
+      "required_interval_semantics": "restricted_causal_interval_level_scale",
+      "required_warnings": [
+        "noisy_world_coverage_caveat",
+        "type_i_caveat"
+      ],
+      "blocked_geometries": [
+        "aggregate_1x1",
+        "multi_cell_pooled",
+        "staggered_timing"
+      ],
+      "blocked_downstream_uses": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "scheduler"
+      ],
+      "calibration_signal_allowed": false,
+      "trustreport_role": "restricted_trustreport_research_only"
+    },
+    "DCM-004": {
+      "allowed_design_family": "single_cell",
+      "allowed_estimator": "did",
+      "allowed_inference_method": "bootstrap",
+      "allowed_estimand": "cumulative_att_level",
+      "allowed_geometry": "unit_panel_single_cell",
+      "allowed_readout_scope": "restricted_causal_interval",
+      "minimum_pre_period": 4,
+      "minimum_post_period": "support_gated",
+      "required_fit_diagnostics": [
+        "parallel_trends_diagnostic_required",
+        "pretrend_diagnostic_required"
+      ],
+      "required_interval_semantics": "restricted_causal_interval",
+      "required_warnings": [
+        "unsupported_worlds_excluded"
+      ],
+      "blocked_geometries": [
+        "parallel_trends_violation",
+        "stress_or_outlier",
+        "staggered_timing",
+        "staggered_pooled",
+        "aggregate_1x1"
+      ],
+      "blocked_downstream_uses": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "scheduler"
+      ],
+      "calibration_signal_allowed": false,
+      "trustreport_role": "restricted_trustreport_research_only",
+      "timing_regime": "common_simultaneous_adoption"
+    }
+  },
+  "warning_contracts": {
+    "DCM-001": [
+      "noisy_world_coverage_caveat",
+      "type_i_caveat"
+    ],
+    "DCM-004": [
+      "unsupported_worlds_excluded"
+    ]
+  },
+  "audit_records": [
+    {
+      "audit_record_id": "audit-pos-dcm001-valid",
+      "request_id": "pos-dcm001-valid",
+      "row_id": "DCM-001",
+      "request_type": "valid_restricted",
+      "requested_role": "restricted_trustreport_research_only",
+      "decision": "DRY_RUN_ACCEPTED_RESTRICTED_TRUSTREPORT",
+      "accepted": true,
+      "dry_run_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T00:16:45.524465+00:00",
+      "contract_row_id": "DCM-001",
+      "reason": "Restricted TrustReport dry-run accepted (research mode only)"
+    },
+    {
+      "audit_record_id": "audit-pos-dcm001-warnings",
+      "request_id": "pos-dcm001-warnings",
+      "row_id": "DCM-001",
+      "request_type": "warnings_present",
+      "requested_role": "restricted_trustreport_research_only",
+      "decision": "DRY_RUN_ACCEPTED_RESTRICTED_TRUSTREPORT",
+      "accepted": true,
+      "dry_run_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T00:16:45.524480+00:00",
+      "contract_row_id": "DCM-001",
+      "reason": "Restricted TrustReport dry-run accepted (research mode only)"
+    },
+    {
+      "audit_record_id": "audit-pos-dcm001-geometry",
+      "request_id": "pos-dcm001-geometry",
+      "row_id": "DCM-001",
+      "request_type": "allowed_geometry",
+      "requested_role": "restricted_trustreport_research_only",
+      "decision": "DRY_RUN_ACCEPTED_RESTRICTED_TRUSTREPORT",
+      "accepted": true,
+      "dry_run_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T00:16:45.524485+00:00",
+      "contract_row_id": "DCM-001",
+      "reason": "Restricted TrustReport dry-run accepted (research mode only)"
+    },
+    {
+      "audit_record_id": "audit-pos-dcm004-valid",
+      "request_id": "pos-dcm004-valid",
+      "row_id": "DCM-004",
+      "request_type": "valid_restricted",
+      "requested_role": "restricted_trustreport_research_only",
+      "decision": "DRY_RUN_ACCEPTED_RESTRICTED_TRUSTREPORT",
+      "accepted": true,
+      "dry_run_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T00:16:45.524492+00:00",
+      "contract_row_id": "DCM-004",
+      "reason": "Restricted TrustReport dry-run accepted (research mode only)"
+    },
+    {
+      "audit_record_id": "audit-pos-dcm004-warnings",
+      "request_id": "pos-dcm004-warnings",
+      "row_id": "DCM-004",
+      "request_type": "warnings_present",
+      "requested_role": "restricted_trustreport_research_only",
+      "decision": "DRY_RUN_ACCEPTED_RESTRICTED_TRUSTREPORT",
+      "accepted": true,
+      "dry_run_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T00:16:45.524496+00:00",
+      "contract_row_id": "DCM-004",
+      "reason": "Restricted TrustReport dry-run accepted (research mode only)"
+    },
+    {
+      "audit_record_id": "audit-pos-dcm004-geometry",
+      "request_id": "pos-dcm004-geometry",
+      "row_id": "DCM-004",
+      "request_type": "allowed_geometry",
+      "requested_role": "restricted_trustreport_research_only",
+      "decision": "DRY_RUN_ACCEPTED_RESTRICTED_TRUSTREPORT",
+      "accepted": true,
+      "dry_run_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T00:16:45.524503+00:00",
+      "contract_row_id": "DCM-004",
+      "reason": "Restricted TrustReport dry-run accepted (research mode only)"
+    },
+    {
+      "audit_record_id": "audit-neg-dcm001-missing-warnings",
+      "request_id": "neg-dcm001-missing-warnings",
+      "row_id": "DCM-001",
+      "request_type": "missing_warnings",
+      "requested_role": "restricted_trustreport_research_only",
+      "decision": "DRY_RUN_BLOCKED_MISSING_CONTRACT",
+      "accepted": false,
+      "dry_run_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T00:16:45.524507+00:00",
+      "contract_row_id": "DCM-001",
+      "reason": "Required warnings contract absent"
+    },
+    {
+      "audit_record_id": "audit-neg-dcm004-missing-pt-warning",
+      "request_id": "neg-dcm004-missing-pt-warning",
+      "row_id": "DCM-004",
+      "request_type": "missing_parallel_trends_warning",
+      "requested_role": "restricted_trustreport_research_only",
+      "decision": "DRY_RUN_BLOCKED_MISSING_CONTRACT",
+      "accepted": false,
+      "dry_run_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T00:16:45.524515+00:00",
+      "contract_row_id": "DCM-004",
+      "reason": "Parallel-trends warning required for DCM-004"
+    },
+    {
+      "audit_record_id": "audit-neg-dcm001-bad-geometry",
+      "request_id": "neg-dcm001-bad-geometry",
+      "row_id": "DCM-001",
+      "request_type": "unsupported_geometry",
+      "requested_role": "restricted_trustreport_research_only",
+      "decision": "DRY_RUN_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "dry_run_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T00:16:45.524519+00:00",
+      "contract_row_id": "DCM-001",
+      "reason": "Geometry aggregate_1x1 blocked for DCM-001"
+    },
+    {
+      "audit_record_id": "audit-neg-dcm004-bad-timing",
+      "request_id": "neg-dcm004-bad-timing",
+      "row_id": "DCM-004",
+      "request_type": "unsupported_timing",
+      "requested_role": "restricted_trustreport_research_only",
+      "decision": "DRY_RUN_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "dry_run_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T00:16:45.524523+00:00",
+      "contract_row_id": "DCM-004",
+      "reason": "Geometry parallel_trends_violation blocked for DCM-004"
+    },
+    {
+      "audit_record_id": "audit-neg-brb",
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "request_type": "causal_trustreport",
+      "requested_role": "restricted_trustreport_research_only",
+      "decision": "DRY_RUN_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "dry_run_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T00:16:45.524526+00:00",
+      "contract_row_id": null,
+      "reason": "DCM-005-BRB is diagnostic-only; restricted TrustReport dry-run blocked"
+    },
+    {
+      "audit_record_id": "audit-neg-kfold",
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "request_type": "causal_trustreport",
+      "requested_role": "restricted_trustreport_research_only",
+      "decision": "DRY_RUN_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "dry_run_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T00:16:45.524529+00:00",
+      "contract_row_id": null,
+      "reason": "DCM-005-KFOLD is diagnostic-only; restricted TrustReport dry-run blocked"
+    },
+    {
+      "audit_record_id": "audit-neg-placebo",
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "request_type": "causal_trustreport",
+      "requested_role": "restricted_trustreport_research_only",
+      "decision": "DRY_RUN_BLOCKED_NULL_MONITOR_CAUSAL_REUSE",
+      "accepted": false,
+      "dry_run_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T00:16:45.524531+00:00",
+      "contract_row_id": null,
+      "reason": "Null-monitor path cannot be reused for causal TrustReport dry-run"
+    },
+    {
+      "audit_record_id": "audit-neg-dcm006-global",
+      "request_id": "neg-dcm006-global",
+      "row_id": "DCM-006",
+      "request_type": "global_claim",
+      "requested_role": "restricted_trustreport_research_only",
+      "decision": "DRY_RUN_BLOCKED_NOT_PROMOTED",
+      "accepted": false,
+      "dry_run_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T00:16:45.524534+00:00",
+      "contract_row_id": null,
+      "reason": "DCM-006 global/winner/pooled claims not promoted"
+    },
+    {
+      "audit_record_id": "audit-neg-dcm006-pooled",
+      "request_id": "neg-dcm006-pooled",
+      "row_id": "DCM-006",
+      "request_type": "pooled_claim",
+      "requested_role": "restricted_trustreport_research_only",
+      "decision": "DRY_RUN_BLOCKED_NOT_PROMOTED",
+      "accepted": false,
+      "dry_run_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T00:16:45.524536+00:00",
+      "contract_row_id": null,
+      "reason": "DCM-006 global/winner/pooled claims not promoted"
+    },
+    {
+      "audit_record_id": "audit-neg-dcm008-aggregate",
+      "request_id": "neg-dcm008-aggregate",
+      "row_id": "DCM-008",
+      "request_type": "aggregate_stratified",
+      "requested_role": "restricted_trustreport_research_only",
+      "decision": "DRY_RUN_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "dry_run_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T00:16:45.524539+00:00",
+      "contract_row_id": null,
+      "reason": "DCM-008 is diagnostic-only; restricted TrustReport dry-run blocked"
+    },
+    {
+      "audit_record_id": "audit-neg-cal-dcm001",
+      "request_id": "neg-cal-dcm001",
+      "row_id": "DCM-001",
+      "request_type": "calibration_signal",
+      "requested_role": "calibration_signal",
+      "decision": "DRY_RUN_BLOCKED_CALIBRATION_SIGNAL",
+      "accepted": false,
+      "dry_run_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T00:16:45.524546+00:00",
+      "contract_row_id": "DCM-001",
+      "reason": "CalibrationSignal not authorized for any row"
+    },
+    {
+      "audit_record_id": "audit-neg-live-dcm004",
+      "request_id": "neg-live-dcm004",
+      "row_id": "DCM-004",
+      "request_type": "live_api",
+      "requested_role": "live_api",
+      "decision": "DRY_RUN_BLOCKED_LIVE_API",
+      "accepted": false,
+      "dry_run_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T00:16:45.524548+00:00",
+      "contract_row_id": "DCM-004",
+      "reason": "Live API authorization forbidden in dry-run lane"
+    },
+    {
+      "audit_record_id": "audit-neg-scheduler-dcm001",
+      "request_id": "neg-scheduler-dcm001",
+      "row_id": "DCM-001",
+      "request_type": "scheduler",
+      "requested_role": "scheduler",
+      "decision": "DRY_RUN_BLOCKED_SCHEDULER",
+      "accepted": false,
+      "dry_run_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T00:16:45.524550+00:00",
+      "contract_row_id": "DCM-001",
+      "reason": "Scheduler authorization forbidden in dry-run lane"
+    },
+    {
+      "audit_record_id": "audit-neg-prod-dcm004",
+      "request_id": "neg-prod-dcm004",
+      "row_id": "DCM-004",
+      "request_type": "production",
+      "requested_role": "production_decisioning",
+      "decision": "DRY_RUN_BLOCKED_PRODUCTION_DECISIONING",
+      "accepted": false,
+      "dry_run_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T00:16:45.524555+00:00",
+      "contract_row_id": "DCM-004",
+      "reason": "Production decisioning forbidden in dry-run lane"
+    },
+    {
+      "audit_record_id": "audit-neg-budget-dcm001",
+      "request_id": "neg-budget-dcm001",
+      "row_id": "DCM-001",
+      "request_type": "budget",
+      "requested_role": "budget_optimization_input",
+      "decision": "DRY_RUN_BLOCKED_BUDGET_OPTIMIZATION",
+      "accepted": false,
+      "dry_run_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T00:16:45.524557+00:00",
+      "contract_row_id": "DCM-001",
+      "reason": "Budget optimization input forbidden in dry-run lane"
+    },
+    {
+      "audit_record_id": "audit-neg-unknown",
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "request_type": "unknown",
+      "requested_role": "restricted_trustreport_research_only",
+      "decision": "DRY_RUN_BLOCKED_UNKNOWN_ROW",
+      "accepted": false,
+      "dry_run_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "timestamp": "2026-06-23T00:16:45.524559+00:00",
+      "contract_row_id": null,
+      "reason": "Unknown or unregistered row: DCM-999"
+    }
+  ],
+  "negative_control_results": [
+    {
+      "request_id": "neg-dcm001-missing-warnings",
+      "row_id": "DCM-001",
+      "request_type": "missing_warnings",
+      "decision": "DRY_RUN_BLOCKED_MISSING_CONTRACT",
+      "accepted": false,
+      "audit_record_id": "audit-neg-dcm001-missing-warnings",
+      "gate_results": {
+        "warnings_missing": true
+      },
+      "reason": "Required warnings contract absent"
+    },
+    {
+      "request_id": "neg-dcm004-missing-pt-warning",
+      "row_id": "DCM-004",
+      "request_type": "missing_parallel_trends_warning",
+      "decision": "DRY_RUN_BLOCKED_MISSING_CONTRACT",
+      "accepted": false,
+      "audit_record_id": "audit-neg-dcm004-missing-pt-warning",
+      "gate_results": {
+        "parallel_trends_warning_missing": true
+      },
+      "reason": "Parallel-trends warning required for DCM-004"
+    },
+    {
+      "request_id": "neg-dcm001-bad-geometry",
+      "row_id": "DCM-001",
+      "request_type": "unsupported_geometry",
+      "decision": "DRY_RUN_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "audit_record_id": "audit-neg-dcm001-bad-geometry",
+      "gate_results": {
+        "unsupported_geometry": true
+      },
+      "reason": "Geometry aggregate_1x1 blocked for DCM-001"
+    },
+    {
+      "request_id": "neg-dcm004-bad-timing",
+      "row_id": "DCM-004",
+      "request_type": "unsupported_timing",
+      "decision": "DRY_RUN_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "audit_record_id": "audit-neg-dcm004-bad-timing",
+      "gate_results": {
+        "unsupported_geometry": true
+      },
+      "reason": "Geometry parallel_trends_violation blocked for DCM-004"
+    },
+    {
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "request_type": "causal_trustreport",
+      "decision": "DRY_RUN_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "audit-neg-brb",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-BRB is diagnostic-only; restricted TrustReport dry-run blocked"
+    },
+    {
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "request_type": "causal_trustreport",
+      "decision": "DRY_RUN_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "audit-neg-kfold",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-KFOLD is diagnostic-only; restricted TrustReport dry-run blocked"
+    },
+    {
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "request_type": "causal_trustreport",
+      "decision": "DRY_RUN_BLOCKED_NULL_MONITOR_CAUSAL_REUSE",
+      "accepted": false,
+      "audit_record_id": "audit-neg-placebo",
+      "gate_results": {
+        "null_monitor_causal_reuse": true
+      },
+      "reason": "Null-monitor path cannot be reused for causal TrustReport dry-run"
+    },
+    {
+      "request_id": "neg-dcm006-global",
+      "row_id": "DCM-006",
+      "request_type": "global_claim",
+      "decision": "DRY_RUN_BLOCKED_NOT_PROMOTED",
+      "accepted": false,
+      "audit_record_id": "audit-neg-dcm006-global",
+      "gate_results": {
+        "multicell_global_blocked": true
+      },
+      "reason": "DCM-006 global/winner/pooled claims not promoted"
+    },
+    {
+      "request_id": "neg-dcm006-pooled",
+      "row_id": "DCM-006",
+      "request_type": "pooled_claim",
+      "decision": "DRY_RUN_BLOCKED_NOT_PROMOTED",
+      "accepted": false,
+      "audit_record_id": "audit-neg-dcm006-pooled",
+      "gate_results": {
+        "multicell_global_blocked": true
+      },
+      "reason": "DCM-006 global/winner/pooled claims not promoted"
+    },
+    {
+      "request_id": "neg-dcm008-aggregate",
+      "row_id": "DCM-008",
+      "request_type": "aggregate_stratified",
+      "decision": "DRY_RUN_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "audit-neg-dcm008-aggregate",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-008 is diagnostic-only; restricted TrustReport dry-run blocked"
+    },
+    {
+      "request_id": "neg-cal-dcm001",
+      "row_id": "DCM-001",
+      "request_type": "calibration_signal",
+      "decision": "DRY_RUN_BLOCKED_CALIBRATION_SIGNAL",
+      "accepted": false,
+      "audit_record_id": "audit-neg-cal-dcm001",
+      "gate_results": {
+        "calibration_signal_blocked": true
+      },
+      "reason": "CalibrationSignal not authorized for any row"
+    },
+    {
+      "request_id": "neg-live-dcm004",
+      "row_id": "DCM-004",
+      "request_type": "live_api",
+      "decision": "DRY_RUN_BLOCKED_LIVE_API",
+      "accepted": false,
+      "audit_record_id": "audit-neg-live-dcm004",
+      "gate_results": {
+        "live_api_blocked": true
+      },
+      "reason": "Live API authorization forbidden in dry-run lane"
+    },
+    {
+      "request_id": "neg-scheduler-dcm001",
+      "row_id": "DCM-001",
+      "request_type": "scheduler",
+      "decision": "DRY_RUN_BLOCKED_SCHEDULER",
+      "accepted": false,
+      "audit_record_id": "audit-neg-scheduler-dcm001",
+      "gate_results": {
+        "scheduler_blocked": true
+      },
+      "reason": "Scheduler authorization forbidden in dry-run lane"
+    },
+    {
+      "request_id": "neg-prod-dcm004",
+      "row_id": "DCM-004",
+      "request_type": "production",
+      "decision": "DRY_RUN_BLOCKED_PRODUCTION_DECISIONING",
+      "accepted": false,
+      "audit_record_id": "audit-neg-prod-dcm004",
+      "gate_results": {
+        "production_decisioning_blocked": true
+      },
+      "reason": "Production decisioning forbidden in dry-run lane"
+    },
+    {
+      "request_id": "neg-budget-dcm001",
+      "row_id": "DCM-001",
+      "request_type": "budget",
+      "decision": "DRY_RUN_BLOCKED_BUDGET_OPTIMIZATION",
+      "accepted": false,
+      "audit_record_id": "audit-neg-budget-dcm001",
+      "gate_results": {
+        "budget_optimization_blocked": true
+      },
+      "reason": "Budget optimization input forbidden in dry-run lane"
+    },
+    {
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "request_type": "unknown",
+      "decision": "DRY_RUN_BLOCKED_UNKNOWN_ROW",
+      "accepted": false,
+      "audit_record_id": "audit-neg-unknown",
+      "gate_results": {
+        "unknown_row": true
+      },
+      "reason": "Unknown or unregistered row: DCM-999"
+    }
+  ],
+  "global_authorization_summary": {
+    "trust_report_platform_authorized": false,
+    "live_api_authorized": false,
+    "scheduler_authorized": false
+  },
+  "live_api_authorization_summary": {
+    "live_api_authorized": false,
+    "dry_run_only": true,
+    "rationale": "Live API blocked in dry-run lane"
+  },
+  "scheduler_authorization_summary": {
+    "scheduler_authorized": false,
+    "dry_run_only": true,
+    "rationale": "Scheduler blocked in dry-run lane"
+  },
+  "calibration_signal_summary": {
+    "any_calibration_signal_allowed": false,
+    "per_row": {
+      "DCM-001": false,
+      "DCM-004": false
+    }
+  },
+  "production_decisioning_summary": {
+    "any_production_decisioning_allowed": false
+  },
+  "budget_optimization_summary": {
+    "any_budget_optimization_allowed": false
+  },
+  "open_investigation_check": {
+    "deferred_investigations": [
+      "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+      "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+    ],
+    "blocking_for_dry_run": [],
+    "rationale": "Deferred multicell investigations do not block DCM-001/004 dry-run"
+  },
+  "governance_verdict": "trustreport_integration_dry_run_passed",
+  "limitations": [
+    "This artifact performs a dry-run integration check for restricted row-level TrustReport contracts.",
+    "It does not authorize live APIs, scheduler execution, production decisioning, CalibrationSignal, or budget optimization.",
+    "Only DCM-001 and DCM-004 are accepted for restricted TrustReport research-mode dry-run.",
+    "All diagnostic-only, null-monitor-only, deferred, ineligible, global multi-cell, and stratified aggregate paths remain blocked.",
+    "Dry-run simulates integration boundaries only; no live execution."
+  ],
+  "next_artifact": "TRUSTREPORT_RESEARCH_MODE_RENDERER_001",
+  "investigation_handoff": {
+    "follow_up_issues": [],
+    "resolved_issues": [],
+    "terminal_dispositions": [],
+    "next_artifact": "TRUSTREPORT_RESEARCH_MODE_RENDERER_001"
+  },
+  "verdict": "trustreport_integration_dry_run_passed",
+  "contracts_complete": true,
+  "dcm001_dry_run_result": {
+    "request_id": "pos-dcm001-valid",
+    "row_id": "DCM-001",
+    "request_type": "valid_restricted",
+    "decision": "DRY_RUN_ACCEPTED_RESTRICTED_TRUSTREPORT",
+    "accepted": true,
+    "audit_record_id": "audit-pos-dcm001-valid",
+    "gate_results": {
+      "row_promoted": true,
+      "contract_complete": true,
+      "warnings_present": true,
+      "restrictions_present": true,
+      "geometry_allowed": true,
+      "dry_run_only": true,
+      "live_api_blocked": true,
+      "scheduler_blocked": true,
+      "calibration_signal_blocked": true
+    },
+    "reason": "Restricted TrustReport dry-run accepted (research mode only)"
+  },
+  "dcm004_dry_run_result": {
+    "request_id": "pos-dcm004-valid",
+    "row_id": "DCM-004",
+    "request_type": "valid_restricted",
+    "decision": "DRY_RUN_ACCEPTED_RESTRICTED_TRUSTREPORT",
+    "accepted": true,
+    "audit_record_id": "audit-pos-dcm004-valid",
+    "gate_results": {
+      "row_promoted": true,
+      "contract_complete": true,
+      "warnings_present": true,
+      "restrictions_present": true,
+      "geometry_allowed": true,
+      "dry_run_only": true,
+      "live_api_blocked": true,
+      "scheduler_blocked": true,
+      "calibration_signal_blocked": true
+    },
+    "reason": "Restricted TrustReport dry-run accepted (research mode only)"
+  },
+  "dry_run_results": [
+    {
+      "request_id": "pos-dcm001-valid",
+      "row_id": "DCM-001",
+      "request_type": "valid_restricted",
+      "decision": "DRY_RUN_ACCEPTED_RESTRICTED_TRUSTREPORT",
+      "accepted": true,
+      "audit_record_id": "audit-pos-dcm001-valid",
+      "gate_results": {
+        "row_promoted": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "geometry_allowed": true,
+        "dry_run_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Restricted TrustReport dry-run accepted (research mode only)"
+    },
+    {
+      "request_id": "pos-dcm001-warnings",
+      "row_id": "DCM-001",
+      "request_type": "warnings_present",
+      "decision": "DRY_RUN_ACCEPTED_RESTRICTED_TRUSTREPORT",
+      "accepted": true,
+      "audit_record_id": "audit-pos-dcm001-warnings",
+      "gate_results": {
+        "row_promoted": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "geometry_allowed": true,
+        "dry_run_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Restricted TrustReport dry-run accepted (research mode only)"
+    },
+    {
+      "request_id": "pos-dcm001-geometry",
+      "row_id": "DCM-001",
+      "request_type": "allowed_geometry",
+      "decision": "DRY_RUN_ACCEPTED_RESTRICTED_TRUSTREPORT",
+      "accepted": true,
+      "audit_record_id": "audit-pos-dcm001-geometry",
+      "gate_results": {
+        "row_promoted": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "geometry_allowed": true,
+        "dry_run_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Restricted TrustReport dry-run accepted (research mode only)"
+    },
+    {
+      "request_id": "pos-dcm004-valid",
+      "row_id": "DCM-004",
+      "request_type": "valid_restricted",
+      "decision": "DRY_RUN_ACCEPTED_RESTRICTED_TRUSTREPORT",
+      "accepted": true,
+      "audit_record_id": "audit-pos-dcm004-valid",
+      "gate_results": {
+        "row_promoted": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "geometry_allowed": true,
+        "dry_run_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Restricted TrustReport dry-run accepted (research mode only)"
+    },
+    {
+      "request_id": "pos-dcm004-warnings",
+      "row_id": "DCM-004",
+      "request_type": "warnings_present",
+      "decision": "DRY_RUN_ACCEPTED_RESTRICTED_TRUSTREPORT",
+      "accepted": true,
+      "audit_record_id": "audit-pos-dcm004-warnings",
+      "gate_results": {
+        "row_promoted": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "geometry_allowed": true,
+        "dry_run_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Restricted TrustReport dry-run accepted (research mode only)"
+    },
+    {
+      "request_id": "pos-dcm004-geometry",
+      "row_id": "DCM-004",
+      "request_type": "allowed_geometry",
+      "decision": "DRY_RUN_ACCEPTED_RESTRICTED_TRUSTREPORT",
+      "accepted": true,
+      "audit_record_id": "audit-pos-dcm004-geometry",
+      "gate_results": {
+        "row_promoted": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "restrictions_present": true,
+        "geometry_allowed": true,
+        "dry_run_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Restricted TrustReport dry-run accepted (research mode only)"
+    },
+    {
+      "request_id": "neg-dcm001-missing-warnings",
+      "row_id": "DCM-001",
+      "request_type": "missing_warnings",
+      "decision": "DRY_RUN_BLOCKED_MISSING_CONTRACT",
+      "accepted": false,
+      "audit_record_id": "audit-neg-dcm001-missing-warnings",
+      "gate_results": {
+        "warnings_missing": true
+      },
+      "reason": "Required warnings contract absent"
+    },
+    {
+      "request_id": "neg-dcm004-missing-pt-warning",
+      "row_id": "DCM-004",
+      "request_type": "missing_parallel_trends_warning",
+      "decision": "DRY_RUN_BLOCKED_MISSING_CONTRACT",
+      "accepted": false,
+      "audit_record_id": "audit-neg-dcm004-missing-pt-warning",
+      "gate_results": {
+        "parallel_trends_warning_missing": true
+      },
+      "reason": "Parallel-trends warning required for DCM-004"
+    },
+    {
+      "request_id": "neg-dcm001-bad-geometry",
+      "row_id": "DCM-001",
+      "request_type": "unsupported_geometry",
+      "decision": "DRY_RUN_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "audit_record_id": "audit-neg-dcm001-bad-geometry",
+      "gate_results": {
+        "unsupported_geometry": true
+      },
+      "reason": "Geometry aggregate_1x1 blocked for DCM-001"
+    },
+    {
+      "request_id": "neg-dcm004-bad-timing",
+      "row_id": "DCM-004",
+      "request_type": "unsupported_timing",
+      "decision": "DRY_RUN_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "audit_record_id": "audit-neg-dcm004-bad-timing",
+      "gate_results": {
+        "unsupported_geometry": true
+      },
+      "reason": "Geometry parallel_trends_violation blocked for DCM-004"
+    },
+    {
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "request_type": "causal_trustreport",
+      "decision": "DRY_RUN_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "audit-neg-brb",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-BRB is diagnostic-only; restricted TrustReport dry-run blocked"
+    },
+    {
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "request_type": "causal_trustreport",
+      "decision": "DRY_RUN_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "audit-neg-kfold",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-KFOLD is diagnostic-only; restricted TrustReport dry-run blocked"
+    },
+    {
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "request_type": "causal_trustreport",
+      "decision": "DRY_RUN_BLOCKED_NULL_MONITOR_CAUSAL_REUSE",
+      "accepted": false,
+      "audit_record_id": "audit-neg-placebo",
+      "gate_results": {
+        "null_monitor_causal_reuse": true
+      },
+      "reason": "Null-monitor path cannot be reused for causal TrustReport dry-run"
+    },
+    {
+      "request_id": "neg-dcm006-global",
+      "row_id": "DCM-006",
+      "request_type": "global_claim",
+      "decision": "DRY_RUN_BLOCKED_NOT_PROMOTED",
+      "accepted": false,
+      "audit_record_id": "audit-neg-dcm006-global",
+      "gate_results": {
+        "multicell_global_blocked": true
+      },
+      "reason": "DCM-006 global/winner/pooled claims not promoted"
+    },
+    {
+      "request_id": "neg-dcm006-pooled",
+      "row_id": "DCM-006",
+      "request_type": "pooled_claim",
+      "decision": "DRY_RUN_BLOCKED_NOT_PROMOTED",
+      "accepted": false,
+      "audit_record_id": "audit-neg-dcm006-pooled",
+      "gate_results": {
+        "multicell_global_blocked": true
+      },
+      "reason": "DCM-006 global/winner/pooled claims not promoted"
+    },
+    {
+      "request_id": "neg-dcm008-aggregate",
+      "row_id": "DCM-008",
+      "request_type": "aggregate_stratified",
+      "decision": "DRY_RUN_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "audit-neg-dcm008-aggregate",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-008 is diagnostic-only; restricted TrustReport dry-run blocked"
+    },
+    {
+      "request_id": "neg-cal-dcm001",
+      "row_id": "DCM-001",
+      "request_type": "calibration_signal",
+      "decision": "DRY_RUN_BLOCKED_CALIBRATION_SIGNAL",
+      "accepted": false,
+      "audit_record_id": "audit-neg-cal-dcm001",
+      "gate_results": {
+        "calibration_signal_blocked": true
+      },
+      "reason": "CalibrationSignal not authorized for any row"
+    },
+    {
+      "request_id": "neg-live-dcm004",
+      "row_id": "DCM-004",
+      "request_type": "live_api",
+      "decision": "DRY_RUN_BLOCKED_LIVE_API",
+      "accepted": false,
+      "audit_record_id": "audit-neg-live-dcm004",
+      "gate_results": {
+        "live_api_blocked": true
+      },
+      "reason": "Live API authorization forbidden in dry-run lane"
+    },
+    {
+      "request_id": "neg-scheduler-dcm001",
+      "row_id": "DCM-001",
+      "request_type": "scheduler",
+      "decision": "DRY_RUN_BLOCKED_SCHEDULER",
+      "accepted": false,
+      "audit_record_id": "audit-neg-scheduler-dcm001",
+      "gate_results": {
+        "scheduler_blocked": true
+      },
+      "reason": "Scheduler authorization forbidden in dry-run lane"
+    },
+    {
+      "request_id": "neg-prod-dcm004",
+      "row_id": "DCM-004",
+      "request_type": "production",
+      "decision": "DRY_RUN_BLOCKED_PRODUCTION_DECISIONING",
+      "accepted": false,
+      "audit_record_id": "audit-neg-prod-dcm004",
+      "gate_results": {
+        "production_decisioning_blocked": true
+      },
+      "reason": "Production decisioning forbidden in dry-run lane"
+    },
+    {
+      "request_id": "neg-budget-dcm001",
+      "row_id": "DCM-001",
+      "request_type": "budget",
+      "decision": "DRY_RUN_BLOCKED_BUDGET_OPTIMIZATION",
+      "accepted": false,
+      "audit_record_id": "audit-neg-budget-dcm001",
+      "gate_results": {
+        "budget_optimization_blocked": true
+      },
+      "reason": "Budget optimization input forbidden in dry-run lane"
+    },
+    {
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "request_type": "unknown",
+      "decision": "DRY_RUN_BLOCKED_UNKNOWN_ROW",
+      "accepted": false,
+      "audit_record_id": "audit-neg-unknown",
+      "gate_results": {
+        "unknown_row": true
+      },
+      "reason": "Unknown or unregistered row: DCM-999"
+    }
+  ]
+}

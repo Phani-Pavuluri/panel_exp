@@ -1338,6 +1338,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## TRUSTREPORT-INTEGRATION-DRY-RUN-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/TRUSTREPORT_INTEGRATION_DRY_RUN_001_REPORT.md`](track_d/TRUSTREPORT_INTEGRATION_DRY_RUN_001_REPORT.md) · [`docs/track_d/archives/TRUSTREPORT_INTEGRATION_DRY_RUN_001_summary.json`](track_d/archives/TRUSTREPORT_INTEGRATION_DRY_RUN_001_summary.json) · [`panel_exp/validation/trustreport_integration_dry_run_001.py`](../panel_exp/validation/trustreport_integration_dry_run_001.py)
+
+**Status:** **`trustreport_integration_dry_run_passed`**
+
+**Verdict:** Dry-run integration check for DCM-001/004 restricted row contracts. Positive and negative-control scenarios pass. BRB/KFold/Placebo/DCM-006/DCM-008 blocked. Live API, scheduler, CalibrationSignal, production decisioning, budget optimization false. **No live deployment authorization.**
+
+**Next:** `TRUSTREPORT_RESEARCH_MODE_RENDERER_001`.
+
+---
+
 ## TRUSTREPORT-DOWNSTREAM-PROMOTION-001 (2026-06-03)
 
 **Artifact:** [`docs/track_d/TRUSTREPORT_DOWNSTREAM_PROMOTION_001_REPORT.md`](track_d/TRUSTREPORT_DOWNSTREAM_PROMOTION_001_REPORT.md) · [`docs/track_d/archives/TRUSTREPORT_DOWNSTREAM_PROMOTION_001_summary.json`](track_d/archives/TRUSTREPORT_DOWNSTREAM_PROMOTION_001_summary.json) · [`panel_exp/validation/trustreport_downstream_promotion_001.py`](../panel_exp/validation/trustreport_downstream_promotion_001.py)
