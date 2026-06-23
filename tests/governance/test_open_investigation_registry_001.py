@@ -207,3 +207,14 @@ class TestOpenInvestigationRegistry001:
         assert lane["resolution_artifact"] == "SCM_TREATED_SET_PLACEBO_INTEGRATION_001"
         assert lane["next_artifact"] == "STUDENTIZED_PLACEBO_RANK_INFERENCE_001"
         assert "scm_integration" in lane["artifact_tags"]
+
+    def test_studentized_placebo_rank_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "STUDENTIZED-PLACEBO-RANK-INFERENCE-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "STUDENTIZED_PLACEBO_RANK_INFERENCE_001"
+        assert lane["next_artifact"] == "SCM_STUDENTIZED_TREATED_SET_PLACEBO_INTEGRATION_001"
+        assert "studentized_placebo_rank" in lane["artifact_tags"]
