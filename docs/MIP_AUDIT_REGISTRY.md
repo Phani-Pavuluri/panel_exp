@@ -1338,6 +1338,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## TRUSTREPORT-RESEARCH-MODE-ARTIFACT-EXPORT-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001_REPORT.md`](track_d/TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001_REPORT.md) · [`docs/track_d/archives/TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001_summary.json`](track_d/archives/TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001_summary.json) · [`docs/track_d/examples/TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001_manifest.json`](track_d/examples/TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001_manifest.json) · [`panel_exp/validation/trustreport_research_mode_artifact_export_001.py`](../panel_exp/validation/trustreport_research_mode_artifact_export_001.py)
+
+**Status:** **`trustreport_research_mode_artifact_export_passed`**
+
+**Verdict:** Sanitized research-mode artifact export for DCM-001/004 only. Placeholder, synthetic, and manifest-only exports pass with content hashes. Unsanitized payload and missing audit trail blocked. BRB/KFold/Placebo/DCM-006/DCM-008 blocked. Live API, scheduler, CalibrationSignal, production decisioning, budget optimization false. **No live deployment authorization.**
+
+**Next:** `TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001`.
+
+---
+
 ## TRUSTREPORT-RESEARCH-MODE-RENDERER-001 (2026-06-03)
 
 **Artifact:** [`docs/track_d/TRUSTREPORT_RESEARCH_MODE_RENDERER_001_REPORT.md`](track_d/TRUSTREPORT_RESEARCH_MODE_RENDERER_001_REPORT.md) · [`docs/track_d/archives/TRUSTREPORT_RESEARCH_MODE_RENDERER_001_summary.json`](track_d/archives/TRUSTREPORT_RESEARCH_MODE_RENDERER_001_summary.json) · [`panel_exp/validation/trustreport_research_mode_renderer_001.py`](../panel_exp/validation/trustreport_research_mode_renderer_001.py)

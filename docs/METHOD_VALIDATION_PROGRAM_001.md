@@ -343,6 +343,8 @@ Until **`METHOD_COMBINATION_VALIDATION_MATRIX_001`** completes and suitability f
 
 **TRUSTREPORT-RESEARCH-MODE-RENDERER-001 (2026-06-03):** [`TRUSTREPORT_RESEARCH_MODE_RENDERER_001_REPORT.md`](track_d/TRUSTREPORT_RESEARCH_MODE_RENDERER_001_REPORT.md) — research-mode renderer; regenerate: `poetry run python -m panel_exp.validation.trustreport_research_mode_renderer_001 --overwrite`.
 
+**TRUSTREPORT-RESEARCH-MODE-ARTIFACT-EXPORT-001 (2026-06-03):** [`TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001_REPORT.md`](track_d/TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001_REPORT.md) — sanitized artifact export; regenerate: `poetry run python -m panel_exp.validation.trustreport_research_mode_artifact_export_001 --overwrite`.
+
 ## 13. Stop condition
 
 | Criterion | Status |

@@ -1,0 +1,2506 @@
+{
+  "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ARTIFACT-EXPORT-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-23T03:05:24.470803+00:00",
+  "git_commit": "b2739cf3f0c1159440647315b2c0c4cd6db78138",
+  "input_artifacts": {
+    "renderer_summary": "/workspace/panel_exp/docs/track_d/archives/TRUSTREPORT_RESEARCH_MODE_RENDERER_001_summary.json",
+    "integration_dry_run": "/workspace/panel_exp/docs/track_d/archives/TRUSTREPORT_INTEGRATION_DRY_RUN_001_summary.json",
+    "downstream_promotion": "/workspace/panel_exp/docs/track_d/archives/TRUSTREPORT_DOWNSTREAM_PROMOTION_001_summary.json"
+  },
+  "export_scope": [
+    "DCM-001",
+    "DCM-004"
+  ],
+  "export_requests": [
+    {
+      "request_id": "pos-dcm001-placeholder",
+      "row_id": "DCM-001",
+      "request_type": "placeholder_export",
+      "export_type": "research_mode_artifact_export",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "placeholder",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "include_audit_trail": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-dcm004-placeholder",
+      "row_id": "DCM-004",
+      "request_type": "placeholder_export",
+      "export_type": "research_mode_artifact_export",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "placeholder",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "include_audit_trail": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-dcm001-synthetic",
+      "row_id": "DCM-001",
+      "request_type": "synthetic_export",
+      "export_type": "research_mode_artifact_export",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "synthetic",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "include_audit_trail": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-dcm004-synthetic",
+      "row_id": "DCM-004",
+      "request_type": "synthetic_export",
+      "export_type": "research_mode_artifact_export",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "synthetic",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "include_audit_trail": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-dcm001-manifest",
+      "row_id": "DCM-001",
+      "request_type": "manifest_only",
+      "export_type": "research_mode_artifact_export",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "manifest_only",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "include_audit_trail": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-dcm004-manifest",
+      "row_id": "DCM-004",
+      "request_type": "manifest_only",
+      "export_type": "research_mode_artifact_export",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "manifest_only",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "include_audit_trail": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-dcm001-missing-warnings",
+      "row_id": "DCM-001",
+      "request_type": "missing_warnings",
+      "export_type": "research_mode_artifact_export",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": false,
+      "include_diagnostics": true,
+      "include_audit_trail": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-dcm004-missing-diagnostics",
+      "row_id": "DCM-004",
+      "request_type": "missing_diagnostics",
+      "export_type": "research_mode_artifact_export",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": false,
+      "include_audit_trail": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-dcm001-bad-geometry",
+      "row_id": "DCM-001",
+      "request_type": "unsupported_geometry",
+      "export_type": "research_mode_artifact_export",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": "aggregate_1x1",
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "include_audit_trail": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-dcm004-bad-timing",
+      "row_id": "DCM-004",
+      "request_type": "unsupported_timing",
+      "export_type": "research_mode_artifact_export",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": "parallel_trends_violation",
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "include_audit_trail": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "request_type": "causal_trustreport",
+      "export_type": "research_mode_artifact_export",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "include_audit_trail": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "request_type": "causal_trustreport",
+      "export_type": "research_mode_artifact_export",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "include_audit_trail": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "request_type": "causal_trustreport",
+      "export_type": "research_mode_artifact_export",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "include_audit_trail": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-dcm006-global",
+      "row_id": "DCM-006",
+      "request_type": "global_claim",
+      "export_type": "research_mode_artifact_export",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "include_audit_trail": true,
+      "claim_type": "global",
+      "notes": ""
+    },
+    {
+      "request_id": "neg-dcm008-aggregate",
+      "row_id": "DCM-008",
+      "request_type": "aggregate_stratified",
+      "export_type": "research_mode_artifact_export",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "include_audit_trail": true,
+      "claim_type": "aggregate_stratified",
+      "notes": ""
+    },
+    {
+      "request_id": "neg-cal",
+      "row_id": "DCM-001",
+      "request_type": "calibration",
+      "export_type": "calibration_signal_payload",
+      "requested_role": "calibration_signal",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "include_audit_trail": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-live",
+      "row_id": "DCM-004",
+      "request_type": "live_api",
+      "export_type": "live_api_payload",
+      "requested_role": "live_api",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "include_audit_trail": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-scheduler",
+      "row_id": "DCM-001",
+      "request_type": "scheduler",
+      "export_type": "scheduler_payload",
+      "requested_role": "scheduler",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "include_audit_trail": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-prod",
+      "row_id": "DCM-004",
+      "request_type": "production",
+      "export_type": "decisioning_payload",
+      "requested_role": "production_decisioning",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "include_audit_trail": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-budget",
+      "row_id": "DCM-001",
+      "request_type": "budget",
+      "export_type": "budget_optimization_payload",
+      "requested_role": "budget_optimization_input",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "include_audit_trail": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "request_type": "unknown",
+      "export_type": "research_mode_artifact_export",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "include_audit_trail": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-unsanitized",
+      "row_id": "DCM-001",
+      "request_type": "unsanitized_payload",
+      "export_type": "research_mode_artifact_export",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "unsanitized",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "include_audit_trail": true,
+      "claim_type": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-missing-audit",
+      "row_id": "DCM-004",
+      "request_type": "missing_audit_trail",
+      "export_type": "research_mode_artifact_export",
+      "requested_role": "restricted_trustreport_research_only",
+      "geometry": null,
+      "payload_type": "none",
+      "include_warnings": true,
+      "include_diagnostics": true,
+      "include_audit_trail": false,
+      "claim_type": null,
+      "notes": ""
+    }
+  ],
+  "accepted_exports": [
+    {
+      "request_id": "pos-dcm001-placeholder",
+      "row_id": "DCM-001",
+      "request_type": "placeholder_export",
+      "decision": "EXPORT_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "accepted": true,
+      "audit_record_id": "export-audit-pos-dcm001-placeholder",
+      "export_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "sanitized_payload": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport export accepted",
+      "content_hash": "2168462379e105571df6b660984cc36b64163e3c8b5190eee680486e7017de5e"
+    },
+    {
+      "request_id": "pos-dcm004-placeholder",
+      "row_id": "DCM-004",
+      "request_type": "placeholder_export",
+      "decision": "EXPORT_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "accepted": true,
+      "audit_record_id": "export-audit-pos-dcm004-placeholder",
+      "export_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "sanitized_payload": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport export accepted",
+      "content_hash": "b2a4748bae9383ae45ccc51fc2c14c104f097d170303113e405c11730994f516"
+    },
+    {
+      "request_id": "pos-dcm001-synthetic",
+      "row_id": "DCM-001",
+      "request_type": "synthetic_export",
+      "decision": "EXPORT_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "audit_record_id": "export-audit-pos-dcm001-synthetic",
+      "export_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "sanitized_payload": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport export accepted",
+      "content_hash": "f9a0960bbb06cca2d2373a6918a03c0fe2cc5939700f101c593a95f6f3b8c495"
+    },
+    {
+      "request_id": "pos-dcm004-synthetic",
+      "row_id": "DCM-004",
+      "request_type": "synthetic_export",
+      "decision": "EXPORT_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "audit_record_id": "export-audit-pos-dcm004-synthetic",
+      "export_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "sanitized_payload": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport export accepted",
+      "content_hash": "c54cb2b171ee51efe79bb901a8839dcb09a74249e57d5cf14d99929239c7662c"
+    },
+    {
+      "request_id": "pos-dcm001-manifest",
+      "row_id": "DCM-001",
+      "request_type": "manifest_only",
+      "decision": "EXPORT_ACCEPTED_MANIFEST_ONLY",
+      "accepted": true,
+      "audit_record_id": "export-audit-pos-dcm001-manifest",
+      "export_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "sanitized_payload": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport export accepted",
+      "content_hash": "f8372f936de17b4ad8a53c8507f189c5a607fa46b8ae39910e33ec7797cd8754"
+    },
+    {
+      "request_id": "pos-dcm004-manifest",
+      "row_id": "DCM-004",
+      "request_type": "manifest_only",
+      "decision": "EXPORT_ACCEPTED_MANIFEST_ONLY",
+      "accepted": true,
+      "audit_record_id": "export-audit-pos-dcm004-manifest",
+      "export_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "sanitized_payload": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport export accepted",
+      "content_hash": "e51becb6cf3628ba9b0cbe7d21ac356499f01d35f5f022a74cb451340962326b"
+    }
+  ],
+  "blocked_exports": [
+    {
+      "request_id": "neg-dcm001-missing-warnings",
+      "row_id": "DCM-001",
+      "request_type": "missing_warnings",
+      "decision": "EXPORT_BLOCKED_MISSING_CONTRACT",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-dcm001-missing-warnings",
+      "export_status": "blocked",
+      "gate_results": {
+        "warnings_missing": true
+      },
+      "reason": "Required warnings missing",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-dcm004-missing-diagnostics",
+      "row_id": "DCM-004",
+      "request_type": "missing_diagnostics",
+      "decision": "EXPORT_BLOCKED_MISSING_DIAGNOSTICS",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-dcm004-missing-diagnostics",
+      "export_status": "blocked",
+      "gate_results": {
+        "diagnostics_missing": true
+      },
+      "reason": "Parallel-trends diagnostics required for DCM-004",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-dcm001-bad-geometry",
+      "row_id": "DCM-001",
+      "request_type": "unsupported_geometry",
+      "decision": "EXPORT_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-dcm001-bad-geometry",
+      "export_status": "blocked",
+      "gate_results": {
+        "unsupported_geometry": true
+      },
+      "reason": "Geometry aggregate_1x1 blocked",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-dcm004-bad-timing",
+      "row_id": "DCM-004",
+      "request_type": "unsupported_timing",
+      "decision": "EXPORT_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-dcm004-bad-timing",
+      "export_status": "blocked",
+      "gate_results": {
+        "unsupported_geometry": true
+      },
+      "reason": "Geometry parallel_trends_violation blocked",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "request_type": "causal_trustreport",
+      "decision": "EXPORT_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-brb",
+      "export_status": "blocked",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-BRB is diagnostic-only",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "request_type": "causal_trustreport",
+      "decision": "EXPORT_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-kfold",
+      "export_status": "blocked",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-KFOLD is diagnostic-only",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "request_type": "causal_trustreport",
+      "decision": "EXPORT_BLOCKED_NULL_MONITOR_CAUSAL_REUSE",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-placebo",
+      "export_status": "blocked",
+      "gate_results": {
+        "null_monitor_causal_reuse": true
+      },
+      "reason": "Null-monitor path cannot export causal TrustReport",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-dcm006-global",
+      "row_id": "DCM-006",
+      "request_type": "global_claim",
+      "decision": "EXPORT_BLOCKED_NOT_PROMOTED",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-dcm006-global",
+      "export_status": "blocked",
+      "gate_results": {
+        "multicell_global_blocked": true
+      },
+      "reason": "DCM-006 global/winner/pooled export blocked",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-dcm008-aggregate",
+      "row_id": "DCM-008",
+      "request_type": "aggregate_stratified",
+      "decision": "EXPORT_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-dcm008-aggregate",
+      "export_status": "blocked",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-008 is diagnostic-only",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-cal",
+      "row_id": "DCM-001",
+      "request_type": "calibration",
+      "decision": "EXPORT_BLOCKED_CALIBRATION_SIGNAL",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-cal",
+      "export_status": "blocked",
+      "gate_results": {
+        "calibration_signal_payload_blocked": true
+      },
+      "reason": "Export type calibration_signal_payload forbidden",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-live",
+      "row_id": "DCM-004",
+      "request_type": "live_api",
+      "decision": "EXPORT_BLOCKED_LIVE_API",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-live",
+      "export_status": "blocked",
+      "gate_results": {
+        "live_api_payload_blocked": true
+      },
+      "reason": "Export type live_api_payload forbidden",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-scheduler",
+      "row_id": "DCM-001",
+      "request_type": "scheduler",
+      "decision": "EXPORT_BLOCKED_SCHEDULER",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-scheduler",
+      "export_status": "blocked",
+      "gate_results": {
+        "scheduler_payload_blocked": true
+      },
+      "reason": "Export type scheduler_payload forbidden",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-prod",
+      "row_id": "DCM-004",
+      "request_type": "production",
+      "decision": "EXPORT_BLOCKED_PRODUCTION_DECISIONING",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-prod",
+      "export_status": "blocked",
+      "gate_results": {
+        "decisioning_payload_blocked": true
+      },
+      "reason": "Export type decisioning_payload forbidden",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-budget",
+      "row_id": "DCM-001",
+      "request_type": "budget",
+      "decision": "EXPORT_BLOCKED_BUDGET_OPTIMIZATION",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-budget",
+      "export_status": "blocked",
+      "gate_results": {
+        "budget_optimization_payload_blocked": true
+      },
+      "reason": "Export type budget_optimization_payload forbidden",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "request_type": "unknown",
+      "decision": "EXPORT_BLOCKED_UNKNOWN_ROW",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-unknown",
+      "export_status": "blocked",
+      "gate_results": {
+        "unknown_row": true
+      },
+      "reason": "Unknown row: DCM-999",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-unsanitized",
+      "row_id": "DCM-001",
+      "request_type": "unsanitized_payload",
+      "decision": "EXPORT_BLOCKED_UNSANITIZED_PAYLOAD",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-unsanitized",
+      "export_status": "blocked",
+      "gate_results": {
+        "unsanitized_payload": true
+      },
+      "reason": "Unsanitized live measurement payload blocked",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-missing-audit",
+      "row_id": "DCM-004",
+      "request_type": "missing_audit_trail",
+      "decision": "EXPORT_BLOCKED_MISSING_AUDIT_TRAIL",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-missing-audit",
+      "export_status": "blocked",
+      "gate_results": {
+        "audit_trail_missing": true
+      },
+      "reason": "Audit trail required for export",
+      "content_hash": null
+    }
+  ],
+  "accepted_rows": [
+    "DCM-001",
+    "DCM-004"
+  ],
+  "blocked_rows": [
+    "DCM-001",
+    "DCM-004",
+    "DCM-005-BRB",
+    "DCM-005-KFOLD",
+    "DCM-005-PLACEBO",
+    "DCM-006",
+    "DCM-008",
+    "DCM-999"
+  ],
+  "export_contracts": {
+    "export-pos-dcm001-placeholder": {
+      "export_id": "export-pos-dcm001-placeholder",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ARTIFACT-EXPORT-001",
+      "row_id": "DCM-001",
+      "render_source_artifact": "TRUSTREPORT-RESEARCH-MODE-RENDERER-001",
+      "renderer_summary_artifact": "TRUSTREPORT-RESEARCH-MODE-RENDERER-001",
+      "promotion_artifact": "TRUSTREPORT-DOWNSTREAM-PROMOTION-001",
+      "dry_run_artifact": "TRUSTREPORT-INTEGRATION-DRY-RUN-001",
+      "method_identity": {
+        "design_family": "single_cell",
+        "estimator": "scm",
+        "inference_method": "unit_jackknife"
+      },
+      "estimand": "treated_unit_effect_level",
+      "readout_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "sanitized_payload": {
+        "label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED",
+        "placeholder": true,
+        "point_estimate": null,
+        "interval_low": null,
+        "interval_high": null
+      },
+      "warnings": [
+        "noisy_world_coverage_caveat",
+        "type_i_caveat",
+        "restricted_geometry_only",
+        "fit_diagnostics_required"
+      ],
+      "restrictions": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "production_decisioning",
+        "scheduler"
+      ],
+      "blocked_uses": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "production_decisioning",
+        "scheduler"
+      ],
+      "authorization_boundaries": {
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "audit_trail": {
+        "renderer_summary_artifact": "TRUSTREPORT-RESEARCH-MODE-RENDERER-001",
+        "dry_run_approval_artifact": "TRUSTREPORT-INTEGRATION-DRY-RUN-001",
+        "promotion_artifact": "TRUSTREPORT-DOWNSTREAM-PROMOTION-001",
+        "export_artifact": "TRUSTREPORT-RESEARCH-MODE-ARTIFACT-EXPORT-001",
+        "audit_artifacts": [
+          "TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001",
+          "D5-STAT-SCM-JK-001"
+        ]
+      },
+      "banners": [
+        "RESEARCH MODE ONLY",
+        "NOT FOR PRODUCTION DECISIONING",
+        "NOT FOR BUDGET OPTIMIZATION",
+        "NO CALIBRATIONSIGNAL AUTHORIZATION",
+        "NO LIVE API AUTHORIZATION",
+        "NO SCHEDULER AUTHORIZATION",
+        "SANITIZED ARTIFACT EXPORT"
+      ],
+      "schema_version": "trustreport_research_mode_export_v1",
+      "created_at": "2026-06-23T03:05:24.470554+00:00",
+      "export_manifest": {
+        "export_id": "export-pos-dcm001-placeholder",
+        "row_id": "DCM-001",
+        "export_type": "research_mode_artifact_export",
+        "schema_version": "trustreport_research_mode_export_v1",
+        "content_hash": "2168462379e105571df6b660984cc36b64163e3c8b5190eee680486e7017de5e",
+        "sanitized": true,
+        "research_mode_only": true,
+        "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED",
+        "created_at": "2026-06-23T03:05:24.470554+00:00"
+      },
+      "content_hash": "2168462379e105571df6b660984cc36b64163e3c8b5190eee680486e7017de5e",
+      "export_status": "EXPORT_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "export_decision": "EXPORT_ACCEPTED_PLACEHOLDER_RESEARCH_MODE"
+    },
+    "export-pos-dcm004-placeholder": {
+      "export_id": "export-pos-dcm004-placeholder",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ARTIFACT-EXPORT-001",
+      "row_id": "DCM-004",
+      "render_source_artifact": "TRUSTREPORT-RESEARCH-MODE-RENDERER-001",
+      "renderer_summary_artifact": "TRUSTREPORT-RESEARCH-MODE-RENDERER-001",
+      "promotion_artifact": "TRUSTREPORT-DOWNSTREAM-PROMOTION-001",
+      "dry_run_artifact": "TRUSTREPORT-INTEGRATION-DRY-RUN-001",
+      "method_identity": {
+        "design_family": "single_cell",
+        "estimator": "did",
+        "inference_method": "bootstrap"
+      },
+      "estimand": "cumulative_att_level",
+      "readout_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "sanitized_payload": {
+        "label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED",
+        "placeholder": true,
+        "point_estimate": null,
+        "interval_low": null,
+        "interval_high": null
+      },
+      "warnings": [
+        "parallel_trends_required",
+        "common_timing_required",
+        "unsupported_worlds_excluded",
+        "fit_diagnostics_required"
+      ],
+      "restrictions": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "production_decisioning",
+        "scheduler"
+      ],
+      "blocked_uses": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "production_decisioning",
+        "scheduler"
+      ],
+      "authorization_boundaries": {
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "audit_trail": {
+        "renderer_summary_artifact": "TRUSTREPORT-RESEARCH-MODE-RENDERER-001",
+        "dry_run_approval_artifact": "TRUSTREPORT-INTEGRATION-DRY-RUN-001",
+        "promotion_artifact": "TRUSTREPORT-DOWNSTREAM-PROMOTION-001",
+        "export_artifact": "TRUSTREPORT-RESEARCH-MODE-ARTIFACT-EXPORT-001",
+        "audit_artifacts": [
+          "DCM-004-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001",
+          "D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001"
+        ]
+      },
+      "banners": [
+        "RESEARCH MODE ONLY",
+        "NOT FOR PRODUCTION DECISIONING",
+        "NOT FOR BUDGET OPTIMIZATION",
+        "NO CALIBRATIONSIGNAL AUTHORIZATION",
+        "NO LIVE API AUTHORIZATION",
+        "NO SCHEDULER AUTHORIZATION",
+        "SANITIZED ARTIFACT EXPORT"
+      ],
+      "schema_version": "trustreport_research_mode_export_v1",
+      "created_at": "2026-06-23T03:05:24.470636+00:00",
+      "export_manifest": {
+        "export_id": "export-pos-dcm004-placeholder",
+        "row_id": "DCM-004",
+        "export_type": "research_mode_artifact_export",
+        "schema_version": "trustreport_research_mode_export_v1",
+        "content_hash": "b2a4748bae9383ae45ccc51fc2c14c104f097d170303113e405c11730994f516",
+        "sanitized": true,
+        "research_mode_only": true,
+        "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED",
+        "created_at": "2026-06-23T03:05:24.470636+00:00"
+      },
+      "content_hash": "b2a4748bae9383ae45ccc51fc2c14c104f097d170303113e405c11730994f516",
+      "export_status": "EXPORT_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "export_decision": "EXPORT_ACCEPTED_PLACEHOLDER_RESEARCH_MODE"
+    },
+    "export-pos-dcm001-synthetic": {
+      "export_id": "export-pos-dcm001-synthetic",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ARTIFACT-EXPORT-001",
+      "row_id": "DCM-001",
+      "render_source_artifact": "TRUSTREPORT-RESEARCH-MODE-RENDERER-001",
+      "renderer_summary_artifact": "TRUSTREPORT-RESEARCH-MODE-RENDERER-001",
+      "promotion_artifact": "TRUSTREPORT-DOWNSTREAM-PROMOTION-001",
+      "dry_run_artifact": "TRUSTREPORT-INTEGRATION-DRY-RUN-001",
+      "method_identity": {
+        "design_family": "single_cell",
+        "estimator": "scm",
+        "inference_method": "unit_jackknife"
+      },
+      "estimand": "treated_unit_effect_level",
+      "readout_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "sanitized_payload": {
+        "label": "SYNTHETIC_DRY_RUN_PAYLOAD",
+        "synthetic": true,
+        "non_decisioning": true,
+        "point_estimate": 0.0,
+        "interval_low": -1.0,
+        "interval_high": 1.0,
+        "note": "Synthetic dry-run payload for export validation only; not a real measurement."
+      },
+      "warnings": [
+        "noisy_world_coverage_caveat",
+        "type_i_caveat",
+        "restricted_geometry_only",
+        "fit_diagnostics_required"
+      ],
+      "restrictions": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "production_decisioning",
+        "scheduler"
+      ],
+      "blocked_uses": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "production_decisioning",
+        "scheduler"
+      ],
+      "authorization_boundaries": {
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "audit_trail": {
+        "renderer_summary_artifact": "TRUSTREPORT-RESEARCH-MODE-RENDERER-001",
+        "dry_run_approval_artifact": "TRUSTREPORT-INTEGRATION-DRY-RUN-001",
+        "promotion_artifact": "TRUSTREPORT-DOWNSTREAM-PROMOTION-001",
+        "export_artifact": "TRUSTREPORT-RESEARCH-MODE-ARTIFACT-EXPORT-001",
+        "audit_artifacts": [
+          "TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001",
+          "D5-STAT-SCM-JK-001"
+        ]
+      },
+      "banners": [
+        "RESEARCH MODE ONLY",
+        "NOT FOR PRODUCTION DECISIONING",
+        "NOT FOR BUDGET OPTIMIZATION",
+        "NO CALIBRATIONSIGNAL AUTHORIZATION",
+        "NO LIVE API AUTHORIZATION",
+        "NO SCHEDULER AUTHORIZATION",
+        "SANITIZED ARTIFACT EXPORT"
+      ],
+      "schema_version": "trustreport_research_mode_export_v1",
+      "created_at": "2026-06-23T03:05:24.470660+00:00",
+      "export_manifest": {
+        "export_id": "export-pos-dcm001-synthetic",
+        "row_id": "DCM-001",
+        "export_type": "research_mode_artifact_export",
+        "schema_version": "trustreport_research_mode_export_v1",
+        "content_hash": "f9a0960bbb06cca2d2373a6918a03c0fe2cc5939700f101c593a95f6f3b8c495",
+        "sanitized": true,
+        "research_mode_only": true,
+        "measurement_label": "SYNTHETIC_DRY_RUN_PAYLOAD",
+        "created_at": "2026-06-23T03:05:24.470660+00:00"
+      },
+      "content_hash": "f9a0960bbb06cca2d2373a6918a03c0fe2cc5939700f101c593a95f6f3b8c495",
+      "export_status": "EXPORT_ACCEPTED_RESEARCH_MODE",
+      "export_decision": "EXPORT_ACCEPTED_RESEARCH_MODE"
+    },
+    "export-pos-dcm004-synthetic": {
+      "export_id": "export-pos-dcm004-synthetic",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ARTIFACT-EXPORT-001",
+      "row_id": "DCM-004",
+      "render_source_artifact": "TRUSTREPORT-RESEARCH-MODE-RENDERER-001",
+      "renderer_summary_artifact": "TRUSTREPORT-RESEARCH-MODE-RENDERER-001",
+      "promotion_artifact": "TRUSTREPORT-DOWNSTREAM-PROMOTION-001",
+      "dry_run_artifact": "TRUSTREPORT-INTEGRATION-DRY-RUN-001",
+      "method_identity": {
+        "design_family": "single_cell",
+        "estimator": "did",
+        "inference_method": "bootstrap"
+      },
+      "estimand": "cumulative_att_level",
+      "readout_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "sanitized_payload": {
+        "label": "SYNTHETIC_DRY_RUN_PAYLOAD",
+        "synthetic": true,
+        "non_decisioning": true,
+        "point_estimate": 0.0,
+        "interval_low": -1.0,
+        "interval_high": 1.0,
+        "note": "Synthetic dry-run payload for export validation only; not a real measurement."
+      },
+      "warnings": [
+        "parallel_trends_required",
+        "common_timing_required",
+        "unsupported_worlds_excluded",
+        "fit_diagnostics_required"
+      ],
+      "restrictions": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "production_decisioning",
+        "scheduler"
+      ],
+      "blocked_uses": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "production_decisioning",
+        "scheduler"
+      ],
+      "authorization_boundaries": {
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "audit_trail": {
+        "renderer_summary_artifact": "TRUSTREPORT-RESEARCH-MODE-RENDERER-001",
+        "dry_run_approval_artifact": "TRUSTREPORT-INTEGRATION-DRY-RUN-001",
+        "promotion_artifact": "TRUSTREPORT-DOWNSTREAM-PROMOTION-001",
+        "export_artifact": "TRUSTREPORT-RESEARCH-MODE-ARTIFACT-EXPORT-001",
+        "audit_artifacts": [
+          "DCM-004-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001",
+          "D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001"
+        ]
+      },
+      "banners": [
+        "RESEARCH MODE ONLY",
+        "NOT FOR PRODUCTION DECISIONING",
+        "NOT FOR BUDGET OPTIMIZATION",
+        "NO CALIBRATIONSIGNAL AUTHORIZATION",
+        "NO LIVE API AUTHORIZATION",
+        "NO SCHEDULER AUTHORIZATION",
+        "SANITIZED ARTIFACT EXPORT"
+      ],
+      "schema_version": "trustreport_research_mode_export_v1",
+      "created_at": "2026-06-23T03:05:24.470681+00:00",
+      "export_manifest": {
+        "export_id": "export-pos-dcm004-synthetic",
+        "row_id": "DCM-004",
+        "export_type": "research_mode_artifact_export",
+        "schema_version": "trustreport_research_mode_export_v1",
+        "content_hash": "c54cb2b171ee51efe79bb901a8839dcb09a74249e57d5cf14d99929239c7662c",
+        "sanitized": true,
+        "research_mode_only": true,
+        "measurement_label": "SYNTHETIC_DRY_RUN_PAYLOAD",
+        "created_at": "2026-06-23T03:05:24.470681+00:00"
+      },
+      "content_hash": "c54cb2b171ee51efe79bb901a8839dcb09a74249e57d5cf14d99929239c7662c",
+      "export_status": "EXPORT_ACCEPTED_RESEARCH_MODE",
+      "export_decision": "EXPORT_ACCEPTED_RESEARCH_MODE"
+    },
+    "export-pos-dcm001-manifest": {
+      "export_id": "export-pos-dcm001-manifest",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ARTIFACT-EXPORT-001",
+      "row_id": "DCM-001",
+      "render_source_artifact": "TRUSTREPORT-RESEARCH-MODE-RENDERER-001",
+      "renderer_summary_artifact": "TRUSTREPORT-RESEARCH-MODE-RENDERER-001",
+      "promotion_artifact": "TRUSTREPORT-DOWNSTREAM-PROMOTION-001",
+      "dry_run_artifact": "TRUSTREPORT-INTEGRATION-DRY-RUN-001",
+      "method_identity": {
+        "design_family": "single_cell",
+        "estimator": "scm",
+        "inference_method": "unit_jackknife"
+      },
+      "estimand": "treated_unit_effect_level",
+      "readout_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "sanitized_payload": {
+        "label": "MANIFEST_ONLY_EXPORT",
+        "manifest_only": true,
+        "measurement_included": false,
+        "note": "Manifest-only export; no measurement payload attached."
+      },
+      "warnings": [
+        "noisy_world_coverage_caveat",
+        "type_i_caveat",
+        "restricted_geometry_only",
+        "fit_diagnostics_required"
+      ],
+      "restrictions": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "production_decisioning",
+        "scheduler"
+      ],
+      "blocked_uses": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "production_decisioning",
+        "scheduler"
+      ],
+      "authorization_boundaries": {
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "audit_trail": {
+        "renderer_summary_artifact": "TRUSTREPORT-RESEARCH-MODE-RENDERER-001",
+        "dry_run_approval_artifact": "TRUSTREPORT-INTEGRATION-DRY-RUN-001",
+        "promotion_artifact": "TRUSTREPORT-DOWNSTREAM-PROMOTION-001",
+        "export_artifact": "TRUSTREPORT-RESEARCH-MODE-ARTIFACT-EXPORT-001",
+        "audit_artifacts": [
+          "TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001",
+          "D5-STAT-SCM-JK-001"
+        ]
+      },
+      "banners": [
+        "RESEARCH MODE ONLY",
+        "NOT FOR PRODUCTION DECISIONING",
+        "NOT FOR BUDGET OPTIMIZATION",
+        "NO CALIBRATIONSIGNAL AUTHORIZATION",
+        "NO LIVE API AUTHORIZATION",
+        "NO SCHEDULER AUTHORIZATION",
+        "SANITIZED ARTIFACT EXPORT"
+      ],
+      "schema_version": "trustreport_research_mode_export_v1",
+      "created_at": "2026-06-23T03:05:24.470698+00:00",
+      "export_manifest": {
+        "export_id": "export-pos-dcm001-manifest",
+        "row_id": "DCM-001",
+        "export_type": "research_mode_artifact_export",
+        "schema_version": "trustreport_research_mode_export_v1",
+        "content_hash": "f8372f936de17b4ad8a53c8507f189c5a607fa46b8ae39910e33ec7797cd8754",
+        "sanitized": true,
+        "research_mode_only": true,
+        "measurement_label": "MANIFEST_ONLY_EXPORT",
+        "created_at": "2026-06-23T03:05:24.470698+00:00"
+      },
+      "content_hash": "f8372f936de17b4ad8a53c8507f189c5a607fa46b8ae39910e33ec7797cd8754",
+      "export_status": "EXPORT_ACCEPTED_MANIFEST_ONLY",
+      "export_decision": "EXPORT_ACCEPTED_MANIFEST_ONLY"
+    },
+    "export-pos-dcm004-manifest": {
+      "export_id": "export-pos-dcm004-manifest",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ARTIFACT-EXPORT-001",
+      "row_id": "DCM-004",
+      "render_source_artifact": "TRUSTREPORT-RESEARCH-MODE-RENDERER-001",
+      "renderer_summary_artifact": "TRUSTREPORT-RESEARCH-MODE-RENDERER-001",
+      "promotion_artifact": "TRUSTREPORT-DOWNSTREAM-PROMOTION-001",
+      "dry_run_artifact": "TRUSTREPORT-INTEGRATION-DRY-RUN-001",
+      "method_identity": {
+        "design_family": "single_cell",
+        "estimator": "did",
+        "inference_method": "bootstrap"
+      },
+      "estimand": "cumulative_att_level",
+      "readout_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "sanitized_payload": {
+        "label": "MANIFEST_ONLY_EXPORT",
+        "manifest_only": true,
+        "measurement_included": false,
+        "note": "Manifest-only export; no measurement payload attached."
+      },
+      "warnings": [
+        "parallel_trends_required",
+        "common_timing_required",
+        "unsupported_worlds_excluded",
+        "fit_diagnostics_required"
+      ],
+      "restrictions": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "production_decisioning",
+        "scheduler"
+      ],
+      "blocked_uses": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "production_decisioning",
+        "scheduler"
+      ],
+      "authorization_boundaries": {
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "audit_trail": {
+        "renderer_summary_artifact": "TRUSTREPORT-RESEARCH-MODE-RENDERER-001",
+        "dry_run_approval_artifact": "TRUSTREPORT-INTEGRATION-DRY-RUN-001",
+        "promotion_artifact": "TRUSTREPORT-DOWNSTREAM-PROMOTION-001",
+        "export_artifact": "TRUSTREPORT-RESEARCH-MODE-ARTIFACT-EXPORT-001",
+        "audit_artifacts": [
+          "DCM-004-TRUSTREPORT-ELIGIBILITY-REASSESSMENT-001",
+          "D5-TRUST-DID-BOOTSTRAP-REMEDIATION-001"
+        ]
+      },
+      "banners": [
+        "RESEARCH MODE ONLY",
+        "NOT FOR PRODUCTION DECISIONING",
+        "NOT FOR BUDGET OPTIMIZATION",
+        "NO CALIBRATIONSIGNAL AUTHORIZATION",
+        "NO LIVE API AUTHORIZATION",
+        "NO SCHEDULER AUTHORIZATION",
+        "SANITIZED ARTIFACT EXPORT"
+      ],
+      "schema_version": "trustreport_research_mode_export_v1",
+      "created_at": "2026-06-23T03:05:24.470717+00:00",
+      "export_manifest": {
+        "export_id": "export-pos-dcm004-manifest",
+        "row_id": "DCM-004",
+        "export_type": "research_mode_artifact_export",
+        "schema_version": "trustreport_research_mode_export_v1",
+        "content_hash": "e51becb6cf3628ba9b0cbe7d21ac356499f01d35f5f022a74cb451340962326b",
+        "sanitized": true,
+        "research_mode_only": true,
+        "measurement_label": "MANIFEST_ONLY_EXPORT",
+        "created_at": "2026-06-23T03:05:24.470717+00:00"
+      },
+      "content_hash": "e51becb6cf3628ba9b0cbe7d21ac356499f01d35f5f022a74cb451340962326b",
+      "export_status": "EXPORT_ACCEPTED_MANIFEST_ONLY",
+      "export_decision": "EXPORT_ACCEPTED_MANIFEST_ONLY"
+    }
+  },
+  "export_manifest_metadata": {
+    "pos-dcm001-placeholder": {
+      "export_id": "export-pos-dcm001-placeholder",
+      "row_id": "DCM-001",
+      "export_type": "research_mode_artifact_export",
+      "schema_version": "trustreport_research_mode_export_v1",
+      "content_hash": "2168462379e105571df6b660984cc36b64163e3c8b5190eee680486e7017de5e",
+      "sanitized": true,
+      "research_mode_only": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED",
+      "created_at": "2026-06-23T03:05:24.470554+00:00"
+    },
+    "pos-dcm004-placeholder": {
+      "export_id": "export-pos-dcm004-placeholder",
+      "row_id": "DCM-004",
+      "export_type": "research_mode_artifact_export",
+      "schema_version": "trustreport_research_mode_export_v1",
+      "content_hash": "b2a4748bae9383ae45ccc51fc2c14c104f097d170303113e405c11730994f516",
+      "sanitized": true,
+      "research_mode_only": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED",
+      "created_at": "2026-06-23T03:05:24.470636+00:00"
+    },
+    "pos-dcm001-synthetic": {
+      "export_id": "export-pos-dcm001-synthetic",
+      "row_id": "DCM-001",
+      "export_type": "research_mode_artifact_export",
+      "schema_version": "trustreport_research_mode_export_v1",
+      "content_hash": "f9a0960bbb06cca2d2373a6918a03c0fe2cc5939700f101c593a95f6f3b8c495",
+      "sanitized": true,
+      "research_mode_only": true,
+      "measurement_label": "SYNTHETIC_DRY_RUN_PAYLOAD",
+      "created_at": "2026-06-23T03:05:24.470660+00:00"
+    },
+    "pos-dcm004-synthetic": {
+      "export_id": "export-pos-dcm004-synthetic",
+      "row_id": "DCM-004",
+      "export_type": "research_mode_artifact_export",
+      "schema_version": "trustreport_research_mode_export_v1",
+      "content_hash": "c54cb2b171ee51efe79bb901a8839dcb09a74249e57d5cf14d99929239c7662c",
+      "sanitized": true,
+      "research_mode_only": true,
+      "measurement_label": "SYNTHETIC_DRY_RUN_PAYLOAD",
+      "created_at": "2026-06-23T03:05:24.470681+00:00"
+    },
+    "pos-dcm001-manifest": {
+      "export_id": "export-pos-dcm001-manifest",
+      "row_id": "DCM-001",
+      "export_type": "research_mode_artifact_export",
+      "schema_version": "trustreport_research_mode_export_v1",
+      "content_hash": "f8372f936de17b4ad8a53c8507f189c5a607fa46b8ae39910e33ec7797cd8754",
+      "sanitized": true,
+      "research_mode_only": true,
+      "measurement_label": "MANIFEST_ONLY_EXPORT",
+      "created_at": "2026-06-23T03:05:24.470698+00:00"
+    },
+    "pos-dcm004-manifest": {
+      "export_id": "export-pos-dcm004-manifest",
+      "row_id": "DCM-004",
+      "export_type": "research_mode_artifact_export",
+      "schema_version": "trustreport_research_mode_export_v1",
+      "content_hash": "e51becb6cf3628ba9b0cbe7d21ac356499f01d35f5f022a74cb451340962326b",
+      "sanitized": true,
+      "research_mode_only": true,
+      "measurement_label": "MANIFEST_ONLY_EXPORT",
+      "created_at": "2026-06-23T03:05:24.470717+00:00"
+    }
+  },
+  "content_hashes": {
+    "pos-dcm001-placeholder": "2168462379e105571df6b660984cc36b64163e3c8b5190eee680486e7017de5e",
+    "pos-dcm004-placeholder": "b2a4748bae9383ae45ccc51fc2c14c104f097d170303113e405c11730994f516",
+    "pos-dcm001-synthetic": "f9a0960bbb06cca2d2373a6918a03c0fe2cc5939700f101c593a95f6f3b8c495",
+    "pos-dcm004-synthetic": "c54cb2b171ee51efe79bb901a8839dcb09a74249e57d5cf14d99929239c7662c",
+    "pos-dcm001-manifest": "f8372f936de17b4ad8a53c8507f189c5a607fa46b8ae39910e33ec7797cd8754",
+    "pos-dcm004-manifest": "e51becb6cf3628ba9b0cbe7d21ac356499f01d35f5f022a74cb451340962326b"
+  },
+  "warning_contracts": {
+    "DCM-004": [
+      "parallel_trends_required",
+      "common_timing_required",
+      "unsupported_worlds_excluded",
+      "fit_diagnostics_required"
+    ],
+    "DCM-001": [
+      "noisy_world_coverage_caveat",
+      "type_i_caveat",
+      "restricted_geometry_only",
+      "fit_diagnostics_required"
+    ]
+  },
+  "restriction_contracts": {
+    "DCM-004": {
+      "blocked_roles": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "production_decisioning",
+        "scheduler"
+      ],
+      "blocked_geometry": [
+        "parallel_trends_violation",
+        "stress_or_outlier",
+        "staggered_timing",
+        "staggered_pooled",
+        "aggregate_1x1"
+      ]
+    },
+    "DCM-001": {
+      "blocked_roles": [
+        "budget_optimization_input",
+        "calibration_signal",
+        "global_trustreport_platform",
+        "live_api",
+        "production_automation",
+        "production_decisioning",
+        "scheduler"
+      ],
+      "blocked_geometry": [
+        "aggregate_1x1",
+        "multi_cell_pooled",
+        "staggered_timing"
+      ]
+    }
+  },
+  "audit_records": [
+    {
+      "audit_record_id": "export-audit-pos-dcm001-placeholder",
+      "request_id": "pos-dcm001-placeholder",
+      "row_id": "DCM-001",
+      "decision": "EXPORT_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "accepted": true,
+      "export_type": "research_mode_artifact_export",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "content_hash": "2168462379e105571df6b660984cc36b64163e3c8b5190eee680486e7017de5e",
+      "timestamp": "2026-06-23T03:05:24.470629+00:00"
+    },
+    {
+      "audit_record_id": "export-audit-pos-dcm004-placeholder",
+      "request_id": "pos-dcm004-placeholder",
+      "row_id": "DCM-004",
+      "decision": "EXPORT_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "accepted": true,
+      "export_type": "research_mode_artifact_export",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "content_hash": "b2a4748bae9383ae45ccc51fc2c14c104f097d170303113e405c11730994f516",
+      "timestamp": "2026-06-23T03:05:24.470656+00:00"
+    },
+    {
+      "audit_record_id": "export-audit-pos-dcm001-synthetic",
+      "request_id": "pos-dcm001-synthetic",
+      "row_id": "DCM-001",
+      "decision": "EXPORT_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "export_type": "research_mode_artifact_export",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "content_hash": "f9a0960bbb06cca2d2373a6918a03c0fe2cc5939700f101c593a95f6f3b8c495",
+      "timestamp": "2026-06-23T03:05:24.470677+00:00"
+    },
+    {
+      "audit_record_id": "export-audit-pos-dcm004-synthetic",
+      "request_id": "pos-dcm004-synthetic",
+      "row_id": "DCM-004",
+      "decision": "EXPORT_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "export_type": "research_mode_artifact_export",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "content_hash": "c54cb2b171ee51efe79bb901a8839dcb09a74249e57d5cf14d99929239c7662c",
+      "timestamp": "2026-06-23T03:05:24.470695+00:00"
+    },
+    {
+      "audit_record_id": "export-audit-pos-dcm001-manifest",
+      "request_id": "pos-dcm001-manifest",
+      "row_id": "DCM-001",
+      "decision": "EXPORT_ACCEPTED_MANIFEST_ONLY",
+      "accepted": true,
+      "export_type": "research_mode_artifact_export",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "content_hash": "f8372f936de17b4ad8a53c8507f189c5a607fa46b8ae39910e33ec7797cd8754",
+      "timestamp": "2026-06-23T03:05:24.470710+00:00"
+    },
+    {
+      "audit_record_id": "export-audit-pos-dcm004-manifest",
+      "request_id": "pos-dcm004-manifest",
+      "row_id": "DCM-004",
+      "decision": "EXPORT_ACCEPTED_MANIFEST_ONLY",
+      "accepted": true,
+      "export_type": "research_mode_artifact_export",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "content_hash": "e51becb6cf3628ba9b0cbe7d21ac356499f01d35f5f022a74cb451340962326b",
+      "timestamp": "2026-06-23T03:05:24.470730+00:00"
+    },
+    {
+      "audit_record_id": "export-audit-neg-dcm001-missing-warnings",
+      "request_id": "neg-dcm001-missing-warnings",
+      "row_id": "DCM-001",
+      "decision": "EXPORT_BLOCKED_MISSING_CONTRACT",
+      "accepted": false,
+      "export_type": "research_mode_artifact_export",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "content_hash": null,
+      "timestamp": "2026-06-23T03:05:24.470734+00:00"
+    },
+    {
+      "audit_record_id": "export-audit-neg-dcm004-missing-diagnostics",
+      "request_id": "neg-dcm004-missing-diagnostics",
+      "row_id": "DCM-004",
+      "decision": "EXPORT_BLOCKED_MISSING_DIAGNOSTICS",
+      "accepted": false,
+      "export_type": "research_mode_artifact_export",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "content_hash": null,
+      "timestamp": "2026-06-23T03:05:24.470743+00:00"
+    },
+    {
+      "audit_record_id": "export-audit-neg-dcm001-bad-geometry",
+      "request_id": "neg-dcm001-bad-geometry",
+      "row_id": "DCM-001",
+      "decision": "EXPORT_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "export_type": "research_mode_artifact_export",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "content_hash": null,
+      "timestamp": "2026-06-23T03:05:24.470747+00:00"
+    },
+    {
+      "audit_record_id": "export-audit-neg-dcm004-bad-timing",
+      "request_id": "neg-dcm004-bad-timing",
+      "row_id": "DCM-004",
+      "decision": "EXPORT_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "export_type": "research_mode_artifact_export",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "content_hash": null,
+      "timestamp": "2026-06-23T03:05:24.470751+00:00"
+    },
+    {
+      "audit_record_id": "export-audit-neg-brb",
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "decision": "EXPORT_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "export_type": "research_mode_artifact_export",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "content_hash": null,
+      "timestamp": "2026-06-23T03:05:24.470754+00:00"
+    },
+    {
+      "audit_record_id": "export-audit-neg-kfold",
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "decision": "EXPORT_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "export_type": "research_mode_artifact_export",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "content_hash": null,
+      "timestamp": "2026-06-23T03:05:24.470757+00:00"
+    },
+    {
+      "audit_record_id": "export-audit-neg-placebo",
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "decision": "EXPORT_BLOCKED_NULL_MONITOR_CAUSAL_REUSE",
+      "accepted": false,
+      "export_type": "research_mode_artifact_export",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "content_hash": null,
+      "timestamp": "2026-06-23T03:05:24.470760+00:00"
+    },
+    {
+      "audit_record_id": "export-audit-neg-dcm006-global",
+      "request_id": "neg-dcm006-global",
+      "row_id": "DCM-006",
+      "decision": "EXPORT_BLOCKED_NOT_PROMOTED",
+      "accepted": false,
+      "export_type": "research_mode_artifact_export",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "content_hash": null,
+      "timestamp": "2026-06-23T03:05:24.470763+00:00"
+    },
+    {
+      "audit_record_id": "export-audit-neg-dcm008-aggregate",
+      "request_id": "neg-dcm008-aggregate",
+      "row_id": "DCM-008",
+      "decision": "EXPORT_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "export_type": "research_mode_artifact_export",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "content_hash": null,
+      "timestamp": "2026-06-23T03:05:24.470765+00:00"
+    },
+    {
+      "audit_record_id": "export-audit-neg-cal",
+      "request_id": "neg-cal",
+      "row_id": "DCM-001",
+      "decision": "EXPORT_BLOCKED_CALIBRATION_SIGNAL",
+      "accepted": false,
+      "export_type": "calibration_signal_payload",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "content_hash": null,
+      "timestamp": "2026-06-23T03:05:24.470767+00:00"
+    },
+    {
+      "audit_record_id": "export-audit-neg-live",
+      "request_id": "neg-live",
+      "row_id": "DCM-004",
+      "decision": "EXPORT_BLOCKED_LIVE_API",
+      "accepted": false,
+      "export_type": "live_api_payload",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "content_hash": null,
+      "timestamp": "2026-06-23T03:05:24.470770+00:00"
+    },
+    {
+      "audit_record_id": "export-audit-neg-scheduler",
+      "request_id": "neg-scheduler",
+      "row_id": "DCM-001",
+      "decision": "EXPORT_BLOCKED_SCHEDULER",
+      "accepted": false,
+      "export_type": "scheduler_payload",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "content_hash": null,
+      "timestamp": "2026-06-23T03:05:24.470772+00:00"
+    },
+    {
+      "audit_record_id": "export-audit-neg-prod",
+      "request_id": "neg-prod",
+      "row_id": "DCM-004",
+      "decision": "EXPORT_BLOCKED_PRODUCTION_DECISIONING",
+      "accepted": false,
+      "export_type": "decisioning_payload",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "content_hash": null,
+      "timestamp": "2026-06-23T03:05:24.470774+00:00"
+    },
+    {
+      "audit_record_id": "export-audit-neg-budget",
+      "request_id": "neg-budget",
+      "row_id": "DCM-001",
+      "decision": "EXPORT_BLOCKED_BUDGET_OPTIMIZATION",
+      "accepted": false,
+      "export_type": "budget_optimization_payload",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "content_hash": null,
+      "timestamp": "2026-06-23T03:05:24.470776+00:00"
+    },
+    {
+      "audit_record_id": "export-audit-neg-unknown",
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "decision": "EXPORT_BLOCKED_UNKNOWN_ROW",
+      "accepted": false,
+      "export_type": "research_mode_artifact_export",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "content_hash": null,
+      "timestamp": "2026-06-23T03:05:24.470778+00:00"
+    },
+    {
+      "audit_record_id": "export-audit-neg-unsanitized",
+      "request_id": "neg-unsanitized",
+      "row_id": "DCM-001",
+      "decision": "EXPORT_BLOCKED_UNSANITIZED_PAYLOAD",
+      "accepted": false,
+      "export_type": "research_mode_artifact_export",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "content_hash": null,
+      "timestamp": "2026-06-23T03:05:24.470781+00:00"
+    },
+    {
+      "audit_record_id": "export-audit-neg-missing-audit",
+      "request_id": "neg-missing-audit",
+      "row_id": "DCM-004",
+      "decision": "EXPORT_BLOCKED_MISSING_AUDIT_TRAIL",
+      "accepted": false,
+      "export_type": "research_mode_artifact_export",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "content_hash": null,
+      "timestamp": "2026-06-23T03:05:24.470784+00:00"
+    }
+  ],
+  "negative_control_results": [
+    {
+      "request_id": "neg-dcm001-missing-warnings",
+      "row_id": "DCM-001",
+      "request_type": "missing_warnings",
+      "decision": "EXPORT_BLOCKED_MISSING_CONTRACT",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-dcm001-missing-warnings",
+      "export_status": "blocked",
+      "gate_results": {
+        "warnings_missing": true
+      },
+      "reason": "Required warnings missing",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-dcm004-missing-diagnostics",
+      "row_id": "DCM-004",
+      "request_type": "missing_diagnostics",
+      "decision": "EXPORT_BLOCKED_MISSING_DIAGNOSTICS",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-dcm004-missing-diagnostics",
+      "export_status": "blocked",
+      "gate_results": {
+        "diagnostics_missing": true
+      },
+      "reason": "Parallel-trends diagnostics required for DCM-004",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-dcm001-bad-geometry",
+      "row_id": "DCM-001",
+      "request_type": "unsupported_geometry",
+      "decision": "EXPORT_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-dcm001-bad-geometry",
+      "export_status": "blocked",
+      "gate_results": {
+        "unsupported_geometry": true
+      },
+      "reason": "Geometry aggregate_1x1 blocked",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-dcm004-bad-timing",
+      "row_id": "DCM-004",
+      "request_type": "unsupported_timing",
+      "decision": "EXPORT_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-dcm004-bad-timing",
+      "export_status": "blocked",
+      "gate_results": {
+        "unsupported_geometry": true
+      },
+      "reason": "Geometry parallel_trends_violation blocked",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "request_type": "causal_trustreport",
+      "decision": "EXPORT_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-brb",
+      "export_status": "blocked",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-BRB is diagnostic-only",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "request_type": "causal_trustreport",
+      "decision": "EXPORT_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-kfold",
+      "export_status": "blocked",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-KFOLD is diagnostic-only",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "request_type": "causal_trustreport",
+      "decision": "EXPORT_BLOCKED_NULL_MONITOR_CAUSAL_REUSE",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-placebo",
+      "export_status": "blocked",
+      "gate_results": {
+        "null_monitor_causal_reuse": true
+      },
+      "reason": "Null-monitor path cannot export causal TrustReport",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-dcm006-global",
+      "row_id": "DCM-006",
+      "request_type": "global_claim",
+      "decision": "EXPORT_BLOCKED_NOT_PROMOTED",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-dcm006-global",
+      "export_status": "blocked",
+      "gate_results": {
+        "multicell_global_blocked": true
+      },
+      "reason": "DCM-006 global/winner/pooled export blocked",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-dcm008-aggregate",
+      "row_id": "DCM-008",
+      "request_type": "aggregate_stratified",
+      "decision": "EXPORT_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-dcm008-aggregate",
+      "export_status": "blocked",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-008 is diagnostic-only",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-cal",
+      "row_id": "DCM-001",
+      "request_type": "calibration",
+      "decision": "EXPORT_BLOCKED_CALIBRATION_SIGNAL",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-cal",
+      "export_status": "blocked",
+      "gate_results": {
+        "calibration_signal_payload_blocked": true
+      },
+      "reason": "Export type calibration_signal_payload forbidden",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-live",
+      "row_id": "DCM-004",
+      "request_type": "live_api",
+      "decision": "EXPORT_BLOCKED_LIVE_API",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-live",
+      "export_status": "blocked",
+      "gate_results": {
+        "live_api_payload_blocked": true
+      },
+      "reason": "Export type live_api_payload forbidden",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-scheduler",
+      "row_id": "DCM-001",
+      "request_type": "scheduler",
+      "decision": "EXPORT_BLOCKED_SCHEDULER",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-scheduler",
+      "export_status": "blocked",
+      "gate_results": {
+        "scheduler_payload_blocked": true
+      },
+      "reason": "Export type scheduler_payload forbidden",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-prod",
+      "row_id": "DCM-004",
+      "request_type": "production",
+      "decision": "EXPORT_BLOCKED_PRODUCTION_DECISIONING",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-prod",
+      "export_status": "blocked",
+      "gate_results": {
+        "decisioning_payload_blocked": true
+      },
+      "reason": "Export type decisioning_payload forbidden",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-budget",
+      "row_id": "DCM-001",
+      "request_type": "budget",
+      "decision": "EXPORT_BLOCKED_BUDGET_OPTIMIZATION",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-budget",
+      "export_status": "blocked",
+      "gate_results": {
+        "budget_optimization_payload_blocked": true
+      },
+      "reason": "Export type budget_optimization_payload forbidden",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "request_type": "unknown",
+      "decision": "EXPORT_BLOCKED_UNKNOWN_ROW",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-unknown",
+      "export_status": "blocked",
+      "gate_results": {
+        "unknown_row": true
+      },
+      "reason": "Unknown row: DCM-999",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-unsanitized",
+      "row_id": "DCM-001",
+      "request_type": "unsanitized_payload",
+      "decision": "EXPORT_BLOCKED_UNSANITIZED_PAYLOAD",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-unsanitized",
+      "export_status": "blocked",
+      "gate_results": {
+        "unsanitized_payload": true
+      },
+      "reason": "Unsanitized live measurement payload blocked",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-missing-audit",
+      "row_id": "DCM-004",
+      "request_type": "missing_audit_trail",
+      "decision": "EXPORT_BLOCKED_MISSING_AUDIT_TRAIL",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-missing-audit",
+      "export_status": "blocked",
+      "gate_results": {
+        "audit_trail_missing": true
+      },
+      "reason": "Audit trail required for export",
+      "content_hash": null
+    }
+  ],
+  "sanitization_results": [
+    {
+      "request_id": "pos-dcm001-placeholder",
+      "row_id": "DCM-001",
+      "sanitized": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED",
+      "content_hash": "2168462379e105571df6b660984cc36b64163e3c8b5190eee680486e7017de5e"
+    },
+    {
+      "request_id": "pos-dcm004-placeholder",
+      "row_id": "DCM-004",
+      "sanitized": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED",
+      "content_hash": "b2a4748bae9383ae45ccc51fc2c14c104f097d170303113e405c11730994f516"
+    },
+    {
+      "request_id": "pos-dcm001-synthetic",
+      "row_id": "DCM-001",
+      "sanitized": true,
+      "measurement_label": "SYNTHETIC_DRY_RUN_PAYLOAD",
+      "content_hash": "f9a0960bbb06cca2d2373a6918a03c0fe2cc5939700f101c593a95f6f3b8c495"
+    },
+    {
+      "request_id": "pos-dcm004-synthetic",
+      "row_id": "DCM-004",
+      "sanitized": true,
+      "measurement_label": "SYNTHETIC_DRY_RUN_PAYLOAD",
+      "content_hash": "c54cb2b171ee51efe79bb901a8839dcb09a74249e57d5cf14d99929239c7662c"
+    },
+    {
+      "request_id": "pos-dcm001-manifest",
+      "row_id": "DCM-001",
+      "sanitized": true,
+      "measurement_label": "MANIFEST_ONLY_EXPORT",
+      "content_hash": "f8372f936de17b4ad8a53c8507f189c5a607fa46b8ae39910e33ec7797cd8754"
+    },
+    {
+      "request_id": "pos-dcm004-manifest",
+      "row_id": "DCM-004",
+      "sanitized": true,
+      "measurement_label": "MANIFEST_ONLY_EXPORT",
+      "content_hash": "e51becb6cf3628ba9b0cbe7d21ac356499f01d35f5f022a74cb451340962326b"
+    }
+  ],
+  "global_authorization_summary": {
+    "trust_report_platform_authorized": false,
+    "live_api_authorized": false,
+    "scheduler_authorized": false
+  },
+  "live_api_authorization_summary": {
+    "live_api_authorized": false,
+    "research_mode_only": true
+  },
+  "scheduler_authorization_summary": {
+    "scheduler_authorized": false,
+    "research_mode_only": true
+  },
+  "calibration_signal_summary": {
+    "any_calibration_signal_allowed": false
+  },
+  "production_decisioning_summary": {
+    "any_production_decisioning_allowed": false
+  },
+  "budget_optimization_summary": {
+    "any_budget_optimization_allowed": false
+  },
+  "open_investigation_check": {
+    "deferred_investigations": [
+      "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+      "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+    ],
+    "blocking_for_export": []
+  },
+  "governance_verdict": "trustreport_research_mode_artifact_export_passed",
+  "limitations": [
+    "This artifact exports restricted row-level TrustReport research-mode artifacts only.",
+    "It does not authorize live APIs, scheduler execution, production decisioning, CalibrationSignal, budget optimization, or global platform rollout.",
+    "Only DCM-001 and DCM-004 are accepted for sanitized research-mode artifact export.",
+    "All diagnostic-only, null-monitor-only, deferred, ineligible, global multi-cell, and stratified aggregate paths remain blocked.",
+    "No unsanitized live measurement payloads are exported; placeholders, synthetic dry-run payloads, and manifest-only exports are explicitly labeled."
+  ],
+  "next_artifact": "TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001",
+  "investigation_handoff": {
+    "follow_up_issues": [],
+    "resolved_issues": [],
+    "terminal_dispositions": [],
+    "next_artifact": "TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001"
+  },
+  "verdict": "trustreport_research_mode_artifact_export_passed",
+  "contracts_complete": true,
+  "dcm001_export_result": {
+    "request_id": "pos-dcm001-placeholder",
+    "row_id": "DCM-001",
+    "request_type": "placeholder_export",
+    "decision": "EXPORT_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+    "accepted": true,
+    "audit_record_id": "export-audit-pos-dcm001-placeholder",
+    "export_status": "accepted",
+    "gate_results": {
+      "row_promoted": true,
+      "dry_run_approved": true,
+      "contract_complete": true,
+      "warnings_present": true,
+      "sanitized_payload": true,
+      "research_mode_only": true,
+      "live_api_blocked": true,
+      "scheduler_blocked": true,
+      "calibration_signal_blocked": true
+    },
+    "reason": "Research-mode TrustReport export accepted",
+    "content_hash": "2168462379e105571df6b660984cc36b64163e3c8b5190eee680486e7017de5e"
+  },
+  "dcm004_export_result": {
+    "request_id": "pos-dcm004-placeholder",
+    "row_id": "DCM-004",
+    "request_type": "placeholder_export",
+    "decision": "EXPORT_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+    "accepted": true,
+    "audit_record_id": "export-audit-pos-dcm004-placeholder",
+    "export_status": "accepted",
+    "gate_results": {
+      "row_promoted": true,
+      "dry_run_approved": true,
+      "contract_complete": true,
+      "warnings_present": true,
+      "sanitized_payload": true,
+      "research_mode_only": true,
+      "live_api_blocked": true,
+      "scheduler_blocked": true,
+      "calibration_signal_blocked": true
+    },
+    "reason": "Research-mode TrustReport export accepted",
+    "content_hash": "b2a4748bae9383ae45ccc51fc2c14c104f097d170303113e405c11730994f516"
+  },
+  "export_results": [
+    {
+      "request_id": "pos-dcm001-placeholder",
+      "row_id": "DCM-001",
+      "request_type": "placeholder_export",
+      "decision": "EXPORT_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "accepted": true,
+      "audit_record_id": "export-audit-pos-dcm001-placeholder",
+      "export_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "sanitized_payload": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport export accepted",
+      "content_hash": "2168462379e105571df6b660984cc36b64163e3c8b5190eee680486e7017de5e"
+    },
+    {
+      "request_id": "pos-dcm004-placeholder",
+      "row_id": "DCM-004",
+      "request_type": "placeholder_export",
+      "decision": "EXPORT_ACCEPTED_PLACEHOLDER_RESEARCH_MODE",
+      "accepted": true,
+      "audit_record_id": "export-audit-pos-dcm004-placeholder",
+      "export_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "sanitized_payload": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport export accepted",
+      "content_hash": "b2a4748bae9383ae45ccc51fc2c14c104f097d170303113e405c11730994f516"
+    },
+    {
+      "request_id": "pos-dcm001-synthetic",
+      "row_id": "DCM-001",
+      "request_type": "synthetic_export",
+      "decision": "EXPORT_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "audit_record_id": "export-audit-pos-dcm001-synthetic",
+      "export_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "sanitized_payload": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport export accepted",
+      "content_hash": "f9a0960bbb06cca2d2373a6918a03c0fe2cc5939700f101c593a95f6f3b8c495"
+    },
+    {
+      "request_id": "pos-dcm004-synthetic",
+      "row_id": "DCM-004",
+      "request_type": "synthetic_export",
+      "decision": "EXPORT_ACCEPTED_RESEARCH_MODE",
+      "accepted": true,
+      "audit_record_id": "export-audit-pos-dcm004-synthetic",
+      "export_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "sanitized_payload": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport export accepted",
+      "content_hash": "c54cb2b171ee51efe79bb901a8839dcb09a74249e57d5cf14d99929239c7662c"
+    },
+    {
+      "request_id": "pos-dcm001-manifest",
+      "row_id": "DCM-001",
+      "request_type": "manifest_only",
+      "decision": "EXPORT_ACCEPTED_MANIFEST_ONLY",
+      "accepted": true,
+      "audit_record_id": "export-audit-pos-dcm001-manifest",
+      "export_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "sanitized_payload": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport export accepted",
+      "content_hash": "f8372f936de17b4ad8a53c8507f189c5a607fa46b8ae39910e33ec7797cd8754"
+    },
+    {
+      "request_id": "pos-dcm004-manifest",
+      "row_id": "DCM-004",
+      "request_type": "manifest_only",
+      "decision": "EXPORT_ACCEPTED_MANIFEST_ONLY",
+      "accepted": true,
+      "audit_record_id": "export-audit-pos-dcm004-manifest",
+      "export_status": "accepted",
+      "gate_results": {
+        "row_promoted": true,
+        "dry_run_approved": true,
+        "contract_complete": true,
+        "warnings_present": true,
+        "sanitized_payload": true,
+        "research_mode_only": true,
+        "live_api_blocked": true,
+        "scheduler_blocked": true,
+        "calibration_signal_blocked": true
+      },
+      "reason": "Research-mode TrustReport export accepted",
+      "content_hash": "e51becb6cf3628ba9b0cbe7d21ac356499f01d35f5f022a74cb451340962326b"
+    },
+    {
+      "request_id": "neg-dcm001-missing-warnings",
+      "row_id": "DCM-001",
+      "request_type": "missing_warnings",
+      "decision": "EXPORT_BLOCKED_MISSING_CONTRACT",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-dcm001-missing-warnings",
+      "export_status": "blocked",
+      "gate_results": {
+        "warnings_missing": true
+      },
+      "reason": "Required warnings missing",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-dcm004-missing-diagnostics",
+      "row_id": "DCM-004",
+      "request_type": "missing_diagnostics",
+      "decision": "EXPORT_BLOCKED_MISSING_DIAGNOSTICS",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-dcm004-missing-diagnostics",
+      "export_status": "blocked",
+      "gate_results": {
+        "diagnostics_missing": true
+      },
+      "reason": "Parallel-trends diagnostics required for DCM-004",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-dcm001-bad-geometry",
+      "row_id": "DCM-001",
+      "request_type": "unsupported_geometry",
+      "decision": "EXPORT_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-dcm001-bad-geometry",
+      "export_status": "blocked",
+      "gate_results": {
+        "unsupported_geometry": true
+      },
+      "reason": "Geometry aggregate_1x1 blocked",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-dcm004-bad-timing",
+      "row_id": "DCM-004",
+      "request_type": "unsupported_timing",
+      "decision": "EXPORT_BLOCKED_UNSUPPORTED_GEOMETRY",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-dcm004-bad-timing",
+      "export_status": "blocked",
+      "gate_results": {
+        "unsupported_geometry": true
+      },
+      "reason": "Geometry parallel_trends_violation blocked",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "request_type": "causal_trustreport",
+      "decision": "EXPORT_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-brb",
+      "export_status": "blocked",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-BRB is diagnostic-only",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "request_type": "causal_trustreport",
+      "decision": "EXPORT_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-kfold",
+      "export_status": "blocked",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-KFOLD is diagnostic-only",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "request_type": "causal_trustreport",
+      "decision": "EXPORT_BLOCKED_NULL_MONITOR_CAUSAL_REUSE",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-placebo",
+      "export_status": "blocked",
+      "gate_results": {
+        "null_monitor_causal_reuse": true
+      },
+      "reason": "Null-monitor path cannot export causal TrustReport",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-dcm006-global",
+      "row_id": "DCM-006",
+      "request_type": "global_claim",
+      "decision": "EXPORT_BLOCKED_NOT_PROMOTED",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-dcm006-global",
+      "export_status": "blocked",
+      "gate_results": {
+        "multicell_global_blocked": true
+      },
+      "reason": "DCM-006 global/winner/pooled export blocked",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-dcm008-aggregate",
+      "row_id": "DCM-008",
+      "request_type": "aggregate_stratified",
+      "decision": "EXPORT_BLOCKED_DIAGNOSTIC_ONLY",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-dcm008-aggregate",
+      "export_status": "blocked",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-008 is diagnostic-only",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-cal",
+      "row_id": "DCM-001",
+      "request_type": "calibration",
+      "decision": "EXPORT_BLOCKED_CALIBRATION_SIGNAL",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-cal",
+      "export_status": "blocked",
+      "gate_results": {
+        "calibration_signal_payload_blocked": true
+      },
+      "reason": "Export type calibration_signal_payload forbidden",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-live",
+      "row_id": "DCM-004",
+      "request_type": "live_api",
+      "decision": "EXPORT_BLOCKED_LIVE_API",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-live",
+      "export_status": "blocked",
+      "gate_results": {
+        "live_api_payload_blocked": true
+      },
+      "reason": "Export type live_api_payload forbidden",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-scheduler",
+      "row_id": "DCM-001",
+      "request_type": "scheduler",
+      "decision": "EXPORT_BLOCKED_SCHEDULER",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-scheduler",
+      "export_status": "blocked",
+      "gate_results": {
+        "scheduler_payload_blocked": true
+      },
+      "reason": "Export type scheduler_payload forbidden",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-prod",
+      "row_id": "DCM-004",
+      "request_type": "production",
+      "decision": "EXPORT_BLOCKED_PRODUCTION_DECISIONING",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-prod",
+      "export_status": "blocked",
+      "gate_results": {
+        "decisioning_payload_blocked": true
+      },
+      "reason": "Export type decisioning_payload forbidden",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-budget",
+      "row_id": "DCM-001",
+      "request_type": "budget",
+      "decision": "EXPORT_BLOCKED_BUDGET_OPTIMIZATION",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-budget",
+      "export_status": "blocked",
+      "gate_results": {
+        "budget_optimization_payload_blocked": true
+      },
+      "reason": "Export type budget_optimization_payload forbidden",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "request_type": "unknown",
+      "decision": "EXPORT_BLOCKED_UNKNOWN_ROW",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-unknown",
+      "export_status": "blocked",
+      "gate_results": {
+        "unknown_row": true
+      },
+      "reason": "Unknown row: DCM-999",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-unsanitized",
+      "row_id": "DCM-001",
+      "request_type": "unsanitized_payload",
+      "decision": "EXPORT_BLOCKED_UNSANITIZED_PAYLOAD",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-unsanitized",
+      "export_status": "blocked",
+      "gate_results": {
+        "unsanitized_payload": true
+      },
+      "reason": "Unsanitized live measurement payload blocked",
+      "content_hash": null
+    },
+    {
+      "request_id": "neg-missing-audit",
+      "row_id": "DCM-004",
+      "request_type": "missing_audit_trail",
+      "decision": "EXPORT_BLOCKED_MISSING_AUDIT_TRAIL",
+      "accepted": false,
+      "audit_record_id": "export-audit-neg-missing-audit",
+      "export_status": "blocked",
+      "gate_results": {
+        "audit_trail_missing": true
+      },
+      "reason": "Audit trail required for export",
+      "content_hash": null
+    }
+  ],
+  "exported_artifact_schema": {
+    "required_fields": [
+      "export_manifest",
+      "dry_run_artifact",
+      "content_hash",
+      "sanitized_payload",
+      "authorization_boundaries",
+      "audit_trail",
+      "method_identity",
+      "schema_version",
+      "blocked_uses",
+      "warnings",
+      "created_at",
+      "restrictions",
+      "research_mode_only",
+      "renderer_summary_artifact",
+      "artifact_id",
+      "promotion_artifact",
+      "readout_scope",
+      "estimand",
+      "export_id",
+      "row_id",
+      "render_source_artifact"
+    ],
+    "banners": [
+      "RESEARCH MODE ONLY",
+      "NOT FOR PRODUCTION DECISIONING",
+      "NOT FOR BUDGET OPTIMIZATION",
+      "NO CALIBRATIONSIGNAL AUTHORIZATION",
+      "NO LIVE API AUTHORIZATION",
+      "NO SCHEDULER AUTHORIZATION",
+      "SANITIZED ARTIFACT EXPORT"
+    ],
+    "placeholder_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED",
+    "synthetic_label": "SYNTHETIC_DRY_RUN_PAYLOAD",
+    "manifest_only_label": "MANIFEST_ONLY_EXPORT"
+  },
+  "manifest_schema": {
+    "required_fields": [
+      "export_id",
+      "row_id",
+      "export_type",
+      "schema_version",
+      "content_hash",
+      "sanitized",
+      "research_mode_only",
+      "measurement_label",
+      "created_at"
+    ]
+  }
+}
