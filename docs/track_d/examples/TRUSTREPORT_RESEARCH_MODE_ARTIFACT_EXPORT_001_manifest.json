@@ -1,0 +1,83 @@
+{
+  "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ARTIFACT-EXPORT-001",
+  "schema_version": "trustreport_research_mode_export_v1",
+  "research_mode_only": true,
+  "sanitized": true,
+  "exports": {
+    "pos-dcm001-placeholder": {
+      "export_id": "export-pos-dcm001-placeholder",
+      "row_id": "DCM-001",
+      "export_type": "research_mode_artifact_export",
+      "schema_version": "trustreport_research_mode_export_v1",
+      "content_hash": "2168462379e105571df6b660984cc36b64163e3c8b5190eee680486e7017de5e",
+      "sanitized": true,
+      "research_mode_only": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED",
+      "created_at": "2026-06-23T03:05:24.470554+00:00"
+    },
+    "pos-dcm004-placeholder": {
+      "export_id": "export-pos-dcm004-placeholder",
+      "row_id": "DCM-004",
+      "export_type": "research_mode_artifact_export",
+      "schema_version": "trustreport_research_mode_export_v1",
+      "content_hash": "b2a4748bae9383ae45ccc51fc2c14c104f097d170303113e405c11730994f516",
+      "sanitized": true,
+      "research_mode_only": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED",
+      "created_at": "2026-06-23T03:05:24.470636+00:00"
+    },
+    "pos-dcm001-synthetic": {
+      "export_id": "export-pos-dcm001-synthetic",
+      "row_id": "DCM-001",
+      "export_type": "research_mode_artifact_export",
+      "schema_version": "trustreport_research_mode_export_v1",
+      "content_hash": "f9a0960bbb06cca2d2373a6918a03c0fe2cc5939700f101c593a95f6f3b8c495",
+      "sanitized": true,
+      "research_mode_only": true,
+      "measurement_label": "SYNTHETIC_DRY_RUN_PAYLOAD",
+      "created_at": "2026-06-23T03:05:24.470660+00:00"
+    },
+    "pos-dcm004-synthetic": {
+      "export_id": "export-pos-dcm004-synthetic",
+      "row_id": "DCM-004",
+      "export_type": "research_mode_artifact_export",
+      "schema_version": "trustreport_research_mode_export_v1",
+      "content_hash": "c54cb2b171ee51efe79bb901a8839dcb09a74249e57d5cf14d99929239c7662c",
+      "sanitized": true,
+      "research_mode_only": true,
+      "measurement_label": "SYNTHETIC_DRY_RUN_PAYLOAD",
+      "created_at": "2026-06-23T03:05:24.470681+00:00"
+    },
+    "pos-dcm001-manifest": {
+      "export_id": "export-pos-dcm001-manifest",
+      "row_id": "DCM-001",
+      "export_type": "research_mode_artifact_export",
+      "schema_version": "trustreport_research_mode_export_v1",
+      "content_hash": "f8372f936de17b4ad8a53c8507f189c5a607fa46b8ae39910e33ec7797cd8754",
+      "sanitized": true,
+      "research_mode_only": true,
+      "measurement_label": "MANIFEST_ONLY_EXPORT",
+      "created_at": "2026-06-23T03:05:24.470698+00:00"
+    },
+    "pos-dcm004-manifest": {
+      "export_id": "export-pos-dcm004-manifest",
+      "row_id": "DCM-004",
+      "export_type": "research_mode_artifact_export",
+      "schema_version": "trustreport_research_mode_export_v1",
+      "content_hash": "e51becb6cf3628ba9b0cbe7d21ac356499f01d35f5f022a74cb451340962326b",
+      "sanitized": true,
+      "research_mode_only": true,
+      "measurement_label": "MANIFEST_ONLY_EXPORT",
+      "created_at": "2026-06-23T03:05:24.470717+00:00"
+    }
+  },
+  "banners": [
+    "RESEARCH MODE ONLY",
+    "NOT FOR PRODUCTION DECISIONING",
+    "NOT FOR BUDGET OPTIMIZATION",
+    "NO CALIBRATIONSIGNAL AUTHORIZATION",
+    "NO LIVE API AUTHORIZATION",
+    "NO SCHEDULER AUTHORIZATION",
+    "SANITIZED ARTIFACT EXPORT"
+  ]
+}

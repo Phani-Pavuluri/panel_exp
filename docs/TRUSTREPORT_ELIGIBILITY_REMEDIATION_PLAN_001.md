@@ -328,6 +328,7 @@ Remain ineligible unless a **separate future artifact** explicitly changes them:
 | `TRUSTREPORT_DOWNSTREAM_PROMOTION_001` | Restricted row-level promotion gate | DCM-001/004 | ✅ complete — row-level restricted only; no platform auth |
 | `TRUSTREPORT_INTEGRATION_DRY_RUN_001` | Integration dry-run gate | DCM-001/004 | ✅ complete — dry-run passed; no live auth |
 | `TRUSTREPORT_RESEARCH_MODE_RENDERER_001` | Research-mode renderer | DCM-001/004 | ✅ complete — renderer passed; no live auth |
+| `TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001` | Research-mode artifact export | DCM-001/004 | ✅ complete — sanitized export passed; no live auth |
 | `D5-TRUST-STRATIFIED-SCM-JK-001` | Stratified combination | DCM-008 | ✅ complete |
 | `D5-TRUST-MULTICELL-PERCELL-INFERENCE-001` | Per-cell inference | DCM-006 | ✅ complete |
 | `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` | Partial re-run (DCM-001 only) | DCM-001 promotion candidacy | ✅ complete (DCM-001 only) |
