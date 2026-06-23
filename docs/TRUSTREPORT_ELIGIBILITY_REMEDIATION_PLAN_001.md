@@ -330,6 +330,7 @@ Remain ineligible unless a **separate future artifact** explicitly changes them:
 | `TRUSTREPORT_RESEARCH_MODE_RENDERER_001` | Research-mode renderer | DCM-001/004 | ✅ complete — renderer passed; no live auth |
 | `TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001` | Research-mode artifact export | DCM-001/004 | ✅ complete — sanitized export passed; no live auth |
 | `TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001` | Research-mode review workflow | DCM-001/004 | ✅ complete — review workflow passed; not production approval |
+| `TRUSTREPORT_RESEARCH_MODE_ACCESS_CONTROL_001` | Research-mode access control | DCM-001/004 | ✅ complete — access control passed; not deployment permission |
 | `D5-TRUST-STRATIFIED-SCM-JK-001` | Stratified combination | DCM-008 | ✅ complete |
 | `D5-TRUST-MULTICELL-PERCELL-INFERENCE-001` | Per-cell inference | DCM-006 | ✅ complete |
 | `TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001` | Partial re-run (DCM-001 only) | DCM-001 promotion candidacy | ✅ complete (DCM-001 only) |

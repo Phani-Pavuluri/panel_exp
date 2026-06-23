@@ -1,0 +1,4391 @@
+{
+  "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+  "artifact_version": "1.0.0",
+  "generated_at": "2026-06-23T03:49:09.303494+00:00",
+  "git_commit": "2b641d20ebfd1a734aeea7abc7754ce6a2e2cf8e",
+  "input_artifacts": {
+    "review_workflow": "/workspace/panel_exp/docs/track_d/archives/TRUSTREPORT_RESEARCH_MODE_REVIEW_WORKFLOW_001_summary.json",
+    "artifact_export": "/workspace/panel_exp/docs/track_d/archives/TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001_summary.json",
+    "renderer_summary": "/workspace/panel_exp/docs/track_d/archives/TRUSTREPORT_RESEARCH_MODE_RENDERER_001_summary.json",
+    "integration_dry_run": "/workspace/panel_exp/docs/track_d/archives/TRUSTREPORT_INTEGRATION_DRY_RUN_001_summary.json",
+    "downstream_promotion": "/workspace/panel_exp/docs/track_d/archives/TRUSTREPORT_DOWNSTREAM_PROMOTION_001_summary.json",
+    "export_manifest": "/workspace/panel_exp/docs/track_d/examples/TRUSTREPORT_RESEARCH_MODE_ARTIFACT_EXPORT_001_manifest.json"
+  },
+  "access_scope": [
+    "DCM-001",
+    "DCM-004"
+  ],
+  "role_permission_matrix": {
+    "research_viewer": [
+      "MANIFEST_VIEW",
+      "RESEARCH_VIEW"
+    ],
+    "research_exporter": [
+      "MANIFEST_VIEW",
+      "RESEARCH_EXPORT",
+      "RESEARCH_VIEW"
+    ],
+    "research_reviewer": [
+      "AUDIT_VIEW",
+      "MANIFEST_VIEW",
+      "RESEARCH_REVIEW",
+      "RESEARCH_VIEW"
+    ],
+    "causal_methods_reviewer": [
+      "AUDIT_VIEW",
+      "MANIFEST_VIEW",
+      "RESEARCH_REVIEW",
+      "RESEARCH_REVIEW_APPROVE",
+      "RESEARCH_VIEW"
+    ],
+    "governance_reviewer": [
+      "AUDIT_VIEW",
+      "MANIFEST_VIEW",
+      "RESEARCH_REVIEW",
+      "RESEARCH_REVIEW_APPROVE",
+      "RESEARCH_VIEW"
+    ],
+    "audit_viewer": [
+      "AUDIT_VIEW",
+      "MANIFEST_VIEW"
+    ],
+    "research_mode_admin": [
+      "AUDIT_VIEW",
+      "MANIFEST_VIEW",
+      "RESEARCH_EXPORT",
+      "RESEARCH_REVIEW",
+      "RESEARCH_REVIEW_APPROVE",
+      "RESEARCH_VIEW"
+    ]
+  },
+  "access_requests": [
+    {
+      "request_id": "pos-view-dcm001",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "research_view",
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-view-dcm004",
+      "row_id": "DCM-004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "request_type": "research_view",
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-export-dcm001",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "research_export",
+      "requester_role": "research_exporter",
+      "requested_access_mode": "RESEARCH_EXPORT",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-export-dcm004",
+      "row_id": "DCM-004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "request_type": "research_export",
+      "requester_role": "research_exporter",
+      "requested_access_mode": "RESEARCH_EXPORT",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-review-dcm001",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "research_review",
+      "requester_role": "research_reviewer",
+      "requested_access_mode": "RESEARCH_REVIEW",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-review-dcm004",
+      "row_id": "DCM-004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "request_type": "research_review",
+      "requester_role": "research_reviewer",
+      "requested_access_mode": "RESEARCH_REVIEW",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-approve-causal-dcm001",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "research_review_approve",
+      "requester_role": "causal_methods_reviewer",
+      "requested_access_mode": "RESEARCH_REVIEW_APPROVE",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-approve-causal-dcm004",
+      "row_id": "DCM-004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "request_type": "research_review_approve",
+      "requester_role": "causal_methods_reviewer",
+      "requested_access_mode": "RESEARCH_REVIEW_APPROVE",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-approve-gov-dcm001",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "research_review_approve",
+      "requester_role": "governance_reviewer",
+      "requested_access_mode": "RESEARCH_REVIEW_APPROVE",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-approve-gov-dcm004",
+      "row_id": "DCM-004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "request_type": "research_review_approve",
+      "requester_role": "governance_reviewer",
+      "requested_access_mode": "RESEARCH_REVIEW_APPROVE",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-manifest-dcm001",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "manifest_view",
+      "requester_role": "audit_viewer",
+      "requested_access_mode": "MANIFEST_VIEW",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-manifest-dcm004",
+      "row_id": "DCM-004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "request_type": "manifest_view",
+      "requester_role": "audit_viewer",
+      "requested_access_mode": "MANIFEST_VIEW",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-audit-dcm001",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "audit_view",
+      "requester_role": "audit_viewer",
+      "requested_access_mode": "AUDIT_VIEW",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-audit-dcm004",
+      "row_id": "DCM-004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "request_type": "audit_view",
+      "requester_role": "audit_viewer",
+      "requested_access_mode": "AUDIT_VIEW",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-admin-view-dcm001",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "admin_view",
+      "requester_role": "research_mode_admin",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "pos-admin-export-dcm004",
+      "row_id": "DCM-004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "request_type": "admin_export",
+      "requester_role": "research_mode_admin",
+      "requested_access_mode": "RESEARCH_EXPORT",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-viewer-export",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "viewer_export",
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_EXPORT",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-exporter-approve",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "exporter_approve",
+      "requester_role": "research_exporter",
+      "requested_access_mode": "RESEARCH_REVIEW_APPROVE",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-reviewer-approve",
+      "row_id": "DCM-004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "request_type": "reviewer_approve",
+      "requester_role": "research_reviewer",
+      "requested_access_mode": "RESEARCH_REVIEW_APPROVE",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-audit-export",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "audit_export",
+      "requester_role": "audit_viewer",
+      "requested_access_mode": "RESEARCH_EXPORT",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-invalid-role",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "invalid_role",
+      "requester_role": "production_approver",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "unknown_row",
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "causal_trustreport",
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "causal_trustreport",
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "causal_trustreport",
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-dcm006",
+      "row_id": "DCM-006",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "global_claim",
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "claim_type": "global",
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-dcm008",
+      "row_id": "DCM-008",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "aggregate_stratified",
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "claim_type": "aggregate_stratified",
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-cal",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "calibration_write",
+      "requester_role": "calibration_signal_writer",
+      "requested_access_mode": "CALIBRATION_SIGNAL_WRITE",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-live-api",
+      "row_id": "DCM-004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "request_type": "live_api",
+      "requester_role": "api_operator",
+      "requested_access_mode": "LIVE_API_EXECUTE",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-scheduler",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "scheduler",
+      "requester_role": "scheduler_operator",
+      "requested_access_mode": "SCHEDULER_EXECUTE",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-prod",
+      "row_id": "DCM-004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "request_type": "production_approve",
+      "requester_role": "production_approver",
+      "requested_access_mode": "PRODUCTION_DECISION_APPROVE",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-budget",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "budget",
+      "requester_role": "budget_optimizer",
+      "requested_access_mode": "BUDGET_OPTIMIZATION_EXECUTE",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-global-admin",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "global_admin",
+      "requester_role": "global_platform_admin",
+      "requested_access_mode": "GLOBAL_PLATFORM_ADMIN",
+      "claim_type": null,
+      "defect": null,
+      "notes": ""
+    },
+    {
+      "request_id": "neg-unsanitized",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "unsanitized",
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "claim_type": null,
+      "defect": "unsanitized",
+      "notes": ""
+    },
+    {
+      "request_id": "neg-hash",
+      "row_id": "DCM-004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "request_type": "hash_mismatch",
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "claim_type": null,
+      "defect": "hash_mismatch",
+      "notes": ""
+    },
+    {
+      "request_id": "neg-manifest",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "request_type": "manifest_mismatch",
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "claim_type": null,
+      "defect": "manifest_mismatch",
+      "notes": ""
+    },
+    {
+      "request_id": "neg-unreviewed",
+      "row_id": "DCM-001",
+      "export_request_id": "pos-dcm001-synthetic",
+      "request_type": "unreviewed_approve",
+      "requester_role": "causal_methods_reviewer",
+      "requested_access_mode": "RESEARCH_REVIEW_APPROVE",
+      "claim_type": null,
+      "defect": "unreviewed",
+      "notes": ""
+    }
+  ],
+  "granted_access": [
+    {
+      "request_id": "pos-view-dcm001",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "research_view",
+      "decision": "ACCESS_GRANTED_RESEARCH_VIEW",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-view-dcm001",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-view-dcm004",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "research_view",
+      "decision": "ACCESS_GRANTED_RESEARCH_VIEW",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-view-dcm004",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-export-dcm001",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "research_export",
+      "decision": "ACCESS_GRANTED_RESEARCH_EXPORT",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-export-dcm001",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-export-dcm004",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "research_export",
+      "decision": "ACCESS_GRANTED_RESEARCH_EXPORT",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-export-dcm004",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-review-dcm001",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "research_review",
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-review-dcm001",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-review-dcm004",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "research_review",
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-review-dcm004",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-approve-causal-dcm001",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "research_review_approve",
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW_APPROVE",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-approve-causal-dcm001",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-approve-causal-dcm004",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "research_review_approve",
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW_APPROVE",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-approve-causal-dcm004",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-approve-gov-dcm001",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "research_review_approve",
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW_APPROVE",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-approve-gov-dcm001",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-approve-gov-dcm004",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "research_review_approve",
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW_APPROVE",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-approve-gov-dcm004",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-manifest-dcm001",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "manifest_view",
+      "decision": "ACCESS_GRANTED_MANIFEST_VIEW",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-manifest-dcm001",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-manifest-dcm004",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "manifest_view",
+      "decision": "ACCESS_GRANTED_MANIFEST_VIEW",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-manifest-dcm004",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-audit-dcm001",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "audit_view",
+      "decision": "ACCESS_GRANTED_AUDIT_VIEW",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-audit-dcm001",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-audit-dcm004",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "audit_view",
+      "decision": "ACCESS_GRANTED_AUDIT_VIEW",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-audit-dcm004",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-admin-view-dcm001",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "admin_view",
+      "decision": "ACCESS_GRANTED_RESEARCH_VIEW",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-admin-view-dcm001",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-admin-export-dcm004",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "admin_export",
+      "decision": "ACCESS_GRANTED_RESEARCH_EXPORT",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-admin-export-dcm004",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    }
+  ],
+  "blocked_access": [
+    {
+      "request_id": "neg-viewer-export",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "viewer_export",
+      "decision": "ACCESS_BLOCKED_ROLE_NOT_PERMITTED",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-viewer-export",
+      "gate_results": {
+        "role_not_permitted": true
+      },
+      "reason": "Role research_viewer cannot RESEARCH_EXPORT"
+    },
+    {
+      "request_id": "neg-exporter-approve",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "exporter_approve",
+      "decision": "ACCESS_BLOCKED_ROLE_NOT_PERMITTED",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-exporter-approve",
+      "gate_results": {
+        "role_not_permitted": true
+      },
+      "reason": "Role research_exporter cannot RESEARCH_REVIEW_APPROVE"
+    },
+    {
+      "request_id": "neg-reviewer-approve",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "reviewer_approve",
+      "decision": "ACCESS_BLOCKED_ROLE_NOT_PERMITTED",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-reviewer-approve",
+      "gate_results": {
+        "role_not_permitted": true
+      },
+      "reason": "Role research_reviewer cannot RESEARCH_REVIEW_APPROVE"
+    },
+    {
+      "request_id": "neg-audit-export",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "audit_export",
+      "decision": "ACCESS_BLOCKED_ROLE_NOT_PERMITTED",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-audit-export",
+      "gate_results": {
+        "role_not_permitted": true
+      },
+      "reason": "Role audit_viewer cannot RESEARCH_EXPORT"
+    },
+    {
+      "request_id": "neg-invalid-role",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "invalid_role",
+      "decision": "ACCESS_BLOCKED_INVALID_ROLE",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-invalid-role",
+      "gate_results": {
+        "invalid_role": true
+      },
+      "reason": "Invalid role: production_approver"
+    },
+    {
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "export_id": "",
+      "request_type": "unknown_row",
+      "decision": "ACCESS_BLOCKED_UNKNOWN_ROW",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-unknown",
+      "gate_results": {
+        "unknown_row": true
+      },
+      "reason": "Unknown row: DCM-999"
+    },
+    {
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "export_id": "",
+      "request_type": "causal_trustreport",
+      "decision": "ACCESS_BLOCKED_DIAGNOSTIC_ONLY",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-brb",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-BRB is diagnostic-only"
+    },
+    {
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "export_id": "",
+      "request_type": "causal_trustreport",
+      "decision": "ACCESS_BLOCKED_DIAGNOSTIC_ONLY",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-kfold",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-KFOLD is diagnostic-only"
+    },
+    {
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "export_id": "",
+      "request_type": "causal_trustreport",
+      "decision": "ACCESS_BLOCKED_NULL_MONITOR_CAUSAL_REUSE",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-placebo",
+      "gate_results": {
+        "null_monitor_causal_reuse": true
+      },
+      "reason": "Null-monitor causal TrustReport access blocked"
+    },
+    {
+      "request_id": "neg-dcm006",
+      "row_id": "DCM-006",
+      "export_id": "",
+      "request_type": "global_claim",
+      "decision": "ACCESS_BLOCKED_NOT_PROMOTED",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-dcm006",
+      "gate_results": {
+        "multicell_global_blocked": true
+      },
+      "reason": "DCM-006 global/winner/pooled access blocked"
+    },
+    {
+      "request_id": "neg-dcm008",
+      "row_id": "DCM-008",
+      "export_id": "",
+      "request_type": "aggregate_stratified",
+      "decision": "ACCESS_BLOCKED_DIAGNOSTIC_ONLY",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-dcm008",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-008 is diagnostic-only"
+    },
+    {
+      "request_id": "neg-cal",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "calibration_write",
+      "decision": "ACCESS_BLOCKED_CALIBRATION_SIGNAL",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-cal",
+      "gate_results": {
+        "CALIBRATION_SIGNAL_WRITE_blocked": true
+      },
+      "reason": "Blocked access mode: CALIBRATION_SIGNAL_WRITE"
+    },
+    {
+      "request_id": "neg-live-api",
+      "row_id": "DCM-004",
+      "export_id": "",
+      "request_type": "live_api",
+      "decision": "ACCESS_BLOCKED_LIVE_API",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-live-api",
+      "gate_results": {
+        "LIVE_API_EXECUTE_blocked": true
+      },
+      "reason": "Blocked access mode: LIVE_API_EXECUTE"
+    },
+    {
+      "request_id": "neg-scheduler",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "scheduler",
+      "decision": "ACCESS_BLOCKED_SCHEDULER",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-scheduler",
+      "gate_results": {
+        "SCHEDULER_EXECUTE_blocked": true
+      },
+      "reason": "Blocked access mode: SCHEDULER_EXECUTE"
+    },
+    {
+      "request_id": "neg-prod",
+      "row_id": "DCM-004",
+      "export_id": "",
+      "request_type": "production_approve",
+      "decision": "ACCESS_BLOCKED_PRODUCTION_DECISIONING",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-prod",
+      "gate_results": {
+        "PRODUCTION_DECISION_APPROVE_blocked": true
+      },
+      "reason": "Blocked access mode: PRODUCTION_DECISION_APPROVE"
+    },
+    {
+      "request_id": "neg-budget",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "budget",
+      "decision": "ACCESS_BLOCKED_BUDGET_OPTIMIZATION",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-budget",
+      "gate_results": {
+        "BUDGET_OPTIMIZATION_EXECUTE_blocked": true
+      },
+      "reason": "Blocked access mode: BUDGET_OPTIMIZATION_EXECUTE"
+    },
+    {
+      "request_id": "neg-global-admin",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "global_admin",
+      "decision": "ACCESS_BLOCKED_GLOBAL_PLATFORM",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-global-admin",
+      "gate_results": {
+        "GLOBAL_PLATFORM_ADMIN_blocked": true
+      },
+      "reason": "Blocked access mode: GLOBAL_PLATFORM_ADMIN"
+    },
+    {
+      "request_id": "neg-unsanitized",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "unsanitized",
+      "decision": "ACCESS_BLOCKED_UNSANITIZED_ARTIFACT",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-unsanitized",
+      "gate_results": {
+        "unsanitized_artifact": true
+      },
+      "reason": "Unsanitized artifact access blocked"
+    },
+    {
+      "request_id": "neg-hash",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "hash_mismatch",
+      "decision": "ACCESS_BLOCKED_HASH_MISMATCH",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-hash",
+      "gate_results": {
+        "hash_mismatch": true
+      },
+      "reason": "Content hash mismatch"
+    },
+    {
+      "request_id": "neg-manifest",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "manifest_mismatch",
+      "decision": "ACCESS_BLOCKED_MANIFEST_MISMATCH",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-manifest",
+      "gate_results": {
+        "manifest_mismatch": true
+      },
+      "reason": "Manifest mismatch"
+    },
+    {
+      "request_id": "neg-unreviewed",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-synthetic",
+      "request_type": "unreviewed_approve",
+      "decision": "ACCESS_BLOCKED_UNREVIEWED_ARTIFACT",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-unreviewed",
+      "gate_results": {
+        "unreviewed_artifact": true
+      },
+      "reason": "Artifact not research-review approved"
+    }
+  ],
+  "accepted_rows": [
+    "DCM-001",
+    "DCM-004"
+  ],
+  "blocked_rows": [
+    "DCM-001",
+    "DCM-004",
+    "DCM-005-BRB",
+    "DCM-005-KFOLD",
+    "DCM-005-PLACEBO",
+    "DCM-006",
+    "DCM-008",
+    "DCM-999"
+  ],
+  "access_contracts": {
+    "pos-view-dcm001": {
+      "access_request_id": "pos-view-dcm001",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-001",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "requester_role": "research_viewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "MANIFEST_VIEW",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "AUDIT_VIEW",
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_VIEW",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-view-dcm001",
+        "export_id": "export-pos-dcm001-placeholder",
+        "row_id": "DCM-001",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302008+00:00"
+    },
+    "pos-view-dcm004": {
+      "access_request_id": "pos-view-dcm004",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-004",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "requester_role": "research_viewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "MANIFEST_VIEW",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "AUDIT_VIEW",
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_VIEW",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-view-dcm004",
+        "export_id": "export-pos-dcm004-placeholder",
+        "row_id": "DCM-004",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302122+00:00"
+    },
+    "pos-export-dcm001": {
+      "access_request_id": "pos-export-dcm001",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-001",
+      "requested_access_mode": "RESEARCH_EXPORT",
+      "requester_role": "research_exporter",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "MANIFEST_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "AUDIT_VIEW",
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_EXPORT",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-export-dcm001",
+        "export_id": "export-pos-dcm001-placeholder",
+        "row_id": "DCM-001",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302199+00:00"
+    },
+    "pos-export-dcm004": {
+      "access_request_id": "pos-export-dcm004",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-004",
+      "requested_access_mode": "RESEARCH_EXPORT",
+      "requester_role": "research_exporter",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "MANIFEST_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "AUDIT_VIEW",
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_EXPORT",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-export-dcm004",
+        "export_id": "export-pos-dcm004-placeholder",
+        "row_id": "DCM-004",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302259+00:00"
+    },
+    "pos-review-dcm001": {
+      "access_request_id": "pos-review-dcm001",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-001",
+      "requested_access_mode": "RESEARCH_REVIEW",
+      "requester_role": "research_reviewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW",
+        "RESEARCH_REVIEW",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_REVIEW_APPROVE",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-review-dcm001",
+        "export_id": "export-pos-dcm001-placeholder",
+        "row_id": "DCM-001",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302330+00:00"
+    },
+    "pos-review-dcm004": {
+      "access_request_id": "pos-review-dcm004",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-004",
+      "requested_access_mode": "RESEARCH_REVIEW",
+      "requester_role": "research_reviewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW",
+        "RESEARCH_REVIEW",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_REVIEW_APPROVE",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-review-dcm004",
+        "export_id": "export-pos-dcm004-placeholder",
+        "row_id": "DCM-004",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302391+00:00"
+    },
+    "pos-approve-causal-dcm001": {
+      "access_request_id": "pos-approve-causal-dcm001",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-001",
+      "requested_access_mode": "RESEARCH_REVIEW_APPROVE",
+      "requester_role": "causal_methods_reviewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW_APPROVE",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-approve-causal-dcm001",
+        "export_id": "export-pos-dcm001-placeholder",
+        "row_id": "DCM-001",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302467+00:00"
+    },
+    "pos-approve-causal-dcm004": {
+      "access_request_id": "pos-approve-causal-dcm004",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-004",
+      "requested_access_mode": "RESEARCH_REVIEW_APPROVE",
+      "requester_role": "causal_methods_reviewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW_APPROVE",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-approve-causal-dcm004",
+        "export_id": "export-pos-dcm004-placeholder",
+        "row_id": "DCM-004",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302540+00:00"
+    },
+    "pos-approve-gov-dcm001": {
+      "access_request_id": "pos-approve-gov-dcm001",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-001",
+      "requested_access_mode": "RESEARCH_REVIEW_APPROVE",
+      "requester_role": "governance_reviewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW_APPROVE",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-approve-gov-dcm001",
+        "export_id": "export-pos-dcm001-placeholder",
+        "row_id": "DCM-001",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302605+00:00"
+    },
+    "pos-approve-gov-dcm004": {
+      "access_request_id": "pos-approve-gov-dcm004",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-004",
+      "requested_access_mode": "RESEARCH_REVIEW_APPROVE",
+      "requester_role": "governance_reviewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW_APPROVE",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-approve-gov-dcm004",
+        "export_id": "export-pos-dcm004-placeholder",
+        "row_id": "DCM-004",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302664+00:00"
+    },
+    "pos-manifest-dcm001": {
+      "access_request_id": "pos-manifest-dcm001",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-001",
+      "requested_access_mode": "MANIFEST_VIEW",
+      "requester_role": "audit_viewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "RESEARCH_VIEW",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_MANIFEST_VIEW",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-manifest-dcm001",
+        "export_id": "export-pos-dcm001-placeholder",
+        "row_id": "DCM-001",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302720+00:00"
+    },
+    "pos-manifest-dcm004": {
+      "access_request_id": "pos-manifest-dcm004",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-004",
+      "requested_access_mode": "MANIFEST_VIEW",
+      "requester_role": "audit_viewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "RESEARCH_VIEW",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_MANIFEST_VIEW",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-manifest-dcm004",
+        "export_id": "export-pos-dcm004-placeholder",
+        "row_id": "DCM-004",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302777+00:00"
+    },
+    "pos-audit-dcm001": {
+      "access_request_id": "pos-audit-dcm001",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-001",
+      "requested_access_mode": "AUDIT_VIEW",
+      "requester_role": "audit_viewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "RESEARCH_VIEW",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_AUDIT_VIEW",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-audit-dcm001",
+        "export_id": "export-pos-dcm001-placeholder",
+        "row_id": "DCM-001",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302869+00:00"
+    },
+    "pos-audit-dcm004": {
+      "access_request_id": "pos-audit-dcm004",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-004",
+      "requested_access_mode": "AUDIT_VIEW",
+      "requester_role": "audit_viewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "RESEARCH_VIEW",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_AUDIT_VIEW",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-audit-dcm004",
+        "export_id": "export-pos-dcm004-placeholder",
+        "row_id": "DCM-004",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302956+00:00"
+    },
+    "pos-admin-view-dcm001": {
+      "access_request_id": "pos-admin-view-dcm001",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-001",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "requester_role": "research_mode_admin",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_VIEW",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-admin-view-dcm001",
+        "export_id": "export-pos-dcm001-placeholder",
+        "row_id": "DCM-001",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.303041+00:00"
+    },
+    "pos-admin-export-dcm004": {
+      "access_request_id": "pos-admin-export-dcm004",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-004",
+      "requested_access_mode": "RESEARCH_EXPORT",
+      "requester_role": "research_mode_admin",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_EXPORT",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-admin-export-dcm004",
+        "export_id": "export-pos-dcm004-placeholder",
+        "row_id": "DCM-004",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.303112+00:00"
+    }
+  },
+  "access_decision_records": {
+    "pos-view-dcm001": {
+      "access_request_id": "pos-view-dcm001",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-001",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "requester_role": "research_viewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "MANIFEST_VIEW",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "AUDIT_VIEW",
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_VIEW",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-view-dcm001",
+        "export_id": "export-pos-dcm001-placeholder",
+        "row_id": "DCM-001",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302008+00:00"
+    },
+    "pos-view-dcm004": {
+      "access_request_id": "pos-view-dcm004",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-004",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "requester_role": "research_viewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "MANIFEST_VIEW",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "AUDIT_VIEW",
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_VIEW",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-view-dcm004",
+        "export_id": "export-pos-dcm004-placeholder",
+        "row_id": "DCM-004",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302122+00:00"
+    },
+    "pos-export-dcm001": {
+      "access_request_id": "pos-export-dcm001",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-001",
+      "requested_access_mode": "RESEARCH_EXPORT",
+      "requester_role": "research_exporter",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "MANIFEST_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "AUDIT_VIEW",
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_EXPORT",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-export-dcm001",
+        "export_id": "export-pos-dcm001-placeholder",
+        "row_id": "DCM-001",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302199+00:00"
+    },
+    "pos-export-dcm004": {
+      "access_request_id": "pos-export-dcm004",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-004",
+      "requested_access_mode": "RESEARCH_EXPORT",
+      "requester_role": "research_exporter",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "MANIFEST_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "AUDIT_VIEW",
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_EXPORT",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-export-dcm004",
+        "export_id": "export-pos-dcm004-placeholder",
+        "row_id": "DCM-004",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302259+00:00"
+    },
+    "pos-review-dcm001": {
+      "access_request_id": "pos-review-dcm001",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-001",
+      "requested_access_mode": "RESEARCH_REVIEW",
+      "requester_role": "research_reviewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW",
+        "RESEARCH_REVIEW",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_REVIEW_APPROVE",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-review-dcm001",
+        "export_id": "export-pos-dcm001-placeholder",
+        "row_id": "DCM-001",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302330+00:00"
+    },
+    "pos-review-dcm004": {
+      "access_request_id": "pos-review-dcm004",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-004",
+      "requested_access_mode": "RESEARCH_REVIEW",
+      "requester_role": "research_reviewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW",
+        "RESEARCH_REVIEW",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_REVIEW_APPROVE",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-review-dcm004",
+        "export_id": "export-pos-dcm004-placeholder",
+        "row_id": "DCM-004",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302391+00:00"
+    },
+    "pos-approve-causal-dcm001": {
+      "access_request_id": "pos-approve-causal-dcm001",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-001",
+      "requested_access_mode": "RESEARCH_REVIEW_APPROVE",
+      "requester_role": "causal_methods_reviewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW_APPROVE",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-approve-causal-dcm001",
+        "export_id": "export-pos-dcm001-placeholder",
+        "row_id": "DCM-001",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302467+00:00"
+    },
+    "pos-approve-causal-dcm004": {
+      "access_request_id": "pos-approve-causal-dcm004",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-004",
+      "requested_access_mode": "RESEARCH_REVIEW_APPROVE",
+      "requester_role": "causal_methods_reviewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW_APPROVE",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-approve-causal-dcm004",
+        "export_id": "export-pos-dcm004-placeholder",
+        "row_id": "DCM-004",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302540+00:00"
+    },
+    "pos-approve-gov-dcm001": {
+      "access_request_id": "pos-approve-gov-dcm001",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-001",
+      "requested_access_mode": "RESEARCH_REVIEW_APPROVE",
+      "requester_role": "governance_reviewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW_APPROVE",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-approve-gov-dcm001",
+        "export_id": "export-pos-dcm001-placeholder",
+        "row_id": "DCM-001",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302605+00:00"
+    },
+    "pos-approve-gov-dcm004": {
+      "access_request_id": "pos-approve-gov-dcm004",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-004",
+      "requested_access_mode": "RESEARCH_REVIEW_APPROVE",
+      "requester_role": "governance_reviewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW_APPROVE",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-approve-gov-dcm004",
+        "export_id": "export-pos-dcm004-placeholder",
+        "row_id": "DCM-004",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302664+00:00"
+    },
+    "pos-manifest-dcm001": {
+      "access_request_id": "pos-manifest-dcm001",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-001",
+      "requested_access_mode": "MANIFEST_VIEW",
+      "requester_role": "audit_viewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "RESEARCH_VIEW",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_MANIFEST_VIEW",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-manifest-dcm001",
+        "export_id": "export-pos-dcm001-placeholder",
+        "row_id": "DCM-001",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302720+00:00"
+    },
+    "pos-manifest-dcm004": {
+      "access_request_id": "pos-manifest-dcm004",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-004",
+      "requested_access_mode": "MANIFEST_VIEW",
+      "requester_role": "audit_viewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "RESEARCH_VIEW",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_MANIFEST_VIEW",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-manifest-dcm004",
+        "export_id": "export-pos-dcm004-placeholder",
+        "row_id": "DCM-004",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302777+00:00"
+    },
+    "pos-audit-dcm001": {
+      "access_request_id": "pos-audit-dcm001",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-001",
+      "requested_access_mode": "AUDIT_VIEW",
+      "requester_role": "audit_viewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "RESEARCH_VIEW",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_AUDIT_VIEW",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-audit-dcm001",
+        "export_id": "export-pos-dcm001-placeholder",
+        "row_id": "DCM-001",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302869+00:00"
+    },
+    "pos-audit-dcm004": {
+      "access_request_id": "pos-audit-dcm004",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-004",
+      "requested_access_mode": "AUDIT_VIEW",
+      "requester_role": "audit_viewer",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "RESEARCH_VIEW",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_AUDIT_VIEW",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-audit-dcm004",
+        "export_id": "export-pos-dcm004-placeholder",
+        "row_id": "DCM-004",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.302956+00:00"
+    },
+    "pos-admin-view-dcm001": {
+      "access_request_id": "pos-admin-view-dcm001",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-001",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "requester_role": "research_mode_admin",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_VIEW",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-admin-view-dcm001",
+        "export_id": "export-pos-dcm001-placeholder",
+        "row_id": "DCM-001",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.303041+00:00"
+    },
+    "pos-admin-export-dcm004": {
+      "access_request_id": "pos-admin-export-dcm004",
+      "artifact_id": "TRUSTREPORT-RESEARCH-MODE-ACCESS-CONTROL-001",
+      "row_id": "DCM-004",
+      "requested_access_mode": "RESEARCH_EXPORT",
+      "requester_role": "research_mode_admin",
+      "requester_scope": "research_mode_only",
+      "artifact_scope": "restricted_causal_interval",
+      "research_mode_only": true,
+      "manifest_verified": true,
+      "content_hash_verified": true,
+      "sanitization_verified": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED",
+      "allowed_permissions": [
+        "AUDIT_VIEW",
+        "MANIFEST_VIEW",
+        "RESEARCH_EXPORT",
+        "RESEARCH_REVIEW",
+        "RESEARCH_REVIEW_APPROVE",
+        "RESEARCH_VIEW"
+      ],
+      "blocked_permissions": [
+        "BUDGET_OPTIMIZATION_EXECUTE",
+        "CALIBRATION_SIGNAL_WRITE",
+        "GLOBAL_PLATFORM_ADMIN",
+        "LIVE_API_EXECUTE",
+        "PRODUCTION_DECISION_APPROVE",
+        "PRODUCTION_EXPORT",
+        "PRODUCTION_VIEW",
+        "SCHEDULER_EXECUTE"
+      ],
+      "decision": "ACCESS_GRANTED_RESEARCH_EXPORT",
+      "decision_reason": "Research-mode access granted",
+      "audit_record": {
+        "audit_record_id": "access-audit-pos-admin-export-dcm004",
+        "export_id": "export-pos-dcm004-placeholder",
+        "row_id": "DCM-004",
+        "research_mode_only": true,
+        "live_api_authorized": false,
+        "scheduler_authorized": false,
+        "calibration_signal_allowed": false,
+        "production_decisioning_allowed": false,
+        "budget_optimization_allowed": false,
+        "trust_report_platform_authorized": false
+      },
+      "created_at": "2026-06-23T03:49:09.303112+00:00"
+    }
+  },
+  "audit_records": [
+    {
+      "audit_record_id": "access-audit-pos-view-dcm001",
+      "request_id": "pos-view-dcm001",
+      "row_id": "DCM-001",
+      "decision": "ACCESS_GRANTED_RESEARCH_VIEW",
+      "granted": true,
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.302081+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-pos-view-dcm004",
+      "request_id": "pos-view-dcm004",
+      "row_id": "DCM-004",
+      "decision": "ACCESS_GRANTED_RESEARCH_VIEW",
+      "granted": true,
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.302159+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-pos-export-dcm001",
+      "request_id": "pos-export-dcm001",
+      "row_id": "DCM-001",
+      "decision": "ACCESS_GRANTED_RESEARCH_EXPORT",
+      "granted": true,
+      "requester_role": "research_exporter",
+      "requested_access_mode": "RESEARCH_EXPORT",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.302230+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-pos-export-dcm004",
+      "request_id": "pos-export-dcm004",
+      "row_id": "DCM-004",
+      "decision": "ACCESS_GRANTED_RESEARCH_EXPORT",
+      "granted": true,
+      "requester_role": "research_exporter",
+      "requested_access_mode": "RESEARCH_EXPORT",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.302296+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-pos-review-dcm001",
+      "request_id": "pos-review-dcm001",
+      "row_id": "DCM-001",
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW",
+      "granted": true,
+      "requester_role": "research_reviewer",
+      "requested_access_mode": "RESEARCH_REVIEW",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.302360+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-pos-review-dcm004",
+      "request_id": "pos-review-dcm004",
+      "row_id": "DCM-004",
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW",
+      "granted": true,
+      "requester_role": "research_reviewer",
+      "requested_access_mode": "RESEARCH_REVIEW",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.302424+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-pos-approve-causal-dcm001",
+      "request_id": "pos-approve-causal-dcm001",
+      "row_id": "DCM-001",
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW_APPROVE",
+      "granted": true,
+      "requester_role": "causal_methods_reviewer",
+      "requested_access_mode": "RESEARCH_REVIEW_APPROVE",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.302498+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-pos-approve-causal-dcm004",
+      "request_id": "pos-approve-causal-dcm004",
+      "row_id": "DCM-004",
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW_APPROVE",
+      "granted": true,
+      "requester_role": "causal_methods_reviewer",
+      "requested_access_mode": "RESEARCH_REVIEW_APPROVE",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.302575+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-pos-approve-gov-dcm001",
+      "request_id": "pos-approve-gov-dcm001",
+      "row_id": "DCM-001",
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW_APPROVE",
+      "granted": true,
+      "requester_role": "governance_reviewer",
+      "requested_access_mode": "RESEARCH_REVIEW_APPROVE",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.302634+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-pos-approve-gov-dcm004",
+      "request_id": "pos-approve-gov-dcm004",
+      "row_id": "DCM-004",
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW_APPROVE",
+      "granted": true,
+      "requester_role": "governance_reviewer",
+      "requested_access_mode": "RESEARCH_REVIEW_APPROVE",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.302689+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-pos-manifest-dcm001",
+      "request_id": "pos-manifest-dcm001",
+      "row_id": "DCM-001",
+      "decision": "ACCESS_GRANTED_MANIFEST_VIEW",
+      "granted": true,
+      "requester_role": "audit_viewer",
+      "requested_access_mode": "MANIFEST_VIEW",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.302749+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-pos-manifest-dcm004",
+      "request_id": "pos-manifest-dcm004",
+      "row_id": "DCM-004",
+      "decision": "ACCESS_GRANTED_MANIFEST_VIEW",
+      "granted": true,
+      "requester_role": "audit_viewer",
+      "requested_access_mode": "MANIFEST_VIEW",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.302817+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-pos-audit-dcm001",
+      "request_id": "pos-audit-dcm001",
+      "row_id": "DCM-001",
+      "decision": "ACCESS_GRANTED_AUDIT_VIEW",
+      "granted": true,
+      "requester_role": "audit_viewer",
+      "requested_access_mode": "AUDIT_VIEW",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.302912+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-pos-audit-dcm004",
+      "request_id": "pos-audit-dcm004",
+      "row_id": "DCM-004",
+      "decision": "ACCESS_GRANTED_AUDIT_VIEW",
+      "granted": true,
+      "requester_role": "audit_viewer",
+      "requested_access_mode": "AUDIT_VIEW",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.302998+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-pos-admin-view-dcm001",
+      "request_id": "pos-admin-view-dcm001",
+      "row_id": "DCM-001",
+      "decision": "ACCESS_GRANTED_RESEARCH_VIEW",
+      "granted": true,
+      "requester_role": "research_mode_admin",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.303080+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-pos-admin-export-dcm004",
+      "request_id": "pos-admin-export-dcm004",
+      "row_id": "DCM-004",
+      "decision": "ACCESS_GRANTED_RESEARCH_EXPORT",
+      "granted": true,
+      "requester_role": "research_mode_admin",
+      "requested_access_mode": "RESEARCH_EXPORT",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.303139+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-neg-viewer-export",
+      "request_id": "neg-viewer-export",
+      "row_id": "DCM-001",
+      "decision": "ACCESS_BLOCKED_ROLE_NOT_PERMITTED",
+      "granted": false,
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_EXPORT",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.303170+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-neg-exporter-approve",
+      "request_id": "neg-exporter-approve",
+      "row_id": "DCM-001",
+      "decision": "ACCESS_BLOCKED_ROLE_NOT_PERMITTED",
+      "granted": false,
+      "requester_role": "research_exporter",
+      "requested_access_mode": "RESEARCH_REVIEW_APPROVE",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.303200+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-neg-reviewer-approve",
+      "request_id": "neg-reviewer-approve",
+      "row_id": "DCM-004",
+      "decision": "ACCESS_BLOCKED_ROLE_NOT_PERMITTED",
+      "granted": false,
+      "requester_role": "research_reviewer",
+      "requested_access_mode": "RESEARCH_REVIEW_APPROVE",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.303233+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-neg-audit-export",
+      "request_id": "neg-audit-export",
+      "row_id": "DCM-001",
+      "decision": "ACCESS_BLOCKED_ROLE_NOT_PERMITTED",
+      "granted": false,
+      "requester_role": "audit_viewer",
+      "requested_access_mode": "RESEARCH_EXPORT",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.303263+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-neg-invalid-role",
+      "request_id": "neg-invalid-role",
+      "row_id": "DCM-001",
+      "decision": "ACCESS_BLOCKED_INVALID_ROLE",
+      "granted": false,
+      "requester_role": "production_approver",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.303265+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-neg-unknown",
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "decision": "ACCESS_BLOCKED_UNKNOWN_ROW",
+      "granted": false,
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.303268+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-neg-brb",
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "decision": "ACCESS_BLOCKED_DIAGNOSTIC_ONLY",
+      "granted": false,
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.303271+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-neg-kfold",
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "decision": "ACCESS_BLOCKED_DIAGNOSTIC_ONLY",
+      "granted": false,
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.303274+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-neg-placebo",
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "decision": "ACCESS_BLOCKED_NULL_MONITOR_CAUSAL_REUSE",
+      "granted": false,
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.303277+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-neg-dcm006",
+      "request_id": "neg-dcm006",
+      "row_id": "DCM-006",
+      "decision": "ACCESS_BLOCKED_NOT_PROMOTED",
+      "granted": false,
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.303281+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-neg-dcm008",
+      "request_id": "neg-dcm008",
+      "row_id": "DCM-008",
+      "decision": "ACCESS_BLOCKED_DIAGNOSTIC_ONLY",
+      "granted": false,
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.303283+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-neg-cal",
+      "request_id": "neg-cal",
+      "row_id": "DCM-001",
+      "decision": "ACCESS_BLOCKED_CALIBRATION_SIGNAL",
+      "granted": false,
+      "requester_role": "calibration_signal_writer",
+      "requested_access_mode": "CALIBRATION_SIGNAL_WRITE",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.303285+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-neg-live-api",
+      "request_id": "neg-live-api",
+      "row_id": "DCM-004",
+      "decision": "ACCESS_BLOCKED_LIVE_API",
+      "granted": false,
+      "requester_role": "api_operator",
+      "requested_access_mode": "LIVE_API_EXECUTE",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.303288+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-neg-scheduler",
+      "request_id": "neg-scheduler",
+      "row_id": "DCM-001",
+      "decision": "ACCESS_BLOCKED_SCHEDULER",
+      "granted": false,
+      "requester_role": "scheduler_operator",
+      "requested_access_mode": "SCHEDULER_EXECUTE",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.303292+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-neg-prod",
+      "request_id": "neg-prod",
+      "row_id": "DCM-004",
+      "decision": "ACCESS_BLOCKED_PRODUCTION_DECISIONING",
+      "granted": false,
+      "requester_role": "production_approver",
+      "requested_access_mode": "PRODUCTION_DECISION_APPROVE",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.303294+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-neg-budget",
+      "request_id": "neg-budget",
+      "row_id": "DCM-001",
+      "decision": "ACCESS_BLOCKED_BUDGET_OPTIMIZATION",
+      "granted": false,
+      "requester_role": "budget_optimizer",
+      "requested_access_mode": "BUDGET_OPTIMIZATION_EXECUTE",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.303296+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-neg-global-admin",
+      "request_id": "neg-global-admin",
+      "row_id": "DCM-001",
+      "decision": "ACCESS_BLOCKED_GLOBAL_PLATFORM",
+      "granted": false,
+      "requester_role": "global_platform_admin",
+      "requested_access_mode": "GLOBAL_PLATFORM_ADMIN",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.303299+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-neg-unsanitized",
+      "request_id": "neg-unsanitized",
+      "row_id": "DCM-001",
+      "decision": "ACCESS_BLOCKED_UNSANITIZED_ARTIFACT",
+      "granted": false,
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.303352+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-neg-hash",
+      "request_id": "neg-hash",
+      "row_id": "DCM-004",
+      "decision": "ACCESS_BLOCKED_HASH_MISMATCH",
+      "granted": false,
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.303374+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-neg-manifest",
+      "request_id": "neg-manifest",
+      "row_id": "DCM-001",
+      "decision": "ACCESS_BLOCKED_MANIFEST_MISMATCH",
+      "granted": false,
+      "requester_role": "research_viewer",
+      "requested_access_mode": "RESEARCH_VIEW",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.303420+00:00"
+    },
+    {
+      "audit_record_id": "access-audit-neg-unreviewed",
+      "request_id": "neg-unreviewed",
+      "row_id": "DCM-001",
+      "decision": "ACCESS_BLOCKED_UNREVIEWED_ARTIFACT",
+      "granted": false,
+      "requester_role": "causal_methods_reviewer",
+      "requested_access_mode": "RESEARCH_REVIEW_APPROVE",
+      "research_mode_only": true,
+      "live_api_authorized": false,
+      "scheduler_authorized": false,
+      "production_approval": false,
+      "timestamp": "2026-06-23T03:49:09.303471+00:00"
+    }
+  ],
+  "negative_control_results": [
+    {
+      "request_id": "neg-viewer-export",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "viewer_export",
+      "decision": "ACCESS_BLOCKED_ROLE_NOT_PERMITTED",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-viewer-export",
+      "gate_results": {
+        "role_not_permitted": true
+      },
+      "reason": "Role research_viewer cannot RESEARCH_EXPORT"
+    },
+    {
+      "request_id": "neg-exporter-approve",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "exporter_approve",
+      "decision": "ACCESS_BLOCKED_ROLE_NOT_PERMITTED",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-exporter-approve",
+      "gate_results": {
+        "role_not_permitted": true
+      },
+      "reason": "Role research_exporter cannot RESEARCH_REVIEW_APPROVE"
+    },
+    {
+      "request_id": "neg-reviewer-approve",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "reviewer_approve",
+      "decision": "ACCESS_BLOCKED_ROLE_NOT_PERMITTED",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-reviewer-approve",
+      "gate_results": {
+        "role_not_permitted": true
+      },
+      "reason": "Role research_reviewer cannot RESEARCH_REVIEW_APPROVE"
+    },
+    {
+      "request_id": "neg-audit-export",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "audit_export",
+      "decision": "ACCESS_BLOCKED_ROLE_NOT_PERMITTED",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-audit-export",
+      "gate_results": {
+        "role_not_permitted": true
+      },
+      "reason": "Role audit_viewer cannot RESEARCH_EXPORT"
+    },
+    {
+      "request_id": "neg-invalid-role",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "invalid_role",
+      "decision": "ACCESS_BLOCKED_INVALID_ROLE",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-invalid-role",
+      "gate_results": {
+        "invalid_role": true
+      },
+      "reason": "Invalid role: production_approver"
+    },
+    {
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "export_id": "",
+      "request_type": "unknown_row",
+      "decision": "ACCESS_BLOCKED_UNKNOWN_ROW",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-unknown",
+      "gate_results": {
+        "unknown_row": true
+      },
+      "reason": "Unknown row: DCM-999"
+    },
+    {
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "export_id": "",
+      "request_type": "causal_trustreport",
+      "decision": "ACCESS_BLOCKED_DIAGNOSTIC_ONLY",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-brb",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-BRB is diagnostic-only"
+    },
+    {
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "export_id": "",
+      "request_type": "causal_trustreport",
+      "decision": "ACCESS_BLOCKED_DIAGNOSTIC_ONLY",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-kfold",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-KFOLD is diagnostic-only"
+    },
+    {
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "export_id": "",
+      "request_type": "causal_trustreport",
+      "decision": "ACCESS_BLOCKED_NULL_MONITOR_CAUSAL_REUSE",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-placebo",
+      "gate_results": {
+        "null_monitor_causal_reuse": true
+      },
+      "reason": "Null-monitor causal TrustReport access blocked"
+    },
+    {
+      "request_id": "neg-dcm006",
+      "row_id": "DCM-006",
+      "export_id": "",
+      "request_type": "global_claim",
+      "decision": "ACCESS_BLOCKED_NOT_PROMOTED",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-dcm006",
+      "gate_results": {
+        "multicell_global_blocked": true
+      },
+      "reason": "DCM-006 global/winner/pooled access blocked"
+    },
+    {
+      "request_id": "neg-dcm008",
+      "row_id": "DCM-008",
+      "export_id": "",
+      "request_type": "aggregate_stratified",
+      "decision": "ACCESS_BLOCKED_DIAGNOSTIC_ONLY",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-dcm008",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-008 is diagnostic-only"
+    },
+    {
+      "request_id": "neg-cal",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "calibration_write",
+      "decision": "ACCESS_BLOCKED_CALIBRATION_SIGNAL",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-cal",
+      "gate_results": {
+        "CALIBRATION_SIGNAL_WRITE_blocked": true
+      },
+      "reason": "Blocked access mode: CALIBRATION_SIGNAL_WRITE"
+    },
+    {
+      "request_id": "neg-live-api",
+      "row_id": "DCM-004",
+      "export_id": "",
+      "request_type": "live_api",
+      "decision": "ACCESS_BLOCKED_LIVE_API",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-live-api",
+      "gate_results": {
+        "LIVE_API_EXECUTE_blocked": true
+      },
+      "reason": "Blocked access mode: LIVE_API_EXECUTE"
+    },
+    {
+      "request_id": "neg-scheduler",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "scheduler",
+      "decision": "ACCESS_BLOCKED_SCHEDULER",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-scheduler",
+      "gate_results": {
+        "SCHEDULER_EXECUTE_blocked": true
+      },
+      "reason": "Blocked access mode: SCHEDULER_EXECUTE"
+    },
+    {
+      "request_id": "neg-prod",
+      "row_id": "DCM-004",
+      "export_id": "",
+      "request_type": "production_approve",
+      "decision": "ACCESS_BLOCKED_PRODUCTION_DECISIONING",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-prod",
+      "gate_results": {
+        "PRODUCTION_DECISION_APPROVE_blocked": true
+      },
+      "reason": "Blocked access mode: PRODUCTION_DECISION_APPROVE"
+    },
+    {
+      "request_id": "neg-budget",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "budget",
+      "decision": "ACCESS_BLOCKED_BUDGET_OPTIMIZATION",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-budget",
+      "gate_results": {
+        "BUDGET_OPTIMIZATION_EXECUTE_blocked": true
+      },
+      "reason": "Blocked access mode: BUDGET_OPTIMIZATION_EXECUTE"
+    },
+    {
+      "request_id": "neg-global-admin",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "global_admin",
+      "decision": "ACCESS_BLOCKED_GLOBAL_PLATFORM",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-global-admin",
+      "gate_results": {
+        "GLOBAL_PLATFORM_ADMIN_blocked": true
+      },
+      "reason": "Blocked access mode: GLOBAL_PLATFORM_ADMIN"
+    },
+    {
+      "request_id": "neg-unsanitized",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "unsanitized",
+      "decision": "ACCESS_BLOCKED_UNSANITIZED_ARTIFACT",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-unsanitized",
+      "gate_results": {
+        "unsanitized_artifact": true
+      },
+      "reason": "Unsanitized artifact access blocked"
+    },
+    {
+      "request_id": "neg-hash",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "hash_mismatch",
+      "decision": "ACCESS_BLOCKED_HASH_MISMATCH",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-hash",
+      "gate_results": {
+        "hash_mismatch": true
+      },
+      "reason": "Content hash mismatch"
+    },
+    {
+      "request_id": "neg-manifest",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "manifest_mismatch",
+      "decision": "ACCESS_BLOCKED_MANIFEST_MISMATCH",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-manifest",
+      "gate_results": {
+        "manifest_mismatch": true
+      },
+      "reason": "Manifest mismatch"
+    },
+    {
+      "request_id": "neg-unreviewed",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-synthetic",
+      "request_type": "unreviewed_approve",
+      "decision": "ACCESS_BLOCKED_UNREVIEWED_ARTIFACT",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-unreviewed",
+      "gate_results": {
+        "unreviewed_artifact": true
+      },
+      "reason": "Artifact not research-review approved"
+    }
+  ],
+  "manifest_verification_results": [
+    {
+      "request_id": "pos-view-dcm001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "verified": true
+    },
+    {
+      "request_id": "pos-view-dcm004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "verified": true
+    },
+    {
+      "request_id": "pos-export-dcm001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "verified": true
+    },
+    {
+      "request_id": "pos-export-dcm004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "verified": true
+    },
+    {
+      "request_id": "pos-review-dcm001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "verified": true
+    },
+    {
+      "request_id": "pos-review-dcm004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "verified": true
+    },
+    {
+      "request_id": "pos-approve-causal-dcm001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "verified": true
+    },
+    {
+      "request_id": "pos-approve-causal-dcm004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "verified": true
+    },
+    {
+      "request_id": "pos-approve-gov-dcm001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "verified": true
+    },
+    {
+      "request_id": "pos-approve-gov-dcm004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "verified": true
+    },
+    {
+      "request_id": "pos-manifest-dcm001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "verified": true
+    },
+    {
+      "request_id": "pos-manifest-dcm004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "verified": true
+    },
+    {
+      "request_id": "pos-audit-dcm001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "verified": true
+    },
+    {
+      "request_id": "pos-audit-dcm004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "verified": true
+    },
+    {
+      "request_id": "pos-admin-view-dcm001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "verified": true
+    },
+    {
+      "request_id": "pos-admin-export-dcm004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "verified": true
+    }
+  ],
+  "hash_verification_results": [
+    {
+      "request_id": "pos-view-dcm001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "verified": true,
+      "content_hash": "2168462379e105571df6b660984cc36b64163e3c8b5190eee680486e7017de5e"
+    },
+    {
+      "request_id": "pos-view-dcm004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "verified": true,
+      "content_hash": "b2a4748bae9383ae45ccc51fc2c14c104f097d170303113e405c11730994f516"
+    },
+    {
+      "request_id": "pos-export-dcm001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "verified": true,
+      "content_hash": "2168462379e105571df6b660984cc36b64163e3c8b5190eee680486e7017de5e"
+    },
+    {
+      "request_id": "pos-export-dcm004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "verified": true,
+      "content_hash": "b2a4748bae9383ae45ccc51fc2c14c104f097d170303113e405c11730994f516"
+    },
+    {
+      "request_id": "pos-review-dcm001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "verified": true,
+      "content_hash": "2168462379e105571df6b660984cc36b64163e3c8b5190eee680486e7017de5e"
+    },
+    {
+      "request_id": "pos-review-dcm004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "verified": true,
+      "content_hash": "b2a4748bae9383ae45ccc51fc2c14c104f097d170303113e405c11730994f516"
+    },
+    {
+      "request_id": "pos-approve-causal-dcm001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "verified": true,
+      "content_hash": "2168462379e105571df6b660984cc36b64163e3c8b5190eee680486e7017de5e"
+    },
+    {
+      "request_id": "pos-approve-causal-dcm004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "verified": true,
+      "content_hash": "b2a4748bae9383ae45ccc51fc2c14c104f097d170303113e405c11730994f516"
+    },
+    {
+      "request_id": "pos-approve-gov-dcm001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "verified": true,
+      "content_hash": "2168462379e105571df6b660984cc36b64163e3c8b5190eee680486e7017de5e"
+    },
+    {
+      "request_id": "pos-approve-gov-dcm004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "verified": true,
+      "content_hash": "b2a4748bae9383ae45ccc51fc2c14c104f097d170303113e405c11730994f516"
+    },
+    {
+      "request_id": "pos-manifest-dcm001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "verified": true,
+      "content_hash": "2168462379e105571df6b660984cc36b64163e3c8b5190eee680486e7017de5e"
+    },
+    {
+      "request_id": "pos-manifest-dcm004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "verified": true,
+      "content_hash": "b2a4748bae9383ae45ccc51fc2c14c104f097d170303113e405c11730994f516"
+    },
+    {
+      "request_id": "pos-audit-dcm001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "verified": true,
+      "content_hash": "2168462379e105571df6b660984cc36b64163e3c8b5190eee680486e7017de5e"
+    },
+    {
+      "request_id": "pos-audit-dcm004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "verified": true,
+      "content_hash": "b2a4748bae9383ae45ccc51fc2c14c104f097d170303113e405c11730994f516"
+    },
+    {
+      "request_id": "pos-admin-view-dcm001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "verified": true,
+      "content_hash": "2168462379e105571df6b660984cc36b64163e3c8b5190eee680486e7017de5e"
+    },
+    {
+      "request_id": "pos-admin-export-dcm004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "verified": true,
+      "content_hash": "b2a4748bae9383ae45ccc51fc2c14c104f097d170303113e405c11730994f516"
+    }
+  ],
+  "sanitization_results": [
+    {
+      "request_id": "pos-view-dcm001",
+      "sanitized": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED"
+    },
+    {
+      "request_id": "pos-view-dcm004",
+      "sanitized": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED"
+    },
+    {
+      "request_id": "pos-export-dcm001",
+      "sanitized": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED"
+    },
+    {
+      "request_id": "pos-export-dcm004",
+      "sanitized": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED"
+    },
+    {
+      "request_id": "pos-review-dcm001",
+      "sanitized": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED"
+    },
+    {
+      "request_id": "pos-review-dcm004",
+      "sanitized": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED"
+    },
+    {
+      "request_id": "pos-approve-causal-dcm001",
+      "sanitized": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED"
+    },
+    {
+      "request_id": "pos-approve-causal-dcm004",
+      "sanitized": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED"
+    },
+    {
+      "request_id": "pos-approve-gov-dcm001",
+      "sanitized": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED"
+    },
+    {
+      "request_id": "pos-approve-gov-dcm004",
+      "sanitized": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED"
+    },
+    {
+      "request_id": "pos-manifest-dcm001",
+      "sanitized": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED"
+    },
+    {
+      "request_id": "pos-manifest-dcm004",
+      "sanitized": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED"
+    },
+    {
+      "request_id": "pos-audit-dcm001",
+      "sanitized": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED"
+    },
+    {
+      "request_id": "pos-audit-dcm004",
+      "sanitized": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED"
+    },
+    {
+      "request_id": "pos-admin-view-dcm001",
+      "sanitized": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED"
+    },
+    {
+      "request_id": "pos-admin-export-dcm004",
+      "sanitized": true,
+      "measurement_label": "NO_LIVE_MEASUREMENT_PAYLOAD_SUPPLIED"
+    }
+  ],
+  "review_status_check": [
+    {
+      "request_id": "pos-view-dcm001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "review_approved": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED"
+    },
+    {
+      "request_id": "pos-view-dcm004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "review_approved": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED"
+    },
+    {
+      "request_id": "pos-export-dcm001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "review_approved": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED"
+    },
+    {
+      "request_id": "pos-export-dcm004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "review_approved": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED"
+    },
+    {
+      "request_id": "pos-review-dcm001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "review_approved": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED"
+    },
+    {
+      "request_id": "pos-review-dcm004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "review_approved": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED"
+    },
+    {
+      "request_id": "pos-approve-causal-dcm001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "review_approved": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED"
+    },
+    {
+      "request_id": "pos-approve-causal-dcm004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "review_approved": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED"
+    },
+    {
+      "request_id": "pos-approve-gov-dcm001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "review_approved": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED"
+    },
+    {
+      "request_id": "pos-approve-gov-dcm004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "review_approved": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED"
+    },
+    {
+      "request_id": "pos-manifest-dcm001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "review_approved": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED"
+    },
+    {
+      "request_id": "pos-manifest-dcm004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "review_approved": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED"
+    },
+    {
+      "request_id": "pos-audit-dcm001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "review_approved": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED"
+    },
+    {
+      "request_id": "pos-audit-dcm004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "review_approved": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED"
+    },
+    {
+      "request_id": "pos-admin-view-dcm001",
+      "export_request_id": "pos-dcm001-placeholder",
+      "review_approved": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED"
+    },
+    {
+      "request_id": "pos-admin-export-dcm004",
+      "export_request_id": "pos-dcm004-placeholder",
+      "review_approved": true,
+      "review_status": "RESEARCH_REVIEW_APPROVED"
+    }
+  ],
+  "global_authorization_summary": {
+    "trust_report_platform_authorized": false,
+    "live_api_authorized": false,
+    "scheduler_authorized": false
+  },
+  "live_api_authorization_summary": {
+    "live_api_authorized": false,
+    "research_mode_only": true
+  },
+  "scheduler_authorization_summary": {
+    "scheduler_authorized": false,
+    "research_mode_only": true
+  },
+  "calibration_signal_summary": {
+    "any_calibration_signal_allowed": false
+  },
+  "production_decisioning_summary": {
+    "any_production_decisioning_allowed": false
+  },
+  "budget_optimization_summary": {
+    "any_budget_optimization_allowed": false
+  },
+  "open_investigation_check": {
+    "deferred_investigations": [
+      "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+      "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+    ],
+    "blocking_for_access": []
+  },
+  "governance_verdict": "trustreport_research_mode_access_control_passed",
+  "limitations": [
+    "This artifact defines research-mode access control for exported TrustReport artifacts.",
+    "It does not authorize live APIs, scheduler execution, production decisioning, CalibrationSignal, budget optimization, or global platform rollout.",
+    "Access approval is research-mode access approval only.",
+    "Only DCM-001 and DCM-004 are accepted for research-mode access.",
+    "All diagnostic-only, null-monitor-only, deferred, ineligible, global multi-cell, and stratified aggregate paths remain blocked."
+  ],
+  "next_artifact": "TRUSTREPORT_RESEARCH_MODE_AUDIT_LOG_001",
+  "investigation_handoff": {
+    "follow_up_issues": [],
+    "resolved_issues": [],
+    "terminal_dispositions": [],
+    "next_artifact": "TRUSTREPORT_RESEARCH_MODE_AUDIT_LOG_001"
+  },
+  "verdict": "trustreport_research_mode_access_control_passed",
+  "contracts_complete": true,
+  "dcm001_access_result": {
+    "request_id": "pos-view-dcm001",
+    "row_id": "DCM-001",
+    "export_id": "export-pos-dcm001-placeholder",
+    "request_type": "research_view",
+    "decision": "ACCESS_GRANTED_RESEARCH_VIEW",
+    "granted": true,
+    "audit_record_id": "access-audit-pos-view-dcm001",
+    "gate_results": {
+      "row_promoted": true,
+      "role_permitted": true,
+      "manifest_verified": true,
+      "hash_verified": true,
+      "sanitization_verified": true,
+      "research_mode_only": true,
+      "production_permissions_blocked": true
+    },
+    "reason": "Research-mode access granted"
+  },
+  "dcm004_access_result": {
+    "request_id": "pos-view-dcm004",
+    "row_id": "DCM-004",
+    "export_id": "export-pos-dcm004-placeholder",
+    "request_type": "research_view",
+    "decision": "ACCESS_GRANTED_RESEARCH_VIEW",
+    "granted": true,
+    "audit_record_id": "access-audit-pos-view-dcm004",
+    "gate_results": {
+      "row_promoted": true,
+      "role_permitted": true,
+      "manifest_verified": true,
+      "hash_verified": true,
+      "sanitization_verified": true,
+      "research_mode_only": true,
+      "production_permissions_blocked": true
+    },
+    "reason": "Research-mode access granted"
+  },
+  "access_results": [
+    {
+      "request_id": "pos-view-dcm001",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "research_view",
+      "decision": "ACCESS_GRANTED_RESEARCH_VIEW",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-view-dcm001",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-view-dcm004",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "research_view",
+      "decision": "ACCESS_GRANTED_RESEARCH_VIEW",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-view-dcm004",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-export-dcm001",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "research_export",
+      "decision": "ACCESS_GRANTED_RESEARCH_EXPORT",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-export-dcm001",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-export-dcm004",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "research_export",
+      "decision": "ACCESS_GRANTED_RESEARCH_EXPORT",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-export-dcm004",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-review-dcm001",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "research_review",
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-review-dcm001",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-review-dcm004",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "research_review",
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-review-dcm004",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-approve-causal-dcm001",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "research_review_approve",
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW_APPROVE",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-approve-causal-dcm001",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-approve-causal-dcm004",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "research_review_approve",
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW_APPROVE",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-approve-causal-dcm004",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-approve-gov-dcm001",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "research_review_approve",
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW_APPROVE",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-approve-gov-dcm001",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-approve-gov-dcm004",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "research_review_approve",
+      "decision": "ACCESS_GRANTED_RESEARCH_REVIEW_APPROVE",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-approve-gov-dcm004",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-manifest-dcm001",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "manifest_view",
+      "decision": "ACCESS_GRANTED_MANIFEST_VIEW",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-manifest-dcm001",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-manifest-dcm004",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "manifest_view",
+      "decision": "ACCESS_GRANTED_MANIFEST_VIEW",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-manifest-dcm004",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-audit-dcm001",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "audit_view",
+      "decision": "ACCESS_GRANTED_AUDIT_VIEW",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-audit-dcm001",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-audit-dcm004",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "audit_view",
+      "decision": "ACCESS_GRANTED_AUDIT_VIEW",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-audit-dcm004",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-admin-view-dcm001",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "admin_view",
+      "decision": "ACCESS_GRANTED_RESEARCH_VIEW",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-admin-view-dcm001",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "pos-admin-export-dcm004",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "admin_export",
+      "decision": "ACCESS_GRANTED_RESEARCH_EXPORT",
+      "granted": true,
+      "audit_record_id": "access-audit-pos-admin-export-dcm004",
+      "gate_results": {
+        "row_promoted": true,
+        "role_permitted": true,
+        "manifest_verified": true,
+        "hash_verified": true,
+        "sanitization_verified": true,
+        "research_mode_only": true,
+        "production_permissions_blocked": true
+      },
+      "reason": "Research-mode access granted"
+    },
+    {
+      "request_id": "neg-viewer-export",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "viewer_export",
+      "decision": "ACCESS_BLOCKED_ROLE_NOT_PERMITTED",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-viewer-export",
+      "gate_results": {
+        "role_not_permitted": true
+      },
+      "reason": "Role research_viewer cannot RESEARCH_EXPORT"
+    },
+    {
+      "request_id": "neg-exporter-approve",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "exporter_approve",
+      "decision": "ACCESS_BLOCKED_ROLE_NOT_PERMITTED",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-exporter-approve",
+      "gate_results": {
+        "role_not_permitted": true
+      },
+      "reason": "Role research_exporter cannot RESEARCH_REVIEW_APPROVE"
+    },
+    {
+      "request_id": "neg-reviewer-approve",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "reviewer_approve",
+      "decision": "ACCESS_BLOCKED_ROLE_NOT_PERMITTED",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-reviewer-approve",
+      "gate_results": {
+        "role_not_permitted": true
+      },
+      "reason": "Role research_reviewer cannot RESEARCH_REVIEW_APPROVE"
+    },
+    {
+      "request_id": "neg-audit-export",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "audit_export",
+      "decision": "ACCESS_BLOCKED_ROLE_NOT_PERMITTED",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-audit-export",
+      "gate_results": {
+        "role_not_permitted": true
+      },
+      "reason": "Role audit_viewer cannot RESEARCH_EXPORT"
+    },
+    {
+      "request_id": "neg-invalid-role",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "invalid_role",
+      "decision": "ACCESS_BLOCKED_INVALID_ROLE",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-invalid-role",
+      "gate_results": {
+        "invalid_role": true
+      },
+      "reason": "Invalid role: production_approver"
+    },
+    {
+      "request_id": "neg-unknown",
+      "row_id": "DCM-999",
+      "export_id": "",
+      "request_type": "unknown_row",
+      "decision": "ACCESS_BLOCKED_UNKNOWN_ROW",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-unknown",
+      "gate_results": {
+        "unknown_row": true
+      },
+      "reason": "Unknown row: DCM-999"
+    },
+    {
+      "request_id": "neg-brb",
+      "row_id": "DCM-005-BRB",
+      "export_id": "",
+      "request_type": "causal_trustreport",
+      "decision": "ACCESS_BLOCKED_DIAGNOSTIC_ONLY",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-brb",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-BRB is diagnostic-only"
+    },
+    {
+      "request_id": "neg-kfold",
+      "row_id": "DCM-005-KFOLD",
+      "export_id": "",
+      "request_type": "causal_trustreport",
+      "decision": "ACCESS_BLOCKED_DIAGNOSTIC_ONLY",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-kfold",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-005-KFOLD is diagnostic-only"
+    },
+    {
+      "request_id": "neg-placebo",
+      "row_id": "DCM-005-PLACEBO",
+      "export_id": "",
+      "request_type": "causal_trustreport",
+      "decision": "ACCESS_BLOCKED_NULL_MONITOR_CAUSAL_REUSE",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-placebo",
+      "gate_results": {
+        "null_monitor_causal_reuse": true
+      },
+      "reason": "Null-monitor causal TrustReport access blocked"
+    },
+    {
+      "request_id": "neg-dcm006",
+      "row_id": "DCM-006",
+      "export_id": "",
+      "request_type": "global_claim",
+      "decision": "ACCESS_BLOCKED_NOT_PROMOTED",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-dcm006",
+      "gate_results": {
+        "multicell_global_blocked": true
+      },
+      "reason": "DCM-006 global/winner/pooled access blocked"
+    },
+    {
+      "request_id": "neg-dcm008",
+      "row_id": "DCM-008",
+      "export_id": "",
+      "request_type": "aggregate_stratified",
+      "decision": "ACCESS_BLOCKED_DIAGNOSTIC_ONLY",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-dcm008",
+      "gate_results": {
+        "diagnostic_only": true
+      },
+      "reason": "DCM-008 is diagnostic-only"
+    },
+    {
+      "request_id": "neg-cal",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "calibration_write",
+      "decision": "ACCESS_BLOCKED_CALIBRATION_SIGNAL",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-cal",
+      "gate_results": {
+        "CALIBRATION_SIGNAL_WRITE_blocked": true
+      },
+      "reason": "Blocked access mode: CALIBRATION_SIGNAL_WRITE"
+    },
+    {
+      "request_id": "neg-live-api",
+      "row_id": "DCM-004",
+      "export_id": "",
+      "request_type": "live_api",
+      "decision": "ACCESS_BLOCKED_LIVE_API",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-live-api",
+      "gate_results": {
+        "LIVE_API_EXECUTE_blocked": true
+      },
+      "reason": "Blocked access mode: LIVE_API_EXECUTE"
+    },
+    {
+      "request_id": "neg-scheduler",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "scheduler",
+      "decision": "ACCESS_BLOCKED_SCHEDULER",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-scheduler",
+      "gate_results": {
+        "SCHEDULER_EXECUTE_blocked": true
+      },
+      "reason": "Blocked access mode: SCHEDULER_EXECUTE"
+    },
+    {
+      "request_id": "neg-prod",
+      "row_id": "DCM-004",
+      "export_id": "",
+      "request_type": "production_approve",
+      "decision": "ACCESS_BLOCKED_PRODUCTION_DECISIONING",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-prod",
+      "gate_results": {
+        "PRODUCTION_DECISION_APPROVE_blocked": true
+      },
+      "reason": "Blocked access mode: PRODUCTION_DECISION_APPROVE"
+    },
+    {
+      "request_id": "neg-budget",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "budget",
+      "decision": "ACCESS_BLOCKED_BUDGET_OPTIMIZATION",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-budget",
+      "gate_results": {
+        "BUDGET_OPTIMIZATION_EXECUTE_blocked": true
+      },
+      "reason": "Blocked access mode: BUDGET_OPTIMIZATION_EXECUTE"
+    },
+    {
+      "request_id": "neg-global-admin",
+      "row_id": "DCM-001",
+      "export_id": "",
+      "request_type": "global_admin",
+      "decision": "ACCESS_BLOCKED_GLOBAL_PLATFORM",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-global-admin",
+      "gate_results": {
+        "GLOBAL_PLATFORM_ADMIN_blocked": true
+      },
+      "reason": "Blocked access mode: GLOBAL_PLATFORM_ADMIN"
+    },
+    {
+      "request_id": "neg-unsanitized",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "unsanitized",
+      "decision": "ACCESS_BLOCKED_UNSANITIZED_ARTIFACT",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-unsanitized",
+      "gate_results": {
+        "unsanitized_artifact": true
+      },
+      "reason": "Unsanitized artifact access blocked"
+    },
+    {
+      "request_id": "neg-hash",
+      "row_id": "DCM-004",
+      "export_id": "export-pos-dcm004-placeholder",
+      "request_type": "hash_mismatch",
+      "decision": "ACCESS_BLOCKED_HASH_MISMATCH",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-hash",
+      "gate_results": {
+        "hash_mismatch": true
+      },
+      "reason": "Content hash mismatch"
+    },
+    {
+      "request_id": "neg-manifest",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-placeholder",
+      "request_type": "manifest_mismatch",
+      "decision": "ACCESS_BLOCKED_MANIFEST_MISMATCH",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-manifest",
+      "gate_results": {
+        "manifest_mismatch": true
+      },
+      "reason": "Manifest mismatch"
+    },
+    {
+      "request_id": "neg-unreviewed",
+      "row_id": "DCM-001",
+      "export_id": "export-pos-dcm001-synthetic",
+      "request_type": "unreviewed_approve",
+      "decision": "ACCESS_BLOCKED_UNREVIEWED_ARTIFACT",
+      "granted": false,
+      "audit_record_id": "access-audit-neg-unreviewed",
+      "gate_results": {
+        "unreviewed_artifact": true
+      },
+      "reason": "Artifact not research-review approved"
+    }
+  ]
+}
