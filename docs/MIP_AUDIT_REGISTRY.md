@@ -1416,9 +1416,21 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Status:** **`scm_studentized_treated_set_placebo_integration_defined_no_downstream_authorization`**
 
-**Verdict:** SCM-specific studentized treated-set placebo integration bridging studentized placebo-rank, SCM treated-set placebo, SCM semantics, and method-specific randomization readiness. Effect/scale contract enforced — no SCM fitting or inferred scales. **No production p-value, CI, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, or budget authorization.** **`INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001`** disposition: `SCM_STUDENTIZED_INTEGRATION_DEFINED_PENDING_MULTICELL_MULTIPLICITY`.
+**Verdict:** SCM-specific studentized treated-set placebo integration bridging studentized placebo-rank, SCM treated-set placebo, SCM semantics, and method-specific randomization readiness. Effect/scale contract enforced — no SCM fitting or inferred scales. **No production p-value, CI, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, or budget authorization.** **`INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001`** disposition: `MULTICELL_MULTIPLICITY_BOUNDARIES_DEFINED_PENDING_STRATIFIED_ESTIMAND`.
 
-**Next:** `MULTICELL_SHARED_CONTROL_MULTIPLICITY_001`.
+**Next:** `MULTICELL_SHARED_CONTROL_MULTIPLICITY_001` (completed — see multicell multiplicity report).
+
+---
+
+## MULTICELL-SHARED-CONTROL-MULTIPLICITY-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/MULTICELL_SHARED_CONTROL_MULTIPLICITY_001_REPORT.md`](track_d/MULTICELL_SHARED_CONTROL_MULTIPLICITY_001_REPORT.md) · [`docs/track_d/archives/MULTICELL_SHARED_CONTROL_MULTIPLICITY_001_summary.json`](track_d/archives/MULTICELL_SHARED_CONTROL_MULTIPLICITY_001_summary.json) · [`panel_exp/inference/multicell_multiplicity.py`](../panel_exp/inference/multicell_multiplicity.py) · [`panel_exp/validation/multicell_shared_control_multiplicity_001.py`](../panel_exp/validation/multicell_shared_control_multiplicity_001.py)
+
+**Status:** **`multicell_shared_control_multiplicity_defined_no_downstream_authorization`**
+
+**Verdict:** Governed multi-cell multiplicity and shared-control dependence boundaries. Per-cell marginal readouts, independent FWER proxy, Bonferroni alpha, adjustment-required paths, and shared-control unresolved paths validated. Global/winner/pooled multi-cell decisions blocked. **No TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or global multi-cell authorization.** **`INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001`** disposition: `MULTICELL_MULTIPLICITY_BOUNDARIES_DEFINED_PENDING_STRATIFIED_ESTIMAND`.
+
+**Next:** `STRATIFIED_POOLED_ESTIMAND_CONTRACT_001`.
 
 ---
 
