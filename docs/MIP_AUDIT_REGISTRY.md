@@ -1514,7 +1514,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** SCM-specific empirical null calibration with lightweight SCM-style statistic adapter. Tail fractions are diagnostic only. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
 
-**Next:** `SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001`.
+**Next:** `SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001` (completed — see statistic adapter contract report).
+
+---
+
+## SCM-AUGSYNTH-STATISTIC-ADAPTER-CONTRACT-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001_REPORT.md`](track_d/SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001_summary.json`](track_d/archives/SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001_summary.json) · [`panel_exp/inference/scm_augsynth_statistic_adapter.py`](../panel_exp/inference/scm_augsynth_statistic_adapter.py) · [`panel_exp/validation/scm_augsynth_statistic_adapter_contract_001.py`](../panel_exp/validation/scm_augsynth_statistic_adapter_contract_001.py)
+
+**Status:** **`scm_augsynth_statistic_adapter_contract_defined_no_downstream_authorization`**
+
+**Verdict:** Shared SCM/AugSynth statistic adapter contract for observed/pseudo comparability. Calibration-harness-only and randomization-candidate-only boundaries. **No production SCM/AugSynth inference, p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001`.
 
 ---
 
