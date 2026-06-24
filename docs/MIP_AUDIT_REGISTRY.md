@@ -1526,7 +1526,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Shared SCM/AugSynth statistic adapter contract for observed/pseudo comparability. Calibration-harness-only and randomization-candidate-only boundaries. **No production SCM/AugSynth inference, p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
 
-**Next:** `DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001`.
+**Next:** `ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001` (completed — see suitability matrix report).
+
+---
+
+## ESTIMATOR-DESIGN-INFERENCE-SUITABILITY-MATRIX-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md`](track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md) · [`docs/track_d/archives/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_summary.json`](track_d/archives/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_summary.json) · [`panel_exp/inference/estimator_design_inference_suitability.py`](../panel_exp/inference/estimator_design_inference_suitability.py) · [`panel_exp/validation/estimator_design_inference_suitability_matrix_001.py`](../panel_exp/validation/estimator_design_inference_suitability_matrix_001.py)
+
+**Status:** **`estimator_design_inference_suitability_matrix_defined_no_downstream_authorization`**
+
+**Verdict:** First cross-estimator × design × inference suitability matrix (50 rows). Placebo/randomization is one inference family, not the full inference layer. No universal default inference per estimator. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001` (parallel: DID suitability · design stress tests · multicell max-T).
 
 ---
 

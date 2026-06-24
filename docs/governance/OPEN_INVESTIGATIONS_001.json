@@ -235,8 +235,8 @@
       },
       "current_decision": "CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_DEFINED_NO_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production"],
-      "target_artifact": "DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001",
-      "revisit_trigger": "Upon opening DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001",
+      "target_artifact": "TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001",
+      "revisit_trigger": "Upon opening TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001",
       "decision_checkpoint": "Shared-control dependence model closeout before global multi-cell promotion",
       "blocking_policy": "Shared-control geometries require explicit dependence contract; per-cell marginal only unless promotion evidence complete",
       "terminal_decisions": ["REMEDIATE", "RESTRICT", "DIAGNOSTIC_ONLY"],
@@ -258,8 +258,8 @@
       },
       "current_decision": "CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_DEFINED_NO_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "simultaneous_multi_cell_decision"],
-      "target_artifact": "DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001",
-      "revisit_trigger": "Upon opening DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001",
+      "target_artifact": "TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001",
+      "revisit_trigger": "Upon opening TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001",
       "decision_checkpoint": "Multiplicity calibration closeout before familywise multi-cell decisioning",
       "blocking_policy": "Marginal per-cell readouts cannot authorize simultaneous multi-cell decisions; CalibrationSignal method gate draft defined",
       "terminal_decisions": ["REMEDIATE", "RESTRICT", "DIAGNOSTIC_ONLY"],
@@ -284,8 +284,8 @@
       },
       "current_decision": "METHOD_ACCURACY_COMPATIBILITY_REFOCUS_DOWNSTREAM_PAUSED",
       "blocked_roles": ["trust_report", "calibration_signal", "production"],
-      "target_artifact": "DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001",
-      "revisit_trigger": "Upon opening DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001",
+      "target_artifact": "TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001",
+      "revisit_trigger": "Upon opening TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001",
       "decision_checkpoint": "Studentized randomization null calibration before downstream resume",
       "blocking_policy": "Downstream work paused; refocus on method accuracy and null calibration",
       "terminal_decisions": ["REMEDIATE", "RESTRICT", "DIAGNOSTIC_ONLY"],
@@ -862,7 +862,7 @@
         "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
       ],
       "must_consume_before_close": true,
-      "next_artifact": "DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001",
+      "next_artifact": "ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001",
       "resolution_artifact": "SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001",
       "artifact_tags": [
         "method_accuracy",
@@ -871,6 +871,27 @@
         "augsynth",
         "statistic_adapter",
         "observed_pseudo_contract",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "ESTIMATOR-DESIGN-INFERENCE-SUITABILITY-MATRIX-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001",
+      "resolution_artifact": "ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "inference_suitability",
+        "estimator_design_matrix",
+        "inference_selection",
         "no_downstream_authorization"
       ]
     }

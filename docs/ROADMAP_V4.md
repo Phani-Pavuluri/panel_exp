@@ -298,8 +298,13 @@ Foundation and compatibility audits ✅
   → STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001 ✅
   → SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001 ✅
   → SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001 ✅
-  → DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001 (active method lane)
+  → ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001 ✅
+  → method-validation backlog (TBRRidge remediation · DID suitability · design stress tests · multicell max-T)
 ```
+
+**Inference suitability (2026-06-03):** `ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001` defines cross-estimator × design × inference suitability. Placebo/randomization is **one inference family**, not the full inference layer. No estimator receives a universal default inference. Downstream work remains paused.
+
+**Post-matrix branches (not selected as final):** `TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001` · `DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001` · `DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001` · `MULTICELL_MAX_T_RESEARCH_SCOUT_001` · `AUGSYNTH_ESTIMATOR_BACKED_RANDOMIZATION_CALIBRATION_001` · `SCM_AUGSYNTH_DISAGREEMENT_DIAGNOSTICS_001`
 
 **TrustReport ops freeze (2026-06-03):** Research-mode operationalization is complete enough for package-level governance. Audit log, review queue, UI, API, scheduler, and platform rollout are **deferred to the MIP application/orchestration layer**. Active lane is **method validation** — see [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md).
 
@@ -309,7 +314,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001`** → ✅ **`SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001`** → **`DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001`** → method-validation backlog.
+**Ordered next:** ✅ … → ✅ **`SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001`** → ✅ **`ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001`** → method-validation backlog (`TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001` · `DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001` · `DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001` · `MULTICELL_MAX_T_RESEARCH_SCOUT_001`).
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 

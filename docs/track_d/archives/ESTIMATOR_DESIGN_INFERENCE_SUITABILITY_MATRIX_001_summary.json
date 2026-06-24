@@ -1,0 +1,417 @@
+{
+  "artifact_id": "ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001",
+  "artifact_version": "1.0.0",
+  "status": "completed",
+  "verdict": "estimator_design_inference_suitability_matrix_defined_no_downstream_authorization",
+  "generated_at": "2026-06-24T05:18:49.131434+00:00",
+  "git_commit": "ed08d65ea0f8ebe3decec2997b441776f503d724",
+  "roadmap_spine": [
+    "ROADMAP_REFOCUS_METHOD_VALIDATION_001",
+    "INFERENCE_REPLACEMENT_SCOUT_001",
+    "DESIGN_AWARE_ASSIGNMENT_GENERATORS_001",
+    "MULTITREATED_TREATED_SET_PLACEBO_FRAMEWORK_001",
+    "SCM_PLACEBO_GOVERNED_SEMANTICS_001",
+    "METHOD_SPECIFIC_RANDOMIZATION_INFERENCE_VALIDATION_001",
+    "SCM_TREATED_SET_PLACEBO_INTEGRATION_001",
+    "STUDENTIZED_PLACEBO_RANK_INFERENCE_001",
+    "SCM_STUDENTIZED_TREATED_SET_PLACEBO_INTEGRATION_001",
+    "MULTICELL_SHARED_CONTROL_MULTIPLICITY_001",
+    "STRATIFIED_POOLED_ESTIMAND_CONTRACT_001",
+    "AUGSYNTH_POINT_RANDOMIZATION_INTEGRATION_001",
+    "METHOD_READINESS_MATRIX_V2_001",
+    "CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_001",
+    "METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001",
+    "STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001",
+    "SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001",
+    "SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001",
+    "ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001"
+  ],
+  "row_count": 50,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "matrix_builds_successfully",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "row_count_at_least_35",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "row_ids_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "all_estimator_families_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "all_design_families_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "all_inference_families_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_unit_jackknife_row_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_treated_set_placebo_row_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_studentized_placebo_row_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_leave_one_treated_out_row_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "augsynth_randomization_row_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "augsynth_jk_retire_row_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_bootstrap_row_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_permutation_row_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbrridge_brb_row_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbrridge_kfold_row_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbrridge_jk_blocked_row_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbr_geometry_mismatch_row_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "bayesian_tbr_posterior_row_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "bayesian_tbr_posterior_predictive_row_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "synthetic_did_row_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "trop_row_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_max_t_row_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_winner_blocked_row_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stratified_pooled_row_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "unknown_assignment_blocked_row_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "fixed_deterministic_falsification_row_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "greedy_matched_market_falsification_row_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "kernel_thinning_falsification_row_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "every_row_has_evidence_or_blocked_reason",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "every_row_has_forbidden_outputs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_row_authorizes_production_p_value_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_row_authorizes_causal_confidence_interval_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_row_authorizes_trustreport_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_row_authorizes_calibration_signal_allowed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_row_authorizes_mmm_ingestion_allowed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_row_authorizes_llm_decisioning_allowed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_row_authorizes_production_decisioning_allowed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_row_authorizes_live_api_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_row_authorizes_scheduler_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_row_authorizes_budget_optimization_allowed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "summary_counts_by_estimator",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "summary_counts_by_design",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "summary_counts_by_inference",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "summary_counts_by_status",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "placebo_not_only_inference_layer",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "downstream_work_paused",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_tbrridge_inference_remediation_or_retirement_audit_001",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_did_randomization_and_bootstrap_suitability_001",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_design_assignment_generator_stress_tests_001",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_multicell_max_t_research_scout_001",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_issues_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "estimator_family_counts": {
+    "scm": 15,
+    "augsynth_cvxpy": 7,
+    "did": 9,
+    "tbrridge": 6,
+    "tbr": 2,
+    "bayesian_tbr": 5,
+    "synthetic_did": 3,
+    "trop": 3
+  },
+  "design_family_counts": {
+    "single_treated_geo": 5,
+    "multi_treated_geo": 14,
+    "unknown_assignment": 5,
+    "stratified": 5,
+    "rerandomized": 5,
+    "matched_pair": 3,
+    "matched_block": 3,
+    "multicell_shared_control": 3,
+    "multicell_independent_cells": 2,
+    "fixed_deterministic": 1,
+    "greedy_matched_market": 2,
+    "kernel_thinning": 2
+  },
+  "inference_family_counts": {
+    "unit_jackknife": 4,
+    "treated_set_placebo_rank": 5,
+    "studentized_placebo_rank": 3,
+    "leave_one_treated_out_sensitivity": 2,
+    "design_based_randomization": 7,
+    "no_valid_inference": 6,
+    "conformal": 1,
+    "permutation": 8,
+    "did_bootstrap": 2,
+    "cluster_robust_analytic": 1,
+    "block_residual_bootstrap": 1,
+    "kfold_cross_fit": 1,
+    "bootstrap": 4,
+    "bayesian_posterior_interval": 2,
+    "bayesian_posterior_predictive_check": 1,
+    "max_t_multiplicity": 1,
+    "stepdown_multiplicity": 1
+  },
+  "suitability_status_counts": {
+    "supported_restricted_research": 2,
+    "diagnostic_only": 9,
+    "candidate_after_null_calibration": 6,
+    "sensitivity_only": 2,
+    "assignment_unknown_blocked": 5,
+    "geometry_mismatch_blocked": 3,
+    "known_failure_blocked": 3,
+    "candidate_requires_adapter": 4,
+    "retire_or_replace": 2,
+    "candidate_requires_design_stress_test": 1,
+    "posterior_diagnostic_only": 3,
+    "research_deferred": 6,
+    "dependence_research_required": 1,
+    "multiplicity_research_required": 1,
+    "blocked": 2
+  },
+  "placebo_is_only_inference_layer": false,
+  "downstream_work_paused": true,
+  "recommended_next_artifacts": [
+    "TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001",
+    "DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001",
+    "DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001",
+    "MULTICELL_MAX_T_RESEARCH_SCOUT_001"
+  ],
+  "inference_layer_decisions": [
+    "placebo_randomization_is_one_inference_family_not_the_full_inference_layer",
+    "no_estimator_has_universal_default_inference",
+    "inference_suitability_depends_on_estimator_design_assignment_estimand_geometry_adapter_and_calibration",
+    "reusable_inference_requires_statistic_adapter_contracts",
+    "estimator_specific_inference_requires_custom_validation",
+    "tbrridge_remains_remediation_or_retirement",
+    "bayesian_tbr_remains_posterior_diagnostic_or_research",
+    "multicell_requires_dependence_and_multiplicity_research",
+    "stratified_pooled_requires_heterogeneity_and_pooling_policy",
+    "downstream_authorization_remains_paused"
+  ],
+  "next_required_evidence": [
+    "TBRRidge inference failure inventory and remediation decision",
+    "DID bootstrap/randomization suitability validation",
+    "assignment-generator stress tests",
+    "multicell max-T / stepdown research scout",
+    "estimator-backed AugSynth randomization calibration",
+    "SCM/AugSynth disagreement diagnostics"
+  ],
+  "forbidden_outputs": [
+    "production_p_value",
+    "causal_confidence_interval",
+    "trustreport_authorization",
+    "calibration_signal",
+    "mmm_ingestion",
+    "llm_decisioning",
+    "production_decisioning",
+    "live_api",
+    "scheduler",
+    "budget_optimization"
+  ],
+  "validation": {
+    "valid": true,
+    "row_count": 50,
+    "unique_row_ids": true,
+    "estimator_families_present": true,
+    "design_families_present": true,
+    "inference_families_present": true,
+    "issues": []
+  },
+  "production_p_value_authorized": false,
+  "causal_confidence_interval_authorized": false,
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false
+}
