@@ -400,24 +400,25 @@
     {
       "investigation_id": "INV-OBSERVED-PANEL-DIAGNOSTIC-REQUIREMENTS-001",
       "title": "Observed-panel diagnostic requirements before method selection",
-      "status": "PLANNED",
+      "status": "RESOLVED",
       "priority": "P1",
       "discovered_by": "ROADMAP-INFERENCE-AND-METHOD-GAP-CONTROL-REFOCUS-001",
       "affected_combination": "observed_data_diagnostics",
       "problem_class": ["observed_data_diagnostics", "method_selection_prerequisite"],
       "evidence": {
         "depends_on": ["METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001"],
-        "pre_post_length_small_n_donor_overlap_required": true,
+        "requirement_count": 87,
+        "failed_scenarios": [],
         "blocked_downstream_authorization": true
       },
-      "current_decision": "METHOD_GAP_CONTROL_LANE_ACTIVE_NO_DOWNSTREAM_AUTHORIZATION",
+      "current_decision": "OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_DEFINED_NO_DOWNSTREAM_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
-      "target_artifact": "OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001",
-      "revisit_trigger": "Upon opening OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001",
+      "target_artifact": null,
+      "revisit_trigger": null,
       "decision_checkpoint": "Observed-panel diagnostic requirements defined before production-like method selection",
       "blocking_policy": "Observed-data conditions are first-class; no production-like method selection without diagnostic requirements",
       "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY"],
-      "resolution_artifact": null
+      "resolution_artifact": "OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001"
     },
     {
       "investigation_id": "INV-SIMULATION-DGP-COVERAGE-PLAN-001",
@@ -1078,6 +1079,34 @@
         "literature_alignment",
         "method_scouting",
         "observed_data_diagnostics",
+        "simulation_coverage",
+        "failure_registry",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "OBSERVED-PANEL-DIAGNOSTIC-REQUIREMENTS-001",
+      "status": "complete",
+      "open_investigations": [
+        "INV-SIMULATION-DGP-COVERAGE-PLAN-001",
+        "INV-METHOD-FAILURE-MODE-REGISTRY-001"
+      ],
+      "resolved_investigations": [
+        "INV-OBSERVED-PANEL-DIAGNOSTIC-REQUIREMENTS-001"
+      ],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "SIMULATION_DGP_COVERAGE_PLAN_001",
+      "resolution_artifact": "OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "observed_data_diagnostics",
+        "method_selection_prerequisite",
         "simulation_coverage",
         "failure_registry",
         "no_downstream_authorization"

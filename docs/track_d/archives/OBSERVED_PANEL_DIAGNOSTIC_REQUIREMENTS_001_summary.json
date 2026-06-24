@@ -1,0 +1,429 @@
+{
+  "artifact_id": "OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001",
+  "artifact_version": "1.0.0",
+  "status": "completed",
+  "verdict": "observed_panel_diagnostic_requirements_defined_no_downstream_authorization",
+  "generated_at": "2026-06-24T06:45:28.858516+00:00",
+  "git_commit": "4ed7a03f9e80324866670ce10ed326eb45a0b0a1",
+  "requirement_count": 87,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "requirements_build_successfully",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "requirement_count_at_least_70",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "requirement_ids_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "category_panel_structure_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "category_assignment_design_validity_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "category_donor_support_overlap_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "category_pre_period_fit_trends_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "category_temporal_dependence_shocks_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "category_outcome_metric_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "category_treatment_exposure_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "category_multicell_multiplicity_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "category_estimator_routing_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "category_inference_routing_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "panel_structure_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_design_validity_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "donor_support_overlap_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "pre_period_fit_trends_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "temporal_dependence_shocks_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "outcome_metric_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "treatment_exposure_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_multiplicity_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "estimator_routing_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_routing_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "routing_impact_block_method_selection_at_least_8",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "routing_impact_require_null_calibration_at_least_5",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "routing_impact_require_design_stress_test_at_least_3",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "routing_impact_require_dgp_coverage_at_least_5",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "routing_impact_diagnostic_only_at_least_5",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "routing_impact_research_required_at_least_5",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "routing_impact_scout_new_method_at_least_2",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "hard_blockers_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "warnings_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_selection_requires_observed_panel_diagnostics",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "routes_to_simulation_dgp_coverage_plan",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "routes_to_failure_mode_registry",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "routes_to_design_stress_tests",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "routes_to_multicell_research",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "downstream_work_paused",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_rank_1_simulation_dgp_coverage_plan_001",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_all_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_scm_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_bayesian_tbr_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_tbrridge_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_synthetic_did_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_tbr_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_did_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_multicell_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_trop_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_augsynth_cvxpy_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_issues_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "requirement_count": 87,
+    "unique_requirement_ids": true,
+    "category_counts": {
+      "panel_structure": 11,
+      "assignment_design_validity": 10,
+      "donor_support_overlap": 8,
+      "pre_period_fit_trends": 7,
+      "temporal_dependence_shocks": 7,
+      "outcome_metric": 10,
+      "treatment_exposure": 8,
+      "multicell_multiplicity": 7,
+      "estimator_routing": 9,
+      "inference_routing": 10
+    },
+    "panel_structure_covered": true,
+    "assignment_design_validity_covered": true,
+    "donor_support_overlap_covered": true,
+    "pre_period_fit_trends_covered": true,
+    "temporal_dependence_shocks_covered": true,
+    "outcome_metric_covered": true,
+    "treatment_exposure_covered": true,
+    "multicell_multiplicity_covered": true,
+    "estimator_routing_covered": true,
+    "inference_routing_covered": true,
+    "hard_blockers_defined": true,
+    "warnings_defined": true,
+    "routes_to_simulation_dgp_coverage_plan": true,
+    "routes_to_failure_mode_registry": true,
+    "routes_to_design_stress_tests": true,
+    "routes_to_multicell_research": true,
+    "issues": []
+  },
+  "category_counts": {
+    "panel_structure": 11,
+    "assignment_design_validity": 10,
+    "donor_support_overlap": 8,
+    "pre_period_fit_trends": 7,
+    "temporal_dependence_shocks": 7,
+    "outcome_metric": 10,
+    "treatment_exposure": 8,
+    "multicell_multiplicity": 7,
+    "estimator_routing": 9,
+    "inference_routing": 10
+  },
+  "severity_counts": {
+    "required_blocker": 28,
+    "required_warning": 45,
+    "research_flag": 6,
+    "diagnostic_only": 8
+  },
+  "routing_impact_counts": {
+    "block_method_selection": 33,
+    "require_null_calibration": 25,
+    "sensitivity_only": 21,
+    "require_dgp_coverage": 19,
+    "require_design_stress_test": 3,
+    "research_required": 18,
+    "scout_new_method": 11,
+    "diagnostic_only": 18,
+    "require_adapter": 3,
+    "allow_candidate_review": 3
+  },
+  "method_family_counts": {
+    "all": 27,
+    "tbrridge": 21,
+    "augsynth_cvxpy": 14,
+    "scm": 28,
+    "did": 26,
+    "synthetic_did": 6,
+    "multicell": 12,
+    "tbr": 6,
+    "bayesian_tbr": 3,
+    "trop": 1
+  },
+  "panel_structure_covered": true,
+  "assignment_design_validity_covered": true,
+  "donor_support_overlap_covered": true,
+  "pre_period_fit_trends_covered": true,
+  "temporal_dependence_shocks_covered": true,
+  "outcome_metric_covered": true,
+  "treatment_exposure_covered": true,
+  "multicell_multiplicity_covered": true,
+  "estimator_routing_covered": true,
+  "inference_routing_covered": true,
+  "method_selection_requires_observed_panel_diagnostics": true,
+  "hard_blockers_defined": true,
+  "warnings_defined": true,
+  "routes_to_simulation_dgp_coverage_plan": true,
+  "routes_to_failure_mode_registry": true,
+  "routes_to_design_stress_tests": true,
+  "routes_to_multicell_research": true,
+  "downstream_work_paused": true,
+  "recommended_next_artifacts": [
+    "SIMULATION_DGP_COVERAGE_PLAN_001",
+    "METHOD_FAILURE_MODE_REGISTRY_001",
+    "DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001",
+    "TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001",
+    "DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001",
+    "MULTICELL_MAX_T_RESEARCH_SCOUT_001"
+  ],
+  "production_p_value_authorized": false,
+  "causal_confidence_interval_authorized": false,
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false
+}

@@ -371,6 +371,25 @@ class TestOpenInvestigationRegistry001:
         assert inv.status == "RESOLVED"
         assert inv.resolution_artifact == "METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001"
 
+    def test_observed_panel_diagnostic_requirements_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "OBSERVED-PANEL-DIAGNOSTIC-REQUIREMENTS-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001"
+        assert lane["next_artifact"] == "SIMULATION_DGP_COVERAGE_PLAN_001"
+        assert "INV-OBSERVED-PANEL-DIAGNOSTIC-REQUIREMENTS-001" in lane["resolved_investigations"]
+        assert "INV-SIMULATION-DGP-COVERAGE-PLAN-001" in lane["open_investigations"]
+        assert "observed_data_diagnostics" in lane["artifact_tags"]
+        assert "no_downstream_authorization" in lane["artifact_tags"]
+
+    def test_observed_panel_diagnostic_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-OBSERVED-PANEL-DIAGNOSTIC-REQUIREMENTS-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001"
+
     def test_scm_treated_set_placebo_null_calibration_lane_complete(self) -> None:
         reg = load_registry()
         lane = next(

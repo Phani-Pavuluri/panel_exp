@@ -1566,6 +1566,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## OBSERVED-PANEL-DIAGNOSTIC-REQUIREMENTS-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001_REPORT.md`](track_d/OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001_REPORT.md) · [`docs/track_d/archives/OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001_summary.json`](track_d/archives/OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001_summary.json) · [`panel_exp/validation/observed_panel_diagnostic_requirements_001.py`](../panel_exp/validation/observed_panel_diagnostic_requirements_001.py)
+
+**Status:** **`observed_panel_diagnostic_requirements_defined_no_downstream_authorization`**
+
+**Verdict:** 87-row observed-panel diagnostic requirements registry (`failed_scenarios: []`). Hard blockers, warnings, estimator/inference routing impacts, and artifact routing defined before method selection. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `SIMULATION_DGP_COVERAGE_PLAN_001`.
+
+---
+
 ## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)
