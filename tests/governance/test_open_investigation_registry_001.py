@@ -352,6 +352,25 @@ class TestOpenInvestigationRegistry001:
         assert "inference_suitability" in lane["artifact_tags"]
         assert "no_downstream_authorization" in lane["artifact_tags"]
 
+    def test_method_gap_coverage_literature_alignment_audit_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "METHOD-GAP-COVERAGE-AND-LITERATURE-ALIGNMENT-AUDIT-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001"
+        assert lane["next_artifact"] == "OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001"
+        assert "INV-METHOD-GAP-COVERAGE-LITERATURE-ALIGNMENT-001" in lane["resolved_investigations"]
+        assert "INV-OBSERVED-PANEL-DIAGNOSTIC-REQUIREMENTS-001" in lane["open_investigations"]
+        assert "literature_alignment" in lane["artifact_tags"]
+        assert "no_downstream_authorization" in lane["artifact_tags"]
+
+    def test_method_gap_coverage_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-METHOD-GAP-COVERAGE-LITERATURE-ALIGNMENT-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001"
+
     def test_scm_treated_set_placebo_null_calibration_lane_complete(self) -> None:
         reg = load_registry()
         lane = next(

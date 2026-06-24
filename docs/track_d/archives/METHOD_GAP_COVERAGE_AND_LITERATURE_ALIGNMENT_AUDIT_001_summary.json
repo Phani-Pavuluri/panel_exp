@@ -1,0 +1,277 @@
+{
+  "artifact_id": "METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001",
+  "artifact_version": "1.0.0",
+  "status": "completed",
+  "verdict": "method_gap_coverage_and_literature_alignment_audit_completed_no_downstream_authorization",
+  "generated_at": "2026-06-24T06:16:28.457805+00:00",
+  "git_commit": "576debbbe2a386a17e9de79789fd0d2ead237c9d",
+  "roadmap_spine": [
+    "ROADMAP_REFOCUS_METHOD_VALIDATION_001",
+    "METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001",
+    "STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001",
+    "SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001",
+    "SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001",
+    "ROADMAP_INFERENCE_AND_METHOD_GAP_CONTROL_REFOCUS_001",
+    "ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001",
+    "METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001"
+  ],
+  "row_count": 82,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "rows_build_successfully",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "row_count_at_least_60",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "row_ids_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "required_designs_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "required_estimators_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "required_inference_families_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "required_observed_data_conditions_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "required_simulation_dgps_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "required_literature_buckets_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "has_repair_recommendations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "has_retire_or_block_recommendations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "has_scout_new_method_recommendations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommends_observed_panel_diagnostics",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommends_simulation_dgp_plan",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommends_failure_mode_registry",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "suitability_matrix_not_sufficient_alone",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "observed_panel_diagnostics_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "simulation_dgp_plan_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_mode_registry_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "literature_alignment_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "new_method_scouts_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "downstream_work_paused",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_rank_1_observed_panel_diagnostic_requirements_001",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_rank_2_simulation_dgp_coverage_plan_001",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_rank_3_method_failure_mode_registry_001",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_issues_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "row_count": 82,
+    "unique_row_ids": true,
+    "required_designs_covered": true,
+    "required_estimators_covered": true,
+    "required_inference_families_covered": true,
+    "required_observed_data_conditions_covered": true,
+    "required_simulation_dgps_covered": true,
+    "required_literature_buckets_covered": true,
+    "issues": []
+  },
+  "coverage_status_counts": {
+    "covered": 3,
+    "partially_covered": 25,
+    "research_required": 7,
+    "blocked": 3,
+    "gap": 11,
+    "planned": 33
+  },
+  "recommended_action_counts": {
+    "keep_restricted": 18,
+    "diagnostic_only": 10,
+    "defer_research": 39,
+    "block": 3,
+    "repair": 5,
+    "scout_new_method": 6,
+    "sensitivity_only": 1
+  },
+  "dimension_counts": {
+    "design_family": 12,
+    "estimator_family": 9,
+    "inference_family": 17,
+    "observed_data_condition": 18,
+    "simulation_dgp_condition": 14,
+    "literature_alignment_bucket": 12
+  },
+  "required_designs_covered": true,
+  "required_estimators_covered": true,
+  "required_inference_families_covered": true,
+  "required_observed_data_conditions_covered": true,
+  "required_simulation_dgps_covered": true,
+  "required_literature_buckets_covered": true,
+  "suitability_matrix_sufficient_alone": false,
+  "observed_panel_diagnostics_required": true,
+  "simulation_dgp_coverage_plan_required": true,
+  "failure_mode_registry_required": true,
+  "literature_alignment_required_before_promotion": true,
+  "new_method_scouts_required": true,
+  "downstream_work_paused": true,
+  "recommended_next_artifacts": [
+    "OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001",
+    "SIMULATION_DGP_COVERAGE_PLAN_001",
+    "METHOD_FAILURE_MODE_REGISTRY_001",
+    "TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001",
+    "DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001",
+    "DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001",
+    "MULTICELL_MAX_T_RESEARCH_SCOUT_001"
+  ],
+  "production_p_value_authorized": false,
+  "causal_confidence_interval_authorized": false,
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false,
+  "valid": true
+}
