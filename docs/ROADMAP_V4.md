@@ -298,8 +298,20 @@ Foundation and compatibility audits ✅
   → STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001 ✅
   → SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001 ✅
   → SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001 ✅
-  → DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001 (active method lane)
+  → ROADMAP_INFERENCE_SUITABILITY_REFOCUS_001 ✅
+  → ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001 (active method lane)
 ```
+
+**ROADMAP_INFERENCE_SUITABILITY_REFOCUS_001 (2026-06-03):** Corrects the active method-accuracy lane after `SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001`. Although `DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001` remains important, it is **not** the immediate next artifact. The immediate next artifact is **`ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001`**. Before more narrow stress tests or estimator-specific implementations, the platform must define which inference families are suitable for each estimator × design × inference × estimand × geometry combination.
+
+**Inference suitability principles (refocus):**
+- Placebo/randomization is **one inference family**, not the full inference layer.
+- No estimator receives a universal default inference.
+- Inference suitability depends on estimator, design, assignment mechanism, estimand, geometry, statistic adapter, null calibration, multiplicity, and dependence structure.
+
+**Likely post-matrix branches (not selected until matrix complete):** `TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001` · `DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001` · `DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001` · `MULTICELL_MAX_T_RESEARCH_SCOUT_001` · `AUGSYNTH_ESTIMATOR_BACKED_RANDOMIZATION_CALIBRATION_001` · `SCM_AUGSYNTH_DISAGREEMENT_DIAGNOSTICS_001`
+
+**Downstream authorization:** No production p-values, causal confidence intervals, TrustReport, CalibrationSignal, MMM ingestion, LLM decisioning, production decisioning, live API, scheduler, or budget optimization. Downstream work remains paused until method suitability, calibration, adapter, and remediation gates are complete.
 
 **TrustReport ops freeze (2026-06-03):** Research-mode operationalization is complete enough for package-level governance. Audit log, review queue, UI, API, scheduler, and platform rollout are **deferred to the MIP application/orchestration layer**. Active lane is **method validation** — see [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md).
 
@@ -309,7 +321,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001`** → ✅ **`SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001`** → **`DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001`** → method-validation backlog.
+**Ordered next:** ✅ … → ✅ **`SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001`** → ✅ **`ROADMAP_INFERENCE_SUITABILITY_REFOCUS_001`** → **`ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001`** → method-validation backlog (`DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001` and other branches gated by matrix).
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 
