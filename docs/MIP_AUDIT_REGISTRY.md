@@ -1614,6 +1614,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## TBRRIDGE-INFERENCE-REMEDIATION-OR-RETIREMENT-AUDIT-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001_REPORT.md`](track_d/TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001_REPORT.md) · [`docs/track_d/archives/TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001_summary.json`](track_d/archives/TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001_summary.json) · [`panel_exp/validation/tbrridge_inference_remediation_or_retirement_audit_001.py`](../panel_exp/validation/tbrridge_inference_remediation_or_retirement_audit_001.py)
+
+**Status:** **`tbrridge_inference_remediation_or_retirement_audit_completed_no_downstream_authorization`**
+
+**Verdict:** 52-row TBRRidge inference audit (`failed_scenarios: []`). Point diagnostic allowed; BRB/KFold/placebo/jackknife not production-valid; aggregate/global overclaims blocked. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001`.
+
+---
+
 ## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)

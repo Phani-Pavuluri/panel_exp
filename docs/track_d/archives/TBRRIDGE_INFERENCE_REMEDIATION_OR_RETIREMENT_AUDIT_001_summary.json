@@ -1,0 +1,487 @@
+{
+  "artifact_id": "TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001",
+  "artifact_version": "1.0.0",
+  "status": "completed",
+  "verdict": "tbrridge_inference_remediation_or_retirement_audit_completed_no_downstream_authorization",
+  "generated_at": "2026-06-24T19:29:40.933813+00:00",
+  "git_commit": "646f7f66383ab70a88d84d5b39d85fcd56f697f9",
+  "audit_row_count": 52,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "audit_rows_build_successfully",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "audit_row_count_at_least_45",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "path_ids_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbrridge_path_tbrridge_kfold_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbrridge_path_tbrridge_placebo_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbrridge_path_tbrridge_per_cell_marginal_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbrridge_path_tbrridge_multicell_shared_control_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbrridge_path_tbrridge_point_estimate_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbrridge_path_tbrridge_deterministic_unknown_assignment_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbrridge_path_tbrridge_brb_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbrridge_path_tbrridge_diagnostic_curve_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbrridge_path_tbrridge_aggregate_global_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbrridge_path_tbrridge_jackknife_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_restricted_research_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_sensitivity_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_candidate_after_future_validation_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_remediation_required_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_blocked_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_diagnostic_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_retire_or_replace_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_candidate_after_future_validation_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_mark_diagnostic_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_mark_sensitivity_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_block_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_keep_research_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_null_calibration_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_dgp_coverage_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_observed_diagnostics_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_design_stress_test_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_retire_or_replace_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_failure_registry_consult_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_remediate_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbrridge_point_diagnostic_allowed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbrridge_production_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbrridge_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbrridge_causal_ci_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "brb_production_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "kfold_production_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "placebo_production_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "jackknife_production_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "aggregate_global_overclaim_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "retire_or_replace_paths_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "remediation_paths_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_validation_required_before_promotion",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "observed_diagnostics_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "dgp_coverage_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_registry_consulted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_assignment_stress_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "downstream_work_paused",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_rank_1_did_randomization_and_bootstrap_suitability_001",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_issues_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "audit_row_count": 52,
+    "unique_path_ids": true,
+    "status_counts": {
+      "blocked": 16,
+      "diagnostic_only": 8,
+      "sensitivity_only": 5,
+      "restricted_research": 9,
+      "remediation_required": 7,
+      "retire_or_replace": 3,
+      "candidate_after_future_validation": 4
+    },
+    "required_action_counts": {
+      "block": 16,
+      "mark_diagnostic_only": 8,
+      "mark_sensitivity_only": 5,
+      "keep_research_only": 4,
+      "remediate": 1,
+      "retire_or_replace": 3,
+      "candidate_after_future_validation": 2,
+      "require_null_calibration": 2,
+      "require_dgp_coverage": 2,
+      "require_observed_diagnostics": 3,
+      "require_design_stress_test": 4,
+      "require_failure_registry_consult": 2
+    },
+    "failure_mode_counts": {
+      "FM-ES-006": 3,
+      "FM-INF-011": 6,
+      "FM-DB-010": 6,
+      "FM-PS-010": 1,
+      "FM-PF-001": 1,
+      "FM-PF-003": 1,
+      "FM-INF-004": 5,
+      "FM-INF-003": 2,
+      "FM-CP-001": 2,
+      "FM-TD-001": 1,
+      "FM-PS-009": 1,
+      "FM-CP-002": 2,
+      "FM-INF-001": 3,
+      "FM-DB-009": 2,
+      "FM-DA-007": 1,
+      "FM-DA-008": 1,
+      "FM-INF-002": 1,
+      "FM-INF-005": 4,
+      "FM-ES-007": 5,
+      "FM-DA-010": 5,
+      "FM-INF-009": 3,
+      "FM-CP-003": 2,
+      "FM-PF-006": 1,
+      "FM-DA-001": 1,
+      "FM-DA-002": 2,
+      "FM-CP-004": 4,
+      "FM-DA-009": 2,
+      "FM-INF-010": 1,
+      "FM-DA-004": 1,
+      "FM-DA-006": 1
+    },
+    "retire_or_replace_paths_defined": true,
+    "remediation_paths_defined": true,
+    "promotion_blockers_defined": true,
+    "all_paths_represented": true,
+    "all_statuses_represented": true,
+    "all_actions_represented": true,
+    "issues": []
+  },
+  "status_counts": {
+    "blocked": 16,
+    "diagnostic_only": 8,
+    "sensitivity_only": 5,
+    "restricted_research": 9,
+    "remediation_required": 7,
+    "retire_or_replace": 3,
+    "candidate_after_future_validation": 4
+  },
+  "required_action_counts": {
+    "block": 16,
+    "mark_diagnostic_only": 8,
+    "mark_sensitivity_only": 5,
+    "keep_research_only": 4,
+    "remediate": 1,
+    "retire_or_replace": 3,
+    "candidate_after_future_validation": 2,
+    "require_null_calibration": 2,
+    "require_dgp_coverage": 2,
+    "require_observed_diagnostics": 3,
+    "require_design_stress_test": 4,
+    "require_failure_registry_consult": 2
+  },
+  "failure_mode_counts": {
+    "FM-ES-006": 3,
+    "FM-INF-011": 6,
+    "FM-DB-010": 6,
+    "FM-PS-010": 1,
+    "FM-PF-001": 1,
+    "FM-PF-003": 1,
+    "FM-INF-004": 5,
+    "FM-INF-003": 2,
+    "FM-CP-001": 2,
+    "FM-TD-001": 1,
+    "FM-PS-009": 1,
+    "FM-CP-002": 2,
+    "FM-INF-001": 3,
+    "FM-DB-009": 2,
+    "FM-DA-007": 1,
+    "FM-DA-008": 1,
+    "FM-INF-002": 1,
+    "FM-INF-005": 4,
+    "FM-ES-007": 5,
+    "FM-DA-010": 5,
+    "FM-INF-009": 3,
+    "FM-CP-003": 2,
+    "FM-PF-006": 1,
+    "FM-DA-001": 1,
+    "FM-DA-002": 2,
+    "FM-CP-004": 4,
+    "FM-DA-009": 2,
+    "FM-INF-010": 1,
+    "FM-DA-004": 1,
+    "FM-DA-006": 1
+  },
+  "tbrridge_path_counts": {
+    "tbrridge_point_estimate": 10,
+    "tbrridge_brb": 8,
+    "tbrridge_kfold": 5,
+    "tbrridge_placebo": 6,
+    "tbrridge_jackknife": 3,
+    "tbrridge_aggregate_global": 4,
+    "tbrridge_per_cell_marginal": 4,
+    "tbrridge_diagnostic_curve": 3,
+    "tbrridge_deterministic_unknown_assignment": 4,
+    "tbrridge_multicell_shared_control": 5
+  },
+  "retire_or_replace_paths_defined": true,
+  "remediation_paths_defined": true,
+  "downstream_work_paused": true,
+  "recommended_next_artifacts": [
+    "DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001",
+    "MULTICELL_MAX_T_RESEARCH_SCOUT_001"
+  ],
+  "tbrridge_point_diagnostic_allowed": true,
+  "tbrridge_production_inference_authorized": false,
+  "tbrridge_production_p_value_authorized": false,
+  "tbrridge_causal_ci_authorized": false,
+  "brb_production_authorized": false,
+  "kfold_production_authorized": false,
+  "placebo_production_authorized": false,
+  "jackknife_production_authorized": false,
+  "aggregate_global_overclaim_blocked": true,
+  "future_validation_required_before_promotion": true,
+  "observed_diagnostics_required": true,
+  "dgp_coverage_required": true,
+  "failure_registry_consulted": true,
+  "design_assignment_stress_required": true,
+  "production_p_value_authorized": false,
+  "causal_confidence_interval_authorized": false,
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false
+}

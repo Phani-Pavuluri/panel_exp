@@ -488,6 +488,29 @@
       "blocking_policy": "Assignment generators are not inference engines; stress failures must link to failure registry",
       "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "REMEDIATE"],
       "resolution_artifact": "DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001"
+    },
+    {
+      "investigation_id": "INV-TBRRIDGE-INFERENCE-REMEDIATION-OR-RETIREMENT-AUDIT-001",
+      "title": "TBRRidge inference remediation or retirement audit",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "DESIGN-ASSIGNMENT-GENERATOR-STRESS-TESTS-001",
+      "affected_combination": "tbrridge_inference_paths",
+      "problem_class": ["tbrridge_inference", "remediation_or_retirement", "bootstrap_placebo_jackknife"],
+      "evidence": {
+        "depends_on": ["DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001"],
+        "audit_row_count": 50,
+        "failed_scenarios": [],
+        "blocked_downstream_authorization": true
+      },
+      "current_decision": "TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_COMPLETED_NO_DOWNSTREAM_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "TBRRidge audit complete before DID randomization/bootstrap suitability lane",
+      "blocking_policy": "TBRRidge production inference, p-values, and causal CIs remain unauthorized; BRB/KFold/placebo/jackknife not production-valid",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "REMEDIATE", "RETIRE"],
+      "resolution_artifact": "TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001"
     }
   ],
   "roadmap_lane_bindings": [
@@ -1191,7 +1214,9 @@
     {
       "lane_id": "DESIGN-ASSIGNMENT-GENERATOR-STRESS-TESTS-001",
       "status": "complete",
-      "open_investigations": [],
+      "open_investigations": [
+        "INV-TBRRIDGE-INFERENCE-REMEDIATION-OR-RETIREMENT-AUDIT-001"
+      ],
       "resolved_investigations": [
         "INV-DESIGN-ASSIGNMENT-GENERATOR-STRESS-TESTS-001"
       ],
@@ -1209,6 +1234,29 @@
         "assignment_generator_stress",
         "randomization_feasibility",
         "placebo_support",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "TBRRIDGE-INFERENCE-REMEDIATION-OR-RETIREMENT-AUDIT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-TBRRIDGE-INFERENCE-REMEDIATION-OR-RETIREMENT-AUDIT-001"
+      ],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001",
+      "resolution_artifact": "TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "tbrridge_inference",
+        "remediation_or_retirement",
         "no_downstream_authorization"
       ]
     }
