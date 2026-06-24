@@ -1,0 +1,661 @@
+{
+  "artifact_id": "METHOD_FAILURE_MODE_REGISTRY_001",
+  "artifact_version": "1.0.0",
+  "status": "completed",
+  "verdict": "method_failure_mode_registry_defined_no_downstream_authorization",
+  "generated_at": "2026-06-24T18:37:30.935077+00:00",
+  "git_commit": "4ae7a6e2a6396cc7059cdcb67a82123d39a2e629",
+  "failure_mode_count": 100,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "failure_modes_build_successfully",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_mode_count_at_least_100",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_ids_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_assignment_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "panel_structure_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "donor_support_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "pre_period_fit_trends_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "temporal_dependence_shocks_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "outcome_metric_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "treatment_exposure_interference_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "estimator_specific_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_specific_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_promotion_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "downstream_boundary_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "severity_hard_blocker_at_least_20",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "severity_restricted_research_at_least_8",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "severity_diagnostic_only_at_least_8",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "severity_sensitivity_only_at_least_6",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "severity_remediation_required_at_least_10",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "severity_retire_or_replace_at_least_4",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_block_at_least_20",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_keep_research_only_at_least_8",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_mark_diagnostic_only_at_least_8",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_mark_sensitivity_only_at_least_6",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_null_calibration_at_least_8",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_dgp_coverage_at_least_10",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_observed_diagnostics_at_least_10",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_design_stress_test_at_least_5",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_method_adapter_at_least_3",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_literature_alignment_at_least_4",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_remediate_at_least_8",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_retire_or_replace_at_least_4",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_scout_new_method_at_least_3",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "central_failure_mode_registry_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "hard_blockers_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "diagnostic_only_paths_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "sensitivity_only_paths_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "remediation_paths_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "retire_or_replace_paths_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_promotion_must_consult_registry",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "observed_diagnostics_linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "dgp_triggers_linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "promotion_blockers_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "downstream_work_paused",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_rank_1_design_assignment_generator_stress_tests_001",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_family_all_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_family_fixed_deterministic_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_family_multicell_independent_cells_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_family_multi_treated_geo_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_family_greedy_matched_market_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_family_matched_block_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_family_single_treated_geo_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_family_stratified_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_family_kernel_thinning_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_family_matched_pair_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_family_unknown_assignment_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_family_multicell_shared_control_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_family_rerandomized_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_synthetic_did_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_all_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_scm_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_did_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_bayesian_tbr_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_tbrridge_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_multicell_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_tbr_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_augsynth_cvxpy_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_trop_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_bootstrap_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_all_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_conformal_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_block_residual_bootstrap_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_bayesian_posterior_diagnostic_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_cluster_robust_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_stepdown_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_permutation_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_no_valid_inference_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_randomization_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_placebo_rank_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_studentized_placebo_rank_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_max_t_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_jackknife_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_issues_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "failure_mode_count": 100,
+    "unique_failure_ids": true,
+    "category_counts": {
+      "design_assignment": 10,
+      "panel_structure": 10,
+      "donor_support": 8,
+      "pre_period_fit_trends": 7,
+      "temporal_dependence_shocks": 7,
+      "outcome_metric": 9,
+      "treatment_exposure_interference": 9,
+      "estimator_specific": 10,
+      "inference_specific": 11,
+      "calibration_promotion": 9,
+      "downstream_boundary": 10
+    },
+    "severity_counts": {
+      "hard_blocker": 51,
+      "restricted_research": 11,
+      "diagnostic_only": 11,
+      "sensitivity_only": 6,
+      "remediation_required": 17,
+      "retire_or_replace": 4
+    },
+    "required_action_counts": {
+      "block": 52,
+      "keep_research_only": 12,
+      "mark_diagnostic_only": 15,
+      "mark_sensitivity_only": 7,
+      "require_null_calibration": 19,
+      "require_dgp_coverage": 24,
+      "require_observed_diagnostics": 19,
+      "require_design_stress_test": 7,
+      "require_method_adapter": 3,
+      "require_literature_alignment": 7,
+      "remediate": 17,
+      "retire_or_replace": 4,
+      "scout_new_method": 6
+    },
+    "design_assignment_covered": true,
+    "panel_structure_covered": true,
+    "donor_support_covered": true,
+    "pre_period_fit_trends_covered": true,
+    "temporal_dependence_shocks_covered": true,
+    "outcome_metric_covered": true,
+    "treatment_exposure_interference_covered": true,
+    "estimator_specific_covered": true,
+    "inference_specific_covered": true,
+    "calibration_promotion_covered": true,
+    "downstream_boundary_covered": true,
+    "hard_blockers_defined": true,
+    "diagnostic_only_paths_defined": true,
+    "sensitivity_only_paths_defined": true,
+    "remediation_paths_defined": true,
+    "retire_or_replace_paths_defined": true,
+    "promotion_blockers_defined": true,
+    "downstream_blockers_defined": true,
+    "observed_diagnostics_linked": true,
+    "dgp_triggers_linked": true,
+    "issues": []
+  },
+  "category_counts": {
+    "design_assignment": 10,
+    "panel_structure": 10,
+    "donor_support": 8,
+    "pre_period_fit_trends": 7,
+    "temporal_dependence_shocks": 7,
+    "outcome_metric": 9,
+    "treatment_exposure_interference": 9,
+    "estimator_specific": 10,
+    "inference_specific": 11,
+    "calibration_promotion": 9,
+    "downstream_boundary": 10
+  },
+  "severity_counts": {
+    "hard_blocker": 51,
+    "restricted_research": 11,
+    "diagnostic_only": 11,
+    "sensitivity_only": 6,
+    "remediation_required": 17,
+    "retire_or_replace": 4
+  },
+  "required_action_counts": {
+    "block": 52,
+    "keep_research_only": 12,
+    "mark_diagnostic_only": 15,
+    "mark_sensitivity_only": 7,
+    "require_null_calibration": 19,
+    "require_dgp_coverage": 24,
+    "require_observed_diagnostics": 19,
+    "require_design_stress_test": 7,
+    "require_method_adapter": 3,
+    "require_literature_alignment": 7,
+    "remediate": 17,
+    "retire_or_replace": 4,
+    "scout_new_method": 6
+  },
+  "design_family_counts": {
+    "unknown_assignment": 2,
+    "fixed_deterministic": 1,
+    "rerandomized": 1,
+    "matched_pair": 1,
+    "matched_block": 2,
+    "stratified": 1,
+    "all": 69,
+    "greedy_matched_market": 1,
+    "kernel_thinning": 1,
+    "multicell_shared_control": 6,
+    "multicell_independent_cells": 3,
+    "single_treated_geo": 15,
+    "multi_treated_geo": 2
+  },
+  "method_family_counts": {
+    "all": 32,
+    "did": 21,
+    "tbrridge": 19,
+    "scm": 30,
+    "augsynth_cvxpy": 17,
+    "multicell": 8,
+    "synthetic_did": 5,
+    "tbr": 5,
+    "bayesian_tbr": 2,
+    "trop": 3
+  },
+  "inference_family_counts": {
+    "randomization": 21,
+    "no_valid_inference": 22,
+    "permutation": 2,
+    "cluster_robust": 3,
+    "placebo_rank": 24,
+    "max_t": 6,
+    "stepdown": 3,
+    "all": 21,
+    "bootstrap": 18,
+    "block_residual_bootstrap": 4,
+    "jackknife": 6,
+    "studentized_placebo_rank": 3,
+    "conformal": 4,
+    "bayesian_posterior_diagnostic": 2
+  },
+  "design_assignment_covered": true,
+  "panel_structure_covered": true,
+  "donor_support_covered": true,
+  "pre_period_fit_trends_covered": true,
+  "temporal_dependence_shocks_covered": true,
+  "outcome_metric_covered": true,
+  "treatment_exposure_interference_covered": true,
+  "estimator_specific_covered": true,
+  "inference_specific_covered": true,
+  "calibration_promotion_covered": true,
+  "downstream_boundary_covered": true,
+  "central_failure_mode_registry_required": true,
+  "hard_blockers_defined": true,
+  "diagnostic_only_paths_defined": true,
+  "sensitivity_only_paths_defined": true,
+  "remediation_paths_defined": true,
+  "retire_or_replace_paths_defined": true,
+  "future_promotion_must_consult_registry": true,
+  "observed_diagnostics_linked": true,
+  "dgp_triggers_linked": true,
+  "promotion_blockers_defined": true,
+  "downstream_work_paused": true,
+  "recommended_next_artifacts": [
+    "DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001",
+    "TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001",
+    "DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001",
+    "MULTICELL_MAX_T_RESEARCH_SCOUT_001"
+  ],
+  "production_p_value_authorized": false,
+  "causal_confidence_interval_authorized": false,
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false
+}

@@ -1590,6 +1590,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## METHOD-FAILURE-MODE-REGISTRY-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/METHOD_FAILURE_MODE_REGISTRY_001_REPORT.md`](track_d/METHOD_FAILURE_MODE_REGISTRY_001_REPORT.md) · [`docs/track_d/archives/METHOD_FAILURE_MODE_REGISTRY_001_summary.json`](track_d/archives/METHOD_FAILURE_MODE_REGISTRY_001_summary.json) · [`panel_exp/validation/method_failure_mode_registry_001.py`](../panel_exp/validation/method_failure_mode_registry_001.py)
+
+**Status:** **`method_failure_mode_registry_defined_no_downstream_authorization`**
+
+**Verdict:** 100-row central failure-mode registry (`failed_scenarios: []`). Links OPD/DGP triggers to blocked, diagnostic-only, sensitivity, remediation, and retire/replace paths. Future promotion must consult registry. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001`.
+
+---
+
 ## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)

@@ -409,6 +409,24 @@ class TestOpenInvestigationRegistry001:
         assert inv.status == "RESOLVED"
         assert inv.resolution_artifact == "SIMULATION_DGP_COVERAGE_PLAN_001"
 
+    def test_method_failure_mode_registry_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "METHOD-FAILURE-MODE-REGISTRY-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "METHOD_FAILURE_MODE_REGISTRY_001"
+        assert lane["next_artifact"] == "DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001"
+        assert "INV-METHOD-FAILURE-MODE-REGISTRY-001" in lane["resolved_investigations"]
+        assert "failure_registry" in lane["artifact_tags"]
+        assert "no_downstream_authorization" in lane["artifact_tags"]
+
+    def test_method_failure_mode_registry_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-METHOD-FAILURE-MODE-REGISTRY-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "METHOD_FAILURE_MODE_REGISTRY_001"
+
     def test_scm_treated_set_placebo_null_calibration_lane_complete(self) -> None:
         reg = load_registry()
         lane = next(

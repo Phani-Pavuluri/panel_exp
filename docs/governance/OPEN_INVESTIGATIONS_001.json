@@ -446,24 +446,25 @@
     {
       "investigation_id": "INV-METHOD-FAILURE-MODE-REGISTRY-001",
       "title": "Central method failure-mode registry",
-      "status": "PLANNED",
+      "status": "RESOLVED",
       "priority": "P1",
       "discovered_by": "ROADMAP-INFERENCE-AND-METHOD-GAP-CONTROL-REFOCUS-001",
       "affected_combination": "failure_registry",
       "problem_class": ["failure_registry", "repair_replace_retire"],
       "evidence": {
         "depends_on": ["SIMULATION_DGP_COVERAGE_PLAN_001"],
-        "known_failures_include_tbrridge_augsynth_jk_multicell_stratified": true,
+        "failure_mode_count": 100,
+        "failed_scenarios": [],
         "blocked_downstream_authorization": true
       },
-      "current_decision": "METHOD_GAP_CONTROL_LANE_ACTIVE_NO_DOWNSTREAM_AUTHORIZATION",
+      "current_decision": "METHOD_FAILURE_MODE_REGISTRY_DEFINED_NO_DOWNSTREAM_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
-      "target_artifact": "METHOD_FAILURE_MODE_REGISTRY_001",
-      "revisit_trigger": "Upon opening METHOD_FAILURE_MODE_REGISTRY_001",
+      "target_artifact": null,
+      "revisit_trigger": null,
       "decision_checkpoint": "Failure-mode registry complete before implementation lane selection",
       "blocking_policy": "Known failures must be registered centrally; diagnostic-only and blocked paths must not be re-promoted ad hoc",
       "terminal_decisions": ["REMEDIATE", "RESTRICT", "DIAGNOSTIC_ONLY", "RETIRE"],
-      "resolution_artifact": null
+      "resolution_artifact": "METHOD_FAILURE_MODE_REGISTRY_001"
     }
   ],
   "roadmap_lane_bindings": [
@@ -1136,6 +1137,29 @@
         "simulation_coverage",
         "null_calibration_consistency",
         "failure_registry",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "METHOD-FAILURE-MODE-REGISTRY-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-METHOD-FAILURE-MODE-REGISTRY-001"
+      ],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001",
+      "resolution_artifact": "METHOD_FAILURE_MODE_REGISTRY_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "failure_registry",
+        "repair_replace_retire",
         "no_downstream_authorization"
       ]
     }
