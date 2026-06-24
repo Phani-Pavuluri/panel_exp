@@ -440,7 +440,11 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 
 **Paused:** **`D5-INST-AUGSYNTH-MULTICELL-001`** as default next step · TrustReport/F-DECISION/CalibrationSignal/MMM role expansion · TrustReport product-ops (audit log, API, scheduler, platform — frozen per [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md)) · LLM layer · promotion audits.
 
-**Active method lane (2026-06-03):** `DESIGN_AWARE_ASSIGNMENT_GENERATORS_001` → … → `SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001` ✅ → `SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001` ✅ → `DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001` per [`SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001`](track_d/SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001_REPORT.md). Downstream schema/ingestion/decisioning paused.
+**Active method lane (2026-06-03):** `METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001` → `STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001` → `SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001` → `SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001` → `ROADMAP_INFERENCE_SUITABILITY_REFOCUS_001` → **`ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001`** (immediate next). Downstream schema/ingestion/decisioning paused.
+
+**ROADMAP_INFERENCE_SUITABILITY_REFOCUS_001:** Although `DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001` remains important, the immediate next artifact is `ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001`. Placebo/randomization is one inference family, not the full inference layer. No estimator receives a universal default inference. No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, production decisioning, live API, scheduler, or budget optimization.
+
+**Post-matrix branches (not selected until matrix complete):** `TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001` · `DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001` · `DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001` · `MULTICELL_MAX_T_RESEARCH_SCOUT_001` · `AUGSYNTH_ESTIMATOR_BACKED_RANDOMIZATION_CALIBRATION_001` · `SCM_AUGSYNTH_DISAGREEMENT_DIAGNOSTICS_001`
 
 **Explicitly not next:** Ad-hoc combo OC without Layer 3–4 coverage · MCELL as method-suitability proof.
 

@@ -321,8 +321,21 @@ class TestOpenInvestigationRegistry001:
         )
         assert lane["status"] == "complete"
         assert lane["resolution_artifact"] == "SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001"
-        assert lane["next_artifact"] == "DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001"
+        assert lane["next_artifact"] == "ROADMAP_INFERENCE_SUITABILITY_REFOCUS_001"
         assert "statistic_adapter" in lane["artifact_tags"]
+        assert "no_downstream_authorization" in lane["artifact_tags"]
+
+    def test_roadmap_inference_suitability_refocus_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "ROADMAP-INFERENCE-SUITABILITY-REFOCUS-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "ROADMAP_INFERENCE_SUITABILITY_REFOCUS_001"
+        assert lane["next_artifact"] == "ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001"
+        assert "INV-ESTIMATOR-DESIGN-INFERENCE-SUITABILITY-MATRIX-001" in lane["open_investigations"]
+        assert "inference_suitability" in lane["artifact_tags"]
         assert "no_downstream_authorization" in lane["artifact_tags"]
 
     def test_scm_treated_set_placebo_null_calibration_lane_complete(self) -> None:

@@ -1526,11 +1526,23 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Shared SCM/AugSynth statistic adapter contract for observed/pseudo comparability. Calibration-harness-only and randomization-candidate-only boundaries. **No production SCM/AugSynth inference, p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
 
-**Next:** `DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001`.
+**Next:** `ROADMAP_INFERENCE_SUITABILITY_REFOCUS_001` (completed — see inference suitability refocus).
 
 ---
 
-## CALIBRATION-SIGNAL-METHOD-GATE-DRAFT-001 (2026-06-03)
+## ROADMAP-INFERENCE-SUITABILITY-REFOCUS-001 (2026-06-03)
+
+**Artifact:** Roadmap correction documented in [`ROADMAP_V4.md`](ROADMAP_V4.md) and [`METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md`](METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md)
+
+**Status:** **`roadmap_inference_suitability_refocus_defined_no_downstream_authorization`**
+
+**Verdict:** Corrects active method-accuracy lane after `SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001`. Immediate next artifact is `ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001`, not `DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001`. Placebo/randomization is one inference family, not the full inference layer. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001`.
+
+---
+
+## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)
 
