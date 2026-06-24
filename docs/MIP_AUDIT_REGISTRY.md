@@ -1634,6 +1634,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** 56-row DID randomization/bootstrap suitability audit (`failed_scenarios: []`). Point diagnostic allowed; randomization/permutation/bootstrap not production-valid. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
 
+**Next:** `METHOD_FAMILY_PRODUCTION_COMPATIBILITY_AND_REMEDIATION_ROADMAP_001`.
+
+---
+
+## METHOD-FAMILY-PRODUCTION-COMPATIBILITY-REMEDIATION-ROADMAP-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/METHOD_FAMILY_PRODUCTION_COMPATIBILITY_AND_REMEDIATION_ROADMAP_001.md`](track_d/METHOD_FAMILY_PRODUCTION_COMPATIBILITY_AND_REMEDIATION_ROADMAP_001.md) · [`docs/track_d/archives/METHOD_FAMILY_PRODUCTION_COMPATIBILITY_AND_REMEDIATION_ROADMAP_001_summary.json`](track_d/archives/METHOD_FAMILY_PRODUCTION_COMPATIBILITY_AND_REMEDIATION_ROADMAP_001_summary.json)
+
+**Status:** **`method_family_production_compatibility_and_remediation_roadmap_defined_no_downstream_authorization`**
+
+**Verdict:** 9-family production compatibility and remediation roadmap (`failed_scenarios: []`). Research-only/diagnostic-only are promotion hypotheses, not abandonment. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
 **Next:** `MULTICELL_MAX_T_RESEARCH_SCOUT_001`.
 
 ---

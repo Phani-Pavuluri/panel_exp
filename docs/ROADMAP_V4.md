@@ -307,6 +307,7 @@ Foundation and compatibility audits ✅
   → DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001 ✅
   → TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001 ✅
   → DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001 ✅
+  → METHOD_FAMILY_PRODUCTION_COMPATIBILITY_AND_REMEDIATION_ROADMAP_001 ✅
   → MULTICELL_MAX_T_RESEARCH_SCOUT_001 (active method lane)
   → implementation lanes (not selected until control layer complete)
 ```
@@ -325,7 +326,9 @@ Foundation and compatibility audits ✅
 
 **TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001 (2026-06-03):** Audits **52** TBRRidge inference paths (`failed_scenarios: []`). Point diagnostic allowed; BRB/KFold/placebo/jackknife not production-valid; aggregate/global overclaims blocked. See [`track_d/TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001_REPORT.md`](track_d/TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001_REPORT.md).
 
-**DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001 (2026-06-03):** Audits **56** DID randomization/bootstrap paths (`failed_scenarios: []`). Point diagnostic allowed; randomization/permutation/bootstrap not production-valid; bootstrap cannot fix invalid assignment. **Immediate next artifact:** `MULTICELL_MAX_T_RESEARCH_SCOUT_001`. See [`track_d/DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001_REPORT.md`](track_d/DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001_REPORT.md).
+**DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001 (2026-06-03):** Audits **56** DID randomization/bootstrap paths (`failed_scenarios: []`). Point diagnostic allowed; randomization/permutation/bootstrap not production-valid; bootstrap cannot fix invalid assignment. See [`track_d/DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001_REPORT.md`](track_d/DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001_REPORT.md).
+
+**METHOD_FAMILY_PRODUCTION_COMPATIBILITY_AND_REMEDIATION_ROADMAP_001 (2026-06-03):** Defines per-family production compatibility and remediation paths for **9** estimator families (`failed_scenarios: []`). Research-only and diagnostic-only are promotion hypotheses, not abandonment. **Immediate next artifact:** `MULTICELL_MAX_T_RESEARCH_SCOUT_001`. See [`track_d/METHOD_FAMILY_PRODUCTION_COMPATIBILITY_AND_REMEDIATION_ROADMAP_001.md`](track_d/METHOD_FAMILY_PRODUCTION_COMPATIBILITY_AND_REMEDIATION_ROADMAP_001.md).
 
 **ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001 (2026-06-03):** First cross-estimator × design × inference suitability matrix (**50 rows**; `failed_scenarios: []`). Placebo/randomization is **one inference family**, not the full inference layer. No estimator receives a universal default inference. See [`track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md`](track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md).
 
@@ -352,7 +355,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001`** → ✅ **`DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001`** → **`MULTICELL_MAX_T_RESEARCH_SCOUT_001`** → implementation backlog (not selected until remediation lanes complete).
+**Ordered next:** ✅ … → ✅ **`DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001`** → ✅ **`METHOD_FAMILY_PRODUCTION_COMPATIBILITY_AND_REMEDIATION_ROADMAP_001`** → **`MULTICELL_MAX_T_RESEARCH_SCOUT_001`** → `SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001` → `SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001` → `BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001` → `TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001` → `METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001`.
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 

@@ -474,8 +474,9 @@ class TestOpenInvestigationRegistry001:
         )
         assert lane["status"] == "complete"
         assert lane["resolution_artifact"] == "DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001"
-        assert lane["next_artifact"] == "MULTICELL_MAX_T_RESEARCH_SCOUT_001"
+        assert lane["next_artifact"] == "METHOD_FAMILY_PRODUCTION_COMPATIBILITY_AND_REMEDIATION_ROADMAP_001"
         assert "INV-DID-RANDOMIZATION-BOOTSTRAP-SUITABILITY-001" in lane["resolved_investigations"]
+        assert "INV-METHOD-FAMILY-PRODUCTION-COMPATIBILITY-REMEDIATION-ROADMAP-001" in lane["open_investigations"]
         assert "did_inference" in lane["artifact_tags"]
         assert "no_downstream_authorization" in lane["artifact_tags"]
 
@@ -483,6 +484,24 @@ class TestOpenInvestigationRegistry001:
         inv = investigations_by_id()["INV-DID-RANDOMIZATION-BOOTSTRAP-SUITABILITY-001"]
         assert inv.status == "RESOLVED"
         assert inv.resolution_artifact == "DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001"
+
+    def test_method_family_production_compatibility_remediation_roadmap_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "METHOD-FAMILY-PRODUCTION-COMPATIBILITY-REMEDIATION-ROADMAP-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "METHOD_FAMILY_PRODUCTION_COMPATIBILITY_AND_REMEDIATION_ROADMAP_001"
+        assert lane["next_artifact"] == "MULTICELL_MAX_T_RESEARCH_SCOUT_001"
+        assert "INV-METHOD-FAMILY-PRODUCTION-COMPATIBILITY-REMEDIATION-ROADMAP-001" in lane["resolved_investigations"]
+        assert "production_compatibility" in lane["artifact_tags"]
+        assert "no_downstream_authorization" in lane["artifact_tags"]
+
+    def test_method_family_production_compatibility_remediation_roadmap_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-METHOD-FAMILY-PRODUCTION-COMPATIBILITY-REMEDIATION-ROADMAP-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "METHOD_FAMILY_PRODUCTION_COMPATIBILITY_AND_REMEDIATION_ROADMAP_001"
 
     def test_scm_treated_set_placebo_null_calibration_lane_complete(self) -> None:
         reg = load_registry()

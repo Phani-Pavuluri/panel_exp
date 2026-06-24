@@ -534,6 +534,29 @@
       "blocking_policy": "DID production inference, p-values, and causal CIs remain unauthorized; bootstrap cannot fix invalid assignment",
       "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "REMEDIATE", "RETIRE"],
       "resolution_artifact": "DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001"
+    },
+    {
+      "investigation_id": "INV-METHOD-FAMILY-PRODUCTION-COMPATIBILITY-REMEDIATION-ROADMAP-001",
+      "title": "Method family production compatibility and remediation roadmap",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "DID-RANDOMIZATION-BOOTSTRAP-SUITABILITY-001",
+      "affected_combination": "estimator_family_production_compatibility",
+      "problem_class": ["production_compatibility", "remediation_roadmap", "promotion_hypothesis"],
+      "evidence": {
+        "depends_on": ["DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001"],
+        "estimator_family_count": 9,
+        "failed_scenarios": [],
+        "blocked_downstream_authorization": true
+      },
+      "current_decision": "METHOD_FAMILY_PRODUCTION_COMPATIBILITY_AND_REMEDIATION_ROADMAP_DEFINED_NO_DOWNSTREAM_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Family remediation roadmap complete before multicell max-T research scout",
+      "blocking_policy": "Research-only and diagnostic-only are promotion hypotheses, not abandonment; no production authorization",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "REMEDIATE", "RETIRE"],
+      "resolution_artifact": "METHOD_FAMILY_PRODUCTION_COMPATIBILITY_AND_REMEDIATION_ROADMAP_001"
     }
   ],
   "roadmap_lane_bindings": [
@@ -1288,7 +1311,9 @@
     {
       "lane_id": "DID-RANDOMIZATION-BOOTSTRAP-SUITABILITY-001",
       "status": "complete",
-      "open_investigations": [],
+      "open_investigations": [
+        "INV-METHOD-FAMILY-PRODUCTION-COMPATIBILITY-REMEDIATION-ROADMAP-001"
+      ],
       "resolved_investigations": [
         "INV-DID-RANDOMIZATION-BOOTSTRAP-SUITABILITY-001"
       ],
@@ -1298,7 +1323,7 @@
         "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
       ],
       "must_consume_before_close": true,
-      "next_artifact": "MULTICELL_MAX_T_RESEARCH_SCOUT_001",
+      "next_artifact": "METHOD_FAMILY_PRODUCTION_COMPATIBILITY_AND_REMEDIATION_ROADMAP_001",
       "resolution_artifact": "DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001",
       "artifact_tags": [
         "method_accuracy",
@@ -1306,6 +1331,29 @@
         "did_inference",
         "randomization_feasibility",
         "bootstrap_suitability",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "METHOD-FAMILY-PRODUCTION-COMPATIBILITY-REMEDIATION-ROADMAP-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-METHOD-FAMILY-PRODUCTION-COMPATIBILITY-REMEDIATION-ROADMAP-001"
+      ],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "MULTICELL_MAX_T_RESEARCH_SCOUT_001",
+      "resolution_artifact": "METHOD_FAMILY_PRODUCTION_COMPATIBILITY_AND_REMEDIATION_ROADMAP_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "production_compatibility",
+        "remediation_roadmap",
         "no_downstream_authorization"
       ]
     }

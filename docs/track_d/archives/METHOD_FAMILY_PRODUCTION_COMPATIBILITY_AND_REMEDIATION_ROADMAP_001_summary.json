@@ -1,0 +1,192 @@
+{
+  "artifact_id": "METHOD_FAMILY_PRODUCTION_COMPATIBILITY_AND_REMEDIATION_ROADMAP_001",
+  "artifact_version": "1.0.0",
+  "status": "completed",
+  "verdict": "method_family_production_compatibility_and_remediation_roadmap_defined_no_downstream_authorization",
+  "generated_at": "2026-06-03",
+  "estimator_family_count": 9,
+  "failed_scenarios": [],
+  "families_covered": [
+    "scm",
+    "augsynth_cvxpy",
+    "did",
+    "synthetic_did",
+    "tbrridge",
+    "tbr_aggregate",
+    "bayesian_tbr",
+    "trop",
+    "multicell_shared_control"
+  ],
+  "all_required_families_covered": true,
+  "non_production_methods_have_remediation_or_exit_paths": true,
+  "research_only_does_not_mean_abandoned": true,
+  "diagnostic_only_does_not_mean_abandoned": true,
+  "promotion_evidence_required_for_all_candidates": true,
+  "retirement_criteria_defined": true,
+  "multicell_shared_control_identified_as_cross_cutting_blocker": true,
+  "next_artifact": "MULTICELL_MAX_T_RESEARCH_SCOUT_001",
+  "recommended_forward_sequence": [
+    "MULTICELL_MAX_T_RESEARCH_SCOUT_001",
+    "SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001",
+    "SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001",
+    "BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001",
+    "TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001",
+    "METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001"
+  ],
+  "downstream_work_paused": true,
+  "families": [
+    {
+      "family_id": "scm",
+      "name": "SCM",
+      "current_status": "production_compatible_candidate_gated",
+      "fixability_assessment": "high",
+      "exit_path_type": "remediation_and_promotion_gate",
+      "has_remediation_or_exit_path": true,
+      "research_only_not_abandoned": true,
+      "diagnostic_only_not_abandoned": true,
+      "promotion_evidence_required": true,
+      "retirement_criteria_defined": true,
+      "required_future_artifacts": [
+        "SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001",
+        "METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001"
+      ],
+      "downstream_authorization_status": "paused"
+    },
+    {
+      "family_id": "augsynth_cvxpy",
+      "name": "AugSynth CVXPY",
+      "current_status": "diagnostic_only_with_promotion_hypothesis",
+      "fixability_assessment": "medium",
+      "exit_path_type": "remediation_and_promotion_gate",
+      "has_remediation_or_exit_path": true,
+      "research_only_not_abandoned": true,
+      "diagnostic_only_not_abandoned": true,
+      "promotion_evidence_required": true,
+      "retirement_criteria_defined": true,
+      "required_future_artifacts": [
+        "SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001"
+      ],
+      "downstream_authorization_status": "paused"
+    },
+    {
+      "family_id": "did",
+      "name": "DID",
+      "current_status": "conditional_candidate_remediation_required",
+      "fixability_assessment": "medium",
+      "exit_path_type": "remediation_and_promotion_criteria",
+      "has_remediation_or_exit_path": true,
+      "research_only_not_abandoned": true,
+      "diagnostic_only_not_abandoned": true,
+      "promotion_evidence_required": true,
+      "retirement_criteria_defined": true,
+      "required_future_artifacts": [
+        "METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001"
+      ],
+      "downstream_authorization_status": "paused"
+    },
+    {
+      "family_id": "synthetic_did",
+      "name": "Synthetic DID",
+      "current_status": "research_only_with_promotion_hypothesis",
+      "fixability_assessment": "medium",
+      "exit_path_type": "scout_and_suitability",
+      "has_remediation_or_exit_path": true,
+      "research_only_not_abandoned": true,
+      "diagnostic_only_not_abandoned": true,
+      "promotion_evidence_required": true,
+      "retirement_criteria_defined": true,
+      "required_future_artifacts": [
+        "SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001"
+      ],
+      "downstream_authorization_status": "paused"
+    },
+    {
+      "family_id": "tbrridge",
+      "name": "TBRRidge",
+      "current_status": "diagnostic_only_unless_remediation_reopens",
+      "fixability_assessment": "low_medium",
+      "exit_path_type": "remediation_or_retire",
+      "has_remediation_or_exit_path": true,
+      "research_only_not_abandoned": true,
+      "diagnostic_only_not_abandoned": true,
+      "promotion_evidence_required": true,
+      "retirement_criteria_defined": true,
+      "required_future_artifacts": [],
+      "downstream_authorization_status": "paused"
+    },
+    {
+      "family_id": "tbr_aggregate",
+      "name": "TBR aggregate / classic TBR",
+      "current_status": "retire_or_replace_likely",
+      "fixability_assessment": "low",
+      "exit_path_type": "retire_or_replace_audit",
+      "has_remediation_or_exit_path": true,
+      "research_only_not_abandoned": true,
+      "diagnostic_only_not_abandoned": true,
+      "promotion_evidence_required": true,
+      "retirement_criteria_defined": true,
+      "required_future_artifacts": [
+        "BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001"
+      ],
+      "downstream_authorization_status": "paused"
+    },
+    {
+      "family_id": "bayesian_tbr",
+      "name": "Bayesian TBR",
+      "current_status": "posterior_diagnostic_research_only",
+      "fixability_assessment": "low",
+      "exit_path_type": "boundary_audit",
+      "has_remediation_or_exit_path": true,
+      "research_only_not_abandoned": true,
+      "diagnostic_only_not_abandoned": true,
+      "promotion_evidence_required": true,
+      "retirement_criteria_defined": true,
+      "required_future_artifacts": [
+        "BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001"
+      ],
+      "downstream_authorization_status": "paused"
+    },
+    {
+      "family_id": "trop",
+      "name": "TROP",
+      "current_status": "research_only_scout",
+      "fixability_assessment": "unknown",
+      "exit_path_type": "scout_boundary_audit",
+      "has_remediation_or_exit_path": true,
+      "research_only_not_abandoned": true,
+      "diagnostic_only_not_abandoned": true,
+      "promotion_evidence_required": true,
+      "retirement_criteria_defined": true,
+      "required_future_artifacts": [
+        "TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001"
+      ],
+      "downstream_authorization_status": "paused"
+    },
+    {
+      "family_id": "multicell_shared_control",
+      "name": "Multicell/shared-control cross-estimator",
+      "current_status": "cross_cutting_blocker",
+      "fixability_assessment": "medium",
+      "exit_path_type": "multiplicity_research_scout",
+      "has_remediation_or_exit_path": true,
+      "research_only_not_abandoned": true,
+      "diagnostic_only_not_abandoned": true,
+      "promotion_evidence_required": true,
+      "retirement_criteria_defined": true,
+      "required_future_artifacts": [
+        "MULTICELL_MAX_T_RESEARCH_SCOUT_001"
+      ],
+      "downstream_authorization_status": "paused"
+    }
+  ],
+  "production_p_value_authorized": false,
+  "causal_confidence_interval_authorized": false,
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false
+}
