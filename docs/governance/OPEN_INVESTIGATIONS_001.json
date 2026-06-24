@@ -674,23 +674,25 @@
     {
       "investigation_id": "INV-TROP-RESEARCH-ONLY-BOUNDARY-AUDIT-001",
       "title": "TROP research-only boundary audit",
-      "status": "PLANNED",
+      "status": "RESOLVED",
       "priority": "P2",
-      "discovered_by": "SYNTHETIC-DID-METHOD-SCOUT-AND-SUITABILITY-001",
+      "discovered_by": "BAYESIAN-TBR-AND-TBR-RETIREMENT-BOUNDARY-AUDIT-001",
       "affected_combination": "trop_research_boundary",
       "problem_class": ["trop", "research_boundary", "retire_or_replace"],
       "evidence": {
-        "depends_on": ["SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001"],
+        "depends_on": ["BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001"],
+        "boundary_row_count": 40,
+        "failed_scenarios": [],
         "blocked_downstream_authorization": true
       },
-      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "current_decision": "TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_COMPLETED_NO_DOWNSTREAM_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
-      "target_artifact": "TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001",
-      "revisit_trigger": "Upon opening TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001",
-      "decision_checkpoint": "TROP research boundary after Bayesian TBR retirement audit",
-      "blocking_policy": "TROP remains research-only until boundary audit completes",
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "TROP research boundary complete before promotion criteria matrix",
+      "blocking_policy": "TROP remains research-only; production inference/recommendations/decisioning unauthorized",
       "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "RETIRE", "DEFER_RESEARCH"],
-      "resolution_artifact": null
+      "resolution_artifact": "TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001"
     }
   ],
   "roadmap_lane_bindings": [
@@ -1596,6 +1598,31 @@
         "method_gap_control",
         "bayesian_tbr",
         "tbr_retirement",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "TROP-RESEARCH-ONLY-BOUNDARY-AUDIT-001",
+      "status": "complete",
+      "open_investigations": [
+        "INV-METHOD-FAMILY-PROMOTION-CRITERIA-MATRIX-001"
+      ],
+      "resolved_investigations": [
+        "INV-TROP-RESEARCH-ONLY-BOUNDARY-AUDIT-001"
+      ],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001",
+      "resolution_artifact": "TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "trop",
+        "research_boundary",
         "no_downstream_authorization"
       ]
     }

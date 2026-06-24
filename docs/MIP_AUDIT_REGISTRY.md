@@ -1694,7 +1694,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** 48-row TBR/Bayesian TBR boundary audit (`failed_scenarios: []`). Posterior intervals not causal CIs; classic aggregate overclaim blocked; TBRRidge audit preserved. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
 
-**Next:** `TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001`.
+**Next:** `TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001` (completed — see TROP boundary audit).
+
+---
+
+## TROP-RESEARCH-ONLY-BOUNDARY-AUDIT-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001_REPORT.md`](track_d/TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001_REPORT.md) · [`docs/track_d/archives/TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001_summary.json`](track_d/archives/TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001_summary.json) · [`panel_exp/validation/trop_research_only_boundary_audit_001.py`](../panel_exp/validation/trop_research_only_boundary_audit_001.py)
+
+**Status:** **`trop_research_only_boundary_audit_completed_no_downstream_authorization`**
+
+**Verdict:** 40-row TROP boundary audit (`failed_scenarios: []`). TROP remains research-only; production inference/recommendations/decisioning unauthorized; comparisons against SCM/DID/Synthetic DID/TBRRidge required before promotion. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001`.
 
 ---
 
