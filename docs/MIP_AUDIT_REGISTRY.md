@@ -1602,6 +1602,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## DESIGN-ASSIGNMENT-GENERATOR-STRESS-TESTS-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001_REPORT.md`](track_d/DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001_REPORT.md) · [`docs/track_d/archives/DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001_summary.json`](track_d/archives/DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001_summary.json) · [`panel_exp/validation/design_assignment_generator_stress_tests_001.py`](../panel_exp/validation/design_assignment_generator_stress_tests_001.py)
+
+**Status:** **`design_assignment_generator_stress_tests_defined_no_downstream_authorization`**
+
+**Verdict:** 91-row assignment-generator stress-test plan (`failed_scenarios: []`). Assignment generators are not inference engines; stress failures link to failure registry, observed diagnostics, and DGP plan. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001`.
+
+---
+
 ## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)
