@@ -440,7 +440,7 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 
 **Paused:** **`D5-INST-AUGSYNTH-MULTICELL-001`** as default next step · TrustReport/F-DECISION/CalibrationSignal/MMM role expansion · TrustReport product-ops (audit log, API, scheduler, platform — frozen per [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md)) · LLM layer · promotion audits.
 
-**Active method lane (2026-06-03):** `DESIGN_AWARE_ASSIGNMENT_GENERATORS_001` → … → `METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001` ✅ → `STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001` ✅ → `SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001` per [`STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001`](track_d/STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001_REPORT.md). Downstream schema/ingestion/decisioning paused.
+**Active method lane (2026-06-03):** `DESIGN_AWARE_ASSIGNMENT_GENERATORS_001` → … → `STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001` ✅ → `SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001` ✅ → `SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001` per [`SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001`](track_d/SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001_REPORT.md). Downstream schema/ingestion/decisioning paused.
 
 **Explicitly not next:** Ad-hoc combo OC without Layer 3–4 coverage · MCELL as method-suitability proof.
 
