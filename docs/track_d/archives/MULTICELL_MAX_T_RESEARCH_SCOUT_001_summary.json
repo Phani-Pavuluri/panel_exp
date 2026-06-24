@@ -1,0 +1,422 @@
+{
+  "artifact_id": "MULTICELL_MAX_T_RESEARCH_SCOUT_001",
+  "artifact_version": "1.0.0",
+  "status": "completed",
+  "verdict": "multicell_max_t_research_scout_completed_no_downstream_authorization",
+  "generated_at": "2026-06-24T20:58:05.706744+00:00",
+  "git_commit": "c1a5ae7d0369107fc640c30d2231e9aa40c264be",
+  "scout_row_count": 50,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "scout_rows_build_successfully",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scout_row_count_at_least_50",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scout_ids_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multiplicity_path_cell_wise_placebo_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multiplicity_path_synthetic_did_multicell_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multiplicity_path_winner_selection_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multiplicity_path_scm_multicell_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multiplicity_path_westfall_young_max_t_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multiplicity_path_augsynth_multicell_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multiplicity_path_tbrridge_multicell_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multiplicity_path_stepdown_max_t_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multiplicity_path_leave_one_treated_out_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multiplicity_path_per_cell_marginal_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multiplicity_path_did_multicell_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multiplicity_path_bonferroni_holm_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multiplicity_path_treated_set_placebo_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multiplicity_path_single_step_max_t_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multiplicity_path_multiple_kpi_horizon_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multiplicity_path_min_p_adjusted_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multiplicity_path_pooled_global_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multiplicity_path_shared_control_covariance_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_candidate_after_simulation_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_research_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_diagnostic_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_candidate_after_adapter_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_baseline_control_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_blocked_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_remediation_required_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_candidate_after_null_calibration_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_synthetic_did_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_did_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_scm_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_augsynth_cvxpy_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_tbrridge_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_shared_control_is_cross_cutting_blocker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "naive_per_cell_p_values_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "pooled_global_inference_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "max_t_stepdown_research_candidate_only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "shared_control_dependence_requires_handling",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "winner_selection_risk_identified",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multiple_kpi_horizon_risk_identified",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "estimator_specific_promotion_gates_must_wait",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_simulation_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_adapter_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_null_calibration_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "downstream_work_paused",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_rank_1_scm_augsynth_inference_promotion_gate_audit_001",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_issues_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "scout_row_count": 50,
+    "unique_scout_ids": true,
+    "status_counts": {
+      "blocked": 20,
+      "diagnostic_only": 6,
+      "research_only": 10,
+      "baseline_control_only": 2,
+      "candidate_after_simulation": 3,
+      "candidate_after_adapter": 2,
+      "candidate_after_null_calibration": 4,
+      "remediation_required": 3
+    },
+    "method_family_counts": {
+      "multicell": 20,
+      "scm": 8,
+      "did": 5,
+      "tbrridge": 5,
+      "augsynth_cvxpy": 4,
+      "synthetic_did": 3,
+      "all": 5
+    },
+    "multiplicity_path_counts": {
+      "single_step_max_t": 3,
+      "westfall_young_max_t": 2,
+      "stepdown_max_t": 5,
+      "min_p_adjusted": 1,
+      "bonferroni_holm": 2,
+      "shared_control_covariance": 6,
+      "cell_wise_placebo": 2,
+      "treated_set_placebo": 1,
+      "leave_one_treated_out": 1,
+      "per_cell_marginal": 3,
+      "pooled_global": 5,
+      "winner_selection": 2,
+      "multiple_kpi_horizon": 1,
+      "scm_multicell": 5,
+      "augsynth_multicell": 3,
+      "did_multicell": 3,
+      "tbrridge_multicell": 3,
+      "synthetic_did_multicell": 2
+    },
+    "all_required_paths_covered": true,
+    "all_statuses_represented": true,
+    "all_required_method_families_represented": true,
+    "issues": []
+  },
+  "status_counts": {
+    "blocked": 20,
+    "diagnostic_only": 6,
+    "research_only": 10,
+    "baseline_control_only": 2,
+    "candidate_after_simulation": 3,
+    "candidate_after_adapter": 2,
+    "candidate_after_null_calibration": 4,
+    "remediation_required": 3
+  },
+  "method_family_counts": {
+    "multicell": 20,
+    "scm": 8,
+    "did": 5,
+    "tbrridge": 5,
+    "augsynth_cvxpy": 4,
+    "synthetic_did": 3,
+    "all": 5
+  },
+  "multiplicity_path_counts": {
+    "single_step_max_t": 3,
+    "westfall_young_max_t": 2,
+    "stepdown_max_t": 5,
+    "min_p_adjusted": 1,
+    "bonferroni_holm": 2,
+    "shared_control_covariance": 6,
+    "cell_wise_placebo": 2,
+    "treated_set_placebo": 1,
+    "leave_one_treated_out": 1,
+    "per_cell_marginal": 3,
+    "pooled_global": 5,
+    "winner_selection": 2,
+    "multiple_kpi_horizon": 1,
+    "scm_multicell": 5,
+    "augsynth_multicell": 3,
+    "did_multicell": 3,
+    "tbrridge_multicell": 3,
+    "synthetic_did_multicell": 2
+  },
+  "all_required_paths_covered": true,
+  "recommended_next_artifacts": [
+    "SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001",
+    "SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001",
+    "METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001"
+  ],
+  "multicell_shared_control_is_cross_cutting_blocker": true,
+  "naive_per_cell_p_values_blocked": true,
+  "pooled_global_inference_blocked": true,
+  "max_t_stepdown_research_candidate_only": true,
+  "shared_control_dependence_requires_handling": true,
+  "winner_selection_risk_identified": true,
+  "multiple_kpi_horizon_risk_identified": true,
+  "estimator_specific_promotion_gates_must_wait": true,
+  "future_simulation_required": true,
+  "future_adapter_required": true,
+  "future_null_calibration_required": true,
+  "downstream_work_paused": true,
+  "production_p_value_authorized": false,
+  "causal_confidence_interval_authorized": false,
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false
+}

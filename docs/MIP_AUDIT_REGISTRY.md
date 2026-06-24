@@ -1646,7 +1646,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** 9-family production compatibility and remediation roadmap (`failed_scenarios: []`). Research-only/diagnostic-only are promotion hypotheses, not abandonment. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
 
-**Next:** `MULTICELL_MAX_T_RESEARCH_SCOUT_001`.
+**Next:** `MULTICELL_MAX_T_RESEARCH_SCOUT_001` (completed — see multicell max-T research scout).
+
+---
+
+## MULTICELL-MAX-T-RESEARCH-SCOUT-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/MULTICELL_MAX_T_RESEARCH_SCOUT_001_REPORT.md`](track_d/MULTICELL_MAX_T_RESEARCH_SCOUT_001_REPORT.md) · [`docs/track_d/archives/MULTICELL_MAX_T_RESEARCH_SCOUT_001_summary.json`](track_d/archives/MULTICELL_MAX_T_RESEARCH_SCOUT_001_summary.json) · [`panel_exp/validation/multicell_max_t_research_scout_001.py`](../panel_exp/validation/multicell_max_t_research_scout_001.py)
+
+**Status:** **`multicell_max_t_research_scout_completed_no_downstream_authorization`**
+
+**Verdict:** 50-row multicell max-T research scout (`failed_scenarios: []`). Naive per-cell p-values blocked; pooled/global inference blocked; max-T/stepdown research candidates only; shared-control dependence requires handling. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001`.
 
 ---
 

@@ -557,6 +557,92 @@
       "blocking_policy": "Research-only and diagnostic-only are promotion hypotheses, not abandonment; no production authorization",
       "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "REMEDIATE", "RETIRE"],
       "resolution_artifact": "METHOD_FAMILY_PRODUCTION_COMPATIBILITY_AND_REMEDIATION_ROADMAP_001"
+    },
+    {
+      "investigation_id": "INV-MULTICELL-MAX-T-RESEARCH-SCOUT-001",
+      "title": "Multicell max-T and shared-control multiplicity research scout",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "METHOD-FAMILY-PRODUCTION-COMPATIBILITY-REMEDIATION-ROADMAP-001",
+      "affected_combination": "multicell_shared_control_inference",
+      "problem_class": ["multicell_multiplicity", "shared_control_dependence", "max_t_stepdown"],
+      "evidence": {
+        "depends_on": ["METHOD_FAMILY_PRODUCTION_COMPATIBILITY_AND_REMEDIATION_ROADMAP_001"],
+        "scout_row_count": 50,
+        "failed_scenarios": [],
+        "blocked_downstream_authorization": true
+      },
+      "current_decision": "MULTICELL_MAX_T_RESEARCH_SCOUT_COMPLETED_NO_DOWNSTREAM_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Multicell scout complete before SCM/AugSynth inference promotion gate audit",
+      "blocking_policy": "Naive per-cell p-values blocked; pooled/global inference blocked; max-T/stepdown research candidates only; shared-control dependence must be handled",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "REMEDIATE", "DEFER_RESEARCH"],
+      "resolution_artifact": "MULTICELL_MAX_T_RESEARCH_SCOUT_001"
+    },
+    {
+      "investigation_id": "INV-SCM-AUGSYNTH-INFERENCE-PROMOTION-GATE-AUDIT-001",
+      "title": "SCM and AugSynth inference promotion gate audit",
+      "status": "PLANNED",
+      "priority": "P1",
+      "discovered_by": "MULTICELL-MAX-T-RESEARCH-SCOUT-001",
+      "affected_combination": "scm_augsynth_inference_promotion",
+      "problem_class": ["inference_promotion", "null_calibration", "adapter_contract"],
+      "evidence": {
+        "depends_on": ["MULTICELL_MAX_T_RESEARCH_SCOUT_001"],
+        "blocked_downstream_authorization": true
+      },
+      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": "SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001",
+      "revisit_trigger": "Upon opening SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001",
+      "decision_checkpoint": "SCM/AugSynth promotion gate audit before Synthetic DID scout",
+      "blocking_policy": "Estimator-specific promotion gates must wait for multicell scout outcome",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "REMEDIATE", "PROMOTE"],
+      "resolution_artifact": null
+    },
+    {
+      "investigation_id": "INV-SYNTHETIC-DID-METHOD-SCOUT-AND-SUITABILITY-001",
+      "title": "Synthetic DID method scout and suitability",
+      "status": "PLANNED",
+      "priority": "P2",
+      "discovered_by": "MULTICELL-MAX-T-RESEARCH-SCOUT-001",
+      "affected_combination": "synthetic_did_inference_paths",
+      "problem_class": ["synthetic_did", "method_scout", "multicell_suitability"],
+      "evidence": {
+        "depends_on": ["MULTICELL_MAX_T_RESEARCH_SCOUT_001"],
+        "blocked_downstream_authorization": true
+      },
+      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": "SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001",
+      "revisit_trigger": "Upon opening SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001",
+      "decision_checkpoint": "Synthetic DID scout after SCM/AugSynth promotion gate audit",
+      "blocking_policy": "Synthetic DID multicell paths require simulation and adapter before promotion",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "REMEDIATE", "DEFER_RESEARCH"],
+      "resolution_artifact": null
+    },
+    {
+      "investigation_id": "INV-METHOD-FAMILY-PROMOTION-CRITERIA-MATRIX-001",
+      "title": "Method family promotion criteria matrix",
+      "status": "PLANNED",
+      "priority": "P2",
+      "discovered_by": "MULTICELL-MAX-T-RESEARCH-SCOUT-001",
+      "affected_combination": "estimator_family_promotion_criteria",
+      "problem_class": ["promotion_criteria", "method_family_matrix"],
+      "evidence": {
+        "depends_on": ["MULTICELL_MAX_T_RESEARCH_SCOUT_001"],
+        "blocked_downstream_authorization": true
+      },
+      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": "METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001",
+      "revisit_trigger": "Upon opening METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001",
+      "decision_checkpoint": "Promotion criteria matrix after estimator-specific gate audits",
+      "blocking_policy": "No family promotion without explicit criteria matrix",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
+      "resolution_artifact": null
     }
   ],
   "roadmap_lane_bindings": [
@@ -1354,6 +1440,34 @@
         "method_gap_control",
         "production_compatibility",
         "remediation_roadmap",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "MULTICELL-MAX-T-RESEARCH-SCOUT-001",
+      "status": "complete",
+      "open_investigations": [
+        "INV-SCM-AUGSYNTH-INFERENCE-PROMOTION-GATE-AUDIT-001"
+      ],
+      "resolved_investigations": [
+        "INV-MULTICELL-MAX-T-RESEARCH-SCOUT-001"
+      ],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001",
+        "INV-SYNTHETIC-DID-METHOD-SCOUT-AND-SUITABILITY-001",
+        "INV-METHOD-FAMILY-PROMOTION-CRITERIA-MATRIX-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001",
+      "resolution_artifact": "MULTICELL_MAX_T_RESEARCH_SCOUT_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "multicell_multiplicity",
+        "shared_control_dependence",
+        "max_t_stepdown",
         "no_downstream_authorization"
       ]
     }

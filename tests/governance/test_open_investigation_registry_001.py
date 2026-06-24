@@ -503,6 +503,40 @@ class TestOpenInvestigationRegistry001:
         assert inv.status == "RESOLVED"
         assert inv.resolution_artifact == "METHOD_FAMILY_PRODUCTION_COMPATIBILITY_AND_REMEDIATION_ROADMAP_001"
 
+    def test_multicell_max_t_research_scout_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "MULTICELL-MAX-T-RESEARCH-SCOUT-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "MULTICELL_MAX_T_RESEARCH_SCOUT_001"
+        assert lane["next_artifact"] == "SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001"
+        assert "INV-MULTICELL-MAX-T-RESEARCH-SCOUT-001" in lane["resolved_investigations"]
+        assert "INV-SCM-AUGSYNTH-INFERENCE-PROMOTION-GATE-AUDIT-001" in lane["open_investigations"]
+        assert "multicell_multiplicity" in lane["artifact_tags"]
+        assert "no_downstream_authorization" in lane["artifact_tags"]
+
+    def test_multicell_max_t_research_scout_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-MULTICELL-MAX-T-RESEARCH-SCOUT-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "MULTICELL_MAX_T_RESEARCH_SCOUT_001"
+
+    def test_scm_augsynth_inference_promotion_gate_audit_investigation_planned(self) -> None:
+        inv = investigations_by_id()["INV-SCM-AUGSYNTH-INFERENCE-PROMOTION-GATE-AUDIT-001"]
+        assert inv.status == "PLANNED"
+        assert inv.target_artifact == "SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001"
+
+    def test_synthetic_did_method_scout_investigation_planned(self) -> None:
+        inv = investigations_by_id()["INV-SYNTHETIC-DID-METHOD-SCOUT-AND-SUITABILITY-001"]
+        assert inv.status == "PLANNED"
+        assert inv.target_artifact == "SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001"
+
+    def test_method_family_promotion_criteria_matrix_investigation_planned(self) -> None:
+        inv = investigations_by_id()["INV-METHOD-FAMILY-PROMOTION-CRITERIA-MATRIX-001"]
+        assert inv.status == "PLANNED"
+        assert inv.target_artifact == "METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001"
+
     def test_scm_treated_set_placebo_null_calibration_lane_complete(self) -> None:
         reg = load_registry()
         lane = next(
