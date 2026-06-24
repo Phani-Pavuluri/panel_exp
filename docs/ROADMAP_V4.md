@@ -302,8 +302,8 @@ Foundation and compatibility audits ✅
   → ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001 ✅
   → METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001 ✅
   → OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001 ✅
-  → SIMULATION_DGP_COVERAGE_PLAN_001 (active method lane)
-  → SIMULATION_DGP_COVERAGE_PLAN_001
+  → SIMULATION_DGP_COVERAGE_PLAN_001 ✅
+  → METHOD_FAILURE_MODE_REGISTRY_001 (active method lane)
   → METHOD_FAILURE_MODE_REGISTRY_001
   → implementation lanes (not selected until control layer complete)
 ```
@@ -312,7 +312,9 @@ Foundation and compatibility audits ✅
 
 **METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001 (2026-06-03):** Audits design/estimator/inference gap coverage and literature-alignment buckets (**82 rows**; `failed_scenarios: []`). Suitability matrix is necessary but not sufficient. Observed-panel diagnostics, simulation DGP plan, and failure-mode registry are required next control layers. See [`track_d/METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001_REPORT.md`](track_d/METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001_REPORT.md).
 
-**OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001 (2026-06-03):** Defines **87** observed-panel diagnostic requirements before method selection (`failed_scenarios: []`). Hard blockers, warnings, estimator/inference routing impacts, and artifact routing defined. **Immediate next control artifact:** `SIMULATION_DGP_COVERAGE_PLAN_001`. See [`track_d/OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001_REPORT.md`](track_d/OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001_REPORT.md).
+**OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001 (2026-06-03):** Defines **87** observed-panel diagnostic requirements before method selection (`failed_scenarios: []`). Hard blockers, warnings, estimator/inference routing impacts, and artifact routing defined. See [`track_d/OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001_REPORT.md`](track_d/OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001_REPORT.md).
+
+**SIMULATION_DGP_COVERAGE_PLAN_001 (2026-06-03):** Defines **105** simulation DGP coverage requirements for shared calibration universe (`failed_scenarios: []`). **Immediate next control artifact:** `METHOD_FAILURE_MODE_REGISTRY_001`. See [`track_d/SIMULATION_DGP_COVERAGE_PLAN_001_REPORT.md`](track_d/SIMULATION_DGP_COVERAGE_PLAN_001_REPORT.md).
 
 **ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001 (2026-06-03):** First cross-estimator × design × inference suitability matrix (**50 rows**; `failed_scenarios: []`). Placebo/randomization is **one inference family**, not the full inference layer. No estimator receives a universal default inference. See [`track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md`](track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md).
 
@@ -339,7 +341,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001`** → ✅ **`OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001`** → **`SIMULATION_DGP_COVERAGE_PLAN_001`** → failure-mode registry → implementation backlog (not selected until control layer complete).
+**Ordered next:** ✅ … → ✅ **`OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001`** → ✅ **`SIMULATION_DGP_COVERAGE_PLAN_001`** → **`METHOD_FAILURE_MODE_REGISTRY_001`** → implementation backlog (not selected until control layer complete).
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 

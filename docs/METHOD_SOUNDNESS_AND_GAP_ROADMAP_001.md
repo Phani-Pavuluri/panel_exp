@@ -440,9 +440,9 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 
 **Paused:** **`D5-INST-AUGSYNTH-MULTICELL-001`** as default next step · TrustReport/F-DECISION/CalibrationSignal/MMM role expansion · TrustReport product-ops (audit log, API, scheduler, platform — frozen per [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md)) · LLM layer · promotion audits.
 
-**Active method lane (2026-06-03):** `METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001` → … → `METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001` ✅ → `OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001` ✅ → **`SIMULATION_DGP_COVERAGE_PLAN_001`** (immediate next) → `METHOD_FAILURE_MODE_REGISTRY_001`. Downstream schema/ingestion/decisioning paused.
+**Active method lane (2026-06-03):** `METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001` → … → `OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001` ✅ → `SIMULATION_DGP_COVERAGE_PLAN_001` ✅ → **`METHOD_FAILURE_MODE_REGISTRY_001`** (immediate next). Downstream schema/ingestion/decisioning paused.
 
-**OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001:** 87-row observed-panel diagnostic requirements (`failed_scenarios: []`). Hard blockers, warnings, and estimator/inference routing impacts defined before method selection. See [`OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001`](track_d/OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001_REPORT.md).
+**SIMULATION_DGP_COVERAGE_PLAN_001:** 105-row master DGP coverage plan (`failed_scenarios: []`). Shared calibration universe required; null calibration alone insufficient. See [`SIMULATION_DGP_COVERAGE_PLAN_001`](track_d/SIMULATION_DGP_COVERAGE_PLAN_001_REPORT.md).
 
 **Post-control implementation lanes (not selected until control layer complete):** `TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001` · `DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001` · `DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001` · `MULTICELL_MAX_T_RESEARCH_SCOUT_001` · `AUGSYNTH_ESTIMATOR_BACKED_RANDOMIZATION_CALIBRATION_001` · `SCM_AUGSYNTH_DISAGREEMENT_DIAGNOSTICS_001` · `METHOD_PROMOTION_CRITERIA_BY_FAMILY_001` · `METHOD_REPAIR_REPLACE_RETIRE_DECISION_RULES_001`
 

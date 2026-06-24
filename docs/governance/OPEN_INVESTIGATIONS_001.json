@@ -423,24 +423,25 @@
     {
       "investigation_id": "INV-SIMULATION-DGP-COVERAGE-PLAN-001",
       "title": "Master simulation DGP coverage plan for calibration harnesses",
-      "status": "PLANNED",
+      "status": "RESOLVED",
       "priority": "P1",
       "discovered_by": "ROADMAP-INFERENCE-AND-METHOD-GAP-CONTROL-REFOCUS-001",
       "affected_combination": "simulation_coverage",
       "problem_class": ["simulation_coverage", "null_calibration_consistency"],
       "evidence": {
         "depends_on": ["OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001"],
-        "centralize_dgp_grid_before_expanding_harnesses": true,
+        "dgp_count": 105,
+        "failed_scenarios": [],
         "blocked_downstream_authorization": true
       },
-      "current_decision": "METHOD_GAP_CONTROL_LANE_ACTIVE_NO_DOWNSTREAM_AUTHORIZATION",
+      "current_decision": "SIMULATION_DGP_COVERAGE_PLAN_DEFINED_NO_DOWNSTREAM_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
-      "target_artifact": "SIMULATION_DGP_COVERAGE_PLAN_001",
-      "revisit_trigger": "Upon opening SIMULATION_DGP_COVERAGE_PLAN_001",
+      "target_artifact": null,
+      "revisit_trigger": null,
       "decision_checkpoint": "Simulation DGP coverage plan complete before expanding calibration harnesses",
       "blocking_policy": "Calibration harnesses must not use inconsistent toy nulls; master DGP grid required",
       "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY"],
-      "resolution_artifact": null
+      "resolution_artifact": "SIMULATION_DGP_COVERAGE_PLAN_001"
     },
     {
       "investigation_id": "INV-METHOD-FAILURE-MODE-REGISTRY-001",
@@ -1108,6 +1109,32 @@
         "observed_data_diagnostics",
         "method_selection_prerequisite",
         "simulation_coverage",
+        "failure_registry",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "SIMULATION-DGP-COVERAGE-PLAN-001",
+      "status": "complete",
+      "open_investigations": [
+        "INV-METHOD-FAILURE-MODE-REGISTRY-001"
+      ],
+      "resolved_investigations": [
+        "INV-SIMULATION-DGP-COVERAGE-PLAN-001"
+      ],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "METHOD_FAILURE_MODE_REGISTRY_001",
+      "resolution_artifact": "SIMULATION_DGP_COVERAGE_PLAN_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "simulation_coverage",
+        "null_calibration_consistency",
         "failure_registry",
         "no_downstream_authorization"
       ]

@@ -1,0 +1,500 @@
+{
+  "artifact_id": "SIMULATION_DGP_COVERAGE_PLAN_001",
+  "artifact_version": "1.0.0",
+  "status": "completed",
+  "verdict": "simulation_dgp_coverage_plan_defined_no_downstream_authorization",
+  "generated_at": "2026-06-24T17:08:36.637171+00:00",
+  "git_commit": "e98750c9ae956b01dc8c42df2e6b301e1fc52f0e",
+  "dgp_count": 105,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "requirements_build_successfully",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "dgp_count_at_least_90",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "dgp_ids_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "null_baseline_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "noise_variance_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "temporal_structure_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "outcome_scale_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "treatment_effect_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_design_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "donor_support_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "small_sample_panel_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "interference_spillover_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_multiplicity_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "estimator_specific_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_specific_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "coverage_purpose_null_calibration_at_least_10",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "coverage_purpose_type_i_error_stress_at_least_10",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "coverage_purpose_coverage_stress_at_least_8",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "coverage_purpose_estimator_robustness_at_least_10",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "coverage_purpose_design_stress_test_at_least_8",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "coverage_purpose_multicell_dependence_stress_at_least_5",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "coverage_purpose_spillover_stress_at_least_5",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "coverage_purpose_outcome_scale_stress_at_least_7",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "coverage_purpose_promotion_gate_at_least_10",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "coverage_purpose_research_scout_at_least_5",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "shared_dgp_universe_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "observed_diagnostics_mapped_to_dgps",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "null_calibration_alone_sufficient_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "dgp_coverage_blocks_future_promotion",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_and_interference_require_research_handling",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "sparse_count_binary_outcomes_require_coverage",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "downstream_work_paused",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "promotion_blockers_exist",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "research_extensions_exist",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_rank_1_method_failure_mode_registry_001",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_tbr_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_synthetic_did_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_trop_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_all_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_augsynth_cvxpy_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_scm_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_bayesian_tbr_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_multicell_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_tbrridge_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_did_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_placebo_rank_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_max_t_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_studentized_placebo_rank_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_permutation_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_conformal_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_no_valid_inference_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_bootstrap_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_all_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_bayesian_posterior_diagnostic_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_stepdown_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_block_residual_bootstrap_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_cluster_robust_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_jackknife_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_family_randomization_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_issues_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "dgp_count": 105,
+    "unique_dgp_ids": true,
+    "category_counts": {
+      "null_baseline": 7,
+      "noise_variance": 7,
+      "temporal_structure": 7,
+      "outcome_scale": 9,
+      "treatment_effect": 9,
+      "assignment_design": 11,
+      "donor_support": 7,
+      "small_sample_panel": 8,
+      "interference_spillover": 6,
+      "multicell_multiplicity": 9,
+      "estimator_specific": 11,
+      "inference_specific": 14
+    },
+    "null_baseline_covered": true,
+    "noise_variance_covered": true,
+    "temporal_structure_covered": true,
+    "outcome_scale_covered": true,
+    "treatment_effect_covered": true,
+    "assignment_design_covered": true,
+    "donor_support_covered": true,
+    "small_sample_panel_covered": true,
+    "interference_spillover_covered": true,
+    "multicell_multiplicity_covered": true,
+    "estimator_specific_covered": true,
+    "inference_specific_covered": true,
+    "observed_diagnostics_mapped_to_dgps": true,
+    "sparse_count_binary_outcomes_require_coverage": true,
+    "promotion_blockers_defined": true,
+    "research_extensions_defined": true,
+    "issues": []
+  },
+  "category_counts": {
+    "null_baseline": 7,
+    "noise_variance": 7,
+    "temporal_structure": 7,
+    "outcome_scale": 9,
+    "treatment_effect": 9,
+    "assignment_design": 11,
+    "donor_support": 7,
+    "small_sample_panel": 8,
+    "interference_spillover": 6,
+    "multicell_multiplicity": 9,
+    "estimator_specific": 11,
+    "inference_specific": 14
+  },
+  "severity_counts": {
+    "required_core": 18,
+    "required_stress": 54,
+    "method_specific": 21,
+    "research_extension": 6,
+    "diagnostic_only": 6
+  },
+  "method_family_counts": {
+    "all": 28,
+    "did": 27,
+    "scm": 30,
+    "synthetic_did": 3,
+    "augsynth_cvxpy": 15,
+    "tbrridge": 17,
+    "multicell": 16,
+    "tbr": 5,
+    "bayesian_tbr": 2,
+    "trop": 1
+  },
+  "inference_family_counts": {
+    "randomization": 30,
+    "placebo_rank": 25,
+    "studentized_placebo_rank": 7,
+    "bootstrap": 28,
+    "all": 9,
+    "cluster_robust": 5,
+    "block_residual_bootstrap": 5,
+    "conformal": 4,
+    "no_valid_inference": 20,
+    "permutation": 2,
+    "jackknife": 5,
+    "max_t": 10,
+    "stepdown": 7,
+    "bayesian_posterior_diagnostic": 2
+  },
+  "coverage_purpose_counts": {
+    "null_calibration": 29,
+    "type_i_error_stress": 35,
+    "promotion_gate": 25,
+    "estimator_robustness": 39,
+    "coverage_stress": 23,
+    "design_stress_test": 17,
+    "outcome_scale_stress": 8,
+    "research_scout": 20,
+    "multicell_dependence_stress": 15,
+    "spillover_stress": 5
+  },
+  "null_baseline_covered": true,
+  "noise_variance_covered": true,
+  "temporal_structure_covered": true,
+  "outcome_scale_covered": true,
+  "treatment_effect_covered": true,
+  "assignment_design_covered": true,
+  "donor_support_covered": true,
+  "small_sample_panel_covered": true,
+  "interference_spillover_covered": true,
+  "multicell_multiplicity_covered": true,
+  "estimator_specific_covered": true,
+  "inference_specific_covered": true,
+  "shared_dgp_universe_required": true,
+  "observed_diagnostics_mapped_to_dgps": true,
+  "null_calibration_alone_sufficient": false,
+  "dgp_coverage_blocks_future_promotion": true,
+  "multicell_and_interference_require_research_handling": true,
+  "sparse_count_binary_outcomes_require_coverage": true,
+  "downstream_work_paused": true,
+  "recommended_next_artifacts": [
+    "METHOD_FAILURE_MODE_REGISTRY_001",
+    "DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001",
+    "TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001",
+    "DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001",
+    "MULTICELL_MAX_T_RESEARCH_SCOUT_001"
+  ],
+  "production_p_value_authorized": false,
+  "causal_confidence_interval_authorized": false,
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false
+}
