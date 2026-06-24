@@ -334,9 +334,22 @@ class TestOpenInvestigationRegistry001:
         assert lane["status"] == "complete"
         assert lane["resolution_artifact"] == "ROADMAP_INFERENCE_AND_METHOD_GAP_CONTROL_REFOCUS_001"
         assert lane["next_artifact"] == "ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001"
-        assert "INV-ESTIMATOR-DESIGN-INFERENCE-SUITABILITY-MATRIX-001" in lane["open_investigations"]
         assert "INV-METHOD-GAP-COVERAGE-LITERATURE-ALIGNMENT-001" in lane["open_investigations"]
+        assert "INV-ESTIMATOR-DESIGN-INFERENCE-SUITABILITY-MATRIX-001" in lane["resolved_investigations"]
         assert "method_gap_control" in lane["artifact_tags"]
+        assert "no_downstream_authorization" in lane["artifact_tags"]
+
+    def test_estimator_design_inference_suitability_matrix_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "ESTIMATOR-DESIGN-INFERENCE-SUITABILITY-MATRIX-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001"
+        assert lane["next_artifact"] == "METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001"
+        assert "INV-METHOD-GAP-COVERAGE-LITERATURE-ALIGNMENT-001" in lane["open_investigations"]
+        assert "inference_suitability" in lane["artifact_tags"]
         assert "no_downstream_authorization" in lane["artifact_tags"]
 
     def test_scm_treated_set_placebo_null_calibration_lane_complete(self) -> None:

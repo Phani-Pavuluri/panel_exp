@@ -299,15 +299,17 @@ Foundation and compatibility audits ✅
   → SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001 ✅
   → SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001 ✅
   → ROADMAP_INFERENCE_AND_METHOD_GAP_CONTROL_REFOCUS_001 ✅
-  → ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001 (active method lane)
-  → METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001
+  → ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001 ✅
+  → METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001 (active method lane)
   → OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001
   → SIMULATION_DGP_COVERAGE_PLAN_001
   → METHOD_FAILURE_MODE_REGISTRY_001
   → implementation lanes (not selected until control layer complete)
 ```
 
-**ROADMAP_INFERENCE_AND_METHOD_GAP_CONTROL_REFOCUS_001 (2026-06-03):** Corrects the active method-accuracy lane after `SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001`. The roadmap must not treat placebo/randomization as the full inference layer or select inference by estimator name alone. **Immediate next artifact:** `ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001`. **Next control artifact:** `METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001`. `DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001` remains important but moves after the suitability/gap-control layer unless the matrix explicitly reprioritizes it.
+**ROADMAP_INFERENCE_AND_METHOD_GAP_CONTROL_REFOCUS_001 (2026-06-03):** Corrects the active method-accuracy lane after `SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001`. The roadmap must not treat placebo/randomization as the full inference layer or select inference by estimator name alone. **Immediate next control artifact:** `METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001` (after suitability matrix completion). `DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001` remains important but moves after the suitability/gap-control layer unless the matrix explicitly reprioritizes it.
+
+**ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001 (2026-06-03):** First cross-estimator × design × inference suitability matrix (**50 rows**; `failed_scenarios: []`). Placebo/randomization is **one inference family**, not the full inference layer. No estimator receives a universal default inference. See [`track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md`](track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md).
 
 **Method-control layers (first-class):** Observed-data conditions · design validity · estimator suitability · inference suitability · simulation coverage · literature alignment · failure modes · repair/replace/retire decisions.
 
@@ -332,7 +334,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001`** → ✅ **`ROADMAP_INFERENCE_AND_METHOD_GAP_CONTROL_REFOCUS_001`** → **`ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001`** → **`METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001`** → observed-panel diagnostics · simulation DGP coverage · failure-mode registry → implementation backlog (not selected until control layer complete).
+**Ordered next:** ✅ … → ✅ **`SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001`** → ✅ **`ROADMAP_INFERENCE_AND_METHOD_GAP_CONTROL_REFOCUS_001`** → ✅ **`ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001`** → **`METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001`** → observed-panel diagnostics · simulation DGP coverage · failure-mode registry → implementation backlog (not selected until control layer complete).
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 
