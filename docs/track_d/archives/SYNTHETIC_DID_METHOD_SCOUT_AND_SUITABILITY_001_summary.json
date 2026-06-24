@@ -1,0 +1,448 @@
+{
+  "artifact_id": "SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001",
+  "artifact_version": "1.0.0",
+  "status": "completed",
+  "verdict": "synthetic_did_method_scout_and_suitability_completed_no_downstream_authorization",
+  "generated_at": "2026-06-24T21:44:15.972614+00:00",
+  "git_commit": "9ff5c9a1c91d2f213dfed639289ccdd2b1e0b288",
+  "scout_row_count": 55,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "scout_rows_build_successfully",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scout_row_count_at_least_50",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scout_ids_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "component_placebo_rank_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "component_multicell_shared_control_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "component_missing_data_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "component_multi_treated_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "component_jackknife_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "component_regularization_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "component_unit_weights_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "component_vs_scm_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "component_time_weights_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "component_point_estimate_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "component_bootstrap_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "component_randomization_permutation_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "component_deterministic_unknown_assignment_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "component_sparse_count_rate_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "component_balanced_panel_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "component_pre_period_fit_trend_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "component_vs_tbrridge_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "component_vs_did_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "component_vs_augsynth_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "component_donor_support_overlap_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_method_scout_candidate_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_blocked_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_candidate_after_adapter_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_research_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_candidate_after_simulation_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_diagnostic_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_retire_or_replace_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_implementation_candidate_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_remediation_required_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_candidate_after_null_calibration_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "synthetic_did_research_scout_candidate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "synthetic_did_implementation_candidate_only_after_suitability",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "synthetic_did_production_inference_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "synthetic_did_production_p_value_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "synthetic_did_causal_ci_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_adapter_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_null_calibration_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "observed_diagnostics_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "dgp_coverage_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_assignment_stress_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_registry_consulted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_shared_control_blocked_without_dependence_handling",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "comparison_against_scm_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "comparison_against_augsynth_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "comparison_against_did_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "comparison_against_tbrridge_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "downstream_work_paused",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_rank_1_bayesian_tbr_and_tbr_retirement_boundary_audit_001",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_issues_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "scout_row_count": 55,
+    "unique_scout_ids": true,
+    "status_counts": {
+      "blocked": 15,
+      "diagnostic_only": 5,
+      "research_only": 10,
+      "method_scout_candidate": 5,
+      "implementation_candidate": 3,
+      "candidate_after_simulation": 5,
+      "candidate_after_adapter": 2,
+      "candidate_after_null_calibration": 2,
+      "remediation_required": 7,
+      "retire_or_replace": 1
+    },
+    "component_counts": {
+      "point_estimate": 9,
+      "unit_weights": 3,
+      "time_weights": 3,
+      "regularization": 3,
+      "balanced_panel": 3,
+      "missing_data": 2,
+      "donor_support_overlap": 2,
+      "pre_period_fit_trend": 2,
+      "sparse_count_rate": 2,
+      "placebo_rank": 4,
+      "bootstrap": 2,
+      "jackknife": 2,
+      "randomization_permutation": 3,
+      "deterministic_unknown_assignment": 2,
+      "multi_treated": 2,
+      "multicell_shared_control": 3,
+      "vs_scm": 2,
+      "vs_did": 2,
+      "vs_augsynth": 2,
+      "vs_tbrridge": 2
+    },
+    "comparison_method_counts": {
+      "scm": 36,
+      "augsynth": 21,
+      "did": 30,
+      "tbrridge": 19
+    },
+    "all_required_paths_covered": true,
+    "all_statuses_represented": true,
+    "issues": []
+  },
+  "status_counts": {
+    "blocked": 15,
+    "diagnostic_only": 5,
+    "research_only": 10,
+    "method_scout_candidate": 5,
+    "implementation_candidate": 3,
+    "candidate_after_simulation": 5,
+    "candidate_after_adapter": 2,
+    "candidate_after_null_calibration": 2,
+    "remediation_required": 7,
+    "retire_or_replace": 1
+  },
+  "component_counts": {
+    "point_estimate": 9,
+    "unit_weights": 3,
+    "time_weights": 3,
+    "regularization": 3,
+    "balanced_panel": 3,
+    "missing_data": 2,
+    "donor_support_overlap": 2,
+    "pre_period_fit_trend": 2,
+    "sparse_count_rate": 2,
+    "placebo_rank": 4,
+    "bootstrap": 2,
+    "jackknife": 2,
+    "randomization_permutation": 3,
+    "deterministic_unknown_assignment": 2,
+    "multi_treated": 2,
+    "multicell_shared_control": 3,
+    "vs_scm": 2,
+    "vs_did": 2,
+    "vs_augsynth": 2,
+    "vs_tbrridge": 2
+  },
+  "comparison_method_counts": {
+    "scm": 36,
+    "augsynth": 21,
+    "did": 30,
+    "tbrridge": 19
+  },
+  "all_required_paths_covered": true,
+  "recommended_next_artifacts": [
+    "BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001",
+    "TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001",
+    "METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001"
+  ],
+  "synthetic_did_research_scout_candidate": true,
+  "synthetic_did_implementation_candidate_only_after_suitability": true,
+  "synthetic_did_production_inference_authorized": false,
+  "synthetic_did_production_p_value_authorized": false,
+  "synthetic_did_causal_ci_authorized": false,
+  "future_adapter_required": true,
+  "future_null_calibration_required": true,
+  "observed_diagnostics_required": true,
+  "dgp_coverage_required": true,
+  "design_assignment_stress_required": true,
+  "failure_registry_consulted": true,
+  "multicell_shared_control_blocked_without_dependence_handling": true,
+  "comparison_against_scm_required": true,
+  "comparison_against_augsynth_required": true,
+  "comparison_against_did_required": true,
+  "comparison_against_tbrridge_required": true,
+  "downstream_work_paused": true,
+  "production_p_value_authorized": false,
+  "causal_confidence_interval_authorized": false,
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false
+}

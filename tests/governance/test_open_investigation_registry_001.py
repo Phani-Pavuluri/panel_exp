@@ -546,12 +546,31 @@ class TestOpenInvestigationRegistry001:
         assert inv.status == "PLANNED"
         assert inv.target_artifact == "BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001"
 
-    def test_synthetic_did_method_scout_investigation_planned(self) -> None:
-        inv = investigations_by_id()["INV-SYNTHETIC-DID-METHOD-SCOUT-AND-SUITABILITY-001"]
-        assert inv.status == "PLANNED"
-        assert inv.target_artifact == "SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001"
+    def test_synthetic_did_method_scout_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "SYNTHETIC-DID-METHOD-SCOUT-AND-SUITABILITY-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001"
+        assert lane["next_artifact"] == "BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001"
+        assert "INV-SYNTHETIC-DID-METHOD-SCOUT-AND-SUITABILITY-001" in lane["resolved_investigations"]
+        assert "INV-BAYESIAN-TBR-AND-TBR-RETIREMENT-BOUNDARY-AUDIT-001" in lane["open_investigations"]
+        assert "synthetic_did" in lane["artifact_tags"]
+        assert "no_downstream_authorization" in lane["artifact_tags"]
 
-    def test_method_family_promotion_criteria_matrix_investigation_planned(self) -> None:
+    def test_synthetic_did_method_scout_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-SYNTHETIC-DID-METHOD-SCOUT-AND-SUITABILITY-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001"
+
+    def test_trop_research_only_boundary_audit_investigation_planned(self) -> None:
+        inv = investigations_by_id()["INV-TROP-RESEARCH-ONLY-BOUNDARY-AUDIT-001"]
+        assert inv.status == "PLANNED"
+        assert inv.target_artifact == "TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001"
+
+    def test_bayesian_tbr_retirement_boundary_audit_investigation_planned(self) -> None:
         inv = investigations_by_id()["INV-METHOD-FAMILY-PROMOTION-CRITERIA-MATRIX-001"]
         assert inv.status == "PLANNED"
         assert inv.target_artifact == "METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001"

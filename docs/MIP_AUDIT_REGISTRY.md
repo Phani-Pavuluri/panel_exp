@@ -1670,7 +1670,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** 60-row SCM/AugSynth promotion gate audit (`failed_scenarios: []`). SCM strongest near-term candidate; production inference unauthorized; AugSynth requires adapter and null calibration. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
 
-**Next:** `SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001`.
+**Next:** `SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001` (completed — see Synthetic DID method scout).
+
+---
+
+## SYNTHETIC-DID-METHOD-SCOUT-AND-SUITABILITY-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001_REPORT.md`](track_d/SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001_REPORT.md) · [`docs/track_d/archives/SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001_summary.json`](track_d/archives/SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001_summary.json) · [`panel_exp/validation/synthetic_did_method_scout_suitability_001.py`](../panel_exp/validation/synthetic_did_method_scout_suitability_001.py)
+
+**Status:** **`synthetic_did_method_scout_and_suitability_completed_no_downstream_authorization`**
+
+**Verdict:** 55-row Synthetic DID method scout (`failed_scenarios: []`). Research/scout candidate; implementation only after suitability evidence; production inference unauthorized. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001`.
 
 ---
 

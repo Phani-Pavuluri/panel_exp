@@ -607,23 +607,25 @@
     {
       "investigation_id": "INV-SYNTHETIC-DID-METHOD-SCOUT-AND-SUITABILITY-001",
       "title": "Synthetic DID method scout and suitability",
-      "status": "PLANNED",
+      "status": "RESOLVED",
       "priority": "P2",
-      "discovered_by": "MULTICELL-MAX-T-RESEARCH-SCOUT-001",
+      "discovered_by": "SCM-AUGSYNTH-INFERENCE-PROMOTION-GATE-AUDIT-001",
       "affected_combination": "synthetic_did_inference_paths",
       "problem_class": ["synthetic_did", "method_scout", "multicell_suitability"],
       "evidence": {
-        "depends_on": ["MULTICELL_MAX_T_RESEARCH_SCOUT_001"],
+        "depends_on": ["SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001"],
+        "scout_row_count": 55,
+        "failed_scenarios": [],
         "blocked_downstream_authorization": true
       },
-      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "current_decision": "SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_COMPLETED_NO_DOWNSTREAM_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
-      "target_artifact": "SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001",
-      "revisit_trigger": "Upon opening SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001",
-      "decision_checkpoint": "Synthetic DID scout after SCM/AugSynth promotion gate audit",
-      "blocking_policy": "Synthetic DID multicell paths require simulation and adapter before promotion",
-      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "REMEDIATE", "DEFER_RESEARCH"],
-      "resolution_artifact": null
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Synthetic DID scout complete before Bayesian TBR retirement boundary audit",
+      "blocking_policy": "Synthetic DID is research/scout candidate; production inference unauthorized; multicell blocked without dependence handling",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "REMEDIATE", "DEFER_RESEARCH", "IMPLEMENT"],
+      "resolution_artifact": "SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001"
     },
     {
       "investigation_id": "INV-METHOD-FAMILY-PROMOTION-CRITERIA-MATRIX-001",
@@ -665,6 +667,27 @@
       "decision_checkpoint": "Bayesian TBR/TBR retirement boundary after Synthetic DID scout",
       "blocking_policy": "TBR aggregate and Bayesian TBR require explicit retire/replace boundary before promotion criteria matrix",
       "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "RETIRE", "REPLACE"],
+      "resolution_artifact": null
+    },
+    {
+      "investigation_id": "INV-TROP-RESEARCH-ONLY-BOUNDARY-AUDIT-001",
+      "title": "TROP research-only boundary audit",
+      "status": "PLANNED",
+      "priority": "P2",
+      "discovered_by": "SYNTHETIC-DID-METHOD-SCOUT-AND-SUITABILITY-001",
+      "affected_combination": "trop_research_boundary",
+      "problem_class": ["trop", "research_boundary", "retire_or_replace"],
+      "evidence": {
+        "depends_on": ["SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001"],
+        "blocked_downstream_authorization": true
+      },
+      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": "TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001",
+      "revisit_trigger": "Upon opening TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001",
+      "decision_checkpoint": "TROP research boundary after Bayesian TBR retirement audit",
+      "blocking_policy": "TROP remains research-only until boundary audit completes",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "RETIRE", "DEFER_RESEARCH"],
       "resolution_artifact": null
     }
   ],
@@ -1518,6 +1541,33 @@
         "method_gap_control",
         "scm_augsynth_inference",
         "promotion_gate",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "SYNTHETIC-DID-METHOD-SCOUT-AND-SUITABILITY-001",
+      "status": "complete",
+      "open_investigations": [
+        "INV-BAYESIAN-TBR-AND-TBR-RETIREMENT-BOUNDARY-AUDIT-001"
+      ],
+      "resolved_investigations": [
+        "INV-SYNTHETIC-DID-METHOD-SCOUT-AND-SUITABILITY-001"
+      ],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001",
+        "INV-METHOD-FAMILY-PROMOTION-CRITERIA-MATRIX-001",
+        "INV-TROP-RESEARCH-ONLY-BOUNDARY-AUDIT-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001",
+      "resolution_artifact": "SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "synthetic_did",
+        "method_scout",
         "no_downstream_authorization"
       ]
     }

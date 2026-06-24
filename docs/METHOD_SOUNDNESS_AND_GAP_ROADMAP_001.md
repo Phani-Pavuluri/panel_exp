@@ -440,9 +440,9 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 
 **Paused:** **`D5-INST-AUGSYNTH-MULTICELL-001`** as default next step · TrustReport/F-DECISION/CalibrationSignal/MMM role expansion · TrustReport product-ops (audit log, API, scheduler, platform — frozen per [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md)) · LLM layer · promotion audits.
 
-**Active method lane (2026-06-03):** `METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001` → … → `MULTICELL_MAX_T_RESEARCH_SCOUT_001` ✅ → `SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001` ✅ → **`SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001`** (immediate next). Downstream schema/ingestion/decisioning paused.
+**Active method lane (2026-06-03):** `METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001` → … → `SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001` ✅ → `SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001` ✅ → **`BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001`** (immediate next). Downstream schema/ingestion/decisioning paused.
 
-**SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001:** 60-row SCM/AugSynth promotion gate audit (`failed_scenarios: []`). SCM strongest near-term candidate; production inference unauthorized. See [`SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001`](track_d/SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001_REPORT.md).
+**SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001:** 55-row Synthetic DID scout (`failed_scenarios: []`). Research/scout candidate; production inference unauthorized. See [`SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001`](track_d/SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001_REPORT.md).
 
 **MULTICELL_MAX_T_RESEARCH_SCOUT_001:** 50-row multicell max-T research scout (`failed_scenarios: []`). Naive per-cell p-values blocked; pooled/global inference blocked; max-T/stepdown research candidates only. See [`MULTICELL_MAX_T_RESEARCH_SCOUT_001`](track_d/MULTICELL_MAX_T_RESEARCH_SCOUT_001_REPORT.md).
 
