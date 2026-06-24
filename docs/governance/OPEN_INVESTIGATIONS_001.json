@@ -465,6 +465,29 @@
       "blocking_policy": "Known failures must be registered centrally; diagnostic-only and blocked paths must not be re-promoted ad hoc",
       "terminal_decisions": ["REMEDIATE", "RESTRICT", "DIAGNOSTIC_ONLY", "RETIRE"],
       "resolution_artifact": "METHOD_FAILURE_MODE_REGISTRY_001"
+    },
+    {
+      "investigation_id": "INV-DESIGN-ASSIGNMENT-GENERATOR-STRESS-TESTS-001",
+      "title": "Design assignment generator stress tests for inference feasibility",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "METHOD-FAILURE-MODE-REGISTRY-001",
+      "affected_combination": "assignment_generator_stress",
+      "problem_class": ["assignment_generator", "randomization_feasibility", "placebo_support"],
+      "evidence": {
+        "depends_on": ["METHOD_FAILURE_MODE_REGISTRY_001"],
+        "stress_test_count": 91,
+        "failed_scenarios": [],
+        "blocked_downstream_authorization": true
+      },
+      "current_decision": "DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_DEFINED_NO_DOWNSTREAM_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Assignment generator stress tests complete before TBRRidge/DID remediation lanes",
+      "blocking_policy": "Assignment generators are not inference engines; stress failures must link to failure registry",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "REMEDIATE"],
+      "resolution_artifact": "DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001"
     }
   ],
   "roadmap_lane_bindings": [
@@ -1143,7 +1166,9 @@
     {
       "lane_id": "METHOD-FAILURE-MODE-REGISTRY-001",
       "status": "complete",
-      "open_investigations": [],
+      "open_investigations": [
+        "INV-DESIGN-ASSIGNMENT-GENERATOR-STRESS-TESTS-001"
+      ],
       "resolved_investigations": [
         "INV-METHOD-FAILURE-MODE-REGISTRY-001"
       ],
@@ -1160,6 +1185,30 @@
         "method_gap_control",
         "failure_registry",
         "repair_replace_retire",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "DESIGN-ASSIGNMENT-GENERATOR-STRESS-TESTS-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-DESIGN-ASSIGNMENT-GENERATOR-STRESS-TESTS-001"
+      ],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001",
+      "resolution_artifact": "DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "assignment_generator_stress",
+        "randomization_feasibility",
+        "placebo_support",
         "no_downstream_authorization"
       ]
     }

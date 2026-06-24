@@ -1,0 +1,550 @@
+{
+  "artifact_id": "DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001",
+  "artifact_version": "1.0.0",
+  "status": "completed",
+  "verdict": "design_assignment_generator_stress_tests_defined_no_downstream_authorization",
+  "generated_at": "2026-06-24T18:58:29.338964+00:00",
+  "git_commit": "658a9b8efcf4692706286dd31859f0dde99cbbcf",
+  "stress_test_count": 91,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "stress_tests_build_successfully",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stress_test_count_at_least_90",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stress_ids_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_support_integrity_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "randomized_assignment_validity_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "matched_pair_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "matched_block_stratified_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "rerandomization_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "greedy_deterministic_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "kernel_thinning_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multi_treated_placebo_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_shared_control_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_feasibility_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_registry_linkage_covered",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "severity_hard_blocker_at_least_15",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "severity_required_stress_at_least_20",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "severity_diagnostic_only_at_least_8",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "severity_sensitivity_only_at_least_5",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "severity_research_required_at_least_8",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "severity_remediation_required_at_least_5",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_allow_research_candidate_at_least_5",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_block_inference_at_least_15",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_mark_diagnostic_only_at_least_8",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_mark_sensitivity_only_at_least_5",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_studentized_adapter_at_least_3",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_null_calibration_at_least_8",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_failure_registry_link_at_least_8",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_multicell_multiplicity_research_at_least_4",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_remediation_at_least_5",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_design_documentation_at_least_8",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_generators_not_inference_engines",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "unknown_and_deterministic_assignment_block_design_based_inference",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "small_or_degenerate_support_blocks_rank_inference",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_shared_control_requires_dependence_handling",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "studentized_adapters_and_null_calibration_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stress_failures_link_to_failure_registry",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "downstream_work_paused",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "blocking_stress_tests_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "promotion_blocking_stress_tests_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "studentized_adapter_prerequisites_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_rank_1_tbrridge_inference_remediation_or_retirement_audit_001",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_family_matched_block_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_family_complete_randomization_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_family_multi_treated_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_family_greedy_matched_market_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_family_all_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_family_matched_pair_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_family_stratified_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_family_multicell_shared_control_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_family_rerandomized_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_family_kernel_thinning_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_family_unknown_assignment_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_family_fixed_deterministic_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_path_treated_set_placebo_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_path_placebo_rank_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_path_leave_one_treated_out_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_path_randomization_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_path_all_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_path_diagnostic_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_path_no_valid_inference_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_path_max_t_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_path_studentized_placebo_rank_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_path_permutation_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "inference_path_stepdown_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_issues_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "stress_test_count": 91,
+    "unique_stress_ids": true,
+    "category_counts": {
+      "assignment_support_integrity": 12,
+      "randomized_assignment_validity": 8,
+      "matched_pair": 8,
+      "matched_block_stratified": 8,
+      "rerandomization": 8,
+      "greedy_deterministic": 7,
+      "kernel_thinning": 6,
+      "multi_treated_placebo": 7,
+      "multicell_shared_control": 9,
+      "inference_feasibility": 12,
+      "failure_registry_linkage": 6
+    },
+    "severity_counts": {
+      "hard_blocker": 25,
+      "required_stress": 33,
+      "diagnostic_only": 12,
+      "sensitivity_only": 5,
+      "research_required": 11,
+      "remediation_required": 5
+    },
+    "action_counts": {
+      "allow_research_candidate": 10,
+      "block_inference": 25,
+      "mark_diagnostic_only": 18,
+      "mark_sensitivity_only": 6,
+      "require_studentized_adapter": 3,
+      "require_null_calibration": 22,
+      "require_failure_registry_link": 16,
+      "require_multicell_multiplicity_research": 10,
+      "require_remediation": 5,
+      "require_design_documentation": 17
+    },
+    "assignment_support_integrity_covered": true,
+    "randomized_assignment_validity_covered": true,
+    "matched_pair_covered": true,
+    "matched_block_stratified_covered": true,
+    "rerandomization_covered": true,
+    "greedy_deterministic_covered": true,
+    "kernel_thinning_covered": true,
+    "multi_treated_placebo_covered": true,
+    "multicell_shared_control_covered": true,
+    "inference_feasibility_covered": true,
+    "failure_registry_linkage_covered": true,
+    "blocking_stress_tests_defined": true,
+    "promotion_blocking_stress_tests_defined": true,
+    "hard_blockers_defined": true,
+    "diagnostic_only_paths_defined": true,
+    "sensitivity_only_paths_defined": true,
+    "research_required_paths_defined": true,
+    "remediation_required_paths_defined": true,
+    "studentized_adapter_prerequisites_defined": true,
+    "failure_registry_links_present": true,
+    "issues": []
+  },
+  "category_counts": {
+    "assignment_support_integrity": 12,
+    "randomized_assignment_validity": 8,
+    "matched_pair": 8,
+    "matched_block_stratified": 8,
+    "rerandomization": 8,
+    "greedy_deterministic": 7,
+    "kernel_thinning": 6,
+    "multi_treated_placebo": 7,
+    "multicell_shared_control": 9,
+    "inference_feasibility": 12,
+    "failure_registry_linkage": 6
+  },
+  "severity_counts": {
+    "hard_blocker": 25,
+    "required_stress": 33,
+    "diagnostic_only": 12,
+    "sensitivity_only": 5,
+    "research_required": 11,
+    "remediation_required": 5
+  },
+  "action_counts": {
+    "allow_research_candidate": 10,
+    "block_inference": 25,
+    "mark_diagnostic_only": 18,
+    "mark_sensitivity_only": 6,
+    "require_studentized_adapter": 3,
+    "require_null_calibration": 22,
+    "require_failure_registry_link": 16,
+    "require_multicell_multiplicity_research": 10,
+    "require_remediation": 5,
+    "require_design_documentation": 17
+  },
+  "assignment_family_counts": {
+    "complete_randomization": 14,
+    "greedy_matched_market": 9,
+    "kernel_thinning": 10,
+    "matched_pair": 11,
+    "matched_block": 8,
+    "multi_treated": 11,
+    "multicell_shared_control": 13,
+    "rerandomized": 10,
+    "all": 4,
+    "stratified": 7,
+    "unknown_assignment": 6,
+    "fixed_deterministic": 6
+  },
+  "inference_path_counts": {
+    "randomization": 38,
+    "placebo_rank": 15,
+    "no_valid_inference": 18,
+    "permutation": 8,
+    "treated_set_placebo": 7,
+    "leave_one_treated_out": 2,
+    "max_t": 11,
+    "stepdown": 6,
+    "diagnostic_only": 11,
+    "studentized_placebo_rank": 2,
+    "all": 1
+  },
+  "assignment_support_integrity_covered": true,
+  "randomized_assignment_validity_covered": true,
+  "matched_pair_covered": true,
+  "matched_block_stratified_covered": true,
+  "rerandomization_covered": true,
+  "greedy_deterministic_covered": true,
+  "kernel_thinning_covered": true,
+  "multi_treated_placebo_covered": true,
+  "multicell_shared_control_covered": true,
+  "inference_feasibility_covered": true,
+  "failure_registry_linkage_covered": true,
+  "assignment_generators_not_inference_engines": true,
+  "unknown_and_deterministic_assignment_block_design_based_inference": true,
+  "small_or_degenerate_support_blocks_rank_inference": true,
+  "multicell_shared_control_requires_dependence_handling": true,
+  "studentized_adapters_and_null_calibration_required": true,
+  "stress_failures_link_to_failure_registry": true,
+  "inference_authorized": false,
+  "downstream_work_paused": true,
+  "recommended_next_artifacts": [
+    "TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001",
+    "DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001",
+    "MULTICELL_MAX_T_RESEARCH_SCOUT_001"
+  ],
+  "production_p_value_authorized": false,
+  "causal_confidence_interval_authorized": false,
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false
+}

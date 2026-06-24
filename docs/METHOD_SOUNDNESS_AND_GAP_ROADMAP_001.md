@@ -440,9 +440,9 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 
 **Paused:** **`D5-INST-AUGSYNTH-MULTICELL-001`** as default next step · TrustReport/F-DECISION/CalibrationSignal/MMM role expansion · TrustReport product-ops (audit log, API, scheduler, platform — frozen per [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md)) · LLM layer · promotion audits.
 
-**Active method lane (2026-06-03):** `METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001` → … → `SIMULATION_DGP_COVERAGE_PLAN_001` ✅ → `METHOD_FAILURE_MODE_REGISTRY_001` ✅ → **`DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001`** (immediate next). Downstream schema/ingestion/decisioning paused.
+**Active method lane (2026-06-03):** `METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001` → … → `METHOD_FAILURE_MODE_REGISTRY_001` ✅ → `DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001` ✅ → **`TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001`** (immediate next). Downstream schema/ingestion/decisioning paused.
 
-**METHOD_FAILURE_MODE_REGISTRY_001:** 100-row central failure-mode registry (`failed_scenarios: []`). Links observed diagnostics and DGP triggers to promotion-blocking paths. See [`METHOD_FAILURE_MODE_REGISTRY_001`](track_d/METHOD_FAILURE_MODE_REGISTRY_001_REPORT.md).
+**DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001:** 91-row assignment-generator stress-test plan (`failed_scenarios: []`). Assignment generators are not inference engines. See [`DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001`](track_d/DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001_REPORT.md).
 
 **Post-control implementation lanes (not selected until control layer complete):** `TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001` · `DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001` · `DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001` · `MULTICELL_MAX_T_RESEARCH_SCOUT_001` · `AUGSYNTH_ESTIMATOR_BACKED_RANDOMIZATION_CALIBRATION_001` · `SCM_AUGSYNTH_DISAGREEMENT_DIAGNOSTICS_001` · `METHOD_PROMOTION_CRITERIA_BY_FAMILY_001` · `METHOD_REPAIR_REPLACE_RETIRE_DECISION_RULES_001`
 
