@@ -1578,6 +1578,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## SIMULATION-DGP-COVERAGE-PLAN-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/SIMULATION_DGP_COVERAGE_PLAN_001_REPORT.md`](track_d/SIMULATION_DGP_COVERAGE_PLAN_001_REPORT.md) · [`docs/track_d/archives/SIMULATION_DGP_COVERAGE_PLAN_001_summary.json`](track_d/archives/SIMULATION_DGP_COVERAGE_PLAN_001_summary.json) · [`panel_exp/validation/simulation_dgp_coverage_plan_001.py`](../panel_exp/validation/simulation_dgp_coverage_plan_001.py)
+
+**Status:** **`simulation_dgp_coverage_plan_defined_no_downstream_authorization`**
+
+**Verdict:** 105-row master simulation DGP coverage plan (`failed_scenarios: []`). Shared calibration universe required; null calibration alone insufficient. Promotion-blocking DGP gaps defined. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `METHOD_FAILURE_MODE_REGISTRY_001`.
+
+---
+
 ## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)
