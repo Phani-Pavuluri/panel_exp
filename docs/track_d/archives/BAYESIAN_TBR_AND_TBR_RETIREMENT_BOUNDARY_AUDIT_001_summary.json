@@ -1,0 +1,424 @@
+{
+  "artifact_id": "BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001",
+  "artifact_version": "1.0.0",
+  "status": "completed",
+  "verdict": "bayesian_tbr_and_tbr_retirement_boundary_audit_completed_no_downstream_authorization",
+  "generated_at": "2026-06-24T22:05:46.571586+00:00",
+  "git_commit": "67202f3c0b76e5cdfe4c9de7576b23f6bd24482c",
+  "boundary_row_count": 48,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "boundary_rows_build_successfully",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "boundary_row_count_at_least_45",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "boundary_ids_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "path_type_classic_tbr_multicell_shared_control_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "path_type_bayesian_tbr_calibration_replay_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "path_type_classic_tbr_placebo_rank_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "path_type_classic_tbr_residual_bootstrap_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "path_type_bayesian_tbr_sparse_count_rate_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "path_type_bayesian_tbr_multicell_shared_control_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "path_type_bayesian_tbr_posterior_interval_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "path_type_bayesian_tbr_credible_as_causal_ci_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "path_type_tbr_vs_did_boundary_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "path_type_tbr_vs_scm_augsynth_boundary_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "path_type_classic_tbr_aggregate_global_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "path_type_bayesian_tbr_posterior_diagnostic_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "path_type_classic_tbr_per_cell_marginal_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "path_type_tbr_vs_tbrridge_boundary_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "path_type_bayesian_tbr_prior_sensitivity_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "path_type_classic_tbr_deterministic_unknown_assignment_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "path_type_classic_tbr_point_estimate_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "path_type_bayesian_tbr_posterior_predictive_check_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_blocked_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_research_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_remediation_required_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_posterior_diagnostic_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_candidate_after_simulation_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_candidate_after_calibration_replay_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_retire_or_replace_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_diagnostic_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "bayesian_tbr_posterior_intervals_not_causal_ci",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "bayesian_tbr_production_inference_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "bayesian_tbr_production_p_value_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "bayesian_tbr_causal_ci_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "bayesian_tbr_posterior_diagnostic_only_until_calibrated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "bayesian_tbr_requires_calibration_replay_before_promotion",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "classic_tbr_aggregate_overclaim_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "classic_tbr_retire_or_replace_paths_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "classic_tbr_production_inference_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "classic_tbr_production_p_value_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "classic_tbr_causal_ci_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_shared_control_blocked_without_dependence_handling",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbrridge_prior_boundary_preserved",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "observed_diagnostics_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "dgp_coverage_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_assignment_stress_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_registry_consulted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "downstream_work_paused",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_rank_1_trop_research_only_boundary_audit_001",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_issues_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "boundary_row_count": 48,
+    "unique_boundary_ids": true,
+    "status_counts": {
+      "blocked": 17,
+      "diagnostic_only": 6,
+      "research_only": 10,
+      "posterior_diagnostic_only": 3,
+      "retire_or_replace": 2,
+      "remediation_required": 7,
+      "candidate_after_calibration_replay": 1,
+      "candidate_after_simulation": 2
+    },
+    "method_family_counts": {
+      "classic_tbr": 19,
+      "bayesian_tbr": 18,
+      "both": 11
+    },
+    "path_type_counts": {
+      "classic_tbr_point_estimate": 7,
+      "classic_tbr_aggregate_global": 3,
+      "classic_tbr_per_cell_marginal": 2,
+      "classic_tbr_residual_bootstrap": 3,
+      "classic_tbr_placebo_rank": 3,
+      "classic_tbr_deterministic_unknown_assignment": 2,
+      "classic_tbr_multicell_shared_control": 2,
+      "bayesian_tbr_posterior_diagnostic": 2,
+      "bayesian_tbr_posterior_interval": 4,
+      "bayesian_tbr_credible_as_causal_ci": 3,
+      "bayesian_tbr_prior_sensitivity": 2,
+      "bayesian_tbr_posterior_predictive_check": 2,
+      "bayesian_tbr_calibration_replay": 2,
+      "bayesian_tbr_sparse_count_rate": 2,
+      "bayesian_tbr_multicell_shared_control": 2,
+      "tbr_vs_tbrridge_boundary": 3,
+      "tbr_vs_did_boundary": 2,
+      "tbr_vs_scm_augsynth_boundary": 2
+    },
+    "all_required_paths_covered": true,
+    "all_statuses_represented": true,
+    "retire_or_replace_paths_defined": true,
+    "issues": []
+  },
+  "status_counts": {
+    "blocked": 17,
+    "diagnostic_only": 6,
+    "research_only": 10,
+    "posterior_diagnostic_only": 3,
+    "retire_or_replace": 2,
+    "remediation_required": 7,
+    "candidate_after_calibration_replay": 1,
+    "candidate_after_simulation": 2
+  },
+  "method_family_counts": {
+    "classic_tbr": 19,
+    "bayesian_tbr": 18,
+    "both": 11
+  },
+  "path_type_counts": {
+    "classic_tbr_point_estimate": 7,
+    "classic_tbr_aggregate_global": 3,
+    "classic_tbr_per_cell_marginal": 2,
+    "classic_tbr_residual_bootstrap": 3,
+    "classic_tbr_placebo_rank": 3,
+    "classic_tbr_deterministic_unknown_assignment": 2,
+    "classic_tbr_multicell_shared_control": 2,
+    "bayesian_tbr_posterior_diagnostic": 2,
+    "bayesian_tbr_posterior_interval": 4,
+    "bayesian_tbr_credible_as_causal_ci": 3,
+    "bayesian_tbr_prior_sensitivity": 2,
+    "bayesian_tbr_posterior_predictive_check": 2,
+    "bayesian_tbr_calibration_replay": 2,
+    "bayesian_tbr_sparse_count_rate": 2,
+    "bayesian_tbr_multicell_shared_control": 2,
+    "tbr_vs_tbrridge_boundary": 3,
+    "tbr_vs_did_boundary": 2,
+    "tbr_vs_scm_augsynth_boundary": 2
+  },
+  "all_required_paths_covered": true,
+  "classic_tbr_retire_or_replace_paths_defined": true,
+  "recommended_next_artifacts": [
+    "TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001",
+    "METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001"
+  ],
+  "bayesian_tbr_posterior_intervals_not_causal_ci": true,
+  "bayesian_tbr_production_inference_authorized": false,
+  "bayesian_tbr_production_p_value_authorized": false,
+  "bayesian_tbr_causal_ci_authorized": false,
+  "bayesian_tbr_posterior_diagnostic_only_until_calibrated": true,
+  "bayesian_tbr_requires_calibration_replay_before_promotion": true,
+  "classic_tbr_aggregate_overclaim_blocked": true,
+  "classic_tbr_production_inference_authorized": false,
+  "classic_tbr_production_p_value_authorized": false,
+  "classic_tbr_causal_ci_authorized": false,
+  "multicell_shared_control_blocked_without_dependence_handling": true,
+  "tbrridge_prior_boundary_preserved": true,
+  "observed_diagnostics_required": true,
+  "dgp_coverage_required": true,
+  "design_assignment_stress_required": true,
+  "failure_registry_consulted": true,
+  "downstream_work_paused": true,
+  "production_p_value_authorized": false,
+  "causal_confidence_interval_authorized": false,
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false
+}

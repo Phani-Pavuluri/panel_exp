@@ -541,10 +541,24 @@ class TestOpenInvestigationRegistry001:
         assert inv.status == "RESOLVED"
         assert inv.resolution_artifact == "SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001"
 
-    def test_bayesian_tbr_retirement_boundary_audit_investigation_planned(self) -> None:
+    def test_bayesian_tbr_retirement_boundary_audit_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "BAYESIAN-TBR-AND-TBR-RETIREMENT-BOUNDARY-AUDIT-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001"
+        assert lane["next_artifact"] == "TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001"
+        assert "INV-BAYESIAN-TBR-AND-TBR-RETIREMENT-BOUNDARY-AUDIT-001" in lane["resolved_investigations"]
+        assert "INV-TROP-RESEARCH-ONLY-BOUNDARY-AUDIT-001" in lane["open_investigations"]
+        assert "tbr_retirement" in lane["artifact_tags"]
+        assert "no_downstream_authorization" in lane["artifact_tags"]
+
+    def test_bayesian_tbr_retirement_boundary_audit_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-BAYESIAN-TBR-AND-TBR-RETIREMENT-BOUNDARY-AUDIT-001"]
-        assert inv.status == "PLANNED"
-        assert inv.target_artifact == "BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001"
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001"
 
     def test_synthetic_did_method_scout_lane_complete(self) -> None:
         reg = load_registry()

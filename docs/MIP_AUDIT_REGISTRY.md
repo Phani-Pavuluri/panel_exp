@@ -1682,7 +1682,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** 55-row Synthetic DID method scout (`failed_scenarios: []`). Research/scout candidate; implementation only after suitability evidence; production inference unauthorized. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
 
-**Next:** `BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001`.
+**Next:** `BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001` (completed — see Bayesian TBR boundary audit).
+
+---
+
+## BAYESIAN-TBR-AND-TBR-RETIREMENT-BOUNDARY-AUDIT-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001_REPORT.md`](track_d/BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001_REPORT.md) · [`docs/track_d/archives/BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001_summary.json`](track_d/archives/BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001_summary.json) · [`panel_exp/validation/bayesian_tbr_and_tbr_retirement_boundary_audit_001.py`](../panel_exp/validation/bayesian_tbr_and_tbr_retirement_boundary_audit_001.py)
+
+**Status:** **`bayesian_tbr_and_tbr_retirement_boundary_audit_completed_no_downstream_authorization`**
+
+**Verdict:** 48-row TBR/Bayesian TBR boundary audit (`failed_scenarios: []`). Posterior intervals not causal CIs; classic aggregate overclaim blocked; TBRRidge audit preserved. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001`.
 
 ---
 

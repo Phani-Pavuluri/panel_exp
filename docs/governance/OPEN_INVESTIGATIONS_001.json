@@ -651,23 +651,25 @@
     {
       "investigation_id": "INV-BAYESIAN-TBR-AND-TBR-RETIREMENT-BOUNDARY-AUDIT-001",
       "title": "Bayesian TBR and TBR retirement boundary audit",
-      "status": "PLANNED",
+      "status": "RESOLVED",
       "priority": "P2",
-      "discovered_by": "SCM-AUGSYNTH-INFERENCE-PROMOTION-GATE-AUDIT-001",
+      "discovered_by": "SYNTHETIC-DID-METHOD-SCOUT-AND-SUITABILITY-001",
       "affected_combination": "bayesian_tbr_tbr_retirement_boundary",
       "problem_class": ["bayesian_tbr", "tbr_retirement", "retire_or_replace"],
       "evidence": {
-        "depends_on": ["SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001"],
+        "depends_on": ["SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001"],
+        "boundary_row_count": 48,
+        "failed_scenarios": [],
         "blocked_downstream_authorization": true
       },
-      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "current_decision": "BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_COMPLETED_NO_DOWNSTREAM_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
-      "target_artifact": "BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001",
-      "revisit_trigger": "Upon opening BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001",
-      "decision_checkpoint": "Bayesian TBR/TBR retirement boundary after Synthetic DID scout",
-      "blocking_policy": "TBR aggregate and Bayesian TBR require explicit retire/replace boundary before promotion criteria matrix",
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Bayesian TBR/TBR retirement boundary complete before TROP boundary audit",
+      "blocking_policy": "Posterior intervals not causal CIs; classic aggregate overclaim blocked; TBRRidge audit preserved",
       "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "RETIRE", "REPLACE"],
-      "resolution_artifact": null
+      "resolution_artifact": "BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001"
     },
     {
       "investigation_id": "INV-TROP-RESEARCH-ONLY-BOUNDARY-AUDIT-001",
@@ -1568,6 +1570,32 @@
         "method_gap_control",
         "synthetic_did",
         "method_scout",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "BAYESIAN-TBR-AND-TBR-RETIREMENT-BOUNDARY-AUDIT-001",
+      "status": "complete",
+      "open_investigations": [
+        "INV-TROP-RESEARCH-ONLY-BOUNDARY-AUDIT-001"
+      ],
+      "resolved_investigations": [
+        "INV-BAYESIAN-TBR-AND-TBR-RETIREMENT-BOUNDARY-AUDIT-001"
+      ],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001",
+        "INV-METHOD-FAMILY-PROMOTION-CRITERIA-MATRIX-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001",
+      "resolution_artifact": "BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "bayesian_tbr",
+        "tbr_retirement",
         "no_downstream_authorization"
       ]
     }
