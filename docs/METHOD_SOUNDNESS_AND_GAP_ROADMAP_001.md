@@ -440,9 +440,9 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 
 **Paused:** **`D5-INST-AUGSYNTH-MULTICELL-001`** as default next step · TrustReport/F-DECISION/CalibrationSignal/MMM role expansion · TrustReport product-ops (audit log, API, scheduler, platform — frozen per [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md)) · LLM layer · promotion audits.
 
-**Active method lane (2026-06-03):** `METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001` → … → `BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001` ✅ → `TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001` ✅ → **`METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001`** (immediate next). Downstream schema/ingestion/decisioning paused.
+**Active method lane (2026-06-03):** `METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001` → … → `TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001` ✅ → `METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001` ✅ → **`PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001`** (immediate next). Downstream schema/ingestion/decisioning paused.
 
-**TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001:** 40-row TROP boundary audit (`failed_scenarios: []`). TROP remains research-only; production inference/recommendations/decisioning unauthorized. See [`TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001`](track_d/TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001_REPORT.md).
+**METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001:** 178-row promotion criteria matrix (`failed_scenarios: []`). SCM strongest gated candidate; multicell cross-family blocker. See [`METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001`](track_d/METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001_REPORT.md).
 
 **MULTICELL_MAX_T_RESEARCH_SCOUT_001:** 50-row multicell max-T research scout (`failed_scenarios: []`). Naive per-cell p-values blocked; pooled/global inference blocked; max-T/stepdown research candidates only. See [`MULTICELL_MAX_T_RESEARCH_SCOUT_001`](track_d/MULTICELL_MAX_T_RESEARCH_SCOUT_001_REPORT.md).
 

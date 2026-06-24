@@ -1706,7 +1706,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** 40-row TROP boundary audit (`failed_scenarios: []`). TROP remains research-only; production inference/recommendations/decisioning unauthorized; comparisons against SCM/DID/Synthetic DID/TBRRidge required before promotion. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
 
-**Next:** `METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001`.
+**Next:** `METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001` (completed — see promotion criteria matrix).
+
+---
+
+## METHOD-FAMILY-PROMOTION-CRITERIA-MATRIX-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001_REPORT.md`](track_d/METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001_REPORT.md) · [`docs/track_d/archives/METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001_summary.json`](track_d/archives/METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001_summary.json) · [`panel_exp/validation/method_family_promotion_criteria_matrix_001.py`](../panel_exp/validation/method_family_promotion_criteria_matrix_001.py)
+
+**Status:** **`method_family_promotion_criteria_matrix_defined_no_downstream_authorization`**
+
+**Verdict:** 178-row promotion criteria matrix across 9 method families (`failed_scenarios: []`). SCM strongest gated candidate; multicell cross-family blocker; retire/replace criteria defined. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001`.
 
 ---
 

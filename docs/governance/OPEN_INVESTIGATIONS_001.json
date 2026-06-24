@@ -630,22 +630,89 @@
     {
       "investigation_id": "INV-METHOD-FAMILY-PROMOTION-CRITERIA-MATRIX-001",
       "title": "Method family promotion criteria matrix",
-      "status": "PLANNED",
+      "status": "RESOLVED",
       "priority": "P2",
-      "discovered_by": "MULTICELL-MAX-T-RESEARCH-SCOUT-001",
+      "discovered_by": "TROP-RESEARCH-ONLY-BOUNDARY-AUDIT-001",
       "affected_combination": "estimator_family_promotion_criteria",
       "problem_class": ["promotion_criteria", "method_family_matrix"],
       "evidence": {
-        "depends_on": ["MULTICELL_MAX_T_RESEARCH_SCOUT_001"],
+        "depends_on": ["TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001"],
+        "criteria_row_count": 178,
+        "failed_scenarios": [],
+        "blocked_downstream_authorization": true
+      },
+      "current_decision": "METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_DEFINED_NO_DOWNSTREAM_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Promotion criteria matrix complete before production compatibility workplan",
+      "blocking_policy": "No family promotion without explicit criteria matrix; all families gated",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
+      "resolution_artifact": "METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001"
+    },
+    {
+      "investigation_id": "INV-PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001",
+      "title": "Production compatibility promotion workplan",
+      "status": "PLANNED",
+      "priority": "P2",
+      "discovered_by": "METHOD-FAMILY-PROMOTION-CRITERIA-MATRIX-001",
+      "affected_combination": "production_compatibility_promotion_workplan",
+      "problem_class": ["promotion_workplan", "production_compatibility"],
+      "evidence": {
+        "depends_on": ["METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001"],
         "blocked_downstream_authorization": true
       },
       "current_decision": "PLANNED_NO_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
-      "target_artifact": "METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001",
-      "revisit_trigger": "Upon opening METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001",
-      "decision_checkpoint": "Promotion criteria matrix after estimator-specific gate audits",
-      "blocking_policy": "No family promotion without explicit criteria matrix",
+      "target_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001",
+      "revisit_trigger": "Upon opening PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001",
+      "decision_checkpoint": "Production compatibility workplan after promotion criteria matrix",
+      "blocking_policy": "No production promotion without explicit workplan",
       "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
+      "resolution_artifact": null
+    },
+    {
+      "investigation_id": "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001",
+      "title": "SCM production candidate validation plan",
+      "status": "PLANNED",
+      "priority": "P2",
+      "discovered_by": "METHOD-FAMILY-PROMOTION-CRITERIA-MATRIX-001",
+      "affected_combination": "scm_production_candidate_validation",
+      "problem_class": ["scm", "production_candidate", "validation_plan"],
+      "evidence": {
+        "depends_on": ["METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001"],
+        "scm_strongest_near_term_candidate": true,
+        "blocked_downstream_authorization": true
+      },
+      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": "SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001",
+      "revisit_trigger": "Upon opening SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001",
+      "decision_checkpoint": "SCM validation plan after promotion criteria matrix",
+      "blocking_policy": "SCM gated candidate requires explicit validation plan before promotion",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
+      "resolution_artifact": null
+    },
+    {
+      "investigation_id": "INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001",
+      "title": "Method family retire/replace execution plan",
+      "status": "PLANNED",
+      "priority": "P2",
+      "discovered_by": "METHOD-FAMILY-PROMOTION-CRITERIA-MATRIX-001",
+      "affected_combination": "method_family_retire_replace_execution",
+      "problem_class": ["retire_replace", "execution_plan"],
+      "evidence": {
+        "depends_on": ["METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001"],
+        "classic_tbr_retire_replace_defined": true,
+        "blocked_downstream_authorization": true
+      },
+      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001",
+      "revisit_trigger": "Upon opening METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001",
+      "decision_checkpoint": "Retire/replace execution after promotion criteria matrix",
+      "blocking_policy": "Retire/replace paths require explicit execution plan",
+      "terminal_decisions": ["RESTRICT", "RETIRE", "REPLACE"],
       "resolution_artifact": null
     },
     {
@@ -1623,6 +1690,33 @@
         "method_gap_control",
         "trop",
         "research_boundary",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "METHOD-FAMILY-PROMOTION-CRITERIA-MATRIX-001",
+      "status": "complete",
+      "open_investigations": [
+        "INV-PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001"
+      ],
+      "resolved_investigations": [
+        "INV-METHOD-FAMILY-PROMOTION-CRITERIA-MATRIX-001"
+      ],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001",
+        "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001",
+        "INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001",
+      "resolution_artifact": "METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "promotion_criteria",
+        "method_family_matrix",
         "no_downstream_authorization"
       ]
     }
