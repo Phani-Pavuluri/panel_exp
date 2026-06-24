@@ -235,8 +235,8 @@
       },
       "current_decision": "CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_DEFINED_NO_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production"],
-      "target_artifact": "METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001",
-      "revisit_trigger": "Upon opening METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001",
+      "target_artifact": "OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001",
+      "revisit_trigger": "Upon opening OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001",
       "decision_checkpoint": "Shared-control dependence model closeout before global multi-cell promotion",
       "blocking_policy": "Shared-control geometries require explicit dependence contract; per-cell marginal only unless promotion evidence complete",
       "terminal_decisions": ["REMEDIATE", "RESTRICT", "DIAGNOSTIC_ONLY"],
@@ -258,8 +258,8 @@
       },
       "current_decision": "CALIBRATION_SIGNAL_METHOD_GATE_DRAFT_DEFINED_NO_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "simultaneous_multi_cell_decision"],
-      "target_artifact": "METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001",
-      "revisit_trigger": "Upon opening METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001",
+      "target_artifact": "OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001",
+      "revisit_trigger": "Upon opening OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001",
       "decision_checkpoint": "Multiplicity calibration closeout before familywise multi-cell decisioning",
       "blocking_policy": "Marginal per-cell readouts cannot authorize simultaneous multi-cell decisions; CalibrationSignal method gate draft defined",
       "terminal_decisions": ["REMEDIATE", "RESTRICT", "DIAGNOSTIC_ONLY"],
@@ -284,8 +284,8 @@
       },
       "current_decision": "METHOD_ACCURACY_COMPATIBILITY_REFOCUS_DOWNSTREAM_PAUSED",
       "blocked_roles": ["trust_report", "calibration_signal", "production"],
-      "target_artifact": "METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001",
-      "revisit_trigger": "Upon opening METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001",
+      "target_artifact": "OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001",
+      "revisit_trigger": "Upon opening OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001",
       "decision_checkpoint": "Studentized randomization null calibration before downstream resume",
       "blocking_policy": "Downstream work paused; refocus on method accuracy and null calibration",
       "terminal_decisions": ["REMEDIATE", "RESTRICT", "DIAGNOSTIC_ONLY"],
@@ -376,24 +376,26 @@
     {
       "investigation_id": "INV-METHOD-GAP-COVERAGE-LITERATURE-ALIGNMENT-001",
       "title": "Method gap coverage and literature alignment audit",
-      "status": "PLANNED",
+      "status": "RESOLVED",
       "priority": "P0",
       "discovered_by": "ROADMAP-INFERENCE-AND-METHOD-GAP-CONTROL-REFOCUS-001",
       "affected_combination": "method_gap_control_lane",
       "problem_class": ["method_gap_control", "literature_alignment", "method_scouting"],
       "evidence": {
         "depends_on": ["ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001"],
-        "compare_repo_behavior_simulation_design_estimator_inference_literature": true,
+        "row_count": 82,
+        "failed_scenarios": [],
+        "suitability_matrix_sufficient_alone": false,
         "blocked_downstream_authorization": true
       },
-      "current_decision": "METHOD_GAP_CONTROL_LANE_ACTIVE_NO_DOWNSTREAM_AUTHORIZATION",
+      "current_decision": "METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_COMPLETED_NO_DOWNSTREAM_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
-      "target_artifact": "METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001",
-      "revisit_trigger": "Upon opening METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001",
+      "target_artifact": null,
+      "revisit_trigger": null,
       "decision_checkpoint": "Gap and literature alignment audit complete before observed-panel diagnostics and implementation lanes",
       "blocking_policy": "Literature alignment required before repair, replace, retire, or scout decisions; no downstream authorization",
       "terminal_decisions": ["REMEDIATE", "RESTRICT", "DIAGNOSTIC_ONLY"],
-      "resolution_artifact": null
+      "resolution_artifact": "METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001"
     },
     {
       "investigation_id": "INV-OBSERVED-PANEL-DIAGNOSTIC-REQUIREMENTS-001",
@@ -1046,6 +1048,36 @@
         "inference_selection",
         "observed_data_diagnostics",
         "literature_alignment",
+        "simulation_coverage",
+        "failure_registry",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "METHOD-GAP-COVERAGE-AND-LITERATURE-ALIGNMENT-AUDIT-001",
+      "status": "complete",
+      "open_investigations": [
+        "INV-OBSERVED-PANEL-DIAGNOSTIC-REQUIREMENTS-001",
+        "INV-SIMULATION-DGP-COVERAGE-PLAN-001",
+        "INV-METHOD-FAILURE-MODE-REGISTRY-001"
+      ],
+      "resolved_investigations": [
+        "INV-METHOD-GAP-COVERAGE-LITERATURE-ALIGNMENT-001"
+      ],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001",
+      "resolution_artifact": "METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "literature_alignment",
+        "method_scouting",
+        "observed_data_diagnostics",
         "simulation_coverage",
         "failure_registry",
         "no_downstream_authorization"
