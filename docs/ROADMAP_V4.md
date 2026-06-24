@@ -298,8 +298,31 @@ Foundation and compatibility audits ✅
   → STUDENTIZED_RANDOMIZATION_NULL_CALIBRATION_001 ✅
   → SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001 ✅
   → SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001 ✅
-  → DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001 (active method lane)
+  → ROADMAP_INFERENCE_AND_METHOD_GAP_CONTROL_REFOCUS_001 ✅
+  → ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001 (active method lane)
+  → METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001
+  → OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001
+  → SIMULATION_DGP_COVERAGE_PLAN_001
+  → METHOD_FAILURE_MODE_REGISTRY_001
+  → implementation lanes (not selected until control layer complete)
 ```
+
+**ROADMAP_INFERENCE_AND_METHOD_GAP_CONTROL_REFOCUS_001 (2026-06-03):** Corrects the active method-accuracy lane after `SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001`. The roadmap must not treat placebo/randomization as the full inference layer or select inference by estimator name alone. **Immediate next artifact:** `ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001`. **Next control artifact:** `METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001`. `DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001` remains important but moves after the suitability/gap-control layer unless the matrix explicitly reprioritizes it.
+
+**Method-control layers (first-class):** Observed-data conditions · design validity · estimator suitability · inference suitability · simulation coverage · literature alignment · failure modes · repair/replace/retire decisions.
+
+**Control artifact definitions:**
+- **`ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001`** — Map estimator × design × inference × estimand × geometry to supported, candidate-after-calibration, requires-adapter, diagnostic-only, sensitivity-only, research-deferred, retire/replace, or blocked. Governs jackknife, bootstrap, placebo/studentized placebo, permutation/randomization, conformal, Bayesian posterior diagnostics, DID analytic inference, max-T/stepdown.
+- **`METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001`** — Compare observed repo behavior, simulation/null-calibration evidence, design validity, estimator/inference suitability, literature alignment, and new-method scouting needs before repair/replace/retire/scout decisions.
+- **`OBSERVED_PANEL_DIAGNOSTIC_REQUIREMENTS_001`** — Required diagnostics on the actual observed panel (pre/post length, small-N structure, donor overlap, imbalance, outliers, seasonality, autocorrelation, heteroskedasticity, sparsity, zero inflation, spillover/contamination risk, treatment heterogeneity) before design/estimator/inference selection.
+- **`SIMULATION_DGP_COVERAGE_PLAN_001`** — Master simulation DGP grid (iid null, unit/time FE, latent factor, heteroskedasticity, autocorrelation, outliers, seasonality, sparse metrics, small-N geo, spillover, heterogeneous effects, multicell shared-control dependence) so calibration harnesses do not use inconsistent toy nulls.
+- **`METHOD_FAILURE_MODE_REGISTRY_001`** — Central registry of known failures (TBR aggregate geometry mismatch, TBRRidge BRB/KFold/placebo diagnostic-only, TBRRidge JK blocked, AugSynth JK diagnostic/retire, SCM single-treated placebo null-monitor-only, multicell global/winner familywise risk, stratified pooled heterogeneity gap, unknown assignment blocked, deterministic/falsification-only paths).
+
+**Explicit decisions:** Placebo/randomization is one inference family, not the full layer. No universal default inference per estimator. Suitability depends on estimator, design, assignment mechanism, estimand, geometry, statistic adapter, observed-data diagnostics, null calibration, multiplicity, and dependence. Observed-panel diagnostics and literature alignment are required before production-like method selection. Simulation DGP coverage must be centralized. Known failure modes must be registered centrally.
+
+**Post-control implementation lanes (candidates, not final):** `TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001` · `DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001` · `DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001` · `MULTICELL_MAX_T_RESEARCH_SCOUT_001` · `AUGSYNTH_ESTIMATOR_BACKED_RANDOMIZATION_CALIBRATION_001` · `SCM_AUGSYNTH_DISAGREEMENT_DIAGNOSTICS_001` · `METHOD_PROMOTION_CRITERIA_BY_FAMILY_001` · `METHOD_REPAIR_REPLACE_RETIRE_DECISION_RULES_001`
+
+**Downstream authorization:** No production p-values, causal confidence intervals, TrustReport, CalibrationSignal, MMM ingestion, LLM decisioning, production decisioning, live API, scheduler, or budget optimization. Downstream work remains paused until method suitability, observed-data diagnostics, literature alignment, simulation coverage, failure registry, and repair/replace/retire rules are completed or explicitly waived by a later audit.
 
 **TrustReport ops freeze (2026-06-03):** Research-mode operationalization is complete enough for package-level governance. Audit log, review queue, UI, API, scheduler, and platform rollout are **deferred to the MIP application/orchestration layer**. Active lane is **method validation** — see [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md).
 
@@ -309,7 +332,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001`** → ✅ **`SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001`** → **`DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001`** → method-validation backlog.
+**Ordered next:** ✅ … → ✅ **`SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001`** → ✅ **`ROADMAP_INFERENCE_AND_METHOD_GAP_CONTROL_REFOCUS_001`** → **`ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001`** → **`METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001`** → observed-panel diagnostics · simulation DGP coverage · failure-mode registry → implementation backlog (not selected until control layer complete).
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 

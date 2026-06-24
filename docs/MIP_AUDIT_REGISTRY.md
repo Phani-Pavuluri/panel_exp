@@ -1526,11 +1526,23 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Shared SCM/AugSynth statistic adapter contract for observed/pseudo comparability. Calibration-harness-only and randomization-candidate-only boundaries. **No production SCM/AugSynth inference, p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
 
-**Next:** `DESIGN_ASSIGNMENT_GENERATOR_STRESS_TESTS_001`.
+**Next:** `ROADMAP_INFERENCE_AND_METHOD_GAP_CONTROL_REFOCUS_001` (completed — see inference and method gap control refocus).
 
 ---
 
-## CALIBRATION-SIGNAL-METHOD-GATE-DRAFT-001 (2026-06-03)
+## ROADMAP-INFERENCE-AND-METHOD-GAP-CONTROL-REFOCUS-001 (2026-06-03)
+
+**Artifact:** Roadmap correction documented in [`ROADMAP_V4.md`](ROADMAP_V4.md) and [`METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md`](METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md)
+
+**Status:** **`roadmap_inference_and_method_gap_control_refocus_defined_no_downstream_authorization`**
+
+**Verdict:** Corrects active method-accuracy lane after `SCM_AUGSYNTH_STATISTIC_ADAPTER_CONTRACT_001`. Immediate next: `ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001`. Next control: `METHOD_GAP_COVERAGE_AND_LITERATURE_ALIGNMENT_AUDIT_001`, then observed-panel diagnostics, simulation DGP coverage, and failure-mode registry. Placebo/randomization is one inference family, not the full inference layer. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001`.
+
+---
+
+## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)
 
