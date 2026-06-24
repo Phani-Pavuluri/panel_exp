@@ -1,0 +1,540 @@
+{
+  "artifact_id": "DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001",
+  "artifact_version": "1.0.0",
+  "status": "completed",
+  "verdict": "did_randomization_and_bootstrap_suitability_completed_no_downstream_authorization",
+  "generated_at": "2026-06-24T20:07:45.619918+00:00",
+  "git_commit": "ee7beafdf80455ec7a3a9b3ff557daefd193054e",
+  "audit_row_count": 56,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "audit_rows_build_successfully",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "audit_row_count_at_least_50",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "path_ids_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_path_did_bootstrap_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_path_did_staggered_activation_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_path_did_block_bootstrap_dependence_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_path_did_deterministic_unknown_assignment_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_path_did_sparse_count_binary_rate_outcomes_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_path_did_multicell_shared_control_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_path_did_matched_block_stratified_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_path_did_point_estimate_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_path_did_permutation_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_path_did_cluster_robust_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_path_did_trend_violation_short_pre_small_n_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_path_did_cluster_bootstrap_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_path_did_design_randomization_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_path_did_matched_pair_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_remediation_required_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_blocked_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_candidate_after_future_validation_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_retire_or_replace_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_restricted_research_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_sensitivity_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_diagnostic_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_null_calibration_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_mark_diagnostic_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_remediate_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_failure_registry_consult_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_cluster_count_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_design_stress_test_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_mark_sensitivity_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_retire_or_replace_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_candidate_after_future_validation_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_observed_diagnostics_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_parallel_trends_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_require_dgp_coverage_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_keep_research_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "action_block_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_point_diagnostic_allowed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_production_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_causal_ci_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_randomization_candidate_requires_known_assignment",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_permutation_candidate_requires_valid_assignment_support",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_bootstrap_candidate_requires_dependence_validation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "bootstrap_does_not_fix_invalid_assignment",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "parallel_trends_required_before_promotion",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "staggered_timing_requires_research_handling",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "small_n_and_few_clusters_block_promotion",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "sparse_count_binary_outcomes_require_dgp_coverage",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_did_requires_multiplicity_research",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "observed_diagnostics_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "dgp_coverage_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_registry_consulted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_assignment_stress_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "downstream_work_paused",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_rank_1_multicell_max_t_research_scout_001",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_issues_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "audit_row_count": 56,
+    "unique_path_ids": true,
+    "status_counts": {
+      "blocked": 26,
+      "diagnostic_only": 6,
+      "sensitivity_only": 4,
+      "restricted_research": 9,
+      "remediation_required": 5,
+      "candidate_after_future_validation": 4,
+      "retire_or_replace": 2
+    },
+    "required_action_counts": {
+      "block": 21,
+      "mark_diagnostic_only": 6,
+      "mark_sensitivity_only": 4,
+      "keep_research_only": 3,
+      "remediate": 1,
+      "retire_or_replace": 2,
+      "candidate_after_future_validation": 4,
+      "require_null_calibration": 1,
+      "require_dgp_coverage": 3,
+      "require_observed_diagnostics": 2,
+      "require_design_stress_test": 5,
+      "require_failure_registry_consult": 1,
+      "require_parallel_trends": 1,
+      "require_cluster_count": 2
+    },
+    "failure_mode_counts": {
+      "FM-ES-005": 4,
+      "FM-INF-011": 4,
+      "FM-DB-009": 4,
+      "FM-DB-010": 4,
+      "FM-CP-003": 1,
+      "FM-DA-001": 5,
+      "FM-DA-007": 2,
+      "FM-DA-008": 2,
+      "FM-CP-001": 3,
+      "FM-DA-002": 4,
+      "FM-INF-001": 2,
+      "FM-INF-003": 6,
+      "FM-CP-002": 1,
+      "FM-INF-004": 2,
+      "FM-INF-006": 4,
+      "FM-TD-001": 1,
+      "FM-DA-004": 2,
+      "FM-DA-005": 1,
+      "FM-DA-006": 2,
+      "FM-TE-004": 2,
+      "FM-TE-001": 1,
+      "FM-DA-009": 1,
+      "FM-DA-010": 2,
+      "FM-INF-009": 2,
+      "FM-INF-010": 1,
+      "FM-OM-003": 1,
+      "FM-OM-004": 2,
+      "FM-OM-005": 1,
+      "FM-OM-006": 1,
+      "FM-PF-003": 2,
+      "FM-PS-004": 1,
+      "FM-PS-010": 1,
+      "FM-PS-006": 1,
+      "FM-PF-001": 1,
+      "FM-CP-004": 2
+    },
+    "bootstrap_candidates_defined": true,
+    "randomization_candidates_defined": true,
+    "promotion_blockers_defined": true,
+    "all_paths_represented": true,
+    "all_statuses_represented": true,
+    "all_actions_represented": true,
+    "issues": []
+  },
+  "status_counts": {
+    "blocked": 26,
+    "diagnostic_only": 6,
+    "sensitivity_only": 4,
+    "restricted_research": 9,
+    "remediation_required": 5,
+    "candidate_after_future_validation": 4,
+    "retire_or_replace": 2
+  },
+  "required_action_counts": {
+    "block": 21,
+    "mark_diagnostic_only": 6,
+    "mark_sensitivity_only": 4,
+    "keep_research_only": 3,
+    "remediate": 1,
+    "retire_or_replace": 2,
+    "candidate_after_future_validation": 4,
+    "require_null_calibration": 1,
+    "require_dgp_coverage": 3,
+    "require_observed_diagnostics": 2,
+    "require_design_stress_test": 5,
+    "require_failure_registry_consult": 1,
+    "require_parallel_trends": 1,
+    "require_cluster_count": 2
+  },
+  "failure_mode_counts": {
+    "FM-ES-005": 4,
+    "FM-INF-011": 4,
+    "FM-DB-009": 4,
+    "FM-DB-010": 4,
+    "FM-CP-003": 1,
+    "FM-DA-001": 5,
+    "FM-DA-007": 2,
+    "FM-DA-008": 2,
+    "FM-CP-001": 3,
+    "FM-DA-002": 4,
+    "FM-INF-001": 2,
+    "FM-INF-003": 6,
+    "FM-CP-002": 1,
+    "FM-INF-004": 2,
+    "FM-INF-006": 4,
+    "FM-TD-001": 1,
+    "FM-DA-004": 2,
+    "FM-DA-005": 1,
+    "FM-DA-006": 2,
+    "FM-TE-004": 2,
+    "FM-TE-001": 1,
+    "FM-DA-009": 1,
+    "FM-DA-010": 2,
+    "FM-INF-009": 2,
+    "FM-INF-010": 1,
+    "FM-OM-003": 1,
+    "FM-OM-004": 2,
+    "FM-OM-005": 1,
+    "FM-OM-006": 1,
+    "FM-PF-003": 2,
+    "FM-PS-004": 1,
+    "FM-PS-010": 1,
+    "FM-PS-006": 1,
+    "FM-PF-001": 1,
+    "FM-CP-004": 2
+  },
+  "did_path_counts": {
+    "did_point_estimate": 6,
+    "did_design_randomization": 6,
+    "did_permutation": 4,
+    "did_bootstrap": 5,
+    "did_cluster_bootstrap": 3,
+    "did_block_bootstrap_dependence": 3,
+    "did_cluster_robust": 3,
+    "did_matched_pair": 2,
+    "did_matched_block_stratified": 3,
+    "did_staggered_activation": 3,
+    "did_deterministic_unknown_assignment": 4,
+    "did_multicell_shared_control": 4,
+    "did_sparse_count_binary_rate_outcomes": 4,
+    "did_trend_violation_short_pre_small_n": 6
+  },
+  "downstream_work_paused": true,
+  "recommended_next_artifacts": [
+    "MULTICELL_MAX_T_RESEARCH_SCOUT_001"
+  ],
+  "did_point_diagnostic_allowed": true,
+  "did_production_inference_authorized": false,
+  "did_production_p_value_authorized": false,
+  "did_causal_ci_authorized": false,
+  "did_randomization_candidate_requires_known_assignment": true,
+  "did_permutation_candidate_requires_valid_assignment_support": true,
+  "did_bootstrap_candidate_requires_dependence_validation": true,
+  "bootstrap_does_not_fix_invalid_assignment": true,
+  "parallel_trends_required_before_promotion": true,
+  "staggered_timing_requires_research_handling": true,
+  "small_n_and_few_clusters_block_promotion": true,
+  "sparse_count_binary_outcomes_require_dgp_coverage": true,
+  "multicell_did_requires_multiplicity_research": true,
+  "observed_diagnostics_required": true,
+  "dgp_coverage_required": true,
+  "failure_registry_consulted": true,
+  "design_assignment_stress_required": true,
+  "production_p_value_authorized": false,
+  "causal_confidence_interval_authorized": false,
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false
+}

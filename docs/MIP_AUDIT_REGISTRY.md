@@ -1626,6 +1626,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## DID-RANDOMIZATION-BOOTSTRAP-SUITABILITY-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001_REPORT.md`](track_d/DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001_REPORT.md) · [`docs/track_d/archives/DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001_summary.json`](track_d/archives/DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001_summary.json) · [`panel_exp/validation/did_randomization_bootstrap_suitability_001.py`](../panel_exp/validation/did_randomization_bootstrap_suitability_001.py)
+
+**Status:** **`did_randomization_and_bootstrap_suitability_completed_no_downstream_authorization`**
+
+**Verdict:** 56-row DID randomization/bootstrap suitability audit (`failed_scenarios: []`). Point diagnostic allowed; randomization/permutation/bootstrap not production-valid. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `MULTICELL_MAX_T_RESEARCH_SCOUT_001`.
+
+---
+
 ## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)

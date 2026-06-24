@@ -511,6 +511,29 @@
       "blocking_policy": "TBRRidge production inference, p-values, and causal CIs remain unauthorized; BRB/KFold/placebo/jackknife not production-valid",
       "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "REMEDIATE", "RETIRE"],
       "resolution_artifact": "TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001"
+    },
+    {
+      "investigation_id": "INV-DID-RANDOMIZATION-BOOTSTRAP-SUITABILITY-001",
+      "title": "DID randomization and bootstrap suitability audit",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "TBRRIDGE-INFERENCE-REMEDIATION-OR-RETIREMENT-AUDIT-001",
+      "affected_combination": "did_inference_paths",
+      "problem_class": ["did_inference", "randomization_feasibility", "bootstrap_suitability"],
+      "evidence": {
+        "depends_on": ["TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001"],
+        "audit_row_count": 56,
+        "failed_scenarios": [],
+        "blocked_downstream_authorization": true
+      },
+      "current_decision": "DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_COMPLETED_NO_DOWNSTREAM_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "DID suitability audit complete before multicell max-T research scout",
+      "blocking_policy": "DID production inference, p-values, and causal CIs remain unauthorized; bootstrap cannot fix invalid assignment",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "REMEDIATE", "RETIRE"],
+      "resolution_artifact": "DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001"
     }
   ],
   "roadmap_lane_bindings": [
@@ -1240,7 +1263,9 @@
     {
       "lane_id": "TBRRIDGE-INFERENCE-REMEDIATION-OR-RETIREMENT-AUDIT-001",
       "status": "complete",
-      "open_investigations": [],
+      "open_investigations": [
+        "INV-DID-RANDOMIZATION-BOOTSTRAP-SUITABILITY-001"
+      ],
       "resolved_investigations": [
         "INV-TBRRIDGE-INFERENCE-REMEDIATION-OR-RETIREMENT-AUDIT-001"
       ],
@@ -1257,6 +1282,30 @@
         "method_gap_control",
         "tbrridge_inference",
         "remediation_or_retirement",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "DID-RANDOMIZATION-BOOTSTRAP-SUITABILITY-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-DID-RANDOMIZATION-BOOTSTRAP-SUITABILITY-001"
+      ],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "MULTICELL_MAX_T_RESEARCH_SCOUT_001",
+      "resolution_artifact": "DID_RANDOMIZATION_AND_BOOTSTRAP_SUITABILITY_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "did_inference",
+        "randomization_feasibility",
+        "bootstrap_suitability",
         "no_downstream_authorization"
       ]
     }
