@@ -522,10 +522,29 @@ class TestOpenInvestigationRegistry001:
         assert inv.status == "RESOLVED"
         assert inv.resolution_artifact == "MULTICELL_MAX_T_RESEARCH_SCOUT_001"
 
-    def test_scm_augsynth_inference_promotion_gate_audit_investigation_planned(self) -> None:
+    def test_scm_augsynth_inference_promotion_gate_audit_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "SCM-AUGSYNTH-INFERENCE-PROMOTION-GATE-AUDIT-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001"
+        assert lane["next_artifact"] == "SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001"
+        assert "INV-SCM-AUGSYNTH-INFERENCE-PROMOTION-GATE-AUDIT-001" in lane["resolved_investigations"]
+        assert "INV-SYNTHETIC-DID-METHOD-SCOUT-AND-SUITABILITY-001" in lane["open_investigations"]
+        assert "promotion_gate" in lane["artifact_tags"]
+        assert "no_downstream_authorization" in lane["artifact_tags"]
+
+    def test_scm_augsynth_inference_promotion_gate_audit_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-SCM-AUGSYNTH-INFERENCE-PROMOTION-GATE-AUDIT-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001"
+
+    def test_bayesian_tbr_retirement_boundary_audit_investigation_planned(self) -> None:
+        inv = investigations_by_id()["INV-BAYESIAN-TBR-AND-TBR-RETIREMENT-BOUNDARY-AUDIT-001"]
         assert inv.status == "PLANNED"
-        assert inv.target_artifact == "SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001"
+        assert inv.target_artifact == "BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001"
 
     def test_synthetic_did_method_scout_investigation_planned(self) -> None:
         inv = investigations_by_id()["INV-SYNTHETIC-DID-METHOD-SCOUT-AND-SUITABILITY-001"]

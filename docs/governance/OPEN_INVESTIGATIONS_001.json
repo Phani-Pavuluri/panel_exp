@@ -584,23 +584,25 @@
     {
       "investigation_id": "INV-SCM-AUGSYNTH-INFERENCE-PROMOTION-GATE-AUDIT-001",
       "title": "SCM and AugSynth inference promotion gate audit",
-      "status": "PLANNED",
+      "status": "RESOLVED",
       "priority": "P1",
       "discovered_by": "MULTICELL-MAX-T-RESEARCH-SCOUT-001",
       "affected_combination": "scm_augsynth_inference_promotion",
       "problem_class": ["inference_promotion", "null_calibration", "adapter_contract"],
       "evidence": {
         "depends_on": ["MULTICELL_MAX_T_RESEARCH_SCOUT_001"],
+        "gate_row_count": 60,
+        "failed_scenarios": [],
         "blocked_downstream_authorization": true
       },
-      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "current_decision": "SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_COMPLETED_NO_DOWNSTREAM_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
-      "target_artifact": "SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001",
-      "revisit_trigger": "Upon opening SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001",
-      "decision_checkpoint": "SCM/AugSynth promotion gate audit before Synthetic DID scout",
-      "blocking_policy": "Estimator-specific promotion gates must wait for multicell scout outcome",
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "SCM/AugSynth promotion gate audit complete before Synthetic DID scout",
+      "blocking_policy": "SCM strongest near-term candidate but production inference unauthorized; AugSynth requires adapter and null calibration",
       "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "REMEDIATE", "PROMOTE"],
-      "resolution_artifact": null
+      "resolution_artifact": "SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001"
     },
     {
       "investigation_id": "INV-SYNTHETIC-DID-METHOD-SCOUT-AND-SUITABILITY-001",
@@ -642,6 +644,27 @@
       "decision_checkpoint": "Promotion criteria matrix after estimator-specific gate audits",
       "blocking_policy": "No family promotion without explicit criteria matrix",
       "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
+      "resolution_artifact": null
+    },
+    {
+      "investigation_id": "INV-BAYESIAN-TBR-AND-TBR-RETIREMENT-BOUNDARY-AUDIT-001",
+      "title": "Bayesian TBR and TBR retirement boundary audit",
+      "status": "PLANNED",
+      "priority": "P2",
+      "discovered_by": "SCM-AUGSYNTH-INFERENCE-PROMOTION-GATE-AUDIT-001",
+      "affected_combination": "bayesian_tbr_tbr_retirement_boundary",
+      "problem_class": ["bayesian_tbr", "tbr_retirement", "retire_or_replace"],
+      "evidence": {
+        "depends_on": ["SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001"],
+        "blocked_downstream_authorization": true
+      },
+      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": "BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001",
+      "revisit_trigger": "Upon opening BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001",
+      "decision_checkpoint": "Bayesian TBR/TBR retirement boundary after Synthetic DID scout",
+      "blocking_policy": "TBR aggregate and Bayesian TBR require explicit retire/replace boundary before promotion criteria matrix",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "RETIRE", "REPLACE"],
       "resolution_artifact": null
     }
   ],
@@ -1468,6 +1491,33 @@
         "multicell_multiplicity",
         "shared_control_dependence",
         "max_t_stepdown",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "SCM-AUGSYNTH-INFERENCE-PROMOTION-GATE-AUDIT-001",
+      "status": "complete",
+      "open_investigations": [
+        "INV-SYNTHETIC-DID-METHOD-SCOUT-AND-SUITABILITY-001"
+      ],
+      "resolved_investigations": [
+        "INV-SCM-AUGSYNTH-INFERENCE-PROMOTION-GATE-AUDIT-001"
+      ],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001",
+        "INV-METHOD-FAMILY-PROMOTION-CRITERIA-MATRIX-001",
+        "INV-BAYESIAN-TBR-AND-TBR-RETIREMENT-BOUNDARY-AUDIT-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001",
+      "resolution_artifact": "SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "scm_augsynth_inference",
+        "promotion_gate",
         "no_downstream_authorization"
       ]
     }

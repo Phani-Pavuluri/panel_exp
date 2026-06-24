@@ -1658,7 +1658,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** 50-row multicell max-T research scout (`failed_scenarios: []`). Naive per-cell p-values blocked; pooled/global inference blocked; max-T/stepdown research candidates only; shared-control dependence requires handling. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
 
-**Next:** `SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001`.
+**Next:** `SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001` (completed — see SCM/AugSynth promotion gate audit).
+
+---
+
+## SCM-AUGSYNTH-INFERENCE-PROMOTION-GATE-AUDIT-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001_REPORT.md`](track_d/SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001_REPORT.md) · [`docs/track_d/archives/SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001_summary.json`](track_d/archives/SCM_AUGSYNTH_INFERENCE_PROMOTION_GATE_AUDIT_001_summary.json) · [`panel_exp/validation/scm_augsynth_inference_promotion_gate_audit_001.py`](../panel_exp/validation/scm_augsynth_inference_promotion_gate_audit_001.py)
+
+**Status:** **`scm_augsynth_inference_promotion_gate_audit_completed_no_downstream_authorization`**
+
+**Verdict:** 60-row SCM/AugSynth promotion gate audit (`failed_scenarios: []`). SCM strongest near-term candidate; production inference unauthorized; AugSynth requires adapter and null calibration. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `SYNTHETIC_DID_METHOD_SCOUT_AND_SUITABILITY_001`.
 
 ---
 
