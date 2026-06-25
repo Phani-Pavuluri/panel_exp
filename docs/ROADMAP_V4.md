@@ -631,6 +631,17 @@ Detail: [`EXPERIMENTATION_PLATFORM_VISION.md`](EXPERIMENTATION_PLATFORM_VISION.m
 
 **Alignment registry:** [`ROADMAP_ALIGNMENT_GATE.md`](ROADMAP_ALIGNMENT_GATE.md) § Track C · MMM · LLM — gated; stop conditions documented.
 
+### Future GeoX / experiment package-side agents (deferred)
+
+**Document:** [`FUTURE_EXPERIMENT_PACKAGE_SIDE_AGENT_ROADMAP_001.md`](FUTURE_EXPERIMENT_PACKAGE_SIDE_AGENT_ROADMAP_001.md)  
+**Status:** **roadmap capture only** — agents are **not** implemented, scheduled, or authorized.
+
+GeoX / `panel_exp` remains the deterministic experiment engine (design, power/MDE/matchability diagnostics, assignment, inference, readouts). MIP owns orchestration, TrustReport governance, CalibrationSignal mapping, and user-facing agent routing. Future **package-side** support agents may interpret typed diagnostics and failure packets **only after** run manifests, failure packets, method governance, and safe retry boundaries are stable.
+
+**Do not prioritize package-side agents before:** stable design/readout interfaces, typed diagnostics, auditable assignment constraints, standardized readout fields, MIP agent contracts, and package adapter allowed/blocked actions (see roadmap doc for full prerequisite list).
+
+**Near-term package priority:** deterministic diagnostics-first work (selection-gate implementation, typed manifests/failure packets, method-governance outputs) — not LLM/agent runtime.
+
 ---
 
 ## Governed measurement instruments (mindset)

@@ -162,6 +162,7 @@ write_run_artifact_bundle_json(bundle, "artifacts/run_bundle.json")
 - **Uncertainty notes:** `panel_exp/inference/uncertainty.md`
 - **Validation matrix:** `docs/VALIDATION_COVERAGE.md`
 - **Roadmap / gaps:** `docs/ROADMAP_REASSESSMENT.md`
+- **Future package-side agents (deferred):** `docs/FUTURE_EXPERIMENT_PACKAGE_SIDE_AGENT_ROADMAP_001.md` — roadmap capture only; no agent implementation
 - **Doc drift audit:** `docs/DOC_DRIFT_AUDIT.md`
 - **Examples index:** `examples/README.md` (legacy notebooks flagged)
 
