@@ -1814,7 +1814,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** 114-row Synthetic DID implementation-readiness plan across 38 readiness areas (`failed_scenarios: []`). Implementation-readiness candidate only; unit/time-weight, regularization, donor support, adapter, and null calibration contracts required. Multi-treated/treated-set/multicell blocked or research-only. **No Synthetic DID implementation, production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or Synthetic DID production authorization.**
 
-**Next:** `METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001`.
+**Next:** `METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001` (completed — see method-family retire/replace execution plan).
+
+---
+
+## METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001_REPORT.md`](track_d/METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001_REPORT.md) · [`docs/track_d/archives/METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001_summary.json`](track_d/archives/METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001_summary.json) · [`panel_exp/validation/method_family_retire_replace_execution_plan_001.py`](../panel_exp/validation/method_family_retire_replace_execution_plan_001.py)
+
+**Status:** **`method_family_retire_replace_execution_plan_defined_no_downstream_authorization`**
+
+**Verdict:** 180-row retire/replace execution plan across 12 method families and 15 execution areas (`failed_scenarios: []`). SCM retained gated; AugSynth remediation; DID conditional; Synthetic DID readiness; TBRRidge diagnostic; classic TBR retire/replace; Bayesian TBR/TROP research-only; multicell blocked. **No code deletion, replacement implementation, production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001`.
 
 ---
 

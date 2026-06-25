@@ -255,3 +255,24 @@ def test_governance_synthetic_did_readiness_plan_lane_complete() -> None:
     assert lane["status"] == "complete"
     assert lane["next_artifact"] == "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001"
     assert lane["resolution_artifact"] == "SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001"
+    assert "INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001" in lane["resolved_investigations"]
+    assert lane["open_investigations"] == []
+
+
+def test_governance_method_family_retire_replace_plan_resolved() -> None:
+    inv = investigations_by_id()["INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001"]
+    assert inv.status == "RESOLVED"
+    assert inv.resolution_artifact == "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001"
+
+
+def test_governance_method_family_retire_replace_plan_lane_complete() -> None:
+    reg = load_registry()
+    lane = next(
+        b for b in reg["roadmap_lane_bindings"]
+        if b["lane_id"] == "METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001"
+    )
+    assert lane["status"] == "complete"
+    assert lane["next_artifact"] == (
+        "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001"
+    )
+    assert lane["resolution_artifact"] == "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001"

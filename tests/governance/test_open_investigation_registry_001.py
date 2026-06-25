@@ -781,8 +781,28 @@ class TestOpenInvestigationRegistry001:
         assert lane["resolution_artifact"] == "SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001"
         assert lane["next_artifact"] == "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001"
         assert "INV-SYNTHETIC-DID-IMPLEMENTATION-READINESS-PLAN-001" in lane["resolved_investigations"]
-        assert "INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001" in lane["open_investigations"]
+        assert "INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001" in lane["resolved_investigations"]
+        assert lane["open_investigations"] == []
         assert "synthetic_did" in lane["artifact_tags"]
+        assert "no_downstream_authorization" in lane["artifact_tags"]
+
+    def test_method_family_retire_replace_execution_plan_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001"
+        assert lane["next_artifact"] == (
+            "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001"
+        )
+        assert "INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001" in lane["resolved_investigations"]
+        assert (
+            "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001"
+            in lane["open_investigations"]
+        )
+        assert "retire_replace" in lane["artifact_tags"]
         assert "no_downstream_authorization" in lane["artifact_tags"]
 
     def test_scm_production_candidate_validation_plan_investigation_resolved(self) -> None:
@@ -800,10 +820,10 @@ class TestOpenInvestigationRegistry001:
         assert inv.status == "RESOLVED"
         assert inv.resolution_artifact == "SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001"
 
-    def test_method_family_retire_replace_execution_plan_investigation_planned(self) -> None:
+    def test_method_family_retire_replace_execution_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001"]
-        assert inv.status == "PLANNED"
-        assert inv.target_artifact == "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001"
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001"
 
     def test_scm_treated_set_placebo_null_calibration_lane_complete(self) -> None:
         reg = load_registry()

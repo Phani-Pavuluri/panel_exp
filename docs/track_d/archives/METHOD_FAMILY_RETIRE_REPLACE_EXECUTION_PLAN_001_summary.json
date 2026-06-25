@@ -1,0 +1,557 @@
+{
+  "artifact_id": "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001",
+  "artifact_version": "1.0.0",
+  "status": "completed",
+  "verdict": "method_family_retire_replace_execution_plan_defined_no_downstream_authorization",
+  "generated_at": "2026-06-25T18:35:57.913208+00:00",
+  "git_commit": "1890d142ddd8a2b3879967c54ec06e560db324e2",
+  "execution_row_count": 180,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "execution_rows_build_successfully",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_row_count_at_least_70",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_ids_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_augsynth_cvxpy_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_classic_aggregate_tbr_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_synthetic_did_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_release_gate_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_data_driven_selection_gate_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_did_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_scm_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_multicell_shared_control_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_downstream_integrations_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_trop_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_bayesian_tbr_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_tbrridge_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_area_remediation_required_retention_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_area_roadmap_update_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_area_selection_gate_routing_impact_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_area_replacement_candidate_mapping_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_area_release_gate_dependency_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_area_open_investigation_update_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_area_research_only_retention_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_area_retire_replace_required_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_area_test_governance_labeling_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_area_active_candidate_retention_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_area_diagnostic_only_retention_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_area_hard_block_required_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_area_code_path_labeling_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_area_documentation_labeling_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_area_overclaim_prevention_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_decision_retain_candidate_gated_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_decision_defer_to_release_gate_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_decision_retire_overclaim_path_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_decision_retain_diagnostic_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_decision_retain_with_remediation_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_decision_retain_research_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_decision_replace_with_candidate_path_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "execution_decision_hard_block_until_validated_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_diagnostic_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_research_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_release_gate_required_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_remediation_required_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_production_candidate_gated_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_retire_replace_required_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_blocked_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "prior_work_reconciled",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "open_investigations_consulted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "production_readiness_backlog_consulted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "selection_gate_requirements_consulted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "retire_replace_does_not_mean_delete_all_code",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "diagnostic_code_can_remain_if_labeled_and_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "research_code_can_remain_if_labeled_and_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_retained_candidate_gated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "augsynth_retained_with_remediation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "did_retained_conditional_candidate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "synthetic_did_retained_implementation_readiness_candidate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbrridge_retained_diagnostic_remediation_only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "classic_aggregate_tbr_overclaim_paths_retire_replace_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "bayesian_tbr_posterior_diagnostic_only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "bayesian_tbr_intervals_not_causal_ci",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "trop_research_only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "trop_production_recommendations_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_shared_control_overclaim_paths_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "selection_gate_must_route_retired_paths_away_from_production",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "release_gate_required_before_any_authorization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "downstream_work_paused",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_rank_1_selection_gate_implementation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_issues_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "execution_row_count": 180,
+    "unique_execution_ids": true,
+    "method_family_counts": {
+      "scm": 15,
+      "augsynth_cvxpy": 15,
+      "did": 15,
+      "synthetic_did": 15,
+      "tbrridge": 15,
+      "classic_aggregate_tbr": 15,
+      "bayesian_tbr": 15,
+      "trop": 15,
+      "multicell_shared_control": 15,
+      "data_driven_selection_gate": 15,
+      "release_gate": 15,
+      "downstream_integrations": 15
+    },
+    "execution_area_counts": {
+      "active_candidate_retention": 12,
+      "diagnostic_only_retention": 12,
+      "research_only_retention": 12,
+      "remediation_required_retention": 12,
+      "retire_replace_required": 12,
+      "hard_block_required": 12,
+      "overclaim_prevention": 12,
+      "replacement_candidate_mapping": 12,
+      "code_path_labeling": 12,
+      "documentation_labeling": 12,
+      "test_governance_labeling": 12,
+      "selection_gate_routing_impact": 12,
+      "open_investigation_update": 12,
+      "roadmap_update": 12,
+      "release_gate_dependency": 12
+    },
+    "execution_decision_counts": {
+      "retain_candidate_gated": 26,
+      "retain_diagnostic_only": 20,
+      "retain_research_only": 30,
+      "retain_with_remediation": 18,
+      "retire_overclaim_path": 20,
+      "replace_with_candidate_path": 12,
+      "hard_block_until_validated": 28,
+      "defer_to_release_gate": 26
+    },
+    "status_counts": {
+      "production_candidate_gated": 29,
+      "diagnostic_only": 21,
+      "research_only": 32,
+      "remediation_required": 19,
+      "retire_replace_required": 21,
+      "blocked": 30,
+      "release_gate_required": 28
+    },
+    "all_required_method_families_covered": true,
+    "all_required_execution_areas_covered": true,
+    "all_required_execution_decisions_covered": true,
+    "all_required_statuses_covered": true,
+    "issues": []
+  },
+  "method_family_counts": {
+    "scm": 15,
+    "augsynth_cvxpy": 15,
+    "did": 15,
+    "synthetic_did": 15,
+    "tbrridge": 15,
+    "classic_aggregate_tbr": 15,
+    "bayesian_tbr": 15,
+    "trop": 15,
+    "multicell_shared_control": 15,
+    "data_driven_selection_gate": 15,
+    "release_gate": 15,
+    "downstream_integrations": 15
+  },
+  "execution_area_counts": {
+    "active_candidate_retention": 12,
+    "diagnostic_only_retention": 12,
+    "research_only_retention": 12,
+    "remediation_required_retention": 12,
+    "retire_replace_required": 12,
+    "hard_block_required": 12,
+    "overclaim_prevention": 12,
+    "replacement_candidate_mapping": 12,
+    "code_path_labeling": 12,
+    "documentation_labeling": 12,
+    "test_governance_labeling": 12,
+    "selection_gate_routing_impact": 12,
+    "open_investigation_update": 12,
+    "roadmap_update": 12,
+    "release_gate_dependency": 12
+  },
+  "execution_decision_counts": {
+    "retain_candidate_gated": 26,
+    "retain_diagnostic_only": 20,
+    "retain_research_only": 30,
+    "retain_with_remediation": 18,
+    "retire_overclaim_path": 20,
+    "replace_with_candidate_path": 12,
+    "hard_block_until_validated": 28,
+    "defer_to_release_gate": 26
+  },
+  "status_counts": {
+    "production_candidate_gated": 29,
+    "diagnostic_only": 21,
+    "research_only": 32,
+    "remediation_required": 19,
+    "retire_replace_required": 21,
+    "blocked": 30,
+    "release_gate_required": 28
+  },
+  "all_required_method_families_covered": true,
+  "all_required_execution_areas_covered": true,
+  "all_required_execution_decisions_covered": true,
+  "all_required_statuses_covered": true,
+  "recommended_next_artifacts": [
+    "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001",
+    "PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001",
+    "SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_PLAN_001"
+  ],
+  "prior_work_reconciled": true,
+  "open_investigations_consulted": true,
+  "production_readiness_backlog_consulted": true,
+  "selection_gate_requirements_consulted": true,
+  "retire_replace_does_not_mean_delete_all_code": true,
+  "diagnostic_code_can_remain_if_labeled_and_blocked": true,
+  "research_code_can_remain_if_labeled_and_blocked": true,
+  "scm_retained_candidate_gated": true,
+  "augsynth_retained_with_remediation": true,
+  "did_retained_conditional_candidate": true,
+  "synthetic_did_retained_implementation_readiness_candidate": true,
+  "tbrridge_retained_diagnostic_remediation_only": true,
+  "classic_aggregate_tbr_overclaim_paths_retire_replace_required": true,
+  "bayesian_tbr_posterior_diagnostic_only": true,
+  "bayesian_tbr_intervals_not_causal_ci": true,
+  "trop_research_only": true,
+  "trop_production_recommendations_blocked": true,
+  "multicell_shared_control_overclaim_paths_blocked": true,
+  "selection_gate_must_route_retired_paths_away_from_production": true,
+  "release_gate_required_before_any_authorization": true,
+  "downstream_work_paused": true,
+  "production_p_value_authorized": false,
+  "causal_confidence_interval_authorized": false,
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false
+}

@@ -869,24 +869,48 @@
     {
       "investigation_id": "INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001",
       "title": "Method family retire/replace execution plan",
-      "status": "PLANNED",
+      "status": "RESOLVED",
       "priority": "P2",
       "discovered_by": "PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001",
       "affected_combination": "method_family_retire_replace_execution",
       "problem_class": ["retire_replace", "execution_plan"],
       "evidence": {
         "depends_on": ["PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"],
+        "execution_row_count": 180,
+        "failed_scenarios": [],
         "classic_tbr_retire_replace_defined": true,
         "classic_tbr_retire_replace_priority": true,
         "blocked_downstream_authorization": true
       },
-      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "current_decision": "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_DEFINED_NO_DOWNSTREAM_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
-      "target_artifact": "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001",
-      "revisit_trigger": "Upon opening METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001",
+      "target_artifact": null,
+      "revisit_trigger": null,
       "decision_checkpoint": "Retire/replace execution after promotion criteria matrix",
       "blocking_policy": "Retire/replace paths require explicit execution plan",
       "terminal_decisions": ["RESTRICT", "RETIRE", "REPLACE"],
+      "resolution_artifact": "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001"
+    },
+    {
+      "investigation_id": "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-IMPLEMENTATION-PLAN-001",
+      "title": "SCM production candidate validation implementation plan",
+      "status": "PLANNED",
+      "priority": "P2",
+      "discovered_by": "METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001",
+      "affected_combination": "scm_production_candidate_validation_implementation",
+      "problem_class": ["scm", "validation_implementation", "execution_plan"],
+      "evidence": {
+        "depends_on": ["METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001"],
+        "scm_retained_candidate_gated": true,
+        "blocked_downstream_authorization": true
+      },
+      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": "SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_PLAN_001",
+      "revisit_trigger": "Upon opening SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_PLAN_001",
+      "decision_checkpoint": "SCM validation implementation after retire/replace execution",
+      "blocking_policy": "SCM implementation planning blocked until selection gate matures",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
       "resolution_artifact": null
     },
     {
@@ -2180,15 +2204,15 @@
     {
       "lane_id": "SYNTHETIC-DID-IMPLEMENTATION-READINESS-PLAN-001",
       "status": "complete",
-      "open_investigations": [
-        "INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001"
-      ],
+      "open_investigations": [],
       "resolved_investigations": [
-        "INV-SYNTHETIC-DID-IMPLEMENTATION-READINESS-PLAN-001"
+        "INV-SYNTHETIC-DID-IMPLEMENTATION-READINESS-PLAN-001",
+        "INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001"
       ],
       "deferred_investigations": [
         "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001",
-        "INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"
+        "INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001",
+        "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-IMPLEMENTATION-PLAN-001"
       ],
       "must_consume_before_close": true,
       "next_artifact": "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001",
@@ -2198,6 +2222,30 @@
         "method_gap_control",
         "synthetic_did",
         "implementation_readiness",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001",
+      "status": "complete",
+      "open_investigations": [
+        "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001"
+      ],
+      "resolved_investigations": [
+        "INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001"
+      ],
+      "deferred_investigations": [
+        "INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001",
+        "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-IMPLEMENTATION-PLAN-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001",
+      "resolution_artifact": "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "retire_replace",
+        "execution_plan",
         "no_downstream_authorization"
       ]
     }
