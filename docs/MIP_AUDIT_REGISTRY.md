@@ -1802,7 +1802,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** 87-row DID conditional production-candidate validation plan across 29 validation areas (`failed_scenarios: []`). DID conditional only under eligible designs; parallel trends, assignment validity, cluster/outcome suitability, and method disagreement checks required. Bootstrap cannot fix invalid design or trends; staggered/TWFE blocked or research-only. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or DID production authorization.**
 
-**Next:** `SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001`.
+**Next:** `SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001` (completed — see Synthetic DID implementation readiness plan).
+
+---
+
+## SYNTHETIC-DID-IMPLEMENTATION-READINESS-PLAN-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001_REPORT.md`](track_d/SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001_REPORT.md) · [`docs/track_d/archives/SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001_summary.json`](track_d/archives/SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001_summary.json) · [`panel_exp/validation/synthetic_did_implementation_readiness_plan_001.py`](../panel_exp/validation/synthetic_did_implementation_readiness_plan_001.py)
+
+**Status:** **`synthetic_did_implementation_readiness_plan_defined_no_downstream_authorization`**
+
+**Verdict:** 114-row Synthetic DID implementation-readiness plan across 38 readiness areas (`failed_scenarios: []`). Implementation-readiness candidate only; unit/time-weight, regularization, donor support, adapter, and null calibration contracts required. Multi-treated/treated-set/multicell blocked or research-only. **No Synthetic DID implementation, production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or Synthetic DID production authorization.**
+
+**Next:** `METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001`.
 
 ---
 

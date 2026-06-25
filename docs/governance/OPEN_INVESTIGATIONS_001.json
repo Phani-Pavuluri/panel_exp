@@ -820,24 +820,26 @@
     {
       "investigation_id": "INV-SYNTHETIC-DID-IMPLEMENTATION-READINESS-PLAN-001",
       "title": "Synthetic DID implementation readiness plan",
-      "status": "PLANNED",
+      "status": "RESOLVED",
       "priority": "P2",
       "discovered_by": "PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001",
       "affected_combination": "synthetic_did_implementation_readiness",
       "problem_class": ["synthetic_did", "implementation_readiness"],
       "evidence": {
         "depends_on": ["PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"],
+        "readiness_row_count": 114,
+        "failed_scenarios": [],
         "implementation_readiness_required": true,
         "blocked_downstream_authorization": true
       },
-      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "current_decision": "SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_DEFINED_NO_DOWNSTREAM_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
-      "target_artifact": "SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001",
-      "revisit_trigger": "Upon opening SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001",
+      "target_artifact": null,
+      "revisit_trigger": null,
       "decision_checkpoint": "Synthetic DID implementation readiness before validation",
       "blocking_policy": "Synthetic DID scout-only until implementation readiness",
       "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
-      "resolution_artifact": null
+      "resolution_artifact": "SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001"
     },
     {
       "investigation_id": "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001",
@@ -2153,11 +2155,10 @@
     {
       "lane_id": "DID-CONDITIONAL-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001",
       "status": "complete",
-      "open_investigations": [
-        "INV-SYNTHETIC-DID-IMPLEMENTATION-READINESS-PLAN-001"
-      ],
+      "open_investigations": [],
       "resolved_investigations": [
-        "INV-DID-CONDITIONAL-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001"
+        "INV-DID-CONDITIONAL-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001",
+        "INV-SYNTHETIC-DID-IMPLEMENTATION-READINESS-PLAN-001"
       ],
       "deferred_investigations": [
         "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001",
@@ -2173,6 +2174,30 @@
         "did",
         "conditional_candidate",
         "validation_plan",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "SYNTHETIC-DID-IMPLEMENTATION-READINESS-PLAN-001",
+      "status": "complete",
+      "open_investigations": [
+        "INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001"
+      ],
+      "resolved_investigations": [
+        "INV-SYNTHETIC-DID-IMPLEMENTATION-READINESS-PLAN-001"
+      ],
+      "deferred_investigations": [
+        "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001",
+        "INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001",
+      "resolution_artifact": "SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "synthetic_did",
+        "implementation_readiness",
         "no_downstream_authorization"
       ]
     }

@@ -321,7 +321,8 @@ Foundation and compatibility audits ✅
   → DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001 ✅
   → AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001 ✅
   → DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001 ✅
-  → SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001 (active method lane)
+  → SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001 ✅
+  → METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001 (active method lane)
   → implementation lanes (not selected until control layer complete)
 ```
 
@@ -367,7 +368,9 @@ Foundation and compatibility audits ✅
 
 **AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001 (2026-06-03):** Defines **84** AugSynth validation rows across **28** remediation/validation areas (`failed_scenarios: []`). AugSynth diagnostic/restricted research until remediation; CVXPY solver reliability required. See [`track_d/AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001_REPORT.md`](track_d/AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001_REPORT.md).
 
-**DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001 (2026-06-03):** Defines **87** DID validation rows across **29** validation areas (`failed_scenarios: []`). DID conditional production-candidate only under eligible designs; point estimate not sufficient. **Immediate next artifact:** `SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001`. See [`track_d/DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001_REPORT.md`](track_d/DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001_REPORT.md).
+**DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001 (2026-06-03):** Defines **87** DID validation rows across **29** validation areas (`failed_scenarios: []`). DID conditional production-candidate only under eligible designs; point estimate not sufficient. See [`track_d/DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001_REPORT.md`](track_d/DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001_REPORT.md).
+
+**SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001 (2026-06-03):** Defines **114** Synthetic DID readiness rows across **38** readiness areas (`failed_scenarios: []`). Implementation-readiness candidate only; unit/time-weight and adapter contracts required. **Immediate next artifact:** `METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001`. See [`track_d/SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001_REPORT.md`](track_d/SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001_REPORT.md).
 
 **ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001 (2026-06-03):** First cross-estimator × design × inference suitability matrix (**50 rows**; `failed_scenarios: []`). Placebo/randomization is **one inference family**, not the full inference layer. No estimator receives a universal default inference. See [`track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md`](track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md).
 
@@ -394,7 +397,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001`** → ✅ **`AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001`** → ✅ **`DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001`** → **`SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001`**.
+**Ordered next:** ✅ … → ✅ **`DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001`** → ✅ **`AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001`** → ✅ **`DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001`** → ✅ **`SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001`** → **`METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001`**.
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 

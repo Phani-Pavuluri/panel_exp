@@ -766,8 +766,23 @@ class TestOpenInvestigationRegistry001:
         assert lane["resolution_artifact"] == "DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001"
         assert lane["next_artifact"] == "SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001"
         assert "INV-DID-CONDITIONAL-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001" in lane["resolved_investigations"]
-        assert "INV-SYNTHETIC-DID-IMPLEMENTATION-READINESS-PLAN-001" in lane["open_investigations"]
+        assert "INV-SYNTHETIC-DID-IMPLEMENTATION-READINESS-PLAN-001" in lane["resolved_investigations"]
+        assert lane["open_investigations"] == []
         assert "did" in lane["artifact_tags"]
+        assert "no_downstream_authorization" in lane["artifact_tags"]
+
+    def test_synthetic_did_implementation_readiness_plan_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "SYNTHETIC-DID-IMPLEMENTATION-READINESS-PLAN-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001"
+        assert lane["next_artifact"] == "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001"
+        assert "INV-SYNTHETIC-DID-IMPLEMENTATION-READINESS-PLAN-001" in lane["resolved_investigations"]
+        assert "INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001" in lane["open_investigations"]
+        assert "synthetic_did" in lane["artifact_tags"]
         assert "no_downstream_authorization" in lane["artifact_tags"]
 
     def test_scm_production_candidate_validation_plan_investigation_resolved(self) -> None:
@@ -780,10 +795,10 @@ class TestOpenInvestigationRegistry001:
         assert inv.status == "RESOLVED"
         assert inv.resolution_artifact == "DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001"
 
-    def test_synthetic_did_implementation_readiness_plan_investigation_planned(self) -> None:
+    def test_synthetic_did_implementation_readiness_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-SYNTHETIC-DID-IMPLEMENTATION-READINESS-PLAN-001"]
-        assert inv.status == "PLANNED"
-        assert inv.target_artifact == "SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001"
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001"
 
     def test_method_family_retire_replace_execution_plan_investigation_planned(self) -> None:
         inv = investigations_by_id()["INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001"]
