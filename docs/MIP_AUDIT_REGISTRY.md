@@ -1754,7 +1754,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** 78-row multicell validation plan across 26 validation areas (`failed_scenarios: []`). Cross-family blocker; naive per-cell p-values and pooled/global overclaim blocked; max-T/stepdown validation candidates only. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or multicell production authorization.**
 
-**Next:** `AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001`.
+**Next:** `PRODUCTION_READINESS_BACKLOG_LEDGER_001` (completed — see production readiness backlog ledger).
+
+---
+
+## PRODUCTION-READINESS-BACKLOG-LEDGER-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/PRODUCTION_READINESS_BACKLOG_LEDGER_001_REPORT.md`](track_d/PRODUCTION_READINESS_BACKLOG_LEDGER_001_REPORT.md) · [`docs/track_d/archives/PRODUCTION_READINESS_BACKLOG_LEDGER_001_summary.json`](track_d/archives/PRODUCTION_READINESS_BACKLOG_LEDGER_001_summary.json) · [`panel_exp/validation/production_readiness_backlog_ledger_001.py`](../panel_exp/validation/production_readiness_backlog_ledger_001.py)
+
+**Status:** **`production_readiness_backlog_ledger_created_no_downstream_authorization`**
+
+**Verdict:** 46-row production-readiness backlog ledger across 12 domains (`failed_scenarios: []`). Single control-plane backlog; resolved artifacts do not mean production-ready. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001`.
 
 ---
 

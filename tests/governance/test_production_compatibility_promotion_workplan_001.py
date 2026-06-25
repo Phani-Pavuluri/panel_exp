@@ -162,4 +162,22 @@ def test_governance_multicell_validation_plan_lane_complete() -> None:
         if b["lane_id"] == "MULTICELL-DEPENDENCE-AND-MULTIPLICITY-VALIDATION-PLAN-001"
     )
     assert lane["status"] == "complete"
-    assert lane["next_artifact"] == "AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001"
+    assert lane["next_artifact"] == "PRODUCTION_READINESS_BACKLOG_LEDGER_001"
+
+
+def test_governance_backlog_ledger_resolved() -> None:
+    inv = investigations_by_id()["INV-PRODUCTION-READINESS-BACKLOG-LEDGER-001"]
+    assert inv.status == "RESOLVED"
+    assert inv.resolution_artifact == "PRODUCTION_READINESS_BACKLOG_LEDGER_001"
+
+
+def test_governance_backlog_ledger_lane_complete() -> None:
+    reg = load_registry()
+    lane = next(
+        b for b in reg["roadmap_lane_bindings"]
+        if b["lane_id"] == "PRODUCTION-READINESS-BACKLOG-LEDGER-001"
+    )
+    assert lane["status"] == "complete"
+    assert lane["next_artifact"] == (
+        "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001"
+    )

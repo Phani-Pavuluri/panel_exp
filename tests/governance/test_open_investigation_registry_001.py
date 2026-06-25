@@ -671,10 +671,44 @@ class TestOpenInvestigationRegistry001:
         )
         assert lane["status"] == "complete"
         assert lane["resolution_artifact"] == "MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001"
-        assert lane["next_artifact"] == "AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001"
+        assert lane["next_artifact"] == "PRODUCTION_READINESS_BACKLOG_LEDGER_001"
         assert "INV-MULTICELL-DEPENDENCE-AND-MULTIPLICITY-VALIDATION-PLAN-001" in lane["resolved_investigations"]
-        assert "INV-AUGSYNTH-REMEDIATION-AND-DIAGNOSTIC-VALIDATION-PLAN-001" in lane["open_investigations"]
+        assert "INV-PRODUCTION-READINESS-BACKLOG-LEDGER-001" in lane["resolved_investigations"]
+        assert lane["open_investigations"] == []
         assert "multicell" in lane["artifact_tags"]
+        assert "no_downstream_authorization" in lane["artifact_tags"]
+
+    def test_production_readiness_backlog_ledger_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-PRODUCTION-READINESS-BACKLOG-LEDGER-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "PRODUCTION_READINESS_BACKLOG_LEDGER_001"
+
+    def test_data_driven_selection_gate_requirements_investigation_planned(self) -> None:
+        inv = investigations_by_id()[
+            "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-REQUIREMENTS-001"
+        ]
+        assert inv.status == "PLANNED"
+        assert inv.target_artifact == (
+            "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001"
+        )
+
+    def test_production_readiness_backlog_ledger_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "PRODUCTION-READINESS-BACKLOG-LEDGER-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "PRODUCTION_READINESS_BACKLOG_LEDGER_001"
+        assert lane["next_artifact"] == (
+            "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001"
+        )
+        assert "INV-PRODUCTION-READINESS-BACKLOG-LEDGER-001" in lane["resolved_investigations"]
+        assert (
+            "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-REQUIREMENTS-001"
+            in lane["open_investigations"]
+        )
+        assert "backlog" in lane["artifact_tags"]
         assert "no_downstream_authorization" in lane["artifact_tags"]
 
     def test_scm_production_candidate_validation_plan_investigation_resolved(self) -> None:
