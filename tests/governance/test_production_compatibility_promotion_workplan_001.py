@@ -133,7 +133,8 @@ def test_governance_workplan_lane_complete() -> None:
     assert lane["resolution_artifact"] == "PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"
     assert lane["next_artifact"] == "SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001"
     assert "INV-PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001" in lane["resolved_investigations"]
-    assert "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001" in lane["open_investigations"]
+    assert "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001" in lane["resolved_investigations"]
+    assert lane["open_investigations"] == []
 
 
 def test_governance_workplan_investigation_resolved() -> None:
@@ -142,7 +143,7 @@ def test_governance_workplan_investigation_resolved() -> None:
     assert inv.resolution_artifact == "PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"
 
 
-def test_governance_scm_validation_plan_next() -> None:
+def test_governance_scm_validation_plan_resolved() -> None:
     inv = investigations_by_id()["INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001"]
-    assert inv.status == "PLANNED"
-    assert inv.target_artifact == "SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001"
+    assert inv.status == "RESOLVED"
+    assert inv.resolution_artifact == "SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001"

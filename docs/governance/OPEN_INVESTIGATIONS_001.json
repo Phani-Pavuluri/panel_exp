@@ -764,25 +764,27 @@
     {
       "investigation_id": "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001",
       "title": "SCM production candidate validation plan",
-      "status": "PLANNED",
+      "status": "RESOLVED",
       "priority": "P2",
       "discovered_by": "PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001",
       "affected_combination": "scm_production_candidate_validation",
       "problem_class": ["scm", "production_candidate", "validation_plan"],
       "evidence": {
         "depends_on": ["PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"],
+        "validation_row_count": 63,
+        "failed_scenarios": [],
         "scm_strongest_near_term_candidate": true,
         "scm_first_validation_lane": true,
         "blocked_downstream_authorization": true
       },
-      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "current_decision": "SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_DEFINED_NO_DOWNSTREAM_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
-      "target_artifact": "SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001",
-      "revisit_trigger": "Upon opening SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001",
-      "decision_checkpoint": "SCM validation plan after promotion criteria matrix",
-      "blocking_policy": "SCM gated candidate requires explicit validation plan before promotion",
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "SCM validation plan complete before multicell dependence validation",
+      "blocking_policy": "SCM gated candidate; point estimate not sufficient for production inference",
       "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
-      "resolution_artifact": null
+      "resolution_artifact": "SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001"
     },
     {
       "investigation_id": "INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001",
@@ -1902,11 +1904,10 @@
     {
       "lane_id": "PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001",
       "status": "complete",
-      "open_investigations": [
-        "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001"
-      ],
+      "open_investigations": [],
       "resolved_investigations": [
-        "INV-PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001"
+        "INV-PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001",
+        "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001"
       ],
       "deferred_investigations": [
         "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
@@ -1930,6 +1931,34 @@
         "method_gap_control",
         "promotion_workplan",
         "production_compatibility",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001",
+      "status": "complete",
+      "open_investigations": [
+        "INV-MULTICELL-DEPENDENCE-AND-MULTIPLICITY-VALIDATION-PLAN-001"
+      ],
+      "resolved_investigations": [
+        "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001"
+      ],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001",
+        "INV-AUGSYNTH-REMEDIATION-AND-DIAGNOSTIC-VALIDATION-PLAN-001",
+        "INV-DID-CONDITIONAL-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001",
+      "resolution_artifact": "SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "scm",
+        "production_candidate",
+        "validation_plan",
         "no_downstream_authorization"
       ]
     }

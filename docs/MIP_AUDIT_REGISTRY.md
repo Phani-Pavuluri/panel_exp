@@ -1730,7 +1730,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** 10-lane execution workplan sequencing SCM validation, multicell dependence, AugSynth remediation, DID conditional validation, Synthetic DID readiness, retire/replace, Bayesian TBR calibration/replay, TBRRidge remediation decision, TROP evidence scout, and release gate. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
 
-**Next:** `SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001`.
+**Next:** `SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001` (completed — see SCM validation plan).
+
+---
+
+## SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001_REPORT.md`](track_d/SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001_REPORT.md) · [`docs/track_d/archives/SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001_summary.json`](track_d/archives/SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001_summary.json) · [`panel_exp/validation/scm_production_candidate_validation_plan_001.py`](../panel_exp/validation/scm_production_candidate_validation_plan_001.py)
+
+**Status:** **`scm_production_candidate_validation_plan_defined_no_downstream_authorization`**
+
+**Verdict:** 63-row SCM validation plan across 21 validation areas (`failed_scenarios: []`). First gated production-candidate lane; donor support, pre-period fit, null calibration, and multicell blockers defined. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001`.
 
 ---
 

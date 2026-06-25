@@ -628,7 +628,8 @@ class TestOpenInvestigationRegistry001:
         assert lane["resolution_artifact"] == "PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"
         assert lane["next_artifact"] == "SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001"
         assert "INV-PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001" in lane["resolved_investigations"]
-        assert "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001" in lane["open_investigations"]
+        assert "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001" in lane["resolved_investigations"]
+        assert lane["open_investigations"] == []
         assert "promotion_workplan" in lane["artifact_tags"]
         assert "no_downstream_authorization" in lane["artifact_tags"]
 
@@ -647,10 +648,24 @@ class TestOpenInvestigationRegistry001:
         assert inv.status == "PLANNED"
         assert inv.target_artifact == "AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001"
 
-    def test_scm_production_candidate_validation_plan_investigation_planned(self) -> None:
+    def test_scm_production_candidate_validation_plan_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001"
+        assert lane["next_artifact"] == "MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001"
+        assert "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001" in lane["resolved_investigations"]
+        assert "INV-MULTICELL-DEPENDENCE-AND-MULTIPLICITY-VALIDATION-PLAN-001" in lane["open_investigations"]
+        assert "scm" in lane["artifact_tags"]
+        assert "no_downstream_authorization" in lane["artifact_tags"]
+
+    def test_scm_production_candidate_validation_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001"]
-        assert inv.status == "PLANNED"
-        assert inv.target_artifact == "SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001"
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001"
 
     def test_did_conditional_validation_plan_investigation_planned(self) -> None:
         inv = investigations_by_id()["INV-DID-CONDITIONAL-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001"]
