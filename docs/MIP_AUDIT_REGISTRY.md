@@ -1742,7 +1742,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** 63-row SCM validation plan across 21 validation areas (`failed_scenarios: []`). First gated production-candidate lane; donor support, pre-period fit, null calibration, and multicell blockers defined. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
 
-**Next:** `MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001`.
+**Next:** `MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001` (completed — see multicell validation plan).
+
+---
+
+## MULTICELL-DEPENDENCE-AND-MULTIPLICITY-VALIDATION-PLAN-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001_REPORT.md`](track_d/MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001_REPORT.md) · [`docs/track_d/archives/MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001_summary.json`](track_d/archives/MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001_summary.json) · [`panel_exp/validation/multicell_dependence_multiplicity_validation_plan_001.py`](../panel_exp/validation/multicell_dependence_multiplicity_validation_plan_001.py)
+
+**Status:** **`multicell_dependence_and_multiplicity_validation_plan_defined_no_downstream_authorization`**
+
+**Verdict:** 78-row multicell validation plan across 26 validation areas (`failed_scenarios: []`). Cross-family blocker; naive per-cell p-values and pooled/global overclaim blocked; max-T/stepdown validation candidates only. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or multicell production authorization.**
+
+**Next:** `AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001`.
 
 ---
 

@@ -676,24 +676,26 @@
     {
       "investigation_id": "INV-MULTICELL-DEPENDENCE-AND-MULTIPLICITY-VALIDATION-PLAN-001",
       "title": "Multicell dependence and multiplicity validation plan",
-      "status": "PLANNED",
+      "status": "RESOLVED",
       "priority": "P2",
       "discovered_by": "PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001",
       "affected_combination": "multicell_dependence_multiplicity_validation",
       "problem_class": ["multicell", "dependence", "multiplicity"],
       "evidence": {
-        "depends_on": ["PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"],
+        "depends_on": ["PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001", "SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001"],
+        "validation_row_count": 78,
+        "failed_scenarios": [],
         "cross_family_blocker": true,
         "blocked_downstream_authorization": true
       },
-      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "current_decision": "MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_DEFINED_NO_DOWNSTREAM_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
-      "target_artifact": "MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001",
-      "revisit_trigger": "Upon opening MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001",
+      "target_artifact": null,
+      "revisit_trigger": null,
       "decision_checkpoint": "Multicell validation before multicell production claims",
       "blocking_policy": "Multicell production claims blocked until dependence/multiplicity validated",
       "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY"],
-      "resolution_artifact": null
+      "resolution_artifact": "MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001"
     },
     {
       "investigation_id": "INV-AUGSYNTH-REMEDIATION-AND-DIAGNOSTIC-VALIDATION-PLAN-001",
@@ -1937,11 +1939,10 @@
     {
       "lane_id": "SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001",
       "status": "complete",
-      "open_investigations": [
-        "INV-MULTICELL-DEPENDENCE-AND-MULTIPLICITY-VALIDATION-PLAN-001"
-      ],
+      "open_investigations": [],
       "resolved_investigations": [
-        "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001"
+        "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001",
+        "INV-MULTICELL-DEPENDENCE-AND-MULTIPLICITY-VALIDATION-PLAN-001"
       ],
       "deferred_investigations": [
         "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
@@ -1958,6 +1959,35 @@
         "method_gap_control",
         "scm",
         "production_candidate",
+        "validation_plan",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "MULTICELL-DEPENDENCE-AND-MULTIPLICITY-VALIDATION-PLAN-001",
+      "status": "complete",
+      "open_investigations": [
+        "INV-AUGSYNTH-REMEDIATION-AND-DIAGNOSTIC-VALIDATION-PLAN-001"
+      ],
+      "resolved_investigations": [
+        "INV-MULTICELL-DEPENDENCE-AND-MULTIPLICITY-VALIDATION-PLAN-001"
+      ],
+      "deferred_investigations": [
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001",
+        "INV-DID-CONDITIONAL-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001",
+        "INV-SYNTHETIC-DID-IMPLEMENTATION-READINESS-PLAN-001",
+        "INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001",
+      "resolution_artifact": "MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "multicell",
+        "dependence",
+        "multiplicity",
         "validation_plan",
         "no_downstream_authorization"
       ]

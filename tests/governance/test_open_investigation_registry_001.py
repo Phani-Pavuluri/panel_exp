@@ -638,10 +638,10 @@ class TestOpenInvestigationRegistry001:
         assert inv.status == "RESOLVED"
         assert inv.resolution_artifact == "PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"
 
-    def test_multicell_dependence_multiplicity_validation_plan_investigation_planned(self) -> None:
+    def test_multicell_dependence_multiplicity_validation_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-MULTICELL-DEPENDENCE-AND-MULTIPLICITY-VALIDATION-PLAN-001"]
-        assert inv.status == "PLANNED"
-        assert inv.target_artifact == "MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001"
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001"
 
     def test_augsynth_remediation_diagnostic_validation_plan_investigation_planned(self) -> None:
         inv = investigations_by_id()["INV-AUGSYNTH-REMEDIATION-AND-DIAGNOSTIC-VALIDATION-PLAN-001"]
@@ -658,8 +658,23 @@ class TestOpenInvestigationRegistry001:
         assert lane["resolution_artifact"] == "SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001"
         assert lane["next_artifact"] == "MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001"
         assert "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001" in lane["resolved_investigations"]
-        assert "INV-MULTICELL-DEPENDENCE-AND-MULTIPLICITY-VALIDATION-PLAN-001" in lane["open_investigations"]
+        assert "INV-MULTICELL-DEPENDENCE-AND-MULTIPLICITY-VALIDATION-PLAN-001" in lane["resolved_investigations"]
+        assert lane["open_investigations"] == []
         assert "scm" in lane["artifact_tags"]
+        assert "no_downstream_authorization" in lane["artifact_tags"]
+
+    def test_multicell_dependence_multiplicity_validation_plan_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "MULTICELL-DEPENDENCE-AND-MULTIPLICITY-VALIDATION-PLAN-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001"
+        assert lane["next_artifact"] == "AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001"
+        assert "INV-MULTICELL-DEPENDENCE-AND-MULTIPLICITY-VALIDATION-PLAN-001" in lane["resolved_investigations"]
+        assert "INV-AUGSYNTH-REMEDIATION-AND-DIAGNOSTIC-VALIDATION-PLAN-001" in lane["open_investigations"]
+        assert "multicell" in lane["artifact_tags"]
         assert "no_downstream_authorization" in lane["artifact_tags"]
 
     def test_scm_production_candidate_validation_plan_investigation_resolved(self) -> None:
