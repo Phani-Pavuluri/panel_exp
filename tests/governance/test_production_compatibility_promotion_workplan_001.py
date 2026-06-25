@@ -201,3 +201,19 @@ def test_governance_selection_gate_requirements_lane_complete() -> None:
     )
     assert lane["status"] == "complete"
     assert lane["next_artifact"] == "AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001"
+
+
+def test_governance_augsynth_remediation_plan_resolved() -> None:
+    inv = investigations_by_id()["INV-AUGSYNTH-REMEDIATION-AND-DIAGNOSTIC-VALIDATION-PLAN-001"]
+    assert inv.status == "RESOLVED"
+    assert inv.resolution_artifact == "AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001"
+
+
+def test_governance_augsynth_remediation_plan_lane_complete() -> None:
+    reg = load_registry()
+    lane = next(
+        b for b in reg["roadmap_lane_bindings"]
+        if b["lane_id"] == "AUGSYNTH-REMEDIATION-AND-DIAGNOSTIC-VALIDATION-PLAN-001"
+    )
+    assert lane["status"] == "complete"
+    assert lane["next_artifact"] == "DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001"

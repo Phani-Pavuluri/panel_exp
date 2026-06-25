@@ -1778,7 +1778,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** 96-row selection gate requirements across 14 selection layers (`failed_scenarios: []`). Design/estimator/inference eligibility separated; prior work reconciled; selector not production-authorized. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production routing authorization.**
 
-**Next:** `AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001`.
+**Next:** `AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001` (completed — see AugSynth remediation validation plan).
+
+---
+
+## AUGSYNTH-REMEDIATION-AND-DIAGNOSTIC-VALIDATION-PLAN-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001_REPORT.md`](track_d/AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001_REPORT.md) · [`docs/track_d/archives/AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001_summary.json`](track_d/archives/AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001_summary.json) · [`panel_exp/validation/augsynth_remediation_diagnostic_validation_plan_001.py`](../panel_exp/validation/augsynth_remediation_diagnostic_validation_plan_001.py)
+
+**Status:** **`augsynth_remediation_and_diagnostic_validation_plan_defined_no_downstream_authorization`**
+
+**Verdict:** 84-row AugSynth remediation validation plan across 28 validation areas (`failed_scenarios: []`). AugSynth diagnostic/restricted research until remediation; CVXPY solver reliability, donor support, adapter/null calibration required. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or AugSynth production authorization.**
+
+**Next:** `DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001`.
 
 ---
 

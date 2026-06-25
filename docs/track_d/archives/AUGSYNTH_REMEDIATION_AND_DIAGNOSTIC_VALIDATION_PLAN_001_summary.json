@@ -1,0 +1,639 @@
+{
+  "artifact_id": "AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001",
+  "artifact_version": "1.0.0",
+  "status": "completed",
+  "verdict": "augsynth_remediation_and_diagnostic_validation_plan_defined_no_downstream_authorization",
+  "generated_at": "2026-06-25T07:32:01.576925+00:00",
+  "git_commit": "cad22a38a1f7c3d35ce15deccc50dcb294a21ec6",
+  "validation_row_count": 84,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "validation_rows_build_successfully",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_row_count_at_least_60",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_ids_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_multi_treated_augsynth_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_donor_support_overlap_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_preperiod_fit_quality_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_regularization_sensitivity_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_assignment_design_validity_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_null_calibration_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_single_treated_augsynth_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_outcome_scale_compatibility_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_solver_convergence_diagnostics_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_placebo_rank_candidate_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_method_disagreement_tbrridge_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_convex_hull_extrapolation_risk_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_failure_registry_blockers_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_treated_set_augsynth_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_dgp_simulation_coverage_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_method_disagreement_scm_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_missing_data_sensitivity_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_multicell_shared_control_boundary_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_augsynth_point_estimate_diagnostic_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_studentized_statistic_adapter_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_release_gate_boundary_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_sparse_count_rate_outcome_handling_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_assignment_generator_stress_compatibility_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_method_disagreement_synthetic_did_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_method_disagreement_did_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_cvxpy_solver_availability_failure_handling_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_jackknife_candidate_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_area_preperiod_trend_stability_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_candidate_after_simulation_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_diagnostic_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_blocked_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_candidate_after_adapter_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_research_only_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_candidate_after_null_calibration_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_required_blocker_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_required_warning_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "status_candidate_after_remediation_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "remediation_type_adapter_requirement_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "remediation_type_assignment_stress_requirement_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "remediation_type_donor_support_validation_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "remediation_type_diagnostic_validation_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "remediation_type_simulation_requirement_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "remediation_type_solver_reliability_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "remediation_type_release_gate_boundary_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "remediation_type_null_calibration_requirement_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "remediation_type_multicell_boundary_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "prior_work_reconciled",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "open_investigations_consulted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "production_readiness_backlog_consulted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "selection_gate_requirements_consulted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "augsynth_diagnostic_restricted_research_until_remediated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "augsynth_point_estimate_not_sufficient_for_production_inference",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "augsynth_production_inference_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "augsynth_production_p_value_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "augsynth_causal_ci_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cvxpy_solver_reliability_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "solver_convergence_diagnostics_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "solver_failure_handling_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "donor_support_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "overlap_validation_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "convex_hull_or_extrapolation_risk_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "pre_period_fit_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "pre_period_trend_stability_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_design_validity_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_generator_stress_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "statistic_adapter_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "null_calibration_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "dgp_coverage_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_registry_consulted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "comparison_against_scm_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "comparison_against_did_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "comparison_against_synthetic_did_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "comparison_against_tbrridge_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multi_treated_augsynth_requires_research_handling",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_shared_control_blocked_without_dependence_handling",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "release_gate_required_before_any_authorization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "downstream_work_paused",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_rank_1_did_conditional_plan",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_issues_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "validation_row_count": 84,
+    "unique_validation_ids": true,
+    "status_counts": {
+      "required_blocker": 9,
+      "required_warning": 8,
+      "candidate_after_remediation": 1,
+      "candidate_after_adapter": 3,
+      "candidate_after_null_calibration": 2,
+      "candidate_after_simulation": 1,
+      "diagnostic_only": 29,
+      "research_only": 1,
+      "blocked": 30
+    },
+    "validation_area_counts": {
+      "augsynth_point_estimate_diagnostic": 3,
+      "cvxpy_solver_availability_failure_handling": 3,
+      "solver_convergence_diagnostics": 3,
+      "regularization_sensitivity": 3,
+      "donor_support_overlap": 3,
+      "convex_hull_extrapolation_risk": 3,
+      "preperiod_fit_quality": 3,
+      "preperiod_trend_stability": 3,
+      "outcome_scale_compatibility": 3,
+      "sparse_count_rate_outcome_handling": 3,
+      "missing_data_sensitivity": 3,
+      "assignment_design_validity": 3,
+      "assignment_generator_stress_compatibility": 3,
+      "single_treated_augsynth": 3,
+      "multi_treated_augsynth": 3,
+      "treated_set_augsynth": 3,
+      "jackknife_candidate": 3,
+      "placebo_rank_candidate": 3,
+      "studentized_statistic_adapter": 3,
+      "null_calibration": 3,
+      "dgp_simulation_coverage": 3,
+      "failure_registry_blockers": 3,
+      "method_disagreement_scm": 3,
+      "method_disagreement_did": 3,
+      "method_disagreement_synthetic_did": 3,
+      "method_disagreement_tbrridge": 3,
+      "multicell_shared_control_boundary": 3,
+      "release_gate_boundary": 3
+    },
+    "remediation_type_counts": {
+      "solver_reliability": 6,
+      "diagnostic_validation": 45,
+      "donor_support_validation": 6,
+      "adapter_requirement": 9,
+      "null_calibration_requirement": 6,
+      "simulation_requirement": 3,
+      "assignment_stress_requirement": 3,
+      "multicell_boundary": 3,
+      "release_gate_boundary": 3
+    },
+    "all_required_validation_areas_covered": true,
+    "all_required_statuses_covered": true,
+    "all_required_remediation_types_covered": true,
+    "issues": []
+  },
+  "status_counts": {
+    "required_blocker": 9,
+    "required_warning": 8,
+    "candidate_after_remediation": 1,
+    "candidate_after_adapter": 3,
+    "candidate_after_null_calibration": 2,
+    "candidate_after_simulation": 1,
+    "diagnostic_only": 29,
+    "research_only": 1,
+    "blocked": 30
+  },
+  "validation_area_counts": {
+    "augsynth_point_estimate_diagnostic": 3,
+    "cvxpy_solver_availability_failure_handling": 3,
+    "solver_convergence_diagnostics": 3,
+    "regularization_sensitivity": 3,
+    "donor_support_overlap": 3,
+    "convex_hull_extrapolation_risk": 3,
+    "preperiod_fit_quality": 3,
+    "preperiod_trend_stability": 3,
+    "outcome_scale_compatibility": 3,
+    "sparse_count_rate_outcome_handling": 3,
+    "missing_data_sensitivity": 3,
+    "assignment_design_validity": 3,
+    "assignment_generator_stress_compatibility": 3,
+    "single_treated_augsynth": 3,
+    "multi_treated_augsynth": 3,
+    "treated_set_augsynth": 3,
+    "jackknife_candidate": 3,
+    "placebo_rank_candidate": 3,
+    "studentized_statistic_adapter": 3,
+    "null_calibration": 3,
+    "dgp_simulation_coverage": 3,
+    "failure_registry_blockers": 3,
+    "method_disagreement_scm": 3,
+    "method_disagreement_did": 3,
+    "method_disagreement_synthetic_did": 3,
+    "method_disagreement_tbrridge": 3,
+    "multicell_shared_control_boundary": 3,
+    "release_gate_boundary": 3
+  },
+  "remediation_type_counts": {
+    "solver_reliability": 6,
+    "diagnostic_validation": 45,
+    "donor_support_validation": 6,
+    "adapter_requirement": 9,
+    "null_calibration_requirement": 6,
+    "simulation_requirement": 3,
+    "assignment_stress_requirement": 3,
+    "multicell_boundary": 3,
+    "release_gate_boundary": 3
+  },
+  "all_required_validation_areas_covered": true,
+  "all_required_statuses_covered": true,
+  "all_required_remediation_types_covered": true,
+  "recommended_next_artifacts": [
+    "DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001",
+    "SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001",
+    "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001"
+  ],
+  "prior_work_reconciled": true,
+  "open_investigations_consulted": true,
+  "production_readiness_backlog_consulted": true,
+  "selection_gate_requirements_consulted": true,
+  "augsynth_diagnostic_restricted_research_until_remediated": true,
+  "augsynth_point_estimate_not_sufficient_for_production_inference": true,
+  "augsynth_production_inference_authorized": false,
+  "augsynth_production_p_value_authorized": false,
+  "augsynth_causal_ci_authorized": false,
+  "cvxpy_solver_reliability_required": true,
+  "solver_convergence_diagnostics_required": true,
+  "solver_failure_handling_required": true,
+  "donor_support_required": true,
+  "overlap_validation_required": true,
+  "convex_hull_or_extrapolation_risk_required": true,
+  "pre_period_fit_required": true,
+  "pre_period_trend_stability_required": true,
+  "assignment_design_validity_required": true,
+  "assignment_generator_stress_required": true,
+  "statistic_adapter_required": true,
+  "null_calibration_required": true,
+  "dgp_coverage_required": true,
+  "failure_registry_consulted": true,
+  "comparison_against_scm_required": true,
+  "comparison_against_did_required": true,
+  "comparison_against_synthetic_did_required": true,
+  "comparison_against_tbrridge_required": true,
+  "multi_treated_augsynth_requires_research_handling": true,
+  "multicell_shared_control_blocked_without_dependence_handling": true,
+  "release_gate_required_before_any_authorization": true,
+  "downstream_work_paused": true,
+  "production_p_value_authorized": false,
+  "causal_confidence_interval_authorized": false,
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false
+}

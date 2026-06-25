@@ -440,7 +440,7 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 
 **Paused:** **`D5-INST-AUGSYNTH-MULTICELL-001`** as default next step · TrustReport/F-DECISION/CalibrationSignal/MMM role expansion · TrustReport product-ops (audit log, API, scheduler, platform — frozen per [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md)) · LLM layer · promotion audits.
 
-**Active method lane (2026-06-03):** `METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001` → … → `PRODUCTION_READINESS_BACKLOG_LEDGER_001` ✅ → `DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001` ✅ → **`AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001`** (immediate next). Downstream schema/ingestion/decisioning paused.
+**Active method lane (2026-06-03):** `METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001` → … → `DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001` ✅ → `AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001` ✅ → **`DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001`** (immediate next). Downstream schema/ingestion/decisioning paused.
 
 **SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001:** 63-row SCM validation plan (`failed_scenarios: []`). First gated production-candidate lane; point estimate not sufficient. See [`SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001`](track_d/SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001_REPORT.md).
 
@@ -449,6 +449,8 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 **PRODUCTION_READINESS_BACKLOG_LEDGER_001:** 46-row production-readiness backlog ledger (`failed_scenarios: []`). Single control-plane backlog tracking all unfinished production-readiness items. See [`PRODUCTION_READINESS_BACKLOG_LEDGER_001`](track_d/PRODUCTION_READINESS_BACKLOG_LEDGER_001_REPORT.md).
 
 **DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001:** 96-row selection gate requirements (`failed_scenarios: []`). Design/estimator/inference eligibility separated; selector not production-authorized. See [`DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001`](track_d/DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001_REPORT.md).
+
+**AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001:** 84-row AugSynth remediation validation plan (`failed_scenarios: []`). AugSynth diagnostic/restricted research until remediation evidence; CVXPY solver reliability required. See [`AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001`](track_d/AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001_REPORT.md).
 
 **MULTICELL_MAX_T_RESEARCH_SCOUT_001:** 50-row multicell max-T research scout (`failed_scenarios: []`). Naive per-cell p-values blocked; pooled/global inference blocked; max-T/stepdown research candidates only. See [`MULTICELL_MAX_T_RESEARCH_SCOUT_001`](track_d/MULTICELL_MAX_T_RESEARCH_SCOUT_001_REPORT.md).
 

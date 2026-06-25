@@ -769,24 +769,29 @@
     {
       "investigation_id": "INV-AUGSYNTH-REMEDIATION-AND-DIAGNOSTIC-VALIDATION-PLAN-001",
       "title": "AugSynth remediation and diagnostic validation plan",
-      "status": "PLANNED",
+      "status": "RESOLVED",
       "priority": "P2",
       "discovered_by": "PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001",
       "affected_combination": "augsynth_remediation_diagnostic_validation",
       "problem_class": ["augsynth", "remediation", "diagnostic_validation"],
       "evidence": {
-        "depends_on": ["PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"],
+        "depends_on": [
+          "PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001",
+          "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001"
+        ],
+        "validation_row_count": 84,
+        "failed_scenarios": [],
         "remediation_before_production_validation": true,
         "blocked_downstream_authorization": true
       },
-      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "current_decision": "AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_DEFINED_NO_DOWNSTREAM_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
-      "target_artifact": "AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001",
-      "revisit_trigger": "Upon opening AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001",
+      "target_artifact": null,
+      "revisit_trigger": null,
       "decision_checkpoint": "AugSynth remediation before production-candidate validation",
       "blocking_policy": "AugSynth production validation blocked until adapter/null calibration remediated",
       "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
-      "resolution_artifact": null
+      "resolution_artifact": "AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001"
     },
     {
       "investigation_id": "INV-DID-CONDITIONAL-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001",
@@ -2093,11 +2098,10 @@
     {
       "lane_id": "DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-REQUIREMENTS-001",
       "status": "complete",
-      "open_investigations": [
-        "INV-AUGSYNTH-REMEDIATION-AND-DIAGNOSTIC-VALIDATION-PLAN-001"
-      ],
+      "open_investigations": [],
       "resolved_investigations": [
-        "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-REQUIREMENTS-001"
+        "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-REQUIREMENTS-001",
+        "INV-AUGSYNTH-REMEDIATION-AND-DIAGNOSTIC-VALIDATION-PLAN-001"
       ],
       "deferred_investigations": [
         "INV-DID-CONDITIONAL-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001",
@@ -2115,6 +2119,33 @@
         "selection_gate",
         "data_driven_router",
         "requirements",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "AUGSYNTH-REMEDIATION-AND-DIAGNOSTIC-VALIDATION-PLAN-001",
+      "status": "complete",
+      "open_investigations": [
+        "INV-DID-CONDITIONAL-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001"
+      ],
+      "resolved_investigations": [
+        "INV-AUGSYNTH-REMEDIATION-AND-DIAGNOSTIC-VALIDATION-PLAN-001"
+      ],
+      "deferred_investigations": [
+        "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001",
+        "INV-SYNTHETIC-DID-IMPLEMENTATION-READINESS-PLAN-001",
+        "INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001",
+        "INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001",
+      "resolution_artifact": "AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "augsynth",
+        "remediation",
+        "diagnostic_validation",
         "no_downstream_authorization"
       ]
     }
