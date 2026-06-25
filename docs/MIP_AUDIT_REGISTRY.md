@@ -1718,7 +1718,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** 178-row promotion criteria matrix across 9 method families (`failed_scenarios: []`). SCM strongest gated candidate; multicell cross-family blocker; retire/replace criteria defined. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
 
-**Next:** `PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001`.
+**Next:** `PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001` (completed — see production compatibility workplan).
+
+---
+
+## PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001.md`](track_d/PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001.md) · [`docs/track_d/archives/PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001_summary.json`](track_d/archives/PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001_summary.json)
+
+**Status:** **`production_compatibility_promotion_workplan_defined_no_downstream_authorization`**
+
+**Verdict:** 10-lane execution workplan sequencing SCM validation, multicell dependence, AugSynth remediation, DID conditional validation, Synthetic DID readiness, retire/replace, Bayesian TBR calibration/replay, TBRRidge remediation decision, TROP evidence scout, and release gate. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001`.
 
 ---
 

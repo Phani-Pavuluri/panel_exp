@@ -653,21 +653,111 @@
     {
       "investigation_id": "INV-PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001",
       "title": "Production compatibility promotion workplan",
-      "status": "PLANNED",
+      "status": "RESOLVED",
       "priority": "P2",
       "discovered_by": "METHOD-FAMILY-PROMOTION-CRITERIA-MATRIX-001",
       "affected_combination": "production_compatibility_promotion_workplan",
       "problem_class": ["promotion_workplan", "production_compatibility"],
       "evidence": {
         "depends_on": ["METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001"],
+        "workplan_lane_count": 10,
+        "failed_scenarios": [],
+        "blocked_downstream_authorization": true
+      },
+      "current_decision": "PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_DEFINED_NO_DOWNSTREAM_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Production compatibility workplan complete before SCM validation plan",
+      "blocking_policy": "No production promotion without explicit workplan sequencing",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
+      "resolution_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"
+    },
+    {
+      "investigation_id": "INV-MULTICELL-DEPENDENCE-AND-MULTIPLICITY-VALIDATION-PLAN-001",
+      "title": "Multicell dependence and multiplicity validation plan",
+      "status": "PLANNED",
+      "priority": "P2",
+      "discovered_by": "PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001",
+      "affected_combination": "multicell_dependence_multiplicity_validation",
+      "problem_class": ["multicell", "dependence", "multiplicity"],
+      "evidence": {
+        "depends_on": ["PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"],
+        "cross_family_blocker": true,
         "blocked_downstream_authorization": true
       },
       "current_decision": "PLANNED_NO_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
-      "target_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001",
-      "revisit_trigger": "Upon opening PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001",
-      "decision_checkpoint": "Production compatibility workplan after promotion criteria matrix",
-      "blocking_policy": "No production promotion without explicit workplan",
+      "target_artifact": "MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001",
+      "revisit_trigger": "Upon opening MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001",
+      "decision_checkpoint": "Multicell validation before multicell production claims",
+      "blocking_policy": "Multicell production claims blocked until dependence/multiplicity validated",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY"],
+      "resolution_artifact": null
+    },
+    {
+      "investigation_id": "INV-AUGSYNTH-REMEDIATION-AND-DIAGNOSTIC-VALIDATION-PLAN-001",
+      "title": "AugSynth remediation and diagnostic validation plan",
+      "status": "PLANNED",
+      "priority": "P2",
+      "discovered_by": "PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001",
+      "affected_combination": "augsynth_remediation_diagnostic_validation",
+      "problem_class": ["augsynth", "remediation", "diagnostic_validation"],
+      "evidence": {
+        "depends_on": ["PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"],
+        "remediation_before_production_validation": true,
+        "blocked_downstream_authorization": true
+      },
+      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": "AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001",
+      "revisit_trigger": "Upon opening AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001",
+      "decision_checkpoint": "AugSynth remediation before production-candidate validation",
+      "blocking_policy": "AugSynth production validation blocked until adapter/null calibration remediated",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
+      "resolution_artifact": null
+    },
+    {
+      "investigation_id": "INV-DID-CONDITIONAL-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001",
+      "title": "DID conditional production candidate validation plan",
+      "status": "PLANNED",
+      "priority": "P2",
+      "discovered_by": "PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001",
+      "affected_combination": "did_conditional_production_candidate_validation",
+      "problem_class": ["did", "conditional_candidate", "validation_plan"],
+      "evidence": {
+        "depends_on": ["PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"],
+        "conditional_designs_only": true,
+        "blocked_downstream_authorization": true
+      },
+      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": "DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001",
+      "revisit_trigger": "Upon opening DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001",
+      "decision_checkpoint": "DID validation only in eligible designs",
+      "blocking_policy": "DID production path conditional on design validity",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
+      "resolution_artifact": null
+    },
+    {
+      "investigation_id": "INV-SYNTHETIC-DID-IMPLEMENTATION-READINESS-PLAN-001",
+      "title": "Synthetic DID implementation readiness plan",
+      "status": "PLANNED",
+      "priority": "P2",
+      "discovered_by": "PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001",
+      "affected_combination": "synthetic_did_implementation_readiness",
+      "problem_class": ["synthetic_did", "implementation_readiness"],
+      "evidence": {
+        "depends_on": ["PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"],
+        "implementation_readiness_required": true,
+        "blocked_downstream_authorization": true
+      },
+      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": "SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001",
+      "revisit_trigger": "Upon opening SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001",
+      "decision_checkpoint": "Synthetic DID implementation readiness before validation",
+      "blocking_policy": "Synthetic DID scout-only until implementation readiness",
       "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
       "resolution_artifact": null
     },
@@ -676,12 +766,13 @@
       "title": "SCM production candidate validation plan",
       "status": "PLANNED",
       "priority": "P2",
-      "discovered_by": "METHOD-FAMILY-PROMOTION-CRITERIA-MATRIX-001",
+      "discovered_by": "PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001",
       "affected_combination": "scm_production_candidate_validation",
       "problem_class": ["scm", "production_candidate", "validation_plan"],
       "evidence": {
-        "depends_on": ["METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001"],
+        "depends_on": ["PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"],
         "scm_strongest_near_term_candidate": true,
+        "scm_first_validation_lane": true,
         "blocked_downstream_authorization": true
       },
       "current_decision": "PLANNED_NO_AUTHORIZATION",
@@ -698,12 +789,13 @@
       "title": "Method family retire/replace execution plan",
       "status": "PLANNED",
       "priority": "P2",
-      "discovered_by": "METHOD-FAMILY-PROMOTION-CRITERIA-MATRIX-001",
+      "discovered_by": "PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001",
       "affected_combination": "method_family_retire_replace_execution",
       "problem_class": ["retire_replace", "execution_plan"],
       "evidence": {
-        "depends_on": ["METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001"],
+        "depends_on": ["PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"],
         "classic_tbr_retire_replace_defined": true,
+        "classic_tbr_retire_replace_priority": true,
         "blocked_downstream_authorization": true
       },
       "current_decision": "PLANNED_NO_AUTHORIZATION",
@@ -713,6 +805,94 @@
       "decision_checkpoint": "Retire/replace execution after promotion criteria matrix",
       "blocking_policy": "Retire/replace paths require explicit execution plan",
       "terminal_decisions": ["RESTRICT", "RETIRE", "REPLACE"],
+      "resolution_artifact": null
+    },
+    {
+      "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
+      "title": "Bayesian TBR calibration replay research plan",
+      "status": "PLANNED",
+      "priority": "P2",
+      "discovered_by": "PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001",
+      "affected_combination": "bayesian_tbr_calibration_replay_research",
+      "problem_class": ["bayesian_tbr", "calibration_replay", "research_plan"],
+      "evidence": {
+        "depends_on": ["PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"],
+        "calibration_replay_required": true,
+        "blocked_downstream_authorization": true
+      },
+      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": "BAYESIAN_TBR_CALIBRATION_REPLAY_RESEARCH_PLAN_001",
+      "revisit_trigger": "Upon opening BAYESIAN_TBR_CALIBRATION_REPLAY_RESEARCH_PLAN_001",
+      "decision_checkpoint": "Bayesian TBR calibration/replay before causal uncertainty claims",
+      "blocking_policy": "Posterior diagnostic only until calibration/replay evidence",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY"],
+      "resolution_artifact": null
+    },
+    {
+      "investigation_id": "INV-TBRRIDGE-DIAGNOSTIC-REMEDIATION-DECISION-PLAN-001",
+      "title": "TBRRidge diagnostic remediation decision plan",
+      "status": "PLANNED",
+      "priority": "P2",
+      "discovered_by": "PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001",
+      "affected_combination": "tbrridge_diagnostic_remediation_decision",
+      "problem_class": ["tbrridge", "diagnostic", "remediation_decision"],
+      "evidence": {
+        "depends_on": ["PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"],
+        "diagnostic_unless_remediated": true,
+        "blocked_downstream_authorization": true
+      },
+      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": "TBRRIDGE_DIAGNOSTIC_REMEDIATION_DECISION_PLAN_001",
+      "revisit_trigger": "Upon opening TBRRIDGE_DIAGNOSTIC_REMEDIATION_DECISION_PLAN_001",
+      "decision_checkpoint": "TBRRidge diagnostic unless remediation proves otherwise",
+      "blocking_policy": "TBRRidge production inference blocked pending remediation decision",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "RETIRE"],
+      "resolution_artifact": null
+    },
+    {
+      "investigation_id": "INV-TROP-EVIDENCE-SCOUT-PLAN-001",
+      "title": "TROP evidence scout plan",
+      "status": "PLANNED",
+      "priority": "P2",
+      "discovered_by": "PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001",
+      "affected_combination": "trop_evidence_scout",
+      "problem_class": ["trop", "research_only", "evidence_scout"],
+      "evidence": {
+        "depends_on": ["PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"],
+        "research_only_unless_future_evidence": true,
+        "blocked_downstream_authorization": true
+      },
+      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": "TROP_EVIDENCE_SCOUT_PLAN_001",
+      "revisit_trigger": "Upon opening TROP_EVIDENCE_SCOUT_PLAN_001",
+      "decision_checkpoint": "TROP research-only evidence scout",
+      "blocking_policy": "TROP remains research-only unless future evidence changes status",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "DEFER_RESEARCH"],
+      "resolution_artifact": null
+    },
+    {
+      "investigation_id": "INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001",
+      "title": "Production authorization release gate plan",
+      "status": "PLANNED",
+      "priority": "P2",
+      "discovered_by": "PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001",
+      "affected_combination": "production_authorization_release_gate",
+      "problem_class": ["authorization", "release_gate", "platform"],
+      "evidence": {
+        "depends_on": ["PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"],
+        "no_method_authorized_by_workplan": true,
+        "blocked_downstream_authorization": true
+      },
+      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": "PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001",
+      "revisit_trigger": "Upon opening PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001",
+      "decision_checkpoint": "Platform release gate after family validation lanes",
+      "blocking_policy": "No production authorization until release gate plan completes",
+      "terminal_decisions": ["RESTRICT", "PROMOTE"],
       "resolution_artifact": null
     },
     {
@@ -1696,11 +1876,10 @@
     {
       "lane_id": "METHOD-FAMILY-PROMOTION-CRITERIA-MATRIX-001",
       "status": "complete",
-      "open_investigations": [
-        "INV-PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001"
-      ],
+      "open_investigations": [],
       "resolved_investigations": [
-        "INV-METHOD-FAMILY-PROMOTION-CRITERIA-MATRIX-001"
+        "INV-METHOD-FAMILY-PROMOTION-CRITERIA-MATRIX-001",
+        "INV-PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001"
       ],
       "deferred_investigations": [
         "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
@@ -1717,6 +1896,40 @@
         "method_gap_control",
         "promotion_criteria",
         "method_family_matrix",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001",
+      "status": "complete",
+      "open_investigations": [
+        "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001"
+      ],
+      "resolved_investigations": [
+        "INV-PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001"
+      ],
+      "deferred_investigations": [
+        "INV-MULTITREATED-DESIGN-AWARE-PLACEBO-001",
+        "INV-MULTICELL-SHARED-CONTROL-DEPENDENCE-001",
+        "INV-MULTICELL-MULTIPLICITY-CALIBRATION-001",
+        "INV-MULTICELL-DEPENDENCE-AND-MULTIPLICITY-VALIDATION-PLAN-001",
+        "INV-AUGSYNTH-REMEDIATION-AND-DIAGNOSTIC-VALIDATION-PLAN-001",
+        "INV-DID-CONDITIONAL-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001",
+        "INV-SYNTHETIC-DID-IMPLEMENTATION-READINESS-PLAN-001",
+        "INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001",
+        "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
+        "INV-TBRRIDGE-DIAGNOSTIC-REMEDIATION-DECISION-PLAN-001",
+        "INV-TROP-EVIDENCE-SCOUT-PLAN-001",
+        "INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001",
+      "resolution_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "promotion_workplan",
+        "production_compatibility",
         "no_downstream_authorization"
       ]
     }

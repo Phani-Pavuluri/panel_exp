@@ -608,7 +608,8 @@ class TestOpenInvestigationRegistry001:
         assert lane["resolution_artifact"] == "METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001"
         assert lane["next_artifact"] == "PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"
         assert "INV-METHOD-FAMILY-PROMOTION-CRITERIA-MATRIX-001" in lane["resolved_investigations"]
-        assert "INV-PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001" in lane["open_investigations"]
+        assert "INV-PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001" in lane["resolved_investigations"]
+        assert lane["open_investigations"] == []
         assert "promotion_criteria" in lane["artifact_tags"]
         assert "no_downstream_authorization" in lane["artifact_tags"]
 
@@ -617,15 +618,49 @@ class TestOpenInvestigationRegistry001:
         assert inv.status == "RESOLVED"
         assert inv.resolution_artifact == "METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001"
 
-    def test_production_compatibility_promotion_workplan_investigation_planned(self) -> None:
+    def test_production_compatibility_promotion_workplan_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"
+        assert lane["next_artifact"] == "SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001"
+        assert "INV-PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001" in lane["resolved_investigations"]
+        assert "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001" in lane["open_investigations"]
+        assert "promotion_workplan" in lane["artifact_tags"]
+        assert "no_downstream_authorization" in lane["artifact_tags"]
+
+    def test_production_compatibility_promotion_workplan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"
+
+    def test_multicell_dependence_multiplicity_validation_plan_investigation_planned(self) -> None:
+        inv = investigations_by_id()["INV-MULTICELL-DEPENDENCE-AND-MULTIPLICITY-VALIDATION-PLAN-001"]
         assert inv.status == "PLANNED"
-        assert inv.target_artifact == "PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"
+        assert inv.target_artifact == "MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001"
+
+    def test_augsynth_remediation_diagnostic_validation_plan_investigation_planned(self) -> None:
+        inv = investigations_by_id()["INV-AUGSYNTH-REMEDIATION-AND-DIAGNOSTIC-VALIDATION-PLAN-001"]
+        assert inv.status == "PLANNED"
+        assert inv.target_artifact == "AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001"
 
     def test_scm_production_candidate_validation_plan_investigation_planned(self) -> None:
         inv = investigations_by_id()["INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001"]
         assert inv.status == "PLANNED"
         assert inv.target_artifact == "SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001"
+
+    def test_did_conditional_validation_plan_investigation_planned(self) -> None:
+        inv = investigations_by_id()["INV-DID-CONDITIONAL-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001"]
+        assert inv.status == "PLANNED"
+        assert inv.target_artifact == "DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001"
+
+    def test_synthetic_did_implementation_readiness_plan_investigation_planned(self) -> None:
+        inv = investigations_by_id()["INV-SYNTHETIC-DID-IMPLEMENTATION-READINESS-PLAN-001"]
+        assert inv.status == "PLANNED"
+        assert inv.target_artifact == "SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001"
 
     def test_method_family_retire_replace_execution_plan_investigation_planned(self) -> None:
         inv = investigations_by_id()["INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001"]
