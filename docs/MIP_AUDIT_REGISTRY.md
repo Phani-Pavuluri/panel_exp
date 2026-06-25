@@ -1790,7 +1790,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** 84-row AugSynth remediation validation plan across 28 validation areas (`failed_scenarios: []`). AugSynth diagnostic/restricted research until remediation; CVXPY solver reliability, donor support, adapter/null calibration required. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or AugSynth production authorization.**
 
-**Next:** `DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001`.
+**Next:** `DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001` (completed — see DID conditional validation plan).
+
+---
+
+## DID-CONDITIONAL-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001_REPORT.md`](track_d/DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001_REPORT.md) · [`docs/track_d/archives/DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001_summary.json`](track_d/archives/DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001_summary.json) · [`panel_exp/validation/did_conditional_production_candidate_validation_plan_001.py`](../panel_exp/validation/did_conditional_production_candidate_validation_plan_001.py)
+
+**Status:** **`did_conditional_production_candidate_validation_plan_defined_no_downstream_authorization`**
+
+**Verdict:** 87-row DID conditional production-candidate validation plan across 29 validation areas (`failed_scenarios: []`). DID conditional only under eligible designs; parallel trends, assignment validity, cluster/outcome suitability, and method disagreement checks required. Bootstrap cannot fix invalid design or trends; staggered/TWFE blocked or research-only. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or DID production authorization.**
+
+**Next:** `SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001`.
 
 ---
 
