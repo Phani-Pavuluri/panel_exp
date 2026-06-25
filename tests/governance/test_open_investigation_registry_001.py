@@ -692,12 +692,12 @@ class TestOpenInvestigationRegistry001:
             "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001"
         )
 
-    def test_data_driven_selection_gate_implementation_plan_investigation_planned(self) -> None:
+    def test_data_driven_selection_gate_implementation_plan_investigation_resolved_early(self) -> None:
         inv = investigations_by_id()[
             "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001"
         ]
-        assert inv.status == "PLANNED"
-        assert inv.target_artifact == (
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == (
             "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001"
         )
 
@@ -800,9 +800,30 @@ class TestOpenInvestigationRegistry001:
         assert "INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001" in lane["resolved_investigations"]
         assert (
             "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001"
-            in lane["open_investigations"]
+            in lane["resolved_investigations"]
         )
+        assert lane["open_investigations"] == []
         assert "retire_replace" in lane["artifact_tags"]
+        assert "no_downstream_authorization" in lane["artifact_tags"]
+
+    def test_selection_gate_implementation_plan_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == (
+            "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001"
+        )
+        assert lane["next_artifact"] == "PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001"
+        assert (
+            "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001"
+            in lane["resolved_investigations"]
+        )
+        assert "INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001" in lane["open_investigations"]
+        assert "selection_gate" in lane["artifact_tags"]
+        assert "implementation_plan" in lane["artifact_tags"]
         assert "no_downstream_authorization" in lane["artifact_tags"]
 
     def test_scm_production_candidate_validation_plan_investigation_resolved(self) -> None:
@@ -824,6 +845,15 @@ class TestOpenInvestigationRegistry001:
         inv = investigations_by_id()["INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001"]
         assert inv.status == "RESOLVED"
         assert inv.resolution_artifact == "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001"
+
+    def test_selection_gate_implementation_plan_investigation_resolved(self) -> None:
+        inv = investigations_by_id()[
+            "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001"
+        ]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == (
+            "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001"
+        )
 
     def test_scm_treated_set_placebo_null_calibration_lane_complete(self) -> None:
         reg = load_registry()

@@ -1,0 +1,920 @@
+{
+  "artifact_id": "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001",
+  "artifact_type": "implementation_plan_metadata_only",
+  "artifact_version": "1.0.0",
+  "base_commit": "71bc44e65dccb4266901b759434479b29671d6ca",
+  "status": "completed",
+  "verdict": "data_driven_selection_gate_implementation_plan_defined_no_downstream_authorization",
+  "final_verdict": "data_driven_selection_gate_implementation_plan_defined_no_downstream_authorization",
+  "next_artifact": "PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001",
+  "generated_at": "2026-06-25T23:02:59.001294+00:00",
+  "git_commit": "71bc44e65dccb4266901b759434479b29671d6ca",
+  "plan_row_count": 127,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "plan_rows_build_successfully",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_row_count_at_least_70",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_ids_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_audit_reference_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_dgp_simulation_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_blocked_reason_schema_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_release_gate_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_stage_definition_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_backlog_integration_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_agent_deferral_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_multicell_routing_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_non_goal_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_method_family_routing_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_test_strategy_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_output_contract_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_retire_replace_integration_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_next_best_alternative_schema_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_failure_registry_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_observed_diagnostics_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_downstream_boundary_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_rule_ordering_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_validation_strategy_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_outcome_kpi_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_input_contract_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_did_routed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_trop_routed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_multicell_shared_control_routed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_augsynth_cvxpy_routed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_bayesian_tbr_routed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_scm_routed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_synthetic_did_routed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_tbrridge_routed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_classic_aggregate_tbr_routed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "rule_layer_data_intake_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "rule_layer_experiment_metadata_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "rule_layer_assignment_mechanism_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "rule_layer_design_eligibility_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "rule_layer_estimator_eligibility_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "rule_layer_inference_eligibility_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "rule_layer_outcome_kpi_compatibility_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "rule_layer_observed_diagnostics_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "rule_layer_simulation_dgp_coverage_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "rule_layer_failure_registry_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "rule_layer_multicell_dependence_multiplicity_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "rule_layer_method_family_promotion_status_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "rule_layer_release_gate_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "rule_layer_downstream_boundary_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_0_contract_only_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_1_metadata_registry_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_2_pure_function_router_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_3_diagnostics_integration_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_4_governance_integration_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_5_shadow_mode_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_6_release_gate_candidate_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_panel_metadata_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_experiment_metadata_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_assignment_metadata_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_outcome_metadata_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_kpi_metadata_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_cell_structure_metadata_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_design_diagnostics_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_observed_panel_diagnostics_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_method_governance_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_production_readiness_backlog_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_retire_replace_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_multicell_validation_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_failure_registry_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_simulation_dgp_evidence_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_open_investigations_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_release_gate_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_audit_context_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_field_design_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_field_estimator_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_field_inference_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_field_design_estimator_pair_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_field_estimator_inference_pair_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_field_full_tuple_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_field_method_family_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_field_route_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_field_blocked_reasons_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_field_warnings_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_field_required_diagnostics_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_field_required_evidence_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_field_allowed_current_use_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_field_forbidden_current_use_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_field_next_best_alternatives_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_field_release_gate_required_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_field_authorization_flags_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_field_audit_references_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "prior_work_reconciled",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "open_investigations_consulted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "production_readiness_backlog_consulted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "selection_gate_requirements_consulted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "retire_replace_execution_consulted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "package_side_agents_deferred",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_estimator_inference_separated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "estimator_allowed_does_not_imply_inference_allowed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "point_estimate_allowed_does_not_imply_causal_uncertainty_allowed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "retired_overclaim_paths_route_blocked_not_production",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_production_claims_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "release_gate_required_before_any_authorization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "resolved_artifacts_do_not_mean_production_ready",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "selector_requires_release_gate_before_authorization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "selector_returns_blocked_reasons",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "selector_returns_next_best_alternatives",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "earlier_hard_gate_failure_prevents_later_production_eligibility",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "downstream_work_paused",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "implementation_plan_only_no_runtime_router",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_data_driven_selection_gate_implementation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_selector_implementation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_selection_router_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scm_production_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_augsynth_production_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_did_production_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_synthetic_did_production_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_multicell_production_claim_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_package_side_agents_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_release_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "planned_input_contract_experiment_selection_input",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "planned_output_contract_experiment_selection_decision",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "implementation_plan_only_no_runtime_router",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_issues_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "plan_row_count": 127,
+    "unique_plan_ids": true,
+    "plan_section_counts": {
+      "input_contract": 17,
+      "output_contract": 18,
+      "rule_ordering": 14,
+      "stage_definition": 42,
+      "method_family_routing": 9,
+      "blocked_reason_schema": 1,
+      "next_best_alternative_schema": 1,
+      "audit_reference": 1,
+      "multicell_routing": 1,
+      "outcome_kpi": 1,
+      "observed_diagnostics": 1,
+      "dgp_simulation": 1,
+      "failure_registry": 1,
+      "backlog_integration": 1,
+      "retire_replace_integration": 1,
+      "release_gate": 1,
+      "agent_deferral": 1,
+      "test_strategy": 1,
+      "validation_strategy": 1,
+      "downstream_boundary": 1,
+      "non_goal": 12
+    },
+    "method_family_counts": {
+      "scm": 1,
+      "augsynth_cvxpy": 1,
+      "did": 1,
+      "synthetic_did": 1,
+      "tbrridge": 1,
+      "classic_aggregate_tbr": 1,
+      "bayesian_tbr": 1,
+      "trop": 1,
+      "multicell_shared_control": 1
+    },
+    "stage_counts": {
+      "stage_0_contract_only": 6,
+      "stage_1_metadata_registry": 6,
+      "stage_2_pure_function_router": 6,
+      "stage_3_diagnostics_integration": 6,
+      "stage_4_governance_integration": 6,
+      "stage_5_shadow_mode": 6,
+      "stage_6_release_gate_candidate": 6
+    },
+    "rule_layer_counts": {
+      "data_intake": 1,
+      "experiment_metadata": 1,
+      "assignment_mechanism": 1,
+      "design_eligibility": 1,
+      "estimator_eligibility": 1,
+      "inference_eligibility": 1,
+      "outcome_kpi_compatibility": 1,
+      "observed_diagnostics": 1,
+      "simulation_dgp_coverage": 1,
+      "failure_registry": 1,
+      "multicell_dependence_multiplicity": 1,
+      "method_family_promotion_status": 1,
+      "release_gate": 1,
+      "downstream_boundary": 1
+    },
+    "all_required_plan_sections_covered": true,
+    "all_method_families_routed": true,
+    "all_rule_layers_present": true,
+    "all_stages_present": true,
+    "issues": []
+  },
+  "planned_input_contract": "ExperimentSelectionInput",
+  "planned_output_contract": "ExperimentSelectionDecision",
+  "rule_ordering": [
+    "data_intake",
+    "experiment_metadata",
+    "assignment_mechanism",
+    "design_eligibility",
+    "estimator_eligibility",
+    "inference_eligibility",
+    "outcome_kpi_compatibility",
+    "observed_diagnostics",
+    "simulation_dgp_coverage",
+    "failure_registry",
+    "multicell_dependence_multiplicity",
+    "method_family_promotion_status",
+    "release_gate",
+    "downstream_boundary"
+  ],
+  "stages": [
+    "stage_0_contract_only",
+    "stage_1_metadata_registry",
+    "stage_2_pure_function_router",
+    "stage_3_diagnostics_integration",
+    "stage_4_governance_integration",
+    "stage_5_shadow_mode",
+    "stage_6_release_gate_candidate"
+  ],
+  "dependencies_reconciled": [
+    "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001",
+    "PRODUCTION_READINESS_BACKLOG_LEDGER_001",
+    "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001",
+    "SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001",
+    "AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001",
+    "DID_CONDITIONAL_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001",
+    "SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001",
+    "MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001",
+    "FUTURE_EXPERIMENT_PACKAGE_SIDE_AGENT_ROADMAP_001",
+    "ROADMAP_STATE_BEFORE_SELECTION_GATE_IMPLEMENTATION_PLAN_001"
+  ],
+  "method_family_statuses": {
+    "scm": "candidate_after_validation",
+    "augsynth_cvxpy": "diagnostic_only",
+    "did": "candidate_after_validation",
+    "synthetic_did": "research_only",
+    "tbrridge": "diagnostic_only",
+    "classic_aggregate_tbr": "blocked",
+    "bayesian_tbr": "research_only",
+    "trop": "research_only",
+    "multicell_shared_control": "blocked"
+  },
+  "non_goals": [
+    "no_runtime_selector_router",
+    "no_agent_runtime_or_llm",
+    "no_production_inference_p_values_or_causal_cis",
+    "no_trustreport_calibration_signal_mmm",
+    "no_live_api_scheduler_budget",
+    "no_budget_optimization_or_production_decisioning",
+    "no_lift_power_outside_governed_diagnostics",
+    "no_method_promotion_beyond_existing_labels",
+    "no_code_deletion",
+    "no_package_side_agent_authorization",
+    "no_skipping_release_gate_dependency",
+    "no_production_authorization_by_this_plan"
+  ],
+  "selector_implementation_authorized": false,
+  "production_selection_router_authorized": false,
+  "package_side_agents_authorized": false,
+  "authorization_flags": {
+    "production_p_value_authorized": false,
+    "causal_confidence_interval_authorized": false,
+    "trustreport_authorized": false,
+    "calibration_signal_allowed": false,
+    "mmm_ingestion_allowed": false,
+    "llm_decisioning_allowed": false,
+    "production_decisioning_allowed": false,
+    "live_api_authorized": false,
+    "scheduler_authorized": false,
+    "budget_optimization_allowed": false,
+    "scm_production_inference_authorized": false,
+    "augsynth_production_inference_authorized": false,
+    "did_production_inference_authorized": false,
+    "synthetic_did_production_inference_authorized": false,
+    "multicell_production_claim_authorized": false
+  },
+  "plan_section_counts": {
+    "input_contract": 17,
+    "output_contract": 18,
+    "rule_ordering": 14,
+    "stage_definition": 42,
+    "method_family_routing": 9,
+    "blocked_reason_schema": 1,
+    "next_best_alternative_schema": 1,
+    "audit_reference": 1,
+    "multicell_routing": 1,
+    "outcome_kpi": 1,
+    "observed_diagnostics": 1,
+    "dgp_simulation": 1,
+    "failure_registry": 1,
+    "backlog_integration": 1,
+    "retire_replace_integration": 1,
+    "release_gate": 1,
+    "agent_deferral": 1,
+    "test_strategy": 1,
+    "validation_strategy": 1,
+    "downstream_boundary": 1,
+    "non_goal": 12
+  },
+  "method_family_counts": {
+    "scm": 1,
+    "augsynth_cvxpy": 1,
+    "did": 1,
+    "synthetic_did": 1,
+    "tbrridge": 1,
+    "classic_aggregate_tbr": 1,
+    "bayesian_tbr": 1,
+    "trop": 1,
+    "multicell_shared_control": 1
+  },
+  "stage_counts": {
+    "stage_0_contract_only": 6,
+    "stage_1_metadata_registry": 6,
+    "stage_2_pure_function_router": 6,
+    "stage_3_diagnostics_integration": 6,
+    "stage_4_governance_integration": 6,
+    "stage_5_shadow_mode": 6,
+    "stage_6_release_gate_candidate": 6
+  },
+  "all_required_plan_sections_covered": true,
+  "all_method_families_routed": true,
+  "all_rule_layers_present": true,
+  "all_stages_present": true,
+  "recommended_next_artifacts": [
+    "PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001",
+    "SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_PLAN_001"
+  ],
+  "prior_work_reconciled": true,
+  "open_investigations_consulted": true,
+  "production_readiness_backlog_consulted": true,
+  "selection_gate_requirements_consulted": true,
+  "retire_replace_execution_consulted": true,
+  "package_side_agents_deferred": true,
+  "design_estimator_inference_separated": true,
+  "estimator_allowed_does_not_imply_inference_allowed": true,
+  "point_estimate_allowed_does_not_imply_causal_uncertainty_allowed": true,
+  "retired_overclaim_paths_route_blocked_not_production": true,
+  "multicell_production_claims_blocked": true,
+  "release_gate_required_before_any_authorization": true,
+  "resolved_artifacts_do_not_mean_production_ready": true,
+  "selector_requires_release_gate_before_authorization": true,
+  "selector_returns_blocked_reasons": true,
+  "selector_returns_next_best_alternatives": true,
+  "earlier_hard_gate_failure_prevents_later_production_eligibility": true,
+  "downstream_work_paused": true,
+  "implementation_plan_only_no_runtime_router": true,
+  "production_p_value_authorized": false,
+  "causal_confidence_interval_authorized": false,
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false,
+  "data_driven_selection_gate_implementation_authorized": false,
+  "scm_production_inference_authorized": false,
+  "augsynth_production_inference_authorized": false,
+  "did_production_inference_authorized": false,
+  "synthetic_did_production_inference_authorized": false,
+  "multicell_production_claim_authorized": false
+}

@@ -747,24 +747,29 @@
     {
       "investigation_id": "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001",
       "title": "Data-driven design-estimator-inference selection gate implementation plan",
-      "status": "PLANNED",
+      "status": "RESOLVED",
       "priority": "P2",
       "discovered_by": "DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-REQUIREMENTS-001",
       "affected_combination": "data_driven_dei_selection_gate_implementation",
       "problem_class": ["router", "implementation_plan", "design_estimator_inference"],
       "evidence": {
-        "depends_on": ["DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001"],
-        "requirements_defined": true,
-        "blocked_downstream_authorization": true
+        "depends_on": [
+          "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001",
+          "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001"
+        ],
+        "plan_row_count": 127,
+        "failed_scenarios": [],
+        "blocked_downstream_authorization": true,
+        "selector_implementation_unauthorized": true
       },
-      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "current_decision": "DATA_DRIVEN_SELECTION_GATE_IMPLEMENTATION_PLAN_DEFINED_NO_DOWNSTREAM_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
-      "target_artifact": "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001",
-      "revisit_trigger": "Upon opening DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001",
+      "target_artifact": null,
+      "revisit_trigger": null,
       "decision_checkpoint": "Implementation plan after requirements and before production router",
-      "blocking_policy": "Production router not authorized by requirements artifact alone",
+      "blocking_policy": "Production router not authorized by implementation plan artifact",
       "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
-      "resolution_artifact": null
+      "resolution_artifact": "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001"
     },
     {
       "investigation_id": "INV-AUGSYNTH-REMEDIATION-AND-DIAGNOSTIC-VALIDATION-PLAN-001",
@@ -2228,11 +2233,10 @@
     {
       "lane_id": "METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001",
       "status": "complete",
-      "open_investigations": [
-        "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001"
-      ],
+      "open_investigations": [],
       "resolved_investigations": [
-        "INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001"
+        "INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001",
+        "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001"
       ],
       "deferred_investigations": [
         "INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001",
@@ -2246,6 +2250,30 @@
         "method_gap_control",
         "retire_replace",
         "execution_plan",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001",
+      "status": "complete",
+      "open_investigations": [
+        "INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"
+      ],
+      "resolved_investigations": [
+        "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001"
+      ],
+      "deferred_investigations": [
+        "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-IMPLEMENTATION-PLAN-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001",
+      "resolution_artifact": "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "selection_gate",
+        "implementation_plan",
+        "data_driven_router",
         "no_downstream_authorization"
       ]
     }

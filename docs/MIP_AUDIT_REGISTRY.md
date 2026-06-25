@@ -1826,7 +1826,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** 180-row retire/replace execution plan across 12 method families and 15 execution areas (`failed_scenarios: []`). SCM retained gated; AugSynth remediation; DID conditional; Synthetic DID readiness; TBRRidge diagnostic; classic TBR retire/replace; Bayesian TBR/TROP research-only; multicell blocked. **No code deletion, replacement implementation, production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
 
-**Next:** `DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001`.
+**Next:** `DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001` (completed — see selection-gate implementation plan).
+
+---
+
+## DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001_REPORT.md`](track_d/DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001_REPORT.md) · [`docs/track_d/archives/DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001_summary.json`](track_d/archives/DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001_summary.json) · [`panel_exp/validation/data_driven_selection_gate_implementation_plan_001.py`](../panel_exp/validation/data_driven_selection_gate_implementation_plan_001.py)
+
+**Status:** **`data_driven_selection_gate_implementation_plan_defined_no_downstream_authorization`**
+
+**Verdict:** 127-row implementation plan for future deterministic selector (`failed_scenarios: []`). `ExperimentSelectionInput`/`ExperimentSelectionDecision` contracts, 14-layer rule ordering, 7 staged phases, method-family routing, integration plans. **Implementation plan only; no runtime router, no agents, no production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
+
+**Next:** `PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001`.
 
 ---
 
