@@ -723,22 +723,46 @@
     {
       "investigation_id": "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-REQUIREMENTS-001",
       "title": "Data-driven design-estimator-inference selection gate requirements",
-      "status": "PLANNED",
+      "status": "RESOLVED",
       "priority": "P1",
       "discovered_by": "PRODUCTION-READINESS-BACKLOG-LEDGER-001",
       "affected_combination": "data_driven_dei_selection_gate",
       "problem_class": ["router", "selection_gate", "design_estimator_inference"],
       "evidence": {
         "depends_on": ["PRODUCTION_READINESS_BACKLOG_LEDGER_001"],
+        "requirements_row_count": 96,
+        "failed_scenarios": [],
         "p1_first_candidate_blocker": true,
+        "blocked_downstream_authorization": true
+      },
+      "current_decision": "DATA_DRIVEN_SELECTION_GATE_REQUIREMENTS_DEFINED_NO_DOWNSTREAM_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Selection gate requirements before method-specific implementation-heavy work",
+      "blocking_policy": "No automatic design-estimator-inference selection without explicit gate requirements",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
+      "resolution_artifact": "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001"
+    },
+    {
+      "investigation_id": "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001",
+      "title": "Data-driven design-estimator-inference selection gate implementation plan",
+      "status": "PLANNED",
+      "priority": "P2",
+      "discovered_by": "DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-REQUIREMENTS-001",
+      "affected_combination": "data_driven_dei_selection_gate_implementation",
+      "problem_class": ["router", "implementation_plan", "design_estimator_inference"],
+      "evidence": {
+        "depends_on": ["DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001"],
+        "requirements_defined": true,
         "blocked_downstream_authorization": true
       },
       "current_decision": "PLANNED_NO_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
-      "target_artifact": "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001",
-      "revisit_trigger": "Upon opening DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001",
-      "decision_checkpoint": "Selection gate requirements before method-specific implementation-heavy work",
-      "blocking_policy": "No automatic design-estimator-inference selection without explicit gate requirements",
+      "target_artifact": "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001",
+      "revisit_trigger": "Upon opening DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001",
+      "decision_checkpoint": "Implementation plan after requirements and before production router",
+      "blocking_policy": "Production router not authorized by requirements artifact alone",
       "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
       "resolution_artifact": null
     },
@@ -2041,15 +2065,15 @@
     {
       "lane_id": "PRODUCTION-READINESS-BACKLOG-LEDGER-001",
       "status": "complete",
-      "open_investigations": [
-        "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-REQUIREMENTS-001"
-      ],
+      "open_investigations": [],
       "resolved_investigations": [
-        "INV-PRODUCTION-READINESS-BACKLOG-LEDGER-001"
+        "INV-PRODUCTION-READINESS-BACKLOG-LEDGER-001",
+        "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-REQUIREMENTS-001"
       ],
       "deferred_investigations": [
         "INV-AUGSYNTH-REMEDIATION-AND-DIAGNOSTIC-VALIDATION-PLAN-001",
         "INV-DID-CONDITIONAL-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001",
+        "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001",
         "INV-SYNTHETIC-DID-IMPLEMENTATION-READINESS-PLAN-001",
         "INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001",
         "INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"
@@ -2063,6 +2087,34 @@
         "backlog",
         "production_readiness",
         "control_plane",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-REQUIREMENTS-001",
+      "status": "complete",
+      "open_investigations": [
+        "INV-AUGSYNTH-REMEDIATION-AND-DIAGNOSTIC-VALIDATION-PLAN-001"
+      ],
+      "resolved_investigations": [
+        "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-REQUIREMENTS-001"
+      ],
+      "deferred_investigations": [
+        "INV-DID-CONDITIONAL-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001",
+        "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001",
+        "INV-SYNTHETIC-DID-IMPLEMENTATION-READINESS-PLAN-001",
+        "INV-METHOD-FAMILY-RETIRE-REPLACE-EXECUTION-PLAN-001",
+        "INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"
+      ],
+      "must_consume_before_close": true,
+      "next_artifact": "AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001",
+      "resolution_artifact": "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "selection_gate",
+        "data_driven_router",
+        "requirements",
         "no_downstream_authorization"
       ]
     }

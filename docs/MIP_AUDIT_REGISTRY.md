@@ -1766,7 +1766,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** 46-row production-readiness backlog ledger across 12 domains (`failed_scenarios: []`). Single control-plane backlog; resolved artifacts do not mean production-ready. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
 
-**Next:** `DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001`.
+**Next:** `DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001` (completed — see selection gate requirements).
+
+---
+
+## DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-REQUIREMENTS-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001_REPORT.md`](track_d/DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001_REPORT.md) · [`docs/track_d/archives/DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001_summary.json`](track_d/archives/DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001_summary.json) · [`panel_exp/validation/data_driven_design_estimator_inference_selection_gate_requirements_001.py`](../panel_exp/validation/data_driven_design_estimator_inference_selection_gate_requirements_001.py)
+
+**Status:** **`data_driven_selection_gate_requirements_defined_no_downstream_authorization`**
+
+**Verdict:** 96-row selection gate requirements across 14 selection layers (`failed_scenarios: []`). Design/estimator/inference eligibility separated; prior work reconciled; selector not production-authorized. **No production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production routing authorization.**
+
+**Next:** `AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001`.
 
 ---
 

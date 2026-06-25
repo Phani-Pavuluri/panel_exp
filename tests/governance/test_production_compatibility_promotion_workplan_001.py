@@ -181,3 +181,23 @@ def test_governance_backlog_ledger_lane_complete() -> None:
     assert lane["next_artifact"] == (
         "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001"
     )
+
+
+def test_governance_selection_gate_requirements_resolved() -> None:
+    inv = investigations_by_id()[
+        "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-REQUIREMENTS-001"
+    ]
+    assert inv.status == "RESOLVED"
+    assert inv.resolution_artifact == (
+        "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_REQUIREMENTS_001"
+    )
+
+
+def test_governance_selection_gate_requirements_lane_complete() -> None:
+    reg = load_registry()
+    lane = next(
+        b for b in reg["roadmap_lane_bindings"]
+        if b["lane_id"] == "DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-REQUIREMENTS-001"
+    )
+    assert lane["status"] == "complete"
+    assert lane["next_artifact"] == "AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001"
