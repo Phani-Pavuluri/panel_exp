@@ -1068,6 +1068,22 @@ class TestOpenInvestigationRegistry001:
         assert inv.status == "RESOLVED"
         assert inv.resolution_artifact == "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_TOOLING_CONTRACT_001"
 
+    def test_roadmap_implementation_detail_gap_audit_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "ROADMAP-IMPLEMENTATION-DETAIL-GAP-AUDIT-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "ROADMAP_IMPLEMENTATION_DETAIL_GAP_AUDIT_001"
+        assert lane["next_artifact"] == "GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001"
+        assert "INV-ROADMAP-IMPLEMENTATION-DETAIL-GAP-AUDIT-001" in lane["resolved_investigations"]
+
+    def test_roadmap_implementation_detail_gap_audit_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-ROADMAP-IMPLEMENTATION-DETAIL-GAP-AUDIT-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "ROADMAP_IMPLEMENTATION_DETAIL_GAP_AUDIT_001"
+
     def test_production_authorization_release_gate_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"]
         assert inv.status == "RESOLVED"

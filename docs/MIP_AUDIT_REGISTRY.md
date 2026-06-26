@@ -1998,6 +1998,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## ROADMAP-IMPLEMENTATION-DETAIL-GAP-AUDIT-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/ROADMAP_IMPLEMENTATION_DETAIL_GAP_AUDIT_001_REPORT.md`](track_d/ROADMAP_IMPLEMENTATION_DETAIL_GAP_AUDIT_001_REPORT.md) · [`docs/track_d/archives/ROADMAP_IMPLEMENTATION_DETAIL_GAP_AUDIT_001_summary.json`](track_d/archives/ROADMAP_IMPLEMENTATION_DETAIL_GAP_AUDIT_001_summary.json) · [`panel_exp/validation/roadmap_implementation_detail_gap_audit_001.py`](../panel_exp/validation/roadmap_implementation_detail_gap_audit_001.py)
+
+**Status:** **`roadmap_implementation_detail_gap_audit_logged_contracts_required_no_runtime_authorization`**
+
+**Verdict:** Audits roadmap items too underspecified for safe Cursor implementation; seven implementation-detail contracts required before planner runtime (`failed_scenarios: []`). SCM dedicated lane preserved; no generic estimator-claim detour. **Audit only; no runtime authorization.**
+
+**Next:** `GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001`.
+
+---
+
 ## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)

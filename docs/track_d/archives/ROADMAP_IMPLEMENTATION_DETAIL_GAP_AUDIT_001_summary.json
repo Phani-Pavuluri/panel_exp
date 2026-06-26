@@ -1,0 +1,300 @@
+{
+  "artifact_id": "ROADMAP_IMPLEMENTATION_DETAIL_GAP_AUDIT_001",
+  "artifact_type": "roadmap_implementation_detail_gap_audit",
+  "artifact_version": "1.0.0",
+  "base_commit": "55f7ae59e1dbb21e89919bb442e42c6d87fe7f7e",
+  "status": "completed",
+  "verdict": "roadmap_implementation_detail_gap_audit_logged_contracts_required_no_runtime_authorization",
+  "final_verdict": "roadmap_implementation_detail_gap_audit_logged_contracts_required_no_runtime_authorization",
+  "audit_result": "implementation_detail_contracts_required_before_planner_runtime_work",
+  "scm_estimator_claim_lane_status": "dedicated_scm_validation_release_gate_lane_exists_no_generic_estimator_claim_detour_now",
+  "required_contract_artifacts": [
+    "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_TOOLING_CONTRACT_001",
+    "DESIGN_BASED_INFERENCE_TOOLING_CONTRACT_001",
+    "SPEND_CONTRAST_FEASIBILITY_TOOLING_CONTRACT_001",
+    "GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001",
+    "SHARED_CONTROL_AND_MULTICELL_INFERENCE_CONTRACT_001",
+    "BALLPARK_FEASIBILITY_MODE_CONTRACT_001",
+    "LLM_REPORT_GROUNDING_AND_CLAIM_BOUNDARY_CONTRACT_001"
+  ],
+  "completed_contract_artifacts": [
+    "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_TOOLING_CONTRACT_001"
+  ],
+  "pending_contract_artifacts": [
+    "DESIGN_BASED_INFERENCE_TOOLING_CONTRACT_001",
+    "SPEND_CONTRAST_FEASIBILITY_TOOLING_CONTRACT_001",
+    "GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001",
+    "SHARED_CONTROL_AND_MULTICELL_INFERENCE_CONTRACT_001",
+    "BALLPARK_FEASIBILITY_MODE_CONTRACT_001",
+    "LLM_REPORT_GROUNDING_AND_CLAIM_BOUNDARY_CONTRACT_001"
+  ],
+  "high_risk_gap_areas": [
+    "agents_without_tool_contracts",
+    "design_based_inference_without_exact_tooling_contract",
+    "spend_feasibility_without_budget_optimization_boundary",
+    "geo_kpi_spend_data_without_schema_semantics_contract",
+    "shared_control_multicell_without_covariance_multiplicity_contract",
+    "ballpark_mode_without_provisional_claim_boundaries",
+    "llm_explanation_without_report_grounding_rules"
+  ],
+  "risk_if_skipped": [
+    "build_plausible_but_unsafe_scaffolding",
+    "treat_roadmap_names_as_implementation_detail",
+    "invent_diagnostic_outputs",
+    "overclaim_design_feasibility",
+    "overclaim_p_values_and_cis",
+    "blur_spend_feasibility_with_budget_optimization",
+    "treat_ballpark_mode_as_precise",
+    "treat_shared_control_readouts_as_independent",
+    "generate_llm_explanations_not_grounded_in_evidence_packets"
+  ],
+  "revised_roadmap_sequence": [
+    "METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001",
+    "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001",
+    "SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001",
+    "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_ROADMAP_001",
+    "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_TOOLING_CONTRACT_001",
+    "ROADMAP_IMPLEMENTATION_DETAIL_GAP_AUDIT_001",
+    "GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001",
+    "EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001",
+    "GEO_KPI_SPEND_DATA_PROFILER_001",
+    "GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001",
+    "SPEND_CONTRAST_FEASIBILITY_TOOLING_CONTRACT_001",
+    "SPEND_CONTRAST_AND_BUDGET_REALLOCATION_DIAGNOSTICS_001",
+    "PORTFOLIO_TEST_TIERING_ENGINE_001",
+    "CANDIDATE_DESIGN_GENERATOR_001",
+    "SHARED_CONTROL_AND_MULTICELL_INFERENCE_CONTRACT_001",
+    "DESIGN_BASED_INFERENCE_TOOLING_CONTRACT_001",
+    "DESIGN_BASED_INFERENCE_FAST_PATH_001",
+    "BALLPARK_FEASIBILITY_MODE_CONTRACT_001",
+    "LLM_REPORT_GROUNDING_AND_CLAIM_BOUNDARY_CONTRACT_001",
+    "MODEL_BASED_FALLBACK_ROUTER_001",
+    "AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001"
+  ],
+  "authorization_flags": {
+    "roadmap_gap_audit_runtime_authorized": false,
+    "planner_agent_tooling_contract_runtime_authorized": false,
+    "design_based_inference_production_authorized": false,
+    "spend_budget_reallocation_runtime_authorized": false,
+    "geo_kpi_spend_profiler_runtime_authorized": false,
+    "shared_control_multicell_inference_authorized": false,
+    "ballpark_feasibility_production_authorized": false,
+    "llm_report_grounding_runtime_authorized": false,
+    "llm_design_recommendation_authorized": false,
+    "production_design_recommendation_authorized": false,
+    "production_p_value_authorized": false,
+    "causal_confidence_interval_authorized": false,
+    "production_authorization_granted": false,
+    "selector_implementation_authorized": false,
+    "production_selection_router_authorized": false,
+    "multicell_production_claim_authorized": false,
+    "trustreport_authorized": false,
+    "calibration_signal_allowed": false,
+    "mmm_ingestion_allowed": false,
+    "llm_decisioning_allowed": false,
+    "production_decisioning_allowed": false,
+    "live_api_authorized": false,
+    "scheduler_authorized": false,
+    "budget_optimization_allowed": false,
+    "package_side_agents_authorized": false
+  },
+  "recommended_next_artifact": "GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001",
+  "generated_at": "2026-06-26T11:00:04.131195+00:00",
+  "git_commit": "55f7ae59e1dbb21e89919bb442e42c6d87fe7f7e",
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "audit_result_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_dedicated_lane_no_generic_detour",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "required_contracts_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "high_risk_gaps_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "revised_sequence_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "gap_audit_after_tooling_contract",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "next_contract_geo_kpi_spec",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_roadmap_gap_audit_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_planner_agent_tooling_contract_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_design_based_inference_production_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_spend_budget_reallocation_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_geo_kpi_spend_profiler_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_shared_control_multicell_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_ballpark_feasibility_production_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_report_grounding_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_design_recommendation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_design_recommendation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_authorization_granted_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_selector_implementation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_selection_router_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_multicell_production_claim_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_package_side_agents_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "final_verdict_matches",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_valid",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "issues": []
+  },
+  "non_goals": [
+    "no_runtime_agents",
+    "no_estimator_implementation",
+    "no_design_algorithms",
+    "no_inference_logic",
+    "no_production_recommendations",
+    "no_budget_optimization",
+    "no_downstream_integrations"
+  ]
+}

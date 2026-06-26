@@ -1258,6 +1258,35 @@
       "resolution_artifact": "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_TOOLING_CONTRACT_001"
     },
     {
+      "investigation_id": "INV-ROADMAP-IMPLEMENTATION-DETAIL-GAP-AUDIT-001",
+      "title": "Roadmap implementation detail gap audit",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "EXPERIMENT-PORTFOLIO-PLANNER-AGENT-TOOLING-CONTRACT-001",
+      "affected_combination": "roadmap_implementation_detail_gaps",
+      "problem_class": ["roadmap_audit", "implementation_detail_gaps", "contract_requirements"],
+      "evidence": {
+        "depends_on": [
+          "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_ROADMAP_001",
+          "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_TOOLING_CONTRACT_001",
+          "PRODUCTION_READINESS_BACKLOG_LEDGER_001"
+        ],
+        "audit_result": "implementation_detail_contracts_required_before_planner_runtime_work",
+        "required_contract_count": 7,
+        "completed_contract_count": 1,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001"
+      },
+      "current_decision": "ROADMAP_IMPLEMENTATION_DETAIL_GAP_AUDIT_LOGGED_CONTRACTS_REQUIRED_NO_RUNTIME_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Contracts before planner runtime",
+      "blocking_policy": "Audit does not authorize runtime; contracts required first",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
+      "resolution_artifact": "ROADMAP_IMPLEMENTATION_DETAIL_GAP_AUDIT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -2879,6 +2908,25 @@
         "tool_first_agent_second",
         "no_tool_no_claim",
         "llm_answerability",
+        "no_runtime_authorization"
+      ]
+    },
+    {
+      "lane_id": "ROADMAP-IMPLEMENTATION-DETAIL-GAP-AUDIT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-ROADMAP-IMPLEMENTATION-DETAIL-GAP-AUDIT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001",
+      "resolution_artifact": "ROADMAP_IMPLEMENTATION_DETAIL_GAP_AUDIT_001",
+      "artifact_tags": [
+        "roadmap_audit",
+        "implementation_detail_gaps",
+        "contract_requirements",
+        "scm_dedicated_lane",
         "no_runtime_authorization"
       ]
     }

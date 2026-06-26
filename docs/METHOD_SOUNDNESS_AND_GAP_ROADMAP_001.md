@@ -440,7 +440,7 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 
 **Paused:** **`D5-INST-AUGSYNTH-MULTICELL-001`** as default next step · TrustReport/F-DECISION/CalibrationSignal/MMM role expansion · TrustReport product-ops (audit log, API, scheduler, platform — frozen per [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md)) · LLM layer · promotion audits.
 
-**Active lanes (2026-06-03):** SCM closeout: `SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001` (immediate). **Portfolio planner:** `EXPERIMENT_PORTFOLIO_PLANNER_AGENT_ROADMAP_001` ✅ · `EXPERIMENT_PORTFOLIO_PLANNER_AGENT_TOOLING_CONTRACT_001` ✅; next planner implementation lane: `EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001`. **Primary method focus after planner lanes:** `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001`. Tool-first/agent-second; no-tool-no-claim. Downstream schema/ingestion/decisioning paused.
+**Active lanes (2026-06-03):** SCM closeout: `SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001` (immediate). **Portfolio planner:** roadmap ✅ · tooling contract ✅ · gap audit ✅; next contract lane: `GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001`. **Primary method focus after planner lanes:** `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001`. Implementation-detail contracts required before runtime. Downstream paused.
 
 **SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001:** 63-row SCM validation plan (`failed_scenarios: []`). First gated production-candidate lane; point estimate not sufficient. See [`SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001`](track_d/SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001_REPORT.md).
 
