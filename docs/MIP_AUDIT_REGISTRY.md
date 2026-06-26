@@ -1838,7 +1838,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** 127-row implementation plan for future deterministic selector (`failed_scenarios: []`). `ExperimentSelectionInput`/`ExperimentSelectionDecision` contracts, 14-layer rule ordering, 7 staged phases, method-family routing, integration plans. **Implementation plan only; no runtime router, no agents, no production p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, or production authorization.**
 
-**Next:** `PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001`.
+**Next:** `PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001` (completed — see production authorization release gate plan).
+
+---
+
+## PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001_REPORT.md`](track_d/PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001_REPORT.md) · [`docs/track_d/archives/PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001_summary.json`](track_d/archives/PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001_summary.json) · [`panel_exp/validation/production_authorization_release_gate_plan_001.py`](../panel_exp/validation/production_authorization_release_gate_plan_001.py)
+
+**Status:** **`production_authorization_release_gate_plan_defined_no_downstream_authorization`**
+
+**Verdict:** 117-row release-gate plan across 15 authorization domains, 15 evidence prerequisites, and 8 staged phases (`failed_scenarios: []`). `ProductionAuthorizationDecision` contract; scoped/revocable authorization model. **Release-gate plan only; no runtime gate, no production authorization, no p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, selector production use, or agent authorization.**
+
+**Next:** `SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_PLAN_001`.
 
 ---
 

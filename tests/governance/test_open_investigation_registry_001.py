@@ -821,10 +821,30 @@ class TestOpenInvestigationRegistry001:
             "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001"
             in lane["resolved_investigations"]
         )
-        assert "INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001" in lane["open_investigations"]
+        assert "INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001" in lane["resolved_investigations"]
+        assert lane["open_investigations"] == []
         assert "selection_gate" in lane["artifact_tags"]
         assert "implementation_plan" in lane["artifact_tags"]
         assert "no_downstream_authorization" in lane["artifact_tags"]
+
+    def test_production_authorization_release_gate_plan_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001"
+        assert lane["next_artifact"] == "SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_PLAN_001"
+        assert "INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001" in lane["resolved_investigations"]
+        assert "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-IMPLEMENTATION-PLAN-001" in lane["open_investigations"]
+        assert "release_gate" in lane["artifact_tags"]
+        assert "no_downstream_authorization" in lane["artifact_tags"]
+
+    def test_production_authorization_release_gate_plan_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001"
 
     def test_scm_production_candidate_validation_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-PLAN-001"]

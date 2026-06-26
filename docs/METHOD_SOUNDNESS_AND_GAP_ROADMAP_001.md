@@ -440,7 +440,7 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 
 **Paused:** **`D5-INST-AUGSYNTH-MULTICELL-001`** as default next step · TrustReport/F-DECISION/CalibrationSignal/MMM role expansion · TrustReport product-ops (audit log, API, scheduler, platform — frozen per [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md)) · LLM layer · promotion audits.
 
-**Active method lane (2026-06-03):** `METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001` → … → `SYNTHETIC_DID_IMPLEMENTATION_READINESS_PLAN_001` ✅ → `METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001` ✅ → `DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001` ✅ → **`PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001`** (immediate next). Downstream schema/ingestion/decisioning paused.
+**Active method lane (2026-06-03):** `METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001` → … → `DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001` ✅ → `PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001` ✅ → **`SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_PLAN_001`** (immediate next). Downstream schema/ingestion/decisioning paused.
 
 **SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001:** 63-row SCM validation plan (`failed_scenarios: []`). First gated production-candidate lane; point estimate not sufficient. See [`SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001`](track_d/SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001_REPORT.md).
 

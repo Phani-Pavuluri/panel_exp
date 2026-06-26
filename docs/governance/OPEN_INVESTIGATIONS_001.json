@@ -987,24 +987,29 @@
     {
       "investigation_id": "INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001",
       "title": "Production authorization release gate plan",
-      "status": "PLANNED",
+      "status": "RESOLVED",
       "priority": "P2",
       "discovered_by": "PRODUCTION-COMPATIBILITY-PROMOTION-WORKPLAN-001",
       "affected_combination": "production_authorization_release_gate",
       "problem_class": ["authorization", "release_gate", "platform"],
       "evidence": {
-        "depends_on": ["PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001"],
-        "no_method_authorized_by_workplan": true,
-        "blocked_downstream_authorization": true
+        "depends_on": [
+          "PRODUCTION_COMPATIBILITY_PROMOTION_WORKPLAN_001",
+          "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001"
+        ],
+        "plan_row_count": 117,
+        "failed_scenarios": [],
+        "blocked_downstream_authorization": true,
+        "production_authorization_not_granted": true
       },
-      "current_decision": "PLANNED_NO_AUTHORIZATION",
+      "current_decision": "PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_DEFINED_NO_DOWNSTREAM_AUTHORIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
-      "target_artifact": "PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001",
-      "revisit_trigger": "Upon opening PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001",
+      "target_artifact": null,
+      "revisit_trigger": null,
       "decision_checkpoint": "Platform release gate after family validation lanes",
-      "blocking_policy": "No production authorization until release gate plan completes",
+      "blocking_policy": "No production authorization until release gate runtime and explicit decisions",
       "terminal_decisions": ["RESTRICT", "PROMOTE"],
-      "resolution_artifact": null
+      "resolution_artifact": "PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001"
     },
     {
       "investigation_id": "INV-BAYESIAN-TBR-AND-TBR-RETIREMENT-BOUNDARY-AUDIT-001",
@@ -2256,11 +2261,10 @@
     {
       "lane_id": "DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001",
       "status": "complete",
-      "open_investigations": [
-        "INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"
-      ],
+      "open_investigations": [],
       "resolved_investigations": [
-        "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001"
+        "INV-DATA-DRIVEN-DESIGN-ESTIMATOR-INFERENCE-SELECTION-GATE-IMPLEMENTATION-PLAN-001",
+        "INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"
       ],
       "deferred_investigations": [
         "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-IMPLEMENTATION-PLAN-001"
@@ -2274,6 +2278,27 @@
         "selection_gate",
         "implementation_plan",
         "data_driven_router",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001",
+      "status": "complete",
+      "open_investigations": [
+        "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-IMPLEMENTATION-PLAN-001"
+      ],
+      "resolved_investigations": [
+        "INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_PLAN_001",
+      "resolution_artifact": "PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "release_gate",
+        "authorization_governance",
         "no_downstream_authorization"
       ]
     }
