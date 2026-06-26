@@ -353,3 +353,20 @@ def test_governance_scm_validation_implementation_lane_complete() -> None:
     assert lane["status"] == "complete"
     assert lane["next_artifact"] == "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_PLAN_001"
     assert lane["resolution_artifact"] == "SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_001"
+
+
+def test_governance_scm_null_calibration_implementation_plan_resolved() -> None:
+    inv = investigations_by_id()["INV-SCM-PRODUCTION-CANDIDATE-NULL-CALIBRATION-IMPLEMENTATION-PLAN-001"]
+    assert inv.status == "RESOLVED"
+    assert inv.resolution_artifact == "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_PLAN_001"
+
+
+def test_governance_scm_null_calibration_implementation_plan_lane_complete() -> None:
+    reg = load_registry()
+    lane = next(
+        b for b in reg["roadmap_lane_bindings"]
+        if b["lane_id"] == "SCM-PRODUCTION-CANDIDATE-NULL-CALIBRATION-IMPLEMENTATION-PLAN-001"
+    )
+    assert lane["status"] == "complete"
+    assert lane["next_artifact"] == "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_001"
+    assert lane["resolution_artifact"] == "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_PLAN_001"

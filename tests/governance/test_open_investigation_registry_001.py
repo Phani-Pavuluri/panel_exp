@@ -877,6 +877,26 @@ class TestOpenInvestigationRegistry001:
         assert inv.status == "RESOLVED"
         assert inv.resolution_artifact == "SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_001"
 
+    def test_scm_production_candidate_null_calibration_implementation_plan_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "SCM-PRODUCTION-CANDIDATE-NULL-CALIBRATION-IMPLEMENTATION-PLAN-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_PLAN_001"
+        assert lane["next_artifact"] == "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_001"
+        assert "INV-SCM-PRODUCTION-CANDIDATE-NULL-CALIBRATION-IMPLEMENTATION-PLAN-001" in lane["resolved_investigations"]
+        assert lane["open_investigations"] == []
+        assert "scm" in lane["artifact_tags"]
+        assert "null_calibration_implementation_plan" in lane["artifact_tags"]
+        assert "no_downstream_authorization" in lane["artifact_tags"]
+
+    def test_scm_production_candidate_null_calibration_implementation_plan_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-SCM-PRODUCTION-CANDIDATE-NULL-CALIBRATION-IMPLEMENTATION-PLAN-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_PLAN_001"
+
     def test_production_authorization_release_gate_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"]
         assert inv.status == "RESOLVED"

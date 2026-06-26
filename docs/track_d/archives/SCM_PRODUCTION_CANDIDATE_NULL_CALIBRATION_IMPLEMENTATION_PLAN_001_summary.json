@@ -1,0 +1,926 @@
+{
+  "artifact_id": "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_PLAN_001",
+  "artifact_type": "scm_null_calibration_implementation_plan_metadata_only",
+  "artifact_version": "1.0.0",
+  "base_commit": "81e2044803d1b44b078d07a5130edd4008c0a7a3",
+  "status": "completed",
+  "verdict": "scm_production_candidate_null_calibration_implementation_plan_defined_no_downstream_authorization",
+  "final_verdict": "scm_production_candidate_null_calibration_implementation_plan_defined_no_downstream_authorization",
+  "method_family": "SCM",
+  "method_family_status": "production_candidate_gated",
+  "next_artifact": "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_001",
+  "generated_at": "2026-06-26T06:49:18.510861+00:00",
+  "git_commit": "81e2044803d1b44b078d07a5130edd4008c0a7a3",
+  "plan_row_count": 147,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "plan_rows_build_successfully",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_row_count_at_least_70",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_ids_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_calibration_area_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_input_contract_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_non_goal_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_evidence_contract_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_section_stage_definition_represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_null_calibration_input_contract_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_placebo_unit_generation_contract_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_placebo_time_window_contract_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_placebo_statistic_contract_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_treated_statistic_contract_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_effect_scale_alignment_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_estimand_alignment_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_outcome_kpi_compatibility_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_pre_period_fit_conditioning_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_donor_support_conditioning_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_placebo_distribution_size_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_placebo_distribution_quality_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_placebo_rank_stability_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_tail_resolution_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_type_i_error_control_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_false_positive_rate_assessment_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_p_value_calibration_diagnostic_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_null_coverage_diagnostic_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_multiple_testing_boundary_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_multicell_shared_control_boundary_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_geographic_interference_boundary_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_spillover_sensitivity_boundary_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_simulation_dgp_coverage_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_failure_registry_mapping_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_blocked_reason_mapping_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_required_followup_mapping_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_release_gate_dependency_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_audit_reference_contract_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_selector_shadow_input_contract_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "calibration_area_production_authorization_boundary_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_scm_validation_evidence_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_panel_metadata_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_treated_units_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_donor_units_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_time_index_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_pre_period_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_post_period_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_placebo_units_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_placebo_windows_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_outcome_metadata_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_kpi_metadata_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_estimand_metadata_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_effect_scale_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_assignment_metadata_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_design_diagnostics_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_donor_support_evidence_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_pre_period_fit_evidence_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_simulation_dgp_evidence_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_failure_registry_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_multicell_validation_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_release_gate_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_audit_context_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_field_input_contract_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_field_placebo_generation_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_field_placebo_distribution_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_field_null_statistic_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_field_treated_statistic_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_field_effect_scale_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_field_estimand_alignment_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_field_type_i_error_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_field_false_positive_rate_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_field_p_value_calibration_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_field_null_coverage_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_field_multiple_testing_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_field_multicell_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_field_dgp_coverage_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_field_failure_registry_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_field_release_gate_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_field_allowed_current_use_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_field_forbidden_current_use_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_field_blocked_reasons_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_field_warnings_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_field_required_followups_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_field_audit_references_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_field_authorization_flags_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_0_contract_and_registry_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_1_placebo_generation_contracts_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_2_null_statistic_contracts_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_3_distribution_quality_diagnostics_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_4_type_i_error_and_false_positive_diagnostics_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_5_p_value_calibration_diagnostics_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_6_dgp_and_failure_registry_integration_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_7_scm_validation_evidence_integration_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_8_selector_shadow_integration_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_9_release_gate_candidate_review_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "prior_work_reconciled",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_remains_gated_production_candidate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "null_calibration_not_implemented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "null_calibration_not_auto_p_value_authorization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "null_calibration_not_auto_causal_ci_authorization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "placebo_conditioned_on_scm_validation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multiple_testing_boundary_separate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_boundary_separate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "selector_shadow_only_until_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "release_gate_mandatory_before_scm_authorization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "package_side_agents_deferred",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "resolved_artifacts_do_not_mean_production_ready",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "implementation_plan_only_no_calibration_runtime",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "downstream_work_paused",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_null_calibration_implementation_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_null_calibration_completed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_production_inference_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scm_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scm_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_authorization_granted_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_data_driven_selection_gate_implementation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_selector_implementation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_selection_router_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scm_production_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_multicell_production_claim_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_package_side_agents_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_scm_production_candidate_gated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_null_calibration_implementation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_remains_gated_production_candidate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "null_calibration_not_implemented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "p_value_authorization_remains_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "causal_ci_authorization_remains_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "release_gate_mandatory",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_boundary_separate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "implementation_plan_only_no_calibration_runtime",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_issues_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "plan_row_count": 147,
+    "unique_plan_ids": true,
+    "plan_section_counts": {
+      "calibration_area": 30,
+      "input_contract": 22,
+      "evidence_contract": 23,
+      "stage_definition": 60,
+      "non_goal": 12
+    },
+    "calibration_area_count": 30,
+    "input_field_count": 22,
+    "evidence_field_count": 23,
+    "stage_counts": {
+      "stage_0_contract_and_registry": 6,
+      "stage_1_placebo_generation_contracts": 6,
+      "stage_2_null_statistic_contracts": 6,
+      "stage_3_distribution_quality_diagnostics": 6,
+      "stage_4_type_i_error_and_false_positive_diagnostics": 6,
+      "stage_5_p_value_calibration_diagnostics": 6,
+      "stage_6_dgp_and_failure_registry_integration": 6,
+      "stage_7_scm_validation_evidence_integration": 6,
+      "stage_8_selector_shadow_integration": 6,
+      "stage_9_release_gate_candidate_review": 6
+    },
+    "all_calibration_areas_covered": true,
+    "all_input_fields_covered": true,
+    "all_evidence_fields_covered": true,
+    "all_stages_present": true,
+    "issues": []
+  },
+  "planned_calibration_areas": [
+    "null_calibration_input_contract",
+    "placebo_unit_generation_contract",
+    "placebo_time_window_contract",
+    "placebo_statistic_contract",
+    "treated_statistic_contract",
+    "effect_scale_alignment",
+    "estimand_alignment",
+    "outcome_kpi_compatibility",
+    "pre_period_fit_conditioning",
+    "donor_support_conditioning",
+    "placebo_distribution_size",
+    "placebo_distribution_quality",
+    "placebo_rank_stability",
+    "tail_resolution",
+    "type_i_error_control",
+    "false_positive_rate_assessment",
+    "p_value_calibration_diagnostic",
+    "null_coverage_diagnostic",
+    "multiple_testing_boundary",
+    "multicell_shared_control_boundary",
+    "geographic_interference_boundary",
+    "spillover_sensitivity_boundary",
+    "simulation_dgp_coverage",
+    "failure_registry_mapping",
+    "blocked_reason_mapping",
+    "required_followup_mapping",
+    "release_gate_dependency",
+    "audit_reference_contract",
+    "selector_shadow_input_contract",
+    "production_authorization_boundary"
+  ],
+  "calibration_area_planned_statuses": {
+    "null_calibration_input_contract": "candidate_after_validation",
+    "placebo_unit_generation_contract": "diagnostic_only",
+    "placebo_time_window_contract": "diagnostic_only",
+    "placebo_statistic_contract": "candidate_after_validation",
+    "treated_statistic_contract": "candidate_after_validation",
+    "effect_scale_alignment": "candidate_after_validation",
+    "estimand_alignment": "candidate_after_validation",
+    "outcome_kpi_compatibility": "eligible_after_warning",
+    "pre_period_fit_conditioning": "candidate_after_validation",
+    "donor_support_conditioning": "candidate_after_validation",
+    "placebo_distribution_size": "diagnostic_only",
+    "placebo_distribution_quality": "diagnostic_only",
+    "placebo_rank_stability": "research_only",
+    "tail_resolution": "diagnostic_only",
+    "type_i_error_control": "candidate_after_validation",
+    "false_positive_rate_assessment": "candidate_after_validation",
+    "p_value_calibration_diagnostic": "diagnostic_only",
+    "null_coverage_diagnostic": "diagnostic_only",
+    "multiple_testing_boundary": "blocked",
+    "multicell_shared_control_boundary": "blocked",
+    "geographic_interference_boundary": "eligible_after_warning",
+    "spillover_sensitivity_boundary": "eligible_after_warning",
+    "simulation_dgp_coverage": "candidate_after_validation",
+    "failure_registry_mapping": "candidate_after_validation",
+    "blocked_reason_mapping": "candidate_after_validation",
+    "required_followup_mapping": "candidate_after_validation",
+    "release_gate_dependency": "release_gate_required",
+    "audit_reference_contract": "candidate_after_validation",
+    "selector_shadow_input_contract": "diagnostic_only",
+    "production_authorization_boundary": "blocked"
+  },
+  "planned_input_contract": "SCMNullCalibrationInput",
+  "planned_evidence_contract": "SCMNullCalibrationEvidence",
+  "planned_stages": [
+    "stage_0_contract_and_registry",
+    "stage_1_placebo_generation_contracts",
+    "stage_2_null_statistic_contracts",
+    "stage_3_distribution_quality_diagnostics",
+    "stage_4_type_i_error_and_false_positive_diagnostics",
+    "stage_5_p_value_calibration_diagnostics",
+    "stage_6_dgp_and_failure_registry_integration",
+    "stage_7_scm_validation_evidence_integration",
+    "stage_8_selector_shadow_integration",
+    "stage_9_release_gate_candidate_review"
+  ],
+  "dependencies_reconciled": [
+    "SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_001",
+    "SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_PLAN_001",
+    "SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001",
+    "SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001",
+    "SCM_TREATED_SET_PLACEBO_INTEGRATION_001",
+    "PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001",
+    "MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001",
+    "SIMULATION_DGP_COVERAGE_PLAN_001",
+    "METHOD_FAILURE_MODE_REGISTRY_001",
+    "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001",
+    "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001",
+    "PRODUCTION_READINESS_BACKLOG_LEDGER_001"
+  ],
+  "non_goals": [
+    "no_null_calibration_runtime",
+    "no_placebo_inference_computation",
+    "no_production_p_values_or_causal_cis",
+    "no_scm_production_inference_authorization",
+    "no_selector_router_production_use",
+    "no_trustreport_calibration_signal_mmm",
+    "no_live_api_scheduler_budget",
+    "no_package_side_agent_authorization",
+    "no_multicell_scm_production_claims",
+    "no_skipping_release_gate",
+    "no_automatic_p_value_authorization_from_null_calibration",
+    "no_automatic_causal_ci_from_jackknife"
+  ],
+  "scm_null_calibration_implementation_authorized": false,
+  "scm_null_calibration_completed": false,
+  "scm_production_inference_authorized": false,
+  "authorization_flags": {
+    "scm_production_p_value_authorized": false,
+    "scm_causal_confidence_interval_authorized": false,
+    "production_authorization_granted": false,
+    "production_p_value_authorized": false,
+    "causal_confidence_interval_authorized": false,
+    "trustreport_authorized": false,
+    "calibration_signal_allowed": false,
+    "mmm_ingestion_allowed": false,
+    "llm_decisioning_allowed": false,
+    "production_decisioning_allowed": false,
+    "live_api_authorized": false,
+    "scheduler_authorized": false,
+    "budget_optimization_allowed": false,
+    "data_driven_selection_gate_implementation_authorized": false,
+    "selector_implementation_authorized": false,
+    "production_selection_router_authorized": false,
+    "scm_production_inference_authorized": false,
+    "multicell_production_claim_authorized": false,
+    "package_side_agents_authorized": false
+  },
+  "plan_section_counts": {
+    "calibration_area": 30,
+    "input_contract": 22,
+    "evidence_contract": 23,
+    "stage_definition": 60,
+    "non_goal": 12
+  },
+  "all_calibration_areas_covered": true,
+  "all_input_fields_covered": true,
+  "all_evidence_fields_covered": true,
+  "all_stages_present": true,
+  "recommended_next_artifacts": [
+    "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_001"
+  ],
+  "prior_work_reconciled": true,
+  "scm_remains_gated_production_candidate": true,
+  "null_calibration_not_implemented": true,
+  "null_calibration_not_auto_p_value_authorization": true,
+  "null_calibration_not_auto_causal_ci_authorization": true,
+  "placebo_conditioned_on_scm_validation": true,
+  "multiple_testing_boundary_separate": true,
+  "multicell_boundary_separate": true,
+  "selector_shadow_only_until_authorized": true,
+  "release_gate_mandatory_before_scm_authorization": true,
+  "package_side_agents_deferred": true,
+  "resolved_artifacts_do_not_mean_production_ready": true,
+  "implementation_plan_only_no_calibration_runtime": true,
+  "downstream_work_paused": true,
+  "scm_production_p_value_authorized": false,
+  "scm_causal_confidence_interval_authorized": false,
+  "production_authorization_granted": false,
+  "production_p_value_authorized": false,
+  "causal_confidence_interval_authorized": false,
+  "trustreport_authorized": false,
+  "calibration_signal_allowed": false,
+  "mmm_ingestion_allowed": false,
+  "llm_decisioning_allowed": false,
+  "production_decisioning_allowed": false,
+  "live_api_authorized": false,
+  "scheduler_authorized": false,
+  "budget_optimization_allowed": false,
+  "data_driven_selection_gate_implementation_authorized": false,
+  "selector_implementation_authorized": false,
+  "production_selection_router_authorized": false,
+  "multicell_production_claim_authorized": false,
+  "package_side_agents_authorized": false
+}

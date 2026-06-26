@@ -1874,7 +1874,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** 31-row SCM validation area registry with deterministic `build_scm_validation_evidence()` metadata scaffolding (`failed_scenarios: []`). `SCMValidationInput`/`SCMValidationEvidence` contracts realized. SCM remains gated production-candidate. **Metadata scaffolding only; no SCM fitting, production inference, p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, selector production use, or agent authorization.**
 
-**Next:** `SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_PLAN_001`.
+**Next:** `SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_PLAN_001` (completed — see SCM null calibration implementation plan).
+
+---
+
+## SCM-PRODUCTION-CANDIDATE-NULL-CALIBRATION-IMPLEMENTATION-PLAN-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_PLAN_001_REPORT.md`](track_d/SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_PLAN_001_REPORT.md) · [`docs/track_d/archives/SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_PLAN_001_summary.json`](track_d/archives/SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_PLAN_001_summary.json) · [`panel_exp/validation/scm_production_candidate_null_calibration_implementation_plan_001.py`](../panel_exp/validation/scm_production_candidate_null_calibration_implementation_plan_001.py)
+
+**Status:** **`scm_production_candidate_null_calibration_implementation_plan_defined_no_downstream_authorization`**
+
+**Verdict:** 147-row SCM null calibration implementation plan across 30 calibration areas and 10 staged phases (`failed_scenarios: []`). `SCMNullCalibrationInput`/`SCMNullCalibrationEvidence` contracts. SCM remains gated production-candidate. **Implementation plan only; no null calibration runtime, no production inference, p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, selector production use, or agent authorization.**
+
+**Next:** `SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_001`.
 
 ---
 

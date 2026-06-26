@@ -954,6 +954,36 @@
       "resolution_artifact": "SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_001"
     },
     {
+      "investigation_id": "INV-SCM-PRODUCTION-CANDIDATE-NULL-CALIBRATION-IMPLEMENTATION-PLAN-001",
+      "title": "SCM production candidate null calibration implementation plan",
+      "status": "RESOLVED",
+      "priority": "P2",
+      "discovered_by": "SCM-PRODUCTION-CANDIDATE-VALIDATION-IMPLEMENTATION-001",
+      "affected_combination": "scm_production_candidate_null_calibration_implementation",
+      "problem_class": ["scm", "null_calibration", "implementation_plan"],
+      "evidence": {
+        "depends_on": [
+          "SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_001",
+          "SCM_TREATED_SET_PLACEBO_NULL_CALIBRATION_001",
+          "PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001"
+        ],
+        "plan_row_count": 147,
+        "failed_scenarios": [],
+        "scm_retained_candidate_gated": true,
+        "blocked_downstream_authorization": true,
+        "scm_production_inference_unauthorized": true,
+        "null_calibration_not_implemented": true
+      },
+      "current_decision": "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_PLAN_DEFINED_NO_DOWNSTREAM_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "SCM null calibration implementation after validation scaffolding",
+      "blocking_policy": "SCM null calibration implementation plan does not authorize production inference",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
+      "resolution_artifact": "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_PLAN_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -2372,6 +2402,26 @@
         "method_gap_control",
         "scm",
         "validation_metadata_implementation",
+        "production_candidate_gated",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "SCM-PRODUCTION-CANDIDATE-NULL-CALIBRATION-IMPLEMENTATION-PLAN-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-SCM-PRODUCTION-CANDIDATE-NULL-CALIBRATION-IMPLEMENTATION-PLAN-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_001",
+      "resolution_artifact": "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_PLAN_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "scm",
+        "null_calibration_implementation_plan",
         "production_candidate_gated",
         "no_downstream_authorization"
       ]
