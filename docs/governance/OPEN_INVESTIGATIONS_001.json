@@ -1174,6 +1174,35 @@
       "resolution_artifact": "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001"
     },
     {
+      "investigation_id": "INV-METHOD-PORTFOLIO-PRIORITIZATION-CHECKPOINT-001",
+      "title": "Method portfolio prioritization checkpoint",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "SCM-PRODUCTION-CANDIDATE-RELEASE-GATE-DECISION-PLAN-001",
+      "affected_combination": "method_portfolio_prioritization",
+      "problem_class": ["method_portfolio", "prioritization", "roadmap_checkpoint"],
+      "evidence": {
+        "depends_on": [
+          "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PACKET_001",
+          "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001",
+          "AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001"
+        ],
+        "strategic_decision": "shift_primary_method_focus_from_scm_to_augsynth_ascm_after_scm_closeout",
+        "scm_future_role": "governed_reference_candidate_and_validation_baseline",
+        "failed_scenarios": [],
+        "scm_production_approval_not_recommended": true,
+        "first_post_scm_method_lane": "AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001"
+      },
+      "current_decision": "METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_LOGGED_NO_PRODUCTION_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "SCM closeout then AugSynth/ASCM primary lane",
+      "blocking_policy": "Checkpoint does not authorize any method for production use",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
+      "resolution_artifact": "METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -2735,6 +2764,27 @@
         "production_candidate_gated",
         "no_downstream_authorization",
         "defer_pending_empirical_validation"
+      ]
+    },
+    {
+      "lane_id": "METHOD-PORTFOLIO-PRIORITIZATION-CHECKPOINT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-METHOD-PORTFOLIO-PRIORITIZATION-CHECKPOINT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001",
+      "resolution_artifact": "METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "method_portfolio",
+        "prioritization_checkpoint",
+        "scm_reference_candidate",
+        "augsynth_primary_after_closeout",
+        "no_production_authorization"
       ]
     }
   ]

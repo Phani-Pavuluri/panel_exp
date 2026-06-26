@@ -1962,6 +1962,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## METHOD-PORTFOLIO-PRIORITIZATION-CHECKPOINT-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001_REPORT.md`](track_d/METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001_REPORT.md) · [`docs/track_d/archives/METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001_summary.json`](track_d/archives/METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001_summary.json) · [`panel_exp/validation/method_portfolio_prioritization_checkpoint_001.py`](../panel_exp/validation/method_portfolio_prioritization_checkpoint_001.py)
+
+**Status:** **`method_portfolio_prioritization_checkpoint_logged_no_production_authorization`**
+
+**Verdict:** Strategic portfolio prioritization checkpoint: SCM no longer primary focus; remains governed reference candidate. AugSynth/ASCM next primary lane after SCM closeout; TBRRidge/Bayesian TBR/TROP separate later lanes (`failed_scenarios: []`). **Checkpoint only; no production authorization for any method.**
+
+**Next:** `SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001` · post-SCM: `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001`.
+
+---
+
 ## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)

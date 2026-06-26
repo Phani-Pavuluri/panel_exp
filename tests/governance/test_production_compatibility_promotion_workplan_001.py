@@ -472,3 +472,20 @@ def test_governance_scm_release_gate_decision_plan_lane_complete() -> None:
     assert lane["status"] == "complete"
     assert lane["next_artifact"] == "SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001"
     assert lane["resolution_artifact"] == "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001"
+
+
+def test_governance_method_portfolio_prioritization_checkpoint_resolved() -> None:
+    inv = investigations_by_id()["INV-METHOD-PORTFOLIO-PRIORITIZATION-CHECKPOINT-001"]
+    assert inv.status == "RESOLVED"
+    assert inv.resolution_artifact == "METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001"
+
+
+def test_governance_method_portfolio_prioritization_checkpoint_lane_complete() -> None:
+    reg = load_registry()
+    lane = next(
+        b for b in reg["roadmap_lane_bindings"]
+        if b["lane_id"] == "METHOD-PORTFOLIO-PRIORITIZATION-CHECKPOINT-001"
+    )
+    assert lane["status"] == "complete"
+    assert lane["next_artifact"] == "SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001"
+    assert lane["resolution_artifact"] == "METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001"

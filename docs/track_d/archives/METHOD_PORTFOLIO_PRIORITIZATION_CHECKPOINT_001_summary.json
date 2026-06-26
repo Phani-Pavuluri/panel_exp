@@ -1,0 +1,328 @@
+{
+  "artifact_id": "METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001",
+  "artifact_type": "method_portfolio_prioritization_checkpoint",
+  "artifact_version": "1.0.0",
+  "base_commit": "341d52c3204bff5370040837c95943cf641d11d6",
+  "status": "completed",
+  "verdict": "method_portfolio_prioritization_checkpoint_logged_no_production_authorization",
+  "final_verdict": "method_portfolio_prioritization_checkpoint_logged_no_production_authorization",
+  "strategic_decision": "shift_primary_method_focus_from_scm_to_augsynth_ascm_after_scm_closeout",
+  "scm_future_role": "governed_reference_candidate_and_validation_baseline",
+  "scm_production_approval_recommended": false,
+  "priority_order": [
+    "complete_scm_decision_plan_and_closeout_without_production_approval",
+    "augsynth_ascm_point_estimate_production_candidate_validation",
+    "tbrridge_point_estimate_validation",
+    "shared_inference_validation_framework_for_pvalues_and_cis",
+    "bayesian_tbr_governed_prior_posterior_lane",
+    "trop_deferred_until_decisioning_governance_mature"
+  ],
+  "separated_authorization_model": {
+    "point_estimates_separate_from_p_values": true,
+    "p_values_separate_from_causal_cis": true,
+    "causal_cis_separate_from_selector_router": true,
+    "selector_router_separate_from_downstream_decisioning": true
+  },
+  "method_stances": {
+    "SCM": "reference_candidate_not_primary_focus",
+    "AugSynth_ASCM": "next_primary_candidate_lane",
+    "TBRRidge": "later_practical_point_estimate_lane",
+    "Bayesian_TBR": "governed_prior_research_calibration_lane",
+    "TROP": "deferred_research_decisioning_lane"
+  },
+  "authorization_flags": {
+    "scm_production_inference_authorized": false,
+    "scm_production_p_value_authorized": false,
+    "scm_causal_confidence_interval_authorized": false,
+    "augsynth_production_inference_authorized": false,
+    "augsynth_production_p_value_authorized": false,
+    "augsynth_causal_confidence_interval_authorized": false,
+    "tbrridge_production_inference_authorized": false,
+    "tbrridge_production_p_value_authorized": false,
+    "tbrridge_causal_confidence_interval_authorized": false,
+    "bayesian_tbr_production_inference_authorized": false,
+    "bayesian_tbr_production_p_value_authorized": false,
+    "bayesian_tbr_causal_confidence_interval_authorized": false,
+    "trop_production_decisioning_authorized": false,
+    "production_authorization_granted": false,
+    "production_p_value_authorized": false,
+    "causal_confidence_interval_authorized": false,
+    "selector_implementation_authorized": false,
+    "production_selection_router_authorized": false,
+    "multicell_production_claim_authorized": false,
+    "trustreport_authorized": false,
+    "calibration_signal_allowed": false,
+    "mmm_ingestion_allowed": false,
+    "llm_decisioning_allowed": false,
+    "production_decisioning_allowed": false,
+    "live_api_authorized": false,
+    "scheduler_authorized": false,
+    "budget_optimization_allowed": false,
+    "package_side_agents_authorized": false
+  },
+  "recommended_next_artifact": "SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001",
+  "post_scm_handoff_artifact": "SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001",
+  "first_post_scm_method_lane": "AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001",
+  "scm_decision_plan_completed": true,
+  "scm_decision_plan_artifact": "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001",
+  "generated_at": "2026-06-26T09:16:37.144587+00:00",
+  "git_commit": "341d52c3204bff5370040837c95943cf641d11d6",
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "priority_0_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "priority_1_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "priority_2_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "priority_3_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "priority_4_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "priority_5_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_reference_not_primary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "augsynth_next_primary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbrridge_later_lane",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "bayesian_tbr_research_lane",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "trop_deferred",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "separated_auth_model",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scm_production_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scm_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scm_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_augsynth_production_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_augsynth_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_augsynth_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_tbrridge_production_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_tbrridge_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_tbrridge_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_bayesian_tbr_production_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_bayesian_tbr_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_bayesian_tbr_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trop_production_decisioning_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_authorization_granted_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_selector_implementation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_selection_router_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_multicell_production_claim_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_package_side_agents_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_scm_artifact",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "first_post_scm_augsynth",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_production_approval_not_recommended",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "final_verdict_matches",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_valid",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "issues": []
+  },
+  "dependencies_reconciled": [
+    "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PACKET_001",
+    "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PLAN_001",
+    "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001",
+    "SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_001",
+    "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_001",
+    "SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_001",
+    "AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001",
+    "TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001",
+    "BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001",
+    "TROP_RESEARCH_ONLY_BOUNDARY_AUDIT_001",
+    "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001"
+  ],
+  "non_goals": [
+    "no_estimator_implementation",
+    "no_method_production_approval",
+    "no_runtime_behavior_change",
+    "no_scm_production_approval_from_metadata",
+    "no_augsynth_tbrridge_bayesian_tbr_trop_authorization",
+    "no_downstream_integration_authorization"
+  ]
+}

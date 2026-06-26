@@ -1017,6 +1017,23 @@ class TestOpenInvestigationRegistry001:
         assert inv.status == "RESOLVED"
         assert inv.resolution_artifact == "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001"
 
+    def test_method_portfolio_prioritization_checkpoint_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "METHOD-PORTFOLIO-PRIORITIZATION-CHECKPOINT-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001"
+        assert lane["next_artifact"] == "SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001"
+        assert "INV-METHOD-PORTFOLIO-PRIORITIZATION-CHECKPOINT-001" in lane["resolved_investigations"]
+        assert "augsynth_primary_after_closeout" in lane["artifact_tags"]
+
+    def test_method_portfolio_prioritization_checkpoint_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-METHOD-PORTFOLIO-PRIORITIZATION-CHECKPOINT-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001"
+
     def test_production_authorization_release_gate_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"]
         assert inv.status == "RESOLVED"

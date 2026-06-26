@@ -440,7 +440,7 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 
 **Paused:** **`D5-INST-AUGSYNTH-MULTICELL-001`** as default next step · TrustReport/F-DECISION/CalibrationSignal/MMM role expansion · TrustReport product-ops (audit log, API, scheduler, platform — frozen per [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md)) · LLM layer · promotion audits.
 
-**Active method lane (2026-06-03):** `METHOD_ACCURACY_COMPATIBILITY_REFOCUS_AUDIT_001` → … → `SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PACKET_001` ✅ → `SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001` ✅ → **`SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001`** (immediate next). SCM lane deferring to method portfolio; downstream schema/ingestion/decisioning paused.
+**Active method lane (2026-06-03):** SCM closeout: `SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001` (immediate). **Primary method focus after SCM closeout:** `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001`. SCM remains governed reference candidate per `METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001`. Downstream schema/ingestion/decisioning paused.
 
 **SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001:** 63-row SCM validation plan (`failed_scenarios: []`). First gated production-candidate lane; point estimate not sufficient. See [`SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001`](track_d/SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001_REPORT.md).
 
