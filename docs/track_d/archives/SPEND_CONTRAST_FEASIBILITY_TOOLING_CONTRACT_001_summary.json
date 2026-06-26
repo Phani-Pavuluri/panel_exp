@@ -1,0 +1,522 @@
+{
+  "artifact_id": "SPEND_CONTRAST_FEASIBILITY_TOOLING_CONTRACT_001",
+  "artifact_type": "spend_contrast_feasibility_tooling_contract",
+  "artifact_version": "1.0.0",
+  "base_commit": "9b3c304ae5a6ce0155d1c7c147f2089ac5456d6a",
+  "status": "completed",
+  "verdict": "spend_contrast_feasibility_tooling_contract_defined_no_runtime_diagnostics_or_production_authorization",
+  "final_verdict": "spend_contrast_feasibility_tooling_contract_defined_no_runtime_diagnostics_or_production_authorization",
+  "contract_scope": "spend_contrast_tooling_contract_no_runtime_diagnostics",
+  "depends_on": [
+    "GEO_KPI_SPEND_DATA_PROFILER_001",
+    "GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001"
+  ],
+  "supported_manipulation_types": [
+    "GO_DARK",
+    "HEAVY_UP",
+    "GO_LIVE",
+    "BUDGET_REALLOCATION",
+    "UNKNOWN"
+  ],
+  "spend_coverage_statuses": [
+    "AVAILABLE",
+    "PARTIAL",
+    "MISSING",
+    "NOT_REQUESTED"
+  ],
+  "spend_coverage_vs_contrast_distinction_defined": true,
+  "planned_vs_observed_spend_distinction_defined": true,
+  "zero_vs_missing_spend_rules": {
+    "missing_spend_is_not_zero_spend": true,
+    "observed_zero_spend_is_observed_zero": true,
+    "planned_zero_spend_labeled_as_planned": true,
+    "planned_and_observed_spend_not_silently_mixed": true
+  },
+  "zero_vs_missing_spend_rules_defined": true,
+  "future_output_contracts_defined": [
+    "SpendContrastFeasibilityInput",
+    "SpendContrastFeasibilityConfig",
+    "SpendContrastFeasibilityReport",
+    "SpendManipulationType",
+    "SpendCoverageStatus",
+    "SpendContrastStatus",
+    "SpendContrastQuality",
+    "SpendBaselineWindowReport",
+    "SpendPlanningWindowReport",
+    "SpendDeltaSummary",
+    "ChannelSpendMappingReport",
+    "BudgetReallocationMappingReport",
+    "SpendContrastIssue",
+    "SpendContrastSeverity",
+    "SpendContrastClaimBoundary"
+  ],
+  "spend_contrast_statuses": [
+    "READY_FOR_DOWNSTREAM_POWER_DIAGNOSTICS",
+    "PASS_WITH_WARNINGS",
+    "PROVISIONAL",
+    "BLOCKED",
+    "NOT_EVALUATED"
+  ],
+  "spend_contrast_qualities": [
+    "DIRECTIONALLY_COMPATIBLE",
+    "WEAK_OR_INSUFFICIENT",
+    "CONFLICTS_WITH_MANIPULATION",
+    "UNKNOWN"
+  ],
+  "severity_levels": [
+    "INFO",
+    "WARNING",
+    "BLOCKING"
+  ],
+  "claim_boundaries": [
+    "SPEND_CONTRAST_DIAGNOSTIC_ONLY",
+    "READY_FOR_DOWNSTREAM_POWER_DIAGNOSTICS",
+    "PROVISIONAL_ONLY",
+    "BLOCKED"
+  ],
+  "failure_provisional_modes": [
+    "missing_spend_column_when_contrast_requested",
+    "missing_manipulation_type",
+    "missing_channel_mapping_when_channel_level_contrast_requested",
+    "missing_baseline_spend_window",
+    "missing_planned_or_treatment_spend_window",
+    "all_spend_missing",
+    "missing_treated_control_or_candidate_group_labels_when_group_level_contrast_requested",
+    "planned_spend_mixed_with_observed_spend_without_labels",
+    "go_dark_requested_but_no_baseline_spend_exists",
+    "heavy_up_requested_but_no_incremental_spend_signal_exists",
+    "go_live_requested_but_baseline_already_has_substantial_spend",
+    "budget_reallocation_requested_but_source_destination_mapping_missing",
+    "negative_spend_values_without_correction_or_credit_flag",
+    "currency_mismatch_without_currency_mapping",
+    "sample_schema_mode_overclaim",
+    "ballpark_mode_overclaim"
+  ],
+  "failure_provisional_modes_defined": true,
+  "llm_explanation_boundary_defined": true,
+  "report_builder_boundary_defined": true,
+  "sample_schema_mode_final_contrast_readiness_allowed": false,
+  "ballpark_mode_final_contrast_readiness_allowed": false,
+  "future_implementation_tests_required": [
+    "missing_spend_blocks_contrast_when_requested",
+    "spend_coverage_available_but_contrast_not_evaluated_until_manipulation_type_or_window_provided",
+    "go_dark_directionally_compatible_contrast",
+    "go_dark_blocked_when_baseline_spend_missing",
+    "heavy_up_directionally_compatible_contrast",
+    "heavy_up_weak_or_insufficient_contrast_warning",
+    "go_live_directionally_compatible_contrast",
+    "go_live_warning_when_baseline_spend_already_substantial",
+    "budget_reallocation_requires_source_destination_mapping",
+    "planned_vs_observed_spend_labels_preserved",
+    "missing_spend_not_treated_as_zero",
+    "observed_zero_spend_counted_separately_from_missing",
+    "sample_schema_mode_cannot_produce_final_contrast_readiness",
+    "ballpark_mode_provisional_only",
+    "no_power_mde_pvalue_ci_lift_roi_design_production_authorization",
+    "no_fixture_specific_branching"
+  ],
+  "runtime_spend_diagnostics_implemented": false,
+  "power_computed": false,
+  "mde_computed": false,
+  "p_value_computed": false,
+  "confidence_interval_computed": false,
+  "lift_computed": false,
+  "roi_computed": false,
+  "candidate_design_computed": false,
+  "treatment_control_assignment_computed": false,
+  "budget_optimization_authorized": false,
+  "mmm_calibration_authorized": false,
+  "production_authorization_granted": false,
+  "llm_decisioning_authorized": false,
+  "authorization_flags": {
+    "runtime_spend_diagnostics_implemented": false,
+    "final_experiment_feasibility_authorized": false,
+    "candidate_design_authorized": false,
+    "treatment_control_assignment_authorized": false,
+    "power_authorized": false,
+    "mde_authorized": false,
+    "p_value_authorized": false,
+    "confidence_interval_authorized": false,
+    "lift_authorized": false,
+    "roi_authorized": false,
+    "method_recommendation_authorized": false,
+    "portfolio_tiering_authorized": false,
+    "budget_optimization_authorized": false,
+    "mmm_calibration_authorized": false,
+    "production_authorization_granted": false,
+    "llm_decisioning_authorized": false
+  },
+  "recommended_next_artifact": "SPEND_CONTRAST_AND_BUDGET_REALLOCATION_DIAGNOSTICS_001",
+  "generated_at": "2026-06-26T22:49:27.857213+00:00",
+  "git_commit": "9b3c304ae5a6ce0155d1c7c147f2089ac5456d6a",
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "manipulation_type_GO_DARK",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "manipulation_type_HEAVY_UP",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "manipulation_type_GO_LIVE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "manipulation_type_BUDGET_REALLOCATION",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "manipulation_type_UNKNOWN",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "spend_coverage_vs_contrast_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "planned_vs_observed_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "zero_missing_rules",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_output_contracts_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contrast_statuses_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contrast_qualities_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "claim_boundaries_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_modes_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "llm_boundary_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_builder_boundary_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "sample_schema_no_final_readiness",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "ballpark_no_final_readiness",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_spec_missing_spend_blocks_contrast_when_requested",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_spec_spend_coverage_available_but_contrast_not_evaluated_until_manipulation_type_or_window_provided",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_spec_go_dark_directionally_compatible_contrast",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_spec_go_dark_blocked_when_baseline_spend_missing",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_spec_heavy_up_directionally_compatible_contrast",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_spec_heavy_up_weak_or_insufficient_contrast_warning",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_spec_go_live_directionally_compatible_contrast",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_spec_go_live_warning_when_baseline_spend_already_substantial",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_spec_budget_reallocation_requires_source_destination_mapping",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_spec_planned_vs_observed_spend_labels_preserved",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_spec_missing_spend_not_treated_as_zero",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_spec_observed_zero_spend_counted_separately_from_missing",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_spec_sample_schema_mode_cannot_produce_final_contrast_readiness",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_spec_ballpark_mode_provisional_only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_spec_no_power_mde_pvalue_ci_lift_roi_design_production_authorization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_spec_no_fixture_specific_branching",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_mode_missing_spend_column_when_contrast_requested",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_mode_missing_manipulation_type",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_mode_missing_channel_mapping_when_channel_level_contrast_requested",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_mode_missing_baseline_spend_window",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_mode_missing_planned_or_treatment_spend_window",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_mode_all_spend_missing",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_mode_missing_treated_control_or_candidate_group_labels_when_group_level_contrast_requested",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_mode_planned_spend_mixed_with_observed_spend_without_labels",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_mode_go_dark_requested_but_no_baseline_spend_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_mode_heavy_up_requested_but_no_incremental_spend_signal_exists",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_mode_go_live_requested_but_baseline_already_has_substantial_spend",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_mode_budget_reallocation_requested_but_source_destination_mapping_missing",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_mode_negative_spend_values_without_correction_or_credit_flag",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_mode_currency_mismatch_without_currency_mapping",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_mode_sample_schema_mode_overclaim",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failure_mode_ballpark_mode_overclaim",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_runtime_spend_diagnostics_implemented_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_final_experiment_feasibility_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_candidate_design_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_treatment_control_assignment_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_power_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mde_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_lift_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_roi_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_method_recommendation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_portfolio_tiering_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_calibration_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_authorization_granted_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "depends_on_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "final_verdict_matches",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_valid",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "issues": []
+  },
+  "non_goals": [
+    "no_runtime_spend_contrast_computation",
+    "no_budget_reallocation_engine",
+    "no_power_or_mde_calculation",
+    "no_design_feasibility_calculation",
+    "no_candidate_design_generation",
+    "no_treatment_control_assignment",
+    "no_lift_or_roi_calculation",
+    "no_p_values_or_confidence_intervals",
+    "no_mmm_calibration",
+    "no_llm_decisioning",
+    "no_production_authorization"
+  ]
+}
