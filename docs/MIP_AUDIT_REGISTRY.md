@@ -1862,7 +1862,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** 144-row SCM validation implementation plan across 31 validation areas and 10 staged phases (`failed_scenarios: []`). `SCMValidationInput`/`SCMValidationEvidence` contracts. SCM remains gated production-candidate. **No validation runtime, no SCM production inference, no p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, selector production use, or agent authorization.**
 
-**Next:** `SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_001`.
+**Next:** `SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_001` (completed — see SCM validation metadata implementation).
+
+---
+
+## SCM-PRODUCTION-CANDIDATE-VALIDATION-IMPLEMENTATION-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_001_REPORT.md`](track_d/SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_001_REPORT.md) · [`docs/track_d/archives/SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_001_summary.json`](track_d/archives/SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_001_summary.json) · [`panel_exp/validation/scm_production_candidate_validation_implementation_001.py`](../panel_exp/validation/scm_production_candidate_validation_implementation_001.py)
+
+**Status:** **`scm_production_candidate_validation_metadata_implemented_no_downstream_authorization`**
+
+**Verdict:** 31-row SCM validation area registry with deterministic `build_scm_validation_evidence()` metadata scaffolding (`failed_scenarios: []`). `SCMValidationInput`/`SCMValidationEvidence` contracts realized. SCM remains gated production-candidate. **Metadata scaffolding only; no SCM fitting, production inference, p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, selector production use, or agent authorization.**
+
+**Next:** `SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_PLAN_001`.
 
 ---
 

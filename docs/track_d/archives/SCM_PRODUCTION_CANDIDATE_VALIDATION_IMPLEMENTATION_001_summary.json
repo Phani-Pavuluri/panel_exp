@@ -1,0 +1,288 @@
+{
+  "artifact_id": "SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_001",
+  "artifact_type": "scm_validation_metadata_implementation",
+  "artifact_version": "1.0.0",
+  "base_commit": "f2a239610c39e97b8becce332c88f62c926c0fde",
+  "status": "completed",
+  "verdict": "scm_production_candidate_validation_metadata_implemented_no_downstream_authorization",
+  "final_verdict": "scm_production_candidate_validation_metadata_implemented_no_downstream_authorization",
+  "method_family": "SCM",
+  "method_family_status": "production_candidate_gated",
+  "next_artifact": "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_PLAN_001",
+  "generated_at": "2026-06-26T06:25:05.955841+00:00",
+  "git_commit": "f2a239610c39e97b8becce332c88f62c926c0fde",
+  "registry_row_count": 31,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "registry_covers_all_areas",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "empty_input_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "empty_release_gate_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_unvalidated_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "null_incomplete_blocks_p_values",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "jackknife_incomplete_blocks_cis",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "donor_insufficient_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "complete_still_release_gate_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "complete_no_production_inference",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scm_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scm_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_authorization_granted_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_data_driven_selection_gate_implementation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_selector_implementation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_selection_router_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scm_production_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_multicell_production_claim_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_package_side_agents_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_flag_scm_validation_implementation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_flag_scm_production_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "registry_row_count": 31,
+    "all_areas_covered": true,
+    "issues": []
+  },
+  "validation_areas": [
+    "scm_input_contract",
+    "panel_balance_and_time_index",
+    "treated_unit_definition",
+    "donor_pool_definition",
+    "donor_pool_size",
+    "donor_support_overlap",
+    "convex_hull_support",
+    "extrapolation_risk",
+    "pre_period_length",
+    "pre_period_fit_quality",
+    "pre_period_trend_stability",
+    "post_period_window_definition",
+    "outcome_scale_compatibility",
+    "kpi_estimand_compatibility",
+    "assignment_design_validity",
+    "randomization_compatibility",
+    "geographic_interference_risk",
+    "spillover_exclusion_or_flagging",
+    "placebo_unit_generation",
+    "placebo_distribution_quality",
+    "null_calibration",
+    "jackknife_unit_sensitivity",
+    "donor_weight_stability",
+    "treated_set_sensitivity",
+    "statistic_adapter_contract",
+    "effect_scale_contract",
+    "uncertainty_boundary",
+    "failure_registry_mapping",
+    "simulation_dgp_coverage",
+    "multicell_shared_control_blocker",
+    "release_gate_dependency"
+  ],
+  "blocked_reasons_supported": [
+    "SCM-BR-INPUT-INCOMPLETE",
+    "SCM-BR-DONOR-POOL-INSUFFICIENT",
+    "SCM-BR-DONOR-SUPPORT-MISSING",
+    "SCM-BR-CONVEX-HULL-MISSING",
+    "SCM-BR-EXTRAPOLATION-RISK",
+    "SCM-BR-PRE-PERIOD-FIT-MISSING",
+    "SCM-BR-TREND-STABILITY-MISSING",
+    "SCM-BR-ASSIGNMENT-INVALID",
+    "SCM-BR-NULL-CALIBRATION-INCOMPLETE",
+    "SCM-BR-JACKKNIFE-INCOMPLETE",
+    "SCM-BR-MULTICELL-UNVALIDATED",
+    "SCM-BR-RELEASE-GATE-REQUIRED",
+    "SCM-BR-FAILURE-REGISTRY-UNRESOLVED",
+    "SCM-BR-UNCERTAINTY-BOUNDARY"
+  ],
+  "required_followups_supported": [
+    "SCM-RF-DONOR-SUPPORT-EVIDENCE",
+    "SCM-RF-CONVEX-HULL-EVIDENCE",
+    "SCM-RF-PRE-PERIOD-FIT-EVIDENCE",
+    "SCM-RF-TREND-STABILITY-EVIDENCE",
+    "SCM-RF-NULL-CALIBRATION-EVIDENCE",
+    "SCM-RF-JACKKNIFE-EVIDENCE",
+    "SCM-RF-DGP-COVERAGE-EVIDENCE",
+    "SCM-RF-STATISTIC-ADAPTER-EVIDENCE",
+    "SCM-RF-RELEASE-GATE-PLAN"
+  ],
+  "implemented_input_contract": "SCMValidationInput",
+  "implemented_evidence_contract": "SCMValidationEvidence",
+  "tests_added": [
+    "tests/validation/test_scm_production_candidate_validation_implementation_001.py"
+  ],
+  "dependencies_reconciled": [
+    "SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_PLAN_001",
+    "SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001",
+    "PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001",
+    "MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001",
+    "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001"
+  ],
+  "non_goals": [
+    "no_scm_fitting_or_lift",
+    "no_production_p_values_or_causal_cis",
+    "no_placebo_or_jackknife_inference_runtime",
+    "no_production_inference_authorization",
+    "no_selector_router_production_use",
+    "no_downstream_integrations",
+    "no_package_side_agents",
+    "no_multicell_production_claims",
+    "no_numerical_scm_diagnostics"
+  ],
+  "scm_validation_implementation_authorized": false,
+  "scm_production_inference_authorized": false,
+  "authorization_flags": {
+    "scm_production_p_value_authorized": false,
+    "scm_causal_confidence_interval_authorized": false,
+    "production_authorization_granted": false,
+    "production_p_value_authorized": false,
+    "causal_confidence_interval_authorized": false,
+    "trustreport_authorized": false,
+    "calibration_signal_allowed": false,
+    "mmm_ingestion_allowed": false,
+    "llm_decisioning_allowed": false,
+    "production_decisioning_allowed": false,
+    "live_api_authorized": false,
+    "scheduler_authorized": false,
+    "budget_optimization_allowed": false,
+    "data_driven_selection_gate_implementation_authorized": false,
+    "selector_implementation_authorized": false,
+    "production_selection_router_authorized": false,
+    "scm_production_inference_authorized": false,
+    "multicell_production_claim_authorized": false,
+    "package_side_agents_authorized": false
+  },
+  "recommended_next_artifacts": [
+    "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_PLAN_001"
+  ]
+}

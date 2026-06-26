@@ -925,6 +925,35 @@
       "resolution_artifact": "SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_PLAN_001"
     },
     {
+      "investigation_id": "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-IMPLEMENTATION-001",
+      "title": "SCM production candidate validation metadata implementation",
+      "status": "RESOLVED",
+      "priority": "P2",
+      "discovered_by": "SCM-PRODUCTION-CANDIDATE-VALIDATION-IMPLEMENTATION-PLAN-001",
+      "affected_combination": "scm_production_candidate_validation_metadata",
+      "problem_class": ["scm", "validation_implementation", "metadata_scaffolding"],
+      "evidence": {
+        "depends_on": [
+          "SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_PLAN_001",
+          "PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001"
+        ],
+        "registry_row_count": 31,
+        "failed_scenarios": [],
+        "scm_retained_candidate_gated": true,
+        "blocked_downstream_authorization": true,
+        "scm_production_inference_unauthorized": true,
+        "metadata_scaffolding_only": true
+      },
+      "current_decision": "SCM_PRODUCTION_CANDIDATE_VALIDATION_METADATA_IMPLEMENTED_NO_DOWNSTREAM_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "SCM null calibration implementation plan after validation scaffolding",
+      "blocking_policy": "SCM validation metadata scaffolding does not authorize production inference",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
+      "resolution_artifact": "SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -2323,6 +2352,26 @@
         "method_gap_control",
         "scm",
         "validation_implementation_plan",
+        "production_candidate_gated",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "SCM-PRODUCTION-CANDIDATE-VALIDATION-IMPLEMENTATION-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-SCM-PRODUCTION-CANDIDATE-VALIDATION-IMPLEMENTATION-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_PLAN_001",
+      "resolution_artifact": "SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "scm",
+        "validation_metadata_implementation",
         "production_candidate_gated",
         "no_downstream_authorization"
       ]
