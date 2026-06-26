@@ -1341,6 +1341,33 @@
       "resolution_artifact": "EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001"
     },
     {
+      "investigation_id": "INV-PANEL-EXP-AGENT-RUN-PACKET-CONTRACT-001",
+      "title": "Panel exp agent run packet contract",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "EXPERIMENT-PORTFOLIO-INTAKE-CONTRACT-001",
+      "affected_combination": "panel_exp_agent_run_packet",
+      "problem_class": ["agent_run_packet", "run_manifest", "failure_packet"],
+      "evidence": {
+        "depends_on": [
+          "EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001",
+          "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_TOOLING_CONTRACT_001"
+        ],
+        "contract_scope": "agent_run_packet_contract_no_runtime",
+        "packet_first_agent_second": true,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "PANEL_EXP_ARTIFACT_REGISTRY_AND_PROVENANCE_CONTRACT_001"
+      },
+      "current_decision": "PANEL_EXP_AGENT_RUN_PACKET_CONTRACT_DEFINED_NO_RUNTIME_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Run packet contract before agent runtime",
+      "blocking_policy": "Contract does not authorize agent orchestration or production claims",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
+      "resolution_artifact": "PANEL_EXP_AGENT_RUN_PACKET_CONTRACT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -3019,6 +3046,25 @@
         "adaptive_intake",
         "planning_intent",
         "no_static_questionnaire",
+        "no_runtime_authorization"
+      ]
+    },
+    {
+      "lane_id": "PANEL-EXP-AGENT-RUN-PACKET-CONTRACT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-PANEL-EXP-AGENT-RUN-PACKET-CONTRACT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "PANEL_EXP_ARTIFACT_REGISTRY_AND_PROVENANCE_CONTRACT_001",
+      "resolution_artifact": "PANEL_EXP_AGENT_RUN_PACKET_CONTRACT_001",
+      "artifact_tags": [
+        "agent_run_packet",
+        "run_manifest",
+        "failure_packet",
+        "packet_first_agent_second",
         "no_runtime_authorization"
       ]
     }

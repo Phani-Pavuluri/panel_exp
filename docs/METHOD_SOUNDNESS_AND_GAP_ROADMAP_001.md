@@ -440,7 +440,7 @@ Phases derived from repo evidence and [`METHOD_FOUNDATION_HARDENING_001.md`](MET
 
 **Paused:** **`D5-INST-AUGSYNTH-MULTICELL-001`** as default next step · TrustReport/F-DECISION/CalibrationSignal/MMM role expansion · TrustReport product-ops (audit log, API, scheduler, platform — frozen per [`ROADMAP_REFOCUS_METHOD_VALIDATION_001.md`](audits/ROADMAP_REFOCUS_METHOD_VALIDATION_001.md)) · LLM layer · promotion audits.
 
-**Active lanes (2026-06-03):** SCM closeout: `SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001` (immediate). **Portfolio planner contracts:** geo KPI/spend data contract ✅ · intake contract ✅; next: `PANEL_EXP_AGENT_RUN_PACKET_CONTRACT_001`. Profiler runtime deferred until cross-cutting contracts stable. Downstream paused.
+**Active lanes (2026-06-03):** SCM closeout: `SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001` (immediate). **Cross-cutting contracts:** intake ✅ · agent run packet ✅; next: `PANEL_EXP_ARTIFACT_REGISTRY_AND_PROVENANCE_CONTRACT_001`. Profiler runtime deferred. Downstream paused.
 
 **SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001:** 63-row SCM validation plan (`failed_scenarios: []`). First gated production-candidate lane; point estimate not sufficient. See [`SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001`](track_d/SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001_REPORT.md).
 

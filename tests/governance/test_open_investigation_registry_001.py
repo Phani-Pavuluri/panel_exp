@@ -1116,6 +1116,22 @@ class TestOpenInvestigationRegistry001:
         assert inv.status == "RESOLVED"
         assert inv.resolution_artifact == "EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001"
 
+    def test_panel_exp_agent_run_packet_contract_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "PANEL-EXP-AGENT-RUN-PACKET-CONTRACT-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "PANEL_EXP_AGENT_RUN_PACKET_CONTRACT_001"
+        assert lane["next_artifact"] == "PANEL_EXP_ARTIFACT_REGISTRY_AND_PROVENANCE_CONTRACT_001"
+        assert "INV-PANEL-EXP-AGENT-RUN-PACKET-CONTRACT-001" in lane["resolved_investigations"]
+
+    def test_panel_exp_agent_run_packet_contract_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-PANEL-EXP-AGENT-RUN-PACKET-CONTRACT-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "PANEL_EXP_AGENT_RUN_PACKET_CONTRACT_001"
+
     def test_production_authorization_release_gate_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"]
         assert inv.status == "RESOLVED"

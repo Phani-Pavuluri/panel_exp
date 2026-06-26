@@ -2034,6 +2034,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## PANEL-EXP-AGENT-RUN-PACKET-CONTRACT-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/PANEL_EXP_AGENT_RUN_PACKET_CONTRACT_001_REPORT.md`](track_d/PANEL_EXP_AGENT_RUN_PACKET_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/PANEL_EXP_AGENT_RUN_PACKET_CONTRACT_001_summary.json`](track_d/archives/PANEL_EXP_AGENT_RUN_PACKET_CONTRACT_001_summary.json) · [`panel_exp/validation/panel_exp_agent_run_packet_contract_001.py`](../panel_exp/validation/panel_exp_agent_run_packet_contract_001.py)
+
+**Status:** **`panel_exp_agent_run_packet_contract_defined_no_runtime_authorization`**
+
+**Verdict:** Defines agent run packet contract: input packets, run manifests, artifact references, validation/failure/resolution packets, allowed/blocked actions, LLM boundaries (`failed_scenarios: []`). Packet-first/agent-second. **Contract only; no runtime agent authorization.**
+
+**Next:** `PANEL_EXP_ARTIFACT_REGISTRY_AND_PROVENANCE_CONTRACT_001`.
+
+---
+
 ## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)
