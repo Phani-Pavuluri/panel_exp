@@ -1,0 +1,504 @@
+{
+  "artifact_id": "PANEL_EXP_ARTIFACT_REGISTRY_AND_PROVENANCE_CONTRACT_001",
+  "artifact_type": "panel_exp_artifact_registry_and_provenance_contract",
+  "artifact_version": "1.0.0",
+  "base_commit": "b811a2fec26b0c910e549b6f777ecd647cfd3c20",
+  "status": "completed",
+  "verdict": "panel_exp_artifact_registry_provenance_contract_defined_no_runtime_authorization",
+  "final_verdict": "panel_exp_artifact_registry_provenance_contract_defined_no_runtime_authorization",
+  "contract_scope": "artifact_registry_provenance_contract_no_runtime",
+  "registry_first_provenance_always": true,
+  "no_artifact_id_no_durable_claim": true,
+  "no_provenance_no_downstream_use": true,
+  "no_validation_status_no_validation_claim": true,
+  "no_governance_status_no_claim_boundary": true,
+  "no_allowed_downstream_use_no_downstream_routing": true,
+  "required_contracts": [
+    "PanelExpArtifactRegistryEntry",
+    "PanelExpArtifactIdentity",
+    "PanelExpArtifactProvenance",
+    "PanelExpArtifactInputReference",
+    "PanelExpArtifactSourceWorkflow",
+    "PanelExpArtifactSourceRunReference",
+    "PanelExpArtifactValidationState",
+    "PanelExpArtifactGovernanceState",
+    "PanelExpArtifactDownstreamUsePolicy",
+    "PanelExpArtifactLifecycleState",
+    "PanelExpArtifactVersionReference",
+    "PanelExpArtifactClaimBoundary",
+    "PanelExpArtifactRegistryQuery",
+    "PanelExpArtifactRegistryLookupResult"
+  ],
+  "artifact_type_taxonomy": [
+    "planning_intent",
+    "data_profile_report",
+    "column_mapping_report",
+    "geo_time_coverage_report",
+    "unit_eligibility_report",
+    "geo_unit_feasibility_report",
+    "portfolio_feasibility_report",
+    "tier_assignment_plan",
+    "spend_contrast_feasibility_report",
+    "cell_spend_plan",
+    "candidate_design_set",
+    "design_feasibility_scores",
+    "design_based_inference_plan",
+    "inference_validity_diagnostics",
+    "model_fallback_recommendation",
+    "agent_run_manifest",
+    "agent_validation_report",
+    "agent_failure_packet",
+    "agent_resolution_plan",
+    "claim_boundary_report",
+    "golden_path_result",
+    "audit_report",
+    "governance_summary"
+  ],
+  "lifecycle_states": [
+    "draft",
+    "generated",
+    "validated",
+    "validation_failed",
+    "blocked",
+    "superseded",
+    "expired",
+    "revoked",
+    "archived"
+  ],
+  "governance_statuses": [
+    "diagnostic_only",
+    "provisional",
+    "needs_more_data",
+    "blocked",
+    "validated_for_internal_planning",
+    "eligible_for_review",
+    "approved_for_specific_downstream_use",
+    "revoked",
+    "expired"
+  ],
+  "llm_answerability_boundaries_defined": true,
+  "requires_future_contracts": [
+    "PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001",
+    "LLM_REPORT_GROUNDING_AND_CLAIM_BOUNDARY_CONTRACT_001"
+  ],
+  "revised_roadmap_sequence": [
+    "METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001",
+    "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001",
+    "SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001",
+    "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_ROADMAP_001",
+    "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_TOOLING_CONTRACT_001",
+    "ROADMAP_IMPLEMENTATION_DETAIL_GAP_AUDIT_001",
+    "GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001",
+    "EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001",
+    "PANEL_EXP_AGENT_RUN_PACKET_CONTRACT_001",
+    "PANEL_EXP_ARTIFACT_REGISTRY_AND_PROVENANCE_CONTRACT_001",
+    "PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001",
+    "GEO_KPI_SPEND_DATA_PROFILER_001",
+    "GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001",
+    "SPEND_CONTRAST_FEASIBILITY_TOOLING_CONTRACT_001",
+    "SPEND_CONTRAST_AND_BUDGET_REALLOCATION_DIAGNOSTICS_001",
+    "PORTFOLIO_TEST_TIERING_ENGINE_001",
+    "CANDIDATE_DESIGN_GENERATOR_001",
+    "SHARED_CONTROL_AND_MULTICELL_INFERENCE_CONTRACT_001",
+    "DESIGN_BASED_INFERENCE_TOOLING_CONTRACT_001",
+    "DESIGN_BASED_INFERENCE_FAST_PATH_001",
+    "BALLPARK_FEASIBILITY_MODE_CONTRACT_001",
+    "LLM_REPORT_GROUNDING_AND_CLAIM_BOUNDARY_CONTRACT_001",
+    "MODEL_BASED_FALLBACK_ROUTER_001",
+    "AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001"
+  ],
+  "authorization_flags": {
+    "panel_exp_artifact_registry_runtime_authorized": false,
+    "artifact_registry_runtime_authorized": false,
+    "artifact_provenance_runtime_authorized": false,
+    "artifact_downstream_routing_authorized": false,
+    "agent_orchestration_runtime_authorized": false,
+    "golden_path_runtime_authorized": false,
+    "llm_report_grounding_runtime_authorized": false,
+    "llm_artifact_interpretation_authorized": false,
+    "llm_design_recommendation_authorized": false,
+    "production_design_recommendation_authorized": false,
+    "production_readout_authorized": false,
+    "production_p_value_authorized": false,
+    "causal_confidence_interval_authorized": false,
+    "production_authorization_granted": false,
+    "selector_implementation_authorized": false,
+    "production_selection_router_authorized": false,
+    "multicell_production_claim_authorized": false,
+    "trustreport_authorized": false,
+    "calibration_signal_allowed": false,
+    "mmm_ingestion_allowed": false,
+    "llm_decisioning_allowed": false,
+    "production_decisioning_allowed": false,
+    "live_api_authorized": false,
+    "scheduler_authorized": false,
+    "budget_optimization_allowed": false,
+    "package_side_agents_authorized": false
+  },
+  "recommended_next_artifact": "PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001",
+  "scenario_tests_required": [
+    "registry_entry_fields",
+    "artifact_identity_fields",
+    "provenance_fields",
+    "input_reference_fields",
+    "source_workflow_fields",
+    "source_run_reference_fields",
+    "validation_state_fields",
+    "governance_state_fields",
+    "downstream_use_policy_fields",
+    "lifecycle_states",
+    "governance_statuses",
+    "artifact_type_taxonomy",
+    "no_artifact_id_no_durable_claim",
+    "no_provenance_no_downstream_use",
+    "sample_schema_cannot_final_feasibility",
+    "ballpark_cannot_final_feasibility",
+    "diagnostic_artifact_cannot_production_authorization",
+    "blocked_artifact_cannot_route_downstream_except_blocked_explanation",
+    "expired_revoked_artifact_cannot_support_new_recommendations",
+    "llm_answerability_boundaries",
+    "revised_roadmap_sequence"
+  ],
+  "generated_at": "2026-06-26T11:55:37.669991+00:00",
+  "git_commit": "b811a2fec26b0c910e549b6f777ecd647cfd3c20",
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "registry_first_provenance_always",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_artifact_id_no_durable_claim",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_provenance_no_downstream_use",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_validation_status_no_validation_claim",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_governance_status_no_claim_boundary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_allowed_downstream_use_no_downstream_routing",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "required_contracts_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "artifact_type_taxonomy_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "lifecycle_states_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "governance_statuses_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "llm_boundaries_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "next_artifact_golden_path",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_registry_entry_fields",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_artifact_identity_fields",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_provenance_fields",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_input_reference_fields",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_source_workflow_fields",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_source_run_reference_fields",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_validation_state_fields",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_governance_state_fields",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_downstream_use_policy_fields",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_lifecycle_states",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_governance_statuses",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_artifact_type_taxonomy",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_no_artifact_id_no_durable_claim",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_no_provenance_no_downstream_use",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_sample_schema_cannot_final_feasibility",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_ballpark_cannot_final_feasibility",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_diagnostic_artifact_cannot_production_authorization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_blocked_artifact_cannot_route_downstream_except_blocked_explanation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_expired_revoked_artifact_cannot_support_new_recommendations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_llm_answerability_boundaries",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_revised_roadmap_sequence",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_panel_exp_artifact_registry_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_artifact_registry_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_artifact_provenance_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_artifact_downstream_routing_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_agent_orchestration_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_golden_path_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_report_grounding_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_artifact_interpretation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_design_recommendation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_design_recommendation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_readout_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_authorization_granted_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_selector_implementation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_selection_router_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_multicell_production_claim_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_package_side_agents_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "final_verdict_matches",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_valid",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "issues": []
+  },
+  "non_goals": [
+    "no_runtime_registry_storage",
+    "no_runtime_agents",
+    "no_agent_orchestration",
+    "no_data_profilers",
+    "no_planner_logic",
+    "no_estimators",
+    "no_design_algorithms",
+    "no_inference_logic",
+    "no_p_values",
+    "no_confidence_intervals",
+    "no_production_recommendations",
+    "no_budget_optimization",
+    "no_selector_router_behavior",
+    "no_mmm_ingestion",
+    "no_llm_decisioning",
+    "no_downstream_integrations"
+  ]
+}

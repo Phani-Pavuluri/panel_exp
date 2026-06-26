@@ -2042,7 +2042,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Defines agent run packet contract: input packets, run manifests, artifact references, validation/failure/resolution packets, allowed/blocked actions, LLM boundaries (`failed_scenarios: []`). Packet-first/agent-second. **Contract only; no runtime agent authorization.**
 
-**Next:** `PANEL_EXP_ARTIFACT_REGISTRY_AND_PROVENANCE_CONTRACT_001`.
+**Next:** `PANEL_EXP_ARTIFACT_REGISTRY_AND_PROVENANCE_CONTRACT_001` (completed — see artifact registry contract report).
+
+---
+
+## PANEL-EXP-ARTIFACT-REGISTRY-AND-PROVENANCE-CONTRACT-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/PANEL_EXP_ARTIFACT_REGISTRY_AND_PROVENANCE_CONTRACT_001_REPORT.md`](track_d/PANEL_EXP_ARTIFACT_REGISTRY_AND_PROVENANCE_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/PANEL_EXP_ARTIFACT_REGISTRY_AND_PROVENANCE_CONTRACT_001_summary.json`](track_d/archives/PANEL_EXP_ARTIFACT_REGISTRY_AND_PROVENANCE_CONTRACT_001_summary.json) · [`panel_exp/validation/panel_exp_artifact_registry_and_provenance_contract_001.py`](../panel_exp/validation/panel_exp_artifact_registry_and_provenance_contract_001.py)
+
+**Status:** **`panel_exp_artifact_registry_provenance_contract_defined_no_runtime_authorization`**
+
+**Verdict:** Defines artifact registry and provenance contract: stable artifact identity, metadata, provenance links, validation/governance state, downstream-use policy, lifecycle states, LLM answerability boundaries (`failed_scenarios: []`). Registry-first/provenance-always. **Contract only; no runtime registry authorization.**
+
+**Next:** `PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001`.
 
 ---
 
