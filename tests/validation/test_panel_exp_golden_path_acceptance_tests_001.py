@@ -6,7 +6,9 @@ import json
 from pathlib import Path
 
 from panel_exp.validation.panel_exp_golden_path_acceptance_tests_001 import (
+    AGENT_ANSWERABILITY_STATES,
     BLOCKED_PROVISIONAL_SCENARIOS,
+    FUTURE_AGENT_ANSWERABILITY_RECOVERY_CONTRACT,
     GOLDEN_PATH_SCENARIOS,
     PROFILER_IMPLEMENTATION_NOTES,
     RECOMMENDED_NEXT_ARTIFACT,
@@ -90,6 +92,12 @@ def test_summary_json_and_report() -> None:
     assert data["recommended_next_artifact"] == RECOMMENDED_NEXT_ARTIFACT
     assert data["final_verdict"] == "panel_exp_golden_path_acceptance_tests_defined_no_runtime_authorization"
     assert data["profiler_implementation_notes"] == list(PROFILER_IMPLEMENTATION_NOTES)
+    assert data["overexpanded_corner_case_rules_reverted_or_avoided"] is True
+    assert data["future_agent_answerability_recovery_contract_added"] == (
+        FUTURE_AGENT_ANSWERABILITY_RECOVERY_CONTRACT
+    )
+    assert data["agent_freeform_causal_reasoning_allowed"] is False
+    assert data["agent_corner_case_rule_explosion_allowed"] is False
 
 
 def test_profiler_implementation_notes() -> None:
@@ -97,10 +105,20 @@ def test_profiler_implementation_notes() -> None:
     assert "no_hidden_zero_fill_or_hidden_imputation" in PROFILER_IMPLEMENTATION_NOTES
 
 
+def test_no_bp_019_plus_and_answerability_roadmap() -> None:
+    contract = build_panel_exp_golden_path_acceptance_tests_contract()
+    assert len(contract.blocked_provisional_scenarios) == 18
+    assert not any(s.startswith("BP-019") for s in contract.blocked_provisional_scenarios)
+    geo_idx = contract.revised_roadmap_sequence.index("GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001")
+    assert contract.revised_roadmap_sequence[geo_idx + 1] == FUTURE_AGENT_ANSWERABILITY_RECOVERY_CONTRACT
+    assert len(AGENT_ANSWERABILITY_STATES) == 5
+
+
 def test_report_states_no_runtime_authorization() -> None:
     text = _REPORT.read_text(encoding="utf-8")
     assert "golden path" in text.lower() or "golden-path" in text.lower()
     assert "anti-pattern" in text.lower()
     assert "profiler implementation notes" in text.lower()
+    assert "answerability" in text.lower()
     assert len(SCENARIO_TESTS) >= 20
     assert "no runtime authorization" in text.lower() or "no runtime" in text.lower()

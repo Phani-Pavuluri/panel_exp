@@ -2064,9 +2064,9 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Status:** **`panel_exp_golden_path_acceptance_tests_defined_no_runtime_authorization`**
 
-**Verdict:** Defines golden-path and blocked-path acceptance scenarios: GP-001–GP-008, BP-001–BP-018, critical implementation anti-patterns, LLM/report-builder/fixture/demo boundaries (`failed_scenarios: []`). Golden paths before demos. **Contract only; no runtime golden-path authorization.**
+**Verdict:** Defines golden-path and blocked-path acceptance scenarios: GP-001–GP-008, BP-001–BP-018 only, critical implementation anti-patterns, LLM/report-builder/fixture/demo boundaries, short profiler notes, future agent answerability/recovery roadmap (`failed_scenarios: []`). Golden paths before demos; no rule explosion. **Contract only; no runtime golden-path authorization.**
 
-**Next:** `GEO_KPI_SPEND_DATA_PROFILER_001`.
+**Next:** `GEO_KPI_SPEND_DATA_PROFILER_001`. Planned: `PANEL_EXP_AGENT_ANSWERABILITY_AND_RECOVERY_CONTRACT_001` after feasibility diagnostics begin.
 
 ---
 

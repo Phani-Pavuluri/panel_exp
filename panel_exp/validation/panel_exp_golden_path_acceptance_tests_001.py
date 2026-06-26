@@ -138,6 +138,27 @@ PER_SCENARIO_AUTH_FLAGS = (
     "package_side_agents_authorized",
 )
 
+FUTURE_AGENT_ANSWERABILITY_RECOVERY_CONTRACT = "PANEL_EXP_AGENT_ANSWERABILITY_AND_RECOVERY_CONTRACT_001"
+
+AGENT_ANSWERABILITY_STATES = (
+    "ANSWERABLE_FROM_REGISTERED_ARTIFACT",
+    "ANSWERABLE_FROM_DETERMINISTIC_TOOL_OUTPUT",
+    "NEEDS_CORE_DIAGNOSTIC_OR_ML",
+    "NEEDS_USER_INPUT_OR_DATA",
+    "BLOCKED_BY_CLAIM_BOUNDARY",
+)
+
+FUTURE_AGENT_ANSWERABILITY_EVAL_DIMENSIONS = (
+    "answerability_classification_accuracy",
+    "correct_routing_to_deterministic_diagnostic_or_core_ml",
+    "minimal_follow_up_question_quality",
+    "no_hallucinated_facts",
+    "no_claim_boundary_violations",
+    "graceful_recovery_when_tools_fail_or_outputs_missing",
+    "clear_distinction_known_unknown_provisional_blocked",
+    "no_pvalue_ci_design_production_claims_without_authoritative_outputs",
+)
+
 REVISED_ROADMAP_SEQUENCE = (
     "METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001",
     "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001",
@@ -152,6 +173,7 @@ REVISED_ROADMAP_SEQUENCE = (
     "PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001",
     "GEO_KPI_SPEND_DATA_PROFILER_001",
     "GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001",
+    "PANEL_EXP_AGENT_ANSWERABILITY_AND_RECOVERY_CONTRACT_001",
     "SPEND_CONTRAST_FEASIBILITY_TOOLING_CONTRACT_001",
     "SPEND_CONTRAST_AND_BUDGET_REALLOCATION_DIAGNOSTICS_001",
     "PORTFOLIO_TEST_TIERING_ENGINE_001",
@@ -187,6 +209,8 @@ SCENARIO_TESTS = (
     "expired_revoked_artifact_blocked",
     "generic_readiness_overgeneralization_blocked",
     "profiler_implementation_notes",
+    "no_bp_019_plus_scenario_explosion",
+    "future_agent_answerability_recovery_roadmap",
     "revised_roadmap_sequence",
 )
 
@@ -333,6 +357,13 @@ def validate_panel_exp_golden_path_acceptance_tests_contract(
         issues.append("must define at least 8 golden path scenarios")
     if len(contract.blocked_provisional_scenarios) < 18:
         issues.append("must define at least 18 blocked/provisional scenarios")
+    if len(contract.blocked_provisional_scenarios) > 18:
+        issues.append("must not expand beyond BP-001 through BP-018")
+    if any(s.startswith("BP-019") or s.startswith("BP-02") for s in contract.blocked_provisional_scenarios):
+        issues.append("BP-019+ scenario explosion not allowed")
+    geo_idx = contract.revised_roadmap_sequence.index("GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001")
+    if contract.revised_roadmap_sequence[geo_idx + 1] != FUTURE_AGENT_ANSWERABILITY_RECOVERY_CONTRACT:
+        issues.append("agent answerability contract must follow geo unit feasibility diagnostics")
     idx = contract.revised_roadmap_sequence.index("PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001")
     if contract.revised_roadmap_sequence[idx + 1] != RECOMMENDED_NEXT_ARTIFACT:
         issues.append("geo KPI spend profiler must follow golden path contract")
@@ -393,6 +424,14 @@ def build_scenarios() -> list[dict[str, Any]]:
     )
     scenarios.append(_s("demo_notebook_boundary_defined", contract.demo_notebook_boundary_defined))
     scenarios.append(_s("profiler_implementation_notes_present", len(PROFILER_IMPLEMENTATION_NOTES) == 5))
+    scenarios.append(_s("no_bp_019_plus", len(contract.blocked_provisional_scenarios) == 18))
+    geo_idx = contract.revised_roadmap_sequence.index("GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001")
+    scenarios.append(
+        _s(
+            "future_agent_answerability_recovery_roadmap",
+            contract.revised_roadmap_sequence[geo_idx + 1] == FUTURE_AGENT_ANSWERABILITY_RECOVERY_CONTRACT,
+        )
+    )
     idx = contract.revised_roadmap_sequence.index("PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001")
     scenarios.append(
         _s("next_artifact_profiler", contract.revised_roadmap_sequence[idx + 1] == RECOMMENDED_NEXT_ARTIFACT)
@@ -452,6 +491,13 @@ def run_validation(*, write_summary: bool = True, summary_path: Path | None = No
         "fixture_mode_product_mode_boundary_defined": True,
         "demo_notebook_boundary_defined": True,
         "profiler_implementation_notes": list(PROFILER_IMPLEMENTATION_NOTES),
+        "overexpanded_corner_case_rules_reverted_or_avoided": True,
+        "profiler_implementation_notes_kept_lightweight": True,
+        "future_agent_answerability_recovery_contract_added": FUTURE_AGENT_ANSWERABILITY_RECOVERY_CONTRACT,
+        "agent_answerability_states": list(AGENT_ANSWERABILITY_STATES),
+        "future_agent_answerability_eval_dimensions": list(FUTURE_AGENT_ANSWERABILITY_EVAL_DIMENSIONS),
+        "agent_freeform_causal_reasoning_allowed": False,
+        "agent_corner_case_rule_explosion_allowed": False,
         "revised_roadmap_sequence": list(REVISED_ROADMAP_SEQUENCE),
         "authorization_flags": dict(_AUTH_FLAGS),
         "recommended_next_artifact": RECOMMENDED_NEXT_ARTIFACT,

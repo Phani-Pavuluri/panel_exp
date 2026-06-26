@@ -2,7 +2,7 @@
   "artifact_id": "PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001",
   "artifact_type": "panel_exp_golden_path_acceptance_tests_contract",
   "artifact_version": "1.0.0",
-  "base_commit": "23798b26473d211ded50a8ebf486ab9795c4540b",
+  "base_commit": "1844436b1a6cb39e774b80b9711759941462700d",
   "status": "completed",
   "verdict": "panel_exp_golden_path_acceptance_tests_defined_no_runtime_authorization",
   "final_verdict": "panel_exp_golden_path_acceptance_tests_defined_no_runtime_authorization",
@@ -114,6 +114,28 @@
     "profiler_reports_coverage_and_schema_readiness_only_no_design_power_mde_inference",
     "no_hidden_zero_fill_or_hidden_imputation"
   ],
+  "overexpanded_corner_case_rules_reverted_or_avoided": true,
+  "profiler_implementation_notes_kept_lightweight": true,
+  "future_agent_answerability_recovery_contract_added": "PANEL_EXP_AGENT_ANSWERABILITY_AND_RECOVERY_CONTRACT_001",
+  "agent_answerability_states": [
+    "ANSWERABLE_FROM_REGISTERED_ARTIFACT",
+    "ANSWERABLE_FROM_DETERMINISTIC_TOOL_OUTPUT",
+    "NEEDS_CORE_DIAGNOSTIC_OR_ML",
+    "NEEDS_USER_INPUT_OR_DATA",
+    "BLOCKED_BY_CLAIM_BOUNDARY"
+  ],
+  "future_agent_answerability_eval_dimensions": [
+    "answerability_classification_accuracy",
+    "correct_routing_to_deterministic_diagnostic_or_core_ml",
+    "minimal_follow_up_question_quality",
+    "no_hallucinated_facts",
+    "no_claim_boundary_violations",
+    "graceful_recovery_when_tools_fail_or_outputs_missing",
+    "clear_distinction_known_unknown_provisional_blocked",
+    "no_pvalue_ci_design_production_claims_without_authoritative_outputs"
+  ],
+  "agent_freeform_causal_reasoning_allowed": false,
+  "agent_corner_case_rule_explosion_allowed": false,
   "revised_roadmap_sequence": [
     "METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001",
     "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001",
@@ -128,6 +150,7 @@
     "PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001",
     "GEO_KPI_SPEND_DATA_PROFILER_001",
     "GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001",
+    "PANEL_EXP_AGENT_ANSWERABILITY_AND_RECOVERY_CONTRACT_001",
     "SPEND_CONTRAST_FEASIBILITY_TOOLING_CONTRACT_001",
     "SPEND_CONTRAST_AND_BUDGET_REALLOCATION_DIAGNOSTICS_001",
     "PORTFOLIO_TEST_TIERING_ENGINE_001",
@@ -201,10 +224,12 @@
     "expired_revoked_artifact_blocked",
     "generic_readiness_overgeneralization_blocked",
     "profiler_implementation_notes",
+    "no_bp_019_plus_scenario_explosion",
+    "future_agent_answerability_recovery_roadmap",
     "revised_roadmap_sequence"
   ],
-  "generated_at": "2026-06-26T12:54:41.649847+00:00",
-  "git_commit": "23798b26473d211ded50a8ebf486ab9795c4540b",
+  "generated_at": "2026-06-26T21:25:34.179734+00:00",
+  "git_commit": "1844436b1a6cb39e774b80b9711759941462700d",
   "failed_scenarios": [],
   "scenario_results": [
     {
@@ -279,6 +304,16 @@
     },
     {
       "scenario_id": "profiler_implementation_notes_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_bp_019_plus",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_agent_answerability_recovery_roadmap",
       "passed": true,
       "detail": ""
     },
@@ -389,6 +424,16 @@
     },
     {
       "scenario_id": "scenario_spec_profiler_implementation_notes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_no_bp_019_plus_scenario_explosion",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_future_agent_answerability_recovery_roadmap",
       "passed": true,
       "detail": ""
     },

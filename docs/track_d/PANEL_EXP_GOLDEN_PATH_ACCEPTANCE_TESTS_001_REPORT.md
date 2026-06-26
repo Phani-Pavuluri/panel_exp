@@ -429,9 +429,14 @@ All authorization flags remain **false**:
 | 10 | `PANEL_EXP_ARTIFACT_REGISTRY_AND_PROVENANCE_CONTRACT_001` | ✅ |
 | 11 | `PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001` | ✅ This contract |
 | 12 | `GEO_KPI_SPEND_DATA_PROFILER_001` | Next |
-| 13+ | Feasibility, design, inference implementation lanes | After golden paths |
+| 13 | `GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001` | Planned |
+| 14 | `PANEL_EXP_AGENT_ANSWERABILITY_AND_RECOVERY_CONTRACT_001` | Planned (after feasibility diagnostics begin) |
+| 15+ | Spend contrast, design, inference lanes | After answerability contract |
+| … | `LLM_REPORT_GROUNDING_AND_CLAIM_BOUNDARY_CONTRACT_001` | User-facing explanation over typed artifacts |
 
-This contract must guide: `GEO_KPI_SPEND_DATA_PROFILER_001`, `GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001`, `SPEND_CONTRAST_AND_BUDGET_REALLOCATION_DIAGNOSTICS_001`, `PORTFOLIO_TEST_TIERING_ENGINE_001`, `CANDIDATE_DESIGN_GENERATOR_001`, `DESIGN_BASED_INFERENCE_FAST_PATH_001`, `MODEL_BASED_FALLBACK_ROUTER_001`, `LLM_REPORT_GROUNDING_AND_CLAIM_BOUNDARY_CONTRACT_001`.
+This contract must guide: `GEO_KPI_SPEND_DATA_PROFILER_001`, `GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001`, `SPEND_CONTRAST_AND_BUDGET_REALLOCATION_DIAGNOSTICS_001`, `PORTFOLIO_TEST_TIERING_ENGINE_001`, `CANDIDATE_DESIGN_GENERATOR_001`, `DESIGN_BASED_INFERENCE_FAST_PATH_001`, `MODEL_BASED_FALLBACK_ROUTER_001`, `PANEL_EXP_AGENT_ANSWERABILITY_AND_RECOVERY_CONTRACT_001`, `LLM_REPORT_GROUNDING_AND_CLAIM_BOUNDARY_CONTRACT_001`.
+
+**Lean artifact policy:** This contract intentionally avoids BP-019+ scenario explosion, separate metric/geo/pre-period/spend/unit/imputation boundary contracts, and long corner-case rule trees. Those concerns are covered by existing BP-001–BP-018 guardrails, short profiler implementation notes, and the future answerability/recovery contract — not hardcoded here.
 
 ---
 
@@ -445,6 +450,54 @@ Practical guidance for `GEO_KPI_SPEND_DATA_PROFILER_001` (implementation notes o
 4. **Profiler reports coverage and schema readiness only.** It must not compute spend contrast feasibility, design feasibility, power, MDE, p-values, CIs, lift, ROI, or method recommendations.
 5. **Missing KPI/spend must remain missing unless explicitly resolved.** No hidden zero-fill or hidden imputation.
 
+These are implementation notes only — not expanded into BP-019+ scenarios or separate boundary contracts.
+
+---
+
+## Future agent answerability and recovery
+
+**Future artifact:** `PANEL_EXP_AGENT_ANSWERABILITY_AND_RECOVERY_CONTRACT_001`
+
+**Purpose:** Define how future panel_exp agents decide what they can answer, what must be routed to deterministic diagnostics/core ML, what needs user input, and how to recover gracefully without hallucinating. This is a **small state-machine contract**, not a long rule list or corner-case explosion.
+
+**Roadmap placement:** After `GEO_KPI_SPEND_DATA_PROFILER_001` and `GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001` begin; before runtime agent deployment and before `LLM_REPORT_GROUNDING_AND_CLAIM_BOUNDARY_CONTRACT_001`.
+
+**Division of labor:**
+
+- **Answerability/recovery** — request classification, routing, missing-input handling, safe fallback
+- **LLM grounding** — user-facing explanation over typed registry-backed artifacts and claim boundaries
+
+### Answerability state machine
+
+Future agents classify every user request into one of five states:
+
+1. `ANSWERABLE_FROM_REGISTERED_ARTIFACT`
+2. `ANSWERABLE_FROM_DETERMINISTIC_TOOL_OUTPUT`
+3. `NEEDS_CORE_DIAGNOSTIC_OR_ML`
+4. `NEEDS_USER_INPUT_OR_DATA`
+5. `BLOCKED_BY_CLAIM_BOUNDARY`
+
+The agent may explain, route, ask for missing inputs, or summarize known outputs. It may **not** invent feasibility, p-values, CIs, lift, ROI, budget allocation, method choice, or production readiness from partial context.
+
+### Sophisticated UX without freeform hallucination
+
+Agents should be sophisticated in navigation, explanation, recovery, and uncertainty handling. Core deterministic/ML systems remain authoritative for facts, diagnostics, estimates, feasibility, p-values, CIs, designs, and claim status.
+
+Agents should not hardcode every corner case. Instead, they should rely on typed reports, registry/provenance, validation status, missing-input reports, and claim-boundary statuses.
+
+### Expected future evaluation dimensions
+
+For `PANEL_EXP_AGENT_ANSWERABILITY_AND_RECOVERY_CONTRACT_001` (eval direction only; not an executable eval suite in this artifact):
+
+- Answerability classification accuracy
+- Correct routing to deterministic diagnostic/core ML
+- Minimal follow-up question quality
+- No hallucinated facts
+- No claim-boundary violations
+- Graceful recovery when tools fail or outputs are missing
+- Clear distinction between known, unknown, provisional, and blocked
+- No p-value/CI/design/production claims without authoritative outputs
+
 ---
 
 ## 31. Recommended next artifact
@@ -457,7 +510,7 @@ Practical guidance for `GEO_KPI_SPEND_DATA_PROFILER_001` (implementation notes o
 
 **`panel_exp_golden_path_acceptance_tests_defined_no_runtime_authorization`**
 
-Golden paths before demos, blocked paths before production claims, eight golden-path scenarios (GP-001–GP-008), eighteen blocked/provisional scenarios (BP-001–BP-018), critical implementation anti-patterns, eleven typed contracts, acceptance dimensions, output artifact categories, LLM/report-builder/fixture/demo boundaries, and per-scenario authorization boundaries defined. All runtime authorization flags remain false.
+Golden paths before demos, blocked paths before production claims, eight golden-path scenarios (GP-001–GP-008), eighteen blocked/provisional scenarios (BP-001–BP-018 only), critical implementation anti-patterns, eleven typed contracts, acceptance dimensions, output artifact categories, LLM/report-builder/fixture/demo boundaries, short profiler implementation notes, and future agent answerability/recovery roadmap entry defined. No BP-019+ expansion or corner-case rule explosion. All runtime authorization flags remain false.
 
 | Output | Path |
 |--------|------|
