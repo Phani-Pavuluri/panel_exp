@@ -1203,6 +1203,34 @@
       "resolution_artifact": "METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001"
     },
     {
+      "investigation_id": "INV-EXPERIMENT-PORTFOLIO-PLANNER-AGENT-ROADMAP-001",
+      "title": "Experiment portfolio planner agent roadmap",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "METHOD-PORTFOLIO-PRIORITIZATION-CHECKPOINT-001",
+      "affected_combination": "experiment_portfolio_planner",
+      "problem_class": ["portfolio_planner", "design_feasibility", "roadmap"],
+      "evidence": {
+        "depends_on": [
+          "METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001",
+          "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001",
+          "MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001"
+        ],
+        "product_principle": "minimize_questions_maximize_data_inference_return_feasible_design_alternatives",
+        "design_selection_before_estimator_selection": true,
+        "failed_scenarios": [],
+        "first_planner_lane_artifact": "EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001"
+      },
+      "current_decision": "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_ROADMAP_DEFINED_NO_RUNTIME_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Portfolio planning before estimator selection",
+      "blocking_policy": "Roadmap does not authorize runtime planner, inference, or downstream use",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
+      "resolution_artifact": "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_ROADMAP_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -2785,6 +2813,26 @@
         "scm_reference_candidate",
         "augsynth_primary_after_closeout",
         "no_production_authorization"
+      ]
+    },
+    {
+      "lane_id": "EXPERIMENT-PORTFOLIO-PLANNER-AGENT-ROADMAP-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-EXPERIMENT-PORTFOLIO-PLANNER-AGENT-ROADMAP-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001",
+      "resolution_artifact": "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_ROADMAP_001",
+      "artifact_tags": [
+        "portfolio_planner",
+        "design_feasibility",
+        "adaptive_intake",
+        "data_first_planning",
+        "design_before_estimator",
+        "no_runtime_authorization"
       ]
     }
   ]

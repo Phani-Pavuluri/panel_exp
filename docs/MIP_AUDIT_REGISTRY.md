@@ -1970,7 +1970,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Strategic portfolio prioritization checkpoint: SCM no longer primary focus; remains governed reference candidate. AugSynth/ASCM next primary lane after SCM closeout; TBRRidge/Bayesian TBR/TROP separate later lanes (`failed_scenarios: []`). **Checkpoint only; no production authorization for any method.**
 
-**Next:** `SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001` · post-SCM: `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001`.
+**Next:** `SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001` · post-SCM planner: `EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001` · post-planner method: `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001`.
+
+---
+
+## EXPERIMENT-PORTFOLIO-PLANNER-AGENT-ROADMAP-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/EXPERIMENT_PORTFOLIO_PLANNER_AGENT_ROADMAP_001_REPORT.md`](track_d/EXPERIMENT_PORTFOLIO_PLANNER_AGENT_ROADMAP_001_REPORT.md) · [`docs/track_d/archives/EXPERIMENT_PORTFOLIO_PLANNER_AGENT_ROADMAP_001_summary.json`](track_d/archives/EXPERIMENT_PORTFOLIO_PLANNER_AGENT_ROADMAP_001_summary.json) · [`panel_exp/validation/experiment_portfolio_planner_agent_roadmap_001.py`](../panel_exp/validation/experiment_portfolio_planner_agent_roadmap_001.py)
+
+**Status:** **`experiment_portfolio_planner_agent_roadmap_defined_no_runtime_authorization`**
+
+**Verdict:** Defines experiment portfolio planner agent architecture: adaptive intake, data-first KPI/spend diagnostics, deterministic feasibility, tiered portfolio planning, design generation before estimator selection (`failed_scenarios: []`). Nine planned modules; design-based inference fast path before model-based fallback. **Roadmap only; no runtime planner, estimator, inference, p-value/CI, selector/router, downstream, or budget optimization authorization.**
+
+**Next:** `SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001` · first planner lane: `EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001`.
 
 ---
 

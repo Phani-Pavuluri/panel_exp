@@ -336,7 +336,10 @@ Foundation and compatibility audits ✅
   → SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001 ✅
   → METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001 ✅
   → SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001 (active SCM closeout lane)
-  → AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001 (active primary method lane after SCM closeout)
+  → EXPERIMENT_PORTFOLIO_PLANNER_AGENT_ROADMAP_001 ✅
+  → EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001 (active portfolio-planner lane)
+  → GEO_KPI_SPEND_DATA_PROFILER_001 → … → MODEL_BASED_FALLBACK_ROUTER_001 (planned planner lanes)
+  → AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001 (post-planner primary method lane)
   → implementation lanes (not selected until control layer complete)
 ```
 
@@ -412,6 +415,8 @@ Foundation and compatibility audits ✅
 
 **METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001 (2026-06-03):** Records strategic portfolio prioritization: SCM is no longer primary focus; remains governed reference candidate. AugSynth/ASCM becomes next primary lane after SCM closeout; TBRRidge/Bayesian TBR/TROP remain separate later lanes (`failed_scenarios: []`). **Checkpoint only; no production authorization.** See [`track_d/METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001_REPORT.md`](track_d/METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001_REPORT.md).
 
+**EXPERIMENT_PORTFOLIO_PLANNER_AGENT_ROADMAP_001 (2026-06-03):** Defines experiment portfolio planner agent architecture: adaptive intake, data-first KPI/spend diagnostics, deterministic feasibility, tiered portfolio planning, design generation before estimator selection (`failed_scenarios: []`). Nine planned modules; design-based inference fast path before model-based fallback. **Roadmap only; no runtime authorization.** See [`track_d/EXPERIMENT_PORTFOLIO_PLANNER_AGENT_ROADMAP_001_REPORT.md`](track_d/EXPERIMENT_PORTFOLIO_PLANNER_AGENT_ROADMAP_001_REPORT.md).
+
 **ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001 (2026-06-03):** First cross-estimator × design × inference suitability matrix (**50 rows**; `failed_scenarios: []`). Placebo/randomization is **one inference family**, not the full inference layer. No estimator receives a universal default inference. See [`track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md`](track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md).
 
 **Method-control layers (first-class):** Observed-data conditions · design validity · estimator suitability · inference suitability · simulation coverage · literature alignment · failure modes · repair/replace/retire decisions.
@@ -437,7 +442,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001`** → ✅ **`METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001`** → **`SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001`** → **`AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001`** (post-SCM primary method lane).
+**Ordered next:** ✅ … → ✅ **`METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001`** → ✅ **`EXPERIMENT_PORTFOLIO_PLANNER_AGENT_ROADMAP_001`** → **`SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001`** → **`EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001`** → planner implementation lanes → **`AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001`** (post-planner method lane).
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 

@@ -1,0 +1,312 @@
+{
+  "artifact_id": "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_ROADMAP_001",
+  "artifact_type": "experiment_portfolio_planner_agent_roadmap",
+  "artifact_version": "1.0.0",
+  "base_commit": "0984d8575ebb2964aae9228e7ae1db63e1906ad6",
+  "status": "completed",
+  "verdict": "experiment_portfolio_planner_agent_roadmap_defined_no_runtime_authorization",
+  "final_verdict": "experiment_portfolio_planner_agent_roadmap_defined_no_runtime_authorization",
+  "product_principle": "minimize_questions_maximize_data_inference_return_feasible_design_alternatives",
+  "design_selection_before_estimator_selection": true,
+  "data_first_planning": true,
+  "adaptive_intake_not_static_questionnaire": true,
+  "planned_agents": [
+    "intake_goal_clarifier_agent",
+    "data_profiler_cleaner_agent",
+    "geo_unit_market_feasibility_agent",
+    "portfolio_planner_agent",
+    "spend_contrast_budget_reallocation_agent",
+    "candidate_design_generator",
+    "design_based_inference_fast_path",
+    "model_based_fallback_router",
+    "llm_explanation_layer"
+  ],
+  "readout_tiers": [
+    "tier_1_production_grade_causal_readout",
+    "tier_2_directional_diagnostic_readout",
+    "tier_3_prior_building_shadow_readout"
+  ],
+  "design_options": [
+    "single_full_power_test",
+    "dedicated_control_design",
+    "shared_control_multi_arm_design",
+    "mutually_exclusive_multi_arm_design",
+    "blocked_matched_multi_arm_design",
+    "factorial_fractional_factorial_design",
+    "prioritized_full_power_plus_shadow_design",
+    "rotating_staggered_design_restricted"
+  ],
+  "spend_manipulation_types": [
+    "go_dark",
+    "heavy_up",
+    "go_live"
+  ],
+  "revised_roadmap_sequence": [
+    "METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001",
+    "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001",
+    "SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001",
+    "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_ROADMAP_001",
+    "EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001",
+    "GEO_KPI_SPEND_DATA_PROFILER_001",
+    "GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001",
+    "PORTFOLIO_TEST_TIERING_ENGINE_001",
+    "SPEND_CONTRAST_AND_BUDGET_REALLOCATION_DIAGNOSTICS_001",
+    "CANDIDATE_DESIGN_GENERATOR_001",
+    "DESIGN_BASED_INFERENCE_FAST_PATH_001",
+    "MODEL_BASED_FALLBACK_ROUTER_001",
+    "AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001"
+  ],
+  "authorization_flags": {
+    "experiment_portfolio_planner_runtime_authorized": false,
+    "geo_kpi_spend_data_profiler_runtime_authorized": false,
+    "geo_unit_feasibility_runtime_authorized": false,
+    "portfolio_test_tiering_runtime_authorized": false,
+    "spend_budget_reallocation_runtime_authorized": false,
+    "candidate_design_generator_runtime_authorized": false,
+    "design_based_inference_production_authorized": false,
+    "model_based_fallback_router_authorized": false,
+    "llm_design_recommendation_authorized": false,
+    "production_design_recommendation_authorized": false,
+    "production_p_value_authorized": false,
+    "causal_confidence_interval_authorized": false,
+    "production_authorization_granted": false,
+    "selector_implementation_authorized": false,
+    "production_selection_router_authorized": false,
+    "multicell_production_claim_authorized": false,
+    "trustreport_authorized": false,
+    "calibration_signal_allowed": false,
+    "mmm_ingestion_allowed": false,
+    "llm_decisioning_allowed": false,
+    "production_decisioning_allowed": false,
+    "live_api_authorized": false,
+    "scheduler_authorized": false,
+    "budget_optimization_allowed": false,
+    "package_side_agents_authorized": false
+  },
+  "recommended_next_artifact": "SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001",
+  "first_planner_lane_artifact": "EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001",
+  "generated_at": "2026-06-26T10:41:06.588421+00:00",
+  "git_commit": "0984d8575ebb2964aae9228e7ae1db63e1906ad6",
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "product_principle_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "adaptive_intake_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "data_first_planning_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "all_planned_agents_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "all_readout_tiers_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "all_design_options_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "mutually_exclusive_and_shared_control_distinguished",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "rotating_staggered_restricted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "spend_manipulation_types_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "revised_roadmap_sequence_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_before_estimator",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_experiment_portfolio_planner_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_geo_kpi_spend_data_profiler_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_geo_unit_feasibility_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_portfolio_test_tiering_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_spend_budget_reallocation_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_candidate_design_generator_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_design_based_inference_production_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_model_based_fallback_router_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_design_recommendation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_design_recommendation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_authorization_granted_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_selector_implementation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_selection_router_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_multicell_production_claim_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_package_side_agents_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "first_planner_lane_augsynth_not_first",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "final_verdict_matches",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_valid",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "issues": []
+  },
+  "non_goals": [
+    "no_runtime_planner_agent",
+    "no_estimator_implementation",
+    "no_inference_engine",
+    "no_production_authorization",
+    "no_selector_router_runtime",
+    "no_mmm_ingestion",
+    "no_llm_decisioning",
+    "no_budget_optimization"
+  ]
+}
