@@ -1898,7 +1898,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** 30-row SCM null calibration area registry with deterministic `build_scm_null_calibration_evidence()` metadata scaffolding (`failed_scenarios: []`). `SCMNullCalibrationInput`/`SCMNullCalibrationEvidence` contracts realized. SCM remains gated production-candidate; null calibration not completed. **Metadata scaffolding only; no placebo computation, production inference, p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, selector production use, or agent authorization.**
 
-**Next:** `SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_PLAN_001`.
+**Next:** `SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_PLAN_001` (completed — see SCM jackknife sensitivity implementation plan).
+
+---
+
+## SCM-PRODUCTION-CANDIDATE-JACKKNIFE-SENSITIVITY-IMPLEMENTATION-PLAN-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_PLAN_001_REPORT.md`](track_d/SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_PLAN_001_REPORT.md) · [`docs/track_d/archives/SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_PLAN_001_summary.json`](track_d/archives/SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_PLAN_001_summary.json) · [`panel_exp/validation/scm_production_candidate_jackknife_sensitivity_implementation_plan_001.py`](../panel_exp/validation/scm_production_candidate_jackknife_sensitivity_implementation_plan_001.py)
+
+**Status:** **`scm_production_candidate_jackknife_sensitivity_implementation_plan_defined_no_downstream_authorization`**
+
+**Verdict:** 159-row SCM jackknife sensitivity implementation plan across 37 sensitivity areas and 10 staged phases (`failed_scenarios: []`). `SCMJackknifeSensitivityInput`/`SCMJackknifeSensitivityEvidence` contracts. SCM remains gated production-candidate. **Implementation plan only; no jackknife runtime, no production inference, p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, selector production use, or agent authorization.**
+
+**Next:** `SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_001`.
 
 ---
 
