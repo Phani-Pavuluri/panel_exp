@@ -2022,6 +2022,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## EXPERIMENT-PORTFOLIO-INTAKE-CONTRACT-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001_REPORT.md`](track_d/EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001_summary.json`](track_d/archives/EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001_summary.json) · [`panel_exp/validation/experiment_portfolio_intake_contract_001.py`](../panel_exp/validation/experiment_portfolio_intake_contract_001.py)
+
+**Status:** **`experiment_portfolio_intake_contract_defined_no_runtime_authorization`**
+
+**Verdict:** Defines adaptive intake contract: minimal high-level questions, nine intake branches, fifteen typed output contracts, data request order, LLM boundaries (`failed_scenarios: []`). Adds cross-cutting roadmap contracts: agent run packet, artifact provenance, golden-path tests. **Contract only; no runtime intake authorization.**
+
+**Next:** `PANEL_EXP_AGENT_RUN_PACKET_CONTRACT_001`.
+
+---
+
 ## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)

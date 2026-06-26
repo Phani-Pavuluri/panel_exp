@@ -340,7 +340,9 @@ Foundation and compatibility audits ✅
   → EXPERIMENT_PORTFOLIO_PLANNER_AGENT_TOOLING_CONTRACT_001 ✅
   → ROADMAP_IMPLEMENTATION_DETAIL_GAP_AUDIT_001 ✅
   → GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001 ✅
-  → EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001 (active contract lane)
+  → EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001 ✅
+  → PANEL_EXP_AGENT_RUN_PACKET_CONTRACT_001 (active contract lane)
+  → PANEL_EXP_ARTIFACT_REGISTRY_AND_PROVENANCE_CONTRACT_001 → PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001 (planned cross-cutting contracts)
   → GEO_KPI_SPEND_DATA_PROFILER_001 → … → MODEL_BASED_FALLBACK_ROUTER_001 (planned planner lanes)
   → AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001 (post-planner primary method lane)
   → implementation lanes (not selected until control layer complete)
@@ -426,6 +428,8 @@ Foundation and compatibility audits ✅
 
 **GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001 (2026-06-03):** Defines geo KPI/spend data contract and profiler spec: input modes, required fields, grain/geo/KPI/spend semantics, zero-vs-missing rules, 14 typed profiler reports, blocking conditions (`failed_scenarios: []`). Sample/ballpark modes cannot support final design claims. **Contract only; no runtime profiler authorization.** See [`track_d/GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001_REPORT.md`](track_d/GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001_REPORT.md).
 
+**EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001 (2026-06-03):** Defines adaptive intake contract: minimal high-level questions, nine intake branches, fifteen typed output contracts, data request order, LLM boundaries (`failed_scenarios: []`). No design feasibility or p-value/CI authorization from intake. Adds cross-cutting contracts: agent run packet, artifact provenance, golden-path tests. **Contract only; no runtime intake authorization.** See [`track_d/EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001_REPORT.md`](track_d/EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001_REPORT.md).
+
 **ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001 (2026-06-03):** First cross-estimator × design × inference suitability matrix (**50 rows**; `failed_scenarios: []`). Placebo/randomization is **one inference family**, not the full inference layer. No estimator receives a universal default inference. See [`track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md`](track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md).
 
 **Method-control layers (first-class):** Observed-data conditions · design validity · estimator suitability · inference suitability · simulation coverage · literature alignment · failure modes · repair/replace/retire decisions.
@@ -451,7 +455,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`ROADMAP_IMPLEMENTATION_DETAIL_GAP_AUDIT_001`** → ✅ **`GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001`** → **`EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001`** → **`SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001`** → planner implementation lanes → **`AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001`** (post-planner method lane).
+**Ordered next:** ✅ … → ✅ **`GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001`** → ✅ **`EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001`** → **`PANEL_EXP_AGENT_RUN_PACKET_CONTRACT_001`** → cross-cutting contracts → profiler implementation lanes → **`AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001`** (post-planner method lane).
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 

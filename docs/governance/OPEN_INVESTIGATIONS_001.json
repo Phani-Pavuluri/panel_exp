@@ -1314,6 +1314,33 @@
       "resolution_artifact": "GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001"
     },
     {
+      "investigation_id": "INV-EXPERIMENT-PORTFOLIO-INTAKE-CONTRACT-001",
+      "title": "Experiment portfolio intake contract",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "GEO-KPI-SPEND-DATA-CONTRACT-AND-PROFILER-SPEC-001",
+      "affected_combination": "experiment_portfolio_intake",
+      "problem_class": ["intake_contract", "adaptive_intake", "planning_intent"],
+      "evidence": {
+        "depends_on": [
+          "GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001",
+          "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_TOOLING_CONTRACT_001"
+        ],
+        "contract_scope": "adaptive_intake_contract_no_runtime",
+        "static_questionnaire_allowed": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "PANEL_EXP_AGENT_RUN_PACKET_CONTRACT_001"
+      },
+      "current_decision": "EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_DEFINED_NO_RUNTIME_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Intake contract before profiler runtime",
+      "blocking_policy": "Contract does not authorize intake runtime or design claims",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
+      "resolution_artifact": "EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -2973,6 +3000,25 @@
         "profiler_spec",
         "geo_kpi_spend",
         "zero_missing_rules",
+        "no_runtime_authorization"
+      ]
+    },
+    {
+      "lane_id": "EXPERIMENT-PORTFOLIO-INTAKE-CONTRACT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-EXPERIMENT-PORTFOLIO-INTAKE-CONTRACT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "PANEL_EXP_AGENT_RUN_PACKET_CONTRACT_001",
+      "resolution_artifact": "EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001",
+      "artifact_tags": [
+        "intake_contract",
+        "adaptive_intake",
+        "planning_intent",
+        "no_static_questionnaire",
         "no_runtime_authorization"
       ]
     }
