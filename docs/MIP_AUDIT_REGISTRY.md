@@ -1946,7 +1946,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** 18-section SCM release-gate review packet assembling validation/null-calibration/jackknife metadata stack (`failed_scenarios: []`). `SCMReleaseGateReviewPacket` contract. Packet status `assembled_for_review`; release-gate approval not granted. **Packet assembly only; not a release-gate decision, no production inference, p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, selector production use, or agent authorization.**
 
-**Next:** `SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001`.
+**Next:** `SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001` (completed — see SCM release-gate decision plan).
+
+---
+
+## SCM-PRODUCTION-CANDIDATE-RELEASE-GATE-DECISION-PLAN-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001_REPORT.md`](track_d/SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001_REPORT.md) · [`docs/track_d/archives/SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001_summary.json`](track_d/archives/SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001_summary.json) · [`panel_exp/validation/scm_production_candidate_release_gate_decision_plan_001.py`](../panel_exp/validation/scm_production_candidate_release_gate_decision_plan_001.py)
+
+**Status:** **`scm_release_gate_decision_plan_defined_defer_no_authorization_granted`**
+
+**Verdict:** SCM release-gate decision plan with recommended direction `defer_pending_empirical_validation`, closeout `closeout_as_reference_candidate`, portfolio handoff `handoff_to_method_portfolio` (`failed_scenarios: []`). SCM remains gated reference candidate; release-gate approval not granted. **Decision plan only; not a release-gate decision, no production inference, p-values, causal CIs, TrustReport, CalibrationSignal, MMM, LLM, live API, scheduler, budget, selector production use, or agent authorization. AugSynth/TBRRidge/Bayesian TBR not production-authorized.**
+
+**Next:** `SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001`.
 
 ---
 

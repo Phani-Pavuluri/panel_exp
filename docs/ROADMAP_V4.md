@@ -333,7 +333,8 @@ Foundation and compatibility audits ✅
   → SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_001 ✅
   → SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PLAN_001 ✅
   → SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PACKET_001 ✅
-  → SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001 (active method lane)
+  → SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001 ✅
+  → SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001 (active method lane)
   → implementation lanes (not selected until control layer complete)
 ```
 
@@ -403,7 +404,9 @@ Foundation and compatibility audits ✅
 
 **SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PLAN_001 (2026-06-03):** Defines **99** SCM release-gate review plan rows reconciling validation/null-calibration/jackknife metadata stack against `PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001` (`failed_scenarios: []`). `SCMReleaseGateReviewInput`/`SCMReleaseGateReviewDecision` planned contracts. SCM remains gated production-candidate; release-gate approval not granted. **Review plan only; no release-gate runtime or authorization.** See [`track_d/SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PLAN_001_REPORT.md`](track_d/SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PLAN_001_REPORT.md).
 
-**SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PACKET_001 (2026-06-03):** Assembles SCM release-gate review packet with **18** packet sections inventorying validation/null-calibration/jackknife metadata stack (`failed_scenarios: []`). `SCMReleaseGateReviewPacket` contract. Packet status `assembled_for_review`; release-gate approval not granted. **Packet assembly only; not a release-gate decision.** **Immediate next artifact:** `SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001`. See [`track_d/SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PACKET_001_REPORT.md`](track_d/SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PACKET_001_REPORT.md).
+**SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PACKET_001 (2026-06-03):** Assembles SCM release-gate review packet with **18** packet sections inventorying validation/null-calibration/jackknife metadata stack (`failed_scenarios: []`). `SCMReleaseGateReviewPacket` contract. Packet status `assembled_for_review`; release-gate approval not granted. **Packet assembly only; not a release-gate decision.** See [`track_d/SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PACKET_001_REPORT.md`](track_d/SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PACKET_001_REPORT.md).
+
+**SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001 (2026-06-03):** Defines SCM release-gate decision plan with recommended direction `defer_pending_empirical_validation`, closeout `closeout_as_reference_candidate`, portfolio handoff `handoff_to_method_portfolio` (`failed_scenarios: []`). `SCMReleaseGateDecisionInput`/`SCMReleaseGateDecisionPlan` planned contracts. SCM remains gated reference candidate; release-gate approval not granted. **Decision plan only; not a release-gate decision.** **Immediate next artifact:** `SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001`. See [`track_d/SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001_REPORT.md`](track_d/SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001_REPORT.md).
 
 **ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001 (2026-06-03):** First cross-estimator × design × inference suitability matrix (**50 rows**; `failed_scenarios: []`). Placebo/randomization is **one inference family**, not the full inference layer. No estimator receives a universal default inference. See [`track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md`](track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md).
 
@@ -430,7 +433,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PLAN_001`** → ✅ **`SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PACKET_001`** → **`SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001`**.
+**Ordered next:** ✅ … → ✅ **`SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PACKET_001`** → ✅ **`SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001`** → **`SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001`**.
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 

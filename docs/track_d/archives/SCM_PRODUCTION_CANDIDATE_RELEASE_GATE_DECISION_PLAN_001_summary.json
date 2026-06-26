@@ -1,0 +1,611 @@
+{
+  "artifact_id": "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001",
+  "artifact_type": "scm_release_gate_decision_plan_metadata_only",
+  "artifact_version": "1.0.0",
+  "base_commit": "439f65009fb11e666d3786a24418888715803e62",
+  "status": "completed",
+  "verdict": "scm_release_gate_decision_plan_defined_defer_no_authorization_granted",
+  "final_verdict": "scm_release_gate_decision_plan_defined_defer_no_authorization_granted",
+  "method_family": "SCM",
+  "method_family_status": "production_candidate_gated",
+  "recommended_decision_direction": "defer_pending_empirical_validation",
+  "planned_closeout_direction": "closeout_as_reference_candidate",
+  "portfolio_handoff_recommendation": "handoff_to_method_portfolio",
+  "next_artifact": "SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001",
+  "generated_at": "2026-06-26T09:03:51.446385+00:00",
+  "git_commit": "439f65009fb11e666d3786a24418888715803e62",
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "decision_option_approve_limited_production_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_option_approve_shadow_only_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_option_defer_pending_empirical_validation_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_option_reject_production_authorization_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_option_closeout_as_reference_candidate_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_option_handoff_to_method_portfolio_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_review_packet_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_method_family_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_evidence_stack_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_empirical_validation_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_null_calibration_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_jackknife_sensitivity_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_simulation_dgp_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_failure_registry_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_assignment_design_validity_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_multicell_validation_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_selector_shadow_validation_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_human_review_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_rollback_revocation_policy_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_portfolio_handoff_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_audit_context_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_plan_field_planned_decision_options_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_plan_field_recommended_decision_direction_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_plan_field_blocked_approval_reasons_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_plan_field_required_empirical_evidence_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_plan_field_current_allowed_use_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_plan_field_current_forbidden_use_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_plan_field_portfolio_handoff_recommendation_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_plan_field_next_artifact_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_plan_field_authorization_flags_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_plan_field_audit_references_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_plan_field_final_verdict_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "empirical_evidence_observed_panel_validation_results_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "empirical_evidence_empirical_placebo_null_calibration_results_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "empirical_evidence_jackknife_sensitivity_results_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "empirical_evidence_donor_support_and_convex_hull_results_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "empirical_evidence_pre_period_fit_and_trend_results_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "empirical_evidence_failure_registry_review_results_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "empirical_evidence_simulation_dgp_coverage_results_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "empirical_evidence_assignment_design_validity_results_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "empirical_evidence_multicell_dependence_multiplicity_results_where_applicable_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "empirical_evidence_selector_shadow_validation_results_where_applicable_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "empirical_evidence_human_governance_review_result_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "empirical_evidence_rollback_revocation_expiration_policy_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "blocked_reason_SCM-RG-DEC-BR-METADATA-ONLY-EVIDENCE_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "blocked_reason_SCM-RG-DEC-BR-NO-EMPIRICAL-VALIDATION_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "blocked_reason_SCM-RG-DEC-BR-NO-EMPIRICAL-NULL-CALIBRATION_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "blocked_reason_SCM-RG-DEC-BR-NO-EMPIRICAL-JACKKNIFE_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "blocked_reason_SCM-RG-DEC-BR-P-VALUE-NOT-AUTHORIZED_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "blocked_reason_SCM-RG-DEC-BR-CAUSAL-CI-NOT-AUTHORIZED_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "blocked_reason_SCM-RG-DEC-BR-PRODUCTION-INFERENCE-NOT-AUTHORIZED_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "blocked_reason_SCM-RG-DEC-BR-MULTICELL-BLOCKED_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "blocked_reason_SCM-RG-DEC-BR-SELECTOR-ROUTER-NOT-AUTHORIZED_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "blocked_reason_SCM-RG-DEC-BR-DOWNSTREAM-NOT-AUTHORIZED_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "blocked_reason_SCM-RG-DEC-BR-HUMAN-GOVERNANCE-INCOMPLETE_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "blocked_reason_SCM-RG-DEC-BR-ROLLBACK-POLICY-INCOMPLETE_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "blocked_reason_SCM-RG-DEC-BR-PORTFOLIO-HANDOFF-REQUIRED_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_direction_defer",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "closeout_reference_candidate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "portfolio_handoff_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "release_gate_approval_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "production_inference_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "p_value_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "causal_ci_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "selector_router_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "downstream_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "augsynth_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tbrridge_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "bayesian_tbr_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "not_approve_limited_production",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "final_verdict_matches",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_valid",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scm_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scm_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_authorization_granted_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_data_driven_selection_gate_implementation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_selector_implementation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_selection_router_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scm_production_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_multicell_production_claim_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_package_side_agents_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_augsynth_production_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_tbrridge_production_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_bayesian_tbr_production_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "decision_option_count": 6,
+    "empirical_evidence_count": 12,
+    "blocked_reason_count": 13,
+    "all_decision_options_present": true,
+    "issues": []
+  },
+  "planned_decision_options": [
+    "approve_limited_production",
+    "approve_shadow_only",
+    "defer_pending_empirical_validation",
+    "reject_production_authorization",
+    "closeout_as_reference_candidate",
+    "handoff_to_method_portfolio"
+  ],
+  "required_empirical_evidence_before_approval": [
+    "observed_panel_validation_results",
+    "empirical_placebo_null_calibration_results",
+    "jackknife_sensitivity_results",
+    "donor_support_and_convex_hull_results",
+    "pre_period_fit_and_trend_results",
+    "failure_registry_review_results",
+    "simulation_dgp_coverage_results",
+    "assignment_design_validity_results",
+    "multicell_dependence_multiplicity_results_where_applicable",
+    "selector_shadow_validation_results_where_applicable",
+    "human_governance_review_result",
+    "rollback_revocation_expiration_policy"
+  ],
+  "blocked_approval_reasons": [
+    "SCM-RG-DEC-BR-METADATA-ONLY-EVIDENCE",
+    "SCM-RG-DEC-BR-NO-EMPIRICAL-VALIDATION",
+    "SCM-RG-DEC-BR-NO-EMPIRICAL-NULL-CALIBRATION",
+    "SCM-RG-DEC-BR-NO-EMPIRICAL-JACKKNIFE",
+    "SCM-RG-DEC-BR-P-VALUE-NOT-AUTHORIZED",
+    "SCM-RG-DEC-BR-CAUSAL-CI-NOT-AUTHORIZED",
+    "SCM-RG-DEC-BR-PRODUCTION-INFERENCE-NOT-AUTHORIZED",
+    "SCM-RG-DEC-BR-MULTICELL-BLOCKED",
+    "SCM-RG-DEC-BR-SELECTOR-ROUTER-NOT-AUTHORIZED",
+    "SCM-RG-DEC-BR-DOWNSTREAM-NOT-AUTHORIZED",
+    "SCM-RG-DEC-BR-HUMAN-GOVERNANCE-INCOMPLETE",
+    "SCM-RG-DEC-BR-ROLLBACK-POLICY-INCOMPLETE",
+    "SCM-RG-DEC-BR-PORTFOLIO-HANDOFF-REQUIRED"
+  ],
+  "method_portfolio_handoff_targets": [
+    "AugSynth/ASCM",
+    "TBRRidge",
+    "Bayesian TBR"
+  ],
+  "planned_input_contract": "SCMReleaseGateDecisionInput",
+  "planned_decision_contract": "SCMReleaseGateDecisionPlan",
+  "dependencies_reconciled": [
+    "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PACKET_001",
+    "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PLAN_001",
+    "SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_001",
+    "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_001",
+    "SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_001",
+    "PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001",
+    "AUGSYNTH_REMEDIATION_AND_DIAGNOSTIC_VALIDATION_PLAN_001",
+    "TBRRIDGE_INFERENCE_REMEDIATION_OR_RETIREMENT_AUDIT_001",
+    "BAYESIAN_TBR_AND_TBR_RETIREMENT_BOUNDARY_AUDIT_001",
+    "MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001",
+    "PRODUCTION_READINESS_BACKLOG_LEDGER_001",
+    "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001",
+    "FUTURE_EXPERIMENT_PACKAGE_SIDE_AGENT_ROADMAP_001"
+  ],
+  "non_goals": [
+    "no_release_gate_approval_granted",
+    "no_release_gate_decision_execution",
+    "no_scm_production_inference_authorization",
+    "no_production_p_values_or_causal_cis",
+    "no_approve_limited_production_for_current_evidence",
+    "no_selector_router_production_use",
+    "no_multicell_scm_production_claims",
+    "no_trustreport_calibration_signal_mmm",
+    "no_live_api_scheduler_budget",
+    "no_package_side_agent_authorization",
+    "no_augsynth_tbrridge_bayesian_tbr_production_authorization",
+    "no_automatic_authorization_from_decision_plan"
+  ],
+  "scm_release_gate_decision_plan_completed": false,
+  "scm_release_gate_approval_granted": false,
+  "scm_production_inference_authorized": false,
+  "authorization_flags": {
+    "scm_production_p_value_authorized": false,
+    "scm_causal_confidence_interval_authorized": false,
+    "production_authorization_granted": false,
+    "production_p_value_authorized": false,
+    "causal_confidence_interval_authorized": false,
+    "trustreport_authorized": false,
+    "calibration_signal_allowed": false,
+    "mmm_ingestion_allowed": false,
+    "llm_decisioning_allowed": false,
+    "production_decisioning_allowed": false,
+    "live_api_authorized": false,
+    "scheduler_authorized": false,
+    "budget_optimization_allowed": false,
+    "data_driven_selection_gate_implementation_authorized": false,
+    "selector_implementation_authorized": false,
+    "production_selection_router_authorized": false,
+    "scm_production_inference_authorized": false,
+    "multicell_production_claim_authorized": false,
+    "package_side_agents_authorized": false,
+    "augsynth_production_inference_authorized": false,
+    "tbrridge_production_inference_authorized": false,
+    "bayesian_tbr_production_inference_authorized": false
+  },
+  "recommended_next_artifacts": [
+    "SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001"
+  ]
+}
