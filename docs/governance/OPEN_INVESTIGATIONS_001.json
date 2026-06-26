@@ -1287,6 +1287,33 @@
       "resolution_artifact": "ROADMAP_IMPLEMENTATION_DETAIL_GAP_AUDIT_001"
     },
     {
+      "investigation_id": "INV-GEO-KPI-SPEND-DATA-CONTRACT-AND-PROFILER-SPEC-001",
+      "title": "Geo KPI spend data contract and profiler spec",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "ROADMAP-IMPLEMENTATION-DETAIL-GAP-AUDIT-001",
+      "affected_combination": "geo_kpi_spend_data_contract",
+      "problem_class": ["data_contract", "profiler_spec", "geo_kpi_spend"],
+      "evidence": {
+        "depends_on": [
+          "ROADMAP_IMPLEMENTATION_DETAIL_GAP_AUDIT_001",
+          "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_TOOLING_CONTRACT_001"
+        ],
+        "contract_scope": "geo_kpi_spend_data_contract_profiler_spec_no_runtime",
+        "required_profiler_reports": 14,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001"
+      },
+      "current_decision": "GEO_KPI_SPEND_DATA_CONTRACT_PROFILER_SPEC_DEFINED_NO_RUNTIME_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Data contract before profiler runtime",
+      "blocking_policy": "Contract does not authorize profiler runtime or design claims",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
+      "resolution_artifact": "GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -2927,6 +2954,25 @@
         "implementation_detail_gaps",
         "contract_requirements",
         "scm_dedicated_lane",
+        "no_runtime_authorization"
+      ]
+    },
+    {
+      "lane_id": "GEO-KPI-SPEND-DATA-CONTRACT-AND-PROFILER-SPEC-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-GEO-KPI-SPEND-DATA-CONTRACT-AND-PROFILER-SPEC-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001",
+      "resolution_artifact": "GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001",
+      "artifact_tags": [
+        "data_contract",
+        "profiler_spec",
+        "geo_kpi_spend",
+        "zero_missing_rules",
         "no_runtime_authorization"
       ]
     }

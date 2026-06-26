@@ -1,0 +1,481 @@
+{
+  "artifact_id": "GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001",
+  "artifact_type": "geo_kpi_spend_data_contract_and_profiler_spec",
+  "artifact_version": "1.0.0",
+  "base_commit": "13cef1a7caed3b546aff5f5b3228330ac260c9c1",
+  "status": "completed",
+  "verdict": "geo_kpi_spend_data_contract_profiler_spec_defined_no_runtime_authorization",
+  "final_verdict": "geo_kpi_spend_data_contract_profiler_spec_defined_no_runtime_authorization",
+  "contract_scope": "geo_kpi_spend_data_contract_profiler_spec_no_runtime",
+  "data_first_planning": true,
+  "accepted_input_modes": [
+    "full_panel_mode",
+    "sample_schema_mode",
+    "ballpark_mode_provisional_only"
+  ],
+  "required_fields": [
+    "geo_unit_id",
+    "date_or_week",
+    "kpi_value",
+    "spend_value"
+  ],
+  "supported_geo_unit_types": [
+    "DMA",
+    "GMA_like_unit",
+    "state_province",
+    "city_metro",
+    "postal_cluster",
+    "sales_territory",
+    "custom_cluster",
+    "country_region_aggregate"
+  ],
+  "supported_time_grains": [
+    "daily",
+    "weekly",
+    "custom_period"
+  ],
+  "zero_missing_rules": {
+    "missing_kpi_is_not_zero_kpi": true,
+    "missing_spend_is_not_zero_spend": true,
+    "zero_kpi_must_be_observed_zero": true,
+    "zero_spend_must_be_observed_zero": true
+  },
+  "required_profiler_reports": [
+    "GeoKpiSpendDataProfileReport",
+    "ColumnMappingReport",
+    "TimeGrainReport",
+    "GeoUnitInventoryReport",
+    "GeoTimeCoverageReport",
+    "KpiSummaryReport",
+    "SpendSummaryReport",
+    "ChannelCampaignMappingReport",
+    "MissingnessReport",
+    "DuplicateRowReport",
+    "AggregationReadinessReport",
+    "UnitEligibilityReport",
+    "DataQualityWarningReport",
+    "ProfilerFailureReport"
+  ],
+  "blocking_conditions": [
+    "no_geo_unit_id",
+    "no_date_or_week_column",
+    "no_kpi_column_or_kpi_name",
+    "no_spend_column_when_spend_feasibility_requested",
+    "mixed_grain_without_mapping",
+    "overlapping_geo_units_without_mapping",
+    "duplicate_rows_without_aggregation_rule",
+    "ambiguous_zero_vs_missing_semantics",
+    "post_treatment_data_used_for_pre_period_diagnostics",
+    "unknown_channel_campaign_mapping_for_portfolio_planning",
+    "insufficient_historical_coverage_for_feasibility_diagnostics"
+  ],
+  "blocking_conditions_defined": true,
+  "llm_answerability_boundaries_defined": true,
+  "sample_schema_mode_final_claims_allowed": false,
+  "ballpark_mode_final_claims_allowed": false,
+  "profiler_outputs_authorize_design_feasibility": false,
+  "profiler_outputs_authorize_p_values_or_cis": false,
+  "scenario_tests_required": [
+    "full_panel_mode",
+    "sample_schema_mode",
+    "ballpark_mode_provisional_only",
+    "daily_grain",
+    "weekly_grain",
+    "mixed_grain_blocking",
+    "dma_units",
+    "gma_like_units",
+    "state_province_units",
+    "custom_clusters",
+    "missing_kpi_blocking",
+    "missing_spend_blocking_when_spend_feasibility_requested",
+    "missing_spend_not_treated_as_zero",
+    "zero_spend_valid_observed_zero",
+    "duplicate_rows_blocking_without_aggregation_rule",
+    "low_volume_units_flagged",
+    "outlier_units_flagged",
+    "ambiguous_channel_mapping_blocking_portfolio_claims",
+    "post_treatment_data_excluded_from_pre_period_diagnostics",
+    "llm_cannot_claim_design_feasibility_from_sample_schema_mode",
+    "llm_cannot_claim_final_feasibility_from_ballpark_mode"
+  ],
+  "downstream_dependencies": [
+    "EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001",
+    "GEO_KPI_SPEND_DATA_PROFILER_001",
+    "GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001",
+    "SPEND_CONTRAST_FEASIBILITY_TOOLING_CONTRACT_001",
+    "SPEND_CONTRAST_AND_BUDGET_REALLOCATION_DIAGNOSTICS_001",
+    "PORTFOLIO_TEST_TIERING_ENGINE_001",
+    "CANDIDATE_DESIGN_GENERATOR_001",
+    "SHARED_CONTROL_AND_MULTICELL_INFERENCE_CONTRACT_001",
+    "DESIGN_BASED_INFERENCE_TOOLING_CONTRACT_001",
+    "BALLPARK_FEASIBILITY_MODE_CONTRACT_001",
+    "LLM_REPORT_GROUNDING_AND_CLAIM_BOUNDARY_CONTRACT_001",
+    "MODEL_BASED_FALLBACK_ROUTER_001"
+  ],
+  "authorization_flags": {
+    "geo_kpi_spend_data_contract_runtime_authorized": false,
+    "geo_kpi_spend_profiler_runtime_authorized": false,
+    "data_cleaning_runtime_authorized": false,
+    "unit_eligibility_runtime_authorized": false,
+    "spend_feasibility_runtime_authorized": false,
+    "experiment_portfolio_planner_runtime_authorized": false,
+    "llm_data_interpretation_authorized": false,
+    "llm_design_recommendation_authorized": false,
+    "production_design_recommendation_authorized": false,
+    "production_p_value_authorized": false,
+    "causal_confidence_interval_authorized": false,
+    "production_authorization_granted": false,
+    "selector_implementation_authorized": false,
+    "production_selection_router_authorized": false,
+    "multicell_production_claim_authorized": false,
+    "trustreport_authorized": false,
+    "calibration_signal_allowed": false,
+    "mmm_ingestion_allowed": false,
+    "llm_decisioning_allowed": false,
+    "production_decisioning_allowed": false,
+    "live_api_authorized": false,
+    "scheduler_authorized": false,
+    "budget_optimization_allowed": false,
+    "package_side_agents_authorized": false
+  },
+  "recommended_next_artifact": "EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001",
+  "generated_at": "2026-06-26T11:17:56.018015+00:00",
+  "git_commit": "13cef1a7caed3b546aff5f5b3228330ac260c9c1",
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "input_mode_full_panel_mode",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_mode_sample_schema_mode",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_mode_ballpark_mode_provisional_only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "required_fields_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "supported_grains_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "geo_unit_types_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "zero_missing_rules",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "profiler_reports_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "blocking_conditions_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "llm_boundaries_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "sample_schema_no_final_claims",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "ballpark_no_final_claims",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "profiler_no_design_feasibility_auth",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "profiler_no_pvalue_ci_auth",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_full_panel_mode",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_sample_schema_mode",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_ballpark_mode_provisional_only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_daily_grain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_weekly_grain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_mixed_grain_blocking",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_dma_units",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_gma_like_units",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_state_province_units",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_custom_clusters",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_missing_kpi_blocking",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_missing_spend_blocking_when_spend_feasibility_requested",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_missing_spend_not_treated_as_zero",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_zero_spend_valid_observed_zero",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_duplicate_rows_blocking_without_aggregation_rule",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_low_volume_units_flagged",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_outlier_units_flagged",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_ambiguous_channel_mapping_blocking_portfolio_claims",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_post_treatment_data_excluded_from_pre_period_diagnostics",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_llm_cannot_claim_design_feasibility_from_sample_schema_mode",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_llm_cannot_claim_final_feasibility_from_ballpark_mode",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_geo_kpi_spend_data_contract_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_geo_kpi_spend_profiler_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_data_cleaning_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_unit_eligibility_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_spend_feasibility_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_experiment_portfolio_planner_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_data_interpretation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_design_recommendation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_design_recommendation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_authorization_granted_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_selector_implementation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_selection_router_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_multicell_production_claim_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_package_side_agents_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "downstream_dependencies_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "final_verdict_matches",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_valid",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "issues": []
+  },
+  "non_goals": [
+    "no_runtime_profiler_implementation",
+    "no_agent_execution",
+    "no_estimator_implementation",
+    "no_design_algorithms",
+    "no_inference_logic",
+    "no_production_recommendations",
+    "no_budget_optimization",
+    "no_downstream_integrations"
+  ]
+}

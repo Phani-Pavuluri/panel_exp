@@ -2010,6 +2010,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## GEO-KPI-SPEND-DATA-CONTRACT-AND-PROFILER-SPEC-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001_REPORT.md`](track_d/GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001_REPORT.md) · [`docs/track_d/archives/GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001_summary.json`](track_d/archives/GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001_summary.json) · [`panel_exp/validation/geo_kpi_spend_data_contract_and_profiler_spec_001.py`](../panel_exp/validation/geo_kpi_spend_data_contract_and_profiler_spec_001.py)
+
+**Status:** **`geo_kpi_spend_data_contract_profiler_spec_defined_no_runtime_authorization`**
+
+**Verdict:** Defines geo KPI/spend data contract and profiler spec: input modes, required fields, grain/geo/KPI/spend semantics, zero-vs-missing rules, 14 typed profiler reports (`failed_scenarios: []`). Sample/ballpark modes cannot support final design claims. **Contract only; no runtime profiler authorization.**
+
+**Next:** `EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001`.
+
+---
+
 ## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)
