@@ -608,3 +608,20 @@ def test_governance_panel_exp_artifact_registry_provenance_contract_lane_complet
     assert lane["status"] == "complete"
     assert lane["next_artifact"] == "PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001"
     assert lane["resolution_artifact"] == "PANEL_EXP_ARTIFACT_REGISTRY_AND_PROVENANCE_CONTRACT_001"
+
+
+def test_governance_panel_exp_golden_path_acceptance_tests_resolved() -> None:
+    inv = investigations_by_id()["INV-PANEL-EXP-GOLDEN-PATH-ACCEPTANCE-TESTS-001"]
+    assert inv.status == "RESOLVED"
+    assert inv.resolution_artifact == "PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001"
+
+
+def test_governance_panel_exp_golden_path_acceptance_tests_lane_complete() -> None:
+    reg = load_registry()
+    lane = next(
+        b for b in reg["roadmap_lane_bindings"]
+        if b["lane_id"] == "PANEL-EXP-GOLDEN-PATH-ACCEPTANCE-TESTS-001"
+    )
+    assert lane["status"] == "complete"
+    assert lane["next_artifact"] == "GEO_KPI_SPEND_DATA_PROFILER_001"
+    assert lane["resolution_artifact"] == "PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001"

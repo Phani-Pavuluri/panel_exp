@@ -2054,7 +2054,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Defines artifact registry and provenance contract: stable artifact identity, metadata, provenance links, validation/governance state, downstream-use policy, lifecycle states, LLM answerability boundaries (`failed_scenarios: []`). Registry-first/provenance-always. **Contract only; no runtime registry authorization.**
 
-**Next:** `PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001`.
+**Next:** `PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001` (completed — see golden-path acceptance tests report).
+
+---
+
+## PANEL-EXP-GOLDEN-PATH-ACCEPTANCE-TESTS-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001_REPORT.md`](track_d/PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001_REPORT.md) · [`docs/track_d/archives/PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001_summary.json`](track_d/archives/PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001_summary.json) · [`panel_exp/validation/panel_exp_golden_path_acceptance_tests_001.py`](../panel_exp/validation/panel_exp_golden_path_acceptance_tests_001.py)
+
+**Status:** **`panel_exp_golden_path_acceptance_tests_defined_no_runtime_authorization`**
+
+**Verdict:** Defines golden-path and blocked-path acceptance scenarios: GP-001–GP-008, BP-001–BP-018, critical implementation anti-patterns, LLM/report-builder/fixture/demo boundaries (`failed_scenarios: []`). Golden paths before demos. **Contract only; no runtime golden-path authorization.**
+
+**Next:** `GEO_KPI_SPEND_DATA_PROFILER_001`.
 
 ---
 
