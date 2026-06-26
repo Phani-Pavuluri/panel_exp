@@ -506,3 +506,20 @@ def test_governance_experiment_portfolio_planner_agent_roadmap_lane_complete() -
     assert lane["status"] == "complete"
     assert lane["next_artifact"] == "SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001"
     assert lane["resolution_artifact"] == "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_ROADMAP_001"
+
+
+def test_governance_experiment_portfolio_planner_agent_tooling_contract_resolved() -> None:
+    inv = investigations_by_id()["INV-EXPERIMENT-PORTFOLIO-PLANNER-AGENT-TOOLING-CONTRACT-001"]
+    assert inv.status == "RESOLVED"
+    assert inv.resolution_artifact == "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_TOOLING_CONTRACT_001"
+
+
+def test_governance_experiment_portfolio_planner_agent_tooling_contract_lane_complete() -> None:
+    reg = load_registry()
+    lane = next(
+        b for b in reg["roadmap_lane_bindings"]
+        if b["lane_id"] == "EXPERIMENT-PORTFOLIO-PLANNER-AGENT-TOOLING-CONTRACT-001"
+    )
+    assert lane["status"] == "complete"
+    assert lane["next_artifact"] == "EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001"
+    assert lane["resolution_artifact"] == "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_TOOLING_CONTRACT_001"

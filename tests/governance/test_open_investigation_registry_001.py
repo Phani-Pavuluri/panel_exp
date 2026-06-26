@@ -1051,6 +1051,23 @@ class TestOpenInvestigationRegistry001:
         assert inv.status == "RESOLVED"
         assert inv.resolution_artifact == "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_ROADMAP_001"
 
+    def test_experiment_portfolio_planner_agent_tooling_contract_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "EXPERIMENT-PORTFOLIO-PLANNER-AGENT-TOOLING-CONTRACT-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_TOOLING_CONTRACT_001"
+        assert lane["next_artifact"] == "EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001"
+        assert "INV-EXPERIMENT-PORTFOLIO-PLANNER-AGENT-TOOLING-CONTRACT-001" in lane["resolved_investigations"]
+        assert "no_tool_no_claim" in lane["artifact_tags"]
+
+    def test_experiment_portfolio_planner_agent_tooling_contract_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-EXPERIMENT-PORTFOLIO-PLANNER-AGENT-TOOLING-CONTRACT-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_TOOLING_CONTRACT_001"
+
     def test_production_authorization_release_gate_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"]
         assert inv.status == "RESOLVED"

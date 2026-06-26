@@ -1,0 +1,566 @@
+{
+  "artifact_id": "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_TOOLING_CONTRACT_001",
+  "artifact_type": "experiment_portfolio_planner_agent_tooling_contract",
+  "artifact_version": "1.0.0",
+  "base_commit": "88f1b15c4ea3b49f56fc1fe43577bc6596c8521d",
+  "status": "completed",
+  "verdict": "experiment_portfolio_planner_agent_tooling_contract_defined_no_runtime_authorization",
+  "final_verdict": "experiment_portfolio_planner_agent_tooling_contract_defined_no_runtime_authorization",
+  "core_principle": "tool_first_agent_second",
+  "no_tool_no_claim_rule": true,
+  "llm_may_explain_but_not_invent_diagnostics": true,
+  "planned_agents": [
+    "intake_goal_clarifier_agent",
+    "data_profiler_cleaner_agent",
+    "geo_unit_market_feasibility_agent",
+    "portfolio_planner_agent",
+    "spend_contrast_budget_reallocation_agent",
+    "candidate_design_generator",
+    "design_based_inference_fast_path",
+    "model_based_fallback_router",
+    "llm_explanation_layer"
+  ],
+  "agent_tooling": {
+    "intake_goal_clarifier_agent": {
+      "contracts": [
+        "ExperimentPlanningIntent",
+        "ExperimentGoal",
+        "ReadoutTierRequest",
+        "PlanningWindow",
+        "KPISelection",
+        "DataAvailabilityState",
+        "MissingCriticalFieldReport"
+      ],
+      "output_reports": [
+        "PlanningIntentReport",
+        "MissingInputReport",
+        "RecommendedDataRequest"
+      ]
+    },
+    "data_profiler_cleaner_agent": {
+      "modules": [
+        "schema_detector",
+        "column_mapper",
+        "time_grain_detector",
+        "geo_unit_detector",
+        "duplicate_detector",
+        "missingness_profiler",
+        "coverage_profiler",
+        "outlier_detector",
+        "low_volume_unit_detector",
+        "spend_kpi_summary_profiler",
+        "channel_campaign_availability_detector"
+      ],
+      "output_reports": [
+        "DataProfileReport",
+        "ColumnMappingReport",
+        "GeoTimeCoverageReport",
+        "DataQualityWarningReport",
+        "UsablePanelSummary"
+      ]
+    },
+    "geo_unit_market_feasibility_agent": {
+      "modules": [
+        "eligible_unit_filter",
+        "geo_size_concentration_diagnostic",
+        "pre_period_kpi_variation_diagnostic",
+        "pair_block_matchability_diagnostic",
+        "trend_similarity_diagnostic",
+        "interference_spillover_risk_checklist",
+        "minimum_cell_size_diagnostic",
+        "unit_count_sufficiency_diagnostic",
+        "dma_gma_state_province_custom_unit_mapper"
+      ],
+      "output_reports": [
+        "GeoUnitFeasibilityReport",
+        "MatchabilityReport",
+        "MarketConcentrationReport",
+        "DesignUnitInventory",
+        "FeasibilityStatusReport"
+      ]
+    },
+    "portfolio_planner_agent": {
+      "modules": [
+        "test_request_parser",
+        "priority_scorer",
+        "tier_assignment_feasibility_checker",
+        "multi_test_capacity_checker",
+        "claim_level_feasibility_checker",
+        "portfolio_alternative_generator"
+      ],
+      "output_reports": [
+        "PortfolioFeasibilityReport",
+        "TierAssignmentPlan",
+        "PortfolioDesignAlternatives",
+        "BlockedRequestedTests",
+        "DowngradeRecommendations"
+      ]
+    },
+    "spend_contrast_budget_reallocation_agent": {
+      "modules": [
+        "spend_baseline_profiler",
+        "cell_level_spend_simulator",
+        "go_dark_contrast_calculator",
+        "heavy_up_contrast_calculator",
+        "go_live_contrast_calculator",
+        "budget_sufficiency_checker",
+        "effect_size_mde_sensitivity_calculator",
+        "budget_reallocation_searcher",
+        "business_cost_summary_generator"
+      ],
+      "output_reports": [
+        "SpendContrastFeasibilityReport",
+        "CellSpendPlan",
+        "EffectSizeSensitivityTable",
+        "BudgetGapReport",
+        "SpendReallocationRecommendations"
+      ]
+    },
+    "candidate_design_generator": {
+      "modules": [
+        "single_test_design_generator",
+        "dedicated_control_design_generator",
+        "shared_control_multi_arm_generator",
+        "mutually_exclusive_multi_arm_generator",
+        "blocked_matched_design_generator",
+        "prioritized_full_power_plus_shadow_generator",
+        "factorial_fractional_factorial_generator",
+        "rotating_staggered_restricted_generator",
+        "design_scoring_function",
+        "design_feasibility_comparator"
+      ],
+      "output_reports": [
+        "CandidateDesignSet",
+        "DesignFeasibilityScores",
+        "RecommendedDesignCandidate",
+        "RejectedDesignsWithReasons",
+        "DesignAssumptionReport"
+      ]
+    },
+    "design_based_inference_fast_path": {
+      "modules": [
+        "blocked_difference_estimator",
+        "matched_pair_estimator",
+        "cuped_ancova_adjusted_estimator",
+        "randomization_permutation_inference",
+        "shared_control_covariance_handler",
+        "multiplicity_correction",
+        "small_sample_warning_system",
+        "ci_construction_diagnostics"
+      ],
+      "output_reports": [
+        "DesignBasedInferencePlan",
+        "AllowedClaimLevel",
+        "InferenceValidityDiagnostics",
+        "PValueAuthorizationRecommendation",
+        "CIValidityRecommendation"
+      ]
+    },
+    "model_based_fallback_router": {
+      "modules": [
+        "tbrridge_eligibility_checker",
+        "synthetic_did_eligibility_checker",
+        "augsynth_ascm_eligibility_checker",
+        "bayesian_tbr_eligibility_checker",
+        "method_claim_boundary_checker",
+        "method_specific_diagnostics_availability_checker"
+      ],
+      "output_reports": [
+        "ModelFallbackRecommendation",
+        "EstimatorEligibilityReport",
+        "AllowedClaimsByEstimator",
+        "RequiredValidationBeforeProduction"
+      ]
+    },
+    "llm_explanation_layer": {
+      "required_inputs": [
+        "PlanningIntentReport",
+        "DataProfileReport",
+        "GeoUnitFeasibilityReport",
+        "PortfolioFeasibilityReport",
+        "SpendContrastFeasibilityReport",
+        "CandidateDesignSet",
+        "DesignBasedInferencePlan",
+        "ModelFallbackRecommendation",
+        "ClaimBoundaryReport"
+      ],
+      "output_reports": [
+        "LLMExplanationSummary"
+      ]
+    }
+  },
+  "required_report_types": [
+    "PlanningIntentReport",
+    "DataProfileReport",
+    "ColumnMappingReport",
+    "GeoTimeCoverageReport",
+    "UsablePanelSummary",
+    "GeoUnitFeasibilityReport",
+    "MatchabilityReport",
+    "MarketConcentrationReport",
+    "PortfolioFeasibilityReport",
+    "TierAssignmentPlan",
+    "SpendContrastFeasibilityReport",
+    "CellSpendPlan",
+    "EffectSizeSensitivityTable",
+    "CandidateDesignSet",
+    "DesignFeasibilityScores",
+    "DesignBasedInferencePlan",
+    "InferenceValidityDiagnostics",
+    "ModelFallbackRecommendation",
+    "EstimatorEligibilityReport",
+    "ClaimBoundaryReport"
+  ],
+  "required_readiness_gates": [
+    "typed_input_contract",
+    "typed_output_report",
+    "deterministic_implementation",
+    "failure_mode_behavior",
+    "unit_tests",
+    "scenario_tests",
+    "fixture_coverage",
+    "claim_boundary_tests",
+    "summary_json_report_generation_tests"
+  ],
+  "answerability_matrix": {
+    "Can I run 5 tests?": "PortfolioFeasibilityReport",
+    "How many should be Tier 1?": "TierAssignmentPlan",
+    "Do I have enough geos?": "GeoUnitFeasibilityReport",
+    "Should I use shared control?": "CandidateDesignReport plus shared-control diagnostics",
+    "How much spend do I need?": "SpendContrastFeasibilityReport",
+    "Can I get valid p-values?": "InferenceValidityDiagnostics plus release-gate state",
+    "Can I get valid CIs?": "CIValidityRecommendation plus release-gate state",
+    "Should I use AugSynth?": "ModelFallbackRecommendation plus method eligibility diagnostics",
+    "Can this feed MMM?": "ClaimBoundaryReport or CalibrationSignal readiness"
+  },
+  "answerability_matrix_defined": true,
+  "scenario_tests_required": [
+    "single_test_with_enough_units_and_spend",
+    "single_test_with_too_few_units",
+    "five_test_portfolio_insufficient_units",
+    "five_test_portfolio_2_tier1_2_tier2_1_tier3",
+    "shared_control_feasible_correlated_contrasts_warning",
+    "mutually_exclusive_multi_arm_infeasible_too_few_cells",
+    "heavy_up_spend_contrast_too_weak",
+    "go_dark_business_cost_warning",
+    "go_live_ramp_up_warning",
+    "rotating_staggered_restricted_carryover_risk",
+    "missing_kpi_column",
+    "missing_spend_column",
+    "daily_data_detected",
+    "weekly_data_detected",
+    "province_state_unit_count_too_small",
+    "dma_gma_custom_unit_mapping_needed"
+  ],
+  "revised_roadmap_sequence": [
+    "METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001",
+    "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001",
+    "SCM_PRODUCTION_CANDIDATE_CLOSEOUT_AND_METHOD_PORTFOLIO_HANDOFF_001",
+    "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_ROADMAP_001",
+    "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_TOOLING_CONTRACT_001",
+    "EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001",
+    "GEO_KPI_SPEND_DATA_PROFILER_001",
+    "GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001",
+    "PORTFOLIO_TEST_TIERING_ENGINE_001",
+    "SPEND_CONTRAST_AND_BUDGET_REALLOCATION_DIAGNOSTICS_001",
+    "CANDIDATE_DESIGN_GENERATOR_001",
+    "DESIGN_BASED_INFERENCE_FAST_PATH_001",
+    "MODEL_BASED_FALLBACK_ROUTER_001",
+    "AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001"
+  ],
+  "authorization_flags": {
+    "experiment_portfolio_planner_runtime_authorized": false,
+    "planner_agent_tooling_contract_runtime_authorized": false,
+    "intake_goal_clarifier_runtime_authorized": false,
+    "data_profiler_cleaner_runtime_authorized": false,
+    "geo_unit_market_feasibility_runtime_authorized": false,
+    "portfolio_planner_runtime_authorized": false,
+    "spend_contrast_budget_reallocation_runtime_authorized": false,
+    "candidate_design_generator_runtime_authorized": false,
+    "design_based_inference_production_authorized": false,
+    "model_based_fallback_router_authorized": false,
+    "llm_explanation_layer_production_authorized": false,
+    "llm_design_recommendation_authorized": false,
+    "production_design_recommendation_authorized": false,
+    "production_p_value_authorized": false,
+    "causal_confidence_interval_authorized": false,
+    "production_authorization_granted": false,
+    "selector_implementation_authorized": false,
+    "production_selection_router_authorized": false,
+    "multicell_production_claim_authorized": false,
+    "trustreport_authorized": false,
+    "calibration_signal_allowed": false,
+    "mmm_ingestion_allowed": false,
+    "llm_decisioning_allowed": false,
+    "production_decisioning_allowed": false,
+    "live_api_authorized": false,
+    "scheduler_authorized": false,
+    "budget_optimization_allowed": false,
+    "package_side_agents_authorized": false
+  },
+  "recommended_next_artifact": "EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001",
+  "generated_at": "2026-06-26T10:51:15.143031+00:00",
+  "git_commit": "88f1b15c4ea3b49f56fc1fe43577bc6596c8521d",
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "tool_first_agent_second",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "no_tool_no_claim_rule",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "all_planned_agents_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "agent_tooling_intake_goal_clarifier_agent",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "agent_tooling_data_profiler_cleaner_agent",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "agent_tooling_geo_unit_market_feasibility_agent",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "agent_tooling_portfolio_planner_agent",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "agent_tooling_spend_contrast_budget_reallocation_agent",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "agent_tooling_candidate_design_generator",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "agent_tooling_design_based_inference_fast_path",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "agent_tooling_model_based_fallback_router",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "agent_tooling_llm_explanation_layer",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "required_report_types_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "answerability_matrix_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gates_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_tests_listed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "tooling_after_roadmap",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_experiment_portfolio_planner_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_planner_agent_tooling_contract_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_intake_goal_clarifier_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_data_profiler_cleaner_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_geo_unit_market_feasibility_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_portfolio_planner_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_spend_contrast_budget_reallocation_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_candidate_design_generator_runtime_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_design_based_inference_production_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_model_based_fallback_router_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_explanation_layer_production_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_design_recommendation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_design_recommendation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_authorization_granted_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_selector_implementation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_selection_router_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_multicell_production_claim_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_package_side_agents_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "final_verdict_matches",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_valid",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "issues": []
+  },
+  "non_goals": [
+    "no_runtime_planner_agent",
+    "no_agent_execution",
+    "no_estimator_implementation",
+    "no_inference_engine",
+    "no_design_assignment_algorithms",
+    "no_budget_optimization",
+    "no_production_recommendations",
+    "no_downstream_integrations"
+  ]
+}

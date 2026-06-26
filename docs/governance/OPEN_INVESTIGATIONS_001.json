@@ -1231,6 +1231,33 @@
       "resolution_artifact": "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_ROADMAP_001"
     },
     {
+      "investigation_id": "INV-EXPERIMENT-PORTFOLIO-PLANNER-AGENT-TOOLING-CONTRACT-001",
+      "title": "Experiment portfolio planner agent tooling contract",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "EXPERIMENT-PORTFOLIO-PLANNER-AGENT-ROADMAP-001",
+      "affected_combination": "experiment_portfolio_planner_tooling",
+      "problem_class": ["portfolio_planner", "tooling_contract", "llm_answerability"],
+      "evidence": {
+        "depends_on": [
+          "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_ROADMAP_001",
+          "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001"
+        ],
+        "core_principle": "tool_first_agent_second",
+        "no_tool_no_claim_rule": true,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001"
+      },
+      "current_decision": "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_TOOLING_CONTRACT_DEFINED_NO_RUNTIME_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Tool readiness before planner agent runtime",
+      "blocking_policy": "Tooling contract does not authorize runtime planner or LLM production claims",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
+      "resolution_artifact": "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_TOOLING_CONTRACT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -2832,6 +2859,26 @@
         "adaptive_intake",
         "data_first_planning",
         "design_before_estimator",
+        "no_runtime_authorization"
+      ]
+    },
+    {
+      "lane_id": "EXPERIMENT-PORTFOLIO-PLANNER-AGENT-TOOLING-CONTRACT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-EXPERIMENT-PORTFOLIO-PLANNER-AGENT-TOOLING-CONTRACT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "EXPERIMENT_PORTFOLIO_INTAKE_CONTRACT_001",
+      "resolution_artifact": "EXPERIMENT_PORTFOLIO_PLANNER_AGENT_TOOLING_CONTRACT_001",
+      "artifact_tags": [
+        "portfolio_planner",
+        "tooling_contract",
+        "tool_first_agent_second",
+        "no_tool_no_claim",
+        "llm_answerability",
         "no_runtime_authorization"
       ]
     }
