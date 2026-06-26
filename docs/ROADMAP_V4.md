@@ -325,7 +325,8 @@ Foundation and compatibility audits ✅
   → METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001 ✅
   → DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001 ✅
   → PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001 ✅
-  → SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_PLAN_001 (active method lane)
+  → SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_PLAN_001 ✅
+  → SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_001 (active method lane)
   → implementation lanes (not selected until control layer complete)
 ```
 
@@ -379,7 +380,9 @@ Foundation and compatibility audits ✅
 
 **DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001 (2026-06-03):** Defines **127** implementation-plan rows for future deterministic selector (`failed_scenarios: []`). `ExperimentSelectionInput`/`ExperimentSelectionDecision` contracts, 14-layer rule ordering, 7 staged phases. **Implementation plan only; no runtime router.** See [`track_d/DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001_REPORT.md`](track_d/DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001_REPORT.md).
 
-**PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001 (2026-06-03):** Defines **117** release-gate plan rows across **15** authorization domains, **15** evidence prerequisites, and **8** staged phases (`failed_scenarios: []`). `ProductionAuthorizationDecision` contract; scoped/revocable authorization model. **Release-gate plan only; no runtime gate; no production authorization granted.** **Immediate next artifact:** `SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_PLAN_001`. See [`track_d/PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001_REPORT.md`](track_d/PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001_REPORT.md).
+**PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001 (2026-06-03):** Defines **117** release-gate plan rows across **15** authorization domains, **15** evidence prerequisites, and **8** staged phases (`failed_scenarios: []`). `ProductionAuthorizationDecision` contract; scoped/revocable authorization model. **Release-gate plan only; no runtime gate; no production authorization granted.** See [`track_d/PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001_REPORT.md`](track_d/PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001_REPORT.md).
+
+**SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_PLAN_001 (2026-06-03):** Defines **144** SCM validation implementation-plan rows across **31** validation areas and **10** staged phases (`failed_scenarios: []`). `SCMValidationInput`/`SCMValidationEvidence` contracts. SCM remains gated production-candidate; production inference unauthorized. **Implementation plan only; no validation runtime.** **Immediate next artifact:** `SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_001`. See [`track_d/SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_PLAN_001_REPORT.md`](track_d/SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_PLAN_001_REPORT.md).
 
 **ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001 (2026-06-03):** First cross-estimator × design × inference suitability matrix (**50 rows**; `failed_scenarios: []`). Placebo/randomization is **one inference family**, not the full inference layer. No estimator receives a universal default inference. See [`track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md`](track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md).
 
@@ -406,7 +409,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001`** → ✅ **`PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001`** → **`SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_PLAN_001`**.
+**Ordered next:** ✅ … → ✅ **`PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001`** → ✅ **`SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_PLAN_001`** → **`SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_001`**.
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 
