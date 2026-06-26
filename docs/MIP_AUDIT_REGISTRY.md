@@ -2078,7 +2078,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Implements deterministic geo KPI/spend data profiler: `profile_geo_kpi_spend_data`, full-panel/sample-schema/ballpark modes, coverage and schema readiness (`failed_scenarios: []`). Profile only; no design/inference/production authorization.
 
-**Next:** `GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001`.
+**Next:** `GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001` (completed — see geo unit market feasibility diagnostics report).
+
+---
+
+## GEO-UNIT-AND-MARKET-FEASIBILITY-DIAGNOSTICS-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001_REPORT.md`](track_d/GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001_REPORT.md) · [`docs/track_d/archives/GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001_summary.json`](track_d/archives/GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001_summary.json) · [`panel_exp/validation/geo_unit_market_feasibility_diagnostics_001.py`](../panel_exp/validation/geo_unit_market_feasibility_diagnostics_001.py)
+
+**Status:** **`geo_unit_market_feasibility_diagnostics_implemented_no_design_inference_or_production_authorization`**
+
+**Verdict:** Implements deterministic geo unit/market feasibility diagnostics consuming profiler output (`failed_scenarios: []`). Unit/coverage/balance diagnostics only; no final feasibility or design/inference authorization.
+
+**Next:** `SPEND_CONTRAST_FEASIBILITY_TOOLING_CONTRACT_001`.
 
 ---
 
