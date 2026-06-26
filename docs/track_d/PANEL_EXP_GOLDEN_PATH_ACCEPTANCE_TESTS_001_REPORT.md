@@ -435,6 +435,18 @@ This contract must guide: `GEO_KPI_SPEND_DATA_PROFILER_001`, `GEO_UNIT_AND_MARKE
 
 ---
 
+## Profiler implementation notes
+
+Practical guidance for `GEO_KPI_SPEND_DATA_PROFILER_001` (implementation notes only; not additional blocker contracts or BP scenarios):
+
+1. **Prefer additive KPIs** such as conversions, revenue, orders, trials, installs, units, ARR, or GNARR for future calibration. Rate/ratio-only KPIs are diagnostic unless numerator/denominator are provided.
+2. **Design at the provided geo level.** DMAs within the same state are valid distinct units if rows are mutually exclusive. Do not silently treat state data as DMA data or one country aggregate as many geo units.
+3. **Ask for `planned_test_start_date` when planning future tests.** Uploaded historical data should not include the planned test period unless rows are explicitly labeled as planned/future.
+4. **Profiler reports coverage and schema readiness only.** It must not compute spend contrast feasibility, design feasibility, power, MDE, p-values, CIs, lift, ROI, or method recommendations.
+5. **Missing KPI/spend must remain missing unless explicitly resolved.** No hidden zero-fill or hidden imputation.
+
+---
+
 ## 31. Recommended next artifact
 
 `GEO_KPI_SPEND_DATA_PROFILER_001` — first profiler implementation lane with golden-path regression targets.

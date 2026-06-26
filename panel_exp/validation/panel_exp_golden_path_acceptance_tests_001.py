@@ -89,6 +89,14 @@ BLOCKED_PROVISIONAL_SCENARIOS = (
     "BP-018_generic_readiness_overgeneralization",
 )
 
+PROFILER_IMPLEMENTATION_NOTES = (
+    "prefer_additive_kpis_for_future_calibration_rates_are_diagnostic_without_numerator_denominator",
+    "design_at_provided_geo_level_no_silent_geo_level_upgrade_or_downgrade",
+    "ask_for_planned_test_start_date_to_separate_historical_data_from_planning_period",
+    "profiler_reports_coverage_and_schema_readiness_only_no_design_power_mde_inference",
+    "no_hidden_zero_fill_or_hidden_imputation",
+)
+
 REQUIRED_OUTPUT_ARTIFACT_CATEGORIES = (
     "PlanningIntentReport",
     "GeoKpiSpendDataProfileReport",
@@ -178,6 +186,7 @@ SCENARIO_TESTS = (
     "hidden_failure_blocked",
     "expired_revoked_artifact_blocked",
     "generic_readiness_overgeneralization_blocked",
+    "profiler_implementation_notes",
     "revised_roadmap_sequence",
 )
 
@@ -383,6 +392,7 @@ def build_scenarios() -> list[dict[str, Any]]:
         )
     )
     scenarios.append(_s("demo_notebook_boundary_defined", contract.demo_notebook_boundary_defined))
+    scenarios.append(_s("profiler_implementation_notes_present", len(PROFILER_IMPLEMENTATION_NOTES) == 5))
     idx = contract.revised_roadmap_sequence.index("PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001")
     scenarios.append(
         _s("next_artifact_profiler", contract.revised_roadmap_sequence[idx + 1] == RECOMMENDED_NEXT_ARTIFACT)
@@ -441,6 +451,7 @@ def run_validation(*, write_summary: bool = True, summary_path: Path | None = No
         "report_builder_non_inference_acceptance_defined": True,
         "fixture_mode_product_mode_boundary_defined": True,
         "demo_notebook_boundary_defined": True,
+        "profiler_implementation_notes": list(PROFILER_IMPLEMENTATION_NOTES),
         "revised_roadmap_sequence": list(REVISED_ROADMAP_SEQUENCE),
         "authorization_flags": dict(_AUTH_FLAGS),
         "recommended_next_artifact": RECOMMENDED_NEXT_ARTIFACT,

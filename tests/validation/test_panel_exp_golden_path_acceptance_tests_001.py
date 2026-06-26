@@ -8,6 +8,7 @@ from pathlib import Path
 from panel_exp.validation.panel_exp_golden_path_acceptance_tests_001 import (
     BLOCKED_PROVISIONAL_SCENARIOS,
     GOLDEN_PATH_SCENARIOS,
+    PROFILER_IMPLEMENTATION_NOTES,
     RECOMMENDED_NEXT_ARTIFACT,
     REQUIRED_CONTRACTS,
     REQUIRED_OUTPUT_ARTIFACT_CATEGORIES,
@@ -88,11 +89,18 @@ def test_summary_json_and_report() -> None:
     assert data["golden_paths_before_demos"] is True
     assert data["recommended_next_artifact"] == RECOMMENDED_NEXT_ARTIFACT
     assert data["final_verdict"] == "panel_exp_golden_path_acceptance_tests_defined_no_runtime_authorization"
+    assert data["profiler_implementation_notes"] == list(PROFILER_IMPLEMENTATION_NOTES)
+
+
+def test_profiler_implementation_notes() -> None:
+    assert len(PROFILER_IMPLEMENTATION_NOTES) == 5
+    assert "no_hidden_zero_fill_or_hidden_imputation" in PROFILER_IMPLEMENTATION_NOTES
 
 
 def test_report_states_no_runtime_authorization() -> None:
     text = _REPORT.read_text(encoding="utf-8")
     assert "golden path" in text.lower() or "golden-path" in text.lower()
     assert "anti-pattern" in text.lower()
+    assert "profiler implementation notes" in text.lower()
     assert len(SCENARIO_TESTS) >= 20
     assert "no runtime authorization" in text.lower() or "no runtime" in text.lower()

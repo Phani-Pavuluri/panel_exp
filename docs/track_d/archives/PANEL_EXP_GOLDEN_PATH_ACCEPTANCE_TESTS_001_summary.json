@@ -2,7 +2,7 @@
   "artifact_id": "PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001",
   "artifact_type": "panel_exp_golden_path_acceptance_tests_contract",
   "artifact_version": "1.0.0",
-  "base_commit": "ee62ddb1e8052d607c87c13c16d5a8737f225909",
+  "base_commit": "23798b26473d211ded50a8ebf486ab9795c4540b",
   "status": "completed",
   "verdict": "panel_exp_golden_path_acceptance_tests_defined_no_runtime_authorization",
   "final_verdict": "panel_exp_golden_path_acceptance_tests_defined_no_runtime_authorization",
@@ -107,6 +107,13 @@
   "report_builder_non_inference_acceptance_defined": true,
   "fixture_mode_product_mode_boundary_defined": true,
   "demo_notebook_boundary_defined": true,
+  "profiler_implementation_notes": [
+    "prefer_additive_kpis_for_future_calibration_rates_are_diagnostic_without_numerator_denominator",
+    "design_at_provided_geo_level_no_silent_geo_level_upgrade_or_downgrade",
+    "ask_for_planned_test_start_date_to_separate_historical_data_from_planning_period",
+    "profiler_reports_coverage_and_schema_readiness_only_no_design_power_mde_inference",
+    "no_hidden_zero_fill_or_hidden_imputation"
+  ],
   "revised_roadmap_sequence": [
     "METHOD_PORTFOLIO_PRIORITIZATION_CHECKPOINT_001",
     "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001",
@@ -193,10 +200,11 @@
     "hidden_failure_blocked",
     "expired_revoked_artifact_blocked",
     "generic_readiness_overgeneralization_blocked",
+    "profiler_implementation_notes",
     "revised_roadmap_sequence"
   ],
-  "generated_at": "2026-06-26T12:21:43.894072+00:00",
-  "git_commit": "ee62ddb1e8052d607c87c13c16d5a8737f225909",
+  "generated_at": "2026-06-26T12:54:41.649847+00:00",
+  "git_commit": "23798b26473d211ded50a8ebf486ab9795c4540b",
   "failed_scenarios": [],
   "scenario_results": [
     {
@@ -266,6 +274,11 @@
     },
     {
       "scenario_id": "demo_notebook_boundary_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "profiler_implementation_notes_present",
       "passed": true,
       "detail": ""
     },
@@ -371,6 +384,11 @@
     },
     {
       "scenario_id": "scenario_spec_generic_readiness_overgeneralization_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_spec_profiler_implementation_notes",
       "passed": true,
       "detail": ""
     },
