@@ -438,3 +438,20 @@ def test_governance_scm_release_gate_review_plan_lane_complete() -> None:
     assert lane["status"] == "complete"
     assert lane["next_artifact"] == "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PACKET_001"
     assert lane["resolution_artifact"] == "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PLAN_001"
+
+
+def test_governance_scm_release_gate_review_packet_resolved() -> None:
+    inv = investigations_by_id()["INV-SCM-PRODUCTION-CANDIDATE-RELEASE-GATE-REVIEW-PACKET-001"]
+    assert inv.status == "RESOLVED"
+    assert inv.resolution_artifact == "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PACKET_001"
+
+
+def test_governance_scm_release_gate_review_packet_lane_complete() -> None:
+    reg = load_registry()
+    lane = next(
+        b for b in reg["roadmap_lane_bindings"]
+        if b["lane_id"] == "SCM-PRODUCTION-CANDIDATE-RELEASE-GATE-REVIEW-PACKET-001"
+    )
+    assert lane["status"] == "complete"
+    assert lane["next_artifact"] == "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_DECISION_PLAN_001"
+    assert lane["resolution_artifact"] == "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PACKET_001"
