@@ -1075,6 +1075,38 @@
       "resolution_artifact": "SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_001"
     },
     {
+      "investigation_id": "INV-SCM-PRODUCTION-CANDIDATE-RELEASE-GATE-REVIEW-PLAN-001",
+      "title": "SCM production candidate release-gate review plan",
+      "status": "RESOLVED",
+      "priority": "P2",
+      "discovered_by": "SCM-PRODUCTION-CANDIDATE-JACKKNIFE-SENSITIVITY-IMPLEMENTATION-001",
+      "affected_combination": "scm_production_candidate_release_gate_review",
+      "problem_class": ["scm", "release_gate", "review_plan"],
+      "evidence": {
+        "depends_on": [
+          "SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_001",
+          "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_001",
+          "SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_001",
+          "PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001"
+        ],
+        "plan_row_count": 99,
+        "failed_scenarios": [],
+        "scm_retained_candidate_gated": true,
+        "blocked_downstream_authorization": true,
+        "scm_production_inference_unauthorized": true,
+        "release_gate_approval_not_granted": true,
+        "evidence_stack_metadata_only": true
+      },
+      "current_decision": "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PLAN_DEFINED_NO_AUTHORIZATION_GRANTED",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "SCM release-gate review packet after evidence stack reconciliation",
+      "blocking_policy": "SCM release-gate review plan does not grant release-gate approval or production authorization",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
+      "resolution_artifact": "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PLAN_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -2573,6 +2605,26 @@
         "method_gap_control",
         "scm",
         "jackknife_sensitivity_metadata_implementation",
+        "production_candidate_gated",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "SCM-PRODUCTION-CANDIDATE-RELEASE-GATE-REVIEW-PLAN-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-SCM-PRODUCTION-CANDIDATE-RELEASE-GATE-REVIEW-PLAN-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PACKET_001",
+      "resolution_artifact": "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PLAN_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "scm",
+        "release_gate_review_plan",
         "production_candidate_gated",
         "no_downstream_authorization"
       ]

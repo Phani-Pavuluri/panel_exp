@@ -1,0 +1,863 @@
+{
+  "artifact_id": "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PLAN_001",
+  "artifact_type": "scm_release_gate_review_plan_metadata_only",
+  "artifact_version": "1.0.0",
+  "base_commit": "eedcdcf142216864470751cdf102682dcf562bc3",
+  "status": "completed",
+  "verdict": "scm_production_candidate_release_gate_review_plan_defined_no_authorization_granted",
+  "final_verdict": "scm_production_candidate_release_gate_review_plan_defined_no_authorization_granted",
+  "method_family": "SCM",
+  "method_family_status": "production_candidate_gated",
+  "next_artifact": "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PACKET_001",
+  "generated_at": "2026-06-26T08:35:20.606116+00:00",
+  "git_commit": "eedcdcf142216864470751cdf102682dcf562bc3",
+  "plan_row_count": 99,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "plan_rows_build_successfully",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_row_count_at_least_70",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "plan_ids_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "release_gate_domain_method_family_authorization_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "release_gate_domain_estimator_authorization_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "release_gate_domain_inference_authorization_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "release_gate_domain_causal_uncertainty_authorization_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "release_gate_domain_production_p_value_authorization_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "release_gate_domain_multicell_claim_authorization_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "release_gate_domain_selector_router_authorization_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "release_gate_domain_trustreport_authorization_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "release_gate_domain_calibration_signal_authorization_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "release_gate_domain_mmm_ingestion_authorization_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "release_gate_domain_llm_decisioning_authorization_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "release_gate_domain_live_api_authorization_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "release_gate_domain_scheduler_authorization_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "release_gate_domain_budget_optimization_authorization_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "release_gate_domain_package_side_agent_authorization_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_prerequisite_estimand_contract_complete_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_prerequisite_observed_panel_diagnostics_complete_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_prerequisite_assignment_design_validity_complete_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_prerequisite_method_family_validation_complete_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_prerequisite_simulation_dgp_coverage_complete_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_prerequisite_failure_registry_review_complete_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_prerequisite_null_calibration_complete_where_applicable_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_prerequisite_multicell_dependence_multiplicity_validation_complete_where_applicable_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_prerequisite_selector_router_shadow_validation_complete_where_applicable_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_prerequisite_production_readiness_backlog_closed_or_waived_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_prerequisite_open_investigations_closed_or_explicitly_deferred_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_prerequisite_retire_replace_state_respected_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_prerequisite_audit_references_complete_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_prerequisite_human_governance_review_complete_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_prerequisite_rollback_or_revocation_path_defined_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_scm_validation_evidence_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_scm_null_calibration_evidence_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_scm_jackknife_sensitivity_evidence_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_method_family_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_estimator_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_inference_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_causal_uncertainty_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_p_value_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_multicell_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_selector_router_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_production_readiness_backlog_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_open_investigations_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_retire_replace_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_simulation_dgp_evidence_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_failure_registry_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_audit_references_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_human_review_state_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_rollback_revocation_plan_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_review_scope_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_review_date_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_field_audit_context_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_field_review_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_field_release_gate_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_field_method_family_authorization_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_field_estimator_authorization_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_field_inference_authorization_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_field_p_value_authorization_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_field_causal_ci_authorization_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_field_multicell_authorization_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_field_selector_router_authorization_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_field_downstream_authorization_status_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_field_evidence_prerequisite_statuses_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_field_satisfied_prerequisites_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_field_blocked_prerequisites_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_field_warnings_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_field_required_followups_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_field_allowed_current_use_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_field_forbidden_current_use_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_field_conditions_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_field_expiration_or_review_date_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_field_revocation_triggers_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_field_human_review_required_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_field_audit_references_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "decision_field_authorization_flags_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_0_review_scope_and_packet_definition_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_1_evidence_stack_inventory_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_2_prerequisite_status_review_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_3_method_family_and_estimator_review_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_4_inference_pvalue_causal_ci_boundary_review_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_5_multicell_selector_downstream_boundary_review_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_6_human_governance_review_requirements_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_7_revocation_expiration_and_rollback_plan_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_8_release_gate_review_packet_preparation_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "stage_stage_9_future_release_gate_decision_artifact_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "prior_work_reconciled",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_remains_gated_production_candidate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "review_plan_not_release_gate_approval",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "evidence_stack_metadata_only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_metadata_not_production_valid",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "null_calibration_metadata_not_p_value_authorization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "jackknife_metadata_not_causal_ci_authorization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_boundary_separate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "selector_shadow_only_until_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "human_governance_review_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "revocation_expiration_rollback_required_before_authorization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "package_side_agents_deferred",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "resolved_artifacts_do_not_mean_production_ready",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "review_plan_only_no_release_gate_runtime",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "downstream_work_paused",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_release_gate_review_plan_completed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_release_gate_approval_granted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_production_inference_authorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scm_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scm_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_authorization_granted_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_data_driven_selection_gate_implementation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_selector_implementation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_selection_router_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scm_production_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_multicell_production_claim_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_package_side_agents_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "release_gate_approval_not_granted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_production_inference_unauthorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "p_value_authorization_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "causal_ci_authorization_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "selector_router_unauthorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_claim_unauthorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "downstream_unauthorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_artifact_release_gate_review_packet",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "review_plan_only_no_release_gate_runtime",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_issues_empty",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "plan_row_count": 99,
+    "unique_plan_ids": true,
+    "plan_section_counts": {
+      "release_gate_domain": 15,
+      "evidence_prerequisite": 15,
+      "input_contract": 21,
+      "decision_contract": 23,
+      "scm_evidence_stack": 3,
+      "stage_definition": 10,
+      "non_goal": 12
+    },
+    "release_gate_domain_count": 15,
+    "evidence_prerequisite_count": 15,
+    "input_field_count": 21,
+    "decision_field_count": 23,
+    "stage_counts": {
+      "stage_0_review_scope_and_packet_definition": 1,
+      "stage_1_evidence_stack_inventory": 1,
+      "stage_2_prerequisite_status_review": 1,
+      "stage_3_method_family_and_estimator_review": 1,
+      "stage_4_inference_pvalue_causal_ci_boundary_review": 1,
+      "stage_5_multicell_selector_downstream_boundary_review": 1,
+      "stage_6_human_governance_review_requirements": 1,
+      "stage_7_revocation_expiration_and_rollback_plan": 1,
+      "stage_8_release_gate_review_packet_preparation": 1,
+      "stage_9_future_release_gate_decision_artifact": 1
+    },
+    "all_release_gate_domains_covered": true,
+    "all_evidence_prerequisites_covered": true,
+    "all_input_fields_covered": true,
+    "all_decision_fields_covered": true,
+    "all_stages_present": true,
+    "issues": []
+  },
+  "planned_input_contract": "SCMReleaseGateReviewInput",
+  "planned_decision_contract": "SCMReleaseGateReviewDecision",
+  "review_domains": [
+    "method_family_authorization",
+    "estimator_authorization",
+    "inference_authorization",
+    "causal_uncertainty_authorization",
+    "production_p_value_authorization",
+    "multicell_claim_authorization",
+    "selector_router_authorization",
+    "trustreport_authorization",
+    "calibration_signal_authorization",
+    "mmm_ingestion_authorization",
+    "llm_decisioning_authorization",
+    "live_api_authorization",
+    "scheduler_authorization",
+    "budget_optimization_authorization",
+    "package_side_agent_authorization"
+  ],
+  "evidence_prerequisites": [
+    "estimand_contract_complete",
+    "observed_panel_diagnostics_complete",
+    "assignment_design_validity_complete",
+    "method_family_validation_complete",
+    "simulation_dgp_coverage_complete",
+    "failure_registry_review_complete",
+    "null_calibration_complete_where_applicable",
+    "multicell_dependence_multiplicity_validation_complete_where_applicable",
+    "selector_router_shadow_validation_complete_where_applicable",
+    "production_readiness_backlog_closed_or_waived",
+    "open_investigations_closed_or_explicitly_deferred",
+    "retire_replace_state_respected",
+    "audit_references_complete",
+    "human_governance_review_complete",
+    "rollback_or_revocation_path_defined"
+  ],
+  "planned_stages": [
+    "stage_0_review_scope_and_packet_definition",
+    "stage_1_evidence_stack_inventory",
+    "stage_2_prerequisite_status_review",
+    "stage_3_method_family_and_estimator_review",
+    "stage_4_inference_pvalue_causal_ci_boundary_review",
+    "stage_5_multicell_selector_downstream_boundary_review",
+    "stage_6_human_governance_review_requirements",
+    "stage_7_revocation_expiration_and_rollback_plan",
+    "stage_8_release_gate_review_packet_preparation",
+    "stage_9_future_release_gate_decision_artifact"
+  ],
+  "blocked_authorization_domains": [
+    "method_family_authorization",
+    "estimator_authorization",
+    "inference_authorization",
+    "causal_uncertainty_authorization",
+    "production_p_value_authorization",
+    "multicell_claim_authorization",
+    "selector_router_authorization",
+    "trustreport_authorization",
+    "calibration_signal_authorization",
+    "mmm_ingestion_authorization",
+    "llm_decisioning_authorization",
+    "live_api_authorization",
+    "scheduler_authorization",
+    "budget_optimization_authorization",
+    "package_side_agent_authorization"
+  ],
+  "required_followups": [
+    "SCM-RG-RF-VALIDATION-STATISTICAL-COMPLETE",
+    "SCM-RG-RF-NULL-CALIBRATION-STATISTICAL-COMPLETE",
+    "SCM-RG-RF-JACKKNIFE-STATISTICAL-COMPLETE",
+    "SCM-RG-RF-DGP-COVERAGE",
+    "SCM-RG-RF-FAILURE-REGISTRY",
+    "SCM-RG-RF-MULTICELL-VALIDATION",
+    "SCM-RG-RF-SELECTOR-SHADOW",
+    "SCM-RG-RF-PRODUCTION-READINESS-BACKLOG",
+    "SCM-RG-RF-HUMAN-GOVERNANCE-REVIEW",
+    "SCM-RG-RF-ROLLBACK-REVOCATION-PLAN",
+    "SCM-RG-RF-RELEASE-GATE-REVIEW-PACKET",
+    "SCM-RG-RF-FUTURE-RELEASE-GATE-DECISION"
+  ],
+  "dependencies_reconciled": [
+    "PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001",
+    "SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_001",
+    "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_001",
+    "SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_001",
+    "SCM_PRODUCTION_CANDIDATE_VALIDATION_PLAN_001",
+    "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_PLAN_001",
+    "SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_PLAN_001",
+    "MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001",
+    "PRODUCTION_READINESS_BACKLOG_LEDGER_001",
+    "METHOD_FAMILY_RETIRE_REPLACE_EXECUTION_PLAN_001",
+    "DATA_DRIVEN_DESIGN_ESTIMATOR_INFERENCE_SELECTION_GATE_IMPLEMENTATION_PLAN_001",
+    "FUTURE_EXPERIMENT_PACKAGE_SIDE_AGENT_ROADMAP_001"
+  ],
+  "non_goals": [
+    "no_release_gate_approval_granted",
+    "no_release_gate_runtime",
+    "no_scm_production_inference_authorization",
+    "no_production_p_values_or_causal_cis",
+    "no_selector_router_production_use",
+    "no_multicell_scm_production_claims",
+    "no_trustreport_calibration_signal_mmm",
+    "no_live_api_scheduler_budget",
+    "no_package_side_agent_authorization",
+    "no_automatic_authorization_from_metadata_scaffolds",
+    "no_skipping_human_governance_review",
+    "no_skipping_evidence_prerequisites"
+  ],
+  "scm_release_gate_review_plan_completed": false,
+  "scm_release_gate_approval_granted": false,
+  "scm_production_inference_authorized": false,
+  "authorization_flags": {
+    "scm_production_p_value_authorized": false,
+    "scm_causal_confidence_interval_authorized": false,
+    "production_authorization_granted": false,
+    "production_p_value_authorized": false,
+    "causal_confidence_interval_authorized": false,
+    "trustreport_authorized": false,
+    "calibration_signal_allowed": false,
+    "mmm_ingestion_allowed": false,
+    "llm_decisioning_allowed": false,
+    "production_decisioning_allowed": false,
+    "live_api_authorized": false,
+    "scheduler_authorized": false,
+    "budget_optimization_allowed": false,
+    "data_driven_selection_gate_implementation_authorized": false,
+    "selector_implementation_authorized": false,
+    "production_selection_router_authorized": false,
+    "scm_production_inference_authorized": false,
+    "multicell_production_claim_authorized": false,
+    "package_side_agents_authorized": false
+  },
+  "recommended_next_artifacts": [
+    "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PACKET_001"
+  ]
+}
