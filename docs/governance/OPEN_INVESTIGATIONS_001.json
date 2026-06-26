@@ -1044,6 +1044,37 @@
       "resolution_artifact": "SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_PLAN_001"
     },
     {
+      "investigation_id": "INV-SCM-PRODUCTION-CANDIDATE-JACKKNIFE-SENSITIVITY-IMPLEMENTATION-001",
+      "title": "SCM production candidate jackknife sensitivity metadata implementation",
+      "status": "RESOLVED",
+      "priority": "P2",
+      "discovered_by": "SCM-PRODUCTION-CANDIDATE-JACKKNIFE-SENSITIVITY-IMPLEMENTATION-PLAN-001",
+      "affected_combination": "scm_production_candidate_jackknife_sensitivity_metadata",
+      "problem_class": ["scm", "jackknife_sensitivity", "metadata_scaffolding"],
+      "evidence": {
+        "depends_on": [
+          "SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_PLAN_001",
+          "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_001",
+          "SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_001"
+        ],
+        "registry_row_count": 37,
+        "failed_scenarios": [],
+        "scm_retained_candidate_gated": true,
+        "blocked_downstream_authorization": true,
+        "scm_production_inference_unauthorized": true,
+        "jackknife_sensitivity_not_completed": true,
+        "metadata_scaffolding_only": true
+      },
+      "current_decision": "SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_METADATA_IMPLEMENTED_NO_DOWNSTREAM_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "SCM release gate review plan after jackknife sensitivity scaffolding",
+      "blocking_policy": "SCM jackknife sensitivity metadata scaffolding does not authorize production inference or causal CIs",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
+      "resolution_artifact": "SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -2522,6 +2553,26 @@
         "method_gap_control",
         "scm",
         "jackknife_sensitivity_implementation_plan",
+        "production_candidate_gated",
+        "no_downstream_authorization"
+      ]
+    },
+    {
+      "lane_id": "SCM-PRODUCTION-CANDIDATE-JACKKNIFE-SENSITIVITY-IMPLEMENTATION-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-SCM-PRODUCTION-CANDIDATE-JACKKNIFE-SENSITIVITY-IMPLEMENTATION-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PLAN_001",
+      "resolution_artifact": "SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_001",
+      "artifact_tags": [
+        "method_accuracy",
+        "method_gap_control",
+        "scm",
+        "jackknife_sensitivity_metadata_implementation",
         "production_candidate_gated",
         "no_downstream_authorization"
       ]

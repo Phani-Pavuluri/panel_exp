@@ -330,7 +330,8 @@ Foundation and compatibility audits ✅
   → SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_PLAN_001 ✅
   → SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_001 ✅
   → SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_PLAN_001 ✅
-  → SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_001 (active method lane)
+  → SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_001 ✅
+  → SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PLAN_001 (active method lane)
   → implementation lanes (not selected until control layer complete)
 ```
 
@@ -394,7 +395,9 @@ Foundation and compatibility audits ✅
 
 **SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_001 (2026-06-03):** Implements **30** SCM null calibration area registry rows and deterministic `build_scm_null_calibration_evidence()` metadata scaffolding (`failed_scenarios: []`). `SCMNullCalibrationInput`/`SCMNullCalibrationEvidence` contracts realized. SCM remains gated production-candidate; null calibration not completed. **Metadata scaffolding only; no placebo computation, p-values, or causal CIs.** See [`track_d/SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_001_REPORT.md`](track_d/SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_001_REPORT.md).
 
-**SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_PLAN_001 (2026-06-03):** Defines **159** SCM jackknife sensitivity implementation-plan rows across **37** sensitivity areas and **10** staged phases (`failed_scenarios: []`). `SCMJackknifeSensitivityInput`/`SCMJackknifeSensitivityEvidence` contracts. SCM remains gated production-candidate; jackknife sensitivity not implemented. **Implementation plan only; no jackknife runtime.** **Immediate next artifact:** `SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_001`. See [`track_d/SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_PLAN_001_REPORT.md`](track_d/SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_PLAN_001_REPORT.md).
+**SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_PLAN_001 (2026-06-03):** Defines **159** SCM jackknife sensitivity implementation-plan rows across **37** sensitivity areas and **10** staged phases (`failed_scenarios: []`). `SCMJackknifeSensitivityInput`/`SCMJackknifeSensitivityEvidence` contracts. SCM remains gated production-candidate; jackknife sensitivity not implemented. **Implementation plan only; no jackknife runtime.** See [`track_d/SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_PLAN_001_REPORT.md`](track_d/SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_PLAN_001_REPORT.md).
+
+**SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_001 (2026-06-03):** Implements **37** SCM jackknife sensitivity area registry rows and deterministic `build_scm_jackknife_sensitivity_evidence()` metadata scaffolding (`failed_scenarios: []`). `SCMJackknifeSensitivityInput`/`SCMJackknifeSensitivityEvidence` contracts realized. SCM remains gated production-candidate; jackknife sensitivity not completed. **Metadata scaffolding only; no jackknife refits, p-values, or causal CIs.** **Immediate next artifact:** `SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PLAN_001`. See [`track_d/SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_001_REPORT.md`](track_d/SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_001_REPORT.md).
 
 **ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001 (2026-06-03):** First cross-estimator × design × inference suitability matrix (**50 rows**; `failed_scenarios: []`). Placebo/randomization is **one inference family**, not the full inference layer. No estimator receives a universal default inference. See [`track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md`](track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md).
 
@@ -421,7 +424,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_001`** → ✅ **`SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_PLAN_001`** → **`SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_001`**.
+**Ordered next:** ✅ … → ✅ **`SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_001`** → ✅ **`SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_PLAN_001`** → ✅ **`SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_001`** → **`SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PLAN_001`**.
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 

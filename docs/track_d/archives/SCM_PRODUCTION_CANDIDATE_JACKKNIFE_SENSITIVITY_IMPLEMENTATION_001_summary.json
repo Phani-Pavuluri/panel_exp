@@ -1,0 +1,337 @@
+{
+  "artifact_id": "SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_001",
+  "artifact_type": "scm_jackknife_sensitivity_metadata_implementation",
+  "artifact_version": "1.0.0",
+  "base_commit": "ec6b3f86b36aaace4888e1b8e9a77249bd254d88",
+  "status": "completed",
+  "verdict": "scm_production_candidate_jackknife_sensitivity_metadata_implemented_no_downstream_authorization",
+  "final_verdict": "scm_production_candidate_jackknife_sensitivity_metadata_implemented_no_downstream_authorization",
+  "method_family": "SCM",
+  "method_family_status": "production_candidate_gated",
+  "next_artifact": "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PLAN_001",
+  "generated_at": "2026-06-26T08:20:23.207882+00:00",
+  "git_commit": "ec6b3f86b36aaace4888e1b8e9a77249bd254d88",
+  "registry_row_count": 37,
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "registry_covers_all_areas",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "empty_input_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "empty_validation_evidence_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "empty_null_calibration_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "empty_deletion_metadata_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "empty_donor_weight_followup",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "empty_release_gate_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "multicell_unvalidated_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "jackknife_incomplete_blocks_cis",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "p_value_boundary_unauthorized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "complete_still_release_gate_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "complete_no_production_inference",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "complete_jackknife_not_completed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "causal_ci_boundary_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scm_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scm_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_authorization_granted_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_p_value_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_causal_confidence_interval_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_trustreport_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_calibration_signal_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_ingestion_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_decisioning_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_live_api_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scheduler_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_allowed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_data_driven_selection_gate_implementation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_selector_implementation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_selection_router_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scm_production_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_multicell_production_claim_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_package_side_agents_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_flag_scm_jackknife_sensitivity_implementation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_flag_scm_jackknife_sensitivity_completed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scm_flag_scm_production_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "registry_row_count": 37,
+    "all_areas_covered": true,
+    "issues": []
+  },
+  "implemented_sensitivity_areas": [
+    "jackknife_input_contract",
+    "unit_deletion_contract",
+    "donor_deletion_contract",
+    "treated_unit_deletion_contract",
+    "treated_set_sensitivity_contract",
+    "donor_weight_stability_contract",
+    "effect_instability_contract",
+    "effect_scale_alignment",
+    "estimand_alignment",
+    "outcome_kpi_compatibility",
+    "pre_period_fit_conditioning",
+    "donor_support_conditioning",
+    "null_calibration_dependency",
+    "placebo_calibration_dependency",
+    "jackknife_distribution_quality",
+    "influence_diagnostic",
+    "high_leverage_unit_detection",
+    "donor_weight_concentration",
+    "treated_unit_influence",
+    "effect_sign_stability",
+    "effect_magnitude_stability",
+    "sensitivity_threshold_policy",
+    "sensitivity_escalation_policy",
+    "causal_ci_boundary",
+    "p_value_boundary",
+    "multiple_testing_boundary",
+    "multicell_shared_control_boundary",
+    "geographic_interference_boundary",
+    "spillover_sensitivity_boundary",
+    "simulation_dgp_coverage",
+    "failure_registry_mapping",
+    "blocked_reason_mapping",
+    "required_followup_mapping",
+    "release_gate_dependency",
+    "audit_reference_contract",
+    "selector_shadow_input_contract",
+    "production_authorization_boundary"
+  ],
+  "blocked_reasons_supported": [
+    "SCM-JK-BR-INPUT-INCOMPLETE",
+    "SCM-JK-BR-VALIDATION-EVIDENCE-MISSING",
+    "SCM-JK-BR-NULL-CALIBRATION-EVIDENCE-MISSING",
+    "SCM-JK-BR-UNIT-DELETION-MISSING",
+    "SCM-JK-BR-DONOR-DELETION-MISSING",
+    "SCM-JK-BR-TREATED-UNIT-DELETION-MISSING",
+    "SCM-JK-BR-TREATED-SET-METADATA-MISSING",
+    "SCM-JK-BR-DONOR-WEIGHT-METADATA-MISSING",
+    "SCM-JK-BR-EFFECT-SCALE-MISSING",
+    "SCM-JK-BR-ESTIMAND-MISALIGNED",
+    "SCM-JK-BR-DONOR-SUPPORT-CONDITIONING-MISSING",
+    "SCM-JK-BR-PRE-PERIOD-FIT-CONDITIONING-MISSING",
+    "SCM-JK-BR-JACKKNIFE-INCOMPLETE",
+    "SCM-JK-BR-CAUSAL-CI-BOUNDARY",
+    "SCM-JK-BR-P-VALUE-BOUNDARY",
+    "SCM-JK-BR-MULTICELL-UNVALIDATED",
+    "SCM-JK-BR-RELEASE-GATE-REQUIRED",
+    "SCM-JK-BR-FAILURE-REGISTRY-UNRESOLVED"
+  ],
+  "required_followups_supported": [
+    "SCM-JK-RF-VALIDATION-EVIDENCE",
+    "SCM-JK-RF-NULL-CALIBRATION-EVIDENCE",
+    "SCM-JK-RF-UNIT-DELETION",
+    "SCM-JK-RF-DONOR-DELETION",
+    "SCM-JK-RF-TREATED-UNIT-DELETION",
+    "SCM-JK-RF-TREATED-SET",
+    "SCM-JK-RF-DONOR-WEIGHT",
+    "SCM-JK-RF-DONOR-SUPPORT",
+    "SCM-JK-RF-PRE-PERIOD-FIT",
+    "SCM-JK-RF-DGP-COVERAGE",
+    "SCM-JK-RF-FAILURE-REGISTRY",
+    "SCM-JK-RF-JACKKNIFE-SENSITIVITY",
+    "SCM-JK-RF-RELEASE-GATE"
+  ],
+  "implemented_input_contract": "SCMJackknifeSensitivityInput",
+  "implemented_evidence_contract": "SCMJackknifeSensitivityEvidence",
+  "tests_added": [
+    "tests/validation/test_scm_production_candidate_jackknife_sensitivity_implementation_001.py"
+  ],
+  "dependencies_reconciled": [
+    "SCM_PRODUCTION_CANDIDATE_JACKKNIFE_SENSITIVITY_IMPLEMENTATION_PLAN_001",
+    "SCM_PRODUCTION_CANDIDATE_NULL_CALIBRATION_IMPLEMENTATION_001",
+    "SCM_PRODUCTION_CANDIDATE_VALIDATION_IMPLEMENTATION_001",
+    "SCM_JACKKNIFE_CHARACTERIZATION_001",
+    "PRODUCTION_AUTHORIZATION_RELEASE_GATE_PLAN_001",
+    "MULTICELL_DEPENDENCE_AND_MULTIPLICITY_VALIDATION_PLAN_001",
+    "SIMULATION_DGP_COVERAGE_PLAN_001",
+    "METHOD_FAILURE_MODE_REGISTRY_001"
+  ],
+  "non_goals": [
+    "no_jackknife_estimate_or_refit_computation",
+    "no_unit_deletion_refits",
+    "no_uncertainty_interval_or_causal_ci_computation",
+    "no_production_p_values_or_type_i_error",
+    "no_production_inference_authorization",
+    "no_selector_router_production_use",
+    "no_downstream_integrations",
+    "no_package_side_agents",
+    "no_multicell_production_claims",
+    "no_numerical_jackknife_diagnostics"
+  ],
+  "scm_jackknife_sensitivity_implementation_authorized": false,
+  "scm_jackknife_sensitivity_completed": false,
+  "scm_production_inference_authorized": false,
+  "authorization_flags": {
+    "scm_production_p_value_authorized": false,
+    "scm_causal_confidence_interval_authorized": false,
+    "production_authorization_granted": false,
+    "production_p_value_authorized": false,
+    "causal_confidence_interval_authorized": false,
+    "trustreport_authorized": false,
+    "calibration_signal_allowed": false,
+    "mmm_ingestion_allowed": false,
+    "llm_decisioning_allowed": false,
+    "production_decisioning_allowed": false,
+    "live_api_authorized": false,
+    "scheduler_authorized": false,
+    "budget_optimization_allowed": false,
+    "data_driven_selection_gate_implementation_authorized": false,
+    "selector_implementation_authorized": false,
+    "production_selection_router_authorized": false,
+    "scm_production_inference_authorized": false,
+    "multicell_production_claim_authorized": false,
+    "package_side_agents_authorized": false
+  },
+  "recommended_next_artifacts": [
+    "SCM_PRODUCTION_CANDIDATE_RELEASE_GATE_REVIEW_PLAN_001"
+  ]
+}
