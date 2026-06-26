@@ -344,7 +344,7 @@ Foundation and compatibility audits ✅
   → PANEL_EXP_AGENT_RUN_PACKET_CONTRACT_001 ✅
   → PANEL_EXP_ARTIFACT_REGISTRY_AND_PROVENANCE_CONTRACT_001 ✅
   → PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001 ✅
-  → GEO_KPI_SPEND_DATA_PROFILER_001 → … → MODEL_BASED_FALLBACK_ROUTER_001 (planned planner lanes)
+  → GEO_KPI_SPEND_DATA_PROFILER_001 ✅
   → AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001 (post-planner primary method lane)
   → implementation lanes (not selected until control layer complete)
 ```
@@ -437,6 +437,8 @@ Foundation and compatibility audits ✅
 
 **PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001 (2026-06-03):** Defines golden-path and blocked-path acceptance scenarios: GP-001–GP-008, BP-001–BP-018 only, critical implementation anti-patterns, LLM/report-builder/fixture/demo boundaries, short profiler implementation notes, future `PANEL_EXP_AGENT_ANSWERABILITY_AND_RECOVERY_CONTRACT_001` roadmap entry (`failed_scenarios: []`). Golden paths before demos; no corner-case rule explosion. **Contract only; no runtime golden-path authorization.** See [`track_d/PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001_REPORT.md`](track_d/PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001_REPORT.md).
 
+**GEO_KPI_SPEND_DATA_PROFILER_001 (2026-06-03):** Implements deterministic geo KPI/spend data profiler: `profile_geo_kpi_spend_data`, full-panel/sample-schema/ballpark modes, coverage and schema readiness reports (`failed_scenarios: []`). Profile only; no design/inference/production authorization. See [`track_d/GEO_KPI_SPEND_DATA_PROFILER_001_REPORT.md`](track_d/GEO_KPI_SPEND_DATA_PROFILER_001_REPORT.md).
+
 **PANEL_EXP_AGENT_ANSWERABILITY_AND_RECOVERY_CONTRACT_001 (planned):** Lightweight state-machine contract for agent request classification, routing to deterministic diagnostics/core ML, missing-input recovery, and safe fallback — after profiler/feasibility diagnostics begin, before runtime agent deployment and `LLM_REPORT_GROUNDING_AND_CLAIM_BOUNDARY_CONTRACT_001`.
 
 **ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001 (2026-06-03):** First cross-estimator × design × inference suitability matrix (**50 rows**; `failed_scenarios: []`). Placebo/randomization is **one inference family**, not the full inference layer. No estimator receives a universal default inference. See [`track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md`](track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md).
@@ -464,7 +466,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`PANEL_EXP_ARTIFACT_REGISTRY_AND_PROVENANCE_CONTRACT_001`** → ✅ **`PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001`** → profiler implementation lanes → **`AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001`** (post-planner method lane).
+**Ordered next:** ✅ … → ✅ **`PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001`** → ✅ **`GEO_KPI_SPEND_DATA_PROFILER_001`** → `GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001` → **`AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001`** (post-planner method lane).
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 

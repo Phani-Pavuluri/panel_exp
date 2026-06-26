@@ -2066,7 +2066,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Defines golden-path and blocked-path acceptance scenarios: GP-001–GP-008, BP-001–BP-018 only, critical implementation anti-patterns, LLM/report-builder/fixture/demo boundaries, short profiler notes, future agent answerability/recovery roadmap (`failed_scenarios: []`). Golden paths before demos; no rule explosion. **Contract only; no runtime golden-path authorization.**
 
-**Next:** `GEO_KPI_SPEND_DATA_PROFILER_001`. Planned: `PANEL_EXP_AGENT_ANSWERABILITY_AND_RECOVERY_CONTRACT_001` after feasibility diagnostics begin.
+**Next:** `GEO_KPI_SPEND_DATA_PROFILER_001` (completed — see geo KPI spend data profiler report).
+
+---
+
+## GEO-KPI-SPEND-DATA-PROFILER-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/GEO_KPI_SPEND_DATA_PROFILER_001_REPORT.md`](track_d/GEO_KPI_SPEND_DATA_PROFILER_001_REPORT.md) · [`docs/track_d/archives/GEO_KPI_SPEND_DATA_PROFILER_001_summary.json`](track_d/archives/GEO_KPI_SPEND_DATA_PROFILER_001_summary.json) · [`panel_exp/validation/geo_kpi_spend_data_profiler_001.py`](../panel_exp/validation/geo_kpi_spend_data_profiler_001.py)
+
+**Status:** **`geo_kpi_spend_data_profiler_implemented_no_design_inference_or_production_authorization`**
+
+**Verdict:** Implements deterministic geo KPI/spend data profiler: `profile_geo_kpi_spend_data`, full-panel/sample-schema/ballpark modes, coverage and schema readiness (`failed_scenarios: []`). Profile only; no design/inference/production authorization.
+
+**Next:** `GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001`.
 
 ---
 

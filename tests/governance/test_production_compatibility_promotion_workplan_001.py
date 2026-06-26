@@ -625,3 +625,20 @@ def test_governance_panel_exp_golden_path_acceptance_tests_lane_complete() -> No
     assert lane["status"] == "complete"
     assert lane["next_artifact"] == "GEO_KPI_SPEND_DATA_PROFILER_001"
     assert lane["resolution_artifact"] == "PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001"
+
+
+def test_governance_geo_kpi_spend_data_profiler_resolved() -> None:
+    inv = investigations_by_id()["INV-GEO-KPI-SPEND-DATA-PROFILER-001"]
+    assert inv.status == "RESOLVED"
+    assert inv.resolution_artifact == "GEO_KPI_SPEND_DATA_PROFILER_001"
+
+
+def test_governance_geo_kpi_spend_data_profiler_lane_complete() -> None:
+    reg = load_registry()
+    lane = next(
+        b for b in reg["roadmap_lane_bindings"]
+        if b["lane_id"] == "GEO-KPI-SPEND-DATA-PROFILER-001"
+    )
+    assert lane["status"] == "complete"
+    assert lane["next_artifact"] == "GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001"
+    assert lane["resolution_artifact"] == "GEO_KPI_SPEND_DATA_PROFILER_001"

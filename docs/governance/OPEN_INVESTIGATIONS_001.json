@@ -1422,6 +1422,33 @@
       "resolution_artifact": "PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001"
     },
     {
+      "investigation_id": "INV-GEO-KPI-SPEND-DATA-PROFILER-001",
+      "title": "Geo KPI spend data profiler implementation",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "PANEL-EXP-GOLDEN-PATH-ACCEPTANCE-TESTS-001",
+      "affected_combination": "geo_kpi_spend_data_profiler",
+      "problem_class": ["data_profiler", "schema_coverage", "profile_only"],
+      "evidence": {
+        "depends_on": [
+          "GEO_KPI_SPEND_DATA_CONTRACT_AND_PROFILER_SPEC_001",
+          "PANEL_EXP_GOLDEN_PATH_ACCEPTANCE_TESTS_001"
+        ],
+        "implementation_scope": "deterministic_schema_coverage_profile_only",
+        "public_api": "profile_geo_kpi_spend_data",
+        "failed_scenarios": [],
+        "recommended_next_artifact": "GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001"
+      },
+      "current_decision": "GEO_KPI_SPEND_DATA_PROFILER_IMPLEMENTED_NO_DESIGN_INFERENCE_OR_PRODUCTION_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Profiler before unit feasibility diagnostics",
+      "blocking_policy": "Profiler does not authorize design feasibility, inference, or production claims",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "PROMOTE"],
+      "resolution_artifact": "GEO_KPI_SPEND_DATA_PROFILER_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -3158,6 +3185,24 @@
         "regression_suite",
         "golden_paths_before_demos",
         "no_runtime_authorization"
+      ]
+    },
+    {
+      "lane_id": "GEO-KPI-SPEND-DATA-PROFILER-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-GEO-KPI-SPEND-DATA-PROFILER-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001",
+      "resolution_artifact": "GEO_KPI_SPEND_DATA_PROFILER_001",
+      "artifact_tags": [
+        "data_profiler",
+        "schema_coverage",
+        "profile_only",
+        "no_design_inference_authorization"
       ]
     }
   ]
