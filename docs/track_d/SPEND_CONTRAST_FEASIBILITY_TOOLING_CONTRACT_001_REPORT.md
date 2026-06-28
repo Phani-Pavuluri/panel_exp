@@ -374,21 +374,23 @@ Documented failure and provisional modes:
 
 ---
 
-## 23. Agent/LLM explanation boundary
+## 23. LLM/control-plane boundary
 
-Agents/LLMs **may:**
+This artifact is **package-side deterministic contract work**. It does not implement or depend on MIP-level LLM control-plane architecture (`MIP_LLM_CONTROL_PLANE_ARCHITECTURE_001` or similar). Spend contrast diagnostics remain deterministic planning groundwork within `panel_exp`.
 
-- explain spend contrast reports and missing inputs
-- summarize contrast quality and blocking reasons
-- request the smallest missing input when contrast is blocked/provisional
+LLM/control-plane **may** (in a later integration layer):
 
-Agents/LLMs **must not:**
+- route users to spend contrast diagnostics
+- ask for missing spend inputs
+- explain typed `SpendContrastFeasibilityReport` outputs and blocking reasons
 
-- infer spend contrast from raw data without a typed `SpendContrastFeasibilityReport`
-- upgrade spend contrast readiness into design feasibility, power/MDE, ROI, or production claims
+LLM/control-plane **must not**:
+
+- infer spend contrast from raw data without a typed spend contrast report
+- upgrade spend contrast readiness into design feasibility, power/MDE, ROI, causal lift, budget recommendation, or production claims
 - recommend budget optimization or treatment assignment from contrast diagnostics
 
-If contrast is missing/blocked/provisional, agents should ask for the smallest missing input.
+If contrast is missing/blocked/provisional, control-plane should ask for the smallest missing input.
 
 ---
 

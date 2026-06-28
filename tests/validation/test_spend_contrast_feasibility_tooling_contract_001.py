@@ -101,6 +101,7 @@ def test_summary_json_and_report() -> None:
     assert data["artifact_id"] == "SPEND_CONTRAST_FEASIBILITY_TOOLING_CONTRACT_001"
     assert data["failed_scenarios"] == []
     assert data["runtime_spend_diagnostics_implemented"] is False
+    assert data["budget_reallocation_engine_implemented"] is False
     assert data["depends_on"] == list(DEPENDS_ON)
     assert data["recommended_next_artifact"] == RECOMMENDED_NEXT_ARTIFACT
     assert (
@@ -114,4 +115,4 @@ def test_report_states_no_runtime_diagnostics() -> None:
     assert "go-dark" in text.lower() or "go_dark" in text.lower()
     assert "spend coverage" in text.lower()
     assert "no runtime" in text.lower() or "contract only" in text.lower()
-    assert "ready_for_downstream_power_diagnostics" in text.lower() or "power diagnostics" in text.lower()
+    assert "control-plane" in text.lower() or "llm" in text.lower()

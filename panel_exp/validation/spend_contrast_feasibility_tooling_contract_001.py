@@ -136,6 +136,7 @@ FUTURE_IMPLEMENTATION_TESTS = (
 
 _AUTH_FLAGS = {
     "runtime_spend_diagnostics_implemented": False,
+    "budget_reallocation_engine_implemented": False,
     "final_experiment_feasibility_authorized": False,
     "candidate_design_authorized": False,
     "treatment_control_assignment_authorized": False,
@@ -330,6 +331,7 @@ def run_validation(*, write_summary: bool = True, summary_path: Path | None = No
         "ballpark_mode_final_contrast_readiness_allowed": False,
         "future_implementation_tests_required": list(FUTURE_IMPLEMENTATION_TESTS),
         "runtime_spend_diagnostics_implemented": False,
+        "budget_reallocation_engine_implemented": False,
         "power_computed": False,
         "mde_computed": False,
         "p_value_computed": False,

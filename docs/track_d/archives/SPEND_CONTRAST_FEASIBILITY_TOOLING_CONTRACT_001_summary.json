@@ -116,6 +116,7 @@
     "no_fixture_specific_branching"
   ],
   "runtime_spend_diagnostics_implemented": false,
+  "budget_reallocation_engine_implemented": false,
   "power_computed": false,
   "mde_computed": false,
   "p_value_computed": false,
