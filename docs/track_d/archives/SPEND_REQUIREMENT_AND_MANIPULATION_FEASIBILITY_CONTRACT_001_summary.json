@@ -1,0 +1,497 @@
+{
+  "artifact_id": "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_CONTRACT_001",
+  "artifact_type": "spend_requirement_and_manipulation_feasibility_contract",
+  "artifact_version": "1.0.0",
+  "base_commit": "638dde787863d4a1d05ca640789c310e8d7c2c57",
+  "status": "completed",
+  "verdict": "spend_requirement_and_manipulation_feasibility_contract_defined_no_runtime_diagnostics_or_production_authorization",
+  "final_verdict": "spend_requirement_and_manipulation_feasibility_contract_defined_no_runtime_diagnostics_or_production_authorization",
+  "scope": "contract_amendment_no_runtime_diagnostics",
+  "amends_or_supersedes": "SPEND_CONTRAST_FEASIBILITY_TOOLING_CONTRACT_001",
+  "depends_on": [
+    "GEO_KPI_SPEND_DATA_PROFILER_001",
+    "GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001",
+    "SPEND_CONTRAST_FEASIBILITY_TOOLING_CONTRACT_001"
+  ],
+  "subreports_defined": [
+    "SpendDataReadinessReport",
+    "BaselineSpendInventoryReport",
+    "ResponseBridgeReport",
+    "ManipulationFeasibilityReport",
+    "PlanningBoundaryReport"
+  ],
+  "spend_data_readiness_defined": true,
+  "baseline_spend_inventory_defined": true,
+  "response_bridge_defined": true,
+  "manipulation_feasibility_defined": true,
+  "planning_boundary_defined": true,
+  "supported_manipulation_options": [
+    "GO_DARK",
+    "HEAVY_UP",
+    "GO_LIVE",
+    "BUDGET_REALLOCATION",
+    "DOSAGE_CONTRAST",
+    "DIFFERENCE_IN_POLICY",
+    "UNKNOWN"
+  ],
+  "response_bridge_sources": [
+    "NONE",
+    "USER_PROVIDED_REQUIRED_SPEND_DELTA",
+    "POWER_LAYER_REQUIRED_SPEND_DELTA",
+    "MMM_RESPONSE_CURVE",
+    "MMM_ROMS",
+    "PRIOR_EXPERIMENT",
+    "PROXY_RESPONSE_CURVE",
+    "BACK_OF_NAPKIN_USER_ASSUMPTION"
+  ],
+  "response_bridge_flags": [
+    "MMM_ADVISORY_SIGNAL_USED",
+    "MMM_OUT_OF_SUPPORT",
+    "OUT_OF_MMM_SUPPORT",
+    "MMM_CALIBRATION_WEAK",
+    "PROXY_RESPONSE_USED",
+    "PROXY_LEVEL_MISMATCH",
+    "BACK_OF_NAPKIN_ASSUMPTION_USED",
+    "BUSINESS_RESPONSE_RISK",
+    "REQUIRED_SPEND_DELTA_UNKNOWN",
+    "REQUIRED_SPEND_DELTA_ESTIMATED_ADVISORY",
+    "REQUIRED_SPEND_DELTA_SUPPLIED"
+  ],
+  "two_required_spend_concepts_defined": true,
+  "statistical_required_spend_contrast_defined": true,
+  "business_response_required_spend_defined": true,
+  "dosage_contrast_first_class_option": true,
+  "kpi_mde_to_spend_bridge_advisory_only": true,
+  "mmm_proxy_use_advisory_only": true,
+  "baseline_spend_derivation_defined": true,
+  "baseline_inventory_fields": [
+    "baseline_mean_weekly_spend",
+    "baseline_median_weekly_spend",
+    "baseline_total_spend",
+    "baseline_p10_weekly_spend",
+    "baseline_p90_weekly_spend",
+    "historical_p95_spend",
+    "historical_max_spend",
+    "nonzero_weeks",
+    "missing_weeks",
+    "max_reducible_spend"
+  ],
+  "required_heavy_up_multiplier_defined": true,
+  "historical_support_checks": [
+    "within_historical_support",
+    "near_upper_historical_support",
+    "above_historical_support",
+    "far_above_historical_support",
+    "unknown_historical_support"
+  ],
+  "historical_support_check_defined": true,
+  "control_contamination_flags": [
+    "CONTROL_CELL_MANIPULATED",
+    "CONTROL_CONTAMINATION_RISK",
+    "BUSINESS_AS_USUAL_CONTROL_NOT_PRESERVED",
+    "ESTIMAND_SHIFT_REQUIRED",
+    "STANDARD_GO_DARK_INTERPRETATION_NOT_ALLOWED"
+  ],
+  "control_contamination_warning_defined": true,
+  "estimand_shift_flag_defined": true,
+  "manipulation_feasibility_outputs": [
+    "GO_DARK_FEASIBLE",
+    "GO_DARK_INSUFFICIENT_BASELINE_SPEND",
+    "HEAVY_UP_FEASIBLE",
+    "HEAVY_UP_OUT_OF_HISTORICAL_SUPPORT",
+    "HEAVY_UP_MULTIPLIER_HIGH",
+    "GO_LIVE_FEASIBLE",
+    "GO_LIVE_CONFLICTS_WITH_EXISTING_BASELINE_SPEND",
+    "BUDGET_REALLOCATION_FEASIBLE",
+    "BUDGET_REALLOCATION_MAPPING_INCOMPLETE",
+    "DOSAGE_CONTRAST_FEASIBLE",
+    "DOSAGE_CONTRAST_ESTIMAND_REQUIRED",
+    "INSUFFICIENT_CONTRAST",
+    "BLOCKED_MISSING_SPEND",
+    "PROVISIONAL_REQUIRED_SPEND_UNKNOWN"
+  ],
+  "candidate_manipulation_options_allowed": true,
+  "final_design_recommendation_authorized": false,
+  "runtime_spend_diagnostics_implemented": false,
+  "power_computed": false,
+  "mde_computed": false,
+  "mmm_runtime_calls_implemented": false,
+  "mmm_calibration_authorized": false,
+  "lift_computed": false,
+  "roi_computed": false,
+  "budget_optimization_authorized": false,
+  "candidate_design_computed": false,
+  "treatment_control_assignment_computed": false,
+  "estimator_inference_authorized": false,
+  "production_authorization_granted": false,
+  "llm_decisioning_authorized": false,
+  "authorization_flags": {
+    "final_design_recommendation_authorized": false,
+    "runtime_spend_diagnostics_implemented": false,
+    "power_computed": false,
+    "mde_computed": false,
+    "mmm_runtime_calls_implemented": false,
+    "mmm_calibration_authorized": false,
+    "lift_computed": false,
+    "roi_computed": false,
+    "budget_optimization_authorized": false,
+    "candidate_design_computed": false,
+    "treatment_control_assignment_computed": false,
+    "estimator_inference_authorized": false,
+    "production_authorization_granted": false,
+    "llm_decisioning_authorized": false
+  },
+  "future_implementation_tests_required": [
+    "baseline_spend_derived_from_pre_period_data",
+    "baseline_blocked_when_pre_period_missing",
+    "zero_spend_not_treated_as_missing",
+    "missing_spend_not_treated_as_zero",
+    "required_heavy_up_multiplier_computed",
+    "go_dark_blocked_when_max_reducible_below_required_delta",
+    "heavy_up_feasible_within_historical_support",
+    "heavy_up_warning_above_p95",
+    "heavy_up_blocked_or_warned_far_above_historical_max",
+    "control_heavy_up_test_go_dark_flags_control_contamination",
+    "control_heavy_up_test_go_dark_requires_dosage_estimand",
+    "standard_go_dark_interpretation_blocked_when_control_manipulated",
+    "dosage_contrast_feasible_when_policy_delta_meets_required_spend",
+    "budget_reallocation_requires_source_destination_mapping",
+    "kpi_mde_shown_in_actual_units",
+    "mmm_response_bridge_translates_kpi_mde_advisory",
+    "mmm_out_of_support_flagged",
+    "proxy_level_mismatch_flagged",
+    "back_of_napkin_assumption_flagged",
+    "business_response_risk_when_expected_response_below_kpi_mde",
+    "no_roi_lift_power_design_estimator_production_authorization",
+    "no_fixture_specific_branching"
+  ],
+  "recommended_next_artifact": "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001",
+  "generated_at": "2026-06-29T06:59:25.519341+00:00",
+  "git_commit": "638dde787863d4a1d05ca640789c310e8d7c2c57",
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "subreport_SpendDataReadinessReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "subreport_BaselineSpendInventoryReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "subreport_ResponseBridgeReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "subreport_ManipulationFeasibilityReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "subreport_PlanningBoundaryReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "manipulation_GO_DARK",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "manipulation_HEAVY_UP",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "manipulation_GO_LIVE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "manipulation_BUDGET_REALLOCATION",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "manipulation_DOSAGE_CONTRAST",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "manipulation_DIFFERENCE_IN_POLICY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "manipulation_UNKNOWN",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "dosage_contrast_first_class",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "two_spend_concepts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "mmm_advisory_only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "baseline_derivation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "heavy_up_multiplier",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "historical_support",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "control_contamination",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "estimand_shift",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_baseline_spend_derived_from_pre_period_data",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_baseline_blocked_when_pre_period_missing",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_zero_spend_not_treated_as_missing",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_missing_spend_not_treated_as_zero",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_required_heavy_up_multiplier_computed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_go_dark_blocked_when_max_reducible_below_required_delta",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_heavy_up_feasible_within_historical_support",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_heavy_up_warning_above_p95",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_heavy_up_blocked_or_warned_far_above_historical_max",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_control_heavy_up_test_go_dark_flags_control_contamination",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_control_heavy_up_test_go_dark_requires_dosage_estimand",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_standard_go_dark_interpretation_blocked_when_control_manipulated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_dosage_contrast_feasible_when_policy_delta_meets_required_spend",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_budget_reallocation_requires_source_destination_mapping",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_kpi_mde_shown_in_actual_units",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_mmm_response_bridge_translates_kpi_mde_advisory",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_mmm_out_of_support_flagged",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_proxy_level_mismatch_flagged",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_back_of_napkin_assumption_flagged",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_business_response_risk_when_expected_response_below_kpi_mde",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_no_roi_lift_power_design_estimator_production_authorization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_no_fixture_specific_branching",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_final_design_recommendation_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_runtime_spend_diagnostics_implemented_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_power_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mde_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_runtime_calls_implemented_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_calibration_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_lift_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_roi_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_candidate_design_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_treatment_control_assignment_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_estimator_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_authorization_granted_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "amends_prior_contract",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "final_verdict_matches",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_valid",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "issues": []
+  },
+  "non_goals": [
+    "no_runtime_implementation",
+    "no_power_or_mde_computation",
+    "no_mmm_runtime_calls",
+    "no_mmm_calibration",
+    "no_causal_lift_estimation",
+    "no_roi_estimation",
+    "no_budget_optimization",
+    "no_candidate_design_finalization",
+    "no_treatment_control_assignment",
+    "no_estimator_inference_selection",
+    "no_production_authorization",
+    "no_llm_decisioning"
+  ]
+}

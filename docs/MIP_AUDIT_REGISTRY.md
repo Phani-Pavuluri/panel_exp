@@ -2102,7 +2102,21 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Defines spend contrast feasibility tooling contract: manipulation types, coverage vs contrast, future report contracts, claim boundaries (`failed_scenarios: []`). Contract only; no runtime spend diagnostics or production authorization.
 
-**Next:** `SPEND_CONTRAST_AND_BUDGET_REALLOCATION_DIAGNOSTICS_001`.
+**Next:** `SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_CONTRACT_001` (completed — see spend requirement and manipulation feasibility contract report).
+
+---
+
+## SPEND-REQUIREMENT-AND-MANIPULATION-FEASIBILITY-CONTRACT-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_CONTRACT_001_REPORT.md`](track_d/SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_CONTRACT_001_summary.json`](track_d/archives/SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_CONTRACT_001_summary.json) · [`panel_exp/validation/spend_requirement_and_manipulation_feasibility_contract_001.py`](../panel_exp/validation/spend_requirement_and_manipulation_feasibility_contract_001.py)
+
+**Status:** **`spend_requirement_and_manipulation_feasibility_contract_defined_no_runtime_diagnostics_or_production_authorization`**
+
+**Verdict:** Amends spend module scope: data readiness, baseline inventory, response bridge, manipulation feasibility, dosage/difference-in-policy (`failed_scenarios: []`). Supersedes narrow spend-contrast-only framing. Contract only; no runtime diagnostics.
+
+**Amends:** `SPEND_CONTRAST_FEASIBILITY_TOOLING_CONTRACT_001`
+
+**Next:** `SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001`.
 
 ---
 

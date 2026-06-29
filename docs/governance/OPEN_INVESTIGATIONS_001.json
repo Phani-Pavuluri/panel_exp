@@ -1509,6 +1509,41 @@
       "resolution_artifact": "SPEND_CONTRAST_FEASIBILITY_TOOLING_CONTRACT_001"
     },
     {
+      "investigation_id": "INV-SPEND-REQUIREMENT-AND-MANIPULATION-FEASIBILITY-CONTRACT-001",
+      "title": "Spend requirement and manipulation feasibility contract amendment",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "SPEND-CONTRAST-FEASIBILITY-TOOLING-CONTRACT-001",
+      "affected_combination": "spend_requirement_and_manipulation_feasibility_contract",
+      "problem_class": ["spend_requirement", "manipulation_feasibility", "contract_amendment"],
+      "evidence": {
+        "depends_on": [
+          "GEO_KPI_SPEND_DATA_PROFILER_001",
+          "GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001",
+          "SPEND_CONTRAST_FEASIBILITY_TOOLING_CONTRACT_001"
+        ],
+        "amends_or_supersedes": "SPEND_CONTRAST_FEASIBILITY_TOOLING_CONTRACT_001",
+        "scope": "contract_amendment_no_runtime_diagnostics",
+        "subreports": [
+          "SpendDataReadinessReport",
+          "BaselineSpendInventoryReport",
+          "ResponseBridgeReport",
+          "ManipulationFeasibilityReport",
+          "PlanningBoundaryReport"
+        ],
+        "failed_scenarios": [],
+        "recommended_next_artifact": "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001"
+      },
+      "current_decision": "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_CONTRACT_DEFINED_NO_RUNTIME_DIAGNOSTICS_OR_PRODUCTION_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Expanded spend contract before runtime diagnostics implementation",
+      "blocking_policy": "Contract amendment only; no runtime spend diagnostics or production claims",
+      "terminal_decisions": ["RESTRICT", "CONTRACT_ONLY", "PROMOTE"],
+      "resolution_artifact": "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_CONTRACT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -3292,12 +3327,33 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "SPEND_CONTRAST_AND_BUDGET_REALLOCATION_DIAGNOSTICS_001",
+      "next_artifact": "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_CONTRACT_001",
       "resolution_artifact": "SPEND_CONTRAST_FEASIBILITY_TOOLING_CONTRACT_001",
       "artifact_tags": [
         "spend_contrast",
         "budget_reallocation",
         "contract_only",
+        "no_runtime_diagnostics_authorization",
+        "amended_by_spend_requirement_contract"
+      ]
+    },
+    {
+      "lane_id": "SPEND-REQUIREMENT-AND-MANIPULATION-FEASIBILITY-CONTRACT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-SPEND-REQUIREMENT-AND-MANIPULATION-FEASIBILITY-CONTRACT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001",
+      "resolution_artifact": "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_CONTRACT_001",
+      "artifact_tags": [
+        "spend_requirement",
+        "manipulation_feasibility",
+        "response_bridge",
+        "dosage_contrast",
+        "contract_amendment",
         "no_runtime_diagnostics_authorization"
       ]
     }

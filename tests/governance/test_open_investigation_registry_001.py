@@ -1204,13 +1204,29 @@ class TestOpenInvestigationRegistry001:
         )
         assert lane["status"] == "complete"
         assert lane["resolution_artifact"] == "SPEND_CONTRAST_FEASIBILITY_TOOLING_CONTRACT_001"
-        assert lane["next_artifact"] == "SPEND_CONTRAST_AND_BUDGET_REALLOCATION_DIAGNOSTICS_001"
+        assert lane["next_artifact"] == "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_CONTRACT_001"
         assert "INV-SPEND-CONTRAST-FEASIBILITY-TOOLING-CONTRACT-001" in lane["resolved_investigations"]
 
     def test_spend_contrast_feasibility_tooling_contract_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-SPEND-CONTRAST-FEASIBILITY-TOOLING-CONTRACT-001"]
         assert inv.status == "RESOLVED"
         assert inv.resolution_artifact == "SPEND_CONTRAST_FEASIBILITY_TOOLING_CONTRACT_001"
+
+    def test_spend_requirement_manipulation_feasibility_contract_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "SPEND-REQUIREMENT-AND-MANIPULATION-FEASIBILITY-CONTRACT-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_CONTRACT_001"
+        assert lane["next_artifact"] == "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001"
+        assert "INV-SPEND-REQUIREMENT-AND-MANIPULATION-FEASIBILITY-CONTRACT-001" in lane["resolved_investigations"]
+
+    def test_spend_requirement_manipulation_feasibility_contract_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-SPEND-REQUIREMENT-AND-MANIPULATION-FEASIBILITY-CONTRACT-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_CONTRACT_001"
 
     def test_production_authorization_release_gate_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"]
