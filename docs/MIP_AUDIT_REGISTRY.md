@@ -2116,7 +2116,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Amends:** `SPEND_CONTRAST_FEASIBILITY_TOOLING_CONTRACT_001`
 
-**Next:** `SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001`.
+**Next:** `SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001` (completed — see spend requirement manipulation feasibility diagnostics report).
+
+---
+
+## SPEND-REQUIREMENT-AND-MANIPULATION-FEASIBILITY-DIAGNOSTICS-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001_REPORT.md`](track_d/SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001_REPORT.md) · [`docs/track_d/archives/SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001_summary.json`](track_d/archives/SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001_summary.json) · [`panel_exp/validation/spend_requirement_and_manipulation_feasibility_diagnostics_001.py`](../panel_exp/validation/spend_requirement_and_manipulation_feasibility_diagnostics_001.py)
+
+**Status:** **`spend_requirement_and_manipulation_feasibility_diagnostics_implemented_no_power_design_roi_or_production_authorization`**
+
+**Verdict:** Implements deterministic spend requirement/manipulation feasibility diagnostics with five subreports (`failed_scenarios: []`). Candidate manipulation options only; no power/design/ROI/production authorization.
+
+**Next:** `POWER_MDE_REQUIREMENT_AND_SPEND_FEASIBILITY_HANDOFF_CONTRACT_001`.
 
 ---
 

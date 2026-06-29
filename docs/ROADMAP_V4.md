@@ -348,6 +348,7 @@ Foundation and compatibility audits ✅
   → GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001 ✅
   → SPEND_CONTRAST_FEASIBILITY_TOOLING_CONTRACT_001 ✅
   → SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_CONTRACT_001 ✅
+  → SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001 ✅
   → AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001 (post-planner primary method lane)
   → implementation lanes (not selected until control layer complete)
 ```
@@ -448,6 +449,8 @@ Foundation and compatibility audits ✅
 
 **SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_CONTRACT_001 (2026-06-03):** Amends spend module scope: spend data readiness, baseline inventory, response bridge, manipulation feasibility, dosage/difference-in-policy, KPI MDE advisory bridge (`failed_scenarios: []`). Contract only; no runtime diagnostics. See [`track_d/SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_CONTRACT_001_REPORT.md`](track_d/SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_CONTRACT_001_REPORT.md).
 
+**SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001 (2026-06-03):** Implements deterministic spend requirement/manipulation feasibility diagnostics: `evaluate_spend_requirement_and_manipulation_feasibility`, five subreports, candidate manipulation options (`failed_scenarios: []`). No power/design/ROI/production authorization. See [`track_d/SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001_REPORT.md`](track_d/SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001_REPORT.md).
+
 **PANEL_EXP_AGENT_ANSWERABILITY_AND_RECOVERY_CONTRACT_001 (planned):** Lightweight state-machine contract for agent request classification, routing to deterministic diagnostics/core ML, missing-input recovery, and safe fallback — after profiler/feasibility diagnostics begin, before runtime agent deployment and `LLM_REPORT_GROUNDING_AND_CLAIM_BOUNDARY_CONTRACT_001`.
 
 **ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001 (2026-06-03):** First cross-estimator × design × inference suitability matrix (**50 rows**; `failed_scenarios: []`). Placebo/randomization is **one inference family**, not the full inference layer. No estimator receives a universal default inference. See [`track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md`](track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md).
@@ -475,7 +478,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`SPEND_CONTRAST_FEASIBILITY_TOOLING_CONTRACT_001`** → ✅ **`SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_CONTRACT_001`** → spend requirement/manipulation diagnostics implementation → **`AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001`** (post-planner method lane).
+**Ordered next:** ✅ … → ✅ **`SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_CONTRACT_001`** → ✅ **`SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001`** → power/MDE handoff contract → **`AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001`** (post-planner method lane).
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 
