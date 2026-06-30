@@ -458,7 +458,7 @@ Foundation and compatibility audits ✅
 
 **POWER_MDE_DIAGNOSTICS_RUNTIME_001 (2026-06-03):** Implements conservative power/MDE readiness runtime: `evaluate_power_mde_diagnostics`, descriptive noise summaries, MDE representation validation, spend/estimand compatibility (`failed_scenarios: []`). No formal power/MDE or production authorization. See [`track_d/POWER_MDE_DIAGNOSTICS_RUNTIME_001_REPORT.md`](track_d/POWER_MDE_DIAGNOSTICS_RUNTIME_001_REPORT.md).
 
-**DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001 (2026-06-03):** Defines design-cell structure and assignment contract: cell roles, manipulation policies, design structure types, assignment-readiness statuses, constraint categories (`failed_scenarios: []`). Contract only; no runtime assignment. See [`track_d/DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001_REPORT.md`](track_d/DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001_REPORT.md).
+**DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001 (2026-06-03):** Defines design-cell, contrast, and scenario contract: cell roles, contrast-specific roles, scenario policy plans, shared-control dependencies, cross-contrast conflicts, redesign/recheck resolution options (`failed_scenarios: []`). Contract only; no runtime assignment or scenario optimization. See [`track_d/DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001_REPORT.md`](track_d/DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001_REPORT.md).
 
 **PANEL_EXP_AGENT_ANSWERABILITY_AND_RECOVERY_CONTRACT_001 (planned):** Lightweight state-machine contract for agent request classification, routing to deterministic diagnostics/core ML, missing-input recovery, and safe fallback — after profiler/feasibility diagnostics begin, before runtime agent deployment and `LLM_REPORT_GROUNDING_AND_CLAIM_BOUNDARY_CONTRACT_001`.
 
@@ -487,7 +487,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`POWER_MDE_DIAGNOSTICS_RUNTIME_001`** → ✅ **`DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001`** → design cell structure runtime · **`AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001`** (post-planner method lane).
+**Ordered next:** ✅ … → ✅ **`DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001`** → scenario policy feasibility contract · **`AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001`** (post-planner method lane).
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 

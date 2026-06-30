@@ -2172,11 +2172,11 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Artifact:** [`docs/track_d/DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001_REPORT.md`](track_d/DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001_summary.json`](track_d/archives/DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001_summary.json) · [`panel_exp/validation/design_cell_structure_and_assignment_contract_001.py`](../panel_exp/validation/design_cell_structure_and_assignment_contract_001.py)
 
-**Status:** **`design_cell_structure_and_assignment_contract_defined_no_runtime_assignment_or_production_authorization`**
+**Status:** **`design_cell_contrast_and_scenario_contract_defined_no_runtime_assignment_or_scenario_optimization`**
 
-**Verdict:** Defines design-cell structure and assignment contract with cell roles, manipulation policies, assignment-readiness statuses, and constraint categories (`failed_scenarios: []`). Contract only; no runtime assignment.
+**Verdict:** Defines design-cell, contrast, and scenario contract with shared-control dependencies, cross-contrast conflicts, scenario feasibility statuses, and redesign/recheck resolution options (`failed_scenarios: []`). Contract only; no runtime assignment or scenario optimization.
 
-**Next:** `DESIGN_CELL_STRUCTURE_RUNTIME_001` · alternative: `DESIGN_METHOD_SUITABILITY_HANDOFF_CONTRACT_001`.
+**Next:** `DESIGN_SCENARIO_POLICY_FEASIBILITY_CONTRACT_001` · alternative: `DESIGN_CELL_STRUCTURE_RUNTIME_001`.
 
 ---
 

@@ -1665,7 +1665,7 @@
       "priority": "P1",
       "discovered_by": "POWER-MDE-DIAGNOSTICS-RUNTIME-001",
       "affected_combination": "design_cell_structure_and_assignment_contract",
-      "problem_class": ["design_cell_structure", "assignment_contract", "contract_only"],
+      "problem_class": ["design_cell_structure", "assignment_contract", "scenario_contract", "contract_only"],
       "evidence": {
         "depends_on": [
           "GEO_KPI_SPEND_DATA_PROFILER_001",
@@ -1673,17 +1673,22 @@
           "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001",
           "POWER_MDE_DIAGNOSTICS_RUNTIME_001"
         ],
-        "scope": "contract_only_no_runtime_assignment",
+        "scope": "contract_only_no_runtime_assignment_or_scenario_optimization",
         "design_cell_structure_contract_defined": true,
+        "contrast_structure_contract_defined": true,
+        "scenario_policy_plan_contract_defined": true,
+        "shared_control_dependency_contract_defined": true,
+        "cross_contrast_conflict_contract_defined": true,
+        "four_cell_common_control_scenario_documented": true,
         "failed_scenarios": [],
-        "recommended_next_artifact": "DESIGN_CELL_STRUCTURE_RUNTIME_001"
+        "recommended_next_artifact": "DESIGN_SCENARIO_POLICY_FEASIBILITY_CONTRACT_001"
       },
-      "current_decision": "DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_DEFINED_NO_RUNTIME_ASSIGNMENT_OR_PRODUCTION_AUTHORIZATION",
+      "current_decision": "DESIGN_CELL_CONTRAST_AND_SCENARIO_CONTRACT_DEFINED_NO_RUNTIME_ASSIGNMENT_OR_SCENARIO_OPTIMIZATION",
       "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
       "target_artifact": null,
       "revisit_trigger": null,
-      "decision_checkpoint": "Design cell structure contract before assignment runtime",
-      "blocking_policy": "Contract only; no runtime assignment or production claims",
+      "decision_checkpoint": "Design cell/contrast/scenario contract before scenario policy feasibility contract",
+      "blocking_policy": "Contract only; no runtime assignment, scenario optimization, or production claims",
       "terminal_decisions": ["RESTRICT", "CONTRACT_ONLY", "PROMOTE"],
       "resolution_artifact": "DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001"
     },
@@ -3591,18 +3596,19 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "DESIGN_CELL_STRUCTURE_RUNTIME_001",
+      "next_artifact": "DESIGN_SCENARIO_POLICY_FEASIBILITY_CONTRACT_001",
       "resolution_artifact": "DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001",
       "artifact_tags": [
         "design_cell_structure",
+        "contrast_structure",
+        "scenario_policy_plan",
+        "shared_control_dependency",
+        "cross_contrast_conflict",
+        "scenario_resolution",
         "assignment_contract",
-        "cell_role_semantics",
-        "manipulation_policy_semantics",
-        "assignment_constraint_categories",
-        "dosage_design_structure",
-        "budget_reallocation_structure",
+        "four_cell_common_control_scenario",
         "contract_only",
-        "no_runtime_assignment_or_production_authorization"
+        "no_runtime_assignment_or_scenario_optimization"
       ]
     }
   ]

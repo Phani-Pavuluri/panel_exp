@@ -11,13 +11,17 @@ from panel_exp.validation.design_cell_structure_and_assignment_contract_001 impo
     FUTURE_ASSIGNMENT_STATUSES,
     FUTURE_CELL_ROLES,
     FUTURE_CONTRACT_CONCEPTS,
+    FUTURE_CONTRAST_SPECIFIC_ROLES,
+    FUTURE_CONTRAST_TYPES,
     FUTURE_DESIGN_STRUCTURE_TYPES,
     FUTURE_IMPLEMENTATION_TESTS,
     FUTURE_MANIPULATION_POLICIES,
     FUTURE_OUTPUT_CONCEPTS,
+    FUTURE_SCENARIO_STATUSES,
     READINESS_GATES,
     RECOMMENDED_NEXT_ARTIFACT,
     ALTERNATIVE_NEXT_ARTIFACT,
+    SCENARIO_RESOLUTION_OPTIONS,
     _AUTH_FLAGS,
     build_design_cell_structure_assignment_contract,
     build_scenarios,
@@ -32,79 +36,78 @@ _SUMMARY = (
 _REPORT = _REPO / "docs/track_d/DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001_REPORT.md"
 
 
-def test_assignment_statuses_defined() -> None:
+def test_assignment_and_scenario_statuses_defined() -> None:
     contract = build_design_cell_structure_assignment_contract()
     assert contract.future_assignment_statuses == FUTURE_ASSIGNMENT_STATUSES
-    assert "DESIGN_ASSIGNMENT_READY_FOR_RUNTIME" in contract.future_assignment_statuses
-    assert "DESIGN_ASSIGNMENT_REQUIRES_METHOD_SUITABILITY_REVIEW" in contract.future_assignment_statuses
+    assert contract.future_scenario_statuses == FUTURE_SCENARIO_STATUSES
+    assert "DESIGN_ASSIGNMENT_BLOCKED_BY_SCENARIO_CONFLICT" in contract.future_assignment_statuses
+    assert "DESIGN_ASSIGNMENT_REQUIRES_REDESIGN_RECHECK" in contract.future_assignment_statuses
+    assert "SCENARIO_REQUIRES_COMMON_CONTROL_SPLIT" in contract.future_scenario_statuses
 
 
-def test_design_structure_types_defined() -> None:
+def test_contrast_types_defined() -> None:
     contract = build_design_cell_structure_assignment_contract()
-    assert contract.future_design_structure_types == FUTURE_DESIGN_STRUCTURE_TYPES
-    assert "SINGLE_TREATMENT_CONTROL" in contract.future_design_structure_types
-    assert "BUDGET_REALLOCATION" in contract.future_design_structure_types
+    assert contract.future_contrast_types == FUTURE_CONTRAST_TYPES
+    assert "GO_DARK_VS_BAU" in contract.future_contrast_types
+    assert "MULTI_CELL_COMMON_CONTROL_CONTRAST" in contract.future_contrast_types
 
 
-def test_cell_roles_defined() -> None:
+def test_design_structure_types_include_split_control() -> None:
     contract = build_design_cell_structure_assignment_contract()
-    assert contract.future_cell_roles == FUTURE_CELL_ROLES
-    assert "BUSINESS_AS_USUAL_CONTROL" in contract.future_cell_roles
-    assert "LOW_DOSAGE" in contract.future_cell_roles
+    assert "MULTI_CELL_SPLIT_CONTROL" in contract.future_design_structure_types
 
 
-def test_manipulation_policies_defined() -> None:
+def test_cell_and_contrast_roles_defined() -> None:
     contract = build_design_cell_structure_assignment_contract()
-    assert "GO_DARK" in FUTURE_MANIPULATION_POLICIES
-    assert "HEAVY_UP" in FUTURE_MANIPULATION_POLICIES
-    assert "DIFFERENCE_IN_POLICY" in FUTURE_MANIPULATION_POLICIES
+    assert "COMMON_REFERENCE_CELL" in contract.future_cell_roles
+    assert contract.future_contrast_specific_roles == FUTURE_CONTRAST_SPECIFIC_ROLES
+    assert "BAU_CONTROL_FOR_CONTRAST" in contract.future_contrast_specific_roles
+    assert "LOW_POLICY_ANCHOR_FOR_CONTRAST" in contract.future_contrast_specific_roles
 
 
-def test_readiness_gates_defined() -> None:
+def test_scenario_planner_contract_semantics() -> None:
     contract = build_design_cell_structure_assignment_contract()
-    assert contract.readiness_gates == READINESS_GATES
-    assert "power_mde_readiness_gate" in contract.readiness_gates
-    assert "assignment_constraint_gate" in contract.readiness_gates
+    assert contract.contrast_structure_contract_defined
+    assert contract.scenario_policy_plan_contract_defined
+    assert contract.shared_control_dependency_contract_defined
+    assert contract.cross_contrast_conflict_contract_defined
+    assert contract.scenario_resolution_contract_defined
+    assert contract.contrast_specific_role_semantics_defined
+    assert contract.four_cell_common_control_scenario_documented
+    assert contract.split_common_control_redesign_recheck_defined
 
 
-def test_assignment_boundary_and_semantics() -> None:
+def test_readiness_gates_include_scenario_gates() -> None:
+    contract = build_design_cell_structure_assignment_contract()
+    assert "contrast_structure_gate" in contract.readiness_gates
+    assert "scenario_policy_plan_gate" in contract.readiness_gates
+    assert "shared_control_dependency_gate" in contract.readiness_gates
+    assert len(contract.readiness_gates) == 13
+
+
+def test_constraint_categories_include_scenario_constraints() -> None:
+    assert "SHARED_CONTROL_DEPENDENCY_CONSTRAINT" in ASSIGNMENT_CONSTRAINT_CATEGORIES
+    assert "SCENARIO_POLICY_COMPATIBILITY_CONSTRAINT" in ASSIGNMENT_CONSTRAINT_CATEGORIES
+    assert "REDESIGN_RECHECK_CONSTRAINT" in ASSIGNMENT_CONSTRAINT_CATEGORIES
+    assert "split_common_control" in SCENARIO_RESOLUTION_OPTIONS
+
+
+def test_future_contract_concepts_include_scenario_types() -> None:
+    contract = build_design_cell_structure_assignment_contract()
+    assert "DesignContrastSpec" in contract.future_contract_concepts
+    assert "DesignScenarioSpec" in contract.future_contract_concepts
+    assert "CrossContrastConflict" in contract.future_contract_concepts
+    assert "SharedControlDependency" in contract.future_contract_concepts
+    assert "CrossContrastConflictReport" in contract.future_output_concepts
+    assert "ScenarioResolutionReport" in contract.future_output_concepts
+
+
+def test_assignment_boundary_and_treatments() -> None:
     contract = build_design_cell_structure_assignment_contract()
     assert contract.design_cell_structure_contract_defined
     assert contract.assignment_boundary_defined
-    assert contract.cell_role_semantics_defined
-    assert contract.manipulation_policy_semantics_defined
-    assert contract.assignment_constraint_categories_defined
-
-
-def test_design_structure_treatments() -> None:
-    contract = build_design_cell_structure_assignment_contract()
     assert contract.standard_go_dark_structure_defined
-    assert contract.heavy_up_structure_defined
-    assert contract.go_live_structure_defined
-    assert contract.budget_reallocation_structure_defined
-    assert contract.dosage_design_structure_defined
-    assert contract.difference_in_policy_structure_defined
     assert contract.business_as_usual_control_required_for_standard_go_dark
-
-
-def test_control_contamination_and_method_review() -> None:
-    contract = build_design_cell_structure_assignment_contract()
-    assert contract.control_contamination_preservation_defined
-    assert contract.method_suitability_review_required_for_dosage
-
-
-def test_constraint_categories() -> None:
-    assert len(ASSIGNMENT_CONSTRAINT_CATEGORIES) >= 14
-    assert "BUSINESS_AS_USUAL_CONTROL_CONSTRAINT" in ASSIGNMENT_CONSTRAINT_CATEGORIES
-    assert "BUDGET_REALLOCATION_MAPPING_CONSTRAINT" in ASSIGNMENT_CONSTRAINT_CATEGORIES
-
-
-def test_future_contract_and_output_concepts() -> None:
-    contract = build_design_cell_structure_assignment_contract()
-    assert contract.future_contract_concepts == FUTURE_CONTRACT_CONCEPTS
-    assert contract.future_output_concepts == FUTURE_OUTPUT_CONCEPTS
-    assert "DesignCellSpec" in contract.future_contract_concepts
-    assert "DesignClaimBoundaryReport" in contract.future_output_concepts
 
 
 def test_depends_on_power_mde_runtime() -> None:
@@ -117,6 +120,7 @@ def test_all_authorization_flags_false() -> None:
     contract = build_design_cell_structure_assignment_contract()
     for flag, expected in _AUTH_FLAGS.items():
         assert contract.authorization_flags[flag] is expected
+    assert not contract.authorization_flags["runtime_scenario_planner_implemented"]
 
 
 def test_validate_contract() -> None:
@@ -131,9 +135,18 @@ def test_harness_scenarios_pass() -> None:
     assert not failed, failed
 
 
-def test_future_tests_listed() -> None:
-    assert len(FUTURE_IMPLEMENTATION_TESTS) >= 15
-    assert "assignment_ready_does_not_assign_geo_units" in FUTURE_IMPLEMENTATION_TESTS
+def test_future_tests_include_scenario_planner_cases() -> None:
+    assert len(FUTURE_IMPLEMENTATION_TESTS) >= 22
+    assert "missing_contrast_specs_blocks_scenario_feasibility" in FUTURE_IMPLEMENTATION_TESTS
+    assert "split_common_control_emits_redesign_recheck_requirement" in FUTURE_IMPLEMENTATION_TESTS
+    assert "raising_common_control_helps_go_dark_weakens_heavy_up" in FUTURE_IMPLEMENTATION_TESTS
+
+
+def test_recommended_next_artifact() -> None:
+    contract = build_design_cell_structure_assignment_contract()
+    assert contract.recommended_next_artifact == RECOMMENDED_NEXT_ARTIFACT
+    assert contract.recommended_next_artifact == "DESIGN_SCENARIO_POLICY_FEASIBILITY_CONTRACT_001"
+    assert contract.alternative_next_artifact == ALTERNATIVE_NEXT_ARTIFACT
 
 
 def test_summary_json_and_report() -> None:
@@ -143,19 +156,19 @@ def test_summary_json_and_report() -> None:
     data = json.loads(_SUMMARY.read_text(encoding="utf-8"))
     assert data["artifact_id"] == "DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001"
     assert data["failed_scenarios"] == []
-    assert data["design_cell_structure_contract_defined"] is True
-    assert data["runtime_design_generation_implemented"] is False
-    assert data["recommended_next_artifact"] == RECOMMENDED_NEXT_ARTIFACT
-    assert data["alternative_next_artifact"] == ALTERNATIVE_NEXT_ARTIFACT
+    assert data["contrast_structure_contract_defined"] is True
+    assert data["scenario_policy_plan_contract_defined"] is True
+    assert data["four_cell_common_control_scenario_documented"] is True
+    assert data["runtime_scenario_planner_implemented"] is False
     assert data["final_verdict"] == (
-        "design_cell_structure_and_assignment_contract_defined_no_runtime_assignment_or_production_authorization"
+        "design_cell_contrast_and_scenario_contract_defined_no_runtime_assignment_or_scenario_optimization"
     )
 
 
-def test_report_covers_assignment_boundary() -> None:
+def test_report_covers_scenario_planner() -> None:
     text = _REPORT.read_text(encoding="utf-8")
-    assert "DESIGN_ASSIGNMENT_READY_FOR_RUNTIME" in text
-    assert "does not mean" in text.lower() or "not powered" in text.lower()
-    assert "standard go-dark" in text.lower()
-    assert "dosage" in text.lower()
-    assert "budget reallocation" in text.lower()
+    assert "Scenario A" in text
+    assert "Scenario E" in text
+    assert "cross-contrast" in text.lower() or "CrossContrastConflict" in text
+    assert "split common control" in text.lower()
+    assert "contrast-specific" in text.lower()

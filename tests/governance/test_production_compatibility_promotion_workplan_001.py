@@ -776,5 +776,6 @@ def test_governance_design_cell_structure_assignment_contract_lane_complete() ->
         if b["lane_id"] == "DESIGN-CELL-STRUCTURE-AND-ASSIGNMENT-CONTRACT-001"
     )
     assert lane["status"] == "complete"
-    assert lane["next_artifact"] == "DESIGN_CELL_STRUCTURE_RUNTIME_001"
+    assert lane["next_artifact"] == "DESIGN_SCENARIO_POLICY_FEASIBILITY_CONTRACT_001"
     assert lane["resolution_artifact"] == "DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001"
+    assert "scenario_policy_plan" in lane["artifact_tags"]
