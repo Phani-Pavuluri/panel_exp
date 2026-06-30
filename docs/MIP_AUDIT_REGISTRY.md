@@ -2164,7 +2164,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Implements conservative power/MDE readiness runtime with descriptive noise summaries and spend/estimand compatibility (`failed_scenarios: []`). No formal power/MDE or production authorization.
 
-**Next:** `DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001` · alternative: `POWER_MDE_FORMULA_AND_SIMULATION_METHOD_REGISTRY_001`.
+**Next:** `DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001` (completed — see design cell structure assignment contract report).
+
+---
+
+## DESIGN-CELL-STRUCTURE-AND-ASSIGNMENT-CONTRACT-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001_REPORT.md`](track_d/DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001_summary.json`](track_d/archives/DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001_summary.json) · [`panel_exp/validation/design_cell_structure_and_assignment_contract_001.py`](../panel_exp/validation/design_cell_structure_and_assignment_contract_001.py)
+
+**Status:** **`design_cell_structure_and_assignment_contract_defined_no_runtime_assignment_or_production_authorization`**
+
+**Verdict:** Defines design-cell structure and assignment contract with cell roles, manipulation policies, assignment-readiness statuses, and constraint categories (`failed_scenarios: []`). Contract only; no runtime assignment.
+
+**Next:** `DESIGN_CELL_STRUCTURE_RUNTIME_001` · alternative: `DESIGN_METHOD_SUITABILITY_HANDOFF_CONTRACT_001`.
 
 ---
 

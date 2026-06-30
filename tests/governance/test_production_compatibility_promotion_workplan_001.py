@@ -761,3 +761,20 @@ def test_governance_power_mde_diagnostics_runtime_lane_complete() -> None:
     assert lane["status"] == "complete"
     assert lane["next_artifact"] == "DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001"
     assert lane["resolution_artifact"] == "POWER_MDE_DIAGNOSTICS_RUNTIME_001"
+
+
+def test_governance_design_cell_structure_assignment_contract_resolved() -> None:
+    inv = investigations_by_id()["INV-DESIGN-CELL-STRUCTURE-AND-ASSIGNMENT-CONTRACT-001"]
+    assert inv.status == "RESOLVED"
+    assert inv.resolution_artifact == "DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001"
+
+
+def test_governance_design_cell_structure_assignment_contract_lane_complete() -> None:
+    reg = load_registry()
+    lane = next(
+        b for b in reg["roadmap_lane_bindings"]
+        if b["lane_id"] == "DESIGN-CELL-STRUCTURE-AND-ASSIGNMENT-CONTRACT-001"
+    )
+    assert lane["status"] == "complete"
+    assert lane["next_artifact"] == "DESIGN_CELL_STRUCTURE_RUNTIME_001"
+    assert lane["resolution_artifact"] == "DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001"

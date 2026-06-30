@@ -1,0 +1,976 @@
+{
+  "artifact_id": "DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001",
+  "artifact_type": "design_cell_structure_and_assignment_contract",
+  "artifact_version": "1.0.0",
+  "base_commit": "1861c9521ed0f761137e0e44d4dfc78b32493b1c",
+  "status": "completed",
+  "verdict": "design_cell_structure_and_assignment_contract_defined_no_runtime_assignment_or_production_authorization",
+  "final_verdict": "design_cell_structure_and_assignment_contract_defined_no_runtime_assignment_or_production_authorization",
+  "scope": "contract_only_no_runtime_assignment",
+  "depends_on": [
+    "GEO_KPI_SPEND_DATA_PROFILER_001",
+    "GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001",
+    "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001",
+    "POWER_MDE_DIAGNOSTICS_RUNTIME_001"
+  ],
+  "design_cell_structure_contract_defined": true,
+  "assignment_boundary_defined": true,
+  "cell_role_semantics_defined": true,
+  "manipulation_policy_semantics_defined": true,
+  "assignment_constraint_categories_defined": true,
+  "standard_go_dark_structure_defined": true,
+  "heavy_up_structure_defined": true,
+  "go_live_structure_defined": true,
+  "budget_reallocation_structure_defined": true,
+  "dosage_design_structure_defined": true,
+  "difference_in_policy_structure_defined": true,
+  "business_as_usual_control_required_for_standard_go_dark": true,
+  "control_contamination_preservation_defined": true,
+  "method_suitability_review_required_for_dosage": true,
+  "future_design_structure_types": [
+    "SINGLE_TREATMENT_CONTROL",
+    "MULTI_CELL_COMMON_CONTROL",
+    "MATCHED_PAIR",
+    "RERANDOMIZED_BLOCK",
+    "THINNING_DESIGN",
+    "QUICK_BLOCK",
+    "DOSAGE_CONTRAST",
+    "DIFFERENCE_IN_POLICY",
+    "BUDGET_REALLOCATION",
+    "GO_LIVE",
+    "UNKNOWN"
+  ],
+  "future_cell_roles": [
+    "TREATMENT",
+    "CONTROL",
+    "COMMON_CONTROL",
+    "BUSINESS_AS_USUAL_CONTROL",
+    "LOW_DOSAGE",
+    "MEDIUM_DOSAGE",
+    "HIGH_DOSAGE",
+    "SOURCE_REDUCTION",
+    "DESTINATION_INCREASE",
+    "GO_LIVE_CELL",
+    "HOLDOUT",
+    "EXCLUDED",
+    "UNKNOWN"
+  ],
+  "future_manipulation_policies": [
+    "BUSINESS_AS_USUAL",
+    "GO_DARK",
+    "HEAVY_UP",
+    "GO_LIVE",
+    "BUDGET_REALLOCATION_SOURCE",
+    "BUDGET_REALLOCATION_DESTINATION",
+    "LOW_SPEND_POLICY",
+    "HIGH_SPEND_POLICY",
+    "DOSAGE_POLICY",
+    "DIFFERENCE_IN_POLICY",
+    "UNKNOWN"
+  ],
+  "future_assignment_statuses": [
+    "DESIGN_ASSIGNMENT_READY_FOR_RUNTIME",
+    "DESIGN_ASSIGNMENT_READY_WITH_WARNINGS",
+    "DESIGN_ASSIGNMENT_PROVISIONAL",
+    "DESIGN_ASSIGNMENT_BLOCKED_BY_DATA_READINESS",
+    "DESIGN_ASSIGNMENT_BLOCKED_BY_GEO_FEASIBILITY",
+    "DESIGN_ASSIGNMENT_BLOCKED_BY_SPEND_FEASIBILITY",
+    "DESIGN_ASSIGNMENT_BLOCKED_BY_POWER_MDE_READINESS",
+    "DESIGN_ASSIGNMENT_BLOCKED_BY_CELL_STRUCTURE",
+    "DESIGN_ASSIGNMENT_BLOCKED_BY_CONSTRAINTS",
+    "DESIGN_ASSIGNMENT_REQUIRES_DOSAGE_ESTIMAND_REVIEW",
+    "DESIGN_ASSIGNMENT_REQUIRES_METHOD_SUITABILITY_REVIEW",
+    "DESIGN_ASSIGNMENT_NOT_EVALUATED"
+  ],
+  "readiness_gates_defined": [
+    "profiler_gate",
+    "geo_unit_market_feasibility_gate",
+    "spend_feasibility_gate",
+    "power_mde_readiness_gate",
+    "cell_structure_declaration_gate",
+    "cell_role_validity_gate",
+    "manipulation_policy_compatibility_gate",
+    "assignment_constraint_gate",
+    "estimand_compatibility_gate",
+    "method_suitability_precheck_gate"
+  ],
+  "future_contract_concepts_defined": [
+    "DesignCellStructureInput",
+    "DesignCellStructureConfig",
+    "DesignCellStructureReport",
+    "DesignCellSpec",
+    "DesignCellRole",
+    "DesignManipulationPolicy",
+    "DesignStructureType",
+    "DesignAssignmentConstraint",
+    "DesignAssignmentConstraintSeverity",
+    "DesignAssignmentReadinessStatus",
+    "DesignCellStructureIssue",
+    "DesignCellStructureSeverity",
+    "DesignCellStructureBoundary",
+    "DesignSpendCompatibilitySpec",
+    "DesignPowerMdeCompatibilitySpec",
+    "DesignEstimandCompatibilitySpec"
+  ],
+  "future_output_concepts_defined": [
+    "DesignCellStructureReport",
+    "DesignCellReadinessReport",
+    "DesignCellRoleReport",
+    "DesignAssignmentConstraintReport",
+    "DesignSpendCompatibilityReport",
+    "DesignPowerMdeCompatibilityReport",
+    "DesignEstimandCompatibilityReport",
+    "DesignClaimBoundaryReport"
+  ],
+  "assignment_constraint_categories": [
+    "DATA_ELIGIBILITY_CONSTRAINT",
+    "GEO_FEASIBILITY_CONSTRAINT",
+    "SPEND_FEASIBILITY_CONSTRAINT",
+    "POWER_MDE_READINESS_CONSTRAINT",
+    "CELL_SIZE_CONSTRAINT",
+    "MUTUAL_EXCLUSIVITY_CONSTRAINT",
+    "BUSINESS_AS_USUAL_CONTROL_CONSTRAINT",
+    "DOSAGE_ESTIMAND_CONSTRAINT",
+    "BUDGET_REALLOCATION_MAPPING_CONSTRAINT",
+    "MARKET_EXCLUSION_CONSTRAINT",
+    "GEO_HIERARCHY_CONSTRAINT",
+    "BALANCE_CONSTRAINT",
+    "INTERFERENCE_RISK_CONSTRAINT",
+    "METHOD_SUITABILITY_CONSTRAINT",
+    "PRODUCTION_AUTHORIZATION_CONSTRAINT"
+  ],
+  "input_dependencies": [
+    "profiler_report",
+    "geo_unit_market_feasibility_report",
+    "spend_requirement_manipulation_feasibility_report",
+    "power_mde_diagnostics_report",
+    "eligible_geo_units",
+    "excluded_geo_units",
+    "candidate_cell_count",
+    "candidate_cell_roles",
+    "candidate_manipulation_policies",
+    "candidate_design_structure_type",
+    "minimum_units_per_cell",
+    "maximum_units_per_cell",
+    "geo_hierarchy",
+    "region/country/business-unit constraints",
+    "channel/campaign constraints",
+    "spend feasibility outputs",
+    "required_spend_delta",
+    "candidate_manipulation_options",
+    "historical_support_status",
+    "control_contamination_flags",
+    "dosage_contrast_estimand_required",
+    "difference_in_policy_required",
+    "business_as_usual_control_preserved",
+    "method_suitability_review_required",
+    "power_mde_runtime_status",
+    "power_mde_runtime_mode"
+  ],
+  "future_implementation_tests_required": [
+    "blocked_profiler_blocks_assignment_readiness",
+    "blocked_geo_feasibility_blocks_assignment_readiness",
+    "blocked_spend_feasibility_blocks_spend_compatible_assignment",
+    "blocked_power_mde_readiness_blocks_power_ready_assignment",
+    "missing_cell_structure_blocks_or_provisional",
+    "invalid_cell_role_blocks",
+    "standard_go_dark_requires_bau_control",
+    "manipulated_control_blocks_standard_go_dark_interpretation",
+    "heavy_up_preserves_historical_support_warning",
+    "go_live_requires_near_zero_baseline_support",
+    "budget_reallocation_requires_source_destination_mapping",
+    "dosage_contrast_requires_dosage_estimand",
+    "difference_in_policy_requires_estimand_shift",
+    "method_suitability_review_required_blocks_estimator_inference_readiness",
+    "assignment_ready_does_not_assign_geo_units",
+    "assignment_ready_does_not_set_powered_design_roi_production_flags",
+    "no_fixture_specific_branching"
+  ],
+  "contract_positive_flags": {
+    "design_cell_structure_contract_defined": true,
+    "assignment_boundary_defined": true,
+    "cell_role_semantics_defined": true,
+    "manipulation_policy_semantics_defined": true,
+    "assignment_constraint_categories_defined": true,
+    "dosage_design_structure_defined": true,
+    "budget_reallocation_structure_defined": true,
+    "claim_boundaries_defined": true
+  },
+  "runtime_design_generation_implemented": false,
+  "geo_assignment_computed": false,
+  "randomization_computed": false,
+  "rerandomization_computed": false,
+  "matching_optimization_computed": false,
+  "power_computed": false,
+  "mde_computed": false,
+  "p_value_computed": false,
+  "confidence_interval_computed": false,
+  "lift_computed": false,
+  "roi_computed": false,
+  "budget_optimization_authorized": false,
+  "candidate_design_authorized": false,
+  "treatment_control_assignment_authorized": false,
+  "estimator_inference_authorized": false,
+  "mmm_runtime_calls_implemented": false,
+  "mmm_calibration_authorized": false,
+  "production_authorization_granted": false,
+  "llm_decisioning_authorized": false,
+  "authorization_flags": {
+    "runtime_design_generation_implemented": false,
+    "geo_assignment_computed": false,
+    "randomization_computed": false,
+    "rerandomization_computed": false,
+    "matching_optimization_computed": false,
+    "power_computed": false,
+    "mde_computed": false,
+    "p_value_computed": false,
+    "confidence_interval_computed": false,
+    "lift_computed": false,
+    "roi_computed": false,
+    "budget_optimization_authorized": false,
+    "candidate_design_authorized": false,
+    "treatment_control_assignment_authorized": false,
+    "estimator_inference_authorized": false,
+    "mmm_runtime_calls_implemented": false,
+    "mmm_calibration_authorized": false,
+    "production_authorization_granted": false,
+    "llm_decisioning_authorized": false
+  },
+  "recommended_next_artifact": "DESIGN_CELL_STRUCTURE_RUNTIME_001",
+  "alternative_next_artifact": "DESIGN_METHOD_SUITABILITY_HANDOFF_CONTRACT_001",
+  "generated_at": "2026-06-30T20:15:59.225598+00:00",
+  "git_commit": "1861c9521ed0f761137e0e44d4dfc78b32493b1c",
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "assignment_status_DESIGN_ASSIGNMENT_READY_FOR_RUNTIME",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_DESIGN_ASSIGNMENT_READY_WITH_WARNINGS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_DESIGN_ASSIGNMENT_PROVISIONAL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_DESIGN_ASSIGNMENT_BLOCKED_BY_DATA_READINESS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_DESIGN_ASSIGNMENT_BLOCKED_BY_GEO_FEASIBILITY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_DESIGN_ASSIGNMENT_BLOCKED_BY_SPEND_FEASIBILITY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_DESIGN_ASSIGNMENT_BLOCKED_BY_POWER_MDE_READINESS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_DESIGN_ASSIGNMENT_BLOCKED_BY_CELL_STRUCTURE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_DESIGN_ASSIGNMENT_BLOCKED_BY_CONSTRAINTS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_DESIGN_ASSIGNMENT_REQUIRES_DOSAGE_ESTIMAND_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_DESIGN_ASSIGNMENT_REQUIRES_METHOD_SUITABILITY_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_DESIGN_ASSIGNMENT_NOT_EVALUATED",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_structure_SINGLE_TREATMENT_CONTROL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_structure_MULTI_CELL_COMMON_CONTROL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_structure_MATCHED_PAIR",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_structure_RERANDOMIZED_BLOCK",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_structure_THINNING_DESIGN",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_structure_QUICK_BLOCK",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_structure_DOSAGE_CONTRAST",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_structure_DIFFERENCE_IN_POLICY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_structure_BUDGET_REALLOCATION",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_structure_GO_LIVE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "design_structure_UNKNOWN",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_role_TREATMENT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_role_CONTROL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_role_COMMON_CONTROL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_role_BUSINESS_AS_USUAL_CONTROL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_role_LOW_DOSAGE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_role_MEDIUM_DOSAGE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_role_HIGH_DOSAGE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_role_SOURCE_REDUCTION",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_role_DESTINATION_INCREASE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_role_GO_LIVE_CELL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_role_HOLDOUT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_role_EXCLUDED",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_role_UNKNOWN",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "manipulation_policy_BUSINESS_AS_USUAL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "manipulation_policy_GO_DARK",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "manipulation_policy_HEAVY_UP",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "manipulation_policy_GO_LIVE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "manipulation_policy_BUDGET_REALLOCATION_SOURCE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "manipulation_policy_BUDGET_REALLOCATION_DESTINATION",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "manipulation_policy_LOW_SPEND_POLICY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "manipulation_policy_HIGH_SPEND_POLICY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "manipulation_policy_DOSAGE_POLICY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "manipulation_policy_DIFFERENCE_IN_POLICY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "manipulation_policy_UNKNOWN",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_profiler_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_geo_unit_market_feasibility_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_spend_feasibility_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_power_mde_readiness_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_cell_structure_declaration_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_cell_role_validity_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_manipulation_policy_compatibility_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_assignment_constraint_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_estimand_compatibility_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_method_suitability_precheck_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_DATA_ELIGIBILITY_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_GEO_FEASIBILITY_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_SPEND_FEASIBILITY_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_POWER_MDE_READINESS_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_CELL_SIZE_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_MUTUAL_EXCLUSIVITY_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_BUSINESS_AS_USUAL_CONTROL_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_DOSAGE_ESTIMAND_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_BUDGET_REALLOCATION_MAPPING_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_MARKET_EXCLUSION_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_GEO_HIERARCHY_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_BALANCE_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_INTERFERENCE_RISK_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_METHOD_SUITABILITY_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_PRODUCTION_AUTHORIZATION_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_boundary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "standard_go_dark",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "dosage_structure",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "budget_reallocation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "bau_control_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_DesignCellStructureInput",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_DesignCellStructureConfig",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_DesignCellStructureReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_DesignCellSpec",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_DesignCellRole",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_DesignManipulationPolicy",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_DesignStructureType",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_DesignAssignmentConstraint",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_DesignAssignmentConstraintSeverity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_DesignAssignmentReadinessStatus",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_DesignCellStructureIssue",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_DesignCellStructureSeverity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_DesignCellStructureBoundary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_DesignSpendCompatibilitySpec",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_DesignPowerMdeCompatibilitySpec",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_DesignEstimandCompatibilitySpec",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_DesignCellStructureReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_DesignCellReadinessReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_DesignCellRoleReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_DesignAssignmentConstraintReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_DesignSpendCompatibilityReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_DesignPowerMdeCompatibilityReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_DesignEstimandCompatibilityReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_DesignClaimBoundaryReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_blocked_profiler_blocks_assignment_readiness",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_blocked_geo_feasibility_blocks_assignment_readiness",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_blocked_spend_feasibility_blocks_spend_compatible_assignment",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_blocked_power_mde_readiness_blocks_power_ready_assignment",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_missing_cell_structure_blocks_or_provisional",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_invalid_cell_role_blocks",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_standard_go_dark_requires_bau_control",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_manipulated_control_blocks_standard_go_dark_interpretation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_heavy_up_preserves_historical_support_warning",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_go_live_requires_near_zero_baseline_support",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_budget_reallocation_requires_source_destination_mapping",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_dosage_contrast_requires_dosage_estimand",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_difference_in_policy_requires_estimand_shift",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_method_suitability_review_required_blocks_estimator_inference_readiness",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_assignment_ready_does_not_assign_geo_units",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_assignment_ready_does_not_set_powered_design_roi_production_flags",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_no_fixture_specific_branching",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_runtime_design_generation_implemented_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_geo_assignment_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_randomization_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_rerandomization_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_matching_optimization_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_power_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mde_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_p_value_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_confidence_interval_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_lift_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_roi_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_candidate_design_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_treatment_control_assignment_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_estimator_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_runtime_calls_implemented_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_calibration_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_authorization_granted_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "final_verdict_matches",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_valid",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "issues": []
+  },
+  "non_goals": [
+    "no_runtime_design_generation",
+    "no_geo_unit_assignment",
+    "no_randomization",
+    "no_rerandomization",
+    "no_matching_optimization",
+    "no_power_mde_computation",
+    "no_p_values_or_confidence_intervals",
+    "no_lift_or_roi_computation",
+    "no_budget_optimization",
+    "no_estimator_inference_selection",
+    "no_mmm_runtime_calls",
+    "no_mmm_calibration",
+    "no_llm_decisioning",
+    "no_production_authorization"
+  ]
+}

@@ -1292,6 +1292,22 @@ class TestOpenInvestigationRegistry001:
         assert inv.status == "RESOLVED"
         assert inv.resolution_artifact == "POWER_MDE_DIAGNOSTICS_RUNTIME_001"
 
+    def test_design_cell_structure_assignment_contract_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "DESIGN-CELL-STRUCTURE-AND-ASSIGNMENT-CONTRACT-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001"
+        assert lane["next_artifact"] == "DESIGN_CELL_STRUCTURE_RUNTIME_001"
+        assert "INV-DESIGN-CELL-STRUCTURE-AND-ASSIGNMENT-CONTRACT-001" in lane["resolved_investigations"]
+
+    def test_design_cell_structure_assignment_contract_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-DESIGN-CELL-STRUCTURE-AND-ASSIGNMENT-CONTRACT-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001"
+
     def test_production_authorization_release_gate_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"]
         assert inv.status == "RESOLVED"
