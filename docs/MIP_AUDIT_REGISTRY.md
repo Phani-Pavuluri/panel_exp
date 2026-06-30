@@ -2140,7 +2140,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Defines spend-to-power/MDE handoff contract consuming spend diagnostics outputs (`failed_scenarios: []`). Preserves KPI MDE units, response bridge provenance, dosage estimand handoff. Contract only; no runtime power/MDE.
 
-**Next:** `POWER_MDE_DIAGNOSTICS_LANE_CONTRACT_001`.
+**Next:** `POWER_MDE_DIAGNOSTICS_LANE_CONTRACT_001` (completed — see power MDE diagnostics lane contract report).
+
+---
+
+## POWER-MDE-DIAGNOSTICS-LANE-CONTRACT-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/POWER_MDE_DIAGNOSTICS_LANE_CONTRACT_001_REPORT.md`](track_d/POWER_MDE_DIAGNOSTICS_LANE_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/POWER_MDE_DIAGNOSTICS_LANE_CONTRACT_001_summary.json`](track_d/archives/POWER_MDE_DIAGNOSTICS_LANE_CONTRACT_001_summary.json) · [`panel_exp/validation/power_mde_diagnostics_lane_contract_001.py`](../panel_exp/validation/power_mde_diagnostics_lane_contract_001.py)
+
+**Status:** **`power_mde_diagnostics_lane_contract_defined_no_runtime_power_mde_or_production_authorization`**
+
+**Verdict:** Defines power/MDE diagnostics lane contract with readiness gates, runtime modes, KPI MDE representation, noise/history and cell structure requirements (`failed_scenarios: []`). Contract only; no runtime power/MDE.
+
+**Next:** `POWER_MDE_DIAGNOSTICS_RUNTIME_001`.
 
 ---
 

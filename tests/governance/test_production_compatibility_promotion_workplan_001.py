@@ -727,3 +727,20 @@ def test_governance_power_mde_spend_feasibility_handoff_contract_lane_complete()
     assert lane["status"] == "complete"
     assert lane["next_artifact"] == "POWER_MDE_DIAGNOSTICS_LANE_CONTRACT_001"
     assert lane["resolution_artifact"] == "POWER_MDE_REQUIREMENT_AND_SPEND_FEASIBILITY_HANDOFF_CONTRACT_001"
+
+
+def test_governance_power_mde_diagnostics_lane_contract_resolved() -> None:
+    inv = investigations_by_id()["INV-POWER-MDE-DIAGNOSTICS-LANE-CONTRACT-001"]
+    assert inv.status == "RESOLVED"
+    assert inv.resolution_artifact == "POWER_MDE_DIAGNOSTICS_LANE_CONTRACT_001"
+
+
+def test_governance_power_mde_diagnostics_lane_contract_lane_complete() -> None:
+    reg = load_registry()
+    lane = next(
+        b for b in reg["roadmap_lane_bindings"]
+        if b["lane_id"] == "POWER-MDE-DIAGNOSTICS-LANE-CONTRACT-001"
+    )
+    assert lane["status"] == "complete"
+    assert lane["next_artifact"] == "POWER_MDE_DIAGNOSTICS_RUNTIME_001"
+    assert lane["resolution_artifact"] == "POWER_MDE_DIAGNOSTICS_LANE_CONTRACT_001"
