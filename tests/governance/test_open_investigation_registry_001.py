@@ -1311,6 +1311,25 @@ class TestOpenInvestigationRegistry001:
             "DESIGN_CELL_CONTRAST_AND_SCENARIO_CONTRACT_DEFINED_NO_RUNTIME_ASSIGNMENT_OR_SCENARIO_OPTIMIZATION"
         )
 
+    def test_design_scenario_policy_feasibility_contract_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "DESIGN-SCENARIO-POLICY-FEASIBILITY-CONTRACT-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "DESIGN_SCENARIO_POLICY_FEASIBILITY_CONTRACT_001"
+        assert lane["next_artifact"] == "DESIGN_SCENARIO_POLICY_FEASIBILITY_RUNTIME_001"
+        assert "INV-DESIGN-SCENARIO-POLICY-FEASIBILITY-CONTRACT-001" in lane["resolved_investigations"]
+
+    def test_design_scenario_policy_feasibility_contract_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-DESIGN-SCENARIO-POLICY-FEASIBILITY-CONTRACT-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "DESIGN_SCENARIO_POLICY_FEASIBILITY_CONTRACT_001"
+        assert inv.current_decision == (
+            "DESIGN_SCENARIO_POLICY_FEASIBILITY_CONTRACT_DEFINED_NO_RUNTIME_SCENARIO_PLANNER_OR_OPTIMIZATION"
+        )
+
     def test_production_authorization_release_gate_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"]
         assert inv.status == "RESOLVED"

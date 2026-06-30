@@ -779,3 +779,21 @@ def test_governance_design_cell_structure_assignment_contract_lane_complete() ->
     assert lane["next_artifact"] == "DESIGN_SCENARIO_POLICY_FEASIBILITY_CONTRACT_001"
     assert lane["resolution_artifact"] == "DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001"
     assert "scenario_policy_plan" in lane["artifact_tags"]
+
+
+def test_governance_design_scenario_policy_feasibility_contract_resolved() -> None:
+    inv = investigations_by_id()["INV-DESIGN-SCENARIO-POLICY-FEASIBILITY-CONTRACT-001"]
+    assert inv.status == "RESOLVED"
+    assert inv.resolution_artifact == "DESIGN_SCENARIO_POLICY_FEASIBILITY_CONTRACT_001"
+
+
+def test_governance_design_scenario_policy_feasibility_contract_lane_complete() -> None:
+    reg = load_registry()
+    lane = next(
+        b for b in reg["roadmap_lane_bindings"]
+        if b["lane_id"] == "DESIGN-SCENARIO-POLICY-FEASIBILITY-CONTRACT-001"
+    )
+    assert lane["status"] == "complete"
+    assert lane["next_artifact"] == "DESIGN_SCENARIO_POLICY_FEASIBILITY_RUNTIME_001"
+    assert lane["resolution_artifact"] == "DESIGN_SCENARIO_POLICY_FEASIBILITY_CONTRACT_001"
+    assert "required_vs_achieved_spend_contrast" in lane["artifact_tags"]

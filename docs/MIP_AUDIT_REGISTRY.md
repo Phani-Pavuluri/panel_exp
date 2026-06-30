@@ -2176,7 +2176,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Defines design-cell, contrast, and scenario contract with shared-control dependencies, cross-contrast conflicts, scenario feasibility statuses, and redesign/recheck resolution options (`failed_scenarios: []`). Contract only; no runtime assignment or scenario optimization.
 
-**Next:** `DESIGN_SCENARIO_POLICY_FEASIBILITY_CONTRACT_001` · alternative: `DESIGN_CELL_STRUCTURE_RUNTIME_001`.
+**Next:** `DESIGN_SCENARIO_POLICY_FEASIBILITY_CONTRACT_001` (completed — see scenario policy feasibility contract report).
+
+---
+
+## DESIGN-SCENARIO-POLICY-FEASIBILITY-CONTRACT-001 (2026-06-30)
+
+**Artifact:** [`docs/track_d/DESIGN_SCENARIO_POLICY_FEASIBILITY_CONTRACT_001_REPORT.md`](track_d/DESIGN_SCENARIO_POLICY_FEASIBILITY_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/DESIGN_SCENARIO_POLICY_FEASIBILITY_CONTRACT_001_summary.json`](track_d/archives/DESIGN_SCENARIO_POLICY_FEASIBILITY_CONTRACT_001_summary.json) · [`panel_exp/validation/design_scenario_policy_feasibility_contract_001.py`](../panel_exp/validation/design_scenario_policy_feasibility_contract_001.py)
+
+**Status:** **`design_scenario_policy_feasibility_contract_defined_no_runtime_scenario_planner_or_optimization`**
+
+**Verdict:** Defines scenario-policy feasibility contract with required vs achieved spend contrast, historical support, shared-control conflicts, estimand shifts, split-control redesign/recheck, and scenario/contrast feasibility statuses (`failed_scenarios: []`). Contract only; no runtime scenario enumeration or optimization.
+
+**Next:** `DESIGN_SCENARIO_POLICY_FEASIBILITY_RUNTIME_001` · alternative: `DESIGN_SCENARIO_POLICY_FEASIBILITY_METADATA_001`.
 
 ---
 

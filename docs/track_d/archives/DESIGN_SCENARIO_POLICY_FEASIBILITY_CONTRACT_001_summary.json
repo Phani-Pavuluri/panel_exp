@@ -1,0 +1,1111 @@
+{
+  "artifact_id": "DESIGN_SCENARIO_POLICY_FEASIBILITY_CONTRACT_001",
+  "artifact_type": "design_scenario_policy_feasibility_contract",
+  "artifact_version": "1.0.0",
+  "base_commit": "e121dff18b5713e96e8f097dfcc5a3deb86cca86",
+  "status": "completed",
+  "verdict": "design_scenario_policy_feasibility_contract_defined_no_runtime_scenario_planner_or_optimization",
+  "final_verdict": "design_scenario_policy_feasibility_contract_defined_no_runtime_scenario_planner_or_optimization",
+  "scope": "contract_only_no_runtime_scenario_planner_or_optimization",
+  "depends_on": [
+    "GEO_KPI_SPEND_DATA_PROFILER_001",
+    "GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001",
+    "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001",
+    "POWER_MDE_DIAGNOSTICS_RUNTIME_001",
+    "DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001"
+  ],
+  "scenario_policy_feasibility_contract_defined": true,
+  "required_vs_achieved_spend_contrast_defined": true,
+  "historical_support_contract_defined": true,
+  "shared_control_conflict_contract_defined": true,
+  "split_control_redesign_recheck_defined": true,
+  "scenario_resolution_options_defined": true,
+  "four_cell_common_control_example_defined": true,
+  "future_scenario_statuses": [
+    "SCENARIO_FEASIBLE_UNDER_CURRENT_STRUCTURE",
+    "SCENARIO_PARTIALLY_FEASIBLE",
+    "SCENARIO_REQUIRES_ESTIMAND_SHIFT",
+    "SCENARIO_REQUIRES_COMMON_CONTROL_MANIPULATION",
+    "SCENARIO_REQUIRES_COMMON_CONTROL_SPLIT",
+    "SCENARIO_REQUIRES_POWER_MDE_RECHECK",
+    "SCENARIO_REQUIRES_ASSIGNMENT_RECHECK",
+    "SCENARIO_REQUIRES_METHOD_SUITABILITY_REVIEW",
+    "SCENARIO_OUT_OF_HISTORICAL_SUPPORT",
+    "SCENARIO_BLOCKED",
+    "SCENARIO_NOT_EVALUATED"
+  ],
+  "future_contrast_statuses": [
+    "CONTRAST_FEASIBLE",
+    "CONTRAST_PARTIALLY_FEASIBLE",
+    "CONTRAST_INSUFFICIENT_SPEND_DIFFERENTIAL",
+    "CONTRAST_OUT_OF_HISTORICAL_SUPPORT",
+    "CONTRAST_REQUIRES_ESTIMAND_SHIFT",
+    "CONTRAST_BLOCKED_BY_SHARED_CONTROL_CONFLICT",
+    "CONTRAST_REQUIRES_POWER_MDE_RECHECK",
+    "CONTRAST_REQUIRES_ASSIGNMENT_RECHECK",
+    "CONTRAST_REQUIRES_METHOD_SUITABILITY_REVIEW",
+    "CONTRAST_BLOCKED",
+    "CONTRAST_NOT_EVALUATED"
+  ],
+  "future_policy_support_statuses": [
+    "POLICY_WITHIN_HISTORICAL_SUPPORT",
+    "POLICY_NEAR_HISTORICAL_SUPPORT_BOUNDARY",
+    "POLICY_OUT_OF_HISTORICAL_SUPPORT",
+    "POLICY_BELOW_HISTORICAL_SUPPORT",
+    "POLICY_REQUIRES_BUSINESS_OVERRIDE",
+    "POLICY_SUPPORT_UNKNOWN",
+    "POLICY_NOT_EVALUATED"
+  ],
+  "future_shared_control_conflict_types": [
+    "NO_SHARED_CONTROL_CONFLICT",
+    "COMMON_CONTROL_MANIPULATED",
+    "BAU_CONTROL_NOT_PRESERVED",
+    "COMMON_CONTROL_CHANGE_HELPS_ONE_CONTRAST_HARMS_ANOTHER",
+    "COMMON_CONTROL_INSUFFICIENT_FOR_ONE_OR_MORE_CONTRASTS",
+    "COMMON_CONTROL_OUT_OF_HISTORICAL_SUPPORT",
+    "COMMON_CONTROL_SPLIT_REQUIRED_FOR_CLEAN_ESTIMANDS",
+    "COMMON_CONTROL_ROLE_AMBIGUOUS"
+  ],
+  "resolution_option_types": [
+    "EXTEND_DURATION",
+    "RELAX_MDE_TARGET",
+    "CHANGE_TEST_POLICY_TO_HEAVY_UP",
+    "CHANGE_TEST_POLICY_TO_GO_DARK",
+    "REFRAME_AS_DOSAGE_OR_DIFFERENCE_IN_POLICY",
+    "CAP_SPEND_WITHIN_HISTORICAL_SUPPORT",
+    "SPLIT_COMMON_CONTROL",
+    "ADD_OR_REALLOCATE_CELLS",
+    "DROP_CONTRAST",
+    "SEQUENCE_TESTS",
+    "RERUN_POWER_MDE",
+    "RERUN_ASSIGNMENT_FEASIBILITY",
+    "REQUIRE_METHOD_SUITABILITY_REVIEW",
+    "BUSINESS_OVERRIDE_REQUIRED",
+    "BLOCK_SCENARIO"
+  ],
+  "readiness_gates_defined": [
+    "profiler_gate",
+    "geo_unit_market_feasibility_gate",
+    "spend_feasibility_gate",
+    "power_mde_readiness_gate",
+    "design_cell_structure_gate",
+    "contrast_requirement_gate",
+    "scenario_policy_plan_gate",
+    "required_vs_achieved_contrast_gate",
+    "historical_support_gate",
+    "shared_control_dependency_gate",
+    "estimand_compatibility_gate",
+    "resolution_recheck_gate",
+    "method_suitability_precheck_gate"
+  ],
+  "future_contract_concepts_defined": [
+    "DesignScenarioPolicyFeasibilityInput",
+    "DesignScenarioPolicyFeasibilityConfig",
+    "DesignScenarioPolicyFeasibilityReport",
+    "ScenarioPolicyPlanSpec",
+    "CellPolicySpec",
+    "ContrastRequirementSpec",
+    "ContrastFeasibilityReport",
+    "ScenarioFeasibilityReport",
+    "SharedControlConflictReport",
+    "HistoricalSupportReport",
+    "ScenarioResolutionOption",
+    "ScenarioRecheckRequirement",
+    "ScenarioClaimBoundaryReport",
+    "ScenarioFeasibilityStatus",
+    "ContrastFeasibilityStatus",
+    "PolicySupportStatus",
+    "ResolutionOptionType",
+    "SharedControlConflictType",
+    "ScenarioIssue",
+    "ScenarioIssueSeverity"
+  ],
+  "future_output_concepts_defined": [
+    "DesignScenarioPolicyFeasibilityReport",
+    "ScenarioReadinessReport",
+    "ScenarioPolicyPlanReport",
+    "ContrastRequirementReport",
+    "ContrastFeasibilityReport",
+    "RequiredVsAchievedSpendContrastReport",
+    "HistoricalSupportReport",
+    "SharedControlConflictReport",
+    "EstimandShiftReport",
+    "ScenarioResolutionReport",
+    "ScenarioRecheckRequirementReport",
+    "ScenarioClaimBoundaryReport"
+  ],
+  "report_fields_defined": [
+    "artifact_id",
+    "scenario_id",
+    "scenario_status",
+    "overall_feasibility_summary",
+    "cell_policy_plan",
+    "contrast_feasibility_reports",
+    "required_vs_achieved_spend_contrast_by_contrast",
+    "historical_support_by_cell",
+    "shared_control_conflicts",
+    "estimand_shift_flags",
+    "resolution_options",
+    "recheck_requirements",
+    "claim_boundary_report",
+    "issues",
+    "warnings",
+    "blocking_reasons"
+  ],
+  "input_dependencies": [
+    "profiler_report",
+    "geo_unit_market_feasibility_report",
+    "spend_requirement_manipulation_feasibility_report",
+    "power_mde_diagnostics_report",
+    "design_cell_structure_report",
+    "candidate_scenario_specs",
+    "candidate_contrast_specs",
+    "cell_policy_plan",
+    "baseline_spend_by_cell",
+    "proposed_spend_by_cell",
+    "historical_spend_support_by_cell",
+    "historical_p90_by_cell",
+    "historical_p95_by_cell",
+    "historical_max_by_cell",
+    "required_spend_delta_by_contrast",
+    "required_kpi_mde_by_contrast",
+    "response_bridge_source_by_contrast",
+    "business_response_risk_by_contrast",
+    "candidate_manipulation_options",
+    "shared_control_dependencies",
+    "business_as_usual_control_required_by_contrast",
+    "business_as_usual_control_preserved_by_scenario",
+    "dosage_contrast_estimand_required",
+    "difference_in_policy_required",
+    "control_contamination_flags",
+    "method_suitability_review_required",
+    "power_mde_runtime_status",
+    "power_mde_runtime_mode"
+  ],
+  "future_implementation_tests_required": [
+    "blocked_profiler_prevents_scenario_feasibility_claim",
+    "blocked_geo_feasibility_prevents_scenario_feasibility_claim",
+    "blocked_spend_feasibility_prevents_spend_compatible_feasibility",
+    "blocked_power_mde_readiness_prevents_power_ready_feasibility",
+    "missing_design_cell_structure_blocks_scenario_feasibility",
+    "missing_contrast_requirements_blocks_required_vs_achieved_comparison",
+    "missing_scenario_policy_plan_blocks_scenario_feasibility",
+    "achieved_spend_below_required_marks_contrast_insufficient",
+    "achieved_spend_equal_required_marks_contrast_feasible_when_gates_pass",
+    "out_of_support_proposed_spend_emits_historical_support_warning",
+    "common_control_bau_preserved_allows_standard_go_dark_heavy_up",
+    "common_control_manipulated_blocks_reclassifies_bau_dependent_contrasts",
+    "raising_common_control_helps_go_dark_weakens_heavy_up",
+    "lowering_common_control_helps_heavy_up_weakens_go_dark",
+    "split_common_control_emits_redesign_recheck_requirement",
+    "scenario_feasible_does_not_assign_markets",
+    "scenario_feasible_does_not_compute_power_mde",
+    "scenario_feasible_does_not_authorize_estimator_inference_or_production",
+    "no_fixture_specific_branching"
+  ],
+  "contract_positive_flags": {
+    "scenario_policy_feasibility_contract_defined": true,
+    "required_vs_achieved_spend_contrast_defined": true,
+    "historical_support_contract_defined": true,
+    "shared_control_conflict_contract_defined": true,
+    "split_control_redesign_recheck_defined": true,
+    "scenario_resolution_options_defined": true,
+    "claim_boundaries_defined": true
+  },
+  "runtime_scenario_feasibility_implemented": false,
+  "runtime_scenario_enumeration_implemented": false,
+  "runtime_scenario_optimization_implemented": false,
+  "runtime_design_generation_implemented": false,
+  "geo_assignment_computed": false,
+  "randomization_computed": false,
+  "rerandomization_computed": false,
+  "matching_optimization_computed": false,
+  "power_computed": false,
+  "mde_computed": false,
+  "p_value_computed": false,
+  "confidence_interval_computed": false,
+  "lift_computed": false,
+  "roi_computed": false,
+  "budget_optimization_authorized": false,
+  "candidate_design_authorized": false,
+  "treatment_control_assignment_authorized": false,
+  "estimator_inference_authorized": false,
+  "mmm_runtime_calls_implemented": false,
+  "mmm_calibration_authorized": false,
+  "production_authorization_granted": false,
+  "llm_decisioning_authorized": false,
+  "authorization_flags": {
+    "runtime_scenario_feasibility_implemented": false,
+    "runtime_scenario_enumeration_implemented": false,
+    "runtime_scenario_optimization_implemented": false,
+    "runtime_design_generation_implemented": false,
+    "geo_assignment_computed": false,
+    "randomization_computed": false,
+    "rerandomization_computed": false,
+    "matching_optimization_computed": false,
+    "power_computed": false,
+    "mde_computed": false,
+    "p_value_computed": false,
+    "confidence_interval_computed": false,
+    "lift_computed": false,
+    "roi_computed": false,
+    "budget_optimization_authorized": false,
+    "candidate_design_authorized": false,
+    "treatment_control_assignment_authorized": false,
+    "estimator_inference_authorized": false,
+    "mmm_runtime_calls_implemented": false,
+    "mmm_calibration_authorized": false,
+    "production_authorization_granted": false,
+    "llm_decisioning_authorized": false
+  },
+  "recommended_next_artifact": "DESIGN_SCENARIO_POLICY_FEASIBILITY_RUNTIME_001",
+  "alternative_next_artifact": "DESIGN_SCENARIO_POLICY_FEASIBILITY_METADATA_001",
+  "generated_at": "2026-06-30T20:56:20.924330+00:00",
+  "git_commit": "e121dff18b5713e96e8f097dfcc5a3deb86cca86",
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "scenario_status_SCENARIO_FEASIBLE_UNDER_CURRENT_STRUCTURE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_status_SCENARIO_PARTIALLY_FEASIBLE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_status_SCENARIO_REQUIRES_ESTIMAND_SHIFT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_status_SCENARIO_REQUIRES_COMMON_CONTROL_MANIPULATION",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_status_SCENARIO_REQUIRES_COMMON_CONTROL_SPLIT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_status_SCENARIO_REQUIRES_POWER_MDE_RECHECK",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_status_SCENARIO_REQUIRES_ASSIGNMENT_RECHECK",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_status_SCENARIO_REQUIRES_METHOD_SUITABILITY_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_status_SCENARIO_OUT_OF_HISTORICAL_SUPPORT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_status_SCENARIO_BLOCKED",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "scenario_status_SCENARIO_NOT_EVALUATED",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contrast_status_CONTRAST_FEASIBLE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contrast_status_CONTRAST_PARTIALLY_FEASIBLE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contrast_status_CONTRAST_INSUFFICIENT_SPEND_DIFFERENTIAL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contrast_status_CONTRAST_OUT_OF_HISTORICAL_SUPPORT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contrast_status_CONTRAST_REQUIRES_ESTIMAND_SHIFT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contrast_status_CONTRAST_BLOCKED_BY_SHARED_CONTROL_CONFLICT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contrast_status_CONTRAST_REQUIRES_POWER_MDE_RECHECK",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contrast_status_CONTRAST_REQUIRES_ASSIGNMENT_RECHECK",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contrast_status_CONTRAST_REQUIRES_METHOD_SUITABILITY_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contrast_status_CONTRAST_BLOCKED",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contrast_status_CONTRAST_NOT_EVALUATED",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "policy_support_POLICY_WITHIN_HISTORICAL_SUPPORT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "policy_support_POLICY_NEAR_HISTORICAL_SUPPORT_BOUNDARY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "policy_support_POLICY_OUT_OF_HISTORICAL_SUPPORT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "policy_support_POLICY_BELOW_HISTORICAL_SUPPORT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "policy_support_POLICY_REQUIRES_BUSINESS_OVERRIDE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "policy_support_POLICY_SUPPORT_UNKNOWN",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "policy_support_POLICY_NOT_EVALUATED",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "shared_control_conflict_NO_SHARED_CONTROL_CONFLICT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "shared_control_conflict_COMMON_CONTROL_MANIPULATED",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "shared_control_conflict_BAU_CONTROL_NOT_PRESERVED",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "shared_control_conflict_COMMON_CONTROL_CHANGE_HELPS_ONE_CONTRAST_HARMS_ANOTHER",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "shared_control_conflict_COMMON_CONTROL_INSUFFICIENT_FOR_ONE_OR_MORE_CONTRASTS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "shared_control_conflict_COMMON_CONTROL_OUT_OF_HISTORICAL_SUPPORT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "shared_control_conflict_COMMON_CONTROL_SPLIT_REQUIRED_FOR_CLEAN_ESTIMANDS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "shared_control_conflict_COMMON_CONTROL_ROLE_AMBIGUOUS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "resolution_option_EXTEND_DURATION",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "resolution_option_RELAX_MDE_TARGET",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "resolution_option_CHANGE_TEST_POLICY_TO_HEAVY_UP",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "resolution_option_CHANGE_TEST_POLICY_TO_GO_DARK",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "resolution_option_REFRAME_AS_DOSAGE_OR_DIFFERENCE_IN_POLICY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "resolution_option_CAP_SPEND_WITHIN_HISTORICAL_SUPPORT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "resolution_option_SPLIT_COMMON_CONTROL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "resolution_option_ADD_OR_REALLOCATE_CELLS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "resolution_option_DROP_CONTRAST",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "resolution_option_SEQUENCE_TESTS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "resolution_option_RERUN_POWER_MDE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "resolution_option_RERUN_ASSIGNMENT_FEASIBILITY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "resolution_option_REQUIRE_METHOD_SUITABILITY_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "resolution_option_BUSINESS_OVERRIDE_REQUIRED",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "resolution_option_BLOCK_SCENARIO",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_profiler_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_geo_unit_market_feasibility_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_spend_feasibility_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_power_mde_readiness_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_design_cell_structure_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_contrast_requirement_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_scenario_policy_plan_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_required_vs_achieved_contrast_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_historical_support_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_shared_control_dependency_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_estimand_compatibility_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_resolution_recheck_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_method_suitability_precheck_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_artifact_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_scenario_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_scenario_status",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_overall_feasibility_summary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_cell_policy_plan",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_contrast_feasibility_reports",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_required_vs_achieved_spend_contrast_by_contrast",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_historical_support_by_cell",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_shared_control_conflicts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_estimand_shift_flags",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_resolution_options",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_recheck_requirements",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_claim_boundary_report",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_issues",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_warnings",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_blocking_reasons",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "required_vs_achieved",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "historical_support",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "shared_control_conflict",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "split_control_recheck",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "four_cell_example",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_DesignScenarioPolicyFeasibilityInput",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_DesignScenarioPolicyFeasibilityConfig",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_DesignScenarioPolicyFeasibilityReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_ScenarioPolicyPlanSpec",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_CellPolicySpec",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_ContrastRequirementSpec",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_ContrastFeasibilityReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_ScenarioFeasibilityReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_SharedControlConflictReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_HistoricalSupportReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_ScenarioResolutionOption",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_ScenarioRecheckRequirement",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_ScenarioClaimBoundaryReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_ScenarioFeasibilityStatus",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_ContrastFeasibilityStatus",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_PolicySupportStatus",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_ResolutionOptionType",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_SharedControlConflictType",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_ScenarioIssue",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_ScenarioIssueSeverity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_DesignScenarioPolicyFeasibilityReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_ScenarioReadinessReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_ScenarioPolicyPlanReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_ContrastRequirementReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_ContrastFeasibilityReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_RequiredVsAchievedSpendContrastReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_HistoricalSupportReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_SharedControlConflictReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_EstimandShiftReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_ScenarioResolutionReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_ScenarioRecheckRequirementReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_ScenarioClaimBoundaryReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_blocked_profiler_prevents_scenario_feasibility_claim",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_blocked_geo_feasibility_prevents_scenario_feasibility_claim",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_blocked_spend_feasibility_prevents_spend_compatible_feasibility",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_blocked_power_mde_readiness_prevents_power_ready_feasibility",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_missing_design_cell_structure_blocks_scenario_feasibility",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_missing_contrast_requirements_blocks_required_vs_achieved_comparison",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_missing_scenario_policy_plan_blocks_scenario_feasibility",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_achieved_spend_below_required_marks_contrast_insufficient",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_achieved_spend_equal_required_marks_contrast_feasible_when_gates_pass",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_out_of_support_proposed_spend_emits_historical_support_warning",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_common_control_bau_preserved_allows_standard_go_dark_heavy_up",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_common_control_manipulated_blocks_reclassifies_bau_dependent_contrasts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_raising_common_control_helps_go_dark_weakens_heavy_up",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_lowering_common_control_helps_heavy_up_weakens_go_dark",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_split_common_control_emits_redesign_recheck_requirement",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_scenario_feasible_does_not_assign_markets",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_scenario_feasible_does_not_compute_power_mde",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_scenario_feasible_does_not_authorize_estimator_inference_or_production",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_no_fixture_specific_branching",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_runtime_scenario_feasibility_implemented_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_runtime_scenario_enumeration_implemented_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_runtime_scenario_optimization_implemented_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_runtime_design_generation_implemented_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_geo_assignment_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_randomization_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_rerandomization_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_matching_optimization_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_power_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mde_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_p_value_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_confidence_interval_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_lift_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_roi_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_candidate_design_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_treatment_control_assignment_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_estimator_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_runtime_calls_implemented_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_calibration_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_authorization_granted_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "final_verdict_matches",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_valid",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "issues": []
+  },
+  "non_goals": [
+    "no_runtime_scenario_feasibility",
+    "no_runtime_scenario_enumeration",
+    "no_runtime_scenario_optimization",
+    "no_runtime_design_generation",
+    "no_geo_unit_assignment",
+    "no_randomization",
+    "no_rerandomization",
+    "no_matching_optimization",
+    "no_power_mde_computation",
+    "no_p_values_or_confidence_intervals",
+    "no_lift_or_roi_computation",
+    "no_budget_optimization",
+    "no_estimator_inference_selection",
+    "no_mmm_runtime_calls",
+    "no_mmm_calibration",
+    "no_llm_decisioning",
+    "no_production_authorization"
+  ]
+}
