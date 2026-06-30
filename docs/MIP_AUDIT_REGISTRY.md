@@ -2152,7 +2152,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Defines power/MDE diagnostics lane contract with readiness gates, runtime modes, KPI MDE representation, noise/history and cell structure requirements (`failed_scenarios: []`). Contract only; no runtime power/MDE.
 
-**Next:** `POWER_MDE_DIAGNOSTICS_RUNTIME_001`.
+**Next:** `POWER_MDE_DIAGNOSTICS_RUNTIME_001` (completed — see power MDE diagnostics runtime report).
+
+---
+
+## POWER-MDE-DIAGNOSTICS-RUNTIME-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/POWER_MDE_DIAGNOSTICS_RUNTIME_001_REPORT.md`](track_d/POWER_MDE_DIAGNOSTICS_RUNTIME_001_REPORT.md) · [`docs/track_d/archives/POWER_MDE_DIAGNOSTICS_RUNTIME_001_summary.json`](track_d/archives/POWER_MDE_DIAGNOSTICS_RUNTIME_001_summary.json) · [`panel_exp/validation/power_mde_diagnostics_runtime_001.py`](../panel_exp/validation/power_mde_diagnostics_runtime_001.py)
+
+**Status:** **`power_mde_diagnostics_runtime_implemented_readiness_and_descriptive_sensitivity_only_no_power_mde_or_production_authorization`**
+
+**Verdict:** Implements conservative power/MDE readiness runtime with descriptive noise summaries and spend/estimand compatibility (`failed_scenarios: []`). No formal power/MDE or production authorization.
+
+**Next:** `DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001` · alternative: `POWER_MDE_FORMULA_AND_SIMULATION_METHOD_REGISTRY_001`.
 
 ---
 
