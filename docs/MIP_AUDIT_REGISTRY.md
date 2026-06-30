@@ -2128,7 +2128,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Implements deterministic spend requirement/manipulation feasibility diagnostics with five subreports (`failed_scenarios: []`). Candidate manipulation options only; no power/design/ROI/production authorization.
 
-**Next:** `POWER_MDE_REQUIREMENT_AND_SPEND_FEASIBILITY_HANDOFF_CONTRACT_001`.
+**Next:** `POWER_MDE_REQUIREMENT_AND_SPEND_FEASIBILITY_HANDOFF_CONTRACT_001` (completed — see power MDE spend feasibility handoff contract report).
+
+---
+
+## POWER-MDE-REQUIREMENT-AND-SPEND-FEASIBILITY-HANDOFF-CONTRACT-001 (2026-06-03)
+
+**Artifact:** [`docs/track_d/POWER_MDE_REQUIREMENT_AND_SPEND_FEASIBILITY_HANDOFF_CONTRACT_001_REPORT.md`](track_d/POWER_MDE_REQUIREMENT_AND_SPEND_FEASIBILITY_HANDOFF_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/POWER_MDE_REQUIREMENT_AND_SPEND_FEASIBILITY_HANDOFF_CONTRACT_001_summary.json`](track_d/archives/POWER_MDE_REQUIREMENT_AND_SPEND_FEASIBILITY_HANDOFF_CONTRACT_001_summary.json) · [`panel_exp/validation/power_mde_requirement_and_spend_feasibility_handoff_contract_001.py`](../panel_exp/validation/power_mde_requirement_and_spend_feasibility_handoff_contract_001.py)
+
+**Status:** **`power_mde_requirement_spend_feasibility_handoff_contract_defined_no_power_mde_or_production_authorization`**
+
+**Verdict:** Defines spend-to-power/MDE handoff contract consuming spend diagnostics outputs (`failed_scenarios: []`). Preserves KPI MDE units, response bridge provenance, dosage estimand handoff. Contract only; no runtime power/MDE.
+
+**Next:** `POWER_MDE_DIAGNOSTICS_LANE_CONTRACT_001`.
 
 ---
 
