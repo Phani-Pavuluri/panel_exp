@@ -71,6 +71,20 @@ def _family_status(report: object, family: str) -> MethodFamilySuitabilityStatus
     raise AssertionError(f"family {family} not found")
 
 
+def _instrument_status(report: object, instrument_id: str) -> MethodFamilySuitabilityStatus:
+    for entry in report.instrument_suitability_reports:
+        if entry.instrument_id == instrument_id:
+            return entry.suitability_status
+    raise AssertionError(f"instrument {instrument_id} not found")
+
+
+def _instrument_entry(report: object, instrument_id: str) -> object:
+    for entry in report.instrument_suitability_reports:
+        if entry.instrument_id == instrument_id:
+            return entry
+    raise AssertionError(f"instrument {instrument_id} not found")
+
+
 # --- Upstream gates ---
 
 
@@ -410,3 +424,161 @@ def test_run_validation_and_summary() -> None:
     )
     assert result["failed_scenarios"] == []
     assert _SUMMARY.exists()
+    summary = json.loads(_SUMMARY.read_text(encoding="utf-8"))
+    assert summary["instrument_suitability_matrix_implemented"] is True
+    assert summary["method_family_only_classification"] is False
+    assert summary["method_winner_selected"] is False
+
+
+# --- Instrument suitability matrix ---
+
+
+def test_evaluates_multiple_candidate_instruments() -> None:
+    report = evaluate_method_suitability(_packet())
+    assert report.candidate_instrument_count >= 2
+    assert len(report.instrument_suitability_reports) == report.candidate_instrument_count
+    assert len(report.instrument_suitability_matrix) == report.candidate_instrument_count
+
+
+def test_does_not_choose_winner_or_rank_instruments() -> None:
+    report = evaluate_method_suitability(_packet())
+    assert not report.claim_boundary_report.method_winner_selected
+    assert not report.claim_boundary_report.primary_readout_stack_selected
+    assert not report.claim_boundary_report.sensitivity_stack_selected
+    assert not report.claim_boundary_report.diagnostic_stack_selected
+    matrix = report.instrument_suitability_matrix
+    assert all("rank" not in row for row in matrix)
+    assert all("winner" not in str(row).lower() for row in matrix)
+
+
+def test_scm_unit_jackknife_blocked_on_multi_cell_common_control() -> None:
+    p = _packet()
+    p["design_structure_type"] = "MULTI_CELL_COMMON_CONTROL"
+    p["candidate_instrument_review_targets"] = ["SCM_UNIT_JACKKNIFE"]
+    report = evaluate_method_suitability(p)
+    entry = _instrument_entry(report, "SCM_UNIT_JACKKNIFE")
+    assert entry.suitability_status in (
+        MethodFamilySuitabilityStatus.METHOD_FAMILY_BLOCKED,
+        MethodFamilySuitabilityStatus.METHOD_FAMILY_RESTRICTED,
+    )
+    assert entry.design_compatibility_status in ("BLOCKED", "RESTRICTED")
+    assert entry.blocking_reasons
+
+
+def test_scm_placebo_diagnostic_only() -> None:
+    p = _packet(candidate_instrument_review_targets=["SCM_PLACEBO"])
+    report = evaluate_method_suitability(p)
+    assert _instrument_status(report, "SCM_PLACEBO") == (
+        MethodFamilySuitabilityStatus.METHOD_FAMILY_DIAGNOSTIC_ONLY
+    )
+    assert _instrument_entry(report, "SCM_PLACEBO").diagnostic_only_reason is not None
+
+
+def test_tbr_ridge_brb_restricted_by_governance() -> None:
+    p = _packet()
+    p["governance_summary"]["restricted_instruments"] = ["TBR_RIDGE_BRB"]
+    p["candidate_instrument_review_targets"] = ["TBR_RIDGE_BRB"]
+    report = evaluate_method_suitability(p)
+    assert _instrument_status(report, "TBR_RIDGE_BRB") == (
+        MethodFamilySuitabilityStatus.METHOD_FAMILY_RESTRICTED
+    )
+
+
+def test_tbr_ridge_placebo_diagnostic_or_restricted() -> None:
+    p = _packet(candidate_instrument_review_targets=["TBR_RIDGE_PLACEBO"])
+    report = evaluate_method_suitability(p)
+    status = _instrument_status(report, "TBR_RIDGE_PLACEBO")
+    assert status in (
+        MethodFamilySuitabilityStatus.METHOD_FAMILY_DIAGNOSTIC_ONLY,
+        MethodFamilySuitabilityStatus.METHOD_FAMILY_RESTRICTED,
+    )
+
+
+def test_did_bootstrap_eligible_with_warnings_on_parallel_trends() -> None:
+    p = _packet()
+    p["parallel_trends_warning_status"] = "WARNING"
+    p["candidate_instrument_review_targets"] = ["DID_BOOTSTRAP"]
+    report = evaluate_method_suitability(p)
+    assert _instrument_status(report, "DID_BOOTSTRAP") == (
+        MethodFamilySuitabilityStatus.METHOD_FAMILY_ELIGIBLE_WITH_WARNINGS
+    )
+
+
+def test_augsynth_jackknife_diagnostic_or_restricted() -> None:
+    p = _packet(candidate_instrument_review_targets=["AUGSYNTH_JACKKNIFE"])
+    report = evaluate_method_suitability(p)
+    assert _instrument_status(report, "AUGSYNTH_JACKKNIFE") in (
+        MethodFamilySuitabilityStatus.METHOD_FAMILY_DIAGNOSTIC_ONLY,
+        MethodFamilySuitabilityStatus.METHOD_FAMILY_RESTRICTED,
+    )
+
+
+def test_ab_standard_inference_blocked_on_geo_panel() -> None:
+    p = _packet(candidate_instrument_review_targets=["AB_STANDARD_INFERENCE"])
+    report = evaluate_method_suitability(p)
+    entry = _instrument_entry(report, "AB_STANDARD_INFERENCE")
+    assert entry.suitability_status == MethodFamilySuitabilityStatus.METHOD_FAMILY_BLOCKED
+    assert entry.design_compatibility_status == "BLOCKED"
+
+
+def test_dosage_design_blocks_standard_incrementality_instruments() -> None:
+    p = _packet()
+    p["design_structure_type"] = "DOSAGE_CONTRAST"
+    p["estimand_summaries"] = ["DOSAGE_CONTRAST"]
+    p["contrast_summaries"] = [{
+        "contrast_id": "low_vs_high",
+        "contrast_type": "DOSAGE_LOW_VS_HIGH",
+        "estimand_label": "DOSAGE_CONTRAST",
+    }]
+    p["candidate_instrument_review_targets"] = ["SCM_UNIT_JACKKNIFE", "TBR_RIDGE_BRB"]
+    report = evaluate_method_suitability(p)
+    for iid in ("SCM_UNIT_JACKKNIFE", "TBR_RIDGE_BRB"):
+        assert _instrument_status(report, iid) == MethodFamilySuitabilityStatus.METHOD_FAMILY_BLOCKED
+
+
+def test_missing_instrument_governance_emits_review_and_provisional() -> None:
+    p = _packet()
+    p["governance_summary"] = {}
+    p.pop("candidate_method_family_review_targets", None)
+    report = evaluate_method_suitability(p)
+    assert ReviewRequirementType.METHOD_GOVERNANCE_REVIEW.value in report.review_requirements
+    assert report.candidate_instrument_count == 9
+
+
+def test_diagnostic_only_instruments_never_promoted() -> None:
+    p = _packet(candidate_instrument_review_targets=["SCM_PLACEBO", "AUGSYNTH_JACKKNIFE"])
+    report = evaluate_method_suitability(p)
+    for iid in ("SCM_PLACEBO", "AUGSYNTH_JACKKNIFE"):
+        entry = _instrument_entry(report, iid)
+        assert entry.suitability_status == MethodFamilySuitabilityStatus.METHOD_FAMILY_DIAGNOSTIC_ONLY
+    assert not report.claim_boundary_report.method_promotion_authorized
+
+
+def test_restricted_instruments_not_eligible_for_production() -> None:
+    p = _packet()
+    p["governance_summary"]["restricted_instruments"] = ["TBR_RIDGE_BRB"]
+    p["candidate_instrument_review_targets"] = ["TBR_RIDGE_BRB"]
+    report = evaluate_method_suitability(p)
+    entry = _instrument_entry(report, "TBR_RIDGE_BRB")
+    assert entry.suitability_status == MethodFamilySuitabilityStatus.METHOD_FAMILY_RESTRICTED
+    assert entry.suitability_status != MethodFamilySuitabilityStatus.METHOD_FAMILY_ELIGIBLE_FOR_REVIEW
+
+
+def test_blocked_instruments_include_blocking_reasons() -> None:
+    p = _packet(candidate_instrument_review_targets=["AB_STANDARD_INFERENCE"])
+    report = evaluate_method_suitability(p)
+    entry = _instrument_entry(report, "AB_STANDARD_INFERENCE")
+    assert entry.suitability_status == MethodFamilySuitabilityStatus.METHOD_FAMILY_BLOCKED
+    assert entry.blocking_reasons
+
+
+def test_eligible_instruments_are_review_only_not_approved() -> None:
+    p = _packet(candidate_instrument_review_targets=["DID_BOOTSTRAP"])
+    report = evaluate_method_suitability(p)
+    status = _instrument_status(report, "DID_BOOTSTRAP")
+    assert status in (
+        MethodFamilySuitabilityStatus.METHOD_FAMILY_ELIGIBLE_FOR_REVIEW,
+        MethodFamilySuitabilityStatus.METHOD_FAMILY_ELIGIBLE_WITH_WARNINGS,
+    )
+    assert not report.claim_boundary_report.estimator_inference_authorized
+    assert not report.claim_boundary_report.production_authorization_granted

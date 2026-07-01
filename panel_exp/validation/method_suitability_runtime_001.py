@@ -40,6 +40,22 @@ _ALL_METHOD_FAMILIES = (
     "PLACEBO_INFERENCE_FAMILY", "JACKKNIFE_INFERENCE_FAMILY", "BOOTSTRAP_INFERENCE_FAMILY",
     "CONFORMAL_INFERENCE_FAMILY", "AB_TEST_FAMILY", "UNKNOWN_METHOD_FAMILY",
 )
+_DEFAULT_FALLBACK_INSTRUMENT_IDS = (
+    "SCM_UNIT_JACKKNIFE",
+    "SCM_PLACEBO",
+    "TBR_RIDGE_BRB",
+    "TBR_RIDGE_KFOLD",
+    "TBR_RIDGE_PLACEBO",
+    "DID_BOOTSTRAP",
+    "AUGSYNTH_JACKKNIFE",
+    "MATCHED_PAIR_RANDOMIZATION",
+    "AB_STANDARD_INFERENCE",
+)
+_COMPAT_PASS = "PASS"
+_COMPAT_BLOCKED = "BLOCKED"
+_COMPAT_RESTRICTED = "RESTRICTED"
+_COMPAT_NOT_EVALUATED = "NOT_EVALUATED"
+_COMPAT_PROVISIONAL = "PROVISIONAL"
 
 
 class MethodHandoffStatus(str, Enum):
@@ -158,6 +174,45 @@ class MethodFamilySuitabilityEntry:
 
 
 @dataclass(frozen=True)
+class InstrumentSpec:
+    instrument_id: str
+    estimator_family: str
+    inference_family: str
+    instrument_family_label: str
+    design_requirements: tuple[str, ...] = ()
+    disallowed_designs: tuple[str, ...] = ()
+    estimand_requirements: tuple[str, ...] = ()
+    requires_bau_control: bool = False
+    requires_assignment_feasible: bool = False
+    requires_matched_pair_metadata: bool = False
+    requires_block_randomization_metadata: bool = False
+    requires_individual_randomized_ab: bool = False
+    dosage_compatible: bool = False
+    diagnostic_only: bool = False
+    governance_status: str | None = None
+
+
+@dataclass(frozen=True)
+class InstrumentSuitabilityEntry:
+    instrument_id: str
+    estimator_family: str
+    inference_family: str
+    instrument_family_label: str
+    design_compatibility_status: str
+    estimand_compatibility_status: str
+    assignment_compatibility_status: str
+    power_mde_compatibility_status: str
+    scenario_policy_compatibility_status: str
+    governance_status: str
+    suitability_status: MethodFamilySuitabilityStatus
+    review_requirements: tuple[str, ...]
+    warnings: tuple[str, ...]
+    blocking_reasons: tuple[str, ...]
+    diagnostic_only_reason: str | None
+    restricted_reason: str | None
+
+
+@dataclass(frozen=True)
 class GovernanceHandoffReport:
     instrument_catalog_status: str | None
     method_roadmap_status: str | None
@@ -212,10 +267,17 @@ class DesignCompatibilityReport:
 class MethodSuitabilityClaimBoundaryReport:
     runtime_method_suitability_implemented: bool = True
     method_family_review_classification_implemented: bool = True
+    instrument_suitability_matrix_implemented: bool = True
+    estimator_inference_instrument_classification_implemented: bool = True
     review_requirement_detection_implemented: bool = True
     governance_stance_preservation_implemented: bool = True
     estimand_gate_implemented: bool = True
     handoff_readiness_gate_implemented: bool = True
+    method_family_only_classification: bool = False
+    method_winner_selected: bool = False
+    primary_readout_stack_selected: bool = False
+    sensitivity_stack_selected: bool = False
+    diagnostic_stack_selected: bool = False
     method_family_selected: bool = False
     estimator_selected: bool = False
     inference_method_selected: bool = False
@@ -267,6 +329,14 @@ class MethodSuitabilityPacketReport:
     issues: tuple[SuitabilityIssue, ...]
     warnings: tuple[str, ...]
     blocking_reasons: tuple[str, ...]
+    instrument_suitability_reports: tuple[InstrumentSuitabilityEntry, ...] = ()
+    instrument_suitability_matrix: tuple[dict[str, Any], ...] = ()
+    candidate_instrument_count: int = 0
+    eligible_instrument_count: int = 0
+    restricted_instrument_count: int = 0
+    diagnostic_only_instrument_count: int = 0
+    blocked_instrument_count: int = 0
+    not_evaluated_instrument_count: int = 0
 
 
 @dataclass(frozen=True)
@@ -280,6 +350,14 @@ class MethodSuitabilityReport:
     design_reports: tuple[MethodSuitabilityPacketReport, ...] = ()
     aggregate_summary: str | None = None
     method_family_suitability_reports: tuple[MethodFamilySuitabilityEntry, ...] = ()
+    instrument_suitability_reports: tuple[InstrumentSuitabilityEntry, ...] = ()
+    instrument_suitability_matrix: tuple[dict[str, Any], ...] = ()
+    candidate_instrument_count: int = 0
+    eligible_instrument_count: int = 0
+    restricted_instrument_count: int = 0
+    diagnostic_only_instrument_count: int = 0
+    blocked_instrument_count: int = 0
+    not_evaluated_instrument_count: int = 0
     estimand_gate_report: EstimandGateReport | None = None
     design_compatibility_report: DesignCompatibilityReport | None = None
     scenario_policy_handoff_report: ScenarioPolicyHandoffReport | None = None
@@ -406,6 +484,555 @@ def _family_list(gov: dict[str, Any], key: str) -> frozenset[str]:
     if isinstance(val, list):
         return frozenset(_token(x) for x in val)
     return frozenset()
+
+
+def _default_instrument_catalog() -> dict[str, InstrumentSpec]:
+    return {
+        "SCM_UNIT_JACKKNIFE": InstrumentSpec(
+            instrument_id="SCM_UNIT_JACKKNIFE",
+            estimator_family="SCM_FAMILY",
+            inference_family="JACKKNIFE_INFERENCE_FAMILY",
+            instrument_family_label="SCM + UnitJackknife",
+            design_requirements=("SINGLE_TREATMENT_CONTROL", "SINGLE_TREATED_OR_RESTRICTED"),
+            disallowed_designs=("MULTI_CELL_COMMON_CONTROL",),
+            estimand_requirements=("standard_incrementality",),
+            requires_bau_control=True,
+        ),
+        "SCM_PLACEBO": InstrumentSpec(
+            instrument_id="SCM_PLACEBO",
+            estimator_family="SCM_FAMILY",
+            inference_family="PLACEBO_INFERENCE_FAMILY",
+            instrument_family_label="SCM + Placebo",
+            design_requirements=("SINGLE_TREATMENT_CONTROL", "SINGLE_TREATED_OR_RESTRICTED"),
+            estimand_requirements=("standard_incrementality",),
+            requires_bau_control=True,
+            diagnostic_only=True,
+        ),
+        "TBR_RIDGE_BRB": InstrumentSpec(
+            instrument_id="TBR_RIDGE_BRB",
+            estimator_family="TBR_RIDGE_FAMILY",
+            inference_family="BOOTSTRAP_INFERENCE_FAMILY",
+            instrument_family_label="TBRRidge + BRB",
+            design_requirements=("SINGLE_TREATMENT_CONTROL", "MULTI_CELL_COMMON_CONTROL", "MULTI_CELL_SPLIT_CONTROL"),
+            estimand_requirements=("standard_incrementality",),
+            requires_bau_control=True,
+        ),
+        "TBR_RIDGE_KFOLD": InstrumentSpec(
+            instrument_id="TBR_RIDGE_KFOLD",
+            estimator_family="TBR_RIDGE_FAMILY",
+            inference_family="BOOTSTRAP_INFERENCE_FAMILY",
+            instrument_family_label="TBRRidge + KFold",
+            design_requirements=("SINGLE_TREATMENT_CONTROL",),
+            estimand_requirements=("standard_incrementality",),
+            requires_bau_control=True,
+            diagnostic_only=True,
+        ),
+        "TBR_RIDGE_PLACEBO": InstrumentSpec(
+            instrument_id="TBR_RIDGE_PLACEBO",
+            estimator_family="TBR_RIDGE_FAMILY",
+            inference_family="PLACEBO_INFERENCE_FAMILY",
+            instrument_family_label="TBRRidge + Placebo",
+            design_requirements=("SINGLE_TREATMENT_CONTROL",),
+            estimand_requirements=("standard_incrementality",),
+            requires_bau_control=True,
+            diagnostic_only=True,
+        ),
+        "DID_BOOTSTRAP": InstrumentSpec(
+            instrument_id="DID_BOOTSTRAP",
+            estimator_family="DID_FAMILY",
+            inference_family="BOOTSTRAP_INFERENCE_FAMILY",
+            instrument_family_label="DID + Bootstrap",
+            design_requirements=("SINGLE_TREATMENT_CONTROL", "MULTI_CELL_COMMON_CONTROL", "MULTI_CELL_SPLIT_CONTROL"),
+            estimand_requirements=("standard_incrementality",),
+            requires_bau_control=True,
+            requires_assignment_feasible=True,
+        ),
+        "AUGSYNTH_JACKKNIFE": InstrumentSpec(
+            instrument_id="AUGSYNTH_JACKKNIFE",
+            estimator_family="AUGSYNTH_FAMILY",
+            inference_family="JACKKNIFE_INFERENCE_FAMILY",
+            instrument_family_label="AugSynth + Jackknife",
+            design_requirements=("SINGLE_TREATMENT_CONTROL",),
+            estimand_requirements=("standard_incrementality",),
+            requires_bau_control=True,
+            diagnostic_only=True,
+        ),
+        "MATCHED_PAIR_RANDOMIZATION": InstrumentSpec(
+            instrument_id="MATCHED_PAIR_RANDOMIZATION",
+            estimator_family="MATCHED_PAIR_FAMILY",
+            inference_family="BOOTSTRAP_INFERENCE_FAMILY",
+            instrument_family_label="MatchedPair + RandomizationInference",
+            design_requirements=("MATCHED_PAIR",),
+            estimand_requirements=("standard_incrementality",),
+            requires_matched_pair_metadata=True,
+            requires_assignment_feasible=True,
+        ),
+        "AB_STANDARD_INFERENCE": InstrumentSpec(
+            instrument_id="AB_STANDARD_INFERENCE",
+            estimator_family="AB_TEST_FAMILY",
+            inference_family="CONFORMAL_INFERENCE_FAMILY",
+            instrument_family_label="A/B + StandardInference",
+            design_requirements=("INDIVIDUAL_RANDOMIZED_AB",),
+            estimand_requirements=("standard_incrementality",),
+            requires_individual_randomized_ab=True,
+        ),
+    }
+
+
+def _instrument_list(gov: dict[str, Any], key: str) -> frozenset[str]:
+    val = gov.get(key)
+    if isinstance(val, list):
+        return frozenset(_token(x) for x in val)
+    return frozenset()
+
+
+def _parse_instrument_spec(item: Any, catalog: dict[str, InstrumentSpec]) -> InstrumentSpec | None:
+    if isinstance(item, str):
+        iid = _token(item)
+        if iid in catalog:
+            return catalog[iid]
+        return InstrumentSpec(
+            instrument_id=iid,
+            estimator_family="UNKNOWN_METHOD_FAMILY",
+            inference_family="UNKNOWN_METHOD_FAMILY",
+            instrument_family_label=iid,
+        )
+    if isinstance(item, dict):
+        iid = _token(item.get("instrument_id"))
+        if not iid:
+            return None
+        base = catalog.get(iid)
+        est = _token(item.get("estimator_family") or (base.estimator_family if base else ""))
+        inf = _token(item.get("inference_family") or (base.inference_family if base else ""))
+        label = str(item.get("instrument_family_label") or (base.instrument_family_label if base else f"{est} + {inf}"))
+        design_reqs = item.get("design_requirements") or (base.design_requirements if base else ())
+        estimand_reqs = item.get("estimand_requirements") or (base.estimand_requirements if base else ())
+        disallowed = item.get("disallowed_designs") or (base.disallowed_designs if base else ())
+        return InstrumentSpec(
+            instrument_id=iid,
+            estimator_family=est or "UNKNOWN_METHOD_FAMILY",
+            inference_family=inf or "UNKNOWN_METHOD_FAMILY",
+            instrument_family_label=label,
+            design_requirements=tuple(_token(x) for x in design_reqs) if design_reqs else (),
+            disallowed_designs=tuple(_token(x) for x in disallowed) if disallowed else (),
+            estimand_requirements=tuple(_token(x) for x in estimand_reqs) if estimand_reqs else (),
+            requires_bau_control=bool(item.get("requires_bau_control", base.requires_bau_control if base else False)),
+            requires_assignment_feasible=bool(
+                item.get("requires_assignment_feasible", base.requires_assignment_feasible if base else False)
+            ),
+            requires_matched_pair_metadata=bool(
+                item.get("requires_matched_pair_metadata", base.requires_matched_pair_metadata if base else False)
+            ),
+            requires_block_randomization_metadata=bool(
+                item.get("requires_block_randomization_metadata", base.requires_block_randomization_metadata if base else False)
+            ),
+            requires_individual_randomized_ab=bool(
+                item.get("requires_individual_randomized_ab", base.requires_individual_randomized_ab if base else False)
+            ),
+            dosage_compatible=bool(item.get("dosage_compatible", base.dosage_compatible if base else False)),
+            diagnostic_only=bool(item.get("diagnostic_only", base.diagnostic_only if base else False)),
+            governance_status=str(item["governance_status"]) if item.get("governance_status") else (
+                base.governance_status if base else None
+            ),
+        )
+    return None
+
+
+def _resolve_candidate_instruments(packet: dict[str, Any], gov: dict[str, Any]) -> list[InstrumentSpec]:
+    catalog = _default_instrument_catalog()
+    gov_catalog = gov.get("governed_instruments") or gov.get("instrument_catalog")
+    if isinstance(gov_catalog, list):
+        for entry in gov_catalog:
+            spec = _parse_instrument_spec(entry, catalog)
+            if spec:
+                catalog[spec.instrument_id] = spec
+
+    raw_instruments = packet.get("candidate_instrument_review_targets")
+    if isinstance(raw_instruments, list) and raw_instruments:
+        specs: list[InstrumentSpec] = []
+        for item in raw_instruments:
+            spec = _parse_instrument_spec(item, catalog)
+            if spec:
+                specs.append(spec)
+        return specs
+
+    families_raw = packet.get("candidate_method_family_review_targets")
+    if isinstance(families_raw, list) and families_raw:
+        family_tokens = {_token(f) for f in families_raw}
+        return [
+            catalog[iid] for iid in catalog
+            if _token(catalog[iid].estimator_family) in family_tokens
+        ]
+
+    return [catalog[iid] for iid in _DEFAULT_FALLBACK_INSTRUMENT_IDS if iid in catalog]
+
+
+def _resolve_instrument_governance(
+    spec: InstrumentSpec,
+    gov_report: GovernanceHandoffReport,
+    gov: dict[str, Any],
+) -> tuple[str, str | None, str | None]:
+    iid = spec.instrument_id
+    est = _token(spec.estimator_family)
+
+    if spec.governance_status:
+        gs = _token(spec.governance_status)
+    elif iid in _instrument_list(gov, "blocked_instruments") or iid in gov_report.blocked_methods:
+        gs = "BLOCKED"
+    elif iid in _instrument_list(gov, "diagnostic_only_instruments") or spec.diagnostic_only:
+        gs = "DIAGNOSTIC_ONLY"
+    elif iid in _instrument_list(gov, "restricted_instruments") or est in gov_report.restricted_methods:
+        gs = "RESTRICTED"
+    elif iid in _instrument_list(gov, "governed_instruments") or est in gov_report.governed_methods:
+        gs = "GOVERNED"
+    elif est in gov_report.diagnostic_only_methods:
+        gs = "DIAGNOSTIC_ONLY"
+    elif est in gov_report.blocked_methods:
+        gs = "BLOCKED"
+    elif est in gov_report.restricted_methods:
+        gs = "RESTRICTED"
+    else:
+        gs = "CHARACTERIZED"
+
+    diag_reason: str | None = None
+    restr_reason: str | None = None
+    if gs == "DIAGNOSTIC_ONLY":
+        diag_reason = "governance diagnostic-only instrument"
+    elif gs == "RESTRICTED":
+        restr_reason = "governance restricted instrument"
+    elif gs == "BLOCKED":
+        restr_reason = "governance blocked instrument"
+    return gs, diag_reason, restr_reason
+
+
+def _design_matches_requirement(design_type: str, requirement: str) -> bool:
+    if requirement == "SINGLE_TREATED_OR_RESTRICTED":
+        return design_type in (
+            "SINGLE_TREATMENT_CONTROL", "MULTI_CELL_SPLIT_CONTROL", "MATCHED_PAIR",
+        )
+    if requirement == "INDIVIDUAL_RANDOMIZED_AB":
+        return design_type == "INDIVIDUAL_RANDOMIZED_AB"
+    return design_type == requirement
+
+
+def _evaluate_instrument_design_compat(
+    spec: InstrumentSpec,
+    design_type: str,
+    design_compat: DesignCompatibilityReport,
+) -> tuple[str, list[str], list[str]]:
+    warnings: list[str] = []
+    blocking: list[str] = []
+    if not design_type:
+        return _COMPAT_NOT_EVALUATED, warnings, blocking
+    if design_type in spec.disallowed_designs:
+        blocking.append(f"design {design_type} not supported for {spec.instrument_id}")
+        return _COMPAT_BLOCKED, warnings, blocking
+    if spec.requires_individual_randomized_ab and design_type != "INDIVIDUAL_RANDOMIZED_AB":
+        blocking.append("requires individual randomized A/B design; geo-panel design incompatible")
+        return _COMPAT_BLOCKED, warnings, blocking
+    if spec.design_requirements:
+        if not any(_design_matches_requirement(design_type, req) for req in spec.design_requirements):
+            if spec.requires_matched_pair_metadata and design_type != "MATCHED_PAIR":
+                blocking.append("requires matched-pair design metadata")
+                return _COMPAT_RESTRICTED, warnings, blocking
+            if spec.requires_block_randomization_metadata and design_type not in (
+                "QUICK_BLOCK", "RERANDOMIZED_BLOCK",
+            ):
+                blocking.append("requires block/randomization metadata")
+                return _COMPAT_RESTRICTED, warnings, blocking
+            blocking.append(f"design {design_type} incompatible with instrument requirements")
+            return _COMPAT_BLOCKED, warnings, blocking
+    if not design_compat.supported_design:
+        blocking.append("unsupported design structure type")
+        return _COMPAT_BLOCKED, warnings, blocking
+    if design_type == "MULTI_CELL_COMMON_CONTROL" and spec.estimator_family == "SCM_FAMILY":
+        blocking.append("multi-cell common-control production inference unsupported for SCM instruments")
+        return _COMPAT_BLOCKED, warnings, blocking
+    return _COMPAT_PASS, warnings, blocking
+
+
+def _evaluate_instrument_estimand_compat(
+    spec: InstrumentSpec,
+    estimand_gate: EstimandGateReport,
+) -> tuple[str, list[str], list[str], list[str]]:
+    warnings: list[str] = []
+    blocking: list[str] = []
+    review_additions: list[str] = []
+
+    if not estimand_gate.estimand_labels_present:
+        blocking.append("missing estimand label")
+        return _COMPAT_BLOCKED, warnings, blocking, review_additions
+
+    needs_standard = "STANDARD_INCREMENTALITY" in spec.estimand_requirements
+    needs_dosage = spec.dosage_compatible or "DOSAGE" in spec.estimand_requirements
+
+    if estimand_gate.dosage_estimand_required and needs_standard and not needs_dosage:
+        blocking.append("dosage design blocks standard incrementality instrument interpretation")
+        return _COMPAT_BLOCKED, warnings, blocking, review_additions
+
+    if estimand_gate.difference_in_policy_required and needs_standard:
+        if spec.requires_bau_control and not estimand_gate.bau_control_preserved:
+            blocking.append("difference-in-policy estimand incompatible with BAU-required instrument")
+            review_additions.append(ReviewRequirementType.DIFFERENCE_IN_POLICY_REVIEW.value)
+            return _COMPAT_BLOCKED, warnings, blocking, review_additions
+        if estimand_gate.manipulated_control_detected:
+            blocking.append("manipulated control blocks standard incrementality instrument")
+            review_additions.append(ReviewRequirementType.DIFFERENCE_IN_POLICY_REVIEW.value)
+            return _COMPAT_RESTRICTED, warnings, blocking, review_additions
+
+    if spec.requires_bau_control and not estimand_gate.bau_control_preserved:
+        blocking.append("instrument requires BAU control preservation")
+        review_additions.append(ReviewRequirementType.DIFFERENCE_IN_POLICY_REVIEW.value)
+        return _COMPAT_RESTRICTED, warnings, blocking, review_additions
+
+    if needs_standard and not estimand_gate.standard_incrementality_allowed:
+        if estimand_gate.dosage_estimand_required:
+            blocking.append("standard incrementality instrument not dosage-compatible")
+        else:
+            blocking.append("standard incrementality interpretation not allowed for declared estimand")
+        return _COMPAT_BLOCKED, warnings, blocking, review_additions
+
+    if estimand_gate.dosage_estimand_required and needs_dosage:
+        review_additions.append(ReviewRequirementType.DOSAGE_CONTRAST_REVIEW.value)
+
+    return _COMPAT_PASS, warnings, blocking, review_additions
+
+
+def _evaluate_instrument_assignment_compat(
+    spec: InstrumentSpec,
+    readiness: MethodSuitabilityReadinessReport,
+    assignment: AssignmentHandoffReport,
+    packet: dict[str, Any],
+) -> tuple[str, list[str], list[str]]:
+    warnings: list[str] = []
+    blocking: list[str] = []
+    if not spec.requires_assignment_feasible:
+        return _COMPAT_PASS, warnings, blocking
+    if readiness.assignment_feasibility_gate == "BLOCKED":
+        blocking.append("assignment feasibility blocked")
+        return _COMPAT_BLOCKED, warnings, blocking
+    if assignment.redesign_recheck_required:
+        warnings.append("assignment redesign/recheck required")
+        return _COMPAT_RESTRICTED, warnings, blocking
+    if spec.requires_matched_pair_metadata:
+        pair_meta = packet.get("matched_pair_metadata") or _assignment_summary(packet).get("matched_pair_metadata")
+        if not pair_meta:
+            blocking.append("matched-pair metadata missing")
+            return _COMPAT_NOT_EVALUATED, warnings, blocking
+    if spec.requires_block_randomization_metadata:
+        block_meta = packet.get("block_randomization_metadata") or _assignment_summary(packet).get("block_metadata")
+        if not block_meta:
+            blocking.append("block/randomization metadata missing")
+            return _COMPAT_NOT_EVALUATED, warnings, blocking
+    return _COMPAT_PASS, warnings, blocking
+
+
+def _evaluate_instrument_power_compat(
+    spec: InstrumentSpec,
+    power: PowerMdeHandoffReport,
+    packet: dict[str, Any],
+) -> tuple[str, list[str], list[str]]:
+    warnings: list[str] = []
+    blocking: list[str] = []
+    if power.power_mde_blocked or not power.inference_ready_claim_allowed:
+        warnings.append("power/MDE readiness blocked or provisional")
+        if spec.inference_family not in ("UNKNOWN_METHOD_FAMILY",):
+            return _COMPAT_RESTRICTED, warnings, blocking
+    parallel_trends = _token(packet.get("parallel_trends_warning_status") or packet.get("parallel_trends_status"))
+    if parallel_trends in ("WARNING", "UNKNOWN", "VIOLATED", "PROVISIONAL"):
+        warnings.append("parallel-trends or pre-trend compatibility warning")
+    return _COMPAT_PASS, warnings, blocking
+
+
+def _evaluate_instrument_scenario_compat(
+    spec: InstrumentSpec,
+    scenario: ScenarioPolicyHandoffReport,
+    readiness: MethodSuitabilityReadinessReport,
+) -> tuple[str, list[str], list[str]]:
+    warnings: list[str] = []
+    blocking: list[str] = []
+    if readiness.scenario_policy_gate == "BLOCKED":
+        blocking.append("scenario policy blocked")
+        return _COMPAT_BLOCKED, warnings, blocking
+    if scenario.shared_control_conflict:
+        warnings.append("shared-control conflict present")
+        return _COMPAT_RESTRICTED, warnings, blocking
+    return _COMPAT_PASS, warnings, blocking
+
+
+def _classify_instrument(
+    spec: InstrumentSpec,
+    handoff_blocked: bool,
+    estimand_present: bool,
+    design_type: str,
+    design_compat: DesignCompatibilityReport,
+    estimand_gate: EstimandGateReport,
+    readiness: MethodSuitabilityReadinessReport,
+    assignment: AssignmentHandoffReport,
+    power: PowerMdeHandoffReport,
+    scenario: ScenarioPolicyHandoffReport,
+    gov_report: GovernanceHandoffReport,
+    gov: dict[str, Any],
+    base_review_reqs: tuple[str, ...],
+    has_handoff_warnings: bool,
+    cfg: MethodSuitabilityConfig,
+    packet: dict[str, Any],
+) -> InstrumentSuitabilityEntry:
+    governance_status, diag_reason, restr_reason = _resolve_instrument_governance(spec, gov_report, gov)
+    warnings: list[str] = []
+    blocking: list[str] = []
+    review_reqs = list(base_review_reqs)
+
+    design_status, dw, db = _evaluate_instrument_design_compat(spec, design_type, design_compat)
+    warnings.extend(dw)
+    blocking.extend(db)
+
+    estimand_status, ew, eb, er = _evaluate_instrument_estimand_compat(spec, estimand_gate)
+    warnings.extend(ew)
+    blocking.extend(eb)
+    for r in er:
+        if r not in review_reqs:
+            review_reqs.append(r)
+
+    assign_status, aw, ab = _evaluate_instrument_assignment_compat(spec, readiness, assignment, packet)
+    warnings.extend(aw)
+    blocking.extend(ab)
+
+    power_status, pw, pb = _evaluate_instrument_power_compat(spec, power, packet)
+    warnings.extend(pw)
+    blocking.extend(pb)
+
+    scenario_status, sw, sb = _evaluate_instrument_scenario_compat(spec, scenario, readiness)
+    warnings.extend(sw)
+    blocking.extend(sb)
+
+    if governance_status == "BLOCKED":
+        return InstrumentSuitabilityEntry(
+            instrument_id=spec.instrument_id,
+            estimator_family=spec.estimator_family,
+            inference_family=spec.inference_family,
+            instrument_family_label=spec.instrument_family_label,
+            design_compatibility_status=design_status,
+            estimand_compatibility_status=estimand_status,
+            assignment_compatibility_status=assign_status,
+            power_mde_compatibility_status=power_status,
+            scenario_policy_compatibility_status=scenario_status,
+            governance_status=governance_status,
+            suitability_status=MethodFamilySuitabilityStatus.METHOD_FAMILY_BLOCKED,
+            review_requirements=tuple(review_reqs),
+            warnings=tuple(dict.fromkeys(warnings)),
+            blocking_reasons=("governance blocked instrument",),
+            diagnostic_only_reason=None,
+            restricted_reason=restr_reason,
+        )
+
+    if governance_status == "DIAGNOSTIC_ONLY" or spec.diagnostic_only:
+        if cfg.diagnostic_only_blocks_production:
+            warnings.append("diagnostic-only instrument; not production-authorized")
+        return InstrumentSuitabilityEntry(
+            instrument_id=spec.instrument_id,
+            estimator_family=spec.estimator_family,
+            inference_family=spec.inference_family,
+            instrument_family_label=spec.instrument_family_label,
+            design_compatibility_status=design_status,
+            estimand_compatibility_status=estimand_status,
+            assignment_compatibility_status=assign_status,
+            power_mde_compatibility_status=power_status,
+            scenario_policy_compatibility_status=scenario_status,
+            governance_status="DIAGNOSTIC_ONLY",
+            suitability_status=MethodFamilySuitabilityStatus.METHOD_FAMILY_DIAGNOSTIC_ONLY,
+            review_requirements=tuple(review_reqs),
+            warnings=tuple(dict.fromkeys(warnings)),
+            blocking_reasons=(),
+            diagnostic_only_reason=diag_reason or "diagnostic-only instrument",
+            restricted_reason=None,
+        )
+
+    if handoff_blocked:
+        status = MethodFamilySuitabilityStatus.METHOD_FAMILY_BLOCKED
+        blocking.append("handoff blocked")
+    elif not estimand_present:
+        status = MethodFamilySuitabilityStatus.METHOD_FAMILY_NOT_EVALUATED
+        blocking.append("missing estimand")
+    elif _COMPAT_BLOCKED in (design_status, estimand_status, assign_status, scenario_status):
+        status = MethodFamilySuitabilityStatus.METHOD_FAMILY_BLOCKED
+    elif _COMPAT_NOT_EVALUATED in (design_status, estimand_status, assign_status):
+        status = MethodFamilySuitabilityStatus.METHOD_FAMILY_NOT_EVALUATED
+    elif governance_status == "RESTRICTED" or _COMPAT_RESTRICTED in (
+        design_status, estimand_status, assign_status, power_status, scenario_status,
+    ):
+        status = MethodFamilySuitabilityStatus.METHOD_FAMILY_RESTRICTED
+        restr_reason = restr_reason or "compatibility restricted"
+    elif warnings or has_handoff_warnings or review_reqs:
+        status = MethodFamilySuitabilityStatus.METHOD_FAMILY_ELIGIBLE_WITH_WARNINGS
+    else:
+        status = MethodFamilySuitabilityStatus.METHOD_FAMILY_ELIGIBLE_FOR_REVIEW
+
+    return InstrumentSuitabilityEntry(
+        instrument_id=spec.instrument_id,
+        estimator_family=spec.estimator_family,
+        inference_family=spec.inference_family,
+        instrument_family_label=spec.instrument_family_label,
+        design_compatibility_status=design_status,
+        estimand_compatibility_status=estimand_status,
+        assignment_compatibility_status=assign_status,
+        power_mde_compatibility_status=power_status,
+        scenario_policy_compatibility_status=scenario_status,
+        governance_status=governance_status,
+        suitability_status=status,
+        review_requirements=tuple(dict.fromkeys(review_reqs)),
+        warnings=tuple(dict.fromkeys(warnings)),
+        blocking_reasons=tuple(dict.fromkeys(blocking)),
+        diagnostic_only_reason=None,
+        restricted_reason=restr_reason,
+    )
+
+
+def _instrument_entry_to_matrix_row(entry: InstrumentSuitabilityEntry) -> dict[str, Any]:
+    return {
+        "instrument_id": entry.instrument_id,
+        "estimator_family": entry.estimator_family,
+        "inference_family": entry.inference_family,
+        "instrument_family_label": entry.instrument_family_label,
+        "design_compatibility_status": entry.design_compatibility_status,
+        "estimand_compatibility_status": entry.estimand_compatibility_status,
+        "assignment_compatibility_status": entry.assignment_compatibility_status,
+        "power_mde_compatibility_status": entry.power_mde_compatibility_status,
+        "scenario_policy_compatibility_status": entry.scenario_policy_compatibility_status,
+        "governance_status": entry.governance_status,
+        "suitability_status": entry.suitability_status.value,
+        "review_requirements": list(entry.review_requirements),
+        "warnings": list(entry.warnings),
+        "blocking_reasons": list(entry.blocking_reasons),
+        "diagnostic_only_reason": entry.diagnostic_only_reason,
+        "restricted_reason": entry.restricted_reason,
+    }
+
+
+def _count_instruments(entries: tuple[InstrumentSuitabilityEntry, ...]) -> dict[str, int]:
+    eligible = sum(
+        1 for e in entries
+        if e.suitability_status in (
+            MethodFamilySuitabilityStatus.METHOD_FAMILY_ELIGIBLE_FOR_REVIEW,
+            MethodFamilySuitabilityStatus.METHOD_FAMILY_ELIGIBLE_WITH_WARNINGS,
+        )
+    )
+    return {
+        "candidate_instrument_count": len(entries),
+        "eligible_instrument_count": eligible,
+        "restricted_instrument_count": sum(
+            1 for e in entries if e.suitability_status == MethodFamilySuitabilityStatus.METHOD_FAMILY_RESTRICTED
+        ),
+        "diagnostic_only_instrument_count": sum(
+            1 for e in entries if e.suitability_status == MethodFamilySuitabilityStatus.METHOD_FAMILY_DIAGNOSTIC_ONLY
+        ),
+        "blocked_instrument_count": sum(
+            1 for e in entries if e.suitability_status == MethodFamilySuitabilityStatus.METHOD_FAMILY_BLOCKED
+        ),
+        "not_evaluated_instrument_count": sum(
+            1 for e in entries if e.suitability_status == MethodFamilySuitabilityStatus.METHOD_FAMILY_NOT_EVALUATED
+        ),
+    }
 
 
 def _evaluate_readiness(
@@ -983,6 +1610,20 @@ def _evaluate_single_packet(
 
     handoff_blocked = _handoff_is_blocked(handoff_status)
     has_warnings = bool(warnings) or bool(review_report.requirements)
+    design_type_token = _token(design_type)
+    gov_dict = _governance(packet)
+
+    instrument_specs = _resolve_candidate_instruments(packet, gov_dict)
+    instrument_reports = tuple(
+        _classify_instrument(
+            spec, handoff_blocked, estimand_present, design_type_token, design_compat,
+            estimand_gate, readiness, assignment_report, power_report, scenario_report,
+            gov_report, gov_dict, review_report.requirements, has_warnings, cfg, packet,
+        )
+        for spec in instrument_specs
+    )
+    instrument_matrix = tuple(_instrument_entry_to_matrix_row(e) for e in instrument_reports)
+    instrument_counts = _count_instruments(instrument_reports)
 
     family_reports = tuple(
         _classify_family(
@@ -1015,6 +1656,9 @@ def _evaluate_single_packet(
         issues=tuple(issues),
         warnings=tuple(dict.fromkeys(warnings)),
         blocking_reasons=blocking_reasons,
+        instrument_suitability_reports=instrument_reports,
+        instrument_suitability_matrix=instrument_matrix,
+        **instrument_counts,
     )
 
 
@@ -1047,6 +1691,14 @@ def evaluate_method_suitability(
             design_reports=(r,),
             aggregate_summary=None,
             method_family_suitability_reports=r.method_family_suitability_reports,
+            instrument_suitability_reports=r.instrument_suitability_reports,
+            instrument_suitability_matrix=r.instrument_suitability_matrix,
+            candidate_instrument_count=r.candidate_instrument_count,
+            eligible_instrument_count=r.eligible_instrument_count,
+            restricted_instrument_count=r.restricted_instrument_count,
+            diagnostic_only_instrument_count=r.diagnostic_only_instrument_count,
+            blocked_instrument_count=r.blocked_instrument_count,
+            not_evaluated_instrument_count=r.not_evaluated_instrument_count,
             estimand_gate_report=r.estimand_gate_report,
             design_compatibility_report=r.design_compatibility_report,
             scenario_policy_handoff_report=r.scenario_policy_handoff_report,
@@ -1130,6 +1782,10 @@ def run_validation(*, write_summary: bool = True, summary_path: Path | None = No
         failed.append("smoke_no_estimator")
     if not report.method_family_suitability_reports:
         failed.append("smoke_no_family_reports")
+    if not report.instrument_suitability_reports:
+        failed.append("smoke_no_instrument_reports")
+    if report.claim_boundary_report.method_winner_selected:
+        failed.append("smoke_no_winner")
 
     payload: dict[str, Any] = {
         "artifact_id": _ARTIFACT_ID,
@@ -1157,6 +1813,13 @@ def run_validation(*, write_summary: bool = True, summary_path: Path | None = No
         "governance_stance_preservation_implemented": True,
         "estimand_gate_implemented": True,
         "handoff_readiness_gate_implemented": True,
+        "instrument_suitability_matrix_implemented": True,
+        "estimator_inference_instrument_classification_implemented": True,
+        "method_family_only_classification": False,
+        "method_winner_selected": False,
+        "primary_readout_stack_selected": False,
+        "sensitivity_stack_selected": False,
+        "diagnostic_stack_selected": False,
         "method_family_selected": False,
         "estimator_selected": False,
         "inference_method_selected": False,
@@ -1190,6 +1853,7 @@ def run_validation(*, write_summary: bool = True, summary_path: Path | None = No
         "alternative_next_artifact": ALTERNATIVE_NEXT_ARTIFACT,
         "failed_scenarios": failed,
         "smoke_handoff_status": report.handoff_status.value if report.handoff_status else None,
+        "smoke_candidate_instrument_count": report.candidate_instrument_count,
     }
 
     if write_summary:

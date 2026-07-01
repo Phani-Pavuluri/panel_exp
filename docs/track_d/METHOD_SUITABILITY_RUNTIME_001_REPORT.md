@@ -148,6 +148,26 @@ Preserves upstream `method_suitability_review_required` flags and `review_requir
 
 For each candidate method-family review target: governance blocked → `METHOD_FAMILY_BLOCKED`; diagnostic-only → `METHOD_FAMILY_DIAGNOSTIC_ONLY`; restricted → `METHOD_FAMILY_RESTRICTED`; unknown → `METHOD_FAMILY_NOT_EVALUATED`; handoff blocked or missing estimand → blocked/not evaluated; clean gates with warnings → `METHOD_FAMILY_ELIGIBLE_WITH_WARNINGS`; clean gates → `METHOD_FAMILY_ELIGIBLE_FOR_REVIEW`.
 
+Family-level reports are retained for backward compatibility. The stronger output is the instrument suitability matrix (see section 18a).
+
+---
+
+## 18a. Estimator / inference instrument suitability matrix
+
+The runtime evaluates **governed estimator/inference instruments**, not just broad method families. Each instrument is a governed combination of estimator family, inference family, design compatibility, estimand compatibility, assignment compatibility, uncertainty/interval semantics, and governance status.
+
+Examples: SCM + UnitJackknife, SCM + Placebo, TBRRidge + BRB, TBRRidge + KFold, TBRRidge + Placebo, DID + Bootstrap, AugSynth + Jackknife, MatchedPair + RandomizationInference, A/B + StandardInference.
+
+The runtime classifies all declared or catalog-registered candidate instruments relevant to the design. It does not invent arbitrary combinations, optimize over methods, or select a winner.
+
+**Boundary language:** METHOD_SUITABILITY_RUNTIME_001 does not choose the estimator that works best. It evaluates governed estimator/inference instruments against the design, data, estimand, assignment, and diagnostic constraints. It classifies each instrument and preserves warnings/blockers. A later governed readout planner may choose a primary readout stack from eligible instruments with required sensitivity and diagnostic checks.
+
+Per instrument, the runtime emits: `instrument_id`, `estimator_family`, `inference_family`, `instrument_family_label`, compatibility statuses (design, estimand, assignment, power/MDE, scenario policy), `governance_status`, `suitability_status`, `review_requirements`, `warnings`, `blocking_reasons`, `diagnostic_only_reason`, `restricted_reason`.
+
+Input supports `candidate_instrument_review_targets` (dict or string IDs) or `candidate_method_family_review_targets` (expands to known instruments for those families). If neither is provided, a conservative documented fallback set of nine governed instruments is evaluated and governance is marked provisional when catalog data is missing.
+
+Suitability status names (`METHOD_FAMILY_*`) apply to both method families and method/inference instruments for compatibility.
+
 ---
 
 ## 19. Governance handoff behavior
@@ -188,7 +208,7 @@ Preserves spend feasibility status and historical support warnings. Emits out-of
 
 ## 25. Tests added
 
-42 targeted tests in `tests/validation/test_method_suitability_runtime_001.py` covering upstream gates, estimand gates, review requirements, method-family classification, handoff preservation, claim boundaries, and multiple packets.
+57 targeted tests in `tests/validation/test_method_suitability_runtime_001.py` covering upstream gates, estimand gates, review requirements, method-family classification, instrument suitability matrix, handoff preservation, claim boundaries, and multiple packets.
 
 ---
 

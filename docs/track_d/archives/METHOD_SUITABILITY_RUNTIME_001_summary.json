@@ -2,7 +2,7 @@
   "artifact_id": "METHOD_SUITABILITY_RUNTIME_001",
   "artifact_type": "method_suitability_runtime",
   "artifact_version": "1.0.0",
-  "base_commit": "21008611915ced11038c512ba65e9c915a5a02de",
+  "base_commit": "33d1109632d9b3044dd315535eb04cdb6b6ea566",
   "status": "completed",
   "verdict": "method_suitability_runtime_implemented_review_classification_only_no_estimator_or_inference_authorization",
   "final_verdict": "method_suitability_runtime_implemented_review_classification_only_no_estimator_or_inference_authorization",
@@ -24,6 +24,13 @@
   "governance_stance_preservation_implemented": true,
   "estimand_gate_implemented": true,
   "handoff_readiness_gate_implemented": true,
+  "instrument_suitability_matrix_implemented": true,
+  "estimator_inference_instrument_classification_implemented": true,
+  "method_family_only_classification": false,
+  "method_winner_selected": false,
+  "primary_readout_stack_selected": false,
+  "sensitivity_stack_selected": false,
+  "diagnostic_stack_selected": false,
   "method_family_selected": false,
   "estimator_selected": false,
   "inference_method_selected": false,
@@ -56,5 +63,6 @@
   "recommended_next_artifact": "DESIGN_ASSIGNMENT_RUNTIME_CONTRACT_001",
   "alternative_next_artifact": "READOUT_METHOD_GOVERNANCE_CONTRACT_001",
   "failed_scenarios": [],
-  "smoke_handoff_status": "METHOD_HANDOFF_READY_WITH_WARNINGS"
+  "smoke_handoff_status": "METHOD_HANDOFF_READY_WITH_WARNINGS",
+  "smoke_candidate_instrument_count": 6
 }
