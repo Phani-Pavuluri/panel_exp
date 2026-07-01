@@ -1761,6 +1761,39 @@
       "resolution_artifact": "DESIGN_SCENARIO_POLICY_FEASIBILITY_RUNTIME_001"
     },
     {
+      "investigation_id": "INV-DESIGN-CELL-STRUCTURE-RUNTIME-001",
+      "title": "Design cell structure runtime implementation",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "DESIGN-SCENARIO-POLICY-FEASIBILITY-RUNTIME-001",
+      "affected_combination": "design_cell_structure_runtime",
+      "problem_class": ["design_cell_structure", "runtime_validation", "handoff_readiness"],
+      "evidence": {
+        "depends_on": [
+          "GEO_KPI_SPEND_DATA_PROFILER_001",
+          "GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001",
+          "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001",
+          "POWER_MDE_DIAGNOSTICS_RUNTIME_001",
+          "DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001",
+          "DESIGN_SCENARIO_POLICY_FEASIBILITY_RUNTIME_001"
+        ],
+        "scope": "runtime_validates_declared_structures_no_assignment_or_scenario_feasibility_computation",
+        "runtime_design_cell_structure_validation_implemented": true,
+        "scenario_feasibility_handoff_readiness_implemented": true,
+        "assignment_readiness_validation_implemented": true,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "DESIGN_ASSIGNMENT_FEASIBILITY_CONTRACT_001"
+      },
+      "current_decision": "DESIGN_CELL_STRUCTURE_RUNTIME_IMPLEMENTED_FOR_DECLARED_STRUCTURES_NO_ASSIGNMENT_OR_SCENARIO_FEASIBILITY_COMPUTATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Design cell structure runtime before assignment feasibility contract",
+      "blocking_policy": "Validates declared structure only; no assignment or scenario feasibility computation",
+      "terminal_decisions": ["RESTRICT", "RUNTIME_ONLY", "PROMOTE"],
+      "resolution_artifact": "DESIGN_CELL_STRUCTURE_RUNTIME_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -3723,6 +3756,27 @@
         "split_control_recheck",
         "resolution_option_emission",
         "no_scenario_enumeration_or_optimization"
+      ]
+    },
+    {
+      "lane_id": "DESIGN-CELL-STRUCTURE-RUNTIME-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-DESIGN-CELL-STRUCTURE-RUNTIME-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "DESIGN_ASSIGNMENT_FEASIBILITY_CONTRACT_001",
+      "resolution_artifact": "DESIGN_CELL_STRUCTURE_RUNTIME_001",
+      "artifact_tags": [
+        "design_cell_structure_runtime",
+        "cell_role_validation",
+        "contrast_structure_validation",
+        "shared_control_dependency_validation",
+        "scenario_feasibility_handoff",
+        "assignment_readiness_validation",
+        "no_assignment_or_scenario_feasibility_computation"
       ]
     }
   ]

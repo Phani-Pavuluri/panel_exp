@@ -1349,6 +1349,25 @@ class TestOpenInvestigationRegistry001:
             "DESIGN_SCENARIO_POLICY_FEASIBILITY_RUNTIME_IMPLEMENTED_FOR_PROVIDED_SCENARIOS_NO_ENUMERATION_OR_OPTIMIZATION"
         )
 
+    def test_design_cell_structure_runtime_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "DESIGN-CELL-STRUCTURE-RUNTIME-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "DESIGN_CELL_STRUCTURE_RUNTIME_001"
+        assert lane["next_artifact"] == "DESIGN_ASSIGNMENT_FEASIBILITY_CONTRACT_001"
+        assert "INV-DESIGN-CELL-STRUCTURE-RUNTIME-001" in lane["resolved_investigations"]
+
+    def test_design_cell_structure_runtime_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-DESIGN-CELL-STRUCTURE-RUNTIME-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "DESIGN_CELL_STRUCTURE_RUNTIME_001"
+        assert inv.current_decision == (
+            "DESIGN_CELL_STRUCTURE_RUNTIME_IMPLEMENTED_FOR_DECLARED_STRUCTURES_NO_ASSIGNMENT_OR_SCENARIO_FEASIBILITY_COMPUTATION"
+        )
+
     def test_production_authorization_release_gate_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"]
         assert inv.status == "RESOLVED"

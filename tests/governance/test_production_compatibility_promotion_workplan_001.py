@@ -815,3 +815,21 @@ def test_governance_design_scenario_policy_feasibility_runtime_lane_complete() -
     assert lane["next_artifact"] == "DESIGN_CELL_STRUCTURE_RUNTIME_001"
     assert lane["resolution_artifact"] == "DESIGN_SCENARIO_POLICY_FEASIBILITY_RUNTIME_001"
     assert "provided_scenario_evaluation" in lane["artifact_tags"]
+
+
+def test_governance_design_cell_structure_runtime_resolved() -> None:
+    inv = investigations_by_id()["INV-DESIGN-CELL-STRUCTURE-RUNTIME-001"]
+    assert inv.status == "RESOLVED"
+    assert inv.resolution_artifact == "DESIGN_CELL_STRUCTURE_RUNTIME_001"
+
+
+def test_governance_design_cell_structure_runtime_lane_complete() -> None:
+    reg = load_registry()
+    lane = next(
+        b for b in reg["roadmap_lane_bindings"]
+        if b["lane_id"] == "DESIGN-CELL-STRUCTURE-RUNTIME-001"
+    )
+    assert lane["status"] == "complete"
+    assert lane["next_artifact"] == "DESIGN_ASSIGNMENT_FEASIBILITY_CONTRACT_001"
+    assert lane["resolution_artifact"] == "DESIGN_CELL_STRUCTURE_RUNTIME_001"
+    assert "scenario_feasibility_handoff" in lane["artifact_tags"]

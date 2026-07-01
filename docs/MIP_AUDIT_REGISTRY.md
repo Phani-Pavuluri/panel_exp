@@ -2200,7 +2200,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Implements conservative `evaluate_design_scenario_policy_feasibility` for provided scenario policy plans: required-vs-achieved spend contrast, historical support, shared-control conflicts, estimand shifts, resolution options (`failed_scenarios: []`). No scenario enumeration or optimization.
 
-**Next:** `DESIGN_CELL_STRUCTURE_RUNTIME_001` · alternative: `DESIGN_ASSIGNMENT_FEASIBILITY_CONTRACT_001`.
+**Next:** `DESIGN_CELL_STRUCTURE_RUNTIME_001` (completed — see design cell structure runtime report).
+
+---
+
+## DESIGN-CELL-STRUCTURE-RUNTIME-001 (2026-06-30)
+
+**Artifact:** [`docs/track_d/DESIGN_CELL_STRUCTURE_RUNTIME_001_REPORT.md`](track_d/DESIGN_CELL_STRUCTURE_RUNTIME_001_REPORT.md) · [`docs/track_d/archives/DESIGN_CELL_STRUCTURE_RUNTIME_001_summary.json`](track_d/archives/DESIGN_CELL_STRUCTURE_RUNTIME_001_summary.json) · [`panel_exp/validation/design_cell_structure_runtime_001.py`](../panel_exp/validation/design_cell_structure_runtime_001.py)
+
+**Status:** **`design_cell_structure_runtime_implemented_for_declared_structures_no_assignment_or_scenario_feasibility_computation`**
+
+**Verdict:** Implements conservative `evaluate_design_cell_structure` for declared design-cell structures: cell/contrast/role/policy validation, shared-control dependencies, handoff and assignment readiness (`failed_scenarios: []`). No assignment or scenario feasibility computation.
+
+**Next:** `DESIGN_ASSIGNMENT_FEASIBILITY_CONTRACT_001` · alternative: `METHOD_SUITABILITY_HANDOFF_CONTRACT_001`.
 
 ---
 
