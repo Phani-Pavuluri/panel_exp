@@ -1425,6 +1425,25 @@ class TestOpenInvestigationRegistry001:
             "METHOD_SUITABILITY_HANDOFF_CONTRACT_DEFINED_NO_METHOD_SELECTION_OR_INFERENCE_AUTHORIZATION"
         )
 
+    def test_method_suitability_runtime_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "METHOD-SUITABILITY-RUNTIME-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "METHOD_SUITABILITY_RUNTIME_001"
+        assert lane["next_artifact"] == "DESIGN_ASSIGNMENT_RUNTIME_CONTRACT_001"
+        assert "INV-METHOD-SUITABILITY-RUNTIME-001" in lane["resolved_investigations"]
+
+    def test_method_suitability_runtime_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-METHOD-SUITABILITY-RUNTIME-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "METHOD_SUITABILITY_RUNTIME_001"
+        assert inv.current_decision == (
+            "METHOD_SUITABILITY_RUNTIME_IMPLEMENTED_REVIEW_CLASSIFICATION_ONLY_NO_ESTIMATOR_OR_INFERENCE_AUTHORIZATION"
+        )
+
     def test_production_authorization_release_gate_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"]
         assert inv.status == "RESOLVED"

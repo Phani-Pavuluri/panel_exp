@@ -2252,6 +2252,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## METHOD-SUITABILITY-RUNTIME-001 (2026-06-30)
+
+**Artifact:** [`docs/track_d/METHOD_SUITABILITY_RUNTIME_001_REPORT.md`](track_d/METHOD_SUITABILITY_RUNTIME_001_REPORT.md) · [`docs/track_d/archives/METHOD_SUITABILITY_RUNTIME_001_summary.json`](track_d/archives/METHOD_SUITABILITY_RUNTIME_001_summary.json) · [`panel_exp/validation/method_suitability_runtime_001.py`](../panel_exp/validation/method_suitability_runtime_001.py)
+
+**Status:** **`method_suitability_runtime_implemented_review_classification_only_no_estimator_or_inference_authorization`**
+
+**Verdict:** Implements conservative `evaluate_method_suitability`: handoff readiness gates, estimand gate, review requirement detection, method-family review classification, governance/scenario/assignment/power/spend handoff preservation (`failed_scenarios: []`). No estimator execution or inference authorization.
+
+**Next:** `DESIGN_ASSIGNMENT_RUNTIME_CONTRACT_001` · alternative: `READOUT_METHOD_GOVERNANCE_CONTRACT_001`.
+
+---
+
 ## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)

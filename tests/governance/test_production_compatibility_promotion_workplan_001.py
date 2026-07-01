@@ -887,3 +887,21 @@ def test_governance_method_suitability_handoff_contract_lane_complete() -> None:
     assert lane["next_artifact"] == "METHOD_SUITABILITY_RUNTIME_001"
     assert lane["resolution_artifact"] == "METHOD_SUITABILITY_HANDOFF_CONTRACT_001"
     assert "contract_only" in lane["artifact_tags"]
+
+
+def test_governance_method_suitability_runtime_resolved() -> None:
+    inv = investigations_by_id()["INV-METHOD-SUITABILITY-RUNTIME-001"]
+    assert inv.status == "RESOLVED"
+    assert inv.resolution_artifact == "METHOD_SUITABILITY_RUNTIME_001"
+
+
+def test_governance_method_suitability_runtime_lane_complete() -> None:
+    reg = load_registry()
+    lane = next(
+        b for b in reg["roadmap_lane_bindings"]
+        if b["lane_id"] == "METHOD-SUITABILITY-RUNTIME-001"
+    )
+    assert lane["status"] == "complete"
+    assert lane["next_artifact"] == "DESIGN_ASSIGNMENT_RUNTIME_CONTRACT_001"
+    assert lane["resolution_artifact"] == "METHOD_SUITABILITY_RUNTIME_001"
+    assert "no_estimator_or_inference_authorization" in lane["artifact_tags"]
