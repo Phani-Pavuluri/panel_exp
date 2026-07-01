@@ -1,0 +1,1328 @@
+{
+  "artifact_id": "METHOD_SUITABILITY_HANDOFF_CONTRACT_001",
+  "artifact_type": "method_suitability_handoff_contract",
+  "artifact_version": "1.0.0",
+  "base_commit": "9e680f965cb80a304b0e61aa9c5b283539da860c",
+  "status": "completed",
+  "verdict": "method_suitability_handoff_contract_defined_no_method_selection_or_inference_authorization",
+  "final_verdict": "method_suitability_handoff_contract_defined_no_method_selection_or_inference_authorization",
+  "scope": "contract_only_no_method_selection_or_inference_authorization",
+  "depends_on": [
+    "GEO_KPI_SPEND_DATA_PROFILER_001",
+    "GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001",
+    "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001",
+    "POWER_MDE_DIAGNOSTICS_RUNTIME_001",
+    "DESIGN_CELL_STRUCTURE_RUNTIME_001",
+    "DESIGN_SCENARIO_POLICY_FEASIBILITY_RUNTIME_001",
+    "DESIGN_ASSIGNMENT_FEASIBILITY_RUNTIME_001"
+  ],
+  "method_suitability_handoff_contract_defined": true,
+  "method_handoff_packet_defined": true,
+  "estimand_handoff_defined": true,
+  "design_summary_handoff_defined": true,
+  "scenario_summary_handoff_defined": true,
+  "assignment_summary_handoff_defined": true,
+  "power_mde_summary_handoff_defined": true,
+  "spend_summary_handoff_defined": true,
+  "governance_summary_handoff_defined": true,
+  "review_requirement_types_defined": true,
+  "method_family_review_targets_defined": true,
+  "claim_boundaries_defined": true,
+  "future_handoff_statuses": [
+    "METHOD_HANDOFF_READY_FOR_SUITABILITY_REVIEW",
+    "METHOD_HANDOFF_READY_WITH_WARNINGS",
+    "METHOD_HANDOFF_PROVISIONAL",
+    "METHOD_HANDOFF_BLOCKED_BY_DATA_READINESS",
+    "METHOD_HANDOFF_BLOCKED_BY_GEO_FEASIBILITY",
+    "METHOD_HANDOFF_BLOCKED_BY_DESIGN_STRUCTURE",
+    "METHOD_HANDOFF_BLOCKED_BY_SCENARIO_POLICY",
+    "METHOD_HANDOFF_BLOCKED_BY_ASSIGNMENT_FEASIBILITY",
+    "METHOD_HANDOFF_BLOCKED_BY_POWER_MDE_READINESS",
+    "METHOD_HANDOFF_BLOCKED_BY_MISSING_ESTIMAND",
+    "METHOD_HANDOFF_BLOCKED_BY_UNSUPPORTED_DESIGN",
+    "METHOD_HANDOFF_REQUIRES_DOSAGE_REVIEW",
+    "METHOD_HANDOFF_REQUIRES_DIFFERENCE_IN_POLICY_REVIEW",
+    "METHOD_HANDOFF_REQUIRES_BUDGET_REALLOCATION_REVIEW",
+    "METHOD_HANDOFF_REQUIRES_REDESIGN_RECHECK",
+    "METHOD_HANDOFF_NOT_EVALUATED"
+  ],
+  "future_review_requirement_types": [
+    "STANDARD_INCREMENTALITY_REVIEW",
+    "DOSAGE_CONTRAST_REVIEW",
+    "DIFFERENCE_IN_POLICY_REVIEW",
+    "BUDGET_REALLOCATION_REVIEW",
+    "GO_LIVE_REVIEW",
+    "COMMON_CONTROL_REVIEW",
+    "SPLIT_CONTROL_REDESIGN_REVIEW",
+    "MATCHED_PAIR_REVIEW",
+    "BLOCKED_OR_CLUSTERED_DESIGN_REVIEW",
+    "RERANDOMIZATION_REVIEW",
+    "INTERFERENCE_RISK_REVIEW",
+    "LOW_POWER_OR_HIGH_MDE_REVIEW",
+    "OUT_OF_HISTORICAL_SUPPORT_REVIEW",
+    "ASSIGNMENT_FEASIBILITY_REVIEW",
+    "METHOD_GOVERNANCE_REVIEW"
+  ],
+  "future_method_family_review_targets": [
+    "SCM_FAMILY",
+    "AUGSYNTH_FAMILY",
+    "TBR_RIDGE_FAMILY",
+    "DID_FAMILY",
+    "MATCHED_PAIR_FAMILY",
+    "BLOCKED_RANDOMIZATION_FAMILY",
+    "RERANDOMIZATION_FAMILY",
+    "PLACEBO_INFERENCE_FAMILY",
+    "JACKKNIFE_INFERENCE_FAMILY",
+    "BOOTSTRAP_INFERENCE_FAMILY",
+    "CONFORMAL_INFERENCE_FAMILY",
+    "AB_TEST_FAMILY",
+    "UNKNOWN_METHOD_FAMILY"
+  ],
+  "readiness_gates_defined": [
+    "profiler_data_readiness_gate",
+    "geo_unit_market_feasibility_gate",
+    "spend_feasibility_gate",
+    "power_mde_readiness_gate",
+    "design_cell_structure_gate",
+    "scenario_policy_feasibility_gate",
+    "assignment_feasibility_gate",
+    "estimand_declaration_gate",
+    "design_contrast_compatibility_gate",
+    "method_governance_catalog_availability_gate",
+    "method_suitability_handoff_packet_gate"
+  ],
+  "future_contract_concepts_defined": [
+    "MethodSuitabilityHandoffInput",
+    "MethodSuitabilityHandoffConfig",
+    "MethodSuitabilityHandoffReport",
+    "MethodSuitabilityHandoffPacket",
+    "MethodSuitabilityDesignSummary",
+    "MethodSuitabilityContrastSummary",
+    "MethodSuitabilityAssignmentSummary",
+    "MethodSuitabilityScenarioSummary",
+    "MethodSuitabilityPowerMdeSummary",
+    "MethodSuitabilitySpendSummary",
+    "MethodSuitabilityGovernanceSummary",
+    "MethodFamilyEligibilityInput",
+    "MethodFamilyRestriction",
+    "MethodFamilyWarning",
+    "MethodSuitabilityHandoffStatus",
+    "MethodSuitabilityReviewRequirement",
+    "MethodSuitabilityIssue",
+    "MethodSuitabilityIssueSeverity",
+    "MethodSuitabilityClaimBoundaryReport"
+  ],
+  "future_output_concepts_defined": [
+    "MethodSuitabilityHandoffReport",
+    "MethodSuitabilityHandoffPacket",
+    "MethodSuitabilityDesignSummary",
+    "MethodSuitabilityContrastSummary",
+    "MethodSuitabilityAssignmentSummary",
+    "MethodSuitabilityScenarioSummary",
+    "MethodSuitabilityPowerMdeSummary",
+    "MethodSuitabilitySpendSummary",
+    "MethodSuitabilityGovernanceSummary",
+    "MethodSuitabilityReviewRequirementReport",
+    "MethodSuitabilityBlockingReasonReport",
+    "MethodSuitabilityClaimBoundaryReport"
+  ],
+  "handoff_packet_fields_defined": [
+    "artifact_id",
+    "design_id",
+    "handoff_status",
+    "design_structure_type",
+    "contrast_summaries",
+    "estimand_summaries",
+    "scenario_policy_summary",
+    "assignment_feasibility_summary",
+    "power_mde_summary",
+    "spend_summary",
+    "governance_summary",
+    "review_requirements",
+    "candidate_method_family_review_targets",
+    "warnings",
+    "blocking_reasons",
+    "claim_boundary_report"
+  ],
+  "input_dependencies": [
+    "profiler_report",
+    "geo_unit_market_feasibility_report",
+    "spend_requirement_manipulation_feasibility_report",
+    "power_mde_diagnostics_report",
+    "design_cell_structure_runtime_report",
+    "design_scenario_policy_feasibility_report",
+    "design_assignment_feasibility_report",
+    "design_structure_type",
+    "contrast_specs",
+    "contrast_types",
+    "estimand_labels",
+    "manipulation_policies",
+    "bau_control_preservation_status",
+    "shared_control_conflicts",
+    "split_control_required",
+    "scenario_recheck_requirements",
+    "assignment_feasibility_status",
+    "eligible_unit_count",
+    "cell_capacity_status",
+    "balance_readiness_status",
+    "interference_risk_status",
+    "required_vs_achieved_spend_contrast_status",
+    "historical_support_status",
+    "method_suitability_review_required_flags",
+    "instrument_catalog_status",
+    "method_roadmap_status"
+  ],
+  "contract_examples_defined": [
+    "example_1_standard_two_cell_go_dark_handoff",
+    "example_2_heavy_up_vs_bau_handoff",
+    "example_3_dosage_contrast_handoff",
+    "example_4_difference_in_policy_handoff",
+    "example_5_budget_reallocation_handoff",
+    "example_6_shared_common_control_conflict",
+    "example_7_split_control_redesign",
+    "example_8_assignment_feasible_method_review_required"
+  ],
+  "future_implementation_tests_required": [
+    "blocked_profiler_blocks_handoff",
+    "blocked_geo_feasibility_blocks_handoff",
+    "blocked_design_structure_blocks_handoff",
+    "blocked_assignment_feasibility_blocks_or_provisional_handoff",
+    "blocked_scenario_policy_blocks_or_provisional_handoff",
+    "blocked_power_mde_prevents_method_ready_inference",
+    "missing_estimand_blocks_handoff",
+    "standard_go_dark_bau_preserved_emits_standard_incrementality_review",
+    "manipulated_control_emits_difference_in_policy_review",
+    "dosage_contrast_emits_dosage_review",
+    "budget_reallocation_emits_budget_reallocation_review",
+    "shared_control_conflict_preserved",
+    "split_control_redesign_recheck_preserved",
+    "out_of_historical_support_warning_preserved",
+    "interference_risk_preserved",
+    "assignment_ready_does_not_mean_method_ready",
+    "method_family_review_targets_not_selected_methods",
+    "no_estimator_inference_authorization",
+    "no_lift_roi_p_value_ci_computation",
+    "no_production_authorization",
+    "no_fixture_specific_branching"
+  ],
+  "contract_positive_flags": {
+    "method_suitability_handoff_contract_defined": true,
+    "method_handoff_packet_defined": true,
+    "estimand_handoff_defined": true,
+    "design_summary_handoff_defined": true,
+    "scenario_summary_handoff_defined": true,
+    "assignment_summary_handoff_defined": true,
+    "power_mde_summary_handoff_defined": true,
+    "spend_summary_handoff_defined": true,
+    "governance_summary_handoff_defined": true,
+    "review_requirement_types_defined": true,
+    "method_family_review_targets_defined": true,
+    "claim_boundaries_defined": true
+  },
+  "runtime_method_suitability_implemented": false,
+  "method_family_selected": false,
+  "estimator_selected": false,
+  "inference_method_selected": false,
+  "method_promotion_authorized": false,
+  "method_production_compatibility_authorized": false,
+  "geo_assignment_computed": false,
+  "matched_pairs_generated": false,
+  "blocks_generated": false,
+  "randomization_computed": false,
+  "rerandomization_computed": false,
+  "thinning_design_generated": false,
+  "matching_optimization_computed": false,
+  "balance_optimization_computed": false,
+  "scenario_policy_feasibility_computed": false,
+  "assignment_feasibility_computed": false,
+  "power_computed": false,
+  "mde_computed": false,
+  "p_value_computed": false,
+  "confidence_interval_computed": false,
+  "lift_computed": false,
+  "roi_computed": false,
+  "budget_optimization_authorized": false,
+  "candidate_design_authorized": false,
+  "treatment_control_assignment_authorized": false,
+  "estimator_inference_authorized": false,
+  "mmm_runtime_calls_implemented": false,
+  "mmm_calibration_authorized": false,
+  "production_authorization_granted": false,
+  "llm_decisioning_authorized": false,
+  "authorization_flags": {
+    "runtime_method_suitability_implemented": false,
+    "method_family_selected": false,
+    "estimator_selected": false,
+    "inference_method_selected": false,
+    "method_promotion_authorized": false,
+    "method_production_compatibility_authorized": false,
+    "geo_assignment_computed": false,
+    "matched_pairs_generated": false,
+    "blocks_generated": false,
+    "randomization_computed": false,
+    "rerandomization_computed": false,
+    "thinning_design_generated": false,
+    "matching_optimization_computed": false,
+    "balance_optimization_computed": false,
+    "scenario_policy_feasibility_computed": false,
+    "assignment_feasibility_computed": false,
+    "power_computed": false,
+    "mde_computed": false,
+    "p_value_computed": false,
+    "confidence_interval_computed": false,
+    "lift_computed": false,
+    "roi_computed": false,
+    "budget_optimization_authorized": false,
+    "candidate_design_authorized": false,
+    "treatment_control_assignment_authorized": false,
+    "estimator_inference_authorized": false,
+    "mmm_runtime_calls_implemented": false,
+    "mmm_calibration_authorized": false,
+    "production_authorization_granted": false,
+    "llm_decisioning_authorized": false
+  },
+  "recommended_next_artifact": "METHOD_SUITABILITY_RUNTIME_001",
+  "alternative_next_artifact": "DESIGN_ASSIGNMENT_RUNTIME_CONTRACT_001",
+  "generated_at": "2026-07-01T08:25:53.711231+00:00",
+  "git_commit": "9e680f965cb80a304b0e61aa9c5b283539da860c",
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "handoff_status_METHOD_HANDOFF_READY_FOR_SUITABILITY_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "handoff_status_METHOD_HANDOFF_READY_WITH_WARNINGS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "handoff_status_METHOD_HANDOFF_PROVISIONAL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "handoff_status_METHOD_HANDOFF_BLOCKED_BY_DATA_READINESS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "handoff_status_METHOD_HANDOFF_BLOCKED_BY_GEO_FEASIBILITY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "handoff_status_METHOD_HANDOFF_BLOCKED_BY_DESIGN_STRUCTURE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "handoff_status_METHOD_HANDOFF_BLOCKED_BY_SCENARIO_POLICY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "handoff_status_METHOD_HANDOFF_BLOCKED_BY_ASSIGNMENT_FEASIBILITY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "handoff_status_METHOD_HANDOFF_BLOCKED_BY_POWER_MDE_READINESS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "handoff_status_METHOD_HANDOFF_BLOCKED_BY_MISSING_ESTIMAND",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "handoff_status_METHOD_HANDOFF_BLOCKED_BY_UNSUPPORTED_DESIGN",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "handoff_status_METHOD_HANDOFF_REQUIRES_DOSAGE_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "handoff_status_METHOD_HANDOFF_REQUIRES_DIFFERENCE_IN_POLICY_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "handoff_status_METHOD_HANDOFF_REQUIRES_BUDGET_REALLOCATION_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "handoff_status_METHOD_HANDOFF_REQUIRES_REDESIGN_RECHECK",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "handoff_status_METHOD_HANDOFF_NOT_EVALUATED",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "review_requirement_STANDARD_INCREMENTALITY_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "review_requirement_DOSAGE_CONTRAST_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "review_requirement_DIFFERENCE_IN_POLICY_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "review_requirement_BUDGET_REALLOCATION_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "review_requirement_GO_LIVE_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "review_requirement_COMMON_CONTROL_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "review_requirement_SPLIT_CONTROL_REDESIGN_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "review_requirement_MATCHED_PAIR_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "review_requirement_BLOCKED_OR_CLUSTERED_DESIGN_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "review_requirement_RERANDOMIZATION_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "review_requirement_INTERFERENCE_RISK_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "review_requirement_LOW_POWER_OR_HIGH_MDE_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "review_requirement_OUT_OF_HISTORICAL_SUPPORT_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "review_requirement_ASSIGNMENT_FEASIBILITY_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "review_requirement_METHOD_GOVERNANCE_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_target_SCM_FAMILY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_target_AUGSYNTH_FAMILY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_target_TBR_RIDGE_FAMILY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_target_DID_FAMILY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_target_MATCHED_PAIR_FAMILY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_target_BLOCKED_RANDOMIZATION_FAMILY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_target_RERANDOMIZATION_FAMILY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_target_PLACEBO_INFERENCE_FAMILY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_target_JACKKNIFE_INFERENCE_FAMILY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_target_BOOTSTRAP_INFERENCE_FAMILY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_target_CONFORMAL_INFERENCE_FAMILY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_target_AB_TEST_FAMILY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "method_family_target_UNKNOWN_METHOD_FAMILY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_profiler_data_readiness_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_geo_unit_market_feasibility_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_spend_feasibility_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_power_mde_readiness_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_design_cell_structure_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_scenario_policy_feasibility_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_assignment_feasibility_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_estimand_declaration_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_design_contrast_compatibility_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_method_governance_catalog_availability_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_method_suitability_handoff_packet_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "packet_field_artifact_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "packet_field_design_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "packet_field_handoff_status",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "packet_field_design_structure_type",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "packet_field_contrast_summaries",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "packet_field_estimand_summaries",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "packet_field_scenario_policy_summary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "packet_field_assignment_feasibility_summary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "packet_field_power_mde_summary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "packet_field_spend_summary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "packet_field_governance_summary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "packet_field_review_requirements",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "packet_field_candidate_method_family_review_targets",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "packet_field_warnings",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "packet_field_blocking_reasons",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "packet_field_claim_boundary_report",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_profiler_report",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_geo_unit_market_feasibility_report",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_spend_requirement_manipulation_feasibility_report",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_power_mde_diagnostics_report",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_design_cell_structure_runtime_report",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_design_scenario_policy_feasibility_report",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_design_assignment_feasibility_report",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_design_structure_type",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_contrast_specs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_contrast_types",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_estimand_labels",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_manipulation_policies",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_bau_control_preservation_status",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_shared_control_conflicts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_split_control_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_scenario_recheck_requirements",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_assignment_feasibility_status",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_eligible_unit_count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_cell_capacity_status",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_balance_readiness_status",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_interference_risk_status",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_required_vs_achieved_spend_contrast_status",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_historical_support_status",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_method_suitability_review_required_flags",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_instrument_catalog_status",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "input_dependency_method_roadmap_status",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "example_example_1_standard_two_cell_go_dark_handoff",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "example_example_2_heavy_up_vs_bau_handoff",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "example_example_3_dosage_contrast_handoff",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "example_example_4_difference_in_policy_handoff",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "example_example_5_budget_reallocation_handoff",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "example_example_6_shared_common_control_conflict",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "example_example_7_split_control_redesign",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "example_example_8_assignment_feasible_method_review_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_MethodSuitabilityHandoffInput",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_MethodSuitabilityHandoffConfig",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_MethodSuitabilityHandoffReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_MethodSuitabilityHandoffPacket",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_MethodSuitabilityDesignSummary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_MethodSuitabilityContrastSummary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_MethodSuitabilityAssignmentSummary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_MethodSuitabilityScenarioSummary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_MethodSuitabilityPowerMdeSummary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_MethodSuitabilitySpendSummary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_MethodSuitabilityGovernanceSummary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_MethodFamilyEligibilityInput",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_MethodFamilyRestriction",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_MethodFamilyWarning",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_MethodSuitabilityHandoffStatus",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_MethodSuitabilityReviewRequirement",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_MethodSuitabilityIssue",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_MethodSuitabilityIssueSeverity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_MethodSuitabilityClaimBoundaryReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_MethodSuitabilityHandoffReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_MethodSuitabilityHandoffPacket",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_MethodSuitabilityDesignSummary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_MethodSuitabilityContrastSummary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_MethodSuitabilityAssignmentSummary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_MethodSuitabilityScenarioSummary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_MethodSuitabilityPowerMdeSummary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_MethodSuitabilitySpendSummary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_MethodSuitabilityGovernanceSummary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_MethodSuitabilityReviewRequirementReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_MethodSuitabilityBlockingReasonReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_MethodSuitabilityClaimBoundaryReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_blocked_profiler_blocks_handoff",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_blocked_geo_feasibility_blocks_handoff",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_blocked_design_structure_blocks_handoff",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_blocked_assignment_feasibility_blocks_or_provisional_handoff",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_blocked_scenario_policy_blocks_or_provisional_handoff",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_blocked_power_mde_prevents_method_ready_inference",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_missing_estimand_blocks_handoff",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_standard_go_dark_bau_preserved_emits_standard_incrementality_review",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_manipulated_control_emits_difference_in_policy_review",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_dosage_contrast_emits_dosage_review",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_budget_reallocation_emits_budget_reallocation_review",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_shared_control_conflict_preserved",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_split_control_redesign_recheck_preserved",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_out_of_historical_support_warning_preserved",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_interference_risk_preserved",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_assignment_ready_does_not_mean_method_ready",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_method_family_review_targets_not_selected_methods",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_no_estimator_inference_authorization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_no_lift_roi_p_value_ci_computation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_no_production_authorization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_no_fixture_specific_branching",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_runtime_method_suitability_implemented_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_method_family_selected_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_estimator_selected_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_inference_method_selected_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_method_promotion_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_method_production_compatibility_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_geo_assignment_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_matched_pairs_generated_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_blocks_generated_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_randomization_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_rerandomization_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_thinning_design_generated_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_matching_optimization_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_balance_optimization_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scenario_policy_feasibility_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_assignment_feasibility_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_power_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mde_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_p_value_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_confidence_interval_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_lift_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_roi_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_candidate_design_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_treatment_control_assignment_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_estimator_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_runtime_calls_implemented_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_calibration_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_authorization_granted_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_positive_method_suitability_handoff_contract_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_positive_method_handoff_packet_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_positive_estimand_handoff_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_positive_design_summary_handoff_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_positive_scenario_summary_handoff_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_positive_assignment_summary_handoff_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_positive_power_mde_summary_handoff_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_positive_spend_summary_handoff_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_positive_governance_summary_handoff_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_positive_review_requirement_types_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_positive_method_family_review_targets_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_positive_claim_boundaries_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "final_verdict_matches",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_valid",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "issues": []
+  },
+  "non_goals": [
+    "no_runtime_method_suitability",
+    "no_method_family_selection",
+    "no_estimator_selection",
+    "no_inference_method_selection",
+    "no_method_promotion",
+    "no_method_production_compatibility_authorization",
+    "no_geo_assignment",
+    "no_matched_pairs_generated",
+    "no_blocks_generated",
+    "no_randomization",
+    "no_rerandomization",
+    "no_assignment_feasibility_computation",
+    "no_scenario_policy_feasibility_computation",
+    "no_power_mde_computation",
+    "no_lift_roi_p_value_ci_computation",
+    "no_production_authorization"
+  ]
+}

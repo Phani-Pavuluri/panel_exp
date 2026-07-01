@@ -1862,6 +1862,41 @@
       "resolution_artifact": "DESIGN_ASSIGNMENT_FEASIBILITY_RUNTIME_001"
     },
     {
+      "investigation_id": "INV-METHOD-SUITABILITY-HANDOFF-CONTRACT-001",
+      "title": "Method suitability handoff contract definition",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "DESIGN-ASSIGNMENT-FEASIBILITY-RUNTIME-001",
+      "affected_combination": "method_suitability_handoff_contract",
+      "problem_class": ["method_suitability", "estimand_handoff", "method_family_review", "contract_only"],
+      "evidence": {
+        "depends_on": [
+          "GEO_KPI_SPEND_DATA_PROFILER_001",
+          "GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001",
+          "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001",
+          "POWER_MDE_DIAGNOSTICS_RUNTIME_001",
+          "DESIGN_CELL_STRUCTURE_RUNTIME_001",
+          "DESIGN_SCENARIO_POLICY_FEASIBILITY_RUNTIME_001",
+          "DESIGN_ASSIGNMENT_FEASIBILITY_RUNTIME_001"
+        ],
+        "scope": "contract_only_no_method_selection_or_inference_authorization",
+        "method_suitability_handoff_contract_defined": true,
+        "method_handoff_packet_defined": true,
+        "estimand_handoff_defined": true,
+        "method_family_review_targets_defined": true,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "METHOD_SUITABILITY_RUNTIME_001"
+      },
+      "current_decision": "METHOD_SUITABILITY_HANDOFF_CONTRACT_DEFINED_NO_METHOD_SELECTION_OR_INFERENCE_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Method suitability handoff contract before method suitability runtime",
+      "blocking_policy": "Contract only; no method selection or inference authorization",
+      "terminal_decisions": ["RESTRICT", "CONTRACT_ONLY", "PROMOTE"],
+      "resolution_artifact": "METHOD_SUITABILITY_HANDOFF_CONTRACT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -3891,6 +3926,27 @@
         "balance_readiness_reporting",
         "interference_risk_reporting",
         "no_assignment_or_matching"
+      ]
+    },
+    {
+      "lane_id": "METHOD-SUITABILITY-HANDOFF-CONTRACT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-METHOD-SUITABILITY-HANDOFF-CONTRACT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "METHOD_SUITABILITY_RUNTIME_001",
+      "resolution_artifact": "METHOD_SUITABILITY_HANDOFF_CONTRACT_001",
+      "artifact_tags": [
+        "method_suitability_handoff",
+        "estimand_handoff",
+        "method_family_review_targets",
+        "review_requirement_types",
+        "governance_summary_handoff",
+        "contract_only",
+        "no_method_selection_or_inference_authorization"
       ]
     }
   ]

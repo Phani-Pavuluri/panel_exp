@@ -2240,6 +2240,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## METHOD-SUITABILITY-HANDOFF-CONTRACT-001 (2026-06-30)
+
+**Artifact:** [`docs/track_d/METHOD_SUITABILITY_HANDOFF_CONTRACT_001_REPORT.md`](track_d/METHOD_SUITABILITY_HANDOFF_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/METHOD_SUITABILITY_HANDOFF_CONTRACT_001_summary.json`](track_d/archives/METHOD_SUITABILITY_HANDOFF_CONTRACT_001_summary.json) · [`panel_exp/validation/method_suitability_handoff_contract_001.py`](../panel_exp/validation/method_suitability_handoff_contract_001.py)
+
+**Status:** **`method_suitability_handoff_contract_defined_no_method_selection_or_inference_authorization`**
+
+**Verdict:** Defines method-suitability handoff contract: estimand labels, design/scenario/assignment summaries, review requirements, method-family review targets (`failed_scenarios: []`). Contract only; no method selection or inference authorization.
+
+**Next:** `METHOD_SUITABILITY_RUNTIME_001` · alternative: `DESIGN_ASSIGNMENT_RUNTIME_CONTRACT_001`.
+
+---
+
 ## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)
