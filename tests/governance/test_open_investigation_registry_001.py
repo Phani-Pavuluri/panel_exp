@@ -1387,6 +1387,25 @@ class TestOpenInvestigationRegistry001:
             "DESIGN_ASSIGNMENT_FEASIBILITY_CONTRACT_DEFINED_NO_RUNTIME_ASSIGNMENT_OR_MATCHING"
         )
 
+    def test_design_assignment_feasibility_runtime_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "DESIGN-ASSIGNMENT-FEASIBILITY-RUNTIME-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "DESIGN_ASSIGNMENT_FEASIBILITY_RUNTIME_001"
+        assert lane["next_artifact"] == "METHOD_SUITABILITY_HANDOFF_CONTRACT_001"
+        assert "INV-DESIGN-ASSIGNMENT-FEASIBILITY-RUNTIME-001" in lane["resolved_investigations"]
+
+    def test_design_assignment_feasibility_runtime_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-DESIGN-ASSIGNMENT-FEASIBILITY-RUNTIME-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "DESIGN_ASSIGNMENT_FEASIBILITY_RUNTIME_001"
+        assert inv.current_decision == (
+            "DESIGN_ASSIGNMENT_FEASIBILITY_RUNTIME_IMPLEMENTED_NO_ASSIGNMENT_OR_MATCHING"
+        )
+
     def test_production_authorization_release_gate_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"]
         assert inv.status == "RESOLVED"
