@@ -1,0 +1,1456 @@
+{
+  "artifact_id": "DESIGN_ASSIGNMENT_FEASIBILITY_CONTRACT_001",
+  "artifact_type": "design_assignment_feasibility_contract",
+  "artifact_version": "1.0.0",
+  "base_commit": "e396f2e17846f5269f9df6ecb6ba467847d1dedf",
+  "status": "completed",
+  "verdict": "design_assignment_feasibility_contract_defined_no_runtime_assignment_or_matching",
+  "final_verdict": "design_assignment_feasibility_contract_defined_no_runtime_assignment_or_matching",
+  "scope": "contract_only_no_runtime_assignment_or_matching",
+  "depends_on": [
+    "GEO_KPI_SPEND_DATA_PROFILER_001",
+    "GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001",
+    "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001",
+    "POWER_MDE_DIAGNOSTICS_RUNTIME_001",
+    "DESIGN_CELL_STRUCTURE_RUNTIME_001",
+    "DESIGN_SCENARIO_POLICY_FEASIBILITY_RUNTIME_001"
+  ],
+  "assignment_feasibility_contract_defined": true,
+  "eligible_unit_contract_defined": true,
+  "cell_capacity_contract_defined": true,
+  "assignment_constraint_categories_defined": true,
+  "common_control_assignment_boundary_defined": true,
+  "split_control_redesign_boundary_defined": true,
+  "matched_pair_block_boundary_defined": true,
+  "hierarchy_exclusion_boundary_defined": true,
+  "balance_readiness_boundary_defined": true,
+  "interference_risk_boundary_defined": true,
+  "claim_boundaries_defined": true,
+  "future_assignment_feasibility_statuses": [
+    "ASSIGNMENT_FEASIBILITY_READY_FOR_RUNTIME",
+    "ASSIGNMENT_FEASIBILITY_READY_WITH_WARNINGS",
+    "ASSIGNMENT_FEASIBILITY_PROVISIONAL",
+    "ASSIGNMENT_FEASIBILITY_BLOCKED_BY_DATA_READINESS",
+    "ASSIGNMENT_FEASIBILITY_BLOCKED_BY_GEO_FEASIBILITY",
+    "ASSIGNMENT_FEASIBILITY_BLOCKED_BY_DESIGN_STRUCTURE",
+    "ASSIGNMENT_FEASIBILITY_BLOCKED_BY_SCENARIO_POLICY",
+    "ASSIGNMENT_FEASIBILITY_BLOCKED_BY_POWER_MDE_READINESS",
+    "ASSIGNMENT_FEASIBILITY_BLOCKED_BY_INSUFFICIENT_ELIGIBLE_UNITS",
+    "ASSIGNMENT_FEASIBILITY_BLOCKED_BY_CELL_CAPACITY",
+    "ASSIGNMENT_FEASIBILITY_BLOCKED_BY_CONSTRAINTS",
+    "ASSIGNMENT_FEASIBILITY_REQUIRES_REDESIGN_RECHECK",
+    "ASSIGNMENT_FEASIBILITY_REQUIRES_METHOD_SUITABILITY_REVIEW",
+    "ASSIGNMENT_FEASIBILITY_NOT_EVALUATED"
+  ],
+  "future_assignment_constraint_statuses": [
+    "ASSIGNMENT_CONSTRAINT_SATISFIED",
+    "ASSIGNMENT_CONSTRAINT_SATISFIED_WITH_WARNINGS",
+    "ASSIGNMENT_CONSTRAINT_PROVISIONAL",
+    "ASSIGNMENT_CONSTRAINT_BLOCKING",
+    "ASSIGNMENT_CONSTRAINT_REQUIRES_REDESIGN",
+    "ASSIGNMENT_CONSTRAINT_REQUIRES_USER_INPUT",
+    "ASSIGNMENT_CONSTRAINT_NOT_EVALUATED"
+  ],
+  "assignment_constraint_categories": [
+    "DATA_ELIGIBILITY_CONSTRAINT",
+    "GEO_FEASIBILITY_CONSTRAINT",
+    "DESIGN_STRUCTURE_CONSTRAINT",
+    "SCENARIO_POLICY_CONSTRAINT",
+    "POWER_MDE_READINESS_CONSTRAINT",
+    "MINIMUM_UNIT_COUNT_CONSTRAINT",
+    "MAXIMUM_UNIT_COUNT_CONSTRAINT",
+    "CELL_CAPACITY_CONSTRAINT",
+    "MUTUAL_EXCLUSIVITY_CONSTRAINT",
+    "COMMON_CONTROL_CONSTRAINT",
+    "SPLIT_CONTROL_REDESIGN_CONSTRAINT",
+    "MATCHED_PAIR_REQUIREMENT_CONSTRAINT",
+    "BLOCK_REQUIREMENT_CONSTRAINT",
+    "GEO_HIERARCHY_CONSTRAINT",
+    "MARKET_EXCLUSION_CONSTRAINT",
+    "BUSINESS_UNIT_CONSTRAINT",
+    "REGION_COUNTRY_CONSTRAINT",
+    "BALANCE_READINESS_CONSTRAINT",
+    "INTERFERENCE_RISK_CONSTRAINT",
+    "SOURCE_DESTINATION_MAPPING_CONSTRAINT",
+    "METHOD_SUITABILITY_CONSTRAINT",
+    "PRODUCTION_AUTHORIZATION_CONSTRAINT"
+  ],
+  "assignment_unit_fields": [
+    "unit_id",
+    "geo_id",
+    "geo_name",
+    "region",
+    "country",
+    "market_group",
+    "business_unit",
+    "eligible",
+    "exclusion_reason",
+    "available_for_assignment",
+    "prior_assignment_cell",
+    "hierarchy_path",
+    "metadata"
+  ],
+  "cell_requirement_fields": [
+    "cell_id",
+    "cell_role",
+    "minimum_units",
+    "maximum_units",
+    "target_units",
+    "requires_bau_control",
+    "requires_common_control",
+    "requires_split_control",
+    "requires_matched_pair",
+    "requires_source_destination_mapping",
+    "eligible_unit_pool",
+    "blocked_unit_pool"
+  ],
+  "readiness_gates_defined": [
+    "profiler_data_readiness_gate",
+    "geo_unit_market_feasibility_gate",
+    "design_cell_structure_gate",
+    "scenario_policy_feasibility_gate",
+    "power_mde_readiness_gate",
+    "assignment_unit_universe_gate",
+    "eligible_unit_inventory_gate",
+    "cell_requirement_gate",
+    "cell_capacity_gate",
+    "mutual_exclusivity_gate",
+    "shared_control_split_control_gate",
+    "geo_hierarchy_market_exclusion_gate",
+    "balance_readiness_gate",
+    "interference_risk_gate",
+    "method_suitability_precheck_gate"
+  ],
+  "future_contract_concepts_defined": [
+    "DesignAssignmentFeasibilityInput",
+    "DesignAssignmentFeasibilityConfig",
+    "DesignAssignmentFeasibilityReport",
+    "AssignmentUnitSpec",
+    "AssignmentCellRequirementSpec",
+    "AssignmentConstraintSpec",
+    "AssignmentEligibilityReport",
+    "AssignmentCellCapacityReport",
+    "AssignmentMutualExclusivityReport",
+    "AssignmentHierarchyConstraintReport",
+    "AssignmentMarketExclusionReport",
+    "AssignmentBalanceReadinessReport",
+    "AssignmentInterferenceRiskReport",
+    "AssignmentSharedControlReport",
+    "AssignmentScenarioHandoffReport",
+    "AssignmentPowerMdeHandoffReport",
+    "AssignmentMethodSuitabilityHandoffReport",
+    "AssignmentFeasibilityStatus",
+    "AssignmentConstraintStatus",
+    "AssignmentIssue",
+    "AssignmentIssueSeverity",
+    "AssignmentClaimBoundaryReport"
+  ],
+  "future_output_concepts_defined": [
+    "DesignAssignmentFeasibilityReport",
+    "AssignmentReadinessReport",
+    "AssignmentEligibilityReport",
+    "AssignmentCellCapacityReport",
+    "AssignmentConstraintReport",
+    "AssignmentMutualExclusivityReport",
+    "AssignmentSharedControlReport",
+    "AssignmentSplitControlReport",
+    "AssignmentHierarchyReport",
+    "AssignmentMarketExclusionReport",
+    "AssignmentBalanceReadinessReport",
+    "AssignmentInterferenceRiskReport",
+    "AssignmentScenarioHandoffReport",
+    "AssignmentPowerMdeHandoffReport",
+    "AssignmentMethodSuitabilityHandoffReport",
+    "AssignmentClaimBoundaryReport"
+  ],
+  "report_fields_defined": [
+    "artifact_id",
+    "design_id",
+    "assignment_feasibility_status",
+    "assignment_readiness_summary",
+    "eligible_unit_count",
+    "excluded_unit_count",
+    "available_unit_count",
+    "required_cell_count",
+    "cell_capacity_reports",
+    "constraint_reports",
+    "mutual_exclusivity_report",
+    "shared_control_report",
+    "split_control_report",
+    "hierarchy_report",
+    "market_exclusion_report",
+    "balance_readiness_report",
+    "interference_risk_report",
+    "scenario_handoff_report",
+    "power_mde_handoff_report",
+    "method_suitability_handoff_report",
+    "claim_boundary_report",
+    "issues",
+    "warnings",
+    "blocking_reasons"
+  ],
+  "input_dependencies": [
+    "profiler_report",
+    "geo_unit_market_feasibility_report",
+    "spend_requirement_manipulation_feasibility_report",
+    "power_mde_diagnostics_report",
+    "design_cell_structure_runtime_report",
+    "design_scenario_policy_feasibility_report",
+    "eligible_units",
+    "excluded_units",
+    "assignment_unit_universe",
+    "cell_requirements",
+    "design_structure_type",
+    "scenario_policy_status",
+    "scenario_recheck_requirements",
+    "split_control_required",
+    "common_control_cells",
+    "cell_roles",
+    "contrast_specs",
+    "minimum_units_per_cell",
+    "maximum_units_per_cell",
+    "target_units_per_cell",
+    "geo_hierarchy_constraints",
+    "market_exclusion_constraints",
+    "business_unit_constraints",
+    "region_country_constraints",
+    "mutual_exclusivity_constraints",
+    "balance_readiness_requirements",
+    "interference_risk_constraints",
+    "method_suitability_review_required"
+  ],
+  "contract_examples_defined": [
+    "example_1_simple_two_cell_ready",
+    "example_2_insufficient_eligible_units",
+    "example_3_common_control_capacity_issue",
+    "example_4_split_control_redesign",
+    "example_5_matched_pair_requirement",
+    "example_6_geo_hierarchy_constraint",
+    "example_7_market_exclusion",
+    "example_8_method_suitability_review_required"
+  ],
+  "future_implementation_tests_required": [
+    "blocked_profiler_blocks_assignment_feasibility",
+    "blocked_geo_feasibility_blocks_assignment_feasibility",
+    "blocked_design_cell_structure_blocks_assignment_feasibility",
+    "blocked_scenario_policy_feasibility_blocks_or_provisional",
+    "blocked_power_mde_readiness_blocks_power_ready_assignment",
+    "missing_assignment_unit_universe_blocks",
+    "excluded_units_not_counted_as_available",
+    "insufficient_eligible_units_blocks",
+    "cell_minimum_units_enforced",
+    "cell_maximum_units_enforced",
+    "mutual_exclusivity_required",
+    "common_control_capacity_checked",
+    "split_control_redesign_requires_recheck",
+    "matched_pair_design_requires_pairability_capacity",
+    "block_design_requires_block_metadata",
+    "missing_hierarchy_metadata_requires_user_input",
+    "market_exclusions_preserved",
+    "balance_covariate_availability_reported_not_optimized",
+    "interference_risk_reported_not_adjusted",
+    "method_suitability_required_blocks_estimator_inference",
+    "assignment_feasible_does_not_assign_units",
+    "assignment_feasible_does_not_generate_pairs_blocks_randomization",
+    "assignment_feasible_does_not_compute_power_mde_lift_roi",
+    "no_fixture_specific_branching"
+  ],
+  "contract_positive_flags": {
+    "assignment_feasibility_contract_defined": true,
+    "eligible_unit_contract_defined": true,
+    "cell_capacity_contract_defined": true,
+    "assignment_constraint_categories_defined": true,
+    "common_control_assignment_boundary_defined": true,
+    "split_control_redesign_boundary_defined": true,
+    "matched_pair_block_boundary_defined": true,
+    "hierarchy_exclusion_boundary_defined": true,
+    "balance_readiness_boundary_defined": true,
+    "interference_risk_boundary_defined": true,
+    "claim_boundaries_defined": true
+  },
+  "runtime_assignment_feasibility_implemented": false,
+  "geo_assignment_computed": false,
+  "matched_pairs_generated": false,
+  "blocks_generated": false,
+  "randomization_computed": false,
+  "rerandomization_computed": false,
+  "thinning_design_generated": false,
+  "matching_optimization_computed": false,
+  "balance_optimization_computed": false,
+  "interference_adjustment_computed": false,
+  "scenario_policy_feasibility_computed": false,
+  "runtime_scenario_enumeration_implemented": false,
+  "runtime_scenario_optimization_implemented": false,
+  "runtime_design_generation_implemented": false,
+  "power_computed": false,
+  "mde_computed": false,
+  "p_value_computed": false,
+  "confidence_interval_computed": false,
+  "lift_computed": false,
+  "roi_computed": false,
+  "budget_optimization_authorized": false,
+  "candidate_design_authorized": false,
+  "treatment_control_assignment_authorized": false,
+  "estimator_inference_authorized": false,
+  "mmm_runtime_calls_implemented": false,
+  "mmm_calibration_authorized": false,
+  "production_authorization_granted": false,
+  "llm_decisioning_authorized": false,
+  "authorization_flags": {
+    "runtime_assignment_feasibility_implemented": false,
+    "geo_assignment_computed": false,
+    "matched_pairs_generated": false,
+    "blocks_generated": false,
+    "randomization_computed": false,
+    "rerandomization_computed": false,
+    "thinning_design_generated": false,
+    "matching_optimization_computed": false,
+    "balance_optimization_computed": false,
+    "interference_adjustment_computed": false,
+    "scenario_policy_feasibility_computed": false,
+    "runtime_scenario_enumeration_implemented": false,
+    "runtime_scenario_optimization_implemented": false,
+    "runtime_design_generation_implemented": false,
+    "power_computed": false,
+    "mde_computed": false,
+    "p_value_computed": false,
+    "confidence_interval_computed": false,
+    "lift_computed": false,
+    "roi_computed": false,
+    "budget_optimization_authorized": false,
+    "candidate_design_authorized": false,
+    "treatment_control_assignment_authorized": false,
+    "estimator_inference_authorized": false,
+    "mmm_runtime_calls_implemented": false,
+    "mmm_calibration_authorized": false,
+    "production_authorization_granted": false,
+    "llm_decisioning_authorized": false
+  },
+  "recommended_next_artifact": "DESIGN_ASSIGNMENT_FEASIBILITY_RUNTIME_001",
+  "alternative_next_artifact": "METHOD_SUITABILITY_HANDOFF_CONTRACT_001",
+  "generated_at": "2026-07-01T07:46:01.825267+00:00",
+  "git_commit": "e396f2e17846f5269f9df6ecb6ba467847d1dedf",
+  "failed_scenarios": [],
+  "scenario_results": [
+    {
+      "scenario_id": "assignment_status_ASSIGNMENT_FEASIBILITY_READY_FOR_RUNTIME",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_ASSIGNMENT_FEASIBILITY_READY_WITH_WARNINGS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_ASSIGNMENT_FEASIBILITY_PROVISIONAL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_ASSIGNMENT_FEASIBILITY_BLOCKED_BY_DATA_READINESS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_ASSIGNMENT_FEASIBILITY_BLOCKED_BY_GEO_FEASIBILITY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_ASSIGNMENT_FEASIBILITY_BLOCKED_BY_DESIGN_STRUCTURE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_ASSIGNMENT_FEASIBILITY_BLOCKED_BY_SCENARIO_POLICY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_ASSIGNMENT_FEASIBILITY_BLOCKED_BY_POWER_MDE_READINESS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_ASSIGNMENT_FEASIBILITY_BLOCKED_BY_INSUFFICIENT_ELIGIBLE_UNITS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_ASSIGNMENT_FEASIBILITY_BLOCKED_BY_CELL_CAPACITY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_ASSIGNMENT_FEASIBILITY_BLOCKED_BY_CONSTRAINTS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_ASSIGNMENT_FEASIBILITY_REQUIRES_REDESIGN_RECHECK",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_ASSIGNMENT_FEASIBILITY_REQUIRES_METHOD_SUITABILITY_REVIEW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "assignment_status_ASSIGNMENT_FEASIBILITY_NOT_EVALUATED",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_status_ASSIGNMENT_CONSTRAINT_SATISFIED",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_status_ASSIGNMENT_CONSTRAINT_SATISFIED_WITH_WARNINGS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_status_ASSIGNMENT_CONSTRAINT_PROVISIONAL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_status_ASSIGNMENT_CONSTRAINT_BLOCKING",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_status_ASSIGNMENT_CONSTRAINT_REQUIRES_REDESIGN",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_status_ASSIGNMENT_CONSTRAINT_REQUIRES_USER_INPUT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_status_ASSIGNMENT_CONSTRAINT_NOT_EVALUATED",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_DATA_ELIGIBILITY_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_GEO_FEASIBILITY_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_DESIGN_STRUCTURE_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_SCENARIO_POLICY_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_POWER_MDE_READINESS_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_MINIMUM_UNIT_COUNT_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_MAXIMUM_UNIT_COUNT_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_CELL_CAPACITY_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_MUTUAL_EXCLUSIVITY_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_COMMON_CONTROL_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_SPLIT_CONTROL_REDESIGN_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_MATCHED_PAIR_REQUIREMENT_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_BLOCK_REQUIREMENT_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_GEO_HIERARCHY_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_MARKET_EXCLUSION_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_BUSINESS_UNIT_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_REGION_COUNTRY_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_BALANCE_READINESS_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_INTERFERENCE_RISK_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_SOURCE_DESTINATION_MAPPING_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_METHOD_SUITABILITY_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "constraint_category_PRODUCTION_AUTHORIZATION_CONSTRAINT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "unit_field_unit_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "unit_field_geo_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "unit_field_geo_name",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "unit_field_region",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "unit_field_country",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "unit_field_market_group",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "unit_field_business_unit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "unit_field_eligible",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "unit_field_exclusion_reason",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "unit_field_available_for_assignment",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "unit_field_prior_assignment_cell",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "unit_field_hierarchy_path",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "unit_field_metadata",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_requirement_cell_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_requirement_cell_role",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_requirement_minimum_units",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_requirement_maximum_units",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_requirement_target_units",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_requirement_requires_bau_control",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_requirement_requires_common_control",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_requirement_requires_split_control",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_requirement_requires_matched_pair",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_requirement_requires_source_destination_mapping",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_requirement_eligible_unit_pool",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "cell_requirement_blocked_unit_pool",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_profiler_data_readiness_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_geo_unit_market_feasibility_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_design_cell_structure_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_scenario_policy_feasibility_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_power_mde_readiness_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_assignment_unit_universe_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_eligible_unit_inventory_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_cell_requirement_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_cell_capacity_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_mutual_exclusivity_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_shared_control_split_control_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_geo_hierarchy_market_exclusion_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_balance_readiness_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_interference_risk_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "readiness_gate_method_suitability_precheck_gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_artifact_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_design_id",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_assignment_feasibility_status",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_assignment_readiness_summary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_eligible_unit_count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_excluded_unit_count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_available_unit_count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_required_cell_count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_cell_capacity_reports",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_constraint_reports",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_mutual_exclusivity_report",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_shared_control_report",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_split_control_report",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_hierarchy_report",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_market_exclusion_report",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_balance_readiness_report",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_interference_risk_report",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_scenario_handoff_report",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_power_mde_handoff_report",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_method_suitability_handoff_report",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_claim_boundary_report",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_issues",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_warnings",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "report_field_blocking_reasons",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "example_example_1_simple_two_cell_ready",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "example_example_2_insufficient_eligible_units",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "example_example_3_common_control_capacity_issue",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "example_example_4_split_control_redesign",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "example_example_5_matched_pair_requirement",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "example_example_6_geo_hierarchy_constraint",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "example_example_7_market_exclusion",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "example_example_8_method_suitability_review_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_DesignAssignmentFeasibilityInput",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_DesignAssignmentFeasibilityConfig",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_DesignAssignmentFeasibilityReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_AssignmentUnitSpec",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_AssignmentCellRequirementSpec",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_AssignmentConstraintSpec",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_AssignmentEligibilityReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_AssignmentCellCapacityReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_AssignmentMutualExclusivityReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_AssignmentHierarchyConstraintReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_AssignmentMarketExclusionReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_AssignmentBalanceReadinessReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_AssignmentInterferenceRiskReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_AssignmentSharedControlReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_AssignmentScenarioHandoffReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_AssignmentPowerMdeHandoffReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_AssignmentMethodSuitabilityHandoffReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_AssignmentFeasibilityStatus",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_AssignmentConstraintStatus",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_AssignmentIssue",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_AssignmentIssueSeverity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_concept_AssignmentClaimBoundaryReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_DesignAssignmentFeasibilityReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_AssignmentReadinessReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_AssignmentEligibilityReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_AssignmentCellCapacityReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_AssignmentConstraintReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_AssignmentMutualExclusivityReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_AssignmentSharedControlReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_AssignmentSplitControlReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_AssignmentHierarchyReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_AssignmentMarketExclusionReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_AssignmentBalanceReadinessReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_AssignmentInterferenceRiskReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_AssignmentScenarioHandoffReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_AssignmentPowerMdeHandoffReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_AssignmentMethodSuitabilityHandoffReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "output_concept_AssignmentClaimBoundaryReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_blocked_profiler_blocks_assignment_feasibility",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_blocked_geo_feasibility_blocks_assignment_feasibility",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_blocked_design_cell_structure_blocks_assignment_feasibility",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_blocked_scenario_policy_feasibility_blocks_or_provisional",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_blocked_power_mde_readiness_blocks_power_ready_assignment",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_missing_assignment_unit_universe_blocks",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_excluded_units_not_counted_as_available",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_insufficient_eligible_units_blocks",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_cell_minimum_units_enforced",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_cell_maximum_units_enforced",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_mutual_exclusivity_required",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_common_control_capacity_checked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_split_control_redesign_requires_recheck",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_matched_pair_design_requires_pairability_capacity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_block_design_requires_block_metadata",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_missing_hierarchy_metadata_requires_user_input",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_market_exclusions_preserved",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_balance_covariate_availability_reported_not_optimized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_interference_risk_reported_not_adjusted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_method_suitability_required_blocks_estimator_inference",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_assignment_feasible_does_not_assign_units",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_assignment_feasible_does_not_generate_pairs_blocks_randomization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_assignment_feasible_does_not_compute_power_mde_lift_roi",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "future_test_no_fixture_specific_branching",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_runtime_assignment_feasibility_implemented_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_geo_assignment_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_matched_pairs_generated_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_blocks_generated_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_randomization_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_rerandomization_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_thinning_design_generated_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_matching_optimization_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_balance_optimization_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_interference_adjustment_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_scenario_policy_feasibility_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_runtime_scenario_enumeration_implemented_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_runtime_scenario_optimization_implemented_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_runtime_design_generation_implemented_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_power_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mde_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_p_value_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_confidence_interval_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_lift_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_roi_computed_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_budget_optimization_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_candidate_design_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_treatment_control_assignment_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_estimator_inference_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_runtime_calls_implemented_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_mmm_calibration_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_production_authorization_granted_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "authorization_llm_decisioning_authorized_false",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_positive_assignment_feasibility_contract_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_positive_eligible_unit_contract_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_positive_cell_capacity_contract_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_positive_assignment_constraint_categories_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_positive_common_control_assignment_boundary_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_positive_split_control_redesign_boundary_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_positive_matched_pair_block_boundary_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_positive_hierarchy_exclusion_boundary_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_positive_balance_readiness_boundary_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_positive_interference_risk_boundary_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "contract_positive_claim_boundaries_defined",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "recommended_next_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "final_verdict_matches",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "validation_valid",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "scenario_id": "failed_scenarios_empty",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "validation": {
+    "valid": true,
+    "issues": []
+  },
+  "non_goals": [
+    "no_runtime_assignment_feasibility",
+    "no_geo_assignment",
+    "no_matched_pairs_generated",
+    "no_blocks_generated",
+    "no_randomization",
+    "no_rerandomization",
+    "no_thinning_design_generation",
+    "no_matching_optimization",
+    "no_balance_optimization",
+    "no_interference_adjustment",
+    "no_scenario_policy_feasibility_computation",
+    "no_power_mde_computation",
+    "no_estimator_inference_selection",
+    "no_production_authorization"
+  ]
+}

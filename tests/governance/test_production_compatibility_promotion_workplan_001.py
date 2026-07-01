@@ -833,3 +833,21 @@ def test_governance_design_cell_structure_runtime_lane_complete() -> None:
     assert lane["next_artifact"] == "DESIGN_ASSIGNMENT_FEASIBILITY_CONTRACT_001"
     assert lane["resolution_artifact"] == "DESIGN_CELL_STRUCTURE_RUNTIME_001"
     assert "scenario_feasibility_handoff" in lane["artifact_tags"]
+
+
+def test_governance_design_assignment_feasibility_contract_resolved() -> None:
+    inv = investigations_by_id()["INV-DESIGN-ASSIGNMENT-FEASIBILITY-CONTRACT-001"]
+    assert inv.status == "RESOLVED"
+    assert inv.resolution_artifact == "DESIGN_ASSIGNMENT_FEASIBILITY_CONTRACT_001"
+
+
+def test_governance_design_assignment_feasibility_contract_lane_complete() -> None:
+    reg = load_registry()
+    lane = next(
+        b for b in reg["roadmap_lane_bindings"]
+        if b["lane_id"] == "DESIGN-ASSIGNMENT-FEASIBILITY-CONTRACT-001"
+    )
+    assert lane["status"] == "complete"
+    assert lane["next_artifact"] == "DESIGN_ASSIGNMENT_FEASIBILITY_RUNTIME_001"
+    assert lane["resolution_artifact"] == "DESIGN_ASSIGNMENT_FEASIBILITY_CONTRACT_001"
+    assert "contract_only" in lane["artifact_tags"]

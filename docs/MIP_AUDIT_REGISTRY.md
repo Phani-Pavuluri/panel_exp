@@ -2216,6 +2216,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## DESIGN-ASSIGNMENT-FEASIBILITY-CONTRACT-001 (2026-06-30)
+
+**Artifact:** [`docs/track_d/DESIGN_ASSIGNMENT_FEASIBILITY_CONTRACT_001_REPORT.md`](track_d/DESIGN_ASSIGNMENT_FEASIBILITY_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/DESIGN_ASSIGNMENT_FEASIBILITY_CONTRACT_001_summary.json`](track_d/archives/DESIGN_ASSIGNMENT_FEASIBILITY_CONTRACT_001_summary.json) · [`panel_exp/validation/design_assignment_feasibility_contract_001.py`](../panel_exp/validation/design_assignment_feasibility_contract_001.py)
+
+**Status:** **`design_assignment_feasibility_contract_defined_no_runtime_assignment_or_matching`**
+
+**Verdict:** Defines assignment-feasibility contract: eligible units, cell capacity, assignment constraints, common-control/split-control boundaries, handoff readiness (`failed_scenarios: []`). Contract only; no runtime assignment or matching.
+
+**Next:** `DESIGN_ASSIGNMENT_FEASIBILITY_RUNTIME_001` · alternative: `METHOD_SUITABILITY_HANDOFF_CONTRACT_001`.
+
+---
+
 ## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)

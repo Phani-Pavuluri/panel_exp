@@ -1794,6 +1794,40 @@
       "resolution_artifact": "DESIGN_CELL_STRUCTURE_RUNTIME_001"
     },
     {
+      "investigation_id": "INV-DESIGN-ASSIGNMENT-FEASIBILITY-CONTRACT-001",
+      "title": "Design assignment feasibility contract definition",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "DESIGN-CELL-STRUCTURE-RUNTIME-001",
+      "affected_combination": "design_assignment_feasibility_contract",
+      "problem_class": ["assignment_feasibility", "unit_capacity", "constraint_contract", "contract_only"],
+      "evidence": {
+        "depends_on": [
+          "GEO_KPI_SPEND_DATA_PROFILER_001",
+          "GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001",
+          "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001",
+          "POWER_MDE_DIAGNOSTICS_RUNTIME_001",
+          "DESIGN_CELL_STRUCTURE_RUNTIME_001",
+          "DESIGN_SCENARIO_POLICY_FEASIBILITY_RUNTIME_001"
+        ],
+        "scope": "contract_only_no_runtime_assignment_or_matching",
+        "assignment_feasibility_contract_defined": true,
+        "eligible_unit_contract_defined": true,
+        "cell_capacity_contract_defined": true,
+        "common_control_assignment_boundary_defined": true,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "DESIGN_ASSIGNMENT_FEASIBILITY_RUNTIME_001"
+      },
+      "current_decision": "DESIGN_ASSIGNMENT_FEASIBILITY_CONTRACT_DEFINED_NO_RUNTIME_ASSIGNMENT_OR_MATCHING",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Assignment feasibility contract before assignment feasibility runtime",
+      "blocking_policy": "Contract only; no runtime assignment, matching, or production claims",
+      "terminal_decisions": ["RESTRICT", "CONTRACT_ONLY", "PROMOTE"],
+      "resolution_artifact": "DESIGN_ASSIGNMENT_FEASIBILITY_CONTRACT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -3777,6 +3811,29 @@
         "scenario_feasibility_handoff",
         "assignment_readiness_validation",
         "no_assignment_or_scenario_feasibility_computation"
+      ]
+    },
+    {
+      "lane_id": "DESIGN-ASSIGNMENT-FEASIBILITY-CONTRACT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-DESIGN-ASSIGNMENT-FEASIBILITY-CONTRACT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "DESIGN_ASSIGNMENT_FEASIBILITY_RUNTIME_001",
+      "resolution_artifact": "DESIGN_ASSIGNMENT_FEASIBILITY_CONTRACT_001",
+      "artifact_tags": [
+        "assignment_feasibility",
+        "eligible_unit_contract",
+        "cell_capacity_contract",
+        "assignment_constraint_categories",
+        "common_control_assignment_boundary",
+        "split_control_redesign_boundary",
+        "matched_pair_block_boundary",
+        "contract_only",
+        "no_runtime_assignment_or_matching"
       ]
     }
   ]
