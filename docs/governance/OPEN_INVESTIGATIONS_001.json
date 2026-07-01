@@ -1728,6 +1728,39 @@
       "resolution_artifact": "DESIGN_SCENARIO_POLICY_FEASIBILITY_CONTRACT_001"
     },
     {
+      "investigation_id": "INV-DESIGN-SCENARIO-POLICY-FEASIBILITY-RUNTIME-001",
+      "title": "Design scenario policy feasibility runtime implementation",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "DESIGN-SCENARIO-POLICY-FEASIBILITY-CONTRACT-001",
+      "affected_combination": "design_scenario_policy_feasibility_runtime",
+      "problem_class": ["scenario_policy_feasibility", "runtime_diagnostics", "provided_scenario_evaluation"],
+      "evidence": {
+        "depends_on": [
+          "GEO_KPI_SPEND_DATA_PROFILER_001",
+          "GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001",
+          "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001",
+          "POWER_MDE_DIAGNOSTICS_RUNTIME_001",
+          "DESIGN_CELL_STRUCTURE_AND_ASSIGNMENT_CONTRACT_001",
+          "DESIGN_SCENARIO_POLICY_FEASIBILITY_CONTRACT_001"
+        ],
+        "scope": "runtime_evaluates_provided_scenarios_no_enumeration_or_optimization",
+        "runtime_scenario_feasibility_implemented": true,
+        "provided_scenario_evaluation_implemented": true,
+        "required_vs_achieved_spend_contrast_implemented": true,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "DESIGN_CELL_STRUCTURE_RUNTIME_001"
+      },
+      "current_decision": "DESIGN_SCENARIO_POLICY_FEASIBILITY_RUNTIME_IMPLEMENTED_FOR_PROVIDED_SCENARIOS_NO_ENUMERATION_OR_OPTIMIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Scenario policy feasibility runtime before design cell structure runtime",
+      "blocking_policy": "Evaluates provided scenarios only; no enumeration, optimization, or production claims",
+      "terminal_decisions": ["RESTRICT", "RUNTIME_ONLY", "PROMOTE"],
+      "resolution_artifact": "DESIGN_SCENARIO_POLICY_FEASIBILITY_RUNTIME_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -3667,6 +3700,29 @@
         "four_cell_common_control_scenario",
         "contract_only",
         "no_runtime_scenario_planner_or_optimization"
+      ]
+    },
+    {
+      "lane_id": "DESIGN-SCENARIO-POLICY-FEASIBILITY-RUNTIME-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-DESIGN-SCENARIO-POLICY-FEASIBILITY-RUNTIME-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "DESIGN_CELL_STRUCTURE_RUNTIME_001",
+      "resolution_artifact": "DESIGN_SCENARIO_POLICY_FEASIBILITY_RUNTIME_001",
+      "artifact_tags": [
+        "scenario_policy_feasibility_runtime",
+        "provided_scenario_evaluation",
+        "required_vs_achieved_spend_contrast",
+        "historical_support_evaluation",
+        "shared_control_conflict_detection",
+        "estimand_shift_detection",
+        "split_control_recheck",
+        "resolution_option_emission",
+        "no_scenario_enumeration_or_optimization"
       ]
     }
   ]
