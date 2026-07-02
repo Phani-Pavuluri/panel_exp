@@ -2324,6 +2324,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## ESTIMATOR-INFERENCE-EXECUTION-CONTRACT-001 (2026-07-02)
+
+**Artifact:** [`docs/track_d/ESTIMATOR_INFERENCE_EXECUTION_CONTRACT_001_REPORT.md`](track_d/ESTIMATOR_INFERENCE_EXECUTION_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/ESTIMATOR_INFERENCE_EXECUTION_CONTRACT_001_summary.json`](track_d/archives/ESTIMATOR_INFERENCE_EXECUTION_CONTRACT_001_summary.json) · [`panel_exp/validation/estimator_inference_execution_contract_001.py`](../panel_exp/validation/estimator_inference_execution_contract_001.py)
+
+**Status:** **`estimator_inference_execution_contract_defined_no_estimator_or_inference_execution`**
+
+**Verdict:** Defines estimator/inference execution contract: execution input requirements, instrument execution packet fields, effect estimate/uncertainty/diagnostic report schemas, execution trace/provenance, failure packet semantics (`failed_scenarios: []`). Contract only; no estimator execution, inference execution, or claim authorization.
+
+**Next:** `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_001` · alternative: `READOUT_DIAGNOSTICS_AND_SENSITIVITY_CONTRACT_001`.
+
+---
+
 ## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)

@@ -2111,6 +2111,41 @@
       "resolution_artifact": "READOUT_PLAN_RUNTIME_001"
     },
     {
+      "investigation_id": "INV-ESTIMATOR-INFERENCE-EXECUTION-CONTRACT-001",
+      "title": "Estimator inference execution contract definition",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "READOUT-PLAN-RUNTIME-001",
+      "affected_combination": "estimator_inference_execution_contract",
+      "problem_class": ["estimator_execution", "inference_execution", "execution_artifact", "claim_boundary", "contract_only"],
+      "evidence": {
+        "depends_on": [
+          "READOUT_PLAN_RUNTIME_001",
+          "READOUT_PLAN_CONTRACT_001",
+          "READOUT_METHOD_GOVERNANCE_CONTRACT_001",
+          "METHOD_SUITABILITY_RUNTIME_001",
+          "DESIGN_ASSIGNMENT_RUNTIME_001"
+        ],
+        "scope": "contract_only_no_estimator_or_inference_execution",
+        "estimator_inference_execution_contract_defined": true,
+        "execution_input_contract_defined": true,
+        "instrument_execution_request_contract_defined": true,
+        "effect_estimate_report_contract_defined": true,
+        "uncertainty_report_contract_defined": true,
+        "execution_failure_packet_contract_defined": true,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_001"
+      },
+      "current_decision": "ESTIMATOR_INFERENCE_EXECUTION_CONTRACT_DEFINED_NO_ESTIMATOR_OR_INFERENCE_EXECUTION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Estimator/inference execution contract before execution runtime",
+      "blocking_policy": "Contract only; no estimator execution, inference execution, or claim authorization",
+      "terminal_decisions": ["RESTRICT", "CONTRACT_ONLY", "PROMOTE"],
+      "resolution_artifact": "ESTIMATOR_INFERENCE_EXECUTION_CONTRACT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -4290,6 +4325,29 @@
         "claim_scope",
         "runtime_only",
         "no_estimator_execution_or_claim_authorization"
+      ]
+    },
+    {
+      "lane_id": "ESTIMATOR-INFERENCE-EXECUTION-CONTRACT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-ESTIMATOR-INFERENCE-EXECUTION-CONTRACT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_001",
+      "resolution_artifact": "ESTIMATOR_INFERENCE_EXECUTION_CONTRACT_001",
+      "artifact_tags": [
+        "estimator_inference_execution_contract",
+        "execution_input_contract",
+        "instrument_execution_packet",
+        "effect_estimate_report",
+        "uncertainty_report",
+        "execution_trace",
+        "failure_packet",
+        "contract_only",
+        "no_estimator_or_inference_execution"
       ]
     }
   ]
