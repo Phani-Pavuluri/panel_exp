@@ -2078,6 +2078,39 @@
       "resolution_artifact": "READOUT_PLAN_CONTRACT_001"
     },
     {
+      "investigation_id": "INV-READOUT-PLAN-RUNTIME-001",
+      "title": "Readout plan runtime implementation",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "READOUT-PLAN-CONTRACT-001",
+      "affected_combination": "readout_plan_runtime",
+      "problem_class": ["readout_planning_runtime", "instrument_slotting", "claim_boundary", "runtime_only"],
+      "evidence": {
+        "depends_on": [
+          "READOUT_PLAN_CONTRACT_001",
+          "READOUT_METHOD_GOVERNANCE_CONTRACT_001",
+          "DESIGN_ASSIGNMENT_RUNTIME_001",
+          "METHOD_SUITABILITY_RUNTIME_001"
+        ],
+        "scope": "runtime_plans_readout_stack_only_no_estimator_execution_or_claim_authorization",
+        "readout_plan_runtime_implemented": true,
+        "readout_plan_generated": true,
+        "planned_primary_candidates_generated": true,
+        "planned_sensitivity_candidates_generated": true,
+        "planned_diagnostic_candidates_generated": true,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "ESTIMATOR_INFERENCE_EXECUTION_CONTRACT_001"
+      },
+      "current_decision": "READOUT_PLAN_RUNTIME_IMPLEMENTED_PLANNING_ONLY_NO_ESTIMATOR_EXECUTION_OR_CLAIM_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Readout planning runtime before estimator/inference execution contract",
+      "blocking_policy": "Planning runtime only; no estimator execution or claim authorization",
+      "terminal_decisions": ["RESTRICT", "RUNTIME_ONLY", "PROMOTE"],
+      "resolution_artifact": "READOUT_PLAN_RUNTIME_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -4235,6 +4268,27 @@
         "claim_scope",
         "execution_prerequisites",
         "contract_only",
+        "no_estimator_execution_or_claim_authorization"
+      ]
+    },
+    {
+      "lane_id": "READOUT-PLAN-RUNTIME-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-READOUT-PLAN-RUNTIME-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "ESTIMATOR_INFERENCE_EXECUTION_CONTRACT_001",
+      "resolution_artifact": "READOUT_PLAN_RUNTIME_001",
+      "artifact_tags": [
+        "readout_plan_runtime",
+        "planned_readout_stack",
+        "instrument_slotting",
+        "execution_prerequisites",
+        "claim_scope",
+        "runtime_only",
         "no_estimator_execution_or_claim_authorization"
       ]
     }

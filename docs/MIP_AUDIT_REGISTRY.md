@@ -2312,6 +2312,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## READOUT-PLAN-RUNTIME-001 (2026-06-30)
+
+**Artifact:** [`docs/track_d/READOUT_PLAN_RUNTIME_001_REPORT.md`](track_d/READOUT_PLAN_RUNTIME_001_REPORT.md) · [`docs/track_d/archives/READOUT_PLAN_RUNTIME_001_summary.json`](track_d/archives/READOUT_PLAN_RUNTIME_001_summary.json) · [`panel_exp/validation/readout_plan_runtime_001.py`](../panel_exp/validation/readout_plan_runtime_001.py)
+
+**Status:** **`readout_plan_runtime_implemented_planning_only_no_estimator_execution_or_claim_authorization`**
+
+**Verdict:** Implements deterministic governed readout planning runtime: primary/sensitivity/diagnostic candidate planning, blocked/not-evaluated preservation, execution prerequisites, claim-scope caveats (`failed_scenarios: []`). Planning only; no estimator execution, inference execution, or claim authorization.
+
+**Next:** `ESTIMATOR_INFERENCE_EXECUTION_CONTRACT_001` · alternative: `READOUT_METHOD_GOVERNANCE_RUNTIME_001`.
+
+---
+
 ## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)

@@ -1520,6 +1520,25 @@ class TestOpenInvestigationRegistry001:
             "READOUT_PLAN_CONTRACT_DEFINED_NO_ESTIMATOR_EXECUTION_OR_CLAIM_AUTHORIZATION"
         )
 
+    def test_readout_plan_runtime_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "READOUT-PLAN-RUNTIME-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "READOUT_PLAN_RUNTIME_001"
+        assert lane["next_artifact"] == "ESTIMATOR_INFERENCE_EXECUTION_CONTRACT_001"
+        assert "INV-READOUT-PLAN-RUNTIME-001" in lane["resolved_investigations"]
+
+    def test_readout_plan_runtime_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-READOUT-PLAN-RUNTIME-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "READOUT_PLAN_RUNTIME_001"
+        assert inv.current_decision == (
+            "READOUT_PLAN_RUNTIME_IMPLEMENTED_PLANNING_ONLY_NO_ESTIMATOR_EXECUTION_OR_CLAIM_AUTHORIZATION"
+        )
+
     def test_production_authorization_release_gate_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"]
         assert inv.status == "RESOLVED"
