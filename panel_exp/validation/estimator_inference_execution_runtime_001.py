@@ -11,6 +11,15 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from panel_exp.validation.estimator_inference_executor_adapters_002 import (
+    EXECUTOR_AVAILABLE_FOR_DRY_RUN,
+    EXECUTOR_AVAILABLE_FOR_GOVERNED_EXECUTION,
+    EXECUTOR_BLOCKED_BY_GOVERNANCE,
+    EXECUTOR_NOT_IMPLEMENTED,
+    build_governed_executor_result,
+    get_governed_executor_registry,
+)
+
 _ARTIFACT_ID = "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_001"
 _ARTIFACT_VERSION = "1.0.0"
 _VERDICT = (
@@ -117,6 +126,13 @@ _AUTH_FALSE_FLAGS = {
     "llm_decisioning_authorized": False,
 }
 
+_ADAPTER_POSITIVE_FLAGS = {
+    "governed_executor_adapter_registry_implemented": True,
+    "executor_lookup_implemented": True,
+    "executor_availability_evaluated": True,
+    "executor_request_envelopes_generated": True,
+}
+
 
 @dataclass(frozen=True)
 class EstimatorInferenceExecutionRuntimeConfig:
@@ -131,6 +147,10 @@ class EstimatorInferenceExecutionRuntimeConfig:
     block_on_missing_diagnostic_prerequisites: bool = False
     block_on_missing_sensitivity_prerequisites: bool = False
     allow_execution_without_governed_executor: bool = False
+    enable_governed_executor_registry: bool = True
+    allow_governed_executor_execution: bool = False
+    allow_dry_run_adapters: bool = True
+    block_when_executor_not_implemented: bool = False
 
 
 @dataclass(frozen=True)
@@ -162,6 +182,16 @@ class InstrumentExecutionResult:
     inference_diagnostic_report: dict[str, Any] | None
     execution_trace: dict[str, Any]
     failure_packet: dict[str, Any] | None
+    executor_lookup_status: str
+    executor_adapter_name: str | None
+    executor_adapter_version: str | None
+    executor_available: bool
+    executor_supports_dry_run: bool
+    executor_supports_execution: bool
+    executor_request: dict[str, Any] | None
+    executor_result: dict[str, Any] | None
+    executor_trace: dict[str, Any] | None
+    executor_failure_packet: dict[str, Any] | None
     warnings: tuple[str, ...]
     blocking_reasons: tuple[str, ...]
 
@@ -186,6 +216,9 @@ class EstimatorInferenceExecutionRuntimeSingleReport:
     execution_provenance_manifest: dict[str, Any]
     execution_artifact_manifest: dict[str, Any]
     failure_packets: tuple[dict[str, Any], ...]
+    executor_registry_summary: dict[str, Any]
+    executor_lookup_results: tuple[dict[str, Any], ...]
+    executor_availability_counts: dict[str, int]
     claim_boundary_report: dict[str, Any]
     warnings: tuple[str, ...]
     blocking_reasons: tuple[str, ...]
@@ -212,6 +245,9 @@ class EstimatorInferenceExecutionRuntimeReport:
     execution_provenance_manifest: dict[str, Any]
     execution_artifact_manifest: dict[str, Any]
     failure_packets: tuple[dict[str, Any], ...]
+    executor_registry_summary: dict[str, Any]
+    executor_lookup_results: tuple[dict[str, Any], ...]
+    executor_availability_counts: dict[str, int]
     claim_boundary_report: dict[str, Any]
     warnings: tuple[str, ...]
     blocking_reasons: tuple[str, ...]
@@ -477,11 +513,19 @@ def _evaluate_single_request(
     }
 
     results: list[InstrumentExecutionResult] = []
+    lookup_results: list[dict[str, Any]] = []
+    availability_counts: dict[str, int] = {}
     primary_candidates: list[str] = []
     sensitivity_candidates: list[str] = []
     diagnostic_candidates: list[str] = []
     blocked_candidates: list[str] = []
     not_evaluated_candidates: list[str] = []
+    registry = get_governed_executor_registry() if cfg.enable_governed_executor_registry else None
+    registry_summary = {
+        "registry_enabled": bool(cfg.enable_governed_executor_registry),
+        "registry_artifact_id": registry.artifact_id if registry else None,
+        "known_instrument_count": len(registry.specs) if registry else 0,
+    }
 
     for instrument in instruments.values():
         instrument_id = str(instrument.get("instrument_id") or "instrument_unspecified")
@@ -675,6 +719,86 @@ def _evaluate_single_request(
             instrument_execution_status = INSTRUMENT_EXECUTION_NOT_RUN
             local_warnings.append("no governed executor configured; execution not run")
 
+        executor_lookup_status = EXECUTOR_NOT_IMPLEMENTED
+        executor_adapter_name = None
+        executor_adapter_version = None
+        executor_available = False
+        executor_supports_dry_run = False
+        executor_supports_execution = False
+        executor_request: dict[str, Any] | None = None
+        executor_result: dict[str, Any] | None = None
+        executor_trace: dict[str, Any] | None = None
+        executor_failure_packet: dict[str, Any] | None = None
+        if cfg.enable_governed_executor_registry:
+            context = {
+                "assignment_artifact_id": assignment_artifact_id,
+                "execution_data_contract": execution_data_contract,
+                "estimand_scope": estimand_scope,
+                "uncertainty_scope": uncertainty_scope,
+            }
+            lookup, request, adapter_result = build_governed_executor_result(instrument, context)
+            executor_lookup_status = lookup.availability_status
+            executor_adapter_name = lookup.adapter_name
+            executor_adapter_version = lookup.adapter_version
+            executor_available = lookup.executor_available
+            executor_supports_dry_run = lookup.supports_dry_run
+            executor_supports_execution = lookup.supports_execution
+            executor_request = {
+                "instrument_id": request.instrument_id,
+                "adapter_name": request.adapter_name,
+                "adapter_version": request.adapter_version,
+                "dry_run": request.dry_run,
+            }
+            executor_result = {
+                "instrument_id": adapter_result.instrument_id,
+                "availability_status": adapter_result.availability_status,
+                "execution_status": adapter_result.execution_status,
+                "completed": adapter_result.completed,
+                "effect_estimate_report_status": adapter_result.effect_estimate_report_status,
+                "uncertainty_report_status": adapter_result.uncertainty_report_status,
+                "claim_authorized": adapter_result.claim_authorized,
+            }
+            executor_trace = adapter_result.trace.__dict__
+            executor_failure_packet = (
+                adapter_result.failure_packet.__dict__ if adapter_result.failure_packet else None
+            )
+            lookup_results.append(
+                {
+                    "instrument_id": lookup.instrument_id,
+                    "availability_status": lookup.availability_status,
+                    "adapter_name": lookup.adapter_name,
+                    "adapter_version": lookup.adapter_version,
+                    "supports_dry_run": lookup.supports_dry_run,
+                    "supports_execution": lookup.supports_execution,
+                }
+            )
+            availability_counts[lookup.availability_status] = (
+                availability_counts.get(lookup.availability_status, 0) + 1
+            )
+            if (
+                executor_lookup_status == EXECUTOR_NOT_IMPLEMENTED
+                and cfg.block_when_executor_not_implemented
+            ):
+                readiness_status = EXECUTION_BLOCKED_BY_INSTRUMENT_SPEC
+                instrument_execution_status = INSTRUMENT_EXECUTION_BLOCKED
+                local_blocking.append("executor adapter not implemented")
+                blocking_gates.append("execution_packet_gate")
+            elif executor_lookup_status == EXECUTOR_BLOCKED_BY_GOVERNANCE:
+                readiness_status = EXECUTION_BLOCKED_BY_GOVERNANCE
+                instrument_execution_status = INSTRUMENT_EXECUTION_BLOCKED
+                local_blocking.append("executor adapter blocked by governance")
+                blocking_gates.append("governance_restriction_gate")
+            elif executor_lookup_status == EXECUTOR_AVAILABLE_FOR_DRY_RUN and cfg.allow_dry_run_adapters:
+                if instrument_execution_status == INSTRUMENT_EXECUTION_READY:
+                    instrument_execution_status = INSTRUMENT_EXECUTION_NOT_RUN
+                local_warnings.append("governed executor dry-run envelope generated; execution not run")
+            elif (
+                executor_lookup_status == EXECUTOR_AVAILABLE_FOR_GOVERNED_EXECUTION
+                and cfg.allow_governed_executor_execution
+            ):
+                instrument_execution_status = INSTRUMENT_EXECUTION_NOT_RUN
+                local_warnings.append("governed executor execution disabled in runtime_002 conservative mode")
+
         effect_report = _placeholder_effect_report(instrument, estimand_scope)
         uncertainty_report = _placeholder_uncertainty_report(instrument)
         diagnostic_report = _placeholder_diag_report(instrument)
@@ -704,6 +828,15 @@ def _evaluate_single_request(
             ),
             "execution_trace_generated": True,
             "execution_artifact_manifest_generated": True,
+            "governed_executor_adapter_registry_implemented": bool(
+                cfg.enable_governed_executor_registry
+            ),
+            "executor_lookup_implemented": bool(cfg.enable_governed_executor_registry),
+            "executor_availability_evaluated": bool(cfg.enable_governed_executor_registry),
+            "executor_request_envelopes_generated": bool(cfg.enable_governed_executor_registry),
+            "executor_dry_run_envelopes_generated": bool(
+                cfg.enable_governed_executor_registry and executor_supports_dry_run
+            ),
             **_AUTH_FALSE_FLAGS,
         }
 
@@ -750,6 +883,16 @@ def _evaluate_single_request(
                 inference_diagnostic_report=diagnostic_report,
                 execution_trace=trace,
                 failure_packet=failure_packet,
+                executor_lookup_status=executor_lookup_status,
+                executor_adapter_name=executor_adapter_name,
+                executor_adapter_version=executor_adapter_version,
+                executor_available=executor_available,
+                executor_supports_dry_run=executor_supports_dry_run,
+                executor_supports_execution=executor_supports_execution,
+                executor_request=executor_request,
+                executor_result=executor_result,
+                executor_trace=executor_trace,
+                executor_failure_packet=executor_failure_packet,
                 warnings=_safe_str_list(local_warnings),
                 blocking_reasons=_safe_str_list(local_blocking),
             )
@@ -770,6 +913,14 @@ def _evaluate_single_request(
         "execution_failure_packets_generated": bool(failure_packets),
         "execution_trace_generated": True,
         "execution_artifact_manifest_generated": True,
+        "governed_executor_adapter_registry_implemented": bool(cfg.enable_governed_executor_registry),
+        "executor_lookup_implemented": bool(cfg.enable_governed_executor_registry),
+        "executor_availability_evaluated": bool(cfg.enable_governed_executor_registry),
+        "executor_request_envelopes_generated": bool(cfg.enable_governed_executor_registry),
+        "executor_dry_run_envelopes_generated": bool(
+            cfg.enable_governed_executor_registry
+            and any(x.get("supports_dry_run") for x in lookup_results)
+        ),
         **_AUTH_FALSE_FLAGS,
     }
 
@@ -858,6 +1009,9 @@ def _evaluate_single_request(
         execution_provenance_manifest=provenance_manifest,
         execution_artifact_manifest=artifact_manifest,
         failure_packets=tuple(failure_packets),
+        executor_registry_summary=registry_summary,
+        executor_lookup_results=tuple(lookup_results),
+        executor_availability_counts=availability_counts,
         claim_boundary_report=claim_boundary_report,
         warnings=_safe_str_list(warnings),
         blocking_reasons=_safe_str_list(blocking_reasons),
@@ -895,6 +1049,9 @@ def execute_estimator_inference(
             execution_provenance_manifest=r.execution_provenance_manifest,
             execution_artifact_manifest=r.execution_artifact_manifest,
             failure_packets=r.failure_packets,
+            executor_registry_summary=r.executor_registry_summary,
+            executor_lookup_results=r.executor_lookup_results,
+            executor_availability_counts=r.executor_availability_counts,
             claim_boundary_report=r.claim_boundary_report,
             warnings=r.warnings,
             blocking_reasons=r.blocking_reasons,
@@ -929,6 +1086,9 @@ def execute_estimator_inference(
         execution_provenance_manifest={},
         execution_artifact_manifest={},
         failure_packets=(),
+        executor_registry_summary={},
+        executor_lookup_results=(),
+        executor_availability_counts={},
         claim_boundary_report={
             "estimator_inference_execution_runtime_implemented": True,
             "execution_readiness_evaluated": True,
@@ -937,6 +1097,8 @@ def execute_estimator_inference(
             "execution_failure_packets_generated": True,
             "execution_trace_generated": True,
             "execution_artifact_manifest_generated": True,
+            **_ADAPTER_POSITIVE_FLAGS,
+            "executor_dry_run_envelopes_generated": True,
             **_AUTH_FALSE_FLAGS,
         },
         warnings=_safe_str_list(all_warnings),

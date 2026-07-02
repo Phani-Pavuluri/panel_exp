@@ -24,6 +24,10 @@ from panel_exp.validation.estimator_inference_execution_runtime_001 import (
     run_estimator_inference_execution,
     run_validation,
 )
+from panel_exp.validation.estimator_inference_executor_adapters_002 import (
+    EXECUTOR_AVAILABLE_FOR_DRY_RUN,
+    EXECUTOR_NOT_EVALUATED,
+)
 
 _REPO = Path(__file__).resolve().parents[2]
 _SUMMARY = _REPO / "docs/track_d/archives/ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_001_summary.json"
@@ -266,6 +270,31 @@ def test_execution_results_emitted_without_completed_execution() -> None:
     assert report.instrument_execution_results
     assert all(r.instrument_execution_status != "INSTRUMENT_EXECUTION_COMPLETED" for r in report.instrument_execution_results)
     assert any(r.instrument_execution_status == INSTRUMENT_EXECUTION_NOT_RUN for r in report.instrument_execution_results)
+
+
+def test_runtime_includes_executor_lookup_fields() -> None:
+    report = execute_estimator_inference(_base_request())
+    row = next(r for r in report.instrument_execution_results if r.instrument_id == "DID_BOOTSTRAP")
+    assert row.executor_lookup_status in (EXECUTOR_AVAILABLE_FOR_DRY_RUN, EXECUTOR_NOT_EVALUATED)
+    assert row.executor_supports_execution is False
+    assert row.executor_request is not None
+    assert row.executor_result is not None
+    assert row.executor_trace is not None
+
+
+def test_runtime_preserves_behavior_when_registry_disabled() -> None:
+    cfg = EstimatorInferenceExecutionRuntimeConfig(enable_governed_executor_registry=False)
+    report = execute_estimator_inference(_base_request(), config=cfg)
+    row = next(r for r in report.instrument_execution_results if r.instrument_id == "DID_BOOTSTRAP")
+    assert row.executor_lookup_status == "EXECUTOR_NOT_IMPLEMENTED"
+    assert row.executor_request is None
+    assert report.executor_registry_summary["registry_enabled"] is False
+
+
+def test_multiple_instruments_produce_lookup_results() -> None:
+    report = execute_estimator_inference(_base_request())
+    assert len(report.executor_lookup_results) >= 3
+    assert isinstance(report.executor_availability_counts, dict)
 
 
 def test_failure_packet_emitted_for_missing_data_contract() -> None:
