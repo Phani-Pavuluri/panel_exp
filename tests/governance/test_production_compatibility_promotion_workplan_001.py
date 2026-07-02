@@ -923,3 +923,21 @@ def test_governance_design_assignment_runtime_contract_lane_complete() -> None:
     assert lane["next_artifact"] == "DESIGN_ASSIGNMENT_RUNTIME_001"
     assert lane["resolution_artifact"] == "DESIGN_ASSIGNMENT_RUNTIME_CONTRACT_001"
     assert "no_assignment_generation_or_randomization" in lane["artifact_tags"]
+
+
+def test_governance_design_assignment_runtime_resolved() -> None:
+    inv = investigations_by_id()["INV-DESIGN-ASSIGNMENT-RUNTIME-001"]
+    assert inv.status == "RESOLVED"
+    assert inv.resolution_artifact == "DESIGN_ASSIGNMENT_RUNTIME_001"
+
+
+def test_governance_design_assignment_runtime_lane_complete() -> None:
+    reg = load_registry()
+    lane = next(
+        b for b in reg["roadmap_lane_bindings"]
+        if b["lane_id"] == "DESIGN-ASSIGNMENT-RUNTIME-001"
+    )
+    assert lane["status"] == "complete"
+    assert lane["next_artifact"] == "READOUT_METHOD_GOVERNANCE_CONTRACT_001"
+    assert lane["resolution_artifact"] == "DESIGN_ASSIGNMENT_RUNTIME_001"
+    assert "no_matching_or_randomization" in lane["artifact_tags"]

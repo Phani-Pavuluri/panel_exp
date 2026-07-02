@@ -2276,6 +2276,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## DESIGN-ASSIGNMENT-RUNTIME-001 (2026-06-30)
+
+**Artifact:** [`docs/track_d/DESIGN_ASSIGNMENT_RUNTIME_001_REPORT.md`](track_d/DESIGN_ASSIGNMENT_RUNTIME_001_REPORT.md) · [`docs/track_d/archives/DESIGN_ASSIGNMENT_RUNTIME_001_summary.json`](track_d/archives/DESIGN_ASSIGNMENT_RUNTIME_001_summary.json) · [`panel_exp/validation/design_assignment_runtime_001.py`](../panel_exp/validation/design_assignment_runtime_001.py)
+
+**Status:** **`design_assignment_runtime_implemented_deterministic_explicit_pool_assignment_only_no_matching_or_randomization`**
+
+**Verdict:** Implements deterministic `generate_design_assignment`: explicit-pool allocation, assignment plan/candidate, constraint/exclusion traces, reproducibility manifest (`failed_scenarios: []`). No matching or randomization.
+
+**Next:** `READOUT_METHOD_GOVERNANCE_CONTRACT_001` · alternative: `READOUT_PLAN_CONTRACT_001`.
+
+---
+
 ## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)
