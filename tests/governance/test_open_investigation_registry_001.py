@@ -1482,6 +1482,25 @@ class TestOpenInvestigationRegistry001:
             "DESIGN_ASSIGNMENT_RUNTIME_IMPLEMENTED_DETERMINISTIC_EXPLICIT_POOL_ASSIGNMENT_ONLY_NO_MATCHING_OR_RANDOMIZATION"
         )
 
+    def test_readout_method_governance_contract_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "READOUT-METHOD-GOVERNANCE-CONTRACT-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "READOUT_METHOD_GOVERNANCE_CONTRACT_001"
+        assert lane["next_artifact"] == "READOUT_PLAN_CONTRACT_001"
+        assert "INV-READOUT-METHOD-GOVERNANCE-CONTRACT-001" in lane["resolved_investigations"]
+
+    def test_readout_method_governance_contract_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-READOUT-METHOD-GOVERNANCE-CONTRACT-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "READOUT_METHOD_GOVERNANCE_CONTRACT_001"
+        assert inv.current_decision == (
+            "READOUT_METHOD_GOVERNANCE_CONTRACT_DEFINED_NO_ESTIMATOR_EXECUTION_OR_CAUSAL_CLAIM_AUTHORIZATION"
+        )
+
     def test_production_authorization_release_gate_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"]
         assert inv.status == "RESOLVED"

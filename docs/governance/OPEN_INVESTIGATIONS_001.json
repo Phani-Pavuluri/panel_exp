@@ -2002,6 +2002,48 @@
       "resolution_artifact": "DESIGN_ASSIGNMENT_RUNTIME_001"
     },
     {
+      "investigation_id": "INV-READOUT-METHOD-GOVERNANCE-CONTRACT-001",
+      "title": "Readout method governance contract definition",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "DESIGN-ASSIGNMENT-RUNTIME-001",
+      "affected_combination": "readout_method_governance_contract",
+      "problem_class": ["readout_governance", "claim_eligibility", "instrument_governance", "contract_only"],
+      "evidence": {
+        "depends_on": [
+          "GEO_KPI_SPEND_DATA_PROFILER_001",
+          "GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001",
+          "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001",
+          "POWER_MDE_DIAGNOSTICS_RUNTIME_001",
+          "DESIGN_CELL_STRUCTURE_RUNTIME_001",
+          "DESIGN_SCENARIO_POLICY_FEASIBILITY_RUNTIME_001",
+          "DESIGN_ASSIGNMENT_FEASIBILITY_RUNTIME_001",
+          "METHOD_SUITABILITY_RUNTIME_001",
+          "METHOD_SUITABILITY_HANDOFF_CONTRACT_001",
+          "DESIGN_ASSIGNMENT_RUNTIME_CONTRACT_001",
+          "DESIGN_ASSIGNMENT_RUNTIME_001",
+          "INFERENCE_READOUT_SEMANTICS_001",
+          "DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001"
+        ],
+        "scope": "contract_only_no_readout_plan_generation_or_estimator_execution",
+        "readout_method_governance_contract_defined": true,
+        "readout_governance_statuses_defined": true,
+        "instrument_governance_statuses_defined": true,
+        "claim_eligibility_statuses_defined": true,
+        "production_readout_blockers_defined": true,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "READOUT_PLAN_CONTRACT_001"
+      },
+      "current_decision": "READOUT_METHOD_GOVERNANCE_CONTRACT_DEFINED_NO_ESTIMATOR_EXECUTION_OR_CAUSAL_CLAIM_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Readout method governance contract before readout plan contract",
+      "blocking_policy": "Contract only; no readout plan generation or estimator execution",
+      "terminal_decisions": ["RESTRICT", "CONTRACT_ONLY", "PROMOTE"],
+      "resolution_artifact": "READOUT_METHOD_GOVERNANCE_CONTRACT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -4117,6 +4159,28 @@
         "reproducibility_manifest",
         "runtime_only",
         "no_matching_or_randomization"
+      ]
+    },
+    {
+      "lane_id": "READOUT-METHOD-GOVERNANCE-CONTRACT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-READOUT-METHOD-GOVERNANCE-CONTRACT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "READOUT_PLAN_CONTRACT_001",
+      "resolution_artifact": "READOUT_METHOD_GOVERNANCE_CONTRACT_001",
+      "artifact_tags": [
+        "readout_method_governance_contract",
+        "assignment_artifact_governance",
+        "instrument_governance",
+        "claim_eligibility",
+        "uncertainty_semantics_treatment",
+        "production_readout_blockers",
+        "contract_only",
+        "no_readout_plan_generation_or_estimator_execution"
       ]
     }
   ]

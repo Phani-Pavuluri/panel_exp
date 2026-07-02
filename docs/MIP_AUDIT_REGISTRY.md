@@ -2284,7 +2284,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Implements deterministic `generate_design_assignment`: explicit-pool allocation, assignment plan/candidate, constraint/exclusion traces, reproducibility manifest (`failed_scenarios: []`). No matching or randomization.
 
-**Next:** `READOUT_METHOD_GOVERNANCE_CONTRACT_001` · alternative: `READOUT_PLAN_CONTRACT_001`.
+**Next:** `READOUT_PLAN_CONTRACT_001` · alternative: `READOUT_METHOD_GOVERNANCE_RUNTIME_001`.
+
+---
+
+## READOUT-METHOD-GOVERNANCE-CONTRACT-001 (2026-06-30)
+
+**Artifact:** [`docs/track_d/READOUT_METHOD_GOVERNANCE_CONTRACT_001_REPORT.md`](track_d/READOUT_METHOD_GOVERNANCE_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/READOUT_METHOD_GOVERNANCE_CONTRACT_001_summary.json`](track_d/archives/READOUT_METHOD_GOVERNANCE_CONTRACT_001_summary.json) · [`panel_exp/validation/readout_method_governance_contract_001.py`](../panel_exp/validation/readout_method_governance_contract_001.py)
+
+**Status:** **`readout_method_governance_contract_defined_no_estimator_execution_or_causal_claim_authorization`**
+
+**Verdict:** Defines readout method governance contract: assignment artifact governance, instrument governance, claim eligibility, uncertainty semantics treatment, production-readout blockers (`failed_scenarios: []`). Contract only; no readout plan generation or estimator execution.
+
+**Next:** `READOUT_PLAN_CONTRACT_001` · alternative: `READOUT_METHOD_GOVERNANCE_RUNTIME_001`.
 
 ---
 
