@@ -474,6 +474,8 @@ Foundation and compatibility audits ✅
 
 **METHOD_SUITABILITY_RUNTIME_001 (2026-06-30):** Implements conservative method-suitability runtime: `evaluate_method_suitability` classifies method-family review targets from handoff facts (`failed_scenarios: []`). Review classification only; no estimator or inference authorization. See [`track_d/METHOD_SUITABILITY_RUNTIME_001_REPORT.md`](track_d/METHOD_SUITABILITY_RUNTIME_001_REPORT.md).
 
+**DESIGN_ASSIGNMENT_RUNTIME_CONTRACT_001 (2026-06-30):** Defines assignment-runtime contract: assignment plan, candidates, reproducibility manifests, constraint traces, failure packets (`failed_scenarios: []`). Contract only; no assignment generation or randomization. See [`track_d/DESIGN_ASSIGNMENT_RUNTIME_CONTRACT_001_REPORT.md`](track_d/DESIGN_ASSIGNMENT_RUNTIME_CONTRACT_001_REPORT.md).
+
 **PANEL_EXP_AGENT_ANSWERABILITY_AND_RECOVERY_CONTRACT_001 (planned):** Lightweight state-machine contract for agent request classification, routing to deterministic diagnostics/core ML, missing-input recovery, and safe fallback — after profiler/feasibility diagnostics begin, before runtime agent deployment and `LLM_REPORT_GROUNDING_AND_CLAIM_BOUNDARY_CONTRACT_001`.
 
 **ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001 (2026-06-03):** First cross-estimator × design × inference suitability matrix (**50 rows**; `failed_scenarios: []`). Placebo/randomization is **one inference family**, not the full inference layer. No estimator receives a universal default inference. See [`track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md`](track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md).
@@ -501,7 +503,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`METHOD_SUITABILITY_HANDOFF_CONTRACT_001`** → ✅ **`METHOD_SUITABILITY_RUNTIME_001`** → assignment runtime contract · **`AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001`** (post-planner method lane).
+**Ordered next:** ✅ … → ✅ **`METHOD_SUITABILITY_RUNTIME_001`** → ✅ **`DESIGN_ASSIGNMENT_RUNTIME_CONTRACT_001`** → assignment runtime · **`AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001`** (post-planner method lane).
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 

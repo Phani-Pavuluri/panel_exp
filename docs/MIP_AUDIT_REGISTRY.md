@@ -2264,6 +2264,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## DESIGN-ASSIGNMENT-RUNTIME-CONTRACT-001 (2026-06-30)
+
+**Artifact:** [`docs/track_d/DESIGN_ASSIGNMENT_RUNTIME_CONTRACT_001_REPORT.md`](track_d/DESIGN_ASSIGNMENT_RUNTIME_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/DESIGN_ASSIGNMENT_RUNTIME_CONTRACT_001_summary.json`](track_d/archives/DESIGN_ASSIGNMENT_RUNTIME_CONTRACT_001_summary.json) · [`panel_exp/validation/design_assignment_runtime_contract_001.py`](../panel_exp/validation/design_assignment_runtime_contract_001.py)
+
+**Status:** **`design_assignment_runtime_contract_defined_no_assignment_generation_or_randomization`**
+
+**Verdict:** Defines assignment-runtime contract: assignment plan, candidates, reproducibility manifests, constraint traces, failure packets (`failed_scenarios: []`). Contract only; no assignment generation or randomization.
+
+**Next:** `DESIGN_ASSIGNMENT_RUNTIME_001` · alternative: `READOUT_METHOD_GOVERNANCE_CONTRACT_001`.
+
+---
+
 ## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)

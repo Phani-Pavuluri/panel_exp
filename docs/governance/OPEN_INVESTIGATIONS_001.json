@@ -1932,6 +1932,41 @@
       "resolution_artifact": "METHOD_SUITABILITY_RUNTIME_001"
     },
     {
+      "investigation_id": "INV-DESIGN-ASSIGNMENT-RUNTIME-CONTRACT-001",
+      "title": "Design assignment runtime contract definition",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "METHOD-SUITABILITY-RUNTIME-001",
+      "affected_combination": "design_assignment_runtime_contract",
+      "problem_class": ["assignment_runtime", "reproducibility", "constraint_trace", "contract_only"],
+      "evidence": {
+        "depends_on": [
+          "GEO_KPI_SPEND_DATA_PROFILER_001",
+          "GEO_UNIT_AND_MARKET_FEASIBILITY_DIAGNOSTICS_001",
+          "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001",
+          "POWER_MDE_DIAGNOSTICS_RUNTIME_001",
+          "DESIGN_CELL_STRUCTURE_RUNTIME_001",
+          "DESIGN_SCENARIO_POLICY_FEASIBILITY_RUNTIME_001",
+          "DESIGN_ASSIGNMENT_FEASIBILITY_RUNTIME_001",
+          "METHOD_SUITABILITY_RUNTIME_001"
+        ],
+        "scope": "contract_only_no_assignment_generation_or_randomization",
+        "design_assignment_runtime_contract_defined": true,
+        "reproducibility_manifest_contract_defined": true,
+        "assignment_failure_packet_contract_defined": true,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "DESIGN_ASSIGNMENT_RUNTIME_001"
+      },
+      "current_decision": "DESIGN_ASSIGNMENT_RUNTIME_CONTRACT_DEFINED_NO_ASSIGNMENT_GENERATION_OR_RANDOMIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Assignment runtime contract before assignment runtime implementation",
+      "blocking_policy": "Contract only; no assignment generation or randomization",
+      "terminal_decisions": ["RESTRICT", "CONTRACT_ONLY", "PROMOTE"],
+      "resolution_artifact": "DESIGN_ASSIGNMENT_RUNTIME_CONTRACT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -4004,6 +4039,27 @@
         "handoff_readiness_gate",
         "runtime_only",
         "no_estimator_or_inference_authorization"
+      ]
+    },
+    {
+      "lane_id": "DESIGN-ASSIGNMENT-RUNTIME-CONTRACT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-DESIGN-ASSIGNMENT-RUNTIME-CONTRACT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "DESIGN_ASSIGNMENT_RUNTIME_001",
+      "resolution_artifact": "DESIGN_ASSIGNMENT_RUNTIME_CONTRACT_001",
+      "artifact_tags": [
+        "assignment_runtime_contract",
+        "assignment_plan_contract",
+        "reproducibility_manifest",
+        "constraint_trace",
+        "failure_packet",
+        "contract_only",
+        "no_assignment_generation_or_randomization"
       ]
     }
   ]
