@@ -2044,6 +2044,40 @@
       "resolution_artifact": "READOUT_METHOD_GOVERNANCE_CONTRACT_001"
     },
     {
+      "investigation_id": "INV-READOUT-PLAN-CONTRACT-001",
+      "title": "Readout plan contract definition",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "READOUT-METHOD-GOVERNANCE-CONTRACT-001",
+      "affected_combination": "readout_plan_contract",
+      "problem_class": ["readout_plan", "planned_stack", "claim_scope", "contract_only"],
+      "evidence": {
+        "depends_on": [
+          "READOUT_METHOD_GOVERNANCE_CONTRACT_001",
+          "DESIGN_ASSIGNMENT_RUNTIME_001",
+          "METHOD_SUITABILITY_RUNTIME_001",
+          "METHOD_SUITABILITY_HANDOFF_CONTRACT_001",
+          "DESIGN_ASSIGNMENT_RUNTIME_CONTRACT_001",
+          "INFERENCE_READOUT_SEMANTICS_001",
+          "DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001"
+        ],
+        "scope": "contract_only_no_estimator_execution_or_claim_authorization",
+        "readout_plan_contract_defined": true,
+        "planned_readout_stack_contract_defined": true,
+        "claim_scope_contract_defined": true,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "READOUT_PLAN_RUNTIME_001"
+      },
+      "current_decision": "READOUT_PLAN_CONTRACT_DEFINED_NO_ESTIMATOR_EXECUTION_OR_CLAIM_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Readout plan contract before readout plan runtime",
+      "blocking_policy": "Contract only; no estimator execution or claim authorization",
+      "terminal_decisions": ["RESTRICT", "CONTRACT_ONLY", "PROMOTE"],
+      "resolution_artifact": "READOUT_PLAN_CONTRACT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -4181,6 +4215,27 @@
         "production_readout_blockers",
         "contract_only",
         "no_readout_plan_generation_or_estimator_execution"
+      ]
+    },
+    {
+      "lane_id": "READOUT-PLAN-CONTRACT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-READOUT-PLAN-CONTRACT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "READOUT_PLAN_RUNTIME_001",
+      "resolution_artifact": "READOUT_PLAN_CONTRACT_001",
+      "artifact_tags": [
+        "readout_plan_contract",
+        "planned_readout_stack",
+        "primary_sensitivity_diagnostic_candidates",
+        "claim_scope",
+        "execution_prerequisites",
+        "contract_only",
+        "no_estimator_execution_or_claim_authorization"
       ]
     }
   ]

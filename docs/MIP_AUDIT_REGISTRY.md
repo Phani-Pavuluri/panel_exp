@@ -2296,7 +2296,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Defines readout method governance contract: assignment artifact governance, instrument governance, claim eligibility, uncertainty semantics treatment, production-readout blockers (`failed_scenarios: []`). Contract only; no readout plan generation or estimator execution.
 
-**Next:** `READOUT_PLAN_CONTRACT_001` · alternative: `READOUT_METHOD_GOVERNANCE_RUNTIME_001`.
+**Next:** `READOUT_PLAN_RUNTIME_001` · alternative: `READOUT_METHOD_GOVERNANCE_RUNTIME_001`.
+
+---
+
+## READOUT-PLAN-CONTRACT-001 (2026-06-30)
+
+**Artifact:** [`docs/track_d/READOUT_PLAN_CONTRACT_001_REPORT.md`](track_d/READOUT_PLAN_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/READOUT_PLAN_CONTRACT_001_summary.json`](track_d/archives/READOUT_PLAN_CONTRACT_001_summary.json) · [`panel_exp/validation/readout_plan_contract_001.py`](../panel_exp/validation/readout_plan_contract_001.py)
+
+**Status:** **`readout_plan_contract_defined_no_estimator_execution_or_claim_authorization`**
+
+**Verdict:** Defines readout plan contract: planned primary/sensitivity/diagnostic candidates, execution prerequisites, claim scope, reporting caveats (`failed_scenarios: []`). Contract only; no estimator execution or claim authorization.
+
+**Next:** `READOUT_PLAN_RUNTIME_001` · alternative: `READOUT_METHOD_GOVERNANCE_RUNTIME_001`.
 
 ---
 

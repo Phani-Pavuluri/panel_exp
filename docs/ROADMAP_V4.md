@@ -480,6 +480,8 @@ Foundation and compatibility audits ✅
 
 **READOUT_METHOD_GOVERNANCE_CONTRACT_001 (2026-06-30):** Defines readout method governance contract between assignment artifacts and instrument suitability matrix: readout governance statuses, claim eligibility, uncertainty semantics treatment, production-readout blockers (`failed_scenarios: []`). Contract only; no readout plan generation or estimator execution. See [`track_d/READOUT_METHOD_GOVERNANCE_CONTRACT_001_REPORT.md`](track_d/READOUT_METHOD_GOVERNANCE_CONTRACT_001_REPORT.md).
 
+**READOUT_PLAN_CONTRACT_001 (2026-06-30):** Defines readout plan contract: planned primary/sensitivity/diagnostic candidates, execution prerequisites, claim scope, reporting caveats (`failed_scenarios: []`). Contract only; no estimator execution or claim authorization. See [`track_d/READOUT_PLAN_CONTRACT_001_REPORT.md`](track_d/READOUT_PLAN_CONTRACT_001_REPORT.md).
+
 **PANEL_EXP_AGENT_ANSWERABILITY_AND_RECOVERY_CONTRACT_001 (planned):** Lightweight state-machine contract for agent request classification, routing to deterministic diagnostics/core ML, missing-input recovery, and safe fallback — after profiler/feasibility diagnostics begin, before runtime agent deployment and `LLM_REPORT_GROUNDING_AND_CLAIM_BOUNDARY_CONTRACT_001`.
 
 **ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001 (2026-06-03):** First cross-estimator × design × inference suitability matrix (**50 rows**; `failed_scenarios: []`). Placebo/randomization is **one inference family**, not the full inference layer. No estimator receives a universal default inference. See [`track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md`](track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md).
@@ -507,7 +509,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`DESIGN_ASSIGNMENT_RUNTIME_CONTRACT_001`** → ✅ **`DESIGN_ASSIGNMENT_RUNTIME_001`** → ✅ **`READOUT_METHOD_GOVERNANCE_CONTRACT_001`** → readout plan contract · **`AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001`** (post-planner method lane).
+**Ordered next:** ✅ … → ✅ **`READOUT_METHOD_GOVERNANCE_CONTRACT_001`** → ✅ **`READOUT_PLAN_CONTRACT_001`** → readout plan runtime · **`AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001`** (post-planner method lane).
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 
