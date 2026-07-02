@@ -486,6 +486,8 @@ Foundation and compatibility audits ✅
 
 **ESTIMATOR_INFERENCE_EXECUTION_CONTRACT_001 (2026-07-02):** Defines estimator/inference execution contract: execution input requirements, instrument execution packet fields, effect estimate/uncertainty/diagnostic report schemas, execution trace/provenance, failure packet semantics (`failed_scenarios: []`). Contract only; no estimator execution, inference execution, or claim authorization. See [`track_d/ESTIMATOR_INFERENCE_EXECUTION_CONTRACT_001_REPORT.md`](track_d/ESTIMATOR_INFERENCE_EXECUTION_CONTRACT_001_REPORT.md).
 
+**ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_001 (2026-07-02):** Implements deterministic estimator/inference execution runtime shell: readiness gates, typed execution request/result packets, failure packets, execution trace/provenance and artifact manifests (`failed_scenarios: []`). Runtime only; no estimator execution, inference execution, or claim authorization. See [`track_d/ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_001_REPORT.md`](track_d/ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_001_REPORT.md).
+
 **PANEL_EXP_AGENT_ANSWERABILITY_AND_RECOVERY_CONTRACT_001 (planned):** Lightweight state-machine contract for agent request classification, routing to deterministic diagnostics/core ML, missing-input recovery, and safe fallback — after profiler/feasibility diagnostics begin, before runtime agent deployment and `LLM_REPORT_GROUNDING_AND_CLAIM_BOUNDARY_CONTRACT_001`.
 
 **ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001 (2026-06-03):** First cross-estimator × design × inference suitability matrix (**50 rows**; `failed_scenarios: []`). Placebo/randomization is **one inference family**, not the full inference layer. No estimator receives a universal default inference. See [`track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md`](track_d/ESTIMATOR_DESIGN_INFERENCE_SUITABILITY_MATRIX_001_REPORT.md).
@@ -513,7 +515,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`READOUT_METHOD_GOVERNANCE_CONTRACT_001`** → ✅ **`READOUT_PLAN_CONTRACT_001`** → ✅ **`READOUT_PLAN_RUNTIME_001`** → ✅ **`ESTIMATOR_INFERENCE_EXECUTION_CONTRACT_001`** → `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_001` · **`AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001`** (post-planner method lane).
+**Ordered next:** ✅ … → ✅ **`READOUT_METHOD_GOVERNANCE_CONTRACT_001`** → ✅ **`READOUT_PLAN_CONTRACT_001`** → ✅ **`READOUT_PLAN_RUNTIME_001`** → ✅ **`ESTIMATOR_INFERENCE_EXECUTION_CONTRACT_001`** → ✅ **`ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_001`** → `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_002_GOVERNED_EXECUTOR_ADAPTERS` · **`AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001`** (post-planner method lane).
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 

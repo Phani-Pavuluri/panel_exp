@@ -2146,6 +2146,43 @@
       "resolution_artifact": "ESTIMATOR_INFERENCE_EXECUTION_CONTRACT_001"
     },
     {
+      "investigation_id": "INV-ESTIMATOR-INFERENCE-EXECUTION-RUNTIME-001",
+      "title": "Estimator inference execution runtime shell implementation",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "ESTIMATOR-INFERENCE-EXECUTION-CONTRACT-001",
+      "affected_combination": "estimator_inference_execution_runtime_shell",
+      "problem_class": ["execution_runtime", "readiness_gates", "execution_packets", "no_estimator_execution"],
+      "evidence": {
+        "depends_on": [
+          "ESTIMATOR_INFERENCE_EXECUTION_CONTRACT_001",
+          "READOUT_PLAN_RUNTIME_001",
+          "READOUT_PLAN_CONTRACT_001",
+          "READOUT_METHOD_GOVERNANCE_CONTRACT_001",
+          "METHOD_SUITABILITY_RUNTIME_001",
+          "DESIGN_ASSIGNMENT_RUNTIME_001"
+        ],
+        "scope": "runtime_readiness_and_execution_packets_only_no_estimator_or_inference_execution",
+        "estimator_inference_execution_runtime_implemented": true,
+        "execution_readiness_evaluated": true,
+        "instrument_execution_requests_generated": true,
+        "instrument_execution_results_generated": true,
+        "execution_failure_packets_generated": true,
+        "execution_trace_generated": true,
+        "execution_artifact_manifest_generated": true,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_002_GOVERNED_EXECUTOR_ADAPTERS"
+      },
+      "current_decision": "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_IMPLEMENTED_READINESS_AND_EXECUTION_PACKETS_ONLY_NO_ESTIMATOR_OR_INFERENCE_EXECUTION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Execution runtime shell before governed executor adapters",
+      "blocking_policy": "Readiness and packet runtime only; no estimator execution, inference execution, or claim authorization",
+      "terminal_decisions": ["RESTRICT", "RUNTIME_ONLY", "PROMOTE"],
+      "resolution_artifact": "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -4347,6 +4384,27 @@
         "execution_trace",
         "failure_packet",
         "contract_only",
+        "no_estimator_or_inference_execution"
+      ]
+    },
+    {
+      "lane_id": "ESTIMATOR-INFERENCE-EXECUTION-RUNTIME-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-ESTIMATOR-INFERENCE-EXECUTION-RUNTIME-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_002_GOVERNED_EXECUTOR_ADAPTERS",
+      "resolution_artifact": "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_001",
+      "artifact_tags": [
+        "estimator_inference_execution_runtime",
+        "execution_readiness_gates",
+        "execution_requests_and_results",
+        "execution_failure_packets",
+        "execution_trace",
+        "runtime_only",
         "no_estimator_or_inference_execution"
       ]
     }

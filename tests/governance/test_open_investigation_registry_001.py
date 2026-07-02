@@ -1558,6 +1558,25 @@ class TestOpenInvestigationRegistry001:
             "ESTIMATOR_INFERENCE_EXECUTION_CONTRACT_DEFINED_NO_ESTIMATOR_OR_INFERENCE_EXECUTION"
         )
 
+    def test_estimator_inference_execution_runtime_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "ESTIMATOR-INFERENCE-EXECUTION-RUNTIME-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_001"
+        assert lane["next_artifact"] == "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_002_GOVERNED_EXECUTOR_ADAPTERS"
+        assert "INV-ESTIMATOR-INFERENCE-EXECUTION-RUNTIME-001" in lane["resolved_investigations"]
+
+    def test_estimator_inference_execution_runtime_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-ESTIMATOR-INFERENCE-EXECUTION-RUNTIME-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_001"
+        assert inv.current_decision == (
+            "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_IMPLEMENTED_READINESS_AND_EXECUTION_PACKETS_ONLY_NO_ESTIMATOR_OR_INFERENCE_EXECUTION"
+        )
+
     def test_production_authorization_release_gate_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"]
         assert inv.status == "RESOLVED"
