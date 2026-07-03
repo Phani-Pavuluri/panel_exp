@@ -5,6 +5,11 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any
 
+from panel_exp.validation.production_catalog_blocklist_001 import (
+    evaluate_production_catalog_status,
+    production_catalog_executor_metadata,
+)
+
 EXECUTOR_AVAILABLE_FOR_DRY_RUN = "EXECUTOR_AVAILABLE_FOR_DRY_RUN"
 EXECUTOR_AVAILABLE_FOR_GOVERNED_EXECUTION = "EXECUTOR_AVAILABLE_FOR_GOVERNED_EXECUTION"
 EXECUTOR_NOT_IMPLEMENTED = "EXECUTOR_NOT_IMPLEMENTED"
@@ -94,6 +99,10 @@ class GovernedExecutorLookupResult:
     missing_assignment_fields: tuple[str, ...] = ()
     missing_estimand_fields: tuple[str, ...] = ()
     missing_uncertainty_fields: tuple[str, ...] = ()
+    production_catalog_status: str | None = None
+    production_catalog_blocked: bool = False
+    production_claim_blocked: bool = False
+    production_catalog_metadata: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass(frozen=True)
@@ -267,6 +276,37 @@ def _did_point_estimate_enabled(config: dict[str, Any] | None) -> bool:
     return bool(cfg.get("allow_governed_did_point_estimate_execution"))
 
 
+def _attach_production_catalog(
+    result: GovernedExecutorLookupResult,
+    *,
+    estimator_family: str | None = None,
+    inference_family: str | None = None,
+    claim_type: str | None = None,
+    production_context: str | None = "production",
+) -> GovernedExecutorLookupResult:
+    report = evaluate_production_catalog_status(
+        {
+            "instrument_id": result.instrument_id,
+            "estimator_family": estimator_family,
+            "inference_family": inference_family,
+            "claim_type": claim_type,
+            "production_context": production_context,
+            "requested_role": "PRODUCTION_CANDIDATE",
+        }
+    )
+    meta = production_catalog_executor_metadata(report)
+    payload = dict(result.__dict__)
+    payload.update(
+        {
+            "production_catalog_status": meta["production_catalog_status"],
+            "production_catalog_blocked": meta["production_catalog_blocked"],
+            "production_claim_blocked": meta["production_claim_blocked"],
+            "production_catalog_metadata": meta["production_catalog_metadata"],
+        }
+    )
+    return GovernedExecutorLookupResult(**payload)
+
+
 def lookup_governed_executor(
     instrument_id: str,
     config: dict[str, Any] | None = None,
@@ -276,27 +316,33 @@ def lookup_governed_executor(
     registry = get_governed_executor_registry()
     spec = registry.specs.get(iid)
     if not spec:
-        return GovernedExecutorLookupResult(
-            instrument_id=iid or "instrument_unspecified",
-            availability_status=EXECUTOR_NOT_EVALUATED,
-            executor_available=False,
-            supports_dry_run=False,
-            supports_execution=False,
-            blocking_reason="instrument not found in governed registry",
-            notes="No governed adapter spec found.",
+        return _attach_production_catalog(
+            GovernedExecutorLookupResult(
+                instrument_id=iid or "instrument_unspecified",
+                availability_status=EXECUTOR_NOT_EVALUATED,
+                executor_available=False,
+                supports_dry_run=False,
+                supports_execution=False,
+                blocking_reason="instrument not found in governed registry",
+                notes="No governed adapter spec found.",
+            )
         )
     if spec.governance_status.startswith("BLOCKED"):
-        return GovernedExecutorLookupResult(
-            instrument_id=spec.instrument_id,
-            availability_status=EXECUTOR_BLOCKED_BY_GOVERNANCE,
-            executor_available=False,
-            supports_dry_run=spec.supports_dry_run,
-            supports_execution=spec.supports_execution,
-            adapter_name=spec.adapter_name,
-            adapter_version=spec.adapter_version,
-            governance_status=spec.governance_status,
-            blocking_reason=spec.blocked_reason_if_not_supported or "blocked by governance",
-            notes=spec.notes,
+        return _attach_production_catalog(
+            GovernedExecutorLookupResult(
+                instrument_id=spec.instrument_id,
+                availability_status=EXECUTOR_BLOCKED_BY_GOVERNANCE,
+                executor_available=False,
+                supports_dry_run=spec.supports_dry_run,
+                supports_execution=spec.supports_execution,
+                adapter_name=spec.adapter_name,
+                adapter_version=spec.adapter_version,
+                governance_status=spec.governance_status,
+                blocking_reason=spec.blocked_reason_if_not_supported or "blocked by governance",
+                notes=spec.notes,
+            ),
+            estimator_family=spec.estimator_family,
+            inference_family=spec.inference_family,
         )
 
     supports_execution = spec.supports_execution
@@ -309,17 +355,21 @@ def lookup_governed_executor(
         status = EXECUTOR_AVAILABLE_FOR_DRY_RUN
     else:
         status = EXECUTOR_NOT_IMPLEMENTED
-    return GovernedExecutorLookupResult(
-        instrument_id=spec.instrument_id,
-        availability_status=status,
-        executor_available=supports_execution or spec.supports_dry_run,
-        supports_dry_run=spec.supports_dry_run,
-        supports_execution=supports_execution,
-        adapter_name=spec.adapter_name,
-        adapter_version=spec.adapter_version,
-        governance_status=spec.governance_status,
-        blocking_reason=spec.blocked_reason_if_not_supported if not supports_execution else None,
-        notes=spec.notes,
+    return _attach_production_catalog(
+        GovernedExecutorLookupResult(
+            instrument_id=spec.instrument_id,
+            availability_status=status,
+            executor_available=supports_execution or spec.supports_dry_run,
+            supports_dry_run=spec.supports_dry_run,
+            supports_execution=supports_execution,
+            adapter_name=spec.adapter_name,
+            adapter_version=spec.adapter_version,
+            governance_status=spec.governance_status,
+            blocking_reason=spec.blocked_reason_if_not_supported if not supports_execution else None,
+            notes=spec.notes,
+        ),
+        estimator_family=spec.estimator_family,
+        inference_family=spec.inference_family,
     )
 
 

@@ -336,3 +336,17 @@ def test_run_validation_and_summary() -> None:
 
 def test_report_exists() -> None:
     assert _REPORT.exists()
+
+
+def test_production_blocked_instrument_excluded_from_primary_candidates() -> None:
+    req = _base_request(
+        instrument_suitability_matrix=[{
+            "instrument_id": "TBR_RIDGE_KFOLD",
+            "estimator_family": "TBR_RIDGE_FAMILY",
+            "inference_family": "KFOLD",
+            "suitability_status": "METHOD_FAMILY_ELIGIBLE_FOR_REVIEW",
+            "governance_status": "GOVERNED",
+        }],
+    )
+    report = build_readout_plan(req)
+    assert "TBR_RIDGE_KFOLD" not in report.readout_plan_packet["planned_primary_candidates"]

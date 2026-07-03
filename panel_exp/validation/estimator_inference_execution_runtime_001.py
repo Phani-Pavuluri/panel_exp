@@ -23,6 +23,10 @@ from panel_exp.validation.estimator_inference_executor_adapters_002 import (
     build_governed_executor_result,
     get_governed_executor_registry,
 )
+from panel_exp.validation.production_catalog_blocklist_001 import (
+    ProductionCatalogBlocklistConfig,
+    evaluate_production_catalog_status,
+)
 
 _ARTIFACT_ID = "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_001"
 _ARTIFACT_VERSION = "1.0.0"
@@ -156,6 +160,10 @@ class EstimatorInferenceExecutionRuntimeConfig:
     allow_governed_did_point_estimate_execution: bool = False
     allow_dry_run_adapters: bool = True
     block_when_executor_not_implemented: bool = False
+    enforce_production_catalog_blocklist: bool = True
+    block_production_context_when_catalog_blocked: bool = True
+    block_research_context_when_catalog_blocked: bool = False
+    allow_research_only_dry_run: bool = True
 
 
 @dataclass(frozen=True)
@@ -460,6 +468,14 @@ def _evaluate_single_request(
     sensitivity_prerequisites = _as_list_of_str(req.get("sensitivity_prerequisites"))
     production_governance_config = _to_dict(req.get("production_governance_config"))
     readout_plan_packet = _to_dict(req.get("readout_plan_packet"))
+    production_context = str(req.get("production_context") or "")
+    claim_type = str(req.get("claim_type") or "")
+    catalog_cfg = ProductionCatalogBlocklistConfig(
+        enforce_production_catalog_blocklist=cfg.enforce_production_catalog_blocklist,
+        block_production_context_when_catalog_blocked=cfg.block_production_context_when_catalog_blocked,
+        block_research_context_when_catalog_blocked=cfg.block_research_context_when_catalog_blocked,
+        allow_research_only_dry_run=cfg.allow_research_only_dry_run,
+    )
 
     instruments = _extract_instruments(req)
     if not instruments:
@@ -566,6 +582,61 @@ def _evaluate_single_request(
             blocked_candidates.append(instrument_id)
         elif role == NOT_EVALUATED_EXECUTION_CANDIDATE:
             not_evaluated_candidates.append(instrument_id)
+
+        if cfg.enforce_production_catalog_blocklist:
+            catalog_report = evaluate_production_catalog_status(
+                {
+                    "instrument_id": instrument_id,
+                    "estimator_family": instrument.get("estimator_family"),
+                    "inference_family": instrument.get("inference_family"),
+                    "claim_type": claim_type or None,
+                    "production_context": production_context or None,
+                    "requested_role": role,
+                },
+                config=catalog_cfg,
+            )
+            prod_ctx = production_context.upper() in (
+                "PRODUCTION",
+                "PRODUCTION_CANDIDATE",
+                "PRODUCTION_READOUT",
+                "TRUSTED_READOUT",
+            ) or claim_type.upper() in (
+                "CAUSAL_LIFT_CLAIM",
+                "INCREMENTAL_LIFT_CLAIM",
+                "ROI_CLAIM",
+                "PRODUCTION_READOUT_CLAIM",
+            )
+            if (
+                catalog_report.is_production_blocked
+                and prod_ctx
+                and cfg.block_production_context_when_catalog_blocked
+            ):
+                readiness_status = EXECUTION_BLOCKED_BY_GOVERNANCE
+                local_blocking.append("production catalog blocklist")
+                blocking_gates.append("production_catalog_blocklist_gate")
+                gov_failures.append("production_catalog_blocked")
+                failure_packets.append(
+                    _build_failure_packet(
+                        instrument_id=instrument_id,
+                        execution_id=execution_id,
+                        execution_status=INSTRUMENT_EXECUTION_BLOCKED,
+                        blocking_gates=sorted(set(blocking_gates)),
+                        missing_inputs=missing_inputs,
+                        data_contract_failures=data_contract_failures,
+                        assignment_artifact_failures=assignment_failures,
+                        estimand_failures=estimand_failures,
+                        uncertainty_semantics_failures=uncertainty_failures,
+                        diagnostic_prerequisite_failures=diag_failures,
+                        sensitivity_prerequisite_failures=sens_failures,
+                        governance_failures=gov_failures,
+                        claim_boundary_report={
+                            "production_catalog_blocklist_enforced": True,
+                            "production_catalog_status": catalog_report.production_catalog_status,
+                            "production_blockers": list(catalog_report.blockers),
+                            **_AUTH_FALSE_FLAGS,
+                        },
+                    )
+                )
 
         if role in (BLOCKED_EXECUTION_CANDIDATE, NOT_EVALUATED_EXECUTION_CANDIDATE):
             readiness_status = EXECUTION_BLOCKED_BY_READOUT_PLAN

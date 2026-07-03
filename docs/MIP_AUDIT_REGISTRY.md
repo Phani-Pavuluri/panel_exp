@@ -2428,7 +2428,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Defines future governed claim-authorization contract for causal, incremental lift, ROI, diagnostic-only, and production-readout claims. Claim request schemas, decision statuses, evidence gates, blocker semantics, failure packets, and trusted readout handoff defined. Contract only; no claim authorization, no production authorization, no effect/inference/diagnostic execution (`failed_scenarios: []`).
 
-**Next:** `PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001` · alternative: `DID_INSTRUMENT_ESTIMAND_UNIFICATION_001`. **Then (P0 hardening):** assignment-panel integrity · statistical threshold enforcement · governed randomization · SRM/balance diagnostic · `CLAIM_AUTHORIZATION_RUNTIME_001` · trusted readout contract/runtime. **Deferred:** `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001` · bootstrap inference runtime · advanced estimator production.
+**Next:** `DID_INSTRUMENT_ESTIMAND_UNIFICATION_001` · alternative: `ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001`. **Then (P0 hardening):** assignment-panel integrity · statistical threshold enforcement · governed randomization · SRM/balance diagnostic · `CLAIM_AUTHORIZATION_RUNTIME_001` · trusted readout contract/runtime. **Deferred:** `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001` · bootstrap inference runtime · advanced estimator production.
+
+---
+
+## PRODUCTION-CATALOG-BLOCKLIST-ENFORCEMENT-001 (2026-07-03)
+
+**Artifact:** [`docs/track_d/PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001_REPORT.md`](track_d/PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001_REPORT.md) · [`docs/track_d/archives/PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001_summary.json`](track_d/archives/PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001_summary.json) · [`panel_exp/validation/production_catalog_blocklist_001.py`](../panel_exp/validation/production_catalog_blocklist_001.py)
+
+**Status:** **`production_catalog_blocklist_enforced_no_claim_or_production_authorization`**
+
+**Verdict:** Enforces production catalog blocklist across method suitability overlay, readout planning exclusion, executor adapter restriction metadata, and execution-runtime production-context blocking. Research use preserved; no claim authorization or production authorization added.
+
+**Next:** `DID_INSTRUMENT_ESTIMAND_UNIFICATION_001` · alternative: `ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001`.
 
 ---
 
@@ -2442,9 +2454,9 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Expanded adversarial audit found P0 validity/cohesion gaps before claim authorization runtime. `CLAIM_AUTHORIZATION_CONTRACT_001` remains complete and safe (contract-only). Roadmap inserts P0 hardening lane before `CLAIM_AUTHORIZATION_RUNTIME_001`. No runtime authorization added by this audit update.
 
-**Immediate next:** `PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001`
+**Immediate next:** `DID_INSTRUMENT_ESTIMAND_UNIFICATION_001`
 
-**P0 sequence:** blocklist enforcement → DID estimand unification → assignment-panel integrity → statistical threshold enforcement → governed randomization → SRM/balance diagnostic → claim authorization runtime → trusted readout contract/runtime.
+**P0 sequence:** ✅ blocklist enforcement → DID estimand unification → assignment-panel integrity → statistical threshold enforcement → governed randomization → SRM/balance diagnostic → claim authorization runtime → trusted readout contract/runtime.
 
 **Deferred:** AugSynth/ASCM remediation · bootstrap inference runtime · SDID/TROP/MTGP/BayesianTBR production · TrustReport product ops · LLM/MMM decisioning.
 

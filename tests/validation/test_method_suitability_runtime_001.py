@@ -582,3 +582,12 @@ def test_eligible_instruments_are_review_only_not_approved() -> None:
     )
     assert not report.claim_boundary_report.estimator_inference_authorized
     assert not report.claim_boundary_report.production_authorization_granted
+
+
+def test_instrument_matrix_includes_production_catalog_overlay() -> None:
+    p = _packet(candidate_instrument_review_targets=["DID_BOOTSTRAP"])
+    report = evaluate_method_suitability(p)
+    row = next(r for r in report.instrument_suitability_matrix if r["instrument_id"] == "DID_BOOTSTRAP")
+    assert row.get("production_catalog_status")
+    assert row.get("is_production_blocked") is True
+    assert row.get("production_blockers")

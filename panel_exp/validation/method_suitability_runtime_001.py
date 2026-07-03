@@ -10,6 +10,11 @@ from enum import Enum
 from pathlib import Path
 from typing import Any
 
+from panel_exp.validation.production_catalog_blocklist_001 import (
+    evaluate_production_catalog_status,
+    production_catalog_overlay_for_matrix,
+)
+
 _ARTIFACT_ID = "METHOD_SUITABILITY_RUNTIME_001"
 _ARTIFACT_VERSION = "1.0.0"
 _VERDICT = (
@@ -119,6 +124,7 @@ class MethodSuitabilityConfig:
     missing_governance_is_blocking: bool = False
     diagnostic_only_blocks_production: bool = True
     unknown_method_family_not_evaluated: bool = True
+    enforce_production_catalog_blocklist: bool = True
 
 
 @dataclass(frozen=True)
@@ -988,8 +994,30 @@ def _classify_instrument(
     )
 
 
-def _instrument_entry_to_matrix_row(entry: InstrumentSuitabilityEntry) -> dict[str, Any]:
-    return {
+def _production_catalog_overlay(
+    entry: InstrumentSuitabilityEntry,
+    cfg: MethodSuitabilityConfig,
+) -> dict[str, Any]:
+    if not cfg.enforce_production_catalog_blocklist:
+        return {}
+    report = evaluate_production_catalog_status(
+        {
+            "instrument_id": entry.instrument_id,
+            "method_family": entry.estimator_family,
+            "estimator_family": entry.estimator_family,
+            "inference_family": entry.inference_family,
+            "production_context": "production",
+            "requested_role": "PRODUCTION_CANDIDATE",
+        }
+    )
+    return production_catalog_overlay_for_matrix(report)
+
+
+def _instrument_entry_to_matrix_row(
+    entry: InstrumentSuitabilityEntry,
+    cfg: MethodSuitabilityConfig | None = None,
+) -> dict[str, Any]:
+    row = {
         "instrument_id": entry.instrument_id,
         "estimator_family": entry.estimator_family,
         "inference_family": entry.inference_family,
@@ -1007,6 +1035,9 @@ def _instrument_entry_to_matrix_row(entry: InstrumentSuitabilityEntry) -> dict[s
         "diagnostic_only_reason": entry.diagnostic_only_reason,
         "restricted_reason": entry.restricted_reason,
     }
+    if cfg is not None:
+        row.update(_production_catalog_overlay(entry, cfg))
+    return row
 
 
 def _count_instruments(entries: tuple[InstrumentSuitabilityEntry, ...]) -> dict[str, int]:
@@ -1622,7 +1653,7 @@ def _evaluate_single_packet(
         )
         for spec in instrument_specs
     )
-    instrument_matrix = tuple(_instrument_entry_to_matrix_row(e) for e in instrument_reports)
+    instrument_matrix = tuple(_instrument_entry_to_matrix_row(e, cfg) for e in instrument_reports)
     instrument_counts = _count_instruments(instrument_reports)
 
     family_reports = tuple(

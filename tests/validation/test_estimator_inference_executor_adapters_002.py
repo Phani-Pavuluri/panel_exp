@@ -115,3 +115,10 @@ def test_dry_run_envelope_not_completed() -> None:
     assert result.effect_estimate_report_status == "NOT_COMPUTED"
     assert result.uncertainty_report_status == "NOT_COMPUTED"
     assert lookup.supports_execution is False
+
+
+def test_lookup_includes_production_catalog_restriction_metadata() -> None:
+    lookup = lookup_governed_executor("DID_BOOTSTRAP")
+    assert lookup.production_catalog_blocked is True
+    assert lookup.production_claim_blocked is True
+    assert lookup.production_catalog_status is not None

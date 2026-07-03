@@ -11,6 +11,13 @@ from enum import Enum
 from pathlib import Path
 from typing import Any
 
+from panel_exp.validation.production_catalog_blocklist_001 import (
+    PRODUCTION_CATALOG_DIAGNOSTIC_ONLY,
+    PRODUCTION_CATALOG_RESEARCH_ONLY,
+    evaluate_production_catalog_status,
+    production_catalog_overlay_for_matrix,
+)
+
 _ARTIFACT_ID = "READOUT_PLAN_RUNTIME_001"
 _ARTIFACT_VERSION = "1.0.0"
 _VERDICT = "readout_plan_runtime_implemented_planning_only_no_estimator_execution_or_claim_authorization"
@@ -71,6 +78,7 @@ class ReadoutPlanRuntimeConfig:
     block_on_missing_uncertainty_scope: bool = True
     require_diagnostic_plan: bool = True
     require_sensitivity_plan: bool = True
+    enforce_production_catalog_blocklist: bool = True
 
 
 @dataclass(frozen=True)
@@ -299,6 +307,27 @@ def _instrument_from_row(
     )
 
 
+def _ensure_production_catalog_fields(
+    row: dict[str, Any],
+    cfg: ReadoutPlanRuntimeConfig,
+) -> dict[str, Any]:
+    if not cfg.enforce_production_catalog_blocklist:
+        return row
+    if "is_production_blocked" in row:
+        return row
+    report = evaluate_production_catalog_status(
+        {
+            "instrument_id": row.get("instrument_id"),
+            "method_family": row.get("estimator_family"),
+            "estimator_family": row.get("estimator_family"),
+            "inference_family": row.get("inference_family"),
+            "production_context": "production",
+            "requested_role": "PRODUCTION_CANDIDATE",
+        }
+    )
+    return {**row, **production_catalog_overlay_for_matrix(report)}
+
+
 def _infer_planning_category(row: dict[str, Any]) -> InstrumentPlanningCategory:
     category_token = _token(row.get("planning_category"))
     if category_token in {c.value for c in InstrumentPlanningCategory}:
@@ -308,6 +337,16 @@ def _infer_planning_category(row: dict[str, Any]) -> InstrumentPlanningCategory:
     governance = _token(row.get("governance_status"))
     warnings = bool(row.get("warnings"))
     blocked_reasons = bool(row.get("blocking_reasons"))
+
+    blocked_reasons = bool(row.get("blocking_reasons"))
+
+    if row.get("is_production_blocked"):
+        status = _token(row.get("production_catalog_status"))
+        if status == PRODUCTION_CATALOG_DIAGNOSTIC_ONLY:
+            return InstrumentPlanningCategory.PLANNING_DIAGNOSTIC_ONLY
+        if status == PRODUCTION_CATALOG_RESEARCH_ONLY:
+            return InstrumentPlanningCategory.PLANNING_BLOCKED
+        return InstrumentPlanningCategory.PLANNING_BLOCKED
 
     if suitability.endswith("BLOCKED") or governance == "BLOCKED" or blocked_reasons:
         return InstrumentPlanningCategory.PLANNING_BLOCKED
@@ -456,6 +495,7 @@ def _evaluate_single_request(
     planned_diagnostic: list[PlannedReadoutInstrument] = []
     blocked: list[PlannedReadoutInstrument] = []
     not_eval: list[PlannedReadoutInstrument] = []
+    research_only: list[PlannedReadoutInstrument] = []
     stack: list[PlannedReadoutInstrument] = []
 
     required_diagnostics = tuple(_as_list_of_str(req.get("required_diagnostics")))
@@ -466,8 +506,17 @@ def _evaluate_single_request(
     uncertainty_scope = _coerce_scope(req.get("uncertainty_scope"), "uncertainty_scope", issues)
 
     for row in instruments:
+        row = _ensure_production_catalog_fields(row, cfg)
         category = _infer_planning_category(row)
         inst = _instrument_from_row(row, default_category=category)
+
+        if row.get("is_production_blocked") and _token(row.get("production_catalog_status")) == PRODUCTION_CATALOG_RESEARCH_ONLY:
+            research_inst = PlannedReadoutInstrument(
+                **{**inst.__dict__, "stack_role": ReadoutStackRole.REFERENCE_ONLY_INSTRUMENT}
+            )
+            research_only.append(research_inst)
+            stack.append(research_inst)
+            continue
 
         if category == InstrumentPlanningCategory.PLANNING_BLOCKED:
             inst = PlannedReadoutInstrument(**{**inst.__dict__, "stack_role": ReadoutStackRole.BLOCKED_READOUT_INSTRUMENT})
@@ -640,6 +689,7 @@ def _evaluate_single_request(
         "planned_sensitivity_candidates": [x.instrument_id for x in planned_sensitivity],
         "planned_diagnostic_candidates": [x.instrument_id for x in planned_diagnostic],
         "blocked_instruments": [x.instrument_id for x in blocked],
+        "research_only_instruments": [x.instrument_id for x in research_only],
         "not_evaluated_instruments": [x.instrument_id for x in not_eval],
         "execution_prerequisites": list(execution_prerequisites),
         "estimand_scope": estimand_scope,

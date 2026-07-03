@@ -389,3 +389,14 @@ def test_run_validation_and_summary() -> None:
 
 def test_report_exists() -> None:
     assert _REPORT.exists()
+
+
+def test_production_catalog_blocklist_blocks_production_context_execution() -> None:
+    req = _base_request(
+        production_context="production",
+        claim_type="INCREMENTAL_LIFT_CLAIM",
+    )
+    report = execute_estimator_inference(req)
+    inst = report.instrument_execution_results[0]
+    assert inst.instrument_execution_status == INSTRUMENT_EXECUTION_BLOCKED
+    assert any("production catalog" in reason for reason in inst.blocking_reasons)
