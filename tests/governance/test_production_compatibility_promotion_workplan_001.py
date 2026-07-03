@@ -1070,3 +1070,21 @@ def test_governance_readout_diagnostics_sensitivity_contract_lane_complete() -> 
     assert lane["next_artifact"] == "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_001"
     assert lane["resolution_artifact"] == "READOUT_DIAGNOSTICS_AND_SENSITIVITY_CONTRACT_001"
     assert "no_diagnostic_or_sensitivity_execution" in lane["artifact_tags"]
+
+
+def test_governance_readout_diagnostics_sensitivity_runtime_resolved() -> None:
+    inv = investigations_by_id()["INV-READOUT-DIAGNOSTICS-SENSITIVITY-RUNTIME-001"]
+    assert inv.status == "RESOLVED"
+    assert inv.resolution_artifact == "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_001"
+
+
+def test_governance_readout_diagnostics_sensitivity_runtime_lane_complete() -> None:
+    reg = load_registry()
+    lane = next(
+        b for b in reg["roadmap_lane_bindings"]
+        if b["lane_id"] == "READOUT-DIAGNOSTICS-SENSITIVITY-RUNTIME-001"
+    )
+    assert lane["status"] == "complete"
+    assert lane["next_artifact"] == "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_003_FIRST_GOVERNED_EXECUTOR"
+    assert lane["resolution_artifact"] == "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_001"
+    assert "no_diagnostic_or_sensitivity_execution" in lane["artifact_tags"]

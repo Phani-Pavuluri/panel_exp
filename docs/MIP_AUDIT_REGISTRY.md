@@ -2376,6 +2376,20 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## READOUT-DIAGNOSTICS-SENSITIVITY-RUNTIME-001 (2026-07-02)
+
+**Lane ID:** `READOUT-DIAGNOSTICS-SENSITIVITY-RUNTIME-001`
+
+**Artifact:** [`docs/track_d/READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_001_REPORT.md`](track_d/READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_001_REPORT.md) · [`docs/track_d/archives/READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_001_summary.json`](track_d/archives/READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_001_summary.json) · [`panel_exp/validation/readout_diagnostics_sensitivity_runtime_001.py`](../panel_exp/validation/readout_diagnostics_sensitivity_runtime_001.py)
+
+**Status:** **`readout_diagnostics_sensitivity_runtime_implemented_evidence_planning_and_sufficiency_only_no_diagnostic_or_sensitivity_execution`**
+
+**Verdict:** Implements deterministic diagnostics/sensitivity evidence runtime: requirement planning, evidence packet generation, missing/blocked/inconclusive handling, evidence sufficiency classification, and failure packets (`failed_scenarios: []`). Evidence planning only; no diagnostic execution, sensitivity execution, or claim authorization.
+
+**Next:** `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_003_FIRST_GOVERNED_EXECUTOR` · alternative: `CLAIM_AUTHORIZATION_CONTRACT_001`.
+
+---
+
 ## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)
