@@ -1124,3 +1124,21 @@ def test_governance_readout_diagnostics_runtime_002_lane_complete() -> None:
     assert lane["next_artifact"] == "CLAIM_AUTHORIZATION_CONTRACT_001"
     assert lane["resolution_artifact"] == "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_002_FIRST_GOVERNED_DIAGNOSTIC"
     assert "no_inference_or_claim_authorization" in lane["artifact_tags"]
+
+
+def test_governance_claim_authorization_contract_resolved() -> None:
+    inv = investigations_by_id()["INV-CLAIM-AUTHORIZATION-CONTRACT-001"]
+    assert inv.status == "RESOLVED"
+    assert inv.resolution_artifact == "CLAIM_AUTHORIZATION_CONTRACT_001"
+
+
+def test_governance_claim_authorization_contract_lane_complete() -> None:
+    reg = load_registry()
+    lane = next(
+        b for b in reg["roadmap_lane_bindings"]
+        if b["lane_id"] == "CLAIM-AUTHORIZATION-CONTRACT-001"
+    )
+    assert lane["status"] == "complete"
+    assert lane["next_artifact"] == "CLAIM_AUTHORIZATION_RUNTIME_001"
+    assert lane["resolution_artifact"] == "CLAIM_AUTHORIZATION_CONTRACT_001"
+    assert "no_claim_or_production_authorization" in lane["artifact_tags"]

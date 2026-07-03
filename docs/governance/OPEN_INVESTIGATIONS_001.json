@@ -2346,6 +2346,42 @@
       "resolution_artifact": "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_002_FIRST_GOVERNED_DIAGNOSTIC"
     },
     {
+      "investigation_id": "INV-CLAIM-AUTHORIZATION-CONTRACT-001",
+      "title": "Claim authorization contract definition",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "READOUT-DIAGNOSTICS-SENSITIVITY-RUNTIME-002-FIRST-GOVERNED-DIAGNOSTIC",
+      "affected_combination": "claim_authorization_contract",
+      "problem_class": ["claim_authorization", "claim_boundaries", "evidence_gates", "production_governance"],
+      "evidence": {
+        "depends_on": [
+          "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_002_FIRST_GOVERNED_DIAGNOSTIC",
+          "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_003_FIRST_GOVERNED_EXECUTOR",
+          "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_001",
+          "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_002_GOVERNED_EXECUTOR_ADAPTERS",
+          "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_001",
+          "READOUT_PLAN_RUNTIME_001"
+        ],
+        "scope": "contract_only_no_claim_or_production_authorization",
+        "claim_authorization_contract_defined": true,
+        "claim_request_contract_defined": true,
+        "claim_evidence_bundle_contract_defined": true,
+        "claim_decision_contract_defined": true,
+        "claim_gate_order_defined": true,
+        "claim_type_evidence_matrix_defined": true,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "CLAIM_AUTHORIZATION_RUNTIME_001"
+      },
+      "current_decision": "CLAIM_AUTHORIZATION_CONTRACT_DEFINED_NO_CLAIM_OR_PRODUCTION_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Claim authorization contract before claim authorization runtime",
+      "blocking_policy": "Contract only; no claim authorization, production authorization, or effect/inference/diagnostic execution",
+      "terminal_decisions": ["RESTRICT", "CONTRACT_ONLY", "PROMOTE"],
+      "resolution_artifact": "CLAIM_AUTHORIZATION_CONTRACT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -4667,6 +4703,26 @@
         "did_coverage_diagnostic",
         "runtime_only",
         "no_inference_or_claim_authorization"
+      ]
+    },
+    {
+      "lane_id": "CLAIM-AUTHORIZATION-CONTRACT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-CLAIM-AUTHORIZATION-CONTRACT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "CLAIM_AUTHORIZATION_RUNTIME_001",
+      "resolution_artifact": "CLAIM_AUTHORIZATION_CONTRACT_001",
+      "artifact_tags": [
+        "claim_authorization_contract",
+        "claim_boundaries",
+        "evidence_gates",
+        "failure_packets",
+        "contract_only",
+        "no_claim_or_production_authorization"
       ]
     }
   ]

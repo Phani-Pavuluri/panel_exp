@@ -2418,6 +2418,20 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## CLAIM-AUTHORIZATION-CONTRACT-001 (2026-07-03)
+
+**Lane ID:** `CLAIM-AUTHORIZATION-CONTRACT-001`
+
+**Artifact:** [`docs/track_d/CLAIM_AUTHORIZATION_CONTRACT_001_REPORT.md`](track_d/CLAIM_AUTHORIZATION_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/CLAIM_AUTHORIZATION_CONTRACT_001_summary.json`](track_d/archives/CLAIM_AUTHORIZATION_CONTRACT_001_summary.json) · [`panel_exp/validation/claim_authorization_contract_001.py`](../panel_exp/validation/claim_authorization_contract_001.py)
+
+**Status:** **`claim_authorization_contract_defined_no_claim_or_production_authorization`**
+
+**Verdict:** Defines future governed claim-authorization contract for causal, incremental lift, ROI, diagnostic-only, and production-readout claims. Claim request schemas, decision statuses, evidence gates, blocker semantics, failure packets, and trusted readout handoff defined. Contract only; no claim authorization, no production authorization, no effect/inference/diagnostic execution (`failed_scenarios: []`).
+
+**Next:** `CLAIM_AUTHORIZATION_RUNTIME_001` · alternative: `TRUSTED_READOUT_REPORT_CONTRACT_001`.
+
+---
+
 ## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)
