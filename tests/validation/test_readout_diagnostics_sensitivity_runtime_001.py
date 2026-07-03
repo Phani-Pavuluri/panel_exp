@@ -229,6 +229,39 @@ def test_claim_boundary_flags_remain_false_for_authorization() -> None:
     assert cb["production_authorization_granted"] is False
 
 
+def test_governed_did_diagnostic_integrated_when_config_enabled() -> None:
+    panel = [
+        {"geo_id": "g1", "week": "2025w01", "sales": 10.0, "treated": 1},
+        {"geo_id": "g1", "week": "2025w13", "sales": 20.0, "treated": 1},
+        {"geo_id": "g2", "week": "2025w01", "sales": 8.0, "treated": 0},
+        {"geo_id": "g2", "week": "2025w13", "sales": 9.0, "treated": 0},
+    ]
+    req = _base_request(
+        panel_data=panel,
+        pre_period=["2025w01"],
+        test_period=["2025w13"],
+        diagnostic_requirements=[
+            {
+                "requirement_id": "diag_preperiod_fit",
+                "requirement_type": "PRE_PERIOD_FIT_DIAGNOSTIC",
+                "applies_to_instrument_id": "DID_BOOTSTRAP",
+                "blocking_if_missing": True,
+                "blocking_if_failed": True,
+            }
+        ],
+        sensitivity_requirements=[],
+        diagnostic_results=[],
+        sensitivity_results=[],
+    )
+    cfg = ReadoutDiagnosticsSensitivityRuntimeConfig(
+        block_on_missing_sensitivity_requirements=False,
+        enable_governed_did_coverage_diagnostic=True,
+    )
+    report = evaluate_readout_diagnostics_sensitivity(req, config=cfg)
+    assert report.diagnostic_evidence_packets[0]["result_status"] == "DIAGNOSTIC_PASSED"
+    assert report.claim_boundary_report["diagnostic_result_computed"] is True
+
+
 def test_missing_diagnostic_nonblocking_provisionalizes() -> None:
     cfg = ReadoutDiagnosticsSensitivityRuntimeConfig(
         block_on_missing_required_diagnostic_results=False

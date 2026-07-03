@@ -1106,3 +1106,21 @@ def test_governance_estimator_inference_runtime_003_lane_complete() -> None:
     assert lane["next_artifact"] == "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_002_FIRST_GOVERNED_DIAGNOSTIC"
     assert lane["resolution_artifact"] == "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_003_FIRST_GOVERNED_EXECUTOR"
     assert "no_inference_or_claim_authorization" in lane["artifact_tags"]
+
+
+def test_governance_readout_diagnostics_runtime_002_resolved() -> None:
+    inv = investigations_by_id()["INV-READOUT-DIAGNOSTICS-SENSITIVITY-RUNTIME-002-FIRST-GOVERNED-DIAGNOSTIC-001"]
+    assert inv.status == "RESOLVED"
+    assert inv.resolution_artifact == "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_002_FIRST_GOVERNED_DIAGNOSTIC"
+
+
+def test_governance_readout_diagnostics_runtime_002_lane_complete() -> None:
+    reg = load_registry()
+    lane = next(
+        b for b in reg["roadmap_lane_bindings"]
+        if b["lane_id"] == "READOUT-DIAGNOSTICS-SENSITIVITY-RUNTIME-002-FIRST-GOVERNED-DIAGNOSTIC"
+    )
+    assert lane["status"] == "complete"
+    assert lane["next_artifact"] == "CLAIM_AUTHORIZATION_CONTRACT_001"
+    assert lane["resolution_artifact"] == "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_002_FIRST_GOVERNED_DIAGNOSTIC"
+    assert "no_inference_or_claim_authorization" in lane["artifact_tags"]

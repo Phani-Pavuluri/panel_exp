@@ -2404,6 +2404,20 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## READOUT-DIAGNOSTICS-SENSITIVITY-RUNTIME-002-FIRST-GOVERNED-DIAGNOSTIC (2026-07-03)
+
+**Lane ID:** `READOUT-DIAGNOSTICS-SENSITIVITY-RUNTIME-002-FIRST-GOVERNED-DIAGNOSTIC`
+
+**Artifact:** [`docs/track_d/READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_002_FIRST_GOVERNED_DIAGNOSTIC_REPORT.md`](track_d/READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_002_FIRST_GOVERNED_DIAGNOSTIC_REPORT.md) · [`docs/track_d/archives/READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_002_FIRST_GOVERNED_DIAGNOSTIC_summary.json`](track_d/archives/READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_002_FIRST_GOVERNED_DIAGNOSTIC_summary.json) · [`panel_exp/validation/readout_did_diagnostics_002.py`](../panel_exp/validation/readout_did_diagnostics_002.py)
+
+**Status:** **`first_governed_did_coverage_diagnostic_implemented_no_inference_or_claim_authorization`**
+
+**Verdict:** Implements first governed DID coverage/pre-period baseline diagnostic with runtime integration behind config gate (`failed_scenarios: []`). Structural diagnostic only; no statistical inference or claim authorization.
+
+**Next:** `CLAIM_AUTHORIZATION_CONTRACT_001` · alternative: `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_004_BOOTSTRAP_INFERENCE_CONTRACT`.
+
+---
+
 ## INFERENCE-REPLACEMENT-SCOUT-001 (2026-06-03)
 
 **Artifact:** [`docs/audits/INFERENCE_REPLACEMENT_SCOUT_001.md`](audits/INFERENCE_REPLACEMENT_SCOUT_001.md) · [`docs/track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json`](track_d/archives/INFERENCE_REPLACEMENT_SCOUT_001_summary.json)

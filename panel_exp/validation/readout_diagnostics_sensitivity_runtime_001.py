@@ -17,6 +17,12 @@ from panel_exp.validation.readout_diagnostics_sensitivity_contract_001 import (
     RETRY_CATEGORIES,
     SENSITIVITY_STATUSES,
 )
+from panel_exp.validation.readout_did_diagnostics_002 import (
+    evaluate_did_coverage_diagnostic,
+    is_governed_did_diagnostic_type,
+    to_provided_diagnostic_result,
+)
+from panel_exp.validation.estimator_inference_did_executor_003 import GOVERNED_DID_INSTRUMENT_IDS
 
 _ARTIFACT_ID = "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_001"
 _ARTIFACT_VERSION = "1.0.0"
@@ -126,6 +132,10 @@ class ReadoutDiagnosticsSensitivityRuntimeConfig:
     block_on_failed_blocking_sensitivity: bool = True
     block_on_inconclusive_blocking_evidence: bool = False
     allow_diagnostic_only_for_production_claim: bool = False
+    enable_governed_did_coverage_diagnostic: bool = False
+    enable_statistical_parallel_trends: bool = False
+    enable_p_value_computation: bool = False
+    enable_confidence_interval_computation: bool = False
 
 
 @dataclass(frozen=True)
@@ -393,6 +403,17 @@ def _evaluate_diagnostic_requirement(
         ),
         "warnings": list(_safe_str_list(warnings)),
     }
+    if provided_result:
+        for key in (
+            "result_value",
+            "threshold",
+            "threshold_direction",
+            "passed",
+            "interpretation",
+            "result_id",
+        ):
+            if key in provided_result:
+                packet[key] = provided_result[key]
 
     failure_packet = None
     if evidence_status in (
@@ -422,6 +443,58 @@ def _evaluate_diagnostic_requirement(
         )
 
     return plan, packet, failure_packet, evidence_status
+
+
+def _governed_did_diagnostic_config(cfg: ReadoutDiagnosticsSensitivityRuntimeConfig) -> dict[str, Any]:
+    return {
+        "enable_governed_did_coverage_diagnostic": True,
+        "enable_statistical_parallel_trends": cfg.enable_statistical_parallel_trends,
+        "enable_p_value_computation": cfg.enable_p_value_computation,
+        "enable_confidence_interval_computation": cfg.enable_confidence_interval_computation,
+    }
+
+
+def _maybe_compute_governed_did_diagnostic(
+    req_row: dict[str, Any],
+    *,
+    req: dict[str, Any],
+    execution_artifacts: dict[str, Any],
+    execution_artifact_id: str,
+    cfg: ReadoutDiagnosticsSensitivityRuntimeConfig,
+) -> dict[str, Any] | None:
+    if not cfg.enable_governed_did_coverage_diagnostic:
+        return None
+    requirement_type = str(req_row.get("requirement_type") or "")
+    instrument_id = str(req_row.get("applies_to_instrument_id") or "")
+    if not is_governed_did_diagnostic_type(requirement_type):
+        return None
+    if instrument_id not in GOVERNED_DID_INSTRUMENT_IDS:
+        return None
+    panel_data = req.get("panel_data") or execution_artifacts.get("panel_data")
+    if panel_data is None:
+        return None
+    diag_input = {
+        "requirement_id": req_row.get("requirement_id"),
+        "requirement_type": requirement_type,
+        "instrument_id": instrument_id,
+        "execution_artifact_id": execution_artifact_id,
+        "panel_data": panel_data,
+        "unit_id_field": req.get("unit_id_field", "geo_id"),
+        "time_field": req.get("time_field", "week"),
+        "outcome_field": req.get("outcome_field", "sales"),
+        "treatment_field": req.get("treatment_field", "treated"),
+        "post_period_field": req.get("post_period_field"),
+        "pre_period": req.get("pre_period"),
+        "test_period": req.get("test_period"),
+        "claim_scope": req.get("claim_scope"),
+    }
+    diag_result = evaluate_did_coverage_diagnostic(
+        diag_input,
+        config=_governed_did_diagnostic_config(cfg),
+    )
+    if diag_result.diagnostic_status == DIAGNOSTIC_NOT_EVALUATED:
+        return None
+    return to_provided_diagnostic_result(diag_result)
 
 
 def _evaluate_sensitivity_requirement(
@@ -625,17 +698,36 @@ def _evaluate_single_request(
     sensitivity_packets: list[dict[str, Any]] = []
     diagnostic_failures: list[dict[str, Any]] = []
     sensitivity_failures: list[dict[str, Any]] = []
+    governed_diagnostic_computed = False
 
     for req_row in diagnostic_requirements:
+        requirement_id = str(req_row.get("requirement_id") or "")
+        provided_result = diag_result_index.get(requirement_id)
+        computed_result = _maybe_compute_governed_did_diagnostic(
+            req_row,
+            req=req,
+            execution_artifacts=execution_artifacts,
+            execution_artifact_id=execution_artifact_id,
+            cfg=cfg,
+        )
+        if computed_result is not None:
+            provided_result = computed_result
+            governed_diagnostic_computed = True
         plan, packet, failure, status = _evaluate_diagnostic_requirement(
             req_row,
             design_id=design_id,
             execution_artifact_id=execution_artifact_id,
-            provided_result=diag_result_index.get(str(req_row.get("requirement_id") or "")),
+            provided_result=provided_result,
             claim_scope=claim_scope,
             cfg=cfg,
             claim_boundary=claim_boundary,
         )
+        if computed_result is not None:
+            plan = {
+                **plan,
+                "planned_execution_mode": "governed_diagnostic",
+                "planned_status": computed_result.get("result_status", plan["planned_status"]),
+            }
         diagnostic_plans.append(plan)
         diagnostic_packets.append(packet)
         evidence_statuses.append(status)
@@ -675,6 +767,11 @@ def _evaluate_single_request(
     claim_boundary = {
         **claim_boundary,
         "failure_packets_generated": bool(diagnostic_failures or sensitivity_failures),
+        "first_governed_diagnostic_implemented": bool(cfg.enable_governed_did_coverage_diagnostic),
+        "did_coverage_diagnostic_implemented": bool(cfg.enable_governed_did_coverage_diagnostic),
+        "did_coverage_diagnostic_runtime_integrated": bool(cfg.enable_governed_did_coverage_diagnostic),
+        "diagnostic_result_computed": governed_diagnostic_computed,
+        "diagnostic_pass_fail_computed": governed_diagnostic_computed,
     }
 
     evidence_aggregation_report = {

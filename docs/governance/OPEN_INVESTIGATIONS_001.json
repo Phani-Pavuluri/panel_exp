@@ -2317,6 +2317,35 @@
       "resolution_artifact": "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_003_FIRST_GOVERNED_EXECUTOR"
     },
     {
+      "investigation_id": "INV-READOUT-DIAGNOSTICS-SENSITIVITY-RUNTIME-002-FIRST-GOVERNED-DIAGNOSTIC-001",
+      "title": "First governed DID coverage diagnostic",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "ESTIMATOR-INFERENCE-EXECUTION-RUNTIME-003-FIRST-GOVERNED-EXECUTOR",
+      "affected_combination": "first_governed_did_diagnostic",
+      "problem_class": ["coverage_diagnostic", "preperiod_baseline", "claim_boundary"],
+      "evidence": {
+        "depends_on": [
+          "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_003_FIRST_GOVERNED_EXECUTOR",
+          "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_001",
+          "READOUT_DIAGNOSTICS_AND_SENSITIVITY_CONTRACT_001"
+        ],
+        "scope": "first_governed_did_coverage_preperiod_diagnostic_no_inference_or_claim_authorization",
+        "first_governed_diagnostic_implemented": true,
+        "did_coverage_diagnostic_implemented": true,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "CLAIM_AUTHORIZATION_CONTRACT_001"
+      },
+      "current_decision": "FIRST_GOVERNED_DID_COVERAGE_DIAGNOSTIC_IMPLEMENTED_NO_INFERENCE_OR_CLAIM_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "First governed diagnostic before claim authorization or bootstrap inference contract",
+      "blocking_policy": "DID coverage/pre-period structural diagnostic only; no inference or claim authorization",
+      "terminal_decisions": ["RESTRICT", "RUNTIME_ONLY", "PROMOTE"],
+      "resolution_artifact": "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_002_FIRST_GOVERNED_DIAGNOSTIC"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -4618,6 +4647,24 @@
       "artifact_tags": [
         "first_governed_executor",
         "did_point_estimate",
+        "runtime_only",
+        "no_inference_or_claim_authorization"
+      ]
+    },
+    {
+      "lane_id": "READOUT-DIAGNOSTICS-SENSITIVITY-RUNTIME-002-FIRST-GOVERNED-DIAGNOSTIC",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-READOUT-DIAGNOSTICS-SENSITIVITY-RUNTIME-002-FIRST-GOVERNED-DIAGNOSTIC-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "CLAIM_AUTHORIZATION_CONTRACT_001",
+      "resolution_artifact": "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_002_FIRST_GOVERNED_DIAGNOSTIC",
+      "artifact_tags": [
+        "first_governed_diagnostic",
+        "did_coverage_diagnostic",
         "runtime_only",
         "no_inference_or_claim_authorization"
       ]

@@ -1659,6 +1659,25 @@ class TestOpenInvestigationRegistry001:
             "FIRST_GOVERNED_DID_POINT_ESTIMATE_EXECUTOR_IMPLEMENTED_NO_INFERENCE_OR_CLAIM_AUTHORIZATION"
         )
 
+    def test_readout_diagnostics_sensitivity_runtime_002_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "READOUT-DIAGNOSTICS-SENSITIVITY-RUNTIME-002-FIRST-GOVERNED-DIAGNOSTIC"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_002_FIRST_GOVERNED_DIAGNOSTIC"
+        assert lane["next_artifact"] == "CLAIM_AUTHORIZATION_CONTRACT_001"
+        assert "INV-READOUT-DIAGNOSTICS-SENSITIVITY-RUNTIME-002-FIRST-GOVERNED-DIAGNOSTIC-001" in lane["resolved_investigations"]
+
+    def test_readout_diagnostics_sensitivity_runtime_002_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-READOUT-DIAGNOSTICS-SENSITIVITY-RUNTIME-002-FIRST-GOVERNED-DIAGNOSTIC-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_002_FIRST_GOVERNED_DIAGNOSTIC"
+        assert inv.current_decision == (
+            "FIRST_GOVERNED_DID_COVERAGE_DIAGNOSTIC_IMPLEMENTED_NO_INFERENCE_OR_CLAIM_AUTHORIZATION"
+        )
+
     def test_production_authorization_release_gate_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"]
         assert inv.status == "RESOLVED"
