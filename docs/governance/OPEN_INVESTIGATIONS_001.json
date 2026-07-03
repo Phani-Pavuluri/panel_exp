@@ -2382,6 +2382,77 @@
       "resolution_artifact": "CLAIM_AUTHORIZATION_CONTRACT_001"
     },
     {
+      "investigation_id": "INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001",
+      "title": "Audit-driven P0 governed runtime hardening",
+      "status": "PLANNED",
+      "priority": "P0",
+      "discovered_by": "EXPANDED-ADVERSARIAL-AUDIT",
+      "affected_combination": "p0_governed_runtime_hardening",
+      "problem_class": [
+        "decision_safety",
+        "statistical_validity",
+        "framework_cohesion",
+        "production_blocklist",
+        "claim_boundary"
+      ],
+      "evidence": {
+        "depends_on": [
+          "CLAIM_AUTHORIZATION_CONTRACT_001",
+          "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_003_FIRST_GOVERNED_EXECUTOR",
+          "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_002_FIRST_GOVERNED_DIAGNOSTIC",
+          "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_001",
+          "DESIGN_ASSIGNMENT_RUNTIME_001",
+          "METHOD_STATISTICAL_VALIDATION_PROTOCOL_001",
+          "METHOD_FAMILY_PROMOTION_CRITERIA_MATRIX_001"
+        ],
+        "audit_verdict": "promising_but_incomplete",
+        "claim_authorization_contract_complete": true,
+        "claim_authorization_runtime_deferred": true,
+        "p0_hardening_lane_inserted": true,
+        "recommended_sequence": [
+          "PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001",
+          "DID_INSTRUMENT_ESTIMAND_UNIFICATION_001",
+          "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001",
+          "STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001",
+          "GOVERNED_RANDOMIZATION_RUNTIME_001",
+          "SRM_BALANCE_READOUT_DIAGNOSTIC_001",
+          "CLAIM_AUTHORIZATION_RUNTIME_001",
+          "TRUSTED_READOUT_REPORT_CONTRACT_001",
+          "TRUSTED_READOUT_REPORT_RUNTIME_001"
+        ],
+        "deferred_artifacts": [
+          "AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001",
+          "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_004_BOOTSTRAP_INFERENCE"
+        ],
+        "research_only_families": [
+          "SyntheticDID",
+          "TROP",
+          "MTGP",
+          "BayesianTBR",
+          "BayesianTBRHorseShoe"
+        ],
+        "failed_scenarios": [],
+        "recommended_next_artifact": "PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001"
+      },
+      "current_decision": "AUDIT_DRIVEN_P0_GOVERNED_RUNTIME_HARDENING_INSERTED_BEFORE_CLAIM_AUTHORIZATION_RUNTIME",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": "AUDIT_P0_GOVERNED_RUNTIME_HARDENING_001",
+      "revisit_trigger": "Upon completion of SRM_BALANCE_READOUT_DIAGNOSTIC_001 and P0 acceptance criteria",
+      "decision_checkpoint": "P0 validity/cohesion hardening before claim authorization runtime",
+      "blocking_policy": "No claim authorization runtime or trusted readout until P0 hardening acceptance criteria pass",
+      "terminal_decisions": ["RESTRICT", "HARDEN", "PROMOTE"],
+      "resolution_artifact": null
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -4714,7 +4785,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "CLAIM_AUTHORIZATION_RUNTIME_001",
+      "next_artifact": "PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001",
       "resolution_artifact": "CLAIM_AUTHORIZATION_CONTRACT_001",
       "artifact_tags": [
         "claim_authorization_contract",
@@ -4723,6 +4794,27 @@
         "failure_packets",
         "contract_only",
         "no_claim_or_production_authorization"
+      ]
+    },
+    {
+      "lane_id": "AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001",
+      "status": "active",
+      "open_investigations": [
+        "INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001"
+      ],
+      "resolved_investigations": [],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001",
+      "resolution_artifact": null,
+      "artifact_tags": [
+        "audit_driven_roadmap_correction",
+        "p0_governed_runtime_hardening",
+        "decision_safety",
+        "statistical_validity",
+        "framework_cohesion",
+        "production_blocklist",
+        "claim_runtime_deferred"
       ]
     }
   ]

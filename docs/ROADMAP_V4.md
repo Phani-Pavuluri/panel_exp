@@ -525,7 +525,41 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`READOUT_METHOD_GOVERNANCE_CONTRACT_001`** → ✅ **`READOUT_PLAN_CONTRACT_001`** → ✅ **`READOUT_PLAN_RUNTIME_001`** → ✅ **`ESTIMATOR_INFERENCE_EXECUTION_CONTRACT_001`** → ✅ **`ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_001`** → ✅ **`ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_002_GOVERNED_EXECUTOR_ADAPTERS`** → ✅ **`READOUT_DIAGNOSTICS_AND_SENSITIVITY_CONTRACT_001`** → ✅ **`READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_001`** → ✅ **`ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_003_FIRST_GOVERNED_EXECUTOR`** → ✅ **`READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_002_FIRST_GOVERNED_DIAGNOSTIC`** → ✅ **`CLAIM_AUTHORIZATION_CONTRACT_001`** → `CLAIM_AUTHORIZATION_RUNTIME_001` · **`AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001`** (post-planner method lane).
+**Ordered next:** ✅ … → ✅ **`READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_002_FIRST_GOVERNED_DIAGNOSTIC`** → ✅ **`CLAIM_AUTHORIZATION_CONTRACT_001`** → **`P0_GOVERNED_RUNTIME_HARDENING`** → `PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001` → `DID_INSTRUMENT_ESTIMAND_UNIFICATION_001` → `ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001` → `STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001` → `GOVERNED_RANDOMIZATION_RUNTIME_001` → `SRM_BALANCE_READOUT_DIAGNOSTIC_001` → `CLAIM_AUTHORIZATION_RUNTIME_001` → `TRUSTED_READOUT_REPORT_CONTRACT_001` → `TRUSTED_READOUT_REPORT_RUNTIME_001`.
+
+### Audit-driven roadmap correction (2026-07-03)
+
+Expanded adversarial audit verdict: **promising but incomplete**. See [`AUDIT_P0_GOVERNED_RUNTIME_HARDENING_001.md`](track_d/AUDIT_P0_GOVERNED_RUNTIME_HARDENING_001.md).
+
+`CLAIM_AUTHORIZATION_CONTRACT_001` is complete and safe as a contract-only artifact. `CLAIM_AUTHORIZATION_RUNTIME_001` remains planned but **must not** be the immediate next implementation artifact because current governed execution has only one DID point-estimate executor, one structural DID diagnostic, no governed production-safe inference path, no assignment-panel integrity runtime, no enforced production blocklist, no statistical promotion threshold enforcement, and no governed randomization runtime.
+
+The roadmap now inserts **P0 governed runtime hardening** before claim authorization runtime. Priority order: decision safety → causal/statistical validity → lineage → governed execution maturity → claim/report authorization → advanced estimator expansion.
+
+**Recommended immediate next:** `PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001`
+
+**Deferred / paused:** `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001` · `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_004_BOOTSTRAP_INFERENCE` · advanced estimator production (SDID, TROP, MTGP, BayesianTBR) · production TrustReport ops · LLM/MMM downstream decisioning.
+
+**Do not build yet:** production TrustReport operations · LLM/MIP/MMM downstream decisioning · estimator-shopping UI · automatic estimator ensemble selection · adaptive experimentation/bandits · bootstrap inference runtime before DID remediation and threshold enforcement · AugSynth/ASCM production remediation before P0 validity closure.
+
+| Artifact | Action | Reason |
+|----------|--------|--------|
+| `CLAIM_AUTHORIZATION_CONTRACT_001` | complete / keep | Contract-only safe at `5f93625` |
+| `CLAIM_AUTHORIZATION_RUNTIME_001` | keep but delay | P0 hardening required first |
+| `PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001` | insert P0 | Block failed/uncalibrated combos |
+| `DID_INSTRUMENT_ESTIMAND_UNIFICATION_001` | insert P0 | `DID_BOOTSTRAP` naming vs 2×2/TWFE split |
+| `ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001` | insert P0 | Assignment-panel mismatch blocks execution |
+| `STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001` | insert P0 | Enforce numeric FPR/coverage gates |
+| `GOVERNED_RANDOMIZATION_RUNTIME_001` | insert P0/P1 | Governed causal randomization path |
+| `SRM_BALANCE_READOUT_DIAGNOSTIC_001` | insert P1 | SRM/balance evidence in readout chain |
+| `TRUSTED_READOUT_REPORT_CONTRACT_001` | deferred | After claim runtime |
+| `TRUSTED_READOUT_REPORT_RUNTIME_001` | deferred | After report contract |
+| `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001` | pause | Sophistication before validity closure |
+| `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_004_BOOTSTRAP_INFERENCE` | defer | After DID remediation + thresholds |
+| TROP / MTGP / BayesianTBR | research-only | Insufficient production evidence |
+
+**Maturity policy:** No estimator is `PRODUCTION_SAFE`. Implemented ≠ production-safe. Characterized ≠ production-safe. Governed runtime supported ≠ claim-authorized. Evidence sufficiency ≠ authorization. Point estimate ≠ causal lift. Diagnostic pass ≠ production approval.
+
+**Production blocklist stance:** Block `DID_BOOTSTRAP` production claims until bootstrap calibrated; block `TBRRidge`+`UnitJackKnife`/`Conformal`/`JKP`/`TimeSeriesKfold` while invalid intervals remain; block `TBR` aggregate production path; keep `AugSynth`+`Conformal` diagnostic/research-only; keep `SyntheticDID`, `TROP`, `MTGP`, `BayesianTBR` research-only.
 
 **Design implementation validation:** [`DESIGN_IMPLEMENTATION_VALIDATION_001.md`](DESIGN_IMPLEMENTATION_VALIDATION_001.md) — ✅ Accepted; 0/31 contract-complete; 8 hard blocker classes.
 

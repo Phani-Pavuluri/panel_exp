@@ -1686,7 +1686,7 @@ class TestOpenInvestigationRegistry001:
         )
         assert lane["status"] == "complete"
         assert lane["resolution_artifact"] == "CLAIM_AUTHORIZATION_CONTRACT_001"
-        assert lane["next_artifact"] == "CLAIM_AUTHORIZATION_RUNTIME_001"
+        assert lane["next_artifact"] == "PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001"
         assert "INV-CLAIM-AUTHORIZATION-CONTRACT-001" in lane["resolved_investigations"]
 
     def test_claim_authorization_contract_investigation_resolved(self) -> None:
@@ -1695,6 +1695,26 @@ class TestOpenInvestigationRegistry001:
         assert inv.resolution_artifact == "CLAIM_AUTHORIZATION_CONTRACT_001"
         assert inv.current_decision == (
             "CLAIM_AUTHORIZATION_CONTRACT_DEFINED_NO_CLAIM_OR_PRODUCTION_AUTHORIZATION"
+        )
+
+    def test_audit_p0_governed_runtime_hardening_lane_active(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001"
+        )
+        assert lane["status"] == "active"
+        assert lane["next_artifact"] == "PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001"
+        assert lane["resolution_artifact"] is None
+        assert "INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001" in lane["open_investigations"]
+
+    def test_audit_p0_governed_runtime_hardening_investigation_planned(self) -> None:
+        inv = investigations_by_id()["INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001"]
+        assert inv.status == "PLANNED"
+        assert inv.priority == "P0"
+        assert inv.evidence["recommended_next_artifact"] == "PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001"
+        assert inv.current_decision == (
+            "AUDIT_DRIVEN_P0_GOVERNED_RUNTIME_HARDENING_INSERTED_BEFORE_CLAIM_AUTHORIZATION_RUNTIME"
         )
 
     def test_production_authorization_release_gate_plan_investigation_resolved(self) -> None:

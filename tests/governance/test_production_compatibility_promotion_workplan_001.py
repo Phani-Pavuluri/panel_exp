@@ -1139,6 +1139,23 @@ def test_governance_claim_authorization_contract_lane_complete() -> None:
         if b["lane_id"] == "CLAIM-AUTHORIZATION-CONTRACT-001"
     )
     assert lane["status"] == "complete"
-    assert lane["next_artifact"] == "CLAIM_AUTHORIZATION_RUNTIME_001"
+    assert lane["next_artifact"] == "PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001"
     assert lane["resolution_artifact"] == "CLAIM_AUTHORIZATION_CONTRACT_001"
     assert "no_claim_or_production_authorization" in lane["artifact_tags"]
+
+
+def test_governance_audit_p0_hardening_lane_active() -> None:
+    reg = load_registry()
+    lane = next(
+        b for b in reg["roadmap_lane_bindings"]
+        if b["lane_id"] == "AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001"
+    )
+    assert lane["status"] == "active"
+    assert lane["next_artifact"] == "PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001"
+    assert "INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001" in lane["open_investigations"]
+
+
+def test_governance_audit_p0_hardening_investigation_planned() -> None:
+    inv = investigations_by_id()["INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001"]
+    assert inv.status == "PLANNED"
+    assert inv.evidence["recommended_next_artifact"] == "PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001"
