@@ -2286,6 +2286,37 @@
       "resolution_artifact": "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_001"
     },
     {
+      "investigation_id": "INV-ESTIMATOR-INFERENCE-EXECUTION-RUNTIME-003-FIRST-GOVERNED-EXECUTOR-001",
+      "title": "First governed DID point-estimate executor",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "ESTIMATOR-INFERENCE-EXECUTOR-ADAPTERS-002",
+      "affected_combination": "first_governed_did_executor",
+      "problem_class": ["point_estimate", "executor_integration", "claim_boundary"],
+      "evidence": {
+        "depends_on": [
+          "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_001",
+          "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_002_GOVERNED_EXECUTOR_ADAPTERS",
+          "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_001",
+          "ESTIMATOR_INFERENCE_EXECUTION_CONTRACT_001",
+          "READOUT_PLAN_RUNTIME_001"
+        ],
+        "scope": "first_governed_did_point_estimate_executor_no_inference_or_claim_authorization",
+        "first_governed_executor_implemented": true,
+        "did_point_estimate_executor_implemented": true,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_002_FIRST_GOVERNED_DIAGNOSTIC"
+      },
+      "current_decision": "FIRST_GOVERNED_DID_POINT_ESTIMATE_EXECUTOR_IMPLEMENTED_NO_INFERENCE_OR_CLAIM_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "First governed executor before first governed diagnostic or claim authorization",
+      "blocking_policy": "DID point-estimate only; no inference, bootstrap, or claim authorization",
+      "terminal_decisions": ["RESTRICT", "RUNTIME_ONLY", "PROMOTE"],
+      "resolution_artifact": "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_003_FIRST_GOVERNED_EXECUTOR"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -4562,7 +4593,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_003_FIRST_GOVERNED_EXECUTOR",
+      "next_artifact": "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_002_FIRST_GOVERNED_DIAGNOSTIC",
       "resolution_artifact": "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_001",
       "artifact_tags": [
         "readout_diagnostics_sensitivity_runtime",
@@ -4571,6 +4602,24 @@
         "failure_packets",
         "runtime_only",
         "no_diagnostic_or_sensitivity_execution"
+      ]
+    },
+    {
+      "lane_id": "ESTIMATOR-INFERENCE-EXECUTION-RUNTIME-003-FIRST-GOVERNED-EXECUTOR",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-ESTIMATOR-INFERENCE-EXECUTION-RUNTIME-003-FIRST-GOVERNED-EXECUTOR-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_002_FIRST_GOVERNED_DIAGNOSTIC",
+      "resolution_artifact": "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_003_FIRST_GOVERNED_EXECUTOR",
+      "artifact_tags": [
+        "first_governed_executor",
+        "did_point_estimate",
+        "runtime_only",
+        "no_inference_or_claim_authorization"
       ]
     }
   ]

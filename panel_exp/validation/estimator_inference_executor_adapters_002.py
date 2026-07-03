@@ -45,6 +45,9 @@ class GovernedExecutorAdapterSpec:
     required_assignment_fields: tuple[str, ...]
     required_estimand_fields: tuple[str, ...]
     required_uncertainty_fields: tuple[str, ...]
+    supports_bootstrap_inference: bool = False
+    supports_confidence_interval: bool = False
+    supports_p_value: bool = False
     blocked_reason_if_not_supported: str | None = None
     notes: str = ""
 
@@ -130,12 +133,15 @@ def _build_default_specs() -> dict[str, GovernedExecutorAdapterSpec]:
             estimator_family="DID_FAMILY",
             inference_family="BOOTSTRAP_INFERENCE_FAMILY",
             adapter_name="did_bootstrap_governed_adapter",
-            adapter_version="0.1.0",
+            adapter_version="0.2.0",
             governance_status="RESTRICTED_DIAGNOSTIC",
             supports_dry_run=True,
-            supports_execution=False,
-            blocked_reason_if_not_supported="governed execution not implemented",
-            notes="Dry-run envelope only; no DID fitting or bootstrap execution.",
+            supports_execution=True,
+            supports_bootstrap_inference=False,
+            supports_confidence_interval=False,
+            supports_p_value=False,
+            blocked_reason_if_not_supported="governed point-estimate execution disabled by config",
+            notes="Governed DID point-estimate executor; bootstrap inference not available.",
             **base,
         ),
         "SCM_PLACEBO": GovernedExecutorAdapterSpec(
@@ -252,11 +258,20 @@ def get_governed_executor_registry() -> GovernedExecutorRegistry:
     )
 
 
+def _resolve_adapter_config(config: dict[str, Any] | None) -> dict[str, Any]:
+    return dict(config or {})
+
+
+def _did_point_estimate_enabled(config: dict[str, Any] | None) -> bool:
+    cfg = _resolve_adapter_config(config)
+    return bool(cfg.get("allow_governed_did_point_estimate_execution"))
+
+
 def lookup_governed_executor(
     instrument_id: str,
     config: dict[str, Any] | None = None,
 ) -> GovernedExecutorLookupResult:
-    _ = config
+    cfg = _resolve_adapter_config(config)
     iid = str(instrument_id or "").strip()
     registry = get_governed_executor_registry()
     spec = registry.specs.get(iid)
@@ -283,7 +298,12 @@ def lookup_governed_executor(
             blocking_reason=spec.blocked_reason_if_not_supported or "blocked by governance",
             notes=spec.notes,
         )
-    if spec.supports_execution:
+
+    supports_execution = spec.supports_execution
+    if spec.instrument_id == "DID_BOOTSTRAP" and not _did_point_estimate_enabled(cfg):
+        supports_execution = False
+
+    if supports_execution:
         status = EXECUTOR_AVAILABLE_FOR_GOVERNED_EXECUTION
     elif spec.supports_dry_run:
         status = EXECUTOR_AVAILABLE_FOR_DRY_RUN
@@ -292,13 +312,13 @@ def lookup_governed_executor(
     return GovernedExecutorLookupResult(
         instrument_id=spec.instrument_id,
         availability_status=status,
-        executor_available=spec.supports_execution or spec.supports_dry_run,
+        executor_available=supports_execution or spec.supports_dry_run,
         supports_dry_run=spec.supports_dry_run,
-        supports_execution=spec.supports_execution,
+        supports_execution=supports_execution,
         adapter_name=spec.adapter_name,
         adapter_version=spec.adapter_version,
         governance_status=spec.governance_status,
-        blocking_reason=spec.blocked_reason_if_not_supported if not spec.supports_execution else None,
+        blocking_reason=spec.blocked_reason_if_not_supported if not supports_execution else None,
         notes=spec.notes,
     )
 
@@ -308,9 +328,8 @@ def evaluate_governed_executor_availability(
     execution_context: dict[str, Any],
     config: dict[str, Any] | None = None,
 ) -> GovernedExecutorLookupResult:
-    _ = config
     instrument_id = str(instrument.get("instrument_id") or "instrument_unspecified")
-    lookup = lookup_governed_executor(instrument_id)
+    lookup = lookup_governed_executor(instrument_id, config=config)
     if lookup.availability_status in (EXECUTOR_NOT_EVALUATED, EXECUTOR_BLOCKED_BY_GOVERNANCE):
         return lookup
 
@@ -440,14 +459,20 @@ def build_governed_executor_result(
     execution_context: dict[str, Any],
     config: dict[str, Any] | None = None,
 ) -> tuple[GovernedExecutorLookupResult, GovernedExecutorRequest, GovernedExecutorResult]:
+    registry = get_governed_executor_registry()
     lookup = evaluate_governed_executor_availability(instrument, execution_context, config=config)
     request = build_governed_executor_request(instrument, execution_context, config=config)
+    dry_run = lookup.availability_status != EXECUTOR_AVAILABLE_FOR_GOVERNED_EXECUTION
     trace = GovernedExecutorTrace(
         instrument_id=lookup.instrument_id,
         adapter_name=lookup.adapter_name,
         adapter_version=lookup.adapter_version,
         availability_status=lookup.availability_status,
-        deterministic_policy="governed_registry_deterministic_no_execution",
+        deterministic_policy=(
+            "governed_registry_deterministic_point_estimate_only"
+            if lookup.availability_status == EXECUTOR_AVAILABLE_FOR_GOVERNED_EXECUTION
+            else "governed_registry_deterministic_no_execution"
+        ),
     )
     failure_packet = None
     if lookup.availability_status not in (
@@ -466,7 +491,7 @@ def build_governed_executor_result(
     result = GovernedExecutorResult(
         instrument_id=lookup.instrument_id,
         availability_status=lookup.availability_status,
-        execution_status="INSTRUMENT_EXECUTION_NOT_RUN",
+        execution_status="INSTRUMENT_EXECUTION_NOT_RUN" if dry_run else "INSTRUMENT_EXECUTION_READY",
         completed=False,
         effect_estimate_report_status="NOT_COMPUTED",
         uncertainty_report_status="NOT_COMPUTED",
@@ -476,6 +501,21 @@ def build_governed_executor_result(
         payload={
             "supports_dry_run": lookup.supports_dry_run,
             "supports_execution": lookup.supports_execution,
+            "supports_bootstrap_inference": (
+                registry.specs[lookup.instrument_id].supports_bootstrap_inference
+                if lookup.instrument_id in registry.specs
+                else False
+            ),
+            "supports_confidence_interval": (
+                registry.specs[lookup.instrument_id].supports_confidence_interval
+                if lookup.instrument_id in registry.specs
+                else False
+            ),
+            "supports_p_value": (
+                registry.specs[lookup.instrument_id].supports_p_value
+                if lookup.instrument_id in registry.specs
+                else False
+            ),
             "adapter_name": lookup.adapter_name,
             "adapter_version": lookup.adapter_version,
         },

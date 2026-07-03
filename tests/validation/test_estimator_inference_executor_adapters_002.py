@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from panel_exp.validation.estimator_inference_executor_adapters_002 import (
     EXECUTOR_AVAILABLE_FOR_DRY_RUN,
+    EXECUTOR_AVAILABLE_FOR_GOVERNED_EXECUTION,
     EXECUTOR_NOT_EVALUATED,
     KNOWN_INSTRUMENT_IDS,
     build_governed_executor_result,
@@ -56,15 +57,39 @@ def test_lookup_unknown_instrument_not_evaluated() -> None:
     assert lookup.executor_available is False
 
 
-def test_default_registry_not_marked_executable() -> None:
+def test_default_registry_not_marked_executable_without_config() -> None:
     registry = get_governed_executor_registry()
-    assert all(not spec.supports_execution for spec in registry.specs.values())
+    for instrument_id, spec in registry.specs.items():
+        lookup = lookup_governed_executor(instrument_id)
+        if instrument_id == "DID_BOOTSTRAP":
+            assert spec.supports_execution is True
+            assert lookup.supports_execution is False
+        else:
+            assert not spec.supports_execution
+            assert lookup.supports_execution is False
 
 
 def test_did_bootstrap_adapter_not_executable_by_default() -> None:
     lookup = evaluate_governed_executor_availability(_instrument("DID_BOOTSTRAP"), _context())
-    assert lookup.availability_status in (EXECUTOR_AVAILABLE_FOR_DRY_RUN, "EXECUTOR_NOT_IMPLEMENTED")
+    assert lookup.availability_status == EXECUTOR_AVAILABLE_FOR_DRY_RUN
     assert lookup.supports_execution is False
+
+
+def test_did_bootstrap_adapter_executable_when_config_enabled() -> None:
+    lookup = evaluate_governed_executor_availability(
+        _instrument("DID_BOOTSTRAP"),
+        _context(),
+        config={"allow_governed_did_point_estimate_execution": True},
+    )
+    assert lookup.availability_status == EXECUTOR_AVAILABLE_FOR_GOVERNED_EXECUTION
+    assert lookup.supports_execution is True
+
+
+def test_did_bootstrap_does_not_expose_bootstrap_inference() -> None:
+    spec = get_governed_executor_registry().specs["DID_BOOTSTRAP"]
+    assert spec.supports_bootstrap_inference is False
+    assert spec.supports_confidence_interval is False
+    assert spec.supports_p_value is False
 
 
 def test_scm_placebo_diagnostic_not_primary_execution() -> None:

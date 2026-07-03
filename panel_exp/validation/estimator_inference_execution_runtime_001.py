@@ -11,6 +11,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from panel_exp.validation.estimator_inference_did_executor_003 import (
+    EFFECT_ESTIMATE_COMPUTED_POINT_ONLY,
+    execute_did_point_estimate,
+)
 from panel_exp.validation.estimator_inference_executor_adapters_002 import (
     EXECUTOR_AVAILABLE_FOR_DRY_RUN,
     EXECUTOR_AVAILABLE_FOR_GOVERNED_EXECUTION,
@@ -149,6 +153,7 @@ class EstimatorInferenceExecutionRuntimeConfig:
     allow_execution_without_governed_executor: bool = False
     enable_governed_executor_registry: bool = True
     allow_governed_executor_execution: bool = False
+    allow_governed_did_point_estimate_execution: bool = False
     allow_dry_run_adapters: bool = True
     block_when_executor_not_implemented: bool = False
 
@@ -729,14 +734,23 @@ def _evaluate_single_request(
         executor_result: dict[str, Any] | None = None
         executor_trace: dict[str, Any] | None = None
         executor_failure_packet: dict[str, Any] | None = None
+        effect_report: dict[str, Any] = _placeholder_effect_report(instrument, estimand_scope)
+        uncertainty_report: dict[str, Any] = _placeholder_uncertainty_report(instrument)
+        diagnostic_report: dict[str, Any] = _placeholder_diag_report(instrument)
+        did_point_estimate_computed = False
         if cfg.enable_governed_executor_registry:
+            adapter_config = {
+                "allow_governed_did_point_estimate_execution": cfg.allow_governed_did_point_estimate_execution,
+            }
             context = {
                 "assignment_artifact_id": assignment_artifact_id,
                 "execution_data_contract": execution_data_contract,
                 "estimand_scope": estimand_scope,
                 "uncertainty_scope": uncertainty_scope,
             }
-            lookup, request, adapter_result = build_governed_executor_result(instrument, context)
+            lookup, request, adapter_result = build_governed_executor_result(
+                instrument, context, config=adapter_config
+            )
             executor_lookup_status = lookup.availability_status
             executor_adapter_name = lookup.adapter_name
             executor_adapter_version = lookup.adapter_version
@@ -793,15 +807,55 @@ def _evaluate_single_request(
                     instrument_execution_status = INSTRUMENT_EXECUTION_NOT_RUN
                 local_warnings.append("governed executor dry-run envelope generated; execution not run")
             elif (
+                instrument_id == "DID_BOOTSTRAP"
+                and executor_lookup_status == EXECUTOR_AVAILABLE_FOR_GOVERNED_EXECUTION
+                and cfg.allow_governed_did_point_estimate_execution
+                and readiness_status in (EXECUTION_READY_FOR_RUNTIME, EXECUTION_READY_WITH_WARNINGS)
+            ):
+                panel_data = (
+                    req.get("panel_data")
+                    or execution_data_contract.get("panel_data")
+                    or instrument.get("panel_data")
+                )
+                did_input = {
+                    "instrument_id": instrument_id,
+                    "estimator_family": instrument.get("estimator_family"),
+                    "inference_family": instrument.get("inference_family"),
+                    "panel_data": panel_data,
+                    "unit_id_field": instrument.get("unit_id_field", "geo_id"),
+                    "time_field": instrument.get("time_field", "week"),
+                    "outcome_field": instrument.get("outcome_field", "sales"),
+                    "treatment_field": instrument.get("treatment_field", "treated"),
+                    "post_period_field": instrument.get("post_period_field"),
+                    "pre_period": instrument.get("pre_period"),
+                    "test_period": instrument.get("test_period"),
+                    "assignment_artifact_id": assignment_artifact_id or instrument.get("assignment_artifact_id"),
+                    "estimand": estimand_scope.get("estimand") or estimand_scope.get("estimand_type"),
+                    "metric_name": instrument.get("metric_name"),
+                }
+                did_result = execute_did_point_estimate(
+                    did_input,
+                    config={"allow_governed_did_point_estimate_execution": True},
+                )
+                if did_result.did_point_estimate_computed:
+                    instrument_execution_status = INSTRUMENT_EXECUTION_COMPLETED
+                    did_point_estimate_computed = True
+                    effect_report = did_result.effect_estimate_report or effect_report
+                    uncertainty_report = did_result.uncertainty_report
+                    diagnostic_report = did_result.inference_diagnostic_report
+                    local_warnings.append("governed DID point estimate computed; inference not run")
+                else:
+                    instrument_execution_status = INSTRUMENT_EXECUTION_BLOCKED
+                    local_blocking.extend(did_result.blocking_reasons)
+                    if did_result.failure_packet:
+                        failure_packets.append(did_result.failure_packet)
+            elif (
                 executor_lookup_status == EXECUTOR_AVAILABLE_FOR_GOVERNED_EXECUTION
                 and cfg.allow_governed_executor_execution
             ):
                 instrument_execution_status = INSTRUMENT_EXECUTION_NOT_RUN
                 local_warnings.append("governed executor execution disabled in runtime_002 conservative mode")
 
-        effect_report = _placeholder_effect_report(instrument, estimand_scope)
-        uncertainty_report = _placeholder_uncertainty_report(instrument)
-        diagnostic_report = _placeholder_diag_report(instrument)
         trace = {
             "execution_id": execution_id,
             "instrument_id": instrument_id,
@@ -816,6 +870,7 @@ def _evaluate_single_request(
             "output_hash": _hash_payload({"status": instrument_execution_status, "role": role}),
             "runtime_environment": "deterministic_local_runtime",
             "execution_timestamp_policy": "deterministic_no_wall_clock_required",
+            "did_point_estimate_computed": did_point_estimate_computed,
         }
 
         claim_boundary = {
@@ -837,6 +892,10 @@ def _evaluate_single_request(
             "executor_dry_run_envelopes_generated": bool(
                 cfg.enable_governed_executor_registry and executor_supports_dry_run
             ),
+            "first_governed_executor_implemented": bool(cfg.allow_governed_did_point_estimate_execution),
+            "did_point_estimate_executor_implemented": bool(cfg.allow_governed_did_point_estimate_execution),
+            "did_point_estimate_computed": did_point_estimate_computed,
+            "effect_estimate_computed": did_point_estimate_computed,
             **_AUTH_FALSE_FLAGS,
         }
 
@@ -905,6 +964,13 @@ def _evaluate_single_request(
         if execution_status == EXECUTION_READY_FOR_RUNTIME and any(r.warnings for r in results):
             execution_status = EXECUTION_READY_WITH_WARNINGS
 
+    did_point_estimate_computed = any(
+        r.instrument_id == "DID_BOOTSTRAP"
+        and r.instrument_execution_status == INSTRUMENT_EXECUTION_COMPLETED
+        and (r.effect_estimate_report or {}).get("estimation_status") == EFFECT_ESTIMATE_COMPUTED_POINT_ONLY
+        for r in results
+    )
+
     claim_boundary_report = {
         "estimator_inference_execution_runtime_implemented": True,
         "execution_readiness_evaluated": True,
@@ -921,6 +987,10 @@ def _evaluate_single_request(
             cfg.enable_governed_executor_registry
             and any(x.get("supports_dry_run") for x in lookup_results)
         ),
+        "first_governed_executor_implemented": bool(cfg.allow_governed_did_point_estimate_execution),
+        "did_point_estimate_executor_implemented": bool(cfg.allow_governed_did_point_estimate_execution),
+        "did_point_estimate_computed": did_point_estimate_computed,
+        "effect_estimate_computed": did_point_estimate_computed,
         **_AUTH_FALSE_FLAGS,
     }
 
@@ -963,7 +1033,7 @@ def _evaluate_single_request(
             "execution_provenance_manifest",
             "execution_failure_packets" if failure_packets else "execution_failure_packets_empty",
         ],
-        "effect_estimate_reports_computed": False,
+        "effect_estimate_reports_computed": did_point_estimate_computed,
         "uncertainty_reports_computed": False,
         "inference_diagnostic_reports_computed": False,
     }

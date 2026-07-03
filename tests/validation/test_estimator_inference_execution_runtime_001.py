@@ -322,6 +322,33 @@ def test_effect_uncertainty_diagnostic_reports_not_computed() -> None:
     report = execute_estimator_inference(_base_request())
     row = next(r for r in report.instrument_execution_results if r.instrument_id == "DID_BOOTSTRAP")
     assert row.effect_estimate_report["effect_estimate_report_status"] == "NOT_COMPUTED"
+
+
+def _did_panel() -> list[dict]:
+    return [
+        {"geo_id": "g1", "week": "2025w01", "sales": 10.0, "treated": 1},
+        {"geo_id": "g1", "week": "2025w13", "sales": 20.0, "treated": 1},
+        {"geo_id": "g2", "week": "2025w01", "sales": 8.0, "treated": 0},
+        {"geo_id": "g2", "week": "2025w13", "sales": 9.0, "treated": 0},
+    ]
+
+
+def test_did_point_estimate_integrated_when_config_enabled() -> None:
+    cfg = EstimatorInferenceExecutionRuntimeConfig(allow_governed_did_point_estimate_execution=True)
+    report = execute_estimator_inference(_base_request(panel_data=_did_panel()), config=cfg)
+    row = next(r for r in report.instrument_execution_results if r.instrument_id == "DID_BOOTSTRAP")
+    assert row.instrument_execution_status == "INSTRUMENT_EXECUTION_COMPLETED"
+    assert row.effect_estimate_report["point_estimate"] == 9.0
+    assert row.uncertainty_report["uncertainty_report_status"] == "NOT_COMPUTED"
+    assert report.claim_boundary_report["did_point_estimate_computed"] is True
+    assert report.claim_boundary_report["p_value_computed"] is False
+
+
+def test_did_dry_run_preserved_when_config_disabled() -> None:
+    report = execute_estimator_inference(_base_request(panel_data=_did_panel()))
+    row = next(r for r in report.instrument_execution_results if r.instrument_id == "DID_BOOTSTRAP")
+    assert row.instrument_execution_status == INSTRUMENT_EXECUTION_NOT_RUN
+    assert row.executor_lookup_status == EXECUTOR_AVAILABLE_FOR_DRY_RUN
     assert row.uncertainty_report["uncertainty_report_status"] == "NOT_COMPUTED"
     assert row.inference_diagnostic_report["inference_diagnostic_report_status"] == "NOT_COMPUTED"
 
