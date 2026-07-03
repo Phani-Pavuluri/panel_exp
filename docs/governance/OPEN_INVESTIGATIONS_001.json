@@ -2217,6 +2217,41 @@
       "resolution_artifact": "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_002_GOVERNED_EXECUTOR_ADAPTERS"
     },
     {
+      "investigation_id": "INV-READOUT-DIAGNOSTICS-SENSITIVITY-CONTRACT-001",
+      "title": "Readout diagnostics and sensitivity contract definition",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "ESTIMATOR-INFERENCE-EXECUTOR-ADAPTERS-002",
+      "affected_combination": "readout_diagnostics_sensitivity_contract",
+      "problem_class": ["diagnostic_requirements", "sensitivity_requirements", "evidence_sufficiency", "claim_boundary"],
+      "evidence": {
+        "depends_on": [
+          "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_002_GOVERNED_EXECUTOR_ADAPTERS",
+          "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_001",
+          "ESTIMATOR_INFERENCE_EXECUTION_CONTRACT_001",
+          "READOUT_PLAN_RUNTIME_001",
+          "METHOD_SUITABILITY_RUNTIME_001",
+          "DESIGN_ASSIGNMENT_RUNTIME_001"
+        ],
+        "scope": "contract_only_no_diagnostic_or_sensitivity_execution",
+        "diagnostics_sensitivity_contract_defined": true,
+        "diagnostic_requirement_contract_defined": true,
+        "sensitivity_requirement_contract_defined": true,
+        "evidence_sufficiency_contract_defined": true,
+        "failure_packet_contract_defined": true,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_001"
+      },
+      "current_decision": "READOUT_DIAGNOSTICS_SENSITIVITY_CONTRACT_DEFINED_NO_DIAGNOSTIC_OR_SENSITIVITY_EXECUTION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Diagnostics/sensitivity evidence contract before runtime implementation",
+      "blocking_policy": "Contract only; no diagnostic execution, sensitivity execution, or claim authorization",
+      "terminal_decisions": ["RESTRICT", "CONTRACT_ONLY", "PROMOTE"],
+      "resolution_artifact": "READOUT_DIAGNOSTICS_AND_SENSITIVITY_CONTRACT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -4461,6 +4496,27 @@
         "runtime_integration",
         "runtime_only",
         "no_estimator_or_inference_execution"
+      ]
+    },
+    {
+      "lane_id": "READOUT-DIAGNOSTICS-SENSITIVITY-CONTRACT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-READOUT-DIAGNOSTICS-SENSITIVITY-CONTRACT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_001",
+      "resolution_artifact": "READOUT_DIAGNOSTICS_AND_SENSITIVITY_CONTRACT_001",
+      "artifact_tags": [
+        "readout_diagnostics_sensitivity_contract",
+        "diagnostic_requirements",
+        "sensitivity_requirements",
+        "evidence_sufficiency",
+        "failure_packets",
+        "contract_only",
+        "no_diagnostic_or_sensitivity_execution"
       ]
     }
   ]

@@ -2358,7 +2358,21 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Implements governed executor adapter layer: deterministic registry, instrument lookup, availability evaluation, dry-run request/result envelopes, and runtime-shell integration with adapter-aware fields (`failed_scenarios: []`). Dry-run/not-run only; no estimator execution, inference execution, effect/lift/ROI computation, or claim authorization.
 
-**Next:** `READOUT_DIAGNOSTICS_AND_SENSITIVITY_CONTRACT_001` · alternative: `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_003_FIRST_GOVERNED_EXECUTOR`.
+**Next:** `READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_001` · alternative: `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_003_FIRST_GOVERNED_EXECUTOR`.
+
+---
+
+## READOUT-DIAGNOSTICS-SENSITIVITY-CONTRACT-001 (2026-07-02)
+
+**Lane ID:** `READOUT-DIAGNOSTICS-SENSITIVITY-CONTRACT-001`
+
+**Artifact:** [`docs/track_d/READOUT_DIAGNOSTICS_AND_SENSITIVITY_CONTRACT_001_REPORT.md`](track_d/READOUT_DIAGNOSTICS_AND_SENSITIVITY_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/READOUT_DIAGNOSTICS_AND_SENSITIVITY_CONTRACT_001_summary.json`](track_d/archives/READOUT_DIAGNOSTICS_AND_SENSITIVITY_CONTRACT_001_summary.json) · [`panel_exp/validation/readout_diagnostics_sensitivity_contract_001.py`](../panel_exp/validation/readout_diagnostics_sensitivity_contract_001.py)
+
+**Status:** **`readout_diagnostics_sensitivity_contract_defined_no_diagnostic_or_sensitivity_execution`**
+
+**Verdict:** Defines governed diagnostics/sensitivity evidence contract: requirement schemas, plan/result schemas, evidence sufficiency statuses, failure packet semantics, and claim-boundary treatment (`failed_scenarios: []`). Contract only; no diagnostic execution, sensitivity execution, or claim authorization.
+
+**Next:** `READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_001` · alternative: `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_003_FIRST_GOVERNED_EXECUTOR`.
 
 ---
 
