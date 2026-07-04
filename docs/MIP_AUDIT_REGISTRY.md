@@ -2512,7 +2512,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Governed SRM/balance readout diagnostic runtime checks sample-ratio mismatch, missing/extra units, treatment/control presence, covariate SMD, and pre-period outcome balance. Integrated with diagnostics/sensitivity runtime and readout plan prerequisites for randomized assignment. No inference, effect estimation, or claim authorization added.
 
-**Next:** `TRUSTED_READOUT_REPORT_CONTRACT_001` · alternative: `TRUSTED_READOUT_REPORT_RUNTIME_001`.
+**Next:** ✅ `TRUSTED_READOUT_REPORT_CONTRACT_001` · alternative: `TRUSTED_READOUT_REPORT_RUNTIME_001`.
+
+---
+
+## TRUSTED-READOUT-REPORT-CONTRACT-001 (2026-07-04)
+
+**Artifact:** [`docs/track_d/TRUSTED_READOUT_REPORT_CONTRACT_001_REPORT.md`](track_d/TRUSTED_READOUT_REPORT_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/TRUSTED_READOUT_REPORT_CONTRACT_001_summary.json`](track_d/archives/TRUSTED_READOUT_REPORT_CONTRACT_001_summary.json) · [`panel_exp/validation/trusted_readout_report_contract_001.py`](../panel_exp/validation/trusted_readout_report_contract_001.py)
+
+**Status:** **`trusted_readout_report_contract_defined_no_runtime_or_report_generation`**
+
+**Verdict:** Defines trusted readout report contract: report status taxonomy, 18-section taxonomy, evidence bundle requirements, claim binding policy, redaction/caveat policy, packet/failure semantics, and future runtime acceptance criteria. Contract only; no trusted report runtime, no report generation, no authorized claim text, no production authorization (`failed_scenarios: []`).
+
+**Next:** `TRUSTED_READOUT_REPORT_RUNTIME_001` · alternative: `METHOD_PROMOTION_REVIEW_CONTRACT_001`.
 
 ---
 
@@ -2524,7 +2536,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Governed claim authorization runtime classifies requested readout claims against typed evidence from production catalog, assignment-panel integrity, SRM/balance, diagnostics/sensitivity, statistical promotion, and execution artifacts. Restricted descriptive claims authorized with caveats; causal/incremental/ROI/significance/CI/production/trusted claims blocked. Integrated with execution runtime and readout plan prerequisites. No trusted report runtime, no production authorization, no claim text generation.
 
-**Next:** `TRUSTED_READOUT_REPORT_CONTRACT_001` · alternative: `TRUSTED_READOUT_REPORT_RUNTIME_001`.
+**Next:** ✅ `TRUSTED_READOUT_REPORT_CONTRACT_001` · alternative: `TRUSTED_READOUT_REPORT_RUNTIME_001`.
 
 ---
 
@@ -2538,9 +2550,9 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Expanded adversarial audit found P0 validity/cohesion gaps before claim authorization runtime. `CLAIM_AUTHORIZATION_CONTRACT_001` remains complete and safe (contract-only). Roadmap inserts P0 hardening lane before `CLAIM_AUTHORIZATION_RUNTIME_001`. No runtime authorization added by this audit update.
 
-**Immediate next:** `TRUSTED_READOUT_REPORT_CONTRACT_001`
+**Immediate next:** `TRUSTED_READOUT_REPORT_RUNTIME_001`
 
-**P0 sequence:** ✅ blocklist enforcement → ✅ DID estimand unification → ✅ assignment-panel integrity → ✅ statistical threshold enforcement → ✅ governed randomization → ✅ SRM/balance diagnostic → ✅ claim authorization runtime → trusted readout contract/runtime.
+**P0 sequence:** ✅ blocklist enforcement → ✅ DID estimand unification → ✅ assignment-panel integrity → ✅ statistical threshold enforcement → ✅ governed randomization → ✅ SRM/balance diagnostic → ✅ claim authorization runtime → ✅ trusted readout contract → trusted readout runtime.
 
 **Deferred:** AugSynth/ASCM remediation · bootstrap inference runtime · SDID/TROP/MTGP/BayesianTBR production · TrustReport product ops · LLM/MMM decisioning.
 
