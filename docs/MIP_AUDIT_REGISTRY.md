@@ -2488,7 +2488,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Governed numeric statistical promotion threshold policy enforced over supplied characterization evidence. Integrated with production catalog blocklist, method suitability matrix overlay, and readout plan primary-candidate filtering. Known-negative audit/blocklist evidence encoded as policy blockers. No methods unblocked; no claim or production authorization added.
 
-**Next:** `GOVERNED_RANDOMIZATION_RUNTIME_001` · alternative: `SRM_BALANCE_READOUT_DIAGNOSTIC_001`.
+**Next:** ✅ `GOVERNED_RANDOMIZATION_RUNTIME_001` · alternative: `SRM_BALANCE_READOUT_DIAGNOSTIC_001`.
+
+---
+
+## GOVERNED-RANDOMIZATION-RUNTIME-001 (2026-07-04)
+
+**Artifact:** [`docs/track_d/GOVERNED_RANDOMIZATION_RUNTIME_001_REPORT.md`](track_d/GOVERNED_RANDOMIZATION_RUNTIME_001_REPORT.md) · [`docs/track_d/archives/GOVERNED_RANDOMIZATION_RUNTIME_001_summary.json`](track_d/archives/GOVERNED_RANDOMIZATION_RUNTIME_001_summary.json) · [`panel_exp/validation/governed_randomization_runtime_001.py`](../panel_exp/validation/governed_randomization_runtime_001.py)
+
+**Status:** **`governed_randomization_runtime_implemented_no_inference_or_claim_authorization`**
+
+**Verdict:** Deterministic governed randomization runtime produces auditable assignment artifacts with seed policy, reproducibility manifest, and assignment-panel integrity compatibility. Integrated with design assignment runtime for `RANDOMIZED_ASSIGNMENT` path. No rerandomization optimization, balance optimization, inference, or claim authorization added.
+
+**Next:** `SRM_BALANCE_READOUT_DIAGNOSTIC_001` · alternative: `CLAIM_AUTHORIZATION_RUNTIME_001`.
 
 ---
 
@@ -2502,9 +2514,9 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Expanded adversarial audit found P0 validity/cohesion gaps before claim authorization runtime. `CLAIM_AUTHORIZATION_CONTRACT_001` remains complete and safe (contract-only). Roadmap inserts P0 hardening lane before `CLAIM_AUTHORIZATION_RUNTIME_001`. No runtime authorization added by this audit update.
 
-**Immediate next:** `GOVERNED_RANDOMIZATION_RUNTIME_001`
+**Immediate next:** `SRM_BALANCE_READOUT_DIAGNOSTIC_001`
 
-**P0 sequence:** ✅ blocklist enforcement → ✅ DID estimand unification → ✅ assignment-panel integrity → ✅ statistical threshold enforcement → governed randomization → SRM/balance diagnostic → claim authorization runtime → trusted readout contract/runtime.
+**P0 sequence:** ✅ blocklist enforcement → ✅ DID estimand unification → ✅ assignment-panel integrity → ✅ statistical threshold enforcement → ✅ governed randomization → SRM/balance diagnostic → claim authorization runtime → trusted readout contract/runtime.
 
 **Deferred:** AugSynth/ASCM remediation · bootstrap inference runtime · SDID/TROP/MTGP/BayesianTBR production · TrustReport product ops · LLM/MMM decisioning.
 

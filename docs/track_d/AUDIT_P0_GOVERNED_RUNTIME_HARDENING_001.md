@@ -65,7 +65,7 @@ CLAIM_AUTHORIZATION_CONTRACT_001 (complete)
 | `DID_INSTRUMENT_ESTIMAND_UNIFICATION_001` | insert P0 | `DID_BOOTSTRAP` naming vs 2×2-vs-TWFE split | DID executor, library DID | One instrument = one estimand/inference contract |
 | `ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001` | insert P0 | Panel treatment labels must match assignment artifact | Assignment runtime, execution runtime | Mismatch blocks execution |
 | `STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001` | complete | Numeric FPR/coverage/bias gates enforced in runtime/tests |
-| `GOVERNED_RANDOMIZATION_RUNTIME_001` | insert P0/P1 | Safe path lacks causal randomization | `design/assign.py`, assignment runtime | Seeded immutable assignment artifact |
+| `GOVERNED_RANDOMIZATION_RUNTIME_001` | complete | Seeded immutable assignment artifact via governed runtime |
 | `SRM_BALANCE_READOUT_DIAGNOSTIC_001` | insert P1 | No SRM/balance gate in readout evidence | Diagnostics runtime | SRM/balance evidence packet emitted |
 | `TRUSTED_READOUT_REPORT_CONTRACT_001` | keep deferred | After claim runtime | Claim runtime | Only authorized claims displayed |
 | `TRUSTED_READOUT_REPORT_RUNTIME_001` | keep deferred | After trusted report contract | Report contract | No consumer-facing unauthorized readout |

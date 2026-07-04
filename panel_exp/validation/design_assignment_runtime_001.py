@@ -2,7 +2,12 @@
 
 from __future__ import annotations
 
-import argparse
+from panel_exp.validation.governed_randomization_runtime_001 import (
+    GOVERNED_RANDOMIZATION_BLOCKED,
+    GOVERNED_RANDOMIZATION_COMPLETED,
+    GOVERNED_RANDOMIZATION_COMPLETED_WITH_WARNINGS,
+    generate_governed_randomization,
+)
 import hashlib
 import json
 import subprocess
@@ -104,6 +109,7 @@ class DesignAssignmentRuntimeConfig:
     block_on_method_suitability_all_blocked: bool = True
     block_scenario_policy_blocked: bool = True
     block_on_missing_constraints: bool = True
+    enable_governed_randomization: bool = True
 
 
 @dataclass(frozen=True)
@@ -560,7 +566,10 @@ def _evaluate_readiness(
     spec = _algorithm_spec(req)
     cat = _algorithm_category(spec)
     if cat in _UNSUPPORTED_ALGORITHMS:
-        algo_gate = "BLOCKED"
+        if cat == "RANDOMIZED_ASSIGNMENT" and cfg.enable_governed_randomization:
+            algo_gate = "PASS"
+        else:
+            algo_gate = "BLOCKED"
     elif cat in _SUPPORTED_DETERMINISTIC_ALGORITHMS or cat in (
         "COMMON_CONTROL_ASSIGNMENT", "SPLIT_CONTROL_ASSIGNMENT",
     ):
@@ -690,6 +699,85 @@ def _resolve_pool_for_cell(
 def _unit_sort_key(unit: dict[str, Any], sort_field: str) -> str:
     val = unit.get(sort_field) or unit.get("unit_id")
     return str(val) if val is not None else ""
+
+
+def _governed_randomization_input(req: dict[str, Any]) -> dict[str, Any]:
+    universe = _unit_universe(req)
+    eligible = req.get("eligible_units")
+    if not eligible:
+        eligible = [{"unit_id": str(u.get("unit_id")), **u} for u in universe if u.get("unit_id")]
+    repro = _reproducibility_config(req)
+    spec = _algorithm_spec(req)
+    return {
+        "request_id": req.get("request_id") or req.get("design_id"),
+        "design_id": req.get("design_id"),
+        "randomization_type": spec.get("randomization_type") or "TWO_CELL_COMPLETE_RANDOMIZATION",
+        "eligible_units": eligible,
+        "excluded_units": req.get("excluded_units") or [],
+        "cells": req.get("cells") or _cell_requirements(req),
+        "allocation_ratio": req.get("allocation_ratio") or spec.get("allocation_ratio"),
+        "seed": req.get("seed") or repro.get("seed"),
+        "seed_policy": req.get("seed_policy") or repro.get("seed_policy"),
+        "strata_field": req.get("strata_field") or spec.get("strata_field"),
+        "block_field": req.get("block_field") or spec.get("block_field"),
+        "common_control_cell_id": req.get("common_control_cell_id") or spec.get("common_control_cell_id"),
+        "production_context": req.get("production_context"),
+        "assignment_feasibility_status": _status_field(req, _upstream(req), "assignment_feasibility_status"),
+        "method_suitability_status": _status_field(req, _upstream(req), "method_suitability_status"),
+    }
+
+
+def _convert_governed_allocations(
+    rows: tuple[dict[str, Any], ...],
+    algorithm_category: str,
+) -> tuple[AssignmentUnitAllocation, ...]:
+    converted: list[AssignmentUnitAllocation] = []
+    for row in rows:
+        converted.append(AssignmentUnitAllocation(
+            unit_id=str(row.get("unit_id")),
+            geo_id=str(row.get("geo_id")) if row.get("geo_id") else None,
+            assigned_cell_id=str(row.get("assigned_cell_id") or row.get("cell_id")),
+            assigned_cell_role=str(row.get("assigned_cell_role") or row.get("cell_role")) if row.get("assigned_cell_role") or row.get("cell_role") else None,
+            assignment_reason="governed_randomization",
+            assignment_algorithm=algorithm_category,
+            eligible_at_assignment_time=True,
+            exclusion_flags=(),
+            constraint_flags=(),
+            prior_assignment_flags=(),
+            audit_trace=str(row.get("assignment_source") or "GOVERNED_RANDOMIZATION_RUNTIME_001"),
+        ))
+    return tuple(converted)
+
+
+def _cell_allocs_from_governed(
+    cells: list[dict[str, Any]],
+    unit_allocs: tuple[AssignmentUnitAllocation, ...],
+) -> tuple[AssignmentCellAllocation, ...]:
+    counts: dict[str, list[str]] = {}
+    roles: dict[str, str | None] = {}
+    for cell in cells:
+        cid = str(cell.get("cell_id"))
+        roles[cid] = str(cell.get("role") or cell.get("cell_role")) if cell.get("role") or cell.get("cell_role") else None
+        counts[cid] = []
+    for alloc in unit_allocs:
+        counts.setdefault(alloc.assigned_cell_id, []).append(alloc.unit_id)
+    result: list[AssignmentCellAllocation] = []
+    for cell in cells:
+        cid = str(cell.get("cell_id"))
+        required = int(cell.get("required_unit_count") or cell.get("target_size") or 0)
+        allocated = counts.get(cid, [])
+        result.append(AssignmentCellAllocation(
+            cell_id=cid,
+            cell_role=roles.get(cid),
+            required_unit_count=required,
+            allocated_unit_count=len(allocated),
+            allocated_unit_ids=tuple(allocated),
+            unmet_requirement_count=max(0, required - len(allocated)),
+            cell_status="SATISFIED" if len(allocated) >= required or required == 0 else "PARTIAL",
+            warnings=(),
+            blocking_reasons=(),
+        ))
+    return tuple(result)
 
 
 def _deterministic_allocate(
@@ -1039,6 +1127,135 @@ def _evaluate_single_request(
     repro_cfg = _reproducibility_config(req)
     spec = _algorithm_spec(req)
     algorithm_category = _algorithm_category(spec)
+
+    if algorithm_category == "RANDOMIZED_ASSIGNMENT" and cfg.enable_governed_randomization:
+        gov_report = generate_governed_randomization(_governed_randomization_input(req))
+        if gov_report.status in {
+            GOVERNED_RANDOMIZATION_COMPLETED,
+            GOVERNED_RANDOMIZATION_COMPLETED_WITH_WARNINGS,
+        } and gov_report.assignment_artifact_generated:
+            unit_allocs = _convert_governed_allocations(gov_report.unit_allocations, algorithm_category)
+            cell_allocs = _cell_allocs_from_governed(_cell_requirements(req) or list(req.get("cells") or []), unit_allocs)
+            constraint_report = AssignmentConstraintReport(
+                constraints_checked=("governed_randomization",),
+                constraints_passed=("governed_randomization",),
+                constraints_failed=(),
+                binding_constraints=(),
+                status="PASS",
+            )
+            constraint_trace = AssignmentConstraintTrace(
+                constraints_checked=("governed_randomization",),
+                constraints_passed=("governed_randomization",),
+                constraints_failed=(),
+                binding_constraints=(),
+                per_unit_constraint_trace=(),
+            )
+            repro_manifest = AssignmentReproducibilityManifest(
+                algorithm_version=str((gov_report.reproducibility_manifest or {}).get("algorithm_version", "1.0.0")),
+                algorithm_category=algorithm_category,
+                seed_policy=str(gov_report.seed_policy or "GOVERNED_RANDOMIZATION"),
+                seed=str(gov_report.seed or ""),
+                input_artifact_ids=tuple(str(x) for x in (repro_cfg.get("input_artifact_ids") or [])),
+                constraint_version=str(repro_cfg.get("constraint_version", "1.0.0")),
+                config_hash=str((gov_report.reproducibility_manifest or {}).get("config_hash", "")),
+                unit_universe_hash=str((gov_report.reproducibility_manifest or {}).get("eligible_pool_hash", "")),
+                eligible_pool_hash=str((gov_report.reproducibility_manifest or {}).get("eligible_pool_hash", "")),
+                cell_requirement_hash=_stable_hash(_cell_requirements(req)),
+                output_artifact_id=str(gov_report.assignment_artifact_id or ""),
+                output_hash=str(gov_report.assignment_hash or ""),
+                deterministic_sort_key=cfg.deterministic_sort_key,
+                generated_at_policy="DETERMINISTIC_NO_WALL_CLOCK",
+            )
+            candidate_status = AssignmentCandidateStatus.ASSIGNMENT_CANDIDATE_GENERATED
+            if gov_report.status == GOVERNED_RANDOMIZATION_COMPLETED_WITH_WARNINGS:
+                candidate_status = AssignmentCandidateStatus.ASSIGNMENT_CANDIDATE_GENERATED_WITH_WARNINGS
+            candidate = AssignmentCandidate(
+                candidate_id=str(gov_report.assignment_candidate_id or f"candidate_{design_id}"),
+                design_id=design_id,
+                algorithm_category=algorithm_category,
+                seed=str(gov_report.seed or ""),
+                cell_allocations=cell_allocs,
+                unit_allocations=unit_allocs,
+                constraint_report=constraint_report,
+                balance_diagnostics={"status": "not_computed"},
+                interference_risk_flags=(),
+                exclusion_trace=(),
+                candidate_status=candidate_status,
+                rejection_reasons=(),
+                warnings=gov_report.warnings,
+                artifact_registry_entry=None,
+            )
+            plan = AssignmentPlan(
+                artifact_id=f"plan_{design_id}",
+                design_id=design_id,
+                assignment_runtime_status=runtime_status,
+                assignment_algorithm_category=algorithm_category,
+                assignment_algorithm_spec=spec,
+                assignment_seed_policy=str(gov_report.seed_policy or ""),
+                unit_universe_summary={"total_units": len(_unit_universe(req)), "allocated_units": len(unit_allocs)},
+                cell_requirements=tuple(_cell_requirements(req)),
+                constraint_summary={"constraints": _constraints(req), "status": "PASS"},
+                exclusion_trace_summary={"excluded_count": gov_report.excluded_unit_count},
+                method_suitability_handoff_summary=ms_summary,
+                balance_requirement_summary={"status": "not_computed"},
+                interference_risk_summary={"status": "preserved_not_adjusted"},
+                reproducibility_manifest=repro_manifest,
+                candidate_assignment_count=1,
+                selected_candidate_id=candidate.candidate_id,
+                claim_boundary_report=AssignmentClaimBoundaryReport(),
+            )
+            return DesignAssignmentPacketReport(
+                design_id=design_id,
+                assignment_runtime_status=runtime_status,
+                assignment_plan=plan,
+                assignment_candidates=(candidate,),
+                unit_allocation_report=unit_allocs,
+                cell_allocation_report=cell_allocs,
+                constraint_report=constraint_report,
+                constraint_trace=constraint_trace,
+                exclusion_trace=(),
+                reproducibility_manifest=repro_manifest,
+                failure_packet=None,
+                readiness_report=readiness,
+                claim_boundary_report=AssignmentClaimBoundaryReport(),
+                issues=tuple(issues),
+                warnings=tuple(warnings),
+                blocking_reasons=(),
+            )
+        warnings.extend(gov_report.warnings)
+        blocking.extend(gov_report.blocking_reasons)
+        runtime_status = AssignmentRuntimeStatus.ASSIGNMENT_RUNTIME_BLOCKED_BY_CONSTRAINTS
+        if gov_report.status == GOVERNED_RANDOMIZATION_BLOCKED:
+            runtime_status = AssignmentRuntimeStatus.ASSIGNMENT_RUNTIME_REQUIRES_REDESIGN_RECHECK
+        fp = _failure_packet(
+            design_id,
+            runtime_status,
+            readiness,
+            blocking,
+            (),
+            (),
+            False,
+            (),
+            warnings,
+        )
+        return DesignAssignmentPacketReport(
+            design_id=design_id,
+            assignment_runtime_status=runtime_status,
+            assignment_plan=None,
+            assignment_candidates=(),
+            unit_allocation_report=(),
+            cell_allocation_report=(),
+            constraint_report=None,
+            constraint_trace=None,
+            exclusion_trace=(),
+            reproducibility_manifest=None,
+            failure_packet=fp,
+            readiness_report=readiness,
+            claim_boundary_report=AssignmentClaimBoundaryReport(),
+            issues=tuple(issues),
+            warnings=tuple(warnings),
+            blocking_reasons=tuple(blocking),
+        )
 
     if _runtime_is_blocked(runtime_status):
         repro_ok, repro_missing = _validate_reproducibility(repro_cfg)
