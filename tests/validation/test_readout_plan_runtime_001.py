@@ -33,9 +33,9 @@ def _base_request(**extra: object) -> dict:
         "reproducibility_manifest": {"seed_policy": "NOT_APPLICABLE_DETERMINISTIC"},
         "instrument_suitability_matrix": [
             {
-                "instrument_id": "DID_BOOTSTRAP",
+                "instrument_id": "DID_2X2_POINT_ESTIMATE",
                 "estimator_family": "DID_FAMILY",
-                "inference_family": "BOOTSTRAP_INFERENCE_FAMILY",
+                "inference_family": "POINT_ESTIMATE_ONLY",
                 "governance_status": "GOVERNED",
                 "planning_category": "PLANNING_ELIGIBLE_PRIMARY_CANDIDATE",
                 "suitability_status": "METHOD_FAMILY_ELIGIBLE_FOR_REVIEW",
@@ -84,7 +84,7 @@ def _base_request(**extra: object) -> dict:
             "time_window": "post_period",
             "metric_kpi": "sales",
             "assignment_artifact": "assignment_plan_001",
-            "planned_instruments": ["DID_BOOTSTRAP", "SCM_PLACEBO"],
+            "planned_instruments": ["DID_2X2_POINT_ESTIMATE", "SCM_PLACEBO"],
             "uncertainty_semantics": "causal_interval_candidate_requires_validation",
             "diagnostics_prerequisites": ["placebo_check"],
             "sensitivity_prerequisites": ["donor_pool_sensitivity"],
@@ -100,7 +100,7 @@ def _base_request(**extra: object) -> dict:
 def test_eligible_did_bootstrap_primary_candidate() -> None:
     report = build_readout_plan(_base_request())
     assert report.readout_plan_status == ReadoutPlanStatus.READOUT_PLAN_READY_FOR_EXECUTION_CONTRACT
-    assert any(x.instrument_id == "DID_BOOTSTRAP" for x in report.planned_primary_candidates)
+    assert any(x.instrument_id == "DID_2X2_POINT_ESTIMATE" for x in report.planned_primary_candidates)
 
 
 def test_multiple_eligible_primary_candidates_without_winner() -> None:

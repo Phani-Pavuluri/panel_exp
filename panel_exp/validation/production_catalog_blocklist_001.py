@@ -12,6 +12,14 @@ from pathlib import Path
 from typing import Any
 
 from panel_exp.method_metadata import EstimatorMaturity, estimator_catalog
+from panel_exp.validation.did_instrument_estimand_registry_001 import (
+    DID_2X2_POINT_ESTIMATE,
+    get_did_instrument_contract,
+    is_did_bootstrap_inference_instrument,
+    is_governed_did_point_estimate_instrument,
+    resolve_did_instrument_id,
+)
+
 
 _ARTIFACT_ID = "PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001"
 _ARTIFACT_VERSION = "1.0.0"
@@ -248,20 +256,43 @@ def _apply_instrument_rules(
     inf = _normalize_inference(inference_family)
     claim = _token(claim_type) if claim_type else ""
 
-    if iid == "DID_BOOTSTRAP" or (est == "DID_FAMILY" and inf == "BOOTSTRAP"):
+    did_resolution = resolve_did_instrument_id(iid) if iid.startswith("DID") or est == "DID_FAMILY" else None
+    if did_resolution and did_resolution.canonical_instrument_id:
+        did_contract = get_did_instrument_contract(iid)
+        if is_did_bootstrap_inference_instrument(iid):
+            blockers.extend([
+                BLOCKER_MISLEADING_INSTRUMENT,
+                BLOCKER_INFERENCE_NOT_IMPLEMENTED,
+                BLOCKER_UNCALIBRATED_INFERENCE,
+                BLOCKER_NEGATIVE_CHARACTERIZATION,
+            ])
+            restrictions.append("did_bootstrap_inference_not_governed_point_estimate")
+            remediation.extend([
+                "DID_INSTRUMENT_ESTIMAND_UNIFICATION_001",
+                "STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001",
+            ])
+            evidence.append("D5_STAT_DID_BOOTSTRAP_001")
+            return PRODUCTION_CATALOG_BLOCKED
+        if is_governed_did_point_estimate_instrument(iid):
+            blockers.extend([BLOCKER_MISSING_THRESHOLDS, BLOCKER_CLAIM_AUTH_MISSING])
+            restrictions.extend(["point_estimate_only_no_uncertainty", "no_causal_incremental_roi_claims"])
+            if claim in PRODUCTION_CLAIM_TYPES:
+                blockers.append(BLOCKER_UNSUPPORTED_PRODUCTION_CLAIM)
+            return PRODUCTION_CATALOG_RESTRICTED_EXPERT_REVIEW
+
+    if est == "DID_FAMILY" and inf == "BOOTSTRAP":
         blockers.extend([
             BLOCKER_MISLEADING_INSTRUMENT,
             BLOCKER_INFERENCE_NOT_IMPLEMENTED,
             BLOCKER_UNCALIBRATED_INFERENCE,
             BLOCKER_NEGATIVE_CHARACTERIZATION,
         ])
-        restrictions.append("governed_executor_point_estimate_only")
+        restrictions.append("did_bootstrap_inference_family_blocked")
         remediation.extend([
             "DID_INSTRUMENT_ESTIMAND_UNIFICATION_001",
             "STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001",
         ])
         evidence.append("D5_STAT_DID_BOOTSTRAP_001")
-        evidence.append("estimator_inference_did_executor_003")
         return PRODUCTION_CATALOG_BLOCKED
 
     if iid == "TBR_RIDGE_KFOLD" or (est in ("TBR_RIDGE_FAMILY", "TBRRIDGE") and inf in ("KFOLD", "TIME_SERIES_KFOLD")):
@@ -307,7 +338,7 @@ def _apply_instrument_rules(
         blockers.append(BLOCKER_RESEARCH_ONLY)
         return PRODUCTION_CATALOG_RESEARCH_ONLY
 
-    if claim in PRODUCTION_CLAIM_TYPES and iid == "DID_BOOTSTRAP":
+    if claim in PRODUCTION_CLAIM_TYPES and is_did_bootstrap_inference_instrument(iid):
         blockers.append(BLOCKER_UNSUPPORTED_PRODUCTION_CLAIM)
         return PRODUCTION_CATALOG_BLOCKED
 
@@ -427,18 +458,25 @@ def evaluate_production_catalog_status(
     is_diagnostic_only = status == PRODUCTION_CATALOG_DIAGNOSTIC_ONLY
     is_restricted = status == PRODUCTION_CATALOG_RESTRICTED_EXPERT_REVIEW
     is_research_only = status == PRODUCTION_CATALOG_RESEARCH_ONLY
-    is_production_blocked = status in (
-        PRODUCTION_CATALOG_BLOCKED,
-        PRODUCTION_CATALOG_RESEARCH_ONLY,
-        PRODUCTION_CATALOG_DIAGNOSTIC_ONLY,
-        PRODUCTION_CATALOG_RESTRICTED_EXPERT_REVIEW,
-        PRODUCTION_CATALOG_NOT_EVALUATED,
-    )
 
     prod_ctx = _is_production_context(
         str(production_context) if production_context else None,
         str(requested_role) if requested_role else None,
     )
+    claim_tok = _token(claim_type) if claim_type else ""
+
+    if is_governed_did_point_estimate_instrument(instrument_id):
+        is_production_blocked = prod_ctx or claim_tok in PRODUCTION_CLAIM_TYPES
+        is_restricted = True
+    else:
+        is_production_blocked = status in (
+            PRODUCTION_CATALOG_BLOCKED,
+            PRODUCTION_CATALOG_RESEARCH_ONLY,
+            PRODUCTION_CATALOG_DIAGNOSTIC_ONLY,
+            PRODUCTION_CATALOG_RESTRICTED_EXPERT_REVIEW,
+            PRODUCTION_CATALOG_NOT_EVALUATED,
+        )
+
     if prod_ctx and is_production_blocked and cfg.block_production_context_when_catalog_blocked:
         if not blockers:
             blockers.append(BLOCKER_UNSUPPORTED_PRODUCTION_CLAIM)

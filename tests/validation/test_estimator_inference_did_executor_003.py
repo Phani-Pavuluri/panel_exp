@@ -40,9 +40,9 @@ def _panel() -> list[dict]:
 
 def _base_input(**extra: object) -> dict:
     payload = {
-        "instrument_id": "DID_BOOTSTRAP",
+        "instrument_id": "DID_2X2_POINT_ESTIMATE",
         "estimator_family": "DID_FAMILY",
-        "inference_family": "BOOTSTRAP_INFERENCE_FAMILY",
+        "inference_family": "POINT_ESTIMATE_ONLY",
         "panel_data": _panel(),
         "unit_id_field": "geo_id",
         "time_field": "week",
@@ -72,13 +72,13 @@ def _context() -> dict:
 
 def _instrument() -> dict:
     return {
-        "instrument_id": "DID_BOOTSTRAP",
+        "instrument_id": "DID_2X2_POINT_ESTIMATE",
         "execution_role": "PRIMARY_EXECUTION_CANDIDATE",
         "governance_status": "GOVERNED",
         "assignment_artifact_id": "assignment_001",
         "estimand_type": "STANDARD_INCREMENTALITY",
         "metric_name": "sales",
-        "uncertainty_semantics": "bootstrap",
+        "uncertainty_semantics": "point_estimate_only",
     }
 
 
@@ -234,15 +234,30 @@ def test_claim_authorization_remains_false() -> None:
     assert result.claim_boundary_report["production_readout_authorized"] is False
 
 
+def test_did_bootstrap_rejected_by_default() -> None:
+    result = execute_did_point_estimate(
+        _base_input(instrument_id="DID_BOOTSTRAP", inference_family="BOOTSTRAP_INFERENCE_FAMILY"),
+        config={"allow_governed_did_point_estimate_execution": True},
+    )
+    assert result.did_point_estimate_computed is False
+    assert any("bootstrap" in r.lower() or "DID_2X2" in r for r in result.blocking_reasons)
+
+
 def test_adapter_registry_exposes_did_point_estimate_under_config() -> None:
     enabled = lookup_governed_executor(
-        "DID_BOOTSTRAP", config={"allow_governed_did_point_estimate_execution": True}
+        "DID_2X2_POINT_ESTIMATE", config={"allow_governed_did_point_estimate_execution": True}
     )
     assert enabled.availability_status == EXECUTOR_AVAILABLE_FOR_GOVERNED_EXECUTION
     assert enabled.supports_execution is True
 
 
 def test_adapter_registry_dry_run_when_config_disabled() -> None:
+    lookup = lookup_governed_executor("DID_2X2_POINT_ESTIMATE")
+    assert lookup.availability_status == EXECUTOR_AVAILABLE_FOR_DRY_RUN
+    assert lookup.supports_execution is False
+
+
+def test_adapter_registry_bootstrap_inference_dry_run_only() -> None:
     lookup = lookup_governed_executor("DID_BOOTSTRAP")
     assert lookup.availability_status == EXECUTOR_AVAILABLE_FOR_DRY_RUN
     assert lookup.supports_execution is False
@@ -261,7 +276,7 @@ def test_execution_runtime_integrates_did_when_config_enabled() -> None:
     req = _base_request(panel_data=_panel())
     cfg = EstimatorInferenceExecutionRuntimeConfig(allow_governed_did_point_estimate_execution=True)
     report = execute_estimator_inference(req, config=cfg)
-    row = next(r for r in report.instrument_execution_results if r.instrument_id == "DID_BOOTSTRAP")
+    row = next(r for r in report.instrument_execution_results if r.instrument_id == "DID_2X2_POINT_ESTIMATE")
     assert row.instrument_execution_status == INSTRUMENT_EXECUTION_COMPLETED
     assert row.effect_estimate_report is not None
     assert row.effect_estimate_report["point_estimate"] == 9.0
@@ -272,7 +287,7 @@ def test_execution_runtime_preserves_dry_run_when_config_disabled() -> None:
 
     req = _base_request(panel_data=_panel())
     report = execute_estimator_inference(req)
-    row = next(r for r in report.instrument_execution_results if r.instrument_id == "DID_BOOTSTRAP")
+    row = next(r for r in report.instrument_execution_results if r.instrument_id == "DID_2X2_POINT_ESTIMATE")
     assert row.instrument_execution_status == INSTRUMENT_EXECUTION_NOT_RUN
     assert row.executor_lookup_status == EXECUTOR_AVAILABLE_FOR_DRY_RUN
 

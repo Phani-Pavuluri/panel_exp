@@ -41,9 +41,9 @@ def _base_request(**extra: object) -> dict:
         "readout_plan_packet": {"artifact_id": "READOUT_PLAN_RUNTIME_001"},
         "planned_primary_candidates": [
             {
-                "instrument_id": "DID_BOOTSTRAP",
+                "instrument_id": "DID_2X2_POINT_ESTIMATE",
                 "estimator_family": "DID_FAMILY",
-                "inference_family": "BOOTSTRAP_INFERENCE_FAMILY",
+                "inference_family": "POINT_ESTIMATE_ONLY",
                 "execution_role": PRIMARY_EXECUTION_CANDIDATE,
                 "planning_category": "PLANNING_ELIGIBLE_PRIMARY_CANDIDATE",
                 "governance_status": "GOVERNED",
@@ -61,7 +61,7 @@ def _base_request(**extra: object) -> dict:
                 "spend_fields": ["spend"],
                 "geo_fields": ["state"],
                 "required_input_grain": "geo_week",
-                "uncertainty_semantics": "bootstrap",
+                "uncertainty_semantics": "point_estimate_only",
                 "interval_type": "percentile",
                 "p_value_semantics": "two_sided",
                 "diagnostic_requirements": ["placebo_check"],
@@ -151,7 +151,7 @@ def _base_request(**extra: object) -> dict:
             "data_hash": "hash_001",
         },
         "estimand_scope": {"estimand_type": "STANDARD_INCREMENTALITY", "estimand": "STANDARD_INCREMENTALITY"},
-        "uncertainty_scope": {"semantics": "bootstrap"},
+        "uncertainty_scope": {"semantics": "point_estimate_only"},
         "diagnostic_prerequisites": ["placebo_check"],
         "sensitivity_prerequisites": ["donor_pool_sensitivity"],
         "production_governance_config": {"blocked_roles": ["production"]},
@@ -261,7 +261,7 @@ def test_not_evaluated_instrument_remains_not_evaluated() -> None:
 
 def test_primary_and_sensitivity_candidates_preserved() -> None:
     report = execute_estimator_inference(_base_request())
-    assert "DID_BOOTSTRAP" in report.primary_execution_candidates
+    assert "DID_2X2_POINT_ESTIMATE" in report.primary_execution_candidates
     assert "TBR_RIDGE_BRB" in report.sensitivity_execution_candidates
 
 
@@ -274,7 +274,7 @@ def test_execution_results_emitted_without_completed_execution() -> None:
 
 def test_runtime_includes_executor_lookup_fields() -> None:
     report = execute_estimator_inference(_base_request())
-    row = next(r for r in report.instrument_execution_results if r.instrument_id == "DID_BOOTSTRAP")
+    row = next(r for r in report.instrument_execution_results if r.instrument_id == "DID_2X2_POINT_ESTIMATE")
     assert row.executor_lookup_status in (EXECUTOR_AVAILABLE_FOR_DRY_RUN, EXECUTOR_NOT_EVALUATED)
     assert row.executor_supports_execution is False
     assert row.executor_request is not None
@@ -285,7 +285,7 @@ def test_runtime_includes_executor_lookup_fields() -> None:
 def test_runtime_preserves_behavior_when_registry_disabled() -> None:
     cfg = EstimatorInferenceExecutionRuntimeConfig(enable_governed_executor_registry=False)
     report = execute_estimator_inference(_base_request(), config=cfg)
-    row = next(r for r in report.instrument_execution_results if r.instrument_id == "DID_BOOTSTRAP")
+    row = next(r for r in report.instrument_execution_results if r.instrument_id == "DID_2X2_POINT_ESTIMATE")
     assert row.executor_lookup_status == "EXECUTOR_NOT_IMPLEMENTED"
     assert row.executor_request is None
     assert report.executor_registry_summary["registry_enabled"] is False
@@ -320,7 +320,7 @@ def test_execution_trace_and_provenance_emitted() -> None:
 
 def test_effect_uncertainty_diagnostic_reports_not_computed() -> None:
     report = execute_estimator_inference(_base_request())
-    row = next(r for r in report.instrument_execution_results if r.instrument_id == "DID_BOOTSTRAP")
+    row = next(r for r in report.instrument_execution_results if r.instrument_id == "DID_2X2_POINT_ESTIMATE")
     assert row.effect_estimate_report["effect_estimate_report_status"] == "NOT_COMPUTED"
 
 
@@ -336,7 +336,7 @@ def _did_panel() -> list[dict]:
 def test_did_point_estimate_integrated_when_config_enabled() -> None:
     cfg = EstimatorInferenceExecutionRuntimeConfig(allow_governed_did_point_estimate_execution=True)
     report = execute_estimator_inference(_base_request(panel_data=_did_panel()), config=cfg)
-    row = next(r for r in report.instrument_execution_results if r.instrument_id == "DID_BOOTSTRAP")
+    row = next(r for r in report.instrument_execution_results if r.instrument_id == "DID_2X2_POINT_ESTIMATE")
     assert row.instrument_execution_status == "INSTRUMENT_EXECUTION_COMPLETED"
     assert row.effect_estimate_report["point_estimate"] == 9.0
     assert row.uncertainty_report["uncertainty_report_status"] == "NOT_COMPUTED"
@@ -346,7 +346,7 @@ def test_did_point_estimate_integrated_when_config_enabled() -> None:
 
 def test_did_dry_run_preserved_when_config_disabled() -> None:
     report = execute_estimator_inference(_base_request(panel_data=_did_panel()))
-    row = next(r for r in report.instrument_execution_results if r.instrument_id == "DID_BOOTSTRAP")
+    row = next(r for r in report.instrument_execution_results if r.instrument_id == "DID_2X2_POINT_ESTIMATE")
     assert row.instrument_execution_status == INSTRUMENT_EXECUTION_NOT_RUN
     assert row.executor_lookup_status == EXECUTOR_AVAILABLE_FOR_DRY_RUN
     assert row.uncertainty_report["uncertainty_report_status"] == "NOT_COMPUTED"

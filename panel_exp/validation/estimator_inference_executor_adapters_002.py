@@ -5,6 +5,13 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any
 
+from panel_exp.validation.did_instrument_estimand_registry_001 import (
+    DID_2X2_POINT_ESTIMATE,
+    DID_BOOTSTRAP_INFERENCE,
+    DID_TWFE_LIBRARY_RESEARCH,
+    is_governed_did_point_estimate_instrument,
+    resolve_did_instrument_id,
+)
 from panel_exp.validation.production_catalog_blocklist_001 import (
     evaluate_production_catalog_status,
     production_catalog_executor_metadata,
@@ -24,7 +31,10 @@ EXECUTOR_BLOCKED_BY_UNSUPPORTED_ESTIMATOR = "EXECUTOR_BLOCKED_BY_UNSUPPORTED_EST
 EXECUTOR_NOT_EVALUATED = "EXECUTOR_NOT_EVALUATED"
 
 KNOWN_INSTRUMENT_IDS = (
+    "DID_2X2_POINT_ESTIMATE",
     "DID_BOOTSTRAP",
+    "DID_BOOTSTRAP_INFERENCE",
+    "DID_TWFE_LIBRARY_RESEARCH",
     "SCM_PLACEBO",
     "SCM_UNIT_JACKKNIFE",
     "TBR_RIDGE_BRB",
@@ -137,20 +147,66 @@ def _build_default_specs() -> dict[str, GovernedExecutorAdapterSpec]:
     }
 
     return {
-        "DID_BOOTSTRAP": GovernedExecutorAdapterSpec(
-            instrument_id="DID_BOOTSTRAP",
+        "DID_2X2_POINT_ESTIMATE": GovernedExecutorAdapterSpec(
+            instrument_id="DID_2X2_POINT_ESTIMATE",
             estimator_family="DID_FAMILY",
-            inference_family="BOOTSTRAP_INFERENCE_FAMILY",
-            adapter_name="did_bootstrap_governed_adapter",
-            adapter_version="0.2.0",
+            inference_family="POINT_ESTIMATE_ONLY",
+            adapter_name="did_2x2_point_estimate_governed_adapter",
+            adapter_version="0.3.0",
             governance_status="RESTRICTED_DIAGNOSTIC",
             supports_dry_run=True,
             supports_execution=True,
             supports_bootstrap_inference=False,
             supports_confidence_interval=False,
             supports_p_value=False,
-            blocked_reason_if_not_supported="governed point-estimate execution disabled by config",
-            notes="Governed DID point-estimate executor; bootstrap inference not available.",
+            blocked_reason_if_not_supported="governed 2x2 point-estimate execution disabled by config",
+            notes="Governed DID 2x2 point-estimate executor; no bootstrap, uncertainty, or claims.",
+            **base,
+        ),
+        "DID_BOOTSTRAP": GovernedExecutorAdapterSpec(
+            instrument_id="DID_BOOTSTRAP",
+            estimator_family="DID_FAMILY",
+            inference_family="BOOTSTRAP_INFERENCE_FAMILY",
+            adapter_name="did_bootstrap_inference_adapter",
+            adapter_version="0.1.0",
+            governance_status="RESTRICTED_INFERENCE_NOT_IMPLEMENTED",
+            supports_dry_run=True,
+            supports_execution=False,
+            supports_bootstrap_inference=False,
+            supports_confidence_interval=False,
+            supports_p_value=False,
+            blocked_reason_if_not_supported="bootstrap inference not implemented in governed runtime",
+            notes="Alias for DID_BOOTSTRAP_INFERENCE; not governed point estimate.",
+            **base,
+        ),
+        "DID_BOOTSTRAP_INFERENCE": GovernedExecutorAdapterSpec(
+            instrument_id="DID_BOOTSTRAP_INFERENCE",
+            estimator_family="DID_FAMILY",
+            inference_family="BOOTSTRAP_INFERENCE_FAMILY",
+            adapter_name="did_bootstrap_inference_adapter",
+            adapter_version="0.1.0",
+            governance_status="RESTRICTED_INFERENCE_NOT_IMPLEMENTED",
+            supports_dry_run=True,
+            supports_execution=False,
+            supports_bootstrap_inference=False,
+            supports_confidence_interval=False,
+            supports_p_value=False,
+            blocked_reason_if_not_supported="bootstrap inference not implemented in governed runtime",
+            notes="Bootstrap inference contract; not implemented.",
+            **base,
+        ),
+        "DID_TWFE_LIBRARY_RESEARCH": GovernedExecutorAdapterSpec(
+            instrument_id="DID_TWFE_LIBRARY_RESEARCH",
+            estimator_family="DID_FAMILY",
+            inference_family="TWFE_LIBRARY",
+            adapter_name="did_twfe_library_research_adapter",
+            adapter_version="0.1.0",
+            governance_status="RESEARCH_ONLY",
+            supports_dry_run=False,
+            supports_execution=False,
+            supports_bootstrap_inference=False,
+            blocked_reason_if_not_supported="TWFE library estimator not wired to governed runtime",
+            notes="Research-only library TWFE DID in panel_exp/methods/DID.py.",
             **base,
         ),
         "SCM_PLACEBO": GovernedExecutorAdapterSpec(
@@ -276,6 +332,17 @@ def _did_point_estimate_enabled(config: dict[str, Any] | None) -> bool:
     return bool(cfg.get("allow_governed_did_point_estimate_execution"))
 
 
+def _resolve_registry_instrument_id(instrument_id: str) -> str:
+    resolution = resolve_did_instrument_id(instrument_id)
+    if resolution.canonical_instrument_id == DID_2X2_POINT_ESTIMATE:
+        return DID_2X2_POINT_ESTIMATE
+    if resolution.canonical_instrument_id == DID_BOOTSTRAP_INFERENCE:
+        return "DID_BOOTSTRAP" if instrument_id.upper() == "DID_BOOTSTRAP" else DID_BOOTSTRAP_INFERENCE
+    if resolution.canonical_instrument_id == DID_TWFE_LIBRARY_RESEARCH:
+        return DID_TWFE_LIBRARY_RESEARCH
+    return instrument_id
+
+
 def _attach_production_catalog(
     result: GovernedExecutorLookupResult,
     *,
@@ -314,7 +381,8 @@ def lookup_governed_executor(
     cfg = _resolve_adapter_config(config)
     iid = str(instrument_id or "").strip()
     registry = get_governed_executor_registry()
-    spec = registry.specs.get(iid)
+    lookup_id = _resolve_registry_instrument_id(iid)
+    spec = registry.specs.get(lookup_id) or registry.specs.get(iid)
     if not spec:
         return _attach_production_catalog(
             GovernedExecutorLookupResult(
@@ -346,7 +414,9 @@ def lookup_governed_executor(
         )
 
     supports_execution = spec.supports_execution
-    if spec.instrument_id == "DID_BOOTSTRAP" and not _did_point_estimate_enabled(cfg):
+    if spec.instrument_id == DID_2X2_POINT_ESTIMATE and not _did_point_estimate_enabled(cfg):
+        supports_execution = False
+    if spec.instrument_id in ("DID_BOOTSTRAP", DID_BOOTSTRAP_INFERENCE):
         supports_execution = False
 
     if supports_execution:

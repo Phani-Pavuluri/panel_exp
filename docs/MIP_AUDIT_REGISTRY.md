@@ -2440,7 +2440,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Enforces production catalog blocklist across method suitability overlay, readout planning exclusion, executor adapter restriction metadata, and execution-runtime production-context blocking. Research use preserved; no claim authorization or production authorization added.
 
-**Next:** `DID_INSTRUMENT_ESTIMAND_UNIFICATION_001` · alternative: `ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001`.
+**Next:** `ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001` · alternative: `STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001`.
+
+---
+
+## DID-INSTRUMENT-ESTIMAND-UNIFICATION-001 (2026-07-03)
+
+**Artifact:** [`docs/track_d/DID_INSTRUMENT_ESTIMAND_UNIFICATION_001_REPORT.md`](track_d/DID_INSTRUMENT_ESTIMAND_UNIFICATION_001_REPORT.md) · [`docs/track_d/archives/DID_INSTRUMENT_ESTIMAND_UNIFICATION_001_summary.json`](track_d/archives/DID_INSTRUMENT_ESTIMAND_UNIFICATION_001_summary.json) · [`panel_exp/validation/did_instrument_estimand_registry_001.py`](../panel_exp/validation/did_instrument_estimand_registry_001.py)
+
+**Status:** **`did_instrument_estimand_unified_no_bootstrap_or_claim_authorization`**
+
+**Verdict:** Unifies DID instrument IDs separating governed 2×2 point estimate (`DID_2X2_POINT_ESTIMATE`), bootstrap inference (`DID_BOOTSTRAP` alias), and library TWFE research. Legacy `DID_BOOTSTRAP` point-estimate routing blocked by default. No bootstrap inference, TWFE executor, or claim authorization added.
+
+**Next:** `ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001` · alternative: `STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001`.
 
 ---
 
@@ -2454,9 +2466,9 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Expanded adversarial audit found P0 validity/cohesion gaps before claim authorization runtime. `CLAIM_AUTHORIZATION_CONTRACT_001` remains complete and safe (contract-only). Roadmap inserts P0 hardening lane before `CLAIM_AUTHORIZATION_RUNTIME_001`. No runtime authorization added by this audit update.
 
-**Immediate next:** `DID_INSTRUMENT_ESTIMAND_UNIFICATION_001`
+**Immediate next:** `ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001`
 
-**P0 sequence:** ✅ blocklist enforcement → DID estimand unification → assignment-panel integrity → statistical threshold enforcement → governed randomization → SRM/balance diagnostic → claim authorization runtime → trusted readout contract/runtime.
+**P0 sequence:** ✅ blocklist enforcement → ✅ DID estimand unification → assignment-panel integrity → statistical threshold enforcement → governed randomization → SRM/balance diagnostic → claim authorization runtime → trusted readout contract/runtime.
 
 **Deferred:** AugSynth/ASCM remediation · bootstrap inference runtime · SDID/TROP/MTGP/BayesianTBR production · TrustReport product ops · LLM/MMM decisioning.
 

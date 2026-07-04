@@ -11,7 +11,17 @@ _ARTIFACT_ID = "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_003_FIRST_GOVERNED_EXECUTO
 _ARTIFACT_VERSION = "1.0.0"
 _VERDICT = "first_governed_did_point_estimate_executor_implemented_no_inference_or_claim_authorization"
 
-GOVERNED_DID_INSTRUMENT_IDS = frozenset({"DID_BOOTSTRAP", "DID_POINT_ESTIMATE"})
+from panel_exp.validation.did_instrument_estimand_registry_001 import (
+    DID_2X2_POINT_ESTIMATE,
+    DID_GOVERNED_POINT_ESTIMATE,
+    governed_point_estimate_instrument_ids,
+    is_did_bootstrap_inference_instrument,
+    is_governed_did_point_estimate_instrument,
+    resolve_did_instrument_id,
+    validate_did_instrument_for_execution,
+)
+
+GOVERNED_DID_INSTRUMENT_IDS = governed_point_estimate_instrument_ids()
 
 EXECUTION_COMPLETED = "INSTRUMENT_EXECUTION_COMPLETED"
 EXECUTION_FAILED = "INSTRUMENT_EXECUTION_FAILED"
@@ -54,6 +64,7 @@ _AUTH_FALSE_FLAGS = {
 @dataclass(frozen=True)
 class DIDPointEstimateExecutorConfig:
     allow_governed_did_point_estimate_execution: bool = False
+    allow_legacy_did_bootstrap_for_point_estimate: bool = False
     allow_bootstrap_inference_execution: bool = False
     allow_confidence_interval_computation: bool = False
     allow_p_value_computation: bool = False
@@ -205,9 +216,11 @@ def execute_did_point_estimate(
     governance_failures: list[str] = []
     retry: list[str] = []
 
-    instrument_id = str(data.get("instrument_id") or "DID_BOOTSTRAP").strip()
+    instrument_id = str(data.get("instrument_id") or DID_2X2_POINT_ESTIMATE).strip()
+    resolution = resolve_did_instrument_id(instrument_id)
+    canonical_id = resolution.canonical_instrument_id
     estimator_family = str(data.get("estimator_family") or "DID_FAMILY")
-    inference_family = str(data.get("inference_family") or "BOOTSTRAP_INFERENCE_FAMILY")
+    inference_family = str(data.get("inference_family") or "POINT_ESTIMATE_ONLY")
     assignment_artifact_id = str(data.get("assignment_artifact_id") or "").strip()
     estimand = data.get("estimand") or data.get("estimand_type")
     metric_name = data.get("metric_name")
@@ -268,10 +281,34 @@ def execute_did_point_estimate(
         retry.append("BLOCK_INSTRUMENT")
         return _blocked(EXECUTION_NOT_RUN, "governed DID point-estimate execution disabled")
 
-    if instrument_id not in GOVERNED_DID_INSTRUMENT_IDS:
+    if is_did_bootstrap_inference_instrument(instrument_id) and not cfg.allow_legacy_did_bootstrap_for_point_estimate:
+        governance_failures.append("DID_BOOTSTRAP is bootstrap inference alias, not governed point estimate")
+        blocking.append("MISLEADING_INSTRUMENT_ID")
+        blocking.append("INFERENCE_NOT_IMPLEMENTED")
+        blocking.append("USE_DID_2X2_POINT_ESTIMATE_FOR_POINT_ONLY_EXECUTION")
+        retry.extend(["FIX_INSTRUMENT_SPEC", "ADD_GOVERNED_BOOTSTRAP_ADAPTER"])
+        return _blocked(
+            EXECUTION_BLOCKED,
+            "DID_BOOTSTRAP refers to bootstrap inference; use DID_2X2_POINT_ESTIMATE for point-only execution",
+            retry_cats=retry,
+        )
+
+    if not is_governed_did_point_estimate_instrument(instrument_id) and not (
+        is_did_bootstrap_inference_instrument(instrument_id) and cfg.allow_legacy_did_bootstrap_for_point_estimate
+    ):
+        missing_inputs.append("instrument_id")
+        retry.append("FIX_INSTRUMENT_SPEC")
+        return _blocked(EXECUTION_BLOCKED, "unsupported instrument for governed DID point-estimate executor")
+
+    effective_id = DID_2X2_POINT_ESTIMATE if (
+        is_did_bootstrap_inference_instrument(instrument_id) and cfg.allow_legacy_did_bootstrap_for_point_estimate
+    ) else canonical_id
+    if effective_id not in GOVERNED_DID_INSTRUMENT_IDS:
         missing_inputs.append("instrument_id")
         retry.append("FIX_INSTRUMENT_SPEC")
         return _blocked(EXECUTION_BLOCKED, "unsupported instrument for governed DID executor")
+
+    instrument_id = effective_id
 
     if cfg.allow_bootstrap_inference_execution:
         governance_failures.append("bootstrap inference execution not governed in runtime_003")

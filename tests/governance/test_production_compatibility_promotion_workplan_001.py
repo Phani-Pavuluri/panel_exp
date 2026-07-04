@@ -1151,11 +1151,11 @@ def test_governance_audit_p0_hardening_lane_active() -> None:
         if b["lane_id"] == "AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001"
     )
     assert lane["status"] == "active"
-    assert lane["next_artifact"] == "DID_INSTRUMENT_ESTIMAND_UNIFICATION_001"
+    assert lane["next_artifact"] == "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001"
     assert "INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001" in lane["open_investigations"]
 
 
 def test_governance_audit_p0_hardening_investigation_planned() -> None:
     inv = investigations_by_id()["INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001"]
     assert inv.status == "PLANNED"
-    assert inv.evidence["recommended_next_artifact"] == "DID_INSTRUMENT_ESTIMAND_UNIFICATION_001"
+    assert inv.evidence["recommended_next_artifact"] == "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001"

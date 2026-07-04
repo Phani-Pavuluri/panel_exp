@@ -11,6 +11,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from panel_exp.validation.did_instrument_estimand_registry_001 import (
+    DID_2X2_POINT_ESTIMATE,
+    is_did_bootstrap_inference_instrument,
+    is_governed_did_point_estimate_instrument,
+)
 from panel_exp.validation.estimator_inference_did_executor_003 import (
     EFFECT_ESTIMATE_COMPUTED_POINT_ONLY,
     execute_did_point_estimate,
@@ -726,7 +731,19 @@ def _evaluate_single_request(
             if _token(uncertainty_scope.get("semantics")) not in _token(uncertainty_semantics):
                 uncertainty_semantics_status = "INCOMPATIBLE"
                 uncertainty_failures.append("instrument uncertainty semantics incompatible with scope")
-                readiness_status = EXECUTION_PROVISIONAL
+                if readiness_status not in (
+                    EXECUTION_BLOCKED_BY_GOVERNANCE,
+                    EXECUTION_BLOCKED_BY_READOUT_PLAN,
+                    EXECUTION_BLOCKED_BY_ASSIGNMENT_ARTIFACT,
+                    EXECUTION_BLOCKED_BY_DATA_CONTRACT,
+                    EXECUTION_BLOCKED_BY_ESTIMAND,
+                    EXECUTION_BLOCKED_BY_INSTRUMENT_SPEC,
+                    EXECUTION_BLOCKED_BY_UNCERTAINTY_SEMANTICS,
+                    EXECUTION_BLOCKED_BY_MISSING_INPUT_DATA,
+                    EXECUTION_BLOCKED_BY_DIAGNOSTIC_REQUIREMENTS,
+                    EXECUTION_BLOCKED_BY_SENSITIVITY_REQUIREMENTS,
+                ):
+                    readiness_status = EXECUTION_PROVISIONAL
                 blocking_gates.append("uncertainty_semantics_gate")
 
         req_diag = _as_list_of_str(instrument.get("diagnostic_requirements"))
@@ -878,7 +895,7 @@ def _evaluate_single_request(
                     instrument_execution_status = INSTRUMENT_EXECUTION_NOT_RUN
                 local_warnings.append("governed executor dry-run envelope generated; execution not run")
             elif (
-                instrument_id == "DID_BOOTSTRAP"
+                is_governed_did_point_estimate_instrument(instrument_id)
                 and executor_lookup_status == EXECUTOR_AVAILABLE_FOR_GOVERNED_EXECUTION
                 and cfg.allow_governed_did_point_estimate_execution
                 and readiness_status in (EXECUTION_READY_FOR_RUNTIME, EXECUTION_READY_WITH_WARNINGS)
@@ -889,9 +906,9 @@ def _evaluate_single_request(
                     or instrument.get("panel_data")
                 )
                 did_input = {
-                    "instrument_id": instrument_id,
+                    "instrument_id": DID_2X2_POINT_ESTIMATE,
                     "estimator_family": instrument.get("estimator_family"),
-                    "inference_family": instrument.get("inference_family"),
+                    "inference_family": "POINT_ESTIMATE_ONLY",
                     "panel_data": panel_data,
                     "unit_id_field": instrument.get("unit_id_field", "geo_id"),
                     "time_field": instrument.get("time_field", "week"),
@@ -1036,7 +1053,7 @@ def _evaluate_single_request(
             execution_status = EXECUTION_READY_WITH_WARNINGS
 
     did_point_estimate_computed = any(
-        r.instrument_id == "DID_BOOTSTRAP"
+        is_governed_did_point_estimate_instrument(r.instrument_id)
         and r.instrument_execution_status == INSTRUMENT_EXECUTION_COMPLETED
         and (r.effect_estimate_report or {}).get("estimation_status") == EFFECT_ESTIMATE_COMPUTED_POINT_ONLY
         for r in results
@@ -1270,9 +1287,9 @@ def run_validation(*, write_summary: bool = True, summary_path: Path | None = No
         "readout_plan_packet": {"artifact_id": "READOUT_PLAN_RUNTIME_001"},
         "planned_primary_candidates": [
             {
-                "instrument_id": "DID_BOOTSTRAP",
+                "instrument_id": "DID_2X2_POINT_ESTIMATE",
                 "estimator_family": "DID_FAMILY",
-                "inference_family": "BOOTSTRAP_INFERENCE_FAMILY",
+                "inference_family": "POINT_ESTIMATE_ONLY",
                 "execution_role": PRIMARY_EXECUTION_CANDIDATE,
                 "planning_category": "PLANNING_ELIGIBLE_PRIMARY_CANDIDATE",
                 "governance_status": "GOVERNED",

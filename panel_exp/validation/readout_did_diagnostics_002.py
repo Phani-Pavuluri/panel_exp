@@ -7,7 +7,11 @@ import json
 from dataclasses import dataclass, fields, is_dataclass
 from typing import Any
 
-from panel_exp.validation.estimator_inference_did_executor_003 import GOVERNED_DID_INSTRUMENT_IDS
+from panel_exp.validation.did_instrument_estimand_registry_001 import (
+    DID_2X2_POINT_ESTIMATE,
+    is_did_bootstrap_inference_instrument,
+    is_governed_did_point_estimate_instrument,
+)
 
 _ARTIFACT_ID = "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_002_FIRST_GOVERNED_DIAGNOSTIC"
 _ARTIFACT_VERSION = "1.0.0"
@@ -264,7 +268,7 @@ def evaluate_did_coverage_diagnostic(
     retry: list[str] = []
 
     requirement_id = str(data.get("requirement_id") or "diagnostic_requirement_unspecified")
-    instrument_id = str(data.get("instrument_id") or data.get("applies_to_instrument_id") or "DID_BOOTSTRAP")
+    instrument_id = str(data.get("instrument_id") or data.get("applies_to_instrument_id") or DID_2X2_POINT_ESTIMATE)
     execution_artifact_id = str(data.get("execution_artifact_id") or "")
     requirement_type = str(data.get("requirement_type") or PRE_PERIOD_FIT_DIAGNOSTIC).upper()
     diagnostic_type = (
@@ -360,7 +364,12 @@ def evaluate_did_coverage_diagnostic(
         retry.append("RERUN_EXECUTION_WITH_REQUIRED_TRACE")
         return _blocked(DIAGNOSTIC_BLOCKED, "execution artifact id missing")
 
-    if instrument_id not in GOVERNED_DID_INSTRUMENT_IDS:
+    if is_did_bootstrap_inference_instrument(instrument_id):
+        blocking.append("DID_BOOTSTRAP is bootstrap inference; use DID_2X2_POINT_ESTIMATE for governed diagnostic")
+        retry.append("FIX_INSTRUMENT_SPEC")
+        return _blocked(DIAGNOSTIC_BLOCKED, "misleading instrument id for governed DID diagnostic")
+
+    if not is_governed_did_point_estimate_instrument(instrument_id):
         blocking.append("unsupported instrument for governed DID diagnostic")
         retry.append("BLOCK_INSTRUMENT")
         return _blocked(DIAGNOSTIC_BLOCKED, "unsupported instrument")

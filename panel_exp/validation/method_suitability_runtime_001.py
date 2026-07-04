@@ -51,6 +51,7 @@ _DEFAULT_FALLBACK_INSTRUMENT_IDS = (
     "TBR_RIDGE_BRB",
     "TBR_RIDGE_KFOLD",
     "TBR_RIDGE_PLACEBO",
+    "DID_2X2_POINT_ESTIMATE",
     "DID_BOOTSTRAP",
     "AUGSYNTH_JACKKNIFE",
     "MATCHED_PAIR_RANDOMIZATION",
@@ -543,11 +544,21 @@ def _default_instrument_catalog() -> dict[str, InstrumentSpec]:
             requires_bau_control=True,
             diagnostic_only=True,
         ),
+        "DID_2X2_POINT_ESTIMATE": InstrumentSpec(
+            instrument_id="DID_2X2_POINT_ESTIMATE",
+            estimator_family="DID_FAMILY",
+            inference_family="POINT_ESTIMATE_ONLY",
+            instrument_family_label="DID 2x2 Point Estimate",
+            design_requirements=("SINGLE_TREATMENT_CONTROL", "MULTI_CELL_COMMON_CONTROL", "MULTI_CELL_SPLIT_CONTROL"),
+            estimand_requirements=("standard_incrementality",),
+            requires_bau_control=True,
+            requires_assignment_feasible=True,
+        ),
         "DID_BOOTSTRAP": InstrumentSpec(
             instrument_id="DID_BOOTSTRAP",
             estimator_family="DID_FAMILY",
             inference_family="BOOTSTRAP_INFERENCE_FAMILY",
-            instrument_family_label="DID + Bootstrap",
+            instrument_family_label="DID Bootstrap Inference (not governed point estimate)",
             design_requirements=("SINGLE_TREATMENT_CONTROL", "MULTI_CELL_COMMON_CONTROL", "MULTI_CELL_SPLIT_CONTROL"),
             estimand_requirements=("standard_incrementality",),
             requires_bau_control=True,
@@ -889,6 +900,27 @@ def _classify_instrument(
     blocking: list[str] = []
     review_reqs = list(base_review_reqs)
 
+    if spec.instrument_id == "DID_BOOTSTRAP":
+        blocking.append("DID_BOOTSTRAP is bootstrap inference alias; use DID_2X2_POINT_ESTIMATE for governed point estimate")
+        return InstrumentSuitabilityEntry(
+            instrument_id=spec.instrument_id,
+            estimator_family=spec.estimator_family,
+            inference_family=spec.inference_family,
+            instrument_family_label=spec.instrument_family_label,
+            design_compatibility_status=_COMPAT_NOT_EVALUATED,
+            estimand_compatibility_status=_COMPAT_BLOCKED,
+            assignment_compatibility_status=_COMPAT_BLOCKED,
+            power_mde_compatibility_status=_COMPAT_BLOCKED,
+            scenario_policy_compatibility_status=_COMPAT_BLOCKED,
+            governance_status=governance_status,
+            suitability_status=MethodFamilySuitabilityStatus.METHOD_FAMILY_BLOCKED,
+            review_requirements=tuple(review_reqs),
+            warnings=tuple(dict.fromkeys(warnings)),
+            blocking_reasons=tuple(dict.fromkeys(blocking)),
+            diagnostic_only_reason=None,
+            restricted_reason="bootstrap_inference_not_implemented",
+        )
+
     design_status, dw, db = _evaluate_instrument_design_compat(spec, design_type, design_compat)
     warnings.extend(dw)
     blocking.extend(db)
@@ -1006,8 +1038,8 @@ def _production_catalog_overlay(
             "method_family": entry.estimator_family,
             "estimator_family": entry.estimator_family,
             "inference_family": entry.inference_family,
-            "production_context": "production",
-            "requested_role": "PRODUCTION_CANDIDATE",
+            "production_context": "review",
+            "requested_role": "GOVERNED_POINT_ESTIMATE",
         }
     )
     return production_catalog_overlay_for_matrix(report)

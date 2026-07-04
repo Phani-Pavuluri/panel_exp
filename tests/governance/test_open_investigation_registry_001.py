@@ -1704,7 +1704,7 @@ class TestOpenInvestigationRegistry001:
             if b["lane_id"] == "AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001"
         )
         assert lane["status"] == "active"
-        assert lane["next_artifact"] == "DID_INSTRUMENT_ESTIMAND_UNIFICATION_001"
+        assert lane["next_artifact"] == "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001"
         assert lane["resolution_artifact"] is None
         assert "INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001" in lane["open_investigations"]
 
@@ -1712,7 +1712,7 @@ class TestOpenInvestigationRegistry001:
         inv = investigations_by_id()["INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001"]
         assert inv.status == "PLANNED"
         assert inv.priority == "P0"
-        assert inv.evidence["recommended_next_artifact"] == "DID_INSTRUMENT_ESTIMAND_UNIFICATION_001"
+        assert inv.evidence["recommended_next_artifact"] == "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001"
         assert inv.current_decision == (
             "AUDIT_DRIVEN_P0_GOVERNED_RUNTIME_HARDENING_INSERTED_BEFORE_CLAIM_AUTHORIZATION_RUNTIME"
         )
@@ -1734,6 +1734,25 @@ class TestOpenInvestigationRegistry001:
         assert inv.resolution_artifact == "PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001"
         assert inv.current_decision == (
             "PRODUCTION_CATALOG_BLOCKLIST_ENFORCED_NO_CLAIM_OR_PRODUCTION_AUTHORIZATION"
+        )
+
+    def test_did_instrument_estimand_unification_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "DID-INSTRUMENT-ESTIMAND-UNIFICATION-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "DID_INSTRUMENT_ESTIMAND_UNIFICATION_001"
+        assert lane["next_artifact"] == "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001"
+        assert "INV-DID-INSTRUMENT-ESTIMAND-UNIFICATION-001" in lane["resolved_investigations"]
+
+    def test_did_instrument_estimand_unification_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-DID-INSTRUMENT-ESTIMAND-UNIFICATION-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "DID_INSTRUMENT_ESTIMAND_UNIFICATION_001"
+        assert inv.current_decision == (
+            "DID_INSTRUMENT_ESTIMAND_UNIFIED_NO_BOOTSTRAP_OR_CLAIM_AUTHORIZATION"
         )
 
     def test_production_authorization_release_gate_plan_investigation_resolved(self) -> None:

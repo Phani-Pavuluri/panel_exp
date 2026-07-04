@@ -494,12 +494,12 @@ def test_tbr_ridge_placebo_diagnostic_or_restricted() -> None:
     )
 
 
-def test_did_bootstrap_eligible_with_warnings_on_parallel_trends() -> None:
+def test_did_2x2_point_estimate_eligible_with_warnings_on_parallel_trends() -> None:
     p = _packet()
     p["parallel_trends_warning_status"] = "WARNING"
-    p["candidate_instrument_review_targets"] = ["DID_BOOTSTRAP"]
+    p["candidate_instrument_review_targets"] = ["DID_2X2_POINT_ESTIMATE"]
     report = evaluate_method_suitability(p)
-    assert _instrument_status(report, "DID_BOOTSTRAP") == (
+    assert _instrument_status(report, "DID_2X2_POINT_ESTIMATE") == (
         MethodFamilySuitabilityStatus.METHOD_FAMILY_ELIGIBLE_WITH_WARNINGS
     )
 
@@ -542,7 +542,7 @@ def test_missing_instrument_governance_emits_review_and_provisional() -> None:
     p.pop("candidate_method_family_review_targets", None)
     report = evaluate_method_suitability(p)
     assert ReviewRequirementType.METHOD_GOVERNANCE_REVIEW.value in report.review_requirements
-    assert report.candidate_instrument_count == 9
+    assert report.candidate_instrument_count == 10
 
 
 def test_diagnostic_only_instruments_never_promoted() -> None:
@@ -573,9 +573,9 @@ def test_blocked_instruments_include_blocking_reasons() -> None:
 
 
 def test_eligible_instruments_are_review_only_not_approved() -> None:
-    p = _packet(candidate_instrument_review_targets=["DID_BOOTSTRAP"])
+    p = _packet(candidate_instrument_review_targets=["DID_2X2_POINT_ESTIMATE"])
     report = evaluate_method_suitability(p)
-    status = _instrument_status(report, "DID_BOOTSTRAP")
+    status = _instrument_status(report, "DID_2X2_POINT_ESTIMATE")
     assert status in (
         MethodFamilySuitabilityStatus.METHOD_FAMILY_ELIGIBLE_FOR_REVIEW,
         MethodFamilySuitabilityStatus.METHOD_FAMILY_ELIGIBLE_WITH_WARNINGS,
@@ -584,10 +584,17 @@ def test_eligible_instruments_are_review_only_not_approved() -> None:
     assert not report.claim_boundary_report.production_authorization_granted
 
 
-def test_instrument_matrix_includes_production_catalog_overlay() -> None:
+def test_did_bootstrap_blocked_as_inference_alias() -> None:
     p = _packet(candidate_instrument_review_targets=["DID_BOOTSTRAP"])
     report = evaluate_method_suitability(p)
-    row = next(r for r in report.instrument_suitability_matrix if r["instrument_id"] == "DID_BOOTSTRAP")
+    status = _instrument_status(report, "DID_BOOTSTRAP")
+    assert status == MethodFamilySuitabilityStatus.METHOD_FAMILY_BLOCKED
+
+
+def test_instrument_matrix_includes_production_catalog_overlay() -> None:
+    p = _packet(candidate_instrument_review_targets=["DID_2X2_POINT_ESTIMATE"])
+    report = evaluate_method_suitability(p)
+    row = next(r for r in report.instrument_suitability_matrix if r["instrument_id"] == "DID_2X2_POINT_ESTIMATE")
     assert row.get("production_catalog_status")
-    assert row.get("is_production_blocked") is True
-    assert row.get("production_blockers")
+    assert row.get("is_production_blocked") is False
+    assert row.get("production_restrictions")

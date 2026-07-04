@@ -2415,6 +2415,38 @@
       "resolution_artifact": "PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001"
     },
     {
+      "investigation_id": "INV-DID-INSTRUMENT-ESTIMAND-UNIFICATION-001",
+      "title": "DID instrument estimand unification",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001",
+      "affected_combination": "did_instrument_estimand_unification",
+      "problem_class": ["did_instrument_id", "estimand_separation", "bootstrap_inference_boundary", "twfe_library_boundary"],
+      "evidence": {
+        "depends_on": [
+          "PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001",
+          "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_003_FIRST_GOVERNED_EXECUTOR",
+          "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_002_GOVERNED_EXECUTOR_ADAPTERS",
+          "READOUT_PLAN_RUNTIME_001",
+          "METHOD_SUITABILITY_RUNTIME_001"
+        ],
+        "scope": "did_instrument_estimand_unified_no_bootstrap_or_claim_authorization",
+        "did_instrument_estimand_registry_defined": true,
+        "did_bootstrap_inference_separated": true,
+        "legacy_did_bootstrap_point_estimate_alias_blocked_by_default": true,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001"
+      },
+      "current_decision": "DID_INSTRUMENT_ESTIMAND_UNIFIED_NO_BOOTSTRAP_OR_CLAIM_AUTHORIZATION",
+      "blocked_roles": ["trust_report", "calibration_signal", "production", "mmm_ingestion", "llm_decisioning", "live_api", "scheduler", "budget_optimization"],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "DID instrument naming before assignment-panel integrity",
+      "blocking_policy": "Instrument unification only; no bootstrap inference or claim authorization",
+      "terminal_decisions": ["RESTRICT", "HARDEN", "PROMOTE"],
+      "resolution_artifact": "DID_INSTRUMENT_ESTIMAND_UNIFICATION_001"
+    },
+    {
       "investigation_id": "INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001",
       "title": "Audit-driven P0 governed runtime hardening",
       "status": "PLANNED",
@@ -2465,7 +2497,7 @@
           "BayesianTBRHorseShoe"
         ],
         "failed_scenarios": [],
-        "recommended_next_artifact": "DID_INSTRUMENT_ESTIMAND_UNIFICATION_001"
+        "recommended_next_artifact": "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001"
       },
       "current_decision": "AUDIT_DRIVEN_P0_GOVERNED_RUNTIME_HARDENING_INSERTED_BEFORE_CLAIM_AUTHORIZATION_RUNTIME",
       "blocked_roles": [
@@ -4838,7 +4870,7 @@
       "resolved_investigations": [],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "DID_INSTRUMENT_ESTIMAND_UNIFICATION_001",
+      "next_artifact": "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001",
       "resolution_artifact": null,
       "artifact_tags": [
         "audit_driven_roadmap_correction",
@@ -4847,7 +4879,26 @@
         "statistical_validity",
         "framework_cohesion",
         "production_blocklist",
+        "did_instrument_unification",
         "claim_runtime_deferred"
+      ]
+    },
+    {
+      "lane_id": "DID-INSTRUMENT-ESTIMAND-UNIFICATION-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-DID-INSTRUMENT-ESTIMAND-UNIFICATION-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001",
+      "resolution_artifact": "DID_INSTRUMENT_ESTIMAND_UNIFICATION_001",
+      "artifact_tags": [
+        "did_instrument_estimand_unification",
+        "bootstrap_inference_separated",
+        "twfe_library_separated",
+        "no_bootstrap_or_claim_authorization"
       ]
     },
     {

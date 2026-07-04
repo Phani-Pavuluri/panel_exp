@@ -321,8 +321,8 @@ def _ensure_production_catalog_fields(
             "method_family": row.get("estimator_family"),
             "estimator_family": row.get("estimator_family"),
             "inference_family": row.get("inference_family"),
-            "production_context": "production",
-            "requested_role": "PRODUCTION_CANDIDATE",
+            "production_context": "review",
+            "requested_role": "GOVERNED_POINT_ESTIMATE",
         }
     )
     return {**row, **production_catalog_overlay_for_matrix(report)}

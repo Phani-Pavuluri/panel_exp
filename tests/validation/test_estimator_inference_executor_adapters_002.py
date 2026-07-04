@@ -61,8 +61,11 @@ def test_default_registry_not_marked_executable_without_config() -> None:
     registry = get_governed_executor_registry()
     for instrument_id, spec in registry.specs.items():
         lookup = lookup_governed_executor(instrument_id)
-        if instrument_id == "DID_BOOTSTRAP":
+        if instrument_id == "DID_2X2_POINT_ESTIMATE":
             assert spec.supports_execution is True
+            assert lookup.supports_execution is False
+        elif instrument_id == "DID_BOOTSTRAP":
+            assert spec.supports_execution is False
             assert lookup.supports_execution is False
         else:
             assert not spec.supports_execution
@@ -75,14 +78,23 @@ def test_did_bootstrap_adapter_not_executable_by_default() -> None:
     assert lookup.supports_execution is False
 
 
-def test_did_bootstrap_adapter_executable_when_config_enabled() -> None:
+def test_did_2x2_point_estimate_executable_when_config_enabled() -> None:
     lookup = evaluate_governed_executor_availability(
-        _instrument("DID_BOOTSTRAP"),
+        _instrument("DID_2X2_POINT_ESTIMATE"),
         _context(),
         config={"allow_governed_did_point_estimate_execution": True},
     )
     assert lookup.availability_status == EXECUTOR_AVAILABLE_FOR_GOVERNED_EXECUTION
     assert lookup.supports_execution is True
+
+
+def test_did_bootstrap_not_executable_even_when_point_config_enabled() -> None:
+    lookup = evaluate_governed_executor_availability(
+        _instrument("DID_BOOTSTRAP"),
+        _context(),
+        config={"allow_governed_did_point_estimate_execution": True},
+    )
+    assert lookup.supports_execution is False
 
 
 def test_did_bootstrap_does_not_expose_bootstrap_inference() -> None:
@@ -118,7 +130,7 @@ def test_dry_run_envelope_not_completed() -> None:
 
 
 def test_lookup_includes_production_catalog_restriction_metadata() -> None:
-    lookup = lookup_governed_executor("DID_BOOTSTRAP")
+    lookup = lookup_governed_executor("DID_2X2_POINT_ESTIMATE")
     assert lookup.production_catalog_blocked is True
     assert lookup.production_claim_blocked is True
     assert lookup.production_catalog_status is not None

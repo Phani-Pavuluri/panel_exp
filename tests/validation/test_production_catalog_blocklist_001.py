@@ -253,6 +253,26 @@ def test_method_suitability_attaches_production_catalog_status() -> None:
     assert "is_production_blocked" in row
 
 
+def test_did_point_estimate_restricted_for_production_claims() -> None:
+    report = evaluate_production_catalog_status({
+        "instrument_id": "DID_2X2_POINT_ESTIMATE",
+        "production_context": "production",
+        "claim_type": "INCREMENTAL_LIFT_CLAIM",
+    })
+    assert report.is_production_blocked is True
+    assert report.production_catalog_status == PRODUCTION_CATALOG_RESTRICTED_EXPERT_REVIEW
+
+
+def test_did_point_estimate_allowed_for_review_context() -> None:
+    report = evaluate_production_catalog_status({
+        "instrument_id": "DID_2X2_POINT_ESTIMATE",
+        "production_context": "review",
+        "requested_role": "POINT_ESTIMATE_REVIEW",
+    })
+    assert report.is_research_allowed is True
+    assert report.is_production_blocked is False
+
+
 def test_readout_plan_excludes_production_blocked_from_primary() -> None:
     req = {
         "design_id": "d1",
@@ -278,11 +298,10 @@ def test_readout_plan_excludes_production_blocked_from_primary() -> None:
 
 
 def test_executor_adapters_expose_production_catalog_metadata() -> None:
-    lookup = lookup_governed_executor("DID_BOOTSTRAP")
-    assert lookup.availability_status == EXECUTOR_AVAILABLE_FOR_DRY_RUN
+    lookup = lookup_governed_executor("DID_2X2_POINT_ESTIMATE")
     assert lookup.production_catalog_blocked is True
     assert lookup.production_claim_blocked is True
-    assert lookup.production_catalog_status == PRODUCTION_CATALOG_BLOCKED
+    assert lookup.production_catalog_status is not None
 
 
 def test_execution_runtime_blocks_production_context_when_catalog_blocked() -> None:

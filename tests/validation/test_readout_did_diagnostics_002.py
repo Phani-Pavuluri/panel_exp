@@ -38,7 +38,7 @@ def _base_input(**extra: object) -> dict:
     payload = {
         "requirement_id": "diag_preperiod_fit",
         "requirement_type": "PRE_PERIOD_FIT_DIAGNOSTIC",
-        "instrument_id": "DID_BOOTSTRAP",
+        "instrument_id": "DID_2X2_POINT_ESTIMATE",
         "execution_artifact_id": "execution_001",
         "panel_data": _panel(),
         "unit_id_field": "geo_id",
@@ -220,7 +220,7 @@ def test_runtime_integration_only_when_config_enabled() -> None:
         "execution_status": "INSTRUMENT_EXECUTION_COMPLETED",
         "execution_artifacts": {"execution_id": "execution_001", "execution_completed": True},
         "instrument_execution_results": [
-            {"instrument_id": "DID_BOOTSTRAP", "instrument_execution_status": "INSTRUMENT_EXECUTION_COMPLETED"}
+            {"instrument_id": "DID_2X2_POINT_ESTIMATE", "instrument_execution_status": "INSTRUMENT_EXECUTION_COMPLETED"}
         ],
         "panel_data": _panel(),
         "unit_id_field": "geo_id",
@@ -233,7 +233,7 @@ def test_runtime_integration_only_when_config_enabled() -> None:
             {
                 "requirement_id": "diag_preperiod_fit",
                 "requirement_type": "PRE_PERIOD_FIT_DIAGNOSTIC",
-                "applies_to_instrument_id": "DID_BOOTSTRAP",
+                "applies_to_instrument_id": "DID_2X2_POINT_ESTIMATE",
                 "blocking_if_missing": True,
                 "blocking_if_failed": True,
             }
@@ -261,7 +261,7 @@ def test_runtime_preserves_planned_not_run_when_config_disabled() -> None:
         "execution_status": "INSTRUMENT_EXECUTION_COMPLETED",
         "execution_artifacts": {"execution_id": "execution_001", "execution_completed": True},
         "instrument_execution_results": [
-            {"instrument_id": "DID_BOOTSTRAP", "instrument_execution_status": "INSTRUMENT_EXECUTION_COMPLETED"}
+            {"instrument_id": "DID_2X2_POINT_ESTIMATE", "instrument_execution_status": "INSTRUMENT_EXECUTION_COMPLETED"}
         ],
         "panel_data": _panel(),
         "pre_period": ["2025w01"],
@@ -270,7 +270,7 @@ def test_runtime_preserves_planned_not_run_when_config_disabled() -> None:
             {
                 "requirement_id": "diag_preperiod_fit",
                 "requirement_type": "PRE_PERIOD_FIT_DIAGNOSTIC",
-                "applies_to_instrument_id": "DID_BOOTSTRAP",
+                "applies_to_instrument_id": "DID_2X2_POINT_ESTIMATE",
                 "blocking_if_missing": True,
                 "blocking_if_failed": True,
             }
@@ -296,7 +296,7 @@ def test_failed_blocking_diagnostic_updates_evidence_insufficiency() -> None:
         "execution_status": "INSTRUMENT_EXECUTION_COMPLETED",
         "execution_artifacts": {"execution_id": "execution_001", "execution_completed": True},
         "instrument_execution_results": [
-            {"instrument_id": "DID_BOOTSTRAP", "instrument_execution_status": "INSTRUMENT_EXECUTION_COMPLETED"}
+            {"instrument_id": "DID_2X2_POINT_ESTIMATE", "instrument_execution_status": "INSTRUMENT_EXECUTION_COMPLETED"}
         ],
         "panel_data": panel,
         "pre_period": ["2025w01"],
@@ -305,7 +305,7 @@ def test_failed_blocking_diagnostic_updates_evidence_insufficiency() -> None:
             {
                 "requirement_id": "diag_preperiod_fit",
                 "requirement_type": "PRE_PERIOD_FIT_DIAGNOSTIC",
-                "applies_to_instrument_id": "DID_BOOTSTRAP",
+                "applies_to_instrument_id": "DID_2X2_POINT_ESTIMATE",
                 "blocking_if_missing": True,
                 "blocking_if_failed": True,
             }
