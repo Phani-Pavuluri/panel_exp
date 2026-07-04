@@ -2476,7 +2476,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Validates analysis panel treatment/cell labels against assignment artifact allocations before governed execution. Integrated with execution runtime, DID executor, and diagnostics evidence propagation. No assignment generation, randomization, claim authorization, or production authorization added.
 
-**Next:** `STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001` · alternative: `GOVERNED_RANDOMIZATION_RUNTIME_001`.
+**Next:** ✅ `STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001` · alternative: `GOVERNED_RANDOMIZATION_RUNTIME_001`.
+
+---
+
+## STATISTICAL-PROMOTION-THRESHOLD-ENFORCEMENT-001 (2026-07-04)
+
+**Artifact:** [`docs/track_d/STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001_REPORT.md`](track_d/STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001_REPORT.md) · [`docs/track_d/archives/STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001_summary.json`](track_d/archives/STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001_summary.json) · [`panel_exp/validation/statistical_promotion_thresholds_001.py`](../panel_exp/validation/statistical_promotion_thresholds_001.py)
+
+**Status:** **`statistical_promotion_thresholds_enforced_no_method_unblock_or_claim_authorization`**
+
+**Verdict:** Governed numeric statistical promotion threshold policy enforced over supplied characterization evidence. Integrated with production catalog blocklist, method suitability matrix overlay, and readout plan primary-candidate filtering. Known-negative audit/blocklist evidence encoded as policy blockers. No methods unblocked; no claim or production authorization added.
+
+**Next:** `GOVERNED_RANDOMIZATION_RUNTIME_001` · alternative: `SRM_BALANCE_READOUT_DIAGNOSTIC_001`.
 
 ---
 
@@ -2490,9 +2502,9 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Expanded adversarial audit found P0 validity/cohesion gaps before claim authorization runtime. `CLAIM_AUTHORIZATION_CONTRACT_001` remains complete and safe (contract-only). Roadmap inserts P0 hardening lane before `CLAIM_AUTHORIZATION_RUNTIME_001`. No runtime authorization added by this audit update.
 
-**Immediate next:** `STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001`
+**Immediate next:** `GOVERNED_RANDOMIZATION_RUNTIME_001`
 
-**P0 sequence:** ✅ blocklist enforcement → ✅ DID estimand unification → assignment-panel integrity → statistical threshold enforcement → governed randomization → SRM/balance diagnostic → claim authorization runtime → trusted readout contract/runtime.
+**P0 sequence:** ✅ blocklist enforcement → ✅ DID estimand unification → ✅ assignment-panel integrity → ✅ statistical threshold enforcement → governed randomization → SRM/balance diagnostic → claim authorization runtime → trusted readout contract/runtime.
 
 **Deferred:** AugSynth/ASCM remediation · bootstrap inference runtime · SDID/TROP/MTGP/BayesianTBR production · TrustReport product ops · LLM/MMM decisioning.
 

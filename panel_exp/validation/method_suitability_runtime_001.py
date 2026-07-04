@@ -14,6 +14,11 @@ from panel_exp.validation.production_catalog_blocklist_001 import (
     evaluate_production_catalog_status,
     production_catalog_overlay_for_matrix,
 )
+from panel_exp.validation.statistical_promotion_thresholds_001 import (
+    MATURITY_RESTRICTED_EXPERT_REVIEW,
+    evaluate_statistical_promotion_thresholds,
+    statistical_promotion_overlay_for_matrix,
+)
 
 _ARTIFACT_ID = "METHOD_SUITABILITY_RUNTIME_001"
 _ARTIFACT_VERSION = "1.0.0"
@@ -126,6 +131,7 @@ class MethodSuitabilityConfig:
     diagnostic_only_blocks_production: bool = True
     unknown_method_family_not_evaluated: bool = True
     enforce_production_catalog_blocklist: bool = True
+    enforce_statistical_promotion_thresholds: bool = True
 
 
 @dataclass(frozen=True)
@@ -1045,6 +1051,28 @@ def _production_catalog_overlay(
     return production_catalog_overlay_for_matrix(report)
 
 
+def _statistical_promotion_overlay(
+    entry: InstrumentSuitabilityEntry,
+    cfg: MethodSuitabilityConfig,
+) -> dict[str, Any]:
+    if not cfg.enforce_statistical_promotion_thresholds:
+        return {}
+    report = evaluate_statistical_promotion_thresholds(
+        {
+            "instrument_id": entry.instrument_id,
+            "method_family": entry.estimator_family,
+            "estimator_family": entry.estimator_family,
+            "inference_family": entry.inference_family,
+            "requested_maturity_state": MATURITY_RESTRICTED_EXPERT_REVIEW,
+            "production_context": "review",
+            "requested_role": "GOVERNED_POINT_ESTIMATE",
+        }
+    )
+    if isinstance(report, list):
+        return {}
+    return statistical_promotion_overlay_for_matrix(report)
+
+
 def _instrument_entry_to_matrix_row(
     entry: InstrumentSuitabilityEntry,
     cfg: MethodSuitabilityConfig | None = None,
@@ -1069,6 +1097,7 @@ def _instrument_entry_to_matrix_row(
     }
     if cfg is not None:
         row.update(_production_catalog_overlay(entry, cfg))
+        row.update(_statistical_promotion_overlay(entry, cfg))
     return row
 
 

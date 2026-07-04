@@ -17,6 +17,11 @@ from panel_exp.validation.production_catalog_blocklist_001 import (
     evaluate_production_catalog_status,
     production_catalog_overlay_for_matrix,
 )
+from panel_exp.validation.statistical_promotion_thresholds_001 import (
+    MATURITY_RESTRICTED_EXPERT_REVIEW,
+    evaluate_statistical_promotion_thresholds,
+    statistical_promotion_overlay_for_matrix,
+)
 
 _ARTIFACT_ID = "READOUT_PLAN_RUNTIME_001"
 _ARTIFACT_VERSION = "1.0.0"
@@ -79,6 +84,7 @@ class ReadoutPlanRuntimeConfig:
     require_diagnostic_plan: bool = True
     require_sensitivity_plan: bool = True
     enforce_production_catalog_blocklist: bool = True
+    enforce_statistical_promotion_thresholds: bool = True
 
 
 @dataclass(frozen=True)
@@ -328,6 +334,32 @@ def _ensure_production_catalog_fields(
     return {**row, **production_catalog_overlay_for_matrix(report)}
 
 
+def _ensure_statistical_promotion_fields(
+    row: dict[str, Any],
+    cfg: ReadoutPlanRuntimeConfig,
+) -> dict[str, Any]:
+    if not cfg.enforce_statistical_promotion_thresholds:
+        return row
+    if "statistical_promotion_status" in row:
+        return row
+    report = evaluate_statistical_promotion_thresholds(
+        {
+            **row,
+            "instrument_id": row.get("instrument_id"),
+            "method_family": row.get("estimator_family"),
+            "estimator_family": row.get("estimator_family"),
+            "inference_family": row.get("inference_family"),
+            "requested_maturity_state": row.get("requested_maturity_state")
+            or MATURITY_RESTRICTED_EXPERT_REVIEW,
+            "production_context": row.get("production_context") or "review",
+            "requested_role": row.get("requested_role") or "GOVERNED_POINT_ESTIMATE",
+        }
+    )
+    if isinstance(report, list):
+        return row
+    return {**row, **statistical_promotion_overlay_for_matrix(report)}
+
+
 def _infer_planning_category(row: dict[str, Any]) -> InstrumentPlanningCategory:
     category_token = _token(row.get("planning_category"))
     if category_token in {c.value for c in InstrumentPlanningCategory}:
@@ -338,7 +370,8 @@ def _infer_planning_category(row: dict[str, Any]) -> InstrumentPlanningCategory:
     warnings = bool(row.get("warnings"))
     blocked_reasons = bool(row.get("blocking_reasons"))
 
-    blocked_reasons = bool(row.get("blocking_reasons"))
+    if row.get("is_statistically_promotion_blocked"):
+        return InstrumentPlanningCategory.PLANNING_BLOCKED
 
     if row.get("is_production_blocked"):
         status = _token(row.get("production_catalog_status"))
@@ -507,6 +540,7 @@ def _evaluate_single_request(
 
     for row in instruments:
         row = _ensure_production_catalog_fields(row, cfg)
+        row = _ensure_statistical_promotion_fields(row, cfg)
         category = _infer_planning_category(row)
         inst = _instrument_from_row(row, default_category=category)
 

@@ -64,7 +64,7 @@ CLAIM_AUTHORIZATION_CONTRACT_001 (complete)
 | `PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001` | insert P0 | Failed/uncalibrated combos must be blocked | `method_metadata`, promotion criteria, D5 archives | Blocked combos cannot be production candidates |
 | `DID_INSTRUMENT_ESTIMAND_UNIFICATION_001` | insert P0 | `DID_BOOTSTRAP` naming vs 2×2-vs-TWFE split | DID executor, library DID | One instrument = one estimand/inference contract |
 | `ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001` | insert P0 | Panel treatment labels must match assignment artifact | Assignment runtime, execution runtime | Mismatch blocks execution |
-| `STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001` | insert P0 | Thresholds proposed, not enforced | Promotion protocol, D5 archives | Numeric FPR/coverage/bias gates enforced in tests/CI |
+| `STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001` | complete | Numeric FPR/coverage/bias gates enforced in runtime/tests |
 | `GOVERNED_RANDOMIZATION_RUNTIME_001` | insert P0/P1 | Safe path lacks causal randomization | `design/assign.py`, assignment runtime | Seeded immutable assignment artifact |
 | `SRM_BALANCE_READOUT_DIAGNOSTIC_001` | insert P1 | No SRM/balance gate in readout evidence | Diagnostics runtime | SRM/balance evidence packet emitted |
 | `TRUSTED_READOUT_REPORT_CONTRACT_001` | keep deferred | After claim runtime | Claim runtime | Only authorized claims displayed |

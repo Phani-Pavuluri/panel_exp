@@ -2544,6 +2544,56 @@
       "resolution_artifact": "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001"
     },
     {
+      "investigation_id": "INV-STATISTICAL-PROMOTION-THRESHOLD-ENFORCEMENT-001",
+      "title": "Statistical promotion threshold enforcement",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001",
+      "affected_combination": "statistical_promotion_thresholds",
+      "problem_class": [
+        "statistical_validity",
+        "promotion_gates",
+        "governed_runtime",
+        "claim_boundaries"
+      ],
+      "evidence": {
+        "depends_on": [
+          "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001",
+          "METHOD_BLOCKLIST_REMEDIATION_AND_PROMOTION_ROADMAP_001",
+          "DID_INSTRUMENT_ESTIMAND_UNIFICATION_001",
+          "PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001",
+          "METHOD_STATISTICAL_VALIDATION_PROTOCOL_001"
+        ],
+        "scope": "statistical_promotion_thresholds_enforced_no_method_unblock_or_claim_authorization",
+        "statistical_promotion_thresholds_defined": true,
+        "statistical_promotion_thresholds_evaluated": true,
+        "production_catalog_integrated_with_statistical_promotion": true,
+        "method_suitability_integrated_with_statistical_promotion": true,
+        "readout_plan_integrated_with_statistical_promotion": true,
+        "methods_unblocked": false,
+        "production_catalog_unblocked": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "GOVERNED_RANDOMIZATION_RUNTIME_001"
+      },
+      "current_decision": "STATISTICAL_PROMOTION_THRESHOLDS_ENFORCED_NO_METHOD_UNBLOCK_OR_CLAIM_AUTHORIZATION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Numeric promotion gates before governed randomization runtime",
+      "blocking_policy": "Threshold evaluation only; no method unblock or claim authorization",
+      "terminal_decisions": ["RESTRICT", "HARDEN", "PROMOTE"],
+      "resolution_artifact": "STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001"
+    },
+    {
       "investigation_id": "INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001",
       "title": "Audit-driven P0 governed runtime hardening",
       "status": "PLANNED",
@@ -2595,7 +2645,7 @@
           "BayesianTBRHorseShoe"
         ],
         "failed_scenarios": [],
-        "recommended_next_artifact": "STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001"
+        "recommended_next_artifact": "GOVERNED_RANDOMIZATION_RUNTIME_001"
       },
       "current_decision": "AUDIT_DRIVEN_P0_GOVERNED_RUNTIME_HARDENING_INSERTED_BEFORE_CLAIM_AUTHORIZATION_RUNTIME",
       "blocked_roles": [
@@ -4968,7 +5018,7 @@
       "resolved_investigations": [],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001",
+      "next_artifact": "GOVERNED_RANDOMIZATION_RUNTIME_001",
       "resolution_artifact": null,
       "artifact_tags": [
         "audit_driven_roadmap_correction",
@@ -4979,7 +5029,27 @@
         "production_blocklist",
         "did_instrument_unification",
         "assignment_panel_integrity",
+        "statistical_promotion_thresholds",
         "claim_runtime_deferred"
+      ]
+    },
+    {
+      "lane_id": "STATISTICAL-PROMOTION-THRESHOLD-ENFORCEMENT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-STATISTICAL-PROMOTION-THRESHOLD-ENFORCEMENT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "GOVERNED_RANDOMIZATION_RUNTIME_001",
+      "resolution_artifact": "STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001",
+      "artifact_tags": [
+        "statistical_promotion_thresholds",
+        "numeric_promotion_gates",
+        "coverage_fpr_interval_gates",
+        "production_catalog_integration",
+        "no_method_unblock_or_claim_authorization"
       ]
     },
     {

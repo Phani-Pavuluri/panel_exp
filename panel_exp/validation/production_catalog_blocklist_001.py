@@ -19,6 +19,10 @@ from panel_exp.validation.did_instrument_estimand_registry_001 import (
     is_governed_did_point_estimate_instrument,
     resolve_did_instrument_id,
 )
+from panel_exp.validation.statistical_promotion_thresholds_001 import (
+    MATURITY_PRODUCTION_CANDIDATE,
+    evaluate_statistical_promotion_thresholds,
+)
 
 
 _ARTIFACT_ID = "PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001"
@@ -41,6 +45,8 @@ PRODUCTION_CATALOG_NOT_EVALUATED = "PRODUCTION_CATALOG_NOT_EVALUATED"
 
 BLOCKER_NEGATIVE_CHARACTERIZATION = "NEGATIVE_CHARACTERIZATION_EVIDENCE"
 BLOCKER_MISSING_THRESHOLDS = "MISSING_STATISTICAL_THRESHOLDS"
+BLOCKER_MISSING_REQUIRED_EVIDENCE = "MISSING_REQUIRED_EVIDENCE"
+BLOCKER_STATISTICAL_PROMOTION_THRESHOLD_FAILED = "STATISTICAL_PROMOTION_THRESHOLD_FAILED"
 BLOCKER_MISSING_GOVERNED_RUNTIME = "MISSING_GOVERNED_RUNTIME"
 BLOCKER_MISLEADING_INSTRUMENT = "MISLEADING_INSTRUMENT_ID"
 BLOCKER_INFERENCE_NOT_IMPLEMENTED = "INFERENCE_NOT_IMPLEMENTED"
@@ -150,6 +156,7 @@ class ProductionCatalogBlocklistConfig:
     block_research_context_when_catalog_blocked: bool = False
     allow_research_only_dry_run: bool = True
     allow_augsynth_conformal_production: bool = False
+    enforce_statistical_promotion_thresholds: bool = True
 
 
 @dataclass(frozen=True)
@@ -481,6 +488,38 @@ def evaluate_production_catalog_status(
         if not blockers:
             blockers.append(BLOCKER_UNSUPPORTED_PRODUCTION_CLAIM)
 
+    threshold_trace_extras: dict[str, Any] = {}
+    if cfg.enforce_statistical_promotion_thresholds and prod_ctx:
+        threshold_input = {
+            **data,
+            "instrument_id": instrument_id,
+            "method_family": method_family,
+            "estimator_family": estimator_family,
+            "inference_family": inference_family,
+            "requested_maturity_state": data.get("requested_maturity_state") or MATURITY_PRODUCTION_CANDIDATE,
+            "production_context": production_context,
+            "claim_type": claim_type,
+            "requested_role": requested_role,
+        }
+        threshold_report = evaluate_statistical_promotion_thresholds(threshold_input)
+        if not isinstance(threshold_report, list):
+            threshold_trace_extras = {
+                "statistical_promotion_status": threshold_report.promotion_status,
+                "statistical_promotion_trace": threshold_report.trace,
+            }
+            evidence_sources.extend(threshold_report.evidence_sources)
+            if not threshold_report.is_statistically_promotable:
+                if threshold_report.missing_metrics or threshold_report.undefined_thresholds:
+                    blockers.append(BLOCKER_MISSING_THRESHOLDS)
+                    if threshold_report.missing_metrics:
+                        blockers.append(BLOCKER_MISSING_REQUIRED_EVIDENCE)
+                else:
+                    blockers.append(BLOCKER_STATISTICAL_PROMOTION_THRESHOLD_FAILED)
+                remediation.extend(threshold_report.required_remediation)
+                is_production_blocked = True
+                if status == PRODUCTION_CATALOG_ELIGIBLE_FOR_REVIEW:
+                    status = PRODUCTION_CATALOG_RESTRICTED_EXPERT_REVIEW
+
     is_research_allowed = True
     if cfg.block_research_context_when_catalog_blocked and is_production_blocked:
         is_research_allowed = False
@@ -497,6 +536,7 @@ def evaluate_production_catalog_status(
         "claim_type": claim_type,
         "maturity_status": maturity_status,
         "production_context_evaluated": prod_ctx,
+        **threshold_trace_extras,
     }
 
     return ProductionCatalogStatusReport(

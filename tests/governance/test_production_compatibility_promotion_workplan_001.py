@@ -1151,14 +1151,14 @@ def test_governance_audit_p0_hardening_lane_active() -> None:
         if b["lane_id"] == "AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001"
     )
     assert lane["status"] == "active"
-    assert lane["next_artifact"] == "STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001"
+    assert lane["next_artifact"] == "GOVERNED_RANDOMIZATION_RUNTIME_001"
     assert "INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001" in lane["open_investigations"]
 
 
 def test_governance_audit_p0_hardening_investigation_planned() -> None:
     inv = investigations_by_id()["INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001"]
     assert inv.status == "PLANNED"
-    assert inv.evidence["recommended_next_artifact"] == "STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001"
+    assert inv.evidence["recommended_next_artifact"] == "GOVERNED_RANDOMIZATION_RUNTIME_001"
     assert "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001" in inv.evidence["recommended_sequence"]
 
 
@@ -1171,6 +1171,17 @@ def test_governance_assignment_panel_integrity_lane_complete() -> None:
     assert lane["status"] == "complete"
     assert lane["resolution_artifact"] == "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001"
     assert lane["next_artifact"] == "STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001"
+
+
+def test_governance_statistical_promotion_threshold_enforcement_lane_complete() -> None:
+    reg = load_registry()
+    lane = next(
+        b for b in reg["roadmap_lane_bindings"]
+        if b["lane_id"] == "STATISTICAL-PROMOTION-THRESHOLD-ENFORCEMENT-001"
+    )
+    assert lane["status"] == "complete"
+    assert lane["resolution_artifact"] == "STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001"
+    assert lane["next_artifact"] == "GOVERNED_RANDOMIZATION_RUNTIME_001"
 
 
 def test_governance_method_blocklist_remediation_roadmap_lane_complete() -> None:
