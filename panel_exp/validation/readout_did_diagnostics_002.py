@@ -165,6 +165,7 @@ def _claim_boundary(*, computed: bool, passed: bool) -> dict[str, Any]:
         "did_coverage_diagnostic_runtime_integrated": True,
         "diagnostic_result_computed": computed,
         "diagnostic_pass_fail_computed": computed,
+        "assignment_panel_integrity_status_propagated_to_diagnostics": True,
         **_AUTH_FALSE_FLAGS,
     }
 
@@ -363,6 +364,17 @@ def evaluate_did_coverage_diagnostic(
         missing_inputs.append("execution_artifact_id")
         retry.append("RERUN_EXECUTION_WITH_REQUIRED_TRACE")
         return _blocked(DIAGNOSTIC_BLOCKED, "execution artifact id missing")
+
+    execution_artifacts = _to_dict(data.get("execution_artifacts"))
+    integrity_report = _to_dict(
+        data.get("assignment_panel_integrity_report")
+        or execution_artifacts.get("assignment_panel_integrity_report")
+    )
+    integrity_status = str(integrity_report.get("status") or "")
+    if integrity_status.endswith("_FAILED") or integrity_status.endswith("_BLOCKED"):
+        blocking.append("assignment-panel integrity failed upstream")
+        retry.append("FIX_ASSIGNMENT_PANEL_JOIN")
+        return _blocked(DIAGNOSTIC_BLOCKED, "assignment-panel integrity failed")
 
     if is_did_bootstrap_inference_instrument(instrument_id):
         blocking.append("DID_BOOTSTRAP is bootstrap inference; use DID_2X2_POINT_ESTIMATE for governed diagnostic")

@@ -11,6 +11,13 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from panel_exp.validation.assignment_panel_integrity_runtime_001 import (
+    ASSIGNMENT_PANEL_INTEGRITY_FAILED,
+    ASSIGNMENT_PANEL_INTEGRITY_NOT_EVALUATED,
+    ASSIGNMENT_PANEL_INTEGRITY_PASSED,
+    ASSIGNMENT_PANEL_INTEGRITY_PASSED_WITH_WARNINGS,
+    evaluate_assignment_panel_integrity,
+)
 from panel_exp.validation.did_instrument_estimand_registry_001 import (
     DID_2X2_POINT_ESTIMATE,
     is_did_bootstrap_inference_instrument,
@@ -62,6 +69,7 @@ EXECUTION_READY_WITH_WARNINGS = "EXECUTION_READY_WITH_WARNINGS"
 EXECUTION_PROVISIONAL = "EXECUTION_PROVISIONAL"
 EXECUTION_BLOCKED_BY_READOUT_PLAN = "EXECUTION_BLOCKED_BY_READOUT_PLAN"
 EXECUTION_BLOCKED_BY_ASSIGNMENT_ARTIFACT = "EXECUTION_BLOCKED_BY_ASSIGNMENT_ARTIFACT"
+EXECUTION_BLOCKED_BY_ASSIGNMENT_PANEL_INTEGRITY = "EXECUTION_BLOCKED_BY_ASSIGNMENT_PANEL_INTEGRITY"
 EXECUTION_BLOCKED_BY_DATA_CONTRACT = "EXECUTION_BLOCKED_BY_DATA_CONTRACT"
 EXECUTION_BLOCKED_BY_ESTIMAND = "EXECUTION_BLOCKED_BY_ESTIMAND"
 EXECUTION_BLOCKED_BY_INSTRUMENT_SPEC = "EXECUTION_BLOCKED_BY_INSTRUMENT_SPEC"
@@ -90,6 +98,7 @@ NOT_EVALUATED_EXECUTION_CANDIDATE = "NOT_EVALUATED_EXECUTION_CANDIDATE"
 RETRY_CATEGORIES = (
     "FIX_INPUT_DATA_CONTRACT",
     "FIX_ASSIGNMENT_ARTIFACT",
+    "FIX_ASSIGNMENT_PANEL_JOIN",
     "FIX_ESTIMAND_SPEC",
     "FIX_INSTRUMENT_SPEC",
     "FIX_UNCERTAINTY_SEMANTICS",
@@ -103,6 +112,7 @@ RETRY_CATEGORIES = (
 _STATUS_PRIORITY = {
     EXECUTION_BLOCKED_BY_READOUT_PLAN: 1,
     EXECUTION_BLOCKED_BY_ASSIGNMENT_ARTIFACT: 2,
+    EXECUTION_BLOCKED_BY_ASSIGNMENT_PANEL_INTEGRITY: 2,
     EXECUTION_BLOCKED_BY_DATA_CONTRACT: 3,
     EXECUTION_BLOCKED_BY_MISSING_INPUT_DATA: 4,
     EXECUTION_BLOCKED_BY_ESTIMAND: 5,
@@ -169,6 +179,9 @@ class EstimatorInferenceExecutionRuntimeConfig:
     block_production_context_when_catalog_blocked: bool = True
     block_research_context_when_catalog_blocked: bool = False
     allow_research_only_dry_run: bool = True
+    enable_assignment_panel_integrity_gate: bool = True
+    enforce_assignment_panel_integrity: bool = True
+    block_execution_on_integrity_failure: bool = True
 
 
 @dataclass(frozen=True)
@@ -698,6 +711,81 @@ def _evaluate_single_request(
                 readiness_status = EXECUTION_BLOCKED_BY_MISSING_INPUT_DATA
                 blocking_gates.append("data_contract_gate")
 
+        assignment_panel_integrity_report: dict[str, Any] | None = None
+        panel_data_for_integrity = (
+            req.get("panel_data")
+            or execution_data_contract.get("panel_data")
+            or instrument.get("panel_data")
+        )
+        has_panel_data = isinstance(panel_data_for_integrity, list) and bool(panel_data_for_integrity)
+        if cfg.enable_assignment_panel_integrity_gate and has_panel_data:
+            integrity_input = {
+                "request_id": execution_id,
+                "assignment_artifact": assignment_artifact,
+                "assignment_candidate": assignment_candidate,
+                "assignment_artifact_id": assignment_artifact_id,
+                "reproducibility_manifest": reproducibility_manifest,
+                "unit_allocations": (
+                    assignment_artifact.get("unit_allocations")
+                    or assignment_candidate.get("unit_allocations")
+                    or req.get("unit_allocations")
+                    or req.get("assignment_allocations")
+                ),
+                "panel_records": panel_data_for_integrity,
+                "panel_unit_id_field": instrument.get("unit_id_field", "geo_id"),
+                "panel_treatment_field": instrument.get("treatment_field", "treated"),
+                "panel_cell_field": instrument.get("cell_id_field", "cell_id"),
+            }
+            integrity_result = evaluate_assignment_panel_integrity(
+                integrity_input,
+                config={
+                    "require_assignment_artifact": cfg.enforce_assignment_panel_integrity,
+                    "require_assignment_allocations": cfg.enforce_assignment_panel_integrity,
+                    "require_panel_records": True,
+                    "block_execution_on_integrity_failure": cfg.block_execution_on_integrity_failure,
+                },
+            )
+            if not isinstance(integrity_result, list):
+                assignment_panel_integrity_report = {
+                    "status": integrity_result.status,
+                    "is_blocking": integrity_result.is_blocking,
+                    "can_proceed_to_execution": integrity_result.can_proceed_to_execution,
+                    "retry_category": integrity_result.retry_category,
+                    "blocking_reasons": list(integrity_result.blocking_reasons),
+                    "warnings": list(integrity_result.warnings),
+                    "integrity_hash": integrity_result.integrity_trace.get("integrity_hash"),
+                    "provenance": integrity_result.provenance,
+                }
+                if integrity_result.is_blocking and cfg.block_execution_on_integrity_failure:
+                    assignment_artifact_status = "INTEGRITY_FAILED"
+                    assignment_failures.extend(integrity_result.blocking_reasons)
+                    readiness_status = EXECUTION_BLOCKED_BY_ASSIGNMENT_PANEL_INTEGRITY
+                    blocking_gates.append("assignment_panel_integrity_gate")
+                    failure_packets.append(
+                        _build_failure_packet(
+                            execution_id=execution_id,
+                            instrument_id=instrument_id,
+                            execution_status=EXECUTION_BLOCKED_BY_ASSIGNMENT_PANEL_INTEGRITY,
+                            blocking_gates=sorted(set(blocking_gates)),
+                            missing_inputs=missing_inputs,
+                            data_contract_failures=data_contract_failures,
+                            assignment_artifact_failures=assignment_failures,
+                            estimand_failures=estimand_failures,
+                            uncertainty_semantics_failures=uncertainty_failures,
+                            diagnostic_prerequisite_failures=diag_failures,
+                            sensitivity_prerequisite_failures=sens_failures,
+                            governance_failures=gov_failures,
+                            claim_boundary_report={
+                                "assignment_panel_integrity_gate_integrated_with_execution_runtime": True,
+                                "assignment_panel_integrity_status": integrity_result.status,
+                                "assignment_panel_integrity_failure_blocks_execution": True,
+                                **_AUTH_FALSE_FLAGS,
+                            },
+                        )
+                    )
+                elif integrity_result.status == ASSIGNMENT_PANEL_INTEGRITY_PASSED_WITH_WARNINGS:
+                    local_warnings.extend(integrity_result.warnings)
+
         if execution_data_contract and execution_data_contract.get("required_metric_availability"):
             if not bool(execution_data_contract.get("metric_available")):
                 input_data_contract_status = "METRIC_UNAVAILABLE"
@@ -735,6 +823,7 @@ def _evaluate_single_request(
                     EXECUTION_BLOCKED_BY_GOVERNANCE,
                     EXECUTION_BLOCKED_BY_READOUT_PLAN,
                     EXECUTION_BLOCKED_BY_ASSIGNMENT_ARTIFACT,
+                    EXECUTION_BLOCKED_BY_ASSIGNMENT_PANEL_INTEGRITY,
                     EXECUTION_BLOCKED_BY_DATA_CONTRACT,
                     EXECUTION_BLOCKED_BY_ESTIMAND,
                     EXECUTION_BLOCKED_BY_INSTRUMENT_SPEC,
@@ -794,6 +883,7 @@ def _evaluate_single_request(
         if readiness_status in (
             EXECUTION_BLOCKED_BY_READOUT_PLAN,
             EXECUTION_BLOCKED_BY_ASSIGNMENT_ARTIFACT,
+            EXECUTION_BLOCKED_BY_ASSIGNMENT_PANEL_INTEGRITY,
             EXECUTION_BLOCKED_BY_DATA_CONTRACT,
             EXECUTION_BLOCKED_BY_ESTIMAND,
             EXECUTION_BLOCKED_BY_INSTRUMENT_SPEC,
@@ -959,6 +1049,7 @@ def _evaluate_single_request(
             "runtime_environment": "deterministic_local_runtime",
             "execution_timestamp_policy": "deterministic_no_wall_clock_required",
             "did_point_estimate_computed": did_point_estimate_computed,
+            "assignment_panel_integrity_report": assignment_panel_integrity_report,
         }
 
         claim_boundary = {
@@ -984,6 +1075,9 @@ def _evaluate_single_request(
             "did_point_estimate_executor_implemented": bool(cfg.allow_governed_did_point_estimate_execution),
             "did_point_estimate_computed": did_point_estimate_computed,
             "effect_estimate_computed": did_point_estimate_computed,
+            "assignment_panel_integrity_gate_integrated_with_execution_runtime": bool(
+                cfg.enable_assignment_panel_integrity_gate
+            ),
             **_AUTH_FALSE_FLAGS,
         }
 
@@ -1079,6 +1173,9 @@ def _evaluate_single_request(
         "did_point_estimate_executor_implemented": bool(cfg.allow_governed_did_point_estimate_execution),
         "did_point_estimate_computed": did_point_estimate_computed,
         "effect_estimate_computed": did_point_estimate_computed,
+        "assignment_panel_integrity_gate_integrated_with_execution_runtime": bool(
+            cfg.enable_assignment_panel_integrity_gate
+        ),
         **_AUTH_FALSE_FLAGS,
     }
 

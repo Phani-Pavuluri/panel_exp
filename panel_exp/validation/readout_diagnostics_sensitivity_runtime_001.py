@@ -666,6 +666,12 @@ def _evaluate_single_request(
         **_AUTH_FALSE_FLAGS,
     }
 
+    assignment_panel_integrity_report = _to_dict(
+        execution_artifacts.get("assignment_panel_integrity_report")
+        or req.get("assignment_panel_integrity_report")
+    )
+    assignment_panel_integrity_status = assignment_panel_integrity_report.get("status")
+
     evidence_statuses: list[str] = []
 
     if not execution_artifacts and cfg.require_execution_completed:
@@ -772,11 +778,15 @@ def _evaluate_single_request(
         "did_coverage_diagnostic_runtime_integrated": bool(cfg.enable_governed_did_coverage_diagnostic),
         "diagnostic_result_computed": governed_diagnostic_computed,
         "diagnostic_pass_fail_computed": governed_diagnostic_computed,
+        "assignment_panel_integrity_status_propagated_to_diagnostics": bool(
+            assignment_panel_integrity_status
+        ),
     }
 
     evidence_aggregation_report = {
         "design_id": design_id,
         "execution_artifact_id": execution_artifact_id,
+        "assignment_panel_integrity_status": assignment_panel_integrity_status,
         "diagnostic_requirement_count": len(diagnostic_requirements),
         "sensitivity_requirement_count": len(sensitivity_requirements),
         "diagnostic_plan_count": len(diagnostic_plans),

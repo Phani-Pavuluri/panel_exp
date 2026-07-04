@@ -244,7 +244,7 @@ def test_governed_did_diagnostic_integrated_when_config_enabled() -> None:
             {
                 "requirement_id": "diag_preperiod_fit",
                 "requirement_type": "PRE_PERIOD_FIT_DIAGNOSTIC",
-                "applies_to_instrument_id": "DID_BOOTSTRAP",
+                "applies_to_instrument_id": "DID_2X2_POINT_ESTIMATE",
                 "blocking_if_missing": True,
                 "blocking_if_failed": True,
             }

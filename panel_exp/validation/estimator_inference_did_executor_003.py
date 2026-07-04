@@ -11,6 +11,10 @@ _ARTIFACT_ID = "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_003_FIRST_GOVERNED_EXECUTO
 _ARTIFACT_VERSION = "1.0.0"
 _VERDICT = "first_governed_did_point_estimate_executor_implemented_no_inference_or_claim_authorization"
 
+from panel_exp.validation.assignment_panel_integrity_runtime_001 import (
+    ASSIGNMENT_PANEL_INTEGRITY_FAILED,
+    evaluate_assignment_panel_integrity,
+)
 from panel_exp.validation.did_instrument_estimand_registry_001 import (
     DID_2X2_POINT_ESTIMATE,
     DID_GOVERNED_POINT_ESTIMATE,
@@ -34,6 +38,7 @@ NOT_COMPUTED = "NOT_COMPUTED"
 RETRY_CATEGORIES = (
     "FIX_INPUT_DATA_CONTRACT",
     "FIX_ASSIGNMENT_ARTIFACT",
+    "FIX_ASSIGNMENT_PANEL_JOIN",
     "FIX_ESTIMAND_SPEC",
     "FIX_INSTRUMENT_SPEC",
     "DISABLE_UNGOVERNED_INFERENCE",
@@ -69,6 +74,8 @@ class DIDPointEstimateExecutorConfig:
     allow_confidence_interval_computation: bool = False
     allow_p_value_computation: bool = False
     allow_claim_authorization: bool = False
+    require_assignment_panel_integrity: bool = True
+    block_on_integrity_failure: bool = True
     compute_relative_lift: bool = False
     relative_lift_baseline: str = "control_post_mean"
 
@@ -345,6 +352,31 @@ def execute_did_point_estimate(
         missing_inputs.append("panel_data")
         retry.append("FIX_INPUT_DATA_CONTRACT")
         return _blocked(EXECUTION_BLOCKED, "panel data missing or empty")
+
+    if cfg.require_assignment_panel_integrity:
+        integrity_input = {
+            "assignment_artifact_id": assignment_artifact_id,
+            "unit_allocations": data.get("unit_allocations") or data.get("assignment_allocations"),
+            "assignment_artifact": data.get("assignment_artifact"),
+            "assignment_candidate": data.get("assignment_candidate"),
+            "panel_records": panel_data,
+            "panel_unit_id_field": unit_id_field,
+            "panel_treatment_field": treatment_field,
+            "panel_cell_field": str(data.get("cell_id_field") or "cell_id"),
+        }
+        if integrity_input["unit_allocations"] or data.get("assignment_artifact") or data.get("assignment_candidate"):
+            integrity_result = evaluate_assignment_panel_integrity(integrity_input)
+            if not isinstance(integrity_result, list):
+                if integrity_result.is_blocking and cfg.block_on_integrity_failure:
+                    blocking.extend(integrity_result.blocking_reasons)
+                    retry.append(integrity_result.retry_category or "FIX_ASSIGNMENT_PANEL_JOIN")
+                    governance_failures.append("assignment_panel_integrity_failed")
+                    return _blocked(
+                        EXECUTION_BLOCKED,
+                        "assignment-panel integrity failed",
+                        retry_cats=retry,
+                    )
+                warnings.extend(integrity_result.warnings)
 
     required_columns = {unit_id_field, time_field, outcome_field, treatment_field}
     if post_field:

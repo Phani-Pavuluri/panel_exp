@@ -576,6 +576,10 @@ def _evaluate_single_request(
         status = ReadoutPlanStatus.READOUT_PLAN_BLOCKED_BY_ASSIGNMENT_ARTIFACT
         blocking_reasons.append("assignment artifact status blocked")
 
+    integrity_status = _token(req.get("assignment_panel_integrity_status"))
+    if integrity_status.endswith("_FAILED") or integrity_status.endswith("_BLOCKED"):
+        warnings.append("assignment-panel integrity failed upstream; execution prerequisite not met")
+
     if not reproducibility_manifest and cfg.block_on_missing_reproducibility_manifest:
         status = ReadoutPlanStatus.READOUT_PLAN_BLOCKED_BY_ASSIGNMENT_ARTIFACT
         blocking_reasons.append("reproducibility manifest missing")

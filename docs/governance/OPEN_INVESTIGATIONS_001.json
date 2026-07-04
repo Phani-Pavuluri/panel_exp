@@ -2496,6 +2496,54 @@
       "resolution_artifact": "METHOD_BLOCKLIST_REMEDIATION_AND_PROMOTION_ROADMAP_001"
     },
     {
+      "investigation_id": "INV-ASSIGNMENT-PANEL-INTEGRITY-RUNTIME-001",
+      "title": "Assignment panel integrity runtime",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001",
+      "affected_combination": "assignment_panel_integrity",
+      "problem_class": [
+        "assignment_panel_mismatch",
+        "treatment_label_integrity",
+        "governed_runtime",
+        "claim_boundaries"
+      ],
+      "evidence": {
+        "depends_on": [
+          "METHOD_BLOCKLIST_REMEDIATION_AND_PROMOTION_ROADMAP_001",
+          "DID_INSTRUMENT_ESTIMAND_UNIFICATION_001",
+          "PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001",
+          "DESIGN_ASSIGNMENT_RUNTIME_001",
+          "ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_003_FIRST_GOVERNED_EXECUTOR"
+        ],
+        "scope": "assignment_panel_integrity_runtime_implemented_no_assignment_generation_or_claim_authorization",
+        "assignment_panel_integrity_runtime_implemented": true,
+        "assignment_panel_integrity_gate_integrated_with_execution_runtime": true,
+        "assignment_panel_integrity_gate_integrated_with_did_executor": true,
+        "assignment_panel_integrity_status_propagated_to_diagnostics": true,
+        "assignment_generation_implemented": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001"
+      },
+      "current_decision": "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_IMPLEMENTED_NO_ASSIGNMENT_GENERATION_OR_CLAIM_AUTHORIZATION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Assignment-panel integrity before statistical promotion threshold enforcement",
+      "blocking_policy": "Integrity validation only; no assignment generation or claim authorization",
+      "terminal_decisions": ["RESTRICT", "HARDEN", "PROMOTE"],
+      "resolution_artifact": "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001"
+    },
+    {
       "investigation_id": "INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001",
       "title": "Audit-driven P0 governed runtime hardening",
       "status": "PLANNED",
@@ -2547,7 +2595,7 @@
           "BayesianTBRHorseShoe"
         ],
         "failed_scenarios": [],
-        "recommended_next_artifact": "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001"
+        "recommended_next_artifact": "STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001"
       },
       "current_decision": "AUDIT_DRIVEN_P0_GOVERNED_RUNTIME_HARDENING_INSERTED_BEFORE_CLAIM_AUTHORIZATION_RUNTIME",
       "blocked_roles": [
@@ -4920,7 +4968,7 @@
       "resolved_investigations": [],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001",
+      "next_artifact": "STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001",
       "resolution_artifact": null,
       "artifact_tags": [
         "audit_driven_roadmap_correction",
@@ -4930,7 +4978,26 @@
         "framework_cohesion",
         "production_blocklist",
         "did_instrument_unification",
+        "assignment_panel_integrity",
         "claim_runtime_deferred"
+      ]
+    },
+    {
+      "lane_id": "ASSIGNMENT-PANEL-INTEGRITY-RUNTIME-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-ASSIGNMENT-PANEL-INTEGRITY-RUNTIME-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001",
+      "resolution_artifact": "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001",
+      "artifact_tags": [
+        "assignment_panel_integrity",
+        "treatment_label_validation",
+        "execution_gate",
+        "no_assignment_generation_or_claim_authorization"
       ]
     },
     {

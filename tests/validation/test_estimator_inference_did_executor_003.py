@@ -270,10 +270,51 @@ def test_adapter_registry_does_not_expose_bootstrap_inference() -> None:
     assert spec.supports_p_value is False
 
 
-def test_execution_runtime_integrates_did_when_config_enabled() -> None:
-    from tests.validation.test_estimator_inference_execution_runtime_001 import _base_request
+def _unit_allocations() -> list[dict]:
+    return [
+        {"geo_id": "g1", "assigned_cell_id": "T1", "assigned_cell_role": "TREATMENT"},
+        {"geo_id": "g2", "assigned_cell_id": "C0", "assigned_cell_role": "CONTROL"},
+    ]
 
-    req = _base_request(panel_data=_panel())
+
+def test_integrity_pass_with_matching_allocations() -> None:
+    result = execute_did_point_estimate(
+        _base_input(unit_allocations=_unit_allocations(), cell_id_field="cell_id"),
+        config={"allow_governed_did_point_estimate_execution": True},
+    )
+    assert result.did_point_estimate_computed is True
+
+
+def test_integrity_rejects_conflicting_assignment_panel_labels() -> None:
+    panel = [
+        {"geo_id": "g1", "week": "2025w01", "sales": 10.0, "treated": 0},
+        {"geo_id": "g1", "week": "2025w13", "sales": 20.0, "treated": 0},
+        {"geo_id": "g2", "week": "2025w01", "sales": 8.0, "treated": 0},
+        {"geo_id": "g2", "week": "2025w13", "sales": 9.0, "treated": 0},
+    ]
+    result = execute_did_point_estimate(
+        _base_input(panel_data=panel, unit_allocations=_unit_allocations()),
+        config={"allow_governed_did_point_estimate_execution": True},
+    )
+    assert result.did_point_estimate_computed is False
+    assert "assignment-panel integrity failed" in " ".join(result.blocking_reasons).lower()
+
+
+def test_execution_runtime_integrates_did_when_config_enabled() -> None:
+    from tests.validation.test_estimator_inference_execution_runtime_001 import (
+        _base_request,
+        _did_panel,
+        _did_unit_allocations,
+    )
+
+    req = _base_request(
+        panel_data=_did_panel(),
+        unit_allocations=_did_unit_allocations(),
+        assignment_artifact={
+            "artifact_id": "assignment_artifact_001",
+            "unit_allocations": _did_unit_allocations(),
+        },
+    )
     cfg = EstimatorInferenceExecutionRuntimeConfig(allow_governed_did_point_estimate_execution=True)
     report = execute_estimator_inference(req, config=cfg)
     row = next(r for r in report.instrument_execution_results if r.instrument_id == "DID_2X2_POINT_ESTIMATE")
@@ -285,7 +326,7 @@ def test_execution_runtime_integrates_did_when_config_enabled() -> None:
 def test_execution_runtime_preserves_dry_run_when_config_disabled() -> None:
     from tests.validation.test_estimator_inference_execution_runtime_001 import _base_request
 
-    req = _base_request(panel_data=_panel())
+    req = _base_request()
     report = execute_estimator_inference(req)
     row = next(r for r in report.instrument_execution_results if r.instrument_id == "DID_2X2_POINT_ESTIMATE")
     assert row.instrument_execution_status == INSTRUMENT_EXECUTION_NOT_RUN

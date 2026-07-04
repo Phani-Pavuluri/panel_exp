@@ -2464,7 +2464,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Documents full remediation, revisit, and promotion pathway for production-blocked, restricted, and research-only methods. Method maturity ladder, blocked-method revisit policy (8 gates), method-family remediation table, and future promotion review artifacts defined. Production blocklist remains enforced; no methods unblocked; no runtime behavior changed.
 
-**Next:** `ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001` · alternative: `STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001`. **Future promotion artifacts:** `METHOD_PROMOTION_REVIEW_CONTRACT_001` · `METHOD_PROMOTION_REVIEW_RUNTIME_001` · `METHOD_SPECIFIC_REMEDIATION_AND_RECHARACTERIZATION_001`.
+**Next:** `STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001` · alternative: `GOVERNED_RANDOMIZATION_RUNTIME_001`. **Future promotion artifacts:** `METHOD_PROMOTION_REVIEW_CONTRACT_001` · `METHOD_PROMOTION_REVIEW_RUNTIME_001` · `METHOD_SPECIFIC_REMEDIATION_AND_RECHARACTERIZATION_001`.
+
+---
+
+## ASSIGNMENT-PANEL-INTEGRITY-RUNTIME-001 (2026-07-04)
+
+**Artifact:** [`docs/track_d/ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001_REPORT.md`](track_d/ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001_REPORT.md) · [`docs/track_d/archives/ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001_summary.json`](track_d/archives/ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001_summary.json) · [`panel_exp/validation/assignment_panel_integrity_runtime_001.py`](../panel_exp/validation/assignment_panel_integrity_runtime_001.py)
+
+**Status:** **`assignment_panel_integrity_runtime_implemented_no_assignment_generation_or_claim_authorization`**
+
+**Verdict:** Validates analysis panel treatment/cell labels against assignment artifact allocations before governed execution. Integrated with execution runtime, DID executor, and diagnostics evidence propagation. No assignment generation, randomization, claim authorization, or production authorization added.
+
+**Next:** `STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001` · alternative: `GOVERNED_RANDOMIZATION_RUNTIME_001`.
 
 ---
 
@@ -2478,7 +2490,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Expanded adversarial audit found P0 validity/cohesion gaps before claim authorization runtime. `CLAIM_AUTHORIZATION_CONTRACT_001` remains complete and safe (contract-only). Roadmap inserts P0 hardening lane before `CLAIM_AUTHORIZATION_RUNTIME_001`. No runtime authorization added by this audit update.
 
-**Immediate next:** `ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001`
+**Immediate next:** `STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001`
 
 **P0 sequence:** ✅ blocklist enforcement → ✅ DID estimand unification → assignment-panel integrity → statistical threshold enforcement → governed randomization → SRM/balance diagnostic → claim authorization runtime → trusted readout contract/runtime.
 

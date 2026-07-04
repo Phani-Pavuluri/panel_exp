@@ -257,9 +257,20 @@ def test_readout_plan_uses_canonical_point_instrument() -> None:
 
 
 def test_execution_runtime_routes_canonical_point_estimate() -> None:
-    from tests.validation.test_estimator_inference_execution_runtime_001 import _base_request
+    from tests.validation.test_estimator_inference_execution_runtime_001 import (
+        _base_request,
+        _did_panel,
+        _did_unit_allocations,
+    )
 
-    req = _base_request(panel_data=_panel())
+    req = _base_request(
+        panel_data=_did_panel(),
+        unit_allocations=_did_unit_allocations(),
+        assignment_artifact={
+            "artifact_id": "assignment_artifact_001",
+            "unit_allocations": _did_unit_allocations(),
+        },
+    )
     req["planned_primary_candidates"][0]["instrument_id"] = DID_2X2_POINT_ESTIMATE
     req["planned_primary_candidates"][0]["inference_family"] = "POINT_ESTIMATE_ONLY"
     cfg = EstimatorInferenceExecutionRuntimeConfig(allow_governed_did_point_estimate_execution=True)

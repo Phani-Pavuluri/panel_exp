@@ -1704,7 +1704,7 @@ class TestOpenInvestigationRegistry001:
             if b["lane_id"] == "AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001"
         )
         assert lane["status"] == "active"
-        assert lane["next_artifact"] == "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001"
+        assert lane["next_artifact"] == "STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001"
         assert lane["resolution_artifact"] is None
         assert "INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001" in lane["open_investigations"]
 
@@ -1712,7 +1712,7 @@ class TestOpenInvestigationRegistry001:
         inv = investigations_by_id()["INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001"]
         assert inv.status == "PLANNED"
         assert inv.priority == "P0"
-        assert inv.evidence["recommended_next_artifact"] == "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001"
+        assert inv.evidence["recommended_next_artifact"] == "STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001"
         assert inv.current_decision == (
             "AUDIT_DRIVEN_P0_GOVERNED_RUNTIME_HARDENING_INSERTED_BEFORE_CLAIM_AUTHORIZATION_RUNTIME"
         )
@@ -1775,6 +1775,26 @@ class TestOpenInvestigationRegistry001:
         )
         assert inv.evidence["methods_unblocked"] is False
         assert inv.evidence["production_catalog_blocklist_remains_enforced"] is True
+
+    def test_assignment_panel_integrity_runtime_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "ASSIGNMENT-PANEL-INTEGRITY-RUNTIME-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001"
+        assert lane["next_artifact"] == "STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001"
+        assert "INV-ASSIGNMENT-PANEL-INTEGRITY-RUNTIME-001" in lane["resolved_investigations"]
+
+    def test_assignment_panel_integrity_runtime_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-ASSIGNMENT-PANEL-INTEGRITY-RUNTIME-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001"
+        assert inv.current_decision == (
+            "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_IMPLEMENTED_NO_ASSIGNMENT_GENERATION_OR_CLAIM_AUTHORIZATION"
+        )
+        assert inv.evidence["assignment_generation_implemented"] is False
 
     def test_production_authorization_release_gate_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"]
