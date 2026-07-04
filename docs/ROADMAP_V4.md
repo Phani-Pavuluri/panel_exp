@@ -525,7 +525,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`METHOD_BLOCKLIST_REMEDIATION_AND_PROMOTION_ROADMAP_001`** (docs/governance only; blocklist remains enforced) → ✅ **`ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001`** → ✅ **`STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001`** → ✅ **`GOVERNED_RANDOMIZATION_RUNTIME_001`** → ✅ **`SRM_BALANCE_READOUT_DIAGNOSTIC_001`** → `CLAIM_AUTHORIZATION_RUNTIME_001` → `TRUSTED_READOUT_REPORT_CONTRACT_001` → `TRUSTED_READOUT_REPORT_RUNTIME_001`.
+**Ordered next:** ✅ … → ✅ **`METHOD_BLOCKLIST_REMEDIATION_AND_PROMOTION_ROADMAP_001`** (docs/governance only; blocklist remains enforced) → ✅ **`ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001`** → ✅ **`STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001`** → ✅ **`GOVERNED_RANDOMIZATION_RUNTIME_001`** → ✅ **`SRM_BALANCE_READOUT_DIAGNOSTIC_001`** → ✅ **`CLAIM_AUTHORIZATION_RUNTIME_001`** → `TRUSTED_READOUT_REPORT_CONTRACT_001` → `TRUSTED_READOUT_REPORT_RUNTIME_001`.
 
 ### Audit-driven roadmap correction (2026-07-03)
 
@@ -535,7 +535,7 @@ Expanded adversarial audit verdict: **promising but incomplete**. See [`AUDIT_P0
 
 The roadmap now inserts **P0 governed runtime hardening** before claim authorization runtime. Priority order: decision safety → causal/statistical validity → lineage → governed execution maturity → claim/report authorization → advanced estimator expansion.
 
-**Recommended immediate next:** `CLAIM_AUTHORIZATION_RUNTIME_001`
+**Recommended immediate next:** `TRUSTED_READOUT_REPORT_CONTRACT_001`
 
 **Deferred / paused:** `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001` · `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_004_BOOTSTRAP_INFERENCE` · advanced estimator production (SDID, TROP, MTGP, BayesianTBR) · production TrustReport ops · LLM/MMM downstream decisioning.
 
@@ -552,8 +552,8 @@ The roadmap now inserts **P0 governed runtime hardening** before claim authoriza
 | `STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001` | complete | Enforce numeric FPR/coverage gates |
 | `GOVERNED_RANDOMIZATION_RUNTIME_001` | complete | Governed causal randomization path |
 | `SRM_BALANCE_READOUT_DIAGNOSTIC_001` | complete | SRM/balance evidence in readout chain |
-| `CLAIM_AUTHORIZATION_RUNTIME_001` | next P0 | P0 pre-claim hardening substantially complete |
-| `TRUSTED_READOUT_REPORT_CONTRACT_001` | deferred | After claim runtime |
+| `CLAIM_AUTHORIZATION_RUNTIME_001` | complete | Governed claim-type authorization from evidence gates |
+| `TRUSTED_READOUT_REPORT_CONTRACT_001` | next | After claim authorization runtime |
 | `TRUSTED_READOUT_REPORT_RUNTIME_001` | deferred | After report contract |
 | `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001` | pause | Sophistication before validity closure |
 | `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_004_BOOTSTRAP_INFERENCE` | defer | After DID remediation + thresholds |

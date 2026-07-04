@@ -248,6 +248,11 @@ def test_srm_balance_prerequisites_added_for_randomized_assignment() -> None:
     assert "srm_balance_readout_diagnostic_required" in report.execution_prerequisites
 
 
+def test_claim_authorization_prerequisite_added_when_enabled() -> None:
+    report = build_readout_plan(_base_request())
+    assert "claim_authorization_required" in report.execution_prerequisites
+
+
 def test_missing_diagnostics_and_sensitivity_require_plan() -> None:
     req = _base_request(required_diagnostics=[], required_sensitivity_checks=[])
     report = build_readout_plan(req)

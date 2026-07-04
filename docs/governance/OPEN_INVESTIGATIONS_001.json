@@ -2693,9 +2693,9 @@
           "BayesianTBRHorseShoe"
         ],
         "failed_scenarios": [],
-        "recommended_next_artifact": "CLAIM_AUTHORIZATION_RUNTIME_001"
+        "recommended_next_artifact": "TRUSTED_READOUT_REPORT_CONTRACT_001"
       },
-      "current_decision": "AUDIT_DRIVEN_P0_GOVERNED_RUNTIME_HARDENING_INSERTED_BEFORE_CLAIM_AUTHORIZATION_RUNTIME",
+      "current_decision": "AUDIT_DRIVEN_P0_GOVERNED_RUNTIME_HARDENING_SUBSTANTIALLY_COMPLETE_CLAIM_AUTHORIZATION_RUNTIME_IMPLEMENTED",
       "blocked_roles": [
         "trust_report",
         "calibration_signal",
@@ -2707,7 +2707,7 @@
         "budget_optimization"
       ],
       "target_artifact": "AUDIT_P0_GOVERNED_RUNTIME_HARDENING_001",
-      "revisit_trigger": "Upon completion of CLAIM_AUTHORIZATION_RUNTIME_001 acceptance criteria",
+      "revisit_trigger": "Upon completion of TRUSTED_READOUT_REPORT_CONTRACT_001 acceptance criteria",
       "decision_checkpoint": "P0 validity/cohesion hardening before claim authorization runtime",
       "blocking_policy": "No claim authorization runtime or trusted readout until P0 hardening acceptance criteria pass",
       "terminal_decisions": ["RESTRICT", "HARDEN", "PROMOTE"],
@@ -2764,6 +2764,59 @@
       "blocking_policy": "Diagnostic evidence only; no inference or claim authorization",
       "terminal_decisions": ["RESTRICT", "HARDEN", "PROMOTE"],
       "resolution_artifact": "SRM_BALANCE_READOUT_DIAGNOSTIC_001"
+    },
+    {
+      "investigation_id": "INV-CLAIM-AUTHORIZATION-RUNTIME-001",
+      "title": "Claim authorization runtime",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001",
+      "affected_combination": "claim_authorization_runtime",
+      "problem_class": [
+        "claim_authorization",
+        "evidence_gates",
+        "governed_runtime",
+        "claim_boundaries"
+      ],
+      "evidence": {
+        "depends_on": [
+          "CLAIM_AUTHORIZATION_CONTRACT_001",
+          "SRM_BALANCE_READOUT_DIAGNOSTIC_001",
+          "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001",
+          "STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001",
+          "PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001",
+          "DID_INSTRUMENT_ESTIMAND_UNIFICATION_001"
+        ],
+        "scope": "claim_authorization_runtime_implemented_no_trusted_report_or_production_authorization",
+        "claim_authorization_runtime_implemented": true,
+        "claim_authorization_evaluated": true,
+        "descriptive_claims_authorized_with_restrictions": true,
+        "claim_blockers_enforced": true,
+        "production_claims_blocked_without_required_evidence": true,
+        "statistical_significance_claims_blocked_without_inference": true,
+        "trusted_report_claims_blocked_without_trusted_report_runtime": true,
+        "production_authorization_granted": false,
+        "causal_claim_authorized": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "TRUSTED_READOUT_REPORT_CONTRACT_001"
+      },
+      "current_decision": "CLAIM_AUTHORIZATION_RUNTIME_IMPLEMENTED_NO_TRUSTED_REPORT_OR_PRODUCTION_AUTHORIZATION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Claim authorization before trusted readout contract/runtime",
+      "blocking_policy": "Claim-type authorization only; no production authorization or trusted report generation",
+      "terminal_decisions": ["RESTRICT", "HARDEN", "PROMOTE"],
+      "resolution_artifact": "CLAIM_AUTHORIZATION_RUNTIME_001"
     },
     {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
@@ -5118,7 +5171,7 @@
       "resolved_investigations": [],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "CLAIM_AUTHORIZATION_RUNTIME_001",
+      "next_artifact": "TRUSTED_READOUT_REPORT_CONTRACT_001",
       "resolution_artifact": null,
       "artifact_tags": [
         "audit_driven_roadmap_correction",
@@ -5132,7 +5185,29 @@
         "statistical_promotion_thresholds",
         "governed_randomization_runtime",
         "srm_balance_readout_diagnostic",
-        "claim_runtime_next"
+        "claim_authorization_runtime",
+        "trusted_readout_contract_next"
+      ]
+    },
+    {
+      "lane_id": "CLAIM-AUTHORIZATION-RUNTIME-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-CLAIM-AUTHORIZATION-RUNTIME-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "TRUSTED_READOUT_REPORT_CONTRACT_001",
+      "resolution_artifact": "CLAIM_AUTHORIZATION_RUNTIME_001",
+      "artifact_tags": [
+        "claim_authorization_runtime",
+        "claim_type_evidence_gates",
+        "restricted_descriptive_claims",
+        "production_claims_blocked",
+        "execution_runtime_integration",
+        "readout_plan_prerequisite",
+        "no_trusted_report_or_production_authorization"
       ]
     },
     {
@@ -5144,7 +5219,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "CLAIM_AUTHORIZATION_RUNTIME_001",
+      "next_artifact": "TRUSTED_READOUT_REPORT_CONTRACT_001",
       "resolution_artifact": "SRM_BALANCE_READOUT_DIAGNOSTIC_001",
       "artifact_tags": [
         "srm_balance_readout_diagnostic",
@@ -5165,7 +5240,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "CLAIM_AUTHORIZATION_RUNTIME_001",
+      "next_artifact": "TRUSTED_READOUT_REPORT_CONTRACT_001",
       "resolution_artifact": "GOVERNED_RANDOMIZATION_RUNTIME_001",
       "artifact_tags": [
         "governed_randomization_runtime",

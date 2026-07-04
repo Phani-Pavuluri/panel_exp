@@ -18,6 +18,10 @@ from panel_exp.validation.assignment_panel_integrity_runtime_001 import (
     ASSIGNMENT_PANEL_INTEGRITY_PASSED_WITH_WARNINGS,
     evaluate_assignment_panel_integrity,
 )
+from panel_exp.validation.claim_authorization_runtime_001 import (
+    build_claim_authorization_input_from_execution,
+    authorize_readout_claims,
+)
 from panel_exp.validation.did_instrument_estimand_registry_001 import (
     DID_2X2_POINT_ESTIMATE,
     is_did_bootstrap_inference_instrument,
@@ -1239,6 +1243,41 @@ def _evaluate_single_request(
         "warnings": list(_safe_str_list(warnings)),
         "blocking_reasons": list(_safe_str_list(blocking_reasons)),
     }
+
+    if req.get("claim_requests"):
+        claim_input = build_claim_authorization_input_from_execution(
+            {
+                "design_id": design_id,
+                "execution_status": execution_status,
+                "execution_packet": execution_packet,
+                "instrument_execution_results": [_to_dict(r) for r in results],
+            },
+            claim_requests=list(req.get("claim_requests") or []),
+            extra_evidence={
+                k: req[k]
+                for k in (
+                    "claim_scope",
+                    "production_context",
+                    "assignment_panel_integrity_report",
+                    "srm_balance_diagnostic_report",
+                    "governed_randomization_report",
+                    "diagnostics_sensitivity_report",
+                    "statistical_promotion_report",
+                    "production_catalog_report",
+                )
+                if k in req
+            },
+        )
+        claim_auth = authorize_readout_claims(claim_input)
+        if isinstance(claim_auth, list):
+            claim_auth = claim_auth[0]
+        execution_packet["claim_authorization_report"] = {
+            "overall_status": claim_auth.overall_status,
+            "restricted_claims": list(claim_auth.restricted_claims),
+            "blocked_claims": list(claim_auth.blocked_claims),
+            "blockers": list(claim_auth.blockers),
+            "claim_boundary_report": claim_auth.claim_boundary_report,
+        }
 
     return EstimatorInferenceExecutionRuntimeSingleReport(
         artifact_id=_ARTIFACT_ID,

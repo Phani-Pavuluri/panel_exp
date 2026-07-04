@@ -86,6 +86,7 @@ class ReadoutPlanRuntimeConfig:
     enforce_production_catalog_blocklist: bool = True
     enforce_statistical_promotion_thresholds: bool = True
     add_srm_balance_readout_prerequisites: bool = True
+    add_claim_authorization_prerequisites: bool = True
 
 
 _RANDOMIZED_ASSIGNMENT_CATEGORIES = frozenset({
@@ -734,6 +735,8 @@ def _evaluate_single_request(
     ]
     if cfg.add_srm_balance_readout_prerequisites and _is_randomized_assignment(req):
         prereq_base.append("srm_balance_readout_diagnostic_required")
+    if cfg.add_claim_authorization_prerequisites:
+        prereq_base.append("claim_authorization_required")
     execution_prerequisites = tuple(dict.fromkeys(prereq_base))
 
     packet = {
