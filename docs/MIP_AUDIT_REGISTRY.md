@@ -2456,6 +2456,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## METHOD-BLOCKLIST-REMEDIATION-AND-PROMOTION-ROADMAP-001 (2026-07-04)
+
+**Artifact:** [`docs/track_d/METHOD_BLOCKLIST_REMEDIATION_AND_PROMOTION_ROADMAP_001.md`](track_d/METHOD_BLOCKLIST_REMEDIATION_AND_PROMOTION_ROADMAP_001.md) · [`docs/track_d/archives/METHOD_BLOCKLIST_REMEDIATION_AND_PROMOTION_ROADMAP_001_summary.json`](track_d/archives/METHOD_BLOCKLIST_REMEDIATION_AND_PROMOTION_ROADMAP_001_summary.json)
+
+**Status:** **`blocked_method_remediation_and_promotion_roadmap_documented_no_unblock_or_runtime_changes`**
+
+**Verdict:** Documents full remediation, revisit, and promotion pathway for production-blocked, restricted, and research-only methods. Method maturity ladder, blocked-method revisit policy (8 gates), method-family remediation table, and future promotion review artifacts defined. Production blocklist remains enforced; no methods unblocked; no runtime behavior changed.
+
+**Next:** `ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001` · alternative: `STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001`. **Future promotion artifacts:** `METHOD_PROMOTION_REVIEW_CONTRACT_001` · `METHOD_PROMOTION_REVIEW_RUNTIME_001` · `METHOD_SPECIFIC_REMEDIATION_AND_RECHARACTERIZATION_001`.
+
+---
+
 ## AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001 (2026-07-03)
 
 **Lane ID:** `AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001`

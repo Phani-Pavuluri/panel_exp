@@ -2447,6 +2447,55 @@
       "resolution_artifact": "DID_INSTRUMENT_ESTIMAND_UNIFICATION_001"
     },
     {
+      "investigation_id": "INV-METHOD-BLOCKLIST-REMEDIATION-PROMOTION-ROADMAP-001",
+      "title": "Method blocklist remediation and promotion roadmap",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001",
+      "affected_combination": "blocked_method_remediation_and_promotion",
+      "problem_class": [
+        "production_blocklist",
+        "method_maturity",
+        "promotion_pathway",
+        "remediation_roadmap",
+        "claim_boundaries"
+      ],
+      "evidence": {
+        "depends_on": [
+          "PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001",
+          "DID_INSTRUMENT_ESTIMAND_UNIFICATION_001",
+          "AUDIT_P0_GOVERNED_RUNTIME_HARDENING_001",
+          "CLAIM_AUTHORIZATION_CONTRACT_001"
+        ],
+        "scope": "blocked_method_remediation_and_promotion_roadmap_documented_no_unblock_or_runtime_changes",
+        "blocked_method_revisit_policy_documented": true,
+        "method_maturity_ladder_documented": true,
+        "method_specific_remediation_lanes_documented": true,
+        "promotion_review_future_artifacts_defined": true,
+        "production_catalog_blocklist_remains_enforced": true,
+        "methods_unblocked": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001"
+      },
+      "current_decision": "BLOCKED_METHOD_REMEDIATION_AND_PROMOTION_ROADMAP_DOCUMENTED_NO_UNBLOCK_OR_RUNTIME_CHANGES",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Blocked-method remediation roadmap before assignment-panel integrity runtime",
+      "blocking_policy": "Docs/governance only; production blocklist remains enforced; no method unblock or runtime changes",
+      "terminal_decisions": ["RESTRICT", "HARDEN", "PROMOTE"],
+      "resolution_artifact": "METHOD_BLOCKLIST_REMEDIATION_AND_PROMOTION_ROADMAP_001"
+    },
+    {
       "investigation_id": "INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001",
       "title": "Audit-driven P0 governed runtime hardening",
       "status": "PLANNED",
@@ -2477,6 +2526,7 @@
         "recommended_sequence": [
           "PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001",
           "DID_INSTRUMENT_ESTIMAND_UNIFICATION_001",
+          "METHOD_BLOCKLIST_REMEDIATION_AND_PROMOTION_ROADMAP_001",
           "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001",
           "STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001",
           "GOVERNED_RANDOMIZATION_RUNTIME_001",
@@ -4899,6 +4949,25 @@
         "bootstrap_inference_separated",
         "twfe_library_separated",
         "no_bootstrap_or_claim_authorization"
+      ]
+    },
+    {
+      "lane_id": "METHOD-BLOCKLIST-REMEDIATION-AND-PROMOTION-ROADMAP-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-METHOD-BLOCKLIST-REMEDIATION-PROMOTION-ROADMAP-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001",
+      "resolution_artifact": "METHOD_BLOCKLIST_REMEDIATION_AND_PROMOTION_ROADMAP_001",
+      "artifact_tags": [
+        "blocked_method_remediation",
+        "promotion_roadmap",
+        "method_maturity_ladder",
+        "production_blocklist_enforced",
+        "no_unblock_or_runtime_changes"
       ]
     },
     {

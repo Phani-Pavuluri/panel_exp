@@ -1755,6 +1755,27 @@ class TestOpenInvestigationRegistry001:
             "DID_INSTRUMENT_ESTIMAND_UNIFIED_NO_BOOTSTRAP_OR_CLAIM_AUTHORIZATION"
         )
 
+    def test_method_blocklist_remediation_promotion_roadmap_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "METHOD-BLOCKLIST-REMEDIATION-AND-PROMOTION-ROADMAP-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "METHOD_BLOCKLIST_REMEDIATION_AND_PROMOTION_ROADMAP_001"
+        assert lane["next_artifact"] == "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001"
+        assert "INV-METHOD-BLOCKLIST-REMEDIATION-PROMOTION-ROADMAP-001" in lane["resolved_investigations"]
+
+    def test_method_blocklist_remediation_promotion_roadmap_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-METHOD-BLOCKLIST-REMEDIATION-PROMOTION-ROADMAP-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "METHOD_BLOCKLIST_REMEDIATION_AND_PROMOTION_ROADMAP_001"
+        assert inv.current_decision == (
+            "BLOCKED_METHOD_REMEDIATION_AND_PROMOTION_ROADMAP_DOCUMENTED_NO_UNBLOCK_OR_RUNTIME_CHANGES"
+        )
+        assert inv.evidence["methods_unblocked"] is False
+        assert inv.evidence["production_catalog_blocklist_remains_enforced"] is True
+
     def test_production_authorization_release_gate_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"]
         assert inv.status == "RESOLVED"
