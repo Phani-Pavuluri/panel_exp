@@ -85,6 +85,20 @@ class ReadoutPlanRuntimeConfig:
     require_sensitivity_plan: bool = True
     enforce_production_catalog_blocklist: bool = True
     enforce_statistical_promotion_thresholds: bool = True
+    add_srm_balance_readout_prerequisites: bool = True
+
+
+_RANDOMIZED_ASSIGNMENT_CATEGORIES = frozenset({
+    "RANDOMIZED_ASSIGNMENT",
+    "GOVERNED_RANDOMIZATION",
+    "RERANDOMIZED_ASSIGNMENT",
+})
+
+_SRM_BALANCE_DIAGNOSTIC_PREREQUISITES = (
+    "srm_balance_readout_diagnostic",
+    "sample_ratio_mismatch_diagnostic",
+    "covariate_balance_diagnostic",
+)
 
 
 @dataclass(frozen=True)
@@ -477,6 +491,16 @@ def _ensure_required_claim_scope_fields(
     return normalized, caveats
 
 
+def _is_randomized_assignment(req: dict[str, Any]) -> bool:
+    assignment_plan = _to_dict(req.get("assignment_plan"))
+    assignment_candidate = _to_dict(req.get("assignment_candidate"))
+    for obj in (assignment_plan, assignment_candidate):
+        category = _token(obj.get("assignment_algorithm_category") or obj.get("algorithm_category"))
+        if category in _RANDOMIZED_ASSIGNMENT_CATEGORIES:
+            return True
+    return _token(req.get("assignment_type")) == "RANDOMIZED_ASSIGNMENT"
+
+
 def _boundary_report(
     *,
     generated: bool,
@@ -532,6 +556,10 @@ def _evaluate_single_request(
     stack: list[PlannedReadoutInstrument] = []
 
     required_diagnostics = tuple(_as_list_of_str(req.get("required_diagnostics")))
+    if cfg.add_srm_balance_readout_prerequisites and _is_randomized_assignment(req):
+        required_diagnostics = tuple(
+            dict.fromkeys(list(required_diagnostics) + list(_SRM_BALANCE_DIAGNOSTIC_PREREQUISITES))
+        )
     required_sensitivity = tuple(_as_list_of_str(req.get("required_sensitivity_checks")))
     claim_eligibility = _as_list_of_dict(req.get("claim_eligibility_reports"))
     production_gov = _to_dict(req.get("production_governance_config"))
@@ -693,21 +721,20 @@ def _evaluate_single_request(
     if estimand_token in ("BUDGET_REALLOCATION", "SOURCE_DESTINATION_REALLOCATION"):
         caveats.append("budget reallocation estimand blocks simple ROI claim scope")
 
-    execution_prerequisites = tuple(
-        dict.fromkeys(
-            [
-                "readout_method_governance_gate_passed",
-                "assignment_artifact_available",
-                "reproducibility_manifest_available",
-                "instrument_slotting_completed",
-                "estimand_scope_declared",
-                "uncertainty_scope_declared",
-                "diagnostic_prerequisites_declared",
-                "sensitivity_prerequisites_declared",
-                "claim_scope_declared_with_caveats",
-            ]
-        )
-    )
+    prereq_base = [
+        "readout_method_governance_gate_passed",
+        "assignment_artifact_available",
+        "reproducibility_manifest_available",
+        "instrument_slotting_completed",
+        "estimand_scope_declared",
+        "uncertainty_scope_declared",
+        "diagnostic_prerequisites_declared",
+        "sensitivity_prerequisites_declared",
+        "claim_scope_declared_with_caveats",
+    ]
+    if cfg.add_srm_balance_readout_prerequisites and _is_randomized_assignment(req):
+        prereq_base.append("srm_balance_readout_diagnostic_required")
+    execution_prerequisites = tuple(dict.fromkeys(prereq_base))
 
     packet = {
         "artifact_id": _ARTIFACT_ID,

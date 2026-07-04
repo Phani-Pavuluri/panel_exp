@@ -262,6 +262,46 @@ def test_governed_did_diagnostic_integrated_when_config_enabled() -> None:
     assert report.claim_boundary_report["diagnostic_result_computed"] is True
 
 
+def test_srm_balance_diagnostic_integrated_when_config_enabled() -> None:
+    allocations = [
+        {"unit_id": "u1", "assigned_cell_id": "C0", "assigned_cell_role": "CONTROL", "treated": 0},
+        {"unit_id": "u2", "assigned_cell_id": "C0", "assigned_cell_role": "CONTROL", "treated": 0},
+        {"unit_id": "u3", "assigned_cell_id": "T1", "assigned_cell_role": "TREATMENT", "treated": 1},
+        {"unit_id": "u4", "assigned_cell_id": "T1", "assigned_cell_role": "TREATMENT", "treated": 1},
+    ]
+    panel = [
+        {"unit_id": "u1", "cell_id": "C0", "treated": 0},
+        {"unit_id": "u2", "cell_id": "C0", "treated": 0},
+        {"unit_id": "u3", "cell_id": "T1", "treated": 1},
+        {"unit_id": "u4", "cell_id": "T1", "treated": 1},
+    ]
+    req = _base_request(
+        panel_data=panel,
+        unit_allocations=allocations,
+        assignment_artifact={"artifact_id": "assign_001"},
+        diagnostic_requirements=[
+            {
+                "requirement_id": "diag_srm",
+                "requirement_type": "SRM_DIAGNOSTIC",
+                "applies_to_instrument_id": "DID_BOOTSTRAP",
+                "blocking_if_missing": True,
+                "blocking_if_failed": True,
+            }
+        ],
+        sensitivity_requirements=[],
+        diagnostic_results=[],
+        sensitivity_results=[],
+        assignment_panel_integrity_report={"status": "ASSIGNMENT_PANEL_INTEGRITY_PASSED"},
+    )
+    cfg = ReadoutDiagnosticsSensitivityRuntimeConfig(
+        block_on_missing_sensitivity_requirements=False,
+        enable_srm_balance_readout_diagnostic=True,
+    )
+    report = evaluate_readout_diagnostics_sensitivity(req, config=cfg)
+    assert report.diagnostic_evidence_packets[0]["result_status"] == "DIAGNOSTIC_PASSED"
+    assert report.claim_boundary_report["diagnostic_result_computed"] is True
+
+
 def test_missing_diagnostic_nonblocking_provisionalizes() -> None:
     cfg = ReadoutDiagnosticsSensitivityRuntimeConfig(
         block_on_missing_required_diagnostic_results=False

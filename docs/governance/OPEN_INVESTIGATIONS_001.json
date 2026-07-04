@@ -2693,7 +2693,7 @@
           "BayesianTBRHorseShoe"
         ],
         "failed_scenarios": [],
-        "recommended_next_artifact": "SRM_BALANCE_READOUT_DIAGNOSTIC_001"
+        "recommended_next_artifact": "CLAIM_AUTHORIZATION_RUNTIME_001"
       },
       "current_decision": "AUDIT_DRIVEN_P0_GOVERNED_RUNTIME_HARDENING_INSERTED_BEFORE_CLAIM_AUTHORIZATION_RUNTIME",
       "blocked_roles": [
@@ -2707,11 +2707,63 @@
         "budget_optimization"
       ],
       "target_artifact": "AUDIT_P0_GOVERNED_RUNTIME_HARDENING_001",
-      "revisit_trigger": "Upon completion of SRM_BALANCE_READOUT_DIAGNOSTIC_001 and P0 acceptance criteria",
+      "revisit_trigger": "Upon completion of CLAIM_AUTHORIZATION_RUNTIME_001 acceptance criteria",
       "decision_checkpoint": "P0 validity/cohesion hardening before claim authorization runtime",
       "blocking_policy": "No claim authorization runtime or trusted readout until P0 hardening acceptance criteria pass",
       "terminal_decisions": ["RESTRICT", "HARDEN", "PROMOTE"],
       "resolution_artifact": null
+    },
+    {
+      "investigation_id": "INV-SRM-BALANCE-READOUT-DIAGNOSTIC-001",
+      "title": "SRM balance readout diagnostic runtime",
+      "status": "RESOLVED",
+      "priority": "P1",
+      "discovered_by": "AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001",
+      "affected_combination": "srm_balance_readout_diagnostic_runtime",
+      "problem_class": [
+        "sample_ratio_mismatch",
+        "covariate_balance",
+        "readout_diagnostics",
+        "governed_runtime",
+        "claim_boundaries"
+      ],
+      "evidence": {
+        "depends_on": [
+          "GOVERNED_RANDOMIZATION_RUNTIME_001",
+          "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001",
+          "STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001",
+          "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_001"
+        ],
+        "scope": "srm_balance_readout_diagnostic_implemented_no_inference_or_claim_authorization",
+        "srm_balance_diagnostic_runtime_implemented": true,
+        "sample_ratio_mismatch_diagnostic_evaluated": true,
+        "realized_assignment_balance_evaluated": true,
+        "covariate_balance_smd_evaluated": true,
+        "baseline_outcome_balance_evaluated": true,
+        "diagnostics_runtime_integrated_with_srm_balance": true,
+        "readout_plan_prerequisite_added": true,
+        "effect_estimate_computed": false,
+        "claim_authorization_runtime_implemented": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "CLAIM_AUTHORIZATION_RUNTIME_001"
+      },
+      "current_decision": "SRM_BALANCE_READOUT_DIAGNOSTIC_IMPLEMENTED_NO_INFERENCE_OR_CLAIM_AUTHORIZATION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "SRM/balance diagnostic before claim authorization runtime",
+      "blocking_policy": "Diagnostic evidence only; no inference or claim authorization",
+      "terminal_decisions": ["RESTRICT", "HARDEN", "PROMOTE"],
+      "resolution_artifact": "SRM_BALANCE_READOUT_DIAGNOSTIC_001"
     },
     {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
@@ -5066,7 +5118,7 @@
       "resolved_investigations": [],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "SRM_BALANCE_READOUT_DIAGNOSTIC_001",
+      "next_artifact": "CLAIM_AUTHORIZATION_RUNTIME_001",
       "resolution_artifact": null,
       "artifact_tags": [
         "audit_driven_roadmap_correction",
@@ -5079,7 +5131,29 @@
         "assignment_panel_integrity",
         "statistical_promotion_thresholds",
         "governed_randomization_runtime",
-        "claim_runtime_deferred"
+        "srm_balance_readout_diagnostic",
+        "claim_runtime_next"
+      ]
+    },
+    {
+      "lane_id": "SRM-BALANCE-READOUT-DIAGNOSTIC-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-SRM-BALANCE-READOUT-DIAGNOSTIC-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "CLAIM_AUTHORIZATION_RUNTIME_001",
+      "resolution_artifact": "SRM_BALANCE_READOUT_DIAGNOSTIC_001",
+      "artifact_tags": [
+        "srm_balance_readout_diagnostic",
+        "sample_ratio_mismatch_diagnostic",
+        "covariate_balance_smd",
+        "baseline_outcome_balance",
+        "diagnostics_runtime_integration",
+        "readout_plan_prerequisite",
+        "no_inference_or_claim_authorization"
       ]
     },
     {
@@ -5091,7 +5165,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "SRM_BALANCE_READOUT_DIAGNOSTIC_001",
+      "next_artifact": "CLAIM_AUTHORIZATION_RUNTIME_001",
       "resolution_artifact": "GOVERNED_RANDOMIZATION_RUNTIME_001",
       "artifact_tags": [
         "governed_randomization_runtime",

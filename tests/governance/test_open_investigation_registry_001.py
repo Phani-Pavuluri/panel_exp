@@ -1704,7 +1704,7 @@ class TestOpenInvestigationRegistry001:
             if b["lane_id"] == "AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001"
         )
         assert lane["status"] == "active"
-        assert lane["next_artifact"] == "SRM_BALANCE_READOUT_DIAGNOSTIC_001"
+        assert lane["next_artifact"] == "CLAIM_AUTHORIZATION_RUNTIME_001"
         assert lane["resolution_artifact"] is None
         assert "INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001" in lane["open_investigations"]
 
@@ -1712,7 +1712,7 @@ class TestOpenInvestigationRegistry001:
         inv = investigations_by_id()["INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001"]
         assert inv.status == "PLANNED"
         assert inv.priority == "P0"
-        assert inv.evidence["recommended_next_artifact"] == "SRM_BALANCE_READOUT_DIAGNOSTIC_001"
+        assert inv.evidence["recommended_next_artifact"] == "CLAIM_AUTHORIZATION_RUNTIME_001"
         assert inv.current_decision == (
             "AUDIT_DRIVEN_P0_GOVERNED_RUNTIME_HARDENING_INSERTED_BEFORE_CLAIM_AUTHORIZATION_RUNTIME"
         )
@@ -1824,7 +1824,7 @@ class TestOpenInvestigationRegistry001:
         )
         assert lane["status"] == "complete"
         assert lane["resolution_artifact"] == "GOVERNED_RANDOMIZATION_RUNTIME_001"
-        assert lane["next_artifact"] == "SRM_BALANCE_READOUT_DIAGNOSTIC_001"
+        assert lane["next_artifact"] == "CLAIM_AUTHORIZATION_RUNTIME_001"
         assert "INV-GOVERNED-RANDOMIZATION-RUNTIME-001" in lane["resolved_investigations"]
 
     def test_governed_randomization_runtime_investigation_resolved(self) -> None:
@@ -1835,6 +1835,26 @@ class TestOpenInvestigationRegistry001:
             "GOVERNED_RANDOMIZATION_RUNTIME_IMPLEMENTED_NO_INFERENCE_OR_CLAIM_AUTHORIZATION"
         )
         assert inv.evidence["rerandomization_optimization_implemented"] is False
+
+    def test_srm_balance_readout_diagnostic_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "SRM-BALANCE-READOUT-DIAGNOSTIC-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "SRM_BALANCE_READOUT_DIAGNOSTIC_001"
+        assert lane["next_artifact"] == "CLAIM_AUTHORIZATION_RUNTIME_001"
+        assert "INV-SRM-BALANCE-READOUT-DIAGNOSTIC-001" in lane["resolved_investigations"]
+
+    def test_srm_balance_readout_diagnostic_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-SRM-BALANCE-READOUT-DIAGNOSTIC-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "SRM_BALANCE_READOUT_DIAGNOSTIC_001"
+        assert inv.current_decision == (
+            "SRM_BALANCE_READOUT_DIAGNOSTIC_IMPLEMENTED_NO_INFERENCE_OR_CLAIM_AUTHORIZATION"
+        )
+        assert inv.evidence["effect_estimate_computed"] is False
 
     def test_production_authorization_release_gate_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"]

@@ -22,6 +22,12 @@ from panel_exp.validation.readout_did_diagnostics_002 import (
     is_governed_did_diagnostic_type,
     to_provided_diagnostic_result,
 )
+from panel_exp.validation.srm_balance_readout_diagnostic_001 import (
+    SRM_BALANCE_DIAGNOSTIC_NOT_EVALUATED,
+    evaluate_srm_balance_readout_diagnostic,
+    is_srm_balance_diagnostic_type,
+    to_provided_diagnostic_result as srm_to_provided_diagnostic_result,
+)
 from panel_exp.validation.estimator_inference_did_executor_003 import GOVERNED_DID_INSTRUMENT_IDS
 
 _ARTIFACT_ID = "READOUT_DIAGNOSTICS_AND_SENSITIVITY_RUNTIME_001"
@@ -133,6 +139,7 @@ class ReadoutDiagnosticsSensitivityRuntimeConfig:
     block_on_inconclusive_blocking_evidence: bool = False
     allow_diagnostic_only_for_production_claim: bool = False
     enable_governed_did_coverage_diagnostic: bool = False
+    enable_srm_balance_readout_diagnostic: bool = True
     enable_statistical_parallel_trends: bool = False
     enable_p_value_computation: bool = False
     enable_confidence_interval_computation: bool = False
@@ -497,6 +504,53 @@ def _maybe_compute_governed_did_diagnostic(
     return to_provided_diagnostic_result(diag_result)
 
 
+def _maybe_compute_srm_balance_diagnostic(
+    req_row: dict[str, Any],
+    *,
+    req: dict[str, Any],
+    execution_artifacts: dict[str, Any],
+    execution_artifact_id: str,
+    cfg: ReadoutDiagnosticsSensitivityRuntimeConfig,
+) -> dict[str, Any] | None:
+    if not cfg.enable_srm_balance_readout_diagnostic:
+        return None
+    requirement_type = str(req_row.get("requirement_type") or "")
+    if not is_srm_balance_diagnostic_type(requirement_type):
+        return None
+    panel_data = req.get("panel_data") or req.get("panel_records") or execution_artifacts.get("panel_data")
+    unit_allocations = (
+        req.get("unit_allocations")
+        or execution_artifacts.get("unit_allocations")
+        or _to_dict(req.get("assignment_artifact")).get("unit_allocations")
+    )
+    if panel_data is None and not req.get("panel_records"):
+        return None
+    if not unit_allocations:
+        return None
+    diag_input = {
+        "request_id": req_row.get("requirement_id"),
+        "assignment_artifact": req.get("assignment_artifact") or execution_artifacts.get("assignment_artifact"),
+        "assignment_artifact_id": req.get("assignment_artifact_id") or execution_artifacts.get("assignment_artifact_id"),
+        "unit_allocations": unit_allocations,
+        "panel_records": panel_data or req.get("panel_records"),
+        "covariate_fields": req.get("covariate_fields") or req_row.get("covariate_fields"),
+        "panel_outcome_field": req.get("outcome_field") or req.get("panel_outcome_field"),
+        "panel_time_field": req.get("time_field") or req.get("panel_time_field"),
+        "pre_period_values": req.get("pre_period") or req.get("pre_period_values"),
+        "production_context": req.get("production_context"),
+        "assignment_panel_integrity_report": (
+            req.get("assignment_panel_integrity_report")
+            or execution_artifacts.get("assignment_panel_integrity_report")
+        ),
+    }
+    diag_result = evaluate_srm_balance_readout_diagnostic(diag_input)
+    if isinstance(diag_result, list):
+        return None
+    if diag_result.status == SRM_BALANCE_DIAGNOSTIC_NOT_EVALUATED:
+        return None
+    return srm_to_provided_diagnostic_result(diag_result)
+
+
 def _evaluate_sensitivity_requirement(
     req: dict[str, Any],
     *,
@@ -716,6 +770,14 @@ def _evaluate_single_request(
             execution_artifact_id=execution_artifact_id,
             cfg=cfg,
         )
+        if computed_result is None:
+            computed_result = _maybe_compute_srm_balance_diagnostic(
+                req_row,
+                req=req,
+                execution_artifacts=execution_artifacts,
+                execution_artifact_id=execution_artifact_id,
+                cfg=cfg,
+            )
         if computed_result is not None:
             provided_result = computed_result
             governed_diagnostic_computed = True

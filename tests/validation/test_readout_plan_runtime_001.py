@@ -236,6 +236,18 @@ def test_diagnostics_and_sensitivity_prerequisites_preserved() -> None:
     assert report.claim_boundary_report.execution_prerequisites_generated
 
 
+def test_srm_balance_prerequisites_added_for_randomized_assignment() -> None:
+    req = _base_request(
+        assignment_plan={
+            "artifact_id": "assignment_plan_001",
+            "assignment_algorithm_category": "RANDOMIZED_ASSIGNMENT",
+        },
+    )
+    report = build_readout_plan(req)
+    assert "srm_balance_readout_diagnostic" in report.required_diagnostics
+    assert "srm_balance_readout_diagnostic_required" in report.execution_prerequisites
+
+
 def test_missing_diagnostics_and_sensitivity_require_plan() -> None:
     req = _base_request(required_diagnostics=[], required_sensitivity_checks=[])
     report = build_readout_plan(req)
