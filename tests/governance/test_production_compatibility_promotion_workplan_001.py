@@ -1151,14 +1151,14 @@ def test_governance_audit_p0_hardening_lane_active() -> None:
         if b["lane_id"] == "AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001"
     )
     assert lane["status"] == "active"
-    assert lane["next_artifact"] == "TRUSTED_READOUT_REPORT_RUNTIME_001"
+    assert lane["next_artifact"] == "METHOD_PROMOTION_REVIEW_CONTRACT_001"
     assert "INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001" in lane["open_investigations"]
 
 
 def test_governance_audit_p0_hardening_investigation_planned() -> None:
     inv = investigations_by_id()["INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001"]
     assert inv.status == "PLANNED"
-    assert inv.evidence["recommended_next_artifact"] == "TRUSTED_READOUT_REPORT_RUNTIME_001"
+    assert inv.evidence["recommended_next_artifact"] == "METHOD_PROMOTION_REVIEW_CONTRACT_001"
     assert "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001" in inv.evidence["recommended_sequence"]
 
 
@@ -1192,7 +1192,7 @@ def test_governance_governed_randomization_runtime_lane_complete() -> None:
     )
     assert lane["status"] == "complete"
     assert lane["resolution_artifact"] == "GOVERNED_RANDOMIZATION_RUNTIME_001"
-    assert lane["next_artifact"] == "TRUSTED_READOUT_REPORT_RUNTIME_001"
+    assert lane["next_artifact"] == "METHOD_PROMOTION_REVIEW_CONTRACT_001"
 
 
 def test_governance_claim_authorization_runtime_lane_complete() -> None:
@@ -1203,7 +1203,7 @@ def test_governance_claim_authorization_runtime_lane_complete() -> None:
     )
     assert lane["status"] == "complete"
     assert lane["resolution_artifact"] == "CLAIM_AUTHORIZATION_RUNTIME_001"
-    assert lane["next_artifact"] == "TRUSTED_READOUT_REPORT_RUNTIME_001"
+    assert lane["next_artifact"] == "METHOD_PROMOTION_REVIEW_CONTRACT_001"
     assert "INV-CLAIM-AUTHORIZATION-RUNTIME-001" in lane["resolved_investigations"]
 
 
@@ -1215,7 +1215,7 @@ def test_governance_srm_balance_readout_diagnostic_lane_complete() -> None:
     )
     assert lane["status"] == "complete"
     assert lane["resolution_artifact"] == "SRM_BALANCE_READOUT_DIAGNOSTIC_001"
-    assert lane["next_artifact"] == "TRUSTED_READOUT_REPORT_RUNTIME_001"
+    assert lane["next_artifact"] == "METHOD_PROMOTION_REVIEW_CONTRACT_001"
     assert "INV-SRM-BALANCE-READOUT-DIAGNOSTIC-001" in lane["resolved_investigations"]
 
 
@@ -1227,9 +1227,34 @@ def test_governance_trusted_readout_report_contract_lane_complete() -> None:
     )
     assert lane["status"] == "complete"
     assert lane["resolution_artifact"] == "TRUSTED_READOUT_REPORT_CONTRACT_001"
-    assert lane["next_artifact"] == "TRUSTED_READOUT_REPORT_RUNTIME_001"
+    assert lane["next_artifact"] == "METHOD_PROMOTION_REVIEW_CONTRACT_001"
     assert "INV-TRUSTED-READOUT-REPORT-CONTRACT-001" in lane["resolved_investigations"]
     assert "no_runtime_or_report_generation" in lane["artifact_tags"]
+
+
+def test_governance_trusted_readout_report_runtime_lane_complete() -> None:
+    reg = load_registry()
+    lane = next(
+        b for b in reg["roadmap_lane_bindings"]
+        if b["lane_id"] == "TRUSTED-READOUT-REPORT-RUNTIME-001"
+    )
+    assert lane["status"] == "complete"
+    assert lane["resolution_artifact"] == "TRUSTED_READOUT_REPORT_RUNTIME_001"
+    assert lane["next_artifact"] == "METHOD_PROMOTION_REVIEW_CONTRACT_001"
+    assert "INV-TRUSTED-READOUT-REPORT-RUNTIME-001" in lane["resolved_investigations"]
+    assert "no_production_authorization_or_narrative_generation" in lane["artifact_tags"]
+
+
+def test_governance_trusted_readout_report_runtime_investigation_resolved() -> None:
+    inv = investigations_by_id()["INV-TRUSTED-READOUT-REPORT-RUNTIME-001"]
+    assert inv.status == "RESOLVED"
+    assert inv.resolution_artifact == "TRUSTED_READOUT_REPORT_RUNTIME_001"
+    assert inv.current_decision == (
+        "TRUSTED_READOUT_REPORT_RUNTIME_IMPLEMENTED_NO_PRODUCTION_AUTHORIZATION_OR_NARRATIVE_GENERATION"
+    )
+    assert inv.evidence["trusted_readout_report_runtime_implemented"] is True
+    assert inv.evidence["production_authorization_granted"] is False
+    assert inv.evidence["recommended_next_artifact"] == "METHOD_PROMOTION_REVIEW_CONTRACT_001"
 
 
 def test_governance_trusted_readout_report_contract_investigation_resolved() -> None:

@@ -2524,7 +2524,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Defines trusted readout report contract: report status taxonomy, 18-section taxonomy, evidence bundle requirements, claim binding policy, redaction/caveat policy, packet/failure semantics, and future runtime acceptance criteria. Contract only; no trusted report runtime, no report generation, no authorized claim text, no production authorization (`failed_scenarios: []`).
 
-**Next:** `TRUSTED_READOUT_REPORT_RUNTIME_001` · alternative: `METHOD_PROMOTION_REVIEW_CONTRACT_001`.
+**Next:** ✅ `TRUSTED_READOUT_REPORT_RUNTIME_001` · alternative: `METHOD_PROMOTION_REVIEW_CONTRACT_001`.
+
+---
+
+## TRUSTED-READOUT-REPORT-RUNTIME-001 (2026-07-04)
+
+**Artifact:** [`docs/track_d/TRUSTED_READOUT_REPORT_RUNTIME_001_REPORT.md`](track_d/TRUSTED_READOUT_REPORT_RUNTIME_001_REPORT.md) · [`docs/track_d/archives/TRUSTED_READOUT_REPORT_RUNTIME_001_summary.json`](track_d/archives/TRUSTED_READOUT_REPORT_RUNTIME_001_summary.json) · [`panel_exp/validation/trusted_readout_report_runtime_001.py`](../panel_exp/validation/trusted_readout_report_runtime_001.py)
+
+**Status:** **`trusted_readout_report_runtime_implemented_no_production_authorization_or_narrative_generation`**
+
+**Verdict:** Governed trusted readout report runtime assembles structured report packets from claim authorization and typed evidence. Section redaction/blocking, caveat propagation, claim binding, lineage/provenance hashing. Execution and readout plan integration. No narrative generation, no production authorization (`failed_scenarios: []`).
+
+**Next:** `METHOD_PROMOTION_REVIEW_CONTRACT_001` · alternative: `METHOD_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
@@ -2550,9 +2562,9 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Expanded adversarial audit found P0 validity/cohesion gaps before claim authorization runtime. `CLAIM_AUTHORIZATION_CONTRACT_001` remains complete and safe (contract-only). Roadmap inserts P0 hardening lane before `CLAIM_AUTHORIZATION_RUNTIME_001`. No runtime authorization added by this audit update.
 
-**Immediate next:** `TRUSTED_READOUT_REPORT_RUNTIME_001`
+**Immediate next:** `METHOD_PROMOTION_REVIEW_CONTRACT_001`
 
-**P0 sequence:** ✅ blocklist enforcement → ✅ DID estimand unification → ✅ assignment-panel integrity → ✅ statistical threshold enforcement → ✅ governed randomization → ✅ SRM/balance diagnostic → ✅ claim authorization runtime → ✅ trusted readout contract → trusted readout runtime.
+**P0 sequence:** ✅ blocklist enforcement → ✅ DID estimand unification → ✅ assignment-panel integrity → ✅ statistical threshold enforcement → ✅ governed randomization → ✅ SRM/balance diagnostic → ✅ claim authorization runtime → ✅ trusted readout contract → ✅ trusted readout runtime.
 
 **Deferred:** AugSynth/ASCM remediation · bootstrap inference runtime · SDID/TROP/MTGP/BayesianTBR production · TrustReport product ops · LLM/MMM decisioning.
 

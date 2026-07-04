@@ -22,6 +22,10 @@ from panel_exp.validation.claim_authorization_runtime_001 import (
     build_claim_authorization_input_from_execution,
     authorize_readout_claims,
 )
+from panel_exp.validation.trusted_readout_report_runtime_001 import (
+    build_trusted_readout_report_input_from_execution,
+    generate_trusted_readout_report,
+)
 from panel_exp.validation.did_instrument_estimand_registry_001 import (
     DID_2X2_POINT_ESTIMATE,
     is_did_bootstrap_inference_instrument,
@@ -1277,6 +1281,62 @@ def _evaluate_single_request(
             "blocked_claims": list(claim_auth.blocked_claims),
             "blockers": list(claim_auth.blockers),
             "claim_boundary_report": claim_auth.claim_boundary_report,
+            "claim_authorizations": [
+                {
+                    "claim_type": d.claim_type,
+                    "authorization_status": d.authorization_status,
+                    "claim_authorization_id": f"claim_auth_{d.claim_type.lower()}_{i}",
+                    "caveat_codes": list(d.caveat_codes),
+                    "blockers": list(d.blockers),
+                    "satisfied_evidence": list(d.satisfied_evidence),
+                }
+                for i, d in enumerate(claim_auth.claim_authorizations)
+            ],
+            "caveats": list(claim_auth.caveats),
+        }
+
+    if req.get("generate_trusted_report") and req.get("claim_requests"):
+        trusted_input = build_trusted_readout_report_input_from_execution(
+            {
+                "design_id": design_id,
+                "execution_packet": execution_packet,
+                "instrument_execution_results": [_to_dict(r) for r in results],
+                "execution_artifact_manifest": artifact_manifest,
+                "execution_provenance_manifest": provenance_manifest,
+            },
+            extra_evidence={
+                k: req[k]
+                for k in (
+                    "claim_scope",
+                    "claim_requests",
+                    "production_context",
+                    "assignment_panel_integrity_report",
+                    "srm_balance_diagnostic_report",
+                    "governed_randomization_report",
+                    "diagnostics_sensitivity_report",
+                    "statistical_promotion_report",
+                    "production_catalog_report",
+                    "method_suitability_report",
+                    "trusted_surface_policy",
+                    "lineage_manifest",
+                    "evidence_sources",
+                )
+                if k in req
+            },
+        )
+        trusted_report = generate_trusted_readout_report(trusted_input)
+        if isinstance(trusted_report, list):
+            trusted_report = trusted_report[0]
+        execution_packet["trusted_readout_report"] = {
+            "report_id": trusted_report.report_id,
+            "report_status": trusted_report.report_status,
+            "provenance_hash": trusted_report.provenance_hash,
+            "allowed_sections": list(trusted_report.allowed_sections),
+            "restricted_sections": list(trusted_report.restricted_sections),
+            "redacted_sections": list(trusted_report.redacted_sections),
+            "blocked_sections": list(trusted_report.blocked_sections),
+            "required_caveats": list(trusted_report.required_caveats),
+            "claim_boundary_report": trusted_report.claim_boundary_report,
         }
 
     return EstimatorInferenceExecutionRuntimeSingleReport(

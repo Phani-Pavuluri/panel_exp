@@ -87,6 +87,7 @@ class ReadoutPlanRuntimeConfig:
     enforce_statistical_promotion_thresholds: bool = True
     add_srm_balance_readout_prerequisites: bool = True
     add_claim_authorization_prerequisites: bool = True
+    add_trusted_readout_report_prerequisites: bool = True
 
 
 _RANDOMIZED_ASSIGNMENT_CATEGORIES = frozenset({
@@ -737,6 +738,8 @@ def _evaluate_single_request(
         prereq_base.append("srm_balance_readout_diagnostic_required")
     if cfg.add_claim_authorization_prerequisites:
         prereq_base.append("claim_authorization_required")
+    if cfg.add_trusted_readout_report_prerequisites:
+        prereq_base.append("trusted_readout_report_required")
     execution_prerequisites = tuple(dict.fromkeys(prereq_base))
 
     packet = {
