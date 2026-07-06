@@ -525,13 +525,13 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`METHOD_PROMOTION_REVIEW_CONTRACT_001`** → ✅ **`METHOD_PROMOTION_REVIEW_RUNTIME_001`** → `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001`.
+**Ordered next:** ✅ … → ✅ **`METHOD_PROMOTION_REVIEW_RUNTIME_001`** → ✅ **`PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001`** → `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ### Audit-driven roadmap correction (2026-07-03)
 
-`METHOD_PROMOTION_REVIEW_RUNTIME_001` is complete. Governed promotion review packets assemble from existing evidence without method promotion or production authorization.
+`PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001` is complete. Production compatibility review is stricter than method promotion eligibility; contract only — no runtime or production authorization.
 
-**Recommended immediate next:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001`
+**Recommended immediate next:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`
 
 **Deferred / paused:** `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001` · `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_004_BOOTSTRAP_INFERENCE` · advanced estimator production (SDID, TROP, MTGP, BayesianTBR) · production TrustReport ops · LLM/MMM downstream decisioning.
 
@@ -553,7 +553,8 @@ Foundation and compatibility audits ✅
 | `TRUSTED_READOUT_REPORT_RUNTIME_001` | complete | Structured trusted report packet runtime; no narrative or production authorization |
 | `METHOD_PROMOTION_REVIEW_CONTRACT_001` | complete | Method promotion review contract; no runtime or promotion |
 | `METHOD_PROMOTION_REVIEW_RUNTIME_001` | complete | Governed promotion review packet runtime; no method promotion or production authorization |
-| `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001` | next | After promotion review runtime |
+| `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001` | complete | Production compatibility promotion review contract; no runtime or authorization |
+| `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` | next | After production compatibility contract |
 | `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001` | pause | Sophistication before validity closure |
 | `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_004_BOOTSTRAP_INFERENCE` | defer | After DID remediation + thresholds |
 | TROP / MTGP / BayesianTBR | research-only | Insufficient production evidence |

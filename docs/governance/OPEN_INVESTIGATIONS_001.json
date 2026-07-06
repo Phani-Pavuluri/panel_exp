@@ -2693,9 +2693,9 @@
           "BayesianTBRHorseShoe"
         ],
         "failed_scenarios": [],
-        "recommended_next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001"
+        "recommended_next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
       },
-      "current_decision": "AUDIT_DRIVEN_P0_GOVERNED_RUNTIME_HARDENING_SUBSTANTIALLY_COMPLETE_METHOD_PROMOTION_REVIEW_RUNTIME_IMPLEMENTED",
+      "current_decision": "AUDIT_DRIVEN_P0_GOVERNED_RUNTIME_HARDENING_SUBSTANTIALLY_COMPLETE_PRODUCTION_COMPATIBILITY_CONTRACT_DEFINED",
       "blocked_roles": [
         "trust_report",
         "calibration_signal",
@@ -2707,7 +2707,7 @@
         "budget_optimization"
       ],
       "target_artifact": "AUDIT_P0_GOVERNED_RUNTIME_HARDENING_001",
-      "revisit_trigger": "Upon completion of PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001 acceptance criteria",
+      "revisit_trigger": "Upon completion of PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001 acceptance criteria",
       "decision_checkpoint": "P0 validity/cohesion hardening before claim authorization runtime",
       "blocking_policy": "No claim authorization runtime or trusted readout until P0 hardening acceptance criteria pass",
       "terminal_decisions": ["RESTRICT", "HARDEN", "PROMOTE"],
@@ -3040,6 +3040,68 @@
       "blocking_policy": "Structured review packet only; no method promotion or production authorization",
       "terminal_decisions": ["RESTRICT", "HARDEN", "PROMOTE"],
       "resolution_artifact": "METHOD_PROMOTION_REVIEW_RUNTIME_001"
+    },
+    {
+      "investigation_id": "INV-PRODUCTION-COMPATIBILITY-PROMOTION-REVIEW-CONTRACT-001",
+      "title": "Production compatibility promotion review contract definition",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "METHOD-PROMOTION-REVIEW-RUNTIME-001",
+      "affected_combination": "production_compatibility_promotion_review_contract",
+      "problem_class": [
+        "production_compatibility",
+        "promotion_boundary",
+        "evidence_gates",
+        "human_governance",
+        "production_governance"
+      ],
+      "evidence": {
+        "depends_on": [
+          "METHOD_PROMOTION_REVIEW_RUNTIME_001",
+          "METHOD_PROMOTION_REVIEW_CONTRACT_001",
+          "TRUSTED_READOUT_REPORT_RUNTIME_001",
+          "CLAIM_AUTHORIZATION_RUNTIME_001",
+          "STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001",
+          "ASSIGNMENT_PANEL_INTEGRITY_RUNTIME_001",
+          "SRM_BALANCE_READOUT_DIAGNOSTIC_001",
+          "PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001"
+        ],
+        "scope": "production_compatibility_promotion_review_contract_defined_no_runtime_or_authorization",
+        "production_compatibility_promotion_review_contract_defined": true,
+        "production_compatibility_status_taxonomy_defined": true,
+        "production_compatibility_verdict_taxonomy_defined": true,
+        "production_compatibility_packet_fields_defined": true,
+        "production_compatibility_evidence_requirements_defined": true,
+        "production_compatibility_blockers_defined": true,
+        "production_compatibility_failure_packet_semantics_defined": true,
+        "production_compatibility_future_runtime_tests_documented": true,
+        "production_authorization_boundary_defined": true,
+        "production_compatibility_runtime_implemented": false,
+        "production_compatibility_packet_generated": false,
+        "method_promoted": false,
+        "method_unblocked": false,
+        "production_catalog_unblocked": false,
+        "production_authorization_granted": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+      },
+      "current_decision": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_DEFINED_NO_RUNTIME_OR_AUTHORIZATION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Production compatibility contract before compatibility review runtime",
+      "blocking_policy": "Contract only; no compatibility runtime, production approval, or method promotion",
+      "terminal_decisions": ["RESTRICT", "CONTRACT_ONLY", "PROMOTE"],
+      "resolution_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001"
     },
     {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
@@ -5394,7 +5456,7 @@
       "resolved_investigations": [],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001",
+      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001",
       "resolution_artifact": null,
       "artifact_tags": [
         "audit_driven_roadmap_correction",
@@ -5413,7 +5475,8 @@
         "trusted_readout_report_runtime_complete",
         "method_promotion_review_contract_complete",
         "method_promotion_review_runtime_complete",
-        "production_compatibility_promotion_review_contract_next"
+        "production_compatibility_promotion_review_contract_complete",
+        "production_compatibility_promotion_review_runtime_next"
       ]
     },
     {
@@ -5425,7 +5488,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001",
+      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001",
       "resolution_artifact": "CLAIM_AUTHORIZATION_RUNTIME_001",
       "artifact_tags": [
         "claim_authorization_runtime",
@@ -5446,7 +5509,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001",
+      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001",
       "resolution_artifact": "SRM_BALANCE_READOUT_DIAGNOSTIC_001",
       "artifact_tags": [
         "srm_balance_readout_diagnostic",
@@ -5467,7 +5530,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001",
+      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001",
       "resolution_artifact": "GOVERNED_RANDOMIZATION_RUNTIME_001",
       "artifact_tags": [
         "governed_randomization_runtime",
@@ -5486,7 +5549,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001",
+      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001",
       "resolution_artifact": "TRUSTED_READOUT_REPORT_CONTRACT_001",
       "artifact_tags": [
         "trusted_readout_report_contract",
@@ -5508,7 +5571,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001",
+      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001",
       "resolution_artifact": "TRUSTED_READOUT_REPORT_RUNTIME_001",
       "artifact_tags": [
         "trusted_readout_report_runtime",
@@ -5530,7 +5593,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001",
+      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001",
       "resolution_artifact": "METHOD_PROMOTION_REVIEW_CONTRACT_001",
       "artifact_tags": [
         "method_promotion_review_contract",
@@ -5552,7 +5615,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001",
+      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001",
       "resolution_artifact": "METHOD_PROMOTION_REVIEW_RUNTIME_001",
       "artifact_tags": [
         "method_promotion_review_runtime",
@@ -5563,6 +5626,29 @@
         "caveat_propagation",
         "lineage_provenance",
         "no_method_promotion_or_production_authorization"
+      ]
+    },
+    {
+      "lane_id": "PRODUCTION-COMPATIBILITY-PROMOTION-REVIEW-CONTRACT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-PRODUCTION-COMPATIBILITY-PROMOTION-REVIEW-CONTRACT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001",
+      "resolution_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001",
+      "artifact_tags": [
+        "production_compatibility_promotion_review_contract",
+        "compatibility_status_taxonomy",
+        "compatibility_verdict_taxonomy",
+        "evidence_bundle_requirements",
+        "hard_blockers",
+        "allowed_prohibited_surfaces",
+        "failure_packet_semantics",
+        "contract_only",
+        "no_runtime_or_authorization"
       ]
     },
     {
