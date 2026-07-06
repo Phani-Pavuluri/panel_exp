@@ -3165,6 +3165,56 @@
       "resolution_artifact": "METHOD_PROMOTION_CANDIDATE_AUDIT_001"
     },
     {
+      "investigation_id": "INV-SOPHISTICATED-METHOD-EVIDENCE-LADDER-001",
+      "title": "Sophisticated method evidence ladder",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "METHOD-PROMOTION-CANDIDATE-AUDIT-001",
+      "affected_combination": "sophisticated_method_evidence_ladder",
+      "problem_class": [
+        "method_promotion",
+        "evidence_ladder",
+        "sophisticated_methods",
+        "false_confidence",
+        "production_governance"
+      ],
+      "evidence": {
+        "depends_on": [
+          "METHOD_PROMOTION_CANDIDATE_AUDIT_001",
+          "METHOD_PROMOTION_REVIEW_RUNTIME_001",
+          "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001"
+        ],
+        "scope": "sophisticated_methods_evidence_ladder_defined_no_method_promotion",
+        "ladder_stages_defined": true,
+        "sophisticated_method_inventory_completed": true,
+        "false_confidence_risks_documented": true,
+        "next_smallest_artifacts_recommended": true,
+        "production_compatibility_runtime_deferred": true,
+        "method_promoted": false,
+        "production_authorization_granted": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "MULTICELL_CONTRAST_MULTIPLICITY_EVIDENCE_CONTRACT_001",
+        "deferred_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+      },
+      "current_decision": "SOPHISTICATED_METHODS_EVIDENCE_LADDER_DEFINED_NO_METHOD_PROMOTION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon MULTICELL_CONTRAST_MULTIPLICITY_EVIDENCE_CONTRACT_001 completion or STAGE_6 candidate emergence",
+      "decision_checkpoint": "Define evidence ladder for sophisticated methods before promotion paths",
+      "blocking_policy": "Ladder docs only; no method promotion, catalog change, or runtime",
+      "terminal_decisions": ["RESTRICT", "DEFER", "EVIDENCE_BUILD"],
+      "resolution_artifact": "SOPHISTICATED_METHOD_EVIDENCE_LADDER_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -5730,6 +5780,26 @@
         "candidate_ranking_taxonomy",
         "candidate_inventory",
         "blocker_documentation",
+        "compatibility_runtime_deferred",
+        "audit_only",
+        "no_method_promotion_or_catalog_change"
+      ]
+    },
+    {
+      "lane_id": "SOPHISTICATED-METHOD-EVIDENCE-LADDER-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-SOPHISTICATED-METHOD-EVIDENCE-LADDER-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "MULTICELL_CONTRAST_MULTIPLICITY_EVIDENCE_CONTRACT_001",
+      "resolution_artifact": "SOPHISTICATED_METHOD_EVIDENCE_LADDER_001",
+      "artifact_tags": [
+        "sophisticated_method_evidence_ladder",
+        "ladder_stage_taxonomy",
+        "false_confidence_risks",
         "compatibility_runtime_deferred",
         "audit_only",
         "no_method_promotion_or_catalog_change"

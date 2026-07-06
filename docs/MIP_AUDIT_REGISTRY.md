@@ -2584,7 +2584,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Inventories 16 method/instrument promotion candidates, applies conservative RANK_0–RANK_4 taxonomy, documents blockers and evidence gaps, defers `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` until RANK_4 candidate exists. No method promotion or catalog change (`failed_scenarios: []`).
 
-**Next:** `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `MULTICELL_CONTRAST_MULTIPLICITY_EVIDENCE_CONTRACT_001` · parallel: `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
+## SOPHISTICATED-METHOD-EVIDENCE-LADDER-001 (2026-07-06)
+
+**Artifact:** [`docs/track_d/SOPHISTICATED_METHOD_EVIDENCE_LADDER_001.md`](track_d/SOPHISTICATED_METHOD_EVIDENCE_LADDER_001.md) · [`docs/track_d/archives/SOPHISTICATED_METHOD_EVIDENCE_LADDER_001_summary.json`](track_d/archives/SOPHISTICATED_METHOD_EVIDENCE_LADDER_001_summary.json)
+
+**Status:** **`sophisticated_methods_evidence_ladder_defined_no_method_promotion`**
+
+**Verdict:** Defines STAGE_0–STAGE_6 evidence ladder for six sophisticated method families (DID_BOOTSTRAP, TBRRidge BRB/KFold/Placebo, TBR aggregate/pooled, multi-cell pooled/global, AugSynth JK, SCM multi-treated). Documents false-confidence risks, shared blockers, and stop/go criteria. Deferred means deferred from promotion surfaces, not validation. No method promotion or catalog change (`failed_scenarios: []`).
+
+**Next:** `MULTICELL_CONTRAST_MULTIPLICITY_EVIDENCE_CONTRACT_001` · alternative: `PRODUCTION_READINESS_GOVERNANCE_PACKET_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
