@@ -3266,6 +3266,55 @@
       "resolution_artifact": "MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_CONTRACT_001"
     },
     {
+      "investigation_id": "INV-MULTICELL-EXPERIMENT-FAMILY-CONTRAST-RUNTIME-001",
+      "title": "Multicell experiment family and contrast runtime",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "MULTICELL-EXPERIMENT-FAMILY-CONTRAST-CONTRACT-001",
+      "affected_combination": "multicell_experiment_family_contrast_runtime",
+      "problem_class": [
+        "multicell",
+        "experiment_family",
+        "surface_eligibility",
+        "runtime_gate",
+        "production_governance"
+      ],
+      "evidence": {
+        "depends_on": [
+          "MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_CONTRACT_001",
+          "SOPHISTICATED_METHOD_EVIDENCE_LADDER_001"
+        ],
+        "scope": "multicell_experiment_family_and_contrast_runtime_implemented_no_multiplicity_or_inference_computation",
+        "runtime_implemented": true,
+        "surface_eligibility_packet_generated": true,
+        "independent_experiment_exemption_enforced": true,
+        "winner_claim_blocking_enforced": true,
+        "multiplicity_correction_computed": false,
+        "covariance_computed": false,
+        "method_promoted": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001",
+        "deferred_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+      },
+      "current_decision": "MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_IMPLEMENTED_NO_MULTIPLICITY_OR_INFERENCE_COMPUTATION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001 or runtime integration artifact",
+      "decision_checkpoint": "Surface eligibility gate before multiplicity/covariance computation",
+      "blocking_policy": "Runtime gates surfaces only; no inference or authorization",
+      "terminal_decisions": ["RESTRICT", "RUNTIME_GATE_ONLY", "DEFER"],
+      "resolution_artifact": "MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -5875,6 +5924,25 @@
         "independent_experiment_exemption",
         "contract_only",
         "no_runtime_or_inference"
+      ]
+    },
+    {
+      "lane_id": "MULTICELL-EXPERIMENT-FAMILY-CONTRAST-RUNTIME-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-MULTICELL-EXPERIMENT-FAMILY-CONTRAST-RUNTIME-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001",
+      "resolution_artifact": "MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001",
+      "artifact_tags": [
+        "multicell_experiment_family_contrast_runtime",
+        "surface_eligibility_gate",
+        "experiment_family_classification",
+        "independent_experiment_exemption",
+        "no_multiplicity_or_inference_computation"
       ]
     },
     {

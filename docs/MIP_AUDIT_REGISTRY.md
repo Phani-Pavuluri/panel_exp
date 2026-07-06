@@ -2584,7 +2584,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Inventories 16 method/instrument promotion candidates, applies conservative RANK_0–RANK_4 taxonomy, documents blockers and evidence gaps, defers `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` until RANK_4 candidate exists. No method promotion or catalog change (`failed_scenarios: []`).
 
-**Next:** `MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001` · alternative: `TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001` · alternative: `MULTICELL_CONTRAST_MULTIPLICITY_RUNTIME_INTEGRATION_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
+## MULTICELL-EXPERIMENT-FAMILY-CONTRAST-RUNTIME-001 (2026-07-06)
+
+**Artifact:** [`docs/track_d/MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001_REPORT.md`](track_d/MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001_REPORT.md) · [`docs/track_d/archives/MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001_summary.json`](track_d/archives/MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001_summary.json) · [`panel_exp/validation/multicell_experiment_family_contrast_runtime_001.py`](../panel_exp/validation/multicell_experiment_family_contrast_runtime_001.py)
+
+**Status:** **`multicell_experiment_family_and_contrast_runtime_implemented_no_multiplicity_or_inference_computation`**
+
+**Verdict:** Governed runtime classifies experiment family, evaluates readout surface eligibility via contract gate, emits deterministic eligibility packets. Independent experiments exempt from shared multiplicity for standalone readouts. No multiplicity correction, covariance computation, or inference (`failed_scenarios: []`).
+
+**Next:** `TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 

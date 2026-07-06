@@ -525,19 +525,19 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`SOPHISTICATED_METHOD_EVIDENCE_LADDER_001`** → ✅ **`MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_CONTRACT_001`** → `MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001`.
+**Ordered next:** ✅ … → ✅ **`MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_CONTRACT_001`** → ✅ **`MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001`** → `TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001`.
 
 ### Audit-driven roadmap correction (2026-07-06)
 
 `METHOD_PROMOTION_CANDIDATE_AUDIT_001` ranks promotion candidates conservatively. **No RANK_4 candidates.** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` is **deferred** until a credible candidate emerges.
 
-`SOPHISTICATED_METHOD_EVIDENCE_LADDER_001` defines STAGE_0–STAGE_6 evidence ladder for sophisticated method families. **Deferred means deferred from promotion surfaces, not validation.**
+`MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001` implements surface eligibility gating without multiplicity/covariance computation.
 
-`MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_CONTRACT_001` defines experiment-family applicability before multiplicity/covariance enforcement.
+**Recommended immediate next:** `TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001`
 
-**Recommended immediate next:** `MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001`
+**Alternative:** `MULTICELL_CONTRAST_MULTIPLICITY_RUNTIME_INTEGRATION_001`
 
-**Parallel smaller-scope:** `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001` · `TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001`
+**Parallel smaller-scope:** `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001`
 
 **Deferred (gate-triggered):** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`
 
@@ -565,8 +565,9 @@ Foundation and compatibility audits ✅
 | `METHOD_PROMOTION_CANDIDATE_AUDIT_001` | complete | Candidate inventory and ranking; no promotion or catalog change |
 | `SOPHISTICATED_METHOD_EVIDENCE_LADDER_001` | complete | Evidence ladder for sophisticated methods; no promotion |
 | `MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_CONTRACT_001` | complete | Experiment-family and contrast contract; no runtime |
+| `MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001` | complete | Surface eligibility gate runtime; no inference computation |
 | `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` | deferred | Gate-triggered after STAGE_6 / RANK_4 candidate |
-| `MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001` | next | Family/contrast classification runtime |
+| `TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001` | next | TBRRidge false-confidence diagnostic audit |
 | `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001` | parallel | Smaller-scope evidence audit for top non-sophisticated candidate |
 | `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001` | pause | Sophistication before validity closure |
 | `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_004_BOOTSTRAP_INFERENCE` | defer | After DID remediation + thresholds |
