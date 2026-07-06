@@ -2596,7 +2596,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Governed runtime classifies experiment family, evaluates readout surface eligibility via contract gate, emits deterministic eligibility packets. Independent experiments exempt from shared multiplicity for standalone readouts. No multiplicity correction, covariance computation, or inference (`failed_scenarios: []`).
 
-**Next:** `TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_CONTRACT_001` · parallel: `TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
+## TBRRIDGE-FALSE-CONFIDENCE-DIAGNOSTIC-AUDIT-001 (2026-07-06)
+
+**Artifact:** [`docs/track_d/TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001.md`](track_d/TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001.md) · [`docs/track_d/archives/TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001_summary.json`](track_d/archives/TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001_summary.json)
+
+**Status:** **`tbrridge_false_confidence_risks_audited_no_inference_or_promotion`**
+
+**Verdict:** Audits TBRRidge BRB/KFold/Placebo and TBR aggregate/pooled false-confidence risks; defines diagnostic readiness taxonomy; documents evidence gaps and stop/go criteria. KFold leakage identified as dominant blocker. No inference, promotion, or catalog change (`failed_scenarios: []`).
+
+**Next:** `TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 

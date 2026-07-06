@@ -3315,6 +3315,56 @@
       "resolution_artifact": "MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001"
     },
     {
+      "investigation_id": "INV-TBRRIDGE-FALSE-CONFIDENCE-DIAGNOSTIC-AUDIT-001",
+      "title": "TBRRidge false confidence diagnostic audit",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "MULTICELL-EXPERIMENT-FAMILY-CONTRAST-RUNTIME-001",
+      "affected_combination": "tbrridge_false_confidence_diagnostic_audit",
+      "problem_class": [
+        "tbrridge",
+        "false_confidence",
+        "regularization",
+        "fold_leakage",
+        "placebo_calibration",
+        "production_governance"
+      ],
+      "evidence": {
+        "depends_on": [
+          "SOPHISTICATED_METHOD_EVIDENCE_LADDER_001",
+          "MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001",
+          "METHOD_PROMOTION_CANDIDATE_AUDIT_001"
+        ],
+        "scope": "tbrridge_false_confidence_risks_audited_no_inference_or_promotion",
+        "tbrridge_inventory_completed": true,
+        "false_confidence_risks_documented": true,
+        "coverage_gap_documented": true,
+        "fold_leakage_risk_documented": true,
+        "method_promoted": false,
+        "production_authorization_granted": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_CONTRACT_001",
+        "deferred_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+      },
+      "current_decision": "TBRRIDGE_FALSE_CONFIDENCE_RISKS_AUDITED_NO_INFERENCE_OR_PROMOTION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_CONTRACT_001 completion",
+      "decision_checkpoint": "Characterize TBRRidge false-confidence risks before uncertainty revival",
+      "blocking_policy": "Audit only; no inference, promotion, or catalog change",
+      "terminal_decisions": ["RESTRICT", "AUDIT_ONLY", "DEFER"],
+      "resolution_artifact": "TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -5943,6 +5993,27 @@
         "experiment_family_classification",
         "independent_experiment_exemption",
         "no_multiplicity_or_inference_computation"
+      ]
+    },
+    {
+      "lane_id": "TBRRIDGE-FALSE-CONFIDENCE-DIAGNOSTIC-AUDIT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-TBRRIDGE-FALSE-CONFIDENCE-DIAGNOSTIC-AUDIT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_CONTRACT_001",
+      "resolution_artifact": "TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001",
+      "artifact_tags": [
+        "tbrridge_false_confidence_audit",
+        "diagnostic_readiness_taxonomy",
+        "fold_leakage_risk",
+        "placebo_calibration_risk",
+        "coverage_gap",
+        "audit_only",
+        "no_inference_or_promotion"
       ]
     },
     {
