@@ -2596,7 +2596,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Governed runtime classifies experiment family, evaluates readout surface eligibility via contract gate, emits deterministic eligibility packets. Independent experiments exempt from shared multiplicity for standalone readouts. No multiplicity correction, covariance computation, or inference (`failed_scenarios: []`).
 
-**Next:** `TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_CONTRACT_001` · parallel: `TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_RUNTIME_001` · parallel: `TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
+## TBRRIDGE-KFOLD-LEAKAGE-DIAGNOSTIC-CONTRACT-001 (2026-07-06)
+
+**Artifact:** [`docs/track_d/TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_CONTRACT_001_REPORT.md`](track_d/TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_CONTRACT_001_summary.json`](track_d/archives/TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_CONTRACT_001_summary.json) · [`panel_exp/validation/tbrridge_kfold_leakage_diagnostic_contract_001.py`](../panel_exp/validation/tbrridge_kfold_leakage_diagnostic_contract_001.py)
+
+**Status:** **`tbrridge_kfold_leakage_diagnostic_contract_defined_no_runtime_or_inference`**
+
+**Verdict:** Defines KFold leakage diagnostic statuses, leakage type taxonomy, required evidence, unsupported geometry/temporal/fold overlap rules, and failure packet semantics for `TBRRidge_Kfold`. No runtime or inference (`failed_scenarios: []`).
+
+**Next:** `TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 

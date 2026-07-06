@@ -3365,6 +3365,55 @@
       "resolution_artifact": "TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001"
     },
     {
+      "investigation_id": "INV-TBRRIDGE-KFOLD-LEAKAGE-DIAGNOSTIC-CONTRACT-001",
+      "title": "TBRRidge KFold leakage diagnostic contract",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "TBRRIDGE-FALSE-CONFIDENCE-DIAGNOSTIC-AUDIT-001",
+      "affected_combination": "tbrridge_kfold_leakage_diagnostic_contract",
+      "problem_class": [
+        "tbrridge",
+        "kfold",
+        "fold_leakage",
+        "temporal_leakage",
+        "geometry",
+        "production_governance"
+      ],
+      "evidence": {
+        "depends_on": [
+          "TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001",
+          "SOPHISTICATED_METHOD_EVIDENCE_LADDER_001",
+          "MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001"
+        ],
+        "scope": "tbrridge_kfold_leakage_diagnostic_contract_defined_no_runtime_or_inference",
+        "kfold_leakage_diagnostic_contract_defined": true,
+        "leakage_type_taxonomy_defined": true,
+        "temporal_leakage_rules_defined": true,
+        "kfold_inference_implemented": false,
+        "method_promoted": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_RUNTIME_001",
+        "deferred_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+      },
+      "current_decision": "TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_CONTRACT_DEFINED_NO_RUNTIME_OR_INFERENCE",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_RUNTIME_001 completion",
+      "decision_checkpoint": "Define KFold leakage diagnostic contract before runtime",
+      "blocking_policy": "Contract only; no runtime, inference, or authorization",
+      "terminal_decisions": ["RESTRICT", "CONTRACT_ONLY", "DEFER"],
+      "resolution_artifact": "TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_CONTRACT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -6014,6 +6063,26 @@
         "coverage_gap",
         "audit_only",
         "no_inference_or_promotion"
+      ]
+    },
+    {
+      "lane_id": "TBRRIDGE-KFOLD-LEAKAGE-DIAGNOSTIC-CONTRACT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-TBRRIDGE-KFOLD-LEAKAGE-DIAGNOSTIC-CONTRACT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_RUNTIME_001",
+      "resolution_artifact": "TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_CONTRACT_001",
+      "artifact_tags": [
+        "tbrridge_kfold_leakage_diagnostic_contract",
+        "leakage_type_taxonomy",
+        "temporal_leakage_rules",
+        "fold_overlap_rules",
+        "contract_only",
+        "no_runtime_or_inference"
       ]
     },
     {
