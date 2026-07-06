@@ -3215,6 +3215,57 @@
       "resolution_artifact": "SOPHISTICATED_METHOD_EVIDENCE_LADDER_001"
     },
     {
+      "investigation_id": "INV-MULTICELL-EXPERIMENT-FAMILY-CONTRAST-CONTRACT-001",
+      "title": "Multicell experiment family and contrast contract",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "SOPHISTICATED-METHOD-EVIDENCE-LADDER-001",
+      "affected_combination": "multicell_experiment_family_contrast_contract",
+      "problem_class": [
+        "multicell",
+        "experiment_family",
+        "contrast_taxonomy",
+        "multiplicity_applicability",
+        "production_governance"
+      ],
+      "evidence": {
+        "depends_on": [
+          "SOPHISTICATED_METHOD_EVIDENCE_LADDER_001",
+          "METHOD_PROMOTION_CANDIDATE_AUDIT_001",
+          "METHOD_PROMOTION_REVIEW_RUNTIME_001",
+          "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001"
+        ],
+        "scope": "multicell_experiment_family_and_contrast_contract_defined_no_runtime_or_inference",
+        "experiment_family_taxonomy_defined": true,
+        "contrast_taxonomy_defined": true,
+        "multiplicity_applicability_rules_defined": true,
+        "independent_experiment_exemption_defined": true,
+        "winner_claim_blocking_rules_defined": true,
+        "runtime_implemented": false,
+        "method_promoted": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001",
+        "deferred_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+      },
+      "current_decision": "MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_CONTRACT_DEFINED_NO_RUNTIME_OR_INFERENCE",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001 completion",
+      "decision_checkpoint": "Define experiment-family applicability before multiplicity/covariance runtime",
+      "blocking_policy": "Contract only; no runtime, inference, or authorization",
+      "terminal_decisions": ["RESTRICT", "CONTRACT_ONLY", "DEFER"],
+      "resolution_artifact": "MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_CONTRACT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -5794,7 +5845,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "MULTICELL_CONTRAST_MULTIPLICITY_EVIDENCE_CONTRACT_001",
+      "next_artifact": "MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_CONTRACT_001",
       "resolution_artifact": "SOPHISTICATED_METHOD_EVIDENCE_LADDER_001",
       "artifact_tags": [
         "sophisticated_method_evidence_ladder",
@@ -5803,6 +5854,27 @@
         "compatibility_runtime_deferred",
         "audit_only",
         "no_method_promotion_or_catalog_change"
+      ]
+    },
+    {
+      "lane_id": "MULTICELL-EXPERIMENT-FAMILY-CONTRAST-CONTRACT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-MULTICELL-EXPERIMENT-FAMILY-CONTRAST-CONTRACT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001",
+      "resolution_artifact": "MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_CONTRACT_001",
+      "artifact_tags": [
+        "multicell_experiment_family_contrast_contract",
+        "experiment_family_taxonomy",
+        "contrast_taxonomy",
+        "multiplicity_applicability",
+        "independent_experiment_exemption",
+        "contract_only",
+        "no_runtime_or_inference"
       ]
     },
     {

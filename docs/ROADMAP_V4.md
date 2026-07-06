@@ -525,7 +525,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`METHOD_PROMOTION_CANDIDATE_AUDIT_001`** → ✅ **`SOPHISTICATED_METHOD_EVIDENCE_LADDER_001`** → `MULTICELL_CONTRAST_MULTIPLICITY_EVIDENCE_CONTRACT_001`.
+**Ordered next:** ✅ … → ✅ **`SOPHISTICATED_METHOD_EVIDENCE_LADDER_001`** → ✅ **`MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_CONTRACT_001`** → `MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001`.
 
 ### Audit-driven roadmap correction (2026-07-06)
 
@@ -533,9 +533,11 @@ Foundation and compatibility audits ✅
 
 `SOPHISTICATED_METHOD_EVIDENCE_LADDER_001` defines STAGE_0–STAGE_6 evidence ladder for sophisticated method families. **Deferred means deferred from promotion surfaces, not validation.**
 
-**Recommended immediate next:** `MULTICELL_CONTRAST_MULTIPLICITY_EVIDENCE_CONTRACT_001` (shared blocker across pooled/global/multicell paths)
+`MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_CONTRACT_001` defines experiment-family applicability before multiplicity/covariance enforcement.
 
-**Parallel smaller-scope:** `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001` (top non-sophisticated candidate)
+**Recommended immediate next:** `MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001`
+
+**Parallel smaller-scope:** `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001` · `TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001`
 
 **Deferred (gate-triggered):** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`
 
@@ -562,8 +564,9 @@ Foundation and compatibility audits ✅
 | `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001` | complete | Production compatibility promotion review contract; no runtime or authorization |
 | `METHOD_PROMOTION_CANDIDATE_AUDIT_001` | complete | Candidate inventory and ranking; no promotion or catalog change |
 | `SOPHISTICATED_METHOD_EVIDENCE_LADDER_001` | complete | Evidence ladder for sophisticated methods; no promotion |
+| `MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_CONTRACT_001` | complete | Experiment-family and contrast contract; no runtime |
 | `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` | deferred | Gate-triggered after STAGE_6 / RANK_4 candidate |
-| `MULTICELL_CONTRAST_MULTIPLICITY_EVIDENCE_CONTRACT_001` | next | Shared contrast/multiplicity blocker across sophisticated paths |
+| `MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001` | next | Family/contrast classification runtime |
 | `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001` | parallel | Smaller-scope evidence audit for top non-sophisticated candidate |
 | `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001` | pause | Sophistication before validity closure |
 | `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_004_BOOTSTRAP_INFERENCE` | defer | After DID remediation + thresholds |

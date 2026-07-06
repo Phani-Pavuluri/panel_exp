@@ -2584,7 +2584,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Inventories 16 method/instrument promotion candidates, applies conservative RANK_0–RANK_4 taxonomy, documents blockers and evidence gaps, defers `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` until RANK_4 candidate exists. No method promotion or catalog change (`failed_scenarios: []`).
 
-**Next:** `MULTICELL_CONTRAST_MULTIPLICITY_EVIDENCE_CONTRACT_001` · parallel: `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001` · alternative: `TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
+## MULTICELL-EXPERIMENT-FAMILY-CONTRAST-CONTRACT-001 (2026-07-06)
+
+**Artifact:** [`docs/track_d/MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_CONTRACT_001_REPORT.md`](track_d/MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_CONTRACT_001_summary.json`](track_d/archives/MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_CONTRACT_001_summary.json) · [`panel_exp/validation/multicell_experiment_family_contrast_contract_001.py`](../panel_exp/validation/multicell_experiment_family_contrast_contract_001.py)
+
+**Status:** **`multicell_experiment_family_and_contrast_contract_defined_no_runtime_or_inference`**
+
+**Verdict:** Defines experiment-family taxonomy (independent vs related vs shared-control vs dose-response vs portfolio vs pooled), contrast taxonomy, multiplicity/covariance applicability rules, surface evidence requirements, and failure packet semantics. Independent experiments exempt from shared multiplicity for standalone readouts. Contract only; no runtime or inference (`failed_scenarios: []`).
+
+**Next:** `MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
