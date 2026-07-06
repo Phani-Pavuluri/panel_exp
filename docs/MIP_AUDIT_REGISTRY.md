@@ -2572,7 +2572,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Defines production compatibility promotion review contract: compatibility status taxonomy, candidate verdict taxonomy (no production approval), evidence requirements, packet fields, hard blockers, allowed/prohibited surfaces, failure semantics. Contract only; no compatibility runtime, no production approval (`failed_scenarios: []`).
 
-**Next:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` · alternative: `PRODUCTION_READINESS_GOVERNANCE_PACKET_CONTRACT_001`.
+**Next:** `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001` · alternative: `PRODUCTION_READINESS_GOVERNANCE_PACKET_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
+## METHOD-PROMOTION-CANDIDATE-AUDIT-001 (2026-07-06)
+
+**Artifact:** [`docs/track_d/METHOD_PROMOTION_CANDIDATE_AUDIT_001.md`](track_d/METHOD_PROMOTION_CANDIDATE_AUDIT_001.md) · [`docs/track_d/archives/METHOD_PROMOTION_CANDIDATE_AUDIT_001_summary.json`](track_d/archives/METHOD_PROMOTION_CANDIDATE_AUDIT_001_summary.json)
+
+**Status:** **`method_promotion_candidates_ranked_no_method_promotion_or_catalog_change`**
+
+**Verdict:** Inventories 16 method/instrument promotion candidates, applies conservative RANK_0–RANK_4 taxonomy, documents blockers and evidence gaps, defers `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` until RANK_4 candidate exists. No method promotion or catalog change (`failed_scenarios: []`).
+
+**Next:** `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
@@ -2598,9 +2610,11 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Expanded adversarial audit found P0 validity/cohesion gaps before claim authorization runtime. `CLAIM_AUTHORIZATION_CONTRACT_001` remains complete and safe (contract-only). Roadmap inserts P0 hardening lane before `CLAIM_AUTHORIZATION_RUNTIME_001`. No runtime authorization added by this audit update.
 
-**Immediate next:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`
+**Immediate next:** `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001`
 
-**P0 sequence:** ✅ blocklist enforcement → ✅ DID estimand unification → ✅ assignment-panel integrity → ✅ statistical threshold enforcement → ✅ governed randomization → ✅ SRM/balance diagnostic → ✅ claim authorization runtime → ✅ trusted readout contract → ✅ trusted readout runtime → ✅ method promotion review contract → ✅ method promotion review runtime → ✅ production compatibility contract → production compatibility runtime.
+**Deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` (gate-triggered; no RANK_4 candidates)
+
+**P0 sequence:** ✅ … → ✅ production compatibility contract → ✅ method promotion candidate audit → SCM unit jackknife evidence audit.
 
 **Deferred:** AugSynth/ASCM remediation · bootstrap inference runtime · SDID/TROP/MTGP/BayesianTBR production · TrustReport product ops · LLM/MMM decisioning.
 

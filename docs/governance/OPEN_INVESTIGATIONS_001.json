@@ -2693,9 +2693,12 @@
           "BayesianTBRHorseShoe"
         ],
         "failed_scenarios": [],
-        "recommended_next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+        "recommended_next_artifact": "SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001",
+        "deferred_artifacts": [
+          "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+        ]
       },
-      "current_decision": "AUDIT_DRIVEN_P0_GOVERNED_RUNTIME_HARDENING_SUBSTANTIALLY_COMPLETE_PRODUCTION_COMPATIBILITY_CONTRACT_DEFINED",
+      "current_decision": "AUDIT_DRIVEN_P0_GOVERNED_RUNTIME_HARDENING_SUBSTANTIALLY_COMPLETE_METHOD_PROMOTION_CANDIDATE_AUDIT_DEFINED",
       "blocked_roles": [
         "trust_report",
         "calibration_signal",
@@ -2707,7 +2710,7 @@
         "budget_optimization"
       ],
       "target_artifact": "AUDIT_P0_GOVERNED_RUNTIME_HARDENING_001",
-      "revisit_trigger": "Upon completion of PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001 acceptance criteria",
+      "revisit_trigger": "Upon completion of SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001 or emergence of RANK_4 promotion candidate",
       "decision_checkpoint": "P0 validity/cohesion hardening before claim authorization runtime",
       "blocking_policy": "No claim authorization runtime or trusted readout until P0 hardening acceptance criteria pass",
       "terminal_decisions": ["RESTRICT", "HARDEN", "PROMOTE"],
@@ -3083,7 +3086,7 @@
         "production_catalog_unblocked": false,
         "production_authorization_granted": false,
         "failed_scenarios": [],
-        "recommended_next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+        "recommended_next_artifact": "METHOD_PROMOTION_CANDIDATE_AUDIT_001"
       },
       "current_decision": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_DEFINED_NO_RUNTIME_OR_AUTHORIZATION",
       "blocked_roles": [
@@ -3102,6 +3105,64 @@
       "blocking_policy": "Contract only; no compatibility runtime, production approval, or method promotion",
       "terminal_decisions": ["RESTRICT", "CONTRACT_ONLY", "PROMOTE"],
       "resolution_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001"
+    },
+    {
+      "investigation_id": "INV-METHOD-PROMOTION-CANDIDATE-AUDIT-001",
+      "title": "Method promotion candidate audit",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "PRODUCTION-COMPATIBILITY-PROMOTION-REVIEW-CONTRACT-001",
+      "affected_combination": "method_promotion_candidate_audit",
+      "problem_class": [
+        "method_promotion",
+        "candidate_inventory",
+        "promotion_ranking",
+        "evidence_gaps",
+        "production_governance"
+      ],
+      "evidence": {
+        "depends_on": [
+          "METHOD_PROMOTION_REVIEW_RUNTIME_001",
+          "METHOD_PROMOTION_REVIEW_CONTRACT_001",
+          "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001",
+          "PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001",
+          "METHOD_BLOCKLIST_REMEDIATION_AND_PROMOTION_ROADMAP_001"
+        ],
+        "scope": "method_promotion_candidates_ranked_no_method_promotion_or_catalog_change",
+        "candidate_inventory_completed": true,
+        "candidate_rankings_defined": true,
+        "candidate_blockers_documented": true,
+        "next_smallest_artifacts_recommended": true,
+        "production_compatibility_runtime_deferred": true,
+        "rank_4_production_compatibility_review": 0,
+        "top_ranked_candidates": [
+          "SCM_UnitJackKnife",
+          "per_cell_marginal_readout",
+          "DID_2X2_POINT_ESTIMATE"
+        ],
+        "method_promoted": false,
+        "production_authorization_granted": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001",
+        "deferred_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+      },
+      "current_decision": "METHOD_PROMOTION_CANDIDATES_RANKED_NO_METHOD_PROMOTION_OR_CATALOG_CHANGE",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon RANK_4 candidate emergence or SCM evidence audit completion",
+      "decision_checkpoint": "Rank promotion candidates before compatibility runtime or production paths",
+      "blocking_policy": "Audit only; no method promotion, catalog change, or compatibility runtime",
+      "terminal_decisions": ["RESTRICT", "DEFER", "EVIDENCE_BUILD"],
+      "resolution_artifact": "METHOD_PROMOTION_CANDIDATE_AUDIT_001"
     },
     {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
@@ -5456,7 +5517,7 @@
       "resolved_investigations": [],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001",
+      "next_artifact": "SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001",
       "resolution_artifact": null,
       "artifact_tags": [
         "audit_driven_roadmap_correction",
@@ -5476,7 +5537,9 @@
         "method_promotion_review_contract_complete",
         "method_promotion_review_runtime_complete",
         "production_compatibility_promotion_review_contract_complete",
-        "production_compatibility_promotion_review_runtime_next"
+        "method_promotion_candidate_audit_complete",
+        "production_compatibility_runtime_deferred",
+        "scm_unit_jackknife_evidence_audit_next"
       ]
     },
     {
@@ -5488,7 +5551,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001",
+      "next_artifact": "SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001",
       "resolution_artifact": "CLAIM_AUTHORIZATION_RUNTIME_001",
       "artifact_tags": [
         "claim_authorization_runtime",
@@ -5509,7 +5572,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001",
+      "next_artifact": "SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001",
       "resolution_artifact": "SRM_BALANCE_READOUT_DIAGNOSTIC_001",
       "artifact_tags": [
         "srm_balance_readout_diagnostic",
@@ -5530,7 +5593,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001",
+      "next_artifact": "SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001",
       "resolution_artifact": "GOVERNED_RANDOMIZATION_RUNTIME_001",
       "artifact_tags": [
         "governed_randomization_runtime",
@@ -5549,7 +5612,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001",
+      "next_artifact": "SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001",
       "resolution_artifact": "TRUSTED_READOUT_REPORT_CONTRACT_001",
       "artifact_tags": [
         "trusted_readout_report_contract",
@@ -5571,7 +5634,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001",
+      "next_artifact": "SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001",
       "resolution_artifact": "TRUSTED_READOUT_REPORT_RUNTIME_001",
       "artifact_tags": [
         "trusted_readout_report_runtime",
@@ -5593,7 +5656,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001",
+      "next_artifact": "SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001",
       "resolution_artifact": "METHOD_PROMOTION_REVIEW_CONTRACT_001",
       "artifact_tags": [
         "method_promotion_review_contract",
@@ -5615,7 +5678,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001",
+      "next_artifact": "SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001",
       "resolution_artifact": "METHOD_PROMOTION_REVIEW_RUNTIME_001",
       "artifact_tags": [
         "method_promotion_review_runtime",
@@ -5637,7 +5700,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001",
+      "next_artifact": "SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001",
       "resolution_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001",
       "artifact_tags": [
         "production_compatibility_promotion_review_contract",
@@ -5649,6 +5712,27 @@
         "failure_packet_semantics",
         "contract_only",
         "no_runtime_or_authorization"
+      ]
+    },
+    {
+      "lane_id": "METHOD-PROMOTION-CANDIDATE-AUDIT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-METHOD-PROMOTION-CANDIDATE-AUDIT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001",
+      "resolution_artifact": "METHOD_PROMOTION_CANDIDATE_AUDIT_001",
+      "artifact_tags": [
+        "method_promotion_candidate_audit",
+        "candidate_ranking_taxonomy",
+        "candidate_inventory",
+        "blocker_documentation",
+        "compatibility_runtime_deferred",
+        "audit_only",
+        "no_method_promotion_or_catalog_change"
       ]
     },
     {

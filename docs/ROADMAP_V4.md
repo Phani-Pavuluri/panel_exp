@@ -525,13 +525,15 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`METHOD_PROMOTION_REVIEW_RUNTIME_001`** → ✅ **`PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001`** → `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Ordered next:** ✅ … → ✅ **`PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001`** → ✅ **`METHOD_PROMOTION_CANDIDATE_AUDIT_001`** → `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001`.
 
-### Audit-driven roadmap correction (2026-07-03)
+### Audit-driven roadmap correction (2026-07-06)
 
-`PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001` is complete. Production compatibility review is stricter than method promotion eligibility; contract only — no runtime or production authorization.
+`METHOD_PROMOTION_CANDIDATE_AUDIT_001` ranks promotion candidates conservatively. **No RANK_4 candidates.** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` is **deferred** until a credible candidate emerges.
 
-**Recommended immediate next:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`
+**Recommended immediate next:** `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001`
+
+**Deferred (gate-triggered):** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`
 
 **Deferred / paused:** `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001` · `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_004_BOOTSTRAP_INFERENCE` · advanced estimator production (SDID, TROP, MTGP, BayesianTBR) · production TrustReport ops · LLM/MMM downstream decisioning.
 
@@ -554,7 +556,9 @@ Foundation and compatibility audits ✅
 | `METHOD_PROMOTION_REVIEW_CONTRACT_001` | complete | Method promotion review contract; no runtime or promotion |
 | `METHOD_PROMOTION_REVIEW_RUNTIME_001` | complete | Governed promotion review packet runtime; no method promotion or production authorization |
 | `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_CONTRACT_001` | complete | Production compatibility promotion review contract; no runtime or authorization |
-| `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` | next | After production compatibility contract |
+| `METHOD_PROMOTION_CANDIDATE_AUDIT_001` | complete | Candidate inventory and ranking; no promotion or catalog change |
+| `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` | deferred | Gate-triggered after RANK_4 candidate |
+| `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001` | next | Smallest evidence-building step for top candidate |
 | `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001` | pause | Sophistication before validity closure |
 | `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_004_BOOTSTRAP_INFERENCE` | defer | After DID remediation + thresholds |
 | TROP / MTGP / BayesianTBR | research-only | Insufficient production evidence |
