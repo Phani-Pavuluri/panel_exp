@@ -1704,7 +1704,7 @@ class TestOpenInvestigationRegistry001:
             if b["lane_id"] == "AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001"
         )
         assert lane["status"] == "active"
-        assert lane["next_artifact"] == "METHOD_PROMOTION_REVIEW_CONTRACT_001"
+        assert lane["next_artifact"] == "METHOD_PROMOTION_REVIEW_RUNTIME_001"
         assert lane["resolution_artifact"] is None
         assert "INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001" in lane["open_investigations"]
 
@@ -1712,9 +1712,9 @@ class TestOpenInvestigationRegistry001:
         inv = investigations_by_id()["INV-AUDIT-P0-GOVERNED-RUNTIME-HARDENING-001"]
         assert inv.status == "PLANNED"
         assert inv.priority == "P0"
-        assert inv.evidence["recommended_next_artifact"] == "METHOD_PROMOTION_REVIEW_CONTRACT_001"
+        assert inv.evidence["recommended_next_artifact"] == "METHOD_PROMOTION_REVIEW_RUNTIME_001"
         assert inv.current_decision == (
-            "AUDIT_DRIVEN_P0_GOVERNED_RUNTIME_HARDENING_SUBSTANTIALLY_COMPLETE_TRUSTED_READOUT_REPORT_RUNTIME_IMPLEMENTED"
+            "AUDIT_DRIVEN_P0_GOVERNED_RUNTIME_HARDENING_SUBSTANTIALLY_COMPLETE_METHOD_PROMOTION_REVIEW_CONTRACT_DEFINED"
         )
 
     def test_production_catalog_blocklist_lane_complete(self) -> None:
@@ -1824,7 +1824,7 @@ class TestOpenInvestigationRegistry001:
         )
         assert lane["status"] == "complete"
         assert lane["resolution_artifact"] == "GOVERNED_RANDOMIZATION_RUNTIME_001"
-        assert lane["next_artifact"] == "METHOD_PROMOTION_REVIEW_CONTRACT_001"
+        assert lane["next_artifact"] == "METHOD_PROMOTION_REVIEW_RUNTIME_001"
         assert "INV-GOVERNED-RANDOMIZATION-RUNTIME-001" in lane["resolved_investigations"]
 
     def test_governed_randomization_runtime_investigation_resolved(self) -> None:
@@ -1844,7 +1844,7 @@ class TestOpenInvestigationRegistry001:
         )
         assert lane["status"] == "complete"
         assert lane["resolution_artifact"] == "SRM_BALANCE_READOUT_DIAGNOSTIC_001"
-        assert lane["next_artifact"] == "METHOD_PROMOTION_REVIEW_CONTRACT_001"
+        assert lane["next_artifact"] == "METHOD_PROMOTION_REVIEW_RUNTIME_001"
         assert "INV-SRM-BALANCE-READOUT-DIAGNOSTIC-001" in lane["resolved_investigations"]
 
     def test_srm_balance_readout_diagnostic_investigation_resolved(self) -> None:
@@ -1864,7 +1864,7 @@ class TestOpenInvestigationRegistry001:
         )
         assert lane["status"] == "complete"
         assert lane["resolution_artifact"] == "CLAIM_AUTHORIZATION_RUNTIME_001"
-        assert lane["next_artifact"] == "METHOD_PROMOTION_REVIEW_CONTRACT_001"
+        assert lane["next_artifact"] == "METHOD_PROMOTION_REVIEW_RUNTIME_001"
         assert "INV-CLAIM-AUTHORIZATION-RUNTIME-001" in lane["resolved_investigations"]
 
     def test_claim_authorization_runtime_investigation_resolved(self) -> None:
@@ -1884,7 +1884,7 @@ class TestOpenInvestigationRegistry001:
         )
         assert lane["status"] == "complete"
         assert lane["resolution_artifact"] == "TRUSTED_READOUT_REPORT_CONTRACT_001"
-        assert lane["next_artifact"] == "METHOD_PROMOTION_REVIEW_CONTRACT_001"
+        assert lane["next_artifact"] == "METHOD_PROMOTION_REVIEW_RUNTIME_001"
         assert "INV-TRUSTED-READOUT-REPORT-CONTRACT-001" in lane["resolved_investigations"]
 
     def test_trusted_readout_report_contract_investigation_resolved(self) -> None:
@@ -1905,7 +1905,7 @@ class TestOpenInvestigationRegistry001:
         )
         assert lane["status"] == "complete"
         assert lane["resolution_artifact"] == "TRUSTED_READOUT_REPORT_RUNTIME_001"
-        assert lane["next_artifact"] == "METHOD_PROMOTION_REVIEW_CONTRACT_001"
+        assert lane["next_artifact"] == "METHOD_PROMOTION_REVIEW_RUNTIME_001"
         assert "INV-TRUSTED-READOUT-REPORT-RUNTIME-001" in lane["resolved_investigations"]
 
     def test_trusted_readout_report_runtime_investigation_resolved(self) -> None:
@@ -1914,6 +1914,27 @@ class TestOpenInvestigationRegistry001:
         assert inv.resolution_artifact == "TRUSTED_READOUT_REPORT_RUNTIME_001"
         assert inv.evidence["trusted_readout_report_packet_generated"] is True
         assert inv.evidence["polished_narrative_generated"] is False
+
+    def test_method_promotion_review_contract_lane_complete(self) -> None:
+        reg = load_registry()
+        lane = next(
+            b for b in reg["roadmap_lane_bindings"]
+            if b["lane_id"] == "METHOD-PROMOTION-REVIEW-CONTRACT-001"
+        )
+        assert lane["status"] == "complete"
+        assert lane["resolution_artifact"] == "METHOD_PROMOTION_REVIEW_CONTRACT_001"
+        assert lane["next_artifact"] == "METHOD_PROMOTION_REVIEW_RUNTIME_001"
+        assert "INV-METHOD-PROMOTION-REVIEW-CONTRACT-001" in lane["resolved_investigations"]
+
+    def test_method_promotion_review_contract_investigation_resolved(self) -> None:
+        inv = investigations_by_id()["INV-METHOD-PROMOTION-REVIEW-CONTRACT-001"]
+        assert inv.status == "RESOLVED"
+        assert inv.resolution_artifact == "METHOD_PROMOTION_REVIEW_CONTRACT_001"
+        assert inv.current_decision == (
+            "METHOD_PROMOTION_REVIEW_CONTRACT_DEFINED_NO_RUNTIME_OR_PROMOTION"
+        )
+        assert inv.evidence["method_promoted"] is False
+        assert inv.evidence["method_promotion_runtime_implemented"] is False
 
     def test_production_authorization_release_gate_plan_investigation_resolved(self) -> None:
         inv = investigations_by_id()["INV-PRODUCTION-AUTHORIZATION-RELEASE-GATE-PLAN-001"]

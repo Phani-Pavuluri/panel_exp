@@ -2536,7 +2536,19 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Governed trusted readout report runtime assembles structured report packets from claim authorization and typed evidence. Section redaction/blocking, caveat propagation, claim binding, lineage/provenance hashing. Execution and readout plan integration. No narrative generation, no production authorization (`failed_scenarios: []`).
 
-**Next:** `METHOD_PROMOTION_REVIEW_CONTRACT_001` · alternative: `METHOD_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** ✅ `METHOD_PROMOTION_REVIEW_CONTRACT_001` · alternative: `METHOD_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
+## METHOD-PROMOTION-REVIEW-CONTRACT-001 (2026-07-06)
+
+**Artifact:** [`docs/track_d/METHOD_PROMOTION_REVIEW_CONTRACT_001_REPORT.md`](track_d/METHOD_PROMOTION_REVIEW_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/METHOD_PROMOTION_REVIEW_CONTRACT_001_summary.json`](track_d/archives/METHOD_PROMOTION_REVIEW_CONTRACT_001_summary.json) · [`panel_exp/validation/method_promotion_review_contract_001.py`](../panel_exp/validation/method_promotion_review_contract_001.py)
+
+**Status:** **`method_promotion_review_contract_defined_no_runtime_or_promotion`**
+
+**Verdict:** Defines method promotion review contract: review status taxonomy, candidate verdict taxonomy (no production approval verdict), evidence requirements, packet fields, failure semantics, promotion boundary rules. Contract only; no promotion runtime, no method promotion, no catalog loosening (`failed_scenarios: []`).
+
+**Next:** `METHOD_PROMOTION_REVIEW_RUNTIME_001` · alternative: `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
@@ -2562,9 +2574,9 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Expanded adversarial audit found P0 validity/cohesion gaps before claim authorization runtime. `CLAIM_AUTHORIZATION_CONTRACT_001` remains complete and safe (contract-only). Roadmap inserts P0 hardening lane before `CLAIM_AUTHORIZATION_RUNTIME_001`. No runtime authorization added by this audit update.
 
-**Immediate next:** `METHOD_PROMOTION_REVIEW_CONTRACT_001`
+**Immediate next:** `METHOD_PROMOTION_REVIEW_RUNTIME_001`
 
-**P0 sequence:** ✅ blocklist enforcement → ✅ DID estimand unification → ✅ assignment-panel integrity → ✅ statistical threshold enforcement → ✅ governed randomization → ✅ SRM/balance diagnostic → ✅ claim authorization runtime → ✅ trusted readout contract → ✅ trusted readout runtime.
+**P0 sequence:** ✅ blocklist enforcement → ✅ DID estimand unification → ✅ assignment-panel integrity → ✅ statistical threshold enforcement → ✅ governed randomization → ✅ SRM/balance diagnostic → ✅ claim authorization runtime → ✅ trusted readout contract → ✅ trusted readout runtime → ✅ method promotion review contract → method promotion review runtime.
 
 **Deferred:** AugSynth/ASCM remediation · bootstrap inference runtime · SDID/TROP/MTGP/BayesianTBR production · TrustReport product ops · LLM/MMM decisioning.
 

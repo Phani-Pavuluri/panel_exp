@@ -2693,9 +2693,9 @@
           "BayesianTBRHorseShoe"
         ],
         "failed_scenarios": [],
-        "recommended_next_artifact": "METHOD_PROMOTION_REVIEW_CONTRACT_001"
+        "recommended_next_artifact": "METHOD_PROMOTION_REVIEW_RUNTIME_001"
       },
-      "current_decision": "AUDIT_DRIVEN_P0_GOVERNED_RUNTIME_HARDENING_SUBSTANTIALLY_COMPLETE_TRUSTED_READOUT_REPORT_RUNTIME_IMPLEMENTED",
+      "current_decision": "AUDIT_DRIVEN_P0_GOVERNED_RUNTIME_HARDENING_SUBSTANTIALLY_COMPLETE_METHOD_PROMOTION_REVIEW_CONTRACT_DEFINED",
       "blocked_roles": [
         "trust_report",
         "calibration_signal",
@@ -2707,7 +2707,7 @@
         "budget_optimization"
       ],
       "target_artifact": "AUDIT_P0_GOVERNED_RUNTIME_HARDENING_001",
-      "revisit_trigger": "Upon completion of METHOD_PROMOTION_REVIEW_CONTRACT_001 acceptance criteria",
+      "revisit_trigger": "Upon completion of METHOD_PROMOTION_REVIEW_RUNTIME_001 acceptance criteria",
       "decision_checkpoint": "P0 validity/cohesion hardening before claim authorization runtime",
       "blocking_policy": "No claim authorization runtime or trusted readout until P0 hardening acceptance criteria pass",
       "terminal_decisions": ["RESTRICT", "HARDEN", "PROMOTE"],
@@ -2908,7 +2908,7 @@
         "authorized_claim_text_generated": false,
         "polished_narrative_generated": false,
         "failed_scenarios": [],
-        "recommended_next_artifact": "METHOD_PROMOTION_REVIEW_CONTRACT_001"
+        "recommended_next_artifact": "METHOD_PROMOTION_REVIEW_RUNTIME_001"
       },
       "current_decision": "TRUSTED_READOUT_REPORT_RUNTIME_IMPLEMENTED_NO_PRODUCTION_AUTHORIZATION_OR_NARRATIVE_GENERATION",
       "blocked_roles": [
@@ -2927,6 +2927,62 @@
       "blocking_policy": "Structured packet only; no production authorization or narrative generation",
       "terminal_decisions": ["RESTRICT", "HARDEN", "PROMOTE"],
       "resolution_artifact": "TRUSTED_READOUT_REPORT_RUNTIME_001"
+    },
+    {
+      "investigation_id": "INV-METHOD-PROMOTION-REVIEW-CONTRACT-001",
+      "title": "Method promotion review contract definition",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "TRUSTED-READOUT-REPORT-RUNTIME-001",
+      "affected_combination": "method_promotion_review_contract",
+      "problem_class": [
+        "method_promotion_review",
+        "promotion_boundary",
+        "evidence_gates",
+        "production_governance"
+      ],
+      "evidence": {
+        "depends_on": [
+          "TRUSTED_READOUT_REPORT_RUNTIME_001",
+          "TRUSTED_READOUT_REPORT_CONTRACT_001",
+          "STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001",
+          "PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001",
+          "METHOD_SUITABILITY_RUNTIME_001"
+        ],
+        "scope": "method_promotion_review_contract_defined_no_runtime_or_promotion",
+        "method_promotion_review_contract_defined": true,
+        "promotion_review_status_taxonomy_defined": true,
+        "promotion_review_candidate_verdict_taxonomy_defined": true,
+        "promotion_review_packet_fields_defined": true,
+        "promotion_review_evidence_requirements_defined": true,
+        "promotion_review_failure_packet_semantics_defined": true,
+        "promotion_review_future_runtime_tests_documented": true,
+        "production_authorization_boundary_defined": true,
+        "method_promotion_runtime_implemented": false,
+        "method_promoted": false,
+        "method_unblocked": false,
+        "production_catalog_unblocked": false,
+        "production_authorization_granted": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "METHOD_PROMOTION_REVIEW_RUNTIME_001"
+      },
+      "current_decision": "METHOD_PROMOTION_REVIEW_CONTRACT_DEFINED_NO_RUNTIME_OR_PROMOTION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": null,
+      "decision_checkpoint": "Method promotion review contract before promotion review runtime",
+      "blocking_policy": "Contract only; no promotion runtime, method promotion, or catalog loosening",
+      "terminal_decisions": ["RESTRICT", "CONTRACT_ONLY", "PROMOTE"],
+      "resolution_artifact": "METHOD_PROMOTION_REVIEW_CONTRACT_001"
     },
     {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
@@ -5281,7 +5337,7 @@
       "resolved_investigations": [],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "METHOD_PROMOTION_REVIEW_CONTRACT_001",
+      "next_artifact": "METHOD_PROMOTION_REVIEW_RUNTIME_001",
       "resolution_artifact": null,
       "artifact_tags": [
         "audit_driven_roadmap_correction",
@@ -5298,7 +5354,8 @@
         "claim_authorization_runtime",
         "trusted_readout_report_contract_complete",
         "trusted_readout_report_runtime_complete",
-        "method_promotion_review_next"
+        "method_promotion_review_contract_complete",
+        "method_promotion_review_runtime_next"
       ]
     },
     {
@@ -5310,7 +5367,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "METHOD_PROMOTION_REVIEW_CONTRACT_001",
+      "next_artifact": "METHOD_PROMOTION_REVIEW_RUNTIME_001",
       "resolution_artifact": "CLAIM_AUTHORIZATION_RUNTIME_001",
       "artifact_tags": [
         "claim_authorization_runtime",
@@ -5331,7 +5388,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "METHOD_PROMOTION_REVIEW_CONTRACT_001",
+      "next_artifact": "METHOD_PROMOTION_REVIEW_RUNTIME_001",
       "resolution_artifact": "SRM_BALANCE_READOUT_DIAGNOSTIC_001",
       "artifact_tags": [
         "srm_balance_readout_diagnostic",
@@ -5352,7 +5409,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "METHOD_PROMOTION_REVIEW_CONTRACT_001",
+      "next_artifact": "METHOD_PROMOTION_REVIEW_RUNTIME_001",
       "resolution_artifact": "GOVERNED_RANDOMIZATION_RUNTIME_001",
       "artifact_tags": [
         "governed_randomization_runtime",
@@ -5371,7 +5428,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "METHOD_PROMOTION_REVIEW_CONTRACT_001",
+      "next_artifact": "METHOD_PROMOTION_REVIEW_RUNTIME_001",
       "resolution_artifact": "TRUSTED_READOUT_REPORT_CONTRACT_001",
       "artifact_tags": [
         "trusted_readout_report_contract",
@@ -5393,7 +5450,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "METHOD_PROMOTION_REVIEW_CONTRACT_001",
+      "next_artifact": "METHOD_PROMOTION_REVIEW_RUNTIME_001",
       "resolution_artifact": "TRUSTED_READOUT_REPORT_RUNTIME_001",
       "artifact_tags": [
         "trusted_readout_report_runtime",
@@ -5404,6 +5461,28 @@
         "execution_runtime_integration",
         "readout_plan_prerequisite",
         "no_production_authorization_or_narrative_generation"
+      ]
+    },
+    {
+      "lane_id": "METHOD-PROMOTION-REVIEW-CONTRACT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-METHOD-PROMOTION-REVIEW-CONTRACT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "METHOD_PROMOTION_REVIEW_RUNTIME_001",
+      "resolution_artifact": "METHOD_PROMOTION_REVIEW_CONTRACT_001",
+      "artifact_tags": [
+        "method_promotion_review_contract",
+        "promotion_review_status_taxonomy",
+        "candidate_verdict_taxonomy",
+        "evidence_bundle_requirements",
+        "promotion_boundary_rules",
+        "failure_packet_semantics",
+        "contract_only",
+        "no_runtime_or_promotion"
       ]
     },
     {
