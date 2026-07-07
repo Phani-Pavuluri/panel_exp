@@ -3465,6 +3465,55 @@
       "resolution_artifact": "TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_RUNTIME_001"
     },
     {
+      "investigation_id": "INV-TBRRIDGE-PLACEBO-CALIBRATION-DIAGNOSTIC-CONTRACT-001",
+      "title": "TBRRidge placebo calibration diagnostic contract",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "TBRRIDGE-KFOLD-LEAKAGE-DIAGNOSTIC-RUNTIME-001",
+      "affected_combination": "tbrridge_placebo_calibration_diagnostic_contract",
+      "problem_class": [
+        "tbrridge",
+        "placebo",
+        "calibration",
+        "false_confidence",
+        "null_construction",
+        "production_governance"
+      ],
+      "evidence": {
+        "depends_on": [
+          "TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001",
+          "TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_RUNTIME_001",
+          "SOPHISTICATED_METHOD_EVIDENCE_LADDER_001"
+        ],
+        "scope": "tbrridge_placebo_calibration_diagnostic_contract_defined_no_runtime_or_inference",
+        "placebo_calibration_diagnostic_contract_defined": true,
+        "placebo_risk_taxonomy_defined": true,
+        "null_construction_rules_defined": true,
+        "placebo_inference_implemented": false,
+        "method_promoted": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_RUNTIME_001",
+        "deferred_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+      },
+      "current_decision": "TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_CONTRACT_DEFINED_NO_RUNTIME_OR_INFERENCE",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_RUNTIME_001 completion",
+      "decision_checkpoint": "Define placebo calibration diagnostic contract before runtime",
+      "blocking_policy": "Contract only; no runtime, inference, or authorization",
+      "terminal_decisions": ["RESTRICT", "CONTRACT_ONLY", "DEFER"],
+      "resolution_artifact": "TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_CONTRACT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -6153,6 +6202,26 @@
         "leakage_detection",
         "kfold_uncertainty_surface_blocked",
         "no_kfold_inference_or_uncertainty"
+      ]
+    },
+    {
+      "lane_id": "TBRRIDGE-PLACEBO-CALIBRATION-DIAGNOSTIC-CONTRACT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-TBRRIDGE-PLACEBO-CALIBRATION-DIAGNOSTIC-CONTRACT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_RUNTIME_001",
+      "resolution_artifact": "TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_CONTRACT_001",
+      "artifact_tags": [
+        "tbrridge_placebo_calibration_diagnostic_contract",
+        "placebo_risk_taxonomy",
+        "null_construction_rules",
+        "placebo_rank_tail_rules",
+        "contract_only",
+        "no_runtime_or_inference"
       ]
     },
     {
