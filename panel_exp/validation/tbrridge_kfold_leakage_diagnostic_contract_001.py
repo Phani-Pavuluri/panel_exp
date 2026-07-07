@@ -446,12 +446,9 @@ def evaluate_kfold_leakage_diagnostic(
         )
 
     if "SHARED_CONTROL_FOLD_LEAKAGE" in detected or "FOLD_ASSIGNMENT_INSTABILITY" in detected:
-        status = KfoldLeakageDiagnosticStatus.KFOLD_LEAKAGE_BLOCKED_BY_FOLD_OVERLAP.value
         code = "FOLD_OVERLAP_DETECTED"
-        if "FOLD_ASSIGNMENT_INSTABILITY" in detected:
-            code = "FOLD_OVERLAP_DETECTED"
         return KfoldLeakageEvaluationResult(
-            diagnostic_status=status.value,
+            diagnostic_status=KfoldLeakageDiagnosticStatus.KFOLD_LEAKAGE_BLOCKED_BY_FOLD_OVERLAP.value,
             authorized_for_diagnostic_summary=False,
             detected_leakage_types=detected,
             unsupported_geometries=(),

@@ -2600,6 +2600,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## TBRRIDGE-KFOLD-LEAKAGE-DIAGNOSTIC-RUNTIME-001 (2026-07-06)
+
+**Artifact:** [`docs/track_d/TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_RUNTIME_001_REPORT.md`](track_d/TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_RUNTIME_001_REPORT.md) · [`docs/track_d/archives/TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_RUNTIME_001_summary.json`](track_d/archives/TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_RUNTIME_001_summary.json) · [`panel_exp/validation/tbrridge_kfold_leakage_diagnostic_runtime_001.py`](../panel_exp/validation/tbrridge_kfold_leakage_diagnostic_runtime_001.py)
+
+**Status:** **`tbrridge_kfold_leakage_diagnostic_runtime_implemented_no_kfold_inference_or_uncertainty`**
+
+**Verdict:** Manifest-driven KFold leakage diagnostic runtime emits structured diagnostic packets via contract gate. Detects temporal/fold/geometry leakage risks; blocks uncertainty surfaces. No KFold inference, uncertainty, coverage, or promotion (`failed_scenarios: []`).
+
+**Next:** `TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_CONTRACT_001` · parallel: `TBRRIDGE_KFOLD_COVERAGE_VALIDATION_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
 ## TBRRIDGE-KFOLD-LEAKAGE-DIAGNOSTIC-CONTRACT-001 (2026-07-06)
 
 **Artifact:** [`docs/track_d/TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_CONTRACT_001_REPORT.md`](track_d/TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_CONTRACT_001_summary.json`](track_d/archives/TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_CONTRACT_001_summary.json) · [`panel_exp/validation/tbrridge_kfold_leakage_diagnostic_contract_001.py`](../panel_exp/validation/tbrridge_kfold_leakage_diagnostic_contract_001.py)

@@ -525,17 +525,17 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001`** → ✅ **`TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_CONTRACT_001`** → `TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_RUNTIME_001`.
+**Ordered next:** ✅ … → ✅ **`TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_CONTRACT_001`** → ✅ **`TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_RUNTIME_001`** → `TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_CONTRACT_001`.
 
 ### Audit-driven roadmap correction (2026-07-06)
 
 `METHOD_PROMOTION_CANDIDATE_AUDIT_001` ranks promotion candidates conservatively. **No RANK_4 candidates.** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` is **deferred** until a credible candidate emerges.
 
-`TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_CONTRACT_001` defines KFold leakage diagnostic statuses, leakage taxonomy, and evidence requirements before runtime.
+`TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_RUNTIME_001` implements manifest-driven KFold leakage diagnostics without inference or uncertainty computation.
 
-**Recommended immediate next:** `TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_RUNTIME_001`
+**Recommended immediate next:** `TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_CONTRACT_001`
 
-**Parallel:** `TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_CONTRACT_001` · `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001`
+**Parallel:** `TBRRIDGE_KFOLD_COVERAGE_VALIDATION_AUDIT_001` · `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001`
 
 **Deferred (gate-triggered):** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`
 
@@ -566,8 +566,9 @@ Foundation and compatibility audits ✅
 | `MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001` | complete | Surface eligibility gate runtime; no inference computation |
 | `TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001` | complete | TBRRidge false-confidence risk audit; no inference or promotion |
 | `TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_CONTRACT_001` | complete | KFold leakage diagnostic contract; no runtime |
+| `TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_RUNTIME_001` | complete | KFold leakage diagnostic runtime; no inference |
 | `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` | deferred | Gate-triggered after STAGE_6 / RANK_4 candidate |
-| `TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_RUNTIME_001` | next | KFold leakage diagnostic runtime |
+| `TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_CONTRACT_001` | next | Placebo calibration diagnostic contract |
 | `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001` | parallel | Smaller-scope evidence audit for top non-sophisticated candidate |
 | `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001` | pause | Sophistication before validity closure |
 | `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_004_BOOTSTRAP_INFERENCE` | defer | After DID remediation + thresholds |
