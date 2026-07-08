@@ -2600,6 +2600,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## TBRRIDGE-PLACEBO-CALIBRATION-DIAGNOSTIC-RUNTIME-001 (2026-07-08)
+
+**Artifact:** [`docs/track_d/TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_RUNTIME_001_REPORT.md`](track_d/TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_RUNTIME_001_REPORT.md) · [`docs/track_d/archives/TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_RUNTIME_001_summary.json`](track_d/archives/TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_RUNTIME_001_summary.json) · [`panel_exp/validation/tbrridge_placebo_calibration_diagnostic_runtime_001.py`](../panel_exp/validation/tbrridge_placebo_calibration_diagnostic_runtime_001.py)
+
+**Status:** **`tbrridge_placebo_calibration_diagnostic_runtime_implemented_no_placebo_inference_or_uncertainty`**
+
+**Verdict:** Manifest-driven placebo calibration runtime emits structured diagnostic packets via contract gate. Detects null construction, contamination, rank/tail/directional instability, outlier and regularization risks, and propagates blocking KFold leakage dependency signals. No placebo inference, uncertainty, coverage, or promotion (`failed_scenarios: []`).
+
+**Next:** `TBRRIDGE_KFOLD_COVERAGE_VALIDATION_AUDIT_001` · parallel: `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
 ## TBRRIDGE-PLACEBO-CALIBRATION-DIAGNOSTIC-CONTRACT-001 (2026-07-07)
 
 **Artifact:** [`docs/track_d/TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_CONTRACT_001_REPORT.md`](track_d/TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_CONTRACT_001_REPORT.md) · [`docs/track_d/archives/TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_CONTRACT_001_summary.json`](track_d/archives/TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_CONTRACT_001_summary.json) · [`panel_exp/validation/tbrridge_placebo_calibration_diagnostic_contract_001.py`](../panel_exp/validation/tbrridge_placebo_calibration_diagnostic_contract_001.py)
