@@ -2600,6 +2600,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## TBRRIDGE-KFOLD-COVERAGE-VALIDATION-RUNTIME-001 (2026-07-08)
+
+**Artifact:** [`docs/track_d/TBRRIDGE_KFOLD_COVERAGE_VALIDATION_RUNTIME_001_REPORT.md`](track_d/TBRRIDGE_KFOLD_COVERAGE_VALIDATION_RUNTIME_001_REPORT.md) · [`panel_exp/validation/tbrridge_kfold_coverage_validation_runtime_001.py`](../panel_exp/validation/tbrridge_kfold_coverage_validation_runtime_001.py) · [`docs/track_d/archives/TBRRIDGE_KFOLD_COVERAGE_VALIDATION_RUNTIME_001_summary.json`](track_d/archives/TBRRIDGE_KFOLD_COVERAGE_VALIDATION_RUNTIME_001_summary.json)
+
+**Status:** **`tbrridge_kfold_coverage_validation_runtime_implemented_no_coverage_computation_or_uncertainty`**
+
+**Verdict:** Manifest-driven coverage validation packet runtime consuming supplied reports; enforces leakage/placebo dependencies; flags supplied coverage risks; blocks uncertainty/production surfaces. No coverage or interval computation (`failed_scenarios: []`).
+
+**Next:** `TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_AUDIT_001` · parallel: `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
 ## TBRRIDGE-KFOLD-COVERAGE-VALIDATION-CONTRACT-001 (2026-07-08)
 
 **Artifact:** [`docs/track_d/TBRRIDGE_KFOLD_COVERAGE_VALIDATION_CONTRACT_001_REPORT.md`](track_d/TBRRIDGE_KFOLD_COVERAGE_VALIDATION_CONTRACT_001_REPORT.md) · [`panel_exp/validation/tbrridge_kfold_coverage_validation_contract_001.py`](../panel_exp/validation/tbrridge_kfold_coverage_validation_contract_001.py) · [`docs/track_d/archives/TBRRIDGE_KFOLD_COVERAGE_VALIDATION_CONTRACT_001_summary.json`](track_d/archives/TBRRIDGE_KFOLD_COVERAGE_VALIDATION_CONTRACT_001_summary.json)
