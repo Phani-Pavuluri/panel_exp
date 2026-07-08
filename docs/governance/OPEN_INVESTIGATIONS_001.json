@@ -3564,6 +3564,58 @@
       "resolution_artifact": "TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_RUNTIME_001"
     },
     {
+      "investigation_id": "INV-TBRRIDGE-KFOLD-COVERAGE-VALIDATION-AUDIT-001",
+      "title": "TBRRidge KFold coverage validation audit",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "TBRRIDGE-PLACEBO-CALIBRATION-DIAGNOSTIC-RUNTIME-001",
+      "affected_combination": "tbrridge_kfold_coverage_validation_audit",
+      "problem_class": [
+        "tbrridge",
+        "kfold",
+        "coverage",
+        "false_confidence",
+        "interval_semantics",
+        "production_governance"
+      ],
+      "evidence": {
+        "depends_on": [
+          "TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_RUNTIME_001",
+          "TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_RUNTIME_001",
+          "TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001",
+          "SOPHISTICATED_METHOD_EVIDENCE_LADDER_001"
+        ],
+        "scope": "tbrridge_kfold_coverage_validation_requirements_audited_no_coverage_runtime_or_uncertainty",
+        "coverage_validation_audit_completed": true,
+        "coverage_evidence_taxonomy_defined": true,
+        "interval_semantics_gap_documented": true,
+        "stop_go_criteria_defined": true,
+        "coverage_runtime_implemented": false,
+        "kfold_inference_implemented": false,
+        "method_promoted": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "TBRRIDGE_KFOLD_COVERAGE_VALIDATION_CONTRACT_001",
+        "deferred_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+      },
+      "current_decision": "TBRRIDGE_KFOLD_COVERAGE_VALIDATION_REQUIREMENTS_AUDITED_NO_COVERAGE_RUNTIME_OR_UNCERTAINTY",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon TBRRIDGE_KFOLD_COVERAGE_VALIDATION_CONTRACT_001 completion",
+      "decision_checkpoint": "Define coverage validation requirements before uncertainty-candidate review",
+      "blocking_policy": "Audit only; no coverage runtime, inference, or authorization",
+      "terminal_decisions": ["RESTRICT", "AUDIT_ONLY", "DEFER"],
+      "resolution_artifact": "TBRRIDGE_KFOLD_COVERAGE_VALIDATION_AUDIT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -6291,6 +6343,27 @@
         "null_construction_gate",
         "placebo_risk_detection",
         "no_placebo_inference_or_uncertainty"
+      ]
+    },
+    {
+      "lane_id": "TBRRIDGE-KFOLD-COVERAGE-VALIDATION-AUDIT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-TBRRIDGE-KFOLD-COVERAGE-VALIDATION-AUDIT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "TBRRIDGE_KFOLD_COVERAGE_VALIDATION_CONTRACT_001",
+      "resolution_artifact": "TBRRIDGE_KFOLD_COVERAGE_VALIDATION_AUDIT_001",
+      "artifact_tags": [
+        "tbrridge_kfold_coverage_validation_audit",
+        "coverage_evidence_taxonomy",
+        "interval_semantics_gap",
+        "simulation_design_requirements",
+        "stop_go_criteria",
+        "audit_only",
+        "no_coverage_runtime_or_uncertainty"
       ]
     },
     {
