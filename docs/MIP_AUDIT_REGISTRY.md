@@ -2600,6 +2600,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## TBRRIDGE-UNCERTAINTY-CANDIDATE-REVIEW-CONTRACT-001 (2026-07-08)
+
+**Artifact:** [`docs/track_d/TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_CONTRACT_001_REPORT.md`](track_d/TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_CONTRACT_001_REPORT.md) · [`panel_exp/validation/tbrridge_uncertainty_candidate_review_contract_001.py`](../panel_exp/validation/tbrridge_uncertainty_candidate_review_contract_001.py) · [`docs/track_d/archives/TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_CONTRACT_001_summary.json`](track_d/archives/TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_CONTRACT_001_summary.json)
+
+**Status:** **`tbrridge_uncertainty_candidate_review_contract_defined_no_runtime_or_uncertainty_approval`**
+
+**Verdict:** Defines uncertainty-candidate review statuses, risk taxonomy, required evidence chain, packet fields, allowed/prohibited surfaces, failure semantics, and future runtime acceptance criteria for TBRRidge KFold. Consumes leakage, placebo, and coverage validation diagnostic gates. No candidate-review runtime, uncertainty approval, or promotion (`failed_scenarios: []`).
+
+**Next:** `TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_RUNTIME_001` · parallel: `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
 ## TBRRIDGE-UNCERTAINTY-CANDIDATE-REVIEW-AUDIT-001 (2026-07-08)
 
 **Artifact:** [`docs/track_d/TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_AUDIT_001.md`](track_d/TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_AUDIT_001.md) · [`docs/track_d/archives/TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_AUDIT_001_summary.json`](track_d/archives/TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_AUDIT_001_summary.json)
@@ -2608,7 +2620,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Reviews TBRRidge KFold diagnostic chain (leakage, placebo, coverage validation), evidence sufficiency matrix, remaining blockers, and stop/go criteria for future uncertainty-candidate review contract. Recommends contract definition only; no uncertainty approval, promotion, or catalog unblock (`failed_scenarios: []`).
 
-**Next:** `TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_CONTRACT_001` · parallel: `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_RUNTIME_001` · parallel: `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
