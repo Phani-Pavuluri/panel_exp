@@ -3827,6 +3827,62 @@
       "resolution_artifact": "TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_CONTRACT_001"
     },
     {
+      "investigation_id": "INV-TBRRIDGE-UNCERTAINTY-CANDIDATE-REVIEW-RUNTIME-001",
+      "title": "TBRRidge uncertainty candidate review runtime",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "TBRRIDGE-UNCERTAINTY-CANDIDATE-REVIEW-CONTRACT-001",
+      "affected_combination": "tbrridge_uncertainty_candidate_review_runtime",
+      "problem_class": [
+        "tbrridge",
+        "kfold",
+        "uncertainty_candidate",
+        "false_confidence",
+        "method_promotion",
+        "production_governance"
+      ],
+      "evidence": {
+        "depends_on": [
+          "TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_CONTRACT_001",
+          "TBRRIDGE_KFOLD_LEAKAGE_DIAGNOSTIC_RUNTIME_001",
+          "TBRRIDGE_PLACEBO_CALIBRATION_DIAGNOSTIC_RUNTIME_001",
+          "TBRRIDGE_KFOLD_COVERAGE_VALIDATION_RUNTIME_001"
+        ],
+        "scope": "tbrridge_uncertainty_candidate_review_runtime_implemented_no_uncertainty_computation_or_approval",
+        "uncertainty_candidate_review_runtime_implemented": true,
+        "supplied_evidence_reviewed": true,
+        "missing_evidence_detected": true,
+        "leakage_status_delegated": true,
+        "placebo_status_delegated": true,
+        "coverage_status_delegated": true,
+        "failure_packet_emitted": true,
+        "deterministic_provenance_hash_defined": true,
+        "uncertainty_candidate_approved": false,
+        "uncertainty_authorized": false,
+        "method_promoted": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "TBRRIDGE_METHOD_PROMOTION_EVIDENCE_AUDIT_001",
+        "deferred_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+      },
+      "current_decision": "TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_RUNTIME_IMPLEMENTED_NO_UNCERTAINTY_COMPUTATION_OR_APPROVAL",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon TBRRIDGE_METHOD_PROMOTION_EVIDENCE_AUDIT_001 completion",
+      "decision_checkpoint": "Implement uncertainty-candidate review runtime before promotion evidence audit",
+      "blocking_policy": "Runtime only; no uncertainty computation, inference, or authorization",
+      "terminal_decisions": ["RESTRICT", "DIAGNOSTIC_ONLY", "DEFER"],
+      "resolution_artifact": "TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_RUNTIME_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -6654,6 +6710,26 @@
         "failure_packet_semantics",
         "contract_only",
         "no_runtime_or_uncertainty_approval"
+      ]
+    },
+    {
+      "lane_id": "TBRRIDGE-UNCERTAINTY-CANDIDATE-REVIEW-RUNTIME-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-TBRRIDGE-UNCERTAINTY-CANDIDATE-REVIEW-RUNTIME-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "TBRRIDGE_METHOD_PROMOTION_EVIDENCE_AUDIT_001",
+      "resolution_artifact": "TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_RUNTIME_001",
+      "artifact_tags": [
+        "tbrridge_uncertainty_candidate_review_runtime",
+        "supplied_evidence_review",
+        "failure_packet_semantics",
+        "deterministic_provenance_hash",
+        "runtime_only",
+        "no_uncertainty_computation_or_approval"
       ]
     },
     {
