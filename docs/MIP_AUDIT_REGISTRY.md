@@ -2600,6 +2600,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## TBRRIDGE-UNCERTAINTY-CANDIDATE-REVIEW-AUDIT-001 (2026-07-08)
+
+**Artifact:** [`docs/track_d/TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_AUDIT_001.md`](track_d/TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_AUDIT_001.md) · [`docs/track_d/archives/TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_AUDIT_001_summary.json`](track_d/archives/TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_AUDIT_001_summary.json)
+
+**Status:** **`tbrridge_uncertainty_candidate_review_audited_no_uncertainty_approval_or_promotion`**
+
+**Verdict:** Reviews TBRRidge KFold diagnostic chain (leakage, placebo, coverage validation), evidence sufficiency matrix, remaining blockers, and stop/go criteria for future uncertainty-candidate review contract. Recommends contract definition only; no uncertainty approval, promotion, or catalog unblock (`failed_scenarios: []`).
+
+**Next:** `TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_CONTRACT_001` · parallel: `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
 ## TBRRIDGE-KFOLD-COVERAGE-VALIDATION-RUNTIME-001 (2026-07-08)
 
 **Artifact:** [`docs/track_d/TBRRIDGE_KFOLD_COVERAGE_VALIDATION_RUNTIME_001_REPORT.md`](track_d/TBRRIDGE_KFOLD_COVERAGE_VALIDATION_RUNTIME_001_REPORT.md) · [`panel_exp/validation/tbrridge_kfold_coverage_validation_runtime_001.py`](../panel_exp/validation/tbrridge_kfold_coverage_validation_runtime_001.py) · [`docs/track_d/archives/TBRRIDGE_KFOLD_COVERAGE_VALIDATION_RUNTIME_001_summary.json`](track_d/archives/TBRRIDGE_KFOLD_COVERAGE_VALIDATION_RUNTIME_001_summary.json)

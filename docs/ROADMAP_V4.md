@@ -525,15 +525,15 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`TBRRIDGE_KFOLD_COVERAGE_VALIDATION_CONTRACT_001`** → ✅ **`TBRRIDGE_KFOLD_COVERAGE_VALIDATION_RUNTIME_001`** → `TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_AUDIT_001`.
+**Ordered next:** ✅ … → ✅ **`TBRRIDGE_KFOLD_COVERAGE_VALIDATION_RUNTIME_001`** → ✅ **`TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_AUDIT_001`** → `TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_CONTRACT_001`.
 
 ### Audit-driven roadmap correction (2026-07-06)
 
 `METHOD_PROMOTION_CANDIDATE_AUDIT_001` ranks promotion candidates conservatively. **No RANK_4 candidates.** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` is **deferred** until a credible candidate emerges.
 
-`TBRRIDGE_KFOLD_COVERAGE_VALIDATION_RUNTIME_001` implements manifest-driven coverage validation diagnostics without computing coverage or authorizing uncertainty.
+`TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_AUDIT_001` reviews whether TBRRidge KFold has sufficient governed diagnostic scaffolding for a future restricted uncertainty-candidate review contract without approving uncertainty or promoting the method.
 
-**Recommended immediate next:** `TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_AUDIT_001`
+**Recommended immediate next:** `TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_CONTRACT_001`
 
 **Parallel:** `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` · `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001`
 
@@ -572,8 +572,9 @@ Foundation and compatibility audits ✅
 | `TBRRIDGE_KFOLD_COVERAGE_VALIDATION_AUDIT_001` | complete | KFold coverage validation requirements audit; no coverage runtime |
 | `TBRRIDGE_KFOLD_COVERAGE_VALIDATION_CONTRACT_001` | complete | KFold coverage validation contract; no runtime |
 | `TBRRIDGE_KFOLD_COVERAGE_VALIDATION_RUNTIME_001` | complete | KFold coverage validation runtime; no coverage computation |
+| `TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_AUDIT_001` | complete | Uncertainty-candidate review audit; no uncertainty approval |
 | `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` | deferred | Gate-triggered after STAGE_6 / RANK_4 candidate |
-| `TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_AUDIT_001` | next | Restricted uncertainty-candidate review audit |
+| `TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_CONTRACT_001` | next | Restricted uncertainty-candidate review contract |
 | `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001` | parallel | Smaller-scope evidence audit for top non-sophisticated candidate |
 | `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001` | pause | Sophistication before validity closure |
 | `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_004_BOOTSTRAP_INFERENCE` | defer | After DID remediation + thresholds |
