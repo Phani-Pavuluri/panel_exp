@@ -2600,6 +2600,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## TBRRIDGE-DIRECTIONAL-ERROR-AUDIT-001 (2026-07-08)
+
+**Artifact:** [`docs/track_d/TBRRIDGE_DIRECTIONAL_ERROR_AUDIT_001.md`](track_d/TBRRIDGE_DIRECTIONAL_ERROR_AUDIT_001.md) · [`docs/track_d/archives/TBRRIDGE_DIRECTIONAL_ERROR_AUDIT_001_summary.json`](track_d/archives/TBRRIDGE_DIRECTIONAL_ERROR_AUDIT_001_summary.json)
+
+**Status:** **`tbrridge_directional_error_audited_no_directional_error_computation_or_authorization`**
+
+**Verdict:** Defines signed-effect fixture families, directional diagnostic metrics, false-positive distinction, acceptance/blocker criteria, and runtime packet integration for TBRRidge KFold wrong-sign behavior. No directional-error evidence generated, directional-error rates computed, or sign-correctness authorized (`failed_scenarios: []`).
+
+**Next:** `TBRRIDGE_POSITIVE_CONTROL_RECOVERY_AUDIT_001` · parallel: `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
 ## TBRRIDGE-NULL-CONTROL-FALSE-POSITIVE-AUDIT-001 (2026-07-08)
 
 **Artifact:** [`docs/track_d/TBRRIDGE_NULL_CONTROL_FALSE_POSITIVE_AUDIT_001.md`](track_d/TBRRIDGE_NULL_CONTROL_FALSE_POSITIVE_AUDIT_001.md) · [`docs/track_d/archives/TBRRIDGE_NULL_CONTROL_FALSE_POSITIVE_AUDIT_001_summary.json`](track_d/archives/TBRRIDGE_NULL_CONTROL_FALSE_POSITIVE_AUDIT_001_summary.json)

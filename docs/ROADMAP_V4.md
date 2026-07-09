@@ -525,7 +525,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`TBRRIDGE_INTERVAL_SEMANTICS_AUDIT_001`** → ✅ **`TBRRIDGE_NULL_CONTROL_FALSE_POSITIVE_AUDIT_001`**.
+**Ordered next:** ✅ … → ✅ **`TBRRIDGE_INTERVAL_SEMANTICS_AUDIT_001`** → ✅ **`TBRRIDGE_NULL_CONTROL_FALSE_POSITIVE_AUDIT_001`** → ✅ **`TBRRIDGE_DIRECTIONAL_ERROR_AUDIT_001`**.
 
 ### Audit-driven roadmap correction (2026-07-06)
 
@@ -541,7 +541,9 @@ Foundation and compatibility audits ✅
 
 `TBRRIDGE_NULL_CONTROL_FALSE_POSITIVE_AUDIT_001` defines null-control false-positive evaluation requirements for TBRRidge KFold without computing false-positive rates or authorizing significance claims.
 
-**Recommended immediate next:** `TBRRIDGE_DIRECTIONAL_ERROR_AUDIT_001`
+`TBRRIDGE_DIRECTIONAL_ERROR_AUDIT_001` defines directional-error evaluation requirements for TBRRidge KFold wrong-sign behavior without computing directional-error rates or authorizing sign-correctness claims.
+
+**Recommended immediate next:** `TBRRIDGE_POSITIVE_CONTROL_RECOVERY_AUDIT_001`
 
 **Parallel:** `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` · `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001`
 
@@ -589,8 +591,9 @@ Foundation and compatibility audits ✅
 | `TBRRIDGE_PROMOTION_EVIDENCE_BATTERY_PLAN_001` | complete | TBRRidge promotion evidence battery plan; no evidence generated |
 | `TBRRIDGE_INTERVAL_SEMANTICS_AUDIT_001` | complete | TBRRidge KFold interval semantics audit; no interval computation |
 | `TBRRIDGE_NULL_CONTROL_FALSE_POSITIVE_AUDIT_001` | complete | TBRRidge null-control false-positive audit; no FPR computation |
+| `TBRRIDGE_DIRECTIONAL_ERROR_AUDIT_001` | complete | TBRRidge directional-error audit; no directional-error computation |
 | `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` | deferred | Gate-triggered after STAGE_6 / RANK_4 candidate |
-| `TBRRIDGE_DIRECTIONAL_ERROR_AUDIT_001` | next | TBRRidge directional-error audit |
+| `TBRRIDGE_POSITIVE_CONTROL_RECOVERY_AUDIT_001` | next | TBRRidge positive-control recovery audit |
 | `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001` | parallel | Smaller-scope evidence audit for top non-sophisticated candidate |
 | `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001` | pause | Sophistication before validity closure |
 | `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_004_BOOTSTRAP_INFERENCE` | defer | After DID remediation + thresholds |

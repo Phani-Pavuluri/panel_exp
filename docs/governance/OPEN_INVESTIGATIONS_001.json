@@ -4215,6 +4215,64 @@
       "resolution_artifact": "TBRRIDGE_NULL_CONTROL_FALSE_POSITIVE_AUDIT_001"
     },
     {
+      "investigation_id": "INV-TBRRIDGE-DIRECTIONAL-ERROR-AUDIT-001",
+      "title": "TBRRidge directional-error audit",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "TBRRIDGE-NULL-CONTROL-FALSE-POSITIVE-AUDIT-001",
+      "affected_combination": "tbrridge_directional_error_audit",
+      "problem_class": [
+        "tbrridge",
+        "kfold",
+        "directional_error",
+        "wrong_sign",
+        "false_confidence",
+        "method_promotion"
+      ],
+      "evidence": {
+        "depends_on": [
+          "TBRRIDGE_NULL_CONTROL_FALSE_POSITIVE_AUDIT_001",
+          "TBRRIDGE_INTERVAL_SEMANTICS_AUDIT_001",
+          "TBRRIDGE_PROMOTION_EVIDENCE_BATTERY_PLAN_001",
+          "TBRRIDGE_METHOD_PROMOTION_REVIEW_RUNTIME_001"
+        ],
+        "scope": "tbrridge_directional_error_audited_no_directional_error_computation_or_authorization",
+        "tbrridge_directional_error_audit_completed": true,
+        "directional_error_gap_documented": true,
+        "directional_fixture_requirements_defined": true,
+        "directional_diagnostic_metrics_defined": true,
+        "false_positive_distinction_defined": true,
+        "blocker_criteria_defined": true,
+        "runtime_packet_integration_defined": true,
+        "directional_error_evidence_generated": false,
+        "directional_error_rate_computed": false,
+        "sign_accuracy_validated": false,
+        "method_promoted": false,
+        "method_unblocked": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "TBRRIDGE_POSITIVE_CONTROL_RECOVERY_AUDIT_001",
+        "alternative_next_artifact": "AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001",
+        "deferred_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+      },
+      "current_decision": "TBRRIDGE_DIRECTIONAL_ERROR_AUDITED_NO_DIRECTIONAL_ERROR_COMPUTATION_OR_AUTHORIZATION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon TBRRIDGE_POSITIVE_CONTROL_RECOVERY_AUDIT_001 completion",
+      "decision_checkpoint": "Define directional-error audit before positive-control recovery audit",
+      "blocking_policy": "Audit only; no directional-error computation, sign-correctness authorization, or evidence generation",
+      "terminal_decisions": ["RESTRICT", "AUDIT_ONLY", "DEFER"],
+      "resolution_artifact": "TBRRIDGE_DIRECTIONAL_ERROR_AUDIT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -7185,6 +7243,28 @@
         "runtime_packet_integration",
         "audit_only",
         "no_false_positive_computation_or_authorization"
+      ]
+    },
+    {
+      "lane_id": "TBRRIDGE-DIRECTIONAL-ERROR-AUDIT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-TBRRIDGE-DIRECTIONAL-ERROR-AUDIT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "TBRRIDGE_POSITIVE_CONTROL_RECOVERY_AUDIT_001",
+      "resolution_artifact": "TBRRIDGE_DIRECTIONAL_ERROR_AUDIT_001",
+      "artifact_tags": [
+        "tbrridge_directional_error_audit",
+        "directional_fixture_requirements",
+        "directional_diagnostic_metrics",
+        "false_positive_distinction",
+        "blocker_criteria",
+        "runtime_packet_integration",
+        "audit_only",
+        "no_directional_error_computation_or_authorization"
       ]
     },
     {
