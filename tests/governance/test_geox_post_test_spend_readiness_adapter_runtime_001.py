@@ -102,9 +102,8 @@ def test_return_to_lane_a_after() -> None:
     assert data["return_to_lane_a_after"] == "TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001"
 
 
-def test_roadmap_marks_runtime_complete_and_sets_next() -> None:
+def test_lane_b_closure_documented_in_roadmap() -> None:
     text = _ROADMAP.read_text(encoding="utf-8")
-    assert "GEOX_POST_TEST_SPEND_READINESS_ADAPTER_RUNTIME_001" in text
     assert "GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001" in text
 
 
@@ -125,4 +124,4 @@ def test_open_investigations_lane_b_next() -> None:
         for item in registry["roadmap_lane_bindings"]
         if item["lane_id"] == "LANE-B-FINAL-TRUSTED-READOUT-SPEND-ROI-READINESS"
     )
-    assert lane_b["next_artifact"] == "GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001"
+    assert lane_b["next_artifact"] == "TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001"

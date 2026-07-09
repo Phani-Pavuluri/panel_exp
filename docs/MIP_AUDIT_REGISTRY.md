@@ -2608,7 +2608,33 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Defines exact claim taxonomy and authorization boundary for `geo.tbrridge.kfold.single_cell.delta_mu.diagnostic_interval.restricted_review`. Allows diagnostic/restricted-review summaries only; blocks CI/p-value/significance, decision, production, lift, ROI, catalog-unblock, and promotion language/surfaces. Requires `claim_authorization_boundary_report` in method-promotion review input. No claim authorization granted.
 
-**Next:** `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001` (Lane B) · **return to Lane A:** `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001` (Lane A active) · **optional Lane B:** `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
+## LANE-B-FINAL-TRUSTED-READOUT-SPEND-ROI-READINESS (2026-07-09)
+
+**Lane:** **Lane B — Final trusted readout / spend / ROI readiness**
+
+**Status:** **`minimum_semantic_chain_completed_return_to_lane_a`**
+
+**Verdict:** Lane B closed at semantic level after discovery audits, spend/ROI readiness contract, post-test spend adapter runtime, trusted readout spend integration runtime, and efficiency metric readiness mapper contract. Minimum chain: post-test spend evidence → trusted readout integration → efficiency metric mapping. Return to Lane A for TBRRidge promotion evidence packet assembly.
+
+**Resolution artifacts:** `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001` · **return to Lane A:** `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001`.
+
+---
+
+## GEOX-EFFICIENCY-METRIC-READINESS-MAPPER-CONTRACT-001 (2026-07-09)
+
+**Artifact:** [`docs/track_d/GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001.md`](track_d/GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001.md) · [`docs/track_d/archives/GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001_summary.json`](track_d/archives/GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001_summary.json)
+
+**Lane:** **Lane B — Final trusted readout / spend / ROI readiness**
+
+**Status:** **`efficiency_metric_readiness_mapping_contract_defined_no_runtime_or_claim_authorization`**
+
+**Verdict:** Final Lane B semantic contract defining efficiency metric readiness mapping for cost-per, ROAS, and profit ROI. Defines input groups, readiness statuses, numeric-readiness vs claim-authorization boundary, trusted readout representation, and MIP interpretation. Closes Lane B minimum semantic chain. No runtime, metric computation, or claim authorization.
+
+**Next:** `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001` (Lane A) · **optional:** `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 

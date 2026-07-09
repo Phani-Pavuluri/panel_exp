@@ -110,7 +110,7 @@ def test_return_to_lane_a_after() -> None:
 def test_roadmap_updated() -> None:
     text = _ROADMAP.read_text(encoding="utf-8")
     assert "GEOX_TRUSTED_READOUT_SPEND_READINESS_INTEGRATION_RUNTIME_001" in text
-    assert "GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001" in text
+    assert "TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001" in text
 
 
 def test_mip_audit_registry_updated() -> None:
@@ -130,4 +130,4 @@ def test_open_investigations_lane_b_next() -> None:
         for item in registry["roadmap_lane_bindings"]
         if item["lane_id"] == "LANE-B-FINAL-TRUSTED-READOUT-SPEND-ROI-READINESS"
     )
-    assert lane_b["next_artifact"] == "GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001"
+    assert lane_b["next_artifact"] == "TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001"

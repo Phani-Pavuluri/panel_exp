@@ -571,15 +571,15 @@ Foundation and compatibility audits ✅
 
 **Parked next:** `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001`
 
-### Lane B — Final trusted readout / spend / ROI readiness (active)
+### Lane B — Final trusted readout / spend / ROI readiness (minimum semantic chain complete)
 
-**Status:** Active platform lane — extend existing trusted readout stack; no new final-results or spend-ingestion module.
+**Status:** Minimum semantic chain complete — return to Lane A unless optional mapper runtime is prioritized.
 
-**Completed:** `FINAL_TEST_RESULTS_EXISTING_ARTIFACT_REUSE_AUDIT_001` · `GEOX_READOUT_DATAFLOW_AND_SPEND_EXTRACTION_PROCESS_AUDIT_001` · `GEOX_FINAL_TEST_RESULTS_SPEND_AND_ROI_READINESS_CONTRACT_001` · `GEOX_POST_TEST_SPEND_READINESS_ADAPTER_RUNTIME_001` · `GEOX_TRUSTED_READOUT_SPEND_READINESS_INTEGRATION_RUNTIME_001`
+**Completed:** `FINAL_TEST_RESULTS_EXISTING_ARTIFACT_REUSE_AUDIT_001` · `GEOX_READOUT_DATAFLOW_AND_SPEND_EXTRACTION_PROCESS_AUDIT_001` · `GEOX_FINAL_TEST_RESULTS_SPEND_AND_ROI_READINESS_CONTRACT_001` · `GEOX_POST_TEST_SPEND_READINESS_ADAPTER_RUNTIME_001` · `GEOX_TRUSTED_READOUT_SPEND_READINESS_INTEGRATION_RUNTIME_001` · `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001`
 
-**Recommended immediate next (Lane B):** `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001`
+**Return to Lane A (active):** `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001`
 
-**Return to Lane A after:** `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001`
+**Optional Lane B follow-up:** `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_RUNTIME_001`
 
 **Parallel / alternative (Lane A):** `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` (save-for-later) · `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001`
 
@@ -644,8 +644,8 @@ Foundation and compatibility audits ✅
 | `GEOX_FINAL_TEST_RESULTS_SPEND_AND_ROI_READINESS_CONTRACT_001` | complete | Spend/ROI readiness contract; no runtime or claim authorization |
 | `GEOX_POST_TEST_SPEND_READINESS_ADAPTER_RUNTIME_001` | complete | Post-test spend readiness adapter runtime; reuse profiler and spend primitives |
 | `GEOX_TRUSTED_READOUT_SPEND_READINESS_INTEGRATION_RUNTIME_001` | complete | Integrate post-test spend handoff into trusted readout runtime |
-| `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001` | next (Lane B) | Efficiency metric readiness mapper contract; no ROI calculator |
-| `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001` | next (Lane A, parked) | Assemble governed evidence packet contract after Lane B adapter |
+| `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001` | complete | Efficiency metric readiness mapper contract; no ROI calculator |
+| `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001` | next (Lane A) | Assemble governed evidence packet contract after Lane B closure |
 | `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` | deferred | Gate-triggered after STAGE_6 / RANK_4 candidate |
 | `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001` | parallel | Smaller-scope evidence audit for top non-sophisticated candidate |
 | `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001` | pause | Sophistication before validity closure |
