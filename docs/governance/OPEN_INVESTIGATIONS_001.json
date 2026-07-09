@@ -4047,6 +4047,62 @@
       "resolution_artifact": "TBRRIDGE_METHOD_PROMOTION_REVIEW_RUNTIME_001"
     },
     {
+      "investigation_id": "INV-TBRRIDGE-PROMOTION-EVIDENCE-BATTERY-PLAN-001",
+      "title": "TBRRidge promotion evidence battery plan",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "TBRRIDGE-METHOD-PROMOTION-REVIEW-RUNTIME-001",
+      "affected_combination": "tbrridge_promotion_evidence_battery_plan",
+      "problem_class": [
+        "tbrridge",
+        "kfold",
+        "method_promotion",
+        "evidence_battery",
+        "false_confidence",
+        "production_governance"
+      ],
+      "evidence": {
+        "depends_on": [
+          "TBRRIDGE_METHOD_PROMOTION_REVIEW_RUNTIME_001",
+          "TBRRIDGE_METHOD_PROMOTION_REVIEW_CONTRACT_001",
+          "TBRRIDGE_METHOD_PROMOTION_EVIDENCE_AUDIT_001"
+        ],
+        "scope": "tbrridge_promotion_evidence_battery_planned_no_evidence_generated_or_promotion",
+        "tbrridge_promotion_evidence_battery_plan_defined": true,
+        "missing_evidence_inventory_defined": true,
+        "evidence_artifact_sequence_defined": true,
+        "fixture_requirements_defined": true,
+        "simulation_control_requirements_defined": true,
+        "acceptance_criteria_defined": true,
+        "runtime_packet_integration_plan_defined": true,
+        "evidence_generated": false,
+        "simulations_implemented": false,
+        "method_promoted": false,
+        "method_unblocked": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "TBRRIDGE_INTERVAL_SEMANTICS_AUDIT_001",
+        "alternative_next_artifact": "AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001",
+        "deferred_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+      },
+      "current_decision": "TBRRIDGE_PROMOTION_EVIDENCE_BATTERY_PLANNED_NO_EVIDENCE_GENERATED_OR_PROMOTION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon TBRRIDGE_INTERVAL_SEMANTICS_AUDIT_001 completion",
+      "decision_checkpoint": "Define evidence battery plan before interval semantics audit",
+      "blocking_policy": "Plan only; no evidence generation, method promotion, or catalog unblock",
+      "terminal_decisions": ["RESTRICT", "PLAN_ONLY", "DEFER"],
+      "resolution_artifact": "TBRRIDGE_PROMOTION_EVIDENCE_BATTERY_PLAN_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -6954,6 +7010,27 @@
         "deterministic_provenance_hash",
         "runtime_only",
         "no_promotion_or_catalog_unblock"
+      ]
+    },
+    {
+      "lane_id": "TBRRIDGE-PROMOTION-EVIDENCE-BATTERY-PLAN-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-TBRRIDGE-PROMOTION-EVIDENCE-BATTERY-PLAN-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "TBRRIDGE_INTERVAL_SEMANTICS_AUDIT_001",
+      "resolution_artifact": "TBRRIDGE_PROMOTION_EVIDENCE_BATTERY_PLAN_001",
+      "artifact_tags": [
+        "tbrridge_promotion_evidence_battery_plan",
+        "missing_evidence_inventory",
+        "evidence_artifact_sequence",
+        "fixture_requirements",
+        "acceptance_criteria",
+        "plan_only",
+        "no_evidence_generated_or_promotion"
       ]
     },
     {

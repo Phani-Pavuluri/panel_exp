@@ -525,7 +525,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`TBRRIDGE_METHOD_PROMOTION_EVIDENCE_AUDIT_001`** → ✅ **`TBRRIDGE_METHOD_PROMOTION_REVIEW_CONTRACT_001`** → ✅ **`TBRRIDGE_METHOD_PROMOTION_REVIEW_RUNTIME_001`**.
+**Ordered next:** ✅ … → ✅ **`TBRRIDGE_METHOD_PROMOTION_EVIDENCE_AUDIT_001`** → ✅ **`TBRRIDGE_METHOD_PROMOTION_REVIEW_CONTRACT_001`** → ✅ **`TBRRIDGE_METHOD_PROMOTION_REVIEW_RUNTIME_001`** → ✅ **`TBRRIDGE_PROMOTION_EVIDENCE_BATTERY_PLAN_001`**.
 
 ### Audit-driven roadmap correction (2026-07-06)
 
@@ -535,7 +535,9 @@ Foundation and compatibility audits ✅
 
 `TBRRIDGE_METHOD_PROMOTION_REVIEW_RUNTIME_001` implements the governed runtime that reviews supplied evidence packets against that contract without promoting TBRRidge or unblocking the catalog.
 
-**Recommended immediate next:** `TBRRIDGE_PROMOTION_EVIDENCE_BATTERY_PLAN_001`
+`TBRRIDGE_PROMOTION_EVIDENCE_BATTERY_PLAN_001` defines the ordered evidence battery roadmap for producing credible promotion-review inputs without generating evidence or promoting TBRRidge.
+
+**Recommended immediate next:** `TBRRIDGE_INTERVAL_SEMANTICS_AUDIT_001`
 
 **Parallel:** `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` · `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001`
 
@@ -580,8 +582,9 @@ Foundation and compatibility audits ✅
 | `TBRRIDGE_METHOD_PROMOTION_EVIDENCE_AUDIT_001` | complete | Method promotion evidence audit; no promotion or catalog unblock |
 | `TBRRIDGE_METHOD_PROMOTION_REVIEW_CONTRACT_001` | complete | TBRRidge method promotion review contract; no runtime |
 | `TBRRIDGE_METHOD_PROMOTION_REVIEW_RUNTIME_001` | complete | TBRRidge method promotion review packet runtime; no promotion |
+| `TBRRIDGE_PROMOTION_EVIDENCE_BATTERY_PLAN_001` | complete | TBRRidge promotion evidence battery plan; no evidence generated |
 | `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` | deferred | Gate-triggered after STAGE_6 / RANK_4 candidate |
-| `TBRRIDGE_PROMOTION_EVIDENCE_BATTERY_PLAN_001` | next | TBRRidge promotion evidence battery plan |
+| `TBRRIDGE_INTERVAL_SEMANTICS_AUDIT_001` | next | TBRRidge KFold interval semantics audit |
 | `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001` | parallel | Smaller-scope evidence audit for top non-sophisticated candidate |
 | `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001` | pause | Sophistication before validity closure |
 | `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_004_BOOTSTRAP_INFERENCE` | defer | After DID remediation + thresholds |

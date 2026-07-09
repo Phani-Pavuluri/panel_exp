@@ -2600,6 +2600,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## TBRRIDGE-PROMOTION-EVIDENCE-BATTERY-PLAN-001 (2026-07-08)
+
+**Artifact:** [`docs/track_d/TBRRIDGE_PROMOTION_EVIDENCE_BATTERY_PLAN_001.md`](track_d/TBRRIDGE_PROMOTION_EVIDENCE_BATTERY_PLAN_001.md) · [`docs/track_d/archives/TBRRIDGE_PROMOTION_EVIDENCE_BATTERY_PLAN_001_summary.json`](track_d/archives/TBRRIDGE_PROMOTION_EVIDENCE_BATTERY_PLAN_001_summary.json)
+
+**Status:** **`tbrridge_promotion_evidence_battery_planned_no_evidence_generated_or_promotion`**
+
+**Verdict:** Defines ordered evidence battery roadmap converting method-promotion review runtime gaps into 14 future audit/plan/runtime artifacts with fixture, simulation, acceptance, and stop/go criteria. No evidence generated, simulations implemented, or method promotion (`failed_scenarios: []`).
+
+**Next:** `TBRRIDGE_INTERVAL_SEMANTICS_AUDIT_001` · parallel: `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
 ## TBRRIDGE-METHOD-PROMOTION-REVIEW-RUNTIME-001 (2026-07-08)
 
 **Artifact:** [`docs/track_d/TBRRIDGE_METHOD_PROMOTION_REVIEW_RUNTIME_001_REPORT.md`](track_d/TBRRIDGE_METHOD_PROMOTION_REVIEW_RUNTIME_001_REPORT.md) · [`panel_exp/validation/tbrridge_method_promotion_review_runtime_001.py`](../panel_exp/validation/tbrridge_method_promotion_review_runtime_001.py) · [`docs/track_d/archives/TBRRIDGE_METHOD_PROMOTION_REVIEW_RUNTIME_001_summary.json`](track_d/archives/TBRRIDGE_METHOD_PROMOTION_REVIEW_RUNTIME_001_summary.json)
