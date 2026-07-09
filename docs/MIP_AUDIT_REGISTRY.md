@@ -2600,6 +2600,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## METHOD-INSTRUMENT-CLASSIFICATION-POLICY-001 (2026-07-09)
+
+**Artifact:** [`docs/track_d/METHOD_INSTRUMENT_CLASSIFICATION_POLICY_001.md`](track_d/METHOD_INSTRUMENT_CLASSIFICATION_POLICY_001.md) · [`docs/track_d/archives/METHOD_INSTRUMENT_CLASSIFICATION_POLICY_001_summary.json`](track_d/archives/METHOD_INSTRUMENT_CLASSIFICATION_POLICY_001_summary.json)
+
+**Status:** **`method_instrument_classification_policy_defined_no_method_promotion_or_catalog_unblock`**
+
+**Verdict:** Defines platform-wide governed instrument identity (modality × estimator × inference × geometry × estimand × interval semantics × surface), six classification tiers, three-class evidence inheritance rules, promotion boundaries, and pairing-specific validation requirements. Promote instruments, not estimator families. No method promotion, catalog unblock, or production authorization.
+
+**Next:** `METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001` · alternative: `TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
 ## TBRRIDGE-METRIC-ESTIMAND-ALIGNMENT-AUDIT-001 (2026-07-08)
 
 **Artifact:** [`docs/track_d/TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001.md`](track_d/TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001.md) · [`docs/track_d/archives/TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001_summary.json`](track_d/archives/TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001_summary.json)

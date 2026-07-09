@@ -4524,6 +4524,65 @@
       "resolution_artifact": "TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001"
     },
     {
+      "investigation_id": "INV-METHOD-INSTRUMENT-CLASSIFICATION-POLICY-001",
+      "title": "Method instrument classification policy",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "TBRRIDGE-SENSITIVITY-EVIDENCE-AUDIT-BUNDLE-001",
+      "affected_combination": "method_instrument_classification_policy",
+      "problem_class": [
+        "method_promotion",
+        "instrument_identity",
+        "evidence_inheritance",
+        "classification_tiers",
+        "estimator_family_promotion",
+        "production_governance"
+      ],
+      "evidence": {
+        "depends_on": [
+          "TBRRIDGE_SENSITIVITY_EVIDENCE_AUDIT_BUNDLE_001",
+          "TBRRIDGE_METHOD_PROMOTION_REVIEW_RUNTIME_001",
+          "TBRRIDGE_PROMOTION_EVIDENCE_BATTERY_PLAN_001",
+          "SOPHISTICATED_METHOD_EVIDENCE_LADDER_001"
+        ],
+        "scope": "method_instrument_classification_policy_defined_no_method_promotion_or_catalog_unblock",
+        "method_instrument_classification_policy_defined": true,
+        "governed_instrument_identity_defined": true,
+        "classification_tiers_defined": true,
+        "evidence_inheritance_rules_defined": true,
+        "estimator_family_promotion_prohibited": true,
+        "instrument_level_promotion_required": true,
+        "pairing_specific_validation_required": true,
+        "catalog_triage_audit_recommended": true,
+        "method_promoted": false,
+        "method_unblocked": false,
+        "estimator_family_promoted": false,
+        "production_catalog_unblocked": false,
+        "production_authorization_granted": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001",
+        "alternative_next_artifact": "TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001",
+        "deferred_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+      },
+      "current_decision": "METHOD_INSTRUMENT_CLASSIFICATION_POLICY_DEFINED_NO_METHOD_PROMOTION_OR_CATALOG_UNBLOCK",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001 completion",
+      "decision_checkpoint": "Define instrument identity and classification policy before catalog triage audit",
+      "blocking_policy": "Policy docs only; no method promotion, catalog unblock, or runtime",
+      "terminal_decisions": ["RESTRICT", "POLICY_DEFINED", "DEFER"],
+      "resolution_artifact": "METHOD_INSTRUMENT_CLASSIFICATION_POLICY_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -7619,6 +7678,28 @@
         "runtime_packet_integration",
         "audit_only",
         "no_estimand_approval_or_metric_authorization"
+      ]
+    },
+    {
+      "lane_id": "METHOD-INSTRUMENT-CLASSIFICATION-POLICY-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-METHOD-INSTRUMENT-CLASSIFICATION-POLICY-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001",
+      "resolution_artifact": "METHOD_INSTRUMENT_CLASSIFICATION_POLICY_001",
+      "artifact_tags": [
+        "method_instrument_classification_policy",
+        "governed_instrument_identity",
+        "classification_tiers",
+        "evidence_inheritance_rules",
+        "estimator_family_promotion_prohibited",
+        "instrument_level_promotion_required",
+        "policy_only",
+        "no_method_promotion_or_catalog_unblock"
       ]
     },
     {
