@@ -4983,6 +4983,56 @@
       "resolution_artifact": "TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_RUNTIME_001"
     },
     {
+      "investigation_id": "INV-TBRRIDGE-PROMOTION-REVIEW-DECISION-CONTRACT-001",
+      "title": "TBRRidge promotion review decision contract",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "TBRRIDGE-PROMOTION-EVIDENCE-PACKET-ASSEMBLY-RUNTIME-001",
+      "affected_combination": "tbrridge_promotion_review_decision_contract",
+      "problem_class": [
+        "tbrridge_kfold",
+        "method_promotion",
+        "review_decision",
+        "restricted_review"
+      ],
+      "evidence": {
+        "depends_on": [
+          "TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001",
+          "TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_RUNTIME_001",
+          "TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001",
+          "CLAIM_AUTHORIZATION_RUNTIME_001",
+          "METHOD_INSTRUMENT_CLASSIFICATION_POLICY_001",
+          "METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001"
+        ],
+        "scope": "review_decision_contract_defined_no_runtime_no_promotion",
+        "lane": "Lane A - Method instrument promotion",
+        "instrument_identity": "geo.tbrridge.kfold.single_cell.delta_mu.diagnostic_interval.restricted_review",
+        "review_decision_contract_completed": true,
+        "runtime_implemented": false,
+        "method_promoted": false,
+        "instrument_promoted": false,
+        "catalog_unblocked": false,
+        "recommended_next_artifact": "TBRRIDGE_PROMOTION_REVIEW_DECISION_RUNTIME_001"
+      },
+      "current_decision": "TBRRIDGE_PROMOTION_REVIEW_DECISION_CONTRACT_DEFINED_NO_RUNTIME_NO_PROMOTION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon TBRRIDGE_PROMOTION_REVIEW_DECISION_RUNTIME_001 completion",
+      "decision_checkpoint": "Define review decision contract before review decision runtime",
+      "blocking_policy": "Contract docs only; no runtime, promotion, catalog unblock, or claim authorization",
+      "terminal_decisions": ["RESTRICT", "AUDIT_ONLY", "DEFER"],
+      "resolution_artifact": "TBRRIDGE_PROMOTION_REVIEW_DECISION_CONTRACT_001"
+    },
+    {
       "investigation_id": "INV-GEOX-FINAL-TEST-RESULTS-SPEND-ROI-READINESS-CONTRACT-001",
       "title": "GeoX final test results spend and ROI readiness contract",
       "status": "RESOLVED",
@@ -8576,13 +8626,14 @@
       "resolved_investigations": [
         "INV-TBRRIDGE-CLAIM-AUTHORIZATION-BOUNDARY-AUDIT-001",
         "INV-TBRRIDGE-PROMOTION-EVIDENCE-PACKET-ASSEMBLY-CONTRACT-001",
-        "INV-TBRRIDGE-PROMOTION-EVIDENCE-PACKET-ASSEMBLY-RUNTIME-001"
+        "INV-TBRRIDGE-PROMOTION-EVIDENCE-PACKET-ASSEMBLY-RUNTIME-001",
+        "INV-TBRRIDGE-PROMOTION-REVIEW-DECISION-CONTRACT-001"
       ],
       "deferred_investigations": [],
       "must_consume_before_close": false,
-      "next_artifact": "TBRRIDGE_PROMOTION_REVIEW_DECISION_CONTRACT_001",
+      "next_artifact": "TBRRIDGE_PROMOTION_REVIEW_DECISION_RUNTIME_001",
       "resumed_after": "GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001",
-      "resolution_artifact": "TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_RUNTIME_001",
+      "resolution_artifact": "TBRRIDGE_PROMOTION_REVIEW_DECISION_CONTRACT_001",
       "artifact_tags": [
         "lane_a_tbrridge_promotion",
         "parked_for_lane_b",
@@ -8598,7 +8649,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "TBRRIDGE_PROMOTION_REVIEW_DECISION_CONTRACT_001",
+      "next_artifact": "TBRRIDGE_PROMOTION_REVIEW_DECISION_RUNTIME_001",
       "resolution_artifact": "TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001",
       "artifact_tags": [
         "tbrridge_promotion_evidence_packet",
@@ -8617,13 +8668,32 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "TBRRIDGE_PROMOTION_REVIEW_DECISION_CONTRACT_001",
+      "next_artifact": "TBRRIDGE_PROMOTION_REVIEW_DECISION_RUNTIME_001",
       "resolution_artifact": "TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_RUNTIME_001",
       "artifact_tags": [
         "tbrridge_promotion_evidence_packet",
         "restricted_review",
         "runtime_implemented",
         "no_promotion_or_claim_authorization",
+        "lane_a_active"
+      ]
+    },
+    {
+      "lane_id": "TBRRIDGE-PROMOTION-REVIEW-DECISION-CONTRACT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-TBRRIDGE-PROMOTION-REVIEW-DECISION-CONTRACT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "TBRRIDGE_PROMOTION_REVIEW_DECISION_RUNTIME_001",
+      "resolution_artifact": "TBRRIDGE_PROMOTION_REVIEW_DECISION_CONTRACT_001",
+      "artifact_tags": [
+        "tbrridge_promotion_review_decision",
+        "restricted_review",
+        "contract_only",
+        "no_runtime_or_promotion",
         "lane_a_active"
       ]
     },

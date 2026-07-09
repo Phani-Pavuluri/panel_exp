@@ -2608,7 +2608,23 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Defines exact claim taxonomy and authorization boundary for `geo.tbrridge.kfold.single_cell.delta_mu.diagnostic_interval.restricted_review`. Allows diagnostic/restricted-review summaries only; blocks CI/p-value/significance, decision, production, lift, ROI, catalog-unblock, and promotion language/surfaces. Requires `claim_authorization_boundary_report` in method-promotion review input. No claim authorization granted.
 
-**Next:** `TBRRIDGE_PROMOTION_REVIEW_DECISION_CONTRACT_001` (Lane A active) · **optional Lane B:** `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `TBRRIDGE_PROMOTION_REVIEW_DECISION_RUNTIME_001` (Lane A active) · **optional Lane B:** `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
+## TBRRIDGE-PROMOTION-REVIEW-DECISION-CONTRACT-001 (2026-07-09)
+
+**Artifact:** [`docs/track_d/TBRRIDGE_PROMOTION_REVIEW_DECISION_CONTRACT_001.md`](track_d/TBRRIDGE_PROMOTION_REVIEW_DECISION_CONTRACT_001.md) · [`docs/track_d/archives/TBRRIDGE_PROMOTION_REVIEW_DECISION_CONTRACT_001_summary.json`](track_d/archives/TBRRIDGE_PROMOTION_REVIEW_DECISION_CONTRACT_001_summary.json)
+
+**Lane:** **Lane A — Method / instrument promotion**
+
+**Instrument:** `geo.tbrridge.kfold.single_cell.delta_mu.diagnostic_interval.restricted_review`
+
+**Status:** **`tbrridge_promotion_review_decision_contract_defined_no_runtime_no_promotion`**
+
+**Verdict:** Contract defining `TBRRidgePromotionReviewDecisionInput`, `TBRRidgePromotionReviewDecision`, decision statuses, mapping rules from packet readiness/eligibility, allowed/prohibited next actions, and relationships to claim authorization, catalog governance, production compatibility, and Lane B. No runtime, promotion, catalog unblock, or claim authorization.
+
+**Next:** `TBRRIDGE_PROMOTION_REVIEW_DECISION_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
@@ -2624,7 +2640,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Runtime assembling `TBRRidgePromotionEvidencePacket` from explicit evidence references. Validates exact instrument identity, required evidence categories, claim boundary, and restricted-review surface constraints. Emits missing-evidence blockers and promotion review eligibility. No evidence fabrication, promotion, catalog unblock, or claim authorization.
 
-**Next:** `TBRRIDGE_PROMOTION_REVIEW_DECISION_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `TBRRIDGE_PROMOTION_REVIEW_DECISION_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
