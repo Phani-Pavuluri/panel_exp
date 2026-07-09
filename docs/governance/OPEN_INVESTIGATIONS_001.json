@@ -4103,6 +4103,63 @@
       "resolution_artifact": "TBRRIDGE_PROMOTION_EVIDENCE_BATTERY_PLAN_001"
     },
     {
+      "investigation_id": "INV-TBRRIDGE-INTERVAL-SEMANTICS-AUDIT-001",
+      "title": "TBRRidge interval semantics audit",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "TBRRIDGE-PROMOTION-EVIDENCE-BATTERY-PLAN-001",
+      "affected_combination": "tbrridge_interval_semantics_audit",
+      "problem_class": [
+        "tbrridge",
+        "kfold",
+        "interval_semantics",
+        "false_confidence",
+        "uncertainty_candidate",
+        "method_promotion"
+      ],
+      "evidence": {
+        "depends_on": [
+          "TBRRIDGE_PROMOTION_EVIDENCE_BATTERY_PLAN_001",
+          "TBRRIDGE_METHOD_PROMOTION_REVIEW_RUNTIME_001",
+          "TBRRIDGE_UNCERTAINTY_CANDIDATE_REVIEW_RUNTIME_001",
+          "TBRRIDGE_KFOLD_COVERAGE_VALIDATION_RUNTIME_001"
+        ],
+        "scope": "tbrridge_interval_semantics_audited_no_interval_computation_or_authorization",
+        "tbrridge_interval_semantics_audit_completed": true,
+        "interval_semantics_reviewed": true,
+        "allowed_interval_language_defined": true,
+        "prohibited_interval_language_defined": true,
+        "stronger_interval_authorization_requirements_defined": true,
+        "runtime_packet_integration_target_defined": true,
+        "interval_computed": false,
+        "coverage_computed": false,
+        "uncertainty_authorized": false,
+        "method_promoted": false,
+        "method_unblocked": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "TBRRIDGE_NULL_CONTROL_FALSE_POSITIVE_AUDIT_001",
+        "alternative_next_artifact": "AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001",
+        "deferred_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+      },
+      "current_decision": "TBRRIDGE_INTERVAL_SEMANTICS_AUDITED_NO_INTERVAL_COMPUTATION_OR_AUTHORIZATION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon TBRRIDGE_NULL_CONTROL_FALSE_POSITIVE_AUDIT_001 completion",
+      "decision_checkpoint": "Define interval semantics before null-control false-positive audit",
+      "blocking_policy": "Audit only; no interval computation, coverage computation, or authorization",
+      "terminal_decisions": ["RESTRICT", "AUDIT_ONLY", "DEFER"],
+      "resolution_artifact": "TBRRIDGE_INTERVAL_SEMANTICS_AUDIT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -7031,6 +7088,27 @@
         "acceptance_criteria",
         "plan_only",
         "no_evidence_generated_or_promotion"
+      ]
+    },
+    {
+      "lane_id": "TBRRIDGE-INTERVAL-SEMANTICS-AUDIT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-TBRRIDGE-INTERVAL-SEMANTICS-AUDIT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "TBRRIDGE_NULL_CONTROL_FALSE_POSITIVE_AUDIT_001",
+      "resolution_artifact": "TBRRIDGE_INTERVAL_SEMANTICS_AUDIT_001",
+      "artifact_tags": [
+        "tbrridge_interval_semantics_audit",
+        "allowed_interval_language",
+        "prohibited_interval_language",
+        "stronger_authorization_requirements",
+        "runtime_packet_integration",
+        "audit_only",
+        "no_interval_computation_or_authorization"
       ]
     },
     {
