@@ -2600,6 +2600,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## TBRRIDGE-METRIC-ESTIMAND-ALIGNMENT-AUDIT-001 (2026-07-08)
+
+**Artifact:** [`docs/track_d/TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001.md`](track_d/TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001.md) · [`docs/track_d/archives/TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001_summary.json`](track_d/archives/TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001_summary.json)
+
+**Status:** **`tbrridge_metric_estimand_alignment_audited_no_estimand_approval_or_metric_authorization`**
+
+**Verdict:** Defines 22 alignment dimensions, transformation requirements, diagnostic checks, blocker criteria, and runtime packet integration for TBRRidge KFold metric/estimand alignment. No alignment evidence generated, estimands approved, or metric compatibility authorized.
+
+**Next:** `TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001` · parallel: `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
 ## TBRRIDGE-SENSITIVITY-EVIDENCE-AUDIT-BUNDLE-001 (2026-07-08)
 
 **Artifact:** [`docs/track_d/TBRRIDGE_SENSITIVITY_EVIDENCE_AUDIT_BUNDLE_001.md`](track_d/TBRRIDGE_SENSITIVITY_EVIDENCE_AUDIT_BUNDLE_001.md) · [`docs/track_d/archives/TBRRIDGE_SENSITIVITY_EVIDENCE_AUDIT_BUNDLE_001_summary.json`](track_d/archives/TBRRIDGE_SENSITIVITY_EVIDENCE_AUDIT_BUNDLE_001_summary.json)

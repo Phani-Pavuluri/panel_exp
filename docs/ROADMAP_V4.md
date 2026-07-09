@@ -525,7 +525,7 @@ Foundation and compatibility audits ✅
 
 **Naming distinction:** [`TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) reassessed **DCM-001 only** (SCM + UnitJackknife). [`FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001`](track_d/FULL_TRUSTREPORT_ELIGIBILITY_REASSESSMENT_001_REPORT.md) (2026-06-03) reassessed **all governed DCM rows**; global TrustReport authorization remains false.
 
-**Ordered next:** ✅ … → ✅ **`TBRRIDGE_INTERVAL_SEMANTICS_AUDIT_001`** → ✅ **`TBRRIDGE_NULL_CONTROL_FALSE_POSITIVE_AUDIT_001`** → ✅ **`TBRRIDGE_DIRECTIONAL_ERROR_AUDIT_001`** → ✅ **`TBRRIDGE_POSITIVE_CONTROL_RECOVERY_AUDIT_001`** → ✅ **`TBRRIDGE_REGIME_SENSITIVITY_PLAN_001`** → ✅ **`TBRRIDGE_SENSITIVITY_EVIDENCE_AUDIT_BUNDLE_001`**.
+**Ordered next:** ✅ … → ✅ **`TBRRIDGE_REGIME_SENSITIVITY_PLAN_001`** → ✅ **`TBRRIDGE_SENSITIVITY_EVIDENCE_AUDIT_BUNDLE_001`** → ✅ **`TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001`**.
 
 ### Audit-driven roadmap correction (2026-07-06)
 
@@ -549,7 +549,9 @@ Foundation and compatibility audits ✅
 
 `TBRRIDGE_SENSITIVITY_EVIDENCE_AUDIT_BUNDLE_001` consolidates all eight sensitivity families (donor-pool through aggregate/pooled geometry) into one bundled audit defining requirements without computing sensitivity metrics or authorizing robustness claims.
 
-**Recommended immediate next:** `TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001`
+`TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001` defines metric/estimand alignment requirements for TBRRidge KFold without approving estimands or authorizing metric compatibility.
+
+**Recommended immediate next:** `TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001`
 
 **Parallel:** `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` · `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001`
 
@@ -601,8 +603,9 @@ Foundation and compatibility audits ✅
 | `TBRRIDGE_POSITIVE_CONTROL_RECOVERY_AUDIT_001` | complete | TBRRidge positive-control recovery audit; no recovery computation |
 | `TBRRIDGE_REGIME_SENSITIVITY_PLAN_001` | complete | TBRRidge regime sensitivity plan; no sensitivity computation |
 | `TBRRIDGE_SENSITIVITY_EVIDENCE_AUDIT_BUNDLE_001` | complete | TBRRidge bundled sensitivity evidence audit; no sensitivity computation |
+| `TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001` | complete | TBRRidge metric estimand alignment audit; no estimand approval |
 | `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` | deferred | Gate-triggered after STAGE_6 / RANK_4 candidate |
-| `TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001` | next | TBRRidge metric estimand alignment audit |
+| `TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001` | next | TBRRidge claim authorization boundary audit |
 | `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001` | parallel | Smaller-scope evidence audit for top non-sophisticated candidate |
 | `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001` | pause | Sophistication before validity closure |
 | `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_004_BOOTSTRAP_INFERENCE` | defer | After DID remediation + thresholds |

@@ -4464,6 +4464,66 @@
       "resolution_artifact": "TBRRIDGE_SENSITIVITY_EVIDENCE_AUDIT_BUNDLE_001"
     },
     {
+      "investigation_id": "INV-TBRRIDGE-METRIC-ESTIMAND-ALIGNMENT-AUDIT-001",
+      "title": "TBRRidge metric estimand alignment audit",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "TBRRIDGE-SENSITIVITY-EVIDENCE-AUDIT-BUNDLE-001",
+      "affected_combination": "tbrridge_metric_estimand_alignment_audit",
+      "problem_class": [
+        "tbrridge",
+        "kfold",
+        "metric_estimand",
+        "estimand_alignment",
+        "false_confidence",
+        "method_promotion"
+      ],
+      "evidence": {
+        "depends_on": [
+          "TBRRIDGE_SENSITIVITY_EVIDENCE_AUDIT_BUNDLE_001",
+          "TBRRIDGE_POSITIVE_CONTROL_RECOVERY_AUDIT_001",
+          "TBRRIDGE_DIRECTIONAL_ERROR_AUDIT_001",
+          "TBRRIDGE_NULL_CONTROL_FALSE_POSITIVE_AUDIT_001",
+          "TBRRIDGE_INTERVAL_SEMANTICS_AUDIT_001",
+          "TBRRIDGE_PROMOTION_EVIDENCE_BATTERY_PLAN_001",
+          "TBRRIDGE_METHOD_PROMOTION_REVIEW_RUNTIME_001"
+        ],
+        "scope": "tbrridge_metric_estimand_alignment_audited_no_estimand_approval_or_metric_authorization",
+        "tbrridge_metric_estimand_alignment_audit_completed": true,
+        "metric_estimand_gap_documented": true,
+        "alignment_dimensions_defined": true,
+        "transformation_requirements_defined": true,
+        "diagnostic_checks_defined": true,
+        "blocker_criteria_defined": true,
+        "runtime_packet_integration_defined": true,
+        "metric_estimand_alignment_evidence_generated": false,
+        "metric_compatibility_authorized": false,
+        "estimand_approved": false,
+        "method_promoted": false,
+        "method_unblocked": false,
+        "recommended_next_artifact": "TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001",
+        "alternative_next_artifact": "AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001",
+        "deferred_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+      },
+      "current_decision": "TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDITED_NO_ESTIMAND_APPROVAL_OR_METRIC_AUTHORIZATION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001 completion",
+      "decision_checkpoint": "Define metric/estimand alignment audit before claim authorization boundary audit",
+      "blocking_policy": "Audit only; no estimand approval, metric compatibility authorization, or evidence generation",
+      "terminal_decisions": ["RESTRICT", "AUDIT_ONLY", "DEFER"],
+      "resolution_artifact": "TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -7537,6 +7597,28 @@
         "runtime_packet_integration",
         "audit_only",
         "no_sensitivity_computation_or_authorization"
+      ]
+    },
+    {
+      "lane_id": "TBRRIDGE-METRIC-ESTIMAND-ALIGNMENT-AUDIT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-TBRRIDGE-METRIC-ESTIMAND-ALIGNMENT-AUDIT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001",
+      "resolution_artifact": "TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001",
+      "artifact_tags": [
+        "tbrridge_metric_estimand_alignment_audit",
+        "alignment_dimensions",
+        "transformation_requirements",
+        "diagnostic_checks",
+        "blocker_criteria",
+        "runtime_packet_integration",
+        "audit_only",
+        "no_estimand_approval_or_metric_authorization"
       ]
     },
     {
