@@ -4390,6 +4390,80 @@
       "resolution_artifact": "TBRRIDGE_REGIME_SENSITIVITY_PLAN_001"
     },
     {
+      "investigation_id": "INV-TBRRIDGE-SENSITIVITY-EVIDENCE-AUDIT-BUNDLE-001",
+      "title": "TBRRidge sensitivity evidence audit bundle",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "TBRRIDGE-REGIME-SENSITIVITY-PLAN-001",
+      "affected_combination": "tbrridge_sensitivity_evidence_audit_bundle",
+      "problem_class": [
+        "tbrridge",
+        "kfold",
+        "regime_sensitivity",
+        "sensitivity_bundle",
+        "false_confidence",
+        "method_promotion"
+      ],
+      "evidence": {
+        "depends_on": [
+          "TBRRIDGE_REGIME_SENSITIVITY_PLAN_001",
+          "TBRRIDGE_POSITIVE_CONTROL_RECOVERY_AUDIT_001",
+          "TBRRIDGE_DIRECTIONAL_ERROR_AUDIT_001",
+          "TBRRIDGE_NULL_CONTROL_FALSE_POSITIVE_AUDIT_001",
+          "TBRRIDGE_INTERVAL_SEMANTICS_AUDIT_001",
+          "TBRRIDGE_METHOD_PROMOTION_REVIEW_RUNTIME_001"
+        ],
+        "scope": "tbrridge_sensitivity_evidence_audit_bundle_defined_no_sensitivity_computation_or_authorization",
+        "tbrridge_sensitivity_evidence_audit_bundle_defined": true,
+        "donor_pool_sensitivity_requirements_defined": true,
+        "regularization_sensitivity_requirements_defined": true,
+        "outlier_sensitivity_requirements_defined": true,
+        "fold_geometry_sensitivity_requirements_defined": true,
+        "sparse_high_noise_metric_sensitivity_requirements_defined": true,
+        "seasonality_preperiod_fit_sensitivity_requirements_defined": true,
+        "metric_scale_sensitivity_requirements_defined": true,
+        "aggregate_pooled_geometry_blocker_requirements_defined": true,
+        "crossed_regime_testing_policy_defined": true,
+        "runtime_packet_integration_defined": true,
+        "blocker_criteria_defined": true,
+        "supersedes": [
+          "TBRRIDGE_DONOR_POOL_SENSITIVITY_AUDIT_001",
+          "TBRRIDGE_REGULARIZATION_SENSITIVITY_AUDIT_001",
+          "TBRRIDGE_OUTLIER_SENSITIVITY_AUDIT_001",
+          "TBRRIDGE_FOLD_GEOMETRY_SENSITIVITY_AUDIT_001",
+          "TBRRIDGE_SPARSE_HIGH_NOISE_METRIC_SENSITIVITY_AUDIT_001",
+          "TBRRIDGE_SEASONALITY_PREPERIOD_FIT_SENSITIVITY_AUDIT_001",
+          "TBRRIDGE_METRIC_SCALE_SENSITIVITY_AUDIT_001",
+          "TBRRIDGE_AGGREGATE_POOLED_GEOMETRY_BLOCKER_AUDIT_001"
+        ],
+        "sensitivity_evidence_generated": false,
+        "sensitivity_metrics_computed": false,
+        "robustness_validated": false,
+        "method_promoted": false,
+        "method_unblocked": false,
+        "recommended_next_artifact": "TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001",
+        "alternative_next_artifact": "AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001",
+        "deferred_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+      },
+      "current_decision": "TBRRIDGE_SENSITIVITY_EVIDENCE_AUDIT_BUNDLE_DEFINED_NO_SENSITIVITY_COMPUTATION_OR_AUTHORIZATION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001 completion",
+      "decision_checkpoint": "Bundle sensitivity requirements before metric estimand alignment audit",
+      "blocking_policy": "Audit only; no sensitivity computation, robustness authorization, or evidence generation",
+      "terminal_decisions": ["RESTRICT", "AUDIT_ONLY", "DEFER"],
+      "resolution_artifact": "TBRRIDGE_SENSITIVITY_EVIDENCE_AUDIT_BUNDLE_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -7425,6 +7499,43 @@
         "runtime_packet_integration",
         "blocker_criteria",
         "plan_only",
+        "no_sensitivity_computation_or_authorization"
+      ]
+    },
+    {
+      "lane_id": "TBRRIDGE-SENSITIVITY-EVIDENCE-AUDIT-BUNDLE-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-TBRRIDGE-SENSITIVITY-EVIDENCE-AUDIT-BUNDLE-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001",
+      "resolution_artifact": "TBRRIDGE_SENSITIVITY_EVIDENCE_AUDIT_BUNDLE_001",
+      "supersedes_artifacts": [
+        "TBRRIDGE_DONOR_POOL_SENSITIVITY_AUDIT_001",
+        "TBRRIDGE_REGULARIZATION_SENSITIVITY_AUDIT_001",
+        "TBRRIDGE_OUTLIER_SENSITIVITY_AUDIT_001",
+        "TBRRIDGE_FOLD_GEOMETRY_SENSITIVITY_AUDIT_001",
+        "TBRRIDGE_SPARSE_HIGH_NOISE_METRIC_SENSITIVITY_AUDIT_001",
+        "TBRRIDGE_SEASONALITY_PREPERIOD_FIT_SENSITIVITY_AUDIT_001",
+        "TBRRIDGE_METRIC_SCALE_SENSITIVITY_AUDIT_001",
+        "TBRRIDGE_AGGREGATE_POOLED_GEOMETRY_BLOCKER_AUDIT_001"
+      ],
+      "artifact_tags": [
+        "tbrridge_sensitivity_evidence_audit_bundle",
+        "donor_pool_sensitivity_requirements",
+        "regularization_sensitivity_requirements",
+        "outlier_sensitivity_requirements",
+        "fold_geometry_sensitivity_requirements",
+        "sparse_high_noise_metric_sensitivity_requirements",
+        "seasonality_preperiod_fit_sensitivity_requirements",
+        "metric_scale_sensitivity_requirements",
+        "aggregate_pooled_geometry_blocker_requirements",
+        "crossed_regime_testing_policy",
+        "runtime_packet_integration",
+        "audit_only",
         "no_sensitivity_computation_or_authorization"
       ]
     },
