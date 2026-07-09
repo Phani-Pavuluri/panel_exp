@@ -5132,6 +5132,56 @@
       "resolution_artifact": "METHOD_PROMOTION_REVIEW_FRAMEWORK_GENERALIZATION_001"
     },
     {
+      "investigation_id": "INV-METHOD-PROMOTION-NEXT-INSTRUMENT-SELECTION-AUDIT-001",
+      "title": "Method promotion next instrument selection audit",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "METHOD-PROMOTION-REVIEW-FRAMEWORK-GENERALIZATION-001",
+      "affected_combination": "method_promotion_next_instrument_selection_audit",
+      "problem_class": [
+        "method_promotion",
+        "instrument_selection",
+        "promotion_framework",
+        "restricted_review"
+      ],
+      "evidence": {
+        "depends_on": [
+          "METHOD_PROMOTION_REVIEW_FRAMEWORK_GENERALIZATION_001",
+          "TBRRIDGE_PROMOTION_REVIEW_DECISION_RUNTIME_001",
+          "METHOD_INSTRUMENT_CLASSIFICATION_POLICY_001",
+          "METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001",
+          "METHOD_ESTIMATOR_INFERENCE_PAIRING_COVERAGE_AUDIT_001",
+          "METHOD_PAIRING_VALUE_PRIORITIZATION_AUDIT_001"
+        ],
+        "scope": "next_instrument_selection_audit_docs_only_no_runtime_no_promotion",
+        "lane": "Lane A - Method instrument promotion framework",
+        "primary_recommended_instrument": "geo.scm.jackknife.single_cell.delta_mu.null_monitor",
+        "next_instrument_selection_audit_completed": true,
+        "runtime_implemented": false,
+        "method_promoted": false,
+        "instrument_promoted": false,
+        "catalog_unblocked": false,
+        "recommended_next_artifact": "SCM_JACKKNIFE_NULL_MONITOR_PROMOTION_EVIDENCE_PACKET_CONTRACT_001"
+      },
+      "current_decision": "NEXT_INSTRUMENT_SELECTED_FOR_FRAMEWORK_APPLICATION_NO_RUNTIME_NO_PROMOTION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon SCM_JACKKNIFE_NULL_MONITOR_PROMOTION_EVIDENCE_PACKET_CONTRACT_001 completion",
+      "decision_checkpoint": "Select next instrument by evidence before applying generalized framework",
+      "blocking_policy": "Selection audit docs only; no runtime, promotion, catalog unblock, or claim authorization",
+      "terminal_decisions": ["RESTRICT", "AUDIT_ONLY", "DEFER"],
+      "resolution_artifact": "METHOD_PROMOTION_NEXT_INSTRUMENT_SELECTION_AUDIT_001"
+    },
+    {
       "investigation_id": "INV-GEOX-FINAL-TEST-RESULTS-SPEND-ROI-READINESS-CONTRACT-001",
       "title": "GeoX final test results spend and ROI readiness contract",
       "status": "RESOLVED",
@@ -8728,13 +8778,14 @@
         "INV-TBRRIDGE-PROMOTION-EVIDENCE-PACKET-ASSEMBLY-RUNTIME-001",
         "INV-TBRRIDGE-PROMOTION-REVIEW-DECISION-CONTRACT-001",
         "INV-TBRRIDGE-PROMOTION-REVIEW-DECISION-RUNTIME-001",
-        "INV-METHOD-PROMOTION-REVIEW-FRAMEWORK-GENERALIZATION-001"
+        "INV-METHOD-PROMOTION-REVIEW-FRAMEWORK-GENERALIZATION-001",
+        "INV-METHOD-PROMOTION-NEXT-INSTRUMENT-SELECTION-AUDIT-001"
       ],
       "deferred_investigations": [],
       "must_consume_before_close": false,
-      "next_artifact": "METHOD_PROMOTION_NEXT_INSTRUMENT_SELECTION_AUDIT_001",
+      "next_artifact": "SCM_JACKKNIFE_NULL_MONITOR_PROMOTION_EVIDENCE_PACKET_CONTRACT_001",
       "resumed_after": "GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001",
-      "resolution_artifact": "METHOD_PROMOTION_REVIEW_FRAMEWORK_GENERALIZATION_001",
+      "resolution_artifact": "METHOD_PROMOTION_NEXT_INSTRUMENT_SELECTION_AUDIT_001",
       "artifact_tags": [
         "lane_a_tbrridge_promotion",
         "parked_for_lane_b",
@@ -8831,6 +8882,24 @@
       "artifact_tags": [
         "method_promotion_framework",
         "pilot_generalization",
+        "docs_only",
+        "no_runtime_or_promotion",
+        "lane_a_active"
+      ]
+    },
+    {
+      "lane_id": "METHOD-PROMOTION-NEXT-INSTRUMENT-SELECTION-AUDIT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-METHOD-PROMOTION-NEXT-INSTRUMENT-SELECTION-AUDIT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "SCM_JACKKNIFE_NULL_MONITOR_PROMOTION_EVIDENCE_PACKET_CONTRACT_001",
+      "resolution_artifact": "METHOD_PROMOTION_NEXT_INSTRUMENT_SELECTION_AUDIT_001",
+      "artifact_tags": [
+        "method_promotion_next_instrument_selection",
         "docs_only",
         "no_runtime_or_promotion",
         "lane_a_active"
