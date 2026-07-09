@@ -2600,6 +2600,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## TBRRIDGE-REGIME-SENSITIVITY-PLAN-001 (2026-07-08)
+
+**Artifact:** [`docs/track_d/TBRRIDGE_REGIME_SENSITIVITY_PLAN_001.md`](track_d/TBRRIDGE_REGIME_SENSITIVITY_PLAN_001.md) · [`docs/track_d/archives/TBRRIDGE_REGIME_SENSITIVITY_PLAN_001_summary.json`](track_d/archives/TBRRIDGE_REGIME_SENSITIVITY_PLAN_001_summary.json)
+
+**Status:** **`tbrridge_regime_sensitivity_planned_no_sensitivity_computation_or_authorization`**
+
+**Verdict:** Defines coordinated regime matrix, crossed-regime testing plan, ordered sensitivity artifact sequence, diagnostic metrics, blocker criteria, and runtime packet integration for TBRRidge KFold regime sensitivity. No sensitivity evidence generated, metrics computed, or robustness authorized.
+
+**Next:** `TBRRIDGE_DONOR_POOL_SENSITIVITY_AUDIT_001` · parallel: `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
 ## TBRRIDGE-POSITIVE-CONTROL-RECOVERY-AUDIT-001 (2026-07-08)
 
 **Artifact:** [`docs/track_d/TBRRIDGE_POSITIVE_CONTROL_RECOVERY_AUDIT_001.md`](track_d/TBRRIDGE_POSITIVE_CONTROL_RECOVERY_AUDIT_001.md) · [`docs/track_d/archives/TBRRIDGE_POSITIVE_CONTROL_RECOVERY_AUDIT_001_summary.json`](track_d/archives/TBRRIDGE_POSITIVE_CONTROL_RECOVERY_AUDIT_001_summary.json)
