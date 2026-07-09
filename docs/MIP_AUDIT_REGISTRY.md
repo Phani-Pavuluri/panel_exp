@@ -2600,6 +2600,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## ROADMAP-INSTRUMENT-SCOPE-ALIGNMENT-CHECK-001 (2026-07-09)
+
+**Artifact:** [`docs/track_d/ROADMAP_INSTRUMENT_SCOPE_ALIGNMENT_CHECK_001.md`](track_d/ROADMAP_INSTRUMENT_SCOPE_ALIGNMENT_CHECK_001.md) · [`docs/track_d/archives/ROADMAP_INSTRUMENT_SCOPE_ALIGNMENT_CHECK_001_summary.json`](track_d/archives/ROADMAP_INSTRUMENT_SCOPE_ALIGNMENT_CHECK_001_summary.json)
+
+**Status:** **`roadmap_instrument_scope_and_milestones_aligned_no_method_promotion_or_catalog_unblock`**
+
+**Verdict:** Roadmap consistency and milestone-followability check after platform instrument-scoping corrections. Confirms scope alignment, safe milestone order, platform vs TBRRidge lane separation. Narrow fixes: stale CLAIM_AUTHORIZATION_RUNTIME next P0, missing catalog triage in METHOD_SOUNDNESS. Next artifact confirmed: TBRRIDGE claim authorization boundary. No promotion or catalog unblock.
+
+**Next:** `TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001` · alternative: `METHOD_INSTRUMENT_GEOMETRY_TAXONOMY_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
 ## METHOD-PAIRING-VALUE-PRIORITIZATION-AUDIT-001 (2026-07-09)
 
 **Artifact:** [`docs/track_d/METHOD_PAIRING_VALUE_PRIORITIZATION_AUDIT_001.md`](track_d/METHOD_PAIRING_VALUE_PRIORITIZATION_AUDIT_001.md) · [`docs/track_d/archives/METHOD_PAIRING_VALUE_PRIORITIZATION_AUDIT_001_summary.json`](track_d/archives/METHOD_PAIRING_VALUE_PRIORITIZATION_AUDIT_001_summary.json)

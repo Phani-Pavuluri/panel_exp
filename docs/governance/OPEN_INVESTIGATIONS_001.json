@@ -4763,6 +4763,68 @@
       "resolution_artifact": "METHOD_PAIRING_VALUE_PRIORITIZATION_AUDIT_001"
     },
     {
+      "investigation_id": "INV-ROADMAP-INSTRUMENT-SCOPE-ALIGNMENT-CHECK-001",
+      "title": "Roadmap instrument scope alignment check",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "METHOD-PAIRING-VALUE-PRIORITIZATION-AUDIT-001",
+      "affected_combination": "roadmap_instrument_scope_alignment_check",
+      "problem_class": [
+        "roadmap_consistency",
+        "milestone_followability",
+        "instrument_scope",
+        "platform_policy",
+        "tbrridge_lane",
+        "production_governance"
+      ],
+      "evidence": {
+        "depends_on": [
+          "METHOD_INSTRUMENT_CLASSIFICATION_POLICY_001",
+          "METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001",
+          "METHOD_ESTIMATOR_INFERENCE_PAIRING_COVERAGE_AUDIT_001",
+          "METHOD_PAIRING_VALUE_PRIORITIZATION_AUDIT_001"
+        ],
+        "scope": "roadmap_instrument_scope_and_milestones_aligned_no_method_promotion_or_catalog_unblock",
+        "roadmap_scope_aligned": true,
+        "roadmap_milestones_followable": true,
+        "estimator_family_promotion_blocked": true,
+        "exact_instrument_scope_required": true,
+        "tbrridge_kfold_lane_current": true,
+        "pairing_reason_codes_required": true,
+        "pairing_value_prioritization_reflected": true,
+        "no_new_pursue_now_pairing": true,
+        "augsynth_jk_save_for_later": true,
+        "production_compatibility_deferred": true,
+        "geometry_taxonomy_optional_followup": true,
+        "next_artifact_confirmed": "TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001",
+        "method_promoted": false,
+        "instrument_promoted": false,
+        "catalog_unblocked": false,
+        "production_authorization_granted": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001",
+        "alternative_next_artifact": "METHOD_INSTRUMENT_GEOMETRY_TAXONOMY_AUDIT_001",
+        "deferred_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+      },
+      "current_decision": "ROADMAP_INSTRUMENT_SCOPE_AND_MILESTONES_ALIGNED_NO_METHOD_PROMOTION_OR_CATALOG_UNBLOCK",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001 completion",
+      "decision_checkpoint": "Confirm roadmap milestones followable before claim authorization boundary audit",
+      "blocking_policy": "Audit docs only; no promotion, catalog unblock, or roadmap direction change",
+      "terminal_decisions": ["RESTRICT", "AUDIT_ONLY", "DEFER"],
+      "resolution_artifact": "ROADMAP_INSTRUMENT_SCOPE_ALIGNMENT_CHECK_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -7935,7 +7997,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001",
+      "next_artifact": "ROADMAP_INSTRUMENT_SCOPE_ALIGNMENT_CHECK_001",
       "resolution_artifact": "METHOD_PAIRING_VALUE_PRIORITIZATION_AUDIT_001",
       "artifact_tags": [
         "method_pairing_value_prioritization_audit",
@@ -7946,6 +8008,27 @@
         "augsynth_pairing_review",
         "audit_only",
         "no_pairing_promotion_or_inference_implementation"
+      ]
+    },
+    {
+      "lane_id": "ROADMAP-INSTRUMENT-SCOPE-ALIGNMENT-CHECK-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-ROADMAP-INSTRUMENT-SCOPE-ALIGNMENT-CHECK-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001",
+      "resolution_artifact": "ROADMAP_INSTRUMENT_SCOPE_ALIGNMENT_CHECK_001",
+      "artifact_tags": [
+        "roadmap_instrument_scope_alignment_check",
+        "roadmap_scope_aligned",
+        "roadmap_milestones_followable",
+        "platform_tbrridge_lane_separation",
+        "narrow_consistency_fixes",
+        "audit_only",
+        "no_method_promotion_or_catalog_unblock"
       ]
     },
     {

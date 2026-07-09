@@ -559,9 +559,15 @@ Foundation and compatibility audits ✅
 
 `METHOD_PAIRING_VALUE_PRIORITIZATION_AUDIT_001` evaluates left-out and under-classified pairings for unique causal value, implementation status, validation cost, and priority — correcting AugSynth × KFold/Conformal as implemented-but-not-governed and AugSynth × Placebo/Bootstrap as blocked.
 
-**Recommended immediate next:** `TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001`
+**Platform policy chain (complete):** classification policy → catalog triage → pairing coverage → pairing value prioritization. Future promotion artifacts require exact instrument identity; missing pairings require reason codes; no new PURSUE_NOW pairing beyond TBRRidge × KFold.
 
-**Parallel:** `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` · `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001`
+**TBRRidge restricted-review lane (current):** `geo.tbrridge.kfold.single_cell.delta_mu.diagnostic_interval.restricted_review` — evidence battery scoped to this instrument; not global TBRRidge promotion.
+
+**Recommended immediate next (TBRRidge lane):** `TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001`
+
+**Parallel / alternative:** `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` (save-for-later) · `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001`
+
+**Optional follow-up:** `METHOD_INSTRUMENT_GEOMETRY_TAXONOMY_AUDIT_001` (not blocking claim authorization)
 
 **Deferred (gate-triggered):** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`
 
@@ -572,7 +578,7 @@ Foundation and compatibility audits ✅
 | Artifact | Action | Reason |
 |----------|--------|--------|
 | `CLAIM_AUTHORIZATION_CONTRACT_001` | complete / keep | Contract-only safe at `5f93625` |
-| `CLAIM_AUTHORIZATION_RUNTIME_001` | next P0 | P0 pre-claim hardening substantially complete |
+| `CLAIM_AUTHORIZATION_RUNTIME_001` | complete | Governed claim-type authorization from evidence gates |
 | `PRODUCTION_CATALOG_BLOCKLIST_ENFORCEMENT_001` | complete | Block failed/uncalibrated combos |
 | `DID_INSTRUMENT_ESTIMAND_UNIFICATION_001` | complete | `DID_BOOTSTRAP` naming vs 2×2/TWFE split |
 | `METHOD_BLOCKLIST_REMEDIATION_AND_PROMOTION_ROADMAP_001` | complete | Blocked-method remediation/promotion pathway documented; no unblock |
@@ -580,7 +586,6 @@ Foundation and compatibility audits ✅
 | `STATISTICAL_PROMOTION_THRESHOLD_ENFORCEMENT_001` | complete | Enforce numeric FPR/coverage gates |
 | `GOVERNED_RANDOMIZATION_RUNTIME_001` | complete | Governed causal randomization path |
 | `SRM_BALANCE_READOUT_DIAGNOSTIC_001` | complete | SRM/balance evidence in readout chain |
-| `CLAIM_AUTHORIZATION_RUNTIME_001` | complete | Governed claim-type authorization from evidence gates |
 | `TRUSTED_READOUT_REPORT_CONTRACT_001` | complete | Trusted readout report contract; no runtime or report generation |
 | `TRUSTED_READOUT_REPORT_RUNTIME_001` | complete | Structured trusted report packet runtime; no narrative or production authorization |
 | `METHOD_PROMOTION_REVIEW_CONTRACT_001` | complete | Method promotion review contract; no runtime or promotion |
@@ -592,6 +597,7 @@ Foundation and compatibility audits ✅
 | `METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001` | complete | Instrument catalog triage audit; no promotion or catalog unblock |
 | `METHOD_ESTIMATOR_INFERENCE_PAIRING_COVERAGE_AUDIT_001` | complete | Estimator × inference pairing coverage audit; no inference implementation |
 | `METHOD_PAIRING_VALUE_PRIORITIZATION_AUDIT_001` | complete | Pairing value/prioritization audit; no pairing promotion |
+| `ROADMAP_INSTRUMENT_SCOPE_ALIGNMENT_CHECK_001` | complete | Roadmap instrument-scope alignment check; no promotion |
 | `MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_CONTRACT_001` | complete | Experiment-family and contrast contract; no runtime |
 | `MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001` | complete | Surface eligibility gate runtime; no inference computation |
 | `TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001` | complete | TBRRidge false-confidence risk audit; no inference or promotion |
