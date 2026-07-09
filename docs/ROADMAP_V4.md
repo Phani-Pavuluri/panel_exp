@@ -563,13 +563,13 @@ Foundation and compatibility audits ✅
 
 **TBRRidge restricted-review lane (current):** `geo.tbrridge.kfold.single_cell.delta_mu.diagnostic_interval.restricted_review` — evidence battery scoped to this instrument; not global TBRRidge promotion.
 
-### Lane A — TBRRidge promotion (parked)
+### Lane A — TBRRidge promotion (active)
 
-**Status:** Parked at claim-boundary closure; resume after Lane B spend/ROI readiness adapter.
+**Status:** Active — evidence packet assembly contract complete; restricted-review instrument only.
 
-**Completed through:** `TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001`
+**Completed through:** `TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001` · `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001`
 
-**Parked next:** `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001`
+**Recommended immediate next (Lane A):** `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_RUNTIME_001`
 
 ### Lane B — Final trusted readout / spend / ROI readiness (minimum semantic chain complete)
 
@@ -577,7 +577,7 @@ Foundation and compatibility audits ✅
 
 **Completed:** `FINAL_TEST_RESULTS_EXISTING_ARTIFACT_REUSE_AUDIT_001` · `GEOX_READOUT_DATAFLOW_AND_SPEND_EXTRACTION_PROCESS_AUDIT_001` · `GEOX_FINAL_TEST_RESULTS_SPEND_AND_ROI_READINESS_CONTRACT_001` · `GEOX_POST_TEST_SPEND_READINESS_ADAPTER_RUNTIME_001` · `GEOX_TRUSTED_READOUT_SPEND_READINESS_INTEGRATION_RUNTIME_001` · `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001`
 
-**Return to Lane A (active):** `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001`
+**Return to Lane A (active):** `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_RUNTIME_001` (contract complete)
 
 **Optional Lane B follow-up:** `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_RUNTIME_001`
 
@@ -645,7 +645,8 @@ Foundation and compatibility audits ✅
 | `GEOX_POST_TEST_SPEND_READINESS_ADAPTER_RUNTIME_001` | complete | Post-test spend readiness adapter runtime; reuse profiler and spend primitives |
 | `GEOX_TRUSTED_READOUT_SPEND_READINESS_INTEGRATION_RUNTIME_001` | complete | Integrate post-test spend handoff into trusted readout runtime |
 | `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001` | complete | Efficiency metric readiness mapper contract; no ROI calculator |
-| `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001` | next (Lane A) | Assemble governed evidence packet contract after Lane B closure |
+| `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001` | complete | Governed evidence packet assembly contract; no runtime or promotion |
+| `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_RUNTIME_001` | next (Lane A) | Assemble TBRRidge promotion evidence packet runtime |
 | `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` | deferred | Gate-triggered after STAGE_6 / RANK_4 candidate |
 | `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001` | parallel | Smaller-scope evidence audit for top non-sophisticated candidate |
 | `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001` | pause | Sophistication before validity closure |
