@@ -5011,6 +5011,55 @@
       "resolution_artifact": "GEOX_POST_TEST_SPEND_READINESS_ADAPTER_RUNTIME_001"
     },
     {
+      "investigation_id": "INV-GEOX-TRUSTED-READOUT-SPEND-READINESS-INTEGRATION-RUNTIME-001",
+      "title": "GeoX trusted readout spend readiness integration runtime",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "GEOX-POST-TEST-SPEND-READINESS-ADAPTER-RUNTIME-001",
+      "affected_combination": "geox_trusted_readout_spend_readiness_integration_runtime",
+      "problem_class": [
+        "final_trusted_readout",
+        "post_test_spend_evidence",
+        "spend_readiness_integration",
+        "platform_governance"
+      ],
+      "evidence": {
+        "depends_on": [
+          "GEOX_POST_TEST_SPEND_READINESS_ADAPTER_RUNTIME_001",
+          "TRUSTED_READOUT_REPORT_RUNTIME_001",
+          "CLAIM_AUTHORIZATION_RUNTIME_001",
+          "MIP_GEOX_READOUT_INPUT_REQUIREMENTS_AND_HANDOFF_CONTRACT_001"
+        ],
+        "scope": "trusted_readout_spend_readiness_integration_no_roi_calculator_or_claim_authorization",
+        "lane": "Lane B - Final trusted readout spend ROI readiness",
+        "trusted_readout_spend_readiness_integration_completed": true,
+        "runtime_implemented": true,
+        "spend_delta_recomputed": false,
+        "roi_calculator_runtime_created": false,
+        "claim_authorization_duplicated": false,
+        "roi_claim_authorized": false,
+        "recommended_next_artifact": "GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001",
+        "return_to_lane_a_after": "TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001"
+      },
+      "current_decision": "TRUSTED_READOUT_SPEND_READINESS_INTEGRATED_NO_ROI_CALCULATOR_OR_CLAIM_AUTHORIZATION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001 completion or Lane A return decision",
+      "decision_checkpoint": "Integrate post-test spend handoff into trusted readout without ROI computation",
+      "blocking_policy": "Integration runtime only; no ROI calculator, claim authorization duplication, or MIP orchestration",
+      "terminal_decisions": ["RESTRICT", "AUDIT_ONLY", "DEFER"],
+      "resolution_artifact": "GEOX_TRUSTED_READOUT_SPEND_READINESS_INTEGRATION_RUNTIME_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -8244,13 +8293,14 @@
       "open_investigations": [],
       "resolved_investigations": [
         "INV-GEOX-FINAL-TEST-RESULTS-SPEND-ROI-READINESS-CONTRACT-001",
-        "INV-GEOX-POST-TEST-SPEND-READINESS-ADAPTER-RUNTIME-001"
+        "INV-GEOX-POST-TEST-SPEND-READINESS-ADAPTER-RUNTIME-001",
+        "INV-GEOX-TRUSTED-READOUT-SPEND-READINESS-INTEGRATION-RUNTIME-001"
       ],
       "deferred_investigations": [],
       "must_consume_before_close": false,
-      "next_artifact": "GEOX_TRUSTED_READOUT_SPEND_READINESS_INTEGRATION_RUNTIME_001",
+      "next_artifact": "GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001",
       "return_to_lane_a_after": "TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001",
-      "resolution_artifact": "GEOX_POST_TEST_SPEND_READINESS_ADAPTER_RUNTIME_001",
+      "resolution_artifact": "GEOX_TRUSTED_READOUT_SPEND_READINESS_INTEGRATION_RUNTIME_001",
       "artifact_tags": [
         "lane_b_final_trusted_readout",
         "spend_roi_readiness",
@@ -8320,15 +8370,35 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "GEOX_TRUSTED_READOUT_SPEND_READINESS_INTEGRATION_RUNTIME_001",
+      "next_artifact": "GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001",
       "return_to_lane_a_after": "TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001",
-      "resolution_artifact": "GEOX_POST_TEST_SPEND_READINESS_ADAPTER_RUNTIME_001",
+      "resolution_artifact": "GEOX_TRUSTED_READOUT_SPEND_READINESS_INTEGRATION_RUNTIME_001",
       "artifact_tags": [
         "post_test_spend_readiness_adapter",
         "spend_delta_readiness",
         "trusted_readout_handoff",
         "runtime_only",
         "no_claim_authorization_or_roi_calculator"
+      ]
+    },
+    {
+      "lane_id": "GEOX-TRUSTED-READOUT-SPEND-READINESS-INTEGRATION-RUNTIME-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-GEOX-TRUSTED-READOUT-SPEND-READINESS-INTEGRATION-RUNTIME-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001",
+      "return_to_lane_a_after": "TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001",
+      "resolution_artifact": "GEOX_TRUSTED_READOUT_SPEND_READINESS_INTEGRATION_RUNTIME_001",
+      "artifact_tags": [
+        "trusted_readout_spend_integration",
+        "spend_readiness_extension",
+        "mip_compatible_handoff",
+        "integration_runtime_only",
+        "no_roi_calculator_or_claim_authorization"
       ]
     },
     {
@@ -8341,7 +8411,7 @@
       "deferred_investigations": [],
       "must_consume_before_close": false,
       "next_artifact": "TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001",
-      "parked_until": "GEOX_TRUSTED_READOUT_SPEND_READINESS_INTEGRATION_RUNTIME_001",
+      "parked_until": "GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001",
       "artifact_tags": [
         "lane_a_tbrridge_promotion",
         "parked_for_lane_b",

@@ -2608,7 +2608,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Defines exact claim taxonomy and authorization boundary for `geo.tbrridge.kfold.single_cell.delta_mu.diagnostic_interval.restricted_review`. Allows diagnostic/restricted-review summaries only; blocks CI/p-value/significance, decision, production, lift, ROI, catalog-unblock, and promotion language/surfaces. Requires `claim_authorization_boundary_report` in method-promotion review input. No claim authorization granted.
 
-**Next:** `GEOX_TRUSTED_READOUT_SPEND_READINESS_INTEGRATION_RUNTIME_001` (complete adapter) · **return to Lane A:** `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001` (Lane B) · **return to Lane A:** `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
@@ -2622,7 +2622,21 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Thin contract defining post-test `PostTestSpendEvidence`, spend_delta readiness, ROI/ROAS/cost-per metric readiness rules, trusted readout extension points, and MIP orchestration requirements. Reuses `TRUSTED_READOUT_REPORT_*`, `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_001`, `CLAIM_AUTHORIZATION_RUNTIME_001`, `GEO_KPI_SPEND_DATA_*`, and spend diagnostics primitives. No runtime, spend ingestion system, final-results module, ROI calculator, or claim authorization.
 
-**Next:** `GEOX_TRUSTED_READOUT_SPEND_READINESS_INTEGRATION_RUNTIME_001` · **return to Lane A:** `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001` · **return to Lane A:** `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
+## GEOX-TRUSTED-READOUT-SPEND-READINESS-INTEGRATION-RUNTIME-001 (2026-07-09)
+
+**Artifact:** [`docs/track_d/GEOX_TRUSTED_READOUT_SPEND_READINESS_INTEGRATION_RUNTIME_001.md`](track_d/GEOX_TRUSTED_READOUT_SPEND_READINESS_INTEGRATION_RUNTIME_001.md) · [`docs/track_d/archives/GEOX_TRUSTED_READOUT_SPEND_READINESS_INTEGRATION_RUNTIME_001_summary.json`](track_d/archives/GEOX_TRUSTED_READOUT_SPEND_READINESS_INTEGRATION_RUNTIME_001_summary.json)
+
+**Lane:** **Lane B — Final trusted readout / spend / ROI readiness**
+
+**Status:** **`trusted_readout_spend_readiness_integrated_no_roi_calculator_or_claim_authorization`**
+
+**Verdict:** Integration runtime wiring `build_trusted_readout_spend_handoff()` into `TRUSTED_READOUT_REPORT_RUNTIME_001` output. Adds spend readiness extension fields, MIP-compatible pass-through fields, and blocked efficiency metrics without recomputing spend_delta or authorizing ROI/ROAS claims.
+
+**Next:** `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001` · **return to Lane A:** `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
