@@ -2600,6 +2600,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## METHOD-ESTIMATOR-INFERENCE-PAIRING-COVERAGE-AUDIT-001 (2026-07-09)
+
+**Artifact:** [`docs/track_d/METHOD_ESTIMATOR_INFERENCE_PAIRING_COVERAGE_AUDIT_001.md`](track_d/METHOD_ESTIMATOR_INFERENCE_PAIRING_COVERAGE_AUDIT_001.md) · [`docs/track_d/archives/METHOD_ESTIMATOR_INFERENCE_PAIRING_COVERAGE_AUDIT_001_summary.json`](track_d/archives/METHOD_ESTIMATOR_INFERENCE_PAIRING_COVERAGE_AUDIT_001_summary.json)
+
+**Status:** **`estimator_inference_pairing_coverage_audited_no_method_promotion_or_inference_implementation`**
+
+**Verdict:** Inventories TBRRidge, TBR, SCM, AugSynth, and DID against KFold, Placebo, Jackknife, Bootstrap, BRB, Conformal, and point-only inference families. Documents pairing coverage matrix with explicit reason codes for every absent cell — no accidental exclusion. Bridges catalog triage and instrument validation; distinct from geometry taxonomy. No pairing promotion, inference implementation, or catalog unblock.
+
+**Next:** `TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001` · alternative: `METHOD_INSTRUMENT_GEOMETRY_TAXONOMY_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
 ## METHOD-INSTRUMENT-CATALOG-TRIAGE-AUDIT-001 (2026-07-09)
 
 **Artifact:** [`docs/track_d/METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001.md`](track_d/METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001.md) · [`docs/track_d/archives/METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001_summary.json`](track_d/archives/METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001_summary.json)

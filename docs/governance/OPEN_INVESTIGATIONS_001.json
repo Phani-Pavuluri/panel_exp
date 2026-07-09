@@ -4644,6 +4644,66 @@
       "resolution_artifact": "METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001"
     },
     {
+      "investigation_id": "INV-METHOD-ESTIMATOR-INFERENCE-PAIRING-COVERAGE-AUDIT-001",
+      "title": "Method estimator inference pairing coverage audit",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "METHOD-INSTRUMENT-CATALOG-TRIAGE-AUDIT-001",
+      "affected_combination": "method_estimator_inference_pairing_coverage_audit",
+      "problem_class": [
+        "method_promotion",
+        "estimator_inference_pairing",
+        "pairing_coverage",
+        "missing_pairing_reason_codes",
+        "evidence_inheritance",
+        "production_governance"
+      ],
+      "evidence": {
+        "depends_on": [
+          "METHOD_INSTRUMENT_CLASSIFICATION_POLICY_001",
+          "METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001",
+          "TBRRIDGE_METHOD_PROMOTION_REVIEW_RUNTIME_001",
+          "SOPHISTICATED_METHOD_EVIDENCE_LADDER_001"
+        ],
+        "scope": "estimator_inference_pairing_coverage_audited_no_method_promotion_or_inference_implementation",
+        "estimator_inference_pairing_coverage_audit_completed": true,
+        "estimator_families_reviewed": true,
+        "inference_families_reviewed": true,
+        "pairing_coverage_matrix_defined": true,
+        "missing_pairing_reason_codes_defined": true,
+        "evidence_inheritance_implications_defined": true,
+        "future_pairing_cataloging_required": true,
+        "method_promoted": false,
+        "method_unblocked": false,
+        "estimator_family_promoted": false,
+        "pairing_promoted": false,
+        "catalog_unblocked": false,
+        "production_authorization_granted": false,
+        "inference_implemented": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001",
+        "alternative_next_artifact": "METHOD_INSTRUMENT_GEOMETRY_TAXONOMY_AUDIT_001",
+        "deferred_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+      },
+      "current_decision": "ESTIMATOR_INFERENCE_PAIRING_COVERAGE_AUDITED_NO_METHOD_PROMOTION_OR_INFERENCE_IMPLEMENTATION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001 completion",
+      "decision_checkpoint": "Document pairing coverage before claim authorization boundary audit",
+      "blocking_policy": "Audit docs only; no pairing promotion, inference implementation, or catalog unblock",
+      "terminal_decisions": ["RESTRICT", "AUDIT_ONLY", "DEFER"],
+      "resolution_artifact": "METHOD_ESTIMATOR_INFERENCE_PAIRING_COVERAGE_AUDIT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -7772,7 +7832,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001",
+      "next_artifact": "METHOD_ESTIMATOR_INFERENCE_PAIRING_COVERAGE_AUDIT_001",
       "resolution_artifact": "METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001",
       "artifact_tags": [
         "method_instrument_catalog_triage_audit",
@@ -7783,6 +7843,28 @@
         "estimator_family_global_promotion_blocked",
         "audit_only",
         "no_method_promotion_or_catalog_unblock"
+      ]
+    },
+    {
+      "lane_id": "METHOD-ESTIMATOR-INFERENCE-PAIRING-COVERAGE-AUDIT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-METHOD-ESTIMATOR-INFERENCE-PAIRING-COVERAGE-AUDIT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001",
+      "resolution_artifact": "METHOD_ESTIMATOR_INFERENCE_PAIRING_COVERAGE_AUDIT_001",
+      "artifact_tags": [
+        "method_estimator_inference_pairing_coverage_audit",
+        "pairing_coverage_matrix",
+        "missing_pairing_reason_codes",
+        "evidence_inheritance_implications",
+        "future_pairing_cataloging_required",
+        "no_accidental_exclusion",
+        "audit_only",
+        "no_method_promotion_or_inference_implementation"
       ]
     },
     {

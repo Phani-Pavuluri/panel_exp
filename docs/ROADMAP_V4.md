@@ -555,6 +555,8 @@ Foundation and compatibility audits ✅
 
 `METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001` applies the classification policy to the current catalog — assigns tiers to known instrument pairings without promoting or unblocking any instrument.
 
+`METHOD_ESTIMATOR_INFERENCE_PAIRING_COVERAGE_AUDIT_001` inventories estimator × inference pairings, documents explicit inclusion/exclusion reason codes for every cell, and closes the gap that catalog triage did not prove missing pairings were intentional.
+
 **Recommended immediate next:** `TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001`
 
 **Parallel:** `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` · `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001`
@@ -586,6 +588,7 @@ Foundation and compatibility audits ✅
 | `SOPHISTICATED_METHOD_EVIDENCE_LADDER_001` | complete | Evidence ladder for sophisticated methods; no promotion |
 | `METHOD_INSTRUMENT_CLASSIFICATION_POLICY_001` | complete | Instrument classification policy; no promotion or catalog unblock |
 | `METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001` | complete | Instrument catalog triage audit; no promotion or catalog unblock |
+| `METHOD_ESTIMATOR_INFERENCE_PAIRING_COVERAGE_AUDIT_001` | complete | Estimator × inference pairing coverage audit; no inference implementation |
 | `MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_CONTRACT_001` | complete | Experiment-family and contrast contract; no runtime |
 | `MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001` | complete | Surface eligibility gate runtime; no inference computation |
 | `TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001` | complete | TBRRidge false-confidence risk audit; no inference or promotion |
