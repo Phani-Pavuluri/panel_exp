@@ -2600,6 +2600,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## TBRRIDGE-CLAIM-AUTHORIZATION-BOUNDARY-AUDIT-001 (2026-07-09)
+
+**Artifact:** [`docs/track_d/TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001.md`](track_d/TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001.md) · [`docs/track_d/archives/TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001_summary.json`](track_d/archives/TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001_summary.json)
+
+**Status:** **`tbrridge_kfold_claim_authorization_boundary_audited_no_claim_authorization_or_promotion`**
+
+**Verdict:** Defines exact claim taxonomy and authorization boundary for `geo.tbrridge.kfold.single_cell.delta_mu.diagnostic_interval.restricted_review`. Allows diagnostic/restricted-review summaries only; blocks CI/p-value/significance, decision, production, lift, ROI, catalog-unblock, and promotion language/surfaces. Requires `claim_authorization_boundary_report` in method-promotion review input. No claim authorization granted.
+
+**Next:** `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001` · alternative: `METHOD_INSTRUMENT_GEOMETRY_TAXONOMY_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
 ## ROADMAP-INSTRUMENT-SCOPE-ALIGNMENT-CHECK-001 (2026-07-09)
 
 **Artifact:** [`docs/track_d/ROADMAP_INSTRUMENT_SCOPE_ALIGNMENT_CHECK_001.md`](track_d/ROADMAP_INSTRUMENT_SCOPE_ALIGNMENT_CHECK_001.md) · [`docs/track_d/archives/ROADMAP_INSTRUMENT_SCOPE_ALIGNMENT_CHECK_001_summary.json`](track_d/archives/ROADMAP_INSTRUMENT_SCOPE_ALIGNMENT_CHECK_001_summary.json)

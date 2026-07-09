@@ -563,11 +563,11 @@ Foundation and compatibility audits ✅
 
 **TBRRidge restricted-review lane (current):** `geo.tbrridge.kfold.single_cell.delta_mu.diagnostic_interval.restricted_review` — evidence battery scoped to this instrument; not global TBRRidge promotion.
 
-**Recommended immediate next (TBRRidge lane):** `TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001`
+**Recommended immediate next (TBRRidge lane):** `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001`
 
 **Parallel / alternative:** `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` (save-for-later) · `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001`
 
-**Optional follow-up:** `METHOD_INSTRUMENT_GEOMETRY_TAXONOMY_AUDIT_001` (not blocking claim authorization)
+**Optional follow-up:** `METHOD_INSTRUMENT_GEOMETRY_TAXONOMY_AUDIT_001` (not blocking packet assembly contract)
 
 **Deferred (gate-triggered):** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`
 
@@ -622,7 +622,8 @@ Foundation and compatibility audits ✅
 | `TBRRIDGE_REGIME_SENSITIVITY_PLAN_001` | complete | TBRRidge regime sensitivity plan; no sensitivity computation |
 | `TBRRIDGE_SENSITIVITY_EVIDENCE_AUDIT_BUNDLE_001` | complete | TBRRidge bundled sensitivity evidence audit; no sensitivity computation |
 | `TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001` | complete | TBRRidge metric estimand alignment audit; no estimand approval |
-| `TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001` | next | TBRRidge claim authorization boundary audit |
+| `TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001` | complete | TBRRidge claim authorization boundary audit; no claim authorization granted |
+| `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001` | next | Assemble governed evidence packet contract after claim-boundary closure |
 | `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` | deferred | Gate-triggered after STAGE_6 / RANK_4 candidate |
 | `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001` | parallel | Smaller-scope evidence audit for top non-sophisticated candidate |
 | `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001` | pause | Sophistication before validity closure |

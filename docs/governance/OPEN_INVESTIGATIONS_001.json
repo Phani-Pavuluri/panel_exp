@@ -4825,6 +4825,68 @@
       "resolution_artifact": "ROADMAP_INSTRUMENT_SCOPE_ALIGNMENT_CHECK_001"
     },
     {
+      "investigation_id": "INV-TBRRIDGE-CLAIM-AUTHORIZATION-BOUNDARY-AUDIT-001",
+      "title": "TBRRidge claim authorization boundary audit",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "ROADMAP-INSTRUMENT-SCOPE-ALIGNMENT-CHECK-001",
+      "affected_combination": "tbrridge_claim_authorization_boundary_audit",
+      "problem_class": [
+        "tbrridge",
+        "kfold",
+        "claim_authorization_boundary",
+        "restricted_review_scope",
+        "language_governance",
+        "production_governance"
+      ],
+      "evidence": {
+        "depends_on": [
+          "ROADMAP_INSTRUMENT_SCOPE_ALIGNMENT_CHECK_001",
+          "METHOD_PAIRING_VALUE_PRIORITIZATION_AUDIT_001",
+          "METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001",
+          "TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001",
+          "TBRRIDGE_METHOD_PROMOTION_REVIEW_RUNTIME_001"
+        ],
+        "scope": "tbrridge_kfold_claim_authorization_boundary_audited_no_claim_authorization_or_promotion",
+        "instrument_identity": "geo.tbrridge.kfold.single_cell.delta_mu.diagnostic_interval.restricted_review",
+        "tbrridge_claim_authorization_boundary_audit_completed": true,
+        "exact_instrument_identity_documented": true,
+        "claim_taxonomy_defined": true,
+        "allowed_claim_surfaces_defined": true,
+        "prohibited_claim_surfaces_defined": true,
+        "diagnostic_decision_boundary_defined": true,
+        "future_claim_gates_defined": true,
+        "runtime_packet_integration_defined": true,
+        "claim_authorization_granted": false,
+        "method_promoted": false,
+        "instrument_promoted": false,
+        "method_unblocked": false,
+        "catalog_unblocked": false,
+        "production_authorization_granted": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001",
+        "alternative_next_artifact": "METHOD_INSTRUMENT_GEOMETRY_TAXONOMY_AUDIT_001",
+        "deferred_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+      },
+      "current_decision": "TBRRIDGE_KFOLD_CLAIM_AUTHORIZATION_BOUNDARY_AUDITED_NO_CLAIM_AUTHORIZATION_OR_PROMOTION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001 completion",
+      "decision_checkpoint": "Define exact claim authorization boundary before evidence packet assembly",
+      "blocking_policy": "Audit docs only; no claim authorization, promotion, catalog unblock, or production authorization",
+      "terminal_decisions": ["RESTRICT", "AUDIT_ONLY", "DEFER"],
+      "resolution_artifact": "TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -8019,7 +8081,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001",
+      "next_artifact": "TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001",
       "resolution_artifact": "ROADMAP_INSTRUMENT_SCOPE_ALIGNMENT_CHECK_001",
       "artifact_tags": [
         "roadmap_instrument_scope_alignment_check",
@@ -8029,6 +8091,27 @@
         "narrow_consistency_fixes",
         "audit_only",
         "no_method_promotion_or_catalog_unblock"
+      ]
+    },
+    {
+      "lane_id": "TBRRIDGE-CLAIM-AUTHORIZATION-BOUNDARY-AUDIT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-TBRRIDGE-CLAIM-AUTHORIZATION-BOUNDARY-AUDIT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001",
+      "resolution_artifact": "TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001",
+      "artifact_tags": [
+        "tbrridge_claim_authorization_boundary_audit",
+        "exact_instrument_identity",
+        "claim_taxonomy",
+        "allowed_prohibited_surfaces",
+        "diagnostic_vs_decision_boundary",
+        "audit_only",
+        "no_claim_authorization_or_promotion"
       ]
     },
     {
