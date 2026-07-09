@@ -4887,6 +4887,79 @@
       "resolution_artifact": "TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001"
     },
     {
+      "investigation_id": "INV-GEOX-FINAL-TEST-RESULTS-SPEND-ROI-READINESS-CONTRACT-001",
+      "title": "GeoX final test results spend and ROI readiness contract",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "GEOX-READOUT-DATAFLOW-AND-SPEND-EXTRACTION-PROCESS-AUDIT-001",
+      "affected_combination": "geox_final_test_results_spend_roi_readiness_contract",
+      "problem_class": [
+        "final_trusted_readout",
+        "post_test_spend_evidence",
+        "spend_delta_readiness",
+        "roi_roas_readiness",
+        "platform_governance"
+      ],
+      "evidence": {
+        "depends_on": [
+          "FINAL_TEST_RESULTS_EXISTING_ARTIFACT_REUSE_AUDIT_001",
+          "GEOX_READOUT_DATAFLOW_AND_SPEND_EXTRACTION_PROCESS_AUDIT_001",
+          "TRUSTED_READOUT_REPORT_CONTRACT_001",
+          "CLAIM_AUTHORIZATION_RUNTIME_001",
+          "GEO_KPI_SPEND_DATA_PROFILER_001",
+          "SPEND_REQUIREMENT_AND_MANIPULATION_FEASIBILITY_DIAGNOSTICS_001"
+        ],
+        "scope": "spend_roi_readiness_contract_defined_no_runtime_or_claim_authorization",
+        "lane": "Lane B - Final trusted readout spend ROI readiness",
+        "spend_roi_readiness_contract_completed": true,
+        "existing_readout_stack_reused": true,
+        "no_new_final_results_module": true,
+        "no_new_spend_ingestion_system": true,
+        "post_test_spend_evidence_defined": true,
+        "spend_delta_readiness_defined": true,
+        "roi_roas_readiness_defined": true,
+        "trusted_readout_extension_points_defined": true,
+        "claim_authorization_delegated": true,
+        "mip_orchestration_requirements_defined": true,
+        "runtime_followup_defined": true,
+        "runtime_implemented": false,
+        "spend_ingestion_system_created": false,
+        "final_results_module_created": false,
+        "roi_calculator_runtime_created": false,
+        "claim_authorization_duplicated": false,
+        "roi_claim_authorized": false,
+        "roas_claim_authorized": false,
+        "business_lift_claim_authorized": false,
+        "decision_recommendation_authorized": false,
+        "production_readout_authorized": false,
+        "method_promoted": false,
+        "instrument_promoted": false,
+        "catalog_unblocked": false,
+        "production_compatibility_authorized": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "GEOX_POST_TEST_SPEND_READINESS_ADAPTER_RUNTIME_001",
+        "return_to_lane_a_after": "TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001",
+        "deferred_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+      },
+      "current_decision": "SPEND_ROI_READINESS_CONTRACT_DEFINED_NO_RUNTIME_OR_CLAIM_AUTHORIZATION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon GEOX_POST_TEST_SPEND_READINESS_ADAPTER_RUNTIME_001 completion",
+      "decision_checkpoint": "Define post-test spend evidence readiness before runtime adapter",
+      "blocking_policy": "Contract docs only; no runtime, spend ingestion, ROI calculator, or claim authorization",
+      "terminal_decisions": ["RESTRICT", "AUDIT_ONLY", "DEFER"],
+      "resolution_artifact": "GEOX_FINAL_TEST_RESULTS_SPEND_AND_ROI_READINESS_CONTRACT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -8112,6 +8185,95 @@
         "diagnostic_vs_decision_boundary",
         "audit_only",
         "no_claim_authorization_or_promotion"
+      ]
+    },
+    {
+      "lane_id": "LANE-B-FINAL-TRUSTED-READOUT-SPEND-ROI-READINESS",
+      "status": "active",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-GEOX-FINAL-TEST-RESULTS-SPEND-ROI-READINESS-CONTRACT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": false,
+      "next_artifact": "GEOX_POST_TEST_SPEND_READINESS_ADAPTER_RUNTIME_001",
+      "return_to_lane_a_after": "TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001",
+      "resolution_artifact": "GEOX_FINAL_TEST_RESULTS_SPEND_AND_ROI_READINESS_CONTRACT_001",
+      "artifact_tags": [
+        "lane_b_final_trusted_readout",
+        "spend_roi_readiness",
+        "post_test_spend_evidence",
+        "extend_existing_trusted_readout",
+        "no_new_spend_ingestion",
+        "claim_authorization_delegated"
+      ]
+    },
+    {
+      "lane_id": "FINAL-TEST-RESULTS-EXISTING-ARTIFACT-REUSE-AUDIT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "GEOX_READOUT_DATAFLOW_AND_SPEND_EXTRACTION_PROCESS_AUDIT_001",
+      "resolution_artifact": "FINAL_TEST_RESULTS_EXISTING_ARTIFACT_REUSE_AUDIT_001",
+      "artifact_tags": [
+        "final_test_results_reuse_audit",
+        "extend_existing_artifact",
+        "audit_only"
+      ]
+    },
+    {
+      "lane_id": "GEOX-READOUT-DATAFLOW-AND-SPEND-EXTRACTION-PROCESS-AUDIT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "GEOX_FINAL_TEST_RESULTS_SPEND_AND_ROI_READINESS_CONTRACT_001",
+      "resolution_artifact": "GEOX_READOUT_DATAFLOW_AND_SPEND_EXTRACTION_PROCESS_AUDIT_001",
+      "artifact_tags": [
+        "readout_dataflow_audit",
+        "post_test_spend_extraction",
+        "needs_existing_module_reuse",
+        "audit_only"
+      ]
+    },
+    {
+      "lane_id": "GEOX-FINAL-TEST-RESULTS-SPEND-AND-ROI-READINESS-CONTRACT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-GEOX-FINAL-TEST-RESULTS-SPEND-ROI-READINESS-CONTRACT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "GEOX_POST_TEST_SPEND_READINESS_ADAPTER_RUNTIME_001",
+      "return_to_lane_a_after": "TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001",
+      "resolution_artifact": "GEOX_FINAL_TEST_RESULTS_SPEND_AND_ROI_READINESS_CONTRACT_001",
+      "artifact_tags": [
+        "spend_roi_readiness_contract",
+        "post_test_spend_evidence",
+        "trusted_readout_extension",
+        "contract_only",
+        "no_runtime_or_claim_authorization"
+      ]
+    },
+    {
+      "lane_id": "LANE-A-TBRRIDGE-PROMOTION",
+      "status": "parked",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-TBRRIDGE-CLAIM-AUTHORIZATION-BOUNDARY-AUDIT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": false,
+      "next_artifact": "TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001",
+      "parked_until": "GEOX_POST_TEST_SPEND_READINESS_ADAPTER_RUNTIME_001",
+      "artifact_tags": [
+        "lane_a_tbrridge_promotion",
+        "parked_for_lane_b",
+        "tbrridge_kfold_restricted_review"
       ]
     },
     {

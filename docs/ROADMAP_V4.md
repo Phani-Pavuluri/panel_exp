@@ -563,9 +563,25 @@ Foundation and compatibility audits ✅
 
 **TBRRidge restricted-review lane (current):** `geo.tbrridge.kfold.single_cell.delta_mu.diagnostic_interval.restricted_review` — evidence battery scoped to this instrument; not global TBRRidge promotion.
 
-**Recommended immediate next (TBRRidge lane):** `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001`
+### Lane A — TBRRidge promotion (parked)
 
-**Parallel / alternative:** `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` (save-for-later) · `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001`
+**Status:** Parked at claim-boundary closure; resume after Lane B spend/ROI readiness adapter.
+
+**Completed through:** `TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001`
+
+**Parked next:** `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001`
+
+### Lane B — Final trusted readout / spend / ROI readiness (active)
+
+**Status:** Active platform lane — extend existing trusted readout stack; no new final-results or spend-ingestion module.
+
+**Completed:** `FINAL_TEST_RESULTS_EXISTING_ARTIFACT_REUSE_AUDIT_001` · `GEOX_READOUT_DATAFLOW_AND_SPEND_EXTRACTION_PROCESS_AUDIT_001` · `GEOX_FINAL_TEST_RESULTS_SPEND_AND_ROI_READINESS_CONTRACT_001`
+
+**Recommended immediate next (Lane B):** `GEOX_POST_TEST_SPEND_READINESS_ADAPTER_RUNTIME_001`
+
+**Return to Lane A after:** `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001`
+
+**Parallel / alternative (Lane A):** `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` (save-for-later) · `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001`
 
 **Optional follow-up:** `METHOD_INSTRUMENT_GEOMETRY_TAXONOMY_AUDIT_001` (not blocking packet assembly contract)
 
@@ -623,7 +639,11 @@ Foundation and compatibility audits ✅
 | `TBRRIDGE_SENSITIVITY_EVIDENCE_AUDIT_BUNDLE_001` | complete | TBRRidge bundled sensitivity evidence audit; no sensitivity computation |
 | `TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001` | complete | TBRRidge metric estimand alignment audit; no estimand approval |
 | `TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001` | complete | TBRRidge claim authorization boundary audit; no claim authorization granted |
-| `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001` | next | Assemble governed evidence packet contract after claim-boundary closure |
+| `FINAL_TEST_RESULTS_EXISTING_ARTIFACT_REUSE_AUDIT_001` | complete | Final test results reuse audit; extend existing trusted readout stack |
+| `GEOX_READOUT_DATAFLOW_AND_SPEND_EXTRACTION_PROCESS_AUDIT_001` | complete | Readout KPI/spend dataflow and post-test spend extraction process audit |
+| `GEOX_FINAL_TEST_RESULTS_SPEND_AND_ROI_READINESS_CONTRACT_001` | complete | Spend/ROI readiness contract; no runtime or claim authorization |
+| `GEOX_POST_TEST_SPEND_READINESS_ADAPTER_RUNTIME_001` | next (Lane B) | Post-test spend readiness adapter runtime; reuse profiler and spend primitives |
+| `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001` | next (Lane A, parked) | Assemble governed evidence packet contract after Lane B adapter |
 | `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` | deferred | Gate-triggered after STAGE_6 / RANK_4 candidate |
 | `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001` | parallel | Smaller-scope evidence audit for top non-sophisticated candidate |
 | `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001` | pause | Sophistication before validity closure |
