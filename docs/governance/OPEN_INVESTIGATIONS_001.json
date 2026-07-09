@@ -4704,6 +4704,65 @@
       "resolution_artifact": "METHOD_ESTIMATOR_INFERENCE_PAIRING_COVERAGE_AUDIT_001"
     },
     {
+      "investigation_id": "INV-METHOD-PAIRING-VALUE-PRIORITIZATION-AUDIT-001",
+      "title": "Method pairing value prioritization audit",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "METHOD-ESTIMATOR-INFERENCE-PAIRING-COVERAGE-AUDIT-001",
+      "affected_combination": "method_pairing_value_prioritization_audit",
+      "problem_class": [
+        "method_promotion",
+        "estimator_inference_pairing",
+        "pairing_value",
+        "implementation_status",
+        "prioritization",
+        "production_governance"
+      ],
+      "evidence": {
+        "depends_on": [
+          "METHOD_ESTIMATOR_INFERENCE_PAIRING_COVERAGE_AUDIT_001",
+          "METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001",
+          "METHOD_INSTRUMENT_CLASSIFICATION_POLICY_001"
+        ],
+        "scope": "method_pairing_value_prioritization_audited_no_pairing_promotion_or_inference_implementation",
+        "method_pairing_value_prioritization_audit_completed": true,
+        "left_out_pairings_reviewed": true,
+        "implementation_status_reviewed": true,
+        "pairing_value_framework_defined": true,
+        "prioritization_decisions_defined": true,
+        "save_for_later_queue_defined": true,
+        "roadmap_corrections_defined": true,
+        "augsynth_kfold_implementation_status_corrected": true,
+        "augsynth_placebo_bootstrap_blocked_confirmed": true,
+        "pairing_promoted": false,
+        "method_promoted": false,
+        "catalog_unblocked": false,
+        "production_authorization_granted": false,
+        "inference_implemented": false,
+        "failed_scenarios": [],
+        "recommended_next_artifact": "TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001",
+        "alternative_next_artifact": "AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001",
+        "deferred_artifact": "PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001"
+      },
+      "current_decision": "METHOD_PAIRING_VALUE_PRIORITIZATION_AUDITED_NO_PAIRING_PROMOTION_OR_INFERENCE_IMPLEMENTATION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001 completion",
+      "decision_checkpoint": "Prioritize pairing value before claim authorization boundary audit",
+      "blocking_policy": "Audit docs only; no pairing promotion, inference implementation, or catalog unblock",
+      "terminal_decisions": ["RESTRICT", "AUDIT_ONLY", "DEFER"],
+      "resolution_artifact": "METHOD_PAIRING_VALUE_PRIORITIZATION_AUDIT_001"
+    },
+    {
       "investigation_id": "INV-BAYESIAN-TBR-CALIBRATION-REPLAY-RESEARCH-PLAN-001",
       "title": "Bayesian TBR calibration replay research plan",
       "status": "PLANNED",
@@ -7854,7 +7913,7 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001",
+      "next_artifact": "METHOD_PAIRING_VALUE_PRIORITIZATION_AUDIT_001",
       "resolution_artifact": "METHOD_ESTIMATOR_INFERENCE_PAIRING_COVERAGE_AUDIT_001",
       "artifact_tags": [
         "method_estimator_inference_pairing_coverage_audit",
@@ -7865,6 +7924,28 @@
         "no_accidental_exclusion",
         "audit_only",
         "no_method_promotion_or_inference_implementation"
+      ]
+    },
+    {
+      "lane_id": "METHOD-PAIRING-VALUE-PRIORITIZATION-AUDIT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-METHOD-PAIRING-VALUE-PRIORITIZATION-AUDIT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001",
+      "resolution_artifact": "METHOD_PAIRING_VALUE_PRIORITIZATION_AUDIT_001",
+      "artifact_tags": [
+        "method_pairing_value_prioritization_audit",
+        "pairing_value_framework",
+        "prioritization_decisions",
+        "save_for_later_queue",
+        "implementation_status_correction",
+        "augsynth_pairing_review",
+        "audit_only",
+        "no_pairing_promotion_or_inference_implementation"
       ]
     },
     {

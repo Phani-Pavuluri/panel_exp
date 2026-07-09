@@ -2600,6 +2600,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## METHOD-PAIRING-VALUE-PRIORITIZATION-AUDIT-001 (2026-07-09)
+
+**Artifact:** [`docs/track_d/METHOD_PAIRING_VALUE_PRIORITIZATION_AUDIT_001.md`](track_d/METHOD_PAIRING_VALUE_PRIORITIZATION_AUDIT_001.md) · [`docs/track_d/archives/METHOD_PAIRING_VALUE_PRIORITIZATION_AUDIT_001_summary.json`](track_d/archives/METHOD_PAIRING_VALUE_PRIORITIZATION_AUDIT_001_summary.json)
+
+**Status:** **`method_pairing_value_prioritization_audited_no_pairing_promotion_or_inference_implementation`**
+
+**Verdict:** Value/prioritization audit for left-out pairings. Corrects implementation status: AugSynth × KFold and × Conformal are implemented-but-not-governed (diagnostic only); AugSynth × Placebo/Bootstrap are blocked at interface. No new PURSUE_NOW pairings beyond TBRRidge KFold lane. Save-for-later queue includes AugSynth JK coverage validation. No pairing promotion or inference implementation.
+
+**Next:** `TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001` · alternative: `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
 ## METHOD-ESTIMATOR-INFERENCE-PAIRING-COVERAGE-AUDIT-001 (2026-07-09)
 
 **Artifact:** [`docs/track_d/METHOD_ESTIMATOR_INFERENCE_PAIRING_COVERAGE_AUDIT_001.md`](track_d/METHOD_ESTIMATOR_INFERENCE_PAIRING_COVERAGE_AUDIT_001.md) · [`docs/track_d/archives/METHOD_ESTIMATOR_INFERENCE_PAIRING_COVERAGE_AUDIT_001_summary.json`](track_d/archives/METHOD_ESTIMATOR_INFERENCE_PAIRING_COVERAGE_AUDIT_001_summary.json)
