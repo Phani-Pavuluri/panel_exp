@@ -2600,6 +2600,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## TBRRIDGE-NULL-CONTROL-FALSE-POSITIVE-AUDIT-001 (2026-07-08)
+
+**Artifact:** [`docs/track_d/TBRRIDGE_NULL_CONTROL_FALSE_POSITIVE_AUDIT_001.md`](track_d/TBRRIDGE_NULL_CONTROL_FALSE_POSITIVE_AUDIT_001.md) · [`docs/track_d/archives/TBRRIDGE_NULL_CONTROL_FALSE_POSITIVE_AUDIT_001_summary.json`](track_d/archives/TBRRIDGE_NULL_CONTROL_FALSE_POSITIVE_AUDIT_001_summary.json)
+
+**Status:** **`tbrridge_null_control_false_positive_audited_no_false_positive_computation_or_authorization`**
+
+**Verdict:** Defines null-control fixture families, diagnostic FPR metrics, directional false-signal distinction, acceptance/blocker criteria, and runtime packet integration for TBRRidge KFold. No null-control evidence generated, FPR computed, or significance authorized (`failed_scenarios: []`).
+
+**Next:** `TBRRIDGE_DIRECTIONAL_ERROR_AUDIT_001` · parallel: `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
 ## TBRRIDGE-INTERVAL-SEMANTICS-AUDIT-001 (2026-07-08)
 
 **Artifact:** [`docs/track_d/TBRRIDGE_INTERVAL_SEMANTICS_AUDIT_001.md`](track_d/TBRRIDGE_INTERVAL_SEMANTICS_AUDIT_001.md) · [`docs/track_d/archives/TBRRIDGE_INTERVAL_SEMANTICS_AUDIT_001_summary.json`](track_d/archives/TBRRIDGE_INTERVAL_SEMANTICS_AUDIT_001_summary.json)
