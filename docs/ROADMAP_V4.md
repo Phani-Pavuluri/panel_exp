@@ -553,9 +553,9 @@ Foundation and compatibility audits ✅
 
 `METHOD_INSTRUMENT_CLASSIFICATION_POLICY_001` defines platform-wide instrument identity, classification tiers, and evidence inheritance rules — promote instruments, not estimator families.
 
-**Recommended immediate next (platform):** `METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001`
+`METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001` applies the classification policy to the current catalog — assigns tiers to known instrument pairings without promoting or unblocking any instrument.
 
-**Recommended immediate next (TBRRidge lane):** `TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001`
+**Recommended immediate next:** `TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001`
 
 **Parallel:** `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` · `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001`
 
@@ -585,6 +585,7 @@ Foundation and compatibility audits ✅
 | `METHOD_PROMOTION_CANDIDATE_AUDIT_001` | complete | Candidate inventory and ranking; no promotion or catalog change |
 | `SOPHISTICATED_METHOD_EVIDENCE_LADDER_001` | complete | Evidence ladder for sophisticated methods; no promotion |
 | `METHOD_INSTRUMENT_CLASSIFICATION_POLICY_001` | complete | Instrument classification policy; no promotion or catalog unblock |
+| `METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001` | complete | Instrument catalog triage audit; no promotion or catalog unblock |
 | `MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_CONTRACT_001` | complete | Experiment-family and contrast contract; no runtime |
 | `MULTICELL_EXPERIMENT_FAMILY_AND_CONTRAST_RUNTIME_001` | complete | Surface eligibility gate runtime; no inference computation |
 | `TBRRIDGE_FALSE_CONFIDENCE_DIAGNOSTIC_AUDIT_001` | complete | TBRRidge false-confidence risk audit; no inference or promotion |
@@ -609,9 +610,8 @@ Foundation and compatibility audits ✅
 | `TBRRIDGE_REGIME_SENSITIVITY_PLAN_001` | complete | TBRRidge regime sensitivity plan; no sensitivity computation |
 | `TBRRIDGE_SENSITIVITY_EVIDENCE_AUDIT_BUNDLE_001` | complete | TBRRidge bundled sensitivity evidence audit; no sensitivity computation |
 | `TBRRIDGE_METRIC_ESTIMAND_ALIGNMENT_AUDIT_001` | complete | TBRRidge metric estimand alignment audit; no estimand approval |
-| `METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001` | next | Platform instrument catalog triage audit |
-| `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` | deferred | Gate-triggered after STAGE_6 / RANK_4 candidate |
 | `TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001` | next | TBRRidge claim authorization boundary audit |
+| `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` | deferred | Gate-triggered after STAGE_6 / RANK_4 candidate |
 | `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001` | parallel | Smaller-scope evidence audit for top non-sophisticated candidate |
 | `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001` | pause | Sophistication before validity closure |
 | `ESTIMATOR_INFERENCE_EXECUTION_RUNTIME_004_BOOTSTRAP_INFERENCE` | defer | After DID remediation + thresholds |

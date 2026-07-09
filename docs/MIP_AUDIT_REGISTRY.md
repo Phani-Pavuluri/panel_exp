@@ -2600,6 +2600,18 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 ---
 
+## METHOD-INSTRUMENT-CATALOG-TRIAGE-AUDIT-001 (2026-07-09)
+
+**Artifact:** [`docs/track_d/METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001.md`](track_d/METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001.md) · [`docs/track_d/archives/METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001_summary.json`](track_d/archives/METHOD_INSTRUMENT_CATALOG_TRIAGE_AUDIT_001_summary.json)
+
+**Status:** **`method_instrument_catalog_triaged_no_method_promotion_or_catalog_unblock`**
+
+**Verdict:** Applies classification policy to Track B catalog and promotion-candidate inventory. Assigns classification tiers to TBRRidge, SCM, AugSynth, DID, and TBR instrument pairings; documents evidence inheritance matrix and roadmap corrections requiring exact instrument IDs. TBRRidge lane scoped to KFold restricted-review identity. No method promotion, catalog unblock, or production authorization.
+
+**Next:** `TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001` · alternative: `AUGSYNTH_JK_COVERAGE_VALIDATION_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
 ## METHOD-INSTRUMENT-CLASSIFICATION-POLICY-001 (2026-07-09)
 
 **Artifact:** [`docs/track_d/METHOD_INSTRUMENT_CLASSIFICATION_POLICY_001.md`](track_d/METHOD_INSTRUMENT_CLASSIFICATION_POLICY_001.md) · [`docs/track_d/archives/METHOD_INSTRUMENT_CLASSIFICATION_POLICY_001_summary.json`](track_d/archives/METHOD_INSTRUMENT_CLASSIFICATION_POLICY_001_summary.json)
