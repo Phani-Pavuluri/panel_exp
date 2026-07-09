@@ -2608,7 +2608,23 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Defines exact claim taxonomy and authorization boundary for `geo.tbrridge.kfold.single_cell.delta_mu.diagnostic_interval.restricted_review`. Allows diagnostic/restricted-review summaries only; blocks CI/p-value/significance, decision, production, lift, ROI, catalog-unblock, and promotion language/surfaces. Requires `claim_authorization_boundary_report` in method-promotion review input. No claim authorization granted.
 
-**Next:** `METHOD_PROMOTION_REVIEW_FRAMEWORK_GENERALIZATION_001` (Lane A active) · **optional Lane B:** `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_NEXT_INSTRUMENT_SELECTION_AUDIT_001` (Lane A active) · **optional Lane B:** `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
+## METHOD-PROMOTION-REVIEW-FRAMEWORK-GENERALIZATION-001 (2026-07-09)
+
+**Artifact:** [`docs/track_d/METHOD_PROMOTION_REVIEW_FRAMEWORK_GENERALIZATION_001.md`](track_d/METHOD_PROMOTION_REVIEW_FRAMEWORK_GENERALIZATION_001.md) · [`docs/track_d/archives/METHOD_PROMOTION_REVIEW_FRAMEWORK_GENERALIZATION_001_summary.json`](track_d/archives/METHOD_PROMOTION_REVIEW_FRAMEWORK_GENERALIZATION_001_summary.json)
+
+**Lane:** **Lane A — Method / instrument promotion framework**
+
+**Pilot instrument:** `geo.tbrridge.kfold.single_cell.delta_mu.diagnostic_interval.restricted_review`
+
+**Status:** **`method_promotion_review_framework_generalized_docs_only_no_runtime_no_promotion`**
+
+**Verdict:** Extracts reusable promotion review pattern from TBRRidge pilot: instrument identity schema, evidence category registry, packet readiness semantics, review decision semantics, claim/catalog/production boundaries, reusable vs instrument-specific split, and future generic runtime plan. No runtime, promotion, catalog unblock, or claim authorization.
+
+**Next:** `METHOD_PROMOTION_NEXT_INSTRUMENT_SELECTION_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
@@ -2624,7 +2640,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Runtime consuming `TBRRidgePromotionEvidencePacket` and emitting `TBRRidgePromotionReviewDecision` via deterministic mapping rules. Preserves blockers, missing evidence, warnings, and lineage. Fixed non-authorization statuses for claims, catalog, production compatibility, and promotion. No evidence quality scoring, promotion, catalog unblock, or claim authorization.
 
-**Next:** `METHOD_PROMOTION_REVIEW_FRAMEWORK_GENERALIZATION_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_NEXT_INSTRUMENT_SELECTION_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
@@ -2640,7 +2656,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Contract defining `TBRRidgePromotionReviewDecisionInput`, `TBRRidgePromotionReviewDecision`, decision statuses, mapping rules from packet readiness/eligibility, allowed/prohibited next actions, and relationships to claim authorization, catalog governance, production compatibility, and Lane B. No runtime, promotion, catalog unblock, or claim authorization.
 
-**Next:** `METHOD_PROMOTION_REVIEW_FRAMEWORK_GENERALIZATION_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_NEXT_INSTRUMENT_SELECTION_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
@@ -2656,7 +2672,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Runtime assembling `TBRRidgePromotionEvidencePacket` from explicit evidence references. Validates exact instrument identity, required evidence categories, claim boundary, and restricted-review surface constraints. Emits missing-evidence blockers and promotion review eligibility. No evidence fabrication, promotion, catalog unblock, or claim authorization.
 
-**Next:** `METHOD_PROMOTION_REVIEW_FRAMEWORK_GENERALIZATION_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_NEXT_INSTRUMENT_SELECTION_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 

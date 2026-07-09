@@ -565,11 +565,11 @@ Foundation and compatibility audits ✅
 
 ### Lane A — TBRRidge promotion (active)
 
-**Status:** Active — promotion review decision runtime complete; restricted-review pilot chain closed at runtime level.
+**Status:** Active — promotion review framework generalized; TBRRidge pilot complete; pivot to next-instrument selection.
 
-**Completed through:** `TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001` · `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001` · `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_RUNTIME_001` · `TBRRIDGE_PROMOTION_REVIEW_DECISION_CONTRACT_001` · `TBRRIDGE_PROMOTION_REVIEW_DECISION_RUNTIME_001`
+**Completed through:** `TBRRIDGE_CLAIM_AUTHORIZATION_BOUNDARY_AUDIT_001` · `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_CONTRACT_001` · `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_RUNTIME_001` · `TBRRIDGE_PROMOTION_REVIEW_DECISION_CONTRACT_001` · `TBRRIDGE_PROMOTION_REVIEW_DECISION_RUNTIME_001` · `METHOD_PROMOTION_REVIEW_FRAMEWORK_GENERALIZATION_001`
 
-**Recommended immediate next (Lane A):** `METHOD_PROMOTION_REVIEW_FRAMEWORK_GENERALIZATION_001`
+**Recommended immediate next (Lane A):** `METHOD_PROMOTION_NEXT_INSTRUMENT_SELECTION_AUDIT_001`
 
 ### Lane B — Final trusted readout / spend / ROI readiness (minimum semantic chain complete)
 
@@ -577,7 +577,7 @@ Foundation and compatibility audits ✅
 
 **Completed:** `FINAL_TEST_RESULTS_EXISTING_ARTIFACT_REUSE_AUDIT_001` · `GEOX_READOUT_DATAFLOW_AND_SPEND_EXTRACTION_PROCESS_AUDIT_001` · `GEOX_FINAL_TEST_RESULTS_SPEND_AND_ROI_READINESS_CONTRACT_001` · `GEOX_POST_TEST_SPEND_READINESS_ADAPTER_RUNTIME_001` · `GEOX_TRUSTED_READOUT_SPEND_READINESS_INTEGRATION_RUNTIME_001` · `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001`
 
-**Return to Lane A (active):** `METHOD_PROMOTION_REVIEW_FRAMEWORK_GENERALIZATION_001` (TBRRidge restricted-review pilot runtime chain complete)
+**Return to Lane A (active):** `METHOD_PROMOTION_NEXT_INSTRUMENT_SELECTION_AUDIT_001` (framework generalization complete)
 
 **Optional Lane B follow-up:** `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_RUNTIME_001`
 
@@ -649,7 +649,8 @@ Foundation and compatibility audits ✅
 | `TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_RUNTIME_001` | complete | Assemble TBRRidge promotion evidence packet runtime; no promotion or claim authorization |
 | `TBRRIDGE_PROMOTION_REVIEW_DECISION_CONTRACT_001` | complete | TBRRidge promotion review decision contract; no runtime or promotion |
 | `TBRRIDGE_PROMOTION_REVIEW_DECISION_RUNTIME_001` | complete | TBRRidge promotion review decision runtime; no promotion or claim authorization |
-| `METHOD_PROMOTION_REVIEW_FRAMEWORK_GENERALIZATION_001` | next (Lane A) | Generalize method promotion review framework beyond single TBRRidge config |
+| `METHOD_PROMOTION_REVIEW_FRAMEWORK_GENERALIZATION_001` | complete | Generalize method promotion review framework; docs only |
+| `METHOD_PROMOTION_NEXT_INSTRUMENT_SELECTION_AUDIT_001` | next (Lane A) | Select next instrument for generalized promotion framework |
 | `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001` | deferred | Gate-triggered after STAGE_6 / RANK_4 candidate |
 | `SCM_UNIT_JACKKNIFE_PROMOTION_EVIDENCE_AUDIT_001` | parallel | Smaller-scope evidence audit for top non-sophisticated candidate |
 | `AUGSYNTH_ASCM_REMEDIATION_IMPLEMENTATION_001` | pause | Sophistication before validity closure |
