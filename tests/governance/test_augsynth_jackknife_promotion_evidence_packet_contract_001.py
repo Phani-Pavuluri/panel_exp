@@ -20,7 +20,7 @@ _INSTRUMENT = "geo.augsynth.jackknife.single_cell.delta_mu.diagnostic_interval.r
 _ALIAS = "geo.augsynth.jackknife.single_cell.delta_mu.research_interval.research_only"
 _VERDICT = "augsynth_jackknife_evidence_packet_contract_defined_no_runtime_no_promotion"
 _NEXT_RUNTIME = "AUGSYNTH_JACKKNIFE_PROMOTION_EVIDENCE_PACKET_RUNTIME_001"
-_LANE_A_NEXT = "AUGSYNTH_JACKKNIFE_REVIEW_DECISION_RUNTIME_001"
+_LANE_A_NEXT = "AUGSYNTH_GENERIC_ADAPTER_PROFILE_READINESS_AUDIT_001"
 
 _CORE_CATEGORIES = (
     "instrument_identity",
