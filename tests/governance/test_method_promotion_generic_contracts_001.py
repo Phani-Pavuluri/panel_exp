@@ -15,6 +15,7 @@ _METHOD_SOUNDNESS = _REPO / "docs/METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md"
 
 _VERDICT = "generic_method_promotion_contracts_defined_no_runtime_no_promotion"
 _NEXT = "METHOD_PROMOTION_GENERIC_RUNTIME_CONTRACT_001"
+_LANE_A_NEXT = "METHOD_PROMOTION_GENERIC_RUNTIME_001"
 
 _FORBIDDEN_TRUE_FLAGS = (
     "runtime_implemented",
@@ -226,4 +227,4 @@ def test_open_investigations_lane_a_next() -> None:
         for item in registry["roadmap_lane_bindings"]
         if item["lane_id"] == "LANE-A-TBRRIDGE-PROMOTION"
     )
-    assert lane_a["next_artifact"] == _NEXT
+    assert lane_a["next_artifact"] == _LANE_A_NEXT

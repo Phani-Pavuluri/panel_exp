@@ -5486,6 +5486,57 @@
       "resolution_artifact": "METHOD_PROMOTION_GENERIC_CONTRACTS_001"
     },
     {
+      "investigation_id": "INV-METHOD-PROMOTION-GENERIC-RUNTIME-CONTRACT-001",
+      "title": "Method promotion generic runtime contract",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "METHOD-PROMOTION-GENERIC-CONTRACTS-001",
+      "affected_combination": "method_promotion_generic_runtime_contract",
+      "problem_class": [
+        "method_promotion",
+        "generic_runtime_contract",
+        "adapter",
+        "tbrridge_kfold",
+        "scm_jackknife"
+      ],
+      "evidence": {
+        "depends_on": [
+          "METHOD_PROMOTION_GENERIC_CONTRACTS_001",
+          "METHOD_PROMOTION_FRAMEWORK_APPLICATION_CHECKPOINT_001",
+          "TBRRIDGE_PROMOTION_REVIEW_DECISION_RUNTIME_001",
+          "SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_RUNTIME_001",
+          "CLAIM_AUTHORIZATION_RUNTIME_001"
+        ],
+        "scope": "generic_runtime_contract_docs_only_no_runtime_no_promotion",
+        "lane": "Lane A - Method instrument promotion framework generic runtime contract",
+        "generic_runtime_contract_defined": true,
+        "runtime_implemented": false,
+        "generic_runtime_implemented": false,
+        "adapter_profile_implemented": false,
+        "method_promoted": false,
+        "instrument_promoted": false,
+        "catalog_unblocked": false,
+        "recommended_next_artifact": "METHOD_PROMOTION_GENERIC_RUNTIME_001"
+      },
+      "current_decision": "GENERIC_RUNTIME_CONTRACT_DEFINED_NO_RUNTIME_NO_PROMOTION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon METHOD_PROMOTION_GENERIC_RUNTIME_001 completion",
+      "decision_checkpoint": "Define generic runtime adapter contract before implementing adapter runtime",
+      "blocking_policy": "Generic runtime contract docs only; no runtime, promotion, or claim authorization",
+      "terminal_decisions": ["RESTRICT", "AUDIT_ONLY", "DEFER"],
+      "resolution_artifact": "METHOD_PROMOTION_GENERIC_RUNTIME_CONTRACT_001"
+    },
+    {
       "investigation_id": "INV-GEOX-FINAL-TEST-RESULTS-SPEND-ROI-READINESS-CONTRACT-001",
       "title": "GeoX final test results spend and ROI readiness contract",
       "status": "RESOLVED",
@@ -9089,13 +9140,14 @@
         "INV-SCM-JACKKNIFE-NULL-MONITOR-REVIEW-DECISION-CONTRACT-001",
         "INV-SCM-JACKKNIFE-NULL-MONITOR-REVIEW-DECISION-RUNTIME-001",
         "INV-METHOD-PROMOTION-FRAMEWORK-APPLICATION-CHECKPOINT-001",
-        "INV-METHOD-PROMOTION-GENERIC-CONTRACTS-001"
+        "INV-METHOD-PROMOTION-GENERIC-CONTRACTS-001",
+        "INV-METHOD-PROMOTION-GENERIC-RUNTIME-CONTRACT-001"
       ],
       "deferred_investigations": [],
       "must_consume_before_close": false,
-      "next_artifact": "METHOD_PROMOTION_GENERIC_RUNTIME_CONTRACT_001",
+      "next_artifact": "METHOD_PROMOTION_GENERIC_RUNTIME_001",
       "resumed_after": "GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001",
-      "resolution_artifact": "METHOD_PROMOTION_GENERIC_CONTRACTS_001",
+      "resolution_artifact": "METHOD_PROMOTION_GENERIC_RUNTIME_CONTRACT_001",
       "artifact_tags": [
         "lane_a_tbrridge_promotion",
         "parked_for_lane_b",
@@ -9324,6 +9376,25 @@
       "artifact_tags": [
         "method_promotion_framework",
         "generic_contracts",
+        "docs_only",
+        "no_runtime_or_promotion",
+        "lane_a_active"
+      ]
+    },
+    {
+      "lane_id": "METHOD-PROMOTION-GENERIC-RUNTIME-CONTRACT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-METHOD-PROMOTION-GENERIC-RUNTIME-CONTRACT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "METHOD_PROMOTION_GENERIC_RUNTIME_001",
+      "resolution_artifact": "METHOD_PROMOTION_GENERIC_RUNTIME_CONTRACT_001",
+      "artifact_tags": [
+        "method_promotion_framework",
+        "generic_runtime_contract",
         "docs_only",
         "no_runtime_or_promotion",
         "lane_a_active"
