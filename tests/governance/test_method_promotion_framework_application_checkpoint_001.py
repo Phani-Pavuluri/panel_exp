@@ -21,7 +21,7 @@ _SCM = "geo.scm.jackknife.single_cell.delta_mu.null_monitor"
 _VERDICT = "framework_checkpoint_completed_two_applications_reviewed_no_runtime_no_promotion"
 _NEXT = "METHOD_PROMOTION_GENERIC_CONTRACTS_001"
 _NEXT_RUNTIME_CONTRACT = "METHOD_PROMOTION_GENERIC_RUNTIME_CONTRACT_001"
-_LANE_A_NEXT = "METHOD_PROMOTION_GENERIC_RUNTIME_001"
+_LANE_A_NEXT = "METHOD_PROMOTION_AUGSYNTH_READINESS_AUDIT_001"
 
 _FORBIDDEN_TRUE_FLAGS = (
     "runtime_implemented",

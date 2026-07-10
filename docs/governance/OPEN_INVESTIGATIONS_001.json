@@ -9141,13 +9141,14 @@
         "INV-SCM-JACKKNIFE-NULL-MONITOR-REVIEW-DECISION-RUNTIME-001",
         "INV-METHOD-PROMOTION-FRAMEWORK-APPLICATION-CHECKPOINT-001",
         "INV-METHOD-PROMOTION-GENERIC-CONTRACTS-001",
-        "INV-METHOD-PROMOTION-GENERIC-RUNTIME-CONTRACT-001"
+        "INV-METHOD-PROMOTION-GENERIC-RUNTIME-CONTRACT-001",
+        "INV-METHOD-PROMOTION-GENERIC-RUNTIME-001"
       ],
       "deferred_investigations": [],
       "must_consume_before_close": false,
-      "next_artifact": "METHOD_PROMOTION_GENERIC_RUNTIME_001",
+      "next_artifact": "METHOD_PROMOTION_AUGSYNTH_READINESS_AUDIT_001",
       "resumed_after": "GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001",
-      "resolution_artifact": "METHOD_PROMOTION_GENERIC_RUNTIME_CONTRACT_001",
+      "resolution_artifact": "METHOD_PROMOTION_GENERIC_RUNTIME_001",
       "artifact_tags": [
         "lane_a_tbrridge_promotion",
         "parked_for_lane_b",
@@ -9397,6 +9398,25 @@
         "generic_runtime_contract",
         "docs_only",
         "no_runtime_or_promotion",
+        "lane_a_active"
+      ]
+    },
+    {
+      "lane_id": "METHOD-PROMOTION-GENERIC-RUNTIME-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-METHOD-PROMOTION-GENERIC-RUNTIME-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "METHOD_PROMOTION_AUGSYNTH_READINESS_AUDIT_001",
+      "resolution_artifact": "METHOD_PROMOTION_GENERIC_RUNTIME_001",
+      "artifact_tags": [
+        "method_promotion_framework",
+        "generic_adapter_runtime",
+        "runtime_implemented",
+        "no_promotion_or_claim_authorization",
         "lane_a_active"
       ]
     },
