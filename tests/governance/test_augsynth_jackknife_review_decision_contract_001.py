@@ -20,7 +20,7 @@ _INSTRUMENT = "geo.augsynth.jackknife.single_cell.delta_mu.diagnostic_interval.r
 _ALIAS = "geo.augsynth.jackknife.single_cell.delta_mu.research_interval.research_only"
 _VERDICT = "augsynth_jackknife_review_decision_contract_defined_no_runtime_no_promotion"
 _NEXT_DECISION_RUNTIME = "AUGSYNTH_JACKKNIFE_REVIEW_DECISION_RUNTIME_001"
-_LANE_A_NEXT = "METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_CONTRACT_001"
+_LANE_A_NEXT = "METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_001"
 
 _FORBIDDEN_TRUE_FLAGS = (
     "runtime_implemented",

@@ -31,7 +31,7 @@ _VERDICT = (
     "augsynth_generic_adapter_profile_registered_summarizer_only_no_promotion_no_claim_authorization"
 )
 _NEXT = "METHOD_PROMOTION_GENERIC_ADAPTER_PROFILE_APPLICATION_CHECKPOINT_001"
-_LANE_A_NEXT = "METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_CONTRACT_001"
+_LANE_A_NEXT = "METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_001"
 
 _FORBIDDEN_TRUE_FLAGS = (
     "packet_runtime_changed",
