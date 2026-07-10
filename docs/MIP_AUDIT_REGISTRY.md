@@ -2608,7 +2608,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Defines exact claim taxonomy and authorization boundary for `geo.tbrridge.kfold.single_cell.delta_mu.diagnostic_interval.restricted_review`. Allows diagnostic/restricted-review summaries only; blocks CI/p-value/significance, decision, production, lift, ROI, catalog-unblock, and promotion language/surfaces. Requires `claim_authorization_boundary_report` in method-promotion review input. No claim authorization granted.
 
-**Next:** `AUGSYNTH_GENERIC_ADAPTER_PROFILE_READINESS_AUDIT_001` (Lane A active) · **optional Lane B:** `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `AUGSYNTH_GENERIC_ADAPTER_PROFILE_RUNTIME_001` (Lane A active) · **optional Lane B:** `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
@@ -2638,7 +2638,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Deterministic runtime assembles AugSynth Jackknife restricted-review promotion evidence packets from explicit refs; enforces canonical identity; blocks alias/research-only substitution and SCM/TBRRidge/Lane B evidence substitution; validates required categories; emits readiness/eligibility. No promotion, claims, catalog unblock, or evidence quality scoring.
 
-**Next:** `AUGSYNTH_GENERIC_ADAPTER_PROFILE_READINESS_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `AUGSYNTH_GENERIC_ADAPTER_PROFILE_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ----
 
@@ -2654,7 +2654,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Defines restricted-review review decision contract for AugSynth Jackknife. Only positive decision `APPROVE_RESTRICTED_REVIEW_CONTINUATION`; blocks alias/research-only substitution; deterministic mapping from packet readiness/eligibility; fixed non-authorization boundaries. No runtime, generic adapter profile, promotion, or claim authorization.
 
-**Next:** `AUGSYNTH_GENERIC_ADAPTER_PROFILE_READINESS_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `AUGSYNTH_GENERIC_ADAPTER_PROFILE_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ----
 
@@ -2670,7 +2670,23 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Deterministic runtime consumes `AugSynthJackknifePromotionEvidencePacket` and emits `AugSynthJackknifeReviewDecision` with contract precedence; blocks alias/research-only substitution; preserves evidence quality boundary. No promotion, generic adapter registration, or claim authorization.
 
-**Next:** `AUGSYNTH_GENERIC_ADAPTER_PROFILE_READINESS_AUDIT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `AUGSYNTH_GENERIC_ADAPTER_PROFILE_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+----
+
+## AUGSYNTH-GENERIC-ADAPTER-PROFILE-READINESS-AUDIT-001 (2026-07-09)
+
+**Artifact:** [`docs/track_d/AUGSYNTH_GENERIC_ADAPTER_PROFILE_READINESS_AUDIT_001.md`](track_d/AUGSYNTH_GENERIC_ADAPTER_PROFILE_READINESS_AUDIT_001.md) · [`docs/track_d/archives/AUGSYNTH_GENERIC_ADAPTER_PROFILE_READINESS_AUDIT_001_summary.json`](track_d/archives/AUGSYNTH_GENERIC_ADAPTER_PROFILE_READINESS_AUDIT_001_summary.json)
+
+**Lane:** **Lane A — Method / instrument promotion framework application**
+
+**Instrument:** `geo.augsynth.jackknife.single_cell.delta_mu.diagnostic_interval.restricted_review`
+
+**Status:** **`proceed_to_augsynth_generic_adapter_profile_contract_or_runtime_update`**
+
+**Verdict:** Readiness audit confirms AugSynth packet + decision runtimes are ready for generic adapter profile registration as `augsynth_jackknife_restricted_review_v1`. Status mappings defined; source-of-truth and summarizer-only boundaries preserved. No generic runtime change, no profile registration, no promotion or claim authorization in this audit.
+
+**Next:** `AUGSYNTH_GENERIC_ADAPTER_PROFILE_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ----
 
