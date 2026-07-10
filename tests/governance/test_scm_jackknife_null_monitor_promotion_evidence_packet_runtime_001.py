@@ -25,7 +25,8 @@ _CATALOG_ALIAS = "geo.scm.jackknife.null_monitor.delta_mu.delete_one_diagnostic.
 _VERDICT = (
     "scm_jackknife_null_monitor_evidence_packet_runtime_implemented_no_promotion_no_claim_authorization"
 )
-_NEXT = "SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_CONTRACT_001"
+_NEXT_RUNTIME = "SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_RUNTIME_001"
+_NEXT_CONTRACT = "SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_CONTRACT_001"
 
 _FORBIDDEN_TRUE_FLAGS = (
     "scm_promoted",
@@ -177,7 +178,7 @@ def test_evidence_quality_boundary_preserved() -> None:
 
 def test_recommended_next_artifact() -> None:
     data = _load_summary()
-    assert data["recommended_next_artifact"] == _NEXT
+    assert data["recommended_next_artifact"] == _NEXT_CONTRACT
 
 
 def test_roadmap_references_artifact() -> None:
@@ -202,4 +203,4 @@ def test_open_investigations_lane_a_next() -> None:
         for item in registry["roadmap_lane_bindings"]
         if item["lane_id"] == "LANE-A-TBRRIDGE-PROMOTION"
     )
-    assert lane_a["next_artifact"] == _NEXT
+    assert lane_a["next_artifact"] == _NEXT_RUNTIME

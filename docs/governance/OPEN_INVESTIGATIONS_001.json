@@ -5285,6 +5285,57 @@
       "resolution_artifact": "SCM_JACKKNIFE_NULL_MONITOR_PROMOTION_EVIDENCE_PACKET_RUNTIME_001"
     },
     {
+      "investigation_id": "INV-SCM-JACKKNIFE-NULL-MONITOR-REVIEW-DECISION-CONTRACT-001",
+      "title": "SCM Jackknife null-monitor review decision contract",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "SCM-JACKKNIFE-NULL-MONITOR-PROMOTION-EVIDENCE-PACKET-RUNTIME-001",
+      "affected_combination": "scm_jackknife_null_monitor_review_decision_contract",
+      "problem_class": [
+        "method_promotion",
+        "scm_jackknife",
+        "null_monitor",
+        "review_decision",
+        "restricted_review"
+      ],
+      "evidence": {
+        "depends_on": [
+          "SCM_JACKKNIFE_NULL_MONITOR_PROMOTION_EVIDENCE_PACKET_CONTRACT_001",
+          "SCM_JACKKNIFE_NULL_MONITOR_PROMOTION_EVIDENCE_PACKET_RUNTIME_001",
+          "METHOD_PROMOTION_REVIEW_FRAMEWORK_GENERALIZATION_001",
+          "CLAIM_AUTHORIZATION_RUNTIME_001"
+        ],
+        "scope": "review_decision_contract_defined_no_runtime_no_promotion_no_claim_authorization",
+        "lane": "Lane A - Method instrument promotion framework application",
+        "instrument_identity": "geo.scm.jackknife.single_cell.delta_mu.null_monitor",
+        "review_decision_contract_completed": true,
+        "runtime_implemented": false,
+        "scm_promoted": false,
+        "scm_jackknife_promoted": false,
+        "method_promoted": false,
+        "instrument_promoted": false,
+        "catalog_unblocked": false,
+        "recommended_next_artifact": "SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_RUNTIME_001"
+      },
+      "current_decision": "SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_CONTRACT_DEFINED_NO_RUNTIME_NO_PROMOTION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_RUNTIME_001 completion",
+      "decision_checkpoint": "Define null-monitor review decision before decision runtime",
+      "blocking_policy": "Review decision contract only; no SCM promotion, catalog unblock, or claim authorization",
+      "terminal_decisions": ["RESTRICT", "AUDIT_ONLY", "DEFER"],
+      "resolution_artifact": "SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_CONTRACT_001"
+    },
+    {
       "investigation_id": "INV-GEOX-FINAL-TEST-RESULTS-SPEND-ROI-READINESS-CONTRACT-001",
       "title": "GeoX final test results spend and ROI readiness contract",
       "status": "RESOLVED",
@@ -8884,13 +8935,14 @@
         "INV-METHOD-PROMOTION-REVIEW-FRAMEWORK-GENERALIZATION-001",
         "INV-METHOD-PROMOTION-NEXT-INSTRUMENT-SELECTION-AUDIT-001",
         "INV-SCM-JACKKNIFE-NULL-MONITOR-PROMOTION-EVIDENCE-PACKET-CONTRACT-001",
-        "INV-SCM-JACKKNIFE-NULL-MONITOR-PROMOTION-EVIDENCE-PACKET-RUNTIME-001"
+        "INV-SCM-JACKKNIFE-NULL-MONITOR-PROMOTION-EVIDENCE-PACKET-RUNTIME-001",
+        "INV-SCM-JACKKNIFE-NULL-MONITOR-REVIEW-DECISION-CONTRACT-001"
       ],
       "deferred_investigations": [],
       "must_consume_before_close": false,
-      "next_artifact": "SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_CONTRACT_001",
+      "next_artifact": "SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_RUNTIME_001",
       "resumed_after": "GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001",
-      "resolution_artifact": "SCM_JACKKNIFE_NULL_MONITOR_PROMOTION_EVIDENCE_PACKET_RUNTIME_001",
+      "resolution_artifact": "SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_CONTRACT_001",
       "artifact_tags": [
         "lane_a_tbrridge_promotion",
         "parked_for_lane_b",
@@ -9038,13 +9090,32 @@
       ],
       "deferred_investigations": [],
       "must_consume_before_close": true,
-      "next_artifact": "SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_CONTRACT_001",
+      "next_artifact": "SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_RUNTIME_001",
       "resolution_artifact": "SCM_JACKKNIFE_NULL_MONITOR_PROMOTION_EVIDENCE_PACKET_RUNTIME_001",
       "artifact_tags": [
         "scm_jackknife_null_monitor",
         "evidence_packet_runtime",
         "runtime_implemented",
         "no_promotion_or_claim_authorization",
+        "lane_a_active"
+      ]
+    },
+    {
+      "lane_id": "SCM-JACKKNIFE-NULL-MONITOR-REVIEW-DECISION-CONTRACT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-SCM-JACKKNIFE-NULL-MONITOR-REVIEW-DECISION-CONTRACT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_RUNTIME_001",
+      "resolution_artifact": "SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_CONTRACT_001",
+      "artifact_tags": [
+        "scm_jackknife_null_monitor",
+        "review_decision_contract",
+        "docs_only",
+        "no_runtime_or_promotion",
         "lane_a_active"
       ]
     },
