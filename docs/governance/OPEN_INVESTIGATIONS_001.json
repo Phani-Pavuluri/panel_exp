@@ -9153,13 +9153,14 @@
         "INV-METHOD-PROMOTION-GENERIC-ADAPTER-PROFILE-APPLICATION-CHECKPOINT-001",
         "INV-METHOD-PROMOTION-GENERIC-ADAPTER-MIP-HANDOFF-READINESS-AUDIT-001",
         "INV-METHOD-PROMOTION-GENERIC-ADAPTER-MIP-HANDOFF-CONTRACT-001",
-        "INV-METHOD-PROMOTION-GENERIC-ADAPTER-MIP-HANDOFF-RUNTIME-001"
+        "INV-METHOD-PROMOTION-GENERIC-ADAPTER-MIP-HANDOFF-RUNTIME-001",
+        "INV-METHOD-PROMOTION-GENERIC-ADAPTER-MIP-HANDOFF-RUNTIME-APPLICATION-CHECKPOINT-001"
       ],
       "deferred_investigations": [],
       "must_consume_before_close": false,
-      "next_artifact": "METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_APPLICATION_CHECKPOINT_001",
+      "next_artifact": "MIP_METHOD_PROMOTION_HANDOFF_CONSUMER_CONTRACT_001",
       "resumed_after": "GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001",
-      "resolution_artifact": "METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_001",
+      "resolution_artifact": "METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_APPLICATION_CHECKPOINT_001",
       "artifact_tags": [
         "lane_a_tbrridge_promotion",
         "parked_for_lane_b",
@@ -9637,6 +9638,25 @@
         "package_side_handoff_runtime",
         "builder_serializer",
         "no_mip_runtime_or_decision_authorization",
+        "lane_a_active"
+      ]
+    },
+    {
+      "lane_id": "METHOD-PROMOTION-GENERIC-ADAPTER-MIP-HANDOFF-RUNTIME-APPLICATION-CHECKPOINT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-METHOD-PROMOTION-GENERIC-ADAPTER-MIP-HANDOFF-RUNTIME-APPLICATION-CHECKPOINT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "MIP_METHOD_PROMOTION_HANDOFF_CONSUMER_CONTRACT_001",
+      "resolution_artifact": "METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_APPLICATION_CHECKPOINT_001",
+      "artifact_tags": [
+        "generic_adapter_mip_handoff",
+        "runtime_application_checkpoint",
+        "docs_tests_only",
+        "no_mip_integration_no_runtime_behavior_change",
         "lane_a_active"
       ]
     },

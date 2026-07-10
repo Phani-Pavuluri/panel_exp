@@ -24,7 +24,7 @@ _VERDICT = (
     "augsynth_jackknife_review_decision_runtime_implemented_no_promotion_no_claim_authorization"
 )
 _NEXT_AUDIT = "AUGSYNTH_GENERIC_ADAPTER_PROFILE_READINESS_AUDIT_001"
-_LANE_A_NEXT = "METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_APPLICATION_CHECKPOINT_001"
+_LANE_A_NEXT = "MIP_METHOD_PROMOTION_HANDOFF_CONSUMER_CONTRACT_001"
 
 _ALLOWED_TRUE_FLAGS = ("runtime_implemented", "augsynth_decision_runtime_implemented")
 
