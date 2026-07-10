@@ -192,4 +192,4 @@ def test_open_investigations_lane_a_next() -> None:
         for item in registry["roadmap_lane_bindings"]
         if item["lane_id"] == "LANE-A-TBRRIDGE-PROMOTION"
     )
-    assert lane_a["next_artifact"] == "SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_RUNTIME_001"
+    assert lane_a["next_artifact"] == "METHOD_PROMOTION_FRAMEWORK_APPLICATION_CHECKPOINT_001"
