@@ -16,7 +16,7 @@ _SCOPE = "generic_adapter_runtime_no_promotion_no_claim_authorization"
 _VERDICT = (
     "generic_method_promotion_adapter_runtime_implemented_no_promotion_no_claim_authorization"
 )
-_RECOMMENDED_NEXT = "METHOD_PROMOTION_AUGSYNTH_READINESS_AUDIT_001"
+_RECOMMENDED_NEXT = "METHOD_PROMOTION_GENERIC_ADAPTER_PROFILE_APPLICATION_CHECKPOINT_001"
 _REPO = Path(__file__).resolve().parents[2]
 _DEFAULT_SUMMARY = _REPO / "docs/track_d/archives/METHOD_PROMOTION_GENERIC_RUNTIME_001_summary.json"
 
@@ -25,10 +25,17 @@ TBRRIDGE_INSTRUMENT_IDENTITY = (
 )
 SCM_INSTRUMENT_IDENTITY = "geo.scm.jackknife.single_cell.delta_mu.null_monitor"
 SCM_CATALOG_ALIAS = "geo.scm.jackknife.null_monitor.delta_mu.delete_one_diagnostic.restricted_review"
+AUGSYNTH_INSTRUMENT_IDENTITY = (
+    "geo.augsynth.jackknife.single_cell.delta_mu.diagnostic_interval.restricted_review"
+)
+AUGSYNTH_ALIAS_RELATED_IDENTITY = (
+    "geo.augsynth.jackknife.single_cell.delta_mu.research_interval.research_only"
+)
 
 _SUPPORTED_PROFILES = (
     TBRRIDGE_INSTRUMENT_IDENTITY,
     SCM_INSTRUMENT_IDENTITY,
+    AUGSYNTH_INSTRUMENT_IDENTITY,
 )
 
 _REQUIRED_BOUNDARY_FIELDS = (
@@ -126,6 +133,54 @@ _SCM_DECISION_MAP = {
     "REJECT_FOR_IDENTITY_MISMATCH": "REJECT_FOR_IDENTITY_MISMATCH",
     "REJECT_FOR_CLAIM_BOUNDARY_VIOLATION": "REJECT_FOR_CLAIM_BOUNDARY_VIOLATION",
     "REJECT_FOR_NULL_MONITOR_SCOPE_VIOLATION": "REJECT_FOR_SCOPE_VIOLATION",
+    "REJECT_FOR_UNSUPPORTED_SURFACE": "REJECT_FOR_UNSUPPORTED_SURFACE",
+    "REJECT_FOR_CROSS_INFERENCE_FAMILY": "REJECT_FOR_CROSS_INFERENCE_FAMILY",
+    "REJECT_FOR_CROSS_GEOMETRY": "REJECT_FOR_CROSS_GEOMETRY",
+    "REJECT_FOR_CROSS_ESTIMAND": "REJECT_FOR_CROSS_ESTIMAND",
+    "DEFER_PENDING_PRODUCTION_COMPATIBILITY_REVIEW": "DEFER_PENDING_PRODUCTION_COMPATIBILITY_REVIEW",
+    "DEFER_PENDING_CATALOG_GOVERNANCE_REVIEW": "DEFER_PENDING_CATALOG_GOVERNANCE_REVIEW",
+    "NO_DECISION_PACKET_NOT_READY": "NO_DECISION_PACKET_NOT_READY",
+}
+
+_AUGSYNTH_PACKET_STATUS_MAP = {
+    "PACKET_READY_FOR_PROMOTION_REVIEW_INPUT": "PACKET_READY_FOR_REVIEW_INPUT",
+    "PACKET_PARTIAL_DIAGNOSTIC_ONLY": "PACKET_PARTIAL_DIAGNOSTIC_ONLY",
+    "PACKET_BLOCKED_MISSING_REQUIRED_EVIDENCE": "PACKET_BLOCKED_MISSING_REQUIRED_EVIDENCE",
+    "PACKET_BLOCKED_CLAIM_BOUNDARY_MISSING": "PACKET_BLOCKED_CLAIM_BOUNDARY_MISSING",
+    "PACKET_BLOCKED_INSTRUMENT_IDENTITY_MISMATCH": "PACKET_BLOCKED_INSTRUMENT_IDENTITY_MISMATCH",
+    "PACKET_BLOCKED_UNSUPPORTED_SURFACE": "PACKET_BLOCKED_UNSUPPORTED_SURFACE",
+    "PACKET_BLOCKED_CROSS_INFERENCE_FAMILY": "PACKET_BLOCKED_CROSS_INFERENCE_FAMILY",
+    "PACKET_BLOCKED_CROSS_GEOMETRY": "PACKET_BLOCKED_CROSS_GEOMETRY",
+    "PACKET_BLOCKED_CROSS_ESTIMAND": "PACKET_BLOCKED_CROSS_ESTIMAND",
+    "PACKET_BLOCKED_SCOPE_VIOLATION": "PACKET_BLOCKED_SCOPE_VIOLATION",
+    "PACKET_BLOCKED_PRODUCTION_COMPATIBILITY_REQUIRED": "PACKET_BLOCKED_PRODUCTION_COMPATIBILITY_REQUIRED",
+    "PACKET_BLOCKED_ALIAS_SUBSTITUTION_ATTEMPT": "PACKET_BLOCKED_SCOPE_VIOLATION",
+    "PACKET_BLOCKED_RESEARCH_ONLY_SUBSTITUTION_ATTEMPT": "PACKET_BLOCKED_SCOPE_VIOLATION",
+    "PACKET_NOT_REQUESTED": "PACKET_NOT_REQUESTED",
+}
+
+_AUGSYNTH_ELIGIBILITY_MAP = {
+    "ELIGIBLE_AS_RESTRICTED_REVIEW_INPUT": "ELIGIBLE_AS_REVIEW_INPUT",
+    "NOT_ELIGIBLE_MISSING_EVIDENCE": "NOT_ELIGIBLE_MISSING_EVIDENCE",
+    "NOT_ELIGIBLE_IDENTITY_MISMATCH": "NOT_ELIGIBLE_IDENTITY_MISMATCH",
+    "NOT_ELIGIBLE_CLAIM_BOUNDARY_MISSING": "NOT_ELIGIBLE_CLAIM_BOUNDARY_MISSING",
+    "NOT_ELIGIBLE_SCOPE_VIOLATION": "NOT_ELIGIBLE_SCOPE_VIOLATION",
+    "NOT_ELIGIBLE_ALIAS_SUBSTITUTION": "NOT_ELIGIBLE_SCOPE_VIOLATION",
+    "NOT_ELIGIBLE_RESEARCH_ONLY_SUBSTITUTION": "NOT_ELIGIBLE_SCOPE_VIOLATION",
+    "NOT_ELIGIBLE_FOR_PRODUCTION_REVIEW": "NOT_ELIGIBLE_FOR_PRODUCTION_REVIEW",
+    "NOT_ELIGIBLE_FOR_CATALOG_UNBLOCK": "NOT_ELIGIBLE_FOR_CATALOG_UNBLOCK",
+    "NOT_ELIGIBLE_FOR_CLAIM_REVIEW": "NOT_ELIGIBLE_FOR_CLAIM_REVIEW",
+}
+
+_AUGSYNTH_DECISION_MAP = {
+    "APPROVE_RESTRICTED_REVIEW_CONTINUATION": "APPROVE_REVIEW_CONTINUATION",
+    "REQUEST_ADDITIONAL_EVIDENCE": "REQUEST_ADDITIONAL_EVIDENCE",
+    "REJECT_FOR_METHOD_VALIDITY": "REJECT_FOR_METHOD_VALIDITY",
+    "REJECT_FOR_IDENTITY_MISMATCH": "REJECT_FOR_IDENTITY_MISMATCH",
+    "REJECT_FOR_CLAIM_BOUNDARY_VIOLATION": "REJECT_FOR_CLAIM_BOUNDARY_VIOLATION",
+    "REJECT_FOR_SCOPE_VIOLATION": "REJECT_FOR_SCOPE_VIOLATION",
+    "REJECT_FOR_ALIAS_SUBSTITUTION": "REJECT_FOR_SCOPE_VIOLATION",
+    "REJECT_FOR_RESEARCH_ONLY_SUBSTITUTION": "REJECT_FOR_SCOPE_VIOLATION",
     "REJECT_FOR_UNSUPPORTED_SURFACE": "REJECT_FOR_UNSUPPORTED_SURFACE",
     "REJECT_FOR_CROSS_INFERENCE_FAMILY": "REJECT_FOR_CROSS_INFERENCE_FAMILY",
     "REJECT_FOR_CROSS_GEOMETRY": "REJECT_FOR_CROSS_GEOMETRY",
@@ -309,9 +364,28 @@ SCM_NULL_MONITOR_ADAPTER_PROFILE = MethodPromotionInstrumentAdapterProfile(
     notes="SCM Jackknife null-monitor adapter profile",
 )
 
+AUGSYNTH_ADAPTER_PROFILE = MethodPromotionInstrumentAdapterProfile(
+    profile_id="augsynth_jackknife_restricted_review_v1",
+    instrument_identity=AUGSYNTH_INSTRUMENT_IDENTITY,
+    aliases=(AUGSYNTH_ALIAS_RELATED_IDENTITY,),
+    decision_scope="restricted_review",
+    packet_status_mapping=_AUGSYNTH_PACKET_STATUS_MAP,
+    eligibility_status_mapping=_AUGSYNTH_ELIGIBILITY_MAP,
+    decision_status_mapping=_AUGSYNTH_DECISION_MAP,
+    required_boundary_fields=_REQUIRED_BOUNDARY_FIELDS,
+    source_of_truth_runtime_ids=(
+        "AUGSYNTH_JACKKNIFE_PROMOTION_EVIDENCE_PACKET_RUNTIME_001",
+        "AUGSYNTH_JACKKNIFE_REVIEW_DECISION_RUNTIME_001",
+    ),
+    source_packet_artifact_id="AUGSYNTH_JACKKNIFE_PROMOTION_EVIDENCE_PACKET_RUNTIME_001",
+    source_decision_artifact_id="AUGSYNTH_JACKKNIFE_REVIEW_DECISION_RUNTIME_001",
+    notes="AugSynth Jackknife restricted-review adapter profile",
+)
+
 _PROFILE_BY_IDENTITY: dict[str, MethodPromotionInstrumentAdapterProfile] = {
     TBRRIDGE_INSTRUMENT_IDENTITY: TBRRIDGE_ADAPTER_PROFILE,
     SCM_INSTRUMENT_IDENTITY: SCM_NULL_MONITOR_ADAPTER_PROFILE,
+    AUGSYNTH_INSTRUMENT_IDENTITY: AUGSYNTH_ADAPTER_PROFILE,
 }
 
 
@@ -366,6 +440,9 @@ def _aliases_from_source(source: dict[str, Any], profile: MethodPromotionInstrum
     catalog_alias = source.get("catalog_alias")
     if catalog_alias:
         aliases.append(str(catalog_alias))
+    alias_related = source.get("alias_related_identity")
+    if alias_related:
+        aliases.append(str(alias_related))
     for alias in profile.aliases:
         if alias not in aliases:
             aliases.append(alias)
@@ -875,6 +952,60 @@ def run_validation(*, write_summary: bool = True, summary_path: Path | None = No
         scm_packet_summary, scm_decision_summary
     )
 
+    from panel_exp.validation.augsynth_jackknife_promotion_evidence_packet_runtime_001 import (
+        AugSynthJackknifeEvidenceReference,
+        AugSynthJackknifePromotionEvidencePacketInput,
+        assemble_augsynth_jackknife_promotion_evidence_packet,
+    )
+    from panel_exp.validation.augsynth_jackknife_review_decision_runtime_001 import (
+        AugSynthJackknifeReviewDecisionInput,
+        decide_augsynth_jackknife_review,
+    )
+
+    augsynth_cats = (
+        "instrument_identity",
+        "claim_boundary",
+        "metric_estimand_alignment",
+        "null_control_false_positive",
+        "directional_error",
+        "positive_control_recovery",
+        "sensitivity",
+        "readout_compatibility",
+        "donor_pool_diagnostics",
+        "pre_period_fit_diagnostics",
+        "augmentation_component_diagnostics",
+        "synthetic_weight_diagnostics",
+        "regularization_or_model_component_diagnostics",
+        "jackknife_stability",
+        "method_disagreement_or_scm_bridge",
+        "support_overlap_or_donor_hull_stress",
+    )
+    augsynth_packet = assemble_augsynth_jackknife_promotion_evidence_packet(
+        AugSynthJackknifePromotionEvidencePacketInput(
+            packet_id="validation_augsynth_packet",
+            instrument_identity=AUGSYNTH_INSTRUMENT_IDENTITY,
+            evidence_references=[
+                AugSynthJackknifeEvidenceReference(
+                    evidence_id=f"{cat}_001",
+                    evidence_category=cat,
+                    artifact_ref=f"docs/track_d/{cat.upper()}_001.md",
+                )
+                for cat in augsynth_cats
+            ],
+        )
+    )
+    augsynth_decision = decide_augsynth_jackknife_review(
+        AugSynthJackknifeReviewDecisionInput(
+            decision_id="validation_augsynth_decision",
+            packet=augsynth_packet,
+        )
+    )
+    augsynth_packet_summary = adapt_method_promotion_packet_to_generic_summary(augsynth_packet)
+    augsynth_decision_summary = adapt_method_promotion_decision_to_generic_summary(augsynth_decision)
+    augsynth_governance = build_method_promotion_governance_summary(
+        augsynth_packet_summary, augsynth_decision_summary
+    )
+
     assert tbrridge_packet_summary.adapter_status == MethodPromotionGenericAdapterStatus.ADAPTED
     assert tbrridge_packet_summary.generic_packet_readiness_status == "PACKET_READY_FOR_REVIEW_INPUT"
     assert tbrridge_decision_summary.generic_decision_status == "APPROVE_REVIEW_CONTINUATION"
@@ -884,6 +1015,10 @@ def run_validation(*, write_summary: bool = True, summary_path: Path | None = No
     assert scm_decision_summary.decision_scope == "null_monitor"
     assert tbrridge_governance.claim_authorization_status == "NOT_AUTHORIZED_BY_THIS_DECISION"
     assert scm_governance.method_promotion_status == "NOT_PROMOTED_BY_THIS_DECISION"
+    assert augsynth_packet_summary.generic_packet_readiness_status == "PACKET_READY_FOR_REVIEW_INPUT"
+    assert augsynth_decision_summary.generic_decision_status == "APPROVE_REVIEW_CONTINUATION"
+    assert augsynth_decision_summary.decision_scope == "restricted_review"
+    assert augsynth_governance.claim_authorization_status == "NOT_AUTHORIZED_BY_THIS_DECISION"
 
     summary = {
         "artifact_id": _ARTIFACT_ID,
@@ -897,14 +1032,22 @@ def run_validation(*, write_summary: bool = True, summary_path: Path | None = No
             "METHOD_PROMOTION_GENERIC_CONTRACTS_001",
             "TBRRIDGE_PROMOTION_REVIEW_DECISION_RUNTIME_001",
             "SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_RUNTIME_001",
+            "AUGSYNTH_JACKKNIFE_REVIEW_DECISION_RUNTIME_001",
+            "AUGSYNTH_JACKKNIFE_PROMOTION_EVIDENCE_PACKET_RUNTIME_001",
             "CLAIM_AUTHORIZATION_RUNTIME_001",
         ],
         "supported_profiles": list(_SUPPORTED_PROFILES),
+        "supported_profile_count": 3,
         "generic_runtime_implemented": True,
+        "generic_runtime_changed": True,
         "adapter_runtime_only": True,
         "supported_profiles_limited_to_completed_applications": True,
         "tbrridge_profile_supported": True,
         "scm_null_monitor_profile_supported": True,
+        "augsynth_profile_supported": True,
+        "augsynth_profile_id": "augsynth_jackknife_restricted_review_v1",
+        "generic_adapter_profile_for_augsynth_implemented": True,
+        "augsynth_profile_registered": True,
         "packet_summary_adapter_implemented": True,
         "decision_summary_adapter_implemented": True,
         "governance_summary_builder_implemented": True,
@@ -952,6 +1095,7 @@ def run_validation(*, write_summary: bool = True, summary_path: Path | None = No
         "final_verdict": _VERDICT,
         "validation_tbrridge_generic_decision": tbrridge_decision_summary.generic_decision_status,
         "validation_scm_generic_decision": scm_decision_summary.generic_decision_status,
+        "validation_augsynth_generic_decision": augsynth_decision_summary.generic_decision_status,
     }
     if write_summary:
         path = summary_path or _DEFAULT_SUMMARY

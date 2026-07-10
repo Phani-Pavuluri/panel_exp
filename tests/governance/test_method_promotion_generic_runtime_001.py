@@ -16,8 +16,8 @@ _ROADMAP = _REPO / "docs/ROADMAP_V4.md"
 _METHOD_SOUNDNESS = _REPO / "docs/METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md"
 
 _VERDICT = "generic_method_promotion_adapter_runtime_implemented_no_promotion_no_claim_authorization"
-_NEXT_RUNTIME = "METHOD_PROMOTION_AUGSYNTH_READINESS_AUDIT_001"
-_LANE_A_NEXT = "AUGSYNTH_GENERIC_ADAPTER_PROFILE_RUNTIME_001"
+_NEXT_RUNTIME = "METHOD_PROMOTION_GENERIC_ADAPTER_PROFILE_APPLICATION_CHECKPOINT_001"
+_LANE_A_NEXT = "METHOD_PROMOTION_GENERIC_ADAPTER_PROFILE_APPLICATION_CHECKPOINT_001"
 
 _ALLOWED_TRUE_FLAGS = (
     "runtime_implemented",
@@ -61,6 +61,9 @@ _REQUIRED_TRUE_FLAGS = (
     "supported_profiles_limited_to_completed_applications",
     "tbrridge_profile_supported",
     "scm_null_monitor_profile_supported",
+    "augsynth_profile_supported",
+    "generic_adapter_profile_for_augsynth_implemented",
+    "augsynth_profile_registered",
     "packet_summary_adapter_implemented",
     "decision_summary_adapter_implemented",
     "governance_summary_builder_implemented",
@@ -129,12 +132,16 @@ def test_supported_profiles_limited_to_completed_applications() -> None:
     text = _DOC.read_text(encoding="utf-8")
     assert "geo.tbrridge.kfold.single_cell.delta_mu.diagnostic_interval.restricted_review" in text
     assert "geo.scm.jackknife.single_cell.delta_mu.null_monitor" in text
+    assert "geo.augsynth.jackknife.single_cell.delta_mu.diagnostic_interval.restricted_review" in text
 
 
 def test_tbrridge_and_scm_profiles_supported() -> None:
     data = _load_summary()
     assert data["tbrridge_profile_supported"] is True
     assert data["scm_null_monitor_profile_supported"] is True
+    assert data["augsynth_profile_supported"] is True
+    assert data["supported_profile_count"] == 3
+    assert data["augsynth_profile_id"] == "augsynth_jackknife_restricted_review_v1"
 
 
 def test_packet_decision_governance_adapters_implemented() -> None:

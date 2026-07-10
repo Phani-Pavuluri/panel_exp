@@ -11,13 +11,13 @@
 | **Scope** | `generic_adapter_runtime_no_promotion_no_claim_authorization` |
 | **Depends on** | `METHOD_PROMOTION_GENERIC_RUNTIME_CONTRACT_001` · `METHOD_PROMOTION_GENERIC_CONTRACTS_001` · `TBRRIDGE_PROMOTION_REVIEW_DECISION_RUNTIME_001` · `SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_RUNTIME_001` · `CLAIM_AUTHORIZATION_RUNTIME_001` |
 | **Final verdict** | `generic_method_promotion_adapter_runtime_implemented_no_promotion_no_claim_authorization` |
-| **Recommended next** | `METHOD_PROMOTION_AUGSYNTH_READINESS_AUDIT_001` |
+| **Recommended next** | `METHOD_PROMOTION_GENERIC_ADAPTER_PROFILE_APPLICATION_CHECKPOINT_001` |
 
 ## Runtime purpose
 
 Thin generic adapter runtime that summarizes instrument-specific packet and decision outputs into generic method-promotion summaries for governance and MIP-facing review.
 
-This runtime is an **adapter/summarizer only**. Instrument-specific runtimes (`TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_RUNTIME_001`, `TBRRIDGE_PROMOTION_REVIEW_DECISION_RUNTIME_001`, `SCM_JACKKNIFE_NULL_MONITOR_PROMOTION_EVIDENCE_PACKET_RUNTIME_001`, `SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_RUNTIME_001`) remain the **source of truth**.
+This runtime is an **adapter/summarizer only**. Instrument-specific runtimes (`TBRRIDGE_PROMOTION_EVIDENCE_PACKET_ASSEMBLY_RUNTIME_001`, `TBRRIDGE_PROMOTION_REVIEW_DECISION_RUNTIME_001`, `SCM_JACKKNIFE_NULL_MONITOR_PROMOTION_EVIDENCE_PACKET_RUNTIME_001`, `SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_RUNTIME_001`, `AUGSYNTH_JACKKNIFE_PROMOTION_EVIDENCE_PACKET_RUNTIME_001`, `AUGSYNTH_JACKKNIFE_REVIEW_DECISION_RUNTIME_001`) remain the **source of truth**.
 
 The adapter may map statuses, preserve source statuses, preserve blockers/missing evidence/warnings/lineage, preserve boundary/non-authorization fields, preserve prohibited actions, and emit generic packet/decision/governance summaries.
 
@@ -25,12 +25,13 @@ The adapter must **not** recompute packet readiness, recompute review decisions,
 
 ## Supported profiles
 
-Only two completed applications are supported:
+Only three completed applications are supported:
 
 1. **TBRRidge restricted-review** — `geo.tbrridge.kfold.single_cell.delta_mu.diagnostic_interval.restricted_review` (`tbrridge_restricted_review_v1`, `decision_scope=restricted_review`)
 2. **SCM Jackknife null-monitor** — `geo.scm.jackknife.single_cell.delta_mu.null_monitor` (`scm_jackknife_null_monitor_v1`, `decision_scope=null_monitor`, alias `geo.scm.jackknife.null_monitor.delta_mu.delete_one_diagnostic.restricted_review`)
+3. **AugSynth Jackknife restricted-review** — `geo.augsynth.jackknife.single_cell.delta_mu.diagnostic_interval.restricted_review` (`augsynth_jackknife_restricted_review_v1`, `decision_scope=restricted_review`, alias lineage `geo.augsynth.jackknife.single_cell.delta_mu.research_interval.research_only`)
 
-No AugSynth or DID support is implemented.
+No DID support is implemented.
 
 ## Source-of-truth rule
 
@@ -161,6 +162,58 @@ from panel_exp.validation.method_promotion_generic_runtime_001 import (
 | `DEFER_PENDING_CATALOG_GOVERNANCE_REVIEW` | `DEFER_PENDING_CATALOG_GOVERNANCE_REVIEW` |
 | `NO_DECISION_PACKET_NOT_READY` | `NO_DECISION_PACKET_NOT_READY` |
 
+### AugSynth restricted-review (`augsynth_jackknife_restricted_review_v1`)
+
+| Instrument-specific packet status | Generic packet status |
+|-----------------------------------|-----------------------|
+| `PACKET_READY_FOR_PROMOTION_REVIEW_INPUT` | `PACKET_READY_FOR_REVIEW_INPUT` |
+| `PACKET_PARTIAL_DIAGNOSTIC_ONLY` | `PACKET_PARTIAL_DIAGNOSTIC_ONLY` |
+| `PACKET_BLOCKED_MISSING_REQUIRED_EVIDENCE` | `PACKET_BLOCKED_MISSING_REQUIRED_EVIDENCE` |
+| `PACKET_BLOCKED_CLAIM_BOUNDARY_MISSING` | `PACKET_BLOCKED_CLAIM_BOUNDARY_MISSING` |
+| `PACKET_BLOCKED_INSTRUMENT_IDENTITY_MISMATCH` | `PACKET_BLOCKED_INSTRUMENT_IDENTITY_MISMATCH` |
+| `PACKET_BLOCKED_UNSUPPORTED_SURFACE` | `PACKET_BLOCKED_UNSUPPORTED_SURFACE` |
+| `PACKET_BLOCKED_CROSS_INFERENCE_FAMILY` | `PACKET_BLOCKED_CROSS_INFERENCE_FAMILY` |
+| `PACKET_BLOCKED_CROSS_GEOMETRY` | `PACKET_BLOCKED_CROSS_GEOMETRY` |
+| `PACKET_BLOCKED_CROSS_ESTIMAND` | `PACKET_BLOCKED_CROSS_ESTIMAND` |
+| `PACKET_BLOCKED_SCOPE_VIOLATION` | `PACKET_BLOCKED_SCOPE_VIOLATION` |
+| `PACKET_BLOCKED_PRODUCTION_COMPATIBILITY_REQUIRED` | `PACKET_BLOCKED_PRODUCTION_COMPATIBILITY_REQUIRED` |
+| `PACKET_BLOCKED_ALIAS_SUBSTITUTION_ATTEMPT` | `PACKET_BLOCKED_SCOPE_VIOLATION` |
+| `PACKET_BLOCKED_RESEARCH_ONLY_SUBSTITUTION_ATTEMPT` | `PACKET_BLOCKED_SCOPE_VIOLATION` |
+| `PACKET_NOT_REQUESTED` | `PACKET_NOT_REQUESTED` |
+
+| Instrument-specific eligibility | Generic eligibility |
+|--------------------------------|---------------------|
+| `ELIGIBLE_AS_RESTRICTED_REVIEW_INPUT` | `ELIGIBLE_AS_REVIEW_INPUT` |
+| `NOT_ELIGIBLE_MISSING_EVIDENCE` | `NOT_ELIGIBLE_MISSING_EVIDENCE` |
+| `NOT_ELIGIBLE_IDENTITY_MISMATCH` | `NOT_ELIGIBLE_IDENTITY_MISMATCH` |
+| `NOT_ELIGIBLE_CLAIM_BOUNDARY_MISSING` | `NOT_ELIGIBLE_CLAIM_BOUNDARY_MISSING` |
+| `NOT_ELIGIBLE_SCOPE_VIOLATION` | `NOT_ELIGIBLE_SCOPE_VIOLATION` |
+| `NOT_ELIGIBLE_ALIAS_SUBSTITUTION` | `NOT_ELIGIBLE_SCOPE_VIOLATION` |
+| `NOT_ELIGIBLE_RESEARCH_ONLY_SUBSTITUTION` | `NOT_ELIGIBLE_SCOPE_VIOLATION` |
+| `NOT_ELIGIBLE_FOR_PRODUCTION_REVIEW` | `NOT_ELIGIBLE_FOR_PRODUCTION_REVIEW` |
+| `NOT_ELIGIBLE_FOR_CATALOG_UNBLOCK` | `NOT_ELIGIBLE_FOR_CATALOG_UNBLOCK` |
+| `NOT_ELIGIBLE_FOR_CLAIM_REVIEW` | `NOT_ELIGIBLE_FOR_CLAIM_REVIEW` |
+
+| Instrument-specific decision | Generic decision |
+|-------------------------------|------------------|
+| `APPROVE_RESTRICTED_REVIEW_CONTINUATION` | `APPROVE_REVIEW_CONTINUATION` |
+| `REQUEST_ADDITIONAL_EVIDENCE` | `REQUEST_ADDITIONAL_EVIDENCE` |
+| `REJECT_FOR_METHOD_VALIDITY` | `REJECT_FOR_METHOD_VALIDITY` |
+| `REJECT_FOR_IDENTITY_MISMATCH` | `REJECT_FOR_IDENTITY_MISMATCH` |
+| `REJECT_FOR_CLAIM_BOUNDARY_VIOLATION` | `REJECT_FOR_CLAIM_BOUNDARY_VIOLATION` |
+| `REJECT_FOR_SCOPE_VIOLATION` | `REJECT_FOR_SCOPE_VIOLATION` |
+| `REJECT_FOR_ALIAS_SUBSTITUTION` | `REJECT_FOR_SCOPE_VIOLATION` |
+| `REJECT_FOR_RESEARCH_ONLY_SUBSTITUTION` | `REJECT_FOR_SCOPE_VIOLATION` |
+| `REJECT_FOR_UNSUPPORTED_SURFACE` | `REJECT_FOR_UNSUPPORTED_SURFACE` |
+| `REJECT_FOR_CROSS_INFERENCE_FAMILY` | `REJECT_FOR_CROSS_INFERENCE_FAMILY` |
+| `REJECT_FOR_CROSS_GEOMETRY` | `REJECT_FOR_CROSS_GEOMETRY` |
+| `REJECT_FOR_CROSS_ESTIMAND` | `REJECT_FOR_CROSS_ESTIMAND` |
+| `DEFER_PENDING_PRODUCTION_COMPATIBILITY_REVIEW` | `DEFER_PENDING_PRODUCTION_COMPATIBILITY_REVIEW` |
+| `DEFER_PENDING_CATALOG_GOVERNANCE_REVIEW` | `DEFER_PENDING_CATALOG_GOVERNANCE_REVIEW` |
+| `NO_DECISION_PACKET_NOT_READY` | `NO_DECISION_PACKET_NOT_READY` |
+
+AugSynth approval maps only to generic `APPROVE_REVIEW_CONTINUATION` with `decision_scope=restricted_review`. Alias/research-only identity is lineage-only and blocks adaptation when used as canonical identity.
+
 ## Boundary preservation
 
 Decision summaries preserve `claim_authorization_status`, `catalog_status`, `production_compatibility_status`, `method_promotion_status`, `instrument_promotion_status`, and SCM `null_monitor_scope_status` (as `scope_status` in `boundary_statuses`). Missing boundary fields block adaptation.
@@ -187,17 +240,17 @@ Governance summaries expose review state for MIP-facing consumption but do not a
 - Promote methods/instruments or unblock catalog
 - Authorize production compatibility or claims
 - Score raw evidence quality
-- Implement AugSynth/DID adapter profiles
-- Modify TBRRidge/SCM instrument-specific runtimes or Lane B runtime
+- Implement DID adapter profiles
+- Modify TBRRidge/SCM/AugSynth instrument-specific runtimes or Lane B runtime
 
 ## Validation results
 
-`panel_exp/validation/method_promotion_generic_runtime_001.py` `run_validation()` exercises TBRRidge and SCM ready packet/decision chains, confirms generic `PACKET_READY_FOR_REVIEW_INPUT` and `APPROVE_REVIEW_CONTINUATION` mapping with correct `decision_scope`, and verifies non-authorization boundary preservation. Tests in `tests/validation/test_method_promotion_generic_runtime_001.py` and `tests/governance/test_method_promotion_generic_runtime_001.py` pass.
+`panel_exp/validation/method_promotion_generic_runtime_001.py` `run_validation()` exercises TBRRidge, SCM, and AugSynth ready packet/decision chains, confirms generic `PACKET_READY_FOR_REVIEW_INPUT` and `APPROVE_REVIEW_CONTINUATION` mapping with correct `decision_scope`, and verifies non-authorization boundary preservation. Tests in `tests/validation/test_method_promotion_generic_runtime_001.py`, `tests/governance/test_method_promotion_generic_runtime_001.py`, and `tests/governance/test_augsynth_generic_adapter_profile_runtime_001.py` pass.
 
 Summary: [`docs/track_d/archives/METHOD_PROMOTION_GENERIC_RUNTIME_001_summary.json`](archives/METHOD_PROMOTION_GENERIC_RUNTIME_001_summary.json)
 
 ## Recommended next artifact
 
-**`METHOD_PROMOTION_AUGSYNTH_READINESS_AUDIT_001`**
+**`METHOD_PROMOTION_GENERIC_ADAPTER_PROFILE_APPLICATION_CHECKPOINT_001`**
 
-Now that the generic adapter exists for completed applications, next choose whether AugSynth is ready for an instrument-specific evidence packet contract.
+Checkpoint that TBRRidge, SCM, and AugSynth generic adapter profiles are registered and governed consistently.

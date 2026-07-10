@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 from panel_exp.validation.method_promotion_generic_runtime_001 import (
+    AUGSYNTH_ALIAS_RELATED_IDENTITY,
+    AUGSYNTH_INSTRUMENT_IDENTITY,
     MethodPromotionGenericAdapterStatus,
     SCM_CATALOG_ALIAS,
     SCM_INSTRUMENT_IDENTITY,
@@ -11,6 +13,15 @@ from panel_exp.validation.method_promotion_generic_runtime_001 import (
     adapt_method_promotion_packet_to_generic_summary,
     build_method_promotion_governance_summary,
     run_validation,
+)
+from panel_exp.validation.augsynth_jackknife_promotion_evidence_packet_runtime_001 import (
+    AugSynthJackknifeEvidenceReference,
+    AugSynthJackknifePromotionEvidencePacketInput,
+    assemble_augsynth_jackknife_promotion_evidence_packet,
+)
+from panel_exp.validation.augsynth_jackknife_review_decision_runtime_001 import (
+    AugSynthJackknifeReviewDecisionInput,
+    decide_augsynth_jackknife_review,
 )
 from panel_exp.validation.scm_jackknife_null_monitor_promotion_evidence_packet_runtime_001 import (
     SCMJackknifeNullMonitorEvidenceReference,
@@ -53,6 +64,25 @@ _SCM_CATS = (
     "pre_period_fit_diagnostics",
     "sensitivity",
     "readout_compatibility",
+)
+
+_AUGSYNTH_CATS = (
+    "instrument_identity",
+    "claim_boundary",
+    "metric_estimand_alignment",
+    "null_control_false_positive",
+    "directional_error",
+    "positive_control_recovery",
+    "sensitivity",
+    "readout_compatibility",
+    "donor_pool_diagnostics",
+    "pre_period_fit_diagnostics",
+    "augmentation_component_diagnostics",
+    "synthetic_weight_diagnostics",
+    "regularization_or_model_component_diagnostics",
+    "jackknife_stability",
+    "method_disagreement_or_scm_bridge",
+    "support_overlap_or_donor_hull_stress",
 )
 
 
@@ -118,6 +148,37 @@ def _scm_ready_decision():
     )
 
 
+def _augsynth_ready_packet():
+    return assemble_augsynth_jackknife_promotion_evidence_packet(
+        AugSynthJackknifePromotionEvidencePacketInput(
+            packet_id="augsynth_packet",
+            instrument_identity=AUGSYNTH_INSTRUMENT_IDENTITY,
+            evidence_references=[
+                AugSynthJackknifeEvidenceReference(
+                    evidence_id=f"{cat}_001",
+                    evidence_category=cat,
+                    artifact_ref=f"docs/track_d/{cat.upper()}_001.md",
+                )
+                for cat in _AUGSYNTH_CATS
+            ],
+            lineage={"source": "unit_test"},
+            warnings=["augsynth_warning"],
+        )
+    )
+
+
+def _augsynth_ready_decision():
+    packet = _augsynth_ready_packet()
+    return decide_augsynth_jackknife_review(
+        AugSynthJackknifeReviewDecisionInput(
+            decision_id="augsynth_decision",
+            packet=packet,
+            lineage={"decision": "unit_test"},
+            warnings=["decision_warning"],
+        )
+    )
+
+
 def test_tbrridge_ready_packet_adapts_to_generic_packet_ready() -> None:
     summary = adapt_method_promotion_packet_to_generic_summary(_tbrridge_ready_packet())
     assert summary.adapter_status == MethodPromotionGenericAdapterStatus.ADAPTED
@@ -159,6 +220,65 @@ def test_scm_approval_adapts_with_null_monitor_scope() -> None:
         summary.instrument_specific_decision_status
         == "APPROVE_NULL_MONITOR_REVIEW_CONTINUATION"
     )
+
+
+def test_augsynth_ready_packet_adapts_to_generic_packet_ready() -> None:
+    summary = adapt_method_promotion_packet_to_generic_summary(_augsynth_ready_packet())
+    assert summary.adapter_status == MethodPromotionGenericAdapterStatus.ADAPTED
+    assert summary.generic_packet_readiness_status == "PACKET_READY_FOR_REVIEW_INPUT"
+    assert (
+        summary.instrument_specific_packet_readiness_status
+        == "PACKET_READY_FOR_PROMOTION_REVIEW_INPUT"
+    )
+    assert summary.generic_review_eligibility_status == "ELIGIBLE_AS_REVIEW_INPUT"
+    assert summary.instrument_identity == AUGSYNTH_INSTRUMENT_IDENTITY
+    assert AUGSYNTH_ALIAS_RELATED_IDENTITY in summary.aliases
+
+
+def test_augsynth_approval_adapts_with_restricted_review_scope() -> None:
+    summary = adapt_method_promotion_decision_to_generic_summary(_augsynth_ready_decision())
+    assert summary.adapter_status == MethodPromotionGenericAdapterStatus.ADAPTED
+    assert summary.generic_decision_status == "APPROVE_REVIEW_CONTINUATION"
+    assert summary.decision_scope == "restricted_review"
+    assert (
+        summary.instrument_specific_decision_status
+        == "APPROVE_RESTRICTED_REVIEW_CONTINUATION"
+    )
+
+
+def test_augsynth_alias_substitution_attempt_blocks() -> None:
+    packet = _augsynth_ready_packet().to_dict()
+    packet["instrument_identity"] = AUGSYNTH_ALIAS_RELATED_IDENTITY
+    summary = adapt_method_promotion_packet_to_generic_summary(packet)
+    assert summary.adapter_status == MethodPromotionGenericAdapterStatus.BLOCKED_ALIAS_SUBSTITUTION_ATTEMPT
+    assert "GENERIC_ADAPTER_BLOCKED_ALIAS_SUBSTITUTION_ATTEMPT" in summary.adapter_blockers
+
+
+def test_augsynth_research_only_packet_block_maps_to_scope_violation() -> None:
+    packet = _augsynth_ready_packet().to_dict()
+    packet["packet_readiness_status"] = "PACKET_BLOCKED_RESEARCH_ONLY_SUBSTITUTION_ATTEMPT"
+    packet["promotion_review_eligibility_status"] = "NOT_ELIGIBLE_RESEARCH_ONLY_SUBSTITUTION"
+    summary = adapt_method_promotion_packet_to_generic_summary(packet)
+    assert summary.generic_packet_readiness_status == "PACKET_BLOCKED_SCOPE_VIOLATION"
+    assert summary.generic_review_eligibility_status == "NOT_ELIGIBLE_SCOPE_VIOLATION"
+
+
+def test_augsynth_research_only_decision_reject_maps_to_scope_violation() -> None:
+    decision = _augsynth_ready_decision().to_dict()
+    decision["decision_status"] = "REJECT_FOR_RESEARCH_ONLY_SUBSTITUTION"
+    summary = adapt_method_promotion_decision_to_generic_summary(decision)
+    assert summary.generic_decision_status == "REJECT_FOR_SCOPE_VIOLATION"
+
+
+def test_augsynth_governance_summary_decision_ready() -> None:
+    packet_summary = adapt_method_promotion_packet_to_generic_summary(_augsynth_ready_packet())
+    decision_summary = adapt_method_promotion_decision_to_generic_summary(_augsynth_ready_decision())
+    governance = build_method_promotion_governance_summary(packet_summary, decision_summary)
+    assert governance.current_framework_stage == "decision_ready"
+    assert governance.current_review_state == "APPROVE_REVIEW_CONTINUATION"
+    assert governance.instrument_identity == AUGSYNTH_INSTRUMENT_IDENTITY
+    assert governance.mip_decisioning_status == "NOT_AUTHORIZED_BY_THIS_ADAPTER"
+    assert governance.trust_report_bypass_status == "NOT_BYPASSED_BY_THIS_ADAPTER"
 
 
 def test_request_additional_evidence_remains_request_additional_evidence() -> None:
@@ -274,10 +394,10 @@ def test_governance_summary_does_not_authorize_claims_catalog_production() -> No
     assert governance.trust_report_bypass_status == "NOT_BYPASSED_BY_THIS_ADAPTER"
 
 
-def test_no_augsynth_or_did_support() -> None:
+def test_unknown_augsynth_like_identity_still_blocks() -> None:
     summary = adapt_method_promotion_packet_to_generic_summary(
         {
-            "packet_id": "augsynth",
+            "packet_id": "augsynth_unknown",
             "instrument_identity": "geo.augsynth.jackknife.single_cell.delta_mu.null_monitor",
             "packet_readiness_status": "PACKET_READY_FOR_NULL_MONITOR_REVIEW_INPUT",
             "promotion_review_eligibility_status": "ELIGIBLE_AS_NULL_MONITOR_REVIEW_INPUT",
@@ -299,4 +419,6 @@ def test_no_raw_evidence_quality_scoring() -> None:
 def test_run_validation_passes() -> None:
     summary = run_validation(write_summary=False)
     assert summary["runtime_implemented"] is True
+    assert summary["augsynth_profile_registered"] is True
+    assert summary["supported_profile_count"] == 3
     assert summary["final_verdict"].startswith("generic_method_promotion_adapter_runtime_implemented")

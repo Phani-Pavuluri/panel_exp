@@ -172,4 +172,4 @@ def test_open_investigations_lane_a_next() -> None:
         for item in registry["roadmap_lane_bindings"]
         if item["lane_id"] == "LANE-A-TBRRIDGE-PROMOTION"
     )
-    assert lane_a["next_artifact"] == "AUGSYNTH_GENERIC_ADAPTER_PROFILE_RUNTIME_001"
+    assert lane_a["next_artifact"] == "METHOD_PROMOTION_GENERIC_ADAPTER_PROFILE_APPLICATION_CHECKPOINT_001"
