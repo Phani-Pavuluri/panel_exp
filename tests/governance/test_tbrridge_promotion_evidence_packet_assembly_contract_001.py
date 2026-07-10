@@ -181,4 +181,4 @@ def test_open_investigations_lane_a_next() -> None:
         for item in registry["roadmap_lane_bindings"]
         if item["lane_id"] == "LANE-A-TBRRIDGE-PROMOTION"
     )
-    assert lane_a["next_artifact"] == "METHOD_PROMOTION_AUGSYNTH_READINESS_AUDIT_001"
+    assert lane_a["next_artifact"] == "AUGSYNTH_JACKKNIFE_PROMOTION_EVIDENCE_PACKET_CONTRACT_001"

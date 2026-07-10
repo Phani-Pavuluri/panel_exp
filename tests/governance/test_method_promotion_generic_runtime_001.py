@@ -16,7 +16,8 @@ _ROADMAP = _REPO / "docs/ROADMAP_V4.md"
 _METHOD_SOUNDNESS = _REPO / "docs/METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md"
 
 _VERDICT = "generic_method_promotion_adapter_runtime_implemented_no_promotion_no_claim_authorization"
-_LANE_A_NEXT = "METHOD_PROMOTION_AUGSYNTH_READINESS_AUDIT_001"
+_NEXT_RUNTIME = "METHOD_PROMOTION_AUGSYNTH_READINESS_AUDIT_001"
+_LANE_A_NEXT = "AUGSYNTH_JACKKNIFE_PROMOTION_EVIDENCE_PACKET_CONTRACT_001"
 
 _ALLOWED_TRUE_FLAGS = (
     "runtime_implemented",
@@ -196,7 +197,7 @@ def test_forbidden_flags_false() -> None:
 
 def test_recommended_next_artifact() -> None:
     data = _load_summary()
-    assert data["recommended_next_artifact"] == _LANE_A_NEXT
+    assert data["recommended_next_artifact"] == _NEXT_RUNTIME
 
 
 def test_roadmap_references_artifact() -> None:
