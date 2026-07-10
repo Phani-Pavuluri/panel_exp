@@ -20,7 +20,8 @@ _CANDIDATE_IDENTITY = (
 )
 _VERDICT = "proceed_with_narrowed_augsynth_scope_before_evidence_packet_contract"
 _DECISION = "PROCEED_WITH_NARROWED_AUGSYNTH_SCOPE"
-_LANE_A_NEXT = "AUGSYNTH_JACKKNIFE_PROMOTION_EVIDENCE_PACKET_CONTRACT_001"
+_NEXT_AUDIT = "AUGSYNTH_JACKKNIFE_PROMOTION_EVIDENCE_PACKET_CONTRACT_001"
+_LANE_A_NEXT = "AUGSYNTH_JACKKNIFE_PROMOTION_EVIDENCE_PACKET_RUNTIME_001"
 
 _FORBIDDEN_TRUE_FLAGS = (
     "runtime_implemented",
@@ -166,7 +167,7 @@ def test_unrestricted_augsynth_not_approved() -> None:
 def test_evidence_packet_contract_recommended() -> None:
     data = _load_summary()
     assert data["augsynth_evidence_packet_contract_recommended"] is True
-    assert data["recommended_next_artifact"] == _LANE_A_NEXT
+    assert data["recommended_next_artifact"] == _NEXT_AUDIT
 
 
 def test_required_true_flags_present() -> None:
@@ -183,7 +184,7 @@ def test_forbidden_flags_false() -> None:
 
 def test_recommended_next_artifact() -> None:
     data = _load_summary()
-    assert data["recommended_next_artifact"] == _LANE_A_NEXT
+    assert data["recommended_next_artifact"] == _NEXT_AUDIT
     assert "AUGSYNTH_JACKKNIFE_PROMOTION_EVIDENCE_PACKET_CONTRACT_001" in _AUDIT.read_text(
         encoding="utf-8"
     )

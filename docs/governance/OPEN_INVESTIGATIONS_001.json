@@ -9143,13 +9143,14 @@
         "INV-METHOD-PROMOTION-GENERIC-CONTRACTS-001",
         "INV-METHOD-PROMOTION-GENERIC-RUNTIME-CONTRACT-001",
         "INV-METHOD-PROMOTION-GENERIC-RUNTIME-001",
-        "INV-METHOD-PROMOTION-AUGSYNTH-READINESS-AUDIT-001"
+        "INV-METHOD-PROMOTION-AUGSYNTH-READINESS-AUDIT-001",
+        "INV-AUGSYNTH-JACKKNIFE-PROMOTION-EVIDENCE-PACKET-CONTRACT-001"
       ],
       "deferred_investigations": [],
       "must_consume_before_close": false,
-      "next_artifact": "AUGSYNTH_JACKKNIFE_PROMOTION_EVIDENCE_PACKET_CONTRACT_001",
+      "next_artifact": "AUGSYNTH_JACKKNIFE_PROMOTION_EVIDENCE_PACKET_RUNTIME_001",
       "resumed_after": "GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001",
-      "resolution_artifact": "METHOD_PROMOTION_AUGSYNTH_READINESS_AUDIT_001",
+      "resolution_artifact": "AUGSYNTH_JACKKNIFE_PROMOTION_EVIDENCE_PACKET_CONTRACT_001",
       "artifact_tags": [
         "lane_a_tbrridge_promotion",
         "parked_for_lane_b",
@@ -9436,6 +9437,25 @@
         "method_promotion_framework",
         "augsynth_readiness_audit",
         "docs_only",
+        "no_runtime_or_promotion",
+        "lane_a_active"
+      ]
+    },
+    {
+      "lane_id": "AUGSYNTH-JACKKNIFE-PROMOTION-EVIDENCE-PACKET-CONTRACT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-AUGSYNTH-JACKKNIFE-PROMOTION-EVIDENCE-PACKET-CONTRACT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "AUGSYNTH_JACKKNIFE_PROMOTION_EVIDENCE_PACKET_RUNTIME_001",
+      "resolution_artifact": "AUGSYNTH_JACKKNIFE_PROMOTION_EVIDENCE_PACKET_CONTRACT_001",
+      "artifact_tags": [
+        "augsynth_jackknife_promotion_evidence_packet",
+        "restricted_review",
+        "contract_only",
         "no_runtime_or_promotion",
         "lane_a_active"
       ]
