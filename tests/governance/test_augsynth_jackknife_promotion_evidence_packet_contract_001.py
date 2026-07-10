@@ -19,7 +19,8 @@ _METHOD_SOUNDNESS = _REPO / "docs/METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md"
 _INSTRUMENT = "geo.augsynth.jackknife.single_cell.delta_mu.diagnostic_interval.restricted_review"
 _ALIAS = "geo.augsynth.jackknife.single_cell.delta_mu.research_interval.research_only"
 _VERDICT = "augsynth_jackknife_evidence_packet_contract_defined_no_runtime_no_promotion"
-_LANE_A_NEXT = "AUGSYNTH_JACKKNIFE_PROMOTION_EVIDENCE_PACKET_RUNTIME_001"
+_NEXT_RUNTIME = "AUGSYNTH_JACKKNIFE_PROMOTION_EVIDENCE_PACKET_RUNTIME_001"
+_LANE_A_NEXT = "AUGSYNTH_JACKKNIFE_REVIEW_DECISION_CONTRACT_001"
 
 _CORE_CATEGORIES = (
     "instrument_identity",
@@ -228,7 +229,7 @@ def test_forbidden_flags_false() -> None:
 
 def test_recommended_next_artifact() -> None:
     data = _load_summary()
-    assert data["recommended_next_artifact"] == _LANE_A_NEXT
+    assert data["recommended_next_artifact"] == _NEXT_RUNTIME
     assert "AUGSYNTH_JACKKNIFE_PROMOTION_EVIDENCE_PACKET_RUNTIME_001" in _CONTRACT.read_text(
         encoding="utf-8"
     )
