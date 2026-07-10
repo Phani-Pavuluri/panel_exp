@@ -28,6 +28,7 @@ _VERDICT = (
 _NEXT_RUNTIME = "SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_RUNTIME_001"
 _NEXT_CONTRACT = "SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_CONTRACT_001"
 _NEXT_CHECKPOINT = "METHOD_PROMOTION_FRAMEWORK_APPLICATION_CHECKPOINT_001"
+_NEXT_GENERIC = "METHOD_PROMOTION_GENERIC_CONTRACTS_001"
 
 _FORBIDDEN_TRUE_FLAGS = (
     "scm_promoted",
@@ -204,4 +205,4 @@ def test_open_investigations_lane_a_next() -> None:
         for item in registry["roadmap_lane_bindings"]
         if item["lane_id"] == "LANE-A-TBRRIDGE-PROMOTION"
     )
-    assert lane_a["next_artifact"] == _NEXT_CHECKPOINT
+    assert lane_a["next_artifact"] == _NEXT_GENERIC

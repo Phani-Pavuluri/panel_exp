@@ -5387,6 +5387,55 @@
       "resolution_artifact": "SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_RUNTIME_001"
     },
     {
+      "investigation_id": "INV-METHOD-PROMOTION-FRAMEWORK-APPLICATION-CHECKPOINT-001",
+      "title": "Method promotion framework application checkpoint",
+      "status": "RESOLVED",
+      "priority": "P0",
+      "discovered_by": "SCM-JACKKNIFE-NULL-MONITOR-REVIEW-DECISION-RUNTIME-001",
+      "affected_combination": "method_promotion_framework_application_checkpoint",
+      "problem_class": [
+        "method_promotion",
+        "framework_checkpoint",
+        "tbrridge_kfold",
+        "scm_jackknife",
+        "null_monitor"
+      ],
+      "evidence": {
+        "depends_on": [
+          "METHOD_PROMOTION_REVIEW_FRAMEWORK_GENERALIZATION_001",
+          "TBRRIDGE_PROMOTION_REVIEW_DECISION_RUNTIME_001",
+          "SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_RUNTIME_001",
+          "METHOD_PROMOTION_NEXT_INSTRUMENT_SELECTION_AUDIT_001"
+        ],
+        "scope": "framework_application_checkpoint_docs_only_no_runtime_no_promotion",
+        "lane": "Lane A - Method instrument promotion framework checkpoint",
+        "framework_checkpoint_completed": true,
+        "two_applications_reviewed": true,
+        "runtime_implemented": false,
+        "method_promoted": false,
+        "instrument_promoted": false,
+        "catalog_unblocked": false,
+        "recommended_next_artifact": "METHOD_PROMOTION_GENERIC_CONTRACTS_001"
+      },
+      "current_decision": "FRAMEWORK_CHECKPOINT_COMPLETED_TWO_APPLICATIONS_REVIEWED_NO_RUNTIME_NO_PROMOTION",
+      "blocked_roles": [
+        "trust_report",
+        "calibration_signal",
+        "production",
+        "mmm_ingestion",
+        "llm_decisioning",
+        "live_api",
+        "scheduler",
+        "budget_optimization"
+      ],
+      "target_artifact": null,
+      "revisit_trigger": "Upon METHOD_PROMOTION_GENERIC_CONTRACTS_001 completion",
+      "decision_checkpoint": "Assess framework before AugSynth/DID instrument lanes",
+      "blocking_policy": "Checkpoint docs only; no runtime, promotion, or claim authorization",
+      "terminal_decisions": ["RESTRICT", "AUDIT_ONLY", "DEFER"],
+      "resolution_artifact": "METHOD_PROMOTION_FRAMEWORK_APPLICATION_CHECKPOINT_001"
+    },
+    {
       "investigation_id": "INV-GEOX-FINAL-TEST-RESULTS-SPEND-ROI-READINESS-CONTRACT-001",
       "title": "GeoX final test results spend and ROI readiness contract",
       "status": "RESOLVED",
@@ -8988,13 +9037,14 @@
         "INV-SCM-JACKKNIFE-NULL-MONITOR-PROMOTION-EVIDENCE-PACKET-CONTRACT-001",
         "INV-SCM-JACKKNIFE-NULL-MONITOR-PROMOTION-EVIDENCE-PACKET-RUNTIME-001",
         "INV-SCM-JACKKNIFE-NULL-MONITOR-REVIEW-DECISION-CONTRACT-001",
-        "INV-SCM-JACKKNIFE-NULL-MONITOR-REVIEW-DECISION-RUNTIME-001"
+        "INV-SCM-JACKKNIFE-NULL-MONITOR-REVIEW-DECISION-RUNTIME-001",
+        "INV-METHOD-PROMOTION-FRAMEWORK-APPLICATION-CHECKPOINT-001"
       ],
       "deferred_investigations": [],
       "must_consume_before_close": false,
-      "next_artifact": "METHOD_PROMOTION_FRAMEWORK_APPLICATION_CHECKPOINT_001",
+      "next_artifact": "METHOD_PROMOTION_GENERIC_CONTRACTS_001",
       "resumed_after": "GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_CONTRACT_001",
-      "resolution_artifact": "SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_RUNTIME_001",
+      "resolution_artifact": "METHOD_PROMOTION_FRAMEWORK_APPLICATION_CHECKPOINT_001",
       "artifact_tags": [
         "lane_a_tbrridge_promotion",
         "parked_for_lane_b",
@@ -9187,6 +9237,25 @@
         "review_decision_runtime",
         "runtime_implemented",
         "no_promotion_or_claim_authorization",
+        "lane_a_active"
+      ]
+    },
+    {
+      "lane_id": "METHOD-PROMOTION-FRAMEWORK-APPLICATION-CHECKPOINT-001",
+      "status": "complete",
+      "open_investigations": [],
+      "resolved_investigations": [
+        "INV-METHOD-PROMOTION-FRAMEWORK-APPLICATION-CHECKPOINT-001"
+      ],
+      "deferred_investigations": [],
+      "must_consume_before_close": true,
+      "next_artifact": "METHOD_PROMOTION_GENERIC_CONTRACTS_001",
+      "resolution_artifact": "METHOD_PROMOTION_FRAMEWORK_APPLICATION_CHECKPOINT_001",
+      "artifact_tags": [
+        "method_promotion_framework",
+        "framework_checkpoint",
+        "docs_only",
+        "no_runtime_or_promotion",
         "lane_a_active"
       ]
     },
