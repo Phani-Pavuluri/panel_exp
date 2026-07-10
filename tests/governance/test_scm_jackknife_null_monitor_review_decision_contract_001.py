@@ -19,9 +19,10 @@ _METHOD_SOUNDNESS = _REPO / "docs/METHOD_SOUNDNESS_AND_GAP_ROADMAP_001.md"
 _INSTRUMENT = "geo.scm.jackknife.single_cell.delta_mu.null_monitor"
 _CATALOG_ALIAS = "geo.scm.jackknife.null_monitor.delta_mu.delete_one_diagnostic.restricted_review"
 _VERDICT = "scm_jackknife_null_monitor_review_decision_contract_defined_no_runtime_no_promotion"
-_NEXT_RUNTIME = "SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_RUNTIME_001"
+_NEXT_DECISION_RUNTIME = "SCM_JACKKNIFE_NULL_MONITOR_REVIEW_DECISION_RUNTIME_001"
 _NEXT_CHECKPOINT = "METHOD_PROMOTION_FRAMEWORK_APPLICATION_CHECKPOINT_001"
 _NEXT_GENERIC = "METHOD_PROMOTION_GENERIC_CONTRACTS_001"
+_LANE_A_NEXT = "METHOD_PROMOTION_GENERIC_RUNTIME_CONTRACT_001"
 
 _FORBIDDEN_TRUE_FLAGS = (
     "runtime_implemented",
@@ -203,13 +204,13 @@ def test_lane_b_mip_relationship_defined() -> None:
 
 def test_future_runtime_defined() -> None:
     text = _CONTRACT.read_text(encoding="utf-8")
-    assert _NEXT_RUNTIME in text
+    assert _NEXT_DECISION_RUNTIME in text
     assert _load_summary()["future_runtime_defined"] is True
 
 
 def test_recommended_next_artifact() -> None:
     data = _load_summary()
-    assert data["recommended_next_artifact"] == _NEXT_RUNTIME
+    assert data["recommended_next_artifact"] == _NEXT_DECISION_RUNTIME
 
 
 def test_roadmap_references_artifact() -> None:
@@ -234,4 +235,4 @@ def test_open_investigations_lane_a_next() -> None:
         for item in registry["roadmap_lane_bindings"]
         if item["lane_id"] == "LANE-A-TBRRIDGE-PROMOTION"
     )
-    assert lane_a["next_artifact"] == _NEXT_GENERIC
+    assert lane_a["next_artifact"] == _LANE_A_NEXT

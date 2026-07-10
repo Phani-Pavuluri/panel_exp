@@ -2608,7 +2608,21 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Defines exact claim taxonomy and authorization boundary for `geo.tbrridge.kfold.single_cell.delta_mu.diagnostic_interval.restricted_review`. Allows diagnostic/restricted-review summaries only; blocks CI/p-value/significance, decision, production, lift, ROI, catalog-unblock, and promotion language/surfaces. Requires `claim_authorization_boundary_report` in method-promotion review input. No claim authorization granted.
 
-**Next:** `METHOD_PROMOTION_GENERIC_CONTRACTS_001` (Lane A active) · **optional Lane B:** `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_GENERIC_RUNTIME_CONTRACT_001` (Lane A active) · **optional Lane B:** `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+---
+
+## METHOD-PROMOTION-GENERIC-CONTRACTS-001 (2026-07-09)
+
+**Artifact:** [`docs/track_d/METHOD_PROMOTION_GENERIC_CONTRACTS_001.md`](track_d/METHOD_PROMOTION_GENERIC_CONTRACTS_001.md) · [`docs/track_d/archives/METHOD_PROMOTION_GENERIC_CONTRACTS_001_summary.json`](track_d/archives/METHOD_PROMOTION_GENERIC_CONTRACTS_001_summary.json)
+
+**Lane:** **Lane A — Method / instrument promotion framework generic contracts**
+
+**Status:** **`generic_method_promotion_contracts_defined_no_runtime_no_promotion`**
+
+**Verdict:** Defines generic conceptual contracts for instrument identity, evidence reference, evidence packet, readiness/eligibility status families, review decision, boundary status, allowed/prohibited actions, precedence rules, and evidence quality boundary. Maps TBRRidge and SCM applications to generic abstractions. No runtime, dataclasses, promotion, or claim authorization.
+
+**Next:** `METHOD_PROMOTION_GENERIC_RUNTIME_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
@@ -2622,7 +2636,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Compares TBRRidge restricted-review and SCM null-monitor applications; identifies reusable vs instrument-specific patterns, framework gaps, and AugSynth/DID risks. Recommends pausing new instrument lanes and formalizing generic contracts before scaling. No runtime, promotion, or claim authorization.
 
-**Next:** `METHOD_PROMOTION_GENERIC_CONTRACTS_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_GENERIC_RUNTIME_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
@@ -2638,7 +2652,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Runtime consuming `SCMJackknifeNullMonitorPromotionEvidencePacket` and emitting `SCMJackknifeNullMonitorReviewDecision` via deterministic mapping with precedence. Preserves blockers, missing evidence, warnings, lineage, and catalog alias. Fixed non-authorization statuses; null-monitor continuation only. No evidence quality scoring, promotion, catalog unblock, or claim authorization.
 
-**Next:** `METHOD_PROMOTION_GENERIC_CONTRACTS_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_GENERIC_RUNTIME_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
@@ -2654,7 +2668,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Defines null-monitor review decision contract: input/output objects, decision statuses, deterministic mapping with precedence, allowed/prohibited next actions, fixed non-authorization statuses. Only positive decision is `APPROVE_NULL_MONITOR_REVIEW_CONTINUATION`. No runtime, promotion, or claim authorization.
 
-**Next:** `METHOD_PROMOTION_GENERIC_CONTRACTS_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_GENERIC_RUNTIME_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
@@ -2670,7 +2684,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Deterministic runtime assembles `SCMJackknifeNullMonitorPromotionEvidencePacket` from explicit refs; enforces canonical identity; reconciles catalog alias; validates SCM null-monitor evidence categories; emits readiness/eligibility. No promotion, claims, catalog unblock, or evidence quality scoring.
 
-**Next:** `METHOD_PROMOTION_GENERIC_CONTRACTS_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_GENERIC_RUNTIME_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
@@ -2686,7 +2700,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** First non-TBRRidge application of generalized promotion framework. Defines `SCMJackknifeNullMonitorPromotionEvidencePacket`, null-monitor scope, SCM-specific evidence categories (jackknife stability, donor pool, pre-period fit), readiness/eligibility statuses, and non-authorization boundaries. No runtime, SCM promotion, catalog unblock, or claim authorization.
 
-**Next:** `METHOD_PROMOTION_GENERIC_CONTRACTS_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_GENERIC_RUNTIME_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
@@ -2700,7 +2714,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Ranks five candidate instruments using explicit selection criteria. Primary: `geo.scm.jackknife.single_cell.delta_mu.null_monitor` (score 32/40). Secondary: AugSynth JK. Deferred: TBRRidge BRB/placebo, DID bootstrap. Next: SCM null-monitor evidence packet contract. No runtime, promotion, or claim authorization.
 
-**Next:** `METHOD_PROMOTION_GENERIC_CONTRACTS_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_GENERIC_RUNTIME_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
@@ -2716,7 +2730,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Extracts reusable promotion review pattern from TBRRidge pilot: instrument identity schema, evidence category registry, packet readiness semantics, review decision semantics, claim/catalog/production boundaries, reusable vs instrument-specific split, and future generic runtime plan. No runtime, promotion, catalog unblock, or claim authorization.
 
-**Next:** `METHOD_PROMOTION_GENERIC_CONTRACTS_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_GENERIC_RUNTIME_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
@@ -2732,7 +2746,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Runtime consuming `TBRRidgePromotionEvidencePacket` and emitting `TBRRidgePromotionReviewDecision` via deterministic mapping rules. Preserves blockers, missing evidence, warnings, and lineage. Fixed non-authorization statuses for claims, catalog, production compatibility, and promotion. No evidence quality scoring, promotion, catalog unblock, or claim authorization.
 
-**Next:** `METHOD_PROMOTION_GENERIC_CONTRACTS_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_GENERIC_RUNTIME_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
@@ -2748,7 +2762,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Contract defining `TBRRidgePromotionReviewDecisionInput`, `TBRRidgePromotionReviewDecision`, decision statuses, mapping rules from packet readiness/eligibility, allowed/prohibited next actions, and relationships to claim authorization, catalog governance, production compatibility, and Lane B. No runtime, promotion, catalog unblock, or claim authorization.
 
-**Next:** `METHOD_PROMOTION_GENERIC_CONTRACTS_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_GENERIC_RUNTIME_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
@@ -2764,7 +2778,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Runtime assembling `TBRRidgePromotionEvidencePacket` from explicit evidence references. Validates exact instrument identity, required evidence categories, claim boundary, and restricted-review surface constraints. Emits missing-evidence blockers and promotion review eligibility. No evidence fabrication, promotion, catalog unblock, or claim authorization.
 
-**Next:** `METHOD_PROMOTION_GENERIC_CONTRACTS_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_GENERIC_RUNTIME_CONTRACT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
