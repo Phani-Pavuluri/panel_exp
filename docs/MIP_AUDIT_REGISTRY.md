@@ -2608,7 +2608,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Defines exact claim taxonomy and authorization boundary for `geo.tbrridge.kfold.single_cell.delta_mu.diagnostic_interval.restricted_review`. Allows diagnostic/restricted-review summaries only; blocks CI/p-value/significance, decision, production, lift, ROI, catalog-unblock, and promotion language/surfaces. Requires `claim_authorization_boundary_report` in method-promotion review input. No claim authorization granted.
 
-**Next:** `METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_001` (Lane A active) · **optional Lane B:** `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_APPLICATION_CHECKPOINT_001` (Lane A active) · **optional Lane B:** `GEOX_EFFICIENCY_METRIC_READINESS_MAPPER_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ---
 
@@ -2638,7 +2638,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Deterministic runtime assembles AugSynth Jackknife restricted-review promotion evidence packets from explicit refs; enforces canonical identity; blocks alias/research-only substitution and SCM/TBRRidge/Lane B evidence substitution; validates required categories; emits readiness/eligibility. No promotion, claims, catalog unblock, or evidence quality scoring.
 
-**Next:** `METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_APPLICATION_CHECKPOINT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ----
 
@@ -2654,7 +2654,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Defines restricted-review review decision contract for AugSynth Jackknife. Only positive decision `APPROVE_RESTRICTED_REVIEW_CONTINUATION`; blocks alias/research-only substitution; deterministic mapping from packet readiness/eligibility; fixed non-authorization boundaries. No runtime, generic adapter profile, promotion, or claim authorization.
 
-**Next:** `METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_APPLICATION_CHECKPOINT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ----
 
@@ -2670,7 +2670,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Deterministic runtime consumes `AugSynthJackknifePromotionEvidencePacket` and emits `AugSynthJackknifeReviewDecision` with contract precedence; blocks alias/research-only substitution; preserves evidence quality boundary. No promotion, generic adapter registration, or claim authorization.
 
-**Next:** `METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_APPLICATION_CHECKPOINT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ----
 
@@ -2686,7 +2686,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Readiness audit confirms AugSynth packet + decision runtimes are ready for generic adapter profile registration as `augsynth_jackknife_restricted_review_v1`. Status mappings defined; source-of-truth and summarizer-only boundaries preserved. No generic runtime change, no profile registration, no promotion or claim authorization in this audit.
 
-**Next:** `METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_APPLICATION_CHECKPOINT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ----
 
@@ -2704,7 +2704,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Registers AugSynth as third supported generic adapter profile in `METHOD_PROMOTION_GENERIC_RUNTIME_001`. Packet/eligibility/decision status mappings implemented; alias/research-only substitution blocked; source-of-truth remains AugSynth packet and decision runtimes. No packet/decision runtime changes, no promotion, claim authorization, catalog unblock, production compatibility, MIP decisioning, or TrustReport bypass.
 
-**Next:** `METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_APPLICATION_CHECKPOINT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ----
 
@@ -2720,7 +2720,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Checkpoint reviews all three generic adapter profile applications. Framework health `STABLE_FOR_CURRENT_THREE_PROFILES_WITH_BOUNDARY_GUARDS`. Source-of-truth, summarizer-only, boundary, and prohibited-action guards preserved. Decision: pause new profile registration; assess MIP handoff next. No runtime change, no new profile, no promotion or claim authorization.
 
-**Next:** `METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_APPLICATION_CHECKPOINT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ----
 
@@ -2736,7 +2736,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Readiness audit confirms generic adapter summaries are stable enough for a typed MIP handoff contract. Governance summaries are non-authorizing governance context only; `APPROVE_REVIEW_CONTINUATION` must not be interpreted as DecisionSurface approval, TrustReport bypass, production readiness, or business recommendation. Ready for contract; not ready for MIP runtime integration.
 
-**Next:** `METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_APPLICATION_CHECKPOINT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ----
 
@@ -2752,7 +2752,23 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Defines typed `MethodPromotionGenericAdapterMIPHandoff` contract for MIP consumption of generic method-promotion governance summaries. Fixed MIP non-authorization statuses, allowed/prohibited uses, validity conditions, and routing implications documented. Governance context only; no MIP runtime, DecisionSurface, TrustReport bypass, RecommendationContract, promotion, claim, catalog, or production authorization.
 
-**Next:** `METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_APPLICATION_CHECKPOINT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+
+----
+
+## METHOD-PROMOTION-GENERIC-ADAPTER-MIP-HANDOFF-RUNTIME-001 (2026-07-10)
+
+**Artifact:** [`docs/track_d/METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_001.md`](track_d/METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_001.md) · [`docs/track_d/archives/METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_001_summary.json`](track_d/archives/METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_001_summary.json)
+
+**Lane:** **Lane A — Method / instrument promotion framework application**
+
+**Profiles:** `tbrridge_restricted_review_v1` · `scm_jackknife_null_monitor_v1` · `augsynth_jackknife_restricted_review_v1`
+
+**Status:** **`package_side_mip_handoff_runtime_implemented_no_mip_runtime_no_decision_authorization`**
+
+**Verdict:** Implements package-side builder/serializer for `MethodPromotionGenericAdapterMIPHandoff` from generic method-promotion governance summaries. Fixed MIP non-authorization statuses and allowed/prohibited uses enforced. Governance context only; no MIP runtime integration, DecisionSurface, TrustReport bypass, RecommendationContract, promotion, claim, catalog, or production authorization.
+
+**Next:** `METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_APPLICATION_CHECKPOINT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ----
 
@@ -2780,7 +2796,7 @@ Lane binding `DCM-005-ELIGIBILITY-REASSESSMENT` → complete. See **DCM-005-TRUS
 
 **Verdict:** Implements thin generic adapter runtime summarizing TBRRidge restricted-review, SCM Jackknife null-monitor, and AugSynth Jackknife restricted-review packet/decision outputs into generic method-promotion summaries (three supported profiles). Instrument-specific runtimes remain source of truth. Status mapping, boundary preservation, prohibited-action non-weakening, and alias-substitution blocking enforced. No promotion, claim authorization, catalog unblock, or raw evidence scoring.
 
-**Next:** `METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
+**Next:** `METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_APPLICATION_CHECKPOINT_001` · **deferred:** `PRODUCTION_COMPATIBILITY_PROMOTION_REVIEW_RUNTIME_001`.
 
 ----
 
