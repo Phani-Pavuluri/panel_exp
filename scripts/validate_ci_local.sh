@@ -20,11 +20,22 @@ docker_is_available() {
 run_docker() {
   docker build --tag "${image}" --file "${repo_root}/.devcontainer/Dockerfile" "${repo_root}"
   docker run --rm \
-    --volume "${repo_root}:/workspace/panel_exp" \
-    --tmpfs /workspace/panel_exp/.venv \
+    --volume "${repo_root}:/workspace/panel_exp-source:ro" \
     --workdir /workspace/panel_exp \
     "${image}" \
-    bash -lc "python -m pip install --disable-pip-version-check 'poetry==1.8.5' && poetry config virtualenvs.create false && poetry install --with dev --no-interaction && poetry run pytest tests/ -q"
+    bash -lc '
+      set -euo pipefail
+      tar --exclude=.git --exclude=.venv -C /workspace/panel_exp-source -cf - . | tar -C /workspace/panel_exp -xf -
+      export POETRY_VIRTUALENVS_IN_PROJECT=false
+      export POETRY_CACHE_DIR=/tmp/pypoetry-cache
+      export POETRY_VIRTUALENVS_PATH=/tmp/pypoetry-venvs
+      echo "[validate-docker] Using isolated Poetry virtualenv outside mounted repo"
+      echo "[validate-docker] POETRY_VIRTUALENVS_IN_PROJECT=${POETRY_VIRTUALENVS_IN_PROJECT}"
+      echo "[validate-docker] POETRY_VIRTUALENVS_PATH=${POETRY_VIRTUALENVS_PATH}"
+      python -m pip install --disable-pip-version-check "poetry==1.8.5"
+      poetry install --with dev --no-interaction
+      poetry run python -m pytest tests/ -q
+    '
 }
 
 case "${mode}" in

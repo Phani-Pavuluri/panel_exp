@@ -19,6 +19,16 @@ Python interpreter (whose environment must already contain the development
 dependencies). Use `make validate-docker` when Docker must be required rather than
 falling back.
 
+Docker validation intentionally does not use the host `.venv`. The repository is
+mounted read-only as a source and copied into container-local workspace without
+`.venv`; Poetry then creates an isolated Linux environment under
+`/tmp/pypoetry-venvs`. This prevents a macOS-specific host environment from being
+mounted, executed, or recreated as the Docker test environment.
+
+If an older validation setup fails while executing `.venv/bin/pytest`, removing
+the stale host `.venv` manually is a local recovery option. The current Docker
+workflow does not require that cleanup and does not modify the host `.venv`.
+
 ## Validation payload and CI parity
 
 The shared validation payload is:
