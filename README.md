@@ -158,6 +158,7 @@ write_run_artifact_bundle_json(bundle, "artifacts/run_bundle.json")
 ## Documentation
 
 - **Hosted docs:** Pre-built HTML under `gh-pages/` (open `gh-pages/index.html` locally).
+- **Development validation:** `docs/dev_validation_workflow.md` documents the standard container-first `make validate` workflow.
 - **User guide source:** `gh-pages/_sources/user_guide.md.txt` (starts with **Current Package Status** / code truth).
 - **Uncertainty notes:** `panel_exp/inference/uncertainty.md`
 - **Validation matrix:** `docs/VALIDATION_COVERAGE.md`
@@ -173,8 +174,7 @@ write_run_artifact_bundle_json(bundle, "artifacts/run_bundle.json")
 ```bash
 git clone <repository-url>
 cd panel_exp
-poetry install
-poetry run pytest
+make validate
 ```
 
 ---
@@ -253,8 +253,11 @@ See **Current package status** above for the geo-supported allowlist vs register
 ## Tests
 
 ```bash
-poetry run pytest
+make validate
 ```
+
+This container-first command and its host fallback are documented in
+`docs/dev_validation_workflow.md`.
 
 ---
 
