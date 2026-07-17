@@ -1,0 +1,118 @@
+{
+  "artifact_id": "GEOX_MIP_PRODUCTION_ALIGNMENT_READINESS_AUDIT_001",
+  "artifact_version": "1.0.0",
+  "artifact_type": "geox_mip_production_alignment_readiness_audit",
+  "status": "completed",
+  "audit_commit": "7e1519e00eb5a1045624afd180dfb206ece9d31e",
+  "audit_branch": "audit/geox-mip-production-alignment-001",
+  "audit_worktree": "/Users/phani/Desktop/panel_exp_geox_mip_audit_001",
+  "primary_worktree_preserved": true,
+  "primary_worktree": "/Users/phani/Desktop/panel_exp",
+  "verdict": "GEOX_MIP_ALIGNMENT_BLOCKED_BY_MULTIPLE_GAPS",
+  "latest_completed_roadmap_milestone": "METHOD_PROMOTION_GENERIC_ADAPTER_MIP_HANDOFF_RUNTIME_APPLICATION_CHECKPOINT_001",
+  "active_open_investigation": "No IN_PROGRESS investigation; unresolved planned/deferred work remains for P0 governed runtime hardening, multicell dependence/multiplicity, multi-treated placebo, Bayesian TBR replay, TBRRidge remediation, and TROP scouting.",
+  "method_status": {
+    "SCM": "production_candidate_gated",
+    "AugSynth_CVXPY": "remediation_required",
+    "DID": "conditional_candidate",
+    "Synthetic_DID": "research_only",
+    "TBRRidge": "diagnostic_only",
+    "Classic_or_Aggregate_TBR": "retire_replace_blocked",
+    "Bayesian_TBR": "research_only",
+    "TROP": "research_only",
+    "multicell_shared_control": "blocked"
+  },
+  "selection_gate": {
+    "state": "requirements_and_metadata_planning_only",
+    "runtime_router_implemented": false,
+    "runtime_router_tested": false,
+    "runtime_router_authorized": false,
+    "blocked_reason_codes_defined": true,
+    "next_best_alternatives_defined": true
+  },
+  "release_gate": {
+    "state": "plan_only",
+    "runtime_authorization_engine": false,
+    "production_authorization": false,
+    "assignment_authorized": false,
+    "readout_authorized": false
+  },
+  "workflow_readiness": {
+    "data_intake": "restricted",
+    "panel_validation": "restricted",
+    "kpi_estimand": "restricted",
+    "pre_period_diagnostics": "restricted",
+    "matchability": "restricted",
+    "power_mde": "diagnostic_only",
+    "design_feasibility": "restricted",
+    "assignment": "restricted",
+    "estimator_eligibility": "restricted",
+    "inference_eligibility": "restricted",
+    "multicell_shared_control": "blocked",
+    "monitoring": "not_implemented",
+    "post_test_readout": "restricted",
+    "evidence_export": "restricted",
+    "failure_recovery": "restricted"
+  },
+  "authorization": {
+    "production_design_feasibility_authorized": false,
+    "production_power_mde_authorized": false,
+    "production_assignment_authorized": false,
+    "production_selection_router_authorized": false,
+    "scm_production_inference_authorized": false,
+    "augsynth_production_inference_authorized": false,
+    "did_production_inference_authorized": false,
+    "synthetic_did_production_inference_authorized": false,
+    "tbrridge_production_inference_authorized": false,
+    "multicell_production_claim_authorized": false,
+    "production_readout_authorized": false,
+    "experiment_evidence_export_authorized": false,
+    "calibration_signal_export_authorized": false,
+    "post_test_spend_export_authorized": false,
+    "mip_runtime_handoff_authorized": false,
+    "scheduled_execution_authorized": false
+  },
+  "available_runtime_entrypoints": [
+    "profile_geo_kpi_spend_data",
+    "evaluate_power_mde_diagnostics",
+    "run_governed_randomization",
+    "build_post_test_spend_evidence",
+    "build_trusted_readout_spend_handoff",
+    "DID point-estimate executor",
+    "typed assignment, execution, readout, and failure packet builders"
+  ],
+  "mip_handoff": {
+    "fixture_or_materialized_upload_post_test_spend_runtime": true,
+    "general_geox_adapter": "placeholder",
+    "full_design_to_readout_lifecycle": false,
+    "experiment_evidence_export": false,
+    "calibration_signal_export": false,
+    "semantic_contract_gap": true
+  },
+  "ownership": {
+    "geox_owned": ["deterministic feasibility", "assignment candidates", "estimator/inference eligibility", "typed evidence and failure packets"],
+    "mip_owned": ["conversation", "workflow orchestration", "artifact resolution", "registry", "TrustReport assembly", "explanation", "product UI"],
+    "cross_repository": ["versioned artifact envelope", "GeoX-to-MIP schema mapping", "authorization and release-state propagation", "non-production integration dry run"],
+    "platform_production": ["persistence", "jobs", "idempotency", "retries", "observability", "audit logs", "credentials", "tenant isolation", "retention", "rollback"],
+    "unresolved": ["durable artifact/run ownership", "production data boundary", "release decision authority implementation"]
+  },
+  "recommended_next_artifacts": {
+    "geox": "AUDIT_P0_GOVERNED_RUNTIME_HARDENING_001",
+    "mip": "MIP_METHOD_PROMOTION_HANDOFF_CONSUMER_CONTRACT_001",
+    "cross_repository": "GEOX_MIP_GOVERNED_EXPERIMENT_ARTIFACT_ENVELOPE_AND_COMPATIBILITY_001"
+  },
+  "validation": {
+    "git_diff_check": "not_run_to_completion: Docker preflight unavailable; docs changes pass local diff check when staged",
+    "json_tool": "pending final validation",
+    "docker_version": "pass client; server unavailable",
+    "docker_info": "failed: permission denied Docker socket",
+    "docker_ps": "failed: permission denied Docker socket",
+    "primary_worktree_modified_archive_files": 25
+  },
+  "production_readiness": {
+    "sample_demo": "fixture_only",
+    "real_team_pilot": false,
+    "production_experiment_design": false,
+    "causal_engine_control_plane_boundary_supported": true
+  }
+}

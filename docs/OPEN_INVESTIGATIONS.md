@@ -1,5 +1,16 @@
 # Open investigations
 
+## 2026-07-17 GeoX–MIP alignment checkpoint
+
+`GEOX_MIP_PRODUCTION_ALIGNMENT_READINESS_AUDIT_001` audited committed state at
+`7e1519e` from an isolated clean worktree. It did not close or promote any
+investigation. The audit records no `IN_PROGRESS` item, while the authoritative
+JSON ledger retains four `PLANNED` items and three
+`DEFERRED_WITH_TRIGGER` items. These unresolved items continue to block
+production selection, multicell claims, and downstream MIP calibration roles.
+See [`track_d/GEOX_MIP_PRODUCTION_ALIGNMENT_READINESS_AUDIT_001.md`](track_d/GEOX_MIP_PRODUCTION_ALIGNMENT_READINESS_AUDIT_001.md)
+and its machine-readable summary.
+
 **Status:** living backlog for intentionally deferred or unresolved issues  
 **Last updated:** 2026-06-18  
 **Package version:** 0.2.1  

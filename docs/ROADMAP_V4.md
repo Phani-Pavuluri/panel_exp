@@ -1362,3 +1362,13 @@ Suggested audit triggers also listed in [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIG
 ---
 
 *Roadmap v4 active for Phases 11–15. Priorities frozen via [`OPEN_INVESTIGATIONS.md`](OPEN_INVESTIGATIONS.md). Supersedes v3 for forward execution order only; v3 remains historical record for Phases 5–8.*
+
+## GeoX–MIP alignment audit checkpoint (2026-07-17)
+
+The clean-branch alignment audit at `7e1519e` concluded
+`GEOX_MIP_ALIGNMENT_BLOCKED_BY_MULTIPLE_GAPS`. GeoX remains a bounded
+experimentation-engine foundation: SCM is candidate-gated, DID is conditional,
+and no method or downstream readout is production-authorized. The next roadmap
+artifact is `AUDIT_P0_GOVERNED_RUNTIME_HARDENING_001`; selection-router work,
+production assignment, causal inference, and MIP calibration handoff remain
+behind their evidence and release gates. Package-side agents remain deferred.
