@@ -39,6 +39,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 | **AUDIT-011** | — | Before LLM interface | TBD | — | Blocked on [`METHOD_FOUNDATION_HARDENING_001.md`](METHOD_FOUNDATION_HARDENING_001.md) §6 exit | — | **planned** (LLM paused) |
 | **GEOX-MIP-001** | 2026-07-17 | GeoX–MIP production alignment | `7e1519e` | `GEOX_MIP_ALIGNMENT_BLOCKED_BY_MULTIPLE_GAPS` | No authorized selection router, assignment, production inference, governed readout, or MIP-complete evidence export | P0 governed runtime hardening; MIP consumer contract; shared artifact envelope | **completed** |
 | **GEOX-MIP-ENVELOPE-001** | 2026-07-19 | Governed GeoX–MIP artifact envelope compatibility contract | `ce0168f` | `geox_mip_artifact_envelope_compatibility_defined_no_runtime_no_authorization` | Native evidence mapping, durable lifecycle, and CalibrationSignal eligibility remain blocked | `NON_PRODUCTION_GEOX_MIP_ARTIFACT_ENVELOPE_DRY_RUN_PLAN_001` | **completed** |
+| **GEOX-MIP-DRY-RUN-001** | 2026-07-19 | Non-production GeoX–MIP artifact-envelope dry-run plan | `19e4027` | `non_production_geox_mip_artifact_envelope_dry_run_planned_no_runtime_no_authorization` | Fixture cases defined; envelope runtime contract remains next | `GEOX_ARTIFACT_ENVELOPE_RUNTIME_CONTRACT_001` | **completed** |
 
 ---
 

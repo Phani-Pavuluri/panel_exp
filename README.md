@@ -167,6 +167,7 @@ write_run_artifact_bundle_json(bundle, "artifacts/run_bundle.json")
 - **Doc drift audit:** `docs/DOC_DRIFT_AUDIT.md`
 - **GeoX–MIP production alignment audit:** [`docs/track_d/GEOX_MIP_PRODUCTION_ALIGNMENT_READINESS_AUDIT_001.md`](docs/track_d/GEOX_MIP_PRODUCTION_ALIGNMENT_READINESS_AUDIT_001.md) — committed-state audit; multiple production gates remain blocked
 - **GeoX–MIP artifact envelope contract:** [`docs/track_d/GEOX_MIP_GOVERNED_EXPERIMENT_ARTIFACT_ENVELOPE_AND_COMPATIBILITY_001.md`](docs/track_d/GEOX_MIP_GOVERNED_EXPERIMENT_ARTIFACT_ENVELOPE_AND_COMPATIBILITY_001.md) — versioned compatibility boundary; no runtime integration
+- **Non-production GeoX–MIP dry-run plan:** [`docs/track_d/NON_PRODUCTION_GEOX_MIP_ARTIFACT_ENVELOPE_DRY_RUN_PLAN_001.md`](docs/track_d/NON_PRODUCTION_GEOX_MIP_ARTIFACT_ENVELOPE_DRY_RUN_PLAN_001.md) — fixture-only Cases A–F; no production authorization
 - **Examples index:** `examples/README.md` (legacy notebooks flagged)
 
 ---

@@ -1378,3 +1378,9 @@ runtime integration. The next step is the fixture-only
 `NON_PRODUCTION_GEOX_MIP_ARTIFACT_ENVELOPE_DRY_RUN_PLAN_001`; no production
 adapter, selector, assignment, inference, or CalibrationSignal export is
 authorized.
+
+The 2026-07-19 fixture-only dry-run plan defines Cases A–F for diagnostic,
+blocked, failure, spend, CalibrationSignal-candidate, and ExperimentEvidence-
+candidate propagation. The next artifact is
+`GEOX_ARTIFACT_ENVELOPE_RUNTIME_CONTRACT_001`; no runtime integration or
+production authorization is enabled.

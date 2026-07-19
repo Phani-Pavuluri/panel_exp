@@ -19,6 +19,13 @@ native GeoX artifacts to MIP needs. It is contract-only: the recommended next
 artifact is a fixture-only dry-run plan, and no evidence or calibration export
 is authorized.
 
+## Non-production envelope dry-run plan checkpoint (2026-07-19)
+
+`NON_PRODUCTION_GEOX_MIP_ARTIFACT_ENVELOPE_DRY_RUN_PLAN_001` defines fixture-only
+Cases A–F and their expected MIP consumption/blocking statuses. It does not
+implement runtime behavior; the next artifact is the package-side
+`GEOX_ARTIFACT_ENVELOPE_RUNTIME_CONTRACT_001`.
+
 **Status:** living backlog for intentionally deferred or unresolved issues  
 **Last updated:** 2026-06-18  
 **Package version:** 0.2.1  
