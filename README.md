@@ -166,6 +166,7 @@ write_run_artifact_bundle_json(bundle, "artifacts/run_bundle.json")
 - **Future package-side agents (deferred):** `docs/FUTURE_EXPERIMENT_PACKAGE_SIDE_AGENT_ROADMAP_001.md` — roadmap capture only; no agent implementation
 - **Doc drift audit:** `docs/DOC_DRIFT_AUDIT.md`
 - **GeoX–MIP production alignment audit:** [`docs/track_d/GEOX_MIP_PRODUCTION_ALIGNMENT_READINESS_AUDIT_001.md`](docs/track_d/GEOX_MIP_PRODUCTION_ALIGNMENT_READINESS_AUDIT_001.md) — committed-state audit; multiple production gates remain blocked
+- **P0 runtime state reconciliation:** [`docs/track_d/AUDIT_P0_GOVERNED_RUNTIME_HARDENING_STATE_RECONCILIATION_001.md`](docs/track_d/AUDIT_P0_GOVERNED_RUNTIME_HARDENING_STATE_RECONCILIATION_001.md) — P0 lane reconciled; no production authorization
 - **Examples index:** `examples/README.md` (legacy notebooks flagged)
 
 ---

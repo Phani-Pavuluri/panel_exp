@@ -1372,3 +1372,9 @@ and no method or downstream readout is production-authorized. The next roadmap
 artifact is `AUDIT_P0_GOVERNED_RUNTIME_HARDENING_001`; selection-router work,
 production assignment, causal inference, and MIP calibration handoff remain
 behind their evidence and release gates. Package-side agents remain deferred.
+
+The 2026-07-18 state reconciliation confirms the P0 hardening lane is
+substantially implemented and tested without authorization. The next GeoX
+artifact is `GEOX_MIP_GOVERNED_EXPERIMENT_ARTIFACT_ENVELOPE_AND_COMPATIBILITY_001`;
+it must address durable lifecycle and native GeoX/MIP evidence compatibility
+before any production surface is reconsidered.

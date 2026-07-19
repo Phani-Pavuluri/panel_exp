@@ -1,5 +1,14 @@
 # Open investigations
 
+## P0 governed-runtime state reconciliation (2026-07-18)
+
+`AUDIT_P0_GOVERNED_RUNTIME_HARDENING_STATE_RECONCILIATION_001` reconciled the
+existing P0 reports, runtime surfaces, typed packets, and focused tests. It
+does not close the P0 investigation or authorize production use. The next
+artifact is the cross-repository GeoX/MIP governed experiment artifact envelope
+and compatibility work; durable run/artifact operations, evidence mapping,
+multicell calibration, and release authority remain unresolved.
+
 ## 2026-07-17 GeoX–MIP alignment checkpoint
 
 `GEOX_MIP_PRODUCTION_ALIGNMENT_READINESS_AUDIT_001` audited committed state at

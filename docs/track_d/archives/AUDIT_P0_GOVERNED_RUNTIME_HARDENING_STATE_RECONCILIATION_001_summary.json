@@ -1,0 +1,40 @@
+{
+  "artifact_id": "AUDIT_P0_GOVERNED_RUNTIME_HARDENING_STATE_RECONCILIATION_001",
+  "artifact_type": "geox_p0_governed_runtime_hardening_state_reconciliation_audit",
+  "status": "completed",
+  "scope": "docs_tests_only_reconciliation_no_runtime_no_authorization",
+  "audit_commit": "ce0168fa6a77c0cb6adf232e3844813529bbedba",
+  "depends_on": ["GEOX_MIP_PRODUCTION_ALIGNMENT_READINESS_AUDIT_001"],
+  "p0_existing_artifacts_reconciled": true,
+  "runtime_inventory_reconciled": true,
+  "typed_artifact_inventory_reconciled": true,
+  "tests_validation_inventory_reconciled": true,
+  "remaining_gaps_classified": true,
+  "method_readiness_boundary_preserved": true,
+  "diagnostic_vs_authorization_boundary_preserved": true,
+  "mip_dependency_implications_documented": true,
+  "runtime_code_changed": false,
+  "production_inference_authorized": false,
+  "assignment_authorized": false,
+  "causal_readout_authorized": false,
+  "calibration_signal_export_authorized": false,
+  "mip_experiment_evidence_export_authorized": false,
+  "selector_router_runtime_authorized": false,
+  "multicell_production_claim_authorized": false,
+  "agent_work_authorized": false,
+  "decision": "PROCEED_TO_GEOX_MIP_GOVERNED_EXPERIMENT_ARTIFACT_ENVELOPE_AND_COMPATIBILITY",
+  "recommended_next_artifact": "GEOX_MIP_GOVERNED_EXPERIMENT_ARTIFACT_ENVELOPE_AND_COMPATIBILITY_001",
+  "final_verdict": "p0_governed_runtime_hardening_state_reconciled_next_artifact_selected_no_authorization",
+  "reconciliation_status": {
+    "closed": ["production_blocklist_enforcement", "did_instrument_estimand_alignment", "assignment_panel_integrity", "statistical_promotion_threshold_enforcement", "governed_randomization_runtime", "srm_balance_readout_diagnostics", "claim_authorization_contract_runtime", "method_suitability_runtime", "readout_plan_runtime", "readout_diagnostics_sensitivity_runtime", "readout_method_governance", "trusted_readout_report_contract"],
+    "partial": ["design_assignment_runtime", "estimator_inference_execution", "run_manifest_lifecycle", "failure_packet_lifecycle", "release_authorization_state_propagation", "mip_handoff_compatibility", "multicell_shared_control_guardrails"],
+    "open": ["artifact_persistence_boundary", "mip_experiment_evidence_mapping"],
+    "blocked": ["calibration_signal_eligibility_export", "production_selector_router_authorization"]
+  },
+  "validation": {
+    "git_diff_check": "passed",
+    "json_tool": "passed",
+    "focused_pytest": "passed_via_python3: 4 passed",
+    "safety_grep": "passed_no_forbidden_true_flags"
+  }
+}

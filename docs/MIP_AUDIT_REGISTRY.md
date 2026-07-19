@@ -38,6 +38,7 @@ Living index of periodic audits. Each row must link to a filled report (or `docs
 | **AUDIT-010** | 2026-06-03 | MMM readiness / gap (not promotion) | `696045a` | **`not_ready_continue_track_f`** | MMM blocked; CS no expansion; 30-tuple Appendix A | **Track F P2 OC** | **closed** |
 | **AUDIT-011** | — | Before LLM interface | TBD | — | Blocked on [`METHOD_FOUNDATION_HARDENING_001.md`](METHOD_FOUNDATION_HARDENING_001.md) §6 exit | — | **planned** (LLM paused) |
 | **GEOX-MIP-001** | 2026-07-17 | GeoX–MIP production alignment | `7e1519e` | `GEOX_MIP_ALIGNMENT_BLOCKED_BY_MULTIPLE_GAPS` | No authorized selection router, assignment, production inference, governed readout, or MIP-complete evidence export | P0 governed runtime hardening; MIP consumer contract; shared artifact envelope | **completed** |
+| **P0-RECON-001** | 2026-07-18 | P0 governed-runtime state reconciliation | `ce0168f` | `p0_governed_runtime_hardening_state_reconciled_next_artifact_selected_no_authorization` | P0 lane substantially implemented; durable lifecycle, MIP envelope, evidence mapping, and multicell calibration remain open | `GEOX_MIP_GOVERNED_EXPERIMENT_ARTIFACT_ENVELOPE_AND_COMPATIBILITY_001` | **completed** |
 
 ---
 
