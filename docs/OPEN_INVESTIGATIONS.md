@@ -11,6 +11,14 @@ production selection, multicell claims, and downstream MIP calibration roles.
 See [`track_d/GEOX_MIP_PRODUCTION_ALIGNMENT_READINESS_AUDIT_001.md`](track_d/GEOX_MIP_PRODUCTION_ALIGNMENT_READINESS_AUDIT_001.md)
 and its machine-readable summary.
 
+## GeoX–MIP envelope compatibility checkpoint (2026-07-19)
+
+`GEOX_MIP_GOVERNED_EXPERIMENT_ARTIFACT_ENVELOPE_AND_COMPATIBILITY_001` defines
+the versioned request/result/assignment/run/readout/failure envelope and maps
+native GeoX artifacts to MIP needs. It is contract-only: the recommended next
+artifact is a fixture-only dry-run plan, and no evidence or calibration export
+is authorized.
+
 **Status:** living backlog for intentionally deferred or unresolved issues  
 **Last updated:** 2026-06-18  
 **Package version:** 0.2.1  

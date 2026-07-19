@@ -166,6 +166,7 @@ write_run_artifact_bundle_json(bundle, "artifacts/run_bundle.json")
 - **Future package-side agents (deferred):** `docs/FUTURE_EXPERIMENT_PACKAGE_SIDE_AGENT_ROADMAP_001.md` — roadmap capture only; no agent implementation
 - **Doc drift audit:** `docs/DOC_DRIFT_AUDIT.md`
 - **GeoX–MIP production alignment audit:** [`docs/track_d/GEOX_MIP_PRODUCTION_ALIGNMENT_READINESS_AUDIT_001.md`](docs/track_d/GEOX_MIP_PRODUCTION_ALIGNMENT_READINESS_AUDIT_001.md) — committed-state audit; multiple production gates remain blocked
+- **GeoX–MIP artifact envelope contract:** [`docs/track_d/GEOX_MIP_GOVERNED_EXPERIMENT_ARTIFACT_ENVELOPE_AND_COMPATIBILITY_001.md`](docs/track_d/GEOX_MIP_GOVERNED_EXPERIMENT_ARTIFACT_ENVELOPE_AND_COMPATIBILITY_001.md) — versioned compatibility boundary; no runtime integration
 - **Examples index:** `examples/README.md` (legacy notebooks flagged)
 
 ---
