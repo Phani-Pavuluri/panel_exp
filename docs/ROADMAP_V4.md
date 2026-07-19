@@ -1389,3 +1389,7 @@ The 2026-07-19 package-side runtime contract adds immutable envelope types,
 status enums, validation, and deterministic serialization only. The next
 artifact is the fixture-only
 `NON_PRODUCTION_GEOX_MIP_ARTIFACT_ENVELOPE_DRY_RUN_RUNTIME_001`.
+
+The fixture-only runtime is now implemented and validated for Cases A–F. The
+next artifact is `MIP_SIDE_GEOX_ENVELOPE_CONSUMER_CONTRACT_001`; production
+authorization remains disabled.

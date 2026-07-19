@@ -279,4 +279,6 @@ This container-first command and its host fallback are documented in
 
 Under active development. Version in `pyproject.toml` and `panel_exp.__version__` is the source of truth.
 
+GeoX/MIP envelope dry-run runtime is fixture-only; production authorization and MIP integration remain disabled.
+
 **Not installable from notebooks:** `panel_exp.pretest_analysis` is referenced in some example notebooks but is not shipped in the wheel; use `PowerAnalysis` and `GeoExperimentDesign` instead.

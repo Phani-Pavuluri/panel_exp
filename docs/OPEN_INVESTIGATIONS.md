@@ -628,6 +628,9 @@ For **known future work** already characterized (e.g. DEF-001 KFold geometry, DE
 | Trust-score evolution (INV-017) | Deferred architecture / Phase 12 program |
 | Deferred work registry (DEF-xxx) | [`DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md) |
 
+GeoX/MIP envelope dry-run runtime (Cases A–F) is fixture-only and leaves all
+production authorization flags false; consumer-contract work is next.
+
 ---
 
 *Update when investigations close, new calibration runs are archived, or Phase 12–15 / Track C evidence arrives. Do not delete entries without resolution evidence. When a finding is characterized, add or update the matching `DEF-xxx` entry in [`DEFERRED_WORK_REGISTRY.md`](DEFERRED_WORK_REGISTRY.md).*
