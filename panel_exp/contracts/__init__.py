@@ -23,6 +23,7 @@ from .method_suitability_shadow_validation import (
     deserialize_shadow_validation_fixture, serialize_shadow_validation_fixture,
     validate_shadow_validation_fixture,
 )
+from .method_suitability_shadow_validation_harness import *
 
 __all__ = [
     "GeoXMIPArtifactEnvelope",
