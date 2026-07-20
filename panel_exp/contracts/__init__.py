@@ -24,6 +24,7 @@ from .method_suitability_shadow_validation import (
     validate_shadow_validation_fixture,
 )
 from .method_suitability_shadow_validation_harness import *
+from .method_suitability_shadow_validation_policy_adapter import *
 
 __all__ = [
     "GeoXMIPArtifactEnvelope",
