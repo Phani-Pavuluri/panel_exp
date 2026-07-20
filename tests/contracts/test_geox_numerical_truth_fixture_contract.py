@@ -1,0 +1,10 @@
+import importlib.util, sys
+spec=importlib.util.spec_from_file_location('truth','panel_exp/contracts/geox_numerical_truth_fixture.py'); truth=importlib.util.module_from_spec(spec); sys.modules['truth']=truth; spec.loader.exec_module(truth)
+GeoXTruthFixtureClass=truth.GeoXTruthFixtureClass; GeoXNumericalTruthFixture=truth.GeoXNumericalTruthFixture; GeoXTruthTolerance=truth.GeoXTruthTolerance; build_minimum_geox_truth_fixture_catalog=truth.build_minimum_geox_truth_fixture_catalog; validate_geox_numerical_truth_fixture=truth.validate_geox_numerical_truth_fixture; serialize_geox_numerical_truth_fixture=truth.serialize_geox_numerical_truth_fixture; deserialize_geox_numerical_truth_fixture=truth.deserialize_geox_numerical_truth_fixture
+def test_catalog_and_round_trip():
+    fs=build_minimum_geox_truth_fixture_catalog(); assert len(fs)==12; assert {f.fixture_class for f in fs}=={x.value for x in GeoXTruthFixtureClass}
+    for f in fs: assert not validate_geox_numerical_truth_fixture(f); assert deserialize_geox_numerical_truth_fixture(serialize_geox_numerical_truth_fixture(f))==f
+def test_validation_errors():
+    f=build_minimum_geox_truth_fixture_catalog()[0]
+    bad=GeoXNumericalTruthFixture('',f.fixture_version,f.dataset_version,f.truth_version,'bad','bad',f.design_type,f.method_family,f.instrument_id,f.assignment_seed,f.panel_grain,f.geo_scope,f.time_window,f.kpi,f.estimand,f.treatment_units,f.control_units,f.known_lift_absolute,f.known_lift_relative,f.known_incremental_outcome,f.expected_point_estimate,f.expected_standard_error,(1,0),f.expected_uncertainty_semantics,f.expected_feasibility_status,f.expected_design_status,f.expected_assignment_status,f.expected_readout_status,f.expected_blocked_reasons,f.expected_warnings,f.calibration_compatibility,f.mip_handoff_expectation,GeoXTruthTolerance(-1),f.provenance)
+    e=validate_geox_numerical_truth_fixture(bad); assert {'missing_fixture_id','invalid_fixture_class','invalid_certification_status','invalid_confidence_interval','invalid_tolerance'}.issubset(e)
