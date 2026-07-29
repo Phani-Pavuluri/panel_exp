@@ -1,0 +1,76 @@
+{
+  "absolute_lift": null,
+  "artifact_version": "1.0",
+  "authorization_flags": {
+    "assignment": false,
+    "budget_optimization": false,
+    "calibration_signal_export": false,
+    "causal_readout": false,
+    "decision_surface": false,
+    "experiment_evidence_export": false,
+    "llm_decisioning": false,
+    "production_inference": false,
+    "recommendation_contract": false,
+    "trust_report": false
+  },
+  "blocked_reasons": [
+    "fixture_blocked"
+  ],
+  "channel": "channel",
+  "confidence_interval": null,
+  "dataset_version": "dataset-1",
+  "design_type": "geo_experiment",
+  "effect_estimate": null,
+  "effect_scale": "absolute",
+  "estimand": "ATT",
+  "experiment_id": "geox_truth_safe_blocked_readout_001",
+  "failure_reasons": [
+    "fixture_blocked"
+  ],
+  "feasibility_status": "blocked",
+  "fixture_id": "geox_truth_safe_blocked_readout_001",
+  "freshness_status": "fresh",
+  "geo_grain": "geo_time",
+  "geography_scope": "fixture_geos",
+  "handoff_eligibility_status": "blocked_for_handoff",
+  "incremental_outcome": null,
+  "instrument_id": "SCM_UNIT_JACKKNIFE",
+  "interval_semantics": "blocked",
+  "kpi": "revenue",
+  "kpi_units": "currency",
+  "lineage": {
+    "dataset_version": "dataset-1",
+    "fixture_id": "geox_truth_safe_blocked_readout_001",
+    "truth_version": "truth-1",
+    "upstream_artifacts": []
+  },
+  "method_family": "SCM",
+  "method_status": "SCM",
+  "post_period": "post",
+  "pre_period": "pre",
+  "producer_commit": "fe2e97f",
+  "producer_package_version": "1.0",
+  "provenance": {
+    "created_by": "fixture_generator",
+    "producer_package_version": "1.0.0",
+    "source_commit": "fe2e97f",
+    "source_repo": "panel_exp"
+  },
+  "readout_id": "readout-geox_truth_safe_blocked_readout_001",
+  "readout_status": "blocked",
+  "readout_version": "1.0",
+  "relative_lift": null,
+  "replay_metadata": {
+    "assignment_seed": 1,
+    "deterministic": true,
+    "replay_version": "1.0.0"
+  },
+  "standard_error": null,
+  "tactic": "tactic",
+  "time_window": "pre-post",
+  "truth_version": "truth-1",
+  "uncertainty_available": false,
+  "warnings": [
+    "shadow_validation_only"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "artifact_family": "GeoXGovernedExperimentReadout",
+  "case_count": 12,
+  "cases": [
+    {
+      "case_id": "geox_truth_bayesian_tbr_research_only_001",
+      "governed_readout": "geox_truth_bayesian_tbr_research_only_001/governed_readout.json",
+      "replay": "geox_truth_bayesian_tbr_research_only_001/replay.json",
+      "source_truth": "geox_truth_bayesian_tbr_research_only_001/source_truth.json"
+    },
+    {
+      "case_id": "geox_truth_calibration_incompatible_001",
+      "governed_readout": "geox_truth_calibration_incompatible_001/governed_readout.json",
+      "replay": "geox_truth_calibration_incompatible_001/replay.json",
+      "source_truth": "geox_truth_calibration_incompatible_001/source_truth.json"
+    },
+    {
+      "case_id": "geox_truth_conflicting_evidence_001",
+      "governed_readout": "geox_truth_conflicting_evidence_001/governed_readout.json",
+      "replay": "geox_truth_conflicting_evidence_001/replay.json",
+      "source_truth": "geox_truth_conflicting_evidence_001/source_truth.json"
+    },
+    {
+      "case_id": "geox_truth_did_candidate_warning_001",
+      "governed_readout": "geox_truth_did_candidate_warning_001/governed_readout.json",
+      "replay": "geox_truth_did_candidate_warning_001/replay.json",
+      "source_truth": "geox_truth_did_candidate_warning_001/source_truth.json"
+    },
+    {
+      "case_id": "geox_truth_infeasible_preperiod_001",
+      "governed_readout": "geox_truth_infeasible_preperiod_001/governed_readout.json",
+      "replay": "geox_truth_infeasible_preperiod_001/replay.json",
+      "source_truth": "geox_truth_infeasible_preperiod_001/source_truth.json"
+    },
+    {
+      "case_id": "geox_truth_multicell_shared_control_block_001",
+      "governed_readout": "geox_truth_multicell_shared_control_block_001/governed_readout.json",
+      "replay": "geox_truth_multicell_shared_control_block_001/replay.json",
+      "source_truth": "geox_truth_multicell_shared_control_block_001/source_truth.json"
+    },
+    {
+      "case_id": "geox_truth_safe_blocked_readout_001",
+      "governed_readout": "geox_truth_safe_blocked_readout_001/governed_readout.json",
+      "replay": "geox_truth_safe_blocked_readout_001/replay.json",
+      "source_truth": "geox_truth_safe_blocked_readout_001/source_truth.json"
+    },
+    {
+      "case_id": "geox_truth_scm_candidate_clean_001",
+      "governed_readout": "geox_truth_scm_candidate_clean_001/governed_readout.json",
+      "replay": "geox_truth_scm_candidate_clean_001/replay.json",
+      "source_truth": "geox_truth_scm_candidate_clean_001/source_truth.json"
+    },
+    {
+      "case_id": "geox_truth_stale_incompatible_evidence_001",
+      "governed_readout": "geox_truth_stale_incompatible_evidence_001/governed_readout.json",
+      "replay": "geox_truth_stale_incompatible_evidence_001/replay.json",
+      "source_truth": "geox_truth_stale_incompatible_evidence_001/source_truth.json"
+    },
+    {
+      "case_id": "geox_truth_tbrridge_diagnostic_only_001",
+      "governed_readout": "geox_truth_tbrridge_diagnostic_only_001/governed_readout.json",
+      "replay": "geox_truth_tbrridge_diagnostic_only_001/replay.json",
+      "source_truth": "geox_truth_tbrridge_diagnostic_only_001/source_truth.json"
+    },
+    {
+      "case_id": "geox_truth_unsupported_inference_001",
+      "governed_readout": "geox_truth_unsupported_inference_001/governed_readout.json",
+      "replay": "geox_truth_unsupported_inference_001/replay.json",
+      "source_truth": "geox_truth_unsupported_inference_001/source_truth.json"
+    },
+    {
+      "case_id": "geox_truth_weak_matchability_001",
+      "governed_readout": "geox_truth_weak_matchability_001/governed_readout.json",
+      "replay": "geox_truth_weak_matchability_001/replay.json",
+      "source_truth": "geox_truth_weak_matchability_001/source_truth.json"
+    }
+  ],
+  "mmm_compatibility_emitted": false,
+  "producer_commit": "fe2e97f",
+  "production_authorized": false,
+  "schema_version": "1.0.0"
+}
