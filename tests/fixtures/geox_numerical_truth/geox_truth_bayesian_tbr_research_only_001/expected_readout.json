@@ -1,0 +1,9 @@
+{
+  "blocked_reasons": [],
+  "fixture_id": "geox_truth_bayesian_tbr_research_only_001",
+  "production_authorized": false,
+  "status": "diagnostic",
+  "warnings": [
+    "shadow_validation_only"
+  ]
+}

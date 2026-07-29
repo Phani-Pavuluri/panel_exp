@@ -1,0 +1,62 @@
+{
+  "assignment_seed": 1,
+  "calibration_compatibility": {
+    "reasons": [],
+    "status": "incompatible"
+  },
+  "certification_status": "blocked",
+  "control_units": [
+    "control"
+  ],
+  "dataset_version": "dataset-1",
+  "design_type": "geo_experiment",
+  "estimand": "ATT",
+  "expected_assignment_status": "not_authorized",
+  "expected_blocked_reasons": [
+    "fixture_blocked"
+  ],
+  "expected_confidence_interval": null,
+  "expected_design_status": "blocked",
+  "expected_feasibility_status": "blocked",
+  "expected_point_estimate": null,
+  "expected_readout_status": "blocked",
+  "expected_standard_error": null,
+  "expected_uncertainty_semantics": "blocked",
+  "expected_warnings": [
+    "shadow_validation_only"
+  ],
+  "fixture_class": "calibration_incompatible",
+  "fixture_id": "geox_truth_calibration_incompatible_001",
+  "fixture_version": "1.0.0",
+  "geo_scope": "fixture_geos",
+  "instrument_id": "SCM_UNIT_JACKKNIFE",
+  "known_incremental_outcome": null,
+  "known_lift_absolute": null,
+  "known_lift_relative": null,
+  "kpi": "revenue",
+  "method_family": "SCM",
+  "mip_handoff_expectation": {
+    "artifact_kind": "readout_packet",
+    "status": "blocked"
+  },
+  "panel_grain": "geo_time",
+  "provenance": {
+    "created_by": "fixture_generator",
+    "schema_version": "1.0.0",
+    "source_commit": "929a6ce",
+    "source_repo": "panel_exp"
+  },
+  "time_window": {
+    "post_period": "post",
+    "pre_period": "pre"
+  },
+  "tolerances": {
+    "estimate_abs": 0.01,
+    "interval_abs": 0.02,
+    "standard_error_abs": 0.01
+  },
+  "treatment_units": [
+    "treated"
+  ],
+  "truth_version": "truth-1"
+}

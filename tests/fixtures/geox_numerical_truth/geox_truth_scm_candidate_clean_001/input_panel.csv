@@ -1,0 +1,5 @@
+unit_id,geo,period,is_treatment,is_post,kpi_value
+treated,treated,pre,1,0,100
+control,control,pre,0,0,100
+treated,treated,post,1,1,110
+control,control,post,0,1,100

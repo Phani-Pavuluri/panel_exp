@@ -1,0 +1,11 @@
+{
+  "blocked_reasons": [
+    "fixture_blocked"
+  ],
+  "fixture_id": "geox_truth_stale_incompatible_evidence_001",
+  "production_authorized": false,
+  "status": "blocked",
+  "warnings": [
+    "shadow_validation_only"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "assignment_seed": 1,
+  "case_id": "geox_truth_multicell_shared_control_block_001",
+  "external_dependency": false,
+  "generated_files": [
+    "input_panel.csv",
+    "truth.json",
+    "replay.json"
+  ],
+  "generation_mode": "local_deterministic",
+  "generator_version": "1.0.0",
+  "seed": 1
+}

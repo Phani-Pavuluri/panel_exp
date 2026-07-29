@@ -1,0 +1,127 @@
+{
+  "case_count": 12,
+  "cases": [
+    {
+      "case_id": "geox_truth_scm_candidate_clean_001",
+      "files": [
+        "expected_readout.json",
+        "input_panel.csv",
+        "replay.json",
+        "truth.json"
+      ],
+      "path": "geox_truth_scm_candidate_clean_001"
+    },
+    {
+      "case_id": "geox_truth_did_candidate_warning_001",
+      "files": [
+        "expected_readout.json",
+        "input_panel.csv",
+        "replay.json",
+        "truth.json"
+      ],
+      "path": "geox_truth_did_candidate_warning_001"
+    },
+    {
+      "case_id": "geox_truth_infeasible_preperiod_001",
+      "files": [
+        "expected_packet.json",
+        "input_panel.csv",
+        "replay.json",
+        "truth.json"
+      ],
+      "path": "geox_truth_infeasible_preperiod_001"
+    },
+    {
+      "case_id": "geox_truth_weak_matchability_001",
+      "files": [
+        "expected_packet.json",
+        "input_panel.csv",
+        "replay.json",
+        "truth.json"
+      ],
+      "path": "geox_truth_weak_matchability_001"
+    },
+    {
+      "case_id": "geox_truth_unsupported_inference_001",
+      "files": [
+        "expected_packet.json",
+        "input_panel.csv",
+        "replay.json",
+        "truth.json"
+      ],
+      "path": "geox_truth_unsupported_inference_001"
+    },
+    {
+      "case_id": "geox_truth_tbrridge_diagnostic_only_001",
+      "files": [
+        "expected_readout.json",
+        "input_panel.csv",
+        "replay.json",
+        "truth.json"
+      ],
+      "path": "geox_truth_tbrridge_diagnostic_only_001"
+    },
+    {
+      "case_id": "geox_truth_bayesian_tbr_research_only_001",
+      "files": [
+        "expected_readout.json",
+        "input_panel.csv",
+        "replay.json",
+        "truth.json"
+      ],
+      "path": "geox_truth_bayesian_tbr_research_only_001"
+    },
+    {
+      "case_id": "geox_truth_stale_incompatible_evidence_001",
+      "files": [
+        "expected_packet.json",
+        "input_panel.csv",
+        "replay.json",
+        "truth.json"
+      ],
+      "path": "geox_truth_stale_incompatible_evidence_001"
+    },
+    {
+      "case_id": "geox_truth_conflicting_evidence_001",
+      "files": [
+        "expected_packet.json",
+        "input_panel.csv",
+        "replay.json",
+        "truth.json"
+      ],
+      "path": "geox_truth_conflicting_evidence_001"
+    },
+    {
+      "case_id": "geox_truth_multicell_shared_control_block_001",
+      "files": [
+        "expected_packet.json",
+        "input_panel.csv",
+        "replay.json",
+        "truth.json"
+      ],
+      "path": "geox_truth_multicell_shared_control_block_001"
+    },
+    {
+      "case_id": "geox_truth_calibration_incompatible_001",
+      "files": [
+        "expected_packet.json",
+        "input_panel.csv",
+        "replay.json",
+        "truth.json"
+      ],
+      "path": "geox_truth_calibration_incompatible_001"
+    },
+    {
+      "case_id": "geox_truth_safe_blocked_readout_001",
+      "files": [
+        "expected_packet.json",
+        "input_panel.csv",
+        "replay.json",
+        "truth.json"
+      ],
+      "path": "geox_truth_safe_blocked_readout_001"
+    }
+  ],
+  "external_dependency": false,
+  "generator_version": "1.0.0"
+}

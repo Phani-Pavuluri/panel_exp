@@ -1,0 +1,11 @@
+{
+  "blocked_reasons": [
+    "fixture_blocked"
+  ],
+  "fixture_id": "geox_truth_multicell_shared_control_block_001",
+  "production_authorized": false,
+  "status": "blocked",
+  "warnings": [
+    "shadow_validation_only"
+  ]
+}
