@@ -1,0 +1,23 @@
+{
+  "schema_version": "geox_repo_execution_state_v1",
+  "repository": "Phani-Pavuluri/panel_exp",
+  "task_id": "GEOX_REPO_NATIVE_EXECUTION_HANDOFF_ADOPTION_001",
+  "status": "authorized",
+  "execution_mode": "branch_and_fast_forward",
+  "base_branch": "main",
+  "base_sha": "860182386c39f487747de5f43e67a31e9978e57c",
+  "feature_branch": "feat/geox-repo-native-execution-handoff-adoption-001",
+  "task_path": "docs/execution/ACTIVE_TASK.md",
+  "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
+  "canonical_mip_standard_repository": "Phani-Pavuluri/marketing_intelligence_platform",
+  "canonical_mip_standard_commit": "5eebba6750a3754e4026397d6762c601b1d6a708",
+  "task_execution_authorized": true,
+  "merge_authorized": false,
+  "reviewed_head_sha": null,
+  "implementation_commit_sha": null,
+  "approval_commit_sha": null,
+  "capability_authorizations_changed": false,
+  "last_updated": "2026-07-30",
+  "blockers": [],
+  "task_authoring_note": "The current main may be ahead of base_sha only by the task-authoring ACTIVE_TASK.md and EXECUTION_STATE.json commits. Verify that boundary before creating the feature branch."
+}
