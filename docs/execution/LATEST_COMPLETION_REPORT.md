@@ -46,8 +46,18 @@ future GeoX tasks, and the full suite is not claimed to pass.
 
 Implementation commit: `cc43be7d1dd69488b2a683a0180b05889cf00e72`.
 No review head was published. The suspended V2 branch remains unchanged.
-State is `ready_for_review`; merge authorization remains false and reviewed and
-approval SHAs remain null.
+Pre-merge state was `ready_for_review`; merge authorization remained false and
+reviewed and approval SHAs were null.
+
+## Closure
+
+External exact-head approval was recorded for
+`2981749d62084a72e65281bf53b1b05be54ad389`. The task was merged by
+`git merge --ff-only` with no merge commit. Main now points at that exact
+approved head. A single post-merge closure commit records status `merged`,
+execution authorization false, merge authorization false, reviewed head set to
+the approved SHA, approval SHA null, empty blockers, and unchanged capability
+authorizations. PR #128 remains retained as unauthorized/nonconforming history.
 
 ## Current authority
 

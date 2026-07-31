@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** ready_for_review
+**Status:** merged
 **Owner:** GeoX repository governance
 **Last updated:** 2026-07-30
 **Last verified:** 2026-07-30
@@ -125,6 +125,10 @@ MIP, MMM, or either suspended/legacy feature branch.
 - The external PR merge remains explicitly nonconforming and unapproved.
 
 ## Later sequence
+
+This task was fast-forward merged at the approved exact head
+`2981749d62084a72e65281bf53b1b05be54ad389`. The focused-validation exception
+and unresolved full-suite validation debt remain task-specific records.
 
 After review and explicit exact-head approval, merge this recovery with
 `git merge --ff-only` and create one closure commit. Then author a fresh V2
