@@ -51,7 +51,12 @@ path verification in isolated Docker/Poetry. Record exact counts and warnings.
 The unresolved full GeoX suite is separate repository-validation debt and is not
 claimed to pass.
 
-## Completion placeholder
+## Completion
+
+The fresh recovery branch recreates the workflow artifacts on repaired `main`
+without copying or modifying the frozen superseded V2 branch. The prior
+import-health recovery remains closed; its focused validation exception and
+unresolved full-suite validation debt remain documented.
 
 Before `ready_for_review`, replace this section with:
 
