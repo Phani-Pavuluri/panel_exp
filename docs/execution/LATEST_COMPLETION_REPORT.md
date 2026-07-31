@@ -140,3 +140,8 @@ production status, multicell/shared-control claims, MMM compatibility,
 `ExperimentEvidence`, `CalibrationSignal`, `TrustReport`, `DecisionSurface`,
 recommendations, optimization, LLM decisioning, scheduling, live integration,
 real data, pilot, production, or package-side agents.
+
+Substantive remediation commit: `865d8641ae44b8b47ec64d62825a29e23490d0d6`.
+Docker is currently unavailable again (`docker info` exit 1), so the required
+focused and complete Docker validation commands remain unexecuted. The task is
+blocked with merge and capability authority unchanged.
