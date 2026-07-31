@@ -1,0 +1,7 @@
+{
+  "task_id": "GEOX_GOVERNED_READOUT_BUILDER_PACKAGE_ENTRYPOINT_001",
+  "entrypoint": "panel_exp.artifacts.build_geox_governed_readout_package_entrypoint",
+  "non_production": true,
+  "authorization_flags_changed": false,
+  "mmm_compatibility_determined": false
+}
