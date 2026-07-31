@@ -23,26 +23,24 @@ import, even though the same import passes in a fresh subprocess. This mismatch
 requires evidence-backed collection/import-provenance diagnosis rather than
 another speculative package export change.
 
-## Authorized recovery placeholder
+## Validation result
 
-Pending execution must record:
+Docker provenance instrumentation showed that
+`tests/contracts/test_geox_mip_artifact_envelope_dry_run.py` created a
+synthetic `types.ModuleType("panel_exp")` in `sys.modules` during collection,
+shadowing the real package before `tests/test_audit_fixes.py` ran. The focused
+repair removes that synthetic module setup and imports the real package. The
+Track-B/artifacts circular-import failure no longer appears.
 
-- synchronized-main and task-authoring boundary evidence;
-- exact external PR lineage and suspended V2 branch integrity;
-- full Docker failure reproduction and fresh-process contrast;
-- `panel_exp` module provenance at the first failing collection point;
-- the earliest module, hook, path, or helper responsible for incorrect
-  resolution or mutation;
-- exact changed paths and root-cause rationale;
-- public-import compatibility and collection-order regression tests;
-- targeted tests, Ruff, disposable-Docker mypy, JSON/Markdown/path checks,
-  `git diff --check`, and full `make validate-docker` results;
-- known warning counts;
-- implementation commit and exact remote review head;
-- limitations and authority impact.
+The full Docker suite progressed beyond collection but reported unrelated test
+failures before completion; therefore the required validation gate remains
+blocked. Known slow-marker warnings remain registration-only warnings.
+
+Implementation commit: `cc43be7d1dd69488b2a683a0180b05889cf00e72`.
+No review head was published. The suspended V2 branch remains unchanged.
 
 ## Current authority
 
 `capability_authorizations_changed` remains `false`. No repair completion,
-review approval, merge approval, or analytical authority is implied by this
-placeholder. The old V2 adoption branch remains suspended and must not change.
+review approval, merge approval, or analytical authority is implied. The old V2
+adoption branch remains suspended and must not change.

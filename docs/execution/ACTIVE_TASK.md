@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** authorized recovery
+**Status:** blocked
 **Owner:** GeoX repository governance
 **Last updated:** 2026-07-30
 **Last verified:** 2026-07-30
