@@ -42,15 +42,6 @@ The new invariant test must correct the old branch's state-coupled assumption:
 no `approved_for_merge` state, no approval metadata commit, fast-forward merge,
 and exactly one post-merge closure commit.
 
-## Validation plan
-
-The task-authored focused gate covers the workflow invariant test, import-health
-tests, the formerly failing contract test, `tests/test_audit_fixes.py`, exact
-state/pin/path agreement, Ruff, JSON validation, `git diff --check`, and owned-
-path verification in isolated Docker/Poetry. Record exact counts and warnings.
-The unresolved full GeoX suite is separate repository-validation debt and is not
-claimed to pass.
-
 ## Completion
 
 The fresh recovery branch recreates the workflow artifacts on repaired `main`
@@ -69,9 +60,9 @@ context and ownership boundaries, and closure-safe V2 state invariants.
 
 Focused isolated-Docker validation passed: `26 passed`, `2 warnings`; Ruff,
 JSON parsing, Markdown/path checks, exact-pin agreement, and `git diff --check`
-passed. Implementation commit is
-`7de888a8dab2a1dfc8d0d58c8556e13f0bf131f6`; the current remote review head is
-`a309666b27ed4a9dfb9390834013a9e78c29c9b7`. The full GeoX suite remains
+passed. Corrected implementation commit is
+`612ede5039af20318a4c599b1453e05df3c40501`. The exact remote review head is
+externally verified after push and is not embedded self-referentially here. The full GeoX suite remains
 deferred repository-validation debt and is not claimed to pass. State is
 `ready_for_review`, blockers are empty, merge authorization is false, reviewed
 and approval SHAs are null, and capability authorizations are unchanged. No PR
@@ -85,9 +76,3 @@ does not authorize or change GeoX design, assignment, estimation, inference,
 instrument identity, governed readouts, numerical truth, method-family status,
 multicell/shared-control status, production inference, MIP/MMM decisioning, or
 package-side agents.
-
-Focused isolated-Docker validation passed: `26 passed`, `2 warnings`; Ruff,
-JSON parsing, Markdown/path and pin checks, and `git diff --check` passed. The
-full GeoX suite remains separate unresolved validation debt and is not claimed
-to pass. Implementation commit:
-`612ede5039af20318a4c599b1453e05df3c40501`.

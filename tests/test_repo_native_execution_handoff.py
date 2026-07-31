@@ -21,6 +21,18 @@ def test_v2_state_contract_and_pins():
     for pin in (state["canonical_mip_standard_commit"], state["canonical_mmm_workflow_commit"]):
         assert all(pin in text for text in (task, report, context))
     assert all(state["task_id"] in text for text in (task, report, context))
+    if state["implementation_commit_sha"] is not None:
+        assert state["implementation_commit_sha"] in report
+    for path in (
+        "panel_exp/contracts/geox_governed_experiment_readout.py",
+        "tests/fixtures/geox_governed_readouts",
+        "tests/fixtures/geox_numerical_truth",
+        "docs/ROADMAP_V4.md",
+        "docs/OPEN_INVESTIGATIONS.md",
+        "docs/track_d",
+        "docs/FUTURE_EXPERIMENT_PACKAGE_SIDE_AGENT_ROADMAP_001.md",
+    ):
+        assert (ROOT / path).exists()
     assert state["merge_authorized"] is False
     assert state["capability_authorizations_changed"] is False
 
