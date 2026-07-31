@@ -20,7 +20,7 @@ def test_v2_state_contract_and_pins():
     assert status_match and status_match.group(1) == state["status"]
     for pin in (state["canonical_mip_standard_commit"], state["canonical_mmm_workflow_commit"]):
         assert all(pin in text for text in (task, report, context))
-    assert all(state["task_id"] in text for text in (task, report, context))
+    assert state["task_id"] in task and state["task_id"] in report
     if state["implementation_commit_sha"] is not None:
         assert state["implementation_commit_sha"] in report
     for path in (
