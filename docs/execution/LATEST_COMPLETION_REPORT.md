@@ -2,72 +2,47 @@
 
 ## Identity
 
-- **Task ID:** `GEOX_BASELINE_IMPORT_HEALTH_REPAIR_001`
+- **Task ID:** `GEOX_BASELINE_IMPORT_HEALTH_RECOVERY_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
-- **Execution mode:** `branch_and_fast_forward`
-- **Pre-authoring base:** `1262b14fcbacc8947af9ecffd6ad2704c1cb8cce`
-- **Feature branch:** `fix/geox-baseline-import-health-001`
-- **Canonical MIP V2 pin:**
-  `Phani-Pavuluri/marketing_intelligence_platform@38f88467f55d5bc4cc64e5a58b0f08f1639a40d0`
-- **Canonical MMM workflow pin:**
-  `Phani-Pavuluri/MMM@1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
-- **Suspended V2 adoption head:**
-  `315ae7c996551c0f1fdb2414791be7e63586222d`
+- **Base:** `6d88e1a7b2ea861e9f61b27aea4adbd73b0ff337`
+- **Feature branch:** `fix/geox-baseline-import-health-recovery-001`
+- **Canonical MIP V2 pin:** `38f88467f55d5bc4cc64e5a58b0f08f1639a40d0`
+- **Canonical MMM workflow pin:** `1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
 
-## Verified repair trigger
+## Recovery trigger
 
-A temporary detached worktree at exact clean GeoX `origin/main`
-`1262b14fcbacc8947af9ecffd6ad2704c1cb8cce` reproduced the same two Docker
-collection failures as the suspended V2 adoption branch:
+GitHub PR #128 externally merged blocked branch head
+`08d8fe9adeb355b91afb4dc101184bdf199ce84c` into `main` as merge commit
+`6d88e1a7b2ea861e9f61b27aea4adbd73b0ff337`. No conforming exact-head approval,
+fast-forward merge, or closure exists. The event is preserved as nonconforming
+history and is not retroactively authorized.
 
-1. eager circular import through `panel_exp.track_b` and
-   `panel_exp.artifacts` package initializers;
-2. failed top-level `BalancedRandomization` import after package initialization
-   was disrupted.
+The merged partial repair removed the Track-B/artifacts circular import. The
+remaining Docker collection failure is the top-level `BalancedRandomization`
+import, even though the same import passes in a fresh subprocess. This mismatch
+requires evidence-backed collection/import-provenance diagnosis rather than
+another speculative package export change.
 
-The class is already defined and exported at the package root, so no missing
-implementation or renamed replacement is currently established. Nine unknown
-`slow` marker warnings and two invalid-escape deprecation warnings are separate,
-non-blocking baseline warnings.
+## Authorized recovery placeholder
 
-## Validation result
+Pending execution must record:
 
-The eager Track-B/artifacts circular-import failure is resolved by a lazy
-`panel_exp.artifacts.export_geo_run_bundle` dispatcher. Fresh-process focused
-tests were added, but the required Docker validation remains blocked:
-
-- the circular-import collection error no longer appears;
-- `tests/test_audit_fixes.py` still fails collection on
-  `from panel_exp import BalancedRandomization`;
-- the nine `PytestUnknownMarkWarning` entries for `pytest.mark.slow` remain
-  registration-only warnings;
-- no implementation commit or review head was published.
-
-The remaining failure requires further isolated diagnosis of package-root
-import resolution. No repair beyond the lazy cycle break is claimed.
-
-Required evidence still pending before `ready_for_review` includes:
-
-- exact clean-main failure reproduction and root-cause evidence;
-- exact task-authoring boundary and synchronized-main evidence;
-- proof the suspended V2 branch remained unchanged;
-- exact changed paths and rationale for the chosen lazy-import or equivalent
-  cycle break;
-- compatibility evidence for artifact, Track-B, registry, and
-  `BalancedRandomization` public imports in fresh subprocesses;
-- targeted failing-test results;
-- Docker Poetry installation, Ruff, disposable-environment mypy, diff, and full
-  `make validate-docker` results;
-- exact implementation commit and published review head;
-- remaining warnings, limitations, deferred work, and authority impact.
+- synchronized-main and task-authoring boundary evidence;
+- exact external PR lineage and suspended V2 branch integrity;
+- full Docker failure reproduction and fresh-process contrast;
+- `panel_exp` module provenance at the first failing collection point;
+- the earliest module, hook, path, or helper responsible for incorrect
+  resolution or mutation;
+- exact changed paths and root-cause rationale;
+- public-import compatibility and collection-order regression tests;
+- targeted tests, Ruff, disposable-Docker mypy, JSON/Markdown/path checks,
+  `git diff --check`, and full `make validate-docker` results;
+- known warning counts;
+- implementation commit and exact remote review head;
+- limitations and authority impact.
 
 ## Current authority
 
-`capability_authorizations_changed` remains `false`. This task repairs package
-import topology only. It does not authorize or change GeoX design, assignment,
-estimation, inference, instrument identity, governed readouts, numerical truth,
-method-family status, multicell/shared-control status, production inference,
-MIP/MMM integration, downstream decisioning, or package-side agents.
-
-No implementation completion, review approval, merge approval, or production
-authority is implied. State is `blocked`; merge authorization remains false.
+`capability_authorizations_changed` remains `false`. No repair completion,
+review approval, merge approval, or analytical authority is implied by this
+placeholder. The old V2 adoption branch remains suspended and must not change.
