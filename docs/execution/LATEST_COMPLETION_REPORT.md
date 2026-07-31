@@ -61,7 +61,7 @@ context and ownership boundaries, and closure-safe V2 state invariants.
 Focused isolated-Docker validation passed: `26 passed`, `2 warnings`; Ruff,
 JSON parsing, Markdown/path checks, exact-pin agreement, and `git diff --check`
 passed. Corrected implementation commit is
-`612ede5039af20318a4c599b1453e05df3c40501`. The exact remote review head is
+`698dbb36d8e5001d8cda6002e14369b732cb8802`. The exact remote review head is
 externally verified after push and is not embedded self-referentially here. The full GeoX suite remains
 deferred repository-validation debt and is not claimed to pass. State is
 `ready_for_review`, blockers are empty, merge authorization is false, reviewed

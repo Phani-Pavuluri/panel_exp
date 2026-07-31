@@ -17,7 +17,7 @@
   "task_execution_authorized": true,
   "merge_authorized": false,
   "reviewed_head_sha": null,
-  "implementation_commit_sha": "612ede5039af20318a4c599b1453e05df3c40501",
+  "implementation_commit_sha": "698dbb36d8e5001d8cda6002e14369b732cb8802",
   "approval_commit_sha": null,
   "capability_authorizations_changed": false,
   "last_updated": "2026-07-31",
