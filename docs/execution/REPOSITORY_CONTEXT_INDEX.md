@@ -4,6 +4,8 @@ Active task: `GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_RECOVERY_001`.
 
 Canonical pins:
 
+- Current MIP execution checkpoint: `3520176126d129e9288a9ce37591299ec856650a`
+
 - MIP: `Phani-Pavuluri/marketing_intelligence_platform@38f88467f55d5bc4cc64e5a58b0f08f1639a40d0`
 - MMM: `Phani-Pavuluri/MMM@1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
 

@@ -2,6 +2,8 @@
 
 ## Identity
 
+- Current MIP execution checkpoint: `3520176126d129e9288a9ce37591299ec856650a`
+
 - **Task ID:** `GEOX_GOVERNED_READOUT_BUILDER_PACKAGE_ENTRYPOINT_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Current GeoX main:** `ee9673c13e69082367c1727568946ac4c1a01015`
