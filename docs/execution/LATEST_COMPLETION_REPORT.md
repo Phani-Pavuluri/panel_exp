@@ -40,36 +40,62 @@ not run estimators or inference, choose methods or assignments, determine MMM
 compatibility, or authorize any downstream capability. All authorization flags
 remain false.
 
+## Prior execution result
+
+Implementation commit `ce672f348b5ac45dda3935597689fa1c7f5ddb12`
+added an initial entrypoint and blocked transport envelope. The branch then
+published an accurate blocked state because the required Docker daemon was
+unavailable and the host environment lacked `seaborn`. No focused or full
+validation pass was claimed.
+
+## External review verdict
+
+External repository review returned `CHANGES_REQUIRED`; the prior implementation
+is not approved and is not a candidate review head.
+
+The review found that the implementation:
+
+1. validated and returned an already-constructed readout instead of constructing
+   the canonical readout from explicit typed inputs or certified fixture data;
+2. left pre/post boundaries, creation/as-of/valid-through times, deterministic
+   freshness, UTC normalization, and temporal consistency untyped or unchecked;
+3. allowed unknown freshness and did not implement the required fail-closed
+   stale/unsupported/contradictory behavior;
+4. did not enforce schema, artifact-kind, producer commit, package-version,
+   provenance, envelope, and manifest agreement;
+5. fabricated default metadata and used `readout_version` as `schema_hash`;
+6. added only two narrow tests rather than validating all 12 fixtures and the
+   required negative, boundary, version, replay, and import-health cases;
+7. provided incomplete Track-D and machine-readable evidence; and
+8. did not satisfy the mandatory focused and complete Docker validation gates.
+
+## Remediation authorization
+
+The user authorized continuation on 2026-07-31. Continue on the existing feature
+branch and preserve the prior commits as audit evidence. The complete remediation
+requirements are recorded in `ACTIVE_TASK.md` under **External review remediation
+authorization**. No owned-file expansion, PR, merge, history rewrite, or
+capability authorization is permitted.
+
+The next execution must publish either:
+
+- `ready_for_review` with a new exact remote head, complete successful validation,
+  empty blockers, and unchanged authority; or
+- an accurate `blocked` state with exact unresolved code or validation evidence.
+
 ## Current status
 
-Task metadata is authorized on `main`. Implementation has not started.
-
-The execution agent must complete the mandatory repository bootstrap, verify the
-task-authoring boundary and prerequisites, create the exact feature branch from
-the synchronized authorization head, remain within owned files, run the focused
-and complete Docker validation gates, and publish either `ready_for_review` or an
-accurate `blocked` state.
-
-No implementation commit or review head exists yet. No pull request, merge, or
-capability authorization has occurred.
+Remediation is authorized. A new implementation commit and review head do not yet
+exist. The prior implementation commit remains superseded by external review.
 
 ## Validation requirement
 
 Focused tests are necessary but not sufficient. This task requires the complete
 canonical Docker validation gate. The earlier import-health recovery exception
-is not inherited. A stalled or incomplete full-suite run must be recorded as
-blocking validation debt rather than described as a pass.
+is not inherited. A stalled, unavailable, or incomplete Docker run must be
+recorded as blocking validation debt rather than described as a pass.
 
 ## Current authority
-
-## Execution result
-
-The deterministic builder and package entrypoint were added in implementation
-commit `ce672f348b5ac45dda3935597689fa1c7f5ddb12`. Required isolated-Docker
-validation is blocked because the Docker daemon is unavailable; the host
-environment also lacks `seaborn`. No focused or full validation pass is claimed.
-The task remains blocked with merge authorization false and all analytical and
-production authority unchanged.
 
 `capability_authorizations_changed` remains `false`. This task does not authorize
 production inference, design or method selection, assignment, multicell/shared-
