@@ -62,6 +62,15 @@ blocking validation debt rather than described as a pass.
 
 ## Current authority
 
+## Execution result
+
+The deterministic builder and package entrypoint were added in implementation
+commit `ce672f348b5ac45dda3935597689fa1c7f5ddb12`. Required isolated-Docker
+validation is blocked because the Docker daemon is unavailable; the host
+environment also lacks `seaborn`. No focused or full validation pass is claimed.
+The task remains blocked with merge authorization false and all analytical and
+production authority unchanged.
+
 `capability_authorizations_changed` remains `false`. This task does not authorize
 production inference, design or method selection, assignment, multicell/shared-
 control claims, ExperimentEvidence, CalibrationSignal, TrustReport,
