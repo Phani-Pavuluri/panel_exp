@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** blocked
+**Status:** authorized
 **Owner:** GeoX repository governance
 **Last updated:** 2026-07-31
 **Last verified:** 2026-07-31
@@ -153,6 +153,45 @@ output contracts, temporal/freshness rules, schema/version policy, package
 entrypoint, fixture compatibility decision, validation evidence, limitations,
 unchanged authority, remaining MIP/MMM and D6 blockers, and the recommended next
 artifact.
+
+## External review remediation authorization
+
+External review of implementation commit
+`ce672f348b5ac45dda3935597689fa1c7f5ddb12` returned
+`CHANGES_REQUIRED`. That implementation is preserved as prior-attempt evidence
+but is not an approvable or mergeable review head. Continue on the same feature
+branch and resolve all findings below before publishing a new review head.
+
+1. Replace the identity validator/wrapper with an actual deterministic builder.
+   The public entrypoint must construct `GeoXGovernedExperimentReadout` from
+   explicit typed producer inputs or certified fixture metadata. It must not
+   require an already-constructed governed readout as its only analytical input.
+2. Implement the complete typed temporal contract in the governed readout:
+   explicit UTC pre/post boundaries, creation time, evidence/as-of time,
+   valid-through/expiry, deterministic reference-time freshness, exact expiry
+   equality behavior, and validation for malformed, naive, reversed,
+   prohibited-overlap, stale, unknown, and contradictory states.
+3. Implement fail-closed schema, record-kind, producer commit, package version,
+   provenance, envelope, and fixture-manifest consistency. Do not use a schema
+   version as a schema hash and do not fabricate missing metadata such as epoch
+   creation time, run identity, request identity, or data fingerprints.
+4. Add complete tests for all 12 certified fixtures and for expiry equality,
+   UTC normalization, missing/naive/malformed timestamps, reversed and overlapping
+   periods, stale and unknown freshness, unsupported versions, contradictory
+   provenance/commit/package metadata, unsafe authorization flags, deterministic
+   serialization/replay, package import health, and manifest/readout/envelope
+   agreement.
+5. Expand the Track-D report and JSON summary to record the exact typed contracts,
+   rules, supported versions, fixture migration decision, validation commands and
+   results, unchanged authority, remaining D6/MIP/MMM blockers, and recommended
+   next artifact.
+6. Run every focused isolated-Docker gate and the complete canonical Docker gate.
+   The prior Docker-unavailable result is not a pass. Host-only execution is not
+   an accepted substitute. Publish `blocked` again if Docker remains unavailable
+   or any required gate lacks a successful final result.
+
+No owned-file expansion is authorized. Do not discard or rewrite the prior
+implementation history; remediate with new commits on the same branch.
 
 ## Validation gate
 
