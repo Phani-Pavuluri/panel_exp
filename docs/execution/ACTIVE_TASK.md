@@ -1,144 +1,156 @@
 # Active Task
 
-**Status:** merged
+**Status:** authorized
 **Owner:** GeoX repository governance
-**Last updated:** 2026-07-30
-**Last verified:** 2026-07-30
+**Last updated:** 2026-07-31
+**Last verified:** 2026-07-31
 
 ## Identity
 
-- **Task ID:** `GEOX_BASELINE_IMPORT_HEALTH_RECOVERY_001`
-- **Base branch/SHA:** `main` / `6d88e1a7b2ea861e9f61b27aea4adbd73b0ff337`
-- **Feature branch:** `fix/geox-baseline-import-health-recovery-001`
+- **Task ID:** `GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_RECOVERY_001`
+- **Pre-authoring base:** `main` / `b0c00228629dcc6231b85115d2448d8d7c20ee47`
+- **Feature branch:** `feat/geox-repo-native-execution-handoff-v2-adoption-recovery-001`
 - **Execution mode:** `branch_and_fast_forward`
 - **Canonical MIP V2 pin:** `Phani-Pavuluri/marketing_intelligence_platform@38f88467f55d5bc4cc64e5a58b0f08f1639a40d0`
 - **Canonical MMM workflow pin:** `Phani-Pavuluri/MMM@1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
-- **External nonconforming PR:** `#128`
-- **External branch head:** `08d8fe9adeb355b91afb4dc101184bdf199ce84c`
-- **External merge commit:** `6d88e1a7b2ea861e9f61b27aea4adbd73b0ff337`
-- **Suspended V2 adoption branch/head:** `feat/geox-repo-native-execution-handoff-v2-adoption-001` / `315ae7c996551c0f1fdb2414791be7e63586222d`
+- **Superseded task:** `GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_001`
+- **Superseded branch/head:** `feat/geox-repo-native-execution-handoff-v2-adoption-001` / `315ae7c996551c0f1fdb2414791be7e63586222d`
+- **Superseded implementation:** `6dc5fe455c49d764932ee9abf05c5ab2f55f609c`
 - **Capability authorizations changed:** `false`
 
-## Recovery trigger
+## Purpose
 
-PR #128 merged the blocked baseline-repair branch into `main` without exact-head
-approval, despite the task prohibiting PR creation and merge. Preserve that event
-as nonconforming history; do not invent approval or rewrite history.
+Adopt the repository-native execution handoff V2 on the repaired GeoX `main`.
+The prior V2 branch was created from obsolete history and is now diverged. It is
+evidence only: do not merge, cherry-pick, rebase, reset, or copy its execution
+metadata. Re-create the intended stable workflow artifacts on the current line,
+correcting any state-coupled assumptions found in the old implementation.
 
-The merged partial repair correctly removed the Track-B/artifacts circular import.
-Fresh-process imports pass, but full Docker collection still reports:
-
-`ImportError: cannot import name 'BalancedRandomization' from 'panel_exp' (unknown location)`.
-
-Because the same import succeeds in a fresh subprocess and `panel_exp/__init__.py`
-exports the class, treat the remaining failure as suite-order contamination,
-namespace-package shadowing, or import provenance corruption until proven otherwise.
-Do not add another compatibility shim without evidence.
-
-## Objective
-
-## Externally authorized validation exception
-
-For `GEOX_BASELINE_IMPORT_HEALTH_RECOVERY_001` only, the original full
-`make validate-docker` completion criterion is waived. The acceptance gate is
-focused isolated-Docker validation covering the import-health tests, the
-formerly failing contract test, and `tests/test_audit_fixes.py`, together with
-passing Ruff, JSON validation, and `git diff --check`. The incomplete full-suite
-run remains unresolved GeoX repository-validation debt; this task does not
-claim that the full suite passes. This exception does not apply to future GeoX
-tasks.
-
-Reconcile the unauthorized merge, identify the first point where full test
-collection resolves `panel_exp` incorrectly, apply the smallest root-cause fix,
-and restore complete Docker validation. Preserve the lazy artifacts export that
-resolved the real circular import unless evidence shows a safer equivalent.
+This is a governance and execution-handoff task only. It must not alter GeoX
+analytical behavior, method eligibility, assignment, estimation, inference,
+instrument identity, governed readouts, numerical truth, MIP/MMM integration,
+or package-side-agent authority.
 
 ## Owned files
 
 Execution may modify only:
 
-- `panel_exp/__init__.py`
-- `panel_exp/artifacts/__init__.py`
-- `tests/test_import_surface_health.py`
-- `tests/conftest.py` only when diagnostic evidence proves a collection-level
-  provenance guard or fixture correction is the minimal root fix
-- one existing test/helper file only when it is proven to create, replace, or
-  shadow the `panel_exp` module; record the exact path and evidence before edit
+- `AGENTS.md`
+- `docs/execution/REPOSITORY_CONTEXT_INDEX.md`
+- `tests/test_repo_native_execution_handoff.py`
 - `docs/execution/ACTIVE_TASK.md`
 - `docs/execution/EXECUTION_STATE.json`
 - `docs/execution/LATEST_COMPLETION_REPORT.md`
 
-Do not change package behavior, assignment logic, estimators, contracts,
-fixtures, dependency files, pytest marker policy, validation scripts, roadmaps,
-MIP, MMM, or either suspended/legacy feature branch.
+No other file is authorized.
 
-## Required execution
+## Required implementation
 
-1. Fetch/prune, hydrate history, synchronize `main`, and prove
-   `main == origin/main == 6d88e1a7b2ea861e9f61b27aea4adbd73b0ff337`
-   before branching.
-2. Verify the suspended V2 branch still equals
-   `315ae7c996551c0f1fdb2414791be7e63586222d`; do not modify it.
-3. Verify PR #128 merged head `08d8fe9...` as merge commit `6d88e1a...` without
-   conforming approval. Record it; do not revert or rewrite it.
-4. Reproduce in Docker:
-   - the full-suite `BalancedRandomization` collection failure;
-   - successful fresh-process import;
-   - absence of the former Track-B/artifacts circular import.
-5. Instrument collection without committing temporary diagnostics. Immediately
-   before the failing import, capture:
-   - `panel_exp` presence in `sys.modules`;
-   - `__file__`, `__path__`, `__spec__`, loader, and module attributes;
-   - relevant `sys.path` entries;
-   - the earliest collected module or hook that created/replaced it.
-6. Prove whether the cause is namespace-package shadowing, test import ordering,
-   a test/helper mutation, or another mechanism. Do not guess from the error text.
-7. Apply the smallest root fix. The final package-root import must resolve to the
-   repository package and expose the exact class object from
-   `panel_exp.design.assign.BalancedRandomization`.
-8. Keep public imports compatible:
-   - `from panel_exp import BalancedRandomization`
-   - `from panel_exp.artifacts import export_geo_run_bundle`
-   - `from panel_exp.track_b import build_geo_run_artifact_bundle`
-   - `from panel_exp.track_b._registry import CALIBRATION_SIGNAL_BY_CONFIG`
-9. Strengthen focused tests to cover fresh processes and a collection-order
-   reproduction that would fail under the diagnosed contamination mechanism.
-10. Run targeted failing collection, focused import tests, JSON/Markdown/path
-    checks, Ruff on changed Python, disposable-Docker mypy, `git diff --check`,
-    and Docker-backed `make validate-docker`.
-11. Nine existing unknown `slow` marker warnings and two invalid-escape warnings
-    may remain; report them but do not fix them here.
-12. On failure, publish accurate `blocked` state. On success, publish
-    `ready_for_review` with full implementation SHA, empty blockers,
-    `merge_authorized: false`, null reviewed/approval SHAs, and unchanged
-    capability authority.
-13. Push and verify the exact remote head. Do not create a PR, merge, rebase,
-    squash, delete branches, or modify `main` during execution.
+1. Fetch/prune and hydrate history. Synchronize `main` and prove local
+   `main == origin/main` before task discovery or branching.
+2. Verify the task-authoring boundary recorded in
+   `docs/execution/EXECUTION_STATE.json`: the pre-authoring base through the
+   authorization head may change only the active task and completion report;
+   synchronized `main` may then contain exactly one state-only recording commit.
+3. Verify the superseded branch still equals
+   `315ae7c996551c0f1fdb2414791be7e63586222d`. Do not modify or delete it during
+   execution.
+4. Create the exact feature branch from synchronized repaired `main`. Do not
+   reuse the superseded branch.
+5. Add root `AGENTS.md` defining the mandatory bootstrap order:
+   - classify the full worktree;
+   - allow only `.codex/` and `docs/tasks/` as local-only untracked paths;
+   - `git fetch --prune origin` and hydrate missing history;
+   - `git switch main`;
+   - `git pull --ff-only origin main`;
+   - prove `main == origin/main`;
+   - only then read execution state, active task, repository context, relevant
+     GeoX evidence, and pinned MIP/MMM standards.
+6. Define fail-closed execution semantics in `AGENTS.md`: verify authorization,
+   exact base/ancestry, prerequisites, exact branch, owned scope, validation,
+   commit and push; stop at `ready_for_review`; approval is external; there is no
+   `approved_for_merge` state or pre-merge approval metadata commit; merge only
+   after exact-head approval by `git merge --ff-only`, followed by exactly one
+   closure commit, push, synchronization, and cleanup; never create a PR or guess.
+7. Add `docs/execution/REPOSITORY_CONTEXT_INDEX.md` with:
+   - exact MIP and MMM pins;
+   - canonical MIP execution/program documents;
+   - GeoX method-family, instrument-identity, governed-readout, numerical-truth,
+     roadmap, investigation, release, and deferred-agent evidence locations;
+   - ownership boundaries among GeoX, MMM, and MIP;
+   - a `Fresh Chat Bootstrap` section requiring connected GitHub as source of
+     truth and a read-only orientation before modification or authorization.
+8. Add `tests/test_repo_native_execution_handoff.py` validating:
+   - schema version and allowed statuses;
+   - exact canonical pins and task/state/report/context agreement;
+   - full 40-character SHA or null rules;
+   - task status agreement with state;
+   - bootstrap ordering and local-only policy;
+   - absence of an `approved_for_merge` state;
+   - merge protocol language;
+   - status-dependent invariants for `authorized`, `blocked`,
+     `ready_for_review`, and `merged`.
+9. The invariant test must remain valid after closure. Do not unconditionally
+   require `reviewed_head_sha` to be null: it is null before review/merge and a
+   full SHA in `merged`. `approval_commit_sha` remains null under this workflow.
+10. Preserve current execution-state schema V2 and exact MIP/MMM pins. Do not
+    introduce analytical or capability authority.
+11. Preserve the completed import-health recovery and its explicit full-suite
+    validation debt. Do not claim the entire GeoX suite passes.
+
+## Validation gate
+
+This docs-and-workflow task uses a scoped, isolated-Docker gate defined at task
+authoring; it is not the prior recovery exception and does not waive validation
+for product or method changes.
+
+Required checks:
+
+- `tests/test_repo_native_execution_handoff.py`;
+- `tests/test_import_surface_health.py`;
+- `tests/contracts/test_geox_mip_artifact_envelope_dry_run.py`;
+- `tests/test_audit_fixes.py`;
+- JSON parsing and required-field checks for `EXECUTION_STATE.json`;
+- Markdown/path existence and exact-pin agreement checks;
+- Ruff on the new Python test;
+- `git diff --check`;
+- exact changed-path verification against the owned-file list.
+
+Run the focused tests in an isolated Docker/Poetry environment. Record exact
+passed/skipped/warning counts. The unresolved full GeoX suite remains separate
+repository-validation debt and is not a gate for this governance-only adoption.
+
+## State transitions
+
+- On success, publish `ready_for_review` with a full implementation SHA, empty
+  blockers, `task_execution_authorized: true`, `merge_authorized: false`, null
+  reviewed/approval SHAs, and unchanged capability authority.
+- On failure, publish an accurate `blocked` state with specific blockers.
+- Push and prove the exact remote branch head, then stop. Do not create a PR,
+  merge, rebase, squash, force-push, or delete branches during execution.
 
 ## Acceptance criteria
 
-- The import provenance root cause is documented with evidence.
-- The circular import remains resolved.
-- All four public import surfaces pass in fresh processes and full collection.
-- `make validate-docker` completes successfully; known warnings are reported.
-- The diff is restricted to owned files and changes no analytical semantics.
-- The external PR merge remains explicitly nonconforming and unapproved.
+- The three stable workflow artifacts exist on the repaired history and satisfy
+  the focused validation gate.
+- The invariant test is closure-safe and status-dependent.
+- The diff is restricted to the six owned files.
+- Exact MIP/MMM pins and authority boundaries are preserved.
+- The old V2 branch remains unchanged during execution and is explicitly
+  superseded, not merged.
+- No PR or merge occurs before exact-head review and external approval.
 
-## Later sequence
+## Post-merge sequence
 
-This task was fast-forward merged at the approved exact head
-`2981749d62084a72e65281bf53b1b05be54ad389`. The focused-validation exception
-and unresolved full-suite validation debt remain task-specific records.
-
-After review and explicit exact-head approval, merge this recovery with
-`git merge --ff-only` and create one closure commit. Then author a fresh V2
-adoption-recovery task from repaired `main`; do not reuse or rewrite the old
-blocked V2 branch.
+After exact-head approval, fast-forward merge the fresh branch and create exactly
+one closure commit. Delete the completed fresh branch locally and remotely. At
+that closure step, also delete the old superseded V2 branch locally and remotely
+after verifying it still equals `315ae7c996551c0f1fdb2414791be7e63586222d`.
 
 ## Prohibited authority
 
-No design eligibility, assignment behavior, estimator/inference status,
+No design eligibility, assignment behavior, estimator or inference status,
 instrument identity, governed-readout semantics, numerical truth,
-multicell/shared-control claims, production inference, CalibrationSignal,
+multicell/shared-control claim, production inference, CalibrationSignal,
 ExperimentEvidence, TrustReport, DecisionSurface, recommendation, LLM, budget,
 or package-side-agent authority is changed or authorized.
