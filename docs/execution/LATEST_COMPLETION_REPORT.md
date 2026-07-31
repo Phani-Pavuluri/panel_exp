@@ -5,114 +5,141 @@
 - **Task ID:** `GEOX_GOVERNED_READOUT_BUILDER_PACKAGE_ENTRYPOINT_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Pre-authoring base:** `e0cef94c063b03b29e1e1760fb1c2320ce497b56`
+- **Current main verified before this correction:** `ee9673c13e69082367c1727568946ac4c1a01015`
 - **Feature branch:** `feat/geox-governed-readout-builder-package-entrypoint-001`
 - **Execution mode:** `branch_and_fast_forward`
 - **Canonical MIP V2 pin:** `38f88467f55d5bc4cc64e5a58b0f08f1639a40d0`
 - **Canonical MMM workflow pin:** `1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
-
-## Starting point
-
-The repository-native execution-handoff recovery is closed on GeoX `main` at
-`e0cef94c063b03b29e1e1760fb1c2320ce497b56`. The governed-readout contract and
-12 certified governed-readout fixtures are present. The fixture checkpoint
-explicitly recommends `GEOX_GOVERNED_READOUT_BUILDER_PACKAGE_ENTRYPOINT_001` as
-the next artifact.
-
-The pinned MIP P2 consumer design still requires a governed-readout builder and
-package entrypoint plus explicit temporal, deterministic freshness/expiry,
-record-kind/schema, producer package-version, and later D6 compatibility
-semantics before package integration. The prior full GeoX suite remains
-unverified repository-validation debt; no earlier validation exception applies
-to this task.
+- **Capability authorizations changed:** `false`
 
 ## Authorized result
 
-This task is authorized to add a deterministic non-production package entrypoint
-that constructs the canonical `GeoXGovernedExperimentReadout` and optional
-transport envelope from explicit validated inputs or certified fixture metadata.
-It may strengthen typed temporal/freshness and schema/package-version validation,
-conform the 12 governed-readout fixtures without changing their source numerical
-truth, and add focused tests and Track-D evidence within the exact owned-file
-boundary recorded in `ACTIVE_TASK.md`.
+The task remains authorized to implement a deterministic, non-production public
+package entrypoint that constructs the canonical
+`GeoXGovernedExperimentReadout` and optional blocked transport envelope from
+explicit validated typed producer inputs or certified fixture metadata. It must
+close temporal/freshness, schema/kind/version, provenance, manifest agreement,
+fixture conformance, import health, evidence, and validation requirements without
+running estimators, changing numerical truth, determining MMM compatibility, or
+authorizing downstream capability.
 
-The builder must preserve supplied analytical values and dispositions. It must
-not run estimators or inference, choose methods or assignments, determine MMM
-compatibility, or authorize any downstream capability. All authorization flags
-remain false.
+## GitHub-observed execution history
 
-## Prior execution result
+The following committed work exists on the feature branch and remains audit
+evidence:
 
-Implementation commit `ce672f348b5ac45dda3935597689fa1c7f5ddb12`
-added an initial entrypoint and blocked transport envelope. The branch then
-published an accurate blocked state because the required Docker daemon was
-unavailable and the host environment lacked `seaborn`. No focused or full
-validation pass was claimed.
+1. `ce672f348b5ac45dda3935597689fa1c7f5ddb12` — initial validator/envelope
+   wrapper. External review rejected it as incomplete.
+2. `380e2034410fabeb5a9f90f92ec31e3875938a49` — partial remediation adding a
+   fixture-driven constructor, required envelope metadata, and package exports.
+3. `a9890e6d62c5e5e5a0c69801ca1c26d960267418` — test-only correction for the two
+   existing example tests. This was the exact remote head reviewed in the second
+   review and was rejected with `CHANGES_REQUIRED`.
 
-## External review verdict
+The second review confirmed that committed implementation changes do exist. The
+previous report language stating that no new implementation commit existed was
+incorrect. However, none of the SHAs above is an approved implementation or
+review head.
 
-External repository review returned `CHANGES_REQUIRED`; the prior implementation
-is not approved and is not a candidate review head.
+## Second external review verdict
 
-The review found that the implementation:
+Remote head `a9890e6d62c5e5e5a0c69801ca1c26d960267418` is not approved.
 
-1. validated and returned an already-constructed readout instead of constructing
-   the canonical readout from explicit typed inputs or certified fixture data;
-2. left pre/post boundaries, creation/as-of/valid-through times, deterministic
-   freshness, UTC normalization, and temporal consistency untyped or unchecked;
-3. allowed unknown freshness and did not implement the required fail-closed
-   stale/unsupported/contradictory behavior;
-4. did not enforce schema, artifact-kind, producer commit, package-version,
-   provenance, envelope, and manifest agreement;
-5. fabricated default metadata and used `readout_version` as `schema_hash`;
-6. added only two narrow tests rather than validating all 12 fixtures and the
-   required negative, boundary, version, replay, and import-health cases;
-7. provided incomplete Track-D and machine-readable evidence; and
-8. did not satisfy the mandatory focused and complete Docker validation gates.
+The partial fixture constructor does not satisfy the authorized contract because:
 
-## Remediation authorization
+- the original public path still primarily accepts a prebuilt readout;
+- producer input structures and temporal values remain untyped or raw strings;
+- complete creation/as-of/valid-through consistency is absent;
+- unknown freshness remains broadly permitted and stale/diagnostic eligibility is
+  not fully fail-closed;
+- analytical schema identity, record kind, package/provenance/commit, replay,
+  envelope, and manifest agreement are not enforced end to end;
+- hard-coded or guessed values remain for analytical metadata;
+- all 12 certified fixtures are not constructed, validated, and round-tripped;
+- negative, boundary, deterministic replay, manifest, and import-health coverage
+  remains incomplete;
+- Track-D and machine-readable evidence remain materially incomplete; and
+- mandatory focused and full Docker validation have not completed.
 
-The user authorized continuation on 2026-07-31. Continue on the existing feature
-branch and preserve the prior commits as audit evidence. The complete remediation
-requirements are recorded in `ACTIVE_TASK.md` under **External review remediation
-authorization**. No owned-file expansion, PR, merge, history rewrite, or
-capability authorization is permitted.
+## Validation evidence
 
-The next execution must publish either:
+### GitHub-observed
 
-- `ready_for_review` with a new exact remote head, complete successful validation,
-  empty blockers, and unchanged authority; or
-- an accurate `blocked` state with exact unresolved code or validation evidence.
+- GitHub combined status checks on reviewed head
+  `a9890e6d62c5e5e5a0c69801ca1c26d960267418`: **0 checks reported**.
+- Exact branch comparison before this correction: branch was 8 commits ahead of
+  `main` and 0 commits behind.
+- Files changed after the first remediation authorization included implementation,
+  exports, tests, and the three execution files, all within the authorized path
+  boundary.
+
+### Locally reported by the execution agent
+
+- `docker info`: failed, initially exit 1 and later Docker socket permission
+  denied.
+- Focused isolated-Docker gate: **0 successful completed runs reported**.
+- Complete canonical Docker gate: **0 successful completed runs reported**.
+- Full-suite pass: **not claimed**.
+
+GitHub does not independently verify the local Docker diagnostics. They are
+preserved as locally reported evidence, not a successful validation result.
 
 ## Current status
 
-Remediation is authorized. A new implementation commit and review head do not yet
-exist. The prior implementation commit remains superseded by external review.
+This is an authorization and correction checkpoint, not a completed task report.
+A second remediation cycle is authorized on the existing feature branch. The
+partial commits remain in history but are superseded for review purposes.
 
-## Remediation execution result
+- Task execution remains authorized.
+- Merge authorization remains false.
+- Reviewed and approval SHAs remain null.
+- No current implementation SHA is designated as the completed implementation.
+- Capability authority remains unchanged.
+- No PR, merge, history rewrite, or branch replacement is authorized.
 
-The external findings remain unresolved: the builder still requires a prebuilt
-readout, lacks the complete temporal/schema/manifest contract, and does not have
-the required 12-fixture and negative-case coverage. Docker is unavailable
-(`docker info` exit 1), so the mandatory isolated and complete validation gates
-cannot run. State remains `blocked`; no implementation or review head is claimed.
+## Required next execution
 
-Remediation work added a fixture-driven constructor and rejects missing envelope
-metadata, but the complete temporal, schema/version/provenance/manifest contract
-and 12-fixture validation remain unverified. Docker subsequently became
-unavailable (`permission denied` on the Docker socket), so no new implementation
-commit or review head is published.
+The complete instructions are authoritative in `docs/execution/ACTIVE_TASK.md`
+under **Second external review correction authorization**. The execution must:
 
-## Validation requirement
+1. re-bootstrap from live Git and verify current main, ancestry, pins, ownership,
+   worktree state, and exact path authority;
+2. complete typed direct producer-input and certified-fixture construction;
+3. complete deterministic UTC temporal/freshness validation, including the exact
+   expiry boundary and fail-closed eligible-handoff behavior;
+4. enforce supported schema, record kind, envelope, package, producer commit,
+   provenance, replay, and manifest agreement;
+5. construct, validate, serialize, and replay all 12 certified fixtures without
+   changing source truth or dispositions;
+6. complete the positive, boundary, negative, import-health, replay, manifest,
+   and authorization test matrix;
+7. complete Track-D and JSON evidence with exact contracts, versions, fixture
+   results, validation counts, limitations, sibling impact, consumer verification
+   requirements, next work, and unchanged authority; and
+8. run every focused isolated-Docker gate and the complete canonical Docker gate.
 
-Focused tests are necessary but not sufficient. This task requires the complete
-canonical Docker validation gate. The earlier import-health recovery exception
-is not inherited. A stalled, unavailable, or incomplete Docker run must be
-recorded as blocking validation debt rather than described as a pass.
+A prose-only or state-only execution is not completion.
 
-## Current authority
+## Required final reporting
+
+On success, the next report must contain exactly one implementation SHA, the
+exact final remote branch head, exact command-level validation results and
+counts, GitHub-observed versus locally reported evidence, blockers and
+limitations, validation debt, fixture outcome, sibling/consumer impact, newly
+eligible work, and authority impact. State must be `ready_for_review`, blockers
+must be empty, and merge authorization must remain false.
+
+On failure after substantive implementation is committed, state must be
+`blocked`, but the report must still identify the exact latest substantive
+implementation SHA and exact remote head, list completed and failed validation
+commands with counts, and name the remaining blockers. It must not state that no
+implementation commit exists when committed implementation changes are present.
+
+## Authority
 
 `capability_authorizations_changed` remains `false`. This task does not authorize
-production inference, design or method selection, assignment, multicell/shared-
-control claims, ExperimentEvidence, CalibrationSignal, TrustReport,
-DecisionSurface, recommendations, optimization, LLM decisioning, scheduling,
-live package integration, real data, pilot, production, or package-side agents.
+production inference, method selection, design or assignment, causal-readout
+production status, multicell/shared-control claims, MMM compatibility,
+ExperimentEvidence, CalibrationSignal, TrustReport, DecisionSurface,
+recommendations, optimization, LLM decisioning, scheduling, live integration,
+real data, pilot, production, or package-side agents.
