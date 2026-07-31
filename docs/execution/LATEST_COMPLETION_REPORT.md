@@ -1,221 +1,189 @@
 # TASK_COMPLETION_REPORT_V2
 
-## Identity
+## Identity and current decision
 
 - **Task ID:** `GEOX_GOVERNED_READOUT_BUILDER_PACKAGE_ENTRYPOINT_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Current GeoX main:** `ee9673c13e69082367c1727568946ac4c1a01015`
-- **Existing feature branch:** `feat/geox-governed-readout-builder-package-entrypoint-001`
+- **Feature branch:** `feat/geox-governed-readout-builder-package-entrypoint-001`
+- **Pre-authorization branch head:** `69b792bc0dfbae8cd6e8185b9aff5441c558689a`
 - **Execution mode:** `branch_and_fast_forward`
-- **Current rejected remote head:** `5fd97f87ef19378001fa5f92e6adf17bb00abe25`
-- **Latest substantive implementation:** `865d8641ae44b8b47ec64d62825a29e23490d0d6`
-- **Current MIP execution/coordination standard:** `3520176126d129e9288a9ce37591299ec856650a`
-- **Current MMM workflow checkpoint:** `1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
-- **Review decision:** `CHANGES_REQUIRED`
+- **Latest rejected remote execution head:** `5fd97f87ef19378001fa5f92e6adf17bb00abe25`
+- **Latest rejected substantive implementation:** `865d8641ae44b8b47ec64d62825a29e23490d0d6`
+- **Canonical MIP coordination closure:** `3520176126d129e9288a9ce37591299ec856650a`
+- **Live MIP main observed at authorization:** `8655520d895128c0defccf76e632cdb4d1efe891`
+- **MMM workflow checkpoint:** `1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
+- **Current decision:** `CORRECTION_EXECUTION_AUTHORIZED`
+- **Merge and PR authorization:** `false`
 - **Capability authorizations changed:** `false`
 
-## Live repository observations
+## GitHub-observed orientation
 
-Before the fourth-cycle authorization amendment:
+At this authorization checkpoint:
 
-- GeoX `main` was exactly `ee9673c13e69082367c1727568946ac4c1a01015`;
-- the feature branch was exactly
-  `abb94ef8341cc32d4b1c71a2970286c6be7081c5`;
-- the branch was 18 commits ahead of `main` and 0 behind;
-- MIP `main` was exactly
-  `3520176126d129e9288a9ce37591299ec856650a`;
-- MMM `main` was exactly
-  `1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`; and
-- GitHub reported no combined status checks for the rejected GeoX head.
+- GeoX `main` remains exactly
+  `ee9673c13e69082367c1727568946ac4c1a01015`;
+- the existing GeoX feature branch was exactly
+  `69b792bc0dfbae8cd6e8185b9aff5441c558689a` before the new authorization
+  metadata;
+- the branch descends from current GeoX `main` without divergence;
+- MMM `main` remains exactly
+  `1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`;
+- live MIP `main` is
+  `8655520d895128c0defccf76e632cdb4d1efe891`;
+- canonical MIP coordination closure
+  `3520176126d129e9288a9ce37591299ec856650a` is an ancestor of live MIP main;
+- live MIP state does not transfer GeoX ownership, implement the GeoX builder,
+  authorize a GeoX merge, or resolve GeoX producer blockers; and
+- no GitHub-hosted combined status checks are available for the rejected GeoX
+  implementation/review lineage.
 
-The feature branch contained one substantive third-cycle implementation commit,
-`865d8641...`, followed by blocked execution metadata at `abb94ef...`.
+MIP may continue its governance work in parallel. GeoX must re-read live MIP
+execution and coordination evidence through the live-overlay rule rather than
+requiring an exact moving MIP-main equality.
 
-After the fourth-cycle authorization metadata, the branch advanced to
-`5fd97f87ef19378001fa5f92e6adf17bb00abe25`. The two execution commits after the
-authorization head changed only:
+## Preserved review lineage
 
-- `docs/execution/REPOSITORY_CONTEXT_INDEX.md`; and
-- `docs/execution/ACTIVE_TASK.md`, `EXECUTION_STATE.json`, and
-  `LATEST_COMPLETION_REPORT.md`.
+The following branch commits remain rejected audit evidence:
 
-No builder, contract, fixture, builder-test, or Track-D file changed after
-`865d8641...`.
+- `ce672f348b5ac45dda3935597689fa1c7f5ddb12` — initial prebuilt-readout wrapper;
+- `380e2034410fabeb5a9f90f92ec31e3875938a49` — partial fixture constructor and
+  envelope metadata remediation;
+- `a9890e6d62c5e5e5a0c69801ca1c26d960267418` — narrow two-test correction;
+- `955ee991fa485e5bbd803e6446472e00520ddacb` — metadata-only blocked report;
+- `865d8641ae44b8b47ec64d62825a29e23490d0d6` — partial typed producer and
+  temporal construction;
+- `abb94ef8341cc32d4b1c71a2970286c6be7081c5` — rejected third-cycle blocked
+  review head; and
+- `5fd97f87ef19378001fa5f92e6adf17bb00abe25` — rejected fourth-cycle head that
+  changed only execution metadata/context, passed five narrow tests, and
+  attempted a full gate before substantive remediation.
 
-## Review decision on `865d8641...` and `abb94ef...`
+Branch head `69b792bc0dfbae8cd6e8185b9aff5441c558689a` preserved the external
+`CHANGES_REQUIRED` decision. None of those commits is approved or mergeable.
+History must be extended, not rewritten.
 
-External review returned `CHANGES_REQUIRED`. The implementation made partial
-progress by adding producer and temporal dataclasses, timezone-aware parsing, a
-direct construction path, public exports, an exact substantive implementation
-SHA, and an honest blocked state. It is not complete or approvable.
+## Review findings that remain open
 
-### Builder and contract findings
+### Contract and builder
 
-1. The primary producer contract remains only partially typed because most
-   analytical and disposition fields are supplied through
-   `Mapping[str, Any]`.
-2. Creation, as-of, and valid-through timestamps are parsed but not preserved in
-   the governed artifact.
-3. Temporal chronology contains unproven positional logic and lacks the required
-   boundary and negative tests.
-4. Freshness remains fail-open on the fixture path; unknown freshness can coexist
-   with unsafe handoff semantics.
-5. Readout status, freshness, and handoff eligibility are not validated as one
-   consistent state.
+1. The main producer contract remains only partially typed because analytical
+   and disposition data still use broad `Mapping[str, Any]` structures.
+2. Creation, as-of, and valid-through timestamps are parsed but not fully
+   preserved in the governed artifact.
+3. Temporal chronology has unproven or incorrect positional logic and lacks the
+   required boundary and negative tests.
+4. Freshness can remain fail-open on the fixture path; stale or unknown evidence
+   is not consistently prevented from eligible handoff.
+5. Readout status, freshness, and handoff eligibility are not enforced as one
+   consistent fail-closed state.
 6. Schema identity, record kind, package version, producer/provenance commit,
    replay version, manifest version, envelope version, and schema hash are not
    enforced end to end.
 7. The fixture path fabricates or hard-codes values such as `currency`,
-   `unknown`, `pre/post`, fixture IDs, guessed status, and package metadata rather
-   than reproducing the certified readout.
-8. The optional envelope is not truly optional.
-9. The fixture builder does not reproduce even the inspected SCM clean certified
-   readout and does not prove conformance for all 12 manifest cases.
-10. The builder test file still contains only two narrow wrapper/freshness tests.
-11. The Track-D report and JSON summary remain materially incomplete.
-12. Focused and complete Docker validation have no successful final results for
-    the full authorized implementation surface.
+   `unknown`, `pre/post`, fixture IDs, guessed statuses, commits, and package
+   metadata rather than reproducing certified truth.
+8. The transport envelope is not genuinely optional.
+9. The public fixture builder has not proved exact conformance for all 12
+   certified cases.
 
-### Execution-handoff finding and corrected interpretation
+### Tests, evidence, and validation
 
-The earlier GeoX recovery commit
-`698dbb36d8e5001d8cda6002e14369b732cb8802` required the current task ID to
-appear in the context index, active task, and report. That design made the
-context index a mutable active-task mirror.
+10. The builder test surface remains far below the required positive, boundary,
+    negative, replay, version, provenance, authorization, fixture, and import
+    matrix.
+11. The Track-D Markdown and JSON evidence artifacts remain skeletal and do not
+    record all 12 fixture outcomes, exact contracts, validation counts,
+    limitations, or consumer impact.
+12. No complete successful Docker-backed repository validation exists for the
+    full authorized implementation surface.
 
-The merged MIP execution model at `3520176...` instead treats the context index as
-stable navigation. Mutable task identity and review state belong in
+### Execution-handoff prerequisite
+
+The GeoX context index still names the prior recovery task and contains both an
+obsolete MIP pin and a later checkpoint. The earlier test incorrectly required
+the mutable task ID to appear in the stable context index. Current MIP semantics
+make the index stable navigation while task identity/status live in
 `ACTIVE_TASK.md`, `EXECUTION_STATE.json`, and
 `LATEST_COMPLETION_REPORT.md`.
 
-The one-line handoff-test correction present at `abb94ef...` is therefore
-semantically aligned with current MIP policy. It was nevertheless outside the
-builder task's prior owned-file boundary and did not update the stale GeoX
-context index or strengthen the stable-navigation assertions.
+The test correction is semantically valid but must be completed under the
+explicit GeoX-owned scope amendment. This is not a MIP code change and does not
+complete the broader GeoX coordination-protocol adoption proposal.
 
-The correction is not classified as a substantive governance bypass. It is a
-valid but previously unauthorized prerequisite change that must be completed
-under the explicit GeoX scope amendment.
+## Current authorization
 
-## Fourth-cycle authorization
+The user authorized continuation on 2026-07-31. The existing task and branch
+remain authoritative. The complete durable requirements are in
+`docs/execution/ACTIVE_TASK.md`.
 
-The user authorized another execution cycle on 2026-07-31. The same task and
-feature branch remain authoritative. No replacement task, branch, pull request,
-or merge is authorized.
+The next execution must first produce a new substantive implementation commit
+after `865d8641ae44b8b47ec64d62825a29e23490d0d6` that changes authorized
+builder/contract/test/fixture/evidence paths. It must then:
 
-The owned-file boundary was expanded only to add:
+1. complete fully typed direct producer and certified-fixture construction;
+2. preserve complete UTC creation/as-of/valid-through and period semantics;
+3. enforce freshness/status/eligibility consistency fail-closed;
+4. enforce schema, record-kind, package, commit, provenance, replay, envelope,
+   manifest, and schema-hash agreement;
+5. reproduce and round-trip all 12 certified readouts without modifying immutable
+   `source_truth.json` or certified analytical dispositions;
+6. make the envelope truly optional and non-production;
+7. convert the context index to stable navigation and strengthen the handoff test;
+8. complete the full test matrix and both Track-D evidence artifacts; and
+9. run focused Docker-backed validation followed by the complete canonical gate
+   only after all substantive focused checks pass.
 
-- `docs/execution/REPOSITORY_CONTEXT_INDEX.md`; and
-- `tests/test_repo_native_execution_handoff.py`.
+A prose-only, state-only, context-only, validation-only, or report-only cycle is
+not completion and cannot be reported as a valid new blocked implementation.
 
-This narrow amendment absorbs only the execution-handoff prerequisite needed by
-the builder task. It does not claim completion or supersession of the broader
-proposed `GEOX_CROSS_REPOSITORY_COORDINATION_PROTOCOL_ADOPTION_001` workstream.
+## Validation evidence retained from rejected work
 
-The complete durable requirements are in `docs/execution/ACTIVE_TASK.md`.
+### GitHub-observed
 
-## Fourth-cycle execution result and rejection
+- Rejected substantive implementation:
+  `865d8641ae44b8b47ec64d62825a29e23490d0d6`.
+- Rejected fourth-cycle execution head:
+  `5fd97f87ef19378001fa5f92e6adf17bb00abe25`.
+- No hosted CI or combined-status evidence establishes a successful complete
+  validation result for those heads.
 
-The fourth-cycle execution did not satisfy the authorized task.
+### Locally reported
 
-### GitHub-observed changes after the authorization head
+- Narrow focused builder/execution-handoff result: `5 passed`.
+- Complete Docker attempt: stalled around 29% without a final pytest summary or
+  actionable traceback.
 
-Only the context index and execution metadata changed. The execution did not
-modify:
+Those five tests do not cover the authorized builder task. The percentage is not
+completion evidence. The validation debt remains open.
 
-- `panel_exp/contracts/geox_governed_experiment_readout.py`;
-- `panel_exp/contracts/geox_mip_artifact_envelope.py`;
-- `panel_exp/artifacts/geox_governed_readout_builder.py`;
-- builder or contract tests;
-- any certified governed-readout fixture or replay file; or
-- either Track-D evidence artifact.
-
-The context-index correction is itself incomplete. The current file still:
-
-- names `GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_RECOVERY_001` as the
-  active task;
-- retains obsolete MIP pin
-  `38f88467f55d5bc4cc64e5a58b0f08f1639a40d0`; and
-- separately adds current checkpoint
-  `3520176126d129e9288a9ce37591299ec856650a`.
-
-It is therefore stale and internally contradictory rather than a conforming
-stable navigation index.
-
-### Locally reported validation
-
-- Focused Docker builder/execution-handoff checks: `5 passed`.
-- Complete `make validate-docker` attempt: reported stalled around 29% without a
-  final pytest summary or actionable traceback.
-
-The five focused tests do not cover the authorized builder requirements or the
-required test matrix. The full gate was run before substantive builder,
-contract, fixture, test, and evidence remediation, contrary to the explicit
-implementation-first validation sequence. The stall is blocking validation debt
-and not a pass.
-
-### Rejection
-
-Remote head `5fd97f87ef19378001fa5f92e6adf17bb00abe25` is rejected. It is not a review
-head, implementation completion, or merge candidate. The execution state is
-`changes_requested`.
-
-## Required next execution
-
-Continue on the same branch and preserve all history. Before another full gate:
-
-1. produce a new substantive implementation commit after `865d8641...` that
-   changes the builder/contracts and associated tests/evidence;
-2. complete the context index as stable navigation using only current MIP and MMM
-   pins, and strengthen the handoff test without weakening other invariants;
-3. complete fully typed direct producer and certified-fixture construction;
-4. preserve complete UTC temporal semantics in the governed artifact;
-5. enforce freshness/status/eligibility consistency fail-closed;
-6. enforce schema, record-kind, package, commit, provenance, replay, envelope,
-   manifest, and schema-hash consistency;
-7. reproduce and round-trip all 12 certified readouts without changing immutable
-   source truth or certified dispositions;
-8. complete the required positive, boundary, negative, replay, import, manifest,
-   authorization, and handoff test matrix;
-9. complete Track-D and machine-readable evidence with per-fixture results and
-   cross-repository impact; and
-10. run focused Docker-backed validation followed by the complete canonical
-    Docker gate only after all focused implementation checks pass.
-
-A prose-only, state-only, validation-only, context-only, or metadata-only cycle
-is not completion and must remain `changes_requested`.
-
-## Required final reporting
+## Required publication
 
 On success, publish `ready_for_review` with exactly one new substantive
-implementation SHA after `865d8641...`, exact command-level validation results
-and counts, empty blockers, and unchanged merge and capability authority. Report
-the exact remote branch head externally after push rather than attempting to
-self-reference it inside the commit.
+implementation SHA after `865d8641...`, exact command-level validation counts,
+empty blockers, `task_execution_authorized: true`, `merge_authorized: false`,
+null reviewed/approval SHAs, and unchanged capability authority. Push the exact
+remote branch head and stop for external review.
 
-On failure after new substantive work is committed, publish `blocked` with the
-exact latest substantive implementation SHA, exact pushed remote head, every
-completed and failed validation command with counts, precise remaining code and
-validation blockers, all 12 fixture outcomes reached so far, and unchanged
-authority.
-
-The final report must distinguish GitHub-observed from locally reported evidence
-and include limitations, validation debt, sibling impact, consumer verification,
-newly eligible work, and authority impact.
+On failure after new substantive work is committed, publish an accurate
+`blocked` state with the exact new implementation SHA, exact remote branch head,
+all completed and failed validation commands and counts, precise remaining
+blockers, all fixture outcomes reached, and unchanged authority.
 
 ## Cross-repository impact and authority
 
-- **Workstream advanced:** `WS-GEOX-READOUT-BUILDER-001`.
-- **Producer blockers advanced but not resolved:**
+- **Workstream advanced but not completed:** `WS-GEOX-READOUT-BUILDER-001`.
+- **Producer blockers advanced but unresolved:**
   `P2-GEOX-TEMPORAL-VERSION-SEMANTICS` and
   `P2-GEOX-READOUT-BUILDER-ENTRYPOINT`.
-- **Consumer verification:** remains required from MMM and MIP after an exact
-  merged GeoX producer pin.
-- **MMM normalization and D6 release evidence:** remain blocked and separately
-  owned.
+- **Consumer verification:** MMM and MIP verification remains required after an
+  exact merged GeoX producer pin.
+- **MMM-owned next work:** strict GeoX normalization and certified
+  cross-repository compatibility fixtures remain separate and unauthorized here.
+- **MIP-owned next work:** fixture-only P2 consumer journey and D6 evidence remain
+  separate and unauthorized here.
 - **Capabilities newly authorized:** none.
-- **Capability authorizations changed:** `false`.
-- **Merge and PR authorization:** `false`.
+- **Merge and PR authorization:** false.
 
 This task does not authorize production inference, method selection, assignment,
 MMM compatibility, `ExperimentEvidence`, `CalibrationSignal`, `TrustReport`,
