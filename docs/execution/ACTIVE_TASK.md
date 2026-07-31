@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** blocked
+**Status:** authorized
 **Owner:** GeoX repository governance
 **Last updated:** 2026-07-31
 **Last verified:** 2026-07-31
@@ -8,44 +8,60 @@
 ## Identity
 
 - **Task ID:** `GEOX_GOVERNED_READOUT_BUILDER_PACKAGE_ENTRYPOINT_001`
-- **Pre-authoring base:** `main` / `e0cef94c063b03b29e1e1760fb1c2320ce497b56`
+- **Repository:** `Phani-Pavuluri/panel_exp`
+- **Current verified main before this authorization:** `ee9673c13e69082367c1727568946ac4c1a01015`
 - **Feature branch:** `feat/geox-governed-readout-builder-package-entrypoint-001`
 - **Execution mode:** `branch_and_fast_forward`
 - **Canonical MIP V2 pin:** `Phani-Pavuluri/marketing_intelligence_platform@38f88467f55d5bc4cc64e5a58b0f08f1639a40d0`
 - **Canonical MMM workflow pin:** `Phani-Pavuluri/MMM@1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
-- **Prior task:** `GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_RECOVERY_001`
-- **Prior closure:** `e0cef94c063b03b29e1e1760fb1c2320ce497b56`
+- **Prior GeoX closure:** `GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_RECOVERY_001@e0cef94c063b03b29e1e1760fb1c2320ce497b56`
 - **Capability authorizations changed:** `false`
 
 ## Purpose
 
-Implement the deterministic, non-production package entrypoint that builds the
-canonical `GeoXGovernedExperimentReadout` and its transport envelope from
-explicit already-validated inputs or certified fixture metadata. Close the
-producer-side temporal, deterministic freshness/expiry, record-kind/schema, and
-producer package-version semantics required by the pinned MIP P2 consumer design.
+Complete the deterministic, non-production package entrypoint that constructs the
+canonical `GeoXGovernedExperimentReadout` and optional blocked transport envelope
+from explicit typed producer inputs or certified fixture metadata.
 
-This task must not run estimators, select methods, assign markets, calculate new
-analytical truth, determine MMM compatibility, or authorize downstream use.
-The governed readout remains the GeoX analytical artifact; the envelope remains
-transport only.
+The LLM or transport layer must not calculate experiment truth. This task must not
+run estimators or inference, select methods or assignments, recalculate supplied
+analytical values, determine MMM compatibility, or authorize downstream use.
+GeoX owns experiment readout truth and handoff eligibility. MMM owns calibration
+compatibility. MIP owns orchestration and consumer governance.
 
-## Prerequisites
+## Repository bootstrap and fail-closed checks
 
-Before branching or modification, complete root `AGENTS.md` bootstrap and prove
-synchronized `main == origin/main`. Verify:
+Before modifying files:
 
-1. the prior execution-handoff recovery is merged at the recorded closure;
-2. the exact MIP and MMM pins exist and preserve current ownership boundaries;
-3. `GEOX_GOVERNED_READOUT_ARTIFACT_CONTRACT_001` exists;
-4. `GEOX_CERTIFIED_GOVERNED_READOUT_FIXTURES_001` exists and recommends this task;
-5. the 12-case numerical-truth validation checkpoint and
-   `tests/fixtures/geox_governed_readouts/manifest.json` exist;
-6. the unresolved full-suite validation debt is preserved and no prior exception
-   is applied to this task.
+1. classify the complete worktree; only `.codex/` and `docs/tasks/` may remain
+   local-only untracked;
+2. run `git fetch --prune origin`, switch to `main`, pull with `--ff-only`, and
+   prove local `main == origin/main`;
+3. read root `AGENTS.md`, all four `docs/execution/` orientation files, the live
+   MIP and MMM pins, the governed-readout contract, fixture manifest, existing
+   fixtures, and the prior rejected implementation;
+4. verify the existing feature branch descends from current `main`, has no
+   duplicate owner, unrelated commits, or unauthorized paths; and
+5. stop with an accurate blocked result on stale evidence, changed pins,
+   overlapping ownership, unresolved ancestry, or unclear authority.
 
-Stop and publish an accurate blocked state if any prerequisite, exact base,
-authorization boundary, branch, or repository condition cannot be verified.
+Do not create a replacement task or branch.
+
+## Audit history and current authorization boundary
+
+The following remote heads are retained as audit evidence and are not approved:
+
+- `ce672f348b5ac45dda3935597689fa1c7f5ddb12` — initial prebuilt-readout wrapper;
+- `380e2034410fabeb5a9f90f92ec31e3875938a49` — partial fixture constructor and
+  envelope metadata remediation;
+- `a9890e6d62c5e5e5a0c69801ca1c26d960267418` — two-test correction;
+- `955ee991fa485e5bbd803e6446472e00520ddacb` — metadata-only blocked report after
+  a locally reported Docker run stalled around 29%.
+
+This third remediation cycle is authorized on the same feature branch. It must
+produce substantive implementation, tests, fixture conformance evidence, and
+Track-D evidence beyond `955ee991...`. Another prose-only, state-only, or
+validation-only commit is not completion.
 
 ## Owned files
 
@@ -68,281 +84,180 @@ Execution may modify only:
 - `docs/execution/EXECUTION_STATE.json`
 - `docs/execution/LATEST_COMPLETION_REPORT.md`
 
-The 12 `source_truth.json` files are immutable inputs and are not owned. No
-roadmap, investigation ledger, estimator, design, assignment, inference,
-readout-policy, MIP, or MMM file is authorized.
+Every `tests/fixtures/geox_governed_readouts/*/source_truth.json` file is an
+immutable input. No roadmap, investigation ledger, estimator, design, assignment,
+inference, readout-policy, MIP, or MMM file is authorized.
 
 ## Required implementation
 
-### 1. Typed temporal and freshness semantics
+### 1. Typed construction contract
 
-Define deterministic serialization-safe semantics for:
+Define explicit serialization-safe typed structures for producer metadata,
+analytical identity, temporal boundaries, provenance, replay, and transport
+metadata. The primary public builder must construct a governed readout from:
 
-- pre-period start/end;
-- post-period start/end;
+- explicit validated typed producer inputs; or
+- a validated certified fixture record and manifest context.
+
+A helper may validate/envelope an already-created readout, but it must be clearly
+named and cannot remain the primary construction contract. Do not fabricate or
+hard-code absent KPI units, channel, tactic, geography, time-window labels,
+statuses, request IDs, fingerprints, package versions, commits, or schema hashes.
+
+### 2. Temporal and freshness semantics
+
+Require timezone-aware timestamps and canonical UTC serialization for:
+
+- pre-period start and end;
+- post-period start and end;
 - artifact creation time;
 - evidence/as-of time;
-- valid-through or expiry time;
-- explicit UTC normalization;
-- `fresh`, `stale`, and `unknown` freshness states.
+- valid-through or expiry time; and
+- caller-supplied reference time.
 
-Freshness must be resolved from an explicit caller-supplied reference time. Do
-not read the wall clock inside construction, validation, or tests. Define the
-exact expiry-boundary rule and reject malformed, timezone-ambiguous, reversed,
-overlapping where prohibited, or internally inconsistent periods. Never refresh
-or reinterpret stale evidence silently.
+Validate ordering, prohibit pre/post overlap, and enforce internal consistency
+among creation, as-of, and validity timestamps. Freshness is deterministic:
 
-### 2. Schema, kind, and package-version semantics
+- `reference_time <= valid_through` is `fresh`;
+- `reference_time > valid_through` is `stale`.
 
-Define and validate explicit:
+Missing reference or validity metadata may produce `unknown` only for explicitly
+diagnostic, blocked records. Unknown or stale evidence must fail closed for any
+handoff-eligible result. Never read the wall clock or silently refresh evidence.
 
-- analytical artifact schema identity/version;
-- envelope schema/version;
-- record/artifact kind;
-- producer package version and commit;
-- provenance package version;
-- fixture-manifest schema/package version.
+### 3. Schema, kind, package, provenance, replay, and manifest agreement
 
-Require agreement across readout, provenance, envelope, and manifest. Reject
-unknown, unsupported, or contradictory versions rather than guessing.
+Define supported values for analytical schema identity/version, record kind,
+envelope version, producer package version, producer commit, provenance package
+version, replay version, and fixture-manifest version. Enforce required agreement
+across producer input, readout, provenance/lineage, replay metadata, envelope, and
+manifest. Reject empty, malformed, `unknown`, unsupported, or contradictory
+values. A schema hash must be explicitly supplied or deterministically computed
+from the schema; it must never be a renamed version string.
 
-### 3. Deterministic builder and package entrypoint
+### 4. Preserve analytical truth and authority
 
-Add a public package entrypoint that:
-
-- consumes explicit validated typed inputs or certified fixture metadata;
-- constructs `GeoXGovernedExperimentReadout` deterministically;
-- validates before returning;
-- may construct the corresponding `GeoXMIPArtifactEnvelope` with
-  `GeoXMIPArtifactKind.READOUT_PACKET`;
-- preserves source IDs, supplied numerical values, uncertainty, method status,
-  lineage, warnings, blockers, failures, replay metadata, and provenance;
-- does not recalculate effect estimates or uncertainty;
-- does not run estimators or inference;
-- does not determine MMM compatibility;
-- fails closed on missing, stale, unsupported, contradictory, or unsafe inputs.
+Preserve every supplied identifier, effect value, uncertainty value and semantics,
+method family, instrument identity, status, warning, blocker, failure, lineage,
+replay field, and provenance field. Do not recalculate any estimate or uncertainty.
 
 GeoX handoff eligibility remains limited to:
 
 - `eligible_for_compatibility_evaluation`;
-- `ineligible_for_calibration_handoff`;
+- `ineligible_for_calibration_handoff`; and
 - `blocked_for_handoff`.
 
-All authorization flags must remain false. The transport envelope must preserve
-its current non-production/blocked authorization boundary.
-
-### 4. Package export and import health
-
-Expose the builder through the appropriate `contracts`, `artifacts`, and package
-surfaces without circular imports, synthetic package shadowing, or broad eager
-imports. Preserve existing public imports and the repaired import-health path.
+All authorization flags and the transport envelope remain non-production and
+blocked. No MMM compatibility verdict may be emitted.
 
 ### 5. Certified fixture conformance
 
-Update the 12 governed-readout fixtures and replay metadata only as needed for
-the finalized schema. Preserve source numerical truth, analytical values,
-method families, instrument identities, warnings, blockers, failures, and all
-success/warning/stale/incompatible/blocked/failed/diagnostic-only/research-only
-dispositions. Do not emit MMM compatibility decisions. Prove deterministic
-serialization and replay and version agreement with the manifest.
+Load all 12 cases through the manifest. For each case:
 
-### 6. Evidence artifact
+- construct the governed readout using the public fixture construction path;
+- validate the readout and optional envelope;
+- preserve source numerical truth and the recorded disposition;
+- prove deterministic canonical JSON serialization and replay;
+- prove manifest/readout/replay/envelope version agreement; and
+- leave `source_truth.json` unchanged.
 
-Add the named Track-D report and machine-readable summary. Record exact input and
-output contracts, temporal/freshness rules, schema/version policy, package
-entrypoint, fixture compatibility decision, validation evidence, limitations,
-unchanged authority, remaining MIP/MMM and D6 blockers, and the recommended next
-artifact.
+Fixture files may be migrated only when required by the finalized schema and only
+within the owned fixture paths. Record an explicit per-fixture result in evidence.
 
-## External review remediation authorization
+### 6. Test matrix
 
-External review of implementation commit
-`ce672f348b5ac45dda3935597689fa1c7f5ddb12` returned
-`CHANGES_REQUIRED`. That implementation is preserved as prior-attempt evidence
-but is not an approvable or mergeable review head. Continue on the same feature
-branch and resolve all findings below before publishing a new review head.
+Add comprehensive tests covering:
 
-1. Replace the identity validator/wrapper with an actual deterministic builder.
-   The public entrypoint must construct `GeoXGovernedExperimentReadout` from
-   explicit typed producer inputs or certified fixture metadata. It must not
-   require an already-constructed governed readout as its only analytical input.
-2. Implement the complete typed temporal contract in the governed readout:
-   explicit UTC pre/post boundaries, creation time, evidence/as-of time,
-   valid-through/expiry, deterministic reference-time freshness, exact expiry
-   equality behavior, and validation for malformed, naive, reversed,
-   prohibited-overlap, stale, unknown, and contradictory states.
-3. Implement fail-closed schema, record-kind, producer commit, package version,
-   provenance, envelope, and fixture-manifest consistency. Do not use a schema
-   version as a schema hash and do not fabricate missing metadata such as epoch
-   creation time, run identity, request identity, or data fingerprints.
-4. Add complete tests for all 12 certified fixtures and for expiry equality,
-   UTC normalization, missing/naive/malformed timestamps, reversed and overlapping
-   periods, stale and unknown freshness, unsupported versions, contradictory
-   provenance/commit/package metadata, unsafe authorization flags, deterministic
-   serialization/replay, package import health, and manifest/readout/envelope
-   agreement.
-5. Expand the Track-D report and JSON summary to record the exact typed contracts,
-   rules, supported versions, fixture migration decision, validation commands and
-   results, unchanged authority, remaining D6/MIP/MMM blockers, and recommended
-   next artifact.
-6. Run every focused isolated-Docker gate and the complete canonical Docker gate.
-   The prior Docker-unavailable result is not a pass. Host-only execution is not
-   an accepted substitute. Publish `blocked` again if Docker remains unavailable
-   or any required gate lacks a successful final result.
+- direct typed construction;
+- all 12 fixture cases;
+- expiry equality and stale transition;
+- UTC normalization;
+- missing, naive, and malformed timestamps;
+- reversed and overlapping periods;
+- invalid creation/as-of/valid-through ordering;
+- unknown freshness restrictions;
+- unsupported schema, envelope, package, provenance, replay, and manifest versions;
+- contradictory producer commit and package/provenance metadata;
+- missing or fake metadata and invalid schema hashes;
+- unsafe authorization flags;
+- deterministic serialization and replay;
+- manifest/readout/replay/envelope agreement; and
+- imports from package root and `panel_exp.artifacts` without circular or shadowed
+  imports.
 
-No owned-file expansion is authorized. Do not discard or rewrite the prior
-implementation history; remediate with new commits on the same branch.
+Two example tests are not sufficient.
 
-## Second external review correction authorization
+### 7. Evidence
 
-External review of remote head
-`a9890e6d62c5e5e5a0c69801ca1c26d960267418` returned `CHANGES_REQUIRED`.
-The partial remediation commit
-`380e2034410fabeb5a9f90f92ec31e3875938a49` and its test-only correction
-`a9890e6d62c5e5e5a0c69801ca1c26d960267418` remain audit evidence but are not
-approved implementation or review heads. Continue on this same feature branch.
-Do not create a replacement task or branch.
+Complete the Track-D report and machine-readable summary with:
 
-The next execution must complete all of the following rather than only editing
-execution metadata:
+- exact input/output contracts and supported versions;
+- temporal and freshness rules;
+- all 12 fixture outcomes;
+- exact changed paths;
+- command-level validation evidence and counts;
+- GitHub-observed versus locally reported evidence;
+- blockers, limitations, and validation debt;
+- sibling and MIP consumer impact;
+- required consumer verification;
+- remaining D6/MIP/MMM blockers;
+- newly eligible work and recommended next artifact; and
+- unchanged capability authority.
 
-1. **Re-bootstrap and preserve authority.** Fetch/prune, synchronize and prove
-   current `main == origin/main`, verify this feature branch descends from the
-   current authorized main without unrelated commits, re-read the canonical MIP
-   and MMM pins, and stop on stale pins, overlapping ownership, or unauthorized
-   paths. Preserve every authorization flag as false and preserve MMM ownership
-   of compatibility.
-2. **Finish the producer input contract.** Define explicit typed producer input
-   and temporal structures in the owned contract surface. The public construction
-   path must build the readout from typed producer inputs or validated certified
-   fixture records. The old prebuilt-readout wrapper may remain only as a clearly
-   named validation/envelope helper; it cannot be the primary builder contract.
-   Do not hard-code analytical metadata such as KPI units, channel, tactic,
-   geography, status, or time-window labels when those values are absent.
-3. **Finish temporal validation.** Require timezone-aware timestamps, normalize
-   to UTC, serialize canonically, validate pre/post start and end ordering,
-   prohibit overlap, require creation/as-of/valid-through consistency, and use
-   the deterministic rule `reference_time <= valid_through` as fresh and
-   `reference_time > valid_through` as stale. Missing reference or validity data
-   may serialize as `unknown` only for explicitly diagnostic records; it must
-   fail closed for handoff-eligible construction. Stale evidence must never be
-   silently converted to fresh or handoff eligible.
-4. **Finish schema and provenance validation.** Define supported analytical
-   schema identity/version, record kind, envelope version, package version,
-   producer commit, provenance version, replay version, and fixture-manifest
-   version. Enforce equality where required across producer input, readout,
-   lineage/provenance, envelope, replay metadata, and manifest. Reject `unknown`,
-   unsupported, empty, malformed, or contradictory values. A schema hash must be
-   an explicit supplied or deterministically computed hash, never a renamed
-   schema version.
-5. **Conform every certified fixture.** Load all 12 cases from the manifest,
-   construct and validate each governed readout, preserve all source numerical
-   truth and dispositions, round-trip deterministic serialization/replay, and
-   prove manifest/readout/envelope version agreement. Do not modify any
-   `source_truth.json` file.
-6. **Complete the test matrix.** Add positive and negative tests covering all 12
-   fixtures, typed direct construction, expiry equality, UTC conversion,
-   missing/naive/malformed timestamps, reversed and overlapping periods,
-   stale/unknown behavior, unsupported versions, contradictory producer commit
-   and package/provenance metadata, unsafe authorization flags, deterministic
-   JSON serialization/replay, package-root and artifacts imports, and exact
-   changed-path enforcement. Two example-readout tests are not sufficient.
-7. **Complete evidence.** Expand the Track-D report and machine-readable summary
-   with exact supported contracts and versions, migration/conformance outcome for
-   all 12 fixtures, validation commands and exact counts, GitHub-observed versus
-   locally reported evidence, limitations, validation debt, sibling/consumer
-   impact, remaining D6/MIP/MMM blockers, next eligible work, and unchanged
-   authority.
-8. **Run the mandatory gates.** Start or repair Docker access before validation.
-   Run the focused isolated-Docker/Poetry tests, Ruff for every changed Python
-   file, configured mypy if present, JSON/version checks, deterministic replay,
-   import health, execution-handoff tests, `git diff --check`, exact changed-path
-   verification, and the complete canonical `make validate-docker` gate or its
-   repository-defined equivalent. No host-only substitute and no inherited
-   exception are authorized.
-9. **Publish accurate state.** On success, commit substantive implementation and
-   evidence, then publish `ready_for_review` with one exact implementation SHA,
-   an exact remote branch head in the completion report, empty blockers, no
-   reviewed/approval SHA, merge authorization false, and unchanged capability
-   authority. On failure after substantive code is committed, publish `blocked`
-   with the exact latest substantive implementation SHA, exact remote branch
-   head, command-level validation results and counts, and specific remaining
-   blockers. Do not claim that no implementation commit exists when committed
-   implementation changes are present.
+## Validation sequence
 
-Do not spend another execution cycle only correcting prose or state. The code,
-fixtures, tests, evidence, and required Docker validation must be completed
-before requesting another review. No PR, merge, squash, rebase, force-push,
-history rewrite, branch deletion, or owned-file expansion is authorized.
+Implementation and focused validation come before the complete repository gate.
+Do not spend a cycle running only the full suite against the rejected partial
+implementation.
 
-## Validation gate
+1. Commit substantive code, fixture, test, and evidence changes.
+2. Run focused isolated-Docker/Poetry tests for the governed-readout contract,
+   builder, all 12 fixtures, envelope, numerical-truth preservation, import
+   health, and execution-handoff state.
+3. Run Ruff for every changed Python file, configured mypy if present, JSON and
+   version checks, deterministic replay checks, `git diff --check`, and exact
+   changed-path verification.
+4. Run the complete canonical `make validate-docker` gate or current
+   repository-defined equivalent.
 
-Run focused validation in isolated Docker/Poetry, including:
+No host-only substitute or inherited validation exception is authorized.
 
-- governed-readout contract tests;
-- new builder/package-entrypoint tests;
-- all 12 certified governed-readout fixture validations;
-- GeoX/MIP envelope tests;
-- numerical-truth fixture validation;
-- import-surface health tests;
-- repository-native execution-handoff tests.
+If the full Docker gate appears stalled, do not report only a percentage. Capture
+and report the exact command, start/end time or elapsed duration, exit/timeout
+status, container/process state, last completed test or last output, log path,
+and exact passed/failed/skipped/unexecuted counts available. Distinguish a slow
+run, an infrastructure failure, a test hang, and a test failure. Preserve the
+full-suite debt if no successful final summary is produced.
 
-Also run Ruff on every changed Python file, configured mypy for the changed
-surface, JSON parsing/version-consistency checks, deterministic
-serialization/replay checks, `git diff --check`, and exact changed-path
-verification.
+## Required publication
 
-Run the repository's complete canonical Docker validation gate, including
-`make validate-docker` or its current repository-defined equivalent. The prior
-full-suite exception does not apply. If the complete gate does not finish with a
-successful final result, publish `blocked` with exact evidence; do not claim the
-full suite passes.
+### Success
 
-## Acceptance criteria
-
-- A public deterministic builder/package entrypoint exists.
-- The builder preserves supplied certified analytical values and computes no new
-  analytical truth.
-- Temporal boundaries and freshness are typed, UTC-explicit, deterministic, and
-  free of wall-clock dependence.
-- Schema, record kind, package version, commit, provenance, envelope, and manifest
-  agreement is validated fail-closed.
-- Unknown or contradictory versions are rejected.
-- All 12 certified fixtures validate and round-trip without analytical or
-  disposition changes.
-- Import surfaces remain healthy.
-- GeoX emits handoff eligibility only; MMM compatibility remains MMM-owned.
-- All authorization flags remain false.
-- No production inference, assignment, TrustReport, CalibrationSignal,
-  ExperimentEvidence, DecisionSurface, recommendation, LLM, scheduler, live API,
-  or budget-optimization authority is added.
-
-## State transitions
-
-On success, publish `ready_for_review` with populated implementation commit,
+Publish `ready_for_review` only after all requirements and validation succeed.
+Record exactly one implementation SHA, exact validation commands and counts,
 empty blockers, `task_execution_authorized: true`, `merge_authorized: false`,
-null reviewed/approval SHAs, and unchanged capability authority. Commit and push
-the exact feature-branch head, prove local/remote equality, and stop.
+null reviewed/approval SHAs, and unchanged capability authority. Push the exact
+branch head, prove local/remote equality, and stop.
 
-On failure, publish an accurate `blocked` state with specific blockers and exact
-validation evidence, commit and push the branch, and stop.
+### Failure
 
-Do not create a pull request, merge, squash, rebase, force-push, or delete the
-branch during execution.
+After substantive work is committed, publish an accurate `blocked` state with:
 
-## Later approved merge
+- the exact latest substantive implementation SHA;
+- the exact remote branch head reported externally after push;
+- every completed and failed command with counts;
+- precise remaining code and validation blockers; and
+- unchanged merge and capability authority.
 
-Only external approval of the exact remote review-head SHA authorizes a merge
-session. Re-bootstrap, verify unchanged authorization boundary and exact approved
-head, rerun all required validation, merge using `git merge --ff-only`, push and
-verify `main`, clean the completed branch, and create exactly one post-merge
-closure commit updating only the three stable execution files.
+Do not claim no implementation commit exists when committed implementation work
+is present.
 
-## Prohibited authority
+## Prohibited operations and authority
 
-This task does not authorize or change estimator execution, method selection,
-design eligibility, assignment, inference, causal-readout production status,
-multicell/shared-control claims, MMM compatibility, ExperimentEvidence,
-CalibrationSignal, TrustReport, DecisionSurface, recommendation, optimization,
-LLM decisioning, scheduling, live integration, real data, pilot, production, or
-package-side agents.
+Do not create a PR, merge, squash, rebase, force-push, rewrite history, delete the
+branch, or expand owned files. This task does not authorize production inference,
+method selection, design or assignment, causal-readout production status,
+multicell/shared-control claims, MMM compatibility, `ExperimentEvidence`,
+`CalibrationSignal`, `TrustReport`, `DecisionSurface`, recommendations,
+optimization, LLM decisioning, scheduling, live integration, real data, pilot,
+production, or package-side agents.
