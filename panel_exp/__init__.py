@@ -25,7 +25,6 @@ from panel_exp.spec import (
 
 # Design
 from panel_exp.design.assign import (
-    BalancedRandomization,
     CompleteRandomization,
     Rerandomization,
     StratifiedRandomization,
@@ -74,6 +73,10 @@ __all__ = [
 
 def __getattr__(name: str):
     """Lazy imports for heavy method modules."""
+    if name == "BalancedRandomization":
+        from panel_exp.design.assign import BalancedRandomization
+
+        return BalancedRandomization
     if name == "SyntheticControl":
         from panel_exp.methods.scm import SyntheticControl
 
@@ -87,3 +90,8 @@ def __getattr__(name: str):
 
         return TBRRidge
     raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+
+
+# Bind the public design class after package initialization so imports from the
+# package root remain stable even when Track B is imported first.
+from panel_exp.design.assign import BalancedRandomization  # noqa: E402,F401
