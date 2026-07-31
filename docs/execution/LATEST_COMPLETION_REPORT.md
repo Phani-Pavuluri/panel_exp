@@ -30,9 +30,23 @@ implementation or renamed replacement is currently established. Nine unknown
 `slow` marker warnings and two invalid-escape deprecation warnings are separate,
 non-blocking baseline warnings.
 
-## Authorized-task placeholder
+## Validation result
 
-Before `ready_for_review`, replace this placeholder with:
+The eager Track-B/artifacts circular-import failure is resolved by a lazy
+`panel_exp.artifacts.export_geo_run_bundle` dispatcher. Fresh-process focused
+tests were added, but the required Docker validation remains blocked:
+
+- the circular-import collection error no longer appears;
+- `tests/test_audit_fixes.py` still fails collection on
+  `from panel_exp import BalancedRandomization`;
+- the nine `PytestUnknownMarkWarning` entries for `pytest.mark.slow` remain
+  registration-only warnings;
+- no implementation commit or review head was published.
+
+The remaining failure requires further isolated diagnosis of package-root
+import resolution. No repair beyond the lazy cycle break is claimed.
+
+Required evidence still pending before `ready_for_review` includes:
 
 - exact clean-main failure reproduction and root-cause evidence;
 - exact task-authoring boundary and synchronized-main evidence;
@@ -55,5 +69,5 @@ estimation, inference, instrument identity, governed readouts, numerical truth,
 method-family status, multicell/shared-control status, production inference,
 MIP/MMM integration, downstream decisioning, or package-side agents.
 
-No implementation result, review approval, merge approval, or repair completion
-is implied by this placeholder.
+No implementation completion, review approval, merge approval, or production
+authority is implied. State is `blocked`; merge authorization remains false.
