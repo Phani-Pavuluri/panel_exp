@@ -39,6 +39,11 @@ warnings. Ruff, JSON validation, and `git diff --check` also passed. The full
 without actionable tracebacks or a final summary; this is deferred repository
 validation debt, not a failure of this narrow import-provenance repair.
 
+An external validation exception waives the original full-suite completion
+criterion for `GEOX_BASELINE_IMPORT_HEALTH_RECOVERY_001` only. Focused isolated-
+Docker validation is the acceptance gate; this exception does not apply to
+future GeoX tasks, and the full suite is not claimed to pass.
+
 Implementation commit: `cc43be7d1dd69488b2a683a0180b05889cf00e72`.
 No review head was published. The suspended V2 branch remains unchanged.
 State is `ready_for_review`; merge authorization remains false and reviewed and

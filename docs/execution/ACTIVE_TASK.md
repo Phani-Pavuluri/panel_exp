@@ -37,6 +37,17 @@ Do not add another compatibility shim without evidence.
 
 ## Objective
 
+## Externally authorized validation exception
+
+For `GEOX_BASELINE_IMPORT_HEALTH_RECOVERY_001` only, the original full
+`make validate-docker` completion criterion is waived. The acceptance gate is
+focused isolated-Docker validation covering the import-health tests, the
+formerly failing contract test, and `tests/test_audit_fixes.py`, together with
+passing Ruff, JSON validation, and `git diff --check`. The incomplete full-suite
+run remains unresolved GeoX repository-validation debt; this task does not
+claim that the full suite passes. This exception does not apply to future GeoX
+tasks.
+
 Reconcile the unauthorized merge, identify the first point where full test
 collection resolves `panel_exp` incorrectly, apply the smallest root-cause fix,
 and restore complete Docker validation. Preserve the lazy artifacts export that
