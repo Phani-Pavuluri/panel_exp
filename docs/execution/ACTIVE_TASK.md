@@ -1,179 +1,168 @@
 # Active Task
 
-**Status:** authorized
+**Status:** authorized adoption
 **Owner:** GeoX repository governance
 **Last updated:** 2026-07-30
-**Task ID:** `GEOX_REPO_NATIVE_EXECUTION_HANDOFF_ADOPTION_001`
+**Last verified:** 2026-07-30
+**Verified against:** GeoX `main` / `373b2fb34f4e5f93b43fd2009de529acb0ccc8ed`
+**Update trigger:** execution-state transition, review decision, or task closure.
 
 ## Identity
 
-- **Repository:** `Phani-Pavuluri/panel_exp`
-- **Verified code checkpoint:** `860182386c39f487747de5f43e67a31e9978e57c`
-- **Base branch:** `main`
-- **Feature branch:** `feat/geox-repo-native-execution-handoff-adoption-001`
+- **Task ID:** `GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_001`
+- **Base branch/SHA:** `main` / `373b2fb34f4e5f93b43fd2009de529acb0ccc8ed`
+- **Feature branch:** `feat/geox-repo-native-execution-handoff-v2-adoption-001`
 - **Execution mode:** `branch_and_fast_forward`
-- **Canonical MIP workflow pin:** `Phani-Pavuluri/marketing_intelligence_platform@5eebba6750a3754e4026397d6762c601b1d6a708`
-- **Canonical standard:** `docs/execution/TASK_EXECUTION_STANDARD.md` in the pinned MIP commit
+- **Canonical MIP V2 pin:** `Phani-Pavuluri/marketing_intelligence_platform@38f88467f55d5bc4cc64e5a58b0f08f1639a40d0`
+- **Canonical MMM workflow pin:** `Phani-Pavuluri/MMM@1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
+- **Superseded task:** `GEOX_REPO_NATIVE_EXECUTION_HANDOFF_ADOPTION_001`
+- **Capability authorizations changed:** `false`
 
-The task-authoring commits that add this file and `EXECUTION_STATE.json` to
-GeoX `main` are metadata only. Before creating the feature branch, verify the
-pinned code checkpoint is an ancestor of current `main` and that every change
-since it is limited to those two task-authoring files. Stop on any product-code
-or other unexpected change.
+## Why a new task is required
+
+The V1 GeoX adoption task was authorized on `main` but never executed: no
+feature branch, implementation commit, completion report, review head, merge, or
+closure exists. It pins obsolete MIP commit `5eebba6` and uses the legacy
+`approved_for_merge` lifecycle.
+
+This V2 task supersedes that unstarted task. It does not claim the V1 task was
+implemented, reviewed, merged, or closed.
 
 ## Objective
 
-Adopt the MIP repo-native task, completion-report, review, merge, and fresh-chat
-handoff workflow in GeoX without creating an independent competing governance
-framework. This task changes workflow metadata only.
+Adopt the final MIP V2 repository-native workflow in GeoX and establish durable
+Git-backed task discovery, execution, review, exact-head approval, fast-forward
+merge, closure, and fresh-chat handoff. This is workflow governance only.
 
-## Prerequisites
-
-1. Local and remote GeoX `main` agree.
-2. GeoX checkpoint `860182386c39f487747de5f43e67a31e9978e57c`
-   exists and is an ancestor of current `main`.
-3. MIP pin `5eebba6750a3754e4026397d6762c601b1d6a708`
-   exists on MIP `main` and contains the canonical execution standard, fresh-chat
-   bootstrap, stable-path model, and merged closure state.
-4. `.codex/` and `docs/tasks/` remain local-only and untracked.
-5. No prior GeoX execution-handoff adoption is already present.
+No GeoX analytical behavior or authority is owned or authorized.
 
 ## Owned files
 
-Create or replace only:
+Execution may create or modify only:
 
 - `AGENTS.md`
-- `docs/execution/REPOSITORY_CONTEXT_INDEX.md`
 - `docs/execution/ACTIVE_TASK.md`
-- `docs/execution/LATEST_COMPLETION_REPORT.md`
 - `docs/execution/EXECUTION_STATE.json`
-- one focused reusable consistency test in the repository's existing governance
-  or documentation test location
-- one documentation index only when required for discoverability
+- `docs/execution/LATEST_COMPLETION_REPORT.md`
+- `docs/execution/REPOSITORY_CONTEXT_INDEX.md`
+- `tests/test_repo_native_execution_handoff.py`
+- one existing documentation index only when strictly required for discovery
 
-Do not copy the MIP `TASK_EXECUTION_STANDARD.md` into GeoX. Pin and reference the
-canonical MIP commit instead.
+Do not modify estimators, designs, assignment, inference, contracts, fixtures,
+numerical truth, governed-readout semantics, roadmaps, validation registries,
+MIP, or MMM.
+
+## Task-authoring boundary
+
+The pre-authoring base is `373b2fb34f4e5f93b43fd2009de529acb0ccc8ed`.
+Verify `base_sha..authorization_head_sha` changes only the stable task and report
+files. Because a commit cannot contain its own SHA, one state-only commit may
+exist immediately after `authorization_head_sha` solely to record that boundary.
+No other intervening path or commit is permitted.
+
+Create the feature branch from exact synchronized post-authoring `main`.
+
+## Prerequisites
+
+1. Before task discovery, classify the full worktree and fail closed on unrelated
+   tracked changes or unexpected untracked paths. Permit untracked content only
+   below `.codex/` and `docs/tasks/`; never stage or commit it.
+2. Run `git fetch --prune origin`; hydrate shallow or missing history; switch to
+   `main`; run `git pull --ff-only origin main`; prove local `main` equals
+   `origin/main`.
+3. Verify MIP pin `38f88467f55d5bc4cc64e5a58b0f08f1639a40d0`
+   exists on MIP `main`, contains `docs/execution/TASK_EXECUTION_STANDARD.md`,
+   and records closed V2 recovery.
+4. Verify MMM pin `1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
+   exists on MMM `main` and records closed V2 workflow reconciliation.
+5. Verify the superseded GeoX V1 task was never implemented: no corresponding
+   feature branch, implementation commit, completion report, or merge exists.
+6. Verify the task-authoring boundary and current GeoX checkpoint exactly.
 
 ## Required implementation
 
-### `AGENTS.md`
+1. Create and switch to
+   `feat/geox-repo-native-execution-handoff-v2-adoption-001` from synchronized
+   post-authoring `main`.
+2. Create `AGENTS.md` requiring, before task discovery:
+   - full worktree classification;
+   - only `.codex/` and `docs/tasks/` as permitted local-only untracked paths;
+   - `git fetch --prune origin` and history hydration;
+   - `git switch main` and `git pull --ff-only origin main`;
+   - exact local/remote `main` equality;
+   - then state, task, context index, relevant GeoX evidence, and pinned MIP
+     standard/program files.
+3. Implement V2 execution semantics:
+   - `Execute the active task` verifies authorization, boundary, prerequisites,
+     branch, scope, validation, commit, push, and stops at `ready_for_review`;
+   - exact remote-head approval is external;
+   - no `approved_for_merge` state and no pre-merge approval metadata commit;
+   - persisted `merge_authorized` remains false until closure;
+   - merge uses `git merge --ff-only`, with no PR, squash, rebase, merge commit,
+     force update, or history rewrite;
+   - exactly one post-merge closure commit records approval, validation,
+     synchronization, authority, and cleanup.
+4. Create `REPOSITORY_CONTEXT_INDEX.md` as a concise navigation index covering:
+   - pinned MIP standard and canonical MIP program files;
+   - GeoX method-family status, instrument identity, and selection-gate state;
+   - governed experiment-readout contract and certified fixtures;
+   - numerical-truth fixtures and validation evidence;
+   - active roadmaps, open investigations, D6/release evidence, and deferred
+     package-side agent roadmap;
+   - MMM as compatibility owner and MIP as consumer/orchestrator;
+   - exact cross-repository checkpoint verification.
+5. Add a Fresh Chat Bootstrap requiring Git synchronization before reading
+   execution state and forbidding modification or authorization without explicit
+   user direction.
+6. Upgrade state to `geox_repo_execution_state_v2`. Allowed statuses are only:
+   `idle`, `proposed`, `authorized`, `in_progress`, `blocked`,
+   `ready_for_review`, `changes_requested`, `merged`, and `superseded`.
+7. Add `tests/test_repo_native_execution_handoff.py` to enforce:
+   - V2 schema/status vocabulary and canonical MIP pin;
+   - mandatory bootstrap order and local-only path policy;
+   - task/state/report/context agreement;
+   - external exact-head approval, no pre-merge approval commit,
+     fast-forward-only merge, and one closure commit;
+   - state-specific invariants for `authorized`, `ready_for_review`, and
+     `merged`;
+   - `capability_authorizations_changed: false`.
+8. Write `TASK_COMPLETION_REPORT_V2` with exact lineage, changed files,
+   prerequisites, validation, local versus GitHub-observed evidence, limitations,
+   branch state, and authority impact.
+9. Run focused execution-handoff and relevant documentation/governance tests,
+   JSON and Markdown/path checks, Ruff, mypy, `git diff --check`, and
+   Docker-backed `make validate`.
+10. On any failed prerequisite or validation, publish an accurate `blocked`
+    branch state and stop.
+11. On success, publish `ready_for_review` with execution authorization true,
+    merge authorization false, null reviewed/approval SHAs, populated
+    implementation SHA, no blockers, and unchanged capability authority.
+12. Push and verify the exact remote branch head, then stop. Do not create a PR,
+    merge, or delete branches during execution.
 
-Require every Codex session to read, in order:
+## Completion and authority requirements
 
-1. `docs/execution/EXECUTION_STATE.json`
-2. `docs/execution/ACTIVE_TASK.md`
-3. `docs/execution/REPOSITORY_CONTEXT_INDEX.md`
-4. relevant GeoX contracts, roadmaps, validation evidence, and the pinned MIP
-   standard/program files
+The report must explicitly confirm whether the task changed or authorized:
 
-For `Execute the active task`, require fail-closed verification of authorization,
-checkpoint ancestry, task/state agreement, exact feature branch, prerequisites,
-owned files, focused/full validation, completion-report creation, state change to
-`ready_for_review`, commit/push, and stop without merging.
+design eligibility; assignment; estimator or inference status; instrument
+identity; governed-readout semantics; numerical truth; multicell/shared-control
+status; production inference; package-side agents; CalibrationSignal;
+ExperimentEvidence; TrustReport; DecisionSurface; recommendations; LLM
+decisioning; or budget authority.
 
-For `Merge the approved active task`, require exact reviewed-head integrity,
-`approved_for_merge`, `merge_authorized: true`, fast-forward-only merge, push,
-synchronization, closure metadata, and local/remote branch cleanup. No PR is
-required. Stop rather than guess.
+Every item must remain unchanged and unauthorized.
 
-### `REPOSITORY_CONTEXT_INDEX.md`
+## Later approved merge and closure
 
-Create a concise navigation index, not a duplicate roadmap. Include:
-
-- the pinned MIP execution standard and seven canonical MIP `docs/program/*`
-  files;
-- GeoX method-family status and instrument identity sources;
-- governed readout contract and certified governed-readout fixtures;
-- numerical-truth fixtures and validation evidence;
-- current GeoX roadmaps, open investigations, release/D6 evidence, and deferred
-  package-side agent roadmap;
-- MMM as final compatibility owner and MIP as consumer/orchestrator;
-- exact checkpoint verification requirements.
-
-Add a **Fresh Chat Bootstrap** prompt that instructs a fresh ChatGPT chat to use
-connected GitHub as source of truth, read the stable GeoX execution files and
-pinned MIP program files, verify current main and cross-repository checkpoints,
-and summarize current state, active task, latest completion, blockers,
-dependencies, authority boundaries, and next eligible work without modifying or
-authorizing anything.
-
-### Stable execution files
-
-Use one replace-in-place copy of:
-
-- `docs/execution/ACTIVE_TASK.md`
-- `docs/execution/LATEST_COMPLETION_REPORT.md`
-- `docs/execution/EXECUTION_STATE.json`
-
-Git history preserves prior versions. Do not create per-task report archives.
-
-The completed branch state must use schema
-`geox_repo_execution_state_v1`, task ID
-`GEOX_REPO_NATIVE_EXECUTION_HANDOFF_ADOPTION_001`, status
-`ready_for_review`, `task_execution_authorized: true`,
-`merge_authorized: false`, null reviewed/approval SHAs, a populated
-implementation commit SHA, `capability_authorizations_changed: false`, and no
-blockers.
-
-### Completion report
-
-Write `TASK_COMPLETION_REPORT_V1` with exact changed files, prerequisites,
-deliverables, acceptance results, focused and full validation, Ruff, mypy,
-`git diff --check`, Docker-backed `make validate`, GitHub-observed versus local
-evidence, limitations, deferred work, merge readiness, and local-only paths.
-
-Also report explicitly whether the task changed or authorized any of:
-
-- design eligibility or assignment behavior;
-- estimator or inference status;
-- instrument identity;
-- governed readout semantics;
-- numerical-truth fixtures;
-- multicell/shared-control status;
-- production inference authority;
-- package-side agent authority;
-- CalibrationSignal, ExperimentEvidence, TrustReport, DecisionSurface,
-  recommendation, LLM decisioning, or budget authority.
-
-For this adoption task, every item above must remain unchanged and unauthorized.
-
-## Focused test
-
-Add a reusable test that derives the task ID from state rather than hardcoding
-this bootstrap task forever. Verify required paths, JSON parsing, schema/status
-vocabulary, task/state/report agreement, boolean fields, stable AGENTS paths,
-fresh-chat bootstrap, and state-specific invariants:
-
-- `ready_for_review` requires execution authorized, merge unauthorized,
-  implementation SHA populated, and reviewed/approval SHAs null;
-- `approved_for_merge` requires execution and merge authorization plus populated
-  reviewed and approval SHAs;
-- this adoption task specifically requires
-  `capability_authorizations_changed: false`.
-
-## Validation
-
-Run repository-standard JSON and Markdown/path checks, the focused execution
-consistency test, relevant documentation/governance tests, Ruff, mypy,
-`git diff --check`, and Docker-backed `make validate`.
-
-If Docker, dependency download, repository state, or prerequisite verification
-fails, stop and preserve the branch. Do not claim success.
+Only after explicit approval of the exact remote V2 branch head may Codex merge.
+It must repeat synchronization and validation, fast-forward the approved SHA,
+push and verify `main`, delete the V2 branch, and create exactly one closure
+commit. The closure commit becomes the canonical GeoX workflow pin.
 
 ## Prohibited scope
 
-Do not change GeoX estimators, designs, assignment, inference, contracts,
-fixtures, numerical truth, readout semantics, method status, production
-authority, MIP, or MMM. Do not add a scheduler, GitHub Action, workflow engine,
-custom agent, PR template, or package-side agent.
-
-## Commit, push, and stop
-
-After successful validation:
-
-- commit with message `Adopt repo-native execution handoff workflow`;
-- push `feat/geox-repo-native-execution-handoff-adoption-001`;
-- do not create a PR;
-- do not merge;
-- do not delete the branch;
-- stop for ChatGPT review.
+Do not authorize or change production p-values or confidence intervals,
+TrustReport operations, CalibrationSignal/MMM ingestion, LLM decisioning,
+production decisioning, live APIs, schedulers, budget optimization, selector or
+router runtime, method-family production inference, multicell production claims,
+or package-side agents.
