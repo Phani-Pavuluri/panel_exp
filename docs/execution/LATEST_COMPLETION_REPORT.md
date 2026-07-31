@@ -76,3 +76,14 @@ does not authorize or change GeoX design, assignment, estimation, inference,
 instrument identity, governed readouts, numerical truth, method-family status,
 multicell/shared-control status, production inference, MIP/MMM decisioning, or
 package-side agents.
+
+## Closure
+
+External exact-head approval was recorded for
+`ce7ae512bfe952853924b78cae22db87e092e4cf`. Main was fast-forwarded with
+`git merge --ff-only` and pushed at that exact approved head. Focused validation
+remains `26 passed`, `2 warnings`; unresolved full-suite validation debt is
+retained and the full suite is not claimed to pass. The old V2 task and branch
+remain superseded and were never merged or cherry-picked. Both completed branch
+cleanups are recorded; the superseded branch was verified at
+`315ae7c996551c0f1fdb2414791be7e63586222d` before deletion.

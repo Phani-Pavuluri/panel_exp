@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** ready_for_review
+**Status:** merged
 **Owner:** GeoX repository governance
 **Last updated:** 2026-07-31
 **Last verified:** 2026-07-31
@@ -141,6 +141,10 @@ repository-validation debt and is not a gate for this governance-only adoption.
 - No PR or merge occurs before exact-head review and external approval.
 
 ## Post-merge sequence
+
+Merged by `git merge --ff-only` at approved exact head
+`ce7ae512bfe952853924b78cae22db87e092e4cf`; both completed branch cleanups
+are recorded after closure.
 
 After exact-head approval, fast-forward merge the fresh branch and create exactly
 one closure commit. Delete the completed fresh branch locally and remotely. At
