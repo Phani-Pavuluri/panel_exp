@@ -2,7 +2,7 @@
   "schema_version": "geox_repo_execution_state_v2",
   "repository": "Phani-Pavuluri/panel_exp",
   "task_id": "GEOX_GOVERNED_READOUT_BUILDER_PACKAGE_ENTRYPOINT_001",
-  "status": "blocked",
+  "status": "changes_requested",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
   "base_sha": "e0cef94c063b03b29e1e1760fb1c2320ce497b56",
@@ -21,12 +21,19 @@
   "approval_commit_sha": null,
   "capability_authorizations_changed": false,
   "last_updated": "2026-07-31",
-  "blockers": ["full_docker_gate_stalled_around_29_percent_without_final_summary"],
+  "blockers": [
+    "fourth_cycle_did_not_implement_authorized_builder_corrections",
+    "context_index_remains_stale_and_internally_contradictory",
+    "all_12_fixture_conformance_and_required_test_matrix_incomplete",
+    "full_docker_gate_lacks_successful_final_summary"
+  ],
+  "rejected_review_head_sha": "5fd97f87ef19378001fa5f92e6adf17bb00abe25",
+  "rejected_implementation_commit_sha": "865d8641ae44b8b47ec64d62825a29e23490d0d6",
   "pr_creation_authorized": false,
   "full_suite_validation_required": true,
   "validation_scope": "focused_isolated_docker_and_complete_repository_docker_gate",
   "prior_task_id": "GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_RECOVERY_001",
   "prior_task_closure_sha": "e0cef94c063b03b29e1e1760fb1c2320ce497b56",
   "recommended_by_artifact": "GEOX_CERTIFIED_GOVERNED_READOUT_FIXTURES_001",
-  "task_authoring_note": "Fourth remediation cycle authorized on the existing feature branch after rejected review head abb94ef8341cc32d4b1c71a2970286c6be7081c5 and rejected substantive implementation 865d8641ae44b8b47ec64d62825a29e23490d0d6. The scope is narrowly expanded to docs/execution/REPOSITORY_CONTEXT_INDEX.md and tests/test_repo_native_execution_handoff.py to absorb the stable-navigation prerequisite from current MIP main 3520176126d129e9288a9ce37591299ec856650a. This does not complete the broader proposed GeoX coordination-protocol adoption task. Complete the typed builder, temporal/freshness contract, version/provenance agreement, all 12 fixture conformance, comprehensive tests, evidence, focused Docker validation, and full canonical Docker gate before review."
+  "task_authoring_note": "External review rejects remote head 5fd97f87ef19378001fa5f92e6adf17bb00abe25. After the fourth-cycle authorization head, execution changed only REPOSITORY_CONTEXT_INDEX.md and execution metadata, passed 5 focused tests, and reran a full Docker gate that stalled around 29 percent. It did not implement the authorized typed builder, temporal/freshness artifact contract, version/provenance agreement, all-12 fixture conformance, comprehensive tests, or Track-D evidence. The context index still names the prior recovery task and contains both the obsolete MIP pin 38f88467 and current checkpoint 352017612, so the narrow adoption is also incomplete. Continue on the same branch with new substantive commits; do not rerun the full gate until focused implementation and evidence requirements pass. Merge, PR, and capability authority remain false."
 }
