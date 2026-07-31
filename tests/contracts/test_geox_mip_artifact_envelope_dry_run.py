@@ -1,29 +1,5 @@
 import json
-import importlib.util
-import sys
-import types
-from pathlib import Path
-
-
-ROOT = Path(__file__).parents[2]
-pkg = types.ModuleType("panel_exp")
-pkg.__path__ = [str(ROOT / "panel_exp")]
-contracts_pkg = types.ModuleType("panel_exp.contracts")
-contracts_pkg.__path__ = [str(ROOT / "panel_exp" / "contracts")]
-sys.modules.setdefault("panel_exp", pkg)
-sys.modules.setdefault("panel_exp.contracts", contracts_pkg)
-
-
-def _load(name, path):
-    spec = importlib.util.spec_from_file_location(name, path)
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[name] = module
-    spec.loader.exec_module(module)
-    return module
-
-
-_load("panel_exp.contracts.geox_mip_artifact_envelope", ROOT / "panel_exp/contracts/geox_mip_artifact_envelope.py")
-runtime = _load("panel_exp.contracts.geox_mip_artifact_envelope_dry_run", ROOT / "panel_exp/contracts/geox_mip_artifact_envelope_dry_run.py")
+from panel_exp.contracts import geox_mip_artifact_envelope_dry_run as runtime
 
 
 def test_cases_a_through_f_are_valid_and_ordered():
