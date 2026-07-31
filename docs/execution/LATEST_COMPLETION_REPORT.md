@@ -90,4 +90,4 @@ Focused isolated-Docker validation passed: `26 passed`, `2 warnings`; Ruff,
 JSON parsing, Markdown/path and pin checks, and `git diff --check` passed. The
 full GeoX suite remains separate unresolved validation debt and is not claimed
 to pass. Implementation commit:
-`7de888a8dab2a1dfc8d0d58c8556e13f0bf131f6`.
+`612ede5039af20318a4c599b1453e05df3c40501`.
