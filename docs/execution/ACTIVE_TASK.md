@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** changes_requested
+**Status:** authorized
 **Owner:** GeoX repository governance
 **Last updated:** 2026-07-31
 **Last verified:** 2026-07-31
@@ -11,56 +11,80 @@
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Current verified GeoX main:** `ee9673c13e69082367c1727568946ac4c1a01015`
 - **Existing feature branch:** `feat/geox-governed-readout-builder-package-entrypoint-001`
+- **Pre-authorization branch head:** `69b792bc0dfbae8cd6e8185b9aff5441c558689a`
 - **Execution mode:** `branch_and_fast_forward`
-- **Latest rejected remote head:** `5fd97f87ef19378001fa5f92e6adf17bb00abe25`
+- **Latest rejected remote execution head:** `5fd97f87ef19378001fa5f92e6adf17bb00abe25`
 - **Latest rejected substantive implementation:** `865d8641ae44b8b47ec64d62825a29e23490d0d6`
-- **Current MIP execution/coordination standard:** `Phani-Pavuluri/marketing_intelligence_platform@3520176126d129e9288a9ce37591299ec856650a`
+- **Canonical MIP coordination closure:** `Phani-Pavuluri/marketing_intelligence_platform@3520176126d129e9288a9ce37591299ec856650a`
+- **Live MIP main observed at authorization:** `8655520d895128c0defccf76e632cdb4d1efe891`
 - **Current MMM workflow checkpoint:** `Phani-Pavuluri/MMM@1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
 - **Prior GeoX closure:** `GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_RECOVERY_001@e0cef94c063b03b29e1e1760fb1c2320ce497b56`
 - **Capability authorizations changed:** `false`
 
+## Authorization decision
+
+The user authorized continuation of this existing GeoX task on 2026-07-31.
+Continue on the same feature branch and preserve all history. Do not merge the
+current branch, create a replacement task, create a replacement branch, or open
+a pull request.
+
+This authorization requires a new substantive implementation commit after
+`865d8641ae44b8b47ec64d62825a29e23490d0d6`. A context-only,
+execution-metadata-only, validation-only, or report-only cycle is not execution
+of this task.
+
 ## Purpose
 
-Complete the deterministic, non-production package entrypoint that constructs the
-canonical `GeoXGovernedExperimentReadout` and optional blocked transport envelope
-from explicit typed producer inputs or certified fixture metadata.
+Complete the deterministic, non-production package entrypoint that constructs
+the canonical `GeoXGovernedExperimentReadout` and optional blocked transport
+envelope from explicit typed producer inputs or certified fixture metadata.
 
-This remediation cycle also absorbs the smallest GeoX execution-handoff
-correction required to validate the builder task under the merged MIP execution
-model. It does not complete or claim the broader proposed
+The task also absorbs the minimum GeoX execution-handoff correction required to
+make `REPOSITORY_CONTEXT_INDEX.md` a stable navigation source under the merged
+MIP execution model. It does not complete or claim the broader proposed
 `GEOX_CROSS_REPOSITORY_COORDINATION_PROTOCOL_ADOPTION_001` workstream.
 
-The LLM or transport layer must not calculate experiment truth. This task must not
-run estimators or inference, select methods or assignments, recalculate supplied
-analytical values, determine MMM compatibility, or authorize downstream use.
-GeoX owns experiment readout truth and handoff eligibility. MMM owns calibration
-compatibility. MIP owns orchestration, coordination governance, and consumer
-approval boundaries.
+The LLM or transport layer must not calculate experiment truth. This task must
+not run estimators or inference, select methods or assignments, recalculate
+supplied analytical values, determine MMM compatibility, or authorize downstream
+use. GeoX owns experiment readout truth and handoff eligibility. MMM owns
+calibration compatibility. MIP owns orchestration, coordination governance,
+consumer contracts, reporting, and approval boundaries.
 
-## Repository bootstrap and fail-closed checks
+## Repository bootstrap and live-overlay rule
 
 Before modifying files:
 
-1. classify the complete worktree; only `.codex/` and `docs/tasks/` may remain
-   local-only untracked;
-2. run `git fetch --prune origin`, switch to `main`, pull with `--ff-only`, and
-   prove local `main == origin/main == ee9673c13e69082367c1727568946ac4c1a01015`;
-3. verify MIP `origin/main == 3520176126d129e9288a9ce37591299ec856650a`
-   and MMM `origin/main == 1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`;
-4. read root `AGENTS.md`, all four GeoX `docs/execution/` orientation files,
-   MIP `AGENTS.md`, `TASK_EXECUTION_STANDARD.md`, and the three MIP
-   cross-repository coordination files at the exact MIP pin;
-5. verify the existing feature branch descends from current GeoX `main`, is
-   exactly at or beyond this correction head, and has no unrelated or unexplained
-   tracked changes; and
-6. stop with an accurate blocked result on stale pins, overlapping ownership,
-   unresolved ancestry, duplicate implementation, or unclear authority.
-
-Do not create a replacement task or branch.
+1. Classify the complete worktree. Only `.codex/` and `docs/tasks/` may remain
+   local-only untracked; stop on unrelated tracked changes or other unexpected
+   untracked paths.
+2. Run `git fetch --prune origin`, hydrate required history, switch to `main`,
+   pull with `--ff-only`, and prove local `main == origin/main ==
+   ee9673c13e69082367c1727568946ac4c1a01015`.
+3. Verify MMM `origin/main ==
+   1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`.
+4. Fetch live MIP `origin/main`. Do not require it to equal a permanently frozen
+   current-main SHA. Instead prove canonical coordination closure
+   `3520176126d129e9288a9ce37591299ec856650a` is an ancestor of live MIP main,
+   then read live MIP `AGENTS.md`, execution state, active task, completion
+   report, coordination protocol, coordination state, and coordination history.
+5. Apply the MIP live-overlay rule: later MIP governance commits are not a GeoX
+   blocker unless live evidence changes GeoX ownership, adds a repository-owned
+   dependency, invalidates this task's authority, or changes an applicable
+   contract requirement. MIP cannot authorize, split, rename, or implement this
+   GeoX task.
+6. Read root GeoX `AGENTS.md`, all four GeoX `docs/execution/` files, relevant
+   builder/contract/fixture evidence, and the pinned MMM evidence.
+7. Verify the existing feature branch descends from current GeoX `main`, includes
+   pre-authorization head `69b792bc0dfbae8cd6e8185b9aff5441c558689a`,
+   and has no unrelated or unexplained tracked changes.
+8. Stop with an accurate `blocked` result on stale GeoX/MMM evidence, overlapping
+   ownership, unresolved ancestry, duplicate implementation, unclear authority,
+   or a material live MIP change affecting GeoX.
 
 ## Review lineage
 
-The following commits remain audit evidence and are not approved:
+The following commits remain rejected audit evidence and are not approved:
 
 - `ce672f348b5ac45dda3935597689fa1c7f5ddb12` — initial prebuilt-readout wrapper;
 - `380e2034410fabeb5a9f90f92ec31e3875938a49` — partial fixture constructor and
@@ -72,72 +96,11 @@ The following commits remain audit evidence and are not approved:
 - `abb94ef8341cc32d4b1c71a2970286c6be7081c5` — rejected third-cycle blocked
   review head; and
 - `5fd97f87ef19378001fa5f92e6adf17bb00abe25` — rejected fourth-cycle head that
-  changed only execution metadata and the context index after authorization,
-  passed five focused tests, and reran a full gate without implementing the
-  authorized builder corrections.
+  changed only execution metadata and the context index, passed five narrow
+  tests, and attempted a full gate before substantive remediation.
 
-External review of `5fd97f...` returns `CHANGES_REQUIRED`. Continue by adding new
-commits; do not rewrite or discard history.
-
-## Fourth-cycle execution failure and required correction
-
-The fourth-cycle execution did not satisfy the authorized task. After the
-authorization head, it changed only:
-
-- `docs/execution/REPOSITORY_CONTEXT_INDEX.md`; and
-- the three stable execution files.
-
-It did not modify the builder, contracts, fixtures, builder tests, or Track-D
-evidence. The context-index change itself is incomplete: it still names
-`GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_RECOVERY_001` as the active task
-and contains both the obsolete MIP pin `38f88467...` and current MIP checkpoint
-`352017612...`.
-
-The reported `5 passed` focused result therefore proves only a narrow checkpoint,
-not acceptance of the builder task. Running the complete Docker gate before the
-authorized substantive corrections was contrary to this task's implementation-
-first validation sequence. The approximately 29% stall does not replace missing
-implementation or constitute a pass.
-
-The next execution must first produce new substantive builder, contract, fixture,
-test, context-index, and evidence commits. Do not rerun the full gate until the
-focused implementation matrix passes.
-
-## Narrow execution-handoff scope amendment
-
-The earlier GeoX workflow-recovery commit
-`698dbb36d8e5001d8cda6002e14369b732cb8802` coupled the repository context index
-to the mutable active task through this assertion:
-
-```python
-assert all(state["task_id"] in text for text in (task, report, context))
-```
-
-The merged MIP standard at `3520176...` defines the repository context index as a
-stable navigation/bootstrap index. Mutable task identity and review state belong
-in `ACTIVE_TASK.md`, `EXECUTION_STATE.json`, and
-`LATEST_COMPLETION_REPORT.md`. The one-line correction already present on the
-GeoX feature branch is semantically aligned with that standard, but it was not in
-the builder task's prior owned-file boundary.
-
-This amendment explicitly authorizes the minimal GeoX correction:
-
-1. convert `docs/execution/REPOSITORY_CONTEXT_INDEX.md` from a stale active-task
-   mirror into a stable navigation index;
-2. use only current MIP pin `3520176126d129e9288a9ce37591299ec856650a`, retain
-   the live MMM pin, point to all three mutable execution files, and preserve
-   GeoX, MMM, and MIP authority boundaries;
-3. retain the rule that the current task ID must appear in the active task and
-   completion report, not necessarily in the stable context index;
-4. strengthen `tests/test_repo_native_execution_handoff.py` to verify that the
-   context index points to `ACTIVE_TASK.md`, `EXECUTION_STATE.json`, and
-   `LATEST_COMPLETION_REPORT.md`, does not claim to be the mutable active-task
-   source, and retains current canonical pins; and
-5. record this as a narrow prerequisite absorbed by this builder task, not as
-   completion of the broader GeoX coordination-protocol adoption proposal.
-
-Do not weaken any other bootstrap, synchronization, status, closure, pin,
-validation, or authority invariant.
+Branch head `69b792bc0dfbae8cd6e8185b9aff5441c558689a` records the external
+`CHANGES_REQUIRED` decision. Add new commits; do not rewrite or discard history.
 
 ## Owned files
 
@@ -163,33 +126,35 @@ Execution may modify only:
 - `docs/execution/LATEST_COMPLETION_REPORT.md`
 
 Every `tests/fixtures/geox_governed_readouts/*/source_truth.json` file is an
-immutable input. No roadmap, investigation ledger, estimator, design, assignment,
-inference, readout-policy, MIP, or MMM file is authorized.
+immutable input. No roadmap, investigation ledger, estimator, design,
+assignment, inference, readout-policy, MIP, or MMM file is authorized.
 
-## Required builder corrections
+## Required implementation
 
 ### 1. Complete typed construction contracts
 
 Define explicit serialization-safe typed structures for producer metadata,
 analytical identity and values, uncertainty, disposition, temporal boundaries,
-lineage, provenance, replay, schema/version identity, and transport metadata.
+lineage, provenance, replay, schema/version identity, and optional transport
+metadata.
 
-The primary public builder must construct a governed readout from:
+The primary public builder must construct a governed readout from either:
 
 - explicit validated typed producer inputs; or
-- a validated certified fixture readout and manifest/replay context.
+- a validated certified fixture readout with manifest and replay context.
 
-An already-created-readout helper may remain only as a clearly named validation
-or optional-envelope helper. A broad `Mapping[str, Any]` cannot remain the main
-producer contract. Do not fabricate or hard-code absent KPI units, channel,
-tactic, geography, time-window labels, statuses, request IDs, fingerprints,
-package versions, commits, schema hashes, or analytical dispositions.
+A broad `Mapping[str, Any]` cannot remain the primary producer contract. An
+already-created-readout helper may remain only as a clearly named validation or
+optional-envelope helper. Do not fabricate or hard-code absent KPI units,
+channel, tactic, geography, time-window labels, statuses, request IDs,
+fingerprints, package versions, commits, schema hashes, or analytical
+dispositions.
 
-The optional envelope must actually be optional. When requested, all envelope
-metadata must be explicit, validated, non-fabricated, and blocked for downstream
+The envelope must be genuinely optional. When requested, every envelope field
+must be explicit, validated, non-fabricated, and blocked for downstream
 consumption.
 
-### 2. Preserve temporal semantics in the governed artifact
+### 2. Preserve complete temporal semantics
 
 Represent and deterministically serialize timezone-aware UTC values for:
 
@@ -200,10 +165,9 @@ Represent and deterministically serialize timezone-aware UTC values for:
 - valid-through or expiry time; and
 - caller-supplied reference time used for freshness evaluation.
 
-Do not parse these values and then discard creation, as-of, or validity semantics.
-Validate pre/post ordering and overlap, and define defensible creation/as-of/
-valid-through chronology. Add tests that prove each rule rather than relying on
-untested positional comparisons.
+Do not parse then discard creation, as-of, or validity semantics. Validate
+pre/post ordering and overlap plus defensible creation/as-of/valid-through
+chronology. Correct the prior positional ordering error and test every rule.
 
 Freshness is deterministic:
 
@@ -212,22 +176,22 @@ Freshness is deterministic:
 
 Missing reference or validity data may produce `unknown` only for explicitly
 diagnostic or blocked records. `unknown` or `stale` evidence must fail closed for
-`eligible_for_compatibility_evaluation`. Computed freshness, declared readout
-status, and handoff eligibility must agree. Never read the wall clock or silently
-refresh evidence.
+`eligible_for_compatibility_evaluation`. Computed freshness, readout status, and
+handoff eligibility must agree. Never read the wall clock or silently refresh
+evidence.
 
 ### 3. Enforce schema, kind, package, provenance, replay, and manifest agreement
 
-Define supported values for analytical schema identity/version, record kind,
+Define and enforce supported analytical schema identity/version, record kind,
 envelope version, producer package version, producer commit, provenance package
-version/commit, replay version, and fixture-manifest version.
+version/commit, replay version, fixture-manifest version, and schema hash.
 
-Enforce required equality and compatibility across producer input, readout,
-lineage/provenance, replay metadata, envelope, fixture manifest, certified
-readout, and replay record. Reject empty, malformed, `unknown`, unsupported, or
-contradictory values. A schema hash must be explicitly supplied or
-deterministically computed from the schema; it must never be a renamed version
-string.
+Enforce required equality and compatibility across producer input, governed
+readout, lineage/provenance, replay metadata, envelope, fixture manifest,
+certified readout, and replay record. Reject empty, malformed, `unknown`,
+unsupported, fake, or contradictory values. A schema hash must be explicitly
+supplied or deterministically computed from the schema; it must not be a renamed
+version string.
 
 ### 4. Preserve certified analytical truth and authority
 
@@ -235,7 +199,8 @@ Preserve every certified identifier, effect value, uncertainty value and
 semantics, method family, instrument identity, readout status, handoff
 eligibility, warning, blocker, failure, lineage, replay field, and provenance
 field. The public fixture path must reproduce the certified governed readout,
-not derive a different artifact from differently interpreted source-truth fields.
+not derive a different artifact from differently interpreted source-truth
+fields.
 
 Do not replace certified values with `unknown`, `currency`, `pre/post`, fixture
 IDs, inferred statuses, guessed commits, or other defaults unless those exact
@@ -258,70 +223,57 @@ case:
 - load immutable `source_truth.json`, certified `governed_readout.json`, and
   `replay.json`;
 - validate manifest and version context;
-- construct or reproduce the governed readout without changing certified
-  analytical truth or disposition;
+- reproduce the governed readout without changing certified analytical truth or
+  disposition;
 - validate the optional envelope when requested;
 - prove canonical deterministic JSON round-trip and replay;
 - prove manifest/readout/replay/envelope version and provenance agreement; and
 - leave every `source_truth.json` unchanged.
 
-Record an explicit per-fixture outcome in both Track-D evidence artifacts.
+Record an explicit per-fixture result in both Track-D evidence artifacts.
 
-### 6. Complete the test matrix
+### 6. Correct the stable execution-handoff contract
 
-Add tests for:
+Convert `docs/execution/REPOSITORY_CONTEXT_INDEX.md` from a stale active-task
+mirror into a stable navigation index. It must:
 
-- direct fully typed construction;
-- optional envelope behavior;
-- all 12 fixture cases;
-- exact equality with certified governed readouts where required;
-- expiry equality and stale transition;
-- UTC normalization;
-- missing, naive, and malformed timestamps;
-- reversed and overlapping periods;
-- creation/as-of/valid-through chronology;
-- stale and unknown freshness restrictions;
-- readout-status/freshness/eligibility consistency;
-- unsupported schema, envelope, package, provenance, replay, and manifest
-  versions;
-- contradictory producer/provenance commits and package versions;
-- missing or fake metadata and invalid schema hashes;
-- unsafe authorization flags;
-- deterministic serialization and replay;
-- manifest/readout/replay/envelope agreement;
-- package-root and `panel_exp.artifacts` imports without circular or shadowed
-  imports; and
-- the corrected stable-context-index execution-handoff contract.
+- point to `ACTIVE_TASK.md`, `EXECUTION_STATE.json`, and
+  `LATEST_COMPLETION_REPORT.md` as mutable execution sources;
+- record canonical MIP coordination closure separately from the live MIP
+  observation rule;
+- retain the live MMM checkpoint;
+- preserve GeoX, MMM, and MIP authority boundaries; and
+- not claim to be the mutable active-task source.
 
-Two example tests are not sufficient.
+Strengthen `tests/test_repo_native_execution_handoff.py` to enforce those
+invariants. The current task ID must appear in the active task and completion
+report, but need not appear in the stable context index. Do not weaken any other
+bootstrap, synchronization, closure, validation, status, or authority invariant.
 
-### 7. Complete evidence
+### 7. Complete the test matrix and evidence
 
-Expand the Track-D report and machine-readable summary with:
+Add tests for fully typed direct construction, optional envelope behavior, all 12
+fixtures, exact certified equality, deterministic serialization/replay, UTC
+normalization, expiry equality and stale transition, missing/naive/malformed
+timestamps, reversed/overlapping periods, creation/as-of/valid-through
+chronology, stale/unknown restrictions, status/freshness/eligibility consistency,
+unsupported versions, contradictory commits/package versions, fake metadata,
+invalid schema hashes, unsafe authorization flags, manifest/readout/replay/
+envelope agreement, and package-root/import health.
 
-- exact typed input/output contracts and supported versions;
-- temporal and freshness rules;
-- all 12 fixture outcomes;
-- context-index adoption scope and MIP source pin;
-- exact changed paths;
-- command-level validation evidence and counts;
-- GitHub-observed versus locally reported evidence;
-- blockers, limitations, and validation debt;
-- affected workstream `WS-GEOX-READOUT-BUILDER-001`;
-- blockers advanced but not resolved: `P2-GEOX-TEMPORAL-VERSION-SEMANTICS` and
-  `P2-GEOX-READOUT-BUILDER-ENTRYPOINT`;
-- sibling and MIP/MMM consumer impact;
-- required consumer verification;
-- remaining MMM normalization and D6 blockers;
-- newly eligible work and recommended next artifact; and
-- unchanged capability authority.
+Expand both Track-D artifacts with contracts, supported versions, temporal and
+freshness rules, all 12 fixture outcomes, exact changed paths, command-level
+validation evidence and counts, GitHub-observed versus locally reported
+evidence, blockers, limitations, validation debt, workstream and blocker IDs,
+sibling impact, consumer verification, remaining MMM/D6 blockers, newly eligible
+work, recommended next artifact, and unchanged capability authority.
 
 Producer completion does not resolve consumer blockers. Do not claim MMM or MIP
 acceptance.
 
 ## Validation sequence
 
-Implementation and focused validation come before the complete repository gate.
+Implementation and focused validation must precede the complete repository gate.
 
 1. Commit substantive contract, builder, fixture, test, context-index, and
    evidence changes.
@@ -334,11 +286,11 @@ Implementation and focused validation come before the complete repository gate.
    version checks, deterministic replay checks, `git diff --check`, and exact
    changed-path verification.
 5. Run the complete canonical `make validate-docker` gate or current
-   repository-defined equivalent only after the preceding focused checks pass.
+   repository-defined equivalent only after all preceding checks pass.
 
 No host-only substitute or inherited validation exception is authorized.
 
-If Docker is unavailable or a full gate is slow/stalled, report the exact command,
+If Docker is unavailable or the full gate stalls, report the exact command,
 elapsed duration, exit/timeout state, last completed test/output,
 container/process diagnostics, durable log path, and available
 passed/failed/skipped/unexecuted counts. A percentage alone is not evidence.
@@ -357,23 +309,20 @@ authority. Push the exact branch head, prove local/remote equality, and stop.
 ### Failure
 
 After new substantive work is committed, publish an accurate `blocked` state
-with:
+with the exact latest substantive implementation SHA, exact pushed remote branch
+head reported externally, completed and failed commands with counts, precise
+remaining code/validation blockers, all fixture outcomes reached, and unchanged
+merge/capability authority.
 
-- the exact latest substantive implementation SHA;
-- the exact pushed remote branch head reported externally;
-- every completed and failed command with counts;
-- precise remaining code and validation blockers; and
-- unchanged merge and capability authority.
-
-A context-only, execution-metadata-only, or validation-only result must remain
-`changes_requested`; it is not a valid new blocked completion.
+A context-only, execution-metadata-only, validation-only, or report-only result
+must remain `changes_requested`; it is not a valid blocked completion.
 
 ## Prohibited operations and authority
 
 Do not create a PR, merge, squash, rebase, force-push, rewrite history, delete the
-branch, or expand owned files again. This task does not authorize production
-inference, method selection, design or assignment, causal-readout production
-status, multicell/shared-control claims, MMM compatibility,
-`ExperimentEvidence`, `CalibrationSignal`, `TrustReport`, `DecisionSurface`,
-recommendations, optimization, LLM decisioning, scheduling, live integration,
-real data, pilot, production, or package-side agents.
+branch, or expand owned files. This task does not authorize production inference,
+method selection, design or assignment, causal-readout production status,
+multicell/shared-control claims, MMM compatibility, `ExperimentEvidence`,
+`CalibrationSignal`, `TrustReport`, `DecisionSurface`, recommendations,
+optimization, LLM decisioning, scheduling, live integration, real data, pilot,
+production, or package-side agents.
