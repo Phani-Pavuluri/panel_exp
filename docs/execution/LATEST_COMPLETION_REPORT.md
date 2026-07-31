@@ -90,7 +90,11 @@ This is an authorization and correction checkpoint, not a completed task report.
 A second remediation cycle is authorized on the existing feature branch. The
 partial commits remain in history but are superseded for review purposes.
 
-- Task execution remains authorized.
+- Task execution is now blocked. The complete Docker gate was attempted after
+  synchronization but stalled around 29% without a final pytest summary or
+  actionable traceback. The external review requirements remain incomplete,
+  including full temporal/schema/provenance and 12-fixture conformance. No new
+  review head is claimed.
 - Merge authorization remains false.
 - Reviewed and approval SHAs remain null.
 - No current implementation SHA is designated as the completed implementation.
