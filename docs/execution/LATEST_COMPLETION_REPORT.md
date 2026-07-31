@@ -82,3 +82,9 @@ does not authorize or change GeoX design, assignment, estimation, inference,
 instrument identity, governed readouts, numerical truth, method-family status,
 multicell/shared-control status, production inference, MIP/MMM decisioning, or
 package-side agents.
+
+Focused isolated-Docker validation passed: `26 passed`, `2 warnings`; Ruff,
+JSON parsing, Markdown/path and pin checks, and `git diff --check` passed. The
+full GeoX suite remains separate unresolved validation debt and is not claimed
+to pass. Implementation commit:
+`7de888a8dab2a1dfc8d0d58c8556e13f0bf131f6`.
