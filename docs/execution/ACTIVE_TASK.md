@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** blocked
+**Status:** changes_requested
 **Owner:** GeoX repository governance
 **Last updated:** 2026-07-31
 **Last verified:** 2026-07-31
@@ -12,7 +12,7 @@
 - **Current verified GeoX main:** `ee9673c13e69082367c1727568946ac4c1a01015`
 - **Existing feature branch:** `feat/geox-governed-readout-builder-package-entrypoint-001`
 - **Execution mode:** `branch_and_fast_forward`
-- **Latest rejected remote head:** `abb94ef8341cc32d4b1c71a2970286c6be7081c5`
+- **Latest rejected remote head:** `5fd97f87ef19378001fa5f92e6adf17bb00abe25`
 - **Latest rejected substantive implementation:** `865d8641ae44b8b47ec64d62825a29e23490d0d6`
 - **Current MIP execution/coordination standard:** `Phani-Pavuluri/marketing_intelligence_platform@3520176126d129e9288a9ce37591299ec856650a`
 - **Current MMM workflow checkpoint:** `Phani-Pavuluri/MMM@1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
@@ -25,7 +25,7 @@ Complete the deterministic, non-production package entrypoint that constructs th
 canonical `GeoXGovernedExperimentReadout` and optional blocked transport envelope
 from explicit typed producer inputs or certified fixture metadata.
 
-This fourth remediation cycle also absorbs the smallest GeoX execution-handoff
+This remediation cycle also absorbs the smallest GeoX execution-handoff
 correction required to validate the builder task under the merged MIP execution
 model. It does not complete or claim the broader proposed
 `GEOX_CROSS_REPOSITORY_COORDINATION_PROTOCOL_ADOPTION_001` workstream.
@@ -51,8 +51,8 @@ Before modifying files:
    MIP `AGENTS.md`, `TASK_EXECUTION_STANDARD.md`, and the three MIP
    cross-repository coordination files at the exact MIP pin;
 5. verify the existing feature branch descends from current GeoX `main`, is
-   exactly at or beyond the authorized amendment head, and has no unrelated or
-   unexplained tracked changes; and
+   exactly at or beyond this correction head, and has no unrelated or unexplained
+   tracked changes; and
 6. stop with an accurate blocked result on stale pins, overlapping ownership,
    unresolved ancestry, duplicate implementation, or unclear authority.
 
@@ -68,12 +68,40 @@ The following commits remain audit evidence and are not approved:
 - `a9890e6d62c5e5e5a0c69801ca1c26d960267418` — narrow two-test correction;
 - `955ee991fa485e5bbd803e6446472e00520ddacb` — metadata-only blocked report;
 - `865d8641ae44b8b47ec64d62825a29e23490d0d6` — partial typed producer and
-  temporal construction; and
-- `abb94ef8341cc32d4b1c71a2970286c6be7081c5` — rejected blocked review head.
+  temporal construction;
+- `abb94ef8341cc32d4b1c71a2970286c6be7081c5` — rejected third-cycle blocked
+  review head; and
+- `5fd97f87ef19378001fa5f92e6adf17bb00abe25` — rejected fourth-cycle head that
+  changed only execution metadata and the context index after authorization,
+  passed five focused tests, and reran a full gate without implementing the
+  authorized builder corrections.
 
-External review of `abb94ef...` returned `CHANGES_REQUIRED`. The branch contains
-useful partial work, but it is not approvable or mergeable. Continue by adding new
+External review of `5fd97f...` returns `CHANGES_REQUIRED`. Continue by adding new
 commits; do not rewrite or discard history.
+
+## Fourth-cycle execution failure and required correction
+
+The fourth-cycle execution did not satisfy the authorized task. After the
+authorization head, it changed only:
+
+- `docs/execution/REPOSITORY_CONTEXT_INDEX.md`; and
+- the three stable execution files.
+
+It did not modify the builder, contracts, fixtures, builder tests, or Track-D
+evidence. The context-index change itself is incomplete: it still names
+`GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_RECOVERY_001` as the active task
+and contains both the obsolete MIP pin `38f88467...` and current MIP checkpoint
+`352017612...`.
+
+The reported `5 passed` focused result therefore proves only a narrow checkpoint,
+not acceptance of the builder task. Running the complete Docker gate before the
+authorized substantive corrections was contrary to this task's implementation-
+first validation sequence. The approximately 29% stall does not replace missing
+implementation or constitute a pass.
+
+The next execution must first produce new substantive builder, contract, fixture,
+test, context-index, and evidence commits. Do not rerun the full gate until the
+focused implementation matrix passes.
 
 ## Narrow execution-handoff scope amendment
 
@@ -96,9 +124,9 @@ This amendment explicitly authorizes the minimal GeoX correction:
 
 1. convert `docs/execution/REPOSITORY_CONTEXT_INDEX.md` from a stale active-task
    mirror into a stable navigation index;
-2. update its MIP pin to `3520176126d129e9288a9ce37591299ec856650a`, retain the
-   live MMM pin, point to all three mutable execution files, and preserve GeoX,
-   MMM, and MIP authority boundaries;
+2. use only current MIP pin `3520176126d129e9288a9ce37591299ec856650a`, retain
+   the live MMM pin, point to all three mutable execution files, and preserve
+   GeoX, MMM, and MIP authority boundaries;
 3. retain the rule that the current task ID must appear in the active task and
    completion report, not necessarily in the stable context index;
 4. strengthen `tests/test_repo_native_execution_handoff.py` to verify that the
@@ -297,14 +325,16 @@ Implementation and focused validation come before the complete repository gate.
 
 1. Commit substantive contract, builder, fixture, test, context-index, and
    evidence changes.
-2. Run focused isolated-Docker/Poetry tests for the governed-readout contract,
+2. Prove the changed paths include substantive builder/contract/test/evidence
+   work beyond execution metadata and the context index.
+3. Run focused isolated-Docker/Poetry tests for the governed-readout contract,
    builder, all 12 fixtures, envelope, numerical-truth preservation, imports, and
    repository-native execution handoff.
-3. Run Ruff for every changed Python file, configured mypy if present, JSON and
+4. Run Ruff for every changed Python file, configured mypy if present, JSON and
    version checks, deterministic replay checks, `git diff --check`, and exact
    changed-path verification.
-4. Run the complete canonical `make validate-docker` gate or current
-   repository-defined equivalent.
+5. Run the complete canonical `make validate-docker` gate or current
+   repository-defined equivalent only after the preceding focused checks pass.
 
 No host-only substitute or inherited validation exception is authorized.
 
@@ -318,14 +348,16 @@ passed/failed/skipped/unexecuted counts. A percentage alone is not evidence.
 ### Success
 
 Publish `ready_for_review` only after all requirements and validation succeed.
-Record exactly one new implementation SHA, exact validation commands and counts,
-empty blockers, `task_execution_authorized: true`, `merge_authorized: false`,
-null reviewed/approval SHAs, and unchanged capability authority. Push the exact
-branch head, prove local/remote equality, and stop.
+Record exactly one new substantive implementation SHA after
+`865d8641ae44b8b47ec64d62825a29e23490d0d6`, exact validation commands and
+counts, empty blockers, `task_execution_authorized: true`,
+`merge_authorized: false`, null reviewed/approval SHAs, and unchanged capability
+authority. Push the exact branch head, prove local/remote equality, and stop.
 
 ### Failure
 
-After substantive work is committed, publish an accurate `blocked` state with:
+After new substantive work is committed, publish an accurate `blocked` state
+with:
 
 - the exact latest substantive implementation SHA;
 - the exact pushed remote branch head reported externally;
@@ -333,8 +365,8 @@ After substantive work is committed, publish an accurate `blocked` state with:
 - precise remaining code and validation blockers; and
 - unchanged merge and capability authority.
 
-Do not claim no implementation commit exists when committed implementation work
-is present.
+A context-only, execution-metadata-only, or validation-only result must remain
+`changes_requested`; it is not a valid new blocked completion.
 
 ## Prohibited operations and authority
 
