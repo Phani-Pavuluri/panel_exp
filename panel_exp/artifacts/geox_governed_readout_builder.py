@@ -4,6 +4,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Any, Mapping
+import json
+from pathlib import Path
 
 
 @dataclass(frozen=True)
@@ -114,7 +116,11 @@ def build_geox_governed_readout_package_entrypoint(
     reasons = validate_geox_governed_experiment_readout(readout)
     if reasons:
         raise ValueError("invalid governed readout: " + ", ".join(reasons))
-    metadata = dict(envelope_metadata or {})
+    if envelope_metadata is None:
+        if readout.handoff_eligibility_status == "eligible_for_compatibility_evaluation" and freshness != "fresh":
+            raise ValueError("eligible readout requires fresh evidence")
+        return readout, None
+    metadata = dict(envelope_metadata)
     for key in ("created_at", "request_id", "input_data_fingerprint", "schema_hash"):
         if key not in metadata or not str(metadata[key]).strip():
             raise ValueError(f"missing required envelope metadata: {key}")
@@ -188,3 +194,30 @@ def build_geox_governed_readout_from_fixture(
         authorization_flags=__import__("panel_exp.contracts.geox_governed_experiment_readout", fromlist=["GeoXReadoutAuthorizationFlags"]).GeoXReadoutAuthorizationFlags(),
     )
     return build_geox_governed_readout_package_entrypoint(readout, reference_time=reference_time, envelope_metadata=envelope_metadata)
+
+
+def build_geox_governed_readout_from_certified_fixture(
+    fixture_id: str, *, fixture_root: str | Path = "tests/fixtures/geox_governed_readouts",
+    envelope_metadata: Mapping[str, Any] | None = None,
+) -> tuple[GeoXGovernedExperimentReadout, Any]:
+    """Load and reproduce a certified readout without altering analytical truth."""
+    root = Path(fixture_root) / fixture_id
+    if not root.is_dir():
+        raise ValueError(f"unknown certified fixture: {fixture_id}")
+    manifest = json.loads((Path(fixture_root) / "manifest.json").read_text())
+    if not any(c["case_id"] == fixture_id for c in manifest["cases"]):
+        raise ValueError(f"fixture is not listed in manifest: {fixture_id}")
+    certified = json.loads((root / "governed_readout.json").read_text())
+    replay = json.loads((root / "replay.json").read_text())
+    if replay.get("fixture_id", replay.get("case_id", fixture_id)) != fixture_id:
+        raise ValueError("replay fixture mismatch")
+    from panel_exp.contracts.geox_governed_experiment_readout import deserialize_geox_governed_experiment_readout
+    readout = deserialize_geox_governed_experiment_readout(certified)
+    if readout.fixture_id != fixture_id or readout.lineage.fixture_id != fixture_id:
+        raise ValueError("certified fixture identity mismatch")
+    if readout.replay_metadata.replay_version != str(replay.get("replay_version", readout.replay_metadata.replay_version)):
+        raise ValueError("replay version mismatch")
+    reasons = validate_geox_governed_experiment_readout(readout)
+    if reasons:
+        raise ValueError("invalid certified readout: " + ", ".join(reasons))
+    return build_geox_governed_readout_package_entrypoint(readout, envelope_metadata=envelope_metadata)
