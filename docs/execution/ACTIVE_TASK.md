@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** blocked
+**Status:** authorized
 **Owner:** GeoX repository governance
 **Last updated:** 2026-07-31
 **Last verified:** 2026-07-31
@@ -192,6 +192,88 @@ branch and resolve all findings below before publishing a new review head.
 
 No owned-file expansion is authorized. Do not discard or rewrite the prior
 implementation history; remediate with new commits on the same branch.
+
+## Second external review correction authorization
+
+External review of remote head
+`a9890e6d62c5e5e5a0c69801ca1c26d960267418` returned `CHANGES_REQUIRED`.
+The partial remediation commit
+`380e2034410fabeb5a9f90f92ec31e3875938a49` and its test-only correction
+`a9890e6d62c5e5e5a0c69801ca1c26d960267418` remain audit evidence but are not
+approved implementation or review heads. Continue on this same feature branch.
+Do not create a replacement task or branch.
+
+The next execution must complete all of the following rather than only editing
+execution metadata:
+
+1. **Re-bootstrap and preserve authority.** Fetch/prune, synchronize and prove
+   current `main == origin/main`, verify this feature branch descends from the
+   current authorized main without unrelated commits, re-read the canonical MIP
+   and MMM pins, and stop on stale pins, overlapping ownership, or unauthorized
+   paths. Preserve every authorization flag as false and preserve MMM ownership
+   of compatibility.
+2. **Finish the producer input contract.** Define explicit typed producer input
+   and temporal structures in the owned contract surface. The public construction
+   path must build the readout from typed producer inputs or validated certified
+   fixture records. The old prebuilt-readout wrapper may remain only as a clearly
+   named validation/envelope helper; it cannot be the primary builder contract.
+   Do not hard-code analytical metadata such as KPI units, channel, tactic,
+   geography, status, or time-window labels when those values are absent.
+3. **Finish temporal validation.** Require timezone-aware timestamps, normalize
+   to UTC, serialize canonically, validate pre/post start and end ordering,
+   prohibit overlap, require creation/as-of/valid-through consistency, and use
+   the deterministic rule `reference_time <= valid_through` as fresh and
+   `reference_time > valid_through` as stale. Missing reference or validity data
+   may serialize as `unknown` only for explicitly diagnostic records; it must
+   fail closed for handoff-eligible construction. Stale evidence must never be
+   silently converted to fresh or handoff eligible.
+4. **Finish schema and provenance validation.** Define supported analytical
+   schema identity/version, record kind, envelope version, package version,
+   producer commit, provenance version, replay version, and fixture-manifest
+   version. Enforce equality where required across producer input, readout,
+   lineage/provenance, envelope, replay metadata, and manifest. Reject `unknown`,
+   unsupported, empty, malformed, or contradictory values. A schema hash must be
+   an explicit supplied or deterministically computed hash, never a renamed
+   schema version.
+5. **Conform every certified fixture.** Load all 12 cases from the manifest,
+   construct and validate each governed readout, preserve all source numerical
+   truth and dispositions, round-trip deterministic serialization/replay, and
+   prove manifest/readout/envelope version agreement. Do not modify any
+   `source_truth.json` file.
+6. **Complete the test matrix.** Add positive and negative tests covering all 12
+   fixtures, typed direct construction, expiry equality, UTC conversion,
+   missing/naive/malformed timestamps, reversed and overlapping periods,
+   stale/unknown behavior, unsupported versions, contradictory producer commit
+   and package/provenance metadata, unsafe authorization flags, deterministic
+   JSON serialization/replay, package-root and artifacts imports, and exact
+   changed-path enforcement. Two example-readout tests are not sufficient.
+7. **Complete evidence.** Expand the Track-D report and machine-readable summary
+   with exact supported contracts and versions, migration/conformance outcome for
+   all 12 fixtures, validation commands and exact counts, GitHub-observed versus
+   locally reported evidence, limitations, validation debt, sibling/consumer
+   impact, remaining D6/MIP/MMM blockers, next eligible work, and unchanged
+   authority.
+8. **Run the mandatory gates.** Start or repair Docker access before validation.
+   Run the focused isolated-Docker/Poetry tests, Ruff for every changed Python
+   file, configured mypy if present, JSON/version checks, deterministic replay,
+   import health, execution-handoff tests, `git diff --check`, exact changed-path
+   verification, and the complete canonical `make validate-docker` gate or its
+   repository-defined equivalent. No host-only substitute and no inherited
+   exception are authorized.
+9. **Publish accurate state.** On success, commit substantive implementation and
+   evidence, then publish `ready_for_review` with one exact implementation SHA,
+   an exact remote branch head in the completion report, empty blockers, no
+   reviewed/approval SHA, merge authorization false, and unchanged capability
+   authority. On failure after substantive code is committed, publish `blocked`
+   with the exact latest substantive implementation SHA, exact remote branch
+   head, command-level validation results and counts, and specific remaining
+   blockers. Do not claim that no implementation commit exists when committed
+   implementation changes are present.
+
+Do not spend another execution cycle only correcting prose or state. The code,
+fixtures, tests, evidence, and required Docker validation must be completed
+before requesting another review. No PR, merge, squash, rebase, force-push,
+history rewrite, branch deletion, or owned-file expansion is authorized.
 
 ## Validation gate
 
