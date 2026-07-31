@@ -1,16 +1,19 @@
 {
-  "schema_version": "geox_repo_execution_state_v1",
+  "schema_version": "geox_repo_execution_state_v2",
   "repository": "Phani-Pavuluri/panel_exp",
-  "task_id": "GEOX_REPO_NATIVE_EXECUTION_HANDOFF_ADOPTION_001",
+  "task_id": "GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_001",
   "status": "authorized",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
-  "base_sha": "860182386c39f487747de5f43e67a31e9978e57c",
-  "feature_branch": "feat/geox-repo-native-execution-handoff-adoption-001",
+  "base_sha": "373b2fb34f4e5f93b43fd2009de529acb0ccc8ed",
+  "authorization_head_sha": "bd120c8fccc90003c59c68c9e8317279883f63b1",
+  "feature_branch": "feat/geox-repo-native-execution-handoff-v2-adoption-001",
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
   "canonical_mip_standard_repository": "Phani-Pavuluri/marketing_intelligence_platform",
-  "canonical_mip_standard_commit": "5eebba6750a3754e4026397d6762c601b1d6a708",
+  "canonical_mip_standard_commit": "38f88467f55d5bc4cc64e5a58b0f08f1639a40d0",
+  "canonical_mmm_workflow_repository": "Phani-Pavuluri/MMM",
+  "canonical_mmm_workflow_commit": "1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421",
   "task_execution_authorized": true,
   "merge_authorized": false,
   "reviewed_head_sha": null,
@@ -19,5 +22,7 @@
   "capability_authorizations_changed": false,
   "last_updated": "2026-07-30",
   "blockers": [],
-  "task_authoring_note": "The current main may be ahead of base_sha only by the task-authoring ACTIVE_TASK.md and EXECUTION_STATE.json commits. Verify that boundary before creating the feature branch."
+  "superseded_task_id": "GEOX_REPO_NATIVE_EXECUTION_HANDOFF_ADOPTION_001",
+  "superseded_task_was_implemented": false,
+  "task_authoring_note": "base_sha..authorization_head_sha changes only ACTIVE_TASK.md and LATEST_COMPLETION_REPORT.md. Synchronized main is expected to be one state-only recording commit ahead of authorization_head_sha; no other intervening path or commit is permitted."
 }
