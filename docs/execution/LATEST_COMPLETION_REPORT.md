@@ -1,201 +1,279 @@
 # TASK_COMPLETION_REPORT_V2
 
-## Current execution result
-
-The authorized continuation is **blocked**. Focused Docker validation passed
-(`5 passed in 2.06s`) for the governed-readout builder and execution-handoff
-tests. The required complete `make validate-docker` gate installed the project
-and began pytest collection, reaching approximately 29%, then stalled without
-a final pytest summary or actionable traceback. No full-suite success is
-claimed. The branch remains unmerged and merge/PR/capability authority remain
-false; this report records the validation blocker for external review.
-
-## Identity and current decision
+## Review identity and decision
 
 - **Task ID:** `GEOX_GOVERNED_READOUT_BUILDER_PACKAGE_ENTRYPOINT_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
-- **Current GeoX main:** `ee9673c13e69082367c1727568946ac4c1a01015`
+- **GeoX main:** `ee9673c13e69082367c1727568946ac4c1a01015`
 - **Feature branch:** `feat/geox-governed-readout-builder-package-entrypoint-001`
-- **Pre-authorization branch head:** `69b792bc0dfbae8cd6e8185b9aff5441c558689a`
-- **Execution mode:** `branch_and_fast_forward`
-- **Latest rejected remote execution head:** `5fd97f87ef19378001fa5f92e6adf17bb00abe25`
+- **Exact reviewed and rejected head:** `593522bc6c2d62872d9bc11f68c312321539266f`
+- **Prior authorization metadata head:** `548248f0a057cb7db1abba569f935c5e7e24bf3f`
 - **Latest rejected substantive implementation:** `865d8641ae44b8b47ec64d62825a29e23490d0d6`
-- **Canonical MIP coordination closure:** `3520176126d129e9288a9ce37591299ec856650a`
-- **Live MIP main observed at authorization:** `8655520d895128c0defccf76e632cdb4d1efe891`
-- **MMM workflow checkpoint:** `1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
-- **Current decision:** `CORRECTION_EXECUTION_AUTHORIZED`
+- **Current review decision:** `CHANGES_REQUIRED`
 - **Merge and PR authorization:** `false`
 - **Capability authorizations changed:** `false`
 
-## GitHub-observed orientation
+## GitHub-observed evidence
 
-At this authorization checkpoint:
+At review:
 
-- GeoX `main` remains exactly
-  `ee9673c13e69082367c1727568946ac4c1a01015`;
-- the existing GeoX feature branch was exactly
-  `69b792bc0dfbae8cd6e8185b9aff5441c558689a` before the new authorization
-  metadata;
-- the branch descends from current GeoX `main` without divergence;
-- MMM `main` remains exactly
-  `1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`;
-- live MIP `main` is
-  `8655520d895128c0defccf76e632cdb4d1efe891`;
-- canonical MIP coordination closure
-  `3520176126d129e9288a9ce37591299ec856650a` is an ancestor of live MIP main;
-- live MIP state does not transfer GeoX ownership, implement the GeoX builder,
-  authorize a GeoX merge, or resolve GeoX producer blockers; and
-- no GitHub-hosted combined status checks are available for the rejected GeoX
-  implementation/review lineage.
+- GeoX `main` remained exactly
+  `ee9673c13e69082367c1727568946ac4c1a01015`.
+- The exact remote feature head was
+  `593522bc6c2d62872d9bc11f68c312321539266f`.
+- Relative to authorization head
+  `548248f0a057cb7db1abba569f935c5e7e24bf3f`, the reviewed head added exactly
+  one commit and changed only:
+  - `docs/execution/ACTIVE_TASK.md`;
+  - `docs/execution/EXECUTION_STATE.json`; and
+  - `docs/execution/LATEST_COMPLETION_REPORT.md`.
+- No builder, contract, fixture, substantive test, context-index, or Track-D
+  implementation path changed after the latest correction authorization.
+- The reviewed head contained no new substantive implementation SHA;
+  `implementation_commit_sha` remained null.
+- GitHub exposed no combined commit statuses and no pull-request-triggered
+  workflow runs for the reviewed head.
 
-MIP may continue its governance work in parallel. GeoX must re-read live MIP
-execution and coordination evidence through the live-overlay rule rather than
-requiring an exact moving MIP-main equality.
+The branch remains ahead of main without divergence and preserves rejected
+history. It is not approved or mergeable.
 
-## Preserved review lineage
+## Parallel sibling state and non-overlap
 
-The following branch commits remain rejected audit evidence:
+### MIP
 
-- `ce672f348b5ac45dda3935597689fa1c7f5ddb12` — initial prebuilt-readout wrapper;
-- `380e2034410fabeb5a9f90f92ec31e3875938a49` — partial fixture constructor and
-  envelope metadata remediation;
-- `a9890e6d62c5e5e5a0c69801ca1c26d960267418` — narrow two-test correction;
-- `955ee991fa485e5bbd803e6446472e00520ddacb` — metadata-only blocked report;
-- `865d8641ae44b8b47ec64d62825a29e23490d0d6` — partial typed producer and
-  temporal construction;
-- `abb94ef8341cc32d4b1c71a2970286c6be7081c5` — rejected third-cycle blocked
-  review head; and
-- `5fd97f87ef19378001fa5f92e6adf17bb00abe25` — rejected fourth-cycle head that
-  changed only execution metadata/context, passed five narrow tests, and
-  attempted a full gate before substantive remediation.
+MIP `main` remained
+`11c062eb785b3518d531992aa554d0a3a4c0b84b`. Its separate resolver branch was
+`ready_for_review` at exact head
+`abf57a6fb0c08d23fb51c56a5ea744445b3ab82c`, with implementation
+`18f7ffdd5b3ef20af4cea177047c11f5ffadd8f0`.
 
-Branch head `69b792bc0dfbae8cd6e8185b9aff5441c558689a` preserved the external
-`CHANGES_REQUIRED` decision. None of those commits is approved or mergeable.
-History must be extended, not rewritten.
+That MIP work is repository-execution infrastructure only. It reports that MMM
+and GeoX were not modified, GeoX resolver adoption remains unauthorized, and the
+GeoX builder remains independently owned. This GeoX review does not approve,
+reject, merge, or modify the MIP resolver branch.
 
-## Review findings that remain open
+### MMM
 
-### Contract and builder
+MMM `main` remained
+`1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`, with its execution reconciliation
+merged and task execution authorization false. No active MMM implementation task
+was found.
 
-1. The main producer contract remains only partially typed because analytical
-   and disposition data still use broad `Mapping[str, Any]` structures.
-2. Creation, as-of, and valid-through timestamps are parsed but not fully
-   preserved in the governed artifact.
-3. Temporal chronology has unproven or incorrect positional logic and lacks the
-   required boundary and negative tests.
-4. Freshness can remain fail-open on the fixture path; stale or unknown evidence
-   is not consistently prevented from eligible handoff.
-5. Readout status, freshness, and handoff eligibility are not enforced as one
-   consistent fail-closed state.
-6. Schema identity, record kind, package version, producer/provenance commit,
-   replay version, manifest version, envelope version, and schema hash are not
-   enforced end to end.
-7. The fixture path fabricates or hard-codes values such as `currency`,
-   `unknown`, `pre/post`, fixture IDs, guessed statuses, commits, and package
-   metadata rather than reproducing certified truth.
-8. The transport envelope is not genuinely optional.
-9. The public fixture builder has not proved exact conformance for all 12
-   certified cases.
+MMM normalization and compatibility-fixture work remains later MMM-owned work
+that depends on merged GeoX producer evidence and consumer verification.
 
-### Tests, evidence, and validation
+### Ownership conclusion
 
-10. The builder test surface remains far below the required positive, boundary,
-    negative, replay, version, provenance, authorization, fixture, and import
-    matrix.
-11. The Track-D Markdown and JSON evidence artifacts remain skeletal and do not
-    record all 12 fixture outcomes, exact contracts, validation counts,
-    limitations, or consumer impact.
-12. No complete successful Docker-backed repository validation exists for the
-    full authorized implementation surface.
+No duplicate analytical ownership was found. GeoX must complete only producer
+readout construction and producer truth preservation. It must not implement MIP
+resolver behavior, MIP consumer contracts, MMM normalization, compatibility
+truth, or downstream acceptance.
 
-### Execution-handoff prerequisite
+## Review findings
 
-The GeoX context index still names the prior recovery task and contains both an
-obsolete MIP pin and a later checkpoint. The earlier test incorrectly required
-the mutable task ID to appear in the stable context index. Current MIP semantics
-make the index stable navigation while task identity/status live in
-`ACTIVE_TASK.md`, `EXECUTION_STATE.json`, and
-`LATEST_COMPLETION_REPORT.md`.
+### 1. Invalid metadata-only blocked publication
 
-The test correction is semantically valid but must be completed under the
-explicit GeoX-owned scope amendment. This is not a MIP code change and does not
-complete the broader GeoX coordination-protocol adoption proposal.
+The reviewed head changed only execution metadata and reported `blocked` because
+`make validate-docker` stalled. The active task explicitly required a new
+substantive implementation before a valid blocked completion and stated that a
+metadata-only, context-only, report-only, or validation-only cycle must remain
+`changes_requested`.
 
-## Current authorization
+The reviewed head therefore violated its publication contract. It is rejected
+and the task returns to `changes_requested`.
 
-The user authorized continuation on 2026-07-31. The existing task and branch
-remain authoritative. The complete durable requirements are in
-`docs/execution/ACTIVE_TASK.md`.
+### 2. Required implementation did not occur
 
-The next execution must first produce a new substantive implementation commit
-after `865d8641ae44b8b47ec64d62825a29e23490d0d6` that changes authorized
-builder/contract/test/fixture/evidence paths. It must then:
+No new substantive commit was created after rejected implementation
+`865d8641ae44b8b47ec64d62825a29e23490d0d6`.
 
-1. complete fully typed direct producer and certified-fixture construction;
-2. preserve complete UTC creation/as-of/valid-through and period semantics;
-3. enforce freshness/status/eligibility consistency fail-closed;
-4. enforce schema, record-kind, package, commit, provenance, replay, envelope,
-   manifest, and schema-hash agreement;
-5. reproduce and round-trip all 12 certified readouts without modifying immutable
-   `source_truth.json` or certified analytical dispositions;
-6. make the envelope truly optional and non-production;
-7. convert the context index to stable navigation and strengthen the handoff test;
-8. complete the full test matrix and both Track-D evidence artifacts; and
-9. run focused Docker-backed validation followed by the complete canonical gate
-   only after all substantive focused checks pass.
+The following open requirements remain unimplemented:
 
-A prose-only, state-only, context-only, validation-only, or report-only cycle is
-not completion and cannot be reported as a valid new blocked implementation.
+- fully typed producer, analytical, uncertainty, disposition, lineage,
+  provenance, replay, schema, and transport structures;
+- complete creation/as-of/valid-through/reference-time preservation;
+- corrected chronology and overlap validation;
+- fail-closed freshness/status/handoff agreement;
+- schema, kind, package, commit, provenance, replay, envelope, manifest, and
+  schema-hash consistency;
+- exact reproduction of all 12 certified governed readouts;
+- truly optional envelope behavior;
+- stable context-index navigation semantics;
+- comprehensive tests and complete Track-D evidence.
 
-## Validation evidence retained from rejected work
+### 3. Primary builder remains only partially typed
 
-### GitHub-observed
+`GeoXProducerInput` types a small subset of identity fields, while the main direct
+builder still accepts `readout_fields: Mapping[str, Any]` and
+`envelope_metadata: Mapping[str, Any]`. The broad mappings continue to carry most
+analytical, uncertainty, disposition, provenance, replay, and transport data.
+This does not satisfy the typed producer contract requirement.
 
-- Rejected substantive implementation:
-  `865d8641ae44b8b47ec64d62825a29e23490d0d6`.
-- Rejected fourth-cycle execution head:
-  `5fd97f87ef19378001fa5f92e6adf17bb00abe25`.
-- No hosted CI or combined-status evidence establishes a successful complete
-  validation result for those heads.
+### 4. Temporal semantics are incomplete and contain suspect chronology logic
 
-### Locally reported
+`GeoXTemporalBounds` parses creation, as-of, and valid-through timestamps, but
+the governed readout contract has no dedicated fields preserving those values.
+The direct builder serializes only pre/post period strings and freshness status.
 
-- Narrow focused builder/execution-handoff result: `5 passed`.
-- Complete Docker attempt: stalled around 29% without a final pytest summary or
-  actionable traceback.
+The chronology expression compares `post_start < as_of` while also checking
+`created_at > as_of`; it does not establish the required defensible lifecycle and
+has no comprehensive boundary and negative tests.
 
-Those five tests do not cover the authorized builder task. The percentage is not
-completion evidence. The validation debt remains open.
+### 5. Freshness and eligibility remain inconsistent
 
-## Required publication
+The builder rejects `unknown` freshness for an eligible direct readout, but the
+fixture path constructs `freshness_status="unknown"` and may set
+`eligible_for_compatibility_evaluation` for a success case. The package helper
+only rejects a computed stale value when the supplied readout does not already
+say stale. It does not enforce a complete consistency matrix among computed
+freshness, readout status, and handoff eligibility.
 
-On success, publish `ready_for_review` with exactly one new substantive
-implementation SHA after `865d8641...`, exact command-level validation counts,
-empty blockers, `task_execution_authorized: true`, `merge_authorized: false`,
-null reviewed/approval SHAs, and unchanged capability authority. Push the exact
-remote branch head and stop for external review.
+### 6. Fixture construction fabricates values
 
-On failure after new substantive work is committed, publish an accurate
-`blocked` state with the exact new implementation SHA, exact remote branch head,
-all completed and failed validation commands and counts, precise remaining
-blockers, all fixture outcomes reached, and unchanged authority.
+The fixture path continues to create a new readout from partial metadata and
+hard-codes or defaults values including:
 
-## Cross-repository impact and authority
+- `kpi_units="currency"`;
+- `effect_scale="absolute"`;
+- `channel="unknown"`;
+- `tactic="unknown"`;
+- `time_window="pre/post"`;
+- `freshness_status="unknown"`;
+- package version fallback `"unknown"`;
+- readout/experiment identifiers based on fixture ID; and
+- inferred handoff eligibility based on readout status.
 
-- **Workstream advanced but not completed:** `WS-GEOX-READOUT-BUILDER-001`.
-- **Producer blockers advanced but unresolved:**
-  `P2-GEOX-TEMPORAL-VERSION-SEMANTICS` and
+This does not reproduce the certified governed readout exactly and can alter
+analytical identity and disposition.
+
+### 7. Envelope is not genuinely optional
+
+`build_geox_governed_readout_package_entrypoint` always validates required
+envelope metadata and always builds an envelope. Passing no metadata produces an
+error rather than returning a validated readout without an envelope.
+
+The helper also supplies defaults such as fixture URI, assignment scope,
+release-gate status, and envelope version instead of requiring explicit
+validated transport metadata.
+
+### 8. End-to-end version and provenance agreement is absent
+
+The current implementation does not enforce required equality and compatibility
+across producer metadata, governed readout, provenance, replay, fixture manifest,
+certified readout, optional envelope, and schema hash. Unknown and contradictory
+package/provenance/replay/manifest versions are not comprehensively rejected.
+
+### 9. Test matrix is materially incomplete
+
+The builder-specific test file still contains only two tests:
+
+- preservation plus blocked envelope; and
+- one stale freshness case.
+
+There is no all-12-fixture public-path matrix and no comprehensive coverage for
+typed direct construction, optional envelope absence, exact certified equality,
+expiry equality, UTC normalization, malformed/naive timestamps, period reversal
+and overlap, lifecycle chronology, stale/unknown eligibility restrictions,
+status consistency, version/provenance contradictions, fake metadata, invalid
+schema hashes, replay/manifest agreement, or import surfaces.
+
+The reported `5 passed` focused result therefore does not establish the task's
+required implementation matrix.
+
+### 10. Track-D evidence remains skeletal
+
+The Markdown report is a short description without exact contracts, supported
+versions, per-fixture outcomes, changed paths, command-level evidence, sibling
+impact, consumer verification, limitations, blocker transitions, or next-work
+details.
+
+The JSON summary contains only task ID, entrypoint, non-production status,
+authorization flag status, and MMM-compatibility status. It does not meet the
+required machine-readable evidence contract.
+
+### 11. Context index remains stale and contradictory
+
+`REPOSITORY_CONTEXT_INDEX.md` still identifies
+`GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_RECOVERY_001` as the active task
+and contains both an obsolete MIP pin and a later checkpoint. It is still a stale
+mutable-task mirror rather than the required stable navigation index.
+
+### 12. Validation sequence and evidence are nonconforming
+
+The task required substantive implementation and the complete focused matrix
+before the full repository gate. The reviewed cycle instead reran the same five
+narrow tests and attempted the full gate without implementing the required
+corrections.
+
+The full-gate report gives only approximate progress and absence of a summary. It
+does not provide:
+
+- exact elapsed duration;
+- exit, signal, timeout, or cancellation state;
+- last completed test or output;
+- container and process diagnostics;
+- durable log path;
+- passed, failed, skipped, and unexecuted counts; or
+- evidence distinguishing collection from execution progress.
+
+The full validation requirement therefore remains entirely open.
+
+## Review disposition
+
+Exact head `593522bc6c2d62872d9bc11f68c312321539266f`
+is rejected. It is not an implementation completion, review-ready head, valid
+blocked completion, or merge candidate.
+
+The task status is `changes_requested`. Continue by adding new commits on the
+same branch; do not rewrite or discard history.
+
+## Required next execution
+
+1. Re-fetch live GeoX, MIP, and MMM state and verify ownership remains
+   non-overlapping.
+2. Produce a new substantive implementation commit after `865d8641...` and after
+   the rejected review head lineage.
+3. Complete the typed builder and governed-readout contract.
+4. Preserve complete temporal/freshness lifecycle fields and enforce fail-closed
+   consistency.
+5. Enforce end-to-end schema/version/provenance/replay/manifest/envelope
+   agreement.
+6. Reproduce all 12 certified readouts exactly, with immutable source truth.
+7. Make the blocked envelope optional and explicit.
+8. Correct the stable context index and semantic handoff test without copying the
+   MIP resolver into GeoX.
+9. Complete the full test matrix and both Track-D evidence artifacts.
+10. Run focused Docker validation and all static/data/replay/path checks.
+11. Run the full Docker gate only after the focused matrix passes.
+12. Publish `ready_for_review` on success or a valid `blocked` state only after
+    substantive work exists, with exact implementation and validation evidence.
+
+## Cross-repository impact
+
+- **GeoX workstream:** `WS-GEOX-READOUT-BUILDER-001` remains in progress.
+- **Unresolved GeoX blockers:** `P2-GEOX-TEMPORAL-VERSION-SEMANTICS` and
   `P2-GEOX-READOUT-BUILDER-ENTRYPOINT`.
-- **Consumer verification:** MMM and MIP verification remains required after an
-  exact merged GeoX producer pin.
-- **MMM-owned next work:** strict GeoX normalization and certified
-  cross-repository compatibility fixtures remain separate and unauthorized here.
-- **MIP-owned next work:** fixture-only P2 consumer journey and D6 evidence remain
-  separate and unauthorized here.
-- **Capabilities newly authorized:** none.
-- **Merge and PR authorization:** false.
+- **MMM consumer work:** remains ineligible until an exact GeoX producer head is
+  approved, merged, and consumer-verified.
+- **MIP consumer journey:** remains blocked by GeoX producer evidence, later MMM
+  normalization/fixtures, and D6 compatibility evidence.
+- **Consumer verification:** still required from MMM and MIP after merge.
+- **Newly eligible analytical or runtime work:** none.
 
-This task does not authorize production inference, method selection, assignment,
-MMM compatibility, `ExperimentEvidence`, `CalibrationSignal`, `TrustReport`,
-`DecisionSurface`, recommendations, optimization, LLM decisioning, scheduling,
-live integration, real data, pilot, production, or package-side agents.
+## Validation debt
+
+- New substantive implementation: not produced.
+- Required focused implementation matrix: not run.
+- All 12 fixture conformance: not demonstrated.
+- Static/version/replay/path checks for the required implementation: not
+  demonstrated.
+- Complete Docker gate: no successful final result.
+- Hosted CI/status evidence: absent.
+
+## Authority impact
+
+No analytical or product capability is approved or newly authorized. Merge and
+PR authority remain false. Production inference, assignment, MMM compatibility,
+`ExperimentEvidence`, `CalibrationSignal`, `TrustReport`, `DecisionSurface`,
+recommendations, optimization, LLM decisioning, scheduling, live integration,
+real data, pilot, production, and package-side agents remain unauthorized.
