@@ -1,8 +1,48 @@
 """Deterministic, non-authorizing builder for certified GeoX readouts."""
 from __future__ import annotations
 
+from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Any, Mapping
+
+
+@dataclass(frozen=True)
+class GeoXTemporalBounds:
+    pre_start: str
+    pre_end: str
+    post_start: str
+    post_end: str
+    created_at: str
+    as_of: str
+    valid_through: str | None
+
+    def canonical(self) -> "GeoXTemporalBounds":
+        values = [self.pre_start, self.pre_end, self.post_start, self.post_end, self.created_at, self.as_of]
+        parsed = [_utc(value) for value in values]
+        if parsed[0] >= parsed[1] or parsed[2] >= parsed[3] or parsed[1] > parsed[2]:
+            raise ValueError("invalid or overlapping temporal bounds")
+        if parsed[2] < parsed[5] or parsed[4] > parsed[5]:
+            raise ValueError("inconsistent creation/as-of timestamps")
+        valid = _utc(self.valid_through) if self.valid_through else None
+        if valid is not None and valid < parsed[5]:
+            raise ValueError("valid-through precedes evidence as-of")
+        return GeoXTemporalBounds(*[item.isoformat().replace("+00:00", "Z") for item in parsed], valid.isoformat().replace("+00:00", "Z") if valid else None)
+
+
+@dataclass(frozen=True)
+class GeoXProducerInput:
+    readout_id: str
+    fixture_id: str
+    experiment_id: str
+    kpi: str
+    estimand: str
+    method_family: str
+    instrument_id: str
+    effect_estimate: float | None
+    temporal: GeoXTemporalBounds
+    producer_commit: str
+    producer_package_version: str
+    schema_version: str = "1.0.0"
 
 from panel_exp.contracts.geox_governed_experiment_readout import (
     GeoXGovernedExperimentReadout,
@@ -29,6 +69,35 @@ def resolve_freshness(valid_through: str | None, reference_time: str | None) -> 
     if valid_through is None or reference_time is None:
         return "unknown"
     return "fresh" if _utc(reference_time) <= _utc(valid_through) else "stale"
+
+
+def build_geox_governed_readout_from_typed_input(
+    producer: GeoXProducerInput,
+    *,
+    readout_fields: Mapping[str, Any],
+    envelope_metadata: Mapping[str, Any],
+    reference_time: str | None,
+) -> tuple[GeoXGovernedExperimentReadout, Any]:
+    """Construct from explicit producer metadata and caller-supplied analytical fields."""
+    temporal = producer.temporal.canonical()
+    freshness = resolve_freshness(temporal.valid_through, reference_time)
+    if freshness == "unknown" and readout_fields.get("handoff_eligibility_status") == "eligible_for_compatibility_evaluation":
+        raise ValueError("handoff eligibility requires explicit freshness")
+    payload = dict(readout_fields)
+    payload.update(
+        readout_id=producer.readout_id, fixture_id=producer.fixture_id, experiment_id=producer.experiment_id,
+        kpi=producer.kpi, estimand=producer.estimand, method_family=producer.method_family,
+        instrument_id=producer.instrument_id, effect_estimate=producer.effect_estimate,
+        producer_commit=producer.producer_commit, producer_package_version=producer.producer_package_version,
+        readout_version=producer.schema_version, artifact_version=producer.schema_version,
+        pre_period=f"{temporal.pre_start}/{temporal.pre_end}", post_period=f"{temporal.post_start}/{temporal.post_end}",
+        freshness_status=freshness,
+    )
+    try:
+        readout = GeoXGovernedExperimentReadout(**payload)
+    except TypeError as exc:
+        raise ValueError("typed input is missing explicit analytical fields") from exc
+    return build_geox_governed_readout_package_entrypoint(readout, reference_time=reference_time, valid_through=temporal.valid_through, envelope_metadata=envelope_metadata)
 
 
 def build_geox_governed_readout_package_entrypoint(

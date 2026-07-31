@@ -8,7 +8,7 @@ from panel_exp.artifacts.experiment_card import (
     attach_experiment_card_markdown,
     build_experiment_card,
 )
-from panel_exp.artifacts.geox_governed_readout_builder import build_geox_governed_readout_from_fixture, build_geox_governed_readout_package_entrypoint
+from panel_exp.artifacts.geox_governed_readout_builder import GeoXProducerInput, GeoXTemporalBounds, build_geox_governed_readout_from_fixture, build_geox_governed_readout_from_typed_input, build_geox_governed_readout_package_entrypoint
 from panel_exp.design import GEO_RUN_DESIGN_SUPPORTED, get_design_registry
 from panel_exp.evidence import DesignEvidence, ExperimentEvidence, InferenceEvidence
 from panel_exp.inference_result import InferenceResult, IntervalType
@@ -58,6 +58,9 @@ __all__ = [
     "attach_experiment_card_markdown",
     "build_geox_governed_readout_package_entrypoint",
     "build_geox_governed_readout_from_fixture",
+    "build_geox_governed_readout_from_typed_input",
+    "GeoXProducerInput",
+    "GeoXTemporalBounds",
     "get_design_registry",
     "GEO_RUN_DESIGN_SUPPORTED",
     "BalancedRandomization",

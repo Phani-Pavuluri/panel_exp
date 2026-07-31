@@ -6,7 +6,7 @@ from panel_exp.artifacts.experiment_card import (
     attach_experiment_card_markdown,
     build_experiment_card,
 )
-from panel_exp.artifacts.geox_governed_readout_builder import build_geox_governed_readout_from_fixture, build_geox_governed_readout_package_entrypoint
+from panel_exp.artifacts.geox_governed_readout_builder import GeoXProducerInput, GeoXTemporalBounds, build_geox_governed_readout_from_fixture, build_geox_governed_readout_from_typed_input, build_geox_governed_readout_package_entrypoint
 from panel_exp.artifacts.run_bundle import (
     BUNDLE_VERSION,
     RunArtifactBundle,
@@ -23,6 +23,9 @@ __all__ = [
     "attach_experiment_card_markdown",
     "build_geox_governed_readout_package_entrypoint",
     "build_geox_governed_readout_from_fixture",
+    "build_geox_governed_readout_from_typed_input",
+    "GeoXProducerInput",
+    "GeoXTemporalBounds",
     "build_experiment_card",
     "build_run_artifact_bundle",
     "export_geo_run_bundle",
