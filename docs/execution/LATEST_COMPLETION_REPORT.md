@@ -58,21 +58,24 @@ without copying or modifying the frozen superseded V2 branch. The prior
 import-health recovery remains closed; its focused validation exception and
 unresolved full-suite validation debt remain documented.
 
-Before `ready_for_review`, replace this section with:
+Synchronized main was `a381f301c7e90e1c7f21065f19a08d78d69a7454`; the
+pre-authoring base and authorization boundary were verified from execution
+state. The superseded branch remained unchanged at
+`315ae7c996551c0f1fdb2414791be7e63586222d`. Changed paths are exactly
+`AGENTS.md`, `docs/execution/REPOSITORY_CONTEXT_INDEX.md`,
+`tests/test_repo_native_execution_handoff.py`, and the three execution metadata
+files. The artifacts define fail-closed bootstrap/merge semantics, repository
+context and ownership boundaries, and closure-safe V2 state invariants.
 
-- synchronized-main and authoring-boundary evidence;
-- proof the superseded branch remained unchanged;
-- exact changed paths and rationale;
-- exact artifact contents and closure-safe invariant behavior;
-- focused Docker test counts and warnings;
-- Ruff, JSON, Markdown/path, pin-agreement, and diff-check results;
-- implementation commit and exact remote review head;
-- blockers, limitations, deferred full-suite debt, and authority impact.
-
-On failure, publish a specific `blocked` state. On success, publish
-`ready_for_review` with the implementation SHA, empty blockers, merge
-authorization false, null reviewed/approval SHAs, and unchanged capability
-authorizations. Do not create a PR or merge.
+Focused isolated-Docker validation passed: `26 passed`, `2 warnings`; Ruff,
+JSON parsing, Markdown/path checks, exact-pin agreement, and `git diff --check`
+passed. Implementation commit is
+`7de888a8dab2a1dfc8d0d58c8556e13f0bf131f6`; the current remote review head is
+`a309666b27ed4a9dfb9390834013a9e78c29c9b7`. The full GeoX suite remains
+deferred repository-validation debt and is not claimed to pass. State is
+`ready_for_review`, blockers are empty, merge authorization is false, reviewed
+and approval SHAs are null, and capability authorizations are unchanged. No PR
+or merge was created.
 
 ## Current authority
 

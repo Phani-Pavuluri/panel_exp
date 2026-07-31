@@ -16,9 +16,11 @@ def test_v2_state_contract_and_pins():
     assert state["status"] in STATUSES and "approved_for_merge" not in STATUSES
     for key in ("base_sha", "authorization_head_sha", "reviewed_head_sha", "implementation_commit_sha", "approval_commit_sha"):
         assert state.get(key) is None or SHA.fullmatch(state[key])
+    status_match = re.search(r"^\*\*Status:\*\*\s*([a-z_]+)", task, re.MULTILINE)
+    assert status_match and status_match.group(1) == state["status"]
     for pin in (state["canonical_mip_standard_commit"], state["canonical_mmm_workflow_commit"]):
         assert all(pin in text for text in (task, report, context))
-    assert state["task_id"] in task and state["task_id"] in report
+    assert all(state["task_id"] in text for text in (task, report, context))
     assert state["merge_authorized"] is False
     assert state["capability_authorizations_changed"] is False
 
@@ -36,12 +38,12 @@ def test_status_invariants_are_closure_safe():
     status = state["status"]
     if status == "authorized":
         assert state["task_execution_authorized"] and not state["merge_authorized"]
-        assert state["implementation_commit_sha"] is None and not state["blockers"]
+        assert state["implementation_commit_sha"] is None and state["reviewed_head_sha"] is None and state["approval_commit_sha"] is None and not state["blockers"]
     elif status == "blocked":
-        assert state["task_execution_authorized"] and not state["merge_authorized"] and state["blockers"]
+        assert state["task_execution_authorized"] and not state["merge_authorized"] and state["reviewed_head_sha"] is None and state["approval_commit_sha"] is None and state["blockers"]
     elif status == "ready_for_review":
         assert state["task_execution_authorized"] and not state["merge_authorized"]
-        assert SHA.fullmatch(state["implementation_commit_sha"]) and not state["blockers"]
+        assert SHA.fullmatch(state["implementation_commit_sha"]) and state["reviewed_head_sha"] is None and state["approval_commit_sha"] is None and not state["blockers"]
     elif status == "merged":
         assert not state["task_execution_authorized"] and not state["merge_authorized"]
         assert SHA.fullmatch(state["implementation_commit_sha"])
