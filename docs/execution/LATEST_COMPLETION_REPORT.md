@@ -88,6 +88,14 @@ The next execution must publish either:
 Remediation is authorized. A new implementation commit and review head do not yet
 exist. The prior implementation commit remains superseded by external review.
 
+## Remediation execution result
+
+The external findings remain unresolved: the builder still requires a prebuilt
+readout, lacks the complete temporal/schema/manifest contract, and does not have
+the required 12-fixture and negative-case coverage. Docker is unavailable
+(`docker info` exit 1), so the mandatory isolated and complete validation gates
+cannot run. State remains `blocked`; no implementation or review head is claimed.
+
 ## Validation requirement
 
 Focused tests are necessary but not sufficient. This task requires the complete
