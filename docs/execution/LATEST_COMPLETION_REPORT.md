@@ -32,12 +32,17 @@ shadowing the real package before `tests/test_audit_fixes.py` ran. The focused
 repair removes that synthetic module setup and imports the real package. The
 Track-B/artifacts circular-import failure no longer appears.
 
-The full Docker suite progressed beyond collection but reported unrelated test
-failures before completion; therefore the required validation gate remains
-blocked. Known slow-marker warnings remain registration-only warnings.
+Focused Docker validation passed: `23 passed` across import-health, the former
+contract test, and `tests/test_audit_fixes.py`, with two expected runtime
+warnings. Ruff, JSON validation, and `git diff --check` also passed. The full
+`make validate-docker` run was previously attempted but stalled around 48%
+without actionable tracebacks or a final summary; this is deferred repository
+validation debt, not a failure of this narrow import-provenance repair.
 
 Implementation commit: `cc43be7d1dd69488b2a683a0180b05889cf00e72`.
 No review head was published. The suspended V2 branch remains unchanged.
+State is `ready_for_review`; merge authorization remains false and reviewed and
+approval SHAs remain null.
 
 ## Current authority
 
