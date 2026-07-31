@@ -2,65 +2,78 @@
 
 ## Identity
 
-- **Task ID:** `GEOX_BASELINE_IMPORT_HEALTH_RECOVERY_001`
+- **Task ID:** `GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_RECOVERY_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
-- **Base:** `6d88e1a7b2ea861e9f61b27aea4adbd73b0ff337`
-- **Feature branch:** `fix/geox-baseline-import-health-recovery-001`
+- **Pre-authoring base:** `b0c00228629dcc6231b85115d2448d8d7c20ee47`
+- **Feature branch:** `feat/geox-repo-native-execution-handoff-v2-adoption-recovery-001`
+- **Execution mode:** `branch_and_fast_forward`
 - **Canonical MIP V2 pin:** `38f88467f55d5bc4cc64e5a58b0f08f1639a40d0`
 - **Canonical MMM workflow pin:** `1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
 
-## Recovery trigger
+## Starting point
 
-GitHub PR #128 externally merged blocked branch head
-`08d8fe9adeb355b91afb4dc101184bdf199ce84c` into `main` as merge commit
-`6d88e1a7b2ea861e9f61b27aea4adbd73b0ff337`. No conforming exact-head approval,
-fast-forward merge, or closure exists. The event is preserved as nonconforming
-history and is not retroactively authorized.
+The baseline import-health recovery is closed on GeoX `main` at
+`b0c00228629dcc6231b85115d2448d8d7c20ee47`. The Track-B/artifacts cycle and
+suite-level package shadowing were repaired. Focused recovery validation passed;
+the incomplete full GeoX suite remains explicit repository-validation debt.
 
-The merged partial repair removed the Track-B/artifacts circular import. The
-remaining Docker collection failure is the top-level `BalancedRandomization`
-import, even though the same import passes in a fresh subprocess. This mismatch
-requires evidence-backed collection/import-provenance diagnosis rather than
-another speculative package export change.
+The prior workflow V2 task
+`GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_001` is superseded. Its branch
+`feat/geox-repo-native-execution-handoff-v2-adoption-001` remains frozen at
+`315ae7c996551c0f1fdb2414791be7e63586222d`, with reusable implementation
+evidence at `6dc5fe455c49d764932ee9abf05c5ab2f55f609c`. That history is diverged and
+must not be merged, rebased, cherry-picked, reset, or used as execution metadata.
 
-## Validation result
+## Authorized result
 
-Docker provenance instrumentation showed that
-`tests/contracts/test_geox_mip_artifact_envelope_dry_run.py` created a
-synthetic `types.ModuleType("panel_exp")` in `sys.modules` during collection,
-shadowing the real package before `tests/test_audit_fixes.py` ran. The focused
-repair removes that synthetic module setup and imports the real package. The
-Track-B/artifacts circular-import failure no longer appears.
+This task is authorized to re-create on repaired `main` only these stable
+workflow artifacts:
 
-Focused Docker validation passed: `23 passed` across import-health, the former
-contract test, and `tests/test_audit_fixes.py`, with two expected runtime
-warnings. Ruff, JSON validation, and `git diff --check` also passed. The full
-`make validate-docker` run was previously attempted but stalled around 48%
-without actionable tracebacks or a final summary; this is deferred repository
-validation debt, not a failure of this narrow import-provenance repair.
+- root `AGENTS.md`;
+- `docs/execution/REPOSITORY_CONTEXT_INDEX.md`;
+- `tests/test_repo_native_execution_handoff.py`.
 
-An external validation exception waives the original full-suite completion
-criterion for `GEOX_BASELINE_IMPORT_HEALTH_RECOVERY_001` only. Focused isolated-
-Docker validation is the acceptance gate; this exception does not apply to
-future GeoX tasks, and the full suite is not claimed to pass.
+Execution may also update the three stable execution files for accurate state
+and reporting. No analytical or capability-authority change is authorized.
 
-Implementation commit: `cc43be7d1dd69488b2a683a0180b05889cf00e72`.
-No review head was published. The suspended V2 branch remains unchanged.
-Pre-merge state was `ready_for_review`; merge authorization remained false and
-reviewed and approval SHAs were null.
+The new invariant test must correct the old branch's state-coupled assumption:
+`reviewed_head_sha` is null before review/merge but must be a full SHA after
+`merged` closure. The workflow continues to use external exact-head approval,
+no `approved_for_merge` state, no approval metadata commit, fast-forward merge,
+and exactly one post-merge closure commit.
 
-## Closure
+## Validation plan
 
-External exact-head approval was recorded for
-`2981749d62084a72e65281bf53b1b05be54ad389`. The task was merged by
-`git merge --ff-only` with no merge commit. Main now points at that exact
-approved head. A single post-merge closure commit records status `merged`,
-execution authorization false, merge authorization false, reviewed head set to
-the approved SHA, approval SHA null, empty blockers, and unchanged capability
-authorizations. PR #128 remains retained as unauthorized/nonconforming history.
+The task-authored focused gate covers the workflow invariant test, import-health
+tests, the formerly failing contract test, `tests/test_audit_fixes.py`, exact
+state/pin/path agreement, Ruff, JSON validation, `git diff --check`, and owned-
+path verification in isolated Docker/Poetry. Record exact counts and warnings.
+The unresolved full GeoX suite is separate repository-validation debt and is not
+claimed to pass.
+
+## Completion placeholder
+
+Before `ready_for_review`, replace this section with:
+
+- synchronized-main and authoring-boundary evidence;
+- proof the superseded branch remained unchanged;
+- exact changed paths and rationale;
+- exact artifact contents and closure-safe invariant behavior;
+- focused Docker test counts and warnings;
+- Ruff, JSON, Markdown/path, pin-agreement, and diff-check results;
+- implementation commit and exact remote review head;
+- blockers, limitations, deferred full-suite debt, and authority impact.
+
+On failure, publish a specific `blocked` state. On success, publish
+`ready_for_review` with the implementation SHA, empty blockers, merge
+authorization false, null reviewed/approval SHAs, and unchanged capability
+authorizations. Do not create a PR or merge.
 
 ## Current authority
 
-`capability_authorizations_changed` remains `false`. No repair completion,
-review approval, merge approval, or analytical authority is implied. The old V2
-adoption branch remains suspended and must not change.
+`capability_authorizations_changed` remains `false`. This task authorizes only
+repository-native execution-handoff artifacts and their governance tests. It
+does not authorize or change GeoX design, assignment, estimation, inference,
+instrument identity, governed readouts, numerical truth, method-family status,
+multicell/shared-control status, production inference, MIP/MMM decisioning, or
+package-side agents.
