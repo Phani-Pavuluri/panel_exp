@@ -1,160 +1,227 @@
 # Active Task
 
-**Status:** merged
+**Status:** authorized
 **Owner:** GeoX repository governance
 **Last updated:** 2026-07-31
 **Last verified:** 2026-07-31
 
 ## Identity
 
-- **Task ID:** `GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_RECOVERY_001`
-- **Pre-authoring base:** `main` / `b0c00228629dcc6231b85115d2448d8d7c20ee47`
-- **Feature branch:** `feat/geox-repo-native-execution-handoff-v2-adoption-recovery-001`
+- **Task ID:** `GEOX_GOVERNED_READOUT_BUILDER_PACKAGE_ENTRYPOINT_001`
+- **Pre-authoring base:** `main` / `e0cef94c063b03b29e1e1760fb1c2320ce497b56`
+- **Feature branch:** `feat/geox-governed-readout-builder-package-entrypoint-001`
 - **Execution mode:** `branch_and_fast_forward`
 - **Canonical MIP V2 pin:** `Phani-Pavuluri/marketing_intelligence_platform@38f88467f55d5bc4cc64e5a58b0f08f1639a40d0`
 - **Canonical MMM workflow pin:** `Phani-Pavuluri/MMM@1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
-- **Superseded task:** `GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_001`
-- **Superseded branch/head:** `feat/geox-repo-native-execution-handoff-v2-adoption-001` / `315ae7c996551c0f1fdb2414791be7e63586222d`
-- **Superseded implementation:** `6dc5fe455c49d764932ee9abf05c5ab2f55f609c`
+- **Prior task:** `GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_RECOVERY_001`
+- **Prior closure:** `e0cef94c063b03b29e1e1760fb1c2320ce497b56`
 - **Capability authorizations changed:** `false`
 
 ## Purpose
 
-Adopt the repository-native execution handoff V2 on the repaired GeoX `main`.
-The prior V2 branch was created from obsolete history and is now diverged. It is
-evidence only: do not merge, cherry-pick, rebase, reset, or copy its execution
-metadata. Re-create the intended stable workflow artifacts on the current line,
-correcting any state-coupled assumptions found in the old implementation.
+Implement the deterministic, non-production package entrypoint that builds the
+canonical `GeoXGovernedExperimentReadout` and its transport envelope from
+explicit already-validated inputs or certified fixture metadata. Close the
+producer-side temporal, deterministic freshness/expiry, record-kind/schema, and
+producer package-version semantics required by the pinned MIP P2 consumer design.
 
-This is a governance and execution-handoff task only. It must not alter GeoX
-analytical behavior, method eligibility, assignment, estimation, inference,
-instrument identity, governed readouts, numerical truth, MIP/MMM integration,
-or package-side-agent authority.
+This task must not run estimators, select methods, assign markets, calculate new
+analytical truth, determine MMM compatibility, or authorize downstream use.
+The governed readout remains the GeoX analytical artifact; the envelope remains
+transport only.
+
+## Prerequisites
+
+Before branching or modification, complete root `AGENTS.md` bootstrap and prove
+synchronized `main == origin/main`. Verify:
+
+1. the prior execution-handoff recovery is merged at the recorded closure;
+2. the exact MIP and MMM pins exist and preserve current ownership boundaries;
+3. `GEOX_GOVERNED_READOUT_ARTIFACT_CONTRACT_001` exists;
+4. `GEOX_CERTIFIED_GOVERNED_READOUT_FIXTURES_001` exists and recommends this task;
+5. the 12-case numerical-truth validation checkpoint and
+   `tests/fixtures/geox_governed_readouts/manifest.json` exist;
+6. the unresolved full-suite validation debt is preserved and no prior exception
+   is applied to this task.
+
+Stop and publish an accurate blocked state if any prerequisite, exact base,
+authorization boundary, branch, or repository condition cannot be verified.
 
 ## Owned files
 
 Execution may modify only:
 
-- `AGENTS.md`
-- `docs/execution/REPOSITORY_CONTEXT_INDEX.md`
-- `tests/test_repo_native_execution_handoff.py`
+- `panel_exp/contracts/geox_governed_experiment_readout.py`
+- `panel_exp/contracts/geox_mip_artifact_envelope.py`
+- `panel_exp/contracts/__init__.py`
+- `panel_exp/artifacts/geox_governed_readout_builder.py`
+- `panel_exp/artifacts/__init__.py`
+- `panel_exp/__init__.py`
+- `tests/contracts/test_geox_governed_experiment_readout.py`
+- `tests/contracts/test_geox_governed_readout_builder_package_entrypoint.py`
+- `tests/fixtures/geox_governed_readouts/manifest.json`
+- `tests/fixtures/geox_governed_readouts/*/governed_readout.json`
+- `tests/fixtures/geox_governed_readouts/*/replay.json`
+- `docs/track_d/GEOX_GOVERNED_READOUT_BUILDER_PACKAGE_ENTRYPOINT_001.md`
+- `docs/track_d/archives/GEOX_GOVERNED_READOUT_BUILDER_PACKAGE_ENTRYPOINT_001_summary.json`
 - `docs/execution/ACTIVE_TASK.md`
 - `docs/execution/EXECUTION_STATE.json`
 - `docs/execution/LATEST_COMPLETION_REPORT.md`
 
-No other file is authorized.
+The 12 `source_truth.json` files are immutable inputs and are not owned. No
+roadmap, investigation ledger, estimator, design, assignment, inference,
+readout-policy, MIP, or MMM file is authorized.
 
 ## Required implementation
 
-1. Fetch/prune and hydrate history. Synchronize `main` and prove local
-   `main == origin/main` before task discovery or branching.
-2. Verify the task-authoring boundary recorded in
-   `docs/execution/EXECUTION_STATE.json`: the pre-authoring base through the
-   authorization head may change only the active task and completion report;
-   synchronized `main` may then contain exactly one state-only recording commit.
-3. Verify the superseded branch still equals
-   `315ae7c996551c0f1fdb2414791be7e63586222d`. Do not modify or delete it during
-   execution.
-4. Create the exact feature branch from synchronized repaired `main`. Do not
-   reuse the superseded branch.
-5. Add root `AGENTS.md` defining the mandatory bootstrap order:
-   - classify the full worktree;
-   - allow only `.codex/` and `docs/tasks/` as local-only untracked paths;
-   - `git fetch --prune origin` and hydrate missing history;
-   - `git switch main`;
-   - `git pull --ff-only origin main`;
-   - prove `main == origin/main`;
-   - only then read execution state, active task, repository context, relevant
-     GeoX evidence, and pinned MIP/MMM standards.
-6. Define fail-closed execution semantics in `AGENTS.md`: verify authorization,
-   exact base/ancestry, prerequisites, exact branch, owned scope, validation,
-   commit and push; stop at `ready_for_review`; approval is external; there is no
-   `approved_for_merge` state or pre-merge approval metadata commit; merge only
-   after exact-head approval by `git merge --ff-only`, followed by exactly one
-   closure commit, push, synchronization, and cleanup; never create a PR or guess.
-7. Add `docs/execution/REPOSITORY_CONTEXT_INDEX.md` with:
-   - exact MIP and MMM pins;
-   - canonical MIP execution/program documents;
-   - GeoX method-family, instrument-identity, governed-readout, numerical-truth,
-     roadmap, investigation, release, and deferred-agent evidence locations;
-   - ownership boundaries among GeoX, MMM, and MIP;
-   - a `Fresh Chat Bootstrap` section requiring connected GitHub as source of
-     truth and a read-only orientation before modification or authorization.
-8. Add `tests/test_repo_native_execution_handoff.py` validating:
-   - schema version and allowed statuses;
-   - exact canonical pins and task/state/report/context agreement;
-   - full 40-character SHA or null rules;
-   - task status agreement with state;
-   - bootstrap ordering and local-only policy;
-   - absence of an `approved_for_merge` state;
-   - merge protocol language;
-   - status-dependent invariants for `authorized`, `blocked`,
-     `ready_for_review`, and `merged`.
-9. The invariant test must remain valid after closure. Do not unconditionally
-   require `reviewed_head_sha` to be null: it is null before review/merge and a
-   full SHA in `merged`. `approval_commit_sha` remains null under this workflow.
-10. Preserve current execution-state schema V2 and exact MIP/MMM pins. Do not
-    introduce analytical or capability authority.
-11. Preserve the completed import-health recovery and its explicit full-suite
-    validation debt. Do not claim the entire GeoX suite passes.
+### 1. Typed temporal and freshness semantics
+
+Define deterministic serialization-safe semantics for:
+
+- pre-period start/end;
+- post-period start/end;
+- artifact creation time;
+- evidence/as-of time;
+- valid-through or expiry time;
+- explicit UTC normalization;
+- `fresh`, `stale`, and `unknown` freshness states.
+
+Freshness must be resolved from an explicit caller-supplied reference time. Do
+not read the wall clock inside construction, validation, or tests. Define the
+exact expiry-boundary rule and reject malformed, timezone-ambiguous, reversed,
+overlapping where prohibited, or internally inconsistent periods. Never refresh
+or reinterpret stale evidence silently.
+
+### 2. Schema, kind, and package-version semantics
+
+Define and validate explicit:
+
+- analytical artifact schema identity/version;
+- envelope schema/version;
+- record/artifact kind;
+- producer package version and commit;
+- provenance package version;
+- fixture-manifest schema/package version.
+
+Require agreement across readout, provenance, envelope, and manifest. Reject
+unknown, unsupported, or contradictory versions rather than guessing.
+
+### 3. Deterministic builder and package entrypoint
+
+Add a public package entrypoint that:
+
+- consumes explicit validated typed inputs or certified fixture metadata;
+- constructs `GeoXGovernedExperimentReadout` deterministically;
+- validates before returning;
+- may construct the corresponding `GeoXMIPArtifactEnvelope` with
+  `GeoXMIPArtifactKind.READOUT_PACKET`;
+- preserves source IDs, supplied numerical values, uncertainty, method status,
+  lineage, warnings, blockers, failures, replay metadata, and provenance;
+- does not recalculate effect estimates or uncertainty;
+- does not run estimators or inference;
+- does not determine MMM compatibility;
+- fails closed on missing, stale, unsupported, contradictory, or unsafe inputs.
+
+GeoX handoff eligibility remains limited to:
+
+- `eligible_for_compatibility_evaluation`;
+- `ineligible_for_calibration_handoff`;
+- `blocked_for_handoff`.
+
+All authorization flags must remain false. The transport envelope must preserve
+its current non-production/blocked authorization boundary.
+
+### 4. Package export and import health
+
+Expose the builder through the appropriate `contracts`, `artifacts`, and package
+surfaces without circular imports, synthetic package shadowing, or broad eager
+imports. Preserve existing public imports and the repaired import-health path.
+
+### 5. Certified fixture conformance
+
+Update the 12 governed-readout fixtures and replay metadata only as needed for
+the finalized schema. Preserve source numerical truth, analytical values,
+method families, instrument identities, warnings, blockers, failures, and all
+success/warning/stale/incompatible/blocked/failed/diagnostic-only/research-only
+dispositions. Do not emit MMM compatibility decisions. Prove deterministic
+serialization and replay and version agreement with the manifest.
+
+### 6. Evidence artifact
+
+Add the named Track-D report and machine-readable summary. Record exact input and
+output contracts, temporal/freshness rules, schema/version policy, package
+entrypoint, fixture compatibility decision, validation evidence, limitations,
+unchanged authority, remaining MIP/MMM and D6 blockers, and the recommended next
+artifact.
 
 ## Validation gate
 
-This docs-and-workflow task uses a scoped, isolated-Docker gate defined at task
-authoring; it is not the prior recovery exception and does not waive validation
-for product or method changes.
+Run focused validation in isolated Docker/Poetry, including:
 
-Required checks:
+- governed-readout contract tests;
+- new builder/package-entrypoint tests;
+- all 12 certified governed-readout fixture validations;
+- GeoX/MIP envelope tests;
+- numerical-truth fixture validation;
+- import-surface health tests;
+- repository-native execution-handoff tests.
 
-- `tests/test_repo_native_execution_handoff.py`;
-- `tests/test_import_surface_health.py`;
-- `tests/contracts/test_geox_mip_artifact_envelope_dry_run.py`;
-- `tests/test_audit_fixes.py`;
-- JSON parsing and required-field checks for `EXECUTION_STATE.json`;
-- Markdown/path existence and exact-pin agreement checks;
-- Ruff on the new Python test;
-- `git diff --check`;
-- exact changed-path verification against the owned-file list.
+Also run Ruff on every changed Python file, configured mypy for the changed
+surface, JSON parsing/version-consistency checks, deterministic
+serialization/replay checks, `git diff --check`, and exact changed-path
+verification.
 
-Run the focused tests in an isolated Docker/Poetry environment. Record exact
-passed/skipped/warning counts. The unresolved full GeoX suite remains separate
-repository-validation debt and is not a gate for this governance-only adoption.
-
-## State transitions
-
-- On success, publish `ready_for_review` with a full implementation SHA, empty
-  blockers, `task_execution_authorized: true`, `merge_authorized: false`, null
-  reviewed/approval SHAs, and unchanged capability authority.
-- On failure, publish an accurate `blocked` state with specific blockers.
-- Push and prove the exact remote branch head, then stop. Do not create a PR,
-  merge, rebase, squash, force-push, or delete branches during execution.
+Run the repository's complete canonical Docker validation gate, including
+`make validate-docker` or its current repository-defined equivalent. The prior
+full-suite exception does not apply. If the complete gate does not finish with a
+successful final result, publish `blocked` with exact evidence; do not claim the
+full suite passes.
 
 ## Acceptance criteria
 
-- The three stable workflow artifacts exist on the repaired history and satisfy
-  the focused validation gate.
-- The invariant test is closure-safe and status-dependent.
-- The diff is restricted to the six owned files.
-- Exact MIP/MMM pins and authority boundaries are preserved.
-- The old V2 branch remains unchanged during execution and is explicitly
-  superseded, not merged.
-- No PR or merge occurs before exact-head review and external approval.
+- A public deterministic builder/package entrypoint exists.
+- The builder preserves supplied certified analytical values and computes no new
+  analytical truth.
+- Temporal boundaries and freshness are typed, UTC-explicit, deterministic, and
+  free of wall-clock dependence.
+- Schema, record kind, package version, commit, provenance, envelope, and manifest
+  agreement is validated fail-closed.
+- Unknown or contradictory versions are rejected.
+- All 12 certified fixtures validate and round-trip without analytical or
+  disposition changes.
+- Import surfaces remain healthy.
+- GeoX emits handoff eligibility only; MMM compatibility remains MMM-owned.
+- All authorization flags remain false.
+- No production inference, assignment, TrustReport, CalibrationSignal,
+  ExperimentEvidence, DecisionSurface, recommendation, LLM, scheduler, live API,
+  or budget-optimization authority is added.
 
-## Post-merge sequence
+## State transitions
 
-Merged by `git merge --ff-only` at approved exact head
-`ce7ae512bfe952853924b78cae22db87e092e4cf`; both completed branch cleanups
-are recorded after closure.
+On success, publish `ready_for_review` with populated implementation commit,
+empty blockers, `task_execution_authorized: true`, `merge_authorized: false`,
+null reviewed/approval SHAs, and unchanged capability authority. Commit and push
+the exact feature-branch head, prove local/remote equality, and stop.
 
-After exact-head approval, fast-forward merge the fresh branch and create exactly
-one closure commit. Delete the completed fresh branch locally and remotely. At
-that closure step, also delete the old superseded V2 branch locally and remotely
-after verifying it still equals `315ae7c996551c0f1fdb2414791be7e63586222d`.
+On failure, publish an accurate `blocked` state with specific blockers and exact
+validation evidence, commit and push the branch, and stop.
+
+Do not create a pull request, merge, squash, rebase, force-push, or delete the
+branch during execution.
+
+## Later approved merge
+
+Only external approval of the exact remote review-head SHA authorizes a merge
+session. Re-bootstrap, verify unchanged authorization boundary and exact approved
+head, rerun all required validation, merge using `git merge --ff-only`, push and
+verify `main`, clean the completed branch, and create exactly one post-merge
+closure commit updating only the three stable execution files.
 
 ## Prohibited authority
 
-No design eligibility, assignment behavior, estimator or inference status,
-instrument identity, governed-readout semantics, numerical truth,
-multicell/shared-control claim, production inference, CalibrationSignal,
-ExperimentEvidence, TrustReport, DecisionSurface, recommendation, LLM, budget,
-or package-side-agent authority is changed or authorized.
+This task does not authorize or change estimator execution, method selection,
+design eligibility, assignment, inference, causal-readout production status,
+multicell/shared-control claims, MMM compatibility, ExperimentEvidence,
+CalibrationSignal, TrustReport, DecisionSurface, recommendation, optimization,
+LLM decisioning, scheduling, live integration, real data, pilot, production, or
+package-side agents.
