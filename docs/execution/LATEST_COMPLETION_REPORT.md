@@ -2,88 +2,68 @@
 
 ## Identity
 
-- **Task ID:** `GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_RECOVERY_001`
+- **Task ID:** `GEOX_GOVERNED_READOUT_BUILDER_PACKAGE_ENTRYPOINT_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
-- **Pre-authoring base:** `b0c00228629dcc6231b85115d2448d8d7c20ee47`
-- **Feature branch:** `feat/geox-repo-native-execution-handoff-v2-adoption-recovery-001`
+- **Pre-authoring base:** `e0cef94c063b03b29e1e1760fb1c2320ce497b56`
+- **Feature branch:** `feat/geox-governed-readout-builder-package-entrypoint-001`
 - **Execution mode:** `branch_and_fast_forward`
 - **Canonical MIP V2 pin:** `38f88467f55d5bc4cc64e5a58b0f08f1639a40d0`
 - **Canonical MMM workflow pin:** `1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
 
 ## Starting point
 
-The baseline import-health recovery is closed on GeoX `main` at
-`b0c00228629dcc6231b85115d2448d8d7c20ee47`. The Track-B/artifacts cycle and
-suite-level package shadowing were repaired. Focused recovery validation passed;
-the incomplete full GeoX suite remains explicit repository-validation debt.
+The repository-native execution-handoff recovery is closed on GeoX `main` at
+`e0cef94c063b03b29e1e1760fb1c2320ce497b56`. The governed-readout contract and
+12 certified governed-readout fixtures are present. The fixture checkpoint
+explicitly recommends `GEOX_GOVERNED_READOUT_BUILDER_PACKAGE_ENTRYPOINT_001` as
+the next artifact.
 
-The prior workflow V2 task
-`GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_001` is superseded. Its branch
-`feat/geox-repo-native-execution-handoff-v2-adoption-001` remains frozen at
-`315ae7c996551c0f1fdb2414791be7e63586222d`, with reusable implementation
-evidence at `6dc5fe455c49d764932ee9abf05c5ab2f55f609c`. That history is diverged and
-must not be merged, rebased, cherry-picked, reset, or used as execution metadata.
+The pinned MIP P2 consumer design still requires a governed-readout builder and
+package entrypoint plus explicit temporal, deterministic freshness/expiry,
+record-kind/schema, producer package-version, and later D6 compatibility
+semantics before package integration. The prior full GeoX suite remains
+unverified repository-validation debt; no earlier validation exception applies
+to this task.
 
 ## Authorized result
 
-This task is authorized to re-create on repaired `main` only these stable
-workflow artifacts:
+This task is authorized to add a deterministic non-production package entrypoint
+that constructs the canonical `GeoXGovernedExperimentReadout` and optional
+transport envelope from explicit validated inputs or certified fixture metadata.
+It may strengthen typed temporal/freshness and schema/package-version validation,
+conform the 12 governed-readout fixtures without changing their source numerical
+truth, and add focused tests and Track-D evidence within the exact owned-file
+boundary recorded in `ACTIVE_TASK.md`.
 
-- root `AGENTS.md`;
-- `docs/execution/REPOSITORY_CONTEXT_INDEX.md`;
-- `tests/test_repo_native_execution_handoff.py`.
+The builder must preserve supplied analytical values and dispositions. It must
+not run estimators or inference, choose methods or assignments, determine MMM
+compatibility, or authorize any downstream capability. All authorization flags
+remain false.
 
-Execution may also update the three stable execution files for accurate state
-and reporting. No analytical or capability-authority change is authorized.
+## Current status
 
-The new invariant test must correct the old branch's state-coupled assumption:
-`reviewed_head_sha` is null before review/merge but must be a full SHA after
-`merged` closure. The workflow continues to use external exact-head approval,
-no `approved_for_merge` state, no approval metadata commit, fast-forward merge,
-and exactly one post-merge closure commit.
+Task metadata is authorized on `main`. Implementation has not started.
 
-## Completion
+The execution agent must complete the mandatory repository bootstrap, verify the
+task-authoring boundary and prerequisites, create the exact feature branch from
+the synchronized authorization head, remain within owned files, run the focused
+and complete Docker validation gates, and publish either `ready_for_review` or an
+accurate `blocked` state.
 
-The fresh recovery branch recreates the workflow artifacts on repaired `main`
-without copying or modifying the frozen superseded V2 branch. The prior
-import-health recovery remains closed; its focused validation exception and
-unresolved full-suite validation debt remain documented.
+No implementation commit or review head exists yet. No pull request, merge, or
+capability authorization has occurred.
 
-Synchronized main was `a381f301c7e90e1c7f21065f19a08d78d69a7454`; the
-pre-authoring base and authorization boundary were verified from execution
-state. The superseded branch remained unchanged at
-`315ae7c996551c0f1fdb2414791be7e63586222d`. Changed paths are exactly
-`AGENTS.md`, `docs/execution/REPOSITORY_CONTEXT_INDEX.md`,
-`tests/test_repo_native_execution_handoff.py`, and the three execution metadata
-files. The artifacts define fail-closed bootstrap/merge semantics, repository
-context and ownership boundaries, and closure-safe V2 state invariants.
+## Validation requirement
 
-Focused isolated-Docker validation passed: `26 passed`, `2 warnings`; Ruff,
-JSON parsing, Markdown/path checks, exact-pin agreement, and `git diff --check`
-passed. Corrected implementation commit is
-`698dbb36d8e5001d8cda6002e14369b732cb8802`. The exact remote review head is
-externally verified after push and is not embedded self-referentially here. The full GeoX suite remains
-deferred repository-validation debt and is not claimed to pass. State is
-`ready_for_review`, blockers are empty, merge authorization is false, reviewed
-and approval SHAs are null, and capability authorizations are unchanged. No PR
-or merge was created.
+Focused tests are necessary but not sufficient. This task requires the complete
+canonical Docker validation gate. The earlier import-health recovery exception
+is not inherited. A stalled or incomplete full-suite run must be recorded as
+blocking validation debt rather than described as a pass.
 
 ## Current authority
 
-`capability_authorizations_changed` remains `false`. This task authorizes only
-repository-native execution-handoff artifacts and their governance tests. It
-does not authorize or change GeoX design, assignment, estimation, inference,
-instrument identity, governed readouts, numerical truth, method-family status,
-multicell/shared-control status, production inference, MIP/MMM decisioning, or
-package-side agents.
-
-## Closure
-
-External exact-head approval was recorded for
-`ce7ae512bfe952853924b78cae22db87e092e4cf`. Main was fast-forwarded with
-`git merge --ff-only` and pushed at that exact approved head. Focused validation
-remains `26 passed`, `2 warnings`; unresolved full-suite validation debt is
-retained and the full suite is not claimed to pass. The old V2 task and branch
-remain superseded and were never merged or cherry-picked. Both completed branch
-cleanups are recorded; the superseded branch was verified at
-`315ae7c996551c0f1fdb2414791be7e63586222d` before deletion.
+`capability_authorizations_changed` remains `false`. This task does not authorize
+production inference, design or method selection, assignment, multicell/shared-
+control claims, ExperimentEvidence, CalibrationSignal, TrustReport,
+DecisionSurface, recommendations, optimization, LLM decisioning, scheduling,
+live package integration, real data, pilot, production, or package-side agents.
