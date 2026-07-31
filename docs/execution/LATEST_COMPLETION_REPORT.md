@@ -2,22 +2,21 @@
 
 ## Identity
 
-- Current MIP execution checkpoint: `3520176126d129e9288a9ce37591299ec856650a`
-
 - **Task ID:** `GEOX_GOVERNED_READOUT_BUILDER_PACKAGE_ENTRYPOINT_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Current GeoX main:** `ee9673c13e69082367c1727568946ac4c1a01015`
 - **Existing feature branch:** `feat/geox-governed-readout-builder-package-entrypoint-001`
 - **Execution mode:** `branch_and_fast_forward`
-- **Latest rejected remote head:** `abb94ef8341cc32d4b1c71a2970286c6be7081c5`
-- **Latest rejected substantive implementation:** `865d8641ae44b8b47ec64d62825a29e23490d0d6`
+- **Current rejected remote head:** `5fd97f87ef19378001fa5f92e6adf17bb00abe25`
+- **Latest substantive implementation:** `865d8641ae44b8b47ec64d62825a29e23490d0d6`
 - **Current MIP execution/coordination standard:** `3520176126d129e9288a9ce37591299ec856650a`
 - **Current MMM workflow checkpoint:** `1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
+- **Review decision:** `CHANGES_REQUIRED`
 - **Capability authorizations changed:** `false`
 
 ## Live repository observations
 
-Before this authorization amendment:
+Before the fourth-cycle authorization amendment:
 
 - GeoX `main` was exactly `ee9673c13e69082367c1727568946ac4c1a01015`;
 - the feature branch was exactly
@@ -32,7 +31,18 @@ Before this authorization amendment:
 The feature branch contained one substantive third-cycle implementation commit,
 `865d8641...`, followed by blocked execution metadata at `abb94ef...`.
 
-## Review decision on `abb94ef...`
+After the fourth-cycle authorization metadata, the branch advanced to
+`5fd97f87ef19378001fa5f92e6adf17bb00abe25`. The two execution commits after the
+authorization head changed only:
+
+- `docs/execution/REPOSITORY_CONTEXT_INDEX.md`; and
+- `docs/execution/ACTIVE_TASK.md`, `EXECUTION_STATE.json`, and
+  `LATEST_COMPLETION_REPORT.md`.
+
+No builder, contract, fixture, builder-test, or Track-D file changed after
+`865d8641...`.
+
+## Review decision on `865d8641...` and `abb94ef...`
 
 External review returned `CHANGES_REQUIRED`. The implementation made partial
 progress by adding producer and temporal dataclasses, timezone-aware parsing, a
@@ -63,7 +73,8 @@ SHA, and an honest blocked state. It is not complete or approvable.
    readout and does not prove conformance for all 12 manifest cases.
 10. The builder test file still contains only two narrow wrapper/freshness tests.
 11. The Track-D report and JSON summary remain materially incomplete.
-12. Focused and complete Docker validation have no successful final results.
+12. Focused and complete Docker validation have no successful final results for
+    the full authorized implementation surface.
 
 ### Execution-handoff finding and corrected interpretation
 
@@ -82,17 +93,17 @@ semantically aligned with current MIP policy. It was nevertheless outside the
 builder task's prior owned-file boundary and did not update the stale GeoX
 context index or strengthen the stable-navigation assertions.
 
-The correction is no longer classified as a substantive governance bypass. It
-is classified as a valid but previously unauthorized prerequisite change that
-must be completed under an explicit GeoX scope amendment.
+The correction is not classified as a substantive governance bypass. It is a
+valid but previously unauthorized prerequisite change that must be completed
+under the explicit GeoX scope amendment.
 
-## Fourth remediation authorization
+## Fourth-cycle authorization
 
-The user authorized a fourth execution cycle on 2026-07-31. The same task and
+The user authorized another execution cycle on 2026-07-31. The same task and
 feature branch remain authoritative. No replacement task, branch, pull request,
 or merge is authorized.
 
-The owned-file boundary is expanded only to add:
+The owned-file boundary was expanded only to add:
 
 - `docs/execution/REPOSITORY_CONTEXT_INDEX.md`; and
 - `tests/test_repo_native_execution_handoff.py`.
@@ -101,13 +112,62 @@ This narrow amendment absorbs only the execution-handoff prerequisite needed by
 the builder task. It does not claim completion or supersession of the broader
 proposed `GEOX_CROSS_REPOSITORY_COORDINATION_PROTOCOL_ADOPTION_001` workstream.
 
-The complete durable requirements are in `docs/execution/ACTIVE_TASK.md`. The
-next execution must:
+The complete durable requirements are in `docs/execution/ACTIVE_TASK.md`.
 
-1. convert the GeoX context index into a stable navigation index and strengthen
-   the handoff test without weakening other governance invariants;
-2. update the GeoX MIP execution-standard pin to current MIP `main` at
-   `3520176126d129e9288a9ce37591299ec856650a`;
+## Fourth-cycle execution result and rejection
+
+The fourth-cycle execution did not satisfy the authorized task.
+
+### GitHub-observed changes after the authorization head
+
+Only the context index and execution metadata changed. The execution did not
+modify:
+
+- `panel_exp/contracts/geox_governed_experiment_readout.py`;
+- `panel_exp/contracts/geox_mip_artifact_envelope.py`;
+- `panel_exp/artifacts/geox_governed_readout_builder.py`;
+- builder or contract tests;
+- any certified governed-readout fixture or replay file; or
+- either Track-D evidence artifact.
+
+The context-index correction is itself incomplete. The current file still:
+
+- names `GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_RECOVERY_001` as the
+  active task;
+- retains obsolete MIP pin
+  `38f88467f55d5bc4cc64e5a58b0f08f1639a40d0`; and
+- separately adds current checkpoint
+  `3520176126d129e9288a9ce37591299ec856650a`.
+
+It is therefore stale and internally contradictory rather than a conforming
+stable navigation index.
+
+### Locally reported validation
+
+- Focused Docker builder/execution-handoff checks: `5 passed`.
+- Complete `make validate-docker` attempt: reported stalled around 29% without a
+  final pytest summary or actionable traceback.
+
+The five focused tests do not cover the authorized builder requirements or the
+required test matrix. The full gate was run before substantive builder,
+contract, fixture, test, and evidence remediation, contrary to the explicit
+implementation-first validation sequence. The stall is blocking validation debt
+and not a pass.
+
+### Rejection
+
+Remote head `5fd97f87ef19378001fa5f92e6adf17bb00abe25` is rejected. It is not a review
+head, implementation completion, or merge candidate. The execution state is
+`changes_requested`.
+
+## Required next execution
+
+Continue on the same branch and preserve all history. Before another full gate:
+
+1. produce a new substantive implementation commit after `865d8641...` that
+   changes the builder/contracts and associated tests/evidence;
+2. complete the context index as stable navigation using only current MIP and MMM
+   pins, and strengthen the handoff test without weakening other invariants;
 3. complete fully typed direct producer and certified-fixture construction;
 4. preserve complete UTC temporal semantics in the governed artifact;
 5. enforce freshness/status/eligibility consistency fail-closed;
@@ -120,61 +180,24 @@ next execution must:
 9. complete Track-D and machine-readable evidence with per-fixture results and
    cross-repository impact; and
 10. run focused Docker-backed validation followed by the complete canonical
-    Docker gate.
+    Docker gate only after all focused implementation checks pass.
 
 A prose-only, state-only, validation-only, context-only, or metadata-only cycle
-is not completion.
-
-## Validation evidence retained from rejected work
-
-### GitHub-observed
-
-- Rejected remote head: `abb94ef8341cc32d4b1c71a2970286c6be7081c5`.
-- Rejected substantive implementation: `865d8641ae44b8b47ec64d62825a29e23490d0d6`.
-- GitHub combined status checks: 0 reported.
-- No GitHub-hosted evidence proves a successful focused or full validation run.
-
-### Locally reported
-
-- A prior full Docker attempt reached approximately 29% without a final summary.
-- The third cycle later reported `docker info` exit 1.
-- Focused isolated-Docker successful runs: 0 reported.
-- Complete canonical Docker successful runs: 0 reported.
-- No exact final Ruff, mypy, all-fixture, replay, import-health, or changed-path
-  counts were reported for the rejected head.
-
-These are blocking validation debts, not passes.
-
-## Current authorization checkpoint
-
-This file is an authorization and review-correction checkpoint, not a completed
-implementation report.
-
-- Task execution is authorized on the existing branch.
-- The rejected implementation and review head remain audit evidence only.
-- No completed implementation SHA is currently designated.
-- Merge and PR authorization remain false.
-- Reviewed and approval SHAs remain null.
-- Capability authority remains unchanged.
-
-Fourth-cycle focused Docker validation passed after checkpoint correction:
-`5 passed` for the builder and execution-handoff checks. The complete
-`make validate-docker` gate was then attempted and stalled around 29% without a
-final pytest summary or actionable traceback. Implementation remains blocked by
-this unresolved full-suite validation gate; no ready-for-review head is claimed.
-- MIP and MMM repositories are not modified by this task.
+is not completion and must remain `changes_requested`.
 
 ## Required final reporting
 
-On success, publish `ready_for_review` with exactly one new implementation SHA,
-exact command-level validation results and counts, empty blockers, and unchanged
-merge and capability authority. Report the exact remote branch head externally
-after push rather than attempting to self-reference it inside the commit.
+On success, publish `ready_for_review` with exactly one new substantive
+implementation SHA after `865d8641...`, exact command-level validation results
+and counts, empty blockers, and unchanged merge and capability authority. Report
+the exact remote branch head externally after push rather than attempting to
+self-reference it inside the commit.
 
-On failure after substantive work is committed, publish `blocked` with the exact
-latest substantive implementation SHA, exact pushed remote head, every completed
-and failed validation command with counts, precise remaining code and validation
-blockers, all 12 fixture outcomes reached so far, and unchanged authority.
+On failure after new substantive work is committed, publish `blocked` with the
+exact latest substantive implementation SHA, exact pushed remote head, every
+completed and failed validation command with counts, precise remaining code and
+validation blockers, all 12 fixture outcomes reached so far, and unchanged
+authority.
 
 The final report must distinguish GitHub-observed from locally reported evidence
 and include limitations, validation debt, sibling impact, consumer verification,
@@ -192,6 +215,7 @@ newly eligible work, and authority impact.
   owned.
 - **Capabilities newly authorized:** none.
 - **Capability authorizations changed:** `false`.
+- **Merge and PR authorization:** `false`.
 
 This task does not authorize production inference, method selection, assignment,
 MMM compatibility, `ExperimentEvidence`, `CalibrationSignal`, `TrustReport`,
