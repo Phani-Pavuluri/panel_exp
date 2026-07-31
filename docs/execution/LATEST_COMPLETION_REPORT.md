@@ -96,6 +96,12 @@ the required 12-fixture and negative-case coverage. Docker is unavailable
 (`docker info` exit 1), so the mandatory isolated and complete validation gates
 cannot run. State remains `blocked`; no implementation or review head is claimed.
 
+Remediation work added a fixture-driven constructor and rejects missing envelope
+metadata, but the complete temporal, schema/version/provenance/manifest contract
+and 12-fixture validation remain unverified. Docker subsequently became
+unavailable (`permission denied` on the Docker socket), so no new implementation
+commit or review head is published.
+
 ## Validation requirement
 
 Focused tests are necessary but not sufficient. This task requires the complete

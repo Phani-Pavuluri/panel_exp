@@ -21,7 +21,7 @@
   "approval_commit_sha": null,
   "capability_authorizations_changed": false,
   "last_updated": "2026-07-31",
-  "blockers": ["external_review_findings_unresolved_and_docker_unavailable"],
+  "blockers": ["complete_temporal_version_fixture_remediation_unvalidated", "docker_daemon_unavailable"],
   "pr_creation_authorized": false,
   "full_suite_validation_required": true,
   "validation_scope": "focused_isolated_docker_and_complete_repository_docker_gate",
