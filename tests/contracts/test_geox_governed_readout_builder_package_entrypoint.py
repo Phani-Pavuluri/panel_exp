@@ -1,4 +1,5 @@
 import json
+import hashlib
 from pathlib import Path
 
 from panel_exp.artifacts import build_geox_governed_readout_package_entrypoint, build_geox_governed_readout_from_certified_fixture
@@ -31,6 +32,15 @@ def test_certified_manifest_all_cases_round_trip_without_envelope() -> None:
         assert envelope is None
         assert readout.fixture_id == case["case_id"]
         assert readout.lineage.fixture_id == case["case_id"]
+        certified = json.loads((root / case["governed_readout"]).read_text())
+        assert readout.__class__
+        assert json.loads(json.dumps(__import__('dataclasses').asdict(readout), sort_keys=True)) == certified
+        source = root / case["source_truth"]
+        before = hashlib.sha256(source.read_bytes()).hexdigest()
+        assert before == hashlib.sha256(source.read_bytes()).hexdigest()
+        replay = json.loads((root / case["replay"]).read_text())
+        assert replay["case_id"] == case["case_id"]
+        assert replay["deterministic"] is True
 
 
 def test_optional_envelope_is_non_authorizing() -> None:
