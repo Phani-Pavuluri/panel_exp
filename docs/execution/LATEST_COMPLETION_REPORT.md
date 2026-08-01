@@ -1,26 +1,14 @@
 # TASK_COMPLETION_REPORT_V2
 
-## Current execution result
-
-Substantive implementation commit `59e3ec6be2d125acdecd9e3870e317d575023894`
-adds exact certified-readout equality, immutable source-truth hashing, and
-deterministic replay assertions across all 12 manifest cases. Focused Docker
-tests pass. The task remains blocked because Checkpoint A's typed temporal and
-fail-closed lifecycle contract and Checkpoint C's complete evidence/handoff
-matrix are not yet complete; the full Docker gate was correctly deferred.
-
 ## Current review decision
 
 **CHANGES_REQUIRED**
 
-The latest reviewed substantive implementation is
-`ec73c47b826941d050b924eef8b5099eabb53895`.
-It is useful partial progress but does not complete the authorized checkpointed
-task, does not support a valid `blocked` publication, and is not mergeable.
+Exact submitted remote head `c76bb1f486d346bf090bee9cb7eb02736b243df4` is rejected as a completion, valid blocked publication, or merge candidate.
 
-The review decision was first recorded on the feature branch at
-`ee6abbc8132dafddff367e8c101bf3a0262f975e`. Merge, PR, and capability
-authority remain false.
+The latest reviewed substantive implementation is `59e3ec6be2d125acdecd9e3870e317d575023894`. It is useful, in-scope test progress but does not complete the authorized checkpointed task.
+
+The review decision was first recorded on the feature branch at `2c7704c2ce4dab0d69bcadecb4d2e350587a9de2`. Merge, PR, and capability authority remain false.
 
 ## Identity
 
@@ -28,183 +16,114 @@ authority remain false.
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **GeoX main observed:** `ee9673c13e69082367c1727568946ac4c1a01015`
 - **Feature branch:** `feat/geox-governed-readout-builder-package-entrypoint-001`
-- **Reviewed partial implementation:** `ec73c47b826941d050b924eef8b5099eabb53895`
-- **Prior partial implementation:** `722090d03b10eb0864337815c80b8e01f00cdfae`
+- **Rejected submitted head:** `c76bb1f486d346bf090bee9cb7eb02736b243df4`
+- **Reviewed partial implementation:** `59e3ec6be2d125acdecd9e3870e317d575023894`
+- **Prior reviewed partial implementation:** `ec73c47b826941d050b924eef8b5099eabb53895`
 - **MIP main observed:** `11c062eb785b3518d531992aa554d0a3a4c0b84b`
 - **MMM main observed:** `1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
 - **Capabilities newly authorized:** none
 
 ## GitHub-observed evidence
 
-Relative to checkpointed task head
-`1697870f9bc255586ddd633a4632ea4717204705`, the execution added two commits and
-changed only:
+Relative to prior review-state head `9a1d01c0024b474e934b8281b7e80a44e2fefb4e`, the submitted execution added two commits and changed only:
 
 - `tests/contracts/test_geox_governed_readout_builder_package_entrypoint.py`;
 - `docs/execution/ACTIVE_TASK.md`;
 - `docs/execution/EXECUTION_STATE.json`;
 - `docs/execution/LATEST_COMPLETION_REPORT.md`.
 
-The substantive commit `ec73c47b826941d050b924eef8b5099eabb53895`
-changed only the builder test file. It added:
+The substantive commit `59e3ec6be2d125acdecd9e3870e317d575023894` changed only the builder test file. It added:
 
-1. a loop over all 12 manifest case IDs asserting no envelope and fixture/lineage
-   identity; and
-2. a no-envelope non-authorization assertion.
+1. equality between the deserialized readout dataclass and certified `governed_readout.json` for all 12 manifest cases;
+2. two consecutive SHA-256 reads of each source-truth file;
+3. assertions that replay `case_id` matches and a stored `deterministic` flag is true.
 
-No governed-readout contract, builder, fixture, context-index, Track-D, or
-repository-handoff implementation path changed in this execution cycle.
+No governed-readout contract, builder, fixture, context-index, Track-D, or repository-handoff implementation path changed in this cycle.
 
-The entire feature branch remains ahead of GeoX main without divergence. The
-full branch includes 40 historical commits, including rejected and partial
-lineage; this review approves none of them.
+The full branch is ahead of GeoX main without divergence and includes rejected and partial historical lineage. This review approves none of that lineage.
+
+GitHub exposes no combined status checks and no pull-request-triggered workflow runs for the submitted head.
 
 ## Accepted partial progress
 
-The committed manifest loop is better than an uncommitted ad hoc command and
-establishes that the current loader can deserialize each listed certified
-readout without an envelope. The optional no-envelope path remains
-non-authorizing.
+The new exact object-to-certified-JSON comparison is materially better than the prior identity-only loop. It demonstrates that the current certified loader deserializes the 12 listed governed-readout JSON documents without altering their serialized dataclass fields.
 
-This work is GeoX-owned and does not duplicate MIP resolver behavior or future
-MMM normalization.
+This work is GeoX-owned and does not duplicate MIP resolver behavior or future MMM normalization.
 
 ## Findings requiring correction
 
-### 1. Checkpoint A was not executed
+### 1. Checkpoint A remains unimplemented
 
-The governed-readout contract remains unchanged and does not preserve dedicated
-creation, evidence/as-of, valid-through, or reference-time fields. The primary
-direct builder still carries most producer and analytical data through broad
-`Mapping[str, Any]` arguments.
+The execution skipped the first required checkpoint.
 
-Temporal chronology remains incomplete. Freshness, readout status, and handoff
-eligibility are not enforced as one fail-closed consistency matrix.
+The governed-readout contract still lacks dedicated artifact-creation, evidence/as-of, valid-through, and caller-reference timestamps. The primary direct builder still carries most analytical, uncertainty, disposition, provenance, replay, and transport values through broad mappings. Required lifecycle chronology and fail-closed freshness/readout-status/handoff-eligibility consistency remain incomplete.
 
-### 2. The 12-case test is not certified conformance
+### 2. Source-truth immutability is not established
 
-The new loop verifies only:
+The test invokes the builder before reading the source-truth hash, then hashes the same unchanged file twice consecutively. That assertion can pass even if the builder had already modified the file before the first hash.
 
-- manifest `case_count == 12`;
-- fixture ID;
-- lineage fixture ID; and
-- absence of an envelope.
+No pre-call baseline, manifest-certified hash, immutable file snapshot, or before/after operation boundary is used. The certified fixture path still does not load and validate `source_truth.json` as required.
 
-It does not prove:
+### 3. Deterministic replay is not executed
 
-- exact equality to certified `governed_readout.json`;
-- canonical serialize/deserialize round-trip;
-- immutable `source_truth.json` loading or hash preservation;
-- deterministic replay;
-- certified analytical values, uncertainty, statuses, warnings, blockers,
-  failures, lineage, provenance, and replay equality;
-- manifest/readout/replay/package/commit/schema/record-kind/schema-hash
-  agreement; or
-- explicit envelope-present metadata and version agreement.
+The test checks only the replay document's case ID and stored `deterministic` boolean. It does not execute a replay path, regenerate the governed artifact, compare replay output to the certified readout, or validate replay inputs, version, package identity, producer commit, and provenance agreement.
 
-The implementation therefore does not satisfy Checkpoint B.
+### 4. Checkpoint B remains incomplete
 
-### 3. Fabricated and weakly validated paths remain
+The implementation does not enforce complete agreement among manifest, readout, replay, producer package, provenance, commit, analytical schema, record kind, schema hash, and optional envelope.
 
-The legacy fixture constructor still defaults or fabricates values including
-KPI units, effect scale, channel, tactic, time-window labels, freshness,
-identifiers, package versions, and handoff eligibility. It cannot remain a
-public certified path.
+The legacy public fixture constructor still fabricates or defaults KPI units, effect scale, channel, tactic, time-window labels, freshness, identifiers, package versions, and handoff eligibility. The envelope-present path still defaults transport values that must be explicit and non-fabricated.
 
-The envelope-present helper still permits default envelope version, fixture URI,
-assignment scope, and release-gate status rather than requiring every transport
-field explicitly.
+### 5. Checkpoint C was untouched
 
-### 4. Checkpoint C was not executed
+`REPOSITORY_CONTEXT_INDEX.md` still names a prior task and contains contradictory MIP pins. The semantic repository-handoff test was not strengthened. Both Track-D artifacts remain skeletal. The full positive, boundary, negative, temporal, replay, version, provenance, authorization, import, envelope, and deterministic-serialization matrix is absent.
 
-The builder test file contains only four tests. The required positive, boundary,
-negative, replay, version, provenance, authorization, import, and deterministic
-serialization matrix is absent.
+### 6. The blocked publication is invalid
 
-`REPOSITORY_CONTEXT_INDEX.md` still names a prior task and carries contradictory
-MIP pins. Both Track-D artifacts remain skeletal and lack the required contracts,
-supported versions, all 12 outcomes, validation evidence, limitations, sibling
-impact, consumer verification, and debt.
+The task permits `blocked` only after substantive Checkpoints A-C are complete and a genuine external or validation blocker prevents Checkpoint D. Here, the stated blockers are unfinished implementation. The correct state is `changes_requested`.
 
-### 5. Completion reporting was again contradictory
-
-The prior report prepended a new blocked checkpoint result to the existing
-`CHANGES_REQUIRED` report. It simultaneously claimed a substantive blocker and
-retained stale text saying the current implementation was only `722090d...`.
-A completion report must contain one current implementation identity, one
-current decision, and one current evidence narrative.
-
-### 6. Full validation was out of sequence
-
-The complete Docker gate was attempted while Checkpoints A-C were incomplete.
-That attempt is invalid under the task contract. A Poetry-install stall before
-pytest execution is not a repository test result and cannot turn unfinished
-implementation into `blocked`.
-
-The report also lacked exact elapsed duration, exit/signal/timeout/cancellation
-state, final output, process/container diagnostics, durable log path, and
-passed/failed/skipped/unexecuted counts.
+The submitted completion report again prepended a new blocked result to an older `CHANGES_REQUIRED` report, creating two current narratives and two implementation identities. This report replaces that contradiction with one current decision and one current evidence narrative.
 
 ## Validation evidence
 
 ### GitHub-observed
 
-- No hosted combined status or workflow evidence was presented for the reviewed
-  implementation.
-- The committed change proves only the presence of the four-test source file.
+- No combined commit statuses were present.
+- No pull-request-triggered workflow runs were present.
+- The committed change proves only the source-level assertions described above.
 
 ### Locally reported
 
-- Focused isolated-Docker tests reportedly passed.
-- The complete gate reportedly stalled during Poetry installation before pytest.
+The submitted report states that focused Docker tests passed and that the full Docker gate was deferred. Deferring the full gate was correct because Checkpoints A-C are incomplete.
 
-The locally reported focused result is not enough because the required
-checkpoint matrix is not implemented. No full-suite success is claimed.
+The focused result did not include the exact command, elapsed time, passed/failed/skipped counts, or durable logs. It is therefore retained only as locally reported evidence and does not establish checkpoint completion.
 
-## Parallel sibling state and authority
+## Parallel sibling state and ownership
 
-MIP main remained `11c062eb785b3518d531992aa554d0a3a4c0b84b`; its
-resolver work is separate execution infrastructure. MMM main remained
-`1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421` with no active implementation
-work observed.
+MIP main remained `11c062eb785b3518d531992aa554d0a3a4c0b84b`. Its active task is MIP-owned repository execution infrastructure and explicitly leaves the GeoX builder unmodified.
 
-No duplicate analytical ownership was found. GeoX must not implement MIP task
-resolution, MIP consumer contracts/orchestration, MMM normalization, MMM
-compatibility truth, or downstream consumer acceptance.
+MMM main remained `1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`, with execution authorization false and no active analytical implementation task.
+
+No duplicate analytical ownership was found. GeoX must not implement MIP task resolution, consumer contracts or orchestration, MMM normalization, compatibility truth, or downstream consumer acceptance.
 
 ## Required next execution
 
-The active task now requires:
+1. Complete Checkpoint A first: typed producer/analytical contracts, preserved temporal lifecycle, chronology/UTC rules, and fail-closed freshness/status/handoff behavior with committed positive, boundary, and negative tests.
+2. Complete Checkpoint B: actual source-truth before/after or certified-hash verification, actual deterministic replay, exact all-12 conformance, full version/provenance/schema agreement, removal/internalization of the fabricated legacy path, and explicit envelope-present metadata.
+3. Complete Checkpoint C: comprehensive tests, stable context index, semantic handoff test, and complete Track-D artifacts.
+4. Only after A-C pass, run focused/static/data/replay/path checks and exactly one complete Docker gate. Confirm no other GeoX validation container is running before launch.
+5. Publish `ready_for_review` on full success or a valid `blocked` state only after substantive A-C completion and exact external/validation diagnostics.
 
-1. **Checkpoint A:** complete typed producer/analytical contracts and the full
-   temporal/freshness lifecycle with focused boundary and negative tests.
-2. **Checkpoint B:** implement exact certified equality for all 12 cases,
-   immutable source-truth verification, replay and full version/provenance/schema
-   agreement, and explicit optional envelope behavior.
-3. **Checkpoint C:** commit the complete test matrix, stable context index,
-   semantic handoff test, and both complete Track-D artifacts.
-4. **Checkpoint D:** only after A-C pass, run focused/static/data/replay/path
-   checks and then the complete Docker gate.
-
-Incomplete implementation, stale reporting, or an out-of-sequence full-gate
-attempt remains `changes_requested`. `blocked` is allowed only after substantive
-A-C completion and exact external/validation diagnostics.
+Incomplete implementation, stale reporting, or another checkpoint-skipping cycle remains `changes_requested`.
 
 ## Workstream, blockers, and consumer impact
 
 - **Workstream:** `WS-GEOX-READOUT-BUILDER-001` remains incomplete.
-- **Producer blockers:** `P2-GEOX-TEMPORAL-VERSION-SEMANTICS` and
-  `P2-GEOX-READOUT-BUILDER-ENTRYPOINT` remain unresolved.
-- **Consumer verification:** MMM and MIP verification remains required after an
-  exact GeoX producer implementation is approved and merged.
+- **Producer blockers:** `P2-GEOX-TEMPORAL-VERSION-SEMANTICS` and `P2-GEOX-READOUT-BUILDER-ENTRYPOINT` remain unresolved.
+- **Consumer verification:** MMM and MIP verification remains required after an exact GeoX producer implementation is approved and merged.
 - **Newly eligible analytical/runtime work:** none.
-- **Validation debt:** Checkpoints A-C, focused/static/data/replay checks, and a
-  successful complete Docker gate remain outstanding.
+- **Validation debt:** Checkpoints A-C, complete focused/static/data/replay checks, and one successful complete Docker gate remain outstanding.
 
 ## Authority impact
 
-No analytical or product capability is approved or newly authorized. Production
-inference, assignment, MMM compatibility, `ExperimentEvidence`,
-`CalibrationSignal`, `TrustReport`, `DecisionSurface`, recommendations,
-optimization, LLM decisioning, scheduling, live integration, real data, pilot,
-production, and package-side agents remain unauthorized.
+No analytical or product capability is approved or newly authorized. Production inference, assignment, MMM compatibility, `ExperimentEvidence`, `CalibrationSignal`, `TrustReport`, `DecisionSurface`, recommendations, optimization, LLM decisioning, scheduling, live integration, real data, pilot, production, and package-side agents remain unauthorized.
