@@ -2,7 +2,7 @@
   "schema_version": "geox_repo_execution_state_v2",
   "repository": "Phani-Pavuluri/panel_exp",
   "task_id": "GEOX_GOVERNED_READOUT_BUILDER_PACKAGE_ENTRYPOINT_001",
-  "status": "blocked",
+  "status": "changes_requested",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
   "base_sha": "e0cef94c063b03b29e1e1760fb1c2320ce497b56",
@@ -15,7 +15,6 @@
   "canonical_mip_standard_repository": "Phani-Pavuluri/marketing_intelligence_platform",
   "canonical_mip_standard_commit": "3520176126d129e9288a9ce37591299ec856650a",
   "live_mip_main_observed_at_review": "11c062eb785b3518d531992aa554d0a3a4c0b84b",
-  "live_mip_resolver_review_head": "abf57a6fb0c08d23fb51c56a5ea744445b3ab82c",
   "mip_live_overlay_required": true,
   "canonical_mmm_workflow_repository": "Phani-Pavuluri/MMM",
   "canonical_mmm_workflow_commit": "1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421",
@@ -24,19 +23,26 @@
   "merge_authorized": false,
   "pr_creation_authorized": false,
   "reviewed_head_sha": null,
-  "implementation_commit_sha": "ec73c47b826941d050b924eef8b5099eabb53895",
-  "latest_partial_substantive_commit_sha": "722090d03b10eb0864337815c80b8e01f00cdfae",
-  "minimum_final_implementation_after_sha": "722090d03b10eb0864337815c80b8e01f00cdfae",
-  "latest_rejected_substantive_implementation_sha": "865d8641ae44b8b47ec64d62825a29e23490d0d6",
-  "rejected_review_head_sha": "593522bc6c2d62872d9bc11f68c312321539266f",
-  "prior_rejected_review_head_sha": "5fd97f87ef19378001fa5f92e6adf17bb00abe25",
+  "implementation_commit_sha": null,
+  "latest_reviewed_partial_substantive_sha": "ec73c47b826941d050b924eef8b5099eabb53895",
+  "prior_partial_substantive_commit_sha": "722090d03b10eb0864337815c80b8e01f00cdfae",
+  "minimum_final_implementation_after_sha": "ec73c47b826941d050b924eef8b5099eabb53895",
+  "prior_rejected_review_head_sha": "593522bc6c2d62872d9bc11f68c312321539266f",
+  "prior_rejected_substantive_implementation_sha": "865d8641ae44b8b47ec64d62825a29e23490d0d6",
+  "review_decision_commit_sha": "ee6abbc8132dafddff367e8c101bf3a0262f975e",
+  "review_report_commit_sha": "a657a83b6b0569395723c55fa2f7ed1d6123ba67",
   "approval_commit_sha": null,
   "capability_authorizations_changed": false,
   "last_updated": "2026-07-31",
   "review_decision": "changes_requested",
   "review_decision_source": "docs/execution/LATEST_COMPLETION_REPORT.md",
   "blockers": [
-    "Complete make validate-docker was started after focused checkpoint validation but stalled during Poetry installation before pytest execution; no final repository summary was produced."
+    "checkpoint_a_typed_primary_contract_and_temporal_lifecycle_not_implemented",
+    "checkpoint_b_all_12_test_does_not_prove_exact_certified_truth_replay_immutability_or_version_provenance_schema_agreement",
+    "legacy_fixture_and_envelope_paths_still_fabricate_or_default_required_metadata",
+    "checkpoint_c_complete_test_matrix_stable_context_index_and_track_d_evidence_not_implemented",
+    "completion_report_again_contained_contradictory_current_narratives",
+    "full_docker_gate_was_run_before_checkpoints_a_through_c_and_lacks_exact_diagnostics"
   ],
   "execution_checkpoints": [
     "A_typed_contract_and_temporal_lifecycle",
@@ -61,5 +67,5 @@
   "proposed_future_mip_task_id": "MIP_REPOSITORY_EXECUTION_COMPLIANCE_GATES_001",
   "proposed_future_mip_task_authorized": false,
   "mmm_or_mip_analytical_work_duplicated": false,
-  "task_authoring_note": "External review recognizes partial substantive progress at 722090d03b10eb0864337815c80b8e01f00cdfae but rejects the latest completion report as complete or validly blocked. The active task is now checkpointed: typed contract and temporal lifecycle; certified fixture/version/optional-envelope conformance; committed tests/evidence/stable handoff; then focused/static/data validation and only afterward the complete Docker gate. Incomplete implementation or contradictory reporting remains changes_requested. A reusable MIP compliance-gates task is proposed only after the MIP resolver is merged and closed; it is not authorized here and must not modify GeoX or MMM. Merge, PR, and capability authority remain false."
+  "task_authoring_note": "Review accepts ec73c47b826941d050b924eef8b5099eabb53895 only as partial in-scope test progress. It does not complete Checkpoint A, certified conformance, evidence, or validation readiness. Continue on the same branch with new substantive commits after ec73c47b826941d050b924eef8b5099eabb53895. Complete A, then B, then C before any full Docker gate. Incomplete work remains changes_requested. Merge, PR, and capability authority remain false."
 }
