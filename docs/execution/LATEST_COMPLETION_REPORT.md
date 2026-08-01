@@ -1,5 +1,14 @@
 # TASK_COMPLETION_REPORT_V2
 
+## Current checkpoint result
+
+Checkpoint implementation commit `ec73c47b826941d050b924eef8b5099eabb53895`
+adds a committed 12-case certified-fixture conformance matrix and verifies the
+optional no-envelope path. Focused isolated-Docker tests passed. The complete
+Docker gate was then started in the required sequence but stalled during Poetry
+installation before pytest execution, so no full-suite success is claimed and
+the task is substantively blocked pending a completed gate.
+
 ## Current review decision
 
 **CHANGES_REQUIRED**
