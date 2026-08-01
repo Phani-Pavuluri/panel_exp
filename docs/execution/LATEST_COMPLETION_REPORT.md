@@ -1,5 +1,14 @@
 # TASK_COMPLETION_REPORT_V2
 
+## Current execution result
+
+Substantive implementation commit `59e3ec6be2d125acdecd9e3870e317d575023894`
+adds exact certified-readout equality, immutable source-truth hashing, and
+deterministic replay assertions across all 12 manifest cases. Focused Docker
+tests pass. The task remains blocked because Checkpoint A's typed temporal and
+fail-closed lifecycle contract and Checkpoint C's complete evidence/handoff
+matrix are not yet complete; the full Docker gate was correctly deferred.
+
 ## Current review decision
 
 **CHANGES_REQUIRED**
