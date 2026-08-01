@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** blocked
+**Status:** changes_requested
 **Owner:** GeoX repository governance
 **Last updated:** 2026-07-31
 **Last verified:** 2026-07-31
@@ -12,104 +12,118 @@
 - **Current verified GeoX main:** `ee9673c13e69082367c1727568946ac4c1a01015`
 - **Feature branch:** `feat/geox-governed-readout-builder-package-entrypoint-001`
 - **Execution mode:** `branch_and_fast_forward`
-- **Latest reviewed partial substantive implementation:** `ec73c47b826941d050b924eef8b5099eabb53895`
-- **Prior partial implementation:** `722090d03b10eb0864337815c80b8e01f00cdfae`
+- **Latest rejected remote head:** `c76bb1f486d346bf090bee9cb7eb02736b243df4`
+- **Latest reviewed partial implementation:** `59e3ec6be2d125acdecd9e3870e317d575023894`
+- **Prior reviewed partial implementation:** `ec73c47b826941d050b924eef8b5099eabb53895`
 - **Canonical MIP coordination closure:** `Phani-Pavuluri/marketing_intelligence_platform@3520176126d129e9288a9ce37591299ec856650a`
 - **Live MIP main observed:** `11c062eb785b3518d531992aa554d0a3a4c0b84b`
-- **MMM checkpoint:** `Phani-Pavuluri/MMM@1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
+- **Live MMM main observed:** `1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
 - **Capability authorizations changed:** `false`
 
 ## Current review decision
 
-The latest work receives **CHANGES_REQUIRED**.
+Exact remote head `c76bb1f486d346bf090bee9cb7eb02736b243df4` receives **CHANGES_REQUIRED**.
 
-Commit `ec73c47b826941d050b924eef8b5099eabb53895` is a real, in-scope test commit. It adds a manifest loop over all 12 certified fixture IDs and an optional no-envelope assertion. This is useful partial progress, but it does not satisfy Checkpoints A-C and does not justify a full repository gate or a `blocked` publication.
+Commit `59e3ec6be2d125acdecd9e3870e317d575023894` is accepted only as narrow, in-scope test progress. It adds an exact object-to-certified-JSON comparison for the 12 manifest cases, but it does not complete the checkpointed task and does not support a valid `blocked` publication.
 
-The task remains authorized for correction on the same branch. Preserve history. Do not merge, create a pull request, replace the branch, or create a replacement task.
+Continue on the same branch and preserve history. Do not create a replacement task or branch. Do not merge or create a pull request.
 
 ## Review findings
 
-### Checkpoint A remains incomplete
+### 1. Checkpoint A was skipped
 
-- The governed-readout contract was not changed.
-- The primary direct builder still accepts broad `Mapping[str, Any]` payloads for analytical, uncertainty, disposition, provenance, replay, and transport data.
-- Artifact creation, evidence/as-of, valid-through, and reference-time values are not preserved as dedicated governed-readout fields.
-- Temporal chronology remains incomplete and the current comparison logic is not a complete lifecycle contract.
-- Freshness, readout status, and handoff eligibility are not enforced as one fail-closed matrix.
+The authorized sequence requires Checkpoint A before B or C. This execution changed only the builder test and execution metadata.
 
-### Checkpoint B remains materially incomplete
+The governed-readout contract still lacks dedicated artifact-creation, evidence/as-of, valid-through, and caller-reference timestamps. The primary direct construction path still carries most analytical, uncertainty, disposition, provenance, replay, and transport fields through broad `Mapping[str, Any]` values. Temporal chronology and the freshness/readout-status/handoff-eligibility matrix remain incomplete.
 
-- The 12-case test checks only manifest count, fixture IDs, lineage fixture IDs, and absence of an envelope.
-- It does not compare the produced object to certified `governed_readout.json` exactly.
-- It does not load or hash immutable `source_truth.json`.
-- It does not prove canonical serialization round-trip, deterministic replay, or all certified analytical/disposition fields.
-- It does not enforce manifest/readout/replay/package/provenance/commit/schema/record-kind/schema-hash agreement.
-- The envelope-present path still permits defaults for fields that must be explicit and non-fabricated.
-- The legacy fixture-construction path still fabricates/defaults analytical identity and disposition values and must not remain a public certified path.
+### 2. Exact certified equality improved, but Checkpoint B remains incomplete
 
-### Checkpoint C remains incomplete
+The new assertion comparing the deserialized readout to certified `governed_readout.json` is useful.
 
-- The committed test matrix is still only four tests and lacks the required positive, boundary, negative, replay, version, provenance, authorization, import, and deterministic-serialization coverage.
-- `REPOSITORY_CONTEXT_INDEX.md` still mirrors a stale prior task and contains contradictory MIP pins.
-- Both Track-D artifacts remain skeletal and lack per-fixture outcomes, exact contracts, supported versions, validation commands/counts, limitations, sibling impact, consumer verification, and validation debt.
-- The completion report again contained two current narratives: a new blocked opening followed by the prior `CHANGES_REQUIRED` report. Current evidence must replace stale prose, not be prepended to it.
+However:
 
-### Checkpoint D was entered out of sequence
+- source-truth immutability is not proven: the test computes two hashes consecutively after the builder call, with no pre-call baseline, no manifest hash, and no comparison against certified immutable evidence;
+- deterministic replay is not executed: the test only asserts `case_id` and a stored `deterministic` flag;
+- canonical serialize/deserialize/replay equivalence is not demonstrated through the public contract;
+- manifest/readout/replay/package/provenance/commit/schema/record-kind/schema-hash agreement is not enforced;
+- the certified fixture path does not load and validate `source_truth.json` as required;
+- the legacy public fixture constructor still fabricates/defaults analytical identity and disposition values;
+- the envelope-present path still defaults transport values that must be explicit and non-fabricated.
 
-The complete Docker gate was started while Checkpoints A-C were not complete. A dependency-install stall before pytest execution is not a repository validation result and cannot convert incomplete implementation into `blocked`.
+### 3. Checkpoint C was not executed
 
-No valid full-gate evidence was supplied: exact elapsed duration, exit/signal/timeout/cancellation state, final output, process/container diagnostics, durable log path, and passed/failed/skipped/unexecuted counts remain absent.
+`REPOSITORY_CONTEXT_INDEX.md` still mirrors a prior task and contains contradictory MIP pins. The repository-handoff test was not strengthened in this cycle. Both Track-D artifacts remain skeletal. The complete positive, boundary, negative, temporal, replay, version, provenance, authorization, import, envelope, and deterministic-serialization matrix is absent.
+
+### 4. The publication state is invalid
+
+The task contract permits `blocked` only after substantive Checkpoints A-C are complete and a genuine external or validation blocker remains. Here, the listed blockers are unfinished implementation. That state is `changes_requested`, not `blocked`.
+
+The completion report again contains two current narratives: a newly prepended blocked result and the prior `CHANGES_REQUIRED` review. Stable evidence must contain one current implementation identity, one current decision, and one current evidence narrative.
+
+### 5. Validation evidence is incomplete
+
+Deferring the complete Docker gate was correct because A-C are incomplete. The locally reported focused Docker success is not enough to establish completion and lacks exact command, elapsed time, and test counts. GitHub exposes no hosted status or workflow evidence for the submitted head.
 
 ## Ownership and non-overlap
 
-GeoX owns only producer readout construction, experiment-truth preservation, temporal/freshness semantics, handoff eligibility, certified GeoX fixture reproduction, and producer evidence.
+This task owns only GeoX producer behavior:
 
-Do not implement or copy MIP task resolution, orchestration, consumer contracts, coordination infrastructure, or downstream journeys. Do not implement MMM normalization, calibration compatibility truth, or cross-repository consumer fixtures. Do not emit or authorize `CalibrationSignal`, `TrustReport`, `DecisionSurface`, recommendations, optimization, runtime integration, scheduling, or consumer acceptance.
+- governed experiment readout construction;
+- experiment-truth preservation;
+- temporal and deterministic freshness semantics;
+- producer schema/version/provenance/replay agreement;
+- certified GeoX fixture reproduction;
+- GeoX handoff eligibility; and
+- GeoX producer validation and evidence.
 
-MIP main and MMM main remain unchanged at the observed checkpoints. No duplicate analytical ownership was found.
+Do not implement or copy MIP task resolution, MIP consumer contracts/orchestration, coordination infrastructure, downstream journeys, MMM normalization, MMM compatibility truth, or cross-repository consumer fixtures. Do not emit or authorize `CalibrationSignal`, `TrustReport`, `DecisionSurface`, recommendations, optimization, scheduling, live integration, or consumer acceptance.
 
-## Required next execution
+No duplicate MIP or MMM analytical work was found in the reviewed implementation.
 
-Execute only in this order. Each checkpoint must produce committed substantive evidence before moving forward.
+## Mandatory next execution sequence
 
-### Checkpoint A — typed contract and temporal lifecycle
+### Checkpoint A — complete before any further fixture-only work
 
-1. Replace broad primary mappings with explicit serialization-safe types for analytical identity/values, uncertainty, disposition, lineage, provenance, replay, schema/version identity, temporal lifecycle, and optional transport metadata.
-2. Preserve pre/post bounds, creation time, evidence/as-of time, valid-through time, and caller reference time in the governed artifact.
-3. Enforce UTC normalization, period ordering/overlap, lifecycle chronology, and malformed/naive timestamp rejection.
-4. Enforce one fail-closed freshness/status/handoff matrix, including equality-at-expiry and stale/unknown restrictions.
-5. Commit focused positive, boundary, and negative tests.
+1. Define explicit serialization-safe typed structures for analytical identity and values, uncertainty, disposition, temporal lifecycle, lineage, provenance, replay, schema identity, and optional transport metadata.
+2. Remove broad mappings from the primary producer contract. An already-created-readout helper may remain only as an explicit validator/optional-envelope helper.
+3. Preserve pre/post bounds, creation time, evidence/as-of time, valid-through time, and caller reference time in the governed artifact.
+4. Enforce UTC normalization, period ordering and overlap, lifecycle chronology, malformed/naive timestamp rejection, expiry equality, and stale/unknown behavior.
+5. Enforce one fail-closed consistency matrix among computed freshness, readout status, and handoff eligibility.
+6. Commit focused positive, boundary, and negative tests.
 
-### Checkpoint B — certified fixture, version, and envelope conformance
+### Checkpoint B — complete certified conformance
 
 1. Use one public certified-fixture path that loads manifest context, immutable `source_truth.json`, certified `governed_readout.json`, and `replay.json`.
-2. Reproduce each certified governed readout exactly and prove canonical round-trip/replay.
-3. Enforce manifest/readout/replay/package/provenance/commit/schema/record-kind/schema-hash agreement.
-4. Remove or internalize the legacy fabricated fixture-construction path.
-5. Make the envelope optional; when present, require every transport field explicitly and keep it downstream-blocked.
-6. Commit the complete 12-case equality, replay, immutability, version, provenance, and envelope matrix.
+2. Capture source-truth hashes before execution and compare them afterward and/or against certified manifest hashes.
+3. Reproduce all 12 certified governed readouts exactly and prove canonical serialization and actual deterministic replay.
+4. Enforce manifest/readout/replay/package/provenance/commit/schema/record-kind/schema-hash agreement.
+5. Remove or internalize the fabricated legacy fixture constructor.
+6. Require all envelope-present transport metadata explicitly; keep the envelope optional and downstream-blocked.
+7. Commit the full all-12 equality, immutability, replay, version, provenance, schema, and envelope matrix.
 
-### Checkpoint C — evidence and stable execution handoff
+### Checkpoint C — complete evidence and stable handoff
 
-1. Complete the positive, boundary, negative, authorization, import, replay, version, provenance, and deterministic-serialization test matrix.
-2. Convert `REPOSITORY_CONTEXT_INDEX.md` into stable navigation pointing to the three mutable execution files; remove mutable task/status mirroring and contradictory pins.
-3. Strengthen the repository-handoff test without copying the MIP resolver.
-4. Complete both Track-D artifacts with exact contracts, supported versions, all 12 outcomes, changed paths, commands/counts, limitations, validation debt, sibling impact, consumer verification, blockers, next work, and unchanged authority.
-5. Publish one internally consistent completion report narrative.
+1. Complete the positive, boundary, negative, temporal, replay, version, provenance, authorization, import, envelope, and deterministic-serialization test matrix.
+2. Convert `REPOSITORY_CONTEXT_INDEX.md` into stable navigation to `ACTIVE_TASK.md`, `EXECUTION_STATE.json`, and `LATEST_COMPLETION_REPORT.md`; remove mutable task/status mirroring and contradictory pins.
+3. Strengthen `tests/test_repo_native_execution_handoff.py` semantically without copying the MIP resolver.
+4. Complete both Track-D artifacts with exact contracts, supported versions, all 12 outcomes, changed paths, commands/counts, limitations, validation debt, sibling impact, consumer verification, blocker transitions, next work, and unchanged authority.
+5. Replace stale completion prose with one internally consistent current narrative.
 
 ### Checkpoint D — validation and publication
 
-Only after A-C pass:
+Only after A-C are committed and pass:
 
-1. Run the full focused isolated-Docker/Poetry matrix.
-2. Run Ruff on all changed Python files, configured mypy, JSON/version/replay checks, `git diff --check`, immutable source-truth verification, and exact owned-path verification.
-3. Run the complete canonical `make validate-docker` gate.
+1. Run the complete focused isolated-Docker/Poetry matrix.
+2. Run Ruff on changed Python files, configured mypy, JSON/version/replay checks, `git diff --check`, immutable source-truth verification, and exact owned-path verification.
+3. Confirm no other `panel-exp-validation:local` container is running before launch.
+4. Run exactly one complete canonical `make validate-docker` gate.
+5. Record exact command, duration, exit state, counts, and diagnostics.
 
-`ready_for_review` requires A-D success. `blocked` is permitted only after A-C are substantively complete and exact external/validation diagnostics are recorded. Incomplete implementation, stale reporting, or an out-of-sequence full gate remains `changes_requested`.
+`ready_for_review` requires A-D success. `blocked` is allowed only after substantive A-C completion and a genuine external/validation blocker with exact diagnostics. Incomplete implementation remains `changes_requested`.
 
-## Owned files
+## Owned paths
 
-Execution may modify only the existing authorized builder, contract, export, tests, certified governed-readout/replay fixture, Track-D, context-index, and execution-state paths already listed by this task. Every `tests/fixtures/geox_governed_readouts/*/source_truth.json` file is immutable. No estimator, design, assignment, inference, roadmap, investigation, MIP, or MMM path is authorized.
+Execution may modify only the previously authorized GeoX builder, contract, export, test, governed-readout/replay fixture, Track-D, context-index, and execution-state paths. Every `tests/fixtures/geox_governed_readouts/*/source_truth.json` file is immutable. No estimator, design, assignment, inference, roadmap, investigation, MIP, or MMM path is authorized.
 
 ## Prohibited operations and authority
 
