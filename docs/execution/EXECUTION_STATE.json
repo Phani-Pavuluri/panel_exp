@@ -2,7 +2,7 @@
   "schema_version": "geox_repo_execution_state_v2",
   "repository": "Phani-Pavuluri/panel_exp",
   "task_id": "GEOX_GOVERNED_READOUT_BUILDER_PACKAGE_ENTRYPOINT_001",
-  "status": "blocked",
+  "status": "changes_requested",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
   "base_sha": "e0cef94c063b03b29e1e1760fb1c2320ce497b56",
@@ -24,8 +24,9 @@
   "merge_authorized": false,
   "pr_creation_authorized": false,
   "reviewed_head_sha": null,
-  "implementation_commit_sha": "722090d03b10eb0864337815c80b8e01f00cdfae",
-  "minimum_new_substantive_commit_after_sha": "865d8641ae44b8b47ec64d62825a29e23490d0d6",
+  "implementation_commit_sha": null,
+  "latest_partial_substantive_commit_sha": "722090d03b10eb0864337815c80b8e01f00cdfae",
+  "minimum_final_implementation_after_sha": "722090d03b10eb0864337815c80b8e01f00cdfae",
   "latest_rejected_substantive_implementation_sha": "865d8641ae44b8b47ec64d62825a29e23490d0d6",
   "rejected_review_head_sha": "593522bc6c2d62872d9bc11f68c312321539266f",
   "prior_rejected_review_head_sha": "5fd97f87ef19378001fa5f92e6adf17bb00abe25",
@@ -35,10 +36,24 @@
   "review_decision": "changes_requested",
   "review_decision_source": "docs/execution/LATEST_COMPLETION_REPORT.md",
   "blockers": [
-    "Complete make validate-docker was started after focused validation and substantive implementation, but dependency installation stalled before pytest execution; no final repository test summary was produced."
+    "typed_primary_producer_and_analytical_contracts_remain_incomplete",
+    "governed_readout_temporal_lifecycle_and_freshness_status_eligibility_consistency_remain_incomplete",
+    "all_12_fixture_conformance_is_not_backed_by_a_committed_complete_test_matrix",
+    "version_provenance_replay_manifest_envelope_and_schema_hash_agreement_remain_incomplete",
+    "stable_context_index_and_track_d_evidence_remain_incomplete",
+    "completion_report_previously_contained_contradictory_current_state_narratives",
+    "complete_focused_static_data_replay_and_full_docker_validation_remain_outstanding"
   ],
+  "execution_checkpoints": [
+    "A_typed_contract_and_temporal_lifecycle",
+    "B_certified_fixture_version_and_optional_envelope_conformance",
+    "C_committed_test_evidence_and_stable_handoff_completion",
+    "D_focused_static_data_then_complete_docker_validation_and_publication"
+  ],
+  "full_gate_requires_checkpoints_a_through_c": true,
+  "blocked_requires_substantive_checkpoints_and_exact_diagnostics": true,
   "full_suite_validation_required": true,
-  "validation_scope": "substantive_builder_contract_fixture_evidence_then_focused_isolated_docker_then_complete_repository_docker_gate",
+  "validation_scope": "checkpointed_substantive_implementation_then_focused_static_data_replay_checks_then_complete_repository_docker_gate",
   "substantive_paths_required": [
     "panel_exp/contracts/",
     "panel_exp/artifacts/",
@@ -49,5 +64,8 @@
   "prior_task_id": "GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_RECOVERY_001",
   "prior_task_closure_sha": "e0cef94c063b03b29e1e1760fb1c2320ce497b56",
   "recommended_by_artifact": "GEOX_CERTIFIED_GOVERNED_READOUT_FIXTURES_001",
-  "task_authoring_note": "External review rejects exact remote head 593522bc6c2d62872d9bc11f68c312321539266f. It changed only the three execution files after correction authorization, created no substantive implementation after 865d8641ae44b8b47ec64d62825a29e23490d0d6, reran only five narrow tests, and attempted the full Docker gate before substantive focused implementation. The typed builder, temporal/freshness lifecycle, version/provenance/replay/manifest agreement, optional envelope, exact all-12 fixture reproduction, comprehensive tests, stable context index, and Track-D evidence remain incomplete. Continue on the same branch with new substantive commits. MIP resolver work and MMM future normalization are separate and must not be duplicated. Merge, PR, and capability authority remain false."
+  "proposed_future_mip_task_id": "MIP_REPOSITORY_EXECUTION_COMPLIANCE_GATES_001",
+  "proposed_future_mip_task_authorized": false,
+  "mmm_or_mip_analytical_work_duplicated": false,
+  "task_authoring_note": "External review recognizes partial substantive progress at 722090d03b10eb0864337815c80b8e01f00cdfae but rejects the latest completion report as complete or validly blocked. The active task is now checkpointed: typed contract and temporal lifecycle; certified fixture/version/optional-envelope conformance; committed tests/evidence/stable handoff; then focused/static/data validation and only afterward the complete Docker gate. Incomplete implementation or contradictory reporting remains changes_requested. A reusable MIP compliance-gates task is proposed only after the MIP resolver is merged and closed; it is not authorized here and must not modify GeoX or MMM. Merge, PR, and capability authority remain false."
 }
