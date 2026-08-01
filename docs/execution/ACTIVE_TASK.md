@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** blocked
+**Status:** changes_requested
 **Owner:** GeoX repository governance
 **Last updated:** 2026-07-31
 **Last verified:** 2026-07-31
@@ -10,100 +10,85 @@
 - **Task ID:** `GEOX_GOVERNED_READOUT_BUILDER_PACKAGE_ENTRYPOINT_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Current verified GeoX main:** `ee9673c13e69082367c1727568946ac4c1a01015`
-- **Existing feature branch:** `feat/geox-governed-readout-builder-package-entrypoint-001`
+- **Feature branch:** `feat/geox-governed-readout-builder-package-entrypoint-001`
 - **Execution mode:** `branch_and_fast_forward`
-- **Exact rejected review head:** `593522bc6c2d62872d9bc11f68c312321539266f`
-- **Correction authorization prewrite head:** `69b792bc0dfbae8cd6e8185b9aff5441c558689a`
-- **Prior authorization metadata head:** `548248f0a057cb7db1abba569f935c5e7e24bf3f`
-- **Latest rejected substantive implementation:** `865d8641ae44b8b47ec64d62825a29e23490d0d6`
+- **Latest partial substantive implementation:** `722090d03b10eb0864337815c80b8e01f00cdfae`
+- **Latest rejected review head:** `593522bc6c2d62872d9bc11f68c312321539266f`
+- **Prior rejected substantive implementation:** `865d8641ae44b8b47ec64d62825a29e23490d0d6`
 - **Canonical MIP coordination closure:** `Phani-Pavuluri/marketing_intelligence_platform@3520176126d129e9288a9ce37591299ec856650a`
-- **Live MIP main at review:** `11c062eb785b3518d531992aa554d0a3a4c0b84b`
-- **Live MIP resolver review head:** `abf57a6fb0c08d23fb51c56a5ea744445b3ab82c`
-- **Current MMM workflow checkpoint:** `Phani-Pavuluri/MMM@1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
+- **Live MIP main observed at review:** `11c062eb785b3518d531992aa554d0a3a4c0b84b`
+- **MIP resolver review head observed:** `abf57a6fb0c08d23fb51c56a5ea744445b3ab82c`
+- **MMM checkpoint:** `Phani-Pavuluri/MMM@1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
 - **Capability authorizations changed:** `false`
 
-## External review decision
+## Current review decision
 
-Exact remote head `593522bc6c2d62872d9bc11f68c312321539266f`
-receives **CHANGES_REQUIRED**.
+The latest completion report is not accepted as a valid blocked completion.
+Commit `722090d03b10eb0864337815c80b8e01f00cdfae` is a real substantive commit,
+but it is only a partial checkpoint. It adds a certified fixture loader and a
+truly optional no-envelope return path. It does not complete the typed producer
+contract, governed-readout temporal lifecycle, freshness/status/eligibility
+matrix, end-to-end version/provenance agreement, committed all-12 fixture test
+matrix, stable context index, or Track-D evidence.
 
-That head changed only:
+The completion report also contains two incompatible current narratives: its
+opening describes the new partial implementation and a dependency-install stall,
+while most of the report still describes the earlier metadata-only rejected
+head and states that no substantive implementation exists. Current evidence must
+replace stale current-state prose rather than be appended to it.
 
-- `docs/execution/ACTIVE_TASK.md`;
-- `docs/execution/EXECUTION_STATE.json`; and
-- `docs/execution/LATEST_COMPLETION_REPORT.md`.
+Continue on the same branch and preserve history. Do not merge, create a pull
+request, replace the task, or create a replacement branch.
 
-It did not add a new substantive implementation after
-`865d8641ae44b8b47ec64d62825a29e23490d0d6`, did not modify the builder or
-contracts, did not conform the 12 certified fixtures, did not complete the test
-matrix or Track-D evidence, and did not correct the stale context index.
+## Ownership and non-overlap
 
-The head also published `blocked` after another metadata-only and validation-only
-cycle. This contradicts this task's explicit publication rule: a valid blocked
-completion requires a new substantive implementation commit and exact
-implementation evidence. A metadata-only cycle must remain `changes_requested`.
-
-The complete Docker gate was again attempted before substantive implementation
-and the required focused implementation matrix. The reported stall near 29%
-without elapsed duration, exit or timeout state, last completed test, process or
-container diagnostics, durable log path, or passed/failed/skipped/unexecuted
-counts is not sufficient validation evidence.
-
-Continue on the same feature branch and preserve all history. Do not merge,
-replace the task, replace the branch, create a pull request, or rerun the full
-repository gate before substantive focused implementation and validation pass.
-
-## Parallel-work and authority boundary
-
-The live MIP branch implements only the MIP-owned active-task resolver and is
-`ready_for_review` at `abf57a6fb0c08d23fb51c56a5ea744445b3ab82c`.
-It does not modify GeoX, authorize GeoX resolver adoption, implement experiment
-readout truth, or absorb this builder task.
-
-MMM `main` remains merged and idle for implementation at
-`1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`. MMM normalization and certified
-cross-repository compatibility fixtures remain separate future MMM-owned work.
-
-This GeoX task must implement only GeoX producer responsibilities:
+This task owns only GeoX producer behavior:
 
 - governed experiment readout construction;
-- GeoX temporal and deterministic freshness semantics;
+- experiment-readout temporal and deterministic freshness semantics;
 - schema, producer, provenance, replay, and fixture-manifest agreement;
-- certified GeoX fixture reproduction;
+- exact certified GeoX readout reproduction;
 - GeoX handoff eligibility; and
-- GeoX producer validation and evidence.
+- GeoX producer tests and evidence.
 
-Do not implement MIP resolver logic, MIP consumer contracts or orchestration,
-MMM normalization or compatibility truth, `CalibrationSignal`, `TrustReport`,
-`DecisionSurface`, recommendations, runtime integration, or consumer acceptance.
+Do not implement or copy:
 
-## Repository bootstrap and live-overlay rule
+- the MIP active-task resolver, task selection, consumer contracts,
+  orchestration, coordination engine, or downstream journey;
+- MMM normalization, calibration compatibility truth, or cross-repository
+  consumer fixtures;
+- `CalibrationSignal`, `TrustReport`, `DecisionSurface`, recommendations,
+  optimization, runtime integration, scheduling, or consumer acceptance.
 
-Before modifying files:
+MIP's resolver work is separate and may proceed independently. MMM has no active
+implementation task. Producer completion does not imply MMM or MIP acceptance.
 
-1. Classify the worktree. Only `.codex/` and `docs/tasks/` may remain local-only
-   untracked. Stop on unrelated tracked changes or other unexpected untracked
-   paths.
-2. Run `git fetch --prune origin`, hydrate required history, switch to `main`,
-   pull with `--ff-only`, and prove local `main == origin/main ==
+## Mandatory bootstrap
+
+Before every execution cycle:
+
+1. Classify the complete worktree. Permit local-only untracked content only under
+   `.codex/` and `docs/tasks/`; stop on unrelated tracked changes or other
+   unexpected untracked paths.
+2. Fetch and prune all affected repositories, hydrate required history, switch
+   GeoX to `main`, pull with `--ff-only`, and prove local `main == origin/main ==
    ee9673c13e69082367c1727568946ac4c1a01015`.
 3. Verify MMM `origin/main ==
-   1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421` and read its live execution
-   state before dependent work.
-4. Fetch live MIP `origin/main`. Prove canonical coordination closure
-   `3520176126d129e9288a9ce37591299ec856650a` remains an ancestor, then read
-   live MIP execution and coordination evidence. Do not require live MIP main to
-   equal a frozen current-main SHA.
-5. Apply the live-overlay rule: later MIP governance work is not a GeoX blocker
-   unless it changes GeoX ownership, creates a GeoX-recorded dependency,
-   invalidates this task's authority, or changes an applicable contract.
-6. Read root GeoX `AGENTS.md`, all four execution files, the exact rejected head,
-   the full branch diff, builder/contracts, manifest and all fixture evidence,
-   tests, and Track-D artifacts.
-7. Verify this branch descends from current GeoX main and contains rejected head
-   `593522bc6c2d62872d9bc11f68c312321539266f` without rewritten history.
-8. Stop with accurate `blocked` state only after new substantive work exists and
-   a genuine implementation or validation blocker remains.
+   1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421` and read its current execution
+   state.
+4. Fetch live MIP. Prove canonical coordination closure `3520176...` remains an
+   ancestor of live MIP main, then read live MIP execution and coordination
+   evidence. Later MIP governance is not a GeoX blocker unless it changes GeoX
+   ownership, adds a GeoX-recorded dependency, invalidates authority, or changes
+   an applicable contract.
+5. Read root `AGENTS.md`, all four GeoX execution files, the complete branch
+   history and diff, builder/contracts, manifest and fixture evidence, tests, and
+   Track-D artifacts.
+6. Verify the feature branch descends from current GeoX main and preserves all
+   rejected history without rewrite.
+
+Stop on stale evidence, duplicate ownership, unclear authority, unresolved
+ancestry, or unrelated tracked changes.
 
 ## Owned files
 
@@ -130,154 +115,166 @@ Execution may modify only:
 
 Every `tests/fixtures/geox_governed_readouts/*/source_truth.json` is immutable.
 No estimator, design, assignment, inference, roadmap, investigation ledger,
-readout policy, MIP, or MMM file is authorized.
+readout-policy, MIP, or MMM path is authorized.
 
-## Required correction
+## Checkpointed execution contract
 
-### 1. Produce a new substantive implementation
+The agent must complete the task in the following order. Each checkpoint must
+produce a substantive commit and a checkpoint result in the completion report.
+A later checkpoint cannot compensate for an incomplete earlier checkpoint.
 
-Create a new implementation commit after
-`865d8641ae44b8b47ec64d62825a29e23490d0d6` that changes substantive
-builder/contract/test/fixture/evidence paths. The implementation SHA must be a
-real commit object and an ancestor of the eventual review head.
+### Checkpoint A — typed contract and temporal lifecycle
 
-### 2. Complete typed construction contracts
+Complete explicit serialization-safe typed structures for:
 
-Define serialization-safe typed structures for producer metadata, analytical
-identity and values, uncertainty, disposition, temporal boundaries, lineage,
-provenance, replay, schema/version identity, and optional transport metadata.
+- producer and analytical identity;
+- effect and uncertainty values and semantics;
+- disposition, warnings, blockers, and failures;
+- lineage, provenance, replay, schema, and transport metadata;
+- pre/post boundaries, artifact creation, evidence/as-of, valid-through, and
+  caller-supplied reference time.
 
-The primary builder must accept explicit typed producer inputs or a validated
-certified readout with manifest and replay context. Broad `Mapping[str, Any]`
-objects may not remain the primary producer contract. An already-created-readout
-helper may remain only as a clearly named validation or optional-envelope helper.
+The primary public builder must no longer use broad `Mapping[str, Any]` objects
+for the core producer, analytical, uncertainty, disposition, provenance, replay,
+or transport contract. An already-created-readout helper may remain only as an
+explicit validation or optional-envelope helper.
 
-Do not fabricate absent KPI units, channel, tactic, geography, time windows,
-statuses, identifiers, package versions, commits, schema hashes, or analytical
-dispositions. The transport envelope must be truly optional; when requested,
-all metadata must be explicit, validated, non-fabricated, and downstream-blocked.
+Preserve every lifecycle timestamp in the governed artifact. Validate UTC
+normalization, pre/post ordering and overlap, creation/as-of/valid-through
+chronology, and malformed or timezone-ambiguous input.
 
-### 3. Preserve complete temporal and freshness semantics
+Freshness is deterministic:
 
-Represent and deterministically serialize timezone-aware UTC values for:
-
-- pre-period start and end;
-- post-period start and end;
-- artifact creation time;
-- evidence/as-of time;
-- valid-through or expiry time; and
-- caller-supplied freshness reference time.
-
-Do not parse then discard creation, as-of, or validity timestamps. Correct the
-existing chronology comparison, validate ordering and overlap, and test all
-boundary and negative cases.
-
-Freshness must follow:
-
-- `reference_time <= valid_through` → `fresh`;
-- `reference_time > valid_through` → `stale`.
+- `reference_time <= valid_through` is `fresh`;
+- `reference_time > valid_through` is `stale`.
 
 `unknown` or `stale` evidence must fail closed for
-`eligible_for_compatibility_evaluation`. Freshness, readout status, and handoff
-eligibility must agree. Never read the wall clock or silently refresh evidence.
+`eligible_for_compatibility_evaluation`. Computed freshness, readout status, and
+handoff eligibility must agree. Never read the wall clock or silently refresh
+evidence.
 
-### 4. Enforce version, provenance, replay, and manifest agreement
+**Checkpoint A exit evidence:** changed contract and builder paths, focused
+positive/boundary/negative tests, and no unresolved broad primary mappings.
 
-Define supported analytical schema identity/version, record kind, envelope
+### Checkpoint B — certified fixture, version, and envelope conformance
+
+Use one deterministic public fixture path that loads manifest context,
+immutable `source_truth.json`, certified `governed_readout.json`, and
+`replay.json`; validates all identities and versions; and reproduces the
+certified governed readout exactly.
+
+Preserve all certified identifiers, effect and uncertainty values and semantics,
+method family, instrument identity, statuses, handoff eligibility, warnings,
+blockers, failures, lineage, replay, and provenance. Do not fabricate or default
+KPI units, channel, tactic, geography, time-window labels, statuses, identifiers,
+package versions, commits, schema hashes, or dispositions.
+
+Define and enforce analytical schema identity/version, record kind, envelope
 version, producer package version and commit, provenance package version and
-commit, replay version, fixture-manifest version, and schema hash.
+commit, replay version, fixture-manifest version, and schema hash. Reject empty,
+malformed, `unknown`, unsupported, fake, or contradictory values.
 
-Enforce required agreement across producer input, readout, provenance, replay,
-envelope, fixture manifest, certified readout, and replay record. Reject empty,
-malformed, `unknown`, unsupported, fake, or contradictory values. A schema hash
-must be explicitly supplied or deterministically derived from the schema; it may
-not be a renamed version string.
+The transport envelope must be genuinely optional. When requested, every field
+must be explicit, validated, non-fabricated, and downstream-blocked.
 
-### 5. Preserve certified analytical truth and conform all 12 fixtures
+**Checkpoint B exit evidence:** all 12 manifest cases pass the committed public
+fixture test path; canonical JSON round-trip and replay pass; manifest/readout/
+replay/envelope agreement is demonstrated; immutable source-truth files are
+unchanged.
 
-The public fixture path must load immutable `source_truth.json`, certified
-`governed_readout.json`, `replay.json`, and manifest context, then reproduce the
-certified governed readout exactly without changing analytical truth or
-certified disposition.
+### Checkpoint C — test, evidence, and stable handoff completion
 
-Preserve identifiers, effect and uncertainty values and semantics, method
-family, instrument identity, readout status, handoff eligibility, warnings,
-blockers, failures, lineage, replay, and provenance. Do not replace certified
-values with `unknown`, `currency`, `pre/post`, fixture IDs, inferred statuses,
-guessed commits, or other defaults.
+Commit the complete positive, boundary, negative, fixture, replay, version,
+provenance, authorization, import, and deterministic-serialization test matrix.
+Ad hoc commands or uncommitted loops do not satisfy the all-12 requirement.
 
-For all 12 cases, prove canonical JSON round-trip, deterministic replay,
-manifest/readout/replay/envelope agreement, optional envelope behavior, and
-unchanged immutable source truth. Record each fixture outcome in both Track-D
-artifacts.
+Convert `REPOSITORY_CONTEXT_INDEX.md` into a stable navigation index. It must
+point to the three mutable execution files, distinguish the canonical MIP closure
+from live-overlay observations, retain the MMM checkpoint, preserve authority
+boundaries, and not repeat mutable task identity or status as current truth.
+Strengthen `tests/test_repo_native_execution_handoff.py` semantically without
+copying the MIP resolver into GeoX.
 
-### 6. Correct the stable execution handoff
+Expand both Track-D artifacts with exact contracts, supported versions,
+temporal/freshness rules, per-fixture outcomes, exact changed paths, commands and
+counts, GitHub-observed versus locally reported evidence, limitations, validation
+debt, workstream/blocker IDs, sibling impact, consumer verification, remaining
+MMM/D6 blockers, newly eligible work, recommended next artifact, and unchanged
+authority.
 
-Convert `REPOSITORY_CONTEXT_INDEX.md` from a stale mutable task mirror into a
-stable navigation index. It must point to `ACTIVE_TASK.md`,
-`EXECUTION_STATE.json`, and `LATEST_COMPLETION_REPORT.md`, distinguish canonical
-MIP closure from live overlay, retain the live MMM checkpoint, preserve authority
-boundaries, and not claim to be the current-task source.
+The completion report must contain one current decision and one current evidence
+narrative. Historical findings must be explicitly labeled historical.
 
-Strengthen `tests/test_repo_native_execution_handoff.py` semantically. Do not
-copy or implement the MIP resolver in GeoX under this task.
+**Checkpoint C exit evidence:** required tests and evidence are committed,
+context-index invariants pass, both Track-D artifacts are complete, and exact
+owned-path verification passes.
 
-### 7. Complete tests and Track-D evidence
+### Checkpoint D — validation and publication
 
-Add the complete positive, boundary, negative, fixture, replay, version,
-provenance, authorization, import, and deterministic serialization matrix.
-Two builder tests and five focused tests are insufficient.
+Only after Checkpoints A–C pass:
 
-Expand both Track-D artifacts with exact contracts and supported versions,
-temporal/freshness rules, all 12 fixture results, exact changed paths, validation
-commands and counts, GitHub-observed versus locally reported evidence, blockers,
-limitations, validation debt, workstream/blocker IDs, sibling impact, consumer
-verification, remaining MMM and D6 blockers, newly eligible work, recommended
-next artifact, and unchanged capability authority.
+1. Run the complete focused isolated-Docker/Poetry matrix for the contract,
+   builder, all 12 fixtures, optional envelope, numerical-truth preservation,
+   imports, replay, version/provenance agreement, and execution handoff.
+2. Run Ruff on every changed Python file, configured mypy if present, JSON and
+   version checks, deterministic replay checks, `git diff --check`, immutable
+   source-truth verification, and exact changed-path verification.
+3. Only then run the complete canonical `make validate-docker` gate or current
+   repository-defined equivalent.
 
-## Validation sequence
+A full-gate attempt is invalid when any Checkpoint A–C exit condition is absent.
+Do not use full validation as a substitute for unfinished implementation.
 
-Implementation and substantive focused validation must precede the full gate:
+If the full gate stalls or fails, record the exact command, elapsed duration,
+exit/signal/timeout/cancellation state, last completed output, container and
+process diagnostics, durable log path, and available passed/failed/skipped/
+unexecuted counts. Dependency installation progress or a percentage alone is not
+evidence.
 
-1. Commit substantive builder, contract, fixture, test, context-index, and
-   evidence changes.
-2. Prove changed paths include substantive work beyond execution metadata and
-   the context index.
-3. Run focused isolated-Docker/Poetry tests for the contract, builder, all 12
-   fixtures, optional envelope, numerical-truth preservation, imports, replay,
-   version/provenance agreement, and execution handoff.
-4. Run Ruff on all changed Python files, configured mypy if present, JSON and
-   version checks, deterministic replay checks, `git diff --check`, and exact
-   changed-path verification.
-5. Only after all focused checks pass, run the complete canonical
-   `make validate-docker` gate or current repository-defined equivalent.
+## Publication rules
 
-No host-only substitute or inherited validation exception is authorized.
+### `ready_for_review`
 
-If the full gate stalls, record the exact command, elapsed duration, exit or
-timeout state, last completed test/output, process and container diagnostics,
-durable log path, and available passed/failed/skipped/unexecuted counts. A
-percentage alone is not evidence.
+Allowed only when Checkpoints A–D pass. Record one final implementation-tree SHA
+that is a real commit object and an ancestor of the exact remote review head,
+exact commands and counts, empty blockers, task execution authorization true,
+merge and PR authorization false, null reviewed/approval SHAs, and unchanged
+capability authority.
 
-## Required publication
+### `blocked`
 
-### Success
+Allowed only when substantive Checkpoints A–C work has been committed and a
+genuine external or validation blocker prevents completion. Record the latest
+substantive SHA, exact commands and counts, per-fixture outcomes reached, exact
+diagnostics and log path, precise remaining blockers, and unchanged authority.
 
-Publish `ready_for_review` only after implementation and all validation succeed.
-Record exactly one new substantive implementation SHA after `865d8641...`, exact
-commands and counts, empty blockers, task execution authorization true, merge
-and PR authorization false, null reviewed/approval SHAs, and unchanged capability
-authority. Push the exact branch head and stop.
+Incomplete implementation, missing committed tests/evidence, stale prose, or an
+out-of-sequence full-gate run is `changes_requested`, not `blocked`.
 
-### Failure
-
-Only after new substantive work is committed may execution publish `blocked`.
-Record the exact implementation SHA, exact remote head, completed and failed
-commands and counts, per-fixture outcomes reached, precise code and validation
-blockers, and unchanged authority.
-
-A context-only, metadata-only, report-only, or validation-only result remains
+A metadata-only, context-only, report-only, or validation-only cycle remains
 `changes_requested`.
+
+## Proposed reusable follow-up — not authorized here
+
+After the MIP active-task resolver is reviewed, merged, and closed, MIP should
+consider a separate owner task:
+
+`MIP_REPOSITORY_EXECUTION_COMPLIANCE_GATES_001`
+
+That proposed task should implement reusable deterministic enforcement for:
+
+- machine-readable owned/required/immutable path manifests;
+- required substantive-path and commit checks;
+- checkpoint/readiness validation before full repository gates;
+- publication-state validation for `changes_requested`, `blocked`, and
+  `ready_for_review`;
+- exact implementation-SHA object and ancestry checks;
+- one-current-decision consistency across state and human-readable files; and
+- command-level validation evidence requirements.
+
+It must not modify GeoX or MMM. Later GeoX/MMM adoption would require separate
+owner-repository tasks after their active work closes. This proposal is not an
+authorization and does not block the current GeoX task.
 
 ## Prohibited operations and authority
 
