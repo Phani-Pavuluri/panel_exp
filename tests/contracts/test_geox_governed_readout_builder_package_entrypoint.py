@@ -1,4 +1,7 @@
-from panel_exp.artifacts import build_geox_governed_readout_package_entrypoint
+import json
+from pathlib import Path
+
+from panel_exp.artifacts import build_geox_governed_readout_package_entrypoint, build_geox_governed_readout_from_certified_fixture
 from panel_exp.contracts.geox_governed_experiment_readout import build_example_geox_stale_readout, build_example_geox_success_readout
 
 
@@ -17,3 +20,20 @@ def test_freshness_is_reference_time_deterministic() -> None:
         envelope_metadata={"created_at": "2025-01-01T00:00:00Z", "request_id": "req-1", "input_data_fingerprint": "sha256:fixture", "schema_hash": "sha256:schema"}
     )
     assert result.freshness_status == "stale"
+
+
+def test_certified_manifest_all_cases_round_trip_without_envelope() -> None:
+    root = Path("tests/fixtures/geox_governed_readouts")
+    manifest = json.loads((root / "manifest.json").read_text())
+    assert manifest["case_count"] == 12
+    for case in manifest["cases"]:
+        readout, envelope = build_geox_governed_readout_from_certified_fixture(case["case_id"], fixture_root=root)
+        assert envelope is None
+        assert readout.fixture_id == case["case_id"]
+        assert readout.lineage.fixture_id == case["case_id"]
+
+
+def test_optional_envelope_is_non_authorizing() -> None:
+    readout, envelope = build_geox_governed_readout_package_entrypoint(build_example_geox_success_readout())
+    assert envelope is None
+    assert not any(vars(readout.authorization_flags).values())
