@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** blocked
+**Status:** changes_requested
 **Owner:** GeoX repository governance
 **Last updated:** 2026-07-31
 **Last verified:** 2026-07-31

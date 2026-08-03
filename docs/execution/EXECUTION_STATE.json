@@ -2,7 +2,7 @@
   "schema_version": "geox_repo_execution_state_v2",
   "repository": "Phani-Pavuluri/panel_exp",
   "task_id": "GEOX_GOVERNED_READOUT_BUILDER_PACKAGE_ENTRYPOINT_001",
-  "status": "blocked",
+  "status": "changes_requested",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
   "base_sha": "e0cef94c063b03b29e1e1760fb1c2320ce497b56",
@@ -23,7 +23,7 @@
   "merge_authorized": false,
   "pr_creation_authorized": false,
   "reviewed_head_sha": null,
-  "implementation_commit_sha": "3dff0a75f89b507f42c76251a06a536529508afa",
+  "implementation_commit_sha": null,
   "latest_reviewed_partial_substantive_sha": "59e3ec6be2d125acdecd9e3870e317d575023894",
   "prior_reviewed_partial_substantive_sha": "ec73c47b826941d050b924eef8b5099eabb53895",
   "prior_partial_substantive_commit_sha": "722090d03b10eb0864337815c80b8e01f00cdfae",
@@ -40,7 +40,7 @@
   "blockers": [
     "Checkpoint A typed temporal lifecycle and fail-closed consistency remain incomplete.",
     "Checkpoint B end-to-end version/provenance/schema agreement and explicit envelope validation remain incomplete.",
-    "Checkpoint C complete semantic handoff matrix, stable context index, and Track-D evidence remain incomplete; full Docker gate remains deferred."
+    "Checkpoint C complete semantic handoff matrix, stable context index, and Track-D evidence remain incomplete."
   ],
   "execution_checkpoints": [
     "A_typed_contract_and_temporal_lifecycle",
