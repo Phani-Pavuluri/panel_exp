@@ -2,93 +2,95 @@
 
 ## Current decision
 
-**SUPERSEDED WITHOUT MERGE**
+**AUTHORIZED FOR EXECUTION**
 
-`GEOX_GOVERNED_READOUT_BUILDER_PACKAGE_ENTRYPOINT_001` is no longer an
-executable or mergeable task. Its remote branch is retained only as historical
-partial evidence.
+`GEOX_LEAN_REPOSITORY_DELIVERY_STANDARD_ADOPTION_001` is the sole active GeoX
+task. It adopts the merged MIP lean execution contract as GeoX-owned governance.
+It does not resume or merge the superseded builder branch.
 
 ## Identity
 
 - **Repository:** `Phani-Pavuluri/panel_exp`
-- **Main before supersession:** `ee9673c13e69082367c1727568946ac4c1a01015`
-- **Preserved branch:** `feat/geox-governed-readout-builder-package-entrypoint-001`
-- **Preserved exact branch head:** `216c53f13919ec5ee7fa060a9c052e8a074fb9cc`
-- **Latest partial substantive commit:** `3dff0a75f89b507f42c76251a06a536529508afa`
-- **Observed branch distance:** 50 commits ahead of main with no divergence before supersession
-- **MIP execution-standard main:** `369805d923454a51ce98845cea29bdb1ee3c3895`
-- **MMM main:** `1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
+- **Task ID:** `GEOX_LEAN_REPOSITORY_DELIVERY_STANDARD_ADOPTION_001`
+- **Pre-authoring base:** `b433879138e7bca303a1095acf50054619aa76a0`
+- **Feature branch:** `docs/geox-lean-repository-delivery-standard-adoption-001`
+- **Risk tier:** Tier 1 — documentation, execution governance, and one focused governance test
+- **MIP execution-standard pin:** `369805d923454a51ce98845cea29bdb1ee3c3895`
+- **MMM main observed:** `1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
+- **Superseded builder branch head:** `216c53f13919ec5ee7fa060a9c052e8a074fb9cc`
 
-## Why the task was superseded
+## Authorized outcome
 
-The task was not an independently reviewable merge unit. It combined:
+Create one GeoX execution-governance contract that requires:
 
-1. public governed-readout lifecycle and freshness contract design;
-2. typed producer-builder implementation;
-3. certified fixture migration, immutability, and replay semantics;
-4. package/provenance/schema/envelope agreement;
-5. repository-handoff and Track-D evidence; and
-6. focused plus full Docker validation.
+- one primary independently mergeable outcome per task;
+- definition-ready behavior, resolved design decisions, exact acceptance
+  evidence, bounded paths, and no unresolved execution-blocking design questions;
+- successor tasks for independently valid checkpoints and one correction cycle by
+  default;
+- risk-tiered validation with no duplicate Docker validation runs;
+- invocation-only Codex prompts whose durable details remain in Git;
+- continued execution after orientation to one durable terminal outcome;
+- `blocked` only for genuine external/dependency/environment/authority/required-
+  validation obstruction;
+- reviewer-only `changes_requested`;
+- a durable exact-tree validation receipt before `ready_for_review`; and
+- a navigation-only repository context index.
 
-Multiple execution and correction cycles repeatedly completed narrow fixture
-assertions while leaving the primary lifecycle contract and evidence boundaries
-unresolved. Continuing the branch would preserve the failed task shape rather
-than fix delivery.
+## Starting evidence
 
-## Preserved evidence
+MIP `main` at `369805d923454a51ce98845cea29bdb1ee3c3895`
+records the lean delivery standard, definition-ready authorization, risk-tier
+validation, invocation-only prompt behavior, durable exact-tree receipt, and
+terminal-outcome enforcement as merged. GeoX and MMM adoption remain owner-
+repository decisions.
 
-The branch contains useful but unapproved partial work. In particular,
-`3dff0a75f89b507f42c76251a06a536529508afa` captures source-truth hashes before
-and after fixture loading and compares a second deterministic loader result with
-the certified readout for all 12 fixtures.
+GeoX `main` superseded the oversized builder without merge. The preserved builder
+branch remains historical partial evidence only and is outside this task's owned
+scope.
 
-This does not establish an independent replay protocol, complete temporal
-lifecycle, full version/provenance/schema/envelope agreement, stable handoff
-evidence, or complete repository validation. The prior focused-Docker pass was
-not durably recorded with exact command, counts, duration, or logs and is not a
-release gate.
+## Owned paths
 
-## GitHub-observed versus locally reported evidence
+Only these paths may change:
 
-- **GitHub observed:** exact branch head, ancestry, changed files, partial
-  substantive commit, no merge to main, and no pull request for the preserved
-  branch.
-- **Locally reported only:** focused Docker validation and local/remote checkout
-  equality at the prior publication. These results are not promoted to durable
-  exact-tree validation evidence.
+- `AGENTS.md`
+- `docs/program/LEAN_REPOSITORY_DELIVERY_STANDARD.md`
+- `docs/execution/TASK_EXECUTION_STANDARD.md`
+- `docs/execution/REPOSITORY_CONTEXT_INDEX.md`
+- `tests/test_repo_native_execution_handoff.py`
+- `docs/execution/ACTIVE_TASK.md`
+- `docs/execution/EXECUTION_STATE.json`
+- `docs/execution/LATEST_COMPLETION_REPORT.md`
 
-## Blockers and validation debt
+No analytical, contract, builder, fixture, estimator, design, assignment,
+inference, MIP, MMM, coordination-ledger, or product/runtime path is authorized.
 
-The superseded task resolves no producer blocker. The following remain open for
-future definition-ready successor tasks:
+## Acceptance and validation
 
-- `P2-GEOX-TEMPORAL-VERSION-SEMANTICS`;
-- `P2-GEOX-READOUT-BUILDER-ENTRYPOINT`;
-- complete contract, builder, fixture/replay, envelope, handoff, and final
-  integration validation.
+The active task names four independent semantic test groups covering lean task
+authoring, invocation/terminal outcomes, risk tiers/durable receipts, and stable
+navigation. The Tier 1 gate requires JSON and Markdown consistency, exact path
+checks, `git diff --check`, the focused repository-handoff test file, publication
+receipt inspection, and exact local/remote branch-head equality.
 
-Producer completion, consumer verification, MMM normalization, and MIP journey
-eligibility remain outstanding.
+Docker, Ruff, mypy, and the full suite are `not_required` unless an unexpected
+executable dependency or repository-authored gate is discovered. Such a discovery
+must produce accurate `blocked` state rather than scope expansion.
 
-## Next eligible work
+## Deferred successors
 
-The sole next eligible GeoX task is
-`GEOX_LEAN_REPOSITORY_DELIVERY_STANDARD_ADOPTION_001`, a governance-only
-adoption of the merged MIP execution standard at
-`369805d923454a51ce98845cea29bdb1ee3c3895`. After that task is approved, merged,
-and closed, the builder roadmap must be re-authored as small sequential tasks:
+After this task is approved, merged, and closed, GeoX may separately authorize:
 
-1. temporal lifecycle contract;
-2. typed producer builder;
-3. certified fixture generation, hashes, and replay semantics;
-4. optional envelope and final repository handoff/integration validation.
+1. a governed-readout temporal lifecycle contract;
+2. a typed producer builder;
+3. certified fixture generation, hashes, and replay semantics; and
+4. optional envelope plus final handoff/integration validation.
 
-Each successor requires one primary mergeable outcome, resolved design
-questions, named acceptance evidence, bounded paths, and risk-proportional
-validation.
+No successor is currently authorized.
 
 ## Authority impact
 
-Task execution, correction execution, merge, PR creation, sibling adoption, and
-all product or analytical capability authority are false. No producer result is
-approved or merged. No MIP or MMM repository was modified by this supersession.
+Task execution is authorized only for the bounded governance adoption. Merge,
+PR creation, sibling adoption, product capability, analytical authority, live
+integration, real data, pilot, production, and package-side agents remain false.
+No MIP or MMM repository is modified by this task.
