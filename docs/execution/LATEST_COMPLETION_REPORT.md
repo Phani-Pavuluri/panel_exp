@@ -1,5 +1,13 @@
 # TASK_COMPLETION_REPORT_V2
 
+## Current execution result
+
+Substantive commit `3dff0a75f89b507f42c76251a06a536529508afa` strengthens the
+12-fixture matrix with bounded source-truth immutability checks and a second
+deterministic replay comparison. Focused Docker validation passed. The task
+remains blocked because Checkpoints A-C are not complete; the full Docker gate
+was not run out of sequence.
+
 ## Current review decision
 
 **CHANGES_REQUIRED**

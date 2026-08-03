@@ -2,7 +2,7 @@
   "schema_version": "geox_repo_execution_state_v2",
   "repository": "Phani-Pavuluri/panel_exp",
   "task_id": "GEOX_GOVERNED_READOUT_BUILDER_PACKAGE_ENTRYPOINT_001",
-  "status": "changes_requested",
+  "status": "blocked",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
   "base_sha": "e0cef94c063b03b29e1e1760fb1c2320ce497b56",
@@ -23,7 +23,7 @@
   "merge_authorized": false,
   "pr_creation_authorized": false,
   "reviewed_head_sha": null,
-  "implementation_commit_sha": null,
+  "implementation_commit_sha": "3dff0a75f89b507f42c76251a06a536529508afa",
   "latest_reviewed_partial_substantive_sha": "59e3ec6be2d125acdecd9e3870e317d575023894",
   "prior_reviewed_partial_substantive_sha": "ec73c47b826941d050b924eef8b5099eabb53895",
   "prior_partial_substantive_commit_sha": "722090d03b10eb0864337815c80b8e01f00cdfae",
@@ -38,14 +38,9 @@
   "review_decision": "changes_requested",
   "review_decision_source": "docs/execution/LATEST_COMPLETION_REPORT.md",
   "blockers": [
-    "checkpoint_a_typed_primary_contract_temporal_lifecycle_and_fail_closed_consistency_not_implemented",
-    "source_truth_immutability_assertion_is_circular_and_not_bounded_around_execution",
-    "deterministic_replay_is_not_executed_or_compared_to_certified_output",
-    "checkpoint_b_version_provenance_commit_schema_record_kind_hash_and_explicit_envelope_agreement_incomplete",
-    "legacy_fixture_and_envelope_paths_still_fabricate_or_default_required_metadata",
-    "checkpoint_c_complete_test_matrix_stable_context_index_semantic_handoff_and_track_d_evidence_not_implemented",
-    "submitted_blocked_publication_and_completion_report_current_narrative_were_invalid",
-    "complete_focused_static_data_replay_and_full_docker_validation_remain_outstanding"
+    "Checkpoint A typed temporal lifecycle and fail-closed consistency remain incomplete.",
+    "Checkpoint B end-to-end version/provenance/schema agreement and explicit envelope validation remain incomplete.",
+    "Checkpoint C complete semantic handoff matrix, stable context index, and Track-D evidence remain incomplete; full Docker gate remains deferred."
   ],
   "execution_checkpoints": [
     "A_typed_contract_and_temporal_lifecycle",
