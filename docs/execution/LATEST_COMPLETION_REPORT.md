@@ -1,69 +1,94 @@
 # TASK_COMPLETION_REPORT_V2
 
+## Current decision
+
+**SUPERSEDED WITHOUT MERGE**
+
+`GEOX_GOVERNED_READOUT_BUILDER_PACKAGE_ENTRYPOINT_001` is no longer an
+executable or mergeable task. Its remote branch is retained only as historical
+partial evidence.
+
 ## Identity
 
-- **Task ID:** `GEOX_GOVERNED_READOUT_BUILDER_PACKAGE_ENTRYPOINT_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
-- **Pre-authoring base:** `e0cef94c063b03b29e1e1760fb1c2320ce497b56`
-- **Feature branch:** `feat/geox-governed-readout-builder-package-entrypoint-001`
-- **Execution mode:** `branch_and_fast_forward`
-- **Canonical MIP V2 pin:** `38f88467f55d5bc4cc64e5a58b0f08f1639a40d0`
-- **Canonical MMM workflow pin:** `1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
+- **Main before supersession:** `ee9673c13e69082367c1727568946ac4c1a01015`
+- **Preserved branch:** `feat/geox-governed-readout-builder-package-entrypoint-001`
+- **Preserved exact branch head:** `216c53f13919ec5ee7fa060a9c052e8a074fb9cc`
+- **Latest partial substantive commit:** `3dff0a75f89b507f42c76251a06a536529508afa`
+- **Observed branch distance:** 50 commits ahead of main with no divergence before supersession
+- **MIP execution-standard main:** `369805d923454a51ce98845cea29bdb1ee3c3895`
+- **MMM main:** `1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
 
-## Starting point
+## Why the task was superseded
 
-The repository-native execution-handoff recovery is closed on GeoX `main` at
-`e0cef94c063b03b29e1e1760fb1c2320ce497b56`. The governed-readout contract and
-12 certified governed-readout fixtures are present. The fixture checkpoint
-explicitly recommends `GEOX_GOVERNED_READOUT_BUILDER_PACKAGE_ENTRYPOINT_001` as
-the next artifact.
+The task was not an independently reviewable merge unit. It combined:
 
-The pinned MIP P2 consumer design still requires a governed-readout builder and
-package entrypoint plus explicit temporal, deterministic freshness/expiry,
-record-kind/schema, producer package-version, and later D6 compatibility
-semantics before package integration. The prior full GeoX suite remains
-unverified repository-validation debt; no earlier validation exception applies
-to this task.
+1. public governed-readout lifecycle and freshness contract design;
+2. typed producer-builder implementation;
+3. certified fixture migration, immutability, and replay semantics;
+4. package/provenance/schema/envelope agreement;
+5. repository-handoff and Track-D evidence; and
+6. focused plus full Docker validation.
 
-## Authorized result
+Multiple execution and correction cycles repeatedly completed narrow fixture
+assertions while leaving the primary lifecycle contract and evidence boundaries
+unresolved. Continuing the branch would preserve the failed task shape rather
+than fix delivery.
 
-This task is authorized to add a deterministic non-production package entrypoint
-that constructs the canonical `GeoXGovernedExperimentReadout` and optional
-transport envelope from explicit validated inputs or certified fixture metadata.
-It may strengthen typed temporal/freshness and schema/package-version validation,
-conform the 12 governed-readout fixtures without changing their source numerical
-truth, and add focused tests and Track-D evidence within the exact owned-file
-boundary recorded in `ACTIVE_TASK.md`.
+## Preserved evidence
 
-The builder must preserve supplied analytical values and dispositions. It must
-not run estimators or inference, choose methods or assignments, determine MMM
-compatibility, or authorize any downstream capability. All authorization flags
-remain false.
+The branch contains useful but unapproved partial work. In particular,
+`3dff0a75f89b507f42c76251a06a536529508afa` captures source-truth hashes before
+and after fixture loading and compares a second deterministic loader result with
+the certified readout for all 12 fixtures.
 
-## Current status
+This does not establish an independent replay protocol, complete temporal
+lifecycle, full version/provenance/schema/envelope agreement, stable handoff
+evidence, or complete repository validation. The prior focused-Docker pass was
+not durably recorded with exact command, counts, duration, or logs and is not a
+release gate.
 
-Task metadata is authorized on `main`. Implementation has not started.
+## GitHub-observed versus locally reported evidence
 
-The execution agent must complete the mandatory repository bootstrap, verify the
-task-authoring boundary and prerequisites, create the exact feature branch from
-the synchronized authorization head, remain within owned files, run the focused
-and complete Docker validation gates, and publish either `ready_for_review` or an
-accurate `blocked` state.
+- **GitHub observed:** exact branch head, ancestry, changed files, partial
+  substantive commit, no merge to main, and no pull request for the preserved
+  branch.
+- **Locally reported only:** focused Docker validation and local/remote checkout
+  equality at the prior publication. These results are not promoted to durable
+  exact-tree validation evidence.
 
-No implementation commit or review head exists yet. No pull request, merge, or
-capability authorization has occurred.
+## Blockers and validation debt
 
-## Validation requirement
+The superseded task resolves no producer blocker. The following remain open for
+future definition-ready successor tasks:
 
-Focused tests are necessary but not sufficient. This task requires the complete
-canonical Docker validation gate. The earlier import-health recovery exception
-is not inherited. A stalled or incomplete full-suite run must be recorded as
-blocking validation debt rather than described as a pass.
+- `P2-GEOX-TEMPORAL-VERSION-SEMANTICS`;
+- `P2-GEOX-READOUT-BUILDER-ENTRYPOINT`;
+- complete contract, builder, fixture/replay, envelope, handoff, and final
+  integration validation.
 
-## Current authority
+Producer completion, consumer verification, MMM normalization, and MIP journey
+eligibility remain outstanding.
 
-`capability_authorizations_changed` remains `false`. This task does not authorize
-production inference, design or method selection, assignment, multicell/shared-
-control claims, ExperimentEvidence, CalibrationSignal, TrustReport,
-DecisionSurface, recommendations, optimization, LLM decisioning, scheduling,
-live package integration, real data, pilot, production, or package-side agents.
+## Next eligible work
+
+The sole next eligible GeoX task is
+`GEOX_LEAN_REPOSITORY_DELIVERY_STANDARD_ADOPTION_001`, a governance-only
+adoption of the merged MIP execution standard at
+`369805d923454a51ce98845cea29bdb1ee3c3895`. After that task is approved, merged,
+and closed, the builder roadmap must be re-authored as small sequential tasks:
+
+1. temporal lifecycle contract;
+2. typed producer builder;
+3. certified fixture generation, hashes, and replay semantics;
+4. optional envelope and final repository handoff/integration validation.
+
+Each successor requires one primary mergeable outcome, resolved design
+questions, named acceptance evidence, bounded paths, and risk-proportional
+validation.
+
+## Authority impact
+
+Task execution, correction execution, merge, PR creation, sibling adoption, and
+all product or analytical capability authority are false. No producer result is
+approved or merged. No MIP or MMM repository was modified by this supersession.
