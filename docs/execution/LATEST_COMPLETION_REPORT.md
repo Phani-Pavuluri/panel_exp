@@ -1,70 +1,89 @@
-# TASK_SUPERSESSION_REPORT
+# TASK_AUTHORIZATION_REPORT
 
 ## Current decision
 
-**SUPERSEDED WITHOUT MERGE**
-
-- **Task ID:** `GEOX_EXECUTION_BRANCH_BINDING_REAUTHORING_001`
+- **Current decision:** `authorized`
+- **Task ID:** `GEOX_CERTIFIED_CALIBRATION_HANDOFF_SOURCE_FIXTURE_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
-- **Preserved final branch head:** `9d0da6bb96dd7711ab8c91bbef21a80a4b816973`
-- **First rejected review head:** `f7535473a40aeffef5aad21ca404c391bc8fa0d7`
-- **Original implementation candidate:** `b0c56211305bbda9e609ea9d94242b7d61159104`
-- **Failed correction implementation:** `bd73ee767c1737e22ec65f40280073aaa2768b16`
-- **Merge, PR, and capability authority:** false
+- **Pre-authoring base:** `e9b7d311ecaf5a90e227d8299f745a0e8f332368`
+- **Feature branch:** `feat/geox-certified-calibration-handoff-source-fixture-001`
+- **Risk tier:** Tier 3 producer contract and certified cross-repository source fixture
+- **Implementation SHA:** not yet created
+- **Capability authority:** unchanged
 
-## GitHub-observed final review evidence
+## GitHub-observed orientation evidence
 
-The final correction branch was reviewed through its live remote tree. It remained nonconforming after the only permitted correction cycle:
+- GeoX `main` was synchronized at `e9b7d311ecaf5a90e227d8299f745a0e8f332368` before authoring.
+- The prior GeoX execution-governance task is superseded without merge and has no remaining execution, correction, merge, PR, analytical, or capability authority.
+- Certified governed-readout fixtures were introduced at merged commit `860182386c39f487747de5f43e67a31e9978e57c`, which remains an ancestor of live GeoX `main`.
+- The canonical source contract is `panel_exp/contracts/geox_governed_experiment_readout.py`.
+- The canonical source fixture root is `tests/fixtures/geox_governed_readouts/`; its manifest contains 12 cases and records `mmm_compatibility_emitted: false` and `production_authorized: false`.
+- The existing fixtures preserve readout, experiment, KPI/unit/estimand/effect-scale, channel, geography/grain, uncertainty, method/instrument, freshness-status, handoff, lineage, provenance, replay, and authorization data, but do not provide exact fixture datetimes, freshness timestamps, a canonical cross-producer evidence-artifact identity, exact source paths/checksums, or a closed method-eligibility taxonomy.
+- MIP `main` was observed at `0b4cd1fca73716e4968c2ceb70c594ad8aadd8ca`.
+- MIP task `MIP_P2_GEOX_MMM_COMPATIBILITY_FIXTURE_BRIDGE_001` is blocked on its remote feature branch at `480b32040ce185b8ff091435121c4bea6fc6c453` by `BLOCK-P2-GEOX-MMM-CERTIFIED-PAIR-PROVENANCE-001`.
+- MMM `main` was observed at `f2e0eade0ad917c1b28ab5521e6d35a35047d988`; its current proposed task is non-executable and does not overlap this GeoX producer surface.
+- No existing active, authorized, review-ready, blocked, or recently completed GeoX task owns this exact calibration-handoff source fixture.
 
-- a `work/origin.git` symlink was created and staged despite the required sibling-only topology;
-- the scenario builder did not return named main, local feature, and remote feature heads;
-- the success test omitted required value and exact-head assertions;
-- the divergence scenario used the worktree symlink and did not make setup Git operations fail fast;
-- the verifier still mapped a missing upstream through generic `GIT_COMMAND_FAILED` instead of `REMOTE_DESTINATION_MISMATCH`;
-- execution guidance did not publish the exact required command and push-refspec sequence;
-- `ready_for_review` metadata retained correction authority true and a stale `changes_requested` review decision;
-- the completion report omitted required evidence-source separation, current sibling pins, consumer verification, limitations, and validation debt.
+## Authorized outcome
 
-The preserved branch is historical failed-attempt evidence only. No branch content is approved or merged.
+Publish one provenance-complete, deterministic, non-authorizing GeoX source manifest over all 12 existing certified governed-readout fixtures.
 
-## Locally reported validation
+The task adds a strict `GeoXCalibrationHandoffSourceRecord`, a deterministic fixture builder, one committed 12-record manifest, tests, and producer documentation. It provides stable source identities, exact synthetic fixture time scope, freshness provenance, governed method eligibility, exact source paths, and SHA-256 checksums.
 
-The failed correction reported:
+Existing governed-readout payloads are immutable inputs. Their experiment estimates, uncertainty, statuses, handoff decisions, lineage, replay metadata, and authorization flags must remain unchanged.
 
-- focused pytest: `8 passed, 0 failed, 0 skipped`, no xfail/xpass;
-- Python compilation: passed;
-- AST no-pass inspection: passed;
-- `git diff --check`: passed;
-- prepush and postpush: passed;
-- local/remote equality: passed.
+## Ownership and non-actions
 
-No GitHub Actions run was observed. These results do not satisfy acceptance because the implemented tests and fixtures differ from the frozen contract.
+GeoX owns experiment/readout identity, temporal scope, method/instrument status, handoff eligibility, and producer lineage.
 
-## Validation disposition
+MMM retains exclusive ownership of normalization and final calibration-compatibility truth. MIP retains exclusive ownership of canonical `CalibrationSignal` construction, consumer reconciliation, orchestration, trust, and reporting.
 
-- JSON: final repository state parses.
-- Focused validation: locally green but behaviorally nonconforming.
-- Changed paths: limited to the authorized seven paths.
-- Docker/full package/analytical/Ruff/mypy: not required under the frozen task.
-- Validation debt: the branch-binding enforcement contract remains unimplemented and must not be represented as merged capability.
+This authorization does not permit:
 
-## Cross-repository impact
+- MMM compatibility evaluation or compatibility fixtures;
+- `CalibrationSignal`, target-model, calibration-weight, or MIP evidence construction;
+- changes to experiment design, assignment, inference, estimates, or uncertainty;
+- runtime integration with MIP or MMM;
+- TrustReport, DecisionSurface, simulation, optimization, planning, recommendation, LLM, real-data, pilot, or production behavior;
+- modifications to MIP or MMM repositories.
 
-- **MIP main observed:** `9bed0f30879e68473a37b0e65d449ea0b6a6e3f3`
-- **MIP task:** `MIP_GIT_AUTHORITATIVE_THIN_LAUNCHER_STANDARD_001`, authorized
-- **MMM main observed:** `ac546548784385baab67d7c935e5a4fcdfc9e1af`
-- **MMM task:** `MMM_REPOSITORY_EXECUTION_PROTOCOL_ADOPTION_001`, merged
-- **Affected and modified repository:** GeoX only
-- **Consumer verification:** not applicable
-- **Dependency or blocker transitions:** none
-- **Capability impact:** none
+## Blocker and consumer-verification impact
 
-## Limitations
+The task advances only the GeoX producer side of `BLOCK-P2-GEOX-MMM-CERTIFIED-PAIR-PROVENANCE-001`.
 
-The connector exposed the live branch tree, compare relationship, and correction implementation SHA, but not the pre-supersession publication commit SHA as a separate field. The final preserved supersession branch head is exactly `9d0da6bb96dd7711ab8c91bbef21a80a4b816973`. No approval or merge decision depends on the unavailable publication SHA because the live tree itself contains direct frozen-contract failures.
+Producer completion does not resolve that blocker. Resolution still requires a separately merged MMM compatibility fixture linked to this exact GeoX evidence identity, followed by MIP consumer verification and a MIP-owned blocker transition.
 
-## Final authority and next work
+No MMM or MIP successor is authorized here.
 
-Task execution, correction execution, merge, PR creation, sibling implementation, analytical behavior, and capability authority are false.
+## Validation requirement
 
-No additional execution-governance successor is authorized. `GEOX_PUBLICATION_LIFECYCLE_AND_RECEIPT_001`, builder successors, and navigation cleanup remain unauthorized. Future GeoX work must be selected from synchronized live Git and should advance actual experiment, readout, integration, validation, or user-facing capability.
+The frozen task requires:
+
+- changed JSON parsing;
+- Python compilation;
+- exact owned-path verification;
+- `git diff --check`;
+- focused and adjacent governed-readout tests with exact counts;
+- configured Ruff and mypy;
+- two byte-identical deterministic fixture generations matching the committed manifest;
+- Docker-backed full repository validation through `make validate-docker` with exact counts and warnings;
+- an exact-tree publication receipt;
+- clean task-owned worktree;
+- exact local/remote feature-branch equality.
+
+Focused success cannot hide Docker/full-suite validation debt. Required validation failure must produce an accurate Git-durable `blocked` state.
+
+## Task-authoring boundary
+
+The authoring range starts at `e9b7d311ecaf5a90e227d8299f745a0e8f332368` and may change only:
+
+- `docs/execution/ACTIVE_TASK.md`
+- `docs/execution/LATEST_COMPLETION_REPORT.md`
+
+The commit containing this report is the final task-authoring head. The immediate next commit must change only `docs/execution/EXECUTION_STATE.json`, record this exact authoring head as `authorization_head_sha`, and authorize the declared feature branch.
+
+## Publication and review boundary
+
+Successful execution must publish one exact remote `ready_for_review` head and stop without PR or merge. The report must distinguish GitHub-observed evidence from locally reported validation, identify one implementation SHA, record exact counts, list blockers and limitations, preserve consumer-verification debt, and state unchanged capability authority.
+
+At most one externally directed correction cycle is permitted. A second failed exact-head review supersedes the task without merge.
