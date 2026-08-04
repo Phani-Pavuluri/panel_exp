@@ -1,88 +1,70 @@
-# TASK_AUTHORIZATION_REPORT
+# TASK_SUPERSESSION_REPORT
 
 ## Current decision
 
+**SUPERSEDED WITHOUT MERGE**
+
 - **Task ID:** `GEOX_EXECUTION_BRANCH_BINDING_REAUTHORING_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
-- **Status:** proposed pending the final task-status authoring commit and immediate state-only authorization commit
-- **Pre-authoring base:** `b6c714ced8a9c6e9c1fcb0f6b4f7f79a542c5a7f`
-- **Feature branch:** `feat/geox-execution-branch-binding-reauthoring-001`
-- **Risk tier:** Tier 2 internal executable repository governance
-- **Implementation SHA:** not yet created
-- **Capability authority:** unchanged
+- **Preserved final branch head:** `9d0da6bb96dd7711ab8c91bbef21a80a4b816973`
+- **First rejected review head:** `f7535473a40aeffef5aad21ca404c391bc8fa0d7`
+- **Original implementation candidate:** `b0c56211305bbda9e609ea9d94242b7d61159104`
+- **Failed correction implementation:** `bd73ee767c1737e22ec65f40280073aaa2768b16`
+- **Merge, PR, and capability authority:** false
 
-## Orientation and eligibility evidence
+## GitHub-observed final review evidence
 
-Connected GitHub established that GeoX `main` was synchronized at the pre-authoring base before authoring. `GEOX_EXECUTION_BRANCH_BINDING_001` is superseded without merge, its preserved branch is historical evidence only, and all predecessor task, correction, merge, and PR authority is false. The final predecessor focused gate was `4 failed, 4 passed`; no predecessor implementation is approved or reusable as a merge unit.
+The final correction branch was reviewed through its live remote tree. It remained nonconforming after the only permitted correction cycle:
 
-Live sibling evidence observed:
+- a `work/origin.git` symlink was created and staged despite the required sibling-only topology;
+- the scenario builder did not return named main, local feature, and remote feature heads;
+- the success test omitted required value and exact-head assertions;
+- the divergence scenario used the worktree symlink and did not make setup Git operations fail fast;
+- the verifier still mapped a missing upstream through generic `GIT_COMMAND_FAILED` instead of `REMOTE_DESTINATION_MISMATCH`;
+- execution guidance did not publish the exact required command and push-refspec sequence;
+- `ready_for_review` metadata retained correction authority true and a stale `changes_requested` review decision;
+- the completion report omitted required evidence-source separation, current sibling pins, consumer verification, limitations, and validation debt.
 
-- MIP `976d3a1daeae9c52c8772e5112574f698951a57c`, with a MIP-owned roadmap and coordination reconciliation task authorized;
-- MMM `b8878dfa4bcd178a0472c3b812492a5bb4ac0b45`, with an MMM-owned execution-protocol task authorized.
+The preserved branch is historical failed-attempt evidence only. No branch content is approved or merged.
 
-Neither sibling task owns GeoX files. The MIP coordination snapshot is stale and was evaluated through the protocol-required live overlay. No duplicate owner, overlapping implementation, dependency, consumer-verification condition, or authority conflict blocks this GeoX-only task.
+## Locally reported validation
 
-## Primary outcome and frozen design
+The failed correction reported:
 
-The task implements one read-only branch-binding verifier, eight isolated temporary-Git behavioral tests, and the exact execution sequence that invokes the verifier.
+- focused pytest: `8 passed, 0 failed, 0 skipped`, no xfail/xpass;
+- Python compilation: passed;
+- AST no-pass inspection: passed;
+- `git diff --check`: passed;
+- prepush and postpush: passed;
+- local/remote equality: passed.
 
-The task resolves before execution:
+No GitHub Actions run was observed. These results do not satisfy acceptance because the implemented tests and fixtures differ from the frozen contract.
 
-- the command path and three phases;
-- exact success JSON keys;
-- exact runtime error format and reason-code mapping;
-- main-derived task identity and branch-local lifecycle authority;
-- ancestry, upstream, remote-ref, divergence, and exact-head semantics;
-- the temporary repository topology;
-- exact setup mutations for all eight tests;
-- the preflight/edit/prepush/push/fetch/postpush sequence;
-- the focused validation gate; and
-- the rule that task-owned test or fixture failures are unfinished implementation, not a valid blocked outcome.
+## Validation disposition
 
-No publication-lifecycle redesign, builder work, analytical work, contract work, fixture work, sibling work, or capability change is authorized.
+- JSON: final repository state parses.
+- Focused validation: locally green but behaviorally nonconforming.
+- Changed paths: limited to the authorized seven paths.
+- Docker/full package/analytical/Ruff/mypy: not required under the frozen task.
+- Validation debt: the branch-binding enforcement contract remains unimplemented and must not be represented as merged capability.
 
-## Prior failure disposition
+## Cross-repository impact
 
-The preserved predecessor branch remains at `fbb027a3db2c779bf53fcda3165f51fce7a088ae`. It must not be resumed, merged, rebased, force-updated, deleted, or opened as a PR. Selective conceptual lessons are recorded in the new task, but implementation starts from synchronized current `main` and must produce new validation evidence.
-
-## Owned paths
-
-Only these paths may change during implementation:
-
-- `AGENTS.md`
-- `scripts/verify_authorized_task_binding.py`
-- `docs/execution/TASK_EXECUTION_STANDARD.md`
-- `tests/test_execution_branch_binding.py`
-- `docs/execution/ACTIVE_TASK.md`
-- `docs/execution/EXECUTION_STATE.json`
-- `docs/execution/LATEST_COMPLETION_REPORT.md`
-
-## Validation requirement
-
-The final tree must pass JSON parsing, Python compilation, exactly eight isolated behavioral tests with no skip/xfail, AST inspection proving no empty or `pass` test bodies, `git diff --check`, exact changed paths, real-branch prepush and postpush verification, and exact local/remote feature-head equality.
-
-Docker, the full package suite, analytical tests, Ruff, and mypy are `not_required` because the changed executable surface is standard-library repository-governance tooling with isolated temporary-Git tests and does not import or modify the GeoX package.
-
-## Task-authoring boundary
-
-The authoring range starts at `b6c714ced8a9c6e9c1fcb0f6b4f7f79a542c5a7f` and may change only:
-
-- `docs/execution/ACTIVE_TASK.md`
-- `docs/execution/LATEST_COMPLETION_REPORT.md`
-
-After this report, one final authoring commit changes only `ACTIVE_TASK.md` from `proposed` to `authorized`. That final task-status commit is the task-authoring/authorization head. The immediate next commit must change only `docs/execution/EXECUTION_STATE.json` to record that exact head and executable authorization. The feature branch must be created from the resulting synchronized state-only `main` head.
-
-## Cross-repository and authority impact
-
-- **Affected repository:** GeoX only
-- **Modified repository:** GeoX only
-- **Workstream overlap:** none
-- **Dependency/blocker transitions:** none
+- **MIP main observed:** `9bed0f30879e68473a37b0e65d449ea0b6a6e3f3`
+- **MIP task:** `MIP_GIT_AUTHORITATIVE_THIN_LAUNCHER_STANDARD_001`, authorized
+- **MMM main observed:** `ac546548784385baab67d7c935e5a4fcdfc9e1af`
+- **MMM task:** `MMM_REPOSITORY_EXECUTION_PROTOCOL_ADOPTION_001`, merged
+- **Affected and modified repository:** GeoX only
 - **Consumer verification:** not applicable
-- **Newly eligible work:** this task only after state-only authorization
-- **Publication-lifecycle successor:** proposed and unauthorized
-- **Builder successors:** unauthorized
-- **Merge and PR authority:** false
-- **Analytical and capability authority:** unchanged and false
+- **Dependency or blocker transitions:** none
+- **Capability impact:** none
 
-No implementation occurred during task authoring.
+## Limitations
+
+The connector exposed the live branch tree, compare relationship, and correction implementation SHA, but not the pre-supersession publication commit SHA as a separate field. The final preserved supersession branch head is exactly `9d0da6bb96dd7711ab8c91bbef21a80a4b816973`. No approval or merge decision depends on the unavailable publication SHA because the live tree itself contains direct frozen-contract failures.
+
+## Final authority and next work
+
+Task execution, correction execution, merge, PR creation, sibling implementation, analytical behavior, and capability authority are false.
+
+No additional execution-governance successor is authorized. `GEOX_PUBLICATION_LIFECYCLE_AND_RECEIPT_001`, builder successors, and navigation cleanup remain unauthorized. Future GeoX work must be selected from synchronized live Git and should advance actual experiment, readout, integration, validation, or user-facing capability.
