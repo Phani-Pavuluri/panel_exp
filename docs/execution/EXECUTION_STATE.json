@@ -7,9 +7,9 @@
   "base_branch": "main",
   "base_sha": "80dbe14c6b2ce74b33a2b776c5e567afba582bf5",
   "authorization_head_sha": "486c626dcf24d176ab30e034057348f92b6257d4",
-  "authorized_branch_baseline_sha": null,
+  "authorized_branch_baseline_sha": "d12a46d191eb7998870a6f040af9c424f18a4e31",
   "feature_branch": "feat/geox-certified-calibration-source-manifest-001",
-  "feature_branch_created": false,
+  "feature_branch_created": true,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
   "task_execution_authorized": true,
@@ -84,5 +84,6 @@
   "review_decision": "authorized",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "full_task_specific_codex_prompt_grounded_in_live_git",
-  "task_authoring_note": "The task-authoring range 80dbe14c6b2ce74b33a2b776c5e567afba582bf5..486c626dcf24d176ab30e034057348f92b6257d4 changes only ACTIVE_TASK.md and LATEST_COMPLETION_REPORT.md. This immediate state-only commit changes only EXECUTION_STATE.json and authorizes the exact declared feature branch. Merge, PR, correction, sibling implementation, compatibility, CalibrationSignal, derived eligibility, analytical recomputation, runtime, planning, recommendation, real-data, and capability authority remain false."
+  "branch_materialization_note": "The feature branch was created from state-only authorization head d12a46d191eb7998870a6f040af9c424f18a4e31. This follow-up state-only commit records branch existence and changes no task, correction, merge, PR, sibling, analytical, compatibility, CalibrationSignal, runtime, planning, recommendation, real-data, or capability authority.",
+  "task_authoring_note": "The task-authoring range 80dbe14c6b2ce74b33a2b776c5e567afba582bf5..486c626dcf24d176ab30e034057348f92b6257d4 changes only ACTIVE_TASK.md and LATEST_COMPLETION_REPORT.md. The immediate state-only authorization commit d12a46d191eb7998870a6f040af9c424f18a4e31 changes only EXECUTION_STATE.json and authorizes the exact declared feature branch."
 }
