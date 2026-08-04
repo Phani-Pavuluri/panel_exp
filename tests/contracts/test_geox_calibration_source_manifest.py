@@ -64,6 +64,14 @@ def test_validation_does_not_mutate_payload():
     validate_geox_calibration_source_manifest_sources(value, source_root=SOURCE_ROOT)
     assert value == before
 
+@pytest.mark.parametrize('freshness', [[], {}, 1, True, None, 'unknown'])
+def test_invalid_freshness_values_return_reason_tuple(freshness):
+    value = payload()
+    value['records'][0]['freshness_status'] = freshness
+    errors = validate_geox_calibration_source_manifest(value)
+    assert isinstance(errors, tuple)
+    assert any('freshness_status' in error for error in errors)
+
 def copied_source(tmp_path):
     target = tmp_path / 'source'
     shutil.copytree(SOURCE_ROOT, target)

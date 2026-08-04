@@ -120,13 +120,22 @@ def validate_geox_calibration_source_manifest(payload: object) -> tuple[str, ...
         if provenance and not all(_string(provenance.get(key)) for key in ('source_repo', 'source_commit', 'producer_package_version', 'created_by')): errors.append(f'record:{fid}:invalid_type:provenance')
         if replay and (isinstance(replay.get('assignment_seed'), bool) or not isinstance(replay.get('assignment_seed'), int) or not _string(replay.get('replay_version')) or not isinstance(replay.get('deterministic'), bool)): errors.append(f'record:{fid}:invalid_type:replay_metadata')
         if auth and (set(auth) != AUTH_KEYS or any(value is not False for value in auth.values())): errors.append(f'record:{fid}:unsafe_authorization')
-        if item['freshness_status'] not in {'fresh', 'stale'}: errors.append(f'record:{fid}:invalid_value:freshness_status')
+        freshness = item['freshness_status']
+        if not isinstance(freshness, str):
+            errors.append(f'record:{fid}:invalid_type:freshness_status')
+        elif freshness not in {'fresh', 'stale'}:
+            errors.append(f'record:{fid}:invalid_value:freshness_status')
         if type(item['synthetic_fixture_time_scope']) is not bool or item['synthetic_fixture_time_scope'] is not True:
             errors.append(f'record:{fid}:invalid_type:synthetic_fixture_time_scope')
         parsed = [_timestamp(item[key]) for key in ('time_window_start', 'time_window_end', 'produced_at', 'freshness_evaluated_at')]
         if any(value is None for value in parsed): errors.append(f'record:{fid}:invalid_timestamp')
         elif not (parsed[0] < parsed[1] <= parsed[2] <= parsed[3]): errors.append(f'record:{fid}:invalid_timestamp_order')
-        expected_times = (('2025-01-06T00:00:00Z', '2025-03-30T23:59:59Z', '2025-03-31T00:00:00Z', '2025-04-01T00:00:00Z') if item['freshness_status'] == 'fresh' else ('2024-01-08T00:00:00Z', '2024-03-31T23:59:59Z', '2024-04-01T00:00:00Z', '2025-04-01T00:00:00Z'))
+        if freshness == 'fresh':
+            expected_times = ('2025-01-06T00:00:00Z', '2025-03-30T23:59:59Z', '2025-03-31T00:00:00Z', '2025-04-01T00:00:00Z')
+        elif freshness == 'stale':
+            expected_times = ('2024-01-08T00:00:00Z', '2024-03-31T23:59:59Z', '2024-04-01T00:00:00Z', '2025-04-01T00:00:00Z')
+        else:
+            expected_times = ()
         for field, expected_time in zip(('time_window_start', 'time_window_end', 'produced_at', 'freshness_evaluated_at'), expected_times):
             if item[field] != expected_time: errors.append(f'record:{fid}:invalid_timestamp:{field}')
     if len(evidence) != len(set(evidence)): errors.append('manifest:duplicate_evidence_artifact_id')
