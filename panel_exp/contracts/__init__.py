@@ -42,3 +42,4 @@ __all__ = [
     "build_non_production_geox_mip_artifact_envelope_dry_run",
     "serialize_geox_mip_artifact_envelope_dry_run_result",
 ]
+from panel_exp.contracts.geox_calibration_handoff_source import GeoXCalibrationHandoffSourceRecord
