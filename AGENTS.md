@@ -16,6 +16,10 @@ and no pre-merge approval metadata commit is allowed. Merge only after exact-hea
 approval with `git merge --ff-only`, one closure commit, push, synchronization,
 and cleanup. Never create a PR or guess.
 
+Required sequence: fetch/prune, switch main, pull fast-forward, prove equality,
+read state and switch feature, preflight, validate, prepush, push declared ref,
+fetch it, postpush, and prove exact local/remote equality.
+
 Branch-bound tasks read identity from synchronized main, switch explicitly,
 run binding preflight before edits, prepush before pushing only the declared
 branch, fetch the remote branch, and run postpush to prove exact equality.
