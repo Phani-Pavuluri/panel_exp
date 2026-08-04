@@ -1,0 +1,64 @@
+import copy
+import json
+import sys
+import types
+from pathlib import Path
+
+import pytest
+
+package = types.ModuleType('panel_exp')
+package.__path__ = [str(Path(__file__).parents[2] / 'panel_exp')]
+contracts = types.ModuleType('panel_exp.contracts')
+contracts.__path__ = [str(Path(__file__).parents[2] / 'panel_exp/contracts')]
+sys.modules.setdefault('panel_exp', package)
+sys.modules.setdefault('panel_exp.contracts', contracts)
+
+from panel_exp.contracts.geox_calibration_source_manifest import (
+    GeoXCalibrationSourceManifestValidationError,
+    load_and_validate_geox_calibration_source_manifest,
+    validate_geox_calibration_source_manifest,
+    validate_geox_calibration_source_manifest_sources,
+)
+
+ROOT = Path(__file__).parents[1]
+MANIFEST = ROOT / 'fixtures/geox_calibration_handoff_sources/v1/manifest.json'
+SOURCE_ROOT = ROOT / 'fixtures/geox_governed_readouts'
+
+def payload():
+    return json.loads(MANIFEST.read_text())
+
+def test_committed_manifest_intrinsic_and_contextual_valid():
+    value = payload()
+    assert validate_geox_calibration_source_manifest(value) == ()
+    assert validate_geox_calibration_source_manifest_sources(value, source_root=SOURCE_ROOT) == ()
+
+def test_loader_returns_payload_and_typed_errors():
+    assert load_and_validate_geox_calibration_source_manifest(MANIFEST, source_root=SOURCE_ROOT)['case_count'] == 12
+    bad = payload(); bad.pop('records')
+    with pytest.raises(GeoXCalibrationSourceManifestValidationError) as exc:
+        load_and_validate_geox_calibration_source_manifest(MANIFEST, source_root=SOURCE_ROOT.parent / 'missing')
+    assert isinstance(exc.value.errors, tuple)
+    assert 'manifest:missing_key:records' in validate_geox_calibration_source_manifest(bad)
+
+def test_top_level_and_record_shape_errors_are_deterministic():
+    value = payload(); value['extra'] = True
+    assert 'manifest:extra_key:extra' in validate_geox_calibration_source_manifest(value)
+    value = payload(); value['records'][0].pop('fixture_id')
+    assert 'record:0:missing_key:fixture_id' in validate_geox_calibration_source_manifest(value)
+
+def test_authorization_and_timestamp_rules():
+    value = payload(); value['records'][0]['authorization_flags']['assignment'] = True
+    assert any('unsafe_authorization' in e for e in validate_geox_calibration_source_manifest(value))
+    value = payload(); value['records'][0]['freshness_status'] = 'unknown'
+    assert any('freshness_status' in e for e in validate_geox_calibration_source_manifest(value))
+
+def test_source_path_checksum_and_field_mismatch():
+    value = payload(); value['records'][0]['governed_readout_path'] = '../escape.json'
+    assert any('unsafe_path:governed_readout' in e for e in validate_geox_calibration_source_manifest_sources(value, source_root=SOURCE_ROOT))
+    value = payload(); value['records'][0]['governed_readout_sha256'] = '0' * 64
+    assert any('checksum_mismatch:governed_readout' in e for e in validate_geox_calibration_source_manifest_sources(value, source_root=SOURCE_ROOT))
+
+def test_validation_does_not_mutate_payload():
+    value = payload(); before = copy.deepcopy(value)
+    validate_geox_calibration_source_manifest_sources(value, source_root=SOURCE_ROOT)
+    assert value == before
