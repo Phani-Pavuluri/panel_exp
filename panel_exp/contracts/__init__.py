@@ -43,3 +43,5 @@ __all__ = [
     "serialize_geox_mip_artifact_envelope_dry_run_result",
 ]
 from panel_exp.contracts.geox_calibration_handoff_source import GeoXCalibrationHandoffSourceRecord
+
+__all__ = ["GeoXCalibrationHandoffSourceRecord"]

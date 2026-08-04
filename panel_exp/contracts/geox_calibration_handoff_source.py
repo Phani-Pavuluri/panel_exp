@@ -2,6 +2,7 @@
 from dataclasses import asdict, dataclass
 import hashlib, json, re
 from pathlib import Path
+from datetime import datetime, timezone
 from typing import Any
 
 SOURCE_COMMIT="860182386c39f487747de5f43e67a31e9978e57c"
@@ -19,7 +20,15 @@ class GeoXCalibrationHandoffSourceRecord:
  synthetic_fixture_time_scope:bool; payload:dict[str,Any]
  def to_dict(self): return asdict(self)
  @classmethod
- def from_dict(cls,d): return cls(**d)
+ def from_dict(cls,d):
+  if not isinstance(d,dict): raise ValueError('record must be an object')
+  fields={f.name for f in __import__('dataclasses').fields(cls)}
+  missing=fields-set(d); extra=set(d)-fields
+  if missing: raise ValueError('missing fields: '+','.join(sorted(missing)))
+  if extra: raise ValueError('extra fields: '+','.join(sorted(extra)))
+  if d['schema_version']!='1.0' or d['record_version']!='1.0': raise ValueError('unsupported version')
+  if not isinstance(d['payload'],dict) or not isinstance(d['synthetic_fixture_time_scope'],bool): raise ValueError('invalid field type')
+  return cls(**d)
  def validate(self):
   errors=[]
   if self.source_commit!=SOURCE_COMMIT or not re.fullmatch(r'[0-9a-f]{40}',self.source_commit): errors.append('invalid_source_commit')
@@ -27,7 +36,11 @@ class GeoXCalibrationHandoffSourceRecord:
   for p,h in ((self.governed_readout_path,self.governed_readout_sha256),(self.source_truth_path,self.source_truth_sha256),(self.replay_path,self.replay_sha256)):
    if not re.fullmatch(r'[0-9a-f]{64}',h): errors.append('invalid_checksum')
   if not self.synthetic_fixture_time_scope: errors.append('not_synthetic_fixture_scope')
-  if self.time_window_start>=self.time_window_end or self.produced_at<self.time_window_end or self.freshness_evaluated_at<self.produced_at: errors.append('invalid_temporal_order')
+  try:
+   times=[datetime.fromisoformat(x.replace('Z','+00:00')) for x in (self.time_window_start,self.time_window_end,self.produced_at,self.freshness_evaluated_at)]
+   if any(x.tzinfo is None or x.utcoffset()!=timezone.utc.utcoffset(x) for x in times): errors.append('timestamps_not_utc')
+   if times[0]>=times[1] or times[2]<times[1] or times[3]<times[2]: errors.append('invalid_temporal_order')
+  except ValueError: errors.append('invalid_timestamp')
   if any(self.payload.get('authorization_flags',{}).values()): errors.append('unsafe_authorization')
   return tuple(errors)
 def checksum(path): return hashlib.sha256(Path(path).read_bytes()).hexdigest()
