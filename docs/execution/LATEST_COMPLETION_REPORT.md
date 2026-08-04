@@ -1,69 +1,101 @@
-# TASK_SUPERSESSION_REPORT
+# TASK_AUTHORIZATION_REPORT
 
 ## Current decision
 
-- **Task ID:** `GEOX_LEAN_REPOSITORY_DELIVERY_STANDARD_ADOPTION_001`
-- **Status:** `superseded_without_merge`
-- **GeoX main before supersession:** `a4bf6bfaa4311dacd3642d289dca3917543e0309`
-- **Preserved branch:** `docs/geox-lean-repository-delivery-standard-adoption-001`
-- **Preserved branch head:** `bb1ac8d5ce29e2cab33eb680b3b7db76110f35f1`
-- **Retained substantive candidate:** `9e5a8473157c0562dce4a870563d7e9d21ca7445`
+- **Task ID:** `GEOX_EXECUTION_BRANCH_BINDING_001`
+- **Repository:** `Phani-Pavuluri/panel_exp`
+- **Status:** `authorized`
+- **Pre-authoring base:** `f15b0ee1713eaa46b7dc55e597e713443f5a8d32`
+- **Feature branch:** `feat/geox-execution-branch-binding-001`
+- **Risk tier:** Tier 2 internal executable repository governance
+- **Implementation SHA:** not yet created
 - **Capability authority:** unchanged
 
-## Why the task was superseded
+## Eligibility and overlap evidence
 
-The task became a multi-outcome governance epic rather than one independently
-reviewable merge unit. It combined branch binding, task authoring, lifecycle
-states, publication receipts, validation tiers, navigation, and reporting. The
-acceptance matrix was not frozen before execution, review requirements moved
-after bounded corrections were completed, and the task exceeded its declared
-one-correction-cycle default.
+GeoX `main` first superseded
+`GEOX_LEAN_REPOSITORY_DELIVERY_STANDARD_ADOPTION_001` without merge. Its
+preserved branch remains at `bb1ac8d5ce29e2cab33eb680b3b7db76110f35f1`
+and has no remaining task, correction, merge, or PR authority.
 
-Continuing the same branch would repeat the delivery failure the task was meant
-to prevent. The branch is therefore preserved as historical partial evidence and
-must not be resumed, merged, rebased, force-updated, opened as a PR, or reused
-wholesale.
+Live sibling evidence observed:
 
-## GitHub-observed evidence
+- MIP `976d3a1daeae9c52c8772e5112574f698951a57c`, with a MIP-only
+  cross-repository roadmap/coordination reconciliation task authorized;
+- MMM `b8878dfa4bcd178a0472c3b812492a5bb4ac0b45`, with an MMM-only execution
+  protocol task authorized.
 
-The preserved remote branch resolves to
-`bb1ac8d5ce29e2cab33eb680b3b7db76110f35f1`. Rejected review heads include
-`811ff9802cc41a46a7b4186e0eb026358becd337`,
-`d3543179ce93e5f1563d96554e8a490702735a15`, and
-`6cf6c2584af78c6c288cd572cf4d9e31416b2cc6`. The branch was not merged and no
-pull request was created.
+Neither sibling task owns GeoX files. Their cached GeoX observations become
+stale when GeoX main moves and must be evaluated through each task's declared
+live-overlay behavior. No duplicate GeoX owner or overlapping implementation
+blocks this task.
 
-The candidate at `9e5a8473157c0562dce4a870563d7e9d21ca7445`
-contains useful partial wording and tests but is not approved or merged GeoX
-governance. Locally reported focused checks do not change that disposition.
+## Primary outcome
 
-## Successor sequence
+Implement one deterministic read-only command that enforces exact main-derived
+task and feature-branch binding across `preflight`, `prepush`, and `postpush`
+phases. The task includes real temporary-Git behavioral tests and minimal
+repository guidance invoking the command.
 
-The next eligible GeoX task is a single-outcome deterministic branch-binding
-task. It must implement and test actual fail-closed behavior rather than only
-asserting that documentation contains selected words.
+Publication lifecycle, completion-report schema, exact-tree receipt redesign,
+lean task authoring, navigation changes, builder work, and analytical behavior
+are outside scope.
 
-A publication-lifecycle and exact-tree-receipt task remains proposed and
-unauthorized until branch binding is approved, merged, and closed.
+## Frozen acceptance matrix
 
-## Cross-repository impact
+The exact command inputs, success JSON keys, failure format, reason-code set,
+phase invariants, phase semantics, documentation calls, and eight required
+behavioral tests are fixed in `docs/execution/ACTIVE_TASK.md` before execution.
+Review may reject only against that matrix, unauthorized scope, false evidence,
+or an unsafe defect under the fixed behavior. New preferences become successor
+work and do not expand this task.
 
-- MIP remains authoritative for its own current coordination task and must apply
-  a live GeoX overlay when its cached GeoX authorization snapshot becomes stale.
-- MMM remains authoritative for its own execution-protocol task and must also
-  use live GeoX evidence.
-- No GeoX producer blocker is resolved.
-- No consumer verification is satisfied.
-- No MIP or MMM file, task, or authority is modified here.
+The task permits at most one correction cycle. A second failed review requires
+supersession without merge.
 
-## Validation, debt, and authority
+## Owned paths
 
-- **Validation performed for this supersession:** GitHub identity, branch-head,
-  main-state, ownership, and overlap verification.
-- **Validation debt:** none for the supersession decision; preserved branch
-  validation is historical and does not establish mergeability.
-- **Newly eligible work:** `GEOX_EXECUTION_BRANCH_BINDING_001` only.
-- **Task execution authority:** false.
-- **Correction authority:** false.
+Only these paths may change:
+
+- `AGENTS.md`
+- `scripts/verify_authorized_task_binding.py`
+- `docs/execution/TASK_EXECUTION_STANDARD.md`
+- `tests/test_execution_branch_binding.py`
+- `docs/execution/ACTIVE_TASK.md`
+- `docs/execution/EXECUTION_STATE.json`
+- `docs/execution/LATEST_COMPLETION_REPORT.md`
+
+## Validation requirement
+
+Run JSON parsing, Python compilation, the isolated branch-binding tests with exact
+counts, `git diff --check`, exact changed-path verification, and the command's
+prepush/postpush phases on the final branch. Docker, the complete package suite,
+analytical tests, Ruff, and mypy are explicitly `not_required` because this task
+uses only standard-library Git tooling and isolated temporary repositories and
+does not import or change the GeoX package or analytical runtime.
+
+## Task-authoring boundary
+
+The authoring range starts at
+`f15b0ee1713eaa46b7dc55e597e713443f5a8d32` and changes only:
+
+- `docs/execution/ACTIVE_TASK.md`
+- `docs/execution/LATEST_COMPLETION_REPORT.md`
+
+The commit containing this report is the task-authoring head. The immediate next
+commit must change only `docs/execution/EXECUTION_STATE.json` to record that
+exact head and executable authorization. Create the feature branch from the
+resulting synchronized state-only GeoX main.
+
+## Cross-repository and authority impact
+
+- **Affected repository:** GeoX only.
+- **MIP/GeoX/MMM blocker transitions:** none.
+- **Consumer verification:** not applicable.
+- **Newly eligible work:** implementation of this branch-binding task only.
+- **Deferred work:** publication lifecycle/receipt task remains proposed and
+  unauthorized.
 - **Merge and PR authority:** false.
-- **Capability authority:** unchanged and false.
+- **Analytical and capability authority:** unchanged and false.
+
+No implementation occurred during task authoring.
