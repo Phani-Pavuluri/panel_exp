@@ -19,8 +19,8 @@ def test_v2_state_contract_and_pins():
     status_match = re.search(r"^\*\*Status:\*\*\s*([a-z_]+)", task, re.MULTILINE)
     assert status_match and status_match.group(1) == state["status"]
     for pin in (state["canonical_mip_standard_commit"], state["canonical_mmm_workflow_commit"]):
-        assert all(pin in text for text in (task, report, context))
-    assert all(state["task_id"] in text for text in (task, report, context))
+        assert all(pin in text for text in (task, report))
+    assert all(state["task_id"] in text for text in (task, report))
     if state["implementation_commit_sha"] is not None:
         assert state["implementation_commit_sha"] in report
     for path in (
@@ -64,23 +64,27 @@ def test_status_invariants_are_closure_safe():
 
 def test_lean_repository_delivery_standard_is_adopted():
     text = (ROOT / "docs/program/LEAN_REPOSITORY_DELIVERY_STANDARD.md").read_text()
-    for term in ("one independently mergeable outcome", "execution-blocking design questions", "one correction cycle", "deferred successors"):
+    for term in ("one independently mergeable outcome", "execution-blocking design questions", "one correction cycle", "deferred successors", "Inputs", "Outputs", "acceptance tests"):
         assert term in text
+    assert "public contract" in text and "authority boundary" in text
 
 
 def test_codex_invocation_and_terminal_outcome_rules_are_adopted():
     text = (ROOT / "docs/program/LEAN_REPOSITORY_DELIVERY_STANDARD.md").read_text()
     for term in ("invocation-only", "durable", "ready_for_review", "blocked", "changes_requested"):
         assert term in text
+    assert "continues after orientation" in (ROOT / "docs/execution/TASK_EXECUTION_STANDARD.md").read_text()
 
 
 def test_risk_tier_and_durable_receipt_rules_are_adopted():
     text = (ROOT / "docs/program/LEAN_REPOSITORY_DELIVERY_STANDARD.md").read_text()
-    for term in ("Tier 1", "Tier 2", "Tier 3", "freeze the task tree", "counts", "authority"):
+    for term in ("Tier 1", "Tier 2", "Tier 3", "freeze the task tree", "counts", "authority", "not_required", "duplicate validation containers"):
         assert term in text
 
 
 def test_repository_context_index_is_navigation_only():
     text = (ROOT / "docs/execution/REPOSITORY_CONTEXT_INDEX.md").read_text()
-    assert "stable navigation, not a mirror" in text
+    assert "stable index is navigation only" in text
     assert "EXECUTION_STATE.json" in text and "ACTIVE_TASK.md" in text
+    assert "GEOX_LEAN_REPOSITORY_DELIVERY_STANDARD_ADOPTION_001" not in text
+    assert not re.search(r"\b[0-9a-f]{40}\b", text)

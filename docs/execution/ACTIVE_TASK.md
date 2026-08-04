@@ -16,6 +16,7 @@
 - **Risk tier:** Tier 1 — documentation, execution governance, and focused governance tests
 - **Canonical MIP execution-standard pin:** `Phani-Pavuluri/marketing_intelligence_platform@369805d923454a51ce98845cea29bdb1ee3c3895`
 - **MMM main observed during review:** `Phani-Pavuluri/MMM@b8878dfa4bcd178a0472c3b812492a5bb4ac0b45`
+- **Canonical MMM workflow pin:** `1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
 - **Rejected review head:** `811ff9802cc41a46a7b4186e0eb026358becd337`
 - **Rejected implementation commit:** `78e4145415b1530c4ca9795f81cd82480f33942b`
 - **Superseded builder branch:** `feat/geox-governed-readout-builder-package-entrypoint-001`
