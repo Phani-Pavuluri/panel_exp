@@ -1,89 +1,71 @@
-# TASK_AUTHORIZATION_REPORT
+# TASK_SUPERSESSION_REPORT
 
 ## Current decision
 
-- **Current decision:** `authorized`
+**SUPERSEDED WITHOUT MERGE**
+
 - **Task ID:** `GEOX_CERTIFIED_CALIBRATION_HANDOFF_SOURCE_FIXTURE_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
-- **Pre-authoring base:** `e9b7d311ecaf5a90e227d8299f745a0e8f332368`
-- **Feature branch:** `feat/geox-certified-calibration-handoff-source-fixture-001`
-- **Risk tier:** Tier 3 producer contract and certified cross-repository source fixture
-- **Implementation SHA:** not yet created
-- **Capability authority:** unchanged
+- **Authorized baseline:** `ef6a57382831210c085b4c1351358c3a0743be5e`
+- **First rejected review head:** `49059bf5baae58764c7c80e015c8ddccf590117a`
+- **First rejected implementation:** `191ddbe918cde06ee30c12b3a3d3998e917b86f5`
+- **Correction implementation:** `1c08554dc4d50b1a73c33af49ff7b9f6e2756889`
+- **Correction blocked-publication head:** `8986036c0c114b7ff75ac675e69cfbb69223b3ff`
+- **Preserved final branch head:** `a84d85277f9bbc35c08a40308d65858adbd36713`
+- **Correction cycles used:** 1 of 1
+- **Merge, PR, and capability authority:** false
 
-## GitHub-observed orientation evidence
+## GitHub-observed final review evidence
 
-- GeoX `main` was synchronized at `e9b7d311ecaf5a90e227d8299f745a0e8f332368` before authoring.
-- The prior GeoX execution-governance task is superseded without merge and has no remaining execution, correction, merge, PR, analytical, or capability authority.
-- Certified governed-readout fixtures were introduced at merged commit `860182386c39f487747de5f43e67a31e9978e57c`, which remains an ancestor of live GeoX `main`.
-- The canonical source contract is `panel_exp/contracts/geox_governed_experiment_readout.py`.
-- The canonical source fixture root is `tests/fixtures/geox_governed_readouts/`; its manifest contains 12 cases and records `mmm_compatibility_emitted: false` and `production_authorized: false`.
-- The existing fixtures preserve readout, experiment, KPI/unit/estimand/effect-scale, channel, geography/grain, uncertainty, method/instrument, freshness-status, handoff, lineage, provenance, replay, and authorization data, but do not provide exact fixture datetimes, freshness timestamps, a canonical cross-producer evidence-artifact identity, exact source paths/checksums, or a closed method-eligibility taxonomy.
-- MIP `main` was observed at `0b4cd1fca73716e4968c2ceb70c594ad8aadd8ca`.
-- MIP task `MIP_P2_GEOX_MMM_COMPATIBILITY_FIXTURE_BRIDGE_001` is blocked on its remote feature branch at `480b32040ce185b8ff091435121c4bea6fc6c453` by `BLOCK-P2-GEOX-MMM-CERTIFIED-PAIR-PROVENANCE-001`.
-- MMM `main` was observed at `f2e0eade0ad917c1b28ab5521e6d35a35047d988`; its current proposed task is non-executable and does not overlap this GeoX producer surface.
-- No existing active, authorized, review-ready, blocked, or recently completed GeoX task owns this exact calibration-handoff source fixture.
+The correction implementation changed only `panel_exp/contracts/geox_calibration_handoff_source.py` and `panel_exp/contracts/__init__.py`. It added limited missing/extra-field checks, version checks, basic UTC parsing, and an export change.
 
-## Authorized outcome
+The correction did not modify the rejected generator, fixture manifest, tests, Track-D document, or archive summary. Therefore material frozen-contract failures remained:
 
-Publish one provenance-complete, deterministic, non-authorizing GeoX source manifest over all 12 existing certified governed-readout fixtures.
+- duplicated source fixture path resolution in the generator;
+- no canonical governed-readout validation;
+- no source-truth-driven exhaustive eligibility mapping;
+- unsupported inference not identified from certified source truth;
+- incomplete explicit source-envelope fields;
+- no actual path containment, file existence, checksum equality, source identity, or analytical/governance equality validation;
+- no strict nested types, terminal vocabularies, contradictory eligibility, or prohibited-field validation;
+- only four broad tests and no complete named acceptance matrix;
+- no two-run clean deterministic replay or source-tree immutability proof;
+- incomplete Track-D, archive, and completion evidence;
+- no Docker/full validation, exact counts, Ruff, mypy, or exact-tree receipt.
 
-The task adds a strict `GeoXCalibrationHandoffSourceRecord`, a deterministic fixture builder, one committed 12-record manifest, tests, and producer documentation. It provides stable source identities, exact synthetic fixture time scope, freshness provenance, governed method eligibility, exact source paths, and SHA-256 checksums.
+The export correction assigns a new one-item `__all__` list after the existing list, potentially removing prior declared exports rather than extending them.
 
-Existing governed-readout payloads are immutable inputs. Their experiment estimates, uncertainty, statuses, handoff decisions, lineage, replay metadata, and authorization flags must remain unchanged.
+## Validation-obstruction disposition
 
-## Ownership and non-actions
+The blocked publication reported host `ModuleNotFoundError: seaborn` and direct `panel-exp-validation:local` execution with no pytest.
 
-GeoX owns experiment/readout identity, temporal scope, method/instrument status, handoff eligibility, and producer lineage.
+These observations do not prove a genuine external obstruction. The repository-authored `make validate-docker` path builds the image and then installs Poetry plus all runtime/dev dependencies using `poetry install --with dev --no-interaction` before running pytest. `pyproject.toml` declares `seaborn` and dev `pytest`.
 
-MMM retains exclusive ownership of normalization and final calibration-compatibility truth. MIP retains exclusive ownership of canonical `CalibrationSignal` construction, consumer reconciliation, orchestration, trust, and reporting.
+No evidence was published that the mandated command failed during Docker build, Poetry installation, dependency resolution, or test execution. The reported failures instead reflect an unhydrated host or stale/direct image invocation.
 
-This authorization does not permit:
+Even if the environment issue were external, the correction implementation still failed the frozen code and acceptance contract before validation.
 
-- MMM compatibility evaluation or compatibility fixtures;
-- `CalibrationSignal`, target-model, calibration-weight, or MIP evidence construction;
-- changes to experiment design, assignment, inference, estimates, or uncertainty;
-- runtime integration with MIP or MMM;
-- TrustReport, DecisionSurface, simulation, optimization, planning, recommendation, LLM, real-data, pilot, or production behavior;
-- modifications to MIP or MMM repositories.
+## Validation disposition
 
-## Blocker and consumer-verification impact
+- **GitHub-observed code review:** failed
+- **Focused tests:** no counts; required behavioral matrix not implemented
+- **Adjacent tests:** no counts
+- **Docker/full gate:** not evidenced through the repository-authored path
+- **Ruff:** unreported
+- **Mypy:** unreported
+- **Deterministic replay:** required two-run clean-state proof absent
+- **Source-tree immutability:** absent
+- **Exact-tree receipt:** absent
+- **Changed implementation paths in correction:** within authorized scope
+- **PR/merge observed:** none
+- **Capability impact:** none
 
-The task advances only the GeoX producer side of `BLOCK-P2-GEOX-MMM-CERTIFIED-PAIR-PROVENANCE-001`.
+## Cross-repository impact
 
-Producer completion does not resolve that blocker. Resolution still requires a separately merged MMM compatibility fixture linked to this exact GeoX evidence identity, followed by MIP consumer verification and a MIP-owned blocker transition.
+GeoX has not published a certified calibration-handoff source fixture. MIP blocker `BLOCK-P2-GEOX-MMM-CERTIFIED-PAIR-PROVENANCE-001` remains unresolved. No MMM compatibility fixture, MIP consumer verification, planning, recommendation, runtime, real-data, pilot, production, or capability authority becomes eligible.
 
-No MMM or MIP successor is authorized here.
+## Final authority and next work
 
-## Validation requirement
+Task execution, correction execution, merge, PR creation, sibling implementation, analytical behavior, MMM compatibility, `CalibrationSignal`, runtime integration, and capability authority are false.
 
-The frozen task requires:
-
-- changed JSON parsing;
-- Python compilation;
-- exact owned-path verification;
-- `git diff --check`;
-- focused and adjacent governed-readout tests with exact counts;
-- configured Ruff and mypy;
-- two byte-identical deterministic fixture generations matching the committed manifest;
-- Docker-backed full repository validation through `make validate-docker` with exact counts and warnings;
-- an exact-tree publication receipt;
-- clean task-owned worktree;
-- exact local/remote feature-branch equality.
-
-Focused success cannot hide Docker/full-suite validation debt. Required validation failure must produce an accurate Git-durable `blocked` state.
-
-## Task-authoring boundary
-
-The authoring range starts at `e9b7d311ecaf5a90e227d8299f745a0e8f332368` and may change only:
-
-- `docs/execution/ACTIVE_TASK.md`
-- `docs/execution/LATEST_COMPLETION_REPORT.md`
-
-The commit containing this report is the final task-authoring head. The immediate next commit must change only `docs/execution/EXECUTION_STATE.json`, record this exact authoring head as `authorization_head_sha`, and authorize the declared feature branch.
-
-## Publication and review boundary
-
-Successful execution must publish one exact remote `ready_for_review` head and stop without PR or merge. The report must distinguish GitHub-observed evidence from locally reported validation, identify one implementation SHA, record exact counts, list blockers and limitations, preserve consumer-verification debt, and state unchanged capability authority.
-
-At most one externally directed correction cycle is permitted. A second failed exact-head review supersedes the task without merge.
+The preserved branch is historical failed-attempt evidence only. No branch content is approved or merged. No further correction is authorized. Any future producer-side source-fixture task must be freshly justified by synchronized live consumer requirements and authorized from current `main`; this failed implementation must not be reused as approved evidence.
