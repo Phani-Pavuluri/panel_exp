@@ -15,3 +15,7 @@ prerequisites, branch, owned scope, validation, commit, and push; stop at
 and no pre-merge approval metadata commit is allowed. Merge only after exact-head
 approval with `git merge --ff-only`, one closure commit, push, synchronization,
 and cleanup. Never create a PR or guess.
+
+Branch-bound tasks read identity from synchronized main, switch explicitly,
+run binding preflight before edits, prepush before pushing only the declared
+branch, fetch the remote branch, and run postpush to prove exact equality.
