@@ -63,7 +63,7 @@ def validate_geox_calibration_source_manifest(payload: object) -> tuple[str, ...
     errors.extend(f'manifest:extra_key:{key}' for key in sorted(set(payload) - TOP_KEYS))
     expected = {'schema_version': 'geox_calibration_source_manifest_v1', 'record_version': '1.0.0', 'case_count': 12, 'source_repository': 'Phani-Pavuluri/panel_exp', 'source_fixture_checkpoint_sha': '860182386c39f487747de5f43e67a31e9978e57c', 'source_tree_base_sha': '7f829395bc305550ea1311421a4181dafed795b8', 'synthetic_fixture_time_scope': True, 'mmm_compatibility_emitted': False, 'calibration_signal_emitted': False, 'production_authorized': False}
     for key, value in expected.items():
-        if key in payload and payload[key] != value:
+        if key in payload and (type(payload[key]) is not type(value) or payload[key] != value):
             errors.append(f'manifest:invalid_value:{key}')
     records = payload.get('records')
     if not isinstance(records, list):
@@ -121,9 +121,14 @@ def validate_geox_calibration_source_manifest(payload: object) -> tuple[str, ...
         if replay and (isinstance(replay.get('assignment_seed'), bool) or not isinstance(replay.get('assignment_seed'), int) or not _string(replay.get('replay_version')) or not isinstance(replay.get('deterministic'), bool)): errors.append(f'record:{fid}:invalid_type:replay_metadata')
         if auth and (set(auth) != AUTH_KEYS or any(value is not False for value in auth.values())): errors.append(f'record:{fid}:unsafe_authorization')
         if item['freshness_status'] not in {'fresh', 'stale'}: errors.append(f'record:{fid}:invalid_value:freshness_status')
+        if type(item['synthetic_fixture_time_scope']) is not bool or item['synthetic_fixture_time_scope'] is not True:
+            errors.append(f'record:{fid}:invalid_type:synthetic_fixture_time_scope')
         parsed = [_timestamp(item[key]) for key in ('time_window_start', 'time_window_end', 'produced_at', 'freshness_evaluated_at')]
         if any(value is None for value in parsed): errors.append(f'record:{fid}:invalid_timestamp')
         elif not (parsed[0] < parsed[1] <= parsed[2] <= parsed[3]): errors.append(f'record:{fid}:invalid_timestamp_order')
+        expected_times = (('2025-01-06T00:00:00Z', '2025-03-30T23:59:59Z', '2025-03-31T00:00:00Z', '2025-04-01T00:00:00Z') if item['freshness_status'] == 'fresh' else ('2024-01-08T00:00:00Z', '2024-03-31T23:59:59Z', '2024-04-01T00:00:00Z', '2025-04-01T00:00:00Z'))
+        for field, expected_time in zip(('time_window_start', 'time_window_end', 'produced_at', 'freshness_evaluated_at'), expected_times):
+            if item[field] != expected_time: errors.append(f'record:{fid}:invalid_timestamp:{field}')
     if len(evidence) != len(set(evidence)): errors.append('manifest:duplicate_evidence_artifact_id')
     if len(readouts) != len(set(readouts)): errors.append('manifest:duplicate_source_readout_id')
     return tuple(errors)
@@ -153,9 +158,22 @@ def validate_geox_calibration_source_manifest_sources(payload: object, *, source
         return tuple(errors + ['source:manifest:invalid_json'])
     if not isinstance(source_manifest, dict) or not isinstance(source_manifest.get('cases'), list):
         return tuple(errors + ['source:manifest:invalid_cases'])
-    cases = {case.get('case_id'): case for case in source_manifest['cases'] if isinstance(case, dict) and isinstance(case.get('case_id'), str)}
-    if source_manifest.get('case_count') != 12 or source_manifest.get('mmm_compatibility_emitted') is not False or source_manifest.get('production_authorized') is not False or set(cases) != CASES:
+    raw_cases = source_manifest['cases']
+    valid_case_ids = [case.get('case_id') for case in raw_cases if isinstance(case, dict) and isinstance(case.get('case_id'), str)]
+    if type(source_manifest.get('case_count')) is not int or source_manifest.get('case_count') != 12 or type(source_manifest.get('mmm_compatibility_emitted')) is not bool or source_manifest.get('mmm_compatibility_emitted') is not False or type(source_manifest.get('production_authorized')) is not bool or source_manifest.get('production_authorized') is not False or len(raw_cases) != 12 or len(valid_case_ids) != 12 or set(valid_case_ids) != CASES or len(set(valid_case_ids)) != 12:
         errors.append('source:manifest:case_set_mismatch')
+    cases = {}
+    for case in raw_cases:
+        if not isinstance(case, dict):
+            errors.append('source:manifest:invalid_case')
+            continue
+        if set(case) != {'case_id', 'governed_readout', 'source_truth', 'replay'}:
+            errors.append('source:manifest:invalid_case')
+            continue
+        if not all(_string(case.get(key)) for key in ('case_id', 'governed_readout', 'source_truth', 'replay')):
+            errors.append('source:manifest:invalid_case')
+            continue
+        if case['case_id'] not in cases: cases[case['case_id']] = case
     for record in payload['records']:
         fid = record['fixture_id']; case = cases.get(fid)
         if not isinstance(case, dict):

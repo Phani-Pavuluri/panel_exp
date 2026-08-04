@@ -62,3 +62,34 @@ def test_validation_does_not_mutate_payload():
     value = payload(); before = copy.deepcopy(value)
     validate_geox_calibration_source_manifest_sources(value, source_root=SOURCE_ROOT)
     assert value == before
+
+@pytest.mark.parametrize('field,value', [
+    ('case_count', True), ('case_count', 12.0),
+    ('synthetic_fixture_time_scope', 1), ('mmm_compatibility_emitted', 0),
+    ('calibration_signal_emitted', 0), ('production_authorized', 0),
+    ('schema_version', 1), ('record_version', False),
+])
+def test_top_level_type_rejections(field, value):
+    data = payload(); data[field] = value
+    assert any('manifest:invalid_value:' + field in error for error in validate_geox_calibration_source_manifest(data))
+
+@pytest.mark.parametrize('field', ['time_window_start', 'time_window_end', 'produced_at', 'freshness_evaluated_at'])
+def test_timestamp_mapping_rejections(field):
+    data = payload(); data['records'][0][field] = '2020-01-01T00:00:00Z'
+    assert any('invalid_timestamp:' + field in error for error in validate_geox_calibration_source_manifest(data))
+
+@pytest.mark.parametrize('field', ['effect_estimate', 'absolute_lift', 'relative_lift', 'incremental_outcome', 'standard_error'])
+def test_nullable_numeric_bool_rejected(field):
+    data = payload(); data['records'][0][field] = True
+    assert any('invalid_type:' + field in error for error in validate_geox_calibration_source_manifest(data))
+
+@pytest.mark.parametrize('kind', ['governed_readout', 'source_truth', 'replay'])
+def test_source_path_mismatch_is_reported(kind):
+    data = payload(); data['records'][0][kind + '_path'] = 'missing.json'
+    errors = validate_geox_calibration_source_manifest_sources(data, source_root=SOURCE_ROOT)
+    assert any('field_mismatch:' + kind + '_path' in error for error in errors)
+
+@pytest.mark.parametrize('field', ['mip_handoff_expectation', 'lineage', 'provenance', 'replay_metadata', 'authorization_flags'])
+def test_nested_schema_rejection(field):
+    data = payload(); data['records'][0][field] = {}
+    assert any('invalid_type:' + field in error or 'prohibited_key' in error for error in validate_geox_calibration_source_manifest(data))
