@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** changes_requested
+**Status:** blocked
 **Owner:** GeoX governed-readout producer and certified-fixture owner
 **Last updated:** 2026-08-04
 **Last verified:** 2026-08-04
