@@ -1,4 +1,5 @@
 import copy
+import hashlib
 import json
 import shutil
 import sys
@@ -71,6 +72,66 @@ def test_invalid_freshness_values_return_reason_tuple(freshness):
     errors = validate_geox_calibration_source_manifest(value)
     assert isinstance(errors, tuple)
     assert any('freshness_status' in error for error in errors)
+
+def _mutated_case(tmp_path, kind, mutate):
+    root = copied_source(tmp_path)
+    value = payload()
+    record = value['records'][0]
+    path = root / record[kind + '_path']
+    data = json.loads(path.read_text())
+    mutate(data)
+    path.write_text(json.dumps(data))
+    record[kind + '_sha256'] = hashlib.sha256(path.read_bytes()).hexdigest()
+    return value, root, record
+
+def test_loader_malformed_json_and_intrinsic_error(tmp_path):
+    malformed = tmp_path / 'malformed.json'; malformed.write_text('{bad')
+    with pytest.raises(GeoXCalibrationSourceManifestValidationError) as exc:
+        load_and_validate_geox_calibration_source_manifest(malformed, source_root=SOURCE_ROOT)
+    assert exc.value.errors == ('manifest:invalid_json',)
+    invalid = tmp_path / 'invalid.json'; invalid.write_text(json.dumps({'case_count': 1}))
+    with pytest.raises(GeoXCalibrationSourceManifestValidationError) as exc:
+        load_and_validate_geox_calibration_source_manifest(invalid, source_root=SOURCE_ROOT)
+    assert 'manifest:invalid_value:case_count' in exc.value.errors
+    assert 'manifest:missing_key:records' in exc.value.errors
+
+def test_source_manifest_duplicate_case_and_malformed_case(tmp_path):
+    root = copied_source(tmp_path); source_manifest = root / 'manifest.json'; data = json.loads(source_manifest.read_text())
+    data['cases'][1]['case_id'] = data['cases'][0]['case_id']; source_manifest.write_text(json.dumps(data))
+    errors = validate_geox_calibration_source_manifest_sources(payload(), source_root=root)
+    assert 'source:manifest:case_set_mismatch' in errors
+    root = copied_source(tmp_path / 'malformed'); source_manifest = root / 'manifest.json'; data = json.loads(source_manifest.read_text()); data['cases'][0] = {}; source_manifest.write_text(json.dumps(data))
+    assert 'source:manifest:invalid_case' in validate_geox_calibration_source_manifest_sources(payload(), source_root=root)
+
+def test_unsafe_declared_path_matching_is_rejected(tmp_path):
+    root = copied_source(tmp_path); source_manifest = root / 'manifest.json'; data = json.loads(source_manifest.read_text()); data['cases'][0]['replay'] = '../escape.json'; source_manifest.write_text(json.dumps(data)
+    )
+    value = payload(); value['records'][0]['replay_path'] = '../escape.json'
+    assert 'source:geox_truth_bayesian_tbr_research_only_001:unsafe_path:replay' in validate_geox_calibration_source_manifest_sources(value, source_root=root)
+
+@pytest.mark.parametrize('kind,mutate,reason', [
+    ('governed_readout', lambda d: d.pop('readout_id'), 'deserialization_failure'),
+    ('governed_readout', lambda d: d.update(readout_status='not-a-status'), 'invalid_governed_readout'),
+    ('governed_readout', lambda d: d.update(kpi='different'), 'field_mismatch:kpi'),
+])
+def test_governed_readout_failures(tmp_path, kind, mutate, reason):
+    value, root, record = _mutated_case(tmp_path, kind, mutate)
+    errors = validate_geox_calibration_source_manifest_sources(value, source_root=root)
+    assert f"source:{record['fixture_id']}:{reason}" in errors
+
+@pytest.mark.parametrize('field', ['fixture_id', 'fixture_class', 'certification_status', 'mip_handoff_expectation'])
+def test_source_truth_mismatch(tmp_path, field):
+    value, root, record = _mutated_case(tmp_path, 'source_truth', lambda d: d.update({field: 'different'}))
+    assert f"source:{record['fixture_id']}:source_truth_mismatch:{field}" in validate_geox_calibration_source_manifest_sources(value, source_root=root)
+
+@pytest.mark.parametrize('field,value,reason', [('case_id', 'different', 'case_id'), ('deterministic', False, 'deterministic')])
+def test_replay_mismatch(tmp_path, field, value, reason):
+    data = payload(); record = data['records'][0]; root = copied_source(tmp_path); path = root / record['replay_path']; replay = json.loads(path.read_text()); replay[field] = value; path.write_text(json.dumps(replay)); record['replay_sha256'] = hashlib.sha256(path.read_bytes()).hexdigest()
+    assert f"source:{record['fixture_id']}:replay_mismatch:{reason}" in validate_geox_calibration_source_manifest_sources(data, source_root=root)
+
+def test_invalid_payload_error_order_is_deterministic():
+    value = payload(); value['records'][0]['freshness_status'] = []
+    assert validate_geox_calibration_source_manifest(value) == validate_geox_calibration_source_manifest(copy.deepcopy(value))
 
 def copied_source(tmp_path):
     target = tmp_path / 'source'
