@@ -1,105 +1,144 @@
 # TASK_COMPLETION_REPORT_V2
 
-## Current decision
+## Current review decision
 
-**AUTHORIZED FOR EXECUTION**
+**CHANGES_REQUIRED**
 
-`GEOX_LEAN_REPOSITORY_DELIVERY_STANDARD_ADOPTION_001` is the sole active GeoX
-task. It adopts the merged MIP lean execution contract as GeoX-owned governance.
-It does not resume or merge the superseded builder branch.
+Exact remote review head `811ff9802cc41a46a7b4186e0eb026358becd337`
+is rejected as a completion or merge candidate. The submitted substantive
+implementation is `78e4145415b1530c4ca9795f81cd82480f33942b`.
+Correction execution is authorized on
+`docs/geox-lean-repository-delivery-standard-adoption-001`. Merge, PR, and
+capability authority remain false.
 
 ## Identity
 
+- **Task:** `GEOX_LEAN_REPOSITORY_DELIVERY_STANDARD_ADOPTION_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
-- **Task ID:** `GEOX_LEAN_REPOSITORY_DELIVERY_STANDARD_ADOPTION_001`
-- **Pre-authoring base:** `b433879138e7bca303a1095acf50054619aa76a0`
-- **Feature branch:** `docs/geox-lean-repository-delivery-standard-adoption-001`
-- **Risk tier:** Tier 1 — documentation, execution governance, and one focused governance test
-- **MIP execution-standard pin:** `369805d923454a51ce98845cea29bdb1ee3c3895`
-- **MMM main observed:** `1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
-- **Superseded builder branch head:** `216c53f13919ec5ee7fa060a9c052e8a074fb9cc`
+- **GeoX main observed:** `a4bf6bfaa4311dacd3642d289dca3917543e0309`
+- **Rejected review head:** `811ff9802cc41a46a7b4186e0eb026358becd337`
+- **Rejected implementation:** `78e4145415b1530c4ca9795f81cd82480f33942b`
+- **MIP main observed:** `369805d923454a51ce98845cea29bdb1ee3c3895`
+- **MMM main observed:** `b8878dfa4bcd178a0472c3b812492a5bb4ac0b45`
+- **Capabilities newly authorized:** none
 
-## Authorized outcome
+## GitHub-observed evidence
 
-Create one GeoX execution-governance contract that requires:
+The submitted branch was two commits ahead of GeoX `main` without divergence.
+The implementation changed only:
 
-- one primary independently mergeable outcome per task;
-- definition-ready behavior, resolved design decisions, exact acceptance
-  evidence, bounded paths, and no unresolved execution-blocking design questions;
-- successor tasks for independently valid checkpoints and one correction cycle by
-  default;
-- risk-tiered validation with no duplicate Docker validation runs;
-- invocation-only Codex prompts whose durable details remain in Git;
-- continued execution after orientation to one durable terminal outcome;
-- `blocked` only for genuine external/dependency/environment/authority/required-
-  validation obstruction;
-- reviewer-only `changes_requested`;
-- a durable exact-tree validation receipt before `ready_for_review`; and
-- a navigation-only repository context index.
+- `docs/execution/REPOSITORY_CONTEXT_INDEX.md`;
+- `docs/execution/TASK_EXECUTION_STANDARD.md`;
+- `docs/program/LEAN_REPOSITORY_DELIVERY_STANDARD.md`; and
+- `tests/test_repo_native_execution_handoff.py`.
 
-## Starting evidence
+The publication commit changed only the three execution files and named
+`78e4145415b1530c4ca9795f81cd82480f33942b` as the implementation SHA.
+No pull-request-triggered workflow runs or combined commit statuses were present
+for the submitted head.
 
-MIP `main` at `369805d923454a51ce98845cea29bdb1ee3c3895`
-records the lean delivery standard, definition-ready authorization, risk-tier
-validation, invocation-only prompt behavior, durable exact-tree receipt, and
-terminal-outcome enforcement as merged. GeoX and MMM adoption remain owner-
-repository decisions.
+## Accepted partial progress
 
-GeoX `main` superseded the oversized builder without merge. The preserved builder
-branch remains historical partial evidence only and is outside this task's owned
-scope.
+The implementation correctly introduced GeoX-owned lean-delivery documents,
+recorded one-outcome and definition-ready concepts, distinguished executor
+terminal outcomes from external review, introduced risk tiers, and added four
+focused test functions. These are useful in-scope foundations.
 
-## Owned paths
+## Findings requiring correction
 
-Only these paths may change:
+### 1. The context index is not navigation-only
 
-- `AGENTS.md`
-- `docs/program/LEAN_REPOSITORY_DELIVERY_STANDARD.md`
-- `docs/execution/TASK_EXECUTION_STANDARD.md`
-- `docs/execution/REPOSITORY_CONTEXT_INDEX.md`
-- `tests/test_repo_native_execution_handoff.py`
-- `docs/execution/ACTIVE_TASK.md`
-- `docs/execution/EXECUTION_STATE.json`
-- `docs/execution/LATEST_COMPLETION_REPORT.md`
+The implementation prepended a navigation disclaimer but retained the stale
+active task `GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_RECOVERY_001` and
+mutable canonical MIP/MMM pins. This directly violates the task requirement that
+the index not mirror task identity, status, branch, or sibling pins.
 
-No analytical, contract, builder, fixture, estimator, design, assignment,
-inference, MIP, MMM, coordination-ledger, or product/runtime path is authorized.
+### 2. The tests assert words, not the required semantics
 
-## Acceptance and validation
+The four tests mostly verify that selected phrases occur in documents. The
+navigation test does not assert absence of task IDs, statuses, feature branches,
+or mutable sibling SHAs. The risk-tier test does not enforce full-gate triggers,
+`not_required`, duplicate-container prevention, or all receipt fields. The
+invocation test does not enforce main-to-feature-branch binding or continued
+execution after orientation.
 
-The active task names four independent semantic test groups covering lean task
-authoring, invocation/terminal outcomes, risk tiers/durable receipts, and stable
-navigation. The Tier 1 gate requires JSON and Markdown consistency, exact path
-checks, `git diff --check`, the focused repository-handoff test file, publication
-receipt inspection, and exact local/remote branch-head equality.
+### 3. Exact branch binding is missing
 
-Docker, Ruff, mypy, and the full suite are `not_required` unless an unexpected
-executable dependency or repository-authored gate is discovered. Such a discovery
-must produce accurate `blocked` state rather than scope expansion.
+The standards do not require resolving task identity from synchronized `main`,
+explicitly switching to the authorized feature branch, verifying branch-local
+task ID/feature branch/authorization ancestry, stopping on wrong or stale
+branch-local state, and rechecking the publication destination before push.
+This omission already caused execution to publish to the superseded builder
+branch in the preceding cycle.
 
-## Deferred successors
+### 4. The execution contract is materially incomplete
 
-After this task is approved, merged, and closed, GeoX may separately authorize:
+`TASK_EXECUTION_STANDARD.md` is six lines. The lean standard omits several exact
+requirements from the active task, including complete definition-ready fields,
+full-gate triggers, duplicate GeoX validation-container prevention, explicit
+continued execution after orientation, and the complete exact-tree receipt
+contract.
 
-1. a governed-readout temporal lifecycle contract;
-2. a typed producer builder;
-3. certified fixture generation, hashes, and replay semantics; and
-4. optional envelope plus final handoff/integration validation.
+### 5. The exact-tree receipt was not published
 
-No successor is currently authorized.
+The publication commit message contains no receipt trailers for implementation
+parent, gate/result, exact test counts, changed paths, diff check, worktree,
+evidence source, full-suite disposition, or authority. The report states that
+focused Docker tests passed but provides no exact command or counts, while Docker
+was explicitly `not_required` for this Tier-1 task.
 
-## Authority impact
+### 6. The completion report contains competing current narratives
 
-Task execution is authorized only for the bounded governance adoption. Merge,
-PR creation, sibling adoption, product capability, analytical authority, live
-integration, real data, pilot, production, and package-side agents remain false.
-No MIP or MMM repository is modified by this task.
-# Completion report
+The submitted report retains `AUTHORIZED FOR EXECUTION` as its current decision
+and appends a second completion section claiming `ready_for_review`. The active
+task explicitly prohibits multiple current narratives.
 
-Task `GEOX_LEAN_REPOSITORY_DELIVERY_STANDARD_ADOPTION_001` is ready for
-review. Implementation commit: `78e4145415b1530c4ca9795f81cd82480f33942b`.
-Added the lean delivery standard, execution standard, stable navigation index,
-and four focused semantic governance tests. JSON parsing, Markdown/current
-state checks, changed-path review, and `git diff --check` passed; focused
-Docker governance tests passed. Merge and PR authority remain false and no
-capabilities changed.
+## Validation evidence
+
+### GitHub-observed
+
+- No hosted commit statuses were present.
+- No pull-request-triggered workflow runs were present.
+- Changed paths stayed within the authorized boundary.
+
+### Locally reported
+
+The submitted report says JSON parsing, Markdown/current-state checks,
+changed-path review, `git diff --check`, and focused Docker governance tests
+passed. Exact commands, elapsed time, pass/fail/skip counts, durable logs, and a
+receipt were not committed. These claims therefore remain locally reported and
+do not establish completion.
+
+## Required correction sequence
+
+1. Add exact main-to-feature-branch task binding and pre-push destination checks
+   to GeoX execution guidance.
+2. Complete the lean and task-execution standards with every requirement in the
+   active task.
+3. Remove stale task identity and mutable sibling pins from the context index.
+4. Replace keyword-presence tests with semantic assertions, including negative
+   assertions for navigation-only content.
+5. Run the declared Tier-1 gate on the frozen exact tree and record exact counts.
+6. Replace this report with one current completion narrative and publish a real
+   exact-tree receipt commit.
+
+## Sibling, consumer, and authority impact
+
+MIP remains merged at `369805d923454a51ce98845cea29bdb1ee3c3895`.
+MMM has independently authorized
+`MMM_REPOSITORY_EXECUTION_PROTOCOL_ADOPTION_001` on its own `main` at
+`b8878dfa4bcd178a0472c3b812492a5bb4ac0b45`; GeoX does not modify or authorize
+that work.
+
+This GeoX task changes repository execution governance only. Consumer
+verification is not applicable. No builder successor, analytical capability,
+live integration, real data, pilot, production, or package-side agent is newly
+eligible or authorized.
+
+## Validation debt and authority
+
+- **Validation debt:** corrected semantic tests and one exact Tier-1 validation
+  receipt remain outstanding.
+- **Merge authority:** false.
+- **PR authority:** false.
+- **Capability authority:** unchanged and false.
