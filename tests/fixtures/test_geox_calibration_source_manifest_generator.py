@@ -4,13 +4,49 @@ import subprocess
 import sys
 from pathlib import Path
 
-ROOT=Path(__file__).parents[1]; MAN=ROOT/'fixtures/geox_calibration_handoff_sources/v1/manifest.json'; SCRIPT=ROOT.parent/'scripts/build_geox_calibration_source_manifest.py'; SRC=ROOT/'fixtures/geox_governed_readouts'
-def test_exact_cases_and_shape():
- d=json.loads(MAN.read_text()); assert set(d)=={'schema_version','record_version','case_count','source_repository','source_fixture_checkpoint_sha','source_tree_base_sha','synthetic_fixture_time_scope','mmm_compatibility_emitted','calibration_signal_emitted','production_authorized','records'}; assert d['case_count']==12; assert len(d['records'])==12; assert all('source_readout' not in r and 'source_replay' not in r for r in d['records'])
-def test_paths_checksums_and_ids():
- for r in json.loads(MAN.read_text())['records']:
-  assert r['evidence_artifact_id']==f"geox-evidence-{r['fixture_id']}-v1"
-  for k in ('governed_readout','source_truth','replay'):
-   p=SRC/r[f'{k}_path']; assert p.is_file(); assert r[f'{k}_sha256']==hashlib.sha256(p.read_bytes()).hexdigest()
+ROOT = Path(__file__).parents[1]
+MAN = ROOT / 'fixtures/geox_calibration_handoff_sources/v1/manifest.json'
+SCRIPT = ROOT.parent / 'scripts/build_geox_calibration_source_manifest.py'
+SRC = ROOT / 'fixtures/geox_governed_readouts'
+
+def test_manifest_shape_and_safety():
+    data = json.loads(MAN.read_text())
+    assert data['case_count'] == 12
+    assert data['mmm_compatibility_emitted'] is False
+    assert data['production_authorized'] is False
+    assert len(data['records']) == 12
+    expected = set(__import__('runpy').run_path(str(SCRIPT))['FIELDS'])
+    for record in data['records']:
+        assert set(record) == expected
+        assert all(value is False for value in record['authorization_flags'].values())
+        assert not {'source_readout','source_replay','calibration_compatibility','method_eligibility_status','compatibility_status','target_model_id','calibration_weight','calibration_signal','trust_report','decision_surface','recommendation','optimization'} & set(record)
+
+def test_paths_checksums_ids_and_timestamps():
+    data = json.loads(MAN.read_text())
+    for record in data['records']:
+        assert record['evidence_artifact_id'] == f"geox-evidence-{record['fixture_id']}-v1"
+        for kind in ('governed_readout', 'source_truth', 'replay'):
+            path = SRC / record[f'{kind}_path']
+            assert path.is_file()
+            assert record[f'{kind}_sha256'] == hashlib.sha256(path.read_bytes()).hexdigest()
+        if record['freshness_status'] == 'fresh':
+            assert (record['time_window_start'], record['time_window_end'], record['produced_at']) == ('2025-01-06T00:00:00Z','2025-03-30T23:59:59Z','2025-03-31T00:00:00Z')
+        else:
+            assert (record['time_window_start'], record['time_window_end'], record['produced_at']) == ('2024-01-08T00:00:00Z','2024-03-31T23:59:59Z','2024-04-01T00:00:00Z')
+
+def test_representative_source_values_preserved():
+    for record in json.loads(MAN.read_text())['records']:
+        readout = json.loads((SRC / record['governed_readout_path']).read_text())
+        truth = json.loads((SRC / record['source_truth_path']).read_text())
+        for key in ('kpi','kpi_units','estimand','effect_scale','effect_estimate','uncertainty_available','method_family','method_status','instrument_id','design_type','feasibility_status','readout_status','freshness_status','warnings','blocked_reasons','failure_reasons','lineage','provenance','replay_metadata','producer_package_version','producer_commit','authorization_flags'):
+            assert record[key] == readout[key]
+        for key in ('fixture_class','certification_status','mip_handoff_expectation'):
+            assert record[key] == truth[key]
+
 def test_deterministic_and_source_immutable(tmp_path):
- before={p:hashlib.sha256(p.read_bytes()).hexdigest() for p in SRC.rglob('*') if p.is_file()}; a=tmp_path/'a'; b=tmp_path/'b'; subprocess.run([sys.executable,str(SCRIPT),'--output',str(a)],check=True); subprocess.run([sys.executable,str(SCRIPT),'--output',str(b)],check=True); assert a.read_bytes()==b.read_bytes()==MAN.read_bytes(); assert before=={p:hashlib.sha256(p.read_bytes()).hexdigest() for p in SRC.rglob('*') if p.is_file()}
+    before = {p: hashlib.sha256(p.read_bytes()).hexdigest() for p in SRC.rglob('*') if p.is_file()}
+    first, second = tmp_path / 'a.json', tmp_path / 'b.json'
+    subprocess.run([sys.executable, str(SCRIPT), '--output', str(first)], check=True)
+    subprocess.run([sys.executable, str(SCRIPT), '--output', str(second)], check=True)
+    assert first.read_bytes() == second.read_bytes() == MAN.read_bytes()
+    assert before == {p: hashlib.sha256(p.read_bytes()).hexdigest() for p in SRC.rglob('*') if p.is_file()}

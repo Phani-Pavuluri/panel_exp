@@ -15,15 +15,17 @@ def resolve(root, rel):
 def checksum(p): return hashlib.sha256(p.read_bytes()).hexdigest()
 def build(output=DEFAULT):
  m=json.loads((SRC/'manifest.json').read_text()); cases=m.get('cases',[]); ids=[c['case_id'] for c in cases]
- if m.get('case_count')!=12 or set(ids)!=CASES or len(ids)!=12: raise ValueError('source manifest cases mismatch')
+ if (m.get('case_count') != 12 or m.get('mmm_compatibility_emitted') is not False or m.get('production_authorized') is not False or set(ids) != CASES or len(ids) != 12): raise ValueError('source manifest safety or cases mismatch')
  records=[]
  for c in sorted(cases,key=lambda x:x['case_id']):
   fid=c['case_id']; paths={k:resolve(SRC,c[k]) for k in ('governed_readout','source_truth','replay')}; r=json.loads(paths['governed_readout'].read_text()); t=json.loads(paths['source_truth'].read_text()); replay=json.loads(paths['replay'].read_text())
   if r['fixture_id']!=fid or t['fixture_id']!=fid or replay['case_id']!=fid: raise ValueError('identity mismatch')
-  if r['readout_id'] != r.get('readout_id') or r['experiment_id'] != fid: raise ValueError('readout identity mismatch')
+  readout_id = r.get('readout_id')
+  if not isinstance(readout_id, str) or not readout_id: raise ValueError('invalid readout identity')
+  if r['experiment_id'] != fid: raise ValueError('readout identity mismatch')
   freshness=r['freshness_status'];
   if freshness not in {'fresh','stale'}: raise ValueError('unsupported freshness')
-  fresh=freshness=='fresh'; rec={'fixture_id':fid,'evidence_artifact_id':f'geox-evidence-{fid}-v1','source_readout_id':r['readout_id'],'experiment_id':r['experiment_id'],'dataset_version':r['dataset_version'],'truth_version':r['truth_version'],'governed_readout_path':c['governed_readout'],'governed_readout_sha256':checksum(paths['governed_readout']),'source_truth_path':c['source_truth'],'source_truth_sha256':checksum(paths['source_truth']),'replay_path':c['replay'],'replay_sha256':checksum(paths['replay']),'fixture_class':t['fixture_class'],'certification_status':t['certification_status'],'mip_handoff_expectation':t['mip_handoff_expectation']}
+  fresh=freshness=='fresh'; rec={'fixture_id':fid,'evidence_artifact_id':f'geox-evidence-{fid}-v1','source_readout_id':readout_id,'experiment_id':r['experiment_id'],'dataset_version':r['dataset_version'],'truth_version':r['truth_version'],'governed_readout_path':c['governed_readout'],'governed_readout_sha256':checksum(paths['governed_readout']),'source_truth_path':c['source_truth'],'source_truth_sha256':checksum(paths['source_truth']),'replay_path':c['replay'],'replay_sha256':checksum(paths['replay']),'fixture_class':t['fixture_class'],'certification_status':t['certification_status'],'mip_handoff_expectation':t['mip_handoff_expectation']}
   for k in FIELDS:
    if k not in rec and k not in ('time_window_start','time_window_end','produced_at','freshness_evaluated_at','synthetic_fixture_time_scope'):
     if k not in r: raise ValueError(f'missing required governed field: {k}')
