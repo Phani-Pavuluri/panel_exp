@@ -1,8 +1,12 @@
 import hashlib
+import importlib.util
 import json
+import shutil
 import subprocess
 import sys
 from pathlib import Path
+
+import pytest
 
 ROOT = Path(__file__).parents[1]
 MAN = ROOT / 'fixtures/geox_calibration_handoff_sources/v1/manifest.json'
@@ -50,3 +54,42 @@ def test_deterministic_and_source_immutable(tmp_path):
     subprocess.run([sys.executable, str(SCRIPT), '--output', str(second)], check=True)
     assert first.read_bytes() == second.read_bytes() == MAN.read_bytes()
     assert before == {p: hashlib.sha256(p.read_bytes()).hexdigest() for p in SRC.rglob('*') if p.is_file()}
+
+def _isolated_generator(tmp_path):
+    copied = tmp_path / 'source'
+    shutil.copytree(SRC, copied)
+    spec = importlib.util.spec_from_file_location('calibration_generator', SCRIPT)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    module.SRC = copied
+    return module, copied
+
+@pytest.mark.parametrize('value', [None, '', 42])
+def test_invalid_readout_id_rejected(tmp_path, value):
+    module, copied = _isolated_generator(tmp_path)
+    path = copied / 'geox_truth_scm_candidate_clean_001' / 'governed_readout.json'
+    payload = json.loads(path.read_text())
+    if value is None:
+        payload.pop('readout_id')
+    else:
+        payload['readout_id'] = value
+    path.write_text(json.dumps(payload))
+    with pytest.raises(ValueError):
+        module.build(tmp_path / 'out.json')
+
+def test_manifest_flags_and_paths_rejected(tmp_path):
+    module, copied = _isolated_generator(tmp_path)
+    manifest = copied / 'manifest.json'
+    payload = json.loads(manifest.read_text())
+    payload['production_authorized'] = True
+    manifest.write_text(json.dumps(payload))
+    with pytest.raises(ValueError):
+        module.build(tmp_path / 'flags.json')
+
+    module, copied = _isolated_generator(tmp_path / 'paths')
+    manifest = copied / 'manifest.json'
+    payload = json.loads(manifest.read_text())
+    payload['cases'][0]['governed_readout'] = '/etc/passwd'
+    manifest.write_text(json.dumps(payload))
+    with pytest.raises(ValueError):
+        module.build(tmp_path / 'absolute.json')
