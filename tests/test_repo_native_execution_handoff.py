@@ -60,3 +60,27 @@ def test_status_invariants_are_closure_safe():
         assert not state["task_execution_authorized"] and not state["merge_authorized"]
         assert SHA.fullmatch(state["implementation_commit_sha"])
         assert SHA.fullmatch(state["reviewed_head_sha"]) and state["approval_commit_sha"] is None and not state["blockers"]
+
+
+def test_lean_repository_delivery_standard_is_adopted():
+    text = (ROOT / "docs/program/LEAN_REPOSITORY_DELIVERY_STANDARD.md").read_text()
+    for term in ("one independently mergeable outcome", "execution-blocking design questions", "one correction cycle", "deferred successors"):
+        assert term in text
+
+
+def test_codex_invocation_and_terminal_outcome_rules_are_adopted():
+    text = (ROOT / "docs/program/LEAN_REPOSITORY_DELIVERY_STANDARD.md").read_text()
+    for term in ("invocation-only", "durable", "ready_for_review", "blocked", "changes_requested"):
+        assert term in text
+
+
+def test_risk_tier_and_durable_receipt_rules_are_adopted():
+    text = (ROOT / "docs/program/LEAN_REPOSITORY_DELIVERY_STANDARD.md").read_text()
+    for term in ("Tier 1", "Tier 2", "Tier 3", "freeze the task tree", "counts", "authority"):
+        assert term in text
+
+
+def test_repository_context_index_is_navigation_only():
+    text = (ROOT / "docs/execution/REPOSITORY_CONTEXT_INDEX.md").read_text()
+    assert "stable navigation, not a mirror" in text
+    assert "EXECUTION_STATE.json" in text and "ACTIVE_TASK.md" in text

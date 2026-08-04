@@ -1,5 +1,20 @@
 # GeoX execution context
 
+This file is stable navigation, not a mirror of the current task, status,
+branch, or mutable sibling pins. Read the current task identity from
+`docs/execution/EXECUTION_STATE.json` and `docs/execution/ACTIVE_TASK.md`, and
+the current result from `docs/execution/LATEST_COMPLETION_REPORT.md`.
+
+The adopted delivery rules are in
+`docs/program/LEAN_REPOSITORY_DELIVERY_STANDARD.md` and
+`docs/execution/TASK_EXECUTION_STANDARD.md`. GeoX analytical evidence is under
+`panel_exp/contracts/`, `tests/fixtures/geox_governed_readouts/`,
+`tests/fixtures/geox_numerical_truth/`, and `docs/track_d/`.
+
+Fresh Chat Bootstrap: synchronize and hydrate Git, switch to `main`, pull
+fast-forward only, prove local and remote main agree, then read the execution
+files and this index.
+
 Active task: `GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_RECOVERY_001`.
 
 Canonical pins:
