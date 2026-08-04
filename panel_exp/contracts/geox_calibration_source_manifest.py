@@ -181,9 +181,15 @@ def validate_geox_calibration_source_manifest_sources(payload: object, *, source
             continue
         paths: dict[str, Path] = {}
         unsafe = False
+        mismatched = False
         for kind in ('governed_readout', 'source_truth', 'replay'):
-            if record[f'{kind}_path'] != case.get(kind): errors.append(f'source:{fid}:field_mismatch:{kind}_path')
-            path, reason = _safe_path(source_root, record[f'{kind}_path'], fid, kind)
+            if record[f'{kind}_path'] != case.get(kind):
+                errors.append(f'source:{fid}:field_mismatch:{kind}_path')
+                mismatched = True
+        if mismatched:
+            continue
+        for kind in ('governed_readout', 'source_truth', 'replay'):
+            path, reason = _safe_path(source_root, case[kind], fid, kind)
             if reason:
                 errors.append(reason); unsafe = True
             else:
@@ -191,14 +197,20 @@ def validate_geox_calibration_source_manifest_sources(payload: object, *, source
         if unsafe:
             continue
         values: dict[str, object] = {}
-        try:
-            for kind, path in paths.items():
-                values[kind] = json.loads(path.read_text(encoding='utf-8'))
-        except (OSError, UnicodeDecodeError, json.JSONDecodeError):
-            errors.append(f'source:{fid}:invalid_json')
-            continue
-        if not all(isinstance(values[kind], dict) for kind in values):
-            errors.append(f'source:{fid}:invalid_json')
+        parse_failed = False
+        for kind, path in paths.items():
+            try:
+                value = json.loads(path.read_text(encoding='utf-8'))
+            except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+                errors.append(f'source:{fid}:invalid_json:{kind}')
+                parse_failed = True
+                continue
+            if not isinstance(value, dict):
+                errors.append(f'source:{fid}:non_object_json:{kind}')
+                parse_failed = True
+                continue
+            values[kind] = value
+        if parse_failed:
             continue
         for kind, path in paths.items():
             if hashlib.sha256(path.read_bytes()).hexdigest() != record[f'{kind}_sha256']:
@@ -217,6 +229,10 @@ def validate_geox_calibration_source_manifest_sources(payload: object, *, source
         truth = values['source_truth']; replay = values['replay']
         for key in ('fixture_id', 'fixture_class', 'certification_status', 'mip_handoff_expectation'):
             if record[key] != truth.get(key): errors.append(f'source:{fid}:source_truth_mismatch:{key}')
+        if 'dataset_version' in truth and truth['dataset_version'] != record['dataset_version']:
+            errors.append(f'source:{fid}:source_truth_mismatch:dataset_version')
+        if 'truth_version' in truth and truth['truth_version'] != record['truth_version']:
+            errors.append(f'source:{fid}:source_truth_mismatch:truth_version')
         if replay.get('case_id') != fid: errors.append(f'source:{fid}:replay_mismatch:case_id')
         if replay.get('deterministic') is not True: errors.append(f'source:{fid}:replay_mismatch:deterministic')
     return tuple(errors)

@@ -1,5 +1,6 @@
 import copy
 import json
+import shutil
 import sys
 import types
 from pathlib import Path
@@ -54,7 +55,7 @@ def test_authorization_and_timestamp_rules():
 
 def test_source_path_checksum_and_field_mismatch():
     value = payload(); value['records'][0]['governed_readout_path'] = '../escape.json'
-    assert any('unsafe_path:governed_readout' in e for e in validate_geox_calibration_source_manifest_sources(value, source_root=SOURCE_ROOT))
+    assert 'source:geox_truth_bayesian_tbr_research_only_001:field_mismatch:governed_readout_path' in validate_geox_calibration_source_manifest_sources(value, source_root=SOURCE_ROOT)
     value = payload(); value['records'][0]['governed_readout_sha256'] = '0' * 64
     assert any('checksum_mismatch:governed_readout' in e for e in validate_geox_calibration_source_manifest_sources(value, source_root=SOURCE_ROOT))
 
@@ -62,6 +63,49 @@ def test_validation_does_not_mutate_payload():
     value = payload(); before = copy.deepcopy(value)
     validate_geox_calibration_source_manifest_sources(value, source_root=SOURCE_ROOT)
     assert value == before
+
+def copied_source(tmp_path):
+    target = tmp_path / 'source'
+    shutil.copytree(SOURCE_ROOT, target)
+    return target
+
+def test_path_mismatch_short_circuits_reads(tmp_path, monkeypatch):
+    value = payload(); value['records'][0]['replay_path'] = 'wrong/replay.json'
+    calls = []
+    original = Path.read_bytes
+    def fail_if_called(path):
+        calls.append(str(path))
+        return original(path)
+    monkeypatch.setattr(Path, 'read_bytes', fail_if_called)
+    errors = validate_geox_calibration_source_manifest_sources(value, source_root=copied_source(tmp_path))
+    assert errors == ('source:geox_truth_bayesian_tbr_research_only_001:field_mismatch:replay_path',)
+    assert not any('geox_truth_bayesian_tbr_research_only_001' in path for path in calls)
+
+@pytest.mark.parametrize('kind', ['governed_readout', 'source_truth', 'replay'])
+def test_invalid_json_is_source_specific(tmp_path, kind):
+    root = copied_source(tmp_path)
+    case = payload()['records'][0]['fixture_id']
+    (root / payload()['records'][0][kind + '_path']).write_text('{invalid')
+    errors = validate_geox_calibration_source_manifest_sources(payload(), source_root=root)
+    assert f'source:{case}:invalid_json:{kind}' in errors
+
+@pytest.mark.parametrize('kind', ['governed_readout', 'source_truth', 'replay'])
+def test_non_object_json_is_source_specific(tmp_path, kind):
+    root = copied_source(tmp_path)
+    case = payload()['records'][0]['fixture_id']
+    (root / payload()['records'][0][kind + '_path']).write_text('[]')
+    errors = validate_geox_calibration_source_manifest_sources(payload(), source_root=root)
+    assert f'source:{case}:non_object_json:{kind}' in errors
+
+@pytest.mark.parametrize('field', ['dataset_version', 'truth_version'])
+def test_optional_source_truth_identity_mismatch(tmp_path, field):
+    root = copied_source(tmp_path)
+    record = payload()['records'][0]
+    truth_path = root / record['source_truth_path']
+    truth = json.loads(truth_path.read_text()); truth[field] = 'different'
+    truth_path.write_text(json.dumps(truth))
+    errors = validate_geox_calibration_source_manifest_sources(payload(), source_root=root)
+    assert f"source:{record['fixture_id']}:source_truth_mismatch:{field}" in errors
 
 @pytest.mark.parametrize('field,value', [
     ('case_count', True), ('case_count', 12.0),
