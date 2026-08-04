@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** ready_for_review
+**Status:** changes_requested
 **Owner:** GeoX repository governance
 **Last updated:** 2026-08-03
 **Last verified:** 2026-08-03
@@ -9,145 +9,28 @@
 
 - **Task ID:** `GEOX_EXECUTION_BRANCH_BINDING_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
-- **Pre-authoring base:** `f15b0ee1713eaa46b7dc55e597e713443f5a8d32`
+- **Task base on main:** `d17bb81c9dbc67f773fd71068c26b14c92989f42`
+- **Authorization head:** `dc68853e87a65a494c942b3fe2794e321a22b036`
 - **Feature branch:** `feat/geox-execution-branch-binding-001`
-- **Execution mode:** `branch_and_fast_forward`
+- **Rejected exact review head:** `feda65c5dbba1529d588d2cb36693a38132ab766`
+- **Retained implementation candidate:** `d2a64376757766c1fd4c009f6e2ea238c85437d7`
 - **Risk tier:** Tier 2 — internal executable repository-governance tooling
-- **Canonical MIP standard:** `Phani-Pavuluri/marketing_intelligence_platform@369805d923454a51ce98845cea29bdb1ee3c3895`
-- **MIP live main observed:** `976d3a1daeae9c52c8772e5112574f698951a57c`
-- **MMM live main observed:** `b8878dfa4bcd178a0472c3b812492a5bb4ac0b45`
-- **Superseded predecessor:** `GEOX_LEAN_REPOSITORY_DELIVERY_STANDARD_ADOPTION_001`
-- **Preserved predecessor branch head:** `bb1ac8d5ce29e2cab33eb680b3b7db76110f35f1`
+- **Correction cycle:** one and only permitted correction
 - **Capability authorizations changed:** `false`
 
-## Primary mergeable outcome
+## Review decision
 
-Add one deterministic, read-only GeoX command that binds task execution to the
-exact task and feature branch authorized on synchronized `main`, validates
-authorization ancestry and the intended remote destination, and fails closed on
-stale, wrong, or diverged branch state.
+Exact remote head `feda65c5dbba1529d588d2cb36693a38132ab766` is rejected. Correction execution is authorized on the same feature branch. Merge and PR authority remain false.
 
-This task does not adopt the broader lean-delivery standard, define publication
-lifecycle/report schemas, redesign exact-tree receipts, or resume any builder
-work.
+The acceptance boundary is frozen to the contract authored before execution at `dc68853e87a65a494c942b3fe2794e321a22b036`. This correction adds no new behavior or preferred design. It addresses only direct failures against that frozen contract.
 
-## Why this task cannot be split further
+## Required corrections
 
-The command and its behavioral tests are one enforcement unit. Documentation
-without the command would not prevent wrong-branch publication; the command
-without executable tests would not establish its failure behavior. Publication
-lifecycle and receipt semantics are independently reviewable and remain a later
-successor.
+### 1. Replace placeholder tests with the required real behavioral tests
 
-## Frozen acceptance contract
+`tests/test_execution_branch_binding.py` currently has empty `pass` bodies for six of the eight required tests. The two non-placeholder tests run against the developer's current repository rather than temporary Git repositories. This does not satisfy the frozen requirement that every named test construct isolated temporary Git repositories and execute the real command.
 
-The following contract is complete at authorization. Review may reject only for
-failure to satisfy this contract, unauthorized scope, incorrect evidence, or an
-unsafe defect under this contract. A newly preferred enhancement that is not
-required below becomes a successor and does not move this task's acceptance
-boundary.
-
-### Command
-
-Create:
-
-`scripts/verify_authorized_task_binding.py`
-
-The command uses only the Python standard library and Git CLI, performs no
-writes, and supports exactly:
-
-- `--phase preflight`
-- `--phase prepush`
-- `--phase postpush`
-
-It reads authorization provenance from:
-
-`git show main:docs/execution/EXECUTION_STATE.json`
-
-It reads current lifecycle state from the checked-out branch's:
-
-`docs/execution/EXECUTION_STATE.json`
-
-### Success output
-
-On success, exit `0` and emit one JSON object to stdout containing exactly these
-keys:
-
-- `status` with value `ok`;
-- `phase`;
-- `task_id`;
-- `feature_branch`;
-- `main_head`;
-- `local_head`; and
-- `remote_feature_head`.
-
-No success text is written to stderr.
-
-### Failure output
-
-On failure, exit `2`, write no JSON success object, and emit one stderr line:
-
-`GEOX_TASK_BINDING_ERROR:<REASON_CODE>:<detail>`
-
-Supported reason codes are exactly:
-
-- `GIT_COMMAND_FAILED`
-- `MAIN_NOT_SYNCHRONIZED`
-- `MAIN_STATE_UNREADABLE`
-- `TASK_NOT_AUTHORIZED`
-- `CURRENT_BRANCH_MISMATCH`
-- `BRANCH_STATE_UNREADABLE`
-- `BRANCH_TASK_MISMATCH`
-- `AUTHORIZATION_ANCESTRY_MISSING`
-- `REMOTE_FEATURE_BRANCH_MISSING`
-- `REMOTE_DESTINATION_MISMATCH`
-- `REMOTE_FEATURE_BRANCH_DIVERGED`
-- `POSTPUSH_HEAD_MISMATCH`
-
-### Invariants in every phase
-
-The command must prove:
-
-1. local `main` equals `origin/main`;
-2. main execution state provides a nonempty `task_id`, `feature_branch`, and
-   40-character `authorization_head_sha`;
-3. main records `task_execution_authorized: true`;
-4. the current branch exactly equals main's `feature_branch`;
-5. branch-local repository, task ID, and feature branch equal main's values;
-6. branch-local task or correction execution authority is true;
-7. the authorization head is an ancestor of local `HEAD`;
-8. the current branch upstream is exactly
-   `refs/remotes/origin/<feature_branch>`; and
-9. `origin/<feature_branch>` exists.
-
-### Phase semantics
-
-- `preflight`: local `HEAD` must exactly equal `origin/<feature_branch>`.
-- `prepush`: `origin/<feature_branch>` must be an ancestor of local `HEAD`; a
-  diverged or rewritten destination fails.
-- `postpush`: local `HEAD` must exactly equal `origin/<feature_branch>`.
-
-The command must never resolve task identity from the previously checked-out
-branch before reading synchronized main provenance.
-
-## Documentation behavior
-
-Update `AGENTS.md` and create
-`docs/execution/TASK_EXECUTION_STANDARD.md` so an executor must:
-
-1. synchronize and verify `main`;
-2. switch explicitly to the feature branch named by main state;
-3. run the command in `preflight` before task edits;
-4. run it in `prepush` immediately before pushing; and
-5. fetch and run it in `postpush` after pushing.
-
-A nonzero command result is fail-closed. Do not continue, publish to another
-branch, or repair the missing contract from chat.
-
-## Named acceptance tests
-
-Create `tests/test_execution_branch_binding.py`. Tests must construct temporary
-Git repositories and execute the real command. Required independent tests are:
+Implement all eight named tests from the frozen contract as independent behavioral tests:
 
 1. `test_preflight_accepts_exact_authorized_branch`
 2. `test_preflight_rejects_wrong_current_branch`
@@ -158,12 +41,45 @@ Git repositories and execute the real command. Required independent tests are:
 7. `test_postpush_requires_exact_remote_head`
 8. `test_failure_output_uses_stable_reason_code`
 
-The tests must assert exit codes, JSON success keys, and exact reason-code
-prefixes. Keyword-presence-only documentation tests do not satisfy this task.
+Create temporary repositories with an isolated bare `origin`, synchronized `main`, the authorized feature branch, branch-local execution state, configured upstream, and the exact divergence or mismatch needed by each test. Execute `scripts/verify_authorized_task_binding.py` as a subprocess inside those repositories.
+
+Each success test must assert exit `0`, empty stderr, `status == "ok"`, the exact seven JSON keys, and expected phase/task/branch/head values. Each failure test must assert exit `2`, empty stdout, exactly one stderr line, and the exact expected `GEOX_TASK_BINDING_ERROR:<REASON_CODE>:` prefix.
+
+The stable-reason-code test must induce a supported runtime failure. It must not pass by invoking argparse with an invalid phase.
+
+### 2. Make every contracted failure fail closed with one stable line
+
+Keep the exact reason-code set already frozen in the task. Do not add or rename codes.
+
+Update `scripts/verify_authorized_task_binding.py` so:
+
+- unreadable or invalid main execution state emits `MAIN_STATE_UNREADABLE`;
+- unreadable, missing, or invalid branch-local execution state emits `BRANCH_STATE_UNREADABLE`;
+- a missing `origin/<feature_branch>` emits `REMOTE_FEATURE_BRANCH_MISSING`;
+- unexpected Git failures emit `GIT_COMMAND_FAILED`;
+- authorization ancestry, upstream destination, divergence, and post-push mismatch retain their contracted specific codes;
+- every runtime failure exits `2`, writes no stdout success object, and emits exactly one `GEOX_TASK_BINDING_ERROR:` stderr line; and
+- Git subprocess diagnostics are captured rather than leaking additional stderr lines.
+
+Preserve all frozen success keys, phase semantics, task/branch/authority checks, ancestry checks, and read-only behavior.
+
+### 3. Complete the exact documented invocation sequence
+
+Update `AGENTS.md` and `docs/execution/TASK_EXECUTION_STANDARD.md` to state the already-frozen sequence explicitly:
+
+1. synchronize and verify `main`;
+2. switch to the feature branch named by main execution state;
+3. run `--phase preflight` before edits;
+4. run `--phase prepush` immediately before push;
+5. push only the declared branch;
+6. fetch the remote branch after push; and
+7. run `--phase postpush` and verify exact local/remote equality.
+
+A nonzero verifier result is fail-closed. Do not publish to another branch or repair missing repository instructions from chat.
 
 ## Owned paths
 
-Implementation may modify only:
+Correction execution may modify only:
 
 - `AGENTS.md`
 - `scripts/verify_authorized_task_binding.py`
@@ -173,65 +89,37 @@ Implementation may modify only:
 - `docs/execution/EXECUTION_STATE.json`
 - `docs/execution/LATEST_COMPLETION_REPORT.md`
 
-Do not modify any other path.
-
-## Prohibited scope
-
-Do not modify the superseded predecessor branch, the preserved builder branch,
-`REPOSITORY_CONTEXT_INDEX.md`, a lean-delivery standard, analytical/package
-code, contracts, fixtures, design, assignment, inference, MIP, MMM, coordination
-files, CI, release configuration, or capability state.
-
-Do not create a PR, merge, rebase, squash, force-push, or delete preserved
-branches.
+Do not modify any other path, repository, preserved branch, analytical code, package contract, fixture, coordination file, CI configuration, release configuration, or capability state.
 
 ## Validation gate
 
-Run on the frozen task-owned tree:
+Run on the final frozen task-owned tree:
 
 - parse `docs/execution/EXECUTION_STATE.json` as JSON;
 - `python -m py_compile scripts/verify_authorized_task_binding.py`;
-- `pytest -q tests/test_execution_branch_binding.py` with exact pass/fail/skip
-  counts;
+- `pytest -q tests/test_execution_branch_binding.py` with exact pass/fail/skip counts;
+- inspect the test file and prove that none of the eight named tests is empty or uses `pass` as its body;
 - `git diff --check`;
 - exact changed-path verification against the seven owned paths;
-- command `prepush` verification before push;
-- command `postpush` verification after fetch; and
+- verifier `prepush` immediately before push;
+- fetch the exact remote feature branch after push;
+- verifier `postpush`; and
 - exact local/remote feature-head equality.
 
-Docker, the complete package suite, analytical tests, Ruff, and mypy are
-`not_required` because this task changes a standard-library repository-governance
-command and isolated temporary-Git tests only; it does not import or alter the
-GeoX package, public API, numerical truth, or analytical runtime. Discovery of an
-unexpected package/runtime dependency is a genuine blocker rather than
-permission to widen scope.
+Docker, the complete package suite, analytical tests, Ruff, and mypy remain `not_required` under the frozen task contract.
 
 ## Publication
 
-On success publish `ready_for_review` with:
+On success publish `ready_for_review` with one implementation SHA, empty blockers, task execution true, correction execution false, merge and PR false, null reviewed/approval SHAs, unchanged capability authority, one current completion report, exact test counts, and durable validation evidence.
 
-- one implementation SHA;
-- exact command and test counts;
-- empty blockers;
-- task execution true and correction execution false;
-- merge and PR authority false;
-- null reviewed and approval SHAs;
-- unchanged capability authority; and
-- one current completion report.
-
-Publish `blocked` only for a genuine synchronization, Git capability,
-environment, authority, or required-validation obstruction with exact diagnostics
-and a live resolution condition.
+Publish `blocked` only for a genuine synchronization, Git capability, environment, authority, or required-validation obstruction with exact diagnostics and a live resolution condition.
 
 ## Correction limit
 
-One correction cycle is permitted only for failure against the frozen acceptance
-contract. A second failed review supersedes this task without merge. New design
-preferences become separately proposed successors.
+This is the single permitted correction cycle. A further failed exact-head review supersedes this task without merge. New preferences or enhancements become separately proposed successors and cannot move this frozen acceptance boundary.
 
 ## Deferred successor
 
-`GEOX_PUBLICATION_LIFECYCLE_AND_RECEIPT_001` remains proposed and unauthorized
-until this task is approved, merged, and closed.
+`GEOX_PUBLICATION_LIFECYCLE_AND_RECEIPT_001` remains proposed and unauthorized.
 
 **Unresolved execution-blocking design questions: none.**
