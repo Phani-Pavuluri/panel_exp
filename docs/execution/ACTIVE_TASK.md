@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** proposed
+**Status:** authorized
 **Owner:** GeoX repository governance
 **Last updated:** 2026-08-03
 **Last verified:** 2026-08-03
