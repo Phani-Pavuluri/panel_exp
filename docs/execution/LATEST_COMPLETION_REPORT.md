@@ -1,5 +1,14 @@
 # TASK_AUTHORIZATION_REPORT
 
+## Superseded disposition
+
+- **Disposition:** `superseded_without_merge`
+- **Task ID:** `GEOX_CERTIFIED_CALIBRATION_SOURCE_MANIFEST_001`
+- **Rejected remote head:** `c18f56341b50c58505b59fc6cacf2337ca7f9fc4`
+- **Recorded correction implementation:** `89c3ded7620b85e382cecec5243ca84f8fb93c95`
+- **Reason:** The sole correction did not satisfy the Git-authored correction contract or complete the required validation gate; no correction cycles remain.
+- The feature branch is preserved as historical evidence only. It is not merged, cherry-picked, reused, or reinterpreted.
+
 ## Current decision
 
 - **Current decision:** `task_authored_pending_state_authorization`
