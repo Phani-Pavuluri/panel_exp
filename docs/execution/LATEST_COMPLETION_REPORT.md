@@ -1,62 +1,70 @@
-# GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_RECOVERY_001 — Authorized Task Handoff
+# GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_RECOVERY_001 — Changes Requested
 
 - **Repository:** `Phani-Pavuluri/panel_exp`
-- **Base main:** `b11646bab1f461964644a6526ef4967a8f04624d`
 - **Feature branch:** `fix/geox-main-test-isolation-and-checkpoint-context-recovery-001`
-- **Status:** `authorized`
-- **Execution authorized:** `true`
+- **Rejected remote head:** `b72ce8e1ad5141a341af8de3609a1fafdeef4908`
+- **Implementation commit:** `b0b2a46f83b6c184e67f2ad34c5f17a0bcdcb4cf`
+- **Current decision:** `changes_requested`
+- **Correction cycle:** `1 of 1 authorized`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Capability authority changed:** `false`
 
-## Authorized outcome
+## Review finding
 
-Prove normal installed-package import and clean-subprocess deterministic replay
-for the existing GeoX calibration-source manifest validator and builder. Correct
-only test isolation and publish one validation checkpoint.
+The implementation is accepted in direction. It removes synthetic package-module injection, adds isolated installed-package validation evidence, strengthens clean-subprocess deterministic builder replay, and records a non-certifying checkpoint without modifying package/runtime code, the builder, manifests, source fixtures, MIP, or MMM.
 
-This handoff does not certify the producer and does not authorize package,
-builder, manifest, fixture, analytical, MMM, MIP, `CalibrationSignal`, runtime,
-planning, recommendation, pilot, or production changes.
+Focused evidence at the rejected head passed:
 
-## Live pins
+- validator tests: `60 passed`;
+- builder tests: `8 passed`;
+- adjacent governed-readout tests: `3 passed`.
 
-- GeoX: `b11646bab1f461964644a6526ef4967a8f04624d`
-- MIP: `a293ce52a813709ca624332123019139928cc51e`
-- MMM: `fe8e784923994406a2e4907d28debd872d61fd73`
+The branch is not ready for review because Ruff reports 37 task-owned `E702 multiple-statements-on-one-line` violations in `tests/contracts/test_geox_calibration_source_manifest.py`. The full Docker gate was not run because the required Ruff gate had not passed.
 
-## Historical overlap disposition
+This is a task-owned formatting defect, not an external blocker. The active task requires owned test defects to be corrected, and one correction cycle remains.
 
-- `fix/geox-baseline-import-health-001@08d8fe9adeb355b91afb4dc101184bdf199ce84c`
-  has no unmerged commits.
-- `feat/geox-calibration-source-manifest-validator-b-001@2b6745b9cbcf5a17196796231a39fec4336b5d1f`
-  is divergent rejected history and must not be reused.
-- Rejected manifest head `c18f56341b50c58505b59fc6cacf2337ca7f9fc4`
-  remains historical evidence only.
+## Required correction
 
-## Validation
+Modify the owned validator test only as needed to split every semicolon-concatenated statement into ordinary statements on separate lines.
 
-No implementation validation has run yet. The active task contains the complete
-acceptance and full Docker gate. Execution must end at a pushed
-`ready_for_review` or Git-durable `blocked` branch state.
+Preserve all tests, parameters, assertions, reason codes, fixture mutations, subprocess evidence, and source comparisons. Do not delete or weaken coverage. Do not add `noqa`, lint ignores, Ruff configuration changes, dependency changes, or prohibited-path changes.
 
-## Authoring history note
+Preserve the implementation at `b0b2a46f83b6c184e67f2ad34c5f17a0bcdcb4cf`, including:
 
-Two transient commits accidentally created empty files below local-only
-`docs/tasks/`; each was immediately reversed before branch materialization.
-Neither file exists in the final tree, neither path is task evidence, and the
-commits must not be represented as implementation work.
+- normal installed-package imports;
+- no synthetic `ModuleType`, manual `__path__`, or `sys.modules` injection;
+- isolated `python -I` validator probe with sanitized environment;
+- two clean builder subprocess runs;
+- byte equality with the committed manifest;
+- governed-readout source-tree immutability;
+- `producer_certified: false`;
+- `mmm_compatibility_emitted: false`;
+- `calibration_signal_emitted: false`;
+- unauthorized successor and unchanged authority.
 
-No PR, merge, sibling modification, or authority change was created by task
-authoring.
-## Current checkpoint disposition
+## Required validation
 
-Status: `blocked`
+Run the complete active-task gate on one frozen task-owned tree:
 
-Implementation commit: `b0b2a46f83b6c184e67f2ad34c5f17a0bcdcb4cf`
+```bash
+poetry install --with dev --no-interaction
+python -m json.tool docs/execution/EXECUTION_STATE.json >/dev/null
+python -m py_compile tests/contracts/test_geox_calibration_source_manifest.py tests/fixtures/test_geox_calibration_source_manifest_generator.py
+git diff --check
+rg -n "ModuleType|sys\.modules|__path__" tests/contracts/test_geox_calibration_source_manifest.py
+env -u PYTHONPATH -u PYTHONHOME poetry run python -I -c "from panel_exp.contracts.geox_calibration_source_manifest import validate_geox_calibration_source_manifest; print('geox-validator-import-ok')"
+poetry run pytest -q tests/contracts/test_geox_calibration_source_manifest.py
+poetry run pytest -q tests/fixtures/test_geox_calibration_source_manifest_generator.py
+poetry run pytest -q tests/contracts/test_geox_governed_experiment_readout.py tests/fixtures/test_geox_certified_governed_readout_fixtures.py
+poetry run ruff check tests/contracts/test_geox_calibration_source_manifest.py tests/fixtures/test_geox_calibration_source_manifest_generator.py
+make validate-docker
+```
 
-Focused validator tests passed (`60 passed`), builder tests passed (`8 passed`),
-and adjacent governed-readout tests passed (`3 passed`). Ruff remains blocked
-on task-owned focused-test E702 multiple-statements-on-one-line violations.
-Full Docker validation was not run because the declared gate is not passable.
-No producer certification or downstream authority changed.
+Also verify exact changed paths, deterministic replay, source-tree immutability, clean worktree, push/fetch success, and exact local/remote feature-head equality. Mypy remains `not_required`.
+
+Publish `ready_for_review` only when every required gate passes on the exact frozen tree and an exact-tree receipt commit is pushed. Otherwise publish a Git-durable `blocked` state with exact diagnostics and a live resolution condition.
+
+## Authority and limitations
+
+No producer certification, MMM compatibility, `CalibrationSignal`, simulation, optimization, planning, recommendation, real-data, runtime, pilot, production, sibling, merge, PR, or capability authority is granted. The successor `GEOX_CALIBRATION_SOURCE_MANIFEST_CERTIFICATION_RECOVERY_001` remains unauthorized.
