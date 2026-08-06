@@ -1,6 +1,7 @@
 import hashlib
 import importlib.util
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -50,8 +51,11 @@ def test_representative_source_values_preserved():
 def test_deterministic_and_source_immutable(tmp_path):
     before = {p: hashlib.sha256(p.read_bytes()).hexdigest() for p in SRC.rglob('*') if p.is_file()}
     first, second = tmp_path / 'a.json', tmp_path / 'b.json'
-    subprocess.run([sys.executable, str(SCRIPT), '--output', str(first)], check=True)
-    subprocess.run([sys.executable, str(SCRIPT), '--output', str(second)], check=True)
+    env = os.environ.copy()
+    env.pop('PYTHONPATH', None)
+    env.pop('PYTHONHOME', None)
+    subprocess.run([sys.executable, str(SCRIPT), '--output', str(first)], cwd=tmp_path, env=env, check=True)
+    subprocess.run([sys.executable, str(SCRIPT), '--output', str(second)], cwd=tmp_path, env=env, check=True)
     assert first.read_bytes() == second.read_bytes() == MAN.read_bytes()
     assert before == {p: hashlib.sha256(p.read_bytes()).hexdigest() for p in SRC.rglob('*') if p.is_file()}
 

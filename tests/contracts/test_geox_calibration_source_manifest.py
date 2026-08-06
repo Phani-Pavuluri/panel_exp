@@ -1,19 +1,13 @@
 import copy
 import hashlib
 import json
+import os
 import shutil
+import subprocess
 import sys
-import types
 from pathlib import Path
 
 import pytest
-
-package = types.ModuleType('panel_exp')
-package.__path__ = [str(Path(__file__).parents[2] / 'panel_exp')]
-contracts = types.ModuleType('panel_exp.contracts')
-contracts.__path__ = [str(Path(__file__).parents[2] / 'panel_exp/contracts')]
-sys.modules.setdefault('panel_exp', package)
-sys.modules.setdefault('panel_exp.contracts', contracts)
 
 from panel_exp.contracts.geox_calibration_source_manifest import (
     GeoXCalibrationSourceManifestValidationError,
@@ -64,6 +58,32 @@ def test_validation_does_not_mutate_payload():
     value = payload(); before = copy.deepcopy(value)
     validate_geox_calibration_source_manifest_sources(value, source_root=SOURCE_ROOT)
     assert value == before
+
+def test_isolated_installed_package_validator_probe(tmp_path):
+    probe = """
+import panel_exp
+from panel_exp.contracts.geox_calibration_source_manifest import load_and_validate_geox_calibration_source_manifest
+from pathlib import Path
+root = Path.cwd()
+manifest = root / 'tests/fixtures/geox_calibration_handoff_sources/v1/manifest.json'
+source = root / 'tests/fixtures/geox_governed_readouts'
+loaded = load_and_validate_geox_calibration_source_manifest(manifest, source_root=source)
+assert loaded['case_count'] == 12
+print(panel_exp.__file__)
+"""
+    env = os.environ.copy()
+    env.pop('PYTHONPATH', None)
+    env.pop('PYTHONHOME', None)
+    result = subprocess.run(
+        [sys.executable, '-I', '-c', probe],
+        cwd=ROOT.parent,
+        env=env,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert result.returncode == 0, result.stderr
+    assert str(ROOT.parent / 'panel_exp') in result.stdout
 
 @pytest.mark.parametrize('freshness', [[], {}, 1, True, None, 'unknown'])
 def test_invalid_freshness_values_return_reason_tuple(freshness):
