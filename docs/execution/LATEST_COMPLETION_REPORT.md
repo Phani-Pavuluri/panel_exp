@@ -40,5 +40,12 @@ No implementation validation has run yet. The active task contains the complete
 acceptance and full Docker gate. Execution must end at a pushed
 `ready_for_review` or Git-durable `blocked` branch state.
 
+## Authoring history note
+
+Two transient commits accidentally created empty files below local-only
+`docs/tasks/`; each was immediately reversed before branch materialization.
+Neither file exists in the final tree, neither path is task evidence, and the
+commits must not be represented as implementation work.
+
 No PR, merge, sibling modification, or authority change was created by task
 authoring.
