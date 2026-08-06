@@ -1,18 +1,44 @@
-# GEOX_CERTIFIED_CALIBRATION_SOURCE_MANIFEST_001 — Final Supersession Report
+# GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_RECOVERY_001 — Authorized Task Handoff
 
-- **Task:** `GEOX_CERTIFIED_CALIBRATION_SOURCE_MANIFEST_001`
-- **Disposition:** `superseded_without_merge`
-- **Rejected head:** `c18f56341b50c58505b59fc6cacf2337ca7f9fc4`
-- **Rejected implementation:** `89c3ded7620b85e382cecec5243ca84f8fb93c95`
-- **Correction cycles remaining:** `0`
+- **Repository:** `Phani-Pavuluri/panel_exp`
+- **Base main:** `b11646bab1f461964644a6526ef4967a8f04624d`
+- **Feature branch:** `fix/geox-main-test-isolation-and-checkpoint-context-recovery-001`
+- **Status:** `authorized`
+- **Execution authorized:** `true`
+- **Merge authorized:** `false`
+- **PR creation authorized:** `false`
+- **Capability authority changed:** `false`
 
-The rejected feature branch is historical evidence only. It must not be reused,
-cherry-picked, merged, or reauthorized. No active implementation task remains,
-and no next task is authorized. MIP and MMM remain blocked pending a separately
-authored successor task.
+## Authorized outcome
 
-Analytical truth, capability authority, repository ownership, and all production
-and downstream authorization boundaries remain unchanged. This report records
-supersession only; it does not authorize execution, correction, merge, PR
-creation, calibration, compatibility, runtime integration, or any successor
-work.
+Prove normal installed-package import and clean-subprocess deterministic replay
+for the existing GeoX calibration-source manifest validator and builder. Correct
+only test isolation and publish one validation checkpoint.
+
+This handoff does not certify the producer and does not authorize package,
+builder, manifest, fixture, analytical, MMM, MIP, `CalibrationSignal`, runtime,
+planning, recommendation, pilot, or production changes.
+
+## Live pins
+
+- GeoX: `b11646bab1f461964644a6526ef4967a8f04624d`
+- MIP: `a293ce52a813709ca624332123019139928cc51e`
+- MMM: `fe8e784923994406a2e4907d28debd872d61fd73`
+
+## Historical overlap disposition
+
+- `fix/geox-baseline-import-health-001@08d8fe9adeb355b91afb4dc101184bdf199ce84c`
+  has no unmerged commits.
+- `feat/geox-calibration-source-manifest-validator-b-001@2b6745b9cbcf5a17196796231a39fec4336b5d1f`
+  is divergent rejected history and must not be reused.
+- Rejected manifest head `c18f56341b50c58505b59fc6cacf2337ca7f9fc4`
+  remains historical evidence only.
+
+## Validation
+
+No implementation validation has run yet. The active task contains the complete
+acceptance and full Docker gate. Execution must end at a pushed
+`ready_for_review` or Git-durable `blocked` branch state.
+
+No PR, merge, sibling modification, or authority change was created by task
+authoring.
