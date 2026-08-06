@@ -78,3 +78,16 @@ tracebacks. This is not terminal validation evidence. No ready-for-review claim
 is made. The live resolution condition is a persistent Docker gate that reaches
 a final exit code, followed by exact branch-versus-clean-main replay of every
 failure. No authority or prohibited path changed.
+## Validation retry
+
+The detached focused gate passed: `71 passed` and Ruff passed. The repository
+`make validate-docker` command was then executed in the detached container and
+terminated with exit code `2`:
+
+`Docker is required for make validate-docker but is not available.`
+
+Receipts are preserved at `/private/tmp/geox-gate-focused.log`,
+`/private/tmp/geox-gate-ruff.log`, `/private/tmp/geox-gate-full.log`, and
+`/private/tmp/geox-gate-full.exit`. This is an external Docker-in-Docker
+obstruction; the live resolution condition is running the same gate on a host
+with Docker API access. The task remains blocked and no authority changed.
