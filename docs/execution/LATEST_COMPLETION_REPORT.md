@@ -68,3 +68,13 @@ Publish `ready_for_review` only when every required gate passes on the exact fro
 ## Authority and limitations
 
 No producer certification, MMM compatibility, `CalibrationSignal`, simulation, optimization, planning, recommendation, real-data, runtime, pilot, production, sibling, merge, PR, or capability authority is granted. The successor `GEOX_CALIBRATION_SOURCE_MANIFEST_CERTIFICATION_RECOVERY_001` remains unauthorized.
+## Blocked validation disposition
+
+The corrected implementation is committed at
+`a625a9d`. `make validate-docker` was run with complete output captured at
+`/private/tmp/geox-checkpoint-full.log`, but the process terminated at roughly
+49% without emitting a final pytest summary, exit code, failure node IDs, or
+tracebacks. This is not terminal validation evidence. No ready-for-review claim
+is made. The live resolution condition is a persistent Docker gate that reaches
+a final exit code, followed by exact branch-versus-clean-main replay of every
+failure. No authority or prohibited path changed.

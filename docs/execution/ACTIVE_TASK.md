@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** changes_requested  
+**Status:** blocked  
 **Task ID:** `GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_RECOVERY_001`  
 **Repository:** `Phani-Pavuluri/panel_exp`  
 **Local path:** `/Users/phani/Desktop/panel_exp`  
