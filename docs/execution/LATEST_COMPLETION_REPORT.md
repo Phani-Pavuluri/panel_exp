@@ -49,3 +49,14 @@ commits must not be represented as implementation work.
 
 No PR, merge, sibling modification, or authority change was created by task
 authoring.
+## Current checkpoint disposition
+
+Status: `blocked`
+
+Implementation commit: `b0b2a46f83b6c184e67f2ad34c5f17a0bcdcb4cf`
+
+Focused validator tests passed (`60 passed`), builder tests passed (`8 passed`),
+and adjacent governed-readout tests passed (`3 passed`). Ruff remains blocked
+on task-owned focused-test E702 multiple-statements-on-one-line violations.
+Full Docker validation was not run because the declared gate is not passable.
+No producer certification or downstream authority changed.
