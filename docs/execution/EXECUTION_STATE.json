@@ -15,16 +15,18 @@
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
   "task_execution_authorized": true,
-  "correction_execution_authorized": true,
+  "correction_execution_authorized": false,
   "merge_authorized": false,
   "pr_creation_authorized": false,
   "reviewed_head_sha": "b72ce8e1ad5141a341af8de3609a1fafdeef4908",
   "rejected_review_head_sha": "b72ce8e1ad5141a341af8de3609a1fafdeef4908",
-  "implementation_commit_sha": "b0b2a46f83b6c184e67f2ad34c5f17a0bcdcb4cf",
+  "implementation_commit_sha": "a625a9dac6b97b05c4044dc5af5ae7875a63e889",
   "approval_commit_sha": null,
   "capability_authorizations_changed": false,
   "last_updated": "2026-08-06",
-  "blockers": ["DOCKER_GATE_TERMINATED_WITHOUT_FINAL_EXIT_OR_SUMMARY"],
+  "blockers": [
+    "DOCKER_API_UNAVAILABLE_FOR_VALIDATE_DOCKER"
+  ],
   "dependencies": [
     {
       "dependency_id": "DEP-MIP-P2-CAPABILITY-CHECKPOINT-LEDGER-001",
@@ -48,8 +50,8 @@
   "validation_scope": "poetry_install_json_pycompile_changed_paths_diff_import_probe_focused_validator_focused_builder_adjacent_ruff_mypy_not_required_deterministic_replay_source_tree_immutability_docker_exact_tree_receipt_remote_head_equality",
   "unresolved_execution_blocking_design_questions": [],
   "maximum_correction_cycles": 1,
-  "correction_cycles_used": 0,
-  "correction_cycles_remaining": 1,
+  "correction_cycles_used": 1,
+  "correction_cycles_remaining": 0,
   "affected_repositories": [
     "Phani-Pavuluri/panel_exp",
     "Phani-Pavuluri/marketing_intelligence_platform",
@@ -91,8 +93,8 @@
   },
   "next_task_id": "GEOX_CALIBRATION_SOURCE_MANIFEST_CERTIFICATION_RECOVERY_001",
   "next_task_authorized": false,
-  "review_decision": "changes_requested",
+  "review_decision": "blocked",
   "review_decision_source": "docs/execution/LATEST_COMPLETION_REPORT.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Rejected blocked head b72ce8e1ad5141a341af8de3609a1fafdeef4908 completed the intended test-isolation behavior but stopped before the full gate because Ruff reported 37 task-owned E702 violations in the owned validator test. Correction cycle 1 of 1 is authorized to split semicolon-concatenated statements without changing test meaning, then rerun the complete gate and publish an exact-tree receipt."
+  "task_authoring_note": "The original implementation was corrected at a625a9dac6b97b05c4044dc5af5ae7875a63e889. Focused validator, builder, and adjacent tests passed with 71 total tests; Ruff passed. The required Docker gate exited 2 because Docker API access was unavailable. The task remains resumable on the same branch from a host with Docker access; no producer certification or downstream authority is granted."
 }
