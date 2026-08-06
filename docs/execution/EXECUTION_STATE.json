@@ -2,7 +2,7 @@
   "schema_version": "geox_repo_execution_state_v2",
   "repository": "Phani-Pavuluri/panel_exp",
   "task_id": "GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_RECOVERY_001",
-  "status": "blocked",
+  "status": "changes_requested",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
   "base_sha": "b11646bab1f461964644a6526ef4967a8f04624d",
@@ -15,16 +15,16 @@
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
   "task_execution_authorized": true,
-  "correction_execution_authorized": false,
+  "correction_execution_authorized": true,
   "merge_authorized": false,
   "pr_creation_authorized": false,
-  "reviewed_head_sha": null,
-  "rejected_review_head_sha": null,
+  "reviewed_head_sha": "b72ce8e1ad5141a341af8de3609a1fafdeef4908",
+  "rejected_review_head_sha": "b72ce8e1ad5141a341af8de3609a1fafdeef4908",
   "implementation_commit_sha": "b0b2a46f83b6c184e67f2ad34c5f17a0bcdcb4cf",
   "approval_commit_sha": null,
   "capability_authorizations_changed": false,
-  "last_updated": "2026-08-05",
-  "blockers": ["TASK_OWNED_RUFF_E702_IN_EXISTING_FOCUSED_TESTS"],
+  "last_updated": "2026-08-06",
+  "blockers": [],
   "dependencies": [
     {
       "dependency_id": "DEP-MIP-P2-CAPABILITY-CHECKPOINT-LEDGER-001",
@@ -91,8 +91,8 @@
   },
   "next_task_id": "GEOX_CALIBRATION_SOURCE_MANIFEST_CERTIFICATION_RECOVERY_001",
   "next_task_authorized": false,
-  "review_decision": "authorized",
-  "review_decision_source": "docs/execution/ACTIVE_TASK.md",
+  "review_decision": "changes_requested",
+  "review_decision_source": "docs/execution/LATEST_COMPLETION_REPORT.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Definition-ready test-isolation milestone. It removes synthetic package injection from validator tests, adds clean installed-package import evidence, strengthens clean-subprocess builder replay, records a non-certifying checkpoint, and prohibits package/runtime or sibling changes."
+  "task_authoring_note": "Rejected blocked head b72ce8e1ad5141a341af8de3609a1fafdeef4908 completed the intended test-isolation behavior but stopped before the full gate because Ruff reported 37 task-owned E702 violations in the owned validator test. Correction cycle 1 of 1 is authorized to split semicolon-concatenated statements without changing test meaning, then rerun the complete gate and publish an exact-tree receipt."
 }
