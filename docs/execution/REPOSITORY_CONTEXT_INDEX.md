@@ -1,30 +1,32 @@
 # GeoX execution context
 
-Active task: `GEOX_REPO_NATIVE_EXECUTION_HANDOFF_V2_ADOPTION_RECOVERY_001`.
+Active task: `GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_RECOVERY_001`.
 
-Canonical pins:
+Current verified pins:
 
-- MIP: `Phani-Pavuluri/marketing_intelligence_platform@38f88467f55d5bc4cc64e5a58b0f08f1639a40d0`
-- MMM: `Phani-Pavuluri/MMM@1b75d1d3c9f49d40f2b7ab71f524fbd2dc6d1421`
+- GeoX: `Phani-Pavuluri/panel_exp@b11646bab1f461964644a6526ef4967a8f04624d`
+- MIP: `Phani-Pavuluri/marketing_intelligence_platform@a293ce52a813709ca624332123019139928cc51e`
+- MMM: `Phani-Pavuluri/MMM@fe8e784923994406a2e4907d28debd872d61fd73`
 
-Pinned MIP V2 execution/program documents are `TASK_EXECUTION_STANDARD.md`,
-`PROGRAM_CHARTER.md`, `PROGRAM_CURRENT_STATE.md`,
-`AUTHORITY_AND_FREEZE_MATRIX.md`, `DECISION_REGISTER.md`,
-`NEXT_EXECUTION_SEQUENCE.md`, `REPOSITORY_CHECKPOINTS.md`, and
-`DEFERRED_AND_PARKED_WORK.md` in the pinned MIP repository. GeoX method-family
-and instrument-identity evidence is in `docs/track_d/`; the governed-readout
-contract is `panel_exp/contracts/geox_governed_experiment_readout.py` with
-fixtures in `tests/fixtures/geox_governed_readouts/`; numerical-truth evidence
-is in `tests/fixtures/geox_numerical_truth/`; roadmap and investigations are
-`docs/ROADMAP_V4.md` and `docs/OPEN_INVESTIGATIONS.md`; deferred package-side
-agents are specified by the existing
-`docs/FUTURE_EXPERIMENT_PACKAGE_SIDE_AGENT_ROADMAP_001.md`; release/readiness
-evidence is in `docs/track_d/` and `docs/execution/`. GeoX owns design,
-assignment, inference, readouts, and numerical truth. MMM owns analytical
-workflow artifacts; MIP owns orchestration, decision governance, and approval
-boundaries.
+The active milestone is a test-isolation checkpoint for the existing
+calibration-source manifest validator and builder. It may modify only the two
+declared test files, one Track D checkpoint document, and lifecycle execution
+files. It does not own package/runtime code, the builder, manifests, source
+fixtures, producer certification, MMM compatibility, MIP consumer mapping, or
+`CalibrationSignal`.
+
+The MIP P2 capability ledger is the current cross-repository sequence source.
+It records this task as the sole next-eligible GeoX milestone and keeps the
+producer-certification successor unauthorized.
+
+Historical branches are not executable evidence. In particular,
+`feat/geox-calibration-source-manifest-validator-b-001@2b6745b9cbcf5a17196796231a39fec4336b5d1f`
+is divergent rejected work and must not be copied or cherry-picked.
 
 ## Fresh Chat Bootstrap
 
-Connected GitHub is the source of truth. Perform read-only orientation after
-the mandatory bootstrap and before any modification or authorization.
+Connected GitHub and synchronized Git are authoritative. Perform the mandatory
+bootstrap from root `AGENTS.md`, then read `EXECUTION_STATE.json`,
+`ACTIVE_TASK.md`, this index, `LATEST_COMPLETION_REPORT.md`, the existing
+validator/builder/tests, and the current MIP ledger. Stop on any synchronization,
+ownership, branch, prerequisite, or authority conflict.
