@@ -8,7 +8,7 @@
 **Execution mode:** `branch_and_fast_forward`  
 **Risk tier:** Tier 2 test-isolation checkpoint with mandatory full Docker validation  
 **Capability authority changed:** `false`  
-**Correction cycle:** 1 of 1 authorized  
+**Correction cycle:** 1 of 1 completed (consumed)
 **Unresolved execution-blocking design questions:** none
 
 ## Objective
@@ -39,7 +39,9 @@ This milestone must not change the validator, builder, manifest, governed-readou
 - Ruff reported 37 `E702 multiple-statements-on-one-line` violations in `tests/contracts/test_geox_calibration_source_manifest.py`.
 - Full Docker validation did not run because the declared Ruff gate had not passed.
 
-The Ruff failures are task-owned formatting defects, not an external blocker. The original task requires owned test defects to be corrected, and one correction cycle remains.
+The Ruff failures were task-owned formatting defects and were corrected. The
+single authorized correction cycle is completed and consumed; no correction
+cycle remains authorized.
 
 ## Owned paths
 

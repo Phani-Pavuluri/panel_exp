@@ -40,12 +40,12 @@ This checkpoint remains non-certifying. `producer_certified: false`, `mmm_compat
 - The remaining 22 failures reproduce on synchronized `main`; no analytical or
   runtime regression from this milestone has been established.
 
-Validation receipts were preserved locally at:
+Terminal validation evidence was preserved locally at:
 
-- `/private/tmp/geox-gate-focused.log`
-- `/private/tmp/geox-gate-ruff.log`
-- `/private/tmp/geox-gate-full.log`
-- `/private/tmp/geox-gate-full.exit`
+- `/private/tmp/geox-final-docker.log`
+- `/private/tmp/geox-final-docker.exit`
+- `/private/tmp/geox-main-failure-replay.log`
+- `/private/tmp/geox-main-failure-replay.exit`
 
 The full Docker-backed suite did not pass. No full-suite certification,
 producer certification, or downstream eligibility is claimed.
