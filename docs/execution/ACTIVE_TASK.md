@@ -49,3 +49,8 @@ production/validation boundary, BlockResidualBootstrap golden, and D5 artifact
 families remain separate follow-on work.
 
 No PR, merge, rebase, squash, cherry-pick, or force-push is authorized.
+
+## Current repository pins
+
+- MIP main: `a293ce52a813709ca624332123019139928cc51e`
+- MMM main: `fe8e784923994406a2e4907d28debd872d61fd73`

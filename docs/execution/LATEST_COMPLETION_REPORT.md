@@ -34,3 +34,6 @@ authority are unchanged.
 JSON parse, focused handoff tests, complete handoff test file, Ruff, and
 `git diff --check`; no full Docker suite is required. No PR or merge is
 authorized.
+
+Current repository pins: MIP `a293ce52a813709ca624332123019139928cc51e`;
+MMM `fe8e784923994406a2e4907d28debd872d61fd73`.
