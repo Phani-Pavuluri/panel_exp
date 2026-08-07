@@ -1,51 +1,36 @@
-# GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_RECOVERY_001 — Authorized Task Handoff
+# GEOX_EXECUTION_HANDOFF_PIN_SCHEMA_REFRESH_001 — Authorized Task Handoff
 
 - **Repository:** `Phani-Pavuluri/panel_exp`
-- **Base main:** `b11646bab1f461964644a6526ef4967a8f04624d`
-- **Feature branch:** `fix/geox-main-test-isolation-and-checkpoint-context-recovery-001`
+- **Base main:** `b3f6b9acf81ff268c21d96d1014f8780fba5644f`
+- **Task-authoring branch:** `docs/geox-execution-handoff-pin-schema-refresh-001`
+- **Future implementation branch:** `fix/geox-execution-handoff-pin-schema-refresh-001-authorized`
 - **Status:** `authorized`
-- **Execution authorized:** `true`
+- **Execution authorized:** `true` after task-branch creation
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
-- **Capability authority changed:** `false`
 
-## Authorized outcome
+## Authorization
 
-Prove normal installed-package import and clean-subprocess deterministic replay
-for the existing GeoX calibration-source manifest validator and builder. Correct
-only test isolation and publish one validation checkpoint.
+This authorizes only a governance-test update from the synchronized main
+ancestry. The obsolete pin names `canonical_mip_standard_commit` and
+`canonical_mmm_workflow_commit` must be replaced by current
+`mip_main_pin` and `mmm_main_pin`. Historical implementation commit
+`c7835e586925fe4e7b04505ad18e6563289bbb8b` is evidence only and must not be
+reused. No implementation or validation has been performed in this authoring
+step.
 
-This handoff does not certify the producer and does not authorize package,
-builder, manifest, fixture, analytical, MMM, MIP, `CalibrationSignal`, runtime,
-planning, recommendation, pilot, or production changes.
+## Dependency and authority
 
-## Live pins
+The isolation milestone remains parked and blocked by synchronized-main
+validation debt at `0c16766f47cae903c9a085043dfa51949e61ea68`; its implementation
+is `a625a9dac6b97b05c4044dc5af5ae7875a63e889`. This task resolves one known
+baseline failure and does not authorize its merge. D5, TBR, production/
+validation-boundary, BlockResidualBootstrap, and D5 artifact repairs remain
+separate. Analytical, runtime, producer-certification, capability, MIP, and MMM
+authority are unchanged.
 
-- GeoX: `b11646bab1f461964644a6526ef4967a8f04624d`
-- MIP: `a293ce52a813709ca624332123019139928cc51e`
-- MMM: `fe8e784923994406a2e4907d28debd872d61fd73`
+## Required validation
 
-## Historical overlap disposition
-
-- `fix/geox-baseline-import-health-001@08d8fe9adeb355b91afb4dc101184bdf199ce84c`
-  has no unmerged commits.
-- `feat/geox-calibration-source-manifest-validator-b-001@2b6745b9cbcf5a17196796231a39fec4336b5d1f`
-  is divergent rejected history and must not be reused.
-- Rejected manifest head `c18f56341b50c58505b59fc6cacf2337ca7f9fc4`
-  remains historical evidence only.
-
-## Validation
-
-No implementation validation has run yet. The active task contains the complete
-acceptance and full Docker gate. Execution must end at a pushed
-`ready_for_review` or Git-durable `blocked` branch state.
-
-## Authoring history note
-
-Two transient commits accidentally created empty files below local-only
-`docs/tasks/`; each was immediately reversed before branch materialization.
-Neither file exists in the final tree, neither path is task evidence, and the
-commits must not be represented as implementation work.
-
-No PR, merge, sibling modification, or authority change was created by task
-authoring.
+JSON parse, focused handoff tests, complete handoff test file, Ruff, and
+`git diff --check`; no full Docker suite is required. No PR or merge is
+authorized.

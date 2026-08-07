@@ -1,6 +1,13 @@
 # GeoX execution context
 
-Active task: `GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_RECOVERY_001`.
+Active task: `GEOX_EXECUTION_HANDOFF_PIN_SCHEMA_REFRESH_001`.
+
+The authorized implementation branch is
+`fix/geox-execution-handoff-pin-schema-refresh-001-authorized`; its
+task-authoring branch is `docs/geox-execution-handoff-pin-schema-refresh-001`.
+The historical unmerged implementation
+`c7835e586925fe4e7b04505ad18e6563289bbb8b` is evidence only and must not be
+reused.
 
 Current verified pins:
 
@@ -22,6 +29,13 @@ producer-certification successor unauthorized.
 Historical branches are not executable evidence. In particular,
 `feat/geox-calibration-source-manifest-validator-b-001@2b6745b9cbcf5a17196796231a39fec4336b5d1f`
 is divergent rejected work and must not be copied or cherry-picked.
+
+The parked isolation milestone remains at
+`fix/geox-main-test-isolation-and-checkpoint-context-recovery-001@0c16766f47cae903c9a085043dfa51949e61ea68`
+with implementation `a625a9dac6b97b05c4044dc5af5ae7875a63e889`; its blocker is
+synchronized-main validation debt. The pin-schema repair removes one known
+baseline failure and does not authorize isolation-branch merge or any
+capability authority.
 
 ## Fresh Chat Bootstrap
 

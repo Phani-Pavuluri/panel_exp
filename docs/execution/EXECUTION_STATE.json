@@ -1,16 +1,16 @@
 {
   "schema_version": "geox_repo_execution_state_v2",
   "repository": "Phani-Pavuluri/panel_exp",
-  "task_id": "GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_RECOVERY_001",
+  "task_id": "GEOX_EXECUTION_HANDOFF_PIN_SCHEMA_REFRESH_001",
   "status": "authorized",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
   "base_sha": "b11646bab1f461964644a6526ef4967a8f04624d",
-  "task_authoring_start_sha": "b11646bab1f461964644a6526ef4967a8f04624d",
-  "task_authoring_head_sha": "459edef49b7e6ce004fc2bf1b18476f3d8a7d64b",
-  "authorization_head_sha": "459edef49b7e6ce004fc2bf1b18476f3d8a7d64b",
-  "authorized_branch_baseline_sha": "459edef49b7e6ce004fc2bf1b18476f3d8a7d64b",
-  "feature_branch": "fix/geox-main-test-isolation-and-checkpoint-context-recovery-001",
+  "task_authoring_start_sha": "b3f6b9acf81ff268c21d96d1014f8780fba5644f",
+  "task_authoring_head_sha": "b3f6b9acf81ff268c21d96d1014f8780fba5644f",
+  "authorization_head_sha": "b3f6b9acf81ff268c21d96d1014f8780fba5644f",
+  "authorized_branch_baseline_sha": "b3f6b9acf81ff268c21d96d1014f8780fba5644f",
+  "feature_branch": "docs/geox-execution-handoff-pin-schema-refresh-001",
   "feature_branch_created": true,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
@@ -23,7 +23,7 @@
   "implementation_commit_sha": null,
   "approval_commit_sha": null,
   "capability_authorizations_changed": false,
-  "last_updated": "2026-08-05",
+  "last_updated": "2026-08-07",
   "blockers": [],
   "dependencies": [
     {
@@ -43,7 +43,7 @@
       "resolution_condition": "The existing builder, validator, committed manifest, and governed-readout source tree remain present on synchronized GeoX main; no certification is inferred."
     }
   ],
-  "risk_tier": "tier_2_test_isolation_checkpoint_full_docker",
+  "risk_tier": "tier_1_repository_governance_test_repair",
   "full_suite_validation_required": true,
   "validation_scope": "poetry_install_json_pycompile_changed_paths_diff_import_probe_focused_validator_focused_builder_adjacent_ruff_mypy_not_required_deterministic_replay_source_tree_immutability_docker_exact_tree_receipt_remote_head_equality",
   "unresolved_execution_blocking_design_questions": [],
@@ -89,7 +89,7 @@
     "head_sha": "08d8fe9adeb355b91afb4dc101184bdf199ce84c",
     "ahead_of_current_main": 0
   },
-  "next_task_id": "GEOX_CALIBRATION_SOURCE_MANIFEST_CERTIFICATION_RECOVERY_001",
+  "next_task_id": "GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_RECOVERY_001",
   "next_task_authorized": false,
   "review_decision": "authorized",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
