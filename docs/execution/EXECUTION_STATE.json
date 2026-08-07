@@ -7,11 +7,11 @@
   "base_branch": "main",
   "base_sha": "b3f6b9acf81ff268c21d96d1014f8780fba5644f",
   "task_authoring_start_sha": "b3f6b9acf81ff268c21d96d1014f8780fba5644f",
-  "task_authoring_head_sha": "972466570c6d75302dff0c85c8355d600e8dda06",
-  "authorization_head_sha": "972466570c6d75302dff0c85c8355d600e8dda06",
-  "authorized_branch_baseline_sha": "972466570c6d75302dff0c85c8355d600e8dda06",
+  "task_authoring_head_sha": "ff3af697a955f0bd223cbf2f652df0d6c86dfa09",
+  "authorization_head_sha": "ff3af697a955f0bd223cbf2f652df0d6c86dfa09",
+  "authorized_branch_baseline_sha": "ff3af697a955f0bd223cbf2f652df0d6c86dfa09",
   "feature_branch": "fix/geox-execution-handoff-pin-schema-refresh-001-authorized",
-  "feature_branch_created": true,
+  "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
   "task_execution_authorized": true,
@@ -32,7 +32,7 @@
       "task_id": "MIP_P2_CAPABILITY_CHECKPOINT_LEDGER_RECOVERY_001",
       "state": "satisfied",
       "merged_checkpoint_sha": "a293ce52a813709ca624332123019139928cc51e",
-      "resolution_condition": "The merged MIP ledger remains on synchronized MIP main and continues to identify this GeoX isolation checkpoint as the sole next-eligible milestone."
+      "resolution_condition": "The merged MIP ledger remains on synchronized MIP main and identifies the parked GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_RECOVERY_001 milestone; this GeoX-local pin-schema prerequisite does not alter MIP sequencing."
     },
     {
       "dependency_id": "DEP-GEOX-CALIBRATION-SOURCE-SURFACES-ON-MAIN-001",
@@ -97,5 +97,5 @@
   "review_decision": "authorized",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Authorized Tier 1 governance-test repair: refresh test_v2_state_contract_and_pins to use current mip_main_pin and mmm_main_pin fields while preserving SHA, evidence, task-identity, and authority checks. Historical implementation c7835e586925fe4e7b04505ad18e6563289bbb8b is evidence only; no implementation branch is authorized yet."
+  "task_authoring_note": "Authorized Tier 1 governance-test repair: refresh test_v2_state_contract_and_pins to use current mip_main_pin and mmm_main_pin fields while preserving SHA, evidence, task-identity, and authority checks. Historical implementation c7835e586925fe4e7b04505ad18e6563289bbb8b is evidence only. The implementation branch is authorized by this task contract but has not yet been created; execution must start from synchronized main containing this exact authorization lineage."
 }

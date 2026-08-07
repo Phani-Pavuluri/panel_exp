@@ -11,7 +11,7 @@ reused.
 
 Current verified pins:
 
-- GeoX: `Phani-Pavuluri/panel_exp@b11646bab1f461964644a6526ef4967a8f04624d`
+- GeoX: `Phani-Pavuluri/panel_exp@b3f6b9acf81ff268c21d96d1014f8780fba5644f`
 - MIP: `Phani-Pavuluri/marketing_intelligence_platform@a293ce52a813709ca624332123019139928cc51e`
 - MMM: `Phani-Pavuluri/MMM@fe8e784923994406a2e4907d28debd872d61fd73`
 
@@ -20,9 +20,12 @@ test. It changes no analytical or runtime behavior and does not own the
 validator, builder, manifests, source fixtures, D5 harnesses, producer
 certification, MMM compatibility, MIP consumer mapping, or `CalibrationSignal`.
 
-The MIP P2 capability ledger is the current cross-repository sequence source.
-It records this task as the sole next-eligible GeoX milestone and keeps the
-producer-certification successor unauthorized.
+The MIP P2 capability ledger remains the current cross-repository sequence
+source and still points to the parked
+`GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_RECOVERY_001` milestone. This
+GeoX-local pin-schema refresh is a blocker-resolution prerequisite; it does not
+alter MIP's product or capability sequence. After GeoX baseline debt is
+repaired, work returns to the parked isolation milestone.
 
 Historical branches are not executable evidence. In particular,
 `feat/geox-calibration-source-manifest-validator-b-001@2b6745b9cbcf5a17196796231a39fec4336b5d1f`
