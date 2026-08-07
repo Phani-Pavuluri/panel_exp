@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** ready_for_review
+**Status:** merged
 **Task ID:** `GEOX_EXECUTION_HANDOFF_PIN_SCHEMA_REFRESH_001`
 **Repository:** `Phani-Pavuluri/panel_exp`  
 **Base SHA:** `b3f6b9acf81ff268c21d96d1014f8780fba5644f`
@@ -49,6 +49,12 @@ production/validation boundary, BlockResidualBootstrap golden, and D5 artifact
 families remain separate follow-on work.
 
 No PR, merge, rebase, squash, cherry-pick, or force-push is authorized.
+
+Implementation was fast-forwarded to `main` at
+`855cd7337a1739effb0c2952efd24ebd442c87d3`; the implementation branch was
+cleaned up after push. This lifecycle task is closed. The parked isolation
+milestone remains blocked and the D5 baseline-repair successor remains
+unauthorized.
 
 ## Current repository pins
 
