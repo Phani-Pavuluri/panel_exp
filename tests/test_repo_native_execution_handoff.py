@@ -18,7 +18,8 @@ def test_v2_state_contract_and_pins():
         assert state.get(key) is None or SHA.fullmatch(state[key])
     status_match = re.search(r"^\*\*Status:\*\*\s*([a-z_]+)", task, re.MULTILINE)
     assert status_match and status_match.group(1) == state["status"]
-    for pin in (state["canonical_mip_standard_commit"], state["canonical_mmm_workflow_commit"]):
+    for pin_key in ("mip_main_pin", "mmm_main_pin"):
+        pin = state[pin_key]
         assert all(pin in text for text in (task, report, context))
     assert all(state["task_id"] in text for text in (task, report, context))
     if state["implementation_commit_sha"] is not None:
