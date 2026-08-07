@@ -30,8 +30,15 @@ This checkpoint remains non-certifying. `producer_certified: false`, `mmm_compat
 
 - Focused validator, builder, and adjacent governed-readout tests: `71 passed`.
 - Ruff on both owned test files: passed.
-- Repository-authored full gate: `make validate-docker` exited with code `2`.
-- Exact diagnostic: `Docker is required for make validate-docker but is not available.`
+- Repository-authored full gate: `make validate-docker` completed with
+  `23 failed, 6151 passed, 28 skipped` in `3870.44s`.
+- Exact clean synchronized-main replay: `22 failed, 1 passed`.
+- The sole feature-specific failure was
+  `tests/test_repo_native_execution_handoff.py::test_status_invariants_are_closure_safe`;
+  the blocked-state invariant requiring `reviewed_head_sha == null` was
+  repaired, preserving the historical SHA in `rejected_review_head_sha`.
+- The remaining 22 failures reproduce on synchronized `main`; no analytical or
+  runtime regression from this milestone has been established.
 
 Validation receipts were preserved locally at:
 
@@ -40,13 +47,15 @@ Validation receipts were preserved locally at:
 - `/private/tmp/geox-gate-full.log`
 - `/private/tmp/geox-gate-full.exit`
 
-The full Docker-backed suite did not run because the execution environment lacked Docker API access. No full-suite pass, producer certification, or downstream eligibility is claimed.
+The full Docker-backed suite did not pass. No full-suite certification,
+producer certification, or downstream eligibility is claimed.
 
 ## Blocker and resolution condition
 
-Blocker: `DOCKER_API_UNAVAILABLE_FOR_VALIDATE_DOCKER`.
+Blocker: `DOCKER_GATE_MAIN_BASELINE_VALIDATION_DEBT`.
 
-Live resolution condition: resume this exact branch on a host with Docker API access, rerun the complete Git-authored gate on the frozen corrected tree, and publish either:
+Live resolution condition: repair synchronized-main baseline debt, rerun the
+complete Git-authored gate on the frozen corrected tree, and publish either:
 
 1. an exact-tree `ready_for_review` receipt when every required gate passes; or
 2. a new Git-durable `blocked` result with exact final failures and clean-main comparison evidence.

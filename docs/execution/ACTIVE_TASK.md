@@ -145,6 +145,27 @@ On success:
 
 If any required gate remains unavailable or fails without a task-owned correction, publish a Git-durable `blocked` state with exact diagnostics and a live resolution condition.
 
+## Final blocked validation outcome
+
+Focused validator, builder, and adjacent validation passed: `71 passed`.
+Ruff passed. The completed full Docker branch gate was `23 failed, 6151
+passed, 28 skipped` (runtime `3870.44s`). The exact clean synchronized-main
+replay was `22 failed, 1 passed`.
+
+The sole feature-specific failure was
+`tests/test_repo_native_execution_handoff.py::test_status_invariants_are_closure_safe`:
+a blocked state must have `reviewed_head_sha == null`; that lifecycle defect is
+repaired while the historical rejected SHA remains in
+`rejected_review_head_sha`. The remaining 22 failures reproduce on synchronized
+`main`, so no analytical or runtime regression from this milestone has been
+established.
+
+The checkpoint remains blocked because the repository-required full Docker
+baseline is not green. Blocker: `DOCKER_GATE_MAIN_BASELINE_VALIDATION_DEBT`.
+Live resolution requires repairing synchronized-main baseline debt and rerunning
+the complete declared gate on this frozen tree. The successor remains
+unauthorized.
+
 ## Deferred successor and authority
 
 `GEOX_CALIBRATION_SOURCE_MANIFEST_CERTIFICATION_RECOVERY_001` remains separate and unauthorized. This task does not authorize producer certification, MMM compatibility, MIP work, `CalibrationSignal`, simulation, optimization, planning, recommendation, real-data, runtime, pilot, or production behavior.

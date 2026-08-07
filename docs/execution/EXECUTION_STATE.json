@@ -18,14 +18,14 @@
   "correction_execution_authorized": false,
   "merge_authorized": false,
   "pr_creation_authorized": false,
-  "reviewed_head_sha": "b72ce8e1ad5141a341af8de3609a1fafdeef4908",
+  "reviewed_head_sha": null,
   "rejected_review_head_sha": "b72ce8e1ad5141a341af8de3609a1fafdeef4908",
   "implementation_commit_sha": "a625a9dac6b97b05c4044dc5af5ae7875a63e889",
   "approval_commit_sha": null,
   "capability_authorizations_changed": false,
   "last_updated": "2026-08-06",
   "blockers": [
-    "DOCKER_API_UNAVAILABLE_FOR_VALIDATE_DOCKER"
+    "DOCKER_GATE_MAIN_BASELINE_VALIDATION_DEBT"
   ],
   "dependencies": [
     {
