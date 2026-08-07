@@ -7,9 +7,9 @@
   "base_branch": "main",
   "base_sha": "8fdecae61d31af5aec83b1df1c30295471f2953f",
   "task_authoring_start_sha": "8fdecae61d31af5aec83b1df1c30295471f2953f",
-  "task_authoring_head_sha": "8fdecae61d31af5aec83b1df1c30295471f2953f",
-  "authorization_head_sha": "8fdecae61d31af5aec83b1df1c30295471f2953f",
-  "authorized_branch_baseline_sha": "8fdecae61d31af5aec83b1df1c30295471f2953f",
+  "task_authoring_head_sha": "8c983a60dbce804501b9a6bb8f27c1c6e7b0a8f5",
+  "authorization_head_sha": "8c983a60dbce804501b9a6bb8f27c1c6e7b0a8f5",
+  "authorized_branch_baseline_sha": "8c983a60dbce804501b9a6bb8f27c1c6e7b0a8f5",
   "feature_branch": "fix/geox-d5-power-control-geometry-repair-001",
   "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
@@ -32,7 +32,7 @@
       "task_id": "MIP_P2_CAPABILITY_CHECKPOINT_LEDGER_RECOVERY_001",
       "state": "satisfied",
       "merged_checkpoint_sha": "a293ce52a813709ca624332123019139928cc51e",
-      "resolution_condition": "The merged MIP ledger remains on synchronized MIP main and identifies the parked GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_RECOVERY_001 milestone; this GeoX-local pin-schema prerequisite does not alter MIP sequencing."
+      "resolution_condition": "The merged MIP ledger remains on synchronized MIP main and identifies the parked GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_RECOVERY_001 milestone; this GeoX-local D5 baseline-repair prerequisite does not alter MIP sequencing."
     },
     {
       "dependency_id": "DEP-GEOX-CALIBRATION-SOURCE-SURFACES-ON-MAIN-001",
@@ -92,7 +92,7 @@
     "blocker": "synchronized-main validation debt",
     "merge_authorized": false
   },
-  "next_task_id": "GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_RECOVERY_001",
+  "next_task_id": "GEOX_TBR_RECOVERY_CONTRACT_ALIGNMENT_001",
   "next_task_authorized": false,
   "review_decision": "authorized",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
