@@ -96,5 +96,5 @@
   "review_decision": "blocked",
   "review_decision_source": "docs/execution/LATEST_COMPLETION_REPORT.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "The original implementation was corrected at a625a9dac6b97b05c4044dc5af5ae7875a63e889. Focused validator, builder, and adjacent tests passed with 71 total tests; Ruff passed. The required Docker gate exited 2 because Docker API access was unavailable. The task remains resumable on the same branch from a host with Docker access; no producer certification or downstream authority is granted."
+  "task_authoring_note": "Implementation was corrected at a625a9dac6b97b05c4044dc5af5ae7875a63e889. Focused validator, builder, and adjacent tests passed with 71 total tests; Ruff passed. The completed Docker gate had 23 failures, and clean-main replay reproduced 22. The sole branch-specific lifecycle invariant was repaired. The task remains blocked on synchronized-main Docker baseline debt; no producer certification or downstream authority is granted."
 }
