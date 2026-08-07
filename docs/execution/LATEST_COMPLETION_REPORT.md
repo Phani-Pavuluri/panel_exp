@@ -4,20 +4,22 @@
 - **Base main:** `b3f6b9acf81ff268c21d96d1014f8780fba5644f`
 - **Task-authoring branch:** `docs/geox-execution-handoff-pin-schema-refresh-001`
 - **Future implementation branch:** `fix/geox-execution-handoff-pin-schema-refresh-001-authorized`
-- **Status:** `authorized`
+- **Status:** `ready_for_review`
 - **Execution authorized:** `true` after task-branch creation
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 
 ## Authorization
 
-This authorizes only a governance-test update from the synchronized main
+The authorized governance-test update was implemented from synchronized main
 ancestry. The obsolete pin names `canonical_mip_standard_commit` and
 `canonical_mmm_workflow_commit` must be replaced by current
 `mip_main_pin` and `mmm_main_pin`. Historical implementation commit
 `c7835e586925fe4e7b04505ad18e6563289bbb8b` is evidence only and must not be
-reused. No implementation or validation has been performed in this authoring
-step.
+reused. Implementation commit: `f72f8c967474fef5c6328d9c048e902b36b76f77`.
+Focused two-test validation passed (`2 passed`), the complete handoff test file
+passed (`3 passed`), Ruff passed, JSON parsing passed, and `git diff --check`
+passed. Full Docker validation was not required.
 
 ## Dependency and authority
 

@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** authorized  
+**Status:** ready_for_review  
 **Task ID:** `GEOX_EXECUTION_HANDOFF_PIN_SCHEMA_REFRESH_001`
 **Repository:** `Phani-Pavuluri/panel_exp`  
 **Base SHA:** `b3f6b9acf81ff268c21d96d1014f8780fba5644f`
