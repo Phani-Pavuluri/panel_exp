@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** authorized
+**Status:** blocked
 **Task ID:** `GEOX_D5_POWER_CONTROL_GEOMETRY_REPAIR_001`
 **Repository:** `Phani-Pavuluri/panel_exp`
 **Base SHA:** `8fdecae61d31af5aec83b1df1c30295471f2953f`
@@ -42,6 +42,13 @@ JSON parsing; the four focused D5 test files; Ruff on the eight owned harness
 and test files; `git diff --check`; and a focused regression proving the
 one-replicate paths do not raise the UnitJackKnife donor error. The full Docker
 suite is deferred until all baseline families are repaired.
+
+## Current disposition
+
+Implementation commit `c57a64827b42cc64a74c9fffab29a4e6b4897b32` is present. The focused pytest/Ruff gate is
+blocked because host Poetry cannot locate Python and the Docker Poetry
+dependency installation did not complete to a usable test result. No claim of
+baseline repair or readiness is made.
 
 ## Dependencies and remaining baseline families
 
