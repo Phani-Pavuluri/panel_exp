@@ -17,8 +17,10 @@
 
 Repair the shared D5 power-characterization assignment-geometry defect in the
 four Track-D harnesses. Each assignment helper must use
-`list(assigned_panel.treated_units)` from `Design.assign`, preserve existing
-matching, seeds, windows, methods and effect grids, and explicitly enforce at
+the assignment dictionary returned by `greedy_match_markets(...).assign`,
+using `assignment["test_0"]` for treated and `assignment["control"]` for
+controls; never flatten all assignment values. Preserve existing matching,
+seeds, windows, methods and effect grids, and explicitly enforce at
 least one treated unit and `cfg.min_control_units` controls (currently two).
 Invalid geometry must fail clearly; production assignment, SCM and
 UnitJackKnife are out of scope.
@@ -64,3 +66,6 @@ historical lifecycle debt for a future single-source pilot and is not repaired
 by this task.
 
 No successor task is authorized. No PR or merge is authorized.
+
+Correction cycle 1 is authorized and used; no correction cycles remain. The
+active blocker is `D5_ASSIGNMENT_CONTRACT_CORRECTION_IN_PROGRESS`.
