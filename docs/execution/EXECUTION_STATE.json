@@ -2,7 +2,7 @@
   "schema_version": "geox_repo_execution_state_v2",
   "repository": "Phani-Pavuluri/panel_exp",
   "task_id": "GEOX_D5_POWER_CONTROL_GEOMETRY_REPAIR_001",
-  "status": "blocked",
+  "status": "ready_for_review",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
   "base_sha": "8fdecae61d31af5aec83b1df1c30295471f2953f",
@@ -15,18 +15,16 @@
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
   "task_execution_authorized": true,
-  "correction_execution_authorized": true,
+  "correction_execution_authorized": false,
   "merge_authorized": false,
   "pr_creation_authorized": false,
   "reviewed_head_sha": null,
   "rejected_review_head_sha": null,
-  "implementation_commit_sha": "c57a64827b42cc64a74c9fffab29a4e6b4897b32",
+  "implementation_commit_sha": "b0cf0d44d19769aa4c9b4c8f4bdf06e23ebb7df5",
   "approval_commit_sha": null,
   "capability_authorizations_changed": false,
   "last_updated": "2026-08-07",
-  "blockers": [
-    "D5_ASSIGNMENT_CONTRACT_CORRECTION_IN_PROGRESS"
-  ],
+  "blockers": [],
   "dependencies": [
     {
       "dependency_id": "DEP-MIP-P2-CAPABILITY-CHECKPOINT-LEDGER-001",
@@ -96,8 +94,8 @@
   },
   "next_task_id": "GEOX_TBR_RECOVERY_CONTRACT_ALIGNMENT_001",
   "next_task_authorized": false,
-  "review_decision": "blocked",
+  "review_decision": "ready_for_review",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "D5 harness implementation committed at c57a648: helpers use assigned_panel.treated_units and enforce treated/control geometry. Focused validation could not complete because host Poetry lacks Python and the Docker Poetry dependency installation did not reach a usable test result. No D5 artifacts were regenerated; no production or capability authority changed."
+  "task_authoring_note": "D5 correction consumes the production assignment dictionary via test_0 and control groups. Focused Docker validation passes (20 tests, one existing warning; changed-path Ruff passes). No D5 artifacts were regenerated; no production or capability authority changed."
 }

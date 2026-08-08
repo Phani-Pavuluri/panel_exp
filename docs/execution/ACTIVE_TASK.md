@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** blocked
+**Status:** ready_for_review
 **Task ID:** `GEOX_D5_POWER_CONTROL_GEOMETRY_REPAIR_001`
 **Repository:** `Phani-Pavuluri/panel_exp`
 **Base SHA:** `8fdecae61d31af5aec83b1df1c30295471f2953f`
@@ -47,10 +47,10 @@ suite is deferred until all baseline families are repaired.
 
 ## Current disposition
 
-Implementation commit `c57a64827b42cc64a74c9fffab29a4e6b4897b32` is present. The focused pytest/Ruff gate is
-blocked because host Poetry cannot locate Python and the Docker Poetry
-dependency installation did not complete to a usable test result. No claim of
-baseline repair or readiness is made.
+Implementation commit `b0cf0d44d19769aa4c9b4c8f4bdf06e23ebb7df5` corrects the
+four helpers to consume the production assignment dictionary (`test_0` and
+`control`). Focused Docker validation passes (20 tests, one existing warning;
+changed-path Ruff passes). No artifacts were regenerated.
 
 ## Dependencies and remaining baseline families
 
@@ -68,4 +68,4 @@ by this task.
 No successor task is authorized. No PR or merge is authorized.
 
 Correction cycle 1 is authorized and used; no correction cycles remain. The
-active blocker is `D5_ASSIGNMENT_CONTRACT_CORRECTION_IN_PROGRESS`.
+task is ready for external review; merge and PR authority remain false.
