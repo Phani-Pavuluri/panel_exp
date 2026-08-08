@@ -6,6 +6,10 @@ import json
 from pathlib import Path
 
 import pytest
+from panel_exp.design.assign import greedy_match_markets
+from panel_exp.panel_data import PanelDataset, TimePeriod
+from panel_exp.validation.synthetic_scenarios import RECOVERY_SCENARIO_REGISTRY
+from panel_exp.validation.synthetic_world import SyntheticWorld
 
 from panel_exp.validation.track_d_d5_pow_001d import (
     D5Pow001dConfig,
@@ -14,6 +18,7 @@ from panel_exp.validation.track_d_d5_pow_001d import (
     run_d5_pow_001d,
     run_one_replicate,
     write_artifact,
+    _assign_greedy,
 )
 
 ARTIFACT_PATH = (
@@ -26,6 +31,17 @@ ARTIFACT_PATH = (
 
 
 class TestD5Pow001dWindows:
+    def test_assignment_uses_production_contract(self) -> None:
+        cfg = D5Pow001dConfig()
+        wide = SyntheticWorld.generate(RECOVERY_SCENARIO_REGISTRY[cfg.scenario_name]).to_panel_dataset().wide_data
+        helper_treated = _assign_greedy(wide, n_pre=cfg.baseline_window.train_length, seed=cfg.random_state_base, treatment_probability=cfg.treatment_probability)
+        design = greedy_match_markets(func_to_optimize="corr", treatment_probability=cfg.treatment_probability, random_state=cfg.random_state_base)
+        assigned_panel = design.assign(panel_data=PanelDataset(wide.copy()), pre_treatment_period=TimePeriod(0, cfg.baseline_window.train_length), n_test_grps=1)
+        assert helper_treated == list(assigned_panel.treated_units)
+        assert len(helper_treated) >= 1
+        assert len(helper_treated) < len(wide.index)
+        assert len(wide.index) - len(helper_treated) >= cfg.min_control_units
+
     def test_track_e_diagnostics_defined(self) -> None:
         assert len(TRACK_E_SUITABILITY_DIAGNOSTICS) >= 5
 

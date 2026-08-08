@@ -32,5 +32,11 @@ authority change is authorized.
 Implementation commit `c57a64827b42cc64a74c9fffab29a4e6b4897b32` changed only the eight authorized harness/test
 paths. Focused pytest and Ruff could not complete: host Poetry reported no
 Python, and Docker Poetry dependency installation did not reach test execution.
-The task remains blocked pending a usable validation environment; no readiness
-or baseline-repair claim is made.
+The prescribed Poetry devcontainer was built and dependencies installed
+successfully. Focused pytest then exposed a production-contract defect:
+`greedy_match_markets.assign(...)` returns a dict on this synchronized base,
+while all four D5 helpers dereference `assigned_panel.treated_units`. The
+authorized no-change boundary for `panel_exp/design/assign.py` prevents
+repairing that API mismatch in this slice. The D5-001c key correction and
+assignment-contract tests are present, but readiness is not claimed and no
+artifacts were regenerated.

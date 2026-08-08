@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 import pytest
+from panel_exp.design.assign import greedy_match_markets
 
 from panel_exp.validation.track_d_d5_pow_001b import (
     D5Pow001bConfig,
@@ -32,6 +33,17 @@ ARTIFACT_PATH = (
 
 
 class TestD5Pow001bScmJkNullMonitor:
+    def test_assignment_uses_production_contract(self) -> None:
+        cfg = D5Pow001bConfig()
+        wide = SyntheticWorld.generate(RECOVERY_SCENARIO_REGISTRY[cfg.scenario_name]).to_panel_dataset().wide_data
+        helper_treated = _assign_greedy_pre_period(wide, n_pre=28, seed=cfg.random_state_base, treatment_probability=cfg.treatment_probability)
+        design = greedy_match_markets(func_to_optimize="corr", treatment_probability=cfg.treatment_probability, random_state=cfg.random_state_base)
+        assigned_panel = design.assign(panel_data=PanelDataset(wide.copy()), pre_treatment_period=TimePeriod(0, 28), n_test_grps=1)
+        assert helper_treated == list(assigned_panel.treated_units)
+        assert len(helper_treated) >= 1
+        assert len(helper_treated) < len(wide.index)
+        assert len(wide.index) - len(helper_treated) >= cfg.min_control_units
+
     def test_wrong_vs_correct_detection_differ(self) -> None:
         scenario = RECOVERY_SCENARIO_REGISTRY["scm_low_signal"]
         world = SyntheticWorld.generate(scenario)
