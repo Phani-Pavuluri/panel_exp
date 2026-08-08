@@ -79,13 +79,14 @@ def _assign_greedy_pre_period(
         treatment_probability=treatment_probability,
         random_state=seed,
     )
-    assigned_panel = design.assign(
+    assignment = design.assign(
         panel_data=panel,
         pre_treatment_period=TimePeriod(0, n_pre),
         n_test_grps=1,
     )
-    treated = list(assigned_panel.treated_units)
-    n_control = len(wide.index) - len(treated)
+    treated = list(assignment["test_0"])
+    control = list(assignment["control"])
+    n_control = len(control)
     if len(treated) < 1 or n_control < min_control_units:
         raise ValueError(
             "D5 assignment geometry invalid: "

@@ -12,7 +12,7 @@ import json
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Literal, Sequence
+from typing import Any, Literal
 
 import numpy as np
 import pandas as pd
@@ -171,13 +171,14 @@ def _assign_greedy_pre_period(
         treatment_probability=treatment_probability,
         random_state=seed,
     )
-    assigned_panel = design.assign(
+    assignment = design.assign(
         panel_data=panel,
         pre_treatment_period=TimePeriod(0, n_pre),
         n_test_grps=1,
     )
-    treated = list(assigned_panel.treated_units)
-    n_control = len(wide.index) - len(treated)
+    treated = list(assignment["test_0"])
+    control = list(assignment["control"])
+    n_control = len(control)
     if len(treated) < 1 or n_control < min_control_units:
         raise ValueError(
             "D5 assignment geometry invalid: "
@@ -354,9 +355,7 @@ def _geometry_loss(
     end = train_length + test_length
     sl = slice(train_length, end)
     unit_treated_post = wide.loc[treated_units].iloc[:, sl].to_numpy(dtype=float)
-    unit_control_post = wide.drop(treated_units).iloc[:, sl].to_numpy(dtype=float)
     agg_treated = unit_treated_post.sum(axis=0)
-    agg_control = unit_control_post.sum(axis=0)
     unit_mean_treated = unit_treated_post.mean()
     return {
         "level_ratio_agg_sum_over_unit_mean": float(agg_treated.mean() / unit_mean_treated)

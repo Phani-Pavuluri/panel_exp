@@ -17,7 +17,6 @@ from panel_exp.validation.track_d_d5_pow_001c import (
     _assign_greedy_pre_period,
     run_d5_pow_001c,
     run_one_replicate,
-    write_artifact,
 )
 
 ARTIFACT_PATH = (
@@ -44,6 +43,8 @@ class TestD5Pow001cGeometry:
         assert row["geometry_loss"]["n_markets_collapsed"] >= 1
         cfg = D5Pow001cConfig(n_mc=2, effect_grid=(0.0, 0.08))
         assert row["design_context"]["n_control_markets"] >= cfg.min_control_units
+        assert "unit_scm_jk" in row
+        assert "agg2_tbr_kfold" in row
 
     def test_assignment_uses_production_contract(self) -> None:
         cfg = D5Pow001cConfig()
@@ -52,13 +53,12 @@ class TestD5Pow001cGeometry:
             wide, n_pre=cfg.train_length, seed=cfg.random_state_base, treatment_probability=cfg.treatment_probability
         )
         design = greedy_match_markets(func_to_optimize="corr", treatment_probability=cfg.treatment_probability, random_state=cfg.random_state_base)
-        assigned_panel = design.assign(panel_data=PanelDataset(wide.copy()), pre_treatment_period=TimePeriod(0, cfg.train_length), n_test_grps=1)
-        assert helper_treated == list(assigned_panel.treated_units)
+        assignment = design.assign(panel_data=PanelDataset(wide.copy()), pre_treatment_period=TimePeriod(0, cfg.train_length), n_test_grps=1)
+        assert helper_treated == list(assignment["test_0"])
         assert len(helper_treated) >= 1
         assert len(helper_treated) < len(wide.index)
-        assert len(wide.index) - len(helper_treated) >= cfg.min_control_units
-        assert "unit_scm_jk" in row
-        assert "agg2_tbr_kfold" in row
+        assert len(assignment["control"]) >= cfg.min_control_units
+        assert set(helper_treated).isdisjoint(assignment["control"])
 
     def test_characterization_runs(self) -> None:
         payload = run_d5_pow_001c(D5Pow001cConfig(n_mc=4, effect_grid=(0.0, 0.08)))
