@@ -37,6 +37,7 @@ class TestD5Pow001cGeometry:
         )
         assert row["design_context"]["design_method_id"] == "greedy_match_markets"
         assert row["geometry_loss"]["n_markets_collapsed"] >= 1
+        assert row["design_context"]["control_market_count"] >= 2
         assert "unit_scm_jk" in row
         assert "agg2_tbr_kfold" in row
 

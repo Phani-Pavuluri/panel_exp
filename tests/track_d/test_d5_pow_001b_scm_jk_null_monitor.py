@@ -54,6 +54,8 @@ class TestD5Pow001bScmJkNullMonitor:
         row = run_one_replicate(cfg, seed=cfg.random_state_base)
         assert "by_effect" in row
         assert 0.0 in row["by_effect"]
+        assert row["n_treated"] >= 1
+        assert row["n_control"] >= cfg.min_control_units
 
     def test_characterization_runs(self) -> None:
         payload = run_d5_pow_001b(D5Pow001bConfig(n_mc=4, effect_grid=(0.0, 0.04, 0.08)))

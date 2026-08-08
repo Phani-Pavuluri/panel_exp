@@ -163,6 +163,7 @@ def _assign_greedy_pre_period(
     n_pre: int,
     seed: int,
     treatment_probability: float,
+    min_control_units: int = 2,
 ) -> list[str]:
     panel = PanelDataset(wide.copy())
     design = greedy_match_markets(
@@ -170,14 +171,19 @@ def _assign_greedy_pre_period(
         treatment_probability=treatment_probability,
         random_state=seed,
     )
-    groups = design.assign(
+    assigned_panel = design.assign(
         panel_data=panel,
         pre_treatment_period=TimePeriod(0, n_pre),
         n_test_grps=1,
     )
-    treated = [u for units in groups.values() for u in units]
-    if len(treated) < 1:
-        raise ValueError("assignment produced no treated units")
+    treated = list(assigned_panel.treated_units)
+    n_control = len(wide.index) - len(treated)
+    if len(treated) < 1 or n_control < min_control_units:
+        raise ValueError(
+            "D5 assignment geometry invalid: "
+            f"seed={seed}, treated={len(treated)}, controls={n_control}, "
+            f"min_controls={min_control_units}"
+        )
     return treated
 
 
@@ -392,6 +398,7 @@ def run_one_replicate(cfg: D5Pow001cConfig, *, seed: int) -> dict[str, Any]:
         n_pre=cfg.train_length,
         seed=seed,
         treatment_probability=cfg.treatment_probability,
+        min_control_units=cfg.min_control_units,
     )
     end = cfg.train_length + cfg.test_length
     post_end = end - 1
@@ -567,6 +574,7 @@ def run_d5_pow_001c(config: D5Pow001cConfig | None = None) -> dict[str, Any]:
                 n_pre=cfg.train_length,
                 seed=seed,
                 treatment_probability=cfg.treatment_probability,
+                min_control_units=cfg.min_control_units,
             )
             if len([u for u in wide.index if u not in treated]) < cfg.min_control_units:
                 continue

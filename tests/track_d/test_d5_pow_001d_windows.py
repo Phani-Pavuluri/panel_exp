@@ -40,6 +40,7 @@ class TestD5Pow001dWindows:
         )
         assert len(row["windows"]) >= 2
         assert row["windows"][0]["design_context"]["design_method_id"] == "greedy_match_markets"
+        assert all(window["design_context"]["n_control_markets"] >= 2 for window in row["windows"])
 
     def test_characterization_runs(self) -> None:
         payload = run_d5_pow_001d(

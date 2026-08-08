@@ -33,6 +33,8 @@ class TestD5Pow001aPowerReadoutAlignment:
         world = SyntheticWorld.generate(scenario)
         wide = world.to_panel_dataset().wide_data
         treated = _assign_greedy_pre_period(wide, n_pre=30, seed=1, treatment_probability=0.4)
+        assert 1 <= len(treated) < len(wide.index)
+        assert len(wide.index) - len(treated) >= 2
         agg = _aggregated_power_panel(wide, treated)
         assert list(agg.wide_data.index) == ["treated", "control"]
         assert agg.treated_units == ["treated"]
@@ -45,6 +47,7 @@ class TestD5Pow001aPowerReadoutAlignment:
         )
         row = run_one_replicate(cfg, seed=cfg.random_state_base)
         assert row["n_treated"] >= 1
+        assert row["n_control"] >= cfg.min_control_units
         assert "effect_grid_corr_tbr" in row
         assert "tbr_curve" in row
 
