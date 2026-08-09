@@ -1,7 +1,7 @@
 # GEOX_D5_POWER_CONTROL_GEOMETRY_REPAIR_001 — Authorized Task Handoff
 
-- **Base main:** `8fdecae61d31af5aec83b1df1c30295471f2953f`
-- **Task-authoring branch:** `docs/geox-d5-power-control-geometry-repair-001`
+- **Base main:** `7bee4f7f24ff909b6b60cc067ca2da8cab1077c1`
+- **Task-authoring branch:** `docs/geox-d5-power-control-geometry-repair-001-reauthorization`
 - **Implementation branch:** `fix/geox-d5-power-control-geometry-repair-001-reauthorized`
 - **Authoring branch:** `docs/geox-d5-power-control-geometry-repair-001-reauthorization`
 - **Status:** authorized; implementation not started
