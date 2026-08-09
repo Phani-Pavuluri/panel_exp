@@ -2,13 +2,15 @@
 
 - **Base main:** `8fdecae61d31af5aec83b1df1c30295471f2953f`
 - **Task-authoring branch:** `docs/geox-d5-power-control-geometry-repair-001`
-- **Implementation branch:** `fix/geox-d5-power-control-geometry-repair-001`
+- **Implementation branch:** `fix/geox-d5-power-control-geometry-repair-001-reauthorized`
+- **Authoring branch:** `docs/geox-d5-power-control-geometry-repair-001-reauthorization`
 - **Status:** authorized; implementation not started
 - **Execution authorized:** `true`
 - **Merge/PR authorized:** `false`
 
-This task repairs only the four D5 validation harnesses to consume
-`assigned_panel.treated_units` and enforce treated/control geometry. Production
+This reauthorization repairs only the four D5 validation harnesses to consume
+the production assignment dictionary (`assignment["test_0"]` and
+`assignment["control"]`) and enforce treated/control geometry. Production
 assignment, SCM, UnitJackKnife, analytical/runtime behavior, artifacts,
 calibration, MIP, MMM and capability authority are unchanged. D5 artifacts are
 not regenerated.
@@ -28,3 +30,19 @@ historical lifecycle-governance debt for a future single-source pilot.
 
 No PR, merge, analytical/production change, sibling change, or capability
 authority change is authorized.
+
+The rejected feature head `0b94e9d924a565ff03df805258c6d188418f7f8b` is
+rejected for authorization-order ancestry only. Historical implementation
+`b0cf0d44d19769aa4c9b4c8f4bdf06e23ebb7df5` demonstrated correct behavior and
+passed focused validation, but neither it nor the late authorization commit
+`a549395d2d0186cfa7744283d562e4928b0405be` may be merged, cherry-picked,
+rebased, or reused as executable ancestry. The corrected implementation will
+be recreated manually from synchronized main after this metadata
+reauthorization reaches review.
+
+This authoring phase changes only execution metadata and context navigation;
+no D5 implementation or tests are changed, no artifacts are regenerated, and
+the focused pytest/Ruff gate is intentionally not run yet. Correction cycle
+state is `1 used / 0 remaining`, with correction execution authorized before
+implementation begins. The parked isolation branch remains unauthorized and
+the TBR successor remains unauthorized.

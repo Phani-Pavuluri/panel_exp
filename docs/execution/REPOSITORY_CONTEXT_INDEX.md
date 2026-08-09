@@ -2,9 +2,9 @@
 
 Active task: `GEOX_D5_POWER_CONTROL_GEOMETRY_REPAIR_001`.
 
-The authorized implementation branch is
-`fix/geox-d5-power-control-geometry-repair-001`; the task-authoring branch is
-`docs/geox-d5-power-control-geometry-repair-001`. This GeoX-local D5
+The reauthorized implementation branch is
+`fix/geox-d5-power-control-geometry-repair-001-reauthorized`; the task-authoring branch is
+`docs/geox-d5-power-control-geometry-repair-001-reauthorization`. This GeoX-local D5
 validation-harness repair does not alter MIP sequencing or capability authority.
 The merged pin-schema repair is closed historical evidence, not the active task.
 
@@ -19,7 +19,8 @@ Current verified pins:
 - MMM: `Phani-Pavuluri/MMM@fe8e784923994406a2e4907d28debd872d61fd73`
 
 The active milestone repairs the shared D5 power-characterization harnesses so
-they consume `assigned_panel.treated_units` from `Design.assign` and enforce
+they consume `assignment["test_0"]` and `assignment["control"]` from the
+production `greedy_match_markets(...).assign` dictionary and enforce
 the configured treated/control geometry. It does not change production
 assignment, SCM, analytical/runtime behavior, artifacts, producer
 certification, MMM compatibility, MIP consumer mapping, or `CalibrationSignal`.

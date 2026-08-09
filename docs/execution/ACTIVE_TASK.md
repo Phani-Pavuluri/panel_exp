@@ -1,11 +1,11 @@
 # Active Task
 
-**Status:** authorized
+**Status:** authorized — reauthorized correction
 **Task ID:** `GEOX_D5_POWER_CONTROL_GEOMETRY_REPAIR_001`
 **Repository:** `Phani-Pavuluri/panel_exp`
-**Base SHA:** `8fdecae61d31af5aec83b1df1c30295471f2953f`
-**Task-authoring branch:** `docs/geox-d5-power-control-geometry-repair-001`
-**Implementation branch:** `fix/geox-d5-power-control-geometry-repair-001`
+**Base SHA:** `7bee4f7f24ff909b6b60cc067ca2da8cab1077c1`
+**Task-authoring branch:** `docs/geox-d5-power-control-geometry-repair-001-reauthorization`
+**Implementation branch:** `fix/geox-d5-power-control-geometry-repair-001-reauthorized`
 **Execution mode:** `branch_and_fast_forward`
 **Risk tier:** Tier 2 D5 validation-harness geometry repair
 **Task execution authorized:** `true`
@@ -17,9 +17,12 @@
 
 Repair the shared D5 power-characterization assignment-geometry defect in the
 four Track-D harnesses. Each assignment helper must use
-`list(assigned_panel.treated_units)` from `Design.assign`, preserve existing
-matching, seeds, windows, methods and effect grids, and explicitly enforce at
-least one treated unit and `cfg.min_control_units` controls (currently two).
+the dictionary returned by `greedy_match_markets(...).assign`: with
+`n_test_grps=1`, consume `list(assignment["test_0"])` as treated and
+`list(assignment["control"])` as controls. Never flatten all dictionary
+values. Preserve existing matching, seeds, windows, methods and effect grids,
+and explicitly enforce at least one treated unit and `cfg.min_control_units`
+controls (currently two).
 Invalid geometry must fail clearly; production assignment, SCM and
 UnitJackKnife are out of scope.
 
@@ -57,3 +60,15 @@ historical lifecycle debt for a future single-source pilot and is not repaired
 by this task.
 
 No successor task is authorized. No PR or merge is authorized.
+
+## Reauthorization evidence
+
+The prior feature head `0b94e9d924a565ff03df805258c6d188418f7f8b` is rejected
+for authorization-order ancestry only. Its historical implementation
+`b0cf0d44d19769aa4c9b4c8f4bdf06e23ebb7df5` demonstrated correct code behavior
+and passed focused validation, but neither commit may be merged, cherry-picked,
+rebased, or reused as executable ancestry. The corrected implementation must
+be recreated manually from synchronized main after this reauthorization.
+
+Correction cycle 1 is authorized before implementation; no D5 code or tests
+are changed in this authoring phase.
