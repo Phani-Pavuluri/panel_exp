@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** authorized — reauthorized correction
+**Status:** ready_for_review
 **Task ID:** `GEOX_D5_POWER_CONTROL_GEOMETRY_REPAIR_001`
 **Repository:** `Phani-Pavuluri/panel_exp`
 **Base SHA:** `7bee4f7f24ff909b6b60cc067ca2da8cab1077c1`
@@ -70,5 +70,6 @@ and passed focused validation, but neither commit may be merged, cherry-picked,
 rebased, or reused as executable ancestry. The corrected implementation must
 be recreated manually from synchronized main after this reauthorization.
 
-Correction cycle 1 is authorized before implementation; no D5 code or tests
-are changed in this authoring phase.
+Correction cycle 1 was authorized before implementation and is now used. The
+fresh implementation commit is `dc24312`; the branch is ready for external
+review. No D5 artifacts were regenerated.

@@ -4,7 +4,7 @@
 - **Task-authoring branch:** `docs/geox-d5-power-control-geometry-repair-001-reauthorization`
 - **Implementation branch:** `fix/geox-d5-power-control-geometry-repair-001-reauthorized`
 - **Authoring branch:** `docs/geox-d5-power-control-geometry-repair-001-reauthorization`
-- **Status:** authorized; implementation not started
+- **Status:** ready_for_review
 - **Execution authorized:** `true`
 - **Merge/PR authorized:** `false`
 
@@ -40,9 +40,13 @@ rebased, or reused as executable ancestry. The corrected implementation will
 be recreated manually from synchronized main after this metadata
 reauthorization reaches review.
 
-This authoring phase changes only execution metadata and context navigation;
-no D5 implementation or tests are changed, no artifacts are regenerated, and
-the focused pytest/Ruff gate is intentionally not run yet. Correction cycle
-state is `1 used / 0 remaining`, with correction execution authorized before
-implementation begins. The parked isolation branch remains unauthorized and
-the TBR successor remains unauthorized.
+Fresh implementation commit `dc2431237e8117409386a02e3d3d37b0155e7af8` was
+recreated manually from authorized main. The helpers consume
+`assignment["test_0"]` and `assignment["control"]` and do not flatten the
+assignment dictionary. Focused Docker validation passed: `20 passed, 1
+warning`; changed-path Ruff reported `All checks passed!`. Compileall, JSON
+parse, and diff-check passed. The donor-error regression did not occur.
+No D5 artifacts were regenerated. The full Docker suite was not run and is
+not required for this repair. Correction cycle state is `1 used / 0 remaining`.
+The parked isolation branch remains unauthorized and the TBR successor remains
+unauthorized.
