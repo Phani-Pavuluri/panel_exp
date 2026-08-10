@@ -4,7 +4,7 @@
 - **Task-authoring branch:** `docs/geox-d5-power-control-geometry-repair-002`
 - **Implementation branch:** `fix/geox-d5-power-control-geometry-repair-002`
 - **Authoring branch:** `docs/geox-d5-power-control-geometry-repair-002`
-- **Status:** authorized; implementation not started
+- **Status:** blocked after implementation
 - **Execution authorized:** `true`
 - **Merge/PR authorized:** `false`
 - **Authorization-bearing contract SHA:** `5503ef3b8214a0f2bdb1f444c9b673ddce1ed587`
@@ -44,6 +44,12 @@ historical lifecycle-governance debt for a future single-source pilot.
 
 No PR, merge, analytical/production change, sibling change, or capability
 authority change is authorized.
+
+Implementation commit `45e00781d18e377873eb617498eb0c7feb094e2a` changed only
+the eight authorized harness/test paths. Focused pytest collection failed with
+`ModuleNotFoundError: seaborn`; package installation could not reach the
+network. Ruff was not reached. The task remains blocked and is not ready for
+review.
 
 The rejected feature head `0b94e9d924a565ff03df805258c6d188418f7f8b` is
 rejected for authorization-order ancestry only. Historical implementation

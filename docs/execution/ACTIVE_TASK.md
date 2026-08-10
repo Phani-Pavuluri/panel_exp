@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** authorized
+**Status:** blocked
 **Task ID:** `GEOX_D5_POWER_CONTROL_GEOMETRY_REPAIR_002`
 **Repository:** `Phani-Pavuluri/panel_exp`
 **Base SHA:** `687e4063ca9d43bcc0ea4527cac3fc9dab3fa8fd`
@@ -75,6 +75,11 @@ historical lifecycle debt for a future single-source pilot and is not repaired
 by this task.
 
 No successor task is authorized. No PR or merge is authorized.
+
+Implementation commit `45e00781d18e377873eb617498eb0c7feb094e2a` is present.
+Focused pytest collection is blocked because the available environment lacks
+`seaborn` and package-network access is unavailable; no readiness claim is
+made.
 
 ## Reauthorization evidence
 
