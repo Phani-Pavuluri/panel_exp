@@ -54,9 +54,8 @@ rebased, or reused as executable ancestry. The corrected implementation will
 be recreated manually from synchronized main after this metadata
 reauthorization reaches review.
 
-This authoring phase changes only execution metadata and context navigation;
-no D5 implementation or tests are changed, no artifacts are regenerated, and
-the focused pytest/Ruff gate is intentionally not run yet. Correction cycle
-state is `1 used / 0 remaining`, with correction execution authorized before
-implementation begins. The parked isolation branch remains unauthorized and
-the TBR successor remains unauthorized.
+This authoring phase changes only execution metadata and context navigation.
+No D5 implementation or tests were changed, no artifacts were regenerated, and
+focused pytest/Ruff were intentionally not run. Correction-cycle state is
+`0 used / 1 remaining` and correction execution is unauthorized. Parked
+isolation and the TBR successor remain unauthorized.

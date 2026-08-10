@@ -85,5 +85,6 @@ and passed focused validation, but neither commit may be merged, cherry-picked,
 rebased, or reused as executable ancestry. The corrected implementation must
 be recreated manually from synchronized main after this reauthorization.
 
-Correction cycle 1 is authorized before implementation; no D5 code or tests
-are changed in this authoring phase.
+This is a new superseding task. Its correction budget is 0 used / 1 remaining,
+and correction execution is not currently authorized. No D5 code or tests are
+changed in this authoring phase.
