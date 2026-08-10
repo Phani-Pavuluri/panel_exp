@@ -16,6 +16,14 @@ assignment, SCM, UnitJackKnife, analytical/runtime behavior, artifacts,
 calibration, MIP, MMM and capability authority are unchanged. D5 artifacts are
 not regenerated.
 
+Each helper must accept `min_control_units: int`; each caller must pass
+`min_control_units=cfg.min_control_units`; and geometry errors must report the
+actual supplied minimum. A focused non-default `min_control_units=3`
+regression is required and must fail if the helper falls back to literal two.
+
+This is a new superseding task, not a reauthorized correction. Its correction
+budget is 0 used / 1 remaining, with correction execution unauthorized.
+
 Predecessor 001 was superseded; rejected review head
 `e53c9fcd9396762d1d3631bdc8b1d968590ab261` and implementation
 `dc2431237e8117409386a02e3d3d37b0155e7af8` are historical evidence only.

@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** authorized — reauthorized correction
+**Status:** authorized
 **Task ID:** `GEOX_D5_POWER_CONTROL_GEOMETRY_REPAIR_002`
 **Repository:** `Phani-Pavuluri/panel_exp`
 **Base SHA:** `687e4063ca9d43bcc0ea4527cac3fc9dab3fa8fd`
@@ -21,10 +21,18 @@ the dictionary returned by `greedy_match_markets(...).assign`: with
 `n_test_grps=1`, consume `list(assignment["test_0"])` as treated and
 `list(assignment["control"])` as controls. Never flatten all dictionary
 values. Preserve existing matching, seeds, windows, methods and effect grids,
-and explicitly enforce at least one treated unit and `cfg.min_control_units`
-controls (currently two).
+and explicitly require each helper to accept `min_control_units: int`, enforce
+`len(treated) >= 1` and `len(control) >= min_control_units`, and pass
+`min_control_units=cfg.min_control_units` from every production caller. The
+diagnostic `ValueError` must report the actual supplied minimum (for example,
+`required_min_controls=3`) and must never hard-code two.
 Invalid geometry must fail clearly; production assignment, SCM and
 UnitJackKnife are out of scope.
+
+At least one focused regression must invoke a helper with a non-default
+`min_control_units=3` and prove the supplied value governs the validity check
+or error. Existing assignment-contract equality, disjointness, four-module
+functional coverage, and donor-error regressions remain required.
 
 ## Owned paths
 
@@ -34,6 +42,13 @@ UnitJackKnife are out of scope.
 - `panel_exp/validation/track_d_d5_pow_001d.py`
 - the four corresponding `tests/track_d/test_d5_pow_*.py` files;
 - required execution lifecycle files.
+
+Predecessor `GEOX_D5_POWER_CONTROL_GEOMETRY_REPAIR_001` is superseded. Its
+rejected review head is
+`e53c9fcd9396762d1d3631bdc8b1d968590ab261` and implementation is
+`dc2431237e8117409386a02e3d3d37b0155e7af8`; rejection reason was hard-coded
+two-control geometry. Those commits are historical evidence only and must not
+be merged, cherry-picked, rebased or used as executable ancestry.
 
 No D5 artifacts are regenerated. No production, analytical, calibration,
 producer-certification, MMM, MIP, planning, recommendation, runtime or
