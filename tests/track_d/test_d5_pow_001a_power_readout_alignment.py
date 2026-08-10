@@ -13,10 +13,11 @@ from panel_exp.validation.track_d_d5_pow_001a import (
     _assign_greedy_pre_period,
     run_d5_pow_001a,
     run_one_replicate,
-    write_artifact,
 )
 from panel_exp.validation.synthetic_scenarios import RECOVERY_SCENARIO_REGISTRY
 from panel_exp.validation.synthetic_world import SyntheticWorld
+from panel_exp.design.assign import greedy_match_markets
+from panel_exp.panel_data import PanelDataset, TimePeriod
 
 ARTIFACT_PATH = (
     Path(__file__).resolve().parents[2]
@@ -36,6 +37,18 @@ class TestD5Pow001aPowerReadoutAlignment:
         agg = _aggregated_power_panel(wide, treated)
         assert list(agg.wide_data.index) == ["treated", "control"]
         assert agg.treated_units == ["treated"]
+
+    def test_assignment_helper_matches_production_contract(self) -> None:
+        world = SyntheticWorld.generate(RECOVERY_SCENARIO_REGISTRY["scm_low_signal"])
+        wide = world.to_panel_dataset().wide_data
+        cfg = D5Pow001aConfig()
+        design = greedy_match_markets(func_to_optimize="corr", treatment_probability=0.4, random_state=1)
+        assignment = design.assign(panel_data=PanelDataset(wide.copy()), pre_treatment_period=TimePeriod(0, 30), n_test_grps=1)
+        helper_treated = _assign_greedy_pre_period(wide, n_pre=30, seed=1, treatment_probability=0.4)
+        assert helper_treated == list(assignment["test_0"])
+        assert len(helper_treated) >= 1
+        assert len(assignment["control"]) >= cfg.min_control_units
+        assert set(helper_treated).isdisjoint(assignment["control"])
 
     def test_one_replicate_runs(self) -> None:
         cfg = D5Pow001aConfig(

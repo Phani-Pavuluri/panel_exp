@@ -12,8 +12,8 @@ from panel_exp.validation.track_d_d5_pow_001b import (
     _scm_jk_readout_metrics,
     run_d5_pow_001b,
     run_one_replicate,
-    write_artifact,
 )
+from panel_exp.design.assign import greedy_match_markets
 from panel_exp.validation.synthetic_scenarios import RECOVERY_SCENARIO_REGISTRY
 from panel_exp.validation.synthetic_world import SyntheticWorld
 from panel_exp.panel_data import PanelDataset, TimePeriod
@@ -49,6 +49,17 @@ class TestD5Pow001bScmJkNullMonitor:
             m["covers_zero_wrong_001a"] != m["covers_zero_correct"]
         )
 
+    def test_assignment_helper_matches_production_contract(self) -> None:
+        world = SyntheticWorld.generate(RECOVERY_SCENARIO_REGISTRY["scm_low_signal"])
+        wide = world.to_panel_dataset().wide_data
+        cfg = D5Pow001bConfig()
+        design = greedy_match_markets(func_to_optimize="corr", treatment_probability=0.35, random_state=1)
+        assignment = design.assign(panel_data=PanelDataset(wide.copy()), pre_treatment_period=TimePeriod(0, 28), n_test_grps=1)
+        helper_treated = _assign_greedy_pre_period(wide, n_pre=28, seed=1, treatment_probability=0.35)
+        assert helper_treated == list(assignment["test_0"])
+        assert len(helper_treated) >= 1
+        assert len(assignment["control"]) >= cfg.min_control_units
+        assert set(helper_treated).isdisjoint(assignment["control"])
     def test_one_replicate_runs(self) -> None:
         cfg = D5Pow001bConfig(n_mc=2, effect_grid=(0.0, 0.04, 0.08))
         row = run_one_replicate(cfg, seed=cfg.random_state_base)

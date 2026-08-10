@@ -12,8 +12,11 @@ from panel_exp.validation.track_d_d5_pow_001c import (
     DESIGN_METHODS_FOR_001E,
     run_d5_pow_001c,
     run_one_replicate,
-    write_artifact,
 )
+from panel_exp.design.assign import greedy_match_markets
+from panel_exp.panel_data import PanelDataset, TimePeriod
+from panel_exp.validation.synthetic_scenarios import RECOVERY_SCENARIO_REGISTRY
+from panel_exp.validation.synthetic_world import SyntheticWorld
 
 ARTIFACT_PATH = (
     Path(__file__).resolve().parents[2]
@@ -29,6 +32,19 @@ class TestD5Pow001cGeometry:
         assert any(m["design_method_id"] == "greedy_match_markets" for m in DESIGN_METHODS_FOR_001E)
         greedy = next(m for m in DESIGN_METHODS_FOR_001E if m["design_method_id"] == "greedy_match_markets")
         assert greedy["in_d5_pow_001c"] is True
+
+    def test_assignment_helper_matches_production_contract(self) -> None:
+        world = SyntheticWorld.generate(RECOVERY_SCENARIO_REGISTRY["scm_low_signal"])
+        wide = world.to_panel_dataset().wide_data
+        cfg = D5Pow001cConfig()
+        design = greedy_match_markets(func_to_optimize="corr", treatment_probability=0.35, random_state=1)
+        assignment = design.assign(panel_data=PanelDataset(wide.copy()), pre_treatment_period=TimePeriod(0, 28), n_test_grps=1)
+        from panel_exp.validation.track_d_d5_pow_001c import _assign_greedy_pre_period
+        helper_treated = _assign_greedy_pre_period(wide, n_pre=28, seed=1, treatment_probability=0.35)
+        assert helper_treated == list(assignment["test_0"])
+        assert len(helper_treated) >= 1
+        assert len(assignment["control"]) >= cfg.min_control_units
+        assert set(helper_treated).isdisjoint(assignment["control"])
 
     def test_one_replicate_design_aware(self) -> None:
         row = run_one_replicate(

@@ -12,7 +12,7 @@ import json
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Literal, Sequence
+from typing import Any, Literal
 
 import numpy as np
 import pandas as pd
@@ -121,14 +121,18 @@ def _assign_greedy(
         treatment_probability=treatment_probability,
         random_state=seed,
     )
-    groups = design.assign(
+    assignment = design.assign(
         panel_data=panel,
         pre_treatment_period=TimePeriod(0, n_pre),
         n_test_grps=1,
     )
-    treated = [u for units in groups.values() for u in units]
-    if len(treated) < 1:
-        raise ValueError("assignment produced no treated units")
+    treated = list(assignment["test_0"])
+    control = list(assignment["control"])
+    if len(treated) < 1 or len(control) < 2:
+        raise ValueError(
+            f"assignment geometry invalid: seed={seed}, treated={len(treated)}, "
+            f"controls={len(control)}, required_min_controls=2"
+        )
     return treated
 
 
@@ -473,7 +477,6 @@ def _decide_sensitivity(
             ["missing_baseline"],
         )
 
-    base = by_window[baseline_key]
     null_fprs = [by_window[k]["null_fpr"]["mean"] for k in by_window]
     grid_corrs = [by_window[k]["effect_grid_corr"]["mean"] for k in by_window]
     circ_deltas = [
