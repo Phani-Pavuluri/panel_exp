@@ -1,11 +1,11 @@
 # Active Task
 
 **Status:** authorized — reauthorized correction
-**Task ID:** `GEOX_D5_POWER_CONTROL_GEOMETRY_REPAIR_001`
+**Task ID:** `GEOX_D5_POWER_CONTROL_GEOMETRY_REPAIR_002`
 **Repository:** `Phani-Pavuluri/panel_exp`
-**Base SHA:** `7bee4f7f24ff909b6b60cc067ca2da8cab1077c1`
-**Task-authoring branch:** `docs/geox-d5-power-control-geometry-repair-001-reauthorization`
-**Implementation branch:** `fix/geox-d5-power-control-geometry-repair-001-reauthorized`
+**Base SHA:** `687e4063ca9d43bcc0ea4527cac3fc9dab3fa8fd`
+**Task-authoring branch:** `docs/geox-d5-power-control-geometry-repair-002`
+**Implementation branch:** `fix/geox-d5-power-control-geometry-repair-002`
 **Execution mode:** `branch_and_fast_forward`
 **Risk tier:** Tier 2 D5 validation-harness geometry repair
 **Task execution authorized:** `true`

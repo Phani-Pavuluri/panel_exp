@@ -1,10 +1,10 @@
 # GeoX execution context
 
-Active task: `GEOX_D5_POWER_CONTROL_GEOMETRY_REPAIR_001`.
+Active task: `GEOX_D5_POWER_CONTROL_GEOMETRY_REPAIR_002`.
 
-The reauthorized implementation branch is
-`fix/geox-d5-power-control-geometry-repair-001-reauthorized`; the task-authoring branch is
-`docs/geox-d5-power-control-geometry-repair-001-reauthorization`. This GeoX-local D5
+The authorized implementation branch is
+`fix/geox-d5-power-control-geometry-repair-002`; the task-authoring branch is
+`docs/geox-d5-power-control-geometry-repair-002`. This GeoX-local D5
 validation-harness repair does not alter MIP sequencing or capability authority.
 The merged pin-schema repair is closed historical evidence, not the active task.
 

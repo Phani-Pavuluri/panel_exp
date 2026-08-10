@@ -1,19 +1,24 @@
-# GEOX_D5_POWER_CONTROL_GEOMETRY_REPAIR_001 — Authorized Task Handoff
+# GEOX_D5_POWER_CONTROL_GEOMETRY_REPAIR_002 — Authorized Task Handoff
 
-- **Base main:** `7bee4f7f24ff909b6b60cc067ca2da8cab1077c1`
-- **Task-authoring branch:** `docs/geox-d5-power-control-geometry-repair-001-reauthorization`
-- **Implementation branch:** `fix/geox-d5-power-control-geometry-repair-001-reauthorized`
-- **Authoring branch:** `docs/geox-d5-power-control-geometry-repair-001-reauthorization`
+- **Base main:** `687e4063ca9d43bcc0ea4527cac3fc9dab3fa8fd`
+- **Task-authoring branch:** `docs/geox-d5-power-control-geometry-repair-002`
+- **Implementation branch:** `fix/geox-d5-power-control-geometry-repair-002`
+- **Authoring branch:** `docs/geox-d5-power-control-geometry-repair-002`
 - **Status:** authorized; implementation not started
 - **Execution authorized:** `true`
 - **Merge/PR authorized:** `false`
 
-This reauthorization repairs only the four D5 validation harnesses to consume
+This task repairs only the four D5 validation harnesses to consume
 the production assignment dictionary (`assignment["test_0"]` and
-`assignment["control"]`) and enforce treated/control geometry. Production
+`assignment["control"]`) and enforce the supplied configurable
+`min_control_units` geometry. Production
 assignment, SCM, UnitJackKnife, analytical/runtime behavior, artifacts,
 calibration, MIP, MMM and capability authority are unchanged. D5 artifacts are
 not regenerated.
+
+Predecessor 001 was superseded; rejected review head
+`e53c9fcd9396762d1d3631bdc8b1d968590ab261` and implementation
+`dc2431237e8117409386a02e3d3d37b0155e7af8` are historical evidence only.
 
 Required validation is JSON parse, the four focused D5 test files, Ruff on the
 owned harnesses/tests, diff-check, and the one-replicate donor-error regression.
