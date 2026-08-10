@@ -14,7 +14,7 @@ be reused.
 
 Current verified pins:
 
-- GeoX: `Phani-Pavuluri/panel_exp@7bee4f7f24ff909b6b60cc067ca2da8cab1077c1`
+- GeoX: `Phani-Pavuluri/panel_exp@687e4063ca9d43bcc0ea4527cac3fc9dab3fa8fd`
 - MIP: `Phani-Pavuluri/marketing_intelligence_platform@a293ce52a813709ca624332123019139928cc51e`
 - MMM: `Phani-Pavuluri/MMM@fe8e784923994406a2e4907d28debd872d61fd73`
 

@@ -7,6 +7,7 @@
 - **Status:** authorized; implementation not started
 - **Execution authorized:** `true`
 - **Merge/PR authorized:** `false`
+- **Authorization-bearing contract SHA:** `5503ef3b8214a0f2bdb1f444c9b673ddce1ed587`
 
 This task repairs only the four D5 validation harnesses to consume
 the production assignment dictionary (`assignment["test_0"]` and
