@@ -32,10 +32,24 @@ class TestD5Pow001aPowerReadoutAlignment:
         scenario = RECOVERY_SCENARIO_REGISTRY["scm_low_signal"]
         world = SyntheticWorld.generate(scenario)
         wide = world.to_panel_dataset().wide_data
-        treated = _assign_greedy_pre_period(wide, n_pre=30, seed=1, treatment_probability=0.4)
+        treated = _assign_greedy_pre_period(
+            wide, n_pre=30, seed=1, treatment_probability=0.4, min_control_units=2
+        )
         agg = _aggregated_power_panel(wide, treated)
         assert list(agg.wide_data.index) == ["treated", "control"]
         assert agg.treated_units == ["treated"]
+
+    def test_non_default_minimum_is_enforced(self) -> None:
+        scenario = RECOVERY_SCENARIO_REGISTRY["scm_low_signal"]
+        wide = SyntheticWorld.generate(scenario).to_panel_dataset().wide_data
+        with pytest.raises(ValueError, match="required_min_controls=100"):
+            _assign_greedy_pre_period(
+                wide,
+                n_pre=30,
+                seed=1,
+                treatment_probability=0.4,
+                min_control_units=100,
+            )
 
     def test_one_replicate_runs(self) -> None:
         cfg = D5Pow001aConfig(

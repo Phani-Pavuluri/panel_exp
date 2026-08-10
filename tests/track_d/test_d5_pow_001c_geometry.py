@@ -39,6 +39,7 @@ class TestD5Pow001cGeometry:
         assert row["geometry_loss"]["n_markets_collapsed"] >= 1
         assert "unit_scm_jk" in row
         assert "agg2_tbr_kfold" in row
+        assert row["design_context"]["n_control_markets"] >= 2
 
     def test_characterization_runs(self) -> None:
         payload = run_d5_pow_001c(D5Pow001cConfig(n_mc=4, effect_grid=(0.0, 0.08)))

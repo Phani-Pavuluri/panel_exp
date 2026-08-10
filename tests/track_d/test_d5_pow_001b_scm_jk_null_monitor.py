@@ -36,7 +36,9 @@ class TestD5Pow001bScmJkNullMonitor:
         scenario = RECOVERY_SCENARIO_REGISTRY["scm_low_signal"]
         world = SyntheticWorld.generate(scenario)
         wide = world.to_panel_dataset().wide_data
-        treated = _assign_greedy_pre_period(wide, n_pre=28, seed=1, treatment_probability=0.35)
+        treated = _assign_greedy_pre_period(
+            wide, n_pre=28, seed=1, treatment_probability=0.35, min_control_units=2
+        )
         end = 36
         panel = PanelDataset(
             wide.iloc[:, :end],
