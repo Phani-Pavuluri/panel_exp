@@ -45,7 +45,7 @@ historical lifecycle-governance debt for a future single-source pilot.
 No PR, merge, analytical/production change, sibling change, or capability
 authority change is authorized.
 
-Implementation commit `966378a573de19fd67fb1e3a5deb5b79d3a505c7` changed only
+Implementation commit `5a7b9ff9faecb50a28bab63688c9a53594fa733f` changed only
 the eight authorized harness/test paths. Focused pytest collection failed with
 Locked Poetry pytest passed `17 passed, 1 warning`. The final locked Ruff,
 compile, JSON, and diff command exited `129` during dependency realization
