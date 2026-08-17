@@ -12,7 +12,7 @@ import json
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Literal, Sequence
+from typing import Any, Literal
 
 import numpy as np
 import pandas as pd
@@ -353,9 +353,7 @@ def _geometry_loss(
     end = train_length + test_length
     sl = slice(train_length, end)
     unit_treated_post = wide.loc[treated_units].iloc[:, sl].to_numpy(dtype=float)
-    unit_control_post = wide.drop(treated_units).iloc[:, sl].to_numpy(dtype=float)
     agg_treated = unit_treated_post.sum(axis=0)
-    agg_control = unit_control_post.sum(axis=0)
     unit_mean_treated = unit_treated_post.mean()
     return {
         "level_ratio_agg_sum_over_unit_mean": float(agg_treated.mean() / unit_mean_treated)
