@@ -12,7 +12,6 @@ from panel_exp.validation.track_d_d5_pow_001c import (
     DESIGN_METHODS_FOR_001E,
     run_d5_pow_001c,
     run_one_replicate,
-    write_artifact,
 )
 
 ARTIFACT_PATH = (

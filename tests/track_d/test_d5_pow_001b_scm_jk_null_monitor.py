@@ -12,7 +12,6 @@ from panel_exp.validation.track_d_d5_pow_001b import (
     _scm_jk_readout_metrics,
     run_d5_pow_001b,
     run_one_replicate,
-    write_artifact,
 )
 from panel_exp.validation.synthetic_scenarios import RECOVERY_SCENARIO_REGISTRY
 from panel_exp.validation.synthetic_world import SyntheticWorld

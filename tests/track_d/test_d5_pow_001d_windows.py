@@ -13,7 +13,6 @@ from panel_exp.validation.track_d_d5_pow_001d import (
     WindowSpec,
     run_d5_pow_001d,
     run_one_replicate,
-    write_artifact,
 )
 
 ARTIFACT_PATH = (

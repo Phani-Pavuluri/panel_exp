@@ -13,7 +13,6 @@ from panel_exp.validation.track_d_d5_pow_001a import (
     _assign_greedy_pre_period,
     run_d5_pow_001a,
     run_one_replicate,
-    write_artifact,
 )
 from panel_exp.validation.synthetic_scenarios import RECOVERY_SCENARIO_REGISTRY
 from panel_exp.validation.synthetic_world import SyntheticWorld

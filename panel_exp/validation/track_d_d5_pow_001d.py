@@ -12,7 +12,7 @@ import json
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Literal, Sequence
+from typing import Any, Literal
 
 import numpy as np
 import pandas as pd
@@ -480,7 +480,6 @@ def _decide_sensitivity(
             ["missing_baseline"],
         )
 
-    base = by_window[baseline_key]
     null_fprs = [by_window[k]["null_fpr"]["mean"] for k in by_window]
     grid_corrs = [by_window[k]["effect_grid_corr"]["mean"] for k in by_window]
     circ_deltas = [
