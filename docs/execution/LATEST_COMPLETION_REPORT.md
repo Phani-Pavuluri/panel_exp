@@ -1,11 +1,11 @@
-# GEOX_D5_POWER_CONTROL_GEOMETRY_REPAIR_002 — Authorized Task Handoff
+# GEOX_D5_POWER_CONTROL_GEOMETRY_REPAIR_002 — Merged and Closed
 
 - **Base main:** `687e4063ca9d43bcc0ea4527cac3fc9dab3fa8fd`
 - **Task-authoring branch:** `docs/geox-d5-power-control-geometry-repair-002`
 - **Implementation branch:** `fix/geox-d5-power-control-geometry-repair-002`
 - **Authoring branch:** `docs/geox-d5-power-control-geometry-repair-002`
-- **Status:** ready_for_review
-- **Execution authorized:** `true`
+- **Status:** merged
+- **Execution authorized:** `false`
 - **Merge/PR authorized:** `false`
 - **Authorization-bearing contract SHA:** `5503ef3b8214a0f2bdb1f444c9b673ddce1ed587`
 
@@ -50,20 +50,12 @@ the eight authorized harness/test paths. Focused pytest collection failed with
 Locked Poetry pytest passed `17 passed, 1 warning`; Ruff reported `All checks
 passed`; compileall passed; JSON parsing and host `git diff --check` passed.
 The container scope command was not applicable because `.git` is excluded from
-the mounted source copy; host scope verification was exact. The task is ready
-for exact-head review. The full Docker gate is not required for this family.
+the mounted source copy; host scope verification was exact. Approved head
+`9d17ad44f3a8cb860dfed36af860487c0877d12b` was fast-forwarded to main and the
+implementation branch was deleted locally and remotely. Implementation commit:
+`5a7b9ff9faecb50a28bab63688c9a53594fa733f`. The full Docker gate is not
+required for this family.
 
-The rejected feature head `0b94e9d924a565ff03df805258c6d188418f7f8b` is
-rejected for authorization-order ancestry only. Historical implementation
-`b0cf0d44d19769aa4c9b4c8f4bdf06e23ebb7df5` demonstrated correct behavior and
-passed focused validation, but neither it nor the late authorization commit
-`a549395d2d0186cfa7744283d562e4928b0405be` may be merged, cherry-picked,
-rebased, or reused as executable ancestry. The corrected implementation will
-be recreated manually from synchronized main after this metadata
-reauthorization reaches review.
-
-This authoring phase changes only execution metadata and context navigation.
-No D5 implementation or tests were changed, no artifacts were regenerated, and
-focused pytest/Ruff were intentionally not run. Correction-cycle state is
-`0 used / 1 remaining` and correction execution is unauthorized. Parked
-isolation and the TBR successor remain unauthorized.
+The implementation was created from authorized main ancestry; no predecessor
+implementation was reused. Parked isolation and the TBR successor remain
+unauthorized. No PR was created and no merge commit was created.
