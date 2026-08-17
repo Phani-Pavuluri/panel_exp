@@ -4,7 +4,7 @@
 - **Task-authoring branch:** `docs/geox-d5-power-control-geometry-repair-002`
 - **Implementation branch:** `fix/geox-d5-power-control-geometry-repair-002`
 - **Authoring branch:** `docs/geox-d5-power-control-geometry-repair-002`
-- **Status:** blocked after implementation
+- **Status:** ready_for_review
 - **Execution authorized:** `true`
 - **Merge/PR authorized:** `false`
 - **Authorization-bearing contract SHA:** `5503ef3b8214a0f2bdb1f444c9b673ddce1ed587`
@@ -47,11 +47,11 @@ authority change is authorized.
 
 Implementation commit `5a7b9ff9faecb50a28bab63688c9a53594fa733f` changed only
 the eight authorized harness/test paths. Focused pytest collection failed with
-Locked Poetry pytest passed `17 passed, 1 warning`. The final locked Ruff,
-compile, JSON, and diff command exited `129` during dependency realization
-before producing a Ruff receipt. The task remains blocked and is not ready for
-review. Resolution requires a complete locked-environment Ruff and compile
-receipt.
+Locked Poetry pytest passed `17 passed, 1 warning`; Ruff reported `All checks
+passed`; compileall passed; JSON parsing and host `git diff --check` passed.
+The container scope command was not applicable because `.git` is excluded from
+the mounted source copy; host scope verification was exact. The task is ready
+for exact-head review. The full Docker gate is not required for this family.
 
 The rejected feature head `0b94e9d924a565ff03df805258c6d188418f7f8b` is
 rejected for authorization-order ancestry only. Historical implementation

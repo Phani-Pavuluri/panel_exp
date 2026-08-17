@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** blocked
+**Status:** ready_for_review
 **Task ID:** `GEOX_D5_POWER_CONTROL_GEOMETRY_REPAIR_002`
 **Repository:** `Phani-Pavuluri/panel_exp`
 **Base SHA:** `687e4063ca9d43bcc0ea4527cac3fc9dab3fa8fd`
@@ -77,11 +77,10 @@ by this task.
 No successor task is authorized. No PR or merge is authorized.
 
 Implementation commit `5a7b9ff9faecb50a28bab63688c9a53594fa733f` is present.
-Locked Poetry pytest passed 17 tests with one warning. The final locked Ruff,
-compile, and diff receipt could not complete because the dependency-install
-container exited 129 before producing a Ruff receipt. No readiness claim is
-made; resolution requires complete locked-environment Ruff and compile exit
-receipts.
+Locked Poetry pytest passed 17 tests with one warning; Ruff and compileall
+passed. JSON parsing, host scope verification, and `git diff --check` passed.
+The full Docker gate is not required for this family. The task is ready for
+exact-head review.
 
 ## Reauthorization evidence
 
