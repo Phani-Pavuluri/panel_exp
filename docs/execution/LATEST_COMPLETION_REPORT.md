@@ -47,9 +47,13 @@ authority change is authorized.
 
 Implementation commit `45e00781d18e377873eb617498eb0c7feb094e2a` changed only
 the eight authorized harness/test paths. Focused pytest collection failed with
-`ModuleNotFoundError: seaborn`; package installation could not reach the
-network. Ruff was not reached. The task remains blocked and is not ready for
-review.
+`ModuleNotFoundError: seaborn`. An additional Docker remediation was
+attempted using the repository image and installing `pytest ruff seaborn pandas
+numpy scipy scikit-learn statsmodels dtaidistance cvxpy`, followed by the
+focused pytest and Ruff commands, but it produced no usable test or Ruff
+receipt. The task remains blocked and is not ready for review. Resolution
+requires a usable locked-dependency environment with complete focused pytest
+and Ruff exit receipts.
 
 The rejected feature head `0b94e9d924a565ff03df805258c6d188418f7f8b` is
 rejected for authorization-order ancestry only. Historical implementation

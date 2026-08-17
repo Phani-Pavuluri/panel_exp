@@ -78,8 +78,10 @@ No successor task is authorized. No PR or merge is authorized.
 
 Implementation commit `45e00781d18e377873eb617498eb0c7feb094e2a` is present.
 Focused pytest collection is blocked because the available environment lacks
-`seaborn` and package-network access is unavailable; no readiness claim is
-made.
+`seaborn`. A Docker retry installing the focused dependencies and invoking
+pytest/Ruff produced no usable receipts. No readiness claim is made;
+resolution requires a usable locked-dependency environment and complete
+focused validation exit receipts.
 
 ## Reauthorization evidence
 
