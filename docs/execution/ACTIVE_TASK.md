@@ -76,12 +76,12 @@ by this task.
 
 No successor task is authorized. No PR or merge is authorized.
 
-Implementation commit `45e00781d18e377873eb617498eb0c7feb094e2a` is present.
-Focused pytest collection is blocked because the available environment lacks
-`seaborn`. A Docker retry installing the focused dependencies and invoking
-pytest/Ruff produced no usable receipts. No readiness claim is made;
-resolution requires a usable locked-dependency environment and complete
-focused validation exit receipts.
+Implementation commit `966378a573de19fd67fb1e3a5deb5b79d3a505c7` is present.
+Locked Poetry pytest passed 17 tests with one warning. The final locked Ruff,
+compile, and diff receipt could not complete because the dependency-install
+container exited 129 before producing a Ruff receipt. No readiness claim is
+made; resolution requires complete locked-environment Ruff and compile exit
+receipts.
 
 ## Reauthorization evidence
 

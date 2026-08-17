@@ -20,7 +20,7 @@
   "pr_creation_authorized": false,
   "reviewed_head_sha": null,
   "rejected_review_head_sha": null,
-  "implementation_commit_sha": "45e00781d18e377873eb617498eb0c7feb094e2a",
+  "implementation_commit_sha": "966378a573de19fd67fb1e3a5deb5b79d3a505c7",
   "approval_commit_sha": null,
   "capability_authorizations_changed": false,
   "last_updated": "2026-08-07",
@@ -99,5 +99,5 @@
   "review_decision": "blocked",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "D5 configurable geometry implementation committed at 45e0078. Focused pytest collection is blocked because the available environment lacks seaborn and package-network access is unavailable. No readiness or baseline-repair claim is made; no artifact or production behavior changed."
+  "task_authoring_note": "D5 configurable geometry implementation committed at 966378a573de19fd67fb1e3a5deb5b79d3a505c7. Locked Poetry focused pytest passed 17 tests with one warning. The final locked Ruff/compile receipt could not complete: the dependency installation container exited 129 before producing a Ruff receipt. No readiness or baseline-repair claim is made; no artifact or production behavior changed."
 }

@@ -45,15 +45,13 @@ historical lifecycle-governance debt for a future single-source pilot.
 No PR, merge, analytical/production change, sibling change, or capability
 authority change is authorized.
 
-Implementation commit `45e00781d18e377873eb617498eb0c7feb094e2a` changed only
+Implementation commit `966378a573de19fd67fb1e3a5deb5b79d3a505c7` changed only
 the eight authorized harness/test paths. Focused pytest collection failed with
-`ModuleNotFoundError: seaborn`. An additional Docker remediation was
-attempted using the repository image and installing `pytest ruff seaborn pandas
-numpy scipy scikit-learn statsmodels dtaidistance cvxpy`, followed by the
-focused pytest and Ruff commands, but it produced no usable test or Ruff
-receipt. The task remains blocked and is not ready for review. Resolution
-requires a usable locked-dependency environment with complete focused pytest
-and Ruff exit receipts.
+Locked Poetry pytest passed `17 passed, 1 warning`. The final locked Ruff,
+compile, JSON, and diff command exited `129` during dependency realization
+before producing a Ruff receipt. The task remains blocked and is not ready for
+review. Resolution requires a complete locked-environment Ruff and compile
+receipt.
 
 The rejected feature head `0b94e9d924a565ff03df805258c6d188418f7f8b` is
 rejected for authorization-order ancestry only. Historical implementation
