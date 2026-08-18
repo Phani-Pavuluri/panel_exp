@@ -1,13 +1,13 @@
 # GeoX execution context
 
-Active task: `GEOX_EXECUTION_HANDOFF_STATE_SCHEMA_REFRESH_001`.
+Active task: `GEOX_PRODUCTION_VALIDATION_IMPORT_BOUNDARY_REPAIR_001`.
 
 The authorized implementation branch is
-`fix/geox-execution-handoff-state-schema-refresh-001`; it has not yet been
-created. This GeoX-local governance-test repair updates one stale v2 schema
-assertion to the live v3 execution-state schema and does not alter MIP
-sequencing or capability authority. The merged import-isolation and pin-schema
-repairs are closed historical evidence, not the active task.
+`fix/geox-production-validation-import-boundary-repair-001`; it has not yet
+been created. This GeoX-local repair addresses the bounded production/
+validation import boundary exposed by the Docker gate and does not alter MIP
+sequencing or capability authority. The merged import-isolation and handoff
+schema repairs are closed historical evidence, not the active task.
 
 The historical pin-schema implementation
 `c7835e586925fe4e7b04505ad18e6563289bbb8b` remains evidence only and must not
@@ -19,11 +19,10 @@ Current verified pins:
 - MIP: `Phani-Pavuluri/marketing_intelligence_platform@a293ce52a813709ca624332123019139928cc51e`
 - MMM: `Phani-Pavuluri/MMM@fe8e784923994406a2e4907d28debd872d61fd73`
 
-The active milestone repairs one stale repository-native execution-handoff test
-so it validates the live `geox_repo_execution_state_v3` schema. It does not
-change production assignment, SCM, analytical/runtime behavior, artifacts,
-producer certification, MMM compatibility, MIP consumer mapping, or
-`CalibrationSignal`.
+The active milestone repairs the bounded production/validation import boundary
+covered by `tests/test_validation_production_isolation.py`. It does not change
+assignment, SCM, analytical/runtime behavior, artifacts, producer
+certification, MMM compatibility, MIP consumer mapping, or `CalibrationSignal`.
 
 The MIP P2 capability ledger remains the current cross-repository sequence
 source and still points to the parked

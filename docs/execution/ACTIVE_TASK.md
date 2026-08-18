@@ -1,63 +1,51 @@
 # Active Task
 
-**Status:** merged
-**Task ID:** `GEOX_EXECUTION_HANDOFF_STATE_SCHEMA_REFRESH_001`
+**Status:** authorized
+**Task ID:** `GEOX_PRODUCTION_VALIDATION_IMPORT_BOUNDARY_REPAIR_001`
 **Repository:** `Phani-Pavuluri/panel_exp`
-**Base SHA:** `843fa3d9196b68cf205a88addae83ec890b48366`
-**Implementation branch:** `fix/geox-execution-handoff-state-schema-refresh-001`
+**Base SHA:** `b7ed73cfddf9025727b37edf5bd3f35af8bc7325`
+**Implementation branch:** `fix/geox-production-validation-import-boundary-repair-001`
 **Execution mode:** `branch_and_fast_forward`
-**Risk tier:** Tier 1 — repository governance test repair
+**Risk tier:** Tier 2 — production/validation import-boundary repair
 **Task execution authorized:** `true`
 **Correction execution authorized:** `false`
 **Merge authorized:** `false`
 **PR creation authorized:** `false`
-**Implementation commit:** `159a7c4c54cdbb7c39f387c949728610e7c4c8a6`
-**Reviewed head:** `dfe4c196700558cc2b3f5998670c05d5756fe49d`
-**Review decision:** `merged` by fast-forward
 **Unresolved execution-blocking design questions:** none
-
-Verified repository pins: GeoX `843fa3d9196b68cf205a88addae83ec890b48366`,
-MIP `a293ce52a813709ca624332123019139928cc51e`, MMM
-`fe8e784923994406a2e4907d28debd872d61fd73`.
 
 ## Objective
 
-Update `tests/test_repo_native_execution_handoff.py::test_v2_state_contract_and_pins`
-to validate the current GeoX repository execution-state schema
-`geox_repo_execution_state_v3` rather than the obsolete `v2` literal.
+Repair the current production/validation import-boundary failures exposed by
+the GeoX repository Docker gate. Production entry points must not statically or
+at runtime import `panel_exp.validation`, and production source must not carry
+validation-import references that violate the repository isolation contract.
 
-Preserve all existing checks for valid Git SHAs, lifecycle status vocabulary,
-task identity, MIP/MMM pin consistency across execution evidence, required
-repository surfaces, merge authority, and capability authority. The repair may
-change only the stale schema expectation and any directly necessary assertions
-proven by the live v3 state. Do not add compatibility aliases or weaken
-invariants.
+Bound the repair to the actual import paths demonstrated by
+`tests/test_validation_production_isolation.py`; do not mask failures by
+weakening those tests. Preserve production analytical behavior and public APIs.
 
 ## Scope
 
-Owned implementation path:
-
-`tests/test_repo_native_execution_handoff.py`
-
-Lifecycle publication may update the three stable execution files. No
-production, analytical, validation, D5, calibration-source, artifact, MIP,
-MMM, dependency, Docker, CI, or capability-authority changes are authorized.
-The prior import-isolation repair is merged and closed; its implementation is
-not to be reused as ancestry.
+Owned paths are only the directly offending production import modules and the
+focused isolation test, plus the three stable lifecycle files required for
+publication. Do not modify assignment, inference, SCM, TBR, UnitJackKnife,
+D5 artifacts, calibration-source behavior, MIP, MMM, dependencies, Docker/CI,
+or capability/product authority. The merged handoff-schema and import-
+isolation tasks are historical evidence, not executable ancestry.
 
 ## Validation contract
 
-Run JSON parsing, the focused stale-schema and closure-invariant tests, the
-complete handoff test module, Ruff on the changed test, compile validation, and
-`git diff --check`. Verify exact changed paths and local/remote feature-head
-equality. The full Docker gate is not required for this isolated governance
-test repair; the known remaining baseline families stay separate and must not
-be repaired here.
+Run JSON parsing, all tests in `tests/test_validation_production_isolation.py`,
+focused import-regression tests for every changed boundary, Ruff and compile
+validation on changed files, `git diff --check`, exact changed-path checks, and
+the complete repository `make validate-docker` gate. Compare any remaining
+failures with synchronized main and classify unrelated baseline families; do
+not repair TBR, D5 artifacts, or other families here.
 
 ## Sequencing and authority
 
-The task does not authorize TBR, production/validation-boundary, D5 artifact,
-analytical, producer-certification, lifecycle-adoption, MIP, MMM, or any
-downstream capability work. All product, runtime, certification, sibling, and
-capability authority remains false. Stop at `ready_for_review` for external
-exact-head review; do not create a PR or merge.
+TBR, D5 artifact reconciliation, lifecycle adoption, producer certification,
+MIP, MMM, analytical, runtime, and downstream capability work remain separate
+and unauthorized. All product, runtime, certification, sibling, and capability
+authority remains false. Stop at `ready_for_review` for external exact-head
+review; do not create a PR or merge.
