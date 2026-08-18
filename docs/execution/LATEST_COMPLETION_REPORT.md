@@ -64,6 +64,10 @@ by the declared Poetry configuration. The repository-authored `make
 validate-docker` gate exited `2` during collection with
 `ImportError: cannot import name 'BalancedRandomization' from 'panel_exp'` in
 `tests/test_audit_fixes.py`; clean synchronized main reproduces the same
-contract-test import-boundary baseline debt. The task is blocked rather than
-ready for review. No analytical, certification, product, runtime, sibling, or
-capability authority changed, and no PR or merge was created.
+contract-test import-boundary baseline debt. Feature receipt:
+`/private/tmp/geox-lifecycle-make-validate-docker-final2.log` with exit
+`2`; clean-main receipt:
+`/private/tmp/geox-lifecycle-main-full-baseline.log` with exit `2`. The task is
+blocked rather than ready for review. No analytical, certification, product,
+runtime, sibling, or capability authority changed, and no PR or merge was
+created.
