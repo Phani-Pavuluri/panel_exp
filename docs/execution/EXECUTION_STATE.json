@@ -61,8 +61,8 @@
   "modified_repositories": [
     "Phani-Pavuluri/panel_exp"
   ],
-  "coordination_workstream_id": "WS-GEOX-D5-POWER-CONTROL-GEOMETRY-REPAIR-002",
-  "coordination_capability_owner": "geox_d5_validation_harness_governance",
+  "coordination_workstream_id": "WS-GEOX-EXECUTION-LIFECYCLE-SINGLE-SOURCE-ADOPTION-001",
+  "coordination_capability_owner": "geox_execution_governance",
   "geox_main_pin": "5ab881296c7c8248076bad61292b255aaade11d8",
   "mip_main_pin": "a293ce52a813709ca624332123019139928cc51e",
   "mmm_main_pin": "fe8e784923994406a2e4907d28debd872d61fd73",

@@ -15,3 +15,13 @@ prerequisites, branch, owned scope, validation, commit, and push; stop at
 and no pre-merge approval metadata commit is allowed. Merge only after exact-head
 approval with `git merge --ff-only`, one closure commit, push, synchronization,
 and cleanup. Never create a PR or guess.
+
+For lifecycle bootstrap, resumption, transition, publication, and closure, use
+the GeoX repository-native task control surface:
+
+    python -m panel_exp.execution.taskctl check
+    python -m panel_exp.execution.taskctl sync
+    python -m panel_exp.execution.taskctl transition --to <status>
+
+`EXECUTION_STATE.json` is the sole mutable lifecycle authority; the generated
+execution views in the two stable Markdown files must not be edited directly.

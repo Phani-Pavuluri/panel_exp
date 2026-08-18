@@ -1,0 +1,246 @@
+"""Single-source lifecycle controls for GeoX repository execution."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import tempfile
+from pathlib import Path
+from typing import Any
+
+ROOT = Path(__file__).resolve().parents[2]
+STATE_PATH = ROOT / "docs/execution/EXECUTION_STATE.json"
+ACTIVE_PATH = ROOT / "docs/execution/ACTIVE_TASK.md"
+REPORT_PATH = ROOT / "docs/execution/LATEST_COMPLETION_REPORT.md"
+BEGIN_MARKER = "<!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->"
+END_MARKER = "<!-- END GEOX TASKCTL EXECUTION VIEW -->"
+SCHEMA_VERSION = "geox_repo_execution_state_v3"
+STATES = {
+    "idle", "proposed", "authorized", "in_progress", "blocked",
+    "ready_for_review", "changes_requested", "merged", "superseded",
+}
+TRANSITIONS = {
+    "idle": {"proposed"},
+    "proposed": {"authorized", "superseded"},
+    "authorized": {"in_progress", "blocked", "superseded"},
+    "in_progress": {"blocked", "ready_for_review", "changes_requested"},
+    "blocked": {"in_progress", "superseded"},
+    "ready_for_review": {"changes_requested", "merged", "blocked"},
+    "changes_requested": {"in_progress", "blocked", "superseded"},
+    "merged": set(),
+    "superseded": set(),
+}
+PROTECTED_AUTHORITY = (
+    "capability_authorizations_changed", "package_or_runtime_changes_authorized",
+    "producer_certification_authorized", "mmm_compatibility_authorized",
+    "calibration_signal_authorized", "simulation_authorized", "planning_authorized",
+    "recommendation_authorized", "real_data_authorized", "runtime_integration_authorized",
+    "pilot_authorized", "production_authorized", "next_task_authorized",
+)
+
+
+class TaskControlError(ValueError):
+    """Stable, machine-readable task-control failure."""
+
+    def __init__(self, code: str, message: str) -> None:
+        super().__init__(f"{code}: {message}")
+        self.code = code
+        self.message = message
+
+
+def _display(value: object) -> str:
+    if value is None:
+        return "null"
+    if isinstance(value, bool):
+        return str(value).lower()
+    return str(value)
+
+
+def load_state(path: Path = STATE_PATH) -> dict[str, Any]:
+    try:
+        state = json.loads(path.read_text())
+    except (OSError, json.JSONDecodeError) as exc:
+        raise TaskControlError("E_STATE_PARSE", str(exc)) from exc
+    validate_state(state)
+    return state
+
+
+def validate_state(state: dict[str, Any]) -> None:
+    if state.get("schema_version") != SCHEMA_VERSION:
+        raise TaskControlError("E_SCHEMA_VERSION", "state is not geox_repo_execution_state_v3")
+    status = state.get("status")
+    if status not in STATES:
+        raise TaskControlError("E_STATUS", f"unsupported status: {status}")
+    required = (
+        "task_id", "repository", "execution_mode", "base_sha", "authorization_head_sha",
+        "feature_branch", "feature_branch_created", "task_execution_authorized",
+        "correction_execution_authorized", "merge_authorized", "pr_creation_authorized",
+        "implementation_commit_sha", "reviewed_head_sha", "rejected_review_head_sha",
+        "rejected_implementation_commit_sha", "approval_commit_sha", "blockers",
+        "maximum_correction_cycles", "correction_cycles_completed",
+        "correction_cycles_remaining", "capability_authorizations_changed",
+    )
+    missing = [key for key in required if key not in state]
+    if missing:
+        raise TaskControlError("E_STATE_KEYS", f"missing keys: {', '.join(missing)}")
+    maximum = state["maximum_correction_cycles"]
+    completed = state["correction_cycles_completed"]
+    remaining = state["correction_cycles_remaining"]
+    if any(not isinstance(value, int) or value < 0 for value in (maximum, completed, remaining)):
+        raise TaskControlError("E_CORRECTION_COUNTERS", "correction counters must be non-negative integers")
+    if completed + remaining != maximum:
+        raise TaskControlError("E_CORRECTION_COUNTERS", "completed plus remaining must equal maximum")
+    if not isinstance(state["blockers"], list) or any(not isinstance(x, str) for x in state["blockers"]):
+        raise TaskControlError("E_BLOCKERS", "blockers must be a list of strings")
+    if state["merge_authorized"] or state["pr_creation_authorized"]:
+        raise TaskControlError("E_AUTHORITY", "merge and PR authority must remain false")
+    if status == "blocked" and not state["blockers"]:
+        raise TaskControlError("E_BLOCKED_EVIDENCE", "blocked state requires explicit blockers")
+    if status == "ready_for_review" and (not state["implementation_commit_sha"] or state["blockers"]):
+        raise TaskControlError("E_REVIEW_EVIDENCE", "ready_for_review requires implementation evidence and no blockers")
+    if status == "changes_requested" and not state["rejected_review_head_sha"]:
+        raise TaskControlError("E_REJECTED_HEAD", "changes_requested requires rejected-head provenance")
+    if status == "merged" and (not state["reviewed_head_sha"] or state["task_execution_authorized"]):
+        raise TaskControlError("E_MERGED_EVIDENCE", "merged requires reviewed head and closed execution authority")
+
+
+def render(state: dict[str, Any], document: str) -> str:
+    if document not in {"active_task", "completion_report"}:
+        raise TaskControlError("E_VIEW_DOCUMENT", f"unsupported document: {document}")
+    title = "# Active Task" if document == "active_task" else "# Execution Completion Report"
+    decision = (f"**Status:** {state['status']}" if document == "active_task"
+                else f"**Current decision:** `{state['status']}`")
+    blockers = "none" if not state["blockers"] else ", ".join(state["blockers"])
+    fields = (
+        ("Task ID", state["task_id"]), ("Repository", state["repository"]),
+        ("Execution mode", state["execution_mode"]), ("Base SHA", state["base_sha"]),
+        ("Authorization provenance", state["authorization_head_sha"]),
+        ("Feature branch", state["feature_branch"]),
+        ("Feature branch created", state["feature_branch_created"]),
+        ("Task execution authorized", state["task_execution_authorized"]),
+        ("Correction execution authorized", state["correction_execution_authorized"]),
+        ("Merge authorized", state["merge_authorized"]),
+        ("PR creation authorized", state["pr_creation_authorized"]),
+        ("Implementation commit", state["implementation_commit_sha"]),
+        ("Reviewed head", state["reviewed_head_sha"]),
+        ("Rejected review head", state["rejected_review_head_sha"]),
+        ("Rejected implementation commit", state["rejected_implementation_commit_sha"]),
+        ("Approval commit", state["approval_commit_sha"]), ("Blockers", blockers),
+        ("Maximum correction cycles", state["maximum_correction_cycles"]),
+        ("Correction cycles completed", state["correction_cycles_completed"]),
+        ("Correction cycles remaining", state["correction_cycles_remaining"]),
+        ("Review decision", state.get("review_decision")),
+        ("Local feature-branch cleanup", state.get("local_feature_branch_cleanup")),
+        ("Remote feature-branch cleanup", state.get("remote_feature_branch_cleanup")),
+        ("Capability authorizations changed", state["capability_authorizations_changed"]),
+    )
+    lines = [BEGIN_MARKER, title, "", decision, "",
+             "_Generated from `EXECUTION_STATE.json`; do not edit._", ""]
+    lines.extend(f"- **{label}:** `{_display(value)}`" for label, value in fields)
+    lines.extend((END_MARKER, ""))
+    return "\n".join(lines)
+
+
+def replace_view(text: str, block: str) -> str:
+    if text.count(BEGIN_MARKER) != 1 or text.count(END_MARKER) != 1:
+        raise TaskControlError("E_VIEW_MARKERS", "document must contain exactly one marker pair")
+    begin = text.index(BEGIN_MARKER)
+    end = text.index(END_MARKER)
+    if end < begin:
+        raise TaskControlError("E_VIEW_MARKERS", "generated markers are reversed")
+    inner = text[begin + len(BEGIN_MARKER):end]
+    if BEGIN_MARKER in inner or END_MARKER in inner:
+        raise TaskControlError("E_VIEW_MARKERS", "generated markers cannot be nested")
+    suffix = end + len(END_MARKER)
+    if suffix < len(text) and text[suffix] == "\n":
+        suffix += 1
+    return text[:begin] + block + text[suffix:]
+
+
+def _insert_initial_view(text: str, block: str) -> str:
+    if BEGIN_MARKER not in text and END_MARKER not in text:
+        return block + text
+    return replace_view(text, block)
+
+
+def sync() -> None:
+    state = load_state()
+    active = _insert_initial_view(ACTIVE_PATH.read_text(), render(state, "active_task"))
+    report = _insert_initial_view(REPORT_PATH.read_text(), render(state, "completion_report"))
+    for path, content in ((ACTIVE_PATH, active), (REPORT_PATH, report)):
+        fd, temp_name = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
+        try:
+            with os.fdopen(fd, "w") as handle:
+                handle.write(content)
+                handle.flush()
+                os.fsync(handle.fileno())
+            os.replace(temp_name, path)
+        finally:
+            if os.path.exists(temp_name):
+                os.unlink(temp_name)
+
+
+def check() -> None:
+    state = load_state()
+    for path, document in ((ACTIVE_PATH, "active_task"), (REPORT_PATH, "completion_report")):
+        text = path.read_text()
+        if replace_view(text, render(state, document)) != text:
+            raise TaskControlError("E_VIEW_DIVERGENCE", f"{path.name} diverges from canonical state")
+
+
+def transition(target: str) -> None:
+    state = load_state()
+    if target not in STATES:
+        raise TaskControlError("E_STATUS", f"unsupported status: {target}")
+    if target not in TRANSITIONS[state["status"]]:
+        raise TaskControlError("E_TRANSITION", f"cannot transition {state['status']} -> {target}")
+    candidate = dict(state)
+    candidate["status"] = target
+    if target == "in_progress":
+        candidate["task_execution_authorized"] = True
+    validate_state(candidate)
+    active = replace_view(ACTIVE_PATH.read_text(), render(candidate, "active_task"))
+    report = replace_view(REPORT_PATH.read_text(), render(candidate, "completion_report"))
+    state_text = json.dumps(candidate, indent=2) + "\n"
+    replacements = ((STATE_PATH, state_text), (ACTIVE_PATH, active), (REPORT_PATH, report))
+    temps: list[tuple[Path, str]] = []
+    try:
+        for path, content in replacements:
+            fd, temp_name = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
+            with os.fdopen(fd, "w") as handle:
+                handle.write(content)
+                handle.flush()
+                os.fsync(handle.fileno())
+            temps.append((path, temp_name))
+        for path, temp_name in temps:
+            os.replace(temp_name, path)
+    finally:
+        for _, temp_name in temps:
+            if os.path.exists(temp_name):
+                os.unlink(temp_name)
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(prog="taskctl")
+    sub = parser.add_subparsers(dest="command", required=True)
+    sub.add_parser("check")
+    sub.add_parser("sync")
+    transition_parser = sub.add_parser("transition")
+    transition_parser.add_argument("--to", required=True)
+    args = parser.parse_args()
+    try:
+        if args.command == "check":
+            check()
+        elif args.command == "sync":
+            sync()
+        else:
+            transition(args.to)
+    except TaskControlError as exc:
+        print(str(exc))
+        return 2
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

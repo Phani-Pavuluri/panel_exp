@@ -32,8 +32,39 @@ remaining), changing representation only.
 
 Generated views use exactly one pair of markers per document:
 
-`<!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->`
-`<!-- END GEOX TASKCTL EXECUTION VIEW -->`
+`<!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
+# Active Task
+
+**Status:** authorized
+
+_Generated from `EXECUTION_STATE.json`; do not edit._
+
+- **Task ID:** `GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001`
+- **Repository:** `Phani-Pavuluri/panel_exp`
+- **Execution mode:** `branch_and_fast_forward`
+- **Base SHA:** `5ab881296c7c8248076bad61292b255aaade11d8`
+- **Authorization provenance:** `5ab881296c7c8248076bad61292b255aaade11d8`
+- **Feature branch:** `feat/geox-execution-lifecycle-single-source-adoption-001`
+- **Feature branch created:** `false`
+- **Task execution authorized:** `true`
+- **Correction execution authorized:** `false`
+- **Merge authorized:** `false`
+- **PR creation authorized:** `false`
+- **Implementation commit:** `null`
+- **Reviewed head:** `null`
+- **Rejected review head:** `null`
+- **Rejected implementation commit:** `null`
+- **Approval commit:** `null`
+- **Blockers:** `none`
+- **Maximum correction cycles:** `1`
+- **Correction cycles completed:** `0`
+- **Correction cycles remaining:** `1`
+- **Review decision:** `authorized`
+- **Local feature-branch cleanup:** `null`
+- **Remote feature-branch cleanup:** `null`
+- **Capability authorizations changed:** `false`
+<!-- END GEOX TASKCTL EXECUTION VIEW -->
+`
 
 Only bytes between markers may be replaced. Missing, duplicated, reversed or
 nested markers fail closed. Generated blocks contain the MIP-derived deterministic
