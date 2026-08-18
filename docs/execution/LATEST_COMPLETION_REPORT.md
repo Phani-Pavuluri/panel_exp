@@ -5,9 +5,14 @@
 - **Base main:** `843fa3d9196b68cf205a88addae83ec890b48366`
 - **Implementation branch:** `fix/geox-execution-handoff-state-schema-refresh-001`
 - **Authorization provenance:** `843fa3d9196b68cf205a88addae83ec890b48366`
-- **Implementation:** not started
+- **Implementation commit:** `159a7c4c54cdbb7c39f387c949728610e7c4c8a6`
+- **Review decision:** `ready_for_review`
 - **Correction budget:** `0 completed / 1 remaining`
 - **Merge/PR authority:** false
+
+Verified repository pins: GeoX `843fa3d9196b68cf205a88addae83ec890b48366`,
+MIP `a293ce52a813709ca624332123019139928cc51e`, MMM
+`fe8e784923994406a2e4907d28debd872d61fd73`.
 
 ## Reason for authorization
 
@@ -28,5 +33,5 @@ TBR, production/validation-boundary, D5 artifact, analytical, calibration,
 lifecycle-adoption, MIP, MMM, and downstream capability work remains separate
 and unauthorized.
 
-No implementation branch, implementation commit, PR, merge, or sibling change
-was created in this authoring pass.
+The implementation branch was created from the authorized base. No PR, merge,
+or sibling change was created.
