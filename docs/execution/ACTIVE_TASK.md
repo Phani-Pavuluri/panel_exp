@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** ready_for_review
+**Status:** merged
 **Task ID:** `GEOX_CONTRACT_TEST_IMPORT_ISOLATION_REPAIR_001`
 **Repository:** `Phani-Pavuluri/panel_exp`
 **Base SHA:** `cdcbeaac575e9953b4b005a9b42d650b67211cb4`
@@ -12,7 +12,8 @@
 **Merge authorized:** `false`
 **PR creation authorized:** `false`
 **Implementation commit:** `254097a761dcfc08a2993bab83e256144e6ddf8c`
-**Review decision:** `ready_for_review`; full-gate nonzero result is classified baseline debt
+**Reviewed head:** `1b295f807f3ed74d2aa60cf13509142263134f67`
+**Review decision:** `merged` by fast-forward; full-gate nonzero result remains classified baseline debt
 **Unresolved execution-blocking design questions:** none
 
 ## Objective
