@@ -46,9 +46,9 @@
     "resolution_condition": "The existing builder, validator, committed manifest, and governed-readout source tree remain present on synchronized GeoX main; no certification is inferred."
     }
   ],
-  "risk_tier": "tier_2_test_import_isolation_repair",
-  "full_suite_validation_required": true,
-  "validation_scope": "focused_import_isolation_contract_tests_ordered_audit_regression_ruff_compile_diff_check_changed_path_verification_full_docker_gate",
+  "risk_tier": "tier_1_repository_governance_test_repair",
+  "full_suite_validation_required": false,
+  "validation_scope": "json_parse_focused_handoff_schema_and_closure_tests_complete_handoff_module_ruff_compile_diff_check_changed_path_verification_feature_head_equality",
   "unresolved_execution_blocking_design_questions": [],
   "maximum_correction_cycles": 1,
   "correction_cycles_completed": 0,
