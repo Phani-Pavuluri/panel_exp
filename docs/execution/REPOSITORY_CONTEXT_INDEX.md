@@ -1,12 +1,13 @@
 # GeoX execution context
 
-Active task: `GEOX_D5_POWER_CONTROL_GEOMETRY_REPAIR_002`.
+Active task: `GEOX_EXECUTION_HANDOFF_STATE_SCHEMA_REFRESH_001`.
 
 The authorized implementation branch is
-`fix/geox-d5-power-control-geometry-repair-002`; the task-authoring branch is
-`docs/geox-d5-power-control-geometry-repair-002`. This GeoX-local D5
-validation-harness repair does not alter MIP sequencing or capability authority.
-The merged pin-schema repair is closed historical evidence, not the active task.
+`fix/geox-execution-handoff-state-schema-refresh-001`; it has not yet been
+created. This GeoX-local governance-test repair updates one stale v2 schema
+assertion to the live v3 execution-state schema and does not alter MIP
+sequencing or capability authority. The merged import-isolation and pin-schema
+repairs are closed historical evidence, not the active task.
 
 The historical pin-schema implementation
 `c7835e586925fe4e7b04505ad18e6563289bbb8b` remains evidence only and must not
