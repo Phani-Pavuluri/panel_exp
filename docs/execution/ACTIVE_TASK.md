@@ -35,7 +35,7 @@ Generated views use exactly one pair of markers per document:
 `<!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** authorized
+**Status:** blocked
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -45,21 +45,21 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Base SHA:** `5ab881296c7c8248076bad61292b255aaade11d8`
 - **Authorization provenance:** `5ab881296c7c8248076bad61292b255aaade11d8`
 - **Feature branch:** `feat/geox-execution-lifecycle-single-source-adoption-001`
-- **Feature branch created:** `false`
+- **Feature branch created:** `true`
 - **Task execution authorized:** `true`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
-- **Implementation commit:** `null`
+- **Implementation commit:** `24cb6a6eda77ae465e7e7e0a26dbf1db4a579379`
 - **Reviewed head:** `null`
 - **Rejected review head:** `null`
 - **Rejected implementation commit:** `null`
 - **Approval commit:** `null`
-- **Blockers:** `none`
+- **Blockers:** `DOCKER_GATE_BASELINE_VALIDATION_DEBT`
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `authorized`
+- **Review decision:** `blocked`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
