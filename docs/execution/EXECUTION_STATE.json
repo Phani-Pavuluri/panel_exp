@@ -23,8 +23,8 @@
   "rejected_implementation_commit_sha": null,
   "implementation_commit_sha": null,
   "approval_commit_sha": null,
-  "local_feature_branch_cleanup": true,
-  "remote_feature_branch_cleanup": true,
+  "local_feature_branch_cleanup": null,
+  "remote_feature_branch_cleanup": null,
   "capability_authorizations_changed": false,
   "last_updated": "2026-08-18",
   "blockers": [],
@@ -100,5 +100,5 @@
   "review_decision": "authorized",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Authorized from synchronized GeoX main b7ed73cfddf9025727b37edf5bd3f35af8bc7325 to repair the bounded production/validation import boundary exposed by the Docker gate. Implementation is not started and the feature branch is not created. Full Docker validation is required; no certification or downstream authority granted."
+  "task_authoring_note": "Authorized from synchronized GeoX main b7ed73cfddf9025727b37edf5bd3f35af8bc7325 to repair only the directly offending production import modules and focused isolation test demonstrated by tests/test_validation_production_isolation.py. Implementation is not started and the feature branch is not created; branch-cleanup fields remain null. Full Docker validation is required. No analytical, product, runtime-integration, certification, capability, MIP, or MMM authority is granted."
 }
