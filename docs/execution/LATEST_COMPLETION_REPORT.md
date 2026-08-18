@@ -16,7 +16,7 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
-- **Implementation commit:** `24cb6a6eda77ae465e7e7e0a26dbf1db4a579379`
+- **Implementation commit:** `8731beeb8fb41bf90c8b1fd1ba8db9fbad6e497d`
 - **Reviewed head:** `null`
 - **Rejected review head:** `null`
 - **Rejected implementation commit:** `null`
@@ -37,7 +37,7 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Base main:** `5ab881296c7c8248076bad61292b255aaade11d8`
 - **Implementation branch:** `feat/geox-execution-lifecycle-single-source-adoption-001`
 - **Authorization provenance:** `5ab881296c7c8248076bad61292b255aaade11d8`
-- **Implementation:** `24cb6a6eda77ae465e7e7e0a26dbf1db4a579379`
+- **Implementation:** `8731beeb8fb41bf90c8b1fd1ba8db9fbad6e497d`
 - **Merge/PR authority:** false
 
 The implementation migrates `geox_repo_execution_state_v2` to
@@ -59,14 +59,13 @@ MMM is read-only coordination evidence. No analytical, certification, product,
 runtime, sibling, or capability authority changes are authorized.
 
 Validation evidence: JSON parse, taskctl check, byte-idempotent sync, focused
-taskctl tests (`8 passed`), and Ruff passed. Mypy is not repository-supported
+taskctl tests (`11 passed`), compile validation, and Ruff passed. Mypy is not repository-supported
 by the declared Poetry configuration. The repository-authored `make
 validate-docker` gate exited `2` during collection with
 `ImportError: cannot import name 'BalancedRandomization' from 'panel_exp'` in
 `tests/test_audit_fixes.py`; clean synchronized main reproduces the same
 contract-test import-boundary baseline debt. Feature receipt:
-`/private/tmp/geox-lifecycle-make-validate-docker-final2.log` with exit
-`2`; clean-main receipt:
+`/private/tmp/geox-lifecycle-corrected-full.log` with exit `2`; clean-main receipt:
 `/private/tmp/geox-lifecycle-main-full-baseline.log` with exit `2`. The task is
 blocked rather than ready for review. No analytical, certification, product,
 runtime, sibling, or capability authority changed, and no PR or merge was

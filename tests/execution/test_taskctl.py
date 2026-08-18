@@ -19,7 +19,7 @@ def test_schema_and_correction_invariant() -> None:
 
 
 def test_transition_graph_is_table_driven() -> None:
-    assert taskctl.TRANSITIONS["authorized"] == {"in_progress", "blocked", "superseded"}
+    assert taskctl.TRANSITIONS["authorized"] == {"in_progress", "blocked", "ready_for_review", "superseded"}
     assert "approved_for_merge" not in taskctl.STATES
     with pytest.raises(taskctl.TaskControlError, match="E_TRANSITION"):
         taskctl.transition("merged")
@@ -103,5 +103,6 @@ def test_blocked_requires_explicit_blocker() -> None:
 def test_ready_for_review_requires_implementation_and_no_blockers() -> None:
     state = _state()
     state["status"] = "ready_for_review"
+    state["review_decision"] = "ready_for_review"
     with pytest.raises(taskctl.TaskControlError, match="E_REVIEW_EVIDENCE"):
         taskctl.validate_state(state)
