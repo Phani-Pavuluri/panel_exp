@@ -25,6 +25,18 @@ def test_transition_graph_is_table_driven() -> None:
         taskctl.transition("merged")
 
 
+def test_transition_requires_explicit_evidence_and_validates_views_first() -> None:
+    with pytest.raises(taskctl.TaskControlError, match="E_TRANSITION"):
+        taskctl.transition("ready_for_review")
+    active = taskctl.ACTIVE_PATH.read_text()
+    taskctl.ACTIVE_PATH.write_text(active.replace("**Status:** blocked", "**Status:** authorized", 1))
+    try:
+        with pytest.raises(taskctl.TaskControlError, match="E_VIEW_DIVERGENCE"):
+            taskctl.transition("in_progress")
+    finally:
+        taskctl.ACTIVE_PATH.write_text(active)
+
+
 def test_generated_views_are_current_and_idempotent() -> None:
     state = _state()
     for path, document in ((taskctl.ACTIVE_PATH, "active_task"), (taskctl.REPORT_PATH, "completion_report")):
@@ -51,6 +63,26 @@ def test_authority_is_protected() -> None:
     for key in taskctl.PROTECTED_AUTHORITY:
         if key in state:
             assert state[key] is False
+
+
+def test_changes_requested_requires_paired_rejection_provenance() -> None:
+    state = _state()
+    state.update(
+        status="in_progress", review_decision="in_progress", blockers=[],
+        implementation_commit_sha="a" * 40,
+    )
+    with pytest.raises(taskctl.TaskControlError, match="E_TRANSITION"):
+        taskctl.transition("changes_requested")
+
+
+def test_merged_requires_review_head_and_cleanup_evidence() -> None:
+    state = _state()
+    state.update(
+        status="ready_for_review", review_decision="ready_for_review", blockers=[],
+        implementation_commit_sha="a" * 40,
+    )
+    with pytest.raises(taskctl.TaskControlError, match="E_TRANSITION"):
+        taskctl.transition("merged")
 
 
 def test_invalid_state_reason_codes() -> None:

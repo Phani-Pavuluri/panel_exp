@@ -1,38 +1,4 @@
-# Active Task
-
-**Status:** authorized
-**Task ID:** `GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001`
-**Repository:** `Phani-Pavuluri/panel_exp`
-**Base SHA:** `5ab881296c7c8248076bad61292b255aaade11d8`
-**Implementation branch:** `feat/geox-execution-lifecycle-single-source-adoption-001`
-**Execution mode:** `branch_and_fast_forward`
-**Risk tier:** Tier 3 execution-governance state migration
-**Task execution authorized:** `true`
-**Correction execution authorized:** `false`
-**Merge authorized:** `false`
-**PR creation authorized:** `false`
-**Unresolved execution-blocking design questions:** none
-
-## Objective
-
-Adopt GeoX-local single-source lifecycle semantics equivalent to the merged MIP
-reference at `Phani-Pavuluri/marketing_intelligence_platform@b0f57701a55d5cbe1d94692bf378a23d03945646`.
-`docs/execution/EXECUTION_STATE.json` becomes the sole mutable authority;
-`ACTIVE_TASK.md` and `LATEST_COMPLETION_REPORT.md` receive deterministic
-generated lifecycle views.
-
-## Canonical schema and migration
-
-Migrate `geox_repo_execution_state_v2` in place to
-`geox_repo_execution_state_v3`. Use exactly
-`maximum_correction_cycles`, `correction_cycles_completed`, and
-`correction_cycles_remaining`, with completed plus remaining equal to maximum.
-The current closed D5 lineage migrates as `1 / 0 / 1` (maximum/completed/
-remaining), changing representation only.
-
-Generated views use exactly one pair of markers per document:
-
-`<!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
+<!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
 **Status:** blocked
@@ -64,7 +30,28 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
-`
+
+## Objective
+
+Adopt GeoX-local single-source lifecycle semantics equivalent to the merged MIP
+reference at `Phani-Pavuluri/marketing_intelligence_platform@b0f57701a55d5cbe1d94692bf378a23d03945646`.
+`docs/execution/EXECUTION_STATE.json` becomes the sole mutable authority;
+`ACTIVE_TASK.md` and `LATEST_COMPLETION_REPORT.md` receive deterministic
+generated lifecycle views.
+
+## Canonical schema and migration
+
+Migrate `geox_repo_execution_state_v2` in place to
+`geox_repo_execution_state_v3`. Use exactly
+`maximum_correction_cycles`, `correction_cycles_completed`, and
+`correction_cycles_remaining`, with completed plus remaining equal to maximum.
+The current closed D5 lineage migrates as `1 / 0 / 1` (maximum/completed/
+remaining), changing representation only.
+
+Generated views use exactly one pair of markers per document. The marker names
+are documented without HTML comment delimiters so this contract body cannot be
+parsed as a live generated view: `BEGIN GEOX TASKCTL EXECUTION VIEW` and
+`END GEOX TASKCTL EXECUTION VIEW`.
 
 Only bytes between markers may be replaced. Missing, duplicated, reversed or
 nested markers fail closed. Generated blocks contain the MIP-derived deterministic

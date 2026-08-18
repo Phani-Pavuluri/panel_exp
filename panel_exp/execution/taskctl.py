@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 import os
+import re
 import tempfile
 from pathlib import Path
 from typing import Any
@@ -21,16 +23,18 @@ STATES = {
     "ready_for_review", "changes_requested", "merged", "superseded",
 }
 TRANSITIONS = {
-    "idle": {"proposed"},
+    "idle": set(),
     "proposed": {"authorized", "superseded"},
-    "authorized": {"in_progress", "blocked", "superseded"},
-    "in_progress": {"blocked", "ready_for_review", "changes_requested"},
-    "blocked": {"in_progress", "superseded"},
-    "ready_for_review": {"changes_requested", "merged", "blocked"},
-    "changes_requested": {"in_progress", "blocked", "superseded"},
+    "authorized": {"in_progress", "blocked", "ready_for_review", "superseded"},
+    "in_progress": {"blocked", "ready_for_review", "superseded"},
+    "blocked": {"in_progress", "ready_for_review", "superseded"},
+    "ready_for_review": {"changes_requested", "merged"},
+    "changes_requested": {"in_progress", "blocked", "ready_for_review", "superseded"},
     "merged": set(),
     "superseded": set(),
 }
+SHA_RE = re.compile(r"^[0-9a-f]{40}$")
+BRANCH_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._/-]*$")
 PROTECTED_AUTHORITY = (
     "capability_authorizations_changed", "package_or_runtime_changes_authorized",
     "producer_certification_authorized", "mmm_compatibility_authorized",
@@ -73,7 +77,8 @@ def validate_state(state: dict[str, Any]) -> None:
     if status not in STATES:
         raise TaskControlError("E_STATUS", f"unsupported status: {status}")
     required = (
-        "task_id", "repository", "execution_mode", "base_sha", "authorization_head_sha",
+        "task_id", "repository", "execution_mode", "base_sha", "task_authoring_head_sha",
+        "authorization_head_sha", "authorized_branch_baseline_sha",
         "feature_branch", "feature_branch_created", "task_execution_authorized",
         "correction_execution_authorized", "merge_authorized", "pr_creation_authorized",
         "implementation_commit_sha", "reviewed_head_sha", "rejected_review_head_sha",
@@ -84,6 +89,27 @@ def validate_state(state: dict[str, Any]) -> None:
     missing = [key for key in required if key not in state]
     if missing:
         raise TaskControlError("E_STATE_KEYS", f"missing keys: {', '.join(missing)}")
+    if state.get("repository") != "Phani-Pavuluri/panel_exp":
+        raise TaskControlError("E_STATE_REPOSITORY", "canonical state belongs to another repository")
+    if state.get("execution_mode") != "branch_and_fast_forward":
+        raise TaskControlError("E_STATE_EXECUTION_MODE", "unsupported execution mode")
+    if state.get("review_decision") != status:
+        raise TaskControlError("E_REVIEW_DECISION", "review_decision must match status")
+    for field in ("feature_branch_created", "task_execution_authorized",
+                  "correction_execution_authorized", "merge_authorized",
+                  "pr_creation_authorized", "capability_authorizations_changed"):
+        if not isinstance(state.get(field), bool):
+            raise TaskControlError("E_BOOLEAN", f"{field} must be boolean")
+    for field in ("base_sha", "task_authoring_head_sha", "authorization_head_sha",
+                  "authorized_branch_baseline_sha", "reviewed_head_sha",
+                  "rejected_review_head_sha", "rejected_implementation_commit_sha",
+                  "implementation_commit_sha", "approval_commit_sha"):
+        value = state.get(field)
+        if value is not None and (not isinstance(value, str) or not SHA_RE.fullmatch(value)):
+            raise TaskControlError("E_SHA", f"{field} must be lowercase 40-character SHA or null")
+    branch = state.get("feature_branch")
+    if not isinstance(branch, str) or branch == "main" or not BRANCH_RE.fullmatch(branch):
+        raise TaskControlError("E_BRANCH", "feature_branch must be a valid non-main branch")
     maximum = state["maximum_correction_cycles"]
     completed = state["correction_cycles_completed"]
     remaining = state["correction_cycles_remaining"]
@@ -95,14 +121,27 @@ def validate_state(state: dict[str, Any]) -> None:
         raise TaskControlError("E_BLOCKERS", "blockers must be a list of strings")
     if state["merge_authorized"] or state["pr_creation_authorized"]:
         raise TaskControlError("E_AUTHORITY", "merge and PR authority must remain false")
+    if (state["rejected_review_head_sha"] is None) != (state["rejected_implementation_commit_sha"] is None):
+        raise TaskControlError("E_REJECTED_PROVENANCE", "rejected review and implementation SHAs must be paired")
+    if status == "authorized" and (not state["task_execution_authorized"] or state["blockers"]):
+        raise TaskControlError("E_AUTHORIZED", "authorized requires execution authority and no blockers")
+    if status == "in_progress" and (not state["task_execution_authorized"] or state["blockers"]):
+        raise TaskControlError("E_IN_PROGRESS", "in_progress requires execution authority and no blockers")
+    if status == "blocked" and (not state["task_execution_authorized"] or not state["blockers"]):
+        raise TaskControlError("E_BLOCKED_EVIDENCE", "blocked requires execution authority and explicit blockers")
     if status == "blocked" and not state["blockers"]:
         raise TaskControlError("E_BLOCKED_EVIDENCE", "blocked state requires explicit blockers")
     if status == "ready_for_review" and (not state["implementation_commit_sha"] or state["blockers"]):
         raise TaskControlError("E_REVIEW_EVIDENCE", "ready_for_review requires implementation evidence and no blockers")
-    if status == "changes_requested" and not state["rejected_review_head_sha"]:
-        raise TaskControlError("E_REJECTED_HEAD", "changes_requested requires rejected-head provenance")
-    if status == "merged" and (not state["reviewed_head_sha"] or state["task_execution_authorized"]):
+    if status == "changes_requested":
+        if not state["correction_execution_authorized"] or not state["implementation_commit_sha"]:
+            raise TaskControlError("E_CORRECTION_AUTHORITY", "changes_requested requires correction authority and implementation")
+        if not state["rejected_review_head_sha"] or not state["rejected_implementation_commit_sha"]:
+            raise TaskControlError("E_REJECTED_PROVENANCE", "changes_requested requires paired rejected provenance")
+    if status == "merged" and (not state["reviewed_head_sha"] or state["task_execution_authorized"] or state["correction_execution_authorized"]):
         raise TaskControlError("E_MERGED_EVIDENCE", "merged requires reviewed head and closed execution authority")
+    if status == "merged" and (state.get("local_feature_branch_cleanup") != "observed_deleted" or state.get("remote_feature_branch_cleanup") != "observed_deleted"):
+        raise TaskControlError("E_CLEANUP", "merged requires explicit local and remote cleanup evidence")
 
 
 def render(state: dict[str, Any], document: str) -> str:
@@ -166,8 +205,8 @@ def _insert_initial_view(text: str, block: str) -> str:
 
 def sync() -> None:
     state = load_state()
-    active = _insert_initial_view(ACTIVE_PATH.read_text(), render(state, "active_task"))
-    report = _insert_initial_view(REPORT_PATH.read_text(), render(state, "completion_report"))
+    active = replace_view(ACTIVE_PATH.read_text(), render(state, "active_task"))
+    report = replace_view(REPORT_PATH.read_text(), render(state, "completion_report"))
     for path, content in ((ACTIVE_PATH, active), (REPORT_PATH, report)):
         fd, temp_name = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
         try:
@@ -189,16 +228,76 @@ def check() -> None:
             raise TaskControlError("E_VIEW_DIVERGENCE", f"{path.name} diverges from canonical state")
 
 
-def transition(target: str) -> None:
+def transition(target: str, *, implementation_sha: str | None = None,
+               rejected_review_sha: str | None = None,
+               rejected_implementation_sha: str | None = None,
+               reviewed_head_sha: str | None = None,
+               blockers: list[str] | None = None,
+               clear_blockers: bool = False,
+               authorize_execution: bool = False,
+               authorize_correction: bool = False,
+               complete_correction: bool = False,
+               authorization_head_sha: str | None = None,
+               task_authoring_head_sha: str | None = None,
+               local_cleanup: str | None = None,
+               remote_cleanup: str | None = None) -> None:
     state = load_state()
+    check()
     if target not in STATES:
         raise TaskControlError("E_STATUS", f"unsupported status: {target}")
     if target not in TRANSITIONS[state["status"]]:
         raise TaskControlError("E_TRANSITION", f"cannot transition {state['status']} -> {target}")
-    candidate = dict(state)
+    candidate = copy.deepcopy(state)
     candidate["status"] = target
-    if target == "in_progress":
+    candidate["review_decision"] = target
+    if clear_blockers:
+        candidate["blockers"] = []
+    if blockers:
+        candidate["blockers"] = list(blockers)
+    if implementation_sha is not None:
+        candidate["implementation_commit_sha"] = implementation_sha
+    if target == "authorized":
+        if not authorize_execution or not authorization_head_sha or not task_authoring_head_sha:
+            raise TaskControlError("E_TRANSITION_EVIDENCE", "authorized requires explicit authorization provenance")
         candidate["task_execution_authorized"] = True
+        candidate["authorization_head_sha"] = authorization_head_sha
+        candidate["task_authoring_head_sha"] = task_authoring_head_sha
+    elif target == "blocked":
+        if not blockers:
+            raise TaskControlError("E_TRANSITION_BLOCKER", "blocked requires explicit blockers")
+    elif target == "ready_for_review":
+        if not implementation_sha:
+            raise TaskControlError("E_TRANSITION_EVIDENCE", "ready_for_review requires implementation SHA")
+        if state["blockers"] and not clear_blockers:
+            raise TaskControlError("E_TRANSITION_BLOCKER", "clear blockers explicitly before review")
+        candidate["blockers"] = []
+        candidate["correction_execution_authorized"] = False
+        if state["status"] == "changes_requested":
+            if not complete_correction:
+                raise TaskControlError("E_TRANSITION_CORRECTION", "correction completion must be explicit")
+            candidate["correction_cycles_completed"] += 1
+            candidate["correction_cycles_remaining"] -= 1
+    elif target == "changes_requested":
+        if not authorize_correction or not rejected_review_sha or not rejected_implementation_sha:
+            raise TaskControlError("E_TRANSITION_EVIDENCE", "changes_requested requires rejection provenance and correction authorization")
+        candidate["rejected_review_head_sha"] = rejected_review_sha
+        candidate["rejected_implementation_commit_sha"] = rejected_implementation_sha
+        candidate["correction_execution_authorized"] = True
+    elif target == "merged":
+        if not reviewed_head_sha or local_cleanup != "observed_deleted" or remote_cleanup != "observed_deleted":
+            raise TaskControlError("E_TRANSITION_EVIDENCE", "merged requires reviewed head and explicit cleanup evidence")
+        candidate["reviewed_head_sha"] = reviewed_head_sha
+        candidate["task_execution_authorized"] = False
+        candidate["correction_execution_authorized"] = False
+        candidate["feature_branch_created"] = False
+        candidate["local_feature_branch_cleanup"] = local_cleanup
+        candidate["remote_feature_branch_cleanup"] = remote_cleanup
+    elif target in {"idle", "superseded"}:
+        candidate["task_execution_authorized"] = False
+        candidate["correction_execution_authorized"] = False
+    for key in PROTECTED_AUTHORITY:
+        if candidate.get(key) != state.get(key):
+            raise TaskControlError("E_PROTECTED_AUTHORITY", f"transition cannot change {key}")
     validate_state(candidate)
     active = replace_view(ACTIVE_PATH.read_text(), render(candidate, "active_task"))
     report = replace_view(REPORT_PATH.read_text(), render(candidate, "completion_report"))
@@ -227,7 +326,20 @@ def main() -> int:
     sub.add_parser("check")
     sub.add_parser("sync")
     transition_parser = sub.add_parser("transition")
-    transition_parser.add_argument("--to", required=True)
+    transition_parser.add_argument("--to", required=True, choices=sorted(STATES))
+    transition_parser.add_argument("--implementation-sha")
+    transition_parser.add_argument("--rejected-review-sha")
+    transition_parser.add_argument("--rejected-implementation-sha")
+    transition_parser.add_argument("--reviewed-head-sha")
+    transition_parser.add_argument("--blocker", action="append", default=[])
+    transition_parser.add_argument("--clear-blockers", action="store_true")
+    transition_parser.add_argument("--authorize-execution", action="store_true")
+    transition_parser.add_argument("--authorize-correction", action="store_true")
+    transition_parser.add_argument("--complete-correction", action="store_true")
+    transition_parser.add_argument("--authorization-head-sha")
+    transition_parser.add_argument("--task-authoring-head-sha")
+    transition_parser.add_argument("--local-branch-cleanup")
+    transition_parser.add_argument("--remote-branch-cleanup")
     args = parser.parse_args()
     try:
         if args.command == "check":
@@ -235,7 +347,18 @@ def main() -> int:
         elif args.command == "sync":
             sync()
         else:
-            transition(args.to)
+            transition(args.to, implementation_sha=args.implementation_sha,
+                       rejected_review_sha=args.rejected_review_sha,
+                       rejected_implementation_sha=args.rejected_implementation_sha,
+                       reviewed_head_sha=args.reviewed_head_sha, blockers=args.blocker,
+                       clear_blockers=args.clear_blockers,
+                       authorize_execution=args.authorize_execution,
+                       authorize_correction=args.authorize_correction,
+                       complete_correction=args.complete_correction,
+                       authorization_head_sha=args.authorization_head_sha,
+                       task_authoring_head_sha=args.task_authoring_head_sha,
+                       local_cleanup=args.local_branch_cleanup,
+                       remote_cleanup=args.remote_branch_cleanup)
     except TaskControlError as exc:
         print(str(exc))
         return 2
