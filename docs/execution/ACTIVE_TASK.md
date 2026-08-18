@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** authorized
+**Status:** blocked
 **Task ID:** `GEOX_CONTRACT_TEST_IMPORT_ISOLATION_REPAIR_001`
 **Repository:** `Phani-Pavuluri/panel_exp`
 **Base SHA:** `cdcbeaac575e9953b4b005a9b42d650b67211cb4`
@@ -11,6 +11,8 @@
 **Correction execution authorized:** `false`
 **Merge authorized:** `false`
 **PR creation authorized:** `false`
+**Implementation commit:** `254097a761dcfc08a2993bab83e256144e6ddf8c`
+**Blocker:** `DOCKER_GATE_REMAINING_BASELINE_FAILURE_FAMILIES`
 **Unresolved execution-blocking design questions:** none
 
 ## Objective
