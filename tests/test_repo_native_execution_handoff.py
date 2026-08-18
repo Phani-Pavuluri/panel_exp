@@ -12,7 +12,7 @@ def test_v2_state_contract_and_pins():
     task = (ROOT / "docs/execution/ACTIVE_TASK.md").read_text()
     report = (ROOT / "docs/execution/LATEST_COMPLETION_REPORT.md").read_text()
     context = (ROOT / "docs/execution/REPOSITORY_CONTEXT_INDEX.md").read_text()
-    assert state["schema_version"] == "geox_repo_execution_state_v2"
+    assert state["schema_version"] == "geox_repo_execution_state_v3"
     assert state["status"] in STATUSES and "approved_for_merge" not in STATUSES
     for key in ("base_sha", "authorization_head_sha", "reviewed_head_sha", "implementation_commit_sha", "approval_commit_sha"):
         assert state.get(key) is None or SHA.fullmatch(state[key])
