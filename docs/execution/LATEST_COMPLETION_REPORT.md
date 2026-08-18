@@ -1,32 +1,24 @@
-# GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001 — Authorized Task Handoff
+# GEOX_CONTRACT_TEST_IMPORT_ISOLATION_REPAIR_001 — Authorized Task Handoff
 
 - **Status:** authorized
-- **Task:** `GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001`
-- **Base main:** `5ab881296c7c8248076bad61292b255aaade11d8`
-- **Implementation branch:** `feat/geox-execution-lifecycle-single-source-adoption-001`
-- **Authorization provenance:** `5ab881296c7c8248076bad61292b255aaade11d8`
+- **Base main:** `cdcbeaac575e9953b4b005a9b42d650b67211cb4`
+- **Implementation branch:** `fix/geox-contract-test-import-isolation-repair-001`
+- **Authorization provenance:** `cdcbeaac575e9953b4b005a9b42d650b67211cb4`
 - **Implementation:** not started
 - **Merge/PR authority:** false
 
-This authorizes a GeoX-local migration from `geox_repo_execution_state_v2` to
-`geox_repo_execution_state_v3`, making `EXECUTION_STATE.json` the sole mutable
-lifecycle authority and deterministic generated blocks in the two stable
-Markdown execution documents. The canonical correction fields are maximum,
-completed, and remaining, with the current D5 lineage represented as `1 / 0 /
-1`.
+This task repairs only the current pytest import-isolation defect. Repository
+evidence identifies `tests/contracts/test_geox_calibration_source_manifest.py`
+as the bounded contamination source because it fabricates `panel_exp` and
+`panel_exp.contracts` in global `sys.modules`; the implementation must confirm
+that source and use normal package imports or fully scoped/restored manipulation.
 
-The exact GeoX markers are `BEGIN GEOX TASKCTL EXECUTION VIEW` and
-`END GEOX TASKCTL EXECUTION VIEW`; sync may replace only bytes inside one valid
-marker pair and must be byte-idempotent. Lifecycle vocabulary, transition
-validation, stable reason codes, atomic writes, protected authority fields, and
-the MIP-derived rendering order are definition-ready in ACTIVE_TASK.md.
+The historical repair `cc43be7d1dd69488b2a683a0180b05889cf00e72` is precedent
+only. The blocked lifecycle-adoption head
+`cf816fcb781b4dc5df6173e68a5a37c2b766c480` is preserved as historical evidence
+and must not be reused. Lifecycle adoption must be freshly re-authored from
+repaired main after this task merges.
 
-Canonical MIP reference:
-`Phani-Pavuluri/marketing_intelligence_platform@b0f57701a55d5cbe1d94692bf378a23d03945646`.
-MMM is read-only coordination evidence. No analytical, certification, product,
-runtime, sibling, or capability authority changes are authorized.
-
-Future validation requires focused governance tests, Ruff, supported mypy,
-JSON/schema migration checks, taskctl check and idempotent sync, diff/scope
-checks, and the full repository Docker gate with synchronized-main replay if
-baseline debt remains. No implementation or implementation branch was created.
+Required validation includes focused and reversed-order regressions, Ruff,
+compile and JSON checks, scope checks, and a passing full `make validate-docker`.
+No implementation, PR, merge, MIP/MMM change, or authority change has occurred.

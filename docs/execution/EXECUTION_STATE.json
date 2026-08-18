@@ -1,16 +1,16 @@
 {
   "schema_version": "geox_repo_execution_state_v3",
   "repository": "Phani-Pavuluri/panel_exp",
-  "task_id": "GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001",
+  "task_id": "GEOX_CONTRACT_TEST_IMPORT_ISOLATION_REPAIR_001",
   "status": "authorized",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
-  "base_sha": "5ab881296c7c8248076bad61292b255aaade11d8",
-  "task_authoring_start_sha": "5ab881296c7c8248076bad61292b255aaade11d8",
-  "task_authoring_head_sha": "5ab881296c7c8248076bad61292b255aaade11d8",
-  "authorization_head_sha": "5ab881296c7c8248076bad61292b255aaade11d8",
-  "authorized_branch_baseline_sha": "5ab881296c7c8248076bad61292b255aaade11d8",
-  "feature_branch": "feat/geox-execution-lifecycle-single-source-adoption-001",
+  "base_sha": "cdcbeaac575e9953b4b005a9b42d650b67211cb4",
+  "task_authoring_start_sha": "cdcbeaac575e9953b4b005a9b42d650b67211cb4",
+  "task_authoring_head_sha": "cdcbeaac575e9953b4b005a9b42d650b67211cb4",
+  "authorization_head_sha": "cdcbeaac575e9953b4b005a9b42d650b67211cb4",
+  "authorized_branch_baseline_sha": "cdcbeaac575e9953b4b005a9b42d650b67211cb4",
+  "feature_branch": "fix/geox-contract-test-import-isolation-repair-001",
   "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
@@ -46,9 +46,9 @@
     "resolution_condition": "The existing builder, validator, committed manifest, and governed-readout source tree remain present on synchronized GeoX main; no certification is inferred."
     }
   ],
-  "risk_tier": "tier_3_execution_governance_state_migration",
+  "risk_tier": "tier_2_test_import_isolation_repair",
   "full_suite_validation_required": true,
-  "validation_scope": "json_schema_migration_focused_execution_governance_tests_transition_reason_codes_generated_view_sync_taskctl_check_ruff_mypy_diff_check_changed_path_verification_full_docker_gate",
+  "validation_scope": "focused_import_isolation_contract_tests_ordered_audit_regression_ruff_compile_diff_check_changed_path_verification_full_docker_gate",
   "unresolved_execution_blocking_design_questions": [],
   "maximum_correction_cycles": 1,
   "correction_cycles_completed": 0,
@@ -61,9 +61,9 @@
   "modified_repositories": [
     "Phani-Pavuluri/panel_exp"
   ],
-  "coordination_workstream_id": "WS-GEOX-D5-POWER-CONTROL-GEOMETRY-REPAIR-002",
-  "coordination_capability_owner": "geox_d5_validation_harness_governance",
-  "geox_main_pin": "5ab881296c7c8248076bad61292b255aaade11d8",
+  "coordination_workstream_id": "WS-GEOX-CONTRACT-TEST-IMPORT-ISOLATION-REPAIR-001",
+  "coordination_capability_owner": "geox_test_import_isolation_governance",
+  "geox_main_pin": "cdcbeaac575e9953b4b005a9b42d650b67211cb4",
   "mip_main_pin": "a293ce52a813709ca624332123019139928cc51e",
   "mmm_main_pin": "fe8e784923994406a2e4907d28debd872d61fd73",
   "package_or_runtime_changes_authorized": false,
@@ -95,10 +95,10 @@
     "blocker": "synchronized-main validation debt",
     "merge_authorized": false
   },
-  "next_task_id": "GEOX_TBR_RECOVERY_CONTRACT_ALIGNMENT_001",
+  "next_task_id": "GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001_REAUTHOR_AFTER_BASELINE_REPAIR",
   "next_task_authorized": false,
   "review_decision": "authorized",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Authorized GeoX execution lifecycle single-source adoption from synchronized main. This authoring pass defines geox_repo_execution_state_v3, canonical correction counters, deterministic GeoX taskctl generated-view markers, migration behavior, and protected authority invariants. Implementation is not started."
+  "task_authoring_note": "Authorized GeoX contract-test import-isolation baseline repair from synchronized main. The bounded contamination source is tests/contracts/test_geox_calibration_source_manifest.py, which fabricates panel_exp and panel_exp.contracts modules in sys.modules during collection. Implementation is not started. The blocked lifecycle-adoption head cf816fcb781b4dc5df6173e68a5a37c2b766c480 is historical evidence only and must be freshly re-authored from repaired main after this repair merges."
 }
