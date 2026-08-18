@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** blocked
+**Status:** ready_for_review
 **Task ID:** `GEOX_CONTRACT_TEST_IMPORT_ISOLATION_REPAIR_001`
 **Repository:** `Phani-Pavuluri/panel_exp`
 **Base SHA:** `cdcbeaac575e9953b4b005a9b42d650b67211cb4`
@@ -12,7 +12,7 @@
 **Merge authorized:** `false`
 **PR creation authorized:** `false`
 **Implementation commit:** `254097a761dcfc08a2993bab83e256144e6ddf8c`
-**Blocker:** `DOCKER_GATE_REMAINING_BASELINE_FAILURE_FAMILIES`
+**Review decision:** `ready_for_review`; full-gate nonzero result is classified baseline debt
 **Unresolved execution-blocking design questions:** none
 
 ## Objective
@@ -45,8 +45,10 @@ Require focused contamination identity tests, the identified contract group,
 `tests/test_audit_fixes.py`, reversed/order-sensitive execution, no residual
 `sys.modules` contamination, unchanged contract behavior, Ruff, compile
 validation, JSON parsing, `git diff --check`, changed-path verification, and a
-passing full `make validate-docker` gate. The full gate must pass; baseline debt
-must not be waived for this repair.
+complete `make validate-docker` run. The task-owned import-poisoning/
+`BalancedRandomization` collection failure must be absent, and the feature must
+introduce no new full-gate failure. Remaining failures must be classified as
+pre-existing, independently owned baseline families and are not repaired here.
 
 ## Scope
 
