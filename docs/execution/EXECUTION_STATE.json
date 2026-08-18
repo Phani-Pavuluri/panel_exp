@@ -2,7 +2,7 @@
   "schema_version": "geox_repo_execution_state_v3",
   "repository": "Phani-Pavuluri/panel_exp",
   "task_id": "GEOX_CONTRACT_TEST_IMPORT_ISOLATION_REPAIR_001",
-  "status": "authorized",
+  "status": "blocked",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
   "base_sha": "cdcbeaac575e9953b4b005a9b42d650b67211cb4",
@@ -11,7 +11,7 @@
   "authorization_head_sha": "cdcbeaac575e9953b4b005a9b42d650b67211cb4",
   "authorized_branch_baseline_sha": "cdcbeaac575e9953b4b005a9b42d650b67211cb4",
   "feature_branch": "fix/geox-contract-test-import-isolation-repair-001",
-  "feature_branch_created": false,
+  "feature_branch_created": true,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
   "task_execution_authorized": true,
@@ -21,13 +21,19 @@
   "reviewed_head_sha": null,
   "rejected_review_head_sha": null,
   "rejected_implementation_commit_sha": null,
-  "implementation_commit_sha": null,
+  "implementation_commit_sha": "254097a761dcfc08a2993bab83e256144e6ddf8c",
   "approval_commit_sha": null,
   "local_feature_branch_cleanup": null,
   "remote_feature_branch_cleanup": null,
   "capability_authorizations_changed": false,
-  "last_updated": "2026-08-17",
-  "blockers": [],
+  "last_updated": "2026-08-18",
+  "blockers": [
+    {
+      "code": "DOCKER_GATE_REMAINING_BASELINE_FAILURE_FAMILIES",
+      "detail": "make validate-docker completed on the repaired tree with exit code 1: 13 failed, 6162 passed, 28 skipped. Remaining failures are TBR recovery, stale execution-handoff schema, production/validation import boundary, and D5 committed-artifact reconciliation.",
+      "resolution_condition": "Repair and validate the remaining synchronized-main baseline families, then rerun the complete repository Docker gate with exit code 0."
+    }
+  ],
   "dependencies": [
     {
       "dependency_id": "DEP-MIP-P2-CAPABILITY-CHECKPOINT-LEDGER-001",
@@ -97,8 +103,8 @@
   },
   "next_task_id": "GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001_REAUTHOR_AFTER_BASELINE_REPAIR",
   "next_task_authorized": false,
-  "review_decision": "authorized",
+  "review_decision": "blocked",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Authorized GeoX contract-test import-isolation baseline repair from synchronized main. The bounded contamination source is tests/contracts/test_geox_calibration_source_manifest.py, which fabricates panel_exp and panel_exp.contracts modules in sys.modules during collection. Implementation is not started. The blocked lifecycle-adoption head cf816fcb781b4dc5df6173e68a5a37c2b766c480 is historical evidence only and must be freshly re-authored from repaired main after this repair merges."
+  "task_authoring_note": "Implementation 254097a761dcfc08a2993bab83e256144e6ddf8c removes the fabricated panel_exp and panel_exp.contracts sys.modules stubs and adds normal-import identity coverage. Focused order regressions, JSON, Ruff and compile checks passed; make validate-docker completed with exit code 1 (13 failed, 6162 passed, 28 skipped), with failures in remaining baseline families. This task is blocked until those synchronized-main failures are repaired and the full Docker gate passes; no certification or downstream authority is granted."
 }
