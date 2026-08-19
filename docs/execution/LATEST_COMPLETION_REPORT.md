@@ -1,10 +1,10 @@
-# GEOX_PRODUCTION_VALIDATION_IMPORT_BOUNDARY_REPAIR_001 — Ready for Review
+# GEOX_PRODUCTION_VALIDATION_IMPORT_BOUNDARY_REPAIR_001 — Merged
 
 - **Branch:** `fix/geox-production-validation-import-boundary-repair-001`
 - **Implementation commit:** `e998e4357d490fd63ba6a453e9c6c156813d0848`
 - **Prior rejected review head:** `e66cd71766aeb6861c0ac5727f016ad403fac83e`
 - **Correction cycle:** `1 completed / 0 remaining`
-- **Decision:** `ready_for_review`
+- **Decision:** `merged`
 
 ## Semantic repair
 

@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** ready_for_review
+**Status:** merged
 **Task ID:** `GEOX_PRODUCTION_VALIDATION_IMPORT_BOUNDARY_REPAIR_001`
 **Repository:** `Phani-Pavuluri/panel_exp`
 **Base SHA:** `b7ed73cfddf9025727b37edf5bd3f35af8bc7325`
@@ -14,7 +14,7 @@
 **Unresolved execution-blocking design questions:** none
 
 **Implementation commit:** `e998e4357d490fd63ba6a453e9c6c156813d0848`
-**Review decision:** `ready_for_review`
+**Review decision:** `merged`
 **Correction:** rejected head `e66cd71766aeb6861c0ac5727f016ad403fac83e`; cycle 1 consumed, 0 remaining.
 **Validation:** focused isolation and compatibility regressions passed (`11 passed`); Ruff, compile, JSON and diff checks passed. Full-suite Docker validation was intentionally not completed under the revised focused-validation policy; the running gate was stopped at user request and its partial log is not terminal evidence.
 
