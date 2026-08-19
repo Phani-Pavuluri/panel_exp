@@ -8,7 +8,7 @@
 **Execution mode:** `branch_and_fast_forward`
 **Risk tier:** Tier 1 — merge-lineage and lifecycle receipt repair
 **Task execution authorized:** `true`
-**Correction execution authorized:** `false`
+**Correction execution authorized:** `true`
 **Merge authorized:** `false`
 **PR creation authorized:** `false`
 **Unresolved execution-blocking design questions:** none
