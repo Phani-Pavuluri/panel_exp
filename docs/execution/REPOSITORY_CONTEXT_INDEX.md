@@ -1,13 +1,13 @@
 # GeoX execution context
 
-Active task: `GEOX_PRODUCTION_VALIDATION_IMPORT_BOUNDARY_REPAIR_001`.
+Active task: `GEOX_D5_COMMITTED_ARTIFACT_RECONCILIATION_001`.
 
 The authorized implementation branch is
-`fix/geox-production-validation-import-boundary-repair-001`; it has not yet
-been created. This GeoX-local repair addresses the bounded production/
-validation import boundary exposed by the Docker gate and does not alter MIP
-sequencing or capability authority. The merged import-isolation and handoff
-schema repairs are closed historical evidence, not the active task.
+`fix/geox-d5-committed-artifact-reconciliation-001`; it has not yet been
+created. This GeoX-local task reconciles only the five named D5-STAT committed
+artifacts with their deterministic builders under the focused validation
+policy. The merged TBR, import-isolation, and handoff-schema repairs are closed
+historical evidence, not the active task.
 
 The historical pin-schema implementation
 `c7835e586925fe4e7b04505ad18e6563289bbb8b` remains evidence only and must not
@@ -19,10 +19,11 @@ Current verified pins:
 - MIP: `Phani-Pavuluri/marketing_intelligence_platform@a293ce52a813709ca624332123019139928cc51e`
 - MMM: `Phani-Pavuluri/MMM@fe8e784923994406a2e4907d28debd872d61fd73`
 
-The active milestone repairs the bounded production/validation import boundary
-covered by `tests/test_validation_production_isolation.py`. It does not change
-assignment, SCM, analytical/runtime behavior, artifacts, producer
-certification, MMM compatibility, MIP consumer mapping, or `CalibrationSignal`.
+The active milestone does not change assignment, SCM, TBR/TBRRidge, analytical
+or runtime behavior, producer certification, MMM compatibility, MIP consumer
+mapping, or `CalibrationSignal`. Artifact regeneration is not authorized during
+authoring and is allowed only on a frozen implementation tree after mismatch
+classification.
 
 The MIP P2 capability ledger remains the current cross-repository sequence
 source and still points to the parked

@@ -1,13 +1,13 @@
 # Active Task
 
-**Status:** merged
-**Task ID:** `GEOX_TBR_RECOVERY_CONTRACT_ALIGNMENT_001`
+**Status:** authorized
+**Task ID:** `GEOX_D5_COMMITTED_ARTIFACT_RECONCILIATION_001`
 **Repository:** `Phani-Pavuluri/panel_exp`
-**Base SHA:** `28bba2438ddee140061776ebc38a8c64df6ef028`
-**Implementation branch:** `fix/geox-tbr-recovery-contract-alignment-001`
+**Base SHA:** `eeabf9c6a04f08ec082429d31fcd1a34eb14b1c3`
+**Implementation branch:** `fix/geox-d5-committed-artifact-reconciliation-001`
 **Execution mode:** `branch_and_fast_forward`
-**Risk tier:** Tier 2 — TBR recovery contract alignment
-**Task execution authorized:** `false`
+**Risk tier:** Tier 2 — D5 committed-artifact reconciliation
+**Task execution authorized:** `true`
 **Correction execution authorized:** `false`
 **Merge authorized:** `false`
 **PR creation authorized:** `false`
@@ -15,53 +15,55 @@
 
 ## Objective
 
-Align the TBR recovery contract exposed by the synchronized-main baseline. The
-bounded failures are:
+Reconcile the five committed D5-STAT characterization artifacts with their
+deterministic repository builders. The bounded failures are the
+`test_committed_artifact_matches_build` checks in:
 
-- `tests/test_estimator_recovery_smoke.py::test_smoke_positive_effect_direction[TBR]`
-- `tests/test_recovery_runner.py::test_same_seed_identical_metrics[TBR]`
+- `tests/track_d/test_d5_stat_augsynth_point_001.py`
+- `tests/track_d/test_d5_stat_mcell_percell_001.py`
+- `tests/track_d/test_d5_stat_smoke_callable_001.py`
+- `tests/track_d/test_d5_stat_tbr_agg_001.py`
+- `tests/track_d/test_d5_stat_tbrridge_inf_001.py`
 
-Repair only the TBR recovery harness/contract mismatch. Preserve production
-TBR, TBRRidge, SCM, UnitJackKnife, inference, assignment, analytical semantics,
-artifacts, calibration, MIP, MMM, and all product/capability authority.
+Determine whether each mismatch is stale committed evidence, nondeterministic
+generation, or a builder defect. Repair only the smallest evidence/builder
+surface required to make the committed artifacts reproducible.
+
+## Scope and prohibitions
+
+Owned implementation paths are the five named D5-STAT test modules, their
+directly corresponding validation builders, the five committed JSON artifacts,
+and the three stable execution lifecycle files. Do not modify assignment,
+SCM, TBR/TBRRidge, UnitJackKnife, inference semantics, calibration-source
+behavior, product/runtime code, P2 capability meaning, MIP, MMM, Docker/CI,
+dependencies, or unrelated D5 artifacts. Do not regenerate artifacts during
+authoring; regeneration is permitted only on the frozen implementation tree
+after the mismatch cause is established.
 
 ## Required behavior
 
-Determine the actual contract mismatch from the TBR recovery implementation and
-tests. Preserve deterministic same-seed metrics and the established positive
-effect-direction assertion. Do not weaken assertions, alter analytical truth,
-or mask failures with retries or fixture changes.
+Preserve artifact schemas, IDs, verdict semantics, guardrail wording, method
+identity, and all analytical/product authority. Generated timestamps must remain
+the only intentionally volatile field where the existing tests strip them.
+Builders must be deterministic for their declared configuration and committed
+artifacts must match the corresponding builder output exactly after the
+existing timestamp normalization.
 
-## Owned scope
+## Focused validation policy
 
-Only the directly offending TBR recovery harness/tests and the three stable
-execution lifecycle files may change. D5 artifacts, production assignment,
-inference, SCM, UnitJackKnife, calibration-source behavior, MIP, MMM,
-dependencies, Docker/CI, and capability authority are prohibited.
-
-## Validation policy
-
-Run JSON parsing, both focused TBR nodes, an ordered/reversed recovery
-regression proving order independence, Ruff and compile validation on changed
-files, `git diff --check`, and exact changed-path verification. The full Docker
-gate is intentionally not required under the revised focused-validation policy.
-Do not repair D5 artifacts, handoff-schema governance, or other baseline
+Use the locked repository environment. Run JSON parsing, all five complete
+focused D5-STAT test modules, explicit deterministic rebuild comparisons,
+changed-file Ruff, compile validation, `git diff --check`, and exact
+changed-path/prohibited-path verification. The full Docker gate is not required
+for this individual baseline family under the revised focused-validation policy.
+Do not repair TBR, import-boundary, lifecycle-adoption, or other baseline
 families here.
-
-## Completion receipt
-
-Implementation commit: `d3ad972df75379505993f0849c6f19ba69f41a19`.
-The focused TBR nodes passed (`2 passed`), and the complete recovery test
-modules passed in both forward and reverse order (`11 passed` each run).
-Ruff, compile validation, JSON parsing, and `git diff --check` passed. The
-full Docker gate was not run because this task's Git-authored validation policy
-explicitly defers it. The task was externally approved at
-`0b53bcfecc4020f56826b61a14caad8fc211e33c` and fast-forwarded to `main`; the
-implementation branch was deleted locally and remotely after publication.
 
 ## Sequencing
 
-The next local baseline task is
-`GEOX_D5_COMMITTED_ARTIFACT_RECONCILIATION_001`, unauthorized. The parked
-isolation milestone and lifecycle adoption remain separately governed and
-unauthorized. This task is closed; no PR or merge commit was created.
+The next task remains separately governed and unauthorized. The parked
+`GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_RECOVERY_001` milestone and
+its branch remain historical blocked evidence; no producer certification,
+analytical, capability, or downstream authority is granted by this task.
+
+Stop at `ready_for_review`; do not create a PR or merge.

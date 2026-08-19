@@ -1,40 +1,20 @@
-# GEOX_TBR_RECOVERY_CONTRACT_ALIGNMENT_001 — Merged and Closed
+# GEOX_D5_COMMITTED_ARTIFACT_RECONCILIATION_001 — Authorization Report
 
-- **Status:** `merged`
-- **Base/authorization SHA:** `28bba2438ddee140061776ebc38a8c64df6ef028`
-- **Implementation branch:** `fix/geox-tbr-recovery-contract-alignment-001`
-- **Implementation commit:** `d3ad972df75379505993f0849c6f19ba69f41a19`
-- **Validation tree:** `c6d2c7821c693120c3c7829c4ec7dccdf02f2695` plus the implementation commit
-- **Reviewed head:** `0b53bcfecc4020f56826b61a14caad8fc211e33c`
-- **Merge method:** fast-forward only
+- **Status:** `authorized`
+- **Base/authorization SHA:** `eeabf9c6a04f08ec082429d31fcd1a34eb14b1c3`
+- **Implementation branch:** `fix/geox-d5-committed-artifact-reconciliation-001`
+- **Implementation:** not started
 - **Correction budget:** `0 completed / 1 remaining`
+- **Full Docker gate:** not required under the revised focused-validation policy
 
-## Behavior repaired
+This task is limited to reconciling the five named D5-STAT committed artifacts
+with their direct deterministic builders. It must first classify each mismatch
+as stale evidence, nondeterministic generation, or builder defect, then make the
+smallest owned repair while preserving schemas, analytical semantics, and
+authority. No artifact is regenerated during this authoring pass.
 
-The validation-owned recovery runner now adapts unit-level synthetic worlds to
-production TBR's explicit pre-aggregated contract: one treated series and one
-control series. Production TBR, TBRRidge, SCM, UnitJackKnife, inference,
-assignment, analytical semantics, artifacts, and public APIs were unchanged.
-
-## Validation
-
-- Focused nodes:
-  `tests/test_estimator_recovery_smoke.py::test_smoke_positive_effect_direction[TBR]`
-  and `tests/test_recovery_runner.py::test_same_seed_identical_metrics[TBR]` — **2 passed**.
-- Ordered recovery modules (`tests/test_estimator_recovery_smoke.py` then
-  `tests/test_recovery_runner.py`) — **11 passed**, 3 warnings.
-- Reverse order — **11 passed**, 3 warnings.
-- Ruff on changed validation modules and recovery tests — passed.
-- Compile validation — passed.
-- JSON parse — passed.
-- `git diff --check` — passed.
-- Full Docker gate — not run; the task's focused validation policy explicitly
-  defers the repository-wide gate.
-
-No unrelated baseline family was modified. The implementation branch was
-deleted locally and remotely after the fast-forward. The next local baseline task,
-`GEOX_D5_COMMITTED_ARTIFACT_RECONCILIATION_001`, remains unauthorized. The
-parked isolation milestone and lifecycle adoption remain separately governed
-and unauthorized. Main and origin/main are synchronized at the reviewed head.
-No PR, merge commit, sibling change, or analytical/product/capability authority
-change occurred.
+Required implementation validation is the five complete focused D5-STAT test
+modules, deterministic rebuild comparisons, Ruff, compile validation, JSON
+parse, diff checking, and changed/prohibited-path verification. No TBR,
+import-boundary, lifecycle-adoption, analytical, product, sibling, or
+capability work is authorized.
