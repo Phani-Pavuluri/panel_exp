@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** authorized
+**Status:** changes_requested
 **Task ID:** `GEOX_D5_COMMITTED_ARTIFACT_RECONCILIATION_001`
 **Repository:** `Phani-Pavuluri/panel_exp`
 **Base SHA:** `eeabf9c6a04f08ec082429d31fcd1a34eb14b1c3`
@@ -8,7 +8,7 @@
 **Execution mode:** `branch_and_fast_forward`
 **Risk tier:** Tier 2 — D5 committed-artifact reconciliation
 **Task execution authorized:** `true`
-**Correction execution authorized:** `false`
+**Correction execution authorized:** `true`
 **Merge authorized:** `false`
 **PR creation authorized:** `false`
 **Unresolved execution-blocking design questions:** none
@@ -67,3 +67,13 @@ its branch remain historical blocked evidence; no producer certification,
 analytical, capability, or downstream authority is granted by this task.
 
 Stop at `ready_for_review`; do not create a PR or merge.
+
+## External review correction
+
+Rejected review head: `4812c928980c593ef9f13ab910bc5ad25091eba2`.
+Regenerated smoke-callable evidence changed from pass-with-caveats to
+fail-requires-fix because `SyntheticControlCVXPY` receives an unexpected
+`placebo_strict` argument. This is a correction-scope builder/evidence defect,
+not stale committed evidence. Classify and resolve it within the existing
+task-owned D5 scope. One correction cycle remains; no unrelated baseline,
+analytical, product, sibling, or capability work is authorized.
