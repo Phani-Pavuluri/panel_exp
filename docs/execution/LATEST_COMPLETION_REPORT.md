@@ -1,20 +1,29 @@
-# GEOX_D5_COMMITTED_ARTIFACT_RECONCILIATION_001 — Authorization Report
+# GEOX_D5_COMMITTED_ARTIFACT_RECONCILIATION_001 — Ready for Review
 
-- **Status:** `authorized`
+- **Status:** `ready_for_review`
 - **Base/authorization SHA:** `eeabf9c6a04f08ec082429d31fcd1a34eb14b1c3`
 - **Implementation branch:** `fix/geox-d5-committed-artifact-reconciliation-001`
-- **Implementation:** not started
+- **Implementation commit:** `dae666f0272b8c03eb602a3393294c3aa7fd4053`
 - **Correction budget:** `0 completed / 1 remaining`
-- **Full Docker gate:** not required under the revised focused-validation policy
 
-This task is limited to reconciling the five named D5-STAT committed artifacts
-with their direct deterministic builders. It must first classify each mismatch
-as stale evidence, nondeterministic generation, or builder defect, then make the
-smallest owned repair while preserving schemas, analytical semantics, and
-authority. No artifact is regenerated during this authoring pass.
+## Result
 
-Required implementation validation is the five complete focused D5-STAT test
-modules, deterministic rebuild comparisons, Ruff, compile validation, JSON
-parse, diff checking, and changed/prohibited-path verification. No TBR,
-import-boundary, lifecycle-adoption, analytical, product, sibling, or
-capability work is authorized.
+The five committed D5-STAT artifacts were stale relative to their deterministic
+builders. Regenerating only the five owned JSON artifacts brought them into
+reproducible agreement after the existing `generated_at` normalization. No
+builder, analytical, production, or artifact schema semantics changed.
+
+## Validation
+
+- Five complete focused D5-STAT test modules: **70 passed**, **11964 warnings**.
+- Builder Ruff: passed.
+- Builder compile validation: passed.
+- Execution-state JSON parse: passed.
+- `git diff --check`: passed.
+- Full Docker gate: not run; not required by the revised focused-validation
+  policy for this bounded baseline family.
+
+Only the five authorized committed artifact paths changed in the implementation
+commit. The next task remains unauthorized; no TBR, import-boundary,
+lifecycle-adoption, analytical, product, sibling, or capability authority
+changed. No PR or merge was created.
