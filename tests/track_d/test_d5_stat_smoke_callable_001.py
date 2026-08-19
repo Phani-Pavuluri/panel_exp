@@ -125,6 +125,13 @@ class TestD5StatSmokeCallable001:
             if row["callable_status"] == "callable_pass":
                 assert row["unsupported_geometry_silently_allowed"] is False
 
+    def test_scm_placebo_strict_dispatch_does_not_reach_estimator_constructor(self) -> None:
+        row = _row_by_id(build_d5_stat_smoke_callable_001(), "SCM-PLACEBO")
+        assert row["exception_type"] != "TypeError"
+        assert "unexpected keyword argument 'placebo_strict'" not in (
+            row["exception_message"] or ""
+        )
+
     def test_overall_verdict_allowed(self) -> None:
         payload = build_d5_stat_smoke_callable_001()
         assert payload["overall_verdict"] in ALLOWED_OVERALL

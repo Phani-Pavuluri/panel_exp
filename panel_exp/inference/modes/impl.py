@@ -189,7 +189,11 @@ def run_kfold(ctx: InferenceRunContext) -> None:
 
 def run_placebo(ctx: InferenceRunContext) -> None:
     a = ctx.analyzer
-    kw = ctx.inference_kwargs
+    # ``placebo_strict`` controls how unsupported placebo geometry is
+    # classified; it is an inference-dispatch option, not a constructor
+    # argument for the estimator used by the placebo-in-space probes.
+    kw = dict(ctx.inference_kwargs)
+    placebo_strict = kw.pop("placebo_strict", True)
     prepare_y_and_y_hat(ctx)
 
     n_control = len(a.panel_data.control_units)
@@ -211,7 +215,6 @@ def run_placebo(ctx: InferenceRunContext) -> None:
         )
         a.results["intervals_available"] = False
         a.results["interval_type"] = IntervalType.UNAVAILABLE.value
-        placebo_strict = kw.get("placebo_strict", True)
         if placebo_strict:
             raise ValueError(f"Placebo inference unavailable: {reason}")
     else:
