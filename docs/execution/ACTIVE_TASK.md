@@ -3,7 +3,7 @@
 **Status:** authorized
 **Task ID:** `GEOX_TBR_RECOVERY_CONTRACT_ALIGNMENT_001`
 **Repository:** `Phani-Pavuluri/panel_exp`
-**Base SHA:** `7e1f4e1e5a39d22dcd67ae5448822120b9904946`
+**Base SHA:** `28bba2438ddee140061776ebc38a8c64df6ef028`
 **Implementation branch:** `fix/geox-tbr-recovery-contract-alignment-001`
 **Execution mode:** `branch_and_fast_forward`
 **Risk tier:** Tier 2 — TBR recovery contract alignment
