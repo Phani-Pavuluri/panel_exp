@@ -1,17 +1,15 @@
-# GEOX_D5_COMMITTED_ARTIFACT_RECONCILIATION_LINEAGE_REPAIR_001 — Merged and Closed
+# GEOX_SYNTHETIC_CONTROL_PLACEBO_STRICT_COMPATIBILITY_REPAIR_001 — Authorization Report
 
-- **Status:** `merged`
-- **Reviewed head:** `1acad189eb059a5f6cd50e30ba4646fafa30e7f1`
-- **Implementation commit:** `6f93071e2d8db3cd55f26659a8afb4786f08e071`
-- **Merge method:** fast-forward only
-- **Correction cycle:** `1 completed / 0 remaining`
+- **Status:** `authorized`
+- **Base/authorization SHA:** `ea886d7b73cc988b8440861ddcf9bc0c4fc4d246`
+- **Implementation branch:** `fix/geox-synthetic-control-placebo-strict-compatibility-repair-001`
+- **Implementation:** not started
+- **Correction budget:** `0 completed / 1 remaining`
+- **Full Docker gate:** not required under the revised focused-validation policy
 
-The fresh correction lineage was fast-forwarded to `main`. The five reviewed D5
-artifact files remain byte-for-byte preserved; no regeneration or commit
-transplant occurred. The correction branch was deleted locally and remotely.
-
-Focused validation had passed (`70 passed`, `11964 warnings`), with exact
-artifact equality, JSON parsing, and `git diff --check` passing. The next
-SyntheticControlCVXPY/placebo compatibility task remains unauthorized. No PR,
-merge commit, analytical, production, sibling, or capability-authority change
-occurred.
+This task addresses only the observed D5 smoke-callable incompatibility where
+`SyntheticControlCVXPY` receives an unexpected `placebo_strict` argument. The
+existing `fail_requires_fix` evidence is preserved until a focused compatibility
+repair is implemented and validated. No implementation branch, artifact
+regeneration, analytical change, sibling change, or capability-authority
+change occurred in this authoring pass.

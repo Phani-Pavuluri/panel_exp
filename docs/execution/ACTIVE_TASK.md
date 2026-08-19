@@ -1,13 +1,13 @@
 # Active Task
 
-**Status:** merged
-**Task ID:** `GEOX_D5_COMMITTED_ARTIFACT_RECONCILIATION_LINEAGE_REPAIR_001`
+**Status:** authorized
+**Task ID:** `GEOX_SYNTHETIC_CONTROL_PLACEBO_STRICT_COMPATIBILITY_REPAIR_001`
 **Repository:** `Phani-Pavuluri/panel_exp`
-**Base SHA:** `c81e9180ca92e3c18ad81c8538cc20039bc5ea75`
-**Implementation branch:** `fix/geox-d5-committed-artifact-reconciliation-lineage-repair-001-correction`
+**Base SHA:** `ea886d7b73cc988b8440861ddcf9bc0c4fc4d246`
+**Implementation branch:** `fix/geox-synthetic-control-placebo-strict-compatibility-repair-001`
 **Execution mode:** `branch_and_fast_forward`
-**Risk tier:** Tier 1 — merge-lineage and lifecycle receipt repair
-**Task execution authorized:** `false`
+**Risk tier:** Tier 2 — validation/inference compatibility boundary
+**Task execution authorized:** `true`
 **Correction execution authorized:** `false`
 **Merge authorized:** `false`
 **PR creation authorized:** `false`
@@ -15,52 +15,36 @@
 
 ## Objective
 
-Create a fresh implementation lineage descended directly from current
-`main@3656674837bec64f3527ace1efa08e101ec4ab7a` for the completed
-`GEOX_D5_COMMITTED_ARTIFACT_RECONCILIATION_001` milestone. Preserve the already
-reviewed D5 artifact contents and corrected smoke-callable `fail_requires_fix`
-classification exactly; this task repairs Git ancestry and publication
-receipts only.
+Repair the bounded D5 smoke-callable compatibility defect in which the
+validation builder invokes the `SyntheticControlCVXPY` placebo path with the
+inference-only `placebo_strict` keyword, which is not accepted by the placebo
+model-construction path. Preserve the explicit `fail_requires_fix` evidence
+until the compatibility behavior is correctly repaired and revalidated.
 
-The previously reviewed head
-`6a6f433f734552821e298dadb8a6053efe91e2b5` is historical evidence and must not
-be rebased, cherry-picked, merged, force-updated, or reused as executable
-ancestry. No artifact regeneration is permitted.
+Preserve public estimator APIs, analytical semantics, placebo strictness
+meaning, artifact schemas, guardrail wording, and all capability, producer,
+product, and runtime authority. Do not mask the defect by deleting the smoke
+case or weakening its verdict assertions.
 
 ## Owned scope
 
-Only the five already-reviewed D5 artifact JSON files and the three stable
-execution lifecycle files may be carried into the fresh lineage as exact
-content. No content changes are authorized to artifacts, builders, tests,
-production, analytical, inference, TBR, assignment, MIP, MMM, or capability
-surfaces. The implementation must prove byte/content preservation against the
-reviewed head and publish a fresh descendant from current main.
+Only the directly offending validation smoke builder, its focused test module,
+the narrowly required inference compatibility helper if repository evidence
+proves it is the correct boundary, the affected D5 smoke artifact, and the
+three stable execution lifecycle files may change. Do not modify assignment,
+SCM analytical behavior, TBR, UnitJackKnife, unrelated D5 artifacts, MIP,
+MMM, dependencies, Docker/CI, or capability state.
 
 ## Validation policy
 
-Run JSON parsing, exact artifact-content comparison against reviewed head,
-changed-path verification, `git diff --check`, and the focused D5 artifact
-tests without regenerating artifacts. The full Docker gate is not required for
-this lineage-only repair. No analytical or product authority is granted.
-
-## External metadata correction
-
-Rejected review head: `44bf08ee2989777362ff78d0e07b935350cd1076`.
-The correction is metadata-only: align risk tier, no-regeneration validation
-scope, correction state, and current GeoX main pin with this lineage-repair
-contract. The five preserved artifacts remain untouched.
+Use the locked environment. Run the complete D5 smoke-callable focused module,
+an explicit regression for the placebo_strict path and unsupported-placebo
+classification, changed-scope Ruff, compile validation, JSON parsing,
+`git diff --check`, and exact changed/prohibited-path verification. The full
+Docker gate is not required under the revised focused-validation policy.
 
 ## Sequencing
 
-This repair does not authorize lifecycle adoption, producer certification, TBR,
-or import-boundary work. The next bounded task is
-`GEOX_SYNTHETIC_CONTROL_PLACEBO_STRICT_COMPATIBILITY_REPAIR_001`, and it
-remains unauthorized. Stop at `ready_for_review`; do not create a PR or merge.
-
-Correction receipt: implementation `6f93071e2d8db3cd55f26659a8afb4786f08e071`
-restores the five reviewed artifacts byte-for-byte from current-main lineage;
-the correction cycle is consumed (`1 completed / 0 remaining`).
-
-The tree was externally approved at `1acad189eb059a5f6cd50e30ba4646fafa30e7f1`
-and fast-forwarded to `main`; the correction branch was deleted locally and
-remotely. This task is closed.
+The task does not authorize lifecycle adoption, producer certification, or any
+successor. The parked isolation milestone remains separately governed and
+unauthorized. Stop at `ready_for_review`; do not create a PR or merge.
