@@ -21,6 +21,7 @@ from panel_exp.validation.recovery_intervals import (
 )
 from panel_exp.validation.runner import (
     _path_relative_att,
+    _tbr_recovery_panel,
     default_estimator_configs,
 )
 from panel_exp.validation.synthetic_scenarios import (
@@ -135,7 +136,7 @@ def _inference_recovery_configs() -> Dict[str, RecoveryEstimatorConfig]:
 def all_recovery_configs() -> Dict[str, RecoveryEstimatorConfig]:
     """Point-estimate and inference-enabled recovery configs keyed by config name."""
     specs = _point_estimate_configs()
-    from panel_exp.methods.tbr import TBR, TBRRidge
+    from panel_exp.methods.tbr import TBRRidge
     from panel_exp.methods.triply_robust_est import TROP
     from panel_exp.governance.instrument_contract import class_tbr_recovery_factory
 
@@ -210,6 +211,8 @@ def _run_simulation(
     try:
         estimator = config.factory()
         panel = world.to_panel_dataset()
+        if config.estimator_name == "TBR":
+            panel = _tbr_recovery_panel(panel)
         estimator.run_analysis(panel, **config.run_kwargs)
     except Exception as exc:
         exc_type = type(exc).__name__

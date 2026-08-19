@@ -8,6 +8,7 @@ from dataclasses import dataclass, field, replace
 from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple
 
 import numpy as np
+import pandas as pd
 
 from panel_exp.panel_data import PanelDataset
 from panel_exp.validation.metrics import (
@@ -29,6 +30,28 @@ class EstimatorConfig:
     inference: Optional[str] = None
     run_kwargs: Dict[str, Any] = field(default_factory=dict)
     supports_significance: bool = False
+
+
+def _tbr_recovery_panel(panel: PanelDataset) -> PanelDataset:
+    """Aggregate unit-level recovery worlds to TBR's two-unit contract."""
+    treated = list(panel.treated_units or [])
+    control = [unit for unit in panel.units if unit not in treated]
+    if not treated or not control:
+        raise ValueError("TBR recovery requires treated and control units")
+    if not panel.treated_periods:
+        raise ValueError("TBR recovery requires a treated period")
+    aggregated = pd.DataFrame(
+        [
+            panel.wide_data.loc[treated].mean(axis=0),
+            panel.wide_data.loc[control].mean(axis=0),
+        ],
+        index=["treated", "control"],
+    )
+    return PanelDataset(
+        aggregated,
+        treated_periods=[panel.treated_periods[0]],
+        treated_units=["treated"],
+    )
 
 
 def default_estimator_configs() -> List[EstimatorConfig]:
@@ -155,6 +178,8 @@ def _run_replication(
     try:
         estimator = config.factory()
         panel = world.to_panel_dataset()
+        if config.estimator_name == "TBR":
+            panel = _tbr_recovery_panel(panel)
         estimator.run_analysis(panel, **config.run_kwargs)
     except Exception as exc:
         return ReplicationOutcome(
