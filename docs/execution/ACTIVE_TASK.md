@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** authorized
+**Status:** ready_for_review
 **Task ID:** `GEOX_SYNTHETIC_CONTROL_PLACEBO_STRICT_COMPATIBILITY_REPAIR_001`
 **Repository:** `Phani-Pavuluri/panel_exp`
 **Base SHA:** `ea886d7b73cc988b8440861ddcf9bc0c4fc4d246`
