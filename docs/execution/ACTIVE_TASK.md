@@ -1,14 +1,14 @@
 # Active Task
 
-**Status:** changes_requested
+**Status:** ready_for_review
 **Task ID:** `GEOX_D5_COMMITTED_ARTIFACT_RECONCILIATION_LINEAGE_REPAIR_001`
 **Repository:** `Phani-Pavuluri/panel_exp`
-**Base SHA:** `3656674837bec64f3527ace1efa08e101ec4ab7a`
-**Implementation branch:** `fix/geox-d5-committed-artifact-reconciliation-lineage-repair-001`
+**Base SHA:** `c81e9180ca92e3c18ad81c8538cc20039bc5ea75`
+**Implementation branch:** `fix/geox-d5-committed-artifact-reconciliation-lineage-repair-001-correction`
 **Execution mode:** `branch_and_fast_forward`
 **Risk tier:** Tier 1 — merge-lineage and lifecycle receipt repair
 **Task execution authorized:** `true`
-**Correction execution authorized:** `true`
+**Correction execution authorized:** `false`
 **Merge authorized:** `false`
 **PR creation authorized:** `false`
 **Unresolved execution-blocking design questions:** none
@@ -56,3 +56,7 @@ This repair does not authorize lifecycle adoption, producer certification, TBR,
 or import-boundary work. The next bounded task is
 `GEOX_SYNTHETIC_CONTROL_PLACEBO_STRICT_COMPATIBILITY_REPAIR_001`, and it
 remains unauthorized. Stop at `ready_for_review`; do not create a PR or merge.
+
+Correction receipt: implementation `6f93071e2d8db3cd55f26659a8afb4786f08e071`
+restores the five reviewed artifacts byte-for-byte from current-main lineage;
+the correction cycle is consumed (`1 completed / 0 remaining`).
