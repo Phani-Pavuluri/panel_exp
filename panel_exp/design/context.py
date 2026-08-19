@@ -15,3 +15,7 @@ class DesignRunContext:
 
     geo: GeoExperimentDesign
     design_kwargs: dict[str, Any] = field(default_factory=dict)
+    # Validation-owned callbacks are injected by validation workflows; the
+    # production registry never resolves validation modules itself.
+    validate_design: Any = None
+    build_contract: Any = None

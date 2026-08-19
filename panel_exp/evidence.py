@@ -780,24 +780,12 @@ class ExperimentEvidence:
         )
 
         guardrail_fields: Dict[str, Any] = {}
-        if design_contract is not None and guardrail_enforcement is None:
-            guardrail_module = __import__(
-                "panel_exp" + ".validation.design_guardrail_enforcement_001",
-                fromlist=["build_producer_guardrail_bundle"],
-            )
-            bundle = guardrail_module.build_producer_guardrail_bundle(
-                design_contract=design_contract,
-                contract_validation=contract_validation,
-                estimator_id=inference_method,
-            )
-            guardrail_fields = bundle
-        else:
-            if design_guardrail is not None:
-                guardrail_fields["design_guardrail"] = design_guardrail
-            if combination_guardrail is not None:
-                guardrail_fields["combination_guardrail"] = combination_guardrail
-            if guardrail_enforcement is not None:
-                guardrail_fields["guardrail_enforcement"] = guardrail_enforcement
+        if design_guardrail is not None:
+            guardrail_fields["design_guardrail"] = design_guardrail
+        if combination_guardrail is not None:
+            guardrail_fields["combination_guardrail"] = combination_guardrail
+        if guardrail_enforcement is not None:
+            guardrail_fields["guardrail_enforcement"] = guardrail_enforcement
 
         design_ev = DesignEvidence.from_assignment(
             spec,

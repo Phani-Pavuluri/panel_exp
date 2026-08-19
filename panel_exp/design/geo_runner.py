@@ -9,8 +9,8 @@ from panel_exp.evidence_hash import assignment_hash
 from panel_exp.panel_data import TimePeriod
 from panel_exp.spec import spillover_metadata_available, spec_from_geo_design
 
-# Test hooks retained without importing validation modules during production
-# module discovery.  The explicit pipeline resolves these lazily when needed.
+# Optional compatibility hooks for tests and validation-owned callers.  They
+# are callbacks only; this production module never imports validation code.
 validate_design = None
 build_and_validate_tier1_contract = None
 
@@ -52,23 +52,9 @@ def run_geo_experiment_design(ctx: DesignRunContext) -> tuple:
 
     Returns (mde_prc_df, mde_val_df, power_results_df).
     """
-    # Validation helpers load only when this explicit pipeline executes.
-    global validate_design, build_and_validate_tier1_contract
-    if validate_design is None:
-        validation_module = __import__(
-            "panel_exp.design" + ".validation", fromlist=["validate_design"]
-        )
-        validate_design = validation_module.validate_design
-    if build_and_validate_tier1_contract is None:
-        contract_module = __import__(
-            "panel_exp" + ".validation.design_contract_builder_001",
-            fromlist=["build_and_validate_tier1_contract"],
-        )
-        build_and_validate_tier1_contract = (
-            contract_module.build_and_validate_tier1_contract
-        )
-
     geo = ctx.geo
+    validate_callback = ctx.validate_design or validate_design
+    contract_callback = ctx.build_contract or build_and_validate_tier1_contract
     if geo.treatment_probability is None:
         tp = geo.n_test_grps / (geo.n_test_grps + 1)
     else:
@@ -103,7 +89,11 @@ def run_geo_experiment_design(ctx: DesignRunContext) -> tuple:
 
     # 2. Post-assignment validation gate
     if geo.validate_after_assign:
-        geo.last_validation = validate_design(
+        if validate_callback is None:
+            raise RuntimeError(
+                "validation callback must be injected by the validation-owned workflow"
+            )
+        geo.last_validation = validate_callback(
             geo.panel_data.wide_data,
             rs_dp_grps,
             n_test_grps=geo.n_test_grps,
@@ -132,22 +122,25 @@ def run_geo_experiment_design(ctx: DesignRunContext) -> tuple:
             if check.status.value == "WARN":
                 warnings.append(check.message)
 
-    registry_spec = geo._design_spec
-    design_contract, contract_validation = build_and_validate_tier1_contract(
-        spec=spec,
-        assignment=rs_dp_grps,
-        registry_key=registry_spec.name,
-        base_randomizer_cls=geo.base_randomizer_cls,
-        n_test_grps=geo.n_test_grps,
-        treatment_probability=tp,
-        is_rerandomization_wrapped=True,
-        validation_summary=validation_summary,
-        wide_data=geo.panel_data.wide_data,
-        design_kwargs=design_kwargs,
-        spec_hash=spec.content_hash(),
-        assignment_hash_value=assignment_hash(rs_dp_grps),
-        package_version=evidence_module.__version__,
-    )
+    design_contract = None
+    contract_validation = None
+    if contract_callback is not None:
+        registry_spec = geo._design_spec
+        design_contract, contract_validation = contract_callback(
+            spec=spec,
+            assignment=rs_dp_grps,
+            registry_key=registry_spec.name,
+            base_randomizer_cls=geo.base_randomizer_cls,
+            n_test_grps=geo.n_test_grps,
+            treatment_probability=tp,
+            is_rerandomization_wrapped=True,
+            validation_summary=validation_summary,
+            wide_data=geo.panel_data.wide_data,
+            design_kwargs=design_kwargs,
+            spec_hash=spec.content_hash(),
+            assignment_hash_value=assignment_hash(rs_dp_grps),
+            package_version=evidence_module.__version__,
+        )
 
     geo.last_evidence = ExperimentEvidence.build(
         spec,
