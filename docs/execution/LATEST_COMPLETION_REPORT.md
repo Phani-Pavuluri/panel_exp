@@ -1,8 +1,8 @@
-# GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001 — Blocked Report
+# GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001 — Reauthorization Report
 
-- **Status:** `blocked`
+- **Status:** `authorized`
 - **Base/authorization SHA:** `d44e114df27b276966d4c78266a8b451e5c05b37`
-- **Implementation branch:** `feat/geox-execution-lifecycle-single-source-adoption-001`
+- **Implementation branch:** `feat/geox-execution-lifecycle-single-source-adoption-001-fresh`
 - **Implementation:** not started
 - **Correction budget:** fresh, `0 completed / 1 remaining`
 - **Full Docker gate:** not required under the revised focused-validation policy
@@ -14,18 +14,14 @@ stable Markdown lifecycle surfaces deterministic generated views. The complete
 task contract is in `ACTIVE_TASK.md`; no implementation branch has been
 created.
 
-The previously blocked implementation head
-`8731beeb8fb41bf90c8b1fd1ba8db9fbad6e497d` is historical evidence only and is
-not executable ancestry. It must not be cherry-picked, merged, rebased, or
-reused. Implementation must be recreated from this authorization and current
-main.
+The previously blocked branch/head
+`feat/geox-execution-lifecycle-single-source-adoption-001@cf816fcb781b4dc5df6173e68a5a37c2b766c480`
+is preserved as historical evidence only and is not executable ancestry. It
+must not be cherry-picked, merged, rebased, or reused. Implementation must be
+recreated on the fresh branch from current main.
 
 No implementation, analytical, product, runtime, certification, capability,
 MIP, MMM, or successor-task authority changed. No PR or merge was created.
 
-Execution is blocked before implementation because the required branch name is
-occupied by historical blocked head
-`cf816fcb781b4dc5df6173e68a5a37c2b766c480`, which is not descended from the
-current authorization and is explicitly non-reusable. Resolution requires a
-governed disposition of that historical branch or a newly authorized branch
-identity; no force-update, cherry-pick, merge, or rebase was attempted.
+The fresh branch has not been created. The historical branch remains untouched;
+no force-update, cherry-pick, merge, or rebase was attempted.

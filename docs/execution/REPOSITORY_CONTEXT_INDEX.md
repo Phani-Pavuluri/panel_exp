@@ -3,10 +3,10 @@
 Active task: `GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001`.
 
 Current synchronized GeoX main is
-`Phani-Pavuluri/panel_exp@d44e114df27b276966d4c78266a8b451e5c05b37`. The
-authorized implementation branch is
-`feat/geox-execution-lifecycle-single-source-adoption-001`; it has not been
-created.
+`Phani-Pavuluri/panel_exp@39fc8baa6bfb73116b4208ea60a26be4075d66f1`. The
+authorized fresh implementation branch is
+`feat/geox-execution-lifecycle-single-source-adoption-001-fresh`; it has not
+been created.
 
 This fresh authorization adopts GeoX-local single-source lifecycle semantics
 from the merged MIP reference
@@ -19,8 +19,9 @@ diff-check, and scope validation; a full Docker gate is not required for this
 authorization.
 
 The prior blocked implementation branch/head
-`feat/geox-execution-lifecycle-single-source-adoption-001@8731beeb8fb41bf90c8b1fd1ba8db9fbad6e497d`
-is historical evidence only and must not be reused as executable ancestry.
+`feat/geox-execution-lifecycle-single-source-adoption-001@cf816fcb781b4dc5df6173e68a5a37c2b766c480`
+is preserved as historical evidence only and must not be reused as executable
+ancestry.
 The completed placebo compatibility repair is closed. No analytical,
 producer-certification, product, runtime, capability, MIP, or MMM authority is
 changed by this task.

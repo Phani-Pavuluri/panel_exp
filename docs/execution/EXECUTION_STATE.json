@@ -2,15 +2,15 @@
   "schema_version": "geox_repo_execution_state_v3",
   "repository": "Phani-Pavuluri/panel_exp",
   "task_id": "GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001",
-  "status": "blocked",
+  "status": "authorized",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
   "base_sha": "d44e114df27b276966d4c78266a8b451e5c05b37",
   "task_authoring_start_sha": "d44e114df27b276966d4c78266a8b451e5c05b37",
   "task_authoring_head_sha": "89165dfbb359e94939aaa92a6076c82627dbba74",
   "authorization_head_sha": "89165dfbb359e94939aaa92a6076c82627dbba74",
-  "authorized_branch_baseline_sha": "89165dfbb359e94939aaa92a6076c82627dbba74",
-  "feature_branch": "feat/geox-execution-lifecycle-single-source-adoption-001",
+  "authorized_branch_baseline_sha": "39fc8baa6bfb73116b4208ea60a26be4075d66f1",
+  "feature_branch": "feat/geox-execution-lifecycle-single-source-adoption-001-fresh",
   "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
@@ -27,9 +27,7 @@
   "remote_feature_branch_cleanup": null,
   "capability_authorizations_changed": false,
   "last_updated": "2026-08-19",
-  "blockers": [
-    "HISTORICAL_FEATURE_BRANCH_COLLISION_REQUIRES_GOVERNED_DISPOSITION"
-  ],
+  "blockers": [],
   "dependencies": [
     {
       "dependency_id": "DEP-MIP-P2-CAPABILITY-CHECKPOINT-LEDGER-001",
@@ -99,8 +97,8 @@
   },
   "next_task_id": null,
   "next_task_authorized": false,
-  "review_decision": "blocked",
+  "review_decision": "authorized",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Execution is blocked before implementation because the required feature-branch name is occupied by historical blocked head cf816fcb781b4dc5df6173e68a5a37c2b766c480, which does not descend from current authorized main and must not be reused, force-updated, cherry-picked, merged, or rebased. A governed branch disposition or new authorized branch identity is required. No implementation or authority change occurred."
+  "task_authoring_note": "The historical branch feat/geox-execution-lifecycle-single-source-adoption-001 remains preserved at cf816fcb781b4dc5df6173e68a5a37c2b766c480 as evidence only. The task is re-authorized to use fresh branch feat/geox-execution-lifecycle-single-source-adoption-001-fresh from current authorized main 39fc8baa6bfb73116b4208ea60a26be4075d66f1; it has not been created. No implementation or authority change occurred."
 }

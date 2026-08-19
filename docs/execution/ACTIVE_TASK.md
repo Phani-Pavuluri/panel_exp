@@ -1,10 +1,10 @@
 # Active Task
 
-**Status:** blocked
+**Status:** authorized
 **Task ID:** `GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001`
 **Repository:** `Phani-Pavuluri/panel_exp`
 **Base SHA:** `d44e114df27b276966d4c78266a8b451e5c05b37`
-**Implementation branch:** `feat/geox-execution-lifecycle-single-source-adoption-001`
+**Implementation branch:** `feat/geox-execution-lifecycle-single-source-adoption-001-fresh`
 **Execution mode:** `branch_and_fast_forward`
 **Risk tier:** Tier 3 — execution-governance state migration
 **Task execution authorized:** `true`
@@ -13,7 +13,6 @@
 **PR creation authorized:** `false`
 **Unresolved execution-blocking design questions:** none
 
-**Execution blocker:** `HISTORICAL_FEATURE_BRANCH_COLLISION_REQUIRES_GOVERNED_DISPOSITION`
 
 ## Objective
 
@@ -64,9 +63,10 @@ inference, TBR, SCM, UnitJackKnife, calibration-source behavior, artifacts, P2
 semantics, MIP, MMM, CI, or runtime dependencies.
 
 The prior blocked implementation branch/head
-`feat/geox-execution-lifecycle-single-source-adoption-001@8731beeb8fb41bf90c8b1fd1ba8db9fbad6e497d`
-is historical evidence only. Do not cherry-pick, merge, rebase, or reuse its
-executable ancestry; implementation must be recreated from this authorization.
+`feat/geox-execution-lifecycle-single-source-adoption-001@cf816fcb781b4dc5df6173e68a5a37c2b766c480`
+is preserved as historical evidence only. Do not cherry-pick, merge, rebase, or
+reuse its executable ancestry; implementation must be recreated on the fresh
+branch identity from this authorization.
 
 ## Revised focused validation
 
@@ -82,6 +82,5 @@ observed baseline debt must not be misclassified as an adoption regression.
 No successor task is authorized. MMM lifecycle adoption remains separately
 owned. Stop at `ready_for_review`; do not create a PR or merge.
 
-Execution cannot begin while the required branch name is occupied by the prior
-blocked historical head `cf816fcb781b4dc5df6173e68a5a37c2b766c480`, which is not
-descended from this authorization and must not be reused or force-updated.
+The historical branch remains untouched and the fresh implementation branch
+has not yet been created.
