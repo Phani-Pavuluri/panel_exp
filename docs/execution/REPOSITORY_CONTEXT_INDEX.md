@@ -1,13 +1,13 @@
 # GeoX execution context
 
-Active task: `GEOX_D5_COMMITTED_ARTIFACT_RECONCILIATION_001`.
+Active task: `GEOX_D5_COMMITTED_ARTIFACT_RECONCILIATION_LINEAGE_REPAIR_001`.
 
 The authorized implementation branch is
-`fix/geox-d5-committed-artifact-reconciliation-001`; it has not yet been
-created. This GeoX-local task reconciles only the five named D5-STAT committed
-artifacts with their deterministic builders under the focused validation
-policy. The merged TBR, import-isolation, and handoff-schema repairs are closed
-historical evidence, not the active task.
+`fix/geox-d5-committed-artifact-reconciliation-lineage-repair-001`; it has not
+yet been created. This GeoX-local task repairs only the publication lineage for
+the completed D5 artifact reconciliation and preserves reviewed artifact bytes.
+The reviewed head `6a6f433f734552821e298dadb8a6053efe91e2b5` is historical
+evidence only and is not executable ancestry.
 
 The historical pin-schema implementation
 `c7835e586925fe4e7b04505ad18e6563289bbb8b` remains evidence only and must not

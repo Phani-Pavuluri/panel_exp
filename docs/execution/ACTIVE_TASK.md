@@ -1,79 +1,50 @@
 # Active Task
 
-**Status:** changes_requested
-**Task ID:** `GEOX_D5_COMMITTED_ARTIFACT_RECONCILIATION_001`
+**Status:** authorized
+**Task ID:** `GEOX_D5_COMMITTED_ARTIFACT_RECONCILIATION_LINEAGE_REPAIR_001`
 **Repository:** `Phani-Pavuluri/panel_exp`
-**Base SHA:** `eeabf9c6a04f08ec082429d31fcd1a34eb14b1c3`
-**Implementation branch:** `fix/geox-d5-committed-artifact-reconciliation-001`
+**Base SHA:** `3656674837bec64f3527ace1efa08e101ec4ab7a`
+**Implementation branch:** `fix/geox-d5-committed-artifact-reconciliation-lineage-repair-001`
 **Execution mode:** `branch_and_fast_forward`
-**Risk tier:** Tier 2 — D5 committed-artifact reconciliation
+**Risk tier:** Tier 1 — merge-lineage and lifecycle receipt repair
 **Task execution authorized:** `true`
-**Correction execution authorized:** `true`
+**Correction execution authorized:** `false`
 **Merge authorized:** `false`
 **PR creation authorized:** `false`
 **Unresolved execution-blocking design questions:** none
 
 ## Objective
 
-Reconcile the five committed D5-STAT characterization artifacts with their
-deterministic repository builders. The bounded failures are the
-`test_committed_artifact_matches_build` checks in:
+Create a fresh implementation lineage descended directly from current
+`main@3656674837bec64f3527ace1efa08e101ec4ab7a` for the completed
+`GEOX_D5_COMMITTED_ARTIFACT_RECONCILIATION_001` milestone. Preserve the already
+reviewed D5 artifact contents and corrected smoke-callable `fail_requires_fix`
+classification exactly; this task repairs Git ancestry and publication
+receipts only.
 
-- `tests/track_d/test_d5_stat_augsynth_point_001.py`
-- `tests/track_d/test_d5_stat_mcell_percell_001.py`
-- `tests/track_d/test_d5_stat_smoke_callable_001.py`
-- `tests/track_d/test_d5_stat_tbr_agg_001.py`
-- `tests/track_d/test_d5_stat_tbrridge_inf_001.py`
+The previously reviewed head
+`6a6f433f734552821e298dadb8a6053efe91e2b5` is historical evidence and must not
+be rebased, cherry-picked, merged, force-updated, or reused as executable
+ancestry. No artifact regeneration is permitted.
 
-Determine whether each mismatch is stale committed evidence, nondeterministic
-generation, or a builder defect. Repair only the smallest evidence/builder
-surface required to make the committed artifacts reproducible.
+## Owned scope
 
-## Scope and prohibitions
+Only the five already-reviewed D5 artifact JSON files and the three stable
+execution lifecycle files may be carried into the fresh lineage as exact
+content. No content changes are authorized to artifacts, builders, tests,
+production, analytical, inference, TBR, assignment, MIP, MMM, or capability
+surfaces. The implementation must prove byte/content preservation against the
+reviewed head and publish a fresh descendant from current main.
 
-Owned implementation paths are the five named D5-STAT test modules, their
-directly corresponding validation builders, the five committed JSON artifacts,
-and the three stable execution lifecycle files. Do not modify assignment,
-SCM, TBR/TBRRidge, UnitJackKnife, inference semantics, calibration-source
-behavior, product/runtime code, P2 capability meaning, MIP, MMM, Docker/CI,
-dependencies, or unrelated D5 artifacts. Do not regenerate artifacts during
-authoring; regeneration is permitted only on the frozen implementation tree
-after the mismatch cause is established.
+## Validation policy
 
-## Required behavior
-
-Preserve artifact schemas, IDs, verdict semantics, guardrail wording, method
-identity, and all analytical/product authority. Generated timestamps must remain
-the only intentionally volatile field where the existing tests strip them.
-Builders must be deterministic for their declared configuration and committed
-artifacts must match the corresponding builder output exactly after the
-existing timestamp normalization.
-
-## Focused validation policy
-
-Use the locked repository environment. Run JSON parsing, all five complete
-focused D5-STAT test modules, explicit deterministic rebuild comparisons,
-changed-file Ruff, compile validation, `git diff --check`, and exact
-changed-path/prohibited-path verification. The full Docker gate is not required
-for this individual baseline family under the revised focused-validation policy.
-Do not repair TBR, import-boundary, lifecycle-adoption, or other baseline
-families here.
+Run JSON parsing, exact artifact-content comparison against reviewed head,
+changed-path verification, `git diff --check`, and the focused D5 artifact
+tests without regenerating artifacts. The full Docker gate is not required for
+this lineage-only repair. No analytical or product authority is granted.
 
 ## Sequencing
 
-The next task remains separately governed and unauthorized. The parked
-`GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_RECOVERY_001` milestone and
-its branch remain historical blocked evidence; no producer certification,
-analytical, capability, or downstream authority is granted by this task.
-
-Stop at `ready_for_review`; do not create a PR or merge.
-
-## External review correction
-
-Rejected review head: `4812c928980c593ef9f13ab910bc5ad25091eba2`.
-Regenerated smoke-callable evidence changed from pass-with-caveats to
-fail-requires-fix because `SyntheticControlCVXPY` receives an unexpected
-`placebo_strict` argument. This is a correction-scope builder/evidence defect,
-not stale committed evidence. Classify and resolve it within the existing
-task-owned D5 scope. One correction cycle remains; no unrelated baseline,
-analytical, product, sibling, or capability work is authorized.
+This repair does not authorize lifecycle adoption, producer certification,
+TBR, import-boundary work, or any successor. Stop at `ready_for_review`; do not
+create a PR or merge.
