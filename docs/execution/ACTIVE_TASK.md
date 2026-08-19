@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** authorized
+**Status:** changes_requested
 **Task ID:** `GEOX_D5_COMMITTED_ARTIFACT_RECONCILIATION_LINEAGE_REPAIR_001`
 **Repository:** `Phani-Pavuluri/panel_exp`
 **Base SHA:** `3656674837bec64f3527ace1efa08e101ec4ab7a`
@@ -42,6 +42,13 @@ Run JSON parsing, exact artifact-content comparison against reviewed head,
 changed-path verification, `git diff --check`, and the focused D5 artifact
 tests without regenerating artifacts. The full Docker gate is not required for
 this lineage-only repair. No analytical or product authority is granted.
+
+## External metadata correction
+
+Rejected review head: `44bf08ee2989777362ff78d0e07b935350cd1076`.
+The correction is metadata-only: align risk tier, no-regeneration validation
+scope, correction state, and current GeoX main pin with this lineage-repair
+contract. The five preserved artifacts remain untouched.
 
 ## Sequencing
 
