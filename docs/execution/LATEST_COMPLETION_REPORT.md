@@ -1,36 +1,34 @@
 # GEOX_PRODUCTION_VALIDATION_IMPORT_BOUNDARY_REPAIR_001 — Ready for Review
 
 - **Branch:** `fix/geox-production-validation-import-boundary-repair-001`
-- **Base:** `b7ed73cfddf9025727b37edf5bd3f35af8bc7325`
-- **Implementation commit:** `10fbeef43c3dc28a36d338988883ef5f3ef542a0`
+- **Implementation commit:** `e998e4357d490fd63ba6a453e9c6c156813d0848`
+- **Prior rejected review head:** `e66cd71766aeb6861c0ac5727f016ad403fac83e`
+- **Correction cycle:** `1 completed / 0 remaining`
 - **Decision:** `ready_for_review`
 
-## Behavior repaired
+## Semantic repair
 
-Production entry points no longer statically load validation-only modules during
-normal import discovery. Explicit validation pipelines retain their behavior via
-scoped lazy resolution, and the public package API remains unchanged.
+Production modules no longer resolve or import `panel_exp.validation`. The
+design pipeline accepts validation-owned callbacks through its execution
+context; evidence emission does not dynamically import validation guardrails.
+Public package imports and analytical behavior remain unchanged.
 
-## Validation evidence
+## Focused validation
 
 - JSON parse: passed.
-- Focused isolation and compatibility regressions: `11 passed`.
-- Ruff: passed on all changed production modules.
+- Isolation and compatibility regressions: `11 passed`.
+- Ruff: passed.
 - Compile validation: passed.
 - `git diff --check`: passed.
-- Full Docker gate: `9 failed, 6166 passed, 28 skipped`, runtime `3701.74s`,
-  exit `2`; receipt `/private/tmp/geox-import-boundary-docker-final.log` and
-  `/private/tmp/geox-import-boundary-docker-final.exit`.
 
-The four production/validation import-boundary failures are absent. The nine
-remaining failures are synchronized-main baseline families: TBR recovery (3),
-stale execution-handoff schema (1), and D5 committed-artifact reconciliation
-(5). No unrelated family was modified.
+The complete Docker gate was intentionally not completed under the revised
+focused-validation policy. The active run was stopped at user request; its
+partial output is retained at `/private/tmp/geox-import-boundary-semantic-docker.log`
+but is not terminal evidence. No Docker result is claimed.
 
 ## Scope and authority
 
-Changed production paths are limited to the import-boundary repair. Assignment,
-inference, SCM, TBR, UnitJackKnife, artifacts, calibration, MIP, MMM, and all
-product/capability authority remain unchanged. The next lifecycle-adoption task
-must be separately reauthorized after baseline repair. No PR or merge was
-created.
+Only production import-boundary modules and lifecycle files changed. TBR, D5
+artifact reconciliation, execution-schema governance, analytical behavior,
+assignment, inference, SCM, UnitJackKnife, calibration, MIP, MMM, and all
+product/capability authority remain unchanged. No PR or merge was created.

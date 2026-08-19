@@ -13,13 +13,10 @@
 **PR creation authorized:** `false`
 **Unresolved execution-blocking design questions:** none
 
-**Implementation commit:** `10fbeef43c3dc28a36d338988883ef5f3ef542a0`
+**Implementation commit:** `e998e4357d490fd63ba6a453e9c6c156813d0848`
 **Review decision:** `ready_for_review`
-**Validation:** focused isolation regressions passed (`11 passed`); Ruff, compile,
-JSON and diff checks passed; full Docker gate completed with `9 failed, 6166
-passed, 28 skipped` in `3701.74s`. The remaining failures are pre-existing TBR,
-execution-handoff-schema, and D5 committed-artifact baseline families. The
-task-owned import-boundary failures are absent.
+**Correction:** rejected head `e66cd71766aeb6861c0ac5727f016ad403fac83e`; cycle 1 consumed, 0 remaining.
+**Validation:** focused isolation and compatibility regressions passed (`11 passed`); Ruff, compile, JSON and diff checks passed. Full-suite Docker validation was intentionally not completed under the revised focused-validation policy; the running gate was stopped at user request and its partial log is not terminal evidence.
 
 ## Objective
 

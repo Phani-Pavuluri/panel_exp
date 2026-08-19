@@ -19,7 +19,7 @@
   "merge_authorized": false,
   "pr_creation_authorized": false,
   "reviewed_head_sha": null,
-  "rejected_review_head_sha": null,
+  "rejected_review_head_sha": "e66cd71766aeb6861c0ac5727f016ad403fac83e",
   "rejected_implementation_commit_sha": null,
   "implementation_commit_sha": "10fbeef43c3dc28a36d338988883ef5f3ef542a0",
   "approval_commit_sha": null,
@@ -47,12 +47,12 @@
     }
   ],
   "risk_tier": "tier_2_production_validation_import_boundary_repair",
-  "full_suite_validation_required": true,
-  "validation_scope": "json_parse_focused_production_validation_isolation_tests_import_regressions_ruff_compile_diff_check_changed_path_verification_full_docker_gate",
+  "full_suite_validation_required": false,
+  "validation_scope": "json_parse_focused_production_validation_isolation_tests_runtime_boundary_regressions_ruff_compile_diff_check_changed_path_verification",
   "unresolved_execution_blocking_design_questions": [],
   "maximum_correction_cycles": 1,
-  "correction_cycles_completed": 0,
-  "correction_cycles_remaining": 1,
+  "correction_cycles_completed": 1,
+  "correction_cycles_remaining": 0,
   "affected_repositories": [
     "Phani-Pavuluri/panel_exp",
     "Phani-Pavuluri/marketing_intelligence_platform",
@@ -100,5 +100,5 @@
   "review_decision": "ready_for_review",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Implementation 10fbeef43c3dc28a36d338988883ef5f3ef542a0 repairs the production validation import boundary by deferring validation-only imports until explicit opt-in pipelines execute. Focused isolation and compatibility regressions passed (11 passed), Ruff, compile, JSON and diff checks passed. Full Docker gate completed with 9 remaining failures, all pre-existing TBR, execution-handoff-schema, or D5 artifact baseline families; the import-boundary collection/runtime failures are absent. Ready for external exact-head review; no analytical, product, runtime-integration, certification, capability, MIP, or MMM authority is granted."
+  "task_authoring_note": "Implementation e998e4357d490fd63ba6a453e9c6c156813d0848 enforces the production validation boundary through explicit validation-owned callbacks; production code does not resolve validation modules. Focused isolation and compatibility regressions passed (11 passed), Ruff, compile, JSON and diff checks passed. Full-suite Docker validation was intentionally not completed under the revised focused-validation policy; the prior partial Docker run is non-terminal evidence only. Correction cycle consumed; rejected review head e66cd71766aeb6861c0ac5727f016ad403fac83e preserved. Ready for external exact-head review; no analytical, product, runtime-integration, certification, capability, MIP, or MMM authority is granted."
 }
