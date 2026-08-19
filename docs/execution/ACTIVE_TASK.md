@@ -45,6 +45,7 @@ this lineage-only repair. No analytical or product authority is granted.
 
 ## Sequencing
 
-This repair does not authorize lifecycle adoption, producer certification,
-TBR, import-boundary work, or any successor. Stop at `ready_for_review`; do not
-create a PR or merge.
+This repair does not authorize lifecycle adoption, producer certification, TBR,
+or import-boundary work. The next bounded task is
+`GEOX_SYNTHETIC_CONTROL_PLACEBO_STRICT_COMPATIBILITY_REPAIR_001`, and it
+remains unauthorized. Stop at `ready_for_review`; do not create a PR or merge.

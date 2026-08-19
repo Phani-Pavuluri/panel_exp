@@ -7,9 +7,9 @@
   "base_branch": "main",
   "base_sha": "3656674837bec64f3527ace1efa08e101ec4ab7a",
   "task_authoring_start_sha": "3656674837bec64f3527ace1efa08e101ec4ab7a",
-  "task_authoring_head_sha": "3656674837bec64f3527ace1efa08e101ec4ab7a",
-  "authorization_head_sha": "3656674837bec64f3527ace1efa08e101ec4ab7a",
-  "authorized_branch_baseline_sha": "3656674837bec64f3527ace1efa08e101ec4ab7a",
+  "task_authoring_head_sha": "ef23e2f93c55a621caa8162d7f76ef8e425a5830",
+  "authorization_head_sha": "ef23e2f93c55a621caa8162d7f76ef8e425a5830",
+  "authorized_branch_baseline_sha": "ef23e2f93c55a621caa8162d7f76ef8e425a5830",
   "feature_branch": "fix/geox-d5-committed-artifact-reconciliation-lineage-repair-001",
   "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
@@ -95,10 +95,10 @@
     "blocker": "synchronized-main validation debt",
     "merge_authorized": false
   },
-  "next_task_id": "GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001",
+  "next_task_id": "GEOX_SYNTHETIC_CONTROL_PLACEBO_STRICT_COMPATIBILITY_REPAIR_001",
   "next_task_authorized": false,
   "review_decision": "authorized",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Authorized from current synchronized main 3656674837bec64f3527ace1efa08e101ec4ab7a to create a fresh descendant lineage for the completed D5 artifact reconciliation. Preserve reviewed head 6a6f433f734552821e298dadb8a6053efe91e2b5 artifact contents and fail_requires_fix classification exactly; no rebase, cherry-pick, merge commit, force-push, or artifact regeneration. No analytical, product, runtime, certification, capability, MIP, or MMM authority is granted."
+  "task_authoring_note": "Authorized from current synchronized main ef23e2f93c55a621caa8162d7f76ef8e425a5830 to create a fresh descendant lineage for the completed D5 artifact reconciliation. Preserve reviewed head 6a6f433f734552821e298dadb8a6053efe91e2b5 artifact contents and fail_requires_fix classification exactly; no rebase, cherry-pick, merge commit, force-push, or artifact regeneration. The next bounded task is GEOX_SYNTHETIC_CONTROL_PLACEBO_STRICT_COMPATIBILITY_REPAIR_001 and remains unauthorized. No analytical, product, runtime, certification, capability, MIP, or MMM authority is granted."
 }

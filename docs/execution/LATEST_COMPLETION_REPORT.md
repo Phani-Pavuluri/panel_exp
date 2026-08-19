@@ -15,5 +15,7 @@ for byte. No rebase, cherry-pick, merge commit, force-push, or artifact
 regeneration is authorized.
 
 Validation is limited to exact content preservation, focused artifact tests,
-JSON parsing, scope verification, and diff checking. No production, analytical,
-sibling, or capability authority changes.
+JSON parsing, scope verification, and diff checking. The next bounded task is
+`GEOX_SYNTHETIC_CONTROL_PLACEBO_STRICT_COMPATIBILITY_REPAIR_001` and remains
+unauthorized. No production, analytical, sibling, or capability authority
+changes.
