@@ -1,18 +1,17 @@
-# GEOX_D5_COMMITTED_ARTIFACT_RECONCILIATION_LINEAGE_REPAIR_001 — Corrected Ready for Review
+# GEOX_D5_COMMITTED_ARTIFACT_RECONCILIATION_LINEAGE_REPAIR_001 — Merged and Closed
 
-- **Status:** `ready_for_review`
-- **Base/authorization SHA:** `c81e9180ca92e3c18ad81c8538cc20039bc5ea75`
-- **Implementation branch:** `fix/geox-d5-committed-artifact-reconciliation-lineage-repair-001-correction`
+- **Status:** `merged`
+- **Reviewed head:** `1acad189eb059a5f6cd50e30ba4646fafa30e7f1`
 - **Implementation commit:** `6f93071e2d8db3cd55f26659a8afb4786f08e071`
-- **Rejected review head:** `44bf08ee2989777362ff78d0e07b935350cd1076`
+- **Merge method:** fast-forward only
 - **Correction cycle:** `1 completed / 0 remaining`
 
-The fresh correction branch descends from current main and restores the five
-reviewed D5 artifact files byte-for-byte. No commit was transplanted and no
-artifact was regenerated.
+The fresh correction lineage was fast-forwarded to `main`. The five reviewed D5
+artifact files remain byte-for-byte preserved; no regeneration or commit
+transplant occurred. The correction branch was deleted locally and remotely.
 
-Focused five-module validation passed (`70 passed`, `11964 warnings`), exact
-artifact equality passed, JSON parsing passed, and `git diff --check` passed.
-The next SyntheticControlCVXPY/placebo compatibility task remains
-unauthorized. No analytical, production, sibling, or capability authority
-changed; no PR or merge was created.
+Focused validation had passed (`70 passed`, `11964 warnings`), with exact
+artifact equality, JSON parsing, and `git diff --check` passing. The next
+SyntheticControlCVXPY/placebo compatibility task remains unauthorized. No PR,
+merge commit, analytical, production, sibling, or capability-authority change
+occurred.
