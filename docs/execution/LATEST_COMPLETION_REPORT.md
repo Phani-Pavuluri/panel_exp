@@ -1,34 +1,19 @@
-# GEOX_PRODUCTION_VALIDATION_IMPORT_BOUNDARY_REPAIR_001 — Merged
+# GEOX_TBR_RECOVERY_CONTRACT_ALIGNMENT_001 — Authorization Report
 
-- **Branch:** `fix/geox-production-validation-import-boundary-repair-001`
-- **Implementation commit:** `e998e4357d490fd63ba6a453e9c6c156813d0848`
-- **Prior rejected review head:** `e66cd71766aeb6861c0ac5727f016ad403fac83e`
-- **Correction cycle:** `1 completed / 0 remaining`
-- **Decision:** `merged`
+- **Status:** `authorized`
+- **Base/authorization SHA:** `7e1f4e1e5a39d22dcd67ae5448822120b9904946`
+- **Implementation branch:** `fix/geox-tbr-recovery-contract-alignment-001`
+- **Implementation:** not started
+- **Correction budget:** `0 completed / 1 remaining`
+- **Full Docker gate:** intentionally not required under the revised focused-validation policy
 
-## Semantic repair
+This task is narrowly scoped to the two synchronized-main TBR recovery
+failures: the positive-effect smoke direction test and the same-seed metrics
+test. Future implementation must preserve deterministic recovery behavior and
+existing analytical contracts without modifying TBR production code, D5
+artifacts, or unrelated baseline families.
 
-Production modules no longer resolve or import `panel_exp.validation`. The
-design pipeline accepts validation-owned callbacks through its execution
-context; evidence emission does not dynamically import validation guardrails.
-Public package imports and analytical behavior remain unchanged.
-
-## Focused validation
-
-- JSON parse: passed.
-- Isolation and compatibility regressions: `11 passed`.
-- Ruff: passed.
-- Compile validation: passed.
-- `git diff --check`: passed.
-
-The complete Docker gate was intentionally not completed under the revised
-focused-validation policy. The active run was stopped at user request; its
-partial output is retained at `/private/tmp/geox-import-boundary-semantic-docker.log`
-but is not terminal evidence. No Docker result is claimed.
-
-## Scope and authority
-
-Only production import-boundary modules and lifecycle files changed. TBR, D5
-artifact reconciliation, execution-schema governance, analytical behavior,
-assignment, inference, SCM, UnitJackKnife, calibration, MIP, MMM, and all
-product/capability authority remain unchanged. No PR or merge was created.
+Required validation is JSON parsing, focused and ordered/reversed TBR recovery
+tests, Ruff, compile validation, diff checking, and changed-path verification.
+No implementation, branch creation, PR, merge, sibling change, or authority
+change has occurred.

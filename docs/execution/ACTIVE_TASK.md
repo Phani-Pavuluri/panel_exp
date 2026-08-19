@@ -1,57 +1,56 @@
 # Active Task
 
-**Status:** merged
-**Task ID:** `GEOX_PRODUCTION_VALIDATION_IMPORT_BOUNDARY_REPAIR_001`
+**Status:** authorized
+**Task ID:** `GEOX_TBR_RECOVERY_CONTRACT_ALIGNMENT_001`
 **Repository:** `Phani-Pavuluri/panel_exp`
-**Base SHA:** `b7ed73cfddf9025727b37edf5bd3f35af8bc7325`
-**Implementation branch:** `fix/geox-production-validation-import-boundary-repair-001`
+**Base SHA:** `7e1f4e1e5a39d22dcd67ae5448822120b9904946`
+**Implementation branch:** `fix/geox-tbr-recovery-contract-alignment-001`
 **Execution mode:** `branch_and_fast_forward`
-**Risk tier:** Tier 2 — production/validation import-boundary repair
+**Risk tier:** Tier 2 — TBR recovery contract alignment
 **Task execution authorized:** `true`
 **Correction execution authorized:** `false`
 **Merge authorized:** `false`
 **PR creation authorized:** `false`
 **Unresolved execution-blocking design questions:** none
 
-**Implementation commit:** `e998e4357d490fd63ba6a453e9c6c156813d0848`
-**Review decision:** `merged`
-**Correction:** rejected head `e66cd71766aeb6861c0ac5727f016ad403fac83e`; cycle 1 consumed, 0 remaining.
-**Validation:** focused isolation and compatibility regressions passed (`11 passed`); Ruff, compile, JSON and diff checks passed. Full-suite Docker validation was intentionally not completed under the revised focused-validation policy; the running gate was stopped at user request and its partial log is not terminal evidence.
-
 ## Objective
 
-Repair the current production/validation import-boundary failures exposed by
-the GeoX repository Docker gate. Production entry points must not statically or
-at runtime import `panel_exp.validation`, and production source must not carry
-validation-import references that violate the repository isolation contract.
+Align the TBR recovery contract exposed by the synchronized-main baseline. The
+bounded failures are:
 
-Bound the repair to the actual import paths demonstrated by
-`tests/test_validation_production_isolation.py`; do not mask failures by
-weakening those tests. Preserve production analytical behavior and public APIs.
+- `tests/test_estimator_recovery_smoke.py::test_smoke_positive_effect_direction[TBR]`
+- `tests/test_recovery_runner.py::test_same_seed_identical_metrics[TBR]`
 
-## Scope
+Repair only the TBR recovery harness/contract mismatch. Preserve production
+TBR, TBRRidge, SCM, UnitJackKnife, inference, assignment, analytical semantics,
+artifacts, calibration, MIP, MMM, and all product/capability authority.
 
-Owned paths are only the directly offending production import modules and the
-focused isolation test, plus the three stable lifecycle files required for
-publication. Do not modify assignment, inference, SCM, TBR, UnitJackKnife,
-D5 artifacts, calibration-source behavior, MIP, MMM, dependencies, Docker/CI,
-or capability/product authority. The merged handoff-schema and import-
-isolation tasks are historical evidence, not executable ancestry.
+## Required behavior
 
-## Validation contract
+Determine the actual contract mismatch from the TBR recovery implementation and
+tests. Preserve deterministic same-seed metrics and the established positive
+effect-direction assertion. Do not weaken assertions, alter analytical truth,
+or mask failures with retries or fixture changes.
 
-Run JSON parsing, all tests in `tests/test_validation_production_isolation.py`,
-focused runtime-boundary regressions for every changed boundary, Ruff and
-compile validation on changed files, `git diff --check`, and exact changed-path
-checks. Under the revised focused-validation policy, the full Docker gate is
-intentionally not required for this correction; any prior partial Docker output
-is non-terminal evidence. Do not repair TBR, D5 artifacts, or other families
-here.
+## Owned scope
 
-## Sequencing and authority
+Only the directly offending TBR recovery harness/tests and the three stable
+execution lifecycle files may change. D5 artifacts, production assignment,
+inference, SCM, UnitJackKnife, calibration-source behavior, MIP, MMM,
+dependencies, Docker/CI, and capability authority are prohibited.
 
-TBR, D5 artifact reconciliation, lifecycle adoption, producer certification,
-MIP, MMM, analytical, runtime, and downstream capability work remain separate
-and unauthorized. All product, runtime, certification, sibling, and capability
-authority remains false. Stop at `ready_for_review` for external exact-head
-review; do not create a PR or merge.
+## Validation policy
+
+Run JSON parsing, both focused TBR nodes, an ordered/reversed recovery
+regression proving order independence, Ruff and compile validation on changed
+files, `git diff --check`, and exact changed-path verification. The full Docker
+gate is intentionally not required under the revised focused-validation policy.
+Do not repair D5 artifacts, handoff-schema governance, or other baseline
+families here.
+
+## Sequencing
+
+The next local baseline task is
+`GEOX_D5_COMMITTED_ARTIFACT_RECONCILIATION_001`, unauthorized. The parked
+isolation milestone and lifecycle adoption remain separately governed and
+unauthorized. Stop at `ready_for_review`; do not create a PR or merge.
