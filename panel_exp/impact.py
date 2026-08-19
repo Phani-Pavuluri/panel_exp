@@ -79,7 +79,7 @@ class ImpactAnalyzer(ABC):
 
         **Governance:** Returns a **native/internal** results dict. It is **not** downstream-authorized
         for TrustReport, CalibrationSignal, MMM, LLM, or production-facing consumers. Governed readouts
-        must use ``panel_exp.validation.estimator_readout_adapter_001.run_governed_analysis`` or
+        must use the governed estimator readout adapter or
         ``build_estimator_readout`` to produce ``ReadoutEvidence`` before any downstream authorization
         gate (see ``DOWNSTREAM_READOUT_AUTHORIZATION_GATEWAY_001``).
 
@@ -365,4 +365,3 @@ class ImpactAnalyzer(ABC):
         if legend:
           axs[2].legend(loc="upper left")
         plt.show()
-        

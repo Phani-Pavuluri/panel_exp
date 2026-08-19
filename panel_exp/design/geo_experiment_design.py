@@ -355,13 +355,15 @@ class GeoExperimentDesign:
         Requires ``run_design`` to have populated ``last_evidence``. Does not run
         estimators or change scoring; delegates to ``export_geo_run_bundle``.
         """
-        from panel_exp.artifacts.geo_run_export import export_geo_run_bundle
+        export_module = __import__(
+            "panel_exp.artifacts.geo_run_export", fromlist=["export_geo_run_bundle"]
+        )
 
         if self.last_evidence is None:
             raise ValueError(
                 "No experiment evidence on this design object; run run_design first."
             )
-        return export_geo_run_bundle(
+        return export_module.export_geo_run_bundle(
             evidence=self.last_evidence,
             experiment_card=experiment_card,
             include_track_b_views=include_track_b_views,

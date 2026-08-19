@@ -4,10 +4,6 @@ panel_exp — geo-panel experimentation (design, methods, inference).
 
 __version__ = "0.2.1"
 
-from panel_exp.artifacts.experiment_card import (
-    attach_experiment_card_markdown,
-    build_experiment_card,
-)
 from panel_exp.design import GEO_RUN_DESIGN_SUPPORTED, get_design_registry
 from panel_exp.evidence import DesignEvidence, ExperimentEvidence, InferenceEvidence
 from panel_exp.inference_result import InferenceResult, IntervalType
@@ -69,6 +65,18 @@ __all__ = [
     "DesignValidationResult",
     "ValidationStatus",
 ]
+
+
+def build_experiment_card(*args, **kwargs):
+    """Lazily build a human-readable card without importing advisory policy."""
+    module = __import__("panel_exp.artifacts.experiment_card", fromlist=["build_experiment_card"])
+    return module.build_experiment_card(*args, **kwargs)
+
+
+def attach_experiment_card_markdown(*args, **kwargs):
+    """Lazily attach card markdown without widening production imports."""
+    module = __import__("panel_exp.artifacts.experiment_card", fromlist=["attach_experiment_card_markdown"])
+    return module.attach_experiment_card_markdown(*args, **kwargs)
 
 
 def __getattr__(name: str):

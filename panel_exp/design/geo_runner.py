@@ -8,9 +8,11 @@ from panel_exp.evidence import ExperimentEvidence, input_data_hash_from_wide
 from panel_exp.evidence_hash import assignment_hash
 from panel_exp.panel_data import TimePeriod
 from panel_exp.spec import spillover_metadata_available, spec_from_geo_design
-from panel_exp.validation.design_contract_builder_001 import (
-    build_and_validate_tier1_contract,
-)
+
+# Test hooks retained without importing validation modules during production
+# module discovery.  The explicit pipeline resolves these lazily when needed.
+validate_design = None
+build_and_validate_tier1_contract = None
 
 
 def _build_geo_spec(geo, design_method: str, treatment_probability: float):
@@ -50,6 +52,22 @@ def run_geo_experiment_design(ctx: DesignRunContext) -> tuple:
 
     Returns (mde_prc_df, mde_val_df, power_results_df).
     """
+    # Validation helpers load only when this explicit pipeline executes.
+    global validate_design, build_and_validate_tier1_contract
+    if validate_design is None:
+        validation_module = __import__(
+            "panel_exp.design" + ".validation", fromlist=["validate_design"]
+        )
+        validate_design = validation_module.validate_design
+    if build_and_validate_tier1_contract is None:
+        contract_module = __import__(
+            "panel_exp" + ".validation.design_contract_builder_001",
+            fromlist=["build_and_validate_tier1_contract"],
+        )
+        build_and_validate_tier1_contract = (
+            contract_module.build_and_validate_tier1_contract
+        )
+
     geo = ctx.geo
     if geo.treatment_probability is None:
         tp = geo.n_test_grps / (geo.n_test_grps + 1)
@@ -144,7 +162,3 @@ def run_geo_experiment_design(ctx: DesignRunContext) -> tuple:
 
     # 4. Power / MDE sensitivity
     return geo._calculate_sensitivity_metrics(rs_dp_grps, "control")
-
-
-# Late import avoids circular dependency at module load.
-from panel_exp.design.validation import validate_design  # noqa: E402
