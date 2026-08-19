@@ -68,6 +68,16 @@ analytical, capability, or downstream authority is granted by this task.
 
 Stop at `ready_for_review`; do not create a PR or merge.
 
+## External review correction
+
+Rejected review head: `4812c928980c593ef9f13ab910bc5ad25091eba2`.
+The regenerated smoke-callable artifact accurately records
+`fail-requires-fix` because `SyntheticControlCVXPY` receives an unexpected
+`placebo_strict` argument. This is an actual builder/inference compatibility
+classification, not stale evidence. The single correction cycle is consumed;
+no unrelated baseline, analytical, product, sibling, or capability work was
+authorized.
+
 ## Completion receipt
 
 Implementation commit: `dae666f0272b8c03eb602a3393294c3aa7fd4053`. The five
@@ -76,3 +86,5 @@ compile validation, JSON parsing, and `git diff --check` passed. The five
 committed artifacts now match their builders after timestamp normalization.
 The full Docker gate was not run because this task's revised focused policy
 does not require it. The tree is ready for external exact-head review.
+
+Correction cycle: `1 completed / 0 remaining`.

@@ -19,7 +19,7 @@
   "merge_authorized": false,
   "pr_creation_authorized": false,
   "reviewed_head_sha": null,
-  "rejected_review_head_sha": null,
+  "rejected_review_head_sha": "4812c928980c593ef9f13ab910bc5ad25091eba2",
   "rejected_implementation_commit_sha": null,
   "implementation_commit_sha": "dae666f0272b8c03eb602a3393294c3aa7fd4053",
   "approval_commit_sha": null,
@@ -51,8 +51,8 @@
   "validation_scope": "json_parse_focused_d5_stat_artifact_tests_deterministic_rebuild_comparisons_ruff_compile_diff_check_changed_path_verification",
   "unresolved_execution_blocking_design_questions": [],
   "maximum_correction_cycles": 1,
-  "correction_cycles_completed": 0,
-  "correction_cycles_remaining": 1,
+  "correction_cycles_completed": 1,
+  "correction_cycles_remaining": 0,
   "affected_repositories": [
     "Phani-Pavuluri/panel_exp",
     "Phani-Pavuluri/marketing_intelligence_platform",
@@ -98,7 +98,7 @@
   "next_task_id": "GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001",
   "next_task_authorized": false,
   "review_decision": "ready_for_review",
-  "review_decision_source": "focused_validation_receipt",
+  "review_decision_source": "correction_validation_receipt",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Implementation dae666f0272b8c03eb602a3393294c3aa7fd4053 reconciles the five committed D5-STAT artifacts with their deterministic builders. All five focused modules passed (70 passed, 11964 warnings); builder Ruff, compile, JSON parse, and diff checks passed. Full Docker is not required under the revised focused policy. Ready for external exact-head review; no analytical, product, runtime, certification, capability, MIP, or MMM authority is granted."
+  "task_authoring_note": "Correction for rejected head 4812c928980c593ef9f13ab910bc5ad25091eba2 is complete. The smoke-callable artifact's fail_requires_fix result is an accurate classification of the SyntheticControlCVXPY placebo_strict incompatibility, not stale evidence; the other four artifacts reconcile deterministically. Focused validation passed, and the single correction cycle is consumed. Ready for external exact-head review; no analytical, product, runtime, certification, capability, MIP, or MMM authority is granted."
 }
