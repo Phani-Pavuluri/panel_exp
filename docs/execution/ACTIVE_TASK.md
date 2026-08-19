@@ -1,13 +1,13 @@
 # Active Task
 
-**Status:** merged
-**Task ID:** `GEOX_SYNTHETIC_CONTROL_PLACEBO_STRICT_COMPATIBILITY_REPAIR_001`
+**Status:** authorized
+**Task ID:** `GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001`
 **Repository:** `Phani-Pavuluri/panel_exp`
-**Base SHA:** `ea886d7b73cc988b8440861ddcf9bc0c4fc4d246`
-**Implementation branch:** `fix/geox-synthetic-control-placebo-strict-compatibility-repair-001`
+**Base SHA:** `d44e114df27b276966d4c78266a8b451e5c05b37`
+**Implementation branch:** `feat/geox-execution-lifecycle-single-source-adoption-001`
 **Execution mode:** `branch_and_fast_forward`
-**Risk tier:** Tier 2 — validation/inference compatibility boundary
-**Task execution authorized:** `false`
+**Risk tier:** Tier 3 — execution-governance state migration
+**Task execution authorized:** `true`
 **Correction execution authorized:** `false`
 **Merge authorized:** `false`
 **PR creation authorized:** `false`
@@ -15,36 +15,67 @@
 
 ## Objective
 
-Repair the bounded D5 smoke-callable compatibility defect in which the
-validation builder invokes the `SyntheticControlCVXPY` placebo path with the
-inference-only `placebo_strict` keyword, which is not accepted by the placebo
-model-construction path. Preserve the explicit `fail_requires_fix` evidence
-until the compatibility behavior is correctly repaired and revalidated.
+Adopt GeoX-local single-source execution lifecycle semantics equivalent to the
+merged MIP reference at
+`Phani-Pavuluri/marketing_intelligence_platform@b0f57701a55d5cbe1d94692bf378a23d03945646`.
+`docs/execution/EXECUTION_STATE.json` becomes the sole mutable lifecycle
+authority; `ACTIVE_TASK.md` and `LATEST_COMPLETION_REPORT.md` contain
+deterministic generated views.
 
-Preserve public estimator APIs, analytical semantics, placebo strictness
-meaning, artifact schemas, guardrail wording, and all capability, producer,
-product, and runtime authority. Do not mask the defect by deleting the smoke
-case or weakening its verdict assertions.
+## Contract
 
-## Owned scope
+Migrate `geox_repo_execution_state_v2` in place to
+`geox_repo_execution_state_v3`. Use exactly
+`maximum_correction_cycles`, `correction_cycles_completed`, and
+`correction_cycles_remaining`, with completed plus remaining equal to maximum.
+Preserve historical D5 closure meaning without changing analytical or product
+meaning.
 
-Only the directly offending validation smoke builder, its focused test module,
-the narrowly required inference compatibility helper if repository evidence
-proves it is the correct boundary, the affected D5 smoke artifact, and the
-three stable execution lifecycle files may change. Do not modify assignment,
-SCM analytical behavior, TBR, UnitJackKnife, unrelated D5 artifacts, MIP,
-MMM, dependencies, Docker/CI, or capability state.
+Use exactly one pair of generated-view markers per stable execution document:
+`BEGIN GEOX TASKCTL EXECUTION VIEW` and `END GEOX TASKCTL EXECUTION VIEW`.
+Only bytes inside the generated block may change; missing, duplicate, nested,
+reversed, or malformed markers fail closed. Marker examples in this contract
+must not be represented as live HTML marker pairs.
 
-## Validation policy
+Generated fields render deterministically from canonical state: status/current
+decision, task identity, repository and execution mode, base and authorization
+provenance, branch state, execution/merge/PR authority, implementation and
+review evidence, blockers, correction counters, review decision, cleanup
+evidence, and capability-authority status. Use lowercase booleans, literal
+`null`, `none` for empty blockers, and the generated-view warning.
 
-Use the locked environment. Run the complete D5 smoke-callable focused module,
-an explicit regression for the placebo_strict path and unsupported-placebo
-classification, changed-scope Ruff, compile validation, JSON parsing,
-`git diff --check`, and exact changed/prohibited-path verification. The full
-Docker gate is not required under the revised focused-validation policy.
+Adopt the lifecycle states `idle`, `proposed`, `authorized`, `in_progress`,
+`blocked`, `ready_for_review`, `changes_requested`, `merged`, and `superseded`.
+`approved_for_merge` is forbidden. Transitions must be table-driven,
+evidence-driven, fail closed, validate canonical state and both current views
+before any write, validate complete candidate state/views before replacement,
+and preserve protected GeoX analytical, product, runtime, certification,
+capability, CalibrationSignal, simulation, planning, recommendation, real-data,
+pilot, production, and successor-task authorities.
 
-## Sequencing
+## Implementation boundary
 
-The task does not authorize lifecycle adoption, producer certification, or any
-successor. The parked isolation milestone remains separately governed and
-unauthorized. Stop at `ready_for_review`; do not create a PR or merge.
+Own only `AGENTS.md`, `panel_exp/execution/`, `tests/execution/`, the three
+stable execution files, and an existing GeoX execution-standard file only if
+present on synchronized Git. Do not modify analytical methods, assignment,
+inference, TBR, SCM, UnitJackKnife, calibration-source behavior, artifacts, P2
+semantics, MIP, MMM, CI, or runtime dependencies.
+
+The prior blocked implementation branch/head
+`feat/geox-execution-lifecycle-single-source-adoption-001@8731beeb8fb41bf90c8b1fd1ba8db9fbad6e497d`
+is historical evidence only. Do not cherry-pick, merge, rebase, or reuse its
+executable ancestry; implementation must be recreated from this authorization.
+
+## Revised focused validation
+
+Require JSON/schema migration checks, focused execution-governance and
+transition/reason-code tests, generated-view divergence and malformed-marker
+tests, byte-preserving/idempotent sync tests, correction-counter and closure
+invariant tests, protected-authority tests, migrated-tree `taskctl check`, Ruff,
+mypy when supported, compile validation, `git diff --check`, and exact
+changed-path verification. Under the revised focused-validation policy, the
+full Docker gate is not required for this authorization; any separately
+observed baseline debt must not be misclassified as an adoption regression.
+
+No successor task is authorized. MMM lifecycle adoption remains separately
+owned. Stop at `ready_for_review`; do not create a PR or merge.
