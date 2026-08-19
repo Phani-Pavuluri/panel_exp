@@ -1,21 +1,20 @@
-# GEOX_D5_COMMITTED_ARTIFACT_RECONCILIATION_LINEAGE_REPAIR_001 — Authorization Report
+# GEOX_D5_COMMITTED_ARTIFACT_RECONCILIATION_LINEAGE_REPAIR_001 — Ready for Review
 
-- **Status:** `authorized`
+- **Status:** `ready_for_review`
 - **Base/authorization SHA:** `3656674837bec64f3527ace1efa08e101ec4ab7a`
 - **Implementation branch:** `fix/geox-d5-committed-artifact-reconciliation-lineage-repair-001`
+- **Implementation commit:** `c7946f9c1964fac2d2f966ae70d665702405e9d2`
 - **Reviewed historical head:** `6a6f433f734552821e298dadb8a6053efe91e2b5`
-- **Implementation:** not started
-- **Correction budget:** `0 completed / 1 remaining`
 
-The reviewed D5 artifact reconciliation cannot fast-forward onto current main
-because its lineage predates the authorization correction. This task authorizes
-only a fresh descendant from current main that preserves the five reviewed
-artifact files and the smoke-callable `fail_requires_fix` classification byte
-for byte. No rebase, cherry-pick, merge commit, force-push, or artifact
-regeneration is authorized.
+The five reviewed D5 artifact files were restored byte-for-byte into a fresh
+descendant of current main. No commit was transplanted and no artifact was
+regenerated.
 
-Validation is limited to exact content preservation, focused artifact tests,
-JSON parsing, scope verification, and diff checking. The next bounded task is
-`GEOX_SYNTHETIC_CONTROL_PLACEBO_STRICT_COMPATIBILITY_REPAIR_001` and remains
-unauthorized. No production, analytical, sibling, or capability authority
-changes.
+The five focused D5-STAT modules passed (`70 passed`, `11964 warnings`). JSON
+parsing, exact content equality against the reviewed head, and `git diff --check`
+passed. The full Docker gate is not required by this lineage-only policy.
+
+The next bounded task,
+`GEOX_SYNTHETIC_CONTROL_PLACEBO_STRICT_COMPATIBILITY_REPAIR_001`, remains
+unauthorized. No analytical, production, sibling, or capability authority
+changed; no PR or merge was created.
