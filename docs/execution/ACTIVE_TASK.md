@@ -1,6 +1,6 @@
 # Active Task
 
-**Status:** authorized
+**Status:** blocked
 **Task ID:** `GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001`
 **Repository:** `Phani-Pavuluri/panel_exp`
 **Base SHA:** `d44e114df27b276966d4c78266a8b451e5c05b37`
@@ -12,6 +12,8 @@
 **Merge authorized:** `false`
 **PR creation authorized:** `false`
 **Unresolved execution-blocking design questions:** none
+
+**Execution blocker:** `HISTORICAL_FEATURE_BRANCH_COLLISION_REQUIRES_GOVERNED_DISPOSITION`
 
 ## Objective
 
@@ -79,3 +81,7 @@ observed baseline debt must not be misclassified as an adoption regression.
 
 No successor task is authorized. MMM lifecycle adoption remains separately
 owned. Stop at `ready_for_review`; do not create a PR or merge.
+
+Execution cannot begin while the required branch name is occupied by the prior
+blocked historical head `cf816fcb781b4dc5df6173e68a5a37c2b766c480`, which is not
+descended from this authorization and must not be reused or force-updated.
