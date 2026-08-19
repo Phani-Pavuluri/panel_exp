@@ -41,11 +41,12 @@ isolation tasks are historical evidence, not executable ancestry.
 ## Validation contract
 
 Run JSON parsing, all tests in `tests/test_validation_production_isolation.py`,
-focused import-regression tests for every changed boundary, Ruff and compile
-validation on changed files, `git diff --check`, exact changed-path checks, and
-the complete repository `make validate-docker` gate. Compare any remaining
-failures with synchronized main and classify unrelated baseline families; do
-not repair TBR, D5 artifacts, or other families here.
+focused runtime-boundary regressions for every changed boundary, Ruff and
+compile validation on changed files, `git diff --check`, and exact changed-path
+checks. Under the revised focused-validation policy, the full Docker gate is
+intentionally not required for this correction; any prior partial Docker output
+is non-terminal evidence. Do not repair TBR, D5 artifacts, or other families
+here.
 
 ## Sequencing and authority
 

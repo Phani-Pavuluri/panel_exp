@@ -21,7 +21,7 @@
   "reviewed_head_sha": null,
   "rejected_review_head_sha": "e66cd71766aeb6861c0ac5727f016ad403fac83e",
   "rejected_implementation_commit_sha": null,
-  "implementation_commit_sha": "10fbeef43c3dc28a36d338988883ef5f3ef542a0",
+  "implementation_commit_sha": "e998e4357d490fd63ba6a453e9c6c156813d0848",
   "approval_commit_sha": null,
   "local_feature_branch_cleanup": null,
   "remote_feature_branch_cleanup": null,
