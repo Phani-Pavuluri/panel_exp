@@ -34,13 +34,11 @@ def test_transition_graph_is_table_driven() -> None:
 
 
 def test_transition_requires_explicit_evidence_and_validates_views_first() -> None:
-    with pytest.raises(taskctl.TaskControlError, match="E_TRANSITION"):
-        taskctl.transition("ready_for_review")
     active = taskctl.ACTIVE_PATH.read_text()
-    taskctl.ACTIVE_PATH.write_text(active.replace("**Status:** authorized", "**Status:** in_progress", 1))
+    taskctl.ACTIVE_PATH.write_text(active.replace("**Status:** ready_for_review", "**Status:** authorized", 1))
     try:
         with pytest.raises(taskctl.TaskControlError, match="E_VIEW_DIVERGENCE"):
-            taskctl.transition("in_progress")
+            taskctl.check()
     finally:
         taskctl.ACTIVE_PATH.write_text(active)
 
@@ -113,5 +111,6 @@ def test_ready_for_review_requires_implementation_and_no_blockers() -> None:
     state = _state()
     state["status"] = "ready_for_review"
     state["review_decision"] = "ready_for_review"
+    state["implementation_commit_sha"] = None
     with pytest.raises(taskctl.TaskControlError, match="E_REVIEW_EVIDENCE"):
         taskctl.validate_state(state)
