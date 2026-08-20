@@ -4,7 +4,7 @@
 **Task ID:** `GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001`
 **Repository:** `Phani-Pavuluri/panel_exp`
 **Base SHA:** `d44e114df27b276966d4c78266a8b451e5c05b37`
-**Implementation branch:** `feat/geox-execution-lifecycle-single-source-adoption-001-fresh`
+**Implementation branch:** `feat/geox-execution-lifecycle-single-source-adoption-001-correction`
 **Execution mode:** `branch_and_fast_forward`
 **Risk tier:** Tier 3 — execution-governance state migration
 **Task execution authorized:** `true`
@@ -82,7 +82,7 @@ observed baseline debt must not be misclassified as an adoption regression.
 No successor task is authorized. MMM lifecycle adoption remains separately
 owned. Stop at `ready_for_review`; do not create a PR or merge.
 
-The rejected fresh implementation head
+The rejected implementation head
 `46e598babf8377b0334d9b66c0223e829fce8197` is under correction review. The
-historical branch remains untouched; correction work must remain on the fresh
-implementation branch and preserve all protected authorities.
+historical and rejected branches remain untouched; correction work must use the
+new correction branch from current main and preserve all protected authorities.

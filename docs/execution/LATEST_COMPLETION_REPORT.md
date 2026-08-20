@@ -2,7 +2,7 @@
 
 - **Status:** `changes_requested`
 - **Base/authorization SHA:** `d44e114df27b276966d4c78266a8b451e5c05b37`
-- **Implementation branch:** `feat/geox-execution-lifecycle-single-source-adoption-001-fresh`
+- **Implementation branch:** `feat/geox-execution-lifecycle-single-source-adoption-001-correction`
 - **Implementation commit under correction:** `7d006cadd59dbfc26108433aba4022b4ad631c13`
 - **Correction budget:** fresh, `0 completed / 1 remaining`
 - **Full Docker gate:** not required under the revised focused-validation policy
@@ -25,7 +25,8 @@ MIP, MMM, or successor-task authority changed. No PR or merge was created.
 
 External review rejected head `46e598babf8377b0334d9b66c0223e829fce8197` for
 stale duplicated lifecycle facts. Correction execution is authorized with the
-fresh branch already created; the historical branch remains untouched. The
-correction must remove stale canonical notes/prose and align the GeoX pin and
-branch-created state without changing implementation semantics, protected
-authority, or the focused-validation policy. No Docker run is required.
+new correction branch not yet created from current main; historical and
+rejected branches remain untouched. The correction must remove stale canonical
+notes/prose and align the GeoX pin and branch-created state without changing
+implementation semantics, protected authority, or the focused-validation
+policy. No Docker run is required.
