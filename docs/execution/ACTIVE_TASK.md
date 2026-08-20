@@ -1,19 +1,35 @@
+<!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
 **Status:** authorized
-**Task ID:** `GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001`
-**Repository:** `Phani-Pavuluri/panel_exp`
-**Base SHA:** `d44e114df27b276966d4c78266a8b451e5c05b37`
-**Implementation branch:** `feat/geox-execution-lifecycle-single-source-adoption-001-fresh`
-**Execution mode:** `branch_and_fast_forward`
-**Risk tier:** Tier 3 — execution-governance state migration
-**Task execution authorized:** `true`
-**Correction execution authorized:** `false`
-**Merge authorized:** `false`
-**PR creation authorized:** `false`
-**Unresolved execution-blocking design questions:** none
 
+_Generated from `EXECUTION_STATE.json`; do not edit._
 
+- **Task ID:** `GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001`
+- **Repository:** `Phani-Pavuluri/panel_exp`
+- **Execution mode:** `branch_and_fast_forward`
+- **Base SHA:** `d44e114df27b276966d4c78266a8b451e5c05b37`
+- **Authorization provenance:** `89165dfbb359e94939aaa92a6076c82627dbba74`
+- **Feature branch:** `feat/geox-execution-lifecycle-single-source-adoption-001-fresh`
+- **Feature branch created:** `false`
+- **Task execution authorized:** `true`
+- **Correction execution authorized:** `false`
+- **Merge authorized:** `false`
+- **PR creation authorized:** `false`
+- **Implementation commit:** `null`
+- **Reviewed head:** `null`
+- **Rejected review head:** `null`
+- **Rejected implementation commit:** `null`
+- **Approval commit:** `null`
+- **Blockers:** `none`
+- **Maximum correction cycles:** `1`
+- **Correction cycles completed:** `0`
+- **Correction cycles remaining:** `1`
+- **Review decision:** `authorized`
+- **Local feature-branch cleanup:** `null`
+- **Remote feature-branch cleanup:** `null`
+- **Capability authorizations changed:** `false`
+<!-- END GEOX TASKCTL EXECUTION VIEW -->
 ## Objective
 
 Adopt GeoX-local single-source execution lifecycle semantics equivalent to the
