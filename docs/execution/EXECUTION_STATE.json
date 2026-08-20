@@ -11,7 +11,7 @@
   "authorization_head_sha": "89165dfbb359e94939aaa92a6076c82627dbba74",
   "authorized_branch_baseline_sha": "e76acbe7264a860385506c44eb01693a0f80905a",
   "feature_branch": "feat/geox-execution-lifecycle-single-source-adoption-001-correction",
-  "feature_branch_created": false,
+  "feature_branch_created": true,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
   "task_execution_authorized": true,
@@ -63,7 +63,7 @@
   ],
   "coordination_workstream_id": "WS-GEOX-EXECUTION-LIFECYCLE-SINGLE-SOURCE-ADOPTION-001",
   "coordination_capability_owner": "geox_execution_governance",
-  "geox_main_pin": "f5f1e8327d85bbed49092c7175b728499575aefe",
+  "geox_main_pin": "3bc8297da816072b0ae76930ddeb0ae63ec9fd4e",
   "mip_main_pin": "a293ce52a813709ca624332123019139928cc51e",
   "mmm_main_pin": "fe8e784923994406a2e4907d28debd872d61fd73",
   "package_or_runtime_changes_authorized": false,
@@ -100,5 +100,5 @@
   "review_decision": "changes_requested",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Correction lineage authorized from current main e496d6a0357666aee431d67e84a142342f96b182. The rejected implementation head 46e598babf8377b0334d9b66c0223e829fce8197 and historical branch remain evidence only; fresh correction branch feat/geox-execution-lifecycle-single-source-adoption-001-correction has not been created."
+  "task_authoring_note": null
 }

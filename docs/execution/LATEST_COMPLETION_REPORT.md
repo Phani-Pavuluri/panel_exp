@@ -24,9 +24,9 @@ No implementation, analytical, product, runtime, certification, capability,
 MIP, MMM, or successor-task authority changed. No PR or merge was created.
 
 External review rejected head `46e598babf8377b0334d9b66c0223e829fce8197` for
-stale duplicated lifecycle facts. Correction execution is authorized with the
-new correction branch not yet created from current main; historical and
-rejected branches remain untouched. The correction must remove stale canonical
-notes/prose and align the GeoX pin and branch-created state without changing
-implementation semantics, protected authority, or the focused-validation
-policy. No Docker run is required.
+stale duplicated lifecycle facts. Correction execution is authorized on the
+fresh branch from current main; historical and rejected branches remain
+untouched. The correction removed stale canonical notes/prose and aligned the
+GeoX pin and branch-created state without changing implementation semantics,
+protected authority, or the focused-validation policy. No Docker run was
+required.

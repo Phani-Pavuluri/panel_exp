@@ -85,4 +85,4 @@ owned. Stop at `ready_for_review`; do not create a PR or merge.
 The rejected implementation head
 `46e598babf8377b0334d9b66c0223e829fce8197` is under correction review. The
 historical and rejected branches remain untouched; correction work must use the
-new correction branch from current main and preserve all protected authorities.
+fresh correction branch from current main and preserve all protected authorities.
