@@ -3,10 +3,11 @@
 Active task: `GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001`.
 
 Current synchronized GeoX main is
-`Phani-Pavuluri/panel_exp@39fc8baa6bfb73116b4208ea60a26be4075d66f1`. The
+`Phani-Pavuluri/panel_exp@f5f1e8327d85bbed49092c7175b728499575aefe`. The
 authorized fresh implementation branch is
-`feat/geox-execution-lifecycle-single-source-adoption-001-fresh`; it has not
-been created.
+`feat/geox-execution-lifecycle-single-source-adoption-001-fresh`; it is under
+correction review at rejected head
+`46e598babf8377b0334d9b66c0223e829fce8197`.
 
 This fresh authorization adopts GeoX-local single-source lifecycle semantics
 from the merged MIP reference
