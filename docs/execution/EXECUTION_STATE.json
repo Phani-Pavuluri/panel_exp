@@ -9,7 +9,7 @@
   "task_authoring_start_sha": "d44e114df27b276966d4c78266a8b451e5c05b37",
   "task_authoring_head_sha": "89165dfbb359e94939aaa92a6076c82627dbba74",
   "authorization_head_sha": "89165dfbb359e94939aaa92a6076c82627dbba74",
-  "authorized_branch_baseline_sha": "e496d6a0357666aee431d67e84a142342f96b182",
+  "authorized_branch_baseline_sha": "e76acbe7264a860385506c44eb01693a0f80905a",
   "feature_branch": "feat/geox-execution-lifecycle-single-source-adoption-001-correction",
   "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
