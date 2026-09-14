@@ -2,12 +2,10 @@
 
 Active task: `GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001`.
 
-Current synchronized GeoX main is
-`Phani-Pavuluri/panel_exp@3bc8297da816072b0ae76930ddeb0ae63ec9fd4e`. The
-authorized fresh implementation branch is
-`feat/geox-execution-lifecycle-single-source-adoption-001-correction`; it is
-created locally for this correction. The rejected head is
-`46e598babf8377b0334d9b66c0223e829fce8197`.
+Current lifecycle status, synchronized-main pin, branch identity, correction
+counters, and review evidence are canonical only in
+`docs/execution/EXECUTION_STATE.json`. The stable generated views are
+`ACTIVE_TASK.md` and `LATEST_COMPLETION_REPORT.md`.
 
 This fresh authorization adopts GeoX-local single-source lifecycle semantics
 from the merged MIP reference
@@ -19,10 +17,8 @@ idempotence, protected-authority, Ruff/mypy-if-supported, compile, JSON,
 diff-check, and scope validation; a full Docker gate is not required for this
 authorization.
 
-The prior blocked implementation branch/head
-`feat/geox-execution-lifecycle-single-source-adoption-001@cf816fcb781b4dc5df6173e68a5a37c2b766c480`
-is preserved as historical evidence only and must not be reused as executable
-ancestry.
+The prior blocked branch/head and the externally rejected implementation are
+historical evidence only and must not be reused as executable ancestry.
 The completed placebo compatibility repair is closed. No analytical,
 producer-certification, product, runtime, capability, MIP, or MMM authority is
 changed by this task.

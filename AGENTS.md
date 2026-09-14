@@ -15,3 +15,6 @@ prerequisites, branch, owned scope, validation, commit, and push; stop at
 and no pre-merge approval metadata commit is allowed. Merge only after exact-head
 approval with `git merge --ff-only`, one closure commit, push, synchronization,
 and cleanup. Never create a PR or guess.
+
+For lifecycle-state work, the repository-authored validation invocation is
+`python -m panel_exp.execution.taskctl check`.

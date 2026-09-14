@@ -1,19 +1,35 @@
+<!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** changes_requested
-**Task ID:** `GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001`
-**Repository:** `Phani-Pavuluri/panel_exp`
-**Base SHA:** `d44e114df27b276966d4c78266a8b451e5c05b37`
-**Implementation branch:** `feat/geox-execution-lifecycle-single-source-adoption-001-correction`
-**Execution mode:** `branch_and_fast_forward`
-**Risk tier:** Tier 3 — execution-governance state migration
-**Task execution authorized:** `true`
-**Correction execution authorized:** `true`
-**Merge authorized:** `false`
-**PR creation authorized:** `false`
-**Unresolved execution-blocking design questions:** none
+**Status:** `changes_requested`
 
+_Generated from `EXECUTION_STATE.json`; do not edit._
 
+- **Task ID:** `GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001`
+- **Repository:** `Phani-Pavuluri/panel_exp`
+- **Execution mode:** `branch_and_fast_forward`
+- **Base SHA:** `d44e114df27b276966d4c78266a8b451e5c05b37`
+- **Authorization provenance:** `89165dfbb359e94939aaa92a6076c82627dbba74`
+- **Feature branch:** `feat/geox-execution-lifecycle-single-source-adoption-001-correction`
+- **Feature branch created:** `true`
+- **Task execution authorized:** `true`
+- **Correction execution authorized:** `true`
+- **Merge authorized:** `false`
+- **PR creation authorized:** `false`
+- **Implementation commit:** `7d006cadd59dbfc26108433aba4022b4ad631c13`
+- **Reviewed head:** `null`
+- **Rejected review head:** `46e598babf8377b0334d9b66c0223e829fce8197`
+- **Rejected implementation commit:** `7d006cadd59dbfc26108433aba4022b4ad631c13`
+- **Approval commit:** `null`
+- **Blockers:** `none`
+- **Maximum correction cycles:** `1`
+- **Correction cycles completed:** `0`
+- **Correction cycles remaining:** `1`
+- **Review decision:** `changes_requested`
+- **Local feature-branch cleanup:** `null`
+- **Remote feature-branch cleanup:** `null`
+- **Capability authorizations changed:** `false`
+<!-- END GEOX TASKCTL EXECUTION VIEW -->
 ## Objective
 
 Adopt GeoX-local single-source execution lifecycle semantics equivalent to the
@@ -82,7 +98,6 @@ observed baseline debt must not be misclassified as an adoption regression.
 No successor task is authorized. MMM lifecycle adoption remains separately
 owned. Stop at `ready_for_review`; do not create a PR or merge.
 
-The rejected implementation head
-`46e598babf8377b0334d9b66c0223e829fce8197` is under correction review. The
-historical and rejected branches remain untouched; correction work must use the
-fresh correction branch from current main and preserve all protected authorities.
+The historical and rejected branches remain immutable evidence only. Lifecycle
+status, branch facts, correction counters, and review evidence appear only in
+the generated view above.

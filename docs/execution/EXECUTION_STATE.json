@@ -43,7 +43,7 @@
       "task_id": "GEOX_CERTIFIED_CALIBRATION_SOURCE_MANIFEST_001",
       "state": "satisfied_as_existing_main_surfaces_only",
       "merged_checkpoint_sha": "b11646bab1f461964644a6526ef4967a8f04624d",
-    "resolution_condition": "The existing builder, validator, committed manifest, and governed-readout source tree remain present on synchronized GeoX main; no certification is inferred."
+      "resolution_condition": "The existing builder, validator, committed manifest, and governed-readout source tree remain present on synchronized GeoX main; no certification is inferred."
     }
   ],
   "risk_tier": "tier_3_execution_governance_state_migration",
