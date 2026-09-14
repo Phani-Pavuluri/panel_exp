@@ -22,6 +22,19 @@ def state() -> dict[str, object]:
     return json.loads(taskctl.STATE_PATH.read_text(encoding="utf-8"))
 
 
+def prepare_changes_requested() -> None:
+    canonical = state()
+    canonical.update(
+        status="changes_requested",
+        review_decision="changes_requested",
+        correction_execution_authorized=True,
+        correction_cycles_completed=0,
+        correction_cycles_remaining=1,
+    )
+    taskctl.STATE_PATH.write_text(json.dumps(canonical, indent=2) + "\n", encoding="utf-8")
+    taskctl.sync()
+
+
 def test_schema_migration_and_correction_invariant() -> None:
     canonical = state()
     taskctl.validate_state(canonical)
@@ -34,12 +47,12 @@ def test_transition_table_excludes_forbidden_approval_state() -> None:
     assert taskctl.TRANSITIONS["changes_requested"] == frozenset({"in_progress", "blocked", "ready_for_review", "superseded"})
     assert "approved_for_merge" not in taskctl.STATES
     with pytest.raises(taskctl.TaskControlError, match="E_TRANSITION"):
-        taskctl.transition("merged")
+        taskctl.transition("proposed")
 
 
 def test_check_rejects_generated_view_divergence_before_transition() -> None:
     active = taskctl.ACTIVE_PATH.read_text(encoding="utf-8")
-    taskctl.ACTIVE_PATH.write_text(active.replace("`changes_requested`", "`in_progress`", 1), encoding="utf-8")
+    taskctl.ACTIVE_PATH.write_text(active.replace("do not edit", "do not alter", 1), encoding="utf-8")
     with pytest.raises(taskctl.TaskControlError, match="E_VIEW_DIVERGENCE"):
         taskctl.transition("ready_for_review", implementation_sha="a" * 40, complete_correction=True)
 
@@ -68,7 +81,7 @@ def test_generated_view_sync_is_byte_preserving_and_idempotent() -> None:
 def test_sync_replaces_only_generated_block() -> None:
     original = taskctl.ACTIVE_PATH.read_text(encoding="utf-8")
     prefix, suffix = original.split(taskctl.BEGIN_MARKER, 1)[0], original.split(taskctl.END_MARKER, 1)[1]
-    taskctl.ACTIVE_PATH.write_text(original.replace("`changes_requested`", "`blocked`", 1), encoding="utf-8")
+    taskctl.ACTIVE_PATH.write_text(original.replace("do not edit", "do not alter", 1), encoding="utf-8")
     taskctl.sync()
     synchronized = taskctl.ACTIVE_PATH.read_text(encoding="utf-8")
     assert synchronized.startswith(prefix + taskctl.BEGIN_MARKER)
@@ -97,6 +110,7 @@ def test_protected_authorities_cannot_be_introduced() -> None:
 
 
 def test_correction_closure_requires_explicit_evidence_and_updates_counters() -> None:
+    prepare_changes_requested()
     with pytest.raises(taskctl.TaskControlError, match="E_TRANSITION_CORRECTION"):
         taskctl.transition("ready_for_review", implementation_sha="b" * 40)
     taskctl.transition("ready_for_review", implementation_sha="b" * 40, complete_correction=True)
