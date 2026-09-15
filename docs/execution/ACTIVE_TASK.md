@@ -9,7 +9,7 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Execution mode:** `branch_and_fast_forward`
 - **Base SHA:** `d819fb17ccb2be90bb296d528ca7e0b05548f766`
-- **Authorization provenance:** `d819fb17ccb2be90bb296d528ca7e0b05548f766`
+- **Authorization provenance:** `b003d7915d635413fd45fcb98e4ee36ccbc0c7b8`
 - **Feature branch:** `audit/geox-main-test-isolation-and-checkpoint-context-reassessment-001`
 - **Feature branch created:** `false`
 - **Task execution authorized:** `true`
@@ -38,9 +38,11 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
   `audit/geox-main-test-isolation-and-checkpoint-context-reassessment-001`
 - Fresh-main base: `d819fb17ccb2be90bb296d528ca7e0b05548f766`
 
-Create the authorized branch only after verifying that local `main`,
-`origin/main`, and the recorded authorized baseline are identical. The branch
-must not already exist locally or remotely. Do not execute from another branch.
+Create the authorized branch only after verifying that local `main` and
+`origin/main` are identical, task-authoring commit
+`b003d7915d635413fd45fcb98e4ee36ccbc0c7b8` is its ancestor, and intervening
+commits are task-authoring metadata only. The branch must not already exist
+locally or remotely. Do not execute from another branch.
 
 ## Objective
 

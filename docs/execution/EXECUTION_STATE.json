@@ -7,9 +7,9 @@
   "base_branch": "main",
   "base_sha": "d819fb17ccb2be90bb296d528ca7e0b05548f766",
   "task_authoring_start_sha": "d819fb17ccb2be90bb296d528ca7e0b05548f766",
-  "task_authoring_head_sha": "d819fb17ccb2be90bb296d528ca7e0b05548f766",
-  "authorization_head_sha": "d819fb17ccb2be90bb296d528ca7e0b05548f766",
-  "authorized_branch_baseline_sha": "d819fb17ccb2be90bb296d528ca7e0b05548f766",
+  "task_authoring_head_sha": "b003d7915d635413fd45fcb98e4ee36ccbc0c7b8",
+  "authorization_head_sha": "b003d7915d635413fd45fcb98e4ee36ccbc0c7b8",
+  "authorized_branch_baseline_sha": "b003d7915d635413fd45fcb98e4ee36ccbc0c7b8",
   "feature_branch": "audit/geox-main-test-isolation-and-checkpoint-context-reassessment-001",
   "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
@@ -103,5 +103,5 @@
   "review_decision": "authorized",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Authorized as a fresh-main validation-only reassessment from GeoX main d819fb17ccb2be90bb296d528ca7e0b05548f766. The parked branch at 0c16766f47cae903c9a085043dfa51949e61ea68 is 79 main commits behind and 13 commits divergent from merge base b3f6b9acf81ff268c21d96d1014f8780fba5644f. It is immutable evidence only. The task may retire the historical synchronized-main validation debt or identify a concrete current-main defect, but may not change tests, package/runtime behavior, analytical truth, certification, or downstream authority."
+  "task_authoring_note": "Authorized by task-authoring commit b003d7915d635413fd45fcb98e4ee36ccbc0c7b8 as a fresh-main validation-only reassessment from GeoX main d819fb17ccb2be90bb296d528ca7e0b05548f766. The parked branch at 0c16766f47cae903c9a085043dfa51949e61ea68 is 79 main commits behind and 13 commits divergent from merge base b3f6b9acf81ff268c21d96d1014f8780fba5644f. It is immutable evidence only. The task may retire the historical synchronized-main validation debt or identify a concrete current-main defect, but may not change tests, package/runtime behavior, analytical truth, certification, or downstream authority."
 }
