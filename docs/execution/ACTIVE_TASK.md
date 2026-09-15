@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** `ready_for_review`
+**Status:** `merged`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -12,12 +12,12 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Authorization provenance:** `89165dfbb359e94939aaa92a6076c82627dbba74`
 - **Feature branch:** `feat/geox-execution-lifecycle-single-source-adoption-001-correction`
 - **Feature branch created:** `true`
-- **Task execution authorized:** `true`
+- **Task execution authorized:** `false`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `f7cbd0ac6bfd6409aefe04a5c813840611b494dc`
-- **Reviewed head:** `null`
+- **Reviewed head:** `8cd596c325dfba37d45a0110def2eddd32cd1f10`
 - **Rejected review head:** `46e598babf8377b0334d9b66c0223e829fce8197`
 - **Rejected implementation commit:** `7d006cadd59dbfc26108433aba4022b4ad631c13`
 - **Approval commit:** `null`
@@ -25,9 +25,9 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `1`
 - **Correction cycles remaining:** `0`
-- **Review decision:** `ready_for_review`
-- **Local feature-branch cleanup:** `null`
-- **Remote feature-branch cleanup:** `null`
+- **Review decision:** `merged`
+- **Local feature-branch cleanup:** `observed_deleted`
+- **Remote feature-branch cleanup:** `observed_deleted`
 - **Capability authorizations changed:** `false`
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
 ## Objective
