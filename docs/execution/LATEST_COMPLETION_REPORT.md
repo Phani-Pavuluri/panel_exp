@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `ready_for_review`
+**Current decision:** `changes_requested`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -13,32 +13,36 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Feature branch:** `audit/geox-main-test-isolation-and-checkpoint-context-reassessment-001`
 - **Feature branch created:** `true`
 - **Task execution authorized:** `true`
-- **Correction execution authorized:** `false`
+- **Correction execution authorized:** `true`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `746f7082a5cd727461a076867f1dd17bc25d23b6`
 - **Reviewed head:** `null`
-- **Rejected review head:** `null`
-- **Rejected implementation commit:** `null`
+- **Rejected review head:** `e146620e2d1b4b3c5d87e14a5b6e9c01d18a303a`
+- **Rejected implementation commit:** `746f7082a5cd727461a076867f1dd17bc25d23b6`
 - **Approval commit:** `null`
 - **Blockers:** `none`
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `ready_for_review`
+- **Review decision:** `changes_requested`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
 
 The reassessment conclusion is
-`concrete_current_main_defect_identified`. The Docker gate exited `1` after
-`20486` seconds. Its detached `--rm` execution preserved output only through 50
-percent, containing three failure markers. Focused reruns mapped and classified
-all three captured markers. An untouched archive of exact authorized base
-`d819fb17ccb2be90bb296d528ca7e0b05548f766` reproduced the handoff-status parser
-failure and the BlockResidualBootstrap golden-equivalence failure; the third
-failure was specific to the newly authorized lifecycle state.
+`concrete_current_main_defect_identified`. The corrected complete Docker gate
+exited `1` with `15 failed, 6174 passed, 28 skipped, 2162592 warnings` in
+`3618.89s`. All 15 failing nodes were replayed against an untouched archive of
+exact authorized base `d819fb17ccb2be90bb296d528ca7e0b05548f766`; all 15
+reproduced and were classified into four concrete current-main defects.
+
+Focused validator/generator validation was `68 passed`. The literal adjacent
+path supplied by review did not exist; the repository-resolved adjacent suite
+was `3 passed`. The complete Docker log is preserved at
+`/private/tmp/geox-reassessment-validate-docker.XXXXXX.log`, where `XXXXXX` is
+part of the actual filename.
 
 Exact evidence and limitations are recorded in
 `docs/track_d/GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_REASSESSMENT_001.md`.
