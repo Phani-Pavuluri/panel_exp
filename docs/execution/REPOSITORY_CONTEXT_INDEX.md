@@ -1,29 +1,27 @@
 # GeoX execution context
 
-Active task: `GEOX_EXECUTION_LIFECYCLE_SINGLE_SOURCE_ADOPTION_001`.
+Active task:
+`GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_REASSESSMENT_001`.
 
-Current lifecycle status, synchronized-main pin, branch identity, correction
-counters, and review evidence are canonical only in
-`docs/execution/EXECUTION_STATE.json`. The stable generated views are
-`ACTIVE_TASK.md` and `LATEST_COMPLETION_REPORT.md`.
+The task is authorized from synchronized GeoX main
+`d819fb17ccb2be90bb296d528ca7e0b05548f766` on branch
+`audit/geox-main-test-isolation-and-checkpoint-context-reassessment-001`.
+Canonical lifecycle state is in `docs/execution/EXECUTION_STATE.json`; generated
+views are in `ACTIVE_TASK.md` and `LATEST_COMPLETION_REPORT.md`.
 
-This fresh authorization adopts GeoX-local single-source lifecycle semantics
-from the merged MIP reference
-`Phani-Pavuluri/marketing_intelligence_platform@b0f57701a55d5cbe1d94692bf378a23d03945646`.
-`EXECUTION_STATE.json` is canonical; generated lifecycle blocks in the two
-stable Markdown files are views only. The revised focused-validation policy
-requires migration, task-control, transition, reason-code, marker,
-idempotence, protected-authority, Ruff/mypy-if-supported, compile, JSON,
-diff-check, and scope validation; a full Docker gate is not required for this
-authorization.
+This is a validation-only reassessment of the historical parked
+`GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_RECOVERY_001` branch at
+`0c16766f47cae903c9a085043dfa51949e61ea68`. That branch is divergent,
+immutable evidence only and may not be merged, rebased, cherry-picked, copied,
+or revived. The task must use current-main tests and the full
+repository-authored Docker gate to either retire the historical synchronized-
+main validation debt or identify a concrete current-main defect.
 
-The prior blocked branch/head and the externally rejected implementation are
-historical evidence only and must not be reused as executable ancestry.
-The completed placebo compatibility repair is closed. No analytical,
-producer-certification, product, runtime, capability, MIP, or MMM authority is
-changed by this task.
+No tests, package/runtime code, analytical behavior, certification, product
+authority, MIP, or MMM changes are authorized. No successor is authorized.
 
-Fresh-chat bootstrap: classify the worktree, synchronize Git, read the three
-execution files and this index, verify authorization/ancestry/ownership, then
-implement only on the newly created authorized branch. No successor is
-authorized by this task.
+Fresh-chat bootstrap: classify the full worktree, fetch and prune, switch to
+`main`, pull fast-forward only, prove `main == origin/main`, read root
+`AGENTS.md` and all four execution files, verify the authorization and exact
+branch baseline, then execute only the contract in `ACTIVE_TASK.md`. Stop at
+`ready_for_review`; do not create a PR or merge.
