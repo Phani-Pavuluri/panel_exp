@@ -11,7 +11,7 @@
   "authorization_head_sha": "b003d7915d635413fd45fcb98e4ee36ccbc0c7b8",
   "authorized_branch_baseline_sha": "b003d7915d635413fd45fcb98e4ee36ccbc0c7b8",
   "feature_branch": "audit/geox-main-test-isolation-and-checkpoint-context-reassessment-001",
-  "feature_branch_created": false,
+  "feature_branch_created": true,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
   "task_execution_authorized": true,
@@ -93,10 +93,28 @@
     "merge_base_with_authorized_main": "b3f6b9acf81ff268c21d96d1014f8780fba5644f",
     "authorized_main_ahead_count": 79,
     "parked_branch_ahead_count": 13,
-    "state": "under_fresh_main_reassessment",
+    "state": "concrete_current_main_defect_identified",
     "historical_blocker": "DOCKER_GATE_MAIN_BASELINE_VALIDATION_DEBT",
+    "concrete_defect_ids": [
+      "GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001",
+      "GEOX-CURRENT-MAIN-BRB-GOLDEN-EQUIVALENCE-001"
+    ],
     "merge_authorized": false,
     "reuse_authorized": false
+  },
+  "reassessment_evidence": {
+    "tested_tree_sha": "2111cfb2197ea62531919791a1e794a5f601ee6e",
+    "untouched_base_sha": "d819fb17ccb2be90bb296d528ca7e0b05548f766",
+    "docker_container_id": "a2e9572bdceff1a9a9c491e84b3a189855948f239953cbed9acc717ea7268400",
+    "docker_exit_code": 1,
+    "docker_duration_seconds": 20486,
+    "final_summary_preserved": false,
+    "captured_progress_percent": 50,
+    "captured_failure_markers": 3,
+    "focused_manifest_result": "68 passed",
+    "focused_governance_result": "14 passed, 2 failed",
+    "untouched_base_replay_result": "1 passed, 2 failed",
+    "conclusion": "concrete_current_main_defect_identified"
   },
   "next_task_id": null,
   "next_task_authorized": false,
