@@ -2,7 +2,7 @@
   "schema_version": "geox_repo_execution_state_v3",
   "repository": "Phani-Pavuluri/panel_exp",
   "task_id": "GEOX_CURRENT_MAIN_HANDOFF_STATUS_PARSER_REPAIR_001",
-  "status": "authorized",
+  "status": "blocked",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
   "base_sha": "14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9",
@@ -11,7 +11,7 @@
   "authorization_head_sha": "d400e4d08d1406459130609464835e2dc7d38d37",
   "authorized_branch_baseline_sha": "d400e4d08d1406459130609464835e2dc7d38d37",
   "feature_branch": "fix/geox-current-main-handoff-status-parser-repair-001",
-  "feature_branch_created": false,
+  "feature_branch_created": true,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
   "task_execution_authorized": true,
@@ -21,13 +21,15 @@
   "reviewed_head_sha": null,
   "rejected_review_head_sha": null,
   "rejected_implementation_commit_sha": null,
-  "implementation_commit_sha": null,
+  "implementation_commit_sha": "ddb8d3e9cdaaf253e8b2f93a8ecc0dc54a8effed",
   "approval_commit_sha": null,
   "local_feature_branch_cleanup": null,
   "remote_feature_branch_cleanup": null,
   "capability_authorizations_changed": false,
   "last_updated": "2026-09-15",
-  "blockers": [],
+  "blockers": [
+    "GEOX-TASKCTL-CORRECTION-FIXTURE-BASELINE-001: required tests/execution/test_taskctl.py fails on exact authorized baseline because prepare_changes_requested() sets changes_requested without the implementation and rejected-head evidence required by current taskctl validation; resolve in a separately authorized task, then reauthorize or resume this parser repair and rerun the required combined suite"
+  ],
   "dependencies": [
     {
       "dependency_id": "DEP-GEOX-REASSESSMENT-MERGED-001",
@@ -92,7 +94,7 @@
   },
   "next_task_id": null,
   "next_task_authorized": false,
-  "review_decision": "authorized",
+  "review_decision": "blocked",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
   "task_authoring_note": "Authorization corrected by metadata-only commit d400e4d08d1406459130609464835e2dc7d38d37 from synchronized GeoX main 14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9 to restore the required MIP and MMM pins without expanding implementation scope. The task may repair only GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001 by changing the handoff test parser and lifecycle evidence. It may not change taskctl rendering, package/runtime behavior, analytical truth, certification, downstream authority, or any of the three remaining current-main defect classes."

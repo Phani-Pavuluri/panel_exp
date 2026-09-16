@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** `authorized`
+**Status:** `blocked`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -11,21 +11,21 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Base SHA:** `14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9`
 - **Authorization provenance:** `d400e4d08d1406459130609464835e2dc7d38d37`
 - **Feature branch:** `fix/geox-current-main-handoff-status-parser-repair-001`
-- **Feature branch created:** `false`
+- **Feature branch created:** `true`
 - **Task execution authorized:** `true`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
-- **Implementation commit:** `null`
+- **Implementation commit:** `ddb8d3e9cdaaf253e8b2f93a8ecc0dc54a8effed`
 - **Reviewed head:** `null`
 - **Rejected review head:** `null`
 - **Rejected implementation commit:** `null`
 - **Approval commit:** `null`
-- **Blockers:** `none`
+- **Blockers:** `GEOX-TASKCTL-CORRECTION-FIXTURE-BASELINE-001: required tests/execution/test_taskctl.py fails on exact authorized baseline because prepare_changes_requested() sets changes_requested without the implementation and rejected-head evidence required by current taskctl validation; resolve in a separately authorized task, then reauthorize or resume this parser repair and rerun the required combined suite`
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `authorized`
+- **Review decision:** `blocked`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
