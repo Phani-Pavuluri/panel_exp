@@ -7,9 +7,9 @@
   "base_branch": "main",
   "base_sha": "7c3799af5e406fe65161daf7d474cb363fa766b0",
   "task_authoring_start_sha": "7c3799af5e406fe65161daf7d474cb363fa766b0",
-  "task_authoring_head_sha": "7c3799af5e406fe65161daf7d474cb363fa766b0",
-  "authorization_head_sha": "7c3799af5e406fe65161daf7d474cb363fa766b0",
-  "authorized_branch_baseline_sha": "7c3799af5e406fe65161daf7d474cb363fa766b0",
+  "task_authoring_head_sha": "25d26dec07659150ec4d23eae012b6f4fc3d50d8",
+  "authorization_head_sha": "25d26dec07659150ec4d23eae012b6f4fc3d50d8",
+  "authorized_branch_baseline_sha": "25d26dec07659150ec4d23eae012b6f4fc3d50d8",
   "feature_branch": "fix/geox-taskctl-correction-fixture-baseline-repair-001",
   "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
@@ -108,5 +108,5 @@
   "review_decision": "authorized",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Authorized from synchronized GeoX main 7c3799af5e406fe65161daf7d474cb363fa766b0 to repair only GEOX-TASKCTL-CORRECTION-FIXTURE-BASELINE-001. The blocked parser branch at 2d262fae8d8a904aa0f8332395588c37f6f74ccd is immutable evidence and is not authorized for merge, reuse, rebase, cherry-pick, or modification. This task may align the synthetic taskctl correction fixture and lifecycle evidence only; it may not change taskctl validation, the parser test, package/runtime behavior, analytical truth, certification, or downstream authority."
+  "task_authoring_note": "Authorized by task-authoring commit 25d26dec07659150ec4d23eae012b6f4fc3d50d8 from synchronized GeoX main 7c3799af5e406fe65161daf7d474cb363fa766b0 to repair only GEOX-TASKCTL-CORRECTION-FIXTURE-BASELINE-001. The blocked parser branch at 2d262fae8d8a904aa0f8332395588c37f6f74ccd is immutable evidence and is not authorized for merge, reuse, rebase, cherry-pick, or modification. This task may align the synthetic taskctl correction fixture and lifecycle evidence only; it may not change taskctl validation, the parser test, package/runtime behavior, analytical truth, certification, or downstream authority."
 }
