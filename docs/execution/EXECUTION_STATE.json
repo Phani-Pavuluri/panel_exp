@@ -7,9 +7,9 @@
   "base_branch": "main",
   "base_sha": "14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9",
   "task_authoring_start_sha": "14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9",
-  "task_authoring_head_sha": "38ff888c6af89f942e0ffb9285de6eb8fe2fbb13",
-  "authorization_head_sha": "38ff888c6af89f942e0ffb9285de6eb8fe2fbb13",
-  "authorized_branch_baseline_sha": "38ff888c6af89f942e0ffb9285de6eb8fe2fbb13",
+  "task_authoring_head_sha": "d400e4d08d1406459130609464835e2dc7d38d37",
+  "authorization_head_sha": "d400e4d08d1406459130609464835e2dc7d38d37",
+  "authorized_branch_baseline_sha": "d400e4d08d1406459130609464835e2dc7d38d37",
   "feature_branch": "fix/geox-current-main-handoff-status-parser-repair-001",
   "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
@@ -85,7 +85,8 @@
   ],
   "test_parser_repair_authorized": true,
   "authorization_document_correction": {
-    "state": "pins_restored_pending_commit_alignment",
+    "state": "pins_restored",
+    "correction_commit_sha": "d400e4d08d1406459130609464835e2dc7d38d37",
     "reason": "The initial parser-repair authorization omitted the preserved MIP and MMM pins from LATEST_COMPLETION_REPORT.md and REPOSITORY_CONTEXT_INDEX.md even though the handoff invariant requires both pins in every execution document.",
     "implementation_scope_changed": false
   },
@@ -94,5 +95,5 @@
   "review_decision": "authorized",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Authorized by task-authoring commit 38ff888c6af89f942e0ffb9285de6eb8fe2fbb13 from synchronized GeoX main 14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9 to repair only GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001. The task may change the handoff test parser and lifecycle evidence only. It may not change taskctl rendering, package/runtime behavior, analytical truth, certification, downstream authority, or any of the three remaining current-main defect classes."
+  "task_authoring_note": "Authorization corrected by metadata-only commit d400e4d08d1406459130609464835e2dc7d38d37 from synchronized GeoX main 14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9 to restore the required MIP and MMM pins without expanding implementation scope. The task may repair only GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001 by changing the handoff test parser and lifecycle evidence. It may not change taskctl rendering, package/runtime behavior, analytical truth, certification, downstream authority, or any of the three remaining current-main defect classes."
 }
