@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `ready_for_review`
+**Current decision:** `changes_requested`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -13,19 +13,19 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Feature branch:** `fix/geox-taskctl-correction-fixture-baseline-repair-001`
 - **Feature branch created:** `true`
 - **Task execution authorized:** `true`
-- **Correction execution authorized:** `false`
+- **Correction execution authorized:** `true`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `d713480f5c520efeab06d7a3b3f15eeb68b80d8f`
 - **Reviewed head:** `null`
-- **Rejected review head:** `null`
-- **Rejected implementation commit:** `null`
+- **Rejected review head:** `1c3a2b01c5d85469c984c2139d5e16a8790a5537`
+- **Rejected implementation commit:** `d713480f5c520efeab06d7a3b3f15eeb68b80d8f`
 - **Approval commit:** `null`
 - **Blockers:** `none`
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `ready_for_review`
+- **Review decision:** `changes_requested`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`

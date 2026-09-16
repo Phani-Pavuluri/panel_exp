@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** `ready_for_review`
+**Status:** `changes_requested`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -13,23 +13,78 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Feature branch:** `fix/geox-taskctl-correction-fixture-baseline-repair-001`
 - **Feature branch created:** `true`
 - **Task execution authorized:** `true`
-- **Correction execution authorized:** `false`
+- **Correction execution authorized:** `true`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `d713480f5c520efeab06d7a3b3f15eeb68b80d8f`
 - **Reviewed head:** `null`
-- **Rejected review head:** `null`
-- **Rejected implementation commit:** `null`
+- **Rejected review head:** `1c3a2b01c5d85469c984c2139d5e16a8790a5537`
+- **Rejected implementation commit:** `d713480f5c520efeab06d7a3b3f15eeb68b80d8f`
 - **Approval commit:** `null`
 - **Blockers:** `none`
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `ready_for_review`
+- **Review decision:** `changes_requested`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
+
+## Authorized correction cycle
+
+- Rejected review head:
+  `1c3a2b01c5d85469c984c2139d5e16a8790a5537`.
+- Rejected implementation commit:
+  `d713480f5c520efeab06d7a3b3f15eeb68b80d8f`.
+- Correction cycle: the sole permitted cycle, `1/1`, is authorized.
+
+The implementation diff and required tests are accepted. The review finding is
+limited to the custom prose below the generated block in
+`docs/execution/LATEST_COMPLETION_REPORT.md`: it still says implementation has
+not started and no implementation commit or review head exists. That contradicts
+the canonical `ready_for_review` evidence at the rejected head and fails the
+task's requirement to record focused validation and changed paths.
+
+Replace only that stale custom completion prose with an accurate final handoff
+that records:
+
+1. task identity, branch, implementation commit, and rejected review receipt;
+2. the four changed paths at the rejected head;
+3. the deterministic synthetic implementation/rejected SHA fixture behavior;
+4. every required validation command and exact passing result;
+5. that `make validate-docker` was intentionally not run because the task
+   contract excludes it;
+6. blockers and limitations, including preservation of the immutable parser
+   branch and all four unresolved current-main defect IDs; and
+7. confirmation that no PR, merge, squash, rebase, force-push, successor
+   authorization, protected-authority change, runtime change, or analytical
+   change occurred.
+
+Do not modify `tests/execution/test_taskctl.py`, taskctl implementation, another
+generated-document format, package/runtime code, analytical code, or any
+unrelated path. Preserve implementation commit
+`d713480f5c520efeab06d7a3b3f15eeb68b80d8f` and every protected authority as
+`false`.
+
+Run and report:
+
+```text
+.venv/bin/python -m panel_exp.execution.taskctl check
+.venv/bin/python -m pytest -q tests/execution/test_taskctl.py::test_correction_closure_requires_explicit_evidence_and_updates_counters
+.venv/bin/python -m pytest -q tests/execution/test_taskctl.py
+.venv/bin/python -m pytest -q tests/execution/test_taskctl.py tests/test_repo_native_execution_handoff.py::test_status_invariants_are_closure_safe
+.venv/bin/python -m json.tool docs/execution/EXECUTION_STATE.json
+git diff --check
+git diff --name-only 1c3a2b01c5d85469c984c2139d5e16a8790a5537...HEAD
+```
+
+Commit and push the completion-report correction on the same authorized branch.
+Then run task control's explicit correction completion transition using
+implementation SHA `d713480f5c520efeab06d7a3b3f15eeb68b80d8f`, commit and push the resulting
+review receipt, prove exact local/remote head equality, and stop at
+`ready_for_review`. Do not create a PR or merge.
+
 ## Repository and branch
 
 - Repository: `Phani-Pavuluri/panel_exp`
