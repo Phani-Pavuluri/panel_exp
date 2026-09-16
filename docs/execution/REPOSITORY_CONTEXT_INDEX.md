@@ -1,24 +1,24 @@
 # GeoX execution context
 
-Active task:
-`GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_REASSESSMENT_001`.
+Active task: `GEOX_CURRENT_MAIN_HANDOFF_STATUS_PARSER_REPAIR_001`.
 
 The task is authorized from synchronized GeoX main
-`d819fb17ccb2be90bb296d528ca7e0b05548f766` on branch
-`audit/geox-main-test-isolation-and-checkpoint-context-reassessment-001`.
+`14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9` on branch
+`fix/geox-current-main-handoff-status-parser-repair-001`.
 Canonical lifecycle state is in `docs/execution/EXECUTION_STATE.json`; generated
 views are in `ACTIVE_TASK.md` and `LATEST_COMPLETION_REPORT.md`.
 
-This is a validation-only reassessment of the historical parked
-`GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_RECOVERY_001` branch at
-`0c16766f47cae903c9a085043dfa51949e61ea68`. That branch is divergent,
-immutable evidence only and may not be merged, rebased, cherry-picked, copied,
-or revived. The task must use current-main tests and the full
-repository-authored Docker gate to either retire the historical synchronized-
-main validation debt or identify a concrete current-main defect.
+This is a test-only repair of
+`GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001`, reproduced by
+`tests/test_repo_native_execution_handoff.py::test_v2_state_contract_and_pins`.
+The task may repair only the test parser for the canonical backtick-delimited
+taskctl status. The repository-authored Docker gate is not required for this
+isolated milestone.
 
-No tests, package/runtime code, analytical behavior, certification, product
-authority, MIP, or MMM changes are authorized. No successor is authorized.
+No taskctl rendering, package/runtime code, analytical behavior, certification,
+product authority, MIP, or MMM changes are authorized. The BRB, callback
+injection, and tier-1 contract-emission defects remain outside scope. No
+successor is authorized.
 
 Fresh-chat bootstrap: classify the full worktree, fetch and prune, switch to
 `main`, pull fast-forward only, prove `main == origin/main`, read root

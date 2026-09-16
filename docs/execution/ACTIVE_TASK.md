@@ -1,33 +1,33 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** `merged`
+**Status:** `authorized`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
-- **Task ID:** `GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_REASSESSMENT_001`
+- **Task ID:** `GEOX_CURRENT_MAIN_HANDOFF_STATUS_PARSER_REPAIR_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Execution mode:** `branch_and_fast_forward`
-- **Base SHA:** `d819fb17ccb2be90bb296d528ca7e0b05548f766`
-- **Authorization provenance:** `b003d7915d635413fd45fcb98e4ee36ccbc0c7b8`
-- **Feature branch:** `audit/geox-main-test-isolation-and-checkpoint-context-reassessment-001`
-- **Feature branch created:** `true`
-- **Task execution authorized:** `false`
+- **Base SHA:** `14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9`
+- **Authorization provenance:** `14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9`
+- **Feature branch:** `fix/geox-current-main-handoff-status-parser-repair-001`
+- **Feature branch created:** `false`
+- **Task execution authorized:** `true`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
-- **Implementation commit:** `7cef5d0b0d7b854d1dd6b9ab1f5b326606da9ca5`
-- **Reviewed head:** `0f79d277afac4a8675bc3a1365ae89c6da8dcbf9`
-- **Rejected review head:** `e146620e2d1b4b3c5d87e14a5b6e9c01d18a303a`
-- **Rejected implementation commit:** `746f7082a5cd727461a076867f1dd17bc25d23b6`
+- **Implementation commit:** `null`
+- **Reviewed head:** `null`
+- **Rejected review head:** `null`
+- **Rejected implementation commit:** `null`
 - **Approval commit:** `null`
 - **Blockers:** `none`
 - **Maximum correction cycles:** `1`
-- **Correction cycles completed:** `1`
-- **Correction cycles remaining:** `0`
-- **Review decision:** `merged`
-- **Local feature-branch cleanup:** `observed_deleted`
-- **Remote feature-branch cleanup:** `observed_deleted`
+- **Correction cycles completed:** `0`
+- **Correction cycles remaining:** `1`
+- **Review decision:** `authorized`
+- **Local feature-branch cleanup:** `null`
+- **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
 ## Repository and branch
@@ -35,70 +35,57 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - Repository: `Phani-Pavuluri/panel_exp`
 - Local path: `/Users/phani/Desktop/panel_exp`
 - Authorized implementation branch:
-  `audit/geox-main-test-isolation-and-checkpoint-context-reassessment-001`
-- Fresh-main base: `d819fb17ccb2be90bb296d528ca7e0b05548f766`
+  `fix/geox-current-main-handoff-status-parser-repair-001`
+- Fresh-main base: `14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9`
 
 Create the authorized branch only after verifying that local `main` and
 `origin/main` are identical, task-authoring commit
-`b003d7915d635413fd45fcb98e4ee36ccbc0c7b8` is its ancestor, and intervening
+`14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9` is its ancestor, and intervening
 commits are task-authoring metadata only. The branch must not already exist
 locally or remotely. Do not execute from another branch.
 
 ## Objective
 
-Determine whether the historical synchronized-main validation debt recorded by
-`GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_RECOVERY_001` still exists on
-the exact authorized current-main baseline. Publish one evidence-backed result:
+Repair `GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001` by making the repository
+handoff test parse the canonical taskctl-generated status line, including its
+Markdown code delimiters, and continue to compare the extracted value exactly
+with `EXECUTION_STATE.json`.
 
-1. retire the parked dependency because the current repository-authored gate
-   no longer reproduces the historical debt; or
-2. identify a concrete remaining current-main defect with exact failing test,
-   command, and clean-baseline comparison evidence.
-
-This is a validation-only checkpoint reassessment. Do not repair any defect and
-do not change analytical, package, runtime, test, builder, validator, manifest,
-or fixture behavior.
+This is a test-only lifecycle parser repair. Do not change taskctl rendering,
+canonical lifecycle semantics, package/runtime behavior, analytical behavior,
+or any other current-main defect.
 
 ## Prerequisites and evidence
 
-- Synchronized GeoX main and lifecycle authority:
-  `d819fb17ccb2be90bb296d528ca7e0b05548f766`.
-- Parked historical branch:
-  `fix/geox-main-test-isolation-and-checkpoint-context-recovery-001` at
-  `0c16766f47cae903c9a085043dfa51949e61ea68`.
-- Historical implementation commit:
-  `a625a9dac6b97b05c4044dc5af5ae7875a63e889`.
-- Merge base with authorized main:
-  `b3f6b9acf81ff268c21d96d1014f8780fba5644f`.
-- Observed divergence at authorization: authorized main is 79 commits ahead
-  and the parked branch is 13 commits ahead of the merge base.
-- Historical result: focused and adjacent tests reported `71 passed`; the full
-  Docker gate reported `23 failed, 6151 passed, 28 skipped`; clean-main replay
-  reproduced 22 failures, leaving one branch-specific lifecycle failure that
-  was repaired before the parked task remained blocked.
-- Current relevant surfaces:
-  `tests/contracts/test_geox_calibration_source_manifest.py`,
-  `tests/fixtures/test_geox_calibration_source_manifest_generator.py`,
-  `panel_exp/contracts/geox_calibration_source_manifest.py`,
-  `scripts/build_geox_calibration_source_manifest.py`,
-  `tests/fixtures/geox_calibration_handoff_sources/v1/manifest.json`, and
-  `tests/fixtures/geox_governed_readouts/`.
+- Synchronized GeoX main and lifecycle closure:
+  `14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9`.
+- Merged reassessment reviewed head:
+  `0f79d277afac4a8675bc3a1365ae89c6da8dcbf9`.
+- Reassessment implementation evidence:
+  `7cef5d0b0d7b854d1dd6b9ab1f5b326606da9ca5`.
+- Concrete defect:
+  `GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001`.
+- Failing node:
+  `tests/test_repo_native_execution_handoff.py::test_v2_state_contract_and_pins`.
+- Fresh-main reproduction: `1 failed in 0.03s`.
+- Canonical generated form: a `**Status:**` label followed by a
+  backtick-delimited lowercase lifecycle value.
+- Observed cause: the existing regular expression expects the lowercase value
+  directly after the label and therefore returns no match for the generated
+  Markdown form.
 - Preserved cross-repository pins are MIP
   `a293ce52a813709ca624332123019139928cc51e` and MMM
   `fe8e784923994406a2e4907d28debd872d61fd73`; neither repository is modified
   or sequenced by this task.
 
-Treat the parked branch and all of its commits as immutable read-only evidence.
-Do not cherry-pick, merge, rebase, copy, or revive them.
-
 ## Owned paths
 
 Only these paths may change during execution:
 
+- `tests/test_repo_native_execution_handoff.py`
 - `docs/execution/EXECUTION_STATE.json`
 - `docs/execution/ACTIVE_TASK.md` through the generated lifecycle view only
 - `docs/execution/LATEST_COMPLETION_REPORT.md`
-- `docs/track_d/GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_REASSESSMENT_001.md`
 
 Do not modify `docs/execution/REPOSITORY_CONTEXT_INDEX.md` during task
 execution. All other paths are read-only for this milestone.
@@ -106,56 +93,44 @@ execution. All other paths are read-only for this milestone.
 ## Required behavior
 
 1. Perform the root `AGENTS.md` bootstrap exactly and prove the authorized base
-   and branch ancestry before validation.
-2. Record the parked branch head, implementation commit, merge base, divergence
-   counts, changed paths, and the semantic differences between the parked test
-   changes and current main. Do not treat patch non-equivalence alone as a
-   defect.
-3. Run the current-main focused validator and generator tests and the directly
-   adjacent governed-readout tests. Record exact commands and results.
-4. Run the complete repository-authored Docker gate with
-   `make validate-docker`. A local environment issue is not sufficient evidence
-   of product debt: attempt the repository-supported repair or Docker path and
-   record exact diagnostics if execution still cannot complete.
-5. If the full gate fails, reproduce each relevant failure against an untouched
-   worktree at exact base
-   `d819fb17ccb2be90bb296d528ca7e0b05548f766`. Classify failures as current-main
-   defects, reassessment-branch lifecycle regressions, or environment failures.
-   Name concrete current-main defects; do not make or propose code fixes in the
-   implementation commit.
-6. Publish the reassessment report with exact tree SHA, commands, counts,
-   failures, comparison to the historical 22-failure debt, conclusion, and
-   limitations. The conclusion must be exactly one of
-   `retired_no_longer_reproduced` or `concrete_current_main_defect_identified`.
-7. Update canonical state consistently. When retired, set the parked dependency
-   state to `retired_no_longer_reproduced`. When a concrete defect remains, set
-   it to `concrete_current_main_defect_identified` and record the exact defect
-   identifier in the report and the canonical `parked_isolation_dependency`
-   evidence. Preserve every protected authority as `false`; do not place a
-   completed reassessment in top-level `blocked` state merely because it found
-   a baseline defect.
-8. Use the repository task control to synchronize and verify generated views,
-   then stop at `ready_for_review` if the reassessment evidence is complete.
+   and branch ancestry before editing.
+2. Reproduce the named failing node on the authorized baseline and record the
+   exact result.
+3. Change only the status extraction in
+   `tests/test_repo_native_execution_handoff.py` so it recognizes the exact
+   backtick-delimited status emitted by `panel_exp.execution.taskctl.render`.
+4. Preserve the assertion that the extracted value equals canonical state. Do
+   not accept arbitrary text, remove status validation, hard-code the current
+   status, or weaken any other handoff invariant.
+5. Do not modify `panel_exp/execution/taskctl.py`, generated Markdown format,
+   runtime/package code, analytical code, fixtures, or unrelated tests.
+6. Record focused validation and changed paths in the completion report. Keep
+   every protected authority `false` and the three remaining defect IDs
+   unresolved.
+7. Use task control to synchronize and verify generated views, then stop at
+   `ready_for_review` when the repair evidence is complete.
 
 ## Acceptance and validation
 
-Run and report these commands, resolving the focused adjacent test paths from
-the current repository rather than inventing absent files:
+Run and report these commands:
 
 ```text
 .venv/bin/python -m panel_exp.execution.taskctl check
-.venv/bin/python -m pytest -q tests/contracts/test_geox_calibration_source_manifest.py tests/fixtures/test_geox_calibration_source_manifest_generator.py
-make validate-docker
+.venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py::test_v2_state_contract_and_pins
+.venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py tests/execution/test_taskctl.py
 git diff --check
 git diff --name-only <authorized-baseline>...HEAD
 .venv/bin/python -m panel_exp.execution.taskctl check
 ```
 
-Acceptance requires exact authorized ancestry, an evidence-complete report, a
-single unambiguous conclusion, no behavioral file changes, only owned changed
-paths, consistent canonical/generated lifecycle state, and no changed protected
-authority. The full gate need not pass only when a concrete current-main defect
-is reproduced and named; an unclassified failure is not an acceptable result.
+Acceptance requires exact authorized ancestry, both pytest commands passing,
+only owned changed paths, consistent canonical/generated lifecycle state, no
+runtime or analytical change, and no changed protected authority.
+
+Do not run `make validate-docker` for this test-only repair. It is not an
+acceptance command and the merged reassessment already records the unrelated
+remaining current-main failures. The full Docker gate belongs after the known
+repair sequence, not this isolated parser milestone.
 
 ## Commit and push
 
@@ -163,10 +138,10 @@ Create one independently reviewable implementation commit on the authorized
 branch, then update the lifecycle evidence to `ready_for_review` with the exact
 implementation SHA as repository rules require. Commit the resulting review
 receipt if needed, push only
-`audit/geox-main-test-isolation-and-checkpoint-context-reassessment-001`, prove
+`fix/geox-current-main-handoff-status-parser-repair-001`, prove
 the exact remote head, and stop for external review.
 
 Do not create a PR, merge, squash, rebase, force-push, create a merge commit,
-delete the parked branch, authorize a successor, or change capability,
+authorize a successor, repair another defect class, or change capability,
 certification, CalibrationSignal, MMM, simulation, planning, recommendation,
 real-data, runtime, pilot, or production authority.
