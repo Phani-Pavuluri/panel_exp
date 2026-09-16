@@ -7,9 +7,9 @@
   "base_branch": "main",
   "base_sha": "14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9",
   "task_authoring_start_sha": "14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9",
-  "task_authoring_head_sha": "14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9",
-  "authorization_head_sha": "14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9",
-  "authorized_branch_baseline_sha": "14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9",
+  "task_authoring_head_sha": "38ff888c6af89f942e0ffb9285de6eb8fe2fbb13",
+  "authorization_head_sha": "38ff888c6af89f942e0ffb9285de6eb8fe2fbb13",
+  "authorized_branch_baseline_sha": "38ff888c6af89f942e0ffb9285de6eb8fe2fbb13",
   "feature_branch": "fix/geox-current-main-handoff-status-parser-repair-001",
   "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
@@ -89,5 +89,5 @@
   "review_decision": "authorized",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Authorized from synchronized GeoX main 14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9 to repair only GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001. The task may change the handoff test parser and lifecycle evidence only. It may not change taskctl rendering, package/runtime behavior, analytical truth, certification, downstream authority, or any of the three remaining current-main defect classes."
+  "task_authoring_note": "Authorized by task-authoring commit 38ff888c6af89f942e0ffb9285de6eb8fe2fbb13 from synchronized GeoX main 14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9 to repair only GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001. The task may change the handoff test parser and lifecycle evidence only. It may not change taskctl rendering, package/runtime behavior, analytical truth, certification, downstream authority, or any of the three remaining current-main defect classes."
 }
