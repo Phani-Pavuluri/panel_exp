@@ -16,7 +16,7 @@ def test_v2_state_contract_and_pins():
     assert state["status"] in STATUSES and "approved_for_merge" not in STATUSES
     for key in ("base_sha", "authorization_head_sha", "reviewed_head_sha", "implementation_commit_sha", "approval_commit_sha"):
         assert state.get(key) is None or SHA.fullmatch(state[key])
-    status_match = re.search(r"^\*\*Status:\*\*\s*([a-z_]+)", task, re.MULTILINE)
+    status_match = re.search(r"^\*\*Status:\*\*\s*`([a-z_]+)`\s*$", task, re.MULTILINE)
     assert status_match and status_match.group(1) == state["status"]
     for pin_key in ("mip_main_pin", "mmm_main_pin"):
         pin = state[pin_key]
