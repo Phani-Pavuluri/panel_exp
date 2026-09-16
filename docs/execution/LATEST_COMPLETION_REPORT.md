@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `ready_for_review`
+**Current decision:** `merged`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -12,12 +12,12 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Authorization provenance:** `25d26dec07659150ec4d23eae012b6f4fc3d50d8`
 - **Feature branch:** `fix/geox-taskctl-correction-fixture-baseline-repair-001`
 - **Feature branch created:** `true`
-- **Task execution authorized:** `true`
+- **Task execution authorized:** `false`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `d713480f5c520efeab06d7a3b3f15eeb68b80d8f`
-- **Reviewed head:** `null`
+- **Reviewed head:** `eb404992f4d84b4a223111cb495b48dca36b0cde`
 - **Rejected review head:** `1c3a2b01c5d85469c984c2139d5e16a8790a5537`
 - **Rejected implementation commit:** `d713480f5c520efeab06d7a3b3f15eeb68b80d8f`
 - **Approval commit:** `null`
@@ -25,9 +25,9 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `1`
 - **Correction cycles remaining:** `0`
-- **Review decision:** `ready_for_review`
-- **Local feature-branch cleanup:** `null`
-- **Remote feature-branch cleanup:** `null`
+- **Review decision:** `merged`
+- **Local feature-branch cleanup:** `observed_deleted`
+- **Remote feature-branch cleanup:** `observed_deleted`
 - **Capability authorizations changed:** `false`
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
 
@@ -66,3 +66,12 @@ contract excludes it. The parser branch at
 the four unresolved current-main defect IDs remain unresolved. No PR, merge,
 squash, rebase, force-push, successor authorization, protected-authority,
 runtime, or analytical change occurred.
+
+External review approved exact head
+`eb404992f4d84b4a223111cb495b48dca36b0cde`. `main` was advanced to that head
+by fast-forward only, and the completed local and remote feature branches were
+observed deleted. Execution, correction, merge, PR, and task-specific fixture
+repair authority are closed. The fixture prerequisite is resolved on merged
+`main`; the historical parser branch remains immutable and must be recovered by
+a separately authored fresh-main task. No successor task, including structured
+completion-evidence work, is authorized by this closure.
