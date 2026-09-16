@@ -30,6 +30,9 @@ def prepare_changes_requested() -> None:
         correction_execution_authorized=True,
         correction_cycles_completed=0,
         correction_cycles_remaining=1,
+        implementation_commit_sha="a" * 40,
+        rejected_review_head_sha="b" * 40,
+        rejected_implementation_commit_sha="c" * 40,
     )
     taskctl.STATE_PATH.write_text(json.dumps(canonical, indent=2) + "\n", encoding="utf-8")
     taskctl.sync()
