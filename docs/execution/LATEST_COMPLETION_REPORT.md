@@ -31,22 +31,38 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Capability authorizations changed:** `false`
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
 
-Implementation has not started. This task authorizes only the test-fixture
-repair of `GEOX-TASKCTL-CORRECTION-FIXTURE-BASELINE-001` on synchronized GeoX
-main `7c3799af5e406fe65161daf7d474cb363fa766b0`.
+## Correction completion handoff
 
-Preserved cross-repository pins are MIP
-`a293ce52a813709ca624332123019139928cc51e` and MMM
-`fe8e784923994406a2e4907d28debd872d61fd73`. This task does not modify or
-sequence either repository.
+Task `GEOX_TASKCTL_CORRECTION_FIXTURE_BASELINE_REPAIR_001` was implemented on
+`fix/geox-taskctl-correction-fixture-baseline-repair-001` in
+`d713480f5c520efeab06d7a3b3f15eeb68b80d8f`; the rejected review receipt is
+`1c3a2b01c5d85469c984c2139d5e16a8790a5537`.
 
-The named failing node reproduces because `prepare_changes_requested()` omits
-the implementation and paired rejected-head evidence required by current
-`changes_requested` validation. The implementation must align only that
-synthetic fixture and may not weaken taskctl lifecycle semantics.
+The rejected implementation changed only:
 
-Focused task-control tests are required. `make validate-docker` is explicitly
-outside this test-only task. The blocked parser branch remains immutable at
-`2d262fae8d8a904aa0f8332395588c37f6f74ccd`; it is not authorized for merge,
-reuse, rebase, cherry-pick, or modification. No implementation commit, review
-head, PR, merge, certification, downstream authority, or successor task exists.
+- `tests/execution/test_taskctl.py`
+- `docs/execution/EXECUTION_STATE.json`
+- `docs/execution/ACTIVE_TASK.md`
+- `docs/execution/LATEST_COMPLETION_REPORT.md`
+
+`prepare_changes_requested()` now supplies deterministic test-only 40-character
+SHAs for the synthetic implementation, rejected review head, and rejected
+implementation before `taskctl.sync()`; it preserves correction authority,
+counters, null reviewed/approval evidence, and protected authorities.
+
+Validation passed:
+
+- `.venv/bin/python -m panel_exp.execution.taskctl check`
+- `.venv/bin/python -m pytest -q tests/execution/test_taskctl.py::test_correction_closure_requires_explicit_evidence_and_updates_counters` — `1 passed`
+- `.venv/bin/python -m pytest -q tests/execution/test_taskctl.py` — `13 passed`
+- `.venv/bin/python -m pytest -q tests/execution/test_taskctl.py tests/test_repo_native_execution_handoff.py::test_status_invariants_are_closure_safe` — `14 passed`
+- `.venv/bin/python -m json.tool docs/execution/EXECUTION_STATE.json`
+- `git diff --check`
+- `git diff --name-only 1c3a2b01c5d85469c984c2139d5e16a8790a5537...HEAD`
+
+`make validate-docker` was intentionally not run because this test-only task
+contract excludes it. The parser branch at
+`2d262fae8d8a904aa0f8332395588c37f6f74ccd` remains immutable evidence, and
+the four unresolved current-main defect IDs remain unresolved. No PR, merge,
+squash, rebase, force-push, successor authorization, protected-authority,
+runtime, or analytical change occurred.
