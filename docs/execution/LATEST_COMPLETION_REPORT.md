@@ -5,12 +5,12 @@
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
-- **Task ID:** `GEOX_CURRENT_MAIN_HANDOFF_STATUS_PARSER_REPAIR_001`
+- **Task ID:** `GEOX_TASKCTL_CORRECTION_FIXTURE_BASELINE_REPAIR_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Execution mode:** `branch_and_fast_forward`
-- **Base SHA:** `14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9`
-- **Authorization provenance:** `d400e4d08d1406459130609464835e2dc7d38d37`
-- **Feature branch:** `fix/geox-current-main-handoff-status-parser-repair-001`
+- **Base SHA:** `7c3799af5e406fe65161daf7d474cb363fa766b0`
+- **Authorization provenance:** `7c3799af5e406fe65161daf7d474cb363fa766b0`
+- **Feature branch:** `fix/geox-taskctl-correction-fixture-baseline-repair-001`
 - **Feature branch created:** `false`
 - **Task execution authorized:** `true`
 - **Correction execution authorized:** `false`
@@ -31,22 +31,22 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Capability authorizations changed:** `false`
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
 
-Implementation has not started. This task authorizes only the test-side repair
-of `GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001` on synchronized GeoX main
-`14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9`.
+Implementation has not started. This task authorizes only the test-fixture
+repair of `GEOX-TASKCTL-CORRECTION-FIXTURE-BASELINE-001` on synchronized GeoX
+main `7c3799af5e406fe65161daf7d474cb363fa766b0`.
 
 Preserved cross-repository pins are MIP
 `a293ce52a813709ca624332123019139928cc51e` and MMM
 `fe8e784923994406a2e4907d28debd872d61fd73`. This task does not modify or
 sequence either repository.
 
-The named failing node reproduces because taskctl renders the canonical status
-inside Markdown code delimiters while the handoff test parser expects an
-unformatted value. The implementation must preserve exact comparison with
-canonical state and may not change taskctl rendering or lifecycle semantics.
+The named failing node reproduces because `prepare_changes_requested()` omits
+the implementation and paired rejected-head evidence required by current
+`changes_requested` validation. The implementation must align only that
+synthetic fixture and may not weaken taskctl lifecycle semantics.
 
-Focused handoff and task-control tests are required. `make validate-docker` is
-explicitly outside this test-only task because the merged reassessment already
-records the three unrelated remaining defect classes. No implementation commit,
-review head, PR, merge, certification, downstream authority, or successor task
-exists yet.
+Focused task-control tests are required. `make validate-docker` is explicitly
+outside this test-only task. The blocked parser branch remains immutable at
+`2d262fae8d8a904aa0f8332395588c37f6f74ccd`; it is not authorized for merge,
+reuse, rebase, cherry-pick, or modification. No implementation commit, review
+head, PR, merge, certification, downstream authority, or successor task exists.

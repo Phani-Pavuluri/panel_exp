@@ -1,16 +1,16 @@
 {
   "schema_version": "geox_repo_execution_state_v3",
   "repository": "Phani-Pavuluri/panel_exp",
-  "task_id": "GEOX_CURRENT_MAIN_HANDOFF_STATUS_PARSER_REPAIR_001",
+  "task_id": "GEOX_TASKCTL_CORRECTION_FIXTURE_BASELINE_REPAIR_001",
   "status": "authorized",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
-  "base_sha": "14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9",
-  "task_authoring_start_sha": "14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9",
-  "task_authoring_head_sha": "d400e4d08d1406459130609464835e2dc7d38d37",
-  "authorization_head_sha": "d400e4d08d1406459130609464835e2dc7d38d37",
-  "authorized_branch_baseline_sha": "d400e4d08d1406459130609464835e2dc7d38d37",
-  "feature_branch": "fix/geox-current-main-handoff-status-parser-repair-001",
+  "base_sha": "7c3799af5e406fe65161daf7d474cb363fa766b0",
+  "task_authoring_start_sha": "7c3799af5e406fe65161daf7d474cb363fa766b0",
+  "task_authoring_head_sha": "7c3799af5e406fe65161daf7d474cb363fa766b0",
+  "authorization_head_sha": "7c3799af5e406fe65161daf7d474cb363fa766b0",
+  "authorized_branch_baseline_sha": "7c3799af5e406fe65161daf7d474cb363fa766b0",
+  "feature_branch": "fix/geox-taskctl-correction-fixture-baseline-repair-001",
   "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
@@ -30,6 +30,17 @@
   "blockers": [],
   "dependencies": [
     {
+      "dependency_id": "DEP-GEOX-BLOCKED-PARSER-REPAIR-001",
+      "repository": "Phani-Pavuluri/panel_exp",
+      "task_id": "GEOX_CURRENT_MAIN_HANDOFF_STATUS_PARSER_REPAIR_001",
+      "state": "blocked_immutable_evidence",
+      "branch": "fix/geox-current-main-handoff-status-parser-repair-001",
+      "remote_head_sha": "2d262fae8d8a904aa0f8332395588c37f6f74ccd",
+      "implementation_commit_sha": "ddb8d3e9cdaaf253e8b2f93a8ecc0dc54a8effed",
+      "blocker_id": "GEOX-TASKCTL-CORRECTION-FIXTURE-BASELINE-001",
+      "resolution_condition": "Merge this separately authorized fixture repair, then authorize a fresh-main parser-repair recovery task; do not merge, rebase, cherry-pick, or modify the blocked branch."
+    },
+    {
       "dependency_id": "DEP-GEOX-REASSESSMENT-MERGED-001",
       "repository": "Phani-Pavuluri/panel_exp",
       "task_id": "GEOX_MAIN_TEST_ISOLATION_AND_CHECKPOINT_CONTEXT_REASSESSMENT_001",
@@ -39,9 +50,9 @@
       "resolution_condition": "The merged reassessment reproduced and named the current-main handoff-status parser defect on the untouched authorized base."
     }
   ],
-  "risk_tier": "tier_1_test_only_lifecycle_parser_repair",
+  "risk_tier": "tier_1_test_only_taskctl_fixture_repair",
   "full_suite_validation_required": false,
-  "validation_scope": "taskctl_check_focused_handoff_node_complete_handoff_test_file_taskctl_suite_diff_check_changed_path_verification",
+  "validation_scope": "taskctl_check_focused_correction_fixture_node_complete_taskctl_suite_adjacent_closure_invariant_diff_check_changed_path_verification",
   "unresolved_execution_blocking_design_questions": [],
   "maximum_correction_cycles": 1,
   "correction_cycles_completed": 0,
@@ -52,9 +63,9 @@
   "modified_repositories": [
     "Phani-Pavuluri/panel_exp"
   ],
-  "coordination_workstream_id": "WS-GEOX-CURRENT-MAIN-DEFECT-REPAIR-001",
+  "coordination_workstream_id": "WS-GEOX-TASKCTL-CORRECTION-FIXTURE-BASELINE-REPAIR-001",
   "coordination_capability_owner": "geox_execution_validation_governance",
-  "geox_main_pin": "14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9",
+  "geox_main_pin": "7c3799af5e406fe65161daf7d474cb363fa766b0",
   "mip_main_pin": "a293ce52a813709ca624332123019139928cc51e",
   "mmm_main_pin": "fe8e784923994406a2e4907d28debd872d61fd73",
   "package_or_runtime_changes_authorized": false,
@@ -69,31 +80,33 @@
   "pilot_authorized": false,
   "production_authorized": false,
   "source_defect": {
-    "defect_id": "GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001",
-    "reassessment_reviewed_head_sha": "0f79d277afac4a8675bc3a1365ae89c6da8dcbf9",
-    "reassessment_implementation_commit_sha": "7cef5d0b0d7b854d1dd6b9ab1f5b326606da9ca5",
-    "failing_node": "tests/test_repo_native_execution_handoff.py::test_v2_state_contract_and_pins",
-    "reproduction_result": "1 failed in 0.03s on synchronized main 14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9",
-    "generated_status_form": "**Status:** `merged`",
-    "observed_cause": "The test parser expects an unformatted lowercase status immediately after the label, while taskctl renders the canonical status inside Markdown code delimiters.",
-    "authorized_resolution": "Repair only the handoff test parser so it extracts the canonical taskctl-rendered status and preserves equality with canonical state."
+    "defect_id": "GEOX-TASKCTL-CORRECTION-FIXTURE-BASELINE-001",
+    "discovered_by_branch": "fix/geox-current-main-handoff-status-parser-repair-001",
+    "discovery_remote_head_sha": "2d262fae8d8a904aa0f8332395588c37f6f74ccd",
+    "failing_node": "tests/execution/test_taskctl.py::test_correction_closure_requires_explicit_evidence_and_updates_counters",
+    "reproduction_result": "1 failed in 1.40s on synchronized main 7c3799af5e406fe65161daf7d474cb363fa766b0",
+    "observed_cause": "prepare_changes_requested() changes status and correction authority but omits the implementation and paired rejected-head evidence required by current changes_requested validation.",
+    "authorized_resolution": "Align only the synthetic correction fixture with current lifecycle evidence invariants before taskctl.sync(); do not weaken taskctl validation."
   },
   "remaining_current_main_defect_ids": [
+    "GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001",
     "GEOX-CURRENT-MAIN-BRB-GOLDEN-EQUIVALENCE-001",
     "GEOX-CURRENT-MAIN-DESIGN-VALIDATION-CALLBACK-INJECTION-001",
     "GEOX-CURRENT-MAIN-DESIGN-TIER1-CONTRACT-EMISSION-001"
   ],
-  "test_parser_repair_authorized": true,
-  "authorization_document_correction": {
-    "state": "pins_restored",
-    "correction_commit_sha": "d400e4d08d1406459130609464835e2dc7d38d37",
-    "reason": "The initial parser-repair authorization omitted the preserved MIP and MMM pins from LATEST_COMPLETION_REPORT.md and REPOSITORY_CONTEXT_INDEX.md even though the handoff invariant requires both pins in every execution document.",
-    "implementation_scope_changed": false
+  "taskctl_fixture_repair_authorized": true,
+  "parked_parser_repair": {
+    "state": "blocked_do_not_merge",
+    "branch": "fix/geox-current-main-handoff-status-parser-repair-001",
+    "remote_head_sha": "2d262fae8d8a904aa0f8332395588c37f6f74ccd",
+    "implementation_commit_sha": "ddb8d3e9cdaaf253e8b2f93a8ecc0dc54a8effed",
+    "reuse_authorized": false,
+    "merge_authorized": false
   },
   "next_task_id": null,
   "next_task_authorized": false,
   "review_decision": "authorized",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Authorization corrected by metadata-only commit d400e4d08d1406459130609464835e2dc7d38d37 from synchronized GeoX main 14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9 to restore the required MIP and MMM pins without expanding implementation scope. The task may repair only GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001 by changing the handoff test parser and lifecycle evidence. It may not change taskctl rendering, package/runtime behavior, analytical truth, certification, downstream authority, or any of the three remaining current-main defect classes."
+  "task_authoring_note": "Authorized from synchronized GeoX main 7c3799af5e406fe65161daf7d474cb363fa766b0 to repair only GEOX-TASKCTL-CORRECTION-FIXTURE-BASELINE-001. The blocked parser branch at 2d262fae8d8a904aa0f8332395588c37f6f74ccd is immutable evidence and is not authorized for merge, reuse, rebase, cherry-pick, or modification. This task may align the synthetic taskctl correction fixture and lifecycle evidence only; it may not change taskctl validation, the parser test, package/runtime behavior, analytical truth, certification, or downstream authority."
 }
