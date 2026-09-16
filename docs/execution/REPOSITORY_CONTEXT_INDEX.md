@@ -8,6 +8,11 @@ The task is authorized from synchronized GeoX main
 Canonical lifecycle state is in `docs/execution/EXECUTION_STATE.json`; generated
 views are in `ACTIVE_TASK.md` and `LATEST_COMPLETION_REPORT.md`.
 
+Preserved cross-repository pins are MIP
+`a293ce52a813709ca624332123019139928cc51e` and MMM
+`fe8e784923994406a2e4907d28debd872d61fd73`. This GeoX task does not modify or
+sequence either repository.
+
 This is a test-only repair of
 `GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001`, reproduced by
 `tests/test_repo_native_execution_handoff.py::test_v2_state_contract_and_pins`.

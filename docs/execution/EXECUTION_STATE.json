@@ -84,6 +84,11 @@
     "GEOX-CURRENT-MAIN-DESIGN-TIER1-CONTRACT-EMISSION-001"
   ],
   "test_parser_repair_authorized": true,
+  "authorization_document_correction": {
+    "state": "pins_restored_pending_commit_alignment",
+    "reason": "The initial parser-repair authorization omitted the preserved MIP and MMM pins from LATEST_COMPLETION_REPORT.md and REPOSITORY_CONTEXT_INDEX.md even though the handoff invariant requires both pins in every execution document.",
+    "implementation_scope_changed": false
+  },
   "next_task_id": null,
   "next_task_authorized": false,
   "review_decision": "authorized",

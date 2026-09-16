@@ -35,6 +35,11 @@ Implementation has not started. This task authorizes only the test-side repair
 of `GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001` on synchronized GeoX main
 `14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9`.
 
+Preserved cross-repository pins are MIP
+`a293ce52a813709ca624332123019139928cc51e` and MMM
+`fe8e784923994406a2e4907d28debd872d61fd73`. This task does not modify or
+sequence either repository.
+
 The named failing node reproduces because taskctl renders the canonical status
 inside Markdown code delimiters while the handoff test parser expects an
 unformatted value. The implementation must preserve exact comparison with
