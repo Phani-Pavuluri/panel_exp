@@ -207,6 +207,7 @@ def test_completion_report_is_fully_generated() -> None:
 def test_transition_renders_structured_completion_evidence() -> None:
     canonical = state()
     canonical["completion_evidence"] = valid_completion_evidence()
+    canonical.update(status="authorized", review_decision="authorized", implementation_commit_sha=None)
     taskctl.STATE_PATH.write_text(json.dumps(canonical, indent=2) + "\n", encoding="utf-8")
     taskctl.sync()
     taskctl.transition("ready_for_review", implementation_sha="d" * 40)
