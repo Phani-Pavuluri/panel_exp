@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** `ready_for_review`
+**Status:** `changes_requested`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -13,23 +13,116 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Feature branch:** `feat/geox-structured-completion-evidence-001`
 - **Feature branch created:** `true`
 - **Task execution authorized:** `true`
-- **Correction execution authorized:** `false`
+- **Correction execution authorized:** `true`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `0d251c22bbfb41ab57c830b89f291464de2e1fa5`
 - **Reviewed head:** `null`
-- **Rejected review head:** `null`
-- **Rejected implementation commit:** `null`
+- **Rejected review head:** `61c4e7d2100cdf79bd1687598e5e410bbc450e62`
+- **Rejected implementation commit:** `0d251c22bbfb41ab57c830b89f291464de2e1fa5`
 - **Approval commit:** `null`
 - **Blockers:** `none`
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `ready_for_review`
+- **Review decision:** `changes_requested`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
+
+## Authorized correction cycle
+
+- Rejected review head:
+  `61c4e7d2100cdf79bd1687598e5e410bbc450e62`.
+- Rejected implementation commit:
+  `0d251c22bbfb41ab57c830b89f291464de2e1fa5`.
+- Correction cycle: the sole permitted cycle, `1/1`, is authorized.
+
+The schema-v4 implementation, structured completion evidence, generated report,
+and review-ready validation are accepted. External merge closure exposed a
+test-fixture defect: tests that synthesize another lifecycle state copy the live
+canonical state and overwrite only part of it, so their outcome depends on the
+repository's starting lifecycle state.
+
+The first post-merge run reported `1 failed, 24 passed` because
+`test_transition_renders_structured_completion_evidence` changed a merged state
+to `authorized` without restoring execution authority, producing
+`E_EXECUTION_EVIDENCE`. After the rejected head was moved to
+`changes_requested`, the combined suite reported `6 failed, 19 passed`: every
+parameter of `test_completion_evidence_schema_fails_closed` inherited open
+correction authority and rejection provenance, so validation stopped at
+`E_REVIEW_EVIDENCE` instead of the intended structured-evidence reason code.
+
+Correct only the lifecycle-sensitive fixtures in
+`tests/execution/test_taskctl.py`. Introduce a small test-only state builder or
+perform equivalent explicit normalization so each synthesized state is valid
+apart from the single condition under test.
+
+For the authorized-to-review transition fixture, normalize at minimum:
+
+- `status` and `review_decision` to `authorized`;
+- `task_execution_authorized` to `true`;
+- `correction_execution_authorized` to `false`;
+- implementation, reviewed, rejected-review, rejected-implementation, and
+  approval SHAs to `null`;
+- local and remote cleanup evidence to `null`;
+- blockers to an empty list; and
+- correction counters to `0` completed and `1` remaining.
+
+For every parameter of the malformed-completion-evidence fixture, construct a
+complete `ready_for_review` state with task execution authorized, correction
+authority closed, a valid implementation SHA, no reviewed/rejected/approval or
+cleanup evidence, no blockers, and counters `0` completed and `1` remaining.
+Then replace only the parameterized evidence field and preserve the assertion
+for its exact completion-evidence reason code.
+
+Audit the other tests in this file that synthesize lifecycle states and apply
+the same normalization only where needed to keep their asserted reason code or
+transition independent of a canonical starting state of `changes_requested`,
+`ready_for_review`, or `merged`. Preserve all existing assertions and test
+counts. Do not weaken taskctl validation or change production task-control
+behavior.
+
+Owned correction paths are limited to:
+
+- `tests/execution/test_taskctl.py`;
+- `docs/execution/EXECUTION_STATE.json`;
+- `docs/execution/ACTIVE_TASK.md` through taskctl synchronization; and
+- `docs/execution/LATEST_COMPLETION_REPORT.md` through fully generated schema-v4
+  evidence.
+
+Refresh canonical `completion_evidence` with the correction commit, exact
+changed paths, exact validation results, Docker exclusion, closure-state
+limitation, and prohibited-operation confirmation. Use the correction
+implementation commit—not the rejected implementation SHA—when completing the
+correction transition.
+
+Run and report:
+
+```text
+.venv/bin/python -m panel_exp.execution.taskctl check
+.venv/bin/python -m pytest -q tests/execution/test_taskctl.py::test_transition_renders_structured_completion_evidence
+.venv/bin/python -m pytest -q tests/execution/test_taskctl.py::test_completion_evidence_schema_fails_closed
+.venv/bin/python -m pytest -q tests/execution/test_taskctl.py
+.venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py
+.venv/bin/python -m pytest -q tests/execution/test_taskctl.py tests/test_repo_native_execution_handoff.py
+.venv/bin/python -m json.tool docs/execution/EXECUTION_STATE.json
+git diff --check
+git diff --name-only 61c4e7d2100cdf79bd1687598e5e410bbc450e62...HEAD
+```
+
+Acceptance requires both named fixture groups (`1` transition case and `6`
+malformed-evidence cases), `22` taskctl tests, `3` handoff tests, and the
+combined `25`-test suite passing from the correction state and after replay
+against a temporary valid merged canonical state. Only owned paths may change
+and all protected authorities must remain `false`. Do not run
+`make validate-docker`; it remains outside this governance-only correction.
+
+Commit and push the correction on the same feature branch. Complete the sole
+correction cycle through task control using the exact correction implementation
+SHA, commit and push the review receipt, prove local/remote head equality, and
+stop at `ready_for_review`. Do not create a PR or merge.
 
 ## Repository and branch
 
