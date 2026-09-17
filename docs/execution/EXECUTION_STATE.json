@@ -2,7 +2,7 @@
   "schema_version": "geox_repo_execution_state_v3",
   "repository": "Phani-Pavuluri/panel_exp",
   "task_id": "GEOX_CURRENT_MAIN_HANDOFF_STATUS_PARSER_RECOVERY_001",
-  "status": "ready_for_review",
+  "status": "merged",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
   "base_sha": "0f130f873b472c373cb481574fde25eb5ba62e56",
@@ -14,19 +14,19 @@
   "feature_branch_created": true,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
-  "task_execution_authorized": true,
+  "task_execution_authorized": false,
   "correction_execution_authorized": false,
   "merge_authorized": false,
   "pr_creation_authorized": false,
-  "reviewed_head_sha": null,
+  "reviewed_head_sha": "d001891238b7124cdaa5d27d05a563b3386a5715",
   "rejected_review_head_sha": "b97d75a2a622441b4c063e1835caa93f6a0c9305",
   "rejected_implementation_commit_sha": "64888b7b56f4fb53207bd365fbbe380ea53b13be",
   "implementation_commit_sha": "64888b7b56f4fb53207bd365fbbe380ea53b13be",
   "approval_commit_sha": null,
-  "local_feature_branch_cleanup": null,
-  "remote_feature_branch_cleanup": null,
+  "local_feature_branch_cleanup": "observed_deleted",
+  "remote_feature_branch_cleanup": "observed_deleted",
   "capability_authorizations_changed": false,
-  "last_updated": "2026-09-16",
+  "last_updated": "2026-09-17",
   "blockers": [],
   "dependencies": [
     {
@@ -96,12 +96,11 @@
     "authorized_resolution": "Change only the handoff contract-test regex to recognize the exact taskctl-rendered backtick-delimited status and preserve equality with EXECUTION_STATE.json."
   },
   "remaining_current_main_defect_ids": [
-    "GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001",
     "GEOX-CURRENT-MAIN-BRB-GOLDEN-EQUIVALENCE-001",
     "GEOX-CURRENT-MAIN-DESIGN-VALIDATION-CALLBACK-INJECTION-001",
     "GEOX-CURRENT-MAIN-DESIGN-TIER1-CONTRACT-EMISSION-001"
   ],
-  "handoff_status_parser_recovery_authorized": true,
+  "handoff_status_parser_recovery_authorized": false,
   "parked_parser_repair": {
     "state": "blocked_do_not_merge",
     "branch": "fix/geox-current-main-handoff-status-parser-repair-001",
@@ -112,12 +111,12 @@
   },
   "planned_governance_followup": {
     "task_id": "GEOX_STRUCTURED_COMPLETION_EVIDENCE_001",
-    "state": "planned_not_authorized",
-    "sequencing_condition": "Complete and merge the fresh-main parser recovery before separately assessing and authoring this governance milestone."
+    "state": "eligible_for_separate_assessment_not_authorized",
+    "sequencing_condition": "The parser recovery is merged; a separate current-main assessment and task-authoring decision is still required."
   },
   "next_task_id": null,
   "next_task_authorized": false,
-  "review_decision": "ready_for_review",
+  "review_decision": "merged",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
   "task_authoring_note": "Authorized by task-authoring commit 9cb97c8a47d083fd13740bab9bcabf817477fa0c from synchronized GeoX main 0f130f873b472c373cb481574fde25eb5ba62e56 to repair only GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001. The historical parser branch at 2d262fae8d8a904aa0f8332395588c37f6f74ccd is immutable evidence and is not authorized for merge, reuse, rebase, cherry-pick, modification, or execution. Structured completion-evidence work is recorded as a planned, separately reviewable follow-up and is not authorized by this task."
