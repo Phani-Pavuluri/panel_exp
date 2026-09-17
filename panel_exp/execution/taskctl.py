@@ -8,7 +8,7 @@ import json
 import os
 import re
 import tempfile
-from pathlib import Path
+from pathlib import Path, PurePosixPath, PureWindowsPath
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -17,7 +17,7 @@ ACTIVE_PATH = ROOT / "docs/execution/ACTIVE_TASK.md"
 REPORT_PATH = ROOT / "docs/execution/LATEST_COMPLETION_REPORT.md"
 BEGIN_MARKER = "<!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->"
 END_MARKER = "<!-- END GEOX TASKCTL EXECUTION VIEW -->"
-SCHEMA_VERSION = "geox_repo_execution_state_v3"
+SCHEMA_VERSION = "geox_repo_execution_state_v4"
 STATES = frozenset(
     {
         "idle",
@@ -70,6 +70,21 @@ SHA_FIELDS = (
     "rejected_implementation_commit_sha",
     "approval_commit_sha",
 )
+COMPLETION_EVIDENCE_KEYS = {
+    "changed_paths",
+    "behavior_summary",
+    "validation_results",
+    "validation_not_run",
+    "blockers_and_limitations",
+    "prohibited_operations",
+}
+PROHIBITED_OPERATION_KEYS = {
+    "pr_creation",
+    "merge",
+    "squash",
+    "rebase",
+    "force_push",
+}
 
 
 class TaskControlError(ValueError):
@@ -107,6 +122,73 @@ def load_state(path: Path = STATE_PATH) -> dict[str, Any]:
     return state
 
 
+def _require_nonempty_string(value: object, code: str, field: str) -> None:
+    if not isinstance(value, str) or not value.strip():
+        raise TaskControlError(code, f"{field} must be a nonempty string")
+
+
+def _validate_completion_evidence(evidence: object) -> None:
+    if not isinstance(evidence, dict):
+        raise TaskControlError("E_COMPLETION_EVIDENCE_TYPE", "completion_evidence must be an object")
+    missing = COMPLETION_EVIDENCE_KEYS - evidence.keys()
+    if missing:
+        raise TaskControlError("E_COMPLETION_EVIDENCE_KEYS", f"missing keys: {', '.join(sorted(missing))}")
+    extra = evidence.keys() - COMPLETION_EVIDENCE_KEYS
+    if extra:
+        raise TaskControlError("E_COMPLETION_EVIDENCE_KEYS", f"unexpected keys: {', '.join(sorted(extra))}")
+
+    changed_paths = evidence["changed_paths"]
+    if not isinstance(changed_paths, list) or not changed_paths:
+        raise TaskControlError("E_COMPLETION_EVIDENCE_PATHS", "changed_paths must be a nonempty list")
+    if any(not isinstance(path, str) or not path.strip() for path in changed_paths):
+        raise TaskControlError("E_COMPLETION_EVIDENCE_PATHS", "changed_paths must contain nonempty strings")
+    if len(set(changed_paths)) != len(changed_paths):
+        raise TaskControlError("E_COMPLETION_EVIDENCE_PATHS", "changed_paths must be unique")
+    for path in changed_paths:
+        parsed = PurePosixPath(path)
+        if parsed.is_absolute() or PureWindowsPath(path).is_absolute() or path.startswith("\\") or ".." in parsed.parts or path in {".", ""}:
+            raise TaskControlError("E_COMPLETION_EVIDENCE_PATHS", "changed_paths must be repository-relative")
+
+    _require_nonempty_string(evidence["behavior_summary"], "E_COMPLETION_EVIDENCE_BEHAVIOR", "behavior_summary")
+
+    validation_results = evidence["validation_results"]
+    if not isinstance(validation_results, list) or not validation_results:
+        raise TaskControlError("E_COMPLETION_EVIDENCE_VALIDATION", "validation_results must be a nonempty list")
+    for result in validation_results:
+        if not isinstance(result, dict):
+            raise TaskControlError("E_COMPLETION_EVIDENCE_VALIDATION", "validation result must be an object")
+        for field in ("command", "result", "outcome"):
+            if field not in result:
+                raise TaskControlError("E_COMPLETION_EVIDENCE_VALIDATION", f"validation result missing {field}")
+        _require_nonempty_string(result["command"], "E_COMPLETION_EVIDENCE_VALIDATION", "validation command")
+        _require_nonempty_string(result["result"], "E_COMPLETION_EVIDENCE_VALIDATION", "validation result")
+        if result["outcome"] != "passed":
+            raise TaskControlError("E_COMPLETION_EVIDENCE_VALIDATION", "validation outcome must be passed")
+
+    validation_not_run = evidence["validation_not_run"]
+    if not isinstance(validation_not_run, list):
+        raise TaskControlError("E_COMPLETION_EVIDENCE_OMITTED", "validation_not_run must be a list")
+    for omitted in validation_not_run:
+        if not isinstance(omitted, dict) or "command" not in omitted or "reason" not in omitted:
+            raise TaskControlError("E_COMPLETION_EVIDENCE_OMITTED", "omitted validation requires command and reason")
+        _require_nonempty_string(omitted["command"], "E_COMPLETION_EVIDENCE_OMITTED", "omitted validation command")
+        _require_nonempty_string(omitted["reason"], "E_COMPLETION_EVIDENCE_OMITTED", "omitted validation reason")
+
+    limitations = evidence["blockers_and_limitations"]
+    if not isinstance(limitations, list) or any(not isinstance(item, str) or not item.strip() for item in limitations):
+        raise TaskControlError("E_COMPLETION_EVIDENCE_LIMITATIONS", "blockers_and_limitations must contain nonempty strings")
+
+    prohibited = evidence["prohibited_operations"]
+    if not isinstance(prohibited, dict):
+        raise TaskControlError("E_COMPLETION_EVIDENCE_PROHIBITED", "prohibited_operations must be an object")
+    if set(prohibited) != PROHIBITED_OPERATION_KEYS:
+        raise TaskControlError("E_COMPLETION_EVIDENCE_PROHIBITED", "prohibited_operations has incorrect keys")
+    if any(not isinstance(value, bool) for value in prohibited.values()):
+        raise TaskControlError("E_COMPLETION_EVIDENCE_PROHIBITED", "prohibited operation occurrences must be boolean")
+    if any(prohibited.values()):
+        raise TaskControlError("E_COMPLETION_EVIDENCE_PROHIBITED", "prohibited operation occurrence must remain false")
+
+
 def validate_state(state: dict[str, Any]) -> None:
     if state.get("schema_version") != SCHEMA_VERSION:
         raise TaskControlError("E_SCHEMA_VERSION", f"expected {SCHEMA_VERSION}")
@@ -121,7 +203,7 @@ def validate_state(state: dict[str, Any]) -> None:
         "rejected_implementation_commit_sha", "approval_commit_sha", "blockers",
         "maximum_correction_cycles", "correction_cycles_completed",
         "correction_cycles_remaining", "review_decision", "local_feature_branch_cleanup",
-        "remote_feature_branch_cleanup", *PROTECTED_AUTHORITY,
+        "remote_feature_branch_cleanup", "completion_evidence", *PROTECTED_AUTHORITY,
     )
     missing = [key for key in required if key not in state]
     if missing:
@@ -172,6 +254,8 @@ def validate_state(state: dict[str, Any]) -> None:
     if status == "ready_for_review":
         if not state["implementation_commit_sha"] or state["blockers"] or state["correction_execution_authorized"]:
             raise TaskControlError("E_REVIEW_EVIDENCE", "review-ready requires implementation, no blockers, and closed correction authority")
+    if status in {"ready_for_review", "changes_requested", "merged"}:
+        _validate_completion_evidence(state["completion_evidence"])
     if status == "merged":
         if state["task_execution_authorized"] or state["correction_execution_authorized"] or not state["reviewed_head_sha"]:
             raise TaskControlError("E_MERGED_EVIDENCE", "merged requires reviewed head and closed execution authority")
@@ -207,6 +291,38 @@ def render(state: dict[str, Any], document: str) -> str:
     )
     lines = [BEGIN_MARKER, title, "", decision, "", "_Generated from `EXECUTION_STATE.json`; do not edit._", ""]
     lines.extend(f"- **{label}:** `{_display(value)}`" for label, value in fields)
+    if document == "completion_report":
+        evidence = state["completion_evidence"]
+        lines.extend((
+            "",
+            f"- **GeoX main pin:** `{_display(state.get('geox_main_pin'))}`",
+            f"- **MIP main pin:** `{_display(state.get('mip_main_pin'))}`",
+            f"- **MMM main pin:** `{_display(state.get('mmm_main_pin'))}`",
+        ))
+        if evidence is not None:
+            lines.extend((
+                "",
+                "## Structured completion evidence",
+                "",
+                "### Changed paths",
+                "",
+            ))
+            lines.extend(f"- `{path}`" for path in evidence["changed_paths"])
+            lines.extend(("", "### Behavior", "", evidence["behavior_summary"], "", "### Validation results", ""))
+            for result in evidence["validation_results"]:
+                lines.append(f"- `{result['command']}` — {result['result']} ({result['outcome']})")
+            lines.extend(("", "### Validation not run", ""))
+            if evidence["validation_not_run"]:
+                lines.extend(f"- `{item['command']}` — {item['reason']}" for item in evidence["validation_not_run"])
+            else:
+                lines.append("- none")
+            lines.extend(("", "### Blockers and limitations", ""))
+            if evidence["blockers_and_limitations"]:
+                lines.extend(f"- {item}" for item in evidence["blockers_and_limitations"])
+            else:
+                lines.append("- none")
+            lines.extend(("", "### Prohibited-operation confirmation", ""))
+            lines.extend(f"- {key}: `{_display(value)}`" for key, value in evidence["prohibited_operations"].items())
     return "\n".join((*lines, END_MARKER, ""))
 
 
@@ -241,7 +357,7 @@ def _write_atomically(path: Path, content: str) -> None:
 
 def _candidate_views(state: dict[str, Any]) -> tuple[str, str]:
     active = replace_view(_read(ACTIVE_PATH), render(state, "active_task"))
-    report = replace_view(_read(REPORT_PATH), render(state, "completion_report"))
+    report = render(state, "completion_report")
     return active, report
 
 

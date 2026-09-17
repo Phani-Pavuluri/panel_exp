@@ -11,7 +11,7 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Base SHA:** `a78c4017e06c6f0bfb4329e749972b516dfbc7e9`
 - **Authorization provenance:** `55c4c6c237642195732d949d034e98763c5d8cac`
 - **Feature branch:** `feat/geox-structured-completion-evidence-001`
-- **Feature branch created:** `false`
+- **Feature branch created:** `true`
 - **Task execution authorized:** `true`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
