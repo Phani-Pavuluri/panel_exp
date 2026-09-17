@@ -9,7 +9,7 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Execution mode:** `branch_and_fast_forward`
 - **Base SHA:** `0f130f873b472c373cb481574fde25eb5ba62e56`
-- **Authorization provenance:** `0f130f873b472c373cb481574fde25eb5ba62e56`
+- **Authorization provenance:** `9cb97c8a47d083fd13740bab9bcabf817477fa0c`
 - **Feature branch:** `fix/geox-current-main-handoff-status-parser-recovery-001`
 - **Feature branch created:** `false`
 - **Task execution authorized:** `true`
@@ -40,9 +40,10 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - Fresh-main base: `0f130f873b472c373cb481574fde25eb5ba62e56`
 
 Create the authorized branch only after verifying that local `main` and
-`origin/main` are identical, the final task-authoring commit is their common
-head, and the branch does not already exist locally or remotely. Do not execute
-from any other branch.
+`origin/main` are identical, task-authoring commit
+`9cb97c8a47d083fd13740bab9bcabf817477fa0c` is its ancestor, and intervening
+commits are task-authoring metadata only. The branch must not already exist
+locally or remotely. Do not execute from any other branch.
 
 ## Objective
 

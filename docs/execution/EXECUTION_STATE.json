@@ -7,9 +7,9 @@
   "base_branch": "main",
   "base_sha": "0f130f873b472c373cb481574fde25eb5ba62e56",
   "task_authoring_start_sha": "0f130f873b472c373cb481574fde25eb5ba62e56",
-  "task_authoring_head_sha": "0f130f873b472c373cb481574fde25eb5ba62e56",
-  "authorization_head_sha": "0f130f873b472c373cb481574fde25eb5ba62e56",
-  "authorized_branch_baseline_sha": "0f130f873b472c373cb481574fde25eb5ba62e56",
+  "task_authoring_head_sha": "9cb97c8a47d083fd13740bab9bcabf817477fa0c",
+  "authorization_head_sha": "9cb97c8a47d083fd13740bab9bcabf817477fa0c",
+  "authorized_branch_baseline_sha": "9cb97c8a47d083fd13740bab9bcabf817477fa0c",
   "feature_branch": "fix/geox-current-main-handoff-status-parser-recovery-001",
   "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
@@ -120,5 +120,5 @@
   "review_decision": "authorized",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Authorized from synchronized GeoX main 0f130f873b472c373cb481574fde25eb5ba62e56 to repair only GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001. The historical parser branch at 2d262fae8d8a904aa0f8332395588c37f6f74ccd is immutable evidence and is not authorized for merge, reuse, rebase, cherry-pick, modification, or execution. Structured completion-evidence work is recorded as a planned, separately reviewable follow-up and is not authorized by this task."
+  "task_authoring_note": "Authorized by task-authoring commit 9cb97c8a47d083fd13740bab9bcabf817477fa0c from synchronized GeoX main 0f130f873b472c373cb481574fde25eb5ba62e56 to repair only GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001. The historical parser branch at 2d262fae8d8a904aa0f8332395588c37f6f74ccd is immutable evidence and is not authorized for merge, reuse, rebase, cherry-pick, modification, or execution. Structured completion-evidence work is recorded as a planned, separately reviewable follow-up and is not authorized by this task."
 }
