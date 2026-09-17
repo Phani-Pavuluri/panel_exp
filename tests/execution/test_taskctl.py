@@ -41,6 +41,29 @@ def valid_completion_evidence() -> dict[str, object]:
     }
 
 
+def normalized_lifecycle_state(**updates: object) -> dict[str, object]:
+    canonical = state()
+    canonical.update(
+        status="ready_for_review",
+        review_decision="ready_for_review",
+        task_execution_authorized=True,
+        correction_execution_authorized=False,
+        implementation_commit_sha="a" * 40,
+        reviewed_head_sha=None,
+        rejected_review_head_sha=None,
+        rejected_implementation_commit_sha=None,
+        approval_commit_sha=None,
+        local_feature_branch_cleanup=None,
+        remote_feature_branch_cleanup=None,
+        blockers=[],
+        correction_cycles_completed=0,
+        correction_cycles_remaining=1,
+        completion_evidence=valid_completion_evidence(),
+    )
+    canonical.update(updates)
+    return canonical
+
+
 def prepare_changes_requested() -> None:
     canonical = state()
     canonical.update(
@@ -161,14 +184,7 @@ def test_ready_for_review_requires_implementation_and_closed_correction_authorit
 
 
 def test_ready_for_review_requires_structured_completion_evidence() -> None:
-    canonical = state()
-    canonical.update(
-        status="ready_for_review",
-        review_decision="ready_for_review",
-        implementation_commit_sha="a" * 40,
-        correction_execution_authorized=False,
-        completion_evidence=None,
-    )
+    canonical = normalized_lifecycle_state(completion_evidence=None)
     with pytest.raises(taskctl.TaskControlError, match="E_COMPLETION_EVIDENCE_TYPE"):
         taskctl.validate_state(canonical)
 
@@ -185,10 +201,8 @@ def test_ready_for_review_requires_structured_completion_evidence() -> None:
     ),
 )
 def test_completion_evidence_schema_fails_closed(field: str, value: object, reason: str) -> None:
-    canonical = state()
-    canonical["completion_evidence"] = valid_completion_evidence()
+    canonical = normalized_lifecycle_state()
     canonical["completion_evidence"][field] = value
-    canonical.update(status="ready_for_review", review_decision="ready_for_review", implementation_commit_sha="a" * 40)
     with pytest.raises(taskctl.TaskControlError, match=reason):
         taskctl.validate_state(canonical)
 
@@ -205,9 +219,12 @@ def test_completion_report_is_fully_generated() -> None:
 
 
 def test_transition_renders_structured_completion_evidence() -> None:
-    canonical = state()
-    canonical["completion_evidence"] = valid_completion_evidence()
-    canonical.update(status="authorized", review_decision="authorized", implementation_commit_sha=None)
+    canonical = normalized_lifecycle_state(
+        status="authorized",
+        review_decision="authorized",
+        correction_execution_authorized=False,
+        implementation_commit_sha=None,
+    )
     taskctl.STATE_PATH.write_text(json.dumps(canonical, indent=2) + "\n", encoding="utf-8")
     taskctl.sync()
     taskctl.transition("ready_for_review", implementation_sha="d" * 40)
