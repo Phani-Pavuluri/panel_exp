@@ -1,30 +1,30 @@
 {
   "schema_version": "geox_repo_execution_state_v3",
   "repository": "Phani-Pavuluri/panel_exp",
-  "task_id": "GEOX_CURRENT_MAIN_HANDOFF_STATUS_PARSER_RECOVERY_001",
-  "status": "merged",
+  "task_id": "GEOX_STRUCTURED_COMPLETION_EVIDENCE_001",
+  "status": "authorized",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
-  "base_sha": "0f130f873b472c373cb481574fde25eb5ba62e56",
-  "task_authoring_start_sha": "0f130f873b472c373cb481574fde25eb5ba62e56",
-  "task_authoring_head_sha": "9cb97c8a47d083fd13740bab9bcabf817477fa0c",
-  "authorization_head_sha": "9cb97c8a47d083fd13740bab9bcabf817477fa0c",
-  "authorized_branch_baseline_sha": "9cb97c8a47d083fd13740bab9bcabf817477fa0c",
-  "feature_branch": "fix/geox-current-main-handoff-status-parser-recovery-001",
-  "feature_branch_created": true,
+  "base_sha": "a78c4017e06c6f0bfb4329e749972b516dfbc7e9",
+  "task_authoring_start_sha": "a78c4017e06c6f0bfb4329e749972b516dfbc7e9",
+  "task_authoring_head_sha": "a78c4017e06c6f0bfb4329e749972b516dfbc7e9",
+  "authorization_head_sha": "a78c4017e06c6f0bfb4329e749972b516dfbc7e9",
+  "authorized_branch_baseline_sha": "a78c4017e06c6f0bfb4329e749972b516dfbc7e9",
+  "feature_branch": "feat/geox-structured-completion-evidence-001",
+  "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
-  "task_execution_authorized": false,
+  "task_execution_authorized": true,
   "correction_execution_authorized": false,
   "merge_authorized": false,
   "pr_creation_authorized": false,
-  "reviewed_head_sha": "d001891238b7124cdaa5d27d05a563b3386a5715",
-  "rejected_review_head_sha": "b97d75a2a622441b4c063e1835caa93f6a0c9305",
-  "rejected_implementation_commit_sha": "64888b7b56f4fb53207bd365fbbe380ea53b13be",
-  "implementation_commit_sha": "64888b7b56f4fb53207bd365fbbe380ea53b13be",
+  "reviewed_head_sha": null,
+  "rejected_review_head_sha": null,
+  "rejected_implementation_commit_sha": null,
+  "implementation_commit_sha": null,
   "approval_commit_sha": null,
-  "local_feature_branch_cleanup": "observed_deleted",
-  "remote_feature_branch_cleanup": "observed_deleted",
+  "local_feature_branch_cleanup": null,
+  "remote_feature_branch_cleanup": null,
   "capability_authorizations_changed": false,
   "last_updated": "2026-09-17",
   "blockers": [],
@@ -57,24 +57,34 @@
       "merged_checkpoint_sha": "14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9",
       "reviewed_head_sha": "0f79d277afac4a8675bc3a1365ae89c6da8dcbf9",
       "resolution_condition": "The merged reassessment established the current-main handoff-status parser defect."
+    },
+    {
+      "dependency_id": "DEP-GEOX-PARSER-RECOVERY-MERGED-001",
+      "repository": "Phani-Pavuluri/panel_exp",
+      "task_id": "GEOX_CURRENT_MAIN_HANDOFF_STATUS_PARSER_RECOVERY_001",
+      "state": "satisfied",
+      "merged_checkpoint_sha": "a78c4017e06c6f0bfb4329e749972b516dfbc7e9",
+      "reviewed_head_sha": "d001891238b7124cdaa5d27d05a563b3386a5715",
+      "implementation_commit_sha": "64888b7b56f4fb53207bd365fbbe380ea53b13be",
+      "resolution_condition": "The parser recovery is merged; lifecycle and handoff baselines pass 16 focused tests."
     }
   ],
-  "risk_tier": "tier_1_test_only_handoff_parser_recovery",
+  "risk_tier": "tier_1_execution_governance_schema_and_rendering",
   "full_suite_validation_required": false,
-  "validation_scope": "taskctl_check_named_parser_node_complete_handoff_suite_complete_taskctl_suite_combined_adjacent_suite_json_diff_and_owned_path_verification",
+  "validation_scope": "focused_completion_evidence_schema_render_transition_and_suffix_rejection_tests_complete_taskctl_suite_complete_handoff_suite_combined_adjacent_suite_json_diff_and_owned_path_verification",
   "unresolved_execution_blocking_design_questions": [],
   "maximum_correction_cycles": 1,
-  "correction_cycles_completed": 1,
-  "correction_cycles_remaining": 0,
+  "correction_cycles_completed": 0,
+  "correction_cycles_remaining": 1,
   "affected_repositories": [
     "Phani-Pavuluri/panel_exp"
   ],
   "modified_repositories": [
     "Phani-Pavuluri/panel_exp"
   ],
-  "coordination_workstream_id": "WS-GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-RECOVERY-001",
+  "coordination_workstream_id": "WS-GEOX-STRUCTURED-COMPLETION-EVIDENCE-001",
   "coordination_capability_owner": "geox_execution_validation_governance",
-  "geox_main_pin": "0f130f873b472c373cb481574fde25eb5ba62e56",
+  "geox_main_pin": "a78c4017e06c6f0bfb4329e749972b516dfbc7e9",
   "mip_main_pin": "a293ce52a813709ca624332123019139928cc51e",
   "mmm_main_pin": "fe8e784923994406a2e4907d28debd872d61fd73",
   "package_or_runtime_changes_authorized": false,
@@ -89,18 +99,18 @@
   "pilot_authorized": false,
   "production_authorized": false,
   "source_defect": {
-    "defect_id": "GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001",
-    "failing_node": "tests/test_repo_native_execution_handoff.py::test_v2_state_contract_and_pins",
-    "reproduction_result": "1 failed in 0.03s on synchronized main 0f130f873b472c373cb481574fde25eb5ba62e56; complete handoff file: 1 failed, 2 passed; complete taskctl suite: 13 passed",
-    "observed_cause": "The contract test parses a bare lifecycle value after **Status:**, while taskctl renders the canonical value inside backticks.",
-    "authorized_resolution": "Change only the handoff contract-test regex to recognize the exact taskctl-rendered backtick-delimited status and preserve equality with EXECUTION_STATE.json."
+    "defect_id": "GEOX-STRUCTURED-COMPLETION-EVIDENCE-GAP-001",
+    "failing_invariant": "A fresh reviewer must recover the execution completion handoff from canonical Git state without relying on mutable report prose or a pasted Work-session summary.",
+    "reproduction_result": "Two consecutive review-ready tasks required correction because taskctl validated only the generated lifecycle block while preserving stale custom completion-report suffixes.",
+    "observed_cause": "replace_view() preserves all completion-report text outside the generated markers, and schema v3 has no canonical structured fields for changed paths, behavior, validation results, validation omitted, limitations, or prohibited-operation confirmation.",
+    "authorized_resolution": "Add fail-closed structured completion evidence to canonical state, render the completion report fully from state, and require complete evidence before ready_for_review without trying to persist the self-referential final remote branch head."
   },
   "remaining_current_main_defect_ids": [
     "GEOX-CURRENT-MAIN-BRB-GOLDEN-EQUIVALENCE-001",
     "GEOX-CURRENT-MAIN-DESIGN-VALIDATION-CALLBACK-INJECTION-001",
     "GEOX-CURRENT-MAIN-DESIGN-TIER1-CONTRACT-EMISSION-001"
   ],
-  "handoff_status_parser_recovery_authorized": false,
+  "structured_completion_evidence_authorized": true,
   "parked_parser_repair": {
     "state": "blocked_do_not_merge",
     "branch": "fix/geox-current-main-handoff-status-parser-repair-001",
@@ -109,15 +119,28 @@
     "reuse_authorized": false,
     "merge_authorized": false
   },
-  "planned_governance_followup": {
-    "task_id": "GEOX_STRUCTURED_COMPLETION_EVIDENCE_001",
-    "state": "eligible_for_separate_assessment_not_authorized",
-    "sequencing_condition": "The parser recovery is merged; a separate current-main assessment and task-authoring decision is still required."
+  "completion_evidence_design": {
+    "canonical_location": "docs/execution/EXECUTION_STATE.json",
+    "target_schema_version": "geox_repo_execution_state_v4",
+    "report_policy": "LATEST_COMPLETION_REPORT.md is fully generated from canonical state and may not preserve a mutable custom suffix.",
+    "remote_head_policy": "The execution session records the implementation SHA and completion evidence; the external reviewer resolves the exact remote branch head and merge closure records reviewed_head_sha."
   },
+  "recurrence_evidence": [
+    {
+      "task_id": "GEOX_TASKCTL_CORRECTION_FIXTURE_BASELINE_REPAIR_001",
+      "rejected_review_head_sha": "1c3a2b01c5d85469c984c2139d5e16a8790a5537",
+      "finding": "Canonical review-ready state contradicted stale pre-implementation completion prose."
+    },
+    {
+      "task_id": "GEOX_CURRENT_MAIN_HANDOFF_STATUS_PARSER_RECOVERY_001",
+      "rejected_review_head_sha": "b97d75a2a622441b4c063e1835caa93f6a0c9305",
+      "finding": "Canonical review-ready state again contradicted stale pre-implementation completion prose."
+    }
+  ],
   "next_task_id": null,
   "next_task_authorized": false,
-  "review_decision": "merged",
+  "review_decision": "authorized",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Authorized by task-authoring commit 9cb97c8a47d083fd13740bab9bcabf817477fa0c from synchronized GeoX main 0f130f873b472c373cb481574fde25eb5ba62e56 to repair only GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001. The historical parser branch at 2d262fae8d8a904aa0f8332395588c37f6f74ccd is immutable evidence and is not authorized for merge, reuse, rebase, cherry-pick, modification, or execution. Structured completion-evidence work is recorded as a planned, separately reviewable follow-up and is not authorized by this task."
+  "task_authoring_note": "Authorized from synchronized GeoX main a78c4017e06c6f0bfb4329e749972b516dfbc7e9 to implement only canonical structured completion evidence, fully generated completion reporting, and fail-closed lifecycle validation. This task may not store its own final remote branch head, modify analytical or runtime behavior, repair the three remaining analytical/design defect classes, or authorize certification or downstream capability."
 }

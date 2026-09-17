@@ -1,10 +1,10 @@
 # GeoX execution context
 
-Active task: `GEOX_CURRENT_MAIN_HANDOFF_STATUS_PARSER_RECOVERY_001`.
+Active task: `GEOX_STRUCTURED_COMPLETION_EVIDENCE_001`.
 
 The task is authorized from synchronized GeoX main
-`0f130f873b472c373cb481574fde25eb5ba62e56` on branch
-`fix/geox-current-main-handoff-status-parser-recovery-001`. Canonical lifecycle
+`a78c4017e06c6f0bfb4329e749972b516dfbc7e9` on branch
+`feat/geox-structured-completion-evidence-001`. Canonical lifecycle
 state is in `docs/execution/EXECUTION_STATE.json`; generated lifecycle views are
 in `ACTIVE_TASK.md` and `LATEST_COMPLETION_REPORT.md`.
 
@@ -13,20 +13,21 @@ Preserved cross-repository pins are MIP
 `fe8e784923994406a2e4907d28debd872d61fd73`. This GeoX task does not modify or
 sequence either repository.
 
-The merged fixture prerequisite closes
-`GEOX-TASKCTL-CORRECTION-FIXTURE-BASELINE-001`. The remaining authorized work is
-only the one-line handoff status parser recovery in
-`tests/test_repo_native_execution_handoff.py`.
+The merged parser recovery closes
+`GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001`. The current task may change only
+the repository execution schema, task-control rendering/validation, focused
+lifecycle/handoff tests, and governed execution views needed for canonical
+structured completion evidence.
 
-The historical branch
-`fix/geox-current-main-handoff-status-parser-repair-001` at
-`2d262fae8d8a904aa0f8332395588c37f6f74ccd` is immutable evidence. It may not
-be merged, rebased, cherry-picked, modified, or used for execution.
+The completion report will become fully generated from canonical state. The
+active task remains the generated lifecycle block plus its Git-authored task
+contract. Exact final remote feature-head discovery stays external because an
+execution branch cannot durably contain its own final SHA; merge closure records
+the externally reviewed head.
 
-No taskctl implementation, generated-document format, package/runtime code,
-analytical behavior, certification, product authority, or unrelated defect
-change is authorized. `GEOX_STRUCTURED_COMPLETION_EVIDENCE_001` is planned only;
-it is not authorized and must be assessed separately after parser recovery.
+No package/runtime code, analytical behavior, certification, product authority,
+MIP, MMM, or remaining defect-class change is authorized. No successor is
+authorized.
 
 Fresh-chat bootstrap: classify the full worktree, fetch and prune, switch to
 `main`, pull fast-forward only, prove `main == origin/main`, read root
