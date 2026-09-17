@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** `ready_for_review`
+**Status:** `changes_requested`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -13,23 +13,79 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Feature branch:** `fix/geox-current-main-handoff-status-parser-recovery-001`
 - **Feature branch created:** `true`
 - **Task execution authorized:** `true`
-- **Correction execution authorized:** `false`
+- **Correction execution authorized:** `true`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `64888b7b56f4fb53207bd365fbbe380ea53b13be`
 - **Reviewed head:** `null`
-- **Rejected review head:** `null`
-- **Rejected implementation commit:** `null`
+- **Rejected review head:** `b97d75a2a622441b4c063e1835caa93f6a0c9305`
+- **Rejected implementation commit:** `64888b7b56f4fb53207bd365fbbe380ea53b13be`
 - **Approval commit:** `null`
 - **Blockers:** `none`
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `ready_for_review`
+- **Review decision:** `changes_requested`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
+
+## Authorized correction cycle
+
+- Rejected review head:
+  `b97d75a2a622441b4c063e1835caa93f6a0c9305`.
+- Rejected implementation commit:
+  `64888b7b56f4fb53207bd365fbbe380ea53b13be`.
+- Correction cycle: the sole permitted cycle, `1/1`, is authorized.
+
+The one-line parser implementation and all required validation are accepted.
+The review finding is limited to the custom prose below the generated block in
+`docs/execution/LATEST_COMPLETION_REPORT.md`: it still describes the
+pre-implementation state, failing parser results, and absence of an
+implementation commit. That contradicts the canonical review-ready evidence
+and violates the task's explicit completion-evidence requirement.
+
+Replace only that stale custom completion prose with an accurate final handoff
+that records:
+
+1. task identity, branch, implementation commit, and rejected review receipt;
+2. the four changed paths at the rejected head;
+3. the exact anchored backtick-delimited parser behavior;
+4. every required validation command and exact passing result (`1`, `3`, `13`,
+   and `16` tests respectively);
+5. that `make validate-docker` was intentionally not run because the task
+   contract excludes it;
+6. the immutable historical parser branch, three remaining unrelated defect
+   IDs, and planned-but-unauthorized structured completion-evidence follow-up;
+7. confirmation that no PR, merge, squash, rebase, force-push, successor
+   authorization, protected-authority change, runtime change, or analytical
+   change occurred.
+
+Do not modify `tests/test_repo_native_execution_handoff.py`, taskctl
+implementation, generated Markdown format, repository context, package/runtime
+code, analytical code, or any unrelated path. Preserve implementation commit
+`64888b7b56f4fb53207bd365fbbe380ea53b13be` and every protected authority as
+`false`.
+
+Run and report:
+
+```text
+.venv/bin/python -m panel_exp.execution.taskctl check
+.venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py::test_v2_state_contract_and_pins
+.venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py
+.venv/bin/python -m pytest -q tests/execution/test_taskctl.py
+.venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py tests/execution/test_taskctl.py
+.venv/bin/python -m json.tool docs/execution/EXECUTION_STATE.json
+git diff --check
+git diff --name-only b97d75a2a622441b4c063e1835caa93f6a0c9305...HEAD
+```
+
+Commit and push the completion-report correction on the same authorized branch.
+Then run task control's explicit correction-completion transition using
+implementation SHA `64888b7b56f4fb53207bd365fbbe380ea53b13be`,
+commit and push the resulting review receipt, prove exact local/remote head
+equality, and stop at `ready_for_review`. Do not create a PR or merge.
 
 ## Repository and branch
 
