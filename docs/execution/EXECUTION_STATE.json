@@ -7,9 +7,9 @@
   "base_branch": "main",
   "base_sha": "a78c4017e06c6f0bfb4329e749972b516dfbc7e9",
   "task_authoring_start_sha": "a78c4017e06c6f0bfb4329e749972b516dfbc7e9",
-  "task_authoring_head_sha": "a78c4017e06c6f0bfb4329e749972b516dfbc7e9",
-  "authorization_head_sha": "a78c4017e06c6f0bfb4329e749972b516dfbc7e9",
-  "authorized_branch_baseline_sha": "a78c4017e06c6f0bfb4329e749972b516dfbc7e9",
+  "task_authoring_head_sha": "55c4c6c237642195732d949d034e98763c5d8cac",
+  "authorization_head_sha": "55c4c6c237642195732d949d034e98763c5d8cac",
+  "authorized_branch_baseline_sha": "55c4c6c237642195732d949d034e98763c5d8cac",
   "feature_branch": "feat/geox-structured-completion-evidence-001",
   "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
@@ -142,5 +142,5 @@
   "review_decision": "authorized",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Authorized from synchronized GeoX main a78c4017e06c6f0bfb4329e749972b516dfbc7e9 to implement only canonical structured completion evidence, fully generated completion reporting, and fail-closed lifecycle validation. This task may not store its own final remote branch head, modify analytical or runtime behavior, repair the three remaining analytical/design defect classes, or authorize certification or downstream capability."
+  "task_authoring_note": "Authorized by task-authoring commit 55c4c6c237642195732d949d034e98763c5d8cac from synchronized GeoX main a78c4017e06c6f0bfb4329e749972b516dfbc7e9 to implement only canonical structured completion evidence, fully generated completion reporting, and fail-closed lifecycle validation. This task may not store its own final remote branch head, modify analytical or runtime behavior, repair the three remaining analytical/design defect classes, or authorize certification or downstream capability."
 }
