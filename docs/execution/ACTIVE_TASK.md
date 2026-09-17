@@ -1,141 +1,90 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** `merged`
+**Status:** `authorized`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
-- **Task ID:** `GEOX_TASKCTL_CORRECTION_FIXTURE_BASELINE_REPAIR_001`
+- **Task ID:** `GEOX_CURRENT_MAIN_HANDOFF_STATUS_PARSER_RECOVERY_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Execution mode:** `branch_and_fast_forward`
-- **Base SHA:** `7c3799af5e406fe65161daf7d474cb363fa766b0`
-- **Authorization provenance:** `25d26dec07659150ec4d23eae012b6f4fc3d50d8`
-- **Feature branch:** `fix/geox-taskctl-correction-fixture-baseline-repair-001`
-- **Feature branch created:** `true`
-- **Task execution authorized:** `false`
+- **Base SHA:** `0f130f873b472c373cb481574fde25eb5ba62e56`
+- **Authorization provenance:** `0f130f873b472c373cb481574fde25eb5ba62e56`
+- **Feature branch:** `fix/geox-current-main-handoff-status-parser-recovery-001`
+- **Feature branch created:** `false`
+- **Task execution authorized:** `true`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
-- **Implementation commit:** `d713480f5c520efeab06d7a3b3f15eeb68b80d8f`
-- **Reviewed head:** `eb404992f4d84b4a223111cb495b48dca36b0cde`
-- **Rejected review head:** `1c3a2b01c5d85469c984c2139d5e16a8790a5537`
-- **Rejected implementation commit:** `d713480f5c520efeab06d7a3b3f15eeb68b80d8f`
+- **Implementation commit:** `null`
+- **Reviewed head:** `null`
+- **Rejected review head:** `null`
+- **Rejected implementation commit:** `null`
 - **Approval commit:** `null`
 - **Blockers:** `none`
 - **Maximum correction cycles:** `1`
-- **Correction cycles completed:** `1`
-- **Correction cycles remaining:** `0`
-- **Review decision:** `merged`
-- **Local feature-branch cleanup:** `observed_deleted`
-- **Remote feature-branch cleanup:** `observed_deleted`
+- **Correction cycles completed:** `0`
+- **Correction cycles remaining:** `1`
+- **Review decision:** `authorized`
+- **Local feature-branch cleanup:** `null`
+- **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
-
-## Authorized correction cycle
-
-- Rejected review head:
-  `1c3a2b01c5d85469c984c2139d5e16a8790a5537`.
-- Rejected implementation commit:
-  `d713480f5c520efeab06d7a3b3f15eeb68b80d8f`.
-- Correction cycle: the sole permitted cycle, `1/1`, is authorized.
-
-The implementation diff and required tests are accepted. The review finding is
-limited to the custom prose below the generated block in
-`docs/execution/LATEST_COMPLETION_REPORT.md`: it still says implementation has
-not started and no implementation commit or review head exists. That contradicts
-the canonical `ready_for_review` evidence at the rejected head and fails the
-task's requirement to record focused validation and changed paths.
-
-Replace only that stale custom completion prose with an accurate final handoff
-that records:
-
-1. task identity, branch, implementation commit, and rejected review receipt;
-2. the four changed paths at the rejected head;
-3. the deterministic synthetic implementation/rejected SHA fixture behavior;
-4. every required validation command and exact passing result;
-5. that `make validate-docker` was intentionally not run because the task
-   contract excludes it;
-6. blockers and limitations, including preservation of the immutable parser
-   branch and all four unresolved current-main defect IDs; and
-7. confirmation that no PR, merge, squash, rebase, force-push, successor
-   authorization, protected-authority change, runtime change, or analytical
-   change occurred.
-
-Do not modify `tests/execution/test_taskctl.py`, taskctl implementation, another
-generated-document format, package/runtime code, analytical code, or any
-unrelated path. Preserve implementation commit
-`d713480f5c520efeab06d7a3b3f15eeb68b80d8f` and every protected authority as
-`false`.
-
-Run and report:
-
-```text
-.venv/bin/python -m panel_exp.execution.taskctl check
-.venv/bin/python -m pytest -q tests/execution/test_taskctl.py::test_correction_closure_requires_explicit_evidence_and_updates_counters
-.venv/bin/python -m pytest -q tests/execution/test_taskctl.py
-.venv/bin/python -m pytest -q tests/execution/test_taskctl.py tests/test_repo_native_execution_handoff.py::test_status_invariants_are_closure_safe
-.venv/bin/python -m json.tool docs/execution/EXECUTION_STATE.json
-git diff --check
-git diff --name-only 1c3a2b01c5d85469c984c2139d5e16a8790a5537...HEAD
-```
-
-Commit and push the completion-report correction on the same authorized branch.
-Then run task control's explicit correction completion transition using
-implementation SHA `d713480f5c520efeab06d7a3b3f15eeb68b80d8f`, commit and push the resulting
-review receipt, prove exact local/remote head equality, and stop at
-`ready_for_review`. Do not create a PR or merge.
 
 ## Repository and branch
 
 - Repository: `Phani-Pavuluri/panel_exp`
 - Local path: `/Users/phani/Desktop/panel_exp`
 - Authorized implementation branch:
-  `fix/geox-taskctl-correction-fixture-baseline-repair-001`
-- Fresh-main base: `7c3799af5e406fe65161daf7d474cb363fa766b0`
+  `fix/geox-current-main-handoff-status-parser-recovery-001`
+- Fresh-main base: `0f130f873b472c373cb481574fde25eb5ba62e56`
 
 Create the authorized branch only after verifying that local `main` and
-`origin/main` are identical, task-authoring commit
-`25d26dec07659150ec4d23eae012b6f4fc3d50d8` is its ancestor, and intervening
-commits are task-authoring metadata only. The branch must not already exist
-locally or remotely. Do not execute from another branch.
+`origin/main` are identical, the final task-authoring commit is their common
+head, and the branch does not already exist locally or remotely. Do not execute
+from any other branch.
 
 ## Objective
 
-Repair `GEOX-TASKCTL-CORRECTION-FIXTURE-BASELINE-001` by aligning the synthetic
-`changes_requested` fixture in `tests/execution/test_taskctl.py` with the
-current lifecycle evidence required by `taskctl.validate_state`.
+Repair `GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001` on fresh `main` by making
+the repository handoff contract test recognize the exact backtick-delimited
+status syntax generated by taskctl.
 
-This is a test-fixture-only lifecycle repair. Preserve the fail-closed taskctl
-invariants. Do not change taskctl implementation, generated views, the handoff
-status parser, package/runtime behavior, analytical behavior, or another defect.
+This is a one-line test-contract recovery. It does not authorize changes to
+taskctl, generated Markdown format, package/runtime behavior, analytical
+behavior, capability authority, or another current-main defect.
 
 ## Prerequisites and evidence
 
-- Synchronized GeoX main: `7c3799af5e406fe65161daf7d474cb363fa766b0`.
-- Blocked parser-repair branch:
-  `fix/geox-current-main-handoff-status-parser-repair-001`.
-- Exact blocked remote head:
+- Synchronized GeoX main:
+  `0f130f873b472c373cb481574fde25eb5ba62e56`.
+- Merged fixture prerequisite:
+  `GEOX_TASKCTL_CORRECTION_FIXTURE_BASELINE_REPAIR_001`, closure
+  `0f130f873b472c373cb481574fde25eb5ba62e56`.
+- Fresh-main named-node reproduction:
+  `tests/test_repo_native_execution_handoff.py::test_v2_state_contract_and_pins`
+  reports `1 failed in 0.03s`.
+- Complete handoff-file baseline: `1 failed, 2 passed`.
+- Complete taskctl baseline: `13 passed`.
+- Historical evidence branch:
+  `fix/geox-current-main-handoff-status-parser-repair-001` at
   `2d262fae8d8a904aa0f8332395588c37f6f74ccd`.
-- Valid parser implementation evidence:
+- Historical implementation evidence:
   `ddb8d3e9cdaaf253e8b2f93a8ecc0dc54a8effed`.
-- Concrete prerequisite defect:
-  `GEOX-TASKCTL-CORRECTION-FIXTURE-BASELINE-001`.
-- Failing node:
-  `tests/execution/test_taskctl.py::test_correction_closure_requires_explicit_evidence_and_updates_counters`.
-- Fresh-main reproduction: `1 failed in 1.40s`.
-- Observed cause: `prepare_changes_requested()` sets `changes_requested` and
-  correction authority but omits the non-null implementation SHA and paired
-  rejected review/implementation SHAs required before `taskctl.sync()`.
 - Preserved cross-repository pins are MIP
   `a293ce52a813709ca624332123019139928cc51e` and MMM
   `fe8e784923994406a2e4907d28debd872d61fd73`; neither repository is modified
   or sequenced by this task.
 
+The historical branch is immutable evidence only. Do not merge, rebase,
+cherry-pick, modify, push to, or execute from it. Implement independently from
+the fresh-main branch.
+
 ## Owned paths
 
 Only these paths may change during execution:
 
-- `tests/execution/test_taskctl.py`
+- `tests/test_repo_native_execution_handoff.py`
 - `docs/execution/EXECUTION_STATE.json`
 - `docs/execution/ACTIVE_TASK.md` through the generated lifecycle view only
 - `docs/execution/LATEST_COMPLETION_REPORT.md`
@@ -145,62 +94,63 @@ execution. All other paths are read-only for this milestone.
 
 ## Required behavior
 
-1. Perform the root `AGENTS.md` bootstrap exactly and prove the authorized base
-   and branch ancestry before editing.
-2. Reproduce the named fixture failure on the authorized baseline and record
+1. Perform the root `AGENTS.md` bootstrap exactly and prove synchronized main,
+   authorization provenance, branch absence, and authorized ancestry before
+   creating the feature branch.
+2. Reproduce the named parser failure on the authorized baseline and record
    the exact result.
-3. Change only `prepare_changes_requested()` in
-   `tests/execution/test_taskctl.py` so its synthetic state includes a valid
-   non-null `implementation_commit_sha` and paired valid
-   `rejected_review_head_sha` / `rejected_implementation_commit_sha` before
-   `taskctl.sync()`.
-4. Preserve `changes_requested`, correction authority, correction counters,
-   null reviewed/approval evidence, protected authorities, and the test's
-   explicit-correction closure assertions. Use deterministic test-only SHAs;
-   do not read or invent repository history.
-5. Do not modify `panel_exp/execution/taskctl.py`,
-   `tests/test_repo_native_execution_handoff.py`, generated Markdown format,
-   runtime/package code, analytical code, other fixtures, or unrelated tests.
-6. Record focused validation and changed paths in the completion report. Keep
-   every protected authority `false` and all four current-main defect IDs
-   unresolved.
-7. Use task control to synchronize and verify generated views, then stop at
-   `ready_for_review` when the repair evidence is complete.
+3. Change only the `status_match` regular expression in
+   `test_v2_state_contract_and_pins()` so it accepts exactly the taskctl-rendered
+   backtick-delimited status line, captures only the lifecycle value, anchors
+   the whole line, and continues comparing that value with
+   `EXECUTION_STATE.json`.
+4. Do not loosen allowed lifecycle values, remove the state comparison, accept
+   arbitrary Markdown, or change another assertion.
+5. Do not copy or cherry-pick the historical commit. Recreate the minimal
+   one-line change from the fresh-main evidence.
+6. Record changed paths, behavior, exact validation results, intentionally
+   omitted validation, limitations, and prohibited-operation confirmation in
+   the completion report.
+7. Keep all protected authorities `false`, keep the three unrelated defect IDs
+   unresolved, and keep structured completion-evidence work unauthorized.
+8. Synchronize generated views with task control and stop at
+   `ready_for_review`.
 
 ## Acceptance and validation
 
-Run and report these commands:
+Run and report:
 
 ```text
 .venv/bin/python -m panel_exp.execution.taskctl check
-.venv/bin/python -m pytest -q tests/execution/test_taskctl.py::test_correction_closure_requires_explicit_evidence_and_updates_counters
+.venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py::test_v2_state_contract_and_pins
+.venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py
 .venv/bin/python -m pytest -q tests/execution/test_taskctl.py
-.venv/bin/python -m pytest -q tests/execution/test_taskctl.py tests/test_repo_native_execution_handoff.py::test_status_invariants_are_closure_safe
+.venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py tests/execution/test_taskctl.py
+.venv/bin/python -m json.tool docs/execution/EXECUTION_STATE.json
 git diff --check
 git diff --name-only <authorized-baseline>...HEAD
 .venv/bin/python -m panel_exp.execution.taskctl check
 ```
 
-Acceptance requires exact authorized ancestry, all three pytest commands
-passing, only owned changed paths, consistent canonical/generated lifecycle
-state, no runtime or analytical change, and no changed protected authority.
+Acceptance requires exact authorized ancestry; the named node, complete handoff
+file, complete taskctl file, and combined adjacent suite passing; only owned
+paths changed; consistent canonical/generated lifecycle state; and no protected
+authority, runtime, analytical, or unrelated-defect change.
 
-Do not run `make validate-docker` for this test-only repair. It is not an
-acceptance command for this isolated fixture milestone. The known handoff
-status-parser failure is also outside this task and remains parked at exact
-remote head `2d262fae8d8a904aa0f8332395588c37f6f74ccd`.
+Do not run `make validate-docker`. It is not proportionate or required for this
+isolated test-contract parser recovery.
 
 ## Commit and push
 
 Create one independently reviewable implementation commit on the authorized
-branch, then update the lifecycle evidence to `ready_for_review` with the exact
-implementation SHA as repository rules require. Commit the resulting review
-receipt if needed, push only
-`fix/geox-taskctl-correction-fixture-baseline-repair-001`, prove
-the exact remote head, and stop for external review.
+branch. Update the completion evidence, transition through task control to
+`ready_for_review` using the exact implementation SHA, commit the review receipt
+if needed, push only
+`fix/geox-current-main-handoff-status-parser-recovery-001`, prove exact
+local/remote head equality, and stop for external review.
 
 Do not create a PR, merge, squash, rebase, force-push, create a merge commit,
-authorize a successor, modify or merge the blocked parser branch, repair
-another defect class, or change capability,
-certification, CalibrationSignal, MMM, simulation, planning, recommendation,
-real-data, runtime, pilot, or production authority.
+authorize a successor, modify the historical parser branch, implement
+structured completion evidence, repair another defect class, or change
+certification, CalibrationSignal, MMM compatibility, simulation, planning,
+recommendation, real-data, runtime, pilot, or production authority.

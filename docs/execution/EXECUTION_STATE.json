@@ -1,44 +1,53 @@
 {
   "schema_version": "geox_repo_execution_state_v3",
   "repository": "Phani-Pavuluri/panel_exp",
-  "task_id": "GEOX_TASKCTL_CORRECTION_FIXTURE_BASELINE_REPAIR_001",
-  "status": "merged",
+  "task_id": "GEOX_CURRENT_MAIN_HANDOFF_STATUS_PARSER_RECOVERY_001",
+  "status": "authorized",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
-  "base_sha": "7c3799af5e406fe65161daf7d474cb363fa766b0",
-  "task_authoring_start_sha": "7c3799af5e406fe65161daf7d474cb363fa766b0",
-  "task_authoring_head_sha": "25d26dec07659150ec4d23eae012b6f4fc3d50d8",
-  "authorization_head_sha": "25d26dec07659150ec4d23eae012b6f4fc3d50d8",
-  "authorized_branch_baseline_sha": "25d26dec07659150ec4d23eae012b6f4fc3d50d8",
-  "feature_branch": "fix/geox-taskctl-correction-fixture-baseline-repair-001",
-  "feature_branch_created": true,
+  "base_sha": "0f130f873b472c373cb481574fde25eb5ba62e56",
+  "task_authoring_start_sha": "0f130f873b472c373cb481574fde25eb5ba62e56",
+  "task_authoring_head_sha": "0f130f873b472c373cb481574fde25eb5ba62e56",
+  "authorization_head_sha": "0f130f873b472c373cb481574fde25eb5ba62e56",
+  "authorized_branch_baseline_sha": "0f130f873b472c373cb481574fde25eb5ba62e56",
+  "feature_branch": "fix/geox-current-main-handoff-status-parser-recovery-001",
+  "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
-  "task_execution_authorized": false,
+  "task_execution_authorized": true,
   "correction_execution_authorized": false,
   "merge_authorized": false,
   "pr_creation_authorized": false,
-  "reviewed_head_sha": "eb404992f4d84b4a223111cb495b48dca36b0cde",
-  "rejected_review_head_sha": "1c3a2b01c5d85469c984c2139d5e16a8790a5537",
-  "rejected_implementation_commit_sha": "d713480f5c520efeab06d7a3b3f15eeb68b80d8f",
-  "implementation_commit_sha": "d713480f5c520efeab06d7a3b3f15eeb68b80d8f",
+  "reviewed_head_sha": null,
+  "rejected_review_head_sha": null,
+  "rejected_implementation_commit_sha": null,
+  "implementation_commit_sha": null,
   "approval_commit_sha": null,
-  "local_feature_branch_cleanup": "observed_deleted",
-  "remote_feature_branch_cleanup": "observed_deleted",
+  "local_feature_branch_cleanup": null,
+  "remote_feature_branch_cleanup": null,
   "capability_authorizations_changed": false,
-  "last_updated": "2026-09-15",
+  "last_updated": "2026-09-16",
   "blockers": [],
   "dependencies": [
     {
-      "dependency_id": "DEP-GEOX-BLOCKED-PARSER-REPAIR-001",
+      "dependency_id": "DEP-GEOX-TASKCTL-FIXTURE-REPAIR-MERGED-001",
+      "repository": "Phani-Pavuluri/panel_exp",
+      "task_id": "GEOX_TASKCTL_CORRECTION_FIXTURE_BASELINE_REPAIR_001",
+      "state": "satisfied",
+      "merged_checkpoint_sha": "0f130f873b472c373cb481574fde25eb5ba62e56",
+      "reviewed_head_sha": "eb404992f4d84b4a223111cb495b48dca36b0cde",
+      "implementation_commit_sha": "d713480f5c520efeab06d7a3b3f15eeb68b80d8f",
+      "resolution_condition": "The correction-fixture prerequisite is merged and the complete taskctl suite passes on the fresh recovery baseline."
+    },
+    {
+      "dependency_id": "DEP-GEOX-BLOCKED-PARSER-REPAIR-EVIDENCE-001",
       "repository": "Phani-Pavuluri/panel_exp",
       "task_id": "GEOX_CURRENT_MAIN_HANDOFF_STATUS_PARSER_REPAIR_001",
-      "state": "blocked_immutable_evidence",
+      "state": "immutable_superseded_evidence",
       "branch": "fix/geox-current-main-handoff-status-parser-repair-001",
       "remote_head_sha": "2d262fae8d8a904aa0f8332395588c37f6f74ccd",
       "implementation_commit_sha": "ddb8d3e9cdaaf253e8b2f93a8ecc0dc54a8effed",
-      "blocker_id": "GEOX-TASKCTL-CORRECTION-FIXTURE-BASELINE-001",
-      "resolution_condition": "Merge this separately authorized fixture repair, then authorize a fresh-main parser-repair recovery task; do not merge, rebase, cherry-pick, or modify the blocked branch."
+      "resolution_condition": "Use as review evidence only; do not merge, rebase, cherry-pick, modify, or execute from the historical branch."
     },
     {
       "dependency_id": "DEP-GEOX-REASSESSMENT-MERGED-001",
@@ -47,25 +56,25 @@
       "state": "satisfied",
       "merged_checkpoint_sha": "14ca3c0beda54737b4a3c5a0b76f5f9f5fd488f9",
       "reviewed_head_sha": "0f79d277afac4a8675bc3a1365ae89c6da8dcbf9",
-      "resolution_condition": "The merged reassessment reproduced and named the current-main handoff-status parser defect on the untouched authorized base."
+      "resolution_condition": "The merged reassessment established the current-main handoff-status parser defect."
     }
   ],
-  "risk_tier": "tier_1_test_only_taskctl_fixture_repair",
+  "risk_tier": "tier_1_test_only_handoff_parser_recovery",
   "full_suite_validation_required": false,
-  "validation_scope": "taskctl_check_focused_correction_fixture_node_complete_taskctl_suite_adjacent_closure_invariant_diff_check_changed_path_verification",
+  "validation_scope": "taskctl_check_named_parser_node_complete_handoff_suite_complete_taskctl_suite_combined_adjacent_suite_json_diff_and_owned_path_verification",
   "unresolved_execution_blocking_design_questions": [],
   "maximum_correction_cycles": 1,
-  "correction_cycles_completed": 1,
-  "correction_cycles_remaining": 0,
+  "correction_cycles_completed": 0,
+  "correction_cycles_remaining": 1,
   "affected_repositories": [
     "Phani-Pavuluri/panel_exp"
   ],
   "modified_repositories": [
     "Phani-Pavuluri/panel_exp"
   ],
-  "coordination_workstream_id": "WS-GEOX-TASKCTL-CORRECTION-FIXTURE-BASELINE-REPAIR-001",
+  "coordination_workstream_id": "WS-GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-RECOVERY-001",
   "coordination_capability_owner": "geox_execution_validation_governance",
-  "geox_main_pin": "7c3799af5e406fe65161daf7d474cb363fa766b0",
+  "geox_main_pin": "0f130f873b472c373cb481574fde25eb5ba62e56",
   "mip_main_pin": "a293ce52a813709ca624332123019139928cc51e",
   "mmm_main_pin": "fe8e784923994406a2e4907d28debd872d61fd73",
   "package_or_runtime_changes_authorized": false,
@@ -80,13 +89,11 @@
   "pilot_authorized": false,
   "production_authorized": false,
   "source_defect": {
-    "defect_id": "GEOX-TASKCTL-CORRECTION-FIXTURE-BASELINE-001",
-    "discovered_by_branch": "fix/geox-current-main-handoff-status-parser-repair-001",
-    "discovery_remote_head_sha": "2d262fae8d8a904aa0f8332395588c37f6f74ccd",
-    "failing_node": "tests/execution/test_taskctl.py::test_correction_closure_requires_explicit_evidence_and_updates_counters",
-    "reproduction_result": "1 failed in 1.40s on synchronized main 7c3799af5e406fe65161daf7d474cb363fa766b0",
-    "observed_cause": "prepare_changes_requested() changes status and correction authority but omits the implementation and paired rejected-head evidence required by current changes_requested validation.",
-    "authorized_resolution": "Align only the synthetic correction fixture with current lifecycle evidence invariants before taskctl.sync(); do not weaken taskctl validation."
+    "defect_id": "GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001",
+    "failing_node": "tests/test_repo_native_execution_handoff.py::test_v2_state_contract_and_pins",
+    "reproduction_result": "1 failed in 0.03s on synchronized main 0f130f873b472c373cb481574fde25eb5ba62e56; complete handoff file: 1 failed, 2 passed; complete taskctl suite: 13 passed",
+    "observed_cause": "The contract test parses a bare lifecycle value after **Status:**, while taskctl renders the canonical value inside backticks.",
+    "authorized_resolution": "Change only the handoff contract-test regex to recognize the exact taskctl-rendered backtick-delimited status and preserve equality with EXECUTION_STATE.json."
   },
   "remaining_current_main_defect_ids": [
     "GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001",
@@ -94,7 +101,7 @@
     "GEOX-CURRENT-MAIN-DESIGN-VALIDATION-CALLBACK-INJECTION-001",
     "GEOX-CURRENT-MAIN-DESIGN-TIER1-CONTRACT-EMISSION-001"
   ],
-  "taskctl_fixture_repair_authorized": false,
+  "handoff_status_parser_recovery_authorized": true,
   "parked_parser_repair": {
     "state": "blocked_do_not_merge",
     "branch": "fix/geox-current-main-handoff-status-parser-repair-001",
@@ -103,10 +110,15 @@
     "reuse_authorized": false,
     "merge_authorized": false
   },
+  "planned_governance_followup": {
+    "task_id": "GEOX_STRUCTURED_COMPLETION_EVIDENCE_001",
+    "state": "planned_not_authorized",
+    "sequencing_condition": "Complete and merge the fresh-main parser recovery before separately assessing and authoring this governance milestone."
+  },
   "next_task_id": null,
   "next_task_authorized": false,
-  "review_decision": "merged",
+  "review_decision": "authorized",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Authorized by task-authoring commit 25d26dec07659150ec4d23eae012b6f4fc3d50d8 from synchronized GeoX main 7c3799af5e406fe65161daf7d474cb363fa766b0 to repair only GEOX-TASKCTL-CORRECTION-FIXTURE-BASELINE-001. The blocked parser branch at 2d262fae8d8a904aa0f8332395588c37f6f74ccd is immutable evidence and is not authorized for merge, reuse, rebase, cherry-pick, or modification. This task may align the synthetic taskctl correction fixture and lifecycle evidence only; it may not change taskctl validation, the parser test, package/runtime behavior, analytical truth, certification, or downstream authority."
+  "task_authoring_note": "Authorized from synchronized GeoX main 0f130f873b472c373cb481574fde25eb5ba62e56 to repair only GEOX-CURRENT-MAIN-HANDOFF-STATUS-PARSER-001. The historical parser branch at 2d262fae8d8a904aa0f8332395588c37f6f74ccd is immutable evidence and is not authorized for merge, reuse, rebase, cherry-pick, modification, or execution. Structured completion-evidence work is recorded as a planned, separately reviewable follow-up and is not authorized by this task."
 }
