@@ -1,16 +1,16 @@
 {
   "schema_version": "geox_repo_execution_state_v3",
   "repository": "Phani-Pavuluri/panel_exp",
-  "task_id": "GEOX_EXHAUSTED_REVIEW_ROUTE_CONTRACT_001",
+  "task_id": "GEOX_EXHAUSTED_REVIEW_ROUTE_CONTRACT_RECOVERY_001",
   "status": "authorized",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
-  "base_sha": "496c317bc44c31a89aff805896863bd7eb637b7e",
-  "task_authoring_start_sha": "496c317bc44c31a89aff805896863bd7eb637b7e",
-  "task_authoring_head_sha": "41972b488ad1af418c6c3275584cc595e7824a92",
-  "authorization_head_sha": "41972b488ad1af418c6c3275584cc595e7824a92",
-  "authorized_branch_baseline_sha": "41972b488ad1af418c6c3275584cc595e7824a92",
-  "feature_branch": "docs/geox-exhausted-review-route-contract-001",
+  "base_sha": "3dc762d1a7937c3b1872591cc380f3aa0edeb68c",
+  "task_authoring_start_sha": "3dc762d1a7937c3b1872591cc380f3aa0edeb68c",
+  "task_authoring_head_sha": "3dc762d1a7937c3b1872591cc380f3aa0edeb68c",
+  "authorization_head_sha": "3dc762d1a7937c3b1872591cc380f3aa0edeb68c",
+  "authorized_branch_baseline_sha": "3dc762d1a7937c3b1872591cc380f3aa0edeb68c",
+  "feature_branch": "docs/geox-exhausted-review-route-contract-recovery-001",
   "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
@@ -39,6 +39,16 @@
       "implementation_commit_sha": "3841c1790d82d94ebdb99dc6a4022b3c4097c86d",
       "correction_cycles_remaining": 0,
       "resolution_condition": "Design the approved exhausted-review rejection route first; old branch remains immutable and unapproved. Separate implementation and completion recovery require fresh Git authorization."
+    },
+    {
+      "dependency_id": "DEP-GEOX-REJECTED-CONTRACT-EVIDENCE-001",
+      "repository": "Phani-Pavuluri/panel_exp",
+      "task_id": "GEOX_EXHAUSTED_REVIEW_ROUTE_CONTRACT_001",
+      "state": "immutable_rejected_review_evidence",
+      "branch": "docs/geox-exhausted-review-route-contract-001",
+      "remote_head_sha": "cf743b8a0ac858a56997b41b1362f5be6d480a92",
+      "implementation_commit_sha": "6217e0686041b7c3fa154ccab6ae5bcb36e57946",
+      "resolution_condition": "Produce a coherent independently reviewed contract on a fresh owner-authorized task; do not edit the frozen prior draft or silently change its lifecycle."
     }
   ],
   "risk_tier": "tier_1_documentation_contract_proposal",
@@ -54,7 +64,7 @@
   "modified_repositories": [
     "Phani-Pavuluri/panel_exp"
   ],
-  "coordination_workstream_id": "WS-GEOX-EXHAUSTED-REVIEW-ROUTE-CONTRACT-001",
+  "coordination_workstream_id": "WS-GEOX-EXHAUSTED-REVIEW-ROUTE-CONTRACT-RECOVERY-001",
   "coordination_capability_owner": "geox_execution_validation_governance",
   "geox_main_pin": "a78c4017e06c6f0bfb4329e749972b516dfbc7e9",
   "mip_main_pin": "a293ce52a813709ca624332123019139928cc51e",
@@ -106,5 +116,5 @@
   "review_decision": "authorized",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Owner approved the exhausted-review recovery proposal on 2026-10-14. This bounded prerequisite authorizes only a recommended definition-ready governance contract document, not controller implementation, rejection execution, additional correction, or successor execution."
+  "task_authoring_note": "Owner-approved exhausted-review direction continues as a fresh documentation recovery outcome. Prior draft rejected in pushed refs/notes/codex-supervised-reviews. Native controller cannot execute changes_requested; immutable prior task and budget remain unchanged. This task authorizes no code or rejection execution."
 }
