@@ -5,12 +5,12 @@
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
-- **Task ID:** `GEOX_STRUCTURED_COMPLETION_EVIDENCE_001`
+- **Task ID:** `GEOX_EXHAUSTED_REVIEW_ROUTE_CONTRACT_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Execution mode:** `branch_and_fast_forward`
-- **Base SHA:** `a78c4017e06c6f0bfb4329e749972b516dfbc7e9`
-- **Authorization provenance:** `55c4c6c237642195732d949d034e98763c5d8cac`
-- **Feature branch:** `feat/geox-structured-completion-evidence-001`
+- **Base SHA:** `496c317bc44c31a89aff805896863bd7eb637b7e`
+- **Authorization provenance:** `496c317bc44c31a89aff805896863bd7eb637b7e`
+- **Feature branch:** `docs/geox-exhausted-review-route-contract-001`
 - **Feature branch created:** `false`
 - **Task execution authorized:** `true`
 - **Correction execution authorized:** `false`
@@ -31,149 +31,36 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Capability authorizations changed:** `false`
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
 
-## Repository and branch
+## Owner-approved bounded prerequisite
 
-- Repository: `Phani-Pavuluri/panel_exp`
-- Local path: `/Users/phani/Desktop/panel_exp`
-- Authorized implementation branch:
-  `feat/geox-structured-completion-evidence-001`
-- Fresh-main base: `a78c4017e06c6f0bfb4329e749972b516dfbc7e9`
+Primary outcome: one recommended definition-ready governance contract in `docs/execution/EXHAUSTED_REVIEW_ROUTE_CONTRACT.md`. Documentation only. Muse-Spark owns the recommendation and supporting investigation; Codex independently reviews it. Controller implementation, completion-evidence recovery and role adoption are separate successors. This task does not execute rejection or authorize a successor.
 
-Create the authorized branch only after verifying that local `main` and
-`origin/main` are identical, task-authoring commit
-`55c4c6c237642195732d949d034e98763c5d8cac` is its ancestor, and intervening
-commits are task-authoring metadata only. The branch must not already exist
-locally or remotely. Do not execute from any other branch.
+Authoring owns only the three stable execution files on main. Create `docs/geox-exhausted-review-route-contract-001` from synchronized post-authoring main after verifying authorization ancestry and metadata-only authoring boundary. Preserve the historical branch unchanged: no merge, rebase, cherry-pick, deletion, extra correction or execution from it.
 
-## Objective
+## Evidence and impact
 
-Implement canonical structured completion evidence so a fresh reviewer can
-recover the complete execution handoff from Git without relying on mutable
-completion-report prose or a pasted Work-session summary.
+Historical target: `GEOX_STRUCTURED_COMPLETION_EVIDENCE_001`, branch `feat/geox-structured-completion-evidence-001`, exact remote review head `81664df0d687746a8ee990eada702a2a54cc23c0`, implementation `3841c1790d82d94ebdb99dc6a4022b3c4097c86d`, authorization `55c4c6c237642195732d949d034e98763c5d8cac`. One correction completed, none remaining. Independently reproduced: malformed non-null completion evidence passes early-lifecycle validation and can crash rendering; existing 25 focused tests pass. Current controller rejects both exhausted rejection routes. Verify immutable Git evidence; the old head remains unapproved.
 
-Extend the existing single-source lifecycle; do not introduce a parallel task
-or reporting subsystem. This is execution-governance work only.
+Live overlay verified 2026-10-14: GeoX main `496c317bc44c31a89aff805896863bd7eb637b7e`; MIP main `c7215b9c2afe38bbe2191c03cd89a114ea82d9c4`, validator recovery merged; MMM main `6f60cd2896d56f67675c7eb94e23f6e9f6ef36a8`, worker/reviewer roles merged. Affected/modified repository: GeoX only. Siblings read-only context. Preserve historical pins and coordination snapshot. Workstream `WS-GEOX-EXHAUSTED-REVIEW-ROUTE-CONTRACT-001`, owner `geox_execution_validation_governance`. Dependency `DEP-GEOX-EXHAUSTED-REJECTED-EVIDENCE-001` is immutable evidence, not a merged prerequisite. No consumer verification or product eligibility follows. No overlapping writer is authorized.
 
-## Prerequisites and evidence
+## Contract acceptance
 
-- Synchronized GeoX main:
-  `a78c4017e06c6f0bfb4329e749972b516dfbc7e9`.
-- Merged parser-recovery prerequisite: reviewed head
-  `d001891238b7124cdaa5d27d05a563b3386a5715`, closure
-  `a78c4017e06c6f0bfb4329e749972b516dfbc7e9`.
-- Current focused lifecycle/handoff baseline: `16 passed`.
-- Recurrence evidence: fixture task head
-  `1c3a2b01c5d85469c984c2139d5e16a8790a5537` and parser task head
-  `b97d75a2a622441b4c063e1835caa93f6a0c9305` each reached canonical
-  `ready_for_review` while retaining contradictory pre-implementation prose.
-- Current cause: `taskctl.replace_view()` preserves completion-report content
-  outside the generated markers, while schema v3 has no structured completion
-  evidence for review handoff facts.
-- Preserved cross-repository pins are MIP
-  `a293ce52a813709ca624332123019139928cc51e` and MMM
-  `fe8e784923994406a2e4907d28debd872d61fd73`; neither repository is modified
-  or sequenced by this task.
+Recommend one coherent route. Distinguish approved process principles from recommended implementation details. The document must cover all five items:
 
-Git remains authoritative for code, diffs, commits, and live remote branch
-state. The execution session must not try to persist its own final remote branch
-head inside that same branch; external review resolves that head, and merge
-closure records it as `reviewed_head_sha`.
+1. Exact CLI/API signatures, fields/types/invariants, stable error codes, reviewer permissions, and Git identity/ancestry/head checks. Rejection applies only to an exhausted review-ready exact remote head.
+2. Deterministic canonical blocked outcome, unchanged exhausted counters, protected authority and implementation/rejection lineage. Durable blocker, independent findings and live resolution condition. No extra correction, merge or product authority.
+3. Explicit compatibility/migration from current main schema v3 and unmerged schema v4. Explain how a newly merged controller records historical-task rejection without editing its immutable branch or bypassing lifecycle controls. Specify the authoritative write target and historic-task identity. No implicit successor execution.
+4. Failure semantics, no writes on invalid/stale input, multi-file consistency and recovery, deterministic views, and named acceptance cases: wrong repository/task/branch/head/implementation, remaining budget, missing evidence, protected flags, stale main, success and interrupted writes.
+5. Separate implementation, completion-evidence recovery and role-adoption successors. Resolve technical recommendations. Identify any owner-reserved ambiguity without silently choosing a new capability or policy.
 
-## Owned paths
+Unresolved execution-blocking design questions for this documentation outcome: none. Compatibility for this task: no runtime or persisted-schema migration; migration design is the deliverable.
 
-Only these paths may change during execution:
+## Owned paths and gate
 
-- `panel_exp/execution/taskctl.py`
-- `tests/execution/test_taskctl.py`
-- `tests/test_repo_native_execution_handoff.py`
-- `docs/execution/EXECUTION_STATE.json`
-- `docs/execution/ACTIVE_TASK.md` through the generated lifecycle view only
-- `docs/execution/LATEST_COMPLETION_REPORT.md`
+Owned: new `docs/execution/EXHAUSTED_REVIEW_ROUTE_CONTRACT.md`; `docs/execution/EXECUTION_STATE.json`; generated block only in `docs/execution/ACTIVE_TASK.md`; `docs/execution/LATEST_COMPLETION_REPORT.md`. Other files read-only, including context index. All protected authority remains false; the three unrelated defect IDs remain unresolved.
 
-Do not modify `docs/execution/REPOSITORY_CONTEXT_INDEX.md` during task
-execution. All other paths are read-only for this milestone.
+Tier 1 documentation gate, repeated for execution, exact-head review and post-fast-forward: `.venv/bin/python -B -m panel_exp.execution.taskctl check`; `.venv/bin/python -m json.tool docs/execution/EXECUTION_STATE.json`; `git diff --check`; verify the authorization-baseline diff is limited to these four owned paths; manually verify all five acceptance items with section references. Docker, analytical tests, Ruff and mypy are not_required for this documentation scope. Do not add tests mirroring document text.
 
-## Required behavior
+## Publication and stop
 
-1. Perform the root `AGENTS.md` bootstrap exactly and prove synchronized main,
-   authorization provenance, branch absence, and authorized ancestry before
-   creating the feature branch.
-2. Migrate the canonical schema from `geox_repo_execution_state_v3` to
-   `geox_repo_execution_state_v4` and add required top-level
-   `completion_evidence`, which may be `null` before completion but must be a
-   validated object for `ready_for_review`, `changes_requested`, and `merged`.
-3. Define the evidence object exactly with:
-   - nonempty, unique, repository-relative `changed_paths`;
-   - nonempty `behavior_summary`;
-   - nonempty `validation_results`, each containing nonempty `command`, exact
-     nonempty `result`, and `outcome: "passed"`;
-   - `validation_not_run`, each containing nonempty `command` and `reason`;
-   - `blockers_and_limitations` as a list of nonempty strings, which may be
-     empty; and
-   - `prohibited_operations` with boolean occurrence fields for PR creation,
-     merge, squash, rebase, and force-push, all required to remain `false` at
-     review readiness.
-4. Reject missing keys, wrong types, empty required values, duplicate/absolute
-   or parent-traversing paths, non-passing validation results, and any prohibited
-   operation with stable reason-coded errors.
-5. Require complete evidence before transition to `ready_for_review`; preserve
-   it through correction and merged lifecycle states. Do not require or store
-   the execution branch's final remote head in this object.
-6. Render `LATEST_COMPLETION_REPORT.md` completely from canonical state,
-   including task/branch/implementation identity, GeoX/MIP/MMM pins, changed
-   paths, behavior, validations, omitted validations, limitations, and
-   prohibited-operation confirmation. Remove the legacy mutable suffix.
-7. Keep `ACTIVE_TASK.md` as the generated lifecycle block plus the Git-authored
-   task contract. Do not make the active task fully generated.
-8. Make `taskctl check` reject any appended or edited completion-report prose;
-   `taskctl sync` must deterministically migrate/remove the legacy suffix and be
-   byte-preserving after the first synchronization.
-9. Update transition and handoff tests so missing or malformed evidence cannot
-   reach review readiness, valid evidence renders deterministically, pins remain
-   present, corrections remain closure-safe, and exact remote-head resolution
-   remains external.
-10. Migrate this task's canonical state and use the new evidence path for its
-    own completion handoff. Keep every protected authority `false`, keep the
-    three unrelated defect IDs unresolved, and stop at `ready_for_review`.
-
-## Acceptance and validation
-
-Run and report:
-
-```text
-.venv/bin/python -m panel_exp.execution.taskctl check
-.venv/bin/python -m pytest -q tests/execution/test_taskctl.py::test_ready_for_review_requires_structured_completion_evidence
-.venv/bin/python -m pytest -q tests/execution/test_taskctl.py::test_completion_evidence_schema_fails_closed
-.venv/bin/python -m pytest -q tests/execution/test_taskctl.py::test_completion_report_is_fully_generated
-.venv/bin/python -m pytest -q tests/execution/test_taskctl.py::test_transition_renders_structured_completion_evidence
-.venv/bin/python -m pytest -q tests/execution/test_taskctl.py
-.venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py
-.venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py tests/execution/test_taskctl.py
-.venv/bin/python -m json.tool docs/execution/EXECUTION_STATE.json
-git diff --check
-git diff --name-only <authorized-baseline>...HEAD
-.venv/bin/python -m panel_exp.execution.taskctl check
-```
-
-Acceptance requires exact authorized ancestry; all four named evidence nodes,
-the complete taskctl file, complete handoff file, and combined adjacent suite
-passing; schema v4 and generated-report determinism; only owned paths changed;
-and no protected-authority, runtime, analytical, or unrelated-defect change.
-
-Do not run `make validate-docker`. It is not proportionate or required for this
-isolated execution-governance milestone.
-
-## Commit and push
-
-Create one independently reviewable implementation commit on the authorized
-branch. Update the completion evidence, transition through task control to
-`ready_for_review` using the exact implementation SHA, commit the review receipt
-if needed, push only
-`feat/geox-structured-completion-evidence-001`, prove exact
-local/remote head equality, and stop for external review.
-
-Do not create a PR, merge, squash, rebase, force-push, create a merge commit,
-authorize a successor, add a parallel evidence file/subsystem, repair another
-defect class, or change certification, CalibrationSignal, MMM compatibility,
-simulation, planning, recommendation, real-data, runtime, pilot, or production
-authority.
+Commit the document implementation independently. Write human-authored evidence outside generated report markers: five acceptance section references, local gate results, implementation SHA, Git-observed identity/ancestry and paths, limitations, cross-repository impact and authority. Use native `taskctl transition --to ready_for_review --implementation-sha <implementation SHA>`. Freeze task-owned files, run the declared gate on the exact tree, then publish a receipt commit naming implementation parent, exact-tree gate/results, evidence source, tracked worktree state and authority impact. Push only the declared branch, prove local/remote equality and stop without merging or authorizing successors.
