@@ -2,9 +2,18 @@ import json
 import re
 from pathlib import Path
 
+from panel_exp.execution import taskctl
+
 ROOT = Path(__file__).parents[1]
 SHA = re.compile(r"^[0-9a-f]{40}$")
 STATUSES = {"idle", "proposed", "authorized", "in_progress", "blocked", "ready_for_review", "changes_requested", "merged", "superseded"}
+SUPPORTED_SCHEMAS = {"geox_repo_execution_state_v3", "geox_repo_execution_state_v5"}
+
+
+def _generated_field(text, label):
+    match = re.search(rf"^\s*-?\s*\*\*{re.escape(label)}:\*\* `([^`]*)`$", text, re.MULTILINE)
+    assert match, f"generated field {label} missing"
+    return match.group(1)
 
 
 def test_v2_state_contract_and_pins():
@@ -12,16 +21,25 @@ def test_v2_state_contract_and_pins():
     task = (ROOT / "docs/execution/ACTIVE_TASK.md").read_text()
     report = (ROOT / "docs/execution/LATEST_COMPLETION_REPORT.md").read_text()
     context = (ROOT / "docs/execution/REPOSITORY_CONTEXT_INDEX.md").read_text()
-    assert state["schema_version"] == "geox_repo_execution_state_v3"
+    assert state["schema_version"] in SUPPORTED_SCHEMAS
+    taskctl.validate_state(state)
     assert state["status"] in STATUSES and "approved_for_merge" not in STATUSES
     for key in ("base_sha", "authorization_head_sha", "reviewed_head_sha", "implementation_commit_sha", "approval_commit_sha"):
         assert state.get(key) is None or SHA.fullmatch(state[key])
-    status_match = re.search(r"^\*\*Status:\*\*\s*`([a-z_]+)`$", task, re.MULTILINE)
-    assert status_match and status_match.group(1) == state["status"]
-    for pin_key in ("mip_main_pin", "mmm_main_pin"):
+    assert _generated_field(task, "Status") == state["status"]
+    assert _generated_field(task, "Authorization provenance") == state["authorization_head_sha"]
+    assert _generated_field(task, "Feature branch") == state["feature_branch"]
+    assert _generated_field(task, "Base SHA") == state["base_sha"]
+    assert _generated_field(report, "Current decision") == state["status"]
+    assert "docs/execution/EXECUTION_STATE.json" in context
+    assert taskctl.BEGIN_MARKER in context
+    for pin_key in ("geox_main_pin", "mip_main_pin", "mmm_main_pin"):
         pin = state[pin_key]
-        assert all(pin in text for text in (task, report, context))
-    assert all(state["task_id"] in text for text in (task, report, context))
+        assert SHA.fullmatch(pin)
+        assert pin in context
+    for mutable in (state["task_id"], state["base_sha"], state["authorization_head_sha"]):
+        assert mutable not in context
+    assert state["task_id"] in task and state["task_id"] in report
     if state["implementation_commit_sha"] is not None:
         assert state["implementation_commit_sha"] in report
     for path in (
