@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `ready_for_review`
+**Current decision:** `changes_requested`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -13,19 +13,19 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Feature branch:** `feat/geox-taskctl-test-scaffold-repair-001`
 - **Feature branch created:** `false`
 - **Task execution authorized:** `true`
-- **Correction execution authorized:** `false`
+- **Correction execution authorized:** `true`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `eab24592e6d7d590693c7b28788751de473514c5`
 - **Reviewed head:** `null`
-- **Rejected review head:** `null`
-- **Rejected implementation commit:** `null`
+- **Rejected review head:** `bc4ba647f3627eeb623faf165fb28adfada71269`
+- **Rejected implementation commit:** `eab24592e6d7d590693c7b28788751de473514c5`
 - **Approval commit:** `null`
-- **Blockers:** `none`
+- **Blockers:** `GEOX-SCAFFOLD-REVIEW-001: Current outcome falsely states implementation not started and feature branch not created despite published implementation.; GEOX-SCAFFOLD-REVIEW-002: final publication commit message omits required exact-tree validation receipt particulars.`
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `ready_for_review`
+- **Review decision:** `changes_requested`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
@@ -128,3 +128,10 @@ The definition-ready contract at 7babc0bfed00ffb17c60c3dad341b3ae83af6c7c owns o
 - **Authority impact:** none gained. Merge, PR creation, all 13 protected
   authorities, and next-task authorization remain false; correction authority
   closed; approval stays null; three unrelated defect IDs unresolved.
+
+
+## Independent exact-head review — changes requested
+
+Reviewed bc4ba647f3627eeb623faf165fb28adfada71269 / implementation eab24592e6d7d590693c7b28788751de473514c5. Six-line scaffold diff preserves cases and expected error codes; no controller/product/sibling changes. Two acceptance defects prevent approval: Current outcome still asserts no implementation/branch despite later implementation evidence; the final commit message is only a title, omitting the contract-required durable receipt (implementation parent, exact-tree gate/results, evidence source, paths/worktree state, unchanged authority). Correct the task-owned publication evidence consistently and publish a fresh fully validated receipt head. One existing correction cycle is authorized; no implementation scope expansion or new policy decision.
+
+Routine authority reconciliation: authorized adoption contract 029f3039a92eec36e4401255331e8b8bfec8b74e, reviewed adoption abea79a09912eb5fe90fab892074896ac67e1717, pushed supervised note receipt 75d17834-445c-46c6-864b-48c36ae5f0ba and merged closure 0e5abc9ab4f5c87de9a308f0bb8422dd10a01023 establish owner-directed adoption. The historical proposed header does not reverse that completed adoption. This finding does not activate or expand policy; corrected heads still require independent review, all declared exact-tree/closed-shape gates, a new external exact-head receipt and ff-only eligibility. No owner reapproval is required for these ordinary publication defects.

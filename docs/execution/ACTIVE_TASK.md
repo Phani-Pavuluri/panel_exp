@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** `ready_for_review`
+**Status:** `changes_requested`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -13,19 +13,19 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Feature branch:** `feat/geox-taskctl-test-scaffold-repair-001`
 - **Feature branch created:** `false`
 - **Task execution authorized:** `true`
-- **Correction execution authorized:** `false`
+- **Correction execution authorized:** `true`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `eab24592e6d7d590693c7b28788751de473514c5`
 - **Reviewed head:** `null`
-- **Rejected review head:** `null`
-- **Rejected implementation commit:** `null`
+- **Rejected review head:** `bc4ba647f3627eeb623faf165fb28adfada71269`
+- **Rejected implementation commit:** `eab24592e6d7d590693c7b28788751de473514c5`
 - **Approval commit:** `null`
-- **Blockers:** `none`
+- **Blockers:** `GEOX-SCAFFOLD-REVIEW-001: Current outcome falsely states implementation not started and feature branch not created despite published implementation.; GEOX-SCAFFOLD-REVIEW-002: final publication commit message omits required exact-tree validation receipt particulars.`
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `ready_for_review`
+- **Review decision:** `changes_requested`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
