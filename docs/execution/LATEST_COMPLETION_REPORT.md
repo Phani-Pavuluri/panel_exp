@@ -1,33 +1,33 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `merged`
+**Current decision:** `proposed`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
-- **Task ID:** `GEOX_TASKCTL_TEST_SCAFFOLD_REPAIR_001`
+- **Task ID:** `GEOX_TIER1_CALLBACK_INJECTION_REPAIR_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Execution mode:** `branch_and_fast_forward`
-- **Base SHA:** `0e5abc9ab4f5c87de9a308f0bb8422dd10a01023`
-- **Authorization provenance:** `a05cf0c0092e55cd2ca659b8469eae2fc4b873b3`
-- **Feature branch:** `feat/geox-taskctl-test-scaffold-repair-001`
+- **Base SHA:** `3c2f7ec3dfb196c3308e8fb8f67c68d8ff5dc69e`
+- **Authorization provenance:** `null`
+- **Feature branch:** `tests/geox-tier1-callback-injection-repair-001`
 - **Feature branch created:** `false`
 - **Task execution authorized:** `false`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
-- **Implementation commit:** `eab24592e6d7d590693c7b28788751de473514c5`
-- **Reviewed head:** `5fca67a23ad92d8256e90ebe623e41063bfc442c`
-- **Rejected review head:** `bc4ba647f3627eeb623faf165fb28adfada71269`
-- **Rejected implementation commit:** `eab24592e6d7d590693c7b28788751de473514c5`
+- **Implementation commit:** `null`
+- **Reviewed head:** `null`
+- **Rejected review head:** `null`
+- **Rejected implementation commit:** `null`
 - **Approval commit:** `null`
 - **Blockers:** `none`
 - **Maximum correction cycles:** `1`
-- **Correction cycles completed:** `1`
-- **Correction cycles remaining:** `0`
-- **Review decision:** `merged`
-- **Local feature-branch cleanup:** `observed_deleted`
-- **Remote feature-branch cleanup:** `observed_deleted`
+- **Correction cycles completed:** `0`
+- **Correction cycles remaining:** `1`
+- **Review decision:** `proposed`
+- **Local feature-branch cleanup:** `null`
+- **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
 
 ## Rejection history
@@ -40,55 +40,22 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 
 ## Structured completion evidence
 
-### Changed paths
-
-- `tests/execution/test_taskctl.py`
-- `docs/execution/EXECUTION_STATE.json`
-- `docs/execution/ACTIVE_TASK.md`
-- `docs/execution/LATEST_COMPLETION_REPORT.md`
-
-### Behavior
-
-Focused-test scaffolds establish task authority, blockers, and completion evidence per requested status instead of inheriting them from live canonical state, so all tests validate green on every live-tree shape with identical cases and codes.
-
-### Validation results
-
-- `.venv/bin/python -B -m panel_exp.execution.taskctl check` — passed (passed)
-- `.venv/bin/python -m pytest -q tests/execution/test_taskctl.py` — 131 passed in 25.12s (passed)
-- `.venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py` — 3 passed in 1.06s (passed)
-- `.venv/bin/python -m pytest -q tests/execution/test_taskctl.py tests/test_repo_native_execution_handoff.py` — 134 passed in 26.36s (passed)
-- `.venv/bin/python -m json.tool docs/execution/EXECUTION_STATE.json` — passed (passed)
-- `git diff --check` — passed (passed)
-
-### Validation not run
-
-- `make validate-docker` — Explicitly outside the declared narrow execution-governance milestone scope.
-- `analytical test suite` — No analytical behavior changed; narrow milestone declares it not required.
-- `ruff and mypy` — Not required for this declared narrow milestone; Tier 1 gate is the declared scope.
-
-### Blockers and limitations
-
-- Status-agnosticism additionally verified read-only against the closed main blob shape (scaffolds validate with established authority; only live-derived authority ever failed).
-- Sibling repositories are not checked out locally; pins and contract overlay values are retained without sibling changes.
-
-### Prohibited-operation confirmation
-
-- pr_creation: `false`
-- merge: `false`
-- squash: `false`
-- rebase: `false`
-- force_push: `false`
+- none
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
 
 ## Current outcome
 
-Bounded correction executed for rejected `bc4ba647`: stale contradictory outcome prose replaced, canonical evidence intact, correction completed to `ready_for_review` on the budgeted cycle with implementation `eab24592` retained unchanged. Task ready for independent re-review. No merge, activation, or successor authorized.
+The merged scaffold-repair task is closed. This new proposed successor covers the existing validation callback seam and all fifteen tier-1 emission tests. It is documentation-level task authoring only until the native authorization process records execution authority; no production or analytical behavior is included.
+
+## Proposed successor contract
+
+`GEOX_TIER1_CALLBACK_INJECTION_REPAIR_001` owns `tests/validation/test_design_tier1_contract_emission_001.py` plus the three stable execution files. It preserves every assertion, runs all fifteen tests directly, and reports the two unrelated guardrail failures and one unrelated BRB failure as inherited limitations. No failure is waived or deselected, and no producer-version/finality or certification choice is made.
 
 ## Authorization evidence
 
-The definition-ready contract at 7babc0bfed00ffb17c60c3dad341b3ae83af6c7c owns only the focused scaffold test file plus stable execution metadata. The owner's existing process-repair direction is recorded in the active task; Codex has materialized per-task execution authority independently of merge delegation. The full required controller/handoff/combined gate remains mandatory on final implementation and closed-main shapes. Baseline failures are the defect being repaired, not waived validation. No code/test implementation, capability, policy, analytical, sibling, merge or PR authority is added by this metadata-only authoring. Carried rejection history is unchanged.
+The successor is prepared from the current merged main and existing owner-directed validation scope. It adds no implementation authority until native Git authorization is recorded. The prior rejection history remains immutable evidence; no old head is reopened or reused.
 
-## Implementation evidence (authorized task)
+## Historical predecessor evidence (closed task; retained for provenance)
 
 - **Implementation commit:** `eab24592e6d7d590693c7b28788751de473514c5`
   (`Make focused-test scaffolds establish authority and evidence per status`;

@@ -1,59 +1,52 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** `merged`
+**Status:** `proposed`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
-- **Task ID:** `GEOX_TASKCTL_TEST_SCAFFOLD_REPAIR_001`
+- **Task ID:** `GEOX_TIER1_CALLBACK_INJECTION_REPAIR_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Execution mode:** `branch_and_fast_forward`
-- **Base SHA:** `0e5abc9ab4f5c87de9a308f0bb8422dd10a01023`
-- **Authorization provenance:** `a05cf0c0092e55cd2ca659b8469eae2fc4b873b3`
-- **Feature branch:** `feat/geox-taskctl-test-scaffold-repair-001`
+- **Base SHA:** `3c2f7ec3dfb196c3308e8fb8f67c68d8ff5dc69e`
+- **Authorization provenance:** `null`
+- **Feature branch:** `tests/geox-tier1-callback-injection-repair-001`
 - **Feature branch created:** `false`
 - **Task execution authorized:** `false`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
-- **Implementation commit:** `eab24592e6d7d590693c7b28788751de473514c5`
-- **Reviewed head:** `5fca67a23ad92d8256e90ebe623e41063bfc442c`
-- **Rejected review head:** `bc4ba647f3627eeb623faf165fb28adfada71269`
-- **Rejected implementation commit:** `eab24592e6d7d590693c7b28788751de473514c5`
+- **Implementation commit:** `null`
+- **Reviewed head:** `null`
+- **Rejected review head:** `null`
+- **Rejected implementation commit:** `null`
 - **Approval commit:** `null`
 - **Blockers:** `none`
 - **Maximum correction cycles:** `1`
-- **Correction cycles completed:** `1`
-- **Correction cycles remaining:** `0`
-- **Review decision:** `merged`
-- **Local feature-branch cleanup:** `observed_deleted`
-- **Remote feature-branch cleanup:** `observed_deleted`
+- **Correction cycles completed:** `0`
+- **Correction cycles remaining:** `1`
+- **Review decision:** `proposed`
+- **Local feature-branch cleanup:** `null`
+- **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
 
-## Primary outcome and authority (authorized — implementation pending)
+## Primary outcome and authority (proposed successor)
 
-Repair the focused-test scaffolds that inherit task authority and evidence from live canonical state, so the live-coupled evidence tests validate green on every live-tree shape: scaffolds establish `task_execution_authorized`, `blockers`, and `completion_evidence` per requested status instead of inheriting them. Identical cases, identical expected codes — the assertions finally exercise the controller instead of the scaffold. Six focused tests are live-coupled on unauthorized and null-evidence trees (four reproduce on closed main; two more surface only where live evidence is null); all resolve to green with self-sufficient scaffolds. No controller, product, sibling, or authority change; no new codes; no weakened assertions. This definition-ready tests-only contract is authorized under the owner's existing bounded process-repair instruction; canonical state and the authorization record below carry execution authority. No merge, policy, product or sibling authority is granted. Muse-Spark owns implementation approach on authorization; Codex independently reviews.
+Repair the existing validation-owned callback injection surface for the fifteen tests in `tests/validation/test_design_tier1_contract_emission_001.py`. The successor must preserve every assertion and payload expectation, exercise the existing callback seam, and remain tests-only. The three unrelated historical failures (two guardrail cases and one BRB case) must remain visible as limitations; they must not be waived, deselected, or folded into this task. No controller, production, analytical, producer-certification, sibling, or authority change is included. Muse-Spark owns implementation approach; Codex independently reviews.
 
-Upon authorization, create `feat/geox-taskctl-test-scaffold-repair-001` from synchronized post-authoring main after mandatory bootstrap, taskctl check, authorization ancestry, metadata-only authoring boundary and branch-absence verification. Only one writer. Affected/modified: GeoX only. Workstream `WS-GEOX-TASKCTL-SCAFFOLD-REPAIR-001`; owner `geox_execution_validation_governance`.
+Upon authorization, create `tests/geox-tier1-callback-injection-repair-001` from synchronized main after mandatory bootstrap, taskctl check, authorization ancestry, metadata-only authoring boundary and branch-absence verification. Affected/modified: GeoX only. Workstream `WS-GEOX-TIER1-CALLBACK-INJECTION-REPAIR-001`; owner `geox_execution_validation_governance`.
 
 ## Scope, tests and gate
 
-Owned on authorization: `tests/execution/test_taskctl.py` plus the three stable execution files (generated blocks via native commands; human evidence outside markers). Controller, handoff suite, context index, product, sibling, and authority surfaces are read-only. The task's own real gate evidence is recorded via the existing native `record-evidence` route (publication metadata, already authorized as `structured_completion_evidence_authorized` for this purpose); no evidence-feature work, no re-recording, no lifecycle change. Frozen branches remain unchanged/unapproved. All protected authority false; three unrelated defects unresolved. Unresolved execution-blocking design questions: none.
+Owned on authorization: `tests/validation/test_design_tier1_contract_emission_001.py` plus the three stable execution files (generated blocks via native commands; human evidence outside markers). Controller, production, analytical, handoff, context-index, sibling, and authority surfaces are read-only. The task's own evidence must record all fifteen tests and the three unrelated historical failures without waiver or deselection. Frozen branches remain unchanged/unapproved. All protected authority false; unresolved execution-blocking design questions: none.
 
-Tier 1 gate for execution, exact-head review and post-fast-forward: taskctl check; full focused, handoff, and combined suites (all green on the exact tree AND re-verified green against a closed main-shaped tree, proving status-agnostic scaffolds, no waiver); JSON parsing; git diff --check; authorized-baseline changed-path and authority checks. Docker/analytical/Ruff/mypy not_required for this narrow milestone.
+Tier 1 gate for execution and exact-head review: taskctl check; the repository's focused taskctl and handoff tests; direct execution of all fifteen tier-1 emission tests; combined result; JSON parsing; git diff --check; authorized-baseline changed-path and authority checks. The three historical guardrail/BRB failures must be reported as inherited limitations, never excluded. Full Docker validation is not required for this narrow tests-only milestone and must be recorded as not run.
 
 ## Publication and stop (for the authorized task)
 
-Record real gate evidence via the native CLI on the clean implementation tree. Human evidence outside report markers: implementation SHA, gate counts both directions, Git identity/ancestry, limitations, cross-repo impact, authority. Native `transition --to ready_for_review --implementation-sha`. Freeze and validate the exact tree; receipt names implementation parent, gate/results, paths, clean state, evidence source, unchanged authority. Push the declared branch only, prove equality, stop without merge or successor authorization.
+Record real gate evidence on the clean implementation tree, including all fifteen direct acceptance tests and the three inherited failures. Human evidence outside report markers must include implementation SHA, gate counts, Git identity/ancestry, limitations, cross-repo impact, and unchanged authority. Freeze and validate the exact tree, publish the declared branch, prove equality, and stop without merge or successor authorization.
 
 ## Proposal record
 
-Four focused failures on closed main are harness-live coupling, proven against immutable objects (identical scaffolds fail `E_EXECUTION_EVIDENCE`/`E_BLOCKED_EVIDENCE` with inherited closed authority and validate with authority held); the controller is correct and `taskctl check` passes main. No owner policy outstanding: harness repair under existing process-repair authority, no product/contract/capability change, no gate waiver. Entry carried byte-identical from the merged blob; frozen branches observed read-only unchanged.
-
-
-## Task-specific execution authorization — October 15, 2026
-
-Codex records execution authorization for GEOX_TASKCTL_TEST_SCAFFOLD_REPAIR_001 under the owner's existing explicit bounded process-repair direction: “approved, also fix the process so we dont need these kind of approvals”. The owner also requested continuing coordination and keeping agents working. This authoring action materializes that existing scope for the identified tests-only defect; it does not claim the owner supplied this task ID or a new approval SHA. Standing merge policy alone is not task authorization.
-
-Owned implementation remains tests/execution/test_taskctl.py plus the stable three execution files. Observable behavior, assertions/codes, all declared final gates, closed-state evidence, correction budget and protected boundaries above are unchanged. Muse-Spark owns implementation; Codex independently reviews the exact published head. Execution stops at published ready_for_review or a genuine Git-durable blocked state. No policy/controller/product/analytical/sibling work, no test waiver and no new capability.
+The existing GeoX callback seam is validation-owned and already permitted for tests; the successor covers the complete fifteen-test file rather than an earlier undercount of eleven. The three unrelated historical failures remain separate limitations. No owner policy or producer/finality decision is included; no product, contract, capability or gate authority changes.

@@ -1,16 +1,16 @@
 {
   "schema_version": "geox_repo_execution_state_v6",
   "repository": "Phani-Pavuluri/panel_exp",
-  "task_id": "GEOX_TASKCTL_TEST_SCAFFOLD_REPAIR_001",
-  "status": "merged",
+  "task_id": "GEOX_TIER1_CALLBACK_INJECTION_REPAIR_001",
+  "status": "proposed",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
-  "base_sha": "0e5abc9ab4f5c87de9a308f0bb8422dd10a01023",
-  "task_authoring_start_sha": "0e5abc9ab4f5c87de9a308f0bb8422dd10a01023",
-  "task_authoring_head_sha": "a05cf0c0092e55cd2ca659b8469eae2fc4b873b3",
-  "authorization_head_sha": "a05cf0c0092e55cd2ca659b8469eae2fc4b873b3",
-  "authorized_branch_baseline_sha": "a05cf0c0092e55cd2ca659b8469eae2fc4b873b3",
-  "feature_branch": "feat/geox-taskctl-test-scaffold-repair-001",
+  "base_sha": "3c2f7ec3dfb196c3308e8fb8f67c68d8ff5dc69e",
+  "task_authoring_start_sha": "3c2f7ec3dfb196c3308e8fb8f67c68d8ff5dc69e",
+  "task_authoring_head_sha": null,
+  "authorization_head_sha": null,
+  "authorized_branch_baseline_sha": null,
+  "feature_branch": "tests/geox-tier1-callback-injection-repair-001",
   "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
@@ -18,13 +18,13 @@
   "correction_execution_authorized": false,
   "merge_authorized": false,
   "pr_creation_authorized": false,
-  "reviewed_head_sha": "5fca67a23ad92d8256e90ebe623e41063bfc442c",
-  "rejected_review_head_sha": "bc4ba647f3627eeb623faf165fb28adfada71269",
-  "rejected_implementation_commit_sha": "eab24592e6d7d590693c7b28788751de473514c5",
-  "implementation_commit_sha": "eab24592e6d7d590693c7b28788751de473514c5",
+  "reviewed_head_sha": null,
+  "rejected_review_head_sha": null,
+  "rejected_implementation_commit_sha": null,
+  "implementation_commit_sha": null,
   "approval_commit_sha": null,
-  "local_feature_branch_cleanup": "observed_deleted",
-  "remote_feature_branch_cleanup": "observed_deleted",
+  "local_feature_branch_cleanup": null,
+  "remote_feature_branch_cleanup": null,
   "capability_authorizations_changed": false,
   "last_updated": "2026-10-15",
   "blockers": [],
@@ -46,19 +46,19 @@
   "validation_scope": "focused_rejection_contract_tests_complete_taskctl_complete_handoff_combined_json_diff_owned_path_checks",
   "unresolved_execution_blocking_design_questions": [],
   "maximum_correction_cycles": 1,
-  "correction_cycles_completed": 1,
-  "correction_cycles_remaining": 0,
+  "correction_cycles_completed": 0,
+  "correction_cycles_remaining": 1,
   "affected_repositories": [
     "Phani-Pavuluri/panel_exp"
   ],
   "modified_repositories": [
     "Phani-Pavuluri/panel_exp"
   ],
-  "coordination_workstream_id": "WS-GEOX-TASKCTL-SCAFFOLD-REPAIR-001",
+  "coordination_workstream_id": "WS-GEOX-TIER1-CALLBACK-INJECTION-REPAIR-001",
   "coordination_capability_owner": "geox_execution_validation_governance",
-  "geox_main_pin": "a78c4017e06c6f0bfb4329e749972b516dfbc7e9",
-  "mip_main_pin": "a293ce52a813709ca624332123019139928cc51e",
-  "mmm_main_pin": "fe8e784923994406a2e4907d28debd872d61fd73",
+  "geox_main_pin": "3c2f7ec3dfb196c3308e8fb8f67c68d8ff5dc69e",
+  "mip_main_pin": "421dd57da7d1ef66a975762c8791a79b8784c06d",
+  "mmm_main_pin": "a9db6469ed2654e19c20464c28717767990740ce",
   "package_or_runtime_changes_authorized": false,
   "producer_certification_authorized": false,
   "mmm_compatibility_authorized": false,
@@ -71,14 +71,14 @@
   "pilot_authorized": false,
   "production_authorized": false,
   "source_defect": {
-    "defect_id": "GEOX-EXHAUSTED-REVIEW-ROUTE-GAP-001",
-    "failing_invariant": "Focused test scaffolds inherit task authority from live canonical state, so the four active-status evidence tests fail coded on any closed (authority-closed) live tree although the controller is correct.",
-    "authorized_resolution": "Authorized tests-only scaffold repair per the unchanged active-task contract: same test cases and expected codes, status/evidence-independent fixtures, no controller or analytical changes; full required gates, including closed-state reproduction, must pass."
+    "defect_id": "GEOX-TIER1-CALLBACK-INJECTION-TEST-SURFACE-001",
+    "failing_invariant": "The tier-1 contract emission acceptance file contains fifteen existing tests whose callback seam is not exercised with a self-sufficient validation-owned injection surface.",
+    "authorized_resolution": "Tests-only repair of the existing validation seam and all fifteen tests in tests/validation/test_design_tier1_contract_emission_001.py; preserve assertions and payload expectations, add no production/controller behavior, and report the three unrelated historical failures without waiver or deselection."
   },
   "remaining_current_main_defect_ids": [
     "GEOX-CURRENT-MAIN-BRB-GOLDEN-EQUIVALENCE-001",
-    "GEOX-CURRENT-MAIN-DESIGN-VALIDATION-CALLBACK-INJECTION-001",
-    "GEOX-CURRENT-MAIN-DESIGN-TIER1-CONTRACT-EMISSION-001"
+    "GEOX-CURRENT-MAIN-DESIGN-GUARDRAIL-BASELINE-001",
+    "GEOX-CURRENT-MAIN-DESIGN-BRB-BASELINE-001"
   ],
   "structured_completion_evidence_authorized": true,
   "parked_parser_repair": {
@@ -103,10 +103,10 @@
   ],
   "next_task_id": null,
   "next_task_authorized": false,
-  "review_decision": "merged",
+  "review_decision": "proposed",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Codex materializes the owner's existing bounded routine-process repair direction (\"approved, also fix the process so we dont need these kind of approvals\") for the definition-ready tests-only GEOX_TASKCTL_TEST_SCAFFOLD_REPAIR_001. This is task-scope authorization under that external owner instruction, not task authority derived from the merge policy. No new capability, contract meaning, analytical scope, sibling write, policy change or merge approval.",
+  "task_authoring_note": "Materialize the owner's existing request for a smallest existing-goal GeoX validation successor. This is a tests-only repair of the existing callback seam covering all fifteen tier-1 emission tests; no production/controller behavior, producer certification, BRB statistical decision, sibling write, policy change or merge approval.",
   "rejection_history": [
     {
       "target_repository": "Phani-Pavuluri/panel_exp",
@@ -133,70 +133,5 @@
       ]
     }
   ],
-  "completion_evidence": {
-    "changed_paths": [
-      "tests/execution/test_taskctl.py",
-      "docs/execution/EXECUTION_STATE.json",
-      "docs/execution/ACTIVE_TASK.md",
-      "docs/execution/LATEST_COMPLETION_REPORT.md"
-    ],
-    "behavior_summary": "Focused-test scaffolds establish task authority, blockers, and completion evidence per requested status instead of inheriting them from live canonical state, so all tests validate green on every live-tree shape with identical cases and codes.",
-    "validation_results": [
-      {
-        "command": ".venv/bin/python -B -m panel_exp.execution.taskctl check",
-        "result": "passed",
-        "outcome": "passed"
-      },
-      {
-        "command": ".venv/bin/python -m pytest -q tests/execution/test_taskctl.py",
-        "result": "131 passed in 25.12s",
-        "outcome": "passed"
-      },
-      {
-        "command": ".venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py",
-        "result": "3 passed in 1.06s",
-        "outcome": "passed"
-      },
-      {
-        "command": ".venv/bin/python -m pytest -q tests/execution/test_taskctl.py tests/test_repo_native_execution_handoff.py",
-        "result": "134 passed in 26.36s",
-        "outcome": "passed"
-      },
-      {
-        "command": ".venv/bin/python -m json.tool docs/execution/EXECUTION_STATE.json",
-        "result": "passed",
-        "outcome": "passed"
-      },
-      {
-        "command": "git diff --check",
-        "result": "passed",
-        "outcome": "passed"
-      }
-    ],
-    "validation_not_run": [
-      {
-        "command": "make validate-docker",
-        "reason": "Explicitly outside the declared narrow execution-governance milestone scope."
-      },
-      {
-        "command": "analytical test suite",
-        "reason": "No analytical behavior changed; narrow milestone declares it not required."
-      },
-      {
-        "command": "ruff and mypy",
-        "reason": "Not required for this declared narrow milestone; Tier 1 gate is the declared scope."
-      }
-    ],
-    "blockers_and_limitations": [
-      "Status-agnosticism additionally verified read-only against the closed main blob shape (scaffolds validate with established authority; only live-derived authority ever failed).",
-      "Sibling repositories are not checked out locally; pins and contract overlay values are retained without sibling changes."
-    ],
-    "prohibited_operations": {
-      "pr_creation": false,
-      "merge": false,
-      "squash": false,
-      "rebase": false,
-      "force_push": false
-    }
-  }
+  "completion_evidence": null
 }
