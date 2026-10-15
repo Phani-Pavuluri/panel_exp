@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `ready_for_review`
+**Current decision:** `changes_requested`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -11,21 +11,21 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Base SHA:** `bc1458610fec48a90d25cedf7c13b5d2d58f8e78`
 - **Authorization provenance:** `d225a87f455f1ced221e6d3b607e6ccea29f18db`
 - **Feature branch:** `tests/geox-tier1-callback-injection-repair-003`
-- **Feature branch created:** `false`
+- **Feature branch created:** `true`
 - **Task execution authorized:** `true`
-- **Correction execution authorized:** `false`
+- **Correction execution authorized:** `true`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `2472ca62567d7068fa1d2adc3e85d7efc7d2f32e`
 - **Reviewed head:** `null`
-- **Rejected review head:** `null`
-- **Rejected implementation commit:** `null`
+- **Rejected review head:** `4ff92245b27311096dc4da46104633c01ecdcd92`
+- **Rejected implementation commit:** `2472ca62567d7068fa1d2adc3e85d7efc7d2f32e`
 - **Approval commit:** `null`
-- **Blockers:** `none`
+- **Blockers:** `GEOX-CALLBACK-PUBLICATION-001: Current outcome incorrectly says implementation on amended branch has not begun despite published tested implementation.`
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `ready_for_review`
+- **Review decision:** `changes_requested`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
@@ -129,3 +129,8 @@ Independent baseline reproduction on main86e78a7: handoff 1 failed/2 passed beca
 - **Authority impact:** none gained. Merge, PR creation, all 13 protected
   authorities, and next-task authorization remain false; correction authority
   closed; approval stays null; three unrelated defect IDs unresolved.
+
+
+## Independent finding — publication correction required
+
+GEOX-CALLBACK-PUBLICATION-001: current summary incorrectly states implementation has not begun. The six-line hook setup is present and reports15 acceptance passes; replace stale summary with current implementation/publication facts without claiming merge or resolving inherited defects. Independent reviewer also corrected canonical branch-created evidence to true. Ordinary owned-file correction under the existing one-cycle budget; no owner decision needed. Existing source head 4ff92245b27311096dc4da46104633c01ecdcd92 is superseded for approval until the new exact publication is reviewed.

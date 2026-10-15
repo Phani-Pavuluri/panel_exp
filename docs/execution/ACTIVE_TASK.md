@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** `ready_for_review`
+**Status:** `changes_requested`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -11,21 +11,21 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Base SHA:** `bc1458610fec48a90d25cedf7c13b5d2d58f8e78`
 - **Authorization provenance:** `d225a87f455f1ced221e6d3b607e6ccea29f18db`
 - **Feature branch:** `tests/geox-tier1-callback-injection-repair-003`
-- **Feature branch created:** `false`
+- **Feature branch created:** `true`
 - **Task execution authorized:** `true`
-- **Correction execution authorized:** `false`
+- **Correction execution authorized:** `true`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `2472ca62567d7068fa1d2adc3e85d7efc7d2f32e`
 - **Reviewed head:** `null`
-- **Rejected review head:** `null`
-- **Rejected implementation commit:** `null`
+- **Rejected review head:** `4ff92245b27311096dc4da46104633c01ecdcd92`
+- **Rejected implementation commit:** `2472ca62567d7068fa1d2adc3e85d7efc7d2f32e`
 - **Approval commit:** `null`
-- **Blockers:** `none`
+- **Blockers:** `GEOX-CALLBACK-PUBLICATION-001: Current outcome incorrectly says implementation on amended branch has not begun despite published tested implementation.`
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `ready_for_review`
+- **Review decision:** `changes_requested`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
@@ -57,3 +57,10 @@ The existing GeoX callback seam is validation-owned and already permitted for te
 This preserves the authorized task's single tests-only outcome, owned paths, all fifteen unchanged acceptance assertions, mandatory gates and existing correction budget. Task authoring incorrectly put live observations into the three preserved historical pin fields; restore the exact committed historical values already recorded by the stable index. This is no context-index or coordination refresh and no producer-version/finality decision.
 
 Canonical declared branch is now `tests/geox-tier1-callback-injection-repair-003`, created from synchronized amended main. The initial task authorization and authoring commits remain ancestors and are recorded in canonical authoring_amendments. Prior unpublished implementation `78ef230547aff35a79a4a066b6ebd23f97483d29` on tests/geox-tier1-callback-injection-repair-001 remains frozen local evidence, not a reviewed or approved head. Preserve it; do not merge, rebase, cherry-pick, force-push, reset or delete that line. The fresh branch avoids divergence between authoring metadata repair and the unpublished implementation. Muse owns implementation approach within the same original scope. New lifecycle evidence must be actual; all gates, owned paths and authority boundaries above remain unchanged. No new task, test waiver, product or policy meaning is introduced.
+
+
+## Independent publication review and bounded correction
+
+Rejected exact head 4ff92245b27311096dc4da46104633c01ecdcd92 / implementation 2472ca62567d7068fa1d2adc3e85d7efc7d2f32e. Source review found the validation-owned hook setup preserves every acceptance assertion and production separation. However the human Current outcome says implementation on the amended branch has not begun, contradicting the published implementation and required trustworthy completion evidence. Correct that current summary, clearly distinguishing implementation complete/published from review/merge pending and inherited limitations. Canonical feature_branch_created was also false despite the live branch; reviewer corrects it to true in this metadata record. These are existing owned stable-file publication defects, not a new capability, architecture or statistical choice.
+
+One existing correction cycle is authorized; code/test implementation and protected authority remain unchanged. Update only genuinely necessary task-owned publication evidence, preserve rejected heads and carried history, run the same exact-tree gate including all15 acceptance tests plus controller/handoff/combined, JSON/diff/scope/ancestry, and publish a new complete validated receipt. Do not rerun or change unrelated analytical math/goldens; the three inherited failures remain visible and unwaived. No merge or successor authority is supplied.
