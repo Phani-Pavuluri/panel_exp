@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** `ready_for_review`
+**Status:** `merged`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -12,12 +12,12 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Authorization provenance:** `d225a87f455f1ced221e6d3b607e6ccea29f18db`
 - **Feature branch:** `tests/geox-tier1-callback-injection-repair-003`
 - **Feature branch created:** `true`
-- **Task execution authorized:** `true`
+- **Task execution authorized:** `false`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `2472ca62567d7068fa1d2adc3e85d7efc7d2f32e`
-- **Reviewed head:** `null`
+- **Reviewed head:** `bc0783740187899df3a09314d79b7d50ada32a7b`
 - **Rejected review head:** `4ff92245b27311096dc4da46104633c01ecdcd92`
 - **Rejected implementation commit:** `2472ca62567d7068fa1d2adc3e85d7efc7d2f32e`
 - **Approval commit:** `null`
@@ -25,9 +25,9 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `1`
 - **Correction cycles remaining:** `0`
-- **Review decision:** `ready_for_review`
-- **Local feature-branch cleanup:** `null`
-- **Remote feature-branch cleanup:** `null`
+- **Review decision:** `merged`
+- **Local feature-branch cleanup:** `observed_deleted`
+- **Remote feature-branch cleanup:** `observed_deleted`
 - **Capability authorizations changed:** `false`
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
 

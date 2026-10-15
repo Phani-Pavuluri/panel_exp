@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `ready_for_review`
+**Current decision:** `merged`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -12,12 +12,12 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Authorization provenance:** `d225a87f455f1ced221e6d3b607e6ccea29f18db`
 - **Feature branch:** `tests/geox-tier1-callback-injection-repair-003`
 - **Feature branch created:** `true`
-- **Task execution authorized:** `true`
+- **Task execution authorized:** `false`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `2472ca62567d7068fa1d2adc3e85d7efc7d2f32e`
-- **Reviewed head:** `null`
+- **Reviewed head:** `bc0783740187899df3a09314d79b7d50ada32a7b`
 - **Rejected review head:** `4ff92245b27311096dc4da46104633c01ecdcd92`
 - **Rejected implementation commit:** `2472ca62567d7068fa1d2adc3e85d7efc7d2f32e`
 - **Approval commit:** `null`
@@ -25,9 +25,9 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `1`
 - **Correction cycles remaining:** `0`
-- **Review decision:** `ready_for_review`
-- **Local feature-branch cleanup:** `null`
-- **Remote feature-branch cleanup:** `null`
+- **Review decision:** `merged`
+- **Local feature-branch cleanup:** `observed_deleted`
+- **Remote feature-branch cleanup:** `observed_deleted`
 - **Capability authorizations changed:** `false`
 
 ## Rejection history
@@ -83,7 +83,7 @@ Validation-owned tier-1 contract builder injected via the documented geo_runner 
 
 ## Current outcome
 
-Coordinator-owned authoring error repaired: historical pins restored and a fresh feature branch declared for the same authorized callback-repair task. Implementation `2472ca62` (validation-owned hook injection, tests-only, fifteen assertions preserved) is committed and tested on this branch. The previous unpushed implementation remains preserved locally; no review approval or merge occurred.
+The tests-only callback repair and its publication correction are merged at independently reviewed head bc0783740187899df3a09314d79b7d50ada32a7b. All fifteen unchanged acceptance tests and declared focused/handoff/combined gates passed; inherited guardrail and BRB defects remain unresolved. This one closure follows implementation push and observed branch cleanup; no new capability or sibling authority.
 
 ## Authoring repair evidence
 
@@ -134,3 +134,12 @@ Independent baseline reproduction on main86e78a7: handoff 1 failed/2 passed beca
 ## Independent finding — publication correction required
 
 GEOX-CALLBACK-PUBLICATION-001: current summary incorrectly states implementation has not begun. The six-line hook setup is present and reports15 acceptance passes; replace stale summary with current implementation/publication facts without claiming merge or resolving inherited defects. Independent reviewer also corrected canonical branch-created evidence to true. Ordinary owned-file correction under the existing one-cycle budget; no owner decision needed. Existing source head 4ff92245b27311096dc4da46104633c01ecdcd92 is superseded for approval until the new exact publication is reviewed.
+
+
+## Independent routine merge and single native-projected closure
+
+Exact reviewed head bc0783740187899df3a09314d79b7d50ada32a7b (implementation 2472ca62567d7068fa1d2adc3e85d7efc7d2f32e) passed independent Codex source review and every required gate before and after fast-forward: focused 131, handoff 3, combined 134, acceptance15, taskctl, JSON, diff, owned scope and ancestry. The current task requires focused/handoff/combined and fifteen direct acceptance tests. No synthetic lifecycle fixture or extra Docker gate is claimed or required for this tests-only change.
+
+External exact-head receipt 20367c49-fe0a-475a-92ba-5981d9996c1d is pushed in refs/notes/codex-supervised-reviews at bf728d7fbd54647de35ac424d2e669ea13240d88. This uses the owner-adopted routine policy at 0e5abc9; it adds no task/product/analytical/sibling/capability authority. Lineage b3e6a19eee671dfefb265e70c1e0b0e614e6b7b2 -> bc0783740187899df3a09314d79b7d50ada32a7b -> this metadata-only closure. The implementation was pushed and actual local/remote branch deletions were observed before setting merged.
+
+The canonical JSON state is authoritative. Existing native validate_state accepts merged with the reviewed head, closed execution and observed cleanup; native taskctl sync/check projects that canonical state into both views. The task completion CLI's ready-only transition is not the merge writer. This follows the existing 0e5abc9/b3a52ac closure pattern; no generated lifecycle fields were manually edited, no new command/controller capability introduced, and exactly one post-merge metadata commit is written. Gate logs and exact source are preserved in the approval receipt. Cross-repository impact: modified GeoX only; WS-GEOX-TIER1-CALLBACK-INJECTION-REPAIR-001; owner geox_execution_validation_governance; producer-version/product blockers remain unresolved.
