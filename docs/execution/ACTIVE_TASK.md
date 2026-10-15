@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** `proposed`
+**Status:** `authorized`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -9,10 +9,10 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Execution mode:** `branch_and_fast_forward`
 - **Base SHA:** `b3a52ac34edca35e83c143c59eb37665a2e3ad2d`
-- **Authorization provenance:** `b3a52ac34edca35e83c143c59eb37665a2e3ad2d`
+- **Authorization provenance:** `dd265c19465a5aa619168a90a2cf82c24f69551b`
 - **Feature branch:** `docs/geox-routine-merge-adoption-001`
 - **Feature branch created:** `false`
-- **Task execution authorized:** `false`
+- **Task execution authorized:** `true`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
@@ -25,13 +25,13 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `proposed`
+- **Review decision:** `authorized`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
 
-## Primary outcome and authority (proposed — execution NOT authorized)
+## Primary outcome and authority (authorized — execution authorized, not started)
 
 Adopt standing GeoX routine-merge authority for already-authorized, already-reviewed routine work: fail-closed eligibility, independent Codex exact-head review, required tests, durable external approval receipt, ff-only mechanical closure — with no per-head owner prompt for eligible heads. Major goals, architecture, contracts, capabilities, and authority decisions stay with the owner. This contract is a proposal only: status `proposed`, task execution authority false. Provenance SHAs anchor the proposal baseline; they do not constitute authorization. Execution requires a future Git commit flipping status and execution authority. Muse-Spark owns implementation approach on authorization; Codex independently reviews.
 
@@ -54,3 +54,7 @@ Clauses to align on adoption: `AGENTS.md` merge paragraph and context-index merg
 ## Proposal record
 
 Successor context: merged `GEOX_STRUCTURED_COMPLETION_EVIDENCE_RECOVERY_001` (closure `b3a52ac`, reviewed `b810f50`); owner-directed routine-approval repair is the active coordination step. Entry carried byte-identical from the merged blob; frozen branches observed read-only unchanged. No owner policy outstanding beyond adoption itself.
+
+## Execution authorization recorded — October 15, 2026
+
+Owner direction for bounded routine-merge adoption is recorded in canonical state (status `authorized`, task execution authority true) and native generated views. This action grants execution within the named owned paths and validation gate only; it does not approve merges, activate routine merging, or add goals, capabilities, architecture, analytical meaning, or sibling authority. The definition-ready contract above is unchanged except for the authorized status heading. Muse-Spark implements on this authority; Codex independently reviews. No unresolved execution-blocking design questions remain.

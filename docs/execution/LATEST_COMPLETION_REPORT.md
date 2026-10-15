@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `proposed`
+**Current decision:** `authorized`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -9,10 +9,10 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Execution mode:** `branch_and_fast_forward`
 - **Base SHA:** `b3a52ac34edca35e83c143c59eb37665a2e3ad2d`
-- **Authorization provenance:** `b3a52ac34edca35e83c143c59eb37665a2e3ad2d`
+- **Authorization provenance:** `dd265c19465a5aa619168a90a2cf82c24f69551b`
 - **Feature branch:** `docs/geox-routine-merge-adoption-001`
 - **Feature branch created:** `false`
-- **Task execution authorized:** `false`
+- **Task execution authorized:** `true`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
@@ -25,7 +25,7 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `proposed`
+- **Review decision:** `authorized`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
@@ -242,3 +242,7 @@ Routine-merge adoption contract proposed in the stable authoring boundary; task 
   successor authorized. Producer-version investigation preserved for its own
   follow-up with no version choice here. Sibling repositories not checked out
   locally (pins retained, no sibling changes).
+
+## Execution authorization recorded — October 15, 2026
+
+Owner authorized bounded execution of `GEOX_ROUTINE_MERGE_ADOPTION_001` within the named owned paths and Tier 1 gate. This records existing scope authority in Git; it does not approve merges, activate the standing process, or add goals, capabilities, architecture, analytical meaning, or sibling authority. Contract/source: dd265c1 proposal baseline. Mandatory taskctl, canonical/view consistency, JSON, diff, provenance, and authoring-path checks pass. This is authorization evidence, not implementation completion or merge approval. Muse-Spark implements; Codex independently reviews.
