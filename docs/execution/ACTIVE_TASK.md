@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** `changes_requested`
+**Status:** `ready_for_review`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -13,7 +13,7 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Feature branch:** `tests/geox-tier1-callback-injection-repair-003`
 - **Feature branch created:** `true`
 - **Task execution authorized:** `true`
-- **Correction execution authorized:** `true`
+- **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `2472ca62567d7068fa1d2adc3e85d7efc7d2f32e`
@@ -21,11 +21,11 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Rejected review head:** `4ff92245b27311096dc4da46104633c01ecdcd92`
 - **Rejected implementation commit:** `2472ca62567d7068fa1d2adc3e85d7efc7d2f32e`
 - **Approval commit:** `null`
-- **Blockers:** `GEOX-CALLBACK-PUBLICATION-001: Current outcome incorrectly says implementation on amended branch has not begun despite published tested implementation.`
+- **Blockers:** `none`
 - **Maximum correction cycles:** `1`
-- **Correction cycles completed:** `0`
-- **Correction cycles remaining:** `1`
-- **Review decision:** `changes_requested`
+- **Correction cycles completed:** `1`
+- **Correction cycles remaining:** `0`
+- **Review decision:** `ready_for_review`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
