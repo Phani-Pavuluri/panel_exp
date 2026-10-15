@@ -1,16 +1,16 @@
 {
   "schema_version": "geox_repo_execution_state_v3",
   "repository": "Phani-Pavuluri/panel_exp",
-  "task_id": "GEOX_EXHAUSTED_REVIEW_ROUTE_CONTRACT_RECOVERY_001",
+  "task_id": "GEOX_EXHAUSTED_REJECTION_RECORD_001",
   "status": "authorized",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
-  "base_sha": "3dc762d1a7937c3b1872591cc380f3aa0edeb68c",
-  "task_authoring_start_sha": "3dc762d1a7937c3b1872591cc380f3aa0edeb68c",
-  "task_authoring_head_sha": "a9677d5bf1c699434fc6d6536209718f988eb876",
-  "authorization_head_sha": "a9677d5bf1c699434fc6d6536209718f988eb876",
-  "authorized_branch_baseline_sha": "a9677d5bf1c699434fc6d6536209718f988eb876",
-  "feature_branch": "docs/geox-exhausted-review-route-contract-recovery-001",
+  "base_sha": "3eda8e5057a1162989bd1020c12e335476b73669",
+  "task_authoring_start_sha": "3eda8e5057a1162989bd1020c12e335476b73669",
+  "task_authoring_head_sha": "3eda8e5057a1162989bd1020c12e335476b73669",
+  "authorization_head_sha": "3eda8e5057a1162989bd1020c12e335476b73669",
+  "authorized_branch_baseline_sha": "3eda8e5057a1162989bd1020c12e335476b73669",
+  "feature_branch": "feat/geox-exhausted-rejection-record-001",
   "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
@@ -49,11 +49,21 @@
       "remote_head_sha": "cf743b8a0ac858a56997b41b1362f5be6d480a92",
       "implementation_commit_sha": "6217e0686041b7c3fa154ccab6ae5bcb36e57946",
       "resolution_condition": "Produce a coherent independently reviewed contract on a fresh owner-authorized task; do not edit the frozen prior draft or silently change its lifecycle."
+    },
+    {
+      "dependency_id": "DEP-GEOX-REJECTED-CONTRACT-RECOVERY-EVIDENCE-001",
+      "repository": "Phani-Pavuluri/panel_exp",
+      "task_id": "GEOX_EXHAUSTED_REVIEW_ROUTE_CONTRACT_RECOVERY_001",
+      "state": "immutable_rejected_review_evidence",
+      "branch": "docs/geox-exhausted-review-route-contract-recovery-001",
+      "remote_head_sha": "fca7593687fd9313f59b9a8bcf377731ac7f35e1",
+      "implementation_commit_sha": "4c7e2b2c90fbe8a6b02a05972b63860101059863",
+      "resolution_condition": "Evidence only; neither draft defines implementation authority. This active task is the resolved implementation contract."
     }
   ],
-  "risk_tier": "tier_1_documentation_contract_proposal",
+  "risk_tier": "tier_1_execution_governance_schema_and_reporting",
   "full_suite_validation_required": false,
-  "validation_scope": "taskctl_check_json_diff_owned_paths_contract_acceptance_review",
+  "validation_scope": "focused_rejection_contract_tests_complete_taskctl_complete_handoff_combined_json_diff_owned_path_checks",
   "unresolved_execution_blocking_design_questions": [],
   "maximum_correction_cycles": 1,
   "correction_cycles_completed": 0,
@@ -64,7 +74,7 @@
   "modified_repositories": [
     "Phani-Pavuluri/panel_exp"
   ],
-  "coordination_workstream_id": "WS-GEOX-EXHAUSTED-REVIEW-ROUTE-CONTRACT-RECOVERY-001",
+  "coordination_workstream_id": "WS-GEOX-EXHAUSTED-REJECTION-RECORD-001",
   "coordination_capability_owner": "geox_execution_validation_governance",
   "geox_main_pin": "a78c4017e06c6f0bfb4329e749972b516dfbc7e9",
   "mip_main_pin": "a293ce52a813709ca624332123019139928cc51e",
@@ -116,5 +126,5 @@
   "review_decision": "authorized",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Owner-approved exhausted-review direction continues as a fresh documentation recovery outcome. Prior draft rejected in pushed refs/notes/codex-supervised-reviews. Native controller cannot execute changes_requested; immutable prior task and budget remain unchanged. This task authorizes no code or rejection execution."
+  "task_authoring_note": "Owner approved exhausted-review recovery and proceeding with the setup. Muse and Codex aligned on an evidence-only canonical record command, preserving historical branch immutability and live-task lifecycle. This task authorizes implementation and recording only the pinned exhausted historical rejection; no transition-edge, budget, product or sibling authority change."
 }
