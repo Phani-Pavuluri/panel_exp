@@ -5,12 +5,12 @@
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
-- **Task ID:** `GEOX_EXHAUSTED_REJECTION_RECORD_001`
+- **Task ID:** `GEOX_EXHAUSTED_REJECTION_RECORD_RECOVERY_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Execution mode:** `branch_and_fast_forward`
-- **Base SHA:** `3eda8e5057a1162989bd1020c12e335476b73669`
-- **Authorization provenance:** `8e57512de2a72be363ae161c671e09c21103b8f5`
-- **Feature branch:** `feat/geox-exhausted-rejection-record-001`
+- **Base SHA:** `7a83bc0af5dd293512d17a7ce42bc3b4afb8f038`
+- **Authorization provenance:** `7a83bc0af5dd293512d17a7ce42bc3b4afb8f038`
+- **Feature branch:** `feat/geox-exhausted-rejection-record-recovery-001`
 - **Feature branch created:** `false`
 - **Task execution authorized:** `true`
 - **Correction execution authorized:** `false`
@@ -31,11 +31,12 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Capability authorizations changed:** `false`
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
 
+
 ## Primary outcome and authority
 
 Implement one evidence-only `record-rejection` command in the existing GeoX task controller, then use it for the pinned exhausted historical task. The canonical record conveys a blocked review disposition; it does not mutate the target branch or the live recording task's lifecycle. Muse-Spark owns implementation approach; Codex independently reviews. Prior contract drafts are rejected evidence, not executable requirements. This task supersedes their recommendations with the resolved contract below.
 
-Create `feat/geox-exhausted-rejection-record-001` from synchronized post-authoring main after mandatory bootstrap, taskctl check, authorization ancestry, metadata-only three-file task-authoring boundary and branch-absence verification. Only one writer. Affected/modified: GeoX only. Workstream `WS-GEOX-EXHAUSTED-REJECTION-RECORD-001`; owner `geox_execution_validation_governance`.
+Create `feat/geox-exhausted-rejection-record-recovery-001` from synchronized post-authoring main after mandatory bootstrap, taskctl check, authorization ancestry, metadata-only three-file task-authoring boundary and branch-absence verification. Only one writer. Affected/modified: GeoX only. Workstream `WS-GEOX-EXHAUSTED-REJECTION-RECORD-RECOVERY-001`; owner `geox_execution_validation_governance`.
 
 ## Target and dependencies
 
@@ -63,8 +64,22 @@ Per-file atomic state-first replacement then two view replacements; no three-fil
 
 ## Scope, tests and gate
 
-Owned: `panel_exp/execution/taskctl.py`, `tests/execution/test_taskctl.py`, `tests/test_repo_native_execution_handoff.py`, three stable execution files. ACTIVE_TASK changes generated block only. No new parallel report subsystem, context-index changes, docs contract, analytical/runtime/product/sibling work. All protected authority false; three unrelated defects unresolved. Unresolved execution-blocking design questions: none. One outcome: verified canonical historical rejection recording; completion evidence repair and role adoption are deferred separately.
+Owned: `panel_exp/execution/taskctl.py`, `tests/execution/test_taskctl.py`, `tests/test_repo_native_execution_handoff.py`, three stable execution files, and `docs/execution/REPOSITORY_CONTEXT_INDEX.md`. ACTIVE_TASK changes generated block only. No new parallel report subsystem, docs contract, analytical/runtime/product/sibling work. Context-index synchronization is explicitly owned as part of this migration handoff. All protected authority false; three unrelated defects unresolved. Unresolved execution-blocking design questions: none. One outcome: verified canonical historical rejection recording; completion evidence repair and role adoption are deferred separately.
 
 Tier 1 isolated execution-governance gate for execution, exact-head review and post-fast-forward: taskctl check; full tests/execution/test_taskctl.py; full tests/test_repo_native_execution_handoff.py; combined both files; JSON parsing; git diff --check; authorized-baseline changed-path and authority checks. Add meaningful named rejection tests covering success with prior lineage/live invariance, wrong repo/task/branch/head/I/auth ancestry, target non-review-ready/remaining budget/protected flags, live permission/branch/pin/stale-main, malformed input/target/history, target schema compatibility, v3 unchanged read and first-write migration, duplicate, invalid no-write, interrupted state/view recovery, all-lifecycle rendering and sync determinism. Use isolated Git fixtures, never actual target writes. Native Docker/analytical suite/Ruff/mypy not_required for this declared narrow milestone. Existing controller/handoff suites must pass without weakening them.
 
 Use the command once on this task's clean implementation tree with the pinned dependency, actual independent finding (malformed completion evidence accepted before rendering, exhausted review; 25 historical focused tests passed) and resolution (fresh completion-evidence recovery after merged record; old branch remains immutable/unapproved). Commit the implementation and canonical record; completion report records actual local validation results/counts, Git identity/provenance, limitations and cross-repository impact outside generated block. Use native transition to ready_for_review with implementation SHA. Freeze and validate exact task-owned tree; final publication receipt identifies implementation parent, exact-tree gate/results, changed paths, clean tracked state, evidence source, unchanged authority. Publish exact branch and stop without merge or successor authorization.
+
+## Verified recovery evidence and migration handoff
+
+Read pushed independent review notes on exact rejected head `8bcbba2ed4390e56e607fcd2e391d8b01a898e62`. Verified: required handoff gate 1 failed/2 passed (hardcoded v3 rejects v5); actual Git fixture accepts unsupported target execution_mode, non-main base_branch and non-boolean authority fields; malformed history target_schema_version list raises uncaught TypeError. The receipt's claim that the handoff file is outside scope is false. A baseline failure does not waive this gate.
+
+You may use only the controller and focused-test content from immutable `8bcbba2` as starting material, not validation evidence. Restore those selected owned files into the fresh branch if useful; do not merge/rebase/cherry-pick or execute from the rejected branch and do not import its canonical state/report/record. Re-record the target through the corrected CLI on a new clean tree and independently validate the complete new outcome.
+
+Acceptance additionally requires strict typed target validation for every required identity/provenance/lifecycle/authority/counter/rejection field before Git arguments or renderer dereference. Reject unsupported execution_mode/base_branch and non-boolean authorities with the already defined coded shape/identity failures. Exercise list/dict/null/wrong-scalar values for schema, status, branch, provenance and history fields; no uncaught exceptions, no writes on invalid input. Preserve prior typed semantics, lineage and all required negative tests.
+
+Migration handoff includes an explicitly owned context index. Make it a stable source index referencing canonical EXECUTION_STATE.json and generated task/report views, rather than duplicating mutable task identity and pins that become stale at every task rotation. Meaningful native handoff checks must verify these source references resolve to the actual canonical identity, valid preserved pins, schema validation and task/report lifecycle/provenance consistency. Update the old v3-only test to test the authorized v3/v5 compatibility meaning; do not disable or skip the test, remove authority assertions, or count a failing baseline as passed. The seven-file owned boundary includes the context index, controller, both test files and three stable execution files.
+
+Preserved canonical historical pins (readable in this task contract and completion evidence): GeoX `a78c4017e06c6f0bfb4329e749972b516dfbc7e9`, MIP `a293ce52a813709ca624332123019139928cc51e`, MMM `fe8e784923994406a2e4907d28debd872d61fd73`. These are distinct from current live main observations. Preserve the pinned values; do not refresh shared coordination state.
+
+The full taskctl file, full handoff file and combined suite must each pass on execution, exact-head review and post-fast-forward. A failed required gate is not ready_for_review. Do not publish a successful readiness claim with a failed gate; no unsupported lifecycle hand-edit. If a real blocker prevents a legal terminal transition, preserve evidence on the safe authorized branch and clearly identify the missing controller path rather than claiming success.

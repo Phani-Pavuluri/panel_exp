@@ -1,16 +1,16 @@
 {
   "schema_version": "geox_repo_execution_state_v3",
   "repository": "Phani-Pavuluri/panel_exp",
-  "task_id": "GEOX_EXHAUSTED_REJECTION_RECORD_001",
+  "task_id": "GEOX_EXHAUSTED_REJECTION_RECORD_RECOVERY_001",
   "status": "authorized",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
-  "base_sha": "3eda8e5057a1162989bd1020c12e335476b73669",
-  "task_authoring_start_sha": "3eda8e5057a1162989bd1020c12e335476b73669",
-  "task_authoring_head_sha": "8e57512de2a72be363ae161c671e09c21103b8f5",
-  "authorization_head_sha": "8e57512de2a72be363ae161c671e09c21103b8f5",
-  "authorized_branch_baseline_sha": "8e57512de2a72be363ae161c671e09c21103b8f5",
-  "feature_branch": "feat/geox-exhausted-rejection-record-001",
+  "base_sha": "7a83bc0af5dd293512d17a7ce42bc3b4afb8f038",
+  "task_authoring_start_sha": "7a83bc0af5dd293512d17a7ce42bc3b4afb8f038",
+  "task_authoring_head_sha": "7a83bc0af5dd293512d17a7ce42bc3b4afb8f038",
+  "authorization_head_sha": "7a83bc0af5dd293512d17a7ce42bc3b4afb8f038",
+  "authorized_branch_baseline_sha": "7a83bc0af5dd293512d17a7ce42bc3b4afb8f038",
+  "feature_branch": "feat/geox-exhausted-rejection-record-recovery-001",
   "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
@@ -59,6 +59,16 @@
       "remote_head_sha": "fca7593687fd9313f59b9a8bcf377731ac7f35e1",
       "implementation_commit_sha": "4c7e2b2c90fbe8a6b02a05972b63860101059863",
       "resolution_condition": "Evidence only; neither draft defines implementation authority. This active task is the resolved implementation contract."
+    },
+    {
+      "dependency_id": "DEP-GEOX-REJECTED-RECORD-IMPLEMENTATION-001",
+      "repository": "Phani-Pavuluri/panel_exp",
+      "task_id": "GEOX_EXHAUSTED_REJECTION_RECORD_001",
+      "state": "immutable_rejected_review_evidence",
+      "branch": "feat/geox-exhausted-rejection-record-001",
+      "remote_head_sha": "8bcbba2ed4390e56e607fcd2e391d8b01a898e62",
+      "implementation_commit_sha": "e1f7deca3c596da70589c94f7a63c5001ca302ca",
+      "resolution_condition": "Recover only on fresh authorized main baseline, correct verified target/history validation and migration handoff defects, and pass every declared gate. Prior branch remains frozen and unapproved."
     }
   ],
   "risk_tier": "tier_1_execution_governance_schema_and_reporting",
@@ -74,7 +84,7 @@
   "modified_repositories": [
     "Phani-Pavuluri/panel_exp"
   ],
-  "coordination_workstream_id": "WS-GEOX-EXHAUSTED-REJECTION-RECORD-001",
+  "coordination_workstream_id": "WS-GEOX-EXHAUSTED-REJECTION-RECORD-RECOVERY-001",
   "coordination_capability_owner": "geox_execution_validation_governance",
   "geox_main_pin": "a78c4017e06c6f0bfb4329e749972b516dfbc7e9",
   "mip_main_pin": "a293ce52a813709ca624332123019139928cc51e",
@@ -126,5 +136,5 @@
   "review_decision": "authorized",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Owner approved exhausted-review recovery and proceeding with the setup. Muse and Codex aligned on an evidence-only canonical record command, preserving historical branch immutability and live-task lifecycle. This task authorizes implementation and recording only the pinned exhausted historical rejection; no transition-edge, budget, product or sibling authority change."
+  "task_authoring_note": "Fresh bounded implementation recovery under owner-approved setup direction. Prior failed-gate implementation is immutable evidence, never merged. Codex corrects the context-index scope omission. One outcome: verified rejection record and migration-consistent handoff; no additional correction or product authority."
 }
