@@ -5,12 +5,12 @@
   "status": "authorized",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
-  "base_sha": "b44f2d8b8169fee931d3bdcf575b817c577620dd",
-  "task_authoring_start_sha": "b44f2d8b8169fee931d3bdcf575b817c577620dd",
+  "base_sha": "bc1458610fec48a90d25cedf7c13b5d2d58f8e78",
+  "task_authoring_start_sha": "bc1458610fec48a90d25cedf7c13b5d2d58f8e78",
   "task_authoring_head_sha": "b44f2d8b8169fee931d3bdcf575b817c577620dd",
   "authorization_head_sha": "b44f2d8b8169fee931d3bdcf575b817c577620dd",
   "authorized_branch_baseline_sha": "b44f2d8b8169fee931d3bdcf575b817c577620dd",
-  "feature_branch": "tests/geox-tier1-callback-injection-repair-002",
+  "feature_branch": "tests/geox-tier1-callback-injection-repair-003",
   "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
@@ -56,7 +56,7 @@
   ],
   "coordination_workstream_id": "WS-GEOX-TIER1-CALLBACK-INJECTION-REPAIR-001",
   "coordination_capability_owner": "geox_execution_validation_governance",
-  "geox_main_pin": "b44f2d8b8169fee931d3bdcf575b817c577620dd",
+  "geox_main_pin": "a78c4017e06c6f0bfb4329e749972b516dfbc7e9",
   "mip_main_pin": "a293ce52a813709ca624332123019139928cc51e",
   "mmm_main_pin": "fe8e784923994406a2e4907d28debd872d61fd73",
   "package_or_runtime_changes_authorized": false,
@@ -106,7 +106,7 @@
   "review_decision": "authorized",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Amended from repaired main b44f2d8b after coordinator-owned pin restoration. Preserve the existing task scope, one correction budget, carried history, tests-only callback seam and all authority boundaries; create fresh branch tests/geox-tier1-callback-injection-repair-002 without reusing, rebasing, cherry-picking or force-pushing the unpublished -001 branch.",
+  "task_authoring_note": "Authoring repair under existing owner direction for continuous coordination and bounded process correction: restore historical pins, amend declared branch only, same task/outcome/owned paths/acceptance/one unused correction cycle. Original authorization ancestry and unpublished implementation preserved; no product, analytical, architecture, authority or coordination refresh change.",
   "rejection_history": [
     {
       "target_repository": "Phani-Pavuluri/panel_exp",
@@ -133,5 +133,28 @@
       ]
     }
   ],
-  "completion_evidence": null
+  "completion_evidence": null,
+  "authoring_amendments": [
+    {
+      "reason": "Restore preserved historical pins incorrectly overwritten during task authoring; new declared branch prevents divergence while preserving unpublished implementation.",
+      "previous_main": "bc1458610fec48a90d25cedf7c13b5d2d58f8e78",
+      "preserved_published_branch_head": "1d500ea5bbdeb05ac159a1b64b5db1ba39ecce45",
+      "preserved_worker_head_at_amendment": "bc1458610fec48a90d25cedf7c13b5d2d58f8e78",
+      "previous_authorization_head_sha": "b44f2d8b8169fee931d3bdcf575b817c577620dd",
+      "previous_branch": "tests/geox-tier1-callback-injection-repair-002",
+      "preserved_unpublished_implementation_head": "78ef230547aff35a79a4a066b6ebd23f97483d29",
+      "previous_live_observation_values": {
+        "geox_main_pin": "b44f2d8b8169fee931d3bdcf575b817c577620dd",
+        "mip_main_pin": "a293ce52a813709ca624332123019139928cc51e",
+        "mmm_main_pin": "fe8e784923994406a2e4907d28debd872d61fd73"
+      },
+      "restored_historical_pins": {
+        "geox_main_pin": "a78c4017e06c6f0bfb4329e749972b516dfbc7e9",
+        "mip_main_pin": "a293ce52a813709ca624332123019139928cc51e",
+        "mmm_main_pin": "fe8e784923994406a2e4907d28debd872d61fd73"
+      },
+      "scope_changed": false,
+      "capability_authority_changed": false
+    }
+  ]
 }

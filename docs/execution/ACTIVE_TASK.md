@@ -8,9 +8,9 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Task ID:** `GEOX_TIER1_CALLBACK_INJECTION_REPAIR_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Execution mode:** `branch_and_fast_forward`
-- **Base SHA:** `b44f2d8b8169fee931d3bdcf575b817c577620dd`
+- **Base SHA:** `bc1458610fec48a90d25cedf7c13b5d2d58f8e78`
 - **Authorization provenance:** `b44f2d8b8169fee931d3bdcf575b817c577620dd`
-- **Feature branch:** `tests/geox-tier1-callback-injection-repair-002`
+- **Feature branch:** `tests/geox-tier1-callback-injection-repair-003`
 - **Feature branch created:** `false`
 - **Task execution authorized:** `true`
 - **Correction execution authorized:** `false`
@@ -50,3 +50,10 @@ Record real gate evidence on the clean implementation tree, including all fiftee
 ## Proposal record
 
 The existing GeoX callback seam is validation-owned and already permitted for tests; the successor covers the complete fifteen-test file rather than an earlier undercount of eleven. The three unrelated historical failures remain separate limitations. No owner policy or producer/finality decision is included; no product, contract, capability or gate authority changes.
+
+
+## Authoring amendment — historical pin restoration and fresh branch
+
+This preserves the authorized task's single tests-only outcome, owned paths, all fifteen unchanged acceptance assertions, mandatory gates and existing correction budget. Task authoring incorrectly put live observations into the three preserved historical pin fields; restore the exact committed historical values already recorded by the stable index. This is no context-index or coordination refresh and no producer-version/finality decision.
+
+Canonical declared branch is now `tests/geox-tier1-callback-injection-repair-003`, created from synchronized amended main. The initial task authorization and authoring commits remain ancestors and are recorded in canonical authoring_amendments. Prior unpublished implementation `78ef230547aff35a79a4a066b6ebd23f97483d29` on tests/geox-tier1-callback-injection-repair-001 remains frozen local evidence, not a reviewed or approved head. Preserve it; do not merge, rebase, cherry-pick, force-push, reset or delete that line. The fresh branch avoids divergence between authoring metadata repair and the unpublished implementation. Muse owns implementation approach within the same original scope. New lifecycle evidence must be actual; all gates, owned paths and authority boundaries above remain unchanged. No new task, test waiver, product or policy meaning is introduced.
