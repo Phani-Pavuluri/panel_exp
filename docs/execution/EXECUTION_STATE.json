@@ -1,16 +1,16 @@
 {
   "schema_version": "geox_repo_execution_state_v5",
   "repository": "Phani-Pavuluri/panel_exp",
-  "task_id": "GEOX_EXHAUSTED_REJECTION_RECORD_RECOVERY_001",
-  "status": "merged",
+  "task_id": "GEOX_STRUCTURED_COMPLETION_EVIDENCE_RECOVERY_001",
+  "status": "proposed",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
-  "base_sha": "7a83bc0af5dd293512d17a7ce42bc3b4afb8f038",
-  "task_authoring_start_sha": "7a83bc0af5dd293512d17a7ce42bc3b4afb8f038",
-  "task_authoring_head_sha": "a2efa242d27043307fe6b3a8cee89fbbc81d6c73",
-  "authorization_head_sha": "a2efa242d27043307fe6b3a8cee89fbbc81d6c73",
-  "authorized_branch_baseline_sha": "a2efa242d27043307fe6b3a8cee89fbbc81d6c73",
-  "feature_branch": "feat/geox-exhausted-rejection-record-recovery-001",
+  "base_sha": "9c6c6b2dbd4c106c0c70a5a062c0ea0fd6bb7af9",
+  "task_authoring_start_sha": "9c6c6b2dbd4c106c0c70a5a062c0ea0fd6bb7af9",
+  "task_authoring_head_sha": "9c6c6b2dbd4c106c0c70a5a062c0ea0fd6bb7af9",
+  "authorization_head_sha": "9c6c6b2dbd4c106c0c70a5a062c0ea0fd6bb7af9",
+  "authorized_branch_baseline_sha": "9c6c6b2dbd4c106c0c70a5a062c0ea0fd6bb7af9",
+  "feature_branch": "feat/geox-structured-completion-evidence-recovery-001",
   "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
@@ -18,17 +18,28 @@
   "correction_execution_authorized": false,
   "merge_authorized": false,
   "pr_creation_authorized": false,
-  "reviewed_head_sha": "87d02b68939c8e5bc8074820e4960b33a7995a25",
+  "reviewed_head_sha": null,
   "rejected_review_head_sha": null,
   "rejected_implementation_commit_sha": null,
-  "implementation_commit_sha": "5dc0fa0f11809618412cacf78859a5932305e6be",
+  "implementation_commit_sha": null,
   "approval_commit_sha": null,
-  "local_feature_branch_cleanup": "observed_deleted",
-  "remote_feature_branch_cleanup": "observed_deleted",
+  "local_feature_branch_cleanup": null,
+  "remote_feature_branch_cleanup": null,
   "capability_authorizations_changed": false,
   "last_updated": "2026-10-14",
   "blockers": [],
   "dependencies": [
+    {
+      "dependency_id": "DEP-GEOX-MERGED-REJECTION-HISTORY-001",
+      "repository": "Phani-Pavuluri/panel_exp",
+      "task_id": "GEOX_EXHAUSTED_REJECTION_RECORD_RECOVERY_001",
+      "state": "merged_canonical_history_source",
+      "branch": "feat/geox-exhausted-rejection-record-recovery-001",
+      "remote_head_sha": "87d02b68939c8e5bc8074820e4960b33a7995a25",
+      "merged_main_sha": "9c6c6b2dbd4c106c0c70a5a062c0ea0fd6bb7af9",
+      "history_entries": 1,
+      "resolution_condition": "Carry rejection_history entries verbatim into the successor live state; never rewrite carried fields or drop entries during rotation."
+    },
     {
       "dependency_id": "DEP-GEOX-EXHAUSTED-REJECTED-EVIDENCE-001",
       "repository": "Phani-Pavuluri/panel_exp",
@@ -38,37 +49,7 @@
       "remote_head_sha": "81664df0d687746a8ee990eada702a2a54cc23c0",
       "implementation_commit_sha": "3841c1790d82d94ebdb99dc6a4022b3c4097c86d",
       "correction_cycles_remaining": 0,
-      "resolution_condition": "Design the approved exhausted-review rejection route first; old branch remains immutable and unapproved. Separate implementation and completion recovery require fresh Git authorization."
-    },
-    {
-      "dependency_id": "DEP-GEOX-REJECTED-CONTRACT-EVIDENCE-001",
-      "repository": "Phani-Pavuluri/panel_exp",
-      "task_id": "GEOX_EXHAUSTED_REVIEW_ROUTE_CONTRACT_001",
-      "state": "immutable_rejected_review_evidence",
-      "branch": "docs/geox-exhausted-review-route-contract-001",
-      "remote_head_sha": "cf743b8a0ac858a56997b41b1362f5be6d480a92",
-      "implementation_commit_sha": "6217e0686041b7c3fa154ccab6ae5bcb36e57946",
-      "resolution_condition": "Produce a coherent independently reviewed contract on a fresh owner-authorized task; do not edit the frozen prior draft or silently change its lifecycle."
-    },
-    {
-      "dependency_id": "DEP-GEOX-REJECTED-CONTRACT-RECOVERY-EVIDENCE-001",
-      "repository": "Phani-Pavuluri/panel_exp",
-      "task_id": "GEOX_EXHAUSTED_REVIEW_ROUTE_CONTRACT_RECOVERY_001",
-      "state": "immutable_rejected_review_evidence",
-      "branch": "docs/geox-exhausted-review-route-contract-recovery-001",
-      "remote_head_sha": "fca7593687fd9313f59b9a8bcf377731ac7f35e1",
-      "implementation_commit_sha": "4c7e2b2c90fbe8a6b02a05972b63860101059863",
-      "resolution_condition": "Evidence only; neither draft defines implementation authority. This active task is the resolved implementation contract."
-    },
-    {
-      "dependency_id": "DEP-GEOX-REJECTED-RECORD-IMPLEMENTATION-001",
-      "repository": "Phani-Pavuluri/panel_exp",
-      "task_id": "GEOX_EXHAUSTED_REJECTION_RECORD_001",
-      "state": "immutable_rejected_review_evidence",
-      "branch": "feat/geox-exhausted-rejection-record-001",
-      "remote_head_sha": "8bcbba2ed4390e56e607fcd2e391d8b01a898e62",
-      "implementation_commit_sha": "e1f7deca3c596da70589c94f7a63c5001ca302ca",
-      "resolution_condition": "Recover only on fresh authorized main baseline, correct verified target/history validation and migration handoff defects, and pass every declared gate. Prior branch remains frozen and unapproved."
+      "resolution_condition": "Frozen v4 evidence-shape and late-lifecycle gate reference; read-only, never loaded as live state."
     }
   ],
   "risk_tier": "tier_1_execution_governance_schema_and_reporting",
@@ -84,7 +65,7 @@
   "modified_repositories": [
     "Phani-Pavuluri/panel_exp"
   ],
-  "coordination_workstream_id": "WS-GEOX-EXHAUSTED-REJECTION-RECORD-RECOVERY-001",
+  "coordination_workstream_id": "WS-GEOX-STRUCTURED-COMPLETION-EVIDENCE-RECOVERY-001",
   "coordination_capability_owner": "geox_execution_validation_governance",
   "geox_main_pin": "a78c4017e06c6f0bfb4329e749972b516dfbc7e9",
   "mip_main_pin": "a293ce52a813709ca624332123019139928cc51e",
@@ -102,8 +83,8 @@
   "production_authorized": false,
   "source_defect": {
     "defect_id": "GEOX-EXHAUSTED-REVIEW-ROUTE-GAP-001",
-    "failing_invariant": "An exhausted independently rejected historical review has no supported durable canonical disposition record while preserving immutable branch evidence and the live recording task lifecycle.",
-    "authorized_resolution": "Implement and validate the evidence-only record-rejection command defined in ACTIVE_TASK.md, then record the pinned exhausted historical rejection. Prior document-only authorization is superseded; no lifecycle edge, correction budget, merge or capability authority is added."
+    "failing_invariant": "A non-null completion-evidence object has no validated reporting path on the merged route-only v5 baseline; early-lifecycle malformed evidence is unvalidated while v5 forbids the key.",
+    "authorized_resolution": "Proposed only: implement schema v6 evidence (verbatim frozen keys, null-or-validated early, mandatory valid late), render from validated state, preserve carried history; no execution authorized."
   },
   "remaining_current_main_defect_ids": [
     "GEOX-CURRENT-MAIN-BRB-GOLDEN-EQUIVALENCE-001",
@@ -131,12 +112,12 @@
       "finding": "Canonical review-ready state again contradicted stale pre-implementation completion prose."
     }
   ],
-  "next_task_id": "GEOX_STRUCTURED_COMPLETION_EVIDENCE_RECOVERY_001",
+  "next_task_id": null,
   "next_task_authorized": false,
-  "review_decision": "merged",
+  "review_decision": "proposed",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Fresh bounded implementation recovery under owner-approved setup direction. Prior failed-gate implementation is immutable evidence, never merged. Codex corrects the context-index scope omission. One outcome: verified rejection record and migration-consistent handoff; no additional correction or product authority.",
+  "task_authoring_note": "Successor contract proposed in the stable authoring boundary; task execution is NOT authorized (status proposed, execution authority false). History carried verbatim from merged 9c6c6b2; no code, branch, merge, or authority change. Authorization requires a future Git commit flipping status and execution authority.",
   "rejection_history": [
     {
       "target_repository": "Phani-Pavuluri/panel_exp",
@@ -162,19 +143,5 @@
         "Independent rejection of exhausted review-ready 81664df0d687746a8ee990eada702a2a54cc23c0 (implementation 3841c1790d82d94ebdb99dc6a4022b3c4097c86d): no canonical blocked transition exists; no correction budget remains (completed 1 of 1); re-review requires separately authorized recovery; no merge or successor authorized."
       ]
     }
-  ],
-  "approval_provenance": {
-    "mode": "supervised_owner_standing_approval_exception",
-    "exact_reviewed_head": "87d02b68939c8e5bc8074820e4960b33a7995a25",
-    "independent_note_commit": "46df84ce3124bb5be7377323a4a0ace377f54137",
-    "source": "Owner bypass of routine merge requests and approval of bounded exhausted-review recovery; independent exact-head review passed. No automatic delegated merge policy activation."
-  },
-  "planned_followup": {
-    "task_id": "GEOX_STRUCTURED_COMPLETION_EVIDENCE_RECOVERY_001",
-    "owner": "Muse-Spark GeoX worker",
-    "status": "planned_not_execution_authorized",
-    "dependency": "GEOX_EXHAUSTED_REJECTION_RECORD_RECOVERY_001 merged at reviewed head 87d02b68939c8e5bc8074820e4960b33a7995a25",
-    "outcome": "Integrate canonical fully generated completion reporting with existing v5 rejection history, validating every non-null evidence object before rendering; old rejected branch remains immutable.",
-    "next_step": "Muse proposes bounded compatibility/validation contract for independent alignment, then fresh Git authorization; do not execute from this plan."
-  }
+  ]
 }

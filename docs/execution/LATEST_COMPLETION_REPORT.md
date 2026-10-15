@@ -1,23 +1,23 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `merged`
+**Current decision:** `proposed`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
-- **Task ID:** `GEOX_EXHAUSTED_REJECTION_RECORD_RECOVERY_001`
+- **Task ID:** `GEOX_STRUCTURED_COMPLETION_EVIDENCE_RECOVERY_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Execution mode:** `branch_and_fast_forward`
-- **Base SHA:** `7a83bc0af5dd293512d17a7ce42bc3b4afb8f038`
-- **Authorization provenance:** `a2efa242d27043307fe6b3a8cee89fbbc81d6c73`
-- **Feature branch:** `feat/geox-exhausted-rejection-record-recovery-001`
+- **Base SHA:** `9c6c6b2dbd4c106c0c70a5a062c0ea0fd6bb7af9`
+- **Authorization provenance:** `9c6c6b2dbd4c106c0c70a5a062c0ea0fd6bb7af9`
+- **Feature branch:** `feat/geox-structured-completion-evidence-recovery-001`
 - **Feature branch created:** `false`
 - **Task execution authorized:** `false`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
-- **Implementation commit:** `5dc0fa0f11809618412cacf78859a5932305e6be`
-- **Reviewed head:** `87d02b68939c8e5bc8074820e4960b33a7995a25`
+- **Implementation commit:** `null`
+- **Reviewed head:** `null`
 - **Rejected review head:** `null`
 - **Rejected implementation commit:** `null`
 - **Approval commit:** `null`
@@ -25,9 +25,9 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `merged`
-- **Local feature-branch cleanup:** `observed_deleted`
-- **Remote feature-branch cleanup:** `observed_deleted`
+- **Review decision:** `proposed`
+- **Local feature-branch cleanup:** `null`
+- **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
 
 ## Rejection history
@@ -41,7 +41,32 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 
 ## Current outcome
 
-Authorized recovery of rejected record implementation and migration handoff. Corrected command implemented, tested, and executed once for the pinned historical target; task ready for independent review. Prior branch remains immutable and unapproved.
+Successor contract proposed in the stable authoring boundary; task execution is NOT authorized. Awaiting fresh Git authorization. No code, branch, merge, or authority change by this authoring.
+
+## Authoring evidence
+
+- **Authoring baseline:** `9c6c6b2dbd4c106c0c70a5a062c0ea0fd6bb7af9` (merged
+  `GEOX_EXHAUSTED_REJECTION_RECORD_RECOVERY_001`; `main == origin/main` proven
+  before authoring). Proposed task `GEOX_STRUCTURED_COMPLETION_EVIDENCE_RECOVERY_001`
+  per the merged `planned_followup`; execution branch
+  `feat/geox-structured-completion-evidence-recovery-001` verified absent
+  locally and remotely (not created).
+- **History carry:** the single merged `rejection_history` entry carried
+  byte-identical from `9c6c6b2` into the proposed v5 state (verified by
+  serialization comparison); `completion_evidence` key absent per the
+  route-only baseline. Frozen heads `81664df…` and `8bcbba2…` observed
+  unchanged (read-only).
+- **Authoring gate:** `taskctl check` passed under the merged v5 controller;
+  `json.tool` passed; `git diff --check` passed; full focused + handoff +
+  combined suites green on the authored tree (proposed v5 with carried history
+  validates; generated views consistent); authoring diff limited to the three
+  stable execution files; no code, test, or context-index bytes touched.
+- **Authority:** none granted or changed. Status `proposed`, task execution
+  authority false, correction closed, merge/PR/protected/next-task false,
+  approval null. Provenance SHAs anchor the proposal baseline only.
+- **Limitations:** proposal only — no implementation, recording, transition,
+  or successor authorized. Sibling repositories not checked out locally
+  (pins and contract overlay values retained, no sibling changes).
 
 ## Implementation and recording evidence
 
