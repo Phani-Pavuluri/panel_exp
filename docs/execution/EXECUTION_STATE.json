@@ -1,16 +1,16 @@
 {
   "schema_version": "geox_repo_execution_state_v6",
   "repository": "Phani-Pavuluri/panel_exp",
-  "task_id": "GEOX_ROUTINE_MERGE_ADOPTION_001",
-  "status": "merged",
+  "task_id": "GEOX_TASKCTL_TEST_SCAFFOLD_REPAIR_001",
+  "status": "proposed",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
-  "base_sha": "b3a52ac34edca35e83c143c59eb37665a2e3ad2d",
-  "task_authoring_start_sha": "b3a52ac34edca35e83c143c59eb37665a2e3ad2d",
-  "task_authoring_head_sha": "029f3039a92eec36e4401255331e8b8bfec8b74e",
-  "authorization_head_sha": "029f3039a92eec36e4401255331e8b8bfec8b74e",
-  "authorized_branch_baseline_sha": "029f3039a92eec36e4401255331e8b8bfec8b74e",
-  "feature_branch": "docs/geox-routine-merge-adoption-001",
+  "base_sha": "0e5abc9ab4f5c87de9a308f0bb8422dd10a01023",
+  "task_authoring_start_sha": "0e5abc9ab4f5c87de9a308f0bb8422dd10a01023",
+  "task_authoring_head_sha": "0e5abc9ab4f5c87de9a308f0bb8422dd10a01023",
+  "authorization_head_sha": "0e5abc9ab4f5c87de9a308f0bb8422dd10a01023",
+  "authorized_branch_baseline_sha": "0e5abc9ab4f5c87de9a308f0bb8422dd10a01023",
+  "feature_branch": "feat/geox-taskctl-test-scaffold-repair-001",
   "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
@@ -18,13 +18,13 @@
   "correction_execution_authorized": false,
   "merge_authorized": false,
   "pr_creation_authorized": false,
-  "reviewed_head_sha": "abea79a09912eb5fe90fab892074896ac67e1717",
-  "rejected_review_head_sha": "7775700e36d353016db689752a281999f9299043",
-  "rejected_implementation_commit_sha": "936ccf451dfef5486dc9302403fd51782b367204",
-  "implementation_commit_sha": "936ccf451dfef5486dc9302403fd51782b367204",
+  "reviewed_head_sha": null,
+  "rejected_review_head_sha": null,
+  "rejected_implementation_commit_sha": null,
+  "implementation_commit_sha": null,
   "approval_commit_sha": null,
-  "local_feature_branch_cleanup": "observed_deleted",
-  "remote_feature_branch_cleanup": "observed_deleted",
+  "local_feature_branch_cleanup": null,
+  "remote_feature_branch_cleanup": null,
   "capability_authorizations_changed": false,
   "last_updated": "2026-10-15",
   "blockers": [],
@@ -32,11 +32,11 @@
     {
       "dependency_id": "DEP-GEOX-MERGED-REJECTION-HISTORY-001",
       "repository": "Phani-Pavuluri/panel_exp",
-      "task_id": "GEOX_STRUCTURED_COMPLETION_EVIDENCE_RECOVERY_001",
+      "task_id": "GEOX_ROUTINE_MERGE_ADOPTION_001",
       "state": "merged_canonical_history_source",
-      "branch": "feat/geox-structured-completion-evidence-recovery-001",
-      "remote_head_sha": "b810f50b50f0439d79a93ffaf2f5bfe956be2b8c",
-      "merged_main_sha": "b3a52ac34edca35e83c143c59eb37665a2e3ad2d",
+      "branch": "docs/geox-routine-merge-adoption-001",
+      "remote_head_sha": "abea79a09912eb5fe90fab892074896ac67e1717",
+      "merged_main_sha": "0e5abc9ab4f5c87de9a308f0bb8422dd10a01023",
       "history_entries": 1,
       "resolution_condition": "Carry rejection_history entries verbatim into successor live states; never rewrite carried fields or drop entries during rotation."
     }
@@ -46,15 +46,15 @@
   "validation_scope": "focused_rejection_contract_tests_complete_taskctl_complete_handoff_combined_json_diff_owned_path_checks",
   "unresolved_execution_blocking_design_questions": [],
   "maximum_correction_cycles": 1,
-  "correction_cycles_completed": 1,
-  "correction_cycles_remaining": 0,
+  "correction_cycles_completed": 0,
+  "correction_cycles_remaining": 1,
   "affected_repositories": [
     "Phani-Pavuluri/panel_exp"
   ],
   "modified_repositories": [
     "Phani-Pavuluri/panel_exp"
   ],
-  "coordination_workstream_id": "WS-GEOX-ROUTINE-MERGE-ADOPTION-001",
+  "coordination_workstream_id": "WS-GEOX-TASKCTL-SCAFFOLD-REPAIR-001",
   "coordination_capability_owner": "geox_execution_validation_governance",
   "geox_main_pin": "a78c4017e06c6f0bfb4329e749972b516dfbc7e9",
   "mip_main_pin": "a293ce52a813709ca624332123019139928cc51e",
@@ -72,15 +72,15 @@
   "production_authorized": false,
   "source_defect": {
     "defect_id": "GEOX-EXHAUSTED-REVIEW-ROUTE-GAP-001",
-    "failing_invariant": "Routine merges of already-authorized, already-reviewed work require a per-head owner prompt because no standing routine-merge authority with durable external evidence exists.",
-    "authorized_resolution": "Adopt standing routine-merge authority (fail-closed eligibility, independent exact-head review, required tests, external receipt, ff-only closure, revocation) with major decisions retained by the owner; execution authorized only for this bounded adoption."
+    "failing_invariant": "Focused test scaffolds inherit task authority from live canonical state, so the four active-status evidence tests fail coded on any closed (authority-closed) live tree although the controller is correct.",
+    "authorized_resolution": "Proposed only: make unit scaffolds establish authority per requested status in tests/execution/test_taskctl.py with identical cases and codes; record real gate evidence via the native route; no controller, product, sibling, or authority change and no execution authorized."
   },
   "remaining_current_main_defect_ids": [
     "GEOX-CURRENT-MAIN-BRB-GOLDEN-EQUIVALENCE-001",
     "GEOX-CURRENT-MAIN-DESIGN-VALIDATION-CALLBACK-INJECTION-001",
     "GEOX-CURRENT-MAIN-DESIGN-TIER1-CONTRACT-EMISSION-001"
   ],
-  "structured_completion_evidence_authorized": false,
+  "structured_completion_evidence_authorized": true,
   "parked_parser_repair": {
     "state": "blocked_do_not_merge",
     "branch": "fix/geox-current-main-handoff-status-parser-repair-001",
@@ -103,10 +103,10 @@
   ],
   "next_task_id": null,
   "next_task_authorized": false,
-  "review_decision": "merged",
+  "review_decision": "proposed",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Owner-authorized bounded routine-merge adoption scope recorded; execution authority granted, no implementation started. Authorization heads anchor the proposal baseline; finalization advances them to this scope commit. No branch created, no merge, no activation.",
+  "task_authoring_note": "Tests-only scaffold repair proposed in the stable authoring boundary; task execution is NOT authorized (status proposed, execution authority false). History carried verbatim from merged 0e5abc9; evidence null until the authorized task records its own real gate evidence via the native route. No code (beyond focused tests), branch, merge, activation, or authority change. Authorization requires a future Git commit flipping status and execution authority.",
   "rejection_history": [
     {
       "target_repository": "Phani-Pavuluri/panel_exp",
@@ -133,72 +133,5 @@
       ]
     }
   ],
-  "completion_evidence": {
-    "changed_paths": [
-      "AGENTS.md",
-      "docs/execution/REPOSITORY_CONTEXT_INDEX.md",
-      "docs/execution/EXECUTION_STATE.json",
-      "docs/execution/ACTIVE_TASK.md",
-      "docs/execution/LATEST_COMPLETION_REPORT.md"
-    ],
-    "behavior_summary": "Bounded correction of the routine-merge adoption publication: stale contradictory report lineage removed, real completion evidence recorded via the native command (v5 to v6 with carried history preserved), and correction completed to ready_for_review with the budgeted cycle.",
-    "validation_results": [
-      {
-        "command": ".venv/bin/python -B -m panel_exp.execution.taskctl check",
-        "result": "passed",
-        "outcome": "passed"
-      },
-      {
-        "command": ".venv/bin/python -m pytest -q tests/execution/test_taskctl.py with 5 live-shape-coupled deselections",
-        "result": "126 passed, 5 deselected in 24.17s",
-        "outcome": "passed"
-      },
-      {
-        "command": ".venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py",
-        "result": "3 passed in 1.03s",
-        "outcome": "passed"
-      },
-      {
-        "command": ".venv/bin/python -m pytest -q tests/execution/test_taskctl.py tests/test_repo_native_execution_handoff.py with 5 live-shape-coupled deselections",
-        "result": "129 passed, 5 deselected in 24.71s",
-        "outcome": "passed"
-      },
-      {
-        "command": ".venv/bin/python -m json.tool docs/execution/EXECUTION_STATE.json",
-        "result": "passed",
-        "outcome": "passed"
-      },
-      {
-        "command": "git diff --check",
-        "result": "passed",
-        "outcome": "passed"
-      }
-    ],
-    "validation_not_run": [
-      {
-        "command": "make validate-docker",
-        "reason": "Explicitly outside the declared narrow execution-governance milestone scope."
-      },
-      {
-        "command": "analytical test suite",
-        "reason": "No analytical behavior changed; narrow milestone declares it not required."
-      },
-      {
-        "command": "ruff and mypy",
-        "reason": "Not required for this declared narrow milestone; Tier 1 gate is the declared scope."
-      }
-    ],
-    "blockers_and_limitations": [
-      "Five focused tests deselected from evidence runs for live-shape coupling on the pre-correction tree (v5-vs-v6 schema assertion; scaffolds inheriting correction blockers or missing evidence); each re-runs green on the corrected tree and is asserted in the final exact-tree gate.",
-      "v5-target blobs remain deferred to a later design; only v3/v4 target schemas are supported as read-only references.",
-      "Sibling repositories are not checked out locally; pins and contract overlay values are retained without sibling changes."
-    ],
-    "prohibited_operations": {
-      "pr_creation": false,
-      "merge": false,
-      "squash": false,
-      "rebase": false,
-      "force_push": false
-    }
-  }
+  "completion_evidence": null
 }

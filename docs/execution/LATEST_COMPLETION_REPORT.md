@@ -1,33 +1,33 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `merged`
+**Current decision:** `proposed`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
-- **Task ID:** `GEOX_ROUTINE_MERGE_ADOPTION_001`
+- **Task ID:** `GEOX_TASKCTL_TEST_SCAFFOLD_REPAIR_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Execution mode:** `branch_and_fast_forward`
-- **Base SHA:** `b3a52ac34edca35e83c143c59eb37665a2e3ad2d`
-- **Authorization provenance:** `029f3039a92eec36e4401255331e8b8bfec8b74e`
-- **Feature branch:** `docs/geox-routine-merge-adoption-001`
+- **Base SHA:** `0e5abc9ab4f5c87de9a308f0bb8422dd10a01023`
+- **Authorization provenance:** `0e5abc9ab4f5c87de9a308f0bb8422dd10a01023`
+- **Feature branch:** `feat/geox-taskctl-test-scaffold-repair-001`
 - **Feature branch created:** `false`
 - **Task execution authorized:** `false`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
-- **Implementation commit:** `936ccf451dfef5486dc9302403fd51782b367204`
-- **Reviewed head:** `abea79a09912eb5fe90fab892074896ac67e1717`
-- **Rejected review head:** `7775700e36d353016db689752a281999f9299043`
-- **Rejected implementation commit:** `936ccf451dfef5486dc9302403fd51782b367204`
+- **Implementation commit:** `null`
+- **Reviewed head:** `null`
+- **Rejected review head:** `null`
+- **Rejected implementation commit:** `null`
 - **Approval commit:** `null`
 - **Blockers:** `none`
 - **Maximum correction cycles:** `1`
-- **Correction cycles completed:** `1`
-- **Correction cycles remaining:** `0`
-- **Review decision:** `merged`
-- **Local feature-branch cleanup:** `observed_deleted`
-- **Remote feature-branch cleanup:** `observed_deleted`
+- **Correction cycles completed:** `0`
+- **Correction cycles remaining:** `1`
+- **Review decision:** `proposed`
+- **Local feature-branch cleanup:** `null`
+- **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
 
 ## Rejection history
@@ -40,46 +40,7 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 
 ## Structured completion evidence
 
-### Changed paths
-
-- `AGENTS.md`
-- `docs/execution/REPOSITORY_CONTEXT_INDEX.md`
-- `docs/execution/EXECUTION_STATE.json`
-- `docs/execution/ACTIVE_TASK.md`
-- `docs/execution/LATEST_COMPLETION_REPORT.md`
-
-### Behavior
-
-Bounded correction of the routine-merge adoption publication: stale contradictory report lineage removed, real completion evidence recorded via the native command (v5 to v6 with carried history preserved), and correction completed to ready_for_review with the budgeted cycle.
-
-### Validation results
-
-- `.venv/bin/python -B -m panel_exp.execution.taskctl check` — passed (passed)
-- `.venv/bin/python -m pytest -q tests/execution/test_taskctl.py with 5 live-shape-coupled deselections` — 126 passed, 5 deselected in 24.17s (passed)
-- `.venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py` — 3 passed in 1.03s (passed)
-- `.venv/bin/python -m pytest -q tests/execution/test_taskctl.py tests/test_repo_native_execution_handoff.py with 5 live-shape-coupled deselections` — 129 passed, 5 deselected in 24.71s (passed)
-- `.venv/bin/python -m json.tool docs/execution/EXECUTION_STATE.json` — passed (passed)
-- `git diff --check` — passed (passed)
-
-### Validation not run
-
-- `make validate-docker` — Explicitly outside the declared narrow execution-governance milestone scope.
-- `analytical test suite` — No analytical behavior changed; narrow milestone declares it not required.
-- `ruff and mypy` — Not required for this declared narrow milestone; Tier 1 gate is the declared scope.
-
-### Blockers and limitations
-
-- Five focused tests deselected from evidence runs for live-shape coupling on the pre-correction tree (v5-vs-v6 schema assertion; scaffolds inheriting correction blockers or missing evidence); each re-runs green on the corrected tree and is asserted in the final exact-tree gate.
-- v5-target blobs remain deferred to a later design; only v3/v4 target schemas are supported as read-only references.
-- Sibling repositories are not checked out locally; pins and contract overlay values are retained without sibling changes.
-
-### Prohibited-operation confirmation
-
-- pr_creation: `false`
-- merge: `false`
-- squash: `false`
-- rebase: `false`
-- force_push: `false`
+- none
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
 ## Current outcome
 
@@ -149,3 +110,35 @@ Bounded correction executed for the rejected `7775700` publication: stale contra
 Exact head `abea79a09912eb5fe90fab892074896ac67e1717` passed independent foreground review and the declared Tier 1 gates: taskctl, focused 131, handoff 3, combined 134, JSON, diff, ancestry and owned-path checks. Receipt `75d17834-445c-46c6-864b-48c36ae5f0ba` was published under `refs/notes/codex-supervised-reviews`; implementation is `936ccf451dfef5486dc9302403fd51782b367204`.
 
 The reviewed head was merged to `main` with `git merge --ff-only`, pushed, and the feature branch deletion was observed on the remote. This single metadata-only closure records the reviewed head, receipt, gate summary, observed cleanup and unchanged authority. No merge flag, PR authority, product capability, producer-version decision, or other protected authority was added; task execution authority is closed.
+
+## Current outcome
+
+Tests-only scaffold-repair contract proposed in the stable authoring boundary; task execution is NOT authorized. Awaiting fresh Git authorization. No code, branch, merge, activation, or authority change by this authoring.
+
+## Authoring evidence
+
+- **Authoring baseline:** `0e5abc9ab4f5c87de9a308f0bb8422dd10a01023` (merged
+  `GEOX_ROUTINE_MERGE_ADOPTION_001`; `main == origin/main` proven before
+  authoring). Proposed task `GEOX_TASKCTL_TEST_SCAFFOLD_REPAIR_001`;
+  execution branch `feat/geox-taskctl-test-scaffold-repair-001` verified
+  absent locally and remotely (not created).
+- **History carry:** the single merged `rejection_history` entry carried
+  byte-identical from `0e5abc9` into the proposed v6 state with null
+  evidence (verified by serialization comparison); frozen heads observed
+  unchanged (read-only).
+- **Authoring gate:** `taskctl check` passed; `json.tool` passed;
+  `git diff --check` passed; focused suite 125 passed / 6 failed, handoff 3
+  passed, combined 128 passed / 6 failed. All six are live-shape harness
+  coupling with zero product contribution: four reproduce on closed main
+  (scaffolds inherit closed live authority); two more surface only where
+  live evidence is null (scaffolds inherit null evidence into late-status
+  shapes the mandate correctly rejects). Controller proven correct by
+  authority-held and evidence-valid controls; `taskctl check` passes every
+  tree. Authoring diff limited to the three stable execution files; no code,
+  test, or context-index bytes touched.
+- **Authority:** none granted or changed. Status `proposed`, task execution
+  authority false, correction closed, merge/PR/protected/next-task false,
+  approval null. Provenance SHAs anchor the proposal baseline only.
+- **Limitations:** proposal only — no implementation, recording, transition,
+  or successor authorized. Sibling repositories not checked out locally
+  (pins retained, no sibling changes).
