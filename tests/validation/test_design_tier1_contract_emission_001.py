@@ -12,6 +12,7 @@ from panel_exp.design.assign import (
     CompleteRandomization,
     StratifiedRandomization,
 )
+from panel_exp.design import geo_runner
 from panel_exp.design.geo_experiment_design import GeoExperimentDesign
 from panel_exp.evidence import DesignEvidence
 from panel_exp.validation.design_contract_builder_001 import (
@@ -49,6 +50,11 @@ def _run_geo(
     **geo_kwargs: Any,
 ) -> GeoExperimentDesign:
     _stub_mde(monkeypatch)
+    monkeypatch.setattr(
+        geo_runner,
+        "build_and_validate_tier1_contract",
+        build_and_validate_tier1_contract,
+    )
     panel = make_geo_panel(seed=7, n_units=10, n_times=40)
     geo = GeoExperimentDesign(
         panel_data=panel,
