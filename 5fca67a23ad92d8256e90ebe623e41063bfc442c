@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "receipt_id": "8f34aa10-d8b4-4f43-b606-00ca0357b0f9",
+  "receipt_kind": "independent_exact_head_routine_merge_approval",
+  "repository": "Phani-Pavuluri/panel_exp",
+  "task_id": "GEOX_TASKCTL_TEST_SCAFFOLD_REPAIR_001",
+  "reviewed_head": "5fca67a23ad92d8256e90ebe623e41063bfc442c",
+  "implementation_head": "eab24592e6d7d590693c7b28788751de473514c5",
+  "authorization_head": "a05cf0c0092e55cd2ca659b8469eae2fc4b873b3",
+  "decision": "approve_exact_reviewed_head",
+  "reviewer": {
+    "role": "independent Codex foreground reviewer",
+    "agent_identity": "/root",
+    "source_thread_reference": "01a13bbb-b564-7960-96e8-dca067bfd32a",
+    "implementation_author": false
+  },
+  "issued_at": "2026-10-15T18:40:54.384541+00:00",
+  "eligibility": {
+    "tier_1_tests_only": true,
+    "existing_scope": true,
+    "cases_and_expected_codes_unchanged": true,
+    "no_controller_product_contract_sibling_or_capability_change": true,
+    "independent_exact_head_source_review": true,
+    "required_gates_passed": true,
+    "remote_head_main_and_ancestry_verified": true
+  },
+  "authority_provenance": {
+    "adoption_authorization": "029f3039a92eec36e4401255331e8b8bfec8b74e",
+    "reviewed_adoption": "abea79a09912eb5fe90fab892074896ac67e1717",
+    "merged_adoption": "0e5abc9ab4f5c87de9a308f0bb8422dd10a01023",
+    "owner_direction": "approved, also fix the process so we dont need these kind of approvals"
+  },
+  "validation": {
+    "preflight": {
+      "taskctl": {
+        "path": "/Users/phani/.codex/quota-resume/geox-scaffold-preflight-taskctl.log",
+        "sha256": "463bbfc323b6dab55e8c7cc6119f6983693d6b6f484b3ca5a006dfedb985b77f"
+      },
+      "focused": {
+        "path": "/Users/phani/.codex/quota-resume/geox-scaffold-preflight-focused.log",
+        "sha256": "3e6e25d8a6e365a584193ad8ffa98c437626d75d089cae2667628929cc95d2d2"
+      },
+      "handoff": {
+        "path": "/Users/phani/.codex/quota-resume/geox-scaffold-preflight-handoff.log",
+        "sha256": "dc29ff53df6b187eb24e7f056c1a62d701123d24e721c55f3acfed1fd212aab3"
+      },
+      "combined": {
+        "path": "/Users/phani/.codex/quota-resume/geox-scaffold-preflight-combined.log",
+        "sha256": "2384bcd7a47c589d3abab7245449fc979d674984f797df6b316c93ba2eac6ef8"
+      },
+      "json": {
+        "path": "/Users/phani/.codex/quota-resume/geox-scaffold-preflight-json.log",
+        "sha256": "97da0f08e287d0d199651bbde84ac085368552c713e73b0405a56a914430edc2"
+      },
+      "diff": {
+        "path": "/Users/phani/.codex/quota-resume/geox-scaffold-preflight-diff.log",
+        "sha256": "79d1b16e99ca795d94e998ee8cd62d70bef5c906509f28b51e59a01912bc622a"
+      }
+    },
+    "preflight-closed-shape": {
+      "taskctl": {
+        "path": "/Users/phani/.codex/quota-resume/geox-scaffold-preflight-closed-shape-taskctl.log",
+        "sha256": "8341940d6289f7498657202a985f8d9102a15f8e8a9031604b35193836e40927"
+      },
+      "focused": {
+        "path": "/Users/phani/.codex/quota-resume/geox-scaffold-preflight-closed-shape-focused.log",
+        "sha256": "d63ec44b14335f05270dba22f57f86c282cea412d69c9572d548e9c023856d50"
+      },
+      "handoff": {
+        "path": "/Users/phani/.codex/quota-resume/geox-scaffold-preflight-closed-shape-handoff.log",
+        "sha256": "2dd2266cb701f6f92417562ac6699d4f791f757f010f69aa9f7a42d11f6003c7"
+      },
+      "combined": {
+        "path": "/Users/phani/.codex/quota-resume/geox-scaffold-preflight-closed-shape-combined.log",
+        "sha256": "3e633524c74450c3ed6ac24adcf5b420bf95a151de0320729c08562da0b91ffb"
+      },
+      "json": {
+        "path": "/Users/phani/.codex/quota-resume/geox-scaffold-preflight-closed-shape-json.log",
+        "sha256": "4656a1c3bb7ee557da9dc0b6607278009617980c729078d0f3b33c1ed5a3130e"
+      }
+    }
+  },
+  "source_review": "Six added fixture lines establish valid evidence/authority per requested state; identical cases and expected codes. Fresh correction resolves stale Current outcome and publishes a durable receipt. Only focused tests and stable execution evidence changed.",
+  "closure_procedure": {
+    "canonical_state_authoritative": true,
+    "generated_views": "native taskctl sync/check only",
+    "source": "panel_exp/execution/taskctl.py validate_state merged invariants and sync; prior closure 0e5abc9",
+    "order": "FF, post-FF gate, implementation push, actual observed cleanup, one canonical metadata closure projected natively"
+  },
+  "limitations": [
+    "Procedural same-user role separation, not adversarial identity isolation.",
+    "Closed-shape preflight uses an explicitly isolated synthetic lifecycle fixture, not production cleanup claims.",
+    "Docker/analytical/Ruff/mypy not required by this narrow Git-authored task."
+  ]
+}
