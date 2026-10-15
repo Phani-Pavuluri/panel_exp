@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `ready_for_review`
+**Current decision:** `merged`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -12,12 +12,12 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Authorization provenance:** `a05cf0c0092e55cd2ca659b8469eae2fc4b873b3`
 - **Feature branch:** `feat/geox-taskctl-test-scaffold-repair-001`
 - **Feature branch created:** `false`
-- **Task execution authorized:** `true`
+- **Task execution authorized:** `false`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `eab24592e6d7d590693c7b28788751de473514c5`
-- **Reviewed head:** `null`
+- **Reviewed head:** `5fca67a23ad92d8256e90ebe623e41063bfc442c`
 - **Rejected review head:** `bc4ba647f3627eeb623faf165fb28adfada71269`
 - **Rejected implementation commit:** `eab24592e6d7d590693c7b28788751de473514c5`
 - **Approval commit:** `null`
@@ -25,9 +25,9 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `1`
 - **Correction cycles remaining:** `0`
-- **Review decision:** `ready_for_review`
-- **Local feature-branch cleanup:** `null`
-- **Remote feature-branch cleanup:** `null`
+- **Review decision:** `merged`
+- **Local feature-branch cleanup:** `observed_deleted`
+- **Remote feature-branch cleanup:** `observed_deleted`
 - **Capability authorizations changed:** `false`
 
 ## Rejection history
@@ -135,3 +135,12 @@ The definition-ready contract at 7babc0bfed00ffb17c60c3dad341b3ae83af6c7c owns o
 Reviewed bc4ba647f3627eeb623faf165fb28adfada71269 / implementation eab24592e6d7d590693c7b28788751de473514c5. Six-line scaffold diff preserves cases and expected error codes; no controller/product/sibling changes. Two acceptance defects prevent approval: Current outcome still asserts no implementation/branch despite later implementation evidence; the final commit message is only a title, omitting the contract-required durable receipt (implementation parent, exact-tree gate/results, evidence source, paths/worktree state, unchanged authority). Correct the task-owned publication evidence consistently and publish a fresh fully validated receipt head. One existing correction cycle is authorized; no implementation scope expansion or new policy decision.
 
 Routine authority reconciliation: authorized adoption contract 029f3039a92eec36e4401255331e8b8bfec8b74e, reviewed adoption abea79a09912eb5fe90fab892074896ac67e1717, pushed supervised note receipt 75d17834-445c-46c6-864b-48c36ae5f0ba and merged closure 0e5abc9ab4f5c87de9a308f0bb8422dd10a01023 establish owner-directed adoption. The historical proposed header does not reverse that completed adoption. This finding does not activate or expand policy; corrected heads still require independent review, all declared exact-tree/closed-shape gates, a new external exact-head receipt and ff-only eligibility. No owner reapproval is required for these ordinary publication defects.
+
+
+## Independent routine merge and single native-projected closure
+
+Exact reviewed head 5fca67a23ad92d8256e90ebe623e41063bfc442c (implementation eab24592e6d7d590693c7b28788751de473514c5) passed independent Codex source review and every required gate before and after fast-forward: focused 131, handoff 3, combined 134, taskctl, JSON, diff, owned scope and ancestry. Closed-main-shaped behavior was independently proved before approval in an isolated worktree using the frozen implementation and explicit synthetic lifecycle fixture; no production cleanup was asserted by that test.
+
+External exact-head receipt 8f34aa10-d8b4-4f43-b606-00ca0357b0f9 is pushed in refs/notes/codex-supervised-reviews at 8a226c69f35ac5c46099943cb92e84d2bb2fd054. This uses the owner-adopted routine policy at 0e5abc9; it adds no task/product/analytical/sibling/capability authority. Lineage 60602c3ca106682daebd204afe177c15f41215a2 -> 5fca67a23ad92d8256e90ebe623e41063bfc442c -> this metadata-only closure. The implementation was pushed and actual local/remote branch deletions were observed before setting merged.
+
+The canonical JSON state is authoritative. Existing native validate_state accepts merged with the reviewed head, closed execution and observed cleanup; native taskctl sync/check projects that canonical state into both views. The task completion CLI's ready-only transition is not the merge writer. This follows the existing 0e5abc9/b3a52ac closure pattern; no generated lifecycle fields were manually edited, no new command/controller capability introduced, and exactly one post-merge metadata commit is written. Gate logs and exact source are preserved in the approval receipt. Cross-repository impact: modified GeoX only; WS-GEOX-TASKCTL-SCAFFOLD-REPAIR-001; owner geox_execution_validation_governance; producer-version/product blockers remain unresolved.
