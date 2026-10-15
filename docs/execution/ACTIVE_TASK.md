@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** `ready_for_review`
+**Status:** `changes_requested`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -11,21 +11,21 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Base SHA:** `b3a52ac34edca35e83c143c59eb37665a2e3ad2d`
 - **Authorization provenance:** `029f3039a92eec36e4401255331e8b8bfec8b74e`
 - **Feature branch:** `docs/geox-routine-merge-adoption-001`
-- **Feature branch created:** `false`
+- **Feature branch created:** `true`
 - **Task execution authorized:** `true`
-- **Correction execution authorized:** `false`
+- **Correction execution authorized:** `true`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `936ccf451dfef5486dc9302403fd51782b367204`
 - **Reviewed head:** `null`
-- **Rejected review head:** `null`
-- **Rejected implementation commit:** `null`
+- **Rejected review head:** `7775700e36d353016db689752a281999f9299043`
+- **Rejected implementation commit:** `936ccf451dfef5486dc9302403fd51782b367204`
 - **Approval commit:** `null`
-- **Blockers:** `none`
+- **Blockers:** `GEOX-RMA-001: human current evidence contains stale prior-task/proposal authority and contradictory implementation lineage.; GEOX-RMA-002: two required focused/combined tests fail; transient/non-product descriptions do not waive the gate.`
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `ready_for_review`
+- **Review decision:** `changes_requested`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
@@ -58,3 +58,14 @@ Successor context: merged `GEOX_STRUCTURED_COMPLETION_EVIDENCE_RECOVERY_001` (cl
 ## Execution authorization recorded — October 15, 2026
 
 Owner direction for bounded routine-merge adoption is recorded in canonical state (status `authorized`, task execution authority true) and native generated views. This action grants execution within the named owned paths and validation gate only; it does not approve merges, activate routine merging, or add goals, capabilities, architecture, analytical meaning, or sibling authority. The definition-ready contract above is unchanged except for the authorized status heading. Muse-Spark implements on this authority; Codex independently reviews. No unresolved execution-blocking design questions remain.
+
+
+## Independent bounded correction authorization
+
+Rejected exact head 7775700e36d353016db689752a281999f9299043, implementation 936ccf451dfef5486dc9302403fd51782b367204. The remaining existing correction cycle is authorized in canonical state. Preserve owned implementation paths (AGENTS.md and context-index approval alignment) plus the stable three files; no controller/tests/product/sibling changes.
+
+Current scope/authority comes from canonical state and the dated execution authorization, not stale proposal sentences carried in human prose. This correction must make the human task/report evidence consistent with that actual authority and current implementation; prior-task provenance is explicitly historical, never Current outcome. Keep the owner's process decision and all eligibility/major-decision boundaries.
+
+Using the already-merged native completion-evidence recording API to publish this task's own truthful evidence in its owned stable files is authorized publication work, not authorization to implement a new evidence feature. The workflow flag is explicitly enabled for that existing route. Do not change controller or test code, weaken a check, or relabel a required failure as optional. Full controller, handoff and combined suites must all pass on the final exact tree. If a real unowned fixture/controller defect remains after normal task-owned publication, record the exact reproduction and blocked dependency; do not widen this task.
+
+The authoritative remote feature state is changes_requested; synchronized main remains the older authorization snapshot. Resume the declared branch and use actual rejection provenance/counter state. Implement the bounded correction, publish fresh consistent human evidence with actual current implementation SHA, run every required gate, use native ready transition with complete-correction, and stop at a new frozen ready_for_review receipt head. No merge or activation.

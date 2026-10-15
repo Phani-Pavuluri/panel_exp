@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `ready_for_review`
+**Current decision:** `changes_requested`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -11,21 +11,21 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Base SHA:** `b3a52ac34edca35e83c143c59eb37665a2e3ad2d`
 - **Authorization provenance:** `029f3039a92eec36e4401255331e8b8bfec8b74e`
 - **Feature branch:** `docs/geox-routine-merge-adoption-001`
-- **Feature branch created:** `false`
+- **Feature branch created:** `true`
 - **Task execution authorized:** `true`
-- **Correction execution authorized:** `false`
+- **Correction execution authorized:** `true`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `936ccf451dfef5486dc9302403fd51782b367204`
 - **Reviewed head:** `null`
-- **Rejected review head:** `null`
-- **Rejected implementation commit:** `null`
+- **Rejected review head:** `7775700e36d353016db689752a281999f9299043`
+- **Rejected implementation commit:** `936ccf451dfef5486dc9302403fd51782b367204`
 - **Approval commit:** `null`
-- **Blockers:** `none`
+- **Blockers:** `GEOX-RMA-001: human current evidence contains stale prior-task/proposal authority and contradictory implementation lineage.; GEOX-RMA-002: two required focused/combined tests fail; transient/non-product descriptions do not waive the gate.`
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `ready_for_review`
+- **Review decision:** `changes_requested`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
@@ -286,3 +286,8 @@ Owner authorized bounded execution of `GEOX_ROUTINE_MERGE_ADOPTION_001` within t
 - **Authority impact:** none gained. Merge, PR creation, all 13 protected
   authorities, and next-task authorization remain false; correction authority
   closed; approval stays null; three unrelated defect IDs unresolved.
+
+
+## Independent review — changes requested
+
+7775700e36d353016db689752a281999f9299043 is not accepted. GEOX-RMA-001: stale/duplicated current prose contradicts canonical authority and implementation lineage. GEOX-RMA-002: published focused 129/2 and combined 132/2 are failed required gates, not valid readiness. Canonical correction authority/rejection pair now published for the one remaining cycle. The existing native publication-evidence route within owned stable files is permitted; no controller/test changes or new capability. Final all-green gate and consistent fresh evidence required.
