@@ -940,6 +940,7 @@ def test_malformed_history_entry_fails_closed(updates: dict[str, Any], code: str
 def test_schema_boundaries_fail_closed() -> None:
     canonical = json.loads(taskctl.STATE_PATH.read_text(encoding="utf-8"))
     legacy = dict(canonical)
+    legacy["schema_version"] = taskctl.LEGACY_SCHEMA_VERSION_V3
     legacy["rejection_history"] = []
     with pytest.raises(taskctl.TaskControlError, match="E_STATE_KEYS"):
         taskctl.validate_state(legacy)
