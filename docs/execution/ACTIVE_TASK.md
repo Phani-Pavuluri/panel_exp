@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** `proposed`
+**Status:** `authorized`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -9,10 +9,10 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Execution mode:** `branch_and_fast_forward`
 - **Base SHA:** `9c6c6b2dbd4c106c0c70a5a062c0ea0fd6bb7af9`
-- **Authorization provenance:** `9c6c6b2dbd4c106c0c70a5a062c0ea0fd6bb7af9`
+- **Authorization provenance:** `7a5c9b90b97704176d4053311de3d0d3746fbea2`
 - **Feature branch:** `feat/geox-structured-completion-evidence-recovery-001`
 - **Feature branch created:** `false`
-- **Task execution authorized:** `false`
+- **Task execution authorized:** `true`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
@@ -25,16 +25,16 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `proposed`
+- **Review decision:** `authorized`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
 
 
-## Primary outcome and authority (proposed — execution NOT authorized)
+## Primary outcome and bounded execution authority
 
-Implement schema v6 completion evidence in the GeoX task controller: `completion_evidence` as `null` or the verbatim frozen v4 six-key object, validated on every lifecycle status before rendering, mandatory (non-null and valid) at `ready_for_review`, `changes_requested`, and `merged`. `rejection_history` carried verbatim from the merged lineage, append-only, never mutated by evidence writes. No lifecycle-edge, budget, merge, product, or sibling-authority change. This contract is a proposal only: status `proposed`, task execution authority false. The provenance SHAs above anchor the proposal baseline (`9c6c6b2`); they do not constitute authorization. Execution requires a future Git commit flipping status and execution authority. Muse-Spark owns implementation approach on authorization; Codex independently reviews.
+Implement schema v6 completion evidence in the GeoX task controller: `completion_evidence` as `null` or the verbatim frozen v4 six-key object, validated on every lifecycle status before rendering, mandatory (non-null and valid) at `ready_for_review`, `changes_requested`, and `merged`. `rejection_history` carried verbatim from the merged lineage, append-only, never mutated by evidence writes. No lifecycle-edge, budget, merge, product, or sibling-authority change. This contract is execution-authorized by the recorded owner direction and canonical state. The original proposal baseline remains historical; the generated provenance identifies the published owner-authoring contract. Muse-Spark owns implementation approach on authorization; Codex independently reviews.
 
 Upon authorization, create `feat/geox-structured-completion-evidence-recovery-001` from synchronized post-authoring main after mandatory bootstrap, taskctl check, authorization ancestry, metadata-only authoring boundary and branch-absence verification. Only one writer. Affected/modified: GeoX only. Workstream `WS-GEOX-STRUCTURED-COMPLETION-EVIDENCE-RECOVERY-001`; owner `geox_execution_validation_governance`.
 
