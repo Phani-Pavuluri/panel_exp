@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "receipt_id": "20367c49-fe0a-475a-92ba-5981d9996c1d",
+  "receipt_kind": "independent_exact_head_routine_merge_approval",
+  "repository": "Phani-Pavuluri/panel_exp",
+  "task_id": "GEOX_TIER1_CALLBACK_INJECTION_REPAIR_001",
+  "reviewed_head": "bc0783740187899df3a09314d79b7d50ada32a7b",
+  "implementation_head": "2472ca62567d7068fa1d2adc3e85d7efc7d2f32e",
+  "authorization_head": "d225a87f455f1ced221e6d3b607e6ccea29f18db",
+  "decision": "approve_exact_reviewed_head",
+  "reviewer": {
+    "role": "independent Codex foreground reviewer",
+    "agent_identity": "/root",
+    "source_thread_reference": "01a13bbb-b564-7960-96e8-dca067bfd32a",
+    "implementation_author": false
+  },
+  "issued_at": "2026-10-15T23:45:26.232300+00:00",
+  "eligibility": {
+    "tier_1_tests_only": true,
+    "existing_scope": true,
+    "cases_and_expected_codes_unchanged": true,
+    "no_controller_product_contract_sibling_or_capability_change": true,
+    "independent_exact_head_source_review": true,
+    "required_gates_passed": true,
+    "remote_head_main_and_ancestry_verified": true
+  },
+  "authority_provenance": {
+    "adoption_authorization": "029f3039a92eec36e4401255331e8b8bfec8b74e",
+    "reviewed_adoption": "abea79a09912eb5fe90fab892074896ac67e1717",
+    "merged_adoption": "0e5abc9ab4f5c87de9a308f0bb8422dd10a01023",
+    "owner_direction": "approved, also fix the process so we dont need these kind of approvals"
+  },
+  "validation": {
+    "preflight": {
+      "taskctl": {
+        "path": "/Users/phani/.codex/quota-resume/geox-callback-003-preflight-taskctl.log",
+        "sha256": "f5be2c5eaf23edf09cbb8bf2f8a5993c9fa71e424db5328bfcdaa58015a0864c"
+      },
+      "focused": {
+        "path": "/Users/phani/.codex/quota-resume/geox-callback-003-preflight-focused.log",
+        "sha256": "e219cf70b258bb87caca6461b32dfd3ed5587e7ccf0791ff020fd08781b60761"
+      },
+      "handoff": {
+        "path": "/Users/phani/.codex/quota-resume/geox-callback-003-preflight-handoff.log",
+        "sha256": "96faa614e8aa86c7a013a136ed1051dd440ff139ed565d6c0843466734f84aba"
+      },
+      "acceptance": {
+        "path": "/Users/phani/.codex/quota-resume/geox-callback-003-preflight-acceptance.log",
+        "sha256": "e35c6a0d91f20c161ea21823da0ec9c24c7c024c496799ea8fe3deae568b08ce"
+      },
+      "combined": {
+        "path": "/Users/phani/.codex/quota-resume/geox-callback-003-preflight-combined.log",
+        "sha256": "060075aaa6ea64d56be9cfc89d896e79a3185d66cc4fb0372e8787f349b1f3bb"
+      },
+      "json": {
+        "path": "/Users/phani/.codex/quota-resume/geox-callback-003-preflight-json.log",
+        "sha256": "7b9b855aa3e2dbf95fc41c08e35c8f98ddf1a2d2291f74ac6622d9319ee90e12"
+      },
+      "diff": {
+        "path": "/Users/phani/.codex/quota-resume/geox-callback-003-preflight-diff.log",
+        "sha256": "16baef2318cd6f1178547415c9ddd93f221b083db304017628530a30a1cc71c5"
+      }
+    }
+  },
+  "source_review": "Validation-owned hook injection uses the existing builder seam; all fifteen test-function ASTs are unchanged. Correction fixes stale human current summary, and the full final receipt is present. Only the acceptance setup and stable execution files changed; three unrelated inherited failures remain unresolved.",
+  "closure_procedure": {
+    "canonical_state_authoritative": true,
+    "generated_views": "native taskctl sync/check only",
+    "source": "panel_exp/execution/taskctl.py validate_state merged invariants and sync; prior closure 0e5abc9",
+    "order": "FF, post-FF gate, implementation push, actual observed cleanup, one canonical metadata closure projected natively"
+  },
+  "limitations": [
+    "Procedural same-user role separation, not adversarial identity isolation.",
+    "Docker/analytical/Ruff/mypy not required by this narrow Git-authored task."
+  ]
+}
