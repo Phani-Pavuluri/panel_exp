@@ -45,6 +45,7 @@ def prepare_changes_requested() -> None:
         implementation_commit_sha="a" * 40,
         rejected_review_head_sha="b" * 40,
         rejected_implementation_commit_sha="c" * 40,
+        completion_evidence=_valid_evidence(),
     )
     taskctl.STATE_PATH.write_text(json.dumps(canonical, indent=2) + "\n", encoding="utf-8")
     taskctl.sync()
@@ -146,6 +147,7 @@ def test_ready_for_review_requires_implementation_and_closed_correction_authorit
         review_decision="ready_for_review",
         implementation_commit_sha=None,
         correction_execution_authorized=False,
+        completion_evidence=_valid_evidence(),
     )
     with pytest.raises(taskctl.TaskControlError, match="E_REVIEW_EVIDENCE"):
         taskctl.validate_state(canonical)
@@ -1138,6 +1140,10 @@ def _v6_state(status: str, evidence: Any) -> dict[str, Any]:
     canonical["review_decision"] = status
     canonical["rejection_history"] = []
     canonical["completion_evidence"] = evidence
+    if status in {"authorized", "in_progress", "blocked"}:
+        canonical["task_execution_authorized"] = True
+    if status in {"authorized", "in_progress"}:
+        canonical["blockers"] = []
     if status == "blocked":
         canonical["blockers"] = ["live blocker"]
     if status == "ready_for_review":
