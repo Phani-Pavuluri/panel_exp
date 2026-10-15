@@ -1,0 +1,17 @@
+{
+  "kind": "independent_changes_required_no_supported_transition",
+  "task_id": "GEOX_EXHAUSTED_REVIEW_ROUTE_CONTRACT_001",
+  "reviewed_head": "cf743b8a0ac858a56997b41b1362f5be6d480a92",
+  "reviewer_thread": "01a13bbb-b564-7960-96e8-dca067bfd32a",
+  "implementation_author_session": "ses_ec3307d2fffeZkMguUGTVdeATc",
+  "decision": "reject_for_contract_inconsistency",
+  "findings": [
+    "Section 3.3 requires canonical historical task/branch identity on a fresh successor branch, but does not define how authorization/identity and generated active contract can coexist. Rejecting current main identity substitution as an alternative leaves the write target unresolved.",
+    "Section 2.2 assumes rejected provenance null, whereas historical state already has a previous rejected pair. Overwriting loses promised rejection lineage.",
+    "Sections 4.2/4.4 promise no partial writes and retry of identical transition after crash, but candidate has already become blocked and check rejects divergent views; preconditions make that retry impossible. Define feasible transaction/recovery semantics.",
+    "CLI has no independent finding/resolution input or exact persisted schema location; arbitrary blocker cannot prove required evidence. Reviewer Git author cannot prove agent independence because both use same owner Git identity.",
+    "Schema v5 equals v4 imports unmerged completion contract into route-only successor, while permitting v3-shaped v5 lacks unambiguous evidence rules. Resolve compatibility boundary and keep renderer repair separate.",
+    "Section 5.3 unnecessarily reserves schema labels/CLI spelling/branch names to owner. These are technical recommendations for Muse/Codex to resolve; reserve substantive policy choices only. Stable codes also conflict for malformed head/blocker."
+  ],
+  "authority": "No merge/correction execution granted. Current controller has no supported changes_requested transition; preserve published branch unchanged pending fresh Git-authorized successor."
+}

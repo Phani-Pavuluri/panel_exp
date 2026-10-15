@@ -1,0 +1,18 @@
+{
+  "kind": "independent_contract_review",
+  "task_id": "GEOX_EXHAUSTED_REVIEW_ROUTE_CONTRACT_RECOVERY_001",
+  "reviewed_head": "fca7593687fd9313f59b9a8bcf377731ac7f35e1",
+  "reviewer_thread": "01a13bbb-b564-7960-96e8-dca067bfd32a",
+  "implementation_author_session": "ses_ec3307d2fffeZkMguUGTVdeATc",
+  "decision": "changes_required_not_definition_ready",
+  "findings": [
+    "Target read/ordered checks do not explicitly require target status ready_for_review, target repository identity or authorization-head ancestry. Exhausted counters alone cannot satisfy the approved eligibility rule. Live authorization checks must specify current branch/head/authorization ancestry and dependency pin, not an unspecified triple exact-match.",
+    "Every history record requires its blockers equal the live post blockers. That invariant breaks when a later rejection uses different blockers or the live task advances; distinguish persisted historical blockers from current live blockers.",
+    "AC-11 expects E_TRANSITION on immediate retry while the ordered checks call check first, which produces E_VIEW_DIVERGENCE until sync. Specify check-divergence -> sync -> duplicate/blocked rejection with unchanged history.",
+    "Malformed prefix SHA still maps both to E_SHA and E_REJECTION_HEAD. Choose the already stated lexical E_SHA path. Missing/corrupt/unavailable target blob and supported target schema require stable failure codes.",
+    "Fresh recording task starts authorized, but eligible recording states omit authorized; no supported in_progress transition exists. Define the actual authorized recording-task lifecycle path rather than an unreachable prerequisite.",
+    "The target stays ready_for_review on its frozen branch while the recording task becomes blocked. Explicitly distinguish historical rejection disposition from target lifecycle and define how later recovery reads/supersedes the durable record."
+  ],
+  "verification": "Documentation is within owned scope. Gate checks pass; semantic acceptance fails. No controller code, historical branch writes or authority change.",
+  "blocked_correction_route": "Native transition cannot authorize changes_requested or blocked; no safe lifecycle write exists on this frozen reviewed branch. No bypass or merge authorized."
+}

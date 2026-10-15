@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "kind": "supervised_owner_standing_approval_exception",
+  "repository": "Phani-Pavuluri/panel_exp",
+  "task_id": "GEOX_EXHAUSTED_REJECTION_RECORD_RECOVERY_001",
+  "authorization_head": "a2efa242d27043307fe6b3a8cee89fbbc81d6c73",
+  "reviewed_head": "87d02b68939c8e5bc8074820e4960b33a7995a25",
+  "implementation_head": "5dc0fa0f11809618412cacf78859a5932305e6be",
+  "reviewer_thread": "01a13bbb-b564-7960-96e8-dca067bfd32a",
+  "implementation_author_session": "ses_ec3307d2fffeZkMguUGTVdeATc",
+  "independent_of_implementation_author": true,
+  "decision": "approve_exact_head_for_supervised_merge",
+  "owner_provenance": "Owner standing instruction to bypass routine merge approval requests, plus approval of the exhausted-review recovery proposal and subsequent proceed instructions. This is supervised approval for the previously approved bounded setup outcome, not activation of automatic delegated merge policy.",
+  "validation": {
+    "taskctl": "passed",
+    "controller_tests": "91 passed",
+    "handoff_tests": "3 passed",
+    "combined": "94 passed",
+    "json_and_diff": "passed",
+    "owned_paths": "seven declared paths only",
+    "prior_defect_probes": "coded errors, no writes",
+    "evidence_source": "isolated exact-head local execution and Git tree/receipt inspection"
+  },
+  "authority_impact": "No correction budget, lifecycle edge, merge/PR, analytical, sibling, production or capability authority gained. Old rejected heads remain immutable.",
+  "limitations": [
+    "Historical rejection is a disposition record; old branch lifecycle is unchanged.",
+    "v5 target blobs and general correction transitions are outside this milestone.",
+    "No automatic merge policy activation."
+  ]
+}

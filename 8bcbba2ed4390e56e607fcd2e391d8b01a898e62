@@ -1,0 +1,14 @@
+{
+  "task_id": "GEOX_EXHAUSTED_REJECTION_RECORD_001",
+  "reviewed_head": "8bcbba2ed4390e56e607fcd2e391d8b01a898e62",
+  "decision": "rejected_required_gate_and_contract_failures",
+  "reviewer_thread": "01a13bbb-b564-7960-96e8-dca067bfd32a",
+  "implementation_author_session": "ses_ec3307d2fffeZkMguUGTVdeATc",
+  "verified_findings": [
+    "Independent exact-head handoff suite: 1 failed,2 passed. Hardcoded v3 fails authorized v5 migration; current context task identity/pins also stale. Required gate not passed. Handoff test is task-owned, despite receipt claiming otherwise.",
+    "Isolated real Git fixture accepts target with execution_mode=unsupported,base_branch=other,task_execution_authorized=yes,correction_execution_authorized=0,merge_authorized=0,pr_creation_authorized=0 and appends blocked disposition. Required mode and boolean shape checks missing.",
+    "validate_state on actual v5 state with rejection_history[0].target_schema_version=[] raises uncaught TypeError unhashable type:list. Contract requires coded all-lifecycle malformed-history failure. Audit other container/None/wrong-type fields before set membership, Git args and renderer dereference."
+  ],
+  "authoring_boundary_correction": "Codex supplied stale context constraints; fresh recovery must explicitly own context-index synchronization and retain meaningful handoff migration checks. No weakening/waiving gate.",
+  "authority": "No merge. Native controller has no supported changes_requested transition. Prior head/counters retained unchanged; corrections need fresh Git-authorized recovery."
+}
