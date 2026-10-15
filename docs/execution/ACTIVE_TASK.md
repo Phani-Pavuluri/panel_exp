@@ -65,3 +65,10 @@ Record evidence via the new CLI on the clean implementation tree with real owned
 ## Proposal record
 
 Successor to merged `GEOX_EXHAUSTED_REJECTION_RECORD_RECOVERY_001` (closure `9c6c6b2`, reviewed `87d02b6`), per its `planned_followup` (`GEOX_STRUCTURED_COMPLETION_EVIDENCE_RECOVERY_001`, planned-not-authorized). Entry carried byte-identical (verified against the merged blob); frozen v4/v3/v5 semantics reconciled above with no open alternatives. No owner policy outstanding: uniform mandate, verbatim keys, suffix-preserving render, and retention are settled by Git evidence and the merged baseline.
+
+
+## Recorded owner direction and authoring review
+
+Owner repeatedly directed implementation and independent parallel work across MIP, GeoX and MMM, approved bounded follow-up work within existing goals, directed Git owner-report publication, and requested continuation. This action records that existing scope authority in Git; it does not approve merges or add goals, capabilities, architecture, analytical meaning or sibling authority.
+
+The definition-ready contract above is approved for execution within its named owned paths and validation gate. This authority is materialized in canonical state and native generated views in the metadata finalization. No unresolved execution-blocking design questions remain.
