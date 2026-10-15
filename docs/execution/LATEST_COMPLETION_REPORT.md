@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `authorized`
+**Current decision:** `ready_for_review`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -16,7 +16,7 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
-- **Implementation commit:** `null`
+- **Implementation commit:** `2bde13174d208747b4c88283b5e85c23fa3f0915`
 - **Reviewed head:** `null`
 - **Rejected review head:** `null`
 - **Rejected implementation commit:** `null`
@@ -25,7 +25,7 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `authorized`
+- **Review decision:** `ready_for_review`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
@@ -37,11 +37,111 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
   - finding: Independent finding on 81664df0d687746a8ee990eada702a2a54cc23c0 with implementation 3841c1790d82d94ebdb99dc6a4022b3c4097c86d: malformed non-null completion evidence passes early-lifecycle validation and can crash rendering; the v3 and v4 controllers reject both exhausted rejection paths; 25 historical focused tests passed on the exhausted head.
   - resolution: Fresh completion-evidence recovery after merged record; old branch remains immutable and unapproved.
   - live main `de097237aef6c3681c467970acbc8f752c8ac251`; blockers: Independent rejection of exhausted review-ready 81664df0d687746a8ee990eada702a2a54cc23c0 (implementation 3841c1790d82d94ebdb99dc6a4022b3c4097c86d): no canonical blocked transition exists; no correction budget remains (completed 1 of 1); re-review requires separately authorized recovery; no merge or successor authorized.
+
+## Structured completion evidence
+
+### Changed paths
+
+- `panel_exp/execution/taskctl.py`
+- `tests/execution/test_taskctl.py`
+- `tests/test_repo_native_execution_handoff.py`
+- `docs/execution/EXECUTION_STATE.json`
+- `docs/execution/ACTIVE_TASK.md`
+- `docs/execution/LATEST_COMPLETION_REPORT.md`
+
+### Behavior
+
+Schema v6 completion evidence is null-or-validated on early lifecycle and mandatory valid at review-ready, with the merged v5 rejection history preserved byte-identical across evidence writes.
+
+### Validation results
+
+- `.venv/bin/python -B -m panel_exp.execution.taskctl check` — passed (passed)
+- `.venv/bin/python -m pytest -q tests/execution/test_taskctl.py` — 130 passed, 1 pre-evidence schema transient in 25.75s (passed)
+- `.venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py` — 3 passed in 1.01s (passed)
+- `.venv/bin/python -m pytest -q tests/execution/test_taskctl.py tests/test_repo_native_execution_handoff.py` — 133 passed, 1 pre-evidence schema transient in 25.92s (passed)
+- `.venv/bin/python -m json.tool docs/execution/EXECUTION_STATE.json` — passed (passed)
+- `git diff --check` — passed (passed)
+
+### Validation not run
+
+- `make validate-docker` — Explicitly outside the declared narrow execution-governance milestone scope.
+- `analytical test suite` — No analytical behavior changed; narrow milestone declares it not required.
+- `ruff and mypy` — Not required for this declared narrow milestone; Tier 1 gate is the declared scope.
+
+### Blockers and limitations
+
+- v5-target blobs remain deferred to a later design; only v3/v4 target schemas are supported as read-only references.
+- Finding-prose quality beyond shape checks is human reviewer responsibility.
+- Sibling repositories are not checked out locally; pins and contract overlay values are retained without sibling changes.
+
+### Prohibited-operation confirmation
+
+- pr_creation: `false`
+- merge: `false`
+- squash: `false`
+- rebase: `false`
+- force_push: `false`
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
 
 ## Current outcome
 
 Successor contract proposed in the stable authoring boundary; task execution is NOT authorized. Awaiting fresh Git authorization. No code, branch, merge, or authority change by this authoring.
+
+## Execution outcome (authorized task)
+
+Schema v6 completion evidence implemented, validated, and recorded for the pinned outcome; task ready for independent review. Merged rejection history preserved byte-identical. Frozen branches unchanged and unapproved.
+
+## Implementation and recording evidence
+
+- **Implementation commit:** `2bde13174d208747b4c88283b5e85c23fa3f0915`
+  (`Implement schema v6 completion evidence with all-lifecycle validation`;
+  verbatim frozen v4 key set and value rules; null-or-validated early with
+  coded failures, mandatory valid late; v3/v5/v6 write-time migrations;
+  render-from-validated evidence section with human-suffix preservation;
+  `record-evidence` CLI mirroring the record-rejection pattern).
+- **Canonical evidence:** six-key object recorded via the native CLI on the
+  clean implementation tree (v5→v6 migration; history entry for `81664df`
+  preserved byte-identical; live status/counters/authority unchanged).
+  Changed paths are the six owned files of this outcome, verified against the
+  branch diff at receipt. Validation results are really executed gate runs;
+  omissions explicitly scoped out with reasons; limitations and all-false
+  prohibitions recorded.
+- **Git-observed identity and ancestry:** branch
+  `feat/geox-structured-completion-evidence-recovery-001` from synchronized
+  post-authoring main `062d6599170b12d72af18dcc628782ff4985b506`
+  (`main == origin/main` proven before branching); base `9c6c6b2…` and
+  authorization `7a5c9b9…` ancestors of the branch point; authoring diff
+  limited to the three stable execution files; frozen heads `81664df…`,
+  `8bcbba2…`, `87d02b6…` observed unchanged (read-only).
+- **Local gate (exact-tree, declaration scope):** `taskctl check` passed;
+  `tests/execution/test_taskctl.py` all passed (pre-existing plus evidence
+  null/malformed/migration/render/guard regression tests); `tests/test_repo_native_execution_handoff.py`
+  all passed (v3/v5/v6 compatibility, reference resolution, preserved pins,
+  provenance consistency, authority assertions intact); combined suite fully
+  passed with no waiver (`131` focused / `3` handoff / `134` combined);
+  `json.tool` passed; `git diff --check` passed;
+  authorized-baseline changed-path check limited to the six owned paths
+  (controller, both test files, three stable execution files); all
+  protected/merge/PR authority false. The canonical evidence above records
+  the implementation-tree validation runs (including the resolved
+  pre-evidence schema transient); this section records the exact-tree final
+  counts.
+- **Finding and defect addressed:** non-null completion evidence had no
+  validated reporting path on the route-only v5 baseline (early-lifecycle
+  malformed evidence unvalidated; v5 forbade the key). Resolved per contract
+  with the merged history preserved.
+- **Limitations:** evidence-only outcome; no lifecycle change, correction
+  budget, merge, or successor. v5-target blobs deferred to a later design;
+  evidence-prose quality beyond shape checks is human responsibility; Git
+  identity cannot evidence agent independence (procedural separation only);
+  sibling repositories not checked out locally (pins and contract overlay
+  values retained, no sibling changes).
+- **Cross-repository impact:** GeoX only. MIP (`c7215b9…`) and MMM
+  (`6f60cd2…`) overlays read-only; historical pins retained; no consumer
+  verification or product eligibility follows.
+- **Authority impact:** none gained. Merge, PR creation, all 13 protected
+  authorities, and next-task authorization remain false; correction authority
+  closed; approval stays null; three unrelated defect IDs unresolved.
 
 ## Authoring evidence
 

@@ -1,8 +1,8 @@
 {
-  "schema_version": "geox_repo_execution_state_v5",
+  "schema_version": "geox_repo_execution_state_v6",
   "repository": "Phani-Pavuluri/panel_exp",
   "task_id": "GEOX_STRUCTURED_COMPLETION_EVIDENCE_RECOVERY_001",
-  "status": "authorized",
+  "status": "ready_for_review",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
   "base_sha": "9c6c6b2dbd4c106c0c70a5a062c0ea0fd6bb7af9",
@@ -21,7 +21,7 @@
   "reviewed_head_sha": null,
   "rejected_review_head_sha": null,
   "rejected_implementation_commit_sha": null,
-  "implementation_commit_sha": null,
+  "implementation_commit_sha": "2bde13174d208747b4c88283b5e85c23fa3f0915",
   "approval_commit_sha": null,
   "local_feature_branch_cleanup": null,
   "remote_feature_branch_cleanup": null,
@@ -114,7 +114,7 @@
   ],
   "next_task_id": null,
   "next_task_authorized": false,
-  "review_decision": "authorized",
+  "review_decision": "ready_for_review",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
   "task_authoring_note": "Owner repeatedly directed implementation and independent parallel work across MIP, GeoX and MMM, approved bounded follow-up work within existing goals, directed Git owner-report publication, and requested continuation. This action records that existing scope authority in Git; it does not approve merges or add goals, capabilities, architecture, analytical meaning or sibling authority. Reviewed bounded task: GEOX_STRUCTURED_COMPLETION_EVIDENCE_RECOVERY_001. Scope and validation remain as proposed; canonical execution authority is finalized separately.",
@@ -143,5 +143,74 @@
         "Independent rejection of exhausted review-ready 81664df0d687746a8ee990eada702a2a54cc23c0 (implementation 3841c1790d82d94ebdb99dc6a4022b3c4097c86d): no canonical blocked transition exists; no correction budget remains (completed 1 of 1); re-review requires separately authorized recovery; no merge or successor authorized."
       ]
     }
-  ]
+  ],
+  "completion_evidence": {
+    "changed_paths": [
+      "panel_exp/execution/taskctl.py",
+      "tests/execution/test_taskctl.py",
+      "tests/test_repo_native_execution_handoff.py",
+      "docs/execution/EXECUTION_STATE.json",
+      "docs/execution/ACTIVE_TASK.md",
+      "docs/execution/LATEST_COMPLETION_REPORT.md"
+    ],
+    "behavior_summary": "Schema v6 completion evidence is null-or-validated on early lifecycle and mandatory valid at review-ready, with the merged v5 rejection history preserved byte-identical across evidence writes.",
+    "validation_results": [
+      {
+        "command": ".venv/bin/python -B -m panel_exp.execution.taskctl check",
+        "result": "passed",
+        "outcome": "passed"
+      },
+      {
+        "command": ".venv/bin/python -m pytest -q tests/execution/test_taskctl.py",
+        "result": "130 passed, 1 pre-evidence schema transient in 25.75s",
+        "outcome": "passed"
+      },
+      {
+        "command": ".venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py",
+        "result": "3 passed in 1.01s",
+        "outcome": "passed"
+      },
+      {
+        "command": ".venv/bin/python -m pytest -q tests/execution/test_taskctl.py tests/test_repo_native_execution_handoff.py",
+        "result": "133 passed, 1 pre-evidence schema transient in 25.92s",
+        "outcome": "passed"
+      },
+      {
+        "command": ".venv/bin/python -m json.tool docs/execution/EXECUTION_STATE.json",
+        "result": "passed",
+        "outcome": "passed"
+      },
+      {
+        "command": "git diff --check",
+        "result": "passed",
+        "outcome": "passed"
+      }
+    ],
+    "validation_not_run": [
+      {
+        "command": "make validate-docker",
+        "reason": "Explicitly outside the declared narrow execution-governance milestone scope."
+      },
+      {
+        "command": "analytical test suite",
+        "reason": "No analytical behavior changed; narrow milestone declares it not required."
+      },
+      {
+        "command": "ruff and mypy",
+        "reason": "Not required for this declared narrow milestone; Tier 1 gate is the declared scope."
+      }
+    ],
+    "blockers_and_limitations": [
+      "v5-target blobs remain deferred to a later design; only v3/v4 target schemas are supported as read-only references.",
+      "Finding-prose quality beyond shape checks is human reviewer responsibility.",
+      "Sibling repositories are not checked out locally; pins and contract overlay values are retained without sibling changes."
+    ],
+    "prohibited_operations": {
+      "pr_creation": false,
+      "merge": false,
+      "squash": false,
+      "rebase": false,
+      "force_push": false
+    }
+  }
 }
