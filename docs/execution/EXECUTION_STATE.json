@@ -2,7 +2,7 @@
   "schema_version": "geox_repo_execution_state_v6",
   "repository": "Phani-Pavuluri/panel_exp",
   "task_id": "GEOX_TASKCTL_TEST_SCAFFOLD_REPAIR_001",
-  "status": "proposed",
+  "status": "authorized",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
   "base_sha": "0e5abc9ab4f5c87de9a308f0bb8422dd10a01023",
@@ -14,7 +14,7 @@
   "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
-  "task_execution_authorized": false,
+  "task_execution_authorized": true,
   "correction_execution_authorized": false,
   "merge_authorized": false,
   "pr_creation_authorized": false,
@@ -73,7 +73,7 @@
   "source_defect": {
     "defect_id": "GEOX-EXHAUSTED-REVIEW-ROUTE-GAP-001",
     "failing_invariant": "Focused test scaffolds inherit task authority from live canonical state, so the four active-status evidence tests fail coded on any closed (authority-closed) live tree although the controller is correct.",
-    "authorized_resolution": "Proposed only: make unit scaffolds establish authority per requested status in tests/execution/test_taskctl.py with identical cases and codes; record real gate evidence via the native route; no controller, product, sibling, or authority change and no execution authorized."
+    "authorized_resolution": "Authorized tests-only scaffold repair per the unchanged active-task contract: same test cases and expected codes, status/evidence-independent fixtures, no controller or analytical changes; full required gates, including closed-state reproduction, must pass."
   },
   "remaining_current_main_defect_ids": [
     "GEOX-CURRENT-MAIN-BRB-GOLDEN-EQUIVALENCE-001",
@@ -103,10 +103,10 @@
   ],
   "next_task_id": null,
   "next_task_authorized": false,
-  "review_decision": "proposed",
+  "review_decision": "authorized",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Tests-only scaffold repair proposed in the stable authoring boundary; task execution is NOT authorized (status proposed, execution authority false). History carried verbatim from merged 0e5abc9; evidence null until the authorized task records its own real gate evidence via the native route. No code (beyond focused tests), branch, merge, activation, or authority change. Authorization requires a future Git commit flipping status and execution authority.",
+  "task_authoring_note": "Codex materializes the owner's existing bounded routine-process repair direction (\"approved, also fix the process so we dont need these kind of approvals\") for the definition-ready tests-only GEOX_TASKCTL_TEST_SCAFFOLD_REPAIR_001. This is task-scope authorization under that external owner instruction, not task authority derived from the merge policy. No new capability, contract meaning, analytical scope, sibling write, policy change or merge approval.",
   "rejection_history": [
     {
       "target_repository": "Phani-Pavuluri/panel_exp",
