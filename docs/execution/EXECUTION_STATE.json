@@ -1,8 +1,8 @@
 {
-  "schema_version": "geox_repo_execution_state_v3",
+  "schema_version": "geox_repo_execution_state_v5",
   "repository": "Phani-Pavuluri/panel_exp",
   "task_id": "GEOX_EXHAUSTED_REJECTION_RECORD_RECOVERY_001",
-  "status": "authorized",
+  "status": "ready_for_review",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
   "base_sha": "7a83bc0af5dd293512d17a7ce42bc3b4afb8f038",
@@ -21,7 +21,7 @@
   "reviewed_head_sha": null,
   "rejected_review_head_sha": null,
   "rejected_implementation_commit_sha": null,
-  "implementation_commit_sha": null,
+  "implementation_commit_sha": "5dc0fa0f11809618412cacf78859a5932305e6be",
   "approval_commit_sha": null,
   "local_feature_branch_cleanup": null,
   "remote_feature_branch_cleanup": null,
@@ -133,8 +133,34 @@
   ],
   "next_task_id": null,
   "next_task_authorized": false,
-  "review_decision": "authorized",
+  "review_decision": "ready_for_review",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Fresh bounded implementation recovery under owner-approved setup direction. Prior failed-gate implementation is immutable evidence, never merged. Codex corrects the context-index scope omission. One outcome: verified rejection record and migration-consistent handoff; no additional correction or product authority."
+  "task_authoring_note": "Fresh bounded implementation recovery under owner-approved setup direction. Prior failed-gate implementation is immutable evidence, never merged. Codex corrects the context-index scope omission. One outcome: verified rejection record and migration-consistent handoff; no additional correction or product authority.",
+  "rejection_history": [
+    {
+      "target_repository": "Phani-Pavuluri/panel_exp",
+      "target_task_id": "GEOX_STRUCTURED_COMPLETION_EVIDENCE_001",
+      "target_branch": "feat/geox-structured-completion-evidence-001",
+      "target_head_sha": "81664df0d687746a8ee990eada702a2a54cc23c0",
+      "target_implementation_sha": "3841c1790d82d94ebdb99dc6a4022b3c4097c86d",
+      "target_authorization_head_sha": "55c4c6c237642195732d949d034e98763c5d8cac",
+      "target_branch_baseline_sha": "55c4c6c237642195732d949d034e98763c5d8cac",
+      "target_schema_version": "geox_repo_execution_state_v4",
+      "target_disposition": "blocked",
+      "target_counters": {
+        "maximum": 1,
+        "completed": 1,
+        "remaining": 0
+      },
+      "prior_rejected_review_head_sha": "61c4e7d2100cdf79bd1687598e5e410bbc450e62",
+      "prior_rejected_implementation_commit_sha": "0d251c22bbfb41ab57c830b89f291464de2e1fa5",
+      "finding": "Independent finding on 81664df0d687746a8ee990eada702a2a54cc23c0 with implementation 3841c1790d82d94ebdb99dc6a4022b3c4097c86d: malformed non-null completion evidence passes early-lifecycle validation and can crash rendering; the v3 and v4 controllers reject both exhausted rejection paths; 25 historical focused tests passed on the exhausted head.",
+      "resolution_condition": "Fresh completion-evidence recovery after merged record; old branch remains immutable and unapproved.",
+      "live_main_sha": "de097237aef6c3681c467970acbc8f752c8ac251",
+      "blockers": [
+        "Independent rejection of exhausted review-ready 81664df0d687746a8ee990eada702a2a54cc23c0 (implementation 3841c1790d82d94ebdb99dc6a4022b3c4097c86d): no canonical blocked transition exists; no correction budget remains (completed 1 of 1); re-review requires separately authorized recovery; no merge or successor authorized."
+      ]
+    }
+  ]
 }
