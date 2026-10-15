@@ -9,7 +9,7 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Execution mode:** `branch_and_fast_forward`
 - **Base SHA:** `7a83bc0af5dd293512d17a7ce42bc3b4afb8f038`
-- **Authorization provenance:** `7a83bc0af5dd293512d17a7ce42bc3b4afb8f038`
+- **Authorization provenance:** `a2efa242d27043307fe6b3a8cee89fbbc81d6c73`
 - **Feature branch:** `feat/geox-exhausted-rejection-record-recovery-001`
 - **Feature branch created:** `false`
 - **Task execution authorized:** `true`
