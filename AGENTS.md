@@ -39,9 +39,12 @@ Task-state flags are never flipped for merging; merge authority flows from
 this standing authority plus the per-head receipt, never from task flags.
 
 Mechanical closure stays foreground-owned in private clones: verify
-eligibility, `git merge --ff-only`, one closure commit citing reviewed head,
-receipt note, gate summary, and unchanged authority, then push, prove
-`main == origin/main`, observe branch cleanup, and re-validate the merged
-tree. This standing authority is revocable and narrowable by authoring commit
+eligibility, `git merge --ff-only`, push the merged branch and main, observe
+local and remote branch deletion, then write one closure commit citing
+reviewed head, receipt note, gate summary, observed cleanup, and unchanged
+authority; prove `main == origin/main` and re-validate the merged tree.
+Deletion must be observed before the closure is valid (merged state requires
+both cleanups observed); a non-fast-forward situation aborts to the owner.
+This standing authority is revocable and narrowable by authoring commit
 at any time. Goals, architecture, contracts, capabilities, authority grants,
 product eligibility, and revocation itself stay with the owner.
