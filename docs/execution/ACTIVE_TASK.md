@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** `proposed`
+**Status:** `authorized`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -9,10 +9,10 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Execution mode:** `branch_and_fast_forward`
 - **Base SHA:** `3c2f7ec3dfb196c3308e8fb8f67c68d8ff5dc69e`
-- **Authorization provenance:** `null`
+- **Authorization provenance:** `9e73059a066cf79c118a389ac4cc2923e0e694c0`
 - **Feature branch:** `tests/geox-tier1-callback-injection-repair-001`
 - **Feature branch created:** `false`
-- **Task execution authorized:** `false`
+- **Task execution authorized:** `true`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
@@ -25,13 +25,13 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `proposed`
+- **Review decision:** `authorized`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
 
-## Primary outcome and authority (proposed successor)
+## Primary outcome and authority (authorized successor)
 
 Repair the existing validation-owned callback injection surface for the fifteen tests in `tests/validation/test_design_tier1_contract_emission_001.py`. The successor must preserve every assertion and payload expectation, exercise the existing callback seam, and remain tests-only. The three unrelated historical failures (two guardrail cases and one BRB case) must remain visible as limitations; they must not be waived, deselected, or folded into this task. No controller, production, analytical, producer-certification, sibling, or authority change is included. Muse-Spark owns implementation approach; Codex independently reviews.
 
