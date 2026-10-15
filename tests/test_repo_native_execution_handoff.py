@@ -7,7 +7,7 @@ from panel_exp.execution import taskctl
 ROOT = Path(__file__).parents[1]
 SHA = re.compile(r"^[0-9a-f]{40}$")
 STATUSES = {"idle", "proposed", "authorized", "in_progress", "blocked", "ready_for_review", "changes_requested", "merged", "superseded"}
-SUPPORTED_SCHEMAS = {"geox_repo_execution_state_v3", "geox_repo_execution_state_v5"}
+SUPPORTED_SCHEMAS = {"geox_repo_execution_state_v3", "geox_repo_execution_state_v5", "geox_repo_execution_state_v6"}
 
 
 def _generated_field(text, label):

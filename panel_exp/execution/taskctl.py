@@ -9,7 +9,7 @@ import os
 import re
 import subprocess
 import tempfile
-from pathlib import Path
+from pathlib import Path, PurePosixPath, PureWindowsPath
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -18,14 +18,31 @@ ACTIVE_PATH = ROOT / "docs/execution/ACTIVE_TASK.md"
 REPORT_PATH = ROOT / "docs/execution/LATEST_COMPLETION_REPORT.md"
 BEGIN_MARKER = "<!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->"
 END_MARKER = "<!-- END GEOX TASKCTL EXECUTION VIEW -->"
-SCHEMA_VERSION = "geox_repo_execution_state_v5"
+SCHEMA_VERSION = "geox_repo_execution_state_v6"
 LEGACY_SCHEMA_VERSION_V3 = "geox_repo_execution_state_v3"
+LEGACY_SCHEMA_VERSION_V5 = "geox_repo_execution_state_v5"
 SUPPORTED_TARGET_SCHEMAS = frozenset(
     {
         "geox_repo_execution_state_v3",
         "geox_repo_execution_state_v4",
     }
 )
+COMPLETION_EVIDENCE_KEY = "completion_evidence"
+COMPLETION_EVIDENCE_KEYS = {
+    "changed_paths",
+    "behavior_summary",
+    "validation_results",
+    "validation_not_run",
+    "blockers_and_limitations",
+    "prohibited_operations",
+}
+PROHIBITED_OPERATION_KEYS = {
+    "pr_creation",
+    "merge",
+    "squash",
+    "rebase",
+    "force_push",
+}
 REJECTION_HISTORY_KEY = "rejection_history"
 TARGET_DISPOSITION_BLOCKED = "blocked"
 REJECTION_ENTRY_KEYS = frozenset(
@@ -140,6 +157,67 @@ def load_state(path: Path = STATE_PATH) -> dict[str, Any]:
     return state
 
 
+def _require_nonempty_string(value: object, code: str, field: str) -> None:
+    if not isinstance(value, str) or not value.strip():
+        raise TaskControlError(code, f"{field} must be a nonempty string")
+
+
+def _validate_completion_evidence(evidence: object) -> None:
+    if not isinstance(evidence, dict):
+        raise TaskControlError("E_COMPLETION_EVIDENCE_TYPE", "completion_evidence must be an object")
+    missing = COMPLETION_EVIDENCE_KEYS - evidence.keys()
+    if missing:
+        raise TaskControlError("E_COMPLETION_EVIDENCE_KEYS", f"missing keys: {', '.join(sorted(missing))}")
+    extra = evidence.keys() - COMPLETION_EVIDENCE_KEYS
+    if extra:
+        raise TaskControlError("E_COMPLETION_EVIDENCE_KEYS", f"unexpected keys: {', '.join(sorted(extra))}")
+    changed_paths = evidence["changed_paths"]
+    if not isinstance(changed_paths, list) or not changed_paths:
+        raise TaskControlError("E_COMPLETION_EVIDENCE_PATHS", "changed_paths must be a nonempty list")
+    if any(not isinstance(path, str) or not path.strip() for path in changed_paths):
+        raise TaskControlError("E_COMPLETION_EVIDENCE_PATHS", "changed_paths must contain nonempty strings")
+    if len(set(changed_paths)) != len(changed_paths):
+        raise TaskControlError("E_COMPLETION_EVIDENCE_PATHS", "changed_paths must be unique")
+    for path in changed_paths:
+        parsed = PurePosixPath(path)
+        if parsed.is_absolute() or PureWindowsPath(path).is_absolute() or path.startswith("\\") or ".." in parsed.parts or path in {".", ""}:
+            raise TaskControlError("E_COMPLETION_EVIDENCE_PATHS", "changed_paths must be repository-relative")
+    _require_nonempty_string(evidence["behavior_summary"], "E_COMPLETION_EVIDENCE_BEHAVIOR", "behavior_summary")
+    validation_results = evidence["validation_results"]
+    if not isinstance(validation_results, list) or not validation_results:
+        raise TaskControlError("E_COMPLETION_EVIDENCE_VALIDATION", "validation_results must be a nonempty list")
+    for result in validation_results:
+        if not isinstance(result, dict):
+            raise TaskControlError("E_COMPLETION_EVIDENCE_VALIDATION", "validation result must be an object")
+        for field in ("command", "result", "outcome"):
+            if field not in result:
+                raise TaskControlError("E_COMPLETION_EVIDENCE_VALIDATION", f"validation result missing {field}")
+        _require_nonempty_string(result["command"], "E_COMPLETION_EVIDENCE_VALIDATION", "validation command")
+        _require_nonempty_string(result["result"], "E_COMPLETION_EVIDENCE_VALIDATION", "validation result")
+        if result["outcome"] != "passed":
+            raise TaskControlError("E_COMPLETION_EVIDENCE_VALIDATION", "validation outcome must be passed")
+    validation_not_run = evidence["validation_not_run"]
+    if not isinstance(validation_not_run, list):
+        raise TaskControlError("E_COMPLETION_EVIDENCE_OMITTED", "validation_not_run must be a list")
+    for omitted in validation_not_run:
+        if not isinstance(omitted, dict) or "command" not in omitted or "reason" not in omitted:
+            raise TaskControlError("E_COMPLETION_EVIDENCE_OMITTED", "omitted validation requires command and reason")
+        _require_nonempty_string(omitted["command"], "E_COMPLETION_EVIDENCE_OMITTED", "omitted validation command")
+        _require_nonempty_string(omitted["reason"], "E_COMPLETION_EVIDENCE_OMITTED", "omitted validation reason")
+    limitations = evidence["blockers_and_limitations"]
+    if not isinstance(limitations, list) or any(not isinstance(item, str) or not item.strip() for item in limitations):
+        raise TaskControlError("E_COMPLETION_EVIDENCE_LIMITATIONS", "blockers_and_limitations must contain nonempty strings")
+    prohibited = evidence["prohibited_operations"]
+    if not isinstance(prohibited, dict):
+        raise TaskControlError("E_COMPLETION_EVIDENCE_PROHIBITED", "prohibited_operations must be an object")
+    if set(prohibited) != PROHIBITED_OPERATION_KEYS:
+        raise TaskControlError("E_COMPLETION_EVIDENCE_PROHIBITED", "prohibited_operations has incorrect keys")
+    if any(not isinstance(value, bool) for value in prohibited.values()):
+        raise TaskControlError("E_COMPLETION_EVIDENCE_PROHIBITED", "prohibited operation occurrences must be boolean")
+    if any(prohibited.values()):
+        raise TaskControlError("E_COMPLETION_EVIDENCE_PROHIBITED", "prohibited operation occurrence must remain false")
+
+
 def _validate_target_counters(counters: object) -> None:
     if not isinstance(counters, dict):
         raise TaskControlError("E_REJECTION_BLOB_CORRUPT", "target counters must be an object")
@@ -203,20 +281,38 @@ def _validate_rejection_entry(entry: object) -> None:
         raise TaskControlError("E_BLOCKERS", "rejection entry blockers must be unique")
 
 
+def _validate_history_list(state: dict[str, Any], schema_label: str) -> None:
+    history = state.get(REJECTION_HISTORY_KEY)
+    if not isinstance(history, list):
+        raise TaskControlError("E_STATE_KEYS", f"{schema_label} state requires a rejection history list")
+    for entry in history:
+        _validate_rejection_entry(entry)
+
+
 def validate_state(state: dict[str, Any]) -> None:
     schema = state.get("schema_version")
-    if schema not in {SCHEMA_VERSION, LEGACY_SCHEMA_VERSION_V3}:
+    if schema not in {SCHEMA_VERSION, LEGACY_SCHEMA_VERSION_V3, LEGACY_SCHEMA_VERSION_V5}:
         raise TaskControlError("E_SCHEMA_VERSION", f"expected {SCHEMA_VERSION}")
-    if schema == LEGACY_SCHEMA_VERSION_V3 and REJECTION_HISTORY_KEY in state:
-        raise TaskControlError("E_STATE_KEYS", "v3 state must not carry rejection history")
-    if schema == SCHEMA_VERSION:
-        if "completion_evidence" in state:
+    if schema == LEGACY_SCHEMA_VERSION_V3:
+        if REJECTION_HISTORY_KEY in state:
+            raise TaskControlError("E_STATE_KEYS", "v3 state must not carry rejection history")
+        if COMPLETION_EVIDENCE_KEY in state:
+            raise TaskControlError("E_STATE_KEYS", "v3 state must not carry completion evidence")
+    if schema == LEGACY_SCHEMA_VERSION_V5:
+        if COMPLETION_EVIDENCE_KEY in state:
             raise TaskControlError("E_STATE_KEYS", "route-only v5 state must not carry completion evidence")
-        history = state.get(REJECTION_HISTORY_KEY)
-        if not isinstance(history, list):
-            raise TaskControlError("E_STATE_KEYS", "v5 state requires a rejection history list")
-        for entry in history:
-            _validate_rejection_entry(entry)
+        _validate_history_list(state, "v5")
+    if schema == SCHEMA_VERSION:
+        _validate_history_list(state, "v6")
+        if COMPLETION_EVIDENCE_KEY not in state:
+            raise TaskControlError("E_STATE_KEYS", "v6 state requires completion evidence")
+        evidence = state[COMPLETION_EVIDENCE_KEY]
+        if state.get("status") in {"ready_for_review", "changes_requested", "merged"}:
+            if evidence is None:
+                raise TaskControlError("E_COMPLETION_EVIDENCE_TYPE", "complete evidence is required for review")
+            _validate_completion_evidence(evidence)
+        elif evidence is not None:
+            _validate_completion_evidence(evidence)
     if state.get("status") not in STATES:
         raise TaskControlError("E_STATUS", f"unsupported status: {state.get('status')}")
     required = (
@@ -316,6 +412,32 @@ def _render_rejection_history(state: dict[str, Any]) -> list[str]:
     return lines
 
 
+def _render_completion_evidence(state: dict[str, Any]) -> list[str]:
+    lines = ["", "## Structured completion evidence", ""]
+    evidence = state.get(COMPLETION_EVIDENCE_KEY)
+    if evidence is None:
+        return [*lines, "- none"]
+    _validate_completion_evidence(evidence)
+    lines.extend(("### Changed paths", ""))
+    lines.extend(f"- `{path}`" for path in evidence["changed_paths"])
+    lines.extend(("", "### Behavior", "", evidence["behavior_summary"], "", "### Validation results", ""))
+    for result in evidence["validation_results"]:
+        lines.append(f"- `{result['command']}` — {result['result']} ({result['outcome']})")
+    lines.extend(("", "### Validation not run", ""))
+    if evidence["validation_not_run"]:
+        lines.extend(f"- `{item['command']}` — {item['reason']}" for item in evidence["validation_not_run"])
+    else:
+        lines.append("- none")
+    lines.extend(("", "### Blockers and limitations", ""))
+    if evidence["blockers_and_limitations"]:
+        lines.extend(f"- {item}" for item in evidence["blockers_and_limitations"])
+    else:
+        lines.append("- none")
+    lines.extend(("", "### Prohibited-operation confirmation", ""))
+    lines.extend(f"- {key}: `{_display(value)}`" for key, value in evidence["prohibited_operations"].items())
+    return lines
+
+
 def render(state: dict[str, Any], document: str) -> str:
     if document not in {"active_task", "completion_report"}:
         raise TaskControlError("E_VIEW_DOCUMENT", f"unsupported generated view: {document}")
@@ -344,8 +466,10 @@ def render(state: dict[str, Any], document: str) -> str:
     )
     lines = [BEGIN_MARKER, title, "", decision, "", "_Generated from `EXECUTION_STATE.json`; do not edit._", ""]
     lines.extend(f"- **{label}:** `{_display(value)}`" for label, value in fields)
-    if document == "completion_report" and state.get("schema_version") == SCHEMA_VERSION:
+    if document == "completion_report" and state.get("schema_version") in {SCHEMA_VERSION, LEGACY_SCHEMA_VERSION_V5}:
         lines.extend(_render_rejection_history(state))
+    if document == "completion_report" and state.get("schema_version") == SCHEMA_VERSION:
+        lines.extend(_render_completion_evidence(state))
     return "\n".join((*lines, END_MARKER, ""))
 
 
@@ -718,7 +842,7 @@ def record_rejection(
     }
     candidate = copy.deepcopy(state)
     if candidate.get("schema_version") == LEGACY_SCHEMA_VERSION_V3:
-        candidate["schema_version"] = SCHEMA_VERSION
+        candidate["schema_version"] = LEGACY_SCHEMA_VERSION_V5
         candidate[REJECTION_HISTORY_KEY] = []
     candidate[REJECTION_HISTORY_KEY].append(entry)
     for key in PROTECTED_AUTHORITY:
@@ -737,9 +861,12 @@ def transition(
     *,
     implementation_sha: str | None = None,
     complete_correction: bool = False,
+    state_path: Path = STATE_PATH,
+    active_path: Path = ACTIVE_PATH,
+    report_path: Path = REPORT_PATH,
 ) -> None:
-    state = load_state()
-    check()
+    state = load_state(state_path)
+    check(state_path=state_path, active_path=active_path, report_path=report_path)
     if target not in STATES:
         raise TaskControlError("E_STATUS", f"unsupported status: {target}")
     if target not in TRANSITIONS[state["status"]]:
@@ -763,10 +890,73 @@ def transition(
         if candidate[key] != state[key]:
             raise TaskControlError("E_PROTECTED_AUTHORITY", f"transition cannot change {key}")
     validate_state(candidate)
-    active, report = _candidate_views(candidate)
-    _write_atomically(STATE_PATH, json.dumps(candidate, indent=2) + "\n")
-    _write_atomically(ACTIVE_PATH, active)
-    _write_atomically(REPORT_PATH, report)
+    active, report = _rendered_views(candidate, _read(active_path), _read(report_path))
+    _write_atomically(state_path, json.dumps(candidate, indent=2) + "\n")
+    _write_atomically(active_path, active)
+    _write_atomically(report_path, report)
+
+
+RECORDABLE_EVIDENCE_STATUSES = frozenset({"authorized", "in_progress", "blocked", "ready_for_review", "changes_requested"})
+
+
+def record_evidence(
+    *,
+    evidence_file: str | Path,
+    state_path: Path = STATE_PATH,
+    active_path: Path = ACTIVE_PATH,
+    report_path: Path = REPORT_PATH,
+    repo: Path = ROOT,
+) -> dict[str, Any]:
+    state = load_state(state_path)
+    active_text, report_text = _read(active_path), _read(report_path)
+    expected_active, expected_report = _rendered_views(state, active_text, report_text)
+    if expected_active != active_text or expected_report != report_text:
+        raise TaskControlError("E_VIEW_DIVERGENCE", "generated views diverge from canonical state")
+    try:
+        raw = Path(evidence_file).read_text(encoding="utf-8")
+    except OSError as exc:
+        raise TaskControlError("E_DOCUMENT_READ", f"cannot read evidence file: {exc}") from exc
+    try:
+        evidence = json.loads(raw)
+    except json.JSONDecodeError as exc:
+        raise TaskControlError("E_COMPLETION_EVIDENCE_TYPE", f"evidence file must contain a JSON object: {exc}") from exc
+    _validate_completion_evidence(evidence)
+    if state.get("status") not in RECORDABLE_EVIDENCE_STATUSES:
+        raise TaskControlError("E_TRANSITION", "live task cannot record evidence from its status")
+    if not state.get("task_execution_authorized"):
+        raise TaskControlError("E_TRANSITION", "live task lacks execution authority")
+    if state.get("merge_authorized") or state.get("pr_creation_authorized"):
+        raise TaskControlError("E_AUTHORITY", "merge and PR authority must remain false")
+    if any(state.get(key) for key in PROTECTED_AUTHORITY):
+        raise TaskControlError("E_PROTECTED_AUTHORITY", "protected authority must remain false")
+    try:
+        current_branch = _git(repo, "branch", "--show-current")
+    except _GitError as exc:
+        raise TaskControlError("E_TRANSITION", f"cannot establish live branch identity: {exc}") from exc
+    if current_branch != state.get("feature_branch"):
+        raise TaskControlError("E_TRANSITION", "checked-out branch differs from live feature branch")
+    try:
+        tracked = _git(repo, "status", "--porcelain=v1", "--untracked-files=no")
+    except _GitError as exc:
+        raise TaskControlError("E_TRANSITION", f"cannot verify clean tracked worktree: {exc}") from exc
+    if tracked:
+        raise TaskControlError("E_TRANSITION", "tracked worktree is not clean")
+    candidate = copy.deepcopy(state)
+    if candidate.get("schema_version") == LEGACY_SCHEMA_VERSION_V3:
+        candidate["schema_version"] = SCHEMA_VERSION
+        candidate[REJECTION_HISTORY_KEY] = []
+    if candidate.get("schema_version") == LEGACY_SCHEMA_VERSION_V5:
+        candidate["schema_version"] = SCHEMA_VERSION
+    candidate[COMPLETION_EVIDENCE_KEY] = evidence
+    for key in PROTECTED_AUTHORITY:
+        if candidate[key] != state[key]:
+            raise TaskControlError("E_PROTECTED_AUTHORITY", f"record cannot change {key}")
+    validate_state(candidate)
+    active, report = _rendered_views(candidate, active_text, report_text)
+    _write_atomically(state_path, json.dumps(candidate, indent=2) + "\n")
+    _write_atomically(active_path, active)
+    _write_atomically(report_path, report)
+    return evidence
 
 
 def main() -> int:
@@ -786,12 +976,16 @@ def main() -> int:
     record_parser.add_argument("--finding", required=True)
     record_parser.add_argument("--resolution-condition", required=True)
     record_parser.add_argument("--live-main")
+    evidence_parser = command.add_parser("record-evidence")
+    evidence_parser.add_argument("--evidence-file", required=True)
     args = parser.parse_args()
     try:
         if args.command == "check":
             check()
         elif args.command == "sync":
             sync()
+        elif args.command == "record-evidence":
+            record_evidence(evidence_file=args.evidence_file)
         elif args.command == "record-rejection":
             record_rejection(
                 dependency_id=args.dependency_id,

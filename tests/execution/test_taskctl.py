@@ -892,6 +892,8 @@ def test_v5_history_renders_deterministically(record_fixture: dict[str, Any]) ->
 def _v5_state_with_entry(**updates: Any) -> dict[str, Any]:
     canonical = json.loads(taskctl.STATE_PATH.read_text(encoding="utf-8"))
     canonical["schema_version"] = taskctl.SCHEMA_VERSION
+    if canonical["schema_version"] == "geox_repo_execution_state_v6":
+        canonical.setdefault("completion_evidence", None)
     canonical["rejection_history"] = [
         {
             "target_repository": "Phani-Pavuluri/panel_exp",
@@ -945,6 +947,7 @@ def test_schema_boundaries_fail_closed() -> None:
     with pytest.raises(taskctl.TaskControlError, match="E_STATE_KEYS"):
         taskctl.validate_state(legacy)
     current = _v5_state_with_entry()
+    current["schema_version"] = taskctl.LEGACY_SCHEMA_VERSION_V5
     current["completion_evidence"] = {"anything": True}
     with pytest.raises(taskctl.TaskControlError, match="E_STATE_KEYS"):
         taskctl.validate_state(current)
@@ -1113,3 +1116,383 @@ def test_record_rejection_blob_branch_wrong_type(record_fixture: dict[str, Any])
     _retarget_pin(fixture, divergent)
     with pytest.raises(taskctl.TaskControlError, match="E_REJECTION_BLOB_CORRUPT"):
         _record(fixture, rejected_head_sha=divergent)
+
+
+def _valid_evidence(**overrides: Any) -> dict[str, Any]:
+    evidence: dict[str, Any] = {
+        "changed_paths": ["panel_exp/execution/taskctl.py", "tests/execution/test_taskctl.py"],
+        "behavior_summary": "Evidence-validated reporting on the merged baseline.",
+        "validation_results": [{"command": "taskctl check", "result": "passed", "outcome": "passed"}],
+        "validation_not_run": [{"command": "make validate-docker", "reason": "Out of scope for this milestone."}],
+        "blockers_and_limitations": ["Limitation one."],
+        "prohibited_operations": {"pr_creation": False, "merge": False, "squash": False, "rebase": False, "force_push": False},
+    }
+    evidence.update(overrides)
+    return evidence
+
+
+def _v6_state(status: str, evidence: Any) -> dict[str, Any]:
+    canonical = json.loads(taskctl.STATE_PATH.read_text(encoding="utf-8"))
+    canonical["schema_version"] = "geox_repo_execution_state_v6"
+    canonical["status"] = status
+    canonical["review_decision"] = status
+    canonical["rejection_history"] = []
+    canonical["completion_evidence"] = evidence
+    if status == "blocked":
+        canonical["blockers"] = ["live blocker"]
+    if status == "ready_for_review":
+        canonical["implementation_commit_sha"] = "b" * 40
+    if status == "changes_requested":
+        canonical.update(
+            correction_execution_authorized=True,
+            implementation_commit_sha="b" * 40,
+            rejected_review_head_sha="c" * 40,
+            rejected_implementation_commit_sha="d" * 40,
+        )
+    if status == "merged":
+        canonical.update(
+            task_execution_authorized=False,
+            implementation_commit_sha="b" * 40,
+            reviewed_head_sha="e" * 40,
+            local_feature_branch_cleanup="observed_deleted",
+            remote_feature_branch_cleanup="observed_deleted",
+        )
+    return canonical
+
+
+@pytest.mark.parametrize("status", ("authorized", "in_progress", "blocked"))
+def test_evidence_null_accepted_early(status: str) -> None:
+    taskctl.validate_state(_v6_state(status, None))
+
+
+@pytest.mark.parametrize("status", ("ready_for_review", "changes_requested", "merged"))
+def test_evidence_null_rejected_late(status: str) -> None:
+    with pytest.raises(taskctl.TaskControlError, match="E_COMPLETION_EVIDENCE_TYPE"):
+        taskctl.validate_state(_v6_state(status, None))
+
+
+@pytest.mark.parametrize(
+    "status", ("authorized", "in_progress", "blocked", "ready_for_review", "changes_requested", "merged")
+)
+def test_evidence_malformed_rejected_every_status(status: str) -> None:
+    with pytest.raises(taskctl.TaskControlError, match="E_COMPLETION_EVIDENCE_TYPE"):
+        taskctl.validate_state(_v6_state(status, "bad-string"))
+    with pytest.raises(taskctl.TaskControlError, match="E_COMPLETION_EVIDENCE_KEYS"):
+        taskctl.validate_state(_v6_state(status, {"behavior_summary": "x"}))
+
+
+@pytest.mark.parametrize(
+    "updates,code",
+    (
+        ({"behavior_summary": "  "}, "E_COMPLETION_EVIDENCE_BEHAVIOR"),
+        ({"validation_results": []}, "E_COMPLETION_EVIDENCE_VALIDATION"),
+        ({"validation_results": [{"command": "c", "result": "r", "outcome": "failed"}]}, "E_COMPLETION_EVIDENCE_VALIDATION"),
+        ({"validation_results": [{"command": "c"}]}, "E_COMPLETION_EVIDENCE_VALIDATION"),
+        ({"validation_not_run": [{"command": "c"}]}, "E_COMPLETION_EVIDENCE_OMITTED"),
+        ({"validation_not_run": "all"}, "E_COMPLETION_EVIDENCE_OMITTED"),
+        ({"blockers_and_limitations": [""]}, "E_COMPLETION_EVIDENCE_LIMITATIONS"),
+        ({"changed_paths": []}, "E_COMPLETION_EVIDENCE_PATHS"),
+        ({"changed_paths": ["/absolute/path"]}, "E_COMPLETION_EVIDENCE_PATHS"),
+        ({"changed_paths": ["a", "a"]}, "E_COMPLETION_EVIDENCE_PATHS"),
+        ({"changed_paths": ["../escape"]}, "E_COMPLETION_EVIDENCE_PATHS"),
+        ({"prohibited_operations": {"pr_creation": True, "merge": False, "squash": False, "rebase": False, "force_push": False}}, "E_COMPLETION_EVIDENCE_PROHIBITED"),
+        ({"prohibited_operations": {"pr_creation": "no"}}, "E_COMPLETION_EVIDENCE_PROHIBITED"),
+        ({"unexpected": 1}, "E_COMPLETION_EVIDENCE_KEYS"),
+        ({"behavior_summary": None}, "E_COMPLETION_EVIDENCE_BEHAVIOR"),
+    ),
+)
+def test_evidence_wrong_shapes_fail_closed(updates: dict[str, Any], code: str) -> None:
+    with pytest.raises(taskctl.TaskControlError, match=code):
+        taskctl.validate_state(_v6_state("authorized", _valid_evidence(**updates)))
+    with pytest.raises(taskctl.TaskControlError, match=code):
+        taskctl.render(_v6_state("authorized", _valid_evidence(**updates)), "completion_report")
+
+
+def test_v6_boundaries_fail_closed() -> None:
+    canonical = _v6_state("authorized", _valid_evidence())
+    assert canonical["schema_version"] == taskctl.SCHEMA_VERSION
+    taskctl.validate_state(canonical)
+    without_evidence = dict(canonical)
+    del without_evidence["completion_evidence"]
+    with pytest.raises(taskctl.TaskControlError, match="E_STATE_KEYS"):
+        taskctl.validate_state(without_evidence)
+    without_history = dict(canonical)
+    del without_history["rejection_history"]
+    with pytest.raises(taskctl.TaskControlError, match="E_STATE_KEYS"):
+        taskctl.validate_state(without_history)
+    legacy_v3 = dict(canonical)
+    legacy_v3["schema_version"] = taskctl.LEGACY_SCHEMA_VERSION_V3
+    del legacy_v3["rejection_history"]
+    with pytest.raises(taskctl.TaskControlError, match="E_STATE_KEYS"):
+        taskctl.validate_state(legacy_v3)
+
+
+def test_v6_evidence_renders_deterministically() -> None:
+    canonical = _v6_state("authorized", _valid_evidence())
+    first = taskctl.render(canonical, "completion_report")
+    assert taskctl.render(canonical, "completion_report") == first
+    assert "Structured completion evidence" in first
+    assert "panel_exp/execution/taskctl.py" in first
+    assert "taskctl check" in first
+    empty = _v6_state("authorized", None)
+    empty_report = taskctl.render(empty, "completion_report")
+    assert "Structured completion evidence" in empty_report
+    assert "- none" in empty_report
+
+
+@pytest.fixture
+def evidence_repo(tmp_path: Path) -> dict[str, Any]:
+    work = tmp_path / "evwork"
+    work.mkdir()
+    _git(work, "init", "-q")
+    _git(work, "config", "user.email", "fixture@example.com")
+    _git(work, "config", "user.name", "Fixture")
+    _git(work, "checkout", "-q", "-b", "main")
+    main0 = _commit(work, "README.md", "seed\n", "seed main")
+    branch = "feat/fixture-evidence-001"
+    _git(work, "checkout", "-q", "-b", branch, main0)
+    live = _live_state(main0, branch, "a" * 40, "b" * 40)
+    live["schema_version"] = "geox_repo_execution_state_v5"
+    live["rejection_history"] = []
+    state_path = work / "docs" / "execution" / "EXECUTION_STATE.json"
+    active_path = work / "docs" / "execution" / "ACTIVE_TASK.md"
+    report_path = work / "docs" / "execution" / "LATEST_COMPLETION_REPORT.md"
+    state_path.parent.mkdir(parents=True, exist_ok=True)
+    state_path.write_text(json.dumps(live, indent=2) + "\n", encoding="utf-8")
+    active_path.write_text(taskctl.render(live, "active_task") + "human suffix\n", encoding="utf-8")
+    report_path.write_text(taskctl.render(live, "completion_report") + "human suffix\n", encoding="utf-8")
+    taskctl.validate_state(live)
+    _git(work, "add", "-A")
+    _git(work, "commit", "-q", "-m", "evidence fixture live state")
+    return {
+        "work": work,
+        "state_path": state_path,
+        "active_path": active_path,
+        "report_path": report_path,
+        "live": live,
+    }
+
+
+def _record_evidence(fixture: dict[str, Any], evidence: Any, **overrides: Any) -> dict[str, Any]:
+    evidence_path = fixture["work"].parent / "evidence.json"
+    if isinstance(evidence, (dict, list)):
+        evidence_path.write_text(json.dumps(evidence), encoding="utf-8")
+    else:
+        evidence_path.write_text(str(evidence), encoding="utf-8")
+    params: dict[str, Any] = {
+        "evidence_file": evidence_path,
+        "state_path": fixture["state_path"],
+        "active_path": fixture["active_path"],
+        "report_path": fixture["report_path"],
+        "repo": fixture["work"],
+    }
+    params.update(overrides)
+    return taskctl.record_evidence(**params)
+
+
+@needs_git
+def test_record_evidence_v5_to_v6_preserves_history(evidence_repo: dict[str, Any]) -> None:
+    fixture = evidence_repo
+    entry = _v5_state_with_entry()["rejection_history"][0]
+    live = json.loads(fixture["state_path"].read_text(encoding="utf-8"))
+    live["rejection_history"] = [entry]
+    fixture["state_path"].write_text(json.dumps(live, indent=2) + "\n", encoding="utf-8")
+    taskctl.sync(
+        state_path=fixture["state_path"],
+        active_path=fixture["active_path"],
+        report_path=fixture["report_path"],
+    )
+    _git(fixture["work"], "add", "-A")
+    _git(fixture["work"], "commit", "-q", "-m", "history fixture")
+    active_before = fixture["active_path"].read_bytes()
+    returned = _record_evidence(fixture, _valid_evidence())
+    canonical = json.loads(fixture["state_path"].read_text(encoding="utf-8"))
+    assert canonical["schema_version"] == "geox_repo_execution_state_v6"
+    assert canonical["rejection_history"] == [entry]
+    assert canonical["completion_evidence"] == returned == _valid_evidence()
+    for key, value in fixture["live"].items():
+        if key in {"schema_version", "rejection_history", "completion_evidence"}:
+            continue
+        assert canonical[key] == value
+    assert canonical["status"] == "authorized"
+    assert fixture["active_path"].read_bytes() == active_before
+    report = fixture["report_path"].read_text(encoding="utf-8")
+    assert "Structured completion evidence" in report
+    assert "panel_exp/execution/taskctl.py" in report
+    assert report.endswith("human suffix\n")
+    taskctl.check(
+        state_path=fixture["state_path"],
+        active_path=fixture["active_path"],
+        report_path=fixture["report_path"],
+    )
+
+
+@needs_git
+def test_record_evidence_v3_to_v6_adds_empty_history(record_fixture: dict[str, Any]) -> None:
+    fixture = record_fixture
+    assert "rejection_history" not in fixture["live"]
+    _record_evidence(
+        fixture,
+        _valid_evidence(),
+        state_path=fixture["state_path"],
+        active_path=fixture["active_path"],
+        report_path=fixture["report_path"],
+        repo=fixture["work"],
+    )
+    canonical = json.loads(fixture["state_path"].read_text(encoding="utf-8"))
+    assert canonical["schema_version"] == "geox_repo_execution_state_v6"
+    assert canonical["rejection_history"] == []
+    assert canonical["completion_evidence"]["behavior_summary"].startswith("Evidence-validated")
+
+
+@needs_git
+def test_record_evidence_v6_replace_preserves_history(evidence_repo: dict[str, Any]) -> None:
+    fixture = evidence_repo
+    _record_evidence(fixture, _valid_evidence())
+    history_before = json.loads(fixture["state_path"].read_text(encoding="utf-8"))["rejection_history"]
+    _git(fixture["work"], "add", "-A")
+    _git(fixture["work"], "commit", "-q", "-m", "first evidence")
+    replacement = _valid_evidence(behavior_summary="Updated behavior summary.")
+    _record_evidence(fixture, replacement)
+    canonical = json.loads(fixture["state_path"].read_text(encoding="utf-8"))
+    assert canonical["completion_evidence"] == replacement
+    assert canonical["rejection_history"] == history_before
+
+
+@needs_git
+def test_record_rejection_preserves_v6_evidence(record_fixture: dict[str, Any]) -> None:
+    fixture = record_fixture
+    live = json.loads(fixture["state_path"].read_text(encoding="utf-8"))
+    live["schema_version"] = "geox_repo_execution_state_v6"
+    live["rejection_history"] = []
+    live["completion_evidence"] = _valid_evidence()
+    fixture["state_path"].write_text(json.dumps(live, indent=2) + "\n", encoding="utf-8")
+    taskctl.sync(
+        state_path=fixture["state_path"],
+        active_path=fixture["active_path"],
+        report_path=fixture["report_path"],
+    )
+    _git(fixture["work"], "add", "-A")
+    _git(fixture["work"], "commit", "-q", "-m", "v6 fixture")
+    _record(
+        fixture,
+        state_path=fixture["state_path"],
+        active_path=fixture["active_path"],
+        report_path=fixture["report_path"],
+        repo=fixture["work"],
+    )
+    canonical = json.loads(fixture["state_path"].read_text(encoding="utf-8"))
+    assert canonical["schema_version"] == "geox_repo_execution_state_v6"
+    assert canonical["completion_evidence"] == _valid_evidence()
+    assert len(canonical["rejection_history"]) == 1
+    assert canonical["rejection_history"][0]["target_head_sha"] == fixture["head"]
+
+
+@needs_git
+@pytest.mark.parametrize(
+    "setup,code",
+    (
+        ("branch", "E_TRANSITION"),
+        ("dirty", "E_TRANSITION"),
+        ("merged", "E_TRANSITION"),
+        ("no_authority", "E_TRANSITION"),
+    ),
+)
+def test_record_evidence_live_guards(evidence_repo: dict[str, Any], setup: str, code: str) -> None:
+    fixture = evidence_repo
+    work = fixture["work"]
+    if setup == "branch":
+        _git(work, "checkout", "-q", "-b", "feat/fixture-other")
+    else:
+        live = json.loads(fixture["state_path"].read_text(encoding="utf-8"))
+        if setup == "dirty":
+            (work / "README.md").write_text("uncommitted\n", encoding="utf-8")
+            with pytest.raises(taskctl.TaskControlError, match=code):
+                _record_evidence(fixture, _valid_evidence())
+            return
+        if setup == "merged":
+            live.update(
+                status="merged",
+                review_decision="merged",
+                task_execution_authorized=False,
+                implementation_commit_sha="b" * 40,
+                reviewed_head_sha="e" * 40,
+                local_feature_branch_cleanup="observed_deleted",
+                remote_feature_branch_cleanup="observed_deleted",
+            )
+        if setup == "no_authority":
+            live["status"] = "proposed"
+            live["review_decision"] = "proposed"
+            live["task_execution_authorized"] = False
+        fixture["state_path"].write_text(json.dumps(live, indent=2) + "\n", encoding="utf-8")
+        taskctl.sync(
+            state_path=fixture["state_path"],
+            active_path=fixture["active_path"],
+            report_path=fixture["report_path"],
+        )
+        _git(work, "add", "-A")
+        _git(work, "commit", "-q", "-m", "guard fixture")
+    with pytest.raises(taskctl.TaskControlError, match=code):
+        _record_evidence(fixture, _valid_evidence())
+
+
+@needs_git
+def test_record_evidence_invalid_changes_no_tracked_file(evidence_repo: dict[str, Any]) -> None:
+    fixture = evidence_repo
+    before = (
+        fixture["state_path"].read_bytes(),
+        fixture["active_path"].read_bytes(),
+        fixture["report_path"].read_bytes(),
+    )
+    with pytest.raises(taskctl.TaskControlError, match="E_COMPLETION_EVIDENCE_VALIDATION"):
+        _record_evidence(fixture, _valid_evidence(validation_results=[]))
+    assert before == (
+        fixture["state_path"].read_bytes(),
+        fixture["active_path"].read_bytes(),
+        fixture["report_path"].read_bytes(),
+    )
+
+
+def test_record_evidence_missing_file() -> None:
+    with pytest.raises(taskctl.TaskControlError, match="E_DOCUMENT_READ"):
+        taskctl.record_evidence(evidence_file="/nonexistent/evidence.json")
+
+
+@needs_git
+def test_transition_enforces_late_evidence_mandate(evidence_repo: dict[str, Any]) -> None:
+    fixture = evidence_repo
+    live = json.loads(fixture["state_path"].read_text(encoding="utf-8"))
+    live["schema_version"] = "geox_repo_execution_state_v6"
+    live["completion_evidence"] = None
+    fixture["state_path"].write_text(json.dumps(live, indent=2) + "\n", encoding="utf-8")
+    taskctl.sync(
+        state_path=fixture["state_path"],
+        active_path=fixture["active_path"],
+        report_path=fixture["report_path"],
+    )
+    _git(fixture["work"], "add", "-A")
+    _git(fixture["work"], "commit", "-q", "-m", "null evidence fixture")
+    with pytest.raises(taskctl.TaskControlError, match="E_COMPLETION_EVIDENCE_TYPE"):
+        taskctl.transition(
+            "ready_for_review",
+            implementation_sha="b" * 40,
+            state_path=fixture["state_path"],
+            active_path=fixture["active_path"],
+            report_path=fixture["report_path"],
+        )
+    _record_evidence(fixture, _valid_evidence())
+    taskctl.transition(
+        "ready_for_review",
+        implementation_sha="b" * 40,
+        state_path=fixture["state_path"],
+        active_path=fixture["active_path"],
+        report_path=fixture["report_path"],
+    )
+    canonical = json.loads(fixture["state_path"].read_text(encoding="utf-8"))
+    assert canonical["status"] == "ready_for_review"
+    assert canonical["completion_evidence"]["behavior_summary"].startswith("Evidence-validated")
+    taskctl.check(
+        state_path=fixture["state_path"],
+        active_path=fixture["active_path"],
+        report_path=fixture["report_path"],
+    )
