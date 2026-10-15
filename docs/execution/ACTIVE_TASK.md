@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** `authorized`
+**Status:** `changes_requested`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -11,21 +11,21 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Base SHA:** `3c2f7ec3dfb196c3308e8fb8f67c68d8ff5dc69e`
 - **Authorization provenance:** `9e73059a066cf79c118a389ac4cc2923e0e694c0`
 - **Feature branch:** `tests/geox-tier1-callback-injection-repair-001`
-- **Feature branch created:** `false`
+- **Feature branch created:** `true`
 - **Task execution authorized:** `true`
-- **Correction execution authorized:** `false`
+- **Correction execution authorized:** `true`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
-- **Implementation commit:** `null`
+- **Implementation commit:** `78ef230547aff35a79a4a066b6ebd23f97483d29`
 - **Reviewed head:** `null`
-- **Rejected review head:** `null`
-- **Rejected implementation commit:** `null`
+- **Rejected review head:** `78ef230547aff35a79a4a066b6ebd23f97483d29`
+- **Rejected implementation commit:** `78ef230547aff35a79a4a066b6ebd23f97483d29`
 - **Approval commit:** `null`
-- **Blockers:** `none`
+- **Blockers:** `GEOX-TIER1-PIN-RESTORATION-001: restore the preserved GeoX/MIP/MMM coordination pins before rerunning the handoff gate.; GEOX-TIER1-GATE-REENABLE-001: the handoff pin assertion must pass on the corrected exact tree; the three unrelated historical guardrail/BRB failures remain reported and unwaived.`
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `authorized`
+- **Review decision:** `changes_requested`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`

@@ -2,7 +2,7 @@
   "schema_version": "geox_repo_execution_state_v6",
   "repository": "Phani-Pavuluri/panel_exp",
   "task_id": "GEOX_TIER1_CALLBACK_INJECTION_REPAIR_001",
-  "status": "authorized",
+  "status": "changes_requested",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
   "base_sha": "3c2f7ec3dfb196c3308e8fb8f67c68d8ff5dc69e",
@@ -11,23 +11,26 @@
   "authorization_head_sha": "9e73059a066cf79c118a389ac4cc2923e0e694c0",
   "authorized_branch_baseline_sha": "9e73059a066cf79c118a389ac4cc2923e0e694c0",
   "feature_branch": "tests/geox-tier1-callback-injection-repair-001",
-  "feature_branch_created": false,
+  "feature_branch_created": true,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
   "task_execution_authorized": true,
-  "correction_execution_authorized": false,
+  "correction_execution_authorized": true,
   "merge_authorized": false,
   "pr_creation_authorized": false,
   "reviewed_head_sha": null,
-  "rejected_review_head_sha": null,
-  "rejected_implementation_commit_sha": null,
-  "implementation_commit_sha": null,
+  "rejected_review_head_sha": "78ef230547aff35a79a4a066b6ebd23f97483d29",
+  "rejected_implementation_commit_sha": "78ef230547aff35a79a4a066b6ebd23f97483d29",
+  "implementation_commit_sha": "78ef230547aff35a79a4a066b6ebd23f97483d29",
   "approval_commit_sha": null,
   "local_feature_branch_cleanup": null,
   "remote_feature_branch_cleanup": null,
   "capability_authorizations_changed": false,
   "last_updated": "2026-10-15",
-  "blockers": [],
+  "blockers": [
+    "GEOX-TIER1-PIN-RESTORATION-001: restore the preserved GeoX/MIP/MMM coordination pins before rerunning the handoff gate.",
+    "GEOX-TIER1-GATE-REENABLE-001: the handoff pin assertion must pass on the corrected exact tree; the three unrelated historical guardrail/BRB failures remain reported and unwaived."
+  ],
   "dependencies": [
     {
       "dependency_id": "DEP-GEOX-MERGED-REJECTION-HISTORY-001",
@@ -103,7 +106,7 @@
   ],
   "next_task_id": null,
   "next_task_authorized": false,
-  "review_decision": "authorized",
+  "review_decision": "changes_requested",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
   "task_authoring_note": "Materialize the owner's existing request for a smallest existing-goal GeoX validation successor. This is a tests-only repair of the existing callback seam covering all fifteen tier-1 emission tests; no production/controller behavior, producer certification, BRB statistical decision, sibling write, policy change or merge approval.",
@@ -133,5 +136,21 @@
       ]
     }
   ],
-  "completion_evidence": null
+  "completion_evidence": {
+    "changed_paths": ["tests/validation/test_design_tier1_contract_emission_001.py"],
+    "behavior_summary": "The existing validation-owned callback seam was implemented for all fifteen tests; publication is held for pin restoration and handoff-gate re-green.",
+    "validation_results": [
+      {"command":"python3 -m json.tool docs/execution/EXECUTION_STATE.json","result":"passed","outcome":"passed"},
+      {"command":"git diff --check","result":"passed","outcome":"passed"}
+    ],
+    "validation_not_run": [
+      {"command":"python3 -m panel_exp.execution.taskctl check","reason":"The package import requires the project virtualenv; the direct taskctl.py check is the available native invocation in this isolated worktree."},
+      {"command":"focused/handoff/combined gates","reason":"The handoff pin assertion is blocked until the restored pins are applied to the published feature state."}
+    ],
+    "blockers_and_limitations": [
+      "The stable context index requires the historical pins a78c4017e06c6f0bfb4329e749972b516dfbc7e9, a293ce52a813709ca624332123019139928cc51e, and fe8e784923994406a2e4907d28debd872d61fd73.",
+      "The three unrelated historical guardrail/BRB failures remain visible and unwaived."
+    ],
+    "prohibited_operations": {"pr_creation":false,"merge":false,"squash":false,"rebase":false,"force_push":false}
+  }
 }
