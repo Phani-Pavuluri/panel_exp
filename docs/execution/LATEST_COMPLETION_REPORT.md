@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `ready_for_review`
+**Current decision:** `merged`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -11,13 +11,13 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Base SHA:** `b3a52ac34edca35e83c143c59eb37665a2e3ad2d`
 - **Authorization provenance:** `029f3039a92eec36e4401255331e8b8bfec8b74e`
 - **Feature branch:** `docs/geox-routine-merge-adoption-001`
-- **Feature branch created:** `true`
-- **Task execution authorized:** `true`
+- **Feature branch created:** `false`
+- **Task execution authorized:** `false`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `936ccf451dfef5486dc9302403fd51782b367204`
-- **Reviewed head:** `null`
+- **Reviewed head:** `abea79a09912eb5fe90fab892074896ac67e1717`
 - **Rejected review head:** `7775700e36d353016db689752a281999f9299043`
 - **Rejected implementation commit:** `936ccf451dfef5486dc9302403fd51782b367204`
 - **Approval commit:** `null`
@@ -25,9 +25,9 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `1`
 - **Correction cycles remaining:** `0`
-- **Review decision:** `ready_for_review`
-- **Local feature-branch cleanup:** `null`
-- **Remote feature-branch cleanup:** `null`
+- **Review decision:** `merged`
+- **Local feature-branch cleanup:** `observed_deleted`
+- **Remote feature-branch cleanup:** `observed_deleted`
 - **Capability authorizations changed:** `false`
 
 ## Rejection history
@@ -83,7 +83,7 @@ Bounded correction of the routine-merge adoption publication: stale contradictor
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
 ## Current outcome
 
-Bounded correction executed for the rejected `7775700` publication: stale contradictory report lineage removed, real completion evidence recorded via the native command, correction completed to `ready_for_review` on the budgeted cycle. Task ready for independent re-review. No merge, activation, or successor authorized.
+Bounded correction executed for the rejected `7775700` publication: stale contradictory report lineage removed, real completion evidence recorded via the native command, and exact reviewed head `abea79a09912eb5fe90fab892074896ac67e1717` merged by fast-forward after independent review. The feature branch was deleted and observed deleted remotely; this metadata-only closure records the merged lifecycle. No activation or successor authorized.
 
 ## Correction evidence
 
@@ -143,3 +143,9 @@ Bounded correction executed for the rejected `7775700` publication: stale contra
 ## Independent review — changes requested
 
 7775700e36d353016db689752a281999f9299043 is not accepted. GEOX-RMA-001: stale/duplicated current prose contradicts canonical authority and implementation lineage. GEOX-RMA-002: published focused 129/2 and combined 132/2 are failed required gates, not valid readiness. Canonical correction authority/rejection pair now published for the one remaining cycle. The existing native publication-evidence route within owned stable files is permitted; no controller/test changes or new capability. Final all-green gate and consistent fresh evidence required.
+
+## Supervised exact-head merge and single closure — October 15, 2026
+
+Exact head `abea79a09912eb5fe90fab892074896ac67e1717` passed independent foreground review and the declared Tier 1 gates: taskctl, focused 131, handoff 3, combined 134, JSON, diff, ancestry and owned-path checks. Receipt `75d17834-445c-46c6-864b-48c36ae5f0ba` was published under `refs/notes/codex-supervised-reviews`; implementation is `936ccf451dfef5486dc9302403fd51782b367204`.
+
+The reviewed head was merged to `main` with `git merge --ff-only`, pushed, and the feature branch deletion was observed on the remote. This single metadata-only closure records the reviewed head, receipt, gate summary, observed cleanup and unchanged authority. No merge flag, PR authority, product capability, producer-version decision, or other protected authority was added; task execution authority is closed.
