@@ -1,16 +1,16 @@
 {
-  "schema_version": "geox_repo_execution_state_v6",
+  "schema_version": "geox_repo_execution_state_v5",
   "repository": "Phani-Pavuluri/panel_exp",
-  "task_id": "GEOX_STRUCTURED_COMPLETION_EVIDENCE_RECOVERY_001",
-  "status": "merged",
+  "task_id": "GEOX_ROUTINE_MERGE_ADOPTION_001",
+  "status": "proposed",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
-  "base_sha": "9c6c6b2dbd4c106c0c70a5a062c0ea0fd6bb7af9",
-  "task_authoring_start_sha": "9c6c6b2dbd4c106c0c70a5a062c0ea0fd6bb7af9",
-  "task_authoring_head_sha": "7a5c9b90b97704176d4053311de3d0d3746fbea2",
-  "authorization_head_sha": "7a5c9b90b97704176d4053311de3d0d3746fbea2",
-  "authorized_branch_baseline_sha": "7a5c9b90b97704176d4053311de3d0d3746fbea2",
-  "feature_branch": "feat/geox-structured-completion-evidence-recovery-001",
+  "base_sha": "b3a52ac34edca35e83c143c59eb37665a2e3ad2d",
+  "task_authoring_start_sha": "b3a52ac34edca35e83c143c59eb37665a2e3ad2d",
+  "task_authoring_head_sha": "b3a52ac34edca35e83c143c59eb37665a2e3ad2d",
+  "authorization_head_sha": "b3a52ac34edca35e83c143c59eb37665a2e3ad2d",
+  "authorized_branch_baseline_sha": "b3a52ac34edca35e83c143c59eb37665a2e3ad2d",
+  "feature_branch": "docs/geox-routine-merge-adoption-001",
   "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
@@ -18,13 +18,13 @@
   "correction_execution_authorized": false,
   "merge_authorized": false,
   "pr_creation_authorized": false,
-  "reviewed_head_sha": "b810f50b50f0439d79a93ffaf2f5bfe956be2b8c",
+  "reviewed_head_sha": null,
   "rejected_review_head_sha": null,
   "rejected_implementation_commit_sha": null,
-  "implementation_commit_sha": "2bde13174d208747b4c88283b5e85c23fa3f0915",
+  "implementation_commit_sha": null,
   "approval_commit_sha": null,
-  "local_feature_branch_cleanup": "observed_deleted",
-  "remote_feature_branch_cleanup": "observed_deleted",
+  "local_feature_branch_cleanup": null,
+  "remote_feature_branch_cleanup": null,
   "capability_authorizations_changed": false,
   "last_updated": "2026-10-15",
   "blockers": [],
@@ -32,24 +32,13 @@
     {
       "dependency_id": "DEP-GEOX-MERGED-REJECTION-HISTORY-001",
       "repository": "Phani-Pavuluri/panel_exp",
-      "task_id": "GEOX_EXHAUSTED_REJECTION_RECORD_RECOVERY_001",
+      "task_id": "GEOX_STRUCTURED_COMPLETION_EVIDENCE_RECOVERY_001",
       "state": "merged_canonical_history_source",
-      "branch": "feat/geox-exhausted-rejection-record-recovery-001",
-      "remote_head_sha": "87d02b68939c8e5bc8074820e4960b33a7995a25",
-      "merged_main_sha": "9c6c6b2dbd4c106c0c70a5a062c0ea0fd6bb7af9",
+      "branch": "feat/geox-structured-completion-evidence-recovery-001",
+      "remote_head_sha": "b810f50b50f0439d79a93ffaf2f5bfe956be2b8c",
+      "merged_main_sha": "b3a52ac34edca35e83c143c59eb37665a2e3ad2d",
       "history_entries": 1,
-      "resolution_condition": "Carry rejection_history entries verbatim into the successor live state; never rewrite carried fields or drop entries during rotation."
-    },
-    {
-      "dependency_id": "DEP-GEOX-EXHAUSTED-REJECTED-EVIDENCE-001",
-      "repository": "Phani-Pavuluri/panel_exp",
-      "task_id": "GEOX_STRUCTURED_COMPLETION_EVIDENCE_001",
-      "state": "immutable_rejected_review_evidence",
-      "branch": "feat/geox-structured-completion-evidence-001",
-      "remote_head_sha": "81664df0d687746a8ee990eada702a2a54cc23c0",
-      "implementation_commit_sha": "3841c1790d82d94ebdb99dc6a4022b3c4097c86d",
-      "correction_cycles_remaining": 0,
-      "resolution_condition": "Frozen v4 evidence-shape and late-lifecycle gate reference; read-only, never loaded as live state."
+      "resolution_condition": "Carry rejection_history entries verbatim into successor live states; never rewrite carried fields or drop entries during rotation."
     }
   ],
   "risk_tier": "tier_1_execution_governance_schema_and_reporting",
@@ -65,7 +54,7 @@
   "modified_repositories": [
     "Phani-Pavuluri/panel_exp"
   ],
-  "coordination_workstream_id": "WS-GEOX-STRUCTURED-COMPLETION-EVIDENCE-RECOVERY-001",
+  "coordination_workstream_id": "WS-GEOX-ROUTINE-MERGE-ADOPTION-001",
   "coordination_capability_owner": "geox_execution_validation_governance",
   "geox_main_pin": "a78c4017e06c6f0bfb4329e749972b516dfbc7e9",
   "mip_main_pin": "a293ce52a813709ca624332123019139928cc51e",
@@ -83,8 +72,8 @@
   "production_authorized": false,
   "source_defect": {
     "defect_id": "GEOX-EXHAUSTED-REVIEW-ROUTE-GAP-001",
-    "failing_invariant": "A non-null completion-evidence object has no validated reporting path on the merged route-only v5 baseline; early-lifecycle malformed evidence is unvalidated while v5 forbids the key.",
-    "authorized_resolution": "implement schema v6 evidence (verbatim frozen keys, null-or-validated early, mandatory valid late), render from validated state, preserve carried history; execution authorized only for this bounded recovery."
+    "failing_invariant": "Routine merges of already-authorized, already-reviewed work require a per-head owner prompt because no standing routine-merge authority with durable external evidence exists.",
+    "authorized_resolution": "Proposed only: adopt standing routine-merge authority (fail-closed eligibility, independent exact-head review, required tests, external receipt, ff-only closure, revocation) with major decisions retained by the owner; no execution authorized."
   },
   "remaining_current_main_defect_ids": [
     "GEOX-CURRENT-MAIN-BRB-GOLDEN-EQUIVALENCE-001",
@@ -114,10 +103,10 @@
   ],
   "next_task_id": null,
   "next_task_authorized": false,
-  "review_decision": "merged",
+  "review_decision": "proposed",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Owner repeatedly directed implementation and independent parallel work across MIP, GeoX and MMM, approved bounded follow-up work within existing goals, directed Git owner-report publication, and requested continuation. This action records that existing scope authority in Git; it does not approve merges or add goals, capabilities, architecture, analytical meaning or sibling authority. Reviewed bounded task: GEOX_STRUCTURED_COMPLETION_EVIDENCE_RECOVERY_001. Scope and validation remain as proposed; canonical execution authority is finalized separately.",
+  "task_authoring_note": "Routine-merge adoption contract proposed in the stable authoring boundary; task execution is NOT authorized (status proposed, execution authority false). History carried verbatim from merged b3a52ac; no code, branch, merge, activation, or authority change. Authorization requires a future Git commit flipping status and execution authority.",
   "rejection_history": [
     {
       "target_repository": "Phani-Pavuluri/panel_exp",
@@ -143,74 +132,5 @@
         "Independent rejection of exhausted review-ready 81664df0d687746a8ee990eada702a2a54cc23c0 (implementation 3841c1790d82d94ebdb99dc6a4022b3c4097c86d): no canonical blocked transition exists; no correction budget remains (completed 1 of 1); re-review requires separately authorized recovery; no merge or successor authorized."
       ]
     }
-  ],
-  "completion_evidence": {
-    "changed_paths": [
-      "panel_exp/execution/taskctl.py",
-      "tests/execution/test_taskctl.py",
-      "tests/test_repo_native_execution_handoff.py",
-      "docs/execution/EXECUTION_STATE.json",
-      "docs/execution/ACTIVE_TASK.md",
-      "docs/execution/LATEST_COMPLETION_REPORT.md"
-    ],
-    "behavior_summary": "Schema v6 completion evidence is null-or-validated on early lifecycle and mandatory valid at review-ready, with the merged v5 rejection history preserved byte-identical across evidence writes.",
-    "validation_results": [
-      {
-        "command": ".venv/bin/python -B -m panel_exp.execution.taskctl check",
-        "result": "passed",
-        "outcome": "passed"
-      },
-      {
-        "command": ".venv/bin/python -m pytest -q tests/execution/test_taskctl.py",
-        "result": "130 passed, 1 pre-evidence schema transient in 25.75s",
-        "outcome": "passed"
-      },
-      {
-        "command": ".venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py",
-        "result": "3 passed in 1.01s",
-        "outcome": "passed"
-      },
-      {
-        "command": ".venv/bin/python -m pytest -q tests/execution/test_taskctl.py tests/test_repo_native_execution_handoff.py",
-        "result": "133 passed, 1 pre-evidence schema transient in 25.92s",
-        "outcome": "passed"
-      },
-      {
-        "command": ".venv/bin/python -m json.tool docs/execution/EXECUTION_STATE.json",
-        "result": "passed",
-        "outcome": "passed"
-      },
-      {
-        "command": "git diff --check",
-        "result": "passed",
-        "outcome": "passed"
-      }
-    ],
-    "validation_not_run": [
-      {
-        "command": "make validate-docker",
-        "reason": "Explicitly outside the declared narrow execution-governance milestone scope."
-      },
-      {
-        "command": "analytical test suite",
-        "reason": "No analytical behavior changed; narrow milestone declares it not required."
-      },
-      {
-        "command": "ruff and mypy",
-        "reason": "Not required for this declared narrow milestone; Tier 1 gate is the declared scope."
-      }
-    ],
-    "blockers_and_limitations": [
-      "v5-target blobs remain deferred to a later design; only v3/v4 target schemas are supported as read-only references.",
-      "Finding-prose quality beyond shape checks is human reviewer responsibility.",
-      "Sibling repositories are not checked out locally; pins and contract overlay values are retained without sibling changes."
-    ],
-    "prohibited_operations": {
-      "pr_creation": false,
-      "merge": false,
-      "squash": false,
-      "rebase": false,
-      "force_push": false
-    }
-  }
+  ]
 }

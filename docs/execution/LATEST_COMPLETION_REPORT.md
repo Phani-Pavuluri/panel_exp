@@ -1,23 +1,23 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `merged`
+**Current decision:** `proposed`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
-- **Task ID:** `GEOX_STRUCTURED_COMPLETION_EVIDENCE_RECOVERY_001`
+- **Task ID:** `GEOX_ROUTINE_MERGE_ADOPTION_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Execution mode:** `branch_and_fast_forward`
-- **Base SHA:** `9c6c6b2dbd4c106c0c70a5a062c0ea0fd6bb7af9`
-- **Authorization provenance:** `7a5c9b90b97704176d4053311de3d0d3746fbea2`
-- **Feature branch:** `feat/geox-structured-completion-evidence-recovery-001`
+- **Base SHA:** `b3a52ac34edca35e83c143c59eb37665a2e3ad2d`
+- **Authorization provenance:** `b3a52ac34edca35e83c143c59eb37665a2e3ad2d`
+- **Feature branch:** `docs/geox-routine-merge-adoption-001`
 - **Feature branch created:** `false`
 - **Task execution authorized:** `false`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
-- **Implementation commit:** `2bde13174d208747b4c88283b5e85c23fa3f0915`
-- **Reviewed head:** `b810f50b50f0439d79a93ffaf2f5bfe956be2b8c`
+- **Implementation commit:** `null`
+- **Reviewed head:** `null`
 - **Rejected review head:** `null`
 - **Rejected implementation commit:** `null`
 - **Approval commit:** `null`
@@ -25,9 +25,9 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `merged`
-- **Local feature-branch cleanup:** `observed_deleted`
-- **Remote feature-branch cleanup:** `observed_deleted`
+- **Review decision:** `proposed`
+- **Local feature-branch cleanup:** `null`
+- **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
 
 ## Rejection history
@@ -37,50 +37,6 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
   - finding: Independent finding on 81664df0d687746a8ee990eada702a2a54cc23c0 with implementation 3841c1790d82d94ebdb99dc6a4022b3c4097c86d: malformed non-null completion evidence passes early-lifecycle validation and can crash rendering; the v3 and v4 controllers reject both exhausted rejection paths; 25 historical focused tests passed on the exhausted head.
   - resolution: Fresh completion-evidence recovery after merged record; old branch remains immutable and unapproved.
   - live main `de097237aef6c3681c467970acbc8f752c8ac251`; blockers: Independent rejection of exhausted review-ready 81664df0d687746a8ee990eada702a2a54cc23c0 (implementation 3841c1790d82d94ebdb99dc6a4022b3c4097c86d): no canonical blocked transition exists; no correction budget remains (completed 1 of 1); re-review requires separately authorized recovery; no merge or successor authorized.
-
-## Structured completion evidence
-
-### Changed paths
-
-- `panel_exp/execution/taskctl.py`
-- `tests/execution/test_taskctl.py`
-- `tests/test_repo_native_execution_handoff.py`
-- `docs/execution/EXECUTION_STATE.json`
-- `docs/execution/ACTIVE_TASK.md`
-- `docs/execution/LATEST_COMPLETION_REPORT.md`
-
-### Behavior
-
-Schema v6 completion evidence is null-or-validated on early lifecycle and mandatory valid at review-ready, with the merged v5 rejection history preserved byte-identical across evidence writes.
-
-### Validation results
-
-- `.venv/bin/python -B -m panel_exp.execution.taskctl check` — passed (passed)
-- `.venv/bin/python -m pytest -q tests/execution/test_taskctl.py` — 130 passed, 1 pre-evidence schema transient in 25.75s (passed)
-- `.venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py` — 3 passed in 1.01s (passed)
-- `.venv/bin/python -m pytest -q tests/execution/test_taskctl.py tests/test_repo_native_execution_handoff.py` — 133 passed, 1 pre-evidence schema transient in 25.92s (passed)
-- `.venv/bin/python -m json.tool docs/execution/EXECUTION_STATE.json` — passed (passed)
-- `git diff --check` — passed (passed)
-
-### Validation not run
-
-- `make validate-docker` — Explicitly outside the declared narrow execution-governance milestone scope.
-- `analytical test suite` — No analytical behavior changed; narrow milestone declares it not required.
-- `ruff and mypy` — Not required for this declared narrow milestone; Tier 1 gate is the declared scope.
-
-### Blockers and limitations
-
-- v5-target blobs remain deferred to a later design; only v3/v4 target schemas are supported as read-only references.
-- Finding-prose quality beyond shape checks is human reviewer responsibility.
-- Sibling repositories are not checked out locally; pins and contract overlay values are retained without sibling changes.
-
-### Prohibited-operation confirmation
-
-- pr_creation: `false`
-- merge: `false`
-- squash: `false`
-- rebase: `false`
-- force_push: `false`
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
 
 ## Current outcome
@@ -251,3 +207,38 @@ Lineage: authorized main 062d6599170b12d72af18dcc628782ff4985b506 -> approved re
 Authority impact: no new analytical, product, sibling, capability or production authority. The owner separately authorized fixing routine-approval handling; that process repair is a bounded successor, not self-approval by this task. Canonical rejection history and completion evidence preserved. GeoX exposes only review-ready CLI transitions; merged closure was authored only in canonical metadata, then validated/rendered with native taskctl sync.
 
 Cross-repository impact: modified Phani-Pavuluri/panel_exp only; workstream WS-GEOX-STRUCTURED-COMPLETION-EVIDENCE-RECOVERY-001; owner geox_execution_validation_governance. No shared snapshot refresh, producer/consumer compatibility certification or dependent product authorization follows.
+
+## Current outcome
+
+Routine-merge adoption contract proposed in the stable authoring boundary; task execution is NOT authorized. Awaiting fresh Git authorization. No code, branch, merge, activation, or authority change by this authoring.
+
+## Authoring evidence
+
+- **Authoring baseline:** `b3a52ac34edca35e83c143c59eb37665a2e3ad2d` (merged
+  `GEOX_STRUCTURED_COMPLETION_EVIDENCE_RECOVERY_001`; `main == origin/main` proven
+  before authoring). Proposed task `GEOX_ROUTINE_MERGE_ADOPTION_001`;
+  execution branch `docs/geox-routine-merge-adoption-001` verified absent
+  locally and remotely (not created).
+- **History carry:** the single merged `rejection_history` entry carried
+  byte-identical from `b3a52ac` into the proposed v5 state (verified by
+  serialization comparison); `completion_evidence` key absent per the
+  route-only baseline. Frozen heads `81664df…`, `8bcbba2…`, `b810f50…`
+  observed unchanged (read-only).
+- **Authoring gate:** `taskctl check` passed under the merged v6 controller;
+  `json.tool` passed; `git diff --check` passed; focused suite 129 passed / 5
+  failed, handoff 3 passed, combined 129 passed / 5 failed. All five failures
+  are live-shape harness coupling, not product defects: four (`null_early` x3,
+  `v6_boundaries`) inherit `task_execution_authorized=false` from any
+  unauthorized live tree and fail identically on merged main; the fifth
+  (`schema_migration`) is the designed v5→v6 transient the authorized task's
+  record-evidence resolves (exact precedent: prior task). Controller,
+  handoff, migration, and render coverage are otherwise intact and green.
+  Authoring diff limited to the three stable execution files; no code, test,
+  or context-index bytes touched.
+- **Authority:** none granted or changed. Status `proposed`, task execution
+  authority false, correction closed, merge/PR/protected/next-task false,
+  approval null. Provenance SHAs anchor the proposal baseline only.
+- **Limitations:** proposal only — no implementation, merge, activation, or
+  successor authorized. Producer-version investigation preserved for its own
+  follow-up with no version choice here. Sibling repositories not checked out
+  locally (pins retained, no sibling changes).
