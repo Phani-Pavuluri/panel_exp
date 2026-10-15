@@ -27,4 +27,7 @@ Bootstrap and merge protocol: root `AGENTS.md` — classify the full worktree,
 fetch and prune, switch to `main`, pull fast-forward only, prove
 `main == origin/main`; merge only after exact-head approval with
 `git merge --ff-only`, one closure commit, push, synchronization, and cleanup.
+Routine merges follow the standing-authority proposal in `AGENTS.md` once the
+owner adopts it: same fail-closed eligibility, per-head receipt evidence, and
+foreground closure, revocable by authoring commit.
 No `approved_for_merge` state exists; execution never creates a PR.
