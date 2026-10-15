@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `authorized`
+**Current decision:** `ready_for_review`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -16,7 +16,7 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
-- **Implementation commit:** `null`
+- **Implementation commit:** `936ccf451dfef5486dc9302403fd51782b367204`
 - **Reviewed head:** `null`
 - **Rejected review head:** `null`
 - **Rejected implementation commit:** `null`
@@ -25,7 +25,7 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `authorized`
+- **Review decision:** `ready_for_review`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
@@ -246,3 +246,43 @@ Routine-merge adoption contract proposed in the stable authoring boundary; task 
 ## Execution authorization recorded — October 15, 2026
 
 Owner authorized bounded execution of `GEOX_ROUTINE_MERGE_ADOPTION_001` within the named owned paths and Tier 1 gate. This records existing scope authority in Git; it does not approve merges, activate the standing process, or add goals, capabilities, architecture, analytical meaning, or sibling authority. Contract/source: dd265c1 proposal baseline. Mandatory taskctl, canonical/view consistency, JSON, diff, provenance, and authoring-path checks pass. This is authorization evidence, not implementation completion or merge approval. Muse-Spark implements; Codex independently reviews.
+
+## Implementation evidence (authorized task)
+
+- **Implementation commit:** `936ccf451dfef5486dc9302403fd51782b367204`
+  (`Implement routine-merge standing authority proposal (docs only)`;
+  `AGENTS.md` +27 standing-authority section, context index +3 alignment
+  lines; pure insertions, no deletions, no controller/test/product changes).
+  Standing authority activates only on owner adoption and merge of this
+  proposal; `approval_provenance.mode` generalization left untouched as the
+  explicitly owner-reserved decision.
+- **Git-observed identity and ancestry:** branch
+  `docs/geox-routine-merge-adoption-001` from synchronized post-authoring
+  main `c85bd429c6ddc4d30f9042d02e1205d6089484de`
+  (`main == origin/main` proven before branching); base `b3a52ac…` and
+  authorization `029f303…` ancestors of the branch point; frozen heads
+  `81664df…`, `8bcbba2…`, `b810f50…` observed unchanged (read-only).
+- **Local gate (exact-tree):** `taskctl check` passed; focused suite 129
+  passed with 2 live-shape harness failures, both non-product: the designed
+  v5→v6 schema transient (live v5 is correct here — no evidence work
+  authorized, so no migration; resolves in the normal course via
+  `record-evidence`) and one scaffold-control case that builds a review-ready
+  v6 state without evidence, which the late mandate correctly rejects with
+  `E_COMPLETION_EVIDENCE_TYPE`; handoff 3 passed (bootstrap
+  order, v3/v5/v6 compatibility, reference resolution, preserved pins,
+  provenance consistency, authority assertions intact); combined 132 passed /
+  2 documented harness transients; `json.tool` passed; `git diff --check`
+  passed; authorized-baseline changed-path check limited to the five owned
+  paths (AGENTS.md, context index, three stable execution files); all
+  protected/merge/PR authority false.
+- **Limitations:** proposal implementation only — no activation, merge,
+  successor, or producer-version choice. Standing authority takes effect only
+  if the owner adopts and merges this proposal; revocation remains a
+  single authoring commit. Sibling repositories not checked out locally
+  (pins retained, no sibling changes).
+- **Cross-repository impact:** GeoX only. MIP (`c7215b9…`) and MMM
+  (`6f60cd2…`) overlays read-only; historical pins retained; no consumer
+  verification or product eligibility follows.
+- **Authority impact:** none gained. Merge, PR creation, all 13 protected
+  authorities, and next-task authorization remain false; correction authority
+  closed; approval stays null; three unrelated defect IDs unresolved.
