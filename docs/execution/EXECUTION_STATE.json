@@ -92,8 +92,8 @@
   "production_authorized": false,
   "source_defect": {
     "defect_id": "GEOX-EXHAUSTED-REVIEW-ROUTE-GAP-001",
-    "failing_invariant": "An exhausted independently rejected review has no supported canonical blocked transition.",
-    "authorized_resolution": "Propose the precise contract in a standalone document for independent review before implementation."
+    "failing_invariant": "An exhausted independently rejected historical review has no supported durable canonical disposition record while preserving immutable branch evidence and the live recording task lifecycle.",
+    "authorized_resolution": "Implement and validate the evidence-only record-rejection command defined in ACTIVE_TASK.md, then record the pinned exhausted historical rejection. Prior document-only authorization is superseded; no lifecycle edge, correction budget, merge or capability authority is added."
   },
   "remaining_current_main_defect_ids": [
     "GEOX-CURRENT-MAIN-BRB-GOLDEN-EQUIVALENCE-001",
