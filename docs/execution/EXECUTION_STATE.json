@@ -2,7 +2,7 @@
   "schema_version": "geox_repo_execution_state_v5",
   "repository": "Phani-Pavuluri/panel_exp",
   "task_id": "GEOX_EXHAUSTED_REJECTION_RECORD_RECOVERY_001",
-  "status": "ready_for_review",
+  "status": "merged",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
   "base_sha": "7a83bc0af5dd293512d17a7ce42bc3b4afb8f038",
@@ -14,17 +14,17 @@
   "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
-  "task_execution_authorized": true,
+  "task_execution_authorized": false,
   "correction_execution_authorized": false,
   "merge_authorized": false,
   "pr_creation_authorized": false,
-  "reviewed_head_sha": null,
+  "reviewed_head_sha": "87d02b68939c8e5bc8074820e4960b33a7995a25",
   "rejected_review_head_sha": null,
   "rejected_implementation_commit_sha": null,
   "implementation_commit_sha": "5dc0fa0f11809618412cacf78859a5932305e6be",
   "approval_commit_sha": null,
-  "local_feature_branch_cleanup": null,
-  "remote_feature_branch_cleanup": null,
+  "local_feature_branch_cleanup": "observed_deleted",
+  "remote_feature_branch_cleanup": "observed_deleted",
   "capability_authorizations_changed": false,
   "last_updated": "2026-10-14",
   "blockers": [],
@@ -131,9 +131,9 @@
       "finding": "Canonical review-ready state again contradicted stale pre-implementation completion prose."
     }
   ],
-  "next_task_id": null,
+  "next_task_id": "GEOX_STRUCTURED_COMPLETION_EVIDENCE_RECOVERY_001",
   "next_task_authorized": false,
-  "review_decision": "ready_for_review",
+  "review_decision": "merged",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
   "task_authoring_note": "Fresh bounded implementation recovery under owner-approved setup direction. Prior failed-gate implementation is immutable evidence, never merged. Codex corrects the context-index scope omission. One outcome: verified rejection record and migration-consistent handoff; no additional correction or product authority.",
@@ -162,5 +162,19 @@
         "Independent rejection of exhausted review-ready 81664df0d687746a8ee990eada702a2a54cc23c0 (implementation 3841c1790d82d94ebdb99dc6a4022b3c4097c86d): no canonical blocked transition exists; no correction budget remains (completed 1 of 1); re-review requires separately authorized recovery; no merge or successor authorized."
       ]
     }
-  ]
+  ],
+  "approval_provenance": {
+    "mode": "supervised_owner_standing_approval_exception",
+    "exact_reviewed_head": "87d02b68939c8e5bc8074820e4960b33a7995a25",
+    "independent_note_commit": "46df84ce3124bb5be7377323a4a0ace377f54137",
+    "source": "Owner bypass of routine merge requests and approval of bounded exhausted-review recovery; independent exact-head review passed. No automatic delegated merge policy activation."
+  },
+  "planned_followup": {
+    "task_id": "GEOX_STRUCTURED_COMPLETION_EVIDENCE_RECOVERY_001",
+    "owner": "Muse-Spark GeoX worker",
+    "status": "planned_not_execution_authorized",
+    "dependency": "GEOX_EXHAUSTED_REJECTION_RECORD_RECOVERY_001 merged at reviewed head 87d02b68939c8e5bc8074820e4960b33a7995a25",
+    "outcome": "Integrate canonical fully generated completion reporting with existing v5 rejection history, validating every non-null evidence object before rendering; old rejected branch remains immutable.",
+    "next_step": "Muse proposes bounded compatibility/validation contract for independent alignment, then fresh Git authorization; do not execute from this plan."
+  }
 }

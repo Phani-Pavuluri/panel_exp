@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `ready_for_review`
+**Current decision:** `merged`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -12,12 +12,12 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Authorization provenance:** `a2efa242d27043307fe6b3a8cee89fbbc81d6c73`
 - **Feature branch:** `feat/geox-exhausted-rejection-record-recovery-001`
 - **Feature branch created:** `false`
-- **Task execution authorized:** `true`
+- **Task execution authorized:** `false`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `5dc0fa0f11809618412cacf78859a5932305e6be`
-- **Reviewed head:** `null`
+- **Reviewed head:** `87d02b68939c8e5bc8074820e4960b33a7995a25`
 - **Rejected review head:** `null`
 - **Rejected implementation commit:** `null`
 - **Approval commit:** `null`
@@ -25,9 +25,9 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `ready_for_review`
-- **Local feature-branch cleanup:** `null`
-- **Remote feature-branch cleanup:** `null`
+- **Review decision:** `merged`
+- **Local feature-branch cleanup:** `observed_deleted`
+- **Remote feature-branch cleanup:** `observed_deleted`
 - **Capability authorizations changed:** `false`
 
 ## Rejection history
@@ -96,3 +96,13 @@ Authorized recovery of rejected record implementation and migration handoff. Cor
 - **Authority impact:** none gained. Merge, PR creation, all 13 protected
   authorities, and next-task authorization remain false; correction authority
   closed; approval stays null; three unrelated defect IDs unresolved.
+
+## External merge and closure
+
+Independent exact-head review approved `87d02b68939c8e5bc8074820e4960b33a7995a25` under the owner's standing routine-merge bypass for this previously approved setup outcome. Receipt is outside the reviewed tree in `refs/notes/codex-supervised-reviews`, note commit `46df84ce3124bb5be7377323a4a0ace377f54137`. This is supervised approval, not activation of an automatic merge policy.
+
+Independent/pre-fast-forward gate and post-fast-forward gate each passed: 91 controller tests, 3 handoff tests, 94 combined; taskctl, JSON, diff, ancestry and seven owned paths passed. Independent reproductions of prior failures now give coded errors without writes. Native Tier 1 gate required no Docker.
+
+Reviewed implementation was fast-forwarded and pushed exactly; local/remote main equality observed at `87d02b68939c8e5bc8074820e4960b33a7995a25`. Remote and local task branch deletion observed. One closure commit follows that reviewed head; reviewed/implementation provenance and rejection history retained. Execution/correction authority closed; approval_commit_sha remains null; no capability or sibling authority gained. Remaining three unrelated defect IDs remain unresolved.
+
+Follow-up is explicitly planned and owned: Muse-Spark prepares the bounded completion-evidence recovery contract, preserving this merged rejection history. Execution requires its own Git authorization. It is not silently abandoned, and this closure does not authorize it.
