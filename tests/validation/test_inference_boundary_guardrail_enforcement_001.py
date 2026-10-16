@@ -315,19 +315,41 @@ class TestIntegration:
 
             return pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
 
+        class _RecordingValidation:
+            def __init__(self):
+                self.calls = []
+                self.blocking_failures = []
+                self.checks = []
+
+            def __call__(self, wide_data, rs_dp_grps, **kwargs):
+                self.calls.append(
+                    {"wide_data": wide_data, "rs_dp_grps": rs_dp_grps, **kwargs}
+                )
+                return self
+
+            def to_dict(self):
+                return {}
+
         monkeypatch.setattr(GeoExperimentDesign, "_calculate_sensitivity_metrics", _fake_metrics)
         panel = make_geo_panel(seed=7, n_units=10, n_times=40)
+        recorder = _RecordingValidation()
         geo = GeoExperimentDesign(
             panel_data=panel,
             base_randomizer_cls=CompleteRandomization,
             n_test_grps=1,
             random_state=11,
-            validate_after_assign=False,
+            validate_after_assign=True,
             test_lengths=[28],
             max_iter=5,
         )
-        run_validated_design(geo, build_contract=build_and_validate_tier1_contract)
+        run_validated_design(
+            geo,
+            validate_design=recorder,
+            build_contract=build_and_validate_tier1_contract,
+        )
         assert geo.last_evidence is not None
+        assert len(recorder.calls) == 1
+        assert set(recorder.calls[0]["rs_dp_grps"]) == {"control", "test_0"}
         design_dict = geo.last_evidence.design.to_dict()
         assert design_dict["combination_guardrail"]["combination_status"] == "not_evaluated"
         readout = build_guarded_readout(

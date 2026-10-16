@@ -383,19 +383,42 @@ class TestGeoRunnerIntegration:
             empty = pd.DataFrame()
             return empty, empty, empty
 
+        class _RecordingValidation:
+            def __init__(self):
+                self.calls = []
+                self.blocking_failures = []
+                self.checks = []
+
+            def __call__(self, wide_data, rs_dp_grps, **kwargs):
+                self.calls.append(
+                    {"wide_data": wide_data, "rs_dp_grps": rs_dp_grps, **kwargs}
+                )
+                return self
+
+            def to_dict(self):
+                return {}
+
         monkeypatch.setattr(GeoExperimentDesign, "_calculate_sensitivity_metrics", _fake_metrics)
         panel = make_geo_panel(seed=7, n_units=10, n_times=40)
+        recorder = _RecordingValidation()
         geo = GeoExperimentDesign(
             panel_data=panel,
             base_randomizer_cls=CompleteRandomization,
             n_test_grps=1,
             random_state=11,
-            validate_after_assign=False,
+            validate_after_assign=True,
             test_lengths=[28],
             max_iter=5,
         )
-        run_validated_design(geo, build_contract=build_and_validate_tier1_contract)
+        run_validated_design(
+            geo,
+            validate_design=recorder,
+            build_contract=build_and_validate_tier1_contract,
+        )
         assert geo.last_evidence is not None
+        assert len(recorder.calls) == 1
+        assert recorder.calls[0]["n_test_grps"] == 1
+        assert set(recorder.calls[0]["rs_dp_grps"]) == {"control", "test_0"}
         design = geo.last_evidence.design.to_dict()
         assert "design_guardrail" in design
         assert "combination_guardrail" in design
@@ -405,6 +428,51 @@ class TestGeoRunnerIntegration:
         assert enf["combination_status"] == COMBINATION_STATUS_NOT_EVALUATED
         with pytest.raises(DesignGuardrailViolation):
             assert_design_path_allowed(enf, requested_role="TrustReport")
+
+    def test_validated_entrypoint_propagates_validation_errors(self, monkeypatch) -> None:
+        from types import SimpleNamespace
+
+        def _fake_metrics(self, *args, **kwargs):
+            import pandas as pd
+
+            empty = pd.DataFrame()
+            return empty, empty, empty
+
+        class _FailingValidation:
+            def __init__(self):
+                self.blocking_failures = ["injected-blocker"]
+                self.checks = [
+                    SimpleNamespace(
+                        status=SimpleNamespace(value="WARN"),
+                        message="injected-warning",
+                    )
+                ]
+
+            def __call__(self, *args, **kwargs):
+                return self
+
+            def to_dict(self):
+                return {}
+
+        monkeypatch.setattr(GeoExperimentDesign, "_calculate_sensitivity_metrics", _fake_metrics)
+        panel = make_geo_panel(seed=7, n_units=10, n_times=40)
+        geo = GeoExperimentDesign(
+            panel_data=panel,
+            base_randomizer_cls=CompleteRandomization,
+            n_test_grps=1,
+            random_state=11,
+            validate_after_assign=True,
+            test_lengths=[28],
+            max_iter=5,
+        )
+        run_validated_design(
+            geo,
+            validate_design=_FailingValidation(),
+            build_contract=build_and_validate_tier1_contract,
+        )
+        assert geo.last_evidence is not None
+        assert "injected-blocker" in list(geo.last_evidence.errors)
+        assert "injected-warning" in list(geo.last_evidence.warnings)
 
     def test_immutable_contract_on_evaluate(self) -> None:
         contract, validation = _contract_payload("tier1_complete_randomization_contract.json")
