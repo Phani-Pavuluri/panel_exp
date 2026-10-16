@@ -138,3 +138,28 @@ def test_run_bundle_lineage_passthrough() -> None:
     assert lineage["spec_hash"] == evidence.spec_hash
     assert lineage["assignment_hash"] == evidence.assignment_hash
     assert lineage["package_version"] == evidence.package_version
+    assert lineage["input_structure_hash"] == evidence.input_structure_hash
+    assert lineage["input_structure_hash"] == evidence.input_data_hash
+    assert lineage["code_version"] == evidence.code_version
+    assert "input_data_hash" not in lineage
+
+
+def test_run_bundle_mapping_path_carries_input_data_hash_and_drops_none() -> None:
+    panel = make_geo_panel(seed=7, n_units=10, n_times=40)
+    spec = _prov_spec()
+    evidence = ExperimentEvidence.build(
+        spec,
+        dict(_PROV_ASSIGNMENT),
+        input_data_hash=input_data_hash_from_wide(panel.wide_data),
+    )
+    mapping = dict(evidence.to_dict())
+    assert mapping["input_data_hash"] is not None
+    bundle = build_run_artifact_bundle(evidence=mapping)
+    lineage = dict(bundle.lineage)
+    assert lineage["input_data_hash"] == mapping["input_data_hash"]
+    assert lineage["input_structure_hash"] == mapping["input_structure_hash"]
+    sparsified = dict(mapping)
+    sparsified["code_version"] = None
+    sparse_lineage = dict(build_run_artifact_bundle(evidence=sparsified).lineage)
+    assert "code_version" not in sparse_lineage
+    assert sparse_lineage["input_data_hash"] == mapping["input_data_hash"]

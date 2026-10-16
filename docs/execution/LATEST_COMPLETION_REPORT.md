@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `changes_requested`
+**Current decision:** `ready_for_review`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -13,7 +13,7 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Feature branch:** `tests/geox-native-output-provenance-audit-001`
 - **Feature branch created:** `false`
 - **Task execution authorized:** `true`
-- **Correction execution authorized:** `true`
+- **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `b33c9baf8c265e29b7c60f6e6c2a18bb53c39b1c`
@@ -21,11 +21,11 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Rejected review head:** `255a610682ae72b2a23b6f16c6c813df5406d1c7`
 - **Rejected implementation commit:** `b33c9baf8c265e29b7c60f6e6c2a18bb53c39b1c`
 - **Approval commit:** `null`
-- **Blockers:** `GEOX-PROVENANCE-AUDIT-PASSTHROUGH-001: audit omits existing typed input_structure_hash/code_version passthrough and mapping input_data_hash path, with limits insufficiently distinguished.; GEOX-PROVENANCE-AUDIT-OUTCOME-002: Current outcome retains initial-authoring text instead of actual completed audit outcome.`
+- **Blockers:** `none`
 - **Maximum correction cycles:** `1`
-- **Correction cycles completed:** `0`
-- **Correction cycles remaining:** `1`
-- **Review decision:** `changes_requested`
+- **Correction cycles completed:** `1`
+- **Correction cycles remaining:** `0`
+- **Review decision:** `ready_for_review`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
@@ -84,7 +84,7 @@ Standing provenance audit over actually produced native outputs: builder-compute
 
 ## Current outcome
 
-This task is a tests-only audit of existing native provenance fields and run-bundle passthrough. No public field, product behavior, export, numerical meaning, final designation or certification is authorized. Actual implementation and gate results must be reported with their source and limitations before review publication; this initial authoring record claims no completed audit. Historical analytical/guardrail/BRB limitations remain unresolved.
+Bounded correction executed for rejected `255a6106`: bundle lineage assertions extended to the full typed six-key set plus mapping-path `input_data_hash` and `None`-drop behavior, and this outcome rewritten to actual completion. Correction completed to `ready_for_review` on the budgeted cycle with implementation retained unchanged. Task ready for independent re-review. No merge, activation, or successor authorized.
 
 ## Implementation evidence (authorized task)
 
