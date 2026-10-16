@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `ready_for_review`
+**Current decision:** `merged`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -12,12 +12,12 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Authorization provenance:** `6e9adb0895912a905c15943788f499ea50802d06`
 - **Feature branch:** `docs/geox-producer-provenance-finality-definition-001`
 - **Feature branch created:** `true`
-- **Task execution authorized:** `true`
+- **Task execution authorized:** `false`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `662a317074218d1a576ca26b96262812631cae34`
-- **Reviewed head:** `null`
+- **Reviewed head:** `a52c5f49674be8ff06d6fa77c571b73815f49843`
 - **Rejected review head:** `a63e1575b1349a45adbb76a4e345565afceea07c`
 - **Rejected implementation commit:** `662a317074218d1a576ca26b96262812631cae34`
 - **Approval commit:** `null`
@@ -25,9 +25,9 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `1`
 - **Correction cycles remaining:** `0`
-- **Review decision:** `ready_for_review`
-- **Local feature-branch cleanup:** `null`
-- **Remote feature-branch cleanup:** `null`
+- **Review decision:** `merged`
+- **Local feature-branch cleanup:** `observed_deleted`
+- **Remote feature-branch cleanup:** `observed_deleted`
 - **Capability authorizations changed:** `false`
 
 ## Rejection history
@@ -84,7 +84,7 @@ Owner-adopted producer provenance/finality direction materialized as documentati
 
 ## Current outcome
 
-The owner-adopted producer provenance/finality direction is implemented as a single documentation definition (`662a3170`, committed and tested on this branch) and now corrected for review staleness. The prior callback injection repair is merged at 2ff493c884ac06aaf8359e349fc8008f1872528a and is not reopened. Source-backed BRB coverage concerns remain unresolved; no formula, fixture or certification choice is adopted. All protected runtime/product/analytical/sibling authorities remain false. Owner approval provenance is the explicit “Adopt the definition direction” selection in the coordinating conversation, not a delegated policy inference.
+The owner-approved provenance/finality definition is merged at exact reviewed head a52c5f49674be8ff06d6fa77c571b73815f49843. Separate identity domains and opaque readout/artifact strings are documented. No export implementation, designation, certification, numerical or sibling authority follows. One native metadata closure follows implementation push and observed feature-branch cleanup.
 
 ## Implementation evidence (authorized task)
 
@@ -130,3 +130,8 @@ The owner-adopted producer provenance/finality direction is implemented as a sin
 ## Independent exact-head review — correction required
 
 Rejected a63e1575b1349a45adbb76a4e345565afceea07c / implementation 662a317074218d1a576ca26b96262812631cae34 for GEOX-DEFINITION-REPORT-CURRENT-OUTCOME-001 and GEOX-DEFINITION-OPAQUE-READOUT-VERSION-002, detailed in the active task. Independent exact-head native check and combined149 acceptance/controller/handoff tests passed; those mechanical results do not resolve the wording/evidence defects. Source checked the opaque-field authorization and actual non-emptiness validator. Muse sustained both findings in review discussion. One bounded correction cycle is now authorized; old head is not approved. Adopted direction and protected authority unchanged.
+
+
+## Owner-approved exact publication — single closure
+
+Owner adopted the recommended exact-head approval in the combined publication question; verbatim provenance and scope are in pushed Git-note receipt ff8b320b-66b6-48c1-8420-64f139a264af under refs/notes/codex-supervised-reviews. Required declared pre/post-FF gates passed on the frozen exact implementation tree; logs /Users/phani/.codex/quota-resume/geox-owner-milestone-20261016-preflight.log and /Users/phani/.codex/quota-resume/geox-owner-milestone-20261016-post-fast-forward.log. Lineage 104a7455c84d46c76e5ba234ecfcdab4524208b6 -> a52c5f49674be8ff06d6fa77c571b73815f49843 -> this one metadata closure. Main implementation was pushed; remote branch deletion and local branch deletion in primary/review clones were observed before merged state. Native lifecycle/projections/check used; protected authority unchanged. Modified GeoX only; workstream WS-GEOX-PRODUCER-PROVENANCE-FINALITY-DEFINITION-001; owner geox_producer_provenance_documentation. No consumer dependency, certification, schema, statistical or production authority is resolved by closure.
