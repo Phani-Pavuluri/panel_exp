@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `ready_for_review`
+**Current decision:** `merged`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -12,12 +12,12 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Authorization provenance:** `77216eea718267e0e4b5178f429f7f83556144e6`
 - **Feature branch:** `tests/geox-native-output-provenance-audit-001`
 - **Feature branch created:** `false`
-- **Task execution authorized:** `true`
+- **Task execution authorized:** `false`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `b33c9baf8c265e29b7c60f6e6c2a18bb53c39b1c`
-- **Reviewed head:** `null`
+- **Reviewed head:** `4c5e511e2d08e25d93fcbaa31bd7b2920dcaf7b8`
 - **Rejected review head:** `255a610682ae72b2a23b6f16c6c813df5406d1c7`
 - **Rejected implementation commit:** `b33c9baf8c265e29b7c60f6e6c2a18bb53c39b1c`
 - **Approval commit:** `null`
@@ -25,9 +25,9 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `1`
 - **Correction cycles remaining:** `0`
-- **Review decision:** `ready_for_review`
-- **Local feature-branch cleanup:** `null`
-- **Remote feature-branch cleanup:** `null`
+- **Review decision:** `merged`
+- **Local feature-branch cleanup:** `observed_deleted`
+- **Remote feature-branch cleanup:** `observed_deleted`
 - **Capability authorizations changed:** `false`
 
 ## Rejection history
@@ -133,3 +133,9 @@ Bounded correction executed for rejected `255a6106`: bundle lineage assertions e
 Rejected exact head 255a610682ae72b2a23b6f16c6c813df5406d1c7 / implementation b33c9baf8c265e29b7c60f6e6c2a18bb53c39b1c. GEOX-PROVENANCE-AUDIT-PASSTHROUGH-001: the new run-bundle test checks four existing fields while the native typed path also carries input_structure_hash and code_version; the mapping path additionally carries input_data_hash and drops None. The audit can currently pass if these existing values are lost/substituted. Muse independently sustained the coverage gap. Complete coverage of this existing passthrough behavior within the one owned audit file and state type-specific input-data/optional-code-identity limits truthfully; no new fields or production change. Keep ReadoutEvidence coverage builder-metadata-only with enforcement disabled, without claiming guardrail enforcement or end-to-end certification. Preserve all existing assertions and inherited failures.
 
 GEOX-PROVENANCE-AUDIT-OUTCOME-002: rewrite Current outcome to actual completed/corrected audit facts and limits, consistent with canonical lifecycle and implementation evidence. Sweep this same consistency class without expanding scope. One existing correction cycle is authorized for these tests/report defects; task wording, protected authority, historical pins/history remain unchanged. Same declared new-file/controller/handoff/combined/native/JSON/diff/source/ownership/ancestry gates apply to the corrected frozen tree. Publish a complete accurate receipt with implementation parent, gate/results/evidence, worktree and authority; native explicit correction completion consumes exactly this cycle, then stop ready_for_review. No merge, owner policy, numerical truth, export, certification or successor authority. Discussion: coordinator milestones/GeoX-audit-255-review-response.md.
+
+## Exact-head closure (October 16, 2026)
+
+The corrected exact head `4c5e511e2d08e25d93fcbaa31bd7b2920dcaf7b8` passed independent review and the native exact-tree gates: 6/6 audit tests, 131/131 focused tests, 3/3 handoff tests, 134 combined tests, JSON parsing, taskctl, and diff checks. The correction cycle is complete and inherited guardrail/BRB failures remain disclosed and unwaived.
+
+Under the adopted Tier 1 routine closure route, main fast-forwarded from `099d70aeddf8c1be746c47d866bbc641f885cfd7` to the reviewed head, the remote feature branch was deleted and observed, and the canonical lifecycle was projected to `merged` with execution authority closed and all protected authority unchanged. No export, certification, production, sibling, or capability authority was added.
