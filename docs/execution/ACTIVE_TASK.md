@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** `ready_for_review`
+**Status:** `changes_requested`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -11,21 +11,21 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Base SHA:** `2ff493c884ac06aaf8359e349fc8008f1872528a`
 - **Authorization provenance:** `6e9adb0895912a905c15943788f499ea50802d06`
 - **Feature branch:** `docs/geox-producer-provenance-finality-definition-001`
-- **Feature branch created:** `false`
+- **Feature branch created:** `true`
 - **Task execution authorized:** `true`
-- **Correction execution authorized:** `false`
+- **Correction execution authorized:** `true`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `662a317074218d1a576ca26b96262812631cae34`
 - **Reviewed head:** `null`
-- **Rejected review head:** `null`
-- **Rejected implementation commit:** `null`
+- **Rejected review head:** `a63e1575b1349a45adbb76a4e345565afceea07c`
+- **Rejected implementation commit:** `662a317074218d1a576ca26b96262812631cae34`
 - **Approval commit:** `null`
-- **Blockers:** `none`
+- **Blockers:** `GEOX-DEFINITION-REPORT-CURRENT-OUTCOME-001: stale pre-implementation Current outcome contradicts published completion.; GEOX-DEFINITION-OPAQUE-READOUT-VERSION-002: definition section2 assigns shape semantics to readout_version contrary to authorized opaque passthrough; enforcement wording also overstates source.`
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `ready_for_review`
+- **Review decision:** `changes_requested`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
@@ -50,3 +50,10 @@ Owned implementation: the one definition document plus stable3 lifecycle/evidenc
 Tier2 owner-adopted definition documentation. Required for execution, exact-head review and pre/post-FF: taskctl check; full focused controller suite tests/execution/test_taskctl.py; full handoff suite tests/test_repo_native_execution_handoff.py; their combined suite; json.tool, git diff --check; owned-path, authorization ancestry and source-reference checks. Run tests with the repository .venv and PYTHONPATH rooted here. Full analytical/Docker/Ruff/mypy are not_required for this documentation-only changed surface, not waived; inherited two guardrail-emission failures and BRB golden mismatch remain separately reported and unresolved. Do not deselect them to claim a green analytical suite. Carry all rejection_history entries and preserved historical geox_main_pin/mip_main_pin/mmm_main_pin byte-for-byte; these are historical observations, not current branch baselines. Record live sibling observations separately without refreshing the snapshot. Modified GeoX only; workstream WS-GEOX-PRODUCER-PROVENANCE-FINALITY-DEFINITION-001, owner geox_producer_provenance_documentation. No consumer dependency is resolved.
 
 Use native taskctl for lifecycle/projections and typed v6 completion evidence, with accurate Current outcome. Freeze the exact task-owned tree, run the required gate and publish a durable receipt naming implementation parent, gates/results/evidence, worktree and authority impact. Verify exact remote feature head and stop ready_for_review or genuine blocked. One correction cycle, no PR/merge/history rewrite or successor execution. Publication is outside Tier1 routine delegation; exact-head owner approval is required later. Unresolved execution-blocking design questions: none.
+
+
+## Independent review and bounded correction authority
+
+Rejected exact head a63e1575b1349a45adbb76a4e345565afceea07c / implementation 662a317074218d1a576ca26b96262812631cae34. Muse agrees with both source-backed findings (discussion response retained at milestones/GeoX-definition-review-response.md in coordinator runtime): GEOX-DEFINITION-REPORT-CURRENT-OUTCOME-001, stale pre-implementation Current outcome contradicts actual publication; GEOX-DEFINITION-OPAQUE-READOUT-VERSION-002, section2 groups readout_version with evidence_version as a shape contract and claims enforcement unsupported by validators. Preserve the authorized opaque readout_version/artifact_version meanings and accurately distinguish structural validation, marker stamping and string value checks. This corrects the document to existing task/source meaning; no new owner choice.
+
+The existing single correction cycle is authorized for truthful current completion and source-faithful definition wording, with a same-class consistency review inside owned paths. Canonical branch-created fact is corrected to true here. Muse owns the correction approach. Existing owned definition document and stable3 only; no product, code, tests, serialization, schema, fixture, numerical, designation or capability changes. Preserve history/pins/protected authority. Required gate remains exactly the active task gate, including full focused controller, handoff, combined suites, source/ownership/ancestry/JSON/diff checks and accurate typed evidence. Freeze and validate the corrected exact tree, publish a new durable receipt and stop ready_for_review using native explicit correction completion. No merge or successor authority.

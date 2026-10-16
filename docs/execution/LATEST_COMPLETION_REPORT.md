@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `ready_for_review`
+**Current decision:** `changes_requested`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -11,21 +11,21 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Base SHA:** `2ff493c884ac06aaf8359e349fc8008f1872528a`
 - **Authorization provenance:** `6e9adb0895912a905c15943788f499ea50802d06`
 - **Feature branch:** `docs/geox-producer-provenance-finality-definition-001`
-- **Feature branch created:** `false`
+- **Feature branch created:** `true`
 - **Task execution authorized:** `true`
-- **Correction execution authorized:** `false`
+- **Correction execution authorized:** `true`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `662a317074218d1a576ca26b96262812631cae34`
 - **Reviewed head:** `null`
-- **Rejected review head:** `null`
-- **Rejected implementation commit:** `null`
+- **Rejected review head:** `a63e1575b1349a45adbb76a4e345565afceea07c`
+- **Rejected implementation commit:** `662a317074218d1a576ca26b96262812631cae34`
 - **Approval commit:** `null`
-- **Blockers:** `none`
+- **Blockers:** `GEOX-DEFINITION-REPORT-CURRENT-OUTCOME-001: stale pre-implementation Current outcome contradicts published completion.; GEOX-DEFINITION-OPAQUE-READOUT-VERSION-002: definition section2 assigns shape semantics to readout_version contrary to authorized opaque passthrough; enforcement wording also overstates source.`
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `ready_for_review`
+- **Review decision:** `changes_requested`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
@@ -125,3 +125,8 @@ The owner-adopted producer provenance/finality direction is authorized for a sin
 - **Authority impact:** none gained. Merge, PR creation, all 13 protected
   authorities, and next-task authorization remain false; correction authority
   closed; approval stays null; three unrelated defect IDs unresolved.
+
+
+## Independent exact-head review — correction required
+
+Rejected a63e1575b1349a45adbb76a4e345565afceea07c / implementation 662a317074218d1a576ca26b96262812631cae34 for GEOX-DEFINITION-REPORT-CURRENT-OUTCOME-001 and GEOX-DEFINITION-OPAQUE-READOUT-VERSION-002, detailed in the active task. Independent exact-head native check and combined149 acceptance/controller/handoff tests passed; those mechanical results do not resolve the wording/evidence defects. Source checked the opaque-field authorization and actual non-emptiness validator. Muse sustained both findings in review discussion. One bounded correction cycle is now authorized; old head is not approved. Adopted direction and protected authority unchanged.
