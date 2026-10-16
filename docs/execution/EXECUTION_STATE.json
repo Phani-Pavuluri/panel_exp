@@ -41,8 +41,8 @@
       "resolution_condition": "Carry rejection_history entries verbatim into successor live states; never rewrite carried fields or drop entries during rotation."
     }
   ],
-    "risk_tier": "tier_1_validation_entrypoint_existing_guardrails",
-  "full_suite_validation_required": false,
+    "risk_tier": "tier_2_existing_validation_owned_orchestration",
+  "full_suite_validation_required": true,
     "validation_scope": "validated_design_entrypoint_guardrails_default_path_regression_taskctl_handoff_combined_json_diff_owned_paths",
   "unresolved_execution_blocking_design_questions": [],
   "maximum_correction_cycles": 1,
@@ -154,8 +154,8 @@
   ],
     "owned_implementation_paths": [
         "panel_exp/validation/validated_design_runner_001.py",
-        "tests/validation/test_validated_design_entrypoint_001.py",
-        "tests/validation/test_validated_design_entrypoint_default_path_001.py"
+        "tests/validation/test_design_guardrail_enforcement_001.py",
+        "tests/validation/test_inference_boundary_guardrail_enforcement_001.py"
     ],
   "prior_task": {
         "task_id": "GEOX_NATIVE_OUTPUT_PROVENANCE_AUDIT_001",

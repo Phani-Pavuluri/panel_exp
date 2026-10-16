@@ -45,7 +45,11 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 
 ## Current outcome
 
-Bounded correction executed for rejected `255a6106`: bundle lineage assertions extended to the full typed six-key set plus mapping-path `input_data_hash` and `None`-drop behavior, and this outcome rewritten to actual completion. Correction completed to `ready_for_review` on the budgeted cycle with implementation retained unchanged. Task ready for independent re-review. No merge, activation, or successor authorized.
+Validation-entrypoint task definition is being finalized under the owner's adopted separate-entrypoint direction. The owned paths now agree with the corrected source-backed packet: one new validation module, two existing test files with the default-path regression inside the first, and three stable execution files. Tier 2 scope and named gates are explicit. No entrypoint implementation, acceptance pass, production default change, statistical certification or merge is claimed. Historical pins and rejection history are preserved.
+
+## Historical predecessor evidence — native provenance audit
+
+The sections below describe only the already merged predecessor audit, not execution or validation of GEOX_VALIDATION_ENTRYPOINT_001. Its closure is recorded in canonical prior_task at a360c4cfcfa48eeaaf215beec6f44c47a462d9b5.
 
 ## Implementation evidence (authorized task)
 
