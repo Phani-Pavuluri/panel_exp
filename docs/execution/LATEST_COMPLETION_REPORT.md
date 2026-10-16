@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `changes_requested`
+**Current decision:** `ready_for_review`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -13,19 +13,19 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Feature branch:** `feat/geox-validation-entrypoint-001`
 - **Feature branch created:** `false`
 - **Task execution authorized:** `true`
-- **Correction execution authorized:** `true`
+- **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
-- **Implementation commit:** `8f3bd6128ecb3c172b9cef3c825ade79627947ee`
+- **Implementation commit:** `fc225c47948920ae11a0f157eaa33610c0ac9db4`
 - **Reviewed head:** `null`
 - **Rejected review head:** `76a3979ad761b7d5a623f039d06d9f0f4a42b4fb`
 - **Rejected implementation commit:** `8f3bd6128ecb3c172b9cef3c825ade79627947ee`
 - **Approval commit:** `null`
-- **Blockers:** `GEOX-ENTRYPOINT-VALIDATION-GATE-COVERAGE-001: existing integration tests disable original validation-enabled scenario, leaving callback forwarding/error semantics unproved.; GEOX-ENTRYPOINT-FULL-SUITE-EVIDENCE-002: required complete pytest tests/ run was omitted before full-gate receipt publication.`
+- **Blockers:** `none`
 - **Maximum correction cycles:** `1`
-- **Correction cycles completed:** `0`
-- **Correction cycles remaining:** `1`
-- **Review decision:** `changes_requested`
+- **Correction cycles completed:** `1`
+- **Correction cycles remaining:** `0`
+- **Review decision:** `ready_for_review`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
@@ -51,14 +51,14 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 
 ### Behavior
 
-Validation-owned run_validated_design orchestrator wires injected callbacks through the unmodified registry pipeline and attaches evaluated guardrail evidence via frozen-dataclass copies; default run_design path unchanged; both guardrail integration tests pass with byte-identical payload assertions.
+Validation-owned run_validated_design orchestrator wires injected callbacks through the unmodified registry pipeline and attaches evaluated guardrail evidence via frozen-dataclass copies; validation-gate forwarding covered with recording validators; default run_design path unchanged; both guardrail integration tests pass with byte-identical payload assertions.
 
 ### Validation results
 
 - `.venv/bin/python -B -m panel_exp.execution.taskctl check` — passed (passed)
-- `.venv/bin/python -m pytest -q tests/validation/test_design_guardrail_enforcement_001.py` — 46 passed in 1.43s (passed)
-- `.venv/bin/python -m pytest -q tests/validation/test_inference_boundary_guardrail_enforcement_001.py` — 42 passed in 1.03s (passed)
-- `.venv/bin/python -m pytest -q tests/validation/test_design_tier1_contract_emission_001.py` — 15 passed in 1.08s (passed)
+- `.venv/bin/python -m pytest -q tests/validation/test_design_guardrail_enforcement_001.py` — 47 passed (passed)
+- `.venv/bin/python -m pytest -q tests/validation/test_inference_boundary_guardrail_enforcement_001.py` — 42 passed (passed)
+- `.venv/bin/python -m pytest -q tests/validation/test_design_tier1_contract_emission_001.py` — 15 passed (passed)
 - `.venv/bin/python -m pytest -q tests/execution/test_taskctl.py` — 131 passed (passed)
 - `.venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py` — 3 passed (passed)
 - `.venv/bin/python -m pytest -q tests/execution/test_taskctl.py tests/test_repo_native_execution_handoff.py` — 134 passed (passed)
@@ -74,7 +74,8 @@ Validation-owned run_validated_design orchestrator wires injected callbacks thro
 ### Blockers and limitations
 
 - BlockResidualBootstrap golden-equivalence case fails as an inherited historical limitation (reported without waiver or deselection; statistical truth parked pending owner decision).
-- Guardrail verdicts produced through the new entrypoint carry evaluated NOT_EVALUATED/blocked semantics per existing fail-closed rules; no statistical certification is made or implied.
+- D5 percell committed-artifact case fails as an inherited historical limitation (identical red in baseline and candidate full-suite logs; reported without waiver or deselection).
+- Guardrail verdicts produced through the entrypoint carry evaluated NOT_EVALUATED/blocked semantics per existing fail-closed rules with no statistical certification implied.
 - Sibling repositories are not checked out locally; pins and contract overlay values are retained without sibling changes.
 
 ### Prohibited-operation confirmation
@@ -198,3 +199,48 @@ Rejected 76a3979ad761b7d5a623f039d06d9f0f4a42b4fb / implementation 8f3bd6128ecb3
 GEOX-ENTRYPOINT-FULL-SUITE-EVIDENCE-002: Muse confirms only targeted files/focused/handoff/combined suites and a separate BRB node were run; complete pytest tests/ -q (6342 collected cases) was NOT run, although required by the unchanged authorized task. No full-gate-ready claim may rest on those narrower checks. Run the actual full suite on the corrected frozen tree, with zero new deselections; compare against the actual authorization-baseline suite, report inherited BRB/statistical limitations explicitly and block on any new failure. Reviewer is independently collecting raw before/after results at milestones/GeoX-entrypoint-baseline-full-pytest.log and candidate-full-pytest.log plus JUnit and GeoX-entrypoint-full-suite-comparison.json; these are factual local evidence, not exemptions, and only completed actual results may be claimed. A missing log export alone is operator work, but this required command was genuinely unrun.
 
 One existing correction cycle for these test/evidence defects, no new capability, API meaning, architecture, numerical/statistical decision, production wiring, package distribution, sibling work or policy grant. Keep authorized human task body, rejection_history and historical pins byte-identical. Preserve evaluated NOT_EVALUATED/blocked meaning and all protected flags false. Same complete Tier2 authored target/native/handoff/combined/full-suite-before-after/JSON/diff/ownership/ancestry/authority gate applies; rewrite Current outcome and limitations accurately, publish a complete new receipt on the corrected exact tree, use native explicit --complete-correction, verify remote equality and stop ready_for_review or actual blocked. No merge/PR/history rewrite or successor execution.
+
+## Correction evidence (resumed clean clone at fc225c47)
+
+- **Implementation commit:** `fc225c47948920ae11a0f157eaa33610c0ac9db4`
+  (validation-gate forwarding coverage: recording validators plus error and
+  warning propagation in owned test files; payload assertions byte-identical;
+  no production, controller, product, or default-behavior change). Resumed in
+  an isolated clean clone carrying the verified committed bytes; Desktop dirt
+  untouched and unrelated (suite side effects under separate investigation).
+- **Canonical evidence:** nine-entry object recorded via the native CLI
+  (v6 replace on the clean tree; carried history byte-identical; live
+  status/counters/authority unchanged). Changed paths are the six owned
+  files of this outcome, verified against the branch diff. Validation
+  results are really executed gate runs, including the full-suite command
+  below with inherited failures reported; omissions explicitly scoped out.
+- **Full-suite before/after (zero deselections):** baseline `3d43ea4c`
+  4 failed / 6309 passed / 28 skipped (BRB golden, D5 mcell artifact,
+  guardrail ×2), exit 1; candidate tree 2 failed / 6313 passed / 28 skipped
+  (BRB golden, D5 mcell artifact), exit 1 — guardrail ×2 fixed, zero new
+  failures, +4 passed fully accounted (2 fixed + 2 new coverage tests). Raw
+  logs preserved by reviewer and candidate runner respectively.
+- **Git-observed identity and ancestry:** isolated clone at `fc225c47`
+  (child of correction authorization `33c3c6e5`); branch
+  `feat/geox-validation-entrypoint-001`; frozen heads observed unchanged
+  (read-only).
+- **Local gate (exact-tree):** `taskctl check` passed; guardrail files
+  47/42; tier-1 file 15/15; focused 131/131; handoff 3/3; combined 134/134;
+  full suite per above with no waiver and no deselections; `json.tool`
+  passed; `git diff --check` passed; branch diff limited to owned paths;
+  all protected/merge/PR authority false.
+- **Limitations:** correction outcome; BRB golden-equivalence and D5 mcell
+  committed-artifact cases fail as inherited historical limitations
+  (reported with exact node IDs and raw logs, unwaived, separate defects
+  requiring statistical authority and artifact-freshness decisions
+  respectively); guardrail verdicts carry evaluated NOT_EVALUATED/blocked
+  semantics with no statistical certification implied. Git identity cannot
+  evidence agent independence; sibling repositories not checked out locally
+  (pins retained, no sibling changes).
+- **Cross-repository impact:** GeoX only. MIP and MMM overlays read-only;
+  historical pins retained; no consumer verification or product eligibility
+  follows.
+- **Authority impact:** none gained. Merge, PR creation, all 13 protected
+  authorities, and next-task authorization remain false; correction authority
+  closes with this completion; approval stays null; three unrelated defect
+  IDs unresolved.
