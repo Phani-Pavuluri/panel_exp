@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `changes_requested`
+**Current decision:** `ready_for_review`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -13,7 +13,7 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Feature branch:** `docs/geox-producer-provenance-finality-definition-001`
 - **Feature branch created:** `true`
 - **Task execution authorized:** `true`
-- **Correction execution authorized:** `true`
+- **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `662a317074218d1a576ca26b96262812631cae34`
@@ -21,11 +21,11 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Rejected review head:** `a63e1575b1349a45adbb76a4e345565afceea07c`
 - **Rejected implementation commit:** `662a317074218d1a576ca26b96262812631cae34`
 - **Approval commit:** `null`
-- **Blockers:** `GEOX-DEFINITION-REPORT-CURRENT-OUTCOME-001: stale pre-implementation Current outcome contradicts published completion.; GEOX-DEFINITION-OPAQUE-READOUT-VERSION-002: definition section2 assigns shape semantics to readout_version contrary to authorized opaque passthrough; enforcement wording also overstates source.`
+- **Blockers:** `none`
 - **Maximum correction cycles:** `1`
-- **Correction cycles completed:** `0`
-- **Correction cycles remaining:** `1`
-- **Review decision:** `changes_requested`
+- **Correction cycles completed:** `1`
+- **Correction cycles remaining:** `0`
+- **Review decision:** `ready_for_review`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
@@ -84,7 +84,7 @@ Owner-adopted producer provenance/finality direction materialized as documentati
 
 ## Current outcome
 
-The owner-adopted producer provenance/finality direction is authorized for a single documentation definition. No definition implementation has begun and no feature branch has been created. The prior callback injection repair is merged at 2ff493c884ac06aaf8359e349fc8008f1872528a and is not reopened. Source-backed BRB coverage concerns remain unresolved; no formula, fixture or certification choice is adopted. All protected runtime/product/analytical/sibling authorities remain false. Owner approval provenance is the explicit “Adopt the definition direction” selection in the coordinating conversation, not a delegated policy inference.
+The owner-adopted producer provenance/finality direction is implemented as a single documentation definition (`662a3170`, committed and tested on this branch) and now corrected for review staleness. The prior callback injection repair is merged at 2ff493c884ac06aaf8359e349fc8008f1872528a and is not reopened. Source-backed BRB coverage concerns remain unresolved; no formula, fixture or certification choice is adopted. All protected runtime/product/analytical/sibling authorities remain false. Owner approval provenance is the explicit “Adopt the definition direction” selection in the coordinating conversation, not a delegated policy inference.
 
 ## Implementation evidence (authorized task)
 

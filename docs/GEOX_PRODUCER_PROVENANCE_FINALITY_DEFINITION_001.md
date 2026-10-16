@@ -36,7 +36,8 @@ marked as future work.
 |---|---|---|
 | `package_version` | Installable distribution identity | `pyproject.toml:3` and `panel_exp/__init__.py:5` (today `0.2.1`), via `evidence_module.__version__` at build time, the pattern `DesignEvidence` paths already use |
 | `builder_version` (native) / `created_by` (GeoX) | Which builder logic ran | `BUILDER_VERSION = "1.0.0"` (`readout_boundary_builder_001.py:17`); GeoX side records builder identity in existing free-text `created_by` (fixture precedent: `"fixture_generator"`, `"contract"`) — no schema change, fully compatible both directions |
-| `evidence_version` / `readout_version` | Shape contract the payload conforms to | `EVIDENCE_VERSION = "1.0"` (`panel_exp/evidence.py:48`); enforced by shape validation, never by equality to package |
+| `evidence_version` | Names the shape contract whose structure is validated | `EVIDENCE_VERSION = "1.0"` (`panel_exp/evidence.py:48`); the string itself is carried, never compared — structural validation never consults version strings |
+| `readout_version` | Opaque lineage string (with `artifact_version` below) | Non-emptiness enforced (`missing_readout_version`, contract validator); carried verbatim, no revision semantics, no conformance check against any shape version |
 | `artifact_version` | Opaque lineage string | No source defines revision semantics for it (contract declares the bare field at `:20`; envelope/registry/calibration versions are separate namespaces); carried verbatim, pinned by equality only when designated — no per-artifact-revision meaning is asserted |
 | `producer_commit` | Source-tree identity | Git SHA captured at build time; fixture `fe2e97f` is a generator literal, not a pin |
 | `replay_version` | Determinism-scheme marker | Existing `"1.0.0"` usage unchanged in meaning |
