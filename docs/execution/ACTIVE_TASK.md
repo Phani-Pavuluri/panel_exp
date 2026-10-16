@@ -1,59 +1,54 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** `merged`
+**Status:** `authorized`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
-- **Task ID:** `GEOX_PRODUCER_PROVENANCE_FINALITY_DEFINITION_001`
+- **Task ID:** `GEOX_NATIVE_OUTPUT_PROVENANCE_AUDIT_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Execution mode:** `branch_and_fast_forward`
-- **Base SHA:** `2ff493c884ac06aaf8359e349fc8008f1872528a`
-- **Authorization provenance:** `6e9adb0895912a905c15943788f499ea50802d06`
-- **Feature branch:** `docs/geox-producer-provenance-finality-definition-001`
-- **Feature branch created:** `true`
-- **Task execution authorized:** `false`
+- **Base SHA:** `6edfa269c3976bebb057f5ecd2fb459aaba2ae62`
+- **Authorization provenance:** `6edfa269c3976bebb057f5ecd2fb459aaba2ae62`
+- **Feature branch:** `tests/geox-native-output-provenance-audit-001`
+- **Feature branch created:** `false`
+- **Task execution authorized:** `true`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
-- **Implementation commit:** `662a317074218d1a576ca26b96262812631cae34`
-- **Reviewed head:** `a52c5f49674be8ff06d6fa77c571b73815f49843`
-- **Rejected review head:** `a63e1575b1349a45adbb76a4e345565afceea07c`
-- **Rejected implementation commit:** `662a317074218d1a576ca26b96262812631cae34`
+- **Implementation commit:** `null`
+- **Reviewed head:** `null`
+- **Rejected review head:** `null`
+- **Rejected implementation commit:** `null`
 - **Approval commit:** `null`
 - **Blockers:** `none`
 - **Maximum correction cycles:** `1`
-- **Correction cycles completed:** `1`
-- **Correction cycles remaining:** `0`
-- **Review decision:** `merged`
-- **Local feature-branch cleanup:** `observed_deleted`
-- **Remote feature-branch cleanup:** `observed_deleted`
+- **Correction cycles completed:** `0`
+- **Correction cycles remaining:** `1`
+- **Review decision:** `authorized`
+- **Local feature-branch cleanup:** `null`
+- **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
 
-## One outcome and explicit owner adoption
+## Primary outcome and existing owner direction
 
-Publish docs/GEOX_PRODUCER_PROVENANCE_FINALITY_DEFINITION_001.md as the bounded producer provenance/finality definition direction the owner explicitly adopted. In the coordinating conversation, the owner selected “Adopt the definition direction” after the concrete question: keep package, builder and schema identities separate using the existing fields, then prepare a bounded definition document; no estimator changes, export implementation or certification. This task materializes that choice in documentation only. Muse owns the definition document and approach; Codex independently reviews it. Actual numbers/pins, implementation, certification and downstream readiness remain separate.
+Add tests/validation/test_native_output_provenance_audit_001.py as a standing audit of provenance in actually generated native outputs and existing run-bundle passthrough. The owner requested Muse-owned bounded milestones and parallel progress within existing goals, and approved the preceding definition publication. Muse owns test approach and implementation; Codex independently reviews. One independently mergeable tests-only outcome, not producer certification or a new export boundary.
 
-## Defined behavior and compatibility boundary
+## Observable behavior and existing inputs/outputs
 
-Document the source-backed current boundary: native build_guarded_readout returns ReadoutEvidence; no production constructor/mapping to GeoXGovernedExperimentReadout exists. Classify that export translation as a future implementation gap, not a completed stamp call. Preserve GeoXReadoutProvenance's existing four fields: source_repo, source_commit, producer_package_version and created_by. Keep package, builder and evidence-schema identity domains distinct; builder identity is documented through the existing created_by convention, without adding builder_version or changing serialization. Existing readout_version and artifact_version remain opaque strings carried verbatim: do not invent revision semantics, synchronize all version namespaces or designate actual version numbers.
+Using deterministic caller-provided inputs and the existing builder/pipeline APIs, cover at least one actual DesignEvidence and ExperimentEvidence output: recompute spec_hash, assignment_hash and input_data_hash using their existing canonicalization semantics and compare to the produced fields; verify package_version comes from live distribution __version__, and existing evidence_version presence/shape expectations. Assert existing run-bundle provenance fields survive its current serialization/passthrough without substitution. Use actual builder outputs, not fixture-generator version literals as authority. Separate native ReadoutEvidence coverage: it carries evidence_version, builder_version, identities, guardrails and payload, but does NOT carry package_version or the input-hash fields. Test only fields that type actually owns and preserve that limitation explicitly. Version strings are not a certification check or a new conformance rule. No new global version equality or opaque readout/artifact revision meaning. Freeze time or compare field-wise where created_at is inherently nondeterministic. Do not weaken guardrail/statistical assertions to obtain a passing output.
 
-Document how a later explicit owner designation names the exact consumer-required producer identity and evidence before finality is asserted. No final designation occurs in this task. Distinguish producer evidence, final designation, downstream consumer verification and certification. Version naming alone cannot certify a producer, resolve BRB numerical issues or unblock calibration pairing. Keep the existing field shape and mixed-version reader/writer behavior unchanged; a future new field would require separate versioned compatibility work. The direction choices above are owner-adopted; any unresolved materially different meaning must remain a named future decision, not an invented implementation choice.
+## Scope, failure semantics and named acceptance
 
-## Scope and acceptance evidence
+Owned implementation: only the new tests/validation/test_native_output_provenance_audit_001.py plus the stable3 execution files for lifecycle/evidence. All product modules, existing tests, fixtures, golden data, schema/serialization, package/version values, gateways, estimators, numerical math, policies, snapshots, roadmap, context index and sibling files are read-only. No new fields, hashes, production stamping, export constructor, designated triple, certification or consumer readiness. API/compatibility/migration not_applicable: test addition only, no public bytes or behavior changed. Failed recomputation, missing owned field or altered passthrough must fail the new audit with the observed mismatch, never become a synthetic success. If an existing implementation defect blocks these tests, report the actual failure and distinct repair need under current task authority; do not change production to make the audit pass.
 
-Owned implementation: the one definition document plus stable3 lifecycle/evidence files. No Python, tests, fixtures, schemas, serializers, controller, gateways, version bumps, roadmap, snapshot or sibling edits. No actual export builder, enforcement, producer certification, numerical truth, BRB formula/golden change or calibration eligibility. Named source evidence: panel_exp/contracts/geox_governed_experiment_readout.py, panel_exp/validation/readout_boundary_builder_001.py, panel_exp/validation/estimator_readout_adapter_001.py, package metadata and existing governed-readout fixtures. Verify each claim against exact source/pin. The document must give domain meanings, existing-field mapping with opaque passthrough, an illustrative future designation-record shape marked non-operative, compatibility impact and independently gated next steps. No exact version triple or certification grant is selected.
+Acceptance evidence: actual generated design and experiment hash/package linkage, readout-only owned-field assertions with missing-field limitations, and existing run-bundle passthrough equality; all new audit cases green with source-backed rationale. Existing canonicalizers are source evidence, not a reason to assert fields absent from a type. No claim that this audit proves every workflow, numerical correctness, export readiness or a certified producer. Useful coverage and limitations must both appear in the human completion report.
 
-## Gate, lineage and protected history
+## Gate and authority
 
-Tier2 owner-adopted definition documentation. Required for execution, exact-head review and pre/post-FF: taskctl check; full focused controller suite tests/execution/test_taskctl.py; full handoff suite tests/test_repo_native_execution_handoff.py; their combined suite; json.tool, git diff --check; owned-path, authorization ancestry and source-reference checks. Run tests with the repository .venv and PYTHONPATH rooted here. Full analytical/Docker/Ruff/mypy are not_required for this documentation-only changed surface, not waived; inherited two guardrail-emission failures and BRB golden mismatch remain separately reported and unresolved. Do not deselect them to claim a green analytical suite. Carry all rejection_history entries and preserved historical geox_main_pin/mip_main_pin/mmm_main_pin byte-for-byte; these are historical observations, not current branch baselines. Record live sibling observations separately without refreshing the snapshot. Modified GeoX only; workstream WS-GEOX-PRODUCER-PROVENANCE-FINALITY-DEFINITION-001, owner geox_producer_provenance_documentation. No consumer dependency is resolved.
+Tier1 existing tests-only outcome. Required for execution, exact-head review and pre/post-FF: the entire new audit file; full focused tests/execution/test_taskctl.py; full tests/test_repo_native_execution_handoff.py; their combined suite; native python -m panel_exp.execution.taskctl check; json.tool, git diff --check, exact owned-path, source/authorization ancestry and unchanged-authority checks. Use repository .venv and PYTHONPATH rooted in the actual workspace. Full analytical/Docker/Ruff/mypy not_required for this narrow test addition; inherited two guardrail and one BRB failures remain named, unresolved and unwaived. Do not deselect or modify them to claim the analytical suite green.
 
-Use native taskctl for lifecycle/projections and typed v6 completion evidence, with accurate Current outcome. Freeze the exact task-owned tree, run the required gate and publish a durable receipt naming implementation parent, gates/results/evidence, worktree and authority impact. Verify exact remote feature head and stop ready_for_review or genuine blocked. One correction cycle, no PR/merge/history rewrite or successor execution. Publication is outside Tier1 routine delegation; exact-head owner approval is required later. Unresolved execution-blocking design questions: none.
+Prerequisite: preceding GEOX_PRODUCER_PROVENANCE_FINALITY_DEFINITION_001 genuinely merged/closed at this task base, reviewed a52c5f49674be8ff06d6fa77c571b73815f49843. MIP/MMM are independent read-only context; no blocking certified pair or final designation is needed for test implementation. Preserve rejection_history and historical geox_main_pin/mip_main_pin/mmm_main_pin byte-for-byte. GeoX-only WS-GEOX-NATIVE-OUTPUT-PROVENANCE-AUDIT-001, owner geox_existing_native_provenance_validation. No coordination refresh, capability grant or sibling verification follows. Existing-field consumer export, final designation, gateway enforcement and certification remain separately gated successors.
 
-
-## Independent review and bounded correction authority
-
-Rejected exact head a63e1575b1349a45adbb76a4e345565afceea07c / implementation 662a317074218d1a576ca26b96262812631cae34. Muse agrees with both source-backed findings (discussion response retained at milestones/GeoX-definition-review-response.md in coordinator runtime): GEOX-DEFINITION-REPORT-CURRENT-OUTCOME-001, stale pre-implementation Current outcome contradicts actual publication; GEOX-DEFINITION-OPAQUE-READOUT-VERSION-002, section2 groups readout_version with evidence_version as a shape contract and claims enforcement unsupported by validators. Preserve the authorized opaque readout_version/artifact_version meanings and accurately distinguish structural validation, marker stamping and string value checks. This corrects the document to existing task/source meaning; no new owner choice.
-
-The existing single correction cycle is authorized for truthful current completion and source-faithful definition wording, with a same-class consistency review inside owned paths. Canonical branch-created fact is corrected to true here. Muse owns the correction approach. Existing owned definition document and stable3 only; no product, code, tests, serialization, schema, fixture, numerical, designation or capability changes. Preserve history/pins/protected authority. Required gate remains exactly the active task gate, including full focused controller, handoff, combined suites, source/ownership/ancestry/JSON/diff checks and accurate typed evidence. Freeze and validate the corrected exact tree, publish a new durable receipt and stop ready_for_review using native explicit correction completion. No merge or successor authority.
+Use native lifecycle/evidence recording and generated projections; task wording stays unchanged after authorization, with review findings in completion evidence. Rewrite Current outcome with actual results before publication, distinguishing implementation, validation, review and merge. Freeze the task-owned tree and run the declared gate on that exact tree. Publish a complete durable validation receipt naming actual implementation parent, gate commands/results and evidence, worktree and authority impact; keep the owned-path count and baseline factual. Verify exact remote head, then stop ready_for_review or genuine blocked. One existing correction cycle; no merge/PR/history rewrite/successor execution. Future routine publication eligibility follows the adopted policy and independent exact-head evidence, never a self-approval. Unresolved execution-blocking design questions: none.

@@ -1,33 +1,33 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `merged`
+**Current decision:** `authorized`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
-- **Task ID:** `GEOX_PRODUCER_PROVENANCE_FINALITY_DEFINITION_001`
+- **Task ID:** `GEOX_NATIVE_OUTPUT_PROVENANCE_AUDIT_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Execution mode:** `branch_and_fast_forward`
-- **Base SHA:** `2ff493c884ac06aaf8359e349fc8008f1872528a`
-- **Authorization provenance:** `6e9adb0895912a905c15943788f499ea50802d06`
-- **Feature branch:** `docs/geox-producer-provenance-finality-definition-001`
-- **Feature branch created:** `true`
-- **Task execution authorized:** `false`
+- **Base SHA:** `6edfa269c3976bebb057f5ecd2fb459aaba2ae62`
+- **Authorization provenance:** `6edfa269c3976bebb057f5ecd2fb459aaba2ae62`
+- **Feature branch:** `tests/geox-native-output-provenance-audit-001`
+- **Feature branch created:** `false`
+- **Task execution authorized:** `true`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
-- **Implementation commit:** `662a317074218d1a576ca26b96262812631cae34`
-- **Reviewed head:** `a52c5f49674be8ff06d6fa77c571b73815f49843`
-- **Rejected review head:** `a63e1575b1349a45adbb76a4e345565afceea07c`
-- **Rejected implementation commit:** `662a317074218d1a576ca26b96262812631cae34`
+- **Implementation commit:** `null`
+- **Reviewed head:** `null`
+- **Rejected review head:** `null`
+- **Rejected implementation commit:** `null`
 - **Approval commit:** `null`
 - **Blockers:** `none`
 - **Maximum correction cycles:** `1`
-- **Correction cycles completed:** `1`
-- **Correction cycles remaining:** `0`
-- **Review decision:** `merged`
-- **Local feature-branch cleanup:** `observed_deleted`
-- **Remote feature-branch cleanup:** `observed_deleted`
+- **Correction cycles completed:** `0`
+- **Correction cycles remaining:** `1`
+- **Review decision:** `authorized`
+- **Local feature-branch cleanup:** `null`
+- **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
 
 ## Rejection history
@@ -40,98 +40,9 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 
 ## Structured completion evidence
 
-### Changed paths
-
-- `docs/GEOX_PRODUCER_PROVENANCE_FINALITY_DEFINITION_001.md`
-- `docs/execution/EXECUTION_STATE.json`
-- `docs/execution/ACTIVE_TASK.md`
-- `docs/execution/LATEST_COMPLETION_REPORT.md`
-
-### Behavior
-
-Owner-adopted producer provenance/finality direction materialized as documentation only: version domains with per-field sources, existing-field export mapping with opaque passthrough, non-operative designation illustration, and separately gated next steps; no version selected, nothing designated final, no code or fixtures changed.
-
-### Validation results
-
-- `.venv/bin/python -B -m panel_exp.execution.taskctl check` — passed (passed)
-- `.venv/bin/python -m pytest -q tests/validation/test_design_tier1_contract_emission_001.py` — 15 passed in 1.09s (passed)
-- `.venv/bin/python -m pytest -q tests/execution/test_taskctl.py` — 131 passed (passed)
-- `.venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py` — 3 passed (passed)
-- `.venv/bin/python -m pytest -q tests/execution/test_taskctl.py tests/test_repo_native_execution_handoff.py` — 134 passed (passed)
-- `.venv/bin/python -m json.tool docs/execution/EXECUTION_STATE.json` — passed (passed)
-- `git diff --check` — passed (passed)
-
-### Validation not run
-
-- `make validate-docker` — Full Docker validation explicitly not required for this narrow documentation milestone.
-- `analytical test suite` — No analytical behavior changed; the three historical failures are reported separately as inherited limitations.
-- `ruff and mypy` — Not required for this declared narrow milestone; Tier 1 gate is the declared scope.
-
-### Blockers and limitations
-
-- Two guardrail emission cases and one BRB golden-equivalence case fail as inherited historical limitations (2 guardrail + 1 BRB, reported without waiver or deselection, separate defects).
-- No version triple selected, nothing designated final, no certification granted; export implementation, gateway enforcement, fixture regeneration, certification, and calibration pairing each need separate authorization.
-- Sibling repositories are not checked out locally; pins and contract overlay values are retained without sibling changes.
-
-### Prohibited-operation confirmation
-
-- pr_creation: `false`
-- merge: `false`
-- squash: `false`
-- rebase: `false`
-- force_push: `false`
+- none
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
 
 ## Current outcome
 
-The owner-approved provenance/finality definition is merged at exact reviewed head a52c5f49674be8ff06d6fa77c571b73815f49843. Separate identity domains and opaque readout/artifact strings are documented. No export implementation, designation, certification, numerical or sibling authority follows. One native metadata closure follows implementation push and observed feature-branch cleanup.
-
-## Implementation evidence (authorized task)
-
-- **Implementation commit:** `662a317074218d1a576ca26b96262812631cae34`
-  (`Publish producer provenance and finality definition`; one new
-  documentation file, 89 insertions, zero deletions elsewhere; no Python,
-  tests, fixtures, schemas, serializers, controller, gateway, version,
-  roadmap, snapshot, or sibling changes).
-- **Canonical evidence:** six-key object recorded via the native CLI
-  (v6 null → valid on the clean implementation tree; carried history
-  byte-identical; live status/counters/authority unchanged). Changed paths
-  are the four owned files of this outcome, verified against the branch
-  diff. Validation results are really executed gate runs; the three
-  inherited guardrail/BRB failures are reported here as limitations, never
-  in validation results and never deselected.
-- **Git-observed identity and ancestry:** branch
-  `docs/geox-producer-provenance-finality-definition-001` from synchronized
-  post-authoring main `104a7455c84d46c76e5ba234ecfcdab4524208b6`
-  (`main == origin/main` proven before branching); base `2ff493c…` and
-  authorization `6e9adb0…` ancestors of the branch point; frozen heads
-  observed unchanged (read-only).
-- **Local gate (exact-tree):** `taskctl check` passed; tier-1 file 15/15;
-  focused 131/131; handoff 3/3; combined 134/134 with no waiver and no
-  deselections; `json.tool` passed; `git diff --check` passed;
-  authorized-baseline changed-path check limited to the four owned paths
-  (definition document plus three stable execution files); all
-  protected/merge/PR authority false.
-- **Limitations:** documentation-only outcome; two guardrail emission cases
-  and one BRB golden-equivalence case fail as inherited historical
-  limitations (reported with exact node IDs, unwaived, separate defects);
-  no version triple selected, nothing designated final, no certification
-  granted, no export implementation, no fixture regeneration. Git identity
-  cannot evidence agent independence; sibling repositories not checked out
-  locally (pins retained, no sibling changes).
-- **Cross-repository impact:** GeoX only. MIP and MMM overlays read-only;
-  historical pins retained; no consumer verification or product eligibility
-  follows.
-- **Authority impact:** none gained. Merge, PR creation, all 13 protected
-  authorities, and next-task authorization remain false; correction authority
-  closed; approval stays null; three unrelated defect IDs unresolved.
-
-
-## Independent exact-head review — correction required
-
-Rejected a63e1575b1349a45adbb76a4e345565afceea07c / implementation 662a317074218d1a576ca26b96262812631cae34 for GEOX-DEFINITION-REPORT-CURRENT-OUTCOME-001 and GEOX-DEFINITION-OPAQUE-READOUT-VERSION-002, detailed in the active task. Independent exact-head native check and combined149 acceptance/controller/handoff tests passed; those mechanical results do not resolve the wording/evidence defects. Source checked the opaque-field authorization and actual non-emptiness validator. Muse sustained both findings in review discussion. One bounded correction cycle is now authorized; old head is not approved. Adopted direction and protected authority unchanged.
-
-
-## Owner-approved exact publication — single closure
-
-Owner adopted the recommended exact-head approval in the combined publication question; verbatim provenance and scope are in pushed Git-note receipt ff8b320b-66b6-48c1-8420-64f139a264af under refs/notes/codex-supervised-reviews. Required declared pre/post-FF gates passed on the frozen exact implementation tree; logs /Users/phani/.codex/quota-resume/geox-owner-milestone-20261016-preflight.log and /Users/phani/.codex/quota-resume/geox-owner-milestone-20261016-post-fast-forward.log. Lineage 104a7455c84d46c76e5ba234ecfcdab4524208b6 -> a52c5f49674be8ff06d6fa77c571b73815f49843 -> this one metadata closure. Main implementation was pushed; remote branch deletion and local branch deletion in primary/review clones were observed before merged state. Native lifecycle/projections/check used; protected authority unchanged. Modified GeoX only; workstream WS-GEOX-PRODUCER-PROVENANCE-FINALITY-DEFINITION-001; owner geox_producer_provenance_documentation. No consumer dependency, certification, schema, statistical or production authority is resolved by closure.
+This task is a tests-only audit of existing native provenance fields and run-bundle passthrough. No public field, product behavior, export, numerical meaning, final designation or certification is authorized. Actual implementation and gate results must be reported with their source and limitations before review publication; this initial authoring record claims no completed audit. Historical analytical/guardrail/BRB limitations remain unresolved.
