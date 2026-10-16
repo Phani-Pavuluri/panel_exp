@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `ready_for_review`
+**Current decision:** `changes_requested`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -13,19 +13,19 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Feature branch:** `feat/geox-validation-entrypoint-001`
 - **Feature branch created:** `false`
 - **Task execution authorized:** `true`
-- **Correction execution authorized:** `false`
+- **Correction execution authorized:** `true`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `8f3bd6128ecb3c172b9cef3c825ade79627947ee`
 - **Reviewed head:** `null`
-- **Rejected review head:** `null`
-- **Rejected implementation commit:** `null`
+- **Rejected review head:** `76a3979ad761b7d5a623f039d06d9f0f4a42b4fb`
+- **Rejected implementation commit:** `8f3bd6128ecb3c172b9cef3c825ade79627947ee`
 - **Approval commit:** `null`
-- **Blockers:** `none`
+- **Blockers:** `GEOX-ENTRYPOINT-VALIDATION-GATE-COVERAGE-001: existing integration tests disable original validation-enabled scenario, leaving callback forwarding/error semantics unproved.; GEOX-ENTRYPOINT-FULL-SUITE-EVIDENCE-002: required complete pytest tests/ run was omitted before full-gate receipt publication.`
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `ready_for_review`
+- **Review decision:** `changes_requested`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
@@ -189,3 +189,12 @@ Under the adopted Tier 1 routine closure route, main fast-forwarded from `099d70
 - **Authority impact:** none gained. Merge, PR creation, all 13 protected
   authorities, and next-task authorization remain false; correction authority
   closed; approval stays null; three unrelated defect IDs unresolved.
+
+
+## Independent exact-source review — bounded entrypoint correction
+
+Rejected 76a3979ad761b7d5a623f039d06d9f0f4a42b4fb / implementation 8f3bd6128ecb3c172b9cef3c825ade79627947ee. GEOX-ENTRYPOINT-VALIDATION-GATE-COVERAGE-001: both original integration scenarios now add validate_after_assign=False, bypassing the default-enabled step instead of proving the entrypoint preserves callback forwarding and existing validation/error semantics. Muse sustained the requirement in msg_145e91f4e001laLgV8MFF5H9tP. Preserve the original validation-enabled scenario, every existing assertion/expected payload, and the ordinary-run default-path regression. Use already-authorized invocation/import changes and existing callback contracts within the owned test files; no unrecorded scope expansion, weakened assertions or production-default modification. Demonstrate real callback forwarding in that existing enabled path and unchanged error propagation as required by the task. No implementation code solution is prescribed.
+
+GEOX-ENTRYPOINT-FULL-SUITE-EVIDENCE-002: Muse confirms only targeted files/focused/handoff/combined suites and a separate BRB node were run; complete pytest tests/ -q (6342 collected cases) was NOT run, although required by the unchanged authorized task. No full-gate-ready claim may rest on those narrower checks. Run the actual full suite on the corrected frozen tree, with zero new deselections; compare against the actual authorization-baseline suite, report inherited BRB/statistical limitations explicitly and block on any new failure. Reviewer is independently collecting raw before/after results at milestones/GeoX-entrypoint-baseline-full-pytest.log and candidate-full-pytest.log plus JUnit and GeoX-entrypoint-full-suite-comparison.json; these are factual local evidence, not exemptions, and only completed actual results may be claimed. A missing log export alone is operator work, but this required command was genuinely unrun.
+
+One existing correction cycle for these test/evidence defects, no new capability, API meaning, architecture, numerical/statistical decision, production wiring, package distribution, sibling work or policy grant. Keep authorized human task body, rejection_history and historical pins byte-identical. Preserve evaluated NOT_EVALUATED/blocked meaning and all protected flags false. Same complete Tier2 authored target/native/handoff/combined/full-suite-before-after/JSON/diff/ownership/ancestry/authority gate applies; rewrite Current outcome and limitations accurately, publish a complete new receipt on the corrected exact tree, use native explicit --complete-correction, verify remote equality and stop ready_for_review or actual blocked. No merge/PR/history rewrite or successor execution.

@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** `ready_for_review`
+**Status:** `changes_requested`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -13,19 +13,19 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Feature branch:** `feat/geox-validation-entrypoint-001`
 - **Feature branch created:** `false`
 - **Task execution authorized:** `true`
-- **Correction execution authorized:** `false`
+- **Correction execution authorized:** `true`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `8f3bd6128ecb3c172b9cef3c825ade79627947ee`
 - **Reviewed head:** `null`
-- **Rejected review head:** `null`
-- **Rejected implementation commit:** `null`
+- **Rejected review head:** `76a3979ad761b7d5a623f039d06d9f0f4a42b4fb`
+- **Rejected implementation commit:** `8f3bd6128ecb3c172b9cef3c825ade79627947ee`
 - **Approval commit:** `null`
-- **Blockers:** `none`
+- **Blockers:** `GEOX-ENTRYPOINT-VALIDATION-GATE-COVERAGE-001: existing integration tests disable original validation-enabled scenario, leaving callback forwarding/error semantics unproved.; GEOX-ENTRYPOINT-FULL-SUITE-EVIDENCE-002: required complete pytest tests/ run was omitted before full-gate receipt publication.`
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `ready_for_review`
+- **Review decision:** `changes_requested`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
