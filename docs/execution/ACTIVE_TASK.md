@@ -1,66 +1,52 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** `merged`
+**Status:** `authorized`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
-- **Task ID:** `GEOX_TIER1_CALLBACK_INJECTION_REPAIR_001`
+- **Task ID:** `GEOX_PRODUCER_PROVENANCE_FINALITY_DEFINITION_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Execution mode:** `branch_and_fast_forward`
-- **Base SHA:** `bc1458610fec48a90d25cedf7c13b5d2d58f8e78`
-- **Authorization provenance:** `d225a87f455f1ced221e6d3b607e6ccea29f18db`
-- **Feature branch:** `tests/geox-tier1-callback-injection-repair-003`
-- **Feature branch created:** `true`
-- **Task execution authorized:** `false`
+- **Base SHA:** `2ff493c884ac06aaf8359e349fc8008f1872528a`
+- **Authorization provenance:** `2ff493c884ac06aaf8359e349fc8008f1872528a`
+- **Feature branch:** `docs/geox-producer-provenance-finality-definition-001`
+- **Feature branch created:** `false`
+- **Task execution authorized:** `true`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
-- **Implementation commit:** `2472ca62567d7068fa1d2adc3e85d7efc7d2f32e`
-- **Reviewed head:** `bc0783740187899df3a09314d79b7d50ada32a7b`
-- **Rejected review head:** `4ff92245b27311096dc4da46104633c01ecdcd92`
-- **Rejected implementation commit:** `2472ca62567d7068fa1d2adc3e85d7efc7d2f32e`
+- **Implementation commit:** `null`
+- **Reviewed head:** `null`
+- **Rejected review head:** `null`
+- **Rejected implementation commit:** `null`
 - **Approval commit:** `null`
 - **Blockers:** `none`
 - **Maximum correction cycles:** `1`
-- **Correction cycles completed:** `1`
-- **Correction cycles remaining:** `0`
-- **Review decision:** `merged`
-- **Local feature-branch cleanup:** `observed_deleted`
-- **Remote feature-branch cleanup:** `observed_deleted`
+- **Correction cycles completed:** `0`
+- **Correction cycles remaining:** `1`
+- **Review decision:** `authorized`
+- **Local feature-branch cleanup:** `null`
+- **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
 
-## Primary outcome and authority (authorized successor)
+## One outcome and explicit owner adoption
 
-Repair the existing validation-owned callback injection surface for the fifteen tests in `tests/validation/test_design_tier1_contract_emission_001.py`. The successor must preserve every assertion and payload expectation, exercise the existing callback seam, and remain tests-only. The three unrelated historical failures (two guardrail cases and one BRB case) must remain visible as limitations; they must not be waived, deselected, or folded into this task. No controller, production, analytical, producer-certification, sibling, or authority change is included. Muse-Spark owns implementation approach; Codex independently reviews.
+Publish docs/GEOX_PRODUCER_PROVENANCE_FINALITY_DEFINITION_001.md as the bounded producer provenance/finality definition direction the owner explicitly adopted. In the coordinating conversation, the owner selected “Adopt the definition direction” after the concrete question: keep package, builder and schema identities separate using the existing fields, then prepare a bounded definition document; no estimator changes, export implementation or certification. This task materializes that choice in documentation only. Muse owns the definition document and approach; Codex independently reviews it. Actual numbers/pins, implementation, certification and downstream readiness remain separate.
 
-Upon authorization, create `tests/geox-tier1-callback-injection-repair-001` from synchronized main after mandatory bootstrap, taskctl check, authorization ancestry, metadata-only authoring boundary and branch-absence verification. Affected/modified: GeoX only. Workstream `WS-GEOX-TIER1-CALLBACK-INJECTION-REPAIR-001`; owner `geox_execution_validation_governance`.
+## Defined behavior and compatibility boundary
 
-## Scope, tests and gate
+Document the source-backed current boundary: native build_guarded_readout returns ReadoutEvidence; no production constructor/mapping to GeoXGovernedExperimentReadout exists. Classify that export translation as a future implementation gap, not a completed stamp call. Preserve GeoXReadoutProvenance's existing four fields: source_repo, source_commit, producer_package_version and created_by. Keep package, builder and evidence-schema identity domains distinct; builder identity is documented through the existing created_by convention, without adding builder_version or changing serialization. Existing readout_version and artifact_version remain opaque strings carried verbatim: do not invent revision semantics, synchronize all version namespaces or designate actual version numbers.
 
-Owned on authorization: `tests/validation/test_design_tier1_contract_emission_001.py` plus the three stable execution files (generated blocks via native commands; human evidence outside markers). Controller, production, analytical, handoff, context-index, sibling, and authority surfaces are read-only. The task's own evidence must record all fifteen tests and the three unrelated historical failures without waiver or deselection. Frozen branches remain unchanged/unapproved. All protected authority false; unresolved execution-blocking design questions: none.
+Document how a later explicit owner designation names the exact consumer-required producer identity and evidence before finality is asserted. No final designation occurs in this task. Distinguish producer evidence, final designation, downstream consumer verification and certification. Version naming alone cannot certify a producer, resolve BRB numerical issues or unblock calibration pairing. Keep the existing field shape and mixed-version reader/writer behavior unchanged; a future new field would require separate versioned compatibility work. The direction choices above are owner-adopted; any unresolved materially different meaning must remain a named future decision, not an invented implementation choice.
 
-Tier 1 gate for execution and exact-head review: taskctl check; the repository's focused taskctl and handoff tests; direct execution of all fifteen tier-1 emission tests; combined result; JSON parsing; git diff --check; authorized-baseline changed-path and authority checks. The three historical guardrail/BRB failures must be reported as inherited limitations, never excluded. Full Docker validation is not required for this narrow tests-only milestone and must be recorded as not run.
+## Scope and acceptance evidence
 
-## Publication and stop (for the authorized task)
+Owned implementation: the one definition document plus stable3 lifecycle/evidence files. No Python, tests, fixtures, schemas, serializers, controller, gateways, version bumps, roadmap, snapshot or sibling edits. No actual export builder, enforcement, producer certification, numerical truth, BRB formula/golden change or calibration eligibility. Named source evidence: panel_exp/contracts/geox_governed_experiment_readout.py, panel_exp/validation/readout_boundary_builder_001.py, panel_exp/validation/estimator_readout_adapter_001.py, package metadata and existing governed-readout fixtures. Verify each claim against exact source/pin. The document must give domain meanings, existing-field mapping with opaque passthrough, an illustrative future designation-record shape marked non-operative, compatibility impact and independently gated next steps. No exact version triple or certification grant is selected.
 
-Record real gate evidence on the clean implementation tree, including all fifteen direct acceptance tests and the three inherited failures. Human evidence outside report markers must include implementation SHA, gate counts, Git identity/ancestry, limitations, cross-repo impact, and unchanged authority. Freeze and validate the exact tree, publish the declared branch, prove equality, and stop without merge or successor authorization.
+## Gate, lineage and protected history
 
-## Proposal record
+Tier2 owner-adopted definition documentation. Required for execution, exact-head review and pre/post-FF: taskctl check; full focused controller suite tests/execution/test_taskctl.py; full handoff suite tests/test_repo_native_execution_handoff.py; their combined suite; json.tool, git diff --check; owned-path, authorization ancestry and source-reference checks. Run tests with the repository .venv and PYTHONPATH rooted here. Full analytical/Docker/Ruff/mypy are not_required for this documentation-only changed surface, not waived; inherited two guardrail-emission failures and BRB golden mismatch remain separately reported and unresolved. Do not deselect them to claim a green analytical suite. Carry all rejection_history entries and preserved historical geox_main_pin/mip_main_pin/mmm_main_pin byte-for-byte; these are historical observations, not current branch baselines. Record live sibling observations separately without refreshing the snapshot. Modified GeoX only; workstream WS-GEOX-PRODUCER-PROVENANCE-FINALITY-DEFINITION-001, owner geox_producer_provenance_documentation. No consumer dependency is resolved.
 
-The existing GeoX callback seam is validation-owned and already permitted for tests; the successor covers the complete fifteen-test file rather than an earlier undercount of eleven. The three unrelated historical failures remain separate limitations. No owner policy or producer/finality decision is included; no product, contract, capability or gate authority changes.
-
-
-## Authoring amendment — historical pin restoration and fresh branch
-
-This preserves the authorized task's single tests-only outcome, owned paths, all fifteen unchanged acceptance assertions, mandatory gates and existing correction budget. Task authoring incorrectly put live observations into the three preserved historical pin fields; restore the exact committed historical values already recorded by the stable index. This is no context-index or coordination refresh and no producer-version/finality decision.
-
-Canonical declared branch is now `tests/geox-tier1-callback-injection-repair-003`, created from synchronized amended main. The initial task authorization and authoring commits remain ancestors and are recorded in canonical authoring_amendments. Prior unpublished implementation `78ef230547aff35a79a4a066b6ebd23f97483d29` on tests/geox-tier1-callback-injection-repair-001 remains frozen local evidence, not a reviewed or approved head. Preserve it; do not merge, rebase, cherry-pick, force-push, reset or delete that line. The fresh branch avoids divergence between authoring metadata repair and the unpublished implementation. Muse owns implementation approach within the same original scope. New lifecycle evidence must be actual; all gates, owned paths and authority boundaries above remain unchanged. No new task, test waiver, product or policy meaning is introduced.
-
-
-## Independent publication review and bounded correction
-
-Rejected exact head 4ff92245b27311096dc4da46104633c01ecdcd92 / implementation 2472ca62567d7068fa1d2adc3e85d7efc7d2f32e. Source review found the validation-owned hook setup preserves every acceptance assertion and production separation. However the human Current outcome says implementation on the amended branch has not begun, contradicting the published implementation and required trustworthy completion evidence. Correct that current summary, clearly distinguishing implementation complete/published from review/merge pending and inherited limitations. Canonical feature_branch_created was also false despite the live branch; reviewer corrects it to true in this metadata record. These are existing owned stable-file publication defects, not a new capability, architecture or statistical choice.
-
-One existing correction cycle is authorized; code/test implementation and protected authority remain unchanged. Update only genuinely necessary task-owned publication evidence, preserve rejected heads and carried history, run the same exact-tree gate including all15 acceptance tests plus controller/handoff/combined, JSON/diff/scope/ancestry, and publish a new complete validated receipt. Do not rerun or change unrelated analytical math/goldens; the three inherited failures remain visible and unwaived. No merge or successor authority is supplied.
+Use native taskctl for lifecycle/projections and typed v6 completion evidence, with accurate Current outcome. Freeze the exact task-owned tree, run the required gate and publish a durable receipt naming implementation parent, gates/results/evidence, worktree and authority impact. Verify exact remote feature head and stop ready_for_review or genuine blocked. One correction cycle, no PR/merge/history rewrite or successor execution. Publication is outside Tier1 routine delegation; exact-head owner approval is required later. Unresolved execution-blocking design questions: none.

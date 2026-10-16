@@ -1,33 +1,33 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `merged`
+**Current decision:** `authorized`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
-- **Task ID:** `GEOX_TIER1_CALLBACK_INJECTION_REPAIR_001`
+- **Task ID:** `GEOX_PRODUCER_PROVENANCE_FINALITY_DEFINITION_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Execution mode:** `branch_and_fast_forward`
-- **Base SHA:** `bc1458610fec48a90d25cedf7c13b5d2d58f8e78`
-- **Authorization provenance:** `d225a87f455f1ced221e6d3b607e6ccea29f18db`
-- **Feature branch:** `tests/geox-tier1-callback-injection-repair-003`
-- **Feature branch created:** `true`
-- **Task execution authorized:** `false`
+- **Base SHA:** `2ff493c884ac06aaf8359e349fc8008f1872528a`
+- **Authorization provenance:** `2ff493c884ac06aaf8359e349fc8008f1872528a`
+- **Feature branch:** `docs/geox-producer-provenance-finality-definition-001`
+- **Feature branch created:** `false`
+- **Task execution authorized:** `true`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
-- **Implementation commit:** `2472ca62567d7068fa1d2adc3e85d7efc7d2f32e`
-- **Reviewed head:** `bc0783740187899df3a09314d79b7d50ada32a7b`
-- **Rejected review head:** `4ff92245b27311096dc4da46104633c01ecdcd92`
-- **Rejected implementation commit:** `2472ca62567d7068fa1d2adc3e85d7efc7d2f32e`
+- **Implementation commit:** `null`
+- **Reviewed head:** `null`
+- **Rejected review head:** `null`
+- **Rejected implementation commit:** `null`
 - **Approval commit:** `null`
 - **Blockers:** `none`
 - **Maximum correction cycles:** `1`
-- **Correction cycles completed:** `1`
-- **Correction cycles remaining:** `0`
-- **Review decision:** `merged`
-- **Local feature-branch cleanup:** `observed_deleted`
-- **Remote feature-branch cleanup:** `observed_deleted`
+- **Correction cycles completed:** `0`
+- **Correction cycles remaining:** `1`
+- **Review decision:** `authorized`
+- **Local feature-branch cleanup:** `null`
+- **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
 
 ## Rejection history
@@ -40,106 +40,9 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 
 ## Structured completion evidence
 
-### Changed paths
-
-- `tests/validation/test_design_tier1_contract_emission_001.py`
-- `docs/execution/EXECUTION_STATE.json`
-- `docs/execution/ACTIVE_TASK.md`
-- `docs/execution/LATEST_COMPLETION_REPORT.md`
-
-### Behavior
-
-Validation-owned tier-1 contract builder injected via the documented geo_runner test seam across all fifteen emission tests with every assertion and payload expectation preserved; no production, controller, or default-behavior change.
-
-### Validation results
-
-- `.venv/bin/python -B -m panel_exp.execution.taskctl check` — passed (passed)
-- `.venv/bin/python -m pytest -q tests/validation/test_design_tier1_contract_emission_001.py` — 15 passed in 1.43s (passed)
-- `.venv/bin/python -m pytest -q tests/execution/test_taskctl.py` — 131 passed (passed)
-- `.venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py` — 3 passed (passed)
-- `.venv/bin/python -m pytest -q tests/execution/test_taskctl.py tests/test_repo_native_execution_handoff.py` — 134 passed (passed)
-- `.venv/bin/python -m json.tool docs/execution/EXECUTION_STATE.json` — passed (passed)
-- `git diff --check` — passed (passed)
-
-### Validation not run
-
-- `make validate-docker` — Full Docker validation explicitly not required for this narrow tests-only milestone.
-- `analytical test suite` — No analytical behavior changed; the three historical failures are reported separately as inherited limitations.
-- `ruff and mypy` — Not required for this declared narrow milestone; Tier 1 gate is the declared scope.
-
-### Blockers and limitations
-
-- Two guardrail emission cases and one BRB golden-equivalence case fail as inherited historical limitations (unchanged by this repair; reported without waiver or deselection).
-- Sibling repositories are not checked out locally; pins and contract overlay values are retained without sibling changes.
-
-### Prohibited-operation confirmation
-
-- pr_creation: `false`
-- merge: `false`
-- squash: `false`
-- rebase: `false`
-- force_push: `false`
+- none
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
 
 ## Current outcome
 
-The tests-only callback repair and its publication correction are merged at independently reviewed head bc0783740187899df3a09314d79b7d50ada32a7b. All fifteen unchanged acceptance tests and declared focused/handoff/combined gates passed; inherited guardrail and BRB defects remain unresolved. This one closure follows implementation push and observed branch cleanup; no new capability or sibling authority.
-
-## Authoring repair evidence
-
-Independent baseline reproduction on main86e78a7: handoff 1 failed/2 passed because live-observation pins were absent from the historical context index. Prior state3c2f7ec and the unchanged stable index agree on the restored historical pins. This authoring amendment owns only the three stable execution files. No context, handoff test, production, model, sibling, certification or statistical truth was changed. Original source head 78ef230547aff35a79a4a066b6ebd23f97483d29 and its blocker Git note remain evidence. Gate results are logged in the coordinator authoring gate log before publication; authored definitions are not completed implementation evidence.
-
-## Implementation evidence (authorized task)
-
-- **Implementation commit:** `2472ca62567d7068fa1d2adc3e85d7efc7d2f32e`
-  (`Inject validation-owned tier1 contract builder via documented test seam`;
-  fresh authorship on the amended branch — old unpublished line absent from
-  ancestry, no cherry-pick/rebase/merge; +6 setup-only lines, all fifteen
-  assertions and payload expectations byte-identical, no production,
-  controller, product, or default-behavior change).
-- **Canonical evidence:** six-key object recorded via the native CLI
-  (v6 null → valid on the clean implementation tree; carried history
-  byte-identical; live status/counters/authority unchanged). Changed paths
-  are the four owned files of this outcome, verified against the branch
-  diff. Validation results are really executed gate runs; the three
-  inherited guardrail/BRB failures are reported here as limitations, never
-  in validation results and never deselected.
-- **Git-observed identity and ancestry:** branch
-  `tests/geox-tier1-callback-injection-repair-003` from synchronized amended
-  main `b3e6a19eee671dfefb265e70c1e0b0e614e6b7b2`
-  (`main == origin/main` proven before branching); base `b44f2d8…` and
-  authorization `d225a87…` ancestors of the branch point; superseded local
-  `78ef2305` line preserved frozen and untouched; frozen heads observed
-  unchanged (read-only).
-- **Local gate (exact-tree):** `taskctl check` passed; tier-1 file 15/15;
-  focused 131/131; handoff 3/3 (restored historical pins resolve in
-  context); combined 134/134 with no waiver and no deselections;
-  `json.tool` passed; `git diff --check` passed; authorized-baseline
-  changed-path check limited to the four owned paths (tier-1 tests plus
-  three stable execution files); all protected/merge/PR authority false.
-- **Limitations:** tests-only outcome; two guardrail emission cases and one
-  BRB golden-equivalence case fail as inherited historical limitations
-  (reported with exact node IDs, unwaived, separate defects); no lifecycle
-  change beyond publication, no merge, no successor, no producer-version
-  choice. Git identity cannot evidence agent independence; sibling
-  repositories not checked out locally (pins retained, no sibling changes).
-- **Cross-repository impact:** GeoX only. MIP and MMM overlays read-only;
-  historical pins retained; no consumer verification or product eligibility
-  follows.
-- **Authority impact:** none gained. Merge, PR creation, all 13 protected
-  authorities, and next-task authorization remain false; correction authority
-  closed; approval stays null; three unrelated defect IDs unresolved.
-
-
-## Independent finding — publication correction required
-
-GEOX-CALLBACK-PUBLICATION-001: current summary incorrectly states implementation has not begun. The six-line hook setup is present and reports15 acceptance passes; replace stale summary with current implementation/publication facts without claiming merge or resolving inherited defects. Independent reviewer also corrected canonical branch-created evidence to true. Ordinary owned-file correction under the existing one-cycle budget; no owner decision needed. Existing source head 4ff92245b27311096dc4da46104633c01ecdcd92 is superseded for approval until the new exact publication is reviewed.
-
-
-## Independent routine merge and single native-projected closure
-
-Exact reviewed head bc0783740187899df3a09314d79b7d50ada32a7b (implementation 2472ca62567d7068fa1d2adc3e85d7efc7d2f32e) passed independent Codex source review and every required gate before and after fast-forward: focused 131, handoff 3, combined 134, acceptance15, taskctl, JSON, diff, owned scope and ancestry. The current task requires focused/handoff/combined and fifteen direct acceptance tests. No synthetic lifecycle fixture or extra Docker gate is claimed or required for this tests-only change.
-
-External exact-head receipt 20367c49-fe0a-475a-92ba-5981d9996c1d is pushed in refs/notes/codex-supervised-reviews at bf728d7fbd54647de35ac424d2e669ea13240d88. This uses the owner-adopted routine policy at 0e5abc9; it adds no task/product/analytical/sibling/capability authority. Lineage b3e6a19eee671dfefb265e70c1e0b0e614e6b7b2 -> bc0783740187899df3a09314d79b7d50ada32a7b -> this metadata-only closure. The implementation was pushed and actual local/remote branch deletions were observed before setting merged.
-
-The canonical JSON state is authoritative. Existing native validate_state accepts merged with the reviewed head, closed execution and observed cleanup; native taskctl sync/check projects that canonical state into both views. The task completion CLI's ready-only transition is not the merge writer. This follows the existing 0e5abc9/b3a52ac closure pattern; no generated lifecycle fields were manually edited, no new command/controller capability introduced, and exactly one post-merge metadata commit is written. Gate logs and exact source are preserved in the approval receipt. Cross-repository impact: modified GeoX only; WS-GEOX-TIER1-CALLBACK-INJECTION-REPAIR-001; owner geox_execution_validation_governance; producer-version/product blockers remain unresolved.
+The owner-adopted producer provenance/finality direction is authorized for a single documentation definition. No definition implementation has begun and no feature branch has been created. The prior callback injection repair is merged at 2ff493c884ac06aaf8359e349fc8008f1872528a and is not reopened. Source-backed BRB coverage concerns remain unresolved; no formula, fixture or certification choice is adopted. All protected runtime/product/analytical/sibling authorities remain false. Owner approval provenance is the explicit “Adopt the definition direction” selection in the coordinating conversation, not a delegated policy inference.
