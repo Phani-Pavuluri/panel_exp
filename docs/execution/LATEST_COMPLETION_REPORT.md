@@ -1,33 +1,33 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `merged`
+**Current decision:** `proposed`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
-- **Task ID:** `GEOX_NATIVE_OUTPUT_PROVENANCE_AUDIT_001`
+- **Task ID:** `GEOX_VALIDATION_ENTRYPOINT_001`
 - **Repository:** `Phani-Pavuluri/panel_exp`
 - **Execution mode:** `branch_and_fast_forward`
-- **Base SHA:** `6edfa269c3976bebb057f5ecd2fb459aaba2ae62`
-- **Authorization provenance:** `77216eea718267e0e4b5178f429f7f83556144e6`
-- **Feature branch:** `tests/geox-native-output-provenance-audit-001`
+- **Base SHA:** `a360c4cfcfa48eeaaf215beec6f44c47a462d9b5`
+- **Authorization provenance:** `null`
+- **Feature branch:** `feat/geox-validation-entrypoint-001`
 - **Feature branch created:** `false`
 - **Task execution authorized:** `false`
 - **Correction execution authorized:** `false`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
-- **Implementation commit:** `b33c9baf8c265e29b7c60f6e6c2a18bb53c39b1c`
-- **Reviewed head:** `4c5e511e2d08e25d93fcbaa31bd7b2920dcaf7b8`
-- **Rejected review head:** `255a610682ae72b2a23b6f16c6c813df5406d1c7`
-- **Rejected implementation commit:** `b33c9baf8c265e29b7c60f6e6c2a18bb53c39b1c`
+- **Implementation commit:** `null`
+- **Reviewed head:** `null`
+- **Rejected review head:** `null`
+- **Rejected implementation commit:** `null`
 - **Approval commit:** `null`
 - **Blockers:** `none`
 - **Maximum correction cycles:** `1`
-- **Correction cycles completed:** `1`
-- **Correction cycles remaining:** `0`
-- **Review decision:** `merged`
-- **Local feature-branch cleanup:** `observed_deleted`
-- **Remote feature-branch cleanup:** `observed_deleted`
+- **Correction cycles completed:** `0`
+- **Correction cycles remaining:** `1`
+- **Review decision:** `proposed`
+- **Local feature-branch cleanup:** `null`
+- **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
 
 ## Rejection history
@@ -40,46 +40,7 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 
 ## Structured completion evidence
 
-### Changed paths
-
-- `tests/validation/test_native_output_provenance_audit_001.py`
-- `docs/execution/EXECUTION_STATE.json`
-- `docs/execution/ACTIVE_TASK.md`
-- `docs/execution/LATEST_COMPLETION_REPORT.md`
-
-### Behavior
-
-Standing provenance audit over actually produced native outputs: builder-computed identities recomputed, caller-supplied hashes asserted as passthrough, ReadoutEvidence limited to owned fields, run-bundle lineage equality; zero product bytes changed.
-
-### Validation results
-
-- `.venv/bin/python -B -m panel_exp.execution.taskctl check` — passed (passed)
-- `.venv/bin/python -m pytest -q tests/validation/test_native_output_provenance_audit_001.py` — 5 passed in 1.31s (passed)
-- `.venv/bin/python -m pytest -q tests/execution/test_taskctl.py` — 131 passed (passed)
-- `.venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py` — 3 passed (passed)
-- `.venv/bin/python -m pytest -q tests/execution/test_taskctl.py tests/test_repo_native_execution_handoff.py` — 134 passed (passed)
-- `.venv/bin/python -m json.tool docs/execution/EXECUTION_STATE.json` — passed (passed)
-- `git diff --check` — passed (passed)
-
-### Validation not run
-
-- `make validate-docker` — Full Docker validation explicitly not required for this narrow tests-only milestone.
-- `analytical test suite` — No analytical behavior changed; the three historical failures are reported separately as inherited limitations.
-- `ruff and mypy` — Not required for this declared narrow milestone; Tier 1 gate is the declared scope.
-
-### Blockers and limitations
-
-- Two guardrail emission cases and one BRB golden-equivalence case fail as inherited historical limitations (reported without waiver or deselection, separate defects).
-- ReadoutEvidence carries no package or input-hash fields by construction; audit asserts presence, pins, and shape only for that type.
-- Sibling repositories are not checked out locally; pins and contract overlay values are retained without sibling changes.
-
-### Prohibited-operation confirmation
-
-- pr_creation: `false`
-- merge: `false`
-- squash: `false`
-- rebase: `false`
-- force_push: `false`
+- none
 <!-- END GEOX TASKCTL EXECUTION VIEW -->
 
 ## Current outcome

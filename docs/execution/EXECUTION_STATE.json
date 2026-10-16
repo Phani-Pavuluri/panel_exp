@@ -1,30 +1,30 @@
 {
   "schema_version": "geox_repo_execution_state_v6",
   "repository": "Phani-Pavuluri/panel_exp",
-  "task_id": "GEOX_NATIVE_OUTPUT_PROVENANCE_AUDIT_001",
-  "status": "merged",
+    "task_id": "GEOX_VALIDATION_ENTRYPOINT_001",
+    "status": "proposed",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
-  "base_sha": "6edfa269c3976bebb057f5ecd2fb459aaba2ae62",
-  "task_authoring_start_sha": "6edfa269c3976bebb057f5ecd2fb459aaba2ae62",
-  "task_authoring_head_sha": "77216eea718267e0e4b5178f429f7f83556144e6",
-  "authorization_head_sha": "77216eea718267e0e4b5178f429f7f83556144e6",
-  "authorized_branch_baseline_sha": "77216eea718267e0e4b5178f429f7f83556144e6",
-  "feature_branch": "tests/geox-native-output-provenance-audit-001",
+    "base_sha": "a360c4cfcfa48eeaaf215beec6f44c47a462d9b5",
+    "task_authoring_start_sha": "a360c4cfcfa48eeaaf215beec6f44c47a462d9b5",
+    "task_authoring_head_sha": null,
+    "authorization_head_sha": null,
+    "authorized_branch_baseline_sha": null,
+    "feature_branch": "feat/geox-validation-entrypoint-001",
   "feature_branch_created": false,
   "task_path": "docs/execution/ACTIVE_TASK.md",
   "completion_report_path": "docs/execution/LATEST_COMPLETION_REPORT.md",
-  "task_execution_authorized": false,
+    "task_execution_authorized": false,
   "correction_execution_authorized": false,
   "merge_authorized": false,
   "pr_creation_authorized": false,
-  "reviewed_head_sha": "4c5e511e2d08e25d93fcbaa31bd7b2920dcaf7b8",
-  "rejected_review_head_sha": "255a610682ae72b2a23b6f16c6c813df5406d1c7",
-  "rejected_implementation_commit_sha": "b33c9baf8c265e29b7c60f6e6c2a18bb53c39b1c",
-  "implementation_commit_sha": "b33c9baf8c265e29b7c60f6e6c2a18bb53c39b1c",
+    "reviewed_head_sha": null,
+    "rejected_review_head_sha": null,
+    "rejected_implementation_commit_sha": null,
+    "implementation_commit_sha": null,
   "approval_commit_sha": null,
-  "local_feature_branch_cleanup": "observed_deleted",
-  "remote_feature_branch_cleanup": "observed_deleted",
+    "local_feature_branch_cleanup": null,
+    "remote_feature_branch_cleanup": null,
   "capability_authorizations_changed": false,
   "last_updated": "2026-10-16",
   "blockers": [],
@@ -41,21 +41,21 @@
       "resolution_condition": "Carry rejection_history entries verbatim into successor live states; never rewrite carried fields or drop entries during rotation."
     }
   ],
-  "risk_tier": "tier_1_existing_native_provenance_tests_only",
+    "risk_tier": "tier_1_validation_entrypoint_existing_guardrails",
   "full_suite_validation_required": false,
-  "validation_scope": "actual_native_design_experiment_readout_run_bundle_existing_fields_new_tests_complete_taskctl_handoff_combined_json_diff_owned_paths",
+    "validation_scope": "validated_design_entrypoint_guardrails_default_path_regression_taskctl_handoff_combined_json_diff_owned_paths",
   "unresolved_execution_blocking_design_questions": [],
   "maximum_correction_cycles": 1,
-  "correction_cycles_completed": 1,
-  "correction_cycles_remaining": 0,
+    "correction_cycles_completed": 0,
+    "correction_cycles_remaining": 1,
   "affected_repositories": [
     "Phani-Pavuluri/panel_exp"
   ],
   "modified_repositories": [
     "Phani-Pavuluri/panel_exp"
   ],
-  "coordination_workstream_id": "WS-GEOX-NATIVE-OUTPUT-PROVENANCE-AUDIT-001",
-  "coordination_capability_owner": "geox_existing_native_provenance_validation",
+    "coordination_workstream_id": "WS-GEOX-VALIDATION-ENTRYPOINT-001",
+    "coordination_capability_owner": "geox_validation_owned_design_execution",
   "geox_main_pin": "a78c4017e06c6f0bfb4329e749972b516dfbc7e9",
   "mip_main_pin": "a293ce52a813709ca624332123019139928cc51e",
   "mmm_main_pin": "fe8e784923994406a2e4907d28debd872d61fd73",
@@ -96,12 +96,12 @@
       "finding": "Canonical review-ready state again contradicted stale pre-implementation completion prose."
     }
   ],
-  "next_task_id": null,
+    "next_task_id": null,
   "next_task_authorized": false,
-  "review_decision": "merged",
+    "review_decision": "proposed",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
-  "prompt_strategy": "invocation_only_from_git_authored_task",
-  "task_authoring_note": "Owner requested Muse-owned larger milestones and parallel existing-scope work; the source-reviewed milestone packet identifies a useful tests-only audit of existing native fields, independently mergeable after the owner-approved definition publication. This authorizes tests only, no new contract/version meaning, product bytes, export, designation, certification or analytical authority. Routine eligibility remains subject to independent exact-head review and adopted native policy.",
+    "prompt_strategy": "invocation_only_from_git_authored_task",
+    "task_authoring_note": "Owner approved the separate validation entrypoint while preserving ordinary runs and the existing validation-owned guardrail boundary. This proposed task materializes the bounded public entrypoint definition only; it grants no implementation execution, production-default, statistical, certification, export, sibling, or analytical authority.",
   "rejection_history": [
     {
       "target_repository": "Phani-Pavuluri/panel_exp",
@@ -128,78 +128,7 @@
       ]
     }
   ],
-  "completion_evidence": {
-    "changed_paths": [
-      "tests/validation/test_native_output_provenance_audit_001.py",
-      "docs/execution/EXECUTION_STATE.json",
-      "docs/execution/ACTIVE_TASK.md",
-      "docs/execution/LATEST_COMPLETION_REPORT.md"
-    ],
-    "behavior_summary": "Standing provenance audit over actually produced native outputs: builder-computed identities recomputed, caller-supplied hashes asserted as passthrough, ReadoutEvidence limited to owned fields, run-bundle lineage equality; zero product bytes changed.",
-    "validation_results": [
-      {
-        "command": ".venv/bin/python -B -m panel_exp.execution.taskctl check",
-        "result": "passed",
-        "outcome": "passed"
-      },
-      {
-        "command": ".venv/bin/python -m pytest -q tests/validation/test_native_output_provenance_audit_001.py",
-        "result": "5 passed in 1.31s",
-        "outcome": "passed"
-      },
-      {
-        "command": ".venv/bin/python -m pytest -q tests/execution/test_taskctl.py",
-        "result": "131 passed",
-        "outcome": "passed"
-      },
-      {
-        "command": ".venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py",
-        "result": "3 passed",
-        "outcome": "passed"
-      },
-      {
-        "command": ".venv/bin/python -m pytest -q tests/execution/test_taskctl.py tests/test_repo_native_execution_handoff.py",
-        "result": "134 passed",
-        "outcome": "passed"
-      },
-      {
-        "command": ".venv/bin/python -m json.tool docs/execution/EXECUTION_STATE.json",
-        "result": "passed",
-        "outcome": "passed"
-      },
-      {
-        "command": "git diff --check",
-        "result": "passed",
-        "outcome": "passed"
-      }
-    ],
-    "validation_not_run": [
-      {
-        "command": "make validate-docker",
-        "reason": "Full Docker validation explicitly not required for this narrow tests-only milestone."
-      },
-      {
-        "command": "analytical test suite",
-        "reason": "No analytical behavior changed; the three historical failures are reported separately as inherited limitations."
-      },
-      {
-        "command": "ruff and mypy",
-        "reason": "Not required for this declared narrow milestone; Tier 1 gate is the declared scope."
-      }
-    ],
-    "blockers_and_limitations": [
-      "Two guardrail emission cases and one BRB golden-equivalence case fail as inherited historical limitations (reported without waiver or deselection, separate defects).",
-      "ReadoutEvidence carries no package or input-hash fields by construction; audit asserts presence, pins, and shape only for that type.",
-      "Sibling repositories are not checked out locally; pins and contract overlay values are retained without sibling changes."
-    ],
-    "prohibited_operations": {
-      "pr_creation": false,
-      "merge": false,
-      "squash": false,
-      "rebase": false,
-      "force_push": false
-    }
-  },
+    "completion_evidence": null,
   "authoring_amendments": [
     {
       "reason": "Restore preserved historical pins incorrectly overwritten during task authoring; new declared branch prevents divergence while preserving unpublished implementation.",
@@ -223,13 +152,15 @@
       "capability_authority_changed": false
     }
   ],
-  "owned_implementation_paths": [
-    "tests/validation/test_native_output_provenance_audit_001.py"
-  ],
+    "owned_implementation_paths": [
+        "panel_exp/validation/validated_design_runner_001.py",
+        "tests/validation/test_validated_design_entrypoint_001.py",
+        "tests/validation/test_validated_design_entrypoint_default_path_001.py"
+    ],
   "prior_task": {
-    "task_id": "GEOX_PRODUCER_PROVENANCE_FINALITY_DEFINITION_001",
+        "task_id": "GEOX_NATIVE_OUTPUT_PROVENANCE_AUDIT_001",
     "status": "merged",
-    "reviewed_head_sha": "a52c5f49674be8ff06d6fa77c571b73815f49843",
-    "closure_commit_sha": "6edfa269c3976bebb057f5ecd2fb459aaba2ae62"
+        "reviewed_head_sha": "4c5e511e2d08e25d93fcbaa31bd7b2920dcaf7b8",
+        "closure_commit_sha": "a360c4cfcfa48eeaaf215beec6f44c47a462d9b5"
   }
 }
