@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "receipt_kind": "external_user_exact_head_approval",
+  "receipt_id": "ff8b320b-66b6-48c1-8420-64f139a264af",
+  "repository": "Phani-Pavuluri/panel_exp",
+  "task_id": "GEOX_PRODUCER_PROVENANCE_FINALITY_DEFINITION_001",
+  "feature_branch": "docs/geox-producer-provenance-finality-definition-001",
+  "reviewed_remote_head_sha": "a52c5f49674be8ff06d6fa77c571b73815f49843",
+  "reviewed_tree_sha": "1354385535b7cc23c3812d9a88b9c92cfc37d76b",
+  "implementation_sha": "662a317074218d1a576ca26b96262812631cae34",
+  "main_baseline_sha": "104a7455c84d46c76e5ba234ecfcdab4524208b6",
+  "authorization_head_sha": "6e9adb0895912a905c15943788f499ea50802d06",
+  "owner_decision_verbatim": "keep working till you runout of credits and go with your recommendations for approvals, and resume after credits reset, make sure to create high level reports including those choices for my knowledge",
+  "owner_decision_context": "Direct response to pending combined question recommending approval of both explicitly listed GeoX a52c5f49674be8ff06d6fa77c571b73815f49843 and MMM ab7e9b02f7442f2a0e0daa051efe49abb3c3b4a8. Durable control OWNER_DECISIONS.md commit eb02440b05827e79a8c5e5fc2f3ef61d7a87f145.",
+  "approval_scope": "Publish existing bounded reviewed outcome only; no export/model-family/schema/certification/new capability authority.",
+  "independent_review": "Foreground source, lineage, owned scope and declared gates verified; implementation is Muse-owned. Both prior findings resolved; exact frozen tree verified.",
+  "validation": {
+    "preflight": "/Users/phani/.codex/quota-resume/geox-owner-milestone-20261016-preflight.log"
+  },
+  "limitations": [
+    "Inherited analytical/guardrail/BRB limitations remain unresolved; no designation or certification."
+  ],
+  "issued_at": "2026-10-16T09:00:27.505300+00:00"
+}
