@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Active Task
 
-**Status:** `ready_for_review`
+**Status:** `changes_requested`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -13,19 +13,19 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Feature branch:** `tests/geox-native-output-provenance-audit-001`
 - **Feature branch created:** `false`
 - **Task execution authorized:** `true`
-- **Correction execution authorized:** `false`
+- **Correction execution authorized:** `true`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `b33c9baf8c265e29b7c60f6e6c2a18bb53c39b1c`
 - **Reviewed head:** `null`
-- **Rejected review head:** `null`
-- **Rejected implementation commit:** `null`
+- **Rejected review head:** `255a610682ae72b2a23b6f16c6c813df5406d1c7`
+- **Rejected implementation commit:** `b33c9baf8c265e29b7c60f6e6c2a18bb53c39b1c`
 - **Approval commit:** `null`
-- **Blockers:** `none`
+- **Blockers:** `GEOX-PROVENANCE-AUDIT-PASSTHROUGH-001: audit omits existing typed input_structure_hash/code_version passthrough and mapping input_data_hash path, with limits insufficiently distinguished.; GEOX-PROVENANCE-AUDIT-OUTCOME-002: Current outcome retains initial-authoring text instead of actual completed audit outcome.`
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `ready_for_review`
+- **Review decision:** `changes_requested`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`

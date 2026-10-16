@@ -1,7 +1,7 @@
 <!-- BEGIN GEOX TASKCTL EXECUTION VIEW -->
 # Execution Completion Report
 
-**Current decision:** `ready_for_review`
+**Current decision:** `changes_requested`
 
 _Generated from `EXECUTION_STATE.json`; do not edit._
 
@@ -13,19 +13,19 @@ _Generated from `EXECUTION_STATE.json`; do not edit._
 - **Feature branch:** `tests/geox-native-output-provenance-audit-001`
 - **Feature branch created:** `false`
 - **Task execution authorized:** `true`
-- **Correction execution authorized:** `false`
+- **Correction execution authorized:** `true`
 - **Merge authorized:** `false`
 - **PR creation authorized:** `false`
 - **Implementation commit:** `b33c9baf8c265e29b7c60f6e6c2a18bb53c39b1c`
 - **Reviewed head:** `null`
-- **Rejected review head:** `null`
-- **Rejected implementation commit:** `null`
+- **Rejected review head:** `255a610682ae72b2a23b6f16c6c813df5406d1c7`
+- **Rejected implementation commit:** `b33c9baf8c265e29b7c60f6e6c2a18bb53c39b1c`
 - **Approval commit:** `null`
-- **Blockers:** `none`
+- **Blockers:** `GEOX-PROVENANCE-AUDIT-PASSTHROUGH-001: audit omits existing typed input_structure_hash/code_version passthrough and mapping input_data_hash path, with limits insufficiently distinguished.; GEOX-PROVENANCE-AUDIT-OUTCOME-002: Current outcome retains initial-authoring text instead of actual completed audit outcome.`
 - **Maximum correction cycles:** `1`
 - **Correction cycles completed:** `0`
 - **Correction cycles remaining:** `1`
-- **Review decision:** `ready_for_review`
+- **Review decision:** `changes_requested`
 - **Local feature-branch cleanup:** `null`
 - **Remote feature-branch cleanup:** `null`
 - **Capability authorizations changed:** `false`
@@ -126,3 +126,10 @@ This task is a tests-only audit of existing native provenance fields and run-bun
 - **Authority impact:** none gained. Merge, PR creation, all 13 protected
   authorities, and next-task authorization remain false; correction authority
   closed; approval stays null; three unrelated defect IDs unresolved.
+
+
+## Independent source review — bounded audit correction
+
+Rejected exact head 255a610682ae72b2a23b6f16c6c813df5406d1c7 / implementation b33c9baf8c265e29b7c60f6e6c2a18bb53c39b1c. GEOX-PROVENANCE-AUDIT-PASSTHROUGH-001: the new run-bundle test checks four existing fields while the native typed path also carries input_structure_hash and code_version; the mapping path additionally carries input_data_hash and drops None. The audit can currently pass if these existing values are lost/substituted. Muse independently sustained the coverage gap. Complete coverage of this existing passthrough behavior within the one owned audit file and state type-specific input-data/optional-code-identity limits truthfully; no new fields or production change. Keep ReadoutEvidence coverage builder-metadata-only with enforcement disabled, without claiming guardrail enforcement or end-to-end certification. Preserve all existing assertions and inherited failures.
+
+GEOX-PROVENANCE-AUDIT-OUTCOME-002: rewrite Current outcome to actual completed/corrected audit facts and limits, consistent with canonical lifecycle and implementation evidence. Sweep this same consistency class without expanding scope. One existing correction cycle is authorized for these tests/report defects; task wording, protected authority, historical pins/history remain unchanged. Same declared new-file/controller/handoff/combined/native/JSON/diff/source/ownership/ancestry gates apply to the corrected frozen tree. Publish a complete accurate receipt with implementation parent, gate/results/evidence, worktree and authority; native explicit correction completion consumes exactly this cycle, then stop ready_for_review. No merge, owner policy, numerical truth, export, certification or successor authority. Discussion: coordinator milestones/GeoX-audit-255-review-response.md.
