@@ -12,6 +12,10 @@ import pytest
 from panel_exp.design.assign import CompleteRandomization
 from panel_exp.design.geo_experiment_design import GeoExperimentDesign
 from panel_exp.evidence import DesignEvidence, ExperimentEvidence
+from panel_exp.validation.design_contract_builder_001 import (
+    build_and_validate_tier1_contract,
+)
+from panel_exp.validation.validated_design_runner_001 import run_validated_design
 from panel_exp.validation.design_combination_guardrail_001 import (
     COMBINATION_STATUS_NOT_EVALUATED,
     RC_ENFORCE_GEOMETRY_MISMATCH,
@@ -386,10 +390,11 @@ class TestGeoRunnerIntegration:
             base_randomizer_cls=CompleteRandomization,
             n_test_grps=1,
             random_state=11,
+            validate_after_assign=False,
             test_lengths=[28],
             max_iter=5,
         )
-        geo.run_design()
+        run_validated_design(geo, build_contract=build_and_validate_tier1_contract)
         assert geo.last_evidence is not None
         design = geo.last_evidence.design.to_dict()
         assert "design_guardrail" in design
@@ -418,3 +423,29 @@ def test_no_bypass_api_in_enforcement_module() -> None:
     assert "force=True" not in src
     assert "override_guardrail" not in src
     assert "bypass_guardrail" not in src
+
+
+def test_default_run_design_emits_no_guardrail_keys(monkeypatch) -> None:
+    def _fake_metrics(self, *args, **kwargs):
+        import pandas as pd
+
+        empty = pd.DataFrame()
+        return empty, empty, empty
+
+    monkeypatch.setattr(GeoExperimentDesign, "_calculate_sensitivity_metrics", _fake_metrics)
+    panel = make_geo_panel(seed=7, n_units=10, n_times=40)
+    geo = GeoExperimentDesign(
+        panel_data=panel,
+        base_randomizer_cls=CompleteRandomization,
+        n_test_grps=1,
+        random_state=11,
+        validate_after_assign=False,
+        test_lengths=[28],
+        max_iter=5,
+    )
+    geo.run_design()
+    assert geo.last_evidence is not None
+    design = geo.last_evidence.design.to_dict()
+    assert "design_guardrail" not in design
+    assert "combination_guardrail" not in design
+    assert "guardrail_enforcement" not in design

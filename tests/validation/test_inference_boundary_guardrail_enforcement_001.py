@@ -12,6 +12,10 @@ import pytest
 from panel_exp.design.assign import CompleteRandomization
 from panel_exp.design.geo_experiment_design import GeoExperimentDesign
 from panel_exp.evidence import DesignEvidence, ReadoutEvidence
+from panel_exp.validation.design_contract_builder_001 import (
+    build_and_validate_tier1_contract,
+)
+from panel_exp.validation.validated_design_runner_001 import run_validated_design
 from panel_exp.validation.design_combination_resolver_001 import resolve_design_combination
 from panel_exp.validation.design_guardrail_runtime_001 import GUARDRAIL_BLOCK, GUARDRAIL_WARN
 from panel_exp.validation.inference_boundary_guardrail_001 import (
@@ -318,10 +322,11 @@ class TestIntegration:
             base_randomizer_cls=CompleteRandomization,
             n_test_grps=1,
             random_state=11,
+            validate_after_assign=False,
             test_lengths=[28],
             max_iter=5,
         )
-        geo.run_design()
+        run_validated_design(geo, build_contract=build_and_validate_tier1_contract)
         assert geo.last_evidence is not None
         design_dict = geo.last_evidence.design.to_dict()
         assert design_dict["combination_guardrail"]["combination_status"] == "not_evaluated"
