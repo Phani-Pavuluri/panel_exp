@@ -2,7 +2,7 @@
   "schema_version": "geox_repo_execution_state_v6",
   "repository": "Phani-Pavuluri/panel_exp",
   "task_id": "GEOX_PRODUCER_PROVENANCE_FINALITY_DEFINITION_001",
-  "status": "authorized",
+  "status": "ready_for_review",
   "execution_mode": "branch_and_fast_forward",
   "base_branch": "main",
   "base_sha": "2ff493c884ac06aaf8359e349fc8008f1872528a",
@@ -21,7 +21,7 @@
   "reviewed_head_sha": null,
   "rejected_review_head_sha": null,
   "rejected_implementation_commit_sha": null,
-  "implementation_commit_sha": null,
+  "implementation_commit_sha": "662a317074218d1a576ca26b96262812631cae34",
   "approval_commit_sha": null,
   "local_feature_branch_cleanup": null,
   "remote_feature_branch_cleanup": null,
@@ -98,7 +98,7 @@
   ],
   "next_task_id": null,
   "next_task_authorized": false,
-  "review_decision": "authorized",
+  "review_decision": "ready_for_review",
   "review_decision_source": "docs/execution/ACTIVE_TASK.md",
   "prompt_strategy": "invocation_only_from_git_authored_task",
   "task_authoring_note": "User explicitly selected Adopt the definition direction in the coordinating conversation, approving documentation of separate package/builder/schema identities through existing fields. Codex records that material direction before Muse execution. No export implementation, schema expansion, numerical truth, golden regeneration, certification or sibling authority follows. Exact reviewed publication remains owner-approved under current non-Tier1 policy.",
@@ -128,7 +128,78 @@
       ]
     }
   ],
-  "completion_evidence": null,
+  "completion_evidence": {
+    "changed_paths": [
+      "docs/GEOX_PRODUCER_PROVENANCE_FINALITY_DEFINITION_001.md",
+      "docs/execution/EXECUTION_STATE.json",
+      "docs/execution/ACTIVE_TASK.md",
+      "docs/execution/LATEST_COMPLETION_REPORT.md"
+    ],
+    "behavior_summary": "Owner-adopted producer provenance/finality direction materialized as documentation only: version domains with per-field sources, existing-field export mapping with opaque passthrough, non-operative designation illustration, and separately gated next steps; no version selected, nothing designated final, no code or fixtures changed.",
+    "validation_results": [
+      {
+        "command": ".venv/bin/python -B -m panel_exp.execution.taskctl check",
+        "result": "passed",
+        "outcome": "passed"
+      },
+      {
+        "command": ".venv/bin/python -m pytest -q tests/validation/test_design_tier1_contract_emission_001.py",
+        "result": "15 passed in 1.09s",
+        "outcome": "passed"
+      },
+      {
+        "command": ".venv/bin/python -m pytest -q tests/execution/test_taskctl.py",
+        "result": "131 passed",
+        "outcome": "passed"
+      },
+      {
+        "command": ".venv/bin/python -m pytest -q tests/test_repo_native_execution_handoff.py",
+        "result": "3 passed",
+        "outcome": "passed"
+      },
+      {
+        "command": ".venv/bin/python -m pytest -q tests/execution/test_taskctl.py tests/test_repo_native_execution_handoff.py",
+        "result": "134 passed",
+        "outcome": "passed"
+      },
+      {
+        "command": ".venv/bin/python -m json.tool docs/execution/EXECUTION_STATE.json",
+        "result": "passed",
+        "outcome": "passed"
+      },
+      {
+        "command": "git diff --check",
+        "result": "passed",
+        "outcome": "passed"
+      }
+    ],
+    "validation_not_run": [
+      {
+        "command": "make validate-docker",
+        "reason": "Full Docker validation explicitly not required for this narrow documentation milestone."
+      },
+      {
+        "command": "analytical test suite",
+        "reason": "No analytical behavior changed; the three historical failures are reported separately as inherited limitations."
+      },
+      {
+        "command": "ruff and mypy",
+        "reason": "Not required for this declared narrow milestone; Tier 1 gate is the declared scope."
+      }
+    ],
+    "blockers_and_limitations": [
+      "Two guardrail emission cases and one BRB golden-equivalence case fail as inherited historical limitations (2 guardrail + 1 BRB, reported without waiver or deselection, separate defects).",
+      "No version triple selected, nothing designated final, no certification granted; export implementation, gateway enforcement, fixture regeneration, certification, and calibration pairing each need separate authorization.",
+      "Sibling repositories are not checked out locally; pins and contract overlay values are retained without sibling changes."
+    ],
+    "prohibited_operations": {
+      "pr_creation": false,
+      "merge": false,
+      "squash": false,
+      "rebase": false,
+      "force_push": false
+    }
+  },
   "authoring_amendments": [
     {
       "reason": "Restore preserved historical pins incorrectly overwritten during task authoring; new declared branch prevents divergence while preserving unpublished implementation.",
